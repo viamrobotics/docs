@@ -1,0 +1,5 @@
+site_name: "VIAM Documention, Reference, and Tutorials"
+nav:
+  - Home: 'index.md'
+  - Tutorials:
+    - Install VIAM on Raspberry Pi: 'tutorials/install-on-pi.md'
