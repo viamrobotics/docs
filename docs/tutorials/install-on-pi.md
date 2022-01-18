@@ -20,5 +20,76 @@ Since we need a 64-bit version of linux, you’ll need to download the raspberry
 Select and click on the most recent folder listed:
 ![single-version-64-bit](img/single-version-64-bit.png)
 
+Select and download the `.zip` file. Unzip the `.zip` file by double clicking it in your Downloads folder. This should result in a `.img` file.
 
+We’ll be using the Raspberry Pi Imager to flash the microSD card. If you do not already have the Raspberry Pi Imager, you can download it following the install instructions here. After successful installation, connect your microSD card to your computer and launch the Raspberry Pi Imager. You should be greeted with a window that looks like:  
+![add-location](img/add-location.png)
+
+Select CHOOSE OS: 
+
+Scroll to the bottom and select Use custom:
+
+Navigate to and select the 64-bit raspios image (`.img` file) you downloaded earlier:
+
+This should return you to the initial screen. Now we need to pick our storage medium, so click CHOOSE STORAGE:
+
+You may have many devices listed, select the microSD card you intend to use in your Raspberry Pi. You should be returned to the initial launch screen. To make your Raspberry Pi easier to access, we recommend configuring hostname, ssh credentials, and wifi. On Mac OS X, hit command+shift+x, to bring up the Advanced options menu (NB: if you are using a non-raspberry pi OS, altering the Advanced options will cause the initial bootup to fail) :
+
+Check Set hostname and enter the name you’d like to access the pi by in that field. Remember the name you choose as you will need to make use of it later. I’ve chosen viam-pi. Then check Enable SSH and either set a password or use Allow public-key authentication only if Raspberry Pi Imager has populated the Set authorized_keys for ‘pi’ field is populated:
+
+Lastly, check Configure wifi and enter your wireless network credentials:
+
+After clicking save, doublecheck your OS and Storage settings and then click WRITE:
+
+You’ll be prompted to confirm erasing your microSD card, select YES. You may also be prompted by your operating system to enter an Administrator password. After granting permissions to the Imager, it will begin writing and then verifying the linux installation to the MicroSD card:
+
+Remove the microSD card from your computer. Place it into your Raspberry Pi and boot the Pi by plugging it in.
+
+# Installing viam-server
+
+Once your Raspberry Pi is plugged in and turned on, wait a minute or two and then attempt to access your pi from your terminal emulator. Launch your terminal and run:
+```bash
+$ ssh pi@<hostname>.local
+```
+
+If you are prompted “Are you sure you want to continue connecting?”, type “yes” and hit enter. You should be greeted by a login message and a command prompt (pi@<hostname>:~ $). Now that you’re on the Pi, download the latest viam-server AppImage package: 
+```bash
+$ wget http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -O viam-server
+```
+
+Make it executable by running the following command:
+```bash
+$ chmod 755 viam-server
+```
+
+Then install it as root:
+```bash
+$ sudo ./viam-server --aix-install
+```
+
+# Adding your pi on app.viam.com
+
+In your web browser, navigate to app.viam.com and log in. Then if you have not already, create a new location by filling out the form on the left  and then clicking `New Location`.
+![add-location](img/add-location.png)
+
+Select your location and use the form on the right to create a new Robot:
+![add-robot](img/add-robot.png)
+
+Navigate to your new robot, which should show an empty conifg like below:
+![view-robot](img/view-robot.png)
+
+Click client config at the bottom, this should yield json similar to below:
+![view-client-config](img/view-client-config.png)
+
+Copy this json data into the /etc/viam.json file on your pi. Back in the terminal window connected to your pi, run the following: 
+```bash
+$ echo ‘<paste copied config into these quotes>’ | sudo tee /etc/viam.json
+```
+
+Then restart the viam-server:
+```bash
+$ sudo systemctl restart viam-server.service
+```
+
+# Next Steps
 Now that you've got the viam-server running, why not plug it into a Yahboom 4WD Rover and set that up by following [these instructions](yahboom-rover.md)?
