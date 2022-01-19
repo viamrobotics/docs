@@ -101,4 +101,5 @@ $ sudo systemctl restart viam-server.service
 ```
 
 # Next Steps
-Now that you've got the viam-server running, why not plug it into a Yahboom 4WD Rover and set that up by following [these instructions](yahboom-rover.md)?
+Now that you've got the viam-server up and running, we can start adding components to your robot and the real fun can begin!
+Why not plug it into a Yahboom 4WD Rover and set that up by following [these instructions](yahboom-rover.md)?
