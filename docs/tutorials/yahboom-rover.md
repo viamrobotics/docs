@@ -120,3 +120,39 @@ This config adds the controller to the robot, but doesn’t wire it up to any fu
 ```
 Save the config and visit the control UI. At this point moving the left analogue stick should result in movement of the rover!
 
+But wait! This rover has a `camera` on it. Let's see if we can get that going as well! Here's the config for a simple usb webcam like we have here:
+```json
+{
+  "name": "wc",
+  "type": "camera",
+  "model": "webcam"
+}
+```
+
+That should be enough to get the `camera` streaming to the webUI. You may have noticed that the `camera` is mounted on a pair of `servo`s which control the pan and tilt of the `camera`. Here's a pair of `servo` configs to add that tilt and pan functionality to the webUI:
+```json
+{
+  "model": "pi",
+  "name": "pan",
+  "type": "servo",
+  "attributes": {
+    "pin": "23"
+  },
+  "depends_on": [
+    "local"
+  ]
+},
+{
+  "name": "tilt",
+  "type": "servo",
+  "model": "pi",
+  "attributes": {
+    "pin": "21"
+  },
+  "depends_on": [
+    "local"
+  ]
+}
+```
+
+Wow! This is cool! But all the control is manual. It'd sure be nice to have the robot move in an automated manner. To learn more about that, check out our [python SDK tutorial](python-sdk-yahboom.md).
