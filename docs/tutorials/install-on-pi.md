@@ -7,11 +7,21 @@ date: 2022-01-18
 ---
 # Installing Viam RDK Server on Raspberry Pi
 
+
+## Resources
+
+The instructions assume you have the following hardware:
+
+* Raspberry Pi Single Board Computer
+* microSD card
+* computer
+* a way to connect the microSD card to the computer (ex, microSD slot or microSD reader)
+
 Before installing the Viam RDK, you’ll need a Raspberry Pi running a 64-bit linux distribution. If you do not have linux installed on your Raspberry Pi, skip ahead to [Installing Raspian on the Raspberry Pi](install-on-pi.md#installing-raspian-on-the-raspberry-pi). If you already have a Raspberry Pi with linux installed on it, check if the linux installation on your Raspberry Pi is 64-bit. First, `ssh` into your pi and then run `lscpu`. Example output:
 ![lscpu-output](img/lscpu-output.png)
 If the line of output which reads “Architecture:     <value>” has a value which ends in 64, skip ahead to [Installing viam-server](install-on-pi.md#installing-viam-server). Otherwise continue to [Installing Raspian on the Raspberry Pi](install-on-pi.md#installing-raspian-on-the-raspberry-pi).
 
-# Installing Raspian on the Raspberry Pi
+## Installing Raspian on the Raspberry Pi
 A Raspberry Pi boots from a microSD card. Our first step is to set up a linux installation on that microSD card. 
 
 Since we need a 64-bit version of linux, you’ll need to download the raspberry pi OS 64-bit beta image [here](https://downloads.raspberrypi.org/raspios_lite_arm64/images/).
@@ -40,7 +50,7 @@ You may have many devices listed, select the microSD card you intend to use in y
 You should be returned to the initial launch screen. To make your Raspberry Pi easier to access, we recommend configuring hostname, ssh credentials, and wifi. On Mac OS X, hit command+shift+x, to bring up the Advanced options menu (NB: if you are using a non-raspberry pi OS, altering the Advanced options will cause the initial bootup to fail):
 ![imager-set-hostname](img/imager-set-hostname.png)
 
-Check `Set hostname` and enter the name you’d like to access the pi by in that field. Remember the name you choose as you will need to make use of it later. I’ve chosen viam-pi. Then check `Enable SSH` and either set a password or use `Allow public-key authentication only` if Raspberry Pi Imager has populated the `Set authorized_keys for ‘pi’` field:
+Check `Set hostname` and enter the name you’d like to access the pi by in that field. Remember the name you choose as you will need to make use of it later. I’ve chosen "viam-pi". Then check `Enable SSH` and either set a password or use `Allow public-key authentication only` if Raspberry Pi Imager has populated the `Set authorized_keys for ‘pi’` field:
 ![imager-set-ssh](img/imager-set-ssh.png)
 
 Lastly, check `Configure wifi` and enter your wireless network credentials:
@@ -54,7 +64,7 @@ You’ll be prompted to confirm erasing your microSD card, select `YES`. You may
 
 Remove the microSD card from your computer. Place it into your Raspberry Pi and boot the Pi by plugging it in.
 
-# Installing viam-server
+## Installing viam-server
 
 Once your Raspberry Pi is plugged in and turned on, wait a minute or two and then attempt to access your pi from your terminal emulator. Launch your terminal and run:
 ```bash
@@ -76,7 +86,7 @@ Then install it as root:
 $ sudo ./viam-server --aix-install
 ```
 
-# Adding your pi on app.viam.com
+## Adding your pi on app.viam.com
 
 In your web browser, navigate to app.viam.com and log in. Then if you have not already, create a new location by filling out the form on the left  and then clicking `New Location`.
 ![add-location](img/add-location.png)
@@ -100,6 +110,6 @@ Then restart the viam-server:
 $ sudo systemctl restart viam-server.service
 ```
 
-# Next Steps
+## Next Steps
 Now that you've got the viam-server up and running, we can start adding components to your robot and the real fun can begin!
 Why not plug it into a Yahboom 4WD Rover and set that up by following [these instructions](yahboom-rover.md)?
