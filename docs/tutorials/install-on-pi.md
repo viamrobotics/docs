@@ -22,7 +22,7 @@ Before installing the Viam RDK, you’ll need a Raspberry Pi running a 64-bit li
 If the line of output which reads “Architecture:     <value>” has a value which ends in 64, skip ahead to [Installing viam-server](install-on-pi.md#installing-viam-server). Otherwise continue to [Installing Raspian on the Raspberry Pi](install-on-pi.md#installing-raspian-on-the-raspberry-pi).
 
 ## Installing Raspian on the Raspberry Pi
-A Raspberry Pi boots from a microSD card. Our first step is to set up a linux installation on that microSD card. 
+A Raspberry Pi boots from a microSD card. Our first step is to set up a linux installation on that microSD card. Connect the microSD card to your computer.
 
 Since we need a 64-bit version of linux, you’ll need to download the raspberry pi OS 64-bit beta image [here](https://downloads.raspberrypi.org/raspios_lite_arm64/images/).
 ![top-level-64-bit](img/top-level-64-bit.png)
@@ -109,6 +109,8 @@ Then restart the viam-server:
 ```bash
 $ sudo systemctl restart viam-server.service
 ```
+
+Back on app.viam.com we can confirm the Pi has connected and pulled the config by look at the section label `LABEL` and seeing that fields `` are populated.
 
 ## Next Steps
 Now that you've got the viam-server up and running, we can start adding components to your robot and the real fun can begin!
