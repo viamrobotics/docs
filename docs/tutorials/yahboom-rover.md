@@ -44,7 +44,7 @@ Next we’ll add one of the `motor` controllers and see if we can make the wheel
   ]
 }
 ```
-You could rename this `motor`, say if the left and right sides of your rover are reversed. But again being consistent with the name throughout the config is essential. Most components have an attribute object which describes the attributes of that component (eg, the pins a component is connected to). Most components will have a `depends_on` array which contains the names of the other components which they are a part of. Here this is simply the `board` the `motor` is connected to.
+You could rename this `motor`, say if the left and right sides of your rover are reversed. But again being consistent with the name throughout the config is essential. Most components have an attribute object which describes the configurable properties of that component (eg, the pins a component is connected to). Most components will have a `depends_on` array which contains the names of the other components which they are a part of. Here this is simply the `board` the `motor` is connected to.
 
 Having entered these two components, you should save the config and try clicking through to the control page for your robot on app.viam. There you should see a panel for the right `motor`, which you can use to set its rotation speed. Please be careful when activating your robot! Ensure it has sufficient space to drive around without hitting anyone or anything. Consider possibly holding your robot off the ground so it cannot run away or collide with anything unexpected.
 
@@ -94,9 +94,23 @@ Now let’s add the base:
 ```
 The `base` component is used to describe the physical structure onto which components are mounted. The `four-wheel` model of the `base` component expects attributes to describe which components are each of its wheels. Since the yahboom rover only has two driving `motor` controllers (one for each side instead of one for each wheel), we list each `motor` twice (once as front and once as back). When you save the config and switch to the control view once more, you should have new buttons for the `base` functionality including `BaseSpin`, `BaseArcMove`, and similar. Try playing around with these and getting a sense for what they do.
 
-Awesome! Now we have a rover which we can drive via a webUI. But wouldn’t it be more fun to drive it around like an RC car? Let’s try attaching a bluetooth controller and using that to control the rover. If you’ve ever connected a bluetooth device via the linux command line, great! If not, strap in, it’s a bit of a pain. We recommend [this guide](https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/).
+Awesome! Now we have a rover which we can drive via a webUI. But wouldn’t it be more fun to drive it around like an RC car? Let’s try attaching a bluetooth controller and using that to control the rover. If you’ve ever connected a bluetooth device via the linux command line, great! If not, strap in, it’s a bit of a pain. 
 
- Now let’s add that controller to the robot’s config: 
+Make sure the 8bitdo controller mode switch is set to S, hold down Start for a few seconds, and when the LED rotates press the pair button for 3 seconds. 
+
+Run `bluetoothctl scan on` to list all Bluetooth devices within reach of the Raspberry Pi. The 8bitdo controller will have a MAC address that begins E4:17:D8.
+
+Once you find it in the listings, pair with the controller: `bluetoothctl pair <8bitdo-mac-address>`
+
+Then connect the controller: `bluetoothctl connect <8bitdo-mac-address>`
+
+Lastly trust the controller, which make reconnecting easier in the future: `bluetoothctl trust <8bitdo-mac-address>`
+
+To confirm the connection, you can list connected devices with: `bluetoothctl devices | cut -f2 -d' ' | while read uuid; do bluetoothctl info $uuid; done|grep -e "Device\|Connected\|Name"`
+
+If you'd a stronger understanding of `bluetoothctl` and managing bluetooth devices in linux, we recommend [this guide](https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/)
+
+Now let’s add that controller to the robot’s config: 
 ```json
 {
   "name": "8bit-do-controller",
