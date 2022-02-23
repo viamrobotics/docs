@@ -99,7 +99,7 @@ Navigate to your new robot, which should show an empty conifg like below:
 
 Click `COPY RDK CONFIG` at the bottom, this should fill your clipboard with the json config needed for your pi talk to app.viam.com as this robot.
 
-Copy this json data into the /etc/viam.json file on your pi. Back in the terminal window connected to your pi, run the following: 
+Copy this json data into the /etc/viam.json file on your pi. This can be done by going back to the terminal window connected to your pi and running the following: 
 ```bash
 $ echo ‘<paste copied config into these quotes, but dont forget the quotes themselves>’ | sudo tee /etc/viam.json
 ```
