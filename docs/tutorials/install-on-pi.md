@@ -32,7 +32,7 @@ Select and click on the most recent folder listed:
 
 Select and download the `.zip` file. Unzip the `.zip` file by double clicking it in your Downloads folder. This should result in a `.img` file.
 
-We’ll be using the Raspberry Pi Imager to flash the microSD card. If you do not already have the Raspberry Pi Imager, you can download it following the install instructions here. After successful installation, connect your microSD card to your computer and launch the Raspberry Pi Imager. You should be greeted with a window that looks like:  
+We’ll be using the Raspberry Pi Imager to flash the microSD card. If you do not already have the Raspberry Pi Imager, you can download it following the install instructions [here](https://www.raspberrypi.com/software/). After successful installation, connect your microSD card to your computer and launch the Raspberry Pi Imager. You should be greeted with a window that looks like:  
 ![imager-launch-screen](img/imager-launch-screen.png)
 
 Select `CHOOSE OS`. Then, scroll to the bottom and select `Use custom`:
@@ -97,12 +97,11 @@ Select your location and use the form on the right to create a new Robot:
 Navigate to your new robot, which should show an empty conifg like below:
 ![view-robot](img/view-robot.png)
 
-Click client config at the bottom, this should yield json similar to below:
-![view-client-config](img/view-client-config.png)
+Click `COPY RDK CONFIG` at the bottom, this should fill your clipboard with the json config needed for your pi talk to app.viam.com as this robot.
 
 Copy this json data into the /etc/viam.json file on your pi. Back in the terminal window connected to your pi, run the following: 
 ```bash
-$ echo ‘<paste copied config into these quotes>’ | sudo tee /etc/viam.json
+$ echo ‘<paste copied config into these quotes, but dont forget the quotes themselves>’ | sudo tee /etc/viam.json
 ```
 
 Then restart the viam-server:

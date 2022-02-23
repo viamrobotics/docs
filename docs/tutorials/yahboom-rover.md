@@ -82,8 +82,8 @@ Now let’s add the base:
     "board": "local",
     "frontLeft": "left",
     "frontRight": "right",
-    "wheelCircumferenceMillis": 160,
-    "widthMillis": 20
+    "wheelCircumferenceMm": 160,
+    "widthMm": 20
   },
   "depends_on": [
     "local",
@@ -92,21 +92,21 @@ Now let’s add the base:
   ]
 }
 ```
-The `base` component is used to describe the physical structure onto which components are mounted. The `four-wheel` model of the `base` component expects attributes to describe which components are each of its wheels. Since the yahboom rover only has two driving `motor` controllers (one for each side instead of one for each wheel), we list each `motor` twice (once as front and once as back). When you save the config and switch to the control view once more, you should have new buttons for the `base` functionality including `BaseSpin`, `BaseArcMove`, and similar. Try playing around with these and getting a sense for what they do.
+The `base` component is used to describe the physical structure onto which components are mounted. The `four-wheel` model of the `base` component expects attributes to describe which components are each of its wheels. Since the yahboom rover only has two driving `motor` controllers (one for each side instead of one for each wheel), we list each `motor` twice (once as front and once as back). When you save the config and switch to the control view once more, you should have new buttons for the `base` functionality including `SpinCW`, `ArcForward`, and similar. Try playing around with these and getting a sense for what they do.
 
 Awesome! Now we have a rover which we can drive via a webUI. But wouldn’t it be more fun to drive it around like an RC car? Let’s try attaching a bluetooth controller and using that to control the rover. If you’ve ever connected a bluetooth device via the linux command line, great! If not, strap in, it’s a bit of a pain. 
 
-Make sure the 8bitdo controller mode switch is set to S, hold down Start for a few seconds, and when the LED rotates press the pair button for 3 seconds. 
+Make sure the 8bitdo controller mode switch is set to S, hold down Start for a few seconds, and when the LED rotates press the pair button for 3 seconds. For more information about the controller buttons and bluetooth modes, consult the manual included with the controller.
 
-Run `bluetoothctl scan on` to list all Bluetooth devices within reach of the Raspberry Pi. The 8bitdo controller will have a MAC address that begins E4:17:D8.
+Run `sudo bluetoothctl scan on` to list all Bluetooth devices within reach of the Raspberry Pi. The 8bitdo controller will have a MAC address that begins E4:17:D8.
 
-Once you find it in the listings, pair with the controller: `bluetoothctl pair <8bitdo-mac-address>`
+Once you find it in the listings, pair with the controller: `sudo bluetoothctl pair <8bitdo-mac-address>`
 
-Then connect the controller: `bluetoothctl connect <8bitdo-mac-address>`
+Then connect the controller: `sudo bluetoothctl connect <8bitdo-mac-address>`
 
-Lastly trust the controller, which make reconnecting easier in the future: `bluetoothctl trust <8bitdo-mac-address>`
+Lastly trust the controller, which make reconnecting easier in the future: `sudo bluetoothctl trust <8bitdo-mac-address>`
 
-To confirm the connection, you can list connected devices with: `bluetoothctl devices | cut -f2 -d' ' | while read uuid; do bluetoothctl info $uuid; done|grep -e "Device\|Connected\|Name"`
+To confirm the connection, you can list connected devices with: `sudo bluetoothctl devices | cut -f2 -d' ' | while read uuid; do sudo bluetoothctl info $uuid; done|grep -e "Device\|Connected\|Name"`
 
 If you'd a stronger understanding of `bluetoothctl` and managing bluetooth devices in linux, we recommend [this guide](https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/)
 
@@ -134,12 +134,13 @@ This config adds the controller to the robot, but doesn’t wire it up to any fu
 ```
 Save the config and visit the control UI. At this point moving the left analogue stick should result in movement of the rover!
 
-But wait! This rover has a `camera` on it. Let's see if we can get that going as well! Here's the config for a simple usb webcam like we have here:
+But wait! This rover has a `camera` on it. Let's see if we can get that going as well! Here's the component config for a simple usb webcam like we have here:
 ```json
 {
   "name": "wc",
   "type": "camera",
-  "model": "webcam"
+  "model": "webcam",
+  "path": "/dev/video0"
 }
 ```
 
