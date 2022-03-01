@@ -6,93 +6,33 @@ authors:
 date: 2022-01-19
 ---
 # Configuring a Four Wheeled Rover Controlled by Gamepad
-Robot configs at viam are JSON files. These configs have two top-level fields; `“components”`, which will contain descriptions of the physical hardware of your robot and `“services”`, which will contain the software libraries of your robot. Let’s start with an empty robot config:
-```json
-{
-  "components": [],
-  "services": []
-}
-```
+TODO: introduce the config concept, attributes, and depends_on
 
-The first component we will add will be our `board`, since all other components hang off of it in this case. The config for the `board` looks like:
-```json
-{
-  "model": "pi",
-  "name": "local",
-  "type": "board"
-}
-```
-You can name the `board` whatever you like so long as you are consistent about it throughout the config.
+The first component we will add is our `board`, which represents our Single Board Computer, the Raspberry Pi into which we are wiring all other components. To create a new component, simply click `NEW COMPONENT`.
+We'll name this component `local` since it is the `board` we will communicate with directly. You can name the `board` whatever you like. For component `Type`, select `board` and for `Model`, select `pi`.
 
-Next we’ll add one of the `motor` controllers and see if we can make the wheel spin. If you wired up the yahboom rover correctly, the following config should match your right side wheels:
-```json
-{
-  "name": "right",
-  "type": "motor",
-  "model": "pi",
-  "attributes": {
-    "board": "local",
-    "max_rpm": 300,
-    "pins": {
-      "a": "35",
-      "b": "37",
-      "pwm": "33"
-    }
-  },
-  "depends_on": [
-    "local"
-  ]
-}
-```
-You could rename this `motor`, say if the left and right sides of your rover are reversed. But again being consistent with the name throughout the config is essential. Most components have an attribute object which describes the configurable properties of that component (eg, the pins a component is connected to). Most components will have a `depends_on` array which contains the names of the other components which they are a part of. Here this is simply the `board` the `motor` is connected to.
 
-Having entered these two components, you should save the config and try clicking through to the control page for your robot on app.viam. There you should see a panel for the right `motor`, which you can use to set its `power` level. Please be careful when activating your robot! Start with the power level set to 10% and incrementally increase it (about 10% each time), activating the motor at each step until the wheels are rotating at a reasonable rate. Ensure the rover has sufficient space to drive around without hitting anyone or anything. Consider possibly holding your robot off the ground so it cannot run away or collide with anything unexpected.
+TODO: fix dir and tickets per rotation
+Next we’ll add one of the `motor` controllers and see if we can make the wheel spin. As with all other components, the first step is to click `NEW COMPONENT`.
+We'll start with the right wheels, so let's name the component `right`. For the `Type` select `motor`, for the `Model` select `pi`, and for `Depends On` select `local` since that is what this motor is wired to.
+We'll need to tell Viam how this motor is wired up to the Pi. If the yahboom setup instructions were followed correctly, the following `pins` should be correct: set `a` to `35`, `b` to `37`, and `pwm` to `33`.
+`dir`???
+For the `board` we again put `local`, `ticksPerRotation` should be ``, and `max_rpm` should be `300`.
 
-At this point, the wheels on one side of your robot should be working through app.viam. Very cool! Now let’s try to add the other set of wheels and see if we can get this bot driving in a coordinated manner. To do this, we’ll have to add the other `motor` controller and link them together with a `base`. First the other motor config:
-```json
-{
-  "name": "left",
-  "type": "motor",
-  "model": "pi",
-  "attributes": {
-    "board": "local",
-    "max_rpm": 300,
-    "pins": {
-      "a": "38",
-      "b": "40",
-      "pwm": "36"
-    }
-  },
-  "depends_on": [
-    "local"
-  ]
-}
-```
-As you can see, this is very similar to the first one, which makes sense as the hardware is the same and it is connected to the same `board`. The differences are its name and the pins to which it is connected. If you save the config and hop over to the control view again, you should now see two motors and be able to make both sets of wheels spin.
+Having entered these two components, you should now be able to actuate your motor. Save the config by clicking `SAVE CONFIG` at the bottom of the page and click `CONTROL` at the top of the page to navigate to the Control Page.
+There you should see a panel for the right `motor`. You can use this panel to set the motor's `power` level. Please be careful when activating your robot! Start with the power level set to 10% and incrementally increase it (about 10% each time), activating the motor at each step until the wheels are rotating at a reasonable rate. 
+Ensure the rover has sufficient space to drive around without hitting anyone or anything. Consider possibly holding your robot off the ground so it cannot run away or collide with anything unexpected.
 
-Now let’s add the base:
-```json
-{
-  "name": "yahboom-base",
-  "type": "base",
-  "model": "four-wheel",
-  "attributes": {
-    "backLeft": "left",
-    "backRight": "right",
-    "board": "local",
-    "frontLeft": "left",
-    "frontRight": "right",
-    "wheelCircumferenceMm": 160,
-    "widthMm": 20
-  },
-  "depends_on": [
-    "local",
-    "left",
-    "right"
-  ]
-}
-```
-The `base` component is used to describe the physical structure onto which components are mounted. The `four-wheel` model of the `base` component expects attributes to describe which components are each of its wheels. Since the yahboom rover only has two driving `motor` controllers (one for each side instead of one for each wheel), we list each `motor` twice (once as front and once as back). When you save the config and switch to the control view once more, you should have new buttons for the `base` functionality including `SpinCW`, `ArcForward`, and similar. Try playing around with these and getting a sense for what they do.
+At this point, the wheels on one side of your robot should be working through app.viam. Very cool! Now let’s try to add the other set of wheels and see if we can get this bot driving in a coordinated manner. To do this, we’ll have to add the other `motor` controller and link them together with a `base`.
+
+We'll once again click `NEW COMPONENT`. The config attributes for this `motor` will be very similar to the `right` motor, which makes sense as the hardware is the same and it is connected to the same `board`. The only difference will be the `Name` which will be `left` and the pins it's connected to, which should be set as follows: `a` to `38`, `b` to `40`, and `pwm` to `36`.
+If you save the config and hop over to the control view again, you should now see two motors and be able to make each set of wheels spin.
+
+TODO: confirm the base measurements and if board is needed as a depends_on
+Now let’s unite these wheel sets with a `base` component, which is used to describe the physical structure onto which our components are mounted. I configuring a `base` component will give us a nice API for moving the rover around. As you're likely accustomed to at this point, we'll start by clicking `NEW COMPONENT`. 
+Let's name the component `yahboom-base`. For the `Type` select `base`, for the `Model` select `wheeled`, and for `Depends On` select `local`, `left`, and `right` since these are the components that comprise our `base`.
+For `width_mm` we'll use `20` and for `wheel_circumference_mm` we'll use `160`. The `left` and `right` attributes are intended to be the set of motors corresponding to the left and right sides of the rover. Since we were clever about naming our motors, we can simply add one item to each of `left` and `right` which will be our motors `left` and `right`, respectively.
+When you save the config and switch to the control view once more, you should have new buttons for the `base` functionality including `Forward`, `Forward Arc`, `Spin Clockwise` and similar. Try playing around with these and the `Distance` and `Angle` fields below them to get a sense for what they do.
 
 Awesome! Now we have a rover which we can drive via a webUI. But wouldn’t it be more fun to drive it around like an RC car? Let’s try attaching a bluetooth controller and using that to control the rover. If you’ve ever connected a bluetooth device via the linux command line, great! If not, strap in, it’s a bit of a pain. 
 
@@ -110,29 +50,15 @@ To confirm the connection, you can list connected devices with: `sudo bluetoothc
 
 If you'd a stronger understanding of `bluetoothctl` and managing bluetooth devices in linux, we recommend [this guide](https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/)
 
-Now let’s add that controller to the robot’s config: 
-```json
-{
-  "name": "8bit-do-controller",
-  "type": "input_controller",
-  "model": "gamepad",
-  "attributes": {
-    "auto_reconnect": true
-  }
-}
-```
-This config adds the controller to the robot, but doesn’t wire it up to any functionality. To link the controller input to the four-wheel base functionality, we need to add our first `service`. Services are the software packages which provide our robots with cool and powerful functionality. Here’s the config for the base_remote_control package, which will map the left analoglue stick to movement of our four-wheeled base:
-```json
-{
-  "name": "base_remote_control",
-  "type": "base_remote_control",
-  "attributes": {
-    "base": "yahboom-base",
-    "input_controller": "8bit-do-controller"
-  }
-}
-```
-Save the config and visit the control UI. At this point moving the left analogue stick should result in movement of the rover!
+Now let’s add this controller to the robot’s config. Click on our old friend `NEW COMPONENT`.
+Let's name the component `8bit-do-controller`. For the `Type` select `input_controller` and for the `Model` select `gamepad`. Lastly, let's set the `auto_reconnect` attribute to `true`. This config adds the controller to the robot, but doesn’t wire it up to any functionality.
+To link the controller input to the four-wheel base functionality, we need to add our first `service`. Services are the software packages which provide our robots with cool and powerful functionality.
+
+TODO: figure out how to add attributes in this jank UI
+This time around we'll have to click `ADD ITEM` under `services` farther down on the page. We'll `name` this service `yahboom_gamepad_control` and give it the `type` `base_remote_control`, which is a service we've provide for driving a rover with a gamepad.
+We'll need to configure the following attributes for this services as follows: `base` should be `yahboom-base` and `inpute_controller` should be `8bit-do-controller`.
+
+Save the config and visit the control UI. You should have a panel for the controller which indicates whether or not it is connected. At this point moving the left analogue stick should result in movement of the rover!
 
 But wait! This rover has a `camera` on it. Let's see if we can get that going as well! Here's the component config for a simple usb webcam like we have here:
 ```json
