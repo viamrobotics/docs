@@ -29,9 +29,12 @@ We'll once again click `NEW COMPONENT`. The config attributes for this `motor` w
 If you save the config and hop over to the control view again, you should now see two motors and be able to make each set of wheels spin.
 
 TODO: confirm the base measurements and if board is needed as a depends_on
-Now let’s unite these wheel sets with a `base` component, which is used to describe the physical structure onto which our components are mounted. I configuring a `base` component will give us a nice API for moving the rover around. As you're likely accustomed to at this point, we'll start by clicking `NEW COMPONENT`. 
+Now let’s unite these wheel sets with a `base` component, which is used to describe the physical structure onto which our components are mounted. I configuring a `base` component will give us a nice API for moving the rover around.
+
+As you're likely accustomed to at this point, we'll start by clicking `NEW COMPONENT`. 
 Let's name the component `yahboom-base`. For the `Type` select `base`, for the `Model` select `wheeled`, and for `Depends On` select `local`, `left`, and `right` since these are the components that comprise our `base`.
 For `width_mm` we'll use `20` and for `wheel_circumference_mm` we'll use `160`. The `left` and `right` attributes are intended to be the set of motors corresponding to the left and right sides of the rover. Since we were clever about naming our motors, we can simply add one item to each of `left` and `right` which will be our motors `left` and `right`, respectively.
+
 When you save the config and switch to the control view once more, you should have new buttons for the `base` functionality including `Forward`, `Forward Arc`, `Spin Clockwise` and similar. Try playing around with these and the `Distance` and `Angle` fields below them to get a sense for what they do.
 
 Awesome! Now we have a rover which we can drive via a webUI. But wouldn’t it be more fun to drive it around like an RC car? Let’s try attaching a bluetooth controller and using that to control the rover. If you’ve ever connected a bluetooth device via the linux command line, great! If not, strap in, it’s a bit of a pain. 
