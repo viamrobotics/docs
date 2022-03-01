@@ -50,6 +50,7 @@ To confirm the connection, you can list connected devices with: `sudo bluetoothc
 
 If you'd a stronger understanding of `bluetoothctl` and managing bluetooth devices in linux, we recommend [this guide](https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/)
 
+TODO: figure out how to add attributes in this jank UI
 Now let’s add this controller to the robot’s config. Click on our old friend `NEW COMPONENT`.
 Let's name the component `8bit-do-controller`. For the `Type` select `input_controller` and for the `Model` select `gamepad`. Lastly, let's set the `auto_reconnect` attribute to `true`. This config adds the controller to the robot, but doesn’t wire it up to any functionality.
 To link the controller input to the four-wheel base functionality, we need to add our first `service`. Services are the software packages which provide our robots with cool and powerful functionality.
@@ -60,40 +61,14 @@ We'll need to configure the following attributes for this services as follows: `
 
 Save the config and visit the control UI. You should have a panel for the controller which indicates whether or not it is connected. At this point moving the left analogue stick should result in movement of the rover!
 
-But wait! This rover has a `camera` on it. Let's see if we can get that going as well! Here's the component config for a simple usb webcam like we have here:
-```json
-{
-  "name": "wc",
-  "type": "camera",
-  "model": "webcam",
-  "path": "/dev/video0"
-}
-```
+TODO: figure out how to add attributes in this jank UI
+But wait! This rover has a `camera` on it. Let's see if we can get that going as well! Once again, click `NEW COMPONENT`.
+Let's name this camera `rover_cam`. For the `Type` select `camera` and for `Model` select `webcam`. Lastly, we'll set the `path` attribute to the linux path where the device is mounted, which should be `/dev/video0`.
+That should be enough to get the `camera` streaming to the webUI.
 
-That should be enough to get the `camera` streaming to the webUI. You may have noticed that the `camera` is mounted on a pair of `servo`s which control the pan and tilt of the `camera`. Here's a pair of `servo` configs to add that tilt and pan functionality to the webUI:
-```json
-{
-  "model": "pi",
-  "name": "pan",
-  "type": "servo",
-  "attributes": {
-    "pin": "23"
-  },
-  "depends_on": [
-    "local"
-  ]
-},
-{
-  "name": "tilt",
-  "type": "servo",
-  "model": "pi",
-  "attributes": {
-    "pin": "21"
-  },
-  "depends_on": [
-    "local"
-  ]
-}
-```
+You may have noticed that the `camera` is mounted on a pair of `servo`s which control the pan and tilt of the `camera`.
+Again, we'll click `NEW COMPONENT`. We'll set the `Name` to `pan`, the `Type` to `servo`, the `Model` to `pi`, `Depends On` to `local`, and `pin` to `23`, which is the pin the servo is wired to.
+Let's add the tilt `servo` as well. Same process as the first `servo`, but with the `Name` set to `tilt` and the `pin` to `21`.
+Saving the config and moving to the control UI, you should notice two new panels for adjusting these servos.
 
 Wow! This is cool! But all the control is manual. It'd sure be nice to have the robot move in an automated manner. To learn more about that, check out our [python SDK tutorial](python-sdk-yahboom.md).
