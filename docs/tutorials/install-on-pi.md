@@ -109,7 +109,7 @@ Then restart the viam-server:
 sudo systemctl restart viam-server.service
 ```
 
-Back on app.viam.com we can confirm the Pi has connected and pulled the config by looking at the `config` portion of the robot's page and seeing that `ips` field is populated and that the `last access` field reads `less than a minute ago`.
+Back on app.viam.com we can confirm the Pi has connected and pulled the config by looking at the top of the Robot page and seeing that `host` and `ips` fields are populated and that the `last access` field reads `less than a minute ago`.
 
 ## Next Steps
 Now that you've got the viam-server up and running, we can start adding components to your robot and the real fun can begin!
