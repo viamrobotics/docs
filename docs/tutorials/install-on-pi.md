@@ -24,22 +24,11 @@ If the line of output which reads “Architecture:     <value>” has a value wh
 ## Installing Raspian on the Raspberry Pi
 A Raspberry Pi boots from a microSD card. Our first step is to set up a linux installation on that microSD card. Connect the microSD card to your computer.
 
-Since we need a 64-bit version of linux, you’ll need to download the raspberry pi OS 64-bit beta image [here](https://downloads.raspberrypi.org/raspios_lite_arm64/images/).
-![top-level-64-bit](img/top-level-64-bit.png)
+Select `CHOOSE OS`.  Since we need a 64-bit version of linux, you’ll need to select it from the `Rapsberry Pi OS (other)` menu.
+![imager-select-custom-os](img/select-other-rpi.png)
 
-Select and click on the most recent folder listed:
-![single-version-64-bit](img/single-version-64-bit.png)
-
-Select and download the `.zip` file. Unzip the `.zip` file by double clicking it in your Downloads folder. This should result in a `.img` file.
-
-We’ll be using the Raspberry Pi Imager to flash the microSD card. If you do not already have the Raspberry Pi Imager, you can download it following the install instructions [here](https://www.raspberrypi.com/software/). After successful installation, connect your microSD card to your computer and launch the Raspberry Pi Imager. You should be greeted with a window that looks like:  
-![imager-launch-screen](img/imager-launch-screen.png)
-
-Select `CHOOSE OS`. Then, scroll to the bottom and select `Use custom`:
-![imager-select-custom-os](img/imager-select-custom-os.png)
-
-Navigate to and select the 64-bit raspios image (`.img` file) you downloaded earlier:
-![imager-select-file](img/imager-select-file.png)
+Then select the entry titled `Raspberry Pi OS (64-bit)`.
+![select-other-rpi](img/select-rpi-64.png)
 
 This should return you to the initial screen. Now we need to pick our storage medium, so click `CHOOSE STORAGE`:
 ![imager-selected-os](img/imager-selected-os.png)
