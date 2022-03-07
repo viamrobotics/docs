@@ -68,22 +68,22 @@ Remove the microSD card from your computer. Place it into your Raspberry Pi and 
 
 Once your Raspberry Pi is plugged in and turned on, wait a minute or two and then attempt to access your pi from your terminal emulator. Launch your terminal and run:
 ```bash
-$ ssh pi@<hostname>.local
+ssh pi@<hostname>.local
 ```
 
 If you are prompted “Are you sure you want to continue connecting?”, type “yes” and hit enter. You should be greeted by a login message and a command prompt (`pi@$HOSTNAME:~ $`). Now that you’re on the Pi, download the latest viam-server AppImage package: 
 ```bash
-$ wget http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -O viam-server
+wget http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -O viam-server
 ```
 
 Make it executable by running the following command:
 ```bash
-$ chmod 755 viam-server
+chmod 755 viam-server
 ```
 
 Then install it as root:
 ```bash
-$ sudo ./viam-server --aix-install
+sudo ./viam-server --aix-install
 ```
 
 ## Adding your pi on app.viam.com
@@ -101,12 +101,12 @@ Click `COPY RDK CONFIG` at the bottom, this should fill your clipboard with the 
 
 Copy this json data into the /etc/viam.json file on your pi. This can be done by going back to the terminal window connected to your pi and running the following: 
 ```bash
-$ echo ‘<paste copied config into these quotes, but dont forget the quotes themselves>’ | sudo tee /etc/viam.json
+echo ‘<paste copied config into these quotes, but dont forget the quotes themselves>’ | sudo tee /etc/viam.json
 ```
 
 Then restart the viam-server:
 ```bash
-$ sudo systemctl restart viam-server.service
+sudo systemctl restart viam-server.service
 ```
 
 Back on app.viam.com we can confirm the Pi has connected and pulled the config by looking at the `config` portion of the robot's page and seeing that `ips` field is populated and that the `last access` field reads `less than a minute ago`.
