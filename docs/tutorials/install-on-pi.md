@@ -24,11 +24,24 @@ If the line of output which reads “Architecture:     <value>” has a value wh
 ## Installing Raspian on the Raspberry Pi
 A Raspberry Pi boots from a microSD card. Our first step is to set up a linux installation on that microSD card. Connect the microSD card to your computer.
 
+We’ll be using the Raspberry Pi Imager to flash the microSD card. If you do not already have the Raspberry Pi Imager, you can download it following the install instructions [here](https://www.raspberrypi.com/software/). After successful installation, connect your microSD card to your computer and launch the Raspberry Pi Imager. You should be greeted with a window that looks like:  
+![imager-launch-screen](img/imager-launch-screen.png)
+
 Select `CHOOSE OS`.  Since we need a 64-bit version of linux, you’ll need to select it from the `Rapsberry Pi OS (other)` menu.
 ![imager-select-custom-os](img/select-other-rpi.png)
 
 Then select the entry titled `Raspberry Pi OS (64-bit)`.
 ![select-other-rpi](img/select-rpi-64.png)
+
+You should be returned to the initial launch screen. To make your Raspberry Pi easier to access, we recommend configuring hostname, ssh credentials, and wifi. Click the gear-shaped settings icon in the lower right to bring up the Advanced options menu (NB: if you are using a non-raspberry pi OS, altering the Advanced options will cause the initial bootup to fail):
+![imager-set-hostname](img/imager-set-hostname.png)
+
+Check `Set hostname` and enter the name you’d like to access the pi by in that field. Remember the name you choose as you will need to make use of it later. I’ve chosen "viam-pi". Then check `Enable SSH` and set a password and optionally change the username: 
+![imager-set-ssh](img/imager-set-ssh.png)
+
+Be sure to write down or otherwise keep track of the `username`, `password`, and `hostname` you've configured.
+Lastly, check `Configure wifi` and enter your wireless network credentials:
+![imager-set-wifi](img/imager-set-wifi.png)
 
 This should return you to the initial screen. Now we need to pick our storage medium, so click `CHOOSE STORAGE`:
 ![imager-selected-os](img/imager-selected-os.png)
@@ -36,16 +49,7 @@ This should return you to the initial screen. Now we need to pick our storage me
 You may have many devices listed, select the microSD card you intend to use in your Raspberry Pi:
 ![imager-select-storage](img/imager-select-storage.png)
 
-You should be returned to the initial launch screen. To make your Raspberry Pi easier to access, we recommend configuring hostname, ssh credentials, and wifi. On Mac OS X, hit command+shift+x, to bring up the Advanced options menu (NB: if you are using a non-raspberry pi OS, altering the Advanced options will cause the initial bootup to fail):
-![imager-set-hostname](img/imager-set-hostname.png)
-
-Check `Set hostname` and enter the name you’d like to access the pi by in that field. Remember the name you choose as you will need to make use of it later. I’ve chosen "viam-pi". Then check `Enable SSH` and either set a password or use `Allow public-key authentication only` if Raspberry Pi Imager has populated the `Set authorized_keys for ‘pi’` field:
-![imager-set-ssh](img/imager-set-ssh.png)
-
-Lastly, check `Configure wifi` and enter your wireless network credentials:
-![imager-set-wifi](img/imager-set-wifi.png)
-
-After clicking save, doublecheck your OS and Storage settings and then click WRITE:
+After clicking save, doublecheck your OS and Storage settings and then click `WRITE`:
 ![imager-write-confirm](img/imager-write-confirm.png)
 
 You’ll be prompted to confirm erasing your microSD card, select `YES`. You may also be prompted by your operating system to enter an Administrator password. After granting permissions to the Imager, it will begin writing and then verifying the linux installation to the MicroSD card:
@@ -57,10 +61,10 @@ Remove the microSD card from your computer. Place it into your Raspberry Pi and 
 
 Once your Raspberry Pi is plugged in and turned on, wait a minute or two and then attempt to access your pi from your terminal emulator. Launch your terminal and run:
 ```bash
-ssh pi@<hostname>.local
+ssh <username>@<hostname>.local
 ```
 
-If you are prompted “Are you sure you want to continue connecting?”, type “yes” and hit enter. You should be greeted by a login message and a command prompt (`pi@$HOSTNAME:~ $`). Now that you’re on the Pi, download the latest viam-server AppImage package: 
+If you are prompted “Are you sure you want to continue connecting?”, type “yes” and hit enter. Then, enter your password. You should be greeted by a login message and a command prompt (`$USERNAME@$HOSTNAME:~ $`). Now that you’re on the Pi, download the latest viam-server AppImage package: 
 ```bash
 wget http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -O viam-server
 ```
