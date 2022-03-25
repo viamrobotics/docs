@@ -30,7 +30,7 @@ We’ll be using the Raspberry Pi Imager to flash the microSD card. If you do no
 Select `CHOOSE OS`.  Since we need a 64-bit version of linux, you’ll need to select it from the `Rapsberry Pi OS (other)` menu.
 ![imager-select-custom-os](img/select-other-rpi.png)
 
-Then select the entry titled `Raspberry Pi OS (64-bit)`.
+Then select the entry titled `Raspberry Pi OS Lite (64-bit)`.
 ![select-other-rpi](img/select-rpi-64.png)
 
 You should be returned to the initial launch screen. To make your Raspberry Pi easier to access, we recommend configuring hostname, ssh credentials, and wifi. Click the gear-shaped settings icon in the lower right to bring up the Advanced options menu (NB: if you are using a non-raspberry pi OS, altering the Advanced options will cause the initial bootup to fail):
