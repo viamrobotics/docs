@@ -13,3 +13,5 @@ nav:
     - Driving a Yahboom Rover with a Bluetooth Controller: 'tutorials/yahboom-rover.md'
 theme:
   name: readthedocs
+extra_css:
+  - css/overrides.css
