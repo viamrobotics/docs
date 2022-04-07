@@ -1,6 +1,6 @@
 # Welcome to Tutorials and Docs!!!
 
-[Viam's Design Princples](design-principles.md)
+[Viam's Design Principles](design-principles.md)
 
 [Viam's Configuration Architecture](configuration-architecture.md)
 
