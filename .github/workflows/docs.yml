@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout Push/Workflow Dispatch
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: |
