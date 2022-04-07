@@ -8,4 +8,8 @@
 
 [Viam's Authentication](authentication.md)
 
+[Viam's Application End-to-End Flow](end-to-end.md)
+
+[Viam Glossary](glossary.md)
+
 Looking to get started with viam? Checkout the [installing viam server on Raspberry Pi instructions](tutorials/install-on-pi.md)
