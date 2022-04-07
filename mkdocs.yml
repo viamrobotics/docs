@@ -1,6 +1,15 @@
 site_name: "VIAM Documention, Reference, and Tutorials"
 nav:
   - Home: 'index.md'
+  - Docs:
+    - Viam's Design Princples: 'design-principles.md'
+    - Viam's Configuration Architecture: 'configuration-architecture.md'
+    - Viam's Runtime Architecture: 'runtime-architecture.md'
+    - Viam's Authentication: 'authentication.md'
+    - Viam's Application End-to-End Flow: 'end-to-end.md'
+    - Viam Glossary: 'glossary.md'
   - Tutorials:
     - Install VIAM on Raspberry Pi: 'tutorials/install-on-pi.md'
     - Driving a Yahboom Rover with a Bluetooth Controller: 'tutorials/yahboom-rover.md'
+theme:
+  name: readthedocs
