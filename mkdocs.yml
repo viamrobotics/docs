@@ -15,3 +15,5 @@ theme:
   name: readthedocs
 extra_css:
   - css/overrides.css
+extra_javascript:
+  - javascript/simple_auth.js
