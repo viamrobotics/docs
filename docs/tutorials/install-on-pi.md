@@ -2,8 +2,9 @@
 title: Install VIAM on Raspberry Pi
 summary: Instructions for getting the viam-server binary up and running on a fresh Raspberry Pi.
 authors:
-    - Matt Dannenberg
-date: 2022-01-18
+    - Matt Dannenberg, Hazal Mestci
+date: 2022-01-18, revised on 2022-04-07
+version: Raspberry Pi Imager v1.7.2
 ---
 # Installing Viam RDK Server on Raspberry Pi
 
@@ -14,7 +15,7 @@ The instructions assume you have the following hardware:
 
 * Raspberry Pi Single Board Computer
 * microSD card
-* computer
+* computer with internet connection
 * a way to connect the microSD card to the computer (ex, microSD slot or microSD reader)
 
 Before installing the Viam RDK, you’ll need a Raspberry Pi running a 64-bit linux distribution. If you do not have linux installed on your Raspberry Pi, skip ahead to [Installing Raspian on the Raspberry Pi](install-on-pi.md#installing-raspian-on-the-raspberry-pi). If you already have a Raspberry Pi with linux installed on it, check if the linux installation on your Raspberry Pi is 64-bit. First, `ssh` into your pi and then run `lscpu`. Example output:
@@ -28,38 +29,52 @@ We’ll be using the Raspberry Pi Imager to flash the microSD card. If you do no
 ![imager-launch-screen](img/imager-launch-screen.png)
 
 Select `CHOOSE OS`.  Since we need a 64-bit version of linux, you’ll need to select it from the `Rapsberry Pi OS (other)` menu.
-![imager-select-custom-os](img/select-other-rpi.png)
+![imager-select-custom-os](img/select-other-custom-os.png)
 
 Then select the entry titled `Raspberry Pi OS Lite (64-bit)`.
-![select-other-rpi](img/select-rpi-64.png)
+![select-other-rpi](img/select-other-rpi.png)
 
 You should be returned to the initial launch screen. To make your Raspberry Pi easier to access, we recommend configuring hostname, ssh credentials, and wifi. Click the gear-shaped settings icon in the lower right to bring up the Advanced options menu (NB: if you are using a non-raspberry pi OS, altering the Advanced options will cause the initial bootup to fail):
 ![imager-set-hostname](img/imager-set-hostname.png)
 
-Check `Set hostname` and enter the name you’d like to access the pi by in that field. Remember the name you choose as you will need to make use of it later. I’ve chosen "viam-pi". Then check `Enable SSH` and set a password and optionally change the username: 
+Check `Set hostname` and enter the name you’d like to access the pi by in that field. Remember the name you choose as you will need to make use of it later. I’ve chosen "hazal-pi". Then check `Enable SSH`. If you select `Allow public-key authentication only`, and the section `set authorized_ keys for 'pi'` is pre populated, that means that you do have an existing public SSH key that is ready to use. You don't have to change this section in that case. Using SSH Keys for authentication is a great way of securing your Raspberry Pi as only someone with the private SSH key will be able to authenticate to your system. 
+
+If this section is empty, you can either generate a new SSH key by following [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead. 
 ![imager-set-ssh](img/imager-set-ssh.png)
 
-Be sure to write down or otherwise keep track of the `username`, `password`, and `hostname` you've configured.
-Lastly, check `Configure wifi` and enter your wireless network credentials:
+If you decide to use password authentication, click on `Use password authentication`. If you scroll down, you have the option to change the username, then to set a password: 
+![imager-set-passwordauthentication](img/imager-set-passwordauthentication.png)
+
+Be sure to write down or otherwise keep track of the `hostname`, `username`, and `password` you've configured. You will use them later on. If you didn't change the username, the generated one is called pi. 
+
+Lastly, check `Configure wireless LAN` and enter your wireless network credentials. SSID (short for Service Set Identifier) is your Wi-Fi's name, followed by passcode. Change the section `Wireless LAN country` to where your router is currently being operated and then you will hit save:
 ![imager-set-wifi](img/imager-set-wifi.png)
 
 This should return you to the initial screen. Now we need to pick our storage medium, so click `CHOOSE STORAGE`:
 ![imager-selected-os](img/imager-selected-os.png)
 
-You may have many devices listed, select the microSD card you intend to use in your Raspberry Pi:
+You may have many devices listed, select the microSD card you intend to use in your Raspberry Pi. If this page is blank and you don't any listed, make sure your microSD card is installed correctly:
 ![imager-select-storage](img/imager-select-storage.png)
 
-After clicking save, doublecheck your OS and Storage settings and then click `WRITE`:
+After clicking save, double check your OS and Storage settings and then click `WRITE`:
 ![imager-write-confirm](img/imager-write-confirm.png)
 
-You’ll be prompted to confirm erasing your microSD card, select `YES`. You may also be prompted by your operating system to enter an Administrator password. After granting permissions to the Imager, it will begin writing and then verifying the linux installation to the MicroSD card:
+You’ll be prompted to confirm erasing your microSD card, select `YES`. You may also be prompted by your operating system to enter an Administrator password:
+![imager-permission](img/imager-permission.png)
+
+After granting permissions to the Imager, it will begin writing and then verifying the linux installation to the MicroSD card:
 ![imager-writing](img/imager-writing.png)
 
-Remove the microSD card from your computer. Place it into your Raspberry Pi and boot the Pi by plugging it in.
+Remove the microSD card from your computer when its done:
+
+![imager-done](img/imager-done.png)
+
+Place it into your Raspberry Pi and boot the Pi by plugging it in to an outlet. A red led will turn on to indicate its on. 
 
 ## Installing viam-server
 
-Once your Raspberry Pi is plugged in and turned on, wait a minute or two and then attempt to access your pi from your terminal emulator. Launch your terminal and run:
+Once your Raspberry Pi is plugged in and turned on, wait a minute or two and then attempt to access your pi from your terminal emulator. Launch your terminal and run this command (take < and > symbols out as well as the filler text since they act as placeholders, and replace them with your own username and hostname):
+
 ```bash
 ssh <username>@<hostname>.local
 ```
@@ -87,22 +102,29 @@ In your web browser, navigate to app.viam.com and log in. Then if you have not a
 Select your location and use the form on the right to create a new Robot:
 ![add-robot](img/add-robot.png)
 
-Navigate to your new robot, which should show an empty conifg like below:
+Navigate to your new robot, which should show an empty config like below:
 ![view-robot](img/view-robot.png)
 
-Click `COPY RDK CONFIG` at the bottom, this should fill your clipboard with the json config needed for your pi talk to app.viam.com as this robot.
-
-Copy this json data into the /etc/viam.json file on your pi. This can be done by going back to the terminal window connected to your pi and running the following: 
+Now we have to copy the json data into the /etc/viam.json file on your pi. This can be done by going back to the terminal window connected to your pi and running the following: 
 ```bash
-echo ‘<paste copied config into these quotes, but dont forget the quotes themselves>’ | sudo tee /etc/viam.json
+echo '<delete this placeholder text including < and > symbols, paste the config you will copy in the next step into these quotes, keep the quotes themselves>' | sudo tee /etc/viam.json
 ```
+It will look like this (starting with your own username and hostname) when you delete the placeholder text and keep the quotes: 
 
-Then restart the viam-server:
+![copytingjsondata-empty](img/terminal-copytingjsondata-empty.png)
+
+Now go back to app.viam.com on your browser, click `COPY RDK CONFIG` at the bottom. This should fill your clipboard with the json config needed for your pi talk to app.viam.com as this robot. Go back to your terminal and paste this between the quotes. 
+
+It will look like this:
+
+![copytingjsondata-filled](img/terminal-copytingjsondata-filled.png)
+
+Run it, then restart the viam-server:
 ```bash
 sudo systemctl restart viam-server.service
 ```
 
-Back on app.viam.com we can confirm the Pi has connected and pulled the config by looking at the top of the Robot page and seeing that `host` and `ips` fields are populated and that the `last access` field reads `less than a minute ago`.
+Back on app.viam.com if we refresh the page, we can confirm the Pi has connected and pulled the config by looking at the top of the Robot page and seeing that `host` and `ips` fields are populated and that the `last access` field reads `less than a minute ago`.
 
 ## Next Steps
 Now that you've got the viam-server up and running, we can start adding components to your robot and the real fun can begin!
