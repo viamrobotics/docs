@@ -2,7 +2,7 @@ site_name: "VIAM Documention, Reference, and Tutorials"
 nav:
   - Home: 'index.md'
   - Docs:
-    - Viam's Design Princples: 'design-principles.md'
+    - Viam's Design Principles: 'design-principles.md'
     - Viam's Configuration Architecture: 'configuration-architecture.md'
     - Viam's Runtime Architecture: 'runtime-architecture.md'
     - Viam's Authentication: 'authentication.md'
