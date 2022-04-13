@@ -49,39 +49,43 @@ In addition to gRPC, the RDK uses WebRTC video & audio streams and data channels
 An outline of how WebRTC is utilized lives here, but in short, an RDK is always waiting on app.viam.com to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis. Once a connection is made, app.viam.com is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.
 
 ## High-Level Inter-Robot/SDK Communication
-Let's assume there is the following robot part topology
+Let's assume there is the following robot part topology:
+
+![robot-communication-diagram](img/robot-communication-diagram.png)
 
 RobotPart1 - The main part
 
-Contains a single USB connected camera called camera1
+* * Contains a single USB connected camera called camera1
 
 RobotPart2
 
-Contains an arm stationed on a gantry, respectively called arm1 and gantry1.
+* * Contains an arm stationed on a gantry, respectively called arm1 and gantry1.
 
-RobotPart1 will establish a bidirectional gRPC/WebRTC connection to RobotPart2
+RobotPart1 will establish a bidirectional gRPC/WebRTC connection to RobotPart2.
 
-RobotPart1 is considered the controlling peer (client)
+RobotPart1 is considered the controlling peer (client).
 
-RobotPart2 is consider the controlled peer (server)
+RobotPart2 is consider the controlled peer (server).
 
 Let's say that we are a user using an SDK wants to have the camera track the largest object in the scene and instruct the arm to track the same object.
 
-Since RobotPart1 is the main part and has access to all other parts, we will connect to that using the SDK.
+* Since RobotPart1 is the main part and has access to all other parts, we will connect to that using the SDK.
 
-Once connected, we generally want to do the following series of actions:
+* Once connected, we generally want to do the following series of actions:
+
+* Get segmented point clouds from the camera and the object segmentation service.
+
+* Find the largest object by volume.
+
+* Take the object's center pose and tell the motion service to move the arm to that point.
+
+* Go back to 1.
+
+Let's breakdown how each of these steps actually works.
 
 Get segmented point clouds from the camera and the object segmentation service.
 
-Find the largest object by volume.
-
-Take the object's center pose and tell the motion service to move the arm to that point.
-
-Go back to 1.
-
-Let's breakdown how each of these steps actually works
-
-Get segmented point clouds from the camera and the object segmentation service.
+![getobjectpointcloud-flow](img/getobjectpointcloud-flow.png)
 
 2. The SDK will send a GetObjectPointClouds request with camera1 being referenced in the message to RobotPart1's Object Segmentation Service.
 
@@ -94,9 +98,11 @@ Note: The points returned are respective to the reference frame of the camera. T
 
 Find the largest object by volume.
 
-2. We iterate over the geometries of the segmented point clouds returned to us and simply find the object with the max volume and record its center pose.
+2. In the SDK, we iterate over the geometries of the segmented point clouds returned to us and simply find the object with the max volume and record its center pose.
 
 Take the object's center pose and tell the motion service to move the arm to that point.
+
+![motion-service-move-flow](img/motion-service-move-flow.png)
 
 2. The SDK will send a Move request for arm1 to the Motion service on RobotPart1 with the destination set to the center point we saved in step 2.
 
