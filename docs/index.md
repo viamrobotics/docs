@@ -2,13 +2,15 @@
 
 [Viam's Design Principles](design-principles.md)
 
-[Viam's Configuration Architecture](configuration-architecture.md)
+[app.viam's Organizational Hierarchy](configuration-architecture.md)
 
-[Viam's Runtime Architecture](runtime-architecture.md)
+[app.viam's Robot Page](runtime-architecture.md)
 
-[Viam's Authentication](authentication.md)
+[Viam's Robot Configuration](robo-config.md)
 
 [Viam's Application End-to-End Flow](end-to-end.md)
+
+[Viam's Authentication](authentication.md)
 
 [Viam Glossary](glossary.md)
 

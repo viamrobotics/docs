@@ -5,7 +5,7 @@ authors:
     - Matt Dannenberg
 date: 2022-04-08
 ---
-# app.viam and Robot Organizational Hierarchy
+# app.viam Organizational Hierarchy
 
 ## Cloud App
 Viam’s fleet management website, app.viam.com, is the place for users and organizations to store, manage, and control their robotic fleets.
@@ -31,13 +31,4 @@ Most often, a robot will be a single system in which all of its parts work toget
 
 One part of the robot must be designated the main part and the other parts will be children of that main part or children of those children. These non-main parts are linked to the main part via the `remotes` section of the main part’s configuration JSON. Typically, the main part will be the one receiving connections from client applications and ferrying API requests to the other parts as needed. 
 
-## Resources
-Parts themselves are composed of resources. The most common types of resources in Viam are components, services, and remotes:
-
-* Components are the physical pieces of the robot (ex, motors, arms, cameras).
-
-* Services are libraries providing algorithms or higher level functionality (ex, navigation, SLAM, or object manipulation).
-
-* Remotes are other parts of the robot. Adding a remote to a part allows the user to treat any resource of the remote part as though it were local to the part, thus connecting them.
-
-Components have Types which indicate the API for that component (ex, arm, motor, etc). They also have Models, which indicate which implementation should be used to actuate with them. For example, an arm component could be a UR5 or an xArm and the appropriate implementation is indicated by selecting the corresponding Model. These component implementations can come from a few different sources. The most common models of a component will have implementations in RDK, which can be selected from the Model dropdown of the configuration UI. If the Model you are working with is not supported in RDK, you’ll have to write your own component driver in one of Viam’s SDKs. For example, a component you are using may have an existing Python library. In that case, you could use Viam’s Python SDK to wrap the existing component library in Viam’s API for that component Type using a few short lines of Python. If no library currently exists, you will have to write a full driver for that component’s API in the language of your choice using the Viam SDK for that language. 
+For more configuring Robot's and their parts see [Viam's Robot Configuration](robo-config.md).
