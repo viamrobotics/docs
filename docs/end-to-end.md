@@ -6,84 +6,84 @@ authors:
 date: 2022-04-08
 ---
 # Application end-to-end flow
+When building an robot application in Viam, typically a user will start by [configuring their robot](robo-config.md) of one or many parts.
+Next they will test that it is wired up properly via the app.viam Control page. Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
+This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the robot.
+
+Below, we describe the flow of information through a Viam-based multipart robot and then get into the specifics of what backs these connections and communcations APIs.
 
 ## High-Level Inter-Robot/SDK Communication
-Let's assume there is the following robot part topology:
+To begin, let's define our robot's topology:
 
 ![robot-communication-diagram](img/robot-communication-diagram.png)
 
-RobotPart1 - The main part
+This robot is made of two parts and separate SDK-based application, which we'll assume is on a third machine, though it could just as easily run on the main part without any changes.
 
-* * Contains a single USB connected camera called camera1
+The first and main part, RDK Part 1, consists of Raspberry Pi and a single USB connected camera called Camera.
 
-RobotPart2
+The second and final part, RDK Part 2, consists of a Rapsberry Pi connected to a robotic arm over ethernet and a gantry over GPIO.
 
-* * Contains an arm stationed on a gantry, respectively called arm1 and gantry1.
+RDK Part 1 will establish a bidirectional gRPC/WebRTC connection to RDK Part 2.
+RDK Part 1 is considered the controlling peer (client).
+RDK Part 2 is consider the controlled peer (server).
 
-RobotPart1 will establish a bidirectional gRPC/WebRTC connection to RobotPart2.
+Let's suppose our SDK application uses the camera to track the largest object in the scene and instructs the arm to move to that same object.
 
-RobotPart1 is considered the controlling peer (client).
+Since RDK Part 1 is the main part and has access to all other parts, the application will connect to it using the SDK. Once connected, it will take the following series of actions:
 
-RobotPart2 is consider the controlled peer (server).
+1. Get segmented point clouds from the camera and the object segmentation service.
 
-Let's say that we are a user using an SDK wants to have the camera track the largest object in the scene and instruct the arm to track the same object.
+1. Find the largest object by volume.
 
-* Since RobotPart1 is the main part and has access to all other parts, we will connect to that using the SDK.
+1. Take the object's center pose and tell the motion service to move the arm to that point.
 
-* Once connected, we generally want to do the following series of actions:
+1. Go back to 1.
 
-* Get segmented point clouds from the camera and the object segmentation service.
+Let's breakdown how these steps are executed.
 
-* Find the largest object by volume.
-
-* Take the object's center pose and tell the motion service to move the arm to that point.
-
-* Go back to 1.
-
-Let's breakdown how each of these steps actually works.
-
-Get segmented point clouds from the camera and the object segmentation service.
+Get segmented point clouds from the camera and the object segmentation service:
 
 ![getobjectpointcloud-flow](img/getobjectpointcloud-flow.png)
 
-2. The SDK will send a GetObjectPointClouds request with camera1 being referenced in the message to RobotPart1's Object Segmentation Service.
+2. The SDK will send a GetObjectPointClouds request with Camera being referenced in the message to RDK Part 1's Object Segmentation Service.
 
-2. RobotPart1's Object Segmentation Service will receive this message and have its GetObjectPointCloud's method called.
+2. RDK Part 1 will look up the camera referenced, call the GetPointCloud method on it.
 
-2. It will look up the camera referenced, call the GetObjectPointCloud method on it, and use a point cloud segmentation algorithm to segment geometries in the pointcloud.
-Note: The points returned are respective to the reference frame of the camera. This will be important in a moment.
+2. The Camera will return the PointCloud data to RDK Part
 
-2. The set of segmented point clouds and their bounding geometries are sent back to us.
+2. RDK Part 1 will use a point cloud segmentation algorithm to segment geometries in the PointCloud. Note: The points returned are respective to the reference frame of the camera. This will be important in a moment.
 
-Find the largest object by volume.
+2. The set of segmented point clouds and their bounding geometries are sent back to the SDK-based application.
 
-2. In the SDK, we iterate over the geometries of the segmented point clouds returned to us and simply find the object with the max volume and record its center pose.
+Find the largest object by volume:
 
-Take the object's center pose and tell the motion service to move the arm to that point.
+2. The application will iterate over the geometries of the segmented point clouds returned to it and find the object with the greatest volume and record its center pose.
+
+Take the object's center pose and tell the motion service to move the arm to that point:
 
 ![motion-service-move-flow](img/motion-service-move-flow.png)
 
-2. The SDK will send a Move request for arm1 to the Motion service on RobotPart1 with the destination set to the center point we saved in step 2.
+2. The SDK application will send a Move request for the arm to the Motion service on RDK Part 1 with the destination set to the center point determined by the application.
 
-2. RobotPart1's Motion service will receive this message and have its Move method called.
+2. RDK Part 1's Motion service will break down the Move request and perform the necessary frame transforms before sending the requests along to the relevant components. This is where the frame system comes into play. Our center pose came from the camera but we want to move the arm to that position even though the arm lives in its own frame. The frame system logic in the RDK automatically handles the transformation logic between these two reference frames while also handling understanding how the frame systems are connected across the two parts.
 
-2. First it will look up the arm to move to verify it exists. It will since it comes from the remote RobotPart2.
+2. Having computed the pose in the reference frame of the arm, the Motion service takes this pose, and sends a plan on how to move the arm in addition to the gantry to achieve this new goal pose to RDK Part 2. The plan consists of a series of movements that combine inverse kinematics, mathematics, and constraints based motion planning to get the arm and gantry to their goal positions.
 
-2. Now the frame system comes into play. Our center pose came from the camera but we want to move the arm to that position even though the arm lives in its own frame. The frame system logic in the RDK automatically handles the transformation logic between these two reference frames while also handling understanding how the frame systems are connected across the two parts.
+2. In executing the plan, which is being coordinated on RDK Part 1, Part 1 will send messages to the Arm and Gantry on RDK Part 2. RDK Part 2 will be unaware of the actual plan and instead will only receive distinct messages to move the components individually.
 
-2. Once a pose in the reference frame of the arm is computed, the motion service can take this pose, and begin to create a plan on how to move the arm in addition to the gantry to achieve this new goal pose. The plan will consist of a series of movements that combine inverse kinematics, mathematics and constraints based motion planning to eventually get the arm and gantry to their goal positions.
+2. The arm and gantry connected to RDK Part 2 return an acknowledgement of the part Move requests to RDK Part 2.
 
-2. In executing the plan, which is being coordinated on RobotPart1, it will send messages to the Arm and Gantry services on RobotPart2 for arm1 and gantry1 respectively. RobotPart2 will be unaware of the actual plan and instead will only receive distinct messages to move the components individually.
+2. RDK Part 2 returns an acknowledgement of the Motion Move request to RDK Part 1.
 
-2. In order for RobotPart1's motion planning to keep track of the overall movements and their completion, it can make use of RobotPart2's status service to find out where the arm and gantry are.
+2. RDK Part 1 returns an acknowledgement of the Motion Move request to the SDK application.
 
 ## Low-Level Inter-Robot/SDK Communication
-Every component and service type in the RDK, and the Viam API for that matter, are represented as Protocol Buffers (protobuf) services. protobuf is a battle tested Interface Description Language (IDL) that allows for specifying services, their methods, and the messages that comprise those methods. Code that uses protobuf is autogenerated and compiles messages into a binary form.
+Every component and service type in the RDK, and the Viam API for that matter, are represented as [Protocol Buffers](https://developers.google.com/protocol-buffers) (protobuf) services. protobuf is a battle tested Interface Description Language (IDL) that allows for specifying services, their methods, and the messages that comprise those methods. Code that uses protobuf is autogenerated and compiles messages into a binary form.
 
-gRPC is responsible for the transport and communication of protobuf messages when calling protobuf methods. It generally works over a TCP, TLS backed HTTP2 connection operating over framing (https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md).
+[gRPC](https://grpc.io/) is responsible for the transport and communication of protobuf messages when calling protobuf methods. It generally works over a TCP, TLS backed HTTP2 connection operating over framing see [gRPC's HTTP2 documentation](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) for more.
 
-The RDK uses protobuf and grpc to enable access and control to its components and services. That means if there are two arms in a robot configuration, there is only one Arm service that handles the Remote Procedure Calls (RPC) for all arms configured.
+The RDK uses protobuf and gRPC to enable access and control to its components and services. That means if there are two arms in a robot configuration, there is only one Arm service that handles the Remote Procedure Calls (RPC) for all arms configured.
 
-In addition to gRPC, the RDK uses WebRTC video & audio streams and data channels to enable peer to peer (P2P) communication between robot parts as well as SDKs and the Remote Control interface.
+In addition to gRPC, the RDK uses [WebRTC](https://webrtcforthecurious.com/) video and audio streams and data channels to enable peer to peer (P2P) communication between robot parts as well as SDKs and the Remote Control interface.
 
-An outline of how WebRTC is utilized lives here, but in short, an RDK is always waiting on app.viam.com to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis. Once a connection is made, app.viam.com is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.
+An outline of how WebRTC is utilized lives [here](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection), but in short, an RDK is always waiting on app.viam.com to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis. Once a connection is made, app.viam.com is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.

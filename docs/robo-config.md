@@ -1,3 +1,12 @@
+---
+title: Robot Configuration
+summary: Overview of Viam's robot configuration file.
+authors:
+    - Matt Dannenberg
+date: 2022-04-18
+---
+# Robot Configuration
+
 ## Resources
 Parts themselves are composed of resources. The most common types of resources in Viam are components, services, and remotes:
 
