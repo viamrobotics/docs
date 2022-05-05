@@ -130,4 +130,8 @@ Back on app.viam.com if we refresh the page, we can confirm the Pi has connected
 
 ## Next Steps
 Now that you've got the viam-server up and running, we can start adding components to your robot and the real fun can begin!
-Why not plug it into a Yahboom 4WD Rover and set that up by following [these instructions](yahboom-rover.md)?
+
+In the `CONFIG` tab, you can describe the hardware attached to your Pi which will allow viam to actuate it and expose APIs for it. Click on `NEW COMPONENT` and then populate the resulting component with the configuration information for your hardware.
+Once your configuration changes are saved, you can switch to the `CONTROL` tab to actuate your hardware via the webUI.
+
+From here, you can download our [python SDK](https://python.viam.dev/) and use it to write programs to make your robot autonomous. The readme on the python SDK landing page has [instructions](https://python.viam.dev/#easy-setup-via-app-viam-com) to guide you through connecting to and using your robot via the SDK.
