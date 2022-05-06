@@ -10,8 +10,6 @@ nav:
     - Viam's Application End-to-End Flow: 'end-to-end.md'
     - Viam's Authentication: 'authentication.md'
     - Viam Glossary: 'glossary.md'
-  - Tutorials:
-    - Driving a Yahboom Rover with a Bluetooth Controller: 'tutorials/yahboom-rover.md'
 theme:
   name: readthedocs
 extra_css:
