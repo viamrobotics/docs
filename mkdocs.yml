@@ -10,6 +10,7 @@ nav:
     - Viam's Application End-to-End Flow: 'end-to-end.md'
     - Viam's Authentication: 'authentication.md'
     - Viam Glossary: 'glossary.md'
+    - Python SDK: 'https://python.viam.dev/'
 theme:
   name: readthedocs
 extra_css:
