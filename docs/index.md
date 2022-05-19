@@ -14,6 +14,6 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 
 [Viam's Authentication](authentication.md)
 
-[Viam Glossary](glossary.md)
+[Viam Glossary](appendix/glossary.md)
 
 [Python SDK](https://python.viam.dev/)
