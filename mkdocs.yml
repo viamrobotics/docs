@@ -17,3 +17,9 @@ extra_css:
   - css/overrides.css
 extra_javascript:
   - javascript/simple_auth.js
+copyright: Copyright &copy; 2020 - 2022 Viam Robotics
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/viamrobotics/tutorials-and-docs/
+      name: docs source on github
