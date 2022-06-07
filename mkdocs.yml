@@ -7,7 +7,7 @@ nav:
     - app.viam's Robot Page: 'runtime-architecture.md'
     - Install VIAM on Raspberry Pi: 'getting-started/installation.md'
     - Viam's Robot Configuration: 'getting-started/robot-config.md'
-    - Viam's Application End-to-End Flow: 'end-to-end.md'
+    - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
     - Viam's Authentication: 'deeper-dive/security.md'
     - Viam Glossary: 'appendix/glossary.md'
     - Python SDK: 'https://python.viam.dev/'
