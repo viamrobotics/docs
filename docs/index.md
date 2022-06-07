@@ -4,7 +4,7 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 
 [Viam's Design Principles](design-principles.md)
 
-[app.viam's Organizational Hierarchy](configuration-architecture.md)
+[app.viam's Organizational Hierarchy](product-overviews/organization-management.md)
 
 [app.viam's Robot Page](runtime-architecture.md)
 

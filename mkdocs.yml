@@ -3,7 +3,7 @@ nav:
   - Home: 'index.md'
   - Docs:
     - Viam's Design Principles: 'design-principles.md'
-    - app.viam's Organizational Hierarchy: 'configuration-architecture.md'
+    - app.viam's Organizational Hierarchy: 'product-overviews/organization-management.md'
     - app.viam's Robot Page: 'runtime-architecture.md'
     - Install VIAM on Raspberry Pi: 'tutorials/install-on-pi.md'
     - Viam's Robot Configuration: 'robo-config.md'
