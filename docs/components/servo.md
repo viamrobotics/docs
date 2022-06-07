@@ -23,14 +23,15 @@ A servo contains a small electric motor, a series of gears, and a potentiometer 
 A typical servo will take PWM pulses ranging from 1ms to 2ms long, and map this range to a 180 degree range of possible positions. A 1.5ms signal will hold the servo in the middle or “neutral” position, 1ms will move it to 90 degrees from there in one direction, and 2ms will move it 90 degrees from neutral in the opposite direction.
 
 ## Wiring
-![servo-wiring](img/servo-wiring.png)
+Here's an example of how a servo might be wired to a Raspberry Pi:
+![servo-wiring](../img/servo-wiring.png)
 
 ## Viam Configuration
 An example configuration file containing the necessary attributes is as follows:
-![servo-JSON](img/servo-JSON.png)
+![servo-JSON](../img/servo-JSON.png)
 
 ### Optional Attributes
-`min` (int): Specifies the minimum angle in degrees to which the servo can move
+`min` (int): Specifies the minimum angle in degrees to which the servo can move  
 `max` (int): Specifies the maximum angle in degrees to which the servo can move
 
 ## Implementation
