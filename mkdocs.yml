@@ -8,7 +8,7 @@ nav:
     - Install VIAM on Raspberry Pi: 'getting-started/installation.md'
     - Viam's Robot Configuration: 'robo-config.md'
     - Viam's Application End-to-End Flow: 'end-to-end.md'
-    - Viam's Authentication: 'authentication.md'
+    - Viam's Authentication: 'deeper-dive/security.md'
     - Viam Glossary: 'appendix/glossary.md'
     - Python SDK: 'https://python.viam.dev/'
 theme:

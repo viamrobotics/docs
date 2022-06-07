@@ -12,7 +12,7 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 
 [Viam's Application End-to-End Flow](end-to-end.md)
 
-[Viam's Authentication](authentication.md)
+[Viam's Authentication](deeper-dive/security.md)
 
 [Viam Glossary](appendix/glossary.md)
 
