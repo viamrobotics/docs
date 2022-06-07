@@ -31,4 +31,4 @@ Most often, a robot will be a single system in which all of its parts work toget
 
 One part of the robot must be designated the main part and the other parts will be children of that main part or children of those children. These non-main parts are linked to the main part via the `remotes` section of the main part’s configuration JSON. Typically, the main part will be the one receiving connections from client applications and ferrying API requests to the other parts as needed. 
 
-For more configuring Robot's and their parts see [Viam's Robot Configuration](robo-config.md).
+For more configuring Robot's and their parts see [Viam's Robot Configuration](../getting-started/robot-config.md).

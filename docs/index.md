@@ -8,7 +8,7 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 
 [app.viam's Robot Page](runtime-architecture.md)
 
-[Viam's Robot Configuration](robo-config.md)
+[Viam's Robot Configuration](getting-started/robot-config.md)
 
 [Viam's Application End-to-End Flow](end-to-end.md)
 

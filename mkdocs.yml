@@ -6,7 +6,7 @@ nav:
     - app.viam's Organizational Hierarchy: 'product-overviews/organization-management.md'
     - app.viam's Robot Page: 'runtime-architecture.md'
     - Install VIAM on Raspberry Pi: 'getting-started/installation.md'
-    - Viam's Robot Configuration: 'robo-config.md'
+    - Viam's Robot Configuration: 'getting-started/robot-config.md'
     - Viam's Application End-to-End Flow: 'end-to-end.md'
     - Viam's Authentication: 'deeper-dive/security.md'
     - Viam Glossary: 'appendix/glossary.md'
