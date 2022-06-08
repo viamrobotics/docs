@@ -29,4 +29,7 @@ jobs:
           pip install --no-cache-dir -r etc/requirements.txt
           
       - name: Generate docs
-        run: mkdocs gh-deploy
+        run: |
+          touch CNAME
+          echo 'docs.viam.com' > CNAME
+          mkdocs gh-deploy
