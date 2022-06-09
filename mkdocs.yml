@@ -11,6 +11,9 @@ nav:
     - Viam's Authentication: 'authentication.md'
     - Viam Glossary: 'glossary.md'
     - Python SDK: 'https://python.viam.dev/'
+  - Components:
+    - Motor: 'components/motor.md'
+    - Servo: 'components/servo.md'
 theme:
   name: readthedocs
 extra_css:
