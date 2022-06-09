@@ -24,7 +24,7 @@ If a user uses remote control in the app.viam.com ui, all communication to the r
 
 [WebRTC Docs](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection)
 
-[Authentication Docs](authentication.md)
+[Authentication Docs](deeper-dive/security.md)
 
 Local communication between parts can be done over grpc or webrtc.
 
