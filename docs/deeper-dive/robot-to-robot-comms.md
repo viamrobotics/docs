@@ -5,7 +5,7 @@ authors:
     - Matt Dannenberg
 date: 2022-04-08, 2022-5-19
 ---
-# Application end-to-end flow
+# Application End-to-End Flow
 When building an robot application in Viam, typically a user will start by [configuring their robot](../getting-started/robot-config.md) of one or many parts.
 Next they will test that it is wired up properly via the app.viam Control page. Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
 This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the robot.
