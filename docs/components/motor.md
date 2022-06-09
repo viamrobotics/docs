@@ -23,13 +23,13 @@ A common motor control setup comprises the following:
 - A computing device with general purpose input/output (GPIO) pins such as: a Raspberry Pi or other single-board computer, or a desktop computer outfitted with a GPIO peripheral
     - Note: there are other ways to interface with motors such as Serial, CAN bus and EtherCAT that require special motor controllers and are beyond the scope of this document
 - A DC motor
-- An appropriate motor driver 
+- An appropriate motor driver
     - Takes GPIO signals from the computer and sends the corresponding signals and power to the motor
     - Selected based on the type of motor (i.e. brushed, brushless or stepper) and its power requirements
 - An appropriate power supply
     - Note that the logic side of the driver may be powered by 3.3V from the Pi or other device, but the motor power side should not be powered by the computer’s GPIO pins. The motor driver should be connected to an independent power supply that can provide the peak current required by the motor.
 
-*Note: Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.*
+> *Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.*
 
 ## Brushed DC Motor
 ### Mechanism
@@ -37,9 +37,16 @@ DC motors use magnetic fields to convert direct (one-way) electrical current int
 
 ### Brushed DC Motor Drivers
 A motor driver is a physical chip or power amplification circuit that converts input signals from a computing device into a high power output capable of actuating a motor. There are three common ways for the computing device to communicate with a brushed DC motor driver chip. The driver data sheet will specify which one to use.
+
 - PWM/DIR: One digital input (such as a GPIO pin) sends a [pulse width modulation](https://en.wikipedia.org/wiki/Pulse-width_modulation) (PWM) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
 - A/B: One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled via PWM through one or both pins.
 - A/B + PWM: Three pins: an A and B to control direction and a separate PWM pin to control speed.
+
+---
+
+> Note: Often, instead of buying just the tiny motor driver chip itself, you’ll purchase a motor driver carrier board which consists of the chip containing the logic gates, attached to a small breakout board which gives you places to attach the necessary wires. In this article we’ll refer to this whole motor driver board as a motor driver. Note that in RDK, “board” refers to the device with GPIO pins (such as a Raspberry Pi, or a GPIO peripheral attached to a desktop computer) that sends signals to the motor drivers and other devices. In the config file, “motor” technically refers to the motor driver for a given motor.
+
+---
 
 ### Wiring
 Brushed DC motors are relatively simple to wire. Taking a 12V brushed DC motor controlled by a Raspberry Pi via [this motor driver](https://www.pololu.com/product/4038) as an example, the wiring diagram would look like this:  
@@ -47,8 +54,6 @@ Brushed DC motors are relatively simple to wire. Taking a 12V brushed DC motor c
 ![brushed-dc-wiring](img/motor-brushed-dc-wiring.png)  
 
 The signal wires in the diagram run from two GPIO pins on the Pi to the DIR and PWM pins on the motor driver. Refer to a Raspberry Pi pinout schematic to locate generic GPIO pins and determine their pin numbers for configuration.
-
-> Note: Often, instead of buying just the tiny motor driver chip itself, you’ll purchase a motor driver carrier board which consists of the chip containing the logic gates, attached to a small breakout board which gives you places to attach the necessary wires. In this article we’ll refer to this whole motor driver board as a motor driver. Note that in RDK, “board” refers to the device with GPIO pins (such as a Raspberry Pi, or a GPIO peripheral attached to a desktop computer) that sends signals to the motor drivers and other devices. In the config file, “motor” technically refers to the motor driver for a given motor.
 
 ### Viam Configuration
 A brushed DC motor without an encoder should be configured with “gpio” as the model. Most motor types require a “board” attribute, and also need to depend on that same board. For example:  
