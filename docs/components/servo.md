@@ -15,7 +15,7 @@ A typical servo control setup comprises the following:
 - An appropriate power supply
     - If the servo will not be under any significant load and thus won’t draw much current, you may be able to get away with powering it off 5V (if that’s its required voltage) from the Pi pins. However it is advisable to power it directly from a power supply that can meet its peak current needs so as not to inadvertently power cycle the Pi or other components.
 
-*Note: Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.*
+> *Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.*
 
 ## Mechanism
 A servo contains a small electric motor, a series of gears, and a potentiometer attached to the shaft to act as an encoder. It also contains a closed-loop position control circuit that takes a [PWM](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal input and holds the shaft at a certain angle based on that input.
@@ -25,12 +25,12 @@ A typical servo will take PWM pulses ranging from 1ms to 2ms long, and map this 
 ## Wiring
 Here's an example of how a servo might be wired to a Raspberry Pi:  
 
-![servo-wiring](../img/servo-wiring.png)
+![servo-wiring](img/servo-wiring.png)
 
 ## Viam Configuration
 An example configuration file containing the necessary attributes is as follows:  
 
-![servo-JSON](../img/servo-JSON.png)
+![servo-JSON](img/servo-json.png)
 
 ### Optional Attributes
 `min` (int): Specifies the minimum angle in degrees to which the servo can move  
