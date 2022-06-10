@@ -7,7 +7,7 @@ date: 2022-6-09
 ---
 
 
-# Summar
+# Summary
 Viam's orientation vector is a method for describing the position and orientation of an object in 3d space.
 
 # Basics
@@ -24,10 +24,7 @@ To figure out RX, RY, and RZ you take a picture with the camera, determine the p
 Theta is measured by looking at the picture and changing until down is correct, likely 0, 90 or 180.
 
 # Why we like it
-- Easy to measure 
+- Easy to measure in the real world
 - No protractor needed
-- Rotation is pulled out (As theta) which is often used independatly (think wrist)
-
-
-
+- Rotation is pulled out (As theta) which is often used independantly and measure independantly.
 
