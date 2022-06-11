@@ -33,7 +33,7 @@ Orientation vectors are composted of 4 attributes.
         - To do this, take a picture
         - Determine if the orientation is correct
         - If not, add 90 to Theta, and try again
-
+![camera example](img/orientation-vector-camera.png)
 # Why we like it
 - Easy to measure in the real world
 - No protractor needed
