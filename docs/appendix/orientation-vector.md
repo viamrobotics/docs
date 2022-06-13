@@ -15,7 +15,7 @@ It is part of a Pose which also includes the position in 3D space.
 Orientation vectors are composted of 4 attributes.
 
 - RX, RY, RZ - define a vector from the center of the object to another point in the reference frame. This defines the direction something is pointing in.
-- Theta - describes the rotation around that vector
+- Theta - describes the angular position around that vector.
 
 # Examples
 ## Configuring frame for a camera
@@ -25,11 +25,11 @@ Orientation vectors are composted of 4 attributes.
 - This requires a Pose.
 - X, Y, Z are simply the measurements from the corner of the room.
 - Now to figure out the orientation vector:
-    - To figure out RX, RY, and RZ first take a picture with the camera.
+    - To figure out RX, RY, RZ first take a picture with the camera.
     - Determine the point in the very center of the image.
     - Measure the X, Y, Z of that point from the corner (call them X2, Y2, Z2, respectively).
-    - RX, RY, and RZ become the difference between X, Y, Z (the camera's position) and X2, Y2, Z2 (that point's position).
-    - Theta is determined by looking at the picture and changing its value until down is correct, likely 0, 90 or 180.
+    - RX, RY, RZ become the difference between X, Y, Z (the camera's position) and X2, Y2, Z2 (that point's position).
+    - Theta is determined by looking at the picture and changing Theta's value until down is correct, likely 0, 90 or 180.
         - To do this, take a picture
         - Determine if the orientation is correct
         - If not, add 90 to Theta, and try again
