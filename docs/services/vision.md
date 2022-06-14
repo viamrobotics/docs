@@ -24,7 +24,6 @@ The vision service is a default service on the robot, and can be initialized wit
 
 What an object “is” depends on what is required for the task at hand. To accommodate the open-endedness of what kind of object a user may need to identify, the service provides different types of detectors, both heuristic and machine-learning based, so that users can create, register, and use detectors suited for their own purposes.
 
-
 ### Configuring your detectors
 
 To add a detector to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “detector_regsitry” field in the attributes field of the vision service config. 
@@ -55,7 +54,6 @@ The types of the detector supported are:
 * **color**: this is a heuristic based detector that draws boxes around objects according to their hue (does not detect black and white).
 * **tflite (SOON)**: this a machine-learning based detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive. 
 
-
 #### Detector Parameter
 
 ##### color
@@ -63,7 +61,6 @@ The types of the detector supported are:
 * **color**: the color to detect in the image, as a string of the form #RRGGBB. The color is written as a hexadecimal string prefixed by ‘#’.
 * **tolerance**: A number between 0.0 and 1.0 and defines how strictly the detector must match to the color requested. 0.0 means the color must match exactly, while 1.0 will match to every color, regardless of the input color.  0.05 is a good starting value.
 * **segment_size:** An integer that sets a minimum size of the returned objects, and filters out all other found objects below that size. 
-
 
 ##### tflite
 
@@ -89,11 +86,9 @@ The segmentation feature requires
 2. The name of the segmenter to be used, and 
 3. The parameters necessary to specify/fine-tune the segmenter
 
-
 ### Default Segmenters
 
 There are two segmenter options currently available by default, the **radius_clustering** segmenter, and any detector you added in the detector_registry.
-
 
 #### radius_clustering (slow - expect 30s of waiting)
 
@@ -111,7 +106,6 @@ Radius_clustering is a segmenter that finds well separated objects above a flat 
     6. Start with 5% and go up if objects are still too noisy.
     7. If you don’t want to use the filtering, set the number to 0 or less.
 
-
 #### Detector Segmenters
 
 Any detector has all the information needed to also be a segmenter. Any detector defined in “detection_registry” or added later to the vision service becomes a segmenter with the same name. It begins with finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
@@ -124,7 +118,6 @@ Any detector has all the information needed to also be a segmenter. Any detector
     4. Sigma is a floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 
     5. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. 
 
-
 ### The Segmentation API
 
 * `GetSegmenterNames()`
@@ -133,7 +126,6 @@ Any detector has all the information needed to also be a segmenter. Any detector
     * Returns the list of parameters that are needed for the segmenter to work. A list of  the name of the parameter and its data type are returned.
 * `GetObjectPointClouds(camera_name string, detector_name string, mime_type string, parameters [protobuf.Struct](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Struct))`
     * Returns a list of the 3D point cloud objects in the latest picture obtained from the specified 3D camera (using the specified segmenter). The mime_type determines what the file type of the returned bytes will be. The parameters are the necessary parameters that the given segmenter needs in order to work. 
-
 
 ### Segmentation within the web UI
 
