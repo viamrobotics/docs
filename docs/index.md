@@ -35,6 +35,7 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 - [Pose Tracker](components/pose-tracker.md)
 
 ## Services
+- [Vision](services/vision.md)
 ### coming soon
 - [Data Capture](services/data-capture.md)
 - [Motion](services/motion.md)
@@ -42,7 +43,6 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 - [Robot Service](services/robot-service.md)
 - [Sensor Service](services/sensor.md)
 - [SLAM](services/slam.md)
-- [Vision](services/vision.md)
 
 ## Deep Dives
 - [Viam's Application End-to-End Flow](deeper-dive/robot-to-robot-comms.md)
