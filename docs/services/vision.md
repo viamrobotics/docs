@@ -95,28 +95,28 @@ There are two segmenter options currently available by default, the **radius_clu
 Radius_clustering is a segmenter that finds well separated objects above a flat plane. It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.  The segmenter requires 3 parameters. Unfortunately it is a bit slow, and can take up to 30s to segment the scene.
 
 1. **min_points_in_plane**
-    1. min_points_in_plane is an integer that specifies how many points there must be in a flat surface for it to count as a plane. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps.
+    * min_points_in_plane is an integer that specifies how many points there must be in a flat surface for it to count as a plane. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps.
 2. **min_points_in_segment**
-    2. min_points_in_segment is an integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. 
+    * min_points_in_segment is an integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. 
 3. **clustering_radius_mm**
-    3. clustering_radius_mm is a floating point number that specifies how far apart points can be (in units of  mm) in order to be considered part of the same object. A small clustering radius will more likely split different parts of a large object into distinct objects. A large clustering radius may aggregate closely spaced objects into one object.
-    4. 3.0 is an all right starting value.
+    * clustering_radius_mm is a floating point number that specifies how far apart points can be (in units of  mm) in order to be considered part of the same object. A small clustering radius will more likely split different parts of a large object into distinct objects. A large clustering radius may aggregate closely spaced objects into one object.
+    * 3.0 is an all right starting value.
 4. **Mean_k_filtering (optional)**
-    5. mean_k_filtering is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the number of min_points_in_segment. 
-    6. Start with 5% and go up if objects are still too noisy.
-    7. If you don’t want to use the filtering, set the number to 0 or less.
+    * mean_k_filtering is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the number of min_points_in_segment. 
+    * Start with 5% and go up if objects are still too noisy.
+    * If you don’t want to use the filtering, set the number to 0 or less.
 
 #### Detector Segmenters
 
 Any detector has all the information needed to also be a segmenter. Any detector defined in “detection_registry” or added later to the vision service becomes a segmenter with the same name. It begins with finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
 
 1. **mean_k**
-    1. Mean_k  is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the number of min_points_in_segment. 
-    2. Start with 5% and go up if objects are still too noisy.
-    3. If you don’t want to use the filtering, set the number to 0 or less.
+    * Mean_k  is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the number of min_points_in_segment. 
+    * Start with 5% and go up if objects are still too noisy.
+    * If you don’t want to use the filtering, set the number to 0 or less.
 2. **sigma**
-    4. Sigma is a floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 
-    5. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. 
+    * Sigma is a floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 
+    * 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. 
 
 ### The Segmentation API
 
