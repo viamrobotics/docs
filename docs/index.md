@@ -10,10 +10,9 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 
 ## Product Overviews
 - [app.viam's Organizational Hierarchy](product-overviews/organization-management.md)
-- [app.viam's Robot Page](runtime-architecture.md)
 ### coming soon
-- [Overview of viam-server and RDK](product-overviews/RDK.md)
 - [app.viam's Fleet Management](product-overviews/fleet-management.md)
+- [Overview of viam-server and RDK](product-overviews/RDK.md)
 - [Using Our SDKs as a Client Application](product-overviews/SDK-as-client.md)
 - [Using Our SDKs for a Server Hardware Implementation](product-overviews/SDK-as-server.md)
 - [Viam's Data Management Platform](product-overviews/data-management.md)
