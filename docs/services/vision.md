@@ -71,7 +71,7 @@ Will be available soon
 * `GetDetectorNames()`
     * Returns the list names of the detectors currently registered with the service.
 * `AddDetector(name string, type string, parameters protobuf.Struct)`
-    * [protobuf struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Struct)
+    * [protobuf Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Struct)
     * Returns nothing if successful, and an error if not. Registers a new detector just as if you had put it in the original “detector_registry” field in the robot config.
 * `GetDetections(camera_name string, detector_name string)`
     * Returns a list of 2D detections of the next 2D image from the given camera, with the given detector applied to it. 
