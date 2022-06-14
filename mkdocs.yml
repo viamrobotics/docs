@@ -1,23 +1,26 @@
 site_name: "VIAM Documention, Reference, and Tutorials"
 nav:
   - Home: 'index.md'
-  - Docs:
+  - Getting Started:
+    - Install VIAM on Raspberry Pi: 'getting-started/installation.md'
+    - Viam's Robot Configuration: 'getting-started/robot-config.md'
+  - Product Overviews:
     - Viam's Design Principles: 'design-principles.md'
     - app.viam's Organizational Hierarchy: 'product-overviews/organization-management.md'
     - app.viam's Robot Page: 'product-overviews/fleet-management.md'
-    - Install VIAM on Raspberry Pi: 'getting-started/installation.md'
-    - Viam's Robot Configuration: 'getting-started/robot-config.md'
+  - Deep Dives:
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
     - Viam's Authentication: 'deeper-dive/security.md'
-    - Viam Glossary: 'appendix/glossary.md'
-    - Python SDK: 'https://python.viam.dev/'
   - Components:
     - Motor: 'components/motor.md'
     - Servo: 'components/servo.md'
   - Services:
     - Vision: 'services/vision.md'
-  - Concepts:
+  - Appendix:
     - Orientation Vector: 'appendix/orientation-vector.md'
+    - Viam Glossary: 'appendix/glossary.md'
+  - SDKs:
+    - Python SDK: 'https://python.viam.dev/'
 theme:
   name: readthedocs
 extra_css:
