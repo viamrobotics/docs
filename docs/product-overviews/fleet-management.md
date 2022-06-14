@@ -32,6 +32,7 @@ The SDKS connect and use the same security and encryption
 
 # Coming soon!
 This page will explain:
+
 - How to set up a robot on app.viam.com
   - Including based on an existing robot or fragment
 - Each tab of app.viam.com's robot page:

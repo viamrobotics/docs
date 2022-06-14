@@ -7,6 +7,7 @@ date: 2022-05-19
 ---
 # Coming soon!
 This page will explain:
+
 - gRPC contrasting it with REST
 - protocol buffers and why we use them
 - how these two tie together to support our object oriented approach to robotics

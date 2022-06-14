@@ -7,6 +7,7 @@ date: 2022-05-19
 ---
 # Coming soon!
 This page has a fairly verbose outline, just gotta make it into proper paragraphs with some guiding examples:
+
 - A robot is a computer which:
   - Takes in information about its environment to make decisions
   - Acts on its environment 
