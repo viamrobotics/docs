@@ -1,12 +1,10 @@
 ---
-title: Viam Runtime Architecture
-summary: High level overview of the runtime architecture for Viam's robotics platform
+title: Fleet Management
+summary: A guide to app.viam.com's fleet management and robot configuration/control functionality
 authors:
     - Matt Dannenberg
-date: 2022-04-08
+date: 2022-05-19
 ---
-# Runtime Architecture
-
 ## Configuration/logging
 When a robot part first comes online, it requests its configuration from app.viam.com
 
@@ -24,10 +22,19 @@ If a user uses remote control in the app.viam.com ui, all communication to the r
 
 [WebRTC Docs](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection)
 
-[Authentication Docs](deeper-dive/security.md)
+[Authentication Docs](../deeper-dive/security.md)
 
 Local communication between parts can be done over grpc or webrtc.
 
 All communication is always encrypted and secured using shared secrets.
 
 The SDKS connect and use the same security and encryption
+
+# Coming soon!
+This page will explain:
+
+- How to set up a robot on app.viam.com
+  - Including based on an existing robot or fragment
+- Each tab of app.viam.com's robot page:
+  - What you can do with them and how they work
+- How to filter and modify robots and their permissions

@@ -6,3 +6,8 @@ authors:
 date: 2022-06-01
 ---
 # Coming soon!
+This page will contain:
+
+- An explanation of the functionality provided by the default Robot Service in viam-server
+- How viam makes use of this functionality
+- Which aspects of this functionality might be useful to a user and when

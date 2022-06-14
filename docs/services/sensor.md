@@ -6,3 +6,4 @@ authors:
 date: 2022-06-01
 ---
 # Coming soon!
+This doc will explain the Sensor Service and when/how to use it in conjunction with the [sensor components](components/sensor)

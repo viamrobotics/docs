@@ -7,3 +7,4 @@ date: 2022-05-19
 ---
 # Coming soon!
 
+This page will contain a linkfarm to places we've found helpful for learning about robotics.
