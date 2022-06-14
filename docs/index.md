@@ -5,12 +5,16 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 
 - [Viam's Robot Configuration](getting-started/robot-config.md)
 - [Viam's Design Principles](design-principles.md)
-### coming soon
+
+coming soon
+
 - [A High Level Overview of Viam](getting-started/high-level-overview.md)
 
 ## Product Overviews
 - [app.viam's Organizational Hierarchy](product-overviews/organization-management.md)
-### coming soon
+
+coming soon
+
 - [app.viam's Fleet Management](product-overviews/fleet-management.md)
 - [Overview of viam-server and RDK](product-overviews/RDK.md)
 - [Using Our SDKs as a Client Application](product-overviews/SDK-as-client.md)
@@ -21,7 +25,9 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 ## Components
 - [Motor](components/motor.md)
 - [Servo](components/servo.md)
-### coming soon
+
+coming soon
+
 - [Arm](components/arm.md)
 - [Board](components/board.md)
 - [Gantry](components/gantry.md)
@@ -36,7 +42,9 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 
 ## Services
 - [Vision](services/vision.md)
-### coming soon
+
+coming soon
+
 - [Data Capture](services/data-capture.md)
 - [Motion](services/motion.md)
 - [Navigation](services/navigation.md)
@@ -47,7 +55,9 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 ## Deep Dives
 - [Viam's Application End-to-End Flow](deeper-dive/robot-to-robot-comms.md)
 - [Viam's Authentication](deeper-dive/security.md)
-### coming soon
+
+coming soon
+
 - [ProtoBuf and gRPC](deeper-dive/architecture-and-protobuf.md)
 - [Frame System](deeper-dive/frame-system.md)
 - [Operations and Operation IDs](deeper-dive/operations.md)
@@ -56,7 +66,9 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 ## Appendix
 - [Viam Glossary](appendix/glossary.md)
 - [Orientation Vector](appendix/orientation-vector.md)
-### coming soon
+
+coming soon
+
 - [Troubleshooting](appendix/troubleshooting.md)
 - [FAQ](appendix/faq.md)
 - [Learning Resources](appendix/learning-resources.md)
