@@ -70,7 +70,8 @@ Will be available soon
 
 * `GetDetectorNames()`
     * Returns the list names of the detectors currently registered with the service.
-* `AddDetector(name string, type string, parameters [protobuf.Struct](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Struct))`
+* `AddDetector(name string, type string, parameters protobuf.Struct)`
+    * https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Struct
     * Returns nothing if successful, and an error if not. Registers a new detector just as if you had put it in the original “detector_registry” field in the robot config.
 * `GetDetections(camera_name string, detector_name string)`
     * Returns a list of 2D detections of the next 2D image from the given camera, with the given detector applied to it. 
@@ -124,7 +125,8 @@ Any detector has all the information needed to also be a segmenter. Any detector
     * Returns the list names of the segmenters currently registered with the service.
 * `GetSegmenterParameters(detector_name string)`
     * Returns the list of parameters that are needed for the segmenter to work. A list of  the name of the parameter and its data type are returned.
-* `GetObjectPointClouds(camera_name string, detector_name string, mime_type string, parameters [protobuf.Struct](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Struct))`
+* `GetObjectPointClouds(camera_name string, detector_name string, mime_type string, parameters protobuf.Struct)
+    * https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Struct
     * Returns a list of the 3D point cloud objects in the latest picture obtained from the specified 3D camera (using the specified segmenter). The mime_type determines what the file type of the returned bytes will be. The parameters are the necessary parameters that the given segmenter needs in order to work. 
 
 ### Segmentation within the web UI
