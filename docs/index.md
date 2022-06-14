@@ -55,8 +55,8 @@ Looking to get started with viam? Checkout the [installing viam server on Raspbe
 
 ## Appendix
 - [Viam Glossary](appendix/glossary.md)
-### coming soon
 - [Orientation Vector](appendix/orientation-vector.md)
+### coming soon
 - [Troubleshooting](appendix/troubleshooting.md)
 - [FAQ](appendix/faq.md)
 - [Learning Resources](appendix/learning-resources.md)
