@@ -41,6 +41,7 @@ coming soon
 - [Pose Tracker](components/pose-tracker.md)
 
 ## Services
+- [Vision](services/vision.md)
 
 coming soon
 
@@ -50,7 +51,6 @@ coming soon
 - [Robot Service](services/robot-service.md)
 - [Sensor Service](services/sensor.md)
 - [SLAM](services/slam.md)
-- [Vision](services/vision.md)
 
 ## Deep Dives
 - [Viam's Application End-to-End Flow](deeper-dive/robot-to-robot-comms.md)
