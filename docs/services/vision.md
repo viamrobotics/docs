@@ -76,6 +76,28 @@ Will be available soon
 * `GetDetections(camera_name string, detector_name string)`
     * Returns a list of 2D detections of the next 2D image from the given camera, with the given detector applied to it. 
 
+### Detections
+
+`GetDetections` returns a list of `Detections` which have the  following protobuf message type:
+
+```
+message GetDetectionsResponse {
+  // the bounding boxes and labels
+  repeated Detection detections = 1;
+}
+
+message Detection {
+  // the four corners of the box
+  int64 x_min = 1;
+  int64 y_min = 2;
+  int64 x_max = 3;
+  int64 y_max = 4;
+  // the confidence of the detection
+  double confidence = 5;
+  // label associated with the detected object
+  string class_name = 6;
+}
+```
 
 ## 3D Object Segmentation
 
