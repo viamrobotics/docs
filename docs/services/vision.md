@@ -26,19 +26,19 @@ What an object “is” depends on what is required for the task at hand. To acc
 
 ### Configuring your detectors
 
-To add a detector to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “detector_regsitry” field in the attributes field of the vision service config. 
+To add a detector to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “register_detectors” field in the attributes field of the vision service config. 
 
 ```
 "services": [
     {
         "type": "vision",
         "attributes": {
-          "detector_registry": [
+          "register_detectors": [
             {
-              "name": "detector_color", 
+              "name": "my_color_detector", 
               "type": "color",
               "parameters": {
-                "color" : "#A3E2FF",
+                "detect_color" : "#A3E2FF",
                 "tolerance": 0.06,
                 "segment_size": 100
               }
@@ -58,9 +58,9 @@ The types of the detector supported are:
 
 ##### color
 
-* **color**: the color to detect in the image, as a string of the form #RRGGBB. The color is written as a hexadecimal string prefixed by ‘#’.
+* **detect_color**: the color to detect in the image, as a string of the form #RRGGBB. The color is written as a hexadecimal string prefixed by ‘#’.
 * **tolerance**: A number between 0.0 and 1.0 and defines how strictly the detector must match to the color requested. 0.0 means the color must match exactly, while 1.0 will match to every color, regardless of the input color.  0.05 is a good starting value.
-* **segment_size:** An integer that sets a minimum size of the returned objects, and filters out all other found objects below that size. 
+* **segment_size:** An integer that sets a minimum size (in pixels) of the returned objects, and filters out all other found objects below that size. 
 
 ##### tflite
 
@@ -72,7 +72,7 @@ Will be available soon
     * Returns the list names of the detectors currently registered with the service.
 * `AddDetector(name string, type string, parameters protobuf.Struct)`
     * [protobuf Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Struct)
-    * Returns nothing if successful, and an error if not. Registers a new detector just as if you had put it in the original “detector_registry” field in the robot config.
+    * Returns nothing if successful, and an error if not. Registers a new detector just as if you had put it in the original “register_detectors” field in the robot config.
 * `GetDetections(camera_name string, detector_name string)`
     * Returns a list of 2D detections of the next 2D image from the given camera, with the given detector applied to it. 
 
@@ -89,7 +89,7 @@ The segmentation feature requires
 
 ### Default Segmenters
 
-There are two segmenter options currently available by default, the **radius_clustering** segmenter, and any detector you added in the detector_registry.
+There are two segmenter options currently available by default, the **radius_clustering** segmenter, and any detector you added in the "register_detectors" field.
 
 #### radius_clustering (slow - expect 30s of waiting)
 
@@ -109,7 +109,7 @@ Radius_clustering is a segmenter that finds well separated objects above a flat 
 
 #### Detector Segmenters
 
-Any detector has all the information needed to also be a segmenter. Any detector defined in “detection_registry” or added later to the vision service becomes a segmenter with the same name. It begins with finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
+Any detector has all the information needed to also be a segmenter. Any detector defined in “register_detectors” field or added later to the vision service becomes a segmenter with the same name. It begins with finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
 
 1. **mean_k**
     * Mean_k  is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the number of min_points_in_segment. 
