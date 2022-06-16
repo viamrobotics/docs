@@ -48,23 +48,25 @@ To add a detector to your robot, you need to add the _name_, _type_, and _parame
     }
 ]
 ```
-
+### Detector Types
 The types of the detector supported are:
 
 * **color**: this is a heuristic based detector that draws boxes around objects according to their hue (does not detect black and white).
-* **tflite (SOON)**: this a machine-learning based detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive. 
+* **tflite**: this a machine-learning based detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive. 
 
-#### Detector Parameter
-
-##### color
+#### Color detector attributes
 
 * **detect_color**: the color to detect in the image, as a string of the form #RRGGBB. The color is written as a hexadecimal string prefixed by ‘#’.
 * **tolerance**: A number between 0.0 and 1.0 and defines how strictly the detector must match to the color requested. 0.0 means the color must match exactly, while 1.0 will match to every color, regardless of the input color.  0.05 is a good starting value.
 * **segment_size:** An integer that sets a minimum size (in pixels) of the returned objects, and filters out all other found objects below that size. 
 
-##### tflite
+#### TFLite detector attributes 
 
-Will be available soon
+* **model_path**: The path to the .tflite model file, as a string. This attribute is absolutely required.
+* **num_threads**: An integer that defines how many CPU threads to use to run inference. The default value is 1.
+* **label_path**: The path to a .txt file that holds class labels for your TFLite model, as a string. The text file is 
+expected to be an ordered listing of the class labels.
+
 
 ### The Detection API 
 
