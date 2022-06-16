@@ -41,6 +41,14 @@ To add a detector to your robot, you need to add the _name_, _type_, and _parame
                 "detect_color" : "#A3E2FF",
                 "tolerance": 0.06,
                 "segment_size": 100
+            },
+            {
+              "name": "my_tflite_detector", 
+              "type": "tflite",
+              "parameters": {
+                "model_path" : "/path/to/model.tflite",
+                "label_path": "/path/to/labels.txt",
+                "num_threads": 1
               }
             }
           ]
