@@ -28,20 +28,23 @@ In order to use the data capture service, a user needs to add this service to th
 
 The following configuration parameters are available to you: 
 
-#### General Attributes
+#### Component Method Configuration
 
-| Name          | Config Entry  | Description               | Data Type | Options   |
-| ------------- | ------------- | ------------------------- | --------- | ----------|
-| capture_dir   | attributes    | Root directory under which captured data is stored | string | Arbitrary directory path
+You configure data capture for each method within a component.
 
-#### Component Attributes
-
-| Name          | Config Entry  | Description               | Data Type | Options   |
-| ------------- | ------------- | ------------------------- | --------- | ----------|
-| capture_frequency_hz   | component_ attributes    | Frequency at which to capture data | int | Arbitrary directory path | 1-1000 when capture enabled. 0 to disable capture for that robot component |
-| method | component_attributes | Component method to capture data from | string | Arm:GetJointPositions or GetEndPosition, Camera: NextPointCloud, Gantry: GetPosition or GetLengths |
+| Name          | Description               | Data Type | Options   |
+| ------------- | ------------- | ------------------------- | --------- |
+| capture_dir   | Set the root directory for data storage | string | Arbitrary directory path |
+| disabled | Disable capture for all components | bool | True, False |
+| method | Component method to capture data from | string | Arm: GetJointPositions or GetEndPosition, Camera: NextPointCloud, Gantry: GetPosition or GetLengths |
 
 
+#### Service Configuration 
+
+| Name          | Description               | Data Type | Options   |
+| ------------- | ------------------------- | --------- | ----------|
+| capture_dir | The root directory under which captured data should | string | Arbitrary directory path |
+| disabled | Disable capture for all components | bool | true, false |
 
 
 
