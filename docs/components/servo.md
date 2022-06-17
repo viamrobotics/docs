@@ -10,6 +10,7 @@ Hobby servos (sometimes called servomotors) are a type of actuator comprising a 
 
 ## Hardware Requirements
 A typical servo control setup comprises the following:
+
 - A Raspberry Pi
 - A servo
 - An appropriate power supply
