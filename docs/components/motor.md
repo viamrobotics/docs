@@ -20,6 +20,7 @@ Electric motors are the most common form of actuator in robotics. The majority o
 
 ## General Hardware Requirements
 A common motor control setup comprises the following:
+
 - A computing device with general purpose input/output (GPIO) pins such as: a Raspberry Pi or other single-board computer, or a desktop computer outfitted with a GPIO peripheral
     - Note: there are other ways to interface with motors such as Serial, CAN bus and EtherCAT that require special motor controllers and are beyond the scope of this document
 - A DC motor
