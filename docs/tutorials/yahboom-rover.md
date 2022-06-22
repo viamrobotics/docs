@@ -106,7 +106,7 @@ You can name this camera `rover_cam`. For the `Type` select `camera` and for `Mo
 
 ![rover-camera](img/rover-camera.png)
 
-If you click on your webUI, you will be able to see your camera streaming. 
+If you click on your webUI, you will be able to see your camera streaming.  
 
 ![camerastream](img/camerastream.png)
 
