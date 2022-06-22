@@ -54,6 +54,7 @@ Be sure to write down this information somewhere in a secure place to keep track
 If you did not change the username, the default one is pi. 
 
 Lastly, you should connect your pi to Wi-Fi, so that you can run Viam's server wirelessly. Check `Configure wireless LAN` and enter your wireless network credentials. SSID (short for Service Set Identifier) is your Wi-Fi's name, followed by passcode. Change the section `Wireless LAN country` to where your router is currently being operated and then you will hit save:
+
 ![imager-set-wifi](../tutorials/img/imager-set-wifi.png)
 
 This should return you to the initial screen. Now you need to pick your storage medium, so click `CHOOSE STORAGE`:
