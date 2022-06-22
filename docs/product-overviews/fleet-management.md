@@ -6,7 +6,7 @@ authors:
 date: 2022-05-19
 ---
 ## Configuration/logging
-When a robot part first comes online, it requests its configuration from app.viam.com
+When a robot part first comes online, it requests its configuration from app.viam.com.
 
 Once it has a configuration, it is cached locally and can be used for up to 60 days.
 
@@ -18,17 +18,17 @@ Both configuration and logging happen securely over HTTPS using secret tokens th
 
 ## Remote control    
 
-If a user uses remote control in the app.viam.com ui, all communication to the robot is via webrtc. 
+If a user uses remote control in the app.viam.com UI, all communication to the robot is via WebRTC. 
 
 [WebRTC Docs](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection)
 
 [Authentication Docs](../deeper-dive/security.md)
 
-Local communication between parts can be done over grpc or webrtc.
+Local communication between parts can be done over gRPC or WebRTC.
 
 All communication is always encrypted and secured using shared secrets.
 
-The SDKS connect and use the same security and encryption
+The SDKs connect and use the same security and encryption
 
 # Coming soon!
 This page will explain:
