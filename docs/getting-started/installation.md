@@ -39,17 +39,21 @@ You should be brought back to the initial launch screen. To make your Raspberry 
 
 Check `Set hostname` and enter the name you would like to access the pi by in that field. Remember the name you choose as you will need to make use of it later. I’ve chosen "hazal-pi". 
 
-Then check `Enable SSH`. Using SSH Keys for authentication is a great way of securing your Raspberry Pi as only someone with the private SSH key will be able to authenticate to your system. If you select `Allow public-key authentication only`, and the section `set authorized_ keys for 'pi'` is pre-populated, that means you do have an existing public SSH key that is ready to use. In that case, you do not have to change this section.
+There are two ways you can secure your Raspberry Pi: You can either use an SSH key or password authentication.
+
+To use the SSH key method: check `Enable SSH`. Using SSH Keys for authentication is a great way of securing your Raspberry Pi as only someone with the private SSH key will be able to authenticate to your system. If you select `Allow public-key authentication only`, and the section `set authorized_ keys for 'pi'` is pre-populated, that means you do have an existing public SSH key that is ready to use. In that case, you do not have to change this section.
 
 If this section is empty, you can either generate a new SSH key by following [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead. 
 ![imager-set-ssh](../tutorials/img/imager-set-ssh.png)
 
-If you decide to use password authentication, click on `Use password authentication`. If you scroll down, you have the option to change the username, then to set a password: 
+If you decide to use password authentication method: click on `Use password authentication`. If you scroll down, you have the option to change the username, then to set a password: 
 ![imager-set-passwordauthentication](../tutorials/img/imager-set-passwordauthentication.png)
 
-Be sure to write down or otherwise keep track of the `hostname`, `username`, and `password` you have configured. You will use them later on. If you did not change the username, the default one is pi. 
+Be sure to write down this information somewhere in a secure place to keep track of the `hostname`, `username`, and `password` you have configured. You will use them later on. Please do not skip this step as you will have to repeat all these steps if you lose your login credentials. 
 
-Lastly, check `Configure wireless LAN` and enter your wireless network credentials. SSID (short for Service Set Identifier) is your Wi-Fi's name, followed by passcode. Change the section `Wireless LAN country` to where your router is currently being operated and then you will hit save:
+If you did not change the username, the default one is pi. 
+
+Lastly, you should connect your pi to Wi-Fi, so that you can run Viam's server wirelessly. Check `Configure wireless LAN` and enter your wireless network credentials. SSID (short for Service Set Identifier) is your Wi-Fi's name, followed by passcode. Change the section `Wireless LAN country` to where your router is currently being operated and then you will hit save:
 ![imager-set-wifi](../tutorials/img/imager-set-wifi.png)
 
 This should return you to the initial screen. Now you need to pick your storage medium, so click `CHOOSE STORAGE`:
@@ -75,11 +79,15 @@ Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an
 
 ## Installing viam-server
 
-Once your Raspberry Pi is plugged in and turned on, wait a minute or so and then attempt to access your pi from your terminal emulator. Launch your terminal and run this command; the text in <> should be replaced (including the < and > symbols themselves) with the user and host names you configured above:
+Once your Raspberry Pi is plugged in and turned on, wait a minute or so and then attempt to access your pi from your terminal emulator. 
+
+Launch your terminal and run this command; the text in <> should be replaced (including the < and > symbols themselves) with the user and host names you configured above. 
 
 ```bash
 ssh <username>@<hostname>.local
 ```
+Example: if your username is 'Hazal' and your hostname is 'pi': then it should be 
+`ssh hazal@pi.local`
 
 If you are prompted “Are you sure you want to continue connecting?”, type “yes” and hit enter. Then, enter your password. You should be greeted by a login message and a command prompt (`$USERNAME@$HOSTNAME:~ $`). Now that you are on the Pi, download the latest viam-server AppImage package: 
 
@@ -100,7 +108,9 @@ sudo ./viam-server --aix-install
 
 ## Adding your pi on app.viam.com
 
-In your web browser, navigate to app.viam.com and log in. If you have not already, create a new location by filling out the form on the left and then clicking `New Location`.
+In your web browser, navigate to app.viam.com and log in. This means either you can continue with your Viam email address or a personal email you can sign up with. 
+
+Once you are logged in, create a new location by filling out the form on the left and then clicking `New Location`. Location means where your robot is hosted in real life. This is useful if you have multiple robots in multiple locations and you would like to control them romotely via the cloud on our app. 
 
 ![add-location](../tutorials/img/add-location.png)
 
