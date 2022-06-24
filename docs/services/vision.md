@@ -78,36 +78,16 @@ expected to be an ordered listing of the class labels.
 
 ### The Detection API 
 
-* `GetDetectorNames()`
-    * Returns the list names of the detectors currently registered with the service.
-* `AddDetector(name string, type string, parameters protobuf.Struct)`
-    * [protobuf Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Struct)
-    * Returns nothing if successful, and an error if not. Registers a new detector just as if you had put it in the original “register_detectors” field in the robot config.
-* `GetDetections(camera_name string, detector_name string)`
-    * Returns a list of 2D detections of the next 2D image from the given camera, with the given detector applied to it. 
+Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 
 ### Detections
 
-`GetDetections` returns a list of `Detections` which have the  following protobuf message type:
+The returned detections consist of the bounding box around the found object, as well as its label and confidence score.
 
-```
-message GetDetectionsResponse {
-  // the bounding boxes and labels
-  repeated Detection detections = 1;
-}
+* `x_min`, `y_min`, `x_max`, `y_max` (int): These specify the bounding box around the object.
+* `class_name` (string): specifies the label of the found object.
+* `confidence` (float): specifies the confidence of the assigned label between 0.0 and 1.0.
 
-message Detection {
-  // the four corners of the box
-  int64 x_min = 1;
-  int64 y_min = 2;
-  int64 x_max = 3;
-  int64 y_max = 4;
-  // the confidence of the detection
-  double confidence = 5;
-  // label associated with the detected object
-  string class_name = 6;
-}
-```
 
 ## 3D Object Segmentation
 
@@ -153,13 +133,7 @@ Any detector has all the information needed to also be a segmenter. Any detector
 
 ### The Segmentation API
 
-* `GetSegmenterNames()`
-    * Returns the list names of the segmenters currently registered with the service.
-* `GetSegmenterParameters(detector_name string)`
-    * Returns the list of parameters that are needed for the segmenter to work. A list of  the name of the parameter and its data type are returned.
-* `GetObjectPointClouds(camera_name string, detector_name string, mime_type string, parameters protobuf.Struct)`
-    * [protobuf Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Struct)
-    * Returns a list of the 3D point cloud objects in the latest picture obtained from the specified 3D camera (using the specified segmenter). The mime_type determines what the file type of the returned bytes will be. The parameters are the necessary parameters that the given segmenter needs in order to work. 
+Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 
 ### Segmentation within the web UI
 
