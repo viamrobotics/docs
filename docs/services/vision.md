@@ -24,6 +24,12 @@ The vision service is a default service on the robot, and can be initialized wit
 
 What an object “is” depends on what is required for the task at hand. To accommodate the open-endedness of what kind of object a user may need to identify, the service provides different types of detectors, both heuristic and machine-learning based, so that users can create, register, and use detectors suited for their own purposes.
 
+### Hardware
+
+Any camera that can return 2D images can use 2D object detection. This essentially means that the driver for the camera implements the `get_frame` method. 
+The Viam platform natively supports the following models of camera:
+* webcam
+
 ### Configuring your detectors
 
 To add a detector to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “register_detectors” field in the attributes field of the vision service config. 
@@ -98,6 +104,10 @@ The segmentation feature requires
 1. A camera that can provide 3D data,
 2. The name of the segmenter to be used, and 
 3. The parameters necessary to specify/fine-tune the segmenter
+
+### Hardware
+
+Any camera that can return 3D pointclouds can use 3D object segmentation. This essentially means that the driver for the camera implements the `get_pointcloud` method. There are some segmenter types that base their segmentation algorithm on detections. For these types of segmenters, the `get_frame` method must also be implemented.
 
 ### Default Segmenters
 
