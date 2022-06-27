@@ -260,3 +260,7 @@ Declaring formal releases remains the prerogative of the project maintainer.
 ### Changes to this arrangement
 
 This is an experiment and feedback is welcome! This document may also be subject to pull requests or changes by contributors where you believe you have something valuable to add or change.
+
+## Attribution
+
+This Contribution Guide is adapted from the [Bechdel.io Contribution Guide](https://github.com/JoeKarlsson/bechdel-test/blob/develop/CONTRIBUTING.md).
