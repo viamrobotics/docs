@@ -1,4 +1,4 @@
-# Viam Docs Writing Guide
+# Viam Documentation Writing Guide
 
 Writing documentation is an exercise in empathy. We're not describing an objective reality - the source code already does that. Our job is to help shape the relationship between users and the Viam ecosystem. This ever-evolving guide provides some rules and recommendations on how to do that consistently within the Viam ecosystem.
 

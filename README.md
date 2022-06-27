@@ -1,29 +1,43 @@
 # Viam Documentation
 
-An (mkdocs)[https://www.mkdocs.org/] repo of our tutorials and documentation
+An [mkdocs](https://www.mkdocs.org/) repo of Viam's tutorials and documentation. Site content is written in Markdown format located in `/docs`. [Pull requests welcome!](https://github.com/viamrobotics/tutorials-and-docs/blob/update-contribution-guide/CONTRIBUTING.md)
 
-# setup instructions
-to install mkdocs:
+## Setup instructions
+
+To install mkdocs:
+
+```bash
 pip install mkdocs
+```
 
-to spin up the docs website locally:
+To spin up the docs website locally:
+
+```bash
 mkdocs serve
+```
 
-## Working on the content
+## Working on the documentation
 
-- See VitePress docs on supported [Markdown Extensions](https://vitepress.vuejs.org/guide/markdown.html) and the ability to [use Vue syntax inside markdown](https://vitepress.vuejs.org/guide/using-vue.html).
+Viam documentation must be authored in [Markdown](https://daringfireball.net/projects/markdown/), a lightweight markup language which results in easy-to-read, easy-to-write plain text documents that can be converted to valid HTML documents in a predictable manner.
 
-- See the [Writing Guide](https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md) for our rules and recommendations on writing and maintaining documentation content.
+MkDocs uses the [Python-Markdown](https://python-markdown.github.io/) library to render Markdown documents to HTML. [Python-Markdown](https://python-markdown.github.io/) is almost completely compliant with the reference implementation, although there are a few very minor [differences](https://python-markdown.github.io/#differences).
+
+See the [Writing Guide](https://github.com/viamrobotics/tutorials-and-docs/blob/update-contribution-guide/WRITING_GUIDE.md) for our rules and recommendations on writing and maintaining documentation content.
+
+Please see the [mkdocs Documentation](https://www.mkdocs.org/) for an introductory tutorial and a full user guide.
+
+## Deploying
+
+The site is automatically deployed when commits land in `main`.
 
 ## Contributing
 
-This site is built with [VitePress](https://github.com/vuejs/vitepress) and depends on [@vue/theme](https://github.com/vuejs/vue-theme). Site content is written in Markdown format located in `src`. For simple edits, you can directly edit the file on GitHub and generate a Pull Request.
+Please read [CONTRIBUTING.md](https://github.com/viamrobotics/tutorials-and-docs/blob/update-contribution-guide/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-For local development, [pnpm](https://pnpm.io/) is preferred as package manager:
+### TLDR
 
-```bash
-pnpm i
-pnpm run dev
-```
-
-This project requires Node.js to be `v14.0.0` or higher, because we use new JavaScript features in our code, such as optional chaining.
+1. Fork it!
+1. Create your feature branch: `git checkout -b my-new-feature`
+1. Commit your changes: `git commit -am 'Add some feature'`
+1. Push to the branch: `git push origin my-new-feature`
+1. Submit a pull request :Dmar

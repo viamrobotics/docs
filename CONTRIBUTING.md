@@ -8,11 +8,11 @@ the developers managing and developing this open source project. In return,
 they should reciprocate that respect in addressing your issue, assessing
 changes, and helping you finalize your pull requests.
 
-As for everything else in the project, the contributions to Viam are governed by our [Code of Conduct](https://github.com/JoeKarlsson/bechdel-test/blob/develop/CODE_OF_CONDUCT.md).
+As for everything else in the project, the contributions to Viam are governed by our [Code of Conduct](https://github.com/viamrobotics/tutorials-and-docs/blob/update-contribution-guide/CODE_OF_CONDUCT.md).
 
 ## Using the issue tracker
 
-First things first: **Do NOT report security vulnerabilities in public issues!** Please disclose responsibly by letting [the Viam team](mailto:joekarlsson1@gmail.com?subject=Security) know upfront. We will assess the issue as soon as possible on a best-effort basis and will give you an estimate for when we have a fix and release available for an eventual public disclosure.
+First things first: **Do NOT report security vulnerabilities in public issues!** Please disclose responsibly by letting the Viam team know upfront. We will assess the issue as soon as possible on a best-effort basis and will give you an estimate for when we have a fix and release available for an eventual public disclosure.
 
 The issue tracker is the preferred channel for [bug reports](#bugs),
 [features requests](#features) and [submitting pull
@@ -136,21 +136,16 @@ on how to send one :)
    git checkout -b <topic-branch-name>
    ```
 
-2. Make sure to update, or add to the tests when appropriate. Patches and
-   features will not be accepted without tests. Run `npm test` to check that
-   all tests pass after you've made changes. Look for a `Testing` section in
-   the project’s README for more information.
-
-3. If you added or changed a feature, make sure to document it accordingly in
+2. If you added or changed a feature, make sure to document it accordingly in
    the `README.md` file.
 
-4. Push your topic branch up to our repo
+3. Push your topic branch up to our repo
 
    ```bash
    git push origin <topic-branch-name>
    ```
 
-5. Open a Pull Request using your branch with a clear title and description.
+4. Open a Pull Request using your branch with a clear title and description.
 
 Optionally, you can help us with these things. But don’t worry if they are too
 complicated, we can help you out and teach you as we go :)
@@ -170,17 +165,17 @@ complicated, we can help you out and teach you as we go :)
    [semantic-release](https://github.com/semantic-release/semantic-release) to
    automatically determine the new version and release to npm. In a nutshell:
 
-   #### Commit Message Conventions
+#### Commit Message Conventions
 
-   * Commit test files with `test: ...` or `test(scope): ...` prefix
-   * Commit bug fixes with `fix: ...` or `fix(scope): ...` prefix
-   * Commit new features with `feat: ...` or `feat(scope): ...` prefix
-   * Commit breaking changes by adding `BREAKING CHANGE:` in the commit body
+* Commit test files with `test: ...` or `test(scope): ...` prefix
+* Commit bug fixes with `fix: ...` or `fix(scope): ...` prefix
+* Commit new features with `feat: ...` or `feat(scope): ...` prefix
+* Commit breaking changes by adding `BREAKING CHANGE:` in the commit body
      (not the subject line)
-   * Commit changes to `package.json`, `.gitignore` and other meta files with
+* Commit changes to `package.json`, `.gitignore` and other meta files with
      `chore(filenamewithoutext): ...`
-   * Commit changes to README files or comments with `docs: ...`
-   * Cody style changes with `style: standard`
+* Commit changes to README files or comments with `docs: ...`
+* Cody style changes with `style: standard`
 
 **IMPORTANT**: By submitting a patch, you agree to license your work under the
 same license as that used by the project.
@@ -236,7 +231,7 @@ looks like this:
 
 ### Reviewing and merging changes locally
 
-```
+```bash
 git checkout master # or the main branch configured on github
 git pull # get latest changes
 git checkout feature-branch # replace name with your branch
@@ -251,7 +246,7 @@ When merging PRs from forked repositories, we recommend you install the
 
 This allows you to do:
 
-```
+```bash
 hub checkout link-to-pull-request
 ```
 
