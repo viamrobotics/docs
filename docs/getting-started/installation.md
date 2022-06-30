@@ -108,7 +108,7 @@ To enable support for I2C within the kernel, we will need to use the raspi-confi
 sudo raspi-config
 ```
 
-Select Advanced Options -> I2C -> <YES> to enable the I2C driver by kernel.
+Select "Interfacing Options" -> I2C -> <YES> to enable the I2C driver by kernel.
 
 ![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "5 Interfacing Options" option where you can find the I2C driver](../tutorials/img/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
 
