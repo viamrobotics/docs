@@ -2,12 +2,11 @@
 title: Viam Install Instructions
 summary: Instructions which guide the user through installing viam-server and syncing that robot with app.viam.com
 authors:
-    - Matt Dannenberg, Hazal Mestci, Arielle Mella 
-date: 2022-01-18, revised on 2022-06-22
+    - Matt Dannenberg, Hazal Mestci, Arielle Mella, Joe Karlsson
+date: 2022-01-18, revised on 2022-06-30
 version: Raspberry Pi Imager v1.7.2
 ---
 # Installing Viam RDK Server on Raspberry Pi
-
 
 ## Resources
 
@@ -78,7 +77,7 @@ Remove the microSD card from your computer when it is complete:
 
 Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet. A red led will turn on to indicate its on. 
 
-## Installing viam-server
+## Connecting to your Pi with SSH
 
 Once your Raspberry Pi is plugged in and turned on, wait a minute or so and then attempt to access your pi from your terminal emulator. 
 
@@ -90,7 +89,38 @@ ssh <username>@<hostname>.local
 Example: if your username is 'Hazal' and your hostname is 'pi': then it should be 
 `ssh hazal@pi.local`
 
-If you are prompted “Are you sure you want to continue connecting?”, type “yes” and hit enter. Then, enter your password. You should be greeted by a login message and a command prompt (`$USERNAME@$HOSTNAME:~ $`). Now that you are on the Pi, download the latest viam-server AppImage package: 
+If you are prompted “Are you sure you want to continue connecting?”, type “yes” and hit enter. Then, enter your password. You should be greeted by a login message and a command prompt (`$USERNAME@$HOSTNAME:~ $`).
+
+Next, it's good practice to update your Raspberry Pi to ensure all the latest packages are installed:
+
+```bash
+sudo apt-get update
+sudo apt-get upgrade
+```
+
+## Enabling the I2C Protocol on the Raspberry Pi
+
+I2C stands for inter-integrated circuit and is a method designed to allow one chip to talk to another synchronously. We will need to enable I2C on your Raspberry Pi so that Viam will be able to connect and communicate with chips and boards connected to your Pi through the GPIO pins.
+
+To enable support for I2C within the kernel, we will need to use the raspi-config tool. Launch the config tool by running the following command.
+
+```bash
+sudo raspi-config
+```
+
+Select Advanced Options -> I2C -> <YES> to enable the I2C driver by kernel.
+
+![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "5 Interfacing Options" option where you can find the I2C driver](../tutorials/img/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
+
+For our changes to take effect, we need to restart our Raspberry Pi.
+
+```bash
+sudo reboot
+```
+
+## Installing viam-server
+
+Now that you are on the Pi, download the latest viam-server AppImage package: 
 
 ```bash
 wget http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -O viam-server
