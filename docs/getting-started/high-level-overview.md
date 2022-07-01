@@ -2,47 +2,41 @@
 title: Viam High Level Overview
 summary: High level overview of Viam's robotics platform
 authors:
-    - Matt Dannenberg
-date: 2022-05-19
+    - Arielle Mella
+    - Jessamy Taylor
+date: 2022-07-01
 ---
-# Coming soon!
-This page has a fairly verbose outline, just gotta make it into proper paragraphs with some guiding examples:
+# Viam Overview
 
-- A robot is a computer which:
-  - Takes in information about its environment to make decisions
-  - Acts on its environment 
-  - Or both
-- In viam robots are made up of parts
-  - Each part is a discrete compute unit
-  - Each part runs a viam server process
-  - Each process takes in a config which describes its:
-    - Components: the hardware attached to it
-    - Services: viam-built algorithms (nav, computer vision, etc)
-    - Remotes: the other parts of the robot for this one to connect to
-- Parts communicate with one another over webrtc using grpc/protobuf APIs, which enables:
-  - Consistent APIs across all hardware
-  - SDK libraries in any language you desire
-  - Direct secure connections to and between parts
-  - Access to the whole robot via just one of its parts
-- To get started, install the viam-server service on an SBC (ex, rPi) and connect it to app.viam.com, which will provide you with:
-  - A nice UI for writing the robot configs
-  - Logs
-  - Boilerplate connection code for your robot using an SDKs
-  - Web control interface which lets you actuate your hardware using a graphical UI on top of our standard APIs 
-  - Doesnt exist yet but: package updates, data retention, block coding interface
-  - Using app.viam also automatically supplies your robot with certs for secure connection
-- This control interface is neat, but how do I make my robot autonomous?
-  - SDK-based applications
-  - These can be run locally on one part of the robot or on an entirely separate computer (like your laptop)
-  - Same APIs as the webUI you’ve been playing with
-  - <diagram of comms flow>
-- I have some fancy new piece of hardware yall dont support.
-  - Use the SDK to subclass a component type and write your own implementation
-  - If there is an existing library this can be done in dozens of lines of code
-  - In addition to the component implementation, you’ll want to write a small SDK application which spins up a server containing that component
-    - Your part can manage this process and will expose the api same as all your other components
-- Managing your fleet (more on app.viam’s organizational structure)
-  - Users are members of orgs
-  - Orgs have locations
-  - Robots reside in locations
-    - May be physical, may be separate by development environment (ex, testing, prod)
+A robot is very similar to a computer, but for one important difference: it interacts with its environment. This can involve collecting information about the environment and making decisions on behavior based on that information.
+
+Robots can take many forms, from a simple wheeled rover to a much more complex system involving many [_components_](../components/) such as a wheeled base, grippers, arms, various cameras and other sensors working together. A simpler system might be controlled by a single microcontroller or microprocessor (such as a Raspberry Pi, Jetson or Arduino), whereas a more complex system might contain more than one of these compute units. In addition to physical hardware, a robot may employ one or more Viam-built software modules such as navigation or vision algorithms, which we call _services_.
+
+![two-part-architecture](img/overview-two-part-architecture.png)  
+_Figure 1. An example of a two-part robot. Each part has its own compute unit which runs an instance of `viam-server` and communicates with its respective components. Part 1 is the main part and could exist without Part 2. Part 2 is a remote._
+
+At Viam, we call each compute unit (and the components it controls) a _part_. Thus a robot is organized into one or more parts, depending on the number of compute units it contains. Each part runs a session of the Viam server, which handles receiving API requests and translates them to hardware actuation. The Viam server reads in a configuration file that defines the components, services, and potentially other processes for the part.
+
+Processes are scripts or programs run by the [Robot Development Kit (RDK)](RDK.md) whose life cycle will be managed by the Viam server. One example is running a [Software Development Kit (SDK)](../product-overviews/SDK-as-server.md) server like the Python SDK where the implementation of a component is easier to create than in the RDK. 
+
+Each `viam-server` instance is defined by a configuration file that describes the components it’s made of, the services it offers, and other parts of the robot that it wants to communicate with, which we call remotes. A remote represents a connection to another robot part that is part of the same robot.
+
+Parts communicate with one another using a consistent and unified API, regardless of the hardware they are running on. This is done via [WebRTC](https://en.wikipedia.org/wiki/WebRTC) using the [gRPC and protobuf APIs](../deeper-dive/architecture-and-protobuf.md). This SDK API is available in any language, and provides direct and secure connections to and between parts.
+
+After installing the Viam server on a computer (like a Raspberry Pi), you can connect your newly minted part to app.viam.com. The web app provides a page for each robot to do the following:
+
+- Logs: Displays `viam-server` logs including status changes and error messages.
+- Config: Provides a UI for building out your robot configuration. 
+- Control: Provides a basic UI for testing your robot components and services without needing to write any script–for example, driving the motors and viewing camera feeds.
+- Connect: Contains boilerplate connection code to copy and paste into any script you write using SDKs.
+
+SDK-based applications can be run locally on one part of the robot or on an entirely separate computer (like your laptop) if you wish. They use the same APIs as the web UI.
+
+![laptop-architecture](img/overview-laptop-architecture.png)  
+_Figure 2. Example architecture showing how SDK-based applications communicate with your robot’s main instance of ‘viam-server’ over gRPC._
+
+If the particular model of hardware you are working with is not supported in Viam’s RDK, you can write your own implementation of a component model. If there is an existing library, this can be done in just a few dozen lines of code. To read more on how to do this, check out [Using Our SDKs for a Server Component Implementation document](../product-overviews/SDK-as-server.md). Your part can manage this process and will expose the API in the same way as with all your other components.
+
+As you create more robots or start collaborating, you may wish to manage other users’ access to different machines. You can organize robots, users, and organizations using [Viam’s organizational management system](../product-overviews/organization-management.md). 
+
+More detailed information can be found in the product overview and deep dive documents. To start making robots with Viam, [get a Viam server running on a Raspberry Pi](../getting-started/installation.md) or check out our other [tutorials](../tutorials).
