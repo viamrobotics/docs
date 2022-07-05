@@ -60,6 +60,7 @@ The signal wires in the diagram run from two GPIO pins on the Pi to the DIR and 
 A brushed DC motor without an encoder should be configured with “gpio” as the model. Most motor types require a “board” attribute, and also need to depend on that same board. For example:  
 
 ![motor-gpio-json](img/motor-gpio-json.png)  
+[Click here for the raw JSON.](example-configs/motor-gpio-config.json)
 
 `max_rpm` (float64): For non-encoded motors, this is an estimate of the maximum RPM the motor will run at with full power under no load. (For encoded motors, it actually limits the motor to that speed.) If unknown, it can be set to zero but this will render the “GoFor” method unusable.
 
@@ -97,6 +98,7 @@ An encoder is a device that is integrated with a motor to sense the angular posi
 Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.” Configuration of a quadrature encoder requires digital interrupts on the board for A and B in addition to the standard “gpio” model attributes. Single pin encoders require configuring one digital interrupt. Here’s an example config file:  
 
 ![motor-encoded-dc-json](img/motor-encoded-dc-json.png)  
+[Click here for the raw JSON.](example-configs/motor-encoded-config.json)
 
 #### Optional Attributes
 
@@ -123,6 +125,7 @@ In this particular example the enable pin on the upper left corner of the driver
 Viam supports steppers controlled in one of two ways: a basic stepper driver chip that takes step and DIR input via GPIO and simply moves one step per pulse, or more advanced chips (ex: TMC5072, DMC4000) that have their own microcontrollers that conveniently handle things like speed and acceleration control. Here’s an example of a basic stepper driver config:  
 
 ![motor-gpiostepper-json](img/motor-gpiostepper-json.png)  
+[Click here for the raw JSON.](example-configs/motor-gpiostepper-config.json)
 
 #### Optional Attributes
 `stepper_delay` (uint): Time in microseconds to remain high for each step. Default is 20.
