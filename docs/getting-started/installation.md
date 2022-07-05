@@ -99,6 +99,8 @@ sudo apt-get upgrade
 ```
 
 ## Enabling the I2C Protocol on the Raspberry Pi
+    
+> Note: You can skip the I2C configuration if you are not adding a breakout board to your Raspberry Pi.
 
 I2C stands for inter-integrated circuit and is a method designed to allow one chip to talk to another synchronously. We will need to enable I2C on your Raspberry Pi so that Viam will be able to connect and communicate with chips and boards connected to your Pi through the GPIO pins.
 
