@@ -32,6 +32,7 @@ Here's an example of how a servo might be wired to a Raspberry Pi:
 An example configuration file containing the necessary attributes is as follows:  
 
 ![servo-JSON](img/servo-json.png)
+[Click here for the raw JSON.](example-configs/servo-config.json)
 
 ### Optional Attributes
 `min` (int): Specifies the minimum angle in degrees to which the servo can move  

@@ -2,6 +2,7 @@ site_name: "VIAM Documention, Reference, and Tutorials"
 nav:
   - Home: 'index.md'
   - Getting Started:
+    - Viam Overview: 'getting-started/high-level-overview.md'
     - Install VIAM on Raspberry Pi: 'getting-started/installation.md'
     - Viam's Robot Configuration: 'getting-started/robot-config.md'
   - Product Overviews:
