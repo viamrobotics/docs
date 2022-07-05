@@ -12,14 +12,14 @@ A robot is very similar to a computer, but for one important difference: it inte
 
 Robots can take many forms, from a simple wheeled rover to a much more complex system involving many [_components_](../index.md#components) such as a wheeled base, grippers, arms, various cameras and other sensors working together. A simpler system might be controlled by a single microcontroller or microprocessor (such as a Raspberry Pi, Jetson or Arduino), whereas a more complex system might contain more than one of these compute units. In addition to physical hardware, a robot may employ one or more Viam-built software modules such as navigation or vision algorithms, which we call [_services_](../index.md#services).
 
-![two-part-architecture](img/overview-two-part-architecture.png)  
-_Figure 1. An example of a two-part robot. Each part has its own compute unit which runs an instance of `viam-server` and communicates with its respective components. Part 1 is the main part and could exist without Part 2. Part 2 is a remote._
-
 At Viam, we call each compute unit (and the components it controls) a _part_. Thus a robot is organized into one or more parts, depending on the number of compute units it contains. Each part runs a session of the Viam server, which handles receiving API requests and translates them to hardware actuation. The Viam server reads in a configuration file that defines the components, services, and potentially other processes for the part.
 
 Processes are scripts or programs run by the [Robot Development Kit (RDK)](../product-overviews/RDK.md) whose life cycle is managed by the Viam server. One example is running a [Software Development Kit (SDK)](../product-overviews/SDK-as-server.md) server like the Python SDK where the implementation of a component is easier to create than in the RDK. 
 
-Each `viam-server` instance is defined by a configuration file that describes the components it’s made of, the services it offers, and other parts of the robot that it wants to communicate with, which we call remotes. A remote represents a connection to another robot part that is part of the same robot.
+Each `viam-server` instance is defined by a configuration file that describes the components it’s made of, the services it offers, and other parts of the robot that it wants to communicate with, which we call _remotes_. A remote represents a connection to another robot part that is part of the same robot.
+
+![two-part-architecture](img/overview-two-part-architecture.png)  
+_Figure 1. An example of a two-part robot. Each part has its own compute unit which runs an instance of `viam-server` and communicates with its respective components. Part 1 is the main part and could exist without Part 2. Part 2 is a remote._
 
 Parts communicate with one another using a consistent and unified API, regardless of the hardware they are running on. This is done via [WebRTC](https://en.wikipedia.org/wiki/WebRTC) using the [gRPC and protobuf APIs](../deeper-dive/architecture-and-protobuf.md). This SDK API is available in any language, and provides direct and secure connections to and between parts.
 
