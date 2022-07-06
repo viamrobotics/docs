@@ -24,7 +24,7 @@ If the line of output which reads “Architecture:     <value>” has a value wh
 ## Installing Raspian on the Raspberry Pi
 A Raspberry Pi boots from a microSD card. The first step is to set up a linux installation on that microSD card. Connect the microSD card to your computer.
 
-You will be using the Raspberry Pi Imager to flash the microSD card. If you do not already have the Raspberry Pi Imager, you can download it and follow the install instructions [here](https://www.raspberrypi.com/software/). After installing successfully, connect your microSD card to your computer and launch the Raspberry Pi Imager. You should be greeted with a window that looks like:  
+You will be using the Raspberry Pi Imager to flash the microSD card. If you do not already have the Raspberry Pi Imager, you can [download it and follow the install instructions](https://www.raspberrypi.com/software/). After installing successfully, connect your microSD card to your computer and launch the Raspberry Pi Imager. You should be greeted with a window that looks like:  
 ![imager-launch-screen](../tutorials/img/imager-launch-screen.png)
 
 Select `CHOOSE OS`.  Since you need a 64-bit version of linux, you will need to select it from the `Rapsberry Pi OS (other)` menu.
