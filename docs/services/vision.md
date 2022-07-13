@@ -27,8 +27,8 @@ What an object “is” depends on what is required for the task at hand. To acc
 ### Hardware
 
 Any camera that can return 2D images can use 2D object detection. This essentially means that the driver for the camera implements the `get_frame` method. 
-The Viam platform natively supports the following models of camera:
-* webcam
+The Viam platform natively supports the following models of camera:  
+* `webcam`
 
 ### Configuring your detectors
 
