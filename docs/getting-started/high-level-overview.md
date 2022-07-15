@@ -33,7 +33,7 @@ After installing the Viam server on a computer (like a Raspberry Pi), you can co
 SDK-based applications can be run locally on one part of the robot or on an entirely separate computer (like your laptop) if you wish. They use the same APIs as the web UI.
 
 ![laptop-architecture](img/overview-laptop-architecture.png)  
-_Figure 2. Example architecture showing how SDK-based applications communicate with your robot’s main instance of ‘viam-server’ over gRPC._
+_Figure 2. Example architecture showing how SDK-based applications communicate with your robot’s main instance of `viam-server` over gRPC._
 
 If the particular model of hardware you are working with is not supported in Viam’s RDK, you can write your own implementation of a component model. If there is an existing library, this can be done in just a few dozen lines of code. To read more on how to do this, check out [Using Our SDKs for a Server Component Implementation document](../product-overviews/SDK-as-server.md). Your part can manage this process and will expose the API in the same way as with all your other components.
 
