@@ -16,7 +16,7 @@ It will differ from the FAQ in that the FAQ will contain broad high level questi
 None at this time.
 ### Windows Applications
 None at this time.
-### Linux Applciations
+### Linux Applications 
 None at this time.
 ### Browser Plugins
 1. "**Allow right click - simple copy**" - This Chrome plugin prevents the user from configuring a Service in App.Viam (**app.viam.com** > **Config** > **3 Services**).
