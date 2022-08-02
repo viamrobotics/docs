@@ -9,6 +9,10 @@ nav:
     - Viam's Design Principles: 'design-principles.md'
     - app.viam's Organizational Hierarchy: 'product-overviews/organization-management.md'
     - app.viam's Robot Page: 'product-overviews/fleet-management.md'
+  - Tutorials: 
+    - Tutorials: 'tutorials/tutorials.md'
+    - ScuttleBot: 'tutorials/scuttlebot.md' 
+    - YahBoom Rover: 'tutorials/yahboom-rover.md'
   - Deep Dives:
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
     - Viam's Authentication: 'deeper-dive/security.md'
@@ -34,3 +38,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/viamrobotics/tutorials-and-docs/
       name: docs source on github
+markdown_extensions:
+    - admonition
+    - codehilite
+
