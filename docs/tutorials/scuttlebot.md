@@ -15,7 +15,6 @@ The Raspberry Pi is a single-board computer into which you will wire all other c
 * Raspberry Pi with Raspian OS 64-bit Lite and Viam RDK installed. Refer to the <a href="/getting-started/installation/#installing-raspian-on-the-raspberry-pi">Installing Raspian on the Raspberry Pi</a>, if necessary.
 * Connection to app.viam.com
 * Scuttle Bot
-* EasySMX Gamepad Input Controller
 
 ## Configuring the Board
 !!! note
