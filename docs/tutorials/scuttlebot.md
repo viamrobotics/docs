@@ -12,8 +12,8 @@ The Raspberry Pi is a single-board computer into which you will wire all other c
 
 ## Prerequisites
 
-* Raspberry Pi with Raspian OS 64-bit Lite and Viam RDK installed. Refer to the <a href="/getting-started/installation/#installing-raspian-on-the-raspberry-pi">Installing Raspian on the Raspberry Pi</a>, if necessary.
-* Connection to app.viam.com
+* Raspberry Pi with Raspian OS 64-bit Lite and Viam server installed. Refer to the <a href="/getting-started/installation/#installing-raspian-on-the-raspberry-pi">Installing Raspian on the Raspberry Pi</a>, if necessary.
+* The Pi is able to connect to app.viam.com
 * Scuttle Bot
 
 ## Configuring the Board
@@ -30,9 +30,9 @@ The Raspberry Pi is a single-board computer into which you will wire all other c
 <ol type="a">
     <li class="spacing" style="list-style-type:lower-alpha">Enter a name for your robot in <strong>Name</strong>, then click <strong>Add</strong> to add your robot and access your robot's configuration page. In this tutorial, the board name is "local." You can name the <code>board</code> whatever you like as long as you are consistent when referring to it later.</li>
     <li class="spacing" style="list-style-type:lower-alpha">Select the component <strong>Type</strong>, which is "board."</li>
-    <li class="spacing" style="list-style-type:lower-alpha">Select "Pi" from the <strong>Model</strong> drop-down.</li>
-    <li class="spacing" style="list-style-type:lower-alpha">Click <strong>New Component</strong> to Save the new component (i.e., your Board component) and generate an empty JSON configuration:</li></ol></ol>
-<img src="/tutorials/img/board-empty-json.png">
+    <li class="spacing" style="list-style-type:lower-alpha">Select "pi" from the <strong>Model</strong> drop-down.</li>
+    <li class="spacing" style="list-style-type:lower-alpha">Click <strong>Save Config</strong> to Save the new component (i.e., your Board component) and generate an empty JSON configuration:</li></ol></ol>
+<img src="/tutorials/img/board-empty-json.png" alt="This image is the component configuration panel for a board component. The Depends On drop-down listbox has no selection. Initially, the left-hand Attributes panel for board component is empty. The right-hand panel contains a list of available board component Attributes.">
 ## Configuring the Motors and Wheels
 ### Adding the Right Hand Wheel
 
@@ -84,9 +84,9 @@ App.Viam returns the following screen with empty JSON attributes for the motor c
 
 ### Testing the Motor Configuration
 
-Having entered a board and a motor component, you can now actuate your motor. Save the config by clicking <strong>SAVE CONFIG</strong> at the bottom of the page, then click <strong>CONTROL</strong> at the top of the page to navigate to the Control Page. 
+Having entered a board and a motor component, you can now actuate your motor. Save the config by clicking **SAVE CONFIG** at the bottom of the page, then click **CONTROL** at the top of the page to navigate to the Control Page. 
 
-On the Control Page, you will see a panel for the right <code>motor</code>. You will use this panel to set the motor's <code>power</code> level. 
+On the Control Page, you will see a panel for the right `motor`. You will use this panel to set the motor's `power` level. 
 
 <img src="/tutorials/img/PI-moveRhMotor.png">
 

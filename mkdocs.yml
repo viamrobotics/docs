@@ -3,7 +3,6 @@ nav:
   - Home: 'index.md'
   - Getting Started:
     - Viam Overview: 'getting-started/high-level-overview.md'
-    - Install VIAM on Raspberry Pi: 'getting-started/installation.md'
     - Viam's Robot Configuration: 'getting-started/robot-config.md'
   - Product Overviews:
     - Viam's Design Principles: 'design-principles.md'
@@ -11,7 +10,9 @@ nav:
     - app.viam's Robot Page: 'product-overviews/fleet-management.md'
   - Tutorials: 
     - Tutorials: 'tutorials/tutorials.md'
-    - ScuttleBot: 'tutorials/scuttlebot.md' 
+    - Install VIAM on Raspberry Pi: 'getting-started/installation.md'    
+    - ScuttleBot: 'tutorials/scuttlebot.md'
+    - Scuttlebot Gamepad: 'tutorials/scuttle-gamepad' 
     - YahBoom Rover: 'tutorials/yahboom-rover.md'
   - Deep Dives:
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
