@@ -12,7 +12,8 @@ nav:
   - Deep Dives:
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
     - Viam's Authentication: 'deeper-dive/security.md'
-  - Components:
+  - Components: 
+    - Base: 'components/base.md'
     - Motor: 'components/motor.md'
     - Servo: 'components/servo.md'
   - Services:

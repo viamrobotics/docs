@@ -2,8 +2,139 @@
 title: Base Component Documentation
 summary: Explanation of base types, configuration, and usage in Viam.
 authors:
-    - Arielle Mella
-date: 2022-06-01 
+    - Jessamy Taylor (ma)
+date: 2022-08-02
 ---
-# Coming soon!
-This will look similar to the [motor doc](motor.md), but describing how to wire up and configure a base instead.
+# Base Component
+Most robots with wheeled bases will comprise at least the following:
+
+-   A `board` component that can run a Viam server instance. That is
+    to say, a computing device with general purpose input/output (GPIO)
+    pins such as a Raspberry Pi or other single-board computer with GPIO
+
+-   Two or more motors with wheels attached
+
+-   A power supply for the board
+
+-   A power supply for the motors
+
+-   Some sort of chassis to hold everything together
+
+For example:
+
+![](img/base-trk-rover-w-arm.png)
+
+An example of a wiring diagram for a base that has one motor on each
+side is shown below. Note that this will vary greatly depending on
+choice of motors, motor drivers, power supply, and board.
+
+![](img/base-wiring-diagram.png)
+
+## Configuration
+
+Configuring a base involves configuring the drive motors, and making
+sure the base attributes section contains the corresponding motor names.
+Each motor should be configured based on whatever type of motor it is.
+Find more information on wiring and configuring different types of
+motors [here](https://docs.viam.com/components/motor/).
+The board controlling the base must also be configured.
+
+An example configuration file, with the base component highlighted:
+
+```JSON
+{
+  "components": [
+    {
+      "attributes": {},
+      "model": "pi",
+      "name": "follow-pi",
+      "type": "board"
+    },
+    {
+      "attributes": {
+        "board": "follow-pi",
+        "max_rpm": 300,
+        "pins": {
+          "dir": "16",
+          "pwm": "15"
+        }
+      },
+      "depends_on": [
+        "follow-pi"
+      ],
+      "model": "gpio",
+      "name": "rightm",
+      "type": "motor"
+    },
+    {
+      "attributes": {
+        "board": "follow-pi",
+        "max_rpm": 300,
+        "pins": {
+          "dir": "13",
+          "pwm": "11"
+        }
+      },
+      "depends_on": [
+        "follow-pi"
+      ],
+      "model": "gpio",
+      "name": "leftm",
+      "type": "motor"
+    },
+    {
+      "attributes": {
+        "left": [
+          "leftm"
+        ],
+        "right": [
+          "rightm"
+        ],
+        "wheel_circumference_mm": 183,
+        "width_mm": 195
+      },
+      "depends_on": [
+        "rightm",
+        "leftm"
+      ],
+      "model": "wheeled",
+      "name": "tread-base",
+      "type": "base"
+    }
+  ]
+}
+```
+
+### Required Attributes
+
+`type` (string): Put "base" for any base component.
+
+`model` (string): "wheeled" unless you have a "boat". 
+
+`name` (string): Name your base.
+
+`left` (array of strings): List names of all drive motors on the left
+side of the base. There may be one or more motors.
+
+`right` (array of strings): List names of all drive motors on the
+right side of the base.
+
+`wheel_circumference_mm` (int): Outermost circumference of the drive
+wheels in millimeters. Used for odometry, so try to enter your best
+approximation of the effective circumference.
+
+`width_mm` (int): Width of the base in millimeters. In other words, the
+distance between the approximate centers of the right and left wheels. 
+`depends_on` (array of strings): List the names of the right and left
+motors again. This is so the code will find the motors before it
+attempts to register the base, avoiding errors.
+
+### Optional Attributes
+
+`spin_slip_factor` (float): Used in steering calculations to correct
+for slippage between the wheels and the floor. To be calibrated by the
+user.
+
+## Implementation
+
+[Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
