@@ -1,1 +1,11 @@
 .rst-footer-buttons {display: none;}
+.spacing /* I'm using this to add some top/bottom spacing for list items*/
+{
+    padding-bottom: 8px;
+}
+
+img /* Add top/bottom padding around images.*/
+{
+    padding: 12px 0px 12px 0px;
+    
+}

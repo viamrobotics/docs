@@ -77,7 +77,7 @@ Then connect the controller: `sudo bluetoothctl connect <8bitdo-mac-address>`
 
 Lastly trust the controller, which makes reconnecting easier in the future: `sudo bluetoothctl trust <8bitdo-mac-address>`
 
-To confirm the connection, you can list connected devices with: `sudo bluetoothctl devices | cut -f2 -d' ' | while read uuid; do sudo bluetoothctl info $uuid; done|grep -e "Device\|Connected\|Name"`
+To confirm the connection, you can list connected devices with: `sudo bluetoothctl devices | cut -f2 -d</code></code>| while read uuid; do sudo bluetoothctl info $uuid; done|grep -e "Device\|Connected\|Name"`
 
 ![bluetoothpair-connect](img/bluetoothpair-connect.png)
 

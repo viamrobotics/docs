@@ -3,12 +3,17 @@ nav:
   - Home: 'index.md'
   - Getting Started:
     - Viam Overview: 'getting-started/high-level-overview.md'
-    - Install VIAM on Raspberry Pi: 'getting-started/installation.md'
     - Viam's Robot Configuration: 'getting-started/robot-config.md'
   - Product Overviews:
     - Viam's Design Principles: 'design-principles.md'
     - app.viam's Organizational Hierarchy: 'product-overviews/organization-management.md'
     - app.viam's Robot Page: 'product-overviews/fleet-management.md'
+  - Tutorials: 
+    - Tutorials: 'tutorials/tutorials.md'
+    - Install VIAM on Raspberry Pi: 'getting-started/installation.md'    
+    - ScuttleBot: 'tutorials/scuttlebot.md'
+    - Scuttlebot Gamepad: 'tutorials/scuttle-gamepad' 
+    - YahBoom Rover: 'tutorials/yahboom-rover.md'
   - Deep Dives:
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
     - Viam's Authentication: 'deeper-dive/security.md'
@@ -34,3 +39,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/viamrobotics/tutorials-and-docs/
       name: docs source on github
+markdown_extensions:
+    - admonition
+    - codehilite
+
