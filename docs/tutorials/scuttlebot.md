@@ -90,10 +90,10 @@ On the Control Page, you will see a panel for the right `motor`. You will use th
 
 <img src="/tutorials/img/PI-moveRhMotor.png">
 
-Please be careful when activating your robot! Start with the power level (RPM) set to 10% and increase it incrementally (about 10% each time), activating the motor at each step until the wheel rotates at a reasonable rate when you press run. You can also change the direction of the rotation. 
+Please be careful when activating your robot! Start with the power level (RPM) set to 10% and increase it incrementally (about 10% per increase), activating the motor at each step until the wheel rotates at a speed you like when you press run. You can also change the direction of the rotation. 
 
 !!! note
-    A "whining" sound emitted from the motor indicates that the power level is not high enough to turn the armature. That is normal. Increase the power level by 10%.
+    A "whining" sound emitted from the motor indicates that the power level is not high enough to turn the armature which is normal. Increase the power level by 10%.
 
 At this point, the wheel on one side of your robot should be working through App.Viam. 
 
