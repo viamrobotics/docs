@@ -28,25 +28,25 @@ The Raspberry Pi is a single-board computer into which you will wire all other c
 <img src="/tutorials/img/createcomponent.png">
 <li class="spacing">The first component is the Raspberry Pi, which is a single-board computer into which you will wire all other components.</li>
 <ol type="a">
-    <li class="spacing" style="list-style-type:lower-alpha">Enter a name for your robot in <strong>Name</strong>, then click <strong>Add</strong> to add your robot and access your robot's configuration page. In this tutorial, the board name is "local." You can name the <code>board</code> whatever you like as long as you are consistent when referring to it later.</li>
-    <li class="spacing" style="list-style-type:lower-alpha">Select the component <strong>Type</strong>, which is "board."</li>
+    <li class="spacing" style="list-style-type:lower-alpha">Enter a name for your robot in <strong>Name</strong>, then click <strong>Add</strong> to add your robot and access your robot's configuration page. In this tutorial, the board name is "local". You can name the <code>board</code> whatever you like as long as you are consistent when referring to it later.</li>
+    <li class="spacing" style="list-style-type:lower-alpha">Select the component <strong>Type</strong>, which is "board".</li>
     <li class="spacing" style="list-style-type:lower-alpha">Select "pi" from the <strong>Model</strong> drop-down.</li>
     <li class="spacing" style="list-style-type:lower-alpha">Click <strong>Save Config</strong> to Save the new component (i.e., your Board component) and generate an empty JSON configuration:</li></ol></ol>
-<img src="/tutorials/img/board-empty-json.png" alt="This image is the component configuration panel for a board component. The Depends On drop-down listbox has no selection. Initially, the left-hand Attributes panel for board component is empty. The right-hand panel contains a list of available board component Attributes.">
+<img src="/tutorials/img/board-empty-json.png" alt="This image is the component configuration panel for a board component. The Depends On drop-down listbox has no selection. Initially, the left-side Attributes panel for board component is empty. The right-side panel contains a list of available board component Attributes.">
 ## Configuring the Motors and Wheels
-### Adding the Right Hand Wheel
+### Adding the Right Side Wheel
 
 The next step is to add a wheel and make it spin. As with all other components, the first step is clicking <strong>CREATE A COMPONENT</strong>.
 
 <ol>
-<li class="spacing">Begin by adding the Right Hand Wheel, naming the component <code>right</code>.</li>
+<li class="spacing">Begin by adding the Right Side Wheel, naming the component <code>right</code>.</li>
 <li class="spacing">Select "motor" from the <code>Type</code> drop-down.</li>
 <li class="spacing">Select "gpio" from the <code>Model</code>drop-down.</li>
 <li class="spacing">Click <strong>New Component</strong>. App.Viam returns the following screen with empty JSON attributes for the motor component and a reference for the available attributes:</li>
 <img src="/tutorials/img/PI-rhWheel.png">
 <li class="spacing">Now, tell Viam how this motor is wired to the Pi:</li>
 <ol type="a"> 
-<li class="spacing" style="list-style-type:lower-alpha">First, select <code>local</code> from the <strong>Depends On</strong> drop-down as the motor is wired to the Raspberry Pi board named, "local."</li>
+<li class="spacing" style="list-style-type:lower-alpha">First, select <code>local</code> from the <strong>Depends On</strong> drop-down as the motor is wired to the Raspberry Pi board named, "local".</li>
 
 <li class="spacing" style="list-style-type:lower-alpha">Make the following changes in the JSON:</li>
 <OL type="i">
@@ -60,7 +60,7 @@ The next step is to add a wheel and make it spin. As with all other components, 
 </OL>
 
 !!! note
-    If your wheel turns in reverse when it should turn forward, add the <code>dir_flip</code> attribute and set it to "true."
+    If your wheel turns in reverse when it should turn forward, add the <code>dir_flip</code> attribute and set it to "true".
 
 App.Viam returns the following screen with empty JSON attributes for the motor component and a reference for the available attributes.
 
@@ -97,7 +97,7 @@ Please be careful when activating your robot! Start with the power level (RPM) s
 
 At this point, the wheel on one side of your robot should be working through App.Viam. 
 
-### Adding the Left Hand Wheel
+### Adding the Left Side Wheel
 
 Now add the second wheel to see if you can get this bot driving in a coordinated manner. To do this, you’ll have to add the other <code>motor</code> controller and link them together with a <code> base</code>.
 
@@ -106,13 +106,13 @@ To do this, you’ll once again select <code> CREATE A COMPONENT</code> The conf
 Some of the differences are the <code>Name</code> which is <code>left</code> and the pins that it connects to. 
 
 <ol>
-<li class="spacing">Add the Left Hand Wheel, naming the component <code>left</code>.</li>
+<li class="spacing">Add the Left Side Wheel, naming the component <code>left</code>.</li>
 <li class="spacing">Select "motor" from the <code>Type</code> drop-down.</li>
 <li class="spacing">Select "gpio" from the <code>Model</code>drop-down.</li>
 <li class="spacing">Click <strong>New Component</strong>. App.Viam opens the Component config Panel for the wheel.</li>
 <li class="spacing">Now, tell Viam how this motor is wired to the Pi:</li>
 <ol type="a"> 
-<li class="spacing" style="list-style-type:lower-alpha">First, select the board name from the <strong>Depends On</strong>, which is "local" in this example, as the motor is wired to the Raspberry Pi board named, "local."</li>
+<li class="spacing" style="list-style-type:lower-alpha">First, select the board name from the <strong>Depends On</strong>, which is "local" in this example, as the motor is wired to the Raspberry Pi board named, "local".</li>
 
 <li class="spacing" style="list-style-type:lower-alpha">Now, make the following changes in the Left Wheel's JSON:</li>
 <OL type="a">
@@ -206,8 +206,8 @@ On the Camera Config panel:
 
 1. Enter "camera" in **Name**.
 2. Enter "camera" in **Model**.
-3. From **Depends On**, select "local."
-4. In the JSON, set <code>path_pattern</code> to "video0."
+3. From **Depends On**, select "local".
+4. In the JSON, set <code>path_pattern</code> to "video0".
 
 This is the code of your camera attributes if you wish to copy and paste it. 
 
