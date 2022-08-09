@@ -18,7 +18,7 @@ Both configuration and logging happen securely over HTTPS using secret tokens th
 
 ## Remote control    
 
-If a user uses remote control in the app.viam.com UI, all communication to the robot is via WebRTC. 
+If a user uses remote control in the app.viam.com UI, all communication to the robot is via WebRTC.
 
 [WebRTC Docs](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection)
 
