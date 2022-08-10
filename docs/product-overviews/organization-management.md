@@ -1,21 +1,21 @@
 ---
 title: Organization Management
-summary: A guide to app.viam.com's organizational hierarchy and permissioning.
+summary: A guide to the Viam App's organizational hierarchy and permissioning.
 authors:
     - Matt Dannenberg
 date: 2022-05-19
 ---
-# app.viam Organizational Hierarchy
+# The Viam App's Organizational Hierarchy
 
 ## Cloud App
-Viam’s fleet management website, app.viam.com, is the place for users and organizations to store, manage, and control their robotic fleets.
+Viam’s fleet management in the Viam App's Website ([https://app.viam.com](https://app.viam.com)), is the place for users and organizations to store, manage, and control their robotic fleets.
 
 ## Organization
-On [app.viam.com](https://app.viam.com/), robots belong to organizations.
+On the Viam App ([https://app.viam.com](https://app.viam.com)), robots belong to organizations.
 An organization is usually a company, a research group, or an individual (if an individual is building with Viam).
 
-A user account on [app.viam.com](https://app.viam.com/) can be a member of many organizations and will always be a member of at least one organization.
-If the new user was invited to [app.viam.com](https://app.viam.com/) via an existing organization, their first organization will be that which invited them.
+A user account on the Viam App can be a member of many organizations and will always be a member of at least one organization.
+If the new user was invited to the Viam App ([https://app.viam.com](https://app.viam.com/)) via an existing organization, their first organization will be that which invited them.
 If the new user signed up on their own (that is, without an invite from an existing organization), an organization will be created for them, containing only them and named for their user account (this name can be modified later if the user so desires).
 
 Any member of an organization can invite new members to that organization.
@@ -27,7 +27,7 @@ All robots belong to a location.
 The purpose of these locations is for an organization to sort and manage their fleet.
 Organizations can and often do have several locations.
 For example, Cool Robot Inc may have three warehouses (in NYC, LA, and Chicago), and create a location corresponding with each one containing the robots which reside in that physical warehouse.
-It is not necessary for locations on [app.viam.com](https://app.viam.com/) to align with physical locations in the real world; they are simply a way to subdivide a robot fleet for easier management.
+It is not necessary for locations on the Viam App ([https://app.viam.com](https://app.viam.com/)) to align with physical locations in the real world; they are simply a way to subdivide a robot fleet for easier management.
 For example, some users use locations with the names "production" and "testing" to keep their robots clearly separated.
 
 In some cases, locations alone may be insufficiently granular.

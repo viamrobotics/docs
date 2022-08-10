@@ -29,7 +29,7 @@ In that case, you could use Viam’s Python SDK to wrap the existing component l
 If no library currently exists, you will have to write a full driver for that component’s API in the language of your choice using the Viam SDK for that language.
 
 ## Running a Robot on the RDK
-When the RDK starts, it uses the secret in its cloud configuration file to ask app.viam.com for its robot configuration (see Runtime architecture).
+When the RDK starts, it uses the secret in its cloud configuration file to ask teh Viam App ([https://app.viam.com](https://app.viam.com)) for its robot configuration (see Runtime architecture).
 
 Next, the configuration is parsed and processed section by section specified in the JSON config fields, notably remotes, components, services, and processes.
 
