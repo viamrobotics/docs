@@ -195,7 +195,7 @@ Here is the code of your base attributes if you wish to copy and paste it.
 }
 ```
 
-When you save the Config and switch to the **Control** view, teh Viam App displays new control buttons for the <code>base</code> functionality.
+When you save the Config and switch to the **Control** view, the Viam App displays new control buttons for the <code>base</code> functionality.
 In the **Keyboard** tab, you can toggle your keyboard control to active, and then use **W** and **S** to go back and forth, and **A** and **D** to arc and spin.
 
 <img src="/tutorials/img/pi-kybrd-control.png" width="300px">
