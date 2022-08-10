@@ -7,7 +7,8 @@ date: 2022-04-08, 2022-5-19
 ---
 # Application End-to-End Flow
 When building a robot application in Viam, typically a user will start by [configuring their robot](../getting-started/robot-config.md) of one or many parts.
-Next they will test that it is wired up properly via the app.viam Control page. Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
+Next they will test that it is wired up properly via the app.viam Control page.
+Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
 This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the robot.
 
 Below, we describe the flow of information through a Viam-based multipart robot and then get into the specifics of what backs these connections and communcations APIs.
@@ -29,7 +30,8 @@ RDK Part 2 is consider the controlled peer (server).
 
 Let's suppose our SDK application uses the camera to track the largest object in the scene and instructs the arm to move to that same object.
 
-Since RDK Part 1 is the main part and has access to all other parts, the application will connect to it using the SDK. Once connected, it will take the following series of actions:
+Since RDK Part 1 is the main part and has access to all other parts, the application will connect to it using the SDK.
+Once connected, it will take the following series of actions:
 
 1. Get segmented point clouds from the camera and the object segmentation service.
 
@@ -51,7 +53,9 @@ Get segmented point clouds from the camera and the object segmentation service:
 
 2. The Camera will return the PointCloud data to RDK Part
 
-2. RDK Part 1 will use a point cloud segmentation algorithm to segment geometries in the PointCloud. Note: The points returned are respective to the reference frame of the camera. This will be important in a moment.
+2. RDK Part 1 will use a point cloud segmentation algorithm to segment geometries in the PointCloud.
+Note: The points returned are respective to the reference frame of the camera.
+This will be important in a moment.
 
 2. The set of segmented point clouds and their bounding geometries are sent back to the SDK-based application.
 
@@ -65,11 +69,16 @@ Take the object's center pose and tell the motion service to move the arm to tha
 
 2. The SDK application will send a Move request for the arm to the Motion service on RDK Part 1 with the destination set to the center point determined by the application.
 
-2. RDK Part 1's Motion service will break down the Move request and perform the necessary frame transforms before sending the requests along to the relevant components. This is where the frame system comes into play. Our center pose came from the camera but we want to move the arm to that position even though the arm lives in its own frame. The frame system logic in the RDK automatically handles the transformation logic between these two reference frames while also handling understanding how the frame systems are connected across the two parts.
+2. RDK Part 1's Motion service will break down the Move request and perform the necessary frame transforms before sending the requests along to the relevant components.
+This is where the frame system comes into play.
+Our center pose came from the camera but we want to move the arm to that position even though the arm lives in its own frame.
+The frame system logic in the RDK automatically handles the transformation logic between these two reference frames while also handling understanding how the frame systems are connected across the two parts.
 
-2. Having computed the pose in the reference frame of the arm, the Motion service takes this pose, and sends a plan on how to move the arm in addition to the gantry to achieve this new goal pose to RDK Part 2. The plan consists of a series of movements that combine inverse kinematics, mathematics, and constraints based motion planning to get the arm and gantry to their goal positions.
+2. Having computed the pose in the reference frame of the arm, the Motion service takes this pose, and sends a plan on how to move the arm in addition to the gantry to achieve this new goal pose to RDK Part 2.
+The plan consists of a series of movements that combine inverse kinematics, mathematics, and constraints based motion planning to get the arm and gantry to their goal positions.
 
-2. In executing the plan, which is being coordinated on RDK Part 1, Part 1 will send messages to the Arm and Gantry on RDK Part 2. RDK Part 2 will be unaware of the actual plan and instead will only receive distinct messages to move the components individually.
+2. In executing the plan, which is being coordinated on RDK Part 1, Part 1 will send messages to the Arm and Gantry on RDK Part 2.
+RDK Part 2 will be unaware of the actual plan and instead will only receive distinct messages to move the components individually.
 
 2. The arm and gantry connected to RDK Part 2 return an acknowledgement of the part Move requests to RDK Part 2.
 
@@ -78,12 +87,17 @@ Take the object's center pose and tell the motion service to move the arm to tha
 2. RDK Part 1 returns an acknowledgement of the Motion Move request to the SDK application.
 
 ## Low-Level Inter-Robot/SDK Communication
-All component and service types in the RDK, and the Viam API for that matter, are represented as [Protocol Buffers](https://developers.google.com/protocol-buffers) (protobuf) services. protobuf is a battle tested Interface Description Language (IDL) that allows for specifying services, their methods, and the messages that comprise those methods. Code that uses protobuf is autogenerated and compiles messages into a binary form.
+All component and service types in the RDK, and the Viam API for that matter, are represented as [Protocol Buffers](https://developers.google.com/protocol-buffers) (protobuf) services.
+protobuf is a battle tested Interface Description Language (IDL) that allows for specifying services, their methods, and the messages that comprise those methods.
+Code that uses protobuf is autogenerated and compiles messages into a binary form.
 
-[gRPC](https://grpc.io/) is responsible for the transport and communication of protobuf messages when calling protobuf methods. It generally works over a TCP, TLS backed HTTP2 connection operating over framing see [gRPC's HTTP2 documentation](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) for more.
+[gRPC](https://grpc.io/) is responsible for the transport and communication of protobuf messages when calling protobuf methods.
+It generally works over a TCP, TLS backed HTTP2 connection operating over framing see [gRPC's HTTP2 documentation](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) for more.
 
-The RDK uses protobuf and gRPC to enable access and control to its components and services. That means if there are two arms in a robot configuration, there is only one Arm service that handles the Remote Procedure Calls (RPC) for all arms configured.
+The RDK uses protobuf and gRPC to enable access and control to its components and services.
+That means if there are two arms in a robot configuration, there is only one Arm service that handles the Remote Procedure Calls (RPC) for all arms configured.
 
 In addition to gRPC, the RDK uses [WebRTC](https://webrtcforthecurious.com/) video and audio streams and data channels to enable peer to peer (P2P) communication between robot parts as well as SDKs and the Remote Control interface.
 
-An outline of how WebRTC is utilized lives [here](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection), but in short, an RDK is always waiting on app.viam.com to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis. Once a connection is made, app.viam.com is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.
+An outline of how WebRTC is utilized lives [here](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection), but in short, an RDK is always waiting on app.viam.com to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis.
+Once a connection is made, app.viam.com is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.

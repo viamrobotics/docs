@@ -16,10 +16,11 @@ date: 2022-04-08
 #### Fleet Management 
 * Managing a fleet of robots is easy, and you never have to worry about security.
 
-* You control when updates roll out to your robots. 
+* You control when updates roll out to your robots.
 
 #### Debugging
-* Debugging hardware and software together is frustrating. Viam is designed to make this easier
+* Debugging hardware and software together is frustrating.
+Viam is designed to make this easier
 
     * Logs can be viewed remotely in app.viam.com 
 
@@ -43,10 +44,12 @@ date: 2022-04-08
 
 * Multiple entry points so that users can choose how to engage
 
-    * Users can configure and control their robot via either our UI or by writing code. For users writing code, they have the option to leverage our services and existing drivers of our APIs or use their own custom algorithms and hardware implementations. These options mean that our users can be high school students just learning about software or trained roboticists with decades of experience.
+    * Users can configure and control their robot via either our UI or by writing code.
+    For users writing code, they have the option to leverage our services and existing drivers of our APIs or use their own custom algorithms and hardware implementations.
+    These options mean that our users can be high school students just learning about software or trained roboticists with decades of experience.
 
 ## Over the wire protocols & standards
-* At the heart of the Viam platform is a standard api specification. 
+* At the heart of the Viam platform is a standard api specification.
 
     * We provide an API for every category of hardware (eg: arm, motor, gantry),  that outlines methods that make it easy to program against that hardware
 
@@ -66,20 +69,23 @@ date: 2022-04-08
 
     * Streaming interfaces are useful for status methods
 
-        * For example, streaming ArmStatus would surface an arm’s joint positions and location of its end. This is analogous to subscribing to a topic in a typical ROS-based pub/sub architecture 
+        * For example, streaming ArmStatus would surface an arm’s joint positions and location of its end.
+        This is analogous to subscribing to a topic in a typical ROS-based pub/sub architecture 
 
     * If there are areas where performance of complex algorithms is a concern, we make it easy to cache complex structures to avoid any extra latency.
 
-* We provide idiomatic SDKs in every language. These allow easy access to your robot, and the ability to easily implement any new piece of hardware.
+* We provide idiomatic SDKs in every language.
+These allow easy access to your robot, and the ability to easily implement any new piece of hardware.
 
     * Unlike traditional robotics software tools, users are not beholden to python or C++
 
-    * Let’s imagine that you are developing your robot in Go, but have a camera that has an existing python driver. You can program your business logic in Go, but then wrap the python driver in our python SDK, exposing it to the rest of the ecosystem easily.
+    * Let’s imagine that you are developing your robot in Go, but have a camera that has an existing python driver.
+    You can program your business logic in Go, but then wrap the python driver in our python SDK, exposing it to the rest of the ecosystem easily.
 
 ## Security
-* Security is paramount for us, as it should be for all robotics projects. 
+* Security is paramount for us, as it should be for all robotics projects.
 
-* Everything in Viam is secure by default, including storing authentication requirements and end-to-end encryption. 
+* Everything in Viam is secure by default, including storing authentication requirements and end-to-end encryption.
 
 * App.viam.com allows users to set who can access each robot, ensuring that all camera or sensor data remains secure and private.
 

@@ -14,7 +14,8 @@ It is part of a Pose which also includes the position in 3D space.
 # Basics
 Orientation vectors are composted of 4 attributes.
 
-- RX, RY, RZ - define a vector from the center of the object to another point in the reference frame. This defines the direction something is pointing in.
+- RX, RY, RZ - define a vector from the center of the object to another point in the reference frame.
+This defines the direction something is pointing in.
 - Theta - describes the angular position around that vector.
 
 # Examples
@@ -39,4 +40,3 @@ Orientation vectors are composted of 4 attributes.
 - Easy to measure in the real world
 - No protractor needed
 - Rotation is pulled out (as Theta) which is often used independently and measured independently.
-
