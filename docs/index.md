@@ -1,7 +1,7 @@
 # Welcome to Viam's pre-Beta Documentation
 
 ## Getting Started
-Looking to get started with viam? Checkout the [installing viam server on Raspberry Pi instructions](getting-started/installation.md)
+Looking to get started with Viam? Checkout the [installing the Viam Server on Raspberry Pi instructions](getting-started/installation.md)
 
 - [Viam's Robot Configuration](getting-started/robot-config.md)
 - [Viam's Design Principles](design-principles.md)
@@ -11,7 +11,7 @@ coming soon
 - [A High Level Overview of Viam](getting-started/high-level-overview.md)
 
 ## Product Overviews
-- [app.viam's Organizational Hierarchy](product-overviews/organization-management.md)
+- [The Viam App's Organizational Hierarchy](product-overviews/organization-management.md)
 
 coming soon
 

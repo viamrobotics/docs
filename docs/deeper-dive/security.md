@@ -17,7 +17,7 @@ We have Google Single Sign-On and email/password enabled which creates a user on
 The cookie we write for this is consumed in `server.authMiddleware` and produces an `auth.State` comprised of the organizations the user is a part of.
 
 The second is a robot part running the RDK.
-Every robot part has a secret key associated with it that, when starting up the RDK server, it uses to both ask `app.viam.com` what its configuration file is as well as where to send logs to.
+Every robot part has a secret key associated with it that, when starting up the RDK server, it uses to pull the configuration file from the Viam App at [https://app.viam.com](https://app.viam.com), as well as where to send logs from the robot to.
 The `auth.State` for this is also built in `server.authMiddleware` but conveys no information about who the user is and instead has them logged out with a secret attached to its context.
 This happens over a legacy JSON API.
 

@@ -46,7 +46,7 @@ For example, UR5e is a model of the arm component type.
 
 * It can be used as a server.
     * Can parse and respond to changes in a remote robot configuration file.
-    * With updates possibly provided by app.viam.com.
+    * With updates possibly provided by the Viam App ([https://app.viam.com](https://app.viam.com)).
     * Initializes resources from a config.
     * Hosts a gRPC server implementing the Viam Robot API.
     * That serves functionality for all registered resources.
