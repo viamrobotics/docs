@@ -1,6 +1,6 @@
 ---
 title: Viam Install Instructions
-summary: Instructions which guide the user through installing viam-server and syncing that robot with the Viam App
+summary: Instructions which guide the user through installing viam-server and syncing that robot with the Viam App [https://app.viam.com](https://app.viam.com)
 authors:
     - Matt Dannenberg, Hazal Mestci, Arielle Mella, Joe Karlsson
 date: 2022-01-18, revised on 2022-06-30
@@ -172,9 +172,9 @@ Then install it as root:
 sudo ./viam-server --aix-install
 ```
 
-## Adding your Pi tgo the Viam App
+## Adding your pi on the Viam App ([https://app.viam.com](https://app.viam.com))
 
-In your web browser, navigate to the Viam App at [https://app.viam.com](https://app.viam.com) and log in.
+In your web browser, navigate to the Viam App ([https://app.viam.com](https://app.viam.com)) and log in.
 This means either you can continue with your Viam email address or a personal email you can sign up with.
 
 Once you are logged in, create a new location by filling out the form on the left and then clicking `New Location`.
@@ -201,8 +201,8 @@ It will look like this (starting with your own username and hostname) when you d
 
 ![copytingjsondata-empty](../tutorials/img/terminal-copytingjsondata-empty.png)
 
-Now go back to the Viam App ([https://app.viam.com](https://app.viam.com)) in your browser and click `COPY RDK CONFIG` at the bottom.
-This should fill your clipboard with the JSON config required for your Pi talk to the Viam App as this robot.
+Now go back to the Viam App ([https://app.viam.com](https://app.viam.com)) on your browser, click `COPY RDK CONFIG` at the bottom.
+This should fill your clipboard with the JSON config needed for your Pi talk to the Viam App as this robot.
 Go back to your terminal and paste this between the quotes.
 
 It should look like this:
@@ -215,7 +215,7 @@ Run it, then restart the viam-server:
 sudo systemctl restart viam-server.service
 ```
 
-If you refresh the pageBack on the Viam App ([https://app.viam.com](https://app.viam.com)), you can confirm the Pi is connected and pulled the config by looking at the top of the Robot page and seeing that `host` and `ips` fields are populated and that the `last access` field reads `less than a minute ago`.
+Refresh the page on the Viam App ([https://app.viam.com](https://app.viam.com)) to can confirm the Pi has connected and pulled the config by looking at the top of the Robot page and seeing that `host` and `ips` fields are populated and that the `last access` field reads `less than a minute ago`.
 
 ## Next Steps
 Now that you have the viam-server up and running, you can start configuring your robot and the real fun can begin!
