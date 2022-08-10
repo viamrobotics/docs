@@ -162,7 +162,7 @@ With both motors configured, the component page now display panels for both moto
 <img src="/tutorials/img/scuttle-bothMotors.png">
 
 !!! note
-    The Viam App ([https://app.viam.com](https://app.viam.com)) displays Component panels in the order of their creation.
+    The Viam App ([https://app.viam.com](https://app.viam.com)) displays component panels in the order of their creation.
     If your motor panels are not adjacent, that is normal.
 
 ## Configuring the Base
