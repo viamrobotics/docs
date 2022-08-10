@@ -15,7 +15,7 @@ On the Viam App ([https://app.viam.com](https://app.viam.com)), robots belong to
 An organization is usually a company, a research group, or an individual (if an individual is building with Viam).
 
 A user account on the Viam App can be a member of many organizations and will always be a member of at least one organization.
-If the new user was invited to the Viam App ([https://app.viam.com](https://app.viam.com/)) via an existing organization, their first organization will be that which invited them.
+If the new user was invited to the Viam App via an existing organization, their first organization will be that which invited them.
 If the new user signed up on their own (that is, without an invite from an existing organization), an organization will be created for them, containing only them and named for their user account (this name can be modified later if the user so desires).
 
 Any member of an organization can invite new members to that organization.
