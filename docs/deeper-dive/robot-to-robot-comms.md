@@ -1,12 +1,12 @@
 ---
 title: Robot to Robot Communication
-summary: Explanation of how a robot and its parts interact at the communcation layer.
+summary: Explanation of how a robot and its parts interact at the communication layer.
 authors:
     - Matt Dannenberg
 date: 2022-04-08, 2022-5-19
 ---
 # Application End-to-End Flow
-When building a robot application in Viam, typically a user will start by [configuring their robot](../getting-started/robot-config.md) of one or many parts.
+When building a robot application in the Viam App [https://app.viam.com](https://app.viam.com), typically a user will start by [configuring their robot](../getting-started/robot-config.md) of one or many parts.
 Next they will test that it is wired up properly via the app.viam Control page.
 Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
 This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the robot.
@@ -99,5 +99,5 @@ That means if there are two arms in a robot configuration, there is only one Arm
 
 In addition to gRPC, the RDK uses [WebRTC](https://webrtcforthecurious.com/) video and audio streams and data channels to enable peer to peer (P2P) communication between robot parts as well as SDKs and the Remote Control interface.
 
-An outline of how WebRTC is utilized lives [here](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection), but in short, an RDK is always waiting on app.viam.com to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis.
+An outline of how WebRTC is utilized lives at [https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection), but in short, an RDK is always waiting on app.viam.com to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis.
 Once a connection is made, app.viam.com is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.

@@ -1,6 +1,6 @@
 ---
 title: Viam Design Principles
-summary: High level overview of the design princples that drive Viam's development
+summary: High level overview of the design principles that drive Viam's development
 authors:
     - Matt Dannenberg
 date: 2022-04-08
@@ -22,7 +22,7 @@ date: 2022-04-08
 * Debugging hardware and software together is frustrating.
 Viam is designed to make this easier
 
-    * Logs can be viewed remotely in app.viam.com 
+    * Logs can be viewed remotely in the Viam App ([https://app.viam.com](https://app.viam.com))
 
     * At every step of a chain you can debug or try commands manually.
 
@@ -87,5 +87,5 @@ These allow easy access to your robot, and the ability to easily implement any n
 
 * Everything in Viam is secure by default, including storing authentication requirements and end-to-end encryption.
 
-* App.viam.com allows users to set who can access each robot, ensuring that all camera or sensor data remains secure and private.
+* The Viam App ([https://app.viam.com](https://app.viam.com)) allows users to set who can access each robot, ensuring that all camera or sensor data remains secure and private.
 
