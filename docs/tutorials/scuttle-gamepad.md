@@ -94,7 +94,8 @@ Here is a diagram of the gamepad.
 <tr><td><img src="../img/pi-game-gamepad-diagram.png"></td><td><img src="../img/pi-game-gamepad-legend.png"></td></tr>
 </table>
 
-To change the in-use movement/direction control on the gamepad between the D-Pad and the Joystick, press and hold the Home button (#11) until it displays the lighted segment combination for the gamepad configuration you need. Each red color arrangement allows you to control the gamepad in teh Viam App: 
+To change the in-use movement/direction control on the gamepad between the D-Pad and the Joystick, press and hold the Home button (#11) until it displays the lighted segment combination for the gamepad configuration you need.
+Each red color arrangement allows you to control the gamepad in the Viam App: 
 <table>
 <tr><td>LED 1 and 3: Use the D-Pad<BR>
 <img src="../img/pi-game-cont-1and3.jpg" width="250px"></td><td>LED 3 and 4: Use the D-Pad<BR>
