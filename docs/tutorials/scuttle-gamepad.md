@@ -30,7 +30,8 @@ Therefore, for <strong>Model</strong>, please manually enter, "gamepad," (withou
 
 <li>Click <strong>New Component</strong>. The Viam App opens the Component Config panel for the gamepad. </li>
 <li>On the Component Config panel, leave <strong>Depends On</strong> set to empty.</li>
-<li>The Viam App does not add any JSON Attributes to the input_controller configuration. Please add the following Attributes:
+<li>The Viam App does not add any JSON Attributes to the input_controller configuration.
+Please add the following Attributes:
 </OL>
 ```JSON
 {
