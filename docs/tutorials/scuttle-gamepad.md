@@ -42,7 +42,9 @@ Please add the following Attributes:
 
 <img src="../img/pi-game-game-config-blank.png">
 
-The controller config adds the gamepad controller to your robot. However, it does not wire it up to any functionality. This requires a Service.
+The controller config adds the gamepad controller to your robot.
+However, it does not wire it up to any functionality.
+This requires a Service.
 
 ## Adding a Service
 
