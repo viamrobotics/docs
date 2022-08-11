@@ -24,7 +24,8 @@ To add this controller to the robot’s config, from the Viam App ([https://app.
 <OL>
 <li>On the Create Component screen, enter "gamepad" as the component <strong>Name</strong>  and select "input_controller" for the component <strong>Type</strong>. </li>
 
-<li>There are no <strong>Model</strong> options for input_controllers. Therefore, for <strong>Model</strong>, please manually enter, "gamepad," (without the quotes) then press Tab. The Viam App will retain your entry.</li>
+<li>There are no <strong>Model</strong> options for input_controllers.
+Therefore, for <strong>Model</strong>, please manually enter, "gamepad," (without the quotes) then press Tab. The Viam App will retain your entry.</li>
 
 
 <li>Click <strong>New Component</strong>. The Viam App opens the Component Config panel for the gamepad. </li>
