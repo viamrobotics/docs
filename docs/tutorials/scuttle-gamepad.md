@@ -61,7 +61,10 @@ After adding the Attributes, your config screen should appear similar to this:
 
 <img src="../img/pi-game-service-config.png">
 
-Save the configuration and visit the control UI on The Viam App ([https://app.viam.com](https://app.viam.com)). You should see the panel for the Controller Service and its connection indicator. This is how your WebUI will look. Note the green Connection indicator:
+Save the configuration and visit the control UI on The Viam App ([https://app.viam.com](https://app.viam.com)).
+You should see the panel for the Controller Service and its connection indicator.
+This is how your web UI will look.
+Note the green Connection indicator:
 
 <img src="../img/pi-game-controller-panel.png">
 
