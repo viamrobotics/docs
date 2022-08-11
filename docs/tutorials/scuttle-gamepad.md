@@ -48,7 +48,8 @@ This requires a Service.
 
 ## Adding a Service
 
-To link the controller's input to the base functionality, we need to add our first `service`. Services are the software packages that provide our robots with cool and powerful functionality.
+To link the controller's input to the base functionality, we need to add our first `service`.
+Services are the software packages that provide our robots with cool and powerful functionality.
 
 1. Click **Create Service** under **services** at the top of the Viam App ([https://app.viam.com](https://app.viam.com)). 
 2. Enter "Base Remote Control" for Component `type`. "Base Remote Control" is a service we provide for driving a rover with a gamepad.
