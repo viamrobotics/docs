@@ -224,5 +224,5 @@ In the `CONFIG` tab, you can describe the hardware attached to your Pi which wil
 Click on `NEW COMPONENT` and then populate the resulting component with the configuration information for your hardware.
 Once your configuration changes are saved, you can switch to the `CONTROL` tab to actuate your hardware via the webUI.
 
-From here, you can download Viam's [python SDK](https://python.viam.dev/) and use it to write programs to make your robot autonomous.
-The readme on the python SDK landing page has [instructions](https://python.viam.dev/#easy-setup-via-app-viam-com) to guide you through connecting to and using your robot via the SDK.
+From here, you can download Viam's [Python SDK](https://python.viam.dev/) and use it to write programs to make your robot autonomous.
+The readme on the Python SDK landing page has [instructions](https://python.viam.dev/#easy-setup-via-app-viam-com) to guide you through connecting to and using your robot via the SDK.
