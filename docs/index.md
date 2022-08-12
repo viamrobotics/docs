@@ -15,7 +15,7 @@ coming soon
 
 coming soon
 
-- [app.viam's Fleet Management](product-overviews/fleet-management.md)
+- [The Viam App's Fleet Management](product-overviews/fleet-management.md)
 - [Overview of viam-server and RDK](product-overviews/RDK.md)
 - [Using Our SDKs as a Client Application](product-overviews/SDK-as-client.md)
 - [Using Our SDKs for a Server Hardware Implementation](product-overviews/SDK-as-server.md)
@@ -61,7 +61,7 @@ coming soon
 - [ProtoBuf and gRPC](deeper-dive/architecture-and-protobuf.md)
 - [Frame System](deeper-dive/frame-system.md)
 - [Operations and Operation IDs](deeper-dive/operations.md)
-- [How app.viam.com and Your Robot Interact](deeper-dive/robot-to-cloud-comms.md)
+- [How the Viam App and Your Robot Interact](deeper-dive/robot-to-cloud-comms.md)
 
 ## Appendix
 - [Viam Glossary](appendix/glossary.md)

@@ -1,6 +1,6 @@
 ---
 title: Setting up a Scuttle with Viam
-summary: Instructions for using App.Viam to Configure Raspberry Pi board for a Camera-Equipped Scuttle Robot
+summary: Instructions for using the Viam App to Configure Raspberry Pi board for a Camera-Equipped Scuttle Robot
 authors: 
 - Hazal Mescti (HM:ma)
 date: 2022-07-13, revised on 2022-08-01
@@ -14,7 +14,7 @@ The Raspberry Pi is a single-board computer into which you will wire all other c
 
 * Raspberry Pi with Raspian OS 64-bit Lite and Viam server installed.
 Refer to the <a href="/getting-started/installation/#installing-raspian-on-the-raspberry-pi">Installing Raspian on the Raspberry Pi</a>, if necessary.
-* The Pi is able to connect to app.viam.com
+* The Pi is able to connect to the Viam App ([https://app.viam.com](https://app.viam.com))
 * Scuttle Bot
 
 ## Configuring the Board
@@ -22,7 +22,7 @@ Refer to the <a href="/getting-started/installation/#installing-raspian-on-the-r
     When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
 
 <ol type="I">
-<li class="spacing">Begin by accessing <a href="https://app.viam.com">https://app.viam.com</a>.</li>
+<li class="spacing">Begin by accessing <a href="https://app.viam.com">the Viam App at https://app.viam.com</a>.</li>
 <li class="spacing">If you are using an existing Robot configuration, select your Robot's config and continue with Step 5.
 Otherwise, complete all steps.</li>
 <li class="spacing">Create an <strong>Org</strong>.
@@ -110,7 +110,7 @@ You can also change the direction of the rotation.
 !!! note
     A "whining" sound emitted from the motor indicates that the power level is not high enough to turn the armature which is normal.Increase the power level by 10%.
 
-At this point, the wheel on one side of your robot should be working through App.Viam.
+At this point, the wheel on one side of your robot should be working through the Viam App ([https://app.viam.com](https://app.viam.com)).
 
 ### Adding the Left Side Wheel
 
@@ -162,7 +162,7 @@ With both motors configured, the component page now display panels for both moto
 <img src="/tutorials/img/scuttle-bothMotors.png">
 
 !!! note
-    App.Viam displays Component panels in the order of their creation.
+    The Viam App ([https://app.viam.com](https://app.viam.com)) displays component panels in the order of their creation.
     If your motor panels are not adjacent, that is normal.
 
 ## Configuring the Base
@@ -195,7 +195,7 @@ Here is the code of your base attributes if you wish to copy and paste it.
 }
 ```
 
-When you save the Config and switch to the **Control** view, App.Viam displays new control buttons for the <code>base</code> functionality.
+When you save the Config and switch to the **Control** view, the Viam App displays new control buttons for the <code>base</code> functionality.
 In the **Keyboard** tab, you can toggle your keyboard control to active, and then use **W** and **S** to go back and forth, and **A** and **D** to arc and spin.
 
 <img src="/tutorials/img/pi-kybrd-control.png" width="300px">
@@ -204,7 +204,7 @@ If you click the **Discrete** tab, you can see different movement modes just as 
 
 <img src="/tutorials/img/pi-discrete.png">
 
-Now you have a rover that you can drive via App.Viam’s WebUI.
+Now you have a rover that you can drive via the Viam App's WebUI at [https://app.viam.com](https://app.viam.com).
 
 Control the scuttle's wheels using the WASD movement controls to gain a sense of how they operate.
 When you feel ready, try driving your scuttle bot around, being careful of its surroundings and other people in the area.
@@ -268,7 +268,7 @@ This is the code of your camera attributes if you wish to copy and paste it.
 If you save the config and click on your WebUI, you will be able to see your camera streaming.
 
 ## On Completion
-After successfully completing this tutorial, you should have a fully functional Scuttle rover which you can drive around and view the rover's perspective via App.Viam.
+After successfully completing this tutorial, you should have a fully functional Scuttle rover which you can drive around and view the rover's perspective via the Viam App [https://app.viam.com](https://app.viam.com).
 Play around with it and try some creative ideas on how you can use the camera with your rover.
 If you’d like, you can check out [Color Detection with Scuttle Robot on VIAM](https://docs.google.com/document/d/1FzWl6sJ78BnRsAFCjIBZuLWwzQPs_E99DQ8gI9HMJM0/edit), or create your own camera-related tutorials.
 You can also check out our [GPIO Pins for Scuttle Robot](https://docs.google.com/document/d/12QdRVXmHKjnShPkfsBA7QbYGE_NEuAiboov76sHZ7lk/edit) on VIAM or our [Bluetooth Gamepad Tutorial For Scuttle with a Pi](https://docs.google.com/document/d/1jXI_bMYLUtKlrtPHrNMdpdK5NaD031NkBctrwdEA2Gw/edit) to learn more about different configurations possible with the Scuttle rover.
