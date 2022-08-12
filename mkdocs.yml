@@ -42,5 +42,5 @@ extra:
 markdown_extensions:
     - admonition
     - codehilite
-    - footnotes
+    - footnotes 
 
