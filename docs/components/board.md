@@ -7,7 +7,7 @@ authors:
 date: 2022-07-05
 Modified: 2022-07-21 
 ---
-# Board Component
+# Board Component 
 
 In the Viam framework, a **board** is the signal wire hub of a [robot
 part](https://docs.viam.com/product-overviews/organization-management/#robots-and-their-parts).
