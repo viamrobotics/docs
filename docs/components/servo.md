@@ -35,14 +35,21 @@ Here's an example of how a servo might be wired to a Raspberry Pi:
 ![servo-wiring](img/servo-wiring.png)
 
 ## Viam Configuration
+
+### Required Attributes
+In addition to the `name` (of your choosing), `model` ("pi") and `type` ("servo"), you'll need to configure a `pin` to control the servo.
+The servo will depend on the board, which must also be configured.
+
 An example configuration file containing the necessary attributes is as follows:  
 
 ![servo-JSON](img/servo-json.png)
 [Click here for the raw JSON.](example-configs/servo-config.json)
 
 ### Optional Attributes
-`min` (int): Specifies the minimum angle in degrees to which the servo can move  
-`max` (int): Specifies the maximum angle in degrees to which the servo can move
+Attribute Name | Type | Meaning/Purpose
+-------------- | ---- | ---------------
+`min` | int | Specifies the minimum angle in degrees to which the servo can move  
+`max` | int | Specifies the maximum angle in degrees to which the servo can move
 
 ## Implementation
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)

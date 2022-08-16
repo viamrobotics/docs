@@ -48,6 +48,8 @@ A motor driver is a physical chip or power amplification circuit that converts i
 There are three common ways for the computing device to communicate with a brushed DC motor driver chip.
 The driver data sheet will specify which one to use.
 
+#### Pins
+
 - PWM/DIR: One digital input (such as a GPIO pin) sends a [pulse width modulation](https://en.wikipedia.org/wiki/Pulse-width_modulation) (PWM) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
 - A/B: One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled via PWM through one or both pins.
 - A/B + PWM: Three pins: an A and B to control direction and a separate PWM pin to control speed.
@@ -79,17 +81,30 @@ For example:
 ![motor-gpio-json](img/motor-gpio-json.png)  
 [Click here for the raw JSON.](example-configs/motor-gpio-config.json)
 
-`max_rpm` (float64): For non-encoded motors, this is an estimate of the maximum RPM the motor will run at with full power under no load.
-(For encoded motors, it actually limits the motor to that speed.) If unknown, it can be set to zero but this will render the “GoFor” method unusable.
+#### Required Attributes
+Attribute Name | Type | Default Value | Meaning/Purpose
+-------------- | ---- | ------------- | ---------------
+`board  ` | string | --        | Name of board on which it depends
+`max_rpm` | float | --         | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the “GoFor” method unusable.
+`pins` | object | --  | A structure that holds pin configuration information
+
+Nested within `pins` (note that only two or three of these are required depending on your motor driver; see [Pins](motor.md#pins) above for more information):
+
+Name | Type | Meaning/Purpose |
+---- | ---- | ----- |
+`a` | string | See [Pins](motor.md#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
+`b` | string | See [Pins](motor.md#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
+`dir` | string | See [Pins](motor.md#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
+`pwm` | string | See [Pins](motor.md#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
 
 #### Optional Attributes
-`min_power_pct` (float64): Sets a limit on minimum power percentage sent to the motor; default is 0.0  
-`max_power_pct` (float64): Sets a limit on maximum power percentage sent to the motor; range is 0.06 to 1.0  
-`pwm_freq` (uint): Sets the PWM pulse frequency  
-`dir_flip` (bool): Flips the direction of the signal sent if there is a DIR pin  
-`en_high` / `en_low` (string): Some drivers have optional enable pins that enable or disable the driver chip.
-If your chip requires a high signal to be enabled, use en_high with the pin number to the pins section.
-If you need a low signal use en_low.
+Attribute Name | Type | Default Value | Meaning/Purpose
+-------------- | ---- | ------------- | ---------------
+`min_power_pct` | float | 0.0 | Sets a limit on minimum power percentage sent to the motor 
+`max_power_pct` | float | 1.0 | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor  
+`pwm_freq` | uint | 800 | Sets the PWM pulse frequency in Hz.  Many motors operate optimally in the kHz range.
+`dir_flip` | bool | False | Flips the direction of the signal sent if there is a DIR pin  
+`en_high` / `en_low` | string | -- | Some drivers have optional enable pins that enable or disable the driver chip. If your chip requires a high signal to be enabled, add `en_high` with the pin number to the pins section. If you need a low signal use `en_low`.
 
 ## Brushless DC Motor
 
@@ -125,21 +140,32 @@ In either case position can only be determined relative to the starting position
 
 ### Viam Configuration
 
-Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.” Configuration of a quadrature encoder requires digital interrupts on the board for A and B in addition to the standard “gpio” model attributes.
+Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.” Configuration of a quadrature encoder requires digital interrupts on the board for A and B in addition to the [standard “gpio” model attributes](motor.md#required-attributes).
 Single pin encoders require configuring one digital interrupt.
 Here’s an example config file:  
 
 ![motor-encoded-dc-json](img/motor-encoded-dc-json.png)  
 [Click here for the raw JSON.](example-configs/motor-encoded-config.json)
 
+#### Required Attributes
+In addtion to the required [attributes of a non-encoded motor](motor.md#required-attributes), encoded DC motors require the following:
+
+Attribute Name | Type | Meaning/Purpose
+-------------- | ---- | ---------------
+`encoder` | string | Should match name of first digital interrupt you configured.
+`encoder_b` | string | Required for two phase encoder. Should match name of second digital interrupt you configured.
+
+
 #### Optional Attributes
+In addition to the optional attributes [listed in the previous non-encoded motor section](motor.md#optional-attributes), encoded motors have the following additional options:  
 
-In addition to the optional attributes listed in the previous non-encoded motor section, encoded motors have the following additional options:  
-
-`encoder_board` (string): Name of the board where encoders are; default is same as 'board'  
-`max_rpm` (float64): Sets a limit on max RPM  
-`max_acceleration` (float64): Sets a limit on max RPM per second  
-`ramp_rate` (float64): How fast to ramp power to motor when using RPM control  
+Attribute Name | Type | Meaning/Purpose
+-------------- | ---- | ---------------
+`digital_interrupts` | object | Contains `name` and `pin` attributes for two interrupts (for a two phase encoder) or one interrupt for single phase. See example JSON above.
+`encoder_board` | string | Name of the board where encoders are; default is same as 'board'
+`max_rpm` | float | Sets a limit on max RPM
+`max_acceleration` | float | Sets a limit on max RPM increase per second
+`ramp_rate` | float | How fast to ramp power to motor when using RPM control. 0.01 ramps very slowly; 1 ramps instantaneously. Range is (0, 1]. Default is 0.2.
 
 ## Stepper Motor
 
@@ -160,15 +186,25 @@ Refer to the motor data sheet for correct wiring.
 In this particular example the enable pin on the upper left corner of the driver is connected to ground to pull it low for our purposes.
 
 ### Viam Configuration
-Viam supports steppers controlled in one of two ways: a basic stepper driver chip that takes step and DIR input via GPIO and simply moves one step per pulse, or more advanced chips (ex: TMC5072, DMC4000) that have their own microcontrollers that conveniently handle things like speed and acceleration control.
+Viam supports steppers controlled in one of two ways: a basic stepper driver chip that takes step and DIR input via GPIO and simply moves one step per pulse (for these, use model "gpiostepper"), or more advanced chips (ex: TMC5072, DMC4000) that have their own microcontrollers that conveniently handle things like speed and acceleration control.
 Here’s an example of a basic stepper driver config:  
 
 ![motor-gpiostepper-json](img/motor-gpiostepper-json.png)  
 [Click here for the raw JSON.](example-configs/motor-gpiostepper-config.json)
 
+#### Required Attributes for Steppers
+
+Attribute Name | Type | Meaning/Purpose
+-------------- | ---- | ---------------
+`board` | string | Should match name of board on which motor depends.
+`pins` | object | A structure containing "step" and "dir" pin numbers; see example JSON above.
+`ticks_per_rotation` | integer | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common.
+
 #### Optional Attributes
-`stepper_delay` (uint): Time in microseconds to remain high for each step.
-Default is 20.
+
+Attribute Name | Type | Meaning/Purpose
+-------------- | ---- | ---------------
+`stepper_delay` | uint | Time in microseconds to remain high for each step. Default is 20.
 
 ## Implementation
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/motor/client/index.html)
