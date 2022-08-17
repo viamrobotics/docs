@@ -16,7 +16,11 @@ Refer to the <a href="/tutorials/scuttlebot">Setting up a Scuttle with Viam</a> 
 * Connection to the Viam App
 * EasySMX ESM-9101 Wireless Controller
 
-View the [Gamepad Demonstration Video](https://drive.google.com/file/d/1WfON6u6rltsMAY1LluZUUizk33DJ92Hd/view?usp=sharing)
+The following video demonstrates controlling a scuttle bot using a bluetooth gamepad:
+<video width="480" height="320" controls>
+  <source src="../videos/ScuttleDemos_Gamepad.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Adding the Controller to the Scuttle's Config
 
@@ -40,8 +44,8 @@ Please add the following Attributes:
 }
 ```
 
-<img src="../img/pi-game-game-config-blank.png">
-
+<img src="../img/pi-game-game-config-blank.png" />
+ 
 The controller config adds the gamepad controller to your robot.
 However, it does not wire it up to any functionality.
 This requires a Service.
@@ -55,18 +59,18 @@ Services are the software packages that provide our robots with cool and powerfu
 2. Enter "Base Remote Control" for Component `type`. "Base Remote Control" is a service we provide for driving a rover with a gamepad.
 3. Enter **scuttle_gamepad** for the Service `name`. 
 
-<img src="../img/pi-game-create-service.png">
+<img src="../img/pi-game-create-service.png" />
 
 After adding the Attributes, your config screen should appear similar to this:
 
-<img src="../img/pi-game-service-config.png">
+<img src="../img/pi-game-service-config.png" />
 
 Save the configuration and visit the control UI on The Viam App ([https://app.viam.com](https://app.viam.com)).
 You should see the panel for the Controller Service and its connection indicator.
 This is how your web UI will look.
 Note the green Connection indicator:
 
-<img src="../img/pi-game-controller-panel.png">
+<img src="../img/pi-game-controller-panel.png" />
 
 At this point, you should be able to move the scuttle. If you are in the specific mode that allows you to use the Joystick (#7), it will change the values in your robot config:
 
@@ -91,16 +95,16 @@ Testing these attributes will tell you which mode you are in.
 
 Here is a diagram of the gamepad. 
 <table>
-<tr><td><img src="../img/pi-game-gamepad-diagram.png"></td><td><img src="../img/pi-game-gamepad-legend.png"></td></tr>
+<tr><td><img src="../img/pi-game-gamepad-diagram.png" /></td><td><img src="../img/pi-game-gamepad-legend.png" /></td></tr>
 </table>
 
 To change the in-use movement/direction control on the gamepad between the D-Pad and the Joystick, press and hold the Home button (#11) until it displays the lighted segment combination for the gamepad configuration you need.
 Each red color arrangement allows you to control the gamepad in the Viam App: 
 <table>
 <tr><td>LED 1 and 3: Use the D-Pad<BR>
-<img src="../img/pi-game-cont-1and3.jpg" width="250px"></td><td>LED 3 and 4: Use the D-Pad<BR>
-<img src="../img/pi-game-cont-3and4.jpg" width="250px"></td></tr>
+<img src="../img/pi-game-cont-1and3.jpg" width="250px" /></td><td>LED 3 and 4: Use the D-Pad<BR>
+<img src="../img/pi-game-cont-3and4.jpg" width="250px" /></td></tr>
 <tr><td>LED 1 and 2: Use the D-Pad<BR>
-<img src="../img/pi-game-cont-1and2.jpg" width="250px"></td><td>LED 1 and 4: Use the Joystick<BR>
-<img src="../img/pi-game-cont-1and4.jpg" width="250px"></td></tr>
+<img src="../img/pi-game-cont-1and2.jpg" width="250px" /></td><td>LED 1 and 4: Use the Joystick<BR>
+<img src="../img/pi-game-cont-1and4.jpg" width="250px" /></td></tr>
 </table>
