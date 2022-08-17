@@ -20,6 +20,8 @@ nav:
   - Components:
     - Motor: 'components/motor.md'
     - Servo: 'components/servo.md'
+    - Board: 'components/board.md'
+    - Component FAQ: 'components/component-faq.md'
   - Services:
     - Vision: 'services/vision.md'
   - Appendix:
@@ -40,7 +42,8 @@ extra:
       link: https://github.com/viamrobotics/tutorials-and-docs/
       name: docs source on github
 markdown_extensions:
+    - footnotes
     - admonition
     - codehilite
-    - footnotes 
+  
 
