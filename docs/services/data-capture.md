@@ -8,11 +8,13 @@ date: 2022-05-19
 # Data Manager 
 The data manager service supports capturing data from any component at a pre-defined frequency.
 
-The capture runs in the background and can be set up to 15kHz, depending on the component.
-If a robot is restarted (with the same config), capture will automatically continue.
+The capture runs in the background and can be set as high as 15kHz, depending on the component.
+If a robot is restarted (with the same config), capture resumes automatically.
+
+The service also supports syncing captured data to the Viam Cloud at a predefined frequency or on-demand via the Sync() endpoint. Synchronization runs in the background, and if a robot is restarted (with the same config), synchronization at a predefined frequency will automatically continue. 
+
 
 #### Coming Soon
-- Cloud Synchronization
 - Data Processing for ML model training
 - Model to Robot Deployment
 
@@ -22,34 +24,188 @@ The data manager service supports all of the hardware components on a given robo
 Below are some example use cases across different types of hardware: 
 
 - A tomato picking gantry has a depth camera that captures images of crops on the vine.
-The point cloud data is sent to Viam's cloud platform every 30Hz
+The point cloud data is sent to Viam's cloud platform every 30Hz.
 - An autonomous delivery base has a GPS that captures its coordinate locations.
-These coordinate locations are sent to the Viam platform every 15kHZ
+These coordinate locations are sent to the Viam platform every 15kHZ.
 
 ## Configuration
 
-In order to use the data capture service, a user needs to add this service to the robots configuration, which is available through the configuration tab of your robot.
+To use the data capture service, the user must add this service to the robot's configuration, which is available through the robot's configuration tab.
 
 The following configuration parameters are available to you: 
 
-#### Component Method Configuration
+### Component Method Configuration
 
-You configure data capture for each method within a component.
+You must configure data capture for each method within a component.
 
-| Name          | Description               | Data Type | Options   |
-| ------------- | ------------- | ------------------------- | --------- |
-| capture_dir   | Set the root directory for data storage | string | Arbitrary directory path |
-| disabled | Disable capture for all components | bool | True, False |
-| method | Component method to capture data from | string | Arm: GetJointPositions or GetEndPosition, Camera: NextPointCloud, Gantry: GetPosition or GetLengths |
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Data Type</th>
+        <th>Options</th>
+    </tr>
+    <tr>
+        <td>capture_dir</td>
+        <td>Set the root directory for data storage</td>
+        <td>string</td>
+        <td>Arbitrary directory path</td>
+    </tr>
+    <tr>
+        <td>disabled</td>
+        <td>Disable capture for all components</td>
+        <td>bool</td>
+        <td>True, False</td>
+    </tr>
+    <tr>
+        <td>method</td>
+        <td>Component method to capture data from</td>
+        <td>string</td>
+        <td>Arm: GetJointPositions or GetEndPosition, <br>Camera: NextPointCloud, <br>Gantry: GetPosition or GetLengths</td>
+    </tr>
+</table>
 
+### Service Configuration 
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Data Type</th>
+        <th>Options</th>
+    </tr>
+    <tr>
+        <td>capture_dir</td>
+        <td>The root directory under which captured data should</td>
+        <td>string</td>
+        <td>Arbitrary directory path</td>
+    </tr>
+    <tr>
+        <td>disabled</td>
+        <td>Disable capture for all components</td>
+        <td>bool</td>
+        <td>true, false</td>
+    </tr>
+</table>
 
-#### Service Configuration 
+### Example Configuration
 
-| Name          | Description               | Data Type | Options   |
-| ------------- | ------------------------- | --------- | ----------|
-| capture_dir | The root directory under which captured data should | string | Arbitrary directory path |
-| disabled | Disable capture for all components | bool | true, false |
+The following are examples of the data capture configurations for two arms and a camera:
 
+````JSON
+{
+   "components": [
+   {
+       "model": "ur",
+       "name": "arm1",
+       "type": "arm",
+       "service_config": [
+           {
+               "type": "data_manager",
+               "attributes": {
+                   "capture_methods": [
+                       {
+                           "method": "GetJointPositions",
+                           "capture_frequency_hz": 1000
+                       },
+                       {
+                           "method": "GetEndPosition",
+                           "capture_frequency_hz": 1000
+                       }
+                   ]
+               }
+           }
+       ]
+   },
+{
+       "model": "ur",
+       "name": "arm2",
+       "type": "arm",
+       "service_config": [
+           {
+               "type": "data_manager",
+               "attributes": {
+                   "capture_methods": [
+                       {
+                           "method": "GetJointPositions",
+                           "capture_frequency_hz": 1000
+                       },
+                       {
+                           "method": "GetEndPosition",
+                           "capture_frequency_hz": 1000
+                       }
+                   ]
+               }
+           }
+       ]
+   },
+   {
+       "model": "camera",
+       "name": "camera1",
+       "type": "single_stream",
+       "service_config": [
+           {
+               "type": "data_manager",
+               "attributes": {
+                   "capture_methods": [
+                       {
+                           "method": "NextPointCloud",
+                           "capture_frequency_hz": 10
+                       }
+                   ]
+               }
+           }
+       ]
+   },
+   "services": [
+      {
+          "type": "data_manager",
+          "attributes": {
+              "capture_dir": "capture"
+          }
+      }
+   ]
+}
 
+````
 
+## Accessing the Data
+The data for each part of your robot is written to files within your configured capture_dir. If capture_dir is set to `capture` and you are capturing data from the above arms and camera, the pathspec and data file names are: 
 
+* capture/arm/arm1/{START_TIMESTAMP}
+* capture/arm/arm2/{START_TIMESTAMP}
+* capture/camera/camera1/{START_TIMESTAMP}
+
+Each of these files store encoded (protocol buffer)[https://developers.google.com/protocol-buffers] timestamped messages.
+
+### Syncing the Data to the Cloud
+
+#### Service Configuration
+
+##### Attributes
+
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Data Type</td>
+        <td>Options</td>
+    </tr>
+    <tr>
+        <td>sync_interval_mins</td>
+        <td>How often to sync data to the cloud, in minutes.</td>
+        <td>int</td>
+        <td>[1, inf]</td>
+    </tr>
+    <tr>
+        <td>additional_sync_paths</td>
+        <td>Any arbitrary files to sync to the cloud, in addition to what has been captured via capture service configuration.</td>
+        <td>string array</td>
+        <td>List of files and/or directories on robot</td>
+    </tr>
+    <tr>
+        <td>sync_disabled</td>
+        <td>Disable sync for all components</td>
+        <td>bool</td>
+        <td>True, false</td>
+    </tr>
+</table>
