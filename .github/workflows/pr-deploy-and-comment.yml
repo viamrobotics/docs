@@ -17,7 +17,7 @@ jobs:
         architecture: x64
 
     - name: Install mkdocs
-      run: python3 -m pip install mkdocs
+      run: python3 -m pip install mkdocs mkdocs-material
 
     - name: Run site build
       run: mkdocs build -d site
