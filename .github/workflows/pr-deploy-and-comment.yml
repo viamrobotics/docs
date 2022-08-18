@@ -36,7 +36,7 @@ jobs:
       uses: 'google-github-actions/upload-cloud-storage@v0'
       with:
         path: 'site'
-        destination: 'docs-pr-renderings/${{ github.sha }}'
+        destination: 'docs-test.viam.dev/${{ github.sha }}'
 
     - name: Comment on PR with link to rendered site
       uses: peter-evans/create-or-update-comment@v2.0.0
