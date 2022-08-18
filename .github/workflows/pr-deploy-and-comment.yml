@@ -18,9 +18,14 @@ jobs:
 
     - name: Install mkdocs
       run: python3 -m pip install mkdocs mkdocs-material mkdocs-material-extensions
+      
+    - name: Update mkdocs config
+      run: |
+        echo "INHERIT: mkdocs.yml" >> test_mkdocs.yml
+        echo "site_url: https://storage.googleapis.com/docs-pr-renderings/${{ github.sha }}/site" >> test_mkdocs.yml
 
     - name: Run site build
-      run: mkdocs build --no-directory-urls -d site
+      run: mkdocs build --no-directory-urls -d site -f test_mkdocs.yml
 
     - name: Authenticate on GCS
       uses: google-github-actions/auth@v0
