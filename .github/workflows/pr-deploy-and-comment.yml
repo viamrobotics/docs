@@ -37,6 +37,6 @@ jobs:
     - name: Comment on PR with link to rendered site
       uses: thollander/actions-comment-pull-request@v1
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.REPO_READ_TOKEN }}
         message: |
-          'You can view a rendered version of the docs from this PR at https://storage.cloud.google.com/docs-pr-renderings/${{ github.sha }}/site/index.html'
+          'You can view a rendered version of the docs from this PR at https://storage.googleapis.com/docs-pr-renderings/${{ github.sha }}/site/index.html'
