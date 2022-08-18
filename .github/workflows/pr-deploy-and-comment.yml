@@ -22,10 +22,10 @@ jobs:
     - name: Update mkdocs config
       run: |
         echo "INHERIT: mkdocs.yml" >> test_mkdocs.yml
-        echo "site_url: https://storage.googleapis.com/docs-pr-renderings/${{ github.sha }}/site" >> test_mkdocs.yml
+        echo "site_url: http://docs-test.viam.dev/${{ github.sha }}/site" >> test_mkdocs.yml
 
     - name: Run site build
-      run: mkdocs build --no-directory-urls -d site -f test_mkdocs.yml
+      run: mkdocs build -d site -f test_mkdocs.yml
 
     - name: Authenticate on GCS
       uses: google-github-actions/auth@v0
@@ -43,4 +43,4 @@ jobs:
       with:
         token: ${{ secrets.DANNENBERS_PTA_FOR_COMMENTING }}
         issue-number: ${{ github.event.pull_request.number }}
-        body: 'You can view a rendered version of the docs from this PR at https://storage.googleapis.com/docs-pr-renderings/${{ github.sha }}/site/index.html'
+        body: 'You can view a rendered version of the docs from this PR at http://docs-test.viam.dev/${{ github.sha }}/site'
