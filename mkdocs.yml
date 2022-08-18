@@ -5,7 +5,6 @@ nav:
     - Viam Overview: 'getting-started/high-level-overview.md'
     - Viam's Robot Configuration: 'getting-started/robot-config.md'
   - Product Overviews:
-    - Viam's Design Principles: 'design-principles.md'
     - app.viam's Organizational Hierarchy: 'product-overviews/organization-management.md'
     - app.viam's Robot Page: 'product-overviews/fleet-management.md'
   - Tutorials: 
