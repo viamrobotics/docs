@@ -3,41 +3,31 @@ title: Board Component Documentation
 summary: Explanation of board types, configuration, and usage in Viam.
 authors:
     - Jessamy Taylor
-    - Matt Dannenberg
 date: 2022-07-05
-Modified: 2022-07-21 
+Modified: 2022-08-18
 ---
-# Board Component 
+# Board Component
 
-In the Viam framework, a **board** is the signal wire hub of a [robot
-part](https://docs.viam.com/product-overviews/organization-management/#robots-and-their-parts).
-It sends signals to the other hardware components, and may or may not
-also act as the software hub, running an instance of the Viam server on
-its CPU. Boards have general purpose input/output (GPIO) pins through
-which they can transmit
-[PWM](https://en.wikipedia.org/wiki/Pulse-width_modulation)
-and other signals.
+In the Viam framework, a **board** is the signal wire hub of a [robot part](https://docs.viam.com/product-overviews/organization-management/#robots-and-their-parts).
+It sends signals to the other hardware components, and may or may not also act as the software hub, running an instance of the Viam server on its CPU.
+Boards have general purpose input/output (GPIO) pins through
+which they can transmit [PWM](https://en.wikipedia.org/wiki/Pulse-width_modulation) and other signals.
 
 Some examples of boards include Raspberry Pi, BeagleBone, and Jetson.
-These are all single-board computers (SBCs) capable of advanced
-computation, including running the Viam server. These all come with
-built-in GPIO pins.
+These are all single-board computers (SBCs) capable of advanced computation, including running the Viam server.
+These all come with built-in GPIO pins.
 
-Another type of board is a GPIO peripheral such as a Numato GPIO Module,
-which cannot run the Viam server itself, but can take input from another
-computer running Viam and communicate with other hardware components.
-Note that a desktop computer does not typically have GPIO pins, so it
-cannot act as a board without a GPIO peripheral.
+Another type of board is a GPIO peripheral such as a Numato GPIO Module, which cannot run the Viam server itself, but can take input from another computer running Viam and communicate with other hardware components.
+Note that a desktop computer does not typically have GPIO pins, so it cannot act as a board without a GPIO peripheral.
 
 <img src="../img/board-comp-options.png" alt="Image showing two board options: First, running the Viam Server locally and second, running via a peripheral plugged into the USB port of a computer that is running the Viam Server.">
 
-*Figure 1. Two different board options: SBC with GPIO pins running Viam
-server locally; or GPIO peripheral plugged into a computer's USB port,
-with the computer running Viam server.*
+*Figure 1. Two different board options: SBC with GPIO pins running Viam server locally; or GPIO peripheral plugged into a computer's USB port, with the computer running Viam server.*
 
 
 !!! note
-    The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers. In these cases, the board itself must run an instance of Viam server.
+    The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers.
+    In these cases, the board itself must run an instance of Viam server.
 
 ## General Hardware Requirements
 
@@ -47,21 +37,23 @@ A common board setup comprises the following:
 
 -   Power supply
 
-    -   A power supply must supply the correct voltage and sufficient current to avoid damaging or power cycling the board. See the board's data sheet for requirements. For example, a Raspberry Pi 4 takes a 5V power supply and converts it to 3.3V for its logic circuitry. The easiest way to power it is with a 5V USB-C power supply.
+    -   A power supply must supply the correct voltage and sufficient current to avoid damaging or power cycling the board.
+    See the board's data sheet for requirements.
+    For example, a Raspberry Pi 4 takes a 5V power supply and converts it to 3.3V for its logic circuitry.
+    The easiest way to power it is with a 5V USB-C power supply.
 
--   Some component(s) for the board to talk to! The board can't do much on its own so you'll probably want some actuators and/or sensors to make your robot a robot!
+-   Some component(s) for the board to talk to!
+The board can't do much on its own so you'll probably want some actuators and/or sensors to make your robot a robot!
 
 ## General Configuration
 
-If your application only involves GPIO and no other board attributes or
-communication methods are required, your board can be configured quite
+If your application only involves GPIO and no other board attributes or communication methods are required, your board can be configured quite
 simply as in this example:
 
 ![](img/board-gen-config.png)
 
-All boards will be of type **board**. Specify the correct **model** for
-your board. The following board models are currently supported (not
-exhaustive):
+All boards will be of type **board**. Specify the correct **model** for your board.
+The following board models are currently supported (not exhaustive):
 
 -   **pi**: Raspberry Pi 4 or Pi Zero W
 
@@ -69,94 +61,46 @@ exhaustive):
 
 -   **jetson**: Nvidia Jetson Xavier NX
 
--   **numato**
+-   **numato**: Numato GPIO model
 
-Give your board a **name** of your choosing. You will use this name when configuring other components that depend on your board, to specify the
-board on which they depend.
+Give your board a **name**. Choose any name you like, and note that this name is how you will refert to this particular board in your code and when configuring other components.
 
-## Communication Methods
+## Using GPIO
 
-Boards can communicate with other hardware components in a few different
-ways. Some devices only require basic GPIO pins whereas others require
-more specialized methods. For example, the TMC5072 stepper motor
-microcontroller requires SPI bus communication. The following are brief
-descriptions of each protocol Viam supports, as well as the
-corresponding configuration information.
+Essentially all electrical signals sent from and received by your board go through GPIO pins so it is important to understand some of what they can do and how to use them.
+Here are a few use cases:
 
-### SPI Bus
+- Can be set high (to 3.3V for example) or low (zero volts) to do things like:
+    - Switch an enable or mode pin on a motor driver or other chip.
+    - Light up an LED or similar.
+    - Switch a relay.
+- Send a PWM signal to control the speed of a motor or servo.
+- Read the state of the pin (i.e. the voltage), which can be used to monitor the status of whatever is connected to it.
+- Receive digital signals from sensors, as detailed in the Analog section below.
+- Receive input as a digital interrupt, detailed below.
+- Communicate using different protocols such as I2C and SPI bus.
 
-[Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) uses several pins for serial communication: serial data in (SDI, 
-sometimes called MOSI); serial data out (SDO, sometimes called MISO);
-SCLK which is a clock for serial communication; and chip enable pins
-(labeled CE0 and CE1 in the case of a Pi). A peripheral which uses SPI
-bus may or may not use the chip enable pins. The required connections
-between corresponding board pins and peripheral device pins must be
-wired, but each of these pins does not need to be specified in the
-config as most boards have them configured by default. You only need to specify the index of the entire bus.
+Some things GPIO pins *cannot* do:
 
-#### Configuration
+- Power a motor or other high power draw device directly.
+GPIO pins are built for logic levels of power, i.e. 3.3V and 16mA per pin.
+Power amplification (a motor driver or relay) would be necessary.
+- Receive signals over 3.3V (or whatever the logic voltage is on a given board).
 
-The attributes section of a board using SPI will contain the following:
+If you are using GPIO pin methods like `gpio_pin_by_name` [(documented here)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.gpio_pin_by_name) you do not need to configure anything about the pins in your config file. The pins are automatically configured based on the board model you put in your config, and you can access them using the board pin number (*not* the GPIO number). You can find these pin numbers [here](https://pinout.xyz/) or by running `pinout` in your Pi terminal.
 
-```JSON
-{
-  "spis": [
-    {
-      "name": "main",
-      "bus_select": "0"
-    }
-  ]
-}
-```
-#### Required Fields
-
-**name** (string): Choose a name for the SPI bus. Note that a component
-that uses this bus must then have this same name configured in its
-attributes.
-
-**bus_select** (string): A Raspberry Pi has two SPI buses: 0 and 1. See
-data sheet for specifics on other boards.
-
-### I2C
-
-I2C stands for inter-integrated circuit and is similar to SPI but
-requires fewer pins: serial data (SDA) and serial clock (SCL). Again,
-boards that support I2C often have the requisite pins configured by
-default, so in your config file you need only specify which I2C bus you
-are using.
-
-#### Configuration
-
-```JSON
-{
-  "i2cs": [
-    {
-      "name": "bus1",
-      "bus": "1"
-    }
-  ]
-}
-```
-#### Required Fields
-
-**name** (string): Choose a name for the SPI bus. Note that a component
-that uses this bus must then have this same name configured in its
-attributes.
-
-**bus** (string): Usually a number such as 1. See board data sheet for
-specifics on its I2C wiring.
-
-### Analogs
+## Analogs
 
 If an analog to digital converter (ADC) chip is being used in your
 robot, analog readers (analogs) will have to be configured. An ADC takes
 a voltage as input and converts it to an integer output (for example, a
 number between 0 and 1023 in the case of the 10 bit MCP3008 chip).
 
-#### Configuration
+### Configuration
 
-The ADC communicates with the board over SPI so both analog and SPI must
-be configured. An example:
+Some boards like Numato have built-in ADCs which makes configuration more straightforward.
+
+Some boards (such as Raspberry Pi) communicate with the ADC over SPI so both analog and SPI must be configured. An example:
 
 ```JSON
 {
@@ -214,7 +158,7 @@ allow for the use of AnalogSmoother. Specify the duration in
 milliseconds over which the rolling average of the input should be
 taken, and the sampling rate in samples per second, respectively.
 
-### Digital Interrupts
+## Digital Interrupts
 
 Digital interrupts are useful when your code needs to be notified
 immediately anytime there is a change in GPIO value. Contrast this with
@@ -222,7 +166,7 @@ running the Get method on a GPIO pin only at specific times when you
 want to know its value, which you can do without configuring interrupts;
 you only need to getGPIOpin by name.
 
-#### Configuration
+### Configuration
 
 An example:
 
@@ -252,7 +196,7 @@ An example:
 
 #### Required Fields
 
-**name** (string): Choose a name for the analog reader.
+**name** (string): Choose a name for the digital interrupt.
 
 **pin** (string): Specify which GPIO pin of the board to use. Use the
 pin number, not the GPIO number.
@@ -264,6 +208,74 @@ that occur. Set type to "servo" to count the average time between the
 interrupts (akin to pulse width).
 
 **formula** (string): Apply a mathematical function to the input.
+
+## Other Communication Methods
+
+Boards can communicate with other hardware components in a few different ways.
+Some devices only require basic GPIO pins whereas others require more specialized methods.
+For example, the TMC5072 stepper motor microcontroller requires SPI bus communication.
+The following are brief descriptions of each protocol Viam supports, as well as the corresponding configuration information.
+
+### SPI Bus
+
+[Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) uses several pins for serial communication: main out/serial in (MOSI); main in/serial out (MISO); SCLK which is a clock for serial communication; and chip enable (also called chip select) pins.
+If you are using a Raspberry Pi, the “built-in” chip select pins are labeled CE0 and CE1 on the pinout sheet.
+The required connections between corresponding board pins and peripheral device pins must be wired, but each of these pins does not need to be specified in the config as most boards have them configured by default.
+Only the index of the entire bus needs to be specified.
+
+#### Configuration
+
+The attributes section of a board using SPI will contain the following:
+
+```JSON
+{
+  "spis": [
+    {
+      "name": "main",
+      "bus_select": "0"
+    }
+  ]
+}
+```
+#### Required Fields
+
+**name** (string): Choose a name for the SPI bus. Note that a component
+that uses this bus must then have this same name configured in its
+attributes.
+
+**bus_select** (string): A Raspberry Pi has two SPI buses: 0 and 1. See
+data sheet for specifics on other boards.
+
+### I2C
+
+I2C stands for inter-integrated circuit and is similar to SPI but requires fewer pins: serial data (SDA) and serial clock (SCL).
+Some boards that support I2C have the SDA and SCL pins configured by default, so in your config file you need only specify which I2C bus you are using.
+For example, if you use I2C bus 1 on a Raspberry Pi 4, SDA and SCL will be pins 3 and 5, respectively.
+You will also need to enable I2C on your board if it is not enabled by default.
+See instructions [here for how to enable it on a Raspberry Pi 4](https://docs.viam.com/getting-started/installation/#enabling-the-i2c-protocol-on-the-raspberry-pi).
+[Here is more information about I2C on Raspberry Pi.](https://pinout.xyz/pinout/i2c)
+
+#### Configuration
+
+```JSON
+{
+  "i2cs": [
+    {
+      "name": "bus1",
+      "bus": "1"
+    }
+  ]
+}
+```
+#### Required Fields
+
+**name** (string): Choose a name for the SPI bus. Note that a component
+that uses this bus must then have this same name configured in its
+attributes.
+
+**bus** (string): Usually a number such as 1. See board data sheet for
+specifics on its I2C wiring. Raspberry Pi recommends using bus 1.
+
 
 ## Implementation
 
