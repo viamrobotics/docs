@@ -75,7 +75,7 @@ You must configure data capture for each method within a component.
     </tr>
     <tr>
         <td>capture_dir</td>
-        <td>The root directory under which captured data should</td>
+        <td>The root directory under which captured data should be stored.</td>
         <td>string</td>
         <td>Arbitrary directory path</td>
     </tr>
