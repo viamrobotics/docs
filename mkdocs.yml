@@ -12,7 +12,7 @@ nav:
     - Tutorials: 'tutorials/tutorials.md'
     - Install VIAM on Raspberry Pi: 'getting-started/installation.md'    
     - ScuttleBot: 'tutorials/scuttlebot.md'
-    - Scuttlebot Gamepad: 'tutorials/scuttle-gamepad' 
+    - Scuttlebot Gamepad: 'tutorials/scuttle-gamepad.md'
     - YahBoom Rover: 'tutorials/yahboom-rover.md'
   - Deep Dives:
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
