@@ -1,41 +1,54 @@
 {
-    "components": [
-       {
-         "type": "board",
-         "model": "pi",
-         "name": "local",
-         "attributes": {
-           "digital_interrupts": [
-             {
-               "name": "interrupt1",
-               "pin": "13"
-             },
-             {
-               "name": "interrupt2",
-               "pin": "11"
-             }
-           ]
-         }
-       },
-       {
-         "type": "motor",
-         "model": "gpio",
-         "name": "myMotor1",
-         "attributes": {
-           "board": "local",
-           "max_rpm": 500,
-           "pins": {
-             "pwm": "16",
-             "dir": "18"
-           },
-           "encoder": "interrupt1",
-           "encoder_b": "interrupt2",
-           "ticks_per_rotation": 9600
-         },
-         "depends_on": [
-           "local"
-         ]
-       }
-     ]
-   }
-   
+  "components": [
+    {
+      "type": "board",
+      "model": "pi",
+      "name": "local",
+      "attributes": {
+        "digital_interrupts": [
+          {
+            "name": "encoderA",
+            "pin": "13"
+          },
+          {
+            "name": "encoderB",
+            "pin": "11"
+          }
+        ]
+      }
+    },
+    {
+      "type": "encoder",
+      "model": "hall",
+      "name": "myEncoder",
+      "depends_on": [
+        "local"
+      ],
+      "attributes": {
+        "board": "local",
+        "pins": {
+          "a": "encoderA",
+          "b": "encoderB"
+        }
+      }
+    },
+    {
+      "type": "motor",
+      "model": "gpio",
+      "name": "myMotor1",
+      "depends_on": [
+        "local"
+      ],
+      "attributes": {
+        "board": "local",
+        "max_rpm": 500,
+        "pins": {
+          "pwm": "16",
+          "dir": "18"
+        },
+        "encoder": "myEncoder",
+        "ticks_per_rotation": 9600
+      }
+    }
+  ]
+}

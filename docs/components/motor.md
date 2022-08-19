@@ -4,6 +4,7 @@ summary: Explanation of motor types, configuration, and usage in Viam.
 authors:
     - Jessamy Taylor
 date: 2022-06-08
+Modified: 2022-08-19
 ---
 # Motors
 
@@ -128,11 +129,7 @@ Only the output side of the driver board is different, i.e. more wires connect t
 
 ## DC Motor With Encoder
 
-### Mechanism
-An encoder is a device that is integrated with a motor to sense the angular position, direction and/or speed of rotation.
-Viam supports [quadrature encoders](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs), which output two phases that can be used together to determine speed and direction.
-Viam also supports single pin “pulse output” encoders which give speed but not direction.
-In either case position can only be determined relative to the starting position; these encoders are incremental and do not indicate absolute position.
+Some motors come with encoders integrated or attached to them. Other times, you may add an encoder to a motor. See the [Encoder Component Doc](encoder.md) for more information on encoders.
 
 ### Wiring  
 
@@ -140,8 +137,7 @@ In either case position can only be determined relative to the starting position
 
 ### Viam Configuration
 
-Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.” Configuration of a quadrature encoder requires digital interrupts on the board for A and B in addition to the [standard “gpio” model attributes](motor.md#required-attributes).
-Single pin encoders require configuring one digital interrupt.
+Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.” Configuration of an encoder requires configuring the encoder [per this document](encoder.md) in addition to the [standard “gpio” model attributes](motor.md#required-attributes).
 Here’s an example config file:  
 
 ![motor-encoded-dc-json](img/motor-encoded-dc-json.png)  
@@ -152,19 +148,14 @@ In addtion to the required [attributes of a non-encoded motor](motor.md#required
 
 Attribute Name | Type | Meaning/Purpose
 -------------- | ---- | ---------------
-`encoder` | string | Should match name of first digital interrupt you configured.
-`encoder_b` | string | Required for two phase encoder. Should match name of second digital interrupt you configured.
-
+`encoder` | string | Should match name of the encoder you configure as an `encoder` component.
+`ticks_per_rotation` | string | Number of ticks in a full rotation of the encoder (and motor shaft).
 
 #### Optional Attributes
 In addition to the optional attributes [listed in the previous non-encoded motor section](motor.md#optional-attributes), encoded motors have the following additional options:  
 
 Attribute Name | Type | Meaning/Purpose
 -------------- | ---- | ---------------
-`digital_interrupts` | object | Contains `name` and `pin` attributes for two interrupts (for a two phase encoder) or one interrupt for single phase. See example JSON above.
-`encoder_board` | string | Name of the board where encoders are; default is same as 'board'
-`max_rpm` | float | Sets a limit on max RPM
-`max_acceleration` | float | Sets a limit on max RPM increase per second
 `ramp_rate` | float | How fast to ramp power to motor when using RPM control. 0.01 ramps very slowly; 1 ramps instantaneously. Range is (0, 1]. Default is 0.2.
 
 ## Stepper Motor
