@@ -4,7 +4,6 @@
 Looking to get started with Viam? Checkout the [installing the Viam Server on Raspberry Pi instructions](getting-started/installation.md)
 
 - [Viam's Robot Configuration](getting-started/robot-config.md)
-- [Viam's Design Principles](design-principles.md)
 
 coming soon
 
