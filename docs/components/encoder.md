@@ -16,7 +16,8 @@ An encoder could also be positioned on a passive joint or other rotational objec
 - Some sort of rotary robot part (like a motor, joint or dial) for which you want to measure movement
 
 ## Mechanism
-Viam supports [quadrature encoders](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs), which output two phases that can be used together to detect how far something has turned and in which direction. Each phase output goes to a different pin on the board.
+Viam supports [quadrature encoders](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs), which output two phases that can be used together to detect how far something has turned and in which direction.
+Each phase output goes to a different pin on the board.
 
 Viam also supports single pin “pulse output” encoders which give relative position but not direction.
 
