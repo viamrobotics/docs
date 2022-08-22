@@ -30,7 +30,7 @@ These coordinate locations are sent to the Viam platform every 15kHZ.
 
 ## Configuration
 
-To use the data capture service, the user must add this service to the robot's configuration, which is available through the robot's configuration tab.
+To use the data capture service, the user must add this service to the robot's configuration, which is available through the robot's configuration tab in the [Viam App (https://app.viam.com)](https://app.viam.com).
 
 The following configuration parameters are available to you: 
 
@@ -46,13 +46,13 @@ You must configure data capture for each method within a component.
         <th>Options</th>
     </tr>
     <tr>
-        <td>capture_dir</td>
-        <td>Set the root directory for data storage</td>
-        <td>string</td>
-        <td>Arbitrary directory path</td>
+        <td>capture_frequency_hz</td>
+        <td>Frequency at which to capture data.</td>
+        <td>int</td>
+        <td>1-1000 when capture enabled.</td>
     </tr>
     <tr>
-        <td>disabled</td>
+        <td>capture_disabled</td>
         <td>Disable capture for all components</td>
         <td>bool</td>
         <td>True, False</td>
@@ -66,6 +66,12 @@ You must configure data capture for each method within a component.
 </table>
 
 ### Service Configuration 
+
+<p class="Mycaption" ><em>Figure 1: The Viam App's Data Management Panel.</em>
+<img src="../img/data-cap-dm-panel.png" width="600" /></p>
+
+### Data Capture Attributes
+
 <table>
     <tr>
         <th>Name</th>
@@ -75,16 +81,28 @@ You must configure data capture for each method within a component.
     </tr>
     <tr>
         <td>capture_dir</td>
-        <td>The root directory under which captured data should be stored.</td>
+        <td>The root directory under <br>which captured data should be stored.</td>
         <td>string</td>
         <td>Arbitrary directory path</td>
     </tr>
     <tr>
-        <td>disabled</td>
+        <td>capture_disabled</td>
         <td>Disable capture for all components</td>
         <td>bool</td>
         <td>true, false</td>
     </tr>
+    <tr>
+        <td>sync_disabled</td>
+        <td>Disable sync for all components</td>
+        <td>bool</td>
+        <td>true, false</td>
+    </tr>
+        <tr>
+        <td>sync_interval_mins</td>
+        <td>Frequency of syncing to cloud</td>
+        <td>int</td>
+        <td>-</td>
+    </tr>    
 </table>
 
 ### Example Configuration
@@ -175,7 +193,7 @@ The data for each part of your robot is written to files within your configured 
 * capture/arm/arm2/{START_TIMESTAMP}
 * capture/camera/camera1/{START_TIMESTAMP}
 
-Each of these files store encoded (protocol buffer)[https://developers.google.com/protocol-buffers] timestamped messages.
+Each of these files store encoded <a href="https://developers.google.com/protocol-buffers" target="_blank">protocol buffer</a> timestamped messages.
 
 ### Syncing the Data to the Cloud
 
@@ -183,7 +201,7 @@ Each of these files store encoded (protocol buffer)[https://developers.google.co
 
 ##### Attributes
 
-<table>
+<table style="width:70% word-wrap:break-word" >
     <tr>
         <td>Name</td>
         <td>Description</td>
@@ -192,15 +210,15 @@ Each of these files store encoded (protocol buffer)[https://developers.google.co
     </tr>
     <tr>
         <td>sync_interval_mins</td>
-        <td>How often to sync data to the cloud, in minutes.</td>
+        <td>How often to sync data to the cloud,<br> in minutes.</td>
         <td>int</td>
         <td>[1, inf]</td>
     </tr>
     <tr>
         <td>additional_sync_paths</td>
-        <td>Any arbitrary files to sync to the cloud, in addition to what has been captured via capture service configuration.</td>
+        <td>Any arbitrary files to sync to the cloud,<br> in addition to what has been captured<br> via capture service configuration.</td>
         <td>string array</td>
-        <td>List of files and/or directories on robot</td>
+        <td>List of files and/or<br> directories on robot</td>
     </tr>
     <tr>
         <td>sync_disabled</td>
