@@ -6,7 +6,7 @@ authors:
 date: 2022-06-08
 Modified: 2022-08-19
 ---
-# Motors
+# Motor Component
 
 *If you are looking for information about hobby servos (servomotors), [click here](https://github.com/viamrobotics/tutorials-and-docs/blob/main/docs/components/servo.md).*  
 
