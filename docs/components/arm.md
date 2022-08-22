@@ -2,7 +2,7 @@
 title: Arm Component Documentation
 summary: Explanation of arm types, configuration, and usage in Viam.
 authors:
-    - Jessamy Taylor
+    - Peter Lo Verso
 date: 2022-06-01 
 ---
 # Arm Component
