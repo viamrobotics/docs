@@ -64,10 +64,13 @@ You must configure data capture for each method within a component.
         <td>Arm: GetJointPositions or GetEndPosition, <br>Camera: NextPointCloud, <br>Gantry: GetPosition or GetLengths</td>
     </tr>
 </table>
+<p class="Mycaption" ><em>Figure 1: The Viam App's Component Tab Capture Configuration.</em>
+<img src="../img/data-cap-cap-config.png" width="600" /></p>
+
 
 ### Service Configuration 
 
-<p class="Mycaption" ><em>Figure 1: The Viam App's Data Management Panel.</em>
+<p class="Mycaption" ><em>Figure 2: The Viam App's Data Management Panel.</em>
 <img src="../img/data-cap-dm-panel.png" width="600" /></p>
 
 ### Data Capture Attributes
@@ -102,7 +105,13 @@ You must configure data capture for each method within a component.
         <td>Frequency of syncing to cloud</td>
         <td>int</td>
         <td>-</td>
-    </tr>    
+    </tr>
+            <tr>
+        <td>additional_sync_paths</td>
+        <td>Any arbitrary files to sync to the cloud, in addition to what has been captured via capture service configuration</td>
+        <td>string array</td>
+        <td>List of files and/or directories on robot</td>
+    </tr>      
 </table>
 
 ### Example Configuration
@@ -187,7 +196,7 @@ The following are examples of the data capture configurations for two arms and a
 ````
 
 ## Accessing the Data
-The data for each part of your robot is written to files within your configured capture_dir. If capture_dir is set to `capture` and you are capturing data from the above arms and camera, the pathspec and data file names are: 
+Before being synced to the cloud, the data data for each part of your robot is written to a file within your configured capture_dir. If capture_dir is set to `capture` and you are capturing data from the above arms and camera, the pathspec and data file names are: 
 
 * capture/arm/arm1/{START_TIMESTAMP}
 * capture/arm/arm2/{START_TIMESTAMP}
