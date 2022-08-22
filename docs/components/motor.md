@@ -16,6 +16,7 @@ This page covers how to wire, configure and control various types of DC motor wi
 
 ## Contents
 - [General Hardware Requirements](motor.md#general-hardware-requirements)
+- [Identifying What Kind of Motor You Have](motor.md#what-kind-of-motor-do-i-have)
 - [Brushed DC Motor](motor.md#brushed-dc-motor)
 - [Brushless DC Motor](motor.md#brushless-dc-motor)
 - [DC Motor with Encoder](motor.md#dc-motor-with-encoder)
@@ -36,6 +37,21 @@ A common motor control setup comprises the following:
 
 !!! caution
     Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
+
+## Identifying What Kind of Motor You Have
+If you don't have packaging or labels that identify the motor model, here are some other ways to tell which section of this document is relevant to you:
+
+1. How many wires are coming out of the motor?
+If there are only two electrical connections to the motor (wires or tabs onto which to attach wires), you likely have a brushed DC motor.
+[Click here to skip to that section.](motor.md#brushed-dc-motor)
+2. Is the motor square with a band of black around it? If so, try twisting the shaft between your fingers.
+If you can feel it thunk through a series of incremental "steps," as opposed to a more continuous grinding, you may have a stepper motor.
+Stepper motors often have four wires of equal size, sometimes more, but always an even number.
+[Click here to skip to that section.](motor.md#stepper-motor)
+3. If your motor has a round plastic portion on one end (kind of like a cap) and has six wires coming out of it, you may have a brush DC motor with an encoder. If it has an encoder and more than six wires it could be a brushless DC motor with an encoder. You'll need to check out the sections on encoded motors, plus whichever type of DC motor you have.
+[Click here to skip to the section on encoded motors.](motor.md#dc-motor-with-encoder)
+4. If your motor doesn't seem to have an encoder, and it doesn't seem to be a stepper motor, and it has at least three wires coming out of it, you may have a brushless DC motor.
+[Click here to skip to that section.](motor.md#brushless-dc-motor)
 
 ## Brushed DC Motor
 ### Mechanism
