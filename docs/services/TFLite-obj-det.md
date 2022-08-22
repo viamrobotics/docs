@@ -18,10 +18,13 @@ The parameters for the tflite detector are:
 
 ## Model Limitations
 
-We strongly recommend that you package your .tflite model with metadata in the standard form given by the schema (link schema). In the absence of metadata, your TFLite model must satisfy the following requirements:
+We strongly recommend that you package your .tflite model with metadata in the standard form given by the schema (link schema). 
+In the absence of metadata, your TFLite model must satisfy the following requirements:
 
 1. A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1) 
 1. At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
-1. Bounding box output tensor must be ordered [x x y y], where x is an x-boundary (xmin or xmax) of the bounding box and the same is true for y. Each value should be between 0 and 1, designating the percentage of the image at which the boundary can be found.
+1. Bounding box output tensor must be ordered [x x y y], where x is an x-boundary (xmin or xmax) of the bounding box and the same is true for y. 
+2. Each value should be between 0 and 1, designating the percentage of the image at which the boundary can be found.
 
-These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1. Feel free to use one of these architectures or build your own! 
+These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1. 
+Feel free to use one of these architectures or build your own! 
