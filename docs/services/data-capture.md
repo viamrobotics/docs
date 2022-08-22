@@ -196,7 +196,7 @@ The following are examples of the data capture configurations for two arms and a
 ````
 
 ## Accessing the Data
-Before being synced to the cloud, the data data for each part of your robot is written to a file within your configured capture_dir. If capture_dir is set to `capture` and you are capturing data from the above arms and camera, the pathspec and data file names are: 
+Before being synced to the cloud, the data for each part of your robot is written to a file within your configured capture_dir. If capture_dir is set to `capture` and you are capturing data from the above arms and camera, the pathspec and data file names are: 
 
 * capture/arm/arm1/{START_TIMESTAMP}
 * capture/arm/arm2/{START_TIMESTAMP}
