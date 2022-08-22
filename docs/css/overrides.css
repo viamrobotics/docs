@@ -6,6 +6,63 @@
 
 img /* Add top/bottom padding around images.*/
 {
-    padding: 12px 0px 12px 0px;
+    padding: 12px 0px 22px 0px;
     
 }
+
+video /* fix margins around video.*/
+{
+    margin: -10px 0px 24px 0px;
+    
+}
+
+
+.file
+{
+    font-family: 'Courier New', Courier, monospace, monospace;
+    font-weight: 600;
+}
+
+/* The caption class it used elsewhere, so renamed to Mycaption. 
+This class creates a border around the caption (on top) and the
+image if you keep the img tab inside the p tags.*/
+
+p.Mycaption {
+    font-style: italic;
+    font-size: smaller;
+    text-indent: 0;
+    border: thin silver solid;
+    margin: 0.5em;
+    padding: 0.5em;
+    margin-top:12px;
+  }
+/* Added for images using the caption box*/
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+/* end of img styling */  
+
+
+
+
+/* Sets up number list*/  
+OL.myDec ~ li
+{
+list-style-type: decimal;
+}
+OL.myLwr ~ li
+{
+list-style-type: lower-alpha;
+padding-left: 15em;
+}
+
+OL.myRom ~ li
+{
+list-style-type: lower-roman;
+padding-left: 30em;
+}
+
+
