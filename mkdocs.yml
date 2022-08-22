@@ -5,27 +5,29 @@ nav:
     - Viam Overview: 'getting-started/high-level-overview.md'
     - Viam's Robot Configuration: 'getting-started/robot-config.md'
   - Product Overviews:
-    - Viam's Design Principles: 'design-principles.md'
     - app.viam's Organizational Hierarchy: 'product-overviews/organization-management.md'
     - app.viam's Robot Page: 'product-overviews/fleet-management.md'
   - Tutorials: 
     - Tutorials: 'tutorials/tutorials.md'
     - Install VIAM on Raspberry Pi: 'getting-started/installation.md'    
     - ScuttleBot: 'tutorials/scuttlebot.md'
-    - Scuttlebot Gamepad: 'tutorials/scuttle-gamepad' 
+    - Scuttlebot Gamepad: 'tutorials/scuttle-gamepad.md'
     - YahBoom Rover: 'tutorials/yahboom-rover.md'
+    - Color Detection using a ScuttleBot: 'tutorials/color-detection-scuttle.md'
   - Deep Dives:
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
     - Viam's Authentication: 'deeper-dive/security.md'
   - Components:
+    - Component FAQ: 'components/component-faq.md'  
+    - Board: 'components/board.md'    
     - Motor: 'components/motor.md'
     - Servo: 'components/servo.md'
-    - Board: 'components/board.md'
-    - Component FAQ: 'components/component-faq.md'
   - Services:
     - Vision: 'services/vision.md'
+    - Data Capture: 'services/data-capture.md'    
   - Appendix:
     - Orientation Vector: 'appendix/orientation-vector.md'
+    - Troubleshooting: 'appendix/troubleshooting.md'    
     - Viam Glossary: 'appendix/glossary.md'
   - SDKs:
     - Python SDK: 'https://python.viam.dev/'
@@ -44,6 +46,6 @@ extra:
 markdown_extensions:
     - footnotes
     - admonition
-    - codehilite
+    - codehilite 
   
 
