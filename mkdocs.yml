@@ -23,6 +23,7 @@ nav:
     - Board: 'components/board.md'
     - Component FAQ: 'components/component-faq.md'
   - Services:
+    - TFLite Object Detector: 'services/TFLite-obj-det.md'
     - Vision: 'services/vision.md'
   - Appendix:
     - Orientation Vector: 'appendix/orientation-vector.md'
