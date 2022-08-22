@@ -108,9 +108,9 @@ You must configure data capture for each method within a component.
     </tr>
             <tr>
         <td>additional_sync_paths</td>
-        <td>Any arbitrary files to sync to the cloud, in addition to what has been captured via capture service configuration</td>
+        <td>Any arbitrary files to sync to the cloud,<br> in addition to what has been captured<br> via capture service configuration</td>
         <td>string array</td>
-        <td>List of files and/or directories on robot</td>
+        <td>List of files and/or<br> directories on robot</td>
     </tr>      
 </table>
 
@@ -202,7 +202,8 @@ Before being synced to the cloud, the data data for each part of your robot is w
 * capture/arm/arm2/{START_TIMESTAMP}
 * capture/camera/camera1/{START_TIMESTAMP}
 
-Each of these files store encoded <a href="https://developers.google.com/protocol-buffers" target="_blank">protocol buffer</a> timestamped messages.
+Each of these files store encoded <a href="https://developers.google.com/protocol-buffers" target="_blank">protocol buffer</a>[^pbf] timestamped messages.
+[^pbf]:Protocol Buffers: <a href="https://developers.google.com/protocol-buffers" target="_blank">https://developers.google.com/protocol-buffers</a>
 
 ### Syncing the Data to the Cloud
 
