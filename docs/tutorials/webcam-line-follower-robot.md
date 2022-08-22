@@ -12,7 +12,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 <div style="column-count:2;column-gap-40px">
 <div>
-<p><strong>Goal</strong>: dddTo make a wheeled robot follow a colored line along the floor using a webcam and the Viam vision service color detector. 
+<p><strong>Goal</strong>: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam vision service color detector. 
 </p></div>
 <div><img src="../img/LF-following1.gif" /></div>
 </div>
