@@ -233,7 +233,7 @@ You have a rover following a path of your choice, anywhere you want it to go!
 
 ## Troubleshooting
 
-### Issue #1: The Rover moves to fast to track the line
+### Issue #1: The rover moves too fast to track the line
 If your rover keeps driving off the line so fast that the color detector can’t keep up, you can try two things:
 <ol>
 <li class="spacing">Slow down the move straight and turning speeds of the rover by decreasing the  the numbers in:
