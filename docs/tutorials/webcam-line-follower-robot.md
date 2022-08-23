@@ -48,7 +48,7 @@ If you haven’t already, please set up the Raspberry Pi on the <a href="https:/
 
     a. Configure the base per the Base Component Doc.
 	
-    a. Configure the camera as type `webcam`. You’ll need to figure out which path to put into the `path_pattern` attribute:
+    a. Configure the camera as type `webcam`. You’ll need to figure out which path to put into the `path` attribute:
 
 Add the following (with the correct path in place of “video0”) to the camera’s attributes:
 
