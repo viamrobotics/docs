@@ -10,6 +10,7 @@ img /* Add top/bottom padding around images.*/
     
 }
 
+
 video /* fix margins around video.*/
 {
     margin: -10px 0px 24px 0px;
@@ -64,5 +65,3 @@ OL.myRom ~ li
 list-style-type: lower-roman;
 padding-left: 30em;
 }
-
-
