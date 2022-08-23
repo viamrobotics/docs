@@ -7,7 +7,7 @@ date: 2022-06-01
 ---
 # Arm Component
 
-Arms are serial chains of joints and links, with a fixed end and an end-effector end. 
+Arms are serial chains of joints and links, with a fixed end and an end effector end. 
 The end effector is able to be placed at arbitrary cartesian positions relative to the base of the arm, and can be moved to cartesian coordinates or controlled directly via the joint positions.
 
 As an example, to move an xArm6 whose component name is "my_xArm6" forwards in the X direction by 300mm:
