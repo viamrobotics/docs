@@ -17,6 +17,7 @@ nav:
   - Deep Dives:
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
     - Viam's Authentication: 'deeper-dive/security.md'
+    - Control Package: 'deeper-dive/controls-package.md'    
   - Components:
     - Component FAQ: 'components/component-faq.md'  
     - Board: 'components/board.md'    
