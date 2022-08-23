@@ -31,7 +31,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
     - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
 - [A wheeled base component](./scuttlebot.md). We used a SCUTTLE robot for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
 - RGB camera
-    - A common-off-the-shelf, [regular webcam](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html) with a ribbon connector to the Pi’s camera module port.
+    - A common off-the-shelf, [regular webcam](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html) with a ribbon connector to the Pi’s camera module port.
     - You must mount the Camera to the front of the rover pointing down towards the floor.
 - Colored tape and floor space
     - Any color is suitable as long as its color is somewhat different from the floor color. For our tutorial, we used green electrical tape. 
@@ -48,7 +48,7 @@ If you haven’t already, please set up the Raspberry Pi on the <a href="https:/
 
     a. Configure the base per the Base Component Doc.
 	
-    a. Configure the camera as type `webcam`. You’ll need to figure out which path to put into the `path_pattern` attribute:
+    a. Configure the camera as type `webcam`. You’ll need to figure out which path to put into the `path` attribute:
 
 Add the following (with the correct path in place of “video0”) to the camera’s attributes:
 
@@ -233,7 +233,7 @@ You have a rover following a path of your choice, anywhere you want it to go!
 
 ## Troubleshooting
 
-### Issue #1: The Rover moves to fast to track the line
+### Issue #1: The rover moves too fast to track the line
 If your rover keeps driving off the line so fast that the color detector can’t keep up, you can try two things:
 <ol>
 <li class="spacing">Slow down the move straight and turning speeds of the rover by decreasing the  the numbers in:
