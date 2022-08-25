@@ -182,7 +182,7 @@ The following are examples of the data capture configurations for two arms and a
                }
            }
        ]
-   },
+   }],
    "services": [
       {
           "type": "data_manager",
