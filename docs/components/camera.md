@@ -10,12 +10,12 @@ date: 2022-05-19
 
 A Viam Camera is a source of 2D and/or 3D images (e.g. a webcam, lidar, time-of-flight sensor, etc). A single image is returned from the camera upon request, and images can be streamed continuously from the camera by using systems that do fast, repeated requests. 
 
-There are two basic things you can do with a camera component. 
-1. Request the next Image (which is a 2D Color(RGB), or Depth(Z) image).
-	1. A 2D image always has its x,y units in pixels. For Color, the pixel value is a RGB value, and for Depth it is a uint16 representing depth in mm.
-1. Request the next Point Cloud (which is a 3D image)
-	1. A 3D point cloud has all of its (x,y,z) coordinates in units of mm.
+There are two basic things you can do with a camera component:
 
+1. Request the next Image (which is a 2D Color(RGB), or Depth(Z) image).
+	* A 2D image always has its x,y units in pixels. For Color, the pixel value is a RGB value, and for Depth it is a uint16 representing depth in mm.
+2. Request the next Point Cloud (which is a 3D image)
+	* A 3D point cloud has all of its (x,y,z) coordinates in units of mm.
 
 # Camera Models
 
