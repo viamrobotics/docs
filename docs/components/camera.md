@@ -24,7 +24,7 @@ Below are the available transformations, and the attributes they need.
 		"stream" : "color", # or depth
 		"pipeline": [
 			{ "type": "rotate", "attributes": {} },
-			{ "type": "resize". "attributes": {"width":200, "height" 100} }
+			{ "type": "resize", "attributes": {"width":200, "height" 100} }
 		]
 	}
 }
