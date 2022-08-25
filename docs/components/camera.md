@@ -5,19 +5,16 @@ authors:
     - Matt Dannenberg
 date: 2022-05-19
 ---
-# Coming soon!
-This will look similar to the [motor doc](motor.md), but describing how to wire up and configure a camera and our virtual cameras which modify video streams.
+# Camera Models
 
+## Transform Model
 
-## Camera Models
+The Transform Model creates a pipeline for applying transformations to an input image source. 
+Transformations get applied in the order they are written in the pipeline. 
+Below are the available transformations, and the attributes they need.
 
-### Transform Model
-
-Create a pipeline for applying transformations to an input image source. transformations get applied in the order they are written in the pipeline. Below are the available transformations, and the attributes they need.
-
-example: 
-
-```
+**Example**: 
+```json
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -32,12 +29,12 @@ example:
 	}
 }
 ```
-#### identity
+## Identity
 
+The Identity transform does nothing to the image. 
+You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
 
-The identity transform. Does nothing to the image. You can use this if you want to change the underlying camera source's intrinsic parameters or stream type, for example.
-
-```
+```json
 {
 	"type": "identity",
 	"attributes": {
@@ -46,11 +43,12 @@ The identity transform. Does nothing to the image. You can use this if you want 
 }
 ```
 
-#### rotate
+## Rotate
 
-Rotates the image by 180 degrees. Useful for when you camera is installed upside down on your robot. 
+The Rotate trasnformation rotates the image by 180 degrees. 
+This feature is useful for when the camera is installed upside down on your robot. 
 
-```
+```json
 {
 	"type": "rotate",
 	"attributes": {
@@ -59,11 +57,11 @@ Rotates the image by 180 degrees. Useful for when you camera is installed upside
 }
 ```
 
-#### resize
+## Resize
 
-Resizes the image to the specified height and width. 
+The Resize transform resizes the image to the specified height and width. 
 
-```
+```json
 {
 	"type": "rotate",
 	"attributes": {
@@ -72,12 +70,12 @@ Resizes the image to the specified height and width.
 	}
 }
 ```
+## Depth to Pretty
 
-#### depth to pretty
+The Depth-to-Pretty transform takes a depth image and turns into a colorful image, with blue indicating distant points and red indicating points nearby points. 
+Actual depth information is lost in the transform.
 
-Depth-to-Pretty takes a depth image and turns into a colorful image, with blue being points that are far away, and red being points that are close by. Actual depth information is lost in the transform.
-
-```
+```json
 {
 	"type": "depth_to_pretty",
 	"attributes": {
@@ -86,7 +84,7 @@ Depth-to-Pretty takes a depth image and turns into a colorful image, with blue b
 }
 ```
 
-#### overlay
+#### Overlay
 
 Overlay overlays the depth and color 2D images. Useful in order to debug the alignment of the two images.
 
@@ -99,11 +97,13 @@ Overlay overlays the depth and color 2D images. Useful in order to debug the ali
 }
 ```
 
-#### undistort
+## Undistort
 
-Undistort will undistort the input image according to the intrinsics and distortion parameters specified within the camera parameters. Currently only supports a Brown-Conrady model of distortion. More information within the [OpenCV docs here](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a).
+The Undistort transform undistorts the input image according to the intrinsics and distortion parameters specified within the camera parameters. 
+Currently only supports a Brown-Conrady model of distortion (25 August 2022). 
+For further information, pklease refer to the [OpenCV docs](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a).
 
-```
+```json
 {
 	"type": "undistort",
 	"attributes": {
@@ -126,11 +126,11 @@ Undistort will undistort the input image according to the intrinsics and distort
 }
 ```
 
-#### detections
+## Detections
 
-Detections takes the input imageand overlays the detections from a given detector present within the vision service.
+The Detections tramsform takes the input image and overlays the detections from a given detector present within the vision service.
 
-```
+```json
 {
 	"type": "detections",
 	"attributes": {
@@ -138,13 +138,13 @@ Detections takes the input imageand overlays the detections from a given detecto
 		"confidence_threshold": float # only display detections above threshold
 	}
 }
-```
+```json
 
 #### depth edges
 
-Depth Edges creates a canny edge detector to detect edges on an input depth map.
+The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
 
-```
+```json
 {
 	"type": "depth_edges",
 	"attributes": {
@@ -155,11 +155,11 @@ Depth Edges creates a canny edge detector to detect edges on an input depth map.
 }
 ```
 
-#### depth preprocess
+## Depth Preprocess
 
 Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map
 
-```
+```json
 {
 	"type": "depth_preprocess",
 	"attributes": {
