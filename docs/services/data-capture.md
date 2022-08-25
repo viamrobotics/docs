@@ -118,7 +118,7 @@ You must configure data capture for each method within a component.
 
 The following are examples of the data capture configurations for two arms and a camera:
 
-````JSON
+```JSON
 {
    "components": [
    {
@@ -193,7 +193,7 @@ The following are examples of the data capture configurations for two arms and a
    ]
 }
 
-````
+```
 
 ## Accessing the Data
 Before being synced to the cloud, the data for each part of your robot is written to a file within your configured capture_dir. If capture_dir is set to `capture` and you are capturing data from the above arms and camera, the pathspec and data file names are: 
