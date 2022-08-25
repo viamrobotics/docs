@@ -5,6 +5,18 @@ authors:
     - Matt Dannenberg
 date: 2022-05-19
 ---
+
+# Intro
+
+A Viam Camera is a source of 2D and/or 3D images (e.g. a webcam, lidar, time-of-flight sensor, etc). A single image is returned from the camera upon request, and images can be streamed continuously from the camera by using systems that do fast, repeated requests. 
+
+There are two basic things you can do with a camera component. 
+1. Request the next Image (which is a 2D Color(RGB), or Depth(Z) image).
+	1. A 2D image always has its x,y units in pixels. For Color, the pixel value is a RGB value, and for Depth it is a uint16 representing depth in mm.
+1. Request the next Point Cloud (which is a 3D image)
+	1. A 3D point cloud has all of its (x,y,z) coordinates in units of mm.
+
+
 # Camera Models
 
 Here are details about each of the fields in the camera config:
@@ -133,7 +145,7 @@ Combine the point clouds from multiple camera sources and project them to be fro
 {
 	"name": "camera_name",
 	"type": "camera",
-	"model" : "align_color_depth",
+	"model" : "join_pointclouds",
 	"attributes": {
     	"camera_sources": ["cam1", "cam2", "cam3"], # camera sources to combine
     	"target_frame": "arm1" # the frame of reference for the points in the merged point cloud.
