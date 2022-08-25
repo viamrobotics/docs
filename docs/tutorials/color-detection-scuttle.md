@@ -37,7 +37,7 @@ Then create an environment for Python by running the following on the terminal:
 conda create -n pysdk python=3.9. 
 ```
 
-You can also name your environment as you wish, remembering to keep it consistent. 
+You can also name your environment as you wish, but please remember to keep it consistent. 
 We named our environment pysdk, referring to the [Viam Python SDK](https://python.viam.dev/). 
 Next, activate and navigate to this environment by running the command: 
 ```bash
@@ -70,7 +70,9 @@ Be sure to replace “~/Desktop/” with the “/path/toYour/directory/” where
 ```bash
 python ~/Desktop/scuttle.py  
 ```
-There are a few elements we decided were worth highlighting. 
+
+## Notes on Color Detection Operation
+
 Within `getVisService(robot)`, a detector is configured with particular properties and subsequently added to the vision service. 
 This particular detector is a ‘color’ detector, which means the relevant parameters are “detect_color (hex string)”, “tolerance (float from 0 to 1)”, and “segment_size (integer).”  
 Feel free to add new detectors with different parameters! 
