@@ -50,7 +50,7 @@ In order to receive pose and map updates from the slam algorithm, the slam servi
 
 # **RDK Config**
 
-````JSON
+```JSON
 "services": [
   {
     "attributes": {
@@ -68,7 +68,7 @@ In order to receive pose and map updates from the slam algorithm, the slam servi
     "type": "slam"
   }
 ]
-````
+```
 
 ## Required Attributes
 
@@ -170,9 +170,9 @@ and
 
 Perform a git clone on the slam repository using the recursive install flag to allow the sub packages to be downloaded as well.
 
-````bash
+```bash
 git clone --recurse-submodules git@github.com:viamrobotics/slam.git
-````
+```
 
 ### ORBSLAM3 Setup
 
@@ -182,13 +182,13 @@ This setup documents the current process for getting ORBSLAM3 working locally on
 
 The following are the required dependencies for building and running ORBSLAM3. In addition you should ensure the most recent version of the orbslam submodule is located in your directory with
 
-````bash
+```bash
 git submodule update \--init \--recursive
-````
+```
 
 ##### Pangolin - to setup run the following
 
-````bash
+```bash
 git clone \--recursive
 https://github.com/stevenlovegrove/Pangolin.git
 cd Pangolin
@@ -197,54 +197,53 @@ mkdir build && cd build
 cmake ..
 make -j4
 sudo make install
-````
+```
 ##### OpenCV
-````bash
+```bash
 sudo apt install libopencv-dev
-````
+```
 
 ##### Eigen
-````bash
+```bash
 sudo apt install libeigen3-dev
-````
+```
 ##### gRPC
 
 To setup gRPC, use the following command:
-
 ````bash
 cd \~/slam/slam-libraries
 make pull-rdk
-````
+```
 
 This command pulls a minimal copy of rdk and build c++ gRPC files off of our proto.
 
 ##### Other Dependencies
-````bash
+```bash
 sudo apt install libssl-dev
 sudo apt-get install libboost-all-dev
-````
+```
 
 #### Building ORBSLAM3
 
 To build ORBSLAM3 run
-````bash
+```bash
 cd \~/slam/slam-libraries/viam-orb-slam
 ./build_orbslam.sh
-````
+```
 
 Should the code fail the initial setup (your pi freezes and requires a restart), change the *make -j\`nproc\`* flags into *make -j2*
 
 After building, use the following command to move the binary to `/usr/local/bin`:
 
-````bash
+```bash
 sudo cp bin/orb_grpc_server /usr/local/bin
-````
+```
 In addition, make sure the binary is added in SLAMlibraries.go for ORBSLAM3 in rdk.
 
 Lastly, move the vocabulary file into your data directory. You must do this whenever a new data directory will be used.
-````bash
+```bash
 cp ORB_SLAM3/Vocabulary/ORBvoc.txt ~/YOUR_DATA_DIR/config
-````
+```
 
 # Usage
 
