@@ -307,7 +307,7 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
  
 The model for using the velodyne lidar. The velodyne must be running locally at address `0.0.0.0`. 
 
-```
+```json
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -323,7 +323,7 @@ The model for using the velodyne lidar. The velodyne must be running locally at 
 
 FFmpeg is a model that allows you to use a video file or stream as a camera.
 
-```
+```json
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -347,7 +347,7 @@ FFmpeg is a model that allows you to use a video file or stream as a camera.
 
 Fake is a fake camera that always returns the same image, which is a dot in the top left corner, which can be red or yellow or blue.
 
-```
+```json
 {
 	"name": "camera_name",
 	"type": "camera",
