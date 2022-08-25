@@ -7,9 +7,143 @@ date: 2022-05-19
 ---
 # Camera Models
 
-## Transform Model
+Here are details about each of the fields in the camera config:
 
-The Transform Model creates a pipeline for applying transformations to an input image source. 
+* **Type** is the component type, which will always be "camera"
+* **Name** is the name of the component. 
+* **Model** is how the component will be set up. Some model types are for setting up physical cameras where images and point clouds originate, some are for combining streams from multiple cameras into one, and the `transform` model is for transforming and processing images.
+* **Attributes** are the details that the model requires to work. What attributes are required depends on the model selected. There are some common attributes that can be attached to all camera models.
+    * `stream`: this can be either "color" or "depth" and specifies which kind of image should be returned from the camera stream.  
+    * `debug`: "true" or "false", and enables the debug outputs from the camera.
+    * `camera_parameters` : these are the intrinsic parameters of the camera used to do 2D <-> 3D projections, and to undistort images.
+
+```json
+"camera_parameters": {
+    "height": 720, # height of the image in pixels
+    "width": 1280, # width of the image in pixels
+    "fx": 900.538000, # focal length in pixels, x direction
+    "fy": 900.818000, # focal length in pixels, y direction
+    "ppx": 648.934000, # x center point in pixels
+    "ppy": 367.736000, # y center point in pixels
+    "distortion": {  # optional field, distortion parameters
+        "rk1": 0.158701,
+        "rk2": -0.485405,
+        "rk3": 0.435342,
+        "tp1": -0.00143327,
+        "tp2": -0.000705919
+    }
+}
+```
+
+## Single Stream
+
+single_stream is a model where there is a camera server streaming image data. You must specify if it is streaming "color", "depth" data. Single_stream can only output a point cloud if a "depth" stream is selected. Color streams will fail at producing point clouds.
+
+```json
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "single_stream",
+	"attributes": {
+    	"url": string # the camera server url,
+    	"stream": string # options are "color", "depth",
+	}
+}
+```
+
+## Dual Stream
+
+dual_stream is a model where there are two camera servers streaming data, one is the color stream, and the other is the depth stream. This is useful for generating colorful point clouds.
+
+```json
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "dual_stream",
+	"attributes": {
+    	"color": string, # the color stream url,
+    	"depth": string, # the depth stream url,
+    	"stream": string # "color" or "depth" image will be returned when calling Next(). NextPointCloud() returns the full colorful point cloud.
+	}
+}
+```
+
+## Webcam
+
+webcam is a model that streams the camera data from a camera connected to the hardware. The discovery service will help set up this model, usually.
+
+```json
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "webcam",
+	"attributes": {
+    	"path": string, # path to the webcam,
+    	"path_pattern": string, # if path is not provided, queries the devices on hardware to find the camera,
+    	"width": int, # camera image width, used with path_pattern to find camera,
+    	"height": int, # camera image height, used with path_pattern to find camera,
+    	"format": string # image format, used with path_pattern to find camera,
+	}
+}
+```
+
+## File
+
+File is a model where the frames for the color and depth images are acquired from a file path. Either file path is optional.
+
+```json
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "dual_stream",
+	"attributes": {
+    	"color": string, # the file path to the color image,
+    	"depth": string # the file path to the depth image,
+	}
+}
+```
+
+## Align Color Depth
+
+Model "align_color_depth" is if you have registered a color and depth camera already in your config, and want to align them after the fact and create a "third" camera that outputs the aligned image. In this case, rather than putting the URLs to each of the cameras, you just put the names of the color and depth camera in the attribute field, and the "align_color_depth" camera will combine the streams from both of them.  You can specify the intrinsics/extrinsics, or homography parameters to do the alignment between the depth and color frames if they need to be shifted somehow. If they don’t need to be aligned, you can leave those parameters blank. You then specify the stream field to specify which aligned picture you want to stream.
+
+```json
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "align_color_depth",
+	"attributes": {
+    	"stream": string, # either "color" or "depth" to specify the output stream
+    	"color": string, # the color camera's name
+    	"depth": string, # the depth camera's name
+    	"width": int, # the expected width of the aligned pic
+    	"height": int, # the expected height of the aligned pic
+    	"camera_parameters": {...}, # for projecting RGBD images to 2D <-> 3D 
+    	"intrinsic_extrinsic": {}, # the intrinsic/extrinsic parameters that relate the two cameras together in order to align the images.
+    	"homography": {} # homography parameters that morph the depth points to overlay the color points and align the images.
+	}
+}
+```
+
+## Join Pointclouds
+
+Combine the point clouds from multiple camera sources and project them to be from the point of view of target_frame
+
+```json
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "align_color_depth",
+	"attributes": {
+    	"camera_sources": ["cam1", "cam2", "cam3"], # camera sources to combine
+    	"target_frame": "arm1" # the frame of reference for the points in the merged point cloud.
+	}
+}
+```
+
+## Transform 
+
+The Transform model creates a pipeline for applying transformations to an input image source. 
 Transformations get applied in the order they are written in the pipeline. 
 Below are the available transformations, and the attributes they need.
 
@@ -167,4 +301,15 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 		# no attributes
 	}
 }
+```
+
+# Troubleshooting
+
+If you are getting "timeout" errors from GRPC when adding a `webcam` model, make sure the webcam port is enabled on the pi (common if you are using a fresh pi right out of the box): 
+
+```
+$ sudo raspi-config
+Interface Options -> Camera -> Enable Camera
+Restart the Pi
+$ ls /dev/    and look if you can see a video0, (or video1 or video2)
 ```
