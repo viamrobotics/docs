@@ -7,9 +7,9 @@ date: 2022-07-26
 ---
 # The TFLite Object Detector
 
-The tflite object detector leverages TensorflowLite and the power of machine learning to draw boxes around objects of interest. 
+The TFLite Object Detector leverages TensorflowLite and the power of machine learning to draw boxes around objects of interest. 
 The objects of interest are defined by your actual ML model (.tflite file). 
-The parameters for the tflite detector are:
+The parameters for the TFLite detector are:
 
 * **model_path**, a string that is the absolute file path to the .tflite model
 * **num_threads**, an integer denoting the number of CPU threads to use. Default = 1.

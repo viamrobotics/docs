@@ -23,6 +23,7 @@ nav:
     - Motor: 'components/motor.md'
     - Servo: 'components/servo.md'
   - Services:
+    - TFLite Object Detector: 'services/TFLite-obj-det.md'
     - Vision: 'services/vision.md'
     - Data Capture: 'services/data-capture.md'    
   - Appendix:
