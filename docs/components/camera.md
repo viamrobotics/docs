@@ -303,6 +303,61 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 }
 ```
 
+## Velodyne
+ 
+The model for using the velodyne lidar. The velodyne must be running locally at address `0.0.0.0`. 
+
+```
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "velodyne",
+	"attributes": {
+    	"port": int,  
+    	"ttl_ms": int,
+	}
+}
+```
+
+## FFmpeg
+
+FFmpeg is a model that allows you to use a video file or stream as a camera.
+
+```
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "ffmpeg",
+	"attributes": {
+		"video_path": string,
+		"filters": [ # optional
+			{
+				"name": string,
+				"args": [string, string, ..],
+				"kw_args": { ... }
+			}	
+		],
+		"input_kw_args": { ... },
+		"output_kw_args": { ... },
+	}
+}
+```
+
+## Fake
+
+Fake is a fake camera that always returns the same image, which is a dot in the top left corner, which can be red or yellow or blue.
+
+```
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "fake",
+	"attributes": {
+    	"color": string, # "red", "yellow", or "blue"
+	}
+}
+```
+
 # Troubleshooting
 
 If you are getting "timeout" errors from GRPC when adding a `webcam` model, make sure the webcam port is enabled on the pi (common if you are using a fresh pi right out of the box): 
