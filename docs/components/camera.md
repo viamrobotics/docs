@@ -101,7 +101,8 @@ Overlay overlays the depth and color 2D images. Useful in order to debug the ali
 
 The Undistort transform undistorts the input image according to the intrinsics and distortion parameters specified within the camera parameters. 
 Currently only supports a Brown-Conrady model of distortion (25 August 2022). 
-For further information, pklease refer to the [OpenCV docs](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a).
+For further information, please refer to the [OpenCV docs](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a)[^ocvd].
+[^ocvd]: OpenCV docs: https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a
 
 ```json
 {
