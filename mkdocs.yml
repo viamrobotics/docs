@@ -23,6 +23,7 @@ nav:
     - Component FAQ: 'components/component-faq.md'  
     - Board: 'components/board.md'    
     - Base: 'components/base.md'
+    - Camera: 'components/camera.md'    
     - Motor: 'components/motor.md'
     - Servo: 'components/servo.md'
   - Services:
