@@ -102,7 +102,6 @@ An example configuration file, including the board, motors, and base:
 ```
 
 An explanatory view of the same config file:
-
 <img src="/components/img/base-json.png" alt="An image of the JSON configuration file with annotations explaining some of the attributes."/>
 
 ### Required Attributes
