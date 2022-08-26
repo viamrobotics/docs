@@ -14,9 +14,8 @@ The vision service enables the robot to use its on-board cameras to intelligentl
 The current features available through the vision service are:
 
 * **2D Object detection:** Allows a user to get bounding boxes around identified objects in a 2D image according to a user-defined algorithm.
+    * _TFLite Object Detection_: The TFLite Object Detector leverages TensorflowLite and the power of machine learning to draw boxes around objects of interest. The objects of interest are defined by your actual ML model (.tflite file). 
 * **3D Object segmentation**: Allows a user to get point clouds of identified objects in a 3D image according to a user-defined algorithm.
-* **TFLite Object Detection**: The TFLite Object Detector leverages TensorflowLite and the power of machine learning to draw boxes around objects of interest. 
-The objects of interest are defined by your actual ML model (.tflite file). 
 
 The vision service is a default service on the robot, and can be initialized without attributes.
 
