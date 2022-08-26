@@ -20,22 +20,22 @@ That is to say, a computing device with general purpose input/output (GPIO) pins
 -   Some sort of chassis to hold everything together
 
 For example:
-<img src="/components/img/base-trk-rover-w-arm.png" alt="A base consisting of a tracked rover with motors and Single Board Computer having GPIO pins" />
+<img src="/components/img/base-trk-rover-w-arm.png" alt="A base consisting of a rover with motors and single board computer having GPIO pins" />
 
-An example of a wiring diagram for a base that has one motor on each side is shown below. 
+An example of a wiring diagram for a base that has one motor on each side is shown below.
 Note that this will vary greatly depending on choice of motors, motor drivers, power supply, and board.
 
-<img src="/components/img/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberyy Pi's connections to the motor drivers, motors, power supply, and voltage regulator for the tracked rover."/>
+<img src="/components/img/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberyy Pi's connections to the motor drivers, motors, power supply, and voltage regulator for the rover."/>
 
 
 ## Configuration
 
-Configuring a base involves configuring the drive motors and ensuring the base attributes section contains the corresponding motor names. 
+Configuring a base involves configuring the drive motors and ensuring the base attributes section contains names of all motors that move the base right or left, in their respective sections.
 Configure each motor according to its type. 
-You can find more information on wiring and configuring different types of motors under the [Motor Component](https://docs.viam.com/components/motor/). 
+You can find more information on wiring and configuring different types of motors under the [Motor Component](https://docs.viam.com/components/motor/).
 The board controlling the base must also be configured.
 
-An example configuration file, with the base component highlighted:
+An example configuration file, including the board, motors, and base:
 
 ```json
 {
@@ -101,29 +101,34 @@ An example configuration file, with the base component highlighted:
 }
 ```
 
+An explanatory view of the same config file:
+
+<img src="/components/img/base-json.png" alt="An image of the JSON configuration file with annotations explaining some of the attributes."/>
+
 ### Required Attributes
 
 `type` (string): Use "base" for any base component.
 
-`model` (string): Select "wheeled" unless you have a "boat". 
+`model` (string): Select "wheeled" unless you have a "boat".
 
 `name` (string): Name your base.
 
-`left` (array of strings): List with the names of all drive motors on the left side of the base. 
+`left` (array of strings): List with the names of all drive motors on the left side of the base.
 There may be one or more motors.
 
 `right` (array of strings): List with the names of all drive motors on the right side of the base.
 
-`wheel_circumference_mm` (int): The outermost circumference of the drive wheels in millimeters. 
+`wheel_circumference_mm` (int): The outermost circumference of the drive wheels in millimeters.
 Used for odometry, so try to enter your best approximation of the effective circumference.
 
-`width_mm` (int): Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. 
-`depends_on` (array of strings): List the names of the right and left motors again. 
+`width_mm` (int): Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels.
+
+`depends_on` (array of strings): List the names of the right and left motors again.
 This is so the code will find the motors before it attempts to register the base, avoiding errors.
 
 ### Optional Attributes
 
-`spin_slip_factor` (float): Used in steering calculations to correct for slippage between the wheels and the floor. 
+`spin_slip_factor` (float): Used in steering calculations to correct for slippage between the wheels and the floor.
 To be calibrated by the user.
 
 ## Implementation
