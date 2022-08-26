@@ -8,9 +8,8 @@ date: 2022-08-02
 # Base Component
 Most robots with wheeled bases will comprise at least the following:
 
--   A `board` component that can run a Viam server instance. That is
-    to say, a computing device with general purpose input/output (GPIO)
-    pins such as a Raspberry Pi or other single-board computer with GPIO
+-   A `board` component that can run a Viam server instance. 
+That is to say, a computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer with GPIO.
 
 -   Two or more motors with wheels attached
 
@@ -21,27 +20,24 @@ Most robots with wheeled bases will comprise at least the following:
 -   Some sort of chassis to hold everything together
 
 For example:
+<img src="/components/img/base-trk-rover-w-arm.png" alt="A base consisting of a tracked rover with motors and Single Board Computer having GPIO pins" />
 
-![](img/base-trk-rover-w-arm.png)
+An example of a wiring diagram for a base that has one motor on each side is shown below. 
+Note that this will vary greatly depending on choice of motors, motor drivers, power supply, and board.
 
-An example of a wiring diagram for a base that has one motor on each
-side is shown below. Note that this will vary greatly depending on
-choice of motors, motor drivers, power supply, and board.
+<img src="/components/img/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberyy Pi's connections to the motor drivers, motors, power supply, and voltage regulator for the tracked rover."/>
 
-![](img/base-wiring-diagram.png)
 
 ## Configuration
 
-Configuring a base involves configuring the drive motors, and making
-sure the base attributes section contains the corresponding motor names.
-Each motor should be configured based on whatever type of motor it is.
-Find more information on wiring and configuring different types of
-motors [here](https://docs.viam.com/components/motor/).
+Configuring a base involves configuring the drive motors and ensuring the base attributes section contains the corresponding motor names. 
+Configure each motor according to its type. 
+You can find more information on wiring and configuring different types of motors under the [Motor Component](https://docs.viam.com/components/motor/). 
 The board controlling the base must also be configured.
 
 An example configuration file, with the base component highlighted:
 
-```JSON
+```json
 {
   "components": [
     {
@@ -107,33 +103,28 @@ An example configuration file, with the base component highlighted:
 
 ### Required Attributes
 
-`type` (string): Put "base" for any base component.
+`type` (string): Use "base" for any base component.
 
-`model` (string): "wheeled" unless you have a "boat". 
+`model` (string): Select "wheeled" unless you have a "boat". 
 
 `name` (string): Name your base.
 
-`left` (array of strings): List names of all drive motors on the left
-side of the base. There may be one or more motors.
+`left` (array of strings): List with the names of all drive motors on the left side of the base. 
+There may be one or more motors.
 
-`right` (array of strings): List names of all drive motors on the
-right side of the base.
+`right` (array of strings): List with the names of all drive motors on the right side of the base.
 
-`wheel_circumference_mm` (int): Outermost circumference of the drive
-wheels in millimeters. Used for odometry, so try to enter your best
-approximation of the effective circumference.
+`wheel_circumference_mm` (int): The outermost circumference of the drive wheels in millimeters. 
+Used for odometry, so try to enter your best approximation of the effective circumference.
 
-`width_mm` (int): Width of the base in millimeters. In other words, the
-distance between the approximate centers of the right and left wheels. 
-`depends_on` (array of strings): List the names of the right and left
-motors again. This is so the code will find the motors before it
-attempts to register the base, avoiding errors.
+`width_mm` (int): Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. 
+`depends_on` (array of strings): List the names of the right and left motors again. 
+This is so the code will find the motors before it attempts to register the base, avoiding errors.
 
 ### Optional Attributes
 
-`spin_slip_factor` (float): Used in steering calculations to correct
-for slippage between the wheels and the floor. To be calibrated by the
-user.
+`spin_slip_factor` (float): Used in steering calculations to correct for slippage between the wheels and the floor. 
+To be calibrated by the user.
 
 ## Implementation
 
