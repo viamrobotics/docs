@@ -15,6 +15,8 @@ The current features available through the vision service are:
 
 * **2D Object detection:** Allows a user to get bounding boxes around identified objects in a 2D image according to a user-defined algorithm.
 * **3D Object segmentation**: Allows a user to get point clouds of identified objects in a 3D image according to a user-defined algorithm.
+* **TFLite Object Detection**: The TFLite Object Detector leverages TensorflowLite and the power of machine learning to draw boxes around objects of interest. 
+The objects of interest are defined by your actual ML model (.tflite file). 
 
 The vision service is a default service on the robot, and can be initialized without attributes.
 
@@ -83,14 +85,22 @@ The color is written as a hexadecimal string prefixed by ‘#’.
 * **segment_size:** An integer that sets a minimum size (in pixels) of the returned objects, and filters out all other found objects below that size.
 
 #### TFLite detector attributes 
-
 * **model_path**: The path to the .tflite model file, as a string.
 This attribute is absolutely required.
 * **num_threads**: An integer that defines how many CPU threads to use to run inference.
 The default value is 1.
 * **label_path**: The path to a .txt file that holds class labels for your TFLite model, as a string.
-The text file is 
-expected to be an ordered listing of the class labels.
+The SDK expects this text file to contain an ordered listing of the class labels.
+Without this file, classes will read “1”, “2”, etc.
+
+##### TFLite Model Limitations
+We strongly recommend that you package your .tflite model with metadata in the standard form given by the schema (link schema). In the absence of metadata, your TFLite model must satisfy the following requirements:
+
+1. A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1) 
+1. At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
+1. Bounding box output tensor must be ordered [x x y y], where x is an x-boundary (xmin or xmax) of the bounding box and the same is true for y. Each value should be between 0 and 1, designating the percentage of the image at which the boundary can be found.
+
+These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1. Feel free to use one of these architectures or build your own! 
 
 
 ### The Detection API 
