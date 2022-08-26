@@ -6,7 +6,7 @@ authors:
 date: 2022-05-19
 ---
 
-# Intro
+# Camera Component
 
 A Viam Camera is a source of 2D and/or 3D images (e.g. a webcam, lidar, time-of-flight sensor, etc). A single image is returned from the camera upon request, and images can be streamed continuously from the camera by using systems that do fast, repeated requests. 
 
@@ -17,7 +17,7 @@ There are two basic things you can do with a camera component:
 2. Request the next Point Cloud (which is a 3D image)
 	* A 3D point cloud has all of its (x,y,z) coordinates in units of mm.
 
-# Camera Models
+## Camera Models
 
 Here are details about each of the fields in the camera config:
 
@@ -47,7 +47,7 @@ Here are details about each of the fields in the camera config:
 }
 ```
 
-## Single Stream
+### Single Stream
 
 single_stream is a model where there is a camera server streaming image data. You must specify if it is streaming "color", "depth" data. Single_stream can only output a point cloud if a "depth" stream is selected. Color streams will fail at producing point clouds.
 
@@ -63,7 +63,7 @@ single_stream is a model where there is a camera server streaming image data. Yo
 }
 ```
 
-## Dual Stream
+### Dual Stream
 
 dual_stream is a model where there are two camera servers streaming data, one is the color stream, and the other is the depth stream. This is useful for generating colorful point clouds.
 
@@ -80,7 +80,7 @@ dual_stream is a model where there are two camera servers streaming data, one is
 }
 ```
 
-## Webcam
+### Webcam
 
 webcam is a model that streams the camera data from a camera connected to the hardware. The discovery service will help set up this model, usually.
 
@@ -99,7 +99,7 @@ webcam is a model that streams the camera data from a camera connected to the ha
 }
 ```
 
-## File
+### File
 
 File is a model where the frames for the color and depth images are acquired from a file path. Either file path is optional.
 
@@ -115,7 +115,7 @@ File is a model where the frames for the color and depth images are acquired fro
 }
 ```
 
-## Align Color Depth
+### Align Color Depth
 
 Model "align_color_depth" is if you have registered a color and depth camera already in your config, and want to align them after the fact and create a "third" camera that outputs the aligned image. In this case, rather than putting the URLs to each of the cameras, you just put the names of the color and depth camera in the attribute field, and the "align_color_depth" camera will combine the streams from both of them.  You can specify the intrinsics/extrinsics, or homography parameters to do the alignment between the depth and color frames if they need to be shifted somehow. If they don’t need to be aligned, you can leave those parameters blank. You then specify the stream field to specify which aligned picture you want to stream.
 
@@ -137,7 +137,7 @@ Model "align_color_depth" is if you have registered a color and depth camera alr
 }
 ```
 
-## Join Pointclouds
+### Join Pointclouds
 
 Combine the point clouds from multiple camera sources and project them to be from the point of view of target_frame
 
@@ -153,7 +153,7 @@ Combine the point clouds from multiple camera sources and project them to be fro
 }
 ```
 
-## Transform 
+### Transform 
 
 The Transform model creates a pipeline for applying transformations to an input image source. 
 Transformations get applied in the order they are written in the pipeline. 
@@ -175,7 +175,7 @@ Below are the available transformations, and the attributes they need.
 	}
 }
 ```
-### Identity
+#### Identity
 
 The Identity transform does nothing to the image. 
 You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
@@ -189,7 +189,7 @@ You can use this transform to change the underlying camera source's intrinsic pa
 }
 ```
 
-### Rotate
+#### Rotate
 
 The Rotate trasnformation rotates the image by 180 degrees. 
 This feature is useful for when the camera is installed upside down on your robot. 
@@ -203,7 +203,7 @@ This feature is useful for when the camera is installed upside down on your robo
 }
 ```
 
-### Resize
+#### Resize
 
 The Resize transform resizes the image to the specified height and width. 
 
@@ -216,7 +216,7 @@ The Resize transform resizes the image to the specified height and width.
 	}
 }
 ```
-### Depth to Pretty
+#### Depth to Pretty
 
 The Depth-to-Pretty transform takes a depth image and turns into a colorful image, with blue indicating distant points and red indicating points nearby points. 
 Actual depth information is lost in the transform.
@@ -230,7 +230,7 @@ Actual depth information is lost in the transform.
 }
 ```
 
-### Overlay
+#### Overlay
 
 Overlay overlays the depth and color 2D images. Useful in order to debug the alignment of the two images.
 
@@ -243,7 +243,7 @@ Overlay overlays the depth and color 2D images. Useful in order to debug the ali
 }
 ```
 
-### Undistort
+#### Undistort
 
 The Undistort transform undistorts the input image according to the intrinsics and distortion parameters specified within the camera parameters. 
 Currently only supports a Brown-Conrady model of distortion (25 August 2022). 
@@ -273,7 +273,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 }
 ```
 
-### Detections
+#### Detections
 
 The Detections tramsform takes the input image and overlays the detections from a given detector present within the vision service.
 
@@ -287,7 +287,7 @@ The Detections tramsform takes the input image and overlays the detections from 
 }
 ```
 
-### Depth Edges
+#### Depth Edges
 
 The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
 
@@ -302,7 +302,7 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 }
 ```
 
-### Depth Preprocess
+#### Depth Preprocess
 
 Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map
 
@@ -315,7 +315,7 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 }
 ```
 
-## Velodyne
+### Velodyne
  
 The model for using the velodyne lidar. The velodyne must be running locally at address `0.0.0.0`. 
 
@@ -331,7 +331,7 @@ The model for using the velodyne lidar. The velodyne must be running locally at 
 }
 ```
 
-## FFmpeg
+### FFmpeg
 
 FFmpeg is a model that allows you to use a video file or stream as a camera.
 
@@ -355,7 +355,7 @@ FFmpeg is a model that allows you to use a video file or stream as a camera.
 }
 ```
 
-## Fake
+### Fake
 
 Fake is a fake camera that always returns the same image, which is a dot in the top left corner, which can be red or yellow or blue.
 
@@ -370,7 +370,7 @@ Fake is a fake camera that always returns the same image, which is a dot in the 
 }
 ```
 
-# Troubleshooting
+## Troubleshooting
 
 If you are getting "timeout" errors from GRPC when adding a `webcam` model, make sure the webcam port is enabled on the pi (common if you are using a fresh pi right out of the box): 
 
@@ -378,5 +378,4 @@ If you are getting "timeout" errors from GRPC when adding a `webcam` model, make
 $ sudo raspi-config
 Interface Options -> Camera -> Enable Camera
 Restart the Pi
-$ ls /dev/    and look if you can see a video0, (or video1 or video2)
 ```
