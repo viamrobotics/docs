@@ -9,3 +9,10 @@ img /* Add top/bottom padding around images.*/
     padding: 12px 0px 12px 0px;
     
 }
+
+
+video /* set top/bottom margin around images.*/
+{
+    margin: -10px 0px 24px 0px;
+    
+}

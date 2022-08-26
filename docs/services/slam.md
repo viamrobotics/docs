@@ -14,7 +14,6 @@ As of 01 June 2022, we support the following SLAM libraries:
 
 -   [ORBSLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
 
-
 # Current Architecture
 
 The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above. 
@@ -26,7 +25,6 @@ It has three roles, interface with an executable C++ binary of the chosen librar
 
 (TALK ABOUT DATA LOOP EVERY X TIME AND CALLS TO Next/NextPointCloud)
 (TALK ABOUT LOCAL DATA STORAGE/FOLDER ARCHITECTURE)
-
 
 <pre>
 .
@@ -55,7 +53,7 @@ If no port is specified, then rdk will find an open port to bind the server to.
 
 # **RDK Config**
 
-```JSON
+````JSON
 "services": [
   {
     "attributes": {
@@ -74,7 +72,6 @@ If no port is specified, then rdk will find an open port to bind the server to.
   }
 ]
 ```
-
 ## Required Attributes
 
 **algorithm** (string): Name of the SLAM library/algorithm to be used. Current options are cartographer or orbslamv3.
@@ -108,8 +105,7 @@ If nil, includes all previously saved data.
 If running locally, this should be in the form "localhost:<PORT>". 
 If no value is given a random available port will be assigned.
 
-**config_params** (map[string] string): Parameters specific to the
-inputted SLAM library.
+**config_params** (map[string] string): Parameters specific to the inputted SLAM library.
 
 ## SLAM Library Attributes
 
@@ -167,7 +163,6 @@ white-space:pre-wrap;
         <td>7</td>
 </table>
 
-
 If more mutable variables are desired for any supported SLAM library please submit a [git issue](https://github.com/viamrobotics/slam/issues) with the pertinent parameter.
 
 # Hardware Requirements
@@ -214,6 +209,7 @@ mkdir build && cd build
 cmake ..
 make -j4
 sudo make install
+
 ```
 ##### OpenCV
 ```bash
@@ -235,6 +231,7 @@ make pull-rdk
 This command pulls a minimal copy of rdk and build c++ gRPC files off of our proto.
 
 ##### Other Dependencies
+
 ```bash
 sudo apt install libssl-dev
 sudo apt-get install libboost-all-dev
@@ -243,6 +240,7 @@ sudo apt-get install libboost-all-dev
 #### Building ORBSLAM3
 
 To build ORBSLAM3 run
+
 ```bash
 cd \~/slam/slam-libraries/viam-orb-slam
 ./build_orbslam.sh

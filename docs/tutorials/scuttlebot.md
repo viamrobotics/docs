@@ -1,11 +1,11 @@
 ---
 title: Setting up a Scuttle with Viam
 summary: Instructions for using the Viam App to Configure Raspberry Pi board for a Camera-Equipped Scuttle Robot
-authors: 
+authors:
 - Hazal Mescti (HM:ma)
 date: 2022-07-13, revised on 2022-08-01
 ---
-# Configuring a Camera-Equipped Scuttle Bot Two-Wheel Drive Rover 
+# Configuring a Camera-Equipped Scuttle Bot Two-Wheel Drive Rover
 This tutorial will guide you through setting up a Scuttle Bot and Raspberry Pi micro-controller to use a camera.
 
 The Raspberry Pi is a single-board computer into which you will wire all other components.
@@ -29,7 +29,7 @@ Otherwise, complete all steps.</li>
 This step is optional if you already have an Organization.</li>
 <li class="spacing">Create a <strong>Location</strong>.
 This step is optional if you already have an <strong>Location</strong>.</li>
-<img src="/tutorials/img/createcomponent.png">
+<img src="../img/createcomponent.png">
 <li class="spacing">The first component is the Raspberry Pi, which is a single-board computer into which you will wire all other components.</li>
 <ol type="a">
     <li class="spacing" style="list-style-type:lower-alpha">Enter a name for your robot in <strong>Name</strong>, then click <strong>Add</strong> to add your robot and access your robot's configuration page.
@@ -38,7 +38,7 @@ This step is optional if you already have an <strong>Location</strong>.</li>
     <li class="spacing" style="list-style-type:lower-alpha">Select the component <strong>Type</strong>, which is "board".</li>
     <li class="spacing" style="list-style-type:lower-alpha">Select "pi" from the <strong>Model</strong> drop-down.</li>
     <li class="spacing" style="list-style-type:lower-alpha">Click <strong>Save Config</strong> to Save the new component (i.e., your Board component) and generate an empty JSON configuration:</li></ol></ol>
-<img src="/tutorials/img/board-empty-json.png" alt="This image is the component configuration panel for a board component.
+<img src="../img/board-empty-json.png" alt="This image is the component configuration panel for a board component.
 The Depends On drop-down listbox has no selection.
 Initially, the left-side Attributes panel for board component is empty.
 The right-side panel contains a list of available board component Attributes.">
@@ -55,9 +55,9 @@ As with all other components, the first step is clicking <strong>CREATE A COMPON
 <li class="spacing">Select "gpio" from the <code>Model</code> drop-down.</li>
 <li class="spacing">Click <strong>New Component</strong>.
 App.Viam returns the following screen with empty JSON attributes for the motor component and a reference for the available attributes:</li>
-<img src="/tutorials/img/PI-rhWheel.png">
+<img src="../img/PI-rhWheel.png">
 <li class="spacing">Now, tell Viam how this motor is wired to the Pi:</li>
-<ol type="a"> 
+<ol type="a">
 <li class="spacing" style="list-style-type:lower-alpha">First, select <code>local</code> from the <strong>Depends On</strong> drop-down as the motor is wired to the Raspberry Pi board named, "local".</li>
 
 <li class="spacing" style="list-style-type:lower-alpha">Make the following changes in the JSON:</li>
@@ -76,7 +76,7 @@ App.Viam returns the following screen with empty JSON attributes for the motor c
 
 App.Viam returns the following screen with empty JSON attributes for the motor component and a reference for the available attributes.
 
-<img src="/tutorials/img/PI-rhWheel.png">
+<img src="../img/PI-rhWheel.png">
 
 
 **Right Wheel JSON**
@@ -102,7 +102,7 @@ Save the config by clicking **SAVE CONFIG** at the bottom of the page, then clic
 On the Control Page, you will see a panel for the right `motor`.
 You will use this panel to set the motor's `power` level.
 
-<img src="/tutorials/img/PI-moveRhMotor.png">
+<img src="../img/PI-moveRhMotor.png">
 
 Please be careful when activating your robot! Start with the power level (RPM) set to 10% and increase it incrementally (about 10% per increase), activating the motor at each step until the wheel rotates at a speed you like when you press run.
 You can also change the direction of the rotation.
@@ -128,7 +128,7 @@ Some of the differences are the <code>Name</code> which is <code>left</code> and
 <li class="spacing">Click <strong>New Component</strong>.
 App.Viam opens the Component config Panel for the wheel.</li>
 <li class="spacing">Now, tell Viam how this motor is wired to the Pi:</li>
-<ol type="a"> 
+<ol type="a">
 <li class="spacing" style="list-style-type:lower-alpha">First, select the board name from the <strong>Depends On</strong>, which is "local" in this example, as the motor is wired to the Raspberry Pi board named, "local".</li>
 
 <li class="spacing" style="list-style-type:lower-alpha">Now, make the following changes in the Left Wheel's JSON:</li>
@@ -142,7 +142,7 @@ App.Viam opens the Component config Panel for the wheel.</li>
 </ol>
 </OL>
 
-**Left Wheel JSON**: 
+**Left Wheel JSON**:
 
 ```JSON
 {
@@ -159,7 +159,7 @@ App.Viam opens the Component config Panel for the wheel.</li>
 
 With both motors configured, the component page now display panels for both motors:
 
-<img src="/tutorials/img/scuttle-bothMotors.png">
+<img src="../img/scuttle-bothMotors.png">
 
 !!! note
     The Viam App ([https://app.viam.com](https://app.viam.com)) displays component panels in the order of their creation.
@@ -198,11 +198,11 @@ Here is the code of your base attributes if you wish to copy and paste it.
 When you save the Config and switch to the **Control** view, the Viam App displays new control buttons for the <code>base</code> functionality.
 In the **Keyboard** tab, you can toggle your keyboard control to active, and then use **W** and **S** to go back and forth, and **A** and **D** to arc and spin.
 
-<img src="/tutorials/img/pi-kybrd-control.png" width="300px">
+<img src="../img/pi-kybrd-control.png" width="300px">
 
 If you click the **Discrete** tab, you can see different movement modes just as <code>Straight</code> and <code>Spin</code>; and different movement types such as <code>Continuous</code> and <code>Discrete</code> and directions <code>Forwards</code> and <code>Backwards</code>.
 
-<img src="/tutorials/img/pi-discrete.png">
+<img src="../img/pi-discrete.png">
 
 Now you have a rover that you can drive via the Viam App's WebUI at [https://app.viam.com](https://app.viam.com).
 
@@ -224,7 +224,7 @@ Once again, click <strong>CREATE A COMPONENT</strong> to begin, then continue wi
 4. Click <strong>New Component</strong>.
 
 App.Viam now displays the config panel for this camera component:
-<img src="/tutorials/img/pi-cam-control.png">
+<img src="../img/pi-cam-control.png">
 
 On the Camera Config panel:
 

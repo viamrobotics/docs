@@ -4,8 +4,9 @@ summary: Explanation of motor types, configuration, and usage in Viam.
 authors:
     - Jessamy Taylor
 date: 2022-06-08
+Modified: 2022-08-19
 ---
-# Motors
+# Motor Component
 
 *If you are looking for information about hobby servos (servomotors), [click here](https://github.com/viamrobotics/tutorials-and-docs/blob/main/docs/components/servo.md).*  
 
@@ -15,6 +16,7 @@ This page covers how to wire, configure and control various types of DC motor wi
 
 ## Contents
 - [General Hardware Requirements](motor.md#general-hardware-requirements)
+- [Identifying What Kind of Motor You Have](motor.md#what-kind-of-motor-do-i-have)
 - [Brushed DC Motor](motor.md#brushed-dc-motor)
 - [Brushless DC Motor](motor.md#brushless-dc-motor)
 - [DC Motor with Encoder](motor.md#dc-motor-with-encoder)
@@ -35,6 +37,21 @@ A common motor control setup comprises the following:
 
 !!! caution
     Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
+
+## Identifying What Kind of Motor You Have
+If you don't have packaging or labels that identify the motor model, here are some other ways to tell which section of this document is relevant to you:
+
+1. How many wires are coming out of the motor?
+If there are only two electrical connections to the motor (wires or tabs onto which to attach wires), you likely have a brushed DC motor.
+[Click here to skip to that section.](motor.md#brushed-dc-motor)
+2. Is the motor square with a band of black around it? If so, try twisting the shaft between your fingers.
+If you can feel it thunk through a series of incremental "steps," as opposed to a more continuous grinding, you may have a stepper motor.
+Stepper motors often have four wires of equal size, sometimes more, but always an even number.
+[Click here to skip to that section.](motor.md#stepper-motor)
+3. If your motor has a round plastic portion on one end (kind of like a cap) and has six wires coming out of it, you may have a brush DC motor with an encoder. If it has an encoder and more than six wires it could be a brushless DC motor with an encoder. You'll need to check out the sections on encoded motors, plus whichever type of DC motor you have.
+[Click here to skip to the section on encoded motors.](motor.md#dc-motor-with-encoder)
+4. If your motor doesn't seem to have an encoder, and it doesn't seem to be a stepper motor, and it has at least three wires coming out of it, you may have a brushless DC motor.
+[Click here to skip to that section.](motor.md#brushless-dc-motor)
 
 ## Brushed DC Motor
 ### Mechanism
@@ -128,11 +145,9 @@ Only the output side of the driver board is different, i.e. more wires connect t
 
 ## DC Motor With Encoder
 
-### Mechanism
-An encoder is a device that is integrated with a motor to sense the angular position, direction and/or speed of rotation.
-Viam supports [quadrature encoders](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs), which output two phases that can be used together to determine speed and direction.
-Viam also supports single pin “pulse output” encoders which give speed but not direction.
-In either case position can only be determined relative to the starting position; these encoders are incremental and do not indicate absolute position.
+Some motors come with encoders integrated or attached to them.
+Other times, you may add an encoder to a motor.
+See the [Encoder Component Doc](encoder.md) for more information on encoders.
 
 ### Wiring  
 
@@ -140,8 +155,8 @@ In either case position can only be determined relative to the starting position
 
 ### Viam Configuration
 
-Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.” Configuration of a quadrature encoder requires digital interrupts on the board for A and B in addition to the [standard “gpio” model attributes](motor.md#required-attributes).
-Single pin encoders require configuring one digital interrupt.
+Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.”
+Configuration of an encoder requires configuring the encoder [per this document](encoder.md) in addition to the [standard “gpio” model attributes](motor.md#required-attributes).
 Here’s an example config file:  
 
 ![motor-encoded-dc-json](img/motor-encoded-dc-json.png)  
@@ -152,19 +167,14 @@ In addtion to the required [attributes of a non-encoded motor](motor.md#required
 
 Attribute Name | Type | Meaning/Purpose
 -------------- | ---- | ---------------
-`encoder` | string | Should match name of first digital interrupt you configured.
-`encoder_b` | string | Required for two phase encoder. Should match name of second digital interrupt you configured.
-
+`encoder` | string | Should match name of the encoder you configure as an `encoder` component.
+`ticks_per_rotation` | string | Number of ticks in a full rotation of the encoder (and motor shaft).
 
 #### Optional Attributes
 In addition to the optional attributes [listed in the previous non-encoded motor section](motor.md#optional-attributes), encoded motors have the following additional options:  
 
 Attribute Name | Type | Meaning/Purpose
 -------------- | ---- | ---------------
-`digital_interrupts` | object | Contains `name` and `pin` attributes for two interrupts (for a two phase encoder) or one interrupt for single phase. See example JSON above.
-`encoder_board` | string | Name of the board where encoders are; default is same as 'board'
-`max_rpm` | float | Sets a limit on max RPM
-`max_acceleration` | float | Sets a limit on max RPM increase per second
 `ramp_rate` | float | How fast to ramp power to motor when using RPM control. 0.01 ramps very slowly; 1 ramps instantaneously. Range is (0, 1]. Default is 0.2.
 
 ## Stepper Motor
