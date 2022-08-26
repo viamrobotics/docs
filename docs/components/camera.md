@@ -175,7 +175,7 @@ Below are the available transformations, and the attributes they need.
 	}
 }
 ```
-#### Identity
+##### Identity
 
 The Identity transform does nothing to the image. 
 You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
@@ -189,7 +189,7 @@ You can use this transform to change the underlying camera source's intrinsic pa
 }
 ```
 
-#### Rotate
+##### Rotate
 
 The Rotate trasnformation rotates the image by 180 degrees. 
 This feature is useful for when the camera is installed upside down on your robot. 
@@ -203,7 +203,7 @@ This feature is useful for when the camera is installed upside down on your robo
 }
 ```
 
-#### Resize
+##### Resize
 
 The Resize transform resizes the image to the specified height and width. 
 
@@ -216,7 +216,7 @@ The Resize transform resizes the image to the specified height and width.
 	}
 }
 ```
-#### Depth to Pretty
+##### Depth to Pretty
 
 The Depth-to-Pretty transform takes a depth image and turns into a colorful image, with blue indicating distant points and red indicating points nearby points. 
 Actual depth information is lost in the transform.
@@ -230,7 +230,7 @@ Actual depth information is lost in the transform.
 }
 ```
 
-#### Overlay
+##### Overlay
 
 Overlay overlays the depth and color 2D images. Useful in order to debug the alignment of the two images.
 
@@ -243,7 +243,7 @@ Overlay overlays the depth and color 2D images. Useful in order to debug the ali
 }
 ```
 
-#### Undistort
+##### Undistort
 
 The Undistort transform undistorts the input image according to the intrinsics and distortion parameters specified within the camera parameters. 
 Currently only supports a Brown-Conrady model of distortion (25 August 2022). 
@@ -273,7 +273,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 }
 ```
 
-#### Detections
+##### Detections
 
 The Detections tramsform takes the input image and overlays the detections from a given detector present within the vision service.
 
@@ -287,7 +287,7 @@ The Detections tramsform takes the input image and overlays the detections from 
 }
 ```
 
-#### Depth Edges
+##### Depth Edges
 
 The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
 
@@ -302,7 +302,7 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 }
 ```
 
-#### Depth Preprocess
+##### Depth Preprocess
 
 Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map
 
