@@ -27,6 +27,7 @@ Looking to get started with Viam? Checkout the [installing the Viam Server on Ra
 - [Arm](components/arm.md)
 - [Board](components/board.md)
 - [GPS](components/gps.md)
+- [Camera](components/camera.md)
 - [Motor](components/motor.md)
 - [Servo](components/servo.md)
 
@@ -37,7 +38,6 @@ Looking to get started with Viam? Checkout the [installing the Viam Server on Ra
 - [IMU](components/imu.md)
 - [Sensor](components/sensor.md)
 - [Base](components/base.md)
-- [Camera](components/camera.md)
 - [GPS](components/gps.md)
 - [Input Controller](components/input-controller.md)
 - [Pose Tracker](components/pose-tracker.md)

@@ -21,7 +21,9 @@ nav:
   - Components:
     - Component FAQ: 'components/component-faq.md'
     - Arm: 'components/arm.md'
-    - Board: 'components/board.md'
+    - Base: 'components/base.md'
+    - Board: 'components/board.md'    
+    - Camera: 'components/camera.md'
     - GPS: 'components/gps.md'
     - Motor: 'components/motor.md'
     - Servo: 'components/servo.md'
