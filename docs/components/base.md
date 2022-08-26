@@ -30,7 +30,7 @@ Note that this will vary greatly depending on choice of motors, motor drivers, p
 
 ## Configuration
 
-Configuring a base involves configuring the drive motors and ensuring the base attributes section contains names of all motors that move the base right or left, in their respective sections.
+Configuring a base involves configuring the drive motors and ensuring the base attributes section contains the names of all motors that move the base right or left, respectively.
 Configure each motor according to its type. 
 You can find more information on wiring and configuring different types of motors under the [Motor Component](https://docs.viam.com/components/motor/).
 The board controlling the base must also be configured.
