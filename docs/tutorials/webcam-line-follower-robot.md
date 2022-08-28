@@ -254,7 +254,7 @@ and both instances of:</br>
 This will give it a wider field of view so it takes longer for the line to go out of view.</li>
 </ol></ol>
 
-### Issue #1: None
+### Issue #2: None
 N/A
 
 ## Troubleshooting - VIAM Documentation, Reference, and Tutorials
