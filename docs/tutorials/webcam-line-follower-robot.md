@@ -179,7 +179,7 @@ In this case, the component names that you may need to change are <strong>tread_
 <img src="../img/LF-lint4.png" /></li>
 <li class="spacing">From your robot’s page on the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>), go to the Connect tab. 
 Find the Python SDK field and copy the robot address (which will likely have the form
-<span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span> and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file. 
+<span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file. 
 This allows your code to connect to your robot.</li>
 <li class="spacing">Save the code in a directory of your choice.</li>
 <li class="spacing">To get the code onto the Pi you have a few options. 
