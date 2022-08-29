@@ -25,7 +25,7 @@ For example:
 An example of a wiring diagram for a base that has one motor on each side is shown below.
 Note that this will vary greatly depending on choice of motors, motor drivers, power supply, and board.
 
-<img src="/components/img/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberyy Pi's connections to the motor drivers, motors, power supply, and voltage regulator for the rover."/>
+<img src="/components/img/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberry Pi's connections to the motor drivers, motors, power supply, and voltage regulator for the rover."/>
 
 
 ## Configuration
