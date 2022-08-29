@@ -257,7 +257,9 @@ This will give it a wider field of view so it takes longer for the line to go ou
 ### Issue #2: None
 N/A
 
-## Troubleshooting - VIAM Documentation, Reference, and Tutorials
+## Troubleshooting Assistance
+
+You can find additional assistance in the [Troubleshooting section](../appendix/troubleshooting).
 
 ## Bonus challenges: 
 1. Automatically detect what color line the robot is on and follow that.
