@@ -136,7 +136,7 @@ An explanatory view of the same config file:
   </tr>
   <tr>
     <td><code>right</code></td>
-    <td>Array of strings</td>
+    <td>array of strings</td>
     <td>List with the names of all drive motors on the right side of the base. There may be one or more motors.</td>
   </tr>
   <tr>
@@ -151,7 +151,7 @@ An explanatory view of the same config file:
   </tr>
   <tr>
     <td><code>depends_on</code></td>
-    <td>Array of strings</td>
+    <td>array of strings</td>
     <td>List the names of the right and left motors again. This is so the code will find the motors before it attempts to register the base, avoiding errors.</td>
   </tr>
 
