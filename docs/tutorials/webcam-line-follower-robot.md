@@ -196,7 +196,7 @@ Run,<br><span class="file">nano rgbFollower.py</span><br>(or replace <span class
 <ol><li class="spacing">Go to your robot’s page on the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>). Verify that it’s connected by refreshing the page and ensuring that <strong>Last Online</strong> (in the top banner) says, “Live.”</li>
 <li class="spacing">Go to the <strong>Control</strong> tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around. 
 Ensure that the base moves as expected. 
-If one or both drive motors are going backwards, you can power down the Pi, unplug the battery, and switch the wires to the motor before powering it back on.</li>
+If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.</li>
 <p  class="Mycaption"><em>Figure 3: Driving the base from the Viam App's Control tab.</em><br>
 <img class="spacing" src="/tutorials/img/LF-viamapp-base-view5.gif" width="600" /></p></li>
 <li class="spacing">Now for the creative part: Use your colored tape to make a path for your robot to follow. 
@@ -236,21 +236,13 @@ You have a rover following a path of your choice, anywhere you want it to go!
 
 ## Troubleshooting
 
-### Issue #1: The rover moves to fast to track the line
+### Issue #1: The rover moves too fast to track the line
 If your rover keeps driving off the line so fast that the color detector can’t keep up, you can try two things:
-<ol>
-<li class="spacing">Slow down the move straight and turning speeds of the rover by decreasing the  the numbers in:
 
-<span class=file>base.set_power(Vector3(y=0.3), Vector3())</span><br>
-
-and both instances of:</br>
-
-<span class=file>base.set_power(Vector3(), Vector3(z=0.25))</span><br>
-    
-If your rover is moving too slowly or stalling, increase the numbers (closer to 1.0 which represents full power).</li>
-<li class="spacing">Position the camera differently, perhaps so that it is higher above the floor but still pointing downward. 
-This will give it a wider field of view so it takes longer for the line to go out of view.</li>
-</ol></ol>
+1. Slow down the move straight and turning speeds of the rover by decreasing the  the numbers in `base.set_power(Vector3(y=0.3), Vector3())` and both instances of `base.set_power(Vector3(), Vector3(z=0.25))`.
+    - Conversely, if your rover is moving too slowly or stalling, increase the numbers (closer to 1.0 which represents full power).</li>
+2. Position the camera differently, perhaps so that it is higher above the floor but still pointing downward. 
+This will give it a wider field of view so it takes longer for the line to go out of view.
 
 ### Issue #2: None
 N/A

@@ -14,14 +14,6 @@ Electric motors are the most common form of actuator in robotics.
 The majority of motors used in robotics require a direct current (DC) input.
 This page covers how to wire, configure and control various types of DC motor with Viam.
 
-## Contents
-- [General Hardware Requirements](motor.md#general-hardware-requirements)
-- [Identifying What Kind of Motor You Have](motor.md#what-kind-of-motor-do-i-have)
-- [Brushed DC Motor](motor.md#brushed-dc-motor)
-- [Brushless DC Motor](motor.md#brushless-dc-motor)
-- [DC Motor with Encoder](motor.md#dc-motor-with-encoder)
-- [Stepper Motor](motor.md#stepper-motor)
-
 ## General Hardware Requirements
 A common motor control setup comprises the following:
 
@@ -37,21 +29,6 @@ A common motor control setup comprises the following:
 
 !!! caution
     Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
-
-## Identifying What Kind of Motor You Have
-If you don't have packaging or labels that identify the motor model, here are some other ways to tell which section of this document is relevant to you:
-
-1. How many wires are coming out of the motor?
-If there are only two electrical connections to the motor (wires or tabs onto which to attach wires), you likely have a brushed DC motor.
-[Click here to skip to that section.](motor.md#brushed-dc-motor)
-2. Is the motor square with a band of black around it? If so, try twisting the shaft between your fingers.
-If you can feel it thunk through a series of incremental "steps," as opposed to a more continuous grinding, you may have a stepper motor.
-Stepper motors often have four wires of equal size, sometimes more, but always an even number.
-[Click here to skip to that section.](motor.md#stepper-motor)
-3. If your motor has a round plastic portion on one end (kind of like a cap) and has six wires coming out of it, you may have a brush DC motor with an encoder. If it has an encoder and more than six wires it could be a brushless DC motor with an encoder. You'll need to check out the sections on encoded motors, plus whichever type of DC motor you have.
-[Click here to skip to the section on encoded motors.](motor.md#dc-motor-with-encoder)
-4. If your motor doesn't seem to have an encoder, and it doesn't seem to be a stepper motor, and it has at least three wires coming out of it, you may have a brushless DC motor.
-[Click here to skip to that section.](motor.md#brushless-dc-motor)
 
 ## Brushed DC Motor
 ### Mechanism
@@ -99,7 +76,7 @@ For example:
 [Click here for the raw JSON.](example-configs/motor-gpio-config.json)
 
 #### Required Attributes
-Attribute Name | Type | Default Value | Meaning/Purpose
+Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 `board  ` | string | --        | Name of board on which it depends
 `max_rpm` | float | --         | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the “GoFor” method unusable.
@@ -107,7 +84,7 @@ Attribute Name | Type | Default Value | Meaning/Purpose
 
 Nested within `pins` (note that only two or three of these are required depending on your motor driver; see [Pins](motor.md#pins) above for more information):
 
-Name | Type | Meaning/Purpose |
+Name | Type | Description |
 ---- | ---- | ----- |
 `a` | string | See [Pins](motor.md#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
 `b` | string | See [Pins](motor.md#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
@@ -115,7 +92,7 @@ Name | Type | Meaning/Purpose |
 `pwm` | string | See [Pins](motor.md#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
 
 #### Optional Attributes
-Attribute Name | Type | Default Value | Meaning/Purpose
+Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 `min_power_pct` | float | 0.0 | Sets a limit on minimum power percentage sent to the motor 
 `max_power_pct` | float | 1.0 | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor  
@@ -149,7 +126,9 @@ Some motors come with encoders integrated or attached to them.
 Other times, you may add an encoder to a motor.
 See the [Encoder Component Doc](encoder.md) for more information on encoders.
 
-### Wiring  
+### Wiring
+
+Here's an example of an encoded DC motor wired with [this motor driver](https://www.pololu.com/product/2961).
 
 ![motor-encoded-dc-wiring](img/motor-encoded-dc-wiring.png)  
 
@@ -165,7 +144,7 @@ Here’s an example config file:
 #### Required Attributes
 In addtion to the required [attributes of a non-encoded motor](motor.md#required-attributes), encoded DC motors require the following:
 
-Attribute Name | Type | Meaning/Purpose
+Name | Type | Description
 -------------- | ---- | ---------------
 `encoder` | string | Should match name of the encoder you configure as an `encoder` component.
 `ticks_per_rotation` | string | Number of ticks in a full rotation of the encoder (and motor shaft).
@@ -173,7 +152,7 @@ Attribute Name | Type | Meaning/Purpose
 #### Optional Attributes
 In addition to the optional attributes [listed in the previous non-encoded motor section](motor.md#optional-attributes), encoded motors have the following additional options:  
 
-Attribute Name | Type | Meaning/Purpose
+Name | Type | Description
 -------------- | ---- | ---------------
 `ramp_rate` | float | How fast to ramp power to motor when using RPM control. 0.01 ramps very slowly; 1 ramps instantaneously. Range is (0, 1]. Default is 0.2.
 
@@ -204,7 +183,7 @@ Here’s an example of a basic stepper driver config:
 
 #### Required Attributes for Steppers
 
-Attribute Name | Type | Meaning/Purpose
+Name | Type | Description
 -------------- | ---- | ---------------
 `board` | string | Should match name of board on which motor depends.
 `pins` | object | A structure containing "step" and "dir" pin numbers; see example JSON above.
@@ -212,7 +191,7 @@ Attribute Name | Type | Meaning/Purpose
 
 #### Optional Attributes
 
-Attribute Name | Type | Meaning/Purpose
+Name | Type | Description
 -------------- | ---- | ---------------
 `stepper_delay` | uint | Time in microseconds to remain high for each step. Default is 20.
 
