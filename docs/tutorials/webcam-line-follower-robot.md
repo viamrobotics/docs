@@ -1,6 +1,7 @@
 ---
 title: Build a Line-following Robot with only a Webcam
-summary: Instructions to build a line-following robot that uses a webcam to track  lines.
+
+summary: Instructions to build a line-following robot that uses a webcam to track lines.
 authors:
     - Jessamy Taylor
 date: 2022-08-18
@@ -37,20 +38,19 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
     - Any color is suitable as long as its color is somewhat different from the floor color. For our tutorial, we used green electrical tape. 
     - Additionally, non-shiny floors work best.
 
-<p class="Mycaption" ><em>Figure 1: A SCUTTLE robot base with a camera mounted on the front, pointing mostly down and slightly forwards.</em>
+<p class="Mycaption" ><em>Figure 1: A SCUTTLE robot base with a camera mounted on the front, pointing mostly down and slightly forwards.</em><br>
 <img src="../img/LF-scuttle2.png" width="600" /></p>
 
-## Configuring the Rover using the Viam App
+## Configuring the rover using the Viam App
 
 If you haven’t already, please set up the Raspberry Pi on the <a href="https://app.viam.com">Viam App (https://app.viam.com)</a> per these instructions.
 
-1. Configure the robot on the <a href="https://app.viam.com">Viam App</a>. General information about configuring robots with Viam can be found here.
+1. Configure the robot on the <a href="https://app.viam.com">Viam App</a>. General information about configuring robots with Viam can be found [here](https://docs.viam.com/getting-started/robot-config/).
 
-    a. Configure the base per the Base Component Doc.
+    a. Configure the base per the [Base Component Doc](https://docs.viam.com/components/base/).
 	
-    a. Configure the camera as type `webcam`. You’ll need to figure out which path to put into the `path` attribute:
-
-Add the following (with the correct path in place of “video0”) to the camera’s attributes:
+    b. Configure the camera as type `webcam`. More info on the Viam camera component can be found [here](https://docs.viam.com/components/camera/). 
+    Add the following (with the correct path in place of “video0”) to the camera’s attributes:
 
 ```JSON
 {
@@ -60,11 +60,12 @@ Add the following (with the correct path in place of “video0”) to the camera
 
 - We’ll use the Viam vision service color detector to identify the line to follow.
 
-    - In the **Services** section of the **Config** tab, configure a color detector for the color of your tape line.
 
-    - Use a color picker like [this one](https://colorpicker.me/) to approximate the color of your line and get the corresponding hexadecimal hash to put in your config.
+    a. In the **Services** section of the **Config** tab, configure a color detector for the color of your tape line.
 
-    - We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
+    b. Use a color picker like [this one](https://colorpicker.me/) to approximate the color of your line and get the corresponding hexadecimal hash to put in your config.
+
+    c. We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
 Below is an example JSON file that includes board, base and camera components, and a vision service color detector.
 
@@ -161,6 +162,7 @@ Below is an example JSON file that includes board, base and camera components, a
   ]
 }
 ```
+
 ## How Line Following Works
 
 You position the rover so that its camera can see the colored line. 
@@ -170,17 +172,27 @@ If it detects the color there, it will turn to the left. If it doesn’t see the
 Once the line is back in the center front of the camera frame, the rover continues forward. 
 When the rover no longer sees any of the line color anywhere in the front portion of the camera frame, it stops and the program ends.
 
-<p class="Mycaption"><em>Figure 2: A GIF of what the camera sees as the rover moves along a green line..</em>
+<p class="Mycaption"><em>Figure 2: A GIF of what the camera sees as the rover moves along a green line.</em>
 <img class="center" src="../img/LF-tape-follow3.gif" width="300" /></p><br>
 
 ## Let’s Write some Code!
 <ol><li class="spacing">Open a file in your favorite IDE and paste in <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8">the code from the earlier referenced GIST</a>.</li>
+
+<p class="Mycaption"><em>Figure 2: A GIF of what the camera sees as the rover moves along a green line.</em><br>
+<img class="center" src="../img/LF-tape-follow3.gif" width="300" /></p><br>
+
+## Let’s write some Code!
+<ol><li class="spacing">Open a file in your favorite IDE and paste-in <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8">the code from the earlier referenced GIST</a>.</li>
+
 <li class="spacing">Adjust the components names to match the component names you created in your config file. 
 In this case, the component names that you may need to change are <strong>tread_base</strong>, <strong>myCamera</strong>, and <strong>green_detector</strong>.</li>
 <li class="spacing">For those who care about linting and formatting, we used <a href="https://flake8.pycqa.org/en/latest/">flake8</a> as the linter with the max line length changed to 140 and Black for formatting.
 <img src="../img/LF-lint4.png" /></li>
-<li class="spacing">From your robot’s page on the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>, go to the Connect tab. 
-Find the Python SDK field and copy the robot address (will likely have the form <span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span> and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file. 
+
+<li class="spacing">From your robot’s page on the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>), go to the Connect tab. 
+Find the Python SDK field and copy the robot address (which will likely have the form
+<span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file. 
+
 This allows your code to connect to your robot.</li>
 <li class="spacing">Save the code in a directory of your choice.</li>
 <li class="spacing">To get the code onto the Pi you have a few options. 
@@ -206,19 +218,28 @@ Perhaps a circle or other shape, or perhaps a path from one point of interest to
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.</li>
 <li class="spacing">Set your robot on the line such that the line appears in the front of the camera’s view. 
 Verify that the camera sees the line by viewing the camera feed on the <strong>Control</strong> tab of the robot page.</li>
+
 <p class="Mycaption"><em>Figure 4: The camera view in the <strong>Control</strong> tab on the Viam App robot page.</em>
 <img  class="spacing" src="/tutorials/img/LF-cam-view6.png" width="600" /></p>
- 
-<li class="spacing">In a terminal window, SSH to your Pi by running<br>
-<span class=file>ssh <your_username>@<your_pi’s_name>.local</span><br> and then
+<li class="spacing">In a terminal window, SSH to your Pi by running:<br>
+```bash
+ssh <your_username>@<your_pi’s_name>.local
+```
 replacing the angle brackets and the example text with your actual Pi username and the name of your Pi. 
 Remember to delete the angle brackets!</li>
+
 <li class="spacing">Make sure you have Python installed. 
-You can double-check this by running:<br> <span class=file>pi@scuttlebend:~ $ python --version</span></br>
-We at Viam are running Python 3.9.2 for this tutorial.</li>
-<li class="spacing">Make sure you have the Viam Python SDK installed. Instructions can be found here.</li>
+You can double-check this by running:
+```bash
+pi@scuttlebend:~ $ python --version
+```
+At Viam, we are running Python 3.9.2 for this tutorial.</li>
+<li class="spacing">Make sure you have the Viam Python SDK installed. <a href="https://github.com/viamrobotics/viam-python-sdk">Instructions can be found here.</a></li>
 <li class="spacing">In this Pi terminal go ahead and run the code:
-<span class="file">pi@scuttlebend:~ $ python ~/myCode/rgbFollower.py</span>
+```bash
+pi@scuttlebend:~ $ python ~/myCode/rgbFollower.py
+```
+
 Be sure to replace <span class=file>~/myCode</span> with the path to the directory where you saved your Python script, and <span class=file>rgbFollower.py</span> with whatever you named your Python script file. 
 You may need to call “python3” instead of “python,” depending on how you  configured your Pi.</li>
 </ol></ol>
@@ -226,14 +247,13 @@ The robot should continue moving along the line until it no longer sees the colo
 
 ## Summary
 
-By now you have learned how to configure a wheeled base and camera with Viam. 
-You have access to the Control tab from which you can drive your rover around with WASD keys. 
 You have learned to use the Viam vision service color detector, which can be useful in many other projects. 
 You have a rover following a path of your choice, anywhere you want it to go!
 
 ## Troubleshooting
 
 ### Issue #1: The rover moves too fast to track the line
+
 If your rover keeps driving off the line so fast that the color detector can’t keep up, you can try two things:
 <ol>
 <li class="spacing">Slow down the move straight and turning speeds of the rover by decreasing the  the numbers in:
@@ -244,18 +264,22 @@ and both instances of:</br>
 
 <span class=file>base.set_power(Vector3(), Vector3(z=0.25))</span>
 </li>    
-<li class="spacing">If your rover begins moving too slowly or stalling, make them bigger!</li>
+    
+If your rover is moving too slowly or stalling, increase the numbers (closer to 1.0 which represents full power).</li>
+
 <li class="spacing">Position the camera differently, perhaps so that it is higher above the floor but still pointing downward. 
 This will give it a wider field of view so it takes longer for the line to go out of view.</li>
 </ol></ol>
 
-### Issue #1: None
+## Issue #2: None
 N/A
 
-## Additional Troubleshooting Information
+## Additional Troubleshooting Assistance
 
-- [General Troubleshooting Information](../appendix/troubleshooting.md)
-- [Viam Tutorials](../tutorials/tutorials.md)
+You can find additional assistance in:
+* [Troubleshooting](../appendix/troubleshooting).
+* [General Troubleshooting Information](../appendix/troubleshooting.md)
+* [Viam Tutorials](../tutorials/tutorials.md)
 
 ## Bonus challenges: 
 1. Automatically detect what color line the robot is on and follow that.

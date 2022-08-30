@@ -17,7 +17,6 @@ video /* fix margins around video.*/
     
 }
 
-
 .file
 {
     font-family: 'Courier New', Courier, monospace, monospace;
@@ -65,3 +64,14 @@ OL.myRom ~ li
 list-style-type: lower-roman;
 padding-left: 30em;
 }
+/* START - FIX TABLE WORDWRAP */
+.rst-content table.docutils thead,.rst-content table.field-list thead,.wy-table thead{
+    white-space: normal;
+    overflow-wrap:normal
+}
+.wy-table-responsive table td,.wy-table-responsive table th{
+    white-space: normal;
+    overflow-wrap:normal
+}
+
+/* END - FIX TABLE WORDWRAP */

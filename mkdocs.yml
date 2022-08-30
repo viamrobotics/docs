@@ -11,20 +11,28 @@ nav:
     - Tutorials: 'tutorials/tutorials.md'
     - Install VIAM on Raspberry Pi: 'getting-started/installation.md'    
     - ScuttleBot: 'tutorials/scuttlebot.md'
-    - Scuttlebot Gamepad: 'tutorials/scuttle-gamepad.md'
+    - Scuttlebot Gamepad: 'tutorials/scuttle-gamepad' 
     - YahBoom Rover: 'tutorials/yahboom-rover.md'
     - Color Detection using a ScuttleBot: 'tutorials/color-detection-scuttle.md'
+    - Control GPIO Pins on a Scuttle Robot: 'tutorials/control-gpio-on-scuttlebot.md'
+    - Build a Webcam-based Line Follower Robot: 'tutorials/webcam-line-follower-robot.md'
   - Deep Dives:
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
     - Viam's Authentication: 'deeper-dive/security.md'
   - Components:
-    - Component FAQ: 'components/component-faq.md'  
+    - Component FAQ: 'components/component-faq.md'
+    - Arm: 'components/arm.md'
+    - Base: 'components/base.md'
     - Board: 'components/board.md'    
+    - Camera: 'components/camera.md'
+    - GPS: 'components/gps.md'
     - Motor: 'components/motor.md'
     - Servo: 'components/servo.md'
   - Services:
-    - Vision: 'services/vision.md'
     - Data Capture: 'services/data-capture.md'    
+    - Simultaneous Localization and Mapping (SLAM): 'services/slam.md'
+    - Vision: 'services/vision.md'
+    
   - Appendix:
     - Orientation Vector: 'appendix/orientation-vector.md'
     - Troubleshooting: 'appendix/troubleshooting.md'    
