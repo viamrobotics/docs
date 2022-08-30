@@ -15,6 +15,7 @@ nav:
     - YahBoom Rover: 'tutorials/yahboom-rover.md'
     - Color Detection using a ScuttleBot: 'tutorials/color-detection-scuttle.md'
     - Control GPIO Pins on a Scuttle Robot: 'tutorials/control-gpio-on-scuttlebot.md'
+    - Build a Webcam-based Line Follower Robot: 'tutorials/webcam-line-follower-robot.md'
   - Deep Dives:
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
     - Viam's Authentication: 'deeper-dive/security.md'
