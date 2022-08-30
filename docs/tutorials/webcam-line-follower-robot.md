@@ -240,7 +240,7 @@ You have a rover following a path of your choice, anywhere you want it to go!
 If your rover keeps driving off the line so fast that the color detector can’t keep up, you can try two things:
 
 1. Slow down the move straight and turning speeds of the rover by decreasing the  the numbers in `base.set_power(Vector3(y=0.3), Vector3())` and both instances of `base.set_power(Vector3(), Vector3(z=0.25))`.
-    - Conversely if your rover is moving too slowly or stalling, increase the numbers (closer to 1.0 which represents full power).</li>
+    - Conversely, if your rover is moving too slowly or stalling, increase the numbers (closer to 1.0 which represents full power).</li>
 2. Position the camera differently, perhaps so that it is higher above the floor but still pointing downward. 
 This will give it a wider field of view so it takes longer for the line to go out of view.
 
