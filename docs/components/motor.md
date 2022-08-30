@@ -149,7 +149,9 @@ Some motors come with encoders integrated or attached to them.
 Other times, you may add an encoder to a motor.
 See the [Encoder Component Doc](encoder.md) for more information on encoders.
 
-### Wiring  
+### Wiring
+
+Here's an example of an encoded DC motor wired with [this motor driver](https://www.pololu.com/product/2961).
 
 ![motor-encoded-dc-wiring](img/motor-encoded-dc-wiring.png)  
 
