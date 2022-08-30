@@ -14,14 +14,6 @@ Electric motors are the most common form of actuator in robotics.
 The majority of motors used in robotics require a direct current (DC) input.
 This page covers how to wire, configure and control various types of DC motor with Viam.
 
-## Contents
-- [General Hardware Requirements](motor.md#general-hardware-requirements)
-- [Identifying What Kind of Motor You Have](motor.md#what-kind-of-motor-do-i-have)
-- [Brushed DC Motor](motor.md#brushed-dc-motor)
-- [Brushless DC Motor](motor.md#brushless-dc-motor)
-- [DC Motor with Encoder](motor.md#dc-motor-with-encoder)
-- [Stepper Motor](motor.md#stepper-motor)
-
 ## General Hardware Requirements
 A common motor control setup comprises the following:
 
@@ -84,7 +76,7 @@ For example:
 [Click here for the raw JSON.](example-configs/motor-gpio-config.json)
 
 #### Required Attributes
-Attribute Name | Type | Default Value | Meaning/Purpose
+Name | Type | Default Value | Meaning/Purpose
 -------------- | ---- | ------------- | ---------------
 `board  ` | string | --        | Name of board on which it depends
 `max_rpm` | float | --         | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the “GoFor” method unusable.
@@ -100,7 +92,7 @@ Name | Type | Meaning/Purpose |
 `pwm` | string | See [Pins](motor.md#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
 
 #### Optional Attributes
-Attribute Name | Type | Default Value | Meaning/Purpose
+Name | Type | Default Value | Meaning/Purpose
 -------------- | ---- | ------------- | ---------------
 `min_power_pct` | float | 0.0 | Sets a limit on minimum power percentage sent to the motor 
 `max_power_pct` | float | 1.0 | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor  
@@ -152,7 +144,7 @@ Here’s an example config file:
 #### Required Attributes
 In addtion to the required [attributes of a non-encoded motor](motor.md#required-attributes), encoded DC motors require the following:
 
-Attribute Name | Type | Meaning/Purpose
+Name | Type | Meaning/Purpose
 -------------- | ---- | ---------------
 `encoder` | string | Should match name of the encoder you configure as an `encoder` component.
 `ticks_per_rotation` | string | Number of ticks in a full rotation of the encoder (and motor shaft).
@@ -160,7 +152,7 @@ Attribute Name | Type | Meaning/Purpose
 #### Optional Attributes
 In addition to the optional attributes [listed in the previous non-encoded motor section](motor.md#optional-attributes), encoded motors have the following additional options:  
 
-Attribute Name | Type | Meaning/Purpose
+Name | Type | Meaning/Purpose
 -------------- | ---- | ---------------
 `ramp_rate` | float | How fast to ramp power to motor when using RPM control. 0.01 ramps very slowly; 1 ramps instantaneously. Range is (0, 1]. Default is 0.2.
 
@@ -191,7 +183,7 @@ Here’s an example of a basic stepper driver config:
 
 #### Required Attributes for Steppers
 
-Attribute Name | Type | Meaning/Purpose
+Name | Type | Meaning/Purpose
 -------------- | ---- | ---------------
 `board` | string | Should match name of board on which motor depends.
 `pins` | object | A structure containing "step" and "dir" pin numbers; see example JSON above.
@@ -199,7 +191,7 @@ Attribute Name | Type | Meaning/Purpose
 
 #### Optional Attributes
 
-Attribute Name | Type | Meaning/Purpose
+Name | Type | Meaning/Purpose
 -------------- | ---- | ---------------
 `stepper_delay` | uint | Time in microseconds to remain high for each step. Default is 20.
 
