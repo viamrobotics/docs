@@ -105,25 +105,58 @@ An explanatory view of the same config file:
 <img src="/components/img/base-json.png" alt="An image of the JSON configuration file with annotations explaining some of the attributes."/>
 
 ### Required Attributes
+<table>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><code>type</code></td>
+    <td>string</td>
+    <td>Use "base" for any base component</td>
+  </tr>
+  <tr>
+    <td><code>model</code></td>
+    <td>string</td>
+    <td>Select "wheeled" unless you have a "boat".</td>
+  </tr>
+  <tr>
+    <td><code>name</code></td>
+    <td>string</td>
+    <td>Name your base.</td>
+  </tr>
+  <tr>
+    <td><code>left</code></td>
+    <td>string</td>
+    <td>List with the names of all drive motors on the left side of the base. There may be one or more motors.</td>
+  </tr>
+  <tr>
+    <td><code>right</code></td>
+    <td>array of strings</td>
+    <td>List with the names of all drive motors on the right side of the base. There may be one or more motors.</td>
+  </tr>
+  <tr>
+    <td><code>wheel_circumference_mm</code></td>
+    <td>int</td>
+    <td>The outermost circumference of the drive wheels in millimeters.Used for odometry, so try to enter your best approximation of the effective circumference.</td>
+  </tr>
+  <tr>
+    <td><code>width_mm</code></td>
+    <td>int</td>
+    <td>Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels.</td>
+  </tr>
+  <tr>
+    <td><code>depends_on</code></td>
+    <td>array of strings</td>
+    <td>List the names of the right and left motors again. This is so the code will find the motors before it attempts to register the base, avoiding errors.</td>
+  </tr>
 
-`type` (string): Use "base" for any base component.
-
-`model` (string): Select "wheeled" unless you have a "boat".
-
-`name` (string): Name your base.
-
-`left` (array of strings): List with the names of all drive motors on the left side of the base.
-There may be one or more motors.
-
-`right` (array of strings): List with the names of all drive motors on the right side of the base.
-
-`wheel_circumference_mm` (int): The outermost circumference of the drive wheels in millimeters.
-Used for odometry, so try to enter your best approximation of the effective circumference.
-
-`width_mm` (int): Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels.
-
-`depends_on` (array of strings): List the names of the right and left motors again.
-This is so the code will find the motors before it attempts to register the base, avoiding errors.
+</tbody>
+</table>
 
 ### Optional Attributes
 
