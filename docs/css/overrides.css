@@ -16,3 +16,14 @@ video /* set top/bottom margin around images.*/
     margin: -10px 0px 24px 0px;
     
 }
+/* START - FIX TABLE WORDWRAP */
+.rst-content table.docutils thead,.rst-content table.field-list thead,.wy-table thead{
+    white-space: normal;
+    overflow-wrap:normal
+}
+.wy-table-responsive table td,.wy-table-responsive table th{
+    white-space: normal;
+    overflow-wrap:normal
+}
+
+/* END - FIX TABLE WORDWRAP */
