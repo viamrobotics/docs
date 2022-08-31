@@ -187,7 +187,7 @@ Select your location and use the form on the right to create a new Robot. If thi
 
 ![add-robot](../tutorials/img/add-robot.png)
 
-Navigate to your new robot, which should show an empty config as shown, below:
+Navigate to your new robot, which should show an empty config as shown below:
 
 ![view-robot](../tutorials/img/view-robot.png)
 
