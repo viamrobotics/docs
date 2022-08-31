@@ -25,6 +25,7 @@ nav:
     - Base: 'components/base.md'
     - Board: 'components/board.md'    
     - Camera: 'components/camera.md'
+    - Encoder: 'components/encoder.md'
     - GPS: 'components/gps.md'
     - Motor: 'components/motor.md'
     - Servo: 'components/servo.md'
