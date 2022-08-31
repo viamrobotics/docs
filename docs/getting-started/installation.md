@@ -179,11 +179,11 @@ This means either you can continue with your Viam email address or a personal em
 
 Once you are logged in, create a new location by filling out the form on the left and then clicking `New Location`.
 Location means where your robot is hosted in real life.
-This is useful if you have multiple robots in multiple locations and you would like to control them romotely via the cloud on our app.
+This is useful if you have multiple robots in multiple locations and you would like to control them remotely via the cloud on our app.
 
 ![add-location](../tutorials/img/add-location.png)
 
-Select your location and use the form on the right to create a new Robot:
+Select your location and use the form on the right to create a new Robot. If this is the frist robot in this location, the App displays a pointer to the New Robot field (upper RH-corner):
 
 ![add-robot](../tutorials/img/add-robot.png)
 
