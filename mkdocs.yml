@@ -20,7 +20,6 @@ nav:
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
     - Viam's Authentication: 'deeper-dive/security.md'
   - Components:
-    - Component FAQ: 'components/component-faq.md'
     - Arm: 'components/arm.md'
     - Base: 'components/base.md'
     - Board: 'components/board.md'    
