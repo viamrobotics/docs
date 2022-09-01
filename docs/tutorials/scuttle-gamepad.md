@@ -24,7 +24,7 @@ The following video demonstrates controlling a scuttle bot using a bluetooth gam
 
 ## Adding the Controller to the Scuttle's Config
 
-To add this controller to the robot’s config, from the Viam App ([https://app.viam.com])(https://app.viam.com)), click on our old friend, **CREATE A COMPONENT**.
+To add this controller to the robot’s config, from the Viam App ([https://app.viam.com](https://app.viam.com)), click on our old friend, **CREATE A COMPONENT**.
 <OL>
 <li>On the Create Component screen, enter "gamepad" as the component <strong>Name</strong>  and select "input_controller" for the component <strong>Type</strong>. </li>
 
