@@ -17,6 +17,7 @@ nav:
     - Control GPIO Pins on a Scuttle Robot: 'tutorials/control-gpio-on-scuttlebot.md'
     - Build a Webcam-based Line Follower Robot: 'tutorials/webcam-line-follower-robot.md'
   - Deep Dives:
+    - Control Package:  'deeper-dive/controls-package/'
     - Viam's Application End-to-End Flow: 'deeper-dive/robot-to-robot-comms.md'
     - Viam's Authentication: 'deeper-dive/security.md'
   - Components:
