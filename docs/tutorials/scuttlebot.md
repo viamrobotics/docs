@@ -57,7 +57,7 @@ As with all other components, the first step is clicking <strong>CREATE A COMPON
 The Viam App returns the following screen:</li>
 <img src="../img/pi-rhwheel-f.png"  alt="Fancy component config screen for a Motor."width="515px"><br>
 
-This screen provides read-only displays of JSON configuration information and allows you to select which board controls this motor, to toggle the <strong>Component Pin Assignment</strong> between Direction and Int1/Int2, and <strong>Enable Pins</strong> for these pins (i.e., set them to High, Low, or Neither). 
+This screen provides read-only displays of JSON configuration information and allows you to select which board controls this motor, to toggle the <strong>Component Pin Assignment</strong> between Direction and Int1/Int2, and <strong>Enable Pins</strong> (i.e., set them to High, Low, or Neither). 
 You can also add a <strong>Frame</strong>, a <strong>Data Capture Pathway</strong>, and set the <strong>Depends On</strong>.<br>
 
 
