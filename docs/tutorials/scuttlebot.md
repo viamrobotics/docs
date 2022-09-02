@@ -53,18 +53,11 @@ As with all other components, the first step is clicking <strong>CREATE A COMPON
 <li class="spacing">Begin by adding the Right Side Wheel, naming the component <code>right</code>.</li>
 <li class="spacing">Select "motor" from the <code>Type</code> drop-down.</li>
 <li class="spacing">Select "gpio" from the <code>Model</code> drop-down.</li>
-<li class="spacing">Click <strong>Create Component</strong>.
-The Viam App returns the following screen:</li>
-<img src="../img/PI-rhWheel-FANCY.png" width="515px"><br>
-
-This screen provides read-only displays of JSON configuration information and allows you to select which board controls this motor, to toggle the <strong>Component Pin Assignment</strong> between Direction and Int1/Int2, and <strong>Enable Pins</strong> these pins (i.e.,  set them to High, Low, or Neither). 
-You can also add a <strong>Frame</strong>, a <strong>Data Capture Pathway</strong>, and set the <strong>Depends On</strong>.<br>
-
-
+<li class="spacing">Click <strong>New Component</strong>.
+App.Viam returns the following screen with empty JSON attributes for the motor component and a reference for the available attributes:</li>
+<img src="../img/PI-rhWheel.png">
 <li class="spacing">Now, tell Viam how this motor is wired to the Pi:</li>
 <ol type="a">
-<li class="spacing" style="list-style-type:lower-alpha">Click <strong>Go to Advanced</strong>. The Viam App now displays the advanced screen where the app displays the current JSON attributes for this motor component and a reference for the available attributes</li>
-<img src="../img/PI-rhWheel.png">
 <li class="spacing" style="list-style-type:lower-alpha">First, select <code>local</code> from the <strong>Depends On</strong> drop-down as the motor is wired to the Raspberry Pi board named, "local".</li>
 
 <li class="spacing" style="list-style-type:lower-alpha">Make the following changes in the JSON:</li>
@@ -81,7 +74,7 @@ You can also add a <strong>Frame</strong>, a <strong>Data Capture Pathway</stron
 !!! note
     If your wheel turns in reverse when it should turn forward, add the <code>dir_flip</code> attribute and set it to "true".
 
-The Viam App returns the following screen with empty JSON attributes for the motor component and a reference for the available attributes.
+App.Viam returns the following screen with empty JSON attributes for the motor component and a reference for the available attributes.
 
 <img src="../img/PI-rhWheel.png">
 
@@ -132,8 +125,8 @@ Some of the differences are the <code>Name</code> which is <code>left</code> and
 <li class="spacing">Add the Left Side Wheel, naming the component <code>left</code>.</li>
 <li class="spacing">Select "motor" from the <code>Type</code> drop-down.</li>
 <li class="spacing">Select "gpio" from the <code>Model</code> drop-down.</li>
-<li class="spacing">Click <strong>Create Component</strong>.
-The Viam App opens the Component config Panel for the wheel.</li>
+<li class="spacing">Click <strong>New Component</strong>.
+App.Viam opens the Component config Panel for the wheel.</li>
 <li class="spacing">Now, tell Viam how this motor is wired to the Pi:</li>
 <ol type="a">
 <li class="spacing" style="list-style-type:lower-alpha">First, select the board name from the <strong>Depends On</strong>, which is "local" in this example, as the motor is wired to the Raspberry Pi board named, "local".</li>
@@ -228,9 +221,9 @@ Once again, click <strong>CREATE A COMPONENT</strong> to begin, then continue wi
 1. Enter "camera" in **Name**.
 2. Enter "camera" in **Model**.
 3. From **Depends On**, select "local," which is our Raspberry Pi.
-4. Click <strong>Create Component</strong>.
+4. Click <strong>New Component</strong>.
 
-The Viam App now displays the config panel for this camera component:
+App.Viam now displays the config panel for this camera component:
 <img src="../img/pi-cam-control.png">
 
 On the Camera Config panel:
