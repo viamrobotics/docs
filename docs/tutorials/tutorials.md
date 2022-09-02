@@ -7,7 +7,7 @@ date: 2022-08-02
 
 ---
 # Tutorial Introduction
-These tutorials were created by Viam's staff.
+These tutorials were created by the Viam team.
 
 ## Basic Tutorial
 Viam projects center on the Raspberry Pi single-board computer.
