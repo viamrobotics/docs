@@ -59,6 +59,7 @@ The Viam App returns the following screen:</li>
 
 This screen provides read-only displays of JSON configuration information and allows you to select which board controls this motor, to toggle the <strong>Component Pin Assignment</strong> between Direction and Int1/Int2, and <strong>Enable Pins</strong> (i.e., set them to High, Low, or Neither). 
 You can also add a <strong>Frame</strong>, a <strong>Data Capture Pathway</strong>, and set the <strong>Depends On</strong>.<br>
+Note that you will not make modifications to the "fancy" screen during the tutorial.
 
 
 <li class="spacing">Now, tell Viam how this motor is wired to the Pi:</li>
