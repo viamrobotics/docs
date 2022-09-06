@@ -22,7 +22,7 @@ In this page, we will explain:
 To supply reference frame information when configuring a component in the Viam App ([https://app.viam.com](app.viam.com)), click **Add Frame** to launch the Frame group where you will enter Reference Frame details.
 This opens the Add Frame pane:
 
-![add reference frame pane](img\image8.png)
+![add reference frame pane](..\img\image8.png)
 
 The reference frame requires three pieces of information:
 
@@ -62,7 +62,7 @@ Once configuration is complete and the server is started, the robot builds a tre
 A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs. 
 Viam regenerates this tree in the process of [reconfiguration](https://docs.viam.com/product-overviews/fleet-management/#configurationlogging)
 
-![an example of a logged frame system](img\frame_sys_log_example.png)
+![an example of a logged frame system](..\img\frame_sys_log_example.png)
 
 Viam builds this tree by looking at the frame portion of each component in the robot's configuration (including those defined on any remotes) and creating two reference frames. 
 * One reference frame is given the name of the component and represents the actuator or final link in the component's kinematic chain (e.g., the end of an arm, the platform of a gantry, etc.). 
@@ -76,7 +76,7 @@ The Frame System considers the reference frame with this static origin to be "G_
 This choice is made so that when we specify the parent frame of the arm, we can simply use "G" and the Frame System will understand that the arm's parent frame is the platform of the gantry and not it's zero position used as a point of reference to the world. 
 The resulting tree of reference frames could be visualized like so:
 
-![reference frame tree](img\frame_tree.png)
+![reference frame tree](..\img\frame_tree.png)
 
 ## Configuration Examples
 
