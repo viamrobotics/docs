@@ -76,21 +76,21 @@ Before proceeding, be sure that you have added your Pi to the Viam App. Steps on
 
 Now that we have got that out of the way, let's get back to setting up your robot in the Viam App. First, go to the Viam App at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot\'s config.
 
-![Screenshot of the Vam App showing the default board configuration on the "components" tab.](img/LED-Blink-with-RPi/image2.png){width="6.5in" height="1.5416666666666667in"}
+![Screenshot of the Vam App showing the default board configuration on the "components" tab.](img/LED-Blink-with-RPi/image2.png)
 
 The first component you will add is the \`**board**\`, which represents your single board computer, which in this case is the Raspberry Pi. This is where you will wire all other components. To create a new component, select \`**Create a component**\`. For the component \`**Type**\`, select \`**board**\`. Then you can name the \`**board**\` whatever you like as long as you are consistent when referring to it later; we\'ll name this component \`**local**\` since it is the \`**board**\` we will communicate with directly. For \`**Model**\`, select \`**pi**\`, then click '**Add new component**.' Your board component's config will generate the following JSON attributes:
 
-![Screenshot of the Viam App showing the board configuration on the 'config' tab. The board is named "local" and the attributes are shown as empty braces.](img/LED-Blink-with-RPi/image6.png){width="6.5in" height="2.111111111111111in"}
+![Screenshot of the Viam App showing the board configuration on the 'config' tab. The board is named "local" and the attributes are shown as empty braces.](img/LED-Blink-with-RPi/image6.png)
 
-As you add your board component to your robot in the Viam App, it generates a tab for your board in the Control tab. Here, you can click on "**Get**" to get the current status of your pin. When you first click **Get Pin State**, it should return "Pin: 8 is low."![Screenshot of the Viam App showing the board configuration on the "Connect" tab. The "Board Local" row is expanded, and under the "Get" row, the pin is set to "8." A red box is around the "Get Pin State" button and the output, which reads, "Pin: 8 is low."](img/LED-Blink-with-RPi/image5.png){width="6.5in" height="2.7777777777777777in"}
+As you add your board component to your robot in the Viam App, it generates a tab for your board in the Control tab. Here, you can click on "**Get**" to get the current status of your pin. When you first click **Get Pin State**, it should return "Pin: 8 is low."![Screenshot of the Viam App showing the board configuration on the "Connect" tab. The "Board Local" row is expanded, and under the "Get" row, the pin is set to "8." A red box is around the "Get Pin State" button and the output, which reads, "Pin: 8 is low."](img/LED-Blink-with-RPi/image5.png)
 
 You can now select "**Set**" to control the status of your pin to "high." It will look like this:
 
-![Screenshot of the Viam App showing the board configuration on the "Connect" tab. The "Board Local" row is expanded, and under the "Set" row, the pin is set to "8." A red box is around the "Set Pin State" field.](img/LED-Blink-with-RPi/image8.png){width="6.5in" height="2.75in"}
+![Screenshot of the Viam App showing the board configuration on the "Connect" tab. The "Board Local" row is expanded, and under the "Set" row, the pin is set to "8." A red box is around the "Set Pin State" field.](img/LED-Blink-with-RPi/image8.png)
 
 After setting your pin to "high" the LED should be illuminated! You should play around with values "**low**" and "**high**" by setting them differently. You will see your LED toggle on and off.
 
-![A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.](img/LED-Blink-with-RPi/image7.gif){width="6.5in" height="5.916666666666667in"}
+![A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.](img/LED-Blink-with-RPi/image7.gif)
 
 ## Summary
 
