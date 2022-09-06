@@ -10,7 +10,7 @@ Note: This is part 2 of Viam's, Intro to Robotics series. If you haven't complet
 
 For reference, the circuit you are building off of for this tutorial looks like this:
 
-![Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image1.png){width="3.7827241907261593in" height="5.140625546806649in"}
+![Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image1.png)
 
 Note: If you have any issues whatsoever getting Viam set up on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
@@ -121,7 +121,7 @@ touch blink.py
 ```
 Open up a code editor, like VS Code, you should now see a file in your explorer window called blink.py. Click on that file to open it in the code editor.
 
-![A screenshot from Visual Studio Code that shows the file explorer. A red box is highlighting the new blink.py file located in the root directory.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image5.png){width="1.6780839895013124in" height="2.5364588801399823in"}
+![A screenshot from Visual Studio Code that shows the file explorer. A red box is highlighting the new blink.py file located in the root directory.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image5.png)
 
 Now, the easiest way to get started writing a Python application with Viam, is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **Connect** tab, and copy the boilerplate code from the section labeled **Python SDK**. This code snippet imports all the necessary libraries and sets up a connection with the Viam App in the cloud.
 
@@ -169,7 +169,7 @@ python3 blink.py
 
 If your robot has been successfully configured, and is able to connect to the Viam App, you should see something like this printed to the terminal after running your program. What you see here is a list of the various resources, components, and services that have been configured to your robot in the Viam App.
 
-![A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam App. The output is an array of resources that have been pulled from the Viam App. Some of these are the Vision Service, Data Manager, and Board.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image4.png){width="6.5in" height="3.1527777777777777in"}
+![A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam App. The output is an array of resources that have been pulled from the Viam App. Some of these are the Vision Service, Data Manager, and Board.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image4.png)
 
 ### How to write Python code to make an LED Blink
 
@@ -214,7 +214,7 @@ python3 blink.py
 
 And, if all goes well, you should see your LED blinking on and off again every second!
 
-## ![A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text "LED is on," and "LED is off" is printed out to the terminal onscreen.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image6.gif){width="6.5in" height="3.638888888888889in"}
+![A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text "LED is on," and "LED is off" is printed out to the terminal onscreen.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image6.gif)
 
 You can exit this program by click **control + c** in your terminal window.
 
@@ -224,7 +224,7 @@ If you get an error, you can check your code against my complete code here:
 
 Note: If you have any issues whatsoever getting the Viam Python SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com). There you will find a friendly developer community of people learning how to make robots using Viam.
 
-![A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image2.gif){width="4.135945975503062in" height="4.692708880139983in"}
+![A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image2.gif)
 
 ## Summary
 
