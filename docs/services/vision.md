@@ -33,6 +33,43 @@ The vision service is a default service on the robot, and can be initialized wit
 
 More about the parameters and model types can be found under the corresponding operation below.
 
+
+## Configuring your VisModels
+
+To add a vision model to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “register_models” field in the attributes field of the vision service config. If you're using the Config>>Services tab on app.viam.com, you'll see that adding a vision service invites you to directly fill in the "attributes."
+
+```
+"services": [
+    {
+        "name": " ",
+        "type": "vision",
+        "attributes": {
+          "register_models": [
+            {
+              "name": "my_color_detector", 
+              "type": "color_detector",
+              "parameters": {
+                "detect_color" : "#A3E2FF",
+                "tolerance": 0.06,
+                "segment_size": 100
+              }
+            },
+            {
+              "name": "my_classifier", 
+              "type": "tflite_classifier",
+              "parameters": {
+                "model_path" : "/path/to/model.tflite",
+                "label_path": "/path/to/labels.txt",
+                "num_threads": 1
+              }
+            }
+          ]
+        }
+    }
+]
+```
+
+
 ## Detection
 
 __2D Object Detection__ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct “objects” of interest in the scene. Any camera that can return 2D images can use 2D object detection.
@@ -171,40 +208,6 @@ The segmenter requires 3 parameters.
 
 
 
-## Configuring your VisModels
-
-To add a vision model to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “register_models” field in the attributes field of the vision service config. If you're using the Config>>Services tab on app.viam.com, you'll see that adding a vision service invites you to directly fill in the "attributes."
-
-```
-"services": [
-    {
-        "name": " ",
-        "type": "vision",
-        "attributes": {
-          "register_models": [
-            {
-              "name": "my_color_detector", 
-              "type": "color_detector",
-              "parameters": {
-                "detect_color" : "#A3E2FF",
-                "tolerance": 0.06,
-                "segment_size": 100
-              }
-            },
-            {
-              "name": "my_classifier", 
-              "type": "tflite_classifier",
-              "parameters": {
-                "model_path" : "/path/to/model.tflite",
-                "label_path": "/path/to/labels.txt",
-                "num_threads": 1
-              }
-            }
-          ]
-        }
-    }
-]
-```
 
 
 
