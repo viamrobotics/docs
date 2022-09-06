@@ -10,6 +10,7 @@ nav:
   - Tutorials: 
     - Tutorials: 'tutorials/tutorials.md'
     - Install VIAM on Raspberry Pi: 'getting-started/installation.md'    
+    - Make an LED Blink with a Raspberry Pi Using the Viam App: 'tutorials/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam.md'    
     - ScuttleBot: 'tutorials/scuttlebot.md'
     - Scuttlebot Gamepad: 'tutorials/scuttle-gamepad' 
     - YahBoom Rover: 'tutorials/yahboom-rover.md'
