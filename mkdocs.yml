@@ -30,7 +30,8 @@ nav:
     - Motor: 'components/motor.md'
     - Servo: 'components/servo.md'
   - Services:
-    - Data Capture: 'services/data-capture.md'    
+    - Data Capture: 'services/data-capture.md'
+    - Robot Service: 'services/robot-service.md'
     - Simultaneous Localization and Mapping (SLAM): 'services/slam.md'
     - Vision: 'services/vision.md'
     

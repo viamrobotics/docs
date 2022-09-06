@@ -104,7 +104,7 @@ There is generally one robot part per CPU.
 
 **Gantry:** A robot that only uses linear motion to carry out a task; for example, the scaffolding of a 3D printer, which moves the print head around on motorized linear rails.
 
-**gRPC:** Google Remote Procedure Call.
+<a name="grpc"></a>**gRPC:** Google Remote Procedure Call.
 An open source universal RPC system initially developed at Google in 2015.
 This framework can run in any environment and efficiently connect services across data centers.
 
