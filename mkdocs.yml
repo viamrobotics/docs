@@ -9,7 +9,8 @@ nav:
     - app.viam's Robot Page: 'product-overviews/fleet-management.md'
   - Tutorials: 
     - Tutorials: 'tutorials/tutorials.md'
-    - Install VIAM on Raspberry Pi: 'getting-started/installation.md'    
+    - Install VIAM on Raspberry Pi: 'getting-started/installation.md'
+    - How to Make an LED Blink with the Viam Python SDK: 'tutorials/how-to-make-an-led-blink-with-a-raspberry-pi-and-python.md'     
     - ScuttleBot: 'tutorials/scuttlebot.md'
     - Scuttlebot Gamepad: 'tutorials/scuttle-gamepad' 
     - YahBoom Rover: 'tutorials/yahboom-rover.md'
