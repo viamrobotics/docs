@@ -31,6 +31,7 @@ nav:
     - Servo: 'components/servo.md'
   - Services:
     - Data Capture: 'services/data-capture.md'    
+    - Frame System: 'services/frame-system.md'
     - Simultaneous Localization and Mapping (SLAM): 'services/slam.md'
     - Vision: 'services/vision.md'
     
