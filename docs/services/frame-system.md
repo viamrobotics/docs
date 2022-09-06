@@ -19,10 +19,10 @@ In this page, we will explain:
 
 ## Configuration
 
-To supply reference frame information when configuring a component in the Viam App ([https://app.viam.com](app.viam.com)), click **Add Frame** to launch the Frame group where you will enter Frame details.
-This should open a prompt that looks like the following
+To supply reference frame information when configuring a component in the Viam App ([https://app.viam.com](app.viam.com)), click **Add Frame** to launch the Frame group where you will enter Reference Frame details.
+This opens the Add Frame pane:
 
-![add frame prompt](img\image8.png)
+![add reference frame pane](img\image8.png)
 
 The reference frame requires three pieces of information:
 
@@ -43,23 +43,24 @@ To get the coordinates in P of the vector (0,0,1) as measured in C, we apply the
 
 Viam recommends that you mark a sensible origin point in the physical space in which your robot will operate. 
 This will be the origin point of the "world" reference frame. 
-Then you can measure from the origin of either the world or a parent component to a point on the component guaranteed to be fixed to the origin to obtain the frame information for each component. Check the Examples section for more clarification.
+Then you can measure from the origin of either the world or a parent component to a point on the component guaranteed to be fixed to the origin to obtain the frame information for each component. 
+Refer to the [Configuration Examples](#configuration-examples) section for more clarification.
 
 ### Model Configuration
 
 Many components are non-trivial kinematic chains and require an additional set of intermediate reference frames. 
 For example, a traditional arm may have a reference frame whose origin is at its base, but it also has an alternating sequence of links and joints whose frames of reference matter when attempting to move the arm to a certain pose. 
-Each driver of such a component must be accompanied by a JSON file called a Model JSON that details the attachment of reference frames. 
+Each driver of such a component must be accompanied by a JSON file named **Model JSON** that details the attachment of reference frames. 
 These reference frames are ingested by the Frame System *but not exposed via gRPC call* (meaning they are unavailable for inspection by any of the SDKs)
 
 !!! note 
-    If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the (Model JSON section)[#Model-JSON].
+    If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the [**Model JSON** section](#Model-JSON).
 
 ## How the Robot Builds the Frame System
 
 Once configuration is complete and the server is started, the robot builds a tree of reference frames with the world as the root node. 
-A [topologically sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs. 
-This tree is regenerated in the process of [reconfiguration](https://docs.viam.com/product-overviews/fleet-management/#configurationlogging)
+A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs. 
+Viam regenerates this tree in the process of [reconfiguration](https://docs.viam.com/product-overviews/fleet-management/#configurationlogging)
 
 ![an example of a logged frame system](img\frame_sys_log_example.png)
 
@@ -88,19 +89,23 @@ We can then supply this frame information when configuring the arm component, ma
 ### Example 2: A robot arm attached to a gantry (a component fixed to the actuator of another component)
 
 Here we pick the zero position of the gantry as its origin and do the measurements to wherever we have marked the origin of our world frame as in the first example. 
-Once we have configured the gantry frame, we can now configure the arm. 
+After configuring the gantry frame, we can configure the arm. 
 
 The base of the arm is always at the position of the gantry, so we specify the arm's parent as the name of our gantry. 
 We use the 0-vector as the translation and for the orientation we can probably use a (0,0,1) vector with a theta of 0.
 
 ## Accessing the Frame System
 
-The [robot service](https://docs.viam.com/services/robot-service/) supplies two gRPC library functions by which to interact with the Frame System
-* TransformPose
-    - transforms a pose measured in one reference frame to the same pose as it would have been measured in another
-* FrameSystemConfig
-    - returns a topologically sorted list of all the reference frames monitored by the frame system
-    - supplemental transforms (explained below) are merged into the tree and returned back in the result topologically sorted
+The [robot service](https://docs.viam.com/services/robot-service/) supplies two gRPC library functions by which to interact with the Frame System:
+<ol>
+<li>TransformPose</li></OL>
+<ul><li>transforms a pose measured in one reference frame to the same pose as it would have been measured in another.</li></ul>
+<OL START="2">
+<li>FrameSystemConfig</li></OL>
+<ul><li>returns a topologically sorted list of all the reference frames monitored by the frame system.</li>
+<li>supplemental transforms (explained below) are merged into the tree and returned back in the result topologically sorted.</li>
+</ul>
+
 
 ### Supplemental Transforms
 
@@ -111,11 +116,12 @@ An arm on a gantry, for example, can be managed by the Frame System directly bec
 
 On the other hand, an arm on a rover cannot be configured into the frame system because a rover can move freely with respect to the world frame.
 
-So, how do we deal with such components? One solution would be to introduce a motion tracker or a camera in combination with our [vision service](https://docs.viam.com/services/vision/) as a third component. 
+So, how do we deal with such components? 
+One solution would be to introduce a motion tracker or a camera in combination with our [vision service](https://docs.viam.com/services/vision/) as a third component. 
 This component is fixed in space (making it configurable in the Frame System) and can supply the location and orientation of the rover in its own reference frame. 
-This *supplemental transform* is the missing link to be able to transform a pose in the arm's reference frame to the world reference frame (or others that may exist in the frame system)
+This *supplemental transform* is the missing link to be able to transform a pose in the arm's reference frame to the world reference frame (or others that may exist in the frame system).
 
-Both TransformPose and FrameSystemConfig optionally take in these supplemental transforms
+Both TransformPose and FrameSystemConfig optionally take in these supplemental transforms.
 
 Functions of some services and components take in a WorldState parameter (e.g., ArmMoveToPosition). 
 This data structure includes an entry for supplying supplemental transforms for use by internal calls to the Frame System.
@@ -124,15 +130,17 @@ This data structure includes an entry for supplying supplemental transforms for 
 
 ### Model JSON
 
-As explained in the Model Configuration section, some components require an additional Model JSON file to specify reference frame information about the kinematic chain of the component to the Frame System. 
-When writing a driver for a particular piece of hardware implementing one of these components an accompanying Model JSON is required
+As explained in the [Model Configuration](#model-configuration) section, some components require an additional **Model JSON** file to specify reference frame information about the kinematic chain of the component to the Frame System. 
+
+When writing a driver for a particular piece of hardware that implements one of these components, you must create its accompanying **Model JSON** file.
+
 
 !!! note
     There is currently (06 Sept 2022) no user interface in the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>) by which to create these files. 
-Furthermore, only our Go implementation supports creation of custom Model JSON files. 
+Furthermore, only our Go implementation supports creation of custom **Model JSON** files (06 Sept 2022). 
 This means that a user must fork our [repository](https://github.com/viamrobotics/rdk), create one of these files in that fork, and then use it to build the package for running the server.
 
-We currently support two methods of supplying reference frame parameters for a kinematic chain 
+We currently support two methods of supplying reference frame parameters for a kinematic chain: 
 1. Spatial Vector Algebra (SVA) - supplying reference frame information for each link and each joint.
 2. [Denavit-Hartenberg (DH)](https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters) parameters.
 
