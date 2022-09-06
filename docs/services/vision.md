@@ -1,53 +1,53 @@
----
-title: Vision Service Documentation
-summary: Explanation of the vision service, its configuration, its functionality, and its interfaces.
-authors:
-    - Matt Dannenberg
-    - Bijan Haney
+
 date: 2022-05-19
 ---
 # The Viam Vision Service
 
 ## Intro and Summary
 
-The vision service enables the robot to use its on-board cameras to intelligently see and interpret the world around it.
-The current features available through the vision service are:
+The vision service enables the robot to use its on-board cameras to intelligently see and interpret the world around it.  We're here to help you with everything that happens _after_ you have your image data.
 
-* **2D Object detection:** Allows a user to get bounding boxes around identified objects in a 2D image according to a user-defined algorithm.
-    * _TFLite Object Detection_: The TFLite Object Detector leverages TensorflowLite and the power of machine learning to draw boxes around objects of interest. The objects of interest are defined by your actual ML model (.tflite file). 
-* **3D Object segmentation**: Allows a user to get point clouds of identified objects in a 3D image according to a user-defined algorithm.
+
+Currently, there are three operations available through the vision service:
+
+* **Detection (or 2D object detection):** Allows a user to get bounding boxes around identified objects in a 2D image according to a user-defined algorithm. Many detection algorithms also include class label and confidence as output.
+   
+* **Classification (or 2D image classification)**: Allows a user to get a class label and confidence score associated with a 2D image according to a user-defined algorithm.
+
+* **Segmentation (or 3D object segmentation)**: Allows a user to get point clouds of identified objects in a 3D image according to a user-defined algorithm.
 
 The vision service is a default service on the robot, and can be initialized without attributes.
 
 
-## 2D Object Detection
+## VisModels
 
-2D Object Detection is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct “objects” of interest in the scene.
+| Operation         | VisModelType                                  | Parameters                                   |
+| ----------------- | --------------------------------- | ---------------------------------- |
+| Detection         | tflite\_detector   | "model\_path", "label\_path", "num\_threads" |
+|| tf\_detector      | TBD - Not yet supported                       |
+|| color\_detector   | "detect\_color", "tolerance", "segment\_size" |
+| Classification    | tflite\_classifier | "model\_path", "label\_path", "num\_threads" |
+|| tf\_classifier    | TBD - Not yet supported                       |
+| Segmentation      | radius\_clustering\_segmenter | "min_points_in_plane", "min_points_in_segment", "clustering_radius_mm", "mean_k_filtering"      |
+|| object\_segmenter |  "mean-k", "sigma" |
 
-What an object “is” depends on what is required for the task at hand.
-To accommodate the open-endedness of what kind of object a user may need to identify, the service provides different types of detectors, both heuristic and machine-learning based, so that users can create, register, and use detectors suited for their own purposes.
+More about the parameters and model types can be found under the corresponding operation below.
 
-### Hardware
 
-Any camera that can return 2D images can use 2D object detection.
-This essentially means that the driver for the camera implements the `get_frame` method.
-The Viam platform natively supports the following models of camera:  
+## Configuring your VisModels
 
-* `webcam`
-
-### Configuring your detectors
-
-To add a detector to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “register_detectors” field in the attributes field of the vision service config.
+To add a vision model to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “register_models” field in the attributes field of the vision service config. If you're using the Config>>Services tab on app.viam.com, you'll see that adding a vision service invites you to directly fill in the "attributes."
 
 ```
 "services": [
     {
+        "name": " ",
         "type": "vision",
         "attributes": {
-          "register_detectors": [
+          "register_models": [
             {
               "name": "my_color_detector", 
-              "type": "color",
+              "type": "color_detector",
               "parameters": {
                 "detect_color" : "#A3E2FF",
                 "tolerance": 0.06,
@@ -55,8 +55,8 @@ To add a detector to your robot, you need to add the _name_, _type_, and _parame
               }
             },
             {
-              "name": "my_tflite_detector", 
-              "type": "tflite",
+              "name": "my_classifier", 
+              "type": "tflite_classifier",
               "parameters": {
                 "model_path" : "/path/to/model.tflite",
                 "label_path": "/path/to/labels.txt",
@@ -68,13 +68,34 @@ To add a detector to your robot, you need to add the _name_, _type_, and _parame
     }
 ]
 ```
+
+
+## Detection
+
+__2D Object Detection__ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct “objects” of interest in the scene. Any camera that can return 2D images can use 2D object detection.
+
+What an object “is” depends on what is required for the task at hand.
+To accommodate the open-endedness of what kind of object a user may need to identify, the service provides different types of detectors, both heuristic and machine-learning based, so that users can create, register, and use detectors suited for their own purposes.
+
+### The Detection API 
+
+Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
+
+#### Detections
+The returned detections consist of the bounding box around the found object, as well as its label and confidence score.
+
+* `x_min`, `y_min`, `x_max`, `y_max` (int): These specify the bounding box around the object.
+* `class_name` (string): specifies the label of the found object.
+* `confidence` (float): specifies the confidence of the assigned label between 0.0 and 1.0.
+
 ### Detector Types
 The types of the detector supported are:
 
-* **color**: this is a heuristic based detector that draws boxes around objects according to their hue (does not detect black and white).
-* **tflite**: this a machine-learning based detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
+* **color_detector**: this is a heuristic based detector that draws boxes around objects according to their hue (does not detect black and white).
+* **tflite_detector**: this a machine-learning based detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
 
-#### Color detector attributes
+
+#### Color detector parameters
 
 * **detect_color**: the color to detect in the image, as a string of the form #RRGGBB.
 The color is written as a hexadecimal string prefixed by ‘#’.
@@ -83,7 +104,7 @@ The color is written as a hexadecimal string prefixed by ‘#’.
 0.05 is a good starting value.
 * **segment_size:** An integer that sets a minimum size (in pixels) of the returned objects, and filters out all other found objects below that size.
 
-#### TFLite detector attributes 
+#### TFLite detector parameters
 * **model_path**: The path to the .tflite model file, as a string.
 This attribute is absolutely required.
 * **num_threads**: An integer that defines how many CPU threads to use to run inference.
@@ -91,6 +112,7 @@ The default value is 1.
 * **label_path**: The path to a .txt file that holds class labels for your TFLite model, as a string.
 The SDK expects this text file to contain an ordered listing of the class labels.
 Without this file, classes will read “1”, “2”, etc.
+
 
 ##### TFLite Model Limitations
 We strongly recommend that you package your .tflite model with metadata in the standard form given by the schema (link schema). In the absence of metadata, your TFLite model must satisfy the following requirements:
@@ -102,94 +124,94 @@ We strongly recommend that you package your .tflite model with metadata in the s
 These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1. Feel free to use one of these architectures or build your own! 
 
 
-### The Detection API 
+## Classification
+
+__2D Image Classification__ is the process of taking a 2D image from a camera and deciding which class label, out of many, best describes the given image.  Any camera that can return 2D images can use 2D image classification.
+
+Which class labels may be considered for classification varies and will depend on the machine learning model and how it was trained.
+
+### The Classification API 
 
 Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 
-### Detections
+#### Classification
+The returned classifications consist of the image's class label and confidence score.
 
-The returned detections consist of the bounding box around the found object, as well as its label and confidence score.
-
-* `x_min`, `y_min`, `x_max`, `y_max` (int): These specify the bounding box around the object.
 * `class_name` (string): specifies the label of the found object.
 * `confidence` (float): specifies the confidence of the assigned label between 0.0 and 1.0.
 
+### Classifier Types
+The types of classifiers supported are:
 
-## 3D Object Segmentation
+* **tflite_classifier**: this a machine-learning based classifier that returns a class label and confidence score according to the specified tensorflow-lite model file available on the robot’s hard drive.
 
-3D object segmentation returns a list of the found “objects”.
-This is a list of point clouds with associated meta-data, like the label, the 3D bounding box and center coordinate of the object.
-Future updates to the service may return more information about the objects.
+#### TFLite classifier parameters
+* **model_path**: The path to the .tflite model file, as a string.
+This attribute is absolutely required.
+* **num_threads**: An integer that defines how many CPU threads to use to run inference.
+The default value is 1.
+* **label_path**: The path to a .txt file that holds class labels for your TFLite model, as a string.
+The SDK expects this text file to contain an ordered listing of the class labels.
+Without this file, classes will read “1”, “2”, etc.
 
-The segmentation feature requires 
 
-1. A camera that can provide 3D data,
-2. The name of the segmenter to be used, and 
-3. The parameters necessary to specify/fine-tune the segmenter
 
-### Hardware
+## Segmentation
+
+__3D Object Segmentation__ is the process of separating and returning a list of the found “objects” from a 3D scene.  The "objects" are a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinate of the object.   Future updates to the service may return more information about the objects.
 
 Any camera that can return 3D pointclouds can use 3D object segmentation.
-This essentially means that the driver for the camera implements the `get_pointcloud` method.
-There are some segmenter types that base their segmentation algorithm on detections.
-For these types of segmenters, the `get_frame` method must also be implemented.
 
-### Default Segmenters
-
-There are two segmenter options currently available by default, the **radius_clustering** segmenter, and any detector you added in the "register_detectors" field.
-
-#### radius_clustering (slow - expect 30s of waiting)
-
-Radius_clustering is a segmenter that finds well separated objects above a flat plane.
-It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.
-The segmenter requires 3 parameters.
-Unfortunately it is a bit slow, and can take up to 30s to segment the scene.
-
-1. **min_points_in_plane**
-    * min_points_in_plane is an integer that specifies how many points there must be in a flat surface for it to count as a plane.
-    This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps.
-2. **min_points_in_segment**
-    * min_points_in_segment is an integer that sets a minimum size to the returned objects, and filters out all other found objects below that size.
-3. **clustering_radius_mm**
-    * clustering_radius_mm is a floating point number that specifies how far apart points can be (in units of  mm) in order to be considered part of the same object.
-    A small clustering radius will more likely split different parts of a large object into distinct objects.
-    A large clustering radius may aggregate closely spaced objects into one object.
-    * 3.0 is an all right starting value.
-4. **Mean_k_filtering (optional)**
-    * mean_k_filtering is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).
-    It should be set to be 5-10% of the number of min_points_in_segment.
-    * Start with 5% and go up if objects are still too noisy.
-    * If you don’t want to use the filtering, set the number to 0 or less.
-
-#### Detector Segmenters
-
-Any detector has all the information needed to also be a segmenter.
-Any detector defined in “register_detectors” field or added later to the vision service becomes a segmenter with the same name.
-It begins with finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
-
-1. **mean_k**
-    * Mean_k  is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).
-    It should be set to be 5-10% of the number of min_points_in_segment.
-    * Start with 5% and go up if objects are still too noisy.
-    * If you don’t want to use the filtering, set the number to 0 or less.
-2. **sigma**
-    * Sigma is a floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).
-    It should usually be set between 1.0 and 2.0.
-    * 1.25 is usually a good default.
-    If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower.
 
 ### The Segmentation API
 
 Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 
-### Segmentation within the web UI
-
-![segmentation](https://user-images.githubusercontent.com/8298653/173641977-4f34c1f9-5f31-4579-82bb-06b739f03eac.gif)
+_PLEASE KEEP IN MIND THAT THE SEGMENTATION API WILL SOON CHANGE_
 
 1. Click on the 3D img of a given camera to load the point cloud view.
 2. Select your segmenter of interest - that will populate the list of necessary parameters that need to be filled in to use the segmenter.
 3. Fill in the segmenter parameters (explanation of fields for each segmenter are in the next section)
 4. Click Find Segments and wait for the segments to load
 5. A list of the found objects will appear below the Find Segments button.
+
+
+### Segmenter Types
+The types of segmenters supported are:
+
+* **radius_clustering_segmenter**: Radius_clustering is a segmenter that finds well separated objects above a flat plane.  It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.  Unfortunately it is a bit slow, and can take up to 30s to segment the scene.
+*  **object_segmenter**: Object segmenters are automatically created from detectors in the vision service.  Any registered detector "x" defined in “register_models” field or added later to the vision service becomes a segmenter with the name "x_segmenter".  It begins byfinding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
+
+The segmenter requires 3 parameters.
+
+#### Radius Clustering Segmenter parameters
+
+* **min_points_in_plane** is an integer that specifies how many points there must be in a flat surface for it to count as a plane.  This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps.
+* **min_points_in_segment** is an integer that sets a minimum size to the returned objects, and filters out all other found objects below that size.
+* **clustering_radius_mm** is a floating point number that specifies how far apart points can be (in units of  mm) in order to be considered part of the same object.  A small clustering radius will more likely split different parts of a large object into distinct objects.  A large clustering radius may aggregate closely spaced objects into one object.
+    * 3.0 is a decent starting value.
+ * **mean_k_filtering (optional)** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).  It should be set to be 5-10% of the number of min_points_in_segment.
+    * Start with 5% and go up if objects are still too noisy.
+    * If you don’t want to use the filtering, set the number to 0 or less.
+    
+
+#### Detector Segmenters
+
+* **mean_k** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).  It should be set to be 5-10% of the number of min_points_in_segment.
+    * Start with 5% and go up if objects are still too noisy.
+    * If you don’t want to use the filtering, set the number to 0 or less.
+* **sigma** is a floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).
+    It should usually be set between 1.0 and 2.0.
+    * 1.25 is usually a good default.
+    If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower.
+
+
+
+
+
+
+
+
+
 
 

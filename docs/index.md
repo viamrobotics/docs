@@ -46,7 +46,7 @@ Looking to get started with Viam? Checkout the [installing the Viam Server on Ra
 - [Vision](services/vision.md)
 - [Data Capture](services/data-capture.md)
 - [Simultaneous Localization and Mapping (SLAM)](services/slam.md)  
-- [Vision](services/vision.md)  
+
 
 **Coming soon**
 
