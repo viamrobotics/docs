@@ -20,7 +20,7 @@ You will need the following hardware, tools, and software to complete this proje
 
 ### Hardware:
 
--   [Raspberry Pi 3 or 4
+-   [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
 
     -   [Check out the Viam Raspberry Pi Setup Guide for steps on how to get started](https://docs.viam.com/getting-started/installation/)
 
