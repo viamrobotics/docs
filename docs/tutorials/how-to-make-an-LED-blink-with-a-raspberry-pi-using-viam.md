@@ -4,7 +4,7 @@
 
 In this post, we will show you how to use Viam to make an LED blink with a Raspberry Pi. This tutorial is a great place to start if you have never built a robot or a circuit before.
 
-![A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.](img/LED-Blink-with-RPi/image9.gif){width="5.043988407699038in" height="4.963542213473316in"}
+![A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.](img/LED-Blink-with-RPi/image9.gif)
 
 ## What you'll need for this guide
 
@@ -32,9 +32,9 @@ You will need the following tools to complete the project:
 
 ## Project setup
 
-Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [*[Installing Viam RDK Server on Raspberry Pi*](https://docs.viam.com/getting-started/installation/) guide in the Viam documentation. Be sure to follow all the steps including [[adding your Pi on the Viam App.](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app-httpsappviamcom)
+Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam RDK Server on Raspberry Pi](https://docs.viam.com/getting-started/installation/) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam App.](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app-httpsappviamcom)
 
-> **_NOTE:_**  If you have any issues whatsoever getting Viam set up on your Raspberry Pi, let us know on the [[Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
+> **_NOTE:_**  If you have any issues whatsoever getting Viam set up on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
 ## Building the circuit
 
@@ -46,7 +46,7 @@ A simple LED circuit consists of a LED and resistor. The resistor is used to lim
 
 **General-purpose input/output** (**GPIO**) is a digital signal [pin](https://en.wikipedia.org/wiki/Pin_(electronics)) on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
 
-![Photo showing a Raspberry Pi 4 with a white box around the GPIO pins on the Pi and big red letters that say, "GPIO Pins."](img/LED-Blink-with-RPi/image10.png){width="6.5in" height="4.097222222222222in"}
+![Photo showing a Raspberry Pi 4 with a white box around the GPIO pins on the Pi and big red letters that say, "GPIO Pins."](img/LED-Blink-with-RPi/image10.png)
 
 As you may have guessed, **each pin has a specific role, and you can use it only for that role**. Some of them are input/output, power (3.3V or 5V), or ground. As you can see in the diagram below, there are 40 output pins on the Pi. You can program 26 of the GPIO pins.
 
