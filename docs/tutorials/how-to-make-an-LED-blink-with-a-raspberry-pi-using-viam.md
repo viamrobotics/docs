@@ -62,7 +62,7 @@ When in doubt, the website [pinout.xyz](https://pinout.xyz/) is useful for ident
 
 Here's the circuit diagram used in this tutorial for making the LED blink.
 
-![Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins.](img/LED-Blink-with-RPi/image1.png){width="6.5in" height="8.833333333333334in"}
+![Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins.](img/LED-Blink-with-RPi/image1.png)
 
 You can now hook the LED and resistor up to GPIO pin 8 on the Raspberry Pi. The resistor and LED need to be in series as in the diagram above. To find the right resistor use the resistor color code -- for a 100 ohm resistor, it needs to be brown-black-brown. You can use your multimeter to double-check the resistor value or check yours using the photo below.
 
