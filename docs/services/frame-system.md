@@ -20,7 +20,7 @@ In this page, we will explain:
 ## Configuration
 
 To supply reference frame information when configuring a component in the Viam App ([https://app.viam.com](app.viam.com)), click **Add Frame** to launch the Frame group where you will enter Reference Frame details.
-This opens the Add Frame pane:
+This opens the Frame group:
 
 ![add reference frame pane](..\img\image8.png)
 
