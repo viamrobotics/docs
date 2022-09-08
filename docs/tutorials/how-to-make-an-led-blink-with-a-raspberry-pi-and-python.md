@@ -13,7 +13,7 @@ For reference, the circuit you are building for this tutorial looks like this:
 
 ![Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image1.png)
 
-!!! caution
+!!! tip
     If you have any issues whatsoever getting Viam set up on your Raspberry Pi, let us know on the [Viam Community Slack](https://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
 ## What you'll need for this guide
@@ -84,7 +84,7 @@ Default username and password on Raspberry Pi's are
 -   password: raspberry
 
 !!! caution
-  It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi. In the past, a [malware infected thousands of Raspberry Pi devices that were using the default username and password.](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)
+    It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi. In the past, a [malware infected thousands of Raspberry Pi devices that were using the default username and password.](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)
 
 If you can't remember your user and hostname, you can also find out the IP address by other means like checking the network devices list on your router/modem.
 
@@ -227,7 +227,8 @@ If you get an error, you can check your code against my complete code here:
 
 [https://gist.github.com/JoeKarlsson/ea9bdc3d5672e2f158f574f8199856e3](https://gist.github.com/JoeKarlsson/ea9bdc3d5672e2f158f574f8199856e3)
 
-> **_NOTE:_**  If you have any issues whatsoever getting the Viam Python SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com). There you will find a friendly developer community of people learning how to make robots using Viam.
+!!! tip
+    If you have any issues whatsoever getting the Viam Python SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com). There you will find a friendly developer community of people learning how to make robots using Viam.
 
 ![A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image2.gif)
 
