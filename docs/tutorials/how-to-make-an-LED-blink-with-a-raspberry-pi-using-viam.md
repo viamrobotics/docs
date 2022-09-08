@@ -1,3 +1,11 @@
+---
+title: How to Make an LED Blink with a Raspberry Pi Using the Viam App
+summary: In this post, we will show you how to use Viam to make an LED blink with a Raspberry Pi.
+authors:
+    - Joe Karlsson
+date: 2022-09-08
+---
+
 # How to Make an LED Blink with a Raspberry Pi Using the Viam App
 
 ## Intro
@@ -12,7 +20,7 @@ You will need the following tools to complete the project:
 
 -   [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
 
-    -   [Check out the Viam Raspberry Pi Setup Guide for steps on how to get started](../getting-started/installation/)
+    -   [Check out the Viam Raspberry Pi Setup Guide for steps on how to get started](../getting-started/installation)
 
     -   [Be sure that you have setup Viam Server on your Raspberry Pi as well.](../getting-started/installation/#installing-viam-server)
 
@@ -32,7 +40,7 @@ You will need the following tools to complete the project:
 
 ## Project setup
 
-Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam RDK Server on Raspberry Pi](../getting-started/installation/) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam App.](../getting-started/installation/#adding-your-pi-on-the-viam-app-httpsappviamcom)
+Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam RDK Server on Raspberry Pi](../getting-started/installation) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam App.](installation.md)
 
 > **_NOTE:_**  If you have any issues whatsoever setting Viam set up on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
@@ -78,7 +86,7 @@ Now that we have got that out of the way, let's get back to setting up your robo
 
 ![Screenshot of the Vam App showing the default board configuration on the "components" tab.](img/LED-Blink-with-RPi/image2.png)
 
-The first component you will add is the **`board`**, which represents your single board computer, which in this case is the Raspberry Pi. This is where you will wire all other components. To create a new component, select **`Create a component`**. For the component **`Type`**, select **`board`**. Then you can name the **`boardl**` whatever you like as long as you are consistent when referring to it later; we'll name this component **`local`** since it is the **`board`** we will communicate with directly. For **`Model`**, select **`pi`**, then click '**new component**.' Your board component's config will generate the following JSON attributes:
+The first component you will add is the **`board`**, which represents your single board computer, which in this case is the Raspberry Pi. This is where you will wire all other components. To create a new component, select **`Create a component`**. For the component **`Type`**, select **`board`**. Then you can name the **`board`** whatever you like as long as you are consistent when referring to it later; we'll name this component **`local`** since it is the **`board`** we will communicate with directly. For **`Model`**, select **`pi`**, then click '**new component**.' Your board component's config will generate the following JSON attributes:
 
 ![Screenshot of the Viam App showing the board configuration on the 'config' tab. The board is named "local" and the attributes are shown as empty braces.](img/LED-Blink-with-RPi/image6.png)
 
