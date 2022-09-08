@@ -1,3 +1,11 @@
+---
+title: How to Make an LED Blink with a Raspberry Pi and Viam Python SDK
+summary:In this post, you will be introduced to the basics of programming hardware using the Viam Python SDK by making an LED blink.
+authors:
+    - Joe Karlsson
+date: 2022-09-08
+---
+
 # How to Make an LED Blink with a Raspberry Pi and Viam Python SDK
 
 ## Intro
