@@ -42,7 +42,8 @@ You will need the following tools to complete the project:
 
 Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam RDK Server on Raspberry Pi](../getting-started/installation) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam App.](installation.md)
 
-> **_NOTE:_**  If you have any issues whatsoever setting Viam set up on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
+!!! tip
+    If you have any issues whatsoever setting Viam set up on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
 ## Building the circuit
 
@@ -86,11 +87,11 @@ Now that we have got that out of the way, let's get back to setting up your robo
 
 ![Screenshot of the Vam App showing the default board configuration on the "components" tab.](img/LED-Blink-with-RPi/image2.png)
 
-The first component you will add is the **`board`**, which represents your single board computer, which in this case is the Raspberry Pi. This is where you will wire all other components. To create a new component, select **`Create a component`**. For the component **`Type`**, select **`board`**. Then you can name the **`board`** whatever you like as long as you are consistent when referring to it later; we'll name this component **`local`** since it is the **`board`** we will communicate with directly. For **`Model`**, select **`pi`**, then click '**new component**.' Your board component's config will generate the following JSON attributes:
+The first component you will add is the **`board`**, which represents your single board computer, which in this case is the Raspberry Pi. This is where you will wire all other components. To create a new component, select **`Create a component`**. For the component **`Type`**, select **`board`**. Then you can name the **`board`** whatever you like as long as you are consistent when referring to it later; we'll name this component **`local`** since it is the **`board`** we will communicate with directly. For **`Model`**, select **`pi`**, then click **`new component`**. Your board component's config will generate the following JSON attributes:
 
 ![Screenshot of the Viam App showing the board configuration on the 'config' tab. The board is named "local" and the attributes are shown as empty braces.](img/LED-Blink-with-RPi/image6.png)
 
-As you add your board component to your robot in the Viam App, it generates a tab for your board in the Control tab. Here, you can click on "**Get**" to get the current status of your pin. The first time you click "**Get Pin State**", it should return "Pin: 8 is low."![Screenshot of the Viam App showing the board configuration on the "Connect" tab. The "Board Local" row is expanded, and under the "Get" row, the pin is set to "8." A red box is around the "Get Pin State" button and the output, which reads, "Pin: 8 is low."](img/LED-Blink-with-RPi/image5.png)
+As you add your board component to your robot in the Viam App, it generates a tab for your board in the Control tab. Here, you can click on "**Get**" to get the current status of your pin. The first time you click "**Get Pin State**", it should return "Pin: 8 is low."![Screenshot of the Viam App showing the board configuration on the "**Connect**" tab. The "Board Local" row is expanded, and under the "Get" row, the pin is set to "8." A red box is around the "**Get Pin State**" button and the output, which reads, "Pin: 8 is low."](img/LED-Blink-with-RPi/image5.png)
 
 You can now select "**Set**" to control the status of your pin to "high." It will look like this:
 
