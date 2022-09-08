@@ -6,13 +6,15 @@ In this post, you will be introduced to the basics of programming hardware using
 
 ![A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image3.gif)
 
-> **_NOTE:_**  This is part 2 of Viam's, Intro to Robotics series. If you haven't completed [Part 1](https://docs.google.com/document/d/1JZnuhmkZbH0Ad_78bBw0jwbee8mdy62gKKf38G98nIg/edit#), be sure to go back and complete that before starting on this tutorial. I will be assuming that you have already set up [your Raspberry Pi](https://docs.viam.com/getting-started/installation/), [set up Viam Server](https://docs.viam.com/getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam App](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app-httpsappviamcom) before proceeding.
+!!! caution
+    This is part 2 of Viam's, Intro to Robotics series. If you haven't completed [Part 1](https://docs.google.com/document/d/1JZnuhmkZbH0Ad_78bBw0jwbee8mdy62gKKf38G98nIg/edit#), be sure to go back and complete that before starting on this tutorial. I will be assuming that you have already set up [your Raspberry Pi](https://docs.viam.com/getting-started/installation/), [set up Viam Server](https://docs.viam.com/getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam App](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app-httpsappviamcom) before proceeding.
 
-For reference, the circuit you are building off of for this tutorial looks like this:
+For reference, the circuit you are building for this tutorial looks like this:
 
 ![Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image1.png)
 
-> **_NOTE:_**  If you have any issues whatsoever getting Viam set up on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
+!!! caution
+    If you have any issues whatsoever getting Viam set up on your Raspberry Pi, let us know on the [Viam Community Slack](https://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
 ## What you'll need for this guide
 
@@ -36,9 +38,9 @@ You will need the following hardware, tools, and software to complete this proje
 
 -   [Resistor pack](http://amzn.to/2Dmainw)
 
-    -   You will be using a 220Ω or 1KΩ resistor, which is the resistor colored with brown-black-brown
+    -   You will be using a 100 ohms resistor, which is the resistor colored with brown-black-brown
 
--   [Red LED](http://amzn.to/2Ex2v5q)
+-   [Blue LED](http://amzn.to/2Ex2v5q)
 
 -   [Multimeter](http://amzn.to/2qWurxS) (optional)
 
@@ -62,13 +64,14 @@ You can find instructions for [installing the Viam Python SDK](https://python.vi
 
 ### How to SSH into a Raspberry Pi
 
-First of all, what is SSH and why do we need to use it? The acronym SSH stands for \"Secure Shell.\" The SSH protocol was designed as a secure alternative to unsecured remote machines, like our Raspberry Pi. Basically, it allows you to access the command line of your Raspberry Pi from another machine so we can install software and run code remotely.
+First of all, what is SSH and why do we need to use it? The acronym SSH stands for *Secure Shell*. The SSH protocol was designed as a secure alternative to unsecured remote machines, like our Raspberry Pi. Basically, it allows you to access the command line of your Raspberry Pi from another machine so we can install software and run code remotely.
 
 First, you will need to make sure your Raspberry Pi is plugged in, turned on, and connected to your network. I usually wait a minute or two after turning it on before I attempt to connect to my Pi.
 
-> **_NOTE:_**  Make sure your Raspberry Pi and the computer you are using to SSH into your Raspberry Pi are connected to the same network*.
+!!! caution
+    Make sure your Raspberry Pi and the computer you are using to SSH into your Raspberry Pi are connected to the same network*.
 
-Next, launch your terminal (on Mac and Linux) and run this command; the text in \<\> should be replaced (including the \< and \> symbols themselves) with the user and host names you configured when you set up your Pi. On Windows, you can use an SSH client like [Putty](https://itsfoss.com/putty-linux/).
+Next, launch your terminal (on Mac and Linux) and replace the user and hostname with the user and hostname you configured when you set up your Pi. On Windows, you can use an SSH client like [Putty](https://itsfoss.com/putty-linux/).
 
 ```bash
 ssh <username>@<hostname>.local
@@ -80,7 +83,8 @@ Default username and password on Raspberry Pi's are
 
 -   password: raspberry
 
-Tip: It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi. In the past, a [malware infected thousands of Raspberry Pi devices that were using the default username and password.](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)
+!!! caution
+  It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi. In the past, a [malware infected thousands of Raspberry Pi devices that were using the default username and password.](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)
 
 If you can't remember your user and hostname, you can also find out the IP address by other means like checking the network devices list on your router/modem.
 
@@ -92,7 +96,7 @@ On successful login, you'll be presented with the terminal of your Raspberry Pi.
 
 ### Installing pip on a Raspberry Pi
 
-[Pip](https://pip.pypa.io/en/stable/#) is the [package installer for Python](https://packaging.python.org/guides/tool-recommendations/). You can use it to install packages from the [Python Package Index](https://pypi.org/) and other indexes. You are going to need to install pip so that you can install the Viam Python SDK package. You can install pip by typing the following command into the terminal:
+[Pip](https://pip.pypa.io/en/stable/#) is the [package installer for Python](https://packaging.python.org/guides/tool-recommendations/). You can use it to install packages from the [Python Package Index](https://pypi.org/) and other indexes, such as the Viam Python SDK package. You can install pip by typing the following command into the terminal:
 
 ```bash
 sudo apt-get install python3-pip
@@ -100,9 +104,9 @@ sudo apt-get install python3-pip
 
 ### How to install the Viam Python SDK on a Raspberry Pi
 
-Alright, now we are getting to the good part. In this step, you are going to be installing the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit). This will allow you to write programs in the Python programming language to create robots using [Viam](http://www.viam.com/).
+In this step, you are going to install the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit). This allows you to write programs in the Python programming language to create robots using [Viam](http://www.viam.com/).
 
-Viam is a robotics platform that makes it easy to build and remotely control robots by utilizing standardized building blocks rather than custom code, to create, configure, and control robots intuitively and quickly. In my humble opinion, it's the easiest and fastest way to get started with robotics. Alright, so in order for you to install the Viam Python SDK on your Raspberry Pi, you will need to run the following command in your terminal:
+In order for you to install the Viam Python SDK on your Raspberry Pi, you will need to run the following command in your terminal:
 
 ```bash
 pip install viam
@@ -157,7 +161,8 @@ The Python SDK connect script should look something like this:
 
 Next, paste that boilerplate code into your blink.py file in VS Code, and save your file.
 
-> **TIP:_**  Your payload and address information will be different in your example, make sure that if you copy this code snippet, you copy and paste your credentials here.
+!!! tip
+    Your payload and address information will be different in your example, make sure that if you copy this code snippet, you copy and paste your credentials here.
 
 You can now run the code. Doing so will ensure that the Python SDK is properly installed, that the viam-server instance on your robot is alive, and that the computer running the program is able to connect to that instance.
 
@@ -167,7 +172,7 @@ You can run your code by typing the following into the terminal:
 python3 blink.py
 ```
 
-If your robot has been successfully configured, and is able to connect to the Viam App, you should see something like this printed to the terminal after running your program. What you see here is a list of the various resources, components, and services that have been configured to your robot in the Viam App.
+If you successfully configured your robot and it is able to connect to the Viam App, you should see something like this printed to the terminal after running your program. What you see here is a list of the various resources, components, and services that have been configured to your robot in the Viam App.
 
 ![A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam App. The output is an array of resources that have been pulled from the Viam App. Some of these are the Vision Service, Data Manager, and Board.](img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image4.png)
 
