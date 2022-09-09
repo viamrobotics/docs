@@ -7,10 +7,10 @@ date: 2022-09-06
 ---
 # Robot Service 
 
-Robot Service constitutes a minimal set of APIs that most robots (Go RDK, [Viam Python SDK](https://python.viam.dev/) and various SDKs) should support. 
-Users will likely use the Robot Service as an entrypoint to interacting with Viam robots and provide a way to get updates from the robot as a whole.
+Robot Service constitutes a minimal set of APIs that most robots (Viam Server, [Viam Python SDK](https://python.viam.dev/) and various SDKs) should support. 
+Users will likely use the Robot Service as an entrypoint to interact with Viam robots and provide a way to get updates from the robot as a whole.
 
-The below is a current list of operations in the robot.proto.
+The below is a current list of interfaces provided by the Robot Service.
 
 <table>
 <tr><th>Operation</th><th>Description</th></tr>
@@ -78,10 +78,6 @@ Users can cancel an operation by passing in its **Operation ID,** and can also b
 
 For example, consider two _connected _robots. Robot “A,” with an attached base and navigation service and robot “B,” operating remotely with an attached GPS.  
 A client’s request to the navigation service to move “A” creates a new **Operation ID**. 
-
-The navigation service then sends requests to the attached base to start moving, and to the remote GPS to obtain the robot’s location. 
-The request to the navigation service’s attached base is a local request. 
-The request to the remote GPS is via gRPC.
 
 The request to the attached base is a local request (i.e., a non-gRPC request) between the navigation service and its base and does not create a new **Operation ID**. 
 However, the navigation service request to the GPS is via gRPC, which spawns a new operation and thus another **Operation ID**.
