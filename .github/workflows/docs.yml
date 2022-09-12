@@ -19,14 +19,24 @@ jobs:
       image: ghcr.io/viamrobotics/canon:amd64
     steps:
       - name: Checkout Push/Workflow Dispatch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
+          submodules: true  # fetch hugo themes
           fetch-depth: 0
 
-      - name: Install dependencies
-        run: |
-          python3 -m pip install --upgrade pip
-          pip install --no-cache-dir -r etc/requirements.txt
+# everything below was suggested by hugo docs https://gohugo.io/hosting-and-deployment/hosting-on-github/
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2 
+        with:
+          hugo-version: 'latest'
+
           
-      - name: Generate docs
-        run: mkdocs gh-deploy
+      - name: Build
+        run: hugo --minify
+        
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
