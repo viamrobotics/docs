@@ -6,42 +6,44 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, x64]
+    container:
+      image: ghcr.io/viamrobotics/canon:amd64
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+            submodules: true  # fetch hugo themes
+            fetch-depth: 0
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-        architecture: x64
+      - name: Setup npm dependencies
+        run: npm install postcss-cli
 
-    - name: Install mkdocs
-      run: python3 -m pip install mkdocs mkdocs-material mkdocs-material-extensions
+# next two steps came from hugo docs https://gohugo.io/hosting-and-deployment/hosting-on-github/
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2 
+        with:
+          hugo-version: 'latest'
+          extended: true
+          
+      - name: Build
+        run: hugo --minify
 
-    - name: Update mkdocs config
-      run: |
-        echo "INHERIT: mkdocs.yml" >> test_mkdocs.yml
-        echo "site_url: https://docs-test.viam.dev/${{ github.sha }}/site" >> test_mkdocs.yml
+      - name: Authenticate on GCS
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
-    - name: Run site build
-      run: mkdocs build -d site -f test_mkdocs.yml
+      - name: Copy generated site to GCS bucket
+        uses: 'google-github-actions/upload-cloud-storage@v0'
+        with:
+          path: 'public'
 
-    - name: Authenticate on GCS
-      uses: google-github-actions/auth@v0
-      with:
-        credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+          destination: 'docs-test.viam.dev/${{ github.sha }}'
 
-    - name: Copy generated site to GCS bucket
-      uses: 'google-github-actions/upload-cloud-storage@v0'
-      with:
-        path: 'site'
-
-        destination: 'docs-test.viam.dev/${{ github.sha }}'
-
-    - name: Comment on PR with link to rendered site
-      uses: peter-evans/create-or-update-comment@v2.0.0
-      with:
-        token: ${{ secrets.DANNENBERS_PTA_FOR_COMMENTING }}
-        issue-number: ${{ github.event.pull_request.number }}
-        body: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.sha }}/site'
+      - name: Comment on PR with link to rendered site
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          token: ${{ secrets.DANNENBERS_PTA_FOR_COMMENTING }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.sha }}/site'
