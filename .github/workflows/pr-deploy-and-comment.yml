@@ -27,7 +27,7 @@ jobs:
           extended: true
           
       - name: Tweak Config For Bucket Hosting
-        run: sed -e  "s/https:\/\/docs.viam.com\//https:\/\/docs-test.viam.dev\/${{ github.sha }}\/public/" config.toml
+        run: echo 'baseURL="https://docs-test.viam.dev/${{ github.sha }}/public/"' >> config.toml
 
       - name: Build
         run: hugo --minify
