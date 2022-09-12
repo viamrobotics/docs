@@ -1,142 +1,130 @@
-# Our docs were imported over the Docsy example site and described in the Docsy website.  
+# Welcome to Hugo
+
+We’ve ported the documentation to Hugo. Hugo is more versatile than MkDocs and provides a better platform for our docs.
+
+##What you’ll need to do:
+
+**Install Hugo**: [https://gohugo.io/getting-started/installing/](https://gohugo.io/getting-started/installing/)
+
+On Mac, I thought Homebrew was the easiest install method. I used Chocolatey for my Windows install.
+
+**Install the Docsy theme**. Please use the module method: [https://www.docsy.dev/docs/get-started/](https://www.docsy.dev/docs/get-started/)
+
+**New Doc Path**: C:\1git\tutorials-and-docs\content\en\docs
 
 
+## Important Things about Hugo
 
-#Docsy Example
 
-[Docsy][] is a [Hugo theme module][] for technical documentation sites, providing easy
-site navigation, structure, and more. This **Docsy Example Project** uses the Docsy
-theme component as a hugo module and provides a skeleton documentation structure for you to use.
-You can clone/copy this project and edit it with your own content, or use it as an example.
+### Front Matter
 
-In this project, the Docsy theme component is pulled in as a Hugo module, together with other module dependencies:
+Please note the differences between the two versions:  
 
-```bash
-$ hugo mod graph
-hugo: collected modules in 566 ms
-hugo: collected modules in 578 ms
-github.com/google/docsy-example github.com/google/docsy@v0.2.0
-github.com/google/docsy-example github.com/google/docsy/dependencies@v0.2.0
-github.com/google/docsy/dependencies@v0.2.0 github.com/twbs/bootstrap@v4.6.1+incompatible
-github.com/google/docsy/dependencies@v0.2.0 github.com/FortAwesome/Font-Awesome@v0.0.0-20210804190922-7d3d774145ac
-```
+**MkDocs Version**:
 
-You can find detailed theme instructions in the [Docsy user guide][].
+---
 
-This Docsy Example Project is hosted on [Netlify][] at [example.docsy.dev][].
-You can view deploy logs from the [deploy section of the project's Netlify
-dashboard][deploys], or this [alternate dashboard][].
+title: Build a Line-following Robot with only a Webcam
 
-This is not an officially supported Google product. This project is currently maintained.
+summary: Instructions to build a line-following robot that uses a webcam to track  lines.
 
-## Using the Docsy Example Project as a template
+authors:
 
-A simple way to get started is to use this project as a template, which gives you a site project that is set up and ready to use. To do this: 
+    - Jessamy Taylor
 
-1. Click **Use this template**.
+date: 2022-08-18
 
-2. Select a name for your new project and click **Create repository from template**.
+—
 
-3. Make your own local working copy of your new repo using git clone, replacing https://github.com/me/example.git with your repo’s web URL:
+**Hugo Version**:
 
-```bash
-git clone --depth 1 https://github.com/me/example.git
-```
+---
 
-You can now edit your own versions of the site’s source files.
+title: "Build a Line-following Robot with only Rover and a Webcam"
 
-If you want to do SCSS edits and want to publish these, you need to install `PostCSS`
+linkTitle: "Build a Line-following Robot with only Rover and a Webcam"
 
-```bash
-npm install
-```
+weight: 90
 
-## Running the website locally
+type: "docs"
 
-Building and running the site locally requires a recent `extended` version of [Hugo](https://gohugo.io).
-You can find out more about how to install Hugo for your environment in our
-[Getting started](https://www.docsy.dev/docs/getting-started/#prerequisites-and-installation) guide.
+description: "Instructions to build a line-following robot that uses a webcam to track lines."
 
-Once you've made your working copy of the site repo, from the repo root folder, run:
+---
 
-```
+Hugo can display the description beneath the page title on the _index.html pages.
+
+The weight entry for  _index.html pages determines their placement as sections in the menu. The weight entry for each page in the directory determines that page’s placement in the section.
+
+Neglecting to add a weight entry causes Hugo to place the page at the very bottom of the menu. 
+
+### Prod/Draft/Future Pages
+
+Add “Draft=true” to the Front Matter to set the page to Draft. Hugo will not build draft pages into production. You can commit and push the page and it won’t display in production. This could let you push the page to the Master without displaying it in production, but let others access it locally from the git tree without changing the branch. To view the page locally, use the -D option: \
+hugo server -D
+
+Add “Future=true” to the Front Matter to begin building a page to production on a certain date (e.g., a release date). This allows you to add a page in the production system and only display it from a selected date. To view the page locally prior to the date, use the -F option: \
+hugo server -F
+
+#### Other Setup/Config Information
+
+**LH Nav Menu**
+
+Hugo builds the TOC from the pages under content/en. Because our docs use Page Bundles, each directory contains an _index.html file that serves as a landing page into that section. The following image is the _index.html page inside Getting Started:
+
+<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+Hugo creates a section in the menu and applies the directory name as the page title for _index.html. Hugo lists all the pages in that section and can also display the descriptions (lead-in paragraph) beneath each link (if I can remember the setting).
+
+**Top Banner Drop-Downs**
+
+Hugo can build drop-downs for the top banner based on the settings contained in the config.toml file. The content can be pages or links. We aren’t using them yet.
+
+**RH Menu**
+
+This menu is a list of page sections and also has items to print or open a doc issue (not implemented in JIRA yet - We need Ed’s help to add this and feedback).
+
+
+### The Index Files
+
+There are two kinds: index.html and _index.html. The index.html works just as you’d expect. The _index.html is found inside page bundles, which are no more than a self-contained directory having the markdown files and image files under the same directory. We’re using _index.html files.
+
+The _index.html file act as a landing page into the page bundle (i.e., directory). It lists the page title of each page in the bundle (you can have many pages) and can also display the lead-in paragraph (i.e., the description from the Front Matter) for the page.
+
+The formatting works identically to MkDocs: it’s still markdown. But Hugo is better at handling basic html and the extra html that we need for some layout tasks. So now list indenting works as expected.
+
+
+### Footnotes
+
+To add a footnote:
+
+“Some completely[^mfn] random text. “
+
+[^mfn]: this is the text for the footnote
+
+You can place the footnote text immediately beneath the paragraph where you dropped the marker. Hugo will place it at the bottom of the page.
+
+
+### Text Wrapping
+
+Nothing extra is required. Text wrapping works as expected in Hugo.
+
+## Local Server
+
+Run Hugo from the tutorials-and-docs directory where config.toml is located.
+
+View the Prod version:
+
 hugo server
-```
 
-## Running a container locally
+View the Draft version
 
-You can run docsy-example inside a [Docker](https://docs.docker.com/)
-container, the container runs with a volume bound to the `docsy-example`
-folder. This approach doesn't require you to install any dependencies other
-than [Docker Desktop](https://www.docker.com/products/docker-desktop) on
-Windows and Mac, and [Docker Compose](https://docs.docker.com/compose/install/)
-on Linux.
+hugo server -D
 
-1. Build the docker image 
+This method will show files marked as Draft
 
-   ```bash
-   docker-compose build
-   ```
+View the Future version
 
-1. Run the built image
+hugo server -F
 
-   ```bash
-   docker-compose up
-   ```
-
-   > NOTE: You can run both commands at once with `docker-compose up --build`.
-
-1. Verify that the service is working. 
-
-   Open your web browser and type `http://localhost:1313` in your navigation bar,
-   This opens a local instance of the docsy-example homepage. You can now make
-   changes to the docsy example and those changes will immediately show up in your
-   browser after you save.
-
-### Cleanup
-
-To stop Docker Compose, on your terminal window, press **Ctrl + C**. 
-
-To remove the produced images run:
-
-```console
-docker-compose rm
-```
-For more information see the [Docker Compose
-documentation](https://docs.docker.com/compose/gettingstarted/).
-
-## Troubleshooting
-
-As you run the website locally, you may run into the following error:
-
-```
-➜ hugo server
-
-INFO 2021/01/21 21:07:55 Using config file: 
-Building sites … INFO 2021/01/21 21:07:55 syncing static files to /
-Built in 288 ms
-Error: Error building site: TOCSS: failed to transform "scss/main.scss" (text/x-scss): resource "scss/scss/main.scss_9fadf33d895a46083cdd64396b57ef68" not found in file cache
-```
-
-This error occurs if you have not installed the extended version of Hugo.
-See this [section](https://www.docsy.dev/docs/get-started/docsy-as-module/installation-prerequisites/#install-hugo) of the user guide for instructions on how to install Hugo.
-
-Or you may encounter the following error:
-
-```
-➜ hugo server
-
-Error: failed to download modules: binary with name "go" not found
-```
-
-This error occurs if you have not installed the `go` programming language on your system.
-See this [section](https://www.docsy.dev/docs/get-started/docsy-as-module/installation-prerequisites/#install-go-language) of the user guide for instructions on how to install `go`.
-
-
-[alternate dashboard]: https://app.netlify.com/sites/goldydocs/deploys
-[deploys]: https://app.netlify.com/sites/docsy-example/deploys
-[Docsy user guide]: https://docsy.dev/docs
-[Docsy]: https://github.com/google/docsy
-[example.docsy.dev]: https://example.docsy.dev
-[Hugo theme module]: https://gohugo.io/hugo-modules/use-modules/#use-a-module-for-a-theme
-[Netlify]: https://netlify.com
+This method will show files marked as Future, which could allow us to prep a release’s new pages ahead of time and only show them on the release date.
