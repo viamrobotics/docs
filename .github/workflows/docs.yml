@@ -1,0 +1,32 @@
+name: docs-publish
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+
+# Allows you to run this workflow manually from the Actions tab
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  generate-docs:
+    if: github.repository_owner == 'viamrobotics'
+    runs-on: [self-hosted, x64]
+    container:
+      image: ghcr.io/viamrobotics/canon:amd64
+    steps:
+      - name: Checkout Push/Workflow Dispatch
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install --no-cache-dir -r etc/requirements.txt
+          
+      - name: Generate docs
+        run: mkdocs gh-deploy
