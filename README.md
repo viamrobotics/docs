@@ -1,43 +1,142 @@
-# Viam Documentation
+# Our docs were imported over the Docsy example site and described in the Docsy website.  
 
-An [mkdocs](https://www.mkdocs.org/) repo of Viam's tutorials and documentation. Site content is written in Markdown format located in `/docs`. [Pull requests welcome!](https://github.com/viamrobotics/tutorials-and-docs/blob/update-contribution-guide/CONTRIBUTING.md)
 
-## Setup instructions
 
-To install mkdocs:
+#Docsy Example
+
+[Docsy][] is a [Hugo theme module][] for technical documentation sites, providing easy
+site navigation, structure, and more. This **Docsy Example Project** uses the Docsy
+theme component as a hugo module and provides a skeleton documentation structure for you to use.
+You can clone/copy this project and edit it with your own content, or use it as an example.
+
+In this project, the Docsy theme component is pulled in as a Hugo module, together with other module dependencies:
 
 ```bash
-pip install mkdocs
+$ hugo mod graph
+hugo: collected modules in 566 ms
+hugo: collected modules in 578 ms
+github.com/google/docsy-example github.com/google/docsy@v0.2.0
+github.com/google/docsy-example github.com/google/docsy/dependencies@v0.2.0
+github.com/google/docsy/dependencies@v0.2.0 github.com/twbs/bootstrap@v4.6.1+incompatible
+github.com/google/docsy/dependencies@v0.2.0 github.com/FortAwesome/Font-Awesome@v0.0.0-20210804190922-7d3d774145ac
 ```
 
-To spin up the docs website locally:
+You can find detailed theme instructions in the [Docsy user guide][].
+
+This Docsy Example Project is hosted on [Netlify][] at [example.docsy.dev][].
+You can view deploy logs from the [deploy section of the project's Netlify
+dashboard][deploys], or this [alternate dashboard][].
+
+This is not an officially supported Google product. This project is currently maintained.
+
+## Using the Docsy Example Project as a template
+
+A simple way to get started is to use this project as a template, which gives you a site project that is set up and ready to use. To do this: 
+
+1. Click **Use this template**.
+
+2. Select a name for your new project and click **Create repository from template**.
+
+3. Make your own local working copy of your new repo using git clone, replacing https://github.com/me/example.git with your repo’s web URL:
 
 ```bash
-mkdocs serve
+git clone --depth 1 https://github.com/me/example.git
 ```
 
-## Working on the documentation
+You can now edit your own versions of the site’s source files.
 
-Viam documentation must be authored in [Markdown](https://daringfireball.net/projects/markdown/), a lightweight markup language which results in easy-to-read, easy-to-write plain text documents that can be converted to valid HTML documents in a predictable manner.
+If you want to do SCSS edits and want to publish these, you need to install `PostCSS`
 
-MkDocs uses the [Python-Markdown](https://python-markdown.github.io/) library to render Markdown documents to HTML. [Python-Markdown](https://python-markdown.github.io/) is almost completely compliant with the reference implementation, although there are a few very minor [differences](https://python-markdown.github.io/#differences).
+```bash
+npm install
+```
 
-See the [Writing Guide](https://github.com/viamrobotics/tutorials-and-docs/blob/update-contribution-guide/WRITING_GUIDE.md) for our rules and recommendations on writing and maintaining documentation content.
+## Running the website locally
 
-Please see the [mkdocs Documentation](https://www.mkdocs.org/) for an introductory tutorial and a full user guide.
+Building and running the site locally requires a recent `extended` version of [Hugo](https://gohugo.io).
+You can find out more about how to install Hugo for your environment in our
+[Getting started](https://www.docsy.dev/docs/getting-started/#prerequisites-and-installation) guide.
 
-## Deploying
+Once you've made your working copy of the site repo, from the repo root folder, run:
 
-The site is automatically deployed when commits land in `main`.
+```
+hugo server
+```
 
-## Contributing
+## Running a container locally
 
-Please read [CONTRIBUTING.md](https://github.com/viamrobotics/tutorials-and-docs/blob/update-contribution-guide/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+You can run docsy-example inside a [Docker](https://docs.docker.com/)
+container, the container runs with a volume bound to the `docsy-example`
+folder. This approach doesn't require you to install any dependencies other
+than [Docker Desktop](https://www.docker.com/products/docker-desktop) on
+Windows and Mac, and [Docker Compose](https://docs.docker.com/compose/install/)
+on Linux.
 
-### TLDR
+1. Build the docker image 
 
-1. Fork it!
-1. Create your feature branch: `git checkout -b my-new-feature`
-1. Commit your changes: `git commit -am 'Add some feature'`
-1. Push to the branch: `git push origin my-new-feature`
-1. Submit a pull request :D
+   ```bash
+   docker-compose build
+   ```
+
+1. Run the built image
+
+   ```bash
+   docker-compose up
+   ```
+
+   > NOTE: You can run both commands at once with `docker-compose up --build`.
+
+1. Verify that the service is working. 
+
+   Open your web browser and type `http://localhost:1313` in your navigation bar,
+   This opens a local instance of the docsy-example homepage. You can now make
+   changes to the docsy example and those changes will immediately show up in your
+   browser after you save.
+
+### Cleanup
+
+To stop Docker Compose, on your terminal window, press **Ctrl + C**. 
+
+To remove the produced images run:
+
+```console
+docker-compose rm
+```
+For more information see the [Docker Compose
+documentation](https://docs.docker.com/compose/gettingstarted/).
+
+## Troubleshooting
+
+As you run the website locally, you may run into the following error:
+
+```
+➜ hugo server
+
+INFO 2021/01/21 21:07:55 Using config file: 
+Building sites … INFO 2021/01/21 21:07:55 syncing static files to /
+Built in 288 ms
+Error: Error building site: TOCSS: failed to transform "scss/main.scss" (text/x-scss): resource "scss/scss/main.scss_9fadf33d895a46083cdd64396b57ef68" not found in file cache
+```
+
+This error occurs if you have not installed the extended version of Hugo.
+See this [section](https://www.docsy.dev/docs/get-started/docsy-as-module/installation-prerequisites/#install-hugo) of the user guide for instructions on how to install Hugo.
+
+Or you may encounter the following error:
+
+```
+➜ hugo server
+
+Error: failed to download modules: binary with name "go" not found
+```
+
+This error occurs if you have not installed the `go` programming language on your system.
+See this [section](https://www.docsy.dev/docs/get-started/docsy-as-module/installation-prerequisites/#install-go-language) of the user guide for instructions on how to install `go`.
+
+
+[alternate dashboard]: https://app.netlify.com/sites/goldydocs/deploys
+[deploys]: https://app.netlify.com/sites/docsy-example/deploys
+[Docsy user guide]: https://docsy.dev/docs
+[Docsy]: https://github.com/google/docsy
+[example.docsy.dev]: https://example.docsy.dev
+[Hugo theme module]: https://gohugo.io/hugo-modules/use-modules/#use-a-module-for-a-theme
+[Netlify]: https://netlify.com

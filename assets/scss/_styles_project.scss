@@ -1,0 +1,206 @@
+/*
+
+Add styles or override variables from the theme here.
+
+*/
+
+
+/* START Disable unwanted RH TOC entries */
+
+/* Disable "Create Child Pages" */
+.td-page-meta--child { display: none !important; }
+
+/* Disable "Edit this page" */
+.td-page-meta--edit { display: none !important; }
+
+/* Disable "View page source" */
+.td-page-meta--view { display: none !important; }
+
+/* END Disable unwanted RH TOC entries */
+/* START New Admonition */
+
+.single .content .admonition {
+    position: relative;
+    margin: 1rem 0;
+    padding: 0 0.75rem;
+    background-color: rgba(68, 138, 255, 0.1);
+    border-left: 0.25rem solid #448aff;
+    overflow: auto;
+}
+.single .content .admonition .admonition-title {
+    font-weight: bold;
+    margin: 0 -0.75rem;
+    padding: 0.25rem 1.8rem;
+    border-bottom: 1px solid rgba(68, 138, 255, 0.1);
+    background-color: rgba(68, 138, 255, 0.25);
+}
+.single .content .admonition.open .admonition-title {
+    background-color: rgba(68, 138, 255, 0.1);
+}
+.single .content .admonition .admonition-content {
+    padding: 0.5rem 0;
+}
+.single .content .admonition i.icon {
+    font-size: 0.85rem;
+    color: #448aff;
+    position: absolute;
+    top: 0.6rem;
+    left: 0.4rem;
+}
+.single .content .admonition i.details-icon {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.3rem;
+}
+.single .content .admonition.note {
+    border-left-color: #448aff;
+}
+.single .content .admonition.note i.icon {
+    color: #448aff;
+}
+
+.single .content .admonition.warning {
+    border-left-color: #ff9100;
+}
+.single .content .admonition.warning i.icon {
+    color: #ff9100;
+}
+.single .content .admonition.failure {
+    border-left-color: #ff5252;
+}
+.single .content .admonition.failure i.icon {
+    color: #ff5252;
+}
+.single .content .admonition.danger {
+    border-left-color: #ff1744;
+}
+.single .content .admonition.danger i.icon {
+    color: #ff1744;
+}
+
+.single .content .admonition.example {
+    border-left-color: #651fff;
+}
+.single .content .admonition.example i.icon {
+    color: #651fff;
+}
+
+.single .content .admonition.note {
+    background-color: rgba(68, 138, 255, 0.1);
+}
+.single .content .admonition.note .admonition-title {
+    border-bottom-color: rgba(68, 138, 255, 0.1);
+    background-color: rgba(68, 138, 255, 0.25);
+}
+.single .content .admonition.note.open .admonition-title {
+    background-color: rgba(68, 138, 255, 0.1);
+}
+.single .content .admonition.warning {
+    background-color: rgba(255, 145, 0, 0.1);
+}
+.single .content .admonition.warning .admonition-title {
+    border-bottom-color: rgba(255, 145, 0, 0.1);
+    background-color: rgba(255, 145, 0, 0.25);
+}
+.single .content .admonition.warning.open .admonition-title {
+    background-color: rgba(255, 145, 0, 0.1);
+}
+.single .content .admonition.failure {
+    background-color: rgba(255, 82, 82, 0.1);
+}
+.single .content .admonition.failure .admonition-title {
+    border-bottom-color: rgba(255, 82, 82, 0.1);
+    background-color: rgba(255, 82, 82, 0.25);
+}
+.single .content .admonition.failure.open .admonition-title {
+    background-color: rgba(255, 82, 82, 0.1);
+}
+.single .content .admonition.danger {
+    background-color: rgba(255, 23, 68, 0.1);
+}
+.single .content .admonition.danger .admonition-title {
+    border-bottom-color: rgba(255, 23, 68, 0.1);
+    background-color: rgba(255, 23, 68, 0.25);
+}
+.single .content .admonition.danger.open .admonition-title {
+    background-color: rgba(255, 23, 68, 0.1);
+}
+
+.single .content .admonition.example {
+    background-color: rgba(101, 31, 255, 0.1);
+}
+.single .content .admonition.example .admonition-title {
+    border-bottom-color: rgba(101, 31, 255, 0.1);
+    background-color: rgba(101, 31, 255, 0.25);
+}
+.single .content .admonition.example.open .admonition-title {
+    background-color: rgba(101, 31, 255, 0.1);
+}
+
+.single .content .admonition:last-child {
+    margin-bottom: 0.75rem;
+}
+
+
+
+.details .details-summary:hover {
+    cursor: pointer;
+}
+.details i.details-icon {
+    color: #4d4d4d;
+    -webkit-transition: transform 0.2s ease;
+    -moz-transition: transform 0.2s ease;
+    -o-transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
+}
+[theme="dark"] .details i.details-icon {
+    color: #b5b5b5;
+}
+[theme="black"] .details i.details-icon {
+    color: #a9a9b3;
+}
+.details .details-content {
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.5s ease-out;
+}
+.details.open i.details-icon {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.details.open .details-content {
+    max-height: none;
+}
+
+
+// ========== Admonition ========== //
+// Color map of the admonition
+$admonition-color-map: (
+  'note': #448aff,
+  'warning': #ff9100,
+  'failure': #ff5252,
+  'danger': #ff1744,
+  'example': #651fff,
+  ) !default;
+
+// Color map of the admonition background
+$admonition-background-color-map: (
+  'note': rgba(68, 138, 255, 0.1),
+  'warning': rgba(255, 145, 0, 0.1),
+  'failure': rgba(255, 82, 82, 0.1),
+  'danger': rgba(255, 23, 68, 0.1),
+  'example': rgba(101, 31, 255, 0.1),
+) !default;
+
+
+
+/* END New Admonition */
+
+
+
+
+
+

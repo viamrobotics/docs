@@ -1,0 +1,10 @@
+---
+title: "Pose Tracker Component"
+linkTitle: "Pose Tracker Component"
+weight: 80
+type: "docs"
+draft: true
+description: "Explanation of pose tracker types, configuration, and usage in Viam."
+---
+# Coming soon!
+This will look similar to the [motor doc](motor.md), but describing how to wire up and configure a pose tracker.

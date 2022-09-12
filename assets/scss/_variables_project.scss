@@ -1,0 +1,73 @@
+/*
+
+Add styles or override variables from the theme here.
+
+*/
+
+
+
+/* START Adjust Heading sizes*/
+h1, .h1 {
+ font-size: 175% !important;;
+}
+
+h2, .h2 {
+ font-size: 150% !important;;
+}
+
+h3, .h3 {
+ font-size: 125% !important;;
+}
+
+/* END Adjust Heading sizes*/
+
+/* START ADD Paragraph and Class */
+
+ct {
+font-weight: 600;
+}
+/* END ADD Paragraph and Class */
+
+
+
+
+/* START Misc Paragraph and Class Changes */
+code{
+    font-size:1rem !important;
+    color: #222 !important;
+    }
+    
+div.lead {
+    font-weight: 400;
+    line-height: 25px;
+    }
+file {
+font-family:monospace, monospace;
+}
+.file {
+    font-family:monospace, monospace;
+    }
+
+
+.MyCaption {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    }
+
+    
+
+/* END Misc Paragraph and Class Changes */
+
+
+
+/* START CSS for Highlighting the current RH TOC section */
+#TableOfContents {
+    [data-state="visited"] {
+        color: var(--font-color-muted);
+    }
+
+    [data-current="active"] {
+        text-decoration: underline;
+    }
+}
+/* END CSS for Highlighting the current RH TOC section */
