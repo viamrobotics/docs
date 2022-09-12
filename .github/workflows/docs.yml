@@ -24,6 +24,9 @@ jobs:
           submodules: true  # fetch hugo themes
           fetch-depth: 0
 
+      - name: Setup npm dependencies
+        run: npm install postcss-cli
+
 # everything below was suggested by hugo docs https://gohugo.io/hosting-and-deployment/hosting-on-github/
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2 
