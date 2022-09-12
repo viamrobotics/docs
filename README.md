@@ -63,7 +63,7 @@ Neglecting to add a weight entry causes Hugo to place the page at the very botto
 Add “Draft=true” to the Front Matter to set the page to Draft. Hugo will not build draft pages into production. You can commit and push the page and it won’t display in production. This could let you push the page to the Master without displaying it in production, but let others access it locally from the git tree without changing the branch. To view the page locally, use the -D option: \
 hugo server -D
 
-Add “Future=true” to the Front Matter to begin building a page to production on a certain date (e.g., a release date). This allows you to add a page in the production system and only display it from a selected date. To view the page locally prior to the date, use the -F option: \
+Add “Future=true” to the Front Matter to begin building a page to production on a certain date (e.g., a release date). This allows you to add a page in the production system and only display it from a selected date using Hugo's buildFuture build option in config.toml and the Future=true. To view the page locally prior to the date, use the -F option: \
 hugo server -F
 
 #### Other Setup/Config Information
