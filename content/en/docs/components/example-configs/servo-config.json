@@ -1,0 +1,20 @@
+{
+  "components": [
+    {
+      "type": "board",
+      "model": "pi",
+      "name": "example-pi"
+    },
+    {
+      "type": "servo",
+      "model": "pi",
+      "name": "example-name",
+      "attributes": {
+        "pin": "16"
+      },
+      "depends_on": [
+        "example-pi"
+      ]
+    }
+  ]
+}
