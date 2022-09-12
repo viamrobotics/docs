@@ -26,6 +26,9 @@ jobs:
           hugo-version: 'latest'
           extended: true
           
+      - name: Tweak Config For Bucket Hosting
+        run: sed -e  "s/https:\/\/docs.viam.com\//https:\/\/docs-test.viam.dev\/${{ github.sha }}\/public/" config.toml
+
       - name: Build
         run: hugo --minify
 
@@ -46,4 +49,4 @@ jobs:
         with:
           token: ${{ secrets.DANNENBERS_PTA_FOR_COMMENTING }}
           issue-number: ${{ github.event.pull_request.number }}
-          body: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.sha }}/site'
+          body: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.sha }}/public'
