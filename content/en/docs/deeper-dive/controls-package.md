@@ -125,7 +125,7 @@ The motor_name attribute is unused for now and one should pass a Controllable in
 }
 ```
 ### PID
-PID (or Proportional Integral Derivative ) is a wildly used method to control a process variable. 
+PID (or Proportional Integral Derivative ) is a widely used method to control a process variable. 
 The PID takes an error which is equal to SP - PV, and calculate a value that can be feed back into the endpoint.
 The mathematical form of a PID is:
 
