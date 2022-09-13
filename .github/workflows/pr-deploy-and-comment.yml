@@ -26,11 +26,8 @@ jobs:
           hugo-version: 'latest'
           extended: true
           
-      - name: Tweak Config For Bucket Hosting
-        run: echo 'baseURL="https://docs-test.viam.dev/${{ github.sha }}/public/"' >> config.toml
-
       - name: Build
-        run: hugo --minify
+        run: hugo --minify --config .github/etc/config.toml
 
       - name: Authenticate on GCS
         uses: google-github-actions/auth@v0
