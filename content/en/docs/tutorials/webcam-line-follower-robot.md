@@ -14,7 +14,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 <div>
 <p><strong>Goal</strong>: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam vision service color detector. 
 </p></div>
-<div><img src="../img/LF-following1.gif" /></div>
+<div><img src="../img/lf-following1.gif" /></div>
 </div>
 
 **What you will learn**:<BR>
@@ -38,7 +38,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
     - Additionally, non-shiny floors work best.
 
 <p class="Mycaption" ><em>Figure 1: A SCUTTLE robot base with a camera mounted on the front, pointing mostly down and slightly forwards.</em><br>
-<img src="../img/LF-scuttle2.png" width="600" /></p>
+<img src="../img/lf-scuttle2.png" width="600" /></p>
 
 ## Configuring the rover using the Viam App
 
@@ -169,14 +169,14 @@ Once the line is back in the center front of the camera frame, the rover continu
 When the rover no longer sees any of the line color anywhere in the front portion of the camera frame, it stops and the program ends.
 
 <p class="Mycaption"><em>Figure 2: A GIF of what the camera sees as the rover moves along a green line.</em><br>
-<img class="center" src="../img/LF-tape-follow3.gif" width="300" /></p><br>
+<img class="center" src="../img/lf-tape-follow3.gif" width="300" /></p><br>
 
 ## Let’s write some Code!
 <ol><li class="spacing">Open a file in your favorite IDE and paste-in <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8">the code from the earlier referenced GIST</a>.</li>
 <li class="spacing">Adjust the components names to match the component names you created in your config file. 
 In this case, the component names that you may need to change are <strong>tread_base</strong>, <strong>myCamera</strong>, and <strong>green_detector</strong>.</li>
 <li class="spacing">For those who care about linting and formatting, we used <a href="https://flake8.pycqa.org/en/latest/">flake8</a> as the linter with the max line length changed to 140 and Black for formatting.
-<img src="../img/LF-lint4.png" /></li>
+<img src="../img/lf-lint4.png" /></li>
 <li class="spacing">From your robot’s page on the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>), go to the Connect tab. 
 Find the Python SDK field and copy the robot address (which will likely have the form
 <span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file. 
@@ -198,14 +198,14 @@ Run,</br><span class="file">nano rgbFollower.py</span></br>(or replace <span cla
 Ensure that the base moves as expected. 
 If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.</li>
 <p  class="Mycaption"><em>Figure 3: Driving the base from the Viam App's Control tab.</em><br>
-<img class="spacing" src="../img/LF-viamapp-base-view5.gif" width="600" /></p></li>
+<img class="spacing" src="../img/lf-viamapp-base-view5.gif" width="600" /></p></li>
 <li class="spacing">Now for the creative part: Use your colored tape to make a path for your robot to follow. 
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another. 
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.</li>
 <li class="spacing">Set your robot on the line such that the line appears in the front of the camera’s view. 
 Verify that the camera sees the line by viewing the camera feed on the <strong>Control</strong> tab of the robot page.</li>
 <p class="Mycaption"><em>Figure 4: The camera view in the <strong>Control</strong> tab on the Viam App robot page.</em><br>
-<img  class="spacing" src="../img/LF-cam-view6.png" width="600" /></p>
+<img  class="spacing" src="../img/lf-cam-view6.png" width="600" /></p>
 
 <li class="spacing">In a terminal window, SSH to your Pi by running:<br>
 
