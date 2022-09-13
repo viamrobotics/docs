@@ -27,7 +27,7 @@ jobs:
           extended: true
           
       - name: Tweak config
-        run: sed -i '' -e 's/https:\/\/docs.viam.com\//https:\/\/docs-test.viam.dev\/${{ github.sha }}\/public\nbaseURL="https:\/\/docs-test.viam.dev\/${{ github.sha }}\/public\/"/' .github/etc/config.toml
+        run: sed -i '' 's/https:\/\/docs.viam.com\//https:\/\/docs-test.viam.dev\/${{ github.sha }}\/public"\nbaseURL="https:\/\/docs-test.viam.dev\/${{ github.sha }}\/public\//' .github/etc/config.toml
 
       - name: Build
         run: hugo --minify --config .github/etc/config.toml
