@@ -26,6 +26,9 @@ jobs:
           hugo-version: 'latest'
           extended: true
           
+      - name: Set baseURL for Config
+        run: run: echo 'baseURL="https://docs-test.viam.dev/${{ github.sha }}/public/"' >> .github/etc/config.toml
+
       - name: Build
         run: hugo --minify --config .github/etc/config.toml
 
