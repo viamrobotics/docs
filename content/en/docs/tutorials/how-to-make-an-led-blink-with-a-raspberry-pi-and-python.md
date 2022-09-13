@@ -46,7 +46,7 @@ You will need the following hardware, tools, and software to complete this proje
 
 -   [Resistor pack](http://amzn.to/2Dmainw)
 
-    -   You will be using a 100 ohms resistor, which is the resistor colored with brown-black-brown
+    -   You will be using a 100 Ohms resistor, which is the resistor colored with brown-black-brown
 
 -   [Blue LED](http://amzn.to/2Ex2v5q)
 
@@ -66,20 +66,20 @@ You will need the following hardware, tools, and software to complete this proje
 
 ## How to install the Viam Python SDK on your Raspberry Pi
 
-If you followed along with the first part of this tutorial, you should have been able to connect and control an LED on your robot remotely from the Viam App. Now, you will need to install the [Viam Python SDK](https://python.viam.dev/) on your Raspberry Pi. The SDK will allow you to automate your robot with more advanced logic, instead of just manually controlling components through the app.
+If you followed along with the first part of this tutorial, you should be able to connect and control an LED on your robot remotely from the Viam App. Now, you will need to install the [Viam Python SDK](https://python.viam.dev/) on your Raspberry Pi. The SDK will allow you to automate your robot with more advanced logic, instead of just manually controlling components through the app.
 
 You can find instructions for [installing the Viam Python SDK](https://python.viam.dev/) in the documentation, but we will break this down further for you here.
 
 ### How to SSH into a Raspberry Pi
 
-First of all, what is SSH and why do we need to use it? The acronym SSH stands for *Secure Shell*. The SSH protocol was designed as a secure alternative to unsecured remote machines, like our Raspberry Pi. Basically, it allows you to access the command line of your Raspberry Pi from another machine so we can install software and run code remotely.
+What is SSH and why do we need to use it? The acronym SSH stands for *Secure Shell*. The SSH protocol was designed as a secure alternative to unsecured remote machines, like our Raspberry Pi. Basically, it allows you to access the command line of your Raspberry Pi from another machine so we can install software and run code remotely.
 
 First, you will need to make sure your Raspberry Pi is plugged in, turned on, and connected to your network. I usually wait a minute or two after turning it on before I attempt to connect to my Pi.
 
 !!! caution
     Make sure your Raspberry Pi and the computer you are using to SSH into your Raspberry Pi are connected to the same network*.
 
-Next, launch your terminal (on Mac and Linux) and replace the user and hostname with the user and hostname you configured when you set up your Pi. On Windows, you can use an SSH client like [Putty](https://itsfoss.com/putty-linux/).
+Next, launch your terminal (on Mac and Linux) and replace the user and hostname with the user and hostname you configured when you set up your Pi. On Windows, you can use an SSH client such as [Putty](https://itsfoss.com/putty-linux/).
 
 ```bash
 ssh <username>@<hostname>.local
@@ -92,7 +92,7 @@ Default username and password on Raspberry Pi's are
 -   password: raspberry
 
 !!! caution
-    It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi. In the past, a [malware infected thousands of Raspberry Pi devices that were using the default username and password.](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)
+    It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi. In the past, a [^malware][malware infected thousands of Raspberry Pi devices that were using the default username and password.](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)
 
 If you can't remember your user and hostname, you can also find out the IP address by other means like checking the network devices list on your router/modem.
 
@@ -114,7 +114,7 @@ sudo apt-get install python3-pip
 
 In this step, you are going to install the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit). This allows you to write programs in the Python programming language to create robots using [Viam](http://www.viam.com/).
 
-In order for you to install the Viam Python SDK on your Raspberry Pi, you will need to run the following command in your terminal:
+To install the Viam Python SDK on your Raspberry Pi, you must run the following command in your terminal:
 
 ```bash
 pip install viam
@@ -249,3 +249,6 @@ If you are looking for some projects that would be a great next step in your jou
 -  [Tutorial List](tutorials.md)
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
+
+[^malware]:
+https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency
