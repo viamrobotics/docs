@@ -236,7 +236,7 @@ If you get an error, you can check your code against my complete code here:
 [https://gist.github.com/JoeKarlsson/ea9bdc3d5672e2f158f574f8199856e3](https://gist.github.com/JoeKarlsson/ea9bdc3d5672e2f158f574f8199856e3)
 
 !!! tip
-    If you have any issues whatsoever getting the Viam Python SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com). There you will find a friendly developer community of people learning how to make robots using Viam.
+    If you have any issues whatsoever getting the Viam Python SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com). There, you will find a friendly developer community of people learning how to make robots using Viam.
 
 ![A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.](../img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image2.gif)
 
