@@ -8,7 +8,7 @@ description: "An introduction to Viam's SDKs and how to use them to access and c
 
 ## Introduction
 
-The Viam Client Software Development Kit (SDK) contains wrapper classes that you can use to call the Viam API from your application without having to deal the low-level code that deals directly with the robot's components. Viam's SDKs make it easy to connect to, build, and code custom logic on your robots.
+The Viam Client Software Development Kit (SDK) contains wrapper classes that you can use to call the Viam API from your application without having to deal with the low-level code that deals directly with the robot's components. Viam's SDKs make it easy to connect to, build, and code custom logic on your robots.
 
 ## What is an SDK?
 
@@ -42,7 +42,7 @@ In fact, one of the best parts about using the Viam SDK is that *it can be run l
 
 ## Why connect using a Client?
 
-The simplest answer is that, the `viam-server` doesn't make your robot autonomous alone. In order to connect to and control your robot, you will need to install a Client SDK or connect to your robot using the Viam App.
+The simplest answer is that, the `viam-server` doesn't make your robot autonomous alone. To connect to and control your robot, you must install a Client SDK or connect to your robot using the Viam App.
 
 ## Why connect as a Client via the Viam App
 
@@ -66,7 +66,7 @@ Also, Viam's SDKs allow you to connect from any machine that's on the same netwo
 
 ## Viam's Client SDK Libraries
 
-Viam's Client SDKs support lots of different ways to connect and control your robots, with lots of new ways to connect coming soon.
+Viam's Client SDKs support many different ways to connect and control your robots, with lots of new ways to connect coming soon.
 
 -   [Viam App](https://app.viam.com/)
 
@@ -75,6 +75,9 @@ Viam's Client SDKs support lots of different ways to connect and control your ro
 ## Example usage of connecting as a Client using the Viam Python SDK
 
 The [Viam Python SDK](https://python.viam.dev) makes it easier to use an implementation of your robot's components using the Python programming language, than needing to create them directly using the [Viam RDK](https://docs.viam.com/product-overviews/RDK/).
+
+!!! tip
+     Viam's Software Development Kits (SDKs) provide a wide array of components to customize (You can browse through the [API Reference](https://python.viam.dev/autoapi/viam/components/index.html) to see all of them).
 
 !!! note
     Note: We will be assuming that you have already [set up Viam Server](https://docs.viam.com/getting-started/installation/#installing-viam-server) on your robot and [connected your robot to the Viam App](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app-httpsappviamcom), and [installed the Viam Python SDK](https://python.viam.dev/index.html) on your client before proceeding.
