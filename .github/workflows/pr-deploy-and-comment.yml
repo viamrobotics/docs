@@ -26,8 +26,11 @@ jobs:
           hugo-version: 'latest'
           extended: true
           
+      - name: Tweak config
+        run: sed -i 's/https:\/\/docs.viam.com\//https:\/\/docs-test.viam.dev\/${{ github.sha }}\/public"\nbaseURL="https:\/\/docs-test.viam.dev\/${{ github.sha }}\/public\//' .github/etc/config.toml && cat .github/etc/config.toml
+
       - name: Build
-        run: hugo --minify
+        run: hugo --minify --config .github/etc/config.toml
 
       - name: Authenticate on GCS
         uses: google-github-actions/auth@v0
@@ -46,4 +49,4 @@ jobs:
         with:
           token: ${{ secrets.DANNENBERS_PTA_FOR_COMMENTING }}
           issue-number: ${{ github.event.pull_request.number }}
-          body: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.sha }}/site'
+          body: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.sha }}/public'
