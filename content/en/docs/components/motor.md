@@ -89,10 +89,10 @@ Nested within `pins` (note that only two or three of these are required dependin
 
 Name | Type | Description |
 ---- | ---- | ----- |
-`a` | string | See [Pins](motor#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
-`b` | string | See [Pins](motor#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
-`dir` | string | See [Pins](motor#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
-`pwm` | string | See [Pins](motor#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
+`a` | string | See [Pins](#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
+`b` | string | See [Pins](#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
+`dir` | string | See [Pins](#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
+`pwm` | string | See [Pins](#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
 
 #### Optional Attributes
 Name | Type | Default Value | Description
