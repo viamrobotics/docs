@@ -5,8 +5,6 @@ weight: 90
 type: "docs"
 description: "Instructions to build a line-following robot that uses a webcam to track lines."
 ---
-
-# Build a Line-following Robot with only Rover and a Webcam
 Many line follower robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background. 
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
