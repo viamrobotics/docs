@@ -1,12 +1,9 @@
 ---
-title: Robot Service Documentation
-summary: Explanation of the robot service, its configuration, its functionality, and its interfaces.
-authors:
-    - Cheuk Tse
-date: 2022-09-06
+title: "Robot Service"
+linkTitle: "Robot Service"
+description: "Explanation of the robot service, its configuration, its functionality, and its interfaces."
+type: "docs"
 ---
-# Robot Service 
-
 Robot Service constitutes a minimal set of APIs that most robots (Viam Server, [Viam Python SDK](https://python.viam.dev/) and various SDKs) should support. 
 Users will likely use the Robot Service as an entrypoint to interact with Viam robots and provide a way to get updates from the robot as a whole.
 

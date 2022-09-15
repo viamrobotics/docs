@@ -3,6 +3,7 @@ title: "Robot Service"
 linkTitle: "Robot Service"
 description: "Explanation of the robot service, its configuration, its functionality, and its interfaces."
 weight: 40
+type: "docs"
 ---
 # Robot Service 
 
