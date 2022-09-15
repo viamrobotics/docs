@@ -1,14 +1,13 @@
 ---
-title: "Setting up a Yahboom 4WD Rover on Viam"
-linkTitle: "Setting up a Yahboom 4WD Rover on Viam"
+title: "Setting up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam"
+linkTitle: "Setting up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam"
 weight: 50
 type: "docs"
 description: "Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam App."
 ---
-# Configuring a Four Wheeled Rover Controlled by Gamepad
 TODO: introduce the config concept, attributes, and depends_on.
 
-#### Configuring the Board 
+## Configuring the Board 
 
 Go to the Viam App ([https://app.viam.com](https://app.viam.com)) in a web browser, and navigate to the robot's config.
 
@@ -22,7 +21,7 @@ For `Model`, select `pi`:
 
 ![board](../img/board.png)
 
-#### Configuring the Motor and Wheels 
+## Configuring the Motor and Wheels 
 
 Next, add one of the `motor` controllers and see if you can make the wheel spin.
 As with all other components, the first step is to select `NEW COMPONENT`.
@@ -63,7 +62,7 @@ Save the config and hop over to the control view again, you should now see two m
 
 ![motors](../img/motors.png)
 
-#### Configuring the Base 
+## Configuring the Base 
 
 Unite these wheel sets with a `base` component, which is used to describe the physical structure onto which your components are mounted.
 Configuring a `base` component will also give you a nice UI for moving the rover around.
@@ -89,7 +88,7 @@ But wouldn’t it be more fun to drive it around like an RC car? Now you can try
 If you’ve ever connected a Bluetooth device via the linux command line, great! If not, strap in, it’s going to be a bit of a ride.
 If you would like to skip adding a Bluetooth controller, jump ahead to the Configuring the Camera Component section of the tutorial.
 
-#### Connecting a Bluetooth Controller
+## Connecting a Bluetooth Controller
 
 Make sure the 8bitdo controller mode switch is set to S, hold down Start for a few seconds, and when the LED underneath the controller changes to green, press the pair button for 3 seconds.
 For more information about the controller buttons and Bluetooth modes, consult the manual included with the controller.

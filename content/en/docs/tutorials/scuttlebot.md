@@ -1,12 +1,10 @@
 ---
-title: "Setting up a Scuttle with Viam"
-linkTitle: "Setting up a Scuttle with Viam"
+title: "Configuring a Camera-Equipped Scuttle Bot Two-Wheel Drive Rover"
+linkTitle: "Configuring a Camera-Equipped Scuttle Bot Two-Wheel Drive Rover"
 weight: 20
 type: "docs"
 description: "Instructions for using the Viam App to Configure Raspberry Pi board for a Camera-Equipped Scuttle Robot"
 ---
-
-# Configuring a Camera-Equipped Scuttle Bot Two-Wheel Drive Rover
 This tutorial will guide you through setting up a Scuttle Bot and Raspberry Pi micro-controller to use a camera.
 
 The Raspberry Pi is a single-board computer into which you will wire all other components.
