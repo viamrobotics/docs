@@ -1,9 +1,8 @@
 ---
-title: Learning Resources
-summary: A collection of links to external sources discussing robotics topics which we believe users may find helpful.
-authors:
-    - Matt Dannenberg
-date: 2022-05-19
+title: "Learning Resources"
+linkTitle: "Learning Resources"
+description: "A collection of links to external sources discussing robotics topics which we believe users may find helpful."
+type: "docs"
 ---
 # Overview
 The following sections contain links that we think you will find very useful during your journey into robotics.

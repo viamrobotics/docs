@@ -1,5 +1,9 @@
-# Contributing to Viam Documentation
-
+---
+title: "Contributor Covenant Code of Conduct# Contributing to Viam Documentation"
+linkTitle: "Contributor Covenant Code of Conduct# Contributing to Viam Documentation"
+weight: 1
+type: "docs"
+---
 Please take a moment to review this document in order to make the contribution
 process easy and effective for everyone involved.
 

@@ -3,7 +3,7 @@ title: "Welcome to Viam's pre-Beta Documentation"
 linkTitle: "Welcome to Viam's pre-Beta Documentation"
 date: 2022-09-07T10:03:25-04:00
 weight: 1
-
+type: "docs"
 ---
 
 ## Getting Started
