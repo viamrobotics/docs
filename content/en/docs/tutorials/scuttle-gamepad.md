@@ -1,5 +1,5 @@
 ---
-title: "Controlling a Scuttle Robot on VIAM with a Bluetooth Gamepad"
+title: "Controlling a Scuttle Robot on Viam with a Bluetooth Gamepad"
 linkTitle: "Controlling a Scuttle Robot on VIAM with a Bluetooth Gamepad"
 weight: 30
 type: "docs"
