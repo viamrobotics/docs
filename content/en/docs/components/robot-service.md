@@ -1,9 +1,8 @@
 ---
-title: Robot Service Documentation
-summary: Explanation of the robot service, its configuration, its functionality, and its interfaces.
-authors:
-    - Cheuk Tse
-date: 2022-09-06
+title: "Robot Service"
+linkTitle: "Robot Service"
+description: "Explanation of the robot service, its configuration, its functionality, and its interfaces."
+weight: 40
 ---
 # Robot Service 
 
