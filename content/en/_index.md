@@ -9,6 +9,8 @@ weight: 1
 ## Getting Started
 Looking to get started with Viam? Checkout the [installing the Viam Server on Raspberry Pi instructions](getting-started/installation.md)
 
+Note: When viewing code blocks, hovering your mouse cursor over the top right-hand corner displays a **Copy** button to copy the code to the clipboard.
+
 - [Viam's Robot Configuration](getting-started/robot-config.md)
 
 **Coming soon**
