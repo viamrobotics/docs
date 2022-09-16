@@ -31,7 +31,7 @@ The vision service is a default service on the robot, and can be initialized wit
 | Classification    | tflite\_classifier | "model\_path", "label\_path", "num\_threads" |
 || tf\_classifier    | TBD - Not yet supported                       |
 | Segmentation      | radius\_clustering\_segmenter | "min\_points\_in\_plane", "min\_points\_in\_segment", "clustering\_radius\_mm", "mean\_k\_filtering"      |
-|| detection\_segmenter |  "detector\_name", "mean\_k", "sigma" |
+|| detector\_segmenter |  "detector\_name", "mean\_k", "sigma" |
 
 More about the parameters and model types can be found under the corresponding operation below.
 
