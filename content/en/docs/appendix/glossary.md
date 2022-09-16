@@ -20,7 +20,7 @@ Boards like Jetson and Pi run the RDK and can expose the board component itself.
 **Client Application**: Client applications are what applies the business logic to operate your robot. 
 You can run a client application on the same part that runs the viam-server, or on a separate device.
 
-**Component**: A resource that represents an element of hardware in a robot (RDK definition); for example, servo, camera, or arm.
+**Component**: A resource that represents a physical component in a robot (RDK definition); for example, a servo, camera, or an arm.
 
 **Fragment**: A reusable config block typically representing a common resource; for example, viam_gripper.
 Available across an organization and when used in a config, gets merged (key/value wise) with a specific robot part.
@@ -40,7 +40,9 @@ For example, UR5e is a model of the arm component type.
 
 **Packages**: Internal generalizable libraries that are not exposed to the user via proto and can be used by components and services to better implement functionality.
 
-**Process**: A bespoke, OS-specific process managed by the RDK to either run once or indefinitely; for example, to run one of Viam's camera servers.
+**Process**: Processes are binaries or scripts that run on a part. 
+Processes are often used to create a new local instance of viam-server to implement drivers for custom components.
+They provide a bespoke, OS-specific process managed by the viam-server to either run once or indefinitely; for example, to run one of Viam's camera servers.
 
 **RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. (golang)
 
@@ -65,14 +67,21 @@ For example, UR5e is a model of the arm component type.
     * These are used to help implement components/services.
     * Note: Libraries are called “services” ONLY if we expose their functionality in our proto APIs.
 
-**Resource**: An individual, addressable element of a robot (RDK definition).
-
-* Currently split into two types of resources: components and services.
+**Resource**: Resources are individual, addressable elements of a robot (RDK definition) operarted by parts. 
+Parts operate two types of Resources, physical components and software services.
+Each part has local resources, and also surfaces remote resources when a remote is established to another part. The capabilities of each resource are exposed through the part’s API.
 
 **Resource Config**: The configuration element of either a component or a service.
 Typically expressed in JSON.
 
-**Remote**: A robot part which is controlled by another robot part.
+**Remote**: A robot part which is controlled by another robot part. 
+The connection from one part to another part. 
+Remotes are established using direct gRPC or gRPC via WebRTC. 
+Within a robot, a main part always establishes a remote to each of the other parts associated with the robot. 
+When a remote is established, the part establishing the remote will surface all of the other part’s resources as its own. 
+A client application connecting to the part will see all of the part’s local resources and remote resources. 
+
+You can establish remotes to parts in different robots. However, Viam recommends using a client application to control interaction between robots. 
 
 **Remote UI**: Uses the Web JS SDK and provides UI elements to control a robot via WebRTC.
 
@@ -105,7 +114,7 @@ There is generally one robot part per CPU.
     * To connect to a robot implementing the Viam Robot API.
 * Effectively, non-golang versions of RDK’s resource authoring and activation functionality.
 
-**Service**: A resource that represents an element of software that typically works with components; for example, navigation, base remote control, or metadata service.
+**Service**: Services are on-device software for complex capabilities such as SLAM, Computer Vision, Motion Planning, and Data Collection. Services are resources that represent elements of software that typically work with components; for example, navigation, base remote control, or metadata service.
 
 **Viam Robot API**:
 
