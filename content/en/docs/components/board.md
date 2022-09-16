@@ -75,7 +75,7 @@ Here are a few use cases:
     - Light up an LED or similar.
     - Switch a relay.
 - Send a PWM signal to control the speed of a motor or servo.
-- Read the state of the pin (i.e. the voltage), which can be used to monitor the status of whatever is connected to it.
+- Read the state of the pin (i.e., the voltage), which can be used to monitor the status of whatever is connected to it.
 - Receive digital signals from sensors, as detailed in the Analog section below.
 - Receive input as a digital interrupt, detailed below.
 - Communicate using different protocols such as I2C and SPI bus.
@@ -83,7 +83,7 @@ Here are a few use cases:
 Some things GPIO pins *cannot* do:
 
 - Power a motor or other high power draw device directly.
-GPIO pins are built for logic levels of power, i.e. 3.3V and 16mA per pin.
+GPIO pins are built for logic levels of power, i.e., 3.3V and 16mA per pin.
 Power amplification (a motor driver or relay) would be necessary.
 - Receive signals over 3.3V (or whatever the logic voltage is on a given board).
 
@@ -140,16 +140,12 @@ Note that the name of the SPI bus ("main") matches between the analog
 configuration and SPI configuration.
 
 #### Required Fields
-
-**name** (string): Choose a name for the analog reader.
-
-**spi_bus** (string): Should match the name given to the relevant SPI
-bus in its section of the config file.
-
-**pin** (string): Specify which pin of the ADC chip to use.
-
-**chip_select** (string): Specify the pin number of the board GPIO pin
-connected to the ADC chip. Use the pin number, not the GPIO number.
+Name | Type | Default Value | Description
+-------------- | ---- | ------------- | ---------------
+|`name` | string | -- | Choose a name for the analog reader
+|`spi_bus` | string | -- |This value should match the name given to the relevant SPI bus in its section of the config file.
+|`pin`| string | -- | Specify which pin of the ADC chip to use.
+|`chip_select`| string| --| Specify the pin number of the board GPIO pin connected to the ADC chip. Use the pin number, not the GPIO number.
 
 #### Optional Fields
 
@@ -195,19 +191,17 @@ An example:
 ```
 
 #### Required Fields
-
-**name** (string): Choose a name for the digital interrupt.
-
-**pin** (string): Specify which GPIO pin of the board to use. Use the
-pin number, not the GPIO number.
-
+Name | Type | Default Value | Description
+-------------- | ---- | ------------- | ---------------
+|`name`| string|--| Choose a name for the digital interrupt.
+|`pin`| string|--| Specify which GPIO pin of the board to use. Use the pin number, not the GPIO number.
 #### Optional Fields
 
-**type** (string): Set type to "basic" to count the number of interrupts
-that occur. Set type to "servo" to count the average time between the
-interrupts (akin to pulse width).
+Name | Type | Default Value | Description
+-------------- | ---- | ------------- | ---------------
+|`type`| string|--| Set type to "basic" to count the number of interrupts that occur. Set type to "servo" to count the average time between the interrupts (akin to pulse width).
+|`formula`| string|--| Apply a mathematical function to the input.
 
-**formula** (string): Apply a mathematical function to the input.
 
 ## Other Communication Methods
 
@@ -242,12 +236,10 @@ The attributes section of a board using SPI will contain the following:
 ```
 #### Required Fields
 
-**name** (string): Choose a name for the SPI bus. Note that a component
-that uses this bus must then have this same name configured in its
-attributes.
-
-**bus_select** (string): A Raspberry Pi has two SPI buses: 0 and 1. See
-data sheet for specifics on other boards.
+Name | Type | Default Value | Description
+-------------- | ---- | ------------- | ---------------
+|`name`| string|--| Choose a name for the SPI bus. Note that a component that uses this bus must then have this same name configured in its attributes.
+|`bus_select`| string|--| A Raspberry Pi has two SPI buses: 0 and 1. See data sheet for specifics on other boards.
 
 ### I2C
 
@@ -271,13 +263,10 @@ See instructions [here for how to enable it on a Raspberry Pi 4](https://docs.vi
 }
 ```
 #### Required Fields
-
-**name** (string): Choose a name for the SPI bus. Note that a component
-that uses this bus must then have this same name configured in its
-attributes.
-
-**bus** (string): Usually a number such as 1. See board data sheet for
-specifics on its I2C wiring. Raspberry Pi recommends using bus 1.
+Name | Type | Default Value | Description
+-------------- | ---- | ------------- | ---------------
+|`name`| string|--| Choose a name for the SPI bus. Note that a component that uses this bus must then have this same name configured in its attributes.
+|`bus`| string|--| Usually a number such as 1. See board data sheet for specifics on its I2C wiring. Raspberry Pi recommends using bus 1.
 
 
 ## Implementation
