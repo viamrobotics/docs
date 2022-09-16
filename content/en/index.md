@@ -1,7 +1,6 @@
 ---
-title: "Welcome to Viam's pre-Beta Documentation"
-linkTitle: "Welcome to Viam's pre-Beta Documentation"
-date: 2022-09-07T10:03:25-04:00
+title: "Welcome to the Viam Documentation Site"
+linkTitle: "Welcome to the Viam Documentation Site"
 weight: 1
 type: "docs"
 ---
