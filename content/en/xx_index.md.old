@@ -1,11 +1,11 @@
 ---
 title: "Welcome to Viam's Documentation"
 linkTitle: "Welcome to Viam's Documentation"
-weight: 1
+weight: 10
 type: "docs"
 ---
 
-## Getting Started
+## Getting Started eee
 Looking to get started with Viam? Checkout the [installing the Viam Server on Raspberry Pi instructions](getting-started/installation)
 
 Note: When viewing code blocks, hovering your mouse cursor over the top right-hand corner displays a **Copy** button to copy the code to the clipboard.
