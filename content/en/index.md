@@ -6,84 +6,82 @@ type: "docs"
 ---
 
 ## Getting Started
-Looking to get started with Viam? Checkout the [installing the Viam Server on Raspberry Pi instructions](getting-started/installation.md)
+Looking to get started with Viam? Checkout the [installing the Viam Server on Raspberry Pi instructions](../docs/getting-started/installation)
 
 Note: When viewing code blocks, hovering your mouse cursor over the top right-hand corner displays a **Copy** button to copy the code to the clipboard.
 
-- [Viam's Robot Configuration](getting-started/robot-config.md)
+- [Viam's Robot Configuration](../docs/getting-started/robot-config)
 
 **Coming soon**
 
-- [A High Level Overview of Viam](getting-started/high-level-overview.md)
+- [A High Level Overview of Viam](../docs/getting-started/high-level-overview)
 
 ## Product Overviews
-- [The Viam App's Organizational Hierarchy](product-overviews/organization-management.md)
-- [The Viam App's Fleet Management](product-overviews/fleet-management.md)
+- [The Viam App's Organizational Hierarchy](../docs/product-overviews/organization-management)
+- [The Viam App's Fleet Management](../docs/product-overviews/fleet-management)
 
 **Coming soon**
 
-- [Overview of viam-server and RDK](product-overviews/RDK.md)
-- [Using Our SDKs as a Client Application](product-overviews/SDK-as-client.md)
-- [Using Our SDKs for a Server Hardware Implementation](product-overviews/SDK-as-server.md)
-- [Viam's Data Management Platform](product-overviews/data-management.md)
-- [Viam's Command Line Tool](product-overviews/CLI.md)
+- [Overview of viam-server and RDK](../docs/product-overviews/rdk)
+- [Using Our SDKs as a Client Application](../docs/product-overviews/sdk-as-client)
+- [Using Our SDKs for a Server Hardware Implementation](../docs/product-overviews/sdk-as-server)
+- [Viam's Data Management Platform](../docs/product-overviews/data-management)
+- [Viam's Command Line Tool](../docs/product-overviews/cli)
 
 ## Components
-[Component FAQ](components/component-faq.md)
-
-- [Arm](components/arm.md)
-- [Board](components/board.md)
-- [GPS](components/gps.md)
-- [Camera](components/camera.md)
-- [Motor](components/motor.md)
-- [Servo](components/servo.md)
+- [Arm](../docs/components/arm)
+- [Board](../docs/components/board)
+- [GPS](../docs/components/gps)
+- [Camera](../docs/components/camera)
+- [Motor](../docs/components/motor)
+- [Servo](../docs/components/servo)
 
 **Coming soon**
 
-- [Gantry](components/gantry.md)
-- [Gripper](components/gripper.md)
-- [IMU](components/imu.md)
-- [Sensor](components/sensor.md)
-- [Base](components/base.md)
-- [GPS](components/gps.md)
-- [Input Controller](components/input-controller.md)
-- [Pose Tracker](components/pose-tracker.md)
+- [Gantry](../docs/components/gantry)
+- [Gripper](../docs/components/gripper)
+- [IMU](../docs/components/imu)
+- [Sensor](../docs/components/sensor)
+- [Base](../docs/components/base)
+- [GPS](../docs/components/gps)
+- [Input Controller](../docs/components/input-controller)
+- [Pose Tracker](../docs/components/pose-tracker)
 
 ## Services
-- [Vision](services/vision.md)
-- [Data Capture](services/data-capture.md)
-- [Simultaneous Localization and Mapping (SLAM)](services/slam.md)  
+- [Vision](../docs/services/vision)
+- [Data Capture](../docs/services/data-capture)
+- [Simultaneous Localization and Mapping (SLAM)](../docs/services/slam)  
 
 
 **Coming soon**
 
-- [Motion](services/motion.md)
-- [Navigation](services/navigation.md)
-- [Robot Service](services/robot-service.md)
-- [Sensor Service](services/sensor.md)
+- [Motion](../docs/services/motion)
+- [Navigation](../docs/services/navigation)
+- [Robot Service](../docs/services/robot-service)
+- [Sensor Service](../docs/services/sensor)
 
 
 ## Deep Dives
-- [Viam's Application End-to-End Flow](deeper-dive/robot-to-robot-comms.md)
-- [Viam's Authentication](deeper-dive/security.md)
+- [Viam's Application End-to-End Flow](../docs/deeper-dive/robot-to-robot-comms)
+- [Viam's Authentication](../docs/deeper-dive/security)
 
 **Coming soon**
 
-- [ProtoBuf and gRPC](deeper-dive/architecture-and-protobuf.md)
-- [Frame System](deeper-dive/frame-system.md)
-- [Operations and Operation IDs](deeper-dive/operations.md)
-- [How the Viam App and Your Robot Interact](deeper-dive/robot-to-cloud-comms.md)
+- [ProtoBuf and gRPC](../docs/deeper-dive/architecture-and-protobuf)
+- [Frame System](../docs/deeper-dive/frame-system)
+- [Operations and Operation IDs](../docs/deeper-dive/operations)
+- [How the Viam App and Your Robot Interact](../docs/deeper-dive/robot-to-cloud-comms)
 
 ## Appendix
-- [Viam Glossary](appendix/glossary.md)
-- [Orientation Vector](appendix/orientation-vector.md)
-- [Troubleshooting](appendix/troubleshooting.md)
+- [Viam Glossary](../docs/appendix/glossary)
+- [Orientation Vector](../docs/appendix/orientation-vector)
+- [Troubleshooting](../docs/appendix/troubleshooting)
 
 **Coming soon**
 
-- [FAQ](appendix/faq.md)
-- [Learning Resources](appendix/learning-resources.md)
-- [Contribute](appendix/contribute.md)
+- [FAQ](../docs/appendix/faq)
+- [Learning Resources](../docs/appendix/learning-resources)
+- [Contribute](../docs/appendix/contribute)
 
 ## SDKs
 - [Python SDK](https://python.viam.dev/)
