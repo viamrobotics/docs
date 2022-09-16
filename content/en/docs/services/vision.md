@@ -182,7 +182,7 @@ Segmenters can be built from the CONTROL tab in the Viam App as well.
 The types of segmenters supported are:
 
 * **radius_clustering_segmenter**: Radius\_clustering is a segmenter that finds well separated objects above a flat plane.  It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.  Unfortunately it is a bit slow, and can take up to 30s to segment the scene.
-*  **object_segmenter**: Object segmenters are automatically created from detectors in the vision service.  Any registered detector "x" defined in “register\_models” field or added later to the vision service becomes a segmenter with the name "x\_segmenter".  It begins byfinding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
+*  **detector_segmenter**: Object segmenters are automatically created from detectors in the vision service.  Any registered detector "x" defined in “register\_models” field or added later to the vision service becomes a segmenter with the name "x\_segmenter".  It begins byfinding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
 
 #### Radius Clustering Segmenter parameters
 
