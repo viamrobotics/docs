@@ -8,38 +8,41 @@ description: "A glossary of robotics and Viam-specific jargon."
 
 ## Viam-specific definitions
 
-**Attribute:** A configuration parameter of a resource specific to a model.
+**Attribute**: A configuration parameter of a resource specific to a model.
 
-**Base:** A physical, mobile component to which other components are typically mounted.
+**Base**: A physical, mobile component to which other components are typically mounted.
 For example, a wheeled chassis and its drivetrain.
 
-**Board:** An IO board connected to a robot part used to express low-level electronics functionality such as GPIO, SPI, or I2C.
+**Board**: An IO board connected to a robot part used to express low-level electronics functionality such as GPIO, SPI, or I2C.
 Examples of boards include Jetson, Raspberry Pi, Numato, or Arduino.
 Boards like Jetson and Pi run the RDK and can expose the board component itself.
 
-**Component:** A resource that represents an element of hardware in a robot (RDK definition); for example, servo, camera, or arm.
+**Client Application**: Client applications are what applies the business logic to operate your robot. 
+You can run a client application on the same part that runs the viam-server, or on a separate device.
 
-**Fragment:** A reusable config block typically representing a common resource; for example, viam_gripper.
+**Component**: A resource that represents an element of hardware in a robot (RDK definition); for example, servo, camera, or arm.
+
+**Fragment**: A reusable config block typically representing a common resource; for example, viam_gripper.
 Available across an organization and when used in a config, gets merged (key/value wise) with a specific robot part.
 
-**Frame:** A single element of a Frame System.
+**Frame**: A single element of a Frame System.
 A frame represents a coordinate system that is used to describe position and orientation.
 The location of a frame is described in relation to its parent frame using rigid transformations rather than in absolute terms.
 
-**Frame System:** A hierarchy of frames that are related to one another via coordinate transformations.
+**Frame System**: A hierarchy of frames that are related to one another via coordinate transformations.
 
-**gRPC:** gRPC Remote Procedure Calls is a cross-platform open source high performance Remote Procedure Call (RPC) framework[^grpc].
+**gRPC**: gRPC Remote Procedure Calls is a cross-platform open source high performance Remote Procedure Call (RPC) framework[^grpc].
 
 [^grpc]: GRPC, webpage, 2022, Wikipedia authors: https://en.wikipedia.org/wiki/GRPC
 
-**Model:** A particular implementation of a component type.
+**Model**: A particular implementation of a component type.
 For example, UR5e is a model of the arm component type.
 
-**Packages:** Internal generalizable libraries that are not exposed to the user via proto and can be used by components and services to better implement functionality.
+**Packages**: Internal generalizable libraries that are not exposed to the user via proto and can be used by components and services to better implement functionality.
 
-**Process:** A bespoke, OS-specific process managed by the RDK to either run once or indefinitely; for example, to run one of Viam's camera servers.
+**Process**: A bespoke, OS-specific process managed by the RDK to either run once or indefinitely; for example, to run one of Viam's camera servers.
 
-**RDK (Robot Development Kit):** The official Viam-developed codebase that provides all functionality of an SDK and more. (golang)
+**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. (golang)
 
 * The RDK contains: 
     * Go SDK
@@ -62,27 +65,37 @@ For example, UR5e is a model of the arm component type.
     * These are used to help implement components/services.
     * Note: Libraries are called “services” ONLY if we expose their functionality in our proto APIs.
 
-**Resource:** An individual, addressable element of a robot (RDK definition).
+**Resource**: An individual, addressable element of a robot (RDK definition).
 
 * Currently split into two types of resources: components and services.
 
-**Resource Config:** The configuration element of either a component or a service.
+**Resource Config**: The configuration element of either a component or a service.
 Typically expressed in JSON.
 
-**Remote:** A robot part which is controlled by another robot part.
+**Remote**: A robot part which is controlled by another robot part.
 
-**Remote UI:** Uses the Web JS SDK and provides UI elements to control a robot via WebRTC.
+**Remote UI**: Uses the Web JS SDK and provides UI elements to control a robot via WebRTC.
 
-**Robot:** The configuration and entry point for a computer and components coupled into one logical unit.
+**Robot**: The configuration and entry point for a computer and components coupled into one logical grouping of parts that work together to complete tasks. 
+A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor. 
+A robot always has a main part that receives client requests, and any number of other parts. 
 
-**Robot Config:** The complete configuration of a single robot part.
+A simple robot often contains a single part. 
+For example, a rover has one main part with motors and a camera all attached to a board. 
+However, a more sophisticated robot, like an autonomous arm, could consist of multiple parts. 
+One main part receiving client application requests and relaying them to the other parts, one part with cameras for image processing, and one part for movement and actuating the arm.
+
+**Robot Config**: The complete configuration of a single robot part.
 Typically expressed in JSON.
 
-**Robot Part:** A single viam-server process belonging to a robot.
+**Robot Part**: A part runs an instance of viam-server to operate underlying resources – hardware components, software services, and any additional processes. Parts expose a uniform API for their resources. 
+
+Every robot has a main part that receives client requests and any number of other parts. 
+Parts connect to other parts by establishing a remote.  
 For example, one robot may be composed of two parts, a Jetson and a Pi.
 There is generally one robot part per CPU.
 
-**SDK (Software Development Kit):**
+**SDK (Software Development Kit)**: Viam provides an SDK to help you write client applications,and create custom implementations of viam-server to support custom components.
 
 * One per language.
 * Can be used as a server for a custom component implementation.
@@ -92,9 +105,9 @@ There is generally one robot part per CPU.
     * To connect to a robot implementing the Viam Robot API.
 * Effectively, non-golang versions of RDK’s resource authoring and activation functionality.
 
-**Service:** A resource that represents an element of software that typically works with components; for example, navigation, base remote control, or metadata service.
+**Service**: A resource that represents an element of software that typically works with components; for example, navigation, base remote control, or metadata service.
 
-**Viam Robot API:**
+**Viam Robot API**:
 
 * The de facto description of how all resources can be communicated with.
 * The RDKs/SDKs implement this server side.
@@ -105,18 +118,18 @@ There is generally one robot part per CPU.
 
 ## Other important non-Viam terminology
 
-**Gantry:** A robot that only uses linear motion to carry out a task; for example, the scaffolding of a 3D printer, which moves the print head around on motorized linear rails.
+**Gantry**: A robot that only uses linear motion to carry out a task; for example, the scaffolding of a 3D printer, which moves the print head around on motorized linear rails.
 
-**gRPC:** Google Remote Procedure Call.
+**gRPC**: Google Remote Procedure Call.
 An open source universal RPC system initially developed at Google in 2015.
 This framework can run in any environment and efficiently connect services across data centers.
 
-**Protocol Buffers (Protobuf):** A free and open-source, language-neutral, cross-platform data format for serializing structured data.
+**Protocol Buffers (Protobuf)**: A free and open-source, language-neutral, cross-platform data format for serializing structured data.
 It is useful in developing programs to communicate with each other over a network or for storing data.
 
-**SLAM:** Simultaneous localization and mapping.
+**SLAM**: Simultaneous localization and mapping.
 An algorithm that allows a robot to navigate around a space creating or updating a map of the layout as it goes.
 
-**Web Sockets:** A computer communications protocol that provides full-duplex communication channels over a single Transmission Control Protocol (TCP) connection.
+**Web Sockets**: A computer communications protocol that provides full-duplex communication channels over a single Transmission Control Protocol (TCP) connection.
 
-**WebRTC:** An open source project which provides applications with real-time communication (RTC) via application programming interfaces (API) allowing powerful voice and video integration.
+**WebRTC**: An open source project which provides applications with real-time communication (RTC) via application programming interfaces (API) allowing powerful voice and video integration.
