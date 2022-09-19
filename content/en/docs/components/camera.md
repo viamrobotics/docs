@@ -24,23 +24,24 @@ Here are details about each of the fields in the camera config:
 * **Attributes** are the details that the model requires to work. What attributes are required depends on the model selected. There are some common attributes that can be attached to all camera models.
     * `stream`: this can be either "color" or "depth" and specifies which kind of image should be returned from the camera stream.  
     * `debug`: "true" or "false", and enables the debug outputs from the camera.
-    * `camera_parameters` : these are the intrinsic parameters of the camera used to do 2D <-> 3D projections, and to undistort images.
+    * `camera_parameters` : these are the intrinsic parameters of the camera used to do 2D <-> 3D projections.
+    * `distortion_parameters` : these are modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens.
 
 ```json
-"camera_parameters": {
+"camera_parameters": { # optional field, intrinsic parameters for 2D <-> transforms
     "height": 720, # height of the image in pixels
     "width": 1280, # width of the image in pixels
     "fx": 900.538000, # focal length in pixels, x direction
     "fy": 900.818000, # focal length in pixels, y direction
     "ppx": 648.934000, # x center point in pixels
-    "ppy": 367.736000, # y center point in pixels
-    "distortion": {  # optional field, distortion parameters
-        "rk1": 0.158701,
-        "rk2": -0.485405,
-        "rk3": 0.435342,
-        "tp1": -0.00143327,
-        "tp2": -0.000705919
-    }
+    "ppy": 367.736000 # y center point in pixels
+}
+"distortion_parameters": {  # optional field, distortion parameters
+    "rk1": 0.158701,
+    "rk2": -0.485405,
+    "rk3": 0.435342,
+    "tp1": -0.00143327,
+    "tp2": -0.000705919
 }
 ```
 
@@ -206,7 +207,7 @@ The Resize transform resizes the image to the specified height and width.
 
 ```json
 {
-	"type": "rotate",
+	"type": "resize",
 	"attributes": {
 		"width": int, 
 		"height": int
@@ -243,7 +244,7 @@ Overlay overlays the depth and color 2D images. Useful in order to debug the ali
 ##### _Undistort_
 
 The Undistort transform undistorts the input image according to the intrinsics and distortion parameters specified within the camera parameters. 
-Currently only supports a Brown-Conrady model of distortion (25 August 2022). 
+Currently only supports a Brown-Conrady model of distortion (20 September 2022). 
 For further information, please refer to the [OpenCV docs](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a)[^ocvd].
 [^ocvd]: OpenCV docs: https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a
 
@@ -258,13 +259,13 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 			"ppy": float, # the image center y point
 			"fx": float, # the image focal x
 			"fy": float, # the image focal y
-			"distortion": {
-				"rk1": float, # radial distortion
-				"rk2": float,
-				"rk3": float,
-				"tp1": float, # tangential distortion
-				"tp2": float
-			}
+        },
+        "distortion_parameters": {
+            "rk1": float, # radial distortion
+            "rk2": float,
+            "rk3": float,
+            "tp1": float, # tangential distortion
+            "tp2": float
 		}
 	}
 }
