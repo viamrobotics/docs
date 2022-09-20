@@ -168,7 +168,7 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 
-Segmenters can be built from the CONTROL tab in the Viam App as well.
+Segmenters can be built from the Control tab in the Viam App as well.
 
 1. Click on a camera that supports 3D data to load the point cloud view.
 2. Select your segmenter model of interest - that will populate the list of necessary parameters that need to be filled in to use the segmenter.
