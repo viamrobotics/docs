@@ -55,6 +55,7 @@ Note: When viewing code blocks, hovering your mouse cursor over the top right-ha
 - [Orientation Vector](../docs/appendix/orientation-vector)
 - [Troubleshooting](../docs/appendix/troubleshooting)
 - [Learning Resources](../docs/appendix/learning-resources)
+- [Contribute](../docs/appendix/contributing)
 
 ## SDKs
 - [Python SDK](https://python.viam.dev/)
