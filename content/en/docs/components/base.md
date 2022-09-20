@@ -142,7 +142,7 @@ An explanatory view of the same config file:
   <tr>
     <td><code>wheel_circumference_mm</code></td>
     <td>int</td>
-    <td>The outermost circumference of the drive wheels in millimeters.Used for odometry, so try to enter your best approximation of the effective circumference.</td>
+    <td>The outermost circumference (not diameter!) of the drive wheels in millimeters. Used for odometry, so try to enter your best approximation of the effective circumference.</td>
   </tr>
   <tr>
     <td><code>width_mm</code></td>
