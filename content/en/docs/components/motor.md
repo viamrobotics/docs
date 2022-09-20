@@ -5,10 +5,8 @@ weight: 80
 type: "docs"
 description: "Explanation of motor types, configuration, and usage in Viam."
 ---
-{{< admonition note >}}
-Information on hobby servos (i.e., servomotors) is located on the <a href="../servo">Servo Component</a>.  
-{{< /admonition >}}
-<br>
+Note: Information on hobby servos (i.e., servomotors) is located in the <a href="../servo">Servo Component Document</a>.
+
 Electric motors are the most common form of actuator in robotics.
 The majority of motors used in robotics require a direct current (DC) input.
 This page covers how to wire, configure and control various types of DC motor with Viam.
@@ -26,8 +24,7 @@ A common motor control setup comprises the following:
     - Note that the logic side of the driver may be powered by 3.3V from the Pi or other device, but the motor power side should not be powered by the computer’s GPIO pins.
     The motor driver should be connected to an independent power supply that can provide the peak current required by the motor.
 
-!!! caution
-    Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
+**Caution: Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.**
 
 ## Brushed DC Motor
 ### Mechanism
@@ -53,7 +50,7 @@ The driver data sheet will specify which one to use.
 
 ---
 
-!!! note
+**Note:**
     Often, instead of buying just the tiny motor driver chip itself, you’ll purchase a motor driver carrier board which consists of the chip containing the logic gates, attached to a small breakout board which gives you places to attach the necessary wires.
     In this article we’ll refer to this whole motor driver board as a motor driver.
     Note that in RDK, “board” refers to the device with GPIO pins (such as a Raspberry Pi, or a GPIO peripheral attached to a desktop computer) that sends signals to the motor drivers and other devices.

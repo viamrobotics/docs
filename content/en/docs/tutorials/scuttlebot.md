@@ -169,7 +169,7 @@ The Viam App opens the Component config Panel for the wheel.</li>
 
 With both motors configured, the component page now display panels for both motors:
 
-<img src="../img/scuttle-bothMotors.png">
+<img src="../img/scuttle-bothmotors.png">
 
 {{< note >}}
 The Viam App ([https://app.viam.com](https://app.viam.com)) displays component panels in the order of their creation.

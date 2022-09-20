@@ -5,14 +5,10 @@ weight:
 type: "docs"
 description: "Tutorials created by the Viam team."
 ---
-
-# Tutorial Introduction
-These tutorials were created by the Viam team.
-
 ## Basic Tutorial
 Viam projects center on the Raspberry Pi single-board computer.
 Installing Viam Server on a Raspberry Pi sets the foundation for most other tutorials.
-[Install VIAM on Raspberry Pi](../getting-started/installation.md)
+[Install Viam on Raspberry Pi](../../getting-started/installation).
 
 
 ## Scuttle Bot Tutorials

@@ -17,7 +17,7 @@ Refer to the [Setting up a Scuttle with Viam](../scuttlebot) tutorial, if necess
 
 The following video demonstrates controlling a scuttle bot using a bluetooth gamepad:<br>
 <video width="480" height="320" controls>
-  <source src="../videos/ScuttleDemos_Gamepad.mp4" type="video/mp4">
+  <source src="../videos/scuttledemos_gamepad.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 

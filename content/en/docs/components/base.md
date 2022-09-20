@@ -20,7 +20,7 @@ That is to say, a computing device with general purpose input/output (GPIO) pins
 -   Some sort of chassis to hold everything together
 
 For example:
-<img src="../img/base-trk-rover-w-arm.png" alt="A base consisting of a rover with motors and single board computer having GPIO pins" />
+<img src="../img/base-trk-rover-w-arm.png" alt="A base consisting of a rover with motors and a single board computer having GPIO pins" />
 
 An example of a wiring diagram for a base that has one motor on each side is shown below.
 Note that this will vary greatly depending on choice of motors, motor drivers, power supply, and board.
