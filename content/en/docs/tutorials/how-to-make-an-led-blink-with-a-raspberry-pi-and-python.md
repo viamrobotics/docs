@@ -14,14 +14,19 @@ In this post, you will be introduced to the basics of programming hardware using
 
 ![A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.](../img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image3.gif)
 
-!!! caution
-    This is part 2 of Viam's, Intro to Robotics series. If you haven't completed [Part 1](https://docs.google.com/document/d/1JZnuhmkZbH0Ad_78bBw0jwbee8mdy62gKKf38G98nIg/edit#), be sure to go back and complete that before starting on this tutorial. I will be assuming that you have already set up [your Raspberry Pi](https://docs.viam.com/getting-started/installation/), [set up Viam Server](https://docs.viam.com/getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam App](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app-httpsappviamcom) before proceeding.
+
+---
+
+**Note:**
+    This is part 2 of Viam's, Intro to Robotics series. If you haven't completed [Part 1](https://docs.google.com/document/d/1JZnuhmkZbH0Ad_78bBw0jwbee8mdy62gKKf38G98nIg/edit#), be sure to go back and complete that before starting on this tutorial. I will be assuming that you have already set up [your Raspberry Pi](https://docs.viam.com/docs/getting-started/installation/), [set up Viam Server](https://docs.viam.com/docs/getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam App](https://docs.viam.com/docs/getting-started/installation/#adding-your-pi-on-the-viam-app) before proceeding.
+    
+---
 
 For reference, the circuit you are building for this tutorial looks like this:
 
 ![Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins.](../img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image1.png)
 
-!!! tip
+**Tip:**
     If you have any issues whatsoever getting Viam set up on your Raspberry Pi, let us know on the [Viam Community Slack](https://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
 ## What you'll need for this guide
@@ -32,11 +37,11 @@ You will need the following hardware, tools, and software to complete this proje
 
 -   [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
 
-    -   [Check out the Viam Raspberry Pi Setup Guide for steps on how to get started](https://docs.viam.com/getting-started/installation/)
+    -   [Check out the Viam Raspberry Pi Setup Guide for steps on how to get started](https://docs.viam.com/docs/getting-started/installation/)
 
-    -   [Be sure that you have set up Viam Server on your Raspberry Pi as well.](https://docs.viam.com/getting-started/installation/#installing-viam-server)
+    -   [Be sure that you have set up Viam Server on your Raspberry Pi as well.](https://docs.viam.com/docs/getting-started/installation/#installing-viam-server)
 
-    -   [Be sure that you are running Raspbian on your Pi.](https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi)
+    -   [Be sure that you are running Raspbian on your Pi.](https://docs.viam.com/docs/getting-started/installation/#installing-raspian-on-the-raspberry-pi)
 
     -   SSH must also be enabled on your Pi.
 
@@ -76,8 +81,8 @@ What is SSH and why do we need to use it? The acronym SSH stands for *Secure She
 
 First, you will need to make sure your Raspberry Pi is plugged in, turned on, and connected to your network. I usually wait a minute or two after turning it on before I attempt to connect to my Pi.
 
-!!! caution
-    Make sure your Raspberry Pi and the computer you are using to SSH into your Raspberry Pi are connected to the same network*.
+**Caution**:
+    Make sure your Raspberry Pi and the computer you are using to SSH into your Raspberry Pi are connected to the same network.
 
 Next, launch your terminal (on Mac and Linux) and replace the user and hostname with the user and hostname you configured when you set up your Pi. On Windows, you can use an SSH client such as [Putty](https://itsfoss.com/putty-linux/).
 
@@ -91,7 +96,7 @@ Default username and password on Raspberry Pi's are
 
 -   password: raspberry
 
-!!! caution
+**Caution**:
     It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi. In the past, a [^malware][malware infected thousands of Raspberry Pi devices that were using the default username and password.](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)
 
 If you can't remember your user and hostname, you can also find out the IP address by other means like checking the network devices list on your router/modem.
@@ -186,7 +191,7 @@ If you successfully configured your robot and it is able to connect to the Viam 
 
 ### How to write Python code to make an LED Blink
 
-The first thing you need to do is import the [Board component](https://docs.viam.com/components/board/) from the Viam Python SDK. This component represents a physical general purpose board that contains GPIO pins. We will need this component in order to interact with the GPIO pins on our Raspberry Pi.
+The first thing you need to do is import the [Board component](https://docs.viam.com/docs/components/board/) from the Viam Python SDK. This component represents a physical general purpose board that contains GPIO pins. We will need this component in order to interact with the GPIO pins on our Raspberry Pi.
 
 At the top of your blink.py file, paste the following:
 
@@ -246,7 +251,7 @@ In this tutorial, you learned how to remotely connect to a Raspberry Pi using SS
 
 If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, I would recommend that you check out the following tutorials:
 
--  [Tutorial List](tutorials.md)
+-  [Tutorial List](../tutorials)
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 

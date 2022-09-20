@@ -24,10 +24,9 @@ Note that a desktop computer does not typically have GPIO pins, so it cannot act
 *Figure 1. Two different board options: SBC with GPIO pins running Viam server locally; or GPIO peripheral plugged into a computer's USB port, with the computer running Viam server.*
 
 
-{{< admonition type=Note >}}
+**Note:**
 The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers.
 In these cases, the board itself must run an instance of Viam server.
-{{< /admonition >}}	
 
 ## General Hardware Requirements
 
@@ -50,7 +49,7 @@ The board can't do much on its own so you'll probably want some actuators and/or
 If your application only involves GPIO and no other board attributes or communication methods are required, your board can be configured quite
 simply as in this example:
 
-![](img/board-gen-config.png)
+![board-gen-config](../img/board-gen-config.png)
 
 All boards will be of type **board**. Specify the correct **model** for your board.
 The following board models are currently supported (not exhaustive):
