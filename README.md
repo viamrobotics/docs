@@ -24,9 +24,9 @@ Please note the differences between the two versions:
 
 ---
 
-title: Build a Line-following Robot with only a Webcam
+title: Build a line following robot with only a webcam
 
-summary: Instructions to build a line-following robot that uses a webcam to track  lines.
+summary: Instructions for building a line following robot that uses a webcam to track lines.
 
 authors:
 
@@ -40,15 +40,15 @@ date: 2022-08-18
 
 ---
 
-title: "Build a Line-following Robot with only Rover and a Webcam"
+title: "Build a line following robot with only a rover and a webcam"
 
-linkTitle: "Build a Line-following Robot with only Rover and a Webcam"
+linkTitle: "Build a line following robot with only a rover and a webcam"
 
 weight: 90
 
 type: "docs"
 
-description: "Instructions to build a line-following robot that uses a webcam to track lines."
+description: "Instructions for building a line following robot that uses a webcam to track lines."
 
 ---
 

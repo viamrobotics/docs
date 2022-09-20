@@ -24,8 +24,8 @@ In either case position can only be determined relative to the starting position
 Absolute encoders are another type of hardware that is not natively supported in Viam as of August 19th, 2022.
 
 ## Viam Configuration
-Configuring an encoder requires configuring digital interrupts on the board [(see "Board > Digital Interrupts," for more information)](board.md#digital-interrupts) to which the encoder will be wired, and configuring the encoder itself.
-In the case of an encoded motor, the motor must be configured as well, per [the motor component doc](motor.md#dc-motor-with-encoder).
+Configuring an encoder requires configuring digital interrupts on the board [(see "Board > Digital Interrupts," for more information)](../board#digital-interrupts) to which the encoder will be wired, and configuring the encoder itself.
+In the case of an encoded motor, the motor must be configured as well, per [the motor component doc](../motor#dc-motor-with-encoder).
 
 ### Example Config
 The following example shows the configuration of a board with the necessary digital interrupts, and an encoder.
@@ -77,6 +77,3 @@ Attribute Name | Type | Meaning/Purpose
 `pins` | object | A struct holding the names of the interrupts you configured in the board component.
 -- `a` | string | Should match name of first digital interrupt you configured.
 -- `b` | string | Required for two phase encoder. Should match name of second digital interrupt you configured.
-
-## Implementation
-[Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/encoder/index.html)
