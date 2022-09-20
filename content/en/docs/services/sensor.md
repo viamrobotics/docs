@@ -2,6 +2,7 @@
 title: "Sensor Service"
 linkTitle: "Sensor Service"
 weight: 70
+draft: true 
 type: "docs"
 description: "Explanation of the sensor service, its configuration, its functionality, and its interfaces."
 ---

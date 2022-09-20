@@ -9,15 +9,15 @@ Please take a moment to review this document in order to make the contribution p
 Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open source project. 
 In return, they should reciprocate that respect in addressing your issue, assessing changes, and helping you finalize your pull requests.
 
-As for everything else in the project, the contributions to Viam are governed by our [Code of Conduct](https://github.com/viamrobotics/tutorials-and-docs/blob/update-contribution-guide/CODE_OF_CONDUCT.md).
+As for everything else in the project, the contributions to Viam are governed by our [Code of Conduct](https://github.com/viamrobotics/viam-python-sdk/blob/5e2dffab1be2a573958fb9e24b9fd930de638017/CONDUCT.md).
 
 ## Using the issue tracker
 
 First things first: **Do NOT report security vulnerabilities in public issues!** Please disclose responsibly by letting the Viam team know upfront. 
 We will assess the issue as soon as possible on a best-effort basis and will give you an estimate for when we have a fix and release available for an eventual public disclosure.
 
-The issue tracker is the preferred channel for [bug reports](#bugs),
-[features requests](#features) and [submitting pull
+The issue tracker is the preferred channel for [bug reports](#bug-reports),
+[features requests](#feature-requests) and [submitting pull
 requests](#pull-requests), but please respect the following restrictions:
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and respect the opinions of others.
@@ -80,7 +80,7 @@ commits.
 
 ### For new Contributors
 
-If you never created a pull request before, welcome :tada: :smile: [Here is a great tutorial](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github) on how to send one :)
+If you never created a pull request before, welcome :tada: :smile: [Here is a great tutorial](https://app.egghead.io/playlists/how-to-contribute-to-an-open-source-project-on-github) on how to send one :)
 
 1. [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork,
    and configure the remotes:
@@ -165,12 +165,6 @@ Optionally, you can help us with these things. But don’t worry if they are too
 
 **IMPORTANT**: By submitting a patch, you agree to license your work under the
 same license as that used by the project.
-
-## Triagers
-
-There is a [defined process](docs/developers/TRIAGING.md) to manage issues, because this helps to speed up releases and minimizes user pain.
-Triaging is a great way to contribute to Viam without having to write code.
-If you are interested, please [leave a comment here](https://github.com/hoodiehq/discussion/issues/50) asking to join the triaging team.
 
 ## Maintainers
 
