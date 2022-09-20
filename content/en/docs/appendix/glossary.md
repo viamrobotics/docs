@@ -67,7 +67,7 @@ They provide a bespoke, OS-specific process managed by the viam-server to either
     * These are used to help implement components/services.
     * Note: Libraries are called “services” ONLY if we expose their functionality in our proto APIs.
 
-**Resource**: Resources are individual, addressable elements of a robot (RDK definition) operarted by parts. 
+**Resource**: Resources are individual, addressable elements of a robot (RDK definition) operated by parts. 
 Parts operate two types of Resources, physical components and software services.
 Each part has local resources, and also surfaces remote resources when a remote is established to another part. The capabilities of each resource are exposed through the part’s API.
 
