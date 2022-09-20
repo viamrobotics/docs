@@ -35,27 +35,15 @@ Note: When viewing code blocks, hovering your mouse cursor over the top right-ha
 - [Simultaneous Localization and Mapping (SLAM)](../docs/services/slam)  
 - [Robot Service](../docs/services/robot-service)
 
-### Coming Soon!
-- [Motion](../docs/services/motion)
-- [Navigation](../docs/services/navigation)
-
 ## Deep Dives
 - [Viam's Application End-to-End Flow](../docs/deeper-dive/robot-to-robot-comms)
 - [Viam's Authentication](../docs/deeper-dive/security)
-
-**Coming soon**
-
-- [ProtoBuf and gRPC](../docs/deeper-dive/architecture-and-protobuf)
-- [Frame System](../docs/deeper-dive/frame-system)
-- [Operations and Operation IDs](../docs/deeper-dive/operations)
-- [How the Viam App and Your Robot Interact](../docs/deeper-dive/robot-to-cloud-comms)
 
 ## Appendix
 - [Viam Glossary](../docs/appendix/glossary)
 - [Orientation Vector](../docs/appendix/orientation-vector)
 - [Troubleshooting](../docs/appendix/troubleshooting)
 - [Learning Resources](../docs/appendix/learning-resources)
-- [Contribute](../docs/appendix/contributing)
 
 ## SDKs
 - [Python SDK](https://python.viam.dev/)

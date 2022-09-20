@@ -36,7 +36,7 @@ In the case of Viam, a client can be your development machine running one of our
 
 In fact, one of the best parts about using the Viam SDK is that *it can be run locally on one part of the robot or on an entirely separate computer (like your laptop)* if you wish. The client controlling your robot does not need to be installed and run locally to work since both the web app and the SDK clients use the same APIs. This means that as long as the Viam Server is running on your robot, you can control and code your robot from any machine on your local network.
 
-![Example architecture showing how SDK-based applications communicate with your robot's main instance of viam-server over gRPC.](../img/using-our-SDKs-as-a-client-application/viam-high-level-overview-diagram.png)
+![Example architecture showing how SDK-based applications communicate with your robot's main instance of viam-server over gRPC.](../img/using-our-SDKs-as-a-client-application/viam-high-level-overview-diagram-01.png)
 
 *Figure: Example architecture showing how SDK-based applications communicate with your robot's main instance of viam-server over gRPC.*
 
@@ -46,7 +46,7 @@ The simplest answer is that, the `viam-server` doesn't make your robot autonomou
 
 ## Why connect as a Client via the Viam App
 
-After [installing the Viam server on a robot (like a Raspberry Pi)](https://docs.viam.com/getting-started/installation/#installing-viam-server), you can connect your newly minted robot to the [Viam App](https://app.viam.com). The Viam App provides a page for each robot to do the following:
+After [installing the Viam server on a robot (like a Raspberry Pi)](https://docs.viam.com/docs/getting-started/installation/#installing-viam-server), you can connect your newly minted robot to the [Viam App](https://app.viam.com). The Viam App provides a page for each robot to do the following:
 
 -   **Logs**: Displays `viam-server` logs including status changes and error messages.
 
