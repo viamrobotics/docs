@@ -127,7 +127,7 @@ Only the output side of the driver board is different, i.e. more wires connect t
 
 Some motors come with encoders integrated or attached to them.
 Other times, you may add an encoder to a motor.
-See the [Encoder Component Doc](encoder) for more information on encoders.
+See the [Encoder Component Doc](../encoder) for more information on encoders.
 
 ### Wiring
 
@@ -138,7 +138,7 @@ Here's an example of an encoded DC motor wired with [this motor driver](https://
 ### Viam Configuration
 
 Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.”
-Configuration of an encoder requires configuring the encoder [per this document](encoder) in addition to the [standard “gpio” model attributes](motor#required-attributes).
+Configuration of an encoder requires configuring the encoder [per this document](../encoder) in addition to the [standard “gpio” model attributes](motor#required-attributes).
 Here’s an example config file:  
 
 ![motor-encoded-dc-json](../img/motor-encoded-dc-json.png)  
