@@ -80,7 +80,7 @@ Below is an example JSON file that includes board, base and camera components, a
         "follow-pi"
       ],
       "model": "webcam",
-      "name": "myCamera",
+      "name": "my_camera",
       "type": "camera"
     },
     {
@@ -172,7 +172,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
 ## Let’s write some Code!
 <ol><li class="spacing">Open a file in your favorite IDE and paste-in <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8">the code from the earlier referenced GIST</a>.</li>
 <li class="spacing">Adjust the components names to match the component names you created in your config file. 
-In this case, the component names that you may need to change are <strong>tread_base</strong>, <strong>myCamera</strong>, and <strong>green_detector</strong>.</li>
+In this case, the component names that you may need to change are <strong>tread_base</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
 <li class="spacing">For those who care about linting and formatting, we used <a href="https://flake8.pycqa.org/en/latest/">flake8</a> as the linter with the max line length changed to 140 and Black for formatting.
 <img src="../img/lf-lint4.png" /></li>
 <li class="spacing">From your robot’s page on the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>), go to the Connect tab. 
