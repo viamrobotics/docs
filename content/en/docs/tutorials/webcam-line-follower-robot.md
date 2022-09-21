@@ -27,7 +27,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 ## Prerequisites
 - A single board computer [running an instance of Viam server](../getting-started/installation)
     - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
-- [A wheeled base component](./scuttlebot). We used a SCUTTLE robot for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
+- [A wheeled base component](../../components/base/). We used a SCUTTLE robot for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
 - RGB camera
     - An off-the-shelf, [regular webcam](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html) with a ribbon connector to the Pi’s camera module port.
     - You must mount the camera to the front of the rover pointing down towards the floor.
@@ -42,9 +42,9 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 If you haven’t already, please set up the Raspberry Pi on the <a href="https://app.viam.com">Viam App (https://app.viam.com)</a> per these instructions.
 
-1. Configure the robot on the <a href="https://app.viam.com">Viam App</a>. General information about configuring robots with Viam can be found [here](https://docs.viam.com/getting-started/robot-config/).
+1. Configure the robot on the <a href="https://app.viam.com">Viam App</a>. General information about configuring robots with Viam can be found [here](https://docs.viam.com/docs/getting-started/robot-config/).
 
-    a. Configure the base per the [Base Component Doc](https://docs.viam.com/components/base/).
+    a. Configure the base per the [Base Component Doc](https://docs.viam.com/docs/components/base/).
 	
     b. Configure the camera as type `webcam`. More info on the Viam camera component can be found [here](https://docs.viam.com/components/camera/). Add the following (with the correct path in place of “video0”) to the camera’s attributes:
 

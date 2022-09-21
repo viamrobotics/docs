@@ -15,7 +15,7 @@ Viam App pre-populates the **Connect** tab with the robot name, address, and sec
 
 ### Demonstration Video
 <video width="480" height="320" controls>
-  <source src="../videos/ScuttleDemos_ColorDetection.mp4" type="video/mp4">
+  <source src="../videos/scuttledemos_colordetection.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 

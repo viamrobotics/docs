@@ -173,7 +173,7 @@ Then install it as root:
 sudo ./viam-server --aix-install
 ```
 
-## Adding your pi on the Viam App ([https://app.viam.com](https://app.viam.com))
+## Adding your Pi on the Viam App
 
 In your web browser, navigate to the Viam App ([https://app.viam.com](https://app.viam.com)) and log in.
 This means either you can continue with your Viam email address or a personal email you can sign up with.
