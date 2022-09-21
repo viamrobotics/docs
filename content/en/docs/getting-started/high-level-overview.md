@@ -31,7 +31,7 @@ Part 1 is the main part and could exist without Part 2.
 Part 2 is a remote._
 
 Parts communicate with one another using a consistent and unified API, regardless of the hardware they are running on.
-This is done via [WebRTC](https://en.wikipedia.org/wiki/WebRTC) using the [gRPC and protobuf APIs](/docs/deeper-dive/architecture-and-protobuf).
+This is done via [WebRTC](https://en.wikipedia.org/wiki/WebRTC) using the [gRPC and protobuf APIs](../../deeper-dive/architecture-and-protobuf).
 This SDK API is available in any language, and provides direct and secure connections to and between parts.
 
 After installing the Viam server on a computer (like a Raspberry Pi), you can connect your newly minted part to the Viam App ([https://app.viam.com](https://app.viam.com)).

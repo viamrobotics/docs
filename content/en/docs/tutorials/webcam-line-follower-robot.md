@@ -25,7 +25,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 **Code**: [Line Follower GitHub Gist](https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8)
 
 ## Prerequisites
-- A single board computer [running an instance of Viam server](../getting-started/installation)
+- A single board computer [running an instance of Viam server](../../getting-started/installation)
     - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
 - [A wheeled base component](../../components/base/). We used a SCUTTLE robot for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
 - RGB camera
@@ -46,7 +46,7 @@ If you haven’t already, please set up the Raspberry Pi on the <a href="https:/
 
     a. Configure the base per the [Base Component Doc](https://docs.viam.com/docs/components/base/).
 	
-    b. Configure the camera as type `webcam`. More info on the Viam camera component can be found [here](https://docs.viam.com/components/camera/). Add the following (with the correct path in place of “video0”) to the camera’s attributes:
+    b. Configure the camera as type `webcam`. More info on the Viam camera component can be found [here](https://docs.viam.com/docs/components/camera/). Add the following (with the correct path in place of “video0”) to the camera’s attributes:
 
 ```JSON
 {
