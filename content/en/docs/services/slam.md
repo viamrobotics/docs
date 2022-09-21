@@ -23,8 +23,7 @@ The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ 
 
 ## Data Generation
 
-(TALK ABOUT DATA LOOP EVERY X TIME AND CALLS TO Next/NextPointCloud)
-(TALK ABOUT LOCAL DATA STORAGE/FOLDER ARCHITECTURE)
+Coming soon! 
 
 
 <pre>
@@ -40,14 +39,7 @@ The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ 
 
 ## **Interfacing with the C++ Binary**
 
-(TALK HERE ABOUT PARSING CONFIG THEN PACKAGING UP ARGUMENTS TO BE
-FORWARDED AND CALLING SLAM PROCESS)
-
-(ALSO MENTION SLAMLibraries)
-
-## **GRPC Forwarding**
-
-In order to receive pose and map updates from the slam algorithm, the slam service creates an internal client to communicate with the server in the algorithm. This internal client is then used when handling requests for the server in rdk. To do this, the slam service will pass in a desired port as an argument to the algorithm for the algorithm's server. There are two methods to define a port, the first being to specify the port within the config. If no port is specified, then rdk will find an open port to bind the server to.
+Coming soon!
 
 # **RDK Config**
 
@@ -100,7 +92,7 @@ inputted SLAM library.
 
 ## SLAM Library Attributes
 
-The config_params is a catch-all attribute for parameters that are unique to the slam library being used. These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
+The config_params is a catch-all attribute for parameters that are unique to the SLAM library being used. These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
 
 Details on what inputs can be included for the available libraries can be found below:
 
@@ -112,7 +104,7 @@ OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); th
 <table>
     <tr>
         <th>Parameter Mode</th>
-        <th style="width:40%">Description - The Type of Slam to Use</th>
+        <th style="width:40%">Description - The Type of SLAM to Use</th>
         <th>Default:<br>
         RGBD, Mono</th>
     </tr>
@@ -154,13 +146,11 @@ If more mutable variables are desired for any supported SLAM library please subm
 
 ## Via an App Image
 
-Info on is available on JIRA Tickets, [DATA-123](https://viam.atlassian.net/jira/software/c/projects/DATA/boards/30?modal=detail&selectedIssue=DATA-123)
-and
-[DATA-133](https://viam.atlassian.net/jira/software/c/projects/DATA/boards/30?selectedIssue=DATA-133)
+Coming soon!
 
 ## Manual Installation
 
-Perform a git clone on the slam repository using the recursive install flag to allow the sub packages to be downloaded as well.
+Perform a git clone on the SLAM repository using the recursive install flag to allow the sub packages to be downloaded as well.
 
 ```bash
 git clone --recurse-submodules git@github.com:viamrobotics/slam.git
@@ -242,12 +232,12 @@ cp ORB_SLAM3/Vocabulary/ORBvoc.txt ~/YOUR_DATA_DIR/config
 
 ## Creating an initial map
 
-(Add details here regarding mapping and common issues)
+Coming soon! 
 
 ## Pure localization on a priori map
 
-(Add details here regarding localizing, special params and common issues)
+Coming soon!
 
 ## Updating an a priori map
 
-(Add details here regarding a priori mapping)
+Coming soon! 
