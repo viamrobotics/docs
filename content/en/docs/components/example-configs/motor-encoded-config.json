@@ -37,7 +37,8 @@
       "model": "gpio",
       "name": "myMotor1",
       "depends_on": [
-        "local"
+        "local",
+        "myEncoder"
       ],
       "attributes": {
         "board": "local",
