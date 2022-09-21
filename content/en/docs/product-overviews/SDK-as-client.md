@@ -56,7 +56,7 @@ After [installing the Viam server on a robot (like a Raspberry Pi)](https://docs
 
 -   **Connect**: Contains boilerplate connection code to copy and paste into any script you write using SDKs.
 
-You can read [Viam's guide for connecting your robot to the Viam App](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app-httpsappviamcom) to learn more about how to connect your robot to the Viam App Client.
+You can read [Viam's guide for connecting your robot to the Viam App](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app) to learn more about how to connect your robot to the Viam App Client.
 
 ## Why connect as a Client using Viam's SDKs?
 
