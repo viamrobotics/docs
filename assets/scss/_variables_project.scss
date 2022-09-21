@@ -11,6 +11,8 @@ START MARKETING CSS
 BEGIN CSS CHANGES FOR MARKETING
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 /* vietnamese */
 @font-face {
     font-family: 'Space Grotesk';
@@ -70,55 +72,6 @@ BEGIN CSS CHANGES FOR MARKETING
 $google_font_family: "Space+Grotesk:300,300i,400,400i,700,700i" !default;
 $web-font-path: "https://fonts.googleapis.com/css?family=#{$google_font_family}&display=swap";
 $font-awesome-font-name: "Font Awesome 6 Free" !default;
-
-
-
-/* START Adjust Heading sizes*/
-h1, .h1 {
-    font-size: 32pt !important;;
-   }
-   
-   h2, .h2 {
-    font-size: 24 pt !important;;
-   }
-   
-   h3, .h3 {
-    font-size: 18pt !important;;
-   }
-   
-   /* END Adjust Heading sizes*/
-   
-.td-sidebar {
-
-/*NAV Panel changes*/    
-/* background */
-background-color: #f5f5f5;   
-}
-/* font color */
-.td-sidebar-nav .td-sidebar-link__page {
-    color: black;
- }
-
-/* font weight */ 
- .td-sidebar-nav .td-sidebar-link__page{
-    font-weight:500;
- }
-
-
- .td-toc #TableOfContents a {
-    color: black;
-    }
-
-
-    .td-navbar {
-        background: black;
-    }
-
- 
-
-.td-navbar {
-    background: black !important;
-}
 
 
 
