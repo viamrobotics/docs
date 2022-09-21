@@ -82,7 +82,7 @@ Name | Type | Default Value | Description
 `max_rpm` | float | --         | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the “GoFor” method unusable.
 `pins` | object | --  | A structure that holds pin configuration information
 
-Nested within `pins` (note that only two or three of these are required depending on your motor driver; see [Pins](motor#pins) above for more information):
+Nested within `pins` (note that only two or three of these are required depending on your motor driver; see [Pins](#pins) above for more information):
 
 Name | Type | Description |
 ---- | ---- | ----- |

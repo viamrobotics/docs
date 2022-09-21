@@ -5,7 +5,7 @@ weight: 20
 type: "docs"
 description: "Explanation of how a robot and its parts interact at the communication layer."
 ---
-When building a robot application in the Viam App [https://app.viam.com](https://app.viam.com), typically a user will start by [configuring their robot](../getting-started/robot-config.md) of one or many parts.
+When building a robot application in the Viam App [https://app.viam.com](https://app.viam.com), typically a user will start by [configuring their robot](https://docs.viam.com/docs/getting-started/robot-config/) of one or many parts.
 Next they will test that it is wired up properly via the Viam App's Control page.
 Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
 This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the robot.

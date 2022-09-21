@@ -2,6 +2,7 @@
 title: "Sensor Component"
 linkTitle: "Sensor Component"
 weight: 70
+draft: true
 type: "docs"
 description: "Explanation of sensor types, configuration, and usage in Viam."
 draft: true

@@ -26,5 +26,4 @@ This tutorial adds a webcam to your already configured Scuttle to create a line 
 ## Yahboom Tutorials
 These tutorials make use of a Raspberry Pi, a webcam-equipped Yahboom robotics platform, and an 8bitdo Bluetooth gamepad controller.
 
-* [Configuring a Four Wheeled Rover Controlled by Gamepad](../yahboom-rover):
-This tutorial configures a camera-equipped Yahboom Rover to operate with an 8bitdo Bluetooth gamepad controller.
+
