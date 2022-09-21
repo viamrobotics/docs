@@ -107,7 +107,8 @@ archived_version = false
 url_latest_version = "https://docs.viam.com/"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-github_repo = "https://github.com/viamrobotics/humig2" ## This will need to change when we move/rename
+#github_repo = "https://github.com/viamrobotics/tutorials-and-docs" 
+
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
 #github_project_repo = "https://github.com/google/docsy"
 
