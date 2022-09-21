@@ -6,7 +6,7 @@ type: "docs"
 description: "An introduction to Viam's SDKs and how to use them to drive hardware not natively supported in the RDK."
 ---
 
-Viam's Software Development Kits (SDKs) provide a wide array of components to customize (You can browse through the [^API Reference][API Reference](https://python.viam.dev/autoapi/viam/components/index.html) to see all of them). But if you want to use a component that is not natively supported by Viam's SDK, then you will need to create a server component implementation in order to use your custom component.
+Viam's Software Development Kits (SDKs) provide a wide array of components to customize. (You can browse through the [^API Reference][API Reference](https://python.viam.dev/autoapi/viam/components/index.html) to see all of them.) But if you want to use a component that is not natively supported by Viam's SDK, then you will need to create a server component implementation in order to use your custom component.
 
 ## What is a server component implementation?
 
@@ -35,8 +35,6 @@ The steps required in creating a custom component and connecting it to the RDK a
 
 You can view the complete tutorial on how to create a custom component in Python in the [Viam Python documentation](https://python.viam.dev/examples/example.html#create-custom-components).
 
-!!! tip
-    You can view more component implementation examples in the [Viam Python documentation](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py).
+You can view more component implementation examples in the [Viam Python SDK repo](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py).
 
-[^API Reference]:
-https://python.viam.dev/autoapi/viam/components/index.html
+[You can find the API reference here.](https://python.viam.dev/autoapi/viam/components/index.html)
