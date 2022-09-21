@@ -273,6 +273,13 @@ background-color: #f5f5f5;
 
 
 
+.breadcrumb-item + .breadcrumb-item::before {
+    float: left;
+    padding-right: 0.5rem;
+    color: black;
+    content: ">>";
+}
+
 /*
 END MARKETING CSS
 */
