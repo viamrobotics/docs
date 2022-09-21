@@ -213,7 +213,7 @@ It should look like this:
 Run it, then restart the viam-server:
 
 ```bash
-sudo systemctl restart viam-server.service
+sudo systemctl restart viam-server
 ```
 
 Refresh the page on the Viam App ([https://app.viam.com](https://app.viam.com)) to confirm the Pi has connected and pulled the config by looking at the top of the Robot page and seeing that `host` and `ips` fields are populated and that the `last online` field reads `live`.
