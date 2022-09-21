@@ -30,8 +30,8 @@ The vision service is a default service on the robot, and can be initialized wit
 || color\_detector   | "detect\_color", "tolerance", "segment\_size" |
 | Classification    | tflite\_classifier | "model\_path", "label\_path", "num\_threads" |
 || tf\_classifier    | TBD - Not yet supported                       |
-| Segmentation      | radius\_clustering\_segmenter | "min_points_in_plane", "min_points_in_segment", "clustering_radius_mm", "mean_k_filtering"      |
-|| object\_segmenter |  "mean-k", "sigma" |
+| Segmentation      | radius\_clustering\_segmenter | "min\_points\_in\_plane", "min\_points\_in\_segment", "clustering\_radius\_mm", "mean\_k\_filtering"      |
+|| detector\_segmenter |  "detector\_name", "mean\_k", "sigma" |
 
 More about the parameters and model types can be found under the corresponding operation below.
 
@@ -168,22 +168,21 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 
-_PLEASE KEEP IN MIND THAT THE SEGMENTATION API WILL SOON CHANGE_
+Segmenters can be built from the Control tab in the Viam App as well.
 
-1. Click on the 3D img of a given camera to load the point cloud view.
-2. Select your segmenter of interest - that will populate the list of necessary parameters that need to be filled in to use the segmenter.
-3. Fill in the segmenter parameters (explanation of fields for each segmenter are in the next section)
-4. Click Find Segments and wait for the segments to load
+1. Click on a camera that supports 3D data to load the point cloud view.
+2. Select your segmenter model of interest - that will populate the list of necessary parameters that need to be filled in to use the segmenter.
+3. Fill in the segmenter parameters (explanation of fields for each segmenter are in the next section).
+4. Click Add Segmenter.
+4. Then select your added segmenter by name, and click Find Segments and wait for the segments to load.
 5. A list of the found objects will appear below the Find Segments button.
 
 
 ### Segmenter Types
 The types of segmenters supported are:
 
-* **radius_clustering_segmenter**: Radius_clustering is a segmenter that finds well separated objects above a flat plane.  It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.  Unfortunately it is a bit slow, and can take up to 30s to segment the scene.
-*  **object_segmenter**: Object segmenters are automatically created from detectors in the vision service.  Any registered detector "x" defined in “register_models” field or added later to the vision service becomes a segmenter with the name "x_segmenter".  It begins byfinding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
-
-The segmenter requires 3 parameters.
+* **radius_clustering_segmenter**: Radius\_clustering is a segmenter that finds well separated objects above a flat plane.  It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.  Unfortunately it is a bit slow, and can take up to 30s to segment the scene.
+*  **detector_segmenter**: Object segmenters are automatically created from detectors in the vision service.  Any registered detector "x" defined in “register\_models” field or added later to the vision service becomes a segmenter with the name "x\_segmenter".  It begins byfinding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
 
 #### Radius Clustering Segmenter parameters
 
@@ -200,7 +199,8 @@ The segmenter requires 3 parameters.
 
 #### Detector Segmenters
 
-* **mean_k** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html)[^mkf].  It should be set to be 5-10% of the number of min_points_in_segment.
+* **detector_name** is the name of the detector already registered in the vision service that will be turned into a segmenter.
+* **mean_k** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html)[^mkf].  It should be set to be 5-10% of the minimum segment size.
     * Start with 5% and go up if objects are still too noisy.
     * If you don’t want to use the filtering, set the number to 0 or less.
 * **sigma** is a floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html)[^mkf].
