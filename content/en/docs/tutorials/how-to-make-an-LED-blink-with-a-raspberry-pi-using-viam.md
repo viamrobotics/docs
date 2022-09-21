@@ -81,7 +81,7 @@ When hooking up the circuit, note the *polarity* of the LED. You will notice tha
 
 ## Configuring your Bot using the Viam App
 
-Before proceeding, be sure that you have added your Pi to the Viam App. Steps on how to do this can be found in the [Adding your Pi on the Viam App](../getting-started/installation/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
+Before proceeding, be sure that you have added your Pi to the Viam App. Steps on how to do this can be found in the [Adding your Pi on the Viam App](../../getting-started/installation/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
 
 Now that we have got that out of the way, let's get back to setting up your robot in the Viam App. First, go to the Viam App at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's config.
 
