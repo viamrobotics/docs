@@ -143,7 +143,7 @@ Here’s an example config file:
 [Click here for the raw JSON.](../example-configs/motor-encoded-config.json)
 
 #### Required Attributes - Encoded DC Motor
-In addtion to the required [attributes of a non-encoded motor](#required-attributes---non-encoded-dc-motor), encoded DC motors require the following, in addition to adding the encoder to the motor dependencies:
+In addtion to the required [attributes of a non-encoded motor](#required-attributes---non-encoded-dc-motor), encoded DC motors require the following:
 
 Name | Type | Description
 -------------- | ---- | ---------------
