@@ -135,7 +135,7 @@ Here's an example of an encoded DC motor wired with [this motor driver](https://
 ### Viam Configuration
 
 Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.”
-Configuration of an encoder requires configuring the encoder [per this document](../encoder) in addition to the [standard “gpio” model attributes](motor#required-attributes---non-encoded-dc-motor). Additionally, the encoder name must be added in the motor's `depends_on` field.
+Configuration of an encoder requires configuring the encoder [per this document](../encoder) in addition to the [standard “gpio” model attributes](motor#required-attributes---non-encoded-dc-motor). Also note that the encoder name must be added in the motor's `depends_on` field.
 Here’s an example config file:  
 
 ![motor-encoded-dc-json](../img/motor-encoded-dc-json.png)  
