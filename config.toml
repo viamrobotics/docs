@@ -83,7 +83,7 @@ section = ["HTML", "print", "RSS"]
 
 [params]
 copyright = "Viam, Inc. All rights reserved. Portions of Viam is licensed under the GPLv3, AGPLV3, and MIT licenses."
-privacy_policy = "https://policies.google.com/privacy"
+privacy_policy = "https://www.viam.com/privacy"
 
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
