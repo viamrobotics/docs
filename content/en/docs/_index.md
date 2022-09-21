@@ -1,6 +1,6 @@
 ---
-link: "Viam Robotics Documentation"
-linkTitle: "Viam Robotics Documentation"
+link: "Viam Robotics"
+linkTitle: "Viam Robotics"
 ---
 # Viam Robotics Documentation
 
