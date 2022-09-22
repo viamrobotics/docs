@@ -377,3 +377,7 @@ $ sudo raspi-config
 Interface Options -> Camera -> Enable Camera
 Restart the Pi
 ```
+
+## Implementation
+
+[Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/camera/index.html)
