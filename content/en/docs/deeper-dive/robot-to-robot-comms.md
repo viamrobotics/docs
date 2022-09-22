@@ -19,9 +19,9 @@ To begin, let's define our robot's topology:
 
 This robot is made of two parts and separate SDK-based application, which we'll assume is on a third machine, though it could just as easily run on the main part without any changes.
 
-The first and main part, RDK Part 1, consists of a Raspberry Pi and a single USB connected camera called Camera.
+* The first and main part, RDK Part 1, consists of a Raspberry Pi and a single USB connected camera called Camera.
 
-The second and final part, RDK Part 2, consists of a Rapsberry Pi connected to a robotic arm over ethernet and a gantry over GPIO.
+* The second and final part, RDK Part 2, consists of a Rapsberry Pi connected to a robotic arm over ethernet and a gantry over GPIO.
 
 RDK Part 1 will establish a bidirectional gRPC/WebRTC connection to RDK Part 2.
 RDK Part 1 is considered the controlling peer (client).
@@ -31,59 +31,67 @@ Let's suppose our SDK application uses the camera to track the largest object in
 
 Since RDK Part 1 is the main part and has access to all other parts, the application will connect to it using the SDK.
 Once connected, it will take the following series of actions:
+<OL>
+<li>Get segmented point clouds from the camera and the object segmentation service.</li>
 
-1. Get segmented point clouds from the camera and the object segmentation service.
+<li>Find the largest object by volume.</li>
 
-1. Find the largest object by volume.
+<li>Take the object's center pose and tell the motion service to move the arm to that point.</li>
 
-1. Take the object's center pose and tell the motion service to move the arm to that point.
-
-1. Go back to 1.
-
+<li>Go back to 1.</li>
+</OL>
 Let's breakdown how these steps are executed.
 
-Get segmented point clouds from the camera and the object segmentation service:
+<ol>
+<li>Get segmented point clouds from the camera and the object segmentation service:</li>
 
 ![getobjectpointcloud-flow](../../img/getobjectpointcloud-flow.png)
 
-2. The SDK will send a GetObjectPointClouds request with Camera being referenced in the message to RDK Part 1's Object Segmentation Service.
+<OL type="a">
+<li>The SDK will send a GetObjectPointClouds request with Camera being referenced in the message to RDK Part 1's Object Segmentation Service.</li>
 
-2. RDK Part 1 will look up the camera referenced, call the GetPointCloud method on it.
+<li>RDK Part 1 will look up the camera referenced, call the GetPointCloud method on it.</li>
 
-2. The Camera will return the PointCloud data to RDK Part
+<li>The Camera will return the PointCloud data to RDK Part</li>
 
-2. RDK Part 1 will use a point cloud segmentation algorithm to segment geometries in the PointCloud.
+<li>RDK Part 1 will use a point cloud segmentation algorithm to segment geometries in the PointCloud.</li>
 Note: The points returned are respective to the reference frame of the camera.
 This will be important in a moment.
 
-2. The set of segmented point clouds and their bounding geometries are sent back to the SDK-based application.
+<li>The set of segmented point clouds and their bounding geometries are sent back to the SDK-based application.</li>
+</ol>
 
-Find the largest object by volume:
 
-2. The application will iterate over the geometries of the segmented point clouds returned to it and find the object with the greatest volume and record its center pose.
+<li>Find the largest object by volume:</li>
+<ol type="a">
+<li>The application will iterate over the geometries of the segmented point clouds returned to it and find the object with the greatest volume and record its center pose.</li>
+</ol>
 
-Take the object's center pose and tell the motion service to move the arm to that point:
+
+<li>Take the object's center pose and tell the motion service to move the arm to that point:</li>
 
 ![motion-service-move-flow](../../img/motion-service-move-flow.png)
 
-2. The SDK application will send a Move request for the arm to the Motion service on RDK Part 1 with the destination set to the center point determined by the application.
+<ol type="a">
+<li>The SDK application will send a Move request for the arm to the Motion service on RDK Part 1 with the destination set to the center point determined by the application.</li>
 
-2. RDK Part 1's Motion service will break down the Move request and perform the necessary frame transforms before sending the requests along to the relevant components.
+<li>RDK Part 1's Motion service will break down the Move request and perform the necessary frame transforms before sending the requests along to the relevant components.
 This is where the frame system comes into play.
 Our center pose came from the camera but we want to move the arm to that position even though the arm lives in its own frame.
-The frame system logic in the RDK automatically handles the transformation logic between these two reference frames while also handling understanding how the frame systems are connected across the two parts.
+The frame system logic in the RDK automatically handles the transformation logic between these two reference frames while also handling understanding how the frame systems are connected across the two parts.</li>
 
-2. Having computed the pose in the reference frame of the arm, the Motion service takes this pose, and sends a plan on how to move the arm in addition to the gantry to achieve this new goal pose to RDK Part 2.
-The plan consists of a series of movements that combine inverse kinematics, mathematics, and constraints based motion planning to get the arm and gantry to their goal positions.
+<li>Having computed the pose in the reference frame of the arm, the Motion service takes this pose, and sends a plan on how to move the arm in addition to the gantry to achieve this new goal pose to RDK Part 2.
+The plan consists of a series of movements that combine inverse kinematics, mathematics, and constraints based motion planning to get the arm and gantry to their goal positions.</li>
 
-2. In executing the plan, which is being coordinated on RDK Part 1, Part 1 will send messages to the Arm and Gantry on RDK Part 2.
-RDK Part 2 will be unaware of the actual plan and instead will only receive distinct messages to move the components individually.
+<li>In executing the plan, which is being coordinated on RDK Part 1, Part 1 will send messages to the Arm and Gantry on RDK Part 2.
+RDK Part 2 will be unaware of the actual plan and instead will only receive distinct messages to move the components individually.</li>
 
-2. The arm and gantry connected to RDK Part 2 return an acknowledgement of the part Move requests to RDK Part 2.
+<li>The arm and gantry connected to RDK Part 2 return an acknowledgement of the part Move requests to RDK Part 2.</li>
 
-2. RDK Part 2 returns an acknowledgement of the Motion Move request to RDK Part 1.
+<li>RDK Part 2 returns an acknowledgement of the Motion Move request to RDK Part 1.</li>
 
-2. RDK Part 1 returns an acknowledgement of the Motion Move request to the SDK application.
+<li>RDK Part 1 returns an acknowledgement of the Motion Move request to the SDK application.</li>
+</ol>
 
 ## Low-Level Inter-Robot/SDK Communication
 All component and service types in the RDK, and the Viam API for that matter, are represented as [Protocol Buffers](https://developers.google.com/protocol-buffers)[^protobuf] (protobuf) services.
