@@ -18,9 +18,12 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 **What you will learn**:<BR>
 
 - How to use the Viam vision service including color detectors
-- How to use the Viam Python SDK, including:
+- How to use the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk)[^psdk], including:
     - How to establish communication between the code you write and your robot
     - How to send commands to components of your robot
+
+[^psdk]: Viam Python SDK: [https://github.com/viamrobotics/viam-python-sdk](https://github.com/viamrobotics/viam-python-sdk)
+
 
 **Code**: [Line Follower GitHub Gist](https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8)
 
@@ -218,7 +221,7 @@ You can double-check this by running:
 pi@scuttlebend:~ $ python --version
 ```
 We at Viam are running Python 3.9.2 for this tutorial.</li>
-<li class="spacing">Make sure you have the Viam Python SDK installed. <a href="https://github.com/viamrobotics/viam-python-sdk">Instructions can be found here.</a></li>
+<li class="spacing">Make sure you have the Viam Python SDK installed (<a href="https://github.com/viamrobotics/viam-python-sdk">Click for instructions</a>.)</li>
 <li class="spacing">In this Pi terminal go ahead and run the code:
 
 ```bash
