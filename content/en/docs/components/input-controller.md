@@ -66,12 +66,6 @@ This determines if the device will automatically reconnect a device (or wait for
 ### Unknown/New Gamepad Types
 There are currently mappings for a wired XBox 360 controller, and wireless XBox Series X|S, along with the 8bitdo Pro 2 bluetooth gamepad (which works great with the Raspberry Pi.) The XBox controllers emulate an XBox 360 gamepad when in wired mode, as does the 8bitdo. Because of that, any unknown gamepad will be be mapped that way. If you have another controller though, feel free to submit a PR with new mappings.
 
-
-## Sample (Input Tester)
-See samples/intputtest/cmd.go and/or build it with "make gamepad" from the root of RDK. Run it with the included gamepad_server.json for a directly connected gamepad. Optionally, on a second machine, run the same sample with gamepad_client.json (after modifying the remote host in the file to point to the system running the server).
-
-This application simply registers a callback for every control reported by the device, and prints events as received. The server will stop reporting events when a client connects, as those events will be directed to the remote client instead.
-
 ### Sample (motor control)
 The below example defines a single callback function (motorCtl) that handles input events, and turns them into motor.SetPower() commands. It's essentially all that's needed to drive a four wheel, skid steer platform, and uses the L/R analog triggers to control a "winder" motor, that raises/lowers a front end (like a bulldozer.) Lastly, it registers this callback for a selected set of axes.
 
