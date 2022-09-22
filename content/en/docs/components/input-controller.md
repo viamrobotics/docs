@@ -6,28 +6,28 @@ type: "docs"
 description: "Explanation of input controller/gamepad configuration and usage in Viam."
 ---
 ## Input Interface
-The Input interface is defined in input/input.go and you should view that file for details on specific methods and their uses.
+The Input interface is defined in [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) and you should view that file for details on specific methods and their uses.
 
 ### Overview/Concepts
 #### Controller Interface
 Input devices provide a Controller interface with three methods:
 1. Controls() provides a list of input Controls that this Controller provides.
 1. Events() returns a map of the most recent input event for each Control. This is the current state of the controller and can be polled for simple uses.
-1. RegisterControlCallback() accepts a callback function that will be executed whenever one of the events selected occurs for the given control. This is the preferred method for real-time control. Note that you can only ever have one action registered, and a new call to register one for the same action will simply replace the previous callback with a new one. You can also pass a "nil" function which will effectively "deregister" a callback as well.
+1. RegisterControlCallback() accepts a callback function that will be executed whenever one of the events selected occurs for the given control. This is the preferred method for real-time control. Note that you can only register one callback function per control. A second call to register a callback function for a given control replaces any previously registered function with the newly registered callback function. You can also pass a "nil" function which will effectively "deregister" a callback as well.
 
 #### Events
 
-Events are passed to any callback functions registered, and are returned by `Events()`. They represent a singular event from the input device, and have four fields:
+Events are passed to registered callback functions and are returned by Events(). They represent a singular event from the input device and have four fields:
 1. Time
 1. Event (This is an input.EventType)
 1. Control (This is an input.Control, and represents the axis/button/etc. involved.)
 1. Value (this is a float64, used for the position of an axis, or state of a button.)
 
 #### EventType
-EventType is an enumerated list, with items like ButtonPress, ButtonRelease, PositionChangeAbs, Connect, Disconnect, etc. See input/input.go for the current list. This type is returned as part of every event (per above) and also used to select events the callback is interested in when registering. One note is that the special AllEvents value, if registered, will be called IN ADDITION TO any other callbacks registered. This is useful for debugging without interrupting normal controls, or for capturing extra/unknown events.
+EventType is an enumerated list, with items like ButtonPress, ButtonRelease, PositionChangeAbs, Connect, Disconnect, etc. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the current list. This type is returned as part of every event (per above) and also used to select events the callback is interested in when registering. One note is that the special AllEvents value, if registered, will be called IN ADDITION TO any other callbacks registered. This is useful for debugging without interrupting normal controls, or for capturing extra/unknown events.
 
 #### Control types
-input.Control is another enumerated list that represents "well known" control types. For example, the X and Y axis of a primary joystick (a type of control which reports absolute position) should always be input.AbsoluteX and input.AbsoluteY. The secondary (right hand) joystick/thumbstick is input.AbsoluteRY and input.AbsoluteRY. Buttons are things line input.ButtonStart, or for trigger buttons, input.LT/RT. The typical 4-button configuration (under the right thumb) on most game pads uses generic compass directions instead of letter/shape labels, so that mappings aren't XBox/Nintendo/Playstation specific. Ex: "ButtonSouth" is the bottom-most button of the four, and corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation. "ButtonNorth" is likewise X/Y/Triangle. See input/input.go for the full/current list. If new types need to be added, care should be taken to make them as generic and universal as possible. Look to the symbols in the Linux events subsystem for examples.
+input.Control is another enumerated list that represents "well known" control types. For example, the X and Y axis of a primary joystick (a type of control which reports absolute position) should always be input.AbsoluteX and input.AbsoluteY. The secondary (right hand) joystick/thumbstick is input.AbsoluteRY and input.AbsoluteRY. Buttons are things line input.ButtonStart, or for trigger buttons, input.LT/RT. The typical 4-button configuration (under the right thumb) on most game pads uses generic compass directions instead of letter/shape labels, so that mappings aren't XBox/Nintendo/Playstation specific. Ex: "ButtonSouth" is the bottom-most button of the four, and corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation. "ButtonNorth" is likewise X/Y/Triangle. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the full/current list. If new types need to be added, care should be taken to make them as generic and universal as possible. Look to the symbols in the Linux events subsystem for examples.
 
 #### Axes
 Axes can be either Absolute or Relative. Absolute axes report where they are each time and this is the method used by things like joysticks/thumbsticks, analog triggers, etc.--basically anything that "returns to center" on its own. Relative axes, on the other hand, are used by mice/trackpads/etc., and report a relative change in distance.
@@ -41,7 +41,7 @@ The Gamepad module provides an input.Controller interface that represents a stan
 
 
 ### Configuration Example
-```
+``` json
 {
   "components": [
     {
@@ -69,7 +69,7 @@ There are currently mappings for a wired XBox 360 controller, and wireless XBox 
 ### Sample (motor control)
 The below example defines a single callback function (motorCtl) that handles input events, and turns them into motor.SetPower() commands. It's essentially all that's needed to drive a four wheel, skid steer platform, and uses the L/R analog triggers to control a "winder" motor, that raises/lowers a front end (like a bulldozer.) Lastly, it registers this callback for a selected set of axes.
 
-```
+``` Go
 motorCtl := func(ctx context.Context, event input.Event) {
 	if event.Event != input.PositionChangeAbs {
 		return
@@ -100,7 +100,7 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 This allows a gamepad to be connected remotely, via a browser and the html5 Gamepad API. To use it, add a component to the robot's config like below:
 
 ### Config
-```
+``` json
 {
   "components": [
     {
@@ -119,7 +119,7 @@ When viewing a robot's UI (e.g. myrobot.local:8080) you'll see the WebGamepad co
 The Mux input controller simply combines one or more other controllers (sources) into a single virtual controller. This allows control from different locations (such as the web and a locally connected gamepad) or combining different controllers into one. (For example a joystick could be added to a numpad.)
 
 ### Config
-```
+``` json
 {
   "components": [
     {
@@ -158,4 +158,4 @@ The Mux input controller simply combines one or more other controllers (sources)
 Note the "depends_on" section. This tells the config loading code to fully load the source components first.
 
 ## SDK Implementation
-[Python SDK Documentation of the input component can be found here.](https://python.viam.dev/autoapi/viam/components/input/index.html)
+[Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/input/index.html)
