@@ -9,15 +9,15 @@ description: "Explanation of input controller/gamepad configuration and usage in
 The Input interface is defined in input/input.go and you should view that file for details on specific methods and their uses.
 
 ### Overview/Concepts
-#### Controller interface
+#### Controller Interface
 Input devices provide a Controller interface with three methods:
-1. GetControls() provides a list of input Controls that this Controller provides
-1. GetEvents() returns a map of the most recent input event for each Control. This is the current state of the controller and can be polled for simple uses.
+1. Controls() provides a list of input Controls that this Controller provides.
+1. Events() returns a map of the most recent input event for each Control. This is the current state of the controller and can be polled for simple uses.
 1. RegisterControlCallback() accepts a callback function that will be executed whenever one of the events selected occurs for the given control. This is the preferred method for real-time control. Note that you can only ever have one action registered, and a new call to register one for the same action will simply replace the previous callback with a new one. You can also pass a "nil" function which will effectively "deregister" a callback as well.
 
 #### Events
 
-Events are passed to any callback functions registered, and are returned by GetEvents. They represent a singular event from the input device, and have four fields:
+Events are passed to any callback functions registered, and are returned by `Events()`. They represent a singular event from the input device, and have four fields:
 1. Time
 1. Event (This is an input.EventType)
 1. Control (This is an input.Control, and represents the axis/button/etc. involved.)
@@ -30,7 +30,8 @@ EventType is an enumerated list, with items like ButtonPress, ButtonRelease, Pos
 input.Control is another enumerated list that represents "well known" control types. For example, the X and Y axis of a primary joystick (a type of control which reports absolute position) should always be input.AbsoluteX and input.AbsoluteY. The secondary (right hand) joystick/thumbstick is input.AbsoluteRY and input.AbsoluteRY. Buttons are things line input.ButtonStart, or for trigger buttons, input.LT/RT. The typical 4-button configuration (under the right thumb) on most game pads uses generic compass directions instead of letter/shape labels, so that mappings aren't XBox/Nintendo/Playstation specific. Ex: "ButtonSouth" is the bottom-most button of the four, and corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation. "ButtonNorth" is likewise X/Y/Triangle. See input/input.go for the full/current list. If new types need to be added, care should be taken to make them as generic and universal as possible. Look to the symbols in the Linux events subsystem for examples.
 
 #### Axes
-Axes can be either Absolute (report where they are each time) and this is the method used by things like joysticks/thumbsticks, analog triggers, etc. Basically anything that "returns to center" on its own. Relative axes, on the other hand, are used by mice/trackpads/etc., and report a relative change in distance. For now, only the gamepad implementation exists, so only Absolute axes are in use. Absolute axes report a "PostionChangeAbs" EventType and the Value is a float64 between -1.0 and +1.0, with center/neutral always being 0.0. The one special case is single-direction axes (like analog triggers, gas/brake pedals, etc.) On these, the "neutral" point is still 0.0, but they may only ever go into the positive direction. Lastly, note that for Y (vertical) axes, the positive direction is "nose up" which is pulling back on the stick.
+Axes can be either Absolute or Relative. Absolute axes report where they are each time and this is the method used by things like joysticks/thumbsticks, analog triggers, etc.--basically anything that "returns to center" on its own. Relative axes, on the other hand, are used by mice/trackpads/etc., and report a relative change in distance.
+For now, only the gamepad implementation exists, so only Absolute axes are in use. Absolute axes report a "PostionChangeAbs" EventType and the Value is a float64 between -1.0 and +1.0, with center/neutral always being 0.0. The one special case is single-direction axes (like analog triggers, gas/brake pedals, etc.) On these, the "neutral" point is still 0.0, but they may only ever go into the positive direction. Lastly, note that for Y (vertical) axes, the positive direction is "nose up" which is pulling back on the stick.
 
 #### Buttons
 Buttons are a simpler case. They report either ButtonPress or ButtonRelease as their EventType, and the value is either 0 (for released) or 1 (for pressed.) Note that registering a callback for the ButtonChange event is merely a convenience for filtering, and will register the same callback to both ButtonPress and ButtonRelease, but ButtonChange will not be reported in an actual Event.
@@ -80,26 +81,19 @@ motorCtl := func(ctx context.Context, event input.Event) {
 		return
 	}
 
-	var dir pb.DirectionRelative
-	if math.Signbit(event.Value) {
-		dir = pb.DirectionRelative_DIRECTION_RELATIVE_FORWARD
-	} else {
-		dir = pb.DirectionRelative_DIRECTION_RELATIVE_BACKWARD
-	}
-
 	speed := float32(math.Abs(event.Value))
 
 	switch event.Control {
 	case input.AbsoluteY:
-		motorFL.SetPower(ctx, dir, speed)
-		motorBL.SetPower(ctx, dir, speed)
+		motorFL.SetPower(ctx, speed)
+		motorBL.SetPower(ctx, speed)
 	case input.AbsoluteRY:
-		motorFR.SetPower(ctx, dir, speed)
-		motorBR.SetPower(ctx, dir, speed)
+		motorFR.SetPower(ctx, speed * -1)
+		motorBR.SetPower(ctx, speed * -1)
 	case input.AbsoluteZ:
-		motorWinder.SetPower(ctx, pb.DirectionRelative_DIRECTION_RELATIVE_FORWARD, speed)
+		motorWinder.SetPower(ctx, speed)
 	case input.AbsoluteRZ:
-		motorWinder.SetPower(ctx, pb.DirectionRelative_DIRECTION_RELATIVE_BACKWARD, speed)
+		motorWinder.SetPower(ctx, speed * -1)
 	}
 }
 for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input.AbsoluteZ, input.AbsoluteRZ} {
@@ -109,7 +103,7 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 ```
 
 ## WebGamepad
-This allows a gamepad to be connected remotely, via a browswer and the html5 Gamepad API. To use it, add a component to the robot's config like below:
+This allows a gamepad to be connected remotely, via a browser and the html5 Gamepad API. To use it, add a component to the robot's config like below:
 
 ### Config
 ```
