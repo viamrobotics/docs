@@ -1,14 +1,12 @@
 ---
-title: "Viam Install Instructions"
-linkTitle: "Viam Install Instructions"
+title: "Installing Viam Server on Raspberry Pi"
+linkTitle: "Installing Viam Server on Raspberry Pi"
 weight: 10
 type: "docs"
-description: "Instructions which guide the user through installing viam-server and syncing that robot with the Viam App [https://app.viam.com](https://app.viam.com) (using Raspberry Pi Imager v1.7.2)"
+description: "Instructions that guide the user through installing viam-server and syncing that robot with the Viam App [https://app.viam.com](https://app.viam.com) (using Raspberry Pi Imager v1.7.2)"
 ---
 
-# Installing Viam RDK Server on Raspberry Pi
-
-## Resources
+## Prerequisites
 
 This tutorial requires the following hardware:
 
