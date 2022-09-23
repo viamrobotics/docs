@@ -200,7 +200,7 @@ It will look like this (starting with your own username and hostname) when you d
 
 ![copytingjsondata-empty](../../tutorials/img/terminal-copytingjsondata-empty.png)
 
-Now go back to the Viam App ([https://app.viam.com](https://app.viam.com)) on your browser, click `COPY RDK CONFIG` at the bottom.
+Now go back to the Viam App ([https://app.viam.com](https://app.viam.com)) on your browser, click `COPY GOLANG` at the bottom.
 This should fill your clipboard with the JSON config needed for your Pi talk to the Viam App as this robot.
 Go back to your terminal and paste this between the quotes.
 
