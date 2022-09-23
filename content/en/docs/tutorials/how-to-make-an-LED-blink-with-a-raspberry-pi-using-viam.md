@@ -7,8 +7,6 @@ description: "In this post, we will show you how to use Viam to make an LED blin
 
 ---
 
-# How to Make an LED Blink with a Raspberry Pi Using the Viam App
-
 ## Intro
 
 In this post, we will show you how to use Viam to make an LED blink with a Raspberry Pi. This tutorial is a great place to start if you have never built a robot or a circuit before.
