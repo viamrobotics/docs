@@ -182,11 +182,11 @@ enable = false
   url = "https://www.instagram.com/viamrobotics/"
   icon = "fab fa-instagram"
   desc = "Follow us on Instagram for the latest cool pics of life at Viam!"
-#[[params.links.user]]
-#  name = "Stack Overflow"
-#  url = "https://example.org/stack"
-#  icon = "fab fa-stack-overflow"
-#  desc = "Practical questions and curated answers"
+[[params.links.user]]
+  name = "Linkedin"
+  url = "https://www.linkedin.com/company/viaminc/about/"
+  icon = "fab fa-linkedin"
+  desc = "Connect with Viam on LinkedIn for news and information"
 #[[params.links.user]]
 #  name = "Stack Overflow"
 #  url = "https://example.org/stack"
