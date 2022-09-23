@@ -107,7 +107,7 @@ archived_version = false
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
-url_latest_version = "https://docs.viam.com/"
+url_latest_version = "https://docs.viam.com/docs"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
 #github_repo = "https://github.com/viamrobotics/tutorials-and-docs" 
