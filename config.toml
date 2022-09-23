@@ -82,8 +82,11 @@ weight = 1
 section = ["HTML", "print", "RSS"]
 
 [params]
-copyright = "Viam, Inc. All rights reserved. Portions of Viam is licensed under the GPLv3, AGPLV3, and MIT licenses."
+tos_statement = "https://www.viam.com/terms"
+user_agreement = "https://www.viam.com/agreement"
+copyright = "Viam, Inc. Portions of Viam is licensed under the GPLv3, AGPLV3, and MIT licenses. "
 privacy_policy = "https://www.viam.com/privacy"
+
 
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
@@ -174,11 +177,23 @@ enable = false
   url = "https://twitter.com/viamrobotics"
   icon = "fab fa-twitter"
   desc = "Follow us on Twitter to get the latest news!"
+[[params.links.user]]
+  name = "Instagram"
+  url = "https://www.instagram.com/viamrobotics/"
+  icon = "fab fa-instagram"
+  desc = "Follow us on Instagram for the latest cool pics of life at Viam!"
 #[[params.links.user]]
 #  name = "Stack Overflow"
 #  url = "https://example.org/stack"
 #  icon = "fab fa-stack-overflow"
 #  desc = "Practical questions and curated answers"
+#[[params.links.user]]
+#  name = "Stack Overflow"
+#  url = "https://example.org/stack"
+#  icon = "fab fa-stack-overflow"
+#  desc = "Practical questions and curated answers"
+
+
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
   name = "GitHub"
@@ -195,6 +210,7 @@ enable = false
   url = "mailto:developers-help@viam.com"
   icon = "fa fa-envelope"
   desc = "Ask questions about the Viam SDK"
+
 
 # hugo module configuration
 
