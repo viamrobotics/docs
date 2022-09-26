@@ -178,6 +178,11 @@ enable = false
   icon = "fab fa-twitter"
   desc = "Follow us on Twitter to get the latest news!"
 [[params.links.user]]
+  name ="Medium"
+  url = "https://viamrobotics.medium.com/"
+  icon = "fab fa-medium"
+  desc = "Follow us on Medium to to read interesting articles about robotics!"  
+[[params.links.user]]
   name = "Instagram"
   url = "https://www.instagram.com/viamrobotics/"
   icon = "fab fa-instagram"
