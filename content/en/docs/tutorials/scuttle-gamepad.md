@@ -16,10 +16,8 @@ Refer to the [Setting up a Scuttle with Viam](../scuttlebot) tutorial, if necess
 * EasySMX ESM-9101 Wireless Controller
 
 The following video demonstrates controlling a scuttle bot using a bluetooth gamepad:<br>
-<video width="480" height="320" controls>
-  <source src="../videos/scuttledemos_gamepad.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
+{{<video src="../videos/scuttledemos_gamepad.mp4" type="video/mp4">}}
 
 ## Adding the Controller to the Scuttle's Config
 
