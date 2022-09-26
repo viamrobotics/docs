@@ -1,7 +1,7 @@
 ---
 title: "Make an LED Blink with a Raspberry Pi and Viam Python SDK"
 linkTitle: "Make an LED Blink with a Raspberry Pi and Viam Python SDK"
-weight: 87
+weight: 88
 type: "docs"
 description: "In this post, you will be introduced to the basics of programming hardware using the Viam Python SDK by making an LED blink."
 ---
@@ -94,7 +94,9 @@ Default username and password on Raspberry Pi's are
 -   password: raspberry
 
 **Caution**:
-    It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi. In the past, a [^malware][malware infected thousands of Raspberry Pi devices that were using the default username and password.](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)
+    It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi. In the past, a [malware infected thousands of Raspberry Pi devices that were using the default username and password.](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)[^malware].
+
+[^malware]: ZD Net Article on Raspberry Pi Malware: https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/    
 
 If you can't remember your user and hostname, you can also find out the IP address by other means like checking the network devices list on your router/modem.
 
@@ -231,7 +233,7 @@ And, if all goes well, you should see your LED blinking on and off again every s
 
 ![A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text "LED is on," and "LED is off" is printed out to the terminal onscreen.](../img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image6.gif)
 
-You can exit this program by click **control + c** in your terminal window.
+You can exit this program by click **CTRL + C** in your terminal window.
 
 If you get an error, you can check your code against my complete code here:
 
@@ -252,5 +254,3 @@ If you are looking for some projects that would be a great next step in your jou
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
-[^malware]:
-https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency
