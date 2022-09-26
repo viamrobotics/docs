@@ -189,7 +189,7 @@ You can use this transform to change the underlying camera source's intrinsic pa
 
 ##### _Rotate_
 
-The Rotate trasnformation rotates the image by 180 degrees. 
+The Rotate transformation rotates the image by 180 degrees. 
 This feature is useful for when the camera is installed upside down on your robot. 
 
 ```json
@@ -273,7 +273,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 ##### _Detections_
 
-The Detections tramsform takes the input image and overlays the detections from a given detector present within the vision service.
+The Detections transform takes the input image and overlays the detections from a given detector present within the vision service.
 
 ```json
 {
