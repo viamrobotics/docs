@@ -68,8 +68,9 @@ They provide a bespoke, OS-specific process managed by the viam-server to either
     * Note: Libraries are called “services” ONLY if we expose their functionality in our proto APIs.
 
 **Resource**: Resources are individual, addressable elements of a robot (RDK definition) operated by parts. 
-Parts operate two types of resources: physical components and software services.
-Each part has local resources, and also surfaces remote resources when a remote is established to another part. The capabilities of each resource are exposed through the part’s API.
+Parts operate two types of Resources: physical components and software services.
+Each part has local resources, and also surfaces remote resources when a remote is established to another part. 
+The capabilities of each resource are exposed through the part’s API.
 
 **Resource Config**: The configuration element of either a component or a service.
 Typically expressed in JSON.
