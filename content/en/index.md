@@ -6,9 +6,12 @@ type: "docs"
 ---
 
 ## Getting Started
-Looking to get started with Viam? Checkout the [installing the Viam Server on Raspberry Pi instructions](../docs/getting-started/installation)
+Looking to get started with Viam? Checkout the [installing the Viam Server on Raspberry Pi instructions](../docs/getting-started/installation).
 
-Note: When viewing code blocks, hovering your mouse cursor over the top right-hand corner displays a **Copy** button to copy the code to the clipboard.
+See also:
+
+- [Viam Overview](../docs/getting-started/high-level-overview)
+- [Viam's Robot Configuration](../docs/getting-started/robot-config)
 
 ## Product Overviews
 - [The Viam App's Organizational Hierarchy](../docs/product-overviews/organization-management)
@@ -17,7 +20,6 @@ Note: When viewing code blocks, hovering your mouse cursor over the top right-ha
 - [Using Our SDKs as a Client Application](../docs/product-overviews/sdk-as-client)
 - [Using Our SDKs for a Server Hardware Implementation](../docs/product-overviews/sdk-as-server)
 - [Viam's Data Management Platform](../docs/product-overviews/data-management)
-- [Viam's Robot Configuration](../docs/getting-started/robot-config)
 
 ## Components
 - [Arm](../docs/components/arm)
