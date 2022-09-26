@@ -14,10 +14,7 @@ Viam App pre-populates the **Connect** tab with the robot name, address, and sec
 {{% /note %}}
 
 ### Demonstration Video
-<video width="480" height="320" controls>
-  <source src="../videos/scuttledemos_colordetection.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+{{<video src="../videos/scuttledemos_colordetection.mp4" type="video/mp4">}}
 
 ### Python.py Code 
 **Code**: [https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0](https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0)
