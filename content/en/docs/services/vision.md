@@ -27,7 +27,7 @@ The vision service is a default service on the robot, and can be initialized wit
 | ----------------- | --------------------------------- | ---------------------------------- |
 | Detection         | tflite\_detector   | "model\_path", "label\_path", "num\_threads" |
 || tf\_detector      | TBD - Not yet supported                       |
-|| color\_detector   | "detect\_color", "tolerance\_pct", "segment\_size_px" |
+|| color\_detector   | "detect\_color", "tolerance\_pct", "segment\_size\_px" |
 | Classification    | tflite\_classifier | "model\_path", "label\_path", "num\_threads" |
 || tf\_classifier    | TBD - Not yet supported                       |
 | Segmentation      | radius\_clustering\_segmenter | "min\_points\_in\_plane", "min\_points\_in\_segment", "clustering\_radius\_mm", "mean\_k\_filtering"      |
