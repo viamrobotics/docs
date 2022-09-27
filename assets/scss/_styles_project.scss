@@ -17,187 +17,7 @@ Add styles or override variables from the theme here.
 .td-page-meta--view { display: none !important; }
 
 /* END Disable unwanted RH TOC entries */
-/* START New Admonition */
 
-.single .content .admonition {
-    position: relative;
-    margin: 1rem 0;
-    padding: 0 0.75rem;
-    background-color: rgba(68, 138, 255, 0.1);
-    border-left: 0.25rem solid #448aff;
-    overflow: auto;
-}
-.single .content .admonition .admonition-title {
-    font-weight: bold;
-    margin: 0 -0.75rem;
-    padding: 0.25rem 1.8rem;
-    border-bottom: 1px solid rgba(68, 138, 255, 0.1);
-    background-color: rgba(68, 138, 255, 0.25);
-}
-.single .content .admonition.open .admonition-title {
-    background-color: rgba(68, 138, 255, 0.1);
-}
-.single .content .admonition .admonition-content {
-    padding: 0.5rem 0;
-}
-.single .content .admonition i.icon {
-    font-size: 0.85rem;
-    color: #448aff;
-    position: absolute;
-    top: 0.6rem;
-    left: 0.4rem;
-}
-.single .content .admonition i.details-icon {
-    position: absolute;
-    top: 0.6rem;
-    right: 0.3rem;
-}
-.single .content .admonition.note {
-    border-left-color: #448aff;
-}
-.single .content .admonition.note i.icon {
-    color: #448aff;
-}
-
-.single .content .admonition.warning {
-    border-left-color: #ff9100;
-}
-.single .content .admonition.warning i.icon {
-    color: #ff9100;
-}
-.single .content .admonition.failure {
-    border-left-color: #ff5252;
-}
-.single .content .admonition.failure i.icon {
-    color: #ff5252;
-}
-.single .content .admonition.danger {
-    border-left-color: #ff1744;
-}
-.single .content .admonition.danger i.icon {
-    color: #ff1744;
-}
-
-.single .content .admonition.example {
-    border-left-color: #651fff;
-}
-.single .content .admonition.example i.icon {
-    color: #651fff;
-}
-
-.single .content .admonition.note {
-    background-color: rgba(68, 138, 255, 0.1);
-}
-.single .content .admonition.note .admonition-title {
-    border-bottom-color: rgba(68, 138, 255, 0.1);
-    background-color: rgba(68, 138, 255, 0.25);
-}
-.single .content .admonition.note.open .admonition-title {
-    background-color: rgba(68, 138, 255, 0.1);
-}
-.single .content .admonition.warning {
-    background-color: rgba(255, 145, 0, 0.1);
-}
-.single .content .admonition.warning .admonition-title {
-    border-bottom-color: rgba(255, 145, 0, 0.1);
-    background-color: rgba(255, 145, 0, 0.25);
-}
-.single .content .admonition.warning.open .admonition-title {
-    background-color: rgba(255, 145, 0, 0.1);
-}
-.single .content .admonition.failure {
-    background-color: rgba(255, 82, 82, 0.1);
-}
-.single .content .admonition.failure .admonition-title {
-    border-bottom-color: rgba(255, 82, 82, 0.1);
-    background-color: rgba(255, 82, 82, 0.25);
-}
-.single .content .admonition.failure.open .admonition-title {
-    background-color: rgba(255, 82, 82, 0.1);
-}
-.single .content .admonition.danger {
-    background-color: rgba(255, 23, 68, 0.1);
-}
-.single .content .admonition.danger .admonition-title {
-    border-bottom-color: rgba(255, 23, 68, 0.1);
-    background-color: rgba(255, 23, 68, 0.25);
-}
-.single .content .admonition.danger.open .admonition-title {
-    background-color: rgba(255, 23, 68, 0.1);
-}
-
-.single .content .admonition.example {
-    background-color: rgba(101, 31, 255, 0.1);
-}
-.single .content .admonition.example .admonition-title {
-    border-bottom-color: rgba(101, 31, 255, 0.1);
-    background-color: rgba(101, 31, 255, 0.25);
-}
-.single .content .admonition.example.open .admonition-title {
-    background-color: rgba(101, 31, 255, 0.1);
-}
-
-.single .content .admonition:last-child {
-    margin-bottom: 0.75rem;
-}
-
-
-
-.details .details-summary:hover {
-    cursor: pointer;
-}
-.details i.details-icon {
-    color: #4d4d4d;
-    -webkit-transition: transform 0.2s ease;
-    -moz-transition: transform 0.2s ease;
-    -o-transition: transform 0.2s ease;
-    transition: transform 0.2s ease;
-}
-[theme="dark"] .details i.details-icon {
-    color: #b5b5b5;
-}
-[theme="black"] .details i.details-icon {
-    color: #a9a9b3;
-}
-.details .details-content {
-    max-height: 0;
-    overflow-y: hidden;
-    transition: max-height 0.5s ease-out;
-}
-.details.open i.details-icon {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-.details.open .details-content {
-    max-height: none;
-}
-
-
-// ========== Admonition ========== //
-// Color map of the admonition
-$admonition-color-map: (
-  'note': #448aff,
-  'warning': #ff9100,
-  'failure': #ff5252,
-  'danger': #ff1744,
-  'example': #651fff,
-  ) !default;
-
-// Color map of the admonition background
-$admonition-background-color-map: (
-  'note': rgba(68, 138, 255, 0.1),
-  'warning': rgba(255, 145, 0, 0.1),
-  'failure': rgba(255, 82, 82, 0.1),
-  'danger': rgba(255, 23, 68, 0.1),
-  'example': rgba(101, 31, 255, 0.1),
-) !default;
-
-
-
-/* END New Admonition */
 
 /*
 START MARKETING CSS
@@ -295,4 +115,115 @@ END MARKETING CSS
     max-width: 600PX;
     height: auto;
   }
-/* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/*/
+/* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/ */
+
+/**/
+.primary-color                      {color: var(--primary-color)}
+.bg-primary-color                   {background-color: var(--primary-color)}
+.hover-bg-primary-color:hover       {background-color: var(--primary-color)}
+
+.primary-color-dark                  {color: var(--primary-color-dark)}
+.bg-primary-color-dark               {background-color: var(--primary-color-dark)}
+.hover-bg-primary-color-dark:hover   {background-color: var(--primary-color-dark)}
+
+.primary-color-light                  {color: var(--primary-color-light)}
+.bg-primary-color-light               {background-color: var(--primary-color-light)}
+.hover-bg-primary-color-light:hover   {background-color: var(--primary-color-light)}
+
+.accent-color                         {color: var(--accent-color)}
+.bg-accent-color                      {background-color: var(--accent-color)}
+.hover-bg-accent-color:hover          {background-color: var(--accent-color)}
+
+.accent-color-light                   {color: var(--accent-color-light)}
+.hover-accent-color-light:hover                   {color: var(--accent-color-light)}
+.bg-accent-color-light                {background-color: var(--accent-color-light)}
+.hover-bg-accent-color-light:hover    {background-color: var(--accent-color-light)}
+
+.accent-color-dark                    {color: var(--accent-color-dark)}
+.bg-accent-color-dark                 {background-color: var(--accent-color-dark)}
+.hover-bg-accent-color-dark:hover     {background-color: var(--accent-color-dark)}
+
+.text-color-primary    {color: var(--text-color-primary)}
+.text-on-primary-color {color: var(--text-on-primary-color)}
+.text-color-secondary  {color: var(--text-color-secondary)}
+.text-color-disabled   {color: var(--text-color-disabled)}
+.divider-color         {color: var(--divider-color)}
+.warn-color            {color: var(--warn-color)}
+
+
+.nested-links a {
+  color: var(--primary-color);
+  text-decoration: none;
+
+}
+
+/**/
+
+
+
+/* START CSS FOR NOTES, CAUTIONS, WARNINGS */
+
+// Style alert boxes.
+
+.alert {
+    font-weight: $font-weight-medium;
+    background: $white;
+    color: inherit;
+    border-radius: 0;
+
+    @each $color, $value in $theme-colors {
+        &-#{$color} {
+            & .alert-heading {
+                color: $value;
+            }
+
+            border-style: solid;
+            -webkit-border-top-left-radius: 5px;
+            -webkit-border-bottom-left-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-color: $value;
+            border-width: 0 0 0 12px;
+        }
+    }
+}
+
+
+
+.note,
+.caution,
+.warning {
+
+  border-left-width: 4px;
+  border-left-style: solid;
+  position: relative;
+  border-color: var(--primary-color);
+
+  display: block;
+}
+.note #exclamation-icon,
+.caution #exclamation-icon,
+.warning #exclamation-icon {
+
+  fill: var(--primary-color);
+  position: absolute;
+  top: 35%;
+  left: -12px;
+  /*background-color: white;*/
+}
+
+  .admonition-content {
+    display: block;
+    margin: 0px;
+    padding: .125em 1em;
+    /*margin-left: 1em;*/
+    margin-top: 2em;
+    margin-bottom: 2em;
+    overflow-x: auto;
+    /*font-size: .9375em;*/
+    background-color: var(--black-05);
+  }
+
+/* END CSS FOR NOTES, CAUTIONS, WARNINGS */
