@@ -72,7 +72,7 @@ As an example, let's consider an arm on a gantry.
 
 Let our gantry be named "G" and our arm be named "A". 
 We might decide that the static origin of our gantry is its zero position and specify a translation and orientation with respect to the world frame. 
-The Frame System considers the reference frame with this static origin to be "G_offset" and the reference frame with its origin being the location of the platform to be "G". 
+The Frame System considers the reference frame with this static origin to be "G_origin" and the reference frame with its origin being the location of the platform to be "G". 
 This choice is made so that when we specify the parent frame of the arm, we can simply use "G" and the Frame System will understand that the arm's parent frame is the platform of the gantry and not it's zero position used as a point of reference to the world. 
 The resulting tree of reference frames could be visualized like so:
 
