@@ -216,7 +216,7 @@ The Resize transform resizes the image to the specified height and width.
 ```
 ##### _Depth to Pretty_
 
-The Depth-to-Pretty transform takes a depth image and turns into a colorful image, with blue indicating distant points and red indicating points nearby points. 
+The Depth-to-Pretty transform takes a depth image and turns it into a colorful image, with blue indicating distant points and red indicating nearby points. 
 Actual depth information is lost in the transform.
 
 ```json
@@ -370,7 +370,7 @@ Fake is a fake camera that always returns the same image, which is a dot in the 
 
 ## Troubleshooting
 
-If you are getting "timeout" errors from GRPC when adding a `webcam` model, make sure the webcam port is enabled on the pi (common if you are using a fresh pi right out of the box): 
+If you are getting "timeout" errors from GRPC when adding a `webcam` model, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box): 
 
 ```
 $ sudo raspi-config
