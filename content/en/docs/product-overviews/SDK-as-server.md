@@ -1,6 +1,6 @@
 ---
 title: "Using Our SDKs for a Server Component Implementation"
-linkTitle: "SDKs as server"
+linkTitle: "SDKs as Server"
 weight: 99
 type: "docs"
 description: "An introduction to Viam's SDKs and how to use them to drive hardware not natively supported in the RDK."
