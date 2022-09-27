@@ -21,6 +21,16 @@ See also:
 - [Using Our SDKs for a Server Hardware Implementation](../docs/product-overviews/sdk-as-server)
 - [Viam's Data Management Platform](../docs/product-overviews/data-management)
 
+## Tutorials
+- [Configuring a Camera-Equipped Scuttle Bot Two-Wheel Drive Rover](../docs/tutorials/scuttlebot)
+- [Controlling a Scuttle Robot on Viam with a Bluetooth Gamepad](../docs/tutorials/scuttle-gamepad)
+- [Setting up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam](../docs/tutorials/yahboom-rover)
+- [Color Detection with the Scuttle Robot on Viam](../docs/tutorials/color-detection-scuttle)
+- [Make an LED Blink with a Raspberry Pi Using the Viam App](../docs/tutorials/how-to-make-an-led-blink-with-a-raspberry-pi-using-viam)
+- [Make an LED Blink with a Raspberry Pi and Viam Python SDK](../docs/tutorials/how-to-make-an-led-blink-with-a-raspberry-pi-and-python)
+- [Build a Line-following Robot with only Rover and a Webcam](../docs/tutorials/webcam-line-follower-robot/)
+- [Tutorials](https://docs.viam.com/docs/tutorials/tutorials/)
+
 ## Components
 - [Arm](../docs/components/arm)
 - [Board](../docs/components/board)
@@ -30,6 +40,7 @@ See also:
 - [Encoder](../docs/components/encoder)
 - [Base](../docs/components/base)
 - [Input Controller](../docs/components/input-controller)
+- [Sensor](../docs/components/sensor)
 
 ## Services
 - [Vision](../docs/services/vision)
