@@ -1,6 +1,6 @@
 ---
 title: "Board Component"
-linkTitle: "Board Component"
+linkTitle: "Board"
 weight: 20
 type: "docs"
 description: "Explanation of board types, configuration, and usage in Viam."

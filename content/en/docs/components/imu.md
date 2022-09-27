@@ -1,6 +1,6 @@
 ---
 title: "IMU Component"
-linkTitle: "IMU Component"
+linkTitle: "IMU"
 draft: true
 weight: 70
 type: "docs"

@@ -1,6 +1,6 @@
 ---
 title: "Gripper Component"
-linkTitle: "Gripper Component"
+linkTitle: "Gripper"
 weight: 60
 draft: true
 type: "docs"

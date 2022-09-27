@@ -1,6 +1,6 @@
 ---
 title: "Servo Component"
-linkTitle: "Servo Component"
+linkTitle: "Servo"
 weight: 80
 type: "docs"
 description: "Explanation of servo wiring and configuration in Viam."

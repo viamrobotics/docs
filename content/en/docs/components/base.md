@@ -1,6 +1,6 @@
 ---
 title: "Base Component"
-linkTitle: "Base Component"
+linkTitle: "Base"
 weight: 10
 type: "docs"
 description: "Explanation of base types, configuration, and usage in Viam."

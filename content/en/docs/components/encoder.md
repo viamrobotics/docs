@@ -1,6 +1,6 @@
 ---
 title: "Encoder Component"
-linkTitle: "Encoder Component"
+linkTitle: "Encoder"
 weight: 50
 type: "docs"
 description: "Explanation of encoder types, configuration, and usage in Viam."

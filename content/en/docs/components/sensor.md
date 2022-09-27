@@ -1,6 +1,6 @@
 ---
 title: "Sensor Component"
-linkTitle: "Sensor Component"
+linkTitle: "Sensor"
 weight: 70
 draft: true
 type: "docs"
