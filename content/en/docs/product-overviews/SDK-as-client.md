@@ -1,6 +1,6 @@
 ---
-title: "SDKs as client"
-linkTitle: "SDKs as client"
+title: "SDKs as Client"
+linkTitle: "SDKs as Client"
 weight: 99
 type: "docs"
 description: "An introduction to Viam's SDKs and how to use them to access and control your robot."
