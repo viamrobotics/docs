@@ -5,7 +5,6 @@ weight: 70
 draft: false
 type: "docs"
 description: "Explanation of sensor types, configuration, and usage in Viam."
-draft: true
 ---
 This page explains how to set up a generic sensor component with Viam.
 Viam has a few types of sensor implemented including an ultrasonic sensor, but this doc will go over setting up a custom sensor so you can implement almost any sort of sensor.
