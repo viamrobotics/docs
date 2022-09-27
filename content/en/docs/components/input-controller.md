@@ -13,7 +13,7 @@ The Input interface is defined in [input/input.go](https://github.com/viamroboti
 Input devices provide a Controller interface with three methods:
 1. Controls() provides a list of input Controls that this Controller provides.
 1. Events() returns a map of the most recent input event for each Control. This is the current state of the controller and can be polled for simple uses.
-1. RegisterControlCallback() accepts a callback function that will be executed whenever one of the events selected occurs for the given control. This is the preferred method for real-time control. Note that you can only register one callback function per event for each control. A second call to register a callback function for a giben event type on a given control replaces any previously registered function with the newly registered callback function for that event. You can also pass a "nil" function which will effectively "deregister" a callback as well.
+1. RegisterControlCallback() accepts a callback function that will be executed whenever one of the events selected occurs for the given control. This is the preferred method for real-time control. Note that you can only register one callback function per event for each control. A second call to register a callback function for a given event type on a given control replaces any previously registered function with the newly registered callback function for that event. You can also pass a "nil" function which will effectively "deregister" a callback as well.
 
 #### Events
 
