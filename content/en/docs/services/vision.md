@@ -1,6 +1,6 @@
 ---
 title: "Vision Service"
-linkTitle: "Vision Service"
+linkTitle: "Vision"
 weight: 90
 type: "docs"
 description: "Explanation of the vision service, its configuration, its functionality, and its interfaces."
