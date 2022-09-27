@@ -1,9 +1,9 @@
 ---
 title: "Color Detection with the Scuttle Robot on Viam"
-linkTitle: "Color Detection with the Scuttle Robot on Viam"
+linkTitle: "Colored Object Follower"
 weight: 55
 type: "docs"
-description: "Instructions for detecting a color with a Scuttle Robot on Viam software."
+description: "Instructions for detecting and following a colored object with a Scuttle Robot on Viam software."
 ---
 ## Introduction
 

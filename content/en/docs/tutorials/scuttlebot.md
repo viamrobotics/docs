@@ -1,6 +1,6 @@
 ---
-title: "Configuring a Camera-Equipped Scuttle Bot Two-Wheel Drive Rover"
-linkTitle: "Configuring a Camera-Equipped Scuttle Bot Two-Wheel Drive Rover"
+title: "Configuring a Camera-Equipped Scuttle Bot Rover"
+linkTitle: "Configuring a Scuttle Robot"
 weight: 20
 type: "docs"
 description: "Instructions for using the Viam App to Configure Raspberry Pi board for a Camera-Equipped Scuttle Robot"
