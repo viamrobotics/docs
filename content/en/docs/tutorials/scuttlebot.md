@@ -282,15 +282,15 @@ If you save the config and click on your WebUI, you will be able to see your cam
 ## On Completion
 After successfully completing this tutorial, you should have a fully functional Scuttle rover which you can drive around and view the rover's perspective via the Viam App [https://app.viam.com](https://app.viam.com).
 Play around with it and try some creative ideas on how you can use the camera with your rover.
-If you’d like, you can check out [Color Detection with Scuttle Robot on VIAM](https://docs.google.com/document/d/1FzWl6sJ78BnRsAFCjIBZuLWwzQPs_E99DQ8gI9HMJM0/edit), or create your own camera-related tutorials.
-You can also check out our [GPIO Pins for Scuttle Robot](https://docs.google.com/document/d/12QdRVXmHKjnShPkfsBA7QbYGE_NEuAiboov76sHZ7lk/edit) on VIAM or our [Bluetooth Gamepad Tutorial For Scuttle with a Pi](https://docs.google.com/document/d/1jXI_bMYLUtKlrtPHrNMdpdK5NaD031NkBctrwdEA2Gw/edit) to learn more about different configurations possible with the Scuttle rover.
+If you’d like, you can check out [Color Detection with Scuttle Robot on VIAM](../color-detection-scuttle), or create your own camera-related tutorials.
+You can also check out our [Bluetooth Gamepad Tutorial For Scuttle with a Pi](../scuttle-gamepad/) or our [Line Follower Tutorial](../webcam-line-follower-robot) to learn more about different configurations possible with the Scuttle rover.
 
 ## Referenced Document URLs
 
-  * **Installing Raspian on the Raspberry Pi**: [https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi](https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi)
+  * **Installing Raspian on the Raspberry Pi**: [https://docs.viam.com/docs/getting-started/installation/#installing-raspian-on-the-raspberry-pi](https://docs.viam.com/docs/getting-started/installation/#installing-raspian-on-the-raspberry-pi)
 
-  * **Color Detection with Scuttle Robot on VIAM**: [https://docs.google.com/document/d/1FzWl6sJ78BnRsAFCjIBZuLWwzQPs_E99DQ8gI9HMJM0/edit](https://docs.google.com/document/d/1FzWl6sJ78BnRsAFCjIBZuLWwzQPs_E99DQ8gI9HMJM0/edit)
+  * **Color Detection with Scuttle Robot on Viam**: [https://docs.viam.com/docs/tutorials/color-detection-scuttle/](https://docs.viam.com/docs/tutorials/color-detection-scuttle/)
 
-  * **GPIO Pins for Scuttle Robot**: [https://docs.google.com/document/d/12QdRVXmHKjnShPkfsBA7QbYGE_NEuAiboov76sHZ7lk/edit](https://docs.google.com/document/d/12QdRVXmHKjnShPkfsBA7QbYGE_NEuAiboov76sHZ7lk/edit)
+  * **Controlling a Scuttle Robot on Viam with a Bluetooth Gamepad**: [https://docs.viam.com/docs/tutorials/scuttle-gamepad/](https://docs.viam.com/docs/tutorials/scuttle-gamepad/)
 
-  * **Controlling a Scuttle Robot on VIAM with a Bluetooth Gamepad**: [https://docs.google.com/document/d/1jXI_bMYLUtKlrtPHrNMdpdK5NaD031NkBctrwdEA2Gw/edit](https://docs.google.com/document/d/1jXI_bMYLUtKlrtPHrNMdpdK5NaD031NkBctrwdEA2Gw/edit)
+  * **Line Following with Scuttle Robot on Viam**: [https://docs.viam.com/docs/tutorials/webcam-line-follower-robot/](https://docs.viam.com/docs/tutorials/webcam-line-follower-robot/)
