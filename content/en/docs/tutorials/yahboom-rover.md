@@ -1,6 +1,6 @@
 ---
 title: "Setting up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam"
-linkTitle: "Setting up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam"
+linkTitle: "Driving a Yahboom Rover with a Gamepad"
 weight: 50
 type: "docs"
 description: "Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam App."
