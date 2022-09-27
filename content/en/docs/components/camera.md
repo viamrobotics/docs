@@ -1,6 +1,6 @@
 ---
 title: "Camera Component"
-linkTitle: "Camera Component"
+linkTitle: "Camera"
 weight: 40
 type: "docs"
 description: "Explanation of camera types, configuration, and usage in Viam."

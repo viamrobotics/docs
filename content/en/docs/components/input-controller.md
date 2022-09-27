@@ -1,6 +1,6 @@
 ---
-title: "Input Controller Component "
-linkTitle: "Input Controller Component "
+title: "Input Controller Component"
+linkTitle: "Input Controller"
 weight: 60
 type: "docs"
 description: "Explanation of input controller/gamepad configuration and usage in Viam."

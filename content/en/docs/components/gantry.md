@@ -1,6 +1,6 @@
 ---
 title: "Gantry Component"
-linkTitle: "Gantry Component"
+linkTitle: "Gantry"
 draft: false
 weight: 50
 type: "docs"

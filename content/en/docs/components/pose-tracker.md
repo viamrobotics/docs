@@ -1,6 +1,6 @@
 ---
 title: "Pose Tracker Component"
-linkTitle: "Pose Tracker Component"
+linkTitle: "Pose Tracker"
 weight: 80
 type: "docs"
 draft: true
