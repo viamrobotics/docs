@@ -18,7 +18,6 @@ Find more information about encoders, another component type, [here](../encoder)
  - A [board](../board)
  - Depending on the type of sensor output, an analog to digital converter may be necessary to allow the sensor to communicate with the board
 
-
 ## Wiring
 This will depend on the sensor. Refer to the sensor’s data sheet.
 
