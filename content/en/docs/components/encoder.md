@@ -10,7 +10,7 @@ It is often used in conjunction with a motor, and is sometimes even built into a
 An encoder could also be positioned on a passive joint or other rotational object to keep track of the joint angle.
 
 ## Hardware Requirements
-- A board (like a Raspberry Pi)
+- A [board](../board) (like a Raspberry Pi)
 - An encoder (quadrature or single phase)
 - Some sort of rotary robot part (like a motor, joint or dial) for which you want to measure movement
 
