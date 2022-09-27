@@ -27,7 +27,7 @@ The vision service is a default service on the robot, and can be initialized wit
 | ----------------- | --------------------------------- | ---------------------------------- |
 | Detection         | tflite\_detector   | "model\_path", "label\_path", "num\_threads" |
 || tf\_detector      | TBD - Not yet supported                       |
-|| color\_detector   | "detect\_color", "tolerance", "segment\_size" |
+|| color\_detector   | "detect\_color", "tolerance\_pct", "segment\_size_px" |
 | Classification    | tflite\_classifier | "model\_path", "label\_path", "num\_threads" |
 || tf\_classifier    | TBD - Not yet supported                       |
 | Segmentation      | radius\_clustering\_segmenter | "min\_points\_in\_plane", "min\_points\_in\_segment", "clustering\_radius\_mm", "mean\_k\_filtering"      |
@@ -52,8 +52,8 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
               "type": "color_detector",
               "parameters": {
                 "detect_color" : "#A3E2FF",
-                "tolerance": 0.06,
-                "segment_size": 100
+                "tolerance_pct": 0.06,
+                "segment_size_px": 100
               }
             },
             {
@@ -100,10 +100,10 @@ The types of the detector supported are:
 
 * **detect_color**: the color to detect in the image, as a string of the form #RRGGBB.
 The color is written as a hexadecimal string prefixed by ‘#’.
-* **tolerance**: A number between 0.0 and 1.0 and defines how strictly the detector must match to the color requested.
+* **tolerance_pct**: A number between 0.0 and 1.0 and defines how strictly the detector must match to the color requested.
 0.0 means the color must match exactly, while 1.0 will match to every color, regardless of the input color.
 0.05 is a good starting value.
-* **segment_size:** An integer that sets a minimum size (in pixels) of the returned objects, and filters out all other found objects below that size.
+* **segment_size_px:** An integer that sets a minimum size (in pixels) of the returned objects, and filters out all other found objects below that size.
 
 #### TFLite detector parameters
 * **model_path**: The path to the .tflite model file, as a string.
