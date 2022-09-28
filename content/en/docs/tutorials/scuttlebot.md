@@ -57,7 +57,7 @@ As with all other components, the first step is clicking <strong>NEW COMPONENT</
 The Viam App returns the following screen:</li>
 <img src="../img/pi-rhwheel-f.png"  alt="Fancy component config screen for a Motor."width="515px"><br>
 
-This screen provides read-only displays of JSON configuration information and allows you to select which board controls this motor, to toggle the <strong>Component Pin Assignment</strong> between Direction and Int1/Int2, and <strong>Enable Pins</strong> (i.e., set them to High, Low, or Neither). 
+This screen provides read-only displays of JSON configuration information and allows you to select which board controls this motor, to toggle the <strong>Component Pin Assignment</strong> between Direction and Int1/Int2, and <strong>Enable Pins</strong> (i.e., set them to High, Low, or Neither).
 You can also add a <strong>Frame</strong>, a <strong>Data Capture Pathway</strong>, and set the <strong>Depends On</strong>.<br>
 Note that you will not make modifications to the "fancy" screen during the tutorial.
 
@@ -193,7 +193,7 @@ From the Config screen:
 {{< note >}}
     The <code>left</code> and <code>right</code> attributes are intended to be the motors corresponding to the left and right sides of the rover.
     You can simply add “left” and “right” between the brackets for your set of motors, respectively.
-{{< /note >}}    
+{{< /note >}}
 
 Here is the code of your base attributes if you wish to copy and paste it.
 
@@ -223,7 +223,7 @@ When you feel ready, try driving your scuttle bot around, being careful of its s
 {{< caution >}}
 Ensure that the rover has sufficient space to drive around without hitting anyone or anything.
 Consider possibly holding your robot off the ground so it cannot run away or collide with anything unexpected.
-{{< /caution >}}    
+{{< /caution >}}
 
 ## Configuring the Camera Component
 
@@ -249,28 +249,25 @@ This is the code of your camera attributes if you wish to copy and paste it.
 
 ```JSON
 {
- "camera_parameters": {
-   "width": 0,
-   "height": 0,
+ "intrinsic_parameters": {
+   "width_px": 0,
+   "height_px": 0,
    "fx": 0,
    "fy": 0,
    "ppx": 0,
-   "ppy": 0,
-   "distortion": {
-     "rk1": 0,
-     "rk2": 0,
-     "rk3": 0,
-     "tp1": 0,
-     "tp2": 0
-   }
+   "ppy": 0
  },
- "source": "",
+ "distortion_parameters": {
+   "rk1": 0,
+   "rk2": 0,
+   "rk3": 0,
+   "tp1": 0,
+   "tp2": 0
+ },
  "stream": "",
- "width": 0,
- "height": 0,
- "hide": false,
+ "width_px": 0,
+ "height_px": 0,
  "debug": false,
- "dump": false,
  "format": "",
  "path": "",
  "path_pattern": "video0"
