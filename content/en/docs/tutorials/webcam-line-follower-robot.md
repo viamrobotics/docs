@@ -149,7 +149,7 @@ Below is an example JSON file that includes board, base and camera components, a
             "parameters": {
               "detect_color": "#19FFD9",
               "segment_size": 100,
-              "tolerance": 0.06
+              "tolerance_pct": 0.06
             },
             "type": "color"
           }
