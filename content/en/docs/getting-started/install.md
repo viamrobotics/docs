@@ -103,13 +103,13 @@ Running with `--aix-auto-update` will cause the image to update AND then continu
 Lastly, if all else fails, or you ever encounter any issues, you can simply just replace the file (usually `/usr/local/bin/viam-server`) with a newly downloaded copy. No need to reinstall the system service typically (unless the new version includes an update to the service file), but no harm in doing so either.
 
 ### Troubleshooting
-#### SquashFS errors
+#### SquashFS Errors
 Looks like this...
 ```bash
 Feb 10 13:11:26 hydro3-pi viam-server[933]: Something went wrong trying to read the squashfs image.
 Feb 10 13:11:26 hydro3-pi viam-server[933]: open dir error: No such file or directory
 ```
-The update process may have been interrupted and left a corrupt file. Simply redownload the new file as instructed above. (The bug that causes this is being investigated.)
+The update process may have been interrupted and left a corrupt file. Simply redownload the new file as instructed above.
 
 #### FUSE Errors
 FUSE (Filesystem-in-Userspace), is included in almost all modern distros by default. (The one real exception is that it doesn’t work (by default) due to security restrictions within Docker containers.) For more information on troubleshooting FUSE-related issues (including Docker workarounds) see here: [I get some errors related to something called “FUSE” — AppImage documentation](https://docs.appimage.org/user-guide/troubleshooting/fuse.html)
