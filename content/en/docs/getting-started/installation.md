@@ -174,7 +174,7 @@ Navigate to your new robot, which should show the setup page as shown below:
 ## Follow the steps on the setup tab. 
 
 1. Setup Viam App Config on Single Board Computer (SBC)<br/>
-_This config tells the robot where to look on app.viam.com to pull it’s config._<br/>
+_This config tells the robot where to look on app.viam.com to pull its config._<br/>
 - Click the copy button to copy the text.
 - Go to the terminal window connected to your Pi and paste the text and press enter.<br/>
 _This creates an etc/viam.json file containing something like:<br/>
