@@ -200,7 +200,7 @@ The types of segmenters supported are:
 #### Detector Segmenters
 
 * **detector_name** is the name of the detector already registered in the vision service that will be turned into a segmenter.
-* **confidence_threshold_pct** is a number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter.
+* **confidence_threshold_pct** is a number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5.
 * **mean_k** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html)[^mkf].  It should be set to be 5-10% of the minimum segment size.
     * Start with 5% and go up if objects are still too noisy.
     * If you don’t want to use the filtering, set the number to 0 or less.
