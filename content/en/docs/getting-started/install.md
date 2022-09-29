@@ -33,7 +33,7 @@ chmod 755 viam-server
 To run viam-server, you have two options:
 
 #### Running Directly from the Command Line
-To run viam-server directly from the command line, you can use the following command, replacing "myconfig" with the name of your configuration file:
+To run viam-server directly from the command line, you can use the following command, replacing "myconfig" with the name of your configuration file. `sudo` is necessary on a Pi to access GPIO pins, and it may be necessary in other cases depending on hardware permissions.
 ```bash
 sudo ./viam-server -config myconfig.json
 ```
@@ -54,6 +54,7 @@ Start the service by running:
 ```bash
 sudo systemctl start viam-server
 ```
+The service is an AppImage and will check for updates and self-update automatically each time the service is started. Self-updates can take a couple of minutes, so the service may sometimes take a moment to start while this runs. You can disable this by commenting out the ExecPre line (the one with --aix-update on it) in the service file.
 
 ### Controlling the System Service
 After setting up the system service above, the AppImage binary will be located at /usr/local/bin/viam-server, and a systemd service file will be placed at /etc/systemd/system/viam-server.service.
@@ -65,9 +66,7 @@ To control the systemd service (viam-server) use the following commands:
 - Disable `sudo systemctl disable viam-server`
     - Note this disables the at-boot startup, but does not stop any currently-running service.
 - View logs `sudo journalctl --unit=viam-server`
-    - See also the Logs tab of your robot on [app.viam.com](app.viam.com).
-
-The service is an AppImage and will check for updates and self-update automatically each time the service is started. Self-updates can take a couple of minutes, so the service may sometimes take a moment to start while this runs. You can disable this by commenting out the ExecPre line (the one with --aix-update on it) in the service file.
+    - If the robot is able to connect with the Viam App, logs can be viewed in the Logs tab at [app.viam.com](app.viam.com).
 
 If you want to run the binary directly, be sure to stop the service first, then run `sudo /usr/local/bin/viam-server path/to/my/config.json`. Note that on a Raspberry Pi, viam-server must always run as root in order to access the DMA subsystem for GPIO.
 
@@ -95,9 +94,6 @@ If you want to DISABLE automatic updates from the service file, just comment out
 ```bash
 # ExecStartPre=-/usr/local/bin/viam-server --aix-update
 ```
-##### Automatic
-Running with `--aix-auto-update` will cause the image to update AND then continue to run normally. Useful when run as a subprocess of some other service.
-
 ##### Fallback (Redownload)
 Lastly, if all else fails, or you ever encounter any issues, you can simply just replace the file (usually `/usr/local/bin/viam-server`) with a newly downloaded copy. No need to reinstall the system service typically (unless the new version includes an update to the service file), but no harm in doing so either.
 
