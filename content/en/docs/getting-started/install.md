@@ -5,17 +5,17 @@ weight: 10
 type: "docs"
 description: "How to install viam-server on Linux and sync a machine with the Viam App ([https://app.viam.com](https://app.viam.com))"
 ---
-The Viam Server is distributed as an AppImage. The AppImage is a single, self-contained binary that should run on any Linux system with the correct CPU architecture, with no need to install any dependencies (excepting FUSE as detailed in the troubleshooting section at the end). MacOS users will need to build an executable binary from the code.
+The Viam Server is distributed as an AppImage. The AppImage is a single, self-contained binary that should run on any Linux system with the correct CPU architecture, with no need to install any dependencies (excepting FUSE as detailed in the troubleshooting section at the end). MacOS users will need to build an executable binary from the code. Windows and 32-bit systems are not supported.
 
 ## Installation Instructions
 In short, you'll download the file, make it executable, and run its self-install option to set it up as a system service. If you don't want to run it as a service, just run it. It's simply an executable binary.
 
 ### URLs
-- **Stable** (built/updated when a new version (tag format: v1.2.3) is manually tagged in main):
+- **Stable**:
     - x86_64: http://packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage
     - AArch64 (ARM64): http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage
 
-- **Latest** (built automatically on every merge to main):
+- **Latest**:
     - x86_64: http://packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage
     - AArch64 (ARM64): http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage
 
@@ -33,24 +33,22 @@ chmod 755 viam-server
 To run viam-server, you have two options:
 
 #### Running Directly from the Command Line
-(Recommended method on laptop/desktop)
-
-If you'd like to run viam-server directly from the command line, you can do so with the following command, replacing "myconfig" with the name of your configuration file:
+To run viam-server directly from the command line, you can use the following command, replacing "myconfig" with the name of your configuration file:
 ```bash
-sudo ./viam-server myconfig.json
+sudo ./viam-server -config myconfig.json
 ```
-If you want to connect this instance of viam-server with a [Viam App](app.viam.com) robot, the contents of `myconfig.json` should be pasted from the `COPY VIAM-SERVER CONFIG` button at the bottom of the Config tab of your robot on [app.viam.com](app.viam.com).
+To connect this instance of viam-server with a [Viam App](app.viam.com) robot, the contents of `myconfig.json` should be pasted from the `COPY VIAM-SERVER CONFIG` button at the bottom of the Config tab of your robot on [app.viam.com](app.viam.com).
 
 ![install-config-button](../img/install-config-button.png)
 
 #### Installing as a System Service
 This is more common when setting up viam-server on a Raspberry Pi or something that will essentially only be turned on when you want to use the robot, so you want viam-server to start every time on boot.
 
-You will create a systemd service file at `/etc/systemd/system/viam-server.service` and set it to start on boot, using a config placed at `/etc/viam.json`. It will also move the actual binary (AppImage) to `/usr/local/bin/viam-server` (regardless of the previous filename.) Run the following command:
+The following command will create a systemd service file at `/etc/systemd/system/viam-server.service` and set it to start on boot, using a config placed at `/etc/viam.json`. It will also move the actual binary (AppImage) to `/usr/local/bin/viam-server` (regardless of the previous filename.) Run the following command:
 ```bash
 sudo ./viam-server --aix-install
 ```
-To connect this viam-server with a [Viam App](app.viam.com) robot, navigate to your robot page on [app.viam.com](app.viam.com). At the bottom of the Config tab, click the `COPY VIAM-SERVER CONFIG` button and paste it into /etc/viam.json. If you do not wish to connect to the App, you could instead create a config file locally. Either way you do need a robot config at `/etc/viam.json`.
+To connect this viam-server with a [Viam App](app.viam.com) robot, navigate to your robot page on [app.viam.com](app.viam.com). At the bottom of the Config tab, click the `COPY VIAM-SERVER CONFIG` button and paste it into `/etc/viam.json`.
 
 Start the service by running:
 ```bash
@@ -67,8 +65,9 @@ To control the systemd service (viam-server) use the following commands:
 - Disable `sudo systemctl disable viam-server`
     - Note this disables the at-boot startup, but does not stop any currently-running service.
 - View logs `sudo journalctl --unit=viam-server`
+    - See also the Logs tab of your robot on [app.viam.com](app.viam.com).
 
-The service is an AppImage and will check for updates and self-update automatically each time the service is started. Self-updates can take up to two minutes, so the service may sometimes take a moment to start while this runs. You can disable this by commenting out the ExecPre line (the one with --aix-update on it) in the service file.
+The service is an AppImage and will check for updates and self-update automatically each time the service is started. Self-updates can take a couple of minutes, so the service may sometimes take a moment to start while this runs. You can disable this by commenting out the ExecPre line (the one with --aix-update on it) in the service file.
 
 If you want to run the binary directly, be sure to stop the service first, then run `sudo /usr/local/bin/viam-server path/to/my/config.json`. Note that on a Raspberry Pi, viam-server must always run as root in order to access the DMA subsystem for GPIO.
 
@@ -80,7 +79,7 @@ There are two main channels for updates. If you download a file for one of them,
 This is updated on every merge to the main branch of the Viam Server.
 
 ##### Stable
-This is only updated when a new version (of the format v1.2.3) is tagged explicitly on the main branch. This is a step that is done manually, so updates will be far less frequent.
+Updates will be far less frequent.
 
 ##### Version-specific
 Lastly, there are also version-specific channels. If you download a file that has an explicit version in the name (e.g. viam-server-v0.1.2-aarch64.AppImage) then it will only check for updates against that exact version, effectively never updating. As such, installs of a specific version should generally be avoided, and this “channel” only exists for troubleshooting/archival purposes.
@@ -112,4 +111,4 @@ Feb 10 13:11:26 hydro3-pi viam-server[933]: open dir error: No such file or dire
 The update process may have been interrupted and left a corrupt file. Simply redownload the new file as instructed above.
 
 #### FUSE Errors
-FUSE (Filesystem-in-Userspace), is included in almost all modern distros by default. (The one real exception is that it doesn’t work (by default) due to security restrictions within Docker containers.) For more information on troubleshooting FUSE-related issues (including Docker workarounds) see here: [I get some errors related to something called “FUSE” — AppImage documentation](https://docs.appimage.org/user-guide/troubleshooting/fuse.html)
+FUSE (Filesystem-in-Userspace), is included in almost all modern Linux distributions by default. (The one real exception is that it doesn’t work (by default) due to security restrictions within Docker containers.) For more information on troubleshooting FUSE-related issues (including Docker workarounds) see here: [I get some errors related to something called “FUSE” — AppImage documentation](https://docs.appimage.org/user-guide/troubleshooting/fuse.html)
