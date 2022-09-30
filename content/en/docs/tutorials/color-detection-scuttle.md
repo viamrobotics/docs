@@ -48,6 +48,10 @@ conda activate pysdk
 Before you can run the code, you need to install the "viam" module. 
 Follow the directions at the bottom of the [Python SDK installation](https://github.com/viamrobotics/python-sdk#installation---pre-open-sourcing) guide to properly install the package. 
 
+It will look like this on the terminal:
+
+<img src="../img/color-det-terminal.png" />
+
 Ensure that the package is installed in the proper environment by running the following command while in that environment:
 ```bash
 conda list
