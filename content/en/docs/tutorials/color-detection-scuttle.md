@@ -48,10 +48,6 @@ conda activate pysdk
 Before you can run the code, you need to install the "viam" module. 
 Follow the directions at the bottom of the [Python SDK installation](https://github.com/viamrobotics/python-sdk#installation---pre-open-sourcing) guide to properly install the package. 
 
-It will look like this on the terminal:
-
-<img src="../img/color-det-terminal.png" />
-
 Ensure that the package is installed in the proper environment by running the following command while in that environment:
 ```bash
 conda list
@@ -75,7 +71,7 @@ python ~/Desktop/scuttle.py
 ## Notes on Color Detection Operation
 
 Within `getVisService(robot)`, a detector is configured with particular properties and subsequently added to the vision service. 
-This particular detector is a "color" detector, which means the relevant parameters are “detect_color (hex string)”, “tolerance (float from 0 to 1)”, and “segment_size (integer).”  
+This particular detector is a "color" detector, which means the relevant parameters are “detect_color (hex string)”, “tolerance_pct (float from 0 to 1)”, and “segment_size_px (integer).”  
 Feel free to add new detectors with different parameters! 
 To learn about all the different detectors and parameters, check out the [Vision Service](../../services/vision) docs. 
 

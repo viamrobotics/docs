@@ -1,6 +1,6 @@
 ---
 title: "Data Capture Service"
-linkTitle: "Data Capture Service"
+linkTitle: "Data Capture"
 weight: 10
 type: "docs"
 description: "Explanation of the data capture service, its configuration, its functionality, and its interfaces."

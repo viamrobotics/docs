@@ -1,6 +1,6 @@
 ---
 title: "SLAM Service"
-linkTitle: "SLAM Service"
+linkTitle: "SLAM"
 weight: 70
 type: "docs"
 description: "Explanation of the SLAM service, its configuration, its functionality, and its interfaces."

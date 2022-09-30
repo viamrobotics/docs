@@ -1,6 +1,6 @@
 ---
 title: "Motion Service"
-linkTitle: "Motion Service"
+linkTitle: "Motion"
 weight: 20
 type: "docs"
 description: "Explanation of the motion service, its configuration, its functionality, and its interfaces."

@@ -1,9 +1,9 @@
 ---
-title: "Installing Viam Server on Raspberry Pi"
-linkTitle: "Installing Viam Server on Raspberry Pi"
-weight: 10
+title: "Raspberry Pi-Specific Viam Server Installation"
+linkTitle: "Raspberry Pi Install"
+weight: 15
 type: "docs"
-description: "Instructions that guide the user through installing viam-server and syncing that robot with the Viam App [https://app.viam.com](https://app.viam.com) (using Raspberry Pi Imager v1.7.2)"
+description: "A guide to imaging a Pi, installing viam-server and syncing the Pi with the Viam App [https://app.viam.com](https://app.viam.com) (using Raspberry Pi Imager v1.7.2)."
 ---
 
 ## Prerequisites
@@ -154,13 +154,18 @@ sudo reboot
 
 ## Installing viam-server
 
-Now that you are on the Pi, download the latest viam-server AppImage package: 
+Now that you are on the Pi, download the most recent stable viam-server AppImage package (recommended): 
+
+```bash
+wget http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -O viam-server
+```
+Or, you can install the very latest viam-server AppImage package:
 
 ```bash
 wget http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -O viam-server
 ```
 
-Make it executable by running the following command:
+Either way, make it executable by running the following command:
 
 ```bash
 chmod 755 viam-server
@@ -200,8 +205,8 @@ It will look like this (starting with your own username and hostname) when you d
 
 ![copytingjsondata-empty](../../tutorials/img/terminal-copytingjsondata-empty.png)
 
-Now go back to the Viam App ([https://app.viam.com](https://app.viam.com)) on your browser, click `COPY GOLANG` at the bottom.
-This should fill your clipboard with the JSON config needed for your Pi talk to the Viam App as this robot.
+Now go back to the Viam App ([https://app.viam.com](https://app.viam.com)) on your browser and click `COPY VIAM-SERVER CONFIG` at the bottom of the Config tab.
+This should fill your clipboard with the JSON config needed for your Pi to talk to the Viam App as this robot.
 Go back to your terminal and paste this between the quotes.
 
 It should look like this:

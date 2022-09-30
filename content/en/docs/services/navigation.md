@@ -1,6 +1,6 @@
 ---
 title: "Navigation Service"
-linkTitle: "Navigation Service"
+linkTitle: "Navigation"
 weight: 30
 type: "docs"
 description: "Explanation of the navigation service, its configuration, its functionality, and its interfaces."
