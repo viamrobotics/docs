@@ -171,7 +171,7 @@ Navigate to your new robot, which should show the setup page as shown below:
 
 ![view-robot](../tutorials/img/view-robot.jpg)
 
-## Follow the steps on the setup tab. 
+## Follow the steps on the setup tab:
 
 1. Setup Viam App Config on Single Board Computer (SBC)<br/>
 _This config tells the robot where to look on app.viam.com to pull its config._<br/>
