@@ -146,7 +146,9 @@ Combine the point clouds from multiple camera sources and project them to be fro
 	"model" : "join_pointclouds",
 	"attributes": {
     	"source_cameras": ["cam1", "cam2", "cam3"], # camera sources to combine
-    	"target_frame": "arm1" # the frame of reference for the points in the merged point cloud.
+    	"target_frame": "arm1", # the frame of reference for the points in the merged point cloud.
+    	"merge_method": "", # [opt] either "naive" or "icp"; defaults to "naive".
+    	"closeness_mm": 1 # [opt] defines how close 2 points should be together to be considered the same point when merged.
 	}
 }
 ```
