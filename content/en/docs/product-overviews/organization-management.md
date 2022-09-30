@@ -1,57 +1,53 @@
 ---
-title: "The Viam App's Organizational Hierarchy"
-linkTitle: "Organization Management"
+title: "The Viam Platform"
+linkTitle: "Viam Platform"
 weight: 20
 type: "docs"
-description: "A guide to the Viam App's organizational hierarchy and permissioning."
+description: "A guide to Viam's organizational hierarchy and permissioning."
 ---
 
 ## Cloud App
-Viam’s fleet management in the Viam App's Website ([https://app.viam.com](https://app.viam.com)), is the place for users and organizations to store, manage, and control their robotic fleets.
+Users and organizations store, manage, and control their robotic fleets on the app's Website ([https://app.viam.com](https://app.viam.com)).
 
 ## Organization
 On the Viam App ([https://app.viam.com](https://app.viam.com)), robots belong to organizations.
-An organization is usually a company, a research group, or an individual (if an individual is building with Viam).
+An organization can be an individual, a research group, or a company.
 
-A user account on the Viam App can be a member of many organizations and will always be a member of at least one organization.
-If the new user was invited to the Viam App via an existing organization, their first organization will be that which invited them.
-If the new user signed up on their own (that is, without an invite from an existing organization), an organization will be created for them, containing only them and named for their user account (this name can be modified later if the user so desires).
+A user can be a member of multiple organizations, but will always be a member of at least one organization.
+When a user is invited to an existing organization, their first organization will be the one to which they were invited.
+If a user creates an account on their own (that is, without being invited to an existing organization), an organization will be created for them with membership of one and a name that matches that of their user account (which can be modified later).
 
-Any member of an organization can invite new members to that organization.
-Users can create new organizations at any point with the click of a button.
-For example, if a user has personal robots at home but is also working on some robots at school with a team, they would likely belong to two separate organizations to keep those use cases apart.
+Any member of an organization can invite new users to that organization.
+Additionally, users can create additional organizations at any point in time.
+For example, if a user has robots at home, but also has robots at school, that user would likely belong to two organizations to keep those use cases separate (a home organization and a school organization).
 
 ## Locations
-All robots belong to a location.
-The purpose of these locations is for an organization to sort and manage their fleet.
-Organizations can and often do have several locations.
-For example, Cool Robot Inc may have three warehouses (in NYC, LA, and Chicago), and create a location corresponding with each one containing the robots which reside in that physical warehouse.
-It is not necessary for locations on the Viam App ([https://app.viam.com](https://app.viam.com/)) to align with physical locations in the real world; they are simply a way to subdivide a robot fleet for easier management.
-For example, some users use locations with the names "production" and "testing" to keep their robots clearly separated.
+Locations live within organizations. All robots belong to a location.
+Locations allow organizations to sort and manage their robot fleets.
+Organizations often contain several locations.
+For example, Cool Robot Inc, which is one organization, may have three warehouses (in NYC, LA, and Chicago), and choose to house each in a location based on the physical location of a given warehouse. 
+With that said, locations do not need to align with physical locations in the real world. Locations are simply a way to subdivide and mange robot fleets.
+For example, some users may choose to use locations with names like "production" and "testing" to separate their robots by development stage (rather than by physical location).
 
 In some cases, locations alone may be insufficiently granular.
-For this, we’ve provided the concept of sublocations.
-Sublocations allow you to further divide your robotic fleet.
-Expanding on the example above, Cool Robot Inc has expanded their fleet and now has two warehouses in NYC.
-They are then able to add sublocations to NYC named “warehouse A” and “warehouse B.” This allows them to keep their robots aligned with the locations they are in, while still allowing them to address all NYC robots at once.
+When locations are insufficiently granular, users can create sublocations.
+Sublocations allow users to further segment their robot fleet.
+Revisiting the Cool Robot Inc example above, the company has expanded its fleet and now has two warehouses in NYC, “warehouse A” and “warehouse B.” The tw warehouses can each be a sublocation under the NYC location, allowing the company to organize and control robots based on their specific warehouse sublocation as well as more broadly based on their city location. 
 
-Currently (Note: subject to change), access permissions for robots are granted at the location level.
-If an organization wishes to invite external contributors or partner organizations to collaborate on robots, they share an entire location with that organization or user.
+Currently (subject to change), access permissions are granted at the location level.
+If an organization invites external contributors or partner organizations to collaborate on robots, then they will share an entire location and its sublocations with those users or organizations.
 This grants the external collaborators access to every robot at that location.
 
 ## Robots and Their Parts 
-Robots in Viam are composed of parts.
-Parts typically correspond to individual compute units (e.g. Pi, Jetson, Arduino) running an instance of the Viam server.
-A simple robot may contain a single part--for example, a rover with four wheels and a camera all attached to a single Raspberry Pi.
-Meanwhile, a more sophisticated robot, like an autonomous forklift, could consist of multiple computers and therefore multiple parts.
-This forklift could be one main computer handling the decision making, one with cameras for image processing, and a third for locomotion and actuating the forklift itself.
+Viam robots are composed of parts.
+Parts typically correspond to an individual computer (e.g., Raspberry Pi, Jetson, Arduino) running an instance of the Viam server.
+A simple robot, like a rover with four wheels and a camera, may consist of one computer (or one part).
+Meanwhile, a more sophisticated robot, like an autonomous forklift, may consist of multiple computers (or multiple parts).
+This forklift could have one main computer for decision-making, a second for image-processing, and a third for locomotion and actuation.
 
-Most often, a robot will be a single system in which all of the parts work together.
-The autonomous forklift above is a single robot made up of three parts.
-If there were multiple forklifts, each forklift would be a robot (ten forklifts, ten robots, each composed of three parts).
+The autonomous forklift is a single robot composed of three parts.
+If there were multiple forklifts, then each forklift would be a robot (each composed of three parts).
 
-One part of the robot must be designated as the main part and the other parts will be children of that main part or children of those children.
-These non-main parts are linked to the main part via the `remotes` section of the main part’s configuration JSON.
-Typically, the main part will be the one receiving connections from client applications and ferrying API requests to the other parts as needed.
+When a robot has multiple parts, one part must be designated the main part and the other parts would be subparts. The main part and subparts are linked via the `remotes` section of the main part’s configuration JSON. Typically, the main part will receive connections from client applications and ferry API requests to the subparts as needed.
 
 For more on configuring robots and their parts see [Viam's Robot Configuration](../../getting-started/robot-config/).
