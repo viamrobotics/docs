@@ -30,42 +30,86 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 ## Prerequisites
 - A single board computer [running an instance of Viam server](../../getting-started/installation)
     - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
-- [A wheeled base component](../../components/base/). We used a SCUTTLE robot for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
+- [A wheeled base component](../../components/base/). We used a [SCUTTLE robot](https://www.scuttlerobot.org/) for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
 - RGB camera
     - An off-the-shelf, [regular webcam](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html) with a ribbon connector to the Pi’s camera module port.
     - You must mount the camera to the front of the rover pointing down towards the floor.
 - Colored tape and floor space
     - Any color is suitable as long as its color is somewhat different from the floor color. For our tutorial, we used green electrical tape. 
-    - Additionally, non-shiny floors work best.
+    - Non-shiny floors tend to work best.
 
 <p class="Mycaption" ><em>Figure 1: A SCUTTLE robot base with a camera mounted on the front, pointing mostly down and slightly forwards.</em><br>
 <img src="../img/lf-scuttle2.png" width="600" /></p>
 
-## Configuring the rover using the Viam App
+## Configuration using Viam
+If you haven’t already, please set up the Raspberry Pi on the [Viam App](https://app.viam.com) per [these instructions](../../getting-started/installation).
 
-If you haven’t already, please set up the Raspberry Pi on the <a href="https://app.viam.com">Viam App (https://app.viam.com)</a> per these instructions.
-
-1. Configure the robot on the <a href="https://app.viam.com">Viam App</a>. General information about configuring robots with Viam can be found [here](https://docs.viam.com/docs/getting-started/robot-config/).
-
-    a. Configure the base per the [Base Component Doc](https://docs.viam.com/docs/components/base/).
+### Configuring the hardware components
+Configure the base per the [Base Component Doc](https://docs.viam.com/docs/components/base/).
 	
-    b. Configure the camera as type `webcam`. More info on the Viam camera component can be found [here](https://docs.viam.com/docs/components/camera/). Add the following (with the correct path in place of “video0”) to the camera’s attributes:
+Configure the [camera](../../components/camera) as type `webcam`. When you create a webcam component in Viam's config builder, Viam's discovery service will automatically detect cameras attached to your robot and suggest possible path attributes in a dropdown list. The top one (often "video0") is a good bet.
+
+![lf-cam-path.png](../img/lf-cam-path.png)
+
+If this doesn't work, you can manually add the camera path (with the correct path in place of “video0”) to the camera’s attributes:
 
 ```JSON
 {
-    "path_pattern": "video0"
+    "path": "video0"
 }
 ```
+You can ignore or even delete any other autopopulated camera attributes; the defaults should be fine here.
 
-- We’ll use the Viam vision service color detector to identify the line to follow.
+Your webcam configuration in the Config Builder will look something like this:
 
-    a. In the **Services** section of the **Config** tab, configure a color detector for the color of your tape line.
+![lf-cam-config.png](../img/lf-cam-config.png)
 
-    b. Use a color picker like [this one](https://colorpicker.me/) to approximate the color of your line and get the corresponding hexadecimal hash to put in your config.
+Or if you prefer the raw JSON:
 
-    c. We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
+```json
+    {
+      "name": "my_camera",
+      "type": "camera",
+      "model": "webcam",
+      "attributes": {
+        "path": "video0"
+      },
+      "depends_on": []
+    }
+```
 
-Below is an example JSON file that includes board, base and camera components, and a vision service color detector.
+### Configuring the vision service
+We’ll use the Viam [vision service color detector](../../services/vision/#detection) to identify the line to follow.
+
+In the **Services** section of the **Config** tab, configure a color detector for the color of your tape line.
+
+- Use a color picker like [this one](https://colorpicker.me/) to approximate the color of your line and get the corresponding hexadecimal hash to put in your config. Put this hash in the `detect_color` parameter. We used #19FFD9 to represent the color of green electrical tape.
+  
+- We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
+
+What this will look like in the Config Builder:
+
+![lf-vis-config.png](../img/lf-vis-config.png)
+
+Raw JSON:
+
+```json
+{
+  "register_models": [
+    {
+      "parameters": {
+        "segment_size_px": 100,
+        "tolerance_pct": 0.06,
+        "detect_color": "#19FFD9"
+      },
+      "type": "color_detector",
+      "name": "green_detector"
+    }
+  ]
+}
+```
+### Full example config
+Below is an example JSON file that includes the board, base and camera components, and a vision service color detector. You may have different pin numbers and other attributes depending on your hardware setup.
 
 ```json
 {
@@ -148,7 +192,7 @@ Below is an example JSON file that includes board, base and camera components, a
             "name": "green_detector",
             "parameters": {
               "detect_color": "#19FFD9",
-              "segment_size": 100,
+              "segment_size_px": 100,
               "tolerance_pct": 0.06
             },
             "type": "color"
@@ -172,7 +216,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
 <p class="Mycaption"><em>Figure 2: A GIF of what the camera sees as the rover moves along a green line.</em><br>
 <img class="center" src="../img/lf-tape-follow3.gif" width="300" /></p><br>
 
-## Let’s write some Code!
+## Let’s write some code!
 <ol><li class="spacing">Open a file in your favorite IDE and paste-in <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8">the code from the earlier referenced GIST</a>.</li>
 <li class="spacing">Adjust the components names to match the component names you created in your config file. 
 In this case, the component names that you may need to change are <strong>tread_base</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
@@ -218,17 +262,21 @@ replacing the angle brackets and the example text with your actual Pi username a
 You can double-check this by running:
 
 ```bash
-pi@scuttlebend:~ $ python --version
+python --version
+```
+or if you have multiple versions of Python installed, try
+```bash
+python3.9 --version
 ```
 We at Viam are running Python 3.9.2 for this tutorial.</li>
 <li class="spacing">Make sure you have the Viam Python SDK installed (<a href="https://github.com/viamrobotics/viam-python-sdk">Click for instructions</a>.)</li>
 <li class="spacing">In this Pi terminal go ahead and run the code:
 
 ```bash
-pi@scuttlebend:~ $ python ~/myCode/rgbFollower.py
+python ~/myCode/rgbFollower.py
 ```
 Be sure to replace <span class="file">~/myCode</span> with the path to the directory where you saved your Python script, and <span class="file">rgbFollower.py</span> with whatever you named your Python script file. 
-You may need to call “python3” instead of “python,” depending on how you configured your Pi.</li>
+You may need to call “python3.9” instead of “python,” depending on how you configured your Pi.</li>
 </ol></ol>
 The robot should continue moving along the line until it no longer sees the color of your detector except at the back of the frame, at which point it should stop moving and the code will terminate.
 
@@ -251,9 +299,11 @@ This will give it a wider field of view so it takes longer for the line to go ou
 ### Issue #2: N/A
 N/A
 
-## Troubleshooting Assistance
+## Additional Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/docs/appendix/troubleshooting).
+
+You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com) and we will be happy to help.
 
 ## Bonus Challenges!
 1. Automatically detect what color line the robot is on and follow that.
