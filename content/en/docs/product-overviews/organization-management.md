@@ -25,7 +25,7 @@ For example, if a user has robots at home, but also has robots at school, that u
 Locations live within organizations. All robots belong to a location.
 Locations allow organizations to sort and manage their robot fleets.
 Organizations often contain several locations.
-For example, Cool Robot Inc, which is one organization, may have three warehouses (in NYC, LA, and Chicago), and choose to house each in a location based on the physical location of a given warehouse. 
+For example, Cool Robot Inc, which is one organization, may have three warehouses (in NYC, LA, and Chicago). Cool Robot Inc could organize its robots into three locations based on their physical presence in a given warehouse. 
 With that said, locations do not need to align with physical locations in the real world. Locations are simply a way to subdivide and mange robot fleets.
 For example, some users may choose to use locations with names like "production" and "testing" to separate their robots by development stage (rather than by physical location).
 
