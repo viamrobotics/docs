@@ -20,6 +20,7 @@ Currently, there are three operations available through the vision service:
 
 The vision service is a default service on the robot, and can be initialized without attributes.
 
+There is a public repo with examples of how to use the vision service on [github.com/viamrobotics/vision-service-examples](https://github.com/viamrobotics/vision-service-examples) as well.
 
 ## VisModels
 
