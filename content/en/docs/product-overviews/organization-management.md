@@ -45,7 +45,7 @@ A simple robot, like a rover with four wheels and a camera, may consist of one c
 Meanwhile, a more sophisticated robot, like an autonomous forklift, may consist of multiple computers (or multiple parts).
 This forklift could have one main computer for decision-making, a second for image-processing, and a third for locomotion and actuation.
 
-The autonomous forklift is a single robot composed of three parts.
+In this example, the autonomous forklift is a single robot composed of three parts.
 If there were multiple forklifts, then each forklift would be a robot (each composed of three parts).
 
 When a robot has multiple parts, one part must be designated the main part and the other parts would be subparts. The main part and subparts are linked via the `remotes` section of the main part’s configuration JSON. Typically, the main part will receive connections from client applications and ferry API requests to the subparts as needed.
