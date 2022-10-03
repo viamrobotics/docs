@@ -1,9 +1,9 @@
 ---
-title: Frame System Service
-summary: Describes the Frame System, its configuration, its functionality, and its interfaces.
-authors:
-    - Gautham Varadarajan 
-date: 2022-09-06
+title: "Frame System"
+linkTitle: "Frame System"
+summary: "Describes the Frame System, its configuration, its functionality, and its interfaces."
+type: docs
+weight: 45
 ---
 # The Robot Frame System
 
