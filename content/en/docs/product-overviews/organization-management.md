@@ -44,7 +44,6 @@ Parts typically correspond to an individual computer (e.g., Raspberry Pi, Jetson
 A simple robot, like a rover with four wheels and a camera, may consist of one computer (or one part).
 Meanwhile, a more sophisticated robot, like an autonomous forklift, may consist of multiple computers (or multiple parts).
 This forklift could have one main computer for decision-making, a second for image-processing, and a third for locomotion and actuation.
-
 In this example, the autonomous forklift is a single robot composed of three parts.
 If there were multiple forklifts, then each forklift would be a robot (each composed of three parts).
 
