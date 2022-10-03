@@ -24,13 +24,13 @@ Here are details about each of the fields in the camera config:
 * **Attributes** are the details that the model requires to work. What attributes are required depends on the model selected. There are some common attributes that can be attached to all camera models.
     * `stream`: this can be either "color" or "depth" and specifies which kind of image should be returned from the camera stream.  
     * `debug`: "true" or "false", and enables the debug outputs from the camera.
-    * `camera_parameters` : these are the intrinsic parameters of the camera used to do 2D <-> 3D projections.
+    * `intrinsic_parameters` : these are the intrinsic parameters of the camera used to do 2D <-> 3D projections.
     * `distortion_parameters` : these are modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens.
 
 ```json
-"camera_parameters": { # optional field, intrinsic parameters for 2D <-> transforms
-    "height": 720, # height of the image in pixels
-    "width": 1280, # width of the image in pixels
+"intrinsic_parameters": { # optional field, intrinsic parameters for 2D <-> transforms
+    "height_px": 720, # height of the image in pixels
+    "width_px": 1280, # width of the image in pixels
     "fx": 900.538000, # focal length in pixels, x direction
     "fy": 900.818000, # focal length in pixels, y direction
     "ppx": 648.934000, # x center point in pixels
@@ -90,8 +90,8 @@ webcam is a model that streams the camera data from a camera connected to the ha
 	"attributes": {
     	"path": string, # path to the webcam,
     	"path_pattern": string, # if path is not provided, queries the devices on hardware to find the camera,
-    	"width": int, # camera image width, used with path_pattern to find camera,
-    	"height": int, # camera image height, used with path_pattern to find camera,
+    	"width_px": int, # camera image width, used with path_pattern to find camera,
+    	"height_px": int, # camera image height, used with path_pattern to find camera,
     	"format": string # image format, used with path_pattern to find camera,
 	}
 }
@@ -124,11 +124,11 @@ Model "align_color_depth" is if you have registered a color and depth camera alr
 	"model" : "align_color_depth",
 	"attributes": {
     	"stream": string, # either "color" or "depth" to specify the output stream
-    	"color": string, # the color camera's name
-    	"depth": string, # the depth camera's name
-    	"width": int, # the expected width of the aligned pic
-    	"height": int, # the expected height of the aligned pic
-    	"camera_parameters": {...}, # for projecting RGBD images to 2D <-> 3D 
+    	"color_camera_name": string, # the color camera's name
+    	"depth_camera_name": string, # the depth camera's name
+    	"width_px": int, # the expected width of the aligned pic
+    	"height_px": int, # the expected height of the aligned pic
+    	"intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D 
     	"intrinsic_extrinsic": {}, # the intrinsic/extrinsic parameters that relate the two cameras together in order to align the images.
     	"homography": {} # homography parameters that morph the depth points to overlay the color points and align the images.
 	}
@@ -145,8 +145,10 @@ Combine the point clouds from multiple camera sources and project them to be fro
 	"type": "camera",
 	"model" : "join_pointclouds",
 	"attributes": {
-    	"camera_sources": ["cam1", "cam2", "cam3"], # camera sources to combine
-    	"target_frame": "arm1" # the frame of reference for the points in the merged point cloud.
+    	"source_cameras": ["cam1", "cam2", "cam3"], # camera sources to combine
+    	"target_frame": "arm1", # the frame of reference for the points in the merged point cloud.
+    	"merge_method": "", # [opt] either "naive" or "icp"; defaults to "naive".
+    	"closeness_mm": 1 # [opt] defines how close 2 points should be together to be considered the same point when merged.
 	}
 }
 ```
@@ -168,7 +170,7 @@ Below are the available transformations, and the attributes they need.
 		"stream" : "color", # or depth
 		"pipeline": [
 			{ "type": "rotate", "attributes": {} },
-			{ "type": "resize", "attributes": {"width":200, "height" 100} }
+			{ "type": "resize", "attributes": {"width_px":200, "height_px" 100} }
 		]
 	}
 }
@@ -209,8 +211,8 @@ The Resize transform resizes the image to the specified height and width.
 {
 	"type": "resize",
 	"attributes": {
-		"width": int, 
-		"height": int
+		"width_px": int, 
+		"height_px": int
 	}
 }
 ```
@@ -252,9 +254,9 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 {
 	"type": "undistort",
 	"attributes": {
-		"camera_parameters": {
-			"width": int,
-			"height": int,
+		"intrinsic_parameters": {
+			"width_px": int,
+			"height_px": int,
 			"ppx": float, # the image center x point
 			"ppy": float, # the image center y point
 			"fx": float, # the image focal x
@@ -293,9 +295,9 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 {
 	"type": "depth_edges",
 	"attributes": {
-		"high_threshold": float, # between 0.0 - 1.0
-		"low_threshold": float, # between 0.0 - 1.0
-		"blur_radius": float # smooth image before applying filter 
+		"high_threshold_pct": float, # between 0.0 - 1.0
+		"low_threshold_pct": float, # between 0.0 - 1.0
+		"blur_radius_px": float # smooth image before applying filter 
 	}
 }
 ```

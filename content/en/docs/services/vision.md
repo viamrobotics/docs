@@ -20,6 +20,7 @@ Currently, there are three operations available through the vision service:
 
 The vision service is a default service on the robot, and can be initialized without attributes.
 
+There is a public repo with examples of how to use the vision service on [github.com/viamrobotics/vision-service-examples](https://github.com/viamrobotics/vision-service-examples) as well.
 
 ## VisModels
 
@@ -31,7 +32,7 @@ The vision service is a default service on the robot, and can be initialized wit
 | Classification    | tflite\_classifier | "model\_path", "label\_path", "num\_threads" |
 || tf\_classifier    | TBD - Not yet supported                       |
 | Segmentation      | radius\_clustering\_segmenter | "min\_points\_in\_plane", "min\_points\_in\_segment", "clustering\_radius\_mm", "mean\_k\_filtering"      |
-|| detector\_segmenter |  "detector\_name", "mean\_k", "sigma" |
+|| detector\_segmenter |  "detector\_name", "confidence\_threshold\_pct", "mean\_k", "sigma" |
 
 More about the parameters and model types can be found under the corresponding operation below.
 
@@ -200,6 +201,7 @@ The types of segmenters supported are:
 #### Detector Segmenters
 
 * **detector_name** is the name of the detector already registered in the vision service that will be turned into a segmenter.
+* **confidence_threshold_pct** is a number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5.
 * **mean_k** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html)[^mkf].  It should be set to be 5-10% of the minimum segment size.
     * Start with 5% and go up if objects are still too noisy.
     * If you don’t want to use the filtering, set the number to 0 or less.
