@@ -7,10 +7,10 @@ description: "A guide to Viam's organizational hierarchy and permissioning."
 ---
 
 ## Cloud App
-Users and organizations store, manage, and control their robotic fleets on the app's Website ([https://app.viam.com](https://app.viam.com)).
+Users and organizations store, manage, and control their robotic fleets on the website ([https://app.viam.com](https://app.viam.com)).
 
 ## Organization
-On the Viam App ([https://app.viam.com](https://app.viam.com)), robots belong to organizations.
+On Viam ([https://app.viam.com](https://app.viam.com)), robots belong to organizations.
 An organization can be an individual, a research group, or a company.
 
 A user can be a member of multiple organizations, but will always be a member of at least one organization.
