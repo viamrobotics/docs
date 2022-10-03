@@ -1,27 +1,27 @@
 ---
-title: "Viam High Level Overview"
-linkTitle: "Viam High Level Overview"
+title: "What is Viam?"
+linkTitle: "What is Viam?"
 weight: 1
 type: "docs"
-description: "A high-level discussion of Viam."
+description: "A high-level overview of Viam."
 ---
-A robot is very similar to a computer, but for one important difference: it interacts with its environment.
-This can involve collecting information about the environment and making decisions on behavior based on that information.
+Unlike a computer, a robot interacts with its environment.
+What does this mean? A robot can collect information about its environment and make behavioral decisions on based on that information.
 
-Robots can take many forms, from a simple wheeled rover to a much more complex system involving many [_components_](/docs/#components) such as a wheeled base, grippers, arms, various cameras and other sensors working together.
-A simpler system might be controlled by a single microcontroller or microprocessor (such as a Raspberry Pi, Jetson or Arduino), whereas a more complex system might contain more than one of these compute units.
-In addition to physical hardware, a robot may employ one or more Viam-built software modules such as navigation or vision algorithms, which we call [_services_](/docs/#services).
+Robots don't all look the same. They can range in complexity from a simple wheeled rover to a base with various [_components_](/docs/#components) such as grippers, arms, cameras and other sensors.
+A simple system might be controlled by a single computer (such as a Raspberry Pi, Jetson or Arduino), whereas a more complex system might be controlled by multiple.
+Whether their physical hardware is simple or complex, robots built on Viam can use our [_services_](/docs/#services) - on-device software with complex capabilities such as SLAM, Computer Vision, Motion Planning, and Data Collection. 
 
-At Viam, we call each compute unit (and the components it controls) a _part_.
-Thus a robot is organized into one or more parts, depending on the number of compute units it contains.
-Each part runs a session of the Viam server, which handles receiving API requests and translates them to hardware actuation.
-The Viam server reads in a configuration file that defines the components, services, and potentially other processes for the part.
+At Viam, each computer (and the components it controls) is a _part_.
+Robots are organized into one or more parts, depending on the number of computers they're comprised of.
+Each part runs a session of the viam-server, which handles receiving API requests and translating them into hardware actuation.
+The viam-server reads in a configuration file that defines the components, services, and other processes.
 
 Processes are scripts or programs run by the [Robot Development Kit (RDK)](/docs/product-overviews/rdk) whose life cycle is managed by the Viam server.
 One example is running a [Software Development Kit (SDK)](/docs/product-overviews/sdk-as-server) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
 
-Each `viam-server` instance is defined by a configuration file that describes the components it’s made of, the services it offers, and other parts of the robot that it wants to communicate with, which we call _remotes_.
-A remote represents a connection to another robot part that is part of the same robot.
+Each `viam-server` instance is defined by a configuration file that describes its components, the services, and other parts of the robot that it wants to communicate with, which we call _remotes_.
+A remote represents a connection to another robot part that belongs to the same robot.
 
 ![two-part-architecture](../img/overview-two-part-architecture.png)  
 _Figure 1.
