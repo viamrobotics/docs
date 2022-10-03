@@ -26,13 +26,13 @@ Locations live within organizations. All robots belong to a location.
 Locations allow organizations to sort and manage their robot fleets.
 Organizations often contain several locations.
 For example, Cool Robot Inc, which is one organization, may have three warehouses (in NYC, LA, and Chicago). Cool Robot Inc could organize its robots into three locations based on their physical presence in a given warehouse. 
-With that said, locations do not need to align with physical locations in the real world. Locations are simply a way to subdivide and mange robot fleets.
+With that said, locations do not need to align with physical locations in the real world. Locations are simply a way to subdivide and manage robot fleets.
 For example, some users may choose to use locations with names like "production" and "testing" to separate their robots by development stage (rather than by physical location).
 
 In some cases, locations alone may be insufficiently granular.
 When locations are insufficiently granular, users can create sublocations.
 Sublocations allow users to further segment their robot fleet.
-Revisiting the Cool Robot Inc example above, the company has expanded its fleet and now has two warehouses in NYC, “warehouse A” and “warehouse B.” The tw warehouses can each be a sublocation under the NYC location, allowing the company to organize and control robots based on their specific warehouse sublocation as well as more broadly based on their city location. 
+Revisiting the Cool Robot Inc example above, the company has expanded its fleet and now has two warehouses in NYC, “warehouse A” and “warehouse B.” The two warehouses can each be a sublocation under the NYC location, allowing the company to organize and control robots based on their specific warehouse sublocation as well as more broadly based on their city location. 
 
 Currently (subject to change), robots' access permissions are granted at the location level.
 If an organization invites external contributors or partner organizations to collaborate on robots, then they will share an entire location and its sublocations with those users or organizations.
