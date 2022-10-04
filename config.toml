@@ -1,5 +1,5 @@
 # Language settings
-contentDir = "content/en"
+contentDir = "docs/"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 # Useful when translating.
@@ -12,7 +12,8 @@ enableGitInfo = false  ## Set this to false to disable the last cimmit date/mess
 
 # Comment out to enable taxonomies in Docsy
 # disableKinds = ["taxonomy", "taxonomyTerm"]
-disableKinds = ["home"]
+disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
+#disableKinds = ["home"]
 
 # You can add your own taxonomies
 [taxonomies]
@@ -79,7 +80,7 @@ weight = 1
 
 # Comment out if you don't want the "print entire section" link enabled.
 [outputs]
-section = ["HTML", "print", "RSS"]
+section = ["HTML"]
 
 [params]
 #tos_statement = "https://www.viam.com/terms"
@@ -110,7 +111,7 @@ archived_version = false
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
-url_latest_version = "https://docs.viam.com/docs"
+url_latest_version = "https://docs.viam.com/"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
 #github_repo = "https://github.com/viamrobotics/tutorials-and-docs" 
