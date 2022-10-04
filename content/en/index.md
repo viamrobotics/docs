@@ -12,6 +12,7 @@ See also:
 
 - [Viam Overview](../docs/getting-started/high-level-overview)
 - [Viam's Robot Configuration](../docs/getting-started/robot-config)
+- [Installing viam-server on Linux](../docs/getting-started/linux-install)
 
 ## Product Overviews
 - [The Viam App's Organizational Hierarchy](../docs/product-overviews/organization-management)
