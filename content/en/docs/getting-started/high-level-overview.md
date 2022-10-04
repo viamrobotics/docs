@@ -21,7 +21,7 @@ Processes are scripts or programs run by the [Robot Development Kit (RDK)](/docs
 One example is running a [Software Development Kit (SDK)](/docs/product-overviews/sdk-as-server) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
 
 Each `viam-server` instance is defined by a configuration file that describes its components, the services it employs, and other parts of the robot that it wants to communicate with, which we call _remotes_.
-A remote represents a connection to another robot part that belongs to the same robot.
+A remote represents a connection to another robot.
 
 ![two-part-architecture](../img/overview-two-part-architecture.png)  
 _Figure 1.
