@@ -5,7 +5,7 @@ weight: 1
 type: "docs"
 description: "A high-level overview of Viam."
 ---
-Unlike a computer, a robot interacts with its environment.
+A robot is a computer that interacts with its environment.
 What does this mean? A robot can collect information about its environment and make behavioral decisions on based on that information.
 
 Robots don't all look the same. They can range in complexity from a simple wheeled rover to a base with various [_components_](/docs/#components) such as grippers, arms, cameras and other sensors.
