@@ -45,6 +45,8 @@ Here are details about each of the fields in the camera config:
 }
 ```
 
+Follow the instructions [here](https://github.com/viamrobotics/camera-calibration) to calibrate a camera and extract the `camera_parameters` and `distortion_parameters`.
+
 ### Single Stream
 
 single_stream is a model where there is a camera server streaming image data. You must specify if it is streaming "color", "depth" data. Single_stream can only output a point cloud if a "depth" stream is selected. Color streams will fail at producing point clouds.
