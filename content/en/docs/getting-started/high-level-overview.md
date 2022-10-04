@@ -15,6 +15,7 @@ Whether their physical hardware is simple or complex, robots built on Viam can u
 At Viam, each computer (and the components it controls) is called a _part_.
 Robots are organized into one or more parts, depending on the number of computers they're comprised of.
 A robot with multiple parts will have one main part and any number of _sub-parts_.
+A robot with multiple parts will have one main part and any number of _sub-parts_.
 Each part runs a session of the viam-server, which handles receiving API requests and translating them into hardware actuation.
 The viam-server reads in a configuration file that defines the components, services, and other processes.
 
