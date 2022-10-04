@@ -26,7 +26,7 @@ For `Model`, select `pi`:
 Next, add one of the `motor` controllers and see if you can make the wheel spin.
 As with all other components, the first step is to select `NEW COMPONENT`.
 Start with the right set of wheels, and name the component `right`.
-For the `Type` select `motor`, for the `Model` select `pi`, and for `Depends On` select `local` since that is what this motor is wired to.
+For the `Type` select `motor`, for the `Model` select `GPIO`, and for `Depends On` select `local` since that is what this motor is wired to.
 
 You will need to tell Viam how this motor is wired to the Pi.
 If the Yahboom setup instructions are followed correctly, the following `pins` should be correct: set `a` to `35`, `b` to `37`, and `pwm` (pulse-width modulation) to `33`.
