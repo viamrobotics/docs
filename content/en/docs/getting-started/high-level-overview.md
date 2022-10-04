@@ -12,7 +12,7 @@ Robots don't all look the same. They can range in complexity from a simple wheel
 A simple system might be controlled by a single computer (such as a Raspberry Pi, Jetson or Arduino), whereas a more complex system might involve multiple computers controlling different parts of the robot.
 Whether their physical hardware is simple or complex, robots built on Viam can use our [_services_](/docs/#services) - on-device software with complex capabilities such as SLAM, Computer Vision, Motion Planning, and Data Collection. 
 
-At Viam, each computer (and the components it controls) is a _part_.
+At Viam, each computer (and the components it controls) is called a _part_.
 Robots are organized into one or more parts, depending on the number of computers they're comprised of.
 Each part runs a session of the viam-server, which handles receiving API requests and translating them into hardware actuation.
 The viam-server reads in a configuration file that defines the components, services, and other processes.
