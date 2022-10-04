@@ -152,30 +152,6 @@ For our changes to take effect, we need to restart our Raspberry Pi.
 sudo reboot
 ```
 
-## Installing viam-server
-
-Now that you are on the Pi, download the most recent stable viam-server AppImage package (recommended): 
-
-```bash
-wget http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -O viam-server
-```
-Or, you can install the very latest viam-server AppImage package:
-
-```bash
-wget http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -O viam-server
-```
-
-Either way, make it executable by running the following command:
-
-```bash
-chmod 755 viam-server
-```
-
-Then install it as root:
-```bash
-sudo ./viam-server --aix-install
-```
-
 ## Adding your Pi on the Viam App
 
 In your web browser, navigate to the Viam App ([https://app.viam.com](https://app.viam.com)) and log in.
@@ -191,35 +167,38 @@ Select your location and use the form on the right to create a new Robot. If thi
 
 ![add-robot](../../tutorials/img/add-robot.png)
 
-Navigate to your new robot, which should show an empty config as shown below:
+Navigate to your new robot, which should show the setup page as shown below:
 
-![view-robot](../../tutorials/img/view-robot.png)
+![view-robot](../../tutorials/img/view-robot.jpg)
 
-Now you have to copy the JSON data into the '/etc/viam.json' file on your Pi.
-This can be done by going back to the terminal window connected to your Pi and running the following: 
+## Follow the steps on the setup tab:
 
-```bash
-echo '<delete this placeholder text including < and > symbols, paste the config you will copy in the next step into these quotes, keep the quotes themselves>' | sudo tee /etc/viam.json
+1. Setup Viam App Config on Single Board Computer (SBC)<br/>
+_This config tells the robot where to look on app.viam.com to pull its config._<br/>
+- Click the copy button to copy the text.
+- Go to the terminal window connected to your Pi and paste the text and press enter.<br/>
+_This creates an etc/viam.json file containing something like:<br/>
 ```
-It will look like this (starting with your own username and hostname) when you delete the placeholder text and keep the quotes: 
+{"cloud":{"app_address":"https://app.viam.com:443","id":"{id}","secret":"{secret}"}}
+```
 
-![copytingjsondata-empty](../../tutorials/img/terminal-copytingjsondata-empty.png)
+2. Download and Install Viam Server<br/>
+_Now that you are on your SBC, download the latest viam-server Appimage package:_<br/>
+- Click the copy button to copy the text.
+- Go to the terminal window connected to your Pi and paste the text and press enter.<br/>
+_This installs the viam server._
 
-Now go back to the Viam App ([https://app.viam.com](https://app.viam.com)) on your browser and click `COPY VIAM-SERVER CONFIG` at the bottom of the Config tab.
-This should fill your clipboard with the JSON config needed for your Pi to talk to the Viam App as this robot.
-Go back to your terminal and paste this between the quotes.
-
-It should look like this:
-
-![copytingjsondata-filled](../../tutorials/img/terminal-copytingjsondata-filled.png)
-
-Run it, then restart the viam-server:
+3. Restart the viam-server:
 
 ```bash
 sudo systemctl restart viam-server
 ```
 
 Refresh the page on the Viam App ([https://app.viam.com](https://app.viam.com)) to confirm the Pi has connected and pulled the config by looking at the top of the Robot page and seeing that `host` and `ips` fields are populated and that the `last online` field reads `live`.
+
+You should also see the the notification on the setup page that says "Your robot is connected!"
+
+![your-robot-is-connected](../../tutorials/img/your-robot-is-connected.jpg)
 
 ## Next Steps
 Now that you have the viam-server up and running, you can start configuring your robot and the real fun can begin!
