@@ -99,7 +99,7 @@ Raw JSON:
     {
       "parameters": {
         "segment_size_px": 100,
-        "tolerance_pct": 0.06,
+        "hue_tolerance_pct": 0.06,
         "detect_color": "#19FFD9"
       },
       "type": "color_detector",
@@ -193,7 +193,7 @@ Below is an example JSON file that includes the board, base and camera component
             "parameters": {
               "detect_color": "#19FFD9",
               "segment_size_px": 100,
-              "tolerance_pct": 0.06
+              "hue_tolerance_pct": 0.06
             },
             "type": "color"
           }
