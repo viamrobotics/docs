@@ -169,7 +169,7 @@ Select your location and use the form on the right to create a new Robot. If thi
 
 Navigate to your new robot, which should show the setup page as shown below:
 
-![view-robot](../../tutorials/img/view-robot.jpg)
+![view-robot](../img/view-robot.jpg)
 
 ## Follow the steps on the setup tab:
 
@@ -198,7 +198,7 @@ Refresh the page on the Viam App ([https://app.viam.com](https://app.viam.com)) 
 
 You should also see the the notification on the setup page that says "Your robot is connected!"
 
-![your-robot-is-connected](../../tutorials/img/your-robot-is-connected.jpg)
+![your-robot-is-connected](../img/your-robot-is-connected.jpg)
 
 ## Next Steps
 Now that you have the viam-server up and running, you can start configuring your robot and the real fun can begin!

@@ -45,6 +45,8 @@ Here are details about each of the fields in the camera config:
 }
 ```
 
+Follow the instructions [here](https://github.com/viam-labs/camera-calibration) to calibrate a camera and extract the `intrinsic_parameters` and `distortion_parameters`.
+
 ### Single Stream
 
 single_stream is a model where there is a camera server streaming image data. You must specify if it is streaming "color", "depth" data. Single_stream can only output a point cloud if a "depth" stream is selected. Color streams will fail at producing point clouds.
@@ -88,8 +90,8 @@ webcam is a model that streams the camera data from a camera connected to the ha
 	"type": "camera",
 	"model" : "webcam",
 	"attributes": {
-    	"path": string, # path to the webcam,
-    	"path_pattern": string, # if path is not provided, queries the devices on hardware to find the camera,
+    	"video_path": string, # path to the webcam,
+    	"video_path_pattern": string, # if path is not provided, queries the devices on hardware to find the camera,
     	"width_px": int, # camera image width, used with path_pattern to find camera,
     	"height_px": int, # camera image height, used with path_pattern to find camera,
     	"format": string # image format, used with path_pattern to find camera,
@@ -234,7 +236,7 @@ Actual depth information is lost in the transform.
 
 Overlay overlays the depth and color 2D images. Useful in order to debug the alignment of the two images.
 
-```
+```json
 {
 	"type": "overlay",
 	"attributes": {

@@ -53,7 +53,7 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
               "type": "color_detector",
               "parameters": {
                 "detect_color" : "#A3E2FF",
-                "tolerance_pct": 0.06,
+                "hue_tolerance_pct": 0.06,
                 "segment_size_px": 100
               }
             },
@@ -79,7 +79,7 @@ __2D Object Detection__ is the process of taking a 2D image from a camera and id
 What an object “is” depends on what is required for the task at hand.
 To accommodate the open-endedness of what kind of object a user may need to identify, the service provides different types of detectors, both heuristic and machine-learning based, so that users can create, register, and use detectors suited for their own purposes.
 
-### The Detection API 
+### The Detection API
 
 Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 
@@ -101,10 +101,12 @@ The types of the detector supported are:
 
 * **detect_color**: the color to detect in the image, as a string of the form #RRGGBB.
 The color is written as a hexadecimal string prefixed by ‘#’.
-* **tolerance_pct**: A number between 0.0 and 1.0 and defines how strictly the detector must match to the color requested.
-0.0 means the color must match exactly, while 1.0 will match to every color, regardless of the input color.
+* **hue_tolerance_pct**: A number > 0.0 and <= 1.0 and defines how strictly the detector must match to the hue of the color requested.
+~0.0 means the color must match exactly, while 1.0 will match to every color, regardless of the input color.
 0.05 is a good starting value.
-* **segment_size_px:** An integer that sets a minimum size (in pixels) of the returned objects, and filters out all other found objects below that size.
+* **segment_size_px:** An integer that sets a minimum size (in pixels) of a contiguous color region to be detected, and filters out all other found objects below that size.
+* **saturation_cutoff_pct (optional)**: A number > 0.0 and <= 1.0 which defines the minimum saturation before a color is ignored. Defaults to 0.2.
+* **value_cutoff_pct (optional)**: A number > 0.0 and <= 1.0 which defines the minimum value before a color is ignored. Defaults to 0.3.
 
 #### TFLite detector parameters
 * **model_path**: The path to the .tflite model file, as a string.
@@ -132,7 +134,7 @@ __2D Image Classification__ is the process of taking a 2D image from a camera an
 
 Which class labels may be considered for classification varies and will depend on the machine learning model and how it was trained.
 
-### The Classification API 
+### The Classification API
 
 Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 

@@ -1,5 +1,5 @@
 # Language settings
-contentDir = "docs/"
+contentDir = "content/en"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 # Useful when translating.
@@ -12,8 +12,6 @@ enableGitInfo = false  ## Set this to false to disable the last cimmit date/mess
 
 # Comment out to enable taxonomies in Docsy
 # disableKinds = ["taxonomy", "taxonomyTerm"]
-disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
-#disableKinds = ["home"]
 
 # You can add your own taxonomies
 [taxonomies]
@@ -80,17 +78,12 @@ weight = 1
 
 # Comment out if you don't want the "print entire section" link enabled.
 [outputs]
-section = ["HTML"]
+section = ["HTML", "print", "RSS"]
 
 [params]
-#tos_statement = "https://www.viam.com/terms"
-#user_agreement = "https://www.viam.com/agreement"
-copyright = "Viam, Inc. Viam is licensed under Creative Commons ShareAlike License. "
-privacy_policy = "https://www.viam.com/privacy"
-
-## This supports the include.html shortcode
-includes_dir = "_includes"
-
+copyright = "Viam, Inc. All rights reserved. Portions of Viam is licensed under the GPLv3, AGPLV3, and MIT licenses."
+privacy_policy = "https://policies.google.com/privacy"
+canonifyURLs = true
 
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
@@ -114,8 +107,7 @@ archived_version = false
 url_latest_version = "https://docs.viam.com/"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-#github_repo = "https://github.com/viamrobotics/tutorials-and-docs" 
-
+github_repo = "https://github.com/viamrobotics/humig2" ## This will need to change when we move/rename
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
 #github_project_repo = "https://github.com/google/docsy"
 
@@ -133,10 +125,10 @@ github_branch= "master"
 algolia_docsearch = false
 
 # Enable Lunr.js offline search
-offlineSearch = true
+offlineSearch = false
 
 # Enable syntax highlighting and copy buttons on code blocks with Prism
-prism_syntax_highlighting = true
+prism_syntax_highlighting = false
 
 # User interface configuration
 [params.ui]
@@ -181,28 +173,11 @@ enable = false
   url = "https://twitter.com/viamrobotics"
   icon = "fab fa-twitter"
   desc = "Follow us on Twitter to get the latest news!"
-[[params.links.user]]
-  name ="Medium"
-  url = "https://viamrobotics.medium.com/"
-  icon = "fab fa-medium"
-  desc = "Follow us on Medium to to read interesting articles about robotics!"  
-[[params.links.user]]
-  name = "Instagram"
-  url = "https://www.instagram.com/viamrobotics/"
-  icon = "fab fa-instagram"
-  desc = "Follow us on Instagram for the latest cool pics of life at Viam!"
-[[params.links.user]]
-  name = "Linkedin"
-  url = "https://www.linkedin.com/company/viaminc/about/"
-  icon = "fab fa-linkedin"
-  desc = "Connect with Viam on LinkedIn for news and information"
 #[[params.links.user]]
 #  name = "Stack Overflow"
 #  url = "https://example.org/stack"
 #  icon = "fab fa-stack-overflow"
 #  desc = "Practical questions and curated answers"
-
-
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
   name = "GitHub"
@@ -219,7 +194,6 @@ enable = false
   url = "mailto:developers-help@viam.com"
   icon = "fa fa-envelope"
   desc = "Ask questions about the Viam SDK"
-
 
 # hugo module configuration
 
