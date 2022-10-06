@@ -54,7 +54,7 @@ If a library already exists, then you just need to write a few lines of code.
 To read more on how to do this, check out our documentation on [Using Our SDKs for a Server Component Implementation](/docs/product-overviews/sdk-as-server).
 Your part will manage this process and expose the API as it does with all of your other components.
 
-If and when you start collaborating with other users, then you may wish to manage their access to different robots.
+If and when you start collaborating with other users, you may wish to manage their access to different robots.
 You can organize robots, users, and organizations using [Viam’s Organizational Management System](/docs/product-overviews/organization-management).
 
 More detailed information can be found in the product overview and deep dive documents.
