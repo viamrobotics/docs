@@ -58,4 +58,4 @@ If and when you start collaborating with other users, you may wish to manage the
 You can organize robots, users, and organizations using [Viam’s Organizational Management System](/docs/product-overviews/organization-management).
 
 More detailed information can be found in the product overview and deep dive documents.
-To start making robots with Viam, [Get a Viam-Server Running on a Raspberry Pi](/docs/getting-started/installation) or explore our other [Tutorials](/docs/tutorials/tutorials).
+To start making robots with Viam, [get a viam-server running on a Raspberry Pi](/docs/getting-started/installation) or explore our other [tutorials](/docs/tutorials/tutorials).
