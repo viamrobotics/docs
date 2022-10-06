@@ -10,7 +10,7 @@ It sends signals to the other hardware components, and may or may not also act a
 Boards have general purpose input/output (GPIO) pins through
 which they can transmit [PWM](https://en.wikipedia.org/wiki/Pulse-width_modulation)[^pwm] and other signals.
 
-[^pwm]: PWM (Pulse Width Modulation): [https://en.wikipedia.org/wiki/Pulse-width_modulation](https://en.wikipedia.org/wiki/Pulse-width_modulation)
+[^pwm]: <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">PWM (Pulse Width Modulation): https://en.wikipedia.org/wiki/Pulse-width_modulation</a>
 
 Some examples of boards include Raspberry Pi, BeagleBone, and Jetson.
 These are all single-board computers (SBCs) capable of advanced computation, including running the Viam server.
@@ -86,7 +86,7 @@ GPIO pins are built for logic levels of power, i.e., 3.3V and 16mA per pin.
 Power amplification (a motor driver or relay) would be necessary.
 - Receive signals over 3.3V (or whatever the logic voltage is on a given board).
 
-If you are using GPIO pin methods like `gpio_pin_by_name` [(documented here)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.gpio_pin_by_name) you do not need to configure anything about the pins in your config file. The pins are automatically configured based on the board model you put in your config, and you can access them using the board pin number (*not* the GPIO number). You can find these pin numbers [here (pinout.xyz)](https://pinout.xyz/) or by running `pinout` in your Pi terminal.
+If you are using GPIO pin methods like `gpio_pin_by_name` ([documented in our Python SDK](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.gpio_pin_by_name)) you do not need to configure anything about the pins in your config file. The pins are automatically configured based on the board model you put in your config, and you can access them using the board pin number (*not* the GPIO number). You can find these pin numbers from an online service such as <a href="https://pinout.xyz" Target="_blank">pinout.xyz</a> or by running `pinout` in your Pi terminal.
 
 ## Analogs
 
@@ -216,8 +216,7 @@ If you are using a Raspberry Pi, the “built-in” chip select pins are labeled
 The required connections between corresponding board pins and peripheral device pins must be wired, but each of these pins does not need to be specified in the config as most boards have them configured by default.
 Only the index of the entire bus must be specified.
 
-[^spi]: Serial Peripheral Interface (SPI):[https://en.wikipedia.org/wiki/Serial_Peripheral_Interface] (https://en.wikipedia.org/wiki/Serial_Peripheral_Interface)
-
+[^spi]: <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface target=_blank">Serial Peripheral Interface (SPI): https://en.wikipedia.org/wiki/Serial_Peripheral_Interface</a>
 
 #### Configuration
 
@@ -246,8 +245,9 @@ I2C stands for inter-integrated circuit and is similar to SPI but requires fewer
 Some boards that support I2C have the SDA and SCL pins configured by default, so in your config file you need only specify which I2C bus you are using.
 For example, if you use I2C bus 1 on a Raspberry Pi 4, SDA and SCL will be pins 3 and 5, respectively.
 You will also need to enable I2C on your board if it is not enabled by default.
-See instructions [here for how to enable it on a Raspberry Pi 4](https://docs.viam.com/getting-started/installation/#enabling-the-i2c-protocol-on-the-raspberry-pi).
-[Here is more information about I2C on Raspberry Pi.](https://pinout.xyz/pinout/i2c)
+Review the [instructions in our documentation](https://docs.viam.com/getting-started/installation/#enabling-the-i2c-protocol-on-the-raspberry-pi) to learn how to enable I2C on a Raspberry Pi 4.
+<a href="https://pinout.xyz/pinout/i2c" target="_blank">Pinout.xyz</a>[^pocom] has additional information about I2C on Raspberry Pi.
+[^pocom]: <a href="https://pinout.xyz/pinout/i2c" target="_blank">I2C - Inter Integrated Circuit on Pinout.xyz: https://pinout.xyz/pinout/i2c</a>
 
 #### Configuration
 
