@@ -216,7 +216,7 @@ If you are using a Raspberry Pi, the “built-in” chip select pins are labeled
 The required connections between corresponding board pins and peripheral device pins must be wired, but each of these pins does not need to be specified in the config as most boards have them configured by default.
 Only the index of the entire bus must be specified.
 
-[^spi]: Serial Peripheral Interface (SPI):[https://en.wikipedia.org/wiki/Serial_Peripheral_Interface] (https://en.wikipedia.org/wiki/Serial_Peripheral_Interface)
+[^spi]: Serial Peripheral Interface (SPI): [https://en.wikipedia.org/wiki/Serial_Peripheral_Interface](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface)
 
 
 #### Configuration
