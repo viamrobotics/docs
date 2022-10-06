@@ -36,8 +36,8 @@ Parts communicate with one another using a consistent and unified API, regardles
 This is done via [WebRTC](https://en.wikipedia.org/wiki/WebRTC) using the [gRPC and protobuf APIs](../../deeper-dive/architecture-and-protobuf).
 This SDK API is available in any language, and provides direct and secure connections to and between parts.
 
-After installing the Viam server on a computer (like a Raspberry Pi), you can connect your newly minted part to the Viam App ([https://app.viam.com](https://app.viam.com)).
-The web app provides a page for each robot to do the following:
+After installing the Viam server on a computer, you can connect your newly minted part to Viam ([https://app.viam.com](https://app.viam.com)).
+The Viam app provides a page for each robot, populated with the following tabs:
 
 - Logs: Displays `viam-server` logs including status changes and error messages.
 - Config: Provides a UI for building out your robot configuration.
