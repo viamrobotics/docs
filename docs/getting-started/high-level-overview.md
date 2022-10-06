@@ -35,7 +35,7 @@ This is done via [WebRTC](https://en.wikipedia.org/wiki/WebRTC) using the [gRPC 
 This SDK API is available in any language, and provides direct and secure connections to and between parts.
 
 After installing the Viam server on a computer, you can connect your newly minted part to Viam ([https://app.viam.com](https://app.viam.com)).
-The website provides a page for each of the following:
+The Viam app provides a page for each robot, populated with the following tabs:
 
 - Logs: Displays `viam-server` logs including status changes and error messages.
 - Config: Provides a UI for building out your robot configuration.
