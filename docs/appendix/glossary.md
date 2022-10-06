@@ -33,7 +33,7 @@ The location of a frame is described in relation to its parent frame using rigid
 
 **gRPC**: gRPC Remote Procedure Calls is a cross-platform open source high performance Remote Procedure Call (RPC) framework[^grpc].
 
-[^grpc]: GRPC, webpage, 2022, Wikipedia authors: https://en.wikipedia.org/wiki/GRPC
+[^grpc]: <a href="https://en.wikipedia.org/wiki/GRPC">GRPC, webpage, 2022, Wikipedia authors: `https://en.wikipedia.org/wiki/GRPC </a> 
 
 **Model**: A particular implementation of a component type.
 For example, UR5e is a model of the arm component type.
