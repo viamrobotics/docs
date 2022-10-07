@@ -2,7 +2,7 @@
 
 We’ve ported the documentation to Hugo. Hugo is more versatile than MkDocs and provides a better platform for our docs.
 
-##What you’ll need to do:
+## What you’ll need to do:
 
 **Install Hugo**: [https://gohugo.io/getting-started/installing/](https://gohugo.io/getting-started/installing/)
 
