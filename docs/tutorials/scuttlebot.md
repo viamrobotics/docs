@@ -268,4 +268,4 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle
 
   * **Controlling a Scuttle Robot on Viam with a Bluetooth Gamepad**: [https://docs.viam.com/tutorials/scuttle-gamepad/](https://docs.viam.com/tutorials/scuttle-gamepad/)
 
-  * **Line Following with Scuttle Robot on Viam**: [https://docs.viam.com/tutorials/webcam-line-follower-robot/](https://docs.viam.com/tutorials/webcam-line-follower-robot/)
+  * **Line Following with SCUTTLE Robot on Viam**: [https://docs.viam.com/tutorials/webcam-line-follower-robot/](https://docs.viam.com/tutorials/webcam-line-follower-robot/)
