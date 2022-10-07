@@ -162,5 +162,5 @@ As there is no straight-line path to the goal that does not intersect the obstac
 
 See also:
 
-<a href="/docs/services/motion">Viam's Motion Service</a>
+<a href="/services/motion">Viam's Motion Service</a>
 
