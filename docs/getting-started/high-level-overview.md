@@ -56,16 +56,9 @@ If a library already exists, then you just need to write a few lines of code.
 To read more on how to do this, check out our documentation on [Using Our SDKs for a Server Component Implementation](/product-overviews/sdk-as-server).
 Your part will manage this process and expose the API as it does with all of your other components.
 
-<<<<<<< HEAD
-If and when you start collaborating with other users, you may wish to manage their access to different robots.
-You can organize robots, users, and organizations using [Viam’s Organizational Management System](/product-overviews/organization-management).
-
-More detailed information can be found in the product overview and deep dive documents.
-To start making robots with Viam, [get a viam-server running on a Raspberry Pi](/getting-started/installation) or explore our other [tutorials](/tutorials/tutorials).
-=======
 If and when you start collaborating with other users, then you may wish to manage their access to different robots.
 You can organize robots, users, and organizations using [Viam’s Organizational Management System](/product-overviews/organization-management).
 
 More detailed information can be found in the product overview and deep dive documents.
 To start making robots with Viam, [Get a Viam-Server Running on a Raspberry Pi](/getting-started/installation) or explore our other [Tutorials](/tutorials/tutorials).
-(additional copy edits)
+
