@@ -122,7 +122,7 @@ Once again, you’ll select **NEW COMPONENT**. The config attributes for the <co
 Viam opens the component config panel for the wheel.</li>
 <li class="spacing">Now, tell Viam how this motor is wired to the Pi:</li>
 <ol type="a">
-<li class="spacing" style="list-style-type:lower-alpha">First, select the board name from the <strong>Depends On</strong>, which is "local." 
+<li class="spacing" style="list-style-type:lower-alpha">First, select the board name from the <strong>Depends On</strong>, which in our case is "local."
 
 <li class="spacing" style="list-style-type:lower-alpha">Now, make the following changes in the Left-Wheel's JSON:</li>
 <OL type="a">
