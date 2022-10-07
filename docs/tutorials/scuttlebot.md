@@ -284,10 +284,10 @@ You can also check out our [Bluetooth Gamepad Tutorial For Scuttle with a Pi](..
 
 ## Referenced Document URLs
 
-  * **Installing Raspian on the Raspberry Pi**: [https://docs.viam.com/docs/getting-started/installation/#installing-raspian-on-the-raspberry-pi](https://docs.viam.com/docs/getting-started/installation/#installing-raspian-on-the-raspberry-pi)
+  * **Installing Raspian on the Raspberry Pi**: [https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi](https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi)
 
-  * **Color Detection with Scuttle Robot on Viam**: [https://docs.viam.com/docs/tutorials/color-detection-scuttle/](https://docs.viam.com/docs/tutorials/color-detection-scuttle/)
+  * **Color Detection with Scuttle Robot on Viam**: [https://docs.viam.com/tutorials/color-detection-scuttle/](https://docs.viam.com/tutorials/color-detection-scuttle/)
 
-  * **Controlling a Scuttle Robot on Viam with a Bluetooth Gamepad**: [https://docs.viam.com/docs/tutorials/scuttle-gamepad/](https://docs.viam.com/docs/tutorials/scuttle-gamepad/)
+  * **Controlling a Scuttle Robot on Viam with a Bluetooth Gamepad**: [https://docs.viam.com/tutorials/scuttle-gamepad/](https://docs.viam.com/tutorials/scuttle-gamepad/)
 
-  * **Line Following with Scuttle Robot on Viam**: [https://docs.viam.com/docs/tutorials/webcam-line-follower-robot/](https://docs.viam.com/docs/tutorials/webcam-line-follower-robot/)
+  * **Line Following with Scuttle Robot on Viam**: [https://docs.viam.com/tutorials/webcam-line-follower-robot/](https://docs.viam.com/tutorials/webcam-line-follower-robot/)
