@@ -112,11 +112,11 @@ Some motors have a built-in set of Hall effect sensors for this purpose, and oth
 Brushless DC motor drivers work in much the same way as brushed DC motor drivers.
 They typically require a PWM/DIR input or a A/B and PWM input to set the motor power and direction.
 The key difference between a brushed and brushless motor driver is on the motor output side.
-Brushless motors typically have three power connections (commonly referred to as A, B and C; or sometimes Phase 1, 2 and 3) and 3 sensor connections (commonly referred to as Hall A, Hall B and Hall C) running between the motor and driver.
+Brushless motors typically have three power connections (commonly referred to as A, B and C; or sometimes Phase 1, 2 and 3) and 3 sensor connections (commonly referred to as Hall A, Hall B, and Hall C) running between the motor and driver.
 
 ### Wiring and Configuration
 The configuration file of a BLDC motor with Viam is the same as that of a brushed motor.
-Only the output side of the driver board is different, i.e. more wires connect the driver to the motor.
+Only the output side of the driver board is different, i.e., more wires connect the driver to the motor.
 
 ![motor-brushless-dc-wiring](../img/motor-brushless-dc-wiring.png)  
 
@@ -135,7 +135,7 @@ Here's an example of an encoded DC motor wired with [this motor driver](https://
 ### Viam Configuration
 
 Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.”
-Configuration of an encoder requires configuring the encoder [per this document](../encoder) in addition to the [standard “gpio” model attributes](motor#required-attributes---non-encoded-dc-motor). Also note that the encoder name must be added in the motor's `depends_on` field.
+Configuration of an encoder requires configuring the encoder [per this document](../encoder) in addition to the [standard “gpio” model attributes](#required-attributes---non-encoded-dc-motor). Also note that the encoder name must be added in the motor's `depends_on` field.
 Here’s an example config file:  
 
 ![motor-encoded-dc-json](../img/motor-encoded-dc-json.png)  
