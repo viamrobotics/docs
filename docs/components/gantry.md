@@ -135,7 +135,6 @@ In addition to the attributes for single-axis gantries, multi-axis gantries also
 </table>
 
 
-
 ## Gantry Methods 
 
 All gantries implement the following methods:
