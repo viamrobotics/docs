@@ -198,7 +198,7 @@ If you click the **Discrete** tab, then you'll see different movement modes such
 
 Now you have a rover that you can drive via Viam's UI at [https://app.viam.com](https://app.viam.com).
 
-When you feel ready, try driving your SCUTTLE Robot around.
+Try driving your SCUTTLE Robot around using the WASD keyboard controls described above.
 
 {{< caution >}}
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
