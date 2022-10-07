@@ -129,7 +129,7 @@ On the Viam platform (https://app.viam.com), click **CONFIG** and then click **P
 ]
 ```
 
-This configures the HTTP server to run on port 8181 of your Pi. You can visit it at [http://your-raspi-address:8181/](http://your-raspi-address:8181/) to view a slowly refreshing image from the color camera.
+This configures the HTTP server to run on port 8181 of your Pi. You can access the server at [http://your-raspi-address:8181/](http://your-raspi-address:8181/) to view a slowly refreshing image from the color camera.
 
 The endpoints that it creates are:
 
