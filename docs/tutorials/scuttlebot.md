@@ -7,7 +7,7 @@ description: "Instructions for configuring a SCUTTLE Robot on the Viam platform"
 ---
 This tutorial will guide you through setting up a SCUTTLE Robot with a camera.
 
-## Prerequisites
+## Requirements
 
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
 Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/installation/#installing-raspian-on-the-raspberry-pi), if necessary.
