@@ -8,6 +8,8 @@ description: "A high-level discussion of Viam."
 A robot is very similar to a computer, but for one important difference: it interacts with its environment.
 This can involve collecting information about the environment and making decisions on behavior based on that information.
 
+
+
 Robots can take many forms, from a simple wheeled rover to a much more complex system involving many [_components_](/docs/#components) such as a wheeled base, grippers, arms, various cameras and other sensors working together.
 A simpler system might be controlled by a single microcontroller or microprocessor (such as a Raspberry Pi, Jetson or Arduino), whereas a more complex system might contain more than one of these compute units.
 In addition to physical hardware, a robot may employ one or more Viam-built software modules such as navigation or vision algorithms, which we call [_services_](/docs/#services).
@@ -31,8 +33,11 @@ Part 1 is the main part and could exist without Part 2.
 Part 2 is a remote._
 
 Parts communicate with one another using a consistent and unified API, regardless of the hardware they are running on.
-This is done via [WebRTC](https://en.wikipedia.org/wiki/WebRTC) using the [gRPC and protobuf APIs](../../deeper-dive/architecture-and-protobuf).
+This is done via <a href="https://en.wikipedia.org/wiki/WebRTC)" target="_blank">WebRTC</a>[^webrtc]  using the [gRPC and protobuf APIs](../../deeper-dive/architecture-and-protobuf).
 This SDK API is available in any language, and provides direct and secure connections to and between parts.
+
+[^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC)" target="_blank">WebRTC: https://en.wikipedia.org/wiki/WebRTC</a> 
+
 
 After installing the Viam server on a computer (like a Raspberry Pi), you can connect your newly minted part to the Viam App ([https://app.viam.com](https://app.viam.com)).
 The web app provides a page for each robot to do the following:
