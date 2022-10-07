@@ -5,7 +5,7 @@ weight: 20
 type: "docs"
 description: "Explanation of board types, configuration, and usage in Viam."
 ---
-In the Viam framework, a **board** is the signal wire hub of a [robot part](/docs/product-overviews/organization-management/#robots-and-their-parts).
+In the Viam framework, a **board** is the signal wire hub of a [robot part](/product-overviews/organization-management/#robots-and-their-parts).
 It sends signals to the other hardware components, and may or may not also act as the software hub, running an instance of the Viam server on its CPU.
 Boards have general purpose input/output (GPIO) pins through
 which they can transmit [PWM](https://en.wikipedia.org/wiki/Pulse-width_modulation)[^pwm] and other signals.
