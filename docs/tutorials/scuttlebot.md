@@ -31,7 +31,7 @@ If you already have a Location, then this step is optional. </li>
     In this tutorial, we've named the board "local."
     As long as you;re consistent, you can name the <code>board</code> whatever you want.</li>
     <li class="spacing">Select the component <strong>Type</strong>, "board."</li>
-    <li class="spacing">Select "Pi" from the <strong>Model</strong> drop-down.</li>
+    <li class="spacing">Select "pi" from the <strong>Model</strong> drop-down.</li>
     <li class="spacing">Click <strong>Save Config</strong> to save the new component, which will generate an empty JSON configuration:</li></ol></ol>
 <img src="../img/board-empty-json.png" alt="This image is the component configuration panel for a board component.
 The Depends On drop-down listbox has no selection.
