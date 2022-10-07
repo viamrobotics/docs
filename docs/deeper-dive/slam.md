@@ -1,9 +1,10 @@
 ---
-title: "SLAM Service"
-linkTitle: "SLAM"
+title: "SLAM Service Background"
+linkTitle: "SLAM Technical"
 weight: 70
 type: "docs"
-description: "Explanation of the SLAM service, its configuration, its functionality, and its interfaces."
+draft: true
+description: "Background and Technical information for the Viam the SLAM service, its configuration, its functionality, and its interfaces."
 ---
 
 SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers. At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various cutting edge SLAM algorithms that may be useful in their mission.
@@ -12,11 +13,19 @@ As of 01 June 2022, we support the following SLAM libraries:
 
 -   [ORBSLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)[^orb]
 
-[^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORBSLAM3: https://github.com/UZ-SLAMLab/ORB_SLAM3</a>
+
+[^orb]:ORBSLAM3: [https://github.com/UZ-SLAMLab/ORB_SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
+
+# Current Architecture
+
+The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above. It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
+
+<img src="../img/slam-service-arch.png"/>
 
 ## Data Generation
 
 Coming soon! 
+
 
 <pre>
 .
@@ -29,7 +38,11 @@ Coming soon!
 
 (FILE SAVING FORMAT)
 
-## RDK Config
+## **Interfacing with the C++ Binary**
+
+Coming soon!
+
+# **RDK Config**
 
 ``` json
 "services": [
@@ -80,13 +93,14 @@ inputted SLAM library.
 
 ## SLAM Library Attributes
 
-The config_params is a catch-all attribute for parameters that are unique to the SLAM library being used. These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
+`config_params` is a catch-all attribute for parameters that are unique to the in-use SLAM library. `config_params` often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching, to name a few.
 
 You can find details on which inputs you can include for the available libraries in the following sections.
 
 ### OrbSLAM
 
 OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (i.e., "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
+
 
 <table>
     <tr>
@@ -123,7 +137,6 @@ OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); th
 </table>
 
 
-If more mutable variables are desired for any supported SLAM library please submit a [git issue](https://github.com/viamrobotics/slam/issues) with the pertinent parameter.
 
 # Hardware Requirements
 
