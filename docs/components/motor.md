@@ -19,7 +19,7 @@ A common motor control setup comprises the following:
 - A DC motor
 - An appropriate motor driver
     - Takes GPIO signals from the computer and sends the corresponding signals and power to the motor
-    - Selected based on the type of motor (i.e. brushed, brushless or stepper) and its power requirements
+    - Selected based on the type of motor (i.e. brushed, brushless, or stepper) and its power requirements
 - An appropriate power supply
     - Note that the logic side of the driver may be powered by 3.3V from the Pi or other device, but the motor power side should not be powered by the computer’s GPIO pins.
     The motor driver should be connected to an independent power supply that can provide the peak current required by the motor.
