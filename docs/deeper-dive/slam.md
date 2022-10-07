@@ -35,12 +35,14 @@ Coming soon!
     └── config
 </pre>
 
-
-(FILE SAVING FORMAT)
+The implemented SLAM libraries rely on the filename to know when this data was generated and what sensor was used to collect it. The format for the timestamp is currently `"2006-01-02T15_04_05.0000"`. Please note, this will be updated soon to align with the conventions used by the datamanager service.
 
 ## **Interfacing with the C++ Binary**
 
-Coming soon!
+## Interfacing with the C++ Binary
+
+The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated version is desired, copy the new binary into this directory. If an identical name is used for this new binary, no changes will need to be made to the RDK SLAM code. If a new name is given then it must be relinked in <file>services/slam/slamlibraries.go</file> in the BinaryLocation metadata. Note: a new binary with a different name can be stored anywhere as long as it is included in your PATH.
+
 
 # **RDK Config**
 
