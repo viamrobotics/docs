@@ -145,7 +145,7 @@ git clone --recurse-submodules git@github.com:viamrobotics/slam.git
 
 #### ORBSLAM3 Setup
 
-This setup documents the current process for getting ORBSLAM3 working locally on a raspberry pi.
+This setup documents the current process for getting ORBSLAM3 working locally on a Raspberry Pi.
 
 ##### Dependencies
 
@@ -155,8 +155,7 @@ The following are the required dependencies for building and running ORBSLAM3. I
 git submodule update \--init \--recursive
 ```
 
-###### Pangolin - to setup run the following
-
+###### Pangolin
 ```bash
 git clone \--recursive
 https://github.com/stevenlovegrove/Pangolin.git
