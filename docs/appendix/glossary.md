@@ -44,7 +44,7 @@ For example, UR5e is a model of the arm component type.
 Processes are often used to create a new local instance of viam-server to implement drivers for custom components.
 They provide a bespoke, OS-specific process managed by the viam-server to either run once or indefinitely; for example, to run one of Viam's camera servers.
 
-**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. (golang)
+<a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. (golang)
 
 * The RDK contains: 
     * Go SDK

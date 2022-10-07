@@ -19,7 +19,7 @@ A robot with multiple parts will have one main part and any number of _sub-parts
 Each part runs a session of the viam-server, which handles receiving API requests and translating them into hardware actuation.
 The viam-server reads in a configuration file that defines the components, services, and other processes.
 
-Processes are scripts or programs run by the [Robot Development Kit (RDK)](/product-overviews/rdk) whose life cycle is managed by the Viam server.
+Processes are scripts or programs run by the [Robot Development Kit (RDK)](../../appendix/glossary#rdk_anchor) whose life cycle is managed by the Viam server.
 One example is running a [Software Development Kit (SDK)](/product-overviews/sdk-as-server) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
 
 Each `viam-server` instance is defined by a configuration file that describes its components, the services it employs, and connections to other viam-server instances that it wants to communicate with, which we call _remotes_.
@@ -51,7 +51,7 @@ They use the same APIs as the web UI.
 _Figure 2.
 Example architecture showing how SDK-based applications communicate with your robot’s main instance of `viam-server` over gRPC._
 
-If your hardware isn't supported by Viam’s RDK, you can write your own implementation of a component model.
+If your hardware isn't supported by Viam’s [RDK](../../appendix/glossary#rdk_anchor), you can write your own implementation of a component model.
 If a library already exists, then you just need to write a few lines of code.
 To read more on how to do this, check out our documentation on [Using Our SDKs for a Server Component Implementation](/product-overviews/sdk-as-server).
 Your part will manage this process and expose the API as it does with all of your other components.
