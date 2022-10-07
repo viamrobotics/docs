@@ -45,7 +45,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 If you haven’t already, please set up the Raspberry Pi on the [Viam App](https://app.viam.com) per [these instructions](../../getting-started/installation).
 
 ### Configuring the hardware components
-Configure the base per the [Base Component Doc](https://docs.viam.com/docs/components/base/).
+Configure the base per the [Base Component Doc](https://docs.viam.com/components/base/).
 	
 Configure the [camera](../../components/camera) as type `webcam`. When you create a webcam component in Viam's config builder, Viam's discovery service will automatically detect cameras attached to your robot and suggest possible path attributes in a dropdown list. The top one (often "video0") is a good bet.
 
@@ -300,7 +300,7 @@ This will give it a wider field of view so it takes longer for the line to go ou
 
 ## Additional Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/docs/appendix/troubleshooting).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting).
 
 You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com) and we will be happy to help.
 

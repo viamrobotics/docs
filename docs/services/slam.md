@@ -89,6 +89,7 @@ The following shows an example configuration for running ORBSLAM3 in `rgbd` mode
 ### SLAM Modes Overview
 The combination of configuration parameters define the behavior of the running SLAM Service. The following provides an overview over the different SLAM modes, and how they can be set.
 
+
 **Live vs. Offline Mode**
 
 <table>
@@ -217,16 +218,16 @@ To recap, the directory is required to be structured as follows:
 * `config` contains all SLAM library specific config files. 
 
 
-
 ## Integrated Library: OrbSLAM3
 
 ### Introduction
+
 
 OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (i.e., "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
 
 ### Hardware Requirements
 
-*Forthcoming*
+TODO[kat]
 
 ### Configuration Overview
 <table>
@@ -261,4 +262,6 @@ OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); th
         <td>orb_n_min_th_fast</td>
         <td>ORB parameter. Lower threshold if no corners detected</td>
         <td>7</td>
+
 </table>
+
