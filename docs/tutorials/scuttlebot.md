@@ -55,7 +55,7 @@ This screen provides read-only displays of JSON configuration and allows you to 
 Also, you can add a <strong>Frame</strong> and a <strong>Data Capture Pathway</strong>, and set the <strong>Depends On</strong>.<br>
 
 
-<li class="spacing">Next, you'll need to tell Viam how the motor is wired to the Pi:</li>
+<li class="spacing">Next, you'll need to describe how the motor is wired to the Pi:</li>
 <ol type="a">
 <li class="spacing">Click <strong>Go to Advanced</strong>. You'll now see the current JSON attributes for this motor component and a reference for the available attributes:</li>
 <img src="../img/pi-rhwheel.png" alt="Advanced component config screen for a Motor.">
