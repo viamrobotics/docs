@@ -198,7 +198,6 @@ If you click the **Discrete** tab, then you'll see different movement modes such
 
 Now you have a rover that you can drive via Viam's UI at [https://app.viam.com](https://app.viam.com).
 
-Control the wheels using the keyboard controls described above.
 When you feel ready, try driving your SCUTTLE Robot around.
 
 {{< caution >}}
