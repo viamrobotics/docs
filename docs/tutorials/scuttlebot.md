@@ -243,7 +243,7 @@ On the Camera Config panel:
 1. Enter "camera" in **Name**.
 2. Enter "camera" in **Model**.
 3. From **Depends On**, select "local".
-4. In the JSON, set <code>path_pattern</code> to "video0".
+4. In the JSON, set <code>video_path</code> to "video0".
 
 This is the code of your camera attributes if you wish to copy and paste it.
 
@@ -269,8 +269,8 @@ This is the code of your camera attributes if you wish to copy and paste it.
  "height_px": 0,
  "debug": false,
  "format": "",
- "path": "",
- "path_pattern": "video0"
+ "video_path": "video0",
+ "video_path_pattern": ""
 }
 ```
 

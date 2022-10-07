@@ -83,7 +83,9 @@ We’ll use the Viam [vision service color detector](../../services/vision/#dete
 
 In the **Services** section of the **Config** tab, configure a color detector for the color of your tape line.
 
-- Use a color picker like [this one](https://colorpicker.me/) to approximate the color of your line and get the corresponding hexadecimal hash to put in your config. Put this hash in the `detect_color` parameter. We used #19FFD9 to represent the color of green electrical tape.
+- Use a color picker like <a href="https://colorpicker.me/" target="_blank">this one</a>[^colorpick] to approximate the color of your line and get the corresponding hexadecimal hash to put in your config. Put this hash in the `detect_color` parameter. We used #19FFD9 to represent the color of green electrical tape.
+
+[^colorpick]: Color picker: <a href="https://colorpicker.me/" target="_blank">https://colorpicker.me/</a>
   
 - We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
@@ -121,7 +123,7 @@ Below is an example JSON file that includes the board, base and camera component
     },
     {
       "attributes": {
-        "path_pattern": "video0"
+        "video_path_pattern": "video0"
       },
       "depends_on": [
         "follow-pi"
@@ -269,7 +271,7 @@ or if you have multiple versions of Python installed, try
 python3.9 --version
 ```
 We at Viam are running Python 3.9.2 for this tutorial.</li>
-<li class="spacing">Make sure you have the Viam Python SDK installed (<a href="https://github.com/viamrobotics/viam-python-sdk">Click for instructions</a>.)</li>
+<li class="spacing">Make sure you have the Viam Python SDK installed (<a href="https://python.viam.dev/">Click for instructions</a>.)</li>
 <li class="spacing">In this Pi terminal go ahead and run the code:
 
 ```bash
@@ -288,16 +290,13 @@ You have a rover following a path of your choice, anywhere you want it to go!
 
 ## Troubleshooting
 
-### Issue #1: The rover moves too fast to track the line
+### Issue: The rover moves too fast to track the line
 If your rover keeps driving off the line so fast that the color detector can’t keep up, you can try two things:
 
 1. Slow down the move straight and turning speeds of the rover by decreasing the  the numbers in `base.set_power(Vector3(y=0.3), Vector3())` and both instances of `base.set_power(Vector3(), Vector3(z=0.25))`.
     - Conversely, if your rover is moving too slowly or stalling, increase the numbers (closer to 1.0 which represents full power).</li>
 2. Position the camera differently, perhaps so that it is higher above the floor but still pointing downward. 
 This will give it a wider field of view so it takes longer for the line to go out of view.
-
-### Issue #2: N/A
-N/A
 
 ## Additional Troubleshooting
 
