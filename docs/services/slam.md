@@ -122,9 +122,6 @@ OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); th
         <td>7</td>
 </table>
 
-
-If more mutable variables are desired for any supported SLAM library please submit a [git issue](https://github.com/viamrobotics/slam/issues) with the pertinent parameter.
-
 # Hardware Requirements
 
 *Forthcoming*
