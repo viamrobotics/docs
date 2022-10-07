@@ -12,7 +12,7 @@ This tutorial will guide you through setting up a SCUTTLE Robot with a camera.
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
 Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/installation/#installing-raspian-on-the-raspberry-pi), if necessary.
 * A SCUTTLE Robot ([https://www.scuttlerobot.org/shop/]((https://www.scuttlerobot.org/shop/))
-* A Camera
+* A camera
 
 ## Configuring the Board
 Note: When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
