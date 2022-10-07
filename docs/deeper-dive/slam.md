@@ -1,9 +1,10 @@
 ---
-title: "SLAM Service"
-linkTitle: "SLAM"
+title: "SLAM Service Background"
+linkTitle: "SLAM Technical"
 weight: 70
 type: "docs"
-description: "Explanation of the SLAM service, its configuration, its functionality, and its interfaces."
+draft: true
+description: "Background and Technical information for the Viam the SLAM service, its configuration, its functionality, and its interfaces."
 ---
 
 SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers. At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various cutting edge SLAM algorithms that may be useful in their mission.
@@ -12,11 +13,19 @@ As of 01 June 2022, we support the following SLAM libraries:
 
 -   [ORBSLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)[^orb]
 
-[^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORBSLAM3: https://github.com/UZ-SLAMLab/ORB_SLAM3</a>
+
+[^orb]:ORBSLAM3: [https://github.com/UZ-SLAMLab/ORB_SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
+
+# Current Architecture
+
+The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above. It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
+
+<img src="../img/slam-service-arch.png"/>
 
 ## Data Generation
 
-The SLAM service is currently responsible for generating the data used by the various SLAM algorithms. This data is stored locally on the device in the directory specified in the config. THe structure of this directory can be seen in the diagram below.
+Coming soon! 
+
 
 <pre>
 .
@@ -26,29 +35,30 @@ The SLAM service is currently responsible for generating the data used by the va
     └── config
 </pre>
 
-The implemented SLAM libraries rely on the filename to know when this data was generated and what sensor was used to collect it. The format for the timestamp is currently "2006-01-02T15_04_05.0000". Please note, this will be updated soon to align with the conventions used by the datamanager service.
 
-## Interfacing with the C++ Binary
+(FILE SAVING FORMAT)
 
-The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated version is desired, copy the new binary into this directory. If an identical name is used for this new binary, no changes will need to be made to the RDK SLAM code. If a new name is given then it must be relinked in <file>services/slam/slamlibraries.go</file> in the BinaryLocation metadata. Note: a new binary with a different name can be stored anywhere as long as it is included in your PATH.
+## **Interfacing with the C++ Binary**
 
-## RDK Config
+Coming soon!
+
+# **RDK Config**
 
 ``` json
 "services": [
   {
     "attributes": {
-      "algorithm": "orbslamv3",
+      "algorithm": "cartographer",
       "data_dir": "<path_to_folder>",
-      "sensors": ["color, depth"],
+      "sensors": ["rplidar"],
       "config_params": {
-        "mode": "rgbd"
+        "mode": "2d"
       },
       "map_rate_sec": 60,
       "data_rate_ms": 200,
       "input_file_pattern": "1:1000:1"
     },
-    "name": "testorb",
+    "name": "test",
     "type": "slam"
   }
 ]
@@ -83,13 +93,14 @@ inputted SLAM library.
 
 ## SLAM Library Attributes
 
-The config_params is a catch-all attribute for parameters that are unique to the SLAM library being used. These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
+`config_params` is a catch-all attribute for parameters that are unique to the in-use SLAM library. `config_params` often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching, to name a few.
 
 You can find details on which inputs you can include for the available libraries in the following sections.
 
 ### OrbSLAM
 
 OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (i.e., "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
+
 
 <table>
     <tr>
@@ -124,6 +135,8 @@ OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); th
         <td>ORB parameter. Lower threshold if no corners detected</td>
         <td>7</td>
 </table>
+
+
 
 # Hardware Requirements
 
