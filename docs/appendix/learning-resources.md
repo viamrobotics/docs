@@ -9,8 +9,9 @@ The following sections contain links that we think you will find very useful dur
 
 ## Basic Electronics
 ### Resistors
-- [Online Resistor Color Code Calculator](https://goodcalculators.com/resistor-color-code-calculator/)[^orccc] - Enter the desired resistor value in Ohms, kOhms, or MOhms, and press enter and this site will display the color bands for that resistor value.
-[^orccc]: Online Resistor Color Code Calculator: [https://goodcalculators.com/resistor-color-code-calculator/](https://goodcalculators.com/resistor-color-code-calculator/)
+<a href="https://goodcalculators.com/resistor-color-code-calculator/" target="_blank">Online Resistor Color Code Calculator</a>[^orccc] - Enter the desired resistor value in Ohms, kOhms, or MOhms, and press enter and this site will display the color bands for that resistor value.
+
+[^orccc]: Online Resistor Color Code Calculator: <a href="https://goodcalculators.com/resistor-color-code-calculator/" target="_blank">https://goodcalculators.com/resistor-color-code-calculator/</a>
 
 **Resistor Value Chart**
 <img src="../img/resistor.png" alt="Chart of standard colors to values for electronic components. An example resistor with green, red, and orange bands is shown. The value is 52 times 10 to the third power, or 52,000 Ohms." />
