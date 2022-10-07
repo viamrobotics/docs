@@ -1,6 +1,6 @@
 ---
 title: "Configuring a SCUTTLE Robot with a Camera"
-linkTitle: "Configuring a SCUTTLE Robot with a Camera"
+linkTitle: "Configuring a SCUTTLE Robot"
 weight: 20
 type: "docs"
 description: "Instructions for configuring a SCUTTLE Robot with a camera using a Raspberry Pi"
