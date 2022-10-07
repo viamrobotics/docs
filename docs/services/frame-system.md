@@ -1,13 +1,11 @@
 ---
-title: "Frame System"
+title: "The Robot Frame System"
 linkTitle: "Frame System"
 summary: "Describes the Frame System, its configuration, its functionality, and its interfaces."
 type: docs
 weight: 45
 ---
-# The Robot Frame System
-
-Any robot that has been configured in Viam comes with a service we call the Frame System. 
+Any robot configured in Viam comes with a service we call the Frame System. 
 This is an internally managed and (mostly) static storage of the reference frame of each component of a robot within a coordinate system configured by the user. 
 The Frame System is especially important as it is the basis for many of Viam's other services (like motion and vision) and holds required contextual information to make use of the position and orientation readings returned by some components. 
 In this page, we will explain:
@@ -127,7 +125,7 @@ Functions of some services and components take in a WorldState parameter (e.g., 
 This data structure includes an entry for supplying supplemental transforms for use by internal calls to the Frame System.
 
 ## Reference
-Viam uses model file writtent in JSON, similar to the URDF files used in ROS. JSON files are better suited for use in Python environments.
+Viam uses model file written in JSON, similar to the URDF files used in ROS. JSON files are better suited for use in Python environments.
 
 
 ### Model JSON
