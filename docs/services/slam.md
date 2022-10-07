@@ -54,7 +54,7 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated 
 ]
 ```
 
-#### Required Attributes
+### Required Attributes
 
 **algorithm** (string): Name of the SLAM library/algorithm to be used. Current options are cartographer or orbslamv3.
 
@@ -68,7 +68,7 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated 
 
 **Sensors** (string[]): Names of sensors which are input to SLAM
 
-#### Optional Attributes
+### Optional Attributes
 
 **map_rate_sec** (int): Map generation rate for saving current state (in seconds). The default value is 60. If an integer is less or equal to 0 then SLAM is run in localization mode.
 
@@ -81,13 +81,13 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated 
 **config_params** (map[string] string): Parameters specific to the
 inputted SLAM library.
 
-#### Specific SLAM Library Attributes
+### Specific SLAM Library Attributes
 
 The config_params is a catch-all attribute for parameters that are unique to the SLAM library being used. These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
 
 You can find details on which inputs you can include for the available libraries in the following sections.
 
-##### OrbSLAM
+#### OrbSLAM
 
 OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (i.e., "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
 
