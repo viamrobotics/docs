@@ -187,7 +187,7 @@ If you wish to copy and paste it, see below for the code for your base attribute
 }
 ```
 
-When you save the Config and switch to the **Control** view, you'll see new control buttons for the <code>base</code>.
+When you save the config and switch to the **Control** tab, you'll see new control buttons for the <code>base</code>.
 In the **Keyboard** tab, toggle your keyboard control to active, and then use **W** and **S** to go back and forth, and **A** and **D** to arc and spin.
 
 <img src="../img/pi-kybrd-control.png" width="300px">
