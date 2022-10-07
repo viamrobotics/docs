@@ -254,7 +254,7 @@ If you wish to copy and paste code for your camera, use the below:
 }
 ```
 
-Once you save the config, you;ll be able to see your camera's stream.
+Once you save the config, you'll be able to see your camera's stream in the Control tab.
 
 ## On Completion
 After successfully completing this tutorial, you should have a fully functional SCUTTLE Robot, which you can drive around and view its camera stream. To take things to the next level, check out our [Color Detection with SCUTTLE Robot](../color-detection-scuttle) tutorial or create your own camera-related tutorial.
