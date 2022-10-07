@@ -33,7 +33,7 @@ DC motors use magnetic fields to convert direct (one-way) electrical current int
 Increasing the input current increases the output motor torque (and also speed, assuming a constant load).
 Switching the direction of the input current changes the direction of motor rotation.
 
-[^bdcm]: Brushed DC motors: [https://en.wikipedia.org/wiki/Brushed_DC_electric_motor](https://en.wikipedia.org/wiki/Brushed_DC_electric_motor)
+[^bdcm]: <a href="https://en.wikipedia.org/wiki/Brushed_DC_electric_motor" target="_blank">Brushed DC motors: https://en.wikipedia.org/wiki/Brushed_DC_electric_motor
 
 ### Brushed DC Motor Drivers
 A motor driver is a physical chip or power amplification circuit that converts input signals from a computing device into a high power output capable of actuating a motor.
@@ -46,7 +46,7 @@ The driver data sheet will specify which one to use.
 - A/B: One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled via PWM through one or both pins.
 - A/B + PWM: Three pins: an A and B to control direction and a separate PWM pin to control speed.
 
-[^pwm]: Pulse Width Modulation (PWM):  [https://en.wikipedia.org/wiki/Pulse-width_modulation](https://en.wikipedia.org/wiki/Pulse-width_modulation)
+[^pwm]:<a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">Pulse Width Modulation (PWM): https://en.wikipedia.org/wiki/Pulse-width_modulation
 
 ---
 
@@ -60,8 +60,10 @@ The driver data sheet will specify which one to use.
 
 ### Wiring
 Brushed DC motors are relatively simple to wire.
-Taking a 12V brushed DC motor controlled by a Raspberry Pi via [this motor driver](https://www.pololu.com/product/4038) as an example, the wiring diagram would look like this:  
-  
+Taking a 12V brushed DC motor controlled by a Raspberry Pi via [this motor driver](https://www.pololu.com/product/4038)[^mtd] as an example, the wiring diagram would look like this:  
+
+[^mtd]: <a href="" target="_blank">DRV8256E Single Brushed DC Motor Driver Carrier: https://www.pololu.com/product/4038</a>
+
 ![brushed-dc-wiring](../img/motor-brushed-dc-wiring.png)  
 
 The signal wires in the diagram run from two GPIO pins on the Pi to the DIR and PWM pins on the motor driver.
@@ -91,7 +93,7 @@ Name | Type | Description |
 `dir` | string | See [Pins](#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
 `pwm` | string | See [Pins](#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
 
-#### Optional Attributes
+#### Optional Attributes - Non-Encoded DC Motor
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 `min_power_pct` | float | 0.0 | Sets a limit on minimum power percentage sent to the motor 
@@ -128,7 +130,9 @@ See the [Encoder Component Doc](../encoder) for more information on encoders.
 
 ### Wiring
 
-Here's an example of an encoded DC motor wired with [this motor driver](https://www.pololu.com/product/2961).
+Here's an example of an encoded DC motor wired with [this motor driver](https://www.pololu.com/product/2961)[^tmd2].
+
+[^tmd2]:<a href="" target="_blank">MAX14870 Single Brushed DC Motor Driver Carrier: https://www.pololu.com/product/2961</a>
 
 ![motor-encoded-dc-wiring](../img/motor-encoded-dc-wiring.png)  
 
@@ -143,15 +147,15 @@ Here’s an example config file:
 [Click here for the raw JSON.](../example-configs/motor-encoded-config.json)
 
 #### Required Attributes - Encoded DC Motor
-In addtion to the required [attributes of a non-encoded motor](#required-attributes---non-encoded-dc-motor), encoded DC motors require the following:
+In addition to the required [attributes for a non-encoded motor](#required-attributes---non-encoded-dc-motor), encoded DC motors require the following:
 
 Name | Type | Description
 -------------- | ---- | ---------------
 `encoder` | string | Should match name of the encoder you configure as an `encoder` component.
 `ticks_per_rotation` | string | Number of ticks in a full rotation of the encoder (and motor shaft).
 
-#### Optional Attributes
-In addition to the optional attributes [listed in the non-encoded DC motor section](#optional-attributes), encoded motors have the following additional options:  
+#### Optional Attributes - Encoded DC Motor
+In addition to the optional attributes listed in the [non-encoded DC motor section](#optional-attributes---non-encoded-dc-motor), encoded motors have the following additional options:  
 
 Name | Type | Description
 -------------- | ---- | ---------------
