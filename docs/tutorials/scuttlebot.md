@@ -29,7 +29,7 @@ If you already have a Location, then this step is optional. </li>
 <ol type="a">
     <li class="spacing">Enter a name for your robot in <strong>Name</strong>, then click <strong>Add</strong> to add your robot and access your robot's configuration page.
     In this tutorial, we've named the board "local."
-    As long as you;re consistent, you can name the <code>board</code> whatever you want.</li>
+    As long as you're consistent, you can name the <code>board</code> whatever you want.</li>
     <li class="spacing">Select the component <strong>Type</strong>, "board."</li>
     <li class="spacing">Select "pi" from the <strong>Model</strong> drop-down.</li>
     <li class="spacing">Click <strong>Save Config</strong> to save the new component, which will generate an empty JSON configuration:</li></ol></ol>
