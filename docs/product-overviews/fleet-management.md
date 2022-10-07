@@ -23,7 +23,7 @@ If the user uses remote control in the Viam App ([https://app.viam.com](https://
 
 [WebRTC Docs](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection)
 
-[Authentication Docs](../../deeper-dive/security)
+[Authentication Docs](../../security)
 
 Local communication between parts can be done over gRPC or WebRTC.
 
