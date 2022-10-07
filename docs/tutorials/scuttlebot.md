@@ -176,7 +176,7 @@ From the Config screen:
     The <code>left</code> and <code>right</code> attributes are intended to be the motors corresponding to the left and right sides of the rover.
     You can simply add “left” and “right” between the brackets for your set of motors, respectively.
 
-If you wish to copy and paste it, see below for the code for your base attributes.
+The configuration of your base component's attributes should look something like this:
 
 ```JSON
 {
