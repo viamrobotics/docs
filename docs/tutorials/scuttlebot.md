@@ -266,6 +266,6 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle
 
   * **Color Detection with Scuttle Robot on Viam**: [https://docs.viam.com/tutorials/color-detection-scuttle/](https://docs.viam.com/tutorials/color-detection-scuttle/)
 
-  * **Controlling a Scuttle Robot on Viam with a Bluetooth Gamepad**: [https://docs.viam.com/tutorials/scuttle-gamepad/](https://docs.viam.com/tutorials/scuttle-gamepad/)
+  * **Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad**: [https://docs.viam.com/tutorials/scuttle-gamepad/](https://docs.viam.com/tutorials/scuttle-gamepad/)
 
   * **Line Following with SCUTTLE Robot on Viam**: [https://docs.viam.com/tutorials/webcam-line-follower-robot/](https://docs.viam.com/tutorials/webcam-line-follower-robot/)
