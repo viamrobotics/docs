@@ -49,10 +49,9 @@ They provide a bespoke, OS-specific process managed by the viam-server to either
 * The RDK contains: 
     * Go SDK
     * Various packages and libraries (Motion Planning, Controls, Frame System, SLAM)
-    * gRPC Interfaces (protobuf files)
     * gRPC Server Implementations (hardware drivers)
 
-* It can be used as a server.
+* It can be used to build a server.
     * Can parse and respond to changes in a remote robot configuration file.
     * With updates possibly provided by the Viam App ([https://app.viam.com](https://app.viam.com)).
     * Initializes resources from a config.
