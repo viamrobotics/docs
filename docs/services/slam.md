@@ -81,13 +81,13 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated 
 **config_params** (map[string] string): Parameters specific to the
 inputted SLAM library.
 
-### SLAM Library Attributes
+#### Specific SLAM Library Attributes
 
 The config_params is a catch-all attribute for parameters that are unique to the SLAM library being used. These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
 
 You can find details on which inputs you can include for the available libraries in the following sections.
 
-#### OrbSLAM
+##### OrbSLAM
 
 OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (i.e., "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
 
