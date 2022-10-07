@@ -29,11 +29,11 @@ A common motor control setup comprises the following:
 ## Brushed DC Motor
 ### Mechanism
 DC motors use magnetic fields to convert direct (one-way) electrical current into mechanical torque.
-[Brushed DC motors](https://en.wikipedia.org/wiki/Brushed_DC_electric_motor)[^bdcm] use an electrical contact called a “brush” to route current to the right place at a given moment to create continuous rotation.
+<a href="https://en.wikipedia.org/wiki/Brushed_DC_electric_motor" target="_blank">Brushed DC motors</a>[^bdcm] use an electrical contact called a “brush” to route current to the right place at a given moment to create continuous rotation.
 Increasing the input current increases the output motor torque (and also speed, assuming a constant load).
 Switching the direction of the input current changes the direction of motor rotation.
 
-[^bdcm]: <a href="https://en.wikipedia.org/wiki/Brushed_DC_electric_motor" target="_blank">Brushed DC motors: https://en.wikipedia.org/wiki/Brushed_DC_electric_motor
+[^bdcm]: <a href="https://en.wikipedia.org/wiki/Brushed_DC_electric_motor" target="_blank">Brushed DC motors: https://en.wikipedia.org/wiki/Brushed_DC_electric_motor</a>
 
 ### Brushed DC Motor Drivers
 A motor driver is a physical chip or power amplification circuit that converts input signals from a computing device into a high power output capable of actuating a motor.
@@ -42,7 +42,7 @@ The driver data sheet will specify which one to use.
 
 #### Pins
 
-- PWM/DIR: One digital input (such as a GPIO pin) sends a [pulse width modulation](https://en.wikipedia.org/wiki/Pulse-width_modulation)[^pwm] (PWM) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
+- PWM/DIR: One digital input (such as a GPIO pin) sends a <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">pulse width modulation</a>[^pwm] (PWM) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
 - A/B: One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled via PWM through one or both pins.
 - A/B + PWM: Three pins: an A and B to control direction and a separate PWM pin to control speed.
 
@@ -60,9 +60,9 @@ The driver data sheet will specify which one to use.
 
 ### Wiring
 Brushed DC motors are relatively simple to wire.
-Taking a 12V brushed DC motor controlled by a Raspberry Pi via [this motor driver](https://www.pololu.com/product/4038)[^mtd] as an example, the wiring diagram would look like this:  
+Taking a 12V brushed DC motor controlled by a Raspberry Pi via <a href="https://www.pololu.com/product/4038" target="_blank">this motor driver</a>[^mtd] as an example, the wiring diagram would look like this:  
 
-[^mtd]: <a href="" target="_blank">DRV8256E Single Brushed DC Motor Driver Carrier: https://www.pololu.com/product/4038</a>
+[^mtd]: <a href="https://www.pololu.com/product/4038" target="_blank">DRV8256E Single Brushed DC Motor Driver Carrier: https://www.pololu.com/product/4038</a>
 
 ![brushed-dc-wiring](../img/motor-brushed-dc-wiring.png)  
 
@@ -130,9 +130,9 @@ See the [Encoder Component Doc](../encoder) for more information on encoders.
 
 ### Wiring
 
-Here's an example of an encoded DC motor wired with [this motor driver](https://www.pololu.com/product/2961)[^tmd2].
+Here's an example of an encoded DC motor wired with <a href="https://www.pololu.com/product/2961" target="_blank">this motor driver</a>[^tmd2].
 
-[^tmd2]:<a href="" target="_blank">MAX14870 Single Brushed DC Motor Driver Carrier: https://www.pololu.com/product/2961</a>
+[^tmd2]:<a href="https://www.pololu.com/product/2961" target="_blank">MAX14870 Single Brushed DC Motor Driver Carrier: https://www.pololu.com/product/2961</a>
 
 ![motor-encoded-dc-wiring](../img/motor-encoded-dc-wiring.png)  
 
