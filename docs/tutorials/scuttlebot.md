@@ -112,7 +112,7 @@ At this point, the right-side wheel should be working.
 Now, you're ready to add the left-side wheel to start driving this robot in a coordinated manner.
 To do this, you’ll have to add the second <code>motor</code> controller and link them with a <code>base</code>.
 
-Once again, you’ll select <code>NEW COMPONENT</code>. The config attributes for the <code>left motor</code> controller are very similar to that of the <code>right</code> motor component that you already configured (since the hardware is the same and connected to a single <code>board</code>).
+Once again, you’ll select **NEW COMPONENT**. The config attributes for the <code>left motor</code> controller are very similar to that of the <code>right</code> motor component that you already configured (since the hardware is the same and connected to a single <code>board</code>).
 
 <ol>
 <li class="spacing">Add the Left Side Wheel, naming the component <code>left</code>.</li>
@@ -202,7 +202,7 @@ Control the wheels using the keyboard controls described above.
 When you feel ready, try driving your SCUTTLE Robot around.
 
 {{< caution >}}
-Ensure that youor robot has sufficient space to drive around without hitting anyone or anything.
+Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
 {{< /caution >}}
 
 ## Configuring the Camera 
