@@ -6,9 +6,7 @@ type: "docs"
 ---
 
 ## Getting Started
-Looking to get started with Viam? Checkout the [installing the Viam Server on Raspberry Pi instructions](../getting-started/installation).
-
-See also:
+Looking to get started with Viam? Check out the following:
 
 - [Viam Overview](../getting-started/high-level-overview)
 - [Viam's Robot Configuration](../getting-started/robot-config)
