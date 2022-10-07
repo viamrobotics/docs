@@ -225,7 +225,7 @@ On the Camera Config panel:
 3. From **Depends On**, select "local."
 4. In the JSON, set <code>video_path</code> to "video0."
 
-If you wish to copy and paste code for your camera, use the below:
+If you wish to copy and paste code for your camera, use the following:
 
 ```JSON
 {
