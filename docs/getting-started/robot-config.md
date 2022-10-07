@@ -20,14 +20,14 @@ Components have Types which indicate the API for that component (for example, ar
 They also have Models, which indicate which implementation should be used to actuate with them.
 For example, an arm component could be a UR5 or an xArm and the appropriate implementation is indicated by selecting the corresponding Model.
 These component implementations can come from a few different sources.
-The most common models of a component will have implementations in RDK, which can be selected from the Model dropdown of the configuration UI.
+The most common models of a component will have implementations in [RDK](../../appendix/glossary#rdk_anchor), which can be selected from the Model dropdown of the configuration UI.
 If the Model you are working with is not supported in RDK, you’ll have to write your own component driver in one of Viam’s SDKs.
 For example, a component you are using may have an existing Python library.
 In that case, you could use Viam’s Python SDK to wrap the existing component library in Viam’s API for that component Type using a few short lines of Python.
 If no library currently exists, you will have to write a full driver for that component’s API in the language of your choice using the Viam SDK for that language.
 
 ## Running a Robot on the RDK
-When the RDK starts, it uses the secret in its cloud configuration file to ask the Viam App ([https://app.viam.com](https://app.viam.com)) for its robot configuration (see Runtime architecture).
+When the [RDK](../../appendix/glossary#rdk_anchor) starts, it uses the secret in its cloud configuration file to ask the Viam App ([https://app.viam.com](https://app.viam.com)) for its robot configuration (see Runtime architecture).
 
 Next, the configuration is parsed and processed section by section specified in the JSON config fields, notably remotes, components, services, and processes.
 
