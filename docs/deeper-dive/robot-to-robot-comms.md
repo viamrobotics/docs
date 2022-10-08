@@ -109,7 +109,7 @@ It generally works over a TCP, TLS backed HTTP2 connection operating over framin
 The RDK uses protobuf and gRPC to enable access and control to its components and services.
 That means if there are two arms in a robot configuration, there is only one Arm service that handles the Remote Procedure Calls (RPC) for all arms configured.
 
-In addition to gRPC, the RDK uses <a href="" target="_blank">WebRTC</a>[^wrtc] video and audio streams and data channels to enable peer to peer (P2P) communication between robot parts as well as SDKs and the Remote Control interface.
+In addition to gRPC, the RDK uses <a href="https://webrtcforthecurious.com/" target="_blank">WebRTC</a>[^wrtc] video and audio streams and data channels to enable peer to peer (P2P) communication between robot parts as well as SDKs and the Remote Control interface.
 
 [^wrtc]:WebRTC: <a href="https://webrtcforthecurious.com/" target="_blank">ht<span></span>tps://webrtcforthecurious.com/</a>
 
