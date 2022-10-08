@@ -4,7 +4,7 @@ linkTitle: "Documentation Read Me"
 weight: 90
 type: "docs"
 ---
-An [Hugo](https://gohugo.io) repo of Viam's tutorials and documentation. Site content is written in Markdown format located in `/docs`. [Pull requests welcome!](https://github.com/viamrobotics/tutorials-and-docs/blob/update-contribution-guide/CONTRIBUTING.md)
+An [Hugo](https://gohugo.io) repo of Viam's tutorials and documentation. Site content is written in Markdown format located in `/docs`. [Pull requests welcome!](https://github.com/viamrobotics/tutorials-and-docs/blob/main/CONTRIBUTING.md)
 
 ## Setup instructions
 
