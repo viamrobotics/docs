@@ -27,6 +27,7 @@ On the robot, a single viam process, called _viam-server_ runs, and is responsib
 - connecting to hardware
 - running and other code that is needed, such as drivers for hardware, or user code.
 - accepting API requests either for data or for hardware actuation
+- running higher level services like computer vision, data synchronization, or motion planning
 
 Your robot code can run directly on the robot, or anywhere else with internet connectivity you want and access all the same functionality.
 
@@ -113,10 +114,10 @@ Part 2 is a remote._
 
 If you have hardware lying around, the best thing to do is try to get it setup.
 
-If there are issues, please work with on slack as we're still working on rough edges.
+If there are issues, please work with us on [slack](https://viamrobotics.slack.com/) as we're still working on rough edges.
 
 We also have a number of [tutorials](/tutorials) to get you started.
 
-If you have no harware, you can use our mock tutorial FIX ME.
+If you have no hardware, you can use our mock tutorial FIX ME.
 
 
