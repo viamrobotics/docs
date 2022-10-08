@@ -1,7 +1,7 @@
 ---
 title: "Learning Resources"
 linkTitle: "Learning Resources"
-description: "A collection of links to external sources discussing robotics topics which we believe users may find helpful."
+description: "A collection of links to external sources discussing robotics topics and basic information that we believe users may find helpful."
 type: "docs"
 ---
 # Overview
@@ -9,11 +9,11 @@ The following sections contain links that we think you will find very useful dur
 
 ## Basic Electronics
 ### Resistors
-- [Online Resistor Color Code Calculator](https://goodcalculators.com/resistor-color-code-calculator/)[^orccc] - Enter the desired resistor value in Ohms, kOhms, or MOhms, and press enter and this site will display the color bands for that resistor value.
-[^orccc]: Online Resistor Color Code Calculator: [https://goodcalculators.com/resistor-color-code-calculator](https://goodcalculators.com/resistor-color-code-calculator)
+- <a href="https://goodcalculators.com/resistor-color-code-calculator/" target="_blank">Online Resistor Color Code Calculator</a>[^orccc] - Enter the desired resistor value in Ohms, kOhms, or MOhms, and press enter and this site will display the color bands for that resistor value.
+[^orccc]: Online Resistor Color Code Calculator: <a href="https://goodcalculators.com/resistor-color-code-calculator/" target="_blank">ht<span></span>tps://goodcalculators.com/resistor-color-code-calculator</a>
 
 **Resistor Value Chart**
-<img src="../img/resistor.png"/ alt="Chart of standard colors to values for electronic components. An example resistor with green, red, and orange bands is shown. The value is 52 times 10 to the third power, or 52,000 Ohms." />
+<img src="../img/resistor.png" alt="Chart of standard colors to values for electronic components. An example resistor with green, red, and orange bands is shown. The value is 52 times 10 to the third power, or 52,000 Ohms." />
 
 You can easily learn resistor color markings without referring to a chart by remembering this jingle:
 
