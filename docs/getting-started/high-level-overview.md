@@ -23,20 +23,23 @@ On the robot, a single viam process, called _viam-server_ runs, and is responsib
 
 Your robot code can run directly on the robot, or anywhere else with internet connectivity you want and access all the same functionality.
 
-### API
+## API
 
 All communication across Viam is done with GRPC, directly if wanted, or via webrtc, which provides authentication and encryption.
 
-You can see all Viam APIs at https://github.com/viamrobotics/api
+There are three buckets of APIs
+- [Components](/components)
+- [Services](/services)
+- Cloud Application
 
-All APIs specifications are open source.
+You can see all Viam API specifications at https://github.com/viamrobotics/api
 
-### Concepts
+## Concepts
 
-#### Robot
+### Robot
 A _Robot_ in Viam is 1 or more computers, combined into 1 logical robot. A mobile robot that has 1 Jetson and 1 raspberry pi is 1 robot.  The bounds of a robot are usually pretty clear, but can be subjective. 
 
-#### Part
+### Part
 Each of those computers are a _Part_. In that example, you have 1 robot, and 2 parts (the jetson and pi).
 
 Most simple robots will likely only have 1 part.
@@ -47,14 +50,14 @@ Therefore if you only talk to the main part, you can access the entire robot, so
 
 Each part runs a single _viam-server_ instance.
 
-####  Component
+### Component
 
 A component is a piece of hwardware or software that exposes a specific API, such as arm, motor, or gps.
 These components are configured, and then the drivers are loaded by _viam server_.
 Every part will likely have at least 1 component, but some will have a lot.
 For example, a raspberry pi part on a mobile robot might have: 4 motors, gps, imu, and a camera.
 
-#### Remote
+### Remote
 
 Parts can talk to arbitrary processes to add more components by adding them as a remote.
 A remote is a server that implementats the same GRPC interfaces, including the robot service which describs what it provides.
@@ -62,11 +65,11 @@ If a remote is added to a part, that part will that proxy all requests.
 
 For example, If you have an arm on a mobile robot, and it has it's own server that implementats the GRPC api, you can add it as a remote, and then control the arm via the part.
 
-#### Process
+### Process
 Processes are scripts or programs run by the [Robot Development Kit (RDK)](../../appendix/glossary#rdk_anchor) whose life cycle is managed by the Viam server.
 One example is running a [Software Development Kit (SDK)](/product-overviews/sdk-as-server) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
 
-### Pictures
+## Pictures
 
 ![two-part-architecture](../img/overview-two-part-architecture.png)  
 _Figure 1.
