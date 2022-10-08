@@ -5,25 +5,68 @@ weight: 1
 type: "docs"
 description: "A high-level overview of Viam."
 ---
-A robot is a computer that interacts with its environment.
-What does this mean? A robot can collect information about its environment and make behavioral decisions on based on that information.
+## Basics
+Viam runs on your robot and the cloud.
 
-Robots can take many forms, from a simple wheeled rover to a much more complex system involving many [_components_](/components) such as a wheeled base, grippers, arms, various cameras and other sensors working together.
-A simpler system might be controlled by a single microcontroller or microprocessor (such as a Raspberry Pi, Jetson or Arduino), whereas a more complex system might contain more than one of these compute units.
-In addition to physical hardware, a robot may employ one or more Viam-built software modules such as navigation or vision algorithms, which we call [_services_](/services).
+Everything that runs on your robot is open source and is availble at http://github.com/viamrobotics 
 
-At Viam, each computer (and the components it controls) is called a _part_.
-Robots are organized into one or more parts, depending on the number of computers they're comprised of.
+We reccomend using our cloud app to configure, manage, and control your robots at http://app.viam.com/
 
-A robot with multiple parts will have one main part and any number of _sub-parts_.
-Each part runs a session of the viam-server, which handles receiving API requests and translating them into hardware actuation.
-The viam-server reads in a configuration file that defines the components, services, and other processes.
+A robot's configuration lives in the cloud. The configuration is a description of the hardware and higher level software services. For example how a motor is connected to a Raspberry PI, or what maching learning models you want to use for classification.
 
+On the robot, a single viam process, called _viam-server_ runs, and is responsible for: 
+- keeping the configuration up to date
+- logging to the cloud
+- connecting to hardware
+- running and other code that is needed, such as drivers for hardware, or user code.
+- accepting API requests either for data or for hardware actuation
+
+Your robot code can run directly on the robot, or anywhere else with internet connectivity you want and access all the same functionality.
+
+### API
+
+All communication across Viam is done with GRPC, directly if wanted, or via webrtc, which provides authentication and encryption.
+
+You can see all Viam APIs at https://github.com/viamrobotics/api
+
+All APIs specifications are open source.
+
+### Concepts
+
+#### Robot
+A _Robot_ in Viam is 1 or more computers, combined into 1 logical robot. A mobile robot that has 1 Jetson and 1 raspberry pi is 1 robot.  The bounds of a robot are usually pretty clear, but can be subjective. 
+
+#### Part
+Each of those computers are a _Part_. In that example, you have 1 robot, and 2 parts (the jetson and pi).
+
+Most simple robots will likely only have 1 part.
+
+The parts are organized in a tree, with one of them being the _main_ part, and the others being _sub parts_.
+You can access any sub part either directly, or via any part above it in the tree.
+Therefore if you only talk to the main part, you can access the entire robot, so that the layout of the tree below can change without any code changes.
+
+Each part runs a single _viam-server_ instance.
+
+####  Component
+
+A component is a piece of hwardware or software that exposes a specific API, such as arm, motor, or gps.
+These components are configured, and then the drivers are loaded by _viam server_.
+Every part will likely have at least 1 component, but some will have a lot.
+For example, a raspberry pi part on a mobile robot might have: 4 motors, gps, imu, and a camera.
+
+#### Remote
+
+Parts can talk to arbitrary processes to add more components by adding them as a remote.
+A remote is a server that implementats the same GRPC interfaces, including the robot service which describs what it provides.
+If a remote is added to a part, that part will that proxy all requests.
+
+For example, If you have an arm on a mobile robot, and it has it's own server that implementats the GRPC api, you can add it as a remote, and then control the arm via the part.
+
+#### Process
 Processes are scripts or programs run by the [Robot Development Kit (RDK)](../../appendix/glossary#rdk_anchor) whose life cycle is managed by the Viam server.
 One example is running a [Software Development Kit (SDK)](/product-overviews/sdk-as-server) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
 
-Each `viam-server` instance is defined by a configuration file that describes its components, the services it employs, and connections to other viam-server instances that it wants to communicate with, which we call _remotes_.
-A remote represents a connection to another robot.
+### Pictures
 
 ![two-part-architecture](../img/overview-two-part-architecture.png)  
 _Figure 1.
@@ -36,8 +79,9 @@ Parts communicate with one another using a consistent and unified API, regardles
 This is done via <a href="https://en.wikipedia.org/wiki/WebRTC)" target="_blank">WebRTC</a>[^webrtc]  using the [gRPC and protobuf APIs](../../deeper-dive/architecture-and-protobuf).
 This SDK API is available in any language, and provides direct and secure connections to and between parts.
 
-
 [^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC)" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
+
+## Getting Started
 
 After installing the Viam server on a computer (like a Raspberry Pi), you can connect your newly minted part to the Viam App ([https://app.viam.com](https://app.viam.com)).
 The web app provides a page for each robot to do the following:
