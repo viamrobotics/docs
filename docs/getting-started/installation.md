@@ -1,6 +1,6 @@
 ---
-title: "Raspberry Pi-Specific Viam Server Installation"
-linkTitle: "Raspberry Pi Install"
+title: "Raspberry Pi Setup Guide"
+linkTitle: "Raspberry Pi Setup"
 weight: 15
 type: "docs"
 description: "A guide to imaging a Pi, installing viam-server and syncing the Pi with the Viam App [https://app.viam.com](https://app.viam.com) (using Raspberry Pi Imager v1.7.2)."
@@ -15,7 +15,7 @@ This tutorial requires the following hardware:
 * An internet connected computer
 * A way to connect the microSD card to the computer (ex, microSD slot or microSD reader)
 
-Before installing the Viam RDK, you will need a Raspberry Pi running a 64-bit Linux distribution.
+Before installing the Viam [RDK](../../appendix/glossary#rdk_anchor), you will need a Raspberry Pi running a 64-bit Linux distribution.
 If you do not have Linux installed on your Raspberry Pi, skip ahead to [Installing Raspian on the Raspberry Pi](#installing-raspian-on-the-raspberry-pi).
 If you already have a Raspberry Pi with Linux installed on it, check if the Linux installation on your Raspberry Pi is 64-bit.
 First, `ssh` into your Pi and then run `lscpu`.
@@ -203,9 +203,13 @@ You should also see the the notification on the setup page that says "Your robot
 ## Next Steps
 Now that you have the viam-server up and running, you can start configuring your robot and the real fun can begin!
 
-In the `CONFIG` tab, you can describe the hardware attached to your Pi which will allow viam to actuate it and expose API's for it.
-Click on `NEW COMPONENT` and then populate the resulting component with the configuration information for your hardware.
-Once your configuration changes are saved, you can switch to the `CONTROL` tab to actuate your hardware via the webUI.
+Check out [our list of tutorials](../../tutorials/) for step-by-step project walkthroughs demonstrating robot configuration and [Python SDK](https://python.viam.dev/) usage.
 
-From here, you can download Viam's [Python SDK](https://python.viam.dev/) and use it to write programs to make your robot autonomous.
+If you already have a project in mind, head to your newly connected robot's `CONFIG` tab. Here you can describe the hardware attached to your Pi which will allow Viam to actuate the hardware and expose APIs for it.
+Click on `NEW COMPONENT` and then populate the resulting component with the configuration information for your hardware.
+Find information on how to configure specific component types in their respective [component](../../components/) and [service](../../services/) docs.
+Once your configuration changes are saved, you can switch to the `CONTROL` tab to actuate your hardware using buttons in the app.
+
+You can download Viam's [Python SDK](https://python.viam.dev/) and use it to write programs to make your robot autonomous.
 The readme on the Python SDK landing page has [instructions](https://python.viam.dev/#easy-setup-via-app-viam-com) to guide you through connecting to and using your robot via the SDK.
+

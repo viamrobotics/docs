@@ -1,7 +1,7 @@
 ---
 title: "Security"
 linkTitle: "Security"
-weight: 10
+weight: 25
 type: "docs"
 description: "Explanation of how we manage shared secrets, authentication, and authorization throughout the Viam system."
 ---

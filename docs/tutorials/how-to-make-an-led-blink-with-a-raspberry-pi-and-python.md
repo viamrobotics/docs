@@ -15,7 +15,7 @@ In this post, you will be introduced to the basics of programming hardware by us
 ---
 
 **Note:**
-    This is part 2 of Viam's Intro to Robotics series. If you haven't completed [Part 1](../how-to-make-an-led-blink-with-a-raspberry-pi-using-viam/), be sure to go back and complete that before starting on this tutorial. I will be assuming that you have already set up [your Raspberry Pi](https://docs.viam.com/docs/getting-started/installation/), [set up Viam Server](https://docs.viam.com/docs/getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam App](https://docs.viam.com/docs/getting-started/installation/#adding-your-pi-on-the-viam-app) before proceeding.
+    This is part 2 of Viam's Intro to Robotics series. If you haven't completed [Part 1](../how-to-make-an-led-blink-with-a-raspberry-pi-using-viam/), be sure to go back and complete that before starting on this tutorial. I will be assuming that you have already set up [your Raspberry Pi](https://docs.viam.com/getting-started/installation/), [set up Viam Server](https://docs.viam.com/getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam App](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app) before proceeding.
     
 ---
 
@@ -34,11 +34,11 @@ You will need the following hardware, tools, and software to complete this proje
 
 -   [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
 
-    -   [Check out the Viam Raspberry Pi Setup Guide for steps on how to get started](https://docs.viam.com/docs/getting-started/installation/)
+    -   [Check out the Viam Raspberry Pi Setup Guide for steps on how to get started](https://docs.viam.com/getting-started/installation/)
 
-    -   [Be sure that you have set up Viam Server on your Raspberry Pi as well.](https://docs.viam.com/docs/getting-started/installation/#installing-viam-server)
+    -   [Be sure that you have set up Viam Server on your Raspberry Pi as well.](https://docs.viam.com/getting-started/installation/#installing-viam-server)
 
-    -   [Be sure that you are running Raspbian on your Pi.](https://docs.viam.com/docs/getting-started/installation/#installing-raspian-on-the-raspberry-pi)
+    -   [Be sure that you are running Raspbian on your Pi.](https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi)
 
     -   SSH must also be enabled on your Pi.
 
@@ -190,7 +190,7 @@ If you successfully configured your robot and it is able to connect to the Viam 
 
 ### How to write Python code to make an LED Blink
 
-The first thing you need to do is import the [Board component](https://docs.viam.com/docs/components/board/) from the Viam Python SDK. This component represents a physical general purpose board that contains GPIO pins. We will need this component in order to interact with the GPIO pins on our Raspberry Pi.
+The first thing you need to do is import the [Board component](https://docs.viam.com/components/board/) from the Viam Python SDK. This component represents a physical general purpose board that contains GPIO pins. We will need this component in order to interact with the GPIO pins on our Raspberry Pi.
 
 At the top of your blink.py file, paste the following:
 
