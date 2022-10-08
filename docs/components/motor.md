@@ -33,7 +33,7 @@ DC motors use magnetic fields to convert direct (one-way) electrical current int
 Increasing the input current increases the output motor torque (and also speed, assuming a constant load).
 Switching the direction of the input current changes the direction of motor rotation.
 
-[^bdcm]: <a href="https://en.wikipedia.org/wiki/Brushed_DC_electric_motor" target="_blank">Brushed DC motors: https://en.wikipedia.org/wiki/Brushed_DC_electric_motor</a>
+[^bdcm]: Brushed DC motors: <a href="https://en.wikipedia.org/wiki/Brushed_DC_electric_motor" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Brushed_DC_electric_motor</a>
 
 ### Brushed DC Motor Drivers
 A motor driver is a physical chip or power amplification circuit that converts input signals from a computing device into a high power output capable of actuating a motor.
@@ -46,7 +46,7 @@ The driver data sheet will specify which one to use.
 - A/B: One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled via PWM through one or both pins.
 - A/B + PWM: Three pins: an A and B to control direction and a separate PWM pin to control speed.
 
-[^pwm]:<a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">Pulse Width Modulation (PWM): https://en.wikipedia.org/wiki/Pulse-width_modulation
+[^pwm]:Pulse Width Modulation (PWM): <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Pulse-width_modulation</a>
 
 ---
 
@@ -62,7 +62,7 @@ The driver data sheet will specify which one to use.
 Brushed DC motors are relatively simple to wire.
 Taking a 12V brushed DC motor controlled by a Raspberry Pi via <a href="https://www.pololu.com/product/4038" target="_blank">this motor driver</a>[^mtd] as an example, the wiring diagram would look like this:  
 
-[^mtd]: <a href="https://www.pololu.com/product/4038" target="_blank">DRV8256E Single Brushed DC Motor Driver Carrier: https://www.pololu.com/product/4038</a>
+[^mtd]:DRV8256E Single Brushed DC Motor Driver Carrier: <a href="https://www.pololu.com/product/4038" target="_blank">ht<span></span>tps://www.pololu.com/product/4038</a>
 
 ![brushed-dc-wiring](../img/motor-brushed-dc-wiring.png)  
 
@@ -132,14 +132,14 @@ See the [Encoder Component Doc](../encoder) for more information on encoders.
 
 Here's an example of an encoded DC motor wired with <a href="https://www.pololu.com/product/2961" target="_blank">this motor driver</a>[^tmd2].
 
-[^tmd2]:<a href="https://www.pololu.com/product/2961" target="_blank">MAX14870 Single Brushed DC Motor Driver Carrier: https://www.pololu.com/product/2961</a>
+[^tmd2]:MAX14870 Single Brushed DC Motor Driver Carrier: <a href="https://www.pololu.com/product/2961" target="_blank">ht<span></span>tps://www.pololu.com/product/2961</a>
 
 ![motor-encoded-dc-wiring](../img/motor-encoded-dc-wiring.png)  
 
 ### Viam Configuration
 
 Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.”
-Configuration of an encoder requires configuring the encoder [per this document](../encoder) in addition to the [standard “gpio” model attributes](motor#required-attributes---non-encoded-dc-motor). Also note that the encoder name must be added in the motor's `depends_on` field.
+Configuration of an encoder requires configuring the encoder [per this document](../encoder) in addition to the [standard “gpio” model attributes](#required-attributes---non-encoded-dc-motor). Also note that the encoder name must be added in the motor's `depends_on` field.
 Here’s an example config file:  
 
 ![motor-encoded-dc-json](../img/motor-encoded-dc-json.png)  

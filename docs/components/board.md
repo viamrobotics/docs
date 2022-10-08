@@ -8,9 +8,9 @@ description: "Explanation of board types, configuration, and usage in Viam."
 In the Viam framework, a **board** is the signal wire hub of a [robot part](/docs/product-overviews/organization-management/#robots-and-their-parts).
 It sends signals to the other hardware components, and may or may not also act as the software hub, running an instance of the Viam server on its CPU.
 Boards have general purpose input/output (GPIO) pins through
-which they can transmit [PWM](https://en.wikipedia.org/wiki/Pulse-width_modulation)[^pwm] and other signals.
+which they can transmit <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">PWM</a>[^pwm] and other signals.
 
-[^pwm]: <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">PWM (Pulse Width Modulation): https://en.wikipedia.org/wiki/Pulse-width_modulation</a>
+[^pwm]:PWM (Pulse Width Modulation): <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Pulse-width_modulation</a>
 
 Some examples of boards include Raspberry Pi, BeagleBone, and Jetson.
 These are all single-board computers (SBCs) capable of advanced computation, including running the Viam server.
@@ -216,7 +216,7 @@ If you are using a Raspberry Pi, the “built-in” chip select pins are labeled
 The required connections between corresponding board pins and peripheral device pins must be wired, but each of these pins does not need to be specified in the config as most boards have them configured by default.
 Only the index of the entire bus must be specified.
 
-[^spi]: <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface target="_blank">Serial Peripheral Interface (SPI): https://en.wikipedia.org/wiki/Serial_Peripheral_Interface</a>
+[^spi]:Serial Peripheral Interface (SPI):  <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Serial_Peripheral_Interface</a>
 
 #### Configuration
 
@@ -247,7 +247,7 @@ For example, if you use I2C bus 1 on a Raspberry Pi 4, SDA and SCL will be pins 
 You will also need to enable I2C on your board if it is not enabled by default.
 Review the [instructions in our documentation](https://docs.viam.com/getting-started/installation/#enabling-the-i2c-protocol-on-the-raspberry-pi) to learn how to enable I2C on a Raspberry Pi 4.
 <a href="https://pinout.xyz/pinout/i2c" target="_blank">Pinout.xyz</a>[^pocom] has additional information about I2C on Raspberry Pi.
-[^pocom]: <a href="https://pinout.xyz/pinout/i2c" target="_blank">I2C - Inter Integrated Circuit on Pinout.xyz: https://pinout.xyz/pinout/i2c</a>
+[^pocom]:I2C - Inter Integrated Circuit on Pinout.xyz:  <a href="https://pinout.xyz/pinout/i2c" target="_blank">ht<span></span>tps://pinout.xyz/pinout/i2c</a>
 
 #### Configuration
 
