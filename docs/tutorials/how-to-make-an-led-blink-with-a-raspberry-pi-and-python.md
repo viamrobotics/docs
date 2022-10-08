@@ -31,7 +31,9 @@ For reference, the circuit you are building for this tutorial looks like this:
 You will need the following hardware, tools, and software to complete this project:
 
 ### Hardware
-(Click to view the component URL list)
+
+[Click to view the Component URL Listing](#components-url-list)
+
 <ol>
 <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
   
@@ -49,7 +51,7 @@ You will need the following hardware, tools, and software to complete this proje
 <li><a href="http://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
 <li><a href="http://amzn.to/2Dmainw" target="_blank">Resistor pack </a></li>
 <OL type="a">
-<li>You will be using a 100 Ohms resistor, which is the resistor with brown-black-brown bands</li>
+<li>You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands</li>
 </OL>
 <li><a href="http://amzn.to/2Ex2v5q" target="_blank">Blue LED</a></li>
 <li><a href="http://amzn.to/2qWurxS" target="_blank">Multimeter (optional)</a></li></ol>
@@ -256,13 +258,13 @@ If you are looking for some projects that would be a great next step in your jou
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
-# Component URL List
+## Components URL List
 
 <UL>
 <li>Raspberry Pi 3 or 4: <a href="https://a.co/d/5Tn67G3" target="_blank">ht<span></span>tps://a.co/d/5Tn67G3</a></li>
 <li>Solderless breadboard: <a href="https://amzn.to/2Q4Z5Ta" target="_blank">ht<span></span>tps://amzn.to/2Q4Z5Ta</a></li>
 <li>Jumper wires for easy hookup: <a href="http://amzn.to/2qVhd4y" target="_blank">ht<span></span>tp://amzn.to/2qVhd4y</a></li>
-<li>Resistor pack: <a href="http://amzn.to/2Dmainw" target="_blank">http://amzn.to/2Dmainw</a></li>
-<li>Blue LED: <a href="http://amzn.to/2Ex2v5q" target="_blank">http://amzn.to/2Ex2v5q</a></li>
-<li>Multimeter (optional): <a href="http://amzn.to/2qWurxS" target="_blank">http://amzn.to/2qWurxS</a></li>
+<li>Resistor pack: <a href="http://amzn.to/2Dmainw" target="_blank">ht<span></span>tp://amzn.to/2Dmainw</a></li>
+<li>Blue LED: <a href="http://amzn.to/2Ex2v5q" target="_blank">ht<span></span>tp://amzn.to/2Ex2v5q</a></li>
+<li>Multimeter (optional): <a href="http://amzn.to/2qWurxS" target="_blank">ht<span></span>tp://amzn.to/2qWurxS</a></li>
 </UL>
