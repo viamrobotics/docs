@@ -76,11 +76,15 @@ For example: motion planning and computer vision.
 
 ### Remote
 
-Parts can talk to arbitrary processes to add more components by adding them as a remote.
 A remote is a server that implementats the same GRPC interfaces, including the robot service which describs what it provides.
+Parts can talk to arbitrary processes to add more components by adding them as a remote.
 If a remote is added to a part, that part will that proxy all requests.
 
-For example, If you have an arm on a mobile robot, and it has it's own server that implementats the GRPC api, you can add it as a remote, and then control the arm via the part.
+Remotes are typically implemented with SDKs.
+
+Examples: 
+- a robot arm manufacturer has a network attached arm that implementats the Viam API, you can add it direction to a part as a remote.
+- a POE camera implementats the camera grpc interface, so can be added directly as a remote.
 
 ### Process
 Processes are scripts or programs run by the [Robot Development Kit (RDK)](../../appendix/glossary#rdk_anchor) whose life cycle is managed by the Viam server.
