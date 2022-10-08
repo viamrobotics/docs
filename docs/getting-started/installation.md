@@ -32,10 +32,12 @@ The first step is to set up a Linux installation on that microSD card.
 Connect the microSD card to your computer.
 
 You will be using the Raspberry Pi Imager to flash the microSD card.
-If you do not already have the Raspberry Pi Imager, you can [download it and follow the install instructions](https://www.raspberrypi.com/software/).
+If you do not already have the <a href="https://www.raspberrypi.com/software/" target="_blank">Raspberry Pi Imager</a>[^rpii], you can download and follow the installation instructions</a>).
 After installing successfully, connect your microSD card to your computer and launch the Raspberry Pi Imager.
 You should be greeted with a window that looks like:
 ![imager-launch-screen](../../tutorials/img/imager-launch-screen.png)
+
+[^rpii]: Raspberry Pi Imager: <a href="https://www.raspberrypi.com/software/" target="_blank">ht<span></span>tps://www.raspberrypi.com/software/</a>
 
 Select `CHOOSE OS`.
 Since you need a 64-bit version of Linux, you will need to select it from the `Rapsberry Pi OS (other)` menu.
@@ -60,7 +62,12 @@ Using SSH Keys for authentication is a great way of securing your Raspberry Pi a
 If you select `Allow public-key authentication only`, and the section `set authorized_ keys for 'pi'` is pre-populated, that means you do have an existing public SSH key that is ready to use.
 In that case, you do not have to change this section.
 
-If this section is empty, you can either generate a new SSH key by following [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead.
+If this section is empty, you can either generate a new SSH key using <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank">these instructions</a>[^sshkey], or you can use password authentication instead.
+
+[^sshkey]:SSH Key Generation: <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank">ht<span></span>tps://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent</a>
+
+
+
 ![imager-set-ssh](../../tutorials/img/imager-set-ssh.png)
 
 If you decide to use password authentication method: click on `Use password authentication`.
@@ -178,7 +185,8 @@ _This config tells the robot where to look on app.viam.com to pull its config._<
 - Click the copy button to copy the text.
 - Go to the terminal window connected to your Pi and paste the text and press enter.<br/>
 _This creates an etc/viam.json file containing something like:<br/>
-```
+
+``` json
 {"cloud":{"app_address":"https://app.viam.com:443","id":"{id}","secret":"{secret}"}}
 ```
 

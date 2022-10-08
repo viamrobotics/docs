@@ -150,17 +150,16 @@ We currently support two methods of supplying reference frame parameters for a k
 
 [^sva]: Spatial Vector Algebra (SVA):  <a href="https://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html" target="_blank">ht<span></span>tps://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html</a>
 
-[^dh]: Denavit-Hartenberg (DH): <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters" target="_blank">https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters</a>
+[^dh]: Denavit-Hartenberg (DH): <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters</a>
 
 Of the two methods, Viam prefers Spacial Vector Algebra over Denavit-Hartenberg. 
 
 Viam wants roboticists to be able to specify link frames arbitrarily, which DH parameters are unable to guarantee. We also want roboticists to make their own (messy) robots; accurate identification of DH parameters for a mass-produced robot can be exceedingly difficult. Furthermore, incorrect SVA parameters are much easier to troubleshoot than incorrect DH parameters.
 
 Below are JSON examples for each parameter type used by our Universal Robots[^ur] arms driver: 
-[^ur]: Universal Robots: [https://www.universal-robots.com/](https://www.universal-robots.com/)
+[^ur]: Universal Robots: <a href="https://www.universal-robots.com/" target="_blank">ht<span></span>tps://www.universal-robots.com/</a>
 
-
-**Example: kinematic_param_type=SVA:**
+**Example: kinematic_param_type=SVA**
 
 ```json
 {
