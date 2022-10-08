@@ -31,9 +31,9 @@ The location of a frame is described in relation to its parent frame using rigid
 
 **Frame System**: A hierarchy of frames that are related to one another via coordinate transformations.
 
-**gRPC**: gRPC Remote Procedure Calls is a cross-platform open source high performance Remote Procedure Call (RPC) framework[^grpc].
+<a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">**gRPC**: gRPC Remote Procedure Calls</a>[^grpc] is a cross-platform open source high performance Remote Procedure Call (RPC) framework.
 
-[^grpc]: GRPC, webpage, 2022, Wikipedia authors: https://en.wikipedia.org/wiki/GRPC
+[^grpc]:GRPC, webpage, 2022, Wikipedia authors:  <a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">ht<span><span>tps://en.wikipedia.org/wiki/GRPC</a> 
 
 **Model**: A particular implementation of a component type.
 For example, UR5e is a model of the arm component type.
@@ -49,10 +49,9 @@ They provide a bespoke, OS-specific process managed by the viam-server to either
 * The RDK contains: 
     * Go SDK
     * Various packages and libraries (Motion Planning, Controls, Frame System, SLAM)
-    * gRPC Interfaces (protobuf files)
     * gRPC Server Implementations (hardware drivers)
 
-* It can be used as a server.
+* It can be used to build a server.
     * Can parse and respond to changes in a remote robot configuration file.
     * With updates possibly provided by the Viam App ([https://app.viam.com](https://app.viam.com)).
     * Initializes resources from a config.

@@ -51,7 +51,9 @@ A simple LED circuit consists of a LED and resistor. The resistor is used to lim
 
 ### GPIO Pinout
 
-**General-purpose input/output** (**GPIO**) is a digital signal [pin](https://en.wikipedia.org/wiki/Pin_(electronics)) on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
+**General-purpose input/output** (**GPIO**) is a digital signal <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">pin</a>[^pin] on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
+
+[^pin]: Pin (Electronics): <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">https://en.wikipedia.org/wiki/Pin_(electronics)</a>
 
 ![Photo showing a Raspberry Pi 4 with a white box around the GPIO pins on the Pi and big red letters that say, "GPIO Pins."](../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image10.png)
 
