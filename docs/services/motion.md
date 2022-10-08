@@ -249,6 +249,6 @@ This places no restrictions on motion whatsoever. This is the default and will b
 
 Currently, the only algorithm available for use is CBiRRT, which stands for Constrained, Bidirectional implementation of <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">RRT</a>[^CBiRRT]. It will create paths which are guaranteed to conform to specified constraints, and attempt to smooth them afterwards as needed. By default, it will use a “free” constraint, that is, it will not constrain the path of motion at all. This is to ensure that paths will be found when using defaults, even in highly constrained scenarios.
 
-The algorithm used by Viam is based on the algorithm described in this paper: <a href="https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf" target="_blank">[https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf]</a>
+The algorithm used by Viam is based on the algorithm described in this paper: <a href="https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf" target="_blank">ht<span></span>tps://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf]</a>
 
-[^CBiRRT]: CBiRRT: <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">[https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree]</a>
+[^CBiRRT]: CBiRRT: <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Rapidly-exploring_random_tree</a>
