@@ -11,10 +11,12 @@ This tutorial will guide you through setting up a SCUTTLE Robot with a camera.
 
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
 Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/installation/#installing-raspian-on-the-raspberry-pi), if necessary.
-* A <a href="https://www.scuttlerobot.org/shop/" target="_blank">SCUTTLE Robot</a>[^srshop]
+
+* <a href="https://www.scuttlerobot.org/shop/" target="_blank">A SCUTTLE Robot</a>[^asr]
 * A camera
 
-[^srshop]: SCUTTLE Robot:<a href="https://www.scuttlerobot.org/shop/" target="_blank">  ht<span></span>tps://www.scuttlerobot.org/shop/</a>
+[^asr]:A SCUTTLE Robot: <a href="https://www.scuttlerobot.org/shop/" target="_blank">ht<span></span>tps://www.scuttlerobot.org/shop/</a>
+TLE Robot:<a href="https://www.scuttlerobot.org/shop/" target="_blank">  ht<span></span>tps://www.scuttlerobot.org/shop/</a>
 
 ## Configuring the Board
 Note: When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
@@ -263,10 +265,10 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle
 
 ## Documents Referenced
 
-  * **Installing Raspian on the Raspberry Pi**: [https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi](https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi)
+  * [**Installing Raspian on the Raspberry Pi**](../../getting-started/installation/#installing-raspian-on-the-raspberry-pi)
 
-  * **Color Detection with SCUTTLE Robot on Viam**: [https://docs.viam.com/tutorials/color-detection-scuttle/](https://docs.viam.com/tutorials/color-detection-scuttle/)
+  * [**Color Detection with SCUTTLE Robot on Viam**](../color-detection-scuttle)
 
-  * **Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad**: [https://docs.viam.com/tutorials/scuttle-gamepad/](https://docs.viam.com/tutorials/scuttle-gamepad/)
+  * [**Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad**](../scuttle-gamepad)
 
-  * **Line Following with SCUTTLE Robot on Viam**: [https://docs.viam.com/tutorials/webcam-line-follower-robot/](https://docs.viam.com/tutorials/webcam-line-follower-robot/)
+  * [**Line Following with SCUTTLE Robot on Viam**](../webcam-line-follower-robot)
