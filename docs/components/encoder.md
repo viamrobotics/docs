@@ -15,17 +15,17 @@ An encoder could also be positioned on a passive joint or other rotational objec
 - Some sort of rotary robot part (like a motor, joint or dial) for which you want to measure movement
 
 ## Mechanism
-Viam supports [quadrature encoders](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs)[^qe], which output two phases that can be used together to detect how far something has turned and in which direction.
+Viam supports <a href="https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs" target="_blank">quadrature encoders</a>[^qe], which output two phases that can be used together to detect how far something has turned and in which direction.
 Each phase output goes to a different pin on the board.
 Viam also supports single pin “pulse output” encoders which give relative position but not direction.
-[^qe]:quadrature encoders[https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs)
+[^qe]:quadrature encoders: <a href="https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs</a>
 
 In either case position can only be determined relative to the starting position; these encoders are incremental and do not indicate absolute position.
 Absolute encoders are another type of hardware that is not natively supported in Viam as of August 19th, 2022.
 
 ## Viam Configuration
-Configuring an encoder requires configuring digital interrupts on the board [(see "Board > Digital Interrupts," for more information)](../board#digital-interrupts) to which the encoder will be wired, and configuring the encoder itself.
-In the case of an encoded motor, the motor must be configured as well, per [the motor component doc](../motor#dc-motor-with-encoder).
+Configuring an encoder requires configuring digital interrupts on the board (for additional information, see [Board > Digital Interrupts](../board#digital-interrupts)) to which the encoder will be wired, and configuring the encoder itself.
+In the case of an encoded motor, the motor must be configured as well, per [the motor component topic](../motor#dc-motor-with-encoder).
 
 ### Example Config
 The following example shows the configuration of a board with the necessary digital interrupts, and an encoder.
