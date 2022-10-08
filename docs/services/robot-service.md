@@ -32,7 +32,7 @@ The below is a current list of interfaces provided by the Robot Service.
     </tr>
     <tr>
         <td>GetOperations</td>
-        <td>Returns all running operations initiated over gRPC (<a href="https://en.wikipedia.org/wiki/GRPC">Google Remote Procedure Call</a>)</td>
+        <td>Returns all running operations initiated over gRPC (<a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">Google Remote Procedure Call</a></td>
     </tr>
     <tr>
         <td>GetStatus</td>

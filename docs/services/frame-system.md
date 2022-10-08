@@ -59,8 +59,11 @@ These reference frames are ingested by the Frame System *but not exposed via gRP
 ## How the Robot Builds the Frame System
 
 Once configuration is complete and the server is started, the robot builds a tree of reference frames with the world as the root node. 
-A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs. 
+A <a href="https://en.wikipedia.org/wiki/Topological_sorting" target="_blank">topologically-sorted list</a>[^tsl] of the generated reference frames is printed by the server and can be seen in the server logs. 
 Viam regenerates this tree in the process of [reconfiguration](https://docs.viam.com/product-overviews/fleet-management/#configurationlogging)
+
+[^tsl]: Topological Sorting (wiki): <a href="https://en.wikipedia.org/wiki/Topological_sorting" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Topological_sorting</a>
+
 
 ![an example of a logged frame system](..\img\frame_sys_log_example.png)
 
@@ -117,7 +120,7 @@ An arm on a gantry, for example, can be managed by the Frame System directly bec
 On the other hand, an arm on a rover that is unaware of its own position cannot be configured into the frame system because the rover can move freely with respect to the world frame. A knowledgeable user could code a mobile base with an organic SLAM system able to report its own position without the need for supplementary transforms.
 
 So, how do we deal with such components? 
-One solution would be to introduce a motion tracker or a camera in combination with our [vision service](https://docs.viam.com/services/vision/) as a third component. 
+One solution would be to introduce a motion tracker or a camera in combination with our [vision service](/services/vision/) as a third component. 
 This component is fixed in space (making it configurable in the Frame System) and can supply the location and orientation of the rover in its own reference frame. 
 This *supplemental transform* is the missing link to be able to transform a pose in the arm's reference frame to the world reference frame (or others that may exist in the frame system).
 
@@ -127,7 +130,7 @@ Functions of some services and components take in a WorldState parameter (e.g., 
 This data structure includes an entry for supplying supplemental transforms for use by internal calls to the Frame System.
 
 ## Reference
-Viam uses model file writtent in JSON, similar to the URDF files used in ROS. JSON files are better suited for use in Python environments.
+Viam uses model files written in JSON, similar to the URDF files used in ROS. JSON files are better suited for use in Python environments.
 
 
 ### Model JSON
@@ -144,8 +147,12 @@ Furthermore, only our Go implementation supports creation of custom **Model JSON
 This means that a user will fork our [repository](https://github.com/viamrobotics/rdk), create one of these files in that fork, and then use it to build the package for running the server.
 
 We currently support two methods of supplying reference frame parameters for a kinematic chain: 
-1. Spatial Vector Algebra (SVA) - supplying reference frame information for each link and each joint.
-2. [Denavit-Hartenberg (DH)](https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters) parameters.
+1. <a href="https://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html" target="_blank">Spatial Vector Algebra</a>[^sva] (SVA) - supplying reference frame information for each link and each joint.
+2. <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters" target="_blank">Denavit-Hartenberg</a>[^dh] (DH) parameters.
+
+[^sva]: Spatial Vector Algebra (SVA):  <a href="https://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html" target="_blank">ht<span></span>tps://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html</a>
+
+[^dh]: Denavit-Hartenberg (DH): <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters" target="_blank">https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters</a>
 
 Of the two methods, Viam prefers Spacial Vector Algebra over Denavit-Hartenberg. 
 
