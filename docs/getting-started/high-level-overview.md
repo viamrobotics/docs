@@ -68,9 +68,9 @@ These components are configured, and then the drivers are loaded by _viam server
 Every part will likely have at least 1 component, but some will have a lot.
 For example, a raspberry pi part on a mobile robot might have: 4 motors, gps, imu, and a camera.
 
-### Serives
+### Service
 
-Services offer higher level software abstractions.
+[Services](/services) offer higher level software abstractions.
 
 For example: motion planning and computer vision.
 
