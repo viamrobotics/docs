@@ -17,7 +17,9 @@ Viam App pre-populates the **Connect** tab with the robot name, address, and sec
 {{<video src="../videos/scuttledemos_colordetection.mp4" type="video/mp4">}}
 
 ### Python.py Code 
-**Code**: [https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0](https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0)
+<a href="https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0" target="_blank">**Python.py GIST**</a>[^hgist]
+
+[^hgist]:Python.py code Gist: <a href="https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0" target="_blank">ht<span></span>tps://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0</a>
 
 ## Prerequisites
 The prerequisite of this tutorial is to have a Scuttle rover which you can drive via a webUI. 
@@ -28,10 +30,10 @@ Perhaps you can start with a red sports ball to demo with.
 
 Download the <file>scuttle.py</file> code to a directory on your computer that you can remember. 
 Feel free to choose your own location, but as an example, we’ve chosen the Desktop. 
-You must already have or install [Anaconda](https://www.anaconda.com)[^ana] (or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)[^minicon]).
+You must already have or install <a href="https://www.anaconda.com" target="_blank">Anaconda</a>[^ana] (or <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank">Miniconda</a>[^minicon]).
  
-[^ana]:Anaconda: [https://www.anaconda.com](https://www.anaconda.com)
-[^minicon]:Miniconda: [https://docs.conda.io/en/latest/miniconda.html](https://docs.conda.io/en/latest/miniconda.html)
+[^ana]:Anaconda: <a href="https://www.anaconda.com" target="_blank">ht<span></span>tps://www.anaconda.com</a>
+[^minicon]:Miniconda: <a href="https://docs.conda.io/en/latest/miniconda.html" target ="_blank">ht<span></span>tps://docs.conda.io/en/latest/miniconda.html</a>
 
 Then create an environment for Python by running the following on the terminal:
 ```bash
@@ -77,7 +79,7 @@ python ~/Desktop/scuttle.py
 Within `getVisService(robot)`, a detector is configured with particular properties and subsequently added to the vision service. 
 This particular detector is a "color" detector, which means the relevant parameters are “detect_color (hex string)”, “hue_tolerance_pct (float from 0 to 1)”, and “segment_size_px (integer).”  
 Feel free to add new detectors with different parameters! 
-To learn about all the different detectors and parameters, check out the [Vision Service](../../services/vision) docs. 
+To learn about all the different detectors and parameters, check out the [Vision Service](../../services/vision) topic. 
 
 The `leftOrRight()` code splits the screen vertically into thirds (left, center, and right) and makes a determination about which third the object (red ball) is in. 
 Within `main()`, this decides how the robot moves (as configured by the 4 given variables). 

@@ -30,33 +30,35 @@ For reference, the circuit you are building for this tutorial looks like this:
 
 You will need the following hardware, tools, and software to complete this project:
 
-### Hardware:
+### Hardware
+(Click to view the component URL list)
+<ol>
+<li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
+  
+<ol type="a">
 
--   [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
+<li>Refer to the <a href="https://docs.viam.com/getting-started/installation" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 
-    -   [Check out the Viam Raspberry Pi Setup Guide for steps on how to get started](https://docs.viam.com/getting-started/installation/)
+<li>Be sure that you have <a href="https://docs.viam.com/getting-started/installation/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
 
-    -   [Be sure that you have set up Viam Server on your Raspberry Pi as well.](https://docs.viam.com/getting-started/installation/#installing-viam-server)
+<li>Be sure that you are <a href="https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi">running Raspbian on your Pi.</a></li>
 
-    -   [Be sure that you are running Raspbian on your Pi.](https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi)
-
-    -   SSH must also be enabled on your Pi.
-
--   [Solderless breadboard](https://amzn.to/2Q4Z5Ta)
-
--   [Jumper wires for easy hookup](http://amzn.to/2qVhd4y)
-
--   [Resistor pack](http://amzn.to/2Dmainw)
-
-    -   You will be using a 100 Ohms resistor, which is the resistor colored with brown-black-brown
-
--   [Blue LED](http://amzn.to/2Ex2v5q)
-
--   [Multimeter](http://amzn.to/2qWurxS) (optional)
+<li>You must also enable SSH on your Pi.</li>
+</ol>
+<li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
+<li><a href="http://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
+<li><a href="http://amzn.to/2Dmainw" target="_blank">Resistor pack </a></li>
+<OL type="a">
+<li>You will be using a 100 Ohms resistor, which is the resistor with brown-black-brown bands</li>
+</OL>
+<li><a href="http://amzn.to/2Ex2v5q" target="_blank">Blue LED</a></li>
+<li><a href="http://amzn.to/2qWurxS" target="_blank">Multimeter (optional)</a></li></ol>
 
 ### Software:
 
--   [Python3](https://www.python.org/download/releases/3.0/)
+-   <a href="https://www.python.org/download/releases/3.0/" target="_blank">Python3</a>[^p3]
+
+[^p3]: Python 3: <a href="https://www.python.org/download/releases/3.0/" target="_blank">ht<span></span>tps://www.python.org/download/releases/3.0/</a>
 
 -   [Pip](https://pip.pypa.io/en/stable/#)
 
@@ -254,3 +256,13 @@ If you are looking for some projects that would be a great next step in your jou
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
+# Component URL List
+
+<UL>
+<li>Raspberry Pi 3 or 4: <a href="https://a.co/d/5Tn67G3" target="_blank">ht<span></span>tps://a.co/d/5Tn67G3</a></li>
+<li>Solderless breadboard: <a href="https://amzn.to/2Q4Z5Ta" target="_blank">ht<span></span>tps://amzn.to/2Q4Z5Ta</a></li>
+<li>Jumper wires for easy hookup: <a href="http://amzn.to/2qVhd4y" target="_blank">ht<span></span>tp://amzn.to/2qVhd4y</a></li>
+<li>Resistor pack: <a href="http://amzn.to/2Dmainw" target="_blank">http://amzn.to/2Dmainw</a></li>
+<li>Blue LED: <a href="http://amzn.to/2Ex2v5q" target="_blank">http://amzn.to/2Ex2v5q</a></li>
+<li>Multimeter (optional): <a href="http://amzn.to/2qWurxS" target="_blank">http://amzn.to/2qWurxS</a></li>
+</UL>
