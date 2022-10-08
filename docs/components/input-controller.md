@@ -6,7 +6,9 @@ type: "docs"
 description: "Explanation of input controller/gamepad configuration and usage in Viam."
 ---
 ## Input Interface
-The Input interface is defined in [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) and you should view that file for details on specific methods and their uses.
+The Input interface is defined in <a href="https://github.com/viamrobotics/rdk/blob/main/components/input/input.go" target="_blank">input/input.go</a>[^input] and you should view that file for details on specific methods and their uses.
+
+[^input]:input/input.go: <a href="https://github.com/viamrobotics/rdk/blob/main/components/input/input.go" target="_blank">ht<span></span>tps://github.com/viamrobotics/rdk/blob/main/components/input/input.go</a>
 
 ### Overview/Concepts
 #### Controller Interface
@@ -17,27 +19,27 @@ Input devices provide a Controller interface with three methods:
 
 #### Events
 
-Events are passed to registered callback functions and are returned by Events(). They represent a singular event from the input device and have four fields:
+`Events` are passed to registered callback functions and are returned by Events(). They represent a singular event from the input device and have four fields:
 1. Time
 1. Event (This is an input.EventType, and represents a change in status of a control, i.e. a button press, a button release, or a change in position along a joystick axis.)
 1. Control (This is an input.Control, and represents the axis/button/etc. involved.)
 1. Value (this is a float64, used for the position of an axis, or state of a button.)
 
 #### EventType
-EventType is an enumerated list, with items like ButtonPress, ButtonRelease, PositionChangeAbs, Connect, Disconnect, etc. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the current list. This type is returned as part of every event (per above) and also used to select events the callback is interested in when registering. One note is that the special AllEvents value, if registered, will be called IN ADDITION TO any other callbacks registered. This is useful for debugging without interrupting normal controls, or for capturing extra/unknown events.
+`EventType is an enumerated list, with items like ButtonPress, ButtonRelease, PositionChangeAbs, Connect, Disconnect, etc. See <a href="https://github.com/viamrobotics/rdk/blob/main/components/input/input.go" target="_blank">input/input.go</a>[^input] for the current list. This type is returned as part of every event (per above) and also used to select events the callback is interested in when registering. One note is that the special AllEvents value, if registered, will be called IN ADDITION TO any other callbacks registered. This is useful for debugging without interrupting normal controls, or for capturing extra/unknown events.
 
 #### Control types
-input.Control is another enumerated list that represents "well known" control types. For example, the X and Y axis of a primary joystick (a type of control which reports absolute position) should always be input.AbsoluteX and input.AbsoluteY. The secondary (right hand) joystick/thumbstick is input.AbsoluteRY and input.AbsoluteRY. Buttons are things line input.ButtonStart, or for trigger buttons, input.LT/RT. The typical 4-button configuration (under the right thumb) on most game pads uses generic compass directions instead of letter/shape labels, so that mappings aren't XBox/Nintendo/Playstation specific. Ex: "ButtonSouth" is the bottom-most button of the four, and corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation. "ButtonNorth" is likewise X/Y/Triangle. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the full/current list. If new types need to be added, care should be taken to make them as generic and universal as possible. Look to the symbols in the Linux events subsystem for examples.
+`input.Control` is another enumerated list that represents "well known" control types. For example, the X and Y axis of a primary joystick (a type of control which reports absolute position) should always be input.AbsoluteX and input.AbsoluteY. The secondary (right hand) joystick/thumbstick is input.AbsoluteRY and input.AbsoluteRY. Buttons are things line input.ButtonStart, or for trigger buttons, input.LT/RT. The typical 4-button configuration (under the right thumb) on most game pads uses generic compass directions instead of letter/shape labels, so that mappings aren't XBox/Nintendo/Playstation specific. Ex: "ButtonSouth" is the bottom-most button of the four, and corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation. "ButtonNorth" is likewise X/Y/Triangle. See <a href="https://github.com/viamrobotics/rdk/blob/main/components/input/input.go" target="_blank">input/input.go</a>[^input] for the full/current list. If new types need to be added, care should be taken to make them as generic and universal as possible. Look to the symbols in the Linux events subsystem for examples.
 
 #### Axes
-Axes can be either Absolute or Relative. Absolute axes report where they are each time and this is the method used by things like joysticks/thumbsticks, analog triggers, etc.--basically anything that "returns to center" on its own. Relative axes, on the other hand, are used by mice/trackpads/etc., and report a relative change in distance.
+`Axes` can be either Absolute or Relative. Absolute axes report where they are each time and this is the method used by things like joysticks/thumbsticks, analog triggers, etc.--basically anything that "returns to center" on its own. Relative axes, on the other hand, are used by mice/trackpads/etc., and report a relative change in distance.
 For now, only the gamepad implementation exists, so only Absolute axes are in use. Absolute axes report a "PostionChangeAbs" EventType and the Value is a float64 between -1.0 and +1.0, with center/neutral always being 0.0. The one special case is single-direction axes (like analog triggers, gas/brake pedals, etc.) On these, the "neutral" point is still 0.0, but they may only ever go into the positive direction. Lastly, note that for Y (vertical) axes, the positive direction is "nose up" which is pulling back on the stick.
 
 #### Buttons
 Buttons are a simpler case. They report either ButtonPress or ButtonRelease as their EventType, and the value is either 0 (for released) or 1 (for pressed.) Note that registering a callback for the ButtonChange event is merely a convenience for filtering, and will register the same callback to both ButtonPress and ButtonRelease, but ButtonChange will not be reported in an actual Event.
 
 ## Gamepad Driver
-The Gamepad module provides an input.Controller interface that represents a standard gamepad, such as an xbox or playstation type game controller. It currently only supports Linux, and uses the input event subsystem.
+The Gamepad module provides an `input.Controller` interface that represents a standard gamepad, such as an xbox or playstation type game controller. It currently only supports Linux, and uses the input event subsystem.
 
 
 ### Configuration Example
@@ -57,7 +59,7 @@ The Gamepad module provides an input.Controller interface that represents a stan
 }
 ```
 #### dev_file
-If dev_file is left blank (as shown above) or not included, it will search and use the first gamepad it finds. If you want to specify a device, give the absolute path to the input device event file. Ex: "/dev/input/event42"
+If `dev_file` is left blank (as shown above) or not included, it will search and use the first gamepad it finds. If you want to specify a device, give the absolute path to the input device event file. Ex: <file>/dev/input/event42</file>
 
 #### auto_reconnect
 This determines if the device will automatically reconnect a device (or wait for one to be connected during startup), or if it should fail when a device is not connected. Note this applies to remote (gRPC) and local (bluetooth or direct USB connected) devices as well. Defaults to false if not included.
