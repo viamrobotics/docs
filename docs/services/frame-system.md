@@ -59,7 +59,9 @@ These reference frames are ingested by the Frame System *but not exposed via gRP
 Once configuration is complete and the server is started, the robot builds a tree of reference frames with the world as the root node. 
 
 A <a href="https://en.wikipedia.org/wiki/Topological_sorting" target="_blank">topologically-sorted list</a>[^tsl] of the generated reference frames is printed by the server and can be seen in the server logs. 
-Viam regenerates this tree in the process of [reconfiguration](https://docs.viam.com/product-overviews/fleet-management/#configurationlogging)
+Viam regenerates this tree in the process of [reconfiguration](https://docs.viam.com/product-overviews/fleet-management/#configurationlogging):
+
+![an example of a logged frame system](../img/frame_sys_log_example.png)
 
 [^tsl]: Topological Sorting (wiki): <a href="https://en.wikipedia.org/wiki/Topological_sorting" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Topological_sorting</a>
 
