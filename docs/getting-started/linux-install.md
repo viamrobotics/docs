@@ -1,9 +1,9 @@
 ---
-title: "Installing Viam Server"
-linkTitle: "Installing Viam Server"
+title: "Installing Viam Server on Linux Systems"
+linkTitle: "Viam Server on Linux"
 weight: 10
 type: "docs"
-description: "How to install viam-server on Linux and sync a machine with the Viam App ([https://app.viam.com](https://app.viam.com))"
+description: "How to install and run viam-server on Linux and sync a machine with the Viam app ([https://app.viam.com](https://app.viam.com))"
 ---
 The Viam Server is distributed as an AppImage. The AppImage is a single, self-contained binary that should run on any Linux system with the correct CPU architecture, with no need to install any dependencies (excepting FUSE as detailed in the troubleshooting section at the end). MacOS users will need to build an executable binary from the code. Windows and 32-bit systems are not supported.
 
@@ -37,18 +37,18 @@ To run viam-server directly from the command line, you can use the following com
 ```bash
 sudo ./viam-server -config myconfig.json
 ```
-To connect this instance of viam-server with a [Viam App](app.viam.com) robot, the contents of `myconfig.json` should be pasted from the `COPY VIAM-SERVER CONFIG` button at the bottom of the Config tab of your robot on [app.viam.com](app.viam.com).
+To connect this instance of viam-server with a [Viam app](https://app.viam.com) robot, the contents of <file>myconfig.json</file> should be pasted from the **COPY VIAM-SERVER CONFIG** button at the bottom of the Config tab of your robot on [https://app.viam.com](https://app.viam.com).
 
 ![install-config-button](../img/install-config-button.png)
 
 #### Installing as a System Service
 This is more common when setting up viam-server on a Raspberry Pi or something that will essentially only be turned on when you want to use the robot, so you want viam-server to start every time on boot.
 
-The following command will create a systemd service file at `/etc/systemd/system/viam-server.service` and set it to start on boot, using a config placed at `/etc/viam.json`. It will also move the actual binary (AppImage) to `/usr/local/bin/viam-server` (regardless of the previous filename.) Run the following command:
+The following command will create a systemd service file at <file>/etc/systemd/system/viam-server.service</file> and set it to start on boot, using a config placed at <file>/etc/viam.json</file>. It will also move the actual binary (AppImage) to `/usr/local/bin/viam-server` (regardless of the previous filename.) Run the following command:
 ```bash
 sudo ./viam-server --aix-install
 ```
-To connect this viam-server with a [Viam App](app.viam.com) robot, navigate to your robot page on [app.viam.com](app.viam.com). At the bottom of the Config tab, click the `COPY VIAM-SERVER CONFIG` button and paste it into `/etc/viam.json`.
+To connect this viam-server with a [Viam app](https://app.viam.com) robot, navigate to your robot page on [https://app.viam.com](https://app.viam.com). At the bottom of the **Config** tab, click **COPY VIAM-SERVER CONFIG** and paste it into <file>/etc/viam.json</file>.
 
 Start the service by running:
 ```bash
@@ -57,16 +57,16 @@ sudo systemctl start viam-server
 The service is an AppImage and will check for updates and self-update automatically each time the service is started. Self-updates can take a couple of minutes, so the service may sometimes take a moment to start while this runs. You can disable this by commenting out the ExecPre line (the one with --aix-update on it) in the service file.
 
 ### Controlling the System Service
-After setting up the system service above, the AppImage binary will be located at /usr/local/bin/viam-server, and a systemd service file will be placed at /etc/systemd/system/viam-server.service.
+After setting up the system service above, the AppImage binary will be located at <file>/usr/local/bin/viam-server</file>, and a systemd service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
 
 To control the systemd service (viam-server) use the following commands:
-- Start `sudo systemctl start viam-server`
-- Stop `sudo systemctl stop viam-server`
-- Enable (start automatically after boot) `sudo systemctl enable viam-server`
-- Disable `sudo systemctl disable viam-server`
+- Start: `sudo systemctl start viam-server`
+- Stop: `sudo systemctl stop viam-server`
+- Enable (start automatically after boot): `sudo systemctl enable viam-server`
+- Disable: `sudo systemctl disable viam-server`
     - Note this disables the at-boot startup, but does not stop any currently-running service.
-- View logs `sudo journalctl --unit=viam-server`
-    - If the robot is able to connect with the Viam App, logs can be viewed in the Logs tab at [app.viam.com](app.viam.com).
+- View logs: `sudo journalctl --unit=viam-server`
+    - If the robot is able to connect with the Viam app, logs can be viewed in the Logs tab at [https://app.viam.com](https://app.viam.com).
 
 If you want to run the binary directly, be sure to stop the service first, then run `sudo /usr/local/bin/viam-server path/to/my/config.json`. Note that on a Raspberry Pi, viam-server must always run as root in order to access the DMA subsystem for GPIO.
 

@@ -39,7 +39,7 @@ You will need the following tools to complete the project:
 
 ## Project setup
 
-Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam RDK Server on Raspberry Pi](../../getting-started/installation) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam App.](../../getting-started/installation/#adding-your-pi-on-the-viam-app)
+Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](../../getting-started/installation) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam App.](../../getting-started/installation/#adding-your-pi-on-the-viam-app)
 
 *Note: If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.*
 

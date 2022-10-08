@@ -1,9 +1,10 @@
 ---
-title: "SLAM Service"
-linkTitle: "SLAM"
+title: "SLAM Service Background"
+linkTitle: "SLAM Technical"
 weight: 70
 type: "docs"
-description: "Explanation of the SLAM service, its configuration, its functionality, and its interfaces."
+draft: true
+description: "Background and Technical information for the Viam the SLAM service, its configuration, its functionality, and its interfaces."
 ---
 
 SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers. At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various cutting edge SLAM algorithms that may be useful in their mission.
@@ -12,11 +13,19 @@ As of 01 June 2022, we support the following SLAM libraries:
 
 -   [ORBSLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)[^orb]
 
-[^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORBSLAM3: https://github.com/UZ-SLAMLab/ORB_SLAM3</a>
-## Architecture
-### Data Generation
 
-The SLAM service is currently responsible for generating the data used by the various SLAM algorithms. This data is stored locally on the device in the directory specified in the config. THe structure of this directory can be seen in the diagram below.
+[^orb]:ORBSLAM3: [https://github.com/UZ-SLAMLab/ORB_SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
+
+# Current Architecture
+
+The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above. It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
+
+<img src="../img/slam-service-arch.png"/>
+
+## Data Generation
+
+Coming soon! 
+
 
 <pre>
 .
@@ -26,35 +35,36 @@ The SLAM service is currently responsible for generating the data used by the va
     └── config
 </pre>
 
-The implemented SLAM libraries rely on the filename to know when this data was generated and what sensor was used to collect it. The format for the timestamp is currently "2006-01-02T15_04_05.0000". Please note, this will be updated soon to align with the conventions used by the datamanager service.
 
-### Interfacing with the C++ Binary
+(FILE SAVING FORMAT)
 
-The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated version is desired, copy the new binary into this directory. If an identical name is used for this new binary, no changes will need to be made to the RDK SLAM code. If a new name is given then it must be relinked in <file>services/slam/slamlibraries.go</file> in the BinaryLocation metadata. Note: a new binary with a different name can be stored anywhere as long as it is included in your PATH.
+## **Interfacing with the C++ Binary**
 
-## RDK Config
+Coming soon!
+
+# **RDK Config**
 
 ``` json
 "services": [
   {
     "attributes": {
-      "algorithm": "orbslamv3",
+      "algorithm": "cartographer",
       "data_dir": "<path_to_folder>",
-      "sensors": ["color, depth"],
+      "sensors": ["rplidar"],
       "config_params": {
-        "mode": "rgbd"
+        "mode": "2d"
       },
       "map_rate_sec": 60,
       "data_rate_ms": 200,
       "input_file_pattern": "1:1000:1"
     },
-    "name": "testorb",
+    "name": "test",
     "type": "slam"
   }
 ]
 ```
 
-### Required Attributes
+## Required Attributes
 
 **algorithm** (string): Name of the SLAM library/algorithm to be used. Current options are cartographer or orbslamv3.
 
@@ -68,7 +78,7 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated 
 
 **Sensors** (string[]): Names of sensors which are input to SLAM
 
-### Optional Attributes
+## Optional Attributes
 
 **map_rate_sec** (int): Map generation rate for saving current state (in seconds). The default value is 60. If an integer is less or equal to 0 then SLAM is run in localization mode.
 
@@ -81,15 +91,16 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated 
 **config_params** (map[string] string): Parameters specific to the
 inputted SLAM library.
 
-### Specific SLAM Library Attributes
+## SLAM Library Attributes
 
-The config_params is a catch-all attribute for parameters that are unique to the SLAM library being used. These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
+`config_params` is a catch-all attribute for parameters that are unique to the in-use SLAM library. `config_params` often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching, to name a few.
 
 You can find details on which inputs you can include for the available libraries in the following sections.
 
-#### OrbSLAM
+### OrbSLAM
 
 OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (i.e., "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
+
 
 <table>
     <tr>
@@ -125,17 +136,19 @@ OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); th
         <td>7</td>
 </table>
 
-## Hardware Requirements
+
+
+# Hardware Requirements
 
 *Forthcoming*
 
-## Installation
+# Installation
 
-### Via an App Image
+## Via an App Image
 
 Coming soon!
 
-### Manual Installation
+## Manual Installation
 
 Perform a git clone on the SLAM repository using the recursive install flag to allow the sub packages to be downloaded as well.
 
@@ -143,11 +156,11 @@ Perform a git clone on the SLAM repository using the recursive install flag to a
 git clone --recurse-submodules git@github.com:viamrobotics/slam.git
 ```
 
-#### ORBSLAM3 Setup
+### ORBSLAM3 Setup
 
-This setup documents the current process for getting ORBSLAM3 working locally on a Raspberry Pi.
+This setup documents the current process for getting ORBSLAM3 working locally on a raspberry pi.
 
-##### Dependencies
+#### Dependencies
 
 The following are the required dependencies for building and running ORBSLAM3. In addition you should ensure the most recent version of the orbslam submodule is located in your directory with
 
@@ -155,7 +168,8 @@ The following are the required dependencies for building and running ORBSLAM3. I
 git submodule update \--init \--recursive
 ```
 
-###### Pangolin
+##### Pangolin - to setup run the following
+
 ```bash
 git clone \--recursive
 https://github.com/stevenlovegrove/Pangolin.git
@@ -166,16 +180,16 @@ cmake ..
 make -j4
 sudo make install
 ```
-###### OpenCV
+##### OpenCV
 ```bash
 sudo apt install libopencv-dev
 ```
 
-###### Eigen
+##### Eigen
 ```bash
 suo apt install libeigen3-dev
 ```
-###### gRPC
+##### gRPC
 
 To setup gRPC, use the following command:
 
@@ -186,13 +200,13 @@ mae pull-rdk
 
 This command pulls a minimal copy of rdk and build c++ gRPC files off of our proto.
 
-###### Other Dependencies
+##### Other Dependencies
 ```bash
 sudo apt install libssl-dev
 sudo apt-get install libboost-all-dev
 ```
 
-##### Building ORBSLAM3
+#### Building ORBSLAM3
 
 To build ORBSLAM3 run
 ```bash
@@ -214,16 +228,16 @@ Lastly, move the vocabulary file into your data directory. You must do this when
 cp ORB_SLAM3/Vocabulary/ORBvoc.txt ~/YOUR_DATA_DIR/config
 ```
 
-## Usage
+# Usage
 
-### Creating an initial map
+## Creating an initial map
 
 Coming soon! 
 
-### Pure localization on a priori map
+## Pure localization on a priori map
 
 Coming soon!
 
-### Updating an a priori map
+## Updating an a priori map
 
 Coming soon! 

@@ -107,7 +107,7 @@ or the pitch of a linear screw.
 <p>
 You can add a frame to a single-axis gantry attribute to describe its position in the local “world” frame.
 <p>
-See <a href="../services/frame-service">Frame Service</a> for further information.
+See <a href="/services/frame-system">Frame System</a> for further information.
    </td>
   </tr>
   </table>
@@ -133,7 +133,6 @@ In addition to the attributes for single-axis gantries, multi-axis gantries also
   </tr>
  
 </table>
-
 
 
 ## Gantry Methods 
@@ -185,19 +184,19 @@ The number of elements in the list must equal the number of moveable axes on the
   <tr>
    <td><strong>ModelFrame </strong>
    </td>
-   <td>Returns the Gantry model. This interface is used in Motion Planning. It is an interface that is used in <a href="../services/motion-planning">motion planning</a> for further information.
+   <td>Returns the Gantry model. This interface is used in Motion Planning. It is an interface that is used in <a href="/services/motion-planning">motion planning</a> for further information.
    </td>
   </tr>
   <tr>
    <td><strong>CurrentInputs </strong>
    </td>
-   <td>gets the positions of each axis of the gantry and transforms them into an Input type. It is used by <a href="../services/motion-planning">motion planning</a>.
+   <td>gets the positions of each axis of the gantry and transforms them into an Input type. It is used by <a href="/services/motion-planning">motion planning</a>.
    </td>
   </tr>
   <tr>
    <td><strong>GoToInputs </strong>
    </td>
-   <td>returns results from motion planning and Inputs to the gantry, and sends them to MoveToPosition as positions. It is used by <a href="../services/motion-planning">motion planning</a>.
+   <td>returns results from motion planning and Inputs to the gantry, and sends them to MoveToPosition as positions. It is used by <a href="/services/motion-planning">motion planning</a>.
    </td>
   </tr>
   </table>

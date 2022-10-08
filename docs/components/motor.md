@@ -114,11 +114,11 @@ Some motors have a built-in set of Hall effect sensors for this purpose, and oth
 Brushless DC motor drivers work in much the same way as brushed DC motor drivers.
 They typically require a PWM/DIR input or a A/B and PWM input to set the motor power and direction.
 The key difference between a brushed and brushless motor driver is on the motor output side.
-Brushless motors typically have three power connections (commonly referred to as A, B and C; or sometimes Phase 1, 2 and 3) and 3 sensor connections (commonly referred to as Hall A, Hall B and Hall C) running between the motor and driver.
+Brushless motors typically have three power connections (commonly referred to as A, B and C; or sometimes Phase 1, 2 and 3) and 3 sensor connections (commonly referred to as Hall A, Hall B, and Hall C) running between the motor and driver.
 
 ### Wiring and Configuration
 The configuration file of a BLDC motor with Viam is the same as that of a brushed motor.
-Only the output side of the driver board is different, i.e. more wires connect the driver to the motor.
+Only the output side of the driver board is different, i.e., more wires connect the driver to the motor.
 
 ![motor-brushless-dc-wiring](../img/motor-brushless-dc-wiring.png)  
 
