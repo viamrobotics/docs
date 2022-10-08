@@ -5,14 +5,21 @@ weight: 1
 type: "docs"
 description: "A high-level overview of Viam."
 ---
+
+Viam's goal is to make it easy to take a robotics idea from paper, to prototype, to production, to scale. 
+
+That includes making it easy to configure hardware, test hardware prototypes, write production code, deploy, and add features.
+
 ## Basics
 Viam runs on your robot and the cloud.
 
-Everything that runs on your robot is open source and is availble at http://github.com/viamrobotics 
+Everything that runs on your robot is open source and is available at http://github.com/viamrobotics 
 
-We reccomend using our cloud app to configure, manage, and control your robots at http://app.viam.com/
+We recommend using our cloud app to configure, manage, and control your robots at http://app.viam.com/
 
-A robot's configuration lives in the cloud. The configuration is a description of the hardware and higher level software services. For example how a motor is connected to a Raspberry PI, or what maching learning models you want to use for classification.
+A robot's configuration lives in the cloud.
+The configuration is a description of the hardware and higher level software services.
+For example how a motor is connected to a Raspberry PI, or what maching learning models you want to use for classification.
 
 On the robot, a single viam process, called _viam-server_ runs, and is responsible for: 
 - keeping the configuration up to date
@@ -25,7 +32,10 @@ Your robot code can run directly on the robot, or anywhere else with internet co
 
 ## API
 
-All communication across Viam is done with GRPC, directly if wanted, or via webrtc, which provides authentication and encryption.
+All communication across Viam is done with gRPC[^grpc], directly if wanted, or via webrtc[^webrtc], which provides authentication and encryption.
+
+[^grpc]: <a href="https://grpc.io/" target="_blank">gRPC</a>
+[^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC)" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
 
 There are three buckets of APIs
 - [Components](/components)
@@ -37,25 +47,32 @@ You can see all Viam API specifications at https://github.com/viamrobotics/api
 ## Concepts
 
 ### Robot
-A _Robot_ in Viam is 1 or more computers, combined into 1 logical robot. A mobile robot that has 1 Jetson and 1 raspberry pi is 1 robot.  The bounds of a robot are usually pretty clear, but can be subjective. 
+A _Robot_ in Viam is 1 or more computers, combined into 1 logical robot.
+A mobile robot that has 1 Jetson and 1 raspberry pi is 1 robot.
+The bounds of a robot are usually pretty clear, but can be subjective. 
 
 ### Part
 Each of those computers are a _Part_. In that example, you have 1 robot, and 2 parts (the jetson and pi).
 
-Most simple robots will likely only have 1 part.
+Most simple robots will likely only have 1 part, but can have as many as you need.
 
-The parts are organized in a tree, with one of them being the _main_ part, and the others being _sub parts_.
+Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub parts_.
 You can access any sub part either directly, or via any part above it in the tree.
-Therefore if you only talk to the main part, you can access the entire robot, so that the layout of the tree below can change without any code changes.
 
 Each part runs a single _viam-server_ instance.
 
 ### Component
 
-A component is a piece of hwardware or software that exposes a specific API, such as arm, motor, or gps.
+A component is a piece of hardware or software that exposes a specific API, such as arm, motor, or gps.
 These components are configured, and then the drivers are loaded by _viam server_.
 Every part will likely have at least 1 component, but some will have a lot.
 For example, a raspberry pi part on a mobile robot might have: 4 motors, gps, imu, and a camera.
+
+### Serives
+
+Services offer higher level software abstractions.
+
+For example: motion planning and computer vision.
 
 ### Remote
 
@@ -69,6 +86,16 @@ For example, If you have an arm on a mobile robot, and it has it's own server th
 Processes are scripts or programs run by the [Robot Development Kit (RDK)](../../appendix/glossary#rdk_anchor) whose life cycle is managed by the Viam server.
 One example is running a [Software Development Kit (SDK)](/product-overviews/sdk-as-server) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
 
+## SDKs
+
+While you can connect to a robot with grpc directly, we provide SDKs to make this easier, and handle authentication and webrtc.
+
+SDKs are used for:
+- writing your application code for building your robot to interact with the components and services
+- implementing drivers for hardware not yet supported
+
+We currently have SDKs for go, python, typescript, and rust. With many more coming soon including c++ and flutter
+
 ## Pictures
 
 ![two-part-architecture](../img/overview-two-part-architecture.png)  
@@ -78,37 +105,14 @@ Each part has its own compute unit which runs an instance of `viam-server` and c
 Part 1 is the main part and could exist without Part 2.
 Part 2 is a remote._
 
-Parts communicate with one another using a consistent and unified API, regardless of the hardware they are running on.
-This is done via <a href="https://en.wikipedia.org/wiki/WebRTC)" target="_blank">WebRTC</a>[^webrtc]  using the [gRPC and protobuf APIs](../../deeper-dive/architecture-and-protobuf).
-This SDK API is available in any language, and provides direct and secure connections to and between parts.
+## Next steps
 
-[^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC)" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
+If you have hardware lying around, the best thing to do is try to get it setup.
 
-## Getting Started
+If there are issues, please work with on slack as we're still working on rough edges.
 
-After installing the Viam server on a computer (like a Raspberry Pi), you can connect your newly minted part to the Viam App ([https://app.viam.com](https://app.viam.com)).
-The web app provides a page for each robot to do the following:
+We also have a number of [tutorials](/tutorials) to get you started.
 
-- Logs: Displays `viam-server` logs including status changes and error messages.
-- Config: Provides a UI for building out your robot configuration.
-- Control: Provides a basic UI for testing your robot components and services without needing to write any script–for example, driving the motors and viewing camera feeds.
-- Connect: Contains boilerplate connection code to copy and paste into any script you write using SDKs.
+If you have no harware, you can use our mock tutorial FIX ME.
 
-SDK-based applications can be run locally on one part of the robot or on an entirely separate computer (like your laptop).
-They use the same APIs as the web UI.
-
-![laptop-architecture](../img/overview-laptop-architecture.png)  
-_Figure 2.
-Example architecture showing how SDK-based applications communicate with your robot’s main instance of `viam-server` over gRPC._
-
-If your hardware isn't supported by Viam’s [RDK](../../appendix/glossary#rdk_anchor), you can write your own implementation of a component model.
-If a library already exists, then you just need to write a few lines of code.
-To read more on how to do this, check out our documentation on [Using Our SDKs for a Server Component Implementation](/product-overviews/sdk-as-server).
-Your part will manage this process and expose the API as it does with all of your other components.
-
-If and when you start collaborating with other users, then you may wish to manage their access to different robots.
-You can organize robots, users, and organizations using [Viam’s Organizational Management System](/product-overviews/organization-management).
-
-More detailed information can be found in the product overview and deep dive documents.
-To start making robots with Viam, [Get a Viam-Server Running on a Raspberry Pi](/getting-started/installation) or explore our other [Tutorials](/tutorials/tutorials).
 
