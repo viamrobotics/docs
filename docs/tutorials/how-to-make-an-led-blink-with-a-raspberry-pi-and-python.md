@@ -60,15 +60,19 @@ You will need the following hardware, tools, and software to complete this proje
 
 -   <a href="https://www.python.org/download/releases/3.0/" target="_blank">Python3</a>[^p3]
 
+- <a href="https://pip.pypa.io/en/stable/#" target="_blank">Pip</a>[^pip]</a>
+-   Viam Server: <a href="https://github.com/viamrobotics/rdk/tree/0c550c246739b87b4d5a9e8d96d2b6fdb3948e2b" target="_blank">ht<span></span>tps://github.com/viamrobotics/rdk/tree/0c550c246739b87b4d5a9e8d96d2b6fdb3948e2b</a>
+
+[^pip]:Package Installer for Python (pip): <a href="https://pip.pypa.io/en/stable/#" target="_blank">ht<span></span>tps://pip.pypa.io/en/stable/#</a>
+
 [^p3]: Python 3: <a href="https://www.python.org/download/releases/3.0/" target="_blank">ht<span></span>tps://www.python.org/download/releases/3.0/</a>
-
--   [Pip](https://pip.pypa.io/en/stable/#)
-
--   [Viam Server](https://github.com/viamrobotics/rdk/tree/0c550c246739b87b4d5a9e8d96d2b6fdb3948e2b)
 
 -   [Viam Python SDK](https://python.viam.dev/)
 
--   Install [Visual Studio Code](https://code.visualstudio.com/) or [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) on your development machine (not your Raspberry Pi).
+-   Install <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>[^vsc] or <a href="https://code.visualstudio.com/insiders/" target="_blank">Visual Studio Code Insiders</a>[^vsci] on your development machine (not your Raspberry Pi).
+
+[^vsc]:Visual Studio Code: <a href="https://code.visualstudio.com/" target="_blank">ht<span></span>tps://code.visualstudio.com/</a>
+[^vsci]:Visual Studio Code Insiders: <a href="https://code.visualstudio.com/insiders/" target="_blank">ht<span></span>tps://code.visualstudio.com/insiders/</a>
 
 ## How to install the Viam Python SDK on your Raspberry Pi
 
@@ -85,7 +89,11 @@ First, you will need to make sure your Raspberry Pi is plugged in, turned on, an
 **Caution**:
     Make sure your Raspberry Pi and the computer you are using to SSH into your Raspberry Pi are connected to the same network.
 
-Next, launch your terminal (on Mac and Linux) and replace the user and hostname with the user and hostname you configured when you set up your Pi. On Windows, you can use an SSH client such as [Putty](https://itsfoss.com/putty-linux/).
+Next, launch your terminal (on Mac and Linux) and replace the user and hostname with the user and hostname you configured when you set up your Pi. On Windows, you can use an SSH client such as <a href="https://itsfoss.com/putty-linux/" target="_blank">Putty</a>[^putty].
+
+
+[^putty]:Putty: <a href="https://itsfoss.com/putty-linux" target="_blank">ht<span></span>tps://itsfoss.com/putty-linux</a>
+
 
 ```bash
 ssh <username>@<hostname>.local
@@ -98,9 +106,9 @@ Default username and password on Raspberry Pi's are
 -   password: raspberry
 
 **Caution**:
-    It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi. In the past, a [malware infected thousands of Raspberry Pi devices that were using the default username and password.](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)[^malware].
+    It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi. In the past, a <a href="https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/" target="_blank">malware infected thousands of Raspberry Pi devices that were using the default username and password</a>[^malware].
 
-[^malware]: ZD Net Article on Raspberry Pi Malware: https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/    
+[^malware]: ZD Net Article on Raspberry Pi Malware: <a href="https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/" target="_blank">ht<span></span>tps://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/</a>
 
 If you can't remember your user and hostname, you can also find out the IP address by other means like checking the network devices list on your router/modem.
 
@@ -111,8 +119,12 @@ Next, type in your password and press enter.
 On successful login, you'll be presented with the terminal of your Raspberry Pi. Now you can run any commands on your Raspberry Pi through this terminal remotely (within the current network) without having to access your Raspberry Pi physically.
 
 ### Installing pip on a Raspberry Pi
+<a href="https://pip.pypa.io/en/stable/#" target="_blank">Package Installer for Python, aka, pip</a>[^pip] is the <a href="https://packaging.python.org/guides/tool-recommendations/" target="_blank"> official package installer for Python</a>[^pysoftrec] .
+You can use it to install packages from the <a href="https://pypi.org/" target="_blank">Python Package Index</a>[^pypack] and other indexes, such as the Viam Python SDK package. You can install pip by typing the following command into the terminal:
 
-[Pip](https://pip.pypa.io/en/stable/#) is the [package installer for Python](https://packaging.python.org/guides/tool-recommendations/). You can use it to install packages from the [Python Package Index](https://pypi.org/) and other indexes, such as the Viam Python SDK package. You can install pip by typing the following command into the terminal:
+[^pypack]:Python Package Index: <a href="https://pypi.org/" target="_blank">ht<span></span>tps://pypi.org/</a>
+
+[^pysoftrec]: Python Tool Recommendations<a href="https://packaging.python.org/guides/tool-recommendations/" target="_blank">ht<span></span>tps://packaging.python.org/guides/tool-recommendations/</a>[^pysoftrec]
 
 ```bash
 sudo apt-get install python3-pip
@@ -194,7 +206,7 @@ If you successfully configured your robot and it is able to connect to the Viam 
 
 ### How to write Python code to make an LED Blink
 
-The first thing you need to do is import the [Board component](https://docs.viam.com/components/board/) from the Viam Python SDK. This component represents a physical general purpose board that contains GPIO pins. We will need this component in order to interact with the GPIO pins on our Raspberry Pi.
+The first thing you need to do is import the [Board component](../components/board/) from the Viam Python SDK. This component represents a physical general purpose board that contains GPIO pins. We will need this component in order to interact with the GPIO pins on our Raspberry Pi.
 
 At the top of your blink.py file, paste the following:
 
@@ -241,7 +253,8 @@ You can exit this program by click **CTRL + C** in your terminal window.
 
 If you get an error, you can check your code against my complete code here:
 
-[https://github.com/viamrobotics/LED-Blink](https://github.com/viamrobotics/LED-Blink)
+**Completed code**: <a href="https://github.com/viamrobotics/LED-Blink" target="_blank">ht<span></span>tps://github.com/viamrobotics/LED-Blink</a>
+
 
 !!! tip
     If you have any issues whatsoever getting the Viam Python SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com). There, you will find a friendly developer community of people learning how to make robots using Viam.
