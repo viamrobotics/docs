@@ -10,6 +10,7 @@ Looking to get started with Viam? Check out the following:
 
 - [Viam Overview](../getting-started/high-level-overview)
 - [Viam's Robot Configuration](../getting-started/robot-config)
+- [Viam Use Cases](www.viam.com/use-cases)
 
 ## Product Overviews
 - [The Viam App's Organizational Hierarchy](../product-overviews/organization-management)
