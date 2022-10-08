@@ -8,9 +8,9 @@ description: "A high-level overview of Viam."
 A robot is a computer that interacts with its environment.
 What does this mean? A robot can collect information about its environment and make behavioral decisions on based on that information.
 
-Robots can take many forms, from a simple wheeled rover to a much more complex system involving many [_components_](/docs/#components) such as a wheeled base, grippers, arms, various cameras and other sensors working together.
+Robots can take many forms, from a simple wheeled rover to a much more complex system involving many [_components_](/components) such as a wheeled base, grippers, arms, various cameras and other sensors working together.
 A simpler system might be controlled by a single microcontroller or microprocessor (such as a Raspberry Pi, Jetson or Arduino), whereas a more complex system might contain more than one of these compute units.
-In addition to physical hardware, a robot may employ one or more Viam-built software modules such as navigation or vision algorithms, which we call [_services_](/docs/#services).
+In addition to physical hardware, a robot may employ one or more Viam-built software modules such as navigation or vision algorithms, which we call [_services_](/services).
 
 At Viam, each computer (and the components it controls) is called a _part_.
 Robots are organized into one or more parts, depending on the number of computers they're comprised of.
