@@ -5,7 +5,7 @@ Everything from this line through the next four sections is contained in <file>/
 1. Place the file to include into the <file>/static</file> directory. 
 2. Next, add the filespec in the shortcode braces:
 
- {{% include "/static/robot-ipsum.md" %}}
+ {{% readfile file="/static/robot-ipsum.md" %}}
 
 Hugo will pull the file in at that location. Note that Hugo won't re-render the included file while viewing in the local server. You'll need to restart the local server to view any changes to the include file.
 
