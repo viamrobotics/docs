@@ -8,9 +8,10 @@ description: "A guide to basic troubleshooting of a Viam-based robotic system, e
 This document lists known issues, common troubleshooting steps (e.g., check that the SBC plugged in and turned on, etc.) and common errors, and how we resolved them.
 It differs from the FAQ in that the FAQ contains broad, high-level questions about Viam and its software while this section contains specific instructions for resolving software difficulties.
 
-{{< note >}}
+{{% alert title="Note" color="note" %}}  
+
 While every effort has been made to include all common/known issues and their possible resolutions, this list is not comprehensive.
-{{< /note >}}
+{{% /alert %}}
 
 ## Common Errors
 

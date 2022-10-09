@@ -7,11 +7,12 @@ description: "Instructions for detecting and following a colored object with a S
 ---
 ## Introduction
 
-{{% note %}}
+{{% alert title="Note" color="note" %}}  
+
 In the Python code, you must add your robot's address and secret, which are found on the **Connect** tab of the Viam App at [https://app.viam.com](https://app.viam.com) in your web browser. 
 Viam App pre-populates the **Connect** tab with the robot name, address, and secret:<br>
 <img src="../img/color-rdk-remote-cfg.png" />
-{{% /note %}}
+{{% /alert %}}
 
 ### Demonstration Video
 {{<video src="../videos/scuttledemos_colordetection.mp4" type="video/mp4">}}
@@ -51,8 +52,6 @@ Before you can run the code, you need to install the "viam" module.
 Follow the directions at the bottom of the <a href="https://github.com/viamrobotics/python-sdk#installation---pre-open-sourcing" target="_blank">Python SDK installation</a>[^pos] guide to properly install the package. 
 
 [^pos]:Python SDK installation: <a href="https://github.com/viamrobotics/python-sdk#installation---pre-open-sourcing" target="_blank">ht<span></span>tps://github.com/viamrobotics/python-sdk#installation---pre-open-sourcing</a>
-
-
 
 It will look like this on the terminal:
 

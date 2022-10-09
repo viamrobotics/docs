@@ -77,20 +77,22 @@ Viam's Client SDKs support many different ways to connect and control your robot
 
 The [Viam Python SDK](https://python.viam.dev) makes it easier to use an implementation of your robot's components using the Python programming language, than needing to create them directly using the [Viam RDK](https://docs.viam.com/product-overviews/rdk/).
 
-*Tip:
-     Viam's Software Development Kits (SDKs) provide a wide array of components to customize (You can browse through the [API Reference](https://python.viam.dev/autoapi/viam/components/index.html) to see all of them).*
+{{% alert title="Tip" color="tip" %}}  
+Viam's Software Development Kits (SDKs) provide a wide array of components to customize. 
+You can browse through the [API Reference](https://python.viam.dev/autoapi/viam/components/index.html) to see all of them.
+{{% /alert %}}
 
-
-**Note:**
-    We will be assuming that you have already [set up Viam Server](/getting-started/installation/#installing-viam-server) on your robot and [connected your robot to the Viam App](/getting-started/installation#adding-your-pi-on-the-viam-app), and [installed the Viam Python SDK](https://python.viam.dev/index.html) on your client before proceeding.
+{{% alert title="Note" color="note" %}}  
+We will be assuming that you have already [set up Viam Server](/getting-started/installation/#installing-viam-server) on your robot and [connected your robot to the Viam App](/getting-started/installation#adding-your-pi-on-the-viam-app), and [installed the Viam Python SDK](https://python.viam.dev/index.html) on your client before proceeding.
+{{% /alert %}}
 
 ### How to connect to your Robot using the Viam Python SDK
 
 The easiest way to get started writing a Python application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **Connect** tab, and copy the boilerplate code from the section labeled **Python SDK**. This code snippet imports all the necessary libraries and sets up a connection with the Viam App in the cloud.
 
-*Tip:
-    You can learn more about connecting to your robot with the [Python SDK](https://python.viam.dev) on the [Connect as a Client page](https://python.viam.dev/examples/example.html#connect-as-a-client).*
-
+{{% alert title="Tip" color="tip" %}}  
+You can learn more about connecting to your robot with the [Python SDK](https://python.viam.dev) on the [Connect as a Client page](https://python.viam.dev/examples/example.html#connect-as-a-client).*
+{{% /alert %}}
 ### How to get your Robot's Components with the Viam Python SDK
 
 Once you have a connected `RobotClient`, you can then obtain the robot's components by their name. In this example, we are getting a [camera](https://python.viam.dev/autoapi/viam/components/camera/index.html?highlight=camera#module-viam.components.camera) that has been configured on the robot, then taking a photo and displaying the photo.
@@ -120,5 +122,6 @@ You can also use the `RobotClient` to make service calls to the connected robot.
   detections = await vision.get_detections_from_camera("camera_1", "detector_1")
 ```
 
-!!! tip
-    To learn about all the things you can do with Viam's Python SDK, be sure to check out the [Viam Python SDK Documentation](https://python.viam.dev/index.html).
+{{% alert title="Tip" color="tip" %}}  
+To learn about all the things you can do with Viam's Python SDK, be sure to check out the [Viam Python SDK Documentation](https://python.viam.dev/index.html).
+{{% /alert %}}

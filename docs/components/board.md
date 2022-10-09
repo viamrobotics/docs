@@ -24,10 +24,10 @@ Note that a desktop computer does not typically have GPIO pins, so it cannot act
 *Figure 1. Two different board options: SBC with GPIO pins running Viam server locally; or GPIO peripheral plugged into a computer's USB port, with the computer running Viam server.*
 
 
-**Note:**
+{{% alert title="Note" color="note" %}}  
 The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers.
 In these cases, the board itself must run an instance of Viam server.
-
+{{% /alert %}}
 ## General Hardware Requirements
 
 A common board setup comprises the following:

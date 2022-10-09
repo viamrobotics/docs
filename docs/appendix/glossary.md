@@ -64,7 +64,9 @@ They provide a bespoke, OS-specific process managed by the viam-server to either
 * Contains different libraries:
     * Motion Planning, Frame System, SLAM, Controls
     * These are used to help implement components/services.
-    * Note: Libraries are called “services” ONLY if we expose their functionality in our proto APIs.
+{{% alert title="Note" color="note" %}}  
+Libraries are called “services” ONLY if we expose their functionality in our proto APIs.
+{{% /alert %}}
 
 **Resource**: Resources are individual, addressable elements of a robot (RDK definition) operated by parts. 
 Parts operate two types of Resources: physical components and software services.

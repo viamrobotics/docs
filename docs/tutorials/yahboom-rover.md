@@ -33,8 +33,9 @@ If the Yahboom setup instructions are followed correctly, the following `pins` s
 You should leave `dir` pin blank, because Yahboom's motor driver uses an a/b/pwm configuration.
 For the `board` again put `local`, and `max_rpm` should be `300`.
 You should leave `ticks_per_rotation` at zero.
-Note: if you are using a motor with encoders, you need to specify the ticks per rotation.
-
+{{% alert title="Note" color="note" %}}  
+If you are using a motor with encoders, you need to specify the ticks per rotation.
+{{% /alert %}}
 ![rightmotor](../img/rightmotor.png)
 
 Having entered these two components, you should now be able to actuate your motor.

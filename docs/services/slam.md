@@ -30,7 +30,11 @@ The implemented SLAM libraries rely on the filename to know when this data was g
 
 ### Interfacing with the C++ Binary
 
-The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated version is desired, copy the new binary into this directory. If an identical name is used for this new binary, no changes will need to be made to the RDK SLAM code. If a new name is given then it must be relinked in <file>services/slam/slamlibraries.go</file> in the BinaryLocation metadata. Note: a new binary with a different name can be stored anywhere as long as it is included in your PATH.
+The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated version is desired, copy the new binary into this directory. If an identical name is used for this new binary, no changes will need to be made to the RDK SLAM code. If a new name is given then it must be relinked in <file>services/slam/slamlibraries.go</file> in the BinaryLocation metadata. 
+
+{{% alert title="Note" color="note" %}}  
+A new binary with a different name can be stored anywhere as long as it is included in your PATH.
+{{% /alert %}}
 
 ## RDK Config
 
@@ -74,8 +78,10 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated 
 
 **data_rate_ms** (int): Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is 200. If 0, no new data is sent to the SLAM algorithm.
 
-**input_file_pattern** (string): File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data.
-
+**input_file_pattern** (string): File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. 
+{{% alert title="Note" color="note" %}}  
+X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data.
+{{% /alert %}}
 **port** (string): Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned.
 
 **config_params** (map[string] string): Parameters specific to the
