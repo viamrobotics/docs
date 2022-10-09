@@ -59,8 +59,8 @@ id = "UA-00000000-0"
 
 [languages]
 [languages.en]
-title = "Documentation" ## This is the Title Banner 
-description = "Viam Documentation" ## I don't think this appears anywhere.
+title = "Viam Documentation" ## This is the Title Banner 
+description = "Viam Documentation" ## Description of "title," above..
 languageName ="English"
 # Weight used for sorting.
 weight = 1
