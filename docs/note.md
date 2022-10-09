@@ -7,39 +7,41 @@ type: "docs"
 ---
 
 
-Testing Notes, Cautions, and Warnings
+## How to use Notes, Cautions, and Warnings
 
-Info/Tip: Exactly that. Info and Tip use the same color.
+**Info/Tip**: Exactly that. They both use the same color.
 
-Note: This is to call the reader's attention to something important. Use it to expand on something from the body text or to provide a tip or additional information.
+**Note**: These call attention to something important. Use it to expand on a point from the body text or to provide a tip or additional information.
 
-Caution: This provides notices that a certain action or event could damage hardware or cause data loss.
+**Caution**: Provide notice that a certain action or event could damage hardware or cause data loss.
 
-Warning: Use to notify the reader of information to avoid loss of life, personal injury, and health hazards.
+**Warning**: Use to notify the reader of an issue to avoid loss of life, personal injury, and health hazards. (Think Universal Arm on an unannounced rampage.)
 
-{{% alert title="Tip" color="tip" %}}  
+
+
+{{< alert title="Tip" color="tip" >}}  
 Use for tips
-{{% /alert %}}
+{{< /alert >}}
 
-{{% alert title="Info" color="tip" %}}  
+{{< alert title="Info" color="tip" >}}  
 Use for extra background infomation
-{{% /alert %}}
+{{< /alert >}}
 
-{{% alert title="Note" color="note" %}}  
+{{< alert title="Note" color="note" >}}  
 This is to call the reader's attention to something important. Use it to expand on something from the body text or to provide a tip or additional information.
-{{% /alert %}}
+{{< /alert >}}
 
-
-{{% alert title="Caution" color="caution" %}}  
+{{< alert title="Caution" color="caution" >}}  
 This provides notices that a certain action or event could damage hardware or cause data loss.
-{{% /alert %}}
+{{< /alert >}}
 
 
-{{% alert title="Warning" color="warning" %}}  
+{{< alert title="Warning" color="warning" >}}  
 Use to notify the reader of information to avoid loss of life, personal injury, and health hazards.
-{{% /alert %}}
+{{< /alert >}}
 
 
+<img src="../img/078.png" style="border: solid 1px"/>
 
 
 
