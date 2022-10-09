@@ -19,8 +19,9 @@ Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/installa
 TLE Robot:<a href="https://www.scuttlerobot.org/shop/" target="_blank">  ht<span></span>tps://www.scuttlerobot.org/shop/</a>
 
 ## Configuring the Board
-Note: When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
-
+{{% alert title="Note" color="note" %}}  
+When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
+{{% /alert %}}
 <ol type="D">
 <li class="spacing">Begin by accessing <a href="https://app.viam.com"> Viam at https://app.viam.com</a>.</li>
 <li class="spacing">If you are using an existing robot config, select your robot's config and skip to Step 5.</li>
@@ -75,9 +76,9 @@ Also, you can add a <strong>Frame</strong> and a <strong>Data Capture Pathway</s
 </ol>
 </ol>
 </OL>
-
-Note: If your wheel turns in reverse when it should turn forward, add the <code>dir_flip</code> attribute and set it to "true."
-
+{{% alert title="Note" color="note" %}}  
+If your wheel turns in reverse when it should turn forward, add the <code>dir_flip</code> attribute and set it to "true."
+{{% /alert %}}
 <img src="../img/pi-rhwheel.png">
 
 **Right-Wheel JSON**
@@ -107,8 +108,9 @@ You'll use this panel to set the motor's `power` level.
 
 Be careful when activating your robot! Start with the power level (RPM) set to 10% and increase it incrementally until the wheel rotates at a satisfactory speed.
 
-Note: A "whining" sound emitted from the motor indicates that the power level is not high enough to turn the armature. If this happens, increase the power level by 10%.
-
+{{% alert title="Note" color="note" %}}  
+A "whining" sound emitted from the motor indicates that the power level is not high enough to turn the armature. If this happens, increase the power level by 10%.
+{{% /alert %}}
 At this point, the right-side wheel should be working.
 
 ### Adding the Left-Side Wheel
@@ -204,9 +206,9 @@ Now you have a rover that you can drive via Viam's UI at [https://app.viam.com](
 
 Try driving your SCUTTLE Robot around using the WASD keyboard controls described above.
 
-{{< caution >}}
+{{% alert title="Caution" color="caution" %}}  
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
-{{< /caution >}}
+{{% /alert %}}
 
 ## Configuring the Camera 
 

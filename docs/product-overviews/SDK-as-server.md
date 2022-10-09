@@ -20,8 +20,9 @@ While the main Viam RDK is written in Golang, you can create custom components u
 
 For example, let's say that you have built a custom robotic arm that is not supported by [Viam's arm component from our SDK](https://python.viam.dev/autoapi/viam/components/arm/index.html?highlight=arm#module-viam.components.arm), and you want to integrate it with Viam. You will need to create a server component and register the new arm in order to use it with the Viam SDK. Once your new arm is registered, you will be able to use it remotely with Viam.
 
-!!! tip
-    Here is an example of [how to create a new arm server component in the Python SDK documentation](https://python.viam.dev/autoapi/viam/components/arm/index.html?highlight=arm#module-viam.components.arm).
+{{% alert title="Tip" color="tip" %}}  
+Here is an example of [how to create a new arm server component in the Python SDK documentation](https://python.viam.dev/autoapi/viam/components/arm/index.html?highlight=arm#module-viam.components.arm).
+{{% /alert %}}
 
 ## What is required to create a custom component?
 

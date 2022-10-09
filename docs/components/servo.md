@@ -19,9 +19,9 @@ A typical servo control setup comprises the following:
     - If the servo will not be under any significant load and thus won’t draw much current, you may be able to get away with powering it off 5V (if that’s its required voltage) from the Pi pins.
     However it is advisable to power it directly from a power supply that can meet its peak current needs so as not to inadvertently power cycle the Pi or other components.
 
-**Note:**
-    Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
-
+{{% alert title="Caution" color="caution" %}}  
+Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
+{{% /alert %}}
 ## Mechanism
 A servo contains a small electric motor, a series of gears, and a potentiometer attached to the shaft to act as an encoder.
 It also contains a closed-loop position control circuit that takes a <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">Pulse Width Modulation (PWM)</a>[^pwm] signal input and holds the shaft at a certain angle based on that input.

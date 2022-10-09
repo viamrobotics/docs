@@ -239,4 +239,77 @@ END MARKETING CSS
     background-color: var(--black-05);
   }
 
+/* color: sets the text color in the alert*/
+/* background: sets the background color in the alert*/
+/* border-color: sets the color of the LH border in the alert*/
+/* .alert-warning hr: doesn't seem to do anything*/
+/* .alert-warning .alert-link: doesn't seem to do anything*/
+
+.alert-warning {
+  color: black;
+  background: whitesmoke;
+  border-color: #ffb8b8; 
+  border-bottom-left-radius: .5rem;
+  border-top-left-radius: .5rem;
+border-style: solid;
+    border-color: red;
+    border-width: 0 0 0 8px;
+}
+  .alert-warning hr {
+    border-top-color: #ff9f9f; }
+.alert-warning .alert-link {
+    color: #520000; }
+  
+
+.alert-note {
+  color: black;
+  background: whitesmoke;
+  border-color: blue; 
+  border-bottom-left-radius: .5rem;
+  border-top-left-radius: .5rem;
+border-style: solid;
+    border-color: blue;
+    border-width: 0 0 0 8px;
+}
+  .alert-note hr {
+    border-top-color: #ff9f9f; }
+.alert-note .alert-link {
+    color: #520000; }
+
+
+.alert-caution {
+  color: black;
+  background: whitesmoke;
+  border-color: #eba71b; 
+  border-bottom-left-radius: .5rem;
+  border-top-left-radius: .5rem;
+border-style: solid;
+    border-color: #f0b93f;
+    border-width: 0 0 0 8px;
+}
+  .alert-caution hr {
+    border-top-color: #ff9f9f; }
+.alert-caution .alert-link {
+    color: #520000; }
+
+
+.alert-tip {
+  color: black;
+  background: whitesmoke;
+  border-color: #1be020; 
+  border-bottom-left-radius: .5rem;
+  border-top-left-radius: .5rem;
+border-style: solid;
+    border-color: #1be020;
+    border-width: 0 0 0 8px;
+}
+  .alert-tip hr {
+    border-top-color: #1be020; }
+.alert-tip .alert-link {
+    color: #520000; }
+    
+    
+
+
+  
 /* END CSS FOR NOTES, CAUTIONS, WARNINGS */

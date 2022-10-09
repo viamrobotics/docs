@@ -5,8 +5,9 @@ weight: 80
 type: "docs"
 description: "Explanation of motor types, configuration, and usage in Viam."
 ---
-Note: Information on hobby servos (i.e., servomotors) is located in the <a href="../servo">Servo Component Document</a>.
-
+{{% alert title="Note" color="note" %}}  
+Information on hobby servos (i.e., servomotors) is located in the <a href="../servo">Servo Component Document</a>.
+{{% /alert %}}
 Electric motors are the most common form of actuator in robotics.
 The majority of motors used in robotics require a direct current (DC) input.
 This page covers how to wire, configure and control various types of DC motor with Viam.
@@ -15,7 +16,10 @@ This page covers how to wire, configure and control various types of DC motor wi
 A common motor control setup comprises the following:
 
 - A computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer, or a desktop computer outfitted with a GPIO peripheral
-    - Note: there are other ways to interface with motors such as Serial, CAN bus and EtherCAT that require special motor controllers and are beyond the scope of this document
+{{% alert title="Note" color="note" %}}  
+There are other ways to interface with motors such as Serial, CAN bus, and EtherCAT that require special motor controllers and are beyond the scope of this document
+{{% /alert %}}
+ 
 - A DC motor
 - An appropriate motor driver
     - Takes GPIO signals from the computer and sends the corresponding signals and power to the motor
@@ -23,8 +27,9 @@ A common motor control setup comprises the following:
 - An appropriate power supply
     - Note that the logic side of the driver may be powered by 3.3V from the Pi or other device, but the motor power side should not be powered by the computer’s GPIO pins.
     The motor driver should be connected to an independent power supply that can provide the peak current required by the motor.
-
-**Caution: Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.**
+{{% alert title="Caution" color="caution" %}}  
+Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
+{{% /alert %}}
 
 ## Brushed DC Motor
 ### Mechanism
@@ -48,15 +53,14 @@ The driver data sheet will specify which one to use.
 
 [^pwm]:Pulse Width Modulation (PWM): <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Pulse-width_modulation</a>
 
----
+{{% alert title="Note" color="note" %}}  
+Often, instead of buying just the tiny motor driver chip itself, you’ll purchase a motor driver carrier board which consists of the chip containing the logic gates, attached to a small breakout board which gives you places to attach the necessary wires.
+In this article we’ll refer to this whole motor driver board as a motor driver.
 
-**Note:**
-    Often, instead of buying just the tiny motor driver chip itself, you’ll purchase a motor driver carrier board which consists of the chip containing the logic gates, attached to a small breakout board which gives you places to attach the necessary wires.
-    In this article we’ll refer to this whole motor driver board as a motor driver.
-    Note that in RDK, “board” refers to the device with GPIO pins (such as a Raspberry Pi, or a GPIO peripheral attached to a desktop computer) that sends signals to the motor drivers and other devices.
-    In the config file, “motor” technically refers to the motor driver for a given motor.
+Note that in RDK, “board” refers to the device with GPIO pins (such as a Raspberry Pi, or a GPIO peripheral attached to a desktop computer) that sends signals to the motor drivers and other devices.
+In the config file, “motor” technically refers to the motor driver for a given motor.
+{{% /alert %}}
 
----
 
 ### Wiring
 Brushed DC motors are relatively simple to wire.

@@ -55,9 +55,10 @@ Let's breakdown how these steps are executed.
 <li>The Camera will return the PointCloud data to RDK Part</li>
 
 <li>RDK Part 1 will use a point cloud segmentation algorithm to segment geometries in the PointCloud.</li>
-Note: The points returned are respective to the reference frame of the camera.
-This will be important in a moment.
-
+{{% alert title="Note" color="note" %}}  
+The points returned are respective to the reference frame of the camera.
+This will become important in a moment.
+{{% /alert %}}
 <li>The set of segmented point clouds and their bounding geometries are sent back to the SDK-based application.</li>
 </ol>
 

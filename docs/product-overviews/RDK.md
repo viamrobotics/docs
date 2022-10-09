@@ -39,4 +39,6 @@ Robot Development Kit (RDK) is the official Viam-developed codebase that provide
 * Contains different libraries:
     * Motion Planning, Frame System, SLAM, Controls
     * These are used to help implement components/services.
-    * Note: Libraries are called “services” ONLY if we expose their functionality in our proto APIs.
+{{% alert title="Note" color="note" %}}  
+Libraries are called “services” ONLY if we expose their functionality in our proto APIs.
+{{% /alert %}}

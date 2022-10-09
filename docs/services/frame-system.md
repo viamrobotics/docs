@@ -51,9 +51,9 @@ For example, a traditional arm may have a reference frame whose origin is at its
 Each driver of such a component in the Viam system requires a JSON file named **Model JSON** that details the attachment of reference frames. However, that is a requirement for Viam's drivers. If you implement your own drivers, the decision whether to require Model JSON files will depend on your code.
 These reference frames are ingested by the Frame System *but not exposed via gRPC call* (meaning they are unavailable for inspection by any of the SDKs)
 
-!!! note 
-    If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the [**Model JSON** section](#Model-JSON).
-
+{{% alert title="Warning" color="warning" %}}  
+If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the [**Model JSON** section](#Model-JSON).
+{{% /alert %}}
 ## How the Robot Builds the Frame System
 
 Once configuration is complete and the server is started, the robot builds a tree of reference frames with the world as the root node. 
@@ -137,9 +137,10 @@ As explained in the [Model Configuration](#model-configuration) section, some co
 
 When writing a driver for a particular piece of hardware that implements one of these components, you must create its accompanying **Model JSON** file.
 
-!!! note
-    There is currently (15 Sept 2022) no user interface in the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>) by which to create these files. 
-
+{{% alert title="Note" color="note" %}}  
+There is currently (15 Sept 2022) no user interface in the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>) by which to create these files.
+{{% /alert %}}
+ 
 Furthermore, only our Go implementation supports creation of custom **Model JSON** files (15 Sept 2022) as a way if ingesting kinematic parameters is provided in our Go repository. Native support for specifying kinematic parameters of arms is not yet supported in the Python SDK."
 
 This means that a user will fork our [repository](https://github.com/viamrobotics/rdk), create one of these files in that fork, and then use it to build the package for running the server.
