@@ -40,10 +40,9 @@ This provides notices that a certain action or event could damage hardware or ca
 Use to notify the reader of information to avoid loss of life, personal injury, and health hazards.
 {{< /alert >}}
 
-
-<img src="../img/078.png" style="border: solid 1px"/>
-
-
+<img src="../img/078.png" alt="screen capture that demonstrates the styling applied to Info/Tip, Note, Caution, And Warning paragraphs." style="border: solid 1px"/>
 
 ## Demo of including another file
 
+{{% include"/static/robot-ipsum.md" %}}
+**Content above this line is contained in /static/robot-ipsum.md**
