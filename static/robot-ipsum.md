@@ -1,4 +1,4 @@
-Everything from this line through the next three sections is contained in <file>/static/robobts-ipsum.md</file>. Notice that the headings, bullets, and number render correctly.
+Everything from this line through the next four sections is contained in <file>/static/robobts-ipsum.md</file>. Notice that the headings, bullets, and number render correctly.
 
 ## Using the include.html shortcode
 
@@ -36,3 +36,5 @@ Werephil anarchofid acome carbothermal wheremorphic immunowide gastrotaxis urano
 
 Tribopter tetrase macrophore diplein temporofold phenoible seismognathous laevofication. 
 Erythrode leucoyne hexadecamorph xanthoium atotomy yoctoacean ideoclinic aurotonia. 
+
+**This ends the included file**
