@@ -12,7 +12,7 @@ The vision service enables the robot to use its on-board cameras to intelligentl
 
 Currently, there are three operations available through the vision service:
 
-* **Detection (or 2D object detection):** Allows a user to get bounding boxes around identified objects in a 2D image according to a user-defined algorithm. Many detection algorithms also include class label and confidence as output.
+* **Detection (or 2D object detection)**: Allows a user to get bounding boxes around identified objects in a 2D image according to a user-defined algorithm. Many detection algorithms also include class label and confidence as output.
    
 * **Classification (or 2D image classification)**: Allows a user to get a class label and confidence score associated with a 2D image according to a user-defined algorithm.
 
