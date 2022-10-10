@@ -19,7 +19,7 @@ We recommend using our cloud app to configure, manage, and control your robots a
 
 A robot's configuration lives in the cloud.
 The configuration is a description of the hardware and higher level software services.
-For example how a motor is connected to a Raspberry PI, or what maching learning models you want to use for classification.
+For example how a motor is connected to a Raspberry PI, or what matching learning models you want to use for classification.
 
 On the robot, a single viam process, called _viam-server_ runs, and is responsible for: 
 - keeping the configuration up to date
@@ -84,7 +84,7 @@ If a remote is added to a part, that part will that proxy all requests.
 Remotes are typically implemented with SDKs.
 
 Examples: 
-- a robot arm manufacturer has a network attached arm that implementats the Viam API, you can add it direction to a part as a remote.
+- a robot arm manufacturer has a network attached arm that implementats the Viam API, you can add it directly to a part as a remote.
 - a POE camera implementats the camera grpc interface, so can be added directly as a remote.
 
 ### Process
@@ -93,13 +93,13 @@ One example is running a [Software Development Kit (SDK)](/product-overviews/sdk
 
 ## SDKs
 
-While you can connect to a robot with grpc directly, we provide SDKs to make this easier, and handle authentication and webrtc.
+While you can connect to a robot with gRPC directly, we provide SDKs to make this easier, and handle authentication and webrtc.
 
 SDKs are used for:
 - writing your application code for building your robot to interact with the components and services
 - implementing drivers for hardware not yet supported
 
-We currently have SDKs for go, python, typescript, and rust. With many more coming soon including c++ and flutter
+We currently have SDKs for go, Python, Typescript, and Tust. With many more coming soon including c++ and flutter
 
 ## Pictures
 
