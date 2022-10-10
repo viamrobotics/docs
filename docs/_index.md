@@ -9,11 +9,9 @@ type: "docs"
 Looking to get started with Viam? Check out the following:
 
 - [Viam Overview](../getting-started/high-level-overview)
-- [Viam's Robot Configuration](../getting-started/robot-config)
 - [Viam Use Cases](www.viam.com/use-cases)
 
 ## Product Overviews
-- [Viam's Organization Management](../product-overviews/organization-management)
 - [Viam's Fleet Management](../product-overviews/fleet-management)
 - [Viam's Data Management Platform](../product-overviews/data-management)
 - [Overview of Viam-Server and RDK](../product-overviews/rdk)
