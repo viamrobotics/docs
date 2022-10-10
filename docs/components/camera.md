@@ -14,6 +14,7 @@ There are two basic things you can do with a camera component:
 2. Request the next Point Cloud (which is a 3D image)
 	* A 3D point cloud has all of its (x,y,z) coordinates in units of mm.
 
+
 ## Camera Models
 
 Here are details about each of the fields in the camera config:
@@ -47,39 +48,6 @@ Here are details about each of the fields in the camera config:
 
 Follow the instructions for <a href="https://github.com/viam-labs/camera-calibration" target="_blank">camera calibration</a>[^cc] to calibrate a camera and extract the `intrinsic_parameters` and `distortion_parameters`.
 [^cc]:camera calibration: <a href="https://github.com/viam-labs/camera-calibration" target="_blank">ht<span></span>tps://github.com/viam-labs/camera-calibration</a>
-
-### Single Stream
-
-single_stream is a model where there is a camera server streaming image data. You must specify if it is streaming "color", "depth" data. Single_stream can only output a point cloud if a "depth" stream is selected. Color streams will fail at producing point clouds.
-
-```json
-{
-	"name": "camera_name",
-	"type": "camera",
-	"model" : "single_stream",
-	"attributes": {
-    	"url": string # the camera server url,
-    	"stream": string # options are "color", "depth",
-	}
-}
-```
-
-### Dual Stream
-
-dual_stream is a model where there are two camera servers streaming data, one is the color stream, and the other is the depth stream. This is useful for generating colorful point clouds.
-
-```json
-{
-	"name": "camera_name",
-	"type": "camera",
-	"model" : "dual_stream",
-	"attributes": {
-    	"color": string, # the color stream url,
-    	"depth": string, # the depth stream url,
-    	"stream": string # "color" or "depth" image will be returned when calling Next(). NextPointCloud() returns the full colorful point cloud.
-	}
-}
-```
 
 ### Webcam
 
@@ -115,6 +83,47 @@ File is a model where the frames for the color and depth images are acquired fro
 	}
 }
 ```
+
+### Velodyne
+ 
+The model for using the velodyne lidar. The velodyne must be running locally at address `0.0.0.0`. 
+
+```json
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "velodyne",
+	"attributes": {
+    	"port": int,  
+    	"ttl_ms": int,
+	}
+}
+```
+
+### FFmpeg
+
+FFmpeg is a model that allows you to use a video file or stream as a camera.
+
+```json
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "ffmpeg",
+	"attributes": {
+		"video_path": string,
+		"filters": [ # optional
+			{
+				"name": string,
+				"args": [string, string, ..],
+				"kw_args": { ... }
+			}	
+		],
+		"input_kw_args": { ... },
+		"output_kw_args": { ... },
+	}
+}
+```
+
 
 ### Align Color Depth
 
@@ -318,60 +327,61 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 }
 ```
 
-### Velodyne
- 
-The model for using the velodyne lidar. The velodyne must be running locally at address `0.0.0.0`. 
-
-```json
-{
-	"name": "camera_name",
-	"type": "camera",
-	"model" : "velodyne",
-	"attributes": {
-    	"port": int,  
-    	"ttl_ms": int,
-	}
-}
-```
-
-### FFmpeg
-
-FFmpeg is a model that allows you to use a video file or stream as a camera.
-
-```json
-{
-	"name": "camera_name",
-	"type": "camera",
-	"model" : "ffmpeg",
-	"attributes": {
-		"video_path": string,
-		"filters": [ # optional
-			{
-				"name": string,
-				"args": [string, string, ..],
-				"kw_args": { ... }
-			}	
-		],
-		"input_kw_args": { ... },
-		"output_kw_args": { ... },
-	}
-}
-```
-
 ### Fake
 
-Fake is a fake camera that always returns the same image, which is a dot in the top left corner, which can be red or yellow or blue.
+Fake is a fake camera that always returns the same image, which is an image of a chess board. This camera also returns a point cloud.
 
 ```json
 {
 	"name": "camera_name",
 	"type": "camera",
 	"model" : "fake",
+	"attributes": {}
+}
+```
+
+### HTTP server cameras
+
+If you have an http endpoint that is streaming images, you can create a VIAM camera from that URL. If you want to create a camera for 2D images, use a `single_stream` server. If you have two endpoints, one for color images and one for depth images, you can use `dual_stream` so that you can also directly generate point clouds.
+
+#### Single Stream
+
+single_stream is a model where there is a camera server streaming image data. You must specify if it is streaming "color", "depth" data. Single_stream can only output a point cloud if a "depth" stream is selected. Color streams will fail at producing point clouds.
+
+```json
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "single_stream",
 	"attributes": {
-    	"color": string, # "red", "yellow", or "blue"
+    	"url": string # the camera server url,
+    	"stream": string # options are "color", "depth",
 	}
 }
 ```
+
+#### Dual Stream
+
+dual_stream is a model where there are two camera servers streaming data, one is the color stream, and the other is the depth stream. This is useful for generating colorful point clouds.
+
+```json
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "dual_stream",
+	"attributes": {
+    	"color": string, # the color stream url,
+    	"depth": string, # the depth stream url,
+    	"stream": string # "color" or "depth" image will be returned when calling Next(). NextPointCloud() returns the full colorful point cloud.
+	}
+}
+```
+
+## Camera Servers
+
+If you have a camera that uses its own SDK to access its images and point clouds (e.g. an Intel RealSense camera), you can attach a camera server as a remote component to your robot. These remote cameras will show up just like regular cameras on your robot.
+
+For more details, check out [this link to our camera server repository](https://github.com/viamrobotics/camera-servers).
 
 ## Troubleshooting
 
