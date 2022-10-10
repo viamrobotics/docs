@@ -12,7 +12,6 @@ Looking to get started with Viam? Check out the following:
 - [Viam's Robot Configuration](../getting-started/robot-config)
 
 ## Product Overviews
-- [The Viam App's Organizational Hierarchy](../product-overviews/organization-management)
 - [The Viam App's Fleet Management](../product-overviews/fleet-management)
 - [Overview of viam-server and RDK](../product-overviews/rdk)
 - [Using Our SDKs as a Client Application](../product-overviews/sdk-as-client)
