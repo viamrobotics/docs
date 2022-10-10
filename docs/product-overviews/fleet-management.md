@@ -3,7 +3,7 @@ title: "Fleet Management"
 linkTitle: "Fleet Management"
 weight: 30
 type: "docs"
-description: "Manage your robot's in the cloud"
+description: "Manage your robots in the cloud"
 ---
 
 Viam's Fleet management allows engineers to configure, control, debug, and manage their robots from the cloud at ([https://app.viam.com](https://app.viam.com)).
