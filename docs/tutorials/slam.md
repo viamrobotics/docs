@@ -6,6 +6,11 @@ type: "docs"
 draft: true
 description: "Instructions to run SLAM with either a webcam or provided example data."
 ---
+
+## Warning: This is an experimental feature.
+Stability is not guaranteed. Breaking changes are likely to occur, and occur often.
+
+## Introduction
 [SLAM](../services/slam.md) allows your robot to create a map of its surroundings, as well as find its location within that map.
 
 This tutorial shows you how to run ORB-SLAM3 on your robot. You have two choices:
