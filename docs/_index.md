@@ -9,7 +9,7 @@ type: "docs"
 Looking to get started with Viam? Check out the following:
 
 - [Viam Overview](../getting-started/high-level-overview)
-- [Viam Use Cases](www.viam.com/use-cases)
+- [Viam Use Cases](http://www.viam.com/use-cases)
 
 ## Product Overviews
 - [Viam's Fleet Management](../product-overviews/fleet-management)
