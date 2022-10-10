@@ -9,7 +9,6 @@ type: "docs"
 Looking to get started with Viam? Check out the following:
 
 - [Viam Overview](../getting-started/high-level-overview)
-- [Viam's Robot Configuration](../getting-started/robot-config)
 
 ## Product Overviews
 - [The Viam App's Fleet Management](../product-overviews/fleet-management)
