@@ -141,7 +141,7 @@ In this step, you are going to install the [Viam Python SDK](https://python.viam
 To install the Viam Python SDK on your Raspberry Pi, you must run the following command in your terminal:
 
 ```bash
-pip install viam
+pip install viam-sdk
 ```
 
 You can now close your terminal that is SSHed into your Raspberry Pi. With Viam, you can code robots from any machine without needing to be on the machine!
