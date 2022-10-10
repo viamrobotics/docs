@@ -22,10 +22,12 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
     - How to establish communication between the code you write and your robot
     - How to send commands to components of your robot
 
-[^psdk]: Viam Python SDK: [https://github.com/viamrobotics/viam-python-sdk](https://github.com/viamrobotics/viam-python-sdk)
+[^psdk]: Viam Python SDK: <a href="https://github.com/viamrobotics/viam-python-sdk" target="_blank">ht<span></span>tps://github.com/viamrobotics/viam-python-sdk</a>
 
 
-**Code**: [Line Follower GitHub Gist](https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8)
+<a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8" target="_blank">**Line Follower GitHub Gist Code**</a>[^jgist]
+
+[^jgist]: Line Follower GitHub Gist Code: <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8" target="_blank">ht<span></span>tps://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8</a>
 
 ## What you'll need
 - A single board computer [running an instance of Viam server](../../getting-started/installation)
@@ -44,8 +46,8 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 ## Configuration using Viam
 If you haven’t already, please set up the Raspberry Pi on the [Viam App](https://app.viam.com) per [these instructions](../../getting-started/installation).
 
-### Configuring the hardware components
-Configure the base per the [Base Component Doc](https://docs.viam.com/components/base/).
+### Configuring the Hardware Components
+Configure the base per the [Base Component topic](../components/base/).
 	
 Configure the [camera](../../components/camera) as type `webcam`. When you create a webcam component in Viam's config builder, Viam's discovery service will automatically detect cameras attached to your robot and suggest possible path attributes in a dropdown list. The top one (often "video0") is a good bet.
 
@@ -58,7 +60,7 @@ If this doesn't work, you can manually add the camera path (with the correct pat
     "path": "video0"
 }
 ```
-You can ignore or even delete any other autopopulated camera attributes; the defaults should be fine here.
+You can ignore or even delete any other auto-populated camera attributes; the defaults should be fine here.
 
 Your webcam configuration in the Config Builder will look something like this:
 
@@ -83,7 +85,7 @@ We’ll use the Viam [vision service color detector](../../services/vision/#dete
 
 In the **Services** section of the **Config** tab, configure a color detector for the color of your tape line.
 
-- Use a color picker like <a href="https://colorpicker.me/" target="_blank">this one</a>[^colorpick] to approximate the color of your line and get the corresponding hexadecimal hash to put in your config. Put this hash in the `detect_color` parameter. We used #19FFD9 to represent the color of green electrical tape.
+- Use a color picker like <a href="https://colorpicker.me/" target="_blank">colorpicker.me</a>[^colorpick] to approximate the color of your line and get the corresponding hexadecimal hash to put in your config. Put this hash in the `detect_color` parameter. We used #19FFD9 to represent the color of green electrical tape.
 
 [^colorpick]: Color picker: <a href="https://colorpicker.me/" target="_blank">https://colorpicker.me/</a>
   
@@ -219,7 +221,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
 <img class="center" src="../img/lf-tape-follow3.gif" width="300" /></p><br>
 
 ## Let’s write some code!
-<ol><li class="spacing">Open a file in your favorite IDE and paste-in <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8">the code from the earlier referenced GIST</a>.</li>
+<ol><li class="spacing">Open a file in your favorite IDE and paste-in <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8" target="_blank">the code from the earlier referenced GIST</a>.</li>
 <li class="spacing">Adjust the components names to match the component names you created in your config file. 
 In this case, the component names that you may need to change are <strong>tread_base</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
 <li class="spacing">For those who care about linting and formatting, we used <a href="https://flake8.pycqa.org/en/latest/">flake8</a> as the linter with the max line length changed to 140 and Black for formatting.
@@ -238,6 +240,11 @@ Run,</br><span class="file">nano rgbFollower.py</span></br>(or replace <span cla
 <li class="spacing" style="list-style-type:lower-alpha">Paste all your code into this file.</li>
 <li class="spacing" style="list-style-type:lower-alpha">Type <strong>CTRL + X</strong> to close the file. Type <strong>Y</strong> to confirm file modification, then press enter to finish.</li>
 </ol></ol>
+
+**References**:
+* Line Follower GitHub Gist Code: <a href="" target="_blank">ht<span><span>tps://gist.github.com/JessamyT/ eab8ee5996343d070d0c392eb63204e8</a>
+* Flake8: <a href="https://flake8.pycqa.org/en/latest/" target="_blank">ht<span><span>tps://flake8.pycqa.org/en/latest/</a>
+* Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started" target="_blank">ht<span><span>tps://mutagen.io/documentation/introduction/getting-started</a>
 
 <h2>Controlling your rover with Viam</h2>
 <ol><li class="spacing">Go to your robot’s page on the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>). Verify that it’s connected by refreshing the page and ensuring that <strong>Last Online</strong> (in the top banner) says, “Live.”</li>

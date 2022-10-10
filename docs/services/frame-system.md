@@ -1,13 +1,11 @@
 ---
-title: "Frame System"
+title: "The Robot Frame System"
 linkTitle: "Frame System"
 summary: "Describes the Frame System, its configuration, its functionality, and its interfaces."
 type: docs
 weight: 45
 ---
-# The Robot Frame System
-
-Any robot that has been configured in Viam comes with a service we call the Frame System. 
+Any robot configured in Viam comes with a service we call the Frame System. 
 This is an internally managed and (mostly) static storage of the reference frame of each component of a robot within a coordinate system configured by the user. 
 The Frame System is especially important as it is the basis for many of Viam's other services (like motion and vision) and holds required contextual information to make use of the position and orientation readings returned by some components. 
 In this page, we will explain:
@@ -19,10 +17,10 @@ In this page, we will explain:
 
 ## Configuration
 
-To supply reference frame information when configuring a component in the Viam App ([https://app.viam.com](app.viam.com)), click **Add Frame** to launch the Frame group where you will enter Reference Frame details.
+To supply reference frame information when configuring a component in the Viam App ([https://app.viam.com](https://app.viam.com)), click **Add Frame** to launch the Frame group where you will enter Reference Frame details.
 This opens the Frame group:
 
-![add reference frame pane](..\img\image8.png)
+![add reference frame pane](../img/image8.png)
 
 The reference frame requires three pieces of information:
 
@@ -53,16 +51,19 @@ For example, a traditional arm may have a reference frame whose origin is at its
 Each driver of such a component in the Viam system requires a JSON file named **Model JSON** that details the attachment of reference frames. However, that is a requirement for Viam's drivers. If you implement your own drivers, the decision whether to require Model JSON files will depend on your code.
 These reference frames are ingested by the Frame System *but not exposed via gRPC call* (meaning they are unavailable for inspection by any of the SDKs)
 
-!!! note 
-    If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the [**Model JSON** section](#Model-JSON).
-
+{{% alert title="Warning" color="warning" %}}  
+If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the [**Model JSON** section](#Model-JSON).
+{{% /alert %}}
 ## How the Robot Builds the Frame System
 
 Once configuration is complete and the server is started, the robot builds a tree of reference frames with the world as the root node. 
-A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs. 
-Viam regenerates this tree in the process of [reconfiguration](https://docs.viam.com/product-overviews/fleet-management/#configurationlogging)
 
-![an example of a logged frame system](..\img\frame_sys_log_example.png)
+A <a href="https://en.wikipedia.org/wiki/Topological_sorting" target="_blank">topologically-sorted list</a>[^tsl] of the generated reference frames is printed by the server and can be seen in the server logs. 
+Viam regenerates this tree in the process of [reconfiguration](https://docs.viam.com/product-overviews/fleet-management/#configurationlogging):
+
+![an example of a logged frame system](../img/frame_sys_log_example.png)
+
+[^tsl]: Topological Sorting (wiki): <a href="https://en.wikipedia.org/wiki/Topological_sorting" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Topological_sorting</a>
 
 Viam builds this tree by looking at the frame portion of each component in the robot's configuration (including those defined on any remotes) and creating two reference frames. 
 * One reference frame is given the name of the component and represents the actuator or final link in the component's kinematic chain (e.g., the end of an arm, the platform of a gantry, etc.). 
@@ -76,7 +77,7 @@ The Frame System considers the reference frame with this static origin to be "G_
 This choice is made so that when we specify the parent frame of the arm, we can simply use "G" and the Frame System will understand that the arm's parent frame is the platform of the gantry and not it's zero position used as a point of reference to the world. 
 The resulting tree of reference frames could be visualized like so:
 
-![reference frame tree](..\img\frame_tree.png)
+![reference frame tree](../img/frame_tree.png)
 
 ## Configuration Examples
 
@@ -117,7 +118,7 @@ An arm on a gantry, for example, can be managed by the Frame System directly bec
 On the other hand, an arm on a rover that is unaware of its own position cannot be configured into the frame system because the rover can move freely with respect to the world frame. A knowledgeable user could code a mobile base with an organic SLAM system able to report its own position without the need for supplementary transforms.
 
 So, how do we deal with such components? 
-One solution would be to introduce a motion tracker or a camera in combination with our [vision service](https://docs.viam.com/services/vision/) as a third component. 
+One solution would be to introduce a motion tracker or a camera in combination with our [vision service](/services/vision/) as a third component. 
 This component is fixed in space (making it configurable in the Frame System) and can supply the location and orientation of the rover in its own reference frame. 
 This *supplemental transform* is the missing link to be able to transform a pose in the arm's reference frame to the world reference frame (or others that may exist in the frame system).
 
@@ -127,8 +128,8 @@ Functions of some services and components take in a WorldState parameter (e.g., 
 This data structure includes an entry for supplying supplemental transforms for use by internal calls to the Frame System.
 
 ## Reference
-Viam uses model file writtent in JSON, similar to the URDF files used in ROS. JSON files are better suited for use in Python environments.
 
+Viam uses model files written in JSON, similar to the URDF files used in ROS. JSON files are better suited for use in Python environments.
 
 ### Model JSON
 
@@ -136,26 +137,30 @@ As explained in the [Model Configuration](#model-configuration) section, some co
 
 When writing a driver for a particular piece of hardware that implements one of these components, you must create its accompanying **Model JSON** file.
 
-!!! note
-    There is currently (15 Sept 2022) no user interface in the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>) by which to create these files. 
-
+{{% alert title="Note" color="note" %}}  
+There is currently (15 Sept 2022) no user interface in the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>) by which to create these files.
+{{% /alert %}}
+ 
 Furthermore, only our Go implementation supports creation of custom **Model JSON** files (15 Sept 2022) as a way if ingesting kinematic parameters is provided in our Go repository. Native support for specifying kinematic parameters of arms is not yet supported in the Python SDK."
 
 This means that a user will fork our [repository](https://github.com/viamrobotics/rdk), create one of these files in that fork, and then use it to build the package for running the server.
 
 We currently support two methods of supplying reference frame parameters for a kinematic chain: 
-1. Spatial Vector Algebra (SVA) - supplying reference frame information for each link and each joint.
-2. [Denavit-Hartenberg (DH)](https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters) parameters.
+1. <a href="https://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html" target="_blank">Spatial Vector Algebra</a>[^sva] (SVA) - supplying reference frame information for each link and each joint.
+2. <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters" target="_blank">Denavit-Hartenberg</a>[^dh] (DH) parameters.
+
+[^sva]: Spatial Vector Algebra (SVA):  <a href="https://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html" target="_blank">ht<span></span>tps://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html</a>
+
+[^dh]: Denavit-Hartenberg (DH): <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters</a>
 
 Of the two methods, Viam prefers Spacial Vector Algebra over Denavit-Hartenberg. 
 
 Viam wants roboticists to be able to specify link frames arbitrarily, which DH parameters are unable to guarantee. We also want roboticists to make their own (messy) robots; accurate identification of DH parameters for a mass-produced robot can be exceedingly difficult. Furthermore, incorrect SVA parameters are much easier to troubleshoot than incorrect DH parameters.
 
 Below are JSON examples for each parameter type used by our Universal Robots[^ur] arms driver: 
-[^ur]: Universal Robots: [https://www.universal-robots.com/](https://www.universal-robots.com/)
+[^ur]: Universal Robots: <a href="https://www.universal-robots.com/" target="_blank">ht<span></span>tps://www.universal-robots.com/</a>
 
-
-**Example: kinematic_param_type=SVA:**
+**Example: kinematic_param_type=SVA**
 
 ```json
 {

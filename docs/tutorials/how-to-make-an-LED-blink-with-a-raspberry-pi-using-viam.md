@@ -17,31 +17,34 @@ In this post, we will show you how to use Viam to make an LED blink with a Raspb
 
 You will need the following tools to complete the project:
 
--   [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
+[Click to view the Component URL Listing](#components-url-list)
+<ol>
+<li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
+  
+<ol type="a">
 
-    -   [Check out the Viam Raspberry Pi Setup Guide for steps on how to get started](../../getting-started/installation)
+<li>Refer to the <a href="https://docs.viam.com/getting-started/installation" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 
-    -   [Be sure that you have setup Viam Server on your Raspberry Pi as well.](../../getting-started/installation/#installing-viam-server)
+<li>Be sure that you have <a href="https://docs.viam.com/getting-started/installation/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
+</ol>
+<li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
+<li><a href="http://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
+<li><a href="http://amzn.to/2Dmainw" target="_blank">Resistor pack </a></li>
+<OL type="a">
 
--   [Solderless breadboard](https://amzn.to/2Q4Z5Ta)
-
--   [Jumper wires for easy hookup](http://amzn.to/2qVhd4y)
-
--   [Resistor pack](http://amzn.to/2Dmainw)
-
-    -   You will be using a 220Ω or 1K Ω resistor, which is the resistor colored with brown-black-brown.
-
--   [Red LED](http://amzn.to/2Ex2v5q)
-
--   [Multimeter](http://amzn.to/2qWurxS) (optional)
-
--   [Viam Server](https://github.com/viamrobotics/rdk/tree/0c550c246739b87b4d5a9e8d96d2b6fdb3948e2b)
+<li>You will be using a 220Ω or a 1K Ω resistor, which are the resistors with brown-black-brown or brown-black-red colored bands, respectively.</li>
+</OL>
+<li><a href="http://amzn.to/2Ex2v5q" target="_blank">Red LED</a></li>
+<li><a href="http://amzn.to/2qWurxS" target="_blank">Multimeter (optional)</a></li>
+<li><a href="https://github.com/viamrobotics/rdk/tree/0c550c246739b87b4d5a9e8d96d2b6fdb3948e2b" target="_blank">Viam Server</a></li></ol>
 
 ## Project setup
 
-Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam RDK Server on Raspberry Pi](../../getting-started/installation) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam App.](../../getting-started/installation/#adding-your-pi-on-the-viam-app)
+Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](../../getting-started/installation) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam App.](../../getting-started/installation/#adding-your-pi-on-the-viam-app)
 
-*Note: If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.*
+{{% alert title="Note" color="note" %}}  
+If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.*
+{{% /alert %}}
 
 ## Building the circuit
 
@@ -49,9 +52,11 @@ The first step in this project is to design a simple LED circuit. Then you will 
 
 A simple LED circuit consists of a LED and resistor. The resistor is used to limit the current that is being drawn and is called a *current-limiting resistor*.
 
-### GPIO Pinout
+### GPIO Pinoutccc
 
-**General-purpose input/output** (**GPIO**) is a digital signal [pin](https://en.wikipedia.org/wiki/Pin_(electronics)) on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
+**General-purpose input/output** (**GPIO**) is a digital signal <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">pin</a>[^pin] on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
+
+[^pin]: Pin (Electronics): <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">https://en.wikipedia.org/wiki/Pin_(electronics)</a>
 
 ![Photo showing a Raspberry Pi 4 with a white box around the GPIO pins on the Pi and big red letters that say, "GPIO Pins."](../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image10.png)
 
@@ -106,3 +111,14 @@ Congratulations! If you have followed along, you have just successfully used Via
 -   [Tutorial List](../../tutorials)
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
+
+## Components URL List
+
+<UL>
+<li>Raspberry Pi 3 or 4: <a href="https://a.co/d/5Tn67G3" target="_blank">ht<span></span>tps://a.co/d/5Tn67G3</a></li>
+<li>Solderless breadboard: <a href="https://amzn.to/2Q4Z5Ta" target="_blank">ht<span></span>tps://amzn.to/2Q4Z5Ta</a></li>
+<li>Jumper wires for easy hookup: <a href="http://amzn.to/2qVhd4y" target="_blank">ht<span></span>tp://amzn.to/2qVhd4y</a></li>
+<li>Resistor pack: <a href="http://amzn.to/2Dmainw" target="_blank">ht<span></span>tp://amzn.to/2Dmainw</a></li>
+<li>Red LED: <a href="http://amzn.to/2Ex2v5q" target="_blank">ht<span></span>tp://amzn.to/2Ex2v5q</a></li>
+<li>Multimeter (optional): <a href="http://amzn.to/2qWurxS" target="_blank">ht<span></span>tp://amzn.to/2qWurxS</a></li>
+</UL>

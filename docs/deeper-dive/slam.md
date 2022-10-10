@@ -11,10 +11,10 @@ SLAM, which stands for Simultaneous Localization and Mapping, is an important ar
 
 As of 01 June 2022, we support the following SLAM libraries:
 
--   [ORBSLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)[^orb]
+<a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank">ORBSLAM3</a>[^orb]
 
+[^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORBSLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
 
-[^orb]:ORBSLAM3: [https://github.com/UZ-SLAMLab/ORB_SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
 
 # Current Architecture
 
@@ -86,8 +86,10 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated 
 
 **data_rate_ms** (int): Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is 200. If 0, no new data is sent to the SLAM algorithm.
 
-**input_file_pattern** (string): File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data.
-
+**input_file_pattern** (string): File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. 
+{{% alert title="Note" color="note" %}}  
+X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data.
+{{% /alert %}}
 **port** (string): Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned.
 
 **config_params** (map[string] string): Parameters specific to the
@@ -106,8 +108,8 @@ OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); th
 
 <table>
     <tr>
-        <th>Parameter Mode</th>
-        <th style="width:40%">Description - The Type of SLAM to Use</th>
+        <th style="width:25%">Parameter Mode</th>
+        <th style="width:70%">Description - The Type of SLAM to Use</th>
         <th>Default:<br>
         RGBD, Mono</th>
     </tr>

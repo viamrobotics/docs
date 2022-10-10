@@ -21,9 +21,11 @@ Both configuration and logging happen securely over HTTPS using secret tokens th
 
 If the user uses remote control in the Viam App ([https://app.viam.com](https://app.viam.com)) UI, then all communication to the robot is via WebRTC.
 
-[WebRTC Docs](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection)
+* <a href="https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection" target="_blank">WebRTC Docs</a>[^webrtc]
 
-[Authentication Docs](../../deeper-dive/security)
+* [Authentication Docs](../../security)
+
+[^webrtc]:WebRTC Documentation: <a href="https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection" target="_blank">ht<span></span>tps://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection</a>
 
 Local communication between parts can be done over gRPC or WebRTC.
 

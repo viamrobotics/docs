@@ -18,9 +18,11 @@ The Viam SLAM Service supports the integration of custom SLAM libraries with the
 
 As of 11 October 2022, the following SLAM library is integrated:
 
--   [ORBSLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)[^orb]
+-   <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank">ORBSLAM3</a>[^orb]
 
-[^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORBSLAM3: https://github.com/UZ-SLAMLab/ORB_SLAM3</a>
+
+[^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORBSLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
+
 
 ### Coming Soon
 * `map_rate_sec`: A value of `map_rate_sec: 0` is currently set to disable map saving altogether. The behavior will be changed to enable "localization only mode" in the near future.

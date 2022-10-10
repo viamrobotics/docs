@@ -59,8 +59,8 @@ id = "UA-00000000-0"
 
 [languages]
 [languages.en]
-title = "Documentation" ## This is the Title Banner 
-description = "Viam Documentation" ## I don't think this appears anywhere.
+title = "Viam Documentation" ## This is the Title Banner 
+description = "Viam Documentation" ## Description of "title," above..
 languageName ="English"
 # Weight used for sorting.
 weight = 1
@@ -85,7 +85,7 @@ section = ["HTML"]
 [params]
 #tos_statement = "https://www.viam.com/terms"
 #user_agreement = "https://www.viam.com/agreement"
-copyright = "Viam, Inc. Viam is licensed under Creative Commons ShareAlike License. "
+copyright = "Viam, Inc. - Documentation is licensed under Creative Commons ShareAlike License. "
 privacy_policy = "https://www.viam.com/privacy"
 
 ## This supports the include.html shortcode
@@ -181,11 +181,6 @@ enable = false
   url = "https://twitter.com/viamrobotics"
   icon = "fab fa-twitter"
   desc = "Follow us on Twitter to get the latest news!"
-[[params.links.user]]
-  name ="Medium"
-  url = "https://viamrobotics.medium.com/"
-  icon = "fab fa-medium"
-  desc = "Follow us on Medium to to read interesting articles about robotics!"  
 [[params.links.user]]
   name = "Instagram"
   url = "https://www.instagram.com/viamrobotics/"

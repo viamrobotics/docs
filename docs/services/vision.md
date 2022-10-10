@@ -20,7 +20,8 @@ Currently, there are three operations available through the vision service:
 
 The vision service is a default service on the robot, and can be initialized without attributes.
 
-There is a public repo with examples of how to use the vision service on [github.com/viamrobotics/vision-service-examples](https://github.com/viamrobotics/vision-service-examples) as well.
+There is a public repo with examples of how to use the vision service on <a href="https://github.com/viamrobotics/vision-service-examples" target="_blank">ht<span></span>tps://github.com/viamrobotics/vision-service-examples</a>, as well.
+
 
 ## VisModels
 
@@ -39,7 +40,7 @@ More about the parameters and model types can be found under the corresponding o
 
 ## Configuring your VisModels
 
-To add a vision model to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “register_models” field in the attributes field of the vision service config. If you're using the Config>>Services tab on app.viam.com, you'll see that adding a vision service invites you to directly fill in the "attributes."
+To add a vision model to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “register_models” field in the attributes field of the vision service config. If you're using the "Config > Services" tab on Viam, you'll see that adding a vision service invites you to directly fill in the "attributes."
 
 ``` json
 "services": [
@@ -77,7 +78,7 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
 __2D Object Detection__ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct “objects” of interest in the scene. Any camera that can return 2D images can use 2D object detection.
 
 What an object “is” depends on what is required for the task at hand.
-To accommodate the open-endedness of what kind of object a user may need to identify, the service provides different types of detectors, both heuristic and machine-learning based, so that users can create, register, and use detectors suited for their own purposes.
+To accommodate the open-ended-ness of what kind of object a user may need to identify, the service provides different types of detectors, both heuristic and machine-learning based, so that users can create, register, and use detectors suited for their own purposes.
 
 ### The Detection API
 
@@ -171,21 +172,21 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 
-Segmenters can be built from the Control tab in the Viam App as well.
+You can also build Segmenters from the **Control** tab in Viam, as well.
 
 1. Click on a camera that supports 3D data to load the point cloud view.
 2. Select your segmenter model of interest - that will populate the list of necessary parameters that need to be filled in to use the segmenter.
 3. Fill in the segmenter parameters (explanation of fields for each segmenter are in the next section).
-4. Click Add Segmenter.
-4. Then select your added segmenter by name, and click Find Segments and wait for the segments to load.
-5. A list of the found objects will appear below the Find Segments button.
+4. Click **Add Segmenter**.
+4. Then select your added segmenter by name, and click **Find Segments** and wait for the segments to load.
+5. A list of the found objects will appear below the **Find Segments** button.
 
 
 ### Segmenter Types
 The types of segmenters supported are:
 
 * **radius_clustering_segmenter**: Radius\_clustering is a segmenter that finds well separated objects above a flat plane.  It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.  Unfortunately it is a bit slow, and can take up to 30s to segment the scene.
-*  **detector_segmenter**: Object segmenters are automatically created from detectors in the vision service.  Any registered detector "x" defined in “register\_models” field or added later to the vision service becomes a segmenter with the name "x\_segmenter".  It begins byfinding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
+*  **detector_segmenter**: Object segmenters are automatically created from detectors in the vision service.  Any registered detector "x" defined in “register\_models” field or added later to the vision service becomes a segmenter with the name "x\_segmenter".  It begins by finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
 
 #### Radius Clustering Segmenter parameters
 
@@ -193,21 +194,21 @@ The types of segmenters supported are:
 * **min_points_in_segment** is an integer that sets a minimum size to the returned objects, and filters out all other found objects below that size.
 * **clustering_radius_mm** is a floating point number that specifies how far apart points can be (in units of  mm) in order to be considered part of the same object.  A small clustering radius will more likely split different parts of a large object into distinct objects.  A large clustering radius may aggregate closely spaced objects into one object.
     * 3.0 is a decent starting value.
- * **mean_k_filtering (optional)** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html)[^mkf].  It should be set to be 5-10% of the number of min_points_in_segment.
+ * **mean_k_filtering (optional)** is an integer parameter used in <a href="https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html" target="_blank">a subroutine to eliminate the noise in the point clouds</a>[^mkf].  It should be set to be 5-10% of the number of min_points_in_segment.
     * Start with 5% and go up if objects are still too noisy.
     * If you don’t want to use the filtering, set the number to 0 or less.
 	
-[^mkf]: Mean K: [https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html)
+[^mkf]: Mean K: <a href="https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html" target="_blank">ht<span></span>tps://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html</a>
     
 
 #### Detector Segmenters
 
 * **detector_name** is the name of the detector already registered in the vision service that will be turned into a segmenter.
 * **confidence_threshold_pct** is a number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5.
-* **mean_k** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html)[^mkf].  It should be set to be 5-10% of the minimum segment size.
+* **mean_k** is an integer parameter used in <a href="https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html" target="_blank">a subroutine to eliminate the noise in the point clouds</a>[^mkf].  It should be set to be 5-10% of the minimum segment size.
     * Start with 5% and go up if objects are still too noisy.
     * If you don’t want to use the filtering, set the number to 0 or less.
-* **sigma** is a floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html)[^mkf].
+* **sigma** is a floating point parameter used in <a href="https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html" target="_blank">a subroutine to eliminate the noise in the point clouds</a>[^mkf].
     It should usually be set between 1.0 and 2.0.
     * 1.25 is usually a good default.
     If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower.

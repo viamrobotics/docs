@@ -20,8 +20,9 @@ While the main Viam RDK is written in Golang, you can create custom components u
 
 For example, let's say that you have built a custom robotic arm that is not supported by [Viam's arm component from our SDK](https://python.viam.dev/autoapi/viam/components/arm/index.html?highlight=arm#module-viam.components.arm), and you want to integrate it with Viam. You will need to create a server component and register the new arm in order to use it with the Viam SDK. Once your new arm is registered, you will be able to use it remotely with Viam.
 
-!!! tip
-    Here is an example of [how to create a new arm server component in the Python SDK documentation](https://python.viam.dev/autoapi/viam/components/arm/index.html?highlight=arm#module-viam.components.arm).
+{{% alert title="Tip" color="tip" %}}  
+Here is an example of [how to create a new arm server component in the Python SDK documentation](https://python.viam.dev/autoapi/viam/components/arm/index.html?highlight=arm#module-viam.components.arm).
+{{% /alert %}}
 
 ## What is required to create a custom component?
 
@@ -35,6 +36,13 @@ The steps required in creating a custom component and connecting it to the RDK a
 
 You can view the complete tutorial on how to create a custom component in Python in the [Viam Python documentation](https://python.viam.dev/examples/example.html#create-custom-components).
 
-You can view more component implementation examples in the [Viam Python SDK repo](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py).
+You can view more component implementation examples in <file>components.py</file>, found in the <a href="https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py" target="_blank">Viam Python SDK repo</a>[^compsamp].
+
+[^compsamp]:<file>components.py</file>: <a href="https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py" target="_blank">ht<span></span>tps://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py</a>
+
+
 
 [You can find the API reference here.](https://python.viam.dev/autoapi/viam/components/index.html)
+
+
+<span></span>

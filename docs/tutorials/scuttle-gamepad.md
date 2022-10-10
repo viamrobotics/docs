@@ -10,7 +10,7 @@ Now you can try to drive the Scuttle around like an RC car using the EasySMX ESM
 
 ## Prerequisites
 
-* A pre-configured and controllable (via keyboard on the Viam App ([https://app.viam.com](https://app.viam.com)) Scuttle Bot.
+* A pre-configured and controllable (via keyboard on the Viam App ([https://app.viam.com](https://app.viam.com)) Scuttle Robot.
 Refer to the [Setting up a Scuttle with Viam](../scuttlebot) tutorial, if necessary.
 * Connection to the Viam App
 * EasySMX ESM-9101 Wireless Controller
