@@ -1,6 +1,6 @@
 ---
-title: "Make an LED Blink with a Raspberry Pi and Viam Python SDK"
-linkTitle: "Blink an LED with a Pi and the SDK"
+title: "Making an LED Blink with a Raspberry Pi and the Viam Python SDK"
+linkTitle: "Blink an LED with a Pi and the Python SDK"
 weight: 88
 type: "docs"
 description: "Intro to hardware programming using the Viam Python SDK to make an LED blink."
@@ -13,7 +13,7 @@ In this post, you will be introduced to the basics of programming hardware by us
 
 
 {{% alert title="Note" color="note" %}}  
-This is part 2 of Viam's Intro to Robotics series. If you haven't completed [Part 1](../how-to-make-an-led-blink-with-a-raspberry-pi-using-viam/), be sure to go back and complete that before starting on this tutorial. I will be assuming that you have already set up [your Raspberry Pi](https://docs.viam.com/getting-started/installation/), [set up Viam Server](https://docs.viam.com/getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam App](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app) before proceeding.
+This is part 2 of Viam's Intro to Robotics series. If you haven't completed [Part 1](../how-to-make-an-led-blink-with-a-raspberry-pi-using-viam/), be sure to go back and complete that before starting on this tutorial. I will be assuming that you have already set up [your Raspberry Pi](https://docs.viam.com/getting-started/installation/), [set up Viam Server](https://docs.viam.com/getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to Viam](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app) before proceeding.
 
 {{% /alert %}}
 
@@ -76,7 +76,7 @@ You will need the following hardware, tools, and software to complete this proje
 
 ## How to install the Viam Python SDK on your Raspberry Pi
 
-If you followed along with the first part of this tutorial, you should be able to connect and control an LED on your robot remotely from the Viam App. Now, you will need to install the [Viam Python SDK](https://python.viam.dev/) on your Raspberry Pi. The SDK will allow you to automate your robot with more advanced logic, instead of just manually controlling components through the app.
+If you followed along with the first part of this tutorial, you should be able to connect and control an LED on your robot remotely from Viam. Now, you will need to install the [Viam Python SDK](https://python.viam.dev/) on your Raspberry Pi. The SDK will allow you to automate your robot with more advanced logic, instead of just manually controlling components through Viam.
 
 You can find instructions for [installing the Viam Python SDK](https://python.viam.dev/) in the documentation, but we will break this down further for you here.
 
@@ -159,7 +159,7 @@ Open up a code editor, like VS Code, you should now see a file in your explorer 
 
 ![A screenshot from Visual Studio Code that shows the file explorer. A red box is highlighting the new blink.py file located in the root directory.](../img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image5.png)
 
-Now, the easiest way to get started writing a Python application with Viam, is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **Connect** tab, and copy the boilerplate code from the section labeled **Python SDK**. This code snippet imports all the necessary libraries and sets up a connection with the Viam App in the cloud.
+Now, the easiest way to get started writing a Python application with Viam, is to navigate to the [robot page on Viam](https://app.viam.com/robots), select the **Connect** tab, and copy the boilerplate code from the section labeled **Python SDK**. This code snippet imports all the necessary libraries and sets up a connection with Viam in the cloud.
 
 The Python SDK connect script should look something like this:
 
@@ -172,12 +172,12 @@ The Python SDK connect script should look something like this:
   async def connect():
   creds = Credentials(
   type='robot-location-secret',
-  payload='PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP')
+  payload='PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF VIAM')
   opts = RobotClient.Options(
   refresh_interval=0,
   dial_options=DialOptions(credentials=creds)
   )
-  return await RobotClient.at_address('ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP', opts)
+  return await RobotClient.at_address('ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF VIAM', opts)
   
   async def main():
   robot = await connect()
@@ -204,9 +204,9 @@ You can run your code by typing the following into the terminal:
 python3 blink.py
 ```
 
-If you successfully configured your robot and it is able to connect to the Viam App, you should see something like this printed to the terminal after running your program. What you see here is a list of the various resources, components, and services that have been configured to your robot in the Viam App.
+If you successfully configured your robot and it is able to connect to Viam, you should see something like this printed to the terminal after running your program. What you see here is a list of the various resources, components, and services that have been configured to your robot in Viam.
 
-![A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam App. The output is an array of resources that have been pulled from the Viam App. Some of these are the Vision Service, Data Manager, and Board.](../img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image4.png)
+![A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with Viam. The output is an array of resources that have been pulled from Viam. Some of these are the Vision Service, Data Manager, and Board.](../img/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/image4.png)
 
 ### How to write Python code to make an LED Blink
 
