@@ -25,11 +25,11 @@ As of 11 October 2022, the following SLAM library is integrated:
 
 
 ### Coming Soon
-* `map_rate_sec`: A value of `map_rate_sec: 0` is currently set to disable map saving altogether. In the near future, Viam plans to change this behavior to enable "localization only mode".
-* The current file format used for saving images, maps, and *.yaml files is currently using this format: `2022-10-10T09_28_50.2630`. This will be changed to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
+* `map_rate_sec`: A value of `map_rate_sec: 0` is currently (10 Oct 2022) set to disable map saving altogether. In the near future, Viam plans to change this behavior to enable "localization only mode".
+* The current file format used for saving images, maps, and *.yaml files is currently (10 Oct 2022) using this format: `2022-10-10T09_28_50.2630`. This will be changed to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
 
 ## Requirements
-In order to use the SLAM Service with your robot, the following are needed:
+Running the SLAM Service with your robot requires the following:
 1. A binary running the custom SLAM library stored in `/usr/local/bin`.
 2. Changes to the config specifiying which SLAM library is used, including library specific parameters.
 3. A data folder as it is pointed to by the config parameter `data_dir`. It is required to be structured as follows:
@@ -48,7 +48,7 @@ A binary that is running the custom SLAM library is required and is assumed to b
 
 You can download and install the ORBSLAM3 binaries as follows:
 
-* AArch64 (ARM64) (e.g. on an RPI):
+* AArch64 (ARM64) (e.g., on an RPI):
     ```bash
     sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-latest-aarch64.AppImage
     ```
@@ -66,7 +66,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 
 To add the SLAM service to your robot, you need to add the _name_, _type_, and SLAM library specific _attributes_ to the configuration of your robot.
 
-The following shows an example configuration for running ORBSLAM3 in `rgbd` mode on your robot, provided that it has two [camera streams](https://docs.viam.com/components/camera/#camera-models) available: `"color"` for RGB images, and `"depth"` for depth data. 
+The following is an example configuration for running ORBSLAM3 in `rgbd` mode on your robot, provided that it has two [camera streams](https://docs.viam.com/components/camera/#camera-models) available: `"color"` for RGB images, and `"depth"` for depth data. 
 
 ``` json
 "services": [
@@ -89,7 +89,7 @@ The following shows an example configuration for running ORBSLAM3 in `rgbd` mode
 ```
 
 ### SLAM Modes Overview
-The combination of configuration parameters define the behavior of the running SLAM Service. The following provides an overview over the different SLAM modes, and how they can be set.
+The combination of configuration parameters define the behavior of the running SLAM Service. The following table provides an overview over the different SLAM modes, and how they can be set.
 
 
 **Live vs. Offline Mode**
@@ -101,7 +101,7 @@ The combination of configuration parameters define the behavior of the running S
   </tr>
   <tr>
     <td>Live</td>
-    <td>SLAM runs in live mode if one or more `sensors` are provided. Live mode means that SLAM grabs the most recent sensor readings (e.g. images) from the `sensors` and uses those to perform SLAM.</td>
+    <td>SLAM runs in live mode if one or more `sensors` are provided. Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM.</td>
   </tr>
   <tr>
     <td>Offline</td>
@@ -141,16 +141,16 @@ The combination of configuration parameters define the behavior of the running S
   <tr>
     <td>algorithm</td>
     <td>string</td>
-    <td>Name of the SLAM library to be used. Currently supported option: orbslamv3.</td>
+    <td>Name of the SLAM library to be used. Currently (10 Oct 2022) supported option: orbslamv3.</td>
   </tr>
   <tr>
     <td>data_dir</td>
     <td>string</td>
-    <td>This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If these have not been provided, they will be created by the SLAM service. The data in the data directory also dictate what type of SLAM will be run:
+    <td>This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. The data in the data directory also dictate what type of SLAM will be run:
     <ul>
-      <li>If no map is provided in the data folder, the SLAM algorithm will generate a new map using all the provided data (PURE MAPPING MODE)</li>
+      <li>If the data folder does not contain a map, the SLAM algorithm generates a new map using all the provided data. (PURE MAPPING MODE)</li>
       <li>If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map will be used. (PURE LOCALIZATION MODE/UPDATING MODE)</li>
-      <li>If a `map_rate_sec` is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE)</li>
+      <li>If a `map_rate_sec` is provided, then the system will overlay new data on any given map. (PURE MAPPING MODE/UPDATING MODE)</li>
     </ul>
 </td>
   </tr>
@@ -181,7 +181,7 @@ The combination of configuration parameters define the behavior of the running S
   <tr>
     <td>input_file_pattern</td>
     <td>string</td>
-    <td>DISCLAIMER: Currently unused. File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data.</td>
+    <td>DISCLAIMER: Currently (10 Oct 2022) unused. File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data.</td>
   </tr>
   <tr>
     <td>port</td>
