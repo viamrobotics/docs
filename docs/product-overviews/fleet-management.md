@@ -14,7 +14,7 @@ All communication happen securely over HTTPS using secret tokens that are in the
 
 ## Robot Hierarchy
 
-Whether you have 1 robot, or millions, you can manage them with Viam.
+Whether you have one robot, or millions, you can manage them with Viam.
 You organize your robots into Organizations and locations.
 
 ### Organization
