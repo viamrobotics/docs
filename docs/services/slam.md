@@ -76,7 +76,7 @@ The following is an example configuration for running ORBSLAM3 in `rgbd` mode on
     "attributes": {
       "algorithm": "orbslamv3",
       "data_dir": "<path_to_your_data_folder>",
-      "sensors": ["color, depth"],
+      "sensors": ["color", "depth"],
       "map_rate_sec": 60,
       "data_rate_ms": 200,
       "input_file_pattern": "1:1000:1",
