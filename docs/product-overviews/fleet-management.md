@@ -15,7 +15,7 @@ All communication happen securely over HTTPS using secret tokens that are in the
 ## Robot Hierarchy
 
 Whether you have one robot, or millions, you can manage them with Viam.
-You organize your robots into Organizations and locations.
+You organize your robots into organizations and locations.
 
 ### Organization
 An organization is the highest level grouping.
@@ -23,7 +23,7 @@ It typical would be a company, or other institution, but could also be an indivi
 
 Users in Viam, as defined by an email address, can be a member of multiple organizations.
 
-A member of an organization can invite new users to that organization or create additional organizations at any point in time.
+A member of an organization can invite new users to that organization or create additional organizations.
 
 For example, if you have personal robots at home, and also robots at school, you would belong to two organizations to keep those use cases separate.
 
