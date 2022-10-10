@@ -25,8 +25,8 @@ As of 11 October 2022, the following SLAM library is integrated:
 
 
 ### Coming Soon
-* `map_rate_sec`: A value of `map_rate_sec: 0` is currently set to disable map saving altogether. The behavior will be changed to enable "localization only mode" in the near future.
-* The current file format used for saving images, maps, and *.yaml files is currently using this format: `TODO[kat]: add fileformat`. This will be changed to the RFC339 Nano time format (e.g. `2006-01-02T15:04:05Z07:00`) in the near future.
+* `map_rate_sec`: A value of `map_rate_sec: 0` is currently set to disable map saving altogether. In the near future, Viam plans to change this behavior to enable "localization only mode".
+* The current file format used for saving images, maps, and *.yaml files is currently using this format: `2022-10-10T09_28_50.2630`. This will be changed to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
 
 ## Requirements
 In order to use the SLAM Service with your robot, the following are needed:
