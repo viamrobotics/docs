@@ -6,230 +6,170 @@ type: "docs"
 description: "Explanation of the SLAM service, its configuration, its functionality, and its interfaces."
 ---
 
+## Warning: This is an experimental feature.
+Stability is not guaranteed. Breaking changes are likely to occur, and occur often.
+
+## Introduction
+
 SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers. At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various cutting edge SLAM algorithms that may be useful in their mission.
 
-As of 01 June 2022, we support the following SLAM libraries:
+## Overview
+The Viam SLAM Service supports the integration of custom SLAM libraries with the Viam RDK via the SLAM Service API. 
+
+As of 11 October 2022, the following SLAM library is integrated:
 
 -   <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank">ORBSLAM3</a>[^orb]
 
+
 [^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORBSLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
-## Architecture
-### Data Generation
 
-The SLAM service is currently responsible for generating the data used by the various SLAM algorithms. This data is stored locally on the device in the directory specified in the config. THe structure of this directory can be seen in the diagram below.
 
-<pre>
-.
-└──\(The Directory Defined in Config)
-    ├── data
-    ├── map
-    └── config
-</pre>
+### Coming Soon
+* `map_rate_sec`: A value of `map_rate_sec: 0` is currently (10 Oct 2022) set to disable map saving altogether. In the near future, Viam plans to change this behavior to enable "localization only mode".
+* Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`. We append the timestamp to each filename prior to saving images, maps, and *.yaml files. We will be updating the timestamp format to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
 
-The implemented SLAM libraries rely on the filename to know when this data was generated and what sensor was used to collect it. The format for the timestamp is currently "2006-01-02T15_04_05.0000". Please note, this will be updated soon to align with the conventions used by the datamanager service.
+## Requirements
+Running the SLAM Service with your robot requires the following:
+1. A binary running the custom SLAM library stored in `/usr/local/bin`.
+2. Changes to the config specifiying which SLAM library is used, including library specific parameters.
+3. A data folder as it is pointed to by the config parameter `data_dir`. It is required to be structured as follows:
+    <pre>
+    .
+    └──\(The Directory Defined in Config)
+        ├── data
+        ├── map
+        └── config
+    </pre>
 
-### Interfacing with the C++ Binary
+All three are explained in the following using ORBSLAM3 as the application example.
 
-The SLAM binaries used are stored in <file>/usr/local/bin</file>. If an updated version is desired, copy the new binary into this directory. If an identical name is used for this new binary, no changes will need to be made to the RDK SLAM code. If a new name is given then it must be relinked in <file>services/slam/slamlibraries.go</file> in the BinaryLocation metadata. 
+## The SLAM library binary
+A binary that is running the custom SLAM library is required and is assumed to be stored in `/usr/local/bin`. Its location in the case of ORBSLAM3 is defined [here](https://github.com/viamrobotics/rdk/blob/7d15c61d59ee1f4948d116d605f4f23a199d2fb1/services/slam/slamlibraries.go#L48).
 
-{{% alert title="Note" color="note" %}}  
-A new binary with a different name can be stored anywhere as long as it is included in your PATH.
-{{% /alert %}}
+You can download and install the ORBSLAM3 binaries as follows:
 
-## RDK Config
+* AArch64 (ARM64) (e.g., on an RPI):
+    ```bash
+    sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-latest-aarch64.AppImage
+    ```
+* x86_64:
+    ```bash
+    sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-latest-x86_64.AppImage
+    ```
+
+Make the file executable by running:
+```bash
+sudo chmod a+rx /usr/local/bin/orb_grpc_server
+```
+
+## Configuration Overview
+
+To add the SLAM service to your robot, you need to add the _name_, _type_, and SLAM library specific _attributes_ to the configuration of your robot.
+
+The following is an example configuration for running ORBSLAM3 in `rgbd` mode on your robot, provided that it has two [camera streams](https://docs.viam.com/components/camera/#camera-models) available: `"color"` for RGB images, and `"depth"` for depth data. 
 
 ``` json
 "services": [
   {
+    "name": "testorb",
+    "type": "slam",
     "attributes": {
       "algorithm": "orbslamv3",
-      "data_dir": "<path_to_folder>",
+      "data_dir": "<path_to_your_data_folder>",
       "sensors": ["color, depth"],
-      "config_params": {
-        "mode": "rgbd"
-      },
       "map_rate_sec": 60,
       "data_rate_ms": 200,
-      "input_file_pattern": "1:1000:1"
-    },
-    "name": "testorb",
-    "type": "slam"
+      "input_file_pattern": "1:1000:1",
+      "config_params": {
+        "mode": "rgbd"
+      }
+    }
   }
 ]
 ```
 
-### Required Attributes
+### SLAM Modes Overview
+The combination of configuration parameters define the behavior of the running SLAM Service. The following table provides an overview over the different SLAM modes, and how they can be set.
 
-**algorithm** (string): Name of the SLAM library/algorithm to be used. Current options are cartographer or orbslamv3.
 
-**data_dir** (string): This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If these have not been provided, they will be created by the SLAM service. The data in the data directory also dictate what type of SLAM will be run:
+**Live vs. Offline Mode**
 
--   If no map is provided in the data folder, the SLAM algorithm will generate a new map using all the provided data (PURE MAPPING MODE)
+| Mode | Description |
+| ---- | ----------- |
+| Live | SLAM runs in live mode if one or more `sensors` are provided. Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM. |
+| Offline | SLAM runs in offline mode if `sensors: []` is empty. This means it will look for and process images that are already saved in the `data_dir` directory, or more specifically in `<path_to_your_data_folder>/data`. |
 
--   If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map will be used. (PURE LOCALIZATION MODE/UPDATING MODE)
 
--   If a map_rate_sec is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE)
+**Pure Mapping, Pure Localization, and Update Mode**
 
-**Sensors** (string[]): Names of sensors which are input to SLAM
+| Mode | Description |
+| ---- | ----------- |
+| Pure Mapping | TODO[kat] |
+| Pure Localization | TODO[kat] |
+| Updating | TODO[kat] |
 
-### Optional Attributes
+### General Config Parameters
+**Required Attributes**
 
-**map_rate_sec** (int): Map generation rate for saving current state (in seconds). The default value is 60. If an integer is less or equal to 0 then SLAM is run in localization mode.
+| Name | Data Type | Description |
+| ---- | --------- | ----------- |
+| algorithm | string | Name of the SLAM library to be used. Currently (10 Oct 2022) supported option: orbslamv3. |
+| data_dir | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. The data in the data directory also dictate what type of SLAM will be run: <ul><li>If the data folder does not contain a map, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).</li> <li>If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map will be used (PURE LOCALIZATION MODE/UPDATING MODE).</li> <li>If a `map_rate_sec` is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE).</li></ul>
+| sensors | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in LIVE mode. If the array is empty, SLAM runs in OFFLINE mode. |
 
-**data_rate_ms** (int): Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is 200. If 0, no new data is sent to the SLAM algorithm.
+**Optional Attributes**
 
-**input_file_pattern** (string): File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. 
-{{% alert title="Note" color="note" %}}  
-X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data.
-{{% /alert %}}
-**port** (string): Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned.
+| Name | Data Type | Description |
+| ---- | --------- | ----------- |
+| map_rate_sec | int | Map generation rate for saving current state (in seconds). The default value is 60. If an integer is less or equal to 0 then SLAM is run in localization mode. |
+| data_rate_ms | int |  Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is 200. If 0, no new data is sent to the SLAM algorithm. |
+| input_file_pattern |  string | DISCLAIMER: Currently (10 Oct 2022) unused. File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data. |
+| port | string |  Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
+| config_params |  map[string] string | Parameters specific to the used SLAM library. |
 
-**config_params** (map[string] string): Parameters specific to the
-inputted SLAM library.
 
-### Specific SLAM Library Attributes
+### SLAM Library Specific Config Parameters
 
 The config_params is a catch-all attribute for parameters that are unique to the SLAM library being used. These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
 
 You can find details on which inputs you can include for the available libraries in the following sections.
 
-#### OrbSLAM
+## The Data Directory
+
+A running SLAM service saves the sensor data it uses and the maps and config files it produces locally on the device in the directory as specified in the config as `data_dir`.
+
+To recap, the directory is required to be structured as follows:
+
+<pre>
+.
+└──\(The Directory Defined in Config as `data_dir`)
+    ├── data
+    ├── map
+    └── config
+</pre>
+
+* `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `map_rate_sec`.
+* `map` contains the generated maps, saved at `map_rate_sec`.
+* `config` contains all SLAM library specific config files. 
+
+
+## Integrated Library: OrbSLAM3
+
+### Introduction
+
 
 OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (i.e., "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
 
-<table>
-    <tr>
-        <th>Parameter Mode</th>
-        <th style="width:40%">Description - The Type of SLAM to Use</th>
-        <th>Default:<br>
-        RGBD, Mono</th>
-    </tr>
-    <tr>
-        <td>orb_n_features</td>
-        <td>ORB parameter. Number of features per image</td>
-        <td>1200</td>
-    </tr>
-    <tr>
-        <td>orb_scale_factor</td>
-        <td>ORB parameter. Scale factor between levels in the scale
-         pyramid</td>
-        <td>1.2</td>
-    </tr>
-    <tr>
-        <td>orb_n_levels</td>
-        <td>ORB parameter. Number of levels in the scale pyramid</td>
-        <td>8</td>
-    </tr>
-    <tr>
-        <td>orb_n_ini_th_fast</td>
-        <td>ORB parameter. Initial FAST threshold</td>
-        <td>20</td>
-    </tr>
-    <tr>
-        <td>orb_n_min_th_fast</td>
-        <td>ORB parameter. Lower threshold if no corners detected</td>
-        <td>7</td>
-</table>
+### Hardware Requirements
 
-## Hardware Requirements
+TODO[kat]
 
-*Forthcoming*
-
-## Installation
-
-### Via an App Image
-
-Coming soon!
-
-### Manual Installation
-
-Perform a git clone on the SLAM repository using the recursive install flag to allow the sub packages to be downloaded as well.
-
-```bash
-git clone --recurse-submodules git@github.com:viamrobotics/slam.git
-```
-
-#### ORBSLAM3 Setup
-
-This setup documents the current process for getting ORBSLAM3 working locally on a Raspberry Pi.
-
-##### Dependencies
-
-The following are the required dependencies for building and running ORBSLAM3. In addition you should ensure the most recent version of the orbslam submodule is located in your directory with
-
-```bash
-git submodule update \--init \--recursive
-```
-
-###### Pangolin
-```bash
-git clone \--recursive
-https://github.com/stevenlovegrove/Pangolin.git
-cd Pangolin
-./scripts/install_prerequisites.sh recommended
-mkdir build && cd build
-cmake ..
-make -j4
-sudo make install
-```
-###### OpenCV
-```bash
-sudo apt install libopencv-dev
-```
-
-###### Eigen
-```bash
-suo apt install libeigen3-dev
-```
-###### gRPC
-
-To setup gRPC, use the following command:
-
-```bash
-cd \~/slam/slam-libraries
-mae pull-rdk
-```
-
-This command pulls a minimal copy of rdk and build c++ gRPC files off of our proto.
-
-###### Other Dependencies
-```bash
-sudo apt install libssl-dev
-sudo apt-get install libboost-all-dev
-```
-
-##### Building ORBSLAM3
-
-To build ORBSLAM3 run
-```bash
-cd \~/slam/slam-libraries/viam-orb-slam
-./build_orbslam.sh
-```
-
-Should the code fail the initial setup (your pi freezes and requires a restart), change the *make -j\`nproc\`* flags into *make -j2*
-
-After building, use the following command to move the binary to `/usr/local/bin`:
-
-```bash
-sudo cp bin/orb_grpc_server /usr/local/bin
-```
-In addition, make sure the binary is added in SLAMlibraries.go for ORBSLAM3 in rdk.
-
-Lastly, move the vocabulary file into your data directory. You must do this whenever a new data directory will be used.
-```bash
-cp ORB_SLAM3/Vocabulary/ORBvoc.txt ~/YOUR_DATA_DIR/config
-```
-
-## Usage
-
-### Creating an initial map
-
-Coming soon! 
-
-### Pure localization on a priori map
-
-Coming soon!
-
-### Updating an a priori map
-
-Coming soon! 
+### Configuration Overview
+        
+| Parameter Mode | Description - The Type of SLAM to Use | Default: RGBD, Mono |
+| -------------- | ------------------------------------- | ------------------- |
+| orb_n_features | ORB parameter. Number of features per image | 1200 |
+| orb_scale_factor | ORB parameter. Scale factor between levels in the scale pyramid | 1.2 |
+| orb_n_levels | ORB parameter. Number of levels in the scale pyramid |  8 |
+| orb_n_ini_th_fast | ORB parameter. Initial FAST threshold | 20 |
+| orb_n_min_th_fast | ORB parameter. Lower threshold if no corners detected | 7 |
