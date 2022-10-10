@@ -37,6 +37,10 @@ View the Future version (Show files marked as Future, which could allow us to pr
 hugo server -F
 ```
 
+## Notes for those editing docs
+- every sentence on a new line
+- test locally before submitting a PR
+- always submit a PR before merging
 
 ## Important Things about Hugo
 
