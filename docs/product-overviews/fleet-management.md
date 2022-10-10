@@ -28,7 +28,7 @@ A member of an organization can invite new users to that organization or create 
 For example, if you have personal robots at home, and also robots at school, you would belong to two organizations to keep those use cases separate.
 
 ## Locations
-All robots live inside of a locations, wihich live within organizations. 
+All robots live inside of locations, which live within organizations. 
 Locations allow organizations to organize and manage their fleets.
 Organizations often contain several locations.
 
