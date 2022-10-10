@@ -69,7 +69,7 @@ Before you proceed with building your mock robot, you are going to need to insta
     brew install --HEAD viam-server
     ```
 
-     -   Await connection.You should see that your robot is live on your robot's page from the Viam app.
+     -   Await connection. You should see that your robot is live on your robot's page from the Viam app.
 
 ## How to configure your mock robot in the Viam app
 
