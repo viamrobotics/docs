@@ -1,11 +1,11 @@
 ---
-title: "Build a Line Following Robot with only a Rover and a Webcam"
+title: "Building a Line-Following Robot with a Rover and a Webcam"
 linkTitle: "RGB Line Follower"
 weight: 90
 type: "docs"
-description: "Instructions to build a line following robot that uses a webcam and color detection to track a line."
+description: "Build a line-following robot that relies on a webcam and color detection."
 ---
-Many line follower robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background. 
+Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background. 
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
 <div style="column-count:2;column-gap-40px">
@@ -25,7 +25,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 [^psdk]: Viam Python SDK: <a href="https://github.com/viamrobotics/viam-python-sdk" target="_blank">ht<span></span>tps://github.com/viamrobotics/viam-python-sdk</a>
 
 
-<a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8" target="_blank">**Line Follower GitHub Gist Code**</a>[^jgist]
+<a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8" target="_blank">**Line GitHub Gist Code**</a>[^jgist]
 
 [^jgist]: Line Follower GitHub Gist Code: <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8" target="_blank">ht<span></span>tps://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8</a>
 
@@ -46,7 +46,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 <img src="../img/lf-scuttle2.png" width="600" /></p>
 
 ## Configuration using Viam
-If you haven’t already, please set up the Raspberry Pi on the [Viam App](https://app.viam.com) per [these instructions](../../getting-started/installation).
+If you haven’t already, please set up the Raspberry Pi on [Viam](https://www.viam.com) per [these instructions](../../getting-started/installation).
 
 ### Configuring the Hardware Components
 Configure the base per the [Base Component topic](../../components/base/).
@@ -249,18 +249,18 @@ Run,</br><span class="file">nano rgbFollower.py</span></br>(or replace <span cla
 * Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started" target="_blank">ht<span><span>tps://mutagen.io/documentation/introduction/getting-started</a>
 
 <h2>Controlling your rover with Viam</h2>
-<ol><li class="spacing">Go to your robot’s page on the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>). Verify that it’s connected by refreshing the page and ensuring that <strong>Last Online</strong> (in the top banner) says, “Live.”</li>
+<ol><li class="spacing">Go to your robot’s page on Viam (<a href="https://app.viam.com">https://app.viam.com</a>). Verify that it’s connected by refreshing the page and ensuring that <strong>Last Online</strong> (in the top banner) says, “Live.”</li>
 <li class="spacing">Go to the <strong>Control</strong> tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around. 
 Ensure that the base moves as expected. 
 If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.</li>
-<p  class="Mycaption"><em>Figure 3: Driving the base from the Viam App's Control tab.</em><br>
+<p  class="Mycaption"><em>Figure 3: Driving the base from Viam's Control tab.</em><br>
 <img class="spacing" src="../img/lf-viamapp-base-view5.gif" width="600" /></p></li>
 <li class="spacing">Now for the creative part: Use your colored tape to make a path for your robot to follow. 
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another. 
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.</li>
 <li class="spacing">Set your robot on the line such that the line appears in the front of the camera’s view. 
 Verify that the camera sees the line by viewing the camera feed on the <strong>Control</strong> tab of the robot page.</li>
-<p class="Mycaption"><em>Figure 4: The camera view in the <strong>Control</strong> tab on the Viam App robot page.</em><br>
+<p class="Mycaption"><em>Figure 4: The camera view in the <strong>Control</strong> tab on the Viam robot page.</em><br>
 <img  class="spacing" src="../img/lf-cam-view6.png" width="600" /></p>
 
 <li class="spacing">In a terminal window, SSH to your Pi by running:<br>
