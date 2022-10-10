@@ -23,7 +23,7 @@ It typical would be a company, or other institution, but could also be an indivi
 
 Users in Viam, as defined by an email address, can be a member of multiple organizations.
 
-Member of an organization can invite new users to that organization or  create additional organizations at any point in time.
+A member of an organization can invite new users to that organization or create additional organizations at any point in time.
 
 For example, if you have personal robots at home, and also robots at school, you would belong to two organizations to keep those use cases separate.
 
