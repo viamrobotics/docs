@@ -118,6 +118,6 @@ If there are issues, please work with us on [slack](https://viamrobotics.slack.c
 
 We also have a number of [tutorials](/tutorials) to get you started.
 
-If you have no hardware, you can use our [mock robot tutorial](/tutorials/how_to_build_a_mock_robot.md).
+If you have no hardware, you can use our [mock robot tutorial](/tutorials/how_to_build_a_mock_robot).
 
 
