@@ -32,7 +32,9 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 ## What you'll need
 - A single board computer [running an instance of Viam server](../../getting-started/installation)
     - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
-- [A wheeled base component](../../components/base/). We used a [SCUTTLE robot](https://www.scuttlerobot.org/) for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
+- [A wheeled base component](../../components/base/). We used a <a href="https://www.scuttlerobot.org/shop" target="_blank" />SCUTTLE Robot</a>[^sr]  for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
+[^sr]: SCUTTLE Robot <a href="https://www.scuttlerobot.org/shop" target="_blank" />https://www.scuttlerobot.org/shop</a>
+
 - RGB camera
     - A common off-the-shelf webcam [(such as this)](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html) with a ribbon connector to the Pi’s camera module port.
     - You must mount the camera to the front of the rover pointing down towards the floor.
@@ -47,7 +49,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 If you haven’t already, please set up the Raspberry Pi on the [Viam App](https://app.viam.com) per [these instructions](../../getting-started/installation).
 
 ### Configuring the Hardware Components
-Configure the base per the [Base Component topic](../components/base/).
+Configure the base per the [Base Component topic](../../components/base/).
 	
 Configure the [camera](../../components/camera) as type `webcam`. When you create a webcam component in Viam's config builder, Viam's discovery service will automatically detect cameras attached to your robot and suggest possible path attributes in a dropdown list. The top one (often "video0") is a good bet.
 
