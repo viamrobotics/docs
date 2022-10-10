@@ -42,6 +42,7 @@ Looking to get started with Viam? Check out the following:
 
 ## Services
 - [Vision](../services/vision)
+- [Motion](../services/motion)
 - [Data Capture](../services/data-capture)
 - [Simultaneous Localization and Mapping (SLAM)](../services/slam)  
 - [Robot Service](../services/robot-service)

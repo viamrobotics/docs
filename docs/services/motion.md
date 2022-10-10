@@ -22,29 +22,28 @@ Viam’s Motion Service is enabled in RDK by default, and no extra configuration
 
 The “Move” endpoint is the primary way to move multiple components, or to move any object to any other location. Given a destination pose and a component to move to that destination, the motion service will construct a full kinematic chain from goal to destination including all movable components in between, and will solve that chain to place the goal at the destination while meeting specified constraints. It will then execute that movement to move the actual robot, and return whether or not this process succeeded.
 
-Note: The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles and interaction spaces as documented below. This may result in motions which appear unintuitive. To apply motion constraints, see the [`extra` parameter](#extra_anchor).
-
+{{% alert title="Note" color="note" %}} 
+The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles and interaction spaces as documented below. This may result in motions which appear unintuitive. To apply motion constraints, see the [`extra` parameter](#extra_anchor).
+{{% /alert %}}
 
 #### Parameters
 
-The parameters are as follows, in detail:
-
 **`component_name`**: This is the name of the piece of the robot which should arrive at the destination. Note that this is solved such that the distal end of the component arrives at the destination. For example, if a robotic arm is specified, the piece that will arrive at the destination is the end effector mount point, not the base of the arm where it is mounted.
 
-**`destination`**: A `PoseInFrame` describing where the component_name should end up. This can be any pose, from the perspective of any component whose location is known in the robot’s FrameSystem (i.e. it has a `frame` attribute in the Viam config). Note that the Pose specified is relative to the distal end of the frame being specified. This means that if the `_destination`_ and `_component_name`_ are the same frame. For example an arm (or a gripper attached to one), then a pose of {X: 10, Y: 0, Z: 0} will move that arm’s end effector or gripper by 10 mm in the local X direction.
+**`destination`**: A `PoseInFrame` describing where the `component_name` should end up. This can be any pose, from the perspective of any component whose location is known in the robot’s FrameSystem (i.e., it has a `frame` attribute in the Viam config). Note that the Pose specified is relative to the distal end of the frame being specified. This means that if the `_destination`_ and `_component_name`_ are the same frame. For example an arm (or a gripper attached to one), then a pose of {X: 10, Y: 0, Z: 0} will move that arm’s end effector or gripper by 10 mm in the local X direction.
 
 **`world_state`**: This data structure specifies various information about the world around the robot which is used to augment the motion solving process. There are three pieces of world_state: obstacles, interaction spaces, and transforms. Each will be discussed in detail:
 * **Obstacles**: These are geometries located at a pose relative to some frame. When solving a motion plan with movable frames that contain inherent geometries, the solved path will be constrained such that at no point will any of those inherent geometries intersect with the specified obstacles. There are three important things to know about obstacles:
     * Obstacles will only be avoided by objects with which they are not in collision at the starting position. If a motion is begun and an obstacle specified such that it is in a location where it intersects with a component in the kinematic chain, collisions between that obstacle and that particular piece of the kinematic chain will not be checked.
     * Obstacles whose parents (or grand… parent) may move as part of a solve request, will be assumed to move along with their parent while solving. This will ensure that obstacles that are temporarily attached to moving components do not cause collisions during the movement.
-    * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (i.e. an arm frame will be solved for the pose of its end effector), geometries are interpreted as being “part of” their frame, rather than “at the end of” the frame. Thus, their poses are relative to the _origin_ of the specified frame. A geometry given in the frame of the arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
+    * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (i.e., an arm frame will be solved for the pose of its end effector), geometries are interpreted as being “part of” their frame, rather than “at the end of” the frame. Thus, their poses are relative to the _origin_ of the specified frame. A geometry given in the frame of the arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
 * **Interaction spaces**: These are geometries which are effectively the inverse of obstacles- they specify where the inherent geometries of a kinematics chain *may* exist, and disallow them from exiting that geometry. Interaction spaces should fully envelop the geometries of any movable component with geometries. If any movable geometry is outside the given interaction space at the start of the motion, the movement will fail as the constraint will have been violated.
-* **Transforms**: These are a list of _PoseInFrame_ messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time. The _destination_ may be one of these, but at present the _component_name_ may not be.
+* **Transforms**: These are a list of _PoseInFrame_ messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time. The _`destination`_ may be one of these, but at present the _`component_name`_ may not be.
 
 <a id="extra_anchor" />**`extra`**: This data structure is a generic struct, containing maps of strings to any data structure. This is used to pass in additional parameters not supported as first-class parameters in the API. This enables things like the tweaking of individual parameters used by the algorithm, if the user wishes to have something other than the default.
 
 
-## Examples
+#### Examples
 
 The following code uses the [Viam Python SDK](https://python.viam.dev/) to move an arm to a point in front of a camera and approach that point from a particular direction:
 
@@ -108,7 +107,7 @@ motion.move(component_name=armRes,destination=PoseInFrame(reference_frame="myArm
 
 The `MoveSingleComponent` endpoint, while it looks very similar to the “Move” endpoint above, may result in radically different behavior when called.
 
-_`MoveSingleComponent` is meant to allow the user to bypass Viam’s internal motion planning entirely, if desired, for a single component._ If the component in question supports the `MoveToPosition` method taking a Pose as a parameter, this call will use the frame system to translate the given destination into the frame of the specified component, and will then call `MoveToPosition` on that one component to move it to the desired location. As of this writing, arms are the only component supported by this feature.
+_`MoveSingleComponent` is meant to allow the user to bypass Viam’s internal motion planning entirely, if desired, for a single component._ If the component in question supports the `MoveToPosition` method taking a Pose as a parameter, this call will use the frame system to translate the given destination into the frame of the specified component, and will then call `MoveToPosition` on that one component to move it to the desired location. As of 10 October 2022, arms are the only component supported by this feature.
 
 As the name of the method suggests, only the single component specified by `component_name` will move.
 
@@ -119,11 +118,9 @@ If this method is called with an arm which uses Viam’s motion planning on the 
 
 #### Parameters
 
-The parameters are as follows, in detail:
+**`component_name`**: This is the name of the piece of the robot to which `MoveToPosition` should be called with the transformed destination. This component must support the `MoveToPosition`API call with a Pose. As of 10 October 2022, Arm is the only component so supported.
 
-**`component_name`**: This is the name of the piece of the robot to which `MoveToPosition` should be called with the transformed destination. This component must support the `MoveToPosition`API call with a Pose. As of this writing, Arm is the only component so supported.
-
-**`destination`**: A `PoseInFrame` describing where the component_name should end up. This can be any pose, from the perspective of any component whose location is known in the robot’s `FrameSystem`. It will be converted into the frame of the component named in `component_name` when passed to `MoveToPosition`.
+**`destination`**: A `PoseInFrame` describing where the `component_name` should end up. This can be any pose, from the perspective of any component whose location is known in the robot’s `FrameSystem`. It will be converted into the frame of the component named in `component_name` when passed to `MoveToPosition`.
 
 **`world_state`**: This data structure is structured identically to what is described above in “Move”, and is intended to behave the same. However, a user’s own implementation of `MoveToPosition` may or may not make use of World State.
 
@@ -132,13 +129,15 @@ The parameters are as follows, in detail:
 
 ## Constraints
 
-Currently, there is currently no built in, top level way to specify different constraints. However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to “motion_profile” via the `extra` parameter, along with individual algorithm variables. This is not available in the Viam app. Currently, available constraints all control the topological movement of the moving component along its path.
+Currently (10 October 2022), there is no built in, top level way to specify different constraints. However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to “motion_profile” via the `extra` parameter, along with individual algorithm variables. This is not available in the Viam app. Available constraints all control the topological movement of the moving component along its path.
 
-Available constraints are as follows:
+For a usage example, see [sample code above](#examples).
 
-### **{"motion_profile": "linear"}**
+The available constraints are:
 
-This will force the path taken by component_name to follow an exact linear path from the start to the goal. If the start and goal orientations are different, the orientation along the path will follow the quaternion Slerp (Spherical Linear Interpolation) of the orientation from start to goal. This has the following sub-options:
+#### **{"motion_profile": "linear"}**
+
+This forces the path taken by `component_name` to follow an exact linear path from the start to the goal. If the start and goal orientations are different, the orientation along the path will follow the quaternion Slerp (Spherical Linear Interpolation) of the orientation from start to goal. This has the following sub-options:
 
 
 <table>
@@ -176,9 +175,9 @@ This will force the path taken by component_name to follow an exact linear path 
 
 
 
-### **{"motion_profile": "pseudolinear"}**
+#### **{"motion_profile": "pseudolinear"}**
 
-This will restrict the path such that it will deviate from the straight-line linear path between start and goal by no more than a certain amount, where that amount is determined as a percentage of the distance from start to goal. Linear and orientation deviation are determined separately, so if a motion has a large linear difference but has identical starting and ending orientations, the motion will hold its orientation constant while allowing some linear deflection. This has the following suboption:
+This restricts the path such that it will deviate from the straight-line linear path between start and goal by no more than a certain amount, where that amount is determined as a percentage of the distance from start to goal. Linear and orientation deviation are determined separately, so if a motion has a large linear difference but has identical starting and ending orientations, the motion will hold its orientation constant while allowing some linear deflection. This has the following suboption:
 
 
 <table>
@@ -206,9 +205,9 @@ This will restrict the path such that it will deviate from the straight-line lin
 
 
 
-### **{"motion_profile": "orientation"}**
+#### **{"motion_profile": "orientation"}**
 
-This will place a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the Slerp between start and goal by more than a set amount. This is similar to the “orient_tolerance” option in the linear profile, but without any path restrictions. If set to zero, a movement with identical starting and ending orientations will hold that orientation throughout the movement.
+This places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the Slerp between start and goal by more than a set amount. This is similar to the “orient_tolerance” option in the linear profile, but without any path restrictions. If set to zero, a movement with identical starting and ending orientations will hold that orientation throughout the movement.
 
 
 <table>
@@ -236,7 +235,7 @@ This will place a restriction on the orientation change during a motion, such th
 
 
 
-### **{"motion_profile": "free"}**
+#### **{"motion_profile": "free"}**
 
 This places no restrictions on motion whatsoever. This is the default and will be used if nothing is passed. This takes no parameters.
 
@@ -247,7 +246,7 @@ This places no restrictions on motion whatsoever. This is the default and will b
 
 * CBiRRT
 
-Currently, the only algorithm available for use is CBiRRT, which stands for Constrained, Bidirectional implementation of <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">RRT</a>[^CBiRRT]. It will create paths which are guaranteed to conform to specified constraints, and attempt to smooth them afterwards as needed. By default, it will use a “free” constraint, that is, it will not constrain the path of motion at all. This is to ensure that paths will be found when using defaults, even in highly constrained scenarios.
+Currently (10 October 2022), the only algorithm available for use is CBiRRT, which stands for Constrained, Bidirectional implementation of <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">RRT</a>[^CBiRRT]. It will create paths which are guaranteed to conform to specified constraints, and attempt to smooth them afterwards as needed. By default, it will use a “free” constraint, that is, it will not constrain the path of motion at all. This is to ensure that paths will be found when using defaults, even in highly constrained scenarios.
 
 The algorithm used by Viam is based on the algorithm described in this paper: <a href="https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf" target="_blank">ht<span></span>tps://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf]</a>
 
