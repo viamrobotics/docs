@@ -13,7 +13,7 @@ Stability is not guaranteed. Breaking changes are likely to occur, and occur oft
 
 SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers. At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various cutting edge SLAM algorithms that may be useful in their mission.
 
-## Overview
+## The Viam SLAM Service
 The Viam SLAM Service supports the integration of custom SLAM libraries with the Viam RDK via the SLAM Service API. 
 
 As of 11 October 2022, the following SLAM library is integrated:
@@ -44,7 +44,7 @@ Running the SLAM Service with your robot requires the following:
 All three are explained in the following using ORBSLAM3 as the application example.
 
 ## The SLAM library binary
-A binary that is running the custom SLAM library is required and is assumed to be stored in `/usr/local/bin`. Its location in the case of ORBSLAM3 is defined [here](https://github.com/viamrobotics/rdk/blob/7d15c61d59ee1f4948d116d605f4f23a199d2fb1/services/slam/slamlibraries.go#L48).
+A binary that is running the custom SLAM library is required and is assumed to be stored in `/usr/local/bin`. Its location in the case of ORBSLAM3 is defined <a href="https://github.com/viamrobotics/rdk/blob/7d15c61d59ee1f4948d116d605f4f23a199d2fb1/services/slam/slamlibraries.go#L48" target="_blank">here</a>.
 
 You can download and install the ORBSLAM3 binaries as follows:
 
@@ -89,7 +89,7 @@ The following is an example configuration for running ORBSLAM3 in `rgbd` mode on
 ```
 
 ### SLAM Modes Overview
-The combination of configuration parameters define the behavior of the running SLAM Service. The following table provides an overview over the different SLAM modes, and how they can be set.
+The combination of configuration parameters and existing data in the `data_dir` define the behavior of the running SLAM Service. The following table provides an overview over the different SLAM modes, and how they can be set.
 
 
 **Live vs. Offline Mode**
@@ -104,35 +104,36 @@ The combination of configuration parameters define the behavior of the running S
 
 | Mode | Description |
 | ---- | ----------- |
-| Pure Mapping | TODO[kat] |
-| Pure Localization | TODO[kat] |
-| Updating | TODO[kat] |
+| Pure Mapping | In the Pure Mapping mode, a new map is generated from scratch. This mode is triggered if no map is found in the `<path_to_your_data_folder>/data` directory. |
+| Pure Localization | DISCLAIMER: Currently unsupported. In the Pure Localization mode, an existing map is used together with new data to determine the robots location within the map. This mode is triggered if a map is found in the `<path_to_your_data_folder>/map` directory, and if `map_rate_sec` is set to `0`. |
+| Updating | In Updating mode, an existing map is being changed and updated with new data. This mode is triggered if a map is found in the `<path_to_your_data_folder>/map` directory and `map_rate_sec` is set to a larger than `0`.|
 
 ### General Config Parameters
 **Required Attributes**
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| algorithm | string | Name of the SLAM library to be used. Currently (10 Oct 2022) supported option: orbslamv3. |
-| data_dir | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. The data in the data directory also dictate what type of SLAM will be run: <ul><li>If the data folder does not contain a map, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).</li> <li>If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map will be used (PURE LOCALIZATION MODE/UPDATING MODE).</li> <li>If a `map_rate_sec` is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE).</li></ul>
-| sensors | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in LIVE mode. If the array is empty, SLAM runs in OFFLINE mode. |
+| `algorithm` | string | Name of the SLAM library to be used. Currently (10 Oct 2022) supported option: `orbslamv3`. |
+| `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. The data in the data directory also dictate what type of SLAM will be run: <ul><li>If the data folder does not contain a map, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).</li> <li>If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map will be used (PURE LOCALIZATION MODE/UPDATING MODE).</li> <li>If a `map_rate_sec` is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE).</li></ul>
+| `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in LIVE mode. If the array is empty, SLAM runs in OFFLINE mode. |
 
 **Optional Attributes**
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| map_rate_sec | int | Map generation rate for saving current state (in seconds). The default value is 60. If an integer is less or equal to 0 then SLAM is run in localization mode. |
-| data_rate_ms | int |  Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is 200. If 0, no new data is sent to the SLAM algorithm. |
-| input_file_pattern |  string | DISCLAIMER: Currently (10 Oct 2022) unused. File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data. |
-| port | string |  Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
-| config_params |  map[string] string | Parameters specific to the used SLAM library. |
+| `map_rate_sec` | int | Map generation rate for saving current state (in seconds). The default value is 60. If `map_rate_sec` is ` <= 0` then SLAM is run in pure localization mode. |
+| `data_rate_ms` | int |  Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is 200. If 0, no new data is sent to the SLAM algorithm. |
+| `input_file_pattern` |  string | DISCLAIMER: Currently (10 Oct 2022) unused. File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data. |
+| `port` | string |  Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
+| `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
 
 
 ### SLAM Library Specific Config Parameters
 
-The config_params is a catch-all attribute for parameters that are unique to the SLAM library being used. These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
+The `config_params` is a catch-all attribute for parameters that are unique to the SLAM library being used. These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
 
-You can find details on which inputs you can include for the available libraries in the following sections.
+You can find details on which inputs you can include for the available libraries in the following section:
+* [ORB-SLAM3](./slam.md#integrated-library-orbslam3)
 
 ## The Data Directory
 
@@ -152,13 +153,18 @@ To recap, the directory is required to be structured as follows:
 * `map` contains the generated maps, saved at `map_rate_sec`.
 * `config` contains all SLAM library specific config files. 
 
+If this directory structure is not present, the SLAM service creates it.
+
+The data in the data directory dictates what type of SLAM will be run: 
+* If the `map` subdirectory is empty, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).
+* If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map will be used (PURE LOCALIZATION MODE/UPDATING MODE).
+
 
 ## Integrated Library: OrbSLAM3
 
 ### Introduction
 
-
-OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (i.e., "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
+OrbSLAM can perform sparse SLAM using monocular or RGB-D images. This must be specified in the config_params (i.e., `"mono"` or `"rgbd"`). In addition the following variables can be added to fine-tune cartographer's algorithm, all of which are optional:
 
 ### Hardware Requirements
 
@@ -168,8 +174,11 @@ TODO[kat]
         
 | Parameter Mode | Description - The Type of SLAM to Use | Default: RGBD, Mono |
 | -------------- | ------------------------------------- | ------------------- |
-| orb_n_features | ORB parameter. Number of features per image | 1200 |
-| orb_scale_factor | ORB parameter. Scale factor between levels in the scale pyramid | 1.2 |
-| orb_n_levels | ORB parameter. Number of levels in the scale pyramid |  8 |
-| orb_n_ini_th_fast | ORB parameter. Initial FAST threshold | 20 |
-| orb_n_min_th_fast | ORB parameter. Lower threshold if no corners detected | 7 |
+| `orb_n_features` | ORB parameter. Number of features per image. | 1200 |
+| `orb_scale_factor` | ORB parameter. Scale factor between levels in the scale pyramid. | 1.2 |
+| `orb_n_levels` | ORB parameter. Number of levels in the scale pyramid. |  8 |
+| `orb_n_ini_th_fast` | ORB parameter. Initial FAST threshold. | 20 |
+| `orb_n_min_th_fast` | ORB parameter. Lower threshold if no corners detected. | 7 |
+| `stereo_th_depth` | The number of the stereo baselines we use to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | 40 |
+| `depth_map_factor` | Factor to transform the depth map to real units. | 1000 |
+| `stereo_b` | Stereo baseline in meters. | 0.0745 |
