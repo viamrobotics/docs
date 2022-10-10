@@ -1,10 +1,10 @@
 ---
-title: "Run SLAM on your robot"
+title: "Running SLAM on your Robot"
 linkTitle: "Run SLAM"
 weight: 90
 type: "docs"
 draft: false
-description: "Instructions to run SLAM with either a webcam or provided example data."
+description: "Running SLAM with either a webcam or example data."
 ---
 [SLAM](../services/slam.md) allows your robot to create a map of its surroundings, as well as find its location within that map.
 
@@ -19,7 +19,7 @@ Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/installa
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
 ## Setup
-If you haven’t already, please set up the Raspberry Pi on the [Viam App](https://app.viam.com) per [these instructions](../../getting-started/installation).
+If you haven’t already, please set up the Raspberry Pi on [Viam](https://app.viam.com) per [these instructions](../../getting-started/installation).
 
 Next, we'll install the ORB-SLAM3 binary.
 
