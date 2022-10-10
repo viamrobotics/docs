@@ -77,7 +77,7 @@ For example: motion planning and computer vision.
 
 ### Remote
 
-A remote is a server that implementats the same GRPC interfaces, including the robot service which describs what it provides.
+A remote is a server that implements the same GRPC interfaces, including the robot service which describes what it provides.
 Parts can talk to arbitrary processes to add more components by adding them as a remote.
 If a remote is added to a part, that part will that proxy all requests.
 
