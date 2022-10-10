@@ -85,7 +85,7 @@ Remotes are typically implemented with SDKs.
 
 Examples: 
 - A robot arm manufacturer has a network attached arm that implements the Viam API, so you you can add it directly to a part as a remote.
-- a POE camera implements the camera gRPC interface, so it can be added directly as a remote.
+- A POE camera implements the camera gRPC interface, so it can be added directly as a remote.
 
 ### Process
 Processes are scripts or programs run by the [Robot Development Kit (RDK)](../../appendix/glossary#rdk_anchor) whose lifecycle is managed by the viam-server.
