@@ -6,11 +6,36 @@ We’ve ported the documentation to Hugo. Hugo is more versatile than MkDocs and
 
 **Install Hugo**: [https://gohugo.io/getting-started/installing/](https://gohugo.io/getting-started/installing/)
 
-On Mac, I thought Homebrew was the easiest install method. I used Chocolatey for my Windows install.
+On Mac: 
+```
+brew install hugo
+```
 
-**Install the Docsy theme**. Please use the module method: [https://www.docsy.dev/docs/get-started/](https://www.docsy.dev/docs/get-started/)
+On windows: Chocolatey
 
-**New Doc Path**: C:\1git\tutorials-and-docs\content\en\docs
+**New Doc Path**: docs
+
+## Running Locally
+
+Run Hugo from the tutorials-and-docs directory where config.toml is located.
+
+View the Prod version:
+
+```
+hugo server
+```
+
+View the Draft version (show files marked as Draft)
+
+```
+hugo server -D
+```
+
+View the Future version (Show files marked as Future, which could allow us to prep a release’s new pages ahead of time and only show them on the release date)
+
+```
+hugo server -F
+```
 
 
 ## Important Things about Hugo
@@ -109,22 +134,4 @@ You can place the footnote text immediately beneath the paragraph where you drop
 
 Nothing extra is required. Text wrapping works as expected in Hugo.
 
-## Local Server
 
-Run Hugo from the tutorials-and-docs directory where config.toml is located.
-
-View the Prod version:
-
-hugo server
-
-View the Draft version
-
-hugo server -D
-
-This method will show files marked as Draft
-
-View the Future version
-
-hugo server -F
-
-This method will show files marked as Future, which could allow us to prep a release’s new pages ahead of time and only show them on the release date.
