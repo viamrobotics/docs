@@ -94,11 +94,13 @@ The returned detections consist of the bounding box around the found object, as 
 ### Detector Types
 The types of the detector supported are:
 
-* **color_detector**: this is a heuristic based detector that draws boxes around objects according to their hue (does not detect black and white).
+* **color_detector**: this is a heuristic based detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
 * **tflite_detector**: this a machine-learning based detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
 
 
 #### Color detector parameters
+
+NOTE: **Color detector does not detect black, gray and white. It only detects hues found on the color wheel.**
 
 * **detect_color**: the color to detect in the image, as a string of the form #RRGGBB.
 The color is written as a hexadecimal string prefixed by ‘#’.
