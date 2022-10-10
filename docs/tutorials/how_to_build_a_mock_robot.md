@@ -9,18 +9,13 @@ description: "Instructions for creating a mock robot using just your personal co
 ## Introduction
 
 In this post, we will show you how to build a mock robot using just your personal computer so you can try using Viam without any robotic hardware.
-This is a great way to learn how to build robots the Viam way.
-In this tutorial, you will have set up, controlled, and programmed a mock robotic arm using fake components.
-
-## What is the Viam way to build a robot?
-
-Viam provides an open-source robot architecture that turns complex functionality into simple APIs, with an integrated cloud service to orchestrate production deployments.
-This allows you to configure a robot in minutes, and operate it from anywhere through any common software language such as [Python](https://python.viam.dev/).
-The Viam platform manages, secures, and connects any robot.
+This is a great way to learn how to build robots [the Viam way](/getting-started/high-level-overview).
 
 Most Viam components come with a fake model that can be useful when testing.
 These are fake components that interact with the Viam software like real robotics components, but of course, do not exist as real-world hardware.
 We will be using these fake components to build out a mock robot and explore how to use Viam.
+
+In this tutorial, you will have set up, controlled, and programmed a mock robotic arm using fake components.
 
 ## What you'll need for this guide
 
@@ -28,13 +23,7 @@ We will be using these fake components to build out a mock robot and explore how
 
 -   [Python3](https://www.python.org/download/releases/3.0/)
 
--   [Pip](https://pip.pypa.io/en/stable/#)
-
--   [Viam Server](https://github.com/viamrobotics/rdk)
-
--   [Viam Python SDK](https://python.viam.dev/)
-
--   Have a code editor of your choice ready.
+-   A code editor of your choice.
 
 -   If you are running macOS, ensure you have [Homebrew](https://brew.sh/) installed and up to date on your Mac.
 
@@ -42,38 +31,15 @@ We will be using these fake components to build out a mock robot and explore how
 
 ### Set up your account on the Viam app
 
-The first thing you need to do is set up your account on the Viam App. Steps on how to do this can be found in the [Adding your robot on the Viam app](https://docs.viam.com/getting-started/installation/#adding-your-pi-on-the-viam-app) section of the Viam documentation.
+The first thing you need to do is set up your account on the Viam App. Go to [app.viam.com](https://app.viam.com) and sign up
 
-{{% alert title=\"Note\" color=\"tip\" %}}
+{{% alert title="Note" color="note" %}}
 Be sure to choose the correct system architecture at the top of the Setup tab; most Linux laptops and desktops will use x86_64.
 {{% /alert %}}
 
-### How to install Viam Server on your development machine
-
-Before you proceed with building your mock robot, you are going to need to install Viam server on your development machine.
-
--   If you are installing on a Linux-based computer, you can follow along with the [Installing Viam Server on Linux Systems](https://docs.viam.com/getting-started/linux-install/) guide in the Viam documentation.
-
--   If you are installing on a computer running macOS you will need to:
-
-     -   Set up your robot's Viam config on your Mac. You can find the **SECRET** and **ADDRESS** information on the **CONNECT* tab of your robot on the Viam App.
-
-    ```bash
-    curl -H "Secret: <insert secret>" "<insert address>" -o "$HOMEBREW_PREFIX/etc/viam.json"
-    ```
-
-     -   Install Viam via Homebrew
-
-    ```bash
-    brew install --HEAD viam-server
-    ```
-
-     -   Await connection. You should see that your robot is live on your robot's page from the Viam app.
-
 ## How to configure your mock robot in the Viam app
 
-Now that you have set up Viam server on your development machine, let's get back to setting up your mock robot in the Viam app.
-First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, navigate to the robot running the server you set up, and select the **CONFIG** tab.
+Go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, navigate to the robot running the server you set up, and select the **CONFIG** tab.
 
 ![A screenshot from the Viam app showing the CONFIG tab from the mock robot.](../img/how_to_build_a_mock_robot/image4.png)
 
@@ -85,13 +51,12 @@ Then you can name them whatever you like (You will need to reference these names
 For each **Model**, select **fake**, then click **new component**.
 
 Once the board, arm, and motor components have been created, you will need to add the fake board as a dependency of the arm and the motor using the **Depends On** field.
-This is because robot parts can depend on other components to work.
-In this instance, your mock arm and motor will be connected and controlled by the fake board.
 
-{{% alert title="Tip" color="tip" %}}
-Feel free to add any other components to your mock robot that you want to test out, like a motor or a servo.
-Just be sure that for any additional components you add, you are using the **fake** model for each.
-{{% /alert %}}
+### How to install Viam server on your computer
+
+Before you proceed with controlling your mock robot, you are going to need to install Viam server on your development machine.
+
+Follow the steps outlined on the **SETUP** tab of the Viam app in order to install Viam server on your local computer.
 
 ## Controlling your mock robot using the Viam App
 
