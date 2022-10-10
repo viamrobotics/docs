@@ -15,7 +15,7 @@ For example, a wheeled chassis and its drivetrain.
 
 **Board**: An IO board connected to a robot part used to express low-level electronics functionality such as GPIO, SPI, or I2C.
 Examples of boards include Jetson, Raspberry Pi, Numato, or Arduino.
-Boards like Jetson and Pi run the RDK and can expose the board component itself.
+Boards like Jetson and Pi run the Viam server and can expose the board component itself.
 
 **Client Application**: Client applications are what applies the business logic to operate your robot. 
 You can run a client application on the same part that runs the viam-server, or on a separate device.
