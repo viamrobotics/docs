@@ -41,6 +41,7 @@ hugo server -F
 - every sentence on a new line
 - test locally before submitting a PR
 - always submit a PR before merging
+- the authoer of PR should merge unless they cannot and it's time sensitive
 
 ## Important Things about Hugo
 
