@@ -41,7 +41,7 @@ The implemented SLAM libraries rely on the filename to know when this data was g
 
 ### Interfacing with the C++ Binary
 
-The SLAM binaries used are stored in <file>/usr/local/bin</file>. If you wish to use an updated version, copy the new binary into this directory. If you use an identical name for this new binary, you will not need to change the RDK SLAM code. If a new name is given then it must be relinked in <file>services/slam/slamlibraries.go</file> in the BinaryLocation metadata. Note: a new binary with a different name can be stored anywhere as long as it is included in your PATH.
+The SLAM binaries used are stored in <file>/usr/local/bin</file>. If you wish to use an updated version, copy the new binary into this directory. If you use an identical name for this new binary, you will not need to change the RDK SLAM code. If you use a new name for the binary, then it must be relinked in <file>services/slam/slamlibraries.go</file> in the BinaryLocation metadata. Note: a new binary with a different name can be stored anywhere as long as it is included in your PATH.
 
 
 ## **RDK Config**
