@@ -53,7 +53,7 @@ A mobile robot that has 1 Jetson and 1 Raspberry Pi is 1 robot.
 The bounds of a robot are usually pretty clear, but can be subjective. 
 
 ### Part
-Each of those computers are a _Part_. In the above example, you have 1 robot, and 2 parts (the Jetson and Pi).
+Each of those computers are a _Part_. In the above example, you have one robot, and two parts (the Jetson and the Pi).
 
 Most simple robots will likely have only 1 part, but can have as many parts as needed.
 
