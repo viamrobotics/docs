@@ -63,7 +63,7 @@ Next, follow the instructions to obtain the `intrinsic_parameters` and `distorti
 
 You will need to print out the checkerboard and take images of the checkerboard from various angles by clicking the "Export Screenshot" button.
 
-After running the calibration script, you'll get a print out of the `intrinsic_parameters` and `distortion_parameters`. We will use the values I've obtained as an example moving forward:
+After running the calibration script, you'll get a print out of the `intrinsic_parameters` and `distortion_parameters`. We will use the values we've obtained as an example moving forward:
 
 ```json
 "intrinsic_parameters": {
@@ -83,7 +83,7 @@ After running the calibration script, you'll get a print out of the `intrinsic_p
 }
 ```
 
-Copy/paste the parameters into your camera config by going into the "CONFIG" tab and clicking "Raw JSON". For me, the config now looks like this:
+Copy/paste the parameters into your camera config by going into the "CONFIG" tab and clicking "Raw JSON". For us, the config now looks like this:
 
 ```json
 {
@@ -170,7 +170,7 @@ In the config tab, click on "Raw JSON", and copy/paste the following configurati
 
 Change `YOUR_USERNAME` under `"data_dir": "/home/YOUR_USERNAME/data"` to your username that you found out by typing `pwd`.
 
-The complete configuration in my case looks now like this:
+The complete configuration in our case looks now like this:
 
 ```json
 {
@@ -233,3 +233,5 @@ The complete configuration in my case looks now like this:
   ]
 }
 ```
+
+Head over to the "CONTROL" tab, move the webcam around slowly, and watch a map come to life!
