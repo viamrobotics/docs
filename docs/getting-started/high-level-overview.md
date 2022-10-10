@@ -49,7 +49,7 @@ You can see all Viam API specifications at https://github.com/viamrobotics/api
 
 ### Robot
 A _Robot_ in Viam is 1 or more computers combined into 1 logical robot.
-A mobile robot that has 1 Jetson and 1 Raspberry Pi is 1 robot.
+A mobile robot that has one Jetson and one Raspberry Pi is one robot.
 The bounds of a robot are usually pretty clear, but can be subjective. 
 
 ### Part
