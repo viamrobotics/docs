@@ -10,8 +10,7 @@ description: "Instructions for creating a mock robot using just your personal co
 
 In this post, we will show you how to build a mock robot using just your personal computer so you can try using Viam without any robotic hardware.
 This is a great way to learn how to build robots the Viam way.
-By the end of this tutorial, you will have set up and controlled a mock robotic arm using fake components, the Viam app, and the Viam Python SDK.
-You will be able to programmatically change the state of your mock robot and see those changes reflected in real time in the Viam app.
+In this tutorial, you will have set up, controlled, and programmed a mock robotic arm using fake components.
 
 ## What is the Viam way to build a robot?
 
@@ -19,7 +18,7 @@ Viam provides an open-source robot architecture that turns complex functionality
 This allows you to configure a robot in minutes, and operate it from anywhere through any common software language such as [Python](https://python.viam.dev/).
 The Viam platform manages, secures, and connects any robot.
 
-Most Viam components come with a fake model that can be useful when building out mock Viam components.
+Most Viam components come with a fake model that can be useful when testing.
 These are fake components that interact with the Viam software like real robotics components, but of course, do not exist as real-world hardware.
 We will be using these fake components to build out a mock robot and explore how to use Viam.
 
@@ -35,7 +34,7 @@ We will be using these fake components to build out a mock robot and explore how
 
 -   [Viam Python SDK](https://python.viam.dev/)
 
--   Install [Visual Studio Code](https://code.visualstudio.com/) or a code editor of your choice.
+-   Have a code editor of your choice ready.
 
 -   If you are running macOS, ensure you have [Homebrew](https://brew.sh/) installed and up to date on your Mac.
 
