@@ -57,7 +57,7 @@ Before you proceed with building your mock robot, you are going to need to insta
 
 -   If you are installing on a computer running macOS you will need to:
 
-    -   Step 1: Set up your robot's Viam config on your Mac. You can find the **SECRET** and **ADDRESS** information on the "Connect" tab of your robot on the Viam App.
+    -   Step 1: Set up your robot's Viam config on your Mac. You can find the **SECRET** and **ADDRESS** information on the **CONNECT* tab of your robot on the Viam App.
 
 ```bash
 curl -H "Secret: <insert secret>" "<insert address>" -o "$HOMEBREW_PREFIX/etc/viam.json"
