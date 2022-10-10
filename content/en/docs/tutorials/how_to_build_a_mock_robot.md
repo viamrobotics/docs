@@ -84,7 +84,7 @@ Feel free to add any other components to your mock robot that you want to test o
 
 When you add the fake board and arm components to your robot, the Viam app automatically generates tabs for your board and arm under the **CONTROL** tab.
 
-## ![Screenshot from the Viam app showing the CONTROL tab with the fake board, arm, and motor components.](../img/how_to_build_a_mock_robot/image3.png)
+![Screenshot from the Viam app showing the CONTROL tab with the fake board, arm, and motor components.](../img/how_to_build_a_mock_robot/image3.png)
 
 If you were configuring a real robotic arm and motor, you would be able to control it from this section of the app. You could do things like control the direction and speed of the motor, and change the joint positions of your robotic arm. However, since we are building a mock robot using fake components, you will only see the robot's reported positions and speeds change from the UI. You will not be able to see your robot move in the physical world.
 
