@@ -94,106 +94,39 @@ The combination of configuration parameters define the behavior of the running S
 
 **Live vs. Offline Mode**
 
-<table>
-  <tr>
-    <th>Mode</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>Live</td>
-    <td>SLAM runs in live mode if one or more `sensors` are provided. Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM.</td>
-  </tr>
-  <tr>
-    <td>Offline</td>
-    <td>SLAM runs in offline mode if `sensors: []` is empty. This means it will look for and process images that are already saved in the `data_dir` directory, or more specifically in `<path_to_your_data_folder>/data`.</td>
-  </tr>
-</table>
+| Mode | Description |
+| ---- | ----------- |
+| Live | SLAM runs in live mode if one or more `sensors` are provided. Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM. |
+| Offline | SLAM runs in offline mode if `sensors: []` is empty. This means it will look for and process images that are already saved in the `data_dir` directory, or more specifically in `<path_to_your_data_folder>/data`. |
+
 
 **Pure Mapping, Pure Localization, and Update Mode**
-<table>
-  <tr>
-    <th>Mode</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>Pure Mapping</td>
-    <td>TODO[kat]</td>
-  </tr>
-  <tr>
-    <td>Pure Localization</td>
-    <td>TODO[kat]</td>
-  </tr>
-  <tr>
-    <td>Updating</td>
-    <td>TODO[kat]</td>
-  </tr>
-</table>
+
+| Mode | Description |
+| ---- | ----------- |
+| Pure Mapping | TODO[kat] |
+| Pure Localization | TODO[kat] |
+| Updating | TODO[kat] |
 
 ### General Config Parameters
 **Required Attributes**
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Data Type</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>algorithm</td>
-    <td>string</td>
-    <td>Name of the SLAM library to be used. Currently (10 Oct 2022) supported option: orbslamv3.</td>
-  </tr>
-  <tr>
-    <td>data_dir</td>
-    <td>string</td>
-    <td>This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. The data in the data directory also dictate what type of SLAM will be run:
-    <ul>
-      <li>If the data folder does not contain a map, the SLAM algorithm generates a new map using all the provided data. (PURE MAPPING MODE)</li>
-      <li>If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map will be used. (PURE LOCALIZATION MODE/UPDATING MODE)</li>
-      <li>If a `map_rate_sec` is provided, then the system will overlay new data on any given map. (PURE MAPPING MODE/UPDATING MODE)</li>
-    </ul>
-</td>
-  </tr>
-  <tr>
-    <td>sensors</td>
-    <td>string[]</td>
-    <td>Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in LIVE mode. If the array is empty, SLAM runs in OFFLINE mode.</td>
-  </tr>
-</table>
+| Name | Data Type | Description |
+| ---- | --------- | ----------- |
+| algorithm | string | Name of the SLAM library to be used. Currently (10 Oct 2022) supported option: orbslamv3. |
+| data_dir | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. The data in the data directory also dictate what type of SLAM will be run: <ul><li>If the data folder does not contain a map, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).</li> <li>If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map will be used (PURE LOCALIZATION MODE/UPDATING MODE).</li> <li>If a `map_rate_sec` is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE).</li></ul>
+| sensors | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in LIVE mode. If the array is empty, SLAM runs in OFFLINE mode. |
 
 **Optional Attributes**
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Data Type</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>map_rate_sec</td>
-    <td>int</td>
-    <td>Map generation rate for saving current state (in seconds). The default value is 60. If an integer is less or equal to 0 then SLAM is run in localization mode.</td>
-  </tr>
-  <tr>
-    <td>data_rate_ms</td>
-    <td>int</td>
-    <td>Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is 200. If 0, no new data is sent to the SLAM algorithm.</td>
-  </tr>
-  <tr>
-    <td>input_file_pattern</td>
-    <td>string</td>
-    <td>DISCLAIMER: Currently (10 Oct 2022) unused. File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data.</td>
-  </tr>
-  <tr>
-    <td>port</td>
-    <td>string</td>
-    <td>Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned.</td>
-  </tr>
-  <tr>
-    <td>config_params</td>
-    <td>map[string] string</td>
-    <td>Parameters specific to the used SLAM library.</td>
-  </tr>
-</table>
+
+| Name | Data Type | Description |
+| ---- | --------- | ----------- |
+| map_rate_sec | int | Map generation rate for saving current state (in seconds). The default value is 60. If an integer is less or equal to 0 then SLAM is run in localization mode. |
+| data_rate_ms | int |  Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is 200. If 0, no new data is sent to the SLAM algorithm. |
+| input_file_pattern |  string | DISCLAIMER: Currently (10 Oct 2022) unused. File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data. |
+| port | string |  Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
+| config_params |  map[string] string | Parameters specific to the used SLAM library. |
+
 
 ### SLAM Library Specific Config Parameters
 
@@ -232,38 +165,11 @@ OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); th
 TODO[kat]
 
 ### Configuration Overview
-<table>
-    <tr>
-        <th>Parameter Mode</th>
-        <th style="width:40%">Description - The Type of SLAM to Use</th>
-        <th>Default:<br>
-        RGBD, Mono</th>
-    </tr>
-    <tr>
-        <td>orb_n_features</td>
-        <td>ORB parameter. Number of features per image</td>
-        <td>1200</td>
-    </tr>
-    <tr>
-        <td>orb_scale_factor</td>
-        <td>ORB parameter. Scale factor between levels in the scale
-         pyramid</td>
-        <td>1.2</td>
-    </tr>
-    <tr>
-        <td>orb_n_levels</td>
-        <td>ORB parameter. Number of levels in the scale pyramid</td>
-        <td>8</td>
-    </tr>
-    <tr>
-        <td>orb_n_ini_th_fast</td>
-        <td>ORB parameter. Initial FAST threshold</td>
-        <td>20</td>
-    </tr>
-    <tr>
-        <td>orb_n_min_th_fast</td>
-        <td>ORB parameter. Lower threshold if no corners detected</td>
-        <td>7</td>
-
-</table>
-
+        
+| Parameter Mode | Description - The Type of SLAM to Use | Default: RGBD, Mono |
+| -------------- | ------------------------------------- | ------------------- |
+| orb_n_features | ORB parameter. Number of features per image | 1200 |
+| orb_scale_factor | ORB parameter. Scale factor between levels in the scale pyramid | 1.2 |
+| orb_n_levels | ORB parameter. Number of levels in the scale pyramid |  8 |
+| orb_n_ini_th_fast | ORB parameter. Initial FAST threshold | 20 |
+| orb_n_min_th_fast | ORB parameter. Lower threshold if no corners detected | 7 |
