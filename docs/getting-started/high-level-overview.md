@@ -39,9 +39,9 @@ All communication across Viam is done with gRPC[^grpc], directly if wanted, or v
 [^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC)" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
 
 There are three buckets of APIs
-- [Components](/components)
-- [Services](/services)
-- Cloud Application
+- [Components](/components) - e.g. motors, arms, gps 
+- [Services](/services) - computer vision, motion planning, slam
+- Cloud Application - fleet management, data management
 
 You can see all Viam API specifications at https://github.com/viamrobotics/api
 
