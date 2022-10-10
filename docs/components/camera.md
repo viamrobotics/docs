@@ -250,7 +250,14 @@ Overlay overlays the depth and color 2D images. Useful in order to debug the ali
 {
 	"type": "overlay",
 	"attributes": {
-		# no attributes
+		"intrinsic_parameters": {
+			"width_px": int,
+			"height_px": int,
+			"ppx": float, # the image center x point
+			"ppy": float, # the image center y point
+			"fx": float, # the image focal x
+			"fy": float, # the image focal y
+        }
 	}
 }
 ```
