@@ -6,7 +6,7 @@ type: "docs"
 draft: true
 description: "Instructions to run SLAM with either a webcam or provided example data."
 ---
-[SLAM](https://docs.viam.com/services/slam/) allows your robot to create a map of its surroundings, as well as find its location within that map.
+[SLAM](../services/slam.md) allows your robot to create a map of its surroundings, as well as find its location within that map.
 
 This tutorial shows you how to run ORB-SLAM3 on your robot. You have two choices:
 * Run SLAM in online mode with a webcam. The webcam can be installed on a robot, or just be held by hand.
