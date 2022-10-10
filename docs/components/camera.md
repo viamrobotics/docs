@@ -51,7 +51,7 @@ Follow the instructions for <a href="https://github.com/viam-labs/camera-calibra
 
 ### Webcam
 
-webcam is a model that streams the camera data from a camera connected to the hardware. The discovery service will help set up this model, usually.
+`webcam` is a model that streams the camera data from a camera connected to the hardware. The discovery service will help set up this model, usually.
 
 ```json
 {
