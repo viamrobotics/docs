@@ -99,7 +99,7 @@ SDKs are used for:
 - writing your application code for building your robot to interact with the components and services
 - implementing drivers for hardware not yet supported
 
-We currently have SDKs for go, Python, Typescript, and Tust. With many more coming soon including c++ and flutter
+We currently have SDKs for go, Python, Typescript, and Rust. With many more coming soon including c++ and flutter
 
 ## Pictures
 
