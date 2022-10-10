@@ -55,7 +55,7 @@ The bounds of a robot are usually pretty clear, but can be subjective.
 ### Part
 Each of those computers are a _Part_. In the above example, you have one robot, and two parts (the Jetson and the Pi).
 
-Most simple robots will likely have only 1 part, but can have as many parts as needed.
+Most simple robots will have only one part, but can have as many parts as needed.
 
 Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
 You can access any sub-part either directly, or via any part above it in the tree.
