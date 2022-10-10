@@ -33,7 +33,7 @@ Locations allow organizations to organize and manage their fleets.
 Organizations often contain several locations.
 
 For example, Cool Robot Inc, which is one organization, may have three warehouses (in NYC, LA, and Chicago).
-Cool Robot Inc could organize its robots into three locations based on their physical presence in a given warehouse. 
+Cool Robot Inc could organize its robots into three locations based on their physical presence in a given warehouse. Another option would be to organize robots into locations with names such as "Production" and "Testing"--locations do not have to correspond with physical locations.
 
 
 ## Configuration/logging
