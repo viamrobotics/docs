@@ -57,19 +57,19 @@ Before you proceed with building your mock robot, you are going to need to insta
 
 -   If you are installing on a computer running macOS you will need to:
 
-    -   Step 1: Set up your robot's Viam config on your Mac. You can find the **SECRET** and **ADDRESS** information on the **CONNECT* tab of your robot on the Viam App.
+     -   Set up your robot's Viam config on your Mac. You can find the **SECRET** and **ADDRESS** information on the **CONNECT* tab of your robot on the Viam App.
 
-```bash
-curl -H "Secret: <insert secret>" "<insert address>" -o "$HOMEBREW_PREFIX/etc/viam.json"
-```
+    ```bash
+    curl -H "Secret: <insert secret>" "<insert address>" -o "$HOMEBREW_PREFIX/etc/viam.json"
+    ```
 
--   Step 2: Install Viam via Homebrew
+     -   Install Viam via Homebrew
 
-```bash
-brew install --HEAD viam-server
-```
+    ```bash
+    brew install --HEAD viam-server
+    ```
 
--   Step 3: Await connection.You should see that your robot is live on your robot's page from the Viam app.
+     -   Await connection.You should see that your robot is live on your robot's page from the Viam app.
 
 ## How to configure your mock robot in the Viam app
 
