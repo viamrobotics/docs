@@ -59,7 +59,7 @@ If this doesn't work, you can manually add the camera path (with the correct pat
 
 ```JSON
 {
-    "path": "video0"
+    "video_path": "video0"
 }
 ```
 You can ignore or even delete any other auto-populated camera attributes; the defaults should be fine here.
@@ -76,7 +76,7 @@ Or if you prefer the raw JSON:
       "type": "camera",
       "model": "webcam",
       "attributes": {
-        "path": "video0"
+        "video_path": "video0"
       },
       "depends_on": []
     }
@@ -127,7 +127,7 @@ Below is an example JSON file that includes the board, base and camera component
     },
     {
       "attributes": {
-        "video_path_pattern": "video0"
+        "video_path": "video0"
       },
       "depends_on": [
         "follow-pi"
