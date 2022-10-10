@@ -3,32 +3,38 @@ title: "Fleet Management"
 linkTitle: "Fleet Management"
 weight: 30
 type: "docs"
-description: "A guide to the Viam App's Fleet Management and robot configuration/control functionality"
+description: "Manage your robot's in the cloud"
 ---
 
-## Cloud App
-Users and organizations store, manage, and control their robotic fleets on the website ([https://app.viam.com](https://app.viam.com)).
+Viam's Fleet management allows engineers to configure, control, debug, and manage their robots from the cloud at ([https://app.viam.com](https://app.viam.com)).
+
+Once you sign up, you can configure your first robot, connect your robot to the cloud, see the logs, control it, update the configuration, and then start bringing your robot to life.
 
 All communication happen securely over HTTPS using secret tokens that are in the robot's configuration.
 
+## Robot Hierarchy
 
-## Organization
-On Viam ([https://app.viam.com](https://app.viam.com)), robots belong to organizations.
-An organization can be an individual, a research group, or a company.
+Whether you have 1 robot, or millions, you can manage them with Viam.
+You organize your robots into Organizations and locations.
 
-A user can be a member of multiple organizations, but will always be a member of at least one organization.
+### Organization
+An organization is the highest level grouping.
+It typical would be a company, or other institution, but could also be an individual or department depending on your needs.
 
-Currently, any member of an organization can invite new users to that organization.
-Additionally, users can create additional organizations at any point in time.
-For example, if a user has robots at home, and also has robots at school, that user would likely belong to two organizations to keep those use cases separate (a home organization and also a school organization).
+Users in Viam, as defined by an email address, can be a member of multiple organizations.
+
+Member of an organization can invite new users to that organization or  create additional organizations at any point in time.
+
+For example, if you have personal robots at home, and also robots at school, you would belong to two organizations to keep those use cases separate.
 
 ## Locations
-Locations live within organizations. All robots belong to a location.
+All robots live inside of a locations, wihich live within organizations. 
 Locations allow organizations to organize and manage their fleets.
 Organizations often contain several locations.
-For example, Cool Robot Inc, which is one organization, may have three warehouses (in NYC, LA, and Chicago). Cool Robot Inc could organize its robots into three locations based on their physical presence in a given warehouse. 
-With that said, locations do not need to align with physical locations in the real world. Locations are simply a way to subdivide and manage robot fleets.
-For example, some users may choose to use locations with names such as "production" and "testing" to separate their robots by development stage (rather than by physical location).
+
+For example, Cool Robot Inc, which is one organization, may have three warehouses (in NYC, LA, and Chicago).
+Cool Robot Inc could organize its robots into three locations based on their physical presence in a given warehouse. 
+
 
 ## Configuration/logging
 When a robot part first comes online, it requests its configuration from the Viam App ([https://app.viam.com](https://app.viam.com)).
