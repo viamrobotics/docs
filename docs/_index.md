@@ -67,11 +67,12 @@ tr:nth-child(even) {
   <div class="column">
     <table>
       <tr>
-        <td><iframe width="640" height="360" src="https://www.youtube.com/embed/TjmvnEdNVKs" title="Viam Intro Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+        <td><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs" target="_blank">Click to view our Founder's Message<img src="../img/eliot-vid-thumb.png" style="border: 1px solid black"> <span style="font-size:xx-small" </span> (Link opens in new tab)</a></td>
       </tr>
     </table>
   </div>
 </div>
+
 
 
 ## Tutorials
