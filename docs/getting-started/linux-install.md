@@ -24,7 +24,7 @@ Determine the CPU architecture (x86_64 or aarch64) of the target device by runni
 
 Choose which URL to download from the list above. Run the following command ([**with the correct URL**](#urls)) to both download it and rename it to "viam-server" for ease of use:
 ```bash
-sudo curl -o viam-server http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage
+curl -o viam-server http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage
 ```
 Make the file executable by running:
 ```bash
