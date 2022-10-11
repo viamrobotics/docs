@@ -93,14 +93,15 @@ Other tutorials
 
 ## Components - Pieces of hardware in your robot
 - [Arm](/components/arm)
+- [Base](/components/base) - a mobile robot base, examples: wheeled, tracked, boat, drone
 - [Board](/components/board)
 - [Camera](/components/camera)
-- [Motor](/components/motor)
-- [Servo](/components/servo)
 - [Encoder](/components/encoder)
-- [Base](/components/base) - a mobile robot base, examples: wheeled, tracked, boat, drone
+- [Gantry](/components/gantry)
 - [Input Controller](/components/input-controller)
+- [Motor](/components/motor)
 - [Sensor](/components/sensor)
+- [Servo](/components/servo)
 
 ## Services - Higher level software-only APIs
 - [Robot Service](/services/robot-service) - meta data about a robot and robot level operations
