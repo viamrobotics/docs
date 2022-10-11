@@ -25,7 +25,7 @@ If a robot is restarted with the same config, capture will automatically continu
 
 ## Data Sychronization to the Cloud
 Synchronization runs in the background and is uploaded to Viam's cloud at a predefined frequency.
-Files are streamed in a way that if the internet connection gets interrupted or a robot restarts in the middle of a file upload, synchronization will resume from where it left off mid-file.
+Files are streamed such that if the internet connection gets interrupted or a robot restarts in the middle of a file upload, synchronization will resume from where it left off mid-file.
 If a robot is restarted with the same config, synchronization will automatically continue.
 If upload fails, the service will exponentially retry uploading it for up to an hour.
 
