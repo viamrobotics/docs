@@ -69,8 +69,6 @@ If you're signing up without an invitation link, go to [app.viam.com](https://ap
 Click the drop down in the upper right corner of the page.
 You should see your name, email and a list of organizations you belong to.
 
-![org-drop-down](../img/org-drop-down.png)
-
 If you used an email invite to sign up, the organization that invited you should be listed here.
 You also have a personal organization for projects not associated with other organizations.
 
@@ -108,7 +106,7 @@ If you've connected your robot to a machine running viam-server (instructions be
 The following tabs are found on the robot page:
 
 #### Setup
-The **Setup** tab contains information for starting an instance of viam-server on your robot's computer. (See [more in-depth install instructions for Linux here](../getting-started/linux-install.md).) Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
+The **Setup** tab contains information for starting an instance of viam-server on your robot's computer. ([See more in-depth install instructions for Linux here](../../getting-started/linux-install).) Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
 
 #### Config
 Here you can start adding robot components, services and remotes.
@@ -118,10 +116,10 @@ Builder provides a more graphical UI with added features such as a built-in webc
 Raw JSON mode can be useful for users who are familiar with writing JSON, and for seeing and editing everything at once.
 
 Details on configuring specific hardware components and services can be found in these docs:
-- [Components](../components/)
-- [Services](../services/)
+- [Components](../../components/)
+- [Services](../../services/)
 
-For a step-by-step walkthrough of setting up an example robot, [check out this tutorial](../tutorials/).
+For a step-by-step walkthrough of setting up an example robot, [check out this tutorial](../../tutorials/).
 
 #### Logs
 This tab displays debug and other logging information from your robot.
@@ -136,5 +134,6 @@ This tab contains boilerplate code snippets you can copy and paste into your SDK
 The Control tab allows you to control your robot using an interface for each component of your robot. This is done via WebRTC. For example, if you have configured a base with wheels, you can control your robot's movement with an arrow pad and fields to change base’s speed. If you have configured a camera component, a window in the Control tab displays the camera output.
 
 #### Blockly
-_(Experimental!)_
+_**(Experimental!)**_
+
 This tab gives you the option of working on customizing your robot's functionality by using Viam’s block-based coding editor which implements Blockly and Python.
