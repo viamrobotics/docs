@@ -24,7 +24,7 @@ Client applications typically use an SDK to talk to their robot.
 **Component**: A resource that represents a physical component in a robot; for example, a servo, camera, or an arm.
 
 **Fragment**: A reusable configuration block representing a common hardware pattern.
-For example, imagine you are deploying a specific mobile robot that is always physically connected the same way, you can create a fragment to make managing your fleet easily.
+For example, if you are deploying a specific mobile robot that is always physically connected the same way, you can create a fragment to make managing your fleet easy.
 
 **Frame**: A single element of a Frame System.
 A frame represents a coordinate system that is used to describe position and orientation.
