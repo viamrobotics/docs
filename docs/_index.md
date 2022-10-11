@@ -47,7 +47,7 @@ Other tutorials
 - [Input Controller](/components/input-controller)
 - [Sensor](/components/sensor)
 
-## Services - Higher level software only APIs
+## Services - Higher level software-only APIs
 - [Robot Service](/services/robot-service) - meta data about a robot and robot level operations
 - [Vision](/services/vision)
 - [Motion](/services/motion)
