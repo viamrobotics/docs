@@ -36,33 +36,34 @@ Other tutorials
 - [Building a Line-Following Robot with a Rover and a Camera](/tutorials/webcam-line-follower-robot/)
 - [All Tutorials](/tutorials/)
 
-## Components
-- [Arm](../components/arm)
-- [Board](../components/board)
-- [Camera](../components/camera)
-- [Motor](../components/motor)
-- [Servo](../components/servo)
-- [Encoder](../components/encoder)
-- [Base](../components/base)
-- [Input Controller](../components/input-controller)
-- [Sensor](../components/sensor)
+## Components - Pieces of hardware in your robot
+- [Arm](/components/arm)
+- [Board](/components/board)
+- [Camera](/components/camera)
+- [Motor](/components/motor)
+- [Servo](/components/servo)
+- [Encoder](/components/encoder)
+- [Base](/components/base) - a mobile robot base, examples: wheeled, tracked, boat, drone, 
+- [Input Controller](/components/input-controller)
+- [Sensor](/components/sensor)
 
-## Services
-- [Vision](../services/vision)
-- [Motion](../services/motion)
-- [Data Capture](../services/data-capture)
-- [Simultaneous Localization and Mapping (SLAM)](../services/slam)  
-- [Robot Service](../services/robot-service)
+## Services - Higher level software only APIs
+- [Robot Service](/services/robot-service) - meta data about a robot and robot level operations
+- [Vision](/services/vision)
+- [Motion](/services/motion)
+- [Data Capture](/services/data-capture)
+- [Simultaneous Localization and Mapping (SLAM)](/services/slam)
+
 
 ## Deep Dives
-- [End-to-End Flow](../deeper-dive/robot-to-robot-comms)
-- [Authentication](../deeper-dive/security)
+- [End-to-End Flow](/deeper-dive/robot-to-robot-comms)
+- [Authentication](/deeper-dive/security)
 
 ## Appendix
-- [Glossary](../appendix/glossary)
-- [Orientation Vector](../appendix/orientation-vector)
-- [Troubleshooting](../appendix/troubleshooting)
-- [Learning Resources](../appendix/learning-resources)
+- [Glossary](/appendix/glossary)
+- [Orientation Vector](/appendix/orientation-vector)
+- [Troubleshooting](/appendix/troubleshooting)
+- [Learning Resources](/appendix/learning-resources)
 
 ## SDKs
 - [Python SDK](https://python.viam.dev/)
