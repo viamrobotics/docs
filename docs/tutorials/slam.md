@@ -157,7 +157,7 @@ In the config tab, click on "Raw JSON", and copy/paste the following configurati
           "debug": "false",
           "orb_scale_factor": "1.2",
           "mode": "mono",
-          "orb_n_features": "3000",
+          "orb_n_features": "1250",
           "orb_n_ini_th_fast": "20",
           "orb_n_levels": "8",
           "orb_n_min_th_fast": "7"
@@ -222,7 +222,7 @@ The complete configuration in our case looks now like this:
           "debug": "false",
           "orb_scale_factor": "1.2",
           "mode": "mono",
-          "orb_n_features": "3000",
+          "orb_n_features": "1250",
           "orb_n_ini_th_fast": "20",
           "orb_n_levels": "8",
           "orb_n_min_th_fast": "7"

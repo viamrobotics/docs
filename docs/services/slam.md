@@ -26,7 +26,7 @@ As of 11 October 2022, the following SLAM library is integrated:
 
 
 ### Coming Soon
-* `map_rate_sec`: A value of `map_rate_sec: 0` is currently (10 Oct 2022) set to disable map saving altogether. In the near future, Viam plans to change this behavior to enable "localization only mode".
+* `map_rate_sec`: A value of `map_rate_sec: -1` is currently (10 Oct 2022) set to disable map saving altogether. In the near future, Viam plans to change this behavior to enable "localization only mode".
 * Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`. We append the timestamp to each filename prior to saving images, maps, and *.yaml files. We will be updating the timestamp format to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
 
 ## Requirements
@@ -106,8 +106,8 @@ The combination of configuration parameters and existing data in the `data_dir` 
 | Mode | Description |
 | ---- | ----------- |
 | PURE MAPPING | In the PURE MAPPING MODE, a new map is generated from scratch. This mode is triggered if no map is found in the `data_dir/data` directory. |
-| PURE LOCALIZATION | DISCLAIMER: Currently unsupported. In the PURE LOCALIZATION MODE, an existing map is used together with new data to determine the robots location within the map. This mode is triggered if a map is found in the `data_dir/map` directory, and if `map_rate_sec` is set to `0`. |
-| UPDATING | In UPDATING MODE, an existing map is being changed and updated with new data. This mode is triggered if a map is found in the `data_dir/map` directory and `map_rate_sec` is set to a larger than `0`.|
+| PURE LOCALIZATION | DISCLAIMER: Currently unsupported. In the PURE LOCALIZATION MODE, an existing map is used together with new data to determine the robots location within the map. This mode is triggered if a map is found in the `data_dir/map` directory, and if `map_rate_sec` is set to `-1`. |
+| UPDATING | In UPDATING MODE, an existing map is being changed and updated with new data. This mode is triggered if a map is found in the `data_dir/map` directory and `map_rate_sec` is set to larger than or equal to `0`. Note: A value of `0` for the `map_rate_sec` is going to be reset to its default value of `60`.|
 
 ### General Config Parameters
 **Required Attributes**
@@ -115,15 +115,15 @@ The combination of configuration parameters and existing data in the `data_dir` 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
 | `algorithm` | string | Name of the SLAM library to be used. Currently (10 Oct 2022) supported option: `orbslamv3`. |
-| `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. The data in the data directory also dictate what type of SLAM will be run: <ul><li>If the data folder does not contain a map, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).</li> <li>If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (PURE LOCALIZATION MODE/UPDATING MODE).</li> <li>If a `map_rate_sec` is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE).</li></ul>
+| `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. The data in the data directory also dictate what type of SLAM will be run: <ul><li>If the data folder does not contain a map, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).</li> <li>If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (PURE LOCALIZATION MODE/UPDATING MODE).</li> <li>If a `map_rate_sec >= 0` is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE).</li></ul>
 | `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in LIVE mode. If the array is empty, SLAM runs in OFFLINE mode. |
 
 **Optional Attributes**
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `map_rate_sec` | int | Map generation rate for saving current state (in seconds). The default value is 60. If `map_rate_sec` is ` <= 0` then SLAM is run in pure localization mode. |
-| `data_rate_ms` | int |  Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is 200. If 0, no new data is sent to the SLAM algorithm. |
+| `map_rate_sec` | int | Map generation rate for saving current state (in seconds). The default value is `60`. If `map_rate_sec` is equal to `-1` then SLAM is run in pure localization mode. Note: A value of `0` will be reset to the default value of `60`.|
+| `data_rate_ms` | int |  Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. If `0`, no new data is sent to the SLAM algorithm. |
 | `input_file_pattern` |  string | DISCLAIMER: Currently (10 Oct 2022) unused. File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data. |
 | `port` | string |  Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
@@ -150,7 +150,7 @@ To recap, the directory is required to be structured as follows:
     └── config
 </pre>
 
-* `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `map_rate_sec`.
+* `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `data_rate_ms`.
 * `map` contains the generated maps, saved at `map_rate_sec`.
 * `config` contains all SLAM library specific config files. 
 
@@ -200,7 +200,7 @@ In addition the following variables can be added to fine-tune cartographer's alg
 | -------------- | ------------------------------------- | ------------------- |
 | `mode` | `rgbd` or `mono` | No default |
 | `debug` | `bool` | `false` |
-| `orb_n_features` | ORB parameter. Number of features per image. | 1200 |
+| `orb_n_features` | ORB parameter. Number of features per image. | 1250 |
 | `orb_scale_factor` | ORB parameter. Scale factor between levels in the scale pyramid. | 1.2 |
 | `orb_n_levels` | ORB parameter. Number of levels in the scale pyramid. |  8 |
 | `orb_n_ini_th_fast` | ORB parameter. Initial FAST threshold. | 20 |
