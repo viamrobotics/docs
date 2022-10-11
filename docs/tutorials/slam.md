@@ -55,15 +55,33 @@ The configuration of SLAM happens in two steps:
 2. Add SLAM to the existing configuration.
 
 #### Add a webcam and calibrate it
-First, you will need to add a webcam to your configuration. Configure the webcam by clicking on the "CONFIG" tab. Go to the Builder, and add a component of Type "camera" and Model "webcam", and name it "color".
+First, you will need to add a webcam to your configuration. Configure the webcam by clicking on the **CONFIG** tab. Go to the Builder, and create a component with **Name** "color" of **Type** "camera" and **Model** "webcam".
 
-Go to the "CONTROL" tab, and click on the "color" dropdown menu. Toggle "View Camera" and make sure you can see the live video feed of your camera.
+<img src="../img/run_slam/01_slam_tutorial_builder.png" width="700"><br>
+
+Once you'll click on the "Create Component" button, you'll see a view on the component that looks like this:
+
+<img src="../img/run_slam/02_slam_tutorial_config.png" width="700"><br>
+
+Manually add the camera path to the camera's attributes. A good bet is often `video0`: 
+
+```json
+{
+    "video_path": "video0"
+}
+```
+
+Go to the **CONTROL** tab, and click on the "color" dropdown menu. Toggle "View Camera" and make sure you can see the live video feed of your camera.
+
+<img src="../img/run_slam/03_slam_tutorial_image.png" width="700px"><br>
 
 Next, follow the instructions to obtain the `intrinsic_parameters` and `distortion_parameters` as described in the [camera documentation](../../components/camera#camera-models) and this [camera calibration repository](https://github.com/viam-labs/camera-calibration).
 
-You will need to print out the checkerboard and take images of the checkerboard from various angles by clicking the "Export Screenshot" button.
+You will need to print out the checkerboard and take images of the checkerboard from various angles by clicking the "Export Screenshot" button.  
 
-After running the calibration script, you'll get a print out of the `intrinsic_parameters` and `distortion_parameters`. We will use the values we've obtained as an example moving forward:
+TODO[kat]: Add troubleshoot section that describes how to work around the broken "Export Screenshot" button.
+
+After running the calibration script from the [camera calibration repository](https://github.com/viam-labs/camera-calibration), you'll get a print out of the `intrinsic_parameters` and `distortion_parameters`. We will use the values we've obtained as an example moving forward:
 
 ```json
 "intrinsic_parameters": {
@@ -83,7 +101,18 @@ After running the calibration script, you'll get a print out of the `intrinsic_p
 }
 ```
 
-Copy/paste the parameters into your camera config by going into the "CONFIG" tab and clicking "Raw JSON". For us, the config now looks like this:
+Copy/paste the parameters into your camera config by going into the **CONFIG** tab and clicking "Raw JSON".
+
+<img src="../img/run_slam/04_slam_tutorial_copy_paste.png" width="800px"><br>
+
+Make sure to update the `width_px` and `height_px`in `attributes` to match the `width_px` and `height_px` as defined within `intrinsic_parameters`, which are in our case:
+
+```json
+"height_px": 480,
+"width_px": 640,
+```
+
+For us, the config now looks like this:
 
 ```json
 {
@@ -113,20 +142,13 @@ Copy/paste the parameters into your camera config by going into the "CONFIG" tab
         "format": "",
         "path": "video0",
         "path_pattern": "",
-        "width_px": 0,
-        "height_px": 0
+        "width_px": 640,
+        "height_px": 480
       },
       "depends_on": []
     }
   ]
 }
-```
-
-Make sure to update the `width_px` and `height_px`in `attributes` to match the `width_px` and `height_px` as defined within `intrinsic_parameters`, which are in our case:
-
-```json
-"height_px": 480,
-"width_px": 640,
 ```
 
 
@@ -138,7 +160,7 @@ YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
 ```
 
-In the config tab, click on "Raw JSON", and copy/paste the following configuration:
+In the CONFIG tab, click on "Raw JSON", and copy/paste the following configuration:
 
 ```json
   "services": [
@@ -200,8 +222,8 @@ The complete configuration in our case looks now like this:
         "format": "",
         "path": "video0",
         "path_pattern": "",
-        "width_px": 0,
-        "height_px": 0
+        "width_px": 640,
+        "height_px": 480
       },
       "depends_on": []
     }
@@ -234,4 +256,21 @@ The complete configuration in our case looks now like this:
 }
 ```
 
-Head over to the "CONTROL" tab, move the webcam around slowly, and watch a map come to life!
+Head over to the **CONTROL** tab, choose the "test-slam" drop-down menu, move the webcam around slowly, and watch a map come to life!
+
+{{% alert title="Note" color="note" %}}  
+It might take a couple of minutes before the first map is created and can be shown in the UI. Keep moving the camera slowly within your space and wait for the map to get created.
+{{% /alert %}}
+
+## Running ORB-SLAM3 with a dataset
+The following setup allows you to run ORB-SLAM3 in offline mode using either a previously saved dataset.
+
+### The dataset
+This part of the tutorial assumes that you have a RGB data saved in your `data_dir/data` directory. SLAM will use this data to create a map. If you don't have your own data saved from previous runs, you can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-office-hallway-1-rgbd.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
+
+If you're running SLAM on your RPI, you can copy/paste that dataset
+
+TODO[kat]: Complete the tutorial
+
+
+### Configuration using Viam
