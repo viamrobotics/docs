@@ -38,6 +38,7 @@ hugo server -F
 ```
 
 ## Notes for those editing docs
+- don't make forks on the main repo, do in your own fork
 - every sentence on a new line
 - test locally before submitting a PR
 - always submit a PR before merging
