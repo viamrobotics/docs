@@ -8,22 +8,23 @@ description: "A glossary of robotics and Viam-specific jargon."
 
 ## Viam-specific definitions
 
-**Attribute**: A configuration parameter of a resource specific to a model.
+**Attribute**: A configuration parameter of a resource.
 
 **Base**: A physical, mobile component to which other components are typically mounted.
-For example, a wheeled chassis and its drivetrain.
+For example, a wheeled rover, boat, or flying drone.
 
-**Board**: An IO board connected to a robot part used to express low-level electronics functionality such as GPIO, SPI, or I2C.
+**Board**: An IO board that is, or is connected to, a robot part and used to express low-level electronics functionality such as GPIO, SPI, or I2C.
 Examples of boards include Jetson, Raspberry Pi, Numato, or Arduino.
-Boards like Jetson and Pi run the Viam server and can expose the board component itself.
+Boards like Jetson and Pi run _viam-server_ and can expose the board component itself.
 
-**Client Application**: Client applications are what applies the business logic to operate your robot. 
+**Client Application**: Client applications are what applies business logic to operate your robot. 
 You can run a client application on the same part that runs the viam-server, or on a separate device.
+Client applications typically use an SDK to talk to their robot.
 
-**Component**: A resource that represents a physical component in a robot (RDK definition); for example, a servo, camera, or an arm.
+**Component**: A resource that represents a physical component in a robot; for example, a servo, camera, or an arm.
 
-**Fragment**: A reusable config block typically representing a common resource; for example, viam_gripper.
-Available across an organization and when used in a config, gets merged (key/value wise) with a specific robot part.
+**Fragment**: A reusable configuration block representing a common hardware pattern.
+For example, imagine you are deploying a specific mobile robot that is always physically connected the same way, you can create a fragment to make managing your fleet easily.
 
 **Frame**: A single element of a Frame System.
 A frame represents a coordinate system that is used to describe position and orientation.
@@ -38,35 +39,11 @@ The location of a frame is described in relation to its parent frame using rigid
 **Model**: A particular implementation of a component type.
 For example, UR5e is a model of the arm component type.
 
-**Packages**: Internal generalizable libraries that are not exposed to the user via proto and can be used by components and services to better implement functionality.
-
 **Process**: Processes are binaries or scripts that run on a part. 
-Processes are often used to create a new local instance of viam-server to implement drivers for custom components.
+Processes are often used to create a new local instance of viam-server to implement drivers for custom components, or to run a client application.
 They provide a bespoke, OS-specific process managed by the viam-server to either run once or indefinitely; for example, to run one of Viam's camera servers.
 
-<a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. (golang)
-
-* The RDK contains: 
-    * Go SDK
-    * Various packages and libraries (Motion Planning, Controls, Frame System, SLAM)
-    * gRPC Server Implementations (hardware drivers)
-
-* It can be used to build a server.
-    * Can parse and respond to changes in a remote robot configuration file.
-    * With updates possibly provided by the Viam App ([https://app.viam.com](https://app.viam.com)).
-    * Initializes resources from a config.
-    * Hosts a gRPC server implementing the Viam Robot API.
-    * That serves functionality for all registered resources.
-
-* It can be used as a client.
-    * To connect to another robot implementing the Viam Robot API.
-
-* Contains different libraries:
-    * Motion Planning, Frame System, SLAM, Controls
-    * These are used to help implement components/services.
-{{% alert title="Note" color="note" %}}  
-Libraries are called “services” ONLY if we expose their functionality in our proto APIs.
-{{% /alert %}}
+<a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. [Read More](/product-overviews/rdk)
 
 **Resource**: Resources are individual, addressable elements of a robot (RDK definition) operated by parts. 
 Parts operate two types of Resources: physical components and software services.
