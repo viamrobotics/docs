@@ -17,7 +17,7 @@ For example, a wheeled rover, boat, or flying drone.
 Examples of boards include Jetson, Raspberry Pi, Numato, or Arduino.
 Boards like Jetson and Pi run _viam-server_ and can expose the board component itself.
 
-**Client Application**: Client applications are what applies business logic to operate your robot. 
+**Client Application**: Client applications are what apply business logic to operate your robot. 
 You can run a client application on the same part that runs the viam-server, or on a separate device.
 Client applications typically use an SDK to talk to their robot.
 
