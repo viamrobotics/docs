@@ -166,16 +166,39 @@ The data in the data directory dictates what type of SLAM will be run:
 
 ### Introduction
 
-ORB-SLAM3 can perform sparse SLAM using monocular or RGB-D images. This must be specified in the config_params (i.e., `"mono"` or `"rgbd"`). In addition the following variables can be added to fine-tune cartographer's algorithm, all of which are optional:
+ORB-SLAM3 can perform sparse SLAM using monocular or RGB-D images. This must be specified in the configuration under `config_params` (i.e., `mono` or `rgbd`).
 
-### Hardware Requirements
+In this example, `mono` is selected with one camera stream named `color`:
 
-TODO[kat]
+``` json
+"services": [
+  {
+    "name": "testorb",
+    "type": "slam",
+    "attributes": {
+      "algorithm": "orbslamv3",
+      "data_dir": "<path_to_your_data_folder>",
+      "sensors": ["color"],
+      "map_rate_sec": 60,
+      "data_rate_ms": 200,
+      "input_file_pattern": "1:1000:1",
+      "config_params": {
+        "mode": "mono"
+      }
+    }
+  }
+]
+```
+
+
+In addition the following variables can be added to fine-tune cartographer's algorithm, all of which are optional:
 
 ### Configuration Overview
         
 | Parameter Mode | Description - The Type of SLAM to Use | Default: RGBD, Mono |
 | -------------- | ------------------------------------- | ------------------- |
+| `mode` | `rgbd` or `mono` | No default |
+| `debug` | `bool` | `false` |
 | `orb_n_features` | ORB parameter. Number of features per image. | 1200 |
 | `orb_scale_factor` | ORB parameter. Scale factor between levels in the scale pyramid. | 1.2 |
 | `orb_n_levels` | ORB parameter. Number of levels in the scale pyramid. |  8 |
