@@ -117,7 +117,7 @@ Raw JSON mode can be useful for users who are familiar with writing JSON, and fo
 
 Details on configuring specific hardware components and services can be found in these docs:
 - [Components](../../components/)
-- [Services](../../services/)
+- [Services](/services/)
 
 For a step-by-step walkthrough of setting up an example robot, [check out this tutorial](../../tutorials/).
 
