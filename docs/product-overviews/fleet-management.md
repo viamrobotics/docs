@@ -59,13 +59,6 @@ If the user uses remote control in the Viam App ([https://app.viam.com](https://
 Local communication between parts can be done over gRPC or WebRTC.
 
 ## How to use the Viam app
-This page will explain:
-
-- How to set up a robot on the Viam App ([https://app.viam.com](https://app.viam.com)).
-  - Including based on an existing robot or fragment
-- Each tab of the Viam App's robot page:
-  - What you can do with them and how they work
-- How to filter and modify robots and their permissions
 
 ### Creating an account
 If you received an invitation from an existing organization, use the email link to sign up.
