@@ -49,8 +49,6 @@ For the component **Type**, select **arm/motor**.
 Then you can name them whatever you like (You will need to reference these names later once we connect to your mock robot with the Python SDK).
 For each **Model**, select **fake**, then click **new component**.
 
-Once the board, arm, and motor components have been created, you will need to add the fake board as a dependency of the arm and the motor using the **Depends On** field.
-
 ### How to install Viam server on your computer
 
 Before you proceed with controlling your mock robot, you are going to need to install Viam server on your development machine.
@@ -61,7 +59,7 @@ Follow the steps outlined on the **SETUP** tab of the Viam app in order to insta
 
 When you add the fake motor and arm components to your robot, the Viam app automatically generates a UI for your motor and arm under the **CONTROL** tab.
 
-![Screenshot from the Viam app showing the CONTROL tab with the fake board, arm, and motor components.](../img/how_to_build_a_mock_robot/image3.png)
+![Screenshot from the Viam app showing the CONTROL tab with the fake arm, and motor components.](../img/how_to_build_a_mock_robot/image3.png)
 
 If you were configuring a real motor and arm , you would be able to control it from this section of the app.
 You could do things like control the direction and speed of the motor, and change the joint positions of your robotic arm.
