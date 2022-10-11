@@ -45,7 +45,7 @@ Go to [app.viam.com](https://app.viam.com) and sign up.
 For this tutorial, we will show you how to set up a mock robot with a fake motor and arm.
 
 For each component, you will need to create a new component.
-For the component **Type**, select **board/arm/motor**.
+For the component **Type**, select **arm/motor**.
 Then you can name them whatever you like (You will need to reference these names later once we connect to your mock robot with the Python SDK).
 For each **Model**, select **fake**, then click **new component**.
 
