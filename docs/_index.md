@@ -8,8 +8,9 @@ type: "docs"
 ## Getting Started
 Looking to get started with Viam? Check out the following:
 
-- [Viam Overview](../getting-started/high-level-overview)
+- [Viam Overview](/getting-started/high-level-overview)
 - [Viam Use Cases](http://www.viam.com/use-cases)
+- [Intro Video](https://www.youtube.com/watch?v=TjmvnEdNVKs&ab_channel=EliotHorowitz)
 
 ## Product Overviews
 - [Overview of Viam-Server and RDK](/product-overviews/rdk)
