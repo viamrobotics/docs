@@ -61,7 +61,7 @@ When you add the fake motor and arm components to your robot, the Viam app autom
 
 ![Screenshot from the Viam app showing the CONTROL tab with the fake arm, and motor components.](../img/how_to_build_a_mock_robot/image3.png)
 
-If you were configuring a real motor and arm , you would be able to control it from this section of the app.
+If you were configuring a real motor and arm, you would be able to control it from this section of the app.
 You could do things like control the direction and speed of the motor, and change the joint positions of your robotic arm.
 However, since we are building a mock robot using fake components, you will only see the robot's reported positions and speeds change from the UI.
 You will not be able to see your robot move in the physical world.
