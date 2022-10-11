@@ -1,11 +1,11 @@
 ---
-title: "Build a Line Following Robot with only a Rover and a Webcam"
+title: "Building a Line-Following Robot with a Rover and a Webcam"
 linkTitle: "RGB Line Follower"
 weight: 90
 type: "docs"
-description: "Instructions to build a line following robot that uses a webcam and color detection to track a line."
+description: "Build a line-following robot that relies on a webcam and color detection."
 ---
-Many line follower robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background. 
+Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background. 
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
 <div style="column-count:2;column-gap-40px">
@@ -46,7 +46,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 <img src="../img/lf-scuttle2.png" width="600" /></p>
 
 ## Configuration using Viam
-If you haven’t already, please set up the Raspberry Pi on the [Viam App](https://app.viam.com) per [these instructions](../../getting-started/installation).
+If you haven’t already, please set up the Raspberry Pi per [these instructions](../../getting-started/installation).
 
 ### Configuring the Hardware Components
 Configure the base per the [Base Component topic](../../components/base/).
@@ -260,7 +260,7 @@ Perhaps a circle or other shape, or perhaps a path from one point of interest to
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.</li>
 <li class="spacing">Set your robot on the line such that the line appears in the front of the camera’s view. 
 Verify that the camera sees the line by viewing the camera feed on the <strong>Control</strong> tab of the robot page.</li>
-<p class="Mycaption"><em>Figure 4: The camera view in the <strong>Control</strong> tab on the Viam App robot page.</em><br>
+<p class="Mycaption"><em>Figure 4: The camera view in the <strong>Control</strong> tab on the robot page.</em><br>
 <img  class="spacing" src="../img/lf-cam-view6.png" width="600" /></p>
 
 <li class="spacing">In a terminal window, SSH to your Pi by running:<br>
