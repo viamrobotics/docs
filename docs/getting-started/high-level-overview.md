@@ -25,7 +25,7 @@ On the robot, a single Viam process, called _viam-server_ runs, and is responsib
 - keeping the configuration up-to-date
 - logging to the cloud
 - connecting to hardware
-- running and other code that is needed, such as drivers for hardware, or user code
+- running any other code that is needed, such as drivers for hardware, or user code
 - accepting API requests either for data or for hardware actuation
 - running higher level services like computer vision, data synchronization, or motion planning
 
