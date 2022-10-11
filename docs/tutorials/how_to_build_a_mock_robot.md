@@ -183,7 +183,7 @@ Now when you run this code, you should see the new mock arm positions listed in 
 
 ## Next Steps
 
-In this tutorial, we showed you how to set up a mock robot so that you can learn more about how to set up robots with Viam. You set up a mock robot in the Viam app using fake components, set up a local development environment and wrote some code using the Viam Python SDK so that you can see how to control robots with code and the Viam app.
+In this tutorial, we showed you how to set up a mock robot so that you can learn more about using fake components in Viam app, setting up a local development environment, and writing code using the Viam SDK.
 
 If you're ready to get started with building robots with real hardware components, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](https://docs.viam.com/tutorials/).
 
