@@ -15,21 +15,21 @@ Viam runs on your robot and the cloud.
 
 Everything that runs on your robot is open source and is available at http://github.com/viamrobotics 
 
-We recommend using our cloud app to configure, manage, and control your robots at http://app.viam.com/
+To get the most out of the Viam platform, we recommend using  http://app.viam.com/ to configure, manage, and control your robots
 
 A robot's configuration lives in the cloud.
 The configuration is a description of the hardware and higher level software services.
-For example how a motor is connected to a Raspberry PI, or what matching learning models you want to use for classification.
+For example, how a motor is connected to a Raspberry Pi, or what matching learning models you want to use for classification.
 
-On the robot, a single viam process, called _viam-server_ runs, and is responsible for: 
-- keeping the configuration up to date
+On the robot, a single Viam process, called _viam-server_ runs, and is responsible for: 
+- keeping the configuration up-to-date
 - logging to the cloud
 - connecting to hardware
-- running and other code that is needed, such as drivers for hardware, or user code.
+- running any other code that is needed, such as drivers for hardware, or user code
 - accepting API requests either for data or for hardware actuation
 - running higher level services like computer vision, data synchronization, or motion planning
 
-Your robot code can run directly on the robot, or anywhere else with internet connectivity you want and access all the same functionality.
+Your robot code can run directly on the robot itself or anywhere else with internet connectivity and access all the same functionality.
 
 ## API
 
@@ -48,26 +48,26 @@ You can see all Viam API specifications at https://github.com/viamrobotics/api
 ## Concepts
 
 ### Robot
-A _Robot_ in Viam is 1 or more computers, combined into 1 logical robot.
-A mobile robot that has 1 Jetson and 1 raspberry pi is 1 robot.
+A _Robot_ in Viam is 1 or more computers combined into 1 logical robot.
+A mobile robot that has one Jetson and one Raspberry Pi is one robot.
 The bounds of a robot are usually pretty clear, but can be subjective. 
 
 ### Part
-Each of those computers are a _Part_. In that example, you have 1 robot, and 2 parts (the jetson and pi).
+Each of those computers are a _Part_. In the above example, you have one robot, and two parts (the Jetson and the Pi).
 
-Most simple robots will likely only have 1 part, but can have as many as you need.
+Most simple robots will have only one part, but can have as many parts as needed.
 
-Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub parts_.
-You can access any sub part either directly, or via any part above it in the tree.
+Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
+You can access any sub-part either directly, or via any part above it in the tree.
 
 Each part runs a single _viam-server_ instance.
 
 ### Component
 
 A component is a piece of hardware or software that exposes a specific API, such as arm, motor, or gps.
-These components are configured, and then the drivers are loaded by _viam server_.
+These components are configured, and then the drivers are loaded by _viam-server_.
 Every part will likely have at least 1 component, but some will have a lot.
-For example, a raspberry pi part on a mobile robot might have: 4 motors, gps, imu, and a camera.
+For example, a Raspberry Pi part on a mobile robot might have: 4 motors, gps, imu, and a camera.
 
 ### Service
 
@@ -77,18 +77,18 @@ For example: motion planning and computer vision.
 
 ### Remote
 
-A remote is a server that implementats the same GRPC interfaces, including the robot service which describs what it provides.
+A remote is a server that implements the same gRPC interfaces, including the robot service which describes what it provides.
 Parts can talk to arbitrary processes to add more components by adding them as a remote.
-If a remote is added to a part, that part will that proxy all requests.
+If a remote is added to a part, then that part will proxy all requests.
 
 Remotes are typically implemented with SDKs.
 
 Examples: 
-- a robot arm manufacturer has a network attached arm that implementats the Viam API, you can add it directly to a part as a remote.
-- a POE camera implementats the camera grpc interface, so can be added directly as a remote.
+- A robot arm manufacturer has a network attached arm that implements the Viam API, so you you can add it directly to a part as a remote.
+- A POE camera implements the camera gRPC interface, so it can be added directly as a remote.
 
 ### Process
-Processes are scripts or programs run by the [Robot Development Kit (RDK)](../../appendix/glossary#rdk_anchor) whose life cycle is managed by the Viam server.
+Processes are scripts or programs run by the [Robot Development Kit (RDK)](../../appendix/glossary#rdk_anchor) whose lifecycle is managed by the viam-server.
 One example is running a [Software Development Kit (SDK)](/product-overviews/sdk-as-server) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
 
 ## SDKs
@@ -99,7 +99,7 @@ SDKs are used for:
 - writing your application code for building your robot to interact with the components and services
 - implementing drivers for hardware not yet supported
 
-We currently have SDKs for go, Python, Typescript, and Rust. With many more coming soon including c++ and flutter
+We currently have SDKs for go, Python, Typescript, and Rust. With many more coming soon including C++ and Flutter.
 
 ## Pictures
 
@@ -114,9 +114,9 @@ Part 2 is a remote._
 
 If you have hardware lying around, the best thing to do is try to get it setup.
 
-If there are issues, please work with us on [slack](https://viamrobotics.slack.com/) as we're still working on rough edges.
+If you encounter issues, please work with us on [Slack](https://viamrobotics.slack.com/) as we're still working on rough edges.
 
-We also have a number of [tutorials](/tutorials) to get you started.
+Also, we have a number of [tutorials](/tutorials) to get you started.
 
 If you have no hardware, you can use our [mock robot tutorial](/tutorials/how_to_build_a_mock_robot).
 

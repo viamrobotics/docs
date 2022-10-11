@@ -5,7 +5,7 @@ weight: 80
 type: "docs"
 description: "Explanation of motor types, configuration, and usage in Viam."
 ---
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 Information on hobby servos (i.e., servomotors) is located in the <a href="../servo">Servo Component Document</a>.
 {{% /alert %}}
 Electric motors are the most common form of actuator in robotics.
@@ -27,7 +27,7 @@ There are other ways to interface with motors such as Serial, CAN bus, and Ether
 - An appropriate power supply
     - Note that the logic side of the driver may be powered by 3.3V from the Pi or other device, but the motor power side should not be powered by the computer’s GPIO pins.
     The motor driver should be connected to an independent power supply that can provide the peak current required by the motor.
-{{% alert title="Caution" color="caution" %}}  
+{{% alert title="Caution" color="caution" %}}
 Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
 {{% /alert %}}
 
