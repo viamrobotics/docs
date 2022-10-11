@@ -122,7 +122,7 @@ Without this file, classes will read “1”, “2”, etc.
 
 
 ##### TFLite Model Limitations
-We strongly recommend that you package your .tflite model with metadata in the standard form given by the schema (link schema). In the absence of metadata, your TFLite model must satisfy the following requirements:
+We strongly recommend that you package your .tflite model with metadata in the standard form given by the schema (<a href="https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs" target="_blank">found here</a>[^schema]). In the absence of metadata, your TFLite model must satisfy the following requirements:
 
 1. A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1) 
 1. At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
@@ -130,6 +130,7 @@ We strongly recommend that you package your .tflite model with metadata in the s
 
 These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1. Feel free to use one of these architectures or build your own! 
 
+[^schema]: TFLite schema: <a href="https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs" target="_blank">ht<span></span>tps://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs</a>
 
 ## Classification
 
@@ -214,14 +215,3 @@ The types of segmenters supported are:
     It should usually be set between 1.0 and 2.0.
     * 1.25 is usually a good default.
     If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower.
-
-
-
-
-
-
-
-
-
-
-
