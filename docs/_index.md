@@ -107,7 +107,7 @@ Other tutorials
 - [Robot Service](/services/robot-service) - meta data about a robot and robot level operations
 - [Vision](/services/vision)
 - [Motion](/services/motion)
-- [Data Capture](/services/data-capture)
+- [Data Management](/services/data-management)
 - [Simultaneous Localization and Mapping (SLAM)](/services/slam)
 
 
