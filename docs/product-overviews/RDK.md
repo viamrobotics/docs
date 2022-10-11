@@ -22,7 +22,7 @@ Viam-server is responsible for:
 
 ## Go SDK
 
-The rdk provides the Go sdk, which is currently the most advanced SDK.
+The RDK provides the Go SDK, which is currently the most advanced SDK.
 
 [Examples](https://github.com/viamrobotics/rdk/tree/main/examples)
 
