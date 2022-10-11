@@ -5,19 +5,73 @@ weight: 1
 type: "docs"
 ---
 
-## Getting Started
-Looking to get started with Viam? Check out the following:
+<style>
+    * {
+  box-sizing: border-box;
+}
+.row {
+  margin-left:-5px;
+  margin-right:-5px;
+}
+  
+.column {
+  float: left;
+  width: 40%;
+  padding: 5px;
+}
 
-- [Viam Overview](/getting-started/high-level-overview)
-- [Viam Use Cases](http://www.viam.com/use-cases)
-- [Intro Video](https://www.youtube.com/watch?v=TjmvnEdNVKs&ab_channel=EliotHorowitz)
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 
-## Product Overviews
-- [Overview of Viam-Server and RDK](/product-overviews/rdk)
-- [Viam's Fleet Management](/product-overviews/fleet-management)
-- [Using Viam's SDKs as a Client Application](/product-overviews/sdk-as-client)
-- [Using Viam's SDKs for a Server Hardware Implementation](/product-overviews/sdk-as-server)
-- [Viam's Data Management Platform](/product-overviews/data-management)
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: none solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+</style>
+</head>
+<body>
+<br>
+<div class="row">
+  <div class="column">
+    <table>
+      <tr>
+        <td><h2>Getting Started</h2>
+<li><a href="/getting-started/high-level-overview">Viam Overview</a></li>
+<li><a href="http://www.viam.com/use-cases">Viam Use Cases</a></li>
+<br><h2>Product Overview</h2>
+<ul>
+<li><a href="/product-overviews/rdk">Overview of Viam-Server and RDK</a></li>
+<li><a href="/product-overviews/fleet-management">Viam's Fleet Management</a></li>
+<li><a href="/product-overviews/sdk-as-client">Using Viam's SDKs as a Client Application</a></li>
+<li><a href="/product-overviews/sdk-as-server">Using Viam's SDKs for a Server Hardware Implementation</a></li>
+<li><a href="/product-overviews/data-management">Viam's Data Management Platform</a></li></td>
+</ul>
+      </tr>
+    </table>
+  </div>
+  <div class="column">
+    <table>
+      <tr>
+        <td><iframe width="640" height="360" src="https://www.youtube.com/embed/TjmvnEdNVKs" title="Viam Intro Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+      </tr>
+    </table>
+  </div>
+</div>
 
 
 ## Tutorials
