@@ -4,4 +4,4 @@ public/*
 .hugo_build.lock
 resources
 .vscode/settings.json
-resources
+resources/*
