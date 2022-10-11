@@ -5,6 +5,50 @@ weight: 1
 type: "docs"
 ---
 
+<style>
+    * {
+  box-sizing: border-box;
+}
+.row {
+  margin-left:-5px;
+  margin-right:-5px;
+}
+  
+.column {
+  float: left;
+  width: 40%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: none solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+</style>
+</head>
+<body>
+<br>
+<div class="row">
+  <div class="column">
+ 
 ## Getting Started
 Looking to get started with Viam? Check out the following:
 
@@ -18,6 +62,16 @@ Looking to get started with Viam? Check out the following:
 - [Using Viam's SDKs as a Client Application](/product-overviews/sdk-as-client)
 - [Using Viam's SDKs for a Server Hardware Implementation](/product-overviews/sdk-as-server)
 - [Viam's Data Management Platform](/product-overviews/data-management)
+
+  </div>
+  <div class="column">
+    <table>
+      <tr>
+        <td><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs" target="_blank">Click to view our Founder's Message<img src="../img/eliot-vid-thumb.png" style="border: 1px solid black"> <span style="font-size:xx-small" </span> (Link opens in new tab)</a></td>
+      </tr>
+    </table>
+  </div>
+</div>
 
 
 ## Tutorials
