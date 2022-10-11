@@ -6,7 +6,12 @@ type: "docs"
 draft: false
 description: "Instructions to run SLAM with either a webcam or provided example data."
 ---
-[SLAM](../services/slam.md) allows your robot to create a map of its surroundings, as well as find its location within that map.
+
+## Warning: This is an experimental feature.
+Stability is not guaranteed. Breaking changes are likely to occur, and occur often.
+
+## Introduction
+[SLAM](../../services/slam) allows your robot to create a map of its surroundings, as well as find its location within that map.
 
 This tutorial shows you how to run ORB-SLAM3 on your robot. You have two choices:
 * Run SLAM in online mode with a webcam. The webcam can be installed on a robot, or just be held by hand.
@@ -54,11 +59,11 @@ First, you will need to add a webcam to your configuration. Configure the webcam
 
 Go to the "CONTROL" tab, and click on the "color" dropdown menu. Toggle "View Camera" and make sure you can see the live video feed of your camera.
 
-Next, follow the instructions to obtain the `intrinsic_parameters` and `distortion_parameters` as described in the [camera documentation](../components/camera.md#camera-models) and the [camera calibration repository](https://github.com/viam-labs/camera-calibration).
+Next, follow the instructions to obtain the `intrinsic_parameters` and `distortion_parameters` as described in the [camera documentation](../../components/camera#camera-models) and this [camera calibration repository](https://github.com/viam-labs/camera-calibration).
 
 You will need to print out the checkerboard and take images of the checkerboard from various angles by clicking the "Export Screenshot" button.
 
-After running the calibration script, you'll get a print out of the `intrinsic_parameters` and `distortion_parameters`. We will use the values I've obtained as an example moving forward:
+After running the calibration script, you'll get a print out of the `intrinsic_parameters` and `distortion_parameters`. We will use the values we've obtained as an example moving forward:
 
 ```json
 "intrinsic_parameters": {
@@ -78,7 +83,7 @@ After running the calibration script, you'll get a print out of the `intrinsic_p
 }
 ```
 
-Copy/paste the parameters into your camera config by going into the "CONFIG" tab and clicking "Raw JSON". For me, the config now looks like this:
+Copy/paste the parameters into your camera config by going into the "CONFIG" tab and clicking "Raw JSON". For us, the config now looks like this:
 
 ```json
 {
@@ -117,7 +122,7 @@ Copy/paste the parameters into your camera config by going into the "CONFIG" tab
 }
 ```
 
-Make sure to update the `width_px` and `height_px`in `attributes` to match the `width_px` and `height_px` as defined within `intrinsic_parameters`, which are here:
+Make sure to update the `width_px` and `height_px`in `attributes` to match the `width_px` and `height_px` as defined within `intrinsic_parameters`, which are in our case:
 
 ```json
 "height_px": 480,
@@ -165,7 +170,7 @@ In the config tab, click on "Raw JSON", and copy/paste the following configurati
 
 Change `YOUR_USERNAME` under `"data_dir": "/home/YOUR_USERNAME/data"` to your username that you found out by typing `pwd`.
 
-The complete configuration in my case looks now like this:
+The complete configuration in our case looks now like this:
 
 ```json
 {
@@ -228,3 +233,5 @@ The complete configuration in my case looks now like this:
   ]
 }
 ```
+
+Head over to the "CONTROL" tab, move the webcam around slowly, and watch a map come to life!
