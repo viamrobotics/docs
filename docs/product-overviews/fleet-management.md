@@ -117,8 +117,8 @@ Builder provides a more graphical UI with added features such as a built-in webc
 Raw JSON mode can be useful for users who are familiar with writing JSON, and for seeing and editing everything at once.
 
 Details on configuring specific hardware components and services can be found in these docs:
-- [Components](../../components/)
-- [Services](../../services/)
+- [Components](/components/)
+- [Services](/services/)
 
 #### Logs
 This tab displays debug and other logging information from your robot.
