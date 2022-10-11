@@ -18,8 +18,7 @@ Everything that runs on your robot is open source and is available at http://git
 To get the most out of the Viam platform, we recommend using  http://app.viam.com/ to configure, manage, and control your robots.
 
 A robot's configuration lives in the cloud.
-The configuration is a description of the hardware and higher level software services.
-For example, how a motor is connected to a Raspberry Pi, or what matching learning models you want to use for classification.
+The configuration is a description of the hardware and higher level software services--for example, how a motor is connected to a Raspberry Pi, or what matching learning models you want to use for classification.
 
 On the robot, a single Viam process, called _viam-server_ runs, and is responsible for: 
 - keeping the configuration up-to-date
@@ -33,7 +32,7 @@ Your robot code can run directly on the robot itself or anywhere else with inter
 
 ## API
 
-All communication across Viam is done with gRPC[^grpc], directly if wanted, or via webRTC[^webrtc], which provides authentication and encryption.
+All communication across Viam is done with gRPC[^grpc], directly if wanted, or via WebRTC[^webrtc], which provides authentication and encryption.
 
 [^grpc]: <a href="https://grpc.io/" target="_blank">gRPC</a>
 [^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC)" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
@@ -48,7 +47,7 @@ You can see all Viam API specifications at https://github.com/viamrobotics/api.
 ## Concepts
 
 ### Robot
-A _Robot_ in Viam is 1 or more computers combined into 1 logical robot.
+A _Robot_ in Viam is one or more computers combined into one logical robot.
 A mobile robot that has one Jetson and one Raspberry Pi is one robot.
 The bounds of a robot are usually pretty clear, but can be subjective. 
 
@@ -94,7 +93,7 @@ One example is running a [Software Development Kit (SDK)](/product-overviews/sdk
 
 ## SDKs
 
-While you can connect to a robot with gRPC directly, we provide SDKs to make this easier, and handle authentication and webRTC.
+While you can connect to a robot with gRPC directly, we provide SDKs to make this easier, and handle authentication and WebRTC.
 
 SDKs are used for:
 - writing your application code for building your robot to interact with the components and services
