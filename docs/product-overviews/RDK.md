@@ -12,7 +12,7 @@ Viam's RDK is the open-source, on-robot portion of the Viam platform, that provi
 
 ## viam-server
 
-Viam-server is responsible for:
+_viam-server_ is responsible for:
 - All gRPC and WebRTC communication
 - Connecting robots to the cloud
 - Loading and managing connections to hardware [components](/components/)
@@ -22,7 +22,7 @@ Viam-server is responsible for:
 
 ## Go SDK
 
-The RDK provides the Go SDK, which is currently the most advanced SDK.
+The RDK provides the Go SDK.
 
 [Examples](https://github.com/viamrobotics/rdk/tree/main/examples)
 
