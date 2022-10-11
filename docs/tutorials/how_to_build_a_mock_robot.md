@@ -31,11 +31,8 @@ In this tutorial, you will have set up, controlled, and programmed a mock roboti
 
 ### Set up your account on the Viam app
 
-The first thing you need to do is set up your account on the Viam App. Go to [app.viam.com](https://app.viam.com) and sign up
-
-{{% alert title="Note" color="note" %}}
-Be sure to choose the correct system architecture at the top of the Setup tab; most Linux laptops and desktops will use x86_64.
-{{% /alert %}}
+The first thing you need to do is set up your account on the Viam App.
+Go to [app.viam.com](https://app.viam.com) and sign up.
 
 ## How to configure your mock robot in the Viam app
 
