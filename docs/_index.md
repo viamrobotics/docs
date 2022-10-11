@@ -75,15 +75,15 @@ Looking to get started with Viam? Check out the following:
 
 
 ## Tutorials
-Scuttle based tutorials
+SCUTTLE-based tutorials
 - [Configuring SCUTTLE Rover with a Camera](/tutorials/scuttlebot)
 - [Controlling a SCUTTLE Rover with a Bluetooth Gamepad](/tutorials/scuttle-gamepad)
 - [Detecting Color with the SCUTTLE Rover](/tutorials/color-detection-scuttle)
 
-Yahboom based tutorials
+Yahboom-based tutorials
 - [Setting up a Yahboom 4WD Rover with a Bluetooth Gamepad](/tutorials/yahboom-rover)
 
-Simple Raspberry tutorials
+Simple Raspberry Pi tutorials
 - [Making an LED Blink with a Raspberry Pi](/tutorials/how-to-make-an-led-blink-with-a-raspberry-pi-using-viam)
 - [Making an LED Blink with a Raspberry Pi and Viam's Python SDK](/tutorials/how-to-make-an-led-blink-with-a-raspberry-pi-and-python)
 
@@ -98,7 +98,7 @@ Other tutorials
 - [Motor](/components/motor)
 - [Servo](/components/servo)
 - [Encoder](/components/encoder)
-- [Base](/components/base) - a mobile robot base, examples: wheeled, tracked, boat, drone, 
+- [Base](/components/base) - a mobile robot base, examples: wheeled, tracked, boat, drone
 - [Input Controller](/components/input-controller)
 - [Sensor](/components/sensor)
 
