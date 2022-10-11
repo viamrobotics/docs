@@ -77,19 +77,20 @@ To create a new organization, click **ORG SETTINGS** and use the **New Organizat
 To invite another user to your organization, type their email address into the **Invite User** field in **ORG SETTINGS** and click **Invite**.
 
 You can delete organizations that are *empty of locations* in the **ORG SETTINGS** page.
+If your organization contains any locations, you must delete them before you can delete the organization.
 
 Click the name of an organization to go to the list of its locations.
 
 ### Creating locations
 When you create a new organization, a location will be automatically created for you.
-If your organization does not have any locations in it, you'll be prompted to create one.
-You can always create additional locations by typing a new location name in the **New Location** field found in the left side navigation bar and clicking **ADD**.
+You can create additional locations by typing a new location name in the **New Location** field found in the left side navigation bar and clicking **ADD**.
+
+You can delete a location that is *empty of robots* by clicking the trash can icon next to the location name at the top of the page for that location.
+The icon will not appear if there are any robots in the location.
 
 In the navigation bar on the left, navigate to the location (or sub-location) where you want to create a robot.
 
 Click a location's name to display the list of robots associated with that location.
-
-You can delete a location that is *empty of robots* by clicking the trash can icon next to the location name at the top of the page for that location.
 
 ### Creating robots
 When you click on a location that does not contain any robots, you'll be prompted to create a robot by typing in the **New Robot** field and clicking **ADD ROBOT**.
@@ -106,7 +107,7 @@ If you've connected your robot to a machine running viam-server (instructions be
 The following tabs are found on the robot page:
 
 #### Setup
-The **Setup** tab contains information for starting an instance of viam-server on your robot's computer. ([See more in-depth install instructions for Linux here](../../getting-started/linux-install).) Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
+The **Setup** tab contains information for starting an instance of viam-server on your robot's computer. ([See more in-depth install instructions for Linux here](/getting-started/linux-install).) Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
 
 #### Config
 Here you can start adding robot components, services and remotes.
@@ -116,10 +117,8 @@ Builder provides a more graphical UI with added features such as a built-in webc
 Raw JSON mode can be useful for users who are familiar with writing JSON, and for seeing and editing everything at once.
 
 Details on configuring specific hardware components and services can be found in these docs:
-- [Components](/components/)
-- [Services](/services/)
-
-For a step-by-step walkthrough of setting up an example robot, [check out this tutorial](../../tutorials/).
+- [Components](../../components/)
+- [Services](../../services/)
 
 #### Logs
 This tab displays debug and other logging information from your robot.
@@ -128,10 +127,13 @@ This tab displays debug and other logging information from your robot.
 The History tab shows the edit history of your robot's configuration file.
 
 #### Connect
-This tab contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot. There is also a JSON stub you can copy if you wish to use this robot as a remote of another robot.
+This tab contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
+There is also a JSON stub you can copy if you wish to use this robot as a remote of another robot.
 
 #### Control
-The Control tab allows you to control your robot using an interface for each component of your robot. This is done via WebRTC. For example, if you have configured a base with wheels, you can control your robot's movement with an arrow pad and fields to change base’s speed. If you have configured a camera component, a window in the Control tab displays the camera output.
+The Control tab allows you to control your robot using an interface for each component of your robot. This is done via WebRTC.
+For example, if you have configured a base with wheels, you can control your robot's movement with an arrow pad and fields to change base’s speed.
+If you have configured a camera component, a window in the Control tab displays the camera output.
 
 #### Blockly
 _**(Experimental!)**_
