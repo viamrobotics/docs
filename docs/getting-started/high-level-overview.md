@@ -15,7 +15,7 @@ Viam runs on your robot and the cloud.
 
 Everything that runs on your robot is open source and is available at http://github.com/viamrobotics 
 
-We recommend using Viam to configure, manage, and control your robots at http://app.viam.com/
+To get the most out of the Viam platform, we recommend using  http://app.viam.com/ to configure, manage, and control your robots
 
 A robot's configuration lives in the cloud.
 The configuration is a description of the hardware and higher level software services.
