@@ -11,11 +11,11 @@ description: "Instructions for creating a mock robot using just your personal co
 In this post, we will show you how to build a mock robot using just your personal laptop so you can try using Viam without any robotic hardware.
 This is a great way to learn how to build robots [the Viam way](/getting-started/high-level-overview).
 
-Most Viam components come with a fake model that can be useful when testing.
-These are fake components that interact with the Viam software like real robotics components, but of course, do not exist as real-world hardware.
+Most Viam components come with a _fake_ model that can be useful when testing.
+These fake components interact with Viam like real hardware, but of course, do not actually exist.
 We will be using these fake components to build out a mock robot and explore how to use Viam.
 
-In this tutorial, you will have set up, controlled, and programmed a mock robotic arm using fake components.
+In this tutorial, you will set up, control, and program a mock robotic motor and arm using fake components.
 
 ## What you'll need for this guide
 
@@ -34,13 +34,15 @@ In this tutorial, you will have set up, controlled, and programmed a mock roboti
 The first thing you need to do is set up your account on the Viam App.
 Go to [app.viam.com](https://app.viam.com) and sign up.
 
-## How to configure your mock robot in the Viam app
+### Configure your mock robot
 
-Go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, navigate to the robot running the server you set up, and select the **CONFIG** tab.
+* Go to [app.viam.com](https://app.viam.com/)
+* Create a new robot
+* Go to the **CONFIG** tab.
 
 ![A screenshot from the Viam app showing the CONFIG tab from the mock robot.](../img/how_to_build_a_mock_robot/image4.png)
 
-For this tutorial, we will show you how to set up a mock robot with a fake board, arm, and motor.
+For this tutorial, we will show you how to set up a mock robot with a fake motor and arm.
 
 For each component, you will need to create a new component.
 For the component **Type**, select **board/arm/motor**.
@@ -57,11 +59,11 @@ Follow the steps outlined on the **SETUP** tab of the Viam app in order to insta
 
 ## Controlling your mock robot using the Viam App
 
-When you add the fake board and arm components to your robot, the Viam app automatically generates tabs for your board and arm under the **CONTROL** tab.
+When you add the fake motor and arm components to your robot, the Viam app automatically generates a UI for your motor and arm under the **CONTROL** tab.
 
 ![Screenshot from the Viam app showing the CONTROL tab with the fake board, arm, and motor components.](../img/how_to_build_a_mock_robot/image3.png)
 
-If you were configuring a real robotic arm and motor, you would be able to control it from this section of the app.
+If you were configuring a real motor and arm , you would be able to control it from this section of the app.
 You could do things like control the direction and speed of the motor, and change the joint positions of your robotic arm.
 However, since we are building a mock robot using fake components, you will only see the robot's reported positions and speeds change from the UI.
 You will not be able to see your robot move in the physical world.
