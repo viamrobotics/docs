@@ -12,8 +12,8 @@ Looking to get started with Viam? Check out the following:
 - [Viam Use Cases](http://www.viam.com/use-cases)
 
 ## Product Overviews
-- [Viam's Fleet Management](../product-overviews/fleet-management)
 - [Overview of Viam-Server and RDK](../product-overviews/rdk)
+- [Viam's Fleet Management](../product-overviews/fleet-management)
 - [Using Viam's SDKs as a Client Application](../product-overviews/sdk-as-client)
 - [Using Viam's SDKs for a Server Hardware Implementation](../product-overviews/sdk-as-server)
 - [Viam's Data Management Platform](../product-overviews/data-management)
