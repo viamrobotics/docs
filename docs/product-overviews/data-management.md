@@ -8,7 +8,7 @@ description: "A guide to Viam's data ingestion and management tooling."
 ## Data Capture and Synchronization to the Cloud
 The data management service supports capturing data from any component at a predefined frequency and syncing it Viam's data platform.
 
-An example use case is a tomato picking gantry has a depth camera that captures images of crops on the vine.
+An example use case is a tomato picking gantry with a depth camera that captures images of crops on the vine.
 The image and point cloud data is collected at 10Hz.
 The gantry position is collected at 1kHz.
 All data is uploaded to Viam's cloud platform every minute.
