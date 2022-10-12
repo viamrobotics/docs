@@ -3,6 +3,7 @@ title: "Learning Resources"
 linkTitle: "Learning Resources"
 description: "A collection of links to external sources discussing robotics topics and basic information that we believe users may find helpful."
 type: "docs"
+draft: true
 ---
 # Overview
 The following sections contain links that we think you will find very useful during your journey into robotics.

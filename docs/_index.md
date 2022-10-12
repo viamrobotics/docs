@@ -119,7 +119,6 @@ Other tutorials
 - [Glossary](/appendix/glossary)
 - [Orientation Vector](/appendix/orientation-vector)
 - [Troubleshooting](/appendix/troubleshooting)
-- [Learning Resources](/appendix/learning-resources)
 
 ## SDKs
 - [Python SDK](https://python.viam.dev/)
