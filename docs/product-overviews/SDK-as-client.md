@@ -91,7 +91,7 @@ We will be assuming that you have already [set up Viam Server](/getting-started/
 The easiest way to get started writing a Python application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **Connect** tab, and copy the boilerplate code from the section labeled **Python SDK**. This code snippet imports all the necessary libraries and sets up a connection with the Viam App in the cloud.
 
 {{% alert title="Tip" color="tip" %}}  
-You can learn more about connecting to your robot with the [Python SDK](https://python.viam.dev) on the [Connect as a Client page](https://python.viam.dev/examples/example.html#connect-as-a-client).*
+You can learn more about connecting to your robot with the [Python SDK](https://python.viam.dev) on the [Connect as a Client page](https://python.viam.dev/examples/example.html#connect-as-a-client).
 {{% /alert %}}
 ### How to get your Robot's Components with the Viam Python SDK
 

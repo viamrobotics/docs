@@ -43,7 +43,7 @@ You will need the following tools to complete the project:
 Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](../../getting-started/installation) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam App.](../../getting-started/installation/#adding-your-pi-on-the-viam-app)
 
 {{% alert title="Note" color="note" %}}  
-If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.*
+If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 {{% /alert %}}
 
 ## Building the circuit
@@ -52,7 +52,7 @@ The first step in this project is to design a simple LED circuit. Then you will 
 
 A simple LED circuit consists of a LED and resistor. The resistor is used to limit the current that is being drawn and is called a *current-limiting resistor*.
 
-### GPIO Pinoutccc
+### GPIO Pinout
 
 **General-purpose input/output** (**GPIO**) is a digital signal <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">pin</a>[^pin] on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
 
