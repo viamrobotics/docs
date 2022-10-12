@@ -26,21 +26,13 @@ As of 11 October 2022, the following SLAM library is integrated:
 
 
 ### Coming Soon
-* `map_rate_sec`: A value of `map_rate_sec: -1` is currently (10 Oct 2022) set to disable map saving altogether. In the near future, Viam plans to change this behavior to enable "localization only mode".
 * Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`. We append the timestamp to each filename prior to saving images, maps, and *.yaml files. We will be updating the timestamp format to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
 
 ## Requirements
 Running the SLAM Service with your robot requires the following:
 1. A binary running the custom SLAM library stored in `/usr/local/bin`.
 2. Changes to the config specifiying which SLAM library is used, including library specific parameters.
-3. A data folder as it is pointed to by the config parameter `data_dir`. It is required to be structured as follows:
-    <pre>
-    .
-    └──\(The Directory Defined in Config)
-        ├── data
-        ├── map
-        └── config
-    </pre>
+3. A data folder as it is pointed to by the config parameter `data_dir`.
 
 All three are explained in the following using ORB-SLAM3 as the application example.
 
@@ -67,7 +59,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 
 To add the SLAM service to your robot, you need to add the _name_, _type_, and SLAM library specific _attributes_ to the configuration of your robot.
 
-The following is an example configuration for running ORB-SLAM3 in `rgbd` mode on your robot, provided that it has two [camera streams](https://docs.viam.com/components/camera/#camera-models) available: `"color"` for RGB images, and `"depth"` for depth data. 
+The following is an example configuration for running ORB-SLAM3 in live `rgbd` mode on your robot, provided that it has two [camera streams](https://docs.viam.com/components/camera/#camera-models) available: `"color"` for RGB images, and `"depth"` for depth data. 
 
 ``` json
 "services": [
@@ -80,9 +72,29 @@ The following is an example configuration for running ORB-SLAM3 in `rgbd` mode o
       "sensors": ["color", "depth"],
       "map_rate_sec": 60,
       "data_rate_ms": 200,
-      "input_file_pattern": "1:1000:1",
       "config_params": {
         "mode": "rgbd"
+      }
+    }
+  }
+]
+```
+
+Assuming that there is already sensor data in `data_dir/data`, SLAM can also be run in offline mode. Here is an example configuration:
+
+``` json
+"services": [
+  {
+    "name": "testorb",
+    "type": "slam",
+    "attributes": {
+      "algorithm": "orbslamv3",
+      "data_dir": "<path_to_your_data_folder>",
+      "sensors": [],
+      "map_rate_sec": 120,
+      "data_rate_ms": 100,
+      "config_params": {
+        "mode": "mono"
       }
     }
   }
@@ -106,7 +118,6 @@ The combination of configuration parameters and existing data in the `data_dir` 
 | Mode | Description |
 | ---- | ----------- |
 | PURE MAPPING | In the PURE MAPPING MODE, a new map is generated from scratch. This mode is triggered if no map is found in the `data_dir/data` directory. |
-| PURE LOCALIZATION | DISCLAIMER: Currently unsupported. In the PURE LOCALIZATION MODE, an existing map is used together with new data to determine the robots location within the map. This mode is triggered if a map is found in the `data_dir/map` directory, and if `map_rate_sec` is set to `-1`. |
 | UPDATING | In UPDATING MODE, an existing map is being changed and updated with new data. This mode is triggered if a map is found in the `data_dir/map` directory and `map_rate_sec` is set to larger than or equal to `0`. Note: A value of `0` for the `map_rate_sec` is going to be reset to its default value of `60`.|
 
 ### General Config Parameters
@@ -115,16 +126,15 @@ The combination of configuration parameters and existing data in the `data_dir` 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
 | `algorithm` | string | Name of the SLAM library to be used. Currently (10 Oct 2022) supported option: `orbslamv3`. |
-| `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. The data in the data directory also dictate what type of SLAM will be run: <ul><li>If the data folder does not contain a map, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).</li> <li>If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (PURE LOCALIZATION MODE/UPDATING MODE).</li> <li>If a `map_rate_sec >= 0` is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE).</li></ul>
-| `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in LIVE mode. If the array is empty, SLAM runs in OFFLINE mode. |
+| `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. |
+| `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in live mode. If the array is empty, SLAM runs in offline mode. |
 
 **Optional Attributes**
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `map_rate_sec` | int | Map generation rate for saving current state (in seconds). The default value is `60`. If `map_rate_sec` is equal to `-1` then SLAM is run in pure localization mode. Note: A value of `0` for the `map_rate_sec` will be reset to the default value of `60`.|
-| `data_rate_ms` | int |  Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. If `0`, no new data is sent to the SLAM algorithm. |
-| `input_file_pattern` |  string | DISCLAIMER: Currently (10 Oct 2022) unused. File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data. |
+| `map_rate_sec` | int | Map generation rate for saving current state (in seconds). The default value is `60`. Note: A value of `0` for the `map_rate_sec` will be reset to the default value of `60`.|
+| `data_rate_ms` | int |  Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. |
 | `port` | string |  Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
 
@@ -160,7 +170,7 @@ If this directory structure is not present, the SLAM service creates it.
 
 The data in the data directory dictates what type of SLAM will be run: 
 * If the `map` subdirectory is empty, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).
-* If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (PURE LOCALIZATION MODE/UPDATING MODE).
+* If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (UPDATING MODE).
 
 ## Integrated Library: ORB-SLAM3
 
@@ -181,7 +191,6 @@ In this example, `mono` is selected with one camera stream named `color`:
       "sensors": ["color"],
       "map_rate_sec": 60,
       "data_rate_ms": 200,
-      "input_file_pattern": "1:1000:1",
       "config_params": {
         "mode": "mono"
       }

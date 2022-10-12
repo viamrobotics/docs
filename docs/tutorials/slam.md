@@ -163,7 +163,6 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
         "data_dir": "/home/YOUR_USERNAME/data",
         "map_rate_sec": 60,
         "data_rate_ms": 200,
-        "input_file_pattern": "1:100:1",
         "sensors": [
           "color"
         ],
@@ -228,7 +227,6 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration looks
         "data_dir": "/home/slam-bot/data",
         "map_rate_sec": 60,
         "data_rate_ms": 200,
-        "input_file_pattern": "1:100:1",
         "sensors": [
           "color"
         ],
@@ -297,7 +295,6 @@ In your web browser, navigate to the robot you set up on the Viam App ([https://
       "type": "slam",
       "attributes": {
         "data_rate_ms": 200,
-        "input_file_pattern": "1:100:1",
         "sensors": [],
         "algorithm": "orbslamv3",
         "config_params": {
