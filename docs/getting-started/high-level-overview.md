@@ -18,7 +18,7 @@ Everything that runs on your robot is open source and is available at http://git
 To get the most out of the Viam platform, we recommend using  http://app.viam.com/ to configure, manage, and control your robots.
 
 A robot's configuration lives in the cloud.
-The configuration is a description of the hardware and higher level software services--for example, how a motor is connected to a Raspberry Pi, or what matching learning models you want to use for classification.
+The configuration is a description of the hardware and higher level software services--for example, how a motor is connected to a Raspberry Pi, or what machine learning models you want to use for classification.
 
 On the robot, a single Viam process, called _viam-server_ runs, and is responsible for: 
 - keeping the configuration up-to-date
