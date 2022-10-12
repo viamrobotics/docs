@@ -19,6 +19,8 @@ Looking to get started with Viam? Check out the following:
 - [Using Viam's SDKs for a Server Hardware Implementation](/product-overviews/sdk-as-server)
 - [Viam's Data Management Platform](/product-overviews/data-management)
 
+## Security: Authentication and Authorization 
+- [Security: Authentication and Authorization ](/security)
 
 ## Tutorials
 Scuttle based tutorials
@@ -58,7 +60,6 @@ Other tutorials
 
 ## Deep Dives
 - [End-to-End Flow](/deeper-dive/robot-to-robot-comms)
-- [Authentication](/deeper-dive/security)
 
 ## Appendix
 - [Glossary](/appendix/glossary)

@@ -36,7 +36,7 @@ Your robot code can run directly on the robot itself or anywhere else with inter
 All communication across Viam is done with gRPC[^grpc], directly if wanted, or via webRTC[^webrtc], which provides authentication and encryption.
 
 [^grpc]: <a href="https://grpc.io/" target="_blank">gRPC</a>
-[^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC)" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
+[^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
 
 There are three buckets of APIs:
 - [Components](/components) - e.g. motors, arms, GPS 
