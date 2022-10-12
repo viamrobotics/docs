@@ -55,7 +55,9 @@ The configuration of SLAM happens in two steps:
 2. Add SLAM to the existing configuration.
 
 #### Add a webcam and calibrate it
-First, you will need to add a webcam to your configuration. Configure the webcam by clicking on the **CONFIG** tab. Go to the Builder, and create a component with **Name** "color" of **Type** "camera" and **Model** "webcam".
+First, you will need to add a webcam to your configuration. In your web browser, navigate to the robot you set up on the Viam App ([https://app.viam.com](https://app.viam.com)).
+
+Configure the webcam by clicking on the **CONFIG** tab. Go to the Builder, and create a component with **Name** "color" of **Type** "camera" and **Model** "webcam".
 
 <img src="../img/run_slam/01_slam_tutorial_builder.png" width="700"><br>
 
@@ -145,13 +147,13 @@ For us, the config now looks like this:
 
 #### Add SLAM to the configuration
 
-Find out your home directory by typing `pwd`. This is an example of what you will see:
+Find out your home directory by `ssh`-ing into your Pi, and typing `pwd`. This is an example of what you might see:
 ```bash
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
 ```
 
-In the CONFIG tab, click on "Raw JSON", and copy/paste the following configuration:
+In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
 
 ```json
   "services": [
@@ -181,7 +183,7 @@ In the CONFIG tab, click on "Raw JSON", and copy/paste the following configurati
   ]
 ```
 
-Change `YOUR_USERNAME` under `"data_dir": "/home/YOUR_USERNAME/data"` to your username that you found out by typing `pwd`. Save the config.
+Change the `"data_dir": "/home/YOUR_USERNAME/data"` directory to your home directory that you found out by typing `pwd`, followed by `/data`. Save the config.
 
 In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration looks now like this:
 
@@ -257,23 +259,72 @@ It might take a couple of minutes before the first map is created and can be sho
 The following setup allows you to run ORB-SLAM3 in offline mode using either one of your previously saved datasets, or our dataset that you can download and play with.
 
 ### The dataset
-You might have RGB data already saved in your `data_dir/data` directory from running SLAM in live mode. If not, don't worry! You you can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-office-hallway-1-rgbd.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
+In offline mode, SLAM will use an existing dataset to create a map.
 
-In case that you downloaded our dataset, and assuming that the zip file is located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following commands:
+You might have an RGB dataset already saved in your `data_dir/data` directory from running SLAM in live mode. If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/data.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
+
+In case that you downloaded our dataset, and assuming that the zip file is now located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following command:
 
 ```bash
-scp ~/Downloads/viam-office-hallway-1-rgbd.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
+scp ~/Downloads/data.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
 ```
-
 Be sure to replace `YOUR_USERNAME` and `YOUR_RPI_NAME` with your username and Pi name. The dataset is large, so it might take a while for it to copy over to your Pi. 
 
+Next, `ssh` into your Pi, and run:
+
+```bash
+unzip data.zip
+```
+
+Now you're ready to configure SLAM to use your dataset and to run in offline mode.
 
 ### Configuration using Viam
-SLAM will use the existing dataset to create a map. 
 
-TODO[kat]: Complete the tutorial
+Next, we will add SLAM to the configuration.
 
+First, `ssh` into your Pi and find out your home directory by typing `pwd`. This is an example of what you might see:
+```bash
+YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
+/home/YOUR_USERNAME
+```
 
+In your web browser, navigate to the robot you set up on the Viam App ([https://app.viam.com](https://app.viam.com)). In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
+
+```json
+{
+  "services": [
+    {
+      "type": "slam",
+      "attributes": {
+        "data_rate_ms": 200,
+        "input_file_pattern": "1:100:1",
+        "sensors": [],
+        "algorithm": "orbslamv3",
+        "config_params": {
+          "debug": "false",
+          "orb_scale_factor": "1.2",
+          "mode": "mono",
+          "orb_n_features": "1250",
+          "orb_n_ini_th_fast": "20",
+          "orb_n_levels": "8",
+          "orb_n_min_th_fast": "7"
+        },
+        "data_dir": "/home/YOUR_USERNAME/data",
+        "map_rate_sec": 60
+      },
+      "name": "run-offline-slam"
+    }
+  ]
+}
+```
+
+Change the `"data_dir": "/home/YOUR_USERNAME/data"` directory to your home directory that you found out by typing `pwd`, followed by `/data`. Save the config.
+
+Head over to the **CONTROL** tab, choose the "run-slam" drop-down menu, change the "Refresh frequency" to your desired frequency and watch a map come to life using the data in your dataset!
+
+{{% alert title="Note" color="note" %}}  
+It might take a couple of minutes before the first map is created and can be shown in the UI.
+{{% /alert %}}
 
 ## Troubleshooting
 
@@ -299,6 +350,17 @@ or by powering it off and on again.
 In the **CONTROL** tab, pick "Manual Refresh" under the "Refresh frequency". Click the refresh button when you're ready to take an image of the checkerboard, right click on the image, and choose "Save Image As..." to save the image.
 
 <img src="../img/run_slam/05_slam_tutorial_manual_img_save.png" width="700"><br>
+
+
+### Issue: "CURRENTLY NO MAP POINTS EXIST"
+This issue might be caused by a couple of reasons.
+
+<img src="../img/run_slam/06_slam_tutorial_no_map_points.png" width="700"><br>
+
+First of all, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up. Both in online and offline mode this might mean that you have to wait a little while before you can see a map on the UI. 
+
+Secondly, map generation depends on the quality of the dataset. Consecutive images should not be moved too far apart from each other, and images should contain enough details that can be detected by ORB-SLAM3. Images from a white wall for example will not successfully generate a map. Try to point the camera into areas that contain a lot of "information". Furthermore, in online mode, it helps to move the camera around _slowly_, such that consecutive images contain similar items that can be matched to each other. In offline mode, it can be difficult to determine the quality of the dataset. If no map can be generated using the offline dataset, a new dataset should be generated.
+
 
 ## Additional Troubleshooting
 
