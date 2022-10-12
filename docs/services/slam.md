@@ -122,7 +122,7 @@ The combination of configuration parameters and existing data in the `data_dir` 
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `map_rate_sec` | int | Map generation rate for saving current state (in seconds). The default value is `60`. If `map_rate_sec` is equal to `-1` then SLAM is run in pure localization mode. Note: A value of `0` will be reset to the default value of `60`.|
+| `map_rate_sec` | int | Map generation rate for saving current state (in seconds). The default value is `60`. If `map_rate_sec` is equal to `-1` then SLAM is run in pure localization mode. Note: A value of `0` for the `map_rate_sec` will be reset to the default value of `60`.|
 | `data_rate_ms` | int |  Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. If `0`, no new data is sent to the SLAM algorithm. |
 | `input_file_pattern` |  string | DISCLAIMER: Currently (10 Oct 2022) unused. File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. Note: X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data. |
 | `port` | string |  Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
@@ -161,7 +161,6 @@ If this directory structure is not present, the SLAM service creates it.
 The data in the data directory dictates what type of SLAM will be run: 
 * If the `map` subdirectory is empty, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).
 * If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (PURE LOCALIZATION MODE/UPDATING MODE).
-
 
 ## Integrated Library: ORB-SLAM3
 

@@ -29,7 +29,7 @@ If you haven’t already, please set up the Raspberry Pi on the [Viam App](https
 Next, we'll install the ORB-SLAM3 binary.
 
 ### Installing the ORB-SLAM3 binary
-First, check the architecture of your system by running `lscpu`. Depending on the output download and install one of the following ORB-SLAM3 binaries:
+First, `ssh` into your Pi and then check the architecture of your system by running `lscpu`. Depending on the output download and install one of the following ORB-SLAM3 binaries:
 
 * AArch64 (ARM64) (e.g., on an RPI):
     ```bash
@@ -63,7 +63,7 @@ Once you'll click on the "Create Component" button, you'll see a view on the com
 
 <img src="../img/run_slam/02_slam_tutorial_config.png" width="700"><br>
 
-Manually add the camera path to the camera's attributes. A good bet is often `video0`: 
+Manually add the camera path to the camera's attributes and save the config. A good bet is often `video0`: 
 
 ```json
 {
@@ -78,8 +78,6 @@ Go to the **CONTROL** tab, and click on the "color" dropdown menu. Toggle "View 
 Next, follow the instructions to obtain the `intrinsic_parameters` and `distortion_parameters` as described in the [camera documentation](../../components/camera#camera-models) and this [camera calibration repository](https://github.com/viam-labs/camera-calibration).
 
 You will need to print out the checkerboard and take images of the checkerboard from various angles by clicking the "Export Screenshot" button.  
-
-TODO[kat]: Add troubleshoot section that describes how to work around the broken "Export Screenshot" button.
 
 After running the calibration script from the [camera calibration repository](https://github.com/viam-labs/camera-calibration), you'll get a print out of the `intrinsic_parameters` and `distortion_parameters`. We will use the values we've obtained as an example moving forward:
 
@@ -101,16 +99,9 @@ After running the calibration script from the [camera calibration repository](ht
 }
 ```
 
-Copy/paste the parameters into your camera config by going into the **CONFIG** tab and clicking "Raw JSON".
+Copy/paste the parameters you obtained into your camera config by going into the **CONFIG** tab and clicking "Raw JSON".
 
 <img src="../img/run_slam/04_slam_tutorial_copy_paste.png" width="800px"><br>
-
-Make sure to update the `width_px` and `height_px`in `attributes` to match the `width_px` and `height_px` as defined within `intrinsic_parameters`, which are in our case:
-
-```json
-"height_px": 480,
-"width_px": 640,
-```
 
 For us, the config now looks like this:
 
@@ -140,8 +131,8 @@ For us, the config now looks like this:
         "stream": "",
         "debug": false,
         "format": "",
-        "path": "video0",
-        "path_pattern": "",
+        "video_path": "video0",
+        "video_path_pattern": "",
         "width_px": 640,
         "height_px": 480
       },
@@ -185,14 +176,14 @@ In the CONFIG tab, click on "Raw JSON", and copy/paste the following configurati
           "orb_n_min_th_fast": "7"
         }
       },
-      "name": "test-slam"
+      "name": "run-slam"
     }
   ]
 ```
 
-Change `YOUR_USERNAME` under `"data_dir": "/home/YOUR_USERNAME/data"` to your username that you found out by typing `pwd`.
+Change `YOUR_USERNAME` under `"data_dir": "/home/YOUR_USERNAME/data"` to your username that you found out by typing `pwd`. Save the config.
 
-The complete configuration in our case looks now like this:
+In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration looks now like this:
 
 ```json
 {
@@ -220,8 +211,8 @@ The complete configuration in our case looks now like this:
         "stream": "",
         "debug": false,
         "format": "",
-        "path": "video0",
-        "path_pattern": "",
+        "video_path": "video0",
+        "video_path_pattern": "",
         "width_px": 640,
         "height_px": 480
       },
@@ -232,7 +223,7 @@ The complete configuration in our case looks now like this:
     {
       "type": "slam",
       "attributes": {
-        "data_dir": "/home/YOUR_USERNAME/data",
+        "data_dir": "/home/slam-bot/data",
         "map_rate_sec": 60,
         "data_rate_ms": 200,
         "input_file_pattern": "1:100:1",
@@ -250,27 +241,67 @@ The complete configuration in our case looks now like this:
           "orb_n_min_th_fast": "7"
         }
       },
-      "name": "test-slam"
+      "name": "run-slam"
     }
   ]
 }
 ```
 
-Head over to the **CONTROL** tab, choose the "test-slam" drop-down menu, move the webcam around slowly, and watch a map come to life!
+Head over to the **CONTROL** tab, choose the "run-slam" drop-down menu, change the "Refresh frequency" to your desired frequency, move the webcam around slowly, and watch a map come to life!
 
 {{% alert title="Note" color="note" %}}  
 It might take a couple of minutes before the first map is created and can be shown in the UI. Keep moving the camera slowly within your space and wait for the map to get created.
 {{% /alert %}}
 
 ## Running ORB-SLAM3 with a dataset
-The following setup allows you to run ORB-SLAM3 in offline mode using either a previously saved dataset.
+The following setup allows you to run ORB-SLAM3 in offline mode using either one of your previously saved datasets, or our dataset that you can download and play with.
 
 ### The dataset
-This part of the tutorial assumes that you have a RGB data saved in your `data_dir/data` directory. SLAM will use this data to create a map. If you don't have your own data saved from previous runs, you can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-office-hallway-1-rgbd.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
+You might have RGB data already saved in your `data_dir/data` directory from running SLAM in live mode. If not, don't worry! You you can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-office-hallway-1-rgbd.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
 
-If you're running SLAM on your RPI, you can copy/paste that dataset
+In case that you downloaded our dataset, and assuming that the zip file is located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following commands:
+
+```bash
+scp ~/Downloads/viam-office-hallway-1-rgbd.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
+```
+
+Be sure to replace `YOUR_USERNAME` and `YOUR_RPI_NAME` with your username and Pi name. The dataset is large, so it might take a while for it to copy over to your Pi. 
+
+
+### Configuration using Viam
+SLAM will use the existing dataset to create a map. 
 
 TODO[kat]: Complete the tutorial
 
 
-### Configuration using Viam
+
+## Troubleshooting
+
+### Issue: I can't see the live video feed
+
+First, `ssh` into your Pi and then restart the `viam-server` by running:
+
+```bash
+sudo systemctl restart viam-server
+```
+
+<iframe src="https://giphy.com/embed/DUtVdGeIU8lmo" width="336" height="184" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/the-it-crowd-DUtVdGeIU8lmo">via GIPHY</a></p>
+
+If this doesn't work, you can reboot your Pi by running
+
+```bash
+sudo reboot
+```
+
+or by powering it off and on again.
+
+### Issue: The "Export Screenshot" button doesn't work
+In the **CONTROL** tab, pick "Manual Refresh" under the "Refresh frequency". Click the refresh button when you're ready to take an image of the checkerboard, right click on the image, and choose "Save Image As..." to save the image.
+
+<img src="../img/run_slam/05_slam_tutorial_manual_img_save.png" width="700"><br>
+
+## Additional Troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting).
+
+You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com) and we will be happy to help.
