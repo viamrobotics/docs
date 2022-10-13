@@ -47,7 +47,7 @@ C270 HD WEBCAM (usb-0000:01:00.0-1.2):
 	/dev/media4
 ```
 
-Once your camera is connected, go to the **CONTROL** tab, and click on the "color" dropdown menu. Toggle "View Camera" and make sure you can see the live video feed of your camera.
+Once your camera is connected, go to the **CONTROL** tab, and click on the "color" dropdown menu. Toggle "View Camera" and make sure you can see the live video feed from your camera.
 
 <img src="../img/how-to-configure-a-camera/03_camera_tutorial_image.png" width="700px"><br>
 
