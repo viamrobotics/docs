@@ -135,9 +135,9 @@ The combination of configuration parameters and existing data in the `data_dir` 
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `map_rate_sec` | int | Map generation rate for saving current state (in seconds). The default value is `60`. Note: A value of `0` for the `map_rate_sec` will be reset to the default value of `60`.|
-| `data_rate_ms` | int |  Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. |
-| `port` | string |  Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
+| `map_rate_sec` | int | [optional] Map generation rate for saving current state (in seconds). The default value is `60`. Note: A value of `0` for the `map_rate_sec` will be reset to the default value of `60`.|
+| `data_rate_ms` | int |  [optional] Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. |
+| `port` | string |  [optional] Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
 
 
@@ -201,20 +201,18 @@ In this example, `mono` is selected with one camera stream named `color`:
 ]
 ```
 
-
-In addition the following variables can be added to fine-tune cartographer's algorithm, all of which are optional:
-
 ### Configuration Overview
+The following table gives an overview over the config parameters for ORB-SLAM3. All except for `mode` are optional, and all except for `mode` and `debug` can be used to fine-tune ORB-SLAM's algorithm.
         
 | Parameter Mode | Description - The Type of SLAM to Use | Default: RGBD, Mono |
 | -------------- | ------------------------------------- | ------------------- |
 | `mode` | `rgbd` or `mono` | No default |
-| `debug` | `bool` | `false` |
-| `orb_n_features` | ORB parameter. Number of features per image. | 1250 |
-| `orb_scale_factor` | ORB parameter. Scale factor between levels in the scale pyramid. | 1.2 |
-| `orb_n_levels` | ORB parameter. Number of levels in the scale pyramid. |  8 |
-| `orb_n_ini_th_fast` | ORB parameter. Initial FAST threshold. | 20 |
-| `orb_n_min_th_fast` | ORB parameter. Lower threshold if no corners detected. | 7 |
-| `stereo_th_depth` | The number of the stereo baselines we use to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | 40 |
-| `depth_map_factor` | Factor to transform the depth map to real units. | 1000 |
-| `stereo_b` | Stereo baseline in meters. | 0.0745 |
+| `debug` | [optional] `bool` | `false` |
+| `orb_n_features` | [optional] ORB parameter. Number of features per image. | 1250 |
+| `orb_scale_factor` | [optional] ORB parameter. Scale factor between levels in the scale pyramid. | 1.2 |
+| `orb_n_levels` | [optional] ORB parameter. Number of levels in the scale pyramid. |  8 |
+| `orb_n_ini_th_fast` | [optional] ORB parameter. Initial FAST threshold. | 20 |
+| `orb_n_min_th_fast` | [optional] ORB parameter. Lower threshold if no corners detected. | 7 |
+| `stereo_th_depth` | [optional] The number of the stereo baselines we use to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | 40 |
+| `depth_map_factor` | [optional] Factor to transform the depth map to real units. | 1000 |
+| `stereo_b` | [optional] Stereo baseline in meters. | 0.0745 |
