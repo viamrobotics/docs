@@ -15,7 +15,7 @@ Most Viam components come with a _fake_ model that can be useful when testing.
 These fake components interact with Viam like real hardware, but of course, do not actually exist.
 We will be using these fake components to build out a mock robot and explore how to use Viam.
 
-In this tutorial, you will set up, control, and program a mock robotic motor and arm using fake components.
+In this tutorial, you will set up, control, and program a mock robotic arm and a mock motor sub-part using fake components.
 
 ## What you'll need for this guide
 
@@ -167,11 +167,137 @@ Now when you run this code, you should see the new mock arm positions listed in 
 
 ![Gif of a terminal window on the right with "python3 index.py" being run, then a list of four values is printed each second to the terminal. On the left side, is the mock arm from the CONTROL tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.](../img/how_to_build_a_mock_robot/image2.gif)
 
+## How to create a mock sub-part
+
+Now that you have your mock robotic arm working, let's add a mock sub-part to your robot.
+
+### What is a part?
+
+A *Robot* in Viam is one or more computers combined into one logical robot. The bounds of a robot are usually pretty clear, but can be subjective. However, it's possible with Viam to create a robot that is made out of multiple computers. Each of these computer-controlled units is referred to as a __part__. Most simple robots will have only one part, but can have as many parts as needed.
+
+Parts are organized in a tree, with one of them being the *main* part, and the others being *sub-parts*. You can access any sub-part either directly, or via any part above it in the tree. Each part runs a single *viam-server* instance.
+
+## How to configure a sub-part in the Viam app
+
+On your robot's page on the Viam app, click on the **MAIN PART** button and name your part and click **ADD NEW**.
+
+![Screenshot of the Viam app with a dropdown below the main part. "SubPart" is written in the textbox.](../img/how_to_build_a_mock_robot/image5.png)
+
+You will be creating a mock independent computer-controlled sub-part with a motor. This could be anything, let's say for the purpose of this tutorial, that this motor controls a conveyor belt in front of our mock arm on an assembly line.
+
+Navigate to your new part's **CONFIG** page and create a new motor using the __fake__ model.
+
+### How to add your sub-part as a remote
+
+Connecting your sub-part as a remote from your main robot will allow you to control your sub-parts all from one place inside of your main robot.
+
+-   From the **CONNECT** tab of your sub-part
+
+-   Copy the **Config as Remote Part**.
+
+-   Navigate back to the **CONFIG** and then the **REMOTES** tab of your main robot
+
+-   Paste your sub-parts configuration.
+
+![Screenshot from the Viam App showing the CONFIG > REMOTES with the sub-part's remote config file pasted in.](../img/how_to_build_a_mock_robot/image6.png)
+
+### How to start a new instance of Viam server for your mock sub-part
+
+Since every part needs to run an instance of Viam server, you will need to bind the sub-part to a new port so we can run two servers on your machine at the same time. You can do this by going to **CONFIG** and then going to the **NETWORK** tab. Here, you will paste the following:
+
+```JSON
+{
+    "bind_address": "localhost:8081"
+}
+```
+
+Be sure to save before continuing.
+
+### How to run a second instance of Viam server for your sub-part
+
+Under the **CONFIG** tab, click **COPY VIAM-SERVER CONFIG**.
+
+![Screenshot from the Viam app showing the "Copy Viam-Server Config" button highlighted by a red box.](../img/how_to_build_a_mock_robot/image5.png)
+
+On your local machine, create a new file called <file>viam-sub-part.json</file> and paste the contents of your server config into that file and save. From the terminal, navigate to the directory where you saved the config file, and run this command to create a new instance of Viam server using this configuration.
+
+```bash
+viam-server -config viam-sub-part.json
+```
+
+{{% alert title="Note" color="note" %}}
+You might need to stop Viam server from running on your main part. You can stop Viam with:
+
+```bash
+brew services stop viam-server
+```
+
+If you are still having trouble getting both instances of Viam server to connect, you can also copy the server config file of your main part, and save that locally (like <file>main.json</file>), and in a new terminal window, run your main server there.
+
+```bash
+viam-server -config main.json
+```
+{{% /alert %}}
+
+If you have two instances of Viam server running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main robots **CONTROL** tab.
+
+![Screenshot of Viam app's Control tab for the main part. List's the main arm, and the sub motor part.](../img/how_to_build_a_mock_robot/image2.png)
+
+## How to control a sub-part using the Viam Python SDK
+
+Now that we have our mock sub-part connected as a remote to our main mock robot, you will be able to control all of your robot's sub-parts with Viam's Python SDK. In fact, if you run your Python script again, and you review the output of `print(robot.resource_names)`, you will see that your sub-part should now be listed as an available resource for you to use.
+
+To control your motor sub-part, you will need to import the [MotorClient](https://python.viam.dev/autoapi/viam/components/motor/client/index.html). Paste this at the top of your file:
+
+```python
+from viam.components.motor import MotorClient
+```
+
+Now in your main function, you will need to instantiate your mock sub motor. Be sure that your motor's name matches the one that you have listed in your robot's resource names.
+
+```python
+motor = MotorClient.from_robot(robot=robot, name='sub-part:my_sub_motor')
+```
+
+Let's write a function that toggles your mock sub motor on and off every second. You can do that with this function.
+
+```python
+# Toggles the motor every second
+async def toggleMotor(motor: MotorClient):
+    while (True):
+        await motor.set_power(1)
+        print("go")
+        await asyncio.sleep(1)
+        await motor.stop()
+        print("stop")
+        await asyncio.sleep(1)
+    return
+```
+
+And now, you must invoke your new function. Your main function should look similar to this snippet:
+
+```python
+async def main():
+    robot = await connect()
+    print('Resources:')
+    print(robot.resource_names)
+    arm = ArmClient.from_robot(robot=robot, name='my_main_arm')
+    motor = MotorClient.from_robot(robot=robot, name='sub-part:my_sub_motor')
+    await toggleMotor(motor)
+    await randomMovement(arm)
+    await robot.close()
+```
+
+When you run this code, you will see your mock sub motor toggling between running and idle in real time from the Viam app!
+
+<!-- ![GIF of the Viam app's CONTROL tab for the main part on the left, and a terminal window running the toggleMotor script on the right. The terminal window prints the robot's resources, then prints "go" and then "stop" every second. The Viam App sub motor component shows the state is either "idle" or "running", in sync with the toggleMotor script.](../img/how_to_build_a_mock_robot/image3.gif) -->
+
+{{<video src="../img/how_to_build_a_mock_robot/go-start-demo.mp4" type="video/mp4">}}
+
 ## Next Steps
 
-In this tutorial, we showed you how to set up a mock robot so that you can learn more about using fake components in Viam app, setting up a local development environment, and writing code using the Viam SDK.
+In this tutorial, we showed you how to set up a mock robot with a sub-part so that you can learn more about using fake components, setting up a local development environment, and writing code using the Viam Python SDK.
 
 If you're ready to get started with building robots with real hardware components, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](https://docs.viam.com/tutorials/).
 
 If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
-
