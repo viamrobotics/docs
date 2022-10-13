@@ -30,6 +30,11 @@ On the robot, a single Viam process, called _viam-server_ runs, and is responsib
 
 Your robot code can run directly on the robot itself or anywhere else with internet connectivity and access all the same functionality.
 
+Robots will work even if the cloud is disconnected for weeks.
+- Configuration is cached to handle reboots
+- All APIs work locally or in the cloud.
+- Data is cached locally and synced when possible
+
 ## API
 
 All communication across Viam is done with gRPC[^grpc], directly if wanted, or via WebRTC[^webrtc], which provides authentication and encryption.
