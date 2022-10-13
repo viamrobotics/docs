@@ -3,7 +3,7 @@ title: "Control Package"
 linkTitle: "Control Package"
 weight: 10
 type: "docs"
-description: "The Control Package implments feedback control on an endpoint."
+description: "The Control Package implements feedback control on an endpoint."
 ---
 
 ## Introduction
