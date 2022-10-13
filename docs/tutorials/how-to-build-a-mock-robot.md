@@ -199,7 +199,7 @@ Connecting your sub-part as a remote from your main robot will allow you to cont
 
 -   Paste your sub-parts configuration.
 
-![Screenshot from the Viam App showing the CONFIG > REMOTES with the sub-part's remote config file pasted in.](../img/how_to_build_a_mock_robot/image6.png)
+![Screenshot from the Viam App showing the CONFIG > REMOTES with the sub-part's remote config file pasted in.](../img/how_to_build_a_mock_robot/image8.png)
 
 ### How to start a new instance of Viam server for your mock sub-part
 
@@ -217,7 +217,7 @@ Be sure to save before continuing.
 
 Under the **CONFIG** tab, click **COPY VIAM-SERVER CONFIG**.
 
-![Screenshot from the Viam app showing the "Copy Viam-Server Config" button highlighted by a red box.](../img/how_to_build_a_mock_robot/image5.png)
+![Screenshot from the Viam app showing the "Copy Viam-Server Config" button highlighted by a red box.](../img/how_to_build_a_mock_robot/image9.png)
 
 On your local machine, create a new file called <file>viam-sub-part.json</file> and paste the contents of your server config into that file and save. From the terminal, navigate to the directory where you saved the config file, and run this command to create a new instance of Viam server using this configuration.
 
@@ -241,7 +241,7 @@ viam-server -config main.json
 
 If you have two instances of Viam server running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main robots **CONTROL** tab.
 
-![Screenshot of Viam app's Control tab for the main part. List's the main arm, and the sub motor part.](../img/how_to_build_a_mock_robot/image2.png)
+![Screenshot of Viam app's Control tab for the main part. List's the main arm, and the sub motor part.](../img/how_to_build_a_mock_robot/image6.png)
 
 ## How to control a sub-part using the Viam Python SDK
 
