@@ -74,9 +74,8 @@ Looking to get started with Viam? Check out the following:
   </div>
 </div>
 
-## Security
-
-- [Security: Authentication and Authorization](/security)
+## Security: Authentication and Authorization 
+- [Security: Authentication and Authorization ](/security)
 
 ## Tutorials
 SCUTTLE-based tutorials
@@ -114,10 +113,8 @@ Other tutorials
 - [Data Management](/services/data-management)
 - [Simultaneous Localization and Mapping (SLAM)](/services/slam)
 
-
 ## Deep Dives
 - [End-to-End Flow](/deeper-dive/robot-to-robot-comms)
-
 
 ## Appendix
 - [Glossary](/appendix/glossary)

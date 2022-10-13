@@ -178,4 +178,4 @@ Saving the config and moving to the control UI, you should notice two new panels
 ![servos](../img/servos.png)
 
 Congratulations, you have successfully configured your rover to Viam! But for now, all the control is manual.
-Now that you've completed the Yahboom rover tutorial, try one of our other [tutorials](../tutorials)! 
+Now that you've completed the Yahboom rover tutorial, try one of our other [tutorials](/tutorials/)! 

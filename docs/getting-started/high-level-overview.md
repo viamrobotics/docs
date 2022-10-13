@@ -40,7 +40,7 @@ Robots will work even if the cloud is disconnected for weeks.
 All communication across Viam is done with gRPC[^grpc], directly if wanted, or via WebRTC[^webrtc], which provides authentication and encryption.
 
 [^grpc]: <a href="https://grpc.io/" target="_blank">gRPC</a>
-[^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC)" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
+[^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
 
 There are three buckets of APIs:
 - [Components](/components) - e.g. motors, arms, GPS 
