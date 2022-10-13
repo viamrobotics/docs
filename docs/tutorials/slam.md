@@ -99,7 +99,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 
 Change the `"data_dir": "/home/YOUR_USERNAME/data"` directory to your home directory that you found out by typing `pwd`, followed by `/data`. Save the config.
 
-In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration together with the [previously obtained camera configuration](#add-a-webcam-and-calibrate-it) looks now like this:
+In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration together with the [previously obtained camera configuration](#add-a-webcam-and-calibrate-it) now looks like this:
 
 ```json
 {
@@ -162,7 +162,7 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration toget
 }
 ```
 
-Head over to the **CONTROL** tab, choose the "run-slam" drop-down menu, change the "Refresh frequency" to your desired frequency, move the webcam around slowly, and watch a map come to life!
+Head over to the **CONTROL** tab and choose the "run-slam" drop-down menu. Change the "Refresh frequency" to your desired frequency, move the webcam around slowly, and watch a map come to life!
 
 {{% alert title="Note" color="note" %}}  
 It might take a couple of minutes before the first map is created and will be shown in the UI. Keep moving the camera slowly within your space and wait for the map to get created.
@@ -176,7 +176,7 @@ In offline mode, SLAM will use an existing dataset to create a map.
 
 You might have an RGB dataset already saved in your `data_dir/data` directory from running SLAM in live mode. If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/data.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
 
-In case that you downloaded our dataset, and assuming that the zip file is now located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following command:
+If you downloaded our dataset, and assuming that the zip file is now located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following command:
 
 ```bash
 scp ~/Downloads/data.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
@@ -232,7 +232,7 @@ In your web browser, navigate to the robot you set up on the Viam App ([https://
 
 Change the `"data_dir": "/home/YOUR_USERNAME/data"` directory to your home directory that you found out by typing `pwd`, followed by `/data`. Save the config.
 
-Head over to the **CONTROL** tab, choose the "run-slam" drop-down menu, change the "Refresh frequency" to your desired frequency and watch a map come to life using the data in your dataset!
+Head over to the **CONTROL** tab and choose the "run-slam" drop-down menu. Change the "Refresh frequency" to your desired frequency and watch a map come to life using the data in your dataset!
 
 {{% alert title="Note" color="note" %}}  
 It might take a couple of minutes before the first map is created and will be shown in the UI.
@@ -241,13 +241,14 @@ It might take a couple of minutes before the first map is created and will be sh
 ## Troubleshooting
 
 ### Issue: "CURRENTLY NO MAP POINTS EXIST"
-This issue might be caused by a couple of reasons.
+This issue could be caused by a couple of issues.
 
 <img src="../img/run_slam/01_slam_tutorial_no_map_points.png" width="700"><br>
+<br>
 
-First of all, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up. Both in online and offline mode this might mean that you have to wait a little while before you can see a map on the UI. 
+First, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up. Both in online and offline mode this might mean that you have to wait a little while before you can see a map on the UI. 
 
-Secondly, map generation depends on the quality of the dataset. The camera in consecutive images should not be moved too far apart from each other, and images should contain enough details that can be detected by ORB-SLAM3. Images from a white wall for example will not successfully generate a map. Try to point the camera into areas that contain a lot of information, such as objects, window frames, and similar.
+Second, map generation depends on the quality of the dataset. For consecutive images, the camera's focus should not be moved too far from that of the previous image, and images should contain enough details that can be detected by ORB-SLAM3. Images from a white wall for example will not successfully generate a map. Try to point the camera into areas that contain a lot of information, such as objects, window frames, and similar.
 
 Furthermore, in online mode, it helps to move the camera around _slowly_, such that consecutive images contain similar items that can be matched to each other.
 

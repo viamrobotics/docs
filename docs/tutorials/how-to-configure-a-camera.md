@@ -20,7 +20,7 @@ Configure the webcam by clicking on the **CONFIG** tab. Go to the Builder, and c
 
 <img src="../img/how-to-configure-a-camera/01_camera_tutorial_builder.png" width="700"><br>
 
-Once you'll click on the "Create Component" button, you'll see a view on the component that looks like this:
+Once you click **Create Component**, you'll see a view on the component that looks like this:
 
 <img src="../img/how-to-configure-a-camera/02_camera_tutorial_config.png" width="700"><br>
 
@@ -125,7 +125,7 @@ For us, the finished config now looks like this:
 
 ### Issue: I can't see the live video feed
 
-If you're working on a Pi, `ssh` into it first. In the terminal, restart the `viam-server` by running:
+If you're working on a Pi, `ssh` into it, then in the terminal, restart the `viam-server` by running:
 
 ```bash
 sudo systemctl restart viam-server
@@ -143,9 +143,12 @@ or by powering it off and on again.
 
 
 ### Issue: The "Export Screenshot" button doesn't work
-In the **CONTROL** tab, pick "Manual Refresh" under the "Refresh frequency". Click the refresh button when you're ready to take an image of the checkerboard, right click on the image, and choose "Save Image As..." to save the image.
+1. In the **CONTROL** tab, pick "Manual Refresh" under the "Refresh frequency".
+2. Click the refresh button when you're ready to take an image of the checkerboard.
+3. Right click on the image, and choose "Save Image As..." to save the image.
 
-<img src="../img/run_slam/05_slam_tutorial_manual_img_save.png" width="700"><br>
+<br>
+<img src="../img/how-to-configure-a-camera/05_camera_tutorial_manual_img_save.png" width="700"><br>
 
 
 ## Additional Troubleshooting

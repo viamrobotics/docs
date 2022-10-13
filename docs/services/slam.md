@@ -120,7 +120,7 @@ The combination of configuration parameters and existing data in the `data_dir` 
 | Mode | Description |
 | ---- | ----------- |
 | PURE MAPPING | In the PURE MAPPING MODE, a new map is generated from scratch. This mode is triggered if no map is found in the `data_dir/data` directory. |
-| UPDATING | In UPDATING MODE, an existing map is being changed and updated with new data. This mode is triggered if a map is found in the `data_dir/map` directory and `map_rate_sec` is set to larger than or equal to `0`. Note: A value of `0` for the `map_rate_sec` is going to be reset to its default value of `60`.|
+| UPDATING | In UPDATING MODE, an existing map is being changed and updated with new data. This mode is triggered when a map is found in the `data_dir/map` directory and `map_rate_sec` is set greater than or equal to `0`. Note: Setting `map_rate_sec` to a value of `0` causes the system to reset it to its default value of `60`.|
 
 **SLAM library specific sensor `mode`**
 
@@ -142,7 +142,7 @@ Every integrated SLAM library requires `mode` to be specified under its config p
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `map_rate_sec` | int | [optional] Map generation rate for saving current state (in seconds). The default value is `60`. Note: A value of `0` for the `map_rate_sec` will be reset to the default value of `60`.|
+| `map_rate_sec` | int | [optional] Map generation rate for saving current state (in seconds). The default value is `60`. Note: Setting `map_rate_sec` to a value of `0` causes the system to reset it to its default value of `60`.|
 | `data_rate_ms` | int |  [optional] Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. |
 | `port` | string |  [optional] Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
