@@ -84,7 +84,7 @@ If a remote is added to a part, then that part will proxy all requests.
 Remotes are typically implemented with SDKs.
 
 Examples: 
-- A robot arm manufacturer has a network-attached arm that implements the Viam API, so you you can add it directly to a part as a remote.
+- A robot arm manufacturer has a network-attached arm that implements the Viam API, so you can add it directly to a part as a remote.
 - A POE camera implements the camera gRPC interface, so it can be added directly as a remote.
 
 ### Process
