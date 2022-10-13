@@ -7,7 +7,7 @@ type: "docs"
 ---
 
 ## Using Expanders
-Expanders allow you add long sections of code to your topic and hide them until the reader decides to view it. 
+Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it. 
 
 Within the expander, you can still use most other shortcodes and syntax highlighting via Prism still functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable:<br><br>
 
