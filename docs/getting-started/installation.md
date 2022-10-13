@@ -176,7 +176,7 @@ Select your location and use the form on the right to create a new Robot. If thi
 
 Navigate to your new robot, which should show the setup page as shown below:
 
-![view-robot](../img/view-robot.jpg)
+![view-robot](../img/view-robot.png)
 
 ## Follow the steps on the setup tab:
 
