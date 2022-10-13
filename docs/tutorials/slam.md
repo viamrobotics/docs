@@ -1,6 +1,6 @@
 ---
-title: "Run SLAM on your robot"
-linkTitle: "Run SLAM"
+title: "Run SLAM on your Robot"
+linkTitle: "Run SLAM on your Robot"
 weight: 90
 type: "docs"
 draft: false
@@ -55,95 +55,10 @@ The configuration of SLAM happens in two steps:
 2. Add SLAM to the existing configuration.
 
 #### Add a webcam and calibrate it
-First, you will need to add a webcam to your configuration. In your web browser, navigate to the robot you set up on the Viam App ([https://app.viam.com](https://app.viam.com)).
 
-Configure the webcam by clicking on the **CONFIG** tab. Go to the Builder, and create a component with **Name** "color" of **Type** "camera" and **Model** "webcam".
-
-<img src="../img/run_slam/01_slam_tutorial_builder.png" width="700"><br>
-
-Once you'll click on the "Create Component" button, you'll see a view on the component that looks like this:
-
-<img src="../img/run_slam/02_slam_tutorial_config.png" width="700"><br>
-
-Manually add the camera path to the camera's attributes and save the config. A good bet is often `video0`: 
-
-```json
-{
-    "video_path": "video0"
-}
-```
-
-Go to the **CONTROL** tab, and click on the "color" dropdown menu. Toggle "View Camera" and make sure you can see the live video feed of your camera.
-
-<img src="../img/run_slam/03_slam_tutorial_image.png" width="700px"><br>
-
-Next, follow the instructions to obtain the `intrinsic_parameters` and `distortion_parameters` as described in the [camera documentation](../../components/camera#camera-models) and this [camera calibration repository](https://github.com/viam-labs/camera-calibration).
-
-You will need to print out the checkerboard and take images of the checkerboard from various angles by clicking the "Export Screenshot" button.  
-
-After running the calibration script from the [camera calibration repository](https://github.com/viam-labs/camera-calibration), you'll get a print out of the `intrinsic_parameters` and `distortion_parameters`. We will use the values we've obtained as an example moving forward:
-
-```json
-"intrinsic_parameters": {
-    "fy": 940.2928257873841,
-    "height_px": 480,
-    "ppx": 320.6075282958033,
-    "ppy": 239.14408757087756,
-    "width_px": 640,
-    "fx": 939.2693584627577
-},
-"distortion_parameters": {
-    "rk2": 0.8002516496932317,
-    "rk3": -5.408034254951954,
-    "tp1": -0.000008996658362365533,
-    "tp2": -0.002828504714921335,
-    "rk1": 0.046535971648456166
-}
-```
-
-Copy/paste the parameters you obtained into your camera config by going into the **CONFIG** tab and clicking "Raw JSON".
-
-<img src="../img/run_slam/04_slam_tutorial_copy_paste.png" width="800px"><br>
-
-For us, the config now looks like this:
-
-```json
-{
-  "components": [
-    {
-      "name": "color",
-      "type": "camera",
-      "model": "webcam",
-      "attributes": {
-        "intrinsic_parameters": {
-          "fy": 940.2928257873841,
-          "height_px": 480,
-          "ppx": 320.6075282958033,
-          "ppy": 239.14408757087756,
-          "width_px": 640,
-          "fx": 939.2693584627577
-        },
-        "distortion_parameters": {
-          "rk2": 0.8002516496932317,
-          "rk3": -5.408034254951954,
-          "tp1": -0.000008996658362365533,
-          "tp2": -0.002828504714921335,
-          "rk1": 0.046535971648456166
-        },
-        "stream": "",
-        "debug": false,
-        "format": "",
-        "video_path": "video0",
-        "video_path_pattern": "",
-        "width_px": 640,
-        "height_px": 480
-      },
-      "depends_on": []
-    }
-  ]
-}
-```
-
+Follow these tutorials to connect and calibrate your webcam:
+* [Connect and configure a webcam](../how-to-configure-a-camera#connect-and-configure-a-webcam)
+* [Calibrate a camera](../how-to-configure-a-camera#calibrate-a-camera)
 
 #### Add SLAM to the configuration
 
@@ -184,7 +99,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 
 Change the `"data_dir": "/home/YOUR_USERNAME/data"` directory to your home directory that you found out by typing `pwd`, followed by `/data`. Save the config.
 
-In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration looks now like this:
+In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration together with the [previously obtained camera configuration](#add-a-webcam-and-calibrate-it) looks now like this:
 
 ```json
 {
@@ -214,8 +129,8 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration looks
         "format": "",
         "video_path": "video0",
         "video_path_pattern": "",
-        "width_px": 640,
-        "height_px": 480
+        "width_px": 0,
+        "height_px": 0
       },
       "depends_on": []
     }
@@ -250,7 +165,7 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration looks
 Head over to the **CONTROL** tab, choose the "run-slam" drop-down menu, change the "Refresh frequency" to your desired frequency, move the webcam around slowly, and watch a map come to life!
 
 {{% alert title="Note" color="note" %}}  
-It might take a couple of minutes before the first map is created and can be shown in the UI. Keep moving the camera slowly within your space and wait for the map to get created.
+It might take a couple of minutes before the first map is created and will be shown in the UI. Keep moving the camera slowly within your space and wait for the map to get created.
 {{% /alert %}}
 
 ## Running ORB-SLAM3 with a dataset
@@ -320,43 +235,23 @@ Change the `"data_dir": "/home/YOUR_USERNAME/data"` directory to your home direc
 Head over to the **CONTROL** tab, choose the "run-slam" drop-down menu, change the "Refresh frequency" to your desired frequency and watch a map come to life using the data in your dataset!
 
 {{% alert title="Note" color="note" %}}  
-It might take a couple of minutes before the first map is created and can be shown in the UI.
+It might take a couple of minutes before the first map is created and will be shown in the UI.
 {{% /alert %}}
 
 ## Troubleshooting
 
-### Issue: I can't see the live video feed
-
-First, `ssh` into your Pi and then restart the `viam-server` by running:
-
-```bash
-sudo systemctl restart viam-server
-```
-
-<iframe src="https://giphy.com/embed/DUtVdGeIU8lmo" width="336" height="184" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/the-it-crowd-DUtVdGeIU8lmo">via GIPHY</a></p>
-
-If this doesn't work, you can reboot your Pi by running
-
-```bash
-sudo reboot
-```
-
-or by powering it off and on again.
-
-### Issue: The "Export Screenshot" button doesn't work
-In the **CONTROL** tab, pick "Manual Refresh" under the "Refresh frequency". Click the refresh button when you're ready to take an image of the checkerboard, right click on the image, and choose "Save Image As..." to save the image.
-
-<img src="../img/run_slam/05_slam_tutorial_manual_img_save.png" width="700"><br>
-
-
 ### Issue: "CURRENTLY NO MAP POINTS EXIST"
 This issue might be caused by a couple of reasons.
 
-<img src="../img/run_slam/06_slam_tutorial_no_map_points.png" width="700"><br>
+<img src="../img/run_slam/01_slam_tutorial_no_map_points.png" width="700"><br>
 
 First of all, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up. Both in online and offline mode this might mean that you have to wait a little while before you can see a map on the UI. 
 
-Secondly, map generation depends on the quality of the dataset. Consecutive images should not be moved too far apart from each other, and images should contain enough details that can be detected by ORB-SLAM3. Images from a white wall for example will not successfully generate a map. Try to point the camera into areas that contain a lot of "information". Furthermore, in online mode, it helps to move the camera around _slowly_, such that consecutive images contain similar items that can be matched to each other. In offline mode, it can be difficult to determine the quality of the dataset. If no map can be generated using the offline dataset, a new dataset should be generated.
+Secondly, map generation depends on the quality of the dataset. The camera in consecutive images should not be moved too far apart from each other, and images should contain enough details that can be detected by ORB-SLAM3. Images from a white wall for example will not successfully generate a map. Try to point the camera into areas that contain a lot of information, such as objects, window frames, and similar.
+
+Furthermore, in online mode, it helps to move the camera around _slowly_, such that consecutive images contain similar items that can be matched to each other.
+
+In offline mode, it can be difficult to determine the quality of the dataset. If no map can be generated using the offline dataset, a new dataset should be generated.
 
 
 ## Additional Troubleshooting

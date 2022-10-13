@@ -25,12 +25,14 @@ As of 11 October 2022, the following SLAM library is integrated:
 [^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORB-SLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
 
 
-### Coming Soon
+{{% alert title="Note" color="note" %}}  
 * Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`. We append the timestamp to each filename prior to saving images, maps, and *.yaml files. We will be updating the timestamp format to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
+{{% /alert %}}
+
 
 ## Requirements
 Running the SLAM Service with your robot requires the following:
-1. A binary running the custom SLAM library stored in `/usr/local/bin`.
+1. A binary running the custom SLAM library stored in your PATH (e.g., `/usr/local/bin`).
 2. Changes to the config specifiying which SLAM library is used, including library specific parameters.
 3. A data folder as it is pointed to by the config parameter `data_dir`.
 

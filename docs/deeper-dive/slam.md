@@ -26,6 +26,9 @@ The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ 
 
 Coming soon! 
 
+TODO: Do we want to discuss that RGBD cameras produce a rgb and depth folder inside data?
+--> Add an explanation of what kind of subfolders are created for the "mono" case and the "rgbd" case (i.e. rgb, and rgbd + depth). Elaborate on what the user should keep in mind when creating & integrating their own slam libraries, and whether or not it is important for them to document the subfolders that are created.
+
 
 <pre>
 .
