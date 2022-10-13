@@ -10,7 +10,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 <div style="column-count:2;column-gap-40px">
 <div>
-<p><strong>Goal</strong>: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam vision service color detector. 
+<p><strong>Goal</strong>: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision#detection">vision service color detector</a>. 
 </p></div>
 <div><img src="../img/lf-following1.gif" /></div>
 </div>
@@ -22,21 +22,22 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
     - How to establish communication between the code you write and your robot
     - How to send commands to components of your robot
 
-[^psdk]: Viam Python SDK: <a href="https://github.com/viamrobotics/viam-python-sdk" target="_blank">ht<span></span>tps://github.com/viamrobotics/viam-python-sdk</a>
+[^psdk]: Viam Python SDK: <a href="https://github.com/viamrobotics/viam-python-sdk/" target="_blank">ht<span></span>tps://github.com/viamrobotics/viam-python-sdk</a>
 
 
-<a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8" target="_blank">**Line Follower GitHub Gist Code**</a>[^jgist]
+<a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8/" target="_blank">**Line Follower GitHub Gist Code**</a>[^jgist]
 
-[^jgist]: Line Follower GitHub Gist Code: <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8" target="_blank">ht<span></span>tps://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8</a>
+[^jgist]: Line Follower GitHub Gist Code: <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8/" target="_blank">ht<span></span>tps://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8</a>
 
 ## What you'll need
-- A single board computer [running an instance of Viam server](../../getting-started/installation)
+- A single board computer [running an instance of viam-server](/getting-started/installation/)
     - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
-- [A wheeled base component](../../components/base/). We used a <a href="https://www.scuttlerobot.org/shop" target="_blank" />SCUTTLE Robot</a>[^sr]  for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
-[^sr]: SCUTTLE Robot <a href="https://www.scuttlerobot.org/shop" target="_blank" />https://www.scuttlerobot.org/shop</a>
+- [A wheeled base component](/components/base/)
+    - We used a <a href="https://www.scuttlerobot.org/shop/" target="_blank" />SCUTTLE Robot</a>[^sr]  for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
+[^sr]: SCUTTLE Robot <a href="https://www.scuttlerobot.org/shop/" target="_blank" />https://www.scuttlerobot.org/shop/</a>
 
 - RGB camera
-    - A common off-the-shelf webcam [(such as this)](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html) with a ribbon connector to the Pi’s camera module port.
+    - A common off-the-shelf webcam [(such as this)](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html/) with a ribbon connector to the Pi’s camera module port.
     - You must mount the camera to the front of the rover pointing down towards the floor.
 - Colored tape and floor space
     - Any color is suitable as long as its color is somewhat different from the floor color. For our tutorial, we used green electrical tape. 
@@ -46,16 +47,16 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 <img src="../img/lf-scuttle2.png" width="600" /></p>
 
 ## Configuration using Viam
-If you haven’t already, please set up the Raspberry Pi per [these instructions](../../getting-started/installation).
+If you haven’t already, please set up the Raspberry Pi per [these instructions](/getting-started/installation/).
 
-### Configuring the Hardware Components
-Configure the base per the [Base Component topic](../../components/base/).
+### Configuring the hardware components
+Configure the base per the [Base Component topic](/components/base/).
 	
-Configure the [camera](../../components/camera) as type `webcam`. When you create a webcam component in Viam's config builder, Viam's discovery service will automatically detect cameras attached to your robot and suggest possible path attributes in a dropdown list. The top one (often "video0") is a good bet.
+Configure the [camera](/components/camera/) as type `webcam`. When you create a webcam component in Viam's config builder, Viam's discovery service will automatically detect cameras attached to your robot and suggest possible `video_path` attributes in a dropdown list. The top one (often "video0") is a good bet.
 
 ![lf-cam-path.png](../img/lf-cam-path.png)
 
-If this doesn't work, you can manually add the camera path (with the correct path in place of “video0”) to the camera’s attributes:
+If this doesn't work, you can manually add the camera's `video_path` (with the correct path in place of “video0”) to the camera’s attributes:
 
 ```JSON
 {
@@ -223,18 +224,18 @@ When the rover no longer sees any of the line color anywhere in the front portio
 <img class="center" src="../img/lf-tape-follow3.gif" width="300" /></p><br>
 
 ## Let’s write some code!
-<ol><li class="spacing">Open a file in your favorite IDE and paste-in <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8" target="_blank">the code from the earlier referenced GIST</a>.</li>
+<ol><li class="spacing">Open a file in your favorite IDE and paste-in <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8/" target="_blank">the code from the earlier referenced GIST</a>.</li>
 <li class="spacing">Adjust the components names to match the component names you created in your config file. 
 In this case, the component names that you may need to change are <strong>tread_base</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
 <li class="spacing">For those who care about linting and formatting, we used <a href="https://flake8.pycqa.org/en/latest/">flake8</a> as the linter with the max line length changed to 140 and Black for formatting.
 <img src="../img/lf-lint4.png" /></li>
-<li class="spacing">From your robot’s page on the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>), go to the Connect tab. 
+<li class="spacing">From your robot’s page on the Viam App (<a href="https://app.viam.com/">https://app.viam.com</a>), go to the Connect tab. 
 Find the Python SDK field and copy the robot address (which will likely have the form
 <span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file. 
 This allows your code to connect to your robot.</li>
 <li class="spacing">Save the code in a directory of your choice.</li>
 <li class="spacing">To get the code onto the Pi you have a few options. 
-If you intend to make lots of tweaks to the code over time it may be most convenient for you to set up a <a href="https://mutagen.io/documentation/introduction/getting-started">Mutagen Sync</a> session from a directory on your computer to a directory on your Pi. 
+If you intend to make lots of tweaks to the code over time it may be most convenient for you to set up a <a href="https://mutagen.io/documentation/introduction/getting-started/">Mutagen Sync</a> session from a directory on your computer to a directory on your Pi. 
 If you’re just trying to get this running as quickly as possible, do the following:</li>
 <ol>
 <li class="spacing" style="list-style-type:lower-alpha">In your Pi terminal, navigate to the directory where you’d like to save your code. 
@@ -246,10 +247,10 @@ Run,</br><span class="file">nano rgbFollower.py</span></br>(or replace <span cla
 **References**:
 * Line Follower GitHub Gist Code: <a href="" target="_blank">ht<span><span>tps://gist.github.com/JessamyT/ eab8ee5996343d070d0c392eb63204e8</a>
 * Flake8: <a href="https://flake8.pycqa.org/en/latest/" target="_blank">ht<span><span>tps://flake8.pycqa.org/en/latest/</a>
-* Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started" target="_blank">ht<span><span>tps://mutagen.io/documentation/introduction/getting-started</a>
+* Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span><span>tps://mutagen.io/documentation/introduction/getting-started</a>
 
 <h2>Controlling your rover with Viam</h2>
-<ol><li class="spacing">Go to your robot’s page on the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>). Verify that it’s connected by refreshing the page and ensuring that <strong>Last Online</strong> (in the top banner) says, “Live.”</li>
+<ol><li class="spacing">Go to your robot’s page on the Viam App (<a href="https://app.viam.com/">https://app.viam.com</a>). Verify that it’s connected by refreshing the page and ensuring that <strong>Last Online</strong> (in the top banner) says, “Live.”</li>
 <li class="spacing">Go to the <strong>Control</strong> tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around. 
 Ensure that the base moves as expected. 
 If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.</li>
@@ -309,9 +310,9 @@ This will give it a wider field of view so it takes longer for the line to go ou
 
 ## Additional Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com) and we will be happy to help.
+You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com/) and we will be happy to help.
 
 ## Bonus Challenges!
 1. Automatically detect what color line the robot is on and follow that.

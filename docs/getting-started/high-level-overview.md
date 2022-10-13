@@ -18,7 +18,7 @@ Everything that runs on your robot is open source and is available at http://git
 To get the most out of the Viam platform, we recommend using  http://app.viam.com/ to configure, manage, and control your robots.
 
 A robot's configuration lives in the cloud.
-The configuration is a description of the hardware and higher level software services--for example, how a motor is connected to a Raspberry Pi, or what matching learning models you want to use for classification.
+The configuration is a description of the hardware and higher level software services--for example, how a motor is connected to a Raspberry Pi, or what machine learning models you want to use for classification.
 
 On the robot, a single Viam process, called _viam-server_ runs, and is responsible for: 
 - keeping the configuration up-to-date
@@ -29,6 +29,11 @@ On the robot, a single Viam process, called _viam-server_ runs, and is responsib
 - running higher level services like computer vision, data synchronization, or motion planning
 
 Your robot code can run directly on the robot itself or anywhere else with internet connectivity and access all the same functionality.
+
+Robots will work even if the cloud is disconnected for weeks.
+- Configuration is cached to handle reboots
+- All APIs work locally or in the cloud.
+- Data is cached locally and synced when possible
 
 ## API
 
@@ -84,7 +89,7 @@ If a remote is added to a part, then that part will proxy all requests.
 Remotes are typically implemented with SDKs.
 
 Examples: 
-- A robot arm manufacturer has a network-attached arm that implements the Viam API, so you you can add it directly to a part as a remote.
+- A robot arm manufacturer has a network-attached arm that implements the Viam API, so you can add it directly to a part as a remote.
 - A POE camera implements the camera gRPC interface, so it can be added directly as a remote.
 
 ### Process

@@ -123,7 +123,7 @@ Next, type in your password and press enter.
 On successful login, you'll be presented with the terminal of your Raspberry Pi. Now you can run any commands on your Raspberry Pi through this terminal remotely (within the current network) without having to access your Raspberry Pi physically.
 
 ### Installing pip on a Raspberry Pi
-<a href="https://pip.pypa.io/en/stable/#" target="_blank">Package Installer for Python, aka, pip</a>[^pip] is the <a href="https://packaging.python.org/guides/tool-recommendations/" target="_blank"> official package installer for Python</a>[^pysoftrec] .
+<a href="https://pip.pypa.io/en/stable/#" target="_blank">Package Installer for Python, aka, pip</a>[^pip] is the <a href="https://packaging.python.org/guides/tool-recommendations/" target="_blank"> official package installer for Python</a>[^pysoftrec].
 You can use it to install packages from the <a href="https://pypi.org/" target="_blank">Python Package Index</a>[^pypack] and other indexes, such as the Viam Python SDK package. You can install pip by typing the following command into the terminal:
 
 [^pypack]:Python Package Index: <a href="https://pypi.org/" target="_blank">ht<span></span>tps://pypi.org/</a>

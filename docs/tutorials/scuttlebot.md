@@ -263,7 +263,7 @@ Once you save the config, you'll be able to see your camera's stream in the Cont
 
 ## On Completion
 After successfully completing this tutorial, you should have a fully functional SCUTTLE Robot. You can drive it around and view its camera stream. To take things to the next level, check out our [Color Detection with SCUTTLE Robot](../color-detection-scuttle) tutorial or create your own camera-related tutorial.
-Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle-gamepad/) tutorial or our [Line-Follower Robot] tutorial (../webcam-line-follower-robot).
+Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle-gamepad/) tutorial or our [Line Follower Robot tutorial](../webcam-line-follower-robot).
 
 ## Documents Referenced
 
