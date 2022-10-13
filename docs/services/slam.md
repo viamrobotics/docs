@@ -122,6 +122,13 @@ The combination of configuration parameters and existing data in the `data_dir` 
 | PURE MAPPING | In the PURE MAPPING MODE, a new map is generated from scratch. This mode is triggered if no map is found in the `data_dir/data` directory. |
 | UPDATING | In UPDATING MODE, an existing map is being changed and updated with new data. This mode is triggered if a map is found in the `data_dir/map` directory and `map_rate_sec` is set to larger than or equal to `0`. Note: A value of `0` for the `map_rate_sec` is going to be reset to its default value of `60`.|
 
+**SLAM library specific sensor `mode`**
+
+Every integrated SLAM library requires `mode` to be specified under its config parameters, which defines which sensor types or combinations are used. You can find more information on the `mode` in the description of the integrated library:
+
+* [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
+
+
 ### General Config Parameters
 **Required Attributes**
 
@@ -146,7 +153,7 @@ The combination of configuration parameters and existing data in the `data_dir` 
 The `config_params` is a catch-all attribute for parameters that are unique to the SLAM library being used. These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
 
 You can find details on which inputs you can include for the available libraries in the following section:
-* [ORB-SLAM3](#integrated-library-orb-slam3)
+* [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
 
 ## The Data Directory
 
@@ -204,7 +211,7 @@ In this example, `mono` is selected with one camera stream named `color`:
 ### Configuration Overview
 The following table gives an overview over the config parameters for ORB-SLAM3. All except for `mode` are optional, and all except for `mode` and `debug` can be used to fine-tune ORB-SLAM's algorithm.
         
-| Parameter Mode | Description - The Type of SLAM to Use | Default: RGBD, Mono |
+| Parameter Mode | Description - The Type of SLAM to Use | Default value |
 | -------------- | ------------------------------------- | ------------------- |
 | `mode` | `rgbd` or `mono` | No default |
 | `debug` | [optional] `bool` | `false` |
