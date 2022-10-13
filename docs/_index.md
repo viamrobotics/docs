@@ -74,6 +74,9 @@ Looking to get started with Viam? Check out the following:
   </div>
 </div>
 
+## Security
+
+- [Security: Authentication and Authorization](/security)
 
 ## Tutorials
 SCUTTLE-based tutorials
@@ -114,7 +117,7 @@ Other tutorials
 
 ## Deep Dives
 - [End-to-End Flow](/deeper-dive/robot-to-robot-comms)
-- [Authentication](/deeper-dive/security)
+
 
 ## Appendix
 - [Glossary](/appendix/glossary)
