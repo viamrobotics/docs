@@ -241,7 +241,7 @@ It might take a couple of minutes before the first map is created and will be sh
 ## Troubleshooting
 
 ### Issue: "CURRENTLY NO MAP POINTS EXIST"
-This issue could be caused by a couple of issues.
+This issue has a couple of potential causes.
 
 <img src="../img/run_slam/01_slam_tutorial_no_map_points.png" width="700"><br>
 <br>

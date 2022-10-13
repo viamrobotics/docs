@@ -211,7 +211,7 @@ In this example, `mono` is selected with one camera stream named `color`:
 ### Configuration Overview
 The following table gives an overview over the config parameters for ORB-SLAM3. All except for `mode` are optional, and all except for `mode` and `debug` can be used to fine-tune ORB-SLAM's algorithm.
         
-| Parameter Mode | Description - The Type of SLAM to Use | Default value |
+| Parameter Mode | Description - The Type of SLAM to Use | Default Value |
 | -------------- | ------------------------------------- | ------------------- |
 | `mode` | `rgbd` or `mono` | No default |
 | `debug` | [optional] `bool` | `false` |
