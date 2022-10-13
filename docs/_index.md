@@ -55,6 +55,7 @@ Looking to get started with Viam? Check out the following:
 - [Viam Overview](/getting-started/high-level-overview)
 - [Viam Use Cases](http://www.viam.com/use-cases)
 - [Intro Video](https://www.youtube.com/watch?v=TjmvnEdNVKs&ab_channel=EliotHorowitz)
+- [Build a Mock Robot with no hardware](/tutorials/how-to-build-a-mock-robot/)
 
 ## Product Overviews
 - [Overview of Viam-Server and RDK](/product-overviews/rdk)
