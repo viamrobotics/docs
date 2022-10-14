@@ -69,6 +69,8 @@ If you're signing up without an invitation link, go to [app.viam.com](https://ap
 Click the drop down in the upper right corner of the page.
 You should see your name, email and a list of organizations you belong to.
 
+![my-org](/product-overviews/img/fleet-management/my-org.png)
+
 If you used an email invite to sign up, the organization that invited you should be listed here.
 You also have a personal organization for projects not associated with other organizations.
 
@@ -88,6 +90,14 @@ You can create additional locations by typing a new location name in the **New L
 You can delete a location that is *empty of robots* by clicking the trash can icon next to the location name at the top of the page for that location.
 The icon will not appear if there are any robots in the location.
 
+{{% alert title="Sub-locations" color="note" %}}
+- To make a *sub-location*, create a location, first add at least one robot to it. 
+From the bottom of the soon-to-be-sub-location's page, use the **New Parent Location** drop down to choose a parent location.
+Click **CHANGE** after selecting the new parent location.
+You can continue nesting sub-locations in this way.
+- To return a sub-location to the first level of locations, select **Root** from the New Parent Location drop down and click **CHANGE**.
+{{% /alert %}}
+
 In the navigation bar on the left, navigate to the location (or sub-location) where you want to create a robot.
 
 Click a location's name to display the list of robots associated with that location.
@@ -95,12 +105,23 @@ Click a location's name to display the list of robots associated with that locat
 ### Creating robots
 When you click on a location that does not contain any robots, you'll be prompted to create a robot by typing in the **New Robot** field and clicking **ADD ROBOT**.
 
+![create-robot](../img/fleet-management/create-robot.png)
+
+You can delete a robot by checking the "Sure?" box in the lower left of the robot page and clicking **DELETE ROBOT**.
+
+![delete](../img/fleet-management/delete.png)
+
 Click the name of a robot to go to the robot page, where you'll find a variety of powerful tools for working with your robot.
 
 ### The robot page
 The banner at the top of the robot page displays the robot's location, name, and a drop down list of all parts of that robot.
 The first part you create will be the _main part_ but you can create additional parts in the drop down.
+
+![part-drop-down](../img/fleet-management/part-drop-down.png)
+
 To delete a part or make it the main part, use the buttons in the top right of the **Config** tab.
+
+![part-mgmt](../img/fleet-management/part-mgmt.png)
 
 If you've connected your robot to a machine running viam-server (instructions below), the banner also displays when the robot was last online, which version of viam-server it is running, the host name, IP address(es), and its operating system.
 
@@ -115,6 +136,8 @@ Here you can start adding robot components, services and remotes.
 Toggle between **Builder** (default) or **Raw JSON** in the **Mode** selector in the upper left.
 Builder provides a more graphical UI with added features such as a built-in webcam path discovery service.
 Raw JSON mode can be useful for users who are familiar with writing JSON, and for seeing and editing everything at once.
+
+Within the **CONFIG** tab (in builder mode) are separate sub-tabs for components, services, remotes, processes, network, authentication, and fragments, so be sure to configure these in their respective tabs.
 
 Details on configuring specific hardware components and services can be found in these docs:
 - [Components](/components/)
