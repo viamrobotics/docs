@@ -3,7 +3,7 @@ title: "Make an LED Blink with a Raspberry Pi Using the Viam App"
 linkTitle: "Blink an LED with a Pi and the Viam App"
 weight: 87
 type: "docs"
-description: "How to make an LED blink with a Raspberry Pi and the Viam App."
+description: "How to make an LED blink with a Raspberry Pi and the Viam app."
 
 ---
 
@@ -40,7 +40,7 @@ You will need the following tools to complete the project:
 
 ## Project setup
 
-Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](../../getting-started/installation) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam App.](../../getting-started/installation/#adding-your-pi-on-the-viam-app)
+Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](../../getting-started/installation) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam app.](../../getting-started/installation/#adding-your-pi-on-the-viam-app)
 
 {{% alert title="Note" color="note" %}}  
 If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
@@ -82,23 +82,23 @@ You can now hook the LED and resistor up to GPIO 14 on pin 8 on your Raspberry P
 
 When hooking up the circuit, note the *polarity* of the LED. You will notice that the LED has long and short leads. The long lead is the positive side, which is known as the anode, the short lead is the negative side, which is known as the cathode. The long anode should be connected to the resistor and the short cathode should be connected to the ground via the blue jumper wire and pin 6 on the Raspberry Pi as shown on the diagram.
 
-## Configuring your Bot using the Viam App
+## Configuring your bot using the Viam app
 
-Before proceeding, be sure that you have added your Pi to the Viam App. Steps on how to do this can be found in the [Adding your Pi on the Viam App](../../getting-started/installation/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
+Before proceeding, be sure that you have added your Pi to the Viam app. Steps on how to do this can be found in the [Adding your Pi on the Viam App](../../getting-started/installation/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
 
-Now that we have got that out of the way, let's get back to setting up your robot in the Viam App. First, go to the Viam App at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's config.
+Now that we have got that out of the way, let's get back to setting up your robot in the Viam app. First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's config.
 
 ![Screenshot of the Vam App showing the default board configuration on the "components" tab.](../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image2.png)
 
 The first component you will add is the **`board`**, which represents your single board computer, which in this case is the Raspberry Pi. This is where you will wire all other components. To create a new component, select **`Create a component`**. For the component **`Type`**, select **`board`**. Then you can name the **`board`** whatever you like as long as you are consistent when referring to it later; we'll name this component **`local`** since it is the **`board`** we will communicate with directly. For **`Model`**, select **`pi`**, then click **`new component`**. Your board component's config will generate the following JSON attributes:
 
-![Screenshot of the Viam App showing the board configuration on the 'config' tab. The board is named "local" and the attributes are shown as empty braces.](../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image6.png)
+![Screenshot of the Viam app showing the board configuration on the 'config' tab. The board is named "local" and the attributes are shown as empty braces.](../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image6.png)
 
-As you add your board component to your robot in the Viam App, it generates a tab for your board in the Control tab. Here, you can click on "**Get**" to get the current status of your pin. The first time you click "**Get Pin State**", it should return "Pin: 8 is low."![Screenshot of the Viam App showing the board configuration on the "**Connect**" tab. The "Board Local" row is expanded, and under the "Get" row, the pin is set to "8." A red box is around the "**Get Pin State**" button and the output, which reads, "Pin: 8 is low."](../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image5.png)
+As you add your board component to your robot in the Viam app, it generates a tab for your board in the Control tab. Here, you can click on "**Get**" to get the current status of your pin. The first time you click "**Get Pin State**", it should return "Pin: 8 is low."![Screenshot of the Viam app showing the board configuration on the "**Connect**" tab. The "Board Local" row is expanded, and under the "Get" row, the pin is set to "8." A red box is around the "**Get Pin State**" button and the output, which reads, "Pin: 8 is low."](../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image5.png)
 
 You can now select "**Set**" to control the status of your pin to "high." It will look like this:
 
-![Screenshot of the Viam App showing the board configuration on the "Connect" tab. The "Board Local" row is expanded, and under the "Set" row, the pin is set to "8." A red box is around the "Set Pin State" field.](../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image8.png)
+![Screenshot of the Viam app showing the board configuration on the "Connect" tab. The "Board Local" row is expanded, and under the "Set" row, the pin is set to "8." A red box is around the "Set Pin State" field.](../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image8.png)
 
 After setting your pin to "high" the LED should illuminate. You can play around with values "**low**" and "**high**" by setting them differently, and you will see your LED toggle on and off.
 

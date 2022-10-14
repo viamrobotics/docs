@@ -12,11 +12,11 @@ Viam's Software Development Kits (SDKs) provide a wide array of components to cu
 
 The Viam server component implementation allows you to create custom components that interface with the `viam-server` using Viam's SDKs. A server component is a subclass of a [component](https://python.viam.dev/autoapi/viam/components/component_base/index.html?highlight=component#module-viam.components.component_base), that allows you to register the new component with the `viam-server` as a remote after you spin up an SDK server (which can have one or many custom components).
 
-In other words, a server component is a way for you to connect to, control, and monitor any unsupported robots, sensors, or components using any of Viam's clients, including our SDKs and the Viam App.
+In other words, a server component is a way for you to connect to, control, and monitor any unsupported robots, sensors, or components using any of Viam's clients, including our SDKs and the Viam app.
 
 ## Why use the SDK to create a custom server component implementation?
 
-While the main Viam RDK is written in Golang, you can create custom components using the Viam SDKs (like Python) and connect them to a robot as a `remote` component. This allows you to extend the functionality of a robot, or even create an entire robot exclusively. Once you have created and registered your server component with the `viam-server`, you will be able to control and monitor your from the Viam SDK and from the [Viam App](https://app.viam.com/).
+While the main Viam RDK is written in Golang, you can create custom components using the Viam SDKs (like Python) and connect them to a robot as a `remote` component. This allows you to extend the functionality of a robot, or even create an entire robot exclusively. Once you have created and registered your server component with the `viam-server`, you will be able to control and monitor your from the Viam SDK and from the [Viam app](https://app.viam.com/).
 
 For example, let's say that you have built a custom robotic arm that is not supported by [Viam's arm component from our SDK](https://python.viam.dev/autoapi/viam/components/arm/index.html?highlight=arm#module-viam.components.arm), and you want to integrate it with Viam. You will need to create a server component and register the new arm in order to use it with the Viam SDK. Once your new arm is registered, you will be able to use it remotely with Viam.
 

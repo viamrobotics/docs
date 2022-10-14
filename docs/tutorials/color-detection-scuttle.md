@@ -9,8 +9,8 @@ description: "Instructions for detecting and following a colored object with a S
 
 {{% alert title="Note" color="note" %}}  
 
-In the Python code, you must add your robot's address and secret, which are found on the **Connect** tab of the Viam App at [https://app.viam.com](https://app.viam.com) in your web browser. 
-Viam App pre-populates the **Connect** tab with the robot name, address, and secret:<br>
+In the Python code, you must add your robot's address and secret, which are found on the **Connect** tab of the Viam app at [https://app.viam.com](https://app.viam.com) in your web browser. 
+Viam app pre-populates the **Connect** tab with the robot name, address, and secret:<br>
 <img src="../img/color-rdk-remote-cfg.png" />
 {{% /alert %}}
 

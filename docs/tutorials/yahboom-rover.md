@@ -3,13 +3,13 @@ title: "Setting up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam"
 linkTitle: "Driving a Yahboom Rover with a Gamepad"
 weight: 50
 type: "docs"
-description: "Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam App."
+description: "Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app."
 ---
 TODO: introduce the config concept, attributes, and depends_on.
 
 ## Configuring the Board 
 
-Go to the Viam App ([https://app.viam.com](https://app.viam.com)) in a web browser, and navigate to the robot's config.
+Go to the Viam app ([https://app.viam.com](https://app.viam.com)) in a web browser, and navigate to the robot's config.
 
 ![config](../img/config.png)
 
@@ -49,7 +49,7 @@ Consider possibly holding your robot off the ground so it cannot run away or col
 
 ![control_rightmotor](../img/control-rightmotor.png)
 
-At this point, the wheels on one side of your robot should be working through the Viam App ([https://app.viam.com](https://app.viam.com)).
+At this point, the wheels on one side of your robot should be working through the Viam app ([https://app.viam.com](https://app.viam.com)).
 Now try to add the other set of wheels using the same sets and see if you can get this bot driving with all of the components working together.
 To do this, we’ll have to add the other `motor` controller and link them together with a `base`.
 

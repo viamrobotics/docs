@@ -229,7 +229,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
 In this case, the component names that you may need to change are <strong>tread_base</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
 <li class="spacing">For those who care about linting and formatting, we used <a href="https://flake8.pycqa.org/en/latest/">flake8</a> as the linter with the max line length changed to 140 and Black for formatting.
 <img src="../img/lf-lint4.png" /></li>
-<li class="spacing">From your robot’s page on the Viam App (<a href="https://app.viam.com/">https://app.viam.com</a>), go to the Connect tab. 
+<li class="spacing">From your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>), go to the Connect tab. 
 Find the Python SDK field and copy the robot address (which will likely have the form
 <span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file. 
 This allows your code to connect to your robot.</li>
@@ -250,11 +250,11 @@ Run,</br><span class="file">nano rgbFollower.py</span></br>(or replace <span cla
 * Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span><span>tps://mutagen.io/documentation/introduction/getting-started</a>
 
 <h2>Controlling your rover with Viam</h2>
-<ol><li class="spacing">Go to your robot’s page on the Viam App (<a href="https://app.viam.com/">https://app.viam.com</a>). Verify that it’s connected by refreshing the page and ensuring that <strong>Last Online</strong> (in the top banner) says, “Live.”</li>
+<ol><li class="spacing">Go to your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>). Verify that it’s connected by refreshing the page and ensuring that <strong>Last Online</strong> (in the top banner) says, “Live.”</li>
 <li class="spacing">Go to the <strong>Control</strong> tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around. 
 Ensure that the base moves as expected. 
 If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.</li>
-<p  class="Mycaption"><em>Figure 3: Driving the base from the Viam App's Control tab.</em><br>
+<p  class="Mycaption"><em>Figure 3: Driving the base from the Viam app's Control tab.</em><br>
 <img class="spacing" src="../img/lf-viamapp-base-view5.gif" width="600" /></p></li>
 <li class="spacing">Now for the creative part: Use your colored tape to make a path for your robot to follow. 
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another. 
