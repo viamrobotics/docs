@@ -193,7 +193,7 @@ Navigate to your new part's **CONFIG** page and create a new motor using the __f
 
 Connecting your sub-part as a remote from your main robot will allow you to control your sub-parts all from one place inside of your main robot.
 
--   From the **CONNECT** tab of your sub-part
+From the **CONNECT** tab of your sub-part:
 
 -   Copy the **Config as Remote Part**.
 
