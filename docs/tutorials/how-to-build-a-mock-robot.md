@@ -49,11 +49,11 @@ For the component **Type**, select **arm/motor**.
 Then you can name them whatever you like (You will need to reference these names later once we connect to your mock robot with the Python SDK).
 For each **Model**, select **fake**, then click **new component**.
 
-### How to install Viam server on your computer
+### How to install viam-server on your computer
 
-Before you proceed with controlling your mock robot, you are going to need to install Viam server on your development machine.
+Before you proceed with controlling your mock robot, you are going to need to install viam-server on your development machine.
 
-Follow the steps outlined on the **SETUP** tab of the Viam app in order to install Viam server on your local computer.
+Follow the steps outlined on the **SETUP** tab of the Viam app in order to install viam-server on your local computer.
 
 ## Controlling your mock robot using the Viam App
 
@@ -216,7 +216,7 @@ You can do this by going to **CONFIG** and then going to the **NETWORK** tab. He
 
 Be sure to save before continuing.
 
-### How to run a second instance of Viam server for your sub-part
+### How to run a second instance of viam-server for your sub-part
 
 Under the **CONFIG** tab, click **COPY VIAM-SERVER CONFIG**.
 
@@ -244,7 +244,7 @@ viam-server -config main.json
 ```
 {{% /alert %}}
 
-If you have two instances of Viam server running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main robots **CONTROL** tab.
+If you have two instances of viam-server running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main robots **CONTROL** tab.
 
 ![Screenshot of Viam app's Control tab for the main part. List's the main arm, and the sub motor part.](../img/how_to_build_a_mock_robot/image6.png)
 
