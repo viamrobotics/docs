@@ -14,7 +14,7 @@ Cameras are a key component of many applications such as Computer Vision and SLA
 ## Connect and configure a webcam
 
 
-First, you will need to add a webcam to your configuration. In your web browser, navigate to the robot you set up on the Viam App ([https://app.viam.com](https://app.viam.com)).
+First, you will need to add a webcam to your configuration. In your web browser, navigate to the robot you set up on the Viam app ([https://app.viam.com](https://app.viam.com)).
 
 Configure the webcam by clicking on the **CONFIG** tab. Go to the Builder, and create a component with **Name** "color" of **Type** "camera" and **Model** "webcam".
 

@@ -17,7 +17,7 @@ In this page, we will explain:
 
 ## Configuration
 
-To supply reference frame information when configuring a component in the Viam App ([https://app.viam.com](https://app.viam.com)), click **Add Frame** to launch the Frame group where you will enter Reference Frame details.
+To supply reference frame information when configuring a component in the Viam app ([https://app.viam.com](https://app.viam.com)), click **Add Frame** to launch the Frame group where you will enter Reference Frame details.
 This opens the Frame group:
 
 ![add reference frame pane](../img/image8.png)
@@ -138,7 +138,7 @@ As explained in the [Model Configuration](#model-configuration) section, some co
 When writing a driver for a particular piece of hardware that implements one of these components, you must create its accompanying **Model JSON** file.
 
 {{% alert title="Note" color="note" %}}  
-There is currently (15 Sept 2022) no user interface in the Viam App (<a href="https://app.viam.com">https://app.viam.com</a>) by which to create these files.
+There is currently (15 Sept 2022) no user interface in the Viam app (<a href="https://app.viam.com">https://app.viam.com</a>) by which to create these files.
 {{% /alert %}}
  
 Furthermore, only our Go implementation supports creation of custom **Model JSON** files (15 Sept 2022) as a way if ingesting kinematic parameters is provided in our Go repository. Native support for specifying kinematic parameters of arms is not yet supported in the Python SDK."

@@ -10,8 +10,9 @@ Now you can try to drive the SCUTTLE around like an RC car using the EasySMX ESM
 
 ## Prerequisites
 
-* A pre-configured and controllable (via keyboard on the Viam app ([https://app.viam.com](https://app.viam.com)) SCUTTLE Robot.
-Refer to the [Setting up a SCUTTLE Robot with Viam](../scuttlebot) tutorial, if necessary.
+* A pre-configured and controllable (via keyboard on the Viam app ([https://app.viam.com](https://app.viam.com)) Scuttle Robot.
+Refer to the [Setting up a Scuttle with Viam](../scuttlebot) tutorial, if necessary.
+
 * Connection to the Viam app
 * EasySMX ESM-9101 Wireless Controller
 
@@ -31,7 +32,9 @@ Therefore, for <strong>Model</strong>, please manually enter, "gamepad," (withou
 
 <li>Click <strong>New Component</strong>. The Viam app opens the Component Config panel for the gamepad. </li>
 <li>On the Component Config panel, leave <strong>Depends On</strong> set to empty.</li>
-<li>The Viam app does not add any JSON Attributes to the input_controller configuration.
+
+<li>The Viam app does not add any JSON attributes to the input_controller configuration.
+
 Please add the following Attributes:
 </OL>
 
@@ -63,7 +66,8 @@ After adding the Attributes, your config screen should appear similar to this:
 
 <img src="../img/pi-game-service-config.png" />
 
-Save the configuration and visit the control UI on the Viam app ([https://app.viam.com](https://app.viam.com)).
+Save the configuration and visit the control UI on The Viam app ([https://app.viam.com](https://app.viam.com)).
+
 You should see the panel for the Controller Service and its connection indicator.
 This is how your web UI will look.
 Note the green Connection indicator:

@@ -5,8 +5,8 @@ weight: 20
 type: "docs"
 description: "Explanation of how a robot and its parts interact at the communication layer."
 ---
-When building a robot application in the Viam App [https://app.viam.com](https://app.viam.com), typically a user will start by configuring their robot of one or many parts.
-Next they will test that it is wired up properly via the Viam App's Control page.
+When building a robot application in the Viam app [https://app.viam.com](https://app.viam.com), typically a user will start by configuring their robot of one or many parts.
+Next they will test that it is wired up properly via the Viam app's Control page.
 Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
 This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the robot.
 
@@ -114,7 +114,7 @@ In addition to gRPC, the RDK uses <a href="https://webrtcforthecurious.com/" tar
 
 [^wrtc]:WebRTC: <a href="https://webrtcforthecurious.com/" target="_blank">ht<span></span>tps://webrtcforthecurious.com/</a>
 
-An outline of how WebRTC is utilized lives on <a href="https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection" target="_blank">Go.dev</a>[^gdev], but in short, an RDK is always waiting on the Viam App ([https://app.viam.com](https://app.viam.com)) to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis.
-Once a connection is made, the Viam App is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.
+An outline of how WebRTC is utilized lives on <a href="https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection" target="_blank">Go.dev</a>[^gdev], but in short, an RDK is always waiting on the Viam app ([https://app.viam.com](https://app.viam.com)) to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis.
+Once a connection is made, the Viam app is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.
 
 [^gdev]:Go.dev WebRTC Connection: <a href="https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection" target="_blank"><ht<span></span>tps://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection</a>

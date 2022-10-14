@@ -3,7 +3,7 @@ title: "Raspberry Pi Setup Guide"
 linkTitle: "Raspberry Pi Setup"
 weight: 15
 type: "docs"
-description: "A guide to imaging a Pi, installing viam-server and syncing the Pi with the Viam App [https://app.viam.com](https://app.viam.com) (using Raspberry Pi Imager v1.7.2)."
+description: "A guide to imaging a Pi, installing viam-server and syncing the Pi with the Viam app [https://app.viam.com](https://app.viam.com) (using Raspberry Pi Imager v1.7.2)."
 ---
 
 ## Prerequisites
@@ -161,7 +161,7 @@ sudo reboot
 
 ## Adding your Pi on the Viam App
 
-In your web browser, navigate to the Viam App ([https://app.viam.com](https://app.viam.com)) and log in.
+In your web browser, navigate to the Viam app ([https://app.viam.com](https://app.viam.com)) and log in.
 This means either you can continue with your Viam email address or a personal email you can sign up with.
 
 Once you are logged in, create a new location by filling out the form on the left and then clicking `New Location`.
@@ -180,7 +180,7 @@ Navigate to your new robot, which should show the setup page as shown below:
 
 ## Follow the steps on the setup tab:
 
-1. Setup Viam App Config on Single Board Computer (SBC)<br/>
+1. Setup Viam app Config on Single Board Computer (SBC)<br/>
 _This config tells the robot where to look on app.viam.com to pull its config._<br/>
 - Click the copy button to copy the text.
 - Go to the terminal window connected to your Pi and paste the text and press enter.<br/>
@@ -202,7 +202,7 @@ _This installs the viam server._
 sudo systemctl restart viam-server
 ```
 
-Refresh the page on the Viam App ([https://app.viam.com](https://app.viam.com)) to confirm the Pi has connected and pulled the config by looking at the top of the Robot page and seeing that `host` and `ips` fields are populated and that the `last online` field reads `live`.
+Refresh the page on the Viam app ([https://app.viam.com](https://app.viam.com)) to confirm the Pi has connected and pulled the config by looking at the top of the Robot page and seeing that `host` and `ips` fields are populated and that the `last online` field reads `live`.
 
 You should also see the the notification on the setup page that says "Your robot is connected!"
 

@@ -24,7 +24,7 @@ Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/installa
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
 ## Setup
-If you haven’t already, please set up the Raspberry Pi on the [Viam App](https://app.viam.com) per [these instructions](../../getting-started/installation).
+If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](../../getting-started/installation).
 
 Next, we'll install the ORB-SLAM3 binary.
 
@@ -201,7 +201,7 @@ YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
 ```
 
-In your web browser, navigate to the robot you set up on the Viam App ([https://app.viam.com](https://app.viam.com)). In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
+In your web browser, navigate to the robot you set up on the Viam app ([https://app.viam.com](https://app.viam.com)). In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
 
 ```json
 {

@@ -38,7 +38,7 @@ Cool Robot Inc could organize its robots into three locations based on their phy
 
 
 ## Configuration/logging
-When a robot part first comes online, it requests its configuration from the Viam App ([https://app.viam.com](https://app.viam.com)).
+When a robot part first comes online, it requests its configuration from the Viam app ([https://app.viam.com](https://app.viam.com)).
 
 Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.
 
@@ -48,7 +48,7 @@ Logs are automatically sent to the cloud so you can view them easily.
 
 ## Remote control    
 
-If the user uses remote control in the Viam App ([https://app.viam.com](https://app.viam.com)) UI, then all communication to the robot is via WebRTC.
+If the user uses remote control in the Viam app ([https://app.viam.com](https://app.viam.com)) UI, then all communication to the robot is via WebRTC.
 
 * <a href="https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection" target="_blank">WebRTC Docs</a>[^webrtc]
 
