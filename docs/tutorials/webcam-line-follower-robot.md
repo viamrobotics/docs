@@ -52,15 +52,7 @@ If you haven’t already, please set up the Raspberry Pi per [these instructions
 ### Configuring the hardware components
 Configure the base per the [Base Component topic](/components/base/).
 	
-Configure the [camera](/components/camera/) as type `webcam`. Don't worry about camera calibration or any attributes other than `video_path`, which is often (but not always--see [How to Configure a Camera](/tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam) if you have trouble) `video0`:
-
-```json
-{
-    "video_path": "video0"
-}
-```
-
-You can ignore or even delete any other auto-populated camera attributes; the defaults should be fine here.
+Configure the [camera](/components/camera/) as described in this tutorial: [How to Configure a Camera](/tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam). You can skip the section on camera calibration since it is not needed for the line follower.
 
 Your webcam configuration in the Config Builder will look something like this:
 
