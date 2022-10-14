@@ -1,7 +1,7 @@
 ---
 title: "Motor Component"
 linkTitle: "Motor"
-weight: 80
+weight: 70
 type: "docs"
 description: "Explanation of motor types, configuration, and usage in Viam."
 ---
