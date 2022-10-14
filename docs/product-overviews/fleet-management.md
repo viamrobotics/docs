@@ -138,6 +138,7 @@ Builder provides a more graphical UI with added features such as a built-in webc
 Raw JSON mode can be useful for users who are familiar with writing JSON, and for seeing and editing everything at once.
 
 Within the **CONFIG** tab (in builder mode) are separate sub-tabs for components, services, remotes, processes, network, authentication, and fragments, so be sure to configure these in their respective tabs.
+In raw JSON mode, all of these resources are displayed in a single text field.
 
 Details on configuring specific hardware components and services can be found in these docs:
 - [Components](/components/)
