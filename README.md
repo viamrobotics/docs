@@ -54,8 +54,8 @@ Don't hesitate to create a pull request. Every contribution is appreciated. Chec
 When you are ready to contribute changes to the docs:
 
 1. Make sure you are on the main branch: ```git checkout main```
-2. . Sync your forked main branch with the official repo: ```git pull upstream main```
-3. Create a branch: ``` git checkout -b my-new-featuree```
+2. Sync your forked main branch with the official repo: ```git pull upstream main```
+3. Create a branch: ``` git checkout -b my-new-feature```
 4. Edit some docs...
 5. Commit your changes: ```git commit -am 'Add some feature'```
 6. Make sure your local branch is still up to date with the official repo: ```git pull upstream main```
