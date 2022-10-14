@@ -1,5 +1,5 @@
 ---
-title: "SDKs as Client"
+title: "Using Our SDKs for a Client Application"
 linkTitle: "SDKs as Client"
 weight: 99
 type: "docs"
