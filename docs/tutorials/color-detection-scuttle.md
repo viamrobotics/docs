@@ -1,9 +1,9 @@
 ---
-title: "Color Detection with the Scuttle Robot on Viam"
+title: "Color Detection with the SCUTTLE Robot on Viam"
 linkTitle: "Colored Object Follower"
 weight: 55
 type: "docs"
-description: "Instructions for detecting and following a colored object with a Scuttle Robot on Viam software."
+description: "Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software."
 ---
 ## Introduction
 
@@ -23,10 +23,10 @@ Viam app pre-populates the **Connect** tab with the robot name, address, and sec
 [^hgist]:Python.py code Gist: <a href="https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0" target="_blank">ht<span></span>tps://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0</a>
 
 ## Prerequisites
-The prerequisite of this tutorial is to have a Scuttle rover which you can drive via a webUI. 
-Please refer to [Setting Up Tutorial For Scuttle with a Pi](../scuttlebot). if you have not already configured your Scuttle.
+The prerequisite of this tutorial is to have a SCUTTLE rover which you can drive via a webUI. 
+Please refer to [Setting Up Tutorial For SCUTTLE with a Pi](../scuttlebot). if you have not already configured your SCUTTLE.
 
-Now you should try to drive the Scuttle around following the color red. 
+Now you should try to drive the SCUTTLE around following the color red. 
 Perhaps you can start with a red sports ball to demo with.
 
 Download the <file>scuttle.py</file> code to a directory on your computer that you can remember. 
