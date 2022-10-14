@@ -45,7 +45,7 @@ Don't hesitate to create a pull request. Every contribution is appreciated. Chec
 - Every sentence should be on a new line.
 - Test locally before submitting a PR.
 - Always submit a PR before merging.
-- The author of PR should merge unless they cannot and it's time sensitive.
+- The author of the PR should merge unless they cannot and it's time-sensitive.
 
 1. Fork the official repo into your personal GitHub.
 2. The new forked copy is cloned to your local system.
@@ -55,7 +55,7 @@ When you are ready to contribute changes to the docs:
 
 1. Make sure you are on the main branch: ```git switch main```
 2. Sync your forked main branch with the official repo: ```git pull upstream main```
-3. Create a branch: ``` git switch -c my-new-feature```
+3. Create a new branch for your changes: ``` git switch -c my-new-feature```
 4. Edit some docs...
 5. Commit your changes: ```git commit -am 'Add some feature'```
 6. Make sure your local branch is still up to date with the official repo: ```git pull upstream main```
