@@ -68,7 +68,7 @@ Taking a 12V brushed DC motor controlled by a Raspberry Pi via <a href="https://
 
 [^mtd]:DRV8256E Single Brushed DC Motor Driver Carrier: <a href="https://www.pololu.com/product/4038" target="_blank">ht<span></span>tps://www.pololu.com/product/4038</a>
 
-![brushed-dc-wiring](../img/motor-brushed-dc-wiring.png)  
+![brushed-dc-wiring](../img/motor/motor-brushed-dc-wiring.png)  
 
 The signal wires in the diagram run from two GPIO pins on the Pi to the DIR and PWM pins on the motor driver.
 Refer to a Raspberry Pi pinout schematic to locate generic GPIO pins and determine their pin numbers for configuration.
@@ -78,7 +78,7 @@ A brushed DC motor without an encoder should be configured with “gpio” as th
 Most motor types require a “board” attribute, and also need to depend on that same board.
 For example:  
 
-![motor-gpio-json](../img/motor-gpio-json.png)  
+![motor-gpio-json](../img/motor/motor-gpio-json.png)  
 [Click here for the raw JSON.](../example-configs/motor-gpio-config.json)
 
 #### Required Attributes - Non-Encoded DC Motor
@@ -124,7 +124,7 @@ Brushless motors typically have three power connections (commonly referred to as
 The configuration file of a BLDC motor with Viam is the same as that of a brushed motor.
 Only the output side of the driver board is different, i.e., more wires connect the driver to the motor.
 
-![motor-brushless-dc-wiring](../img/motor-brushless-dc-wiring.png)  
+![motor-brushless-dc-wiring](../img/motor/motor-brushless-dc-wiring.png)  
 
 ## DC Motor With Encoder
 
@@ -138,7 +138,7 @@ Here's an example of an encoded DC motor wired with <a href="https://www.pololu.
 
 [^tmd2]:MAX14870 Single Brushed DC Motor Driver Carrier: <a href="https://www.pololu.com/product/2961" target="_blank">ht<span></span>tps://www.pololu.com/product/2961</a>
 
-![motor-encoded-dc-wiring](../img/motor-encoded-dc-wiring.png)  
+![motor-encoded-dc-wiring](../img/motor/motor-encoded-dc-wiring.png)  
 
 ### Viam Configuration
 
@@ -146,7 +146,7 @@ Viam supports a brushed or brushless DC motor with a quadrature encoder within m
 Configuration of an encoder requires configuring the encoder [per the encoder topic](../encoder) in addition to the [standard “gpio” model attributes](#required-attributes---non-encoded-dc-motor). Also note that the encoder name must be added in the motor's `depends_on` field.
 Here’s an example config file:  
 
-![motor-encoded-dc-json](../img/motor-encoded-dc-json.png)  
+![motor-encoded-dc-json](../img/motor/motor-encoded-dc-json.png)  
 
 [Click here for the raw JSON.](../example-configs/motor-encoded-config.json)
 
@@ -179,7 +179,7 @@ Each pair of wires makes a loop through a coil of the motor.
 In the case of a four wire (bi-polar) stepper, one pair of wires may be labeled A1 and A2 and the other B1 and B2.
 Refer to the motor data sheet for correct wiring.
 
-![motor-gpiostepper-wiring](../img/motor-gpiostepper-wiring.png)  
+![motor-gpiostepper-wiring](../img/motor/motor-gpiostepper-wiring.png)  
 
 In this particular example the enable pin on the upper left corner of the driver is connected to ground to pull it low for our purposes.
 
@@ -187,7 +187,7 @@ In this particular example the enable pin on the upper left corner of the driver
 Viam supports steppers controlled in one of two ways: a basic stepper driver chip that takes step and DIR input via GPIO and simply moves one step per pulse (for these, use model "gpiostepper"), or more advanced chips (e.g., TMC5072, DMC4000) that have their own microcontrollers that conveniently handle things like speed and acceleration control.
 Here’s an example of a basic stepper driver config:  
 
-![motor-gpiostepper-json](../img/motor-gpiostepper-json.png)  
+![motor-gpiostepper-json](../img/motor/motor-gpiostepper-json.png)  
 [Click here for the raw JSON.](../example-configs/motor-gpiostepper-config.json)
 
 #### Required Attributes for Steppers
