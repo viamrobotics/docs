@@ -52,18 +52,7 @@ If you haven’t already, please set up the Raspberry Pi per [these instructions
 ### Configuring the hardware components
 Configure the base per the [Base Component topic](/components/base/).
 	
-Configure the [camera](/components/camera/) as type `webcam`. When you create a webcam component in Viam's config builder, Viam's discovery service will automatically detect cameras attached to your robot and suggest possible `video_path` attributes in a dropdown list. The top one (often "video0") is a good bet.
-
-![lf-cam-path.png](../img/lf-cam-path.png)
-
-If this doesn't work, you can manually add the camera's `video_path` (with the correct path in place of “video0”) to the camera’s attributes:
-
-```JSON
-{
-    "video_path": "video0"
-}
-```
-You can ignore or even delete any other auto-populated camera attributes; the defaults should be fine here.
+Configure the [camera](/components/camera/) as described in this tutorial: [Connect and configure a webcam](/tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam). You can skip the section on camera calibration since it is not needed for the line follower.
 
 Your webcam configuration in the Config Builder will look something like this:
 
