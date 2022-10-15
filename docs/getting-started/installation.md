@@ -120,7 +120,7 @@ Launch your terminal and run this command; the text in <> should be replaced (in
 ```bash
 ssh <username>@<hostname>.local
 ```
-Example: if your username is 'Hazal' and your hostname is 'pi': then it should be 
+Example: if your username is 'hazal' and your hostname is 'pi': then it should be 
 `ssh hazal@pi.local`
 
 If you are prompted “Are you sure you want to continue connecting?”, type “yes” and hit enter.
@@ -130,30 +130,29 @@ You should be greeted by a login message and a command prompt (`$USERNAME@$HOSTN
 Next, it's good practice to update your Raspberry Pi to ensure all the latest packages are installed:
 
 ```bash
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt update
+sudo apt upgrade
 ```
 
 ## Enabling the I2C Protocol on the Raspberry Pi
-    
 
-You can skip the I2C configuration if you are not adding a breakout board to your Raspberry Pi.
+You can skip the I2C configuration unless you are using hardware that requires I2C to communicate with your Pi (for example certain breakout boards and sensors).
 
 I2C stands for inter-integrated circuit and is a method designed to allow one chip to talk to another synchronously.
-We will need to enable I2C on your Raspberry Pi so that Viam will be able to connect and communicate with chips and boards connected to your Pi through the GPIO pins.
+You will need to enable I2C on your Raspberry Pi so that Viam will be able to connect to and communicate with chips and boards connected to your Pi through the GPIO pins.
 
-To enable support for I2C within the kernel, we will need to use the raspi-config tool.
+To enable support for I2C within the kernel, you will need to use the raspi-config tool.
 Launch the config tool by running the following command.
 
 ```bash
 sudo raspi-config
 ```
 
-Select "Interfacing Options" -> I2C -> <YES> to enable the I2C driver by kernel.
+Use your keyboard to select "Interface Options" -> I2C -> <YES> to enable the I2C driver by kernel.
 
 ![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "5 Interfacing Options" option where you can find the I2C driver](../../tutorials/img/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
 
-For our changes to take effect, we need to restart our Raspberry Pi.
+For these changes to take effect, you need to restart your Raspberry Pi if it hasn't already prompted you to do so.
 
 ```bash
 sudo reboot
@@ -166,7 +165,7 @@ This means either you can continue with your Viam email address or a personal em
 
 Once you are logged in, create a new location by filling out the form on the left and then clicking `New Location`.
 Location means where your robot is hosted in real life.
-This is useful if you have multiple robots in multiple locations and you would like to control them remotely via the cloud on our app.
+This is useful if you have multiple robots in multiple locations and you would like to control them remotely via the cloud on the Viam app.
 
 ![add-location](../../tutorials/img/add-location.png)
 
