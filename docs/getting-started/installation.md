@@ -158,7 +158,7 @@ For these changes to take effect, you need to restart your Raspberry Pi if it ha
 sudo reboot
 ```
 
-## Adding your Pi on the Viam App
+## Adding your Pi on the Viam app
 
 In your web browser, navigate to the Viam app ([https://app.viam.com](https://app.viam.com)) and log in.
 This means either you can continue with your Viam email address or a personal email you can sign up with.
@@ -179,7 +179,7 @@ Navigate to your new robot, which should show the setup page as shown below:
 
 ## Follow the steps on the setup tab:
 
-1. Setup Viam app Config on Single Board Computer (SBC)<br/>
+1. Setup Viam App Config on Single Board Computer (SBC)<br/>
 _This config tells the robot where to look on app.viam.com to pull its config._<br/>
 - Click the copy button to copy the text.
 - Go to the terminal window connected to your Pi and paste the text and press enter.<br/>
@@ -190,10 +190,10 @@ _This creates an etc/viam.json file containing something like:<br/>
 ```
 
 2. Download and Install Viam Server<br/>
-_Now that you are on your SBC, download the latest viam-server Appimage package:_<br/>
+_Now that you are on your SBC, download the latest viam-server AppImage package:_<br/>
 - Click the copy button to copy the text.
 - Go to the terminal window connected to your Pi and paste the text and press enter.<br/>
-_This installs the viam server._
+_This installs the viam-server._
 
 3. Restart the viam-server:
 
