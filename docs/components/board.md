@@ -12,7 +12,7 @@ which they can transmit <a href="https://en.wikipedia.org/wiki/Pulse-width_modul
 
 [^pwm]:PWM (Pulse Width Modulation): <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Pulse-width_modulation</a>
 
-Some examples of boards include Raspberry Pi and Jetson.
+Some examples of boards include Raspberry Pi, BeagleBone, and Jetson.
 These are all single-board computers (SBCs) capable of advanced computation, including running the Viam server.
 These all come with built-in GPIO pins.
 
@@ -55,6 +55,8 @@ All boards will be of type **board**. Specify the correct **model** for your boa
 The following board models are currently supported (not exhaustive):
 
 -   **pi**: Raspberry Pi 4 or Pi Zero W
+
+-   **ti**: BeagleBone AI 64
 
 -   **jetson**: Nvidia Jetson Xavier NX
 
