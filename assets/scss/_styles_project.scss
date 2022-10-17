@@ -308,8 +308,21 @@ border-style: solid;
 .alert-tip .alert-link {
     color: #520000; }
     
-    
-
-
-  
 /* END CSS FOR NOTES, CAUTIONS, WARNINGS */
+
+
+/* START CSS FOR EXPANDER */
+
+.expand-label {
+font-family: Space Grotesk, sans-serif;
+font-weight:bold;
+font-size: 12px !important; 
+background-color:#e7ecff;
+
+}
+.expand-content {
+  border:cornflowerblue solid 1px;
+
+}
+
+/* END CSS FOR EXPANDER */

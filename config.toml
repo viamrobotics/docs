@@ -76,6 +76,7 @@ weight = 1
     # Uncomment if you want your chosen highlight style used for code blocks without a specified language
     # guessSyntax = "true"
 
+
 # Everything below this are Site Params
 
 # Comment out if you don't want the "print entire section" link enabled.
@@ -95,9 +96,38 @@ includes_dir = "_includes"
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
 
+#
+#
+#
+# BANNER MENUS READ THIS
+#
+#  The banner menu for SDK Documentations now uses the [[main.menu]] 
+#  to add a single entry for Python SDK. 
+#
+#  Once the Rust SDk Documentation becomes available, switch to using the 
+#  [params.versions] to replace a version menu with an SDK docs menu
+#
 # Menu title if your navbar has a versions selector to access old versions of your site.
 # This menu appears only if you have at least one [params.versions] set.
-#version_menu = "Releases"
+
+# Uncomment these lines when we add Rust:
+
+#version_menu = "SDK Documentation"
+#[[params.versions]]
+#  version = "Python SDK Documentation"
+#  url = "https://python.viam.dev/"
+#[[params.versions]]
+#  version = "Rust SDK Documentation"
+#  url = "https://rust.viam.dev/"
+
+# Comment out these lines when we add Rust 
+
+[[menu.main]]
+        name = "Python SDK Documentation"
+        weight = -100
+        identifier = "PSDK"
+    url = "https://python.viam.dev/"
+
 
 # Flag used in the "version-banner" partial to decide whether to display a 
 # banner on every page indicating that this is an archived version of the docs.
