@@ -34,7 +34,7 @@ A 1.5ms signal will hold the servo in the middle or “neutral” position, 1ms 
 ## Wiring
 Here's an example of how a servo might be wired to a Raspberry Pi:  
 
-![servo-wiring](../img/servo-wiring.png)
+![servo-wiring](../img/servo/servo-wiring.png)
 
 ## Viam Configuration
 
@@ -44,7 +44,7 @@ The servo will depend on the board, which must also be configured.
 
 An example configuration file containing the necessary attributes is as follows:  
 
-![servo-JSON](../img/servo-json.png)
+![servo-JSON](../img/servo/servo-json.png)
 [Click here for the raw JSON.](../example-configs/servo-config.json)
 
 ### Optional Attributes
