@@ -107,7 +107,7 @@ motion.move(component_name=armRes,destination=PoseInFrame(reference_frame="myArm
 
 The `MoveSingleComponent` endpoint, while it looks very similar to the “Move” endpoint above, may result in radically different behavior when called.
 
-_`MoveSingleComponent` is meant to allow the user to bypass Viam’s internal motion planning entirely, if desired, for a single component._ If the component in question supports the `MoveToPosition` method taking a Pose as a parameter, this call will use the frame system to translate the given destination into the frame of the specified component, and will then call `MoveToPosition` on that one component to move it to the desired location. As of 10 October 2022, arms are the only component supported by this feature.
+_`MoveSingleComponent` is meant to allow the user to bypass Viam’s internal motion planning entirely, if desired, for a single component._ If the component in question supports the `MoveToPosition` method taking a Pose as a parameter, this call will use the frame system to translate the given destination into the frame of the specified component, and will then call `MoveToPosition` on that one component to move it to the desired location. As of 18 October 2022, arms are the only component supported by this feature.
 
 As the name of the method suggests, only the single component specified by `component_name` will move.
 
@@ -127,17 +127,17 @@ If this method is called with an arm which uses Viam’s motion planning on the 
 **`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they like to pass to their own motion planning implementation.
 
 
-## Constraints
+## Motion Profile Constraints
 
-Currently (10 October 2022), there is no built in, top level way to specify different constraints. However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to “motion_profile” via the `extra` parameter, along with individual algorithm variables. This is not available in the Viam app. Available constraints all control the topological movement of the moving component along its path.
+Currently (18 October 2022), there is no built in, top level way to specify different constraints. However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to “motion_profile” via the `extra` parameter, along with individual algorithm variables. This is not available in the Viam app. Available constraints all control the topological movement of the moving component along its path.
 
 For a usage example, see [sample code above](#examples).
 
 The available constraints are:
 
-#### **{"motion_profile": "linear"}**
+#### Linear Constraint
 
-This forces the path taken by `component_name` to follow an exact linear path from the start to the goal. If the start and goal orientations are different, the orientation along the path will follow the quaternion Slerp (Spherical Linear Interpolation) of the orientation from start to goal. This has the following sub-options:
+The Linear constraint forces the path taken by `component_name` to follow an exact linear path from the start to the goal. If the start and goal orientations are different, the orientation along the path will follow the quaternion Slerp (Spherical Linear Interpolation) of the orientation from start to goal. This has the following sub-options:
 
 
 <table>
@@ -175,9 +175,9 @@ This forces the path taken by `component_name` to follow an exact linear path fr
 
 
 
-#### **{"motion_profile": "pseudolinear"}**
+#### Pseudolinear Constraint
 
-This restricts the path such that it will deviate from the straight-line linear path between start and goal by no more than a certain amount, where that amount is determined as a percentage of the distance from start to goal. Linear and orientation deviation are determined separately, so if a motion has a large linear difference but has identical starting and ending orientations, the motion will hold its orientation constant while allowing some linear deflection. This has the following suboption:
+The Pseudolinear constraint restricts the path such that it will deviate from the straight-line linear path between start and goal by no more than a certain amount, where that amount is determined as a percentage of the distance from start to goal. Linear and orientation deviation are determined separately, so if a motion has a large linear difference but has identical starting and ending orientations, the motion will hold its orientation constant while allowing some linear deflection. This has the following suboption:
 
 
 <table>
@@ -205,9 +205,9 @@ This restricts the path such that it will deviate from the straight-line linear 
 
 
 
-#### **{"motion_profile": "orientation"}**
+#### Orientation Constraint
 
-This places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the Slerp between start and goal by more than a set amount. This is similar to the “orient_tolerance” option in the linear profile, but without any path restrictions. If set to zero, a movement with identical starting and ending orientations will hold that orientation throughout the movement.
+The Orientation constraint places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the Slerp between start and goal by more than a set amount. This is similar to the “orient_tolerance” option in the linear profile, but without any path restrictions. If set to zero, a movement with identical starting and ending orientations will hold that orientation throughout the movement.
 
 
 <table>
@@ -235,9 +235,9 @@ This places a restriction on the orientation change during a motion, such that t
 
 
 
-#### **{"motion_profile": "free"}**
+#### Free Constraint
 
-This places no restrictions on motion whatsoever. This is the default and will be used if nothing is passed. This takes no parameters.
+The Free constraint places no restrictions on motion whatsoever. This is the default and will be used if nothing is passed. This profile takes no parameters.
 
 
 ## Planning Algorithms
