@@ -48,8 +48,8 @@ The driver data sheet will specify which one to use.
 #### Pins
 
 - PWM/DIR: One digital input (such as a GPIO pin) sends a <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">pulse width modulation</a>[^pwm] (PWM) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
-- A/B: One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled via PWM through one or both pins.
-- A/B + PWM: Three pins: an A and B to control direction and a separate PWM pin to control speed.
+- In1/In2 (or A/B): One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled via PWM through one or both pins.
+- In1/In2 + PWM: Three pins: an In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
 
 [^pwm]:Pulse Width Modulation (PWM): <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Pulse-width_modulation</a>
 
@@ -92,8 +92,8 @@ Nested within `pins` (note that only two or three of these are required dependin
 
 Name | Type | Description |
 ---- | ---- | ----- |
-`a` | string | See [Pins](#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
-`b` | string | See [Pins](#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
+`a` | string | See [Pins](#pins). Corresponds to "IN1" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
+`b` | string | See [Pins](#pins). Corresponds to "IN2" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
 `dir` | string | See [Pins](#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
 `pwm` | string | See [Pins](#pins). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
 
@@ -115,13 +115,13 @@ The relative position of the magnets must be known by the driver so that the rig
 Some motors have a built-in set of Hall effect sensors for this purpose, and others detect forces in the unpowered coils for a “sensorless” configuration.
 
 ### Brushless DC Motor Drivers
-Brushless DC motor drivers work in much the same way as brushed DC motor drivers.
-They typically require a PWM/DIR input or a A/B and PWM input to set the motor power and direction.
+Brushless DC motor drivers work in much the same way as [brushed DC motor drivers](#brushed-dc-motor-drivers).
+They typically require a PWM/DIR input or an A/B (In1/In2) and PWM input to set the motor power and direction.
 The key difference between a brushed and brushless motor driver is on the motor output side.
 Brushless motors typically have three power connections (commonly referred to as A, B and C; or sometimes Phase 1, 2 and 3) and 3 sensor connections (commonly referred to as Hall A, Hall B, and Hall C) running between the motor and driver.
 
 ### Wiring and Configuration
-The configuration file of a BLDC motor with Viam is the same as that of a brushed motor.
+The configuration file of a BLDC motor with Viam is the same as that of a brushed motor [(detailed above)](#viam-configuration).
 Only the output side of the driver board is different, i.e., more wires connect the driver to the motor.
 
 ![motor-brushless-dc-wiring](../img/motor/motor-brushless-dc-wiring.png)  
