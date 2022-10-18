@@ -47,6 +47,33 @@ h1, .h1 {
    
    /* END Adjust Heading sizes*/
    
+/* START - ADJUST HEADINGS/SPACING FOR MOBILE */
+@media (max-width: 576px){
+  h1, .h1 {
+    font-size: 20pt !important;
+    margin-bottom: 8px;
+         }
+   
+   h2, .h2 {
+    font-size: 18pt !important;
+    margin-bottom: 8px;
+    margin-top:16px !important;
+   }
+   
+   h3, .h3 {
+    font-size: 16pt !important;
+    margin-bottom: 8px;
+    margin-top:16px;
+   }
+   h4, .h4 {
+    font-size: 14pt !important;
+    margin-bottom: 8px;
+    margin-top:16px;
+   }
+
+}
+   /* END - ADJUST HEADINGS/SPACING FOR MOBILE */
+
 .td-sidebar {
 
 /*NAV Panel changes*/    
@@ -62,8 +89,6 @@ background-color: #f2f2f2;
  .td-sidebar-nav-active-item{
   color: black;
 }
-
-
 
 /* font weight */ 
  .td-sidebar-nav .td-sidebar-link__page{
@@ -85,9 +110,6 @@ background-color: #f2f2f2;
     background: black !important;
 }
 
-
-
-
 /* sets the footer to black. */
 .bg-dark {
     background-color: black !important;
@@ -100,16 +122,12 @@ background-color: #f2f2f2;
     color: black;
 }
 
-
-
 .td-sidebar-nav .td-sidebar-link.tree-root {
     font-weight: 700;
     color: black;
     border-bottom: 1px #30638E solid;
     margin-bottom: 1rem;
 }
-
-
 
 .breadcrumb-item + .breadcrumb-item::before {
     float: left;
@@ -210,39 +228,6 @@ END MARKETING CSS
 
 
 
-.note,
-.caution,
-.warning {
-
-  border-left-width: 4px;
-  border-left-style: solid;
-  position: relative;
-  border-color: var(--primary-color);
-
-  display: block;
-}
-.note #exclamation-icon,
-.caution #exclamation-icon,
-.warning #exclamation-icon {
-
-  fill: var(--primary-color);
-  position: absolute;
-  top: 35%;
-  left: -12px;
-  /*background-color: white;*/
-}
-
-  .admonition-content {
-    display: block;
-    margin: 0px;
-    padding: .125em 1em;
-    /*margin-left: 1em;*/
-    margin-top: 2em;
-    margin-bottom: 2em;
-    overflow-x: auto;
-    /*font-size: .9375em;*/
-    background-color: var(--black-05);
-  }
 
 /* color: sets the text color in the alert*/
 /* background: sets the background color in the alert*/
