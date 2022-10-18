@@ -15,6 +15,19 @@ enableGitInfo = false  ## Set this to false to disable the last cimmit date/mess
 disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
 #disableKinds = ["home"]
 
+# Moved main.menu here because it killed the search box when it was lower in the config. 
+# When we implement Algolia, comment out these lines, and uncomment the lines for Algolia.
+# See "BANNER MENUS READ THIS," below
+#
+[[menu.main]]
+        name = "Python SDK Documentation"
+        weight = -100
+        identifier = "PSDK"
+    url = "https://python.viam.dev/"
+
+
+
+
 # You can add your own taxonomies
 [taxonomies]
 tag = "tags"
@@ -120,13 +133,9 @@ includes_dir = "_includes"
 #  version = "Rust SDK Documentation"
 #  url = "https://rust.viam.dev/"
 
-# Comment out these lines when we add Rust 
+# Comment out the main.menu lines up above when we add Rust 
 
-[[menu.main]]
-        name = "Python SDK Documentation"
-        weight = -100
-        identifier = "PSDK"
-    url = "https://python.viam.dev/"
+
 
 
 # Flag used in the "version-banner" partial to decide whether to display a 
