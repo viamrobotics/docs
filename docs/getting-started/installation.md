@@ -134,23 +134,19 @@ sudo apt update
 sudo apt upgrade
 ```
 
-## Enabling the I2C Protocol on the Raspberry Pi
+## Enabling Specific Communication Protocols on the Raspberry Pi
 
-You can skip the I2C configuration unless you are using hardware that requires I2C to communicate with your Pi (for example certain breakout boards and sensors).
+If you are using hardware that requires I2C, SPI, Serial, or one-wire protocols to communicate with your Pi, you will need to enable them via `raspi-config`.
 
-I2C stands for inter-integrated circuit and is a method designed to allow one chip to talk to another synchronously.
-You will need to enable I2C on your Raspberry Pi so that Viam will be able to connect to and communicate with chips and boards connected to your Pi through the GPIO pins.
-
-To enable support for I2C within the kernel, you will need to use the raspi-config tool.
-Launch the config tool by running the following command.
+Launch the config tool by running the following command:
 
 ```bash
 sudo raspi-config
 ```
 
-Use your keyboard to select "Interface Options" -> I2C -> <YES> to enable the I2C driver by kernel.
+Use your keyboard to select "Interface Options" and enable the relevant protocols.
 
-![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "5 Interfacing Options" option where you can find the I2C driver](../../tutorials/img/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
+![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "3 Interface Options" option where you can find the I2C and other drivers](../../tutorials/img/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
 
 For these changes to take effect, you need to restart your Raspberry Pi if it hasn't already prompted you to do so.
 
@@ -161,15 +157,13 @@ sudo reboot
 ## Adding your Pi on the Viam app
 
 In your web browser, navigate to the Viam app ([https://app.viam.com](https://app.viam.com)) and log in.
-This means either you can continue with your Viam email address or a personal email you can sign up with.
 
-Once you are logged in, create a new location by filling out the form on the left and then clicking `New Location`.
-Location means where your robot is hosted in real life.
-This is useful if you have multiple robots in multiple locations and you would like to control them remotely via the cloud on the Viam app.
+Once you are logged in, a location will be created for you by default, or you can create a new location by filling out the field on the left and then clicking `ADD`.
+Location are just a way of organizing robots. You can find more information on [managing robot fleets here](/product-overviews/fleet-management/#how-to-use-the-viam-app).
 
 ![add-location](../../tutorials/img/add-location.png)
 
-Select your location and use the form on the right to create a new Robot. If this is the first robot in this location, the App displays an arrow pointer to the **New Robot** field (upper RH-corner). Enter a name for your robot, then click **Add Robot**:
+Select your location and use the form on the right to create a new Robot. If this is the first robot in this location, the app displays an arrow pointer to the **New Robot** field (upper RH-corner). Enter a name for your robot, then click **Add Robot**:
 
 ![add-robot](../../tutorials/img/add-robot.png)
 
@@ -192,8 +186,7 @@ _This creates an etc/viam.json file containing something like:<br/>
 2. Download and Install Viam Server<br/>
 _Now that you are on your SBC, download the latest viam-server AppImage package:_<br/>
 - Click the copy button to copy the text.
-- Go to the terminal window connected to your Pi and paste the text and press enter.<br/>
-_This installs the viam-server._
+- Go to the terminal window connected to your Pi and paste the text and press enter to install the viam-server.<br/>
 
 3. Restart the viam-server:
 
