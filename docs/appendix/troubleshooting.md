@@ -20,7 +20,7 @@ While every effort has been made to include all common/known issues and their po
 #### Error #1: Error reading cloud config
 The following related errors may cause this issue:
 
-<table border="solid black 1px">
+<table style="border: solid black 1px;">
 <tr><th colspan="2">Related Error: Error validating "component s.2": "name" is required.</th>
 </tr>
 <tr>
@@ -38,7 +38,7 @@ Run <file>sudo systemctl restart viam-server.service</file> in the terminal to r
 </tr>
 </table>
 
-<table border="solid black 1px">
+<table style="border: solid black 1px;">
 <tr><th colspan="3">Related Error: cannot parse config: JSON: cannot unmarshal string into Go struct field Component.components.frame of type float64.</th>
 </tr>
 <tr>
@@ -59,7 +59,7 @@ The frame object looks like this:</td>
 </tr>
 </table>
 
-<table border="solid black 1px">
+<table style="border: solid black 1px;">
 <tr>
 <th colspan="2">Related Error: cannot parse config: Unexpected end of JSON.</th>
 </tr>
@@ -85,7 +85,7 @@ Re-try the operation.
 
 #### Error #2: SSH error on the terminal: “ssh:connect to host name-pi.local port 22: host is down”
 
-<table border="solid black 1px">
+<table style="border: solid black 1px;">
 <th>What/Why:
 </th>
 <td>The Pi does not have an internet connection.
@@ -101,7 +101,7 @@ Re-try the operation.
 
 #### Error #3: “Rolling back draft changes due to error” or “Error reconfiguring robot”, both errors end with: ‘error: error processing draft changes: resource “rdk:component:board/local” not found”
 
-<table border="solid black 1px">
+<table style="border: solid black 1px;">
 <tr>
 <th>What/Why:
 </th>
@@ -118,7 +118,7 @@ Re-try the operation.
 
 
 #### Error #4: Expected board name in config for motor. 
-<table border="solid black 1px">
+<table style="border: solid black 1px;">
 <th>What/Why: 
 </th>
 <td>Check if you forgot to enter the pi name and check for any other missing component specs in config.
@@ -135,11 +135,11 @@ Run <file>sudo systemctl restart viam-server.service</file> in the terminal to r
 
 #### Error #5: Failed to find the best driver that fits the constraints. 
 
-<table border="solid black 1px">
+<table style="border: solid black 1px;">
 
 <th><strong>What/Why:
 </th>
-<td>There are many possible reasons why this happens. Verify that Frame rate, frame format, path/path pattern, width height, have values. 
+<td>There are many possible reasons why this happens. Verify that Frame rate, frame format, video path/video path pattern, width height, have values. 
 Viam specifies 0 for these values by default, but verify that the setting is actually there.
 </td>
 </tr>
@@ -153,7 +153,7 @@ Viam specifies 0 for these values by default, but verify that the setting is act
 
 #### Error #6: Error configuring robot.
 Clearing this related error may resolve the issue.
-<table border="solid black 1px">
+<table style="border: solid black 1px;">
 <tr><th colspan="2">Related Error: error processing draft changes: expected board name in config for motor. </th>
 </tr>
 <tr>
@@ -172,7 +172,7 @@ Clearing this related error may resolve the issue.
 
 #### Error #7: Response closed without headers.
 
-<table border="solid black 1px">
+<table style="border: solid black 1px;">
 <th><strong>What/Why:
 </th>
 <td> - 
