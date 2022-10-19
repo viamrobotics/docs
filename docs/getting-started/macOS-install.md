@@ -59,7 +59,8 @@ Under the **CONFIG** tab of your robot on the Viam app, click **COPY VIAM-SERVER
 
 ![Screenshot from the Viam app showing the "Copy Viam-server Config" button highlighted by a red box.](./img/macOS-install/image1.png)
 
-On your local machine, create a new file named <file>viam.json</file> paste the contents of your `viam-server` config into that file, and save. From the terminal, navigate to the directory where you saved the config file and run this command to create a new instance of `viam-server` using this configuration.`
+On your local machine, create a new file named <file>viam.json</file> paste the contents of your `viam-server` config into that file, and save.
+From the terminal, navigate to the directory where you saved the config file and run this command to create a new instance of `viam-server` using this configuration.`
 
 ```bash
 viam-server -config viam.json
@@ -67,7 +68,9 @@ viam-server -config viam.json
 
 ## How to run viam-server as a service on macOS
 
-Installing `viam-server` as a system service is not recommended for most use cases on macOS. However, if you are looking to create a robot that runs on macOS and you want it to run `viam-server` every time your OS boots up, then you will need to run `viam-server` as a service. Once you have `viam-server` downloaded locally from Homebrew, you will need to run:
+Installing `viam-server` as a system service is not recommended for most use cases on macOS.
+However, if you are looking to create a robot that runs on macOS and you want it to run `viam-server` every time your OS boots up, then you will need to run `viam-server` as a service.
+Once you have `viam-server` downloaded locally from Homebrew, you will need to run:
 
 ```bash
 brew services start viam-server
