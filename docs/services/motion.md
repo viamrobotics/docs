@@ -179,7 +179,7 @@ extra = {"motion_profile": "linear"}
 
 #### Pseudolinear Constraint
 
-The Pseudolinear constraint restricts the path such that it will deviate from the straight-line linear path between start and goal by no more than a certain amount, where that amount is determined as a percentage of the distance from start to goal. Linear and orientation deviation are determined separately, so if a motion has a large linear difference but has identical starting and ending orientations, the motion will hold its orientation constant while allowing some linear deflection. This has the following suboption:
+The `pseudolinear` constraint restricts the path such that it will deviate from the straight-line linear path between start and goal by no more than a certain amount, where that amount is determined as a percentage of the distance from start to goal. Linear and orientation deviation are determined separately, so if a motion has a large linear difference but has identical starting and ending orientations, the motion will hold its orientation constant while allowing some linear deflection. This has the following suboption:
 
 
 <table>
