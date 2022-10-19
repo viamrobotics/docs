@@ -152,7 +152,7 @@ But wait! This rover has a `camera` on it.
 Once again, click `NEW COMPONENT`.
 You can name this camera `rover_cam`.
 For the `Type` select `camera` and for `Model` select `webcam`.
-Lastly, you should set the `path` attribute to the linux path where the device is mounted, which should be `/dev/video0`.
+Lastly, you should set the `video_path` attribute to the linux path where the device is mounted, which should be `/dev/video0`.
 If you can not see the attributes, you can click object properties and select path, and then add the path.
 That should be enough to get the `camera` streaming to the webUI.
 
