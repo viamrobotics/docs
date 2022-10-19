@@ -205,7 +205,9 @@ The `pseudolinear` constraint restricts the path such that it will deviate from 
   </tr>
 </table>
 
-
+Example usage:
+```python
+extra = {"motion_profile": "pseudolinear", "tolerance": 0.7}
 
 #### Orientation Constraint
 
