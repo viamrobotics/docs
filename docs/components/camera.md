@@ -53,6 +53,12 @@ Follow the instructions for <a href="https://github.com/viam-labs/camera-calibra
 
 `webcam` is a model that streams the camera data from a camera connected to the hardware. The discovery service will help set up this model, usually.
 
+{{% alert title="Note" color="note"%}}
+In Viam parlance, webcams are standard, USB camera devices. 
+
+Viam recommends using a standard webcam rather than a "ribbon" cam (typical a bare camera with a ribbon and connector for mating to a Pi) as they can be very unreliable.
+{{% /alert %}}
+
 ```json
 {
 	"name": "camera_name",
@@ -67,7 +73,18 @@ Follow the instructions for <a href="https://github.com/viam-labs/camera-calibra
 	}
 }
 ```
+### Fake
 
+Fake is a fake camera that always returns the same image, which is an image of a chess board. This camera also returns a point cloud.
+
+```json
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "fake",
+	"attributes": {}
+}
+```
 ### File
 
 File is a model where the frames for the color and depth images are acquired from a file path. Either file path is optional.
@@ -334,18 +351,6 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 }
 ```
 
-### Fake
-
-Fake is a fake camera that always returns the same image, which is an image of a chess board. This camera also returns a point cloud.
-
-```json
-{
-	"name": "camera_name",
-	"type": "camera",
-	"model" : "fake",
-	"attributes": {}
-}
-```
 
 ### HTTP server cameras
 
