@@ -237,7 +237,9 @@ The `orientation` constraint places a restriction on the orientation change duri
   </tr>
 </table>
 
-
+Example usage:
+```python
+extra = {"motion_profile": "orientation"}
 
 #### Free Constraint
 
