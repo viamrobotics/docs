@@ -133,11 +133,11 @@ Currently (18 October 2022), there is no built in, top level way to specify diff
 
 For a usage example, see [sample code above](#examples).
 
-The available constraints are:
+The available constraints, linear, psuedolinear, orientation, and Free, are covered in the following sub-sections.
 
-#### Linear Constraint
+### Linear Constraint
 
-The Linear constraint ({“motion_profile”: “linear”}) forces the path taken by `component_name` to follow an exact linear path from the start to the goal. If the start and goal orientations are different, the orientation along the path will follow the quaternion Slerp (Spherical Linear Interpolation) of the orientation from start to goal. This has the following sub-options:
+The linear constraint (`{“motion_profile”: “linear”}`) forces the path taken by `component_name` to follow an exact linear path from the start to the goal. If the start and goal orientations are different, the orientation along the path will follow the quaternion Slerp (Spherical Linear Interpolation) of the orientation from start to goal. This has the following sub-options:
 
 
 <table>
@@ -172,14 +172,15 @@ The Linear constraint ({“motion_profile”: “linear”}) forces the path tak
    </td>
   </tr>
 </table>
-Example usage:
+
+**Example usage**:
 ```python
 extra = {"motion_profile": "linear"}
+```
 
+### Pseudolinear Constraint
 
-#### Pseudolinear Constraint
-
-The Pseudolinear constraint ({“motion_profile”: “pseudolinear”}) restricts the path such that it will deviate from the straight-line linear path between start and goal by no more than a certain amount, where that amount is determined as a percentage of the distance from start to goal. Linear and orientation deviation are determined separately, so if a motion has a large linear difference but has identical starting and ending orientations, the motion will hold its orientation constant while allowing some linear deflection. This has the following suboption:
+The pseudolinear constraint (`{“motion_profile”: “pseudolinear”}`) restricts the path such that it will deviate from the straight-line linear path between start and goal by no more than a certain amount, where that amount is determined as a percentage of the distance from start to goal. Linear and orientation deviation are determined separately, so if a motion has a large linear difference but has identical starting and ending orientations, the motion will hold its orientation constant while allowing some linear deflection. This has the following suboption:
 
 <table>
   <tr>
@@ -204,13 +205,15 @@ The Pseudolinear constraint ({“motion_profile”: “pseudolinear”}) restric
   </tr>
 </table>
 
-Example usage:
-```python
+**Example usage**:
+
+``` python
 extra = {"motion_profile": "pseudolinear", "tolerance": 0.7}
+```
 
-#### Orientation Constraint
+### Orientation Constraint
 
-The Orientation constraint ({“motion_profile”: “orientation”}) places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the Slerp between start and goal by more than a set amount. This is similar to the “orient_tolerance” option in the linear profile, but without any path restrictions. If set to zero, a movement with identical starting and ending orientations will hold that orientation throughout the movement.
+The orientation constraint (`{“motion_profile”: “orientation”}`) places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the Slerp between start and goal by more than a set amount. This is similar to the “orient_tolerance” option in the linear profile, but without any path restrictions. If set to zero, a movement with identical starting and ending orientations will hold that orientation throughout the movement.
 
 
 <table>
@@ -236,18 +239,21 @@ The Orientation constraint ({“motion_profile”: “orientation”}) places a 
   </tr>
 </table>
 
-Example usage:
-```python
+**Example usage**:
+
+``` python
 extra = {"motion_profile": "orientation"}
+```
 
-#### Free Constraint
+### Free Constraint
 
-The Free constraint ({“motion_profile”: “free”}) places no restrictions on motion whatsoever. This is the default and will be used if nothing is passed. This profile takes no parameters.
+The free constraint (`{“motion_profile”: “free”}`) places no restrictions on motion whatsoever. This is the default and will be used if nothing is passed. This profile takes no parameters.
 
-Example usage:
-```python
+**Example usage**:
+
+``` python
 extra = {"motion_profile": "free"}
-
+```
 ## Planning Algorithms
 
 * CBiRRT
