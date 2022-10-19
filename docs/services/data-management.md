@@ -50,13 +50,14 @@ In raw JSON, this looks like:
         "name": "data_manager",
         "type": "data_manager",
         "attributes": {
-        "capture_disabled": false,
-        "sync_disabled": false,
-        "capture_dir": "/tmp/capture",
-        "sync_interval_mins": 10,
-        "additional_sync_paths": [
-            "/tmp/my_text_files"
-        ]
+            "capture_disabled": false,
+            "sync_disabled": false,
+            "capture_dir": "/tmp/capture",
+            "sync_interval_mins": 10,
+            "additional_sync_paths": [
+                "/tmp/my_text_files"
+            ]
+        }
     }
 }
 ```
