@@ -243,7 +243,7 @@ extra = {"motion_profile": "orientation"}
 
 #### Free Constraint
 
-The Free constraint places no restrictions on motion whatsoever. This is the default and will be used if nothing is passed. This profile takes no parameters.
+The `free` constraint places no restrictions on motion whatsoever. This is the default and will be used if nothing is passed. This profile takes no parameters.
 
 Example usage:
 ```python
