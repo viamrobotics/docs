@@ -38,11 +38,6 @@ You can view the complete tutorial on how to create a custom component in Python
 
 You can view more component implementation examples in <file>components.py</file>, found in the <a href="https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py" target="_blank">Viam Python SDK repo</a>[^compsamp].
 
+[^API Reference]:Viam Python SDK Component Reference: <a href="https://python.viam.dev/autoapi/viam/components/index.html" target="_blank">ht<span></span>tps://python.viam.dev/autoapi/viam/components/index.html</a>
+
 [^compsamp]:<file>components.py</file>: <a href="https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py" target="_blank">ht<span></span>tps://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py</a>
-
-
-
-[You can find the API reference here.](https://python.viam.dev/autoapi/viam/components/index.html)
-
-
-<span></span>
