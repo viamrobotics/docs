@@ -172,7 +172,9 @@ The Linear constraint forces the path taken by `component_name` to follow an exa
    </td>
   </tr>
 </table>
-
+Example usage:
+```python
+extra = {"motion_profile": "linear"}
 
 
 #### Pseudolinear Constraint
