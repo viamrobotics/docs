@@ -45,6 +45,7 @@ The servo will depend on the board, which must also be configured.
 An example configuration file containing the necessary attributes is as follows:  
 
 ![servo-JSON](../img/servo/servo-json.png)
+
 [Click here for the raw JSON.](../example-configs/servo-config.json)
 
 ### Optional Attributes
