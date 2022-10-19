@@ -239,6 +239,9 @@ The Orientation constraint places a restriction on the orientation change during
 
 The Free constraint places no restrictions on motion whatsoever. This is the default and will be used if nothing is passed. This profile takes no parameters.
 
+Example usage:
+```python
+extra = {"motion_profile": "free"}
 
 ## Planning Algorithms
 
