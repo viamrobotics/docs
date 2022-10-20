@@ -59,9 +59,9 @@ You will need the following hardware, tools, and software to complete this proje
 
 ### Software:
 
--   <a href="https://www.python.org/download/releases/3.0/" target="_blank">Python3</a>[^p3]
+- <a href="https://www.python.org/download/releases/3.0/" target="_blank">Python3</a>[^p3]
 
--   [viam-server](../../getting-started/linux-install/)
+- [viam-server](../../getting-started/linux-install/)
 
 - <a href="https://pip.pypa.io/en/stable/#" target="_blank">Pip</a>[^pip]
 
