@@ -226,7 +226,7 @@ What you see here is a list of the various resources, components, and services t
 ### How to write Python code to make an LED Blink
 
 The first thing you need to do is import the [Board component](../../components/board/) from the Viam Python SDK.
-This component represents a physical general purpose board that contains GPIO pins.
+This component represents a physical general-purpose board that contains GPIO pins.
 We will need this component in order to interact with the GPIO pins on our Raspberry Pi.
 
 At the top of your blink.py file, paste the following:
