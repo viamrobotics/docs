@@ -58,7 +58,7 @@ When you are ready to contribute changes to the docs:
 3. Create a new branch for your changes: ```git switch -c my-new-feature```
 4. Edit some docs...
 5. Commit your changes: ```git commit -am 'Add some feature'```
-6. Make sure your local branch is still up to date with the official repo: ```git pull upstream main```
+6. Make sure your local branch is still up-to-date with the official repo: ```git pull upstream main```
 7. Push to the branch: ````git push origin my-new-feature````
 8. Submit a pull request :D
 
@@ -72,7 +72,7 @@ Please note the differences between the two versions:
 
 ---
 
-title: Build a line following robot with only a webcam
+title: Build a line-following robot with only a webcam
 
 summary: Instructions for building a line following robot that uses a webcam to track lines.
 
@@ -88,15 +88,15 @@ date: 2022-08-18
 
 ---
 
-title: "Build a line following robot with only a rover and a webcam"
+title: "Build a line-following robot with only a rover and a webcam"
 
-linkTitle: "Build a line following robot with only a rover and a webcam"
+linkTitle: "Line Follower"
 
 weight: 90
 
 type: "docs"
 
-description: "Instructions for building a line following robot that uses a webcam to track lines."
+description: "Instructions for building a line-following robot that uses a webcam to track lines."
 
 ---
 
@@ -108,7 +108,7 @@ Neglecting to add a weight entry causes Hugo to place the page at the very botto
 
 ### Prod/Draft/Future Pages
 
-Add “Draft=true” to the Front Matter to set the page to Draft. Hugo will not build draft pages into production. You can commit and push the page and it won’t display in production. This could let you push the page to the Master without displaying it in production, but let others access it locally from the git tree without changing the branch. To view the page locally, use the -D option: \
+Add “Draft=true” to the Front Matter to set the page to Draft. Hugo will not build draft pages into production. You can commit and push the page and it won’t display in production. This could let you push the page to Main without displaying it in production, but let others access it locally from the git tree without changing the branch. To view the page locally, use the -D option: \
 hugo server -D
 
 Add “Future=true” to the Front Matter to begin building a page to production on a certain date (e.g., a release date). This allows you to add a page in the production system and only display it from a selected date using Hugo's buildFuture build option in config.toml and the Future=true. To view the page locally prior to the date, use the -F option: \
@@ -118,7 +118,7 @@ hugo server -F
 
 **LH Nav Menu**
 
-Hugo builds the TOC from the pages under content/en. Because our docs use Page Bundles, each directory contains an _index.html file that serves as a landing page into that section. The following image is the _index.html page inside Getting Started:
+Hugo builds the TOC from the pages under docs/. Because our docs use Page Bundles, each directory contains an _index.html file that serves as a landing page into that section. The following image is the _index.html page inside Getting Started:
 
 <p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
@@ -130,7 +130,7 @@ Hugo can build drop-downs for the top banner based on the settings contained in 
 
 **RH Menu**
 
-This menu is a list of page sections and also has items to print or open a doc issue (not implemented in JIRA yet - We need Ed’s help to add this and feedback).
+This menu is a list of page sections and also has items to print or open a doc issue (not implemented in JIRA yet - We need Eric’s help to add this and feedback).
 
 
 ### The Index Files
