@@ -18,7 +18,7 @@ This tutorial is a good introduction to Python programming, and developing code 
 {{% alert title="Note" color="note" %}}  
 This is part 2 of Viam's Intro to Robotics series.
 If you haven't completed [Part 1](../how-to-make-an-led-blink-with-a-raspberry-pi-using-viam/), be sure to go back and complete that before starting on this tutorial.
-We will be assuming that you have already set up [your Raspberry Pi](../../getting-started/installation/), [set up Viam Server](../../getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam app](../../getting-started/installation/#adding-your-pi-on-the-viam-app) before proceeding.
+You should have already set up [your Raspberry Pi](../../getting-started/installation/), [set up viam-server](../../getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam app](../../getting-started/installation/#adding-your-pi-on-the-viam-app) before proceeding.
 
 {{% /alert %}}
 
@@ -65,7 +65,7 @@ You will need the following hardware, tools, and software to complete this proje
 
 -   <a href="https://www.python.org/download/releases/3.0/" target="_blank">Python3</a>[^p3]
 
--   [Viam Server](https://www.viam.com/)
+-   [viam-server](https://www.viam.com/)
 
 - <a href="https://pip.pypa.io/en/stable/#" target="_blank">Pip</a>[^pip]</a>
 
