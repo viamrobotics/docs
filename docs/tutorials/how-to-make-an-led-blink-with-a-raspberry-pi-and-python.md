@@ -226,14 +226,14 @@ The first thing you need to do is import the [Board component](../../components/
 This component represents a physical general-purpose board that contains GPIO pins.
 We will need this component in order to interact with the GPIO pins on our Raspberry Pi.
 
-At the top of your blink.py file, paste the following:
+At the top of your <file>blink.py</file> file, paste the following:
 
 ```python
 from viam.components.board import Board
 ```
 
 Next, you will need to initialize the Raspberry Pi board, and you will need to tell Viam which GPIO pin your LED is on.
-Inside the `main()` function, and after the `print(robot.resource_names)`, paste the following:
+Inside the <code>main()</code> function, and after the <code>print(robot.resource_names)</code>, paste the following:
 
 ```python
 local = Board.from_robot(robot, 'local')
