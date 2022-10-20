@@ -5,8 +5,6 @@ weight: 88
 type: "docs"
 description: "Intro to hardware programming using the Viam Python SDK to make an LED blink."
 ---
-## Intro
-
 In this post, you will be introduced to the basics of programming hardware by using the [Viam Python SDK](https://python.viam.dev/) to make an LED blink.
 This will allow you to write Python code to make an LED connected to the GPIO of a Raspberry Pi blink.
 This tutorial is a good introduction to Python programming, and developing code for hardware like robots and IoT devices.
@@ -19,7 +17,6 @@ This tutorial is a good introduction to Python programming, and developing code 
 This is part 2 of Viam's Intro to Robotics series.
 If you haven't completed [Part 1](../how-to-make-an-led-blink-with-a-raspberry-pi-using-viam/), be sure to go back and complete that before starting on this tutorial.
 You should have already set up [your Raspberry Pi](../../getting-started/installation/), [set up viam-server](../../getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam app](../../getting-started/installation/#adding-your-pi-on-the-viam-app) before proceeding.
-
 {{% /alert %}}
 
 For reference, the circuit you are building for this tutorial looks like this:
@@ -28,7 +25,6 @@ For reference, the circuit you are building for this tutorial looks like this:
 
 {{% alert title="Tip" color="tip" %}}  
 If you have any issues whatsoever getting Viam set up on your Raspberry Pi, let us know on the [Viam Community Slack](https://viamrobotics.slack.com), and we will be happy to help you get up and running.
-
 {{% /alert %}}
 
 ## What you'll need for this guide
@@ -65,7 +61,7 @@ You will need the following hardware, tools, and software to complete this proje
 
 -   <a href="https://www.python.org/download/releases/3.0/" target="_blank">Python3</a>[^p3]
 
--   [viam-server](https://www.viam.com/)
+-   [viam-server](../../getting-started/linux-install/)
 
 - <a href="https://pip.pypa.io/en/stable/#" target="_blank">Pip</a>[^pip]</a>
 
@@ -153,7 +149,7 @@ To install the Viam Python SDK on your Raspberry Pi, you must run the following 
 pip install viam-sdk
 ```
 
-You can now close your terminal that is SSHed into your Raspberry Pi.
+You can now close your terminal that is SSHed into the Raspberry Pi.
 With Viam, you can code robots from any machine without needing to be on the machine!
 
 ### How to initialize and connect your robot to the Viam app
@@ -206,8 +202,9 @@ The Python SDK connect script should look something like this:
 Next, paste that boilerplate code into your <file>blink.py</file> file in VS Code, and save your file.
 
 {{% alert title="Tip" color="tip" %}}  
-Your payload and address information will be different in your example, make sure that if you copy this code snippet, you copy and paste your credentials here.
+Your payload and address information will differ from the example. Ensure that if you copy this code snippet, that you also copy and paste your credentials here.
 {{% /alert %}}
+
 You can now run the code.
 Doing so will ensure that the Python SDK is properly installed, that the viam-server instance on your robot is alive, and that the computer running the program is able to connect to that instance.
 
