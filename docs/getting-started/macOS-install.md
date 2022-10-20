@@ -7,7 +7,7 @@ description: "How to install and run viam-server on macOS and sync a machine wit
 ---
 `viam-server` is available for macOS users via [Homebrew](https://docs.brew.sh).
 You should install `viam-server` on your Mac if you are using a Mac as the basis for your robot, or if you want to [build a mock robot](../../tutorials/how-to-build-a-mock-robot/).
-If the operating system that your robot is running on is Linux based, be sure to follow the [installing viam-server on Linux](../linux-install/) guide.
+If your robot runs a linux-based OS, then be sure to follow the [installing Viam Server on Linux](../linux-install/) guide.
 
 {{% alert title="Note" color="note" %}}
 This guide is only intended for users that are intending on creating a robot that is running on macOS.
