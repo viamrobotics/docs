@@ -38,15 +38,18 @@ We highly suggest using a virtual python environment like <a href="https://pytho
 
 Then create an environment for Python by running the following on the terminal:
 ```bash
-conda create -n pysdk python=3.9.
+poetry new pysdk  # new poetry project
+conda create -n pysdk python=3.9  # new (mini)conda environment
 ```
 
 You can also name your environment as you wish, but please remember to keep it consistent.
 We named our environment pysdk, referring to the [Viam Python SDK](https://python.viam.dev/).
-Next, activate and navigate to this environment by running the command:
+
+NOTE: If using (mini)conda, activate the environment by running the command:
 ```bash
 conda activate pysdk
 ```
+Poetry environments are implicitly activated.
 
 Before you can run the code, you need to install the "viam" module.
 Follow the <a href="https://github.com/viamrobotics/viam-python-sdk#installation" target="_blank">Python SDK installation</a>[^pos] guide to properly install the package.
