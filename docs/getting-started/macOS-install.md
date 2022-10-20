@@ -9,17 +9,9 @@ description: "How to install and run viam-server on macOS and sync a machine wit
 You should install `viam-server` on your Mac if you are using a Mac as the basis for your robot, or if you want to [build a mock robot](../../tutorials/how-to-build-a-mock-robot/).
 If your robot runs a linux-based OS, then be sure to follow the [installing Viam Server on Linux](../linux-install/) guide.
 
-{{% alert title="Note" color="note" %}}
-This guide is only intended for users that are intending on creating a robot that is running on macOS.
-If you are running macOS on your development computer and intend to program a robot that runs Linux, you must follow our [using a Viam SDK to connect to your robot](../../product-overviews/sdk-as-client/) guide.
-{{% /alert %}}
-
 ## How to install viam-server using Homebrew
 
-In short, you must ensure that you have Homebrew installed on your computer running macOS, download your robot's app viam-server config, and download `viam-server` with Homebrew.
-
-The simplest way to install `viam-server` on your Mac is to go to the **SETUP** page of your robot on the [Viam app](https://app.viam.com).
-There you will find setup instructions that are auto-populated with your robot's unique ID. Let's explore the installation process in detail:
+In short, you must ensure that you have Homebrew installed and go to the **SETUP** page of your robot on the [Viam app](https://app.viam.com). There you will find setup instructions that are auto-populated with your robot's unique ID. Let's explore the installation process in detail:
 
 1.  Ensure that you have Homebrew installed ([https://docs.brew.sh/Installation](https://docs.brew.sh/Installation)) and add `viamrobotics` to Homebrew. After you have installed Homebrew, run this command in your terminal:
 
@@ -50,21 +42,6 @@ brew install viam-server
 ```
 
 4.  Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
-
-## How to specify the viam-server config using Homebrew
-
-The recommended way to run `viam-server` on macOS is to copy your robot's viam-server config file locally and to run an instance of viam-sever with your robot's config.
-
-Under the **CONFIG** tab of your robot on the Viam app, click **COPY VIAM-SERVER CONFIG**.
-
-![Screenshot from the Viam app showing the "Copy Viam-server Config" button highlighted by a red box.](./img/macOS-install/image1.png)
-
-On your local machine, create a new file named <file>viam.json</file> paste the contents of your `viam-server` config into that file, and save.
-From the terminal, navigate to the directory where you saved the config file and run this command to create a new instance of `viam-server` using this configuration.`
-
-```bash
-viam-server -config viam.json
-```
 
 ## How to run viam-server as a service on macOS
 
