@@ -15,7 +15,7 @@ A linear axis has the advantage of being a stiffer machine layout than an open c
 
 ### Requirements
 
-A gantry in Viam requires the following :
+A gantry in Viam requires the following:
 
 * A board or controller that can detect changes in voltage on gpio pins.
 * A motor:
@@ -23,10 +23,6 @@ A gantry in Viam requires the following :
     * A stepper motor
         * Requires limit switches to be set in the gantry config or offsets to be set in stepper motor.
 * Limit switches to attach to the brackets 
-
---wiring diagram1 encoder--
-
---wiring diagram2 limit switch--
 
 A customized encoded motor controller can be used in the configuration of a gantry to move the linear rail. 
 This component abstracts this type of hardware to give the user an easy interface for moving many linear rails.
@@ -37,14 +33,10 @@ Each gantry can be given a reference frame in the configuration that describes i
 
 A multi axis gantry is composed of many one axis gantries. 
 The multiple axis system is composed of the supplied gantry names. 
-The system will then use any reference frames in the one axis configs to place the gantries in the correct position and orientation. T
-he “world” frame of each gantry becomes the moveable frame of the gantry before it in order. 
-See picture for a visual:
-
---pretty picture--
+The system will then use any reference frames in the one axis configs to place the gantries in the correct position and orientation.
+The “world” frame of each gantry becomes the moveable frame of the gantry before it in order. 
 
 ## Attribute Configuration
-
 
 ### Single-Axis Gantry Attributes
 
@@ -148,7 +140,7 @@ All gantries implement the following methods:
    </td>
   </tr>
   <tr>
-   <td><strong>GetPosition </strong>
+   <td><file>GetPosition </file>
    </td>
    <td>Returns an array of floats that describe the current position to the gantry in each axis on which it moves.
 <p>
@@ -156,7 +148,7 @@ The units are millimeters. A single-axis gantry returns a list with one element.
    </td>
   </tr>
   <tr>
-   <td><strong>MoveToPosition </strong>
+   <td><file>MoveToPosition </file>
    </td>
    <td>Takes in a list of positions (units millimeters) and moves each axis of the gantry to the corresponding position. 
 <p>
@@ -164,37 +156,37 @@ The number of elements in the list must equal the number of moveable axes on the
    </td>
   </tr>
   <tr>
-   <td><strong>GetLengths </strong>
+   <td><file>GetLengths </file>
    </td>
    <td>Returns a list of lengths of each axis of the gantry in millimeters.
    </td>
   </tr>
   <tr>
-   <td><strong>Stop </strong>
+   <td><file>Stop </file>
    </td>
    <td>Stops the actuating components of the Gantry.
    </td>
   </tr>
   <tr>
-   <td><strong>Do </strong>
+   <td><file>Do </file>
    </td>
    <td>Viam supplies this interface on each component to allow for additional, non-standard functionality that users may wish to include that is <em>not</em> available from  Viam’s interfaces.
    </td>
   </tr>
   <tr>
-   <td><strong>ModelFrame </strong>
+   <td><file>ModelFrame </file>
    </td>
    <td>Returns the Gantry model. This interface is used in Motion Planning. It is an interface that is used in <a href="/services/motion">motion service</a>.
    </td>
   </tr>
   <tr>
-   <td><strong>CurrentInputs </strong>
+   <td><file>CurrentInputs </file>
    </td>
    <td>gets the positions of each axis of the gantry and transforms them into an Input type. It is used by the <a href="/services/motion">motion service</a>.
    </td>
   </tr>
   <tr>
-   <td><strong>GoToInputs </strong>
+   <td><file>GoToInputs </file>
    </td>
    <td>returns results from motion planning and Inputs to the gantry, and sends them to MoveToPosition as positions. It is used by the <a href="/services/motion">motion service</a>.
    </td>
