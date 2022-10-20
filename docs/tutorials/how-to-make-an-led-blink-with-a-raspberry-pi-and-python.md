@@ -63,7 +63,7 @@ You will need the following hardware, tools, and software to complete this proje
 
 -   [viam-server](../../getting-started/linux-install/)
 
-- <a href="https://pip.pypa.io/en/stable/#" target="_blank">Pip</a>[^pip]</a>
+- <a href="https://pip.pypa.io/en/stable/#" target="_blank">Pip</a>[^pip]
 
 [^pip]:Package Installer for Python (pip): <a href="https://pip.pypa.io/en/stable/#" target="_blank">ht<span></span>tps://pip.pypa.io/en/stable/#</a>
 
