@@ -6,8 +6,8 @@ type: "docs"
 description: "How to install and run viam-server on macOS and sync a machine with the Viam app ([https://app.viam.com](https://app.viam.com))"
 ---
 `viam-server` is available for macOS users via [Homebrew](https://docs.brew.sh).
-You should install `viam-server` on your Mac if you are using a Mac as the basis for your robot, or if you want to [build a mock robot](../../tutorials/how-to-build-a-mock-robot/).
-If your robot runs a linux-based OS, then be sure to follow the [installing Viam Server on Linux](../linux-install/) guide.
+You should install `viam-server` on your Mac if you are using a Mac as the basis for your robot.
+If your robot runs a Linux-based OS, then be sure to follow the [installing Viam Server on Linux](../linux-install/) guide.
 
 ## How to install viam-server using Homebrew
 
@@ -35,7 +35,7 @@ curl -H "Secret: [PASTE YOUR SECRET KEY HERE]" "https://app.viam.com/api/json1/c
 Your robot's configuration file is saved in your Homebrew directory.
 {{% /alert %}}
 
-1.  Now that you have saved your robot's config file onto your Mac, you can now download the latest `viam-server` AppImage package via Homebrew.
+1.  You will need to download the latest `viam-server` binary package via Homebrew.
 
 ```bash
 brew install viam-server
