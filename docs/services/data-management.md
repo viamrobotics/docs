@@ -3,7 +3,7 @@ title: "Data Management Service"
 linkTitle: "Data Management"
 weight: 10
 type: "docs"
-description: "Explanation of the data management service, its configuration, its functionality, and its interfaces."
+description: "Explanation of the data management service, its configuration and its functionality."
 ---
 The data management service supports capturing data from any component at a predefined frequency and syncing it to Viam's data platform.
 

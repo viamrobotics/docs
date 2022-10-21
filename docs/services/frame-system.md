@@ -1,7 +1,7 @@
 ---
 title: "The Robot Frame System"
 linkTitle: "Frame System"
-summary: "Describes the Frame System, its configuration, its functionality, and its interfaces."
+summary: "Describes the Frame System, its configuration and its functionality."
 type: docs
 weight: 45
 ---
