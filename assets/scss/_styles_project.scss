@@ -34,18 +34,88 @@ START MARKETING CSS
 */
 /* START Adjust Heading sizes*/
 h1, .h1 {
-    font-size: 32pt !important;;
+    font-size: 32pt !important;
+    margin-left: 0px;
    }
    
    h2, .h2 {
-    font-size: 24 pt !important;;
+    font-size: 24 pt !important;
+    margin-left: 24px;
+
    }
    
    h3, .h3 {
-    font-size: 18pt !important;;
+    font-size: 18pt !important;
+    margin-left: 40px;
    }
-   
+
+      /* Added H4 and H5 in response to DAD-97 */
+      /* Added rules and increased indents */
+   h4, .h4 {
+    font-size: 16pt !important;
+    margin-left: 60px;
+   }
+
+   h5, .h5 {
+    font-size: 16pt !important;
+    font-weight: 400;
+    font-style: italic;
+    margin-left: 70px;
+   }
+
+ /* This class prevents h4 headings in alerts from indenting */   
+.plain{
+  margin-left: 0;
+}
+  /* This prevents the h4 heading rules from appearing in alerts */   
+.plain:after{
+    content:' ';
+    display:none;
+
+}
+
    /* END Adjust Heading sizes*/
+
+/* */
+
+h1:after
+{
+    content:' ';
+    display:block;
+    border:1px solid black;
+}
+
+h2:after
+{
+    content:' ';
+    display:block;
+    border:1px solid black;
+    margin-right:25%;
+}
+
+h3:after
+{
+    content:' ';
+    display:block;
+    border:1px solid black;
+    margin-right:50%;
+}
+
+h4:after
+{
+    content:' ';
+    display:block;
+    border:1px solid black;
+    margin-right:50%;
+}
+h5:after
+{
+    content:' ';
+    display:block;
+    border:1px dashed  black;
+    margin-right:75%;
+}
+
    
 .td-sidebar {
 
@@ -208,7 +278,14 @@ END MARKETING CSS
     }
 }
 
+.alert-heading { // left margin for h4 in alerts
+margin-left: 0; 
+}
+.alert-heading::after { // blocks display h4 rules in alerts
+  content:' ';
+  display:none;
 
+}
 
 .note,
 .caution,
@@ -308,11 +385,9 @@ border-style: solid;
     border-color: #1be020;
     border-width: 0 0 0 8px;
 }
-  .alert-tip hr {
-    border-top-color: #1be020; }
-.alert-tip .alert-link {
-    color: #520000; }
     
+
+
 /* END CSS FOR NOTES, CAUTIONS, WARNINGS */
 
 
