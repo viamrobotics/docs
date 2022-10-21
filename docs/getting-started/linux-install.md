@@ -5,7 +5,10 @@ weight: 10
 type: "docs"
 description: "How to install and run viam-server on Linux and sync a machine with the Viam app ([https://app.viam.com](https://app.viam.com))"
 ---
-The Viam Server is distributed as an AppImage. The AppImage is a single, self-contained binary that should run on any Linux system with the correct CPU architecture, with no need to install any dependencies (excepting FUSE as detailed in the troubleshooting section at the end). MacOS users will need to build an executable binary from the code. Windows and 32-bit systems are not supported.
+The Viam Server is distributed as an AppImage.
+The AppImage is a single, self-contained binary that should run on any Linux system with the correct CPU architecture, with no need to install any dependencies (excepting FUSE as detailed in the troubleshooting section at the end).
+MacOS users will need to follow the [installing viam-server on macOS guide](../macos-install).
+Windows and 32-bit systems are not supported.
 
 ## Installation Instructions
 In short, you'll download the file, make it executable, and run its self-install option to set it up as a system service. If you don't want to run it as a service, just run it. It's simply an executable binary.
