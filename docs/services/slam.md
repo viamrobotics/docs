@@ -4,7 +4,7 @@ linkTitle: "SLAM"
 weight: 70
 draft: false
 type: "docs"
-description: "Explanation of the SLAM service, its configuration, its functionality, and its interfaces."
+description: "Explanation of the SLAM service, its configuration and its functionality."
 ---
 
 ## Warning: This is an experimental feature.
