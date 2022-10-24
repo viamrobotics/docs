@@ -1,7 +1,7 @@
 ---
 title: "Robot Service"
 linkTitle: "Robot Service"
-description: "Explanation of the robot service, its configuration, its functionality, and its interfaces."
+description: "Explanation of the robot service, its configuration and its functionality."
 type: "docs"
 ---
 Robot Service constitutes a minimal set of APIs that most robots (Viam Server, [Viam Python SDK](https://python.viam.dev/) and various SDKs) should support. 

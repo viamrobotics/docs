@@ -3,7 +3,7 @@ title: "Navigation Service"
 linkTitle: "Navigation"
 weight: 30
 type: "docs"
-description: "Explanation of the navigation service, its configuration, its functionality, and its interfaces."
+description: "Explanation of the navigation service, its configuration and its functionality."
 ---
 # Coming soon!
 This page will contain:
