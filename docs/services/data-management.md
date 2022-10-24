@@ -37,7 +37,7 @@ Once a file is synced to Viam's cloud, it is deleted locally off of the robot.
 ## Service Configuration
 
 In order to use the data management service, you need to add the service to the robot's configuration.
-If you're using the "Config > Services" tab on Viam, you'll see that adding a data management service gives you to option to enable capture and syncing.
+If you're using the "Config > Services" tab on the Viam app, you'll see that adding a data management service gives you to option to enable capture and syncing.
 
 This example has capture enabled that is writing to `/tmp/capture` on the robot, syncing from that directory every 10 minutes, and additionally syncing any files in `/tmp/my_text_files`
 
@@ -65,7 +65,7 @@ In raw JSON, this looks like:
 #### Component Method Configuration
 
 You can configure data capture for each method within a component.
-If you're using the "Config > Components" tab on Viam, you'll see that a component that has a capturable method will have the option "Data Capture Configuration > Add Method."
+If you're using the "Config > Components" tab on the Viam app, you'll see that a component that has a capturable method will have the option "Data Capture Configuration > Add Method."
 
 Clicking "Add Method" allows you to pick the method name and capture frequency.
 You may capture as many methods off of one component as you'd like.
