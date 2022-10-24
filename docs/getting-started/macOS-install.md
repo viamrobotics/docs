@@ -23,7 +23,7 @@ brew tap viamrobotics/brews
 
 3.  You can get this command from the **SETUP** tab of your robot on the Viam app.
 
-{{% alert title="Info" color="info" %}}
+{{% alert title="Info" color="tip" %}}
 This curl command will copy your robot's unique configuration file from the Viam app into a Homebrew directory so you can call it with the local instance.
 {{% /alert %}}
 
@@ -31,7 +31,7 @@ This curl command will copy your robot's unique configuration file from the Viam
 curl -H "Secret: [PASTE YOUR SECRET KEY HERE]" "https://app.viam.com/api/json1/config?id=[PASTE YOUR ID HERE]&client=true" -o "$(brew --prefix)/etc/viam.json"
 ```
 
-{{% alert title="Info" color="info" %}}
+{{% alert title="Info" color="tip" %}}
 Your robot's configuration file is saved in your Homebrew directory.
 {{% /alert %}}
 
