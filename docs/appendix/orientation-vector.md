@@ -8,15 +8,15 @@ description: "A description of Viam's orientation vector method."
 Viam's orientation vector is a method for describing the orientation of an object in 3D space.
 It is part of a Pose which also includes the position in 3D space.
 
-# Basics
+## Basics
 Orientation vectors are composted of 4 attributes.
 
 - RX, RY, RZ - define a vector from the center of the object to another point in the reference frame.
 This defines the direction something is pointing in.
 - Theta - describes the angular position around that vector.
 
-# Examples
-## Configuring frame for a camera
+## Examples
+### Configuring frame for a camera
 - You have a room with a camera.
 - The corner of the room is (0,0,0).
 - You want to configure the camera into the frame system, so you need to know where in the room the camera is, and where it's pointing.
@@ -33,7 +33,7 @@ This defines the direction something is pointing in.
         - If not, add 90 to Theta, and try again
 ![camera example](../img/orientation-vector-camera.png)
 
-# Why we like it
+## Why we like it
 - Easy to measure in the real world
 - No protractor needed
 - Rotation is pulled out (as Theta) which is often used independently and measured independently.
