@@ -1,7 +1,7 @@
 ---
 title: "How To Build a Mock Robot"
 linkTitle: "How To Build a Mock Robot"
-weight: 55
+weight: 40
 type: "docs"
 description: "Instructions for creating a mock robot using just your personal computer so you can try using Viam without any robotic hardware."
 ---

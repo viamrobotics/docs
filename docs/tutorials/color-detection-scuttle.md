@@ -1,7 +1,7 @@
 ---
 title: "Color Detection with the SCUTTLE Robot on Viam"
 linkTitle: "Colored Object Follower"
-weight: 55
+weight: 30
 type: "docs"
 description: "Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software."
 ---
