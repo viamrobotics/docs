@@ -20,6 +20,16 @@
     * Development with draft files: `make serve-dev-draft`
     * Development with future files: `make serve-dev-future`
 
+## Building
+
+This will build and serve public from a separate, non hugo server, at http://localhost:9000.
+
+`make build-prod && python3 -m http.server 9000 --directory public`
+
+## Publishing
+
+This is handled automatically by a GitHub Action on push.
+
 ## Important Things about Hugo
 
 ### Front Matter
