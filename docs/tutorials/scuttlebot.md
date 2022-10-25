@@ -1,7 +1,7 @@
 ---
 title: "Configuring a SCUTTLE Robot with a Camera"
 linkTitle: "Configuring a SCUTTLE Robot"
-weight: 20
+weight: 15
 type: "docs"
 description: "Instructions for configuring a SCUTTLE Robot on the Viam platform"
 ---

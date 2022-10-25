@@ -1,7 +1,7 @@
 ---
 title: "How To Configure A Camera"
 linkTitle: "How To Configure A Camera"
-weight: 90
+weight: 45
 type: "docs"
 draft: false
 description: "Instructions for configuring and calibrating cameras."

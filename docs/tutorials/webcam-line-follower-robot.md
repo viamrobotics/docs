@@ -1,7 +1,7 @@
 ---
 title: "Building a Line-Following Robot with a Rover and a Webcam"
 linkTitle: "RGB Line Follower"
-weight: 90
+weight: 35
 type: "docs"
 description: "Build a line-following robot that relies on a webcam and color detection."
 ---

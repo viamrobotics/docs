@@ -1,7 +1,7 @@
 ---
 title: "Make an LED Blink with a Raspberry Pi Using the Viam App"
 linkTitle: "Blink an LED with a Pi and the Viam App"
-weight: 87
+weight: 05
 type: "docs"
 description: "How to make an LED blink with a Raspberry Pi and the Viam app."
 

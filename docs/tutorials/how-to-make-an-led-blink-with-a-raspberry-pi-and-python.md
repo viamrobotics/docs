@@ -1,7 +1,7 @@
 ---
 title: "Make an LED Blink with a Raspberry Pi and Viam Python SDK"
 linkTitle: "Blink an LED with a Pi and the SDK"
-weight: 88
+weight: 10
 type: "docs"
 description: "Intro to hardware programming using the Viam Python SDK to make an LED blink."
 ---
