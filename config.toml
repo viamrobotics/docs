@@ -88,8 +88,8 @@ includes_dir = "_includes"
 
 archived_version = false
 url_latest_version = "https://docs.viam.com/"
-algolia_docsearch = false
-offlineSearch = true
+algolia_docsearch = true
+offlineSearch = false
 prism_syntax_highlighting = true
 
 [params.ui]
@@ -98,7 +98,7 @@ footer_about_disable = false
 navbar_logo = true
 navbar_translucent_over_cover_disable = false
 sidebar_menu_compact = true  # When true, the section headings work like an accordian.
-sidebar_search_disable = false
+sidebar_search_disable = true
 
 [params.ui.feedback]
 enable = false  # TODO: After we add our feedback system, set this back to true to show the section head.

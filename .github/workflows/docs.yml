@@ -33,3 +33,28 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+
+  generate-index:
+    needs: generate-docs
+    if: github.repository_owner == 'viamrobotics'
+    runs-on: [self-hosted, x64]
+    container:
+      image: ghcr.io/viamrobotics/canon:amd64
+    steps:
+      - name: Checkout Push/Workflow Dispatch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Wait before index
+        run: sleep 300s
+
+      - name: Write env
+        run: |
+          echo TYPESENSE_API_KEY=${{ secrets.TYPESENSE_API_KEY }} > typesense.env
+          echo TYPESENSE_HOST=cgnvrk0xwyj9576lp-1.a1.typesense.net >> typesense.env
+          echo TYPESENSE_PORT=443 >> typesense.env
+          echo TYPESENSE_PROTOCOL=https >> typesense.env
+
+      - name: Index
+        run:  docker run -it --env-file=typesense.env -e "CONFIG=$(cat docsearch.json)" typesense/docsearch-scraper
