@@ -46,10 +46,9 @@ description: "Instructions for building a line-following robot that uses a webca
 
 ### Prod/Draft/Future Pages
 
-Add “Draft=true” to the Front Matter to set the page to Draft. Hugo will not build draft pages into production. You can commit and push the page and it won’t display in production. This could let you push the page to Main without displaying it in production, but let others access it locally from the git tree without changing the branch. To view the page locally, use `make serve-prod` or `make serve-dev`.
+Add “Draft=true” to the Front Matter to set the page to Draft. Hugo will not build draft pages into production. You can commit and push the page and it won’t display in production. This could let you push the page to Main without displaying it in production, but let others access it locally from the git tree without changing the branch. To view the page locally, use `make serve-prod-draft` or `make serve-dev-draft`.
 
-Add “Future=true” to the Front Matter to begin building a page to production on a certain date (e.g., a release date). This allows you to add a page in the production system and only display it from a selected date using Hugo's buildFuture build option in config.toml and the Future=true. To view the page locally prior to the date, use the -F option: \
-hugo server -F
+Add “Future=true” to the Front Matter to begin building a page to production on a certain date (e.g., a release date). This allows you to add a page in the production system and only display it from a selected date using Hugo's buildFuture build option in config.toml and the Future=true. To view the page locally prior to the date, use `make serve-prod-future` or `make serve-dev-future`.
 
 #### Other Setup/Config Information
 
