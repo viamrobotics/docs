@@ -4,6 +4,7 @@ linkTitle: "Raspberry Pi Setup"
 weight: 15
 type: "docs"
 description: "A guide to imaging a Pi, installing viam-server and syncing the Pi with the Viam app [https://app.viam.com](https://app.viam.com) (using Raspberry Pi Imager v1.7.2)."
+# SME: James
 ---
 
 ## Prerequisites

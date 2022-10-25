@@ -5,6 +5,7 @@ weight: 70
 type: "docs"
 draft: true
 description: "Background and Technical information for the Viam the SLAM service, its configuration, its functionality, and its interfaces."
+# SMEs: Jeremy, Kat
 ---
 
 SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers. At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various cutting edge SLAM algorithms that may be useful in their mission.

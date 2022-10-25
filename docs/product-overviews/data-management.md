@@ -4,6 +4,7 @@ linkTitle: "Data Management"
 weight: 99
 type: "docs"
 description: "A guide to Viam's data ingestion and management tooling."
+# SME: Alexa Greenberg
 ---
 ## Data Capture and Synchronization to the Cloud
 The data management service supports capturing data from any component at a predefined frequency and syncing it Viam's data platform.
