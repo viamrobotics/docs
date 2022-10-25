@@ -4,6 +4,7 @@ linkTitle: "Security"
 weight: 25
 type: "docs"
 description: "Explanation of how we manage shared secrets, authentication, and authorization throughout the Viam system."
+# SMEs: Eric Daniels, Adam Magaluk
 ---
 ## Authentication
 Authentication in the app is represented by an `auth.State` object.

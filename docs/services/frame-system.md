@@ -4,6 +4,7 @@ linkTitle: "Frame System"
 summary: "Describes the Frame System, its configuration and its functionality."
 type: docs
 weight: 45
+# SMEs: Peter L, Gautham, Bijan
 ---
 Any robot configured in Viam comes with a service we call the Frame System. 
 This is an internally managed and (mostly) static storage of the reference frame of each component of a robot within a coordinate system configured by the user. 

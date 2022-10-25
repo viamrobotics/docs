@@ -4,6 +4,7 @@ linkTitle: "Viam Server on macOS"
 weight: 10
 type: "docs"
 description: "How to install and run viam-server on macOS and sync a machine with the Viam app ([https://app.viam.com](https://app.viam.com))"
+# SME: James
 ---
 `viam-server` is available for macOS users via [Homebrew](https://docs.brew.sh).
 You should install `viam-server` on your Mac if you are using a Mac as the basis for your robot.
