@@ -137,12 +137,13 @@ background-color: #f2f2f2;
 
 /* font weight */ 
  .td-sidebar-nav .td-sidebar-link__page{
-    font-weight:500;
+    font-weight:600;  /* LH TOC Font weight  */
  }
 
 
  .td-toc #TableOfContents a {
-    color: #495057;
+    color: black; /* Color of the RH TOC text */
+    font-weight:400;  /* LH TOC Font weight  */    
     }
 
 
