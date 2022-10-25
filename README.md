@@ -90,9 +90,11 @@ The formatting works identically to MkDocs: it’s still markdown. But Hugo is b
 
 To add a footnote:
 
+```
 “Some completely[^mfn] random text. “
 
 [^mfn]: this is the text for the footnote
+```
 
 You can place the footnote text immediately beneath the paragraph where you dropped the marker. Hugo will place it at the bottom of the page.
 
