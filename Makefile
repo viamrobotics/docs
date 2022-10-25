@@ -1,5 +1,9 @@
-setup: package.json
-	npm install postcss-cli
+git:
+	git submodule update --init --recursive
+
+setup: git package.json
+	npm install --save-dev autoprefixer
+	npm install --save-dev postcss-cli
 
 PROD_OPTIONS=-e production --minify
 DEV_OPTIONS=-e development --config config.toml,config_dev.toml
