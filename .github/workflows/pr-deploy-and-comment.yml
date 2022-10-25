@@ -46,3 +46,4 @@ jobs:
         with:
           recreate: true
           message: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.sha }}/public'
+          GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
