@@ -1,11 +1,17 @@
 name: docs-publish
 
+# Controls when the workflow will run
 on:
   workflow_dispatch:
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
 
+# Allows you to run this workflow manually from the Actions tab
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build"
   generate-docs:
     if: github.repository_owner == 'viamrobotics'
     runs-on: [self-hosted, x64]
@@ -18,14 +24,22 @@ jobs:
           submodules: true  # fetch hugo themes
           fetch-depth: 0
 
+      - name: Setup npm dependencies
+        run: npm install postcss-cli
+
+# everything below was suggested by hugo docs https://gohugo.io/hosting-and-deployment/hosting-on-github/
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2 
         with:
           hugo-version: 'latest'
           extended: true
+
           
       - name: Build
-        run: make build-prod
+        run: hugo --minify
+        
+      - name: css fix
+        run: git rm .gitignore
         
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

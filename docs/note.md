@@ -123,5 +123,5 @@ Use to notify the reader of information to avoid loss of life, personal injury, 
 
 ## Demo of including another file
 
-{{% include"/static/CNAME" %}}
+{{% include"/static/robot-ipsum.md" %}}
 **Content above this line is contained in /static/robot-ipsum.md**
