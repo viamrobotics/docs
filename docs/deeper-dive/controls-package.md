@@ -4,6 +4,7 @@ linkTitle: "Control Package"
 weight: 10
 type: "docs"
 description: "The Control Package implements feedback control on an endpoint."
+# SME: Nicolas Menard, Rand
 ---
 
 ## Introduction
