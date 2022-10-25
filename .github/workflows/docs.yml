@@ -57,4 +57,4 @@ jobs:
           echo TYPESENSE_PROTOCOL=https >> typesense.env
 
       - name: Index
-        run:  docker run -it --env-file=typesense.env -e "CONFIG=$(cat docsearch.json)" typesense/docsearch-scraper
+        run:  docker run --env-file=typesense.env -e "CONFIG=$(cat docsearch.json)" typesense/docsearch-scraper
