@@ -5,6 +5,7 @@ draft: false
 weight: 50
 type: "docs"
 description: "Explanation of gantry types, configuration, and usage in Viam."
+# SME: Rand
 ---
 
 ## Overview

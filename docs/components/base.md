@@ -4,6 +4,7 @@ linkTitle: "Base"
 weight: 10
 type: "docs"
 description: "Explanation of base types, configuration, and usage in Viam."
+# SMEs: Steve B
 ---
 
 Most robots with wheeled bases will comprise at least the following:

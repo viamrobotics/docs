@@ -4,6 +4,7 @@ linkTitle: "Motor"
 weight: 70
 type: "docs"
 description: "Explanation of motor types, configuration, and usage in Viam."
+# SME: Rand, Jessamy
 ---
 {{% alert title="Note" color="note" %}}
 Information on hobby servos (i.e., servomotors) is located in the <a href="../servo">Servo Component Document</a>.

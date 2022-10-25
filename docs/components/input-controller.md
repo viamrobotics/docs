@@ -4,6 +4,7 @@ linkTitle: "Input Controller"
 weight: 60
 type: "docs"
 description: "Explanation of input controller/gamepad configuration and usage in Viam."
+# SME: James
 ---
 ## Input Interface
 The Input interface is defined in <a href="https://github.com/viamrobotics/rdk/blob/main/components/input/input.go" target="_blank">input/input.go</a>[^input] and you should view that file for details on specific methods and their uses.

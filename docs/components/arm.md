@@ -4,6 +4,7 @@ linkTitle: "Arm"
 weight: 10
 type: "docs"
 description: "Explanation of arm types, configuration, and usage in Viam."
+# SME: Peter L
 ---
 
 Arms are serial chains of joints and links, with a fixed end and an end effector end. 
