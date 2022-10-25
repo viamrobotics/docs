@@ -41,8 +41,7 @@ jobs:
           destination: 'docs-test.viam.dev/${{ github.sha }}'
 
       - name: Comment on PR with link to rendered site
-        uses: peter-evans/create-or-update-comment@v2.0.0
+        uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
-          token: ${{ secrets.DANNENBERS_PTA_FOR_COMMENTING }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.sha }}/public'
+          recreate: true
+          message: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.sha }}/public'
