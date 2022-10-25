@@ -91,7 +91,7 @@ The formatting works identically to MkDocs: it’s still markdown. But Hugo is b
 To add a footnote:
 
 ```
-“Some completely[^mfn] random text. “
+“Some completely[^mfn] random text. “a
 
 [^mfn]: this is the text for the footnote
 ```
