@@ -21,7 +21,7 @@ See our [Raspberry Pi Setup Guide](/getting-started/installation/) for instructi
 Go to the Viam app ([https://app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **CONFIG** tab of the robot associated with your Raspberry Pi.
 To create a new component you'll be working within the **Create Component** box of the **COMPONENTS** sub-tab.
 
-![config](../img/config.png)
+![A screenshot of the config builder UI on app.viam.com showing the Create Component box filled out with name=local, type=board and model=pi.](../img/config.png)
 
 The first component you will add is the [board](/components/board/) which represents the Raspberry Pi to which the other components are wired.
 For component `Type`, select `board`.
@@ -30,7 +30,7 @@ For `Model`, select `pi`.
 Click the **Create Component** button.
 You don't need to add any attributes for this one, so your configured board will look something like this:
 
-![board](../img/board.png)
+![A screenshot of the board's configuration card on app.viam.com.](../img/board.png)
 
 ## Configuring the Motor and Wheels 
 
@@ -59,7 +59,7 @@ Save the config by clicking **Save Config** at the bottom of the page.
 If you are using a motor with encoders, you need to specify the ticks per rotation.
 {{% /alert %}}
 
-![rightmotor](../img/rightmotor.png)
+![A screenshot of the right motor configuration showing pin assignment and Max RPM set to 300.](../img/rightmotor.png)
 
 Having configured these two components, you should now be able to actuate your motor.
 Click **CONTROL** at the top of the page to navigate to the Control tab.
@@ -69,7 +69,7 @@ Please be careful when activating your robot! Start with the power level set to 
 Ensure the rover has sufficient space to drive around without hitting anyone or anything.
 Consider possibly holding your robot off the ground so it cannot run away or collide with anything unexpected.
 
-![control_rightmotor](../img/control-rightmotor.png)
+![A screenshot of the CONTROL tab UI with buttons to control the right motor.](../img/control-rightmotor.png)
 
 At this point, the wheels on one side of your robot should be working.
 Now try to add the other set of wheels using the same steps and see if you can get this robot driving with all of the components working together.
@@ -79,11 +79,11 @@ To do this, go back to the **CONFIG** tab and scroll down to the fresh **Create 
 The config attributes for this `motor` will be very similar to the `right` motor, which makes sense as the hardware is the same and it is connected to the same `board`.
 The only difference will be the `Name` which will be `left` and the pins it is connected to, which should be set as follows: `a` (In1) to `38`, `b` (In2) to `40`, and `pwm` to `36`.
 
-![leftmotor](../img/leftmotor.png)
+![A screenshot of the left motor configuration showing pin assignment and Max RPM set to 300.](../img/leftmotor.png)
 
 Save the config and hop over to the control view again. You should now see two motors and be able to make each set of wheels spin.
 
-![motors](../img/motors.png)
+![A screenshot of the CONTROL tab UI with buttons to control both sets of motors.](../img/motors.png)
 
 ## Configuring the Base 
 
@@ -110,13 +110,13 @@ Since you were clever about naming your motors, you can simply add "left" to "le
 
 The whole base card will look something like this:
 
-![base](../img/base.png)
+![A screenshot of the Yahboom base configuration on the Viam app.](../img/base.png)
 
 When you save the config and switch to the control view once more, you should have new buttons for the `base` functionality including `Forward`,`Backward`, `Arc Forward`, `Spin Clockwise` and similar.
 Try playing around with these and the `Speed`, `Distances`, and `Angle` fields below them to get a sense for what they do.
 Something you can try is: 300mm per sec for the speed, 500mm for the distances, and 0 degree for the angle.
 
-![baseui](../img/baseui.png)
+![A screenshot of the CONTROL tab UI with buttons to make the base move forward, backward, arc forward, arc backward, spin clockwise, and spin counterclockwise. There are also fields for speed, distance and angle.](../img/baseui.png)
 
 Awesome! Now you have a rover which you can drive via a webUI.
 But wouldn’t it be more fun to drive it around like an RC car? Now you can try attaching a Bluetooth controller and using that to control the rover.
@@ -131,15 +131,14 @@ For more information about the controller buttons and Bluetooth modes, consult t
 Run `sudo bluetoothctl scan on` to list all Bluetooth devices within reach of the Raspberry Pi.
 As you do this, in terminal make sure you are in your pi and not in your computer. This command will scan all the devices but the 8bitdo controller will have a MAC address that begins E4:17:D8.
 
-![ssh-pilocal](../img/ssh-pilocal.png)
+![A screenshot of a Mac command prompt with the command ssh hazal_pi@hazal_pi.local.](../img/ssh-pilocal.png)
 
-![bluetooth-scan](../img/bluetooth-scan.png)
+![A screenshot of a Raspberry Pi terminal with the following command: sudo bluetoothctl scan on. The results of the command are displayed: a list of device MAC addresses.](../img/bluetooth-scan.png)
 
 If you see a large log of devices, to see the addresses that only begin with E4:17:D8 you can use the `grep` command line tool.
 It is an acronym that stands for Global Regular Expression Print and allows to search for a string of characters in a specified file: `sudo bluetoothctl scan on | grep "E4:17:D8"`
 
-![bluetooth-grep](../img/bluetooth-grep.png)
-
+![A screenshot of a Rasperry Pi terminal with the 'sudo bluetoothctl scan on | grep "E4:17:D8"' command at the top, followed by a list of device MAC addresses all beginning in "E4:17:D8".](../img/bluetooth-grep.png)
 
 Once you find it in the listings, pair with the controller: `sudo bluetoothctl pair <8bitdo-mac-address>`.
 Do not forget to take the < and > symbols out as you paste your address.
@@ -150,7 +149,7 @@ Lastly trust the controller, which makes reconnecting easier in the future: `sud
 
 To confirm the connection, you can list connected devices with: `sudo bluetoothctl devices | cut -f2 -d</code></code>| while read uuid; do sudo bluetoothctl info $uuid; done|grep -e "Device\|Connected\|Name"`
 
-![bluetoothpair-connect](../img/bluetoothpair-connect.png)
+![A screenshot of a Pi terminal showing the above bluetoothctl commands and their outputs.](../img/bluetoothpair-connect.png)
 
 If you would like a stronger understanding of `bluetoothctl` and managing Bluetooth devices in Linux, we recommend <a href="https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/" target="_blank">this guide</a>[^bluetooth].
 
@@ -163,7 +162,7 @@ Click **Create Component**.
 Lastly, you can set the `auto_reconnect` attribute to `true`.
 This config adds the controller to the robot, but doesn’t give it any functionality yet.
 
-![8bit-do](../img/8bit-do.png)
+![A screenshot of the 8BitDo controller configuration in the Viam app. Other than the name, type and model, it contains only the attribute auto_reconnect = true.](../img/8bit-do.png)
 
 To link the controller input to the four-wheel base functionality, you need to add our first `service`.
 Services are the software packages which provide our robots with cool and powerful functionality.
@@ -182,7 +181,7 @@ You will need to configure the following attributes for this service: `base` sho
 }
 ```
 
-![serviceattributes](../img/serviceattributes.png)
+![A screenshot of the SERVICES sub-tab of the CONFIG tab on app.viam.com, showing the configured base remote control service.](../img/serviceattributes.png)
 
 If you can not see a section where you can add the attributes, you can go to **Raw JSON** mode, and add this code:
 
@@ -213,11 +212,11 @@ Follow [these instructions on how to connect and configure a camera](/tutorials/
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
 
-![rover-camera](../img/rover-camera.png)
+![A screenshot of the camera configuration with video_path set to "video0".](../img/rover-camera.png)
 
 If you click on your webUI, you will be able to see your camera streaming.
 
-![camerastream](../img/camerastream.png)
+![A screenshot of the camera output in the CONTROL tab. The camera feed displays the view out the window of one building, consisting of an apartment building wall across the street.](../img/camerastream.png)
 
 ## Configuring the Servo Components
 
@@ -225,16 +224,16 @@ You may have noticed that the camera is mounted on a pair of [servos](/component
 Scroll to **Create Component**.
 Set the `Name` to `pan`, the `Type` to `servo`, the `Model` to `pi`, and click **Create Component**. Set `Depends On` to `local`, and `pin` to `23`, which is the pin the servo is wired to.
 
-![panservo](../img/panservo.png)
+![A screenshot fron the CONFIG tab of the pan servo configuration showing pin set to 23.](../img/panservo.png)
 
 Finally, add the tilt `servo` as well.
 This will be the same process as the first `servo`, but with the `Name` set to `tilt` and the `pin` to `21`.
 
-![tiltservo](../img/tiltservo.png)
+![A screenshot of the tilt servo configuration showing pin set to 21.](../img/tiltservo.png)
 
 Saving the config and moving to the control UI, you should notice two new panels for adjusting these servos.
 
-![servos](../img/servos.png)
+![A screenshot of the servo control card on the CONTROL tab. There are buttons to change the angles of the pan and tilt servos, independently.](../img/servos.png)
 
 Congratulations, you have successfully configured your rover with Viam!
 But for now, all the control is manual.
