@@ -3,7 +3,7 @@ title: "Vision Service"
 linkTitle: "Vision"
 weight: 90
 type: "docs"
-description: "Explanation of the vision service, its configuration and its functionality."
+description: "Explanation of the vision service, its configuration, and its functionality."
 # SMEs: Bijan, Khari
 ---
 ## Intro and Summary
