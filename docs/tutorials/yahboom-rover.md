@@ -10,7 +10,7 @@ description: "Instructions for getting a Yahboom 4WD Rover driving with a Blueto
 - A Raspberry Pi 4 running an instance of viam-server.
 See our [Raspberry Pi Setup Guide](/getting-started/installation/) for instructions.
 - A <a href="https://category.yahboom.net/collections/robotics/products/4wdrobot" target="_blank">Yahboom 4WD Smart Robot</a>[^yahboom]
-- A Bluetooth gamepad controller. For this tutorial we used <a href="https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch" target="_blank">this 8BitDo controller.</a>[^8bitdo]
+- A Bluetooth gamepad controller. For this tutorial we used <a href="https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch" target="_blank">this 8BitDo controller</a>[^8bitdo].
 
 [^yahboom]: Yahboom 4WD Smart Robot with AI vision features for Raspberry Pi 4B: <a href="https://category.yahboom.net/collections/robotics/products/4wdrobot" target="_blank">ht<span>tps://category.yahboom.net/collections/robotics/products/4wdrobot</a>
 
@@ -37,7 +37,7 @@ You don't need to add any attributes for this one, so your configured board will
 Since both right side motors of the Yahboom rover are wired together to a single motor driver, the right side motors are configured as a single [motor component](/components/motor/) in the Viam config file.
 Later we will configure both left side motors as another motor.
 
-As with all other components, scroll to the **Create Component** box.
+As with all other components, find the **Create Component** box at the bottom of the **CONFIG** tab.
 Start with the right set of wheels, and name the component `right`.
 For the `Type`, select `motor`.
 For the `Model`, select `gpio`.
@@ -90,8 +90,7 @@ Save the config and hop over to the control view again. You should now see two m
 Unite these wheel sets with a [base component](/components/base/), which is used to describe the physical structure onto which your components are mounted.
 Configuring a base will also give you a nice UI for moving the rover around.
 
-To configure a base, scroll down to **Create Component**.
-Name the component `yahboom-base`.
+In the **Create Component** box, name the component `yahboom-base`.
 For the `Type` select `base` and for the `Model` select `wheeled`.
 Click **Create Component**.
 For `Depends On` select `local`, `left`, and `right` since these are the components that comprise our `base`.
@@ -153,11 +152,12 @@ To confirm the connection, you can list connected devices with: `sudo bluetoothc
 
 ![bluetoothpair-connect](../img/bluetoothpair-connect.png)
 
-If you would like a stronger understanding of `bluetoothctl` and managing Bluetooth devices in Linux, we recommend [this guide](https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/).
+If you would like a stronger understanding of `bluetoothctl` and managing Bluetooth devices in Linux, we recommend <a href="https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/" target="_blank">this guide</a>[^bluetooth].
+
+[^bluetooth]: Manage Bluetooth Devices on Linux Using bluetoothctl: <a href="https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/" target="_blank">ht<span>tps://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/</a>
 
 Now you can add this controller to the robot’s config.
-Scroll to **Create Component**.
-You can name the component `8bit-do-controller`.
+In the next **Create Component** field, name the component `8bit-do-controller`.
 For the `Type` select `input_controller` and for the `Model` select `gamepad`.
 Click **Create Component**.
 Lastly, you can set the `auto_reconnect` attribute to `true`.
@@ -168,8 +168,8 @@ This config adds the controller to the robot, but doesn’t give it any function
 To link the controller input to the four-wheel base functionality, you need to add our first `service`.
 Services are the software packages which provide our robots with cool and powerful functionality.
 
-Scroll to the top of the page.
-So far we've been working on the **COMPONENTS** sub-tab of the **CONFIG** tab, but now we'll switch to the **SERVICES** sub-tab of **CONFIG**.
+So far we've been working on the **COMPONENTS** sub-tab of the **CONFIG** tab, but now we'll switch to the **SERVICES** sub-tab.
+Click **SERVICES** at the top of the **CONFIG** tab.
 You will be using the **Create Service** card here.
 You can `name` this service `yahboom_gamepad_control` and give it the `type` `base_remote_control`, which is a service Viam provides for driving a rover with a gamepad.
 Click **Create Service**.
