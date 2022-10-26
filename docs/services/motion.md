@@ -3,7 +3,7 @@ title: "Motion Service"
 linkTitle: "Motion"
 weight: 20
 type: "docs"
-description: "Explanation of the motion service, its configuration and its functionality."
+description: "Explanation of the motion service, its configuration, and its functionality."
 # SME: Peter Lo Verso
 ---
 Viam’s Motion Service enables your robot to plan and move itself or its components relative to itself, other robots, and the world. The Motion Service brings together information gathered from the robot’s components regarding their current positions with the layout of components in the frame system, and enables planning of the necessary motions to move a component to a given destination.

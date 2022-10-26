@@ -1,7 +1,7 @@
 ---
 title: "Robot Service"
 linkTitle: "Robot Service"
-description: "Explanation of the robot service, its configuration and its functionality."
+description: "Explanation of the robot service, its configuration, and its functionality."
 type: "docs"
 # SME: Cheuk
 ---
