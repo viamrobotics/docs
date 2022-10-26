@@ -10,8 +10,11 @@ description: "Instructions for getting a Yahboom 4WD Rover driving with a Blueto
 - A Raspberry Pi 4 running an instance of viam-server.
 See our [Raspberry Pi Setup Guide](/getting-started/installation/) for instructions.
 - A <a href="https://category.yahboom.net/collections/robotics/products/4wdrobot" target="_blank">Yahboom 4WD Smart Robot</a>[^yahboom]
+- A Bluetooth gamepad controller. For this tutorial we used <a href="https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch" target="_blank">this 8BitDo controller.</a>[^8bitdo]
 
 [^yahboom]: Yahboom 4WD Smart Robot with AI vision features for Raspberry Pi 4B: <a href="https://category.yahboom.net/collections/robotics/products/4wdrobot" target="_blank">ht<span>tps://category.yahboom.net/collections/robotics/products/4wdrobot</a>
+
+[^8bitdo]: 8BitDo Pro 2 Bluetooth Controller: <a href="https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch" target="_blank">ht<span>tps://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch</a>
 
 ## Configuring the Board 
 
