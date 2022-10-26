@@ -19,7 +19,7 @@ See our [Raspberry Pi Setup Guide](/getting-started/installation/) for instructi
 ## Configuring the Board 
 
 Go to the Viam app ([https://app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **CONFIG** tab of the robot associated with your Raspberry Pi.
-To create a new component you'll be working within the **Create Component** box of the **COMPONENTS** sub-tab.
+To create a new component you'll be working within the **Create Component** section of the **COMPONENTS** sub-tab.
 
 ![A screenshot of the config builder UI on app.viam.com showing the Create Component box filled out with name=local, type=board and model=pi.](../img/config.png)
 
@@ -207,7 +207,7 @@ At this point moving the left analogue stick should result in movement of the ro
 But wait!
 This rover has a camera on it.
 
-Once again, find the **Create Component** at the bottom of the **CONFIG** tab.
+Once again, find the **Create Component** section at the bottom of the **CONFIG** tab.
 Follow [these instructions on how to connect and configure a camera](/tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam).
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
