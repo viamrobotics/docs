@@ -75,7 +75,7 @@ At this point, the wheels on one side of your robot should be working.
 Now try to add the other set of wheels using the same steps and see if you can get this robot driving with all of the components working together.
 To do this, we’ll have to add the other `motor` component and link them together with a `base`.
 
-To do this, go back to the **CONFIG** tab and scroll down to the fresh **Create Component** box.
+To do this, go back to the **CONFIG** tab and find the **Create Component** box.
 The config attributes for this `motor` will be very similar to the `right` motor, which makes sense as the hardware is the same and it is connected to the same `board`.
 The only difference will be the `Name` which will be `left` and the pins it is connected to, which should be set as follows: `a` (In1) to `38`, `b` (In2) to `40`, and `pwm` to `36`.
 
@@ -207,7 +207,7 @@ At this point moving the left analogue stick should result in movement of the ro
 But wait!
 This rover has a camera on it.
 
-Once again, scroll to **Create Component** at the bottom of the **CONFIG** tab.
+Once again, find the **Create Component** at the bottom of the **CONFIG** tab.
 Follow [these instructions on how to connect and configure a camera](/tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam).
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
@@ -221,7 +221,7 @@ If you click on your webUI, you will be able to see your camera streaming.
 ## Configuring the Servo Components
 
 You may have noticed that the camera is mounted on a pair of [servos](/components/servo/) which control the pan and tilt of the camera.
-Scroll to **Create Component**.
+Go to the **Create Component** section at the bottom of **CONFIG**.
 Set the `Name` to `pan`, the `Type` to `servo`, the `Model` to `pi`, and click **Create Component**. Set `Depends On` to `local`, and `pin` to `23`, which is the pin the servo is wired to.
 
 ![A screenshot fron the CONFIG tab of the pan servo configuration showing pin set to 23.](../img/panservo.png)
