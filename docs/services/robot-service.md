@@ -74,7 +74,7 @@ Each new gRPC request creates a new **Operation ID**, even if it was created fro
 
 Users can cancel an operation by passing in its **Operation ID,** and can also block a specific operation, again, by specifying its **Operation ID**, until that operation is complete.
 
-For example, consider two _connected _robots. Robot “A,” with an attached base and navigation service and robot “B,” operating remotely with an attached GPS.  
+For example, consider two _connected_ robots. Robot “A,” with an attached base and navigation service and robot “B,” operating remotely with an attached GPS.  
 A client’s request to the navigation service to move “A” creates a new **Operation ID**. 
 
 The request to the attached base is a local request (i.e., a non-gRPC request) between the navigation service and its base and does not create a new **Operation ID**. 
