@@ -103,7 +103,7 @@ Use for tips
 {{< /alert >}}
 
 {{< alert title="Info" color="tip" >}}  
-Use for extra background infomation
+Use for extra background information
 {{< /alert >}}
 
 {{< alert title="Note" color="note" >}}  
