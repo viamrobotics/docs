@@ -88,7 +88,7 @@ Within the expander, you can still use most other shortcodes, and syntax highlig
 
 ## How to use Notes, Cautions, and Warnings
 
-**Info/Tip**: Exactly that. They both use the same color.
+**Info/Tip**: Exactly that. They both use the **same color**.
 
 **Note**: These call attention to something important. Use it to expand on a point from the body text or to provide a tip or additional information.
 
