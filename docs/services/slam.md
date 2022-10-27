@@ -4,7 +4,7 @@ linkTitle: "SLAM"
 weight: 70
 draft: false
 type: "docs"
-description: "Explanation of the SLAM service, its configuration and its functionality."
+description: "Explanation of the SLAM service, its configuration, and its functionality."
 # SMEs: Kat, Jeremy
 ---
 
