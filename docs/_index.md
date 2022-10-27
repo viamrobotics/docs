@@ -6,56 +6,28 @@ type: "docs"
 ---
 
 <style>
-    * {
-  box-sizing: border-box;
-}
-.row {
-  margin-left:-5px;
-  margin-right:-5px;
-}
-  
-.column {
-  float: left;
-  width: 40%;
-  padding: 5px;
-}
 
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: none solid #ddd;
-}
-
-th, td {
-  text-align: left;
-  padding: 16px;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
 </style>
-</head>
-<body>
-<br>
-<div class="row">
-  <div class="column">
- 
-## Getting Started
-Looking to get started with Viam? Check out the following:
 
-- [Viam Overview](/getting-started/high-level-overview)
-- [Viam Use Cases](http://www.viam.com/use-cases)
-- [Intro Video](https://www.youtube.com/watch?v=TjmvnEdNVKs&ab_channel=EliotHorowitz)
-- [Build a Mock Robot with no hardware](/tutorials/how-to-build-a-mock-robot/)
+<div class="mra-row">
+  <div class="mra-column" >
+<h2>Getting Started</h2>
+<p>Looking to get started with Viam? Check out the following:</p>
+<ul>
+	<li><a href="/getting-started/high-level-overview">Viam Overview</a></li>
+	<li><a href="http://www.viam.com/use-cases">Viam Use Cases</a></li>
+	<li><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs&ab_channel=EliotHorowitz">Intro Video</a></li>
+	<li><a href="/tutorials/how-to-build-a-mock-robot/">Build a Mock Robot without hardware</a></li>
+</ul>
+  </div>
+  <div class="mra-column">
+<table>
+	<tr>
+	<td><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs" target="_blank">Click to view our Founder's Message<img src="../img/eliot-vid-thumb.png" style="border: 1px solid black"> <span style="font-size:xx-small" </span> (Link opens in new tab)</a></td>
+	</tr>
+	</table>
+  </div>
+</div>
 
 ## Product Overviews
 - [Overview of Viam-Server and RDK](/product-overviews/rdk)
@@ -64,20 +36,15 @@ Looking to get started with Viam? Check out the following:
 - [Using Viam's SDKs for a Server Hardware Implementation](/product-overviews/sdk-as-server)
 - [Viam's Data Management Platform](/product-overviews/data-management)
 
-  </div>
-  <div class="column">
-    <table>
-      <tr>
-        <td><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs" target="_blank">Click to view our Founder's Message<img src="../img/eliot-vid-thumb.png" style="border: 1px solid black"> <span style="font-size:xx-small" </span> (Link opens in new tab)</a></td>
-      </tr>
-    </table>
-  </div>
-</div>
-
 ## Security: Authentication and Authorization 
 - [Security: Authentication and Authorization ](/security)
 
 ## Tutorials
+{{% alert="Info" color="tip"%}}
+The Tutorials topic and the TOC list our tutorials in order from the  basic to complex.
+{{% /alert%}}
+
+
 SCUTTLE-based tutorials
 - [Configuring SCUTTLE Rover with a Camera](/tutorials/scuttlebot)
 - [Controlling a SCUTTLE Rover with a Bluetooth Gamepad](/tutorials/scuttle-gamepad)

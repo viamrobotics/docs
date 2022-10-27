@@ -4,6 +4,29 @@ Add styles or override variables from the theme here.
 
 */
 
+
+/* START - CSS to stack Eliot's video on the landing page */
+
+.mra-column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+   
+}
+
+.mra-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 576px) {
+  .mra-column {
+    width: 100%;
+  }
+}
+/* END - CSS to stack Eliot's video on the landing page */
+
 /* START Add Square bracket on footnote number */
 a.footnote-ref::before {
   content: '[';
@@ -245,10 +268,6 @@ END MARKETING CSS
   text-decoration: none;
 
 }
-
-/**/
-
-
 
 /* START CSS FOR NOTES, CAUTIONS, WARNINGS */
 
