@@ -27,7 +27,7 @@ As of 11 October 2022, the following SLAM library is integrated:
 
 
 {{% alert title="Note" color="note" %}}  
-* Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`. We append the timestamp to each filename prior to saving images, maps, and *.yaml files. We will be updating the timestamp format to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
+Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`. We append the timestamp to each filename prior to saving images, maps, and *.yaml files. We will be updating the timestamp format to the RFC339 Nano time format (i.e.: `2022-10-10T09:28:50Z26:30`) in the near future.
 {{% /alert %}}
 
 
