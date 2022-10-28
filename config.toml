@@ -8,11 +8,11 @@ disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
 
 # Moved main.menu here because it killed the search box when it was lower in the config. 
 # See "BANNER MENUS READ THIS," below.
-[[menu.main]]
-        name = "Python SDK Documentation"
-        weight = -100
-        identifier = "PSDK"
-    url = "https://python.viam.dev/"
+#[[menu.main]]
+#        name = "Python SDK Documentation"
+#        weight = -100
+#        identifier = "PSDK"
+#    url = "https://python.viam.dev/"
 
 [taxonomies]
 tag = "tags"
@@ -62,6 +62,7 @@ includes_dir = "_includes"
 
 #
 #
+algolia_docsearch = true
 #
 # BANNER MENUS READ THIS
 #
@@ -76,10 +77,10 @@ includes_dir = "_includes"
 
 # Uncomment these lines when we add Rust:
 
-#version_menu = "SDK Documentation"
-#[[params.versions]]
-#  version = "Python SDK Documentation"
-#  url = "https://python.viam.dev/"
+version_menu = "SDK Documentation"
+[[params.versions]]
+  version = "Python SDK Documentation"
+  url = "https://python.viam.dev/"
 #[[params.versions]]
 #  version = "Rust SDK Documentation"
 #  url = "https://rust.viam.dev/"
@@ -88,7 +89,7 @@ includes_dir = "_includes"
 
 archived_version = false
 url_latest_version = "https://docs.viam.com/"
-algolia_docsearch = true
+
 offlineSearch = false
 prism_syntax_highlighting = true
 
