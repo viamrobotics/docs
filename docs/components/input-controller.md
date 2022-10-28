@@ -104,7 +104,7 @@ This allows a gamepad to be connected remotely, via a browser and the html5 Game
 
 ### Config
 {{% alert="Note" color="note" %}}
-You **must** use "WebGamePad" as the `name` of the web gamepad controller. This restriction will be removed in the future.
+You **must** use "WebGamepad" as the `name` of the web gamepad controller. This restriction will be removed in the future.
 {{% /alert %}}
 
 
