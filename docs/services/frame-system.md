@@ -52,7 +52,7 @@ For example, a traditional arm may have a reference frame whose origin is at its
 Each driver of such a component in the Viam system requires a JSON file named **Model JSON** that details the attachment of reference frames. However, that is a requirement for Viam's drivers. If you implement your own drivers, the decision whether to require Model JSON files will depend on your code.
 These reference frames are ingested by the Frame System *but not exposed via gRPC call* (meaning they are unavailable for inspection by any of the SDKs)
 
-{{% alert title="Warning" color="warning" %}}  
+{{% alert title="Note" color="note" %}}  
 If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the [**Model JSON** section](#Model-JSON).
 {{% /alert %}}
 ## How the Robot Builds the Frame System
