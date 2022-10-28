@@ -83,24 +83,27 @@ If your organization contains any locations, you must delete them before you can
 
 Click the name of an organization to go to the list of its locations.
 
-### Creating locations
-When you create a new organization, a location will be automatically created for you.
+### Creating Locations and Sub-locations
+#### Locations
+When you create a new organization, Viam automatically creates a new location for you.
 You can create additional locations by typing a new location name in the **New Location** field found in the left side navigation bar and clicking **ADD**.
 
 You can delete a location that is *empty of robots* by clicking the trash can icon next to the location name at the top of the page for that location.
 The icon will not appear if there are any robots in the location.
 
-{{% alert title="Sub-locations" color="note" %}}
-- To make a *sub-location*, create a location, first add at least one robot to it. 
-From the bottom of the soon-to-be-sub-location's page, use the **New Parent Location** drop down to choose a parent location.
-Click **CHANGE** after selecting the new parent location.
-You can continue nesting sub-locations in this way.
-- To return a sub-location to the first level of locations, select **Root** from the New Parent Location drop down and click **CHANGE**.
-{{% /alert %}}
-
-In the navigation bar on the left, navigate to the location (or sub-location) where you want to create a robot.
+In the navigation bar on the left, navigate to the location (or *sub-location*) where you want to create a robot.
 
 Click a location's name to display the list of robots associated with that location.
+
+#### Sub-locations
+To create a sub-location:
+
+1. Create a location and add at least one robot to it. 
+2. From the bottom of the soon-to-be-sub-location's page, use the **New Parent Location** drop-down to choose a parent location.
+3. Click **CHANGE** after selecting the new parent location.
+
+You can continue nesting sub-locations in this way.
+To move a sub-location to the first level of locations, select **Root** from the **New Parent Location** drop-down and then click **CHANGE**.
 
 ### Creating robots
 When you click on a location that does not contain any robots, you'll be prompted to create a robot by typing in the **New Robot** field and clicking **ADD ROBOT**.
