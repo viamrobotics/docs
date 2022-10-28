@@ -103,6 +103,11 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 This allows a gamepad to be connected remotely, via a browser and the html5 Gamepad API. To use it, add a component to the robot's config like below:
 
 ### Config
+{{% alert="Caution" color="caution" %}}
+You **must** use "WebGamePad" as the `name` of the web gamepad controller. This issue will be resolved in an upcoming release.
+{{% /alert %}}
+
+
 ``` json
 {
   "components": [
