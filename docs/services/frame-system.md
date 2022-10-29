@@ -163,7 +163,7 @@ Below are JSON examples for each parameter type used by our Universal Robots[^ur
 
 **Example: kinematic_param_type=SVA**
 
-```json
+```json-viam
 {
     "name": "UR5e",
     "kinematic_param_type": "SVA",
@@ -369,7 +369,7 @@ Below are JSON examples for each parameter type used by our Universal Robots[^ur
 ```
 **Example: kinematic_param_type=DH**
 
-```json
+```json-viam
 {
     "name": "UR5e",
     "kinematic_param_type": "DH",

@@ -29,7 +29,7 @@ Here are details about each of the fields in the camera config:
     * `intrinsic_parameters` : these are the intrinsic parameters of the camera used to do 2D <-> 3D projections.
     * `distortion_parameters` : these are modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens.
 
-```json
+```json-viam
 "intrinsic_parameters": { # optional field, intrinsic parameters for 2D <-> transforms
     "height_px": 720, # height of the image in pixels
     "width_px": 1280, # width of the image in pixels
@@ -60,7 +60,7 @@ In Viam parlance, webcams are standard, USB camera devices.
 Viam recommends using a standard webcam rather than a "ribbon" cam (typical a bare camera with a ribbon and connector for mating to a Pi) as they can be very unreliable.
 {{% /alert %}}
 
-```json
+```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -78,7 +78,7 @@ Viam recommends using a standard webcam rather than a "ribbon" cam (typical a ba
 
 Fake is a fake camera that always returns the same image, which is an image of a chess board. This camera also returns a point cloud.
 
-```json
+```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -90,7 +90,7 @@ Fake is a fake camera that always returns the same image, which is an image of a
 
 File is a model where the frames for the color and depth images are acquired from a file path. Either file path is optional.
 
-```json
+```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -106,7 +106,7 @@ File is a model where the frames for the color and depth images are acquired fro
  
 The model for using the velodyne lidar. The velodyne must be running locally at address `0.0.0.0`. 
 
-```json
+```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -122,7 +122,7 @@ The model for using the velodyne lidar. The velodyne must be running locally at 
 
 FFmpeg is a model that allows you to use a video file or stream as a camera.
 
-```json
+```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -147,7 +147,7 @@ FFmpeg is a model that allows you to use a video file or stream as a camera.
 
 Model "align_color_depth" is if you have registered a color and depth camera already in your config, and want to align them after the fact and create a "third" camera that outputs the aligned image. In this case, rather than putting the URLs to each of the cameras, you just put the names of the color and depth camera in the attribute field, and the "align_color_depth" camera will combine the streams from both of them.  You can specify the intrinsics/extrinsics, or homography parameters to do the alignment between the depth and color frames if they need to be shifted somehow. If they don’t need to be aligned, you can leave those parameters blank. You then specify the stream field to specify which aligned picture you want to stream.
 
-```json
+```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -169,7 +169,7 @@ Model "align_color_depth" is if you have registered a color and depth camera alr
 
 Combine the point clouds from multiple camera sources and project them to be from the point of view of target_frame
 
-```json
+```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -190,7 +190,7 @@ Transformations get applied in the order they are written in the pipeline.
 Below are the available transformations, and the attributes they need.
 
 **Example**: 
-```json
+```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -210,7 +210,7 @@ Below are the available transformations, and the attributes they need.
 The Identity transform does nothing to the image. 
 You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
 
-```json
+```json-viam
 {
 	"type": "identity",
 	"attributes": {
@@ -224,7 +224,7 @@ You can use this transform to change the underlying camera source's intrinsic pa
 The Rotate transformation rotates the image by 180 degrees. 
 This feature is useful for when the camera is installed upside down on your robot. 
 
-```json
+```json-viam
 {
 	"type": "rotate",
 	"attributes": {
@@ -237,7 +237,7 @@ This feature is useful for when the camera is installed upside down on your robo
 
 The Resize transform resizes the image to the specified height and width. 
 
-```json
+```json-viam
 {
 	"type": "resize",
 	"attributes": {
@@ -251,7 +251,7 @@ The Resize transform resizes the image to the specified height and width.
 The Depth-to-Pretty transform takes a depth image and turns it into a colorful image, with blue indicating distant points and red indicating nearby points. 
 Actual depth information is lost in the transform.
 
-```json
+```json-viam
 {
 	"type": "depth_to_pretty",
 	"attributes": {
@@ -264,7 +264,7 @@ Actual depth information is lost in the transform.
 
 Overlay overlays the depth and color 2D images. Useful in order to debug the alignment of the two images.
 
-```json
+```json-viam
 {
 	"type": "overlay",
 	"attributes": {
@@ -287,7 +287,7 @@ Currently only supports a Brown-Conrady model of distortion (20 September 2022).
 For further information, please refer to the <a href="https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a" target="_blank">OpenCV docs[^ocvd].
 [^ocvd]: OpenCV docs: <a href="https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a" target="_blank">ht<span></span>tps://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a</a>
 
-```json
+```json-viam
 {
 	"type": "undistort",
 	"attributes": {
@@ -314,7 +314,7 @@ For further information, please refer to the <a href="https://docs.opencv.org/3.
 
 The Detections transform takes the input image and overlays the detections from a given detector present within the vision service.
 
-```json
+```json-viam
 {
 	"type": "detections",
 	"attributes": {
@@ -328,7 +328,7 @@ The Detections transform takes the input image and overlays the detections from 
 
 The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
 
-```json
+```json-viam
 {
 	"type": "depth_edges",
 	"attributes": {
@@ -343,7 +343,7 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 
 Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map
 
-```json
+```json-viam
 {
 	"type": "depth_preprocess",
 	"attributes": {
@@ -361,7 +361,7 @@ If you have an http endpoint that is streaming images, you can create a VIAM cam
 
 single_stream is a model where there is a camera server streaming image data. You must specify if it is streaming "color", "depth" data. Single_stream can only output a point cloud if a "depth" stream is selected. Color streams will fail at producing point clouds.
 
-```json
+```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
@@ -377,7 +377,7 @@ single_stream is a model where there is a camera server streaming image data. Yo
 
 dual_stream is a model where there are two camera servers streaming data, one is the color stream, and the other is the depth stream. This is useful for generating colorful point clouds.
 
-```json
+```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",

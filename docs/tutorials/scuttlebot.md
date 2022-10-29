@@ -83,7 +83,7 @@ If your wheel turns in reverse when it should turn forward, add the <code>dir_fl
 
 **Right-Wheel JSON**
 
-```JSON
+```json-viam
 {
  "pins": {
    "a": "16",
@@ -143,7 +143,7 @@ Viam opens the component config panel for the wheel.</li>
 
 **Left-Wheel JSON**:
 
-```JSON
+```json-viam
 {
  "pins": {
    "a": "12",
@@ -184,7 +184,7 @@ From the Config screen:
 
 The configuration of your base component's attributes should look something like this:
 
-```JSON
+```json-viam
 {
  "width_mm": 400,
  "wheel_circumference_mm": 250,
@@ -232,7 +232,7 @@ On the Camera Config panel:
 
 If you wish to copy and paste code for your camera, use the following:
 
-```JSON
+```json-viam
 {
  "intrinsic_parameters": {
    "width_px": 0,

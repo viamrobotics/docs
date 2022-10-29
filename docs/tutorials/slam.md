@@ -70,7 +70,7 @@ YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 
 In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
 
-```json
+```json-viam
   "services": [
     {
       "type": "slam",
@@ -101,7 +101,7 @@ Change the `"data_dir": "/home/YOUR_USERNAME/data"` directory to your home direc
 
 In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration together with the [previously obtained camera configuration](#add-a-webcam-and-calibrate-it) now looks like this:
 
-```json
+```json-viam
 {
   "components": [
     {
@@ -203,7 +203,7 @@ YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 
 In your web browser, navigate to the robot you set up on the Viam app ([https://app.viam.com](https://app.viam.com)). In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
 
-```json
+```json-viam
 {
   "services": [
     {

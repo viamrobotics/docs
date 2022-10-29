@@ -166,7 +166,7 @@ you only need to getGPIOpin by name.
 
 An example:
 
-```JSON
+```json-viam
 {
   "components": [
     {
@@ -223,7 +223,7 @@ Only the index of the entire bus must be specified.
 
 The attributes section of a board using SPI will contain the following:
 
-```JSON
+```json-viam
 {
   "spis": [
     {
@@ -252,7 +252,7 @@ Review the [instructions in our documentation](https://docs.viam.com/getting-sta
 
 #### Configuration
 
-```JSON
+```json-viam
 {
   "i2cs": [
     {

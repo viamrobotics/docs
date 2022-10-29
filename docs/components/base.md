@@ -38,7 +38,7 @@ The board controlling the base must also be configured.
 
 An example configuration file, including the board, motors, and base:
 
-```json
+```json-viam
 {
   "components": [
     {

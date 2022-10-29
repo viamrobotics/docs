@@ -38,7 +38,7 @@ Therefore, for <strong>Model</strong>, please manually enter, "gamepad," (withou
 Please add the following Attributes:
 </OL>
 
-```JSON
+```json-viam
 {
  "base": "scuttle",
  "input_controller": "gamepad"

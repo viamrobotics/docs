@@ -60,7 +60,7 @@ Your webcam configuration in the Config Builder will look something like this:
 
 Or if you prefer the raw JSON:
 
-```json
+```json-viam
     {
       "name": "my_camera",
       "type": "camera",
@@ -89,7 +89,7 @@ What this will look like in the Config Builder:
 
 Raw JSON:
 
-```json
+```json-viam
 {
   "register_models": [
     {
@@ -107,7 +107,7 @@ Raw JSON:
 ### Full example config
 Below is an example JSON file that includes the board, base and camera components, and a vision service color detector. You may have different pin numbers and other attributes depending on your hardware setup.
 
-```json
+```json-viam
 {
   "components": [
     {

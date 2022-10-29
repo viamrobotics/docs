@@ -31,7 +31,7 @@ In the case of an encoded motor, the motor must be configured as well, per [the 
 ### Example Config
 The following example shows the configuration of a board with the necessary digital interrupts, and an encoder.
 
-```JSON
+```json-viam
 {
   "components": [
     {
