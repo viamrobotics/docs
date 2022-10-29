@@ -47,7 +47,7 @@ If there is no way to move to the desired location in a straight line for the ar
 - Self-collision prevention
 - Obstacle avoidance
 
-## Viam Configuration:
+## Viam Configurationhello:
 ```json-viam
 {
   "components": [
