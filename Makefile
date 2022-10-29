@@ -2,8 +2,7 @@ git:
 	git submodule update --init --recursive
 
 setup: git package.json
-	npm install --save-dev autoprefixer
-	npm install --save-dev postcss-cli
+	npm install
 
 PROD_OPTIONS=-e production --minify
 DEV_OPTIONS=-e development --config config.toml,config_dev.toml
