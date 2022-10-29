@@ -85,12 +85,10 @@ version_menu = "SDK Documentation"
 #  version = "Rust SDK Documentation"
 #  url = "https://rust.viam.dev/"
 
-version_menu_pagelinks=false
-
 # Comment out the main.menu lines up above when we add Rust 
 
 archived_version = false
-# url_latest_version = "https://docs.viam.com/"
+url_latest_version = "https://docs.viam.com/"
 
 offlineSearch = false
 prism_syntax_highlighting = true
