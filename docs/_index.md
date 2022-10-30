@@ -36,9 +36,6 @@ type: "docs"
 - [Using Viam's SDKs for a Server Hardware Implementation](/product-overviews/sdk-as-server)
 - [Viam's Data Management Platform](/product-overviews/data-management)
 
-## Security: Authentication and Authorization 
-- [Security: Authentication and Authorization ](/security)
-
 ## Tutorials
 {{% alert="Info" color="tip"%}}
 The Tutorials topic and the TOC list our tutorials in order from the  basic to complex.
