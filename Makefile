@@ -4,7 +4,7 @@ git:
 setup: git package.json
 	npm install
 
-PROD_OPTIONS=-e production --minify
+PROD_OPTIONS=-e production --config config.toml,config_prod.toml --minify
 DEV_OPTIONS=-e development --config config.toml,config_dev.toml
 PR_OPTIONS=$(PROD_OPTIONS) --config config.toml,config_pr.toml
 SERVE_OPTIONS=--baseURL http://localhost
