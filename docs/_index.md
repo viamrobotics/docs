@@ -23,7 +23,7 @@ type: "docs"
   <div class="mra-column">
 <table>
 	<tr>
-	<td><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs" target="_blank">Click to view our Founder's Message<img src="../img/eliot-vid-thumb.png" style="border: 1px solid black"> <span style="font-size:xx-small" </span> (Link opens in new tab)</a></td>
+	<td><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs" target="_blank">Click to view our Founder's Message<img src="img/eliot-vid-thumb.png" style="border: 1px solid black"> <span style="font-size:xx-small" </span> (Link opens in new tab)</a></td>
 	</tr>
 	</table>
   </div>
