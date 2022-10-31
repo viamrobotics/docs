@@ -31,7 +31,7 @@ To read code examples of how to use Viam's Vision Service with the Viam Python a
 | --------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
 | [Detection](#detection)           | [tflite\_detector](#tflite-detector-parameters)                          | "model\_path", "label\_path", "num\_threads"                                                         |
 |                                   | tf\_detector                                                             | TBD - Not yet supported                                                                              |
-|                                   | [color\_detector](#color-detector-parameters)                            | "detect\_color", "tolerance\_pct", "segment\_size\_px"                                               |
+|                                   | [color\_detector](#color-detector-parameters)                            | "detect\_color", "hue\_tolerance\_pct", "segment\_size\_px"                                          |
 | [Classification](#classification) | [tflite\_classifier](#tflite-classifier-parameters)                      | "model\_path", "label\_path", "num\_threads"                                                         |
 |                                   | tf\_classifier                                                           | TBD - Not yet supported                                                                              |
 | [Segmentation](#segmentation)     | [radius\_clustering\_segmenter](#radius-clustering-segmenter-parameters) | "min\_points\_in\_plane", "min\_points\_in\_segment", "clustering\_radius\_mm", "mean\_k\_filtering" |
@@ -76,15 +76,19 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
 
 ## Getting started with the Viam Python SDK
 
-In the snippet below, we are getting the robot’s vision service and then running a detection model on an image to get a list of detections in the next image given a camera and a detector.
+In the snippet below, we are getting the robot’s vision service and then running a color detector vision model on an image and verifying that the color detector vision service is on the robot.
 
 ```python
-from viam.services.vision import VisionServiceClient
-  
-  async def vision():
-  robot = await connect()
-  vision = VisionServiceClient.from_robot(robot)
-  detections = await vision.get_detections_from_camera("camera_1", "detector_1")
+from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
+
+vision = VisionServiceClient.from_robot(robot)
+
+## Add a color detector to the vision service and verify that it is there.
+colorDetParams = {"detect_color": "#7ba4a5", "hue_tolerance_pct": 0.06, "segment_size_px": 200}
+colorDet = VisModelConfig(name="detector_1", type=VisModelType("color_detector"), parameters=colorDetParams)
+vision.add_detector(colorDet)
+print("Vision Resources:")
+print(await vision.get_detector_names())
 ```
 ## Detection
 
