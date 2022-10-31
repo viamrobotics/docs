@@ -257,6 +257,6 @@ In offline mode, it can be difficult to determine the quality of the dataset. If
 
 ## Additional Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting).
+You can find additional assistance in the [Troubleshooting section](./appendix/troubleshooting).
 
 You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com) and we will be happy to help.
