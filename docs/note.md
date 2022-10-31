@@ -6,6 +6,36 @@ draft: true
 type: "docs"
 ---
 
+
+{{< tabpane text=true right=true >}}
+  {{% tab header="English" lang="en" %}}
+  Welcome!
+  {{% /tab %}}
+  {{< tab header="German" lang="de" >}}
+    <b>Herzlich willkommen!</b>
+  {{< /tab >}}
+  {{% tab header="Swahili" lang="sw" %}}
+  **Karibu sana!**
+  {{% /tab %}}
+{{< /tabpane >}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Using Expanders
 Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it. 
 
