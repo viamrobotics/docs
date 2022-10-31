@@ -21,25 +21,25 @@ Currently, there are three operations available through the vision service:
 
 The vision service is a default service on the robot, and can be initialized without attributes.
 
-There is a public repo with examples of how to use the vision service on <a href="https://github.com/viamrobotics/vision-service-examples" target="_blank">ht<span></span>tps://github.com/viamrobotics/vision-service-examples</a>, as well.
-
+{{% alert title="Tip" color="tip" %}}  
+To read code examples of how to use Viam's Vision Service with the Viam Python and Go SDKs, checkout our example repo: <a href="https://github.com/viamrobotics/vision-service-examples" target="_blank">ht<span></span>tps://github.com/viamrobotics/vision-service-examples</a>
+{{% /alert %}}
 
 ## VisModels
 
-| Operation         | VisModelType                                  | Parameters                                   |
-| ----------------- | --------------------------------- | ---------------------------------- |
-| Detection         | tflite\_detector   | "model\_path", "label\_path", "num\_threads" |
-|| tf\_detector      | TBD - Not yet supported                       |
-|| color\_detector   | "detect\_color", "tolerance\_pct", "segment\_size\_px" |
-| Classification    | tflite\_classifier | "model\_path", "label\_path", "num\_threads" |
-|| tf\_classifier    | TBD - Not yet supported                       |
-| Segmentation      | radius\_clustering\_segmenter | "min\_points\_in\_plane", "min\_points\_in\_segment", "clustering\_radius\_mm", "mean\_k\_filtering"      |
-|| detector\_segmenter |  "detector\_name", "confidence\_threshold\_pct", "mean\_k", "sigma" |
+| Operation                         | VisModelType                                                             | Parameters                                                                                           |
+| --------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| [Detection](#detection)           | [tflite\_detector](#tflite-detector-parameters)                          | "model\_path", "label\_path", "num\_threads"                                                         |
+|                                   | tf\_detector                                                             | TBD - Not yet supported                                                                              |
+|                                   | [color\_detector](#color-detector-parameters)                            | "detect\_color", "hue\_tolerance\_pct", "segment\_size\_px"                                          |
+| [Classification](#classification) | [tflite\_classifier](#tflite-classifier-parameters)                      | "model\_path", "label\_path", "num\_threads"                                                         |
+|                                   | tf\_classifier                                                           | TBD - Not yet supported                                                                              |
+| [Segmentation](#segmentation)     | [radius\_clustering\_segmenter](#radius-clustering-segmenter-parameters) | "min\_points\_in\_plane", "min\_points\_in\_segment", "clustering\_radius\_mm", "mean\_k\_filtering" |
+|                                   | [detector\_segmenter](#detector-segmenters)                              | "detector\_name", "confidence\_threshold\_pct", "mean\_k", "sigma"                                   |
 
 More about the parameters and model types can be found under the corresponding operation below.
 
-
-## Configuring your VisModels
+## Configuring your VisModels with the Viam app
 
 To add a vision model to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “register_models” field in the attributes field of the vision service config. If you're using the "Config > Services" tab on Viam, you'll see that adding a vision service invites you to directly fill in the "attributes."
 
@@ -74,6 +74,22 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
 ]
 ```
 
+## Getting started with the Viam Python SDK
+
+In the snippet below, we are getting the robot’s vision service and then running a color detector vision model on an image and verifying that the color detector vision service is on the robot.
+
+```python
+from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
+
+vision = VisionServiceClient.from_robot(robot)
+
+## Add a color detector to the vision service and verify that it is there.
+colorDetParams = {"detect_color": "#7ba4a5", "hue_tolerance_pct": 0.06, "segment_size_px": 200}
+colorDet = VisModelConfig(name="detector_1", type=VisModelType("color_detector"), parameters=colorDetParams)
+vision.add_detector(colorDet)
+print("Vision Resources:")
+print(await vision.get_detector_names())
+```
 ## Detection
 
 __2D Object Detection__ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct “objects” of interest in the scene. Any camera that can return 2D images can use 2D object detection.
