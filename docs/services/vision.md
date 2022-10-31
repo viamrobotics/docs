@@ -27,15 +27,15 @@ To read code examples of how to use Viam's Vision Service with the Viam Python a
 
 ## VisModels
 
-| Operation                                          | VisModelType                                                                              | Parameters                                                                                           |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| [Detection](/services/vision/#detection)           | [tflite\_detector](/services/vision/#tflite-detector-parameters)                          | "model\_path", "label\_path", "num\_threads"                                                         |
-|                                                    | tf\_detector                                                                              | TBD - Not yet supported                                                                              |
-|                                                    | [color\_detector](/services/vision/#color-detector-parameters)                            | "detect\_color", "tolerance\_pct", "segment\_size\_px"                                               |
-| [Classification](/services/vision/#classification) | [tflite\_classifier](/services/vision/#tflite-classifier-parameters)                      | "model\_path", "label\_path", "num\_threads"                                                         |
-|                                                    | tf\_classifier                                                                            | TBD - Not yet supported                                                                              |
-| [Segmentation](/services/vision/#segmentation)     | [radius\_clustering\_segmenter](/services/vision/#radius-clustering-segmenter-parameters) | "min\_points\_in\_plane", "min\_points\_in\_segment", "clustering\_radius\_mm", "mean\_k\_filtering" |
-|                                                    | [detector\_segmenter](/services/vision/#detector-segmenters)                              | "detector\_name", "confidence\_threshold\_pct", "mean\_k", "sigma"                                   |
+| Operation                         | VisModelType                                                             | Parameters                                                                                           |
+| --------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| [Detection](#detection)           | [tflite\_detector](#tflite-detector-parameters)                          | "model\_path", "label\_path", "num\_threads"                                                         |
+|                                   | tf\_detector                                                             | TBD - Not yet supported                                                                              |
+|                                   | [color\_detector](#color-detector-parameters)                            | "detect\_color", "tolerance\_pct", "segment\_size\_px"                                               |
+| [Classification](#classification) | [tflite\_classifier](#tflite-classifier-parameters)                      | "model\_path", "label\_path", "num\_threads"                                                         |
+|                                   | tf\_classifier                                                           | TBD - Not yet supported                                                                              |
+| [Segmentation](#segmentation)     | [radius\_clustering\_segmenter](#radius-clustering-segmenter-parameters) | "min\_points\_in\_plane", "min\_points\_in\_segment", "clustering\_radius\_mm", "mean\_k\_filtering" |
+|                                   | [detector\_segmenter](#detector-segmenters)                              | "detector\_name", "confidence\_threshold\_pct", "mean\_k", "sigma"                                   |
 
 More about the parameters and model types can be found under the corresponding operation below.
 
