@@ -11,9 +11,9 @@ description: "A guide to imaging a Pi, installing viam-server and syncing the Pi
 
 This tutorial requires the following hardware:
 
-* A Raspberry Pi Single Board Computer
+* A Raspberry Pi single board computer
 * A microSD card
-* An internet connected computer
+* An internet-connected computer
 * A way to connect the microSD card to the computer (ex, microSD slot or microSD reader)
 
 Before installing the Viam [RDK](../../appendix/glossary#rdk_anchor), you will need a Raspberry Pi running a 64-bit Linux distribution.
@@ -22,7 +22,7 @@ If you already have a Raspberry Pi with Linux installed on it, check if the Linu
 First, `ssh` into your Pi and then run `lscpu`.
 Example output:
 
-![lscpu-output](../../tutorials/img/lscpu-output.png)
+![lscpu-output](../../getting-started/img/pi-setup/lscpu-output.png)
 
 If the value of “Architecture: _'xxxxxx'_” ends in 64, skip ahead to [Installing viam-server](#installing-viam-server).
 Otherwise continue to [Installing Raspian on the Raspberry Pi](#installing-raspian-on-the-raspberry-pi).
@@ -36,21 +36,21 @@ You will be using the Raspberry Pi Imager to flash the microSD card.
 If you do not already have the <a href="https://www.raspberrypi.com/software/" target="_blank">Raspberry Pi Imager</a>[^rpii], you can download and follow the installation instructions</a>).
 After installing successfully, connect your microSD card to your computer and launch the Raspberry Pi Imager.
 You should be greeted with a window that looks like:
-![imager-launch-screen](../../tutorials/img/imager-launch-screen.png)
+![imager-launch-screen](../../getting-started/img/pi-setup/imager-launch-screen.png)
 
 [^rpii]: Raspberry Pi Imager: <a href="https://www.raspberrypi.com/software/" target="_blank">ht<span></span>tps://www.raspberrypi.com/software/</a>
 
 Select `CHOOSE OS`.
 Since you need a 64-bit version of Linux, you will need to select it from the `Rapsberry Pi OS (other)` menu.
-![imager-select-custom-os](../../tutorials/img/select-other-custom-os.png)
+![imager-select-custom-os](../../getting-started/img/pi-setup/select-other-custom-os.png)
 
 Then select the entry titled `Raspberry Pi OS Lite (64-bit)`.
-![select-other-rpi](../../tutorials/img/select-other-rpi.png)
+![select-other-rpi](../../getting-started/img/pi-setup/select-other-rpi.png)
 
 You should be brought back to the initial launch screen.
 To make your Raspberry Pi easier to access, Viam recommends configuring hostname, ssh credentials, and wifi.
 Click the gear-shaped settings icon in the lower right to bring up the Advanced options menu (note that if you are using a non-Raspberry Pi OS, altering the Advanced options will cause the initial bootup to fail):
-![imager-set-hostname](../../tutorials/img/imager-set-hostname.png)
+![imager-set-hostname](../../getting-started/img/pi-setup/imager-set-hostname.png)
 
 Check `Set hostname` and enter the name you would like to access the Pi by in that field.
 Remember the name you choose as you will need to make use of it later.
@@ -69,11 +69,11 @@ If this section is empty, you can either generate a new SSH key using <a href="h
 
 
 
-![imager-set-ssh](../../tutorials/img/imager-set-ssh.png)
+![imager-set-ssh](../../getting-started/img/pi-setup/imager-set-ssh.png)
 
 If you decide to use password authentication method: click on `Use password authentication`.
 If you scroll down, you have the option to change the username, then to set a password:
-![imager-set-passwordauthentication](../../tutorials/img/imager-set-passwordauthentication.png)
+![imager-set-passwordauthentication](../../getting-started/img/pi-setup/imager-set-passwordauthentication.png)
 
 Be sure to write down this information somewhere in a secure place to keep track of the `hostname`, `username`, and `password` you have configured.
 You will use them later on.
@@ -85,29 +85,29 @@ Lastly, you should connect your Pi to Wi-Fi, so that you can run Viam's server w
 Check `Configure wireless LAN` and enter your wireless network credentials.
 SSID (short for Service Set Identifier) is your Wi-Fi's name, followed by passcode.
 Change the section `Wireless LAN country` to where your router is currently being operated and then you will hit save:
-![imager-set-wifi](../../tutorials/img/imager-set-wifi.png)
+![imager-set-wifi](../../getting-started/img/pi-setup/imager-set-wifi.png)
 
 This should return you to the initial screen.
 Now you need to pick your storage medium, so click `CHOOSE STORAGE`:
-![imager-selected-os](../../tutorials/img/imager-selected-os.png)
+![imager-selected-os](../../getting-started/img/pi-setup/imager-selected-os.png)
 
 You may have many devices listed, select the microSD card you intend to use in your Raspberry Pi.
 If this page is blank and you do not have any listed, make sure your microSD card is connected to your computer correctly:
-![imager-select-storage](../../tutorials/img/imager-select-storage.png)
+![imager-select-storage](../../getting-started/img/pi-setup/imager-select-storage.png)
 
 After clicking save, double check your OS and Storage settings and then click `WRITE`:
-![imager-write-confirm](../../tutorials/img/imager-write-confirm.png)
+![imager-write-confirm](../../getting-started/img/pi-setup/imager-write-confirm.png)
 
 You will be prompted to confirm erasing your microSD card: select `YES`.
 You may also be prompted by your operating system to enter an Administrator password:
-![imager-permission](../../tutorials/img/imager-permission.png)
+![imager-permission](../../getting-started/img/pi-setup/imager-permission.png)
 
 After granting permissions to the Imager, it will begin writing and then verifying the Linux installation to the MicroSD card:
-![imager-writing](../../tutorials/img/imager-writing.png)
+![imager-writing](../../getting-started/img/pi-setup/imager-writing.png)
 
 Remove the microSD card from your computer when it is complete:
 
-![imager-done](../../tutorials/img/imager-done.png)
+![imager-done](../../getting-started/img/pi-setup/imager-done.png)
 
 Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
 A red led will turn on to indicate its on.
@@ -147,7 +147,7 @@ sudo raspi-config
 
 Use your keyboard to select "Interface Options" and enable the relevant protocols.
 
-![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "3 Interface Options" option where you can find the I2C and other drivers](../../tutorials/img/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
+![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "3 Interface Options" option where you can find the I2C and other drivers](../../getting-started/img/pi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
 
 For these changes to take effect, you need to restart your Raspberry Pi if it hasn't already prompted you to do so.
 
@@ -162,15 +162,15 @@ In your web browser, navigate to the Viam app ([https://app.viam.com](https://ap
 Once you are logged in, a location will be created for you by default, or you can create a new location by filling out the field on the left and then clicking **ADD**.
 Location are just a way of organizing robots. You can find more information on [managing robot fleets here](./product-overviews/fleet-management/#how-to-use-the-viam-app).
 
-![add-location](../../tutorials/img/add-location.png)
+![add-location](../../getting-started/img/pi-setup/add-location.png)
 
 Select your location and use the form on the right to create a new Robot. If this is the first robot in this location, the app displays an arrow pointer to the **New Robot** field (upper RH-corner). Enter a name for your robot, then click **Add Robot**:
 
-![add-robot](../../tutorials/img/add-robot.png)
+![add-robot](../../getting-started/img/pi-setup/add-robot.png)
 
 Navigate to your new robot, which should show the setup page as shown below:
 
-![view-robot](../img/view-robot.png)
+![view-robot](../img/pi-setup/view-robot.png)
 
 ## Follow the steps on the setup tab:
 
@@ -199,7 +199,7 @@ Refresh the page on the Viam app ([https://app.viam.com](https://app.viam.com)) 
 
 You should also see the the notification on the setup page that says "Your robot is connected!"
 
-![your-robot-is-connected](../img/your-robot-is-connected.jpg)
+![your-robot-is-connected](../img/pi-setup/your-robot-is-connected.jpg)
 
 ## Next Steps
 Now that you have the viam-server up and running, you can start configuring your robot and the real fun can begin!
