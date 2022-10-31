@@ -21,12 +21,13 @@ That is to say, a computing device with general purpose input/output (GPIO) pins
 -   Some sort of chassis to hold everything together
 
 For example:
-<img src="../img/base/base-trk-rover-w-arm.png" alt="A base consisting of a rover with motors and a single board computer having GPIO pins" />
+
+<img src="../img/base/base-trk-rover-w-arm.png" alt="A robot comprised of a base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. There are width and diameter labels on the diagram because width and circumference (pi times diameter) are required attributes when configuring a base component." />
 
 An example of a wiring diagram for a base that has one motor on each side is shown below.
 Note that this will vary greatly depending on choice of motors, motor drivers, power supply, and board.
 
-<img src="../img/base/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberry Pi's connections to the motor drivers, motors, power supply, and voltage regulator for the rover."/>
+<img src="../img/base/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberry Pi, motor drivers, motors, power supply, and voltage regulator for the rover."/>
 
 
 ## Configuration
@@ -103,6 +104,7 @@ An example configuration file, including the board, motors, and base:
 ```
 
 An explanatory view of the same config file:
+
 <img src="../img/base/base-json.png" alt="An image of the JSON configuration file with annotations explaining some of the attributes."/>
 
 ### Required Attributes
