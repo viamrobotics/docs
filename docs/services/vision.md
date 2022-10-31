@@ -76,19 +76,22 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
 
 ## Getting started with the Viam Python SDK
 
-In the snippet below, we are getting the robot’s vision service and then running a color detector vision model on an image and verifying that the color detector vision service is on the robot.
+In the snippet below, we are getting the robot’s vision service and then running a color detector vision model on an image, verifying that the color detector vision service is on the robot, and then applying the color detector to the image from the camera.
 
 ```python
 from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
 
 vision = VisionServiceClient.from_robot(robot)
 
-## Add a color detector to the vision service and verify that it is there.
+# Add a color detector to the vision service and verify that it is there.
 colorDetParams = {"detect_color": "#7ba4a5", "hue_tolerance_pct": 0.06, "segment_size_px": 200}
 colorDet = VisModelConfig(name="detector_1", type=VisModelType("color_detector"), parameters=colorDetParams)
-vision.add_detector(colorDet)
+await vision.add_detector(colorDet)
 print("Vision Resources:")
 print(await vision.get_detector_names())
+
+# Apply the color detector to the image from your camera (configured as "camera_1")
+detections = await vision.get_detections_from_camera("camera_1", "detector_1")
 ```
 ## Detection
 
