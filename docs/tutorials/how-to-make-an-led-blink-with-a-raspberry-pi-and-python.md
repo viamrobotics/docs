@@ -179,11 +179,11 @@ The Python SDK connect script should look something like this:
   
   async def connect():
   creds = Credentials(
-  type='robot-location-secret',
-  payload='PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP')
-  opts = RobotClient.Options(
-  refresh_interval=0,
-  dial_options=DialOptions(credentials=creds)
+      type='robot-location-secret',
+      payload='PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP')
+      opts = RobotClient.Options(
+      refresh_interval=0,
+      dial_options=DialOptions(credentials=creds)
   )
   return await RobotClient.at_address('ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP', opts)
   
@@ -196,7 +196,7 @@ The Python SDK connect script should look something like this:
   await robot.close()
   
   if __name__ == '__main__':
-  asyncio.run(main())
+    asyncio.run(main())
 ```
 
 Next, paste that boilerplate code into your <file>blink.py</file> file in VS Code, and save your file.
