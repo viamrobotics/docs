@@ -119,7 +119,7 @@ An arm on a gantry, for example, can be managed by the Frame System directly bec
 On the other hand, an arm on a rover that is unaware of its own position cannot be configured into the frame system because the rover can move freely with respect to the world frame. A knowledgeable user could code a mobile base with an organic SLAM system able to report its own position without the need for supplementary transforms.
 
 So, how do we deal with such components? 
-One solution would be to introduce a motion tracker or a camera in combination with our [vision service](./services/vision/) as a third component. 
+One solution would be to introduce a motion tracker or a camera in combination with our [vision service](/services/vision/) as a third component. 
 This component is fixed in space (making it configurable in the Frame System) and can supply the location and orientation of the rover in its own reference frame. 
 This *supplemental transform* is the missing link to be able to transform a pose in the arm's reference frame to the world reference frame (or others that may exist in the frame system).
 

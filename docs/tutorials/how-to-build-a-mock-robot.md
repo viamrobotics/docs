@@ -9,7 +9,7 @@ description: "Instructions for creating a mock robot using just your personal co
 ## Introduction
 
 In this post, we will show you how to build a mock robot using just your personal laptop so you can try using Viam without any robotic hardware.
-This is a great way to learn how to build robots [the Viam way](./getting-started/high-level-overview).
+This is a great way to learn how to build robots [the Viam way](/getting-started/high-level-overview).
 
 Most Viam components come with a _fake_ model that can be useful when testing.
 These fake components interact with Viam like real hardware, but of course, do not actually exist.

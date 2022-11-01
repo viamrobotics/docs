@@ -47,7 +47,7 @@ The simplest answer is that, the `viam-server` doesn't make your robot autonomou
 
 ## Why connect as a Client via the Viam app
 
-After [installing the Viam server on a robot (like a Raspberry Pi)](./getting-started/installation/#installing-viam-server), you can connect your newly minted robot to the [Viam app](https://app.viam.com). The Viam app provides a page for each robot to do the following:
+After [installing the Viam server on a robot (like a Raspberry Pi)](/getting-started/installation/#installing-viam-server), you can connect your newly minted robot to the [Viam app](https://app.viam.com). The Viam app provides a page for each robot to do the following:
 
 -   **Logs**: Displays `viam-server` logs including status changes and error messages.
 
@@ -61,7 +61,7 @@ You can read [Viam's guide for connecting your robot to the Viam app](https://do
 
 ## Why connect as a Client using Viam's SDKs?
 
-If you want to do anything to your robot that isn't supported out of the box in the Viam app, you will need to use one of our Client SDK libraries to write your application. Our SDKs support building blocks, like [vision services](./services/vision/), [motors](./components/motor/), [cameras](./components/camera/), and [much more](https://docs.viam.com). They also manage the communication between the Client SDK and the `viam-server` running on your robot.
+If you want to do anything to your robot that isn't supported out of the box in the Viam app, you will need to use one of our Client SDK libraries to write your application. Our SDKs support building blocks, like [vision services](/services/vision/), [motors](/components/motor/), [cameras](/components/camera/), and [much more](https://docs.viam.com). They also manage the communication between the Client SDK and the `viam-server` running on your robot.
 
 Also, Viam's SDKs allow you to connect from any machine that's on the same network as the robot running `viam-server`.
 
@@ -83,7 +83,7 @@ You can browse through the [API Reference](https://python.viam.dev/autoapi/viam/
 {{% /alert %}}
 
 {{% alert title="Note" color="note" %}}  
-We will be assuming that you have already [set up Viam Server](./getting-started/installation/#installing-viam-server) on your robot and [connected your robot to the Viam app](./getting-started/installation#adding-your-pi-on-the-viam-app), and [installed the Viam Python SDK](https://python.viam.dev/index.html) on your client before proceeding.
+We will be assuming that you have already [set up Viam Server](/getting-started/installation/#installing-viam-server) on your robot and [connected your robot to the Viam app](/getting-started/installation#adding-your-pi-on-the-viam-app), and [installed the Viam Python SDK](https://python.viam.dev/index.html) on your client before proceeding.
 {{% /alert %}}
 
 ### How to connect to your Robot using the Viam Python SDK
