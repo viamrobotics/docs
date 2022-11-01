@@ -74,7 +74,7 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
 ]
 ```
 
-## Getting started Vision Services and the Viam SDK
+## Getting started with Vision Services and the Viam SDK
 
 In the snippet below, we are getting the robot’s vision service and then running a color detector vision model on an image, verifying that the color detector vision service is on the robot, and then applying the color detector to the image from the camera.
 
@@ -97,7 +97,9 @@ detections = await vision.get_detections_from_camera("camera_1", "detector_1")
 ```
 {{% /tab %}}
 {{% tab name="Go" %}}
-This is **some markdown.** III
+```go
+// TBD - Getting example from Khari
+```
 {{% /tab %}}
 {{< /tabs >}}
 
