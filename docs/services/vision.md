@@ -74,10 +74,12 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
 ]
 ```
 
-## Getting started with the Viam Python SDK
+## Getting started Vision Services and the Viam SDK
 
 In the snippet below, we are getting the robot’s vision service and then running a color detector vision model on an image, verifying that the color detector vision service is on the robot, and then applying the color detector to the image from the camera.
 
+{{< tabs >}}
+{{% tab name="Python" %}}
 ```python
 from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
 
@@ -93,6 +95,12 @@ print(await vision.get_detector_names())
 # Apply the color detector to the image from your camera (configured as "camera_1")
 detections = await vision.get_detections_from_camera("camera_1", "detector_1")
 ```
+{{% /tab %}}
+{{% tab name="Go" %}}
+This is **some markdown.** III
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Detection
 
 __2D Object Detection__ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct “objects” of interest in the scene. Any camera that can return 2D images can use 2D object detection.
