@@ -11,7 +11,7 @@ Arms are serial chains of joints and links, with a fixed end and an end effector
 The end effector is able to be placed at arbitrary cartesian positions relative to the base of the arm, and can be moved to cartesian coordinates or controlled directly via the joint positions.
 
 As an example, to move an xArm6 whose component name is "my_xArm6" forwards in the X direction by 300mm:
-```go
+```python
   	from viam.components.arm import Arm
   	from viam.proto.api.common import WorldState
  	 
@@ -48,7 +48,7 @@ If there is no way to move to the desired location in a straight line for the ar
 - Obstacle avoidance
 
 ## Viam Configuration:
-```JSON
+```json-viam
 {
   "components": [
 	{
@@ -102,7 +102,7 @@ If you have trouble with this, try starting the arm in the home position.
 It will then call the Viam motion service to move the arm (rather than `arm.move_to_position`), which is able to route around the hypothetical obstacle. It will return to the starting point, again routing around the obstacle.
 1. Finally, it will call `arm.move_to_position` to the goal as in the first movement, but this time passing the obstacle. 
 As there is no straight-line path to the goal that does not intersect the obstacle, this request will fail with a "unable to solve for position" GRPC error.
-``` go
+``` python
 	motion_svc = MotionServiceClient.from_robot(robot, "NAME”)
   	arm = Arm.from_robot(robot=robot, name='xArm6')
   	pos = await arm.get_end_position()

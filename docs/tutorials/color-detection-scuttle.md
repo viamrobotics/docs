@@ -24,7 +24,7 @@ Viam app pre-populates the **Connect** tab with the robot name, address, and sec
 
 ## Prerequisites
 The prerequisite of this tutorial is to have a SCUTTLE rover which you can drive via a webUI.
-Please refer to [Setting Up Tutorial For SCUTTLE with a Pi](../scuttlebot). if you have not already configured your SCUTTLE.
+Please refer to [Setting Up Tutorial For SCUTTLE with a Pi](../scuttlebot/). if you have not already configured your SCUTTLE.
 
 Now you should try to drive the SCUTTLE around following the color red.
 Perhaps you can start with a red sports ball to demo with.
@@ -83,7 +83,7 @@ python ~/Desktop/scuttle.py
 Within `getVisService(robot)`, a detector is configured with particular properties and subsequently added to the vision service.
 This particular detector is a "color" detector, which means the relevant parameters are “detect_color (hex string)”, “hue_tolerance_pct (float from 0 to 1)”, and “segment_size_px (integer).”
 Feel free to add new detectors with different parameters!
-To learn about all the different detectors and parameters, check out the [Vision Service](../../services/vision) topic.
+To learn about all the different detectors and parameters, check out the [Vision Service](../../services/vision/) topic.
 
 The `leftOrRight()` code splits the screen vertically into thirds (left, center, and right) and makes a determination about which third the object (red ball) is in.
 Within `main()`, this decides how the robot moves (as configured by the 4 given variables).

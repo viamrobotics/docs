@@ -43,8 +43,8 @@ All communication across Viam is done with gRPC[^grpc], directly if wanted, or v
 [^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
 
 There are three buckets of APIs:
-- [Components](/components) - e.g. motors, arms, GPS 
-- [Services](/services) - computer vision, motion planning, SLAM
+- [Components](../../components/) - e.g. motors, arms, GPS 
+- [Services](../../services/) - computer vision, motion planning, SLAM
 - Cloud Application - fleet management, data management
 
 You can see all Viam API specifications at https://github.com/viamrobotics/api.
@@ -76,7 +76,7 @@ For example, a Raspberry Pi part on a mobile robot might have: 4 motors, a GPS, 
 
 ### Service
 
-[Services](/services) offer higher level software abstractions.
+[Services](../../services/) offer higher level software abstractions.
 
 For example: motion planning and computer vision.
 
@@ -93,8 +93,8 @@ Examples:
 - A POE camera implements the camera gRPC interface, so it can be added directly as a remote.
 
 ### Process
-Processes are scripts or programs run by the [Robot Development Kit (RDK)](../../appendix/glossary#rdk_anchor) whose lifecycle is managed by the viam-server.
-One example is running a [Software Development Kit (SDK)](/product-overviews/sdk-as-server) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
+Processes are scripts or programs run by the [Robot Development Kit (RDK)](../../appendix/glossary/#rdk_anchor) whose lifecycle is managed by the viam-server.
+One example is running a [Software Development Kit (SDK)](../../product-overviews/sdk-as-server/) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
 
 ## SDKs
 
@@ -121,7 +121,7 @@ If you have hardware lying around, the best thing to do is try to get it setup.
 
 If you encounter issues, please work with us on [Slack](https://viamrobotics.slack.com/) as we're still working on rough edges.
 
-Also, we have a number of [tutorials](/tutorials) to get you started.
+Also, we have a number of [tutorials](../../tutorials/) to get you started.
 
-If you have no hardware, you can use our [mock robot tutorial](/tutorials/how-to-build-a-mock-robot).
+If you have no hardware, you can use our [mock robot tutorial](../../tutorials/how-to-build-a-mock-robot/).
 

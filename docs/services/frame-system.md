@@ -52,7 +52,7 @@ For example, a traditional arm may have a reference frame whose origin is at its
 Each driver of such a component in the Viam system requires a JSON file named **Model JSON** that details the attachment of reference frames. However, that is a requirement for Viam's drivers. If you implement your own drivers, the decision whether to require Model JSON files will depend on your code.
 These reference frames are ingested by the Frame System *but not exposed via gRPC call* (meaning they are unavailable for inspection by any of the SDKs)
 
-{{% alert title="Warning" color="warning" %}}  
+{{% alert title="Note" color="note" %}}  
 If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the [**Model JSON** section](#Model-JSON).
 {{% /alert %}}
 ## How the Robot Builds the Frame System
@@ -119,7 +119,7 @@ An arm on a gantry, for example, can be managed by the Frame System directly bec
 On the other hand, an arm on a rover that is unaware of its own position cannot be configured into the frame system because the rover can move freely with respect to the world frame. A knowledgeable user could code a mobile base with an organic SLAM system able to report its own position without the need for supplementary transforms.
 
 So, how do we deal with such components? 
-One solution would be to introduce a motion tracker or a camera in combination with our [vision service](/services/vision/) as a third component. 
+One solution would be to introduce a motion tracker or a camera in combination with our [vision service](../../services/vision/) as a third component. 
 This component is fixed in space (making it configurable in the Frame System) and can supply the location and orientation of the rover in its own reference frame. 
 This *supplemental transform* is the missing link to be able to transform a pose in the arm's reference frame to the world reference frame (or others that may exist in the frame system).
 
@@ -163,7 +163,7 @@ Below are JSON examples for each parameter type used by our Universal Robots[^ur
 
 **Example: kinematic_param_type=SVA**
 
-```json
+```json-viam
 {
     "name": "UR5e",
     "kinematic_param_type": "SVA",
@@ -369,7 +369,7 @@ Below are JSON examples for each parameter type used by our Universal Robots[^ur
 ```
 **Example: kinematic_param_type=DH**
 
-```json
+```json-viam
 {
     "name": "UR5e",
     "kinematic_param_type": "DH",

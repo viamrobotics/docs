@@ -179,11 +179,11 @@ The Python SDK connect script should look something like this:
   
   async def connect():
   creds = Credentials(
-  type='robot-location-secret',
-  payload='PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP')
-  opts = RobotClient.Options(
-  refresh_interval=0,
-  dial_options=DialOptions(credentials=creds)
+      type='robot-location-secret',
+      payload='PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP')
+      opts = RobotClient.Options(
+      refresh_interval=0,
+      dial_options=DialOptions(credentials=creds)
   )
   return await RobotClient.at_address('ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP', opts)
   
@@ -196,7 +196,7 @@ The Python SDK connect script should look something like this:
   await robot.close()
   
   if __name__ == '__main__':
-  asyncio.run(main())
+    asyncio.run(main())
 ```
 
 Next, paste that boilerplate code into your <file>blink.py</file> file in VS Code, and save your file.
@@ -288,7 +288,7 @@ In this tutorial, you learned how to remotely connect to a Raspberry Pi using SS
 
 If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, I would recommend that you check out the following tutorials:
 
--  [Tutorial List](/tutorials/)
+-  [Tutorial List](..)
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 

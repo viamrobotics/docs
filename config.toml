@@ -3,16 +3,8 @@ defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 enableMissingTranslationPlaceholders = false
 enableRobotsTXT = true
-enableGitInfo = false # Set this to false to disable the last commit date/message to the footer.
+enableGitInfo = false
 disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
-
-# Moved main.menu here because it killed the search box when it was lower in the config. 
-# See "BANNER MENUS READ THIS," below.
-[[menu.main]]
-        name = "Python SDK Documentation"
-        weight = -100
-        identifier = "PSDK"
-    url = "https://python.viam.dev/"
 
 [taxonomies]
 tag = "tags"
@@ -48,49 +40,31 @@ weight = 1
     [markup.goldmark.renderer]
       unsafe = true
   [markup.highlight]
-    style = "tango"
+    codeFences = false
 
 [outputs]
 section = ["HTML"]
 
 [params]
-#tos_statement = "https://www.viam.com/terms"
-#user_agreement = "https://www.viam.com/agreement"
 copyright = "Viam, Inc. - Documentation is licensed under Creative Commons ShareAlike License. "
 privacy_policy = "https://www.viam.com/privacy"
 includes_dir = "_includes"
-
-#
-#
-#
-# BANNER MENUS READ THIS
-#
-#  The banner menu for SDK Documentations now uses the [[main.menu]] 
-#  to add a single entry for Python SDK. 
-#
-#  Once the Rust SDk Documentation becomes available, switch to using the 
-#  [params.versions] to replace a version menu with an SDK docs menu
-#
-# Menu title if your navbar has a versions selector to access old versions of your site.
-# This menu appears only if you have at least one [params.versions] set.
-
-# Uncomment these lines when we add Rust:
-
-#version_menu = "SDK Documentation"
-#[[params.versions]]
-#  version = "Python SDK Documentation"
-#  url = "https://python.viam.dev/"
-#[[params.versions]]
-#  version = "Rust SDK Documentation"
-#  url = "https://rust.viam.dev/"
-
-# Comment out the main.menu lines up above when we add Rust 
-
 archived_version = false
 url_latest_version = "https://docs.viam.com/"
 algolia_docsearch = true
 offlineSearch = false
 prism_syntax_highlighting = true
+
+version_menu = "SDK Documentation"
+[[params.versions]]
+ version = "Python SDK Documentation"
+ url = "https://python.viam.dev/"
+[[params.versions]]
+ version = "Go Client SDK Documentation"
+ url="https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme"
+# [[params.versions]]
+#  version = "Rust SDK Documentation"
+#  url = "https://rust.viam.dev/"
 
 [params.ui]
 breadcrumb_disable = false
@@ -101,10 +75,7 @@ sidebar_menu_compact = true  # When true, the section headings work like an acco
 sidebar_search_disable = true
 
 [params.ui.feedback]
-enable = false  # TODO: After we add our feedback system, set this back to true to show the section head.
-# The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
-# yes = 'Glad to hear it! Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.'
-# no = 'Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.'
+enable = false
 
 [params.ui.readingtime]
 enable = false

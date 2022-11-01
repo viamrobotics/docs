@@ -2,11 +2,11 @@ git:
 	git submodule update --init --recursive
 
 setup: git package.json
-	npm install --save-dev autoprefixer
-	npm install --save-dev postcss-cli
+	npm install
 
-PROD_OPTIONS=-e production --minify
+PROD_OPTIONS=-e production --config config.toml,config_prod.toml --minify
 DEV_OPTIONS=-e development --config config.toml,config_dev.toml
+PR_OPTIONS=$(PROD_OPTIONS) --config config.toml,config_pr.toml
 SERVE_OPTIONS=--baseURL http://localhost
 
 clean:
@@ -16,7 +16,7 @@ build-prod: clean setup
 	hugo $(PROD_OPTIONS)
 
 build-pr: clean setup
-	hugo $(PROD_OPTIONS) --config config.toml,config_pr.toml
+	hugo $(PR_OPTIONS)
 
 serve-prod: setup
 	hugo server $(PROD_OPTIONS) $(SERVE_OPTIONS)

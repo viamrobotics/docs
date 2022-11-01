@@ -40,7 +40,7 @@ You will need the following tools to complete the project:
 
 ## Project setup
 
-Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](../../getting-started/installation) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam app.](../../getting-started/installation/#adding-your-pi-on-the-viam-app)
+Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi. We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](../../getting-started/installation/) guide in the Viam documentation. Be sure to follow all the steps including [adding your Pi on the Viam app.](../../getting-started/installation/#adding-your-pi-on-the-viam-app)
 
 {{% alert title="Note" color="note" %}}  
 If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
@@ -108,7 +108,7 @@ After setting your pin to "high" the LED should illuminate. You can play around 
 
 Congratulations! If you have followed along, you have just successfully used Viam to make an LED blink with a Raspberry Pi! Hopefully, you have learned how the GPIO on a Raspberry PI works, and how to build circuits for LED bulbs. You are ready for your next robotics project. If you are looking for some projects that would be a great next step, we would recommend that you check out the following:
 
--   [Tutorial List](../../tutorials)
+-   [Tutorial List](../../tutorials/)
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 

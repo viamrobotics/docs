@@ -7,6 +7,6 @@
 		{{ $path = .Page.RelPermalink }}
 	{{ end }}
 	{{ range .Site.Params.versions }}
-	<a class="dropdown-item" href="{{ $path }}">{{ .version }}</a>
+	<a class="dropdown-item" href="{{ .url }}" target="_blank">{{ .version }}</a>
 	{{ end }}
 </div>

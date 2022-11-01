@@ -52,8 +52,6 @@ If the user uses remote control in the Viam app ([https://app.viam.com](https://
 
 * <a href="https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection" target="_blank">WebRTC Docs</a>[^webrtc]
 
-* [Authentication Docs](../../security)
-
 [^webrtc]:WebRTC Documentation: <a href="https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection" target="_blank">ht<span></span>tps://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection</a>
 
 Local communication between parts can be done over gRPC or WebRTC.
@@ -69,7 +67,7 @@ If you're signing up without an invitation link, go to [app.viam.com](https://ap
 Click the drop down in the upper right corner of the page.
 You should see your name, email and a list of organizations you belong to.
 
-![my-org](/product-overviews/img/fleet-management/my-org.png)
+![my-org](../../product-overviews/img/fleet-management/my-org.png)
 
 If you used an email invite to sign up, the organization that invited you should be listed here.
 You also have a personal organization for projects not associated with other organizations.
@@ -83,24 +81,27 @@ If your organization contains any locations, you must delete them before you can
 
 Click the name of an organization to go to the list of its locations.
 
-### Creating locations
-When you create a new organization, a location will be automatically created for you.
+### Creating Locations and Sub-locations
+#### Locations
+When you create a new organization, Viam automatically creates a new location for you.
 You can create additional locations by typing a new location name in the **New Location** field found in the left side navigation bar and clicking **ADD**.
 
 You can delete a location that is *empty of robots* by clicking the trash can icon next to the location name at the top of the page for that location.
 The icon will not appear if there are any robots in the location.
 
-{{% alert title="Sub-locations" color="note" %}}
-- To make a *sub-location*, create a location, first add at least one robot to it. 
-From the bottom of the soon-to-be-sub-location's page, use the **New Parent Location** drop down to choose a parent location.
-Click **CHANGE** after selecting the new parent location.
-You can continue nesting sub-locations in this way.
-- To return a sub-location to the first level of locations, select **Root** from the New Parent Location drop down and click **CHANGE**.
-{{% /alert %}}
-
-In the navigation bar on the left, navigate to the location (or sub-location) where you want to create a robot.
+In the navigation bar on the left, navigate to the location (or *sub-location*) where you want to create a robot.
 
 Click a location's name to display the list of robots associated with that location.
+
+#### Sub-locations
+To create a sub-location:
+
+1. Create a location and add at least one robot to it. 
+2. From the bottom of the soon-to-be-sub-location's page, use the **New Parent Location** drop-down to choose a parent location.
+3. Click **CHANGE** after selecting the new parent location.
+
+You can continue nesting sub-locations in this way.
+To move a sub-location to the first level of locations, select **Root** from the **New Parent Location** drop-down and then click **CHANGE**.
 
 ### Creating robots
 When you click on a location that does not contain any robots, you'll be prompted to create a robot by typing in the **New Robot** field and clicking **ADD ROBOT**.
@@ -128,7 +129,7 @@ If you've connected your robot to a machine running viam-server (instructions be
 The following tabs are found on the robot page:
 
 #### Setup
-The **Setup** tab contains information for starting an instance of viam-server on your robot's computer. ([See more in-depth install instructions for Linux here](/getting-started/linux-install).) Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
+The **Setup** tab contains information for starting an instance of viam-server on your robot's computer. ([See more in-depth install instructions for Linux here](../../getting-started/linux-install/).) Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
 
 #### Config
 Here you can start adding robot components, services and remotes.
@@ -141,8 +142,8 @@ Within the **CONFIG** tab (in builder mode) are separate sub-tabs for components
 In raw JSON mode, all of these resources are displayed in a single text field.
 
 Details on configuring specific hardware components and services can be found in these docs:
-- [Components](/components/)
-- [Services](/services/)
+- [Components](../../components/)
+- [Services](../../services/)
 
 #### Logs
 This tab displays debug and other logging information from your robot.
