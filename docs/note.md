@@ -10,17 +10,22 @@ type: "docs"
 
 {{< tabs name="TabPanelExample" >}}
 {{% tab name="Support"%}}
-Supported:
-
+**Supported**
 * Markdown and HTML images. 
 * Alert Shortcode
 * PRISM syntax highlighting (the three backticks)
-* codelang highlighting (add codelang="language" to tab element). It's very ugly, it needs css work, not recommended at this time.
+* "codelang" highlighting (add codelang="language" to tab element). It's very ugly, needs css work, and is not recommended at this time.
 
-Not Supported:
+**Not Supported**
 * Footnotes
 * Expanders
-  
+
+**Example Usage**
+
+<img style="border:solid 1px black" alt="Screen capture of a Tab/Tabs Shortcode Block" src="/img/101.png">
+
+
+
 {{% /tab %}}
 {{% tab name="Examples" %}}
 <div>
