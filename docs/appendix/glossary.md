@@ -43,7 +43,7 @@ For example, UR5e is a model of the arm component type.
 Processes are often used to create a new local instance of viam-server to implement drivers for custom components, or to run a client application.
 They provide a bespoke, OS-specific process managed by the viam-server to either run once or indefinitely; for example, to run one of Viam's camera servers.
 
-<a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. [Read More](./product-overviews/rdk)
+<a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. [Read More](../../product-overviews/rdk)
 
 **Resource**: Resources are individual, addressable elements of a robot (RDK definition) operated by parts. 
 Parts operate two types of Resources: physical components and software services.

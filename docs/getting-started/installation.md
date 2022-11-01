@@ -160,7 +160,7 @@ sudo reboot
 In your web browser, navigate to the Viam app ([https://app.viam.com](https://app.viam.com)) and log in.
 
 Once you are logged in, a location will be created for you by default, or you can create a new location by filling out the field on the left and then clicking **ADD**.
-Location are just a way of organizing robots. You can find more information on [managing robot fleets here](./product-overviews/fleet-management/#how-to-use-the-viam-app).
+Location are just a way of organizing robots. You can find more information on [managing robot fleets here](../../product-overviews/fleet-management/#how-to-use-the-viam-app).
 
 ![add-location](../../getting-started/img/pi-setup/add-location.png)
 
