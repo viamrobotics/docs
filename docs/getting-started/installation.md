@@ -16,7 +16,7 @@ This tutorial requires the following hardware:
 * An internet-connected computer
 * A way to connect the microSD card to the computer (ex, microSD slot or microSD reader)
 
-Before installing the Viam [RDK](../../appendix/glossary#rdk_anchor), you will need a Raspberry Pi running a 64-bit Linux distribution.
+Before installing the Viam [RDK](../../appendix/glossary/#rdk_anchor), you will need a Raspberry Pi running a 64-bit Linux distribution.
 If you do not have Linux installed on your Raspberry Pi, skip ahead to [Installing Raspian on the Raspberry Pi](#installing-raspian-on-the-raspberry-pi).
 If you already have a Raspberry Pi with Linux installed on it, check if the Linux installation on your Raspberry Pi is 64-bit.
 First, `ssh` into your Pi and then run `lscpu`.

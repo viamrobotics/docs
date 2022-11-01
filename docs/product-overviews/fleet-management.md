@@ -129,7 +129,7 @@ If you've connected your robot to a machine running viam-server (instructions be
 The following tabs are found on the robot page:
 
 #### Setup
-The **Setup** tab contains information for starting an instance of viam-server on your robot's computer. ([See more in-depth install instructions for Linux here](../../getting-started/linux-install).) Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
+The **Setup** tab contains information for starting an instance of viam-server on your robot's computer. ([See more in-depth install instructions for Linux here](../../getting-started/linux-install/).) Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
 
 #### Config
 Here you can start adding robot components, services and remotes.

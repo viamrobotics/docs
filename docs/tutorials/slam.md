@@ -11,7 +11,7 @@ description: "Instructions to run SLAM with either a webcam or provided example 
 Stability is not guaranteed. Breaking changes are likely to occur, and occur often.
 
 ## Introduction
-[SLAM](../../services/slam) allows your robot to create a map of its surroundings, as well as find its location within that map.
+[SLAM](../../services/slam/) allows your robot to create a map of its surroundings, as well as find its location within that map.
 
 This tutorial shows you how to run ORB-SLAM3 on your robot. You have two choices:
 * Run SLAM in online mode with a webcam. The webcam can be installed on a robot, or just be held by hand.
@@ -57,8 +57,8 @@ The configuration of SLAM happens in two steps:
 #### Add a webcam and calibrate it
 
 Follow these tutorials to connect and calibrate your webcam:
-* [Connect and configure a webcam](../how-to-configure-a-camera#connect-and-configure-a-webcam)
-* [Calibrate a camera](../how-to-configure-a-camera#calibrate-a-camera)
+* [Connect and configure a webcam](../how-to-configure-a-camera/#connect-and-configure-a-webcam)
+* [Calibrate a camera](../how-to-configure-a-camera/#calibrate-a-camera)
 
 #### Add SLAM to the configuration
 
@@ -257,6 +257,6 @@ In offline mode, it can be difficult to determine the quality of the dataset. If
 
 ## Additional Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](../../appendix/troubleshooting).
+You can find additional assistance in the [Troubleshooting section](../../appendix/troubleshooting/).
 
 You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com) and we will be happy to help.
