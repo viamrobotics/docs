@@ -131,7 +131,7 @@ Only the output side of the driver board is different, i.e., more wires connect 
 
 Some motors come with encoders integrated or attached to them.
 Other times, you may add an encoder to a motor.
-See the [Encoder Component Doc](../encoder) for more information on encoders.
+See the [Encoder Component Doc](../encoder/) for more information on encoders.
 
 ### Wiring
 

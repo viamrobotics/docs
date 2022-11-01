@@ -262,15 +262,15 @@ If you wish to copy and paste code for your camera, use the following:
 Once you save the config, you'll be able to see your camera's stream in the Control tab.
 
 ## On Completion
-After successfully completing this tutorial, you should have a fully functional SCUTTLE Robot. You can drive it around and view its camera stream. To take things to the next level, check out our [Color Detection with SCUTTLE Robot](../color-detection-scuttle) tutorial or create your own camera-related tutorial.
-Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle-gamepad/) tutorial or our [Line Follower Robot tutorial](../webcam-line-follower-robot).
+After successfully completing this tutorial, you should have a fully functional SCUTTLE Robot. You can drive it around and view its camera stream. To take things to the next level, check out our [Color Detection with SCUTTLE Robot](../color-detection-scuttle/) tutorial or create your own camera-related tutorial.
+Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle-gamepad/) tutorial or our [Line Follower Robot tutorial](../webcam-line-follower-robot/).
 
 ## Documents Referenced
 
   * [**Installing Raspian on the Raspberry Pi**](../../getting-started/installation/#installing-raspian-on-the-raspberry-pi)
 
-  * [**Color Detection with SCUTTLE Robot on Viam**](../color-detection-scuttle)
+  * [**Color Detection with SCUTTLE Robot on Viam**](../color-detection-scuttle/)
 
-  * [**Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad**](../scuttle-gamepad)
+  * [**Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad**](../scuttle-gamepad/)
 
-  * [**Line Following with SCUTTLE Robot on Viam**](../webcam-line-follower-robot)
+  * [**Line Following with SCUTTLE Robot on Viam**](../webcam-line-follower-robot/)

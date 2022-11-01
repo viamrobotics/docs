@@ -11,7 +11,7 @@ It is often used in conjunction with a motor, and is sometimes even built into a
 An encoder could also be positioned on a passive joint or other rotational object to keep track of the joint angle.
 
 ## Hardware Requirements
-- A [board](../board) (like a Raspberry Pi)
+- A [board](../board/) (like a Raspberry Pi)
 - An encoder (quadrature or single phase)
 - Some sort of rotary robot part (like a motor, joint or dial) for which you want to measure movement
 
@@ -25,8 +25,8 @@ In either case position can only be determined relative to the starting position
 Absolute encoders are another type of hardware that is not natively supported in Viam as of August 19th, 2022.
 
 ## Viam Configuration
-Configuring an encoder requires configuring digital interrupts on the board (for additional information, see [Board > Digital Interrupts](../board#digital-interrupts)) to which the encoder will be wired, and configuring the encoder itself.
-In the case of an encoded motor, the motor must be configured as well, per [the motor component topic](../motor#dc-motor-with-encoder).
+Configuring an encoder requires configuring digital interrupts on the board (for additional information, see [Board > Digital Interrupts](../board/#digital-interrupts)) to which the encoder will be wired, and configuring the encoder itself.
+In the case of an encoded motor, the motor must be configured as well, per [the motor component topic](../motor/#dc-motor-with-encoder).
 
 ### Example Config
 The following example shows the configuration of a board with the necessary digital interrupts, and an encoder.

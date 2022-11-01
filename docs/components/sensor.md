@@ -10,12 +10,12 @@ description: "Explanation of sensor types, configuration, and usage in Viam."
 This page explains how to set up a generic sensor component with Viam.
 Viam has a few types of sensor implemented including an ultrasonic sensor, but this doc will go over setting up a custom sensor so you can implement almost any sort of sensor.
 Note that Viam has a separate, more specific component type called *movement sensor* specifically for GPS units, IMUs, and other sensors that detect position, velocity and acceleration.
-<!-- * [Movement Sensors](../movementsensor) Not quite ready to land movement-sensor doc --->
-* [Encoders (component type)](../encoder).
+<!-- * [Movement Sensors](../movementsensor/) Not quite ready to land movement-sensor doc --->
+* [Encoders (component type)](../encoder/).
 
 ## Hardware Requirements
  - Some sort of sensor
- - A [board](../board)
+ - A [board](../board/)
  - Depending on the type of sensor output, an analog to digital converter may be necessary to allow the sensor to communicate with the board
 
 ## Wiring

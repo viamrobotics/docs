@@ -16,7 +16,7 @@ All data is uploaded to Viam's cloud platform every minute.
 
 Once data is synchronized to the cloud, it is deleted off of the robot, allowing for a data flywheel of continuous capture without running out of memory.
 
-More detailed information in the [data management service documentation](../../services/data-management).
+More detailed information in the [data management service documentation](../../services/data-management/).
 
 ## Viewing Data in Viam's Data Platform
 
