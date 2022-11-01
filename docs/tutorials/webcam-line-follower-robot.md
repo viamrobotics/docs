@@ -52,7 +52,7 @@ If you haven’t already, please set up the Raspberry Pi per [these instructions
 ### Configuring the hardware components
 Configure the base per the [Base Component topic](../../components/base/).
 	
-Configure the [camera](./components/camera/) as described in this tutorial: [Connect and configure a webcam](../../tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam). You can skip the section on camera calibration since it is not needed for the line follower.
+Configure the [camera](../../components/camera/) as described in this tutorial: [Connect and configure a webcam](../../tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam). You can skip the section on camera calibration since it is not needed for the line follower.
 
 Your webcam configuration in the Config Builder will look something like this:
 
