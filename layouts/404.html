@@ -1,9 +1,145 @@
 {{ define "main"}}
     <main id="main">
+
+
+      <style>
+                * {
+      box-sizing: border-box;
+    }
+    .row {
+      margin-left:-5px;
+      margin-right:-5px;
+    }
+      
+    .column {
+      float: left;
+      width: 40%;
+      padding: 5px;
+    }
+    
+    /* Clearfix (clear floats) */
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+        .button-48 {
+  background-color: #FFFFFF;
+  border: none;
+  box-sizing: border-box;
+  color: #3176D9 ;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: underline #3176D9 solid;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+</style>
+
       <div>
-       <h1 id="title">Not found</h1>
-       <p>Oops! This page doesn't exist. Try going back to our <a href="{{ "/" | relURL }}">home page</a>.</p>
-           
+       <h1 id="title">We've moved that resource</h1>
+       <p>We're making daily improvements to Viam's documentation. Unfortunately, that sometimes causes issues with links and saved bookmarks. Please update your bookmark, if necessary!</p>  
+      
+<form>
+<input type="button" span class="button-48" value="Click to go back..." onclick="history.back()">
+</form>...or visit the section containing the topic you were seeking:</p>
+
+<div class="row">
+  <div class="column">
+       <a href="https://docs.viam.com/getting-started/">Getting Started</a>
+       <ul>
+        <li>What is Viam?</li>
+        <li>Installing Viam Server on Linux Systems</li>
+        <li>Installing Viam Server on macOS</li>
+        <li>Raspberry Pi Setup Guide</li>
+        </ul>
       </div>
+
+      <div class="column">
+       <a href="https://docs.viam.com/product-overviews/">Product Overview</a>
+       <ul>
+        <li>Fleet Management</li>
+        <li>Data Management</li>
+        <li>Robot Development Kit</li>
+        <li>Using Our SDKs for a Client Application</li>
+        <li>Using Our SDKs for a Server Component Implementation</li>
+        </ul>
+        </div>
+
+</div>
+
+<div class="row">
+  <div class="column">
+       <a href="https://docs.viam.com/tutorials/">Tutorials</a>
+       <ul>
+        <li>Make an LED Blink with a Raspberry Pi Using the Viam App</li>
+        <li>Make an LED Blink with a Raspberry Pi and Viam Python SDK</li>
+        <li>Configuring a SCUTTLE Robot with a Camera</li>
+        <li>Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad</li>
+        <li>Setting up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam</li>
+        <li>Color Detection with the SCUTTLE Robot on Viam</li>
+        <li>Building a Line-Following Robot with a Rover and a Webcam</li>
+        <li>How To Build a Mock Robot</li>
+        <li>How To Configure A Camera</li>
+        <li>Run SLAM on your Robot</li>
+        </ul>
+</div>
+<div class="column">
+       <a href="https://docs.viam.com/components/">Components</a>
+       <ul>
+        <li>Arm Component</li>
+        <li>Base Component</li>
+        <li>Board Component</li>
+        <li>Camera Component</li>
+        <li>Encoder Component</li>
+        <li>Gantry Component</li>
+        <li>Input Controller Component</li>
+        <li>Motor Component</li>
+        <li>Sensor Component</li>
+        <li>Servo Component</li>
+        </ul>
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="column">
+
+        <a href="https://docs.viam.com/services/">Services</a>
+       <ul>
+        <li>Data Management Service</li>
+        <li>Motion Service</li>
+        <li>Navigation Service</li>
+        <li>The Robot Frame System</li>
+        <li>SLAM Service</li>
+        <li>Vision Service</li>
+        <li>Robot Service</li>
+        </ul>
+      </div>
+      <div class="column">        
+       <a href="https://docs.viam.com/deeper-dive/">Deeper Dive</a>
+       <ul>
+        <li>Control Package</li>
+        <li>Robot-to-Robot Communication: Application End-to-End Flow</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="column">
+       <a href="https://docs.viam.com/appendix/">Appendix</a>
+       <ul>
+        <li>Orientation Vector</li>
+        <li>Glossary</li>
+        <li>Troubleshooting</li>
+        </ul>
+      </div>
+   </div>
     </main>
 {{ end }}
