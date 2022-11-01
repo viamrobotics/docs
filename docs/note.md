@@ -6,42 +6,62 @@ draft: true
 type: "docs"
 ---
 
+## Tab Panels
 
-{{< tabpane text=true right=true >}}
-  {{% tab header="English" lang="en" %}}
-  Welcome!
-  {{% /tab %}}
-  {{< tab header="German" lang="de" >}}
-    <b>Herzlich willkommen!</b>
-  {{< /tab >}}
-  {{% tab header="Swahili" lang="sw" %}}
-  **Karibu sana!**
-  {{% /tab %}}
-{{< /tabpane >}}
+{{< tabs name="TabPanelExample" >}}
+{{% tab name="Support"%}}
+Supported:
+
+* Markdown and HTML images. 
+* Alert Shortcode
+* PRISM syntax highlighting (the three backticks)
+* codelang highlighting (add codelang="language" to tab element). It's very ugly, it needs css work, not recommended at this time.
+
+Not Supported:
+* Footnotes
+* Expanders
+  
+{{% /tab %}}
+{{% tab name="Examples" %}}
+<div>
+	<h3>What is Rendered?</h3>
+	<p>It renders <i>vanilla</i> HTML and markdown, Alerts, and images. For example, these two images:</p>
+
+* **Markdown Image Example**<br>
+![expand example](/img/082.png)<br>
+* **HTML Image Example** (with border)<br>
+<img style="border:solid 1px black" src="/img/082.png">
+</div>
+<br>
+
+### Syntax Highlighting with Backticks
+
+```json-viam
+{
+"word":"Three backticks and the language name to use prism inside tabs",
+"note":"Use "json-viam" as the language to highlight Viam keywords in json"
+}
+```
+
+### Regular Markdown Formatting
+
+This is **some markdown.**
+
+### Alerts Shortcodes
+{{< alert Type="Note" color="note" >}}
+It can even contain shortcodes.
+{{< /alert >}}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Using Expanders
 Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it. 
 
-Within the expander, you can still use most other shortcodes, and syntax highlighting via Prism still functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable:<br><br>
+Within the expander, you can still use most other shortcodes, and syntax highlighting via Prism still functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable.<br><br>
 
-
+**Screen Capture of an Expander**
 <img style="border:solid 1px black" alt="Screen capture of the expander control rendered on a documentation page" src="/img/083.png">
 
 ### Usage
