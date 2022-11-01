@@ -8,7 +8,7 @@ description: "Instructions for getting a Yahboom 4WD Rover driving with a Blueto
 ## Requirements
 
 - A Raspberry Pi 4 running an instance of viam-server.
-See our [Raspberry Pi Setup Guide](/getting-started/installation/) for instructions.
+See our [Raspberry Pi Setup Guide](../../getting-started/installation/) for instructions.
 - A <a href="https://category.yahboom.net/collections/robotics/products/4wdrobot" target="_blank">Yahboom 4WD Smart Robot</a>[^yahboom]
 - A Bluetooth gamepad controller. For this tutorial we used <a href="https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch" target="_blank">this 8BitDo controller</a>[^8bitdo].
 
@@ -23,7 +23,7 @@ To create a new component you'll be working within the **Create Component** sect
 
 ![A screenshot of the config builder UI on app.viam.com showing the Create Component box filled out with name=local, type=board and model=pi.](../img/yahboom-rover/config.png)
 
-The first component you will add is the [board](/components/board/) which represents the Raspberry Pi to which the other components are wired.
+The first component you will add is the [board](../../components/board/) which represents the Raspberry Pi to which the other components are wired.
 For component `Type`, select `board`.
 Then you can name the `board` whatever you like as long as you are consistent when referring to it later; `local` is a good name since it is the `board` you will communicate with directly.
 For `Model`, select `pi`.
@@ -34,7 +34,7 @@ You don't need to add any attributes for this one, so your configured board will
 
 ## Configuring the Motor and Wheels 
 
-Since both right side motors of the Yahboom rover are wired together to a single motor driver, the right side motors are configured as a single [motor component](/components/motor/) in the Viam config file.
+Since both right side motors of the Yahboom rover are wired together to a single motor driver, the right side motors are configured as a single [motor component](../../components/motor/) in the Viam config file.
 Later we will configure both left side motors as another motor.
 
 As with all other components, find the **Create Component** box at the bottom of the **CONFIG** tab.
@@ -87,7 +87,7 @@ Save the config and hop over to the control view again. You should now see two m
 
 ## Configuring the Base 
 
-Unite these wheel sets with a [base component](/components/base/), which is used to describe the physical structure onto which your components are mounted.
+Unite these wheel sets with a [base component](../../components/base/), which is used to describe the physical structure onto which your components are mounted.
 Configuring a base will also give you a nice UI for moving the rover around.
 
 In the **Create Component** box, name the component `yahboom-base`.
@@ -208,7 +208,7 @@ But wait!
 This rover has a camera on it.
 
 Once again, find the **Create Component** section at the bottom of the **CONFIG** tab.
-Follow [these instructions on how to connect and configure a camera](/tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam).
+Follow [these instructions on how to connect and configure a camera](../../tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam).
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
 
@@ -220,7 +220,7 @@ If you click on your webUI, you will be able to see your camera streaming.
 
 ## Configuring the Servo Components
 
-You may have noticed that the camera is mounted on a pair of [servos](/components/servo/) which control the pan and tilt of the camera.
+You may have noticed that the camera is mounted on a pair of [servos](../../components/servo/) which control the pan and tilt of the camera.
 Go to the **Create Component** section at the bottom of **CONFIG**.
 Set the `Name` to `pan`, the `Type` to `servo`, the `Model` to `pi`, and click **Create Component**. Set `Depends On` to `local`, and `pin` to `23`, which is the pin the servo is wired to.
 
@@ -237,4 +237,4 @@ Saving the config and moving to the control UI, you should notice two new panels
 
 Congratulations, you have successfully configured your rover with Viam!
 But for now, all the control is manual.
-You can use the [Python SDK](https://python.viam.dev) to write your own code to control it, or check out one of our other [tutorials](/tutorials/)!
+You can use the [Python SDK](https://python.viam.dev) to write your own code to control it, or check out one of our other [tutorials](../../tutorials/)!

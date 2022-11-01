@@ -30,9 +30,9 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 [^jgist]: Line Follower GitHub Gist Code: <a href="https://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8/" target="_blank">ht<span></span>tps://gist.github.com/JessamyT/eab8ee5996343d070d0c392eb63204e8</a>
 
 ## What you'll need
-- A single board computer [running an instance of viam-server](/getting-started/installation/)
+- A single board computer [running an instance of viam-server](../../getting-started/installation/)
     - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
-- [A wheeled base component](/components/base/)
+- [A wheeled base component](../../components/base/)
     - We used a <a href="https://www.scuttlerobot.org/shop/" target="_blank" />SCUTTLE Robot</a>[^sr]  for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
 [^sr]: SCUTTLE Robot <a href="https://www.scuttlerobot.org/shop/" target="_blank" />https://www.scuttlerobot.org/shop/</a>
 
@@ -47,12 +47,12 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 <img src="../img/lf-scuttle2.png" width="600" /></p>
 
 ## Configuration using Viam
-If you haven’t already, please set up the Raspberry Pi per [these instructions](/getting-started/installation/).
+If you haven’t already, please set up the Raspberry Pi per [these instructions](../../getting-started/installation/).
 
 ### Configuring the hardware components
-Configure the base per the [Base Component topic](/components/base/).
+Configure the base per the [Base Component topic](../../components/base/).
 	
-Configure the [camera](/components/camera/) as described in this tutorial: [Connect and configure a webcam](/tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam). You can skip the section on camera calibration since it is not needed for the line follower.
+Configure the [camera](../../components/camera/) as described in this tutorial: [Connect and configure a webcam](../../tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam). You can skip the section on camera calibration since it is not needed for the line follower.
 
 Your webcam configuration in the Config Builder will look something like this:
 
@@ -299,7 +299,7 @@ This will give it a wider field of view so it takes longer for the line to go ou
 
 ## Additional Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](../../appendix/troubleshooting/).
 
 You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com/) and we will be happy to help.
 

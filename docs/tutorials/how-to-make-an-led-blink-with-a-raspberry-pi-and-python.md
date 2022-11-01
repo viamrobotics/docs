@@ -288,7 +288,7 @@ In this tutorial, you learned how to remotely connect to a Raspberry Pi using SS
 
 If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, I would recommend that you check out the following tutorials:
 
--  [Tutorial List](/tutorials/)
+-  [Tutorial List](..)
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
