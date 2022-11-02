@@ -60,9 +60,9 @@ The bounds of a robot are usually pretty clear, but can be subjective.
 Each of those computers are a _Part_.
 In the above example, you have one robot, and two parts (the Jetson and the Pi).
 
-Most simple robots will have only one part, but can have as many parts as needed.
+Most simple robots will have only one part, but robots can have as many parts as needed.
 
-Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
+Parts are organized in a tree, with one part being the _main_ part, and the others being _sub-parts_.
 You can access any sub-part either directly, or via any part above it in the tree.
 
 Each part runs a single _viam-server_ instance.
@@ -110,7 +110,7 @@ SDKs are used for:
 - writing your application code for building your robot to interact with the components and services
 - implementing drivers for hardware not yet supported
 
-Viam currently have SDKs for Go and Python. Additional SDKs, including Typescript, Rust, C++, and Flutter, are coming soon.
+Viam currently has SDKs for Go and Python. Additional SDKs, including Typescript, Rust, C++, and Flutter, are coming soon.
 
 ## Next steps
 
