@@ -33,7 +33,7 @@ type: "docs"
 	<p>It renders <i>vanilla</i> HTML and markdown, Alerts, and images. For example, these two images:</p>
 
 * **Markdown Image Example**<br>
-![expand example](/img/expander-example.png)<br>
+![expand example](/img/expander-markdown.png)<br>
 * **HTML Image Example** (with border)<br>
 <img style="border:solid 1px black" src="/img/expander-markdown.png" alt="Screen capture of Tab/Tabs Shortcode Usage">
 </div>
@@ -43,8 +43,8 @@ type: "docs"
 
 ```json-viam
 {
-"word":"Three backticks and the language name to use prism inside tabs",
-"note":"Use "json-viam" as the language to highlight Viam keywords in json"
+"word":"As before, three backticks and the language name enables Prism syntax highlighting.",
+"note":"Use "json-viam" as the language to highlight Viam's keywords."
 }
 ```
 
@@ -64,7 +64,7 @@ It can even contain shortcodes.
 ## Using Expanders
 Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it. 
 
-Within the expander, you can still use most other shortcodes, and syntax highlighting via Prism still functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable.<br><br>
+Within the expander, you can still use most other shortcodes and syntax highlighting via Prism functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable.<br><br>
 
 **Screen Capture of an Expander**
 <img style="border:solid 1px black" alt="Screen capture of the expander control rendered on a documentation page" src="/img/expander-example.png">
