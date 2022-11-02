@@ -79,7 +79,7 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
 In the snippet below, we are getting the robot’s vision service and then running a color detector vision model on an image, verifying that the color detector vision service is on the robot, and then applying the color detector to the image from the camera.
 
 {{% alert title="Note" color="note" %}}  
-These code snippets expect you to have "camera_1" configured as a camera on your robot's configuration on the Viam app.
+These code snippets expect you to have a camera named "camera_1" configured as a component of your robot.
 {{% /alert %}}
 
 {{< tabs >}}
