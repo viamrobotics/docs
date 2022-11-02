@@ -98,7 +98,7 @@ The long anode should be connected to the resistor and the short cathode should 
 
 Before proceeding, be sure that you have added your Pi to the Viam app. Steps on how to do this can be found in the [Adding your Pi on the Viam App](/getting-started/installation/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
 
-Now that we have got that out of the way, let's get back to setting up your robot in the Viam app. 
+Now that we have gotten that out of the way, let's get back to setting up your robot in the Viam app. 
 First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's config.
 
 <img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image2.png" alt ="Screenshot of the Vam App showing the default board configuration on the 'components' tab." width="100%"><br>
