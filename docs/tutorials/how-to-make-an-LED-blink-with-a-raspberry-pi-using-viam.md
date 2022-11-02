@@ -9,7 +9,7 @@ description: "How to make an LED blink with a Raspberry Pi and the Viam app."
 In this post, we will show you how to use Viam to make an LED blink with a Raspberry Pi.
 This tutorial is a great place to start if you have never built a robot or a circuit before.
 
-<img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image9.gif" alt ="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="35%"><br>
+<img src="/tutorials/img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image9.gif" alt ="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="35%"><br>
 
 ## What you'll need for this guide
 
@@ -60,12 +60,12 @@ The resistor is used to limit the current that is being drawn and is called a *c
 
 [^pin]: Pin (Electronics): <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">https://en.wikipedia.org/wiki/Pin_(electronics)</a>
 
-<img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image10.png" alt ="Photo showing a Raspberry Pi 4 with a white box around the GPIO pins on the Pi and big red letters that say, 'GPIO Pins.'" width="90%"><br>
+<img src="/tutorials/img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image10.png" alt ="Photo showing a Raspberry Pi 4 with a white box around the GPIO pins on the Pi and big red letters that say, 'GPIO Pins.'" width="90%"><br>
 
 As you may have guessed, **each pin has a specific role, and you can use it only for that role**. Some of them are input/output, power (3.3V or 5V), or ground.
 As you can see in the diagram below, there are 40 output pins on the Pi. You can program 26 of the GPIO pins.
 
-<img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image4.jpg" alt ="Diagram showing all of the GPIO pins on a Raspberry Pi 4 and their corresponding pin number and function." width="90%"><br>
+<img src="/tutorials/img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image4.jpg" alt ="Diagram showing all of the GPIO pins on a Raspberry Pi 4 and their corresponding pin number and function." width="90%"><br>
 
 One thing to note that might be confusing with the pin numbering on Raspberry Pi's: There are 40 physical pins numbered from 1 to 40.
 That is **board pin numbering,** corresponding to the pin's physical location on the board.
@@ -82,13 +82,13 @@ It gives you the exact layout and role of each pin.
 
 Here's the circuit diagram used in this tutorial for making the LED blink.
 
-<img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image1.png" alt ="Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins." width="90%"><br>
+<img src="/tutorials/img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image1.png" alt ="Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins." width="90%"><br>
 
 You can now hook the LED and resistor up to GPIO 14 on pin 8 on your Raspberry Pi.
 The resistor and LED need to be in series as in the diagram above. To find the right resistor use the resistor color code -- for a 100 ohm resistor, it needs to be brown-black-brown.
 You can use your multimeter to double-check the resistor value or check yours using the photo below.
 
-<img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image3.jpg" alt ="Photo of a 100-ohm resistor with text overlaid that says, in order, brown-black-brown-gold." width="50%"><br>
+<img src="/tutorials/img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image3.jpg" alt ="Photo of a 100-ohm resistor with text overlaid that says, in order, brown-black-brown-gold." width="50%"><br>
 
 When hooking up the circuit, note the *polarity* of the LED.
 You will notice that the LED has long and short leads. The long lead is the positive side, which is known as the anode, the short lead is the negative side, which is known as the cathode.
@@ -101,7 +101,7 @@ Before proceeding, be sure that you have added your Pi to the Viam app. Steps on
 Now that we have gotten that out of the way, let's get back to setting up your robot in the Viam app. 
 First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's config.
 
-<img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image2.png" alt ="Screenshot of the Vam App showing the default board configuration on the 'components' tab." width="100%"><br>
+<img src="/tutorials/img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image2.png" alt ="Screenshot of the Vam App showing the default board configuration on the 'components' tab." width="100%"><br>
 
 The first component you will add is the **`board`** representing your your single board computer, which in this case is the Raspberry Pi.
 This is where you will wire all other components. To create a new component, select **`Create a component`**. For the component **`Type`**, select **`board`**.
@@ -109,29 +109,29 @@ Then you can name the **`board`** whatever you like as long as you are consisten
 For **`Model`**, select **`pi`**, then click **`new component`**.
 Your board component's config will generate the following JSON attributes:
 
-<img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image6.png" alt ="Screenshot of the Viam app showing the board configuration on the 'config' tab. The board is named 'local' and the attributes are shown as empty braces." width="100%"><br>
+<img src="/tutorials/img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image6.png" alt ="Screenshot of the Viam app showing the board configuration on the 'config' tab. The board is named 'local' and the attributes are shown as empty braces." width="100%"><br>
 
 As you add your board component to your robot in the Viam app, it generates a tab for your board in the Control tab.
 Here, you can click on "**Get**" to get the current status of your pin.
 The first time you click "**Get Pin State**", it should return "Pin: 8 is low."
 
-<img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image5.png" alt ="Screenshot of the Viam app showing the board configuration on the '**Connect**' tab. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the '**Get Pin State**' button and the output, which reads, 'Pin: 8 is low.'" width="100%"><br>
+<img src="/tutorials/img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image5.png" alt ="Screenshot of the Viam app showing the board configuration on the '**Connect**' tab. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the '**Get Pin State**' button and the output, which reads, 'Pin: 8 is low.'" width="100%"><br>
 
 You can now select "**Set**" to control the status of your pin to "high."
 It will look like this:
 
-<img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image8.png" alt ="Screenshot of the Viam app showing the board configuration on the 'Connect' tab. The 'Board Local' row is expanded, and under the 'Set' row, the pin is set to '8.' A red box is around the 'Set Pin State' field." width="100%"><br>
+<img src="/tutorials/img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image8.png" alt ="Screenshot of the Viam app showing the board configuration on the 'Connect' tab. The 'Board Local' row is expanded, and under the 'Set' row, the pin is set to '8.' A red box is around the 'Set Pin State' field." width="100%"><br>
 
 After setting your pin to "high" the LED should illuminate.
 You can play around with values "**low**" and "**high**" by setting them differently, and you will see your LED toggle on and off.
 
-<img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image7.gif" alt ="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="35%"><br>
+<img src="/tutorials/img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image7.gif" alt ="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="35%"><br>
 
 ## Summary
 
 Congratulations!
 If you have followed along, you have just successfully used Viam to make an LED blink with a Raspberry Pi!
-Hopefully, you have learned how the GPIO on a Raspberry PI works, and how to build circuits for LED bulbs.
+Hopefully, you have learned how the GPIO on a Raspberry Pi works, and how to build circuits for LED bulbs.
 You are ready for your next robotics project.
 If you are looking for some projects that would be a great next step, we would recommend that you check out the following:
 
