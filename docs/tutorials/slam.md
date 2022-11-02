@@ -3,7 +3,7 @@ title: "Run SLAM on your Robot"
 linkTitle: "Run SLAM on your Robot"
 weight: 50
 type: "docs"
-draft: flase
+draft: false
 description: "Instructions to run SLAM with either a webcam or provided example data."
 ---
 
