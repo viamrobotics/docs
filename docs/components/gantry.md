@@ -52,25 +52,25 @@ The attributes are configured as such for a single-axis gantry:
    </td>
   </tr>
   <tr>
-   <td>Board
+   <td>board
    </td>
    <td>The name of the board that is connected to the and limit pin switches.
    </td>
   </tr>
   <tr>
-   <td>Motor
+   <td>motor
    </td>
    <td>The name of the motor that moves the gantry.
    </td>
   </tr>
   <tr>
-   <td>Limit_pins
+   <td>limit_pins
    </td>
    <td>The pins attached to the limit switches on either end. Optional for encoded motor gantry types.
    </td>
   </tr>
   <tr>
-   <td>Limit_pin_enabled
+   <td>limit_pin_enabled
    </td>
    <td>Is the Limit Pin enabled? I.e., true (pin HIGH)?
    </td>
