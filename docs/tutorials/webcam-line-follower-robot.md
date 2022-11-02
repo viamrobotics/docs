@@ -238,7 +238,7 @@ Run,</br><span class="file">nano rgbFollower.py</span></br>(or replace <span cla
 * Flake8: <a href="https://flake8.pycqa.org/en/latest/" target="_blank">ht<span><span>tps://flake8.pycqa.org/en/latest/</a>
 * Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span><span>tps://mutagen.io/documentation/introduction/getting-started</a>
 
-<h2>Controlling your rover with Viam</h2>
+## Controlling your rover with Viam
 <ol><li class="spacing">Go to your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>). Verify that it’s connected by refreshing the page and ensuring that <strong>Last Online</strong> (in the top banner) says, “Live.”</li>
 <li class="spacing">Go to the <strong>Control</strong> tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around. 
 Ensure that the base moves as expected. 
