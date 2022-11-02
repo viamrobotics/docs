@@ -43,8 +43,8 @@ All communication across Viam is done with gRPC[^grpc], directly if wanted, or v
 [^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
 
 There are three buckets of APIs:
-- [Components](/components/) - e.g. motors, arms, GPS, and more
-- [Services](/services/) - e.g. computer vision, motion planning, SLAM, and more
+- [Components](/components/) - e.g., motors, arms, GPS
+- [Services](/services/) - e.g., computer vision, motion planning, SLAM
 - Cloud Application - [fleet management](/product-overviews/fleet-management/), [data management](/product-overviews/data-management/)
 
 You can see all Viam API specifications at https://github.com/viamrobotics/api.
@@ -110,7 +110,7 @@ SDKs are used for:
 - writing your application code for building your robot to interact with the components and services
 - implementing drivers for hardware not yet supported
 
-Viam currently have SDKs for Go, Python. With more coming soon including Typescript, Rust, C++ and Flutter.
+Viam currently have SDKs for Go and Python. Additional SDKs, including Typescript, Rust, C++, and Flutter, are coming soon.
 
 ## Next steps
 
