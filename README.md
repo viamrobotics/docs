@@ -31,7 +31,7 @@ This will build and serve public from a separate, non hugo server, at http://loc
 This is handled automatically by a GitHub Action on push.
 
 ## Contributing
-Don't hesitate to create a pull request. Every contribution is appreciated. Checkout our [contribution README](/CONTRIBUTING.md) for more info.
+Don't hesitate to create a pull request. Every contribution is appreciated.
 
 ### Notes for contributors
 - Don't make forks on the main repo, do in your own fork.
