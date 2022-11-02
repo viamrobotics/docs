@@ -43,9 +43,9 @@ All communication across Viam is done with gRPC[^grpc], directly if wanted, or v
 [^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
 
 There are three buckets of APIs:
-- [Components](../../components/) - e.g. motors, arms, GPS 
-- [Services](../../services/) - computer vision, motion planning, SLAM
-- Cloud Application - fleet management, data management
+- [Components](/components/) - e.g., motors, arms, GPS
+- [Services](/services/) - e.g., computer vision, motion planning, SLAM
+- Cloud Application - [fleet management](/product-overviews/fleet-management/), [data management](/product-overviews/data-management/)
 
 You can see all Viam API specifications at https://github.com/viamrobotics/api.
 
@@ -67,6 +67,13 @@ You can access any sub-part either directly, or via any part above it in the tre
 
 Each part runs a single _viam-server_ instance.
 
+![two-part-architecture](../img/overview-two-part-architecture.png)  
+_Figure 1.
+An example of a two-part robot.
+Each part has its own compute unit which runs an instance of `viam-server` and communicates with its respective components.
+Part 1 is the main part and could exist without Part 2.
+Part 2 is a remote._
+
 ### Component
 
 A component is a piece of hardware or software that exposes a specific API, such as arm, motor, or gps.
@@ -76,9 +83,7 @@ For example, a Raspberry Pi part on a mobile robot might have: 4 motors, a GPS, 
 
 ### Service
 
-[Services](../../services/) offer higher level software abstractions.
-
-For example: motion planning and computer vision.
+[Services](/services/) offer higher level software abstractions for things like motion planning, computer vision and more.
 
 ### Remote
 
@@ -93,8 +98,9 @@ Examples:
 - A POE camera implements the camera gRPC interface, so it can be added directly as a remote.
 
 ### Process
-Processes are scripts or programs run by the [Robot Development Kit (RDK)](../../appendix/glossary/#rdk_anchor) whose lifecycle is managed by the viam-server.
-One example is running a [Software Development Kit (SDK)](../../product-overviews/sdk-as-server/) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
+
+Processes are scripts or programs run by the [Robot Development Kit (RDK)](/appendix/glossary/#rdk_anchor) whose lifecycle is managed by the viam-server.
+One example is running a [Software Development Kit (SDK)](/product-overviews/sdk-as-server/) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
 
 ## SDKs
 
@@ -104,16 +110,7 @@ SDKs are used for:
 - writing your application code for building your robot to interact with the components and services
 - implementing drivers for hardware not yet supported
 
-We currently have SDKs for go, Python, Typescript, and Rust. With many more coming soon including C++ and Flutter.
-
-## Pictures
-
-![two-part-architecture](../img/overview-two-part-architecture.png)  
-_Figure 1.
-An example of a two-part robot.
-Each part has its own compute unit which runs an instance of `viam-server` and communicates with its respective components.
-Part 1 is the main part and could exist without Part 2.
-Part 2 is a remote._
+Viam currently have SDKs for Go and Python. Additional SDKs, including Typescript, Rust, C++, and Flutter, are coming soon.
 
 ## Next steps
 
@@ -121,7 +118,6 @@ If you have hardware lying around, the best thing to do is try to get it setup.
 
 If you encounter issues, please work with us on [Slack](https://viamrobotics.slack.com/) as we're still working on rough edges.
 
-Also, we have a number of [tutorials](../../tutorials/) to get you started.
+Also, we have a number of [tutorials](/tutorials/) to get you started.
 
-If you have no hardware, you can use our [mock robot tutorial](../../tutorials/how-to-build-a-mock-robot/).
-
+If you have no hardware, you can get started by trying out building your own mock robot using our [mock robot tutorial](/tutorials/how-to-build-a-mock-robot/).
