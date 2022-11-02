@@ -30,6 +30,31 @@ This will build and serve public from a separate, non hugo server, at http://loc
 
 This is handled automatically by a GitHub Action on push.
 
+## Contributing
+Don't hesitate to create a pull request. Every contribution is appreciated. Checkout our [contribution README](/CONTRIBUTING.md) for more info.
+
+### Notes for contributors
+- Don't make forks on the main repo, do in your own fork.
+- Every sentence should be on a new line.
+- Test locally before submitting a PR.
+- Always submit a PR before merging.
+- The author of the PR should merge unless they cannot and it's time-sensitive.
+
+1. Fork the official repo into your personal GitHub.
+2. The new forked copy is cloned to your local system.
+3. Git remote path for the 'official' repository is added to the local clone: ```git remote add upstream git@github.com:viamrobotics/tutorials-and-docs.git```
+
+When you are ready to contribute changes to the docs:
+
+1. Make sure you are on the main branch: ```git switch main```
+2. Sync your forked main branch with the official repo: ```git pull upstream main```
+3. Create a new branch for your changes: ```git switch -c my-new-feature```
+4. Edit some docs...
+5. Commit your changes: ```git commit -am 'Add some feature'```
+6. Make sure your local branch is still up-to-date with the official repo: ```git pull upstream main```
+7. Push to the branch: ````git push origin my-new-feature````
+8. Submit a pull request :D
+
 ## Important Things about Hugo
 
 ### Front Matter
@@ -53,6 +78,14 @@ description: "Instructions for building a line-following robot that uses a webca
 * Hugo can display the description beneath the page title on the _index.html pages.
 * The weight entry for  _index.html pages determines their placement as sections in the menu. The weight entry for each page in the directory determines that page’s placement in the section.
 * Neglecting to add a weight entry causes Hugo to place the page at the very bottom of the menu. 
+
+### Linking
+
+When linking to an image or another page in markdown, it's best to use a relative link. For example, if you were writing in `getting-started/high-level-overview.md`, hugo sees this as a directory on the site of `docs.viam.com/getting-started/high-level-overview/`.
+
+* To link to another markdown file in the same directory as the markdown file, you would do e.g. `[mylink](../installation/)`. **Note the trailing slash as another markdown file is another web directory in hugo** 
+* To link to some image in the same directory as the markdown file, you would do e.g. `[mylink](../img/image1.png)`.
+* To link something in a different directory, you would do e.g. `[mylink](../../components/)`
 
 ### Prod/Draft/Future Pages
 
