@@ -103,7 +103,7 @@ First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web b
 
 <img src="../img/how-to-make-an-LED-blink-with-a-raspberry-pi-using-viam/image2.png" alt ="Screenshot of the Vam App showing the default board configuration on the 'components' tab." width="100%"><br>
 
-The first component you will add is the **`board`**, which represents your single board computer, which in this case is the Raspberry Pi.
+The first component you will add is the **`board`** representing your your single board computer, which in this case is the Raspberry Pi.
 This is where you will wire all other components. To create a new component, select **`Create a component`**. For the component **`Type`**, select **`board`**.
 Then you can name the **`board`** whatever you like as long as you are consistent when referring to it later; we'll name this component **`local`** since it is the **`board`** we will communicate with directly.
 For **`Model`**, select **`pi`**, then click **`new component`**.
