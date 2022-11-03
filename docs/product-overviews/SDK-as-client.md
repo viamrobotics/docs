@@ -7,7 +7,7 @@ description: "An introduction to Viam's SDKs and how to use them to access and c
 ---
 
 Viam offers SDKs in popular languages which wrap the viam-server [gRPC](https://grpc.io/) APIs and streamline connection, authentication, and encryption against a server.
-Using the SDK you will be able to quickly write code to control and automate your robot(s).
+Using the SDK, you will be able to quickly write code to control and automate your robot(s).
 
 Viam-server exposes gRPC [APIs for robot controls](https://github.com/viamrobotics/api).
 It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and authentication over those APIs.
@@ -214,7 +214,7 @@ time.Sleep(3 * time.Second)
 
 ## How to use a sensor with Viam
 
-Reads values from a [sensor](https://docs.viam.com/components/sensor/) (an ultrasonic sensor in this example) connected to a robot.
+This example code reads values from a [sensor](https://docs.viam.com/components/sensor/) (an ultrasonic sensor in this example) connected to a robot.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -240,7 +240,7 @@ distance, err := ultra.Readings(context.Background())
 
 ## How use the Viam vision service
 
-Gets the robot's [vision service](https://python.viam.dev/autoapi/viam/services/vision/index.html?highlight=vision#module-viam.services.vision) and then runs a detection model on an image to get a list of detections in the next image given a camera and a detector.
+The following code gets the robot's [vision service](https://python.viam.dev/autoapi/viam/services/vision/index.html?highlight=vision#module-viam.services.vision) and then runs a detection model on an image to get a list of detections from the image.
 
 Assumption: a camera called "camera0" and a vision service call "detector_1" is configured on your robot on the Viam app.
 
