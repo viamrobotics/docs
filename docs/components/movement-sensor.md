@@ -11,8 +11,8 @@ The movement sensor component is an abstraction of a sensor that gives data on w
 We have chosen to abstract these types of sensors into one common API.
 There are many different types of sensors that can provide data for some or all of the following methods: `Position`, `Orientation`, `LinearVelocity`, `AngularVelocity` and `CompassHeadings`.
 A global positioning system (GPS) can provide position, linear velocity and compass headings.
-An innertial measurement unit (IMU) can provide angular velocity and orientation.
-We can further apply algorithms, such as a Kalman filter, to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
+An inertial measurement unit (IMU) can provide angular velocity and orientation.
+We can further apply algorithms, such as a <a href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank">Kalman filter</a>[^kalman], to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
 
 Currently (01 November 2022), the [RDK](../../appendix/glossary/#rdk_anchor) implements GPS, IMU, and visual odometry-based movement sensors.
 We support two IMU models (manufactured by WitMotion and VectorNav) and two GPS models: NMEA-based GPS modules and <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">NTRIP</a>[^ntrip]-based <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">RTK</a>[^rtk] GPS models.
@@ -21,6 +21,8 @@ The `cameramono` RDK model is experimental and uses a camera to output data on i
 We specifically cover GPS and IMU units in this documentation.
 Find the more [generic sensor component here](../../components/sensor/).
 Find more information about encoders, another component type, [here](../../components/encoder/).
+
+[^kalman]: Kalman filter: <a href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Kalman_filter</a>
 
 [^ntrip]: Network Transport of RTCM via Internet Protocol (NTRIP): <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol</a>
 
@@ -54,7 +56,7 @@ The `gps-nmea` model can be connected via and send data through a serial connect
         "connection_type": "serial",
         "serial_attributes": {
             "baud_rate": 115200,
-            "path": "/dev/ttyACM0"
+            "path": "<path>"
         }
     }
 }
@@ -76,13 +78,13 @@ The default baud rate is 115200.
         "i2c_attributes": {
             "i2c_baud_rate": 115200,
             "i2c_addr": 111,
-            "i2c_bus": "name_of_bus_on_board"
+            "i2c_bus": "<name_of_bus_on_board>"
         }
     }
 }
 ```
 
-The default baud rate is 115200.
+The default `baud_rate` is 115200.
 
 ### GPS-RTK
 
@@ -93,7 +95,44 @@ Our `gps-rtk` model uses an over-the-internet correction source (NTRIP)[^ntrip] 
 
 [^chips]: Sparkfun RTK Chips: <a href="https://www.sparkfun.com/rtk" target="_blank">ht<span></span>tps://www.sparkfun.com/rtk</a>
 
+The config attributes for the `gps-rtk` are as follows. [Click here to skip to sample configs.](#gps-rtk-with-ntrip-over-usbserial)
+
+`ntrip_attributes` for `gps-rtk`:
+
+Name | Type | Default Value | Required? | Description
+---- | ---- | ------------- | --------- | -----
+**Required:** | | | |
+`ntrip_addr` | string | - | yes | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections.
+`ntrip_username` | string | - | yes | Username for the NTRIP server
+`ntrip_password` | string | - | yes | Password for the NTRIP server
+ | | | | 
+**Optional:** | | | | 
+`ntrip_connect_attempts` | int | 10 | no | How many times to attempt connection before timing out
+`ntrip_baud` | int | defaults to `serial_baud_rate` | no |Only necessary if you want NTRIP baud rate to be different from serial baud rate.
+---
+<br>
+
+For `gps-rtk` communicating over serial, you'll also need a `serial_attributes` field containing:
+
+Name | Type | Default Value | Description
+---- | ---- | ------------- | -----
+`serial_path` | string | - | The name of the port through which the IMU communicates with the computer.
+`serial_baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
+---
+<br>
+
+For `gps-rtk` communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` field containing:
+
+Name | Type | Default Value | Description
+---- | ---- | ------------- | -----
+`i2c_bus` | string | - | The name of the port through which the IMU communicates with the computer.
+`i2c_addr` | int | - |
+`i2c_baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
+---
+
 #### GPS-RTK with NTRIP over USB/Serial
+
+Example config:
 
 ```json
 {
@@ -109,18 +148,20 @@ Our `gps-rtk` model uses an over-the-internet correction source (NTRIP)[^ntrip] 
             "path": "/dev/ttyACM0"
         },
         "ntrip_attributes": {
-            "ntrip_addr": "http://rtn.dot.ny.gov:8080/near_msm",
+            "ntrip_addr": "<ntrip_address>",
             "ntrip_baud": 38400,
-            "ntrip_password": "pass",
+            "ntrip_password": "<password>",
             "ntrip_path": "",
             "ntrip_send_nmea": true,
-            "ntrip_username": "user"
+            "ntrip_username": "<username>"
         }
     }
 }
 ```
 
 #### GPS-RTK with NTRIP over I2C
+
+Example config:
 
 ```json
 {
@@ -134,14 +175,14 @@ Our `gps-rtk` model uses an over-the-internet correction source (NTRIP)[^ntrip] 
         "i2c_attributes": {
             "i2c_baud_rate": 115200,
             "i2c_addr": 111,
-            "I2c_bus": "name_of_bus_on_board",
+            "I2c_bus": "<name_of_bus_on_board>",
         },
         "ntrip_attributes": {
- 		    "ntrip_addr": "http://rtn.dot.ny.gov:8080/near_msm",
+ 		    "ntrip_addr": "<ntrip_address>",
             "ntrip_baud": 38400,
-            "ntrip_password": "mypass",
+            "ntrip_password": "<password>",
             "ntrip_send_nmea": true,
-            "ntrip_username": "user"
+            "ntrip_username": "<username>"
         }
     }
 }
@@ -152,10 +193,8 @@ Our `gps-rtk` model uses an over-the-internet correction source (NTRIP)[^ntrip] 
 _**(Experimental!)**_
 
 The experimental `rtk-station` allows you to configure your own correction source.
-This does not provide any movement sensor data on its own, but can be linked to an RTK-ready GPS module on a moving robot and send that robot correction data over your own network, radio or Bluetooth in areas where internet connectivity is limited, or where an NTRIP server is unavailable.
+This does not provide any movement sensor data on its own, but can be linked to an RTK-ready GPS module on a moving robot and send that robot correction data over your own network, radio, or Bluetooth in areas where internet connectivity is limited, or where an NTRIP server is unavailable.
 We have implemented this in a way that does not rely on an internet connection to get correction data for a moving GPS.
-
-More information on RTK error correction can be found at <a href="https://novatel.com/an-introduction-to-gnss/chapter-5-resolving-errors/real-time-kinematic-rtk" target="_blank">ht<span></span>tps://novatel.com/an-introduction-to-gnss/chapter-5-resolving-errors/real-time-kinematic-rtk</a>.
 
 For all of the following RTK-station configurations, `children` is the list of one or more other GPS components that can take RTCM corrections.
 
@@ -169,12 +208,12 @@ For all of the following RTK-station configurations, `children` is the list of o
     "attributes": {
         "connection_type": "serial",
         "ntrip_attributes": {
-            "ntrip_addr": "http://rtn.dot.ny.gov:8080/near_msm",
+            "ntrip_addr": "<NTRIP_address>",
             "ntrip_baud": 38400,
-            "ntrip_password": "johnviam",
+            "ntrip_password": "<password>",
             "ntrip_path": "",
             "ntrip_send_nmea": true,
-            "ntrip_username": "john"
+            "ntrip_username": "<username>"
         },
         "correction_source": "ntrip"
     }
@@ -194,7 +233,7 @@ For all of the following RTK-station configurations, `children` is the list of o
         "i2c_attributes": {
             "i2c_baud_rate": 115200,
             "i2c_addr": 111,
-            "i2c_bus": "name_of_bus_on_board",
+            "i2c_bus": "<name_of_bus_on_board>",
        },
         "correction_source": "I2C",
         "loc_accuracy": 10,
@@ -216,7 +255,7 @@ For all of the following RTK-station configurations, `children` is the list of o
         "connection_type": "serial",
         "serial_attributes": {
         	"baud_rate": 115200,
- 		    "correction_path": "/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.4:1.0"
+ 		    "correction_path": "/dev/serial/by-path/<device_ID>"
         },
         "correction_source": "serial"
     }
@@ -236,8 +275,8 @@ The `imu-wit` model requires:
 
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----
-`port` | string | - | The name of the port through which the IMU communicates with the computer.
-`baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
+`serial_path` | string | - | The name of the port through which the IMU communicates with the computer.
+`serial_baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
 
 #### Required Attributes: IMU-VectorNav
 
@@ -246,9 +285,9 @@ The `imu-vectornav` model requires:
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----
 `board` | string | - | The name of the board to which the IMU is wired
-`spi_bus` | string | The name of the SPI bus over which the IMU communicates with the board. On a Raspberry Pi, people often use the bus named “1.”
+`spi` | string | The name of the SPI bus over which the IMU communicates with the board. On a Raspberry Pi, people often use the bus named “1.”
 `chip_select_pin` | string | - | The board pin (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device.
-`speed` | int |
+`spi_baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
 `polling_frequency_hz` | int |
 
 ## Cameramono
