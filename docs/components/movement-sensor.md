@@ -32,6 +32,12 @@ Find more information about encoders, another component type, [here](../../compo
 Any movement sensor that uses I<sup>2</sup>C must be connected to a board that supports I<sup>2</sup>C and [has it enabled](../../getting-started/installation/#enabling-specific-communication-protocols-on-the-raspberry-pi).
 {{% /alert %}}
 
+## General Configuration
+As with any Viam component configuration, configuring a movement sensor component requires a `name` of your choosing, a `type` ("movement_sensor"), and a `model` (see sections below for options).
+Each model must have either serial or I<sup>2</sup>C communication configured.
+[Click here to jump to the communication config attribute information.](#connection-configuration)
+Some models require other attributes, as detailed in their respective sections:
+
 ## GPS
 A global positioning system (GPS) is based on receiving signals from satellites in the earth’s orbit.
 A GPS is useful for knowing where you are and how fast you’re going.
@@ -55,16 +61,14 @@ The `gps-nmea` model can be connected via and send data through a serial connect
     "attributes": {
         "connection_type": "serial",
         "serial_attributes": {
-            "baud_rate": 115200,
+            "serial_baud_rate": 115200,
             "path": "<path>"
         }
     }
 }
 ```
 
-The default baud rate is 115200.
-
-#### GPS-NMEA over I2C
+#### GPS-NMEA over I<sup>2</sup>C
 
 ```json
 {
@@ -84,7 +88,13 @@ The default baud rate is 115200.
 }
 ```
 
-The default `baud_rate` is 115200.
+GPS-NMEA attributes:
+
+Name | Type | Default Value | Description
+---- | ---- | ------------- | -----
+`board` | string | - | Required for NMEA over I<sup>2</sup>C; the board connected to the chip. Not required for serial communication.
+`disable_nmea` | bool | false | Optional. If set to true, changes the NMEA message protocol to RTCM when using a chip as a base station.
+`connection_type` | string | - | "I2C" or "serial", respectively
 
 ### GPS-RTK
 
@@ -95,9 +105,8 @@ Our `gps-rtk` model uses an over-the-internet correction source (NTRIP)[^ntrip] 
 
 [^chips]: Sparkfun RTK Chips: <a href="https://www.sparkfun.com/rtk" target="_blank">ht<span></span>tps://www.sparkfun.com/rtk</a>
 
-The config attributes for the `gps-rtk` are as follows. [Click here to skip to sample configs.](#gps-rtk-with-ntrip-over-usbserial)
-
-`ntrip_attributes` for `gps-rtk`:
+As shown in the examples below, the `gps-rtk` model requires a `name`, `type` ("movement_sensor"), and `model` ("gps-rtk").
+In the `attributes` section, it requires connection configuration [(more on that down here)](#connection-configuration), `correction_source` ("ntrip"), and an `ntrip_attributes` struct containing these:
 
 Name | Type | Default Value | Required? | Description
 ---- | ---- | ------------- | --------- | -----
@@ -108,26 +117,7 @@ Name | Type | Default Value | Required? | Description
  | | | | 
 **Optional:** | | | | 
 `ntrip_connect_attempts` | int | 10 | no | How many times to attempt connection before timing out
-`ntrip_baud` | int | defaults to `serial_baud_rate` | no |Only necessary if you want NTRIP baud rate to be different from serial baud rate.
----
-<br>
-
-For `gps-rtk` communicating over serial, you'll also need a `serial_attributes` field containing:
-
-Name | Type | Default Value | Description
----- | ---- | ------------- | -----
-`serial_path` | string | - | The name of the port through which the IMU communicates with the computer.
-`serial_baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
----
-<br>
-
-For `gps-rtk` communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` field containing:
-
-Name | Type | Default Value | Description
----- | ---- | ------------- | -----
-`i2c_bus` | string | - | The name of the port through which the IMU communicates with the computer.
-`i2c_addr` | int | - |
-`i2c_baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
+`ntrip_baud` | int | defaults to `serial_baud_rate` | no | Only necessary if you want NTRIP baud rate to be different from serial baud rate.
 ---
 
 #### GPS-RTK with NTRIP over USB/Serial
@@ -144,7 +134,7 @@ Example config:
         "connection_type": "serial",
         "correction_source": "ntrip",
         "serial_attributes": {
-            "baud_rate": 115200,
+            "serial_baud_rate": 115200,
             "path": "/dev/ttyACM0"
         },
         "ntrip_attributes": {
@@ -152,14 +142,13 @@ Example config:
             "ntrip_baud": 38400,
             "ntrip_password": "<password>",
             "ntrip_path": "",
-            "ntrip_send_nmea": true,
             "ntrip_username": "<username>"
         }
     }
 }
 ```
 
-#### GPS-RTK with NTRIP over I2C
+#### GPS-RTK with NTRIP over I<sup>2</sup>C
 
 Example config:
 
@@ -181,7 +170,6 @@ Example config:
  		    "ntrip_addr": "<ntrip_address>",
             "ntrip_baud": 38400,
             "ntrip_password": "<password>",
-            "ntrip_send_nmea": true,
             "ntrip_username": "<username>"
         }
     }
@@ -212,7 +200,6 @@ For all of the following RTK-station configurations, `children` is the list of o
             "ntrip_baud": 38400,
             "ntrip_password": "<password>",
             "ntrip_path": "",
-            "ntrip_send_nmea": true,
             "ntrip_username": "<username>"
         },
         "correction_source": "ntrip"
@@ -220,7 +207,7 @@ For all of the following RTK-station configurations, `children` is the list of o
 }
 ```
 
-#### RTK-Station using I2C
+#### RTK-Station using I<sup>2</sup>C
 
 ```json
 {
@@ -255,7 +242,7 @@ For all of the following RTK-station configurations, `children` is the list of o
         "connection_type": "serial",
         "serial_attributes": {
         	"serial_baud_rate": 115200,
- 		    "correction_path": "/dev/serial/by-path/<device_ID>"
+ 		    "serial_path": "/dev/serial/by-path/<device_ID>"
         },
         "correction_source": "serial"
     }
@@ -289,6 +276,62 @@ Name | Type | Default Value | Description
 `chip_select_pin` | string | - | The board pin (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device.
 `spi_baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
 `polling_frequency_hz` | int |
+
+## Connection Configuration
+
+Use `connection_type`(string) to specify "serial" or "I2C" connection in the main `attributes` config. Then create a struct within `attributes` for either `serial_attributes` or `i2c_attributes`, respectively.
+
+### Serial Config Attributes
+
+For a movement sensor communicating over serial, you'll need to include a `serial_attributes` field containing:
+
+Name | Type | Default Value | Description
+---- | ---- | ------------- | -----
+`serial_path` | string | - | The name of the port through which the IMU communicates with the computer.
+`serial_baud_rate` | int | 115200 | The rate at which data is sent to the IMU. Optional.
+---
+
+```json
+{
+    "name": "<my-movement-sensor-name>",
+    "type": "<TYPE>",
+    "model": "<MODEL>",
+    "attributes": {
+        "<whatever other attributes>": "<example>",
+        "connection_type": "serial",
+        "serial_attributes": {
+        	"serial_baud_rate": 115200,
+ 		    "serial_path": "<PATH>"
+        }
+    }
+}
+```
+
+### I<sup>2</sup>C Config Attributes
+For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` field containing:
+
+Name | Type | Default Value | Description
+---- | ---- | ------------- | -----
+`i2c_bus` | string | - | The name of the port through which the IMU communicates with the computer.
+`i2c_addr` | int | - |
+`i2c_baud_rate` | int | 115200 | The rate at which data is sent to the IMU. Optional.
+---
+
+```json
+{
+    "name": "<my-movement-sensor-name>",
+    "type": "<TYPE>",
+    "model": "<MODEL>",
+    "attributes": {
+        "<whatever other attributes>": "<example>",
+        "connection_type": "I2C",
+        "i2c_attributes": {
+            "i2c_addr": 111,
+            "i2c_bus": "1"
+        }
+    }
+}
+```
 
 ## Cameramono
 
@@ -334,3 +377,5 @@ In a Viam configuration file, a camera used as a movement sensor will require a 
 
 ## Software Implementation
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html)
+
+<br>
