@@ -15,7 +15,7 @@ An inertial measurement unit (IMU) can provide angular velocity and orientation.
 We can further apply algorithms, such as a <a href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank">Kalman filter</a>[^kalman], to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
 
 Currently (01 November 2022), the [RDK](../../appendix/glossary/#rdk_anchor) implements GPS, IMU, and visual odometry-based movement sensors.
-We support two IMU models (manufactured by WitMotion and VectorNav) and two GPS models: NMEA-based GPS modules and <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">NTRIP</a>[^ntrip]-based <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">RTK</a>[^rtk] GPS models.
+We support two IMU models (manufactured by WitMotion and VectorNav) and two GPS models: <a href="https://en.wikipedia.org/wiki/NMEA_0183" target="_blank">NMEA-based</a>[^nmea] GPS modules and <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">NTRIP-based</a>[^ntrip] <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">RTK</a>[^rtk] GPS models.
 The `cameramono` RDK model is experimental and uses a camera to output data on its position and orientation.
 
 We specifically cover GPS and IMU units in this documentation.
@@ -23,6 +23,8 @@ Find the more [generic sensor component here](../../components/sensor/).
 Find more information about encoders, another component type, [here](../../components/encoder/).
 
 [^kalman]: Kalman filter: <a href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Kalman_filter</a>
+
+[^nmea]: NMEA 0183: <a href="https://en.wikipedia.org/wiki/NMEA_0183" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/NMEA_0183</a>
 
 [^ntrip]: Network Transport of RTCM via Internet Protocol (NTRIP): <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol</a>
 
