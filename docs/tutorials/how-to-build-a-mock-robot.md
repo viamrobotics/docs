@@ -116,7 +116,7 @@ What you see here is a list of the various resources (Like components, and servi
 
 <img src="../img/how_to_build_a_mock_robot/image1.png" alt ="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam App.The output is an array of resources that have been pulled from the Viam App. Some of these are the Vision Service, Data Manager, and Board." width="100%"><br>
 
-### How to control your mock robot with Python
+### How to control your mock robot
 
 Next, you will be writing some code to control and move your mock robotic arm.
 We are going to write a program that will move the mock robotic arm into a new random position every second.
@@ -333,7 +333,7 @@ If you have two instances of viam-server running on your local machine, you shou
 
 ![Screenshot of Viam app's Control tab for the main part. List's the main arm, and the sub motor part.](../img/how_to_build_a_mock_robot/image6.png)
 
-## How to control a sub-part using the Viam Python SDK
+## How to control a sub-part using the Viam SDK
 
 Now that you have your mock sub-part connected as a remote to your main mock robot, you will be able to control all of your robot's sub-parts with Viam's Python SDK. In fact, if you run your Python script again, and you review the output of `print(robot.resource_names)`, you will see that your sub-part should now be listed as an available resource for you to use.
 
