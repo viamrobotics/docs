@@ -12,7 +12,7 @@ Using the SDK, you will be able to quickly write code to control and automate yo
 Viam-server exposes gRPC [APIs for robot controls](https://github.com/viamrobotics/api).
 It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and authentication over those APIs.
 
-SDKs make it easier to interface with the robot without calling gRPC API directly.
+SDKs make it easier to interface with the robot without calling the gRPC API directly.
 
 <img src="../img/SDK-as-client/image1.png" alt ="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client." width="80%"><br>
 
@@ -121,7 +121,7 @@ func main() {
 
 This reads a single image from a [camera](https://docs.viam.com/components/camera/) called "camera0" on the robot.
 
-Assumption: a camera called "camera0" is configured on your robot on the Viam app.
+Assumption: A camera called "camera0" is configured on your robot on the Viam app.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -137,8 +137,6 @@ image = await camera.get_image()
 ```go
 import (
 "go.viam.com/rdk/components/camera"
-// registers all cameras.
-_ "go.viam.com/rdk/components/camera/register"
 )
 
 // grab the camera from the robot
@@ -150,15 +148,9 @@ if err != nil {
 
 // gets the stream from a camera
 camStream, err := cam.Stream(context.Background())
-if err != nil {
-  logger.Fatalf("cannot get camera stream: %v", err)
-}
 
 // gets an image from the camera stream
 img, release, err := camStream.Next(context.Background())
-if err != nil {
-  logger.Fatalf("cannot get image: %v", err)
-}
 defer release()
 ```
 {{% /tab %}}
@@ -168,7 +160,7 @@ defer release()
 
 This sends power commands to [motors](https://docs.viam.com/components/motor/) on the robot.
 
-Assumption: motors called "motor1" and "motor2" are configured on your robot on the Viam app.
+Assumption: Motors called "motor1" and "motor2" are configured on your robot on the Viam app.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -193,7 +185,6 @@ await motor2.go_for(1000, 200)
 import (
 "time"
 "go.viam.com/rdk/components/motor"
-_ "go.viam.com/rdk/components/motor/register"
 )
 
 // grab the motors from the robot
@@ -216,6 +207,8 @@ time.Sleep(3 * time.Second)
 
 This example code reads values from a [sensor](https://docs.viam.com/components/sensor/) (an ultrasonic sensor in this example) connected to a robot.
 
+Assumption: Sensor called "ultra1" is configured on your robot on the Viam app.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 ```python
@@ -229,7 +222,6 @@ distance = await sensor.get_readings()["distance"]
 ```go
 import (
 "go.viam.com/rdk/components/sensor"
-_ "go.viam.com/rdk/components/sensor/register"
 )
 
 ultra, err := sensor.FromRobot(robot, "ultra1")
@@ -242,7 +234,7 @@ distance, err := ultra.Readings(context.Background())
 
 The following code gets the robot's [vision service](https://python.viam.dev/autoapi/viam/services/vision/index.html?highlight=vision#module-viam.services.vision) and then runs a detection model on an image to get a list of detections from the image.
 
-Assumption: a camera called "camera0" and a vision service call "detector_1" is configured on your robot on the Viam app.
+Assumption: A camera called "camera0" and a vision service call "detector_1" is configured on your robot on the Viam app.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -258,14 +250,10 @@ detections = await vision.get_detections_from_camera("camera_0", "detector_1")
 ```go
 import (
 "go.viam.com/rdk/services/vision"
-_ "go.viam.com/rdk/services/vision/register"
 )
 
 // gets Viam's vision service to add a TF-Lite model for person detection
 visionSrv, err := vision.FirstFromRobot(r)
-if err != nil {
-  logger.Fatalf("cannot get vision service: %v", err)
-}
 
 // get detection bounding boxes
 detections, err := visionSrv.Detections(context.Background(), img, "find_objects")
