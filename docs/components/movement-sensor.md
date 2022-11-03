@@ -254,7 +254,7 @@ For all of the following RTK-station configurations, `children` is the list of o
         "board": "board",
         "connection_type": "serial",
         "serial_attributes": {
-        	"baud_rate": 115200,
+        	"serial_baud_rate": 115200,
  		    "correction_path": "/dev/serial/by-path/<device_ID>"
         },
         "correction_source": "serial"
