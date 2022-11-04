@@ -5,7 +5,6 @@ weight: 1
 draft: true
 type: "docs"
 ---
-
 ## Tab Panels
 
 {{< tabs name="TabPanelExample" >}}
@@ -23,8 +22,6 @@ type: "docs"
 **Example Usage**
 
 <img style="border:solid 1px black" alt="Screen capture of Tab/Tabs Shortcode Usage" src="/img/tabbed-panel-markdown.png">
-
-
 
 {{% /tab %}}
 {{% tab name="Examples" %}}
@@ -139,8 +136,6 @@ Within the expander, you can still use most other shortcodes and syntax highligh
 
 {{% /expand%}}
 
-
-
 ## How to use Notes, Cautions, and Warnings
 
 **Info/Tip**: Exactly that. They both use the same color.
@@ -150,7 +145,6 @@ Within the expander, you can still use most other shortcodes and syntax highligh
 **Caution**: Provide notice that a certain action or event could damage hardware or cause data loss.
 
 **Warning**: Use to notify the reader of an issue to avoid loss of life, personal injury, and health hazards. Electrical and physical safety fall into this category.
-
 
 {{< alert title="Tip" color="tip" >}}  
 Use for tips
@@ -168,14 +162,23 @@ This is to call the reader's attention to something important. Use it to expand 
 This provides notices that a certain action or event could damage hardware or cause data loss.
 {{< /alert >}}
 
-
 {{< alert title="Warning" color="warning" >}}  
 Use to notify the reader of information to avoid loss of life, personal injury, and health hazards.
 {{< /alert >}}
 
-<img src="../img/alert-markdown.png" alt="screen capture that demonstrates the styling applied to Info/Tip, Note, Caution, And Warning paragraphs." style="border: solid 1px"/>
+<img src="../img/alert-markdown.png" alt="The styling applied to Info/Tip, Note, Caution, And Warning paragraphs." style="border: solid 1px"/>
+
+## Using the Figure Shortcode
+The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr** element for attribution text and **attrlink** if you wish to add a link to the attribution text. 
+
+{{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution" title="Figure Shortcode" >}}
+
+This shortcode places the caption (i.e., the “title”) above the table. The **title** is set in 12pt italic with a green underline.
+
+Figure styles any Attribution text as body text.
+
+
 
 ## Demo of including another file
 
-{{% include"/static/CNAME" %}}
-**Content above this line is contained in /static/robot-ipsum.md**
+Include is still broken.
