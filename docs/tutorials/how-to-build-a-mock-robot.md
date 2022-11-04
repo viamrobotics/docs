@@ -309,14 +309,13 @@ From the **CONNECT** tab of your sub-part:
 
 Since every part needs to run an instance of viam-server, you will need to bind the sub-part to a new port so we can run two servers on your machine at the same time. We are using port `8081`, but you can use any open port you want.
 
-```bash
 You can do this by going to **CONFIG** and then going to the **NETWORK** tab. Here, you will paste the following:
 
 ```json-viam
 {
     "bind_address": "localhost:8081"
 }
-```
+
 
 Be sure to save before continuing.
 
