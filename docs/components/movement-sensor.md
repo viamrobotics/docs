@@ -100,6 +100,8 @@ Name | Type | Default Value | Description
 
 ### GPS-RTK
 
+_**(Experimental!)**_
+
 This model uses real time kinematic positioning (RTK)[^rtk].
 `gps-rtk`, a module with a chip (<a href="https://www.sparkfun.com/rtk" target="_blank">such as one of these from Sparkfun</a>[^chips]) capable of generating positional accuracy of 2cm.
 The chip requires a correction source to get to the required positional accuracy.
@@ -163,6 +165,7 @@ Example config:
     "attributes": {
         "board": "board",
         "connection_type": "I2C",
+        "correction_source": "ntrip",
         "i2c_attributes": {
             "i2c_baud_rate": 115200,
             "i2c_addr": 111,
@@ -192,6 +195,9 @@ For all of the following RTK-station configurations, `children` is the list of o
 
 ```json
 {
+    "model": "rtk-station",
+    "name": "my-rtk-station",
+    "type": "movement_sensor",
     "children": [
         "gps1"
     ],
@@ -213,6 +219,9 @@ For all of the following RTK-station configurations, `children` is the list of o
 
 ```json
 {
+    "model": "rtk-station",
+    "name": "my-rtk-station",
+    "type": "movement_sensor",
     "children": [
         "gps1"
     ],
@@ -259,25 +268,38 @@ An inertial measurement unit (IMU) can provide `AngularVelocity`, `Orientation`,
 
 An IMU will be configured with type `movement sensor`. Viam currently (01 November 2022) supports two IMU models, manufactured by WitMotion and VectorNav. They are configured with model `imu-wit` or `imu-vectornav`, respectively.
 
-#### Required Attributes: IMU-WIT
-The `imu-wit` model requires:
+#### IMU-WIT
 
-Name | Type | Default Value | Description
------ | ----- | ----- | -----
-`serial_path` | string | - | The name of the port through which the IMU communicates with the computer.
-`serial_baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
+Example IMU-WIT config:
+
+```json
+{
+    "name": "myIMU",
+    "type": "movement_sensor",
+    "model": "imu-wit",
+    "attributes": {
+        "serial_path": "<PATH>",
+        "serial_baud_rate": 115200
+    },
+    "depends_on": []
+}
+```
 
 #### Required Attributes: IMU-VectorNav
 
-The `imu-vectornav` model requires:
+Example IMU-VectorNav config:
 
-Name | Type | Default Value | Description
------ | ----- | ----- | -----
-`board` | string | - | The name of the board to which the IMU is wired
-`spi` | string | The name of the SPI bus over which the IMU communicates with the board. On a Raspberry Pi, people often use the bus named “1.”
-`chip_select_pin` | string | - | The board pin (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device.
-`spi_baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
-`polling_frequency_hz` | int |
+```json
+{
+    "name": "myIMU",
+    "type": "movement_sensor",
+    "model": "imu-wit",
+    "attributes": {
+        "serial_path": "<PATH>"
+    },
+    "depends_on": []
+}
+```
 
 ## Connection Configuration
 
@@ -334,6 +356,16 @@ Name | Type | Default Value | Description
     }
 }
 ```
+
+### SPI Bus Config Attributes
+
+Name | Type | Default Value | Description
+----- | ----- | ----- | -----
+`board` | string | - | The name of the board to which the device is wired
+`spi` | string | The name of the SPI bus over which the device communicates with the board. On a Raspberry Pi, people often use the bus named “1.”
+`chip_select_pin` | string | - | The board pin (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device.
+`spi_baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
+`polling_frequency_hz` | int |
 
 ## Cameramono
 
