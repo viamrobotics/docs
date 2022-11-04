@@ -343,7 +343,7 @@ Now that you have your mock sub-part connected as a remote to your main mock rob
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-To control your motor sub-part, you will need to import the [MotorClient](https://python.viam.dev/autoapi/viam/components/motor/client/index.html). Paste this at the top of your file:
+To control your motor sub-part, you will need to import the [Motor Client](https://python.viam.dev/autoapi/viam/components/motor/client/index.html). Paste this at the top of your file:
 
 ```python
 from viam.components.motor import MotorClient
@@ -351,6 +351,8 @@ from viam.components.motor import MotorClient
 
 {{% /tab %}}
 {{% tab name="Golang" %}}
+
+To control your motor sub-part, you will need to import the [Motor Client](https://github.com/viamrobotics/rdk/blob/main/components/motor/client.go). Paste this at the top of your file:
 
 ```go
 import (
