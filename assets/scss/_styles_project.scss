@@ -5,6 +5,92 @@ Add styles or override variables from the theme here.
 */
 
 
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+.table-responsive, .td-content > table, .td-box .row.section > table {
+display:table;
+width:auto;
+border:1px solid black;
+
+}
+
+.table thead th, .td-content > table thead th, .td-box .row.section > table thead th{
+  border:1px solid black;
+
+}
+
+
+.table th, .td-content > table th, .td-box .row.section > table th, .table td, .td-content > table td, .td-box .row.section > table td {
+  border:1px solid black;
+}
+
+.table th {
+  background-color: #e6e6e6;
+}
+
+
+/**/
+
+
+/* START Adds an "End of Tab Pane" delimiter to Tabbed Panels */
+
+
+
+
+tab-content:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 50px;
+  width: 50%;
+  border-bottom: 3px solid #000;
+}
+
+
+
+.tab-content{
+  border-right:2px solid  lightgray;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  border-bottom:2px solid lightgray;
+  bottom: 0;
+
+}
+
+
+.tab-content::after{
+  border-bottom: solid 3px lightgrey;
+  color:black;
+  font-weight:400;
+  margin-left: 5%;
+  border-length: 50%;
+  font-size:small;
+    content: 'End of Tab Pane';
+}
+
+
+
+
+
+
+/* END Adds an "End of Tab Pane" delimiter to Tabbed Panels */
+
+
+
 /* START - CSS to stack Eliot's video on the landing page */
 
 .mra-column {

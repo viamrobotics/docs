@@ -6,6 +6,21 @@ draft: true
 type: "docs"
 ---
 
+
+| Stade | DFG (CKD-EPI) | Définition                      |gdgddg |
+|-------|---------------|---------------------------------|-------|
+| 1     | &amp;gt; 90   | MRC avec DFG normal ou augmenté |aSDASdASDF|
+| 2     | 60-89         | MRC avec DFG légèrement diminué |ASDFASDF|
+| 3A    | 45-59         | IRC modérée                     |SDFAASDF|
+| 3B    | 30-44         | IRC modérée                     |ASDFASDF|
+| 4     | 15-29         | IRC sévère                      |ERWFWER|
+| 5     | &lt; 15       | IRC terminale                   |ASDASDFC|
+
+
+
+
+
+
 ## Tab Panels
 
 {{< tabs name="TabPanelExample" >}}
