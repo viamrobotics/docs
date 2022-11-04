@@ -85,6 +85,12 @@ h1, .h1 {
     font-style: italic;
     margin-left: 70px;
    }
+   h7 {
+    font-size: 10pt !important;
+    font-weight: 400;
+    font-style: italic;
+    text-decoration: underline green;
+   }
 
  /* This class prevents h4 headings in alerts from indenting */   
 .plain{
