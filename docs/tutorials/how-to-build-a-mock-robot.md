@@ -81,13 +81,13 @@ Refer to the appropriate SDK documentation for SDK installation instructions.
 {{% /alert %}}
 
 {{% alert title="Tip" color="tip" %}}
-If you have any issues whatsoever getting the Viam Python SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com).
 There, you will find a friendly developer community of people learning how to make robots using Viam.
 {{% /alert %}}
 
-### How to connect to your mock robot with the Viam Python SDK
+### How to connect to your mock robot with the Viam SDK
 
-The easiest way to get started writing a Python application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CONNECT** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CONNECT** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**.
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 Next, paste that boilerplate code from the **CONNECT** tab of the Viam app into a file named <file>index.py</file> or <file>index.go </file>file in your code editor, and save your file.
 
@@ -466,10 +466,7 @@ func main() {
 
 When you run this code, you will see your mock sub motor toggling between running and idle in real time from the Viam app!
 
-<!-- ![GIF of the Viam app's CONTROL tab for the main part on the left, and a terminal window running the toggleMotor script on the right. The terminal window prints the robot's resources, then prints "go" and then "stop" every second. The Viam App sub motor component shows the state is either "idle" or "running", in sync with the toggleMotor script.](../img/how_to_build_a_mock_robot/image3.gif) -->
-
 {{<video src="../img/how_to_build_a_mock_robot/go-start-demo.mp4" type="video/mp4" width="100%">}}
-
 
 ## Next Steps
 
