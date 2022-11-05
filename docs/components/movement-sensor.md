@@ -65,7 +65,7 @@ The `gps-nmea` model can be connected via and send data through a serial connect
         "connection_type": "serial",
         "serial_attributes": {
             "serial_baud_rate": 115200,
-            "path": "<path>"
+            "serial_path": "<path>"
         }
     }
 }
@@ -140,7 +140,7 @@ Example config:
         "correction_source": "ntrip",
         "serial_attributes": {
             "serial_baud_rate": 115200,
-            "path": "/dev/ttyACM0"
+            "serial_path": "/dev/ttyACM0"
         },
         "ntrip_attributes": {
             "ntrip_addr": "<ntrip_address>",
