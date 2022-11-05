@@ -34,19 +34,20 @@ Find more information about encoders, another component type, [here](../../compo
 Any movement sensor that uses I<sup>2</sup>C must be connected to a board that supports I<sup>2</sup>C and [has it enabled](../../getting-started/installation/#enabling-specific-communication-protocols-on-the-raspberry-pi).
 {{% /alert %}}
 
-## General Configuration
-As with any Viam component configuration, configuring a movement sensor component requires a `name` of your choosing, a `type` ("movement_sensor"), and a `model` (see sections below for options).
-Each model must have either serial or I<sup>2</sup>C communication configured.
-[Click here to jump to the communication config attribute information.](#connection-configuration)
-Some models require other attributes, as detailed in their respective sections:
-
 ## GPS
 A global positioning system (GPS) is based on receiving signals from satellites in the earth’s orbit.
 A GPS is useful for knowing where you are and how fast you’re going.
 `Position`, `CompassHeading` and `LinearVelocity` data are provided by all GPS modules.
 Fix and Correction data are available by using the sensor GetReadings method, which is available because GPSes wrap the sensor component.
 
-We have integrated the following  GPS modules into Viam’s RDK:
+{{% alert title="Config Info" color="info" %}}
+As with any Viam component configuration, configuring a movement sensor component requires a `name` of your choosing, a `type` ("movement_sensor"), and a `model` (see sections below for options).
+Each GPS model must have either serial or I<sup>2</sup>C communication configured.
+[Click here to jump to the communication config attribute information.](#connection-configuration)
+Some models require other attributes, as detailed in their respective sections below.
+{{% /alert %}}
+
+We have integrated the following GPS modules into Viam’s RDK:
 
 ### GPS-NMEA
 This GPS model uses communication standards set by the National Marine Electronics Association (NMEA).
@@ -112,14 +113,14 @@ Our `gps-rtk` model uses an over-the-internet correction source (NTRIP)[^ntrip] 
 As shown in the examples below, the `gps-rtk` model requires a `name`, `type` ("movement_sensor"), and `model` ("gps-rtk").
 In the `attributes` section, it requires connection configuration [(more on that down here)](#connection-configuration), `correction_source` ("ntrip"), and an `ntrip_attributes` struct containing these:
 
-Name | Type | Default Value | Required? | Description
----- | ---- | ------------- | --------- | -----
-**Required:** | | | |
-`ntrip_addr` | string | - | yes | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections.
-`ntrip_username` | string | - | yes | Username for the NTRIP server
-`ntrip_password` | string | - | yes | Password for the NTRIP server
- | | | | 
-**Optional:** | | | | 
+Name | Type | Default Value | Description
+---- | ---- | ------------- | ----------
+**Required:** | | |
+`ntrip_addr` | string | - | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections.
+`ntrip_username` | string | - | Username for the NTRIP server
+`ntrip_password` | string | - | Password for the NTRIP server
+ | | |
+**Optional:** | | |
 `ntrip_connect_attempts` | int | 10 | no | How many times to attempt connection before timing out
 `ntrip_baud` | int | defaults to `serial_baud_rate` | no | Only necessary if you want NTRIP baud rate to be different from serial baud rate.
 ---
@@ -259,6 +260,63 @@ For all of the following RTK-station configurations, `children` is the list of o
     }
 }
 ```
+### Connection Configuration
+
+Applies to all GPS models!
+
+Use `connection_type`(string) to specify "serial" or "I2C" connection in the main `attributes` config. Then create a struct within `attributes` for either `serial_attributes` or `i2c_attributes`, respectively.
+
+#### Serial Config Attributes
+
+For a movement sensor communicating over serial, you'll need to include a `serial_attributes` field containing:
+
+Name | Type | Default Value | Description
+---- | ---- | ------------- | -----
+`serial_path` | string | - | The name of the port through which the IMU communicates with the computer.
+`serial_baud_rate` | int | 115200 | The rate at which data is sent to the IMU. Optional.
+---
+
+```json
+{
+    "name": "<my-movement-sensor-name>",
+    "type": "<TYPE>",
+    "model": "<MODEL>",
+    "attributes": {
+        "<whatever other attributes>": "<example>",
+        "connection_type": "serial",
+        "serial_attributes": {
+        	"serial_baud_rate": 115200,
+ 		    "serial_path": "<PATH>"
+        }
+    }
+}
+```
+
+#### I<sup>2</sup>C Config Attributes
+For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` field containing:
+
+Name | Type | Default Value | Description
+---- | ---- | ------------- | -----
+`i2c_bus` | string | - | The name of the port through which the IMU communicates with the computer.
+`i2c_addr` | int | - |
+`i2c_baud_rate` | int | 115200 | The rate at which data is sent to the IMU. Optional.
+---
+
+```json
+{
+    "name": "<my-movement-sensor-name>",
+    "type": "<TYPE>",
+    "model": "<MODEL>",
+    "attributes": {
+        "<whatever other attributes>": "<example>",
+        "connection_type": "I2C",
+        "i2c_attributes": {
+            "i2c_addr": 111,
+            "i2c_bus": "1"
+        }
+    }
+}
+```
 
 ## IMU
 
@@ -285,7 +343,7 @@ Example IMU-WIT config:
 }
 ```
 
-#### Required Attributes: IMU-VectorNav
+#### IMU-VectorNav
 
 Example IMU-VectorNav config:
 
@@ -293,71 +351,18 @@ Example IMU-VectorNav config:
 {
     "name": "myIMU",
     "type": "movement_sensor",
-    "model": "imu-wit",
+    "model": "imu-vectornav",
     "attributes": {
-        "serial_path": "<PATH>"
-    },
-    "depends_on": []
+        "board": "local",
+        "spi": "1",
+        "spi_baud_rate": 3800,
+        "polling_freq_hz": 80,
+        "chip_select_pin": "36"
+  },
+  "depends_on": []
 }
 ```
-
-## Connection Configuration
-
-Use `connection_type`(string) to specify "serial" or "I2C" connection in the main `attributes` config. Then create a struct within `attributes` for either `serial_attributes` or `i2c_attributes`, respectively.
-
-### Serial Config Attributes
-
-For a movement sensor communicating over serial, you'll need to include a `serial_attributes` field containing:
-
-Name | Type | Default Value | Description
----- | ---- | ------------- | -----
-`serial_path` | string | - | The name of the port through which the IMU communicates with the computer.
-`serial_baud_rate` | int | 115200 | The rate at which data is sent to the IMU. Optional.
----
-
-```json
-{
-    "name": "<my-movement-sensor-name>",
-    "type": "<TYPE>",
-    "model": "<MODEL>",
-    "attributes": {
-        "<whatever other attributes>": "<example>",
-        "connection_type": "serial",
-        "serial_attributes": {
-        	"serial_baud_rate": 115200,
- 		    "serial_path": "<PATH>"
-        }
-    }
-}
-```
-
-### I<sup>2</sup>C Config Attributes
-For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` field containing:
-
-Name | Type | Default Value | Description
----- | ---- | ------------- | -----
-`i2c_bus` | string | - | The name of the port through which the IMU communicates with the computer.
-`i2c_addr` | int | - |
-`i2c_baud_rate` | int | 115200 | The rate at which data is sent to the IMU. Optional.
----
-
-```json
-{
-    "name": "<my-movement-sensor-name>",
-    "type": "<TYPE>",
-    "model": "<MODEL>",
-    "attributes": {
-        "<whatever other attributes>": "<example>",
-        "connection_type": "I2C",
-        "i2c_attributes": {
-            "i2c_addr": 111,
-            "i2c_bus": "1"
-        }
-    }
-}
-```
-
-### SPI Bus Config Attributes
+IMU-VectorNav attributes:
 
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----
