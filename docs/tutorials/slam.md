@@ -5,6 +5,7 @@ weight: 50
 type: "docs"
 draft: false
 description: "Instructions to run SLAM with either a webcam or provided example data."
+# SMEs: Kat
 ---
 
 ## Warning: This is an experimental feature.
@@ -174,7 +175,7 @@ The following setup allows you to run ORB-SLAM3 in offline mode using either one
 ### The dataset
 In offline mode, SLAM will use an existing dataset to create a map.
 
-You might have an RGB dataset already saved in your `data_dir/data` directory from running SLAM in live mode. If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/data.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
+You might have an RGB dataset already saved in your `data_dir/data` directory from running SLAM in live mode. If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-office-hallway-1-rgbd.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
 
 If you downloaded our dataset, and assuming that the zip file is now located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following command:
 
