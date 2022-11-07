@@ -17,7 +17,7 @@ type: "docs"
 	<li><a href="/getting-started/high-level-overview">Viam Overview</a></li>
 	<li><a href="http://www.viam.com/use-cases">Viam Use Cases</a></li>
 	<li><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs&ab_channel=EliotHorowitz">Intro Video</a></li>
-	<li><a href="/tutorials/how-to-build-a-mock-robot/">Build a Mock Robot without hardware</a></li>
+	<li><a href="/tutorials/how-to-build-a-mock-robot/">Build a Mock Robot without Hardware</a></li>
 </ul>
   </div>
   <div class="mra-column">
