@@ -1,5 +1,5 @@
 ---
-title: "Run SLAM on your Robot"
+title: "How to Run SLAM on your Robot"
 linkTitle: "Run SLAM on your Robot"
 weight: 50
 type: "docs"
@@ -58,8 +58,8 @@ The configuration of SLAM happens in two steps:
 #### Add a webcam and calibrate it
 
 Follow these tutorials to connect and calibrate your webcam:
-* [Connect and configure a webcam](../how-to-configure-a-camera/#connect-and-configure-a-webcam)
-* [Calibrate a camera](../how-to-configure-a-camera/#calibrate-a-camera)
+* [Connect and configure a webcam](../configure-a-camera/#connect-and-configure-a-webcam)
+* [Calibrate a camera](../configure-a-camera/#calibrate-a-camera)
 
 #### Add SLAM to the configuration
 

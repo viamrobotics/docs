@@ -1,6 +1,6 @@
 ---
-title: "Configuring a SCUTTLE Robot with a Camera"
-linkTitle: "Configuring a SCUTTLE Robot"
+title: "How to Configure a SCUTTLE Robot with a Camera"
+linkTitle: "Configure a SCUTTLE Robot"
 weight: 15
 type: "docs"
 description: "Instructions for configuring a SCUTTLE Robot on the Viam platform"

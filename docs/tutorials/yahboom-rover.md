@@ -1,6 +1,6 @@
 ---
-title: "Setting up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam"
-linkTitle: "Driving a Yahboom Rover with a Gamepad"
+title: "How to Set Up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam"
+linkTitle: "Drive a Yahboom Rover with a Gamepad"
 weight: 25
 type: "docs"
 description: "Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app."
@@ -209,7 +209,7 @@ But wait!
 This rover has a camera on it.
 
 Once again, find the **Create Component** section at the bottom of the **CONFIG** tab.
-Follow [these instructions on how to connect and configure a camera](../../tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam).
+Follow [these instructions on how to connect and configure a camera](../../tutorials/configure-a-camera/#connect-and-configure-a-webcam).
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
 
