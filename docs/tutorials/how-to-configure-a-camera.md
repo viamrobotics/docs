@@ -9,7 +9,8 @@ description: "Instructions for configuring and calibrating cameras."
 
 ## Introduction
 
-Cameras are a key component of many applications such as Computer Vision and SLAM, to name a few. This tutorial shows you how to connect a camera and how to calibrate it.
+[Cameras](/components/camera/) are a key component of many applications such as computer vision and SLAM, to name a few.
+This tutorial shows you how to connect a camera and how to calibrate it.
 
 ## Connect and configure a webcam
 
