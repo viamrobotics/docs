@@ -52,7 +52,7 @@ Before you proceed with controlling your mock robot, you are going to need to in
 
 Follow the steps outlined on the **SETUP** tab of the Viam app in order to install viam-server on your local computer.
 
-## Controlling your mock robot using the Viam App
+## Controlling your mock robot using the Viam app
 
 When you add the fake motor and arm components to your robot, the Viam app automatically generates a UI for your motor and arm under the **CONTROL** tab.
 
