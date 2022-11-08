@@ -198,7 +198,6 @@ m1.Stop(context.Background(), nil)
 
 // run motor2 at 1000 RPM for 200 rotations
 m2.GoFor(context.Background(), 1000, 200, nil)
-time.Sleep(3 * time.Second)
 ```
 {{% /tab %}}
 {{< /tabs >}}
