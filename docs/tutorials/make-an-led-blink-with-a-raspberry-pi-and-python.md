@@ -11,12 +11,10 @@ This tutorial is a good introduction to Python programming, and developing code 
 
 <img src="../img/make-an-led-blink-with-a-raspberry-pi-and-python/image3.gif" alt ="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="600"><br>
 
-
-
 {{% alert title="Note" color="note" %}}  
 This is part 2 of Viam's Intro to Robotics series.
 If you haven't completed [Part 1](../make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/), be sure to go back and complete that before starting on this tutorial.
-You should have already set up [your Raspberry Pi](../../getting-started/installation/), [set up viam-server](../../getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam app](../../getting-started/installation/#adding-your-pi-on-the-viam-app) before proceeding.
+You should have already set up [your Raspberry Pi](../../getting-started/rpi-install/), [set up viam-server](../../getting-started/rpi-install/#installing-viam-server), built your circuit, and [connected your robot to the Viam app](../../getting-started/rpi-install/#adding-your-pi-on-the-viam-app) before proceeding.
 {{% /alert %}}
 
 For reference, the circuit you are building for this tutorial looks like this:
@@ -42,9 +40,9 @@ You will need the following hardware, tools, and software to complete this proje
 
 <li>Refer to the <a href="https://docs.viam.com/getting-started/installation" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 
-<li>Be sure that you have <a href="https://docs.viam.com/getting-started/installation/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
+<li>Be sure that you have <a href="https://docs.viam.com/getting-started/rpi-install/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
 
-<li>Be sure that you are <a href="https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi">running Raspbian on your Pi.</a></li>
+<li>Be sure that you are <a href="https://docs.viam.com/getting-started/rpi-install/#installing-raspian-on-the-raspberry-pi">running Raspbian on your Pi.</a></li>
 
 <li>You must also enable SSH on your Pi.</li>
 </ol>
@@ -57,7 +55,7 @@ You will need the following hardware, tools, and software to complete this proje
 <li><a href="http://amzn.to/2Ex2v5q" target="_blank">Blue LED</a></li>
 <li><a href="http://amzn.to/2qWurxS" target="_blank">Multimeter (optional)</a></li></ol>
 
-### Software:
+### Software
 
 - <a href="https://www.python.org/download/releases/3.0/" target="_blank">Python3</a>[^p3]
 
@@ -69,7 +67,7 @@ You will need the following hardware, tools, and software to complete this proje
 
 [^p3]: Python 3: <a href="https://www.python.org/download/releases/3.0/" target="_blank">ht<span></span>tps://www.python.org/download/releases/3.0/</a>
 
--   [Viam Python SDK](https://python.viam.dev/)
+- [Viam Python SDK](https://python.viam.dev/)
 
 ## How to install the Viam Python SDK on your Raspberry Pi
 
@@ -94,9 +92,7 @@ Make sure your Raspberry Pi and the computer you are using to SSH into your Rasp
 Next, launch your terminal (on Mac and Linux) and replace the user and hostname with the user and hostname you configured when you set up your Pi.
 On Windows, you can use an SSH client such as <a href="https://itsfoss.com/putty-linux/" target="_blank">Putty</a>[^putty].
 
-
 [^putty]:Putty: <a href="https://itsfoss.com/putty-linux" target="_blank">ht<span></span>tps://itsfoss.com/putty-linux</a>
-
 
 ```bash
 ssh <username>@<hostname>.local
@@ -104,9 +100,9 @@ ssh <username>@<hostname>.local
 
 Default username and password on Raspberry Pi's are
 
--   username: pi
+- username: pi
 
--   password: raspberry
+- password: raspberry
 
 {{< alert title="Caution" color="caution" >}}  
 It's bad practice to keep the default username and passwords since they make it easy for hackers to get access to your Pi.
@@ -115,7 +111,6 @@ In the past, a malware infected thousands of Raspberry Pi devices that were usin
 See <a href="https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/" target="_blank">ht<span></span>tps://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/</a>
 {{< /alert >}}
 
-[^malware]: ZD Net Article on Raspberry Pi Malware: <a href="https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/" target="_blank">ht<span></span>tps://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/</a>
 
 If you can't remember your user and hostname, you can also find out the IP address by other means like checking the network devices list on your router/modem.
 
@@ -127,6 +122,7 @@ On successful login, you'll be presented with the terminal of your Raspberry Pi.
 Now you can run any commands on your Raspberry Pi through this terminal remotely (within the current network) without having to access your Raspberry Pi physically.
 
 ### Installing pip on a Raspberry Pi
+
 <a href="https://pip.pypa.io/en/stable/#" target="_blank">Package Installer for Python, aka, pip</a>[^pip] is the <a href="https://packaging.python.org/guides/tool-recommendations/" target="_blank"> official package installer for Python</a>[^pysoftrec].
 You can use it to install packages from the <a href="https://pypi.org/" target="_blank">Python Package Index</a>[^pypack] and other indexes, such as the Viam Python SDK package. You can install pip by typing the following command into the terminal:
 
@@ -140,7 +136,7 @@ sudo apt-get install python3-pip
 
 ### How to install the Viam Python SDK on a Raspberry Pi
 
-In this step, you are going to install the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit). 
+In this step, you are going to install the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit).
 This allows you to write programs in the Python programming language to create robots using [Viam](http://www.viam.com/).
 
 To install the Viam Python SDK on your Raspberry Pi, you must run the following command in your terminal:
@@ -161,6 +157,7 @@ On your local machine (not your Raspberry Pi), open up a new terminal window and
 ```bash
 touch blink.py
 ```
+
 Open up a code editor, like VS Code, you should now see a file in your explorer window called blink.py.
 Click on that file to open it in the code editor.
 
@@ -219,7 +216,6 @@ What you see here is a list of the various resources, components, and services t
 
 <img src="../img/make-an-led-blink-with-a-raspberry-pi-and-python/image4.png" alt ="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="500"><br>
 
-
 ### How to write Python code to make an LED Blink
 
 The first thing you need to do is import the [Board component](../../components/board/) from the Viam Python SDK.
@@ -241,7 +237,7 @@ local = Board.from_robot(robot, 'local')
 led = await local.gpio_pin_by_name('8')
 ```
 
-Now that we have our board, and LED initialized, let's create an infinite loop that will blink the LED on and off. 
+Now that we have our board, and LED initialized, let's create an infinite loop that will blink the LED on and off.
 Directly after the code you pasted above, paste the following snippet:
 
 ```python
@@ -288,7 +284,7 @@ In this tutorial, you learned how to remotely connect to a Raspberry Pi using SS
 
 If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, I would recommend that you check out the following tutorials:
 
--  [Tutorial List](..)
+- [Tutorial List](..)
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
