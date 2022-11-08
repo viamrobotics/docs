@@ -17,7 +17,7 @@ type: "docs"
 	<li><a href="/getting-started/high-level-overview">Viam Overview</a></li>
 	<li><a href="http://www.viam.com/use-cases">Viam Use Cases</a></li>
 	<li><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs&ab_channel=EliotHorowitz">Intro Video</a></li>
-	<li><a href="/tutorials/how-to-build-a-mock-robot/">Build a Mock Robot without Hardware</a></li>
+	<li><a href="/tutorials/build-a-mock-robot/">Build a Mock Robot without Hardware</a></li>
 </ul>
   </div>
   <div class="mra-column">
@@ -51,8 +51,8 @@ Yahboom-based tutorials
 - [Setting up a Yahboom 4WD Rover with a Bluetooth Gamepad](./tutorials/yahboom-rover/)
 
 Simple Raspberry Pi tutorials
-- [Making an LED Blink with a Raspberry Pi](./tutorials/how-to-make-an-led-blink-with-a-raspberry-pi-using-viam/)
-- [Making an LED Blink with a Raspberry Pi and Viam's Python SDK](./tutorials/how-to-make-an-led-blink-with-a-raspberry-pi-and-python/)
+- [Making an LED Blink with a Raspberry Pi](./tutorials/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/)
+- [Making an LED Blink with a Raspberry Pi and Viam's Python SDK](./tutorials/make-an-led-blink-with-a-raspberry-pi-and-python/)
 
 Other tutorials
 - [Building a Line-Following Robot with a Rover and a Camera](./tutorials/webcam-line-follower-robot/)
