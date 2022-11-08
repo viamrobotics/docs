@@ -41,7 +41,6 @@ type: "docs"
 The Tutorials topic and the TOC list our tutorials in order from the  basic to complex.
 {{% /alert%}}
 
-
 SCUTTLE-based tutorials
 - [Configuring SCUTTLE Rover with a Camera](./tutorials/scuttlebot/)
 - [Controlling a SCUTTLE Rover with a Bluetooth Gamepad](./tutorials/scuttle-gamepad/)
@@ -67,6 +66,7 @@ Other tutorials
 - [Gantry](./components/gantry/)
 - [Input Controller](./components/input-controller/)
 - [Motor](./components/motor/)
+- [Movement Sensor](./components/movement-sensor/)
 - [Sensor](./components/sensor/)
 - [Servo](./components/servo/)
 
