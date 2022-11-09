@@ -5,7 +5,7 @@ weight: 12
 type: "docs"
 description: "A guide to getting started with app.viam.com."
 ---
-The [Viam app](https//:app.viam.com) is a tool for configuring, controlling, and managing robots from anywhere.
+The [Viam app](https://app.viam.com/) is a tool for configuring, controlling, and managing robots from anywhere.
 This guide covers how to manage organizations, locations, robots, and robot parts from the Viam app.
 
 {{% alert title="Info" color="tip" %}}
@@ -15,7 +15,7 @@ For more conceptual information about what organizations, locations, robots, and
 ## Creating an account
 If you received an invitation from an existing organization, use the email link to sign up.
 
-If you're signing up without an invitation link, go to [app.viam.com](https://app.viam.com) and create an account with your Google account or an email and password of your choice.
+If you're signing up without an invitation link, go to [app.viam.com](https://app.viam.com/) and create an account with your Google account or an email and password of your choice.
 
 ## Navigating organizations
 Click the drop down in the upper right corner of the page.
