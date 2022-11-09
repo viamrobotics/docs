@@ -102,7 +102,7 @@ On Windows, you can use an SSH client such as <a href="https://itsfoss.com/putty
 ssh <username>@<hostname>.local
 ```
 
-Default username and password on Raspberry Pi's are
+Default username and password on Raspberry Pis are
 
 -   username: pi
 
