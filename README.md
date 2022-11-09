@@ -36,7 +36,8 @@ Don't hesitate to create a pull request. Every contribution is appreciated.
 
 ### Notes for contributors
 
-- Don't make forks on the main repo, do in your own fork.
+* Don't make forks on the main repo, do in your own fork.
+
 * Every sentence should be on a new line.
 * Test locally before submitting a PR.
 * Always submit a PR before merging.
@@ -85,7 +86,7 @@ description: "Instructions for building a line-following robot that uses a webca
 
 When linking to an image or another page in markdown, it's best to use a relative link. For example, if you were writing in `getting-started/high-level-overview.md`, hugo sees this as a directory on the site of `docs.viam.com/getting-started/high-level-overview/`.
 
-* To link to another markdown file in the same directory as the markdown file, you would do e.g. `[mylink](../rpi-install/)`. **Note the trailing slash as another markdown file is another web directory in hugo**
+* To link to another markdown file in the same directory as the markdown file, you would do e.g. `[mylink](../rpi-setup/)`. **Note the trailing slash as another markdown file is another web directory in hugo**
 * To link to some image in the same directory as the markdown file, you would do e.g. `[mylink](../img/image1.png)`.
 * To link something in a different directory, you would do e.g. `[mylink](../../components/)`
 
@@ -114,8 +115,8 @@ This menu is a list of page sections and also has items to print or open a doc i
 
 ### The Index Files
 
-There are two kinds: index.html and _index.html. The index.html works just as you’d expect. The_index.html is found inside page bundles, which are no more than a self-contained directory having the markdown files and image files under the same directory. We’re using _index.html files.
-The_index.html file act as a landing page into the page bundle (i.e., directory). It lists the page title of each page in the bundle (you can have many pages) and can also display the lead-in paragraph (i.e., the description from the Front Matter) for the page.
+There are two kinds: index.html and _index.html. The index.html works just as you’d expect. The _index.html is found inside page bundles, which are no more than a self-contained directory having the markdown files and image files under the same directory. We’re using _index.html files.
+The _index.html file act as a landing page into the page bundle (i.e., directory). It lists the page title of each page in the bundle (you can have many pages) and can also display the lead-in paragraph (i.e., the description from the Front Matter) for the page.
 The formatting works identically to MkDocs: it’s still markdown. But Hugo is better at handling basic html and the extra html that we need for some layout tasks. So now list indenting works as expected.
 
 ### Footnotes

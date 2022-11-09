@@ -10,7 +10,7 @@ This tutorial will guide you through setting up a SCUTTLE Robot with a camera.
 ## Requirements
 
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-install/#installing-raspian-on-the-raspberry-pi), if necessary.
+Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
 
 * <a href="https://www.scuttlerobot.org/shop/" target="_blank">A SCUTTLE Robot</a>[^asr]
 * A camera
@@ -19,7 +19,6 @@ Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-inst
 TLE Robot:<a href="https://www.scuttlerobot.org/shop/" target="_blank">  ht<span></span>tps://www.scuttlerobot.org/shop/</a>
 
 ## Configuring the Board
-
 {{% alert title="Note" color="note" %}}  
 When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
 {{% /alert %}}
@@ -45,7 +44,6 @@ Initially, the left-side Attributes panel for board component is empty.
 The right-side panel contains a list of available board component Attributes.">
 
 ## Configuring the Motors and Wheels
-
 ### Adding the Right-Side Wheel
 
 The next step is to add a wheel and make it spin.
@@ -60,6 +58,7 @@ The first step is to create a <strong>NEW COMPONENT</strong>.
 
 This screen provides read-only displays of JSON configuration and allows you to select which board controls this motor, to toggle the <strong>Component Pin Assignment</strong> between Direction and Int1/Int2, and to <strong>Enable Pins</strong> (i.e., set them to High, Low, or Neither).
 Also, you can add a <strong>Frame</strong> and a <strong>Data Capture Pathway</strong>, and set the <strong>Depends On</strong>.<br>
+
 
 <li class="spacing">Next, you'll need to describe how the motor is wired to the Pi:</li>
 <ol type="a">
@@ -179,6 +178,7 @@ From the Config screen:
 6. Enter "left" in <code>"left"</code>
 7. Enter "right" in <code>"right"</code>
 
+
     The <code>left</code> and <code>right</code> attributes are intended to be the motors corresponding to the left and right sides of the rover.
     You can simply add “left” and “right” between the brackets for your set of motors, respectively.
 
@@ -210,7 +210,7 @@ Try driving your SCUTTLE Robot around using the WASD keyboard controls described
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
 {{% /alert %}}
 
-## Configuring the Camera
+## Configuring the Camera 
 
 Finally, we'll add a camera to your SCUTTLE Robot.
 To begin, click <strong>NEW COMPONENT</strong> before proceeding to the steps below.
@@ -262,16 +262,15 @@ If you wish to copy and paste code for your camera, use the following:
 Once you save the config, you'll be able to see your camera's stream in the Control tab.
 
 ## On Completion
-
 After successfully completing this tutorial, you should have a fully functional SCUTTLE Robot. You can drive it around and view its camera stream. To take things to the next level, check out our [Color Detection with SCUTTLE Robot](../color-detection-scuttle/) tutorial or create your own camera-related tutorial.
 Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle-gamepad/) tutorial or our [Line Follower Robot tutorial](../webcam-line-follower-robot/).
 
 ## Documents Referenced
 
-* [**Installing Raspian on the Raspberry Pi**](../../getting-started/rpi-install/#installing-raspian-on-the-raspberry-pi)
+  * [**Installing Raspian on the Raspberry Pi**](../../getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi)
 
-* [**Color Detection with SCUTTLE Robot on Viam**](../color-detection-scuttle/)
+  * [**Color Detection with SCUTTLE Robot on Viam**](../color-detection-scuttle/)
 
-* [**Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad**](../scuttle-gamepad/)
+  * [**Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad**](../scuttle-gamepad/)
 
-* [**Line Following with SCUTTLE Robot on Viam**](../webcam-line-follower-robot/)
+  * [**Line Following with SCUTTLE Robot on Viam**](../webcam-line-follower-robot/)

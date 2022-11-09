@@ -23,7 +23,7 @@ You will need the following tools to complete the project:
 
 <li>Refer to the <a href="https://docs.viam.com/getting-started/installation" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 
-<li>Be sure that you have <a href="https://docs.viam.com/getting-started/rpi-install/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
+<li>Be sure that you have <a href="https://docs.viam.com/getting-started/rpi-setup/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
 </ol>
 <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
 <li><a href="http://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
@@ -39,8 +39,8 @@ You will need the following tools to complete the project:
 ## Project setup
 
 Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi.
-We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](/getting-started/rpi-install/) guide in the Viam documentation.
-Be sure to follow all the steps including [adding your Pi on the Viam app.](/getting-started/rpi-install/#adding-your-pi-on-the-viam-app)
+We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](/getting-started/rpi-setup/) guide in the Viam documentation.
+Be sure to follow all the steps including [adding your Pi on the Viam app.](/getting-started/rpi-setup/#adding-your-pi-on-the-viam-app)
 
 {{% alert title="Tip" color="tip" %}}  
 If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
@@ -58,7 +58,7 @@ The resistor is used to limit the current that is being drawn and is called a *c
 
 **General-purpose input/output** (**GPIO**) is a digital signal <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">pin</a>[^pin] on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
 
-[^pin]: Pin (Electronics): <a href="<https://en.wikipedia.org/wiki/Pin_(electronics>)" target="_blank">https://en.wikipedia.org/wiki/Pin_(electronics)</a>
+[^pin]: Pin (Electronics): <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">https://en.wikipedia.org/wiki/Pin_(electronics)</a>
 
 <img src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image10.png" alt ="Photo showing a Raspberry Pi 4 with a white box around the GPIO pins on the Pi and big red letters that say, 'GPIO Pins.'" width="90%"><br>
 
@@ -69,7 +69,7 @@ As you can see in the diagram below, there are 40 output pins on the Pi. You can
 
 One thing to note that might be confusing with the pin numbering on Raspberry Pi's: There are 40 physical pins numbered from 1 to 40.
 That is **board pin numbering,** corresponding to the pin's physical location on the board.
-When working with the GPIO pins with Viam, you will use the board numbers.
+When working with the GPIO pins with Viam, you will use the board numbers. 
 Pin 1 can be located pretty easily, since Pin 1 is the always the pin whose corner is rounded.
 
 Then there's numbering them by function or GPIO connection.
@@ -96,9 +96,9 @@ The long anode should be connected to the resistor and the short cathode should 
 
 ## Configuring your bot using the Viam app
 
-Before proceeding, be sure that you have added your Pi to the Viam app. Steps on how to do this can be found in the [Adding your Pi on the Viam App](/getting-started/rpi-install/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
+Before proceeding, be sure that you have added your Pi to the Viam app. Steps on how to do this can be found in the [Adding your Pi on the Viam App](/getting-started/rpi-setup/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
 
-Now that we have gotten that out of the way, let's get back to setting up your robot in the Viam app.
+Now that we have gotten that out of the way, let's get back to setting up your robot in the Viam app. 
 First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's config.
 
 <img src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image2.png" alt ="Screenshot of the Vam App showing the default board configuration on the 'components' tab." width="100%"><br>
@@ -135,7 +135,7 @@ Hopefully, you have learned how the GPIO on a Raspberry Pi works, and how to bui
 You are ready for your next robotics project.
 If you are looking for some projects that would be a great next step, we would recommend that you check out the following:
 
-- [Tutorial List](/tutorials/)
+-   [Tutorial List](/tutorials/)
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 

@@ -24,7 +24,7 @@ If you already have a Raspberry Pi with Linux installed on it, check if the Linu
 First, `ssh` into your Pi and then run `lscpu`.
 Example output:
 
-![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspbery Pi. A red box highlights the command and the "Architecture: aarch64.](../../getting-started/img/rpi-install/lscpu-output.png)
+![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspbery Pi. A red box highlights the command and the "Architecture: aarch64.](../../getting-started/img/rpi-setup/lscpu-output.png)
 
 If the value of “Architecture: _'xxxxxx'_” ends in "64", you can skip ahead to [Installing viam-server](#installing-viam-server).
 Otherwise continue to [Installing Raspian on the Raspberry Pi](#installing-raspian-on-the-raspberry-pi).
@@ -44,16 +44,16 @@ If you do not already have the <a href="https://www.raspberrypi.com/software/" t
 After installing successfully, connect your microSD card to your computer and launch the Raspberry Pi Imager.
 You should be greeted with a window that looks like:
 
-![Raspberry Pi Imager launcher window showing a "Choose OS" and "Choose Storage" buttons.](../../getting-started/img/rpi-install/imager-launch-screen.png)
+![Raspberry Pi Imager launcher window showing a "Choose OS" and "Choose Storage" buttons.](../../getting-started/img/rpi-setup/imager-launch-screen.png)
 
 Select `CHOOSE OS`.
 Since you need a 64-bit version of Linux, you will need to select it from the `Rapsberry Pi OS (other)` menu.
 
-![Raspberry Pi Imager window showing "Raspberry Pi OS (Other) is selected.](../../getting-started/img/rpi-install/select-other-custom-os.png)
+![Raspberry Pi Imager window showing "Raspberry Pi OS (Other) is selected.](../../getting-started/img/rpi-setup/select-other-custom-os.png)
 
 Then select the entry titled `Raspberry Pi OS Lite (64-bit)`.
 
-![Raspberry Pi Imager window showing "Raspberry Pi OS Lite (64-bit)" is selected.](../../getting-started/img/rpi-install/select-other-rpi.png)
+![Raspberry Pi Imager window showing "Raspberry Pi OS Lite (64-bit)" is selected.](../../getting-started/img/rpi-setup/select-other-rpi.png)
 
 You should be brought back to the initial launch screen.
 To make your Raspberry Pi easier to access in the next step, it's recommended that you configure your Raspberry Pi's hostname, ssh credentials, and wifi now.
@@ -63,7 +63,7 @@ Click the gear-shaped settings icon in the lower right to bring up the Advanced 
 If you are using a non-Raspberry Pi OS, altering the Advanced options will cause the initial boot to fail.
 {{% /alert  %}}
 
-![Raspberry Pi Imager window showing the advanced options menu.](../../getting-started/img/rpi-install/imager-set-hostname.png)
+![Raspberry Pi Imager window showing the advanced options menu.](../../getting-started/img/rpi-setup/imager-set-hostname.png)
 
 Check `Set hostname` and enter the name you would like to access the Pi by in that field.
 
@@ -78,12 +78,12 @@ If this section is empty, you can either generate a new SSH key using <a href="h
 
 [^sshkey]:SSH Key Generation: <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank">ht<span></span>tps://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent</a>
 
-![Raspberry Pi Imager window showing "Set Hostname" and "Enable SSH" both selected.](../../getting-started/img/rpi-install/imager-set-ssh.png)
+![Raspberry Pi Imager window showing "Set Hostname" and "Enable SSH" both selected.](../../getting-started/img/rpi-setup/imager-set-ssh.png)
 
 If you decide to use password authentication method: click on `Use password authentication`.
 If you scroll down, you have the option to change the username, then to set a password:
 
-![Raspberry Pi Imager window showing the "Set username and password" option is selected.](../../getting-started/img/rpi-install/imager-set-passwordauthentication.png)
+![Raspberry Pi Imager window showing the "Set username and password" option is selected.](../../getting-started/img/rpi-setup/imager-set-passwordauthentication.png)
 
 {{% alert title="Tip" color="tip" %}}
 Be sure that you remember the `hostname`, `username`, and `password` you use, as you will need this when you SSH into your Pi.
@@ -105,34 +105,34 @@ Lastly, you should connect your Pi to Wi-Fi, so that you can run viam-server wir
 Check `Configure wireless LAN` and enter your wireless network credentials.
 SSID (short for Service Set Identifier) is your Wi-Fi's name, followed by password.
 Change the section `Wireless LAN country` to where your router is currently being operated and then you will hit save:
-![Raspberry Pi Imager window showing the "Configure wireless LAN" option selected with SSID and password information for a wireless network.](../../getting-started/img/rpi-install/imager-set-wifi.png)
+![Raspberry Pi Imager window showing the "Configure wireless LAN" option selected with SSID and password information for a wireless network.](../../getting-started/img/rpi-setup/imager-set-wifi.png)
 
 This should return you to the initial screen.
 Now you need to pick your storage medium, so click `CHOOSE STORAGE`:
 
-![Raspberry Pi Imager window showing the main page, and the "Choose Storage" button is selected.](../../getting-started/img/rpi-install/imager-selected-os.png)
+![Raspberry Pi Imager window showing the main page, and the "Choose Storage" button is selected.](../../getting-started/img/rpi-setup/imager-selected-os.png)
 
 You may have many devices listed, select the microSD card you intend to use in your Raspberry Pi.
 If this page is blank and you do not have any listed, make sure your microSD card is connected to your computer correctly:
 
-![The storage screen is shown with a generic SD card is available as an option.](../../getting-started/img/rpi-install/imager-select-storage.png)
+![The storage screen is shown with a generic SD card is available as an option.](../../getting-started/img/rpi-setup/imager-select-storage.png)
 
 After clicking save, double check your OS and Storage settings and then click `WRITE`:
 
-![A warning is show that says "All exisiting data on the SD card will be erased. Are you sure that you want to continue?"](../../getting-started/img/rpi-install/imager-write-confirm.png)
+![A warning is show that says "All exisiting data on the SD card will be erased. Are you sure that you want to continue?"](../../getting-started/img/rpi-setup/imager-write-confirm.png)
 
 You will be prompted to confirm erasing your microSD card: select `YES`.
 You may also be prompted by your operating system to enter an Administrator password:
 
-![macOS admin password confirmation screen.](../../getting-started/img/rpi-install/imager-permission.png)
+![macOS admin password confirmation screen.](../../getting-started/img/rpi-setup/imager-permission.png)
 
 After granting permissions to the Imager, it will begin writing and then verifying the Linux installation to the MicroSD card:
 
-![The Rasperberry Pi Imager will display information on the status of the write.](../../getting-started/img/rpi-install/imager-writing.png)
+![The Rasperberry Pi Imager will display information on the status of the write.](../../getting-started/img/rpi-setup/imager-writing.png)
 
 Remove the microSD card from your computer when it is complete:
 
-![You will be notified with a dialouge box informing you that Raspberry Pi OS Lite has been written successfully."](../../getting-started/img/rpi-install/imager-done.png)
+![You will be notified with a dialouge box informing you that Raspberry Pi OS Lite has been written successfully."](../../getting-started/img/rpi-setup/imager-done.png)
 
 Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
 A red led will turn on to indicate its on.
@@ -177,7 +177,7 @@ sudo raspi-config
 
 Use your keyboard to select "Interface Options" and enable the relevant protocols.
 
-![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "3 Interface Options" option where you can find the I2C and other drivers](../../getting-started/img/rpi-install/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
+![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "3 Interface Options" option where you can find the I2C and other drivers](../../getting-started/img/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
 
 For these changes to take effect, you need to restart your Raspberry Pi if it hasn't already prompted you to do so.
 
@@ -192,15 +192,15 @@ In your web browser, navigate to the Viam app ([https://app.viam.com](https://ap
 Once you are logged in, a location will be created for you by default, or you can create a new location by filling out the field on the left and then clicking **ADD**.
 Location are just a way of organizing robots. You can find more information on [managing robot fleets here](../../product-overviews/fleet-management/#how-to-use-the-viam-app).
 
-![Screenshot from the Viam app showing the add new location page.](../../getting-started/img/rpi-install/add-location.png)
+![Screenshot from the Viam app showing the add new location page.](../../getting-started/img/rpi-setup/add-location.png)
 
 Select your location and use the form on the right to create a new Robot. If this is the first robot in this location, the app displays an arrow pointer to the **New Robot** field (upper RH-corner). Enter a name for your robot, then click **Add Robot**:
 
-![Screenshot from the Viam app showing the create a robot page.](../../getting-started/img/rpi-install/add-robot.png)
+![Screenshot from the Viam app showing the create a robot page.](../../getting-started/img/rpi-setup/add-robot.png)
 
 Navigate to your new robot, which should show the setup page as shown below:
 
-![Screenshot from the Viam app showing the Setup page.](../img/rpi-install/view-robot.png)
+![Screenshot from the Viam app showing the Setup page.](../img/rpi-setup/view-robot.png)
 
 ## Follow the steps on the setup tab
 
@@ -210,7 +210,7 @@ Once you have installed viam-server on your Pi, refresh the page on the Viam app
 
 You should also see the the notification on the setup page that says "Your robot is connected!"
 
-![Screenshot from the Viam app showing a dialouge box with a greencheckmark and text that reads, "Your robot is successfully connected! Proceed to the config tab."](../img/rpi-install/your-robot-is-connected.jpg)
+![Screenshot from the Viam app showing a dialouge box with a greencheckmark and text that reads, "Your robot is successfully connected! Proceed to the config tab."](../img/rpi-setup/your-robot-is-connected.jpg)
 
 ## Next Steps
 

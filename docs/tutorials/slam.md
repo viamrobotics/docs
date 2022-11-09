@@ -8,75 +8,62 @@ description: "Instructions to run SLAM with either a webcam or provided example 
 # SMEs: Kat
 ---
 
-## Warning: This is an experimental feature
-
+## Warning: This is an experimental feature.
 Stability is not guaranteed. Breaking changes are likely to occur, and occur often.
 
 ## Introduction
-
 [SLAM](../../services/slam/) allows your robot to create a map of its surroundings, as well as find its location within that map.
 
 This tutorial shows you how to run ORB-SLAM3 on your robot. You have two choices:
-
 * Run SLAM in online mode with a webcam. The webcam can be installed on a robot, or just be held by hand.
 * Run SLAM in offline mode either with collected data or our provided example data.
 
 ## Requirements
 
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-install/#installing-raspian-on-the-raspberry-pi), if necessary.
+Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
 ## Setup
-
 If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](../../getting-started/installation).
 
 Next, we'll install the ORB-SLAM3 binary.
 
 ### Installing the ORB-SLAM3 binary
-
 First, `ssh` into your Pi and then check the architecture of your system by running `lscpu`. Depending on the output download and install one of the following ORB-SLAM3 binaries:
 
 * AArch64 (ARM64) (e.g., on an RPI):
-
     ```bash
     sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
     ```
-
 * x86_64:
-
     ```bash
     sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
     ```
 
 Make the file executable by running:
-
 ```bash
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
 
 ## Running ORB-SLAM3 with a webcam
-
 The following setup allows you to run ORB-SLAM3 in live mode using a webcam.
 
 ### Configuration using Viam
 
 The configuration of SLAM happens in two steps:
-
 1. Add a webcam and calibrate it.
 2. Add SLAM to the existing configuration.
 
 #### Add a webcam and calibrate it
 
 Follow these tutorials to connect and calibrate your webcam:
-
 * [Connect and configure a webcam](../configure-a-camera/#connect-and-configure-a-webcam)
 * [Calibrate a camera](../configure-a-camera/#calibrate-a-camera)
 
 #### Add SLAM to the configuration
 
 Find out your home directory by `ssh`-ing into your Pi, and typing `pwd`. This is an example of what you might see:
-
 ```bash
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
@@ -183,11 +170,9 @@ It might take a couple of minutes before the first map is created and will be sh
 {{% /alert %}}
 
 ## Running ORB-SLAM3 with a dataset
-
 The following setup allows you to run ORB-SLAM3 in offline mode using either one of your previously saved datasets, or our dataset that you can download and play with.
 
 ### The dataset
-
 In offline mode, SLAM will use an existing dataset to create a map.
 
 You might have an RGB dataset already saved in your `data_dir/data` directory from running SLAM in live mode. If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-office-hallway-1-rgbd.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
@@ -197,8 +182,7 @@ If you downloaded our dataset, and assuming that the zip file is now located in 
 ```bash
 scp ~/Downloads/data.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
 ```
-
-Be sure to replace `YOUR_USERNAME` and `YOUR_RPI_NAME` with your username and Pi name. The dataset is large, so it might take a while for it to copy over to your Pi.
+Be sure to replace `YOUR_USERNAME` and `YOUR_RPI_NAME` with your username and Pi name. The dataset is large, so it might take a while for it to copy over to your Pi. 
 
 Next, `ssh` into your Pi, and run:
 
@@ -213,7 +197,6 @@ Now you're ready to configure SLAM to use your dataset and to run in offline mod
 Next, we will add SLAM to the configuration.
 
 First, `ssh` into your Pi and find out your home directory by typing `pwd`. This is an example of what you might see:
-
 ```bash
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
@@ -259,19 +242,19 @@ It might take a couple of minutes before the first map is created and will be sh
 ## Troubleshooting
 
 ### Issue: "CURRENTLY NO MAP POINTS EXIST"
-
 This issue has a couple of potential causes.
 
 <img src="../img/run_slam/01_slam_tutorial_no_map_points.png" width="700"><br>
 <br>
 
-First, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up. Both in online and offline mode this might mean that you have to wait a little while before you can see a map on the UI.
+First, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up. Both in online and offline mode this might mean that you have to wait a little while before you can see a map on the UI. 
 
 Second, map generation depends on the quality of the dataset. For consecutive images, the camera's focus should not be moved too far from that of the previous image, and images should contain enough details that can be detected by ORB-SLAM3. Images from a white wall for example will not successfully generate a map. Try to point the camera into areas that contain a lot of information, such as objects, window frames, and similar.
 
 Furthermore, in online mode, it helps to move the camera around _slowly_, such that consecutive images contain similar items that can be matched to each other.
 
 In offline mode, it can be difficult to determine the quality of the dataset. If no map can be generated using the offline dataset, a new dataset should be generated.
+
 
 ## Additional Troubleshooting
 
