@@ -6,12 +6,15 @@ type: "docs"
 description: "Manage your robots in the cloud"
 ---
 
-Viam's fleet management system allows engineers to configure, control, debug, and manage their robots from the cloud at ([https://app.viam.com](https://app.viam.com)).
-[Click here to skip to a walkthrough of the Viam app.](#how-to-use-the-viam-app)
+Viam's fleet management system allows engineers to configure, control, debug, and manage their robots from the cloud at [https://app.viam.com](https://app.viam.com).
 
 Once you sign up, you can configure your first robot, connect your robot to the cloud, see the logs, control it, update the configuration, and then start bringing your robot to life.
 
 All communication happens securely over HTTPS using secret tokens that are in the robot's configuration.
+
+{{% alert title="Tip" color="tip" %}}  
+For a walkthrough of app.viam.com, check out [our guide on how to use the Viam app](/getting-started/app-usage/).
+{{% /alert %}}
 
 ## Robot Hierarchy
 
@@ -55,7 +58,3 @@ If the user uses remote control in the Viam app ([https://app.viam.com](https://
 [^webrtc]:WebRTC Documentation: <a href="https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection" target="_blank">ht<span></span>tps://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection</a>
 
 Local communication between parts can be done over gRPC or WebRTC.
-
-{{% alert title="Tip" color="tip" %}}  
-For a walkthrough of app.viam.com, check out [our guide on how to use the Viam app](/getting-started/app-usage/).
-{{% /alert %}}
