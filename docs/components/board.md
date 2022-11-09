@@ -24,25 +24,25 @@ Note that a desktop computer does not typically have GPIO pins, so it cannot act
 
 *Figure 1. Two different board options: SBC with GPIO pins running Viam server locally; or GPIO peripheral plugged into a computer's USB port, with the computer running Viam server.*
 
+
 {{% alert title="Note" color="note" %}}  
 The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers.
 In these cases, the board itself must run an instance of Viam server.
 {{% /alert %}}
-
 ## General Hardware Requirements
 
 A common board setup comprises the following:
 
-- A computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer, or a desktop computer outfitted with a GPIO peripheral.
+-   A computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer, or a desktop computer outfitted with a GPIO peripheral.
 
-- Power supply
+-   Power supply
 
-  - A power supply must supply the correct voltage and sufficient current to avoid damaging or power cycling the board.
+    -   A power supply must supply the correct voltage and sufficient current to avoid damaging or power cycling the board.
     See the board's data sheet for requirements.
     For example, a Raspberry Pi 4 takes a 5V power supply and converts it to 3.3V for its logic circuitry.
     The easiest way to power it is with a 5V USB-C power supply.
 
-- Some component(s) for the board to talk to!
+-   Some component(s) for the board to talk to!
 The board can't do much on its own so you'll probably want some actuators and/or sensors to make your robot a robot!
 
 ## General Configuration
@@ -55,13 +55,13 @@ simply as in this example:
 All boards will be of type **board**. Specify the correct **model** for your board.
 The following board models are currently supported (not exhaustive):
 
-- **pi**: Raspberry Pi 4 or Pi Zero W
+-   **pi**: Raspberry Pi 4 or Pi Zero W
 
-- **ti**: BeagleBone AI 64
+-   **ti**: BeagleBone AI 64
 
-- **jetson**: Nvidia Jetson Xavier NX
+-   **jetson**: Nvidia Jetson Xavier NX
 
-- **numato**: Numato GPIO model
+-   **numato**: Numato GPIO model
 
 Give your board a **name**. Choose any name you like, and note that this name is how you will refert to this particular board in your code and when configuring other components.
 
@@ -71,9 +71,9 @@ Essentially all electrical signals sent from and received by your board go throu
 Here are a few use cases:
 
 - Can be set high (to 3.3V for example) or low (zero volts) to do things like:
-  - Switch an enable or mode pin on a motor driver or other chip.
-  - Light up an LED or similar.
-  - Switch a relay.
+    - Switch an enable or mode pin on a motor driver or other chip.
+    - Light up an LED or similar.
+    - Switch a relay.
 - Send a PWM signal to control the speed of a motor or servo.
 - Read the state of the pin (i.e., the voltage), which can be used to monitor the status of whatever is connected to it.
 - Receive digital signals from sensors, as detailed in the Analog section below.
@@ -140,7 +140,6 @@ Note that the name of the SPI bus ("main") matches between the analog
 configuration and SPI configuration.
 
 #### Required Fields
-
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 |`name` | string | -- | Choose a name for the analog reader
@@ -192,18 +191,17 @@ An example:
 ```
 
 #### Required Fields
-
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 |`name`| string|--| Choose a name for the digital interrupt.
 |`pin`| string|--| Specify which GPIO pin of the board to use. Use the pin number, not the GPIO number.
-
 #### Optional Fields
 
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 |`type`| string|--| Set type to "basic" to count the number of interrupts that occur. Set type to "servo" to count the average time between the interrupts (akin to pulse width).
 |`formula`| string|--| Apply a mathematical function to the input.
+
 
 ## Other Communication Methods
 
@@ -235,7 +233,6 @@ The attributes section of a board using SPI will contain the following:
   ]
 }
 ```
-
 #### Required Fields
 
 Name | Type | Default Value | Description
@@ -249,7 +246,7 @@ I2C stands for inter-integrated circuit and is similar to SPI but requires fewer
 Some boards that support I2C have the SDA and SCL pins configured by default, so in your config file you need only specify which I2C bus you are using.
 For example, if you use I2C bus 1 on a Raspberry Pi 4, SDA and SCL will be pins 3 and 5, respectively.
 You will also need to enable I2C on your board if it is not enabled by default.
-Review the [instructions in our documentation](https://docs.viam.com/getting-started/rpi-setup/#enabling-the-i2c-protocol-on-the-raspberry-pi) to learn how to enable I2C on a Raspberry Pi 4.
+Review the [instructions in our documentation](/getting-started/rpi-setup/#enabling-the-i2c-protocol-on-the-raspberry-pi) to learn how to enable I2C on a Raspberry Pi 4.
 <a href="https://pinout.xyz/pinout/i2c" target="_blank">Pinout.xyz</a>[^pocom] has additional information about I2C on Raspberry Pi.
 [^pocom]:I2C - Inter Integrated Circuit on Pinout.xyz:  <a href="https://pinout.xyz/pinout/i2c" target="_blank">ht<span></span>tps://pinout.xyz/pinout/i2c</a>
 
@@ -265,13 +262,12 @@ Review the [instructions in our documentation](https://docs.viam.com/getting-sta
   ]
 }
 ```
-
 #### Required Fields
-
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 |`name`| string|--| Choose a name for the SPI bus. Note that a component that uses this bus must then have this same name configured in its attributes.
 |`bus`| string|--| Usually a number such as 1. See board data sheet for specifics on its I2C wiring. Raspberry Pi recommends using bus 1.
+
 
 ## Implementation
 

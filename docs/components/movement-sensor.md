@@ -35,7 +35,6 @@ Any movement sensor that uses I<sup>2</sup>C must be connected to a board that s
 {{% /alert %}}
 
 ## GPS
-
 A global positioning system (GPS) is based on receiving signals from satellites in the earth’s orbit.
 A GPS is useful for knowing where you are and how fast you’re going.
 `Position`, `CompassHeading` and `LinearVelocity` data are provided by all GPS modules.
@@ -51,7 +50,6 @@ Some models require other attributes, as detailed in their respective sections b
 We have integrated the following GPS modules into Viam’s RDK:
 
 ### GPS-NMEA
-
 This GPS model uses communication standards set by the National Marine Electronics Association (NMEA).
 The `gps-nmea` model can be connected via and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board:
 
@@ -175,7 +173,7 @@ Example config:
             "I2c_bus": "<name_of_bus_on_board>",
         },
         "ntrip_attributes": {
-       "ntrip_addr": "<ntrip_address>",
+ 		    "ntrip_addr": "<ntrip_address>",
             "ntrip_baud": 38400,
             "ntrip_password": "<password>",
             "ntrip_username": "<username>"
@@ -255,14 +253,13 @@ For all of the following RTK-station configurations, `children` is the list of o
         "board": "board",
         "connection_type": "serial",
         "serial_attributes": {
-         "serial_baud_rate": 115200,
-       "serial_path": "/dev/serial/by-path/<device_ID>"
+        	"serial_baud_rate": 115200,
+ 		    "serial_path": "/dev/serial/by-path/<device_ID>"
         },
         "correction_source": "serial"
     }
 }
 ```
-
 ### Connection Configuration
 
 Applies to all GPS models!
@@ -288,15 +285,14 @@ Name | Type | Default Value | Description
         "<whatever other attributes>": "<example>",
         "connection_type": "serial",
         "serial_attributes": {
-         "serial_baud_rate": 115200,
-       "serial_path": "<PATH>"
+        	"serial_baud_rate": 115200,
+ 		    "serial_path": "<PATH>"
         }
     }
 }
 ```
 
 #### I<sup>2</sup>C Config Attributes
-
 For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` field containing:
 
 Name | Type | Default Value | Description
@@ -366,7 +362,6 @@ Example IMU-VectorNav config:
   "depends_on": []
 }
 ```
-
 IMU-VectorNav attributes:
 
 Name | Type | Default Value | Description
@@ -382,7 +377,7 @@ Name | Type | Default Value | Description
 _**(Experimental!)**_
 
 We have integrated an experimental package that uses a visual odometry algorithm with dead reckoning to track the Position, Orientation, LinearVelocity and AngularVelocity of the camera’s frame.
-The `cameramono` model can use any single camera with this algorithm.
+The `cameramono` model can use any single camera with this algorithm. 
 
 In a Viam configuration file, a camera used as a movement sensor will require a [`camera` type component](../../components/camera/) and then a `movementsensor` type component that depends on the `camera` component, and a `motion_estimation_config` based on the camera properties.
 
@@ -420,7 +415,6 @@ In a Viam configuration file, a camera used as a movement sensor will require a 
 ```
 
 ## Software Implementation
-
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html)
 
 <br>
