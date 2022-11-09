@@ -8,7 +8,7 @@ description: "Manage your robots in the cloud"
 
 Viam's fleet management system allows engineers to configure, control, debug, and manage their robots from the cloud at [https://app.viam.com](https://app.viam.com).
 
-Once you sign up, you can configure your first robot, connect your robot to the cloud, see the logs, control it, update the configuration, and then start bringing your robot to life.
+Once you create an account, you can configure your first robot, connect your robot to the cloud, see the logs, control it, update the configuration, and then start bringing your robot to life.
 
 All communication happens securely over HTTPS using secret tokens that are in the robot's configuration.
 
