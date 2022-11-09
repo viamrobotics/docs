@@ -21,7 +21,7 @@ This tutorial shows you how to run ORB-SLAM3 on your robot. You have two choices
 ## Requirements
 
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/installation/#installing-raspian-on-the-raspberry-pi), if necessary.
+Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
 ## Setup

@@ -16,7 +16,7 @@ This tutorial is a good introduction to Python programming, and developing code 
 {{% alert title="Note" color="note" %}}  
 This is part 2 of Viam's Intro to Robotics series.
 If you haven't completed [Part 1](../make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/), be sure to go back and complete that before starting on this tutorial.
-You should have already set up [your Raspberry Pi](../../getting-started/installation/), [set up viam-server](../../getting-started/installation/#installing-viam-server), built your circuit, and [connected your robot to the Viam app](../../getting-started/installation/#adding-your-pi-on-the-viam-app) before proceeding.
+You should have already set up [your Raspberry Pi](../../getting-started/rpi-setup/), [set up viam-server](../../getting-started/rpi-setup/#installing-viam-server), built your circuit, and [connected your robot to the Viam app](../../getting-started/rpi-setup/#adding-your-pi-on-the-viam-app) before proceeding.
 {{% /alert %}}
 
 For reference, the circuit you are building for this tutorial looks like this:
@@ -42,9 +42,9 @@ You will need the following hardware, tools, and software to complete this proje
 
 <li>Refer to the <a href="https://docs.viam.com/getting-started/installation" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 
-<li>Be sure that you have <a href="https://docs.viam.com/getting-started/installation/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
+<li>Be sure that you have <a href="https://docs.viam.com/getting-started/rpi-setup/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
 
-<li>Be sure that you are <a href="https://docs.viam.com/getting-started/installation/#installing-raspian-on-the-raspberry-pi">running Raspbian on your Pi.</a></li>
+<li>Be sure that you are <a href="https://docs.viam.com/getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi">running Raspbian on your Pi.</a></li>
 
 <li>You must also enable SSH on your Pi.</li>
 </ol>
@@ -102,7 +102,7 @@ On Windows, you can use an SSH client such as <a href="https://itsfoss.com/putty
 ssh <username>@<hostname>.local
 ```
 
-Default username and password on Raspberry Pi's are
+Default username and password on Raspberry Pis are
 
 -   username: pi
 

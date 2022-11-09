@@ -23,7 +23,7 @@ You will need the following tools to complete the project:
 
 <li>Refer to the <a href="https://docs.viam.com/getting-started/installation" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 
-<li>Be sure that you have <a href="https://docs.viam.com/getting-started/installation/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
+<li>Be sure that you have <a href="https://docs.viam.com/getting-started/rpi-setup/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
 </ol>
 <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
 <li><a href="http://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
@@ -39,8 +39,8 @@ You will need the following tools to complete the project:
 ## Project setup
 
 Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi.
-We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](/getting-started/installation/) guide in the Viam documentation.
-Be sure to follow all the steps including [adding your Pi on the Viam app.](/getting-started/installation/#adding-your-pi-on-the-viam-app)
+We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](/getting-started/rpi-setup/) guide in the Viam documentation.
+Be sure to follow all the steps including [adding your Pi on the Viam app.](/getting-started/rpi-setup/#adding-your-pi-on-the-viam-app)
 
 {{% alert title="Tip" color="tip" %}}  
 If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
@@ -96,7 +96,7 @@ The long anode should be connected to the resistor and the short cathode should 
 
 ## Configuring your bot using the Viam app
 
-Before proceeding, be sure that you have added your Pi to the Viam app. Steps on how to do this can be found in the [Adding your Pi on the Viam App](/getting-started/installation/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
+Before proceeding, be sure that you have added your Pi to the Viam app. Steps on how to do this can be found in the [Adding your Pi on the Viam App](/getting-started/rpi-setup/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
 
 Now that we have gotten that out of the way, let's get back to setting up your robot in the Viam app. 
 First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's config.
