@@ -40,7 +40,7 @@ You will need the following hardware, tools, and software to complete this proje
   
 <ol type="a">
 
-<li>Refer to the <a href="https://docs.viam.com/getting-started/installation" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
+<li>Refer to the <a href="https://docs.viam.com/getting-started/rpi-setup" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 
 <li>Be sure that you have <a href="https://docs.viam.com/getting-started/rpi-setup/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
 
