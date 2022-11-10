@@ -15,26 +15,30 @@ This tutorial is a great place to start if you have never built a robot or a cir
 
 You will need the following tools to complete the project:
 
-[Click to view the Component URL Listing](#components-url-list)
+### Hardware
+
 <ol>
 <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
   
 <ol type="a">
 
-<li>Refer to the <a href="https://docs.viam.com/getting-started/installation" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
+<li>Refer to the <a href="https://docs.viam.com/getting-started/rpi-setup" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 
-<li>Be sure that you have <a href="https://docs.viam.com/getting-started/rpi-setup/#installing-viam-server" target="_blank">set up Viam Server on your Raspberry Pi</a> as well.</li>
+<li>You must also enable SSH on your Pi.</li>
 </ol>
 <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
 <li><a href="http://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
-<li><a href="http://amzn.to/2Dmainw" target="_blank">Resistor pack </a></li>
-<OL type="a">
+<li><a href="http://amzn.to/2Dmainw" target="_blank">Resistor pack </a>You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands</li>
+<li><a href="http://amzn.to/2Ex2v5q" target="_blank">LED</a></li>
+</ol>
 
-<li>You will be using a 220Ω or a 1K Ω resistor, which are the resistors with brown-black-brown or brown-black-red colored bands, respectively.</li>
-</OL>
-<li><a href="http://amzn.to/2Ex2v5q" target="_blank">Red LED</a></li>
-<li><a href="http://amzn.to/2qWurxS" target="_blank">Multimeter (optional)</a></li>
-<li><a href="https://github.com/viamrobotics/rdk/tree/0c550c246739b87b4d5a9e8d96d2b6fdb3948e2b" target="_blank">Viam Server</a></li></ol>
+[Click to view the Component URL Listing](#components-url-list)
+
+### Software
+
+- [Golang](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/).
+- [viam-server](/getting-started/linux-install/)
+- [Viam Python SDK](https://python.viam.dev/) or [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
 
 ## Project setup
 
@@ -132,10 +136,11 @@ You can play around with values "**low**" and "**high**" by setting them differe
 Congratulations!
 If you have followed along, you have just successfully used Viam to make an LED blink with a Raspberry Pi!
 Hopefully, you have learned how the GPIO on a Raspberry Pi works, and how to build circuits for LED bulbs.
-You are ready for your next robotics project.
-If you are looking for some projects that would be a great next step, we would recommend that you check out the following:
 
--   [Tutorial List](/tutorials/)
+You are ready for your next robotics project.
+I would recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.
+
+If you are looking for some more projects that would be a great next step in your journey of learning about how to build robots, I would recommend that you check out one of following [Tutorial List](..).
 
 If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
 
