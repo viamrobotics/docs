@@ -42,7 +42,7 @@ Before you get started, ensure that you:
 
 {{% alert title="Tip" color="tip" %}}
 
-You can find more examples of using the Viam Python SDK on the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1).
+You can find more examples of Viam's SDKs on the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1) or the [Golang SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples).
 
 {{% /alert %}}
 
