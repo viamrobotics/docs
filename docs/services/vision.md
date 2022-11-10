@@ -8,8 +8,8 @@ description: "Explanation of the vision service, its configuration, and its func
 ---
 ## Intro and Summary
 
-The vision service enables the robot to use its on-board cameras to intelligently see and interpret the world around it.  We're here to help you with everything that happens _after_ you have your image data.
-
+The vision service enables the robot to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
+We're here to help you with everything that happens _after_ you have your image data.
 
 Currently, there are three operations available through the vision service:
 
@@ -173,7 +173,9 @@ The types of the detector supported are:
 
 #### Color detector parameters
 
-NOTE: **Color detector does not detect black, gray and white. It only detects hues found on the color wheel.**
+{{% alert title="Note" color="note" %}}
+Color detector does not detect black, gray and white. It only detects hues found on the color wheel.
+{{% /alert %}}
 
 * **detect_color**: the color to detect in the image, as a string of the form #RRGGBB.
 The color is written as a hexadecimal string prefixed by ‘#’.
