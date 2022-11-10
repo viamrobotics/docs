@@ -144,7 +144,6 @@ led.Set(context.Background(), false, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-
 ## Analogs
 
 If an analog to digital converter (ADC) chip is being used in your
