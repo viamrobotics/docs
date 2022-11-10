@@ -56,7 +56,7 @@ Yahboom-based tutorials
 Simple Raspberry Pi tutorials
 
 - [Making an LED Blink with a Raspberry Pi](./tutorials/make-an-led-blink-with-the-viam-app/)
-- [Making an LED Blink with a Raspberry Pi and Viam's Python SDK](./tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/)
+- [Making an LED Blink with a Raspberry Pi and Viam's SDK](./tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/)
 
 Other tutorials
 
