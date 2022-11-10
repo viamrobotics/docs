@@ -3,7 +3,7 @@ title: "How to Make an LED Blink with a Raspberry Pi and the Viam SDK"
 linkTitle: "Blink an LED with a Pi and the SDK"
 weight: 10
 type: "docs"
-description: "Intro to hardware programming using the Viam Python SDK to make an LED blink."
+description: "Intro to hardware programming using the Viam SDK to make an LED blink."
 ---
 In this post, you will be introduced to the basics of programming hardware by using either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) to make an LED blink.
 This will allow you to write code to make an LED connected to the GPIO of a Raspberry Pi blink on and off.
@@ -236,7 +236,7 @@ If you get an error, you can check your code against my complete code here:
 **Completed code**: <a href="https://github.com/viam-labs/LED-Blink" target="_blank">ht<span></span>tps://github.com/viam-labs/LED-Blink</a>
 
 {{% alert title="Tip" color="tip" %}}  
-If you have any issues whatsoever getting the Viam Python SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com).
 There, you will find a friendly developer community of people learning how to make robots using Viam.
 {{% /alert %}}
 
