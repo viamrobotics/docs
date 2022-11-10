@@ -32,6 +32,56 @@ There are other ways to interface with motors such as Serial, CAN bus, and Ether
 Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
 {{% /alert %}}
 
+## Getting started with motors and the Viam SDK
+
+This sends power commands to a motor on the robot.
+
+Assumption: Motors called "motor1" and "motor2" are configured as components of your robot.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.motor import Motor
+
+robot = await connect() # refer to connect code above
+motor1 = Motor.from_robot(robot, "motor1")
+motor2 = Motor.from_robot(robot, "motor2")
+
+# power motor1 at 100% for 3 seconds
+await motor1.set_power(1)
+await asyncio.sleep(3)
+await motor1.stop()   
+
+# run motor2 at 1000 rpm for 200 rotations
+await motor2.go_for(1000, 200)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+"time"
+"go.viam.com/rdk/components/motor"
+)
+
+// grab the motors from the robot
+m1, err := motor.FromRobot(robot, "motor1")
+m2, err := motor.FromRobot(robot, "motor2")
+
+// power motor1 at 100% for 3 seconds
+m1.SetPower(context.Background(), 1, nil)
+time.Sleep(3 * time.Second)
+m1.Stop(context.Background(), nil)
+
+// run motor2 at 1000 RPM for 200 rotations
+m2.GoFor(context.Background(), 1000, 200, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Brushed DC Motor
 ### Mechanism
 DC motors use magnetic fields to convert direct (one-way) electrical current into mechanical torque.
