@@ -35,7 +35,6 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 - [A wheeled base component](../../components/base/)
     - We used a <a href="https://www.scuttlerobot.org/shop/" target="_blank" />SCUTTLE Robot</a>[^sr]  for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
 [^sr]: SCUTTLE Robot <a href="https://www.scuttlerobot.org/shop/" target="_blank" />https://www.scuttlerobot.org/shop/</a>
-
 - RGB camera
     - A common off-the-shelf webcam [(such as this)](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html/) with a ribbon connector to the Pi’s camera module port.
     - You must mount the camera to the front of the rover pointing down towards the floor.
@@ -52,7 +51,12 @@ If you haven’t already, please set up the Raspberry Pi per [these instructions
 
 ### Configuring the hardware components
 
-Configure the base per the [Base Component topic](../../components/base/).
+Configure the board per the [Board Component topic](/components/board/).
+We named ours `local`.
+Use type `board` and model `pi` if you're using a Raspberry Pi.
+
+Configure the wheeled base per the [Base Component topic](../../components/base/).
+We named ours `scuttlebase`.
 	
 Configure the [camera](../../components/camera/) as described in this tutorial: [Connect and configure a webcam](../../tutorials/configure-a-camera/#connect-and-configure-a-webcam). You can skip the section on camera calibration since it is not needed for the line follower.
 
@@ -148,47 +152,53 @@ Below is an example JSON file that includes the board, base and camera component
 {
   "components": [
     {
-      "model": "pi",
       "name": "local",
-      "type": "board"
+      "type": "board",
+      "model": "pi",
+      "attributes": {},
+      "depends_on": []
     },
     {
-      "depends_on": [
-        "local"
-      ],
-      "model": "gpio",
       "name": "leftm",
       "type": "motor",
+      "model": "gpio",
       "attributes": {
-        "board": "local",
-        "max_rpm": 200,
         "pins": {
-          "b": "15",
-          "a": "16"
-        }
-      }
-    },
-    {
+          "a": "15",
+          "b": "16"
+        },
+        "board": "local",
+        "max_rpm": 200
+      },
       "depends_on": [
         "local"
-      ],
-      "model": "gpio",
-      "name": "rightm",
-      "type": "motor",
-      "attributes": {
-        "max_rpm": 200,
-        "pins": {
-          "a": "12",
-          "b": "11"
-        },
-        "board": "local"
-      }
+      ]
     },
     {
-      "type": "base",
+      "name": "rightm",
+      "type": "motor",
+      "model": "gpio",
       "attributes": {
-        "wheel_circumference_mm": 258,
+        "pins": {
+          "b": "11",
+          "dir": "",
+          "pwm": "",
+          "a": "12"
+        },
+        "board": "local",
+        "max_rpm": 200
+      },
+      "depends_on": [
+        "local"
+      ]
+    },
+    {
+      "name": "scuttlebase",
+      "type": "base",
+      "model": "wheeled",
+      "attributes": {
         "width_mm": 400,
+        "wheel_circumference_mm": 258,
         "left": [
           "leftm"
         ],
@@ -196,8 +206,10 @@ Below is an example JSON file that includes the board, base and camera component
           "rightm"
         ]
       },
-      "model": "wheeled",
-      "name": "scuttlebase"
+      "depends_on": [
+        "leftm",
+        "rightm"
+      ]
     },
     {
       "name": "my_camera",
@@ -205,7 +217,8 @@ Below is an example JSON file that includes the board, base and camera component
       "model": "webcam",
       "attributes": {
         "video_path": "video0"
-      }
+      },
+      "depends_on": []
     },
     {
       "name": "show_detections",
@@ -222,11 +235,14 @@ Below is an example JSON file that includes the board, base and camera component
             }
           }
         ]
-      }
+      },
+      "depends_on": []
     }
   ],
   "services": [
     {
+      "name": "",
+      "type": "vision",
       "attributes": {
         "register_models": [
           {
@@ -239,8 +255,7 @@ Below is an example JSON file that includes the board, base and camera component
             "name": "green_detector"
           }
         ]
-      },
-      "type": "vision"
+      }
     }
   ]
 }
