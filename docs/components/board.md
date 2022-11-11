@@ -106,11 +106,11 @@ from viam.components.board import Board
 local = Board.from_robot(robot, 'local')
 led = await local.gpio_pin_by_name('8')
 
-# When True, sets the LED pin to high or on.
+# When True, sets the LED pin to high/on.
 await led.set(True)
 await asyncio.sleep(1)
 
-# When False, sets the pin to low or off.
+# When False, sets the pin to low/off.
 await led.set(False)
 ```
 
@@ -133,11 +133,11 @@ if err != nil {
   logger.Fatalf("could not get led: %v", err)
 }
 
-//When true, sets the LED pin to high or on.
+// When true, sets the LED pin to high/on.
 led.Set(context.Background(), true, nil)
 time.Sleep(1 * time.Second)
 
-//When false, sets the LED pin to low or off.
+// When false, sets the LED pin to low/off.
 led.Set(context.Background(), false, nil)
 ```
 
@@ -330,5 +330,4 @@ Name | Type | Default Value | Description
 
 ## Implementation
 
-[Python SDK
-Documentation](https://python.viam.dev/autoapi/viam/components/board/board/index.html)
+See the [example code above](#getting-started-with-gpio-and-the-viam-sdk) to get started, and also check out our more complete [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/board/board/index.html)
