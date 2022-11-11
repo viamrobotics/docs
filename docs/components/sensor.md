@@ -68,4 +68,4 @@ distance, err := ultra.Readings(context.Background())
 {{% /tab %}}
 {{< /tabs >}}
 
-You can read more about using a sensor in the [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/sensor/index.html).
+You can read more about sensor implementation in the [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/sensor/index.html).
