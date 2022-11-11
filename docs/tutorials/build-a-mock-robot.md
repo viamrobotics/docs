@@ -315,7 +315,7 @@ You can do this by going to **CONFIG** and then going to the **NETWORK** tab. He
 {
     "bind_address": "localhost:8081"
 }
-
+```
 
 Be sure to save before continuing.
 
