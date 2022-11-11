@@ -9,7 +9,7 @@ description: "How to make an LED blink with a Raspberry Pi and the Viam app."
 In this post, we will show you how to use Viam to make an LED blink with a Raspberry Pi.
 This tutorial is a great place to start if you have never built a robot or a circuit before.
 
-<img src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image9.gif" alt ="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="35%"><br>
+<img src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image9.gif" alt ="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="50%"><br>
 
 ## What you'll need for this guide
 
@@ -24,7 +24,6 @@ You will need the following tools to complete the project:
 
 <li>Refer to the <a href="https://docs.viam.com/getting-started/rpi-setup" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 
-<li>You must also enable SSH on your Pi.</li>
 </ol>
 <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
 <li><a href="http://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
@@ -36,7 +35,7 @@ You will need the following tools to complete the project:
 
 ### Software
 
-- [Golang](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/).
+- <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">Golang</a>[^go] or <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">Python 3.9+</a>[^python]
 - [viam-server](/getting-started/linux-install/)
 - [Viam Python SDK](https://python.viam.dev/) or [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
 
@@ -47,7 +46,7 @@ We recommend that you follow along with the [Installing Viam Server on Raspberry
 Be sure to follow all the steps including [adding your Pi on the Viam app.](/getting-started/rpi-setup/#adding-your-pi-on-the-viam-app)
 
 {{% alert title="Tip" color="tip" %}}  
-If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
+If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>, and we will be happy to help you get up and running.
 {{% /alert %}}
 
 ## Building the circuit
@@ -62,8 +61,6 @@ The resistor is used to limit the current that is being drawn and is called a *c
 
 **General-purpose input/output** (**GPIO**) is a digital signal <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">pin</a>[^pin] on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
 
-[^pin]: Pin (Electronics): <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">https://en.wikipedia.org/wiki/Pin_(electronics)</a>
-
 <img src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image10.png" alt ="Photo showing a Raspberry Pi 4 with a white box around the GPIO pins on the Pi and big red letters that say, 'GPIO Pins.'" width="90%"><br>
 
 As you may have guessed, **each pin has a specific role, and you can use it only for that role**. Some of them are input/output, power (3.3V or 5V), or ground.
@@ -73,13 +70,13 @@ As you can see in the diagram below, there are 40 output pins on the Pi. You can
 
 One thing to note that might be confusing with the pin numbering on Raspberry Pi's: There are 40 physical pins numbered from 1 to 40.
 That is **board pin numbering,** corresponding to the pin's physical location on the board.
-When working with the GPIO pins with Viam, you will use the board numbers. 
+When working with the GPIO pins with Viam, you will use the board numbers.
 Pin 1 can be located pretty easily, since Pin 1 is the always the pin whose corner is rounded.
 
 Then there's numbering them by function or GPIO connection.
 These are the big numbers, e.g. "GPIO 22". These numbers are helpful for understanding the function of each pin.
 
-When in doubt, the website [pinout.xyz](https://pinout.xyz/) is useful for identifying pins.
+When in doubt, the website <a href="https://pinout.xyz/" target="_blank">pinout.xyz</a>[^pinout] is useful for identifying pins.
 It gives you the exact layout and role of each pin.
 
 ### Circuit Explanation
@@ -102,7 +99,7 @@ The long anode should be connected to the resistor and the short cathode should 
 
 Before proceeding, be sure that you have added your Pi to the Viam app. Steps on how to do this can be found in the [Adding your Pi on the Viam App](/getting-started/rpi-setup/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
 
-Now that we have gotten that out of the way, let's get back to setting up your robot in the Viam app. 
+Now that we have gotten that out of the way, let's get back to setting up your robot in the Viam app.
 First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's config.
 
 <img src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image2.png" alt ="Screenshot of the Vam App showing the default board configuration on the 'components' tab." width="100%"><br>
@@ -138,11 +135,11 @@ If you have followed along, you have just successfully used Viam to make an LED 
 Hopefully, you have learned how the GPIO on a Raspberry Pi works, and how to build circuits for LED bulbs.
 
 You are ready for your next robotics project.
-I would recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.
+We would recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.
 
-If you are looking for some more projects that would be a great next step in your journey of learning about how to build robots, I would recommend that you check out one of following [Tutorial List](..).
+If you are looking for some more projects that would be a great next step in your journey of learning about how to build robots, we would recommend that you check out one of following [Tutorial List](..).
 
-If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
+If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>[^slack], and we will be happy to help you get up and running
 
 ## Components URL List
 
@@ -154,3 +151,9 @@ If you want to connect with other developers learning how to build robots, or if
 <li>Red LED: <a href="http://amzn.to/2Ex2v5q" target="_blank">ht<span></span>tp://amzn.to/2Ex2v5q</a></li>
 <li>Multimeter (optional): <a href="http://amzn.to/2qWurxS" target="_blank">ht<span></span>tp://amzn.to/2qWurxS</a></li>
 </UL>
+
+[^go]: <a href="<https://go.dev/doc/install>" target="_blank">Go: ht<span></span>tps://go.dev/doc/install</a></a>
+[^python]: <a href="https://www.python.org/downloads/" target="_blank">Python: ht<span></span>tps://ww.python.org/downloads/</a>
+[^pin]: <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">Wikipedia: htt<span></span>ps://en.wikipedia.org/wiki/Pin_electronics</a>
+[^pinout]: <a href="https://pinout.xyz/" target="_blank">Pinout: pinout.xyz</a>
+[^slack]: <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack: ht<span></span>tp://viamrobotics.slack.com</a>

@@ -46,7 +46,7 @@ You will need the following hardware, tools, and software to complete this proje
 
 ### Software
 
-- [Golang](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/).
+- <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">Golang</a>[^go] or <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">Python 3.9+</a>[^python]
 - [viam-server](/getting-started/linux-install/)
 - [Viam Python SDK](https://python.viam.dev/) or [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
 
@@ -246,7 +246,7 @@ In this tutorial, you learned the basics of controlling your robot using the Via
 
 If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, I would recommend that you check out one of following [Tutorial List](..).
 
-If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
+If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>[^slack], and we will be happy to help you get up and running.
 
 ## Components URL List
 
@@ -257,3 +257,7 @@ If you want to connect with other developers learning how to build robots, or if
 <li>Resistor pack: <a href="http://amzn.to/2Dmainw" target="_blank">ht<span></span>tp://amzn.to/2Dmainw</a></li>
 <li>Red LED: <a href="http://amzn.to/2Ex2v5q" target="_blank">ht<span></span>tp://amzn.to/2Ex2v5q</a></li>
 </UL>
+
+[^go]: <a href="https://go.dev/doc/install" target="_blank">Go</a>
+[^python]: <a href="https://www.python.org/downloads/" target="_blank">Python: ht<span></span>tps://ww.python.org/downloads/</a>
+[^slack]: <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack: ht<span></span>tp://viamrobotics.slack.com</a>
