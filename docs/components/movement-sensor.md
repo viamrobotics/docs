@@ -65,12 +65,12 @@ The `gps-nmea` model can be connected via and send data through a serial connect
         "connection_type": "serial",
         "serial_attributes": {
             "serial_baud_rate": 115200,
-            "serial_path": "<path>"
+            "serial_path": "/dev/serial/by-path/<device_ID>"
         }
     }
 }
 ```
-
+Note that the example `"serial_path"` filepath is specific to serial devices connected to linux systems.
 #### GPS-NMEA over I<sup>2</sup>C
 
 ```json
@@ -140,7 +140,7 @@ Example config:
         "correction_source": "ntrip",
         "serial_attributes": {
             "serial_baud_rate": 115200,
-            "serial_path": "/dev/ttyACM0"
+            "serial_path": "/dev/serial/by-path/<device_ID>"
         },
         "ntrip_attributes": {
             "ntrip_addr": "<ntrip_address>",
