@@ -135,6 +135,8 @@ You can paste the following into the **Attributes** section of the `show_detecti
 }
 ```
 
+If you save the config and go to the **CONTROL** tab, you should now be able to see the camera feed with the color detector overlay.
+
 ![A screenshot of the CONTROL tab showing the base card with the show_detections transform camera stream displayed. A green line crosses the left portion of the camera image, and a red box around it is labeled "cyan: 1.00".](/tutorials/img/webcam-line-follower/bounding.png)
 
 ### Full example config
