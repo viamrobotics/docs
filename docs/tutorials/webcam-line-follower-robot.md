@@ -12,7 +12,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 <div>
 <p><strong>Goal</strong>: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision#detection">vision service color detector</a>. 
 </p></div>
-<div><img src="../img/lf-following1.gif" /></div>
+<div><img src="/tutorials/img/webcam-line-follower/lf-following1.gif" /></div>
 </div>
 
 **What you will learn**:<BR>
@@ -44,7 +44,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
     - Non-shiny floors tend to work best.
 
 <p class="Mycaption" ><em>Figure 1: A SCUTTLE robot base with a camera mounted on the front, pointing mostly down and slightly forwards.</em><br>
-<img src="../img/lf-scuttle2.png" width="600" /></p>
+<img src="/tutorials/img/webcam-line-follower/lf-scuttle2.png" width="600" /></p>
 
 ## Configuration using Viam
 
@@ -58,7 +58,7 @@ Configure the [camera](../../components/camera/) as described in this tutorial: 
 
 Your webcam configuration in the Config Builder will look something like this:
 
-![lf-cam-config.png](../img/lf-cam-config.png)
+![A screenshot of the webcam configuration UI with video_path set to video0.](/tutorials/img/webcam-line-follower/lf-cam-config.png)
 
 Or if you prefer the raw JSON:
 
@@ -76,7 +76,7 @@ Or if you prefer the raw JSON:
 
 ### Configuring the vision service
 
-We’ll use the Viam [vision service color detector](../../services/vision/#detection) to identify the line to follow.
+We’ll use the Viam [vision service color detector](/services/vision/#detection) to identify the line to follow.
 
 In the **SERVICES** section of the **CONFIG** tab, configure a color detector for the color of your tape line.
 
@@ -88,7 +88,7 @@ In the **SERVICES** section of the **CONFIG** tab, configure a color detector fo
 
 What this will look like in the Config Builder:
 
-![lf-vis-config.png](../img/lf-vis-config.png)
+![A screenshot of the vision service configuration on the SERVICES sub-tab of the CONFIG tab. The attributes field has been populated with raw JSON identical to that in the copy-pasteable JSON field below.](/tutorials/img/webcam-line-follower/lf-vis-config.png)
 
 Raw JSON:
 
@@ -255,13 +255,13 @@ Once the line is back in the center front of the camera frame, the rover continu
 When the rover no longer sees any of the line color anywhere in the front portion of the camera frame, it stops and the program ends.
 
 <p class="Mycaption"><em>Figure 2: A GIF of what the camera sees as the rover moves along a green line.</em><br>
-<img class="center" src="../img/lf-tape-follow3.gif" width="300" /></p>
+<img class="center" src="/tutorials/img/webcam-line-follower/lf-tape-follow3.gif" width="300" /></p>
 
 ## Let’s write some code!
 
 <ol><li class="spacing">Open a file in your favorite IDE and paste in <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">the code from the earlier referenced repo</a>.</li>
 <li class="spacing">Adjust the components names to match the component names you created in your config file. 
-In this case, the component names that you may need to change are <strong>tread_base</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
+In this case, the component names that you may need to change are <strong>scuttlebase</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
 <li class="spacing">From your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>), go to the Connect tab. 
 Find the Python SDK field and copy the robot address (which will likely have the form
 <span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file. 
@@ -288,14 +288,14 @@ Run,</br><span class="file">nano rgb_follower.py</span></br>(or replace <span cl
 Ensure that the base moves as expected. 
 If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.</li>
 <p  class="Mycaption"><em>Figure 3: Driving the base from the Viam app's CONTROL tab.</em><br>
-<img class="spacing" src="../img/lf-viamapp-base-view5.gif" width="600" /></p></li>
+<img class="spacing" src="/tutorials/img/webcam-line-follower/lf-viamapp-base-view5.gif" width="600" /></p></li>
 <li class="spacing">Now for the creative part: Use your colored tape to make a path for your robot to follow. 
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another. 
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.</li>
 <li class="spacing">Set your robot on the line such that the line appears in the front of the camera’s view. 
 Verify that the camera sees the line by viewing the camera feed on the <strong>CONTROL</strong> tab of the robot page.</li>
 <p class="Mycaption"><em>Figure 4: The camera view in the <strong>CONTROL</strong> tab on the robot page.</em><br>
-<img  class="spacing" src="../img/lf-cam-view6.png" width="600" /></p>
+<img  class="spacing" src="/tutorials/img/webcam-line-follower/lf-cam-view6.png" width="600" /></p>
 
 <li class="spacing">In a terminal window, SSH to your Pi by running:<br>
 
