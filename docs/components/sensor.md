@@ -50,6 +50,7 @@ Assumption: A sensor called "ultra1" is configured as a component of your robot.
 from viam.components.sensor import Sensor
 robot = await connect()
 sensor = Sensor.from_robot(robot, "ultra1")
+# The ultrasonic sensor measure distance by using ultrasonic waves
 distance = await sensor.get_readings()["distance"]
 ```
 
@@ -62,6 +63,7 @@ import (
 )
 
 ultra, err := sensor.FromRobot(robot, "ultra1")
+// The ultrasonic sensor measure distance by using ultrasonic waves
 distance, err := ultra.Readings(context.Background())
 ```
 
