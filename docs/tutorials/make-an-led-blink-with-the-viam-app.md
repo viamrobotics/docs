@@ -71,7 +71,7 @@ As you can see in the diagram below, there are 40 output pins on the Pi. You can
 One thing to note that might be confusing with the pin numbering on Raspberry Pi's: There are 40 physical pins numbered from 1 to 40.
 That is **board pin numbering,** corresponding to the pin's physical location on the board.
 When working with the GPIO pins with Viam, you will use the board numbers.
-Pin 1 can be located pretty easily, since Pin 1 is the always the pin whose corner is rounded.
+e.g., Pin 1 can be located pretty easily, since Pin 1 is the always the pin whose corner is rounded.
 
 Then there's numbering them by function or GPIO connection.
 These are the big numbers, e.g. "GPIO 22". These numbers are helpful for understanding the function of each pin.
@@ -97,7 +97,8 @@ The long anode should be connected to the resistor and the short cathode should 
 
 ## Configuring your bot using the Viam app
 
-Before proceeding, be sure that you have added your Pi to the Viam app. Steps on how to do this can be found in the [Adding your Pi on the Viam App](/getting-started/rpi-setup/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
+Before proceeding, be sure that you have added your Pi to the Viam app.
+Steps on how to do this can be found in the [Adding your Pi on the Viam App](/getting-started/rpi-setup/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
 
 Now that we have gotten that out of the way, let's get back to setting up your robot in the Viam app.
 First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's config.
@@ -135,11 +136,11 @@ If you have followed along, you have just successfully used Viam to make an LED 
 Hopefully, you have learned how the GPIO on a Raspberry Pi works, and how to build circuits for LED bulbs.
 
 You are ready for your next robotics project.
-We would recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.
+We recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.
 
 If you are looking for some more projects that would be a great next step in your journey of learning about how to build robots, we would recommend that you check out one of following [Tutorial List](..).
 
-If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>[^slack], and we will be happy to help you get up and running
+If you want to connect with other developers learning how to build robots or if you have any issues whatsoever getting Viam set up, let us know on the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>[^slack], and we will be happy to help you get up and running
 
 ## Components URL List
 

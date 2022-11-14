@@ -52,7 +52,8 @@ You will need the following hardware, tools, and software to complete this proje
 
 ### How to install a Viam SDK
 
-In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer. Use which ever programming language you are most comfortable with.
+In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer.
+Use which ever programming language you are most comfortable with.
 
 {{% alert title="Note" color="note" %}}
 
