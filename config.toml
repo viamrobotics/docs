@@ -61,7 +61,7 @@ version_menu = "SDK Documentation"
  url = "https://python.viam.dev/"
 [[params.versions]]
  version = "Go Client SDK Documentation"
- url="https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme"
+ url="https://pkg.go.dev/go.viam.com/rdk"
 # [[params.versions]]
 #  version = "Rust SDK Documentation"
 #  url = "https://rust.viam.dev/"
