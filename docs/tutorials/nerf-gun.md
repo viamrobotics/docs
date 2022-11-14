@@ -181,7 +181,7 @@ Just remember to use it consistently in the following steps.
 
 #### Configure the motors (left and right)
 
-Add the left [motor](https://docs.viam.com/components/motor/) with the name “left”, type `motor`, and model `gpio`. 
+Add the left [motor](/components/motor/) with the name “left”, type `motor`, and model `gpio`. 
 Add the right motor with the name “right”, type `motor` and model `gpio`. 
 After clicking **Create Component** you’ll see a pin assignment type toggle. 
 Click **In1/In2** since that is compatible with the type of input our motor controller expects. 
