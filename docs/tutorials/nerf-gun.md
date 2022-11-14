@@ -169,7 +169,6 @@ Then in the robot’s **CONFIG** tab you will be able to create new components.
 
 * **Name**: 
 * **Type**: 
-* **Model**: 
 
 #### Configure the Pi (board)
 
