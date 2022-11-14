@@ -69,14 +69,14 @@ Next, you will need to configure your mock robotic arm with the Viam Python SDK 
 
 ### How to install a Viam SDK
 
-In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme). Use which ever programming language you are most comfortable with.
+In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk). Use which ever programming language you are most comfortable with.
 
 {{% alert title="Note" color="note" %}}
 
 Refer to the appropriate SDK documentation for SDK installation instructions.
 
 - [Viam Python SDK](https://python.viam.dev/)
-- [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
+- [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk)
 
 {{% /alert %}}
 

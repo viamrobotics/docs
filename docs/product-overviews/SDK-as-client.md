@@ -20,9 +20,9 @@ SDKs make it easier to interface with the robot without calling the gRPC API dir
 
 Viam's Client SDKs support several ways to connect and control your robots, with many new ways to connect coming soon.
 
--   [Python SDK](https://python.viam.dev/)
+- [Python SDK](https://python.viam.dev/)
 
--   [Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
+- [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 
 # Quick Start Examples
 
@@ -30,13 +30,13 @@ Viam's Client SDKs support several ways to connect and control your robots, with
 
 Before you get started, ensure that you:
 
--   Go to [app.viam.com](https://app.viam.com/).
+- Go to [app.viam.com](https://app.viam.com/).
 
--   Create a new robot.
+- Create a new robot.
 
--   Go to the **SETUP** tab and follow the instructions there.
+- Go to the **SETUP** tab and follow the instructions there.
 
--   Install either the [Go](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) or [Python](https://python.viam.dev/) SDK on your computer.
+- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk) or [Python](https://python.viam.dev/) SDK on your computer.
 
 {{% /alert %}}
 
@@ -54,6 +54,7 @@ The SDK connect script should look something like this:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
+
 ```python
 import asyncio
 
@@ -81,8 +82,10 @@ async def main():
 if __name__ == '__main__':
     asyncio.run(main())
 ```
+
 {{% /tab %}}
 {{% tab name="Go" %}}
+
 ```go
 package main
 
@@ -114,6 +117,7 @@ func main() {
   logger.Info(robot.ResourceNames())
 }
 ```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -125,6 +129,7 @@ Assumption: A camera called "camera0" is configured as a component of your robot
 
 {{< tabs >}}
 {{% tab name="Python" %}}
+
 ```python
 from viam.components.camera import Camera
 
@@ -132,8 +137,10 @@ robot = await connect() # refer to connect code above
 camera = Camera.from_robot(robot, "camera0")
 image = await camera.get_image()
 ```
+
 {{% /tab %}}
 {{% tab name="Go" %}}
+
 ```go
 import (
 "go.viam.com/rdk/components/camera"
@@ -153,6 +160,7 @@ camStream, err := cam.Stream(context.Background())
 img, release, err := camStream.Next(context.Background())
 defer release()
 ```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -164,6 +172,7 @@ Assumption: Motors called "motor1" and "motor2" are configured as components of 
 
 {{< tabs >}}
 {{% tab name="Python" %}}
+
 ```python
 from viam.components.motor import Motor
 
@@ -179,8 +188,10 @@ await motor1.stop()
 # run motor2 at 1000 rpm for 200 rotations
 await motor2.go_for(1000, 200)
 ```
+
 {{% /tab %}}
 {{% tab name="Go" %}}
+
 ```go
 import (
 "time"
@@ -199,6 +210,7 @@ m1.Stop(context.Background(), nil)
 // run motor2 at 1000 RPM for 200 rotations
 m2.GoFor(context.Background(), 1000, 200, nil)
 ```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -210,14 +222,17 @@ Assumption: A sensor called "ultra1" is configured as a component of your robot.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
+
 ```python
 from viam.components.sensor import Sensor
 robot = await connect()
 sensor = Sensor.from_robot(robot, "ultra1")
 distance = await sensor.get_readings()["distance"]
 ```
+
 {{% /tab %}}
 {{% tab name="Go" %}}
+
 ```go
 import (
 "go.viam.com/rdk/components/sensor"
@@ -226,6 +241,7 @@ import (
 ultra, err := sensor.FromRobot(robot, "ultra1")
 distance, err := ultra.Readings(context.Background())
 ```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -237,6 +253,7 @@ Assumption: A camera called "camera0" and a vision service called "detector_1" a
 
 {{< tabs >}}
 {{% tab name="Python" %}}
+
 ```python
 from viam.services.vision import VisionServiceClient
                                                                    
@@ -244,8 +261,10 @@ robot = await connect()
 vision = VisionServiceClient.from_robot(robot)
 detections = await vision.get_detections_from_camera("camera_0", "detector_1")
 ```
+
 {{% /tab %}}
 {{% tab name="Go" %}}
+
 ```go
 import (
 "go.viam.com/rdk/services/vision"
@@ -257,5 +276,6 @@ visionSrv, err := vision.FirstFromRobot(r)
 // get detection bounding boxes
 detections, err := visionSrv.Detections(context.Background(), img, "find_objects")
 ```
+
 {{% /tab %}}
 {{< /tabs >}}

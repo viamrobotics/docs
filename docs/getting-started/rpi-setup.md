@@ -216,7 +216,7 @@ You should also see the the notification on the setup page that says "Your robot
 
 Now that you have the viam-server up and running, you can start configuring your robot and the real fun can begin!
 
-Check out [our list of tutorials](/tutorials/) for step-by-step project walkthroughs demonstrating robot configuration and using Viam's [Python SDK](https://python.viam.dev/) and [Golang SDks](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme).
+Check out [our list of tutorials](/tutorials/) for step-by-step project walkthroughs demonstrating robot configuration and using Viam's [Python SDK](https://python.viam.dev/) and [Golang SDks](https://pkg.go.dev/go.viam.com/rdk).
 
 If you already have a project in mind, head to your newly connected robot's `CONFIG` tab. Here you can describe the hardware attached to your Pi which will allow Viam to actuate the hardware and expose APIs for it.
 Click on `NEW COMPONENT` and then populate the resulting component with the configuration information for your hardware.
