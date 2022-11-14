@@ -28,7 +28,7 @@ Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-setu
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
 ## Setup
-If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](../../getting-started/installation).
+If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](../../getting-started/rpi-setup/).
 
 Next, we'll install the ORB-SLAM3 binary.
 
