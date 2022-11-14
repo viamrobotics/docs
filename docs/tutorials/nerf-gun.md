@@ -34,7 +34,9 @@ Also, the configuration files shown in this tutorial *must* be modified if you u
 * [A USB camera](https://www.amazon.com/gp/product/B0972KK7BC/)[^cam] (optional, to see where you are going and aiming)
 * [A solenoid](https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/)[^sol]
 * [A relay](https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/)[^relay]
-* [A dual motor controller](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/)[^dmc]. If you use a different motor controller, you may need to configure it differently from what is shown in this tutorial. Refer to the manufacturer’s data sheet and our [motor component documentation](https://docs.viam.com/components/motor) to see how to configure the pins.
+* [A dual motor controller](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/)[^dmc].
+If you use a different motor controller, you may need to configure it differently from what is shown in this tutorial.
+Refer to the manufacturer’s data sheet and our [motor component documentation](https://docs.viam.com/components/motor) to see how to configure the pins.
 * Jumper wires (breadboard wires)
 [^wrvr]: A wheeled rover: <a href="https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/" target="_blank">ht<span></span>tps://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/</a>
 [^ng]: Nerf Gun: <a href="https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8/" target="_blank">ht<span></span>tps://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8/</a>
