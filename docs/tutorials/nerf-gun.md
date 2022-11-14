@@ -165,7 +165,7 @@ Try activating the solenoid manually to ensure that it hits the nerf gun trigger
 ### **How to Configure Your Nerf Gun Robot with the Viam App**
 
 Create a new robot in the Viam app and give it a name. 
-Then in the robot’s **CONFIG** tab you will be able to create new components with the following attributes:
+Then in the robot’s **CONFIG** tab you will be able to create new components.
 
 * **Name**: 
 * **Type**: 
