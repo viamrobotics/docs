@@ -169,7 +169,6 @@ This provides notices that a certain action or event could damage hardware or ca
 Use to notify the reader of information to avoid loss of life, personal injury, and health hazards.
 {{< /alert >}}
 
-<img src="../img/alert-markdown.png" alt="The styling applied to Info/Tip, Note, Caution, And Warning paragraphs." style="border: solid 1px"/>
 
 ## Using the Figure Shortcode
 The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr** element for attribution text and **attrlink** if you wish to add a link to the attribution text. 
