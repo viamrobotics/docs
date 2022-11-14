@@ -10,7 +10,7 @@ description: "Use Viam to configure a rover and to shoot a nerf gun activated by
 **Introduction**
 
 This tutorial will show you how to build your very own Nerf gun robot using Viam, a Raspberry Pi, a generic Nerf gun with foam darts, a USB camera, a solenoid, a relay, and a motor controller. 
-This robot will be able to move around, and shoot a Nerf dart to people and objects. 
+This robot will be able to move around, and shoot a Nerf dart at people and objects.
 
 This project is a great place to start if you are new to building robots, have a love for Nerf guns, and an occasion to target something and shoot it while you troll your friends. 
 Don’t forget to be careful and have fun! 
