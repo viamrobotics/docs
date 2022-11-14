@@ -12,9 +12,10 @@ They are useful for precise positioning, usually limited to a 180 degree range o
 Continuous rotation servos are also available that maintain a speed rather than a position.
 
 ## Hardware Requirements
+
 A typical servo control setup comprises the following:
 
-- A Raspberry Pi
+- A [board component](/components/board/) such as a Raspberry Pi
 - A servo
 - An appropriate power supply
     - If the servo will not be under any significant load and thus won’t draw much current, you may be able to get away with powering it off 5V (if that’s its required voltage) from the Pi pins.
@@ -23,7 +24,9 @@ A typical servo control setup comprises the following:
 {{% alert title="Caution" color="caution" %}}  
 Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
 {{% /alert %}}
+
 ## Mechanism
+
 A servo contains a small electric motor, a series of gears, and a potentiometer attached to the shaft to act as an encoder.
 It also contains a closed-loop position control circuit that takes a <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">Pulse Width Modulation (PWM)</a>[^pwm] signal input and holds the shaft at a certain angle based on that input.
 
@@ -33,6 +36,10 @@ A typical servo will take PWM pulses ranging from 1ms to 2ms long, and map this 
 A 1.5ms signal will hold the servo in the middle or “neutral” position, 1ms will move it to 90 degrees from there in one direction, and 2ms will move it 90 degrees from neutral in the opposite direction.
 
 ## Wiring
+
+The signal wire of the servo must be wired to a GPIO pin on the board.
+The other two wires are for power.
+
 Here's an example of how a servo might be wired to a Raspberry Pi:  
 
 ![servo-wiring](../img/servo/servo-wiring.png)
@@ -40,8 +47,9 @@ Here's an example of how a servo might be wired to a Raspberry Pi:
 ## Viam Configuration
 
 ### Required Attributes
-In addition to the `name` (of your choosing), `model` ("pi") and `type` ("servo"), you'll need to configure a `pin` to control the servo.
-The servo will depend on the board, which must also be configured.
+
+In addition to the `name` (of your choosing), `model` ("gpio") and `type` ("servo"), you'll need to configure a `pin` to control the servo.
+The servo `depends_on` the board, which must be configured as a [board component](/components/board/).
 
 An example configuration file containing the necessary attributes is as follows:  
 
@@ -50,10 +58,12 @@ An example configuration file containing the necessary attributes is as follows:
 [Click here for the raw JSON.](../example-configs/servo-config.json)
 
 ### Optional Attributes
+
 Attribute Name | Type | Meaning/Purpose
 -------------- | ---- | ---------------
 `min` | int | Specifies the minimum angle in degrees to which the servo can move  
 `max` | int | Specifies the maximum angle in degrees to which the servo can move
 
 ## Implementation
+
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)
