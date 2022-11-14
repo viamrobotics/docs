@@ -219,7 +219,7 @@ Now let’s add a camera so we can see the stream on the control panel as you mo
 
 #### Configure the camera
 
-Add your usb camera as a webcam. 
+Add your USB camera as a webcam. 
 
 {{< figure src="../img/nerf-robot/config-webcam.png"  alt="Camera Component Attribute Pane." title="Camera Component Attribute Pane" width="800" >}}
 
