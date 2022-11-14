@@ -1,8 +1,11 @@
 
-# Sample of an included file
+### This is a Heading in the Sample File
 This entire section was added to the current topic using the include shortcode.
 
-**Please be aware that changes to included files do not appear in local mode (hugo server -D). You'll need to halt the server and restart to see the changes.**
+{{% alert="Note" color="note" %}}
+Changes to included files do not appear in local mode (hugo server -D). You'll need to halt and restart the server to view the changes.
+{{% /alert %}}
+
 
 ## Heading 2
 * bullet 1
