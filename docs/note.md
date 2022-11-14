@@ -22,9 +22,7 @@ type: "docs"
 
 **Example Usage**
 
-<img style="border:solid 1px black" alt="Screen capture of a Tab/Tabs Shortcode Block" src="/img/101.png">
-
-
+<img style="border:solid 1px black" alt="Screen capture of Tab/Tabs Shortcode Usage" src="/img/tabbed-panel-markdown.png">
 
 {{% /tab %}}
 {{% tab name="Examples" %}}
@@ -33,9 +31,9 @@ type: "docs"
 	<p>It renders <i>vanilla</i> HTML and markdown, Alerts, and images. For example, these two images:</p>
 
 * **Markdown Image Example**<br>
-![expand example](/img/082.png)<br>
+![expand example](/img/expander-markdown.png)<br>
 * **HTML Image Example** (with border)<br>
-<img style="border:solid 1px black" src="/img/082.png">
+<img style="border:solid 1px black" src="/img/expander-markdown.png" alt="Screen capture of Tab/Tabs Shortcode Usage">
 </div>
 <br>
 
@@ -43,8 +41,8 @@ type: "docs"
 
 ```json-viam
 {
-"word":"Three backticks and the language name to use prism inside tabs",
-"note":"Use "json-viam" as the language to highlight Viam keywords in json"
+"word":"As before, three backticks and the language name enables Prism syntax highlighting.",
+"note":"Use "json-viam" as the language to highlight Viam's keywords."
 }
 ```
 
@@ -61,13 +59,15 @@ It can even contain shortcodes.
 {{% /tab %}}
 {{< /tabs >}}
 
+
+
 ## Using Expanders
 Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it. 
 
-Within the expander, you can still use most other shortcodes, and syntax highlighting via Prism still functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable.<br><br>
+Within the expander, you can still use most other shortcodes and syntax highlighting via Prism functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable.<br><br>
 
 **Screen Capture of an Expander**
-<img style="border:solid 1px black" alt="Screen capture of the expander control rendered on a documentation page" src="/img/083.png">
+<img style="border:solid 1px black" alt="Screen capture of the expander control rendered on a documentation page" src="/img/expander-example.png">
 
 ### Usage
 
@@ -77,7 +77,7 @@ Within the expander, you can still use most other shortcodes, and syntax highlig
 
 ### Markdown Example
 
-<img style="border:solid 1px black" src="/img/082.png">
+<img style="border:solid 1px black" src="/img/expander-markdown.png">
 
 ### Rendered Expander Example
 {{%expand "Click to view the source" %}}
@@ -139,26 +139,22 @@ Within the expander, you can still use most other shortcodes, and syntax highlig
 
 {{% /expand%}}
 
-
-
 ## How to use Notes, Cautions, and Warnings
 
 **Info/Tip**: Exactly that. They both use the same color.
 
-**Note**: These call attention to something important. Use it to expand on a point from the body text or to provide a tip or additional information.
+**Note**: These call attention to something important. Use it to expand on a point from the body text or to provide additional information.
 
 **Caution**: Provide notice that a certain action or event could damage hardware or cause data loss.
 
-**Warning**: Use to notify the reader of an issue to avoid loss of life, personal injury, and health hazards. (Think Universal Arm on an unannounced rampage.)
-
-
+**Warning**: Use to notify the reader of an issue to avoid loss of life, personal injury, and health hazards. Electrical and physical safety fall into this category.
 
 {{< alert title="Tip" color="tip" >}}  
 Use for tips
 {{< /alert >}}
 
 {{< alert title="Info" color="tip" >}}  
-Use for extra background infomation
+Use for extra background information
 {{< /alert >}}
 
 {{< alert title="Note" color="note" >}}  
@@ -169,14 +165,25 @@ This is to call the reader's attention to something important. Use it to expand 
 This provides notices that a certain action or event could damage hardware or cause data loss.
 {{< /alert >}}
 
-
 {{< alert title="Warning" color="warning" >}}  
 Use to notify the reader of information to avoid loss of life, personal injury, and health hazards.
 {{< /alert >}}
 
-<img src="../img/078.png" alt="screen capture that demonstrates the styling applied to Info/Tip, Note, Caution, And Warning paragraphs." style="border: solid 1px"/>
+<img src="../img/alert-markdown.png" alt="The styling applied to Info/Tip, Note, Caution, And Warning paragraphs." style="border: solid 1px"/>
+
+## Using the Figure Shortcode
+The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr** element for attribution text and **attrlink** if you wish to add a link to the attribution text. 
+
+{{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution" title="Figure Shortcode" >}}
+
+This shortcode places the caption (i.e., the “title”) above the table. The **title** is set in 12pt italic with a green underline.
+
+Figure styles any Attribution text as body text.
+
+
 
 ## Demo of including another file
 
-{{% include"/static/CNAME" %}}
-**Content above this line is contained in /static/robot-ipsum.md**
+{{< readfile "/static/include/sample.md" >}}
+
+**Section content before this line is contained in an included file: /static/include/sample.md**
