@@ -5,7 +5,6 @@ weight: 1
 draft: true
 type: "docs"
 ---
-
 ## Tab Panels
 
 {{< tabs name="TabPanelExample" >}}
@@ -183,6 +182,8 @@ Figure styles any Attribution text as body text.
 
 ## Demo of including another file
 
+
 {{< readfile "/static/include/sample.md" >}}
 
 **Section content before this line is contained in an included file: /static/include/sample.md**
+

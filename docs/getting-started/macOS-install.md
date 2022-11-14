@@ -14,34 +14,24 @@ If your robot runs a Linux-based OS, then be sure to follow the [installing Viam
 
 In short, you must ensure that you have Homebrew installed and go to the **SETUP** page of your robot on the [Viam app](https://app.viam.com). There you will find setup instructions that are auto-populated with your robot's unique ID. Let's explore the installation process in detail:
 
-Before you proceed, ensure that you have Homebrew installed ([https://docs.brew.sh/Installation](https://docs.brew.sh/Installation)) and add `viamrobotics` to Homebrew. After you have installed Homebrew, run this command in your terminal:
+Before you proceed, ensure that you have Homebrew installed ([https://docs.brew.sh/Installation](https://docs.brew.sh/Installation)) and add `viamrobotics` to Homebrew.
+
+1. **Install viam-server on your Mac**
 
 ```bash
-brew tap viamrobotics/brews
+brew tap viamrobotics/brews && brew install viam-server
 ```
 
-1.  Set up your robot's config file. This config file tells the robot where to look on app.viam.com to pull its configuration information and allows you to monitor and control your robot from the Viam app.
-You can get this command from the **SETUP** tab of your robot on the Viam app.
+2.  **Download Viam app config to your Mac.** This config file tells the robot where to look on app.viam.com to pull its configuration information and allows you to monitor and control your robot from the Viam app.
+You can download your robot's config file from the **SETUP** tab of your robot on the Viam app.
 
-{{% alert title="Info" color="tip" %}}
-This curl command will copy your robot's unique configuration file from the Viam app into a Homebrew directory so you can call it with the local instance.
-{{% /alert %}}
+3.  **Start viam-server on your Mac.** Run viam-server locally on your Mac with the config you just downloaded.
 
 ```bash
-curl -H "Secret: [PASTE YOUR SECRET KEY HERE]" "https://app.viam.com/api/json1/config?id=[PASTE YOUR ID HERE]&client=true" -o "$(brew --prefix)/etc/viam.json"
+viam-server -config ~/Downloads/viam-mock-robot-main.json
 ```
 
-{{% alert title="Info" color="tip" %}}
-Your robot's configuration file is saved in your Homebrew directory.
-{{% /alert %}}
-
-2.  You will need to download the latest `viam-server` binary package via Homebrew.
-
-```bash
-brew install viam-server
-```
-
-3.  Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
+4.  **Connect and configure.** Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
 
 ## How to run viam-server as a service on macOS
 

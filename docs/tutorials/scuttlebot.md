@@ -1,6 +1,6 @@
 ---
-title: "Configuring a SCUTTLE Robot with a Camera"
-linkTitle: "Configuring a SCUTTLE Robot"
+title: "How to Configure a SCUTTLE Robot with a Camera"
+linkTitle: "Configure a SCUTTLE Robot"
 weight: 15
 type: "docs"
 description: "Instructions for configuring a SCUTTLE Robot on the Viam platform"
@@ -10,7 +10,7 @@ This tutorial will guide you through setting up a SCUTTLE Robot with a camera.
 ## Requirements
 
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/installation/#installing-raspian-on-the-raspberry-pi), if necessary.
+Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
 
 * <a href="https://www.scuttlerobot.org/shop/" target="_blank">A SCUTTLE Robot</a>[^asr]
 * A camera
@@ -267,7 +267,7 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle
 
 ## Documents Referenced
 
-  * [**Installing Raspian on the Raspberry Pi**](../../getting-started/installation/#installing-raspian-on-the-raspberry-pi)
+  * [**Installing Raspian on the Raspberry Pi**](../../getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi)
 
   * [**Color Detection with SCUTTLE Robot on Viam**](../color-detection-scuttle/)
 
