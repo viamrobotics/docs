@@ -28,7 +28,7 @@ Also, the configuration files shown in this tutorial *must* be modified if you u
 
 **Hardware and Software Requirements:**
 
-* [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with [viam-server](https://github.com/viamrobotics/rdk/tree/0c550c246739b87b4d5a9e8d96d2b6fdb3948e2b) installed according to: ["Installing Viam on Linux Systems"](https://docs.viam.com/getting-started/linux-install/).
+* [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with viam-server installed per [our Raspberry Pi setup guide](https://docs.viam.com/getting-started/rpi-setup/).
 * [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)[^wrvr]
 * [A Nerf gun](https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8)[^ng]
 * [A USB camera (webcam)](https://www.amazon.com/gp/product/B0972KK7BC/)[^cam] (optional, to see where you are going and aiming)
