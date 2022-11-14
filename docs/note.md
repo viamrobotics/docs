@@ -176,12 +176,9 @@ The figure shortcode enhances the existing figure and figurecaption html tags. F
 
 This shortcode places the caption (i.e., the “title”) above the table. The **title** is set in 12pt italic with a green underline.
 
-Figure styles any Attribution text as body text.
-
-
+Figure styles the Attribution text as body text.
 
 ## Demo of including another file
-
 
 {{< readfile "/static/include/sample.md" >}}
 
