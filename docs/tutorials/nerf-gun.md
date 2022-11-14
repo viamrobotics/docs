@@ -15,7 +15,7 @@ This robot will be able to move around, and shoot a Nerf dart at people and obje
 This project is a great place to start if you are new to building robots, have a love for Nerf guns, and an occasion to target something and shoot it while you troll your friends. 
 Don’t forget to be careful and have fun! 
 
-{{< figure src="../img/nerf-robot/init-image-nerf-robot.gif" width="400px" alt="Firing a Nerf gun taped to a rover having batteries and cables exposed." title="Nerf Robot firing a dart from a Nerf gun taped to a robot." >}}
+{{< figure src="../img/nerf-robot/init-image-nerf-robot.gif" width="400px" alt="Firing a Nerf gun taped to a rover having batteries and cables exposed." title="Nerf robot firing a dart from a Nerf gun taped to a robot." >}}
 
 ## What you’ll need for this tutorial:
 
