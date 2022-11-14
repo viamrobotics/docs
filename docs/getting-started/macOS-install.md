@@ -25,10 +25,10 @@ brew tap viamrobotics/brews && brew install viam-server
 2.  **Download Viam app config to your Mac.** This config file tells the robot where to look on app.viam.com to pull its configuration information and allows you to monitor and control your robot from the Viam app.
 You can download your robot's config file from the **SETUP** tab of your robot on the Viam app.
 
-3.  **Start viam-server on your Mac.** Run viam-server locally on your Mac with the config you just downloaded.
+3.  **Start viam-server on your Mac.** Run viam-server locally on your Mac with the config you just downloaded. Be sure that you replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
 
 ```bash
-viam-server -config ~/Downloads/viam-mock-robot-main.json
+viam-server -config ~/Downloads/viam-<YOUR_ROBOT_NAME>-main.json
 ```
 
 4.  **Connect and configure.** Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
