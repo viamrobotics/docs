@@ -172,7 +172,7 @@ Then in the robot’s **CONFIG** tab you will be able to create new components.
 
 #### Configure the Pi (board)
 
-Add your board with the name `board`, type `board` and model `pi`. Click **Create Component**.
+Add your board with the name `board`, type `board`, and model `pi`. Click **Create Component**.
 
 {{< figure src="../img/nerf-robot/add-board.png"  alt="Viam App Board component attribute pane." title="Board Component Attribute Pane" width="800" >}}
 
