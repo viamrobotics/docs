@@ -9,9 +9,11 @@ description: "Use Viam to configure a rover and to shoot a nerf gun activated by
 
 **Introduction**
 
-This tutorial will show you how to build your very own Nerf gun robot using Viam, a Raspberry Pi, a generic Nerf gun with foam darts, a USB camera, a solenoid, a relay, and a motor controller. This robot will be able to move around, and shoot a Nerf dart to people and objects. 
+This tutorial will show you how to build your very own Nerf gun robot using Viam, a Raspberry Pi, a generic Nerf gun with foam darts, a USB camera, a solenoid, a relay, and a motor controller. 
+This robot will be able to move around, and shoot a Nerf dart to people and objects. 
 
-This project is a great place to start if you are new to building robots, have a love for Nerf guns, and an occasion to target something and shoot it while you troll your friends. Don’t forget to be careful and have fun! 
+This project is a great place to start if you are new to building robots, have a love for Nerf guns, and an occasion to target something and shoot it while you troll your friends. 
+Don’t forget to be careful and have fun! 
 
 {{< figure src="../img/nerf-robot/init-image-nerf-robot.gif" width="400px" alt="Firing a Nerf gun taped to a rover having batteries and cables exposed." title="Nerf Robot firing a dart from a Nerf gun taped to a robot." >}}
 
@@ -19,7 +21,9 @@ This project is a great place to start if you are new to building robots, have a
 
 You will need the following hardware, software, tools, and materials to complete this project:
 
-{{% alert="Note" color="note"%}} If you use a different rover and/or motor controller, ensure that the motor driver is compatible with the motors on your rover. For example, a brushed DC motor requires a brushed DC motor driver that is rated for the power requirements of the motor. Also know that the configuration files shown in this tutorial *must* be modified if you use a different setup.
+{{% alert="Note" color="note"%}} If you use a different rover and/or motor controller, ensure that the motor driver is compatible with the motors on your rover. 
+For example, a brushed DC motor requires a brushed DC motor driver that is rated for the power requirements of the motor. 
+Also, the configuration files shown in this tutorial *must* be modified if you use a different setup.
 {{% /alert %}}
 
 **Hardware and Software Requirements:**
@@ -47,10 +51,8 @@ You will need the following hardware, software, tools, and materials to complete
 * Electrical Tape
 * Elastic bands/Rubber Bands
 
-
 [^sd]:Flathead screwdriver: <a href="https://www.amazon.com/Precision-Screwdriver-Flathead-Philips-Different/dp/B01N5W8MA3/" target="_blank">ht<span></span>tps://www.amazon.com/Precision-Screwdriver-Flathead-Philips-Different/dp/B01N5W8MA3/</a>
 [^pliers]: 6-inch, flush cut, side-cutting pliers <a href="https://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/">ht<span></span>tps://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/</a>>
-
 
 ### How to Assemble Your Hardware
 
@@ -58,7 +60,8 @@ Hardware configuration includes how to attach your hardware to the Raspberry Pi.
 
 #### Motor Controller Setup
 
-The motor controller is a piece of hardware that takes digital signals from the Raspberry Pi and sends power to the motors accordingly. For this setup we just have one motor controller for the two motors.
+The motor controller is a piece of hardware that takes digital signals from the Raspberry Pi and sends power to the motors accordingly. 
+For this setup we just have one motor controller for the two motors.
 
 {{% alert="Note" color="note"%}}
 If you have more than two motors you will likely need two motor controllers. 
@@ -74,7 +77,8 @@ We need only worry about <strong>Out1-4</strong>, <strong>In1-4</strong>, 12V, a
     <li>Use a small flathead screwdriver to loosen the screw terminals for <strong>Out1</strong> and <strong>Out2</strong>
 <li>Place the red motor wire into <strong>Out1</strong>
 <li>Place the black motor wire into <strong>Out2</strong>
-<li>Use the flathead screwdriver to tighten the terminals to firmly hold the wires in place. <strong>Note</strong>: Twisting the stripped wire ends and then tinning them makes it easier to insert and secure them in screw terminal connectors.
+<li>Use the flathead screwdriver to tighten the terminals to firmly hold the wires in place.
+<strong>Note</strong>: Twisting the stripped wire ends and then tinning them makes it easier to insert and secure them in screw terminal connectors.
    </ol>
 <li>Connect the control wires <strong>In1</strong> and <strong>In2</strong> to your Raspberry Pi.
 <ol type="a">
@@ -92,15 +96,23 @@ We need only worry about <strong>Out1-4</strong>, <strong>In1-4</strong>, 12V, a
 
 #### Camera Setup
 
-This is as easy as plugging the camera into a USB slot. We’ll configure the camera in the Viam App in later steps. 
+This is as easy as plugging the camera into a USB slot. 
+We’ll configure the camera in the Viam App in later steps. 
 
 #### Relay/Solenoid Setup
 
-The solenoid is used to actuate the Nerf gun trigger. The relay works as a switch to turn on and off our solenoid. This allows us to activate the Nerf gun by using a GPIO pin on the board.
+The solenoid is used to actuate the Nerf gun trigger. 
+The relay works as a switch to turn on and off our solenoid. 
+This allows us to activate the Nerf gun by using a GPIO pin on the board.
 
 {{% alert="Note" color="note"%}}
-We cannot directly power components from GPIO pins. This board limitation restricts GPIO pins to providing 3.3V and a very limited current supply (16mA). Even the 3V and 5.5V power pins on the Pi supply are limited to about 1A. If a component pulls more than that, you risk power cycling the Pi. 
-That is why we use a relay instead to supply 5V and more current to the solenoid. This is standard practice for power control circuits in many situations. For example, using a common off-the-shelf (COTS) 15A light switch to power on a relay bank that controls hundreds of amps of lighting for an entire office floor.
+We cannot directly power components from GPIO pins. 
+This board limitation restricts GPIO pins to providing 3.3V and a very limited current supply (16mA). 
+Even the 3V and 5.5V power pins on the Pi supply are limited to about 1A. 
+If a component pulls more than that, you risk power cycling the Pi. 
+That is why we use a relay instead to supply 5V and more current to the solenoid. 
+This is standard practice for power control circuits in many situations. 
+For example, using a common off-the-shelf (COTS) 15A light switch to actuate a relay bank that controls hundreds of amps of lighting for an entire office floor.
 {{% /alert %}}
 
 {{< figure src="../img/nerf-robot/power-relay.jpg" width="400px" alt="Power relay." title="Power Relay." >}}
@@ -117,7 +129,7 @@ That is why we use a relay instead to supply 5V and more current to the solenoid
 <li>Connect <strong> VCC </strong>(<strong>DC+</strong>) and ground (<strong>DC-</strong>) .</li>
 <ol type="a">
 <li>Connect <strong>DC+</strong> to the 5V of the Raspberry Pi. (5V Pins: 02 or 04)</li>
-<li>Connect <strong>DC-</strong> to ground on the Raspberry Pi. (Ground pins: 09, 25, 39, 06, 14, 23, 30, or 34)</li>
+<li>Connect <strong>DC-</strong> to ground on the Raspberry Pi. (Ground pins: 09, 25, 39, 06, 14, 20, 30, or 34)</li>
 </ol>
 <li>Connect <strong>IN</strong>. </li>
 <ol type="a">
@@ -130,13 +142,17 @@ That is why we use a relay instead to supply 5V and more current to the solenoid
 
 {{< figure src="../img/nerf-robot/assembled-nerf-gun.jpg" width="400px" alt="Solenoid attached to the orange nerf gun using rubber bands and electrical tape." title="Nerf Gun/Solenoid Assembly." >}}
 
-1. Modify the Nerf gun to make room for the solenoid. Using cutting pliers, we cut the trigger guard off of the front as seen in the picture above.
+1. Modify the Nerf gun to make room for the solenoid. 
+   Using cutting pliers, we cut the trigger guard off of the front as seen in the picture above.
 2. Test that the solenoid has enough power to press the trigger when the Nerf gun is loaded. 
 3. If the solenoid is not strong enough we can:
-    *  Wrap the trigger with rubber bands to make the trigger easier to fire[^rb].
-    * Increase the voltage to the solenoid. Right now it receives 5 volts, but some solenoids can support up to 12 volts. If necessary, you can connect the solenoid to another power supply such as a 9 volt battery. Check the details of your solenoid[^solvolt]. 
-1. Tape the solenoid so it will make good contact with the trigger when it is activated via the relay.
-2. Put all of your components onto your base.
+    * Wrap the trigger with rubber bands to make the trigger easier to fire[^rb].
+    * Increase the voltage to the solenoid. 
+  Right now it receives 5 volts, but some solenoids can support up to 12 volts. 
+  If necessary, you can connect the solenoid to another power supply such as a 9 volt battery. 
+  Check the details of your solenoid[^solvolt]. 
+4. Tape the solenoid so it will make good contact with the trigger when it is activated via the relay.
+5. Put all of your components onto your base.
 
 [^rb]: If you use the rubber band method, you may need to pull the rubber bands away from the trigger when reloading the Nerf gun so it can reset and load properly. 
 Try activating the solenoid manually to ensure that it hits the nerf gun trigger in the right spot.
@@ -146,7 +162,8 @@ Try activating the solenoid manually to ensure that it hits the nerf gun trigger
 
 ### **How to Configure Your Nerf Gun Robot with the Viam App**
 
-Create a new robot in the Viam app. Give it a name. Then in the robot’s **CONFIG** tab you will be able to create new components with the following attributes:
+Create a new robot in the Viam app and give it a name. 
+Then in the robot’s **CONFIG** tab you will be able to create new components with the following attributes:
 
 * **Name**: 
 * **Type**: 
@@ -158,11 +175,19 @@ Add your board with the name `board`, type `board` and model `pi`. Click **Creat
 
 {{< figure src="../img/nerf-robot/add-board.png"  alt="Viam App Board component attribute pane." title="Board Component Attribute Pane" width="800" >}}
 
-You can name your board whatever you want, we picked `board` for simplicity. Just remember to use it consistently in the following steps. 
+You can name your board whatever you want, we picked `board` for simplicity. 
+Just remember to use it consistently in the following steps. 
 
 #### Configure the motors (left and right)
 
-Add the left [motor](https://docs.viam.com/components/motor/) with the name “left”, type `motor`, and model `gpio`. Add the right motor with the name “right”, type `motor` and model `gpio`. After clicking **Create Component** you’ll see a pin assignment type toggle. Click **In1/In2** since that is compatible with the type of input our motor controller expects. In the drop downs for A/In1 and B/In2, choose `11 GPIO 17` and `13 GPIO 27`, respectively, for the left motor, and `16 GPIO 23` and `18 GPIO 24`, respectively, for the right motor. In the **Board** drop-down, choose the name of the board the motor controller is wired to (“board”). Make them depend on the board component by choosing the board’s name (“board”) from the **Depends On** drop-down at the bottom of the motor config. This ensures that the board initializes before the motor driver when the robot boots up, thereby reducing errors.
+Add the left [motor](https://docs.viam.com/components/motor/) with the name “left”, type `motor`, and model `gpio`. 
+Add the right motor with the name “right”, type `motor` and model `gpio`. 
+After clicking **Create Component** you’ll see a pin assignment type toggle. 
+Click **In1/In2** since that is compatible with the type of input our motor controller expects. 
+In the drop downs for A/In1 and B/In2, choose `11 GPIO 17` and `13 GPIO 27`, respectively, for the left motor, and `16 GPIO 23` and `18 GPIO 24`, respectively, for the right motor. 
+In the **Board** drop-down, choose the name of the board the motor controller is wired to (“board”). 
+Make them depend on the board component by choosing the board’s name (“board”) from the **Depends On** drop-down at the bottom of the motor config. 
+This ensures that the board initializes before the motor driver when the robot boots up, thereby reducing errors.
 
 <table>
 <tr><td style="background:white; border-right: 1px solid black; padding-right: 25px">
@@ -171,17 +196,21 @@ Add the left [motor](https://docs.viam.com/components/motor/) with the name “l
 {{< figure src="../img/nerf-robot/right-motor.png"  alt="Motor Component Attribute Pane (right motor)." title="Right Motor Component Configuration Pane" width="400">}} 
  </td></tr></table>
 
-Click **SAVE CONFIG** at the bottom of the screen. Then go to the **CONTROL** tab where you will now see the buttons you can use to control the motors: 
+Click **SAVE CONFIG** at the bottom of the screen. 
+Then go to the **CONTROL** tab where you will now see the buttons you can use to control the motors: 
 
 {{< figure src="../img/nerf-robot/LR-motor-config-panes.png"  alt="Left and right motor configuration panes." title="Left and Right Motor Configuration Panes" width="800">}}
 
-Now, you can move around your wheels separately. Let’s add a base to be able to control them together. 
+Now, you can move around your wheels separately. 
+Let’s add a base to be able to control them together. 
 
 #### Configure the base
 
 Add your motors to the [base](https://docs.viam.com/components/base/) so you can move them around with your keyboard. 
 
-Here we have to specify the wheel circumference and the width between the wheels. Depending on your rover, you can change these numbers. Don’t forget to make the base depend on the `left`, `right`, and the `board` components. 
+Here we have to specify the wheel circumference and the width between the wheels. 
+Depending on your rover, you can change these numbers. 
+Don’t forget to make the base depend on the `left`, `right`, and the `board` components. 
 
 {{< figure src="../img/nerf-robot/config-base.png"  alt="Base Component Attribute Pane." title="Base Component Attribute Pane" width="800">}}
 
@@ -197,13 +226,20 @@ If you go back to the **CONTROL** tab, you will see your base and camera.
 
 {{< figure src="../img/nerf-robot/base-cam-view.png"  alt="Camera view from the Base component's keyboard tab." title="Camera View from the Base Component's Keyboard Tab." width="800">}}
 
-Here you can click the toggle to enable keyboard control, and use A, W, S, and D to move your rover around. You can view the camera stream at the same time. If you scroll down, you will see your camera as a component and you will be able to change the refresh frequency and export screenshots from your camera. 
+Here you can click the toggle to enable keyboard control, and use A, W, S, and D to move your rover around. 
+You can view the camera stream at the same time. 
+If you scroll down, you will see your camera as a component and you will be able to change the refresh frequency and export screenshots from your camera. 
 
 {{< figure src="../img/nerf-robot/camera-cam-view.png"  alt="Camera view from the Camera component pane." title="Camera View from the Camera Component Pane." width="800">}}
 
 #### Toggle between your GPIO pin states
 
-The board card in the **CONTROL** tab provides a way to change the state of the pin connected to the solenoid. If you click the board component, you will be able to see your GPIO pin and its current state. In the **Set** part of the GPIO section, select pin 37 (the pin we wired to control the solenoid). If you set the pin state to high, the solenoid will actuate. If you set it to low, it should deactivate the solenoid. Since we already assembled the robot, setting pin 37 to high will allow you to shoot your Nerf gun if its loaded. 
+The board card in the **CONTROL** tab provides a way to change the state of the pin connected to the solenoid. 
+If you click the board component, you will be able to see your GPIO pin and its current state. 
+In the **Set** part of the GPIO section, select pin 37 (the pin we wired to control the solenoid). 
+If you set the pin state to high, the solenoid will actuate. 
+If you set it to low, it should deactivate the solenoid. 
+Since we already assembled the robot, setting pin 37 to high will allow you to shoot your Nerf gun if its loaded. 
 
 {{< figure src="../img/nerf-robot/board-low.png"  alt="Board component, G P I O section showing High selected on the Pin State drop-down." title="Board component, GPIO section showing High selected on the Pin State drop-down" width="800">}}
 
@@ -239,7 +275,9 @@ You can see the demo video of it in action here:
 
 ## **Summary**
 
-In this tutorial, you learned how to create a remote controllable Nerf gun robot activated by GPIO pins on a Raspberry Pi using Viam. You could use this same concept to build a security robot which shoots darts at people if they enter your room, a Nerf ball blaster dog toy, a kitten treat shooter for cats to fetch in excitement, you name it! You can even add object detection and machine learning, and only activate when your camera sees a specific object or person. 
+In this tutorial, you learned how to create a remote controllable Nerf gun robot activated by GPIO pins on a Raspberry Pi using Viam. 
+You could use this same concept to build a security robot which shoots darts at people if they enter your room, a Nerf ball blaster dog toy, a kitten treat shooter for cats to fetch in excitement, you name it! 
+You can even add object detection and machine learning, and only activate when your camera sees a specific object or person. 
 
 If you are looking for some projects that would be a great next step in your journey of learning how to build robots, we recommend that you check out the following tutorials:
 
@@ -247,4 +285,5 @@ If you are looking for some projects that would be a great next step in your jou
 
 * [Tutorial List](https://docs.viam.com/#tutorials)
 
-If you have any issues getting Viam set up or if you are stuck, let us know on the[ Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running. It is also a great place if you want to connect with other developers learning how to build robots. 
+If you have any issues getting Viam set up or if you are stuck, let us know on the[ Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
+ It is also a great place if you want to connect with other developers learning how to build robots. 
