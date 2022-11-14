@@ -1,5 +1,5 @@
 ---
-title: "Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad"
+title: "How to Control a SCUTTLE Robot on Viam with a Bluetooth Gamepad"
 linkTitle: "Driving SCUTTLE with a Gamepad"
 weight: 20
 type: "docs"

@@ -1,6 +1,6 @@
 ---
-title: "Setting up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam"
-linkTitle: "Driving a Yahboom Rover with a Gamepad"
+title: "How to Set Up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam"
+linkTitle: "Drive a Yahboom Rover with a Gamepad"
 weight: 25
 type: "docs"
 description: "Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app."
@@ -8,7 +8,7 @@ description: "Instructions for getting a Yahboom 4WD Rover driving with a Blueto
 ## Requirements
 
 - A Raspberry Pi 4 running an instance of viam-server.
-See our [Raspberry Pi Setup Guide](../../getting-started/installation/) for instructions.
+See our [Raspberry Pi Setup Guide](../../getting-started/rpi-setup/) for instructions.
 - A <a href="https://category.yahboom.net/collections/robotics/products/4wdrobot" target="_blank">Yahboom 4WD Smart Robot</a>[^yahboom]
 - A Bluetooth gamepad controller. For this tutorial we used <a href="https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch" target="_blank">this 8BitDo controller</a>[^8bitdo].
 
@@ -112,16 +112,17 @@ The whole base card will look something like this:
 
 ![A screenshot of the Yahboom base configuration on the Viam app.](../img/yahboom-rover/base.png)
 
-When you save the config and switch to the control view once more, you should have new buttons for the `base` functionality including `Forward`,`Backward`, `Arc Forward`, `Spin Clockwise` and similar.
-Try playing around with these and the `Speed`, `Distances`, and `Angle` fields below them to get a sense for what they do.
-Something you can try is: 300mm per sec for the speed, 500mm for the distances, and 0 degree for the angle.
+When you save the config and switch to the control view once more, you should have new buttons for the `base` functionality.
+On the **KEYBOARD** tab of the base control card you can enable keyboard control to drive the rover with the WASD keys.
+Also check out the **DISCRETE** tab of the base control area for a different type of control.
+Try playing around with these and get a sense of how the base moves.
 
-![A screenshot of the CONTROL tab UI with buttons to make the base move forward, backward, arc forward, arc backward, spin clockwise, and spin counterclockwise. There are also fields for speed, distance and angle.](../img/yahboom-rover/baseui.png)
+![A screenshot of the CONTROL tab UI with buttons to make the base move.](../img/yahboom-rover/baseui.png)
 
 Awesome! Now you have a rover which you can drive via a webUI.
 But wouldn’t it be more fun to drive it around like an RC car? Now you can try attaching a Bluetooth controller and using that to control the rover.
 If you’ve ever connected a Bluetooth device via the Linux command line, great! If not, strap in, it’s going to be a bit of a ride.
-If you would like to skip adding a Bluetooth controller, jump ahead to the Configuring the Camera Component section of the tutorial.
+If you would like to skip adding a Bluetooth controller, [jump ahead to the Configuring the Camera Component section](#configuring-the-camera-component) of the tutorial.
 
 ## Connecting a Bluetooth Controller
 
@@ -208,7 +209,7 @@ But wait!
 This rover has a camera on it.
 
 Once again, find the **Create Component** section at the bottom of the **CONFIG** tab.
-Follow [these instructions on how to connect and configure a camera](../../tutorials/how-to-configure-a-camera/#connect-and-configure-a-webcam).
+Follow [these instructions on how to connect and configure a camera](../../tutorials/configure-a-camera/#connect-and-configure-a-webcam).
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
 

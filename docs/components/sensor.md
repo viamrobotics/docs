@@ -14,14 +14,17 @@ Note that Viam has a separate, more specific component type called *movement sen
 * [Encoders (component type)](../encoder/).
 
 ## Hardware Requirements
- - Some sort of sensor
- - A [board](../board/)
- - Depending on the type of sensor output, an analog to digital converter may be necessary to allow the sensor to communicate with the board
+
+* Some sort of sensor
+* A [board](../board/)
+* Depending on the type of sensor output, an analog to digital converter may be necessary to allow the sensor to communicate with the board
 
 ## Wiring
+
 This will depend on the sensor. Refer to the sensor’s data sheet.
 
 ## Viam Configuration
+
 When you create a custom sensor you’ll create a set of attributes unique to that sensor model. The JSON file you create must include a type (`sensor`), model (whatever you named your custom sensor model), and name (of your choice; used to refer to that specific sensor in your code). You will also need to include whatever required attributes you define in your custom sensor component implementation.
 
 ``` json
@@ -34,6 +37,37 @@ When you create a custom sensor you’ll create a set of attributes unique to th
 }
 ```
 
-## Implementation
+## Getting started with sensors and the Viam SDK
 
-[Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/sensor/index.html)
+This example code reads values from an ultrasonic sensor connected to a robot.
+
+Assumption: A sensor called "ultra1" is configured as a component of your robot.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.sensor import Sensor
+robot = await connect()
+sensor = Sensor.from_robot(robot, "ultra1")
+# The ultrasonic sensor measure distance by using ultrasonic waves
+distance = await sensor.get_readings()["distance"]
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+"go.viam.com/rdk/components/sensor"
+)
+
+ultra, err := sensor.FromRobot(robot, "ultra1")
+// The ultrasonic sensor measure distance by using ultrasonic waves
+distance, err := ultra.Readings(context.Background())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+You can read more about sensor implementation in the [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/sensor/index.html).

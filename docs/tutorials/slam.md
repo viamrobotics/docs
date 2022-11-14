@@ -1,10 +1,11 @@
 ---
-title: "Run SLAM on your Robot"
+title: "How to Run SLAM on your Robot"
 linkTitle: "Run SLAM on your Robot"
 weight: 50
 type: "docs"
-draft: flase
+draft: false
 description: "Instructions to run SLAM with either a webcam or provided example data."
+# SMEs: Kat
 ---
 
 ## Warning: This is an experimental feature.
@@ -20,7 +21,7 @@ This tutorial shows you how to run ORB-SLAM3 on your robot. You have two choices
 ## Requirements
 
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/installation/#installing-raspian-on-the-raspberry-pi), if necessary.
+Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
 ## Setup
@@ -57,8 +58,8 @@ The configuration of SLAM happens in two steps:
 #### Add a webcam and calibrate it
 
 Follow these tutorials to connect and calibrate your webcam:
-* [Connect and configure a webcam](../how-to-configure-a-camera/#connect-and-configure-a-webcam)
-* [Calibrate a camera](../how-to-configure-a-camera/#calibrate-a-camera)
+* [Connect and configure a webcam](../configure-a-camera/#connect-and-configure-a-webcam)
+* [Calibrate a camera](../configure-a-camera/#calibrate-a-camera)
 
 #### Add SLAM to the configuration
 
@@ -174,7 +175,7 @@ The following setup allows you to run ORB-SLAM3 in offline mode using either one
 ### The dataset
 In offline mode, SLAM will use an existing dataset to create a map.
 
-You might have an RGB dataset already saved in your `data_dir/data` directory from running SLAM in live mode. If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/data.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
+You might have an RGB dataset already saved in your `data_dir/data` directory from running SLAM in live mode. If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-office-hallway-1-rgbd.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
 
 If you downloaded our dataset, and assuming that the zip file is now located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following command:
 

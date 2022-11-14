@@ -5,3 +5,4 @@ public
 resources
 node_modules
 config_pr.toml
+.vscode
