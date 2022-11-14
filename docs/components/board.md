@@ -330,4 +330,4 @@ Name | Type | Default Value | Description
 
 ## Implementation
 
-See the [example code above](#getting-started-with-gpio-and-the-viam-sdk) to get started, and also check out our more complete [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/board/board/index.html)
+See the [example code above](#getting-started-with-gpio-and-the-viam-sdk) to get started, and also check out our more complete [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/board/board/index.html).
