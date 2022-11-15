@@ -14,7 +14,7 @@ It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and aut
 
 SDKs make it easier to interface with the robot without calling the gRPC API directly.
 
-<img src="../img/SDK-as-client/image1.png" alt ="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client." width="80%"><br>
+<img src="../img/SDK-as-client/image1.png" alt ="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client." width="100%"><br>
 
 ## Viam's Client SDK Libraries
 
@@ -24,7 +24,7 @@ Viam's Client SDKs support several ways to connect and control your robots, with
 
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 
-# Quick Start Examples
+## Quick Start Examples
 
 {{% alert title="Note" color="note" %}}
 
@@ -46,7 +46,7 @@ You can find more examples of Viam's SDKs on the [Python SDK example GitHub repo
 
 {{% /alert %}}
 
-## How to connect to your robot with Viam
+### How to connect to your robot with Viam
 
 The easiest way to get started writing an application with Viam, is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Connect** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**. These code snippets imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
@@ -121,7 +121,7 @@ func main() {
 {{% /tab %}}
 {{< /tabs >}}
 
-## How to get an image from a camera with Viam
+### How to get an image from a camera with Viam
 
 This reads a single image from a [camera](https://docs.viam.com/components/camera/) called "camera0" on the robot.
 
@@ -164,7 +164,7 @@ defer release()
 {{% /tab %}}
 {{< /tabs >}}
 
-## How to use a motor with Viam
+### How to use a motor with Viam
 
 This sends power commands to [motors](https://docs.viam.com/components/motor/) on the robot.
 
@@ -185,7 +185,7 @@ await motor1.set_power(1)
 await asyncio.sleep(3)
 await motor1.stop()   
 
-# run motor2 at 1000 rpm for 200 rotations
+# Run motor2 at 1000 rpm for 200 rotations
 await motor2.go_for(1000, 200)
 ```
 
@@ -207,14 +207,14 @@ m1.SetPower(context.Background(), 1, nil)
 time.Sleep(3 * time.Second)
 m1.Stop(context.Background(), nil)
 
-// run motor2 at 1000 RPM for 200 rotations
+// Run motor2 at 1000 RPM for 200 rotations
 m2.GoFor(context.Background(), 1000, 200, nil)
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-## How to use a sensor with Viam
+### How to use a sensor with Viam
 
 This example code reads values from a [sensor](https://docs.viam.com/components/sensor/) (an ultrasonic sensor in this example) connected to a robot.
 
@@ -245,7 +245,7 @@ distance, err := ultra.Readings(context.Background())
 {{% /tab %}}
 {{< /tabs >}}
 
-## How use the Viam vision service
+### How use the Viam vision service
 
 The following code gets the robot's [vision service](https://python.viam.dev/autoapi/viam/services/vision/index.html?highlight=vision#module-viam.services.vision) and then runs a detection model on an image to get a list of detections from the image.
 
