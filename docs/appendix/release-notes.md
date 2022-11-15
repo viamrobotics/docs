@@ -8,6 +8,13 @@ description:
 # SME: Mike A.
 ---
 ## 15 November 2022
+### Release Versions
+* rdk - v0.2.0
+* api - v0.1.7
+* slam - v0.1.7
+* viam-python-sdk - v0.2.0
+* goutils - v0.1.4
+* rust-utils - v0.0.5
 
 ### New Features
 #### New servo model
@@ -46,15 +53,15 @@ Users of the Go SDK **must** update their code to specify `extra` in the argumen
 {{% alert="Note" color="note" %}}
 This breaking change does NOT affect users of the Python SDK.
 {{% /alert %}}
-### Add dependencies to services
-#### What Is It? 
+#### Add dependencies to services
+##### What Is It? 
 Adding dependencies to services allows Viam to initialize and configure resources in the correct order. For example, if the SLAM service depends on a LiDAR, it will always initialize the LiDAR before the service.
 ##### What does it affect?
 
 **Breaking Change**: This impacts users of the SLAM service. Users must now specify which sensors they are using in the `depends_on` field of the SLAM configuration.
 Other service configurations are not affected.
 
-### Removed width & height fields from Camera API.
+#### Removed width & height fields from Camera API.
 
 ##### What Is It?
 We removed two fields (`width` and `height`) that were previously part of the response from the `GetImage` method in the camera API.
