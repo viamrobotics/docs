@@ -2,7 +2,7 @@
 title: "Release Notes"
 linkTitle: "Release Notes"
 weight: 110
-draft: true
+draft: false
 type: "docs"
 description:
 # SME: Mike A.
