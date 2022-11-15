@@ -15,24 +15,14 @@ This page covers how to wire, configure and control various types of DC motor wi
 
 ## Usage example
 
-{{% alert title="Note" color="note" %}}
-
-Before you get started, ensure that you:
-
-- Go to [app.viam.com](https://app.viam.com/).
-
-- Create a new robot.
-
-- Go to the **SETUP** tab and follow the instructions there.
-
-- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) or [Python](https://python.viam.dev/) SDK on your computer.
-
-{{% /alert %}}
-
 This sends power commands to a motor on the robot.
 
 {{% alert title="Note" color="note" %}}
+
+Before you get started, ensure that you, go to [app.viam.com](https://app.viam.com/), create a new robot and go to the **SETUP** tab and follow the instructions there.
+
 Assumption: Motors called "motor1" and "motor2" are configured as components of your robot. Read on to learn how to configure motor components.
+
 {{% /alert %}}
 
 {{< tabs >}}
@@ -98,8 +88,9 @@ There are other ways to interface with motors such as Serial, CAN bus, and Ether
   - Takes GPIO signals from the computer and sends the corresponding signals and power to the motor
   - Selected based on the type of motor (i.e. brushed, brushless, or stepper) and its power requirements
 - An appropriate power supply
-  - Note that the logic side of the driver may be powered by 3.3V from the Pi or other device, but the motor power side should not be powered by the computer’s GPIO pins.
+  - Note that the logic side of the driver may be powered by 3.3V from the Pi or other device, but the motor power side must not be powered by the computer’s GPIO pins.
     The motor driver should be connected to an independent power supply that can provide the peak current required by the motor.
+
 {{% alert title="Caution" color="caution" %}}
 Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
 {{% /alert %}}
