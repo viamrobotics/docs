@@ -1,21 +1,21 @@
 ---
-title: "Nerf Gun Robot Tutorial"
-linkTitle: "Nerf Gun Robot"
+title: "Foam Dart Launcher Robot Tutorial"
+linkTitle: "Dart Launcher Robot"
 weight: 160
 type: "docs"
-description: "Use Viam to configure a rover and to shoot a nerf gun activated by GPIO pins on a Raspberry Pi."
+description: "Use Viam to configure a rover and to launch a foam dart launcher activated by GPIO pins on a Raspberry Pi."
 # SME: Kurt S. and Hazal M.
 ---
 
 **Introduction**
 
-This tutorial will show you how to build your very own Nerf gun robot using Viam, a Raspberry Pi, a generic Nerf gun with foam darts, a USB camera, a solenoid, a relay, and a motor controller. 
-This robot will be able to move around, and shoot a Nerf dart at people and objects.
+This tutorial will show you how to build your very own foam dart launcher robot using Viam, a Raspberry Pi, a generic foam dart launcher with foam darts, a USB camera, a solenoid, a relay, and a motor controller. 
+This robot will be able to move around, and launch a foam dart at people and objects.
 
-This project is a great place to start if you are new to building robots, have a love for Nerf guns, and an occasion to target something and shoot it while you troll your friends. 
+This project is a great place to start if you are new to building robots, have a love for Nerf toys, and an occasion to target something and launch at it while you troll your friends. 
 Don’t forget to be careful and have fun! 
 
-{{< figure src="../img/nerf-robot/init-image-nerf-robot.gif" width="400px" alt="Firing a Nerf gun taped to a rover having batteries and cables exposed." title="Nerf robot firing a dart from a Nerf gun taped to a robot." >}}
+{{< figure src="../img/nerf-robot/init-image-nerf-robot.gif" width="400px" alt="Activating a foam dart launcher taped to a rover having batteries and cables exposed." title="Robot launching a dart from a foam dart launcher taped to the robot." >}}
 
 ## What you’ll need for this tutorial:
 
@@ -30,7 +30,7 @@ Also, the configuration files shown in this tutorial *must* be modified if you u
 
 * [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with viam-server installed per [our Raspberry Pi setup guide](https://docs.viam.com/getting-started/rpi-setup/).
 * [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)[^wrvr]
-* [A Nerf gun](https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8)[^ng]
+* [A foam dart launcher](https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8)[^ng]
 * [A USB camera (webcam)](https://www.amazon.com/gp/product/B0972KK7BC/)[^cam] (optional, to see where you are going and aiming)
 * [A solenoid](https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/)[^sol]
 * [A relay](https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/)[^relay]
@@ -39,7 +39,7 @@ If you use a different motor controller, you may need to configure it differentl
 Refer to the manufacturer’s data sheet and our [motor component documentation](https://docs.viam.com/components/motor) to see how to configure the pins.
 * Jumper wires (breadboard wires)
 [^wrvr]: A wheeled rover: <a href="https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/" target="_blank">ht<span></span>tps://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/</a>
-[^ng]: Nerf Gun: <a href="https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8/" target="_blank">ht<span></span>tps://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8/</a>
+[^ng]: Foam dart launcher: <a href="https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8/" target="_blank">ht<span></span>tps://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8/</a>
 [^cam]: Webcam: <a href="https://www.amazon.com/gp/product/B0972KK7BC/" target="_blank">ht<span></span>tps://www.amazon.com/gp/product/B0972KK7BC/</a>
 [^sol]: Solenoid: <a href="https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/" target="_blank">ht<span></span>tps://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/</a>
 [^relay]: Relay: <a href="https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/" target="_blank">ht<span></span>tps://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/</a>
@@ -54,7 +54,7 @@ Refer to the manufacturer’s data sheet and our [motor component documentation]
 * Elastic bands/Rubber Bands
 
 [^sd]:Flathead screwdriver: <a href="https://www.amazon.com/Precision-Screwdriver-Flathead-Philips-Different/dp/B01N5W8MA3/" target="_blank">ht<span></span>tps://www.amazon.com/Precision-Screwdriver-Flathead-Philips-Different/dp/B01N5W8MA3/</a>
-[^pliers]: 6-inch, flush cut, side-cutting pliers <a href="https://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/">ht<span></span>tps://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/</a>>
+[^pliers]: 6-inch, flush cut, side-cutting pliers: <a href="https://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/">ht<span></span>tps://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/</a>>
 
 ### How to Assemble Your Hardware
 
@@ -80,7 +80,7 @@ We need only worry about <strong>Out1-4</strong>, <strong>In1-4</strong>, 12V, a
 <li>Place the red motor wire into <strong>Out1</strong>
 <li>Place the black motor wire into <strong>Out2</strong>
 <li>Use the flathead screwdriver to tighten the terminals to firmly hold the wires in place.
-<strong>Note</strong>: Twisting the stripped wire ends and then tinning them makes it easier to insert and secure them in screw terminal connectors.
+<strong>Note</strong>: Tightly twisting each stripped wire end and then tinning it makes it easier to insert and secure the jumper in screw terminal connectors.
    </ol>
 <li>Connect the control wires <strong>In1</strong> and <strong>In2</strong> to your Raspberry Pi.
 <ol type="a">
@@ -103,9 +103,9 @@ We’ll configure the camera in the Viam App in later steps.
 
 #### Relay/Solenoid Setup
 
-The solenoid is used to actuate the Nerf gun trigger. 
+The solenoid is used to actuate the foam dart launcher trigger. 
 The relay works as a switch to turn on and off our solenoid. 
-This allows us to activate the Nerf gun by using a GPIO pin on the board.
+This allows us to activate the foam dart launcher by using a GPIO pin on the board.
 
 {{% alert="Note" color="note"%}}
 We cannot directly power components from GPIO pins. 
@@ -140,15 +140,15 @@ For example, using a common off-the-shelf (COTS) 15A light switch to actuate a r
 </ol>
 </ol>
 
-#### Assemble Solenoid/Nerf Gun
+#### Assemble Solenoid/Foam Dart Launcher
 
-{{< figure src="../img/nerf-robot/assembled-nerf-gun.jpg" width="400px" alt="Solenoid attached to the orange nerf gun using rubber bands and electrical tape." title="Nerf Gun/Solenoid Assembly." >}}
+{{< figure src="../img/nerf-robot/assembled-foam-dart-launcher.jpg" width="400px" alt="Solenoid attached to the orange foam dart launcher using rubber bands and electrical tape." title="Foam dart launcher/Solenoid Assembly." >}}
 
-1. Modify the Nerf gun to make room for the solenoid. 
+1. Modify the foam dart launcher to make room for the solenoid. 
    Using cutting pliers, we cut the trigger guard off of the front as seen in the picture above.
-2. Test that the solenoid has enough power to press the trigger when the Nerf gun is loaded. 
+2. Test that the solenoid has enough power to press the trigger when the foam dart launcher is loaded. 
 3. If the solenoid is not strong enough we can:
-    * Wrap the trigger with rubber bands to make the trigger easier to fire[^rb].
+    * Wrap the trigger with rubber bands to make the trigger easier to activate[^rb].
     * Increase the voltage to the solenoid. 
   Right now it receives 5 volts, but some solenoids can support up to 12 volts. 
   If necessary, you can connect the solenoid to another power supply such as a 9 volt battery. 
@@ -156,13 +156,13 @@ For example, using a common off-the-shelf (COTS) 15A light switch to actuate a r
 4. Tape the solenoid so it will make good contact with the trigger when it is activated via the relay.
 5. Put all of your components onto your base.
 
-[^rb]: If you use the rubber band method, you may need to pull the rubber bands away from the trigger when reloading the Nerf gun so it can reset and load properly. 
-Try activating the solenoid manually to ensure that it hits the nerf gun trigger in the right spot.
-[^solvolt]:  If you choose to increase the voltage, you must connect **VCC** and ground (**DC+** and **DC-**) to the new voltage source rather than connecting them to the Raspberry Pi as described in Step 3 of [Assemble Solenoid/Nerf Gun](##assemble-solenoidnerf-gun).
+[^rb]: If you use the rubber band method, you may need to pull the rubber bands away from the trigger when reloading the foam dart launcher so it can reset and load properly. 
+Try activating the solenoid manually to ensure that it hits the foam dart launcher trigger in the right spot.
+[^solvolt]:  If you choose to increase the voltage, you must connect **VCC** and ground (**DC+** and **DC-**) to the new voltage source rather than connecting them to the Raspberry Pi as described in Step 3 of [Assemble Solenoid/Foam Dart Launcher](##assemble-solenoidfoam-dart-launcher).
 
-{{< figure src="../img/nerf-robot/ng-taped-to-rover.jpg"  alt="Nerf gun taped to a rover base using electrical tape." title="Nerf Gun Taped to the Rover" width="400">}}
+{{< figure src="../img/nerf-robot/ng-taped-to-rover.jpg"  alt="Foam dart launcher taped to a rover base using electrical tape." title="Foam dart launcher Taped to the Rover" width="400">}}
 
-### **How to Configure Your Nerf Gun Robot with the Viam App**
+### **Configuring Your Foam Dart Launcher Robot with the Viam App**
 
 Create a new robot in the Viam app and give it a name. 
 Then in the robot’s **CONFIG** tab you will be able to create new components.
@@ -185,7 +185,7 @@ Add the left [motor](/components/motor/) with the name “left”, type `motor`,
 Add the right motor with the name “right”, type `motor` and model `gpio`. 
 After clicking **Create Component** you’ll see a pin assignment type toggle. 
 Click **In1/In2** since that is compatible with the type of input our motor controller expects. 
-In the drop downs for A/In1 and B/In2, choose `11 GPIO 17` and `13 GPIO 27`, respectively, for the left motor, and `16 GPIO 23` and `18 GPIO 24`, respectively, for the right motor. 
+In the drop downs for A/<strong>In1</strong> and B/<strong>In2</strong>, choose `11 GPIO 17` and `13 GPIO 27`, respectively, for the left motor, and `16 GPIO 23` and `18 GPIO 24`, respectively, for the right motor. 
 In the **Board** drop-down, choose the name of the board the motor controller is wired to (“board”). 
 Make them depend on the board component by choosing the board’s name (“board”) from the **Depends On** drop-down at the bottom of the motor config. 
 This ensures that the board initializes before the motor driver when the robot boots up, thereby reducing errors.
@@ -240,7 +240,7 @@ If you click the board component, you will be able to see your GPIO pin and its 
 In the **Set** part of the GPIO section, select pin 37 (the pin we wired to control the solenoid). 
 If you set the pin state to high, the solenoid will actuate. 
 If you set it to low, it should deactivate the solenoid. 
-Since we already assembled the robot, setting pin 37 to high will allow you to shoot your Nerf gun if its loaded. 
+Since we already assembled the robot, setting pin 37 to high will allow you to launch your foam dart launcher if its loaded. 
 
 {{< figure src="../img/nerf-robot/board-low.png"  alt="Board component, G P I O section showing High selected on the Pin State drop-down." title="Board component, GPIO section showing High selected on the Pin State drop-down" width="800">}}
 
@@ -265,24 +265,22 @@ Raw JSON for entire config can be found here if you wish to copy it into your co
 2. Enable keyboard controls
 3. Drive your robot around!
 
-##### Firing the Nerf dart
+##### Activating the Foam Dart Launcher
 
-1. Make sure your Nerf gun is loaded and ready to go
-2. When you are ready, navigate to the Viam app -> **CONTROL** tab -> board component and set the **IN** pin (pin 37 in our example) to high to fire. 
+1. Make sure your foam dart launcher is loaded and ready to go
+2. When you are ready, navigate to the Viam app -> **CONTROL** tab -> board component and set the **IN** pin (pin 37 in our example) to high to activate. 
 
 You can see the demo video of it in action here:
 
-{{< video src="../videos/NerfGunRobotDemo.mp4" type="video/mp4">}}
+{{< video src="../videos/FoamDartLauncherRobotDemo.mp4" type="video/mp4">}}
 
 ## **Summary**
 
-In this tutorial, you learned how to create a remote controllable Nerf gun robot activated by GPIO pins on a Raspberry Pi using Viam. 
-You could use this same concept to build a security robot which shoots darts at people if they enter your room, a Nerf ball blaster dog toy, a kitten treat shooter for cats to fetch in excitement, you name it! 
+In this tutorial, you learned how to create a remote controllable foam dart launcher robot activated by GPIO pins on a Raspberry Pi using Viam. 
+You could use this same concept to build a security robot which launches darts at people if they enter your room, a Nerf ball blaster dog toy, a kitten treat shooter for cats to fetch in excitement, you name it! 
 You can even add object detection and machine learning, and only activate when your camera sees a specific object or person. 
 
 If you are looking for some projects that would be a great next step in your journey of learning how to build robots, we recommend that you check out the following tutorials:
-
-
 
 * [Tutorial List](https://docs.viam.com/#tutorials)
 
