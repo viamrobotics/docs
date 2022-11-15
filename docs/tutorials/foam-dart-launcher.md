@@ -3,7 +3,7 @@ title: "Foam Dart Launcher Robot Tutorial"
 linkTitle: "Dart Launcher Robot"
 weight: 160
 type: "docs"
-description: "Use Viam to configure a rover and to launch a foam dart launcher activated by GPIO pins on a Raspberry Pi."
+description: "Use Viam to configure a rover and launch a foam dart launcher activated by GPIO pins on a Raspberry Pi."
 # SME: Kurt S. and Hazal M.
 ---
 
@@ -12,7 +12,7 @@ description: "Use Viam to configure a rover and to launch a foam dart launcher a
 This tutorial will show you how to build your very own foam dart launcher robot using Viam, a Raspberry Pi, a generic foam dart launcher with foam darts, a USB camera, a solenoid, a relay, and a motor controller. 
 This robot will be able to move around, and launch a foam dart at people and objects.
 
-This project is a great place to start if you are new to building robots, have a love for Nerf toys, and an occasion to target something and launch at it while you troll your friends. 
+This project is a great place to start if you are new to building robots, have a love for Nerf toys, and an occasion to target something and launch at it, or if you want to troll your friends. 
 Don’t forget to be careful and have fun! 
 
 {{< figure src="../img/nerf-robot/init-image-nerf-robot.gif" width="400px" alt="Activating a foam dart launcher taped to a rover having batteries and cables exposed." title="Robot launching a dart from a foam dart launcher taped to the robot." >}}
@@ -50,8 +50,8 @@ Refer to the manufacturer’s data sheet and our [motor component documentation]
 * Solder (optional)
 * [Flathead screwdriver](https://www.amazon.com/Precision-Screwdriver-Flathead-Philips-Different/dp/B01N5W8MA3/)[^sd]
 * [Cutting pliers](https://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/)[^pliers]
-* Electrical Tape
-* Elastic bands/Rubber Bands
+* Electrical tape
+* Elastic bands/Rubber bands
 
 [^sd]:Flathead screwdriver: <a href="https://www.amazon.com/Precision-Screwdriver-Flathead-Philips-Different/dp/B01N5W8MA3/" target="_blank">ht<span></span>tps://www.amazon.com/Precision-Screwdriver-Flathead-Philips-Different/dp/B01N5W8MA3/</a>
 [^pliers]: 6-inch, flush cut, side-cutting pliers: <a href="https://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/">ht<span></span>tps://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/</a>>
@@ -98,7 +98,7 @@ We need only worry about <strong>Out1-4</strong>, <strong>In1-4</strong>, 12V, a
 
 #### Camera Setup
 
-This is as easy as plugging the camera into a USB slot. 
+This is as easy as plugging the camera into a USB slot on you Pi. 
 We’ll configure the camera in the Viam App in later steps. 
 
 #### Relay/Solenoid Setup
@@ -165,10 +165,6 @@ Try activating the solenoid manually to ensure that it hits the foam dart launch
 ### **Configuring Your Foam Dart Launcher Robot with the Viam App**
 
 Create a new robot in the Viam app and give it a name. 
-Then in the robot’s **CONFIG** tab you will be able to create new components.
-
-* **Name**: 
-* **Type**: 
 
 #### Configure the Pi (board)
 
@@ -181,8 +177,8 @@ Just remember to use it consistently in the following steps.
 
 #### Configure the motors (left and right)
 
-Add the left [motor](/components/motor/) with the name “left”, type `motor`, and model `gpio`. 
-Add the right motor with the name “right”, type `motor` and model `gpio`. 
+Add the left [motor](/components/motor/) with the name `left`, type `motor`, and model `gpio`. 
+Add the right motor with the name `right`, type `motor` and model `gpio`. 
 After clicking **Create Component** you’ll see a pin assignment type toggle. 
 Click **In1/In2** since that is compatible with the type of input our motor controller expects. 
 In the drop downs for A/<strong>In1</strong> and B/<strong>In2</strong>, choose `11 GPIO 17` and `13 GPIO 27`, respectively, for the left motor, and `16 GPIO 23` and `18 GPIO 24`, respectively, for the right motor. 
@@ -267,7 +263,7 @@ Raw JSON for entire config can be found here if you wish to copy it into your co
 
 ##### Activating the Foam Dart Launcher
 
-1. Make sure your foam dart launcher is loaded and ready to go
+1. Make sure your foam dart launcher is loaded and ready to go.
 2. When you are ready, navigate to the Viam app -> **CONTROL** tab -> board component and set the **IN** pin (pin 37 in our example) to high to activate. 
 
 You can see the demo video of it in action here:
