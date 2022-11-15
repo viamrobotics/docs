@@ -91,7 +91,7 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 }
 ```
 
-##### GPS-NMEA Attributes
+#### GPS-NMEA Attributes
 
 Name | Type | Default Value | Description
 ---- | ---- | ------------- | -----
