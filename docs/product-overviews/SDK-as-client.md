@@ -185,7 +185,7 @@ await motor1.set_power(1)
 await asyncio.sleep(3)
 await motor1.stop()   
 
-# run motor2 at 1000 rpm for 200 rotations
+# Run motor2 at 1000 rpm for 200 rotations
 await motor2.go_for(1000, 200)
 ```
 
@@ -207,7 +207,7 @@ m1.SetPower(context.Background(), 1, nil)
 time.Sleep(3 * time.Second)
 m1.Stop(context.Background(), nil)
 
-// run motor2 at 1000 RPM for 200 rotations
+// Run motor2 at 1000 RPM for 200 rotations
 m2.GoFor(context.Background(), 1000, 200, nil)
 ```
 
