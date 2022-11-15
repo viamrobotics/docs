@@ -22,7 +22,7 @@ Viam's Client SDKs support several ways to connect and control your robots, with
 
 - [Python SDK](https://python.viam.dev/)
 
-- [Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
+- [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 
 ## Quick Start Examples
 
@@ -36,7 +36,7 @@ Before you get started, ensure that you:
 
 - Go to the **SETUP** tab and follow the instructions there.
 
-- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) or [Python](https://python.viam.dev/) SDK on your computer.
+- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk) or [Python](https://python.viam.dev/) SDK on your computer.
 
 {{% /alert %}}
 
