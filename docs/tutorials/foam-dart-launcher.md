@@ -223,7 +223,7 @@ If you go back to the **CONTROL** tab, you will see your base and camera.
 
 {{< figure src="../img/nerf-robot/base-cam-view.png"  alt="Camera view from the Base component's keyboard tab." title="Camera View from the Base Component's Keyboard Tab." width="800">}}
 
-Here you can click the toggle to enable keyboard control, and use A, W, S, and D to move your rover around. 
+Here you can click the toggle to enable keyboard control, and use A, W, S, and D on your keyboard to move your rover around. 
 You can view the camera stream at the same time. 
 If you scroll down, you will see your camera as a component and you will be able to change the refresh frequency and export screenshots from your camera. 
 
