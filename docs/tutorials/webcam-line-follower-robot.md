@@ -300,10 +300,15 @@ We at Viam are running Python 3.9.2 for this tutorial.</li>
 <li class="spacing">Open a file in your favorite IDE and paste in <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">the code from the earlier referenced repo</a>.</li>
 <li class="spacing">Adjust the components names to match the component names you created in your config file.
 In this case, the component names that you may need to change are <strong>scuttlebase</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
-<li class="spacing">From your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>), go to the Connect tab.
+<li class="spacing">From your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>), go to the <strong>CONNECT</strong> tab.
 Find the Python SDK field and copy the robot address (which will likely have the form
 <span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file.
 This allows your code to connect to your robot.</li>
+
+{{% alert title="Caution" color="caution" %}}  
+Do not share your robot secret or robot address publicly. Sharing this information compromises your system security by allowing unauthorized access to your computer.
+{{% /alert %}}
+
 <li class="spacing">Save the code in a directory of your choice.</li>
 <li class="spacing">To get the code onto the Pi you have a few options.
 If you intend to make lots of tweaks to the code over time it may be most convenient for you to set up a <a href="https://mutagen.io/documentation/introduction/getting-started/">Mutagen Sync</a> session from a directory on your computer to a directory on your Pi.
