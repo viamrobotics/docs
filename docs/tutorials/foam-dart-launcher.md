@@ -26,7 +26,7 @@ For example, a brushed DC motor requires a brushed DC motor driver that is rated
 Also, the configuration files shown in this tutorial *must* be modified if you use a different setup.
 {{% /alert %}}
 
-**Hardware and Software Requirements:**
+### Hardware and software requirements
 
 * [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with viam-server installed per [our Raspberry Pi setup guide](https://docs.viam.com/getting-started/rpi-setup/).
 * [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)[^wrvr]
