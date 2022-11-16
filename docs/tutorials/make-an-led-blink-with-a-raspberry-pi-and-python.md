@@ -166,7 +166,7 @@ Click on that file to open it in the code editor.
 
 ![A screenshot from Visual Studio Code that shows the file explorer. A red box is highlighting the new blink.py file located in the root directory.](../img/make-an-led-blink-with-a-raspberry-pi-and-python/image5.png)
 
-Now, the easiest way to get started writing a Python application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab, and copy the boilerplate code from the section labeled **Python SDK**.
+The easiest way to get started writing a Python application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab, and copy the boilerplate code from the section labeled **Python SDK**.
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
 {{% alert title="Caution" color="caution" %}}  
