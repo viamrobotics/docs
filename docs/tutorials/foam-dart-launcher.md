@@ -7,7 +7,7 @@ description: "Use Viam to configure a rover and launch a foam dart launcher acti
 # SME: Kurt S. and Hazal M.
 ---
 
-**Introduction**
+## Introduction
 
 This tutorial will show you how to build your very own foam dart launcher robot using Viam, a Raspberry Pi, a generic foam dart launcher with foam darts, a USB camera, a solenoid, a relay, and a motor controller. 
 This robot will be able to move around, and launch a foam dart at people and objects.
