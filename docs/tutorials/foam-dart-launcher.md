@@ -270,7 +270,7 @@ You can see the demo video of it in action here:
 
 {{< video src="../videos/FoamDartLauncherRobotDemo.mp4" type="video/mp4">}}
 
-## **Summary**
+## Summary
 
 In this tutorial, you learned how to create a remote controllable foam dart launcher robot activated by GPIO pins on a Raspberry Pi using Viam. 
 You could use this same concept to build a security robot which launches darts at people if they enter your room, a Nerf ball blaster dog toy, a kitten treat shooter for cats to fetch in excitement, you name it! 
