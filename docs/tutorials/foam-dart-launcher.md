@@ -281,4 +281,4 @@ If you are looking for some projects that would be a great next step in your jou
 * [Tutorial List](https://docs.viam.com/#tutorials)
 
 If you have any issues getting Viam set up or if you are stuck, let us know on the[ Viam Community Slack](http://viamrobotics.slack.com), and we will be happy to help you get up and running.
-It is also a great place if you want to connect with other developers learning how to build robots. 
+It is also a great place to connect with other developers learning how to build robots. 
