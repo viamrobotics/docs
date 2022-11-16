@@ -10,23 +10,25 @@ description: "Use Viam to configure a rover and launch a foam dart launcher acti
 ## Introduction
 
 This tutorial will show you how to build your very own foam dart launcher robot using Viam, a Raspberry Pi, a generic foam dart launcher with foam darts, a USB camera, a solenoid, a relay, and a motor controller. 
-This robot will be able to move around, and launch a foam dart at people and objects.
+This robot will be able to move around and launch foam darts.
 
-This project is a great place to start if you are new to building robots, have a love for Nerf toys, and an occasion to target something and launch at it, or if you want to troll your friends. 
+This project is a great place to start if you are new to building robots, have a love for Nerf toys, an occasion to target something and launch at it, or if you just want to troll your friends. 
 Don’t forget to be careful and have fun! 
 
-{{< figure src="../img/nerf-robot/init-image-nerf-robot.gif" width="400px" alt="Activating a foam dart launcher taped to a rover having batteries and cables exposed." title="Robot launching a dart from a foam dart launcher taped to the robot." >}}
+{{< figure src="../img/nerf-robot/init-image-nerf-robot.gif" width="400px" alt="Activating a foam dart launcher taped to a rover." title="Robot launching a dart from a foam dart launcher taped to the robot." >}}
 
-## What you’ll need for this tutorial:
+## What You’ll Need for This Tutorial:
 
 You will need the following hardware, software, tools, and materials to complete this project:
 
-{{% alert="Note" color="note"%}} If you use a different rover and/or motor controller, ensure that the motor driver is compatible with the motors on your rover. 
+{{% alert title="Note" color="note"%}} If you use a different rover and/or motor controller, ensure that the motor driver is compatible with the motors on your rover. 
 For example, a brushed DC motor requires a brushed DC motor driver that is rated for the power requirements of the motor. 
 Also, the configuration files shown in this tutorial *must* be modified if you use a different setup.
+
+You can find more information on configuring different motors in the [Motor Component](../components/motor)m topic.
 {{% /alert %}}
 
-### Hardware and software requirements
+### Hardware and Software Requirements
 
 * [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with viam-server installed per [our Raspberry Pi setup guide](https://docs.viam.com/getting-started/rpi-setup/).
 * [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)[^wrvr]
@@ -43,35 +45,30 @@ Refer to the manufacturer’s data sheet and our [motor component documentation]
 [^cam]: Webcam: <a href="https://www.amazon.com/gp/product/B0972KK7BC/" target="_blank">ht<span></span>tps://www.amazon.com/gp/product/B0972KK7BC/</a>
 [^sol]: Solenoid: <a href="https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/" target="_blank">ht<span></span>tps://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/</a>
 [^relay]: Relay: <a href="https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/" target="_blank">ht<span></span>tps://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/</a>
-[^dmc]:Dual H-bridge Moror Controller: <a href="https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/" target="_blank">ht<span></span>tps://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/</a>
+[^dmc]:Dual H-bridge Motor Controller: <a href="https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/" target="_blank">ht<span></span>tps://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/</a>
 
-**Other Materials:**
+### Tools and Consumables
 
 * Solder (optional)
-* [Flathead screwdriver](https://www.amazon.com/Precision-Screwdriver-Flathead-Philips-Different/dp/B01N5W8MA3/)[^sd]
-* [Cutting pliers](https://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/)[^pliers]
+* Small flathead screwdriver
+* Cutting pliers. (Flush-cutting pliers are preferred.)
 * Electrical tape
-* Elastic bands/Rubber bands
+* Elastic/Rubber bands
 
-[^sd]:Flathead screwdriver: <a href="https://www.amazon.com/Precision-Screwdriver-Flathead-Philips-Different/dp/B01N5W8MA3/" target="_blank">ht<span></span>tps://www.amazon.com/Precision-Screwdriver-Flathead-Philips-Different/dp/B01N5W8MA3/</a>
-[^pliers]: 6-inch, flush cut, side-cutting pliers: <a href="https://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/">ht<span></span>tps://www.amazon.com/IGAN-P6-Precision-Clippers-Spring-loaded-Handmade/dp/B087P191LP/</a>>
+## How to Assemble Your Hardware
 
-### How to Assemble Your Hardware
-
-Hardware configuration includes how to attach your hardware to the Raspberry Pi.
-
-#### Motor Controller Setup
+### Motor Controller Setup
 
 The motor controller is a piece of hardware that takes digital signals from the Raspberry Pi and sends power to the motors accordingly. 
 For this setup we just have one motor controller for the two motors.
 
-{{% alert="Note" color="note"%}}
+{{% alert title="Note" color="note"%}}
 If you have more than two motors you will likely need two motor controllers. 
 {{% /alert %}}
 
 {{< figure src="../img/nerf-robot/dual-h-bridge-motor-controller.jpg" width="400px" alt="Dual H-bridge motor controller with four signal wires going in and two sets of motor power wires coming out." title="Dual H-bridge motor controller." >}}
 
-We need only worry about <strong>Out1-4</strong>, <strong>In1-4</strong>, 12V, and ground
+We need only worry about <strong>Out1-4</strong>, <strong>In1-4</strong>, 12V, and ground.
 
 <ol>
 <li>Attach left to the motor controller.
@@ -86,7 +83,7 @@ We need only worry about <strong>Out1-4</strong>, <strong>In1-4</strong>, 12V, a
 <ol type="a">
 <li>The example robot has <strong>In1</strong> -> pin 11, <strong>In2</strong> -> pin 13
        </ol>
-<li>Repeat steps 1-2 for the right motor and using <strong>Out3</strong>, <strong>Out4</strong>, <strong>In3</strong>, <strong>In4</strong>
+<li>Repeat steps 1-2 for the right motor using <strong>Out3</strong>, <strong>Out4</strong>, <strong>In3</strong>, <strong>In4</strong>
 <ol type="a">
 <li>The example robot has <strong>In3</strong> -> pin 16, <strong>In4</strong> -> pin 18
    </ol>
@@ -96,21 +93,22 @@ We need only worry about <strong>Out1-4</strong>, <strong>In1-4</strong>, 12V, a
 </ol>
 </ol>
 
-#### Camera Setup
+### Camera Setup
 
 This is as easy as plugging the camera into a USB slot on you Pi. 
 We’ll configure the camera in the Viam App in later steps. 
 
-#### Relay/Solenoid Setup
+### Relay/Solenoid Setup
 
 The solenoid is used to actuate the foam dart launcher trigger. 
 The relay works as a switch to turn on and off our solenoid. 
 This allows us to activate the foam dart launcher by using a GPIO pin on the board.
 
-{{% alert="Note" color="note"%}}
+{{% alert title="Note" color="note"%}}
 We cannot directly power components from GPIO pins. 
 This board limitation restricts GPIO pins to providing 3.3V and a very limited current supply (16mA). 
 Even the 3V and 5.5V power pins on the Pi supply are limited to about 1A. 
+
 If a component pulls more than that, you risk power cycling the Pi. 
 That is why we use a relay instead to supply 5V and more current to the solenoid. 
 This is standard practice for power control circuits in many situations. 
@@ -140,7 +138,7 @@ For example, using a common off-the-shelf (COTS) 15A light switch to actuate a r
 </ol>
 </ol>
 
-#### Assemble Solenoid/Foam Dart Launcher
+### Assemble Solenoid/Foam Dart Launcher
 
 {{< figure src="../img/nerf-robot/assembled-foam-dart-launcher.jpg" width="400px" alt="Solenoid attached to the orange foam dart launcher using rubber bands and electrical tape." title="Foam dart launcher/Solenoid Assembly." >}}
 
@@ -162,20 +160,20 @@ Try activating the solenoid manually to ensure that it hits the foam dart launch
 
 {{< figure src="../img/nerf-robot/ng-taped-to-rover.jpg"  alt="Foam dart launcher taped to a rover base using electrical tape." title="Foam dart launcher Taped to the Rover" width="400">}}
 
-### **Configuring Your Foam Dart Launcher Robot with the Viam App**
+## Configure Your Foam Dart Launcher Robot with the Viam App
 
 Create a new robot in the Viam app and give it a name. 
 
-#### Configure the Pi (board)
+### Pi Configuration (board)
 
 Add your board with the name `board`, type `board`, and model `pi`. Click **Create Component**.
 
 {{< figure src="../img/nerf-robot/add-board.png"  alt="Viam App Board component attribute pane." title="Board Component Attribute Pane" width="800" >}}
 
 You can name your board whatever you want, we picked `board` for simplicity. 
-Just remember to use it consistently in the following steps. 
+Just remember to use that name consistently in the following steps. 
 
-#### Configure the motors (left and right)
+### Motors Configuration (Left and Right)
 
 Add the left [motor](/components/motor/) with the name `left`, type `motor`, and model `gpio`. 
 Add the right motor with the name `right`, type `motor` and model `gpio`. 
@@ -191,7 +189,7 @@ This ensures that the board initializes before the motor driver when the robot b
 {{< figure src="../img/nerf-robot/left-motor.png"  alt="Motor Component Attribute Pane (left motor)." title="Left Motor Component Configuration Pane" width="400">}}  
 </td><td style="background:white;">
 {{< figure src="../img/nerf-robot/right-motor.png"  alt="Motor Component Attribute Pane (right motor)." title="Right Motor Component Configuration Pane" width="400">}} 
- </td></tr></table>
+</td></tr></table>
 
 Click **SAVE CONFIG** at the bottom of the screen. 
 Then go to the **CONTROL** tab where you will now see the buttons you can use to control the motors: 
@@ -201,11 +199,11 @@ Then go to the **CONTROL** tab where you will now see the buttons you can use to
 Now, you can move around your wheels separately. 
 Let’s add a base to be able to control them together. 
 
-#### Configure the base
+### Base Configuration
 
 Add your motors to the [base](/components/base/) so you can move them around with your keyboard. 
 
-Here we have to specify the wheel circumference and the width between the wheels. 
+Here we must specify the wheel circumference and the width between the wheels. 
 Depending on your rover, you can change these numbers. 
 Don’t forget to make the base depend on the `left`, `right`, and the `board` components. 
 
@@ -213,9 +211,9 @@ Don’t forget to make the base depend on the `left`, `right`, and the `board` c
 
 Now let’s add a camera so we can see the stream on the control panel as you move your rover. 
 
-#### Configure the camera
+### Camera Configuration
 
-Add your USB camera as a webcam. 
+Add your USB camera as a webcam. Please refer to [How to Configure a Camera > Connect and Configure a Camera](../configure-a-camera/#connect-and-configure-a-webcam) for complete instructions.
 
 {{< figure src="../img/nerf-robot/config-webcam.png"  alt="Camera Component Attribute Pane." title="Camera Component Attribute Pane" width="800" >}}
 
@@ -223,13 +221,13 @@ If you go back to the **CONTROL** tab, you will see your base and camera.
 
 {{< figure src="../img/nerf-robot/base-cam-view.png"  alt="Camera view from the Base component's keyboard tab." title="Camera View from the Base Component's Keyboard Tab." width="800">}}
 
-Here you can click the toggle to enable keyboard control, and use A, W, S, and D on your keyboard to move your rover around. 
+Use **Keyboard Disabled** to enable keyboard control (enabled is grey, disabled is red), then and use A, W, S, and D on your keyboard to move your rover around. 
 You can view the camera stream at the same time. 
 If you scroll down, you will see your camera as a component and you will be able to change the refresh frequency and export screenshots from your camera. 
 
 {{< figure src="../img/nerf-robot/camera-cam-view.png"  alt="Camera view from the Camera component pane." title="Camera View from the Camera Component Pane." width="800">}}
 
-#### Toggle between your GPIO pin states
+## Toggling GPIO Pin States
 
 The board card in the **CONTROL** tab provides a way to change the state of the pin connected to the solenoid. 
 If you click the board component, you will be able to see your GPIO pin and its current state. 
@@ -244,24 +242,24 @@ Since we already assembled the robot, setting pin 37 to high will allow you to l
 
 {{< figure src="../img/nerf-robot/board-high.png"  alt="Board component, G P I O section showing Low selected on the Pin State drop-down." title="Board component, GPIO section showing Low selected on the Pin State drop-down" width="800">}}
 
-### Debug info
+## Debug Information
 
-* If any components are not appearing when connecting to the robot in Viam App check the logs tab for any potential errors.
+If any components do not appear when connecting to the robot in the Viam App, check the **LOGS** tab for any potential errors.
 
-### Final Code
+## Final Code
 
 Raw JSON for entire config can be found here if you wish to copy it into your config: [https://gist.github.com/mestcihazal/7683fbdd0975579b44295b3208757b5a](https://gist.github.com/mestcihazal/7683fbdd0975579b44295b3208757b5a)
 
 
-#### Control via Viam App
+## Control via the Viam App
 
-##### Controlling the Base
+### Controlling the Base
 
 1. Navigate to Viam app -> base component
 2. Enable keyboard controls
 3. Drive your robot around!
 
-##### Activating the Foam Dart Launcher
+### Activating the Foam Dart Launcher
 
 1. Make sure your foam dart launcher is loaded and ready to go.
 2. When you are ready, navigate to the Viam app -> **CONTROL** tab -> board component and set the **IN** pin (pin 37 in our example) to high to activate. 
