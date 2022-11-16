@@ -21,7 +21,8 @@ This sends power commands to a motor on the robot.
 
 Before you get started, ensure that you, go to [app.viam.com](https://app.viam.com/), create a new robot and go to the **SETUP** tab and follow the instructions there.
 
-Assumption: Motors called "motor1" and "motor2" are configured as components of your robot. Read on to learn how to configure motor components.
+Assumption: Motors called "motor1" and "motor2" are configured as components of your robot.
+Read on to learn how to configure motor components.
 
 {{% /alert %}}
 
