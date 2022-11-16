@@ -166,8 +166,12 @@ Click on that file to open it in the code editor.
 
 ![A screenshot from Visual Studio Code that shows the file explorer. A red box is highlighting the new blink.py file located in the root directory.](../img/make-an-led-blink-with-a-raspberry-pi-and-python/image5.png)
 
-Now, the easiest way to get started writing a Python application with Viam, is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Connect** tab, and copy the boilerplate code from the section labeled **Python SDK**.
+Now, the easiest way to get started writing a Python application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab, and copy the boilerplate code from the section labeled **Python SDK**.
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
+
+{{% alert title="Caution" color="caution" %}}  
+Do not share your robot secret or robot address publicly. Sharing this information compromises your system security by allowing unauthorized access to your computer.
+{{% /alert %}}
 
 The Python SDK connect script should look something like this:
 
@@ -269,7 +273,7 @@ And, if all goes well, you should see your LED blinking on and off again every s
 
 ![A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text "LED is on," and "LED is off" is printed out to the terminal onscreen.](../img/make-an-led-blink-with-a-raspberry-pi-and-python/image6.gif)
 
-You can exit this program by click **CTRL + C** in your terminal window.
+You can exit this program by typing **CTRL + C** in your terminal window.
 
 If you get an error, you can check your code against my complete code here:
 
