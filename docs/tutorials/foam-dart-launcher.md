@@ -203,7 +203,7 @@ Let’s add a base to be able to control them together.
 
 #### Configure the base
 
-Add your motors to the [base](https://docs.viam.com/components/base/) so you can move them around with your keyboard. 
+Add your motors to the [base](/components/base/) so you can move them around with your keyboard. 
 
 Here we have to specify the wheel circumference and the width between the wheels. 
 Depending on your rover, you can change these numbers. 
