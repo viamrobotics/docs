@@ -166,7 +166,6 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration toget
         "debug": false,
         "format": "",
         "video_path": "video0",
-        "video_path_pattern": "",
         "width_px": 0,
         "height_px": 0
       },

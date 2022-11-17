@@ -67,7 +67,6 @@ Viam recommends using a standard webcam rather than a "ribbon" cam (typical a ba
 	"model" : "webcam",
 	"attributes": {
     	"video_path": string, # path to the webcam,
-    	"video_path_pattern": string, # if path is not provided, queries the devices on hardware to find the camera,
     	"width_px": int, # camera image width, used with path_pattern to find camera,
     	"height_px": int, # camera image height, used with path_pattern to find camera,
     	"format": string # image format, used with path_pattern to find camera,
