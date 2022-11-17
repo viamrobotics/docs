@@ -4,7 +4,7 @@ linkTitle: "Sensor"
 weight: 70
 draft: false
 type: "docs"
-description: "Explanation of sensor types, configuration, and usage in Viam."
+description: "Explanation of sensor configuration and usage in Viam."
 # SME: #team-bucket
 ---
 This page explains how to set up a generic sensor component with Viam.

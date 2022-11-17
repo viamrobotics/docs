@@ -3,7 +3,7 @@ title: "Motor Component"
 linkTitle: "Motor"
 weight: 70
 type: "docs"
-description: "Explanation of motor types, configuration, and usage in Viam."
+description: "Explanation of motor configuration and usage in Viam."
 # SME: Rand, Jessamy
 ---
 {{% alert title="Note" color="note" %}}
