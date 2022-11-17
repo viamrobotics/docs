@@ -4,7 +4,7 @@ linkTitle: "Camera"
 weight: 40
 type: "docs"
 description: "Explanation of camera configuration and usage in Viam."
-# SMEs: Bijan, Maxim
+# SMEs: Bijan, vision team
 ---
 A Viam Camera is a source of 2D and/or 3D images (e.g. a webcam, lidar, time-of-flight sensor, etc). A single image is returned from the camera upon request, and images can be streamed continuously from the camera by using systems that do fast, repeated requests. 
 
