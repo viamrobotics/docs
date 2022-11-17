@@ -119,7 +119,7 @@ If this page is blank and you do not have any listed, make sure your microSD car
 
 After clicking save, double check your OS and Storage settings and then click `WRITE`:
 
-![A warning is show that says "All exisiting data on the SD card will be erased. Are you sure that you want to continue?"](../../getting-started/img/rpi-setup/imager-write-confirm.png)
+![A warning is shown that says "All exisiting data on the SD card will be erased. Are you sure that you want to continue?"](../../getting-started/img/rpi-setup/imager-write-confirm.png)
 
 You will be prompted to confirm erasing your microSD card: select `YES`.
 You may also be prompted by your operating system to enter an Administrator password:

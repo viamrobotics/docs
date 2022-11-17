@@ -8,9 +8,11 @@ description: "Instructions to run SLAM with either a webcam or provided example 
 # SMEs: Kat
 ---
 
-## Warning: This is an experimental feature.
+{{% alert title="Note" color="note" %}}
+This is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
+{{% /alert %}}
 
 ## Introduction
 [SLAM](../../services/slam/) allows your robot to create a map of its surroundings, as well as find its location within that map.
