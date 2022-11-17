@@ -96,7 +96,7 @@ Attribute Name | Type | Description
 -------------- | ---- | ---------------
 `min_angle_deg` | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation.
 `max_angle_deg` | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation.
-`starting_position_deg` | float 64 | Starting position of the servo in degrees.
+`starting_position_deg` | float64 | Starting position of the servo in degrees.
 `frequency_hz` | uint | The servo driver will attempt to change the GPIO pin's frequency. Default for a Pi is 19.2MHz.
 `pwm_resolution` | uint | Resolution of the PWM driver (e.g. number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution.
 `min_width_us` | uint | Override the safe minimum pulse width in microseconds. This affects PWM calculation.
