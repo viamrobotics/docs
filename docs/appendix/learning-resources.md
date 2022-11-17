@@ -12,7 +12,7 @@ The following sections contain links that we think you will find very useful dur
 
 ### Hobby Servos
 
-Hobby servos (sometimes called servomotors) are a type of actuator comprising a small motor with built-in closed-loop control.
+Hobby servos are a type of actuator comprising a small motor with built-in closed-loop control.
 They are useful for precise positioning, usually limited to a 180 degree range of angles.
 Continuous rotation servos are also available that maintain a speed rather than a position.
 

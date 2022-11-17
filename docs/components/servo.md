@@ -6,7 +6,7 @@ type: "docs"
 description: "Explanation of servo wiring and configuration in Viam."
 # SME: #team-bucket
 ---
-Hobby servos (sometimes called servomotors) are a type of actuator comprising a small motor with built-in closed-loop control.
+Hobby servos are a type of actuator comprising a small motor with built-in closed-loop control.
 
 The Viam `servo` component is not designed to support industrial servomotors.
 Configure an industrial servomotor as a [motor](/components/motor/) with an [encoder](/components/encoder/).
