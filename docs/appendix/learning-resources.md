@@ -18,7 +18,7 @@ Continuous rotation servos are also available that maintain a speed rather than 
 
 #### Mechanism
 
-The most accessible servos contain a small electric motor, a series of gears, and a potentiometer attached to the shaft to act as an encoder.
+Hobby servos contain a small electric motor, a series of gears, and a potentiometer attached to the shaft to act as an encoder.
 It also contains a closed-loop position control circuit that takes a <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">Pulse Width Modulation (PWM)</a>[^pwm] signal input and holds the shaft at a certain angle based on that input.
 
 [^pwm]: Pulse Width Modulation (PWM): <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Pulse-width_modulation</a>

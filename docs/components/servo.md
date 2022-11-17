@@ -8,6 +8,9 @@ description: "Explanation of servo wiring and configuration in Viam."
 ---
 Hobby servos (sometimes called servomotors) are a type of actuator comprising a small motor with built-in closed-loop control.
 
+The Viam `servo` component is not designed to support industrial servomotors.
+Configure an industrial servomotor as a [motor](/components/motor/) with an [encoder](/components/encoder/).
+
 ## Hardware Requirements
 
 A typical servo control setup comprises the following:
@@ -114,3 +117,8 @@ Stop | stop | Stops the servo.
 IsMoving | is_moving | Returns true if the servo is currently moving. Not all servos are able to report this.
 
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)
+
+{{% alert title="Note" color="note" %}}
+If you are using a continuous rotation servo, you will still use the Move command but instead of moving to a given position, the servo will start moving at a set speed.
+The speed will be approximately linearly related to the "angle" you pass in, but you will need to determine based on your own hardware which "angle" represents your desired speed.
+{{% /alert %}}
