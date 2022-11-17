@@ -26,7 +26,7 @@ It also contains a closed-loop position control circuit that takes a <a href="ht
 A typical servo will take PWM pulses ranging from 1ms to 2ms long, and map this range to a 180 degree range of possible positions.
 A 1.5ms signal will hold the servo in the middle or “neutral” position, 1ms will move it to 90 degrees from there in one direction, and 2ms will move it 90 degrees from neutral in the opposite direction.
 
-## Hardware Requirements
+#### Hardware Requirements
 
 Unlike [motors](/components/motor/), servos do not require a motor driver chip.
 
@@ -38,7 +38,7 @@ A typical servo control setup comprises the following:
     - If the servo will not be under any significant load and thus won’t draw much current, you may be able to get away with powering it off 5V (if that’s its required voltage) from the Pi pins.
     However it is advisable to power it directly from a power supply that can meet its peak current needs so as not to inadvertently power cycle the Pi or other components.
 
-## Wiring
+#### Wiring
 
 {{% alert title="Caution" color="caution" %}}  
 Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
