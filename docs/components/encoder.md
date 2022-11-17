@@ -73,8 +73,30 @@ The following example shows the configuration of a board with the necessary digi
 ### Required Attributes
 Besides `type` ("encoder"), `model` ("hall" for a two phase encoder) and `name` (of your choosing), encoder requires the following:
 
-Attribute Name | Type | Meaning/Purpose
--------------- | ---- | ---------------
-`pins` | object | A struct holding the names of the interrupts you configured in the board component.
--- `a` | string | Should match name of first digital interrupt you configured.
--- `b` | string | Required for two phase encoder. Should match name of second digital interrupt you configured.
+<table>
+<tr>
+<th>Attribute Name</th>
+<th>Attr Structure</th>
+<th>Type</th>
+<th>Meaning/Purpose</th>
+</tr>
+<tr>
+<td><code>pins</code></td>
+<td>-</td>
+<td>object</td>
+<td>A struct (below) holding the names of the interrupts you configured in the board component:</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>a</code></td>
+<td>string</td>
+<td>Should match name of first digital interrupt you configured.</td>
+</tr>
+<tr>
+<td>-</td>
+<td><code>b</code></td>
+<td>string</td>
+<td>Required for two phase encoder. 
+Should match name of second digital interrupt you configured.</td>
+</tr>
+</table>
