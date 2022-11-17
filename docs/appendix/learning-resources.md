@@ -18,13 +18,14 @@ Continuous rotation servos are also available that maintain a speed rather than 
 
 #### Mechanism
 
-A servo contains a small electric motor, a series of gears, and a potentiometer attached to the shaft to act as an encoder.
+The most accessible servos contain a small electric motor, a series of gears, and a potentiometer attached to the shaft to act as an encoder.
 It also contains a closed-loop position control circuit that takes a <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">Pulse Width Modulation (PWM)</a>[^pwm] signal input and holds the shaft at a certain angle based on that input.
 
 [^pwm]: Pulse Width Modulation (PWM): <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Pulse-width_modulation</a>
 
 A typical servo will take PWM pulses ranging from 1ms to 2ms long, and map this range to a 180 degree range of possible positions.
 A 1.5ms signal will hold the servo in the middle or “neutral” position, 1ms will move it to 90 degrees from there in one direction, and 2ms will move it 90 degrees from neutral in the opposite direction.
+Note that some servos have a different PWM range, mapping to a different set of angles.
 
 #### Hardware Requirements
 
@@ -73,9 +74,9 @@ For example, a resistor with brown, green, orange bands representing, 1, 5, and 
 - On five-band resistors, band 3 becomes an additional significant digit, band 4 becomes the multiplier, and band 5 becomes the tolerance band. 
 - Six-band resistors are read identically to five-band resistors, their difference being that the sixth band indicates the resistor's temperature coefficient.
 
-### Light Emitting Diodes - LEDs
+### LEDs (Light-Emitting Diodes)
 
-Light Emitting Diodes come in a variety of form factors:
+Light-emitting diodes come in a variety of form factors:
 <img src="../img/Verschiedene_LEDs.jpg" alt="Image of various Light Emitting Diode form factors." />
 LEDs commonly have two leads, although specialty LEDs are available that are capable of simultaneously displaying two colors or of displaying a blended shade. These specialty LEDs have 4-6 leads and 2-4 LED junctions.
 
