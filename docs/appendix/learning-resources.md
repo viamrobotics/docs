@@ -9,13 +9,52 @@ draft: true
 The following sections contain links that we think you will find very useful during your journey into robotics.
 
 ## Basic Electronics
+
+### Hobby Servos
+
+Hobby servos are a type of actuator comprising a small motor with built-in closed-loop control.
+They are useful for precise positioning, usually limited to a 180 degree range of angles.
+Continuous rotation servos are also available that maintain a speed rather than a position.
+
+#### Mechanism
+
+Hobby servos contain a small electric motor, a series of gears, and a potentiometer attached to the shaft to act as an encoder.
+It also contains a closed-loop position control circuit that takes a <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">Pulse Width Modulation (PWM)</a>[^pwm] signal input and holds the shaft at a certain angle based on that input.
+
+[^pwm]: Pulse Width Modulation (PWM): <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Pulse-width_modulation</a>
+
+A typical servo will take PWM pulses ranging from 1ms to 2ms long, and map this range to a 180 degree range of possible positions.
+A 1.5ms signal will hold the servo in the middle or “neutral” position, 1ms will move it to 90 degrees from there in one direction, and 2ms will move it 90 degrees from neutral in the opposite direction.
+Note that some servos have a different PWM range, mapping to a different set of angles.
+
+#### Hardware Requirements
+
+Unlike [motors](/components/motor/), servos do not require a motor driver chip.
+
+A typical servo control setup comprises the following:
+
+- A Raspberry Pi (or other [board](/components/board/))
+- A servo
+- An appropriate power supply
+    - If the servo will not be under any significant load and thus won’t draw much current, you may be able to get away with powering it off 5V (if that’s its required voltage) from the Pi pins.
+    However it is advisable to power it directly from a power supply that can meet its peak current needs so as not to inadvertently power cycle the Pi or other components.
+
+#### Wiring
+
+{{% alert title="Caution" color="caution" %}}  
+Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
+{{% /alert %}}
+
+Here's an example of how a servo might be wired to a Raspberry Pi:  
+
+![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](/components/img/servo/servo-wiring.png)
+
 ### Resistors
 
 - <a href="https://goodcalculators.com/resistor-color-code-calculator/" target="_blank">Online Resistor Color Code Calculator</a>[^orccc] - Enter the desired resistor value in Ohms, kOhms, or MOhms, and press enter and this site will display the color bands for that resistor value.
 [^orccc]: Online Resistor Color Code Calculator: <a href="https://goodcalculators.com/resistor-color-code-calculator/" target="_blank">ht<span></span>tps://goodcalculators.com/resistor-color-code-calculator</a>
 
-
-**Resistor Value Chart**
+#### Resistor Value Chart
 <img src="../img/resistor.png" alt="Chart of standard colors to values for electronic components. An example resistor with green, red, and orange bands is shown. The value is 52 times 10 to the third power, or 52,000 Ohms." />
 
 You can easily learn resistor color markings without referring to a chart by remembering this jingle:
@@ -35,8 +74,9 @@ For example, a resistor with brown, green, orange bands representing, 1, 5, and 
 - On five-band resistors, band 3 becomes an additional significant digit, band 4 becomes the multiplier, and band 5 becomes the tolerance band. 
 - Six-band resistors are read identically to five-band resistors, their difference being that the sixth band indicates the resistor's temperature coefficient.
 
-### Light Emitting Diodes - LEDs
-Light Emitting Diodes come in a variety of form factors:
+### LEDs (Light-Emitting Diodes)
+
+Light-emitting diodes come in a variety of form factors:
 <img src="../img/Verschiedene_LEDs.jpg" alt="Image of various Light Emitting Diode form factors." />
 LEDs commonly have two leads, although specialty LEDs are available that are capable of simultaneously displaying two colors or of displaying a blended shade. These specialty LEDs have 4-6 leads and 2-4 LED junctions.
 
