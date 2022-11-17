@@ -4,7 +4,7 @@ linkTitle: "Gantry"
 draft: false
 weight: 50
 type: "docs"
-description: "Explanation of gantry types, configuration, and usage in Viam."
+description: "Explanation of gantry configuration and usage in Viam."
 # SME: Rand
 ---
 

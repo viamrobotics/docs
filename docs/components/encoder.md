@@ -3,7 +3,7 @@ title: "Encoder Component"
 linkTitle: "Encoder"
 weight: 50
 type: "docs"
-description: "Explanation of encoder types, configuration, and usage in Viam."
+description: "Explanation of encoder configuration and usage in Viam."
 # SME: Rand
 ---
 An encoder is a device that is used to sense angular position, direction and/or speed of rotation.
