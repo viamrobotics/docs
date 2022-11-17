@@ -57,6 +57,11 @@ When you are ready to contribute changes to the docs:
 
 ## Important Things about Hugo
 
+### Linting
+
+We are using `markdownlint` to ensure consistency in our documentation.
+Be sure that you have the [markdownlint VS Code extension](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) installed locally. 
+
 ### Front Matter
 
 ```
