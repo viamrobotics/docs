@@ -33,9 +33,7 @@ You will need the following tools to complete the project:
 
 ### Software
 
-- <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">Golang</a>[^go] or <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">Python 3.9+</a>[^python]
-- [viam-server](/getting-started/linux-install/)
-- [Viam Python SDK](https://python.viam.dev/) or [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
+- [viam-server](/getting-started/rpi-setup/)
 
 ## Project setup
 
