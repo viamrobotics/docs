@@ -254,8 +254,7 @@ If you wish to copy and paste code for your camera, use the following:
  "height_px": 0,
  "debug": false,
  "format": "",
- "video_path": "video0",
- "video_path_pattern": ""
+ "video_path": "video0"
 }
 ```
 
