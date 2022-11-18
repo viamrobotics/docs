@@ -76,7 +76,7 @@ Here are a few use cases:
   - Switch a relay.
 - Send a PWM signal to control the speed of a motor or servo.
 - Read the state of the pin (i.e., the voltage), which can be used to monitor the status of whatever is connected to it.
-- Receive digital signals from sensors, as detailed in the [analog section below](#analogs).
+- Receive digital signals from sensors, as detailed in the [Analogs section below](#analogs).
 - Receive input as a digital interrupt, [detailed below](#digital-interrupts).
 - Communicate using different protocols such as I2C and SPI bus.
 
