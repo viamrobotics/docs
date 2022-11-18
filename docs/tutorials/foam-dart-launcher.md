@@ -3,7 +3,7 @@ title: "Foam Dart Launcher Robot Tutorial"
 linkTitle: "Dart Launcher Robot"
 weight: 160
 type: "docs"
-description: "Use Viam to configure a rover and launch a foam dart launcher activated by GPIO pins on a Raspberry Pi."
+description: "Use Viam to configure a rover and launch a foam dart activated by GPIO pins on a Raspberry Pi."
 # SME: Kurt S. and Hazal M.
 ---
 
@@ -19,13 +19,13 @@ Don’t forget to be careful and have fun!
 
 ## What You’ll Need for This Tutorial:
 
-You will need the following hardware, software, tools, and materials to complete this project:
+You will need the following hardware, software, tools, and consumables to complete this project:
 
 {{% alert title="Note" color="note"%}} If you use a different rover and/or motor controller, ensure that the motor driver is compatible with the motors on your rover. 
 For example, a brushed DC motor requires a brushed DC motor driver that is rated for the power requirements of the motor. 
 Also, the configuration files shown in this tutorial *must* be modified if you use a different setup.
 
-You can find more information on configuring different motors in the [Motor Component](../components/motor)m topic.
+You can find more information on configuring different motors in the [Motor Component](../components/motor) topic.
 {{% /alert %}}
 
 ### Hardware and Software Requirements
@@ -37,7 +37,6 @@ You can find more information on configuring different motors in the [Motor Comp
 * [A solenoid](https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/)[^sol]
 * [A relay](https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/)[^relay]
 * [A dual motor controller](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/)[^dmc].
-If you use a different motor controller, you may need to configure it differently from what is shown in this tutorial.
 Refer to the manufacturer’s data sheet and our [motor component documentation](https://docs.viam.com/components/motor) to see how to configure the pins.
 * Jumper wires (breadboard wires)
 [^wrvr]: A wheeled rover: <a href="https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/" target="_blank">ht<span></span>tps://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/</a>
@@ -120,20 +119,20 @@ For example, using a common off-the-shelf (COTS) 15A light switch to actuate a r
 <li>Connect the solenoid to the relay.</li>
 <ol type="a">
     <li>Connect a wire to the Normally Open (<strong>NO</strong>) terminal connector.</li>
-    <li>Connect the other end to a ground pin on the Raspberry Pi. (Ground pins: 09, 25, 39, 06, 14, 23, 30, or 34)</li>
+    <li>Connect the other end to a ground pin on the Raspberry Pi. </li>
     </ol>
 <li>Connect the Relay <strong>COM</strong>mon pin.</li>
 <ol type="a">
-<li>Connect the <strong>COM</strong> pin to the 3.3V power of the Raspberry Pi. (3.3V pins: 01 or 17)</li>
+<li>Connect the <strong>COM</strong> pin to the 3.3V power of the Raspberry Pi. </li>
 </ol>
 <li>Connect <strong> VCC </strong>(<strong>DC+</strong>) and ground (<strong>DC-</strong>) .</li>
 <ol type="a">
-<li>Connect <strong>DC+</strong> to the 5V of the Raspberry Pi. (5V Pins: 02 or 04)</li>
-<li>Connect <strong>DC-</strong> to ground on the Raspberry Pi. (Ground pins: 09, 25, 39, 06, 14, 20, 30, or 34)</li>
+<li>Connect <strong>DC+</strong> to the 5V of the Raspberry Pi.</li>
+<li>Connect <strong>DC-</strong> to ground on the Raspberry Pi. </li>
 </ol>
 <li>Connect <strong>IN</strong>. </li>
 <ol type="a">
-<li>Connect <strong>IN</strong> to a GPIO pin on the Raspberry Pi. (GPIO Pins: 03, 05, 07, 11, 13, 15, 19, 21 23, 29, 31, 35, 37, 08, 10, 12, 16, 18, 22, 24, 26, 32, 36, 38, or 40)</li>
+<li>Connect <strong>IN</strong> to a GPIO pin on the Raspberry Pi. </li>
 <li>For this example, we've connected to pin 37.</li>
 </ol>
 </ol>
@@ -151,7 +150,7 @@ For example, using a common off-the-shelf (COTS) 15A light switch to actuate a r
   Right now it receives 5 volts, but some solenoids can support up to 12 volts. 
   If necessary, you can connect the solenoid to another power supply such as a 9 volt battery. 
   Check the details of your solenoid[^solvolt]. 
-4. Tape the solenoid so it will make good contact with the trigger when it is activated via the relay.
+4. Tape the solenoid so it makes good contact with the trigger when it is activated via the relay.
 5. Put all of your components onto your base.
 
 [^rb]: If you use the rubber band method, you may need to pull the rubber bands away from the trigger when reloading the foam dart launcher so it can reset and load properly. 
@@ -234,7 +233,7 @@ If you click the board component, you will be able to see your GPIO pin and its 
 In the **Set** part of the GPIO section, select pin 37 (the pin we wired to control the solenoid). 
 If you set the pin state to high, the solenoid will actuate. 
 If you set it to low, it should deactivate the solenoid. 
-Since we already assembled the robot, setting pin 37 to high will allow you to launch your foam dart launcher if its loaded. 
+Since we already assembled the robot, setting pin 37 to high launches your foam dart launcher if its loaded. 
 
 {{< figure src="../img/nerf-robot/board-low.png"  alt="Board component, G P I O section showing High selected on the Pin State drop-down." title="Board component, GPIO section showing High selected on the Pin State drop-down" width="800">}}
 
