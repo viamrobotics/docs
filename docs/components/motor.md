@@ -154,9 +154,9 @@ For example:
 
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
-`board` | string | --        | Name of board on which it depends
+`board` | string | --        | Name of board to which the motor driver is wired.
 `max_rpm` | float | --         | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the “GoFor” method unusable.
-`pins` | object | --  | A structure that holds pin configuration information
+`pins` | object | --  | A structure that holds pin configuration information.
 
 Nested within `pins` (note that only two or three of these are required depending on your motor driver; see [Pins](#pins) above for more information):
 
@@ -217,7 +217,7 @@ Here's an example of an encoded DC motor wired with <a href="https://www.pololu.
 ### Viam Configuration
 
 Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.”
-Configuration of an encoder requires configuring the encoder [per the encoder topic](../encoder) in addition to the [standard “gpio” model attributes](#required-attributes---non-encoded-dc-motor). Also note that the encoder name must be added in the motor's `depends_on` field.
+Configuration of an encoder requires configuring the encoder [per the encoder topic](../encoder) in addition to the [standard “gpio” model attributes](#required-attributes---non-encoded-dc-motor).
 Here’s an example config file:  
 
 ![motor-encoded-dc-json](../img/motor/motor-encoded-dc-json.png)  
@@ -273,7 +273,7 @@ Here’s an example of a basic stepper driver config:
 
 Name | Type | Description
 -------------- | ---- | ---------------
-`board` | string | Should match name of board on which motor depends.
+`board` | string | Should match name of board to which the motor is wired.
 `pins` | object | A structure containing "step" and "dir" pin numbers; see example JSON above.
 `ticks_per_rotation` | integer | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common.
 
