@@ -273,7 +273,7 @@ Here’s an example of a basic stepper driver config:
 
 Name | Type | Description
 -------------- | ---- | ---------------
-`board` | string | Should match name of board to which the motor is wired.
+`board` | string | Should match name of board to which the motor driver is wired.
 `pins` | object | A structure containing "step" and "dir" pin numbers; see example JSON above.
 `ticks_per_rotation` | integer | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common.
 
