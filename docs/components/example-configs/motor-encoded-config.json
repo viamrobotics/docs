@@ -1,9 +1,9 @@
 {
   "components": [
     {
+      "name": "local",
       "type": "board",
       "model": "pi",
-      "name": "local",
       "attributes": {
         "digital_interrupts": [
           {
@@ -18,12 +18,9 @@
       }
     },
     {
+      "name": "myEncoder",
       "type": "encoder",
       "model": "hall",
-      "name": "myEncoder",
-      "depends_on": [
-        "local"
-      ],
       "attributes": {
         "board": "local",
         "pins": {
@@ -33,13 +30,9 @@
       }
     },
     {
+      "name": "myMotor1",
       "type": "motor",
       "model": "gpio",
-      "name": "myMotor1",
-      "depends_on": [
-        "local",
-        "myEncoder"
-      ],
       "attributes": {
         "board": "local",
         "max_rpm": 500,
