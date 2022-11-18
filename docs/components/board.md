@@ -50,7 +50,7 @@ The board can't do much on its own so you'll probably want some actuators and/or
 If your application only involves GPIO and no other board attributes or communication methods are required, your board can be configured quite
 simply as in this example:
 
-![board-gen-config](../img/board/board-gen-config.png)
+![An example of a JSON config file for a board component.](../img/board/board-gen-config.png)
 
 All boards will be of type **board**. Specify the correct **model** for your board.
 The following board models are currently supported (not exhaustive):
@@ -76,8 +76,8 @@ Here are a few use cases:
   - Switch a relay.
 - Send a PWM signal to control the speed of a motor or servo.
 - Read the state of the pin (i.e., the voltage), which can be used to monitor the status of whatever is connected to it.
-- Receive digital signals from sensors, as detailed in the Analog section below.
-- Receive input as a digital interrupt, detailed below.
+- Receive digital signals from sensors, as detailed in the [analog section below](#analogs).
+- Receive input as a digital interrupt, [detailed below](#digital-interrupts).
 - Communicate using different protocols such as I2C and SPI bus.
 
 Some things GPIO pins *cannot* do:
@@ -229,11 +229,11 @@ An example:
       "attributes": {
         "digital_interrupts": [
           {
-            "name": "encoder",
+            "name": "example-interrupt-1",
             "pin": "15"
           },
           {
-            "name": "encoder-b",
+            "name": "example-interrupt-2",
             "pin": "16"
           }
         ]
