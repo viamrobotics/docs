@@ -4,28 +4,17 @@
       "name": "local",
       "type": "board",
       "model": "pi",
-      "attributes": {
-        "digital_interrupts": [
-          {
-            "name": "encoderA",
-            "pin": "13"
-          },
-          {
-            "name": "encoderB",
-            "pin": "11"
-          }
-        ]
-      }
+      "attributes": {}
     },
     {
       "name": "myEncoder",
       "type": "encoder",
-      "model": "hall",
+      "model": "incremental",
       "attributes": {
         "board": "local",
         "pins": {
-          "a": "encoderA",
-          "b": "encoderB"
+          "a": "13",
+          "b": "15"
         }
       }
     },
