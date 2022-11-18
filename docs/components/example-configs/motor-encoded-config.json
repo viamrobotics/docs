@@ -4,31 +4,17 @@
       "type": "board",
       "model": "pi",
       "name": "local",
-      "attributes": {
-        "digital_interrupts": [
-          {
-            "name": "encoderA",
-            "pin": "13"
-          },
-          {
-            "name": "encoderB",
-            "pin": "11"
-          }
-        ]
-      }
+      "attributes": {}
     },
     {
       "type": "encoder",
       "model": "hall",
       "name": "myEncoder",
-      "depends_on": [
-        "local"
-      ],
       "attributes": {
         "board": "local",
         "pins": {
-          "a": "encoderA",
-          "b": "encoderB"
+          "a": "13",
+          "b": "15"
         }
       }
     },
@@ -36,10 +22,6 @@
       "type": "motor",
       "model": "gpio",
       "name": "myMotor1",
-      "depends_on": [
-        "local",
-        "myEncoder"
-      ],
       "attributes": {
         "board": "local",
         "max_rpm": 500,
