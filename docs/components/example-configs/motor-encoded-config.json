@@ -1,15 +1,15 @@
 {
   "components": [
     {
+      "name": "local",
       "type": "board",
       "model": "pi",
-      "name": "local",
       "attributes": {}
     },
     {
-      "type": "encoder",
-      "model": "hall",
       "name": "myEncoder",
+      "type": "encoder",
+      "model": "incremental",
       "attributes": {
         "board": "local",
         "pins": {
@@ -19,9 +19,9 @@
       }
     },
     {
+      "name": "myMotor1",
       "type": "motor",
       "model": "gpio",
-      "name": "myMotor1",
       "attributes": {
         "board": "local",
         "max_rpm": 500,
