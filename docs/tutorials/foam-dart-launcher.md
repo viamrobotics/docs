@@ -15,7 +15,7 @@ This robot will be able to move around and launch foam darts.
 This project is a great place to start if you are new to building robots, have a love for Nerf toys, an occasion to target something and launch at it, or if you just want to troll your friends. 
 Don’t forget to be careful and have fun! 
 
-{{< figure src="../img/nerf-robot/init-image-nerf-robot.gif" width="400px" alt="Activating a foam dart launcher taped to a rover." title="Robot launching a dart from a foam dart launcher taped to the robot." >}}
+{{< figure src="../img/nerf-robot/init-image-nerf-robot.gif" width="400px" alt="Robot launching a dart from a foam dart launcher taped to the robot." title="Robot launching a dart from a foam dart launcher taped to the robot." >}}
 
 ## What You’ll Need for This Tutorial:
 
