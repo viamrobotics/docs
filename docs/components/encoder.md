@@ -48,6 +48,11 @@ Name  | Type | Description
 `a` | string | Pin number of one of the pins to which the encoder is wired. Use pin number, not GPIO number.
 `b` | string | Required for two phase encoder. Pin number for the second board pin to which the encoder is wired.
 
+{{% alert title="Note" color="tip" %}}
+When encoder pins are configured using pin numbers, [digital interrupts](/components/board/#digital-interrupts) are implicitly created.
+If you like, instead of putting pin numbers in your encoder pin config, you can explicitly configure digital interrupts in the board component config, and put the names of those interrupts (instead of pin numbers) in "a" and "b".
+{{% /alert %}}
+
 Viam also supports a model of encoder called "single" that requires only one pin (`i`).
 However, the incremental model is recommended as encoders with two signal wires are more accurate.
 
