@@ -1,14 +1,14 @@
 {
   "components": [
     {
+      "name": "example-board",
       "type": "board",
-      "model": "pi",
-      "name": "example-board"
+      "model": "pi"
     },
     {
+      "name": "example-motor",
       "type": "motor",
       "model": "gpiostepper",
-      "name": "example-motor",
       "attributes": {
         "board": "example-board",
         "pins": {

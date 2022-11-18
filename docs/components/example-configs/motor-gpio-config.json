@@ -1,14 +1,14 @@
 {
   "components": [
     {
+      "name": "example-pi",
       "type": "board",
-      "model": "pi",
-      "name": "example-pi"
+      "model": "pi"
     },
     {
+      "name": "example-name",
       "type": "motor",
       "model": "gpio",
-      "name": "example-name",
       "attributes": {
         "board": "example-pi",
         "max_rpm": 500,
