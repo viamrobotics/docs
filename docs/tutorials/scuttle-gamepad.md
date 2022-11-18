@@ -45,7 +45,7 @@ Please add the following Attributes:
 }
 ```
 
-<img src="../img/pi-game-game-config-blank.png" />
+<img src="../img/scuttle-gamepad/pi-game-game-config-blank.png" />
 
 The controller config adds the gamepad controller to your robot.
 However, it does not wire it up to any functionality.
