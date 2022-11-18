@@ -16,10 +16,7 @@
           "dir": "36",
           "pwm": "32"
         }
-      },
-      "depends_on": [
-        "example-pi"
-      ]
+      }
     }
   ]
 }

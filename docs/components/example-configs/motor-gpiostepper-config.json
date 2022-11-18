@@ -16,10 +16,7 @@
           "dir": "15"
         },
         "ticks_per_rotation": 200
-      },
-      "depends_on": [
-        "example-board"
-      ]
+      }
     }
   ]
 }
