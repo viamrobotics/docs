@@ -9,7 +9,7 @@ description: "Instructions to run SLAM with either a webcam or provided example 
 ---
 
 {{% alert title="Note" color="note" %}}
-This is an experimental feature.
+The SLAM service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}

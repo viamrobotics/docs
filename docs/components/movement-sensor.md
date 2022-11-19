@@ -101,7 +101,11 @@ Name | Type | Default Value | Description
 
 ### GPS-RTK
 
-_**(Experimental!)**_
+{{% alert title="Note" color="note" %}}
+The `gps-rtk` model is an experimental feature.
+Stability is not guaranteed.
+Breaking changes are likely to occur, and occur often.
+{{% /alert %}}
 
 This model uses real time kinematic positioning (RTK)[^rtk].
 `gps-rtk`, a module with a chip (<a href="https://www.sparkfun.com/rtk" target="_blank">such as one of these from Sparkfun</a>[^chips]) capable of generating positional accuracy of 2cm.
@@ -184,9 +188,13 @@ Example config:
 
 ### RTK-Station
 
-_**(Experimental!)**_
+{{% alert title="Note" color="note" %}}
+The `rtk-station` model is an experimental feature.
+Stability is not guaranteed.
+Breaking changes are likely to occur, and occur often.
+{{% /alert %}}
 
-The experimental `rtk-station` allows you to configure your own correction source.
+The experimental `rtk-station` model allows you to configure your own correction source.
 This does not provide any movement sensor data on its own, but can be linked to an RTK-ready GPS module on a moving robot and send that robot correction data over your own network, radio, or Bluetooth in areas where internet connectivity is limited, or where an NTRIP server is unavailable.
 We have implemented this in a way that does not rely on an internet connection to get correction data for a moving GPS.
 
@@ -262,7 +270,7 @@ For all of the following RTK-station configurations, `children` is the list of o
 ```
 ### Connection Configuration
 
-{{% alert="Note" color="note" %}}
+{{% alert title="Note" color="note" %}}
 Applies to all GPS models.
 {{% /alert %}}
 
@@ -376,7 +384,11 @@ Name | Type | Default Value | Description
 
 ## Cameramono
 
-_**(Experimental!)**_
+{{% alert title="Note" color="note" %}}
+The `cameramono` model is an experimental feature.
+Stability is not guaranteed.
+Breaking changes are likely to occur, and occur often.
+{{% /alert %}}
 
 We have integrated an experimental package that uses a visual odometry algorithm with dead reckoning to track the Position, Orientation, LinearVelocity and AngularVelocity of the camera’s frame.
 The `cameramono` model can use any single camera with this algorithm. 
