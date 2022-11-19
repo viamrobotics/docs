@@ -139,7 +139,7 @@ Run <file>sudo systemctl restart viam-server.service</file> in the terminal to r
 
 <th><strong>What/Why:
 </th>
-<td>There are many possible reasons why this happens. Verify that Frame rate, frame format, video path/video path pattern, width height, have values. 
+<td>There are many possible reasons why this happens. Verify that Frame rate, frame format, video path, width, and height, have values. 
 Viam specifies 0 for these values by default, but verify that the setting is actually there.
 </td>
 </tr>

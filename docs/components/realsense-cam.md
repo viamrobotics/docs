@@ -60,7 +60,7 @@ This adds the two cameras to your robot. They will have the names `intel:color` 
 
 ## Create camera to display point clouds
 
-Click **Components** on the **CONFIG** tab. Now, add the “align_color_depth” camera model. The **Attributes** pane on the left allows you to enter the necessary attributes for your component. The **Attributes Guide** lists the available attributes for the chosen component.
+Click **Components** on the **CONFIG** tab. Now, add the “join_color_depth” camera model. The **Attributes** pane on the left allows you to enter the necessary attributes for your component. The **Attributes Guide** lists the available attributes for the chosen component.
 
 Enter the necessary JSON configuration for your camera:
 
@@ -68,7 +68,7 @@ Enter the necessary JSON configuration for your camera:
 ``` json
    {
     	"homography": {
-      	"transform": [ // the color and depth image are already aligned
+      	"transform": [ // the color and depth image are already joined
             1.0, 0.0, 0.0,
             0.0, 1.0, 0.0,
             0.0, 0.0, 1.0
@@ -99,7 +99,7 @@ Enter the necessary JSON configuration for your camera:
 ```
 
 
-In the **Remote Control** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with align_color_depth.
+In the **Remote Control** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with join_color_depth.
 
 
 # Using the HTTP server

@@ -24,10 +24,15 @@ Here are details about each of the fields in the camera config:
 * **Name** is the name of the component. 
 * **Model** is how the component will be set up. Some model types are for setting up physical cameras where images and point clouds originate, some are for combining streams from multiple cameras into one, and the `transform` model is for transforming and processing images.
 * **Attributes** are the details that the model requires to work. What attributes are required depends on the model selected. There are some common attributes that can be attached to all camera models.
-    * `stream`: this can be either "color" or "depth" and specifies which kind of image should be returned from the camera stream.  
+    * `stream`: this can be either "color" or "depth" and specifies which kind of image should be returned from the camera stream.
+	Only required for certain models; see example configs below.
     * `debug`: "true" or "false", and enables the debug outputs from the camera.
-    * `intrinsic_parameters` : these are the intrinsic parameters of the camera used to do 2D <-> 3D projections.
-    * `distortion_parameters` : these are modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens.
+	Optional.
+    * `intrinsic_parameters`: these are the intrinsic parameters of the camera used to do 2D <-> 3D projections.
+	Optional for most camera models.
+	Required for join_color_depth.
+    * `distortion_parameters`: these are modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens.
+	Optional.
 
 ```json-viam
 "intrinsic_parameters": { # optional field, intrinsic parameters for 2D <-> transforms
@@ -52,7 +57,8 @@ Follow the instructions for <a href="https://github.com/viam-labs/camera-calibra
 
 ### Webcam
 
-`webcam` is a model that streams the camera data from a camera connected to the hardware. The discovery service will help set up this model, usually.
+`webcam` is a model that streams the camera data from a camera connected to the hardware.
+See our [How to Configure a Camera](/tutorials/configure-a-camera.md/) tutorial for a guide to configuring webcams.
 
 {{% alert title="Note" color="note"%}}
 In Viam parlance, webcams are standard, USB camera devices. 
@@ -66,13 +72,14 @@ Viam recommends using a standard webcam rather than a "ribbon" cam (typical a ba
 	"type": "camera",
 	"model" : "webcam",
 	"attributes": {
-    	"video_path": string, # path to the webcam,
-    	"width_px": int, # camera image width, used with path_pattern to find camera,
-    	"height_px": int, # camera image height, used with path_pattern to find camera,
-    	"format": string # image format, used with path_pattern to find camera,
+    	"video_path": string, # path to the webcam
+    	"width_px": int, # (optional) camera image width, used with video_path to find camera
+    	"height_px": int, # (optional) camera image height, used with video_path to find camera
+    	"format": string # (optional) image format, used with video_path to find camera
 	}
 }
 ```
+
 ### Fake
 
 Fake is a fake camera that always returns the same image, which is an image of a chess board. This camera also returns a point cloud.
@@ -85,15 +92,17 @@ Fake is a fake camera that always returns the same image, which is an image of a
 	"attributes": {}
 }
 ```
-### File
 
-File is a model where the frames for the color and depth images are acquired from a file path. Either file path is optional.
+### Image File
+
+Image_file is a model where the frames for the color and depth images are acquired from a file path.
+Either file path is optional.
 
 ```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
-	"model" : "dual_stream",
+	"model" : "image_file",
 	"attributes": {
     	"color": string, # the file path to the color image,
     	"depth": string # the file path to the depth image,
@@ -141,22 +150,23 @@ FFmpeg is a model that allows you to use a video file or stream as a camera.
 }
 ```
 
+### Join Color Depth
 
-### Align Color Depth
-
-Model "align_color_depth" is if you have registered a color and depth camera already in your config, and want to align them after the fact and create a "third" camera that outputs the aligned image. In this case, rather than putting the URLs to each of the cameras, you just put the names of the color and depth camera in the attribute field, and the "align_color_depth" camera will combine the streams from both of them.  You can specify the intrinsics/extrinsics, or homography parameters to do the alignment between the depth and color frames if they need to be shifted somehow. If they don’t need to be aligned, you can leave those parameters blank. You then specify the stream field to specify which aligned picture you want to stream.
+Model "join_color_depth" is if you have registered a color and depth camera already in your config, and want to join them after the fact and create a "third" camera that outputs the aligned image.
+In this case, rather than putting the URLs to each of the cameras, you just put the names of the color and depth camera in the attribute field, and the "join_color_depth" camera will combine the streams from both of them.
+You can specify the intrinsics/extrinsics, or homography parameters to do the alignment between the depth and color frames if they need to be shifted somehow.
+If they don’t need to be aligned, you can leave those parameters blank.
+You then specify the stream field to specify which aligned picture you want to stream.
 
 ```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
-	"model" : "align_color_depth",
+	"model" : "join_color_depth",
 	"attributes": {
     	"stream": string, # either "color" or "depth" to specify the output stream
     	"color_camera_name": string, # the color camera's name
     	"depth_camera_name": string, # the depth camera's name
-    	"width_px": int, # the expected width of the aligned pic
-    	"height_px": int, # the expected height of the aligned pic
     	"intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D 
     	"intrinsic_extrinsic": {}, # the intrinsic/extrinsic parameters that relate the two cameras together in order to align the images.
     	"homography": {} # homography parameters that morph the depth points to overlay the color points and align the images.
@@ -177,7 +187,7 @@ Combine the point clouds from multiple camera sources and project them to be fro
     	"source_cameras": ["cam1", "cam2", "cam3"], # camera sources to combine
     	"target_frame": "arm1", # the frame of reference for the points in the merged point cloud.
     	"merge_method": "", # [opt] either "naive" or "icp"; defaults to "naive".
-    	"closeness_mm": 1 # [opt] defines how close 2 points should be together to be considered the same point when merged.
+    	"proximity_threshold_mm": 1 # [opt] defines how close 2 points should be together to be considered the same point when merged.
 	}
 }
 ```
@@ -188,7 +198,8 @@ The Transform model creates a pipeline for applying transformations to an input 
 Transformations get applied in the order they are written in the pipeline. 
 Below are the available transformations, and the attributes they need.
 
-**Example**: 
+Example config:
+
 ```json-viam
 {
 	"name": "camera_name",
@@ -196,7 +207,6 @@ Below are the available transformations, and the attributes they need.
 	"model": "transform",
 	"attributes" : {
 		"source" : "physical_cam",
-		"stream" : "color", # or depth
 		"pipeline": [
 			{ "type": "rotate", "attributes": {} },
 			{ "type": "resize", "attributes": {"width_px":200, "height_px" 100} }
@@ -204,6 +214,7 @@ Below are the available transformations, and the attributes they need.
 	}
 }
 ```
+
 ##### _Identity_
 
 The Identity transform does nothing to the image. 
@@ -354,7 +365,9 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 
 ### HTTP server cameras
 
-If you have an http endpoint that is streaming images, you can create a VIAM camera from that URL. If you want to create a camera for 2D images, use a `single_stream` server. If you have two endpoints, one for color images and one for depth images, you can use `dual_stream` so that you can also directly generate point clouds.
+If you have an HTTP endpoint that is streaming images, you can create a Viam camera from that URL.
+If you want to create a camera for 2D images, use a `single_stream` server.
+If you have two endpoints, one for color images and one for depth images, you can use `dual_stream` so that you can also directly generate point clouds.
 
 #### Single Stream
 
