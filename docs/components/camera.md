@@ -152,9 +152,9 @@ FFmpeg is a model that allows you to use a video file or stream as a camera.
 
 ### Join Color Depth
 
-Model "join_color_depth" is if you have registered a color and depth camera already in your config, and want to join them after the fact and create a "third" camera that outputs the aligned image.
-In this case, rather than putting the URLs to each of the cameras, you just put the names of the color and depth camera in the attribute field, and the "join_color_depth" camera will combine the streams from both of them.
-You can specify the intrinsics/extrinsics, or homography parameters to do the alignment between the depth and color frames if they need to be shifted somehow.
+Model `join_color_depth` is used to join a color and depth camera already registered in your config to join their outputs and create a third "camera" that outputs the combined and aligned image.
+In this case, rather than entering the URL of each camera, you just enter the names of the color and depth camera in the attribute field, and the `join_color_depth` camera will combine the streams from them both.
+You can specify the intrinsics/extrinsics, or homography parameters to do the alignment between the depth and color frames if they need to be shifted in some way.
 If they don’t need to be aligned, you can leave those parameters blank.
 You then specify the stream field to specify which aligned picture you want to stream.
 
@@ -404,7 +404,8 @@ dual_stream is a model where there are two camera servers streaming data, one is
 
 ## Camera Servers
 
-If you have a camera that uses its own SDK to access its images and point clouds (e.g. an Intel RealSense camera), you can attach a camera server as a remote component to your robot. These remote cameras will show up just like regular cameras on your robot.
+If you have a camera that uses its own SDK to access its images and point clouds (e.g. an Intel RealSense camera), you can attach a camera server as a remote component to your robot.
+These remote cameras will show up just like regular cameras on your robot.
 
 For more details, check out [this link to our camera server repository](https://github.com/viamrobotics/camera-servers).
 
