@@ -3,13 +3,13 @@ title: "Base Component"
 linkTitle: "Base"
 weight: 10
 type: "docs"
-description: "Explanation of base types, configuration, and usage in Viam."
+description: "Explanation of base configuration, and usage in Viam."
 # SMEs: Steve B
 ---
 
 Most robots with wheeled bases will comprise at least the following:
 
--   A `board` component that can run a Viam server instance. 
+-   A [board component](/components/board/) that can run a viam-server instance. 
 That is to say, a computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer with GPIO.
 
 -   Two or more motors with wheels attached
@@ -34,10 +34,13 @@ Note that this will vary greatly depending on choice of motors, motor drivers, p
 
 Configuring a base involves configuring the drive motors and ensuring the base attributes section contains the names of all motors that move the base right or left, respectively.
 Configure each motor according to its type. 
-You can find more information on wiring and configuring different types of motors under the [Motor Component](../motor/).
-The board controlling the base must also be configured.
+You can find more information on wiring and configuring different types of motors in the [motor topic](../motor/).
+The [board](/components/board/) controlling the base must also be configured.
 
 An example configuration file, including the board, motors, and base:
+
+{{< tabs name="Example Servo Config" >}}
+{{% tab name="Raw JSON" %}}
 
 ```json-viam
 {
@@ -57,9 +60,6 @@ An example configuration file, including the board, motors, and base:
           "pwm": "15"
         }
       },
-      "depends_on": [
-        "follow-pi"
-      ],
       "model": "gpio",
       "name": "rightm",
       "type": "motor"
@@ -73,9 +73,6 @@ An example configuration file, including the board, motors, and base:
           "pwm": "11"
         }
       },
-      "depends_on": [
-        "follow-pi"
-      ],
       "model": "gpio",
       "name": "leftm",
       "type": "motor"
@@ -91,10 +88,6 @@ An example configuration file, including the board, motors, and base:
         "wheel_circumference_mm": 183,
         "width_mm": 195
       },
-      "depends_on": [
-        "rightm",
-        "leftm"
-      ],
       "model": "wheeled",
       "name": "tread-base",
       "type": "base"
@@ -103,9 +96,13 @@ An example configuration file, including the board, motors, and base:
 }
 ```
 
-An explanatory view of the same config file:
+{{% /tab %}}
+{{< tab name="Annotated JSON" >}}
 
 <img src="../img/base/base-json.png" alt="An image of the JSON configuration file with annotations explaining some of the attributes."/>
+
+{{< /tab >}}
+{{< /tabs >}}
 
 ### Required Attributes
 <table>
@@ -151,11 +148,6 @@ An explanatory view of the same config file:
     <td><code>width_mm</code></td>
     <td>int</td>
     <td>Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels.</td>
-  </tr>
-  <tr>
-    <td><code>depends_on</code></td>
-    <td>array of strings</td>
-    <td>List the names of the right and left motors again. This is so the code will find the motors before it attempts to register the base, avoiding errors.</td>
   </tr>
 
 </tbody>

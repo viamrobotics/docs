@@ -1,20 +1,18 @@
 {
   "components": [
     {
+      "name": "example-pi",
       "type": "board",
-      "model": "pi",
-      "name": "example-pi"
+      "model": "pi"
     },
     {
-      "type": "servo",
-      "model": "pi",
       "name": "example-name",
+      "type": "servo",
+      "model": "gpio",
       "attributes": {
-        "pin": "16"
-      },
-      "depends_on": [
-        "example-pi"
-      ]
+        "pin": "16",
+        "board": "example-pi"
+      }
     }
   ]
 }

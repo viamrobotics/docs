@@ -111,7 +111,6 @@ For us, the finished config now looks like this:
         "debug": false,
         "format": "",
         "video_path": "video0",
-        "video_path_pattern": "",
         "width_px": 0,
         "height_px": 0
       },

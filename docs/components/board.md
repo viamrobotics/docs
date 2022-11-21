@@ -3,7 +3,7 @@ title: "Board Component"
 linkTitle: "Board"
 weight: 20
 type: "docs"
-description: "Explanation of board types, configuration, and usage in Viam."
+description: "Explanation of board configuration and usage in Viam."
 # SMEs: Gautham, Rand
 ---
 In the Viam framework, a **board** is the signal wire hub of a robot.
@@ -24,25 +24,25 @@ Note that a desktop computer does not typically have GPIO pins, so it cannot act
 
 *Figure 1. Two different board options: SBC with GPIO pins running Viam server locally; or GPIO peripheral plugged into a computer's USB port, with the computer running Viam server.*
 
-
 {{% alert title="Note" color="note" %}}  
 The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers.
 In these cases, the board itself must run an instance of Viam server.
 {{% /alert %}}
+
 ## General Hardware Requirements
 
 A common board setup comprises the following:
 
--   A computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer, or a desktop computer outfitted with a GPIO peripheral.
+- A computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer, or a desktop computer outfitted with a GPIO peripheral.
 
--   Power supply
+- Power supply
 
-    -   A power supply must supply the correct voltage and sufficient current to avoid damaging or power cycling the board.
+  - A power supply must supply the correct voltage and sufficient current to avoid damaging or power cycling the board.
     See the board's data sheet for requirements.
     For example, a Raspberry Pi 4 takes a 5V power supply and converts it to 3.3V for its logic circuitry.
     The easiest way to power it is with a 5V USB-C power supply.
 
--   Some component(s) for the board to talk to!
+- Some component(s) for the board to talk to!
 The board can't do much on its own so you'll probably want some actuators and/or sensors to make your robot a robot!
 
 ## General Configuration
@@ -50,18 +50,18 @@ The board can't do much on its own so you'll probably want some actuators and/or
 If your application only involves GPIO and no other board attributes or communication methods are required, your board can be configured quite
 simply as in this example:
 
-![board-gen-config](../img/board/board-gen-config.png)
+![An example of a JSON config file for a board component.](../img/board/board-gen-config.png)
 
 All boards will be of type **board**. Specify the correct **model** for your board.
 The following board models are currently supported (not exhaustive):
 
--   **pi**: Raspberry Pi 4 or Pi Zero W
+- **pi**: Raspberry Pi 4 or Pi Zero W
 
--   **ti**: BeagleBone AI 64
+- **ti**: BeagleBone AI 64
 
--   **jetson**: Nvidia Jetson Xavier NX
+- **jetson**: Nvidia Jetson Xavier NX
 
--   **numato**: Numato GPIO model
+- **numato**: Numato GPIO model
 
 Give your board a **name**. Choose any name you like, and note that this name is how you will refert to this particular board in your code and when configuring other components.
 
@@ -71,13 +71,13 @@ Essentially all electrical signals sent from and received by your board go throu
 Here are a few use cases:
 
 - Can be set high (to 3.3V for example) or low (zero volts) to do things like:
-    - Switch an enable or mode pin on a motor driver or other chip.
-    - Light up an LED or similar.
-    - Switch a relay.
+  - Switch an enable or mode pin on a motor driver or other chip.
+  - Light up an LED or similar.
+  - Switch a relay.
 - Send a PWM signal to control the speed of a motor or servo.
 - Read the state of the pin (i.e., the voltage), which can be used to monitor the status of whatever is connected to it.
-- Receive digital signals from sensors, as detailed in the Analog section below.
-- Receive input as a digital interrupt, detailed below.
+- Receive digital signals from sensors, as detailed in the [Analogs section below](#analogs).
+- Receive input as a digital interrupt, [detailed below](#digital-interrupts).
 - Communicate using different protocols such as I2C and SPI bus.
 
 Some things GPIO pins *cannot* do:
@@ -88,6 +88,61 @@ Power amplification (a motor driver or relay) would be necessary.
 - Receive signals over 3.3V (or whatever the logic voltage is on a given board).
 
 If you are using GPIO pin methods like `gpio_pin_by_name` ([documented in our Python SDK](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.gpio_pin_by_name)) you do not need to configure anything about the pins in your config file. The pins are automatically configured based on the board model you put in your config, and you can access them using the board pin number (*not* the GPIO number). You can find these pin numbers from an online service such as <a href="https://pinout.xyz" Target="_blank">pinout.xyz</a> or by running `pinout` in your Pi terminal.
+
+### Getting started with GPIO and the Viam SDK
+
+In the snippet below, we are using the `gpio_pin_by_name` method to get a GPIO pin by name. We are then using the `set` method to set the pin high. This will turn on the LED connected to the pin 8.
+
+{{% alert title="Note" color="note" %}}  
+These code snippets expect you to have a board named "local" configured as a component of your robot, and an LED connected to pin 8.
+{{% /alert %}}
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.board import Board
+
+local = Board.from_robot(robot, 'local')
+led = await local.gpio_pin_by_name('8')
+
+# When True, sets the LED pin to high/on.
+await led.set(True)
+await asyncio.sleep(1)
+
+# When False, sets the pin to low/off.
+await led.set(False)
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+```go
+import (
+  "time"
+  "go.viam.com/rdk/components/board"
+)
+
+local, err := board.FromRobot(robot, "local")
+if err != nil {
+  logger.Fatalf("could not get board: %v", err)
+}
+
+led, err := local.GPIOPinByName("8")
+if err != nil {
+  logger.Fatalf("could not get led: %v", err)
+}
+
+// When true, sets the LED pin to high/on.
+led.Set(context.Background(), true, nil)
+time.Sleep(1 * time.Second)
+
+// When false, sets the LED pin to low/off.
+led.Set(context.Background(), false, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Analogs
 
@@ -140,6 +195,7 @@ Note that the name of the SPI bus ("main") matches between the analog
 configuration and SPI configuration.
 
 #### Required Fields
+
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 |`name` | string | -- | Choose a name for the analog reader
@@ -173,11 +229,11 @@ An example:
       "attributes": {
         "digital_interrupts": [
           {
-            "name": "encoder",
+            "name": "example-interrupt-1",
             "pin": "15"
           },
           {
-            "name": "encoder-b",
+            "name": "example-interrupt-2",
             "pin": "16"
           }
         ]
@@ -191,17 +247,18 @@ An example:
 ```
 
 #### Required Fields
+
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 |`name`| string|--| Choose a name for the digital interrupt.
 |`pin`| string|--| Specify which GPIO pin of the board to use. Use the pin number, not the GPIO number.
+
 #### Optional Fields
 
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 |`type`| string|--| Set type to "basic" to count the number of interrupts that occur. Set type to "servo" to count the average time between the interrupts (akin to pulse width).
 |`formula`| string|--| Apply a mathematical function to the input.
-
 
 ## Other Communication Methods
 
@@ -233,6 +290,7 @@ The attributes section of a board using SPI will contain the following:
   ]
 }
 ```
+
 #### Required Fields
 
 Name | Type | Default Value | Description
@@ -262,14 +320,14 @@ Review the [instructions in our documentation](/getting-started/rpi-setup/#enabl
   ]
 }
 ```
+
 #### Required Fields
+
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 |`name`| string|--| Choose a name for the SPI bus. Note that a component that uses this bus must then have this same name configured in its attributes.
 |`bus`| string|--| Usually a number such as 1. See board data sheet for specifics on its I2C wiring. Raspberry Pi recommends using bus 1.
 
-
 ## Implementation
 
-[Python SDK
-Documentation](https://python.viam.dev/autoapi/viam/components/board/board/index.html)
+See the [example code above](#getting-started-with-gpio-and-the-viam-sdk) to get started, and also check out our more complete [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/board/board/index.html).

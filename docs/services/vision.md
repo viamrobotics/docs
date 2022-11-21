@@ -8,8 +8,8 @@ description: "Explanation of the vision service, its configuration, and its func
 ---
 ## Intro and Summary
 
-The vision service enables the robot to use its on-board cameras to intelligently see and interpret the world around it.  We're here to help you with everything that happens _after_ you have your image data.
-
+The vision service enables the robot to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
+We're here to help you with everything that happens _after_ you have your image data.
 
 Currently, there are three operations available through the vision service:
 
@@ -173,7 +173,9 @@ The types of the detector supported are:
 
 #### Color detector parameters
 
-NOTE: **Color detector does not detect black, gray and white. It only detects hues found on the color wheel.**
+{{% alert title="Note" color="note" %}}
+Color detector does not detect black, gray and white. It only detects hues found on the color wheel.
+{{% /alert %}}
 
 * **detect_color**: the color to detect in the image, as a string of the form #RRGGBB.
 The color is written as a hexadecimal string prefixed by ‘#’.
@@ -247,16 +249,6 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 ### The Segmentation API
 
 Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
-
-You can also build Segmenters from the **Control** tab in Viam, as well.
-
-1. Click on a camera that supports 3D data to load the point cloud view.
-2. Select your segmenter model of interest - that will populate the list of necessary parameters that need to be filled in to use the segmenter.
-3. Fill in the segmenter parameters (explanation of fields for each segmenter are in the next section).
-4. Click **Add Segmenter**.
-4. Then select your added segmenter by name, and click **Find Segments** and wait for the segments to load.
-5. A list of the found objects will appear below the **Find Segments** button.
-
 
 ### Segmenter Types
 The types of segmenters supported are:

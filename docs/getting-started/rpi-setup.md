@@ -119,7 +119,7 @@ If this page is blank and you do not have any listed, make sure your microSD car
 
 After clicking save, double check your OS and Storage settings and then click `WRITE`:
 
-![A warning is show that says "All exisiting data on the SD card will be erased. Are you sure that you want to continue?"](../../getting-started/img/rpi-setup/imager-write-confirm.png)
+![A warning is shown that says "All exisiting data on the SD card will be erased. Are you sure that you want to continue?"](../../getting-started/img/rpi-setup/imager-write-confirm.png)
 
 You will be prompted to confirm erasing your microSD card: select `YES`.
 You may also be prompted by your operating system to enter an Administrator password:
@@ -216,7 +216,7 @@ You should also see the the notification on the setup page that says "Your robot
 
 Now that you have the viam-server up and running, you can start configuring your robot and the real fun can begin!
 
-Check out [our list of tutorials](/tutorials/) for step-by-step project walkthroughs demonstrating robot configuration and using Viam's [Python SDK](https://python.viam.dev/) and [Golang SDks](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme).
+Check out [our list of tutorials](/tutorials/) for step-by-step project walkthroughs demonstrating robot configuration and using Viam's [Python SDK](https://python.viam.dev/) and [Golang SDks](https://pkg.go.dev/go.viam.com/rdk).
 
 If you already have a project in mind, head to your newly connected robot's `CONFIG` tab. Here you can describe the hardware attached to your Pi which will allow Viam to actuate the hardware and expose APIs for it.
 Click on `NEW COMPONENT` and then populate the resulting component with the configuration information for your hardware.

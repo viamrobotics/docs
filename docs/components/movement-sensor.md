@@ -3,7 +3,7 @@ title: "Movement Sensor Component"
 linkTitle: "Movement Sensor"
 weight: 70
 type: "docs"
-description: "Explanation of movement sensor types, configuration, and usage in Viam."
+description: "Explanation of movement sensor configuration and usage in Viam."
 # SME: Rand
 ---
 The movement sensor component is an abstraction of a sensor that gives data on where a robot is and how fast it is moving.
@@ -40,7 +40,7 @@ A GPS is useful for knowing where you are and how fast you’re going.
 `Position`, `CompassHeading` and `LinearVelocity` data are provided by all GPS modules.
 Fix and Correction data are available by using the sensor GetReadings method, which is available because GPSes wrap the sensor component.
 
-{{% alert title="Config Info" color="info" %}}
+{{% alert title="Info" color="tip" %}}
 As with any Viam component configuration, configuring a movement sensor component requires a `name` of your choosing, a `type` ("movement_sensor"), and a `model` (see sections below for options).
 Each GPS model must have either serial or I<sup>2</sup>C communication configured.
 [Click here to jump to the communication config attribute information.](#connection-configuration)
@@ -65,12 +65,12 @@ The `gps-nmea` model can be connected via and send data through a serial connect
         "connection_type": "serial",
         "serial_attributes": {
             "serial_baud_rate": 115200,
-            "serial_path": "<path>"
+            "serial_path": "/dev/serial/by-path/<device_ID>"
         }
     }
 }
 ```
-
+Note that the example `"serial_path"` filepath is specific to serial devices connected to linux systems.
 #### GPS-NMEA over I<sup>2</sup>C
 
 ```json
@@ -91,7 +91,7 @@ The `gps-nmea` model can be connected via and send data through a serial connect
 }
 ```
 
-GPS-NMEA attributes:
+#### GPS-NMEA Attributes
 
 Name | Type | Default Value | Description
 ---- | ---- | ------------- | -----
@@ -111,7 +111,7 @@ Our `gps-rtk` model uses an over-the-internet correction source (NTRIP)[^ntrip] 
 [^chips]: Sparkfun RTK Chips: <a href="https://www.sparkfun.com/rtk" target="_blank">ht<span></span>tps://www.sparkfun.com/rtk</a>
 
 As shown in the examples below, the `gps-rtk` model requires a `name`, `type` ("movement_sensor"), and `model` ("gps-rtk").
-In the `attributes` section, it requires connection configuration [(more on that down here)](#connection-configuration), `correction_source` ("ntrip"), and an `ntrip_attributes` struct containing these:
+In the `attributes` section, it requires connection configuration (see ["Connection Configuration,"](#connection-configuration) below), `correction_source` ("ntrip"), and an `ntrip_attributes` struct containing these:
 
 Name | Type | Default Value | Description
 ---- | ---- | ------------- | ----------
@@ -140,7 +140,7 @@ Example config:
         "correction_source": "ntrip",
         "serial_attributes": {
             "serial_baud_rate": 115200,
-            "serial_path": "/dev/ttyACM0"
+            "serial_path": "/dev/serial/by-path/<device_ID>"
         },
         "ntrip_attributes": {
             "ntrip_addr": "<ntrip_address>",
@@ -262,7 +262,9 @@ For all of the following RTK-station configurations, `children` is the list of o
 ```
 ### Connection Configuration
 
-Applies to all GPS models!
+{{% alert="Note" color="note" %}}
+Applies to all GPS models.
+{{% /alert %}}
 
 Use `connection_type`(string) to specify "serial" or "I2C" connection in the main `attributes` config. Then create a struct within `attributes` for either `serial_attributes` or `i2c_attributes`, respectively.
 
@@ -362,7 +364,7 @@ Example IMU-VectorNav config:
   "depends_on": []
 }
 ```
-IMU-VectorNav attributes:
+##### IMU-VectorNav Attributes
 
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----

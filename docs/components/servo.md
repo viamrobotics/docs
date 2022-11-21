@@ -6,54 +6,119 @@ type: "docs"
 description: "Explanation of servo wiring and configuration in Viam."
 # SME: #team-bucket
 ---
+Hobby servos are a type of actuator comprising a small motor with built-in closed-loop control.
 
-Hobby servos (sometimes called servomotors) are a type of actuator comprising a small motor with built-in closed-loop control.
-They are useful for precise positioning, usually limited to a 180 degree range of angles.
-Continuous rotation servos are also available that maintain a speed rather than a position.
+The Viam `servo` component is designed to support hobby servos, not servomotors.
+Configure an industrial servomotor as a [motor](/components/motor/) with an [encoder](/components/encoder/).
 
 ## Hardware Requirements
+
 A typical servo control setup comprises the following:
 
-- A Raspberry Pi
+- A Raspberry Pi (or other [board](/components/board/))
 - A servo
 - An appropriate power supply
-    - If the servo will not be under any significant load and thus won’t draw much current, you may be able to get away with powering it off 5V (if that’s its required voltage) from the Pi pins.
-    However it is advisable to power it directly from a power supply that can meet its peak current needs so as not to inadvertently power cycle the Pi or other components.
+
+## Wiring Example
 
 {{% alert title="Caution" color="caution" %}}  
 Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
 {{% /alert %}}
-## Mechanism
-A servo contains a small electric motor, a series of gears, and a potentiometer attached to the shaft to act as an encoder.
-It also contains a closed-loop position control circuit that takes a <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">Pulse Width Modulation (PWM)</a>[^pwm] signal input and holds the shaft at a certain angle based on that input.
 
-[^pwm]: Pulse Width Modulation (PWM): <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Pulse-width_modulation</a>
-
-A typical servo will take PWM pulses ranging from 1ms to 2ms long, and map this range to a 180 degree range of possible positions.
-A 1.5ms signal will hold the servo in the middle or “neutral” position, 1ms will move it to 90 degrees from there in one direction, and 2ms will move it 90 degrees from neutral in the opposite direction.
-
-## Wiring
 Here's an example of how a servo might be wired to a Raspberry Pi:  
 
-![servo-wiring](../img/servo/servo-wiring.png)
+![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](../img/servo/servo-wiring.png)
 
 ## Viam Configuration
 
-### Required Attributes
-In addition to the `name` (of your choosing), `model` ("pi") and `type` ("servo"), you'll need to configure a `pin` to control the servo.
-The servo will depend on the board, which must also be configured.
+The following fields are required when configuring a servo:
 
-An example configuration file containing the necessary attributes is as follows:  
+- **Name**: A name of the user's choosing by which to identify the component
 
-![servo-JSON](../img/servo/servo-json.png)
+- **Type**: `servo` for all servos
 
-[Click here for the raw JSON.](../example-configs/servo-config.json)
+- **Model**: Either `gpio`, `pi`, or `fake`:
 
-### Optional Attributes
-Attribute Name | Type | Meaning/Purpose
+  - `gpio` is the **recommended general-purpose model**, compatible with all Viam-supported boards including Raspberry Pi.
+
+  - `pi` is only compatible with Raspberry Pi.
+  It has a timeout parameter to help prevent burning out cheap servos, but this is not necessary in most cases.
+
+  - `fake` is for testing code without any actual hardware.
+
+- **Attributes**: Other details the component requires to function.
+All models require the following:
+
+  - `pin` (string): The board pin (with PWM capabilities) to which the servo's control wire is attached.
+  Use pin number, not GPIO number.
+
+  - `board` (string): The name of the board to which the servo is wired.
+
+  - Some models have additional attributes which are [described below](#optional-attributes-gpio-model).
+
+### Example Config
+
+An example configuration file containing the necessary attributes is as follows:
+
+{{< tabs name="Example Servo Config" >}}
+{{% tab name="Raw JSON" %}}
+
+```json
+{
+  "components": [
+    {
+      "name": "example-pi",
+      "type": "board",
+      "model": "pi"
+      
+    },
+    {
+      "name": "example-name",
+      "type": "servo",
+      "model": "gpio",
+      "attributes": {
+        "pin": "16",
+        "board": "example-pi"
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< tab name="Annotated JSON" >}}
+
+<img src="../img/servo/servo-json.png" alt="An example servo config file with explanatory annotations."></img>
+
+{{< /tab >}}
+{{< /tabs >}}
+
+### Optional Attributes: GPIO Model
+
+Attribute Name | Type | Description
 -------------- | ---- | ---------------
-`min` | int | Specifies the minimum angle in degrees to which the servo can move  
-`max` | int | Specifies the maximum angle in degrees to which the servo can move
+`min_angle_deg` | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation.
+`max_angle_deg` | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation.
+`starting_position_deg` | float64 | Starting position of the servo in degrees.
+`frequency_hz` | uint | The servo driver will attempt to change the GPIO pin's frequency. Default for a Pi is 19.2MHz.
+`pwm_resolution` | uint | Resolution of the PWM driver (e.g. number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution.
+`min_width_us` | uint | Override the safe minimum pulse width in microseconds. This affects PWM calculation.
+`max_width_us` | uint | Override the safe maximum pulse width in microseconds. This affects PWM calculation.
 
 ## Implementation
+
+The servo component supports the following methods:
+
+Method Name (Go) | Method Name (Python) | Description
+---------------- | -------------------- | -----------
+Move | move | Move the servo to the provided angle.
+Position | get_position | Returns an int representing the current angle of the servo in degrees.
+Stop | stop | Stops the servo.
+IsMoving | is_moving | Returns true if the servo is currently moving. Not all servos are able to report this.
+
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)
+
+{{% alert title="Note" color="note" %}}
+If you are using a continuous rotation servo, you will still use the Move command but instead of moving to a given position, the servo will start moving at a set speed.
+The speed will be approximately linearly related to the "angle" you pass in, but you will need to determine based on your own hardware which "angle" represents your desired speed.
+{{% /alert %}}

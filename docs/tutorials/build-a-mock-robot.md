@@ -69,14 +69,14 @@ Next, you will need to configure your mock robotic arm with the Viam Python SDK 
 
 ### How to install a Viam SDK
 
-In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme). Use which ever programming language you are most comfortable with.
+In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk). Use which ever programming language you are most comfortable with.
 
 {{% alert title="Note" color="note" %}}
 
 Refer to the appropriate SDK documentation for SDK installation instructions.
 
 - [Viam Python SDK](https://python.viam.dev/)
-- [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
+- [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk)
 
 {{% /alert %}}
 
@@ -90,6 +90,10 @@ There, you will find a friendly developer community of people learning how to ma
 The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CONNECT** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**.
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 Next, paste that boilerplate code from the **CONNECT** tab of the Viam app into a file named <file>index.py</file> or <file>index.go </file>file in your code editor, and save your file.
+
+{{% alert title="Caution" color="caution" %}}  
+Do not share your robot secret or robot address publicly. Sharing this information compromises your system security by allowing unauthorized access to your computer.
+{{% /alert %}}
 
 You can now run the code.
 Doing so will verifies that the Viam SDK is properly installed, that the viam-server instance on your robot is alive, and that the computer running the program is able to connect to that instance.
@@ -315,7 +319,7 @@ You can do this by going to **CONFIG** and then going to the **NETWORK** tab. He
 {
     "bind_address": "localhost:8081"
 }
-
+```
 
 Be sure to save before continuing.
 

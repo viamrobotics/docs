@@ -3,7 +3,7 @@ title: "Arm Component"
 linkTitle: "Arm"
 weight: 10
 type: "docs"
-description: "Explanation of arm types, configuration, and usage in Viam."
+description: "Explanation of arm configuration and usage in Viam."
 # SME: Peter L
 ---
 

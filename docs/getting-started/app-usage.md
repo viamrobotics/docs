@@ -124,6 +124,10 @@ The **HISTORY** tab shows the edit history of your robot's configuration file.
 The **CONNECT** tab contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
 There is also a JSON stub you can copy if you wish to use this robot as a remote of another robot.
 
+{{% alert title="Caution" color="caution" %}}  
+Do not share your robot secret or robot address publicly. Sharing this information compromises your system security by allowing unauthorized access to your computer.
+{{% /alert %}}
+
 ### Control
 The **CONTROL** tab allows you to control your robot using an interface for each component of your robot.
 This is done via WebRTC.

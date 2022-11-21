@@ -4,7 +4,7 @@ linkTitle: "Gantry"
 draft: false
 weight: 50
 type: "docs"
-description: "Explanation of gantry types, configuration, and usage in Viam."
+description: "Explanation of gantry configuration and usage in Viam."
 # SME: Rand
 ---
 
@@ -30,11 +30,11 @@ This component abstracts this type of hardware to give the user an easy interfac
 
 Since gantries are linearly moving components, each gantry can only move in one axis within the limits of its length. 
 
-Each gantry can be given a reference frame in the configuration that describes its translation and orientation to the world.
+Each gantry can be given a reference [frame](/services/frame-system.md/) in the configuration that describes its translation and orientation to the world.
 
-A multi axis gantry is composed of many one axis gantries. 
+A multi-axis gantry is composed of many single-axis gantries. 
 The multiple axis system is composed of the supplied gantry names. 
-The system will then use any reference frames in the one axis configs to place the gantries in the correct position and orientation.
+The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation.
 The “world” frame of each gantry becomes the moveable frame of the gantry before it in order. 
 
 ## Attribute Configuration
@@ -105,7 +105,7 @@ See <a href="/services/frame-system">Frame System</a> for further information.
   </tr>
   </table>
 
-A frame can also be added to a one axis gantry attribute to describe its position in the local “world” frame. [link to frame docs]
+A frame can also be added to a one axis gantry attribute to describe its position in the local “world” [frame](/services/frame-system.md/).
 
 ### Multi-Axis Gantry Attributes
 
@@ -127,11 +127,9 @@ In addition to the attributes for single-axis gantries, multi-axis gantries also
  
 </table>
 
-
 ## Gantry Methods 
 
 All gantries implement the following methods:
-
 
 <table>
   <tr>
@@ -195,19 +193,22 @@ The number of elements in the list must equal the number of moveable axes on the
   </table>
 
 
-## Code examples
+## Code Examples
 
-### Example Multi-axis Gantry Configuration
+### Example Multi-Axis Gantry Configuration
 
 ``` json
 {
     "components": [
         {
-            "model": "pi",
             "name": "local",
-            "type": "board"
+            "type": "board",
+            "model": "pi"
         },
         {
+            "name": "xmotor",
+            "type": "motor",
+            "model": "gpiostepper",
             "attributes": {
                 "board": "local",
                 "pins": {
@@ -217,12 +218,12 @@ The number of elements in the list must equal the number of moveable axes on the
                 },
                 "stepperDelay": 50,
                 "ticksPerRotation": 200
-            },
-            "model": "gpiostepper",
-            "name": "xmotor",
-            "type": "motor"
+            }
         },
         {
+            "name": "ymotor",
+            "type": "motor",
+            "model": "gpiostepper",
             "attributes": {
                 "board": "local",
                 "pins": {
@@ -232,12 +233,12 @@ The number of elements in the list must equal the number of moveable axes on the
                 },
                 "stepperDelay": 50,
                 "ticksPerRotation": 200
-            },
-            "model": "gpiostepper",
-            "name": "ymotor",
-            "type": "motor"
+            }
         },
         {
+            "name": "zmotor",
+            "type": "motor",
+            "model": "gpiostepper",
             "attributes": {
                 "board": "local",
                 "pins": {
@@ -247,15 +248,12 @@ The number of elements in the list must equal the number of moveable axes on the
                 },
                 "stepperDelay": 50,
                 "ticksPerRotation": 200
-            },
-            "depends_on": [
-                "local"
-            ],
-            "model": "gpiostepper",
-            "name": "zmotor",
-            "type": "motor"
+            }
         },
         {
+            "name": "xaxis",
+            "type": "gantry",
+            "model": "oneaxis",
             "attributes": {
                 "length_mm": 1000,
                 "board": "local",
@@ -271,15 +269,12 @@ The number of elements in the list must equal the number of moveable axes on the
                     "y": 0,
                     "z": 0
                 }
-            },
-            "model": "oneaxis",
-            "name": "xaxis",
-            "type": "gantry",
-            "depends_on": [
-                "xmotor"
-            ]
+            }
         },
         {
+            "name": "yaxis",
+            "type": "gantry",
+            "model": "oneaxis",
             "attributes": {
                 "length_mm": 1000,
                 "board": "local",
@@ -295,15 +290,12 @@ The number of elements in the list must equal the number of moveable axes on the
                     "y": 1,
                     "z": 0
                 }
-            },
-            "model": "oneaxis",
-            "name": "yaxis",
-            "type": "gantry",
-            "depends_on": [
-                "ymotor"
-            ]
+            }
         },
         {
+            "name": "zaxis",
+            "type": "gantry",
+            "model": "oneaxis",
             "attributes": {
                 "length_mm": 1000,
                 "board": "local",
@@ -320,12 +312,6 @@ The number of elements in the list must equal the number of moveable axes on the
                     "z": 1
                 }
             },
-            "model": "oneaxis",
-            "name": "zaxis",
-            "type": "gantry",
-            "depends_on": [
-                "zmotor"
-            ],
             "frame": {
                 "parent": "world",
                 "orientation": {
@@ -344,22 +330,19 @@ The number of elements in the list must equal the number of moveable axes on the
             }
         },
         {
+            "name": "test",
+            "type": "gantry",
+            "model": "multiaxis",
             "attributes": {
                 "subaxes_list": [
                     "xaxis",
                     "yaxis",
                     "zaxis"
                 ]
-            },
-            "model": "multiaxis",
-            "name": "test",
-            "type": "gantry",
-            "depends_on": [
-                "xaxis",
-                "yaxis",
-                "zaxis"
-            ]
+            }
         }
+    ]
+}
 ```
 
 ## Implementation

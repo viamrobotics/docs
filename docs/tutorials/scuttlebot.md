@@ -29,7 +29,7 @@ When naming components, remember to use consistent letter casing to avoid proble
 If you already have an Organization, then this step is optional. </li>
 <li class="spacing">Create a <strong>Location</strong>.
 If you already have a Location, then this step is optional. </li>
-<img src="../img/createcomponent.png">
+<img src="../img/scuttlebot/createcomponent.png">
 <li class="spacing">Add your first component, the Raspberry Pi.</li>
 <ol type="a">
     <li class="spacing">Enter a name for your robot in <strong>Name</strong>, then click <strong>Add</strong> to add your robot and access your robot's configuration page.
@@ -38,7 +38,7 @@ If you already have a Location, then this step is optional. </li>
     <li class="spacing">Select the component <strong>Type</strong>, "board."</li>
     <li class="spacing">Select "pi" from the <strong>Model</strong> drop-down.</li>
     <li class="spacing">Click <strong>Save Config</strong> to save the new component, which will generate an empty JSON configuration:</li></ol></ol>
-<img src="../img/board-empty-json.png" alt="This image is the component configuration panel for a board component.
+<img src="../img/scuttlebot/board-empty-json.png" alt="This image is the component configuration panel for a board component.
 The Depends On drop-down listbox has no selection.
 Initially, the left-side Attributes panel for board component is empty.
 The right-side panel contains a list of available board component Attributes.">
@@ -54,7 +54,7 @@ The first step is to create a <strong>NEW COMPONENT</strong>.
 <li class="spacing">Select "motor" from the <code>Type</code> drop-down.</li>
 <li class="spacing">Select "gpio" from the <code>Model</code> drop-down.</li>
 <li class="spacing">Click <strong>Create Component</strong>, which will bring you to the following screen:</li>
-<img src="../img/pi-rhwheel-f.png"  alt="Fancy component config screen for a Motor."width="515px"><br>
+<img src="../img/scuttlebot/pi-rhwheel-f.png"  alt="Fancy component config screen for a Motor."width="515px"><br>
 
 This screen provides read-only displays of JSON configuration and allows you to select which board controls this motor, to toggle the <strong>Component Pin Assignment</strong> between Direction and Int1/Int2, and to <strong>Enable Pins</strong> (i.e., set them to High, Low, or Neither).
 Also, you can add a <strong>Frame</strong> and a <strong>Data Capture Pathway</strong>, and set the <strong>Depends On</strong>.<br>
@@ -63,7 +63,7 @@ Also, you can add a <strong>Frame</strong> and a <strong>Data Capture Pathway</s
 <li class="spacing">Next, you'll need to describe how the motor is wired to the Pi:</li>
 <ol type="a">
 <li class="spacing">Click <strong>Go to Advanced</strong>. You'll now see the current JSON attributes for this motor component and a reference for the available attributes:</li>
-<img src="../img/pi-rhwheel.png" alt="Advanced component config screen for a Motor.">
+<img src="../img/scuttlebot/pi-rhwheel.png" alt="Advanced component config screen for a Motor.">
 <li class="spacing">Then select <code>local</code> from the <strong>Depends On</strong> drop-down (since the motor is wired to the Raspberry Pi named "local."</li>
 
 <li class="spacing">Make the following changes to the JSON:</li>
@@ -79,7 +79,7 @@ Also, you can add a <strong>Frame</strong> and a <strong>Data Capture Pathway</s
 {{% alert title="Note" color="note" %}}  
 If your wheel turns in reverse when it should turn forward, add the <code>dir_flip</code> attribute and set it to "true."
 {{% /alert %}}
-<img src="../img/pi-rhwheel.png">
+<img src="../img/scuttlebot/pi-rhwheel.png">
 
 **Right-Wheel JSON**
 
@@ -104,7 +104,7 @@ Save the config by clicking **SAVE CONFIG** at the bottom of the page, then clic
 On the Control page, you'll see a panel for the right `motor`.
 You'll use this panel to set the motor's `power` level.
 
-<img src="../img/pi-moverhmotor.png">
+<img src="../img/scuttlebot/pi-moverhmotor.png">
 
 Be careful when activating your robot! Start with the power level (RPM) set to 10% and increase it incrementally until the wheel rotates at a satisfactory speed.
 
@@ -158,7 +158,7 @@ Viam opens the component config panel for the wheel.</li>
 
 With both motors configured, the component page now display panels for both motors:
 
-<img src="../img/scuttle-bothmotors.png">
+<img src="../img/scuttlebot/scuttle-bothmotors.png">
 
 Viam ([https://app.viam.com](https://app.viam.com)) displays component panels in order of their creation.
 Therefore, it's normal if your motor panels are not adjacent.
@@ -196,11 +196,11 @@ The configuration of your base component's attributes should look something like
 When you save the config and switch to the **Control** tab, you'll see new control buttons for the <code>base</code>.
 In the **Keyboard** tab, toggle your keyboard control to active, and then use **W** and **S** to go back and forth, and **A** and **D** to arc and spin.
 
-<img src="../img/pi-kybrd-control.png" width="300px">
+<img src="../img/scuttlebot/pi-kybrd-control.png" width="300px">
 
 If you click the **Discrete** tab, then you'll see different movement modes such as <code>Straight</code> and <code>Spin</code>; and different movement types such as <code>Continuous</code> and <code>Discrete</code> and directions such as <code>Forwards</code> and <code>Backwards</code>.
 
-<img src="../img/pi-discrete.png">
+<img src="../img/scuttlebot/pi-discrete.png">
 
 Now you have a rover that you can drive via Viam's UI at [https://app.viam.com](https://app.viam.com).
 
@@ -221,7 +221,7 @@ To begin, click <strong>NEW COMPONENT</strong> before proceeding to the steps be
 4. Click <strong>Create Component</strong>.
 
 Now, you'll see the config panel for the camera component:
-<img src="../img/pi-cam-control.png">
+<img src="../img/scuttlebot/pi-cam-control.png">
 
 On the Camera Config panel:
 
@@ -254,8 +254,7 @@ If you wish to copy and paste code for your camera, use the following:
  "height_px": 0,
  "debug": false,
  "format": "",
- "video_path": "video0",
- "video_path_pattern": ""
+ "video_path": "video0"
 }
 ```
 

@@ -8,8 +8,11 @@ description: "Explanation of the SLAM service, its configuration, and its functi
 # SMEs: Kat, Jeremy
 ---
 
-## Warning: This is an experimental feature.
-Stability is not guaranteed. Breaking changes are likely to occur, and occur often.
+{{% alert title="Note" color="note" %}}
+This is an experimental feature.
+Stability is not guaranteed.
+Breaking changes are likely to occur, and occur often.
+{{% /alert %}}
 
 ## Introduction
 
