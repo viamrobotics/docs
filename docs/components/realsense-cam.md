@@ -20,7 +20,6 @@ Use the gRPC server if you want 2D image streams and also want the 3D point clou
 
 On your Raspberry Pi, download the following server for your intel camera
 
-
 ``` bash
 sudo curl -o /usr/local/bin/intelgrpcserver http://packages.viam.com/apps/camera-servers/intelrealgrpcserver-latest-aarch64.AppImage 
 sudo chmod a+rx /usr/local/bin/intelgrpcserver
@@ -28,7 +27,7 @@ sudo chmod a+rx /usr/local/bin/intelgrpcserver
 
 ## Configure the Server to Run on Robot Start-Up
 
-On the Viam platform (https://app.viam.com), click **CONFIG** and then access the **Processes** tab. Add the following configuration:
+On the [Viam app](https://app.viam.com), click **CONFIG** and then access the **PROCESSES** tab. Add the following configuration:
 
 ``` json
 [ 
@@ -42,7 +41,7 @@ On the Viam platform (https://app.viam.com), click **CONFIG** and then access th
 
 This configures the gRPC server to run on port 8085 of your Pi.
 
-On the **CONFIG** tab, click **Remote**, and then add the following configuration:
+On the **CONFIG** tab, click **REMOTE**, and then add the following configuration:
 
 
 ``` json
@@ -57,18 +56,18 @@ On the **CONFIG** tab, click **Remote**, and then add the following configuratio
 
 This adds the two cameras to your robot. They will have the names `intel:color` and `intel:depth`.
 
+## Create a Camera to Display Point Clouds
 
-## Create camera to display point clouds
-
-Click **Components** on the **CONFIG** tab. Now, add the “join_color_depth” camera model. The **Attributes** pane on the left allows you to enter the necessary attributes for your component. The **Attributes Guide** lists the available attributes for the chosen component.
+Click **COMPONENTS** on the **CONFIG** tab. Now, add the `align_color_depth` camera model.
+The **Attributes** pane on the left allows you to enter the necessary attributes for your component.
+The **Attributes Guide** lists the available attributes for the chosen component.
 
 Enter the necessary JSON configuration for your camera:
-
 
 ``` json
    {
     	"homography": {
-      	"transform": [ // the color and depth image are already joined
+      	"transform": [ // the color and depth image are already aligned
             1.0, 0.0, 0.0,
             0.0, 1.0, 0.0,
             0.0, 0.0, 1.0
@@ -98,19 +97,15 @@ Enter the necessary JSON configuration for your camera:
 ]
 ```
 
-
-In the **CONTROL** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with `join_color_depth`.
-
+In the **CONTROL** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with `align_color_depth`.
 
 # Using the HTTP server
 
 Use this method if you don’t care about the individual 2D image streams and only need the 3D point clouds from the Intel RealSense camera.
 
-
 ## Download the Intel RealSense HTTP camera server
 
 On your Raspberry Pi, download the following server for your Intel RealSense camera:
-
 
 ``` bash
 sudo curl -o /usr/local/bin/intelrealserver http://packages.viam.com/apps/camera-servers/intelrealserver-latest-aarch64.AppImage 
@@ -119,7 +114,8 @@ sudo chmod a+rx /usr/local/bin/intelrealserver
 
 ## Configure the Server to Run on Robot Start-Up
 
-On the Viam platform (https://app.viam.com), click **CONFIG** and then click **Processes**. Enter the following configuration:
+On the [Viam app](https://app.viam.com), click **CONFIG** and then click **PROCESSES**.
+Enter the following configuration:
 
 ``` json
 [ 
@@ -141,10 +137,10 @@ The endpoints that it creates are:
 
 * [http://your-raspi-address:8181/depth.png](http://your-raspi-address:8181/depth.png) - a png image from the depth camera
 
-
 ## Create a Camera to Display Point Clouds
 
-Click **CONFIG** and then click **Components**. Enter the following camera model:  “dual_stream”
+Click **CONFIG** and then click **COMPONENTS**.
+Enter the following camera model:  “dual_stream”
 
 ``` json
 {  
@@ -162,4 +158,5 @@ Click **CONFIG** and then click **Components**. Enter the following camera model
 }
 ```
 
-This configures one camera that shows both, the color stream as a 2D image, and the 3D point cloud. To display the depth image as the 2D image, you can change the stream parameter to “depth.”
+This configures one camera that shows both, the color stream as a 2D image, and the 3D point cloud.
+To display the depth image as the 2D image, you can change the stream parameter to “depth.”

@@ -30,7 +30,7 @@ Here are details about each of the fields in the camera config:
 	Optional.
     * `intrinsic_parameters`: these are the intrinsic parameters of the camera used to do 2D <-> 3D projections.
 	Optional for most camera models.
-	Required for join_color_depth.
+	Required for `align_color_depth`.
     * `distortion_parameters`: these are modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens.
 	Optional.
 
@@ -73,7 +73,7 @@ Viam recommends using a standard webcam rather than a "ribbon" cam (typical a ba
 	"model" : "webcam",
 	"attributes": {
     	"video_path": string, # path to the webcam
-    	"width_px": int, # (optional) camera image width, used with video_path to find camera
+    	"width_px": int, # (optional) camera image width, used with video_path to find camera with this resolution
     	"height_px": int, # (optional) camera image height, used with video_path to find camera
     	"format": string # (optional) image format, used with video_path to find camera
 	}
@@ -150,10 +150,10 @@ FFmpeg is a model that allows you to use a video file or stream as a camera.
 }
 ```
 
-### Join Color Depth
+### Align Color Depth
 
-Model `join_color_depth` is used to join a color and depth camera already registered in your config to join their outputs and create a third "camera" that outputs the combined and aligned image.
-In this case, rather than entering the URL of each camera, you just enter the names of the color and depth camera in the attribute field, and the `join_color_depth` camera will combine the streams from them both.
+Model `align_color_depth` is used to join a color and depth camera already registered in your config to join their outputs and create a third "camera" that outputs the combined and aligned image.
+In this case, rather than entering the URL of each camera, you just enter the names of the color and depth camera in the attribute field, and the `align_color_depth` camera will combine the streams from them both.
 You can specify the intrinsics/extrinsics, or homography parameters to do the alignment between the depth and color frames if they need to be shifted in some way.
 If they don’t need to be aligned, you can leave those parameters blank.
 You then specify the stream field to specify which aligned picture you want to stream.
@@ -162,7 +162,7 @@ You then specify the stream field to specify which aligned picture you want to s
 {
 	"name": "camera_name",
 	"type": "camera",
-	"model" : "join_color_depth",
+	"model" : "align_color_depth",
 	"attributes": {
     	"stream": string, # either "color" or "depth" to specify the output stream
     	"color_camera_name": string, # the color camera's name
