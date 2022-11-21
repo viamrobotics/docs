@@ -169,7 +169,8 @@ Create a new robot in the Viam app and give it a name.
 
 ### Pi Configuration (board)
 
-Add your board with the name `board`, type `board`, and model `pi`. Click **Create Component**.
+Add your board with the name `board`, type `board`, and model `pi`.
+Click **Create Component**.
 
 {{< figure src="../img/nerf-robot/add-board.png"  alt="Viam App Board component attribute pane." title="Board Component Attribute Pane" width="800" >}}
 
