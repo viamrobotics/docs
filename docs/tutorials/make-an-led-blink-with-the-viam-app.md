@@ -113,7 +113,7 @@ As you add your board component to your robot in the Viam app, it generates a ta
 Here, you can click on "**Get**" to get the current status of your pin.
 The first time you click "**Get Pin State**", it should return "Pin: 8 is low."
 
-<img src="../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image5.png" alt ="Screenshot of the Viam app showing the board configuration on the '**Connect**' tab. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the '**Get Pin State**' button and the output, which reads, 'Pin: 8 is low.'" width="100%"><br>
+<img src="../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image5.png" alt ="Screenshot of the Viam app showing the board configuration on the '**CODE SAMPLE**' tab. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the '**Get Pin State**' button and the output, which reads, 'Pin: 8 is low.'" width="100%"><br>
 
 You can now select "**Set**" to control the status of your pin to "high."
 It will look like this:
