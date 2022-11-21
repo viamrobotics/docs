@@ -184,7 +184,7 @@ After clicking **Create Component** you’ll see the **Component Pin Assignment*
 Select **In1/In2** since that is compatible with the input type our motor controller expects. 
 In the **A/In1** and **B/In2** drop-downs, choose `11 GPIO 17` and `13 GPIO 27`, respectively, for the left motor, and `16 GPIO 23` and `18 GPIO 24`, respectively, for the right motor. 
 
-Select the name of the board the motor controller is wired to (“board”) from the**Board** drop-down. 
+Select the name of the board the motor controller is wired to (“board”) from the **Board** drop-down. 
 Make each motor depend on the board component by choosing the board’s name (“board”) from the **Depends On** drop-down at the bottom of the motor config. 
 This ensures that the board initializes before the motor driver when the robot boots up, thereby reducing errors.
 
