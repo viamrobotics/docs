@@ -15,6 +15,7 @@ Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
 ## Introduction
+
 [SLAM](../../services/slam/) allows your robot to create a map of its surroundings, as well as find its location within that map.
 
 This tutorial shows you how to run ORB-SLAM3 on your robot.
@@ -30,11 +31,13 @@ Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-setu
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
 ## Setup
+
 If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](../../getting-started/rpi-setup/).
 
 Next, we'll install the ORB-SLAM3 binary.
 
 ### Installing the ORB-SLAM3 binary
+
 First, `ssh` into your Pi and then check the architecture of your system by running `lscpu`.
 Depending on the output download and install one of the following ORB-SLAM3 binaries:
 
@@ -53,6 +56,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
 
 ## Running ORB-SLAM3 with a webcam
+
 The following setup allows you to run ORB-SLAM3 in live mode using a webcam.
 
 ### Configuration using Viam
@@ -210,9 +214,11 @@ Keep moving the camera slowly within your space and wait for the map to get crea
 {{% /alert %}}
 
 ## Running ORB-SLAM3 with a dataset
+
 The following setup allows you to run ORB-SLAM3 in offline mode using either one of your previously saved datasets, or our dataset that you can download and play with.
 
 ### The dataset
+
 In offline mode, SLAM will use an existing dataset to create a map.
 
 You might have an RGB dataset already saved in your `data_dir/data` directory from running SLAM in live mode.
@@ -288,6 +294,7 @@ It might take a couple of minutes before the first map is created and will be sh
 ## Troubleshooting
 
 ### Issue: "CURRENTLY NO MAP POINTS EXIST"
+
 This issue has a couple of potential causes.
 
 <img src="../img/run_slam/01_slam_tutorial_no_map_points.png" width="700"><br>

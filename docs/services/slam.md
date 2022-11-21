@@ -16,8 +16,8 @@ Breaking changes are likely to occur, and occur often.
 
 ## Introduction
 
-SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
-At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various cutting edge SLAM algorithms that may be useful in their mission.
+SLAM, which stands for simultaneous localization and mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
+At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various cutting edge SLAM algorithms.
 
 ## The Viam SLAM Service
 
@@ -50,7 +50,7 @@ All three are explained in the following using ORB-SLAM3 as the application exam
 ## The SLAM Library Binary
 
 A binary that is running the custom SLAM library is required and is assumed to be stored in `/usr/local/bin`.
-Its location in the case of ORB-SLAM3 is defined <a href="https://github.com/viamrobotics/rdk/blob/7d15c61d59ee1f4948d116d605f4f23a199d2fb1/services/slam/slamlibraries.go#L48" target="_blank">here</a>.
+For ORB-SLAM3, the location is defined <a href="https://github.com/viamrobotics/rdk/blob/7d15c61d59ee1f4948d116d605f4f23a199d2fb1/services/slam/slamlibraries.go#L48" target="_blank">here</a>.
 
 You can download and install the ORB-SLAM3 binaries as follows:
 
@@ -93,7 +93,7 @@ The following is an example configuration for running ORB-SLAM3 in live `rgbd` m
 ]
 ```
 
-Assuming that there is already sensor data in `data_dir/data`, SLAM can also be run in offline mode.
+Assuming that there is already sensor data in `data_dir/data`, you can also run SLAM in offline mode.
 Here is an example configuration:
 
 ``` json
@@ -228,7 +228,7 @@ In this example, `mono` is selected with one camera stream named `color`:
 ### Configuration Overview
 
 The following table gives an overview over the config parameters for ORB-SLAM3.
-All except for `mode` are optional, and all except for `mode` and `debug` can be used to fine-tune ORB-SLAM's algorithm.
+All parameters except for `mode` are optional. You can use all parameters except for `mode` and `debug` to fine-tune ORB-SLAM's algorithm.
         
 | Parameter Mode | Description - The Type of SLAM to Use | Default Value |
 | -------------- | ------------------------------------- | ------------------- |

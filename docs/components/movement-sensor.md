@@ -271,7 +271,7 @@ For all of the following RTK-station configurations, `children` is the list of o
 ### Connection Configuration
 
 {{% alert title="Note" color="note" %}}
-Applies to all GPS models.
+This section applies to all GPS models.
 {{% /alert %}}
 
 Use `connection_type`(string) to specify "serial" or "I2C" connection in the main `attributes` config. Then create a struct within `attributes` for either `serial_attributes` or `i2c_attributes`, respectively.
