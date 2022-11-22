@@ -26,7 +26,7 @@ Example output:
 
 ![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspbery Pi. A red box highlights the command and the "Architecture: aarch64.](../../getting-started/img/rpi-setup/lscpu-output.png)
 
-If the value of “Architecture: _'xxxxxx'_” ends in "64", you can skip ahead to [Installing viam-server](#installing-viam-server).
+If the value of “Architecture: _'xxxxxx'_” ends in "64", you can skip ahead to [installing viam-server](#follow-the-steps-on-the-setup-tab).
 Otherwise continue to [Installing Raspian on the Raspberry Pi](#installing-raspian-on-the-raspberry-pi).
 
 ## Installing Raspian on the Raspberry Pi
