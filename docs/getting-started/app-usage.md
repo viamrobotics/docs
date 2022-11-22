@@ -129,9 +129,9 @@ The **LOGS** tab displays debug and other logging information from your robot.
 
 The **HISTORY** tab shows the edit history of your robot's configuration file.
 
-### Code Sample
+### Connect
 
-The **CODE SAMPLE** tab contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
+The **CONNECT** tab contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
 There is also a JSON stub you can copy if you wish to use this robot as a remote of another robot.
 
 {{% alert title="Caution" color="caution" %}}  
