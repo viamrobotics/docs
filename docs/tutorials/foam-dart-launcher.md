@@ -249,7 +249,7 @@ Since we already assembled the robot, setting pin 37 to high launches your foam 
 
 ## Debug Information
 
-If any component fails to appear when connecting to the robot in the Viam App, check the **LOGS** tab for potential errors.
+If any component fails to appear when connecting to the robot in the Viam app, check the **LOGS** tab for potential errors.
 
 ## Final Code
 
