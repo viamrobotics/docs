@@ -128,7 +128,7 @@ Before you get started, ensure that you:
 - Go to [app.viam.com](https://app.viam.com/).
 - Create a new robot.
 - Go to the **SETUP** tab and follow the instructions there.
-- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) or [Python](https://python.viam.dev/) SDK on your computer.
+- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) or [Python](https://python.viam.dev/) Viam SDK on your computer.
 {{% /alert %}}
 
 Assumption: A servo called "my_servo" is configured as a component of your robot on the Viam app.
@@ -227,7 +227,7 @@ The speed will be approximately linearly related to the "angle" you pass in, but
 
 **Parameters:**
 
-- angle (int) – The desired angle of the servo in degrees.
+- angle (int): The desired angle of the servo in degrees.
 
 **Returns:**
 
@@ -250,7 +250,7 @@ await myServo.move(90)
 
 **Parameters:**
 
-- [Context](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - angleDeg (uint8): The desired angle of the servo in degrees.
 - extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
 
@@ -258,7 +258,7 @@ await myServo.move(90)
 
 - [error](https://pkg.go.dev/builtin#error): An error if one occurred.
 
-[Go SDK Move Documentation](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo).
+[Go SDK Move Documentation](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo)
 
 ```go
 myServo, err := servo.FromRobot(robot, "my_servo")
@@ -314,12 +314,12 @@ print(await myServo.get_position())
 
 **Parameters:**
 
-- [Context](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- angleDeg (uint8): The current angle of the servo in degrees.
+- angleDeg ([uint8](https://pkg.go.dev/builtin#uint8)): The current angle of the servo in degrees.
 - [error](https://pkg.go.dev/builtin#error): An error if one occurred.
 
 [Go SDK Get Position Documentation](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo)
@@ -378,7 +378,7 @@ await myServo.stop()
 
 **Parameters:**
 
-- [Context](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
 
 **Returns:**
