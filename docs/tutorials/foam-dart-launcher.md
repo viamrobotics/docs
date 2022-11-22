@@ -62,7 +62,7 @@ Refer to the manufacturer’s data sheet and our [motor component topic](https:/
 ### Motor Controller Setup
 
 A motor controller is a piece of hardware that takes digital signals from the Raspberry Pi and sends power to the motors accordingly. 
-For this setup we just have one motor controller for the two motors.
+For this setup we have one dual motor controller for the two motors.
 
 {{% alert title="Note" color="note"%}}
 If you have more than two motors you will likely need two motor controllers. 
