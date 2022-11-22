@@ -129,7 +129,7 @@ For example, by using a common off-the-shelf (COTS) 15A light switch to actuate 
 <ol type="a">
 <li>Connect the <strong>COM</strong> pin to the 3.3V power of the Raspberry Pi. </li>
 </ol>
-<li>Connect <strong> VCC </strong>(<strong>DC+</strong>) and ground (<strong>DC-</strong>) .</li>
+<li>Connect <strong>VCC</strong> (<strong>DC+</strong>) and ground (<strong>DC-</strong>) .</li>
 <ol type="a">
 <li>Connect <strong>DC+</strong> to the 5V of the Raspberry Pi.</li>
 <li>Connect <strong>DC-</strong> to ground on the Raspberry Pi. </li>
