@@ -47,7 +47,7 @@ Refer to the manufacturer’s data sheet and our [motor component topic](https:/
 [^cam]: Webcam: <a href="https://www.amazon.com/gp/product/B0972KK7BC/" target="_blank">ht<span></span>tps://www.amazon.com/gp/product/B0972KK7BC/</a>
 [^sol]: Solenoid: <a href="https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/" target="_blank">ht<span></span>tps://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/</a>
 [^relay]: Relay: <a href="https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/" target="_blank">ht<span></span>tps://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/</a>
-[^dmc]:Dual H-bridge Motor Controller: <a href="https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/" target="_blank">ht<span></span>tps://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/</a>
+[^dmc]: Dual H-bridge Motor Controller: <a href="https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/" target="_blank">ht<span></span>tps://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/</a>
 
 ### Tools and Consumables
 
