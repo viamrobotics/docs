@@ -359,7 +359,7 @@ Stops the servo. It is assumed that the servo stops immediately.
 
 **Returns:**
 
-- Whether the servo is moving. (bool)
+- None.
 
 [Python SDK Stop Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.stop)
 
