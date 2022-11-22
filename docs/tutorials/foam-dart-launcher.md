@@ -255,7 +255,6 @@ If any component fails to appear when connecting to the robot in the Viam App, c
 
 The raw JSON for the entire configuration can be found here if you wish to copy it into your config: [https://gist.github.com/mestcihazal/7683fbdd0975579b44295b3208757b5a](https://gist.github.com/mestcihazal/7683fbdd0975579b44295b3208757b5a)
 
-
 ## Control via the Viam App
 
 ### Controlling the Base
