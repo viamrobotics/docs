@@ -95,30 +95,310 @@ An example configuration file containing the necessary attributes is as follows:
 
 ### Optional Attributes: GPIO Model
 
-Attribute Name | Type | Description
--------------- | ---- | ---------------
-`min_angle_deg` | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation.
-`max_angle_deg` | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation.
-`starting_position_deg` | float64 | Starting position of the servo in degrees.
-`frequency_hz` | uint | The servo driver will attempt to change the GPIO pin's frequency. Default for a Pi is 19.2MHz.
-`pwm_resolution` | uint | Resolution of the PWM driver (e.g. number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution.
-`min_width_us` | uint | Override the safe minimum pulse width in microseconds. This affects PWM calculation.
-`max_width_us` | uint | Override the safe maximum pulse width in microseconds. This affects PWM calculation.
+| Attribute Name          | Type    | Description                                                                                                                                                             |
+| ----------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `min_angle_deg`         | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                      |
+| `max_angle_deg`         | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                      |
+| `starting_position_deg` | float64 | Starting position of the servo in degrees.                                                                                                                               |
+| `frequency_hz`          | uint    | The servo driver will attempt to change the GPIO pin's frequency. Default for a Pi is 19.2MHz.                                                                          |
+| `pwm_resolution`        | uint    | Resolution of the PWM driver (e.g. number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution.  |
+| `min_width_us`          | uint    | Override the safe minimum pulse width in microseconds. This affects PWM calculation.                                                                                    |
+| `max_width_us`          | uint    | Override the safe maximum pulse width in microseconds. This affects PWM calculation.                                                                                    |
 
 ## Implementation
 
 The servo component supports the following methods:
 
-Method Name (Go) | Method Name (Python) | Description
----------------- | -------------------- | -----------
-Move | move | Move the servo to the provided angle.
-Position | get_position | Returns an int representing the current angle of the servo in degrees.
-Stop | stop | Stops the servo.
-IsMoving | is_moving | Returns true if the servo is currently moving. Not all servos are able to report this.
+| Method Name                   | Golang                                                                          | Python                                                                                                                          | Description                                                            |
+| ----------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [Move](#move)                 | [Move](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo)        | [move](https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.move)                 | Move the servo to the provided angle.                                  |
+| [Get Position](#get-position) | [GetPosition](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo) | [get_position](https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.get_position) | Returns an int representing the current angle of the servo in degrees. |
+| [Stop](#stop)                 | [Stop](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo)        | [stop](https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.stop)                 | Stops the servo.                                                       |
 
-[Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)
+You can read the full SDK documentation for servo's on the appropriate SDK page:
+
+- [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)
+- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo)
+
+### Initialing a servo with Viam
+
+{{% alert title="Note" color="note" %}}
+Before you get started, ensure that you:
+
+- Go to [app.viam.com](https://app.viam.com/).
+- Create a new robot.
+- Go to the **SETUP** tab and follow the instructions there.
+- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) or [Python](https://python.viam.dev/) SDK on your computer.
+{{% /alert %}}
+
+Assumption: A servo called "my_servo" is configured as a component of your robot on the Viam app.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+import asyncio
+
+from viam.robot.client import RobotClient
+from viam.rpc.dial import Credentials, DialOptions
+from viam.components.servo import ServoClient
+
+async def connect():
+    creds = Credentials(
+        type='robot-location-secret',
+        payload='SECRET FROM THE VIAM APP')
+    opts = RobotClient.Options(
+        refresh_interval=0,
+        dial_options=DialOptions(credentials=creds)
+    )
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+
+async def main():
+    robot = await connect()
+
+    print('Resources:')
+    print(robot.resource_names)
+
+    # Get the servo client from the robot
+    myServo = ServoClient.from_robot(robot=robot, name='my_servo')
+
+    await robot.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+```go
+package main
+
+import (
+ "context"
+
+ "github.com/edaniels/golog"
+ "go.viam.com/rdk/components/servo"
+ "go.viam.com/rdk/robot/client"
+ "go.viam.com/rdk/utils"
+ "go.viam.com/utils/rpc"
+)
+
+func main() {
+  logger := golog.NewDevelopmentLogger("client")
+  robot, err := client.New(
+    context.Background(),
+    "ADDRESS FROM THE VIAM APP",
+    logger,
+    client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+      Type:    utils.CredentialsTypeRobotLocationSecret,
+      Payload: "SECRET FROM THE VIAM APP",
+    })),
+  )
+  if err != nil {
+    logger.Fatal(err)
+  }
+  defer robot.Close(context.Background())
+  logger.Info("Resources:")
+  logger.Info(robot.ResourceNames())
+
+  // Get the servo client from the robot.
+  myServo, err := servo.FromRobot(robot, "my_servo")
+  if err != nil {
+    logger.Fatalf("cannot get servo: %v", err)
+  }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Move
+
+Move requests the servo of the underlying robot to move.
 
 {{% alert title="Note" color="note" %}}
 If you are using a continuous rotation servo, you will still use the Move command but instead of moving to a given position, the servo will start moving at a set speed.
 The speed will be approximately linearly related to the "angle" you pass in, but you will need to determine based on your own hardware which "angle" represents your desired speed.
 {{% /alert %}}
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- angle (int) – The desired angle of the servo in degrees.
+
+**Returns:**
+
+- None
+
+[Python SDK Move Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.move)
+
+```python
+myServo = ServoClient.from_robot(robot=robot, name='my_servo')
+
+# Move the servo to the provided angle, which is 10 degrees in this case
+await myServo.move(10)
+
+# Move the servo to 90 degrees
+await myServo.move(90)
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+**Parameters:**
+
+- [Context](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- angleDeg (uint8): The desired angle of the servo in degrees.
+- extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [error](https://pkg.go.dev/builtin#error): An error if one occurred.
+
+[Go SDK Move Documentation](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo).
+
+```go
+myServo, err := servo.FromRobot(robot, "my_servo")
+if err != nil {
+  logger.Fatalf("cannot get servo: %v", err)
+}
+
+// Move the servo to the provided angle, which is 10 degrees in this case
+myServo.Move(context.Background(), 10)
+
+// Move the servo to the 90 degrees
+myServo.Move(context.Background(), 90)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Get Position
+
+Get Position returns an int representing the current angle of the servo in degrees.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- The current angle of the servo in degrees. (int)
+
+[Python SDK Get Position Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.get_position)
+
+```python
+myServo = ServoClient.from_robot(robot=robot, name='my_servo')
+
+# Move the servo to the provided angle, which is 10 degrees in this case
+await myServo.move(10)
+
+# Get the current position of the servo, which returns 10
+print(await myServo.get_position())
+
+# Move the servo to 20 degrees
+await myServo.move(20)
+
+# Get the current position of the servo, which returns 20
+print(await myServo.get_position())
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+**Parameters:**
+
+- [Context](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- angleDeg (uint8): The current angle of the servo in degrees.
+- [error](https://pkg.go.dev/builtin#error): An error if one occurred.
+
+[Go SDK Get Position Documentation](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo)
+
+```go
+myServo, err := servo.FromRobot(robot, "my_servo")
+if err != nil {
+  logger.Fatalf("cannot get servo: %v", err)
+}
+
+// Move the servo to the provided angle, which is 10 degrees in this case
+myServo.Move(context.Background(), 10)
+
+// Get the current position of the servo, which returns 10
+print(await myServo.get_position())
+
+// Move the servo to 20 degrees
+myServo.Move(context.Background(), 20)
+
+// Get the current position of the servo, which returns 20
+print(await myServo.get_position())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Stop
+
+Stops the servo. It is assumed that the servo stops immediately.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- Whether the servo is moving. (bool)
+
+[Python SDK Stop Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.stop)
+
+```python
+myServo = ServoClient.from_robot(robot=robot, name='my_servo')
+
+# Move the servo to the provided angle, which is 10 degrees in this case
+await myServo.move(10)
+
+# Stop the servo
+await myServo.stop()
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+**Parameters:**
+
+- [Context](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [error](https://pkg.go.dev/builtin#error): An error if one occurred.
+
+[Go SDK Stop Documentation](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo)
+
+```go
+myServo, err := servo.FromRobot(robot, "my_servo")
+if err != nil {
+  logger.Fatalf("cannot get servo: %v", err)
+}
+
+// Move the servo to the provided angle, which is 10 degrees in this case
+myServo.Move(context.Background(), 10)
+
+// Stop the servo
+myServo.Stop(context.Background())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
