@@ -55,7 +55,7 @@ Refer to the manufacturer’s data sheet and our [motor component topic](https:/
 * Small flathead screwdriver
 * Cutting pliers (flush-cutting pliers preferred)
 * Electrical tape
-* Elastic/Rubber bands
+* Elastic/rubber bands
 
 ## How to Assemble Your Hardware
 
