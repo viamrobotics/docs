@@ -37,8 +37,27 @@ type: "docs"
 <br>
 
 ### Syntax Highlighting with Backticks
+Our instance supports syntax highlighting for the following list. Specify the syntax language in lower case, except where noted:
 
-```json-viam
+* Python
+* Go
+* Rust
+* JSON
+* JSON-VIAM (This one contains our keywords)
+* JavaScript
+* Bash
+* C
+* C# ("csharp")
+* C++ ("cpp")
+* Java
+* Markdown
+* SCSS
+* SQL
+* TOML
+* YAML
+
+
+```json-viam 
 {
 "word":"As before, three backticks and the language name enables Prism syntax highlighting.",
 "note":"Use "json-viam" as the language to highlight Viam's keywords."
@@ -138,7 +157,7 @@ Within the expander, you can still use most other shortcodes and syntax highligh
 
 {{% /expand%}}
 
-## How to use Notes, Cautions, and Warnings
+## Notes, Cautions, and Warnings
 
 **Info/Tip**: Exactly that. They both use the same color.
 
@@ -170,17 +189,25 @@ Use to notify the reader of information to avoid loss of life, personal injury, 
 
 
 ## Using the Figure Shortcode
-The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr** element for attribution text and **attrlink** if you wish to add a link to the attribution text. 
+The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr** element for attribution text and **attrlink** if you need to add a link to the attribution text. 
 
-{{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution" title="Figure Shortcode" >}}
+{{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
 
-This shortcode places the caption (i.e., the “title”) above the table. The **title** is set in 12pt italic with a green underline.
+This shortcode places the caption (i.e., the **title**) above the table. The **title** is set in 12pt italic with a green underline.
 
 Figure styles the Attribution text as body text.
 
-## Demo of including another file
+## Using Readfile
 
-{{< readfile "/static/include/sample.md" >}}
+Use Hugo's readfile shortcode to include content from another file.
+
+Place the file to include in <file>/static/include</file> and then reference it using the readfile shortcode:
+
+![Alt text](/img/readfilecode.png)
+
+Hugo renders most markdown contained in included files.
+
+{{% readfile "/static/include/sample.md" %}}
 
 **Section content before this line is contained in an included file: /static/include/sample.md**
 
