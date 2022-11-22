@@ -38,11 +38,49 @@ type: "docs"
 
 ### Syntax Highlighting with Backticks
 
+Line numbering is on by default.
+
 ```json-viam
 {
 "word":"As before, three backticks and the language name enables Prism syntax highlighting.",
 "note":"Use "json-viam" as the language to highlight Viam's keywords."
 }
+```
+
+With just line 5 highlighted. See https://prismjs.com/plugins/line-highlight/ for more:
+
+```python {class="line-numbers linkable-line-numbers" data-line="5"}
+while (True):
+    # When True, sets the LED pin to high or on.
+    await led.set(True)
+    print('LED is on')
+
+    await asyncio.sleep(1)
+
+    # When False, sets the pin to low or off.
+    await led.set(False)
+    print('LED is off')
+
+    await asyncio.sleep(1)
+```
+
+
+With linked lines and lines 5-7 highlighted.
+
+
+```python {id="some-python-unique-id" class="linkable-line-numbers" data-line="5-7"}
+while (True):
+    # When True, sets the LED pin to high or on.
+    await led.set(True)
+    print('LED is on')
+
+    await asyncio.sleep(1)
+
+    # When False, sets the pin to low or off.
+    await led.set(False)
+    print('LED is off')
+
+    await asyncio.sleep(1)
 ```
 
 ### Regular Markdown Formatting
