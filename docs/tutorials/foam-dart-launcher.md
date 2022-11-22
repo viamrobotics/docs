@@ -53,7 +53,7 @@ Refer to the manufacturer’s data sheet and our [motor component topic](https:/
 
 * Solder (optional)
 * Small flathead screwdriver
-* Cutting pliers. (Flush-cutting pliers are preferred.)
+* Cutting pliers (flush-cutting pliers preferred)
 * Electrical tape
 * Elastic/Rubber bands
 
