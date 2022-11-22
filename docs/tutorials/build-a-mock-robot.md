@@ -87,9 +87,9 @@ There, you will find a friendly developer community of people learning how to ma
 
 ### How to connect to your mock robot with the Viam SDK
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CONNECT** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**.
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
-Next, paste that boilerplate code from the **CONNECT** tab of the Viam app into a file named <file>index.py</file> or <file>index.go </file>file in your code editor, and save your file.
+Next, paste that boilerplate code from the **CODE SAMPLE** tab of the Viam app into a file named <file>index.py</file> or <file>index.go </file>file in your code editor, and save your file.
 
 {{% alert title="Caution" color="caution" %}}  
 Do not share your robot secret or robot address publicly. Sharing this information compromises your system security by allowing unauthorized access to your computer.
@@ -301,7 +301,7 @@ Navigate to your new part's **CONFIG** page and create a new motor using the **f
 
 Connecting your sub-part as a remote from your main robot will allow you to control your sub-parts all from one place inside of your main robot.
 
-From the **CONNECT** tab of your sub-part:
+From the **CODE SAMPLE** tab of your sub-part:
 
 - Copy the **Config as Remote Part**.
 - Navigate back to the **CONFIG** and then the **REMOTES** tab of your main robot
