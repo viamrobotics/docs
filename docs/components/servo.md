@@ -120,7 +120,7 @@ You can read the full SDK documentation for servo's on the appropriate SDK page:
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)
 - [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo)
 
-### Initialing a servo with Viam
+### Initializing a servo with Viam
 
 {{% alert title="Note" color="note" %}}
 Before you get started, ensure that you:
