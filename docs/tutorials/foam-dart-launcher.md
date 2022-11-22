@@ -21,7 +21,8 @@ Don’t forget to be careful and have fun!
 
 You will need the following hardware, software, tools, and consumables to complete this project:
 
-{{% alert title="Note" color="note"%}} If you use a different rover and/or motor controller, ensure that the motor driver is compatible with the motors on your rover. 
+{{% alert title="Note" color="note"%}}
+If you use a different rover and/or motor controller, ensure that the motor driver is compatible with the motors on your rover. 
 For example, a brushed DC motor requires a brushed DC motor driver that is rated for the power requirements of the motor. 
 Also, the configuration files shown in this tutorial *must* be modified if you use a different setup.
 
