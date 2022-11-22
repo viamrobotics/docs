@@ -26,7 +26,7 @@ If you use a different rover and/or motor controller, ensure that the motor driv
 For example, a brushed DC motor requires a brushed DC motor driver that is rated for the power requirements of the motor. 
 Also, the configuration files shown in this tutorial *must* be modified if you use a different setup.
 
-You can find more information on configuring different motors in the [Motor Component](../components/motor) topic.
+You can find more information on configuring different motors in the [Motor Component](/components/motor) topic.
 {{% /alert %}}
 
 ### Hardware and Software Requirements
