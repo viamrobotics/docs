@@ -276,7 +276,7 @@ You can see the demo video of it in action here:
 
 In this tutorial, you learned how to create a remotely-controlled foam dart launching robot activated by the GPIO pins on a Raspberry Pi using Viam. 
 You could use this same concept as the basis for a security robot that launches darts at people if they enter your room, a Nerf ball blaster dog toy, a kitten treat shooter for cats to fetch in excitement, you name it! 
-You could even add object detection and machine learning and activate the launcher only when the camera sees a specific object or person. 
+You could even add [object detection and machine learning](/services/vision/) and activate the launcher only when the camera sees a specific object or person. 
 
 If you are looking for projects that would be a great next step in your journey of robots creation, we recommend that you check out the following tutorials:
 
