@@ -98,7 +98,7 @@ We need only worry about <strong>OUT-4</strong>, <strong>IN1-4</strong>, 12V, an
 ### Camera Setup
 
 This is as easy as plugging the camera into a USB slot on your Pi. 
-We’ll configure the camera in the Viam App in later steps. 
+We’ll configure the camera in the Viam app in later steps. 
 
 ### Relay/Solenoid Setup
 
@@ -215,7 +215,7 @@ Now let’s add a camera to watch the video stream on the control panel as you m
 
 ### Camera Configuration
 
-Add your USB camera as a webcam. Please refer to [How to Configure a Camera > Connect and Configure a Camera](../configure-a-camera/#connect-and-configure-a-webcam) for complete instructions.
+Add your USB camera as a webcam. Please refer to [How to Configure a Camera > Connect and Configure a Camera](/configure-a-camera/#connect-and-configure-a-webcam) for complete instructions.
 
 {{< figure src="../img/foam-dart-launcher/config-webcam.png"  alt="Camera Component Attribute Pane." title="Camera Component Attribute Pane" width="800" >}}
 
