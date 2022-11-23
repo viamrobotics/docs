@@ -131,7 +131,7 @@ Before you get started, ensure that you:
 - Install either the [Go](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) or [Python](https://python.viam.dev/) Viam SDK on your computer.
 {{% /alert %}}
 
-Assumption: A servo called "my_servo" is configured as a component of your robot on the Viam app.
+**Assumption:** A servo called "my_servo" is configured as a component of your robot on the Viam app.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
