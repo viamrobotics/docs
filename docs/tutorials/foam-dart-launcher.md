@@ -98,7 +98,7 @@ We need only worry about <strong>Out1-4</strong>, <strong>In1-4</strong>, 12V, a
 ### Camera Setup
 
 This is as easy as plugging the camera into a USB slot on your Pi. 
-We’ll configure the camera in the Viam App in later steps. 
+We’ll configure the camera in the Viam app in later steps. 
 
 ### Relay/Solenoid Setup
 
