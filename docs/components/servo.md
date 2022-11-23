@@ -129,29 +129,16 @@ Before you get started, ensure that you:
 - Create a new robot.
 - Go to the **SETUP** tab and follow the instructions there.
 - Install either the [Go](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) or [Python](https://python.viam.dev/) Viam SDK on your computer.
+- Go to the **CODE SAMPLE** tab and copy the Viam connection code snippet for your language and paste it into your code.
+  - These snippets can be used in the main function after your robot client connects to Viam.
+- **Assumption:** A servo called "my_servo" is configured as a component of your robot on the Viam app.
 {{% /alert %}}
-
-**Assumption:** A servo called "my_servo" is configured as a component of your robot on the Viam app.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python
-import asyncio
-
-from viam.robot.client import RobotClient
-from viam.rpc.dial import Credentials, DialOptions
 from viam.components.servo import ServoClient
-
-async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='SECRET FROM THE VIAM APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
-    )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
 async def main():
     robot = await connect()
@@ -172,33 +159,13 @@ if __name__ == '__main__':
 {{% tab name="Golang" %}}
 
 ```go
-package main
-
 import (
- "context"
-
- "github.com/edaniels/golog"
  "go.viam.com/rdk/components/servo"
- "go.viam.com/rdk/robot/client"
- "go.viam.com/rdk/utils"
- "go.viam.com/utils/rpc"
 )
 
 func main() {
-  logger := golog.NewDevelopmentLogger("client")
-  robot, err := client.New(
-    context.Background(),
-    "ADDRESS FROM THE VIAM APP",
-    logger,
-    client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-      Type:    utils.CredentialsTypeRobotLocationSecret,
-      Payload: "SECRET FROM THE VIAM APP",
-    })),
-  )
-  if err != nil {
-    logger.Fatal(err)
-  }
-  defer robot.Close(context.Background())
+  // robot, err := client.New(...)
+
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
 
@@ -295,7 +262,9 @@ Get Position returns an int representing the current angle of the servo in degre
 
 ```python
 myServo = ServoClient.from_robot(robot=robot, name='my_servo')
-
+if err != nil {
+  logger.Fatalf("cannot get servo: %v", err)
+}
 # Move the servo to the provided angle, which is 10 degrees in this case
 await myServo.move(10)
 
