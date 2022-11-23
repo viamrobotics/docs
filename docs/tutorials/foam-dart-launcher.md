@@ -216,7 +216,7 @@ Now let’s add a camera to watch the video stream on the control panel as you m
 
 ### Camera Configuration
 
-Add your USB camera as a webcam. Please refer to [How to Configure a Camera > Connect and Configure a Camera](../configure-a-camera/#connect-and-configure-a-webcam) for complete instructions.
+Add your USB camera as a webcam. Please refer to [How to Configure a Camera > Connect and Configure a Camera](/configure-a-camera/#connect-and-configure-a-webcam) for complete instructions.
 
 {{< figure src="../img/nerf-robot/config-webcam.png"  alt="Camera Component Attribute Pane." title="Camera Component Attribute Pane" width="800" >}}
 
