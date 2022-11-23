@@ -1,6 +1,6 @@
 
 ### This is a Heading in the Sample File
-This entire section was added to the current topic using the include shortcode.
+This entire section was added to the current topic using the readfile shortcode.
 
 {{% alert="Note" color="note" %}}
 Changes to included files do not appear in local mode (hugo server -D). You'll need to halt and restart the server to view the changes.
