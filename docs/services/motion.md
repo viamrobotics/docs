@@ -13,18 +13,16 @@ The Motion Service is capable of using motion planning algorithms locally on you
 
 ## Configuration
 
-Viam’s Motion Service is enabled in RDK by default, and no extra configuration needs to be done in the [Viam app](https://app.viam.com/).
-
+Viam’s Motion Service is enabled in RDK by default, and no extra configuration needs to be done in the [Viam app](https://app.viam.com/) to enable it.
 
 ## How to Move Components
-
 
 ### Move
 
 The “Move” endpoint is the primary way to move multiple components, or to move any object to any other location. Given a destination pose and a component to move to that destination, the motion service will construct a full kinematic chain from goal to destination including all movable components in between, and will solve that chain to place the goal at the destination while meeting specified constraints. It will then execute that movement to move the actual robot, and return whether or not this process succeeded.
 
 {{% alert title="Note" color="note" %}} 
-The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles and interaction spaces as documented below. This may result in motions which appear unintuitive. To apply motion constraints, see the [`extra` parameter](#extra_anchor).
+The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles and interaction spaces as documented below. This may result in motions which appear unintuitive. To apply motion constraints, see the experimental [`extra` parameter](#extra_anchor).
 {{% /alert %}}
 
 #### Parameters
@@ -43,11 +41,9 @@ The motions planned by this API endpoint are by default **entirely unconstrained
 
 <a id="extra_anchor" />**`extra`**: This data structure is a generic struct, containing maps of strings to any data structure. This is used to pass in additional parameters not supported as first-class parameters in the API. This enables things like the tweaking of individual parameters used by the algorithm, if the user wishes to have something other than the default.
 
-
 #### Examples
 
 The following code uses the [Viam Python SDK](https://python.viam.dev/) to move an arm to a point in front of a camera and approach that point from a particular direction:
-
 
 ```python
 // This is a robot with an arm named "myArm" and a down-pointing camera named "cam".
@@ -103,7 +99,6 @@ motion.move(component_name=armRes,destination=PoseInFrame(reference_frame="myArm
 
 ```
 
-
 ### MoveSingleComponent
 
 The `MoveSingleComponent` endpoint, while it looks very similar to the “Move” endpoint above, may result in radically different behavior when called.
@@ -116,7 +111,6 @@ An example of when this may be useful is if the user has implemented their own v
 
 If this method is called with an arm which uses Viam’s motion planning on the backend, then this method is equivalent to using `robot.TransformPose` to transform the destination into the frame of the arm, and then calling `MoveToPosition` on the arm directly.
 
-
 #### Parameters
 
 **`component_name`**: This is the name of the piece of the robot to which `MoveToPosition` should be called with the transformed destination. This component must support the `MoveToPosition`API call with a Pose. As of 10 October 2022, Arm is the only component so supported.
@@ -127,19 +121,30 @@ If this method is called with an arm which uses Viam’s motion planning on the 
 
 **`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they like to pass to their own motion planning implementation.
 
+{{% alert title="Note" %}}
+Extra parameters can be used to expose experimental functionality not directly available in the API.
+Behaviour is by no means guaranteed to be stable.
+{{% /alert %}}
 
 ## Motion Profile Constraints
 
-Currently (18 October 2022), there is no built in, top level way to specify different constraints. However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to “motion_profile” via the `extra` parameter, along with individual algorithm variables. This is not available in the Viam app. Available constraints all control the topological movement of the moving component along its path.
+Currently (18 October 2022), there is no built in, top level way to specify different constraints.
+However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to “motion_profile” via the `extra` parameter, along with individual algorithm variables.
+This is not available in the Viam app.
+Available constraints all control the topological movement of the moving component along its path.
 
 For a usage example, see [sample code above](#examples).
 
-The available constraints, linear, psuedolinear, orientation, and Free, are covered in the following sub-sections.
+The available constraints--linear, psuedolinear, orientation, and free--are covered in the following sub-sections.
+
+{{% alert title="Note" %}}
+Extra parameters can be used to expose experimental functionality not directly available in the API.
+Behaviour is by no means guaranteed to be stable.
+{{% /alert %}}
 
 ### Linear Constraint
 
 The linear constraint (`{“motion_profile”: “linear”}`) forces the path taken by `component_name` to follow an exact linear path from the start to the goal. If the start and goal orientations are different, the orientation along the path will follow the quaternion Slerp (Spherical Linear Interpolation) of the orientation from start to goal. This has the following sub-options:
-
 
 <table>
   <tr>
@@ -215,7 +220,6 @@ extra = {"motion_profile": "pseudolinear", "tolerance": 0.7}
 ### Orientation Constraint
 
 The orientation constraint (`{“motion_profile”: “orientation”}`) places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the Slerp between start and goal by more than a set amount. This is similar to the “orient_tolerance” option in the linear profile, but without any path restrictions. If set to zero, a movement with identical starting and ending orientations will hold that orientation throughout the movement.
-
 
 <table>
   <tr>
