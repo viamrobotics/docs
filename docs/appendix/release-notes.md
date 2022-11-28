@@ -7,6 +7,81 @@ type: "docs"
 description:
 # SME: Mike A.
 ---
+## 21 November 2022
+
+{{< tabs >}}
+{{% tab name="Versions" %}}
+
+## Release Versions
+* rdk - v0.2.2
+* api - v0.1.12
+* slam - v0.1.9
+* viam-python-sdk - v0.2.0
+* goutils - v0.1.4
+* rust-utils - v0.0.5
+{{% /tab %}}
+{{% tab name="Issue Resolutions" %}}
+<table style="margin-bottom:18px">
+
+### Camera Reconnection Issue
+
+<tbody style="vertical-align:top;">
+    <tr>
+        <td width="120px"><strong>What is it?</strong></td>
+        <td>When a camera loses connection, it now automatically closes the connection to its video path. Previously, when users supplied a video path in their camera configuration, they encountered issues if the camera tried to reconnect because the supplied video path was already being used for the old connection. </td>
+    </tr>
+    <tr>
+        <td><strong>What does it affect?</strong></td>
+        <td>On losing their video path connection, cameras now automatically close the video path connection.</td>
+    </tr>
+<tbody>
+</table>
+
+{{% /tab %}}
+{{% tab name="Improvements" %}}
+## Improvements
+
+### Camera Configuration Changes
+<table style="margin-bottom:18px">
+<tbody style="vertical-align:top;">
+    <tr>
+        <td width="120px"><strong>What is it?</strong></td>
+        <td>We updated the underlying configuration schemes for the following camera models. We are also migrating  existing camera configurations to align with the new schemas. To learn more about the changes, please refer to our <a href="https://docs.viam.com/components/camera/">camera documentation</a>. 
+        <ul>
+        <li>Webcam</li>
+        <li>FFmpeg</li>
+        <li>Transform</li>
+        <li>Join Pointclouds</li>
+        </ul>
+</table>
+
+
+### Robot Details Page
+
+<table style="margin-bottom:18px">
+<tbody style="vertical-align:top;">
+    <tr>
+        <td width="120px"><strong>What is it?</strong></td>
+        <td>Based on user feedback, we changed the name of the <strong>CONNECT</strong> tab to <strong>CODE SAMPLE</strong></td>
+    </tr>
+<tbody>
+</table>
+
+{{% /tab %}}
+{{% /tabs %}}
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 15 November 2022
 
 {{< tabs >}}
