@@ -266,7 +266,7 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle
 
 ## Documents Referenced
 
-  * [**Installing Raspian on the Raspberry Pi**](../../installation/rpi-setup/#installing-raspian-on-the-raspberry-pi)
+  * [**Installing Raspian on the Raspberry Pi**](/installation/rpi-setup/#installing-raspian-on-the-raspberry-pi)
 
   * [**Color Detection with SCUTTLE Robot on Viam**](../color-detection-scuttle/)
 
