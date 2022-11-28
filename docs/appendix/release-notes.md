@@ -52,10 +52,10 @@ description:
         We are also migrating  existing camera configurations to align with the new schemas. 
         To learn more about the changes, please refer to our <a href="https://docs.viam.com/components/camera/">camera documentation</a>. 
         <ul>
-        <li>Webcam</li>
-        <li>FFmpeg</li>
-        <li>Transform</li>
-        <li>Join Pointclouds</li>
+        		<li>Webcam</li>
+        		<li>FFmpeg</li>
+        		<li>Transform</li>
+        		<li>Join Pointclouds</li>
         </ul>
 </table>
 
