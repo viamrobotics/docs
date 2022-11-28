@@ -70,7 +70,7 @@ If you have more than two motors you will likely need two motor controllers.
 
 {{< figure src="../img/foam-dart-launcher/dual-h-bridge-motor-controller.jpg" width="400px" alt="Dual H-bridge motor controller with four signal wires going in and two sets of motor power wires coming out." title="Dual H-bridge motor controller." >}}
 
-We need only worry about <strong>OUT-4</strong>, <strong>IN1-4</strong>, 12V, and ground.
+We need only worry about <strong>OUT1</strong> through <strong>OUT4</strong>, <strong>IN1</strong> through <strong>IN4</strong>, 12V, and ground.
 
 <ol>
 <li>Attach left to the motor controller.
