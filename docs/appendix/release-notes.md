@@ -62,12 +62,12 @@ description:
 ### Robot Details Page
 
 <table style="margin-bottom:18px">
-<tbody style="vertical-align:top;">
-    <tr>
-        <td width="120px"><strong>What is it?</strong></td>
-        <td>Based on user feedback, we changed the name of the <strong>CONNECT</strong> tab to <strong>CODE SAMPLE</strong></td>
-    </tr>
-<tbody>
+		<tbody style="vertical-align:top;">
+ 		   <tr>
+  		      <td width="120px"><strong>What is it?</strong></td>
+		        <td>Based on user feedback, we changed the name of the <strong>CONNECT</strong> tab to 	<strong>CODE SAMPLE</strong></td>
+		     </tr>
+		<tbody>
 </table>
 
 {{% /tab %}}
