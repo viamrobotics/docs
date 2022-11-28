@@ -13,15 +13,19 @@ description:
 {{% tab name="Versions" %}}
 
 ## Release Versions
+
 * rdk - v0.2.0
 * api - v0.1.7
 * slam - v0.1.7
 * viam-python-sdk - v0.2.0
 * goutils - v0.1.4
 * rust-utils - v0.0.5
+
 {{% /tab %}}
 {{% tab name="New Features" %}}
+
 ## New Features
+
 ### New servo model
 
 <table style="margin-bottom:18px">
@@ -38,6 +42,7 @@ description:
 </table>
 
 ### Added RTT to remote control page
+
 <table style="margin-bottom:18px">
 <tbody style="vertical-align:top;">
     <tr>
@@ -47,9 +52,8 @@ description:
 <tbody>
 </table>
 
-
-
 ### Python 3.8 Support
+
 <table style="margin-bottom:18px">
 <tbody style="vertical-align:top;">
     <tr>
@@ -61,9 +65,11 @@ description:
 
 {{% /tab %}}
 {{% tab name="Improvements" %}}
+
 ## Improvements
 
 ### New Parameter: extra
+
 <table style="margin-bottom:18px">
 <tbody style="vertical-align:top;">
     <tr>
@@ -87,13 +93,12 @@ description:
         <td><strong>What does it affect?</strong></td>
         <td>Users of the Go SDK <strong>must</strong> update their code to specify <code>extra</code> in the arguments that pass into each request.
 
-{{% alert="Note" color="note" %}}
+{{% alert title="Note" color="note" %}}
 This breaking change does NOT affect users of the Python SDK.
 {{% /alert %}}</td>
     </tr>
 <tbody>
 </table>
-
 
 ### Add dependencies to services
 
@@ -112,6 +117,7 @@ Other service configurations are not affected.</td>
 </table>
 
 ### Removed width & height fields from Camera API.
+
 <table style="margin-bottom:18px">
 <tbody style="vertical-align:top;">
     <tr>
