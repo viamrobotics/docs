@@ -230,7 +230,6 @@ You may have different pin numbers and other attributes depending on your hardwa
       "type": "camera",
       "model": "transform",
       "attributes": {
-        "stream": "color",
         "source": "my_camera",
         "pipeline": [
           {
