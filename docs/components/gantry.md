@@ -30,7 +30,7 @@ This component abstracts this type of hardware to give the user an easy interfac
 
 Since gantries are linearly moving components, each gantry can only move in one axis within the limits of its length. 
 
-Each gantry can be given a reference [frame](/services/frame-system.md/) in the configuration that describes its translation and orientation to the world.
+Each gantry can be given a reference [frame](/services/frame-system/) in the configuration that describes its translation and orientation to the world.
 
 A multi-axis gantry is composed of many single-axis gantries. 
 The multiple axis system is composed of the supplied gantry names. 

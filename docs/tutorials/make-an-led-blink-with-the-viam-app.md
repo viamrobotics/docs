@@ -132,7 +132,7 @@ If you have followed along, you have just successfully used Viam to make an LED 
 Hopefully, you have learned how the GPIO on a Raspberry Pi works, and how to build circuits for LED bulbs.
 
 You are ready for your next robotics project.
-We recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](/make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.
+We recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](../make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.
 
 If you are looking for some more projects that would be a great next step in your journey of learning about how to build robots, we would recommend that you check out one of following [Tutorial List](..).
 
