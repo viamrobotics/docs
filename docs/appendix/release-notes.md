@@ -13,7 +13,7 @@ description:
 {{% tab name="Versions" %}}
 
 ## Release Versions
-* rdk - **v0.2.2**
+* rdk - **v0.2.3**
 * api - **v0.1.12**
 * slam - **v0.1.9**
 * viam-python-sdk - v0.2.0
@@ -29,7 +29,8 @@ description:
 <tbody style="vertical-align:top;">
     <tr>
         <td width="120px"><strong>What is it?</strong></td>
-        <td>When a camera loses connection, it now automatically closes the connection to its video path. Previously, when users supplied a video path in their camera configuration, they encountered issues if the camera tried to reconnect because the supplied video path was already being used for the old connection. </td>
+        <td>When a camera loses connection, it now automatically closes the connection to its video path. 
+        Previously, when users supplied a video path in their camera configuration, they encountered issues if the camera tried to reconnect because the supplied video path was already being used for the old connection. </td>
     </tr>
     <tr>
         <td><strong>What does it affect?</strong></td>
@@ -47,7 +48,9 @@ description:
 <tbody style="vertical-align:top;">
     <tr>
         <td width="120px"><strong>What is it?</strong></td>
-        <td>We updated the underlying configuration schemes for the following camera models. We are also migrating  existing camera configurations to align with the new schemas. To learn more about the changes, please refer to our <a href="https://docs.viam.com/components/camera/">camera documentation</a>. 
+        <td>We updated the underlying configuration schemes for the following camera models. 
+        We are also migrating  existing camera configurations to align with the new schemas. 
+        To learn more about the changes, please refer to our <a href="https://docs.viam.com/components/camera/">camera documentation</a>. 
         <ul>
         <li>Webcam</li>
         <li>FFmpeg</li>
@@ -55,7 +58,6 @@ description:
         <li>Join Pointclouds</li>
         </ul>
 </table>
-
 
 ### Robot Details Page
 
@@ -70,18 +72,6 @@ description:
 
 {{% /tab %}}
 {{% /tabs %}}
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## 15 November 2022
 
