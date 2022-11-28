@@ -51,7 +51,7 @@ description:
         <td width="120px"><strong>What is it?</strong></td>
         <td>We updated the underlying configuration schemes for the following camera models. 
         We are also migrating  existing camera configurations to align with the new schemas. 
-        To learn more about the changes, please refer to our <a href="https://docs.viam.com/components/camera/">camera documentation</a>. 
+        To learn more about the changes, please refer to our <a href="/components/camera/">camera documentation</a>. 
         <ul>
         		<li>Webcam</li>
         		<li>FFmpeg</li>
