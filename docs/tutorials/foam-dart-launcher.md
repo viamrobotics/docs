@@ -38,7 +38,7 @@ You can find more information on configuring different motors in the [Motor Comp
 * [A solenoid](https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/)[^sol]
 * [A relay](https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/)[^relay]
 * [A dual motor controller](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/)[^dmc].
-Refer to the manufacturer’s data sheet and our [motor component topic](https://docs.viam.com/components/motor) to learn how to configure the pins.
+If you use a different motor driver, refer to the manufacturer’s data sheet and our [motor component topic](https://docs.viam.com/components/motor) to learn how to configure the pins.
 * Jumper wires (breadboard wires)
 
 [^rpi]: A Raspberry Pi 4 microSD card: <a href="https://a.co/d/bxEdcAT/">ht<span></span>tps://a.co/d/bxEdcAT/
