@@ -167,6 +167,8 @@ You then specify the stream field to specify which aligned picture you want to s
     	"stream": string, # either "color" or "depth" to specify the output stream
     	"color_camera_name": string, # the color camera's name
     	"depth_camera_name": string, # the depth camera's name
+		"width_px": int, # the expected width of the aligned pic
+    	"height_px": int, # the expected height of the aligned pic
     	"intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D 
     	"intrinsic_extrinsic": {}, # the intrinsic/extrinsic parameters that relate the two cameras together in order to align the images.
     	"homography": {} # homography parameters that morph the depth points to overlay the color points and align the images.
