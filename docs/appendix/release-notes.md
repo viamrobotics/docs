@@ -20,6 +20,7 @@ description:
 * goutils - v0.1.4
 * rust-utils - v0.0.5
 <br><br><br>(**Bold=updated version**)
+
 {{% /tab %}}
 {{% tab name="Issue Resolutions" %}}
 <table style="margin-bottom:18px">
