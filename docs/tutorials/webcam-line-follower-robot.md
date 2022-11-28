@@ -48,7 +48,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 ## Configuration using Viam
 
-If you haven’t already, please set up the Raspberry Pi per [these instructions](../../installation/rpi-setup/).
+If you haven’t already, please set up the Raspberry Pi per [these instructions](/installation/rpi-setup/).
 
 ### Configuring the hardware components
 
