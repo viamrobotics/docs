@@ -30,7 +30,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 ## What you'll need
 
-- A single board computer [running an instance of viam-server](../../getting-started/rpi-setup/)
+- A single board computer [running an instance of viam-server](../../installation/rpi-setup/)
     - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
 - [A wheeled base component](../../components/base/)
     - We used a <a href="https://www.scuttlerobot.org/shop/" target="_blank" />SCUTTLE Robot</a>[^sr] for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
@@ -48,7 +48,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 ## Configuration using Viam
 
-If you haven’t already, please set up the Raspberry Pi per [these instructions](../../getting-started/rpi-setup/).
+If you haven’t already, please set up the Raspberry Pi per [these instructions](../../installation/rpi-setup/).
 
 ### Configuring the hardware components
 

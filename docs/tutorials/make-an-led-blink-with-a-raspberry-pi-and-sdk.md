@@ -31,7 +31,7 @@ You will need the following hardware, tools, and software to complete this proje
 <ol>
     <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
 <ol type="a">
-<li>Refer to the <a href="https://docs.viam.com/getting-started/rpi-setup" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
+<li>Refer to the <a href="https://docs.viam.com/installation/rpi-setup" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 <li>You must also enable SSH on your Pi.</li>
 </ol>
     <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
@@ -45,7 +45,7 @@ You will need the following hardware, tools, and software to complete this proje
 ### Software
 
 - <a href="https://go.dev/dl/" target="_blank">Golang</a>[^go] or <a href="https://www.python.org/downloads/" target="_blank">Python 3.9+</a>[^python]
-- [viam-server](/getting-started/linux-install/)
+- [viam-server](/installation/linux-install/)
 - [Viam Python SDK](https://python.viam.dev/) or [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
 
 ### How to install a Viam SDK
