@@ -3,66 +3,65 @@ title: "How to Configure a SCUTTLE Robot with a Camera"
 linkTitle: "Configure a SCUTTLE Robot"
 weight: 15
 type: "docs"
-description: "Instructions for configuring a SCUTTLE Robot on the Viam platform"
+description: "Instructions for configuring a SCUTTLE Robot on the Viam platform."
 ---
-This tutorial will guide you through setting up a SCUTTLE Robot with a camera.
-
 ## Requirements
 
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
+Refer to [Installing Raspian on the Raspberry Pi](/getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
 
 * <a href="https://www.scuttlerobot.org/shop/" target="_blank">A SCUTTLE Robot</a>[^asr]
-* A camera
+* A USB camera (webcam)
 
 [^asr]:A SCUTTLE Robot: <a href="https://www.scuttlerobot.org/shop/" target="_blank">ht<span></span>tps://www.scuttlerobot.org/shop/</a>
-TLE Robot:<a href="https://www.scuttlerobot.org/shop/" target="_blank">  ht<span></span>tps://www.scuttlerobot.org/shop/</a>
 
-## Configuring the Board
+## Configuring the board
 {{% alert title="Note" color="note" %}}  
 When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
 {{% /alert %}}
 <ol type="D">
-<li class="spacing">Begin by accessing <a href="https://app.viam.com"> Viam at https://app.viam.com</a>.</li>
-<li class="spacing">If you are using an existing robot config, select your robot's config and skip to Step 5.</li>
+<li class="spacing">Go to the Viam app at <a href="https://app.viam.com" target="_blank">https://app.viam.com</a>.</li>
+<li class="spacing">If you already created your robot in the app, select it and skip to Step 6.</li>
 <li class="spacing">Create an <strong>Organization</strong>.
-If you already have an Organization, then this step is optional. </li>
+If you already have an Organization, then this step is optional.</li>
 <li class="spacing">Create a <strong>Location</strong>.
-If you already have a Location, then this step is optional. </li>
-<img src="../img/scuttlebot/createcomponent.png">
+If you already have a Location, then this step is optional.</li>
+<li class="spacing">Create a <strong>robot</strong> and navigate to its <strong>CONFIG</strong> tab.</li>
+<img src="../img/scuttlebot/createcomponent.png" alt="A screenshot of the Viam app UI showing the CONFIG tab of a robot.">
 <li class="spacing">Add your first component, the Raspberry Pi.</li>
 <ol type="a">
-    <li class="spacing">Enter a name for your robot in <strong>Name</strong>, then click <strong>Add</strong> to add your robot and access your robot's configuration page.
+    <li class="spacing">Enter a name for your robot in the <strong>Name</strong> field.
     In this tutorial, we've named the board "local."
     As long as you're consistent, you can name the <code>board</code> whatever you want.</li>
     <li class="spacing">Select the component <strong>Type</strong>, "board."</li>
     <li class="spacing">Select "pi" from the <strong>Model</strong> drop-down.</li>
-    <li class="spacing">Click <strong>Save Config</strong> to save the new component, which will generate an empty JSON configuration:</li></ol></ol>
+    <li class="spacing">Click <strong>Create Component</strong> and the board component panel will expand.
+    We don't need to worry about any other attributes for this component.</li></ol></ol>
 <img src="../img/scuttlebot/board-empty-json.png" alt="This image is the component configuration panel for a board component.
 The Depends On drop-down listbox has no selection.
 Initially, the left-side Attributes panel for board component is empty.
 The right-side panel contains a list of available board component Attributes.">
 
-## Configuring the Motors and Wheels
-### Adding the Right-Side Wheel
+## Configuring the motors
+
+### Adding the right motor
 
 The next step is to add a wheel and make it spin.
-The first step is to create a <strong>NEW COMPONENT</strong>.
 
 <ol>
-<li class="spacing">Begin by adding the Right-Side Wheel, naming the component <code>right</code>.</li>
-<li class="spacing">Select "motor" from the <code>Type</code> drop-down.</li>
-<li class="spacing">Select "gpio" from the <code>Model</code> drop-down.</li>
-<li class="spacing">Click <strong>Create Component</strong>, which will bring you to the following screen:</li>
-<img src="../img/scuttlebot/pi-rhwheel-f.png"  alt="Fancy component config screen for a Motor."width="515px"><br>
-
-This screen provides read-only displays of JSON configuration and allows you to select which board controls this motor, to toggle the <strong>Component Pin Assignment</strong> between Direction and Int1/Int2, and to <strong>Enable Pins</strong> (i.e., set them to High, Low, or Neither).
-Also, you can add a <strong>Frame</strong> and a <strong>Data Capture Pathway</strong>, and set the <strong>Depends On</strong>.<br>
-
+<li class="spacing">Begin by adding the right motor, naming the component <code>right</code>.</li>
+<li class="spacing">Select "motor" from the <strong>Type</strong> drop-down.</li>
+<li class="spacing">Select "gpio" from the <strong>Model</strong> drop-down.</li>
+<li class="spacing">Click <strong>Create Component</strong>, which will generate the motor component panel:</li>
+<img src="../img/scuttlebot/pi-rhwheel-f.png"  alt="Fancy component config screen for a motor."width="515px"><br>
 
 <li class="spacing">Next, you'll need to describe how the motor is wired to the Pi:</li>
 <ol type="a">
-<li class="spacing">Click <strong>Go to Advanced</strong>. You'll now see the current JSON attributes for this motor component and a reference for the available attributes:</li>
+<li class="spacing">For the Component Pin Assignment Type, click <strong>In1/In2</strong>.</li>
+
+
+---- # here
+
 <img src="../img/scuttlebot/pi-rhwheel.png" alt="Advanced component config screen for a Motor.">
 <li class="spacing">Then select <code>local</code> from the <strong>Depends On</strong> drop-down (since the motor is wired to the Raspberry Pi named "local."</li>
 
@@ -81,7 +80,7 @@ If your wheel turns in reverse when it should turn forward, add the <code>dir_fl
 {{% /alert %}}
 <img src="../img/scuttlebot/pi-rhwheel.png">
 
-**Right-Wheel JSON**
+**Right motor JSON**
 
 ```json-viam
 {
@@ -96,7 +95,7 @@ If your wheel turns in reverse when it should turn forward, add the <code>dir_fl
 }
 ```
 
-### Testing the Motor Configuration
+### Testing the motor configuration
 
 Having entered a board and a motor component, you can now actuate your motor.
 Save the config by clicking **SAVE CONFIG** at the bottom of the page, then click **CONTROL** at the top of the page to navigate to the Control Page.
@@ -113,7 +112,7 @@ A "whining" sound emitted from the motor indicates that the power level is not h
 {{% /alert %}}
 At this point, the right-side wheel should be working.
 
-### Adding the Left-Side Wheel
+### Adding the left motor
 
 Now, you're ready to add the left-side wheel to start driving this robot in a coordinated manner.
 To do this, you’ll have to add the second <code>motor</code> controller and link them with a <code>base</code>.
@@ -141,7 +140,7 @@ Viam opens the component config panel for the wheel.</li>
 </ol>
 </OL>
 
-**Left-Wheel JSON**:
+**Left motor JSON**:
 
 ```json-viam
 {
@@ -163,9 +162,9 @@ With both motors configured, the component page now display panels for both moto
 Viam ([https://app.viam.com](https://app.viam.com)) displays component panels in order of their creation.
 Therefore, it's normal if your motor panels are not adjacent.
 
-## Configuring the Base
+## Configuring the base
 
-Unite your wheels with a <code>base</code> component, which describes the physical structure onto which your components are mounted.
+Unite your wheels with a [base component](/components/base/), which describes the physical structure onto which your components are mounted.
 Configuring a <code>base</code> component will give you a nice UI for moving the rover around.
 
 From the Config screen:
