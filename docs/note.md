@@ -5,6 +5,23 @@ weight: 1
 draft: true
 type: "docs"
 ---
+
+## Reusable Text Snippets
+
+There are situations where we need to repeat text blocks. For example, when cautioning users to disconnect power before changing connections or providing a commonly used instruction set or procedure. 
+
+Rather than re-typing the material or making multiple copy/paste updates in many locations, you can simply update one file and its content flows to any location it was used. 
+
+The following is an example of the <file>secret-share.md</file> alert added using the snippet shortcode:
+
+{{% figure src="/img/snippet-shortcode.png" alt="Snippet shortcode usage." title="Snippet Shortcode Usage" %}}
+
+{{% snippet "secret-share.md" %}}
+
+
+
+
+
 ## Tab Panels
 
 {{< tabs name="TabPanelExample" >}}
@@ -47,9 +64,9 @@ Line numbering is on by default.
 }
 ```
 
-With just line 5 highlighted. See https://prismjs.com/plugins/line-highlight/ for more:
+With just line 6 highlighted. See https://prismjs.com/plugins/line-highlight/ for more:
 
-```python {class="line-numbers linkable-line-numbers" data-line="5"}
+```python {class="line-numbers linkable-line-numbers" data-line="6"}
 while (True):
     # When True, sets the LED pin to high or on.
     await led.set(True)
@@ -65,10 +82,10 @@ while (True):
 ```
 
 
-With linked lines and lines 5-7 highlighted.
+With linked lines and lines 8-10 highlighted.
 
 
-```python {id="some-python-unique-id" class="linkable-line-numbers" data-line="5-7"}
+```python {id="some-python-unique-id" class="linkable-line-numbers" data-line="8-10"}
 while (True):
     # When True, sets the LED pin to high or on.
     await led.set(True)
@@ -88,7 +105,7 @@ while (True):
 This is **some markdown.**
 
 ### Alerts Shortcodes
-{{< alert Type="Note" color="note" >}}
+{{< alert title="Note" color="note" >}}
 It can even contain shortcodes.
 {{< /alert >}}
 
@@ -187,6 +204,12 @@ Within the expander, you can still use most other shortcodes and syntax highligh
 **Warning**: Use to notify the reader of an issue to avoid loss of life, personal injury, and health hazards. Electrical and physical safety fall into this category.
 
 {{< alert title="Tip" color="tip" >}}  
+The "title" and "color" keywords and the names of colors ("tip," "note," etc.) are case sensitive. If you use uppercase, Alerts will not have a title and the color border will be incorrect.
+{{< /alert >}}
+
+{{< figure src="/img/alert-markdown.png"  alt="The shortcodes used to display Alerts." title="Shortcodes for Alerts" >}}
+
+{{< alert title="Tip" color="tip" >}}  
 Use for tips
 {{< /alert >}}
 
@@ -210,7 +233,7 @@ Use to notify the reader of information to avoid loss of life, personal injury, 
 ## Using the Figure Shortcode
 The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr** element for attribution text and **attrlink** if you wish to add a link to the attribution text. 
 
-{{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution" title="Figure Shortcode" >}}
+{{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
 
 This shortcode places the caption (i.e., the “title”) above the table. The **title** is set in 12pt italic with a green underline.
 
