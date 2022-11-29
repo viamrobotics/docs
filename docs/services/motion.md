@@ -164,8 +164,8 @@ For a usage example, see [sample code above](#examples).
 The available constraints--linear, psuedolinear, orientation, and free--are covered in the following sub-sections.
 
 {{% alert title="Note" %}}
-Extra parameters can be used to expose experimental functionality not directly available in the API.
-Behaviour is by no means guaranteed to be stable.
+The motion profile constraints passed via the `extra` parameter are experimental features.
+Stability is not guaranteed.
 {{% /alert %}}
 
 ### Linear Constraint
