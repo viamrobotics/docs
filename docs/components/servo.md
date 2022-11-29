@@ -97,41 +97,37 @@ An example configuration file containing the necessary attributes is as follows:
 
 | Attribute Name          | Type    | Description                                                                                                                                                             |
 | ----------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `min_angle_deg`         | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                      |
-| `max_angle_deg`         | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                      |
-| `starting_position_deg` | float64 | Starting position of the servo in degrees.                                                                                                                               |
+| `min_angle_deg`         | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                    |
+| `max_angle_deg`         | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                    |
+| `starting_position_deg` | float64 | Starting position of the servo in degrees.                                                                                                                              |
 | `frequency_hz`          | uint    | The servo driver will attempt to change the GPIO pin's frequency. Default for a Pi is 19.2MHz.                                                                          |
-| `pwm_resolution`        | uint    | Resolution of the PWM driver (e.g. number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution.  |
+| `pwm_resolution`        | uint    | Resolution of the PWM driver (e.g. number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution. |
 | `min_width_us`          | uint    | Override the safe minimum pulse width in microseconds. This affects PWM calculation.                                                                                    |
 | `max_width_us`          | uint    | Override the safe maximum pulse width in microseconds. This affects PWM calculation.                                                                                    |
 
-## Implementation
+## API
 
 The servo component supports the following methods:
 
-| Method Name                   | Golang                                                                          | Python                                                                                                                          | Description                                                            |
-| ----------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| [Move](#move)                 | [Move](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo)        | [move](https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.move)                 | Move the servo to the provided angle.                                  |
-| [Get Position](#get-position) | [GetPosition](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo) | [get_position](https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.get_position) | Returns an int representing the current angle of the servo in degrees. |
-| [Stop](#stop)                 | [Stop](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo)        | [stop](https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.stop)                 | Stops the servo.                                                       |
+| Method Name                   | Golang                 | Python                              | Description                                                            |
+| ----------------------------- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------- |
+| [Move](#move)                 | [Move][go_servo]       | [move][python_move]                 | Move the servo to the provided angle.                                  |
+| [Get Position](#get-position) | [GetPosition][go_servo]| [get_position][python_get_position] | Returns an int representing the current angle of the servo in degrees. |
+| [Stop](#stop)                 | [Stop][go_servo]       | [stop][python_stop]                 | Stops the servo.                                                       |
 
-You can read the full SDK documentation for servo's on the appropriate SDK page:
+[go_servo]: https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo
+[python_move]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.move
+[python_get_position]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.get_position
+[python_stop]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.stop
 
-- [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)
-- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo)
-
-### Initializing a servo with Viam
+### Controlling a servo via SDK
 
 {{% alert title="Note" color="note" %}}
-Before you get started, ensure that you:
 
-- Go to [app.viam.com](https://app.viam.com/).
-- Create a new robot.
-- Go to the **SETUP** tab and follow the instructions there.
-- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) or [Python](https://python.viam.dev/) Viam SDK on your computer.
-- Go to the **CODE SAMPLE** tab and copy the Viam connection code snippet for your language and paste it into your code.
-  - These snippets can be used in the main function after your robot client connects to Viam.
-- **Assumption:** A servo called "my_servo" is configured as a component of your robot on the Viam app.
+First make sure you have setup your robot and connected it to the Viam app. Check out our [getting started section](/getting-started/) for details.
+
+**Assumption:** A servo called "my_servo" is configured as a component of your robot on the Viam app.
+
 {{% /alert %}}
 
 {{< tabs >}}
@@ -269,13 +265,13 @@ if err != nil {
 await myServo.move(10)
 
 # Get the current position of the servo, which returns 10
-print(await myServo.get_position())
+await myServo.get_position()
 
 # Move the servo to 20 degrees
 await myServo.move(20)
 
 # Get the current position of the servo, which returns 20
-print(await myServo.get_position())
+await myServo.get_position()
 ```
 
 {{% /tab %}}
@@ -302,14 +298,8 @@ if err != nil {
 // Move the servo to the provided angle, which is 10 degrees in this case
 myServo.Move(context.Background(), 10)
 
-// Get the current position of the servo, which returns 10
-print(await myServo.get_position())
-
 // Move the servo to 20 degrees
 myServo.Move(context.Background(), 20)
-
-// Get the current position of the servo, which returns 20
-print(await myServo.get_position())
 ```
 
 {{% /tab %}}
