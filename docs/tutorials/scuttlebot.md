@@ -212,7 +212,7 @@ Try driving your SCUTTLE Robot around using the WASD keyboard controls described
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
 {{% /alert %}}
 
-## Configuring the Camera 
+## Configuring the camera 
 
 Finally, we'll add a camera to your SCUTTLE Robot.
 
@@ -228,7 +228,7 @@ This is often "video0," but please see our [camera configuration tutorial](/tuto
 
 Once you save the config, you'll be able to see your camera's stream in the **CONTROL** tab.
 
-## On Completion
+## On completion
 
 After successfully completing this tutorial, you have a fully configured SCUTTLE robot.
 You can drive it around and view its camera stream.
@@ -236,7 +236,7 @@ You can drive it around and view its camera stream.
 To take things to the next level, check out our [Color Detection with SCUTTLE Robot](../color-detection-scuttle/) tutorial or create your own camera-related tutorial.
 Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle-gamepad/) tutorial or our [Line Follower Robot tutorial](../webcam-line-follower-robot/).
 
-## Documents Referenced
+## Documents referenced
 
   * [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi)
 
