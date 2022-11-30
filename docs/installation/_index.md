@@ -5,6 +5,6 @@ weight: 15
 simple_list: true
 type: docs
 draft: true
-description: "Installation procedures for supported operating systems."
+description: "Procedures to install Viam on supported boards and operating systems."
 #Maintainer: Mike A.
 ---
