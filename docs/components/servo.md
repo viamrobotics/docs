@@ -258,9 +258,7 @@ Get Position returns an int representing the current angle of the servo in degre
 
 ```python
 myServo = ServoClient.from_robot(robot=robot, name='my_servo')
-if err != nil {
-  logger.Fatalf("cannot get servo: %v", err)
-}
+
 # Move the servo to the provided angle, which is 10 degrees in this case
 await myServo.move(10)
 
