@@ -299,7 +299,7 @@ We at Viam are running Python 3.9.2 for this tutorial.</li>
 <li class="spacing">Open a file in your favorite IDE and paste in <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">the code from the earlier referenced repo</a>.</li>
 <li class="spacing">Adjust the components names to match the component names you created in your config file.
 In this case, the component names that you may need to change are <strong>scuttlebase</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
-<li class="spacing">From your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>), go to the <strong>CONNECT</strong> tab.
+<li class="spacing">From your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>), go to the <strong>CODE SAMPLE</strong> tab.
 Find the Python SDK field and copy the robot address (which will likely have the form
 <span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file.
 This allows your code to connect to your robot.</li>
