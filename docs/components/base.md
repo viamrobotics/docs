@@ -131,7 +131,7 @@ An example configuration file, including the board, motors, and base:
   </tr>
   <tr>
     <td><code>left</code></td>
-    <td>string</td>
+    <td>array of strings</td>
     <td>List with the names of all drive motors on the left side of the base. There may be one or more motors.</td>
   </tr>
   <tr>
