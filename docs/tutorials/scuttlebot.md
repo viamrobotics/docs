@@ -8,7 +8,8 @@ description: "Instructions for configuring a SCUTTLE Robot on the Viam platform.
 ## Requirements
 
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspian on the Raspberry Pi](/getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi) if necessary.
+
+Refer to [Installing Raspian on the Raspberry Pi](/installation/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
 
 * <a href="https://www.scuttlerobot.org/shop/" target="_blank">A SCUTTLE Robot</a>[^asr]
 * A USB camera (webcam)
@@ -238,10 +239,12 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle
 
 ## Documents referenced
 
-  * [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi)
 
-  * [Color Detection with SCUTTLE Robot on Viam](../color-detection-scuttle/)
+* [**Installing Raspian on the Raspberry Pi**](/installation/rpi-setup/#installing-raspian-on-the-raspberry-pi)
 
-  * [Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad](../scuttle-gamepad/)
 
-  * [Line Following with SCUTTLE Robot on Viam](../webcam-line-follower-robot/)
+* [Color Detection with SCUTTLE Robot on Viam](../color-detection-scuttle/)
+
+* [Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad](../scuttle-gamepad/)
+
+* [Line Following with SCUTTLE Robot on Viam](../webcam-line-follower-robot/)

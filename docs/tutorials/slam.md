@@ -27,12 +27,12 @@ The webcam can be installed on a robot, or just be held by hand.
 ## Requirements
 
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspian on the Raspberry Pi](../../getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
+Refer to [Installing Raspian on the Raspberry Pi](../../installation/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
 ## Setup
 
-If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](../../getting-started/rpi-setup/).
+If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](/installation/rpi-setup/).
 
 Next, we'll install the ORB-SLAM3 binary.
 
