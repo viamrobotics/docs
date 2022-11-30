@@ -8,7 +8,7 @@ description: "Instructions for configuring a SCUTTLE Robot on the Viam platform.
 ## Requirements
 
 * A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspian on the Raspberry Pi](/getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi) for more on that.
+Refer to [Installing Raspian on the Raspberry Pi](/getting-started/rpi-setup/#installing-raspian-on-the-raspberry-pi) if necessary.
 
 * <a href="https://www.scuttlerobot.org/shop/" target="_blank">A SCUTTLE Robot</a>[^asr]
 * A USB camera (webcam)
@@ -106,11 +106,11 @@ You'll use this panel to set the motor's `power` level.
 <img src="../img/scuttlebot/pi-moverhmotor.png">
 
 Be careful when activating your robot!
-Start with the power level set to 10% and increase it incrementally until the wheel rotates at a reasonable speed.
+Start with the power level set to 10% and increase it incrementally until the wheel rotates at a reasonable speed, clicking **Run** at each increment.
 
 {{% alert title="Note" color="note" %}}  
 A "whining" sound emitted from the motor indicates that the power level is not high enough to turn the armature.
-If this happens, increase the power level by 10%.
+If this happens, increase the power level by 10% increments until it starts to turn.
 {{% /alert %}}
 At this point, the right-side wheel should be working.
 
@@ -137,7 +137,7 @@ This will be very similar to adding the right motor.
 {{% expand "Click to view the raw JSON for the left motor" %}}
 ```json-viam
 {
-  "name": "leftt",
+  "name": "left",
   "type": "motor",
   "model": "gpio",
   "attributes": {
