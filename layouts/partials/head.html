@@ -5,8 +5,6 @@
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{ end -}}
 
-<meta invalid="true">
-
 {{ $outputFormat := partial "outputformat.html" . -}}
 {{ if and hugo.IsProduction (ne $outputFormat "print") -}}
 <meta name="robots" content="index, follow">
