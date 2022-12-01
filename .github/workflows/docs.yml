@@ -44,7 +44,7 @@ jobs:
         uses: actions/deploy-pages@v1
 
   generate-index:
-    needs: generate-docs
+    needs: build
     if: github.repository_owner == 'viamrobotics'
     runs-on: [self-hosted, x64]
     container:
