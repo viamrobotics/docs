@@ -1,7 +1,7 @@
 ---
 title: "What is Viam?"
 linkTitle: "What is Viam?"
-weight: 1
+weight: 
 type: "docs"
 description: "A high-level overview of Viam."
 ---

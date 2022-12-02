@@ -2,7 +2,7 @@
 
 title: "Try Viam"
 linkTitle: "Try Viam"
-weight: 1
+weight: 2
 type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 minutes."
 draft: true
