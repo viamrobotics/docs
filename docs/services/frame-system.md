@@ -84,7 +84,7 @@ The resulting tree of reference frames could be visualized like so:
 
 ### Example 1: A robot arm attached to a table (a component fixed to the world frame)
 
-We can consider one corner of the table the origin of the world and measure from that point to the *base* of the arm to get the translation. In this case, let's pretend the arm is offset from the corner by 100mm in the positive X direction, and -250mm in the negative Y direction.
+We can consider one corner of the table the origin of the world and measure from that point to the *base* of the arm to get the translation. In this case, let's pretend the arm is offset from the corner by 100mm in the positive X direction, and 250mm in the negative Y direction.
 
 We might consider a sensible default orientation for the arm to be the vector (0,0,1) with theta being 0. 
 
