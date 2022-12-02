@@ -8,8 +8,6 @@ description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 mi
 draft: true
 ---
 
-Try Viam by taking over a Viam Rover in our robotics lab for 15 minutes.
-
 ## Getting Started with Viam
 
 When you try Viam for the first time, you'll want to get a feel for how it works. The best way to do that is to take over a Viam Rover in our robotics lab for 15 minutes. You'll be able to drive the robot around, see what it sees, and control its sensors and actuators. You could try things like:
