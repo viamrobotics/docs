@@ -35,7 +35,7 @@ Your robot code can run directly on the robot itself or anywhere else with inter
 Robots will work even if the cloud is disconnected for weeks.
 
 - Configuration is cached to handle reboots
-- All APIs work locally or in the cloud.
+- All APIs work locally or in the cloud
 - Data is cached locally and synced when possible
 
 ## API
