@@ -1,26 +1,28 @@
 ---
 title: "What is Viam?"
 linkTitle: "What is Viam?"
-weight: 
+weight: 1
 type: "docs"
 description: "A high-level overview of Viam."
 ---
 
-Viam's goal is to make it easy to take a robotics idea from paper, to prototype, to production, to scale. 
+Viam's goal is to make it easy to take a robotics idea from paper, to prototype, to production, to scale.
 
 That includes making it easy to configure hardware, test hardware prototypes, write production code, deploy, and add features.
 
 ## Basics
+
 Viam runs on your robot and the cloud.
 
-Everything that runs on your robot is open source and is available at http://github.com/viamrobotics.
+Everything that runs on your robot is open source and is available at <http://github.com/viamrobotics>.
 
-To get the most out of the Viam platform, we recommend using  http://app.viam.com/ to configure, manage, and control your robots.
+To get the most out of the Viam platform, we recommend using  <http://app.viam.com/> to configure, manage, and control your robots.
 
 A robot's configuration lives in the cloud.
 The configuration is a description of the hardware and higher level software services--for example, how a motor is connected to a Raspberry Pi, or what machine learning models you want to use for classification.
 
-On the robot, a single Viam process, called _viam-server_ runs, and is responsible for: 
+On the robot, a single Viam process, called _viam-server_ runs, and is responsible for:
+
 - keeping the configuration up-to-date
 - logging to the cloud
 - connecting to hardware
@@ -31,6 +33,7 @@ On the robot, a single Viam process, called _viam-server_ runs, and is responsib
 Your robot code can run directly on the robot itself or anywhere else with internet connectivity and access all the same functionality.
 
 Robots will work even if the cloud is disconnected for weeks.
+
 - Configuration is cached to handle reboots
 - All APIs work locally or in the cloud.
 - Data is cached locally and synced when possible
@@ -40,23 +43,26 @@ Robots will work even if the cloud is disconnected for weeks.
 All communication across Viam is done with gRPC[^grpc], directly if wanted, or via WebRTC[^webrtc], which provides authentication and encryption.
 
 [^grpc]: <a href="https://grpc.io/" target="_blank">gRPC</a>
-[^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a> 
+[^webrtc]: <a href="https://en.wikipedia.org/wiki/WebRTC" target="_blank">WebRTC: ht<span></span>tps://en.wikipedia.org/wiki/WebRTC</a>
 
 There are three buckets of APIs:
+
 - [Components](/components/) - e.g., motors, arms, GPS
 - [Services](/services/) - e.g., computer vision, motion planning, SLAM
 - Cloud Application - [fleet management](/product-overviews/fleet-management/), [data management](/product-overviews/data-management/)
 
-You can see all Viam API specifications at https://github.com/viamrobotics/api.
+You can see all Viam API specifications at <https://github.com/viamrobotics/api>.
 
 ## Concepts
 
 ### Robot
+
 A _Robot_ in Viam is one or more computers combined into one logical robot.
 A mobile robot that has one Jetson and one Raspberry Pi is one robot.
-The bounds of a robot are usually pretty clear, but can be subjective. 
+The bounds of a robot are usually pretty clear, but can be subjective.
 
 ### Part
+
 Each of those computers are a _Part_.
 In the above example, you have one robot, and two parts (the Jetson and the Pi).
 
@@ -93,7 +99,8 @@ If a remote is added to a part, then that part will proxy all requests.
 
 Remotes are typically implemented with SDKs.
 
-Examples: 
+Examples:
+
 - A robot arm manufacturer has a network-attached arm that implements the Viam API, so you can add it directly to a part as a remote.
 - A POE camera implements the camera gRPC interface, so it can be added directly as a remote.
 
@@ -107,6 +114,7 @@ One example is running a [Software Development Kit (SDK)](/product-overviews/sdk
 While you can connect to a robot with gRPC directly, we provide SDKs to make this easier, and handle authentication and WebRTC.
 
 SDKs are used for:
+
 - writing your application code for building your robot to interact with the components and services
 - implementing drivers for hardware not yet supported
 
