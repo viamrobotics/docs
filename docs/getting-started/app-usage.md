@@ -70,11 +70,7 @@ You can share your location with any listed organization by selecting it from th
 
 #### Share a Location with Viam Support
 
-When requesting support, you must share your location with the Viam Support team. To do so, navigate to the proper location and then click, **Add Viam Support**.
-
-{{% alert title="Note" color="note" %}}
-You can not remove Viam Support from a shared location using the Viam App interface.
-{{% /alert %}}
+You must share your Location with the Viam Support team when requesting support. To do so, navigate to the proper Location and click, **ADD VIAM SUPPORT**. The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from your Location.
 
 #### Removing an Organization from a shared Location
 
