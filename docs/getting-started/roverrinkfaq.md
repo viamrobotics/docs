@@ -9,15 +9,16 @@ description: "Frequently Asked Question about the Try Viam Rover Rink"
 ### What happens when my reservation starts?
 1. Prior to your reservation, Viam assigns your session an Rover Rink, creates the “Rover Rental” Location in your organization (if necessary), and finally adds a Rover Rental robot with a basic configuration and a random name (e.g., wispy-shape, black-moon, etc.) to your Rental Rover Location. 
 You cannot choose a specific physical rover or Rover Rink.
-2. If you made your reservation more than 30 minutes in advance, Viam emails a notification ~30 minutes prior to your rental’s start time. 
-Otherwise, Viam emails the notification when your robot is ready for use. 
+2. If you made your reservation more than 30 minutes in advance, Viam sends you a reservation confirmation email. 
+   Viam also sends a "Ready to Play" notification when your Rover Rental is ready for use. 
 The notification contains a link to the specific robot for this session.
-3. When it’s your turn, your robot’s status on the Try page changes to **RUNNING** and Try displays the **Seconds Remaining** counter and timer. 
-4. Click **TRY YOUR ROBOT** to access your Rover Rental robot in the Viam app.
+1. When it’s your turn, your robot’s status on the Try page changes to **RUNNING** and Try displays the Session timer in the top banner. 
+2. Click **TRY YOUR ROBOT** to access your Rover Rental robot in the Viam app.
 
 ### My robot had an error, a system crash, or is physically stuck.
 1. The timer does not stop
 2. Notify support via our Community Slack.
+3. Use the Add Viam Support button your robot's Location page to give Viam Support access to your Location. See []
 
 ### Can I extend my time?
 Sure! If the next time slot is open, click **Extend Reservation** on the Try GUI _before your session ends_ to reset the timer to 15 minutes. When your session ends, you can no longer extend it.
@@ -84,10 +85,10 @@ Note that as members of your organization, those users have full control of your
 
 ### How many active rentals can I have?
 
-Viam’s reservation system allows each user a single entry per Organization.
+Viam’s reservation system allows each user a single entry.
 Each user may have one active rental session or one queued reservation, but not both.
 
 {{% alert title="Note" color="note" %}}
-The Try Viam reservation system allows each user one entry per Organization. 
-If you are participating in an active session or awaiting your turn in the queue, you may not create another reservation in the same organization.
+The Try Viam reservation system allows each user one entry in the system. 
+If you are participating in an active session or awaiting your turn in the queue, you may not create another reservation.
 {{% /alert %}}
