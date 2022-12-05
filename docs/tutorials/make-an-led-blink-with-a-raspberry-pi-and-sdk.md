@@ -164,7 +164,7 @@ if err != nil {
 {{< /tabs >}}
 
 Now that we have our board, and LED initialized, let's create an infinite loop that will blink the LED on and off.
-Directly after the code you pasted above, and above the `robot.close()` statement. Your `main` function should look like this:
+Within the `main` function, you can add the code to create an infinite loop, you can remove the line to close out the connection to your robot, since the infinite loop will never hit that line. Your completed `main` function should look like this:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -180,18 +180,17 @@ async def main():
     local = Board.from_robot(robot, 'local')
     led = await local.gpio_pin_by_name('8')
 
+    # Create an infinite loop that will blink the LED on and off
     while (True):
-        # When True, sets the LED pin to high or on.
+        # When True, sets the LED pin to high/on.
         await led.set(True)
         print('LED is on')
         await asyncio.sleep(1)
 
-        # When False, sets the pin to low or off.
+        # When False, sets the pin to low/off.
         await led.set(False)
         print('LED is off')
         await asyncio.sleep(1)
-
-    await robot.close()
 ```
 
 {{% /tab %}}
@@ -229,6 +228,7 @@ func main() {
   
   //   Infinite loop that will blink the LED on and off.
   for {
+    // When True, sets the LED pin to high/on.
     err = led.Set(context.Background(), true, nil)
     if err != nil {
       logger.Fatalf("could not set led to on: %v", err)
@@ -236,6 +236,7 @@ func main() {
     fmt.Println("LED is on")
     time.Sleep(1 * time.Second)
 
+    // When False, sets the pin to low/off.
     err = led.Set(context.Background(), false, nil)
     if err != nil {
       logger.Fatalf("could not set led to off: %v", err)
