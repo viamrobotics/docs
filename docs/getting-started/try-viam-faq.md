@@ -13,8 +13,8 @@ You cannot choose a specific physical rover or Rover Rink.
 2. If you made your reservation more than 30 minutes in advance, Viam sends you a reservation confirmation email.
    Viam also sends a "Ready to Play" notification when your Rover Rental is ready for use.
 The notification contains a link to the specific robot for this session.
-1. When it’s your turn, your robot’s status on the Try page changes to **RUNNING** and Try displays the Session timer in the top banner.
-2. Click **TRY YOUR ROBOT** to access your Rover Rental robot in the Viam app.
+3. When it’s your turn, your robot’s status on the Try page changes to **RUNNING** and Try displays the Session timer in the top banner.
+4. Click **TRY YOUR ROBOT** to access your Rover Rental robot in the Viam app.
 
 ### My robot had an error, a system crash, or is physically stuck
 
