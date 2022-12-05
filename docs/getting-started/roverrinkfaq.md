@@ -26,11 +26,11 @@ The notification contains a link to the specific robot for this session.
 
 ### Can I extend my time?
 
-Sure! If the next time slot is open, click **Extend Reservation** on the Try GUI _before your session ends_ to reset the timer to 15 minutes. When your session ends, you can no longer extend it. You can click **Try** to add a new reservation.
+Sure! If the next time slot is open, click **Extend Reservation** on the **Try** page _before your session ends_ to reset the timer to 15 minutes. When your session ends, you can no longer extend it. You can click **Try** to add a new reservation.
 
 ### Can I cancel my reservation/session?
 
-Yes. Click **Cancel Reservation** on the Try GUI to either release your queued reservation or to immediately end your active session.
+Yes. Click **Cancel Reservation** on the **Try** page to either release your queued reservation or to immediately end your active session.
 
 ### Can I reuse my Rover Rental Robot?
 
