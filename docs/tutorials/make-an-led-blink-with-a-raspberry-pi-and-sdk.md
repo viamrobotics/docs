@@ -109,7 +109,7 @@ We will need this component in order to interact with the GPIO pins on our Raspb
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-At the top of your <file>blink.py</file> file, paste the following:
+At the top of your <file>blink.py</file> file, add the following to the import statement without removing any of the other imports
 
 ```python
 from viam.components.board import Board
@@ -118,7 +118,7 @@ from viam.components.board import Board
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Inside the `import` block, add the following:
+In <file>blink.go</file>, and inside the `import` block at the top of the file, add the following to the import statements without removing any of the other imports:
 
 ```go
 import (
@@ -138,6 +138,7 @@ At the bottom of the <code>main()</code> function, paste the following:
 {{% tab name="Python" %}}
 
 ```python
+# Initialize the board and the LED on pin 8
 local = Board.from_robot(robot, 'local')
 led = await local.gpio_pin_by_name('8')
 ```
@@ -146,11 +147,13 @@ led = await local.gpio_pin_by_name('8')
 {{% tab name="Go" %}}
 
 ```go
+// Initialize the board
 myBoard, err := board.FromRobot(robot, "myBoard")
 if err != nil {
     logger.Fatalf("could not get board: %v", err)
 }
 
+// Initialize the board's GPIO pin and name it "led"
 led, err := myBoard.GPIOPinByName("8")
 if err != nil {
     logger.Fatalf("could not get led: %v", err)
@@ -161,44 +164,86 @@ if err != nil {
 {{< /tabs >}}
 
 Now that we have our board, and LED initialized, let's create an infinite loop that will blink the LED on and off.
-Directly after the code you pasted above, paste the following snippet:
+Within the `main` function, you can add the code to create an infinite loop, you can remove the line to close out the connection to your robot, since the infinite loop will never hit that line. Your completed `main` function should look like this:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python
-while (True):
-    # When True, sets the LED pin to high or on.
-    await led.set(True)
-    print('LED is on')
+async def main():
+    robot = await connect()
 
-    await asyncio.sleep(1)
+    print('Resources:')
+    print(robot.resource_names)
 
-    # When False, sets the pin to low or off.
-    await led.set(False)
-    print('LED is off')
+    # Initialize the board and the LED on pin 8
+    local = Board.from_robot(robot, 'local')
+    led = await local.gpio_pin_by_name('8')
 
-    await asyncio.sleep(1)
+    # Create an infinite loop that will blink the LED on and off
+    while (True):
+        # When True, sets the LED pin to high/on.
+        await led.set(True)
+        print('LED is on')
+        await asyncio.sleep(1)
+
+        # When False, sets the pin to low/off.
+        await led.set(False)
+        print('LED is off')
+        await asyncio.sleep(1)
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go
-for {
+func main() {
+  logger := golog.NewDevelopmentLogger("client")
+  robot, err := client.New(
+      context.Background(),
+      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      logger,
+      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+          Type:    utils.CredentialsTypeRobotLocationSecret,
+          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      })),
+  )
+  if err != nil {
+      logger.Fatal(err)
+  }
+  defer robot.Close(context.Background())
+  logger.Info("Resources:")
+  logger.Info(robot.ResourceNames())
+  
+  // Initialize the board
+  myBoard, err := board.FromRobot(robot, "myBoard")
+  if err != nil {
+    logger.Fatalf("could not get board: %v", err)
+  }
+  // Initialize the board's GPIO pin and name it "led"
+  led, err := myBoard.GPIOPinByName("8")
+  if err != nil {
+    logger.Fatalf("could not get led: %v", err)
+  }
+  
+  //   Infinite loop that will blink the LED on and off.
+  for {
+    // When True, sets the LED pin to high/on.
     err = led.Set(context.Background(), true, nil)
     if err != nil {
-        logger.Fatalf("could not set led to on: %v", err)
+      logger.Fatalf("could not set led to on: %v", err)
     }
     fmt.Println("LED is on")
-
     time.Sleep(1 * time.Second)
+
+    // When False, sets the pin to low/off.
     err = led.Set(context.Background(), false, nil)
     if err != nil {
-        logger.Fatalf("could not set led to off: %v", err)
+      logger.Fatalf("could not set led to off: %v", err)
     }
     fmt.Println("LED is off")
     time.Sleep(1 * time.Second)
+  }
 }
 ```
 
