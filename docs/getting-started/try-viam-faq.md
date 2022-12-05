@@ -1,9 +1,9 @@
 --- 
-title: "Rover Rink FAQ"
-linkTitle: "Rover Rink FAQ"
+title: "Try Viam FAQ"
+linkTitle: "Try Viam FAQ"
 weight: 50
 type: "docs"
-description: "Frequently Asked Question's about using the 'Try Viam' feature."
+description: "Frequently Asked Question's about using the 'Try Viam' feature on the Viam App."
 ---
 
 ### What happens when my reservation starts?
