@@ -85,7 +85,7 @@ You can also use internet over USB to connect your BeagleBone to the network.
 If you are connecting to your BeagleBone with macOS, you can use <a href="https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac" target="_blank">Internet Sharing over USB</a> to connect to the internet.
 After enabling it on your machine, SSH into your BeagleBone, and run the following: `sudo dhclient usb1`.
 
-For Linux, you can follow this [tutorial for enabling internet over USB](https://fastbitlab.com/how-to-enable-internet-over-usb/) if you are using Linux. 
+For Linux, you can follow this [tutorial for enabling internet over USB](https://fastbitlab.com/how-to-enable-internet-over-usb/). 
 
 {{% /alert %}}
 
