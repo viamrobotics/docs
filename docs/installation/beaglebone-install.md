@@ -69,7 +69,7 @@ If it doesn't, go ahead and remove the drive from the SD card reader. Insert the
 ### Power your BeagleBone
 
 You will need to connect your BeagleBone to your computer and power it, the most convenient way to do that is to connect it with a USB-C to USB-C from your computer to your BeagleBone.
-Alternatively, your Beagle has a barrel jack, which can be powered with a 5V charger.
+However, we recommend that you power your BeagleBoard using the barrel jack, since it's more reliable to separate power. The barrel jack can be powered with a 5V charger.
 If it's being powered, you'll see the power (PWR or ON) LED lit steadily. Within a minute or so, you should see the other LEDs blinking.
 
 ### Enable a network connection
@@ -91,7 +91,9 @@ You can SSH into your BeagleBone by running the following from your terminal:
 
 {{% alert title="Note" color="note" %}}
 
-The default username is `debian` and the password is `temppwd`.
+The default username and password supplied by beaglebone is
+
+* dbian` and the password is `temppwd`s
 
 {{% /alert %}}
 
