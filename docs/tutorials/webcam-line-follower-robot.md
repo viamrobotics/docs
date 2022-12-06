@@ -321,7 +321,7 @@ Type <strong>Y</strong> to confirm file modification, then press enter to finish
 </ol></ol>
 
 **References**:
-* Line Follower Code on GitHub: <a href="" target="_blank">ht<span><span>tps://github.com/viam-labs/line-follower/blob/main/rgb_follower.py</a>
+* Line Follower Code on GitHub: <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">ht<span><span>tps://github.com/viam-labs/line-follower/blob/main/rgb_follower.py</a>
 * Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span><span>tps://mutagen.io/documentation/introduction/getting-started</a>
 
 ## Controlling your rover with Viam
