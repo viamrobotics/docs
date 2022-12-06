@@ -91,9 +91,10 @@ You can SSH into your BeagleBone by running the following from your terminal:
 
 {{% alert title="Note" color="note" %}}
 
-The default username and password supplied by beaglebone is
+The default username and password supplied by BeagleBone is:
 
-* dbian` and the password is `temppwd`s
+* Username: `debian`
+* Password: `temppwd`
 
 {{% /alert %}}
 
@@ -129,4 +130,5 @@ For more information on installing Viam on a Linux machine, check out our [Linux
 
 Now that you have the viam-server up and running on your BeagleBone, you can start configuring your robot and the real fun can begin!
 
-Check out [our list of tutorials](https://docs.viam.com/tutorials/) for step-by-step project walkthroughs demonstrating robot configuration and using Viam's <a href="https://python.viam.dev/" target="_blank">Python SDK</a> and <a href="https://pkg.go.dev/go.viam.com/rdk" target="_blank">Golang SDK</a>.
+We recommend that you try our [LED blink tutorial](/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/) and [configuring a robot with a USB camera](/tutorials/configure-a-camera/) tutorial. These are a great place to get started an to ensure that your board is configured correctly.
+You can check out [our complete list of tutorials](https://docs.viam.com/tutorials/) for step-by-step project walkthroughs demonstrating robot configuration.
