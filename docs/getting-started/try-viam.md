@@ -7,6 +7,8 @@ type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 minutes."
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YYpZ9CVDwMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Getting Started with Viam
 
 When you try Viam for the first time, you'll want to get a feel for how it works. The best way to do that is to take over a Viam Rover in our robotics lab for 15 minutes. You'll be able to drive the robot around, see what it sees, and control its sensors and actuators. You could try things like:
@@ -31,6 +33,6 @@ You can find more information about using Viam's SDKs to control the Viam rover 
 
 ## FAQs
 
-If you have any questions, be sure to checkout our [FAQs](/getting-started/try-viam-faq).
+If you have any questions, be sure to checkout our [FAQs](/appendix/try-viam-faq).
 
 You can also get assistance when using the Try Viam feature over on the [Viam Community Slack](http://viamrobotics.slack.com).
