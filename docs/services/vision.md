@@ -177,6 +177,19 @@ The types of the detector supported are:
 Color detector does not detect black, gray and white. It only detects hues found on the color wheel.
 {{% /alert %}}
 
+Note that the **hue_tolerance_pct**, **saturation_cutoff_pct**, and **value_cutoff_pct** attributes refer to hue, saturation, and value (brightness) in the HSV model.
+
+{{% expand "Click to learn more about the HSV Color Model" %}}
+### What is HSV?
+
+HSV is a color model based on hue (color), saturation (the amount of grey in a color), and value (brightness). Humans perceive color more closely to the HSV model than the CMYK (Cyan-Magenta-Yellow-Key) color model, which is most commonly used in commercial printing.
+
+When using HSV, specify hue as an integer from 0-360 (corresponding to a colors on a wheel), specify the saturation value as 0-100 (higher values lessen the amount of grey in the color), and specify value as a number from 1-100, with 0 being black and 100 being the brightest representation of the specified color.
+
+{{% /expand %}}
+
+<br>
+
 * **detect_color**: the color to detect in the image, as a string of the form #RRGGBB.
 The color is written as a hexadecimal string prefixed by ‘#’.
 * **hue_tolerance_pct**: A number > 0.0 and <= 1.0 and defines how strictly the detector must match to the hue of the color requested.
