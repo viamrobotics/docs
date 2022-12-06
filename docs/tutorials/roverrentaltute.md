@@ -136,7 +136,7 @@ You will also be able to tinker with speed.
 
 ![alt_text](../img/roverrentaltute/image29.png)
 
-## Changing the Camera Configuration
+## Camera Control
 
 Click a camera configuration panel to view its individual configuration. 
 Click to expand, and toggle **Show Camera**. 
@@ -150,7 +150,7 @@ In these panels, you can refresh your camera at a certain frequency (always live
 
 ![alt_text](../img/roverrentaltute/image18.png)
 
-### Changing the Motor Configuration 
+### Motor Control
 
 Some other preconfigured components in your robot config are the motors (which allow you to move the base). 
 We named these motors “left” and “right” corresponding to their location on the rover base. 
