@@ -9,19 +9,15 @@ description: "Instructions for renting and remotely configuring and controlling 
 _Try Viam_ is a way to try out the platform without setting up any hardware yourself.
 You can take over a Viam Rover in our robotics lab for 15 minutes to play around!
 
-This tutorial will guide you through configuring and controlling the Viam Rover that you’ll use in the Rover Rink.
-The Viam Rover is pre-assembled with a Raspberry Pi microcontroller, two motors, a base, encoders, and a camera.
-It also has a remote overhead camera to provide a view of your Rental Rover in its Rover Rink, allowing you to view its movements in the rink in real-time.
+This tutorial will guide you through configuring and controlling the a Viam rover.
+The Viam rover is pre-assembled with a Raspberry Pi microcontroller, two motors, a base, encoders, and a camera.
+It also has a remote overhead camera to provide a view of your Rental Rover, allowing you to view its movements in in real-time.
 
 ## Using the reservation system
 
 ### Access the system
 
-You must be logged in and have a Viam account to make a reservation.
-
-If you are not logged in, navigate to [https://app.viam.com/try](https://app.viam.com/try) to access the login dialog.
-New users can easily create an account from this dialog by providing a valid email address and a password to use with the Viam system.
-
+You must be [logged in](https://app.viam.com/try) and have a Viam account to make a reservation. (If you don’t have an account, it only takes a minute to sign up).
 Once you login to the Viam App, you can click **Try Now** to reserve a time slot.
 
 ### Create a reservation
@@ -33,7 +29,7 @@ Otherwise, the Try App displays an estimate of the next available start time and
 
 The “Time to Play” notification email appears similar to this example:
 
-![alt_text](../img/roverrentaltute/image35.png)
+![alt_text](../img/try-viam/image35.png)
 
 ### Access your Rover Rental
 
@@ -43,51 +39,51 @@ Try Viam steps through various screens as the system readies your robot:
 
 Initial display (available now):<br>
 
-![alt_text](../img/roverrentaltute/image2.png)
+![alt_text](../img/try-viam/image2.png)
 
 Display when a time slot isn’t immediately available:
 
-![alt_text](../img/roverrentaltute/image23.png)
+![alt_text](../img/try-viam/image23.png)
 
 Your reservation is in the queue:
 
-![alt_text](../img/roverrentaltute/image2.png)
+![alt_text](../img/try-viam/image2.png)
 
 Viam has begun preparing your rover:
 
-![alt_text](../img/roverrentaltute/image15.png)
+![alt_text](../img/try-viam/image15.png)
 
 Almost ready:
 
-![alt_text](../img/roverrentaltute/image20.png)
+![alt_text](../img/try-viam/image20.png)
 
 Scrolling on the **SETTING UP ROBOT** “status capsule” displays a popup announcing that the wait time could take 30 seconds.
 
-![alt_text](../img/roverrentaltute/image16.png)
+![alt_text](../img/try-viam/image16.png)
 
 After the system establishes a connection and configures your robot, the status capsule displays **RUNNING**, and new buttons:
 
 1. Click **TRY YOUR ROBOT** to open your robot in a new Try Viam tab.
 2. Click **CANCEL RESERVATION** to immediately end the rental session.
-3. Click **EXTEND RESERVATION** to extend the current session if there is time remaining and the next available rental slot in this Rover Rink is open.
+3. Click **EXTEND RESERVATION** to extend the current session if there is time remaining and the next available rental slot is open.
 
-![alt_text](../img/roverrentaltute/image27.png)
+![alt_text](../img/try-viam/image27.png)
 
 You can always return to the generic rental page by clicking on the **TRY** tab.  
 Clicking the timer in the top banner redirects you to the specific robot control page for _this_ session.
 
-![alt_text](../img/roverrentaltute/image12.png)
+![alt_text](../img/try-viam/image12.png)
 
 ## The **CONTROL** tab
 
 Viam first displays your robot page and the **CONTROL** **panel. The header contains the name of the rover (“solitary-voice), the host (octagon-rover-1), and the remote address (10.1.7.141). Viam randomly generates this information for each rental session:
 
-![alt_text](../img/roverrentaltute/bannerinfo.png)
+![alt_text](../img/try-viam/bannerinfo.png)
 
 On the****CONTROL****tab, you find the base, the left and right motors, the web game pad, the board, and two cameras.
 The components are not displayed in any order and that order may vary between rovers and rentals.
 
-![alt_text](../img/roverrentaltute/image28.png)
+![alt_text](../img/try-viam/image28.png)
 
 ### Component Controls in the UI
 
@@ -106,17 +102,17 @@ Note that keyboard control is disabled when the **Keyboard Disabled** switch is 
 Selecting a camera allows you to view your Rental Rover as you move it around.
 You can choose “cam” for the front-facing camera or “overhead-cam:cam” for an overhead view of your Rover.
 
-![alt_text](../img/roverrentaltute/image10.png)
+![alt_text](../img/try-viam/image10.png)
 
-![alt_text](../img/roverrentaltute/image5.png)
+![alt_text](../img/try-viam/image5.png)
 
 The camera selection panel looks like this when expanded:
 
-![alt_text](../img/roverrentaltute/image25.png)
+![alt_text](../img/try-viam/image25.png)
 
 Selecting both cams stacks the displays:
 
-![alt_text](../img/roverrentaltute/image9.png)
+![alt_text](../img/try-viam/image9.png)
 
 Each time you show or hide a camera, **Keyboard Enabled** automatically toggles to **Keyboard Disabled**.
 
@@ -132,7 +128,7 @@ This automation is for safety purposes.
 If you toggle to **DISCRETE** **tab, then you’ll see different movement modes such as “Straight” and “Spin”; and different movement types such as “Continuous” and “Discrete” and directions such as “Forwards” and “Backwards.”
 You will also be able to tinker with speed.
 
-![alt_text](../img/roverrentaltute/image29.png)
+![alt_text](../img/try-viam/image29.png)
 
 ## Camera Control
 
@@ -142,11 +138,11 @@ In these panels, you can refresh your camera at a certain frequency (always live
 
 **cam Stream**:
 
-![alt_text](../img/roverrentaltute/image21.png)
+![alt_text](../img/try-viam/image21.png)
 
 **overhead-cam:cam Stream**:
 
-![alt_text](../img/roverrentaltute/image18.png)
+![alt_text](../img/try-viam/image18.png)
 
 ### Motor Control
 
@@ -154,15 +150,15 @@ Some other preconfigured components in your robot config are the motors (which a
 We named these motors “left” and “right” corresponding to their location on the rover base.
 Their initial state is **Idle**. You can click on the each panel and make your motor **RUN** or **STOP**.
 
-![alt_text](../img/roverrentaltute/image6.png)
+![alt_text](../img/try-viam/image6.png)
 
 A running left motor state would look like this:
 
-![alt_text](../img/roverrentaltute/image24.png)
+![alt_text](../img/try-viam/image24.png)
 
 Both motors running at the same time would look like this:
 
-![alt_text](../img/roverrentaltute/image7.png)
+![alt_text](../img/try-viam/image7.png)
 
 In these panels, you can change the motors’ direction of rotation (which will allow them to go forward or backwards), and their power levels (which will allow them to go faster or slower).
 You can also see their current positions in real time.
@@ -172,7 +168,7 @@ You can also see their current positions in real time.
 The remaining pre-configured component in your robot config is the board.
 The Viam Rover uses the Raspberry Pi.
 
-![alt_text](../img/roverrentaltute/image11.png)
+![alt_text](../img/try-viam/image11.png)
 
 #### WebGamepad Control
 
@@ -181,11 +177,11 @@ It is default to disabled, but you can enable it by toggling the button.
 
 **Disabled**:
 
-![alt_text](../img/roverrentaltute/image26.png)
+![alt_text](../img/try-viam/image26.png)
 
 **Enabled**:
 
-![alt_text](../img/roverrentaltute/image8.png)
+![alt_text](../img/try-viam/image8.png)
 
 ## Learning about robot configuration
 
@@ -195,7 +191,7 @@ One other thing you can do within your experience is see your configuration.
 On the Viam App, navigate to the **COMPONENTS** section, under **CONFIG**.
 There you can view each component in the robot and obtain more information about their configuration such as their attributes, board/component dependencies, pin assignments, etc.:
 
-![alt_text](../img/roverrentaltute/image32.png)
+![alt_text](../img/try-viam/image32.png)
 
 ### Motor Configuration
 
@@ -207,7 +203,7 @@ The Attributes section lists the Motor model (which is “gpio” for both motor
 
 In your config, the right motor will appear similar to this:
 
-![alt_text](../img/roverrentaltute/image30.png)
+![alt_text](../img/try-viam/image30.png)
 
 **Attributes**:
 
@@ -239,7 +235,7 @@ Beside it, the **Attribute Guide** contains a complete list of valid, available 
 
 The left motor component appears almost identical to the right motor, the differences being pin assignments and **Encoder** name:
 
-![alt_text](../img/roverrentaltute/image19.png)
+![alt_text](../img/try-viam/image19.png)
 
 **Attributes**:
 
@@ -261,7 +257,7 @@ The left motor component appears almost identical to the right motor, the differ
 
 **Frame**: No assignment
 
-**Depends On**: local (i.e., the Raspberry Pi SBC), and the Renc (i.e., the Right Encoder)
+**Depends On**: local (i.e., the Raspberry Pi), and the Renc (i.e., the Right Encoder)
 
 As with the right motor, you can click **go to Advanced** to toggle to the full configuration for this component.
 The **Attributes** pane contains the current JSON configuration for this component.
@@ -282,7 +278,7 @@ Since the motors are “left” and “right”, simply add “left” and “ri
 * **Width**: 260
 * **Depends On**: left, right, local
 
-![alt_text](../img/roverrentaltute/image36.png)
+![alt_text](../img/try-viam/image36.png)
 
 ### Camera Configuration
 
@@ -291,26 +287,26 @@ The **Video Path** is  “video0”.
 
 To learn more, refer to our [camera configuration tutorial](https://docs.viam.com/tutorials/configure-a-camera/#connect-and-configure-a-webcam) for more information on choosing the correct video path.
 
-![alt_text](../img/roverrentaltute/image33.png)
+![alt_text](../img/try-viam/image33.png)
 
 ### Encoder Configuration
 
 The encoders are named, respectively, “Renc” and “Lenc”.
 They will depend on “local” which is our board, the Raspberry Pi SBC.
 
-![alt_text](../img/roverrentaltute/image1.png)
+![alt_text](../img/try-viam/image1.png)
 
-![alt_text](../img/roverrentaltute/image4.png)
+![alt_text](../img/try-viam/image4.png)
 
 ### Gamepad Configuration
 
 The final component is the web gamepad.
-The gamepad is **type** is “input_controller” and the **model** is a webgamepad.
+The gamepad has a **type** of “input_controller” and the **model** is a "webgamepad".
 
-If you connect a generic gamepad controller to your computer, you can use it to control your robot in the rover rink.
+If you connect a generic gamepad controller to your computer, you can use it to control your robot.
 The gamepad requires a service to function, though. Fortunately, we added one for you!
 
-![alt_text](../img/roverrentaltute/image14.png)
+![alt_text](../img/try-viam/image14.png)
 
 Navigate to the **SERVICES** section under the **CONFIG** tab.
 The **SERVICES** contains the “Base Remote Control” service which uses three attributes:
@@ -323,15 +319,15 @@ The **SERVICES** contains the “Base Remote Control” service which uses three
 
 The names for **base** and **input_controller** correspond to the naming scheme from the **COMPONENTS** tab.
 
-![alt_text](../img/roverrentaltute/image3.png)
+![alt_text](../img/try-viam/image3.png)
 
-Now that you have learned about components and services, one more thing to try is, viewing the code that Viam generate for the rover as you added those components and services.
+Now that you have learned about components and services, one more thing to try is, viewing the code that Viam generate for the rover as we added those components and services.
 
 On the **CONFIG** tab, toggle **Mode** from **Builder** to **RAW JSON**.
 The full configuration is displayed.
 Click anywhere in the JSON and press **CTRL+A** on Windows or Linux platforms, or **CMD+A** on macOS to copy the configuration.
 
-![alt_text](../img/roverrentaltute/image13.png)
+![alt_text](../img/try-viam/image13.png)
 
 ## Extending time
 
@@ -342,7 +338,7 @@ You can click **TRY NOW** to rent the rover again if no one is in the queue.
 
 The system provides an alert when your session is over.
 
-![alt_text](../img/roverrentaltute/image12.png)
+![alt_text](../img/try-viam/image12.png)
 
 Your Rover Rental Location now contains your robot with the final configuration from the now ended session.
 
