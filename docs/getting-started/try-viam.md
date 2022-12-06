@@ -5,7 +5,6 @@ linkTitle: "Try Viam"
 weight: 2
 type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 minutes."
-draft: true
 ---
 
 ## Getting Started with Viam
