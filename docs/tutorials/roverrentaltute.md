@@ -39,7 +39,7 @@ The “Time to Play” notification email appears similar to this example:
 
 ### Access your Rover Rental 
 
-From the confirmation email, click **Rover** to open Try Viam with your Robot in the **CONTROL** tab, or click **TRY NOW** if you were queued and awaiting your Robot to begin your reservation. 
+From the confirmation email, click **Take Me to My Rover** to open Try Viam with your Robot in the **CONTROL** tab, or click **TRY NOW** if you were queued and awaiting your Robot to begin your reservation. 
 
 Try Viam steps through various screens as the system readies your robot:
 
@@ -82,7 +82,7 @@ Clicking the timer in the top banner redirects you to the specific robot control
 
 ## The **CONTROL** tab
 
-Viam first displays your robot page and the **CONTROL** **panel. The header contains the name of the rover (“solitary-host”), the host (octagon-rover-1), and the remote address (10.1.7.141). Viam randomly generates this information for each rental session: 
+Viam first displays your robot page and the **CONTROL** **panel. The header contains the name of the rover (“solitary-voice), the host (octagon-rover-1), and the remote address (10.1.7.141). Viam randomly generates this information for each rental session: 
 
 ![alt_text](../img/roverrentaltute/bannerinfo.png)
 
@@ -101,7 +101,7 @@ By default, Viam provides movement control using the **W**, **A**, **S**, and **
 
 You can also use the keyboard’s arrow keys to control the movement if desired. 
 
-Note that keyboard control is only enabled when the **Keyboard Disabled** switch is greyed-out.
+Note that keyboard control is disabled when the **Keyboard Disabled** switch is greyed-out.
 
 #### Camera Control
 
@@ -197,7 +197,7 @@ One other thing you can do within your experience is see your configuration.
 On the Viam App, navigate to the **COMPONENTS** section, under **CONFIG**. 
 There you can view each component in the robot and obtain more information about their configuration such as their attributes, board/component dependencies, pin assignments, etc.:
 
-![alt_text](../img/roverrentaltute/image26.png)
+![alt_text](../img/roverrentaltute/image32.png)
 
 ### Motor Configuration
 
