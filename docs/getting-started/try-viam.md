@@ -7,6 +7,8 @@ type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 minutes."
 ---
 
+Watch the tutorial video below for a quick walkthrough of Try Viam, including how to reserve a Viam Rover, navigate the Viam platform, and teleoperate the rover.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/YYpZ9CVDwMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Getting Started with Viam
