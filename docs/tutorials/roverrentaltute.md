@@ -15,7 +15,7 @@ This tutorial will guide you through configuring and controlling the Viam Rover 
 The Viam Rover is pre-assembled with a Raspberry Pi microcontroller, two motors, a base, encoders, and a camera. 
 It also has a remote overhead camera to provide a view of your Rental Rover in its Rover Rink, allowing you to view its movements in the rink in real-time.
 
-## Access and use the reservation system
+## Using the reservation system
 
 ### Access the system
 
