@@ -7,6 +7,8 @@ type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 minutes."
 ---
 
+Watch the tutorial video below for a quick walkthrough of Try Viam, including how to reserve a Viam Rover, navigate the Viam platform, and teleoperate the rover.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/YYpZ9CVDwMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Getting Started with Viam
@@ -28,8 +30,6 @@ It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and aut
 
 SDKs make it easier to interface with the robot by providing easy to use, idiomatic interfaces in the programming language of your choice.
 You can learn more about the Viam SDKs in the [SDKs as Client](/product-overviews/SDK-as-client).
-
-You can find more information about using Viam's SDKs to control the Viam rover in our [Rover Rental Tutorial](Link to Hazal's tutorial).
 
 ## FAQs
 
