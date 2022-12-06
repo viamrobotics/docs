@@ -7,14 +7,14 @@ description: "How to install and run viam-server on a BeagleBone AI-64."
 # SMEs: Joe Karlsson, Shawn, Matt, and Rand
 ---
 
-The [BeagleBone AI-64](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/) from [BeagleBoard.org](https://beagleboard.org/) is an open-source computer based on the Texas Instruments TDA4VM processor, filling the gap between small Single Board Computers (SBCs) and more powerful industrial computers.
+The <a href="https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/" target="_blank">BeagleBone AI-64</a> from <a href="https://beagleboard.org/" target="_blank">BeagleBoard.org</a> is an open-source computer based on the Texas Instruments TDA4VM processor, filling the gap between small Single Board Computers (SBCs) and more powerful industrial computers.
 In this tutorial, we will show you how to set up your BeagleBone AI-64 with Debian, and install Viam.
 
 {{% figure src="../img/beaglebone-install/image4.png" alt="BeagleBone AI-64 front at 45° angle." title="BeagleBone AI-64 front at 45° angle." %}}
 
 {{% alert title="Note" color="note" %}}
 
-You can find an official guide from BeagleBone on getting started at [beagleboard.org/getting-started](https://beagleboard.org/getting-started).
+You can find an official guide from BeagleBone on getting started at <a href="https://beagleboard.org/getting-started" target="_blank">beagleboard.org/getting-started</a>.
 
 {{% /alert %}}
 
@@ -32,7 +32,7 @@ You will need the following hardware, tools, and software to install Viam on a B
 
 ### Update BeagleBone with the latest software
 
-Download the latest Debian image from [beagleboard.org/latest-images](https://beagleboard.org/latest-images).
+Download the latest Debian image from <a href="https://beagleboard.org/latest-images" target="_blank">beagleboard.org/latest-images</a>.
 We recommend that you install the Buster IoT TIDL (without a graphical desktop and with machine learning acceleration tools) for BeagleBone AI.
 
 {{% figure src="../img/beaglebone-install/image3.png" width="50%" alt="Screenshot from the beaglebone.org website with a red box highlighting the Buster IoT Debian image." title="Screenshot from the beaglebone.org website." %}}
@@ -41,7 +41,7 @@ After downloading this operating system image, you can flash your microSD card w
 
 ### Install SD card programming utility
 
-You'll need to use a program like [balenaEtcher](https://www.balena.io/etcher/) in order to flash your microSD drive.
+You'll need to use a program like <a href="https://www.balena.io/etcher/" target="_blank">balenaEtcher</a> in order to flash your microSD drive.
 
 {{% figure src="../img/beaglebone-install/image5.png" width="50%" alt="Screenshot from the balenaEtcher homepage." title="Screenshot from the balenaEtcher homepage." %}}
 
@@ -75,12 +75,12 @@ If it's being powered, you'll see the power (PWR or ON) LED lit steadily. Within
 ### Enable a network connection
 
 You will need to connect an ethernet cable to your BeagleBone in order to connect to it.
-If your computer supports mDNS, you should see your Beagle at [beaglebone.local](http://beaglebone.local/).
-Using either [Chrome](https://www.google.com/chrome) or [Firefox](http://www.mozilla.org/firefox) you can test to see if your BeagleBone has successfully connected to the internet.
+If your computer supports mDNS, you should see your Beagle at <a href="beaglebone.local" target="_blank">beaglebone.local</a>.
+Using either <a href="https://www.google.com/chrome" target="_blank">Chrome</a> or <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">Firefox</a> you can test to see if your BeagleBone has successfully connected to the internet.
 
 {{% alert title="Note" color="note" %}}
 
-If you are connecting to your BeagleBone with macOS, you can use [Internet Sharing over USB](https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac) to connect to the internet.
+If you are connecting to your BeagleBone with macOS, you can use <a href="https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac" target="_blank">Internet Sharing over USB</a> to connect to the internet.
 After enabling it on your machine, SSH into your BeagleBone, and run the following: `sudo dhclient usb1`.
 
 {{% /alert %}}
@@ -97,7 +97,6 @@ The default username is `debian` and the password is `temppwd`.
 
 ```bash
 ssh debian@beaglebone.local
-
 ```
 
 ### Update your BeagleBone
@@ -106,12 +105,11 @@ Next, it's good practice to update your BeagleBone to ensure all the latest pack
 
 ```bash
 sudo apt update && sudo apt dist-upgrade && sudo reboot
-
 ```
 
 ### Setup your BeagleBone on the Viam app
 
-- Go to [app.viam.com](https://app.viam.com/)
+- Go to <a href="https://app.viam.com" target="_blank">app.viam.com</a>
 - Create a new robot
 - Go to the **SETUP** tab
 - Follow the instructions for a Linux with an Aarch64 architecture installation.
@@ -129,4 +127,4 @@ For more information on installing Viam on a Linux machine, check out our [Linux
 
 Now that you have the viam-server up and running on your BeagleBone, you can start configuring your robot and the real fun can begin!
 
-Check out [our list of tutorials](https://docs.viam.com/tutorials/) for step-by-step project walkthroughs demonstrating robot configuration and using Viam's [Python SDK](https://python.viam.dev/) and [Golang SDKs](https://pkg.go.dev/go.viam.com/rdk).
+Check out [our list of tutorials](https://docs.viam.com/tutorials/) for step-by-step project walkthroughs demonstrating robot configuration and using Viam's <a href="https://python.viam.dev/" target="_blank">Python SDK</a> and <a href="https://pkg.go.dev/go.viam.com/rdk" target="_blank">Golang SDK</a>.
