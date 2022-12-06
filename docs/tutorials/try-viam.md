@@ -1,5 +1,5 @@
 ---
-title: "Try Viam: Using Try Viam to Remotely Control A Rover"
+title: "Try Viam: Using Try Viam to Remotely Control A Viam Rover"
 linkTitle: "Try Viam Rover Tutorial"
 weight: 39
 type: "docs"
@@ -7,7 +7,7 @@ description: "Instructions for renting and remotely configuring and controlling 
 ---
 
 _Try Viam_ is a way to try out the platform without setting up any hardware yourself.
-You can take over a Viam Rover in our robotics lab for 15 minutes to play around!
+You can take over a Viam Rover in our robotics lab for 15 minutes or more to play around!
 
 This tutorial will guide you through configuring and controlling the a Viam rover.
 The Viam rover is pre-assembled with a Raspberry Pi microcontroller, two motors, a base, encoders, and a camera.
@@ -89,7 +89,7 @@ The components are not displayed in any order and that order may vary between ro
 
 #### Movement Control
 
-To move your rover using the Viam app, click on **viam_base** and toggle **Keyboard disabled** to off (grey).
+To move your rover using the Viam app, click on **viam_base** and toggle **Keyboard disabled** to off (grey) to enable.
 
 By default, Viam provides movement control using the **W**, **A**, **S**, and **D** buttons, which correspond to using the **W**, **A**, **S**, and **D**  keys on the keyboard to move forward, backward, arc, or spin, respectively.
 
@@ -195,9 +195,7 @@ There you can view each component in the robot and obtain more information about
 
 ### Motor Configuration
 
-The Motor panel also provides attributes, board/component dependencies, pin assignments, etc.,
-
-The Attributes section lists the Motor model (which is “gpio” for both motors), whether the motor is encoded, the **Encoder** name,  its **Ticks Per Rotation**, **Ramp Rate Rpm Per Sec**, **Tick Per Rotation**, and **Max RPM**.
+The Attributes section lists the Motor model (which is “gpio” for both motors), whether the motor is encoded, the **Encoder** name, its **Ticks Per Rotation**, **Ramp Rate Rpm Per Sec**, **Tick Per Rotation**, and **Max RPM**.
 
 #### Right Motor
 
