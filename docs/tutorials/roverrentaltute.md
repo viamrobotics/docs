@@ -1,14 +1,12 @@
 ---
-title: "Try Viam: Using the Try Viam Rover Rental System to Remotely Control A Rover"
+title: "Try Viam: Using Try Viam to Remotely Control A Rover"
 linkTitle: "Try Viam Rover Tutorial"
 weight: 39
 type: "docs"
 description: "Instructions for renting and remotely configuring and controlling a Viam Rover located on-site at Viam in NYC."
 ---
 
-## Try Viam: Using the Try Viam Rover Rental System to Remotely Control A Rover
-
-Instructions for renting and remotely configuring and controlling a Viam Rover located on-site at Viam in NYC.
+## Introduction
 
 _Try Viam_ is a way to try out the platform without setting up any hardware yourself. You can take over a Viam Rover in our robotics lab for 15 minutes to play around!
 
