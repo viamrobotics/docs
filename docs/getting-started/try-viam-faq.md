@@ -19,7 +19,7 @@ Try Viam is a way you can try out the platform without setting up any hardware y
 2. Viam creates a location called “Rover Rental” in your organization (if necessary), and adds a Viam Rover with a basic configuration and a random name (e.g., wispy-shape, black-moon, etc.) to your Rover Rental Location.
 3. You’ll be able to control a Viam Rover in the Viam robotics lab for 15 minutes. A session timer will be displayed in the top banner. You can see how the rover is configured, write code to control the rover, teleoperate the rover, and more.
 
-### My robot had an error, a system crash, or is physically stuck
+## My robot had an error, a system crash, or is physically stuck
 
 1. The timer does not stop at any time.
 2. Notify support via our Community Slack[^cs].
@@ -27,15 +27,15 @@ Try Viam is a way you can try out the platform without setting up any hardware y
 
 [^cs]: Viam Support on Slack: [(ht<span></span>tps://viamrobotics.slack.com/archives/C042LE6LWQ6)](https://viamrobotics.slack.com/archives/C042LE6LWQ6)
 
-### Can I extend my time?
+## Can I extend my time?
 
 Sure! If the next time slot is open, click **Extend Reservation** on the **Try** page _before your session ends_ to reset the timer to 15 minutes. When your session ends, you can no longer extend it. You can click **Try** to add a new reservation.
 
-### Can I cancel my reservation/session?
+## Can I cancel my reservation/session?
 
 Yes. Click **Cancel Reservation** on the **Try** page to either release your queued reservation or to immediately end your active session.
 
-### Can I reuse my Rover Rental Robot?
+## Can I reuse my Rover Rental Robot?
 
 Yes. However, note that each reservation is fulfilled with a _new_ robot having the standard configuration.
 For your next session, you can copy the config from your previous robot to the new robot.
@@ -62,19 +62,19 @@ When you open your new rental in Try Viam:
 6. You can access your robot, write code using a Viam SDK, and modify its config even after your reservation time ends and you can no longer operate it.
 This allows you to make updates between sessions to prepare for future sessions.
 
-### What happens to my Rover Rental robot after the rental session?
+## What happens to my Rover Rental robot after the rental session?
 
 1. On session expiration, Viam removes the “live” status from the robot.
 2. Viam then removes your configuration from the physical robot in preparation for its next rental.
 3. The Rover Rental Location and _the final configuration of all previous Rover Rental robots remain visible to your organization_.
 You can continue modifying the configurations as desired.
 
-### I accidentally deleted my robot
+## I accidentally deleted my robot
 
 Unfortunately, there is no recovery path for a deleted robot.
 If you delete your robot and have a current reservation, the only option available is to click **Cancel Reservation** and then request a new reservation.
 
-### Can I rename my robot or Location?
+## Can I rename my robot or Location?
 
 You can rename your robot as desired.
 However, changing the Location will break your robot.
@@ -85,17 +85,17 @@ Do not change the Location name.
 The Location **must** be "Rover Rental"
 {{% /alert %}}
 
-### Which Org does this robot belong to?
+## Which Org does this robot belong to?
 
 Your robot belongs to the Org you were in when you made the request.
 
-### Can I share this Location with a friend to work on the robot together?
+## Can I share this Location with a friend to work on the robot together?
 
 1. Sure, you can invite other users to your Org to collaborate on your robot.
 Note that as members of your organization, those users have full control of your robot.
 2. Another collaboration option is to use screen sharing in a Zoom or Webex session.
 
-### How many active rentals can I have?
+## How many active rentals can I have?
 
 Viam’s reservation system allows each user a single entry.
 Each user may have one active rental session or one queued reservation, but not both.
