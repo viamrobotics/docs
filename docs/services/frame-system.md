@@ -82,19 +82,113 @@ The resulting tree of reference frames could be visualized like so:
 
 ## Configuration Examples
 
-### Example 1: A robot arm attached to the side of a table (a component fixed to the world frame)
+### Example 1: A robot arm attached to a table (a component fixed to the world frame)
 
 We can consider one corner of the table the origin of the world and measure from that point to the *base* of the arm to get the translation. 
-We might consider a sensible default orientation for the arm to be the vector (0,0,1) with theta being 0. 
-We can then supply this frame information when configuring the arm component, making sure that the parent is "world".
+In this case, let's pretend the arm is offset from the corner by 100mm in the positive X direction, and 250mm in the negative Y direction.
+
+We will use the default orientation for the arm, which is the vector (0,0,1) with theta being 0. 
+Note: because we are using the default orientation, it is optional in the JSON configuration (we are including it for illustrative purposes). 
+
+We supply this frame information when configuring the arm component, making sure that the parent is "world".
+
+```json-viam
+{
+  "components": [
+    {
+      "depends_on": [],
+      "name": "myArm",
+      "type": "arm",
+      "model": "ur5e",
+      "attributes": {
+        "host": "127.0.0.1"
+      },
+      "frame": {
+        "parent": "world",
+        "translation": {
+          "x": 100,
+          "y": -250,
+          "z": 0
+        },
+        "orientation": {
+          "type": "ov_degrees",
+          "value": {
+            "x": 0,
+            "y": 0,
+            "z": 1,
+            "th": 0
+          }        
+        }
+      }
+    }
+  ]
+}
+```
 
 ### Example 2: A robot arm attached to a gantry (a component fixed to the actuator of another component)
 
-Here we pick the zero position of the gantry as its origin and do the measurements to wherever we have marked the origin of our world frame as in the first example. 
-After configuring the gantry frame, we can configure the arm. 
+Here, the gantry origin is coincident with the world origin (0,0,0).  
+Note: this is the default translation, it is optional in the JSON configuration (we are including it for illustrative purposes). 
 
-The base of the arm is always at the position of the gantry, so we specify the arm's parent as the name of our gantry. 
-We use the 0-vector as the translation and for the orientation we can probably use a (0,0,1) vector with a theta of 0.
+After configuring the gantry frame, we can configure the arm.  The base of the arm mounted to the gantry 100mm above that origin, so we specify the arm's parent as the name of our gantry and offset Z by 100. 
+As the gantry extends, the arm will be moved accordingly.
+
+```json-viam
+{
+  "components": [
+    {
+      "name": "myGantry",
+      "type": "gantry",
+      "model": "oneaxis",
+      "attributes": {},
+      "depends_on": [],
+      "frame": {
+        "parent": "world",
+        "translation": {
+          "y": 0,
+          "z": 0,
+          "x": 0
+        },
+        "orientation": {
+          "type": "ov_degrees",
+          "value": {
+            "x": 0,
+            "y": 0,
+            "z": 1,
+            "th": 0
+          }
+        }
+      }
+    },
+    {
+      "depends_on": [],
+      "name": "myArm",
+      "type": "arm",
+      "model": "ur5e",
+      "attributes": {
+        "host": "127.0.0.1"
+      },
+      "frame": {
+        "parent": "myGantry",
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 100
+        },
+        "orientation": {
+          "type": "ov_degrees",
+          "value": {
+            "x": 0,
+            "y": 0,
+            "z": 1,
+            "th": 0
+          }
+        }
+      }
+    }
+  ]
+}
+```
 
 ## Accessing the Frame System
 
