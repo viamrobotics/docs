@@ -31,8 +31,6 @@ It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and aut
 SDKs make it easier to interface with the robot by providing easy to use, idiomatic interfaces in the programming language of your choice.
 You can learn more about the Viam SDKs in the [SDKs as Client](/product-overviews/SDK-as-client).
 
-You can find more information about using Viam's SDKs to control the Viam rover in our [Rover Rental Tutorial](Link to Hazal's tutorial).
-
 ## FAQs
 
 If you have any questions, be sure to checkout our [FAQs](/appendix/try-viam-faq).
