@@ -32,6 +32,6 @@ You can find more information about using Viam's SDKs to control the Viam rover 
 
 ## FAQs
 
-If you have any questions, be sure to checkout our [FAQs](/getting-started/roverrinkfaq.md).
+If you have any questions, be sure to checkout our [FAQs](/getting-started/try-viam-faq.md).
 
 You can also get assistance when using the Try Viam feature over on the [Viam Community Slack](http://viamrobotics.slack.com).
