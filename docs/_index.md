@@ -15,6 +15,7 @@ type: "docs"
 <p>Looking to get started with Viam? Check out the following:</p>
 <ul>
 	<li><a href="/getting-started/high-level-overview">Viam Overview</a></li>
+  <li><a href="/getting-started/try-viam">Try Viam</a></li>
 	<li><a href="http://www.viam.com/use-cases">Viam Use Cases</a></li>
 	<li><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs&ab_channel=EliotHorowitz">Intro Video</a></li>
 	<li><a href="/tutorials/build-a-mock-robot/">Build a Mock Robot without Hardware</a></li>
