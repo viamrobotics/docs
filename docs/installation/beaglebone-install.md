@@ -7,7 +7,7 @@ description: "How to install and run viam-server on a BeagleBone AI-64."
 # SMEs: Joe Karlsson, Shawn, Matt, and Rand
 ---
 
-The <a href="https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/" target="_blank">BeagleBone AI-64</a> from <a href="https://beagleboard.org/" target="_blank">BeagleBoard.org</a> is an open-source computer based on the Texas Instruments TDA4VM processor, filling the gap between small Single Board Computers (SBCs) and more powerful industrial computers.
+The <a href="https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/" target="_blank">BeagleBone AI-64</a> from <a href="https://beagleboard.org/" target="_blank">BeagleBoard.org</a> is an open-source computer based on the Texas Instruments TDA4VM processor.
 In this tutorial, we will show you how to set up your BeagleBone AI-64 with Debian, and install Viam.
 
 {{% figure src="../img/beaglebone-install/image4.png" alt="BeagleBone AI-64 front at 45° angle." title="BeagleBone AI-64 front at 45° angle." %}}
