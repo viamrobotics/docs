@@ -170,7 +170,10 @@ You can check out [our complete list of tutorials](https://docs.viam.com/tutoria
 
 {{% alert title="Note" color="note" %}}
 
-It's best practice to flash the on-board eMMC when running a BeagleBone with Viam in production. If you are using BeagleBone Black, BeagleBone Blue, BeagleBone AI or other board with on-board eMMC flash and you desire to write the image to your on-board eMMC, you'll need to follow the instructions at <a href="http://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Flashing_eMMC" target="_blank">http://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Flashing_eMMC</a>.
-When the flashing is complete, all 4 USRx LEDs will be steady on or off. The latest Debian flasher images automatically power down the board upon completion. This can take up to 45 minutes. Power-down your board, remove the SD card and apply power again to finish.
+It's best practice to flash the on-board eMMC when running a BeagleBone with Viam in production. If you are using BeagleBone Black, BeagleBone Blue, BeagleBone AI or other board with on-board eMMC flash and you desire to write the image to your on-board eMMC, you'll need to follow the instructions at <a href="<http://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Flashing_eMMC>" target="_blank">http://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Flashing_eMMC</a>.
+
+When the flashing is complete, all 4 USRx LEDs will be steady on or off. The latest Debian flasher images automatically power down the board upon completion.
+This can take up to 45 minutes.
+Power-down your board, remove the SD card and apply power again to finish.
 
 {{% /alert %}}
