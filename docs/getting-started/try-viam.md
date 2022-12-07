@@ -20,6 +20,8 @@ When you try Viam for the first time, you'll want to get a feel for how it works
 - Using services like computer vision or data management
 - See how the rover's components are set up in the intuitive configuration interface
 
+For a limited-time, you can pre-order a Viam Rover [here](http://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
+
 ## Getting started with the SDKs
 
 Viam offers SDKs in popular languages which wrap the viam-server [gRPC](https://grpc.io/) APIs and streamline connection, authentication, and encryption against a server.

@@ -104,3 +104,7 @@ Each user may have one active rental session or one queued reservation, but not 
 The Try Viam reservation system allows each user one entry in the system.
 If you are participating in an active session or awaiting your turn in the queue, you may not create another reservation.
 {{% /alert %}}
+
+## I loved my experience and want to play around more. Can I do that?
+
+Yes! You can rent the rover as many times as you’d like. Also, we’re taking pre-orders for a limited quantity of Viam Rovers. Reserve yours today [here](http://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
