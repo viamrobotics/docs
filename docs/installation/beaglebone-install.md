@@ -85,9 +85,19 @@ You can also use internet over USB to connect your BeagleBone to the network.
 If you are connecting to your BeagleBone with macOS, you can use <a href="https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac" target="_blank">Internet Sharing over USB</a> to connect to the internet.
 After enabling it on your machine, SSH into your BeagleBone, and run the following: `sudo dhclient usb1`.
 
-For Linux, you can follow this [tutorial for enabling internet over USB](https://fastbitlab.com/how-to-enable-internet-over-usb/). 
+For Linux, you can follow this <a href="https://fastbitlab.com/how-to-enable-internet-over-usb/" target="_blank">tutorial for enabling internet over USB</a>.
 
 {{% /alert %}}
+
+The below table summarizes the typical addresses and should dynamically update to indicate an active connection.
+
+|     IP Address      | Connection Type  | Operating System(s)  |  Status   |
+|:------------------: |:---------------: |:-------------------: |:--------: |
+| 192.168.7.2         | USB              | Windows              | Inactive  |
+| 192.168.6.2         | USB              | Mac OS X, Linux      | Inactive  |
+| 192.168.8.1         | WiFi             | all                  | Inactive  |
+| beaglebone.local    | all              | mDNS enabled         | Inactive  |
+| beaglebone-2.local  | all              | mDNS enabled         |           |
 
 ### SSH into your BeagleBone
 
@@ -106,6 +116,27 @@ The default username and password supplied by BeagleBone is:
 ssh debian@beaglebone.local
 ```
 
+### Check that your BeagleBone is connected to the internet
+
+After you SSH into your BeagleBone, you can check that your BeagleBone is connected to the internet by running the following command:
+
+```bash
+ping -c 3 google.com
+```
+
+If you see a response like the one below, you are connected to the internet.
+
+```bash
+PING google.com (209.85.234.138): 56 data bytes
+64 bytes from 209.85.234.138: icmp_seq=0 ttl=55 time=31.852 ms
+64 bytes from 209.85.234.138: icmp_seq=1 ttl=55 time=35.585 ms
+64 bytes from 209.85.234.138: icmp_seq=2 ttl=55 time=43.308 ms
+
+--- google.com ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 31.852/36.915/43.308/4.771 ms
+```
+
 ### Update your BeagleBone
 
 Next, it's good practice to update your BeagleBone to ensure all the latest packages are installed:
@@ -116,17 +147,17 @@ sudo apt update && sudo apt dist-upgrade && sudo reboot
 
 ### Setup your BeagleBone on the Viam app
 
-- Go to <a href="https://app.viam.com" target="_blank">app.viam.com</a>
-- Create a new robot
-- Go to the **SETUP** tab
-- Follow the instructions for a Linux with an Aarch64 architecture installation.
-- Wait for the Viam app to confirm that you have connected to your BeagleBone.
+* Go to <a href="https://app.viam.com" target="_blank">app.viam.com</a>
+* Create a new robot
+* Go to the **SETUP** tab
+* Follow the instructions for a Linux with an Aarch64 architecture installation.
+* Wait for the Viam app to confirm that you have connected to your BeagleBone.
 
 {{% figure src="../img/beaglebone-install/image2.png" width="50%" alt="Screenshot from the Viam app showing a dialog box with a green checkmark and text that reads, 'Your robot is successfully connected! Proceed to the config tab.'" %}}
 
 {{% alert title="Tip" color="tip" %}}
 
-For more information on installing Viam on a Linux machine, check out our [Linux installation guide](/installation/linux-install/)
+For more information on installing Viam on a Linux machine, check out our [Linux installation guide](/installation/linux-install/).
 
 {{% /alert %}}
 
@@ -136,3 +167,10 @@ Now that you have the viam-server up and running on your BeagleBone, you can sta
 
 We recommend that you try our [LED blink tutorial](/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/) and [configuring a robot with a USB camera](/tutorials/configure-a-camera/) tutorial. These are a great place to get started an to ensure that your board is configured correctly.
 You can check out [our complete list of tutorials](https://docs.viam.com/tutorials/) for step-by-step project walkthroughs demonstrating robot configuration.
+
+{{% alert title="Note" color="note" %}}
+
+It's best practice to flash the on-board eMMC when running a BeagleBone with Viam in production. If you are using BeagleBone Black, BeagleBone Blue, BeagleBone AI or other board with on-board eMMC flash and you desire to write the image to your on-board eMMC, you'll need to follow the instructions at <a href="http://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Flashing_eMMC" target="_blank">http://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Flashing_eMMC</a>.
+When the flashing is complete, all 4 USRx LEDs will be steady on or off. The latest Debian flasher images automatically power down the board upon completion. This can take up to 45 minutes. Power-down your board, remove the SD card and apply power again to finish.
+
+{{% /alert %}}
