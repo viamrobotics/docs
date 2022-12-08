@@ -6,17 +6,17 @@ type: "docs"
 description: "Try Viam by using the Viam SDK to make your rover move in a square."
 ---
 
-Hopefully, by now you have had a chance to play around with the Viam Rover a bit, and now you are ready to control the rover using some real code!
-In this tutorial, we will introduce you to the Viam SDK so that you can write code in either Python or Golang to make your Viam Rover move in a square.
+Hopefully you have had a chance to play around with the Viam Rover a bit, and you are now ready to control the rover using some real code!
+In this tutorial, we will introduce you to the Viam SDK (software development kit) so that you can write code in either Python or Golang to make your Viam Rover move in a square.
 This is a great way to get a feel for what it's like to write code to control your robots using Viam.
 
 <img src="../img/try-viam-sdk/image1.gif" alt ="Overhead view of the Viam rover showing it as it drives in a square." width="100%"><br>
 
 ## How to install a Viam SDK
 
-In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer.
-We recommend that you get the Viam SDK setup before your reservation starts.
-This ensures that you can maximize the amount of time you have using the Viam Rover.
+In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer.
+We recommend that you get the Viam SDK set up before your reservation starts.
+This way, you can maximize the amount of time you have using the Viam Rover.
 
 Use whichever programming language you are most comfortable with.
 
@@ -63,7 +63,6 @@ go run square.go
 {{< /tabs >}}
 
 If you successfully configured your robot and it is able to connect to the Viam app, you should see something like this printed to the terminal after running your program.
-
 What you see here is a list of the various resources, components, and services that have been configured to your robot in the Viam app.
 
 <img src="../img/try-viam-sdk/image3.png" alt ="A screenshot from the terminal that prints the output of print(robot.resource_names) when your Viam Rover has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%"><br>
@@ -71,8 +70,7 @@ What you see here is a list of the various resources, components, and services t
 {{% alert title="Tip" color="tip" %}}
 
 If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com).
-
-There, you will find a friendly developer community of people learning how to make robots using Viam.
+There you will find a friendly developer community of people learning how to make robots using Viam.
 
 {{% /alert %}}
 
@@ -163,7 +161,7 @@ func main() {
 {{< /tabs >}}
 
 Now that your Viam Rover base has been initialized, you can write code to drive it in a square.
-Paste this snippet above your `main()` function.
+Paste this snippet above your `main()` function:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -247,7 +245,7 @@ func main() {
 {{% /tab %}}
 {{< /tabs >}}
 
-Now, go to the **CONTROL** tab, and make sure you can monitor the camera feed from your Rover.
+Now, go to the **CONTROL** tab, and make sure you can monitor the camera feed from your rover.
 When you run your code, you should be able to see your robot move in a square.
 
 <img src="../img/try-viam-sdk/image2.gif" alt ="Overhead view of the Viam rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square." width="100%"><br>
@@ -259,7 +257,7 @@ In this tutorial, we showed you how to set up the Viam SDK so that you can contr
 If you're ready for more, try making your rover move in different ways.
 Can you make it move in a circle?
 A figure-eight?
-We would recommend that you check out our tutorial for adding [vision services to a Viam Rover so that it can detect colors](link to Hazal's tutorial when live).
+We recommend that you check out our tutorial for adding [vision services to a Viam Rover so that it can detect colors](link to Hazal's tutorial when live).
 If you are ready to start building your own robots with Viam, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](https://docs.viam.com/tutorials/).
 
 If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
