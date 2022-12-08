@@ -48,7 +48,7 @@ Using any web browser (except Internet Explorer) you can test to see if your Bea
 
 You can also connect to the internet via _internet connection sharing_.
 
-If you are connecting to your BeagleBone with macOS, you can use <a href="https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac" target="_blank">Internet Sharing over USB</a>[^mac] to connect to the internet.
+If you are connecting to your BeagleBone with macOS, you can use <a href="https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac" target="_blank">Internet Sharing over USB</a> to connect to the internet.
 After enabling it on your machine, SSH into your BeagleBone, and run the following: `sudo dhclient usb1`.
 
 For Linux, you can follow this <a href="https://fastbitlab.com/how-to-enable-internet-over-usb/" target="_blank">tutorial for enabling internet over USB</a>.
@@ -135,5 +135,3 @@ Now that you have viam-server up and running on your BeagleBone, you can start c
 We recommend that you try our [LED blink tutorial](/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/) and [configuring a robot with a USB camera](/tutorials/configure-a-camera/) tutorial.
 These are a great place to get started and to ensure that your board is configured correctly.
 You can check out [our complete list of tutorials](https://docs.viam.com/tutorials/) for step-by-step project walk throughs demonstrating robot configuration.
-
-[^mac]: <a href="https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac" target="_blank">macOS: Internet Sharing: htt<span></span>tps://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac</a>
