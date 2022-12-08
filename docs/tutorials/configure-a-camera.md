@@ -10,7 +10,7 @@ description: "Instructions for configuring a webcam."
 ## Introduction
 
 [Cameras](/components/camera/) are a key component of many applications, such as computer vision and SLAM.
-This tutorial shows you how to connect a webcam.
+This tutorial shows you how to configure a webcam (sometimes called a USB camera) as a component of your robot.
 
 ## Connect and configure a webcam
 
