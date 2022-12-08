@@ -120,7 +120,7 @@ sudo apt update && sudo apt dist-upgrade && sudo reboot
 * Follow the instructions for a Linux with an Aarch64 architecture installation.
 * Wait for the Viam app to confirm that you have connected to your BeagleBone.
 
-{{% figure src="../img/beaglebone-install/image2.png" width="50%" alt="Screenshot from the Viam app showing a dialog box with a green checkmark and text that reads, 'Your robot is successfully connected! Proceed to the config tab.'" %}}
+{{% figure src="../img/beaglebone-install/image2.png" alt="Screenshot from the Viam app showing a dialog box with a green checkmark and text that reads, Your robot is successfully connected! Proceed to the config tab." title="BeagleBone has successfully connect to Viam" %}}
 
 {{% alert title="Tip" color="tip" %}}
 
