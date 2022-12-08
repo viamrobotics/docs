@@ -31,7 +31,7 @@ Clicking on a single image or file shows a `Details` pane on the right with capt
 You can filter on data in the left `Filtering` panel.
 For example, if you specify "kitchen1" for Location, "camera" for Component Type, and click the "Search" button, you will see all camera data that has been captured on any robots that belong to your "kitchen1" location.
 
-## Exporting Data
+## Exporting Data from Viam's Data Platform
 
 Below the "Search" button in the `Filtering` panel, you can click the "Copy Export Command" button.
 Make sure you have Go installed, then paste the copied command into your terminal.
