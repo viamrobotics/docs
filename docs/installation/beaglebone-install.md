@@ -135,14 +135,4 @@ We recommend that you try our [LED blink tutorial](/tutorials/make-an-led-blink-
 These are a great place to get started and to ensure that your board is configured correctly.
 You can check out [our complete list of tutorials](https://docs.viam.com/tutorials/) for step-by-step project walk throughs demonstrating robot configuration.
 
-{{% alert title="Note" color="note" %}}
-
-It's best practice to flash the on-board eMMC when running a BeagleBone with Viam in production. If you are using BeagleBone Black, BeagleBone Blue, BeagleBone AI or other board with on-board eMMC flash and you desire to write the image to your on-board eMMC, you'll need to follow the instructions at <a href="http://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Flashing_eMMC" target="_blank">elinux.org/Beagleboard:BeagleBoneBlack_Debian#Flashing_eMMC</a>.
-
-When the flashing is complete, all 4 USRx LEDs will be steady on or off. The latest Debian flasher images automatically power down the board upon completion.
-This can take up to 45 minutes.
-Power-down your board, remove the SD card and apply power again to finish.
-
-{{% /alert %}}
-
 [^mac]: <a href="https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac" target="_blank">macOS: Internet Sharing: htt<span></span>tps://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac</a>
