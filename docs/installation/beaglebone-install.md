@@ -4,7 +4,7 @@ linkTitle: "BeagleBone Setup"
 weight: 20
 type: "docs"
 description: "How to install and run viam-server on a BeagleBone AI-64."
-# SMEs: Joe Karlsson, Shawn, Matt, and Rand
+# SMEs: Joe Karlsson, Shawn, Matt Dannenberg, and Rand
 ---
 
 The <a href="https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/" target="_blank">BeagleBone AI-64</a> from <a href="https://beagleboard.org/" target="_blank">BeagleBoard.org</a> is an open-source computer based on the Texas Instruments TDA4VM processor.
@@ -20,7 +20,7 @@ You will need the following hardware, tools, and software to install Viam on a B
 2. A microSD card
 3. A 5V barrel jack power supply
 4. [Optional] A microSD card reader
-5. [Optional] An ethernet cable or a WIFI card
+5. [Optional] An ethernet cable or a WiFi card
 
 ## BeagleBone AI-64 Installation Guide
 
@@ -33,15 +33,16 @@ If you experience any issues getting Viam working on your BeagleBone, you should
 
 ### Power your BeagleBone
 
-You need a data connection from the BeagleBone to your computer. A USB-C to USB-C from your computer to your BeagleBone is the most convenient method to make the data connection.
+You need a data connection from the BeagleBone to your computer.
+A USB-C to USB-C from your computer to your BeagleBone is the most convenient method to make the data connection.
 Although it is possible to power the BeagleBone via its USB-C connection, we recommend that you use a separate 5VDC power source (e.g., 5VDC charger) via the BeagleBoard's barrel jack as that is more reliable.
-When powered on, you'll see the power (PWR or ON) LED lit steadily. Other LEDs will begin blinking within a minute or so.
+When powered on, you'll see the power (PWR or ON) LED lit steadily.
 Within a minute or so, you should see the other LEDs blinking.
 
 ### Enable a network connection
 
 You will need to connect an ethernet cable to your BeagleBone in order to connect to it.
-If your computer supports mDNS (Multicast DNS), you should see your Beagle at <a href="beaglebone.local" target="_blank">beaglebone.local</a>.
+If your computer supports mDNS (Multicast DNS), you should see your Beagle at <a href="https://beaglebone.local" target="_blank">beaglebone.local</a>.
 Using any web browser (except Internet Explorer) you can test to see if your BeagleBone has successfully connected to the internet.
 
 {{% alert title="Note" color="note" %}}
@@ -55,15 +56,15 @@ For Linux, you can follow this <a href="https://fastbitlab.com/how-to-enable-int
 
 {{% /alert %}}
 
-The below table summarizes the typical addresses and should dynamically update to indicate an active connection.
+The table below summarizes the typical addresses depending on how you are connecting to your BeagleBoard.
 
-|     IP Address      | Connection Type  | Operating System(s)  |  Status   |
-|:------------------: |:---------------: |:-------------------: |:--------: |
-| 192.168.7.2         | USB              | Windows              | Inactive  |
-| 192.168.6.2         | USB              | Mac OS X, Linux      | Inactive  |
-| 192.168.8.1         | WiFi             | all                  | Inactive  |
-| beaglebone.local    | all              | mDNS enabled         | Inactive  |
-| beaglebone-2.local  | all              | mDNS enabled         |           |
+|     IP Address      | Connection Type  | Operating System(s)  |
+|:------------------: |:---------------: |:-------------------: |
+| 192.168.7.2         | USB              | Windows              |
+| 192.168.6.2         | USB              | Mac OS X, Linux      |
+| 192.168.8.1         | WiFi             | all                  |
+| beaglebone.local    | all              | mDNS enabled         |
+| beaglebone-2.local  | all              | mDNS enabled         |
 
 ### SSH into your BeagleBone
 
@@ -117,7 +118,7 @@ sudo apt update && sudo apt dist-upgrade && sudo reboot
 * Go to <a href="https://app.viam.com" target="_blank">app.viam.com</a>
 * Create a new robot
 * Go to the **SETUP** tab
-* Follow the instructions for a Linux with an Aarch64 architecture installation.
+* Follow the instructions for Linux with an Aarch64 architecture installation.
 * Wait for the Viam app to confirm that you have connected to your BeagleBone.
 
 {{% figure src="../img/beaglebone-install/image2.png" alt="Screenshot from the Viam app showing a dialog box with a green checkmark and text that reads, Your robot is successfully connected! Proceed to the config tab." title="BeagleBone has successfully connect to Viam" %}}
