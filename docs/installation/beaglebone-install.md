@@ -12,59 +12,23 @@ In this tutorial, we will show you how to set up your BeagleBone AI-64 with Debi
 
 {{% figure src="../img/beaglebone-install/image4.png" alt="BeagleBone AI-64 front at 45° angle." title="BeagleBone AI-64 front at 45° angle." %}}
 
-{{% alert title="Note" color="note" %}}
-
-You can find an official guide from BeagleBone on getting started at <a href="https://beagleboard.org/getting-started" target="_blank">beagleboard.org/getting-started</a>.
-
-{{% /alert %}}
-
 ## What you'll need for this guide
 
 You will need the following hardware, tools, and software to install Viam on a BeagleBone AI-64:
 
 1. The BeagleBone AI-64
 2. A microSD card
-3. A microSD card reader
-4. A power supply
+3. A 5V barrel jack power supply
+4. [Optional] A microSD card reader
 5. [Optional] An ethernet cable or a WIFI card
 
 ## BeagleBone AI-64 Installation Guide
 
-### Update BeagleBone with the latest software
+{{% alert title="Note" color="note" %}}
 
-Download the latest Debian image from <a href="https://beagleboard.org/latest-images" target="_blank">beagleboard.org/latest-images</a>.
-We recommend that you install the Buster IoT TIDL (without a graphical desktop and with machine learning acceleration tools) for BeagleBone AI.
+Depending on how old of a software image you already have running on your BeagleBone, you might need to update your BeagleBone to the latest software image. If you experience any issues getting Viam working on your BeagleBone, you should consult the BeagleBone Getting Started documentation at <a href="https://beagleboard.org/getting-started" target="_blank">beagleboard.org/getting-started</a> for steps on updating your BeagleBone.
 
-{{% figure src="../img/beaglebone-install/image3.png" width="50%" alt="Screenshot from the beaglebone.org website with a red box highlighting the Buster IoT Debian image." title="Screenshot from the beaglebone.org website." %}}
-
-After downloading this operating system image, you can flash your microSD card with it.
-
-### Install SD card programming utility
-
-You'll need to use a program like <a href="https://www.balena.io/etcher/" target="_blank">balenaEtcher</a>[^etcher] in order to flash your microSD drive.
-
-{{% figure src="../img/beaglebone-install/image5.png" width="50%" alt="Screenshot from the balenaEtcher homepage." title="Screenshot from the balenaEtcher homepage." %}}
-
-### Connect your SD card to your computer
-
-After downloading and installing Etcher plug your microSD reader into your computer and insert the SD card.
-
-### Select the image
-
-Click the "Select image" button and find the image you just downloaded.
-It should have either the `.img` extension or the `.img.xy` extension (Etcher supports using either a compressed or decompressed image).
-
-### Write the image to your SD card
-
-After selecting the image, you may also need to select the microSD card from the drives on your machine.
-Next, select "Flash!" and wait for the process to finish (~2-3 minutes).
-
-{{% figure src="../img/beaglebone-install/image1.png" width="50%" alt="Screenshot from balenaEtcher showing an image and microSD card selected with a big blue button that says, 'Flash!'" title="Screenshot from balenaEtcher showing an image and microSD card selected with a big blue button that says, 'Flash!'" %}}
-
-### Eject the SD card and boot your board off of the SD card
-
-After Etcher is done flashing your microSD card your operating system might prompt you to eject it.
-If it doesn't, go ahead and remove the drive from the SD card reader. Insert the SD card into your (powered-down) board.
+{{% /alert %}}
 
 ### Power your BeagleBone
 
@@ -181,5 +145,4 @@ Power-down your board, remove the SD card and apply power again to finish.
 
 {{% /alert %}}
 
-[^etcher]: <a href="https://www.balena.io/etcher/" target="_blank">BalenaEtcher: htt<span></span>ps://www.balena.io/etcher/</a>
 [^mac]: <a href="https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac" target="_blank">macOS: Internet Sharing: htt<span></span>tps://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac</a>
