@@ -108,7 +108,7 @@ import (
 Next, you will need to initialize your Viam Rover base.
 
 In the main function, after you connect, paste the following, while ensuring that the name matches the name of the Viam Rover base.
-By default, the base name is `viam`.
+By default, the base name is `viam_base`.
 Your main function should look like this:
 
 {{< tabs >}}
