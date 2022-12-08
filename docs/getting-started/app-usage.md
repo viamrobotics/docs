@@ -32,13 +32,12 @@ To create a new organization, click **ORG SETTINGS** and use the **New Organizat
 
 To invite another user to your organization, type their email address into the field in **ORG SETTINGS** and click **INVITE**.
 
-
 {{< figure src="../img/app-usage/invite-user.png" width="400px" alt="Screenshot of the user email address invitation field on the Organization settings page." title="The User Invitation Email Address Field." >}}
 
-You can delete organizations that are *empty of locations* in the **ORG SETTINGS** page.
-If your organization contains any locations, you must delete them before you can delete the organization.
+From the **ORG SETTINGS** page, you can delete any organization that has no locations.
+If organization to delete contains any locations, you must delete them before you can delete the organization.
 
-Click the name of an organization to go to the list of its locations.
+Click an organization name to navigate to its list of locations.
 
 ## Managing locations and sub-locations
 
@@ -66,7 +65,7 @@ If you are a member of more than one organization, the Viam App lists those orga
 
 You can share your location with any listed organization by selecting it from the **Add Organization** drop-down and then clicking, **Add**. The Viam App lists the newly added organization:
 
-{{< figure src="../img/app-usage/after-add-org.png" width="400px" alt="After adding another Org, the Viam App displays it in the Orgs that share this location list." title="The Viam App displays newly added Orgs in the Orgs that share this location list." >}}
+{{< figure src="../img/app-usage/after-add-org.png" width="400px" alt="After adding another Org, the Viam App lists it under the Orgs that share this location list." title="The Viam App displays newly added Orgs under the Orgs that share this location list." >}}
 
 #### Share a Location with Viam Support
 
