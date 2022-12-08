@@ -51,7 +51,7 @@ python3 square.py
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-If using go, you will need to initialize your Golang project, and install the necessary libraries.
+If using Golang, you will need to initialize your project, and install the necessary libraries.
 
 ```bash
 go init mod square
@@ -118,6 +118,7 @@ Your main function should look like this:
 ```python
 async def main():
   robot = await connect()
+
   print('Resources:')
   print(robot.resource_names)
 
@@ -138,10 +139,10 @@ func main() {
     "ADDRESS_FROM_VIAM_APP",
     logger,
     client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-    Type: utils.CredentialsTypeRobotLocationSecret,
-    Payload: "SECRET_FROM_VIAM_APP",
-  })),
-)
+      Type: utils.CredentialsTypeRobotLocationSecret,
+      Payload: "SECRET_FROM_VIAM_APP",
+    })),
+  )
   if err != nil {
     logger.Fatal(err)
   }
