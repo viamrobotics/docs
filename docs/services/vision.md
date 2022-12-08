@@ -177,23 +177,6 @@ The types of the detector supported are:
 Color detector does not detect black, gray and white. It only detects hues found on the color wheel.
 {{% /alert %}}
 
-Note that the **hue_tolerance_pct**, **saturation_cutoff_pct**, and **value_cutoff_pct** attributes refer to hue, saturation, and value (brightness) in the HSV model.
-
-In the detector, **saturation_cutoff_pct** and **value_cutoff_pct** are cutoff thresholds that restrict the saturation and brightness rather than specifying a certain color.
-
-{{% expand "Click to learn more about the HSV Color Model" %}}
-### What is HSV?
-
-HSV is a color model based on hue (color), saturation (the amount of grey in a color), and value (brightness). 
-Humans perceive color more closely to the HSV model than the CMYK (Cyan-Magenta-Yellow-Key) color model, which is most commonly used in commercial printing.
-
-When using the detector's HSV color model, specify hue, saturation, and value as numbers from 0-1. 
-Lower hue numbers require a more exacting color match, while the saturation and value numbers specify the minimum cutoff value below which the detector will ignore a color.
-
-Saturation and value are optional in Viam's implementation of the color detector.
-
-{{% /expand %}}
-<br>
 * **detect_color**: the color to detect in the image, as a string of the form #RRGGBB.
 The color is written as a hexadecimal string prefixed by ‘#’.
 * **hue_tolerance_pct**: A number > 0.0 and <= 1.0 and defines how strictly the detector must match to the hue of the color requested.
@@ -202,6 +185,17 @@ The color is written as a hexadecimal string prefixed by ‘#’.
 * **segment_size_px:** An integer that sets a minimum size (in pixels) of a contiguous color region to be detected, and filters out all other found objects below that size.
 * **saturation_cutoff_pct (optional)**: A number > 0.0 and <= 1.0 which defines the minimum saturation before a color is ignored. Defaults to 0.2.
 * **value_cutoff_pct (optional)**: A number > 0.0 and <= 1.0 which defines the minimum value before a color is ignored. Defaults to 0.3.
+
+{{% alert title="Note" color="note" %}}
+
+**hue_tolerance_pct**, **saturation_cutoff_pct**, and **value_cutoff_pct** refer to hue, saturation, and value (brightness) in the HSV Color Model, but do not set color values in Viam.  
+
+**hue_tolerance_pct** specifies the exactness of the color match to **detect_color**.
+
+The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes specify cutoff thresholds levels for saturation and brightness, rather than specifying color saturation and brightness as they do in the standard HSV Color Model.
+
+{{% /alert %}}
+
 
 #### TFLite detector parameters
 * **model_path**: The path to the .tflite model file, as a string.
