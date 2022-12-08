@@ -9,7 +9,7 @@ description: "Instructions for configuring a webcam."
 
 ## Introduction
 
-[Cameras](/components/camera/) are a key component of many applications, such as computer vision and SLAM, to name two.
+[Cameras](/components/camera/) are a key component of many applications, such as computer vision and SLAM.
 This tutorial shows you how to connect a webcam.
 
 ## Connect and configure a webcam
