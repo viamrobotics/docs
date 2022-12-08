@@ -259,6 +259,8 @@ In this tutorial, we showed you how to set up the Viam SDK so that you can contr
 If you're ready for more, try making your rover move in different ways.
 Can you make it move in a circle?
 A figure-eight?
+You could also write some code to control the other components on the Viam Rover, like the [camera](/components/camera/), or the rover's [motors](/components/motor/).
+You could also control Viam's services, by adding [data management](/services/data-management/) to collect data in real time or [vision services](/services/vision/) to add color detection to your Rover.
 If you are ready to start building your own robots with Viam, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](https://docs.viam.com/tutorials/).
 
 If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
