@@ -293,7 +293,7 @@ or if you have multiple versions of Python installed, try
 ```bash
 python3.9 --version
 ```
-We at Viam are running Python 3.9.2 for this tutorial.</li>
+We at Viam are running Python 3.9.2 (Python 3.8 is also supported) for this tutorial.</li>
 <li class="spacing">Make sure you have the Viam Python SDK installed (<a href="https://python.viam.dev/">click for instructions</a>).</li>
 
 <li class="spacing">Open a file in your favorite IDE and paste in <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">the code from the earlier referenced repo</a>.</li>
