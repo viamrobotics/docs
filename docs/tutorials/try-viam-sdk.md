@@ -82,7 +82,6 @@ Now that you have connected the rover to Viam with the SDK, we can start writing
 You are going to write a program that will move the Viam rover in a square.
 
 {{< tabs >}}
-
 {{% tab name="Python" %}}
 
 The first thing you need to do is import the [base component](https://python.viam.dev/autoapi/viam/components/base/index.html#module-viam.components.base).
@@ -93,7 +92,6 @@ from viam.components.base import Base
 ```
 
 {{% /tab %}}
-
 {{% tab name="Golang" %}}
 
 The first thing you need to do is import the [base component](https://pkg.go.dev/go.viam.com/rdk@v0.2.4/components/base#Base) from the Viam Golang SDK.
@@ -224,7 +222,7 @@ async def main():
   roverBase = Base.from_robot(robot, 'viam_base')
 
   await moveInSquare(roverBase)
-  
+
   await robot.close()
 ```
 
