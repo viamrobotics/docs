@@ -51,7 +51,7 @@ Once your camera is connected, go to the **CONTROL** tab, and click on the "colo
 
 <img src="../img/configure-a-camera/03_camera_tutorial_image.png" width="700px"><br>
 
-## General Camera Troubleshooting
+## General camera troubleshooting
 
 ### Issue: I can't see the live video feed
 
