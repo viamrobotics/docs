@@ -26,7 +26,8 @@ You will need the following hardware, tools, and software to install Viam on a B
 
 {{% alert title="Note" color="note" %}}
 
-Depending on how old of a software image you already have running on your BeagleBone, you might need to update your BeagleBone to the latest software image. If you experience any issues getting Viam working on your BeagleBone, you should consult the BeagleBone Getting Started documentation at <a href="https://beagleboard.org/getting-started" target="_blank">beagleboard.org/getting-started</a> for steps on updating your BeagleBone.
+Depending on how old of a software image you already have running on your BeagleBone, you might need to update your BeagleBone to the latest software image.
+If you experience any issues getting Viam working on your BeagleBone, you should consult the BeagleBone getting started documentation at <a href="https://beagleboard.org/getting-started" target="_blank">beagleboard.org/getting-started</a> for steps on updating your BeagleBone.
 
 {{% /alert %}}
 
