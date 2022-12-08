@@ -219,9 +219,12 @@ Your main function should now look like this:
 ```python
 async def main():
   robot = await connect()
+
   # Get the board component from the Viam Rover
   roverBase = Base.from_robot(robot, 'viam_base')
+
   await moveInSquare(roverBase)
+  
   await robot.close()
 ```
 
