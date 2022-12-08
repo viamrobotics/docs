@@ -52,7 +52,7 @@ Here are details about each of the fields in the camera config:
 }
 ```
 
-Follow the instructions for <a href="https://github.com/viam-labs/camera-calibration" target="_blank">camera calibration</a>[^cc] to calibrate a camera and extract the `intrinsic_parameters` and `distortion_parameters`.
+Follow the <a href="https://github.com/viam-labs/camera-calibration" target="_blank">camera calibration tutorial</a>[^cc] to calibrate a camera and extract the `intrinsic_parameters` and `distortion_parameters`.
 [^cc]: Camera calibration: <a href="https://github.com/viam-labs/camera-calibration" target="_blank">ht<span></span>tps://github.com/viam-labs/camera-calibration</a>
 
 ### Webcam
