@@ -108,6 +108,7 @@ import (
 Next, you will need to initialize your Viam Rover base.
 
 In the main function, after you connect, paste the following, while ensuring that the name matches the name of the Viam Rover base.
+By default, the base name is `viam`.
 Your main function should look like this:
 
 {{< tabs >}}
@@ -120,7 +121,7 @@ async def main():
   print('Resources:')
   print(robot.resource_names)
 
-  # Get the board component from the Viam Rover
+  # Get the base component from the Viam Rover
   roverBase = Base.from_robot(robot, 'viam_base')
 
   await robot.close()
@@ -217,9 +218,10 @@ Your main function should now look like this:
 async def main():
   robot = await connect()
 
-  # Get the board component from the Viam Rover
+  # Get the base component from the Viam Rover
   roverBase = Base.from_robot(robot, 'viam_base')
 
+  # Move the Viam Rover in a square
   await moveInSquare(roverBase)
 
   await robot.close()
@@ -237,7 +239,7 @@ func main() {
     logger.Fatalf("cannot get base: %v", err)
   }
 
-  // Move the base in a square
+  // Move the Viam Rover in a square
   moveInSquare(context.Background(), roverBase)
 }
 ```
