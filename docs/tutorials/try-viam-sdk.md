@@ -6,8 +6,8 @@ type: "docs"
 description: "Try Viam by using the Viam SDK to make your Viam Rover move in a square."
 ---
 
-Hopefully you have had a chance to play around with the Viam Rover a bit, and you are now ready to control the rover using some real code!
-In this tutorial, we will introduce you to the Viam SDK (software development kit) so that you can write code in either Python or Golang to make your Viam Rover move in a square.
+Hopefully you have had a chance to play around with the Viam Rover using the [Try Viam](https://app.viam.com/try) feature, and now you are ready to control your rover with code!
+In this tutorial, we will introduce you to the Viam SDK (software development kit) so that you can write code in either Python or Golang to make your [Viam Rover](https://app.viam.com/try) move in a square.
 This is a great way to get a feel for what it's like to write code to control your robots using Viam.
 
 <img src="../img/try-viam-sdk/image1.gif" alt ="Overhead view of the Viam rover showing it as it drives in a square." width="100%"><br>
