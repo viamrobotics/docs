@@ -59,7 +59,7 @@ Use type `board` and model `pi` if you're using a Raspberry Pi.
 Configure the wheeled base per the [Base Component topic](../../components/base/).
 We named ours `scuttlebase`.
 	
-Configure the [camera](../../components/camera/) as described in this tutorial: [Connect and configure a webcam](../../tutorials/configure-a-camera/#connect-and-configure-a-webcam).
+Configure the [camera](../../components/camera/) as described in this tutorial: [Connect and configure a webcam](../../tutorials/configure-a-camera/).
 
 Your webcam configuration in the Config Builder will look something like this:
 
