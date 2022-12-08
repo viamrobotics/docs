@@ -14,7 +14,9 @@ This is a great way to get a feel for what it's like to write code to control yo
 
 ## How to install a Viam SDK
 
-In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer. We recommend that you get the Viam SDK setup before your reservation starts. This ensures that you can maximize the amount of time you have using the Viam Rover.
+In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer.
+We recommend that you get the Viam SDK setup before your reservation starts.
+This ensures that you can maximize the amount of time you have using the Viam Rover.
 
 Use whichever programming language you are most comfortable with.
 
@@ -161,7 +163,8 @@ func main() {
 {{% /tab %}}
 {{< /tabs >}}
 
-Now that your Viam Rover base has been initialized, you can write code to drive it in a square. Paste this snippet above your `main()` function.
+Now that your Viam Rover base has been initialized, you can write code to drive it in a square.
+Paste this snippet above your `main()` function.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -207,7 +210,8 @@ func moveInSquare(ctx context.Context, base base.Base) {
 {{% /tab %}}
 {{< /tabs >}}
 
-You can run this code by invoking the `moveInSquare()` function below where you initialized your base. Your main function should now look like this:
+You can run this code by invoking the `moveInSquare()` function below where you initialized your base.
+Your main function should now look like this:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -241,7 +245,8 @@ func main() {
 {{% /tab %}}
 {{< /tabs >}}
 
-Now, go to the **CONTROL** tab, and make sure you can monitor the camera feed from your Rover. When you run your code, you should be able to see your robot move in a square.
+Now, go to the **CONTROL** tab, and make sure you can monitor the camera feed from your Rover.
+When you run your code, you should be able to see your robot move in a square.
 
 <img src="../img/try-viam-sdk/image2.gif" alt ="Overhead view of the Viam rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square." width="100%"><br>
 
@@ -249,6 +254,10 @@ Now, go to the **CONTROL** tab, and make sure you can monitor the camera feed fr
 
 In this tutorial, we showed you how to set up the Viam SDK so that you can control the Viam Rover remotely.
 
-If you're ready for more, try making your rover move in different ways. Can you make it move in a circle? A figure-eight? we would recommend that you check out our tutorial for adding [vision services to a Viam Rover so that it can detect colors](link to Hazal's tutorial when live). If you are ready to start building your own robots with Viam, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](https://docs.viam.com/tutorials/).
+If you're ready for more, try making your rover move in different ways.
+Can you make it move in a circle?
+A figure-eight?
+We would recommend that you check out our tutorial for adding [vision services to a Viam Rover so that it can detect colors](link to Hazal's tutorial when live).
+If you are ready to start building your own robots with Viam, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](https://docs.viam.com/tutorials/).
 
 If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
