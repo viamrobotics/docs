@@ -344,7 +344,7 @@ Your Rover Rental Location now contains your robot with the final configuration 
 
 You can write your own code to control the Viam robot.
 Before you get started, you will need to install an SDK locally.
-After adding an SDK, try some SDK coding in our [Webcam Line-Follower](../webcam-line-follower-robot) tutorial.
+After adding one of Viam's SDKs, we recommend that you checkout our [using the Viam SDK to control your Viam Rover tutorial](/tutorials/try-viam-sdk/), where you will learn how to use the Viam SDK to make the Viam Rover drive in a square.
 
 ### How to install a Viam SDK
 
