@@ -18,11 +18,11 @@ All data is uploaded to Viam's cloud platform every minute.
 
 Once data is synchronized to the cloud, it is deleted from the robot, allowing for a data flywheel of continuous capture without running out of memory.
 
-You can find detailed information in the [data management service documentation](../../services/data-management/).
+You can find detailed information in the [data management service](../../services/data-management/) documentation.
 
 ## Viewing Data in Viam's Data Platform
 
-After the data management service synchronizes the data to Viam's data platform, you can view it in the Viam app. Refer to [Data Management](https://app.viam.com/data) for more information.
+After the data management service synchronizes the uploaded data in Viam, you can view it within the Viam app. Refer to [Data Management](https://app.viam.com/data) for further information.
 
 Image (e.g, jpeg and png) data is viewable in the **Images** tab, files and any other binary (e.g, point cloud data) is viewable in the **Files** tab, and tabular sensor (e.g, gantry position) counts are viewable the **Sensors** tab.
 
