@@ -343,7 +343,7 @@ Your Rover Rental Location now contains your robot with the final configuration 
 ## Connecting to a Viam rover with the Viam SDK
 
 You can write your own code to control the Viam robot using Viam's SDKs.
-Learn how to use a Viam SDK to make the Viam Rover drive in a square in ou [using the Viam SDK to control your Viam Rover tutorial](/tutorials/try-viam-sdk/).
+Learn how to use a Viam SDK to make the Viam Rover drive in a square in our [using the Viam SDK to control your Viam Rover tutorial](/tutorials/try-viam-sdk/).
 
 ### How to install a Viam SDK
 
