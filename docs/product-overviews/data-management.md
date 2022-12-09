@@ -22,7 +22,7 @@ You can find detailed information in the [data management service documentation]
 
 ## Viewing Data in Viam's Data Platform
 
-After the data management service synchronizes the uploaded data in Viam, you can view it within the Viam app. Refer to [Data Management](https://app.viam.com/data) for further information.
+After the data management service synchronizes the uploaded data in Viam, you can view it in Viam's [Data](https://app.viam.com/data/view) tab.
 
 Image (e.g, jpeg and png) data is viewable in the **Images** tab, files and any other binary (e.g, point cloud data) is viewable in the **Files** tab, and tabular sensor (e.g, gantry position) counts are viewable the **Sensors** tab.
 
