@@ -22,18 +22,18 @@ You can find detailed information in the [data management service documentation]
 
 ## Viewing Data in Viam's Data Platform
 
-After the data management service synchronizes the uploaded data in Viam, you can view it in Viam's [Data](https://app.viam.com/data/view) tab.
+After the data management service synchronizes the uploaded data in Viam, you can view it in Viam's [DATA](https://app.viam.com/data/view) tab.
 
-Image (e.g, jpeg and png) data is viewable in the **Images** tab, files and any other binary (e.g, point cloud data) is viewable in the **Files** tab, and tabular sensor (e.g, gantry position) counts are viewable the **Sensors** tab.
+Image (e.g, jpeg and png) data is viewable in the **IMAGES** tab, files and any other binary (e.g, point cloud data) is viewable in the **FILES** tab, and tabular sensor (e.g, gantry position) counts are viewable the **SENSOR DATA** tab.
 
 Clicking on a single image or file shows a **Details** panel on the right with capture metadata.
 
-You can filter on data in the left **Filtering** panel.
-For example, if you specify "kitchen1" for Location, "camera" for Component Type, and click **Search**, you will see all camera data that has been captured on any robots that belong to your "kitchen1" location.
+You can filter on data in the left **FILTERING** panel.
+For example, if you specify "kitchen1" for Location, "camera" for Component Type, and click **SEARCH**, you will see all camera data that has been captured on any robots that belong to your "kitchen1" location.
 
 ## Exporting Data from Viam's Data Platform
 
-Below the **Search** button in the **Filtering** panel, you can click **Copy Export Command** to export data.
+Below the **SEARCH** button in the **FILTERING** panel, you can click **COPY EXPORT COMMAND** to export data.
 Make sure you have Go installed, then paste the copied command into your terminal.
 
 While the default command exports data to the directory location specified by the `--destination=.` flag, you can also specify an absolute path directory.
