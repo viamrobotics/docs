@@ -33,12 +33,13 @@ For example, if you specify "kitchen1" for Location, "camera" for Component Type
 
 ## Exporting Data from Viam's Data Platform
 
-Below the **SEARCH** button in the **FILTERING** panel, you can click **COPY EXPORT COMMAND** to export data.
-Make sure you have Go installed, then paste the copied command into your terminal.
+Prior to exporting data for the first time, verify that Go is installed. Then to export data:
 
-While the default command exports data to the directory location specified by the `--destination=.` flag, you can also specify an absolute path directory.
+1. Below the **SEARCH** button in the **FILTERING** panel, click **COPY EXPORT COMMAND** to copy the export command to the clipboard.
 
-The following example downloads all image data from December 2022 to `/tmp/dec22_robot`
+2. Paste the command into your terminal and press Enter.
+While the default command exports data to the directory location specified by the --destination=. flag, you can also specify an absolute directory path.
+The following example downloads all image data from December 2022 to /tmp/dec22_robot
 
 ```bash
 go run go.viam.com/rdk/cli/cmd data
