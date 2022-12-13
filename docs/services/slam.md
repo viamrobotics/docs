@@ -78,9 +78,9 @@ The following is an example configuration for running ORB-SLAM3 in live `rgbd` m
 "services": [
   {
     "name": "testorb",
+    "model": "orbslamv3",
     "type": "slam",
     "attributes": {
-      "algorithm": "orbslamv3",
       "data_dir": "<path_to_your_data_folder>",
       "sensors": ["color", "depth"],
       "map_rate_sec": 60,
@@ -100,9 +100,9 @@ Here is an example configuration:
 "services": [
   {
     "name": "testorb",
+    "model": "orbslamv3",
     "type": "slam",
     "attributes": {
-      "algorithm": "orbslamv3",
       "data_dir": "<path_to_your_data_folder>",
       "sensors": [],
       "map_rate_sec": 120,
@@ -149,7 +149,6 @@ You can find more information on the `mode` in the description of the integrated
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `algorithm` | string | Name of the SLAM library to be used. Currently (10 Oct 2022) supported option: `orbslamv3`. |
 | `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. |
 | `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in live mode. If the array is empty, SLAM runs in offline mode. |
 
@@ -210,9 +209,9 @@ In this example, `mono` is selected with one camera stream named `color`:
 "services": [
   {
     "name": "testorb",
+    "model": "orbslamv3",
     "type": "slam",
     "attributes": {
-      "algorithm": "orbslamv3",
       "data_dir": "<path_to_your_data_folder>",
       "sensors": ["color"],
       "map_rate_sec": 60,
