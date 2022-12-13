@@ -173,11 +173,11 @@ From the **CONFIG** tab:
 1. Give your base a name.
 1. Enter "base" in **Type**.
 1. Enter "wheeled" in **Model**.
-1. From **Depends On**, select three items: "left," "right," and "local."
+1. In the **Right Motors** drop-down select "right."
+1. In the **Left Motors** drop-down select "left."
+1. From **Depends On**, select "local."
 1. Enter "400" in <code>width_mm</code> (measured between the midpoints of the wheels).
 1. Enter "250" in <code>wheel_circumference_mm</code>.
-1. Enter "left" in <code>"left"</code>
-1. Enter "right" in <code>"right"</code>
 
     The <code>left</code> and <code>right</code> attributes represent the motors corresponding to the left and right sides of the rover.
     Since we named the motors "left" and "right", you can simply add “left” and “right” between the brackets for your set of motors, respectively.
