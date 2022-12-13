@@ -5,5 +5,5 @@ weight: 100
 simple_list: true
 draft: true
 type: docs
-description: "This section provides links to all resources for the rover manufactured by Viam."
+description: "This section provides links to resources for the rover manufactured by Viam."
 ---
