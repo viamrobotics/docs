@@ -169,8 +169,7 @@ Don't worry if your motor panels are not adjacent.
 It's time to configure a [base component](/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
 Configuring a base component will give you a nice UI for moving the rover around.
 
-From the Config screen:
-
+From the **CONFIG** tab:
 1. Give your base a name.
 1. Enter "base" in **Type**.
 1. Enter "wheeled" in **Model**.
@@ -239,9 +238,7 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle
 
 ## Documents referenced
 
-
-* [**Installing Raspian on the Raspberry Pi**](/installation/rpi-setup/#installing-raspian-on-the-raspberry-pi)
-
+* [Installing Raspian on the Raspberry Pi](/installation/rpi-setup/#installing-raspian-on-the-raspberry-pi)
 
 * [Color Detection with SCUTTLE Robot on Viam](../color-detection-scuttle/)
 
