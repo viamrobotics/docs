@@ -19,7 +19,7 @@ This tutorial requires the following hardware:
 ### Identifying the architecture of your Raspberry Pi
 
 Before installing the Viam [RDK](/appendix/glossary/#rdk_anchor), you will need a Raspberry Pi running a 64-bit Linux distribution.
-If you do not have Linux installed on your Raspberry Pi, skip ahead to [Installing Raspian on the Raspberry Pi](#installing-raspian-on-the-raspberry-pi).
+If you do not have Linux installed on your Raspberry Pi, skip ahead to [Installing Raspberry Pi OS](#installing-raspberry-pi-os).
 If you already have a Raspberry Pi with Linux installed on it, check if the Linux installation on your Raspberry Pi is 64-bit.
 First, `ssh` into your Pi and then run `lscpu`.
 Example output:
@@ -27,9 +27,9 @@ Example output:
 ![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspbery Pi. A red box highlights the command and the "Architecture: aarch64.](../../installation/img/rpi-setup/lscpu-output.png)
 
 If the value of “Architecture: _'xxxxxx'_” ends in "64", you can skip ahead to [installing viam-server](#follow-the-steps-on-the-setup-tab).
-Otherwise continue to [Installing Raspian on the Raspberry Pi](#installing-raspian-on-the-raspberry-pi).
+Otherwise continue to [Installing Raspberry Pi OS](#installing-raspberry-pi-os).
 
-## Installing Raspian on the Raspberry Pi
+## Installing Raspberry Pi OS
 
 A Raspberry Pi boots from a microSD card.
 The first step is to set up a Linux installation on that microSD card.

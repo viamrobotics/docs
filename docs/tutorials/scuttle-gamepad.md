@@ -5,13 +5,13 @@ weight: 20
 type: "docs"
 description: "Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad"
 ---
-The purpose of this tutorial is to add a Bluetooth gamepad input controller to a SCUTTLE Robot being controlled with a Raspberry Pi having the Raspian OS 64-bit Lite and Viam Server installed.
-Now you can try to drive the SCUTTLE around like an RC car using the EasySMX ESM-9101 Wireless Controller.
+The purpose of this tutorial is to add a Bluetooth gamepad input controller to a SCUTTLE Robot.
+On completing this tutorial you'll be able to drive the SCUTTLE around like an RC car using the EasySMX ESM-9101 Wireless Controller.
 
 ## Prerequisites
 
 * A pre-configured and controllable (via keyboard on the Viam app ([https://app.viam.com](https://app.viam.com)) Scuttle Robot.
-Refer to the [Setting up a Scuttle with Viam](../scuttlebot/) tutorial, if necessary.
+Refer to the [Setting up a SCUTTLE with Viam](../scuttlebot/) tutorial, if necessary.
 
 * Connection to the Viam app
 * EasySMX ESM-9101 Wireless Controller
