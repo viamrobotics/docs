@@ -104,7 +104,8 @@ Attribute Guides always prefix required attributes with an asterisk.
 The camera's name in the config is “cam”, so we will use that. 
 The `Type` will be “detections”. 
 In **Attributes**, you must add a `detector_name`. 
-We named ours “my_color_detector”. Next, you must add the `confidence_threshold`. 
+We named ours “my_color_detector”.
+Next, you must add the `confidence_threshold`. 
 We picked 0.3 which means if the detection service is 30% confident of the color, it will detect it. 
 
 {{< figure src="../img/try-viam-color-detection/detectioncam-component-panel.png" width="700px" alt="Screenshot from the Viam app showing the detectionCam component section. It contains the “Attributes” section with a skeleton configuration, including source, pipeline, type, and attributes. The panel has an Attributes section populated with transform camera component attributes. The are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon." title="The detectionCam component displayed on the Camera Component Panel." >}}
