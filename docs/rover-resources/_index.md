@@ -5,5 +5,5 @@ weight: 100
 simple_list: true
 draft: true
 type: docs
-description: "This section provides links to resources for the Viam Rover."
+description: "This section provides links to all Viam Rover Resources."
 ---
