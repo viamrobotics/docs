@@ -26,7 +26,7 @@ In Viam App, head to the **CONFIG** tab, and click on **SERVICES**.
 Scroll down to the **Create Service** section. 
 
 1. Enter “vision” in **Type** from the drop-down. 
-2. Enter “vision” in **Name.**
+2. Enter “vision” in **Name**.
 3. Click **Create Service**.
 
 {{< figure src="../img/try-viam-color-detection/create-service.png" width="400px" alt="Screenshot from the Viam app's Create Service tab. It lists the type as “vision” and name as “vision”, with a Create Service button on the right." title="Create Service pane from CONFIG -> SERVICES" >}}
