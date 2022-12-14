@@ -54,7 +54,7 @@ go run go.viam.com/rdk/cli/cmd data
 
 Running the data command with the arguments provided above would download data to `/tmp/dec22_robot/data` and capture metadata to `/tmp/dec22_robot/metadata`.
 
-Note: before you run an export command for the first time, you must authenticate to app.viam.com using the following command:
+  Note: before you run an export command for the first time, you must authenticate to app.viam.com using the following command:
 
 ```bash
 go run go.viam.com/rdk/cli/cmd auth
