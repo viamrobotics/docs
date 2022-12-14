@@ -38,8 +38,8 @@ Prior to exporting data for the first time, verify that Go is installed. Then to
 1. Below the **SEARCH** button in the **FILTERING** panel, click **COPY EXPORT COMMAND** to copy the export command to the clipboard.
 
 2. Paste the command into your terminal and press Enter.
-While the default command exports data to the directory location specified by the --destination=. flag, you can also specify an absolute directory path.
-The following example downloads all image data from December 2022 to /tmp/dec22_robot
+While the default command exports data to the directory location specified by the `--destination=.` flag, you can also specify an absolute directory path.
+The following example downloads all image data from December 2022 to `/tmp/dec22_robot`
 
 ```bash
 go run go.viam.com/rdk/cli/cmd data
@@ -52,7 +52,7 @@ go run go.viam.com/rdk/cli/cmd data
 --destination=/tmp/dec22_robot
 ```
 
-Running the data command with the arguments provided above would download data to `/tmp/dec22_robot/data` and capture metadata to `/tmp/dec22_robot/metadata`.
+Running the `data` command with the arguments provided above would download data to `/tmp/dec22_robot/data` and capture metadata to `/tmp/dec22_robot/metadata`.
 
 Note: before you run an export command for the first time, you must authenticate to app.viam.com using the following command:
 
