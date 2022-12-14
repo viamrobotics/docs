@@ -18,7 +18,7 @@ If you received an invitation from an existing organization, use the email link 
 
 If you're signing up without an invitation link, go to [app.viam.com](https://app.viam.com/) and create an account with your Google account or an email and password of your choice.
 
-## Inviting Users to your Organization
+## Working with organizations
 
 Click the drop down in the upper right corner of the page.
 You should see your name, email, and a list of organizations you belong to.
@@ -28,16 +28,23 @@ You should see your name, email, and a list of organizations you belong to.
 If you used an email invite to sign up, the organization that invited you should be listed here.
 You also have a personal organization for projects not associated with other organizations.
 
+Click an organization name to navigate to its list of locations.
+
+### Creating a new organization
+
 To create a new organization, click **ORG SETTINGS** and use the **New Organization** field in the upper left of the page.
+
+### Inviting users to your organization
 
 To invite another user to your organization, type their email address into the field in **ORG SETTINGS** and click **INVITE**.
 
-{{< figure src="../img/app-usage/invite-user.png" width="400px" alt="Screenshot of the user email address invitation field on the Organization settings page." title="The User Invitation Email Address Field." >}}
+{{< figure src="../img/app-usage/invite-user.png" width="400px" alt="Screenshot of the user email address invitation field on the Organization settings page." title="The user invitation email address field." >}}
+
+### Deleting an organization
 
 From the **ORG SETTINGS** page, you can delete any organization that has no locations.
 If organization to delete contains any locations, you must delete them before you can delete the organization.
 
-Click an organization name to navigate to its list of locations.
 
 ## Managing locations and sub-locations
 
@@ -53,28 +60,28 @@ Click a location's name to display the list of robots associated with that locat
 You can delete a location that is *empty of robots* by clicking the trash can icon next to the location name at the top of the page for that location.
 The icon will not appear if there are any robots in the location.
 
-### Sharing a Location
+### Sharing a location
 
 The Viam app allows you to share a location with any organization of which you are a member, as well as with the Viam Support Team.
 
-#### Sharing with a different organization
-
+#### Sharing a location with a different organization
 
 If you are a member of more than one organization, the Viam App lists those organizations in the **Add Organization** drop-down:
 
 {{< figure src="../img/app-usage/add-org-drop-down.png" width="400px" alt="The Add Organization drop-down displaying an organization where the user is also a member." title="The Add Organization drop-down displaying an organization where the user is also a member." >}}
 
-You can share your location with any listed organization by selecting it from the **Add Organization** drop-down and then clicking, **Add**. The Viam App lists the newly added organization:
+You can share your location with any listed organization by selecting it from the **Add Organization** drop-down and then clicking, **Add**. 
+The Viam App lists the newly added organization:
 
 {{< figure src="../img/app-usage/after-add-org.png" width="400px" alt="After adding another Org, the Viam App lists it under the Orgs that share this location list." title="The Viam App displays newly added Orgs under the Orgs that share this location list." >}}
 
-#### Share a Location with Viam Support
+#### Share a location with Viam Support
 
 You must share your Location with the Viam Support team when requesting support. To do so, navigate to the proper Location and click, **ADD VIAM SUPPORT**. The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from your Location.
 
-#### Removing an Organization from a shared Location
+#### Removing an organization from a shared location
 
-You can remove any Organization except the parent organization and Viam Support from the shared list by simply clicking the "X" to the right of its listing. 
+You can remove any organization except the parent organization and Viam Support from the shared list by simply clicking the "X" to the right of its listing. 
 
 ### Sub-locations
 
@@ -103,7 +110,7 @@ You can delete a robot by checking the **Sure?** box in the lower left of the ro
 
 {{< figure src="../img/app-usage/delete.png" width="400px" alt="Screenshot of the DELETE ROBOT button and the confirmation checkbox (Sure?) next to it." title="DELETE ROBOT button and confirmation checkbox." >}}
 
-Click the name of a robot to go to that robot's page, where you'll find a variety of powerful tools for working with your robot.
+Click the name of a robot to go to that robot's page, where you'll find a variety of tools for working with your robot.
 
 ## Navigating the robot page
 
