@@ -110,7 +110,7 @@ We picked 0.3 which means if the detection service is 30% confident of the color
 
 {{< figure src="../img/try-viam-color-detection/detectioncam-component-panel.png" width="700px" alt="Screenshot from the Viam app showing the detectionCam component section. It contains the “Attributes” section with a skeleton configuration, including source, pipeline, type, and attributes. The panel has an Attributes section populated with transform camera component attributes. The are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon." title="The detectionCam component displayed on the Camera Component Panel." >}}
 
-JSON configuration is here if you wish to copy paste it:
+JSON configuration is here if you wish to copy paste it into your Viam rover's config:
 
 ```json-viam
 {
