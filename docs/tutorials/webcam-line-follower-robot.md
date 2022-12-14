@@ -59,8 +59,7 @@ Use type `board` and model `pi` if you're using a Raspberry Pi.
 Configure the wheeled base per the [Base Component topic](../../components/base/).
 We named ours `scuttlebase`.
 	
-Configure the [camera](../../components/camera/) as described in this tutorial: [Connect and configure a webcam](../../tutorials/configure-a-camera/#connect-and-configure-a-webcam).
-You can skip the section on camera calibration since it is not needed for the line follower.
+Configure the [camera](../../components/camera/) as described in this tutorial: [Connect and configure a webcam](../../tutorials/configure-a-camera/).
 
 Your webcam configuration in the Config Builder will look something like this:
 
@@ -293,7 +292,12 @@ or if you have multiple versions of Python installed, try
 ```bash
 python3.9 --version
 ```
-We at Viam are running Python 3.9.2 for this tutorial.</li>
+or
+
+```bash
+python3.8 --version
+```
+We at Viam are running Python 3.9.2 (Python 3.8 is also supported) for this tutorial.</li>
 <li class="spacing">Make sure you have the Viam Python SDK installed (<a href="https://python.viam.dev/">click for instructions</a>).</li>
 
 <li class="spacing">Open a file in your favorite IDE and paste in <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">the code from the earlier referenced repo</a>.</li>
@@ -321,7 +325,7 @@ Type <strong>Y</strong> to confirm file modification, then press enter to finish
 </ol></ol>
 
 **References**:
-* Line Follower Code on GitHub: <a href="" target="_blank">ht<span><span>tps://github.com/viam-labs/line-follower/blob/main/rgb_follower.py</a>
+* Line Follower Code on GitHub: <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">ht<span><span>tps://github.com/viam-labs/line-follower/blob/main/rgb_follower.py</a>
 * Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span><span>tps://mutagen.io/documentation/introduction/getting-started</a>
 
 ## Controlling your rover with Viam
@@ -355,7 +359,7 @@ Remember to delete the angle brackets!</li>
 python ~/myCode/rgb_follower.py
 ```
 Be sure to replace <span class="file">~/myCode</span> with the path to the directory where you saved your Python script, and <span class="file">rgb_follower.py</span> with whatever you named your Python script file.
-You may need to call “python3.9” instead of “python,” depending on how you configured your Pi.</li>
+You may need to call “python3.9” or "python3.8" instead of “python,” depending on how you configured your Pi.</li>
 </ol></ol>
 The robot should continue moving along the line until it no longer sees the color of your detector except at the back of the frame, at which point it should stop moving and the code will terminate.
 

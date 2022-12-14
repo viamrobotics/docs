@@ -186,6 +186,17 @@ The color is written as a hexadecimal string prefixed by ‘#’.
 * **saturation_cutoff_pct (optional)**: A number > 0.0 and <= 1.0 which defines the minimum saturation before a color is ignored. Defaults to 0.2.
 * **value_cutoff_pct (optional)**: A number > 0.0 and <= 1.0 which defines the minimum value before a color is ignored. Defaults to 0.3.
 
+{{% alert title="Note" color="note" %}}
+
+**hue_tolerance_pct**, **saturation_cutoff_pct**, and **value_cutoff_pct** refer to hue, saturation, and value (brightness) in the HSV Color Model, but do not set color values in Viam.  
+
+**hue_tolerance_pct** specifies the exactness of the color match to **detect_color**.
+
+The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes specify cutoff thresholds levels for saturation and brightness, rather than specifying color saturation and brightness as they do in the standard HSV Color Model.
+
+{{% /alert %}}
+
+
 #### TFLite detector parameters
 * **model_path**: The path to the .tflite model file, as a string.
 This attribute is absolutely required.

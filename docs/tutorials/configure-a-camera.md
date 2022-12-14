@@ -9,8 +9,8 @@ description: "Instructions for configuring a webcam."
 
 ## Introduction
 
-[Cameras](/components/camera/) are a key component of many applications such as computer vision and SLAM, to name a few.
-This tutorial shows you how to connect a webcam.
+[Cameras](/components/camera/) are a key component of many applications, such as computer vision and SLAM.
+This tutorial shows you how to configure a webcam (sometimes called a USB camera) as a component of your robot.
 
 ## Connect and configure a webcam
 
@@ -51,8 +51,8 @@ Once your camera is connected, go to the **CONTROL** tab, and click on the "colo
 
 <img src="../img/configure-a-camera/03_camera_tutorial_image.png" width="700px"><br>
 
-## General Camera Troubleshooting
 
+## General camera troubleshooting
 
 ### Issue: I can't see the live video feed
 
