@@ -9,7 +9,8 @@ description: "Instructions for using the Vision Service in the Viam app to detec
 ## Introduction
 
 This tutorial will guide you through using a [Try Viam](https://app.viam.com/try) Rover rental to detect the color red by adding a color detector to Viam's [vision service](/services/vision/). 
-The only prerequisite is to have your rental rover connected and ready to use. We already added different colors around the rink on each wall.  
+The only prerequisite is to have your rental rover connected and ready to use.
+We already added different colors around the rink on each wall.  
 
 But why should I use this service, one might ask? 
 The vision service enables the robot to use its on-board cameras to intelligently see and interpret the world around it. 
