@@ -21,7 +21,7 @@ Now let’s dive in.
 
 ## Adding the vision service
 
-Let’s start with adding our vision service. 
+Let’s start with adding the vision service to your rover.
 In Viam App, head to the **CONFIG** tab, and click on **SERVICES**. 
 Scroll down to the **Create Service** section. 
 
