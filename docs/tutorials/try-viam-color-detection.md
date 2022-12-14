@@ -5,6 +5,7 @@ weight: 1
 type: "docs"
 description: "Instructions for for using the vision service in Viam app to detect a color with the Viam Rover."
 ---
+
 ## Introduction
 
 This tutorial will guide you through using a Try Viam Rover rental to detect the color red by adding a detector to our vision service. 
