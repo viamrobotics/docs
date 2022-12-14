@@ -57,7 +57,8 @@ The icon will not appear if there are any robots in the location.
 
 The Viam app allows you to share a location with any organization of which you are a member, as well as with the Viam Support Team.
 
-#### Sharing with an different Organization
+#### Sharing with a different organization
+
 
 If you are a member of more than one organization, the Viam App lists those organizations in the **Add Organization** drop-down:
 
