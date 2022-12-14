@@ -39,7 +39,7 @@ Prior to exporting data for the first time, verify that Go is installed. Then to
 
 2. Paste the command into your terminal and press Enter.
 While the default command exports data to the directory location specified by the `--destination=.` flag, you can also specify an absolute directory path.
-The following example downloads all image data from December 2022 to `/tmp/dec22_robot`
+The following example downloads all image data from December 2022 to `/tmp/dec22_robot`.
 
 ```bash
 go run go.viam.com/rdk/cli/cmd data
