@@ -7,9 +7,9 @@ description: "Instructions for configuring a SCUTTLE Robot on the Viam platform.
 ---
 ## Requirements
 
-* A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
+* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the viam-server installed.
 
-Refer to [Installing Raspian on the Raspberry Pi](/installation/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
+Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/rpi-setup/#installing-raspberry-pi-os), if necessary.
 
 * <a href="https://www.scuttlerobot.org/shop/" target="_blank">A SCUTTLE Robot</a>[^asr]
 * A USB camera (webcam)
@@ -238,7 +238,7 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle
 
 ## Documents referenced
 
-* [Installing Raspian on the Raspberry Pi](/installation/rpi-setup/#installing-raspian-on-the-raspberry-pi)
+* [Installing Raspberry Pi OS on the Raspberry Pi](/installation/rpi-setup/#installing-raspberry-pi-os)
 
 * [Color Detection with SCUTTLE Robot on Viam](../color-detection-scuttle/)
 

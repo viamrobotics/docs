@@ -26,8 +26,8 @@ The webcam can be installed on a robot, or just be held by hand.
 
 ## Requirements
 
-* A Raspberry Pi with Raspian OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspian on the Raspberry Pi](../../installation/rpi-setup/#installing-raspian-on-the-raspberry-pi), if necessary.
+* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the viam-server installed.
+Refer to [Installing Raspberry Pi OS on the Raspberry Pi](../../installation/rpi-setup/#installing-raspberry-pi-os), if necessary.
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
 ## Setup
