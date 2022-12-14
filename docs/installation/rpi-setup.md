@@ -32,7 +32,7 @@ Otherwise continue to [Installing Raspberry Pi OS](#installing-raspberry-pi-os).
 ## Installing Raspberry Pi OS
 
 A Raspberry Pi boots from a microSD card.
-The first step is to set up a Linux installation on that microSD card.
+The first step is to set up a Linux installation (in this case Raspberry Pi OS, formerly called Raspbian) on that microSD card.
 Connect the microSD card to your computer.
 
 You will be using the Raspberry Pi Imager to flash the microSD card.
