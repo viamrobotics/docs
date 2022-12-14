@@ -145,8 +145,6 @@ We recommend that you test the functionality of Viam's vision services and camer
 If you scroll down in the  **CONTROL** tab, you will see the detectionCam's own section. You can also view its stream there.
 
 {{< figure src="../img/try-viam-color-detection/detectioncam-comp-stream.png" width="600px" alt="Screenshot from the Viam app showing the detectionCam component panel. The Hide Camera button is green. The Refresh Frequency selector is set to live, and the Export Frequency button is beside it on the right. The detectionCam stream is visible and displays a red square surrounded by a red a color detection box labeled Rose:1.00." title="detectionCam stream displaying a color detection." >}}
-
-
 ## Summary
 
 Congratulations! 
