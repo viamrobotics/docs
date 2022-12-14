@@ -77,7 +77,10 @@ The Viam App lists the newly added organization:
 
 #### Share a location with Viam Support
 
-You must share your Location with the Viam Support team when requesting support. To do so, navigate to the proper Location and click, **ADD VIAM SUPPORT**. The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from your Location.
+You must share your Location with the Viam Support team when requesting support.
+To do so, navigate to the proper Location and click, **ADD VIAM SUPPORT**.
+The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from your Location.
+
 
 #### Removing an organization from a shared location
 
