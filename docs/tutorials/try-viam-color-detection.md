@@ -138,7 +138,7 @@ Each time your camera sees the color, it will draw a red rectangle around it lab
 
 {{< figure src="../img/try-viam-color-detection/detected-example.png" width="700px" alt="." title="Base component panel displaying an example color detection.sss" >}}
 
-You can test adding your other camera, cam, to compare it's view with the detection camera's view. 
+We recommend that you test the functionality of Viam's vision services and cameras by adding your other camera, cam, to compare its view with the detection camera's view. 
 
 {{< figure src="../img/try-viam-color-detection/both-cams.png" width="700px" alt="Screenshot from the Viam app showing the base component panel with the keyboard buttons W, A, S, D. The Keyboard enabled button is green (enabled). The cam stream is on the right, with the detectionCam stream displayed below it. The displays have identical views. The detectionCam stream displays an overlay of a red color detection box with the label,“rose:1.00” surrounding the red square." title="Base component panel displaying the cam and detectionCam streams for comparison." >}}
 
