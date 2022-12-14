@@ -1,19 +1,18 @@
 ---
 title: "How to Configure a Camera"
-linkTitle: "Configure a Camera"
+linkTitle: "Configure a Camera" 
 weight: 45
 type: "docs"
 draft: false
-description: "Instructions for configuring and calibrating cameras."
+description: "Instructions for configuring a webcam."
 ---
 
 ## Introduction
 
-[Cameras](/components/camera/) are a key component of many applications such as computer vision and SLAM, to name a few.
-This tutorial shows you how to connect a camera and how to calibrate it.
+[Cameras](/components/camera/) are a key component of many applications, such as computer vision and SLAM.
+This tutorial shows you how to configure a webcam (sometimes called a USB camera) as a component of your robot.
 
 ## Connect and configure a webcam
-
 
 First, you will need to add a webcam to your configuration. In your web browser, navigate to the robot you set up on the Viam app ([https://app.viam.com](https://app.viam.com)).
 
@@ -52,76 +51,8 @@ Once your camera is connected, go to the **CONTROL** tab, and click on the "colo
 
 <img src="../img/configure-a-camera/03_camera_tutorial_image.png" width="700px"><br>
 
-## Calibrate a camera
 
-To calibrate a camera, follow the instructions to obtain the `intrinsic_parameters` and `distortion_parameters` as described in the [camera documentation](../../components/camera#camera-models) and this [camera calibration repository](https://github.com/viam-labs/camera-calibration).
-
-You will need to print out the checkerboard and take images of the checkerboard from various angles by clicking the "Export Screenshot" button.  
-
-After running the calibration script from the [camera calibration repository](https://github.com/viam-labs/camera-calibration), you'll get a print out of the `intrinsic_parameters` and `distortion_parameters`. We will use the values we've obtained as an example moving forward:
-
-```json-viam
-"intrinsic_parameters": {
-    "fy": 940.2928257873841,
-    "height_px": 480,
-    "ppx": 320.6075282958033,
-    "ppy": 239.14408757087756,
-    "width_px": 640,
-    "fx": 939.2693584627577
-},
-"distortion_parameters": {
-    "rk2": 0.8002516496932317,
-    "rk3": -5.408034254951954,
-    "tp1": -0.000008996658362365533,
-    "tp2": -0.002828504714921335,
-    "rk1": 0.046535971648456166
-}
-```
-
-Copy/paste the parameters you obtained into your camera config by going into the **CONFIG** tab and clicking "Raw JSON".
-
-<img src="../img/configure-a-camera/04_camera_tutorial_copy_paste.png" width="800px"><br>
-
-For us, the finished config now looks like this:
-
-```json-viam
-{
-  "components": [
-    {
-      "name": "color",
-      "type": "camera",
-      "model": "webcam",
-      "attributes": {
-        "intrinsic_parameters": {
-          "fy": 940.2928257873841,
-          "height_px": 480,
-          "ppx": 320.6075282958033,
-          "ppy": 239.14408757087756,
-          "width_px": 640,
-          "fx": 939.2693584627577
-        },
-        "distortion_parameters": {
-          "rk2": 0.8002516496932317,
-          "rk3": -5.408034254951954,
-          "tp1": -0.000008996658362365533,
-          "tp2": -0.002828504714921335,
-          "rk1": 0.046535971648456166
-        },
-        "stream": "",
-        "debug": false,
-        "format": "",
-        "video_path": "video0",
-        "width_px": 0,
-        "height_px": 0
-      },
-      "depends_on": []
-    }
-  ]
-}
-```
-
-## Troubleshooting
-
+## General camera troubleshooting
 
 ### Issue: I can't see the live video feed
 

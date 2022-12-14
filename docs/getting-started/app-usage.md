@@ -1,7 +1,7 @@
 --- 
 title: "Getting Started with the Viam App"
 linkTitle: "Using the Viam App"
-weight: 12
+weight: 2
 type: "docs"
 description: "A guide to getting started with app.viam.com."
 ---

@@ -42,7 +42,7 @@ Don't hesitate to create a pull request. Every contribution is appreciated.
 
 1. Fork the official repo into your personal GitHub.
 2. The new forked copy is cloned to your local system.
-3. Git remote path for the 'official' repository is added to the local clone: ```git remote add upstream git@github.com:viamrobotics/tutorials-and-docs.git```
+3. Git remote path for the 'official' repository is added to the local clone: ```git remote add upstream git@github.com:viamrobotics/docs.git```
 
 When you are ready to contribute changes to the docs:
 
