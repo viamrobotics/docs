@@ -81,7 +81,6 @@ You must share your Location with the Viam Support team when requesting support.
 To do so, navigate to the proper Location and click, **ADD VIAM SUPPORT**.
 The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from your Location.
 
-
 #### Removing an organization from a shared location
 
 You can remove any organization except the parent organization and Viam Support from the shared list by simply clicking the "X" to the right of its listing. 
