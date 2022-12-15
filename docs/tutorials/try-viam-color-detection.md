@@ -96,7 +96,7 @@ Scroll down to see the **Create Component** section in **COMPONENTS** tab of the
 After creating the component, Viam automatically generates an empty **Attributes** section for the detectionCam's component panel. 
 The panel's **Attribute Guide** section displays the available attributes for the selected component. 
 
-{{< figure src="../img/try-viam-color-detection/empty-detectioncam-component-panel.png" width="700px" alt="Screenshot from the Viam app showing the detectionCam component section. The “Attributes” section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon." title="An unpopulated Create Component panel for a cam component." >}}
+{{< figure src="../img/try-viam-color-detection/empty-detectioncam-component-panel.png" width="700px" alt="Screenshot from the Viam app showing the detectionCam component section. The “Attributes” section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon." title="An unpopulated Create Component panel for a camera component." >}}
 
 {{% alert title="Note" color="note" %}}
 Attribute Guides always prefix required attributes with an asterisk.
