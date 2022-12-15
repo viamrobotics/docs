@@ -154,15 +154,21 @@ However, a user’s own implementation of `MoveToPosition` may or may not make u
 
 ### GetPose
 
-The `GetPose` method is an endpoint through which a user can query the location of a robot's component within its frame system.  The return type of this function is a `PoseInFrame` describing the pose of the specified component with respect to the specified destination frame.  The `supplemental_transforms` argument can be used to augment the robot's existing frame system with supplemental frames. 
+The `GetPose` method is an endpoint through which a user can query the location of a robot's component within its frame system.
+The return type of this function is a `PoseInFrame` describing the pose of the specified component with respect to the specified destination frame.
+The `supplemental_transforms` argument can be used to augment the robot's existing frame system with supplemental frames. 
 
 #### Parameters
 
-**`component_name`**: This is the name of the piece of the robot to whose pose will be returned. The specified component must have an associated frame within the robot's frame system, or this frame must be added through the `supplemental_transforms` argument.
+**`component_name`**: This is the name of the piece of the robot whose pose will be returned.
+The specified component must have an associated frame within the robot's frame system, or this frame must be added through the `supplemental_transforms` argument.
 
-**`destination_frame`**: The name of the frame in which to report the component's pose with respect to.  This frame must either exist in the robot's frame system, or this frame must be added through the `supplemental_transforms` argument.
+**`destination_frame`**: The name of the frame with respect to which the component's pose will be reported.
+This frame must either exist in the robot's frame system, or this frame must be added through the `supplemental_transforms` argument.
 
-**`supplemental_transforms`**: This argument accepts an array of `Transform` structures.  A `Transform` represents an additional frame which is added to the robot's frame system.  It consists of the following fields
+**`supplemental_transforms`**: This argument accepts an array of `Transform` structures.
+A `Transform` represents an additional frame which is added to the robot's frame system.
+It consists of the following fields:
   
   - `reference_frame`: This field specifies the name of the frame which will be added to the frame system
   - `pose_in_observer_frame`: This field provides the relationship between the frame being added and another frame
@@ -170,7 +176,8 @@ The `GetPose` method is an endpoint through which a user can query the location 
 
 When `supplemental_transforms` are provided, a frame system will be created within the context of the `GetPose` function. This new frame system will build off the robot's frame system and will incorporate the `Transforms` provided.  If the result of adding the `Transforms` will result in a disconnected frame system an error will be thrown.
 
-**`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they like to pass to their own motion planning implementation. This parameter is not used for anything in the builtin motion service.
+**`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they wish to pass to their own motion planning implementation.
+This parameter is not used for anything in the built-in motion service.
 
 #### Example
 
@@ -187,7 +194,7 @@ gripperPoseInWorld = await robot.get_pose(component_name="myRobot:myGripper", de
 
 ```
 
-For a more complicated example, let's take the same scenario and get the pose of the same gripper with respect to an object which is situated at a location (100, 200, 0) relative to the "world" frame
+For a more complicated example, let's take the same scenario and get the pose of the same gripper with respect to an object which is situated at a location (100, 200, 0) relative to the "world" frame:
 
 ```python
 from viam.services.motion import MotionServiceClient
