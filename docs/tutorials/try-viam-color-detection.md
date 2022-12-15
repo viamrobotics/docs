@@ -57,7 +57,7 @@ After adding the detector configuration, the vision service panel should look li
 
 {{< figure src="../img/try-viam-color-detection/populated-service-attributes.png" width="700px" alt="Screenshot from the Viam app showing the Vision service panel. The panel has an Attributes panel populated with vision service attributes. On the upper right side there is a trash bin icon." title="Vision service tab displaying a populated Attributes Panel." >}}
 
-This configuration creates a detector that will find the hex color #7a4f5c when you use it with images from your robot’s cameras. 
+This configuration creates a detector that will find the hex color #7a4f5c (a reddish color) when you use it with images from your robot’s cameras.
 You can change the color to your liking and experiment with it. 
 You can also play with the `hue_tolerance_pct` value to detect with more or less precision.
 
