@@ -14,7 +14,7 @@ A global positioning system (GPS) can provide position, linear velocity and comp
 An inertial measurement unit (IMU) can provide angular velocity and orientation.
 We can further apply algorithms, such as a <a href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank">Kalman filter</a>[^kalman], to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
 
-Currently (12 December 2022), the Viam [RDK](../../appendix/glossary/#rdk_anchor) supports two [IMU models](#imu) (manufactured by WitMotion and VectorNav) and two [GPS models](#gps): <a href="https://en.wikipedia.org/wiki/NMEA_0183" target="_blank">NMEA-based</a>[^nmea] GPS modules and <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">NTRIP-based</a>[^ntrip] <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">RTK</a>[^rtk] GPS models.
+Currently (12 December 2022), the Viam [RDK](../../appendix/glossary/#rdk_anchor) supports two [IMU models](#imu) (manufactured by WitMotion and VectorNav), a [gyroscope/accelerometer](#mpu6050) from TDK InvenSense, and two [GPS models](#gps): <a href="https://en.wikipedia.org/wiki/NMEA_0183" target="_blank">NMEA-based</a>[^nmea] GPS modules and <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">NTRIP-based</a>[^ntrip] <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">RTK</a>[^rtk] GPS models.
 The `cameramono` RDK model is experimental and uses a camera to output data on its position and orientation (from visual odometry).
 
 We specifically cover GPS and IMU units in this documentation.
@@ -387,10 +387,14 @@ Name | Type | Default Value | Description
 `spi_baud_rate` | int | 115200 | The rate at which data is sent from the IMU.
 `polling_frequency_hz` | int |
 
-## MPU6050
+## Accelerometer/Gyroscope
 
-The MPU6050 sensor manufactured by TDK InvenSense is a combination accelerometer and gyroscope.
-It supplies linear acceleration data in the X, Y and Z directions and angular velocity data about the three axes.
+### MPU6050
+
+The <a href="https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/" target = "_blank">MPU6050 sensor manufactured by TDK InvenSense</a>[^mpu] is a combination accelerometer and gyroscope.
+It supplies angular velocity data about the three axes, supporting the `AngularVelocity` method.
+It also supplies linear acceleration data in three directions.
+The linear acceleration data (as well as all the other data from the MPU6050) can be accessed using the `GetReadings` method from the more general [sensor component](/components/sensor/), which movement sensors wrap.
 Unlike the IMUs listed above, it does not contain magnetometers or provide orientation data.
 
 Configuration of this sensor requires configuring a movement sensor component with model `gyro-mpu6050` as well as a board component with an I<sup>2</sup>C bus:
@@ -426,7 +430,9 @@ Configuration of this sensor requires configuring a movement sensor component wi
 }
 ```
 
-### MPU6050 Attributes
+[^mpu]: MPU6050 Sensor: <a href="https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/" target="_blank">ht<span></span>tps://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/</a>
+
+#### MPU6050 Attributes
 
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----
