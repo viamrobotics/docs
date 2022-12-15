@@ -1,7 +1,7 @@
 ---
 title: "Try Viam: Detect a Color with your Viam Rover using the Vision Service"
 linkTitle: "Try Viam: Color Detection"
-weight: 1
+weight: 41
 type: "docs"
 description: "Instructions for using the Vision Service in the Viam app to detect a color with the Viam Rover."
 ---
