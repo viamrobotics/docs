@@ -342,7 +342,7 @@ An IMU will be configured with type `movement sensor`.
 Viam currently (14 December 2022) supports three IMU models, manufactured by WitMotion, VectorNav, and TDK InvenSense.
 They are configured with model `imu-wit`, `imu-vectornav`, or `gyro-mpu6050`, respectively.
 
-#### IMU-WIT
+### IMU-WIT
 
 Example IMU-WIT config:
 
@@ -359,7 +359,7 @@ Example IMU-WIT config:
 }
 ```
 
-#### IMU-VectorNav
+### IMU-VectorNav
 
 Example IMU-VectorNav config:
 
@@ -378,7 +378,7 @@ Example IMU-VectorNav config:
   "depends_on": []
 }
 ```
-##### IMU-VectorNav Attributes
+#### IMU-VectorNav Attributes
 
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----
@@ -388,7 +388,7 @@ Name | Type | Default Value | Description
 `spi_baud_rate` | int | 115200 | The rate at which data is sent from the IMU.
 `polling_frequency_hz` | int |
 
-#### MPU6050
+### MPU6050
 
 Configuration of this IMU requires configuring a movement sensor component with model `gyro-mpu6050` as well as a board component with an I<sup>2</sup>C bus:
 
@@ -423,7 +423,7 @@ Configuration of this IMU requires configuring a movement sensor component with 
 }
 ```
 
-##### MPU6050 Attributes
+#### MPU6050 Attributes
 
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----
