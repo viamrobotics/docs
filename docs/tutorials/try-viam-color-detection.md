@@ -3,7 +3,7 @@ title: "Try Viam: Detect a Color with your Viam Rover using the Vision Service"
 linkTitle: "Try Viam: Color Detection"
 weight: 1
 type: "docs"
-description: "Instructions for using the Vision Service in the Viam app to detect a colors with the Viam Rover."
+description: "Instructions for using the Vision Service in the Viam app to detect a color with the Viam Rover."
 ---
 
 ## Introduction
@@ -13,7 +13,7 @@ The only prerequisite is to have your rental rover connected and ready to use.
 We already added different colors around the rink on each wall.  
 
 But why should I use this service, one might ask? 
-The vision service enables the robot to use its on-board cameras to intelligently see and interpret the world around it. 
+The vision service enables the robot to use its on-board cameras to see and interpret the world around it. 
 The service also grants you the ease of creating different types of detectors, which allows you to then leverage them to program your robots to do interesting things. 
 We can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, etc. The opportunities are endless. 
 
