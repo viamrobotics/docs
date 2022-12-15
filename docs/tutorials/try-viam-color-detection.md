@@ -4,6 +4,7 @@ linkTitle: "Try Viam: Color Detection"
 weight: 41
 type: "docs"
 description: "Instructions for using the Vision Service in the Viam app to detect a color with the Viam Rover."
+# SMEs: Hazal
 ---
 
 ## Introduction
