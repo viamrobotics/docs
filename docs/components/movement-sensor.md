@@ -14,9 +14,8 @@ A global positioning system (GPS) can provide position, linear velocity and comp
 An inertial measurement unit (IMU) can provide angular velocity and orientation.
 We can further apply algorithms, such as a <a href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank">Kalman filter</a>[^kalman], to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
 
-Currently (12 December 2022), the [RDK](../../appendix/glossary/#rdk_anchor) implements GPS, IMU, and visual odometry-based movement sensors.
-We support three [IMU models](#imu) and two GPS models: <a href="https://en.wikipedia.org/wiki/NMEA_0183" target="_blank">NMEA-based</a>[^nmea] GPS modules and <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">NTRIP-based</a>[^ntrip] <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">RTK</a>[^rtk] GPS models.
-The `cameramono` RDK model is experimental and uses a camera to output data on its position and orientation.
+Currently (12 December 2022), the Viam [RDK](../../appendix/glossary/#rdk_anchor) supports two [IMU models](#imu) (manufactured by WitMotion and VectorNav) and two [GPS models](#gps): <a href="https://en.wikipedia.org/wiki/NMEA_0183" target="_blank">NMEA-based</a>[^nmea] GPS modules and <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">NTRIP-based</a>[^ntrip] <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">RTK</a>[^rtk] GPS models.
+The `cameramono` RDK model is experimental and uses a camera to output data on its position and orientation (from visual odometry).
 
 We specifically cover GPS and IMU units in this documentation.
 Find the more [generic sensor component here](../../components/sensor/).
@@ -339,8 +338,8 @@ We have included IMUs from two manufacturers in our RDK.
 ### IMU Configuration
 
 An IMU will be configured with type `movement sensor`.
-Viam currently (14 December 2022) supports three IMU models, manufactured by WitMotion, VectorNav, and TDK InvenSense.
-They are configured with model `imu-wit`, `imu-vectornav`, or `gyro-mpu6050`, respectively.
+Viam currently (14 December 2022) supports two IMU models, manufactured by WitMotion and VectorNav.
+They are configured with model `imu-wit` or `imu-vectornav`, respectively.
 
 ### IMU-WIT
 
@@ -388,9 +387,13 @@ Name | Type | Default Value | Description
 `spi_baud_rate` | int | 115200 | The rate at which data is sent from the IMU.
 `polling_frequency_hz` | int |
 
-### MPU6050
+## MPU6050
 
-Configuration of this IMU requires configuring a movement sensor component with model `gyro-mpu6050` as well as a board component with an I<sup>2</sup>C bus:
+The MPU6050 sensor manufactured by TDK InvenSense is a combination accelerometer and gyroscope.
+It supplies linear acceleration data in the X, Y and Z directions and angular velocity data about the three axes.
+Unlike the IMUs listed above, it does not contain magnetometers or provide orientation data.
+
+Configuration of this sensor requires configuring a movement sensor component with model `gyro-mpu6050` as well as a board component with an I<sup>2</sup>C bus:
 
 ```json
 {
@@ -409,7 +412,7 @@ Configuration of this IMU requires configuring a movement sensor component with 
             }
         },
         {
-            "name": "accelgyro",
+            "name": "my_accelgyro",
             "type": "movement_sensor",
             "model": "gyro-mpu6050",
             "depends_on": [],
@@ -423,12 +426,12 @@ Configuration of this IMU requires configuring a movement sensor component with 
 }
 ```
 
-#### MPU6050 Attributes
+### MPU6050 Attributes
 
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----
 `board` | string | - | The name of the board to which the device is wired.
-`use_alt_i2c_address` | bool | false | Depends on whether you wire AD0 low (leaving the default address of 0x68) or high (making the address 0x69) or. If high, set true. If low, set false or leave empty.
+`use_alt_i2c_address` | bool | false | Depends on whether you wire AD0 low (leaving the default address of 0x68) or high (making the address 0x69). If high, set true. If low, set false or omit the attribute.
 `i2c_bus` | string | - | The name of the I<sup>2</sup>C bus through which the device communicates with the SBC. Note that this must match the name you gave the I<sup>2</sup>C bus you configured in the board component.
 
 ## Cameramono
