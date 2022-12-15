@@ -35,7 +35,7 @@ Clicking **Create Service** automatically creates a new service for your rover, 
 
 {{< figure src="../img/try-viam-color-detection/vision-service-tab.png" width="700px" alt="Screenshot from the Viam app showing the Vision service panel. The panel has an empty “Attributes” section with an empty line numbered, 1. On the upper right side there is a trash bin icon." title="Vision service panel displaying an empty Attributes section." >}}
 
-Duplicate the following configuration into the attributes of your rover’s vision service. 
+Copy the following configuration into the attributes of your rover’s vision service. 
 
 ```json-viam
 {
@@ -74,8 +74,8 @@ Now, click **SAVE CONFIG** and head to the **COMPONENTS** tab.
 
 {{% alert title="Tip" color="tip" %}}
 Object colors can vary dramatically based on the light source.
-In your own projects, verify the desired color detection value under actual lighting conditions.
-For example, by using a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia), to determine the color value from an actual cam component image.
+In your own projects, or if you decide to pick another color to detect, verify the desired color detection value under actual lighting conditions.
+For example, by using a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia), to determine the color value from the actual cam component image.
 {{% /alert %}}
 
 After adding the vision service and color detector, we’ll add a new [camera](/components/camera/) to our Viam Rover. 
@@ -93,7 +93,7 @@ Scroll down to see the **Create Component** section in **COMPONENTS** tab of the
 
 {{< figure src="../img/try-viam-color-detection/create-component-pane.png" width="600px" alt="Screenshot from the Viam app showing the Create Component panel populated with a cam component. The name is detectionCam, the type is camera, and the model is transform. The Create Component button is on the right." title="Create Component panel populated with a cam component." >}}
 
-After creating the component, Viam automatically prepares an empty **Attributes** section for the detectionCam's component panel. 
+After creating the component, Viam automatically generates an empty **Attributes** section for the detectionCam's component panel. 
 The panel's **Attribute Guide** section displays the available attributes for the selected component. 
 
 {{< figure src="../img/try-viam-color-detection/empty-detectioncam-component-panel.png" width="700px" alt="Screenshot from the Viam app showing the detectionCam component section. The “Attributes” section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon." title="An unpopulated Create Component panel for a cam component." >}}
@@ -140,7 +140,7 @@ Each time your camera sees the color, it will draw a red rectangle around it lab
 
 {{< figure src="../img/try-viam-color-detection/detected-example.png" width="700px" alt="." title="Base component panel displaying an example color detection.sss" >}}
 
-We recommend that you test the functionality of Viam's vision services and cameras by adding your other camera, cam, to compare its view with the detection camera's view. 
+We recommend that you test the functionality of Viam's vision services and cameras by enabling your other camera, cam, to compare its view with the detection camera's view. 
 
 {{< figure src="../img/try-viam-color-detection/both-cams.png" width="700px" alt="Screenshot from the Viam app showing the base component panel with the keyboard buttons W, A, S, D. The Keyboard enabled button is green (enabled). The cam stream is on the right, with the detectionCam stream displayed below it. The displays have identical views. The detectionCam stream displays an overlay of a red color detection box with the label,“rose:1.00” surrounding the red square." title="Base component panel displaying the cam and detectionCam streams for comparison." >}}
 
