@@ -91,7 +91,7 @@ Scroll down to see the **Create Component** section in **COMPONENTS** tab of the
 3. Enter “transform” in **Model**.
 4. Click **Create Component**.
 
-{{< figure src="../img/try-viam-color-detection/create-component-pane.png" width="600px" alt="Screenshot from the Viam app showing the Create Component panel populated with a cam component. The name is detectionCam, the type is camera, and the model is transform. The Create Component button is on the right." title="Create Component panel populated with a cam component." >}}
+{{< figure src="../img/try-viam-color-detection/create-component-pane.png" width="600px" alt="Screenshot from the Viam app showing the Create Component panel populated with a cam component. The name is detectionCam, the type is camera, and the model is transform. The Create Component button is on the right." title="Create Component panel populated with a camera component." >}}
 
 After creating the component, Viam automatically generates an empty **Attributes** section for the detectionCam's component panel. 
 The panel's **Attribute Guide** section displays the available attributes for the selected component. 
