@@ -63,7 +63,7 @@ You can also play with the `hue_tolerance_pct` value to detect with more or less
 
 **Hex color #7a4f5c**: <img src="../img/try-viam-color-detection/7a4f5c.png">
 
-The color_detector we use is a heuristic-based detector that draws boxes around objects according to their hue (note that the detector does not detect black, perfect greys[^pg], or white).
+The `color_detector` we use is a heuristic-based detector that draws boxes around objects according to their hue (note that the detector does not detect black, perfect greys[^pg], or white).
 
 [^pg]:"Perfect shades of grey" are those greys where the red, green, and blue color component values are equal, i.e., R=G=B. For example, in hex: #A3A3A3; in RGB: 128, 128, 128.
 
