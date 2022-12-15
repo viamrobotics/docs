@@ -14,8 +14,8 @@ A global positioning system (GPS) can provide position, linear velocity and comp
 An inertial measurement unit (IMU) can provide angular velocity and orientation.
 We can further apply algorithms, such as a <a href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank">Kalman filter</a>[^kalman], to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
 
-Currently (01 November 2022), the [RDK](../../appendix/glossary/#rdk_anchor) implements GPS, IMU, and visual odometry-based movement sensors.
-We support two IMU models (manufactured by WitMotion and VectorNav) and two GPS models: <a href="https://en.wikipedia.org/wiki/NMEA_0183" target="_blank">NMEA-based</a>[^nmea] GPS modules and <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">NTRIP-based</a>[^ntrip] <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">RTK</a>[^rtk] GPS models.
+Currently (12 December 2022), the [RDK](../../appendix/glossary/#rdk_anchor) implements GPS, IMU, and visual odometry-based movement sensors.
+We support three [IMU models](#imu) and two GPS models: <a href="https://en.wikipedia.org/wiki/NMEA_0183" target="_blank">NMEA-based</a>[^nmea] GPS modules and <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">NTRIP-based</a>[^ntrip] <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">RTK</a>[^rtk] GPS models.
 The `cameramono` RDK model is experimental and uses a camera to output data on its position and orientation.
 
 We specifically cover GPS and IMU units in this documentation.
@@ -274,7 +274,8 @@ For all of the following RTK-station configurations, `children` is the list of o
 This section applies to all GPS models.
 {{% /alert %}}
 
-Use `connection_type`(string) to specify "serial" or "I2C" connection in the main `attributes` config. Then create a struct within `attributes` for either `serial_attributes` or `i2c_attributes`, respectively.
+Use `connection_type`(string) to specify "serial" or "I2C" connection in the main `attributes` config.
+Then create a struct within `attributes` for either `serial_attributes` or `i2c_attributes`, respectively.
 
 #### Serial Config Attributes
 
@@ -282,8 +283,8 @@ For a movement sensor communicating over serial, you'll need to include a `seria
 
 Name | Type | Default Value | Description
 ---- | ---- | ------------- | -----
-`serial_path` | string | - | The name of the port through which the IMU communicates with the computer.
-`serial_baud_rate` | int | 115200 | The rate at which data is sent to the IMU. Optional.
+`serial_path` | string | - | The name of the port through which the sensor communicates with the computer.
+`serial_baud_rate` | int | 115200 | The rate at which data is sent from the sensor. Optional.
 ---
 
 ```json
@@ -303,13 +304,14 @@ Name | Type | Default Value | Description
 ```
 
 #### I<sup>2</sup>C Config Attributes
+
 For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` field containing:
 
 Name | Type | Default Value | Description
 ---- | ---- | ------------- | -----
-`i2c_bus` | string | - | The name of the port through which the IMU communicates with the computer.
-`i2c_addr` | int | - |
-`i2c_baud_rate` | int | 115200 | The rate at which data is sent to the IMU. Optional.
+`i2c_bus` | string | - | The name of I<sup>2</sup>C bus wired to the sensor.
+`i2c_addr` | int | - | The device's I<sup>2</sup>C address.
+`i2c_baud_rate` | int | 115200 | The rate at which data is sent from the sensor. Optional.
 ---
 
 ```json
@@ -330,11 +332,15 @@ Name | Type | Default Value | Description
 
 ## IMU
 
-An inertial measurement unit (IMU) can provide `AngularVelocity`, `Orientation`, and `CompassHeading` methods out of the box (ordered from most common to least common). Acceleration and Magnetometer data are available by using the Sensor `GetReadings` method, which IMUs wrap.  We have included IMUs from two manufacturers in our RDK.
+An inertial measurement unit (IMU) can provide `AngularVelocity`, `Orientation`, and `CompassHeading` methods out of the box (ordered from most common to least common).
+Acceleration and Magnetometer data are available by using the Sensor `GetReadings` method, which IMUs wrap.
+We have included IMUs from two manufacturers in our RDK.
 
 ### IMU Configuration
 
-An IMU will be configured with type `movement sensor`. Viam currently (01 November 2022) supports two IMU models, manufactured by WitMotion and VectorNav. They are configured with model `imu-wit` or `imu-vectornav`, respectively.
+An IMU will be configured with type `movement sensor`.
+Viam currently (14 December 2022) supports three IMU models, manufactured by WitMotion, VectorNav, and TDK InvenSense.
+They are configured with model `imu-wit`, `imu-vectornav`, or `gyro-mpu6050`, respectively.
 
 #### IMU-WIT
 
@@ -379,8 +385,51 @@ Name | Type | Default Value | Description
 `board` | string | - | The name of the board to which the device is wired
 `spi` | string | The name of the SPI bus over which the device communicates with the board. On a Raspberry Pi, people often use the bus named “1.”
 `chip_select_pin` | string | - | The board pin (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device.
-`spi_baud_rate` | int | 115200 | The rate at which data is sent to the IMU.
+`spi_baud_rate` | int | 115200 | The rate at which data is sent from the IMU.
 `polling_frequency_hz` | int |
+
+#### MPU6050
+
+Configuration of this IMU requires configuring a movement sensor component with model `gyro-mpu6050` as well as a board component with an I<sup>2</sup>C bus:
+
+```json
+{
+    "components": [
+        {
+            "name": "local",
+            "type": "board",
+            "model": "pi",
+            "attributes": {
+                  "i2cs": [
+                    {
+                    "name": "default_i2c_bus",
+                    "bus": "1"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "accelgyro",
+            "type": "movement_sensor",
+            "model": "gyro-mpu6050",
+            "depends_on": [],
+            "attributes": {
+                "use_alt_i2c_address": true,
+                "i2c_bus": "default_i2c_bus",
+                "board": "local"
+            }   
+        }
+    ]
+}
+```
+
+##### MPU6050 Attributes
+
+Name | Type | Default Value | Description
+----- | ----- | ----- | -----
+`board` | string | - | The name of the board to which the device is wired.
+`use_alt_i2c_address` | bool | false | Depends on whether you wire AD0 low (leaving the default address of 0x68) or high (making the address 0x69) or. If high, set true. If low, set false or leave empty.
+`i2c_bus` | string | - | The name of the I<sup>2</sup>C bus through which the device communicates with the SBC. Note that this must match the name you gave the I<sup>2</sup>C bus you configured in the board component.
 
 ## Cameramono
 
