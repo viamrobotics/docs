@@ -67,7 +67,7 @@ The `color_detector` we use is a heuristic-based detector that draws boxes aroun
 
 [^pg]:"Perfect shades of grey" are those greys where the red, green, and blue color component values are equal, i.e., R=G=B. For example, in hex: #A3A3A3; in RGB: 128, 128, 128.
 
-To learn more, head to our [Vision Service](/services/vision/) topic (ht<span></span>tps://docs.viam.com/services/vision/) for additional information. 
+To learn more, head to our [Vision Service](/services/vision/) topic (ht<span></span>tps://docs.viam.com/services/vision/) for additional information on how to configure and use Viam's Vision Service.
 Now, click **SAVE CONFIG** and head to the **COMPONENTS** tab.
 
 ## How to configure a transform camera to use the color detector
