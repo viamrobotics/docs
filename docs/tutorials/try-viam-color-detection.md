@@ -77,7 +77,7 @@ Object colors can vary dramatically based on the light source. In your own proje
 {{% /alert %}}
 
 After adding the vision service and color detector, we’ll add a new camera to our Viam Rover. 
-Viam camera components can be physical (like that already configured on the rover), or virtual (such as the transform camera, which transforms the output from the physical camera). 
+Viam camera components can be [physical](/components/camera/#webcam) (like that already configured on the rover), or virtual (such as the [transform camera](/components/camera/#transform), which transforms the output from the physical camera). 
 To display the detections, we will use the transform camera. 
 
 To learn more about the camera component, head to the [Camera component](https://docs.viam.com/components/camera/) topic. 
