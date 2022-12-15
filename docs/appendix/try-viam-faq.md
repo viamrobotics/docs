@@ -108,3 +108,6 @@ If you are participating in an active session or awaiting your turn in the queue
 ## I loved my experience and want to play around more. Can I do that?
 
 Yes! You can rent the rover as many times as you’d like. Also, we’re taking pre-orders for a limited quantity of Viam Rovers. Reserve yours today [here](http://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
+
+## Why can't I use the Rover's microphone?
+For security reasons, Viam has disabled the microphone on Rover Rentals. The microphone on Viam Rover's shipped to users functions normally.
