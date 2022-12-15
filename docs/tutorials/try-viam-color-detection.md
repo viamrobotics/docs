@@ -31,7 +31,7 @@ Scroll down to the **Create Service** section.
 
 {{< figure src="../img/try-viam-color-detection/create-service.png" width="400px" alt="Screenshot from the Viam app's Create Service tab. It lists the type as “vision” and name as “vision”, with a Create Service button on the right." title="Create Service pane from CONFIG -> SERVICES" >}}
 
-Clicking **Create Service** automatically creates the service, but that does not set any attributes for the service. 
+Clicking **Create Service** automatically creates a new service for your rover, but that does not set any attributes for the service. 
 
 {{< figure src="../img/try-viam-color-detection/vision-service-tab.png" width="700px" alt="Screenshot from the Viam app showing the Vision service panel. The panel has an empty “Attributes” section with an empty line numbered, 1. On the upper right side there is a trash bin icon." title="Vision service panel displaying an empty Attributes section." >}}
 
