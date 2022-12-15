@@ -73,7 +73,9 @@ Now, click **SAVE CONFIG** and head to the **COMPONENTS** tab.
 ## How to configure a transform camera to use the color detector
 
 {{% alert title="Tip" color="tip" %}}
-Object colors can vary dramatically based on the light source. In your own projects, verify the desired color detection value under actual lighting conditions. For example, by using a pixel color tool to determine the color value from an actual cam component image.
+Object colors can vary dramatically based on the light source.
+In your own projects, verify the desired color detection value under actual lighting conditions.
+For example, by using a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia), to determine the color value from an actual cam component image.
 {{% /alert %}}
 
 After adding the vision service and color detector, we’ll add a new [camera](/components/camera/) to our Viam Rover. 
