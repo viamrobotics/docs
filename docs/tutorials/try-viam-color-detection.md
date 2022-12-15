@@ -59,7 +59,7 @@ After adding the detector configuration, the vision service panel should look li
 
 This configuration creates a detector that will find the hex color #7a4f5c (a reddish color) when you use it with images from your robot’s cameras.
 You can change the color to your liking and experiment with it. 
-You can also play with the `hue_tolerance_pct` value to detect with more or less precision.
+You can also play with the `hue_tolerance_pct` value to detect this color with more or less precision.
 
 **Hex color #7a4f5c**: <img src="../img/try-viam-color-detection/7a4f5c.png">
 
