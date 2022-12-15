@@ -61,7 +61,7 @@ This configuration creates a detector that will find the hex color #7a4f5c (a re
 You can change the color to your liking and experiment with it. 
 You can also play with the `hue_tolerance_pct` value to detect this color with more or less precision.
 
-**Hex color #7a4f5c**: <img src="../img/try-viam-color-detection/7a4f5c.png">
+**Hex color #7a4f5c**: <img src="../img/try-viam-color-detection/7a4f5c.png" alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color." >
 
 The `color_detector` we use is a heuristic-based detector that draws boxes around objects according to their hue (note that the detector does not detect black, perfect greys[^pg], or white).
 
