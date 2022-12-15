@@ -66,7 +66,8 @@ The Viam app allows you to share a location with any organization of which you a
 
 #### Sharing a location with a different organization
 
-If you are a member of more than one organization, the Viam App lists those organizations in the **Add Organization** drop-down:
+If you are a member of more than one organization, the Viam app lists those organizations in the **Add Organization** drop-down:
+
 
 {{< figure src="../img/app-usage/add-org-drop-down.png" width="400px" alt="The Add Organization drop-down displaying an organization where the user is also a member." title="The Add Organization drop-down displaying an organization where the user is also a member." >}}
 
