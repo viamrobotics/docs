@@ -16,7 +16,7 @@ The Motion Service is capable of using motion planning algorithms locally on you
 
 Viam’s Motion Service is enabled in RDK by default, and no extra configuration needs to be done in the [Viam app](https://app.viam.com/) to enable it.
 
-## How to Move Components
+## API Methods
 
 ### Move
 
