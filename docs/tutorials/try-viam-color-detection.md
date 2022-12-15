@@ -80,7 +80,7 @@ After adding the vision service and color detector, we’ll add a new camera to 
 Viam camera components can be [physical](/components/camera/#webcam) (like that already configured on the rover), or virtual (such as the [transform camera](/components/camera/#transform), which transforms the output from the physical camera). 
 To display the detections, we will use the transform camera. 
 
-To learn more about the camera component, head to the [Camera component](https://docs.viam.com/components/camera/) topic. 
+To learn more about the camera component, head to the [Camera component](/components/camera/) topic. 
 
 Scroll down to see the **Create Component** section in **COMPONENTS** tab of the Viam app. 
 
