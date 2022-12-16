@@ -54,7 +54,7 @@ Copy the following configuration into the attributes of your rover’s vision se
 }
 ```
 
-After adding the detector configuration, the vision service panel should look like this:
+After adding the detector configuration, the Vision Service panel should look like this:
 
 {{< figure src="../img/try-viam-color-detection/populated-service-attributes.png" width="700px" alt="Screenshot from the Viam app showing the Vision service panel. The panel has an Attributes panel populated with vision service attributes. On the upper right side there is a trash bin icon." title="Vision service tab displaying a populated Attributes Panel." >}}
 
