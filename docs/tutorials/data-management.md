@@ -163,7 +163,7 @@ go run go.viam.com/rdk/cli/cmd auth
 Once you are authenticated with your Viam account, you will be able to run your export command.
 Head back to the **DATA** page in the Viam app at <a href="https://app.viam.com/data/view?tab=images" target="_blank">app.viam.com/data</a>, and click the "COPY EXPORT COMMAND" button.
 
-![A red box highlights the "copy export command" button from the Viam app with an image gallery of captured images from the Viam Rover on the right.](./img/data-management/image4.png)
+![A red box highlights the "copy export command" button from the Viam app with an image gallery of captured images from the Viam Rover on the right.](../img/data-management/image4.png)
 
 This command uses the Viam CLI to download the data locally onto your computer based on the search criteria you select in the Viam app.
 Once the command has finished running and downloading the images, you should be able to view and use the data locally in a new directory named `data`.
