@@ -30,7 +30,7 @@ Here are details about each of the fields in the camera config:
 	Optional.
     * `intrinsic_parameters`: these are the intrinsic parameters of the camera used to do 2D <-> 3D projections.
 	Optional for most camera models.
-	Required for `align_color_depth`.
+	Required for `join_color_depth`.
     * `distortion_parameters`: these are modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens.
 	Optional.
 
@@ -104,8 +104,8 @@ Either file path is optional.
 	"type": "camera",
 	"model" : "image_file",
 	"attributes": {
-    	"color": string, # the file path to the color image,
-    	"depth": string # the file path to the depth image,
+    	"color_image_file_path": string, # the file path to the color image,
+    	"depth_image_file_path": string # the file path to the depth image,
 	}
 }
 ```
@@ -150,28 +150,85 @@ FFmpeg is a model that allows you to use a video file or stream as a camera.
 }
 ```
 
-### Align Color Depth
+### Join Color Depth
 
-Model `align_color_depth` is used to join a color and depth camera already registered in your config to join their outputs and create a third "camera" that outputs the combined and aligned image.
-In this case, rather than entering the URL of each camera, you just enter the names of the color and depth camera in the attribute field, and the `align_color_depth` camera will combine the streams from them both.
-You can specify the intrinsics/extrinsics, or homography parameters to do the alignment between the depth and color frames if they need to be shifted in some way.
-If they don’t need to be aligned, you can leave those parameters blank.
+Model `join_color_depth` is used to join the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image.
+In this case, rather than entering the URL of each camera, you just enter the names of the color and depth camera in the attribute field, and the `join_color_depth` camera will combine the streams from them both.
+If you need to specify the intrinsics/extrinsics, or homography parameters, to do the alignment between the depth and color frames if they need to be shifted in some way, use the [`align_color_depth_extrinsics`](#align-color-depth-extrinsics) model or [`align_color_depth_homography`](#align-color-depth-homography) model, respectively, detailed next.
+If they don’t need to be aligned, you can use `join_color_depth`.
 You then specify the stream field to specify which aligned picture you want to stream.
 
 ```json-viam
 {
 	"name": "camera_name",
 	"type": "camera",
-	"model" : "align_color_depth",
+	"model" : "join_color_depth",
 	"attributes": {
-    	"stream": string, # either "color" or "depth" to specify the output stream
-    	"color_camera_name": string, # the color camera's name
-    	"depth_camera_name": string, # the depth camera's name
-		"width_px": int, # the expected width of the aligned pic
-    	"height_px": int, # the expected height of the aligned pic
-    	"intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D 
-    	"intrinsic_extrinsic": {}, # the intrinsic/extrinsic parameters that relate the two cameras together in order to align the images.
-    	"homography": {} # homography parameters that morph the depth points to overlay the color points and align the images.
+		"output_image_type": "string", # either "color" or "depth" to specify the output stream
+  		"color_camera_name": "string", # name of the color camera from which to pull
+  		"depth_camera_name": "string", # name of the depth camera from which to pull
+  		"intrinsic_parameters": { # for projecting RGBD images to 2D <-> 3D
+			"width_px": int, # the expected width of the aligned pic
+			"height_px": int, # the expected height of the aligned pic
+			"fx": 0,
+			"fy": 0,
+			"ppx": 0,
+			"ppy": 0
+		},
+		"distortion_parameters": {...} # optional
+	}
+}
+```
+
+### Align Color Depth Extrinsics
+
+The `align_color_depth_extrinsics` model uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align the two images.
+
+```json-viam
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "align_color_depth_homography",
+	"attributes": {
+		"debug": false,
+		"output_image_type": "string", # either "color" or "depth" to specify the output stream
+  		"color_camera_name": "string", # name of the color camera from which to pull
+  		"depth_camera_name": "string", # name of the depth camera from which to pull
+		"intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D
+		"camera_system": { # the intrinsic/extrinsic parameters that relate the two cameras together
+		in order to join the images
+			"color_intrinsic_parameters": {...}, # same form as standard intrinsic params on every camera
+			"depth_intrinsic_parameters": {...}, # same form as standard intrinsic params on every camera
+			"depth_to_color_extrinsic_parameters": {
+			    "rotation_rads": [...], # the 3x3 rotation matrix expressed as a list of 9 radians
+			    "translation_mm": [...] # a list of 3 numbers representing the translation from depth to color in mm
+			}
+		}
+	}
+}
+```
+
+### Align Color Depth Homography
+
+The `align_color_depth_homography` camera model uses a homography matrix to align the color and depth images.
+
+```json-viam
+{
+	"name": "camera_name",
+	"type": "camera",
+	"model" : "align_color_depth_homography",
+	"attributes": {
+		"debug": false,
+		"output_image_type": "string", # either "color" or "depth" to specify the output stream
+  		"color_camera_name": "string", # name of the color camera from which to pull
+  		"depth_camera_name": "string", # name of the depth camera from which to pull
+		"intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D
+		"homography": { # homography parameters that morph the depth points to overlay
+		the color points and align the images
+			"transform": [...], # 9 floats representing the 3x3 homography matrix of the depth to color, or color to depth camera
+			"depth_to_color": false,
+			"rotate_depth_degs": -90 # degrees by which to rotate the depth camera image
+		}
 	}
 }
 ```
