@@ -324,7 +324,7 @@ For further information, please refer to the <a href="https://docs.opencv.org/3.
 
 ##### _Detections_
 
-The Detections transform takes the input image and overlays the detections from a given detector present within the vision service.
+The Detections transform takes the input image and overlays the detections from a given detector present within the [Vision Service](/services/vision/).
 
 ```json-viam
 {
