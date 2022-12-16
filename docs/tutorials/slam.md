@@ -69,7 +69,7 @@ The configuration of SLAM happens in two steps:
 
 Follow these tutorials to connect and calibrate your webcam:
 * [Connect and configure a webcam](../configure-a-camera/#connect-and-configure-a-webcam)
-* [Calibrate a camera](../configure-a-camera/#calibrate-a-camera)
+* [Calibrate a camera](../camera-calibration)
 
 #### Add SLAM to the configuration
 
