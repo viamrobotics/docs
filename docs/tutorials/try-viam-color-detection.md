@@ -139,7 +139,7 @@ detectionCam should be available if you have configured your component and servi
 When you enable the keyboard, you will be able to move the rover and see how your detection works. 
 Each time your camera sees the color, it will draw a red rectangle around it labeled with the detection confidence level. 
 
-{{< figure src="../img/try-viam-color-detection/detected-example.png" width="700px" alt="." title="Base component panel displaying an example color detection.sss" >}}
+{{< figure src="../img/try-viam-color-detection/detected-example.png" width="700px" alt="." title="Base component panel displaying an example color detection." >}}
 
 We recommend that you test the functionality of Viam's vision services and cameras by enabling your other camera, cam, to compare its view with the detection camera's view. 
 
