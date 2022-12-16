@@ -44,10 +44,6 @@ type: "docs"
     margin-left:24pt;
 }
 
-
-
-
-
 h7 {
     margin-left:24pt;
 }
