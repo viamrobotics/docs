@@ -1,10 +1,11 @@
 ---
 title: "How to Configure a Camera"
 linkTitle: "Configure a Camera"
-weight: 45
+weight: 12
 type: "docs"
 draft: false
 description: "Instructions for configuring a webcam."
+# SMEs: Bijan, vision team
 ---
 
 ## Introduction
