@@ -199,7 +199,10 @@ The `align_color_depth_extrinsics` model uses the intrinsics of the color and de
 		in order to join the images
 			"color_intrinsic_parameters": {...},
 			"depth_intrinsic_parameters": {...},
-			"depth_to_color_extrinsic_parameters": {...}
+			"depth_to_color_extrinsic_parameters": {
+			    "rotation_rads": [...], # the 3x3 rotation matrix expressed as a list of 9 radians
+			    "translation_mm": [...] # a list of 3 numbers representing the translation from depth to color in mm
+			}
 		}
 	}
 }
@@ -222,7 +225,7 @@ The `align_color_depth_homography` camera model uses a homography matrix to alig
 		"intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D
 		"homography": { # homography parameters that morph the depth points to overlay
 		the color points and align the images
-			"transform": [...],
+			"transform": [...], # 9 floats representing the 3x3 homography matrix of the depth to color, or color to depth camera
 			"depth_to_color": false,
 			"rotate_depth_degs": -90 # degrees by which to rotate the depth camera image
 		}
