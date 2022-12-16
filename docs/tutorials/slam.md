@@ -83,7 +83,7 @@ YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 On the **CONFIG** tab, click the **SERVICES** sub-tab.
 
-Create a service with type `slam` and a name (we called ours `run-slam`).
+Create a service with type `slam`, a name (we called ours `run-slam`) and a model `orbslamv3`.
 
 Paste the following into the **Attributes** field of the SLAM service:
 

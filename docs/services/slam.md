@@ -70,7 +70,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 
 ## Configuration Overview
 
-To add the SLAM service to your robot, you need to add the _name_, _type_, and SLAM library specific _attributes_ to the configuration of your robot.
+To add the SLAM service to your robot, you need to add the _name_, _type_, _model_, and SLAM library specific _attributes_ to the configuration of your robot.
 
 The following is an example configuration for running ORB-SLAM3 in live `rgbd` mode on your robot, provided that it has two [camera streams](https://docs.viam.com/components/camera/#camera-models) available: `"color"` for RGB images, and `"depth"` for depth data.
 
