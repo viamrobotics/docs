@@ -83,7 +83,7 @@ YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 On the **CONFIG** tab, click the **SERVICES** sub-tab.
 
-Create a service with type `slam` and a name (we called ours `run-slam`).
+Create a service with type `slam`, a name (we called ours `run-slam`) and a model `orbslamv3`.
 
 Paste the following into the **Attributes** field of the SLAM service:
 
@@ -95,7 +95,6 @@ Paste the following into the **Attributes** field of the SLAM service:
   "sensors": [
     "color"
   ],
-  "algorithm": "orbslamv3",
   "config_params": {
     "debug": "false",
     "orb_scale_factor": "1.2",
@@ -115,6 +114,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
   "services": [
     {
       "type": "slam",
+      "model": "orbslamv3",
       "attributes": {
         "data_dir": "/home/YOUR_USERNAME/data",
         "map_rate_sec": 60,
@@ -122,7 +122,6 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
         "sensors": [
           "color"
         ],
-        "algorithm": "orbslamv3",
         "config_params": {
           "debug": "false",
           "orb_scale_factor": "1.2",
@@ -181,6 +180,7 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration toget
   "services": [
     {
       "type": "slam",
+      "model": "orbslamv3",
       "attributes": {
         "data_dir": "/home/slam-bot/data",
         "map_rate_sec": 60,
@@ -188,7 +188,6 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration toget
         "sensors": [
           "color"
         ],
-        "algorithm": "orbslamv3",
         "config_params": {
           "debug": "false",
           "orb_scale_factor": "1.2",
@@ -259,10 +258,10 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
   "services": [
     {
       "type": "slam",
+      "model": "orbslamv3",
       "attributes": {
         "data_rate_ms": 200,
         "sensors": [],
-        "algorithm": "orbslamv3",
         "config_params": {
           "debug": "false",
           "orb_scale_factor": "1.2",
