@@ -1,5 +1,5 @@
 ---
-title: "An Introduction to Viam's Data Management Service"
+title: "An Introduction to Using Viam's Data Management Service"
 linkTitle: "Intro to Data Management"
 weight: 60
 type: "docs"
@@ -9,13 +9,12 @@ description: "Build a robot to learn how to use Viam's Data Management service i
 
 ## Introduction
 
-One key feature of Viam is that we include [Data Management services](/services/img/data-management/), which will help you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
+One key feature of Viam is the included [Data Management service](/services/data-management/), which helps you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
 
-Viam's Data Management service has two distinct parts.
-[Data capture](#enabling-data-capture-with-the-data-management-service) and [data sync](#enabling-cloud-sync-on-the-data-management-service).
+Viam's Data Management service has two distinct parts: [data capture](#enabling-data-capture-with-the-data-management-service) and [data sync](#enabling-cloud-sync-on-the-data-management-service).
 
 **Data capture** allows you to capture data for specific components on your robot running Viam.
-You can choose the components, corresponding methods and the frequency of the data capture all within the Viam app.
+You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
 
 **Data synchronization** runs in the background and uploads your robot's captured data to Viam's cloud at a predefined frequency.
 Data sync is designed to be resilient and to preserve your data even during a network outage.
@@ -23,7 +22,7 @@ It also manages syncing data from your robot to the Viam app and deletes the cap
 Plus, your data is encrypted in transit and at rest in the cloud, so you can be sure that your data is protected while using data sync with Viam.
 
 Data capture is frequently used with data sync.
-However, if you wanted to manage your robot's captured data yourself, it's possible to enable data capture for components on your robot, but disable data sync.
+However, if you want to manage your robot's captured data yourself, it's possible to enable data capture for components on your robot, but disable data sync.
 
 In this tutorial, we will cover the basics of using Viam's Data Management service including capturing camera data, syncing that data from your robot to the cloud to be able to view and filter through it, and downloading it locally.
 
@@ -67,7 +66,7 @@ By default, it saves it to the <file>/.viam/capture</file> directory on your rob
 
 ## Configuring data capture for a component
 
-With data capture enabled, you can now configure capture for specific components on your robot running Viam. You can choose the components, corresponding methods and the frequency of the data capture all within the Viam app.
+With data capture enabled, you can now configure capture for specific components on your robot running Viam. You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
 
 {{% alert title="Note" color="note" %}}
 
@@ -79,7 +78,8 @@ To enable image data capture for a camera component you will need to do the foll
 
 - Go to <a href="https://app.viam.com/robot" target="_blank">the robot page in the Viam app</a> and select your robot.
 
-- Go to the **COMPONENTS** tab for your robot and scroll down to the camera component (On the Viam Rover, the camera is named "cam").
+- Go to the **COMPONENTS** tab for your robot and scroll down to the camera component.
+(On the Viam Rover, the camera is named "cam.")
 
 - You will find a section labeled "Data Capture Configuration".
 Click the "Add Method" button to enable data capture for this camera.
@@ -88,7 +88,8 @@ Click the "Add Method" button to enable data capture for this camera.
 This will capture an image from the camera roughly once every 3 seconds.
 Feel free to adjust the frequency if you want the camera to capture more or less image data.
 
-- You should also select the Mime Type that you want to capture. For this tutorial, we are capturing "image/jpeg" data.
+- You should also select the Mime Type that you want to capture.
+For this tutorial, we are capturing "image/jpeg" data.
 
 ![Screenshot from the Viam app showing the data capture settings used for this tutorial.](../img/data-management/image5.png)
 
@@ -109,7 +110,7 @@ Now that you have set up data capture for a camera, you will enable Cloud Sync s
 
 To enable the cloud sync on your robot, you will need to do the following:
 
-- Go to the **CONFIG** tab, select **SERVICES**.
+- Go to the **CONFIG** tab, then select **SERVICES**.
 
 - Navigate to [the Data Management service you created above](#enabling-data-capture-with-the-data-management-service).
 
@@ -129,13 +130,13 @@ Now that you have data capture enabled for a camera on your Viam Rover, you can 
 - Head over to the **Data** page at <a href="https://app.viam.com/data/view?tab=images" target="_blank">app.viam.com/data</a>.
 
 - Select "Rover Rental" from the **Location** drop-down menu, and click search.
-If you have data capture setup correctly, you should be able to see the captured images from your rover's camera.
+If you have data capture set up correctly, you should be able to see the captured images from your rover's camera.
 
 ![The data page of the Viam app showing a gallery of the images captured from the Viam Rover.](../img/data-management/image1.png)
 
 ## Exporting captured data from the Viam app
 
-You've successfully saved data from your robot into the cloud with Viam's Data Management Service.
+You've successfully saved data from your robot into the cloud with Viam's Data Management service.
 Now, let's export that image data from the Viam's Data Management Service in the cloud and onto your local computer.
 
 To export data from Viam, you will need to do the following:
@@ -161,7 +162,7 @@ go run go.viam.com/rdk/cli/cmd auth
 ```
 
 Once you are authenticated with your Viam account, you will be able to run your export command.
-Head back to the **DATA** page in the Viam app at <a href="https://app.viam.com/data/view?tab=images" target="_blank">app.viam.com/data</a>, and click the "COPY EXPORT COMMAND" button.
+Head back to the **DATA** page in the Viam app at <a href="https://app.viam.com/data/view?tab=images" target="_blank">app.viam.com/data</a> and click the **COPY EXPORT COMMAND** button.
 
 ![A red box highlights the "copy export command" button from the Viam app with an image gallery of captured images from the Viam Rover on the right.](../img/data-management/image4.png)
 
@@ -173,10 +174,10 @@ Sort your folder by filename in order to see them in chronological order.
 ## Next steps
 
 In this tutorial, we showed you how to set up and use Viam's Data Management service on a robot so you can configure data capture and data sync for a camera component.
-We also discussed how you can filter and and view your captured image data in the Viam ap.
+We also discussed how you can filter and and view your captured image data in the Viam app.
 And finally, we showed you how you can export your data synced with the Viam cloud locally.
 
-You are now ready to take your own robots to the next level using Viam's Data Management Service.
+You are now ready to take your own robots to the next level using Viam's Data Management service.
 You could add the Data Manager on your own robot and use the data you collect to train a machine learning model to detect hand gestures or objects.
 You could use your data to track your robot's usage over time, and even build dashboards to visualize the data from your robot.
 
