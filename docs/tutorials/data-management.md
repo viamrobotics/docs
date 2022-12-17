@@ -3,7 +3,7 @@ title: "An Introduction to Using Viam's Data Management Service"
 linkTitle: "Intro to Data Management"
 weight: 60
 type: "docs"
-description: "Build a robot to learn how to use Viam's Data Management service including configuring data capture and sync, filtering and viewing captured data, and exporting your data locally."
+description: "Learn how to use Viam's Data Management service including configuring data capture and sync, filtering and viewing captured data, and exporting your data locally."
 # SMEs: Alexa Greenberg, Natalia Jacobowitz, Joe Karlsson
 ---
 
@@ -174,7 +174,7 @@ Sort your folder by filename in order to see them in chronological order.
 ## Next steps
 
 In this tutorial, we showed you how to set up and use Viam's Data Management service on a robot so you can configure data capture and data sync for a camera component.
-We also discussed how you can filter and and view your captured image data in the Viam app.
+We also discussed how you can filter and view your captured image data in the Viam app.
 And finally, we showed you how you can export your data synced with the Viam cloud locally.
 
 You are now ready to take your own robots to the next level using Viam's Data Management service.
