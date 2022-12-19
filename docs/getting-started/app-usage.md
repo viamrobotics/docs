@@ -18,7 +18,7 @@ If you received an invitation from an existing organization, use the email link 
 
 If you're signing up without an invitation link, go to [app.viam.com](https://app.viam.com/) and create an account with your Google account or an email and password of your choice.
 
-## Navigating with organizations
+## Navigating organizations
 
 Click the drop down in the upper right corner of the page.
 You should see your name, email, and a list of organizations you belong to.
