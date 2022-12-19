@@ -18,7 +18,7 @@ If you received an invitation from an existing organization, use the email link 
 
 If you're signing up without an invitation link, go to [app.viam.com](https://app.viam.com/) and create an account with your Google account or an email and password of your choice.
 
-## Working with organizations
+## Navigating with organizations
 
 Click the drop down in the upper right corner of the page.
 You should see your name, email, and a list of organizations you belong to.
@@ -42,7 +42,7 @@ To invite another user to your organization, type their email address into the f
 ### Deleting an organization
 
 From the **ORG SETTINGS** page, you can delete any organization that has no locations.
-If organization to delete contains any locations, you must delete them before you can delete the organization.
+If the organization to delete contains any locations, you must delete them before you can delete the organization.
 
 
 ## Managing locations and sub-locations
