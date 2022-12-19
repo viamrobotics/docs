@@ -66,7 +66,7 @@ By default, it saves it to the <file>/.viam/capture</file> directory on your rob
 
 ## Configuring data capture for a component
 
-With data capture enabled, you can now configure capture for specific components on your robot running Viam. You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
+With data capture enabled, you can now configure data capture for specific components on your robot running Viam. You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
 
 {{% alert title="Note" color="note" %}}
 
