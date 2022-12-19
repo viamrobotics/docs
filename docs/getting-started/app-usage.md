@@ -39,7 +39,6 @@ To create a new organization, click **ORG SETTINGS** and use the **New Organizat
 To invite another user to your organization, type their email address into the field in **ORG SETTINGS** and click **INVITE**.
 
 {{< figure src="../img/app-usage/invite-user.png" width="400px" alt="Screenshot of the user email address invitation field on the Organization settings page." title="The user invitation email address field." >}}
-
 ### Deleting an organization
 
 From the **ORG SETTINGS** page, you can delete any organization that has no locations.
@@ -160,7 +159,7 @@ The **LOGS** tab displays debug and other logging information from your robot.
 
 ### History
 
-The **HISTORY** tab shows the edit history of your robot's configuration file.
+The **HISTORY** tab shows a timestamped diff view of your robot's configuration changes.
 
 ### Code Sample
 
