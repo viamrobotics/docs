@@ -17,7 +17,7 @@ Viam's Data Management service has two distinct parts: [data capture](#enabling-
 You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
 
 **Data synchronization** runs in the background and uploads your robot's captured data to Viam's cloud at a predefined frequency.
-Data sync is designed to be resilient and to preserve your data even during a network outage.
+Data sync is designed to be resilient and to preserve your data even during a network outage or if your robot has low network bandwidth.
 It also manages syncing data from your robot to the Viam app and deletes the captured data from your robot after a successful sync.
 Plus, your data is encrypted in transit and at rest in the cloud, so you can be sure that your data is protected while using data sync with Viam.
 
@@ -114,7 +114,7 @@ To enable the cloud sync on your robot, you will need to do the following:
 
 - Navigate to [the Data Management service you created above](#enabling-data-capture-with-the-data-management-service).
 
-- Enable Cloud Sync.
+- Under the "cloud sync" section, toggle "syncing" to enable.
 
 ![Screenshot from the Data Management service showing the Data Capture and the cloud sync option enabled.](../img/data-management/image2.png)
 
