@@ -198,13 +198,13 @@ Select your location and use the form on the right to create a new Robot. If thi
 
 ![Screenshot from the Viam app showing the create a robot page.](../../installation/img/rpi-setup/add-robot.png)
 
-Navigate to your new robot, which should show the setup page as shown below:
+Navigate to your new robot, which should show the **SETUP** tab as shown below:
 
 ![Screenshot from the Viam app showing the Setup page.](../img/rpi-setup/view-robot.png)
 
 ## Follow the steps on the setup tab
 
-Follow the steps on the setup tab to install the Viam software on your Raspberry Pi.
+Follow the steps on the **SETUP** tab to install viam-server on your Raspberry Pi, making sure that Linux mode and Aarch64 architecture are selected in the upper left corner of the tab.
 
 Once you have installed viam-server on your Pi, refresh the page on the Viam app ([https://app.viam.com](https://app.viam.com)) to confirm your Pi has successfully connected and pulled the config by looking at the top of the Robot page and seeing that `host` and `ips` fields are populated and that the `last online` field reads `live`.
 
