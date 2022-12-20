@@ -7,6 +7,154 @@ type: "docs"
 description:
 # SME: Mike A.
 ---
+## XX December 2022
+
+{{< tabs >}}
+{{% tab name="Versions" %}}
+
+## Release Versions - new numbers coming
+* rdk - v0.2.3
+* api - v0.1.12
+* slam - v0.1.9
+* viam-python-sdk - v0.2.0
+* goutils - v0.1.4
+* rust-utils - v0.0.5
+<br><br><br>(**Bold=updated version**)
+
+{{% /tab %}}
+
+
+{{% tab name="New Features" %}}
+## New Features
+### Custom Modular Resources
+<table style="margin-bottom:18px">
+<tbody style="vertical-align:top;">
+    <tr>
+        <td width="120px"><strong>What is it?</strong></td>
+        <td>This new feature allows users to implement their own custom driver by writing go code. 
+        We are now working to add modules to each of our SDKs so that users can write drivers in a variety of programming languages.</td>
+    </tr>
+<tbody>
+</table>
+
+### URDF Support
+<table style="margin-bottom:18px">
+<tbody style="vertical-align:top;">
+    <tr>
+        <td width="120px"><strong>What is it?</strong></td>
+        <td>Users that are implementing their own arms are now able to supply kinematic information via URDF files. 
+        This is a convenience for our users since URDF files are readily available for common hardware. </td>
+    </tr>
+<tbody>
+</table>
+
+### New Movement Sensors
+
+<table style="margin-bottom:18px">
+<tbody style="vertical-align:top;">
+    <tr>
+        <td width="120px"><strong>What is it?</strong></td>
+        <td>We added support for two new movement sensors. 
+        Refer to the <a href="/components/movement-sensor/">Movement Sensor</a> topic for more information.
+		<ul>
+		<li>ADXL345: A 3 axis accelerometer</li>
+		<li>MPU6050: 6 axis accelerometer + gyroscope</li>
+		</ul>
+		<td>
+    </tr>
+<tbody>
+</table>
+{{% /tab %}}
+
+{{% tab name="Improvements" %}}
+## Improvements
+### Improved Camera Performance/Reliability
+<table style="margin-bottom:18px">
+<tbody style="vertical-align:top;">
+    <tr>
+        <td width="120px"><strong>What is it?</strong></td>
+        <td><ol><li>Improved server-side logic to choose a mime type based on the camera image type, unless a specified mime type is supplied in the request. 
+        <stron>The default mime type for color cameras is now JPEG</strong>, which improves the streaming rate to ~15 FPS across every SDK. </li>
+		<li>Added discoverability when a camera reconnects without changing video paths. 
+        This now triggers the camera discovery process, where previously users would need to manually restart the RDK to reconnect to the camera.</li>
+		</ol>
+ </td>
+    </tr>
+
+<tbody>
+</table>
+
+### Motion Planning with Remote Components
+<table style="margin-bottom:18px">
+<tbody style="vertical-align:top;">
+    <tr>
+        <td width="120px"><strong>What is it?</strong></td>
+        <td>We made several improvements to the motion service that make it agnostic to the networking topology of a users robot.</td>
+    </tr>
+    <tr>
+        <td><strong>What does it affect?</strong></td>
+        <td><ol><li>Kinematic information is now transferred over the robot API. 
+        This means that the motion service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote Viam server.</li>
+		<li>Arms are now an input to the motion service. 
+        This means that the motion service can plan for a robot that has an arm component regardless of whether the arm is on a main or remote Viam server.</li>
+		</ol>
+</td>
+    </tr>
+<tbody>
+</table>
+
+### Motion Planning Path Smoothing
+<table style="margin-bottom:18px">
+<tbody style="vertical-align:top;">
+    <tr>
+        <td width="120px"><strong>What is it?</strong></td>
+        <td>Various small improvements to follow the last major development.</td>
+    </tr>
+    <tr>
+        <td><strong>What does it affect?</strong></td>
+        <td><ol><li>Implementation of rudimentary smoothing for RRT* paths, resulting in improvements to path quality for only a very small change in performance.</li>
+		<li>Changes to plan manager behavior to perform direct interpolation for any solution within some factor of the best score, instead of only in the case where the best IK solution could be interpolated.</li></ol></td>
+    </tr>
+<tbody>
+</table>
+
+### Improved Data Synchronization Reliability
+
+<table style="margin-bottom:18px">
+<tbody style="vertical-align:top;">
+    <tr>
+        <td width="120px"><strong>What is it?</strong></td>
+        <td>We updated how captured data is uploaded from robots to app.viam.com</td>
+    </tr>
+    <tr>
+        <td><strong>What does it affect?</strong></td>
+        <td>We previously used bidirectional streaming, with the robot streaming sensor readings to the app and the app streaming acknowledgements of progress back to the robot. 
+        We switched to a simpler unary approach which is more performant on batched unary calls, is easier to load balance, and maintains ordered captures.</td>
+    </tr>
+    <tr>
+        <td><strong>Note:</strong></td>
+        <td>This breaking change will NOT affect most users. 
+        If you have previously captured data on your robot that has not yet been synced, enable syncing to get that data into app.viam before using the new release.</td>
+    </tr>    
+<tbody>
+</table>
+
+{{% /tab %}}
+{{% tab name="Issue Resolutions" %}}
+<table style="margin-bottom:18px">
+<tbody style="vertical-align:top;">
+    <tr>
+        <td width="120px"><strong>RDK Shutdown Failure</strong></td>
+        <td>Fixed a bug where the RDK failed to shut down when connected to serial components. </td>
+    </tr>
+    <tr>
+        <td><strong>Python Documentation</strong></td>
+        <td>Fixed issues around documentation rendering improperly in some browsers.</td>
+    </tr>
+<tbody>
+</table>
+{{% /tab %}}
+{{< /tabs >}}
 ## 28 November 2022
 
 {{< tabs >}}
