@@ -39,11 +39,11 @@ To create a new organization, click **ORG SETTINGS** and use the **New Organizat
 To invite another user to your organization, type their email address into the field in **ORG SETTINGS** and click **INVITE**.
 
 {{< figure src="../img/app-usage/invite-user.png" width="400px" alt="Screenshot of the user email address invitation field on the Organization settings page." title="The user invitation email address field." >}}
+
 ### Deleting an organization
 
 From the **ORG SETTINGS** page, you can delete any organization that has no locations.
 If the organization to delete contains any locations, you must delete them before you can delete the organization.
-
 
 ## Managing locations and sub-locations
 
@@ -67,6 +67,7 @@ The Viam app allows you to share a location with any organization of which you a
 
 If you are a member of more than one organization, the Viam app lists those organizations in the **Add Organization** drop-down:
 
+<<<<<<< HEAD
 
 {{< figure src="../img/app-usage/add-org-drop-down.png" width="400px" alt="The Add Organization drop-down displaying an organization where the user is also a member." title="The Add Organization drop-down displaying an organization where the user is also a member." >}}
 
@@ -84,12 +85,30 @@ The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from
 #### Removing an organization from a shared location
 
 You can remove any organization except the parent organization and Viam Support from the shared list by simply clicking the "X" to the right of its listing. 
+=======
+{{< figure src="../img/app-usage/add-org-drop-down.png" width="400px" alt="The Add Organization drop-down displaying an organization where the user is also a member." title="The Add Organization drop-down displaying an organization where the user is also a member." >}}
+
+You can share your location with any listed organization by selecting it from the **Add Organization** drop-down and then clicking, **Add**.
+The Viam app lists the newly added organization:
+
+{{< figure src="../img/app-usage/after-add-org.png" width="400px" alt="After adding another org, the Viam app lists it under the orgs that share this location list." title="The Viam app displays newly added orgs under the orgs that share this location list." >}}
+
+#### Share a location with Viam Support
+
+You must share your location with the Viam Support team when requesting support.
+To do so, navigate to the proper location and click, **ADD VIAM SUPPORT**.
+The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from your location.
+
+#### Removing an organization from a shared location
+
+You can remove any organization except the parent organization and Viam Support from the shared list by simply clicking the "X" to the right of its listing.
+>>>>>>> 0c6ea19e4b089d1908018238eaa48b6588867325
 
 ### Sub-locations
 
 To create a sub-location:
 
-1. Create a location and add at least one robot to it. 
+1. Create a location and add at least one robot to it.
 2. From the bottom of the soon-to-be-sub-location's page, use the **New Parent Location** drop-down to choose a parent location.
 3. Click **CHANGE** after selecting the new parent location.
 
@@ -104,7 +123,11 @@ In the navigation bar on the left, navigate to the location (or *sub-location*) 
 
 When you click on a location that does not contain any robots, you'll be prompted to create a robot by typing in the **New Robot** field and clicking **ADD ROBOT**.
 
+<<<<<<< HEAD
 {{< figure src="../img/app-usage/create-robot.png" width="700px" alt="Screenshot of the 'First Location' page on the Viam App with a new robot name in the New Robot field and the ADD ROBOT button next to the field highlighted." title="The New Robot field populated with a user-chosen name." >}}
+=======
+{{< figure src="../img/app-usage/create-robot.png" width="700px" alt="Screenshot of the 'First Location' page on the Viam app with a new robot name in the New Robot field and the ADD ROBOT button next to the field highlighted." title="The New Robot field populated with a user-chosen name." >}}
+>>>>>>> 0c6ea19e4b089d1908018238eaa48b6588867325
 
 ### Deleting a robot
 
@@ -117,7 +140,7 @@ Click the name of a robot to go to that robot's page, where you'll find a variet
 ## Navigating the robot page
 
 The banner at the top of the robot page displays the robot's location, name, and a drop down list of all parts of that robot.
-The first part you create will be the _main part_ but you can create additional parts in the drop down.
+The first part you create will be the *main part* but you can create additional parts in the drop down.
 
 {{< figure src="../img/app-usage/part-drop-down.png" width="800px" alt="Screenshot of the robot page for an example robot. The parts drop down is open." title="Example Robot Page with the Parts drop-down open (boxed in red)." >}}
 
@@ -150,6 +173,7 @@ Within the **CONFIG** tab (in builder mode) are separate sub-tabs for components
 In raw JSON mode, all of these resources are displayed in a single text field.
 
 Details on configuring specific hardware components and services can be found in these topics:
+
 - [Components](/components/)
 - [Services](/services/)
 
