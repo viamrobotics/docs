@@ -23,21 +23,27 @@ If you're signing up without an invitation link, go to [app.viam.com](https://ap
 Click the drop down in the upper right corner of the page.
 You should see your name, email, and a list of organizations you belong to.
 
-<img src="../img/app-usage/my-org.png" width="500px" alt="A screenshot of the org drop down showing an example user's name, email, SIGN OUT button, list of organizations, and ORG SETTINGS button.">
+{{< figure src="../img/app-usage/my-org.png" width="400px" alt="A screenshot of the org drop down showing an example user's name, email, SIGN OUT button, list of organizations, and ORG SETTINGS button." title="The Org drop-down." >}}
 
 If you used an email invite to sign up, the organization that invited you should be listed here.
 You also have a personal organization for projects not associated with other organizations.
 
+Click an organization name to navigate to its list of locations.
+
+### Creating a new organization
+
 To create a new organization, click **ORG SETTINGS** and use the **New Organization** field in the upper left of the page.
+
+### Inviting users to your organization
 
 To invite another user to your organization, type their email address into the field in **ORG SETTINGS** and click **INVITE**.
 
-<img src="../img/app-usage/invite-user.png" width="400px" alt="Screenshot of the user invitation field in the organization settings page." title="test"><br>
+{{< figure src="../img/app-usage/invite-user.png" width="400px" alt="Screenshot of the user email address invitation field on the Organization settings page." title="The user invitation email address field." >}}
 
-You can delete organizations that are *empty of locations* in the **ORG SETTINGS** page.
-If your organization contains any locations, you must delete them before you can delete the organization.
+### Deleting an organization
 
-Click the name of an organization to go to the list of its locations.
+From the **ORG SETTINGS** page, you can delete any organization that has no locations.
+If the organization to delete contains any locations, you must delete them before you can delete the organization.
 
 ## Managing locations and sub-locations
 
@@ -53,11 +59,36 @@ Click a location's name to display the list of robots associated with that locat
 You can delete a location that is *empty of robots* by clicking the trash can icon next to the location name at the top of the page for that location.
 The icon will not appear if there are any robots in the location.
 
+### Sharing a location
+
+The Viam app allows you to share a location with any organization of which you are a member, as well as with the Viam Support Team.
+
+#### Sharing a location with a different organization
+
+If you are a member of more than one organization, the Viam app lists those organizations in the **Add Organization** drop-down:
+
+{{< figure src="../img/app-usage/add-org-drop-down.png" width="400px" alt="The Add Organization drop-down displaying an organization where the user is also a member." title="The Add Organization drop-down displaying an organization where the user is also a member." >}}
+
+You can share your location with any listed organization by selecting it from the **Add Organization** drop-down and then clicking, **Add**.
+The Viam app lists the newly added organization:
+
+{{< figure src="../img/app-usage/after-add-org.png" width="400px" alt="After adding another org, the Viam app lists it under the orgs that share this location list." title="The Viam app displays newly added orgs under the orgs that share this location list." >}}
+
+#### Share a location with Viam Support
+
+You must share your location with the Viam Support team when requesting support.
+To do so, navigate to the proper location and click, **ADD VIAM SUPPORT**.
+The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from your location.
+
+#### Removing an organization from a shared location
+
+You can remove any organization except the parent organization and Viam Support from the shared list by simply clicking the "X" to the right of its listing.
+
 ### Sub-locations
 
 To create a sub-location:
 
-1. Create a location and add at least one robot to it. 
+1. Create a location and add at least one robot to it.
 2. From the bottom of the soon-to-be-sub-location's page, use the **New Parent Location** drop-down to choose a parent location.
 3. Click **CHANGE** after selecting the new parent location.
 
@@ -72,26 +103,26 @@ In the navigation bar on the left, navigate to the location (or *sub-location*) 
 
 When you click on a location that does not contain any robots, you'll be prompted to create a robot by typing in the **New Robot** field and clicking **ADD ROBOT**.
 
-![A screenshot of the First Location page on app.viam.com with a new robot name in the New Robot field, and the ADD ROBOT button next to the field highlighted.](../img/app-usage/create-robot.png)
+{{< figure src="../img/app-usage/create-robot.png" width="700px" alt="Screenshot of the 'First Location' page on the Viam app with a new robot name in the New Robot field and the ADD ROBOT button next to the field highlighted." title="The New Robot field populated with a user-chosen name." >}}
 
 ### Deleting a robot
 
 You can delete a robot by checking the **Sure?** box in the lower left of the robot page and clicking **DELETE ROBOT**.
 
-<img src="../img/app-usage/delete.png" width="380px" alt="A screenshot of the DELETE ROBOT button and the Sure? checkbox next to it."><br>
+{{< figure src="../img/app-usage/delete.png" width="400px" alt="Screenshot of the DELETE ROBOT button and the confirmation checkbox (Sure?) next to it." title="DELETE ROBOT button and confirmation checkbox." >}}
 
-Click the name of a robot to go to that robot's page, where you'll find a variety of powerful tools for working with your robot.
+Click the name of a robot to go to that robot's page, where you'll find a variety of tools for working with your robot.
 
 ## Navigating the robot page
 
 The banner at the top of the robot page displays the robot's location, name, and a drop down list of all parts of that robot.
-The first part you create will be the _main part_ but you can create additional parts in the drop down.
+The first part you create will be the *main part* but you can create additional parts in the drop down.
 
-![A screenshot of the robot page for an example robot. The parts drop down is open and highlighted.](../img/app-usage/part-drop-down.png)
+{{< figure src="../img/app-usage/part-drop-down.png" width="800px" alt="Screenshot of the robot page for an example robot. The parts drop down is open." title="Example Robot Page with the Parts drop-down open (boxed in red)." >}}
 
 To delete a part or make it the main part, use the buttons in the top right of the **CONFIG** tab.
 
-![A screenshot of the CONFIG tab of a robot's page. The Make main part and Delete Part buttons are highlighted.](../img/app-usage/part-mgmt.png)
+{{< figure src="../img/app-usage/part-mgmt.png" width="800px" alt="Screenshot of the CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons." title="Screenshot of the CONFIG tab of a robot's page highlighting the Make main part and Delete Part buttons (boxed in red)." >}}
 
 If you've connected your robot to a machine running viam-server (instructions below), the banner also displays when the robot was last online, which version of viam-server it is running, the host name, IP address(es), and its operating system.
 
@@ -118,6 +149,7 @@ Within the **CONFIG** tab (in builder mode) are separate sub-tabs for components
 In raw JSON mode, all of these resources are displayed in a single text field.
 
 Details on configuring specific hardware components and services can be found in these topics:
+
 - [Components](/components/)
 - [Services](/services/)
 
@@ -127,17 +159,14 @@ The **LOGS** tab displays debug and other logging information from your robot.
 
 ### History
 
-The **HISTORY** tab shows the edit history of your robot's configuration file.
+The **HISTORY** tab shows a timestamped diff view of your robot's configuration changes.
 
 ### Code Sample
 
 The **CODE SAMPLE** tab contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
 There is also a JSON stub you can copy if you wish to use this robot as a remote of another robot.
 
-{{% alert title="Caution" color="caution" %}}  
-Do not share your robot secret or robot address publicly.
-Sharing this information compromises your system security by allowing unauthorized access to your computer.
-{{% /alert %}}
+{{%  snippet "secret-share.md" %}}  
 
 ### Control
 

@@ -19,7 +19,7 @@ This tutorial requires the following hardware:
 ### Identifying the architecture of your Raspberry Pi
 
 Before installing the Viam [RDK](/appendix/glossary/#rdk_anchor), you will need a Raspberry Pi running a 64-bit Linux distribution.
-If you do not have Linux installed on your Raspberry Pi, skip ahead to [Installing Raspian on the Raspberry Pi](#installing-raspian-on-the-raspberry-pi).
+If you do not have Linux installed on your Raspberry Pi, skip ahead to [Installing Raspberry Pi OS](#installing-raspberry-pi-os).
 If you already have a Raspberry Pi with Linux installed on it, check if the Linux installation on your Raspberry Pi is 64-bit.
 First, `ssh` into your Pi and then run `lscpu`.
 Example output:
@@ -27,12 +27,12 @@ Example output:
 ![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspbery Pi. A red box highlights the command and the "Architecture: aarch64.](../../installation/img/rpi-setup/lscpu-output.png)
 
 If the value of “Architecture: _'xxxxxx'_” ends in "64", you can skip ahead to [installing viam-server](#follow-the-steps-on-the-setup-tab).
-Otherwise continue to [Installing Raspian on the Raspberry Pi](#installing-raspian-on-the-raspberry-pi).
+Otherwise continue to [Installing Raspberry Pi OS](#installing-raspberry-pi-os).
 
-## Installing Raspian on the Raspberry Pi
+## Installing Raspberry Pi OS
 
 A Raspberry Pi boots from a microSD card.
-The first step is to set up a Linux installation on that microSD card.
+The first step is to set up a Linux installation (in this case Raspberry Pi OS, formerly called Raspbian) on that microSD card.
 Connect the microSD card to your computer.
 
 You will be using the Raspberry Pi Imager to flash the microSD card.
@@ -198,13 +198,13 @@ Select your location and use the form on the right to create a new Robot. If thi
 
 ![Screenshot from the Viam app showing the create a robot page.](../../installation/img/rpi-setup/add-robot.png)
 
-Navigate to your new robot, which should show the setup page as shown below:
+Navigate to your new robot, which should show the **SETUP** tab as shown below:
 
 ![Screenshot from the Viam app showing the Setup page.](../img/rpi-setup/view-robot.png)
 
 ## Follow the steps on the setup tab
 
-Follow the steps on the setup tab to install the Viam software on your Raspberry Pi.
+Follow the steps on the **SETUP** tab to install viam-server on your Raspberry Pi, making sure that Linux mode and Aarch64 architecture are selected in the upper left corner of the tab.
 
 Once you have installed viam-server on your Pi, refresh the page on the Viam app ([https://app.viam.com](https://app.viam.com)) to confirm your Pi has successfully connected and pulled the config by looking at the top of the Robot page and seeing that `host` and `ips` fields are populated and that the `last online` field reads `live`.
 
