@@ -67,25 +67,6 @@ The Viam app allows you to share a location with any organization of which you a
 
 If you are a member of more than one organization, the Viam app lists those organizations in the **Add Organization** drop-down:
 
-<<<<<<< HEAD
-
-{{< figure src="../img/app-usage/add-org-drop-down.png" width="400px" alt="The Add Organization drop-down displaying an organization where the user is also a member." title="The Add Organization drop-down displaying an organization where the user is also a member." >}}
-
-You can share your location with any listed organization by selecting it from the **Add Organization** drop-down and then clicking, **Add**. 
-The Viam App lists the newly added organization:
-
-{{< figure src="../img/app-usage/after-add-org.png" width="400px" alt="After adding another Org, the Viam App lists it under the Orgs that share this location list." title="The Viam App displays newly added Orgs under the Orgs that share this location list." >}}
-
-#### Share a location with Viam Support
-
-You must share your Location with the Viam Support team when requesting support.
-To do so, navigate to the proper Location and click, **ADD VIAM SUPPORT**.
-The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from your Location.
-
-#### Removing an organization from a shared location
-
-You can remove any organization except the parent organization and Viam Support from the shared list by simply clicking the "X" to the right of its listing. 
-=======
 {{< figure src="../img/app-usage/add-org-drop-down.png" width="400px" alt="The Add Organization drop-down displaying an organization where the user is also a member." title="The Add Organization drop-down displaying an organization where the user is also a member." >}}
 
 You can share your location with any listed organization by selecting it from the **Add Organization** drop-down and then clicking, **Add**.
@@ -102,7 +83,6 @@ The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from
 #### Removing an organization from a shared location
 
 You can remove any organization except the parent organization and Viam Support from the shared list by simply clicking the "X" to the right of its listing.
->>>>>>> 0c6ea19e4b089d1908018238eaa48b6588867325
 
 ### Sub-locations
 
@@ -123,11 +103,7 @@ In the navigation bar on the left, navigate to the location (or *sub-location*) 
 
 When you click on a location that does not contain any robots, you'll be prompted to create a robot by typing in the **New Robot** field and clicking **ADD ROBOT**.
 
-<<<<<<< HEAD
-{{< figure src="../img/app-usage/create-robot.png" width="700px" alt="Screenshot of the 'First Location' page on the Viam App with a new robot name in the New Robot field and the ADD ROBOT button next to the field highlighted." title="The New Robot field populated with a user-chosen name." >}}
-=======
 {{< figure src="../img/app-usage/create-robot.png" width="700px" alt="Screenshot of the 'First Location' page on the Viam app with a new robot name in the New Robot field and the ADD ROBOT button next to the field highlighted." title="The New Robot field populated with a user-chosen name." >}}
->>>>>>> 0c6ea19e4b089d1908018238eaa48b6588867325
 
 ### Deleting a robot
 
