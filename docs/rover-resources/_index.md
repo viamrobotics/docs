@@ -1,9 +1,10 @@
 ---
-title: "Rover Resources"
-linkTitle: "Rover Resources"
+title: "Viam Rover Resources"
+linkTitle: "Viam Rover Resources"
 weight: 100
 simple_list: true
 draft: true
 type: docs
-description: "This section provides links to resources for the rover manufactured by Viam."
+description: "This section provides links to all Viam Rover resources."
 ---
+ 
