@@ -4,6 +4,8 @@ linkTitle: "Raspberry Pi Setup"
 weight: 15
 type: "docs"
 description: "A guide to imaging a Pi, installing viam-server and syncing the Pi with the Viam app."
+aliases:
+    - /getting-started/rpi-setup/
 # SME: James
 ---
 
