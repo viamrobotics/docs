@@ -4,6 +4,8 @@ linkTitle: "Driving SCUTTLE with a Gamepad"
 weight: 20
 type: "docs"
 description: "Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad"
+tags: ["base", "scuttle", "gamepad"]
+categories: ["tutorials"]
 ---
 The purpose of this tutorial is to add a Bluetooth gamepad input controller to a SCUTTLE Robot.
 On completion of this tutorial you'll be able to drive the SCUTTLE around like an RC car using the EasySMX ESM-9101 Wireless Controller.

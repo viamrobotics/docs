@@ -4,6 +4,8 @@ linkTitle: "Data Management"
 weight: 10
 type: "docs"
 description: "Explanation of the data management service, its configuration, and its functionality."
+tags: ["data management", "data"]
+categories: ["services"]
 # SME: Alexa Greenberg
 ---
 The data management service supports capturing data from any component at a predefined frequency and syncing it to Viam's data platform.

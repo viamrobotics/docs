@@ -4,6 +4,8 @@ linkTitle: "Try Viam: Drive the Rover with the SDK"
 weight: 40
 type: "docs"
 description: "Try Viam by using the Viam SDK to make your Viam Rover move in a square."
+tags: ["base", "viam rover", "try viam"]
+categories: ["tutorials", "sdk"]
 ---
 
 Hopefully you have had a chance to play around with the Viam Rover using the [Try Viam](https://app.viam.com/try) feature, and now you are ready to control your rover with code!

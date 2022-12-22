@@ -4,6 +4,8 @@ linkTitle: "Intro to Data Management"
 weight: 60
 type: "docs"
 description: "Learn how to use Viam's Data Management service including configuring data capture and sync, filtering and viewing captured data, and exporting your data locally."
+tags: ["data management", "data"]
+categories: ["tutorials", "services"]
 # SMEs: Alexa Greenberg, Natalia Jacobowitz, Joe Karlsson
 ---
 

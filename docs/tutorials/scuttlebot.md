@@ -4,6 +4,8 @@ linkTitle: "Configure a SCUTTLE Robot"
 weight: 15
 type: "docs"
 description: "Instructions for configuring a SCUTTLE Robot on the Viam platform."
+tags: ["base", "camera", "raspberry pi"]
+categories: ["tutorials"]
 ---
 ## Requirements
 

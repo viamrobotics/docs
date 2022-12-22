@@ -4,6 +4,8 @@ linkTitle: "Servo"
 weight: 80
 type: "docs"
 description: "Explanation of servo wiring and configuration in Viam."
+tags: ["servo"]
+categories: ["components"]
 # SME: #team-bucket
 ---
 Hobby servos are a type of actuator comprising a small motor with built-in closed-loop control.

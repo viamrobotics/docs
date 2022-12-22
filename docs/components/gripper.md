@@ -5,6 +5,8 @@ weight: 60
 draft: true
 type: "docs"
 description: "Explanation of gripper configuration and usage in Viam."
+tags: ["gripper"]
+categories: ["components"]
 ---
 This will look similar to the [motor doc](../motor/), but describing how to wire up and configure a gripper.
 

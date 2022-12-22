@@ -4,6 +4,8 @@ linkTitle: "Input Controller"
 weight: 60
 type: "docs"
 description: "Explanation of input controller/gamepad configuration and usage in Viam."
+tags: ["input controller"]
+categories: ["components"]
 # SME: James
 ---
 ## Input Interface
