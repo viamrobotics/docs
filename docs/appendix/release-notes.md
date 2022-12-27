@@ -32,8 +32,9 @@ description:
     <tr>
         <td width="120px"><strong>What is it?</strong></td>
         <td>This new feature allows users to implement their own custom components or component models using our Go SDK. 
-        We are now working to add support in each of our SDKs so that users can create custom resources in a variety of programming languages.</td>
-        <td>Previously, the only way for users to implement custom resources was to use an SDK as a server.
+        We are now working to add support in each of our SDKs so that users can create custom resources in a variety of programming languages.
+        
+        Previously, the only way for users to implement custom resources was to use an SDK as a server.
         This meant that a user needed to run a viam-server for their custom component and add it to their main part as a remote.
         With custom modular resources, users no longer need to run separate server instances for each custom resource which saves additional network requests.
 
