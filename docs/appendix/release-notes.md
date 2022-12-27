@@ -13,12 +13,12 @@ description:
 {{% tab name="Versions" %}}
 
 ## Release Versions
-* rdk - v3.0.0
-* api - v0.1.29
-* slam - v0.1.13
-* viam-python-sdk - v0.2.6
-* goutils - v0.1.6
-* rust-utils - v0.0.6
+* rdk - **v3.0.0**
+* api - **v0.1.29**
+* slam - **v0.1.13**
+* viam-python-sdk - **v0.2.6**
+* goutils - **v0.1.6**
+* rust-utils - **v0.0.6**
 <br><br><br>(**Bold=updated version**)
 
 {{% /tab %}}
