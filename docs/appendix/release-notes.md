@@ -33,11 +33,9 @@ description:
         <td width="120px"><strong>What is it?</strong></td>
         <td>This new feature allows users to implement their own custom components or component models using our Go SDK. 
         We are now working to add support in each of our SDKs so that users can create custom resources in a variety of programming languages.
-        
         Previously, the only way for users to implement custom resources was to use an SDK as a server.
         This meant that a user needed to run a viam-server for their custom component and add it to their main part as a remote.
-        With custom modular resources, users no longer need to run separate server instances for each custom resource which saves additional network requests.
-
+        With custom modular resources, users no longer need to run separate server instances for each custom resource which saves additional network requests.<br/>
         {{< alert title="Note" color="note" >}}
 This breaking change affects ALL users who are using the Viam app to configure their robot. 
 You will need to update to at latest version of the RDK version V3.0.0 to access your robot via the remote control page.
@@ -84,7 +82,7 @@ You will need to update to at latest version of the RDK version V3.0.0 to access
     <tr>
         <td width="120px"><strong>What is it?</strong></td>
         <td><ol><li>Improved server-side logic to choose a mime type based on the camera image type, unless a specified mime type is supplied in the request. 
-        <stron>The default mime type for color cameras is now JPEG</strong>, which improves the streaming rate across every SDK. </li>
+        <strong>The default mime type for color cameras is now JPEG</strong>, which improves the streaming rate across every SDK. </li>
 		<li>Added discoverability when a camera reconnects without changing video paths. 
         This now triggers the camera discovery process, where previously users would need to manually restart the RDK to reconnect to the camera.</li>
 		</ol>
