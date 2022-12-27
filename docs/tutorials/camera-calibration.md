@@ -4,8 +4,7 @@ linkTitle: "Calibrate a Camera"
 weight: 46
 type: "docs"
 description: "Instructions for calibrating a camera."
-tags: ["camera"]
-categories: ["tutorials", "components"]
+tags: ["camera", "components"]
 ---
 ## Camera Calibration
 

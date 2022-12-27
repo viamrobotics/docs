@@ -5,8 +5,7 @@ weight: 70
 type: "docs"
 draft: true
 description: "Background and Technical information for the Viam the SLAM service, its configuration, its functionality, and its interfaces."
-tags: ["slam"]
-categories: ["services"]
+tags: ["slam", "services"]
 # SMEs: Jeremy, Kat
 ---
 

@@ -4,8 +4,7 @@ linkTitle: "SDKs as Client"
 weight: 99
 type: "docs"
 description: "An introduction to Viam's SDKs and how to use them to access and control your robot."
-tags: ["client"]
-categories: ["sdk"]
+tags: ["client", "sdk"]
 ---
 
 Viam offers SDKs in popular languages which wrap the viam-server [gRPC](https://grpc.io/) APIs and streamline connection, authentication, and encryption against a server.

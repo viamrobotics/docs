@@ -5,8 +5,7 @@ weight: 45
 type: "docs"
 draft: true
 description: "Adding an External Intel Realsense Camera to Viam."
-tags: ["camera", "realsense camera"]
-categories: ["components"]
+tags: ["camera", "realsense camera", "components"]
 ---
 There are two ways to add your intel RealSense camera to Viam. You can either use a gRPC server or an HTTP server. 
 

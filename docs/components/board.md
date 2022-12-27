@@ -4,8 +4,7 @@ linkTitle: "Board"
 weight: 20
 type: "docs"
 description: "Explanation of board configuration and usage in Viam."
-tags: ["board"]
-categories: ["components"]
+tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
 In the Viam framework, a **board** is the signal wire hub of a robot.

@@ -4,8 +4,7 @@ linkTitle: "RGB Line Follower"
 weight: 35
 type: "docs"
 description: "Build a line-following robot that relies on a webcam and color detection."
-tags: ["base", "vision", "detector", "camera"]
-categories: ["tutorials", "services"]
+tags: ["base", "vision", "detector", "camera", "services"]
 ---
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.

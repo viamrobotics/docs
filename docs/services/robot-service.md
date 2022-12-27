@@ -3,8 +3,7 @@ title: "Robot Service"
 linkTitle: "Robot Service"
 description: "Explanation of the robot service, its configuration, and its functionality."
 type: "docs"
-tags: ["robot state"]
-categories: ["services"]
+tags: ["robot state", "services"]
 # SME: Cheuk
 ---
 Robot Service constitutes a minimal set of APIs that most robots (Viam Server, [Viam Python SDK](https://python.viam.dev/) and various SDKs) should support. 

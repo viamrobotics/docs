@@ -4,8 +4,7 @@ linkTitle: "SDKs as Server"
 weight: 99
 type: "docs"
 description: "An introduction to Viam's SDKs and how to use them to drive hardware not natively supported in the RDK."
-tags: ["server"]
-categories: ["sdk"]
+tags: ["server", "sdk"]
 ---
 
 Viam's Software Development Kits (SDKs) provide a wide array of components to customize. (You can browse through the [^API Reference][API Reference](https://python.viam.dev/autoapi/viam/components/index.html) to see all of them.) But if you want to use a component that is not natively supported by Viam's SDK, then you will need to create a server component implementation in order to use your custom component.

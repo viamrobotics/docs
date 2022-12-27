@@ -5,7 +5,6 @@ weight: 41
 type: "docs"
 description: "Instructions for creating a mock robot using just your personal computer so you can try using Viam without any robotic hardware."
 tags: ["mock", "simulation"]
-categories: ["tutorials"]
 ---
 
 ## Introduction
