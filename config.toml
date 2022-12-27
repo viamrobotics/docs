@@ -4,7 +4,7 @@ defaultContentLanguageInSubdir = false
 enableMissingTranslationPlaceholders = false
 enableRobotsTXT = true
 enableGitInfo = false
-disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
+disableKinds = ["RSS"]
 
 [taxonomies]
 tag = "tags"
@@ -12,7 +12,7 @@ category = "categories"
 
 [params.taxonomy]
 # taxonomyCloud, taxonomyCloudTitle, and taxonomyPageHeader are parallel arrays
-taxonomyCloud = ["tags", "categories"]
+taxonomyCloud = []
 taxonomyCloudTitle = ["Tag Cloud", "Categories"]
 taxonomyPageHeader = ["tags", "categories"]
 pygmentsCodeFences = true

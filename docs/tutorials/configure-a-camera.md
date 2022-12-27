@@ -5,6 +5,7 @@ weight: 12
 type: "docs"
 draft: false
 description: "Instructions for configuring a webcam."
+tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
