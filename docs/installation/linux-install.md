@@ -4,6 +4,8 @@ linkTitle: "Viam Server on Linux"
 weight: 10
 type: "docs"
 description: "How to install and run viam-server on Linux and sync a machine with the Viam app ([https://app.viam.com](https://app.viam.com))"
+aliases:
+    - /getting-started/linux-install/
 # SME: James
 ---
 The viam-server is distributed as an AppImage.

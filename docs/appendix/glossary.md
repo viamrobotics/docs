@@ -17,7 +17,7 @@ For example, a wheeled rover, boat, or flying drone.
 Examples of boards include Jetson, Raspberry Pi, Numato, or Arduino.
 Boards like Jetson and Pi run _viam-server_ and can expose the board component itself.
 
-**Client Application**: Client applications are what apply business logic to operate your robot. 
+**Client Application**: Client applications are what apply business logic to operate your robot.
 You can run a client application on the same part that runs the viam-server, or on a separate device.
 Client applications typically use an SDK to talk to their robot.
 
@@ -34,51 +34,51 @@ The location of a frame is described in relation to its parent frame using rigid
 
 <a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">**gRPC**: gRPC Remote Procedure Calls</a>[^grpc] is a cross-platform open source high performance Remote Procedure Call (RPC) framework.
 
-[^grpc]:GRPC, webpage, 2022, Wikipedia authors:  <a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">ht<span><span>tps://en.wikipedia.org/wiki/GRPC</a> 
+[^grpc]:GRPC, webpage, 2022, Wikipedia authors:  <a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">ht<span><span>tps://en.wikipedia.org/wiki/GRPC</a>
 
 **Model**: A particular implementation of a component type.
 For example, UR5e is a model of the arm component type.
 
-**Process**: Processes are binaries or scripts that run on a part. 
+**Process**: Processes are binaries or scripts that run on a part.
 Processes are often used to create a new local instance of viam-server to implement drivers for custom components, or to run a client application.
 They provide a bespoke, OS-specific process managed by the viam-server to either run once or indefinitely; for example, to run one of Viam's camera servers.
 
 <a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. [Read More](../../product-overviews/rdk/)
 
-**Resource**: Resources are individual, addressable elements of a robot (RDK definition) operated by parts. 
+**Resource**: Resources are individual, addressable elements of a robot (RDK definition) operated by parts.
 Parts operate two types of Resources: physical components and software services.
-Each part has local resources, and also surfaces remote resources when a remote is established to another part. 
+Each part has local resources, and also surfaces remote resources when a remote is established to another part.
 The capabilities of each resource are exposed through the part’s API.
 
 **Resource Config**: The configuration element of either a component or a service.
 Typically expressed in JSON.
 
-**Remote**: A robot part which is controlled by another robot part. 
-The connection from one part to another part. 
-Remotes are established using direct gRPC or gRPC via WebRTC. 
-Within a robot, a main part always establishes a remote to each of the other parts associated with the robot. 
-When a remote is established, the part establishing the remote will surface all of the other part’s resources as its own. 
-A client application connecting to the part will see all of the part’s local resources and remote resources. 
+<a id="remote_anchor" />**Remote**: A robot part which is controlled by another robot part.
+The connection from one part to another part.
+Remotes are established using direct gRPC or gRPC via WebRTC.
+Within a robot, a main part always establishes a remote to each of the other parts associated with the robot.
+When a remote is established, the part establishing the remote will surface all of the other part’s resources as its own.
+A client application connecting to the part will see all of the part’s local resources and remote resources.
 
-You can establish remotes to parts in different robots. However, Viam recommends using a client application to control interaction between robots. 
+You can establish remotes to parts in different robots. However, Viam recommends using a client application to control interaction between robots.
 
 **Remote UI**: Uses the Web JS SDK and provides UI elements to control a robot via WebRTC.
 
-**Robot**: The configuration and entry point for a computer and components coupled into one logical grouping of parts that work together to complete tasks. 
-A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor. 
-A robot always has a main part that receives client requests, and any number of other parts. 
+**Robot**: The configuration and entry point for a computer and components coupled into one logical grouping of parts that work together to complete tasks.
+A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor.
+A robot always has a main part that receives client requests, and any number of other parts.
 
-A simple robot often contains a single part. 
-For example, a rover has one main part with motors and a camera all attached to a board. 
-However, a more sophisticated robot, like an autonomous arm, could consist of multiple parts. 
+A simple robot often contains a single part.
+For example, a rover has one main part with motors and a camera all attached to a board.
+However, a more sophisticated robot, like an autonomous arm, could consist of multiple parts.
 One main part receiving client application requests and relaying them to the other parts, one part with cameras for image processing, and one part for movement and actuating the arm.
 
 **Robot Config**: The complete configuration of a single robot part.
 Typically expressed in JSON.
 
-**Robot Part**: A part runs an instance of viam-server to operate underlying resources – hardware components, software services, and any additional processes. Parts expose a uniform API for their resources. 
+**Robot Part**: A part runs an instance of viam-server to operate underlying resources – hardware components, software services, and any additional processes. Parts expose a uniform API for their resources.
 
-Every robot has a main part that receives client requests and any number of other parts. 
+Every robot has a main part that receives client requests and any number of other parts.
 Parts connect to other parts by establishing a remote.  
 For example, one robot may be composed of two parts, a Jetson and a Pi.
 There is generally one robot part per CPU.
@@ -87,10 +87,10 @@ There is generally one robot part per CPU.
 
 * One per language.
 * Can be used as a server for a custom component implementation.
-    * Hosts a gRPC server implementing the Viam Robot API.
-    * That serves functionality for all registered resources.
+  * Hosts a gRPC server implementing the Viam Robot API.
+  * That serves functionality for all registered resources.
 * Can be used as a client.
-    * To connect to a robot implementing the Viam Robot API.
+  * To connect to a robot implementing the Viam Robot API.
 * Effectively, non-golang versions of RDK’s resource authoring and activation functionality.
 
 **Service**: Services are on-device software for complex capabilities such as SLAM, Computer Vision, Motion Planning, and Data Collection. Services are resources that represent elements of software that typically work with components; for example, navigation, base remote control, or metadata service.
@@ -102,7 +102,7 @@ There is generally one robot part per CPU.
 * The RDKs/SDKs use this to act as clients.
 * Currently expressed as a collection of Protocol Buffer files.
 * Does not mandate gRPC as the transport mechanism.
-    * However, all RDKs/SDKs written by Viam use gRPC.
+  * However, all RDKs/SDKs written by Viam use gRPC.
 
 ## Other important non-Viam terminology
 
