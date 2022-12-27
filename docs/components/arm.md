@@ -4,6 +4,7 @@ linkTitle: "Arm"
 weight: 10
 type: "docs"
 description: "Explanation of arm configuration and usage in Viam."
+tags: ["arm", "components"]
 # SME: Peter L
 ---
 

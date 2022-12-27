@@ -4,6 +4,7 @@ linkTitle: "Data Management"
 weight: 99
 type: "docs"
 description: "A guide to Viam's data ingestion and management tooling."
+tags: ["data", "data management", "services"]
 # SME: Alexa Greenberg
 ---
 

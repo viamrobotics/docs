@@ -1,9 +1,10 @@
 ---
 title: "The Robot Frame System"
 linkTitle: "Frame System"
-summary: "Describes the Frame System, its configuration, and its functionality."
+summary: "Describes the frame system, its configuration, and its functionality."
 type: docs
 weight: 45
+tags: ["frame system", "services"]
 # SMEs: Peter L, Gautham, Bijan
 ---
 Any robot configured in Viam comes with a service we call the Frame System. 
