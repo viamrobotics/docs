@@ -19,7 +19,7 @@ description:
 * viam-python-sdk - **v0.2.6**
 * goutils - **v0.1.6**
 * rust-utils - **v0.0.6**
-<br><br><br>(**Bold=updated version**)
+<br><br>(**Bold=updated version**)
 
 {{% /tab %}}
 
