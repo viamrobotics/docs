@@ -31,8 +31,8 @@ description:
 <tbody style="vertical-align:top;">
     <tr>
         <td width="120px"><strong>What is it?</strong></td>
-        <td>This new feature allows users to implement their own custom driver by writing go code. 
-        We are now working to add modules to each of our SDKs so that users can write drivers in a variety of programming languages.</td>
+        <td>This new feature allows users to implement their own custom components or component models using our Go SDK. 
+        We are now working to add support in each of our SDKs so that users can create custom resources in a variety of programming languages..</td>
     </tr>
 <tbody>
 </table>
@@ -112,7 +112,7 @@ description:
     </tr>
     <tr>
         <td><strong>What does it affect?</strong></td>
-        <td><ol><li>Implementation of rudimentary smoothing for RRT* paths, resulting in improvements to path quality for only a very small change in performance.</li>
+        <td><ol><li>Implementation of rudimentary smoothing for RRT* paths, resulting in improvements to path quality, with negligible change to planning performance".</li>
 		<li>Changes to plan manager behavior to perform direct interpolation for any solution within some factor of the best score, instead of only in the case where the best IK solution could be interpolated.</li></ol></td>
     </tr>
 <tbody>
@@ -146,7 +146,7 @@ If you have previously captured data on your robot that has not yet been synced,
 <tbody style="vertical-align:top;">
     <tr>
         <td width="120px"><strong>RDK Shutdown Failure</strong></td>
-        <td>Fixed a bug where the RDK failed to shut down when connected to serial components. </td>
+        <td>Fixed a bug where RDK shutdown requests sometimes failed when connected to serial components. </td>
     </tr>
     <tr>
         <td><strong>Python Documentation</strong></td>
