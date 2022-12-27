@@ -7,18 +7,18 @@ type: "docs"
 description:
 # SME: Mike A.
 ---
-## XX December 2022
+## 27 December 2022
 
 {{< tabs >}}
 {{% tab name="Versions" %}}
 
-## Release Versions - new numbers coming
-* rdk - v0.2.3
-* api - v0.1.12
-* slam - v0.1.9
-* viam-python-sdk - v0.2.0
-* goutils - v0.1.4
-* rust-utils - v0.0.5
+## Release Versions
+* rdk - v3.0.0
+* api - v0.1.29
+* slam - v0.1.13
+* viam-python-sdk - v0.2.6
+* goutils - v0.1.6
+* rust-utils - v0.0.6
 <br><br><br>(**Bold=updated version**)
 
 {{% /tab %}}
@@ -33,6 +33,15 @@ description:
         <td width="120px"><strong>What is it?</strong></td>
         <td>This new feature allows users to implement their own custom components or component models using our Go SDK. 
         We are now working to add support in each of our SDKs so that users can create custom resources in a variety of programming languages.</td>
+        <td>Previously, the only way for users to implement custom resources was to use an SDK as a server.
+        This meant that a user needed to run a viam-server for their custom component and add it to their main part as a remote.
+        With custom modular resources, users no longer need to run separate server instances for each custom resource which saves additional network requests.
+
+        {{< alert title="Note" color="note" >}}
+This breaking change affects ALL users who are using the Viam app to configure their robot. 
+You will need to update to at latest version of the RDK version V3.0.0 to access your robot via the remote control page.
+{{< /alert >}}
+        </td>
     </tr>
 <tbody>
 </table>
