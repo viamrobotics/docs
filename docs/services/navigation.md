@@ -4,6 +4,7 @@ linkTitle: "Navigation"
 weight: 30
 type: "docs"
 description: "Explanation of the navigation service, its configuration, and its functionality."
+tags: ["navigation", "services"]
 ---
 # Coming soon!
 This page will contain:

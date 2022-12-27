@@ -4,6 +4,7 @@ linkTitle: "Try Viam Rover Tutorial"
 weight: 39
 type: "docs"
 description: "Instructions for renting and remotely configuring and controlling a Viam Rover located on-site at Viam in NYC."
+tags: ["try viam", "app"]
 ---
 
 _Try Viam_ is a way to try out the platform without setting up any hardware yourself.

@@ -4,6 +4,7 @@ linkTitle: "Dart Launcher Robot"
 weight: 160
 type: "docs"
 description: "Use Viam to configure a rover and launch a foam dart activated by GPIO pins on a Raspberry Pi."
+tags: ["base", "motor", "camera", "raspberry pi"]
 # SME: Kurt S. and Hazal M.
 ---
 

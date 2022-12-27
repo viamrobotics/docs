@@ -4,6 +4,7 @@ linkTitle: "Motion"
 weight: 20
 type: "docs"
 description: "Explanation of the motion service, its configuration, and its functionality."
+tags: ["motion", "motion planning", "services"]
 # SME: Peter Lo Verso
 ---
 Viam’s Motion Service enables your robot to plan and move itself or its components relative to itself, other robots, and the world.

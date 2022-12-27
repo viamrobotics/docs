@@ -3,7 +3,8 @@ title: "Base Component"
 linkTitle: "Base"
 weight: 10
 type: "docs"
-description: "Explanation of base configuration, and usage in Viam."
+description: "Explanation of base configuration and usage in Viam."
+tags: ["base", "components"]
 # SMEs: Steve B
 ---
 

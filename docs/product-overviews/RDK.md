@@ -4,6 +4,7 @@ linkTitle: "Robot Development Kit"
 weight: 99
 type: "docs"
 description: "An overview of Viam's Robot Development Kit (RDK)."
+tags: ["server", "rdk"]
 ---
 
 Make sure to understand the [Viam high-level overview first](../../getting-started/high-level-overview/).

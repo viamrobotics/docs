@@ -4,6 +4,7 @@ linkTitle: "SDKs as Server"
 weight: 99
 type: "docs"
 description: "An introduction to Viam's SDKs and how to use them to drive hardware not natively supported in the RDK."
+tags: ["server", "sdk"]
 ---
 
 Viam's Software Development Kits (SDKs) provide a wide array of components to customize.
