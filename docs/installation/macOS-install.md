@@ -4,6 +4,8 @@ linkTitle: "Viam Server on macOS"
 weight: 10
 type: "docs"
 description: "How to install and run viam-server on macOS and sync a machine with the Viam app ([https://app.viam.com](https://app.viam.com))"
+aliases:
+    - /getting-started/macos-install/
 # SME: James
 ---
 `viam-server` is available for macOS users via [Homebrew](https://docs.brew.sh).
