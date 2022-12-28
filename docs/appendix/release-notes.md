@@ -28,17 +28,17 @@ description:
 
 ### Camera Reconnection Issue
 
-<tbody style="vertical-align:top;">
-    <tr>
-        <td width="120px"><strong>What is it?</strong></td>
-        <td>When a camera loses connection, it now automatically closes the connection to its video path.
-        Previously, when users supplied a video path in their camera configuration, they encountered issues if the camera tried to reconnect because the supplied video path was already being used for the old connection. </td>
-    </tr>
-    <tr>
-        <td><strong>What does it affect?</strong></td>
-        <td>On losing their video path connection, cameras now automatically close the video path connection.</td>
-    </tr>
-<tbody>
+  <tbody style="vertical-align:top;">
+      <tr>
+          <td width="120px"><strong>What is it?</strong></td>
+          <td>When a camera loses connection, it now automatically closes the connection to its video path.
+          Previously, when users supplied a video path in their camera configuration, they encountered issues if the camera tried to reconnect because the supplied video path was already being used for the old connection. </td>
+      </tr>
+      <tr>
+          <td><strong>What does it affect?</strong></td>
+          <td>On losing their video path connection, cameras now automatically close the video path connection.</td>
+      </tr>
+  <tbody>
 </table>
 
 {{% /tab %}}
@@ -49,29 +49,30 @@ description:
 #### Camera Configuration Changes
 
 <table style="margin-bottom:18px">
-<tbody style="vertical-align:top;">
-    <tr>
-        <td width="120px"><strong>What is it?</strong></td>
-        <td>We updated the underlying configuration schemes for the following camera models.
-        We are also migrating  existing camera configurations to align with the new schemas.
-        To learn more about the changes, please refer to our <a href="/components/camera/">camera documentation</a>.
-        <ul>
-          <li>Webcam</li>
-          <li>FFmpeg</li>
-          <li>Transform</li>
-          <li>Join Pointclouds</li>
-        </ul>
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>We updated the underlying configuration schemes for the following camera models.
+            We are also migrating  existing camera configurations to align with the new schemas.
+            To learn more about the changes, please refer to our <a href="/components/camera/">camera documentation</a>.
+            <ul>
+                <li>Webcam</li>
+                <li>FFmpeg</li>
+                <li>Transform</li>
+                <li>Join Pointclouds</li>
+            </ul>
+    </tbody>
 </table>
 
 #### Robot Details Page
 
 <table style="margin-bottom:18px">
-  <tbody style="vertical-align:top;">
-      <tr>
-          <td width="120px"><strong>What is it?</strong></td>
-          <td>Based on user feedback, we changed the name of the <strong>CONNECT</strong> tab to <strong>CODE SAMPLE</strong>.</td>
-       </tr>
-  <tbody>
+    <tbody style="vertical-align:top;">
+            <tr>
+                    <td width="120px"><strong>What is it?</strong></td>
+                    <td>Based on user feedback, we changed the name of the <strong>CONNECT</strong> tab to <strong>CODE SAMPLE</strong>.</td>
+            </tr>
+    <tbody>
 </table>
 
 {{% /tab %}}
@@ -99,38 +100,38 @@ description:
 #### New servo model
 
 <table style="margin-bottom:18px">
-<tbody style="vertical-align:top;">
-    <tr>
-        <td width="120px"><strong>What is it?</strong></td>
-        <td>We added a new servo model called <code>GPIO</code>. This represents <emphasis>any</emphasis> servo that is connected directly to <emphasis>any</emphasis> board via GPIO pins. We created this component in response to the common practice of connecting servos to separate hats, such as the <code>PCA9685</code>, rather than connecting directly to the board. Our previous implementation required a direct connection from the servo to the Raspberry Pi.</td>
-    </tr>
-    <tr>
-        <td><strong>What does it affect?</strong></td>
-        <td>While Viam continues to support the <code>pi</code> model of servo, we encourage users to begin using the <code>GPIO</code> model in <emphasis>all<emphasis> of their robots moving forward because it is board-agnostic.</td>
-    </tr>
-<tbody>
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>We added a new servo model called <code>GPIO</code>. This represents <emphasis>any</emphasis> servo that is connected directly to <emphasis>any</emphasis> board via GPIO pins. We created this component in response to the common practice of connecting servos to separate hats, such as the <code>PCA9685</code>, rather than connecting directly to the board. Our previous implementation required a direct connection from the servo to the Raspberry Pi.</td>
+        </tr>
+        <tr>
+            <td><strong>What does it affect?</strong></td>
+            <td>While Viam continues to support the <code>pi</code> model of servo, we encourage users to begin using the <code>GPIO</code> model in <emphasis>all<emphasis> of their robots moving forward because it is board-agnostic.</td>
+        </tr>
+    <tbody>
 </table>
 
 #### Added RTT to remote control page
 
 <table style="margin-bottom:18px">
-<tbody style="vertical-align:top;">
-    <tr>
-        <td width="120px"><strong>What is it?</strong></td>
-        <td>We added a new badge in the <code>Current Operations</code> card of the remote control page of the Viam app. This badge lists the RTT (round trip time) of a request from your client to the robot, i.e., the time to complete one request/response cycle.</td>
-    </tr>
-<tbody>
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>We added a new badge in the <code>Current Operations</code> card of the remote control page of the Viam app. This badge lists the RTT (round trip time) of a request from your client to the robot, i.e., the time to complete one request/response cycle.</td>
+        </tr>
+    <tbody>
 </table>
 
 #### Python 3.8 Support
 
 <table style="margin-bottom:18px">
-<tbody style="vertical-align:top;">
-    <tr>
-        <td width="120px"><strong>What is it?</strong></td>
-        <td>Our Python SDK now supports Python 3.8, in addition to 3.9 and 3.10. You will need to update the Python SDK to access the new feature.</td>
-    </tr>
-<tbody>
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>Our Python SDK now supports Python 3.8, in addition to 3.9 and 3.10. You will need to update the Python SDK to access the new feature.</td>
+        </tr>
+    <tbody>
 </table>
 
 {{% /tab %}}
