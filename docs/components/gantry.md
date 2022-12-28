@@ -46,64 +46,92 @@ The attributes are configured as such for a single-axis gantry:
 
 <table>
   <tr>
-   <td><strong>Attribute</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
+    <td>
+      <strong>
+        Attribute
+      </strong>
+    </td>
+    <td>
+      <strong>
+        Description
+      </strong>
+    </td>
   </tr>
   <tr>
-   <td>board
-   </td>
-   <td>The name of the board that is connected to the and limit pin switches.
-   </td>
+    <td>
+      board
+    </td>
+    <td>
+      The name of the board that is connected to the and limit pin switches.
+    </td>
   </tr>
   <tr>
-   <td>motor
-   </td>
-   <td>The name of the motor that moves the gantry.
-   </td>
+    <td>
+      motor
+    </td>
+    <td>
+      The name of the motor that moves the gantry.
+    </td>
   </tr>
   <tr>
-   <td>limit_pins
-   </td>
-   <td>The pins attached to the limit switches on either end. Optional for encoded motor gantry types.
-   </td>
+    <td>
+      limit_pins
+    </td>
+    <td>
+      The pins attached to the limit switches on either end. Optional for encoded
+      motor gantry types.
+    </td>
   </tr>
   <tr>
-   <td>limit_pin_enabled
-   </td>
-   <td>Is the Limit Pin enabled? I.e., true (pin HIGH)?
-   </td>
+    <td>
+      limit_pin_enabled
+    </td>
+    <td>
+      Is the Limit Pin enabled? I.e., true (pin HIGH)?
+    </td>
   </tr>
   <tr>
-   <td>mm_per_revolution
-   </td>
-   <td>How far the gantry moves linearly per one revolution of the motor’s output shaft.
-<p>
-This typically corresponds to
-<p>
-Distance = PulleyDiameter *2* pi
-<p>
-or the pitch of a linear screw.
-   </td>
+    <td>
+      mm_per_revolution
+    </td>
+    <td>
+      How far the gantry moves linearly per one revolution of the motor’s output
+      shaft.
+      <p>
+        This typically corresponds to
+        <p>
+          Distance = PulleyDiameter *2* pi
+          <p>
+            or the pitch of a linear screw.
+    </td>
   </tr>
   <tr>
-   <td>gantry_rpm
-   </td>
-   <td>The gantry’s motor’s default rpm.
-   </td>
+    <td>
+      gantry_rpm
+    </td>
+    <td>
+      The gantry’s motor’s default rpm.
+    </td>
   </tr>
   <tr>
-   <td>axis
-   </td>
-   <td>The axis in which the gantry is allowed to move relative to the reference frame (x, y, z).
-<p>
-You can add a frame to a single-axis gantry attribute to describe its position in the local “world” frame.
-<p>
-See <a href="/services/frame-system">Frame System</a> for further information.
-   </td>
+    <td>
+      axis
+    </td>
+    <td>
+      The axis in which the gantry is allowed to move relative to the reference
+      frame (x, y, z).
+      <p>
+        You can add a frame to a single-axis gantry attribute to describe its
+        position in the local “world” frame.
+        <p>
+          See
+          <a href="/services/frame-system">
+            Frame System
+          </a>
+          for further information.
+    </td>
   </tr>
-  </table>
+</table>
 
 A frame can also be added to a one axis gantry attribute to describe its position in the local “world” [frame](/services/frame-system.md/).
 
@@ -113,18 +141,27 @@ In addition to the attributes for single-axis gantries, multi-axis gantries also
 
 <table>
   <tr>
-   <td><strong>Attribute</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
+    <td>
+      <strong>
+        Attribute
+      </strong>
+    </td>
+    <td>
+      <strong>
+        Description
+      </strong>
+    </td>
   </tr>
   <tr>
-   <td><strong>subaxes_list</strong>
-   </td>
-   <td>A complete list of the sub-axes that compose the multi-axis gantry.
-   </td>
+    <td>
+      <strong>
+        subaxes_list
+      </strong>
+    </td>
+    <td>
+      A complete list of the sub-axes that compose the multi-axis gantry.
+    </td>
   </tr>
-
 </table>
 
 ## Gantry Methods

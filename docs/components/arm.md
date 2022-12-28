@@ -14,13 +14,13 @@ The end effector is able to be placed at arbitrary cartesian positions relative 
 As an example, to move an xArm6 whose component name is "my_xArm6" forwards in the X direction by 300mm:
 
 ```python
-   from viam.components.arm import Arm
-   from viam.proto.api.common import WorldState
-   
-   arm = Arm.from_robot(robot=robot, name='my_xArm6')
-   pos = await arm.get_end_position()
-   pos.x += 300
-   await arm.move_to_position(pose=pos, world_state=WorldState())
+from viam.components.arm import Arm
+from viam.proto.api.common import WorldState
+
+arm = Arm.from_robot(robot=robot, name='my_xArm6')
+pos = await arm.get_end_position()
+pos.x += 300
+await arm.move_to_position(pose=pos, world_state=WorldState())
 ```
 
 This document will teach you how to configure, connect to, and move the arms with preprogrammed support from Viam, as well as introduce you to the steps required to implement support for any other arm.
@@ -55,32 +55,32 @@ If there is no way to move to the desired location in a straight line for the ar
 ```json-viam
 {
   "components": [
- {
-   "attributes": {
-     "host": "10.0.0.97"
-   },
-   "depends_on": [],
-   "frame": {
-     "orientation": {
-       "type": "ov_degrees",
-       "value": {
-         "th": 0,
-         "x": 0,
-         "y": 0,
-         "z": 1
-       }
-     },
-     "parent": "world",
-     "translation": {
-       "x": 0,
-       "y": 0,
-       "z": 0
-     }
-   },
-   "model": "xArm6",
-   "name": "xArm6",
-   "type": "arm"
- }
+    {
+      "attributes": {
+        "host": "10.0.0.97"
+      },
+      "depends_on": [],
+      "frame": {
+        "orientation": {
+          "type": "ov_degrees",
+          "value": {
+            "th": 0,
+            "x": 0,
+            "y": 0,
+            "z": 1
+          }
+        },
+        "parent": "world",
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "model": "xArm6",
+      "name": "xArm6",
+      "type": "arm"
+    }
   ]
 }
 ```
@@ -108,55 +108,66 @@ It will then call the Viam motion service to move the arm (rather than `arm.move
 As there is no straight-line path to the goal that does not intersect the obstacle, this request will fail with a "unable to solve for position" GRPC error.
 
 ``` python
- motion_svc = MotionServiceClient.from_robot(robot, "NAME”)
-   arm = Arm.from_robot(robot=robot, name='xArm6')
-   pos = await arm.get_end_position()
-   
-   print("~~~~TESTING ARM LINEAR MOVE~~~~~")
-   pos = await arm.get_end_position()
-   print(pos)
-   pos.x += 300
-   # Note we are passing an empty worldstate
-   await arm.move_to_position(pose=pos, world_state=WorldState())
-   pos = await arm.get_end_position()
-   print(pos)
-   pos.x -= 300
-   await asyncio.sleep(1)
-   await arm.move_to_position(pose=pos, world_state=WorldState())
-   
-   print("~~~~TESTING MOTION SERVICE MOVE~~~~~")
-   
-   geom = Geometry(center=Pose(x=pos.x + 150, y=pos.y, z=pos.z), box=RectangularPrism(width_mm =2, length_mm =5, depth_mm =5))
-   geomFrame = GeometriesInFrame(reference_frame="xArm6", geometries=[geom])
-   worldstate = WorldState(obstacles=[geomFrame])
-   
-   pos = await arm.get_end_position()
-   jpos = await arm.get_joint_positions()
-   print(pos)
-   print("joints", jpos)
-   pos.x += 300
-   
-   for resname in robot.resource_names:
-     if resname.name == "xArm6":
-       armRes = resname
-   
-   # We pass the WorldState above with the geometry. The arm should successfully route around it.
-   await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
-   pos = await arm.get_end_position()
-   jpos = await arm.get_joint_positions()
-   print(pos)
-   print("joints", jpos)
-   pos.x -= 300
-   await asyncio.sleep(1)
-   await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
-   
-   print("~~~~TESTING ARM MOVE- SHOULD FAIL~~~~~")
-   pos = await arm.get_end_position()
-   print(pos)
-   pos.x += 300
-   # We pass the WorldState above with the geometry. As arm.move_to_position will enforce linear motion, this should fail
-   # since there is no linear path from start to goal that does not intersect the obstacle.
-   await arm.move_to_position(pose=pos, world_state=worldstate)
+arm = Arm.from_robot(robot=robot, name="xArm6")
+pos = await arm.get_end_position()
+
+print("~~~~TESTING ARM LINEAR MOVE~~~~~")
+pos = await arm.get_end_position()
+print(pos)
+pos.x += 300
+# Note we are passing an empty worldstate
+await arm.move_to_position(pose=pos, world_state=WorldState())
+pos = await arm.get_end_position()
+print(pos)
+pos.x -= 300
+await asyncio.sleep(1)
+await arm.move_to_position(pose=pos, world_state=WorldState())
+
+print("~~~~TESTING MOTION SERVICE MOVE~~~~~")
+
+geom = Geometry(
+    center=Pose(x=pos.x + 150, y=pos.y, z=pos.z),
+    box=RectangularPrism(width_mm=2, length_mm=5, depth_mm=5),
+)
+geomFrame = GeometriesInFrame(reference_frame="xArm6", geometries=[geom])
+worldstate = WorldState(obstacles=[geomFrame])
+
+pos = await arm.get_end_position()
+jpos = await arm.get_joint_positions()
+print(pos)
+print("joints", jpos)
+pos.x += 300
+
+for resname in robot.resource_names:
+    if resname.name == "xArm6":
+        armRes = resname
+
+# We pass the WorldState above with the geometry. The arm should successfully route around it.
+await motionServ.move(
+    component_name=armRes,
+    destination=PoseInFrame(reference_frame="world", pose=pos),
+    world_state=worldstate,
+)
+pos = await arm.get_end_position()
+jpos = await arm.get_joint_positions()
+print(pos)
+print("joints", jpos)
+pos.x -= 300
+await asyncio.sleep(1)
+await motionServ.move(
+    component_name=armRes,
+    destination=PoseInFrame(reference_frame="world", pose=pos),
+    world_state=worldstate,
+)
+
+print("~~~~TESTING ARM MOVE- SHOULD FAIL~~~~~")
+pos = await arm.get_end_position()
+print(pos)
+pos.x += 300
+# We pass the WorldState above with the geometry. As arm.move_to_position will enforce linear motion, this should fail
+# since there is no linear path from start to goal that does not intersect the obstacle.
+await arm.move_to_position(pose=pos, world_state=worldstate)
+
 ```
 
 ## Implementation

@@ -339,17 +339,17 @@ Overlay overlays the depth and color 2D images. Useful in order to debug the ali
 
 ```json-viam
 {
- "type": "overlay",
- "attributes": {
-  "intrinsic_parameters": {
-   "width_px": int,
-   "height_px": int,
-   "ppx": float, # the image center x point
-   "ppy": float, # the image center y point
-   "fx": float, # the image focal x
-   "fy": float, # the image focal y
-        }
- }
+    "type": "overlay",
+    "attributes": {
+      "intrinsic_parameters": {
+        "width_px": int,
+        "height_px": int,
+        "ppx": float, # the image center x point
+        "ppy": float, # the image center y point
+        "fx": float, # the image focal x
+        "fy": float, # the image focal y
+    }
+  }
 }
 ```
 
@@ -362,24 +362,24 @@ For further information, please refer to the <a href="https://docs.opencv.org/3.
 
 ```json-viam
 {
- "type": "undistort",
- "attributes": {
-  "intrinsic_parameters": {
-   "width_px": int,
-   "height_px": int,
-   "ppx": float, # the image center x point
-   "ppy": float, # the image center y point
-   "fx": float, # the image focal x
-   "fy": float, # the image focal y
-        },
-        "distortion_parameters": {
-            "rk1": float, # radial distortion
-            "rk2": float,
-            "rk3": float,
-            "tp1": float, # tangential distortion
-            "tp2": float
+  "type": "undistort",
+  "attributes": {
+    "intrinsic_parameters": {
+      "width_px": int,
+      "height_px": int,
+      "ppx": float, # the image center x point
+      "ppy": float, # the image center y point
+      "fx": float, # the image focal x
+      "fy": float, # the image focal y
+    },
+    "distortion_parameters": {
+      "rk1": float, # radial distortion
+      "rk2": float,
+      "rk3": float,
+      "tp1": float, # tangential distortion
+      "tp2": float
+    }
   }
- }
 }
 ```
 
@@ -389,11 +389,11 @@ The Detections transform takes the input image and overlays the detections from 
 
 ```json-viam
 {
- "type": "detections",
- "attributes": {
-  "detector_name": string, # the name within the vision service
-  "confidence_threshold": float # only display detections above threshold
- }
+  "type": "detections",
+  "attributes": {
+    "detector_name": string, # the name within the vision service
+    "confidence_threshold": float # only display detections above threshold
+  }
 }
 ```
 
@@ -403,12 +403,12 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 
 ```json-viam
 {
- "type": "depth_edges",
- "attributes": {
-  "high_threshold_pct": float, # between 0.0 - 1.0
-  "low_threshold_pct": float, # between 0.0 - 1.0
-  "blur_radius_px": float # smooth image before applying filter 
- }
+  "type": "depth_edges",
+  "attributes": {
+    "high_threshold_pct": float, # between 0.0 - 1.0
+    "low_threshold_pct": float, # between 0.0 - 1.0
+    "blur_radius_px": float # smooth image before applying filter 
+  }
 }
 ```
 
@@ -418,10 +418,10 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 
 ```json-viam
 {
- "type": "depth_preprocess",
- "attributes": {
-  # no attributes
- }
+  "type": "depth_preprocess",
+  "attributes": {
+    # no attributes
+  }
 }
 ```
 
@@ -437,13 +437,13 @@ single_stream is a model where there is a camera server streaming image data. Yo
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model" : "single_stream",
- "attributes": {
-     "url": string # the camera server url,
-     "stream": string # options are "color", "depth",
- }
+  "name": "camera_name",
+  "type": "camera",
+  "model" : "single_stream",
+  "attributes": {
+    "url": string # the camera server url,
+    "stream": string # options are "color", "depth",
+  }
 }
 ```
 
@@ -453,14 +453,14 @@ dual_stream is a model where there are two camera servers streaming data, one is
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model" : "dual_stream",
- "attributes": {
-     "color": string, # the color stream url,
-     "depth": string, # the depth stream url,
-     "stream": string # "color" or "depth" image will be returned when calling Next(). NextPointCloud() returns the full colorful point cloud.
- }
+  "name": "camera_name",
+  "type": "camera",
+  "model" : "dual_stream",
+  "attributes": {
+    "color": string, # the color stream url,
+    "depth": string, # the depth stream url,
+    "stream": string # "color" or "depth" image will be returned when calling Next(). NextPointCloud() returns the full colorful point cloud.
+  }
 }
 ```
 
