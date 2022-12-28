@@ -53,7 +53,7 @@ To run viam-server directly from the command line, you can use the following com
 sudo ./viam-server -config myconfig.json
 ```
 
-To connect this instance of viam-server with a [Viam app](https://app.viam.com) robot, the contents of <file>myconfig.json</file> should be pasted from the **COPY VIAM-SERVER CONFIG** button at the bottom of the Config tab of your robot on [https://app.viam.com](https://app.viam.com).
+To connect this instance of viam-server with a [Viam app](https://app.viam.com) robot, the contents of <file>myconfig.json</file> should be pasted from the **COPY VIAM-SERVER CONFIG** button at the top right of the **SETUP** tab of your robot on [https://app.viam.com](https://app.viam.com).
 
 ![install-config-button](../img/install-config-button.png)
 
@@ -67,7 +67,7 @@ The following command will create a systemd service file at <file>/etc/systemd/s
 sudo ./viam-server --aix-install
 ```
 
-To connect this viam-server with a [Viam app](https://app.viam.com) robot, navigate to your robot page on [https://app.viam.com](https://app.viam.com). At the bottom of the **Config** tab, click **COPY VIAM-SERVER CONFIG** and paste it into <file>/etc/viam.json</file>.
+To connect this viam-server with a [Viam app](https://app.viam.com) robot, navigate to your robot page on [https://app.viam.com](https://app.viam.com). At the top right of the **SETUP** tab, click **COPY VIAM-SERVER CONFIG** and paste it into <file>/etc/viam.json</file>.
 
 Start the service by running:
 
