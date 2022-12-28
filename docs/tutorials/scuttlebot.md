@@ -73,6 +73,7 @@ The next step is to add a motor and make it spin a wheel.
 <br><br>
 
 {{% expand "Click to view the raw JSON for the right motor" %}}
+
 ```json-viam
 {
   "name": "right",
@@ -91,6 +92,7 @@ The next step is to add a motor and make it spin a wheel.
   "depends_on": []
 }
 ```
+
 {{% /expand %}}
 
 {{% alert title="Note" color="note" %}}  
@@ -137,6 +139,7 @@ This will be very similar to adding the right motor.
 </ol>
 
 {{% expand "Click to view the raw JSON for the left motor" %}}
+
 ```json-viam
 {
   "name": "left",
@@ -155,6 +158,7 @@ This will be very similar to adding the right motor.
   "depends_on": []
 }
 ```
+
 {{% /expand %}}
 <br>
 
@@ -171,6 +175,7 @@ It's time to configure a [base component](/components/base/), which describes th
 Configuring a base component will give you a nice UI for moving the rover around.
 
 From the **CONFIG** tab:
+
 1. Give your base a name.
 1. Enter "base" in **Type**.
 1. Enter "wheeled" in **Model**.
@@ -213,7 +218,7 @@ Try driving your SCUTTLE Robot around using the WASD keyboard controls described
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
 {{% /alert %}}
 
-## Configuring the camera 
+## Configuring the camera
 
 Finally, we'll add a camera to your SCUTTLE Robot.
 

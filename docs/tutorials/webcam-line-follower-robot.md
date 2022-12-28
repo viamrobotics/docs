@@ -20,8 +20,8 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 - How to use the Viam vision service including color detectors
 - How to use the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk)[^psdk], including:
-    - How to establish communication between the code you write and your robot
-    - How to send commands to components of your robot
+  - How to establish communication between the code you write and your robot
+  - How to send commands to components of your robot
 
 [^psdk]: Viam Python SDK: <a href="https://github.com/viamrobotics/viam-python-sdk/" target="_blank">ht<span></span>tps://github.com/viamrobotics/viam-python-sdk</a>
 
@@ -32,17 +32,17 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 ## What you'll need
 
 - A single board computer [running an instance of viam-server](/installation/rpi-setup/)
-    - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
+  - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
 - [A wheeled base component](../../components/base/)
-    - We used a <a href="https://www.scuttlerobot.org/shop/" target="_blank" />SCUTTLE Robot</a>[^sr] for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
+  - We used a <a href="https://www.scuttlerobot.org/shop/" target="_blank" />SCUTTLE Robot</a>[^sr] for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
 - RGB camera
-    - A common off-the-shelf webcam [(such as this)](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html/) with a ribbon connector to the Pi’s camera module port.
-    - You must mount the camera to the front of the rover pointing down towards the floor.
+  - A common off-the-shelf webcam [(such as this)](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html/) with a ribbon connector to the Pi’s camera module port.
+  - You must mount the camera to the front of the rover pointing down towards the floor.
 - Colored tape and floor space
-    - Any color is suitable as long as its color is somewhat different from the floor color.
+  - Any color is suitable as long as its color is somewhat different from the floor color.
     For our tutorial, we used green electrical tape.
-    - Non-shiny floors tend to work best.
-[^sr]: SCUTTLE Robot <a href="https://www.scuttlerobot.org/shop/" target="_blank" />https://www.scuttlerobot.org/shop/</a>
+  - Non-shiny floors tend to work best.
+[^sr]: SCUTTLE Robot <a href="<https://www.scuttlerobot.org/shop/>" target="_blank" />https://www.scuttlerobot.org/shop/</a>
 
 <p class="Mycaption" ><em>Figure 1: A SCUTTLE robot base with a camera mounted on the front, pointing mostly down and slightly forwards.</em><br>
 <img src="/tutorials/img/webcam-line-follower/lf-scuttle2.png" width="600" /></p>
@@ -59,7 +59,7 @@ Use type `board` and model `pi` if you're using a Raspberry Pi.
 
 Configure the wheeled base per the [Base Component topic](../../components/base/).
 We named ours `scuttlebase`.
-	
+ 
 Configure the [camera](../../components/camera/) as described in this tutorial: [Connect and configure a webcam](../../tutorials/configure-a-camera/).
 
 Your webcam configuration in the Config Builder will look something like this:
@@ -90,7 +90,7 @@ In the **SERVICES** section of the **CONFIG** tab, configure a color detector fo
 Put this hash in the `detect_color` parameter.
 We used #19FFD9 to represent the color of green electrical tape.
 
-[^colorpick]: Color picker: <a href="https://colorpicker.me/" target="_blank">https://colorpicker.me/</a>
+[^colorpick]: Color picker: <a href="<https://colorpicker.me/>" target="_blank">https://colorpicker.me/</a>
   
 - We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
@@ -153,6 +153,7 @@ Below is an example JSON file that includes the board, base and camera component
 You may have different pin numbers and other attributes depending on your hardware setup.
 
 {{%expand "Click to view JSON" %}}
+
 ```json-viam
 {
   "components": [
@@ -264,6 +265,7 @@ You may have different pin numbers and other attributes depending on your hardwa
   ]
 }
 ```
+
 {{% /expand %}}
 
 ## How line following works
@@ -281,7 +283,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
 <p class="Mycaption"><em>Figure 2: A GIF of what the camera sees as the rover moves along a green line.</em><br>
 <img class="center" src="/tutorials/img/webcam-line-follower/lf-tape-follow3.gif" width="300" /></p>
 
-## Let’s write some code!
+## Let’s write some code
 
 <ol><li class="spacing">Make sure you have Python installed.
 You can double-check this by running:
@@ -289,15 +291,19 @@ You can double-check this by running:
 ```bash
 python --version
 ```
+
 or if you have multiple versions of Python installed, try
+
 ```bash
 python3.9 --version
 ```
+
 or
 
 ```bash
 python3.8 --version
 ```
+
 We at Viam are running Python 3.9.2 (Python 3.8 is also supported) for this tutorial.</li>
 <li class="spacing">Make sure you have the Viam Python SDK installed (<a href="https://python.viam.dev/">click for instructions</a>).</li>
 
@@ -326,8 +332,8 @@ Type <strong>Y</strong> to confirm file modification, then press enter to finish
 </ol></ol>
 
 **References**:
-* Line Follower Code on GitHub: <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">ht<span><span>tps://github.com/viam-labs/line-follower/blob/main/rgb_follower.py</a>
-* Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span><span>tps://mutagen.io/documentation/introduction/getting-started</a>
+- Line Follower Code on GitHub: <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">ht<span><span>tps://github.com/viam-labs/line-follower/blob/main/rgb_follower.py</a>
+- Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span><span>tps://mutagen.io/documentation/introduction/getting-started</a>
 
 ## Controlling your rover with Viam
 
@@ -351,6 +357,7 @@ Verify that the camera sees the line by viewing the camera feed on the <strong>C
 ```bash
 ssh <your_username>@<your_pi’s_name>.local
 ```
+
 replacing the angle brackets and the example text with your actual Pi username and the name of your Pi.
 Remember to delete the angle brackets!</li>
 
@@ -359,6 +366,7 @@ Remember to delete the angle brackets!</li>
 ```bash
 python ~/myCode/rgb_follower.py
 ```
+
 Be sure to replace <span class="file">~/myCode</span> with the path to the directory where you saved your Python script, and <span class="file">rgb_follower.py</span> with whatever you named your Python script file.
 You may need to call “python3.9” or "python3.8" instead of “python,” depending on how you configured your Pi.</li>
 </ol></ol>
@@ -378,7 +386,7 @@ You have a rover following a path of your choice, anywhere you want it to go!
 If your rover keeps driving off the line so fast that the color detector can’t keep up, you can try two things:
 
 - Slow down the move straight and turning speeds of the rover by decreasing the values of `linear_power` and `angular_power`.
-    - Conversely, if your rover is moving too slowly or stalling, increase the numbers (closer to 1.0 which represents full power).</li>
+  - Conversely, if your rover is moving too slowly or stalling, increase the numbers (closer to 1.0 which represents full power).</li>
 - Position the camera differently, perhaps so that it is higher above the floor but still pointing downward.
 This will give it a wider field of view so it takes longer for the line to go out of view.
 
@@ -397,7 +405,8 @@ You can find additional assistance in the [Troubleshooting section](../../append
 
 You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com/) and we will be happy to help.
 
-## Bonus Challenges!
+## Bonus Challenges
+
 1. Automatically detect what color line the robot is on and follow that.
 2. Use two differently colored lines that intersect and make the robot switch from one line to the other.
 3. Put two rovers on intersecting lines and write code to keep them from crashing into each other.

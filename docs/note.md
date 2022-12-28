@@ -8,9 +8,9 @@ type: "docs"
 
 ## Reusable Text Snippets
 
-There are situations where we need to repeat text blocks. For example, when cautioning users to disconnect power before changing connections or providing a commonly used instruction set or procedure. 
+There are situations where we need to repeat text blocks. For example, when cautioning users to disconnect power before changing connections or providing a commonly used instruction set or procedure.
 
-Rather than re-typing the material or making multiple copy/paste updates in many locations, you can simply update one file and its content flows to any location it was used. 
+Rather than re-typing the material or making multiple copy/paste updates in many locations, you can simply update one file and its content flows to any location it was used.
 
 The following is an example of the <file>secret-share.md</file> alert added using the snippet shortcode:
 
@@ -18,38 +18,37 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 {{% snippet "secret-share.md" %}}
 
-
-
-
-
 ## Tab Panels
 
 {{< tabs name="TabPanelExample" >}}
 {{% tab name="Support"%}}
 **Supported**
-* Markdown and HTML images. 
+
+* Markdown and HTML images.
 * Alert Shortcode
 * PRISM syntax highlighting (the three backticks)
 * "codelang" highlighting (add codelang="language" to tab element). It's very ugly, needs css work, and is not recommended at this time.
 
-**Not Supported**
+### Not Supported
+
 * Footnotes
 * Expanders
 
-**Example Usage**
+### Example Usage
 
 <img style="border:solid 1px black" alt="Screen capture of Tab/Tabs Shortcode Usage" src="/img/tabbed-panel-markdown.png">
 
 {{% /tab %}}
 {{% tab name="Examples" %}}
 <div>
-	<h3>What is Rendered?</h3>
-	<p>It renders <i>vanilla</i> HTML and markdown, Alerts, and images. For example, these two images:</p>
+ <h3>What is Rendered?</h3>
+ <p>It renders <i>vanilla</i> HTML and markdown, Alerts, and images. For example, these two images:</p>
 
 * **Markdown Image Example**<br>
 ![expand example](/img/expander-markdown.png)<br>
 * **HTML Image Example** (with border)<br>
 <img style="border:solid 1px black" src="/img/expander-markdown.png" alt="Screen capture of Tab/Tabs Shortcode Usage">
+
 </div>
 <br>
 
@@ -64,7 +63,7 @@ Line numbering is on by default.
 }
 ```
 
-With just line 6 highlighted. See https://prismjs.com/plugins/line-highlight/ for more:
+With just line 6 highlighted. See <https://prismjs.com/plugins/line-highlight/> for more:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="6"}
 while (True):
@@ -81,9 +80,7 @@ while (True):
     await asyncio.sleep(1)
 ```
 
-
 With linked lines and lines 8-10 highlighted.
-
 
 ```python {id="some-python-unique-id" class="linkable-line-numbers" data-line="8-10"}
 while (True):
@@ -105,18 +102,17 @@ while (True):
 This is **some markdown.**
 
 ### Alerts Shortcodes
+
 {{< alert title="Note" color="note" >}}
 It can even contain shortcodes.
 {{< /alert >}}
 
-
 {{% /tab %}}
 {{< /tabs >}}
 
-
-
 ## Using Expanders
-Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it. 
+
+Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it.
 
 Within the expander, you can still use most other shortcodes and syntax highlighting via Prism functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable.<br><br>
 
@@ -128,67 +124,67 @@ Within the expander, you can still use most other shortcodes and syntax highligh
 1. Add the shortcode tags. Make sure that the title is suitable for your use.
 1. Drop in the material you want to hide until the reader wants it.
 
-
 ### Markdown Example
 
 <img style="border:solid 1px black" src="/img/expander-markdown.png">
 
 ### Rendered Expander Example
+
 {{%expand "Click to view the source" %}}
 <br>
 
 **Prism syntax highlighting works in expanders, as do most other shortcodes.**
 
 ``` go
-	motion_svc = MotionServiceClient.from_robot(robot, "NAME”)
-  	arm = Arm.from_robot(robot=robot, name='xArm6')
-  	pos = await arm.get_end_position()
- 	 
-  	print("~~~~TESTING ARM LINEAR MOVE~~~~~")
-  	pos = await arm.get_end_position()
-  	print(pos)
-  	pos.x += 300
-  	# Note we are passing an empty worldstate
-  	await arm.move_to_position(pose=pos, world_state=WorldState())
-  	pos = await arm.get_end_position()
-  	print(pos)
-  	pos.x -= 300
-  	await asyncio.sleep(1)
-  	await arm.move_to_position(pose=pos, world_state=WorldState())
- 	 
-  	print("~~~~TESTING MOTION SERVICE MOVE~~~~~")
- 	 
-  	geom = Geometry(center=Pose(x=pos.x + 150, y=pos.y, z=pos.z), box=RectangularPrism(width_mm =2, length_mm =5, depth_mm =5))
-  	geomFrame = GeometriesInFrame(reference_frame="xArm6", geometries=[geom])
-  	worldstate = WorldState(obstacles=[geomFrame])
- 	 
-  	pos = await arm.get_end_position()
-  	jpos = await arm.get_joint_positions()
-  	print(pos)
-  	print("joints", jpos)
-  	pos.x += 300
- 	 
-  	for resname in robot.resource_names:
-    	if resname.name == "xArm6":
-      	armRes = resname
- 	 
-  	# We pass the WorldState above with the geometry. The arm should successfully route around it.
-  	await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
-  	pos = await arm.get_end_position()
-  	jpos = await arm.get_joint_positions()
-  	print(pos)
-  	print("joints", jpos)
-  	pos.x -= 300
-  	await asyncio.sleep(1)
-  	await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
- 	 
-  	print("~~~~TESTING ARM MOVE- SHOULD FAIL~~~~~")
-  	pos = await arm.get_end_position()
-  	print(pos)
-  	pos.x += 300
-  	# We pass the WorldState above with the geometry. As arm.move_to_position will enforce linear motion, this should fail
-  	# since there is no linear path from start to goal that does not intersect the obstacle.
-  	await arm.move_to_position(pose=pos, world_state=worldstate)
+ motion_svc = MotionServiceClient.from_robot(robot, "NAME”)
+   arm = Arm.from_robot(robot=robot, name='xArm6')
+   pos = await arm.get_end_position()
+   
+   print("~~~~TESTING ARM LINEAR MOVE~~~~~")
+   pos = await arm.get_end_position()
+   print(pos)
+   pos.x += 300
+   # Note we are passing an empty worldstate
+   await arm.move_to_position(pose=pos, world_state=WorldState())
+   pos = await arm.get_end_position()
+   print(pos)
+   pos.x -= 300
+   await asyncio.sleep(1)
+   await arm.move_to_position(pose=pos, world_state=WorldState())
+   
+   print("~~~~TESTING MOTION SERVICE MOVE~~~~~")
+   
+   geom = Geometry(center=Pose(x=pos.x + 150, y=pos.y, z=pos.z), box=RectangularPrism(width_mm =2, length_mm =5, depth_mm =5))
+   geomFrame = GeometriesInFrame(reference_frame="xArm6", geometries=[geom])
+   worldstate = WorldState(obstacles=[geomFrame])
+   
+   pos = await arm.get_end_position()
+   jpos = await arm.get_joint_positions()
+   print(pos)
+   print("joints", jpos)
+   pos.x += 300
+   
+   for resname in robot.resource_names:
+     if resname.name == "xArm6":
+       armRes = resname
+   
+   # We pass the WorldState above with the geometry. The arm should successfully route around it.
+   await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
+   pos = await arm.get_end_position()
+   jpos = await arm.get_joint_positions()
+   print(pos)
+   print("joints", jpos)
+   pos.x -= 300
+   await asyncio.sleep(1)
+   await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
+   
+   print("~~~~TESTING ARM MOVE- SHOULD FAIL~~~~~")
+   pos = await arm.get_end_position()
+   print(pos)
+   pos.x += 300
+   # We pass the WorldState above with the geometry. As arm.move_to_position will enforce linear motion, this should fail
+   # since there is no linear path from start to goal that does not intersect the obstacle.
+   await arm.move_to_position(pose=pos, world_state=worldstate)
 ```
 
 {{% /expand%}}
@@ -229,9 +225,9 @@ This provides notices that a certain action or event could damage hardware or ca
 Use to notify the reader of information to avoid loss of life, personal injury, and health hazards.
 {{< /alert >}}
 
-
 ## Using the Figure Shortcode
-The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr** element for attribution text and **attrlink** if you wish to add a link to the attribution text. 
+
+The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr** element for attribution text and **attrlink** if you wish to add a link to the attribution text.
 
 {{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
 
@@ -243,5 +239,4 @@ Figure styles the Attribution text as body text.
 
 {{< readfile "/static/include/sample.md" >}}
 
-**Section content before this line is contained in an included file: /static/include/sample.md**
-
+Section content before this line is contained in an included file: /static/include/sample.md

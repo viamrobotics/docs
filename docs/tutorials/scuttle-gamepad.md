@@ -30,7 +30,6 @@ To add this controller to the robot’s config, from the Viam app ([https://app.
 <li>There are no <strong>Model</strong> options for input_controllers.
 Therefore, for <strong>Model</strong>, please manually enter, "gamepad," (without the quotes) then press Tab. The Viam app will retain your entry.</li>
 
-
 <li>Click <strong>New Component</strong>. The Viam app opens the Component Config panel for the gamepad. </li>
 <li>On the Component Config panel, leave <strong>Depends On</strong> set to empty.</li>
 
@@ -77,7 +76,7 @@ Note the green Connection indicator:
 
 At this point, you should be able to move the SCUTTLE. If you are in the specific mode that allows you to use the Joystick (#7), it will change the values in your robot config:
 
-```
+```bash
 "X
 0.0000
 Y
@@ -85,7 +84,8 @@ Y
 ```
 
 If you are in the specific mode that allows you to use the D-Pad (#8), it will change the values:
-```
+
+```bash
 "Hat0X
 0.0000
 Hat0Y

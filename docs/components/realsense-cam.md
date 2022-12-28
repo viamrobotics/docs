@@ -7,7 +7,7 @@ draft: true
 description: "Adding an External Intel Realsense Camera to Viam."
 tags: ["camera", "realsense camera", "components"]
 ---
-There are two ways to add your intel RealSense camera to Viam. You can either use a gRPC server or an HTTP server. 
+There are two ways to add your intel RealSense camera to Viam. You can either use a gRPC server or an HTTP server.
 
 You can find the source code for these servers in the <a href="https://github.com/viamrobotics/camera-servers" target="_blank">Viam Robotics repo</a>[^camserve]
 
@@ -32,11 +32,11 @@ On the [Viam app](https://app.viam.com), click **CONFIG** and then access the **
 
 ``` json
 [ 
-{ 
-"id": "intel", 
-"log": true, 
-"name": "/usr/local/bin/intelgrpcserver" 
-} 
+   { 
+      "id": "intel", 
+      "log": true, 
+      "name": "/usr/local/bin/intelgrpcserver" 
+   } 
 ]
 ```
 
@@ -44,14 +44,13 @@ This configures the gRPC server to run on port 8085 of your Pi.
 
 On the **CONFIG** tab, click **REMOTE**, and then add the following configuration:
 
-
 ``` json
 [
- {
-   "name": "intel",
-   "address": "ip-address-of-your-pi:8085",
-   "insecure": true
- }
+   {
+      "name": "intel",
+      "address": "ip-address-of-your-pi:8085",
+      "insecure": true
+   }
 ]
 ```
 
@@ -67,30 +66,30 @@ Enter the necessary JSON configuration for your camera:
 
 ``` json
    {
-    	"homography": {
-      	"transform": [ // the color and depth image are already aligned
+     "homography": {
+       "transform": [ // the color and depth image are already aligned
             1.0, 0.0, 0.0,
             0.0, 1.0, 0.0,
             0.0, 0.0, 1.0
-      	  ],
-      	  "depth_to_color": false,
-      	  "rotate_depth_degs": 0
-    	},
-    	"stream": "color",
-    	"width_px": 1280,
+         ],
+         "depth_to_color": false,
+         "rotate_depth_degs": 0
+     },
+     "stream": "color",
+     "width_px": 1280,
        "height_px": 720,
-	// you can get intrinsics by calling GetProperties on the intel gRPC camera server, too
-    	"intrinsic_parameters": { 
-      	  "height_px": 720,
+ // you can get intrinsics by calling GetProperties on the intel gRPC camera server, too
+     "intrinsic_parameters": { 
+         "height_px": 720,
          "width_px": 1280,
-      	  "ppx": 648.1280,
-      	  "ppy": 367.736,
-      	  "fx": 900.538,
-      	  "fy": 900.818
-    	},
-    	"color_camera_name": "intel:color",
-    	"depth_camera_name": "intel:depth"
-  	}
+         "ppx": 648.1280,
+         "ppy": 367.736,
+         "fx": 900.538,
+         "fy": 900.818
+     },
+     "color_camera_name": "intel:color",
+     "depth_camera_name": "intel:depth"
+   }
 }
 "depends_on": [
    "intel:color",
@@ -100,11 +99,11 @@ Enter the necessary JSON configuration for your camera:
 
 In the **CONTROL** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with `join_color_depth`.
 
-# Using the HTTP server
+## Using the HTTP server
 
 Use this method if you don’t care about the individual 2D image streams and only need the 3D point clouds from the Intel RealSense camera.
 
-## Download the Intel RealSense HTTP camera server
+### Download the Intel RealSense HTTP camera server
 
 On your Raspberry Pi, download the following server for your Intel RealSense camera:
 
@@ -113,7 +112,7 @@ sudo curl -o /usr/local/bin/intelrealserver http://packages.viam.com/apps/camera
 sudo chmod a+rx /usr/local/bin/intelrealserver
 ```
 
-## Configure the Server to Run on Robot Start-Up
+### Configure the Server to Run on Robot Start-Up
 
 On the [Viam app](https://app.viam.com), click **CONFIG** and then click **PROCESSES**.
 Enter the following configuration:

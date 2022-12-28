@@ -6,7 +6,8 @@ type: "docs"
 draft: true
 description: "Explanation of how a robot and the Viam app [https://app.viam.com](https://app.viam.com) interact."
 ---
-# Coming soon!
+## Coming soon
+
 This page will contain:
 
 - Explanation of how viam-server starts up and pull a config from the Viam app [https://app.viam.com](https://app.viam.com)

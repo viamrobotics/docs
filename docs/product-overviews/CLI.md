@@ -6,4 +6,4 @@ type: "docs"
 description: "Manual for Viam's CLI tool."
 draft: true
 ---
-## Coming soon!
+## Coming soon

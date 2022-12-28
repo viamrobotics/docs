@@ -13,6 +13,7 @@ description:
 {{% tab name="Versions" %}}
 
 ## Release Versions
+
 * rdk - **v0.2.3**
 * api - **v0.1.12**
 * slam - **v0.1.9**
@@ -30,7 +31,7 @@ description:
 <tbody style="vertical-align:top;">
     <tr>
         <td width="120px"><strong>What is it?</strong></td>
-        <td>When a camera loses connection, it now automatically closes the connection to its video path. 
+        <td>When a camera loses connection, it now automatically closes the connection to its video path.
         Previously, when users supplied a video path in their camera configuration, they encountered issues if the camera tried to reconnect because the supplied video path was already being used for the old connection. </td>
     </tr>
     <tr>
@@ -42,33 +43,35 @@ description:
 
 {{% /tab %}}
 {{% tab name="Improvements" %}}
+
 ## Improvements
 
 ### Camera Configuration Changes
+
 <table style="margin-bottom:18px">
 <tbody style="vertical-align:top;">
     <tr>
         <td width="120px"><strong>What is it?</strong></td>
-        <td>We updated the underlying configuration schemes for the following camera models. 
-        We are also migrating  existing camera configurations to align with the new schemas. 
-        To learn more about the changes, please refer to our <a href="/components/camera/">camera documentation</a>. 
+        <td>We updated the underlying configuration schemes for the following camera models.
+        We are also migrating  existing camera configurations to align with the new schemas.
+        To learn more about the changes, please refer to our <a href="/components/camera/">camera documentation</a>.
         <ul>
-        		<li>Webcam</li>
-        		<li>FFmpeg</li>
-        		<li>Transform</li>
-        		<li>Join Pointclouds</li>
+          <li>Webcam</li>
+          <li>FFmpeg</li>
+          <li>Transform</li>
+          <li>Join Pointclouds</li>
         </ul>
 </table>
 
 ### Robot Details Page
 
 <table style="margin-bottom:18px">
-		<tbody style="vertical-align:top;">
- 		   <tr>
-  		      <td width="120px"><strong>What is it?</strong></td>
-		        <td>Based on user feedback, we changed the name of the <strong>CONNECT</strong> tab to 	<strong>CODE SAMPLE</strong></td>
-		     </tr>
-		<tbody>
+  <tbody style="vertical-align:top;">
+      <tr>
+          <td width="120px"><strong>What is it?</strong></td>
+          <td>Based on user feedback, we changed the name of the <strong>CONNECT</strong> tab to  <strong>CODE SAMPLE</strong></td>
+       </tr>
+  <tbody>
 </table>
 
 {{% /tab %}}
@@ -79,7 +82,7 @@ description:
 {{< tabs >}}
 {{% tab name="Versions" %}}
 
-## Release Versions
+### Release Versions
 
 * rdk - v0.2.0
 * api - v0.1.7
@@ -91,9 +94,9 @@ description:
 {{% /tab %}}
 {{% tab name="New Features" %}}
 
-## New Features
+### New Features
 
-### New servo model
+#### New servo model
 
 <table style="margin-bottom:18px">
 <tbody style="vertical-align:top;">
@@ -108,7 +111,7 @@ description:
 <tbody>
 </table>
 
-### Added RTT to remote control page
+#### Added RTT to remote control page
 
 <table style="margin-bottom:18px">
 <tbody style="vertical-align:top;">
@@ -119,7 +122,7 @@ description:
 <tbody>
 </table>
 
-### Python 3.8 Support
+#### Python 3.8 Support
 
 <table style="margin-bottom:18px">
 <tbody style="vertical-align:top;">
@@ -133,15 +136,15 @@ description:
 {{% /tab %}}
 {{% tab name="Improvements" %}}
 
-## Improvements
+### Improvements
 
-### New Parameter: extra
+#### New Parameter: extra
 
 <table style="margin-bottom:18px">
 <tbody style="vertical-align:top;">
     <tr>
         <td width="120px"><strong>What is it?</strong></td>
-        <td>We added a new API method parameter named, <code>extra</code>, that gives users the option of extending existing resource functionality by implementing the new field according to whatever logic they chose. 
+        <td>We added a new API method parameter named, <code>extra</code>, that gives users the option of extending existing resource functionality by implementing the new field according to whatever logic they chose.
 <code>extra</code> is available to requests for all methods in the following APIs:<br><br>
 <table style="margin-bottom: 12px;">
 <tr><td><li>Arm</li>
@@ -167,7 +170,7 @@ This breaking change does NOT affect users of the Python SDK.
 <tbody>
 </table>
 
-### Add dependencies to services
+#### Add dependencies to services
 
 <table style="margin-bottom:18px">
 <tbody style="vertical-align:top;">
@@ -183,7 +186,7 @@ Other service configurations are not affected.</td>
 <tbody>
 </table>
 
-### Removed width & height fields from Camera API.
+#### Removed width & height fields from Camera API
 
 <table style="margin-bottom:18px">
 <tbody style="vertical-align:top;">
@@ -194,7 +197,7 @@ Other service configurations are not affected.</td>
     </tr>
     <tr>
         <td><strong>What does it affect?</strong></td>
-        <td><strong>Breaking Change</strong>: This <emphasis>does not<emphasis> impact any existing camera implementations. 
+        <td><strong>Breaking Change</strong>: This <emphasis>does not<emphasis> impact any existing camera implementations.
 Users writing custom camera API implementations no longer need to implement the <code>width</code> or <code>height</code> fields.</td>
     </tr>
 <tbody>
@@ -202,5 +205,3 @@ Users writing custom camera API implementations no longer need to implement the 
 
 {{% /tab %}}
 {{% /tabs %}}
-
-
