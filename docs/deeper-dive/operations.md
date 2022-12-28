@@ -7,7 +7,8 @@ type: "docs"
 description: "Explanation of the operation lifecycle in Viam and how to manage OpIds."
 ---
 
-# Coming soon!
+## Coming soon
+
 This page will explain:
 
 - The lifecycle of an operation in Viam

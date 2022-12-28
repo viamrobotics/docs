@@ -17,7 +17,6 @@ As of 01 June 2022, we support the following SLAM libraries:
 
 [^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORBSLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
 
-
 ## Current Architecture
 
 The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above. It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
@@ -26,11 +25,10 @@ The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ 
 
 ### Data Generation
 
-Coming soon! 
+Coming soon!
 
 TODO: Do we want to discuss that RGBD cameras produce a rgb and depth folder inside data?
 --> Add an explanation of what kind of subfolders are created for the "mono" case and the "rgbd" case (i.e. rgb, and rgbd + depth). Elaborate on what the user should keep in mind when creating & integrating their own slam libraries, and whether or not it is important for them to document the subfolders that are created.
-
 
 <pre>
 .
@@ -47,7 +45,6 @@ The implemented SLAM libraries rely on the filename to know when this data was g
 ### Interfacing with the C++ Binary
 
 The SLAM binaries used are stored in <file>/usr/local/bin</file>. If you wish to use an updated version, copy the new binary into this directory. If you use an identical name for this new binary, you will not need to change the RDK SLAM code. If you use a new name for the binary, then it must be relinked in <file>services/slam/slamlibraries.go</file> in the BinaryLocation metadata. Note: a new binary with a different name can be stored anywhere as long as it is included in your PATH.
-
 
 ## **RDK Config**
 
@@ -77,11 +74,11 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If you wish to
 
 **data_dir** (string): This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If these have not been provided, they will be created by the SLAM service. The data in the data directory also dictate what type of SLAM will be run:
 
--   If no map is provided in the data folder, the SLAM algorithm will generate a new map using all the provided data (PURE MAPPING MODE)
+- If no map is provided in the data folder, the SLAM algorithm will generate a new map using all the provided data (PURE MAPPING MODE)
 
--   If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map will be used. (PURE LOCALIZATION MODE/UPDATING MODE)
+- If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map will be used. (PURE LOCALIZATION MODE/UPDATING MODE)
 
--   If a map_rate_sec is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE)
+- If a map_rate_sec is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE)
 
 **Sensors** (string[]): Names of sensors which are input to SLAM
 
@@ -91,7 +88,7 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If you wish to
 
 **data_rate_ms** (int): Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is 200. If 0, no new data is sent to the SLAM algorithm.
 
-**input_file_pattern** (string): File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y. 
+**input_file_pattern** (string): File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y.
 {{% alert title="Note" color="note" %}}  
 X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data.
 {{% /alert %}}
@@ -109,7 +106,6 @@ You can find details on which inputs you can include for the available libraries
 #### OrbSLAM
 
 OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (i.e., "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
-
 
 <table>
     <tr>
@@ -145,11 +141,9 @@ OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); th
         <td>7</td>
 </table>
 
-
-
 ## Hardware Requirements
 
-*Forthcoming*
+Forthcoming
 
 ## Installation
 
@@ -189,15 +183,19 @@ cmake ..
 make -j4
 sudo make install
 ```
+
 ###### OpenCV
+
 ```bash
 sudo apt install libopencv-dev
 ```
 
 ###### Eigen
+
 ```bash
 suo apt install libeigen3-dev
 ```
+
 ###### gRPC
 
 To setup gRPC, use the following command:
@@ -210,6 +208,7 @@ mae pull-rdk
 This command pulls a minimal copy of rdk and build c++ gRPC files off of our proto.
 
 ###### Other Dependencies
+
 ```bash
 sudo apt install libssl-dev
 sudo apt-get install libboost-all-dev
@@ -218,6 +217,7 @@ sudo apt-get install libboost-all-dev
 ##### Building ORBSLAM3
 
 To build ORBSLAM3 run
+
 ```bash
 cd \~/slam/slam-libraries/viam-orb-slam
 ./build_orbslam.sh
@@ -230,9 +230,11 @@ After building, use the following command to move the binary to `/usr/local/bin`
 ```bash
 sudo cp bin/orb_grpc_server /usr/local/bin
 ```
+
 In addition, make sure the binary is added in SLAMlibraries.go for ORBSLAM3 in rdk.
 
 Lastly, move the vocabulary file into your data directory. You must do this whenever a new data directory will be used.
+
 ```bash
 cp ORB_SLAM3/Vocabulary/ORBvoc.txt ~/YOUR_DATA_DIR/config
 ```
@@ -241,7 +243,7 @@ cp ORB_SLAM3/Vocabulary/ORBvoc.txt ~/YOUR_DATA_DIR/config
 
 ### Creating an initial map
 
-Coming soon! 
+Coming soon!
 
 ### Pure localization on a priori map
 
@@ -249,4 +251,4 @@ Coming soon!
 
 ### Updating an a priori map
 
-Coming soon! 
+Coming soon!

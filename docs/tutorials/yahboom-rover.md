@@ -17,7 +17,7 @@ See our [Raspberry Pi Setup Guide](/installation/rpi-setup/) for instructions.
 
 [^8bitdo]: 8BitDo Pro 2 Bluetooth Controller: <a href="https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch" target="_blank">ht<span>tps://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch</a>
 
-## Configuring the Board 
+## Configuring the Board
 
 Go to the Viam app ([https://app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **CONFIG** tab of the robot associated with your Raspberry Pi.
 To create a new component you'll be working within the **Create Component** section of the **COMPONENTS** sub-tab.
@@ -33,7 +33,7 @@ You don't need to add any attributes for this one, so your configured board will
 
 ![A screenshot of the board's configuration card on app.viam.com.](../img/yahboom-rover/board.png)
 
-## Configuring the Motor and Wheels 
+## Configuring the Motors and Wheels
 
 Since both right side motors of the Yahboom rover are wired together to a single motor driver, the right side motors are configured as a single [motor component](../../components/motor/) in the Viam config file.
 Later we will configure both left side motors as another motor.
@@ -86,7 +86,7 @@ Save the config and hop over to the control view again. You should now see two m
 
 ![A screenshot of the CONTROL tab UI with buttons to control both sets of motors.](../img/yahboom-rover/motors.png)
 
-## Configuring the Base 
+## Configuring the Base
 
 Unite these wheel sets with a [base component](../../components/base/), which is used to describe the physical structure onto which your components are mounted.
 Configuring a base will also give you a nice UI for moving the rover around.
@@ -204,7 +204,7 @@ Save the config and visit the **CONTROL** tab.
 You should have a panel for the controller which indicates whether or not it is connected.
 At this point moving the left analogue stick should result in movement of the rover!
 
-## Configuring the Camera Component 
+## Configuring the Camera Component
 
 But wait!
 This rover has a camera on it.

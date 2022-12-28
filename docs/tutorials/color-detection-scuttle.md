@@ -20,14 +20,17 @@ Do not share your robot secret or robot address publicly. Sharing this informati
 {{% /alert %}}
 
 ### Demonstration Video
+
 {{<video src="../videos/scuttledemos_colordetection.mp4" type="video/mp4">}}
 
 ### Python.py Code
+
 <a href="https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0" target="_blank">**Python.py GIST**</a>[^hgist]
 
 [^hgist]:Python.py code Gist: <a href="https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0" target="_blank">ht<span></span>tps://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0</a>
 
 ## Prerequisites
+
 The prerequisite of this tutorial is to have a SCUTTLE rover which you can drive via a webUI.
 Please refer to [Setting Up Tutorial For SCUTTLE with a Pi](../scuttlebot/). if you have not already configured your SCUTTLE.
 
@@ -42,6 +45,7 @@ We highly suggest using a virtual python environment like <a href="https://pytho
 [^minicon]:Miniconda: <a href="https://docs.conda.io/en/latest/miniconda.html" target ="_blank">ht<span></span>tps://docs.conda.io/en/latest/miniconda.html</a>
 
 Then create an environment for Python by running the following on the terminal:
+
 ```bash
 poetry new pysdk  # new poetry project
 conda create -n pysdk python=3.9  # new (mini)conda environment
@@ -51,9 +55,11 @@ You can also name your environment as you wish, but please remember to keep it c
 We named our environment pysdk, referring to the [Viam Python SDK](https://python.viam.dev/).
 
 NOTE: If using (mini)conda, activate the environment by running the command:
+
 ```bash
 conda activate pysdk
 ```
+
 Poetry environments are implicitly activated.
 
 Before you can run the code, you need to install the "viam" module.
@@ -62,6 +68,7 @@ Follow the <a href="https://github.com/viamrobotics/viam-python-sdk#installation
 [^pos]:Python SDK installation: <a href="https://github.com/viamrobotics/viam-python-sdk#installation" target="_blank">ht<span></span>tps://github.com/viamrobotics/viam-python-sdk#installation</a>
 
 NOTE: If using a python environment, ensure that the package is installed in the proper environment.
+
 ```bash
 pip freeze | grep viam  # generic
 poetry show | grep viam  # for poetry environments
@@ -75,10 +82,13 @@ Now you are ready to run the code!
 ## Running the code
 
 Navigate to the folder you saved the Python script into. From that folder, run in the terminal:
+
 ```bash
 python scuttle.py
 ```
+
 Be sure to replace “~/Desktop/” with the “/path/toYour/directory/” where the Python code was saved.
+
 ```bash
 python ~/Desktop/scuttle.py
 ```
