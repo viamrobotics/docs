@@ -46,6 +46,7 @@ Here are details about each of the fields in the camera config:
     "ppx": 648.934000, # x center point in pixels
     "ppy": 367.736000 # y center point in pixels
 }
+
 "distortion_parameters": {  # optional field, distortion parameters
     "rk1": 0.158701,
     "rk2": -0.485405,
@@ -71,15 +72,15 @@ Viam recommends using a standard webcam rather than a "ribbon" cam (typical a ba
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model" : "webcam",
- "attributes": {
-     "video_path": string, # path to the webcam
-     "width_px": int, # (optional) camera image width, used with video_path to find camera with this resolution
-     "height_px": int, # (optional) camera image height, used with video_path to find camera
-     "format": string # (optional) image format, used with video_path to find camera
- }
+    "name": "camera_name",
+    "type": "camera",
+    "model" : "webcam",
+    "attributes": {
+        "video_path": string, # path to the webcam
+        "width_px": int, # (optional) camera image width, used with video_path to find camera with this resolution
+        "height_px": int, # (optional) camera image height, used with video_path to find camera
+        "format": string # (optional) image format, used with video_path to find camera
+    }
 }
 ```
 
@@ -89,10 +90,10 @@ Fake is a fake camera that always returns the same image, which is an image of a
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model" : "fake",
- "attributes": {}
+    "name": "camera_name",
+    "type": "camera",
+    "model" : "fake",
+    "attributes": {}
 }
 ```
 
@@ -103,13 +104,13 @@ Either file path is optional.
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model" : "image_file",
- "attributes": {
-     "color_image_file_path": string, # the file path to the color image,
-     "depth_image_file_path": string # the file path to the depth image,
- }
+    "name": "camera_name",
+    "type": "camera",
+    "model" : "image_file",
+    "attributes": {
+        "color_image_file_path": string, # the file path to the color image,
+        "depth_image_file_path": string # the file path to the depth image,
+    }
 }
 ```
 
@@ -119,13 +120,13 @@ The model for using the velodyne lidar. The velodyne must be running locally at 
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model" : "velodyne",
- "attributes": {
-     "port": int,  
-     "ttl_ms": int,
- }
+    "name": "camera_name",
+    "type": "camera",
+    "model" : "velodyne",
+    "attributes": {
+        "port": int,  
+        "ttl_ms": int,
+    }
 }
 ```
 
@@ -135,21 +136,21 @@ FFmpeg is a model that allows you to use a video file or stream as a camera.
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model" : "ffmpeg",
- "attributes": {
-  "video_path": string,
-  "filters": [ # optional
-   {
-    "name": string,
-    "args": [string, string, ..],
-    "kw_args": { ... }
-   } 
-  ],
-  "input_kw_args": { ... },
-  "output_kw_args": { ... },
- }
+    "name": "camera_name",
+    "type": "camera",
+    "model" : "ffmpeg",
+    "attributes": {
+        "video_path": string,
+        "filters": [ # optional
+            {
+            "name": string,
+            "args": [string, string, ..],
+            "kw_args": { ... }
+            } 
+        ],
+        "input_kw_args": { ... },
+        "output_kw_args": { ... },
+    }
 }
 ```
 
@@ -163,23 +164,23 @@ You then specify the stream field to specify which aligned picture you want to s
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model" : "join_color_depth",
- "attributes": {
-  "output_image_type": "string", # either "color" or "depth" to specify the output stream
-    "color_camera_name": "string", # name of the color camera from which to pull
-    "depth_camera_name": "string", # name of the depth camera from which to pull
-    "intrinsic_parameters": { # for projecting RGBD images to 2D <-> 3D
-   "width_px": int, # the expected width of the aligned pic
-   "height_px": int, # the expected height of the aligned pic
-   "fx": 0,
-   "fy": 0,
-   "ppx": 0,
-   "ppy": 0
-  },
-  "distortion_parameters": {...} # optional
- }
+    "name": "camera_name",
+    "type": "camera",
+    "model" : "join_color_depth",
+    "attributes": {
+        "output_image_type": "string", # either "color" or "depth" to specify the output stream
+        "color_camera_name": "string", # name of the color camera from which to pull
+        "depth_camera_name": "string", # name of the depth camera from which to pull
+        "intrinsic_parameters": { # for projecting RGBD images to 2D <-> 3D
+            "width_px": int, # the expected width of the aligned pic
+            "height_px": int, # the expected height of the aligned pic
+            "fx": 0,
+            "fy": 0,
+            "ppx": 0,
+            "ppy": 0
+        },
+        "distortion_parameters": {...} # optional
+    }
 }
 ```
 
@@ -189,25 +190,25 @@ The `align_color_depth_extrinsics` model uses the intrinsics of the color and de
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model" : "align_color_depth_homography",
- "attributes": {
-  "debug": false,
-  "output_image_type": "string", # either "color" or "depth" to specify the output stream
-    "color_camera_name": "string", # name of the color camera from which to pull
-    "depth_camera_name": "string", # name of the depth camera from which to pull
-  "intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D
-  "camera_system": { # the intrinsic/extrinsic parameters that relate the two cameras together
-  in order to join the images
-   "color_intrinsic_parameters": {...}, # same form as standard intrinsic params on every camera
-   "depth_intrinsic_parameters": {...}, # same form as standard intrinsic params on every camera
-   "depth_to_color_extrinsic_parameters": {
-       "rotation_rads": [...], # the 3x3 rotation matrix expressed as a list of 9 radians
-       "translation_mm": [...] # a list of 3 numbers representing the translation from depth to color in mm
-   }
-  }
- }
+    "name": "camera_name",
+    "type": "camera",
+    "model" : "align_color_depth_homography",
+    "attributes": {
+        "debug": false,
+        "output_image_type": "string", # either "color" or "depth" to specify the output stream
+        "color_camera_name": "string", # name of the color camera from which to pull
+        "depth_camera_name": "string", # name of the depth camera from which to pull
+        "intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D
+        "camera_system": { # the intrinsic/extrinsic parameters that relate the two cameras together
+            in order to join the images
+            "color_intrinsic_parameters": {...}, # same form as standard intrinsic params on every camera
+            "depth_intrinsic_parameters": {...}, # same form as standard intrinsic params on every camera
+            "depth_to_color_extrinsic_parameters": {
+                "rotation_rads": [...], # the 3x3 rotation matrix expressed as a list of 9 radians
+                "translation_mm": [...] # a list of 3 numbers representing the translation from depth to color in mm
+            }
+        }
+    }
 }
 ```
 
@@ -217,22 +218,22 @@ The `align_color_depth_homography` camera model uses a homography matrix to alig
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model" : "align_color_depth_homography",
- "attributes": {
-  "debug": false,
-  "output_image_type": "string", # either "color" or "depth" to specify the output stream
-    "color_camera_name": "string", # name of the color camera from which to pull
-    "depth_camera_name": "string", # name of the depth camera from which to pull
-  "intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D
-  "homography": { # homography parameters that morph the depth points to overlay
-  the color points and align the images
-   "transform": [...], # 9 floats representing the 3x3 homography matrix of the depth to color, or color to depth camera
-   "depth_to_color": false,
-   "rotate_depth_degs": -90 # degrees by which to rotate the depth camera image
-  }
- }
+    "name": "camera_name",
+    "type": "camera",
+    "model" : "align_color_depth_homography",
+    "attributes": {
+        "debug": false,
+        "output_image_type": "string", # either "color" or "depth" to specify the output stream
+        "color_camera_name": "string", # name of the color camera from which to pull
+        "depth_camera_name": "string", # name of the depth camera from which to pull
+        "intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D
+        "homography": { # homography parameters that morph the depth points to overlay
+            the color points and align the images
+            "transform": [...], # 9 floats representing the 3x3 homography matrix of the depth to color, or color to depth camera
+            "depth_to_color": false,
+            "rotate_depth_degs": -90 # degrees by which to rotate the depth camera image
+        }
+    }
 }
 ```
 
@@ -242,15 +243,15 @@ Combine the point clouds from multiple camera sources and project them to be fro
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model" : "join_pointclouds",
- "attributes": {
-     "source_cameras": ["cam1", "cam2", "cam3"], # camera sources to combine
-     "target_frame": "arm1", # the frame of reference for the points in the merged point cloud.
-     "merge_method": "", # [opt] either "naive" or "icp"; defaults to "naive".
-     "proximity_threshold_mm": 1 # [opt] defines how close 2 points should be together to be considered the same point when merged.
- }
+    "name": "camera_name",
+    "type": "camera",
+    "model" : "join_pointclouds",
+    "attributes": {
+        "source_cameras": ["cam1", "cam2", "cam3"], # camera sources to combine
+        "target_frame": "arm1", # the frame of reference for the points in the merged point cloud.
+        "merge_method": "", # [opt] either "naive" or "icp"; defaults to "naive".
+        "proximity_threshold_mm": 1 # [opt] defines how close 2 points should be together to be considered the same point when merged.
+    }
 }
 ```
 
@@ -264,16 +265,16 @@ Example config:
 
 ```json-viam
 {
- "name": "camera_name",
- "type": "camera",
- "model": "transform",
- "attributes" : {
-  "source" : "physical_cam",
-  "pipeline": [
-   { "type": "rotate", "attributes": {} },
-   { "type": "resize", "attributes": {"width_px":200, "height_px" 100} }
-  ]
- }
+    "name": "camera_name",
+    "type": "camera",
+    "model": "transform",
+    "attributes" : {
+        "source" : "physical_cam",
+        "pipeline": [
+            { "type": "rotate", "attributes": {} },
+            { "type": "resize", "attributes": {"width_px":200, "height_px" 100} }
+        ]
+    }
 }
 ```
 
@@ -284,10 +285,10 @@ You can use this transform to change the underlying camera source's intrinsic pa
 
 ```json-viam
 {
- "type": "identity",
- "attributes": {
-  # no attributes
- }
+    "type": "identity",
+    "attributes": {
+        # no attributes
+    }
 }
 ```
 
@@ -298,10 +299,10 @@ This feature is useful for when the camera is installed upside down on your robo
 
 ```json-viam
 {
- "type": "rotate",
- "attributes": {
-  # no attributes
- }
+    "type": "rotate",
+    "attributes": {
+        # no attributes
+    }
 }
 ```
 
@@ -311,11 +312,11 @@ The Resize transform resizes the image to the specified height and width.
 
 ```json-viam
 {
- "type": "resize",
- "attributes": {
-  "width_px": int, 
-  "height_px": int
- }
+    "type": "resize",
+    "attributes": {
+        "width_px": int, 
+        "height_px": int
+    }
 }
 ```
 
@@ -326,10 +327,10 @@ Actual depth information is lost in the transform.
 
 ```json-viam
 {
- "type": "depth_to_pretty",
- "attributes": {
-  # no attributes
- }
+    "type": "depth_to_pretty",
+    "attributes": {
+        # no attributes
+    }
 }
 ```
 
@@ -341,15 +342,15 @@ Overlay overlays the depth and color 2D images. Useful in order to debug the ali
 {
     "type": "overlay",
     "attributes": {
-      "intrinsic_parameters": {
-        "width_px": int,
-        "height_px": int,
-        "ppx": float, # the image center x point
-        "ppy": float, # the image center y point
-        "fx": float, # the image focal x
-        "fy": float, # the image focal y
+        "intrinsic_parameters": {
+            "width_px": int,
+            "height_px": int,
+            "ppx": float, # the image center x point
+            "ppy": float, # the image center y point
+            "fx": float, # the image focal x
+            "fy": float, # the image focal y
+        }
     }
-  }
 }
 ```
 
@@ -362,24 +363,24 @@ For further information, please refer to the <a href="https://docs.opencv.org/3.
 
 ```json-viam
 {
-  "type": "undistort",
-  "attributes": {
-    "intrinsic_parameters": {
-      "width_px": int,
-      "height_px": int,
-      "ppx": float, # the image center x point
-      "ppy": float, # the image center y point
-      "fx": float, # the image focal x
-      "fy": float, # the image focal y
-    },
-    "distortion_parameters": {
-      "rk1": float, # radial distortion
-      "rk2": float,
-      "rk3": float,
-      "tp1": float, # tangential distortion
-      "tp2": float
+    "type": "undistort",
+    "attributes": {
+        "intrinsic_parameters": {
+            "width_px": int,
+            "height_px": int,
+            "ppx": float, # the image center x point
+            "ppy": float, # the image center y point
+            "fx": float, # the image focal x
+            "fy": float, # the image focal y
+        },
+        "distortion_parameters": {
+            "rk1": float, # radial distortion
+            "rk2": float,
+            "rk3": float,
+            "tp1": float, # tangential distortion
+            "tp2": float
+        }
     }
-  }
 }
 ```
 
@@ -389,11 +390,11 @@ The Detections transform takes the input image and overlays the detections from 
 
 ```json-viam
 {
-  "type": "detections",
-  "attributes": {
-    "detector_name": string, # the name within the vision service
-    "confidence_threshold": float # only display detections above threshold
-  }
+    "type": "detections",
+    "attributes": {
+        "detector_name": string, # the name within the vision service
+        "confidence_threshold": float # only display detections above threshold
+    }
 }
 ```
 
@@ -403,12 +404,12 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 
 ```json-viam
 {
-  "type": "depth_edges",
-  "attributes": {
+    "type": "depth_edges",
+    "attributes": {
     "high_threshold_pct": float, # between 0.0 - 1.0
     "low_threshold_pct": float, # between 0.0 - 1.0
     "blur_radius_px": float # smooth image before applying filter 
-  }
+    }
 }
 ```
 
@@ -418,10 +419,10 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 
 ```json-viam
 {
-  "type": "depth_preprocess",
-  "attributes": {
-    # no attributes
-  }
+    "type": "depth_preprocess",
+    "attributes": {
+        # no attributes
+    }
 }
 ```
 
@@ -437,13 +438,13 @@ single_stream is a model where there is a camera server streaming image data. Yo
 
 ```json-viam
 {
-  "name": "camera_name",
-  "type": "camera",
-  "model" : "single_stream",
-  "attributes": {
-    "url": string # the camera server url,
-    "stream": string # options are "color", "depth",
-  }
+    "name": "camera_name",
+    "type": "camera",
+    "model" : "single_stream",
+    "attributes": {
+        "url": string # the camera server url,
+        "stream": string # options are "color", "depth",
+    }
 }
 ```
 
@@ -453,14 +454,14 @@ dual_stream is a model where there are two camera servers streaming data, one is
 
 ```json-viam
 {
-  "name": "camera_name",
-  "type": "camera",
-  "model" : "dual_stream",
-  "attributes": {
-    "color": string, # the color stream url,
-    "depth": string, # the depth stream url,
-    "stream": string # "color" or "depth" image will be returned when calling Next(). NextPointCloud() returns the full colorful point cloud.
-  }
+    "name": "camera_name",
+    "type": "camera",
+    "model" : "dual_stream",
+    "attributes": {
+        "color": string, # the color stream url,
+        "depth": string, # the depth stream url,
+        "stream": string # "color" or "depth" image will be returned when calling Next(). NextPointCloud() returns the full colorful point cloud.
+    }
 }
 ```
 
