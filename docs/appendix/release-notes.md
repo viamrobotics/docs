@@ -7,6 +7,7 @@ type: "docs"
 description:
 # SME: Mike A.
 ---
+
 ## 28 November 2022
 
 {{< tabs >}}
@@ -20,14 +21,15 @@ description:
 * viam-python-sdk - v0.2.0
 * goutils - v0.1.4
 * rust-utils - v0.0.5
-<br><br><br>(**Bold=updated version**)
+
+(**Bold=updated version**)
 
 {{% /tab %}}
 {{% tab name="Issue Resolutions" %}}
-<table style="margin-bottom:18px">
 
 ### Camera Reconnection Issue
 
+<table style="margin-bottom:18px">
   <tbody style="vertical-align:top;">
       <tr>
           <td width="120px"><strong>What is it?</strong></td>
