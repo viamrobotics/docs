@@ -141,66 +141,66 @@ description:
 #### New Parameter: extra
 
 <table style="margin-bottom:18px">
-<tbody style="vertical-align:top;">
-    <tr>
-        <td width="120px"><strong>What is it?</strong></td>
-        <td>We added a new API method parameter named, <code>extra</code>, that gives users the option of extending existing resource functionality by implementing the new field according to whatever logic they chose.
-<code>extra</code> is available to requests for all methods in the following APIs:<br><br>
-<table style="margin-bottom: 12px;">
-<tr><td><li>Arm</li>
-<li>Data Manager</li>
-<li>Gripper</li>
-<li>Input Controller</li></td><td><li>Motion</li>
-<li>Movement Sensor</li>
-<li>Navigation</li>
-<li>Pose Tracker</li></td><td><li>Sensor</li>
-<li>SLAM</li>
-<li>Vision</li></td></tr>
-</table>
-</td>
-    </tr>
-    <tr>
-        <td><strong>What does it affect?</strong></td>
-        <td>Users of the Go SDK <strong>must</strong> update their code to specify <code>extra</code> in the arguments that pass into each request.
-
-{{% alert title="Note" color="note" %}}
-This breaking change does NOT affect users of the Python SDK.
-{{% /alert %}}</td>
-    </tr>
-<tbody>
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>We added a new API method parameter named, <code>extra</code>, that gives users the option of extending existing resource functionality by implementing the new field according to whatever logic they chose.
+                <code>extra</code> is available to requests for all methods in the following APIs:<br><br>
+                <table style="margin-bottom: 12px;">
+                    <tr><td><li>Arm</li>
+                    <li>Data Manager</li>
+                    <li>Gripper</li>
+                    <li>Input Controller</li></td><td><li>Motion</li>
+                    <li>Movement Sensor</li>
+                    <li>Navigation</li>
+                    <li>Pose Tracker</li></td><td><li>Sensor</li>
+                    <li>SLAM</li>
+                    <li>Vision</li></td></tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>What does it affect?</strong></td>
+            <td>Users of the Go SDK <strong>must</strong> update their code to specify <code>extra</code> in the arguments that pass into each request.
+            {{% alert title="Note" color="note" %}}
+            This breaking change does NOT affect users of the Python SDK.
+            {{% /alert %}}
+            </td>
+        </tr>
+    <tbody>
 </table>
 
 #### Add dependencies to services
 
 <table style="margin-bottom:18px">
-<tbody style="vertical-align:top;">
-    <tr>
-        <td width="120px"><strong>What is it?</strong></td>
-        <td>Adding dependencies to services allows Viam to initialize and configure resources in the correct order. For example, if the SLAM service depends on a LiDAR, it will always initialize the LiDAR before the service.</td>
-    </tr>
-    <tr>
-        <td><strong>What does it affect?</strong></td>
-        <td><strong>Breaking Change</strong>: This impacts users of the SLAM service. Users must now specify which sensors they are using in the <code>depends_on</code> field of the SLAM configuration.
-Other service configurations are not affected.</td>
-    </tr>
-<tbody>
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>Adding dependencies to services allows Viam to initialize and configure resources in the correct order. For example, if the SLAM service depends on a LiDAR, it will always initialize the LiDAR before the service.</td>
+        </tr>
+        <tr>
+            <td><strong>What does it affect?</strong></td>
+            <td><strong>Breaking Change</strong>: This impacts users of the SLAM service. Users must now specify which sensors they are using in the <code>depends_on</code> field of the SLAM configuration.
+    Other service configurations are not affected.</td>
+        </tr>
+    <tbody>
 </table>
 
 #### Removed width & height fields from Camera API
 
 <table style="margin-bottom:18px">
-<tbody style="vertical-align:top;">
-    <tr>
-        <td width="120px"><strong>What is it?</strong></td>
-        <td>We removed two fields (<code>width</code> and <code>height</code>) that were previously part of the response from the <code>GetImage</code> method in the camera API.
-</td>
-    </tr>
-    <tr>
-        <td><strong>What does it affect?</strong></td>
-        <td><strong>Breaking Change</strong>: This <emphasis>does not<emphasis> impact any existing camera implementations.
-Users writing custom camera API implementations no longer need to implement the <code>width</code> or <code>height</code> fields.</td>
-    </tr>
-<tbody>
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>We removed two fields (<code>width</code> and <code>height</code>) that were previously part of the response from the <code>GetImage</code> method in the camera API.
+    </td>
+        </tr>
+        <tr>
+            <td><strong>What does it affect?</strong></td>
+            <td><strong>Breaking Change</strong>: This <emphasis>does not<emphasis> impact any existing camera implementations.
+            Users writing custom camera API implementations no longer need to implement the <code>width</code> or <code>height</code> fields.</td>
+        </tr>
+    <tbody>
 </table>
 
 {{% /tab %}}
