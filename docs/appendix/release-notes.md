@@ -7,14 +7,14 @@ type: "docs"
 description:
 # SME: Mike A.
 ---
-## 27 December 2022
+## 28 December 2022
 
 {{< tabs >}}
 {{% tab name="Versions" %}}
 
 ## Release Versions
-* rdk - **v3.0.0**
-* api - **v0.1.29**
+* rdk - **v0.2.9**
+* api - **v0.1.31**
 * slam - **v0.1.13**
 * viam-python-sdk - **v0.2.6**
 * goutils - **v0.1.6**
