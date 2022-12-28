@@ -54,34 +54,32 @@ If there is no way to move to the desired location in a straight line for the ar
 
 ```json-viam
 {
-  "components": [
-    {
+  "components": [{
       "attributes": {
-        "host": "10.0.0.97"
+          "host": "10.0.0.97"
       },
       "depends_on": [],
       "frame": {
-        "orientation": {
-          "type": "ov_degrees",
-          "value": {
-            "th": 0,
-            "x": 0,
-            "y": 0,
-            "z": 1
+          "orientation": {
+              "type": "ov_degrees",
+              "value": {
+                  "th": 0,
+                  "x": 0,
+                  "y": 0,
+                  "z": 1
+              }
+          },
+          "parent": "world",
+          "translation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
           }
-        },
-        "parent": "world",
-        "translation": {
-          "x": 0,
-          "y": 0,
-          "z": 0
-        }
       },
       "model": "xArm6",
       "name": "xArm6",
       "type": "arm"
-    }
-  ]
+  }]
 }
 ```
 
