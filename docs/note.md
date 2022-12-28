@@ -135,56 +135,56 @@ Within the expander, you can still use most other shortcodes and syntax highligh
 
 **Prism syntax highlighting works in expanders, as do most other shortcodes.**
 
-``` go
- motion_svc = MotionServiceClient.from_robot(robot, "NAME”)
-   arm = Arm.from_robot(robot=robot, name='xArm6')
-   pos = await arm.get_end_position()
-   
-   print("~~~~TESTING ARM LINEAR MOVE~~~~~")
-   pos = await arm.get_end_position()
-   print(pos)
-   pos.x += 300
-   # Note we are passing an empty worldstate
-   await arm.move_to_position(pose=pos, world_state=WorldState())
-   pos = await arm.get_end_position()
-   print(pos)
-   pos.x -= 300
-   await asyncio.sleep(1)
-   await arm.move_to_position(pose=pos, world_state=WorldState())
-   
-   print("~~~~TESTING MOTION SERVICE MOVE~~~~~")
-   
-   geom = Geometry(center=Pose(x=pos.x + 150, y=pos.y, z=pos.z), box=RectangularPrism(width_mm =2, length_mm =5, depth_mm =5))
-   geomFrame = GeometriesInFrame(reference_frame="xArm6", geometries=[geom])
-   worldstate = WorldState(obstacles=[geomFrame])
-   
-   pos = await arm.get_end_position()
-   jpos = await arm.get_joint_positions()
-   print(pos)
-   print("joints", jpos)
-   pos.x += 300
-   
-   for resname in robot.resource_names:
-     if resname.name == "xArm6":
-       armRes = resname
-   
-   # We pass the WorldState above with the geometry. The arm should successfully route around it.
-   await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
-   pos = await arm.get_end_position()
-   jpos = await arm.get_joint_positions()
-   print(pos)
-   print("joints", jpos)
-   pos.x -= 300
-   await asyncio.sleep(1)
-   await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
-   
-   print("~~~~TESTING ARM MOVE- SHOULD FAIL~~~~~")
-   pos = await arm.get_end_position()
-   print(pos)
-   pos.x += 300
-   # We pass the WorldState above with the geometry. As arm.move_to_position will enforce linear motion, this should fail
-   # since there is no linear path from start to goal that does not intersect the obstacle.
-   await arm.move_to_position(pose=pos, world_state=worldstate)
+``` python
+motion_svc = MotionServiceClient.from_robot(robot, "NAME”)
+arm = Arm.from_robot(robot=robot, name='xArm6')
+pos = await arm.get_end_position()
+
+print("~~~~TESTING ARM LINEAR MOVE~~~~~")
+pos = await arm.get_end_position()
+print(pos)
+pos.x += 300
+# Note we are passing an empty worldstate
+await arm.move_to_position(pose=pos, world_state=WorldState())
+pos = await arm.get_end_position()
+print(pos)
+pos.x -= 300
+await asyncio.sleep(1)
+await arm.move_to_position(pose=pos, world_state=WorldState())
+
+print("~~~~TESTING MOTION SERVICE MOVE~~~~~")
+
+geom = Geometry(center=Pose(x=pos.x + 150, y=pos.y, z=pos.z), box=RectangularPrism(width_mm =2, length_mm =5, depth_mm =5))
+geomFrame = GeometriesInFrame(reference_frame="xArm6", geometries=[geom])
+worldstate = WorldState(obstacles=[geomFrame])
+
+pos = await arm.get_end_position()
+jpos = await arm.get_joint_positions()
+print(pos)
+print("joints", jpos)
+pos.x += 300
+
+for resname in robot.resource_names:
+  if resname.name == "xArm6":
+    armRes = resname
+
+# We pass the WorldState above with the geometry. The arm should successfully route around it.
+await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
+pos = await arm.get_end_position()
+jpos = await arm.get_joint_positions()
+print(pos)
+print("joints", jpos)
+pos.x -= 300
+await asyncio.sleep(1)
+await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
+
+print("~~~~TESTING ARM MOVE- SHOULD FAIL~~~~~")
+pos = await arm.get_end_position()
+print(pos)
+pos.x += 300
+# We pass the WorldState above with the geometry. As arm.move_to_position will enforce linear motion, this should fail
+# since there is no linear path from start to goal that does not intersect the obstacle.
+await arm.move_to_position(pose=pos, world_state=worldstate)
 ```
 
 {{% /expand%}}
@@ -199,29 +199,29 @@ Within the expander, you can still use most other shortcodes and syntax highligh
 
 **Warning**: Use to notify the reader of an issue to avoid loss of life, personal injury, and health hazards. Electrical and physical safety fall into this category.
 
-{{< alert title="Tip" color="tip" >}}  
+{{< alert title="Tip" color="tip" >}}
 The "title" and "color" keywords and the names of colors ("tip," "note," etc.) are case sensitive. If you use uppercase, Alerts will not have a title and the color border will be incorrect.
 {{< /alert >}}
 
 {{< figure src="/img/alert-markdown.png"  alt="The shortcodes used to display Alerts." title="Shortcodes for Alerts" >}}
 
-{{< alert title="Tip" color="tip" >}}  
+{{< alert title="Tip" color="tip" >}}
 Use for tips
 {{< /alert >}}
 
-{{< alert title="Info" color="tip" >}}  
+{{< alert title="Info" color="tip" >}}
 Use for extra background information
 {{< /alert >}}
 
-{{< alert title="Note" color="note" >}}  
+{{< alert title="Note" color="note" >}}
 This is to call the reader's attention to something important. Use it to expand on something from the body text or to provide a tip or additional information.
 {{< /alert >}}
 
-{{< alert title="Caution" color="caution" >}}  
+{{< alert title="Caution" color="caution" >}}
 This provides notices that a certain action or event could damage hardware or cause data loss.
 {{< /alert >}}
 
-{{< alert title="Warning" color="warning" >}}  
+{{< alert title="Warning" color="warning" >}}
 Use to notify the reader of information to avoid loss of life, personal injury, and health hazards.
 {{< /alert >}}
 

@@ -22,7 +22,7 @@ Currently, there are three operations available through the vision service:
 
 The vision service is a default service on the robot, and can be initialized without attributes.
 
-{{% alert title="Tip" color="tip" %}}  
+{{% alert title="Tip" color="tip" %}}
 To read code examples of how to use Viam's Vision Service with the Viam Python and Go SDKs, checkout our example repo: <a href="https://github.com/viamrobotics/vision-service-examples" target="_blank">ht<span></span>tps://github.com/viamrobotics/vision-service-examples</a>
 {{% /alert %}}
 
@@ -52,7 +52,7 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
         "attributes": {
           "register_models": [
             {
-              "name": "my_color_detector", 
+              "name": "my_color_detector",
               "type": "color_detector",
               "parameters": {
                 "detect_color" : "#A3E2FF",
@@ -61,7 +61,7 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
               }
             },
             {
-              "name": "my_classifier", 
+              "name": "my_classifier",
               "type": "tflite_classifier",
               "parameters": {
                 "model_path" : "/path/to/model.tflite",
@@ -79,7 +79,7 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
 
 In the snippet below, we are getting the robot’s vision service and then running a color detector vision model on an image, verifying that the color detector vision service is on the robot, and then applying the color detector to the image from the camera.
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 These code snippets expect you to have a camera named "camera_1" configured as a component of your robot.
 {{% /alert %}}
 
@@ -107,33 +107,33 @@ detections = await vision.get_detections_from_camera("camera_1", "detector_1")
 
 ```go
 import (
- "go.viam.com/rdk/config"
- "go.viam.com/rdk/services/vision"
+"go.viam.com/rdk/config"
+"go.viam.com/rdk/services/vision"
 )
-
 
 visService, err := vision.FirstFromRobot(robot)
 if err != nil {
- logger.Fatalf("cannot get vision service: %v", err)
+    logger.Fatalf("cannot get vision service: %v", err)
 }
 
 // Add a color detector to the vision service and verify that it is there.
 err = visService.AddDetector(context.Background(),
- vision.VisModelConfig{
-  Name: "detector_1",
-  Type: "color_detector",
-  Parameters: config.AttributeMap{
-   "detect_color":      "#7ba4a5",
-   "hue_tolerance_pct": 0.06,
-   "segment_size_px":   200,
-  },
- })
+vision.VisModelConfig{
+    Name: "detector_1",
+    Type: "color_detector",
+    Parameters: config.AttributeMap{
+        "detect_color":          "#7ba4a5",
+        "hue_tolerance_pct":     0.06,
+        "segment_size_px":       200,
+    },
+})
+
 if err != nil {
- logger.Fatalf("could not add vision model: %v", err)
+    logger.Fatalf("could not add vision model: %v", err)
 }
 detNames, err := visService.DetectorNames(context.Background())
 if err != nil {
- logger.Fatalf("could not list detectors: %v", err)
+    logger.Fatalf("could not list detectors: %v", err)
 }
 logger.Info("Vision Resources:")
 logger.Info(detNames)
@@ -141,10 +141,10 @@ logger.Info(detNames)
 // Apply the color detector to the image from your camera (configured as "camera_1")
 detections, err := visService.DetectionsFromCamera(context.Background(), "camera_1", "detector_1")
 if err != nil {
- logger.Fatalf("could not get detections: %v", err)
+    logger.Fatalf("could not get detections: %v", err)
 }
 if len(detections) > 0 {
- logger.Info(detections[0])
+    logger.Info(detections[0])
 }
 ```
 
@@ -194,7 +194,7 @@ The color is written as a hexadecimal string prefixed by ‘#’.
 
 {{% alert title="Note" color="note" %}}
 
-**hue_tolerance_pct**, **saturation_cutoff_pct**, and **value_cutoff_pct** refer to hue, saturation, and value (brightness) in the HSV Color Model, but do not set color values in Viam.  
+**hue_tolerance_pct**, **saturation_cutoff_pct**, and **value_cutoff_pct** refer to hue, saturation, and value (brightness) in the HSV Color Model, but do not set color values in Viam.
 
 **hue_tolerance_pct** specifies the exactness of the color match to **detect_color**.
 

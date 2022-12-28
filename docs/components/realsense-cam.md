@@ -33,10 +33,10 @@ On the [Viam app](https://app.viam.com), click **CONFIG** and then access the **
 ``` json
 [
    {
-      "id": "intel",
-      "log": true,
-      "name": "/usr/local/bin/intelgrpcserver"
-   }
+        "id": "intel",
+        "log": true,
+        "name": "/usr/local/bin/intelgrpcserver"
+    }
 ]
 ```
 
@@ -46,11 +46,11 @@ On the **CONFIG** tab, click **REMOTE**, and then add the following configuratio
 
 ``` json
 [
-   {
-      "name": "intel",
-      "address": "ip-address-of-your-pi:8085",
-      "insecure": true
-   }
+    {
+        "name": "intel",
+        "address": "ip-address-of-your-pi:8085",
+        "insecure": true
+    }
 ]
 ```
 
@@ -65,36 +65,36 @@ The **Attributes Guide** lists the available attributes for the chosen component
 Enter the necessary JSON configuration for your camera:
 
 ``` json
-   {
-     "homography": {
-       "transform": [ // the color and depth image are already aligned
+{
+    "homography": {
+        "transform": [ // the color and depth image are already aligned
             1.0, 0.0, 0.0,
             0.0, 1.0, 0.0,
             0.0, 0.0, 1.0
-         ],
-         "depth_to_color": false,
-         "rotate_depth_degs": 0
-     },
-     "stream": "color",
-     "width_px": 1280,
-       "height_px": 720,
- // you can get intrinsics by calling GetProperties on the intel gRPC camera server, too
-     "intrinsic_parameters": {
-         "height_px": 720,
-         "width_px": 1280,
-         "ppx": 648.1280,
-         "ppy": 367.736,
-         "fx": 900.538,
-         "fy": 900.818
-     },
-     "color_camera_name": "intel:color",
-     "depth_camera_name": "intel:depth"
-   }
+        ],
+        "depth_to_color": false,
+        "rotate_depth_degs": 0
+    },
+    "stream": "color",
+    "width_px": 1280,
+    "height_px": 720,
+    // you can get intrinsics by calling GetProperties on the intel gRPC camera server, too
+    "intrinsic_parameters": {
+        "height_px": 720,
+        "width_px": 1280,
+        "ppx": 648.1280,
+        "ppy": 367.736,
+        "fx": 900.538,
+        "fy": 900.818
+    },
+    "color_camera_name": "intel:color",
+    "depth_camera_name": "intel:depth"
+
+    "depends_on": [
+        "intel:color",
+        "intel:depth"
+    ]
 }
-"depends_on": [
-   "intel:color",
-   "intel:depth"
-]
 ```
 
 In the **CONTROL** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with `join_color_depth`.
@@ -120,9 +120,9 @@ Enter the following configuration:
 ``` json
 [
    {
-      "id": "intel",
-      "log": true,
-      "name": "/usr/local/bin/intelrealserver"
+        "id": "intel",
+        "log": true,
+        "name": "/usr/local/bin/intelrealserver"
    }
 ]
 ```
@@ -143,12 +143,12 @@ Enter the following camera model:  “dual_stream”
 ``` json
 {
    "intrinsic_parameters": {
-      "fx": 900.538,
-      "fy": 900.818,
-      "height_px": 720,
-      "ppx": 648.934,
-      "ppy": 367.736,
-      "width_px": 1280
+        "fx": 900.538,
+        "fy": 900.818,
+        "height_px": 720,
+        "ppx": 648.934,
+        "ppy": 367.736,
+        "width_px": 1280
   },
   "color_url": "http://127.0.0.1:8181/pic.png",
   "depth_url": "http://127.0.0.1:8181/depth.png",
