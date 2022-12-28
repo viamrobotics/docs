@@ -13,11 +13,11 @@ There are two basic things you can do with a camera component:
 
 1. Request the next Image (which is a 2D Color(RGB), or Depth(Z) image).
 
-* A 2D image always has its x,y units in pixels. For Color, the pixel value is a RGB value, and for Depth it is a uint16 representing depth in mm.
+   * A 2D image always has its x,y units in pixels. For Color, the pixel value is a RGB value, and for Depth it is a uint16 representing depth in mm.
 
 2. Request the next Point Cloud (which is a 3D image)
 
-* A 3D point cloud has all of its (x,y,z) coordinates in units of mm.
+   * A 3D point cloud has all of its (x,y,z) coordinates in units of mm.
 
 ## Camera Models
 
@@ -475,7 +475,7 @@ For more details, check out [this link to our camera server repository](https://
 
 If you are getting "timeout" errors from GRPC when adding a `webcam` model, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box):
 
-```
+```bash
 $ sudo raspi-config
 Interface Options -> Camera -> Enable Camera
 Restart the Pi
