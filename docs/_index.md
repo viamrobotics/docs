@@ -5,29 +5,56 @@ weight: 1
 type: "docs"
 ---
 
-<style>
-
-</style>
-
 <div class="mra-row">
-  <div class="mra-column" >
-<h2>Getting Started</h2>
-<p>Looking to get started with Viam? Check out the following:</p>
-<ul>
- <li><a href="/getting-started/high-level-overview">Viam Overview</a></li>
-  <li><a href="/getting-started/try-viam">Try Viam</a></li>
- <li><a href="http://www.viam.com/use-cases">Viam Use Cases</a></li>
- <li><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs&ab_channel=EliotHorowitz">Intro Video</a></li>
- <li><a href="/tutorials/build-a-mock-robot/">Build a Mock Robot without Hardware</a></li>
-</ul>
-  </div>
-  <div class="mra-column">
-<table>
- <tr>
- <td><a href="https://www.youtube.com/watch?v=TjmvnEdNVKs" target="_blank">Click to view our Founder's Message<img src="img/eliot-vid-thumb.png" style="border: 1px solid black"> <span style="font-size:xx-small" </span> (Link opens in new tab)</a></td>
- </tr>
- </table>
-  </div>
+    <div class="mra-column">
+        <h2>
+            Getting Started
+        </h2>
+        <p>
+            Looking to get started with Viam? Check out the following:
+        </p>
+        <ul>
+            <li>
+                <a href="/getting-started/high-level-overview">
+                    Viam Overview
+                </a>
+            </li>
+            <li>
+                <a href="/getting-started/try-viam">
+                    Try Viam
+                </a>
+            </li>
+            <li>
+                <a href="http://www.viam.com/use-cases">
+                    Viam Use Cases
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=TjmvnEdNVKs&ab_channel=EliotHorowitz">
+                    Intro Video
+                </a>
+            </li>
+            <li>
+                <a href="/tutorials/build-a-mock-robot/">
+                    Build a Mock Robot without Hardware
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="mra-column">
+        <table>
+            <tr>
+                <td>
+                    <a href="https://www.youtube.com/watch?v=TjmvnEdNVKs" target="_blank">
+                        Click to view our Founder's Message
+                        <img src="img/eliot-vid-thumb.png" style="border: 1px solid black">
+                        <span style="font-size:xx-small" </span>
+                            (Link opens in new tab)
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 ## Product Overviews
