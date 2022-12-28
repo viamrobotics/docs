@@ -12,6 +12,7 @@ on:
       - '**.md'
       - .github/workflows/markdown.yml
       - .markdownlint.yaml
+  workflow_dispatch:
 
 jobs:
   markdown_lint:
