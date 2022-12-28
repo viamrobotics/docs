@@ -9,7 +9,8 @@ description: "The Control Package implements feedback control on an endpoint."
 
 ## Introduction
 
-The control package implements feedback control on an endpoint (plant). Users can design a control loop that monitors a process variable (PV) and compares it with a set point (SP).
+The control package implements feedback control on an endpoint (plant).
+Users can design a control loop that monitors a process variable (PV) and compares it with a set point (SP).
 The difference between SP-PV is called the error. It is used to generate a control action to reduce this error to zero.
 Control loops are usually represented by a diagrammatic style knows as block diagram, in this representation the control loop is broken down into successive blocks or mathematical operations.
 
