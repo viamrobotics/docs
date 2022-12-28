@@ -1,7 +1,17 @@
 name: Lint Markdown files
-
+  
 on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - '**.md'
+      - .github/workflows/markdown-lint.yml
+      - .markdownlint.yaml
   push:
+    paths:
+      - '**.md'
+      - .github/workflows/markdown.yml
+      - .markdownlint.yaml
 
 jobs:
   markdown_lint:
