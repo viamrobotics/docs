@@ -55,7 +55,7 @@ The Gamepad module provides an `input.Controller` interface that represents a st
 
 ### Configuration Example
 
-``` json
+```json
 {
   "components": [
     {
@@ -87,30 +87,30 @@ There are currently mappings for a wired XBox 360 controller, and wireless XBox 
 
 The below example defines a single callback function (motorCtl) that handles input events, and turns them into motor.SetPower() commands. It's essentially all that's needed to drive a four wheel, skid steer platform, and uses the L/R analog triggers to control a "winder" motor, that raises/lowers a front end (like a bulldozer.) Lastly, it registers this callback for a selected set of axes.
 
-``` Go
+```Go
 motorCtl := func(ctx context.Context, event input.Event) {
- if event.Event != input.PositionChangeAbs {
-  return
- }
 
- speed := float32(math.Abs(event.Value))
+  if event.Event != input.PositionChangeAbs {
+    return
+  }
 
- switch event.Control {
- case input.AbsoluteY:
-  motorFL.SetPower(ctx, speed)
-  motorBL.SetPower(ctx, speed)
- case input.AbsoluteRY:
-  motorFR.SetPower(ctx, speed * -1)
-  motorBR.SetPower(ctx, speed * -1)
- case input.AbsoluteZ:
-  motorWinder.SetPower(ctx, speed)
- case input.AbsoluteRZ:
-  motorWinder.SetPower(ctx, speed * -1)
- }
+  speed := float32(math.Abs(event.Value))
+
+  switch event.Control {
+    case input.AbsoluteY:
+      motorFL.SetPower(ctx, speed)
+      motorBL.SetPower(ctx, speed)
+    case input.AbsoluteRY:
+      motorFR.SetPower(ctx, speed * -1)
+      motorBR.SetPower(ctx, speed * -1)
+    case input.AbsoluteZ:
+      motorWinder.SetPower(ctx, speed)
+    case input.AbsoluteRZ:
+      motorWinder.SetPower(ctx, speed * -1)
+  }
 }
-for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input.AbsoluteZ, input.AbsoluteRZ} {
- err = g.RegisterControlCallback(ctx, control, []input.EventType{input.PositionChangeAbs}, motorCtl)
-
+  for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input.AbsoluteZ, input.AbsoluteRZ} {
+    err = g.RegisterControlCallback(ctx, control, []input.EventType{input.PositionChangeAbs}, motorCtl)
 }
 ```
 

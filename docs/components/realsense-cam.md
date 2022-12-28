@@ -119,11 +119,11 @@ Enter the following configuration:
 
 ``` json
 [ 
-{ 
-"id": "intel", 
-"log": true, 
-"name": "/usr/local/bin/intelrealserver" 
-} 
+   { 
+      "id": "intel", 
+      "log": true, 
+      "name": "/usr/local/bin/intelrealserver" 
+   } 
 ]
 ```
 
@@ -132,9 +132,7 @@ This configures the HTTP server to run on port 8181 of your Pi. You can access t
 The endpoints that it creates are:
 
 * [http://your-raspi-address:8181/pic.jpg](http://your-raspi-address:8181/pic.jpg) - a jpeg image from the color camera
-
 * [http://your-raspi-address:8181/pic.png](http://your-raspi-address:8181/pic.png) - a png image from the color camera
-
 * [http://your-raspi-address:8181/depth.png](http://your-raspi-address:8181/depth.png) - a png image from the depth camera
 
 ## Create a Camera to Display Point Clouds
@@ -145,12 +143,12 @@ Enter the following camera model:  “dual_stream”
 ``` json
 {  
    "intrinsic_parameters": {
-    "fx": 900.538,
-    "fy": 900.818,
-    "height_px": 720,
-    "ppx": 648.934,
-    "ppy": 367.736,
-    "width_px": 1280
+      "fx": 900.538,
+      "fy": 900.818,
+      "height_px": 720,
+      "ppx": 648.934,
+      "ppy": 367.736,
+      "width_px": 1280
   },
   "color_url": "http://127.0.0.1:8181/pic.png",
   "depth_url": "http://127.0.0.1:8181/depth.png",
