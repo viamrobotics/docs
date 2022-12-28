@@ -153,7 +153,7 @@ if len(detections) > 0 {
 
 ## Detection
 
-**2D Object Detection** is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct “objects” of interest in the scene. Any camera that can return 2D images can use 2D object detection.
+_2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct “objects” of interest in the scene. Any camera that can return 2D images can use 2D object detection.
 
 What an object “is” depends on what is required for the task at hand.
 To accommodate the open-ended-ness of what kind of object a user may need to identify, the service provides different types of detectors, both heuristic and machine-learning based, so that users can create, register, and use detectors suited for their own purposes.
@@ -226,7 +226,7 @@ These requirements are satisfied by a few publicly available model architectures
 
 ## Classification
 
-**2D Image Classification** is the process of taking a 2D image from a camera and deciding which class label, out of many, best describes the given image.  Any camera that can return 2D images can use 2D image classification.
+_2D Image Classification_ is the process of taking a 2D image from a camera and deciding which class label, out of many, best describes the given image.  Any camera that can return 2D images can use 2D image classification.
 
 Which class labels may be considered for classification varies and will depend on the machine learning model and how it was trained.
 
@@ -259,7 +259,7 @@ Without this file, classes will read “1”, “2”, etc.
 
 ## Segmentation
 
-**3D Object Segmentation** is the process of separating and returning a list of the found “objects” from a 3D scene.  The "objects" are a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinate of the object.   Future updates to the service may return more information about the objects.
+_3D Object Segmentation_ is the process of separating and returning a list of the found “objects” from a 3D scene.  The "objects" are a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinate of the object.   Future updates to the service may return more information about the objects.
 
 Any camera that can return 3D pointclouds can use 3D object segmentation.
 

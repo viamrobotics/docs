@@ -42,7 +42,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
   - Any color is suitable as long as its color is somewhat different from the floor color.
     For our tutorial, we used green electrical tape.
   - Non-shiny floors tend to work best.
-[^sr]: SCUTTLE Robot <a href="https://www.scuttlerobot.org/shop/" target="_blank" />scuttlerobot.org/shop/</a>
+[^sr]: SCUTTLE Robot <a href="https://www.scuttlerobot.org/shop/" target="_blank" />ht<span></span>tps://scuttlerobot.org/shop/</a>
 
 <p class="Mycaption" ><em>Figure 1: A SCUTTLE robot base with a camera mounted on the front, pointing mostly down and slightly forwards.</em><br>
 <img src="/tutorials/img/webcam-line-follower/lf-scuttle2.png" width="600" /></p>
@@ -90,7 +90,7 @@ In the **SERVICES** section of the **CONFIG** tab, configure a color detector fo
 Put this hash in the `detect_color` parameter.
 We used #19FFD9 to represent the color of green electrical tape.
 
-[^colorpick]: Color picker: <a href="https://colorpicker.me/" target="_blank">colorpicker.me/</a>
+[^colorpick]: Color picker: <a href="https://colorpicker.me/" target="_blank">ht<span></span>tps://colorpicker.me/</a>
   
 - We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
@@ -333,8 +333,8 @@ Type <strong>Y</strong> to confirm file modification, then press enter to finish
 
 **References**:
 
-- Line Follower Code on GitHub: <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">ht<span><span>tps://github.com/viam-labs/line-follower/blob/main/rgb_follower.py</a>
-- Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span><span>tps://mutagen.io/documentation/introduction/getting-started</a>
+- Line Follower Code on GitHub: <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">ht<span></span>tps://github.com/viam-labs/line-follower/blob/main/rgb_follower.py</a>
+- Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span></span>tps://mutagen.io/documentation/introduction/getting-started</a>
 
 ## Controlling your rover with Viam
 

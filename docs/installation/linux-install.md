@@ -20,12 +20,12 @@ In short, you'll download the file, make it executable, and run its self-install
 ### URLs
 
 - **Stable**:
-  - x86_64: <http://packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage>
-  - AArch64 (ARM64): <http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage>
+  - x86_64: [http://packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage](http://packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage)
+  - AArch64 (ARM64): [http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage](http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage)
 
 - **Latest**:
-  - x86_64: <http://packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage>
-  - AArch64 (ARM64): <http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage>
+  - x86_64: [http://packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage](http://packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage)
+  - AArch64 (ARM64): [http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage](http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage)
 
 ### Detailed Steps
 

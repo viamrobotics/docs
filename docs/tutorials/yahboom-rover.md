@@ -33,7 +33,7 @@ You don't need to add any attributes for this one, so your configured board will
 
 ![A screenshot of the board's configuration card on app.viam.com.](../img/yahboom-rover/board.png)
 
-## Configuring the Motor and Wheels
+## Configuring the Motors and Wheels
 
 Since both right side motors of the Yahboom rover are wired together to a single motor driver, the right side motors are configured as a single [motor component](../../components/motor/) in the Viam config file.
 Later we will configure both left side motors as another motor.

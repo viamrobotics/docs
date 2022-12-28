@@ -74,7 +74,7 @@ Note the green Connection indicator:
 
 <img src="../img/scuttle-gamepad/pi-game-controller-panel.png" />
 
-At this point, you should be able to move the SCUTTLE. If you are in the specific mode that allows you to use the Joystick (#7), it will change the values in your robot config:
+At this point, you should be able to move the SCUTTLE. If you are in the specific mode that allows you to use the Joystick (#7), it will change the values:
 
 ```bash
 "X
