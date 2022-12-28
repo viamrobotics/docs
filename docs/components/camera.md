@@ -406,9 +406,9 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 {
     "type": "depth_edges",
     "attributes": {
-    "high_threshold_pct": float, # between 0.0 - 1.0
-    "low_threshold_pct": float, # between 0.0 - 1.0
-    "blur_radius_px": float # smooth image before applying filter 
+        "high_threshold_pct": float, # between 0.0 - 1.0
+        "low_threshold_pct": float, # between 0.0 - 1.0
+        "blur_radius_px": float # smooth image before applying filter 
     }
 }
 ```
