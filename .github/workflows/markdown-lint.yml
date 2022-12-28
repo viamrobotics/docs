@@ -7,11 +7,6 @@ on:
       - '**.md'
       - .github/workflows/markdown-lint.yml
       - .markdownlint.yaml
-  push:
-    paths:
-      - '**.md'
-      - .github/workflows/markdown.yml
-      - .markdownlint.yaml
   workflow_dispatch:
 
 jobs:
