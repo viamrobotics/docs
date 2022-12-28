@@ -8,8 +8,10 @@ tags: ["server", "sdk"]
 ---
 
 Viam's Software Development Kits (SDKs) provide a wide array of components to customize.
-(You can browse through the [^API Reference][API Reference](https://python.viam.dev/autoapi/viam/components/index.html) to see all of them.)
+(You can browse through the [^API Reference] to see all of them.)
 But if you want to use a component that is not natively supported by Viam's SDK, then you will need to create a server component implementation in order to use your custom component.
+
+[^API Reference](https://python.viam.dev/autoapi/viam/components/index.html)
 
 ## What is a server component implementation?
 

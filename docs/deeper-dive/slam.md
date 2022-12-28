@@ -143,7 +143,7 @@ OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); th
 
 ## Hardware Requirements
 
-*Forthcoming*
+Forthcoming
 
 ## Installation
 

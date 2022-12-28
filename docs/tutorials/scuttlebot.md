@@ -224,7 +224,7 @@ Finally, we'll add a camera to your SCUTTLE Robot.
 
 1. Enter a name of your choice in **Name**.
 2. Enter "camera" in **Model**.
-4. Click <strong>Create Component</strong>.
+3. Click <strong>Create Component</strong>.
 
 Now, you'll see the config panel for the camera component:
 <img src="../img/scuttlebot/pi-cam-control.png">

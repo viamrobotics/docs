@@ -283,7 +283,7 @@ The types of segmenters supported are:
 * **mean_k_filtering (optional)** is an integer parameter used in <a href="https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html" target="_blank">a subroutine to eliminate the noise in the point clouds</a>[^mkf].  It should be set to be 5-10% of the number of min_points_in_segment.
   * Start with 5% and go up if objects are still too noisy.
   * If you don’t want to use the filtering, set the number to 0 or less.
- 
+
 [^mkf]: Mean K: <a href="https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html" target="_blank">ht<span></span>tps://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html</a>
 
 #### Detector Segmenters

@@ -54,7 +54,7 @@ Each driver of such a component in the Viam system requires a JSON file named **
 These reference frames are ingested by the Frame System *but not exposed via gRPC call* (meaning they are unavailable for inspection by any of the SDKs)
 
 {{% alert title="Note" color="note" %}}  
-If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the [**Model JSON** section](#Model-JSON).
+If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the [**Model JSON** section](#model-json).
 {{% /alert %}}
 
 ## How the Robot Builds the Frame System
@@ -235,7 +235,7 @@ As explained in the [Model Configuration](#model-configuration) section, some co
 When writing a driver for a particular piece of hardware that implements one of these components, you must create its accompanying **Model JSON** file.
 
 {{% alert title="Note" color="note" %}}  
-There is currently (15 Sept 2022) no user interface in the Viam app (<a href="<https://app.viam.com>">https://app.viam.com</a>) by which to create these files.
+There is currently (15 Sept 2022) no user interface in the Viam app (<a href="https://app.viam.com">app.viam.com</a>) by which to create these files.
 {{% /alert %}}
 
 Furthermore, only our Go implementation supports creation of custom **Model JSON** files (15 Sept 2022) as a way if ingesting kinematic parameters is provided in our Go repository. Native support for specifying kinematic parameters of arms is not yet supported in the Python SDK."
@@ -258,7 +258,7 @@ Viam wants roboticists to be able to specify link frames arbitrarily, which DH p
 Below are JSON examples for each parameter type used by our Universal Robots[^ur] arms driver:
 [^ur]: Universal Robots: <a href="https://www.universal-robots.com/" target="_blank">ht<span></span>tps://www.universal-robots.com/</a>
 
-**Example: kinematic_param_type=SVA**
+#### Example: kinematic_param_type=SVA
 
 ```json-viam
 {
@@ -465,7 +465,7 @@ Below are JSON examples for each parameter type used by our Universal Robots[^ur
 }
 ```
 
-**Example: kinematic_param_type=DH**
+#### Example: kinematic_param_type=DH
 
 ```json-viam
 {

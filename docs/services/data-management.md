@@ -47,7 +47,7 @@ This example has capture enabled that is writing to `/tmp/capture` on the robot,
 
 In raw JSON, this looks like:
 
-```
+```json
 "services": [
     {
         "name": "data_manager",
@@ -65,7 +65,7 @@ In raw JSON, this looks like:
 }
 ```
 
-#### Component Method Configuration
+### Component Method Configuration
 
 You can configure data capture for each method within a component.
 If you're using the "Config > Components" tab on the Viam app, you'll see that a component that has a capturable method will have the option "Data Capture Configuration > Add Method."

@@ -13,11 +13,11 @@ You can find the source code for these servers in the <a href="https://github.co
 
 [^camserve]:Camera serve source code:  <a href="https://github.com/viamrobotics/camera-servers" target="_blank">ht<span></span>tps://github.com/viamrobotics/camera-servers</a>
 
-# Using the gRPC Server
+## Using the gRPC Server
 
 Use the gRPC server if you want 2D image streams and also want the 3D point clouds from the Intel RealSense camera. They will show up as 3 separate cameras.
 
-## Download the Intel RealSense gRPC Camera Server
+### Download the Intel RealSense gRPC Camera Server
 
 On your Raspberry Pi, download the following server for your intel camera
 
@@ -26,7 +26,7 @@ sudo curl -o /usr/local/bin/intelgrpcserver http://packages.viam.com/apps/camera
 sudo chmod a+rx /usr/local/bin/intelgrpcserver
 ```
 
-## Configure the Server to Run on Robot Start-Up
+### Configure the Server to Run on Robot Start-Up
 
 On the [Viam app](https://app.viam.com), click **CONFIG** and then access the **PROCESSES** tab. Add the following configuration:
 
@@ -56,7 +56,7 @@ On the **CONFIG** tab, click **REMOTE**, and then add the following configuratio
 
 This adds the two cameras to your robot. They will have the names `intel:color` and `intel:depth`.
 
-## Create a Camera to Display Point Clouds
+### Create a Camera to Display Point Clouds
 
 Click **COMPONENTS** on the **CONFIG** tab. Now, add the `align_color_depth` camera model.
 The **Attributes** pane on the left allows you to enter the necessary attributes for your component.
