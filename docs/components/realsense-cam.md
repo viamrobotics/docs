@@ -22,7 +22,7 @@ Use the gRPC server if you want 2D image streams and also want the 3D point clou
 On your Raspberry Pi, download the following server for your intel camera
 
 ``` bash
-sudo curl -o /usr/local/bin/intelgrpcserver http://packages.viam.com/apps/camera-servers/intelrealgrpcserver-latest-aarch64.AppImage 
+sudo curl -o /usr/local/bin/intelgrpcserver http://packages.viam.com/apps/camera-servers/intelrealgrpcserver-latest-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/intelgrpcserver
 ```
 
@@ -31,12 +31,12 @@ sudo chmod a+rx /usr/local/bin/intelgrpcserver
 On the [Viam app](https://app.viam.com), click **CONFIG** and then access the **PROCESSES** tab. Add the following configuration:
 
 ``` json
-[ 
-   { 
-      "id": "intel", 
-      "log": true, 
-      "name": "/usr/local/bin/intelgrpcserver" 
-   } 
+[
+   {
+      "id": "intel",
+      "log": true,
+      "name": "/usr/local/bin/intelgrpcserver"
+   }
 ]
 ```
 
@@ -79,7 +79,7 @@ Enter the necessary JSON configuration for your camera:
      "width_px": 1280,
        "height_px": 720,
  // you can get intrinsics by calling GetProperties on the intel gRPC camera server, too
-     "intrinsic_parameters": { 
+     "intrinsic_parameters": {
          "height_px": 720,
          "width_px": 1280,
          "ppx": 648.1280,
@@ -108,7 +108,7 @@ Use this method if you don’t care about the individual 2D image streams and on
 On your Raspberry Pi, download the following server for your Intel RealSense camera:
 
 ``` bash
-sudo curl -o /usr/local/bin/intelrealserver http://packages.viam.com/apps/camera-servers/intelrealserver-latest-aarch64.AppImage 
+sudo curl -o /usr/local/bin/intelrealserver http://packages.viam.com/apps/camera-servers/intelrealserver-latest-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/intelrealserver
 ```
 
@@ -118,12 +118,12 @@ On the [Viam app](https://app.viam.com), click **CONFIG** and then click **PROCE
 Enter the following configuration:
 
 ``` json
-[ 
-   { 
-      "id": "intel", 
-      "log": true, 
-      "name": "/usr/local/bin/intelrealserver" 
-   } 
+[
+   {
+      "id": "intel",
+      "log": true,
+      "name": "/usr/local/bin/intelrealserver"
+   }
 ]
 ```
 
@@ -141,7 +141,7 @@ Click **CONFIG** and then click **COMPONENTS**.
 Enter the following camera model:  “dual_stream”
 
 ``` json
-{  
+{
    "intrinsic_parameters": {
       "fx": 900.538,
       "fy": 900.818,

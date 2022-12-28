@@ -57,17 +57,17 @@ The Gamepad module provides an `input.Controller` interface that represents a st
 
 ```json
 {
-  "components": [
-    {
-      "name": "TestGamepad",
-      "model": "gamepad",
-      "type": "input_controller",
-      "attributes": {
-        "dev_file": "",
-        "auto_reconnect": true
-      }
-    }
-  ]
+    "components": [
+        {
+            "name": "TestGamepad",
+            "model": "gamepad",
+            "type": "input_controller",
+            "attributes": {
+                "dev_file": "",
+                "auto_reconnect": true
+            }
+        }
+    ]
 }
 ```
 
@@ -89,29 +89,28 @@ The below example defines a single callback function (motorCtl) that handles inp
 
 ```Go
 motorCtl := func(ctx context.Context, event input.Event) {
+    if event.Event != input.PositionChangeAbs {
+        return
+    }
 
-  if event.Event != input.PositionChangeAbs {
-    return
-  }
+    speed := float32(math.Abs(event.Value))
 
-  speed := float32(math.Abs(event.Value))
-
-  switch event.Control {
-    case input.AbsoluteY:
-      motorFL.SetPower(ctx, speed)
-      motorBL.SetPower(ctx, speed)
-    case input.AbsoluteRY:
-      motorFR.SetPower(ctx, speed * -1)
-      motorBR.SetPower(ctx, speed * -1)
-    case input.AbsoluteZ:
-      motorWinder.SetPower(ctx, speed)
-    case input.AbsoluteRZ:
-      motorWinder.SetPower(ctx, speed * -1)
-  }
+    switch event.Control {
+        case input.AbsoluteY:
+            motorFL.SetPower(ctx, speed)
+            motorBL.SetPower(ctx, speed)
+        case input.AbsoluteRY:
+            motorFR.SetPower(ctx, speed * -1)
+            motorBR.SetPower(ctx, speed * -1)
+        case input.AbsoluteZ:
+            motorWinder.SetPower(ctx, speed)
+        case input.AbsoluteRZ:
+            motorWinder.SetPower(ctx, speed * -1)
+    }
 }
 
 for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input.AbsoluteZ, input.AbsoluteRZ} {
-  err = g.RegisterControlCallback(ctx, control, []input.EventType{input.PositionChangeAbs}, motorCtl)
+    err = g.RegisterControlCallback(ctx, control, []input.EventType{input.PositionChangeAbs}, motorCtl)
 }
 ```
 
@@ -127,13 +126,13 @@ You **must** use "WebGamepad" as the `name` of the web gamepad controller. This 
 
 ``` json
 {
-  "components": [
-    {
-      "name": "WebGamepad",
-      "model": "webgamepad",
-      "type": "input_controller"
-    }
-  ]
+    "components": [
+        {
+            "name": "WebGamepad",
+            "model": "webgamepad",
+            "type": "input_controller"
+        }
+    ]
 }
 ```
 
@@ -149,37 +148,37 @@ The Mux input controller simply combines one or more other controllers (sources)
 
 ``` json
 {
-  "components": [
-    {
-      "name": "Gamepad",
-      "model": "gamepad",
-      "type": "input_controller",
-      "attributes": {
-        "dev_file": "",
-        "auto_reconnect": true
-      }
-    },
-    {
-      "name": "WebGamepad",
-      "model": "webgamepad",
-      "type": "input_controller"
-    },
-    {
-      "name": "Mux",
-      "model": "mux",
-      "type": "input_controller",
-      "depends_on": [
-        "Gamepad",
-        "WebGamepad"
-      ],
-      "attributes": {
-        "sources": [
-          "Gamepad",
-          "WebGamepad"
-        ]
-      }
-    }
-  ]
+    "components": [
+        {
+            "name": "Gamepad",
+            "model": "gamepad",
+            "type": "input_controller",
+            "attributes": {
+                "dev_file": "",
+                "auto_reconnect": true
+            }
+        },
+        {
+            "name": "WebGamepad",
+            "model": "webgamepad",
+            "type": "input_controller"
+        },
+        {
+            "name": "Mux",
+            "model": "mux",
+            "type": "input_controller",
+            "depends_on": [
+                "Gamepad",
+                "WebGamepad"
+            ],
+            "attributes": {
+                "sources": [
+                    "Gamepad",
+                    "WebGamepad"
+                ]
+            }
+        }
+    ]
 }
 
 ```
