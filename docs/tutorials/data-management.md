@@ -147,13 +147,12 @@ On your computer, initialize a new Go module in a new directory. You can do this
 ```bash
 mkdir viam-rover-data-capture && cd viam-rover-data-capture
 go mod init viam-rover
-go mod tidy
 ```
 
 Next you will need to install the Viam CLI:
 
 ```bash
-go get go.viam.com/rdk/cli/cmd@v0.2.5
+go get go.viam.com/rdk/cli/cmd
 ```
 
 Once you have the Viam CLI installed, you will need to authenticate with Viam. You can do this by running the following command and following the prompts in your terminal:
