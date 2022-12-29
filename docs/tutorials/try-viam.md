@@ -161,13 +161,11 @@ It is default to disabled, but you can enable it by toggling the **Enabled** swi
 
 **Disabled**:
 
-![alt_text](../img/try-viam/image26.png)
-<img src="/tutorials/img/try-viam/image26.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller disabled position." width="50%">
+<img src="/tutorials/img/try-viam/image26.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller disabled position." width="50%"><br>
 
 **Enabled**:
 
-![alt_text](../img/try-viam/image8.png)
-<img src="/tutorials/img/try-viam/image8.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller enabled position." width="50%">
+<img src="/tutorials/img/try-viam/image8.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller enabled position." width="50%"><br>
 
 ## Learning about robot configuration
 
