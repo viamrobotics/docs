@@ -328,7 +328,7 @@ Be sure to save before continuing.
 
 In the upper right corner of the **SETUP** tab, click **COPY VIAM-SERVER CONFIG**.
 
-<img src="../img/build-a-mock-robot/image9.png" alt ="Screenshot from the Viam app showing the 'Copy Viam-Server Config' button highlighted by a red box." width="80%"><br>
+<img src="../img/build-a-mock-robot/image9.png" alt ="Screenshot from the Viam app showing the 'Copy Viam-Server Config' button highlighted by a red box."><br>
 
 On your local machine, create a new file called <file>viam-sub-part.json</file>, then paste the contents of your server config into that file and save.
 From the terminal, navigate to the directory where you saved the config file, and run this command to create a new instance of viam-server using this configuration.
