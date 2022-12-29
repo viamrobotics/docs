@@ -252,13 +252,15 @@ The names for **base** and **input_controller** correspond to the naming scheme 
 
 ![alt_text](../img/try-viam/image3.png)
 
-Now that you have learned about configuring components and services, one more thing to try is viewing the raw JSON configuration file that Viam generates for the rover as we add those components and services.
+### Raw JSON
 
-At the top of the **CONFIG** tab, toggle **Mode** from **Builder** to **Raw JSON**.
-The full configuration is displayed.
-Click anywhere in the JSON and press **Ctrl+A** and then **Ctrl+C** on Windows or Linux platforms, or **CMD+A** and then **CMD+C** on macOS to copy the configuration.
+So far we've been viewing our rover configuration in 'Builder' mode.
+This interface provides a user-friendly, guided experience, but ultimately, Viam robot configuration is output as JSON.
+You can view the full generated JSON for your rover by clicking on **Raw JSON** at the top left of the **CONFIG** tab.
 
 ![alt_text](../img/try-viam/image13.png)
+
+To copy the config, click anywhere in the JSON and press **Ctrl+A** and then **Ctrl+C** on Windows or Linux platforms, or **CMD+A** and then **CMD+C** on macOS.
 
 ## Extending time
 
