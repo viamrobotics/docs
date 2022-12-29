@@ -152,7 +152,7 @@ go mod init viam-rover
 Next you will need to install the Viam CLI:
 
 ```bash
-go get go.viam.com/rdk/cli/cmd@stable
+go get go.viam.com/rdk/cli/cmd
 ```
 
 Once you have the Viam CLI installed, you will need to authenticate with Viam. You can do this by running the following command and following the prompts in your terminal:
