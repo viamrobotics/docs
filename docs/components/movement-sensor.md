@@ -59,11 +59,12 @@ The `gps-nmea` model can be connected via and send data through a serial connect
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-nmea",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
     "attributes": {
+        "board": "local",
         "connection_type": "serial",
         "serial_attributes": {
             "serial_baud_rate": 115200,
@@ -79,12 +80,12 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-nmea",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
     "attributes": {
-        "board": "board",
+        "board": "local",
         "connection_type": "I2C",
         "i2c_attributes": {
             "i2c_baud_rate": 115200,
@@ -139,11 +140,12 @@ Example config:
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-rtk",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
     "attributes": {
+        "board": "local",
         "connection_type": "serial",
         "correction_source": "ntrip",
         "serial_attributes": {
@@ -167,7 +169,7 @@ Example config:
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-nmea",
     "name": "UBLOX GPS",
     "type": "movement_sensor",

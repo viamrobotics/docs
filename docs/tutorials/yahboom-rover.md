@@ -53,7 +53,6 @@ You should leave `dir` pin blank, because Yahboom's motor driver uses an a/b/pwm
 Click **SHOW OPTIONAL** and set `max_rpm` to `300`.
 You can ignore the other optional attributes.
 
-At the bottom of the motor card, add `local` in the **Depends On** drop-down.
 Save the config by clicking **Save Config** at the bottom of the page.
 
 {{% alert title="Note" color="note" %}}  
@@ -94,11 +93,12 @@ Configuring a base will also give you a nice UI for moving the rover around.
 In the **Create Component** box, name the component `yahboom-base`.
 For the `Type` select `base` and for the `Model` select `wheeled`.
 Click **Create Component**.
-For `Depends On` select `local`, `left`, and `right` since these are the components that comprise our `base`.
+For **Right Motors** select `right` (the name we cleverly gave to the motor on the right side).
+For  **Left Motors** select `left`.
 For `width_mm`, use `150`, which is the approximate distance between the right and left wheels.
 For `wheel_circumference_mm` use `220`.
-The `left` and `right` attributes are intended to be the set of motors corresponding to the left and right sides of the rover.
-Since you were clever about naming your motors, you can simply add "left" to "left" and "right" to "right", so that your Attributes field contains the following:
+
+If you click **Go to Advanced** you can see that the Attributes field now contains the following:
 
 ```json-viam
 {
