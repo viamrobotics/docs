@@ -64,7 +64,6 @@ The `gps-nmea` model can be connected via and send data through a serial connect
     "name": "UBLOX GPS",
     "type": "movement_sensor",
     "attributes": {
-        "board": "local",
         "connection_type": "serial",
         "serial_attributes": {
             "serial_baud_rate": 115200,
@@ -145,7 +144,6 @@ Example config:
     "name": "UBLOX GPS",
     "type": "movement_sensor",
     "attributes": {
-        "board": "local",
         "connection_type": "serial",
         "correction_source": "ntrip",
         "serial_attributes": {
@@ -264,7 +262,6 @@ For all of the following RTK-station configurations, `children` is the list of o
         "gps1"
     ],
     "attributes": {
-        "board": "board",
         "connection_type": "serial",
         "serial_attributes": {
             "serial_baud_rate": 115200,
@@ -294,6 +291,8 @@ Name | Type | Default Value | Description
 `serial_baud_rate` | int | 115200 | The rate at which data is sent from the sensor. Optional.
 ---
 
+Serial communication uses a filepath instead of relying on any specific piece of board hardware, so no "board" attribute is needed when configuring a movement sensor with this communication method.
+
 ```json
 {
     "name": "<my-movement-sensor-name>",
@@ -321,12 +320,15 @@ Name | Type | Default Value | Description
 `i2c_baud_rate` | int | 115200 | The rate at which data is sent from the sensor. Optional.
 ---
 
+You'll also need to configure the `board` attribute with the name of the board to which the I<sup>2</sup>C connection is being made.
+
 ```json
 {
     "name": "<my-movement-sensor-name>",
     "type": "<TYPE>",
     "model": "<MODEL>",
     "attributes": {
+        "board": "<name of board, e.g. local>",
         "<whatever other attributes>": "<example>",
         "connection_type": "I2C",
         "i2c_attributes": {
