@@ -86,8 +86,17 @@ Simple Raspberry Pi tutorials
 - [Making an LED Blink with a Raspberry Pi](./tutorials/make-an-led-blink-with-the-viam-app/)
 - [Making an LED Blink with a Raspberry Pi and Viam's SDKs](./tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/)
 
+No hardware required!
+
+- [Try Viam: Using Try Viam to Remotely Control A Viam Rover](.tutorials/try-viam/)
+- [Try Viam: How to use the Viam SDK to control your Viam Rover](./tutorials/try-viam-sdk/)
+- [Try Viam: Detect a Color with your Viam Rover using the Vision Service](./tutorials/try-viam-color-detection/)
+- [How to Build a Mock Robot](./tutorials/build-a-mock-robot/)
+
 Other tutorials
 
+- [An Introduction to Using Viam's Data Management Service](./tutorials/data-management/)
+- [How to Run SLAM on your Robot](./tutorials/slam/)
 - [Building a Line-Following Robot with a Rover and a Camera](./tutorials/webcam-line-follower-robot/)
 - [All Tutorials](./tutorials/)
 
