@@ -10,8 +10,8 @@ tags: ["try viam", "app"]
 _Try Viam_ is a way to try out the Viam platform without setting up any hardware yourself.
 You can take over a Viam Rover in our robotics lab for 15 minutes to play around!
 
-This tutorial will guide you through controlling a Viam rover.
-The Viam rover is made up of a chassis with a Raspberry Pi single board computer, two motors, encoders, and a camera.
+This tutorial will guide you through controlling a Viam Rover.
+The rental rover is made up of a chassis with a Raspberry Pi 4B single board computer, two motors, encoders, and a camera.
 The Try Viam area also has an overhead camera to provide a view of the rental rover, allowing you to view its movements in real time.
 
 ## Using the reservation system
@@ -278,7 +278,7 @@ The system provides an alert when your session is over.
 
 Your rover rental location now contains your robot with the final configuration from the now ended session.
 
-## Connecting to a Viam rover with the Viam SDK
+## Connecting to a Viam Rover with the Viam SDK
 
 You can write your own code to control the Viam robot using Viam's SDKs.
 Learn how to use a Viam SDK to make the Viam Rover drive in a square in our [using the Viam SDK to control your Viam Rover tutorial](/tutorials/try-viam-sdk/).
