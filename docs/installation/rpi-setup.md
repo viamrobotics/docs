@@ -16,25 +16,27 @@ This tutorial requires the following hardware:
 * A Raspberry Pi single board computer
 * A microSD card
 * An internet-connected computer
-* A way to connect the microSD card to the computer (ex, microSD slot or microSD reader)
+* A way to connect the microSD card to the computer (e.g., microSD slot or microSD reader)
 
-### Identifying the architecture of your Raspberry Pi
+{{% alert title="Note" color="note" %}}
 
-Before installing the Viam [RDK](/appendix/glossary/#rdk_anchor), you will need a Raspberry Pi running a 64-bit Linux distribution.
-If you do not have Linux installed on your Raspberry Pi, skip ahead to [Installing Raspberry Pi OS](#installing-raspberry-pi-os).
-If you already have a Raspberry Pi with Linux installed on it, check if the Linux installation on your Raspberry Pi is 64-bit.
-First, `ssh` into your Pi and then run `lscpu`.
+If you already have a 64-bit Linux distrubution installed on your Pi, you can skip ahead to [installing viam-server](#follow-the-steps-on-the-setup-tab).
+To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running viam-server):
+
+`ssh` into your Pi and then run `lscpu`.
 Example output:
 
-![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspbery Pi. A red box highlights the command and the "Architecture: aarch64.](../../installation/img/rpi-setup/lscpu-output.png)
+![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspbery Pi. A red box highlights the command and the top of the output which reads "Architecture: aarch64."](../../installation/img/rpi-setup/lscpu-output.png)
 
 If the value of “Architecture: _'xxxxxx'_” ends in "64", you can skip ahead to [installing viam-server](#follow-the-steps-on-the-setup-tab).
-Otherwise continue to [Installing Raspberry Pi OS](#installing-raspberry-pi-os).
+
+{{% /alert %}}
 
 ## Installing Raspberry Pi OS
 
-A Raspberry Pi boots from a microSD card.
-The first step is to set up a Linux installation (in this case Raspberry Pi OS, formerly called Raspbian) on that microSD card.
+Before installing the Viam [RDK](/appendix/glossary/#rdk_anchor), you will need a Raspberry Pi running a 64-bit Linux distribution.
+Here we will guide you through installing one called Raspberry Pi OS (formerly called Raspbian) on the microSD card from which the Pi boots.
+
 Connect the microSD card to your computer.
 
 You will be using the Raspberry Pi Imager to flash the microSD card.
