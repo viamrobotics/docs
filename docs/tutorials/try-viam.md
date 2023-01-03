@@ -18,7 +18,7 @@ The Try Viam area also has an overhead camera to provide a view of the rental ro
 
 ### Access the system
 
-While logged in with a Viam account, mavigate to [TRY in the Viam app](https://app.viam.com/try) to make a reservation.
+While logged in with a Viam account, navigate to <a href="https://app.viam.com/try" target="_blank">TRY in the Viam app</a> to make a reservation.
 (If you don’t have an account, it only takes a minute to sign up.)
 From the **TRY** page, click **TRY NOW** to reserve a time slot.
 
@@ -286,4 +286,4 @@ Learn how to use a Viam SDK to make the Viam Rover drive in a square in our [usi
 
 If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
 
-If you'd like to pre-order your own Viam Rover, you can do so at <a href="https://www.viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam" target="_blank">this link</a>.
+If you'd like to pre-order your own Viam Rover, you can do so at <a href="https://www.viam.com/resources/rover" target="_blank">this link</a>.
