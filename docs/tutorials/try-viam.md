@@ -59,7 +59,7 @@ The rental system randomly generates this information for each rental session:
 
 ![alt_text](../img/try-viam/bannerinfo.png)
 
-The **CONTROL** tab contains panes for each component configured on the rover: the base, the left and right motors, the web game pad, the board, and two cameras.
+The **CONTROL** tab contains panels for each component configured on the rover: the base, the left and right motors, the web game pad, the board, and two cameras.
 The components are not displayed in any particular order and that order may vary between rovers and rentals.
 
 ![alt_text](../img/try-viam/image28.png)
@@ -107,7 +107,7 @@ Note that keyboard control is disabled when the **Keyboard Disabled** switch is 
 
 ##### Discrete Movement Control
 
-If you toggle from **KEYBOARD** to the **DISCRETE** tab, then you’ll see different movement modes: “Straight” and “Spin”, different movement types: “Continuous” and “Discrete”, and directions: “Forwards” and “Backwards.”
+If you toggle from **KEYBOARD** to the **DISCRETE** tab, then you’ll see different movement modes: “Straight” and “Spin,” different movement types: “Continuous” and “Discrete,” and directions: “Forwards” and “Backwards.”
 In continuous movement mode you can set a speed at which the rover will move indefinitely in the specified direction.
 In discrete movement mode you can set a speed at which to move and a distance to cover before stopping.
 
@@ -154,10 +154,11 @@ The board panel allows the user to get and set the states of individual GPIO pin
 
 ![Screenshot of the board panel in the CONTROL tab, including fields to get and set GPIO pin states.](../img/try-viam/image11.png)
 
-#### WebGamepad Control
+#### Web Gamepad Control
 
-Finally, you will see your web gamepad.
-It is default to disabled, but you can enable it by toggling the **Enabled** switch.
+Finally, you will see your web gamepad component panel.
+This type of input is disabled by default, but if you have a compatible gamepad you'd like to use to drive the rover, you can enable it by toggling the **Enabled** switch.
+You can find more information on the [WebGamepad in the Input Controller topic](/components/input-controller/#webgamepad).
 
 **Disabled**:
 
@@ -172,7 +173,7 @@ It is default to disabled, but you can enable it by toggling the **Enabled** swi
 Now that you learned how to drive your rover with the UI, let’s go a bit further.
 One other thing you can do within your experience is see your configuration.
 
-On the Viam app, navigate to the **COMPONENTS** section, under **CONFIG**.
+On the Viam app, navigate to the **COMPONENTS** subtab, under **CONFIG**.
 There you can view each component in the robot and obtain more information about their configuration such as their attributes, component dependencies, pin assignments, etc.:
 
 ![Screenshot of the CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](../img/try-viam/image32.png)
@@ -185,7 +186,7 @@ We named it "local" and configured it with **Type** "board" and **Model** "pi" (
 ### Encoder Configuration
 
 The encoders on the right and left motors are named, respectively, “Renc” and “Lenc”.
-They must be configured before the motors which will depend on them.
+They must be configured before the motors because the motors will depend on the encoders.
 
 ![alt_text](../img/try-viam/image1.png)
 
@@ -256,7 +257,7 @@ The names for **base** and **input_controller** correspond to the naming scheme 
 
 So far we've been viewing our rover configuration in 'Builder' mode.
 This interface provides a user-friendly, guided experience, but ultimately, Viam robot configuration is output as JSON.
-You can view the full generated JSON for your rover by clicking on **Raw JSON** at the top left of the **CONFIG** tab.
+You can view the complete JSON for your rover by clicking on **Raw JSON** at the top left of the **CONFIG** tab.
 
 ![alt_text](../img/try-viam/image13.png)
 
