@@ -438,12 +438,12 @@ Configure this sensor with type `movement_sensor` and model `accel-adxl345` as w
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----
 `board` | string | - | The name of the board to which the device is wired.
-`use_alt_i2c_address` | bool | false | Depends on whether you wire SDO low (leaving the default address of 0x68) or high (making the address 0x69). If high, set true. If low, set false or omit the attribute.
+`use_alt_i2c_address` | bool | false | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute.
 `i2c_bus` | string | - | The name of the I<sup>2</sup>C bus through which the device communicates with the SBC. Note that this must match the name you gave the I<sup>2</sup>C bus you configured in the board component.
 
 ### MPU6050
 
-The <a href="https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/" target = "_blank">MPU6050 sensor manufactured by TDK InvenSense</a>[^mpu] is a combination 6 axis accelerometer and gyroscope.
+The <a href="https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/" target = "_blank">MPU6050 sensor manufactured by TDK InvenSense</a>[^mpu] is a combination accelerometer and gyroscope.
 It supplies angular velocity data about the three axes, supporting the `AngularVelocity` method.
 It also supplies linear acceleration data in three directions.
 The linear acceleration data (as well as all the other data from the MPU6050) can be accessed using the `GetReadings` method from the more general [sensor component](/components/sensor/), which movement sensors wrap.
@@ -487,7 +487,7 @@ Configuration of this sensor requires configuring a movement sensor component wi
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----
 `board` | string | - | The name of the board to which the device is wired.
-`use_alt_i2c_address` | bool | false | Depends on whether you wire ADO low (leaving the default address of 0x68) or high (making the address 0x69). If high, set true. If low, set false or omit the attribute.
+`use_alt_i2c_address` | bool | false | Depends on whether you wire AD0 low (leaving the default address of 0x68) or high (making the address 0x69). If high, set true. If low, set false or omit the attribute.
 `i2c_bus` | string | - | The name of the I<sup>2</sup>C bus through which the device communicates with the SBC. Note that this must match the name you gave the I<sup>2</sup>C bus you configured in the board component.
 
 ## Cameramono
