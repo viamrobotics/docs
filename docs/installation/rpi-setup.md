@@ -18,7 +18,7 @@ This tutorial requires the following hardware:
 * An internet-connected computer
 * A way to connect the microSD card to the computer (e.g., microSD slot or microSD reader)
 
-{{% alert title="Tip" color="tip" %}}
+{{% alert title="Note" color="note" %}}
 
 If you already have a 64-bit Linux distrubution installed on your Pi, you can skip ahead to [installing viam-server](#follow-the-steps-on-the-setup-tab).
 To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running viam-server):
