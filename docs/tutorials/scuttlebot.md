@@ -181,7 +181,6 @@ From the **CONFIG** tab:
 1. Enter "wheeled" in **Model**.
 1. In the **Right Motors** drop-down select "right."
 1. In the **Left Motors** drop-down select "left."
-1. From **Depends On**, select "local."
 1. Enter "400" in <code>width_mm</code> (measured between the midpoints of the wheels).
 1. Enter "250" in <code>wheel_circumference_mm</code>.
 

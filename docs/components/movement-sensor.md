@@ -59,7 +59,7 @@ The `gps-nmea` model can be connected via and send data through a serial connect
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-nmea",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
@@ -79,12 +79,12 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-nmea",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
     "attributes": {
-        "board": "board",
+        "board": "local",
         "connection_type": "I2C",
         "i2c_attributes": {
             "i2c_baud_rate": 115200,
@@ -139,7 +139,7 @@ Example config:
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-rtk",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
@@ -167,7 +167,7 @@ Example config:
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-nmea",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
@@ -262,7 +262,6 @@ For all of the following RTK-station configurations, `children` is the list of o
         "gps1"
     ],
     "attributes": {
-        "board": "board",
         "connection_type": "serial",
         "serial_attributes": {
             "serial_baud_rate": 115200,
@@ -292,6 +291,8 @@ Name | Type | Default Value | Description
 `serial_baud_rate` | int | 115200 | The rate at which data is sent from the sensor. Optional.
 ---
 
+Serial communication uses a filepath instead of relying on any specific piece of board hardware, so no "board" attribute is needed when configuring a movement sensor with this communication method.
+
 ```json
 {
     "name": "<my-movement-sensor-name>",
@@ -319,12 +320,15 @@ Name | Type | Default Value | Description
 `i2c_baud_rate` | int | 115200 | The rate at which data is sent from the sensor. Optional.
 ---
 
+You'll also need to configure the `board` attribute with the name of the board to which the I<sup>2</sup>C connection is being made.
+
 ```json
 {
     "name": "<my-movement-sensor-name>",
     "type": "<TYPE>",
     "model": "<MODEL>",
     "attributes": {
+        "board": "<name of board, e.g. local>",
         "<whatever other attributes>": "<example>",
         "connection_type": "I2C",
         "i2c_attributes": {
