@@ -396,6 +396,51 @@ Name | Type | Default Value | Description
 
 ## Accelerometer/Gyroscope
 
+### ADXL345
+
+The ADXL345 sensor manufactured by Analog Devices is a 3 axis accelerometer.
+Calling `GetReadings` (a method supported by all [sensor components](/components/sensor/)) on it will yield linear acceleration data.
+
+Configure this sensor with type `movement_sensor` and model `accel-adxl345` as well as a board component with an I<sup>2</sup>C bus:
+
+```json
+{
+  "components": [
+    {
+      "name": "local",
+      "type": "board",
+      "model": "pi",
+      "attributes": {
+        "i2cs": [
+          {
+            "name": "default_i2c_bus",
+            "bus": "1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "my-adxl",
+      "type": "movement_sensor",
+      "model": "accel-adxl345",
+      "attributes": {
+        "board": "local",
+        "i2c_bus": "default_i2c_bus",
+        "use_alternate_i2c_address": false
+      }
+    }
+  ]
+}
+```
+
+#### ADXL1345 Attributes
+
+Name | Type | Default Value | Description
+----- | ----- | ----- | -----
+`board` | string | - | The name of the board to which the device is wired.
+`use_alt_i2c_address` | bool | false | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute.
+`i2c_bus` | string | - | The name of the I<sup>2</sup>C bus through which the device communicates with the SBC. Note that this must match the name you gave the I<sup>2</sup>C bus you configured in the board component.
+
 ### MPU6050
 
 The <a href="https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/" target = "_blank">MPU6050 sensor manufactured by TDK InvenSense</a>[^mpu] is a combination accelerometer and gyroscope.
@@ -436,8 +481,6 @@ Configuration of this sensor requires configuring a movement sensor component wi
     ]
 }
 ```
-
-[^mpu]: MPU6050 Sensor: <a href="https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/" target="_blank">ht<span></span>tps://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/</a>
 
 #### MPU6050 Attributes
 
