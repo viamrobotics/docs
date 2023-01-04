@@ -1,11 +1,11 @@
 ---
-title: "How to Run SLAM on your Robot"
-linkTitle: "Run SLAM on your Robot"
+title: "How to Run SLAM on your Robot using a LIDAR"
+linkTitle: "Run SLAM on your Robot using a LIDAR"
 weight: 50
 type: "docs"
-draft: false
-description: "Instructions to run SLAM with either a webcam or provided example data."
-tags: ["slam", "camera", "services"]
+draft: true
+description: "Instructions to run SLAM with either an LIDAR or provided example data."
+tags: ["slam", "camera", "services", "lidar"]
 # SMEs: Kat
 ---
 
@@ -14,6 +14,14 @@ The SLAM service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
+
+
+<!--
+NOTE for developers: The below part is a copy from the orbslam tutorial - used for reference,
+for copy/paste and editing to write the tutorial for cartographer.
+
+The part above this comment is written for cartographer.
+-->
 
 ## Introduction
 
