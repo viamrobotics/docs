@@ -55,7 +55,7 @@ sudo ./viam-server -config myconfig.json
 
 To connect this instance of viam-server with a [Viam app](https://app.viam.com) robot, the contents of <file>myconfig.json</file> should be pasted from the **COPY VIAM-SERVER CONFIG** button at the top right of the **SETUP** tab of your robot on [https://app.viam.com](https://app.viam.com).
 
-![install-config-button](../img/install-config-button.png)
+![Screenshot of the top of the SETUP tab showing the COPY VIAM-SERVER CONFIG button in the upper right, highlighted with a red box.](../img/linux-install/install-config-button.png)
 
 #### Installing as a System Service
 
