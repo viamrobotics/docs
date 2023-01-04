@@ -15,6 +15,27 @@ Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
+## Introduction
+
+[SLAM](../../services/slam/) allows your robot to create a map of its surroundings, as well as find its location within that map.
+
+This tutorial shows you how to run [Cartographer](https://github.com/cartographer-project) on your robot.
+You have two choices:
+
+* Run SLAM in online mode with an [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
+* Run SLAM in offline mode either with collected data or our provided example data.
+
+## Requirements
+
+* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the viam-server installed.
+Refer to [Installing Raspberry Pi OS on the Raspberry Pi](../../installation/rpi-setup/#installing-raspberry-pi-os), if necessary.
+* [optionally] An [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
+
+## Setup
+
+If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](/installation/rpi-setup/).
+
+Next, we'll install the Cartographer binary.
 
 <!--
 NOTE for developers: The below part is a copy from the orbslam tutorial - used for reference,
@@ -23,28 +44,8 @@ for copy/paste and editing to write the tutorial for cartographer.
 The part above this comment is written for cartographer.
 -->
 
-## Introduction
 
-[SLAM](../../services/slam/) allows your robot to create a map of its surroundings, as well as find its location within that map.
 
-This tutorial shows you how to run ORB-SLAM3 on your robot.
-You have two choices:
-
-* Run SLAM in online mode with a webcam.
-The webcam can be installed on a robot, or just be held by hand.
-* Run SLAM in offline mode either with collected data or our provided example data.
-
-## Requirements
-
-* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspberry Pi OS on the Raspberry Pi](../../installation/rpi-setup/#installing-raspberry-pi-os), if necessary.
-* [optionally] A webcam or other off-the-shelf RGB camera.
-
-## Setup
-
-If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](/installation/rpi-setup/).
-
-Next, we'll install the ORB-SLAM3 binary.
 
 ### Installing the ORB-SLAM3 binary
 
