@@ -1,6 +1,11 @@
 ---
+<<<<<<<< HEAD:docs/services/slam/run-slam.md
 title: "Run SLAM on your Robot"
 linkTitle: "Run SLAM on your Robot"
+========
+title: "How to Run SLAM on your Robot using a camera"
+linkTitle: "Run SLAM on your Robot using a camera"
+>>>>>>>> 2685c6a (Start writing the cartographer tutorial):docs/tutorials/slam-orbslam.md
 weight: 50
 type: "docs"
 draft: false
