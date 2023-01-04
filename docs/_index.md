@@ -88,7 +88,7 @@ Simple Raspberry Pi tutorials
 
 No hardware required!
 
-- [Try Viam: Using Try Viam to Remotely Control A Viam Rover](.tutorials/try-viam/)
+- [Try Viam: Using Try Viam to Remotely Control A Viam Rover](./tutorials/try-viam/)
 - [Try Viam: How to use the Viam SDK to control your Viam Rover](./tutorials/try-viam-sdk/)
 - [Try Viam: Detect a Color with your Viam Rover using the Vision Service](./tutorials/try-viam-color-detection/)
 - [How to Build a Mock Robot](./tutorials/build-a-mock-robot/)
