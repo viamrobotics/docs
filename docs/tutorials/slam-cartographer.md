@@ -37,6 +37,100 @@ If you haven’t already, please set up the Raspberry Pi on the [Viam app](https
 
 Next, we'll install the Cartographer binary.
 
+### Installing the Cartographer binary
+
+First, `ssh` into your Pi and then check the architecture of your system by running `lscpu`.
+Depending on the output download and install one of the following Cartographer binaries:
+
+* AArch64 (ARM64) (e.g., on an RPI):
+
+    ```bash
+    sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-aarch64.AppImage
+    ```
+
+* x86_64:
+
+    ```bash
+    sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-x86_64.AppImage
+    ```
+
+Make the file executable by running:
+
+```bash
+sudo chmod a+rx /usr/local/bin/carto_grpc_server
+```
+
+## Running Cartographer with an Rplidar
+
+The following setup allows you to run Cartographer in live mode using an Rplidar.
+
+### Configuration using Viam
+
+The configuration of SLAM happens in two steps:
+
+1. Add an Rplidar as a modular component.
+2. Add SLAM to the existing configuration.
+
+#### Add an Rplidar
+
+First, we need to install the binary for the Rplidar Module:
+* macOS: `brew install rplidar-module`
+* Linux: Install the AppImage ... **TODO[kat] Add instructions**
+
+Plug in your Rplidar into your RPI. Add it as a modular component to your configuration on app.viam.com.
+
+**TODO[kat]: Write more sophisticated instructions using screenshots. Check if we can use the "Builder" -> "Create Component" functionality to add the Rplidar.
+See this as an [example](http://localhost:1313/tutorials/configure-a-camera/#connect-and-configure-a-webcam).**
+
+The path to the Rplidar is automatically detected for Linux:
+
+```json
+{
+  "components": [
+    {
+      "namespace": "rdk",
+      "type": "camera",
+      "depends_on": [],
+      "model": "rdk:builtin:rplidar",
+      "attributes": {
+        "device_path": "/dev/tty.SLAB_USBtoUART"
+      },
+      "name": "rplidar"
+    }
+  ],
+  "modules": [
+    {
+      "executable_path": "/Users/kat/viam/rplidar/bin/rplidar-module",
+      "name": "rplidar_module"
+    }
+  ]
+}
+```
+
+The path has to be added manually on macOS, and is most commonly `"/dev/tty.SLAB_USBtoUART"`.
+
+```json
+{
+  "components": [
+    {
+      "namespace": "rdk",
+      "type": "camera",
+      "depends_on": [],
+      "model": "rdk:builtin:rplidar",
+      "name": "rplidar"
+    }
+  ],
+  "modules": [
+    {
+      "executable_path": "/home/kkufieta/rplidar-module-local-aarch64.AppImage",
+      "name": "rplidar_module"
+    }
+  ]
+}
+```
+
+
+
 <!--
 NOTE for developers: The below part is a copy from the orbslam tutorial - used for reference,
 for copy/paste and editing to write the tutorial for cartographer.
@@ -45,48 +139,6 @@ The part above this comment is written for cartographer.
 -->
 
 
-
-
-### Installing the ORB-SLAM3 binary
-
-First, `ssh` into your Pi and then check the architecture of your system by running `lscpu`.
-Depending on the output download and install one of the following ORB-SLAM3 binaries:
-
-* AArch64 (ARM64) (e.g., on an RPI):
-
-    ```bash
-    sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
-    ```
-
-* x86_64:
-
-    ```bash
-    sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
-    ```
-
-Make the file executable by running:
-
-```bash
-sudo chmod a+rx /usr/local/bin/orb_grpc_server
-```
-
-## Running ORB-SLAM3 with a webcam
-
-The following setup allows you to run ORB-SLAM3 in live mode using a webcam.
-
-### Configuration using Viam
-
-The configuration of SLAM happens in two steps:
-
-1. Add a webcam and calibrate it.
-2. Add SLAM to the existing configuration.
-
-#### Add a webcam and calibrate it
-
-Follow these tutorials to connect and calibrate your webcam:
-
-* [Connect and configure a webcam](../configure-a-camera/#connect-and-configure-a-webcam)
-* [Calibrate a camera](../camera-calibration)
 
 #### Add SLAM to the configuration
 
