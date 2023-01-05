@@ -7,7 +7,8 @@ draft: true
 description: "Explanation of pose tracker configuration and usage in Viam."
 tags: ["pose tracker", "components"]
 ---
-# Coming soon!
+## Coming soon
+
 This will look similar to the [motor doc](../motor/), but describing how to wire up and configure a pose tracker.
 
 ## Implementation

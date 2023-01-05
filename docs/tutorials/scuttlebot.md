@@ -73,6 +73,7 @@ The next step is to add a motor and make it spin a wheel.
 <br><br>
 
 {{% expand "Click to view the raw JSON for the right motor" %}}
+
 ```json-viam
 {
   "name": "right",
@@ -91,6 +92,7 @@ The next step is to add a motor and make it spin a wheel.
   "depends_on": []
 }
 ```
+
 {{% /expand %}}
 
 {{% alert title="Note" color="note" %}}  
@@ -137,6 +139,7 @@ This will be very similar to adding the right motor.
 </ol>
 
 {{% expand "Click to view the raw JSON for the left motor" %}}
+
 ```json-viam
 {
   "name": "left",
@@ -155,6 +158,7 @@ This will be very similar to adding the right motor.
   "depends_on": []
 }
 ```
+
 {{% /expand %}}
 <br>
 
@@ -171,12 +175,12 @@ It's time to configure a [base component](/components/base/), which describes th
 Configuring a base component will give you a nice UI for moving the rover around.
 
 From the **CONFIG** tab:
+
 1. Give your base a name.
 1. Enter "base" in **Type**.
 1. Enter "wheeled" in **Model**.
 1. In the **Right Motors** drop-down select "right."
 1. In the **Left Motors** drop-down select "left."
-1. From **Depends On**, select "local."
 1. Enter "400" in <code>width_mm</code> (measured between the midpoints of the wheels).
 1. Enter "250" in <code>wheel_circumference_mm</code>.
 
@@ -213,13 +217,13 @@ Try driving your SCUTTLE Robot around using the WASD keyboard controls described
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
 {{% /alert %}}
 
-## Configuring the camera 
+## Configuring the camera
 
 Finally, we'll add a camera to your SCUTTLE Robot.
 
 1. Enter a name of your choice in **Name**.
 2. Enter "camera" in **Model**.
-4. Click <strong>Create Component</strong>.
+3. Click **Create Component**.
 
 Now, you'll see the config panel for the camera component:
 <img src="../img/scuttlebot/pi-cam-control.png">

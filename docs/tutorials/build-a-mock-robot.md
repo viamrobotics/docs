@@ -326,9 +326,9 @@ Be sure to save before continuing.
 
 ### How to run a second instance of viam-server for your sub-part
 
-Under the **CONFIG** tab, click **COPY VIAM-SERVER CONFIG**.
+In the upper right corner of the **SETUP** tab, click **COPY VIAM-SERVER CONFIG**.
 
-<img src="../img/build-a-mock-robot/image9.png" alt ="Screenshot from the Viam app showing the 'Copy Viam-Server Config' button highlighted by a red box." width="40%"><br>
+<img src="../img/build-a-mock-robot/image9.png" alt ="Screenshot from the Viam app showing the 'Copy Viam-Server Config' button highlighted by a red box."><br>
 
 On your local machine, create a new file called <file>viam-sub-part.json</file>, then paste the contents of your server config into that file and save.
 From the terminal, navigate to the directory where you saved the config file, and run this command to create a new instance of viam-server using this configuration.
@@ -339,7 +339,7 @@ viam-server -config viam-sub-part.json
 
 If you have two instances of viam-server running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main robots **CONTROL** tab.
 
-![Screenshot of Viam app's Control tab for the main part. List's the main arm, and the sub motor part.](../img/build-a-mock-robot/image6.png)
+![Screenshot of the Viam app's Control tab for the main part. Lists the main arm, and the sub motor part.](../img/build-a-mock-robot/image6.png)
 
 ## How to control a sub-part using the Viam SDK
 
@@ -348,7 +348,8 @@ Now that you have your mock sub-part connected as a remote to your main mock rob
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-To control your motor sub-part, you will need to import the [Motor Client](https://python.viam.dev/autoapi/viam/components/motor/client/index.html). Paste this at the top of your file:
+To control your motor sub-part, you will need to import the [Motor Client](https://python.viam.dev/autoapi/viam/components/motor/client/index.html).
+Paste this at the top of your file:
 
 ```python
 from viam.components.motor import MotorClient
