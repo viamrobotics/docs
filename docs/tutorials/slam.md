@@ -99,6 +99,7 @@ Paste the following into the **Attributes** field of the SLAM service:
 ```json
 {
   "data_dir": "/home/YOUR_USERNAME/data",
+  "use_live_data": true,
   "map_rate_sec": 60,
   "data_rate_ms": 200,
   "sensors": [
@@ -126,6 +127,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
       "model": "orbslamv3",
       "attributes": {
         "data_dir": "/home/YOUR_USERNAME/data",
+        "use_live_data": true,
         "map_rate_sec": 60,
         "data_rate_ms": 200,
         "sensors": [
@@ -193,6 +195,7 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration toget
       "model": "orbslamv3",
       "attributes": {
         "data_dir": "/home/slam-bot/data",
+        "use_live_data": true,
         "map_rate_sec": 60,
         "data_rate_ms": 200,
         "sensors": [
@@ -274,6 +277,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
       "attributes": {
         "data_rate_ms": 200,
         "sensors": [],
+        "use_live_data": false,
         "config_params": {
           "debug": "false",
           "orb_scale_factor": "1.2",
