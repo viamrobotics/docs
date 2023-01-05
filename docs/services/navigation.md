@@ -2,6 +2,7 @@
 title: "Navigation Service"
 linkTitle: "Navigation"
 weight: 30
+draft: true
 type: "docs"
 description: "Explanation of the navigation service, its configuration, and its functionality."
 tags: ["navigation", "services"]
