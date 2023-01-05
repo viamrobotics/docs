@@ -94,7 +94,7 @@ Be sure that you remember the `hostname`, `username`, and `password` you use, as
 {{% /alert  %}}
 
 {{< alert title="Caution" color="caution" >}}
-The default username and password on Raspberry Pi's are
+The default username and password on Raspberry Pis are
 
 * username: pi
 * password: raspberry
@@ -214,7 +214,7 @@ Once you have installed viam-server on your Pi, refresh the page on the Viam app
 
 You should also see the the notification on the setup page that says "Your robot is connected!"
 
-![Screenshot from the Viam app showing a dialouge box with a greencheckmark and text that reads, "Your robot is successfully connected! Proceed to the config tab."](../img/rpi-setup/your-robot-is-connected.jpg)
+![Screenshot from the Viam app showing a dialogue box with a green checkmark and text that reads, "Your robot is successfully connected! Proceed to the config tab."](../img/rpi-setup/your-robot-is-connected.jpg)
 
 ## Next Steps
 
