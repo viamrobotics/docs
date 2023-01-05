@@ -131,7 +131,7 @@ The following table provides an overview over the different SLAM modes, and how 
 | Mode | Description |
 | ---- | ----------- |
 | Live | SLAM runs in live mode if the `use_live_data` parameter is set to true and `sensors` are present. Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM. If no sensors are given an error will be produced. |
-| Offline | SLAM runs in offline mode if `use_live_data` parameter is set to false. This means it will look for and process images that are already saved in the `data_dir/data` directory. |
+| Offline | SLAM runs in offline mode if the `use_live_data` parameter is set to false. This means it will look for and process images that are already saved in the `data_dir/data` directory. |
 
 #### Pure Mapping, Pure Localization, and Update Mode
 
