@@ -70,7 +70,7 @@ You can program 26 of the GPIO pins.
 One thing to note that might be confusing with the pin numbering on Raspberry Pis: There are 40 physical pins numbered from 1 to 40.
 That is *board pin numbering*, corresponding to the pin's physical location on the board.
 When working with the GPIO pins with Viam, you will use the board numbers.
-e.g., Pin 1 can be located pretty easily, since Pin 1 is the always the pin whose corner is rounded.
+e.g., Pin 1 can be located pretty easily, since Pin 1 is always the pin whose corner is rounded.
 
 Then there's numbering them by function or GPIO connection.
 These are the big numbers, e.g. "GPIO 22".
@@ -105,7 +105,7 @@ Steps on how to do this can be found in the [Adding your Pi on the Viam App](/in
 Now that we have gotten that out of the way, let's get back to configuring your robot's components.
 First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's **CONFIG** tab.
 
-<img src="../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image2.png" alt ="Screenshot of the Vam app showing the Create Component field on the COMPONENTS subtab of the CONFIG tab." width="100%"><br>
+<img src="../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image2.png" alt ="Screenshot of the Viam app showing the Create Component field on the COMPONENTS subtab of the CONFIG tab." width="100%"><br>
 
 You will add a [*board component*](/components/board/) to represent your single board computer, which in this case is the Raspberry Pi.
 You'll create the new component in the **Create Component** panel.
@@ -129,7 +129,7 @@ It will look like this:
 
 <img src="../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image8.png" alt ="Screenshot of the Viam app showing the board configuration on the 'Connect' tab. The 'Board Local' row is expanded, and under the 'Set' row, the pin is set to '8.' A red box is around the 'Set Pin State' field." width="100%"><br>
 
-After setting your pin to "high" the LED should illuminate.
+After setting your pin to **high** the LED should illuminate.
 You can play around with values **low** and **high** by setting them differently, and you will see your LED toggle on and off.
 
 <img src="../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image7.gif" alt ="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="35%"><br>
@@ -143,9 +143,9 @@ Hopefully, you have learned how the GPIO on a Raspberry Pi works, and how to bui
 You are ready for your next robotics project.
 We recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](../make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.
 
-If you are looking for some more projects that would be a great next step in your journey of learning about how to build robots, we would recommend that you check out one of following [Tutorial List](..).
+If you are looking for some more projects that would be a great next step in your robotics journey, check out our other [tutorials](/tutorials/).
 
-If you want to connect with other developers learning how to build robots or if you have any issues whatsoever getting Viam set up, let us know on the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>[^slack], and we will be happy to help you get up and running
+If you want to connect with other developers learning how to build robots or if you have any issues whatsoever getting Viam set up, let us know on the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>[^slack], and we will be happy to help you get up and running.
 
 ## Hardware URL list
 
