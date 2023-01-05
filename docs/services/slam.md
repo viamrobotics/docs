@@ -130,8 +130,8 @@ The following table provides an overview over the different SLAM modes, and how 
 
 | Mode | Description |
 | ---- | ----------- |
-| Live | SLAM runs in live mode if the `use_live_data parameter` is set to true and `sensors` are present. Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM. If no sensors are given an error will be produced. |
-| Offline | SLAM runs in offline mode if `use_live_data parameter` is set to false. This means it will look for and process images that are already saved in the `data_dir/data` directory. |
+| Live | SLAM runs in live mode if the `use_live_data` parameter is set to true and `sensors` are present. Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM. If no sensors are given an error will be produced. |
+| Offline | SLAM runs in offline mode if the `use_live_data` parameter is set to false. This means it will look for and process images that are already saved in the `data_dir/data` directory. |
 
 #### Pure Mapping, Pure Localization, and Update Mode
 
@@ -155,7 +155,7 @@ You can find more information on the `mode` in the description of the integrated
 | ---- | --------- | ----------- |
 | `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. |
 | `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in live mode. If the array is empty, SLAM runs in offline mode. |
-| `use_live_data` |  bool | Parameters specific whether to run in online mode (true) or offline mode (false). If this parameter is set to true and no sensors are given, SLAM will produce an error. |
+| `use_live_data` |  bool | This specifies whether to run in online mode (true) or offline mode (false). If this parameter is set to true and no sensors are given, SLAM will produce an error. |
 
 #### Optional Attributes
 
@@ -164,7 +164,7 @@ You can find more information on the `mode` in the description of the integrated
 | `map_rate_sec` | int | (optional) Map generation rate for saving current state (in seconds). The default value is `60`. Note: Setting `map_rate_sec` to a value of `0` causes the system to reset it to its default value of `60`.|
 | `data_rate_ms` | int |  (optional) Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. |
 | `port` | string |  (optional) Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
-| `delete_processed_data` | bool |  (optional) If slam is being run in online mode, this parameter can be used to delete data after it has be processed by the SLAM algorithm. The default value for this is true (i.e. do delete) if running in online mode and false (i.e. don't delete) if running in offline mode. |
+| `delete_processed_data` | bool |  (optional) If slam is being run in online mode, this parameter can be used to delete data after it has be processed by the SLAM algorithm. The default value for this is true (i.e. delete data) if running SLAM in online mode and false (i.e. don't delete data) if running SLAM in offline mode. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
 
 ### SLAM Library Specific Config Parameters
