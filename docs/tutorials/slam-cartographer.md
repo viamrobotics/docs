@@ -27,38 +27,42 @@ You have two choices:
 
 ## Requirements
 
-* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspberry Pi OS on the Raspberry Pi](../../installation/rpi-setup/#installing-raspberry-pi-os), if necessary.
+* A Linux or macOS machine with the viam-server installed.
+* If using a Raspberry Pi refer to [Installing Raspberry Pi OS on the Raspberry Pi](../../installation/rpi-setup/#installing-raspberry-pi-os), if necessary.
 * [optionally] An [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
 
 ## Setup
 
-If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](/installation/rpi-setup/).
+If you haven’t already, please set up the machine on the [Viam app](https://app.viam.com) per these instructions:
+*[Linux install](/installation/linux-install/)
+*[macOS install](/installation/macos-install/)
+*[Raspberry Pi setup](/installation/rpi-setup/)
 
 Next, we'll install the Cartographer binary.
 
-### Installing the Cartographer binary
+### Installing Cartographer
 
-First, `ssh` into your Pi and then check the architecture of your system by running `lscpu`.
-Depending on the output download and install one of the following Cartographer binaries:
+To install Cartographer, use one of the following based off your architecture:
+
+* macOS:
+
+   ```bash
+   brew tap viamrobotics/brews && brew install carto-grpc-server
+   ```
 
 * AArch64 (ARM64) (e.g., on an RPI):
 
     ```bash
     sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-aarch64.AppImage
+    sudo chmod a+rx /usr/local/bin/carto_grpc_server
     ```
 
 * x86_64:
 
     ```bash
     sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-x86_64.AppImage
+    sudo chmod a+rx /usr/local/bin/carto_grpc_server
     ```
-
-Make the file executable by running:
-
-```bash
-sudo chmod a+rx /usr/local/bin/carto_grpc_server
-```
 
 ## Running Cartographer with an Rplidar
 
@@ -73,11 +77,27 @@ The configuration of SLAM happens in two steps:
 
 #### Add an Rplidar
 
-First, we need to install the binary for the Rplidar Module:
-* macOS: `brew install rplidar-module`
-* Linux: Install the AppImage ... **TODO[kat] Add instructions**
+First, we need to install the Rplidar Module:
+*macOS:
 
-Plug in your Rplidar into your RPI. Add it as a modular component to your configuration on app.viam.com.
+   ```bash
+   brew tap viamrobotics/brews && brew install rplidar-module
+   ```
+
+*AArch64 (ARM64) (e.g., on an RPI):
+
+  ```bash
+    sudo curl -o /usr/local/bin/rplidar-module http://packages.viam.com/apps/rplidar/rplidar-module-latest-aarch64.AppImage
+  ```
+
+*x86_64:
+
+  ```bash
+    sudo curl -o /usr/local/bin/rplidar-module http://packages.viam.com/apps/rplidar/rplidar-module-latest-x86_64.AppImage
+  ```
+
+Connect the Rplidar into your machine. Add it as a modular component to your configuration on app.viam.com. 
+*[Note:] On linux machines the module should detect the Rplidar automatically, while on macOS the device path will need to be added manually. The device path on macOS is most commonly located at `"/dev/tty.SLAB_USBtoUART"`. For these instructions, the macOS device path will be included.
 
 **TODO[kat]: Write more sophisticated instructions using screenshots. Check if we can use the "Builder" -> "Create Component" functionality to add the Rplidar.
 See this as an [example](http://localhost:1313/tutorials/configure-a-camera/#connect-and-configure-a-webcam).**
@@ -91,7 +111,7 @@ The path to the Rplidar is automatically detected for Linux:
       "namespace": "rdk",
       "type": "camera",
       "depends_on": [],
-      "model": "rdk:builtin:rplidar",
+      "model": "viam:lidar:rplidar",
       "attributes": {
         "device_path": "/dev/tty.SLAB_USBtoUART"
       },
@@ -100,36 +120,12 @@ The path to the Rplidar is automatically detected for Linux:
   ],
   "modules": [
     {
-      "executable_path": "/Users/kat/viam/rplidar/bin/rplidar-module",
+      "executable_path": "rplidar-module",
       "name": "rplidar_module"
     }
   ]
 }
 ```
-
-The path has to be added manually on macOS, and is most commonly `"/dev/tty.SLAB_USBtoUART"`.
-
-```json
-{
-  "components": [
-    {
-      "namespace": "rdk",
-      "type": "camera",
-      "depends_on": [],
-      "model": "rdk:builtin:rplidar",
-      "name": "rplidar"
-    }
-  ],
-  "modules": [
-    {
-      "executable_path": "/home/kkufieta/rplidar-module-local-aarch64.AppImage",
-      "name": "rplidar_module"
-    }
-  ]
-}
-```
-
-
 
 <!--
 NOTE for developers: The below part is a copy from the orbslam tutorial - used for reference,
@@ -142,8 +138,8 @@ The part above this comment is written for cartographer.
 
 #### Add SLAM to the configuration
 
-Find out your home directory by `ssh`-ing into your Pi, and typing `pwd`.
-This is an example of what you might see:
+Find out your home directory by checking the output of `pwd`. When using a Raspberry Pi, you will need to `ssh` into your machine to check this
+This is an example of what you might see on a Pi:
 
 ```bash
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
@@ -153,56 +149,48 @@ YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 On the **CONFIG** tab, click the **SERVICES** sub-tab.
 
-Create a service with type `slam`, a name (we called ours `run-slam`) and a model `orbslamv3`.
+Create a service with type `slam`, a name (we called ours `run-slam`) and a model `cartographer`.
 
 Paste the following into the **Attributes** field of the SLAM service:
 
 ```json
 {
-  "data_dir": "/home/YOUR_USERNAME/data",
+  "config_params": {
+    "min_range": "0.3",
+    "max_range": "12",
+    "debug": "false",
+    "mode": "2d"
+  },
+  "data_dir": "/home/YOUR_USERNAME/cartographer_dir",
   "map_rate_sec": 60,
   "data_rate_ms": 200,
-  "sensors": [
-    "color"
-  ],
-  "config_params": {
-    "debug": "false",
-    "orb_scale_factor": "1.2",
-    "mode": "mono",
-    "orb_n_features": "1250",
-    "orb_n_ini_th_fast": "20",
-    "orb_n_levels": "8",
-    "orb_n_min_th_fast": "7"
-  }
+  "delete_processed_data": false,
+  "sensors": ["rplidar"]
 }
 ```
 
-{{%expand "Click here if you prefer to use raw JSON mode" %}}
-In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
+{{%expand "To use raw JSON rather than editing the Attributes field: " %}}
+Click "Raw JSON" on the **CONFIG** tab, then copy/paste the following configuration:
 
 ```json-viam
   "services": [
     {
-      "type": "slam",
-      "model": "orbslamv3",
       "attributes": {
-        "data_dir": "/home/YOUR_USERNAME/data",
+        "config_params": {
+          "min_range": "0.3",
+          "max_range": "12",
+          "debug": "false",
+          "mode": "2d"
+        },
+        "data_dir": "/home/YOUR_USERNAME/cartographer_dir",
         "map_rate_sec": 60,
         "data_rate_ms": 200,
-        "sensors": [
-          "color"
-        ],
-        "config_params": {
-          "debug": "false",
-          "orb_scale_factor": "1.2",
-          "mode": "mono",
-          "orb_n_features": "1250",
-          "orb_n_ini_th_fast": "20",
-          "orb_n_levels": "8",
-          "orb_n_min_th_fast": "7"
-        }
+        "delete_processed_data": false,
+        "sensors": ["rplidar"]
       },
-      "name": "run-slam"
+      "model": "cartographer",
+      "name": "test",
+      "type": "slam"
     }
   ]
 ```
@@ -210,66 +198,50 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 {{% /expand %}}
 <br>
 
-Change the `"data_dir": "/home/YOUR_USERNAME/data"` directory to your home directory that you found out by typing `pwd`, followed by `/data`.
-Save the config.
+Change the `"data_dir": "/home/YOUR_USERNAME/cartographer_dir"` directory to your home directory that you found out by typing `pwd`, followed by `/cartographer_dir`. 
+Doing this tells the slam service to create a directory named `cartographer_dir` and to save all data and maps to that location. Save the config.
 
-In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration together with the [previously obtained camera configuration](#add-a-webcam-and-calibrate-it) now looks like this:
+In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration together with the Rplidar module now looks like this:
 
 ```json-viam
 {
   "components": [
     {
-      "name": "color",
+      "namespace": "rdk",
       "type": "camera",
-      "model": "webcam",
+      "depends_on": [],
+      "model": "viam:lidar:rplidar",
       "attributes": {
-        "intrinsic_parameters": {
-          "fy": 940.2928257873841,
-          "height_px": 480,
-          "ppx": 320.6075282958033,
-          "ppy": 239.14408757087756,
-          "width_px": 640,
-          "fx": 939.2693584627577
-        },
-        "distortion_parameters": {
-          "rk2": 0.8002516496932317,
-          "rk3": -5.408034254951954,
-          "tp1": -0.000008996658362365533,
-          "tp2": -0.002828504714921335,
-          "rk1": 0.046535971648456166
-        },
-        "stream": "",
-        "debug": false,
-        "format": "",
-        "video_path": "video0",
-        "width_px": 0,
-        "height_px": 0
+        "device_path": "/dev/tty.SLAB_USBtoUART"
       },
-      "depends_on": []
+      "name": "rplidar"
+    }
+  ],
+  "modules": [
+    {
+      "executable_path": "rplidar-module",
+      "name": "rplidar_module"
     }
   ],
   "services": [
     {
-      "type": "slam",
-      "model": "orbslamv3",
       "attributes": {
-        "data_dir": "/home/slam-bot/data",
+        "config_params": {
+          "min_range": "0.3",
+          "max_range": "12",
+          "debug": "false",
+          "mode": "2d"
+        },
+        "data_dir": "/home/slam-bot/cartographer_dir",
         "map_rate_sec": 60,
         "data_rate_ms": 200,
-        "sensors": [
-          "color"
-        ],
-        "config_params": {
-          "debug": "false",
-          "orb_scale_factor": "1.2",
-          "mode": "mono",
-          "orb_n_features": "1250",
-          "orb_n_ini_th_fast": "20",
-          "orb_n_levels": "8",
-          "orb_n_min_th_fast": "7"
-        }
+        "delete_processed_data": false,
+        "use_live_data": true,
+        "sensors": ["rplidar"]
       },
-      "name": "run-slam"
+      "model": "cartographer",
+      "name": "test",
+      "type": "slam"
     }
   ]
 }
@@ -277,11 +249,6 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration toget
 
 Head over to the **CONTROL** tab and choose the **run-slam** drop-down menu.
 Change the **Refresh frequency** to your desired frequency, move the webcam around slowly, and watch a map come to life!
-
-{{% alert title="Note" color="note" %}}  
-It might take a couple of minutes before the first map is created and will be shown in the UI.
-Keep moving the camera slowly within your space and wait for the map to get created.
-{{% /alert %}}
 
 ## Running ORB-SLAM3 with a dataset
 
@@ -291,10 +258,11 @@ The following setup allows you to run ORB-SLAM3 in offline mode using either one
 
 In offline mode, SLAM will use an existing dataset to create a map.
 
-You might have an RGB dataset already saved in your `data_dir/data` directory from running SLAM in live mode.
+**TODO[john]:add viam-labs lidar dataset**
+You might have an lidar dataset already saved in your `data_dir/data` directory from running SLAM in live mode.
 If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-office-hallway-1-rgbd.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
 
-If you downloaded our dataset, and assuming that the zip file is now located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following command:
+If you downloaded our dataset and are using a Raspberry Pi, and assuming that the zip file is now located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following command:
 
 ```bash
 scp ~/Downloads/data.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
@@ -330,60 +298,35 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 {
   "services": [
     {
-      "type": "slam",
-      "model": "orbslamv3",
       "attributes": {
-        "data_rate_ms": 200,
-        "sensors": [],
         "config_params": {
+          "min_range": "0.3",
+          "max_range": "12",
           "debug": "false",
-          "orb_scale_factor": "1.2",
-          "mode": "mono",
-          "orb_n_features": "1250",
-          "orb_n_ini_th_fast": "20",
-          "orb_n_levels": "8",
-          "orb_n_min_th_fast": "7"
+          "mode": "2d"
         },
-        "data_dir": "/home/YOUR_USERNAME/data",
-        "map_rate_sec": 60
+        "data_dir": "/home/slam-bot/cartographer_dir",
+        "map_rate_sec": 60,
+        "data_rate_ms": 200,
+        "delete_processed_data": false,
+        "use_live_data": false,
+        "sensors": ["rplidar"]
       },
-      "name": "run-offline-slam"
+      "model": "cartographer",
+      "name": "test",
+      "type": "slam"
     }
   ]
 }
 ```
 
-Change the `"data_dir": "/home/YOUR_USERNAME/data"` directory to your home directory that you found out by typing `pwd`, followed by `/data`.
+Change the `"data_dir": "/home/YOUR_USERNAME/cartographer_dir"` directory to your home directory that you found out by typing `pwd`, followed by `/data`.
 Save the config.
 
 Head over to the **CONTROL** tab and choose the "run-slam" drop-down menu.
 Change the "Refresh frequency" to your desired frequency and watch a map come to life using the data in your dataset!
 
-{{% alert title="Note" color="note" %}}  
-It might take a couple of minutes before the first map is created and will be shown in the UI.
-{{% /alert %}}
-
 ## Troubleshooting
-
-### Issue: "CURRENTLY NO MAP POINTS EXIST"
-
-This issue has a couple of potential causes.
-
-<img src="../img/run_slam/01_slam_tutorial_no_map_points.png" width="700"><br>
-<br>
-
-First, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up.
-Both in online and offline mode this might mean that you have to wait a little while before you can see a map on the UI.
-
-Second, map generation depends on the quality of the dataset.
-For consecutive images, the camera's focus should not be moved too far from that of the previous image, and images should contain enough details that can be detected by ORB-SLAM3.
-Images from a white wall for example will not successfully generate a map.
-Try to point the camera into areas that contain a lot of information, such as objects, window frames, and similar.
-
-Furthermore, in online mode, it helps to move the camera around _slowly_, such that consecutive images contain similar items that can be matched to each other.
-
-In offline mode, it can be difficult to determine the quality of the dataset.
-If no map can be generated using the offline dataset, a new dataset should be generated.
 
 ## Additional Troubleshooting
 
