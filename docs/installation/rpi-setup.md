@@ -71,7 +71,7 @@ If you are using a non-Raspberry Pi OS, altering the Advanced options will cause
 
 Check `Set hostname` and enter the name you would like to access the Pi by in that field.
 
-There are two ways you can secure your Raspberry Pi: with a SSH key or with password authentication.
+There are two ways you can secure your Raspberry Pi: with an SSH key or with password authentication.
 
 To use the SSH key method: check `Enable SSH`.
 Using SSH Keys for authentication is a great way of securing your Raspberry Pi as only someone with the private SSH key will be able to authenticate to your system.
@@ -99,7 +99,7 @@ The default username and password on Raspberry Pi's are
 * username: pi
 * password: raspberry
   
-However, it's bad practice to keep the default username and password on a Raspberry Pi, since this makes it easy for hackers to get access to your Pi.
+However, it's bad practice to keep the default username and password on a Raspberry Pi since doing so makes it easy for hackers to get access to your Pi.
 In the past, malware infected thousands of Raspberry Pi devices that were using the default username and password.
 
 Source: <a href="https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/" target="_blank">ht<span></span>tps://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/</a>
@@ -139,7 +139,7 @@ Remove the microSD card from your computer when it is complete:
 ![You will be notified with a dialouge box informing you that Raspberry Pi OS Lite has been written successfully."](../../installation/img/rpi-setup/imager-done.png)
 
 Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
-A red led will turn on to indicate it is on.
+A red LED will turn on to indicate that the Pi is connected to power.
 
 ## Connecting to your Pi with SSH
 
