@@ -32,10 +32,6 @@ The location of a frame is described in relation to its parent frame using rigid
 
 **Frame System**: A hierarchy of frames that are related to one another via coordinate transformations.
 
-<a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">**gRPC**: gRPC Remote Procedure Calls</a>[^grpc] is a cross-platform open source high performance Remote Procedure Call (RPC) framework.
-
-[^grpc]:GRPC, webpage, 2022, Wikipedia authors:  <a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">ht<span><span>tps://en.wikipedia.org/wiki/GRPC</a>
-
 **Model**: A particular implementation of a component type.
 For example, UR5e is a model of the arm component type.
 
@@ -108,9 +104,9 @@ There is generally one robot part per CPU.
 
 **Gantry**: A robot that only uses linear motion to carry out a task; for example, the scaffolding of a 3D printer, which moves the print head around on motorized linear rails.
 
-**gRPC**: Google Remote Procedure Call.
-An open source universal RPC system initially developed at Google in 2015.
-This framework can run in any environment and efficiently connect services across data centers.
+<a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">**gRPC:**</a>[^grpc] An open source, cross-platform, high performance Remote Procedure Call (RPC) framework initially developed at Google in 2015. With gRPC, a client application can communicate directly with a server application on a different machine. This framework can run in any environment and efficiently connect distributed applications and services.
+
+[^grpc]:GRPC, webpage, 2022, Wikipedia authors:  <a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">ht<span><span>tps://en.wikipedia.org/wiki/GRPC</a>
 
 **Protocol Buffers (Protobuf)**: A free and open-source, language-neutral, cross-platform data format for serializing structured data.
 It is useful in developing programs to communicate with each other over a network or for storing data.
