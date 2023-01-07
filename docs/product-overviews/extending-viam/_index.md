@@ -1,10 +1,11 @@
 ---
 title: "Extending Viam with custom components and services"
 linkTitle: "Extending Viam"
-weight: 20
+weight: 60
 simple_list: true
 type: docs
-description: "Using modular resources, SDKs, and remotes to extend Viam"
+tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
+description: "Using modular resources and SDKs to extend Viam"
 ---
 
 
@@ -14,32 +15,24 @@ Viam's [Robot Development Kit (RDK)](/product-overviews/rdk/) provides support f
 
 Many robots can be composed of these resources out-of-the-box.
 
-However, sometimes you may encounter a hardware component that is not natively supported by Viam's SDK.
+However, sometimes you may encounter a hardware component that is not natively supported by Viam's RDK.
 In other cases, you may want to add new functionality to a component or expose a custom service securely through the Viam API and corresponding SDKs.
 
 Here, we'll walk you through how extend Viam in these and other ways via the creation and usage of custom resources.
 
 ## Modular resources
 
-TODO: Update language in this section
+The Viam module system allows a user to build a custom [component](/components) or [service](/services) that can be seamlessly included into any Viam-powered robot.
 
-The module system allows a user to build an external binary, either in Golang, using this package and any others from the RDK ecosystem,
-or in any other language, provided it can properly support protobuf/grpc. 
-The path to the binary (the module) and a name for it must
-be given in the Modules section of the robot config. 
-The normal viam-server (rdk) process will then start this binary, and query it via
-GRPC for what protocols (protobuf described APIs) and models it supports. 
-Then, any components or services that match will be handled
-seamlessly by the module, including reconfiguration, shutdown, and dependency management. 
-Modular components may depend on others from
-either the parent (aka built-in resources) or other modules, and vice versa.
-Modular resources should behave identically to built-in
-resources from a user perspective.
+The Viam platform will manage:
+- Lifecycle of the modular resource (starting and stopping the resource binary)
+- Dependency management (note that modular resources may depend on other resources - both RDK built-in and other modular resources.)
+- Securely exposing the modular resource's interface (protobuf-described API) alongside Viam RDK built-in APIs
+- Robot reconfiguration for any configured modular resource instances
 
+Modular resources that are configured and composed into a Viam robot therefore behave identically to built-in resources from a user perspective.
 
-## Using modular resources as a remote
-
-TODO: Explain (with examples) when you may want to run a modular resource as a remote.
+For more detail, see the [modular resources documentation](/product-overviews/extending-viam/modular-resources/).
 
 ## Using a Viam SDK as a server to create a custom component
 
