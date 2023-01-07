@@ -27,7 +27,7 @@ You have two choices:
 
 ## Requirements
 
-* A Linux or macOS machine with the viam-server installed.
+* A Linux or macOS machine with the **viam-server** installed.
 * If using a Raspberry Pi refer to [Installing Raspberry Pi OS on the Raspberry Pi](../../installation/rpi-setup/#installing-raspberry-pi-os), if necessary.
 * [optionally] An [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
 
@@ -44,25 +44,31 @@ Next, we'll install the Cartographer binary.
 
 To install Cartographer, use one of the following based off your architecture:
 
-* macOS:
+{{< tabs >}}
+{{% tab name="macOS" %}}
 
-   ```bash
-   brew tap viamrobotics/brews && brew install carto-grpc-server
-   ```
+  ```bash
+  brew tap viamrobotics/brews && brew install carto-grpc-server
+  ```
 
-* AArch64 (ARM64) (e.g., on an RPI):
+{{% /tab %}}
+{{% tab name="Linux aarch64" %}}
 
-    ```bash
-    sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-aarch64.AppImage
-    sudo chmod a+rx /usr/local/bin/carto_grpc_server
-    ```
+  ```bash
+  sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-aarch64.AppImage
+  sudo chmod a+rx /usr/local/bin/carto_grpc_server
+  ```
 
-* x86_64:
+{{% /tab %}}
+{{% tab name="Linux x86_64" %}}
 
-    ```bash
-    sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-x86_64.AppImage
-    sudo chmod a+rx /usr/local/bin/carto_grpc_server
-    ```
+  ```bash
+  sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-x86_64.AppImage
+  sudo chmod a+rx /usr/local/bin/carto_grpc_server
+  ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Running Cartographer with an Rplidar
 
@@ -78,68 +84,91 @@ The configuration of SLAM happens in two steps:
 #### Add an Rplidar
 
 First, we need to install the Rplidar Module:
-*macOS:
 
-   ```bash
-   brew tap viamrobotics/brews && brew install rplidar-module
-   ```
-
-*AArch64 (ARM64) (e.g., on an RPI):
+{{< tabs >}}
+{{% tab name="macOS" %}}
 
   ```bash
-    sudo curl -o /usr/local/bin/rplidar-module http://packages.viam.com/apps/rplidar/rplidar-module-latest-aarch64.AppImage
+  brew tap viamrobotics/brews && brew install rplidar-module
   ```
 
-*x86_64:
+{{% /tab %}}
+{{% tab name="Linux aarch64" %}}
 
   ```bash
-    sudo curl -o /usr/local/bin/rplidar-module http://packages.viam.com/apps/rplidar/rplidar-module-latest-x86_64.AppImage
+  sudo curl -o /usr/local/bin/rplidar-module http://packages.viam.com/apps/rplidar/rplidar-module-latest-aarch64.AppImage
+  sudo chmod a+rx /usr/local/bin/rplidar-module
   ```
 
-Connect the Rplidar into your machine. Add it as a modular component to your configuration on app.viam.com. 
-*[Note:] On linux machines the module should detect the Rplidar automatically, while on macOS the device path will need to be added manually. The device path on macOS is most commonly located at `"/dev/tty.SLAB_USBtoUART"`. For these instructions, the macOS device path will be included.
+{{% /tab %}}
+{{% tab name="Linux x86_64" %}}
 
-**TODO[kat]: Write more sophisticated instructions using screenshots. Check if we can use the "Builder" -> "Create Component" functionality to add the Rplidar.
-See this as an [example](http://localhost:1313/tutorials/configure-a-camera/#connect-and-configure-a-webcam).**
+  ```bash
+  sudo curl -o /usr/local/bin/rplidar-module http://packages.viam.com/apps/rplidar/rplidar-module-latest-x86_64.AppImage
+  sudo chmod a+rx /usr/local/bin/rplidar-module
+  ```
 
-The path to the Rplidar is automatically detected for Linux:
+{{% /tab %}}
+{{< /tabs >}}
 
-```json
-{
-  "components": [
-    {
-      "namespace": "rdk",
-      "type": "camera",
-      "depends_on": [],
-      "model": "viam:lidar:rplidar",
-      "attributes": {
-        "device_path": "/dev/tty.SLAB_USBtoUART"
-      },
-      "name": "rplidar"
-    }
-  ],
-  "modules": [
-    {
-      "executable_path": "rplidar-module",
-      "name": "rplidar_module"
-    }
-  ]
-}
-```
+Connect the Rplidar into your machine. Add it as a modular component to your configuration on app.viam.com.
+Go to your robot's page on the [Viam app](https://app.viam.com/). In the **CONFIG** tab, click on "Raw JSON" and copy/paste the following configuration:
 
-<!--
-NOTE for developers: The below part is a copy from the orbslam tutorial - used for reference,
-for copy/paste and editing to write the tutorial for cartographer.
+{{< tabs >}}
+{{% tab name="macOS" %}}
 
-The part above this comment is written for cartographer.
--->
+  ```json
+  {
+    "components": [
+      {
+        "namespace": "rdk",
+        "type": "camera",
+        "depends_on": [],
+        "model": "viam:lidar:rplidar",
+        "attributes": {
+          "device_path": "/dev/tty.SLAB_USBtoUART"
+        },
+        "name": "rplidar"
+      }
+    ],
+    "modules": [
+      {
+        "executable_path": "rplidar-module",
+        "name": "rplidar_module"
+      }
+    ]
+  }
+  ```
 
+{{% /tab %}}
+{{% tab name="Linux" %}}
 
+  ```json
+  {
+    "components": [
+      {
+        "namespace": "rdk",
+        "type": "camera",
+        "depends_on": [],
+        "model": "viam:lidar:rplidar",
+        "name": "rplidar"
+      }
+    ],
+    "modules": [
+      {
+        "executable_path": "rplidar-module",
+        "name": "rplidar-module"
+      }
+    ]
+  }
+  ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 #### Add SLAM to the configuration
 
-Find out your home directory by checking the output of `pwd`. When using a Raspberry Pi, you will need to `ssh` into your machine to check this
-This is an example of what you might see on a Pi:
+Find out your home directory by checking the output of `pwd`. When using a Raspberry Pi, you will need to `ssh` into your machine to check the directory. This is an example of what you might see on a RPi:
 
 ```bash
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
@@ -198,54 +227,104 @@ Click "Raw JSON" on the **CONFIG** tab, then copy/paste the following configurat
 {{% /expand %}}
 <br>
 
-Change the `"data_dir": "/home/YOUR_USERNAME/cartographer_dir"` directory to your home directory that you found out by typing `pwd`, followed by `/cartographer_dir`. 
+Change the `"data_dir": "/home/YOUR_USERNAME/cartographer_dir"` directory to your home directory that you found out by typing `pwd`, followed by `/cartographer_dir`.
 Doing this tells the slam service to create a directory named `cartographer_dir` and to save all data and maps to that location. Save the config.
 
 In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration together with the Rplidar module now looks like this:
 
-```json-viam
-{
-  "components": [
-    {
-      "namespace": "rdk",
-      "type": "camera",
-      "depends_on": [],
-      "model": "viam:lidar:rplidar",
-      "attributes": {
-        "device_path": "/dev/tty.SLAB_USBtoUART"
-      },
-      "name": "rplidar"
-    }
-  ],
-  "modules": [
-    {
-      "executable_path": "rplidar-module",
-      "name": "rplidar_module"
-    }
-  ],
-  "services": [
-    {
-      "attributes": {
-        "config_params": {
-          "min_range": "0.3",
-          "max_range": "12",
-          "debug": "false",
-          "mode": "2d"
+{{< tabs >}}
+{{% tab name="macOS" %}}
+
+  ```json-viam
+  {
+    "components": [
+      {
+        "namespace": "rdk",
+        "type": "camera",
+        "depends_on": [],
+        "model": "viam:lidar:rplidar",
+        "attributes": {
+          "device_path": "/dev/tty.SLAB_USBtoUART"
         },
-        "data_dir": "/home/slam-bot/cartographer_dir",
-        "map_rate_sec": 60,
-        "data_rate_ms": 200,
-        "delete_processed_data": false,
-        "use_live_data": true,
-        "sensors": ["rplidar"]
-      },
-      "model": "cartographer",
-      "name": "test",
-      "type": "slam"
-    }
-  ]
-}
-```
+        "name": "rplidar"
+      }
+    ],
+    "modules": [
+      {
+        "executable_path": "rplidar-module",
+        "name": "rplidar_module"
+      }
+    ],
+    "services": [
+      {
+        "attributes": {
+          "config_params": {
+            "min_range": "0.3",
+            "max_range": "12",
+            "debug": "false",
+            "mode": "2d"
+          },
+          "data_dir": "/home/slam-bot/cartographer_dir",
+          "map_rate_sec": 60,
+          "data_rate_ms": 200,
+          "delete_processed_data": false,
+          "use_live_data": true,
+          "sensors": ["rplidar"]
+        },
+        "model": "cartographer",
+        "name": "test",
+        "type": "slam"
+      }
+    ]
+  }
+  ```
+
+{{% /tab %}}
+{{% tab name="Linux" %}}
+
+  ```json-viam
+  {
+    "components": [
+      {
+        "namespace": "rdk",
+        "type": "camera",
+        "depends_on": [],
+        "model": "viam:lidar:rplidar",
+        "name": "rplidar"
+      }
+    ],
+    "modules": [
+      {
+        "executable_path": "rplidar-module",
+        "name": "rplidar_module"
+      }
+    ],
+    "services": [
+      {
+        "attributes": {
+          "config_params": {
+            "min_range": "0.3",
+            "max_range": "12",
+            "debug": "false",
+            "mode": "2d"
+          },
+          "data_dir": "/home/slam-bot/cartographer_dir",
+          "map_rate_sec": 60,
+          "data_rate_ms": 200,
+          "delete_processed_data": false,
+          "use_live_data": true,
+          "sensors": ["rplidar"]
+        },
+        "model": "cartographer",
+        "name": "test",
+        "type": "slam"
+      }
+    ]
+  }
+  ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 Head over to the **CONTROL** tab and choose the **run-slam** drop-down menu.
 Change the **Refresh frequency** to your desired frequency, move the webcam around slowly, and watch a map come to life!
@@ -258,14 +337,13 @@ The following setup allows you to run ORB-SLAM3 in offline mode using either one
 
 In offline mode, SLAM will use an existing dataset to create a map.
 
-**TODO[john]:add viam-labs lidar dataset**
 You might have an lidar dataset already saved in your `data_dir/data` directory from running SLAM in live mode.
-If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-office-hallway-1-rgbd.zip" target="_blank">Viam Office Hallway 1 - RGBD</a>.
+If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-old-office-small-pcd.zip" target="_blank">Viam Old Office - Cartographer</a>.
 
 If you downloaded our dataset and are using a Raspberry Pi, and assuming that the zip file is now located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following command:
 
 ```bash
-scp ~/Downloads/data.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
+scp ~/Downloads/viam-old-office-small-pcd.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
 ```
 
 Be sure to replace `YOUR_USERNAME` and `YOUR_RPI_NAME` with your username and Pi name.
