@@ -10,6 +10,7 @@ description: "Using modular resources and SDKs to extend Viam"
 
 
 Viam's [Robot Development Kit (RDK)](/product-overviews/rdk/) provides support for a variety of resources:
+
 - Standard hardware [components](/components) and component models.
 - High-level functionality exposed as [services](/services).
 
@@ -25,6 +26,7 @@ Here, we'll walk you through how extend Viam in these and other ways via the cre
 The Viam module system allows a user to build a custom [component](/components) or [service](/services) that can be seamlessly included into any Viam-powered robot.
 
 The Viam platform will manage:
+
 - Lifecycle of the modular resource (starting and stopping the resource binary)
 - Dependency management (note that modular resources may depend on other resources - both RDK built-in and other modular resources.)
 - Securely exposing the modular resource's interface (protobuf-described API) alongside Viam RDK built-in APIs
@@ -38,6 +40,5 @@ For more detail, see the [modular resources documentation](/product-overviews/ex
 
 Currently, modular resources are supported only via the Viam [Go SDK](https://pkg.go.dev/go.viam.com/rdk).
 We're working to add support to all of our [SDKs](product-overviews/sdk-as-client/), but in the meantime you can add custom components by using the Viam SDK of your choice to create a [server component implementation](/product-overviews/extending-viam/sdk-as-server/).
-
 
 ## See Also
