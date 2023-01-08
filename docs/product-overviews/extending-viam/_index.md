@@ -30,16 +30,14 @@ The Viam platform will manage:
 - Securely exposing the modular resource's interface (protobuf-described API) alongside Viam RDK built-in APIs
 - Robot reconfiguration for any configured modular resource instances
 
-Modular resources that are configured and composed into a Viam robot therefore behave identically to built-in resources from a user perspective.
+Therefore, modular resources that are configured and composed into a Viam robot behave identically to built-in resources from a user perspective.
 
 For more detail, see the [modular resources documentation](/product-overviews/extending-viam/modular-resources/).
 
 ## Using a Viam SDK as a server to create a custom component
 
 Currently, modular resources are supported only via the Viam [Go SDK](https://pkg.go.dev/go.viam.com/rdk).
-We're working to add support to all of our SDKs, but in the meantime you can add custom components by using the Viam SDK of your choice to create a server component implementation.
-
-This method is covered in detail [here](/product-overviews/extending-viam/sdk-as-server/)
+We're working to add support to all of our [SDKs](product-overviews/sdk-as-client/), but in the meantime you can add custom components by using the Viam SDK of your choice to create a [server component implementation](/product-overviews/extending-viam/sdk-as-server/).
 
 
 ## See Also

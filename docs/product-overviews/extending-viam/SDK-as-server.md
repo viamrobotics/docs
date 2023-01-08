@@ -3,13 +3,15 @@ title: "Using Our SDKs for a Server Component Implementation"
 linkTitle: "SDKs as Server"
 weight: 99
 type: "docs"
-description: "An introduction to Viam's SDKs and how to use them to drive hardware not natively supported in the RDK."
+description: "An introduction to using Viam's SDKs to drive hardware not natively supported in the RDK."
 tags: ["server", "sdk"]
 ---
 
-Viam's Software Development Kits (SDKs) provide a wide array of components to customize.
-(You can browse through the [^API Reference][API Reference](https://python.viam.dev/autoapi/viam/components/index.html) to see all of them.)
-But if you want to use a component that is not natively supported by Viam's SDK, then you will need to create a server component implementation in order to use your custom component.
+Viam's Robot Development Kit ([RDK](/product-overviews/rdk/)) provides a variety of components and services out of the box.
+
+[Modular resources](/product-overviews/modular-resources) allow developers and contributors to add support for custom resources, allowing for seamlessly extension of the Viam platform.
+Currently, [modular resource](/product-overviews/modular-resources) development is supported only via the [Golang SDK/RDK]https://pkg.go.dev/go.viam.com/rdk). 
+However, you can leverage any Viam [SDK](product-overviews/sdk-as-client/) to create a custom component implementation by using the SDK as a server.
 
 ## What is a server component implementation?
 
