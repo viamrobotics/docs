@@ -11,8 +11,8 @@ tags: ["gantry", "components"]
 
 ## Overview
 
-A gantry is a specific type of robot component that uses only linear links to move an end effector in 3D space. 
-A gantry can only control the position of the end effector, and is a commonly used machine design for simple positioning and placement. 
+A gantry is a specific type of robot component that uses only linear links to move an end effector in 3D space.
+A gantry can only control the position of the end effector, and is a commonly used machine design for simple positioning and placement.
 A linear axis has the advantage of being a stiffer machine layout than an open chain of links, and holding or repetitively positioning the end effector is more attainable in this configuration.
 
 ### Requirements
@@ -21,22 +21,22 @@ A gantry in Viam requires the following:
 
 * A board or controller that can detect changes in voltage on gpio pins.
 * A motor:
-    * An encoded motor 
-    * A stepper motor
-        * Requires limit switches to be set in the gantry config or offsets to be set in stepper motor.
-* Limit switches to attach to the brackets 
+  * An encoded motor
+  * A stepper motor
+    * Requires limit switches to be set in the gantry config or offsets to be set in stepper motor.
+* Limit switches to attach to the brackets
 
-A customized encoded motor controller can be used in the configuration of a gantry to move the linear rail. 
+A customized encoded motor controller can be used in the configuration of a gantry to move the linear rail.
 This component abstracts this type of hardware to give the user an easy interface for moving many linear rails.
 
-Since gantries are linearly moving components, each gantry can only move in one axis within the limits of its length. 
+Since gantries are linearly moving components, each gantry can only move in one axis within the limits of its length.
 
 Each gantry can be given a reference [frame](/services/frame-system/) in the configuration that describes its translation and orientation to the world.
 
-A multi-axis gantry is composed of many single-axis gantries. 
-The multiple axis system is composed of the supplied gantry names. 
+A multi-axis gantry is composed of many single-axis gantries.
+The multiple axis system is composed of the supplied gantry names.
 The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation.
-The “world” frame of each gantry becomes the moveable frame of the gantry before it in order. 
+The “world” frame of each gantry becomes the moveable frame of the gantry before it in order.
 
 ## Attribute Configuration
 
@@ -44,67 +44,94 @@ The “world” frame of each gantry becomes the moveable frame of the gantry be
 
 The attributes are configured as such for a single-axis gantry:
 
-
 <table>
   <tr>
-   <td><strong>Attribute</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
+    <td>
+      <strong>
+        Attribute
+      </strong>
+    </td>
+    <td>
+      <strong>
+        Description
+      </strong>
+    </td>
   </tr>
   <tr>
-   <td>board
-   </td>
-   <td>The name of the board that is connected to the and limit pin switches.
-   </td>
+    <td>
+      board
+    </td>
+    <td>
+      The name of the board that is connected to the and limit pin switches.
+    </td>
   </tr>
   <tr>
-   <td>motor
-   </td>
-   <td>The name of the motor that moves the gantry.
-   </td>
+    <td>
+      motor
+    </td>
+    <td>
+      The name of the motor that moves the gantry.
+    </td>
   </tr>
   <tr>
-   <td>limit_pins
-   </td>
-   <td>The pins attached to the limit switches on either end. Optional for encoded motor gantry types.
-   </td>
+    <td>
+      limit_pins
+    </td>
+    <td>
+      The pins attached to the limit switches on either end. Optional for encoded
+      motor gantry types.
+    </td>
   </tr>
   <tr>
-   <td>limit_pin_enabled
-   </td>
-   <td>Is the Limit Pin enabled? I.e., true (pin HIGH)?
-   </td>
+    <td>
+      limit_pin_enabled
+    </td>
+    <td>
+      Is the Limit Pin enabled? I.e., true (pin HIGH)?
+    </td>
   </tr>
   <tr>
-   <td>mm_per_revolution
-   </td>
-   <td>How far the gantry moves linearly per one revolution of the motor’s output shaft. 
-<p>
-This typically corresponds to 
-<p>
-Distance = PulleyDiameter * 2 * pi
-<p>
-or the pitch of a linear screw.
-   </td>
+    <td>
+      mm_per_revolution
+    </td>
+    <td>
+      How far the gantry moves linearly per one revolution of the motor’s output
+      shaft.
+      <p>
+        This typically corresponds to
+        <p>
+          Distance = PulleyDiameter *2* pi
+          <p>
+            or the pitch of a linear screw.
+    </td>
   </tr>
   <tr>
-   <td>gantry_rpm
-   </td>
-   <td>The gantry’s motor’s default rpm.
-   </td>
+    <td>
+      gantry_rpm
+    </td>
+    <td>
+      The gantry’s motor’s default rpm.
+    </td>
   </tr>
   <tr>
-   <td>axis
-   </td>
-   <td>The axis in which the gantry is allowed to move relative to the reference frame (x, y, z). 
-<p>
-You can add a frame to a single-axis gantry attribute to describe its position in the local “world” frame.
-<p>
-See <a href="/services/frame-system">Frame System</a> for further information.
-   </td>
+    <td>
+      axis
+    </td>
+    <td>
+      The axis in which the gantry is allowed to move relative to the reference
+      frame (x, y, z).
+      <p>
+        You can add a frame to a single-axis gantry attribute to describe its
+        position in the local “world” frame.
+        <p>
+          See
+          <a href="/services/frame-system">
+            Frame System
+          </a>
+          for further information.
+    </td>
   </tr>
-  </table>
+</table>
 
 A frame can also be added to a one axis gantry attribute to describe its position in the local “world” [frame](/services/frame-system.md/).
 
@@ -114,21 +141,30 @@ In addition to the attributes for single-axis gantries, multi-axis gantries also
 
 <table>
   <tr>
-   <td><strong>Attribute</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
+    <td>
+      <strong>
+        Attribute
+      </strong>
+    </td>
+    <td>
+      <strong>
+        Description
+      </strong>
+    </td>
   </tr>
   <tr>
-   <td><strong>subaxes_list</strong>
-   </td>
-   <td>A complete list of the sub-axes that compose the multi-axis gantry.
-   </td>
+    <td>
+      <strong>
+        subaxes_list
+      </strong>
+    </td>
+    <td>
+      A complete list of the sub-axes that compose the multi-axis gantry.
+    </td>
   </tr>
- 
 </table>
 
-## Gantry Methods 
+## Gantry Methods
 
 All gantries implement the following methods:
 
@@ -150,7 +186,7 @@ The units are millimeters. A single-axis gantry returns a list with one element.
   <tr>
    <td><file>MoveToPosition </file>
    </td>
-   <td>Takes in a list of positions (units millimeters) and moves each axis of the gantry to the corresponding position. 
+   <td>Takes in a list of positions (units millimeters) and moves each axis of the gantry to the corresponding position.
 <p>
 The number of elements in the list must equal the number of moveable axes on the gantry, and the order of the elements in the list correspond to the order of the axes present in the gantry.
    </td>
@@ -192,7 +228,6 @@ The number of elements in the list must equal the number of moveable axes on the
    </td>
   </tr>
   </table>
-
 
 ## Code Examples
 

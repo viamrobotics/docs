@@ -16,31 +16,33 @@ This tutorial requires the following hardware:
 * A Raspberry Pi single board computer
 * A microSD card
 * An internet-connected computer
-* A way to connect the microSD card to the computer (ex, microSD slot or microSD reader)
+* A way to connect the microSD card to the computer (e.g., microSD slot or microSD reader)
 
-### Identifying the architecture of your Raspberry Pi
+{{% alert title="Note" color="note" %}}
 
-Before installing the Viam [RDK](/appendix/glossary/#rdk_anchor), you will need a Raspberry Pi running a 64-bit Linux distribution.
-If you do not have Linux installed on your Raspberry Pi, skip ahead to [Installing Raspberry Pi OS](#installing-raspberry-pi-os).
-If you already have a Raspberry Pi with Linux installed on it, check if the Linux installation on your Raspberry Pi is 64-bit.
-First, `ssh` into your Pi and then run `lscpu`.
+If you already have a 64-bit Linux distrubution installed on your Pi, you can skip ahead to [installing viam-server](#follow-the-steps-on-the-setup-tab).
+To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running viam-server):
+
+`ssh` into your Pi and then run `lscpu`.
 Example output:
 
-![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspbery Pi. A red box highlights the command and the "Architecture: aarch64.](../../installation/img/rpi-setup/lscpu-output.png)
+![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspbery Pi. A red box highlights the command and the top of the output which reads "Architecture: aarch64."](../../installation/img/rpi-setup/lscpu-output.png)
 
 If the value of “Architecture: _'xxxxxx'_” ends in "64", you can skip ahead to [installing viam-server](#follow-the-steps-on-the-setup-tab).
-Otherwise continue to [Installing Raspberry Pi OS](#installing-raspberry-pi-os).
+
+{{% /alert %}}
 
 ## Installing Raspberry Pi OS
 
-A Raspberry Pi boots from a microSD card.
-The first step is to set up a Linux installation (in this case Raspberry Pi OS, formerly called Raspbian) on that microSD card.
+Before installing the Viam [RDK](/appendix/glossary/#rdk_anchor), you will need a Raspberry Pi running a 64-bit Linux distribution.
+Here we will guide you through installing one called Raspberry Pi OS (formerly called Raspbian) on the microSD card from which the Pi boots.
+
 Connect the microSD card to your computer.
 
 You will be using the Raspberry Pi Imager to flash the microSD card.
 
 {{% alert title="Note" color="note" %}}
-If you do not already have the <a href="https://www.raspberrypi.com/software/" target="_blank">Raspberry Pi Imager</a>, you can download and follow the installation instructions.
+If you do not already have the <a href="https://www.raspberrypi.com/software/" target="_blank">Raspberry Pi Imager</a>, you can download it and follow the installation instructions.
 {{% /alert  %}}
 
 After installing successfully, connect your microSD card to your computer and launch the Raspberry Pi Imager.
@@ -69,7 +71,7 @@ If you are using a non-Raspberry Pi OS, altering the Advanced options will cause
 
 Check `Set hostname` and enter the name you would like to access the Pi by in that field.
 
-There are two ways you can secure your Raspberry Pi: You can either use an SSH key or password authentication.
+There are two ways you can secure your Raspberry Pi: with an SSH key or with password authentication.
 
 To use the SSH key method: check `Enable SSH`.
 Using SSH Keys for authentication is a great way of securing your Raspberry Pi as only someone with the private SSH key will be able to authenticate to your system.
@@ -82,7 +84,7 @@ If this section is empty, you can either generate a new SSH key using <a href="h
 
 ![Raspberry Pi Imager window showing "Set Hostname" and "Enable SSH" both selected.](../../installation/img/rpi-setup/imager-set-ssh.png)
 
-If you decide to use password authentication method: click on `Use password authentication`.
+If you decide to use the password authentication method: click on `Use password authentication`.
 If you scroll down, you have the option to change the username, then to set a password:
 
 ![Raspberry Pi Imager window showing the "Set username and password" option is selected.](../../installation/img/rpi-setup/imager-set-passwordauthentication.png)
@@ -92,21 +94,21 @@ Be sure that you remember the `hostname`, `username`, and `password` you use, as
 {{% /alert  %}}
 
 {{< alert title="Caution" color="caution" >}}
-The default username and password on Raspberry Pi's are
+The default username and password on Raspberry Pis are
 
 * username: pi
 * password: raspberry
   
-However, it's bad practice to keep the default username and passwords on a Raspberry Pi since they make it easy for hackers to get access to your Pi.
-In the past, a malware infected thousands of Raspberry Pi devices that were using the default username and password.
+However, it's bad practice to keep the default username and password on a Raspberry Pi since doing so makes it easy for hackers to get access to your Pi.
+In the past, malware infected thousands of Raspberry Pi devices that were using the default username and password.
 
 Source: <a href="https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/" target="_blank">ht<span></span>tps://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/</a>
 {{< /alert >}}
 
 Lastly, you should connect your Pi to Wi-Fi, so that you can run viam-server wirelessly.
 Check `Configure wireless LAN` and enter your wireless network credentials.
-SSID (short for Service Set Identifier) is your Wi-Fi's name, followed by password.
-Change the section `Wireless LAN country` to where your router is currently being operated and then you will hit save:
+SSID (short for Service Set Identifier) is your Wi-Fi network name, and password is the network password.
+Change the section `Wireless LAN country` to where your router is currently being operated and then hit save:
 ![Raspberry Pi Imager window showing the "Configure wireless LAN" option selected with SSID and password information for a wireless network.](../../installation/img/rpi-setup/imager-set-wifi.png)
 
 This should return you to the initial screen.
@@ -117,11 +119,11 @@ Now you need to pick your storage medium, so click `CHOOSE STORAGE`:
 You may have many devices listed, select the microSD card you intend to use in your Raspberry Pi.
 If this page is blank and you do not have any listed, make sure your microSD card is connected to your computer correctly:
 
-![The storage screen is shown with a generic SD card is available as an option.](../../installation/img/rpi-setup/imager-select-storage.png)
+![The storage screen is shown with a generic SD card available as an option.](../../installation/img/rpi-setup/imager-select-storage.png)
 
 After clicking save, double check your OS and Storage settings and then click `WRITE`:
 
-![A warning is shown that says "All exisiting data on the SD card will be erased. Are you sure that you want to continue?"](../../installation/img/rpi-setup/imager-write-confirm.png)
+![A warning is shown that says "All existing data on the SD card will be erased. Are you sure that you want to continue?"](../../installation/img/rpi-setup/imager-write-confirm.png)
 
 You will be prompted to confirm erasing your microSD card: select `YES`.
 You may also be prompted by your operating system to enter an Administrator password:
@@ -130,14 +132,14 @@ You may also be prompted by your operating system to enter an Administrator pass
 
 After granting permissions to the Imager, it will begin writing and then verifying the Linux installation to the MicroSD card:
 
-![The Rasperberry Pi Imager will display information on the status of the write.](../../installation/img/rpi-setup/imager-writing.png)
+![The Raspberry Pi Imager will display information on the status of the write.](../../installation/img/rpi-setup/imager-writing.png)
 
 Remove the microSD card from your computer when it is complete:
 
 ![You will be notified with a dialouge box informing you that Raspberry Pi OS Lite has been written successfully."](../../installation/img/rpi-setup/imager-done.png)
 
 Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
-A red led will turn on to indicate its on.
+A red LED will turn on to indicate that the Pi is connected to power.
 
 ## Connecting to your Pi with SSH
 
@@ -146,7 +148,7 @@ Once your Raspberry Pi is plugged in and turned on, wait a minute to let your Pi
 Launch your terminal on your computer and run this command:
 
 {{% alert title="Tip" color="tip" %}}
-The text in <> should be replaced (including the < and > symbols themselves) with the user and host names you configured when you setup your Pi.
+The text in <> should be replaced (including the < and > symbols themselves) with the user and host names you configured when you set up your Pi.
 
 Example: if your username is 'USERNAME' and your hostname is 'pi': then it should be `ssh USERNAME@pi.local`
 
@@ -212,7 +214,7 @@ Once you have installed viam-server on your Pi, refresh the page on the Viam app
 
 You should also see the the notification on the setup page that says "Your robot is connected!"
 
-![Screenshot from the Viam app showing a dialouge box with a greencheckmark and text that reads, "Your robot is successfully connected! Proceed to the config tab."](../img/rpi-setup/your-robot-is-connected.jpg)
+![Screenshot from the Viam app showing a dialogue box with a green checkmark and text that reads, "Your robot is successfully connected! Proceed to the config tab."](../img/rpi-setup/your-robot-is-connected.jpg)
 
 ## Next Steps
 

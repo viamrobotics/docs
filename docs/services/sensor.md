@@ -7,5 +7,6 @@ type: "docs"
 description: "Explanation of the sensor service, its configuration, and its functionality."
 tags: ["sensor", "services"]
 ---
-# Coming soon!
+## Coming soon
+
 This doc will explain the Sensor Service and when/how to use it in conjunction with the [sensor components](../../components/sensor/)

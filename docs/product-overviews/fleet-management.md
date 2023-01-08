@@ -23,6 +23,7 @@ Whether you have one robot, or millions, you can manage them with Viam.
 You organize your robots into organizations and locations.
 
 ### Organization
+
 An organization is the highest level grouping.
 It typical would be a company, or other institution, but could also be an individual or department depending on your needs.
 
@@ -33,7 +34,8 @@ A member of an organization can invite new users to that organization or create 
 For example, if you have personal robots at home, and also robots at school, you would belong to two organizations to keep those use cases separate.
 
 ### Locations
-All robots live inside of locations, which live within organizations. 
+
+All robots live inside of locations, which live within organizations.
 Locations allow organizations to organize and manage their fleets.
 Organizations often contain several locations.
 
@@ -42,6 +44,7 @@ Cool Robot Inc could organize its robots into three locations based on their phy
 Another option would be to organize robots into locations with names such as "Production" and "Testing"--locations do not have to correspond with physical locations.
 
 ## Configuration/logging
+
 When a robot part first comes online, it requests its configuration from the Viam app ([https://app.viam.com](https://app.viam.com)).
 
 Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.
@@ -50,7 +53,7 @@ The robot checks for new configurations every 15 seconds and will reconfigure it
 
 Logs are automatically sent to the cloud so you can view them easily.
 
-## Remote control    
+## Remote control
 
 If the user uses remote control in the Viam app ([https://app.viam.com](https://app.viam.com)) UI, then all communication to the robot is via WebRTC.
 

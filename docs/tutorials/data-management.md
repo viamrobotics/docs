@@ -4,7 +4,7 @@ linkTitle: "Intro to Data Management"
 weight: 60
 type: "docs"
 description: "Learn how to use Viam's Data Management service including configuring data capture and sync, filtering and viewing captured data, and exporting your data locally."
-tags: ["data management", "data", "services"]
+tags: ["data management", "data", "services", "try viam"]
 # SMEs: Alexa Greenberg, Natalia Jacobowitz, Joe Karlsson
 ---
 
@@ -147,13 +147,12 @@ On your computer, initialize a new Go module in a new directory. You can do this
 ```bash
 mkdir viam-rover-data-capture && cd viam-rover-data-capture
 go mod init viam-rover
-go mod tidy
 ```
 
 Next you will need to install the Viam CLI:
 
 ```bash
-go get go.viam.com/rdk/cli/cmd@v0.2.5
+go get go.viam.com/rdk/cli/cmd
 ```
 
 Once you have the Viam CLI installed, you will need to authenticate with Viam. You can do this by running the following command and following the prompts in your terminal:
