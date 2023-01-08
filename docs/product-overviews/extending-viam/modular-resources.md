@@ -20,7 +20,8 @@ This means that functionality that is provided by the Viam [RDK](/product-overvi
 
 Two key concepts exist to facilitate this: *APIs* and *models*
 
-### APIs ###
+### APIs
+
 All Viam component and service types expose their own *API*.
 This API describes the interface that the particular component or service type exposes.
 For example, the API of built-in component type [camera](/components/camera) exposes the *GetImage* method, while the API of built-in service type [vision](/services/vision) exposes the *GetDetectionsFromCamera* method.
@@ -34,14 +35,14 @@ The built-in service type *vision*'s namespace is __rdk:service:vision__
 
 Viam API interfaces are made available in various programming languages via [Viam SDKs](/product-overviews/sdk-as-client/) and allow you to control your robots [securely from anywhere](deeper-dive/robot-to-robot-comms/).
 
-### Models ###
+### Models
 
 A model is an implementation of a given given resource type.  A model may implement all or some of the API methods provided by a given resource type API.
 Models allow any number of versions of a given resource to be controlled with a consistent interface.
 
 This is powerful, as normally a software engineer may need to learn and code against multiple interfaces for different models of the same component type.
 
-For example, some DC motors can be controlled via GPIO and PWM, which can be interfaced with in different ways depending on the controlling hardware they are attached to.  
+For example, some DC motors can be controlled via GPIO and PWM, which can be interfaced with in different ways depending on the controlling hardware they are attached to.
 Other DC motors are controlled via various serial protocols.
 This simplified with Viam, as any motor model that implements the *rdk:component:motor* API can be powered with the *SetPower* method.
 
@@ -66,14 +67,17 @@ Once all modules are registered and started, normal robot loading continues.
 
 When a Viam robot is reconfigured (meaning, its configuration is modified), the behavior of modular resources vs built-in resources should be equivalent to the end-user.
 Therefore, modular resource instances can be added, modified, and removed from a running robot as normal.
+
 ### Shutdown
 
 During robot shutdown, modular resources are handled similarly to built-in resources, in that they are signaled for shutdown in topological (dependency) order.
+
 ## Building a modular resource
 
 Detailed, working examples of various types of modular resources are [included with RDK](https://github.com/viamrobotics/rdk/tree/main/examples/customresources).
 
 The easiest way to get started is to:
+
 1. Try configuring one of these examples with a Viam robot config (see [Using a modular resource with your robot](#using-a-modular-resource-with-your-robot))
 2. Interface with the custom resource via the Viam app's [control page](/getting-started/app-usage/#control)
 3. Interface with the custom resource via a [Viam SDK](/product-overviews/sdk-as-client/)
@@ -82,10 +86,12 @@ The easiest way to get started is to:
 ## Using a modular resource with your robot
 
 Adding a modular resource to your robot configuration requires two steps:
+
 1. Add a *module* to your configuration
 2. Add a *component* or *service* that references the configured module
 
 ### Adding a module to your robot configuration
+
 Modular resources introduce a new top-level configuration block to robot configuration called *modules*.
 This allows any modular resources you'd like to use with your robot to be registered and [managed](#modular-resource-management-by-rdk) by RDK.
 Modules are loaded in the order they are specified in the modules list.
@@ -98,11 +104,13 @@ Name | Type | Default Value | Description
 `executable_path` | string | --         | The filesystem path to the module executable on the robot part
 
 ### Configuring a component instance for a modular resource
+
 Once a module is configured as part of your robot configuration, you can then instantiate any number of instances of that resource via component or service configuration.
 For modules, all standard properties such as *attributes* and *depends_on* are supported for modular resources.
 In order to correctly reference a registered modular resource, the *namespace*, *type*, *name* and *model* properties must be configured.
 
 #### Required attributes - modular component
+
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 `namespace` | string | --        | The namespace of the [API](#apis), i.e. the first part of the [API](#apis) triplet
