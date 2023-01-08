@@ -10,7 +10,7 @@ tags: ["server", "sdk"]
 Viam's Robot Development Kit ([RDK](/product-overviews/rdk/)) provides a variety of components and services out of the box.
 
 [Modular resources](/product-overviews/modular-resources) allow developers and contributors to add support for custom resources, allowing for seamlessly extension of the Viam platform.
-Currently, [modular resource](/product-overviews/modular-resources) development is supported only via the [Golang SDK/RDK]https://pkg.go.dev/go.viam.com/rdk). 
+Currently, [modular resource](/product-overviews/modular-resources) development is supported only via the [Golang SDK/RDK](https://pkg.go.dev/go.viam.com/rdk).
 However, you can leverage any Viam [SDK](product-overviews/sdk-as-client/) to create a custom component implementation by using the SDK as a server.
 
 [^API Reference](https://python.viam.dev/autoapi/viam/components/index.html)
