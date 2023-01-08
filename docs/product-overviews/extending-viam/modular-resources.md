@@ -46,7 +46,7 @@ For example, some DC motors can be controlled via GPIO and PWM, which can be int
 Other DC motors are controlled via various serial protocols.
 This simplified with Viam, as any motor model that implements the *rdk:component:motor* API can be powered with the *SetPower* method.
 
-Models in Viam are represented by their own *colon-delimited-triplet*. 
+Models in Viam are represented by their own *colon-delimited-triplet*.
 For example, RDK support for GPIO-powered motors is provided by the __rdk:builtin:gpio__ model of the __rdk:component:motor__ API, while DMC 4000 motor support is provided by the __rdk:builtin:DMC4000__ model of the same __rdk:component:motor__ API.
 
 A common use-case for modular resources is to create a new model of an existing Viam API.  However, new API types can also be created and exposed via modular resources.
