@@ -4,13 +4,13 @@ linkTitle: "Motion"
 weight: 20
 type: "docs"
 description: "Explanation of the motion service, its configuration, and its functionality."
+tags: ["motion", "motion planning", "services"]
 # SME: Peter Lo Verso
 ---
 Viam’s Motion Service enables your robot to plan and move itself or its components relative to itself, other robots, and the world.
 The Motion Service brings together information gathered from the robot’s components regarding their current positions with the layout of components in the frame system, and enables planning of the necessary motions to move a component to a given destination.
 
 The Motion Service is capable of using motion planning algorithms locally on your robot to plan coordinated motion across many components, and is also capable of passing through movement requests to individual components which have implemented their own motion planning.
-
 
 ## Configuration
 
@@ -24,7 +24,7 @@ The “Move” endpoint is the primary way to move multiple components, or to mo
 Given a destination pose and a component to move to that destination, the motion service will construct a full kinematic chain from goal to destination including all movable components in between, and will solve that chain to place the goal at the destination while meeting specified constraints.
 It will then execute that movement to move the actual robot, and return whether or not this process succeeded.
 
-{{% alert title="Note" color="note" %}} 
+{{% alert title="Note" color="note" %}}
 The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles and interaction spaces as documented below.
 This may result in motions which appear unintuitive.
 To apply motion constraints (experimental), see the [`extra` parameter](#extra_anchor).
@@ -45,17 +45,18 @@ For example an arm (or a gripper attached to one), then a pose of {X: 10, Y: 0, 
 **`world_state`**: This data structure specifies various information about the world around the robot which is used to augment the motion solving process.
 There are three pieces of world_state: obstacles, interaction spaces, and transforms.
 Each will be discussed in detail:
+
 * **Obstacles**: These are geometries located at a pose relative to some frame.
 When solving a motion plan with movable frames that contain inherent geometries, the solved path will be constrained such that at no point will any of those inherent geometries intersect with the specified obstacles.
 There are three important things to know about obstacles:
-    * Obstacles will only be avoided by objects with which they are not in collision at the starting position.
+  * Obstacles will only be avoided by objects with which they are not in collision at the starting position.
     If a motion is begun and an obstacle specified such that it is in a location where it intersects with a component in the kinematic chain, collisions between that obstacle and that particular piece of the kinematic chain will not be checked.
-    * Obstacles whose parents (or grand… parent) may move as part of a solve request, will be assumed to move along with their parent while solving.
+  * Obstacles whose parents (or grand… parent) may move as part of a solve request, will be assumed to move along with their parent while solving.
     This will ensure that obstacles that are temporarily attached to moving components do not cause collisions during the movement.
-    * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (i.e., an arm frame will be solved for the pose of its end effector), geometries are interpreted as being “part of” their frame, rather than “at the end of” the frame.
+  * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (i.e., an arm frame will be solved for the pose of its end effector), geometries are interpreted as being “part of” their frame, rather than “at the end of” the frame.
     Thus, their poses are relative to the _origin_ of the specified frame.
     A geometry given in the frame of the arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
-* **Interaction spaces**: These are geometries which are effectively the inverse of obstacles- they specify where the inherent geometries of a kinematics chain *may* exist, and disallow them from exiting that geometry.
+* **Interaction spaces**: These are geometries which are effectively the inverse of obstacles- they specify where the inherent geometries of a kinematics chain _may_ exist, and disallow them from exiting that geometry.
 Interaction spaces should fully envelop the geometries of any movable component with geometries.
 If any movable geometry is outside the given interaction space at the start of the motion, the movement will fail as the constraint will have been violated.
 * **Transforms**: These are a list of _PoseInFrame_ messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
@@ -156,7 +157,7 @@ However, a user’s own implementation of `MoveToPosition` may or may not make u
 
 The `GetPose` method is an endpoint through which a user can query the location of a robot's component within its frame system.
 The return type of this function is a `PoseInFrame` describing the pose of the specified component with respect to the specified destination frame.
-The `supplemental_transforms` argument can be used to augment the robot's existing frame system with supplemental frames. 
+The `supplemental_transforms` argument can be used to augment the robot's existing frame system with supplemental frames.
 
 #### Parameters
 
@@ -170,9 +171,9 @@ This frame must either exist in the robot's frame system, or this frame must be 
 A `Transform` represents an additional frame which is added to the robot's frame system.
 It consists of the following fields:
   
-  - `reference_frame`: This field specifies the name of the frame which will be added to the frame system
-  - `pose_in_observer_frame`: This field provides the relationship between the frame being added and another frame
-  - `physical_object`: An optional `Geometry` can be added to the frame being added
+* `reference_frame`: This field specifies the name of the frame which will be added to the frame system
+* `pose_in_observer_frame`: This field provides the relationship between the frame being added and another frame
+* `physical_object`: An optional `Geometry` can be added to the frame being added
 
 When `supplemental_transforms` are provided, a frame system will be created within the context of the `GetPose` function. This new frame system will build off the robot's frame system and will incorporate the `Transforms` provided.  If the result of adding the `Transforms` will result in a disconnected frame system an error will be thrown.
 
@@ -271,6 +272,7 @@ This has the following sub-options:
 </table>
 
 **Example usage**:
+
 ```python
 extra = {"motion_profile": "linear"}
 ```
@@ -356,6 +358,7 @@ This profile takes no parameters.
 ``` python
 extra = {"motion_profile": "free"}
 ```
+
 ## Planning Algorithms
 
 * CBiRRT

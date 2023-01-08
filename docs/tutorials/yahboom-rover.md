@@ -4,6 +4,7 @@ linkTitle: "Drive a Yahboom Rover with a Gamepad"
 weight: 25
 type: "docs"
 description: "Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app."
+tags: ["base", "gamepad", "yahboom", "app"]
 ---
 ## Requirements
 
@@ -16,7 +17,7 @@ See our [Raspberry Pi Setup Guide](/installation/rpi-setup/) for instructions.
 
 [^8bitdo]: 8BitDo Pro 2 Bluetooth Controller: <a href="https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch" target="_blank">ht<span>tps://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch</a>
 
-## Configuring the Board 
+## Configuring the Board
 
 Go to the Viam app ([https://app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **CONFIG** tab of the robot associated with your Raspberry Pi.
 To create a new component you'll be working within the **Create Component** section of the **COMPONENTS** sub-tab.
@@ -32,7 +33,7 @@ You don't need to add any attributes for this one, so your configured board will
 
 ![A screenshot of the board's configuration card on app.viam.com.](../img/yahboom-rover/board.png)
 
-## Configuring the Motor and Wheels 
+## Configuring the Motors and Wheels
 
 Since both right side motors of the Yahboom rover are wired together to a single motor driver, the right side motors are configured as a single [motor component](../../components/motor/) in the Viam config file.
 Later we will configure both left side motors as another motor.
@@ -52,7 +53,6 @@ You should leave `dir` pin blank, because Yahboom's motor driver uses an a/b/pwm
 Click **SHOW OPTIONAL** and set `max_rpm` to `300`.
 You can ignore the other optional attributes.
 
-At the bottom of the motor card, add `local` in the **Depends On** drop-down.
 Save the config by clicking **Save Config** at the bottom of the page.
 
 {{% alert title="Note" color="note" %}}  
@@ -85,7 +85,7 @@ Save the config and hop over to the control view again. You should now see two m
 
 ![A screenshot of the CONTROL tab UI with buttons to control both sets of motors.](../img/yahboom-rover/motors.png)
 
-## Configuring the Base 
+## Configuring the Base
 
 Unite these wheel sets with a [base component](../../components/base/), which is used to describe the physical structure onto which your components are mounted.
 Configuring a base will also give you a nice UI for moving the rover around.
@@ -93,11 +93,12 @@ Configuring a base will also give you a nice UI for moving the rover around.
 In the **Create Component** box, name the component `yahboom-base`.
 For the `Type` select `base` and for the `Model` select `wheeled`.
 Click **Create Component**.
-For `Depends On` select `local`, `left`, and `right` since these are the components that comprise our `base`.
+For **Right Motors** select `right` (the name we cleverly gave to the motor on the right side).
+For  **Left Motors** select `left`.
 For `width_mm`, use `150`, which is the approximate distance between the right and left wheels.
 For `wheel_circumference_mm` use `220`.
-The `left` and `right` attributes are intended to be the set of motors corresponding to the left and right sides of the rover.
-Since you were clever about naming your motors, you can simply add "left" to "left" and "right" to "right", so that your Attributes field contains the following:
+
+If you click **Go to Advanced** you can see that the Attributes field now contains the following:
 
 ```json-viam
 {
@@ -203,7 +204,7 @@ Save the config and visit the **CONTROL** tab.
 You should have a panel for the controller which indicates whether or not it is connected.
 At this point moving the left analogue stick should result in movement of the rover!
 
-## Configuring the Camera Component 
+## Configuring the Camera Component
 
 But wait!
 This rover has a camera on it.

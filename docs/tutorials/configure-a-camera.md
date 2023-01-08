@@ -5,6 +5,7 @@ weight: 12
 type: "docs"
 draft: false
 description: "Instructions for configuring a webcam."
+tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
@@ -25,7 +26,7 @@ Once you click **Create Component**, you'll see a view on the component that loo
 
 <img src="../img/configure-a-camera/02_camera_tutorial_config.png" width="700"><br>
 
-Manually add the camera path to the camera's attributes and save the config. A good bet is often `video0`: 
+Manually add the camera path to the camera's attributes and save the config. A good bet is often `video0`:
 
 ```json-viam
 {
@@ -43,9 +44,9 @@ The output for a webcam may look like this example, in which case `video1` might
 
 ```bash
 C270 HD WEBCAM (usb-0000:01:00.0-1.2):
-	/dev/video0
-	/dev/video1
-	/dev/media4
+ /dev/video0
+ /dev/video1
+ /dev/media4
 ```
 
 Once your camera is connected, go to the **CONTROL** tab, and click on the "color" dropdown menu. Toggle "View Camera" and make sure you can see the live video feed from your camera.
@@ -72,15 +73,14 @@ or by powering it off and on again.
 
 <iframe src="https://giphy.com/embed/DUtVdGeIU8lmo" width="336" height="184" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/the-it-crowd-DUtVdGeIU8lmo">via GIPHY</a></p>
 
-
 ### Issue: The "Export Screenshot" button doesn't work
+
 1. In the **CONTROL** tab, pick "Manual Refresh" under the "Refresh frequency".
 2. Click the refresh button when you're ready to take an image of the checkerboard.
 3. Right click on the image, and choose "Save Image As..." to save the image.
 
 <br>
 <img src="../img/configure-a-camera/05_camera_tutorial_manual_img_save.png" width="700"><br>
-
 
 ## Additional Troubleshooting
 

@@ -4,6 +4,7 @@ linkTitle: "Driving SCUTTLE with a Gamepad"
 weight: 20
 type: "docs"
 description: "Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad"
+tags: ["base", "scuttle", "gamepad"]
 ---
 The purpose of this tutorial is to add a Bluetooth gamepad input controller to a SCUTTLE Robot.
 On completion of this tutorial you'll be able to drive the SCUTTLE around like an RC car using the EasySMX ESM-9101 Wireless Controller.
@@ -28,7 +29,6 @@ To add this controller to the robot’s config, from the Viam app ([https://app.
 
 <li>There are no <strong>Model</strong> options for input_controllers.
 Therefore, for <strong>Model</strong>, please manually enter, "gamepad," (without the quotes) then press Tab. The Viam app will retain your entry.</li>
-
 
 <li>Click <strong>New Component</strong>. The Viam app opens the Component Config panel for the gamepad. </li>
 <li>On the Component Config panel, leave <strong>Depends On</strong> set to empty.</li>
@@ -74,9 +74,9 @@ Note the green Connection indicator:
 
 <img src="../img/scuttle-gamepad/pi-game-controller-panel.png" />
 
-At this point, you should be able to move the SCUTTLE. If you are in the specific mode that allows you to use the Joystick (#7), it will change the values in your robot config:
+At this point, you should be able to move the SCUTTLE. If you are in the specific mode that allows you to use the Joystick (#7), it will change the values:
 
-```
+```bash
 "X
 0.0000
 Y
@@ -84,7 +84,8 @@ Y
 ```
 
 If you are in the specific mode that allows you to use the D-Pad (#8), it will change the values:
-```
+
+```bash
 "Hat0X
 0.0000
 Hat0Y

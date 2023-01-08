@@ -4,6 +4,7 @@ linkTitle: "Movement Sensor"
 weight: 70
 type: "docs"
 description: "Explanation of movement sensor configuration and usage in Viam."
+tags: ["movement sensor", "gps", "imu", "sensor", "components"]
 # SME: Rand
 ---
 The movement sensor component is an abstraction of a sensor that gives data on where a robot is and how fast it is moving.
@@ -34,6 +35,7 @@ Any movement sensor that uses I<sup>2</sup>C must be connected to a board that s
 {{% /alert %}}
 
 ## GPS
+
 A global positioning system (GPS) is based on receiving signals from satellites in the earth’s orbit.
 A GPS is useful for knowing where you are and how fast you’re going.
 `Position`, `CompassHeading` and `LinearVelocity` data are provided by all GPS modules.
@@ -49,6 +51,7 @@ Some models require other attributes, as detailed in their respective sections b
 We have integrated the following GPS modules into Viam’s RDK:
 
 ### GPS-NMEA
+
 This GPS model uses communication standards set by the National Marine Electronics Association (NMEA).
 The `gps-nmea` model can be connected via and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board:
 
@@ -56,7 +59,7 @@ The `gps-nmea` model can be connected via and send data through a serial connect
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-nmea",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
@@ -69,17 +72,19 @@ The `gps-nmea` model can be connected via and send data through a serial connect
     }
 }
 ```
+
 Note that the example `"serial_path"` filepath is specific to serial devices connected to linux systems.
+
 #### GPS-NMEA over I<sup>2</sup>C
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-nmea",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
     "attributes": {
-        "board": "board",
+        "board": "local",
         "connection_type": "I2C",
         "i2c_attributes": {
             "i2c_baud_rate": 115200,
@@ -134,7 +139,7 @@ Example config:
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-rtk",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
@@ -162,7 +167,7 @@ Example config:
 
 ```json
 {
-    "depends_on": ["board"],
+    "depends_on": [],
     "model": "gps-nmea",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
@@ -176,7 +181,7 @@ Example config:
             "I2c_bus": "<name_of_bus_on_board>",
         },
         "ntrip_attributes": {
- 		    "ntrip_addr": "<ntrip_address>",
+       "ntrip_addr": "<ntrip_address>",
             "ntrip_baud": 38400,
             "ntrip_password": "<password>",
             "ntrip_username": "<username>"
@@ -257,16 +262,16 @@ For all of the following RTK-station configurations, `children` is the list of o
         "gps1"
     ],
     "attributes": {
-        "board": "board",
         "connection_type": "serial",
         "serial_attributes": {
-        	"serial_baud_rate": 115200,
- 		    "serial_path": "/dev/serial/by-path/<device_ID>"
+            "serial_baud_rate": 115200,
+            "serial_path": "/dev/serial/by-path/<device_ID>"
         },
         "correction_source": "serial"
     }
 }
 ```
+
 ### Connection Configuration
 
 {{% alert title="Note" color="note" %}}
@@ -286,6 +291,8 @@ Name | Type | Default Value | Description
 `serial_baud_rate` | int | 115200 | The rate at which data is sent from the sensor. Optional.
 ---
 
+Serial communication uses a filepath instead of relying on any specific piece of board hardware, so no "board" attribute is needed when configuring a movement sensor with this communication method.
+
 ```json
 {
     "name": "<my-movement-sensor-name>",
@@ -295,8 +302,8 @@ Name | Type | Default Value | Description
         "<whatever other attributes>": "<example>",
         "connection_type": "serial",
         "serial_attributes": {
-        	"serial_baud_rate": 115200,
- 		    "serial_path": "<PATH>"
+            "serial_baud_rate": 115200,
+            "serial_path": "<PATH>"
         }
     }
 }
@@ -313,12 +320,15 @@ Name | Type | Default Value | Description
 `i2c_baud_rate` | int | 115200 | The rate at which data is sent from the sensor. Optional.
 ---
 
+You'll also need to configure the `board` attribute with the name of the board to which the I<sup>2</sup>C connection is being made.
+
 ```json
 {
     "name": "<my-movement-sensor-name>",
     "type": "<TYPE>",
     "model": "<MODEL>",
     "attributes": {
+        "board": "<name of board, e.g. local>",
         "<whatever other attributes>": "<example>",
         "connection_type": "I2C",
         "i2c_attributes": {
@@ -377,6 +387,7 @@ Example IMU-VectorNav config:
   "depends_on": []
 }
 ```
+
 #### IMU-VectorNav Attributes
 
 Name | Type | Default Value | Description
@@ -388,6 +399,51 @@ Name | Type | Default Value | Description
 `polling_frequency_hz` | int |
 
 ## Accelerometer/Gyroscope
+
+### ADXL345
+
+The ADXL345 sensor manufactured by Analog Devices is a 3 axis accelerometer.
+Calling `GetReadings` (a method supported by all [sensor components](/components/sensor/)) on it will yield linear acceleration data.
+
+Configure this sensor with type `movement_sensor` and model `accel-adxl345` as well as a board component with an I<sup>2</sup>C bus:
+
+```json
+{
+  "components": [
+    {
+      "name": "local",
+      "type": "board",
+      "model": "pi",
+      "attributes": {
+        "i2cs": [
+          {
+            "name": "default_i2c_bus",
+            "bus": "1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "my-adxl",
+      "type": "movement_sensor",
+      "model": "accel-adxl345",
+      "attributes": {
+        "board": "local",
+        "i2c_bus": "default_i2c_bus",
+        "use_alternate_i2c_address": false
+      }
+    }
+  ]
+}
+```
+
+#### ADXL1345 Attributes
+
+Name | Type | Default Value | Description
+----- | ----- | ----- | -----
+`board` | string | - | The name of the board to which the device is wired.
+`use_alt_i2c_address` | bool | false | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute.
+`i2c_bus` | string | - | The name of the I<sup>2</sup>C bus through which the device communicates with the SBC. Note that this must match the name you gave the I<sup>2</sup>C bus you configured in the board component.
 
 ### MPU6050
 
@@ -430,8 +486,6 @@ Configuration of this sensor requires configuring a movement sensor component wi
 }
 ```
 
-[^mpu]: MPU6050 Sensor: <a href="https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/" target="_blank">ht<span></span>tps://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/</a>
-
 #### MPU6050 Attributes
 
 Name | Type | Default Value | Description
@@ -449,7 +503,7 @@ Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
 We have integrated an experimental package that uses a visual odometry algorithm with dead reckoning to track the Position, Orientation, LinearVelocity and AngularVelocity of the camera’s frame.
-The `cameramono` model can use any single camera with this algorithm. 
+The `cameramono` model can use any single camera with this algorithm.
 
 In a Viam configuration file, a camera used as a movement sensor will require a [`camera` type component](../../components/camera/) and then a `movementsensor` type component that depends on the `camera` component, and a `motion_estimation_config` based on the camera properties.
 
@@ -487,6 +541,7 @@ In a Viam configuration file, a camera used as a movement sensor will require a 
 ```
 
 ## Software Implementation
+
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html)
 
 <br>

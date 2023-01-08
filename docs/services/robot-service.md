@@ -3,9 +3,10 @@ title: "Robot Service"
 linkTitle: "Robot Service"
 description: "Explanation of the robot service, its configuration, and its functionality."
 type: "docs"
+tags: ["robot state", "services"]
 # SME: Cheuk
 ---
-Robot Service constitutes a minimal set of APIs that most robots (Viam Server, [Viam Python SDK](https://python.viam.dev/) and various SDKs) should support. 
+Robot Service constitutes a minimal set of APIs that most robots (Viam Server, [Viam Python SDK](https://python.viam.dev/) and various SDKs) should support.
 Users will likely use the Robot Service as an entrypoint to interact with Viam robots and provide a way to get updates from the robot as a whole.
 
 The below is a current list of interfaces provided by the Robot Service.
@@ -14,13 +15,13 @@ The below is a current list of interfaces provided by the Robot Service.
 <tr><th>Operation</th><th>Description</th></tr>
     <tr>
         <td>BlockForOperation</td>
-        <td>The request will only return once the specified operation is complete. 
-        Useful if a process needs to work until another is completed. 
+        <td>The request will only return once the specified operation is complete.
+        Useful if a process needs to work until another is completed.
         Requires the <strong>Operations ID</strong>.</td>
     </tr>
     <tr>
         <td>CancelOperation</td>
-        <td>Cancels a specified operation. 
+        <td>Cancels a specified operation.
         Requires the <strong>Operations ID</strong>.</td>
     </tr>
     <tr>
@@ -41,7 +42,7 @@ The below is a current list of interfaces provided by the Robot Service.
     </tr>
     <tr>
         <td>ResourceNames</td>
-        <td>Returns the list of all resources currently available on the robot. 
+        <td>Returns the list of all resources currently available on the robot.
         This includes remote resources.</td>
     </tr>
     <tr>
@@ -54,7 +55,7 @@ The below is a current list of interfaces provided by the Robot Service.
     </tr>
     <tr>
         <td>StreamStatus</td>
-        <td>Streams the status for the resources queried for, all resources if none specified. 
+        <td>Streams the status for the resources queried for, all resources if none specified.
         The interval at which the stream refreshes can also be specified.</td>
     </tr>
     <tr>
@@ -63,21 +64,20 @@ The below is a current list of interfaces provided by the Robot Service.
     </tr>
 </table>
 
-
 ## Operation and Operation IDs
 
 **Operation IDs** are how Viam tracks in-flight operations/robot commands over gRPC (i.e., network requests).
 
-The robot creates a unique **Operation ID** for every request (operation). 
-This ID expires once the request is completed. 
+The robot creates a unique **Operation ID** for every request (operation).
+This ID expires once the request is completed.
 Each new gRPC request creates a new **Operation ID**, even if it was created from a pre-existing operation.
 
 Users can cancel an operation by passing in its **Operation ID,** and can also block a specific operation, again, by specifying its **Operation ID**, until that operation is complete.
 
 For example, consider two _connected_ robots. Robot “A,” with an attached base and navigation service and robot “B,” operating remotely with an attached GPS.  
-A client’s request to the navigation service to move “A” creates a new **Operation ID**. 
+A client’s request to the navigation service to move “A” creates a new **Operation ID**.
 
-The request to the attached base is a local request (i.e., a non-gRPC request) between the navigation service and its base and does not create a new **Operation ID**. 
+The request to the attached base is a local request (i.e., a non-gRPC request) between the navigation service and its base and does not create a new **Operation ID**.
 However, the navigation service request to the GPS is via gRPC, which spawns a new operation and thus another **Operation ID**.
 
 Canceling the initial **Operation ID** cancels the first operation on the navigation service, but that does not cancel the second operation (obtaining the location from the remote GPS).

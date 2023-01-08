@@ -4,27 +4,28 @@ linkTitle: "Data Management"
 weight: 10
 type: "docs"
 description: "Explanation of the data management service, its configuration, and its functionality."
+tags: ["data management", "data", "services"]
 # SME: Alexa Greenberg
 ---
 The data management service supports capturing data from any component at a predefined frequency and syncing it to Viam's data platform.
 
-
 ## Hardware Requirements
+
 The data management service supports all of the hardware components on a given robot.
-Below are some example use cases across different types of hardware: 
+Below are some example use cases across different types of hardware:
 
 - A tomato picking gantry has a depth camera that captures images of crops on the vine.
 The point cloud data is collected at 30Hz and sent to Viam's cloud platform every minute.
 - An autonomous delivery base has a GPS that captures its coordinate locations.
 These coordinate locations are collected at 15kHz and sent to the Viam platform every hour.
 
-
 ## Data Capture
+
 Capture runs in the background.
 If a robot is restarted with the same config, capture will automatically continue.
 
-
 ## Data Sychronization to the Cloud
+
 Synchronization runs in the background and is uploaded to Viam's cloud at a predefined frequency.
 Files are streamed such that if the internet connection gets interrupted or a robot restarts in the middle of a file upload, synchronization will resume from where it left off mid-file.
 If a robot is restarted with the same config, synchronization will automatically continue.
@@ -45,7 +46,8 @@ This example has capture enabled that is writing to `/tmp/capture` on the robot,
 ![service config example](../img/data-service-config.png)
 
 In raw JSON, this looks like:
-```
+
+```json
 "services": [
     {
         "name": "data_manager",
@@ -63,7 +65,7 @@ In raw JSON, this looks like:
 }
 ```
 
-#### Component Method Configuration
+### Component Method Configuration
 
 You can configure data capture for each method within a component.
 If you're using the "Config > Components" tab on the Viam app, you'll see that a component that has a capturable method will have the option "Data Capture Configuration > Add Method."

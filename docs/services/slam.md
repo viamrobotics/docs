@@ -5,6 +5,7 @@ weight: 70
 draft: false
 type: "docs"
 description: "Explanation of the SLAM service, its configuration, and its functionality."
+tags: ["slam", "services"]
 # SMEs: Kat, Jeremy
 ---
 
@@ -21,26 +22,25 @@ At Viam, we want to offer our users an easy-to-use, intuitive method for interfa
 
 ## The Viam SLAM Service
 
-The Viam SLAM Service supports the integration of custom SLAM libraries with the Viam RDK via the SLAM Service API. 
+The Viam SLAM Service supports the integration of custom SLAM libraries with the Viam RDK via the SLAM Service API.
 
 As of 11 October 2022, the following SLAM library is integrated:
 
--   <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank">ORB-SLAM3</a>[^orb]
-
+- <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank">ORB-SLAM3</a>[^orb]
 
 [^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORB-SLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
 
-
 {{% alert title="Note" color="note" %}}  
-* Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`.
+
+- Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`.
 We append the timestamp to each filename prior to saving images, maps, and *.yaml files.
 We will be updating the timestamp format to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
 {{% /alert %}}
 
-
 ## Requirements
 
 Running the SLAM Service with your robot requires the following:
+
 1. A binary running the custom SLAM library stored in your PATH (e.g., `/usr/local/bin`).
 2. Changes to the config specifiying which SLAM library is used, including library specific parameters.
 3. A data folder as it is pointed to by the config parameter `data_dir`.
@@ -54,16 +54,20 @@ For ORB-SLAM3, the location is defined <a href="https://github.com/viamrobotics/
 
 You can download and install the ORB-SLAM3 binaries as follows:
 
-* AArch64 (ARM64) (e.g., on an RPI):
+- AArch64 (ARM64) (e.g., on an RPI):
+
     ```bash
     sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
     ```
-* x86_64:
+
+- x86_64:
+
     ```bash
     sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
     ```
 
 Make the file executable by running:
+
 ```bash
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
@@ -127,7 +131,6 @@ The following table provides an overview over the different SLAM modes, and how 
 | Live | SLAM runs in live mode if one or more `sensors` are provided. Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM. |
 | Offline | SLAM runs in offline mode if `sensors: []` is empty. This means it will look for and process images that are already saved in the `data_dir/data` directory. |
 
-
 #### Pure Mapping, Pure Localization, and Update Mode
 
 | Mode | Description |
@@ -140,8 +143,7 @@ The following table provides an overview over the different SLAM modes, and how 
 Every integrated SLAM library requires `mode` to be specified under its config parameters, which defines which sensor types or combinations are used.
 You can find more information on the `mode` in the description of the integrated library:
 
-* [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
-
+- [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
 
 ### General Config Parameters
 
@@ -161,14 +163,14 @@ You can find more information on the `mode` in the description of the integrated
 | `port` | string |  (optional) Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
 
-
 ### SLAM Library Specific Config Parameters
 
 The `config_params` is a catch-all attribute for parameters that are unique to the SLAM library being used.
 These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
 
 You can find details on which inputs you can include for the available libraries in the following section:
-* [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
+
+- [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
 
 ## The Data Directory
 
@@ -184,17 +186,18 @@ To recap, the directory is required to be structured as follows:
     └── config
 </pre>
 
-* `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `data_rate_ms`.
-* `map` contains the generated maps, saved at `map_rate_sec`.
-* `config` contains all SLAM library specific config files.
+- `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `data_rate_ms`.
+- `map` contains the generated maps, saved at `map_rate_sec`.
+- `config` contains all SLAM library specific config files.
 
 {{% alert title="Note" color="note" %}}  
 If this directory structure is not present, the SLAM service creates it.
 {{% /alert %}}
 
-The data in the data directory dictates what type of SLAM will be run: 
-* If the `map` subdirectory is empty, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).
-* If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (UPDATING MODE).
+The data in the data directory dictates what type of SLAM will be run:
+
+- If the `map` subdirectory is empty, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).
+- If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (UPDATING MODE).
 
 ## Integrated Library: ORB-SLAM3
 
@@ -228,7 +231,7 @@ In this example, `mono` is selected with one camera stream named `color`:
 
 The following table gives an overview over the config parameters for ORB-SLAM3.
 All parameters except for `mode` are optional. You can use all parameters except for `mode` and `debug` to fine-tune ORB-SLAM's algorithm.
-        
+
 | Parameter Mode | Description - The Type of SLAM to Use | Default Value |
 | -------------- | ------------------------------------- | ------------------- |
 | `mode` | `rgbd` or `mono` | No default |

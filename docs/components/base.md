@@ -3,22 +3,23 @@ title: "Base Component"
 linkTitle: "Base"
 weight: 10
 type: "docs"
-description: "Explanation of base configuration, and usage in Viam."
+description: "Explanation of base configuration and usage in Viam."
+tags: ["base", "components"]
 # SMEs: Steve B
 ---
 
 Most robots with wheeled bases will comprise at least the following:
 
--   A [board component](/components/board/) that can run a viam-server instance. 
+- A [board component](/components/board/) that can run a viam-server instance.
 That is to say, a computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer with GPIO.
 
--   Two or more motors with wheels attached
+- Two or more motors with wheels attached
 
--   A power supply for the board
+- A power supply for the board
 
--   A power supply for the motors
+- A power supply for the motors
 
--   Some sort of chassis to hold everything together
+- Some sort of chassis to hold everything together
 
 For example:
 
@@ -29,11 +30,10 @@ Note that this will vary greatly depending on choice of motors, motor drivers, p
 
 <img src="../img/base/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberry Pi, motor drivers, motors, power supply, and voltage regulator for the rover."/>
 
-
 ## Configuration
 
 Configuring a base involves configuring the drive motors and ensuring the base attributes section contains the names of all motors that move the base right or left, respectively.
-Configure each motor according to its type. 
+Configure each motor according to its type.
 You can find more information on wiring and configuring different types of motors in the [motor topic](../motor/).
 The [board](/components/board/) controlling the base must also be configured.
 
@@ -105,6 +105,7 @@ An example configuration file, including the board, motors, and base:
 {{< /tabs >}}
 
 ### Required Attributes
+
 <table>
 <thead>
   <tr>

@@ -5,7 +5,8 @@ description: "A collection of links to external sources discussing robotics topi
 type: "docs"
 draft: true
 ---
-# Overview
+## Overview
+
 The following sections contain links that we think you will find very useful during your journey into robotics.
 
 ## Basic Electronics
@@ -36,7 +37,7 @@ A typical servo control setup comprises the following:
 - A Raspberry Pi (or other [board](/components/board/))
 - A servo
 - An appropriate power supply
-    - If the servo will not be under any significant load and thus won’t draw much current, you may be able to get away with powering it off 5V (if that’s its required voltage) from the Pi pins.
+  - If the servo will not be under any significant load and thus won’t draw much current, you may be able to get away with powering it off 5V (if that’s its required voltage) from the Pi pins.
     However it is advisable to power it directly from a power supply that can meet its peak current needs so as not to inadvertently power cycle the Pi or other components.
 
 #### Wiring
@@ -55,6 +56,7 @@ Here's an example of how a servo might be wired to a Raspberry Pi:
 [^orccc]: Online Resistor Color Code Calculator: <a href="https://goodcalculators.com/resistor-color-code-calculator/" target="_blank">ht<span></span>tps://goodcalculators.com/resistor-color-code-calculator</a>
 
 #### Resistor Value Chart
+
 <img src="../img/resistor.png" alt="Chart of standard colors to values for electronic components. An example resistor with green, red, and orange bands is shown. The value is 52 times 10 to the third power, or 52,000 Ohms." />
 
 You can easily learn resistor color markings without referring to a chart by remembering this jingle:
@@ -67,11 +69,11 @@ Black, Brown, Red, Orange, Yellow, Green, Blue, Violet, Gray, White
 And their values on a resistor:
 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
-- The bands 1 and 2 indicate the first two significant digits on a resistor. 
-- Band 3 is a multiplier on four-band resistors. 
+- The bands 1 and 2 indicate the first two significant digits on a resistor.
+- Band 3 is a multiplier on four-band resistors.
 For example, a resistor with brown, green, orange bands representing, 1, 5, and  3, respectively, which equates to 15 times ten to the third, or 15,000 Ohms, or 15 kOhms.
-- On resistors with four bands, the band 4 indicates tolerance, with gold being +/- 5% and silver being +/- 10%. 
-- On five-band resistors, band 3 becomes an additional significant digit, band 4 becomes the multiplier, and band 5 becomes the tolerance band. 
+- On resistors with four bands, the band 4 indicates tolerance, with gold being +/- 5% and silver being +/- 10%.
+- On five-band resistors, band 3 becomes an additional significant digit, band 4 becomes the multiplier, and band 5 becomes the tolerance band.
 - Six-band resistors are read identically to five-band resistors, their difference being that the sixth band indicates the resistor's temperature coefficient.
 
 ### LEDs (Light-Emitting Diodes)

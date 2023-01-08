@@ -13,14 +13,19 @@ Watch the tutorial video below for a quick walkthrough of Try Viam, including ho
 
 ## Getting Started with Viam
 
-When you try Viam for the first time, you'll want to get a feel for how it works. The best way to do that is to take over a Viam Rover in our robotics lab for 15 minutes. You'll be able to drive the robot around, see what it sees, and control its sensors and actuators. You could try things like:
+When you try Viam for the first time, you'll want to get a feel for how it works.
+The best way to do that is to take over a Viam Rover in our robotics lab for 15 minutes.
+You'll be able to drive the robot around, see what it sees, and control its sensors and actuators.
+You could try things like:
 
 - Teleoperating the rover from wherever you are!
 - Writing some code to control the rover
 - Using services like computer vision or data management
-- See how the rover's components are set up in the intuitive configuration interface
+- Seeing how the rover's components are set up in the intuitive configuration interface
 
-For a limited-time, you can pre-order a Viam Rover [here](http://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
+Find more detailed instructions in our [Try Viam tutorial](/tutorials/try-viam/).
+
+For a limited time, you can [pre-order your own Viam Rover here](http://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
 
 ## Getting started with the SDKs
 

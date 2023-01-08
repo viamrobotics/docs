@@ -5,6 +5,7 @@ weight: 50
 type: "docs"
 draft: false
 description: "Instructions to run SLAM with either a webcam or provided example data."
+tags: ["slam", "camera", "services"]
 # SMEs: Kat
 ---
 
@@ -20,6 +21,7 @@ Breaking changes are likely to occur, and occur often.
 
 This tutorial shows you how to run ORB-SLAM3 on your robot.
 You have two choices:
+
 * Run SLAM in online mode with a webcam.
 The webcam can be installed on a robot, or just be held by hand.
 * Run SLAM in offline mode either with collected data or our provided example data.
@@ -42,15 +44,19 @@ First, `ssh` into your Pi and then check the architecture of your system by runn
 Depending on the output download and install one of the following ORB-SLAM3 binaries:
 
 * AArch64 (ARM64) (e.g., on an RPI):
+
     ```bash
     sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
     ```
+
 * x86_64:
+
     ```bash
     sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
     ```
 
 Make the file executable by running:
+
 ```bash
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
@@ -62,12 +68,14 @@ The following setup allows you to run ORB-SLAM3 in live mode using a webcam.
 ### Configuration using Viam
 
 The configuration of SLAM happens in two steps:
+
 1. Add a webcam and calibrate it.
 2. Add SLAM to the existing configuration.
 
 #### Add a webcam and calibrate it
 
 Follow these tutorials to connect and calibrate your webcam:
+
 * [Connect and configure a webcam](../configure-a-camera/#connect-and-configure-a-webcam)
 * [Calibrate a camera](../camera-calibration)
 
@@ -75,6 +83,7 @@ Follow these tutorials to connect and calibrate your webcam:
 
 Find out your home directory by `ssh`-ing into your Pi, and typing `pwd`.
 This is an example of what you might see:
+
 ```bash
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
@@ -136,6 +145,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
     }
   ]
 ```
+
 {{% /expand %}}
 <br>
 
@@ -228,6 +238,7 @@ If you downloaded our dataset, and assuming that the zip file is now located in 
 ```bash
 scp ~/Downloads/data.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
 ```
+
 Be sure to replace `YOUR_USERNAME` and `YOUR_RPI_NAME` with your username and Pi name.
 The dataset is large, so it might take a while for it to copy over to your Pi.
 
@@ -245,6 +256,7 @@ Next, we will add SLAM to the configuration.
 
 First, `ssh` into your Pi and find out your home directory by typing `pwd`
 This is an example of what you might see:
+
 ```bash
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
@@ -311,7 +323,6 @@ Furthermore, in online mode, it helps to move the camera around _slowly_, such t
 
 In offline mode, it can be difficult to determine the quality of the dataset.
 If no map can be generated using the offline dataset, a new dataset should be generated.
-
 
 ## Additional Troubleshooting
 

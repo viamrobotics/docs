@@ -4,8 +4,10 @@ linkTitle: "Board"
 weight: 20
 type: "docs"
 description: "Explanation of board configuration and usage in Viam."
+tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
+
 In the Viam framework, a **board** is the signal wire hub of a robot.
 It sends signals to the other hardware components, and may or may not also act as the software hub, running an instance of the Viam server on its CPU.
 Boards have general purpose input/output (GPIO) pins through

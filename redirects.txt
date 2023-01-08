@@ -1,4 +1,0 @@
-# Redirects OLD::NEW
-https://docs.viam.com/getting-started/linux-install/::https://docs.viam.com/installation/linux-install/
-https://docs.viam.com/getting-started/macos-install/::https://docs.viam.com/installation/macos-install/
-https://docs.viam.com/getting-started/rpi-setup/::https://docs.viam.com/installation/rpi-setup/

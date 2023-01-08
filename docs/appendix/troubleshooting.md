@@ -18,6 +18,7 @@ While every effort has been made to include all common/known issues and their po
 ### Viam App Logs
 
 #### Error #1: Error reading cloud config
+
 The following related errors may cause this issue:
 
 <table style="border: solid black 1px;">
@@ -32,7 +33,7 @@ The following related errors may cause this issue:
 <tr>
 <th>Resolution
 </th>
-<td>Add the missing name in components and save the config. 
+<td>Add the missing name in components and save the config.
 Run <file>sudo systemctl restart viam-server.service</file> in the terminal to restart the server.
 </td>
 </tr>
@@ -44,15 +45,15 @@ Run <file>sudo systemctl restart viam-server.service</file> in the terminal to r
 <tr>
 <th>What/Why:
 </th>
-<td colspan="2">Check if there is a frame attribute in the components in the fancy config or in the raw JSON config. 
-It may be that the robot config generated broken “frame” information and pre-populated the translation values with empty strings when they are currently programmed to be floats on the backend. 
+<td colspan="2">Check if there is a frame attribute in the components in the fancy config or in the raw JSON config.
+It may be that the robot config generated broken “frame” information and pre-populated the translation values with empty strings when they are currently programmed to be floats on the backend.
 </td>
 </tr>
 <tr>
 <th>Resolution
 </th>
 <td width="50%">
-Delete the entire “frame” object from the JSON config if you are not using it. 
+Delete the entire “frame” object from the JSON config if you are not using it.
 The frame object looks like this:</td>
 </td>
 <td><img src="../img/ts-del-frame.png" width="150px"/></td>
@@ -68,7 +69,7 @@ The frame object looks like this:</td>
 
 <th>What/Why:
 </th>
-<td> - 
+<td> -
 </td>
 
 </tr>
@@ -76,7 +77,7 @@ The frame object looks like this:</td>
 <tr>
 <th>Resolution
 </th>
-<td>Run <file>/root/viam -remove</file> in the terminal to clear cache config from the Pi. 
+<td>Run <file>/root/viam -remove</file> in the terminal to clear cache config from the Pi.
 Re-try the operation.
 </td>
 
@@ -105,7 +106,7 @@ Re-try the operation.
 <tr>
 <th>What/Why:
 </th>
-<td>This issue can be caused by an incorrect new configuration, but it could also be caused by a code issue related to reconfiguring robots. 
+<td>This issue can be caused by an incorrect new configuration, but it could also be caused by a code issue related to reconfiguring robots.
 </td>
 </tr>
 <tr>
@@ -116,10 +117,10 @@ Re-try the operation.
 </tr>
 </table>
 
+#### Error #4: Expected board name in config for motor
 
-#### Error #4: Expected board name in config for motor. 
 <table style="border: solid black 1px;">
-<th>What/Why: 
+<th>What/Why:
 </th>
 <td>Check if you forgot to enter the pi name and check for any other missing component specs in config.
 </td>
@@ -127,19 +128,19 @@ Re-try the operation.
 <tr>
 <th>Resolution
 </th>
-<td>Add any missing components. 
+<td>Add any missing components.
 Run <file>sudo systemctl restart viam-server.service</file> in the terminal to restart the server.
 </td>
 </tr>
 </table>
 
-#### Error #5: Failed to find the best driver that fits the constraints. 
+#### Error #5: Failed to find the best driver that fits the constraints
 
 <table style="border: solid black 1px;">
 
 <th><strong>What/Why:
 </th>
-<td>There are many possible reasons why this happens. Verify that Frame rate, frame format, video path, width, and height, have values. 
+<td>There are many possible reasons why this happens. Verify that Frame rate, frame format, video path, width, and height, have values.
 Viam specifies 0 for these values by default, but verify that the setting is actually there.
 </td>
 </tr>
@@ -151,7 +152,8 @@ Viam specifies 0 for these values by default, but verify that the setting is act
 </tr>
 </table>
 
-#### Error #6: Error configuring robot.
+#### Error #6: Error configuring robot
+
 Clearing this related error may resolve the issue.
 <table style="border: solid black 1px;">
 <tr><th colspan="2">Related Error: error processing draft changes: expected board name in config for motor. </th>
@@ -159,7 +161,7 @@ Clearing this related error may resolve the issue.
 <tr>
 <th><strong>What/Why:
 </th>
-<td>The motor config is missing the board name. Verify that the motor name is present in the config. 
+<td>The motor config is missing the board name. Verify that the motor name is present in the config.
 </td>
 </tr>
 <tr>
@@ -170,12 +172,12 @@ Clearing this related error may resolve the issue.
 </tr>
 </table>
 
-#### Error #7: Response closed without headers.
+#### Error #7: Response closed without headers
 
 <table style="border: solid black 1px;">
 <th><strong>What/Why:
 </th>
-<td> - 
+<td> -
 </td>
 </tr>
 <tr>
@@ -193,7 +195,7 @@ Clearing this related error may resolve the issue.
 <table border="solid black 1px">
 <th><strong>What/Why:
 </th>
-<td>This issue is caused by a problem with the sudo env and the user env. 
+<td>This issue is caused by a problem with the sudo env and the user env.
 When in sudo, the RSA tokens used to connect to GitHub are removed in order to use admin credentials.
 </td>
 </tr>
@@ -205,7 +207,7 @@ When in sudo, the RSA tokens used to connect to GitHub are removed in order to u
 </tr>
 </table>
 
-#### Error #9: Error serving web.
+#### Error #9: Error serving web
 
 <table border="solid black 1px">
 <th><strong>What/Why:
@@ -221,17 +223,22 @@ When in sudo, the RSA tokens used to connect to GitHub are removed in order to u
 </tr>
 </table>
 
-
-
 ## Application and Plugin Conflicts
 
 ### Mac Applications
+
 None at this time.
+
 ### Windows Applications
+
 None at this time.
-### Linux Applications 
+
+### Linux Applications
+
 None at this time.
+
 ### Browser Plugins
+
 1. **PLUGIN:** "**Allow right click - simple copy**" - This Chrome plugin prevents the user from configuring a Service in the Viam app (**app.viam.com** > **Config** > **3 Services**).<br>
 **Indication:** User unable to select a Service **Type** in the **Create Service** Pane.
 After clicking to display the drop-down list, choosing an item does not populate the drop-down's "Selection."
