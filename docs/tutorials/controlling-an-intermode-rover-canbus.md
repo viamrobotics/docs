@@ -68,61 +68,60 @@ Now, connect the remaining two wires to the + (red) and - (black) **input** term
 
 We've created a github repository with a working modular resource implementation example, which is referenced in this tutorial and can be <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">found here</a>.
 
-## Understanding the Intermode base resource 
+## Understanding the Intermode base resource
 
 Viam includes API interfaces for a number of common components within Viam Server (otherwise known as the RDK - Robot Development Kit).
 The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base](/components/base) component.
 
 ### Using the Viam RDK base API with a custom model
+
 For the Intermode rover , we'll want to conform to the base [API](/product-overviews/extending-viam/modular-resources/#apis) interface, but create a new [model](/product-overviews/extending-viam/modular-resources/models) with its own implementation of each method.
 Both the **API** interface and **model** are namespaced as triplets in Viam.
-Since we are conforming to an existing Viam API for [base](/components/base), the [API](/product-overviews/extending-viam/modular-resources/#apis)  namespace we'll use is: 
-
-_rdk:component:base_
+Since we are conforming to an existing Viam API for [base](/components/base), the [API](/product-overviews/extending-viam/modular-resources/#apis)  namespace we'll use is:
+**rdk:component:base**
 
 We're creating this base model for tutorial purposes only, and will implement only partial functionality for demonstration purposes.  Therefore, we'll use the following [model](/product-overviews/extending-viam/modular-resources/models) namespace:
+**viamlabs:tutorial:intermode**
 
-_viamlabs:tutorial:intermode_
-
-The <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">module.go code</a> found in our tutorial's github repository creates this model and registers the component instance.  Note that by using __base.Subtype__, we are registering it with the *API* from the RDK's built-in base component.
+The <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">module.go code</a> found in our tutorial's github repository creates this model and registers the component instance.  Note that by using **base.Subtype** we are registering it with the *API* from the RDK's built-in base component.
 
 ```go
 var model = resource.NewModel("viamlabs", "tutorial", "intermode")
 
 func init() {
-	registry.RegisterComponent(
-		base.Subtype,
-		model,
-		registry.Component{Constructor: func(
-			ctx context.Context,
-			deps registry.Dependencies,
-			config config.Component,
-			logger golog.Logger,
-		) (interface{}, error) {
-			return newBase(config.Name, logger)
-		}})
+    registry.RegisterComponent(
+        base.Subtype,
+        model,
+        registry.Component{Constructor: func(
+            ctx context.Context,
+            deps registry.Dependencies,
+            config config.Component,
+            logger golog.Logger,
+        ) (interface{}, error) {
+            return newBase(config.Name, logger)
+        }})
 }
 
 func main() {
-	goutils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("intermodeBaseModule"))
+    goutils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("intermodeBaseModule"))
 }
 
 func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
-	modalModule, err := module.NewModuleFromArgs(ctx, logger)
+    modalModule, err := module.NewModuleFromArgs(ctx, logger)
 
-	if err != nil {
-		return err
-	}
-	modalModule.AddModelFromRegistry(ctx, base.Subtype, model)
+    if err != nil {
+        return err
+    }
+    modalModule.AddModelFromRegistry(ctx, base.Subtype, model)
 
-	err = modalModule.Start(ctx)
-	defer modalModule.Close(ctx)
+    err = modalModule.Start(ctx)
+    defer modalModule.Close(ctx)
 
-	if err != nil {
-		return err
-	}
-	<-ctx.Done()
-	return nil
+    if err != nil {
+        return err
+    }
+    <-ctx.Done()
+    return nil
 }
 ```
 
@@ -134,60 +133,60 @@ Intermode provides documentation on how its <a href="https://github.com/viam-lab
 
 This tutorial is not meant to line-by-line explain what this translation code does, but instead we'll point out the important details, and beyond that, you can follow the code implementation in the <a href="https://github.com/viam-labs/tutorial-intermode/blob/main/intermode-base/module.go" target="_blank">tutorial code</a>.
 
-1. The SetPower command implements the SetPower interface from the _rdk:component:base_ API
+1. The SetPower command implements the SetPower interface from the *rdk:component:base* API
 2. The parameters sent to SetPower are formatted as a *driveCommand*
 3. The *driveCommand* is converted to a CAN frame, and set as the next command
 
-```
+``` go
 // this struct describes intermode base drive commands
 type driveCommand struct {
-	Accelerator   float64
-	Brake         float64
-	SteeringAngle float64
-	Gear          byte
-	SteerMode     byte
+    Accelerator   float64
+    Brake         float64
+    SteeringAngle float64
+    Gear          byte
+    SteerMode     byte
 }
 
 func (base *interModeBase) setNextCommand(ctx context.Context, cmd modalCommand) error {
-	if err := ctx.Err(); err != nil {
-		return err
-	}
-	select {
-	case <-ctx.Done():
-		return ctx.Err()
-	case base.nextCommandCh <- cmd.toFrame(base.logger):
-	}
-	return nil
+    if err := ctx.Err(); err != nil {
+        return err
+    }
+    select {
+    case <-ctx.Done():
+        return ctx.Err()
+    case base.nextCommandCh <- cmd.toFrame(base.logger):
+    }
+    return nil
 }
 
 // toFrame convert the drive command to a CANBUS data frame.
 func (cmd *driveCommand) toFrame(logger golog.Logger) canbus.Frame {
-	frame := canbus.Frame{
-		ID:   driveId,
-		Data: make([]byte, 0, 8),
-		Kind: canbus.SFF,
-	}
-	frame.Data = append(frame.Data, calculateAccelAndBrakeBytes(cmd.Accelerator)...)
-	frame.Data = append(frame.Data, calculateSteeringAngleBytes(cmd.SteeringAngle)...)
+    frame := canbus.Frame{
+        ID:   driveId,
+        Data: make([]byte, 0, 8),
+        Kind: canbus.SFF,
+    }
+    frame.Data = append(frame.Data, calculateAccelAndBrakeBytes(cmd.Accelerator)...)
+    frame.Data = append(frame.Data, calculateSteeringAngleBytes(cmd.SteeringAngle)...)
 
-	if cmd.Accelerator < 0 {
-		cmd.Gear = gears[gearReverse]
-	}
-	frame.Data = append(frame.Data, cmd.Gear, cmd.SteerMode)
+    if cmd.Accelerator < 0 {
+        cmd.Gear = gears[gearReverse]
+    }
+    frame.Data = append(frame.Data, cmd.Gear, cmd.SteerMode)
 
-	logger.Debugw("frame", "data", frame.Data)
+    logger.Debugw("frame", "data", frame.Data)
 
-	return frame
+    return frame
 }
 
 func (base *interModeBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
-	return base.setNextCommand(ctx, &driveCommand{
-		Accelerator:   linear.Y * 100,
-		Brake:         0,
-		SteeringAngle: angular.Z * 100,
-		Gear:          gears[gearDrive],
-		SteerMode:     steerModes[steerModeFourWheelDrive],
-	})
+    return base.setNextCommand(ctx, &driveCommand{
+        Accelerator:   linear.Y * 100,
+        Brake:         0,
+        SteeringAngle: angular.Z * 100,
+        Gear:          gears[gearDrive],
+        SteerMode:     steerModes[steerModeFourWheelDrive],
+    })
 }
 ```
 
@@ -200,14 +199,14 @@ We'll also be registering the modular resource with the RDK.
 Therefore, we'll need to make the modular resource code available on our Raspberry Pi.
 If you have git installed on your pi, this is as simple as running:
 
-```
+``` sh
 git clone https://github.com/viam-labs/tutorial-intermode
 ```
 
 in the directory you'd like to have the modular resource code run from.
 If you don't have git installed on your pi, you'll need to first run:
 
-```
+``` sh
 sudo apt install git
 ```
 
@@ -244,6 +243,7 @@ Change this to the correct location in *executable_path* when adding the module 
 ```
 
 ### Controlling the rover
+
 Once we've saved this configuration, you should see a *base* card in the robot's *control* tab and can drive the rover from there!  Be careful, the Intermode is a large and powerful rover - make sure you have the space to avoid obstacles.
 
 If you do not see the base card in the *control* tab, look in the *logs* tab for possible setup or configuration errors.
