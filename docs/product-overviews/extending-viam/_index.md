@@ -22,7 +22,8 @@ Viam can be extended in these and other ways with the creation and usage of cust
 
 ## Modular resources
 
-The Viam module system allows a user to build a custom [component](/components) or [service](/services) that can be seamlessly included into any Viam-powered robot.
+You can use the Viam module system to build a custom [component](/components) or [service](/services).
+The new component or service can then be included in any Viam-powered robot.
 Once configured, modular resources behave identically to built-in resources.
 
 The Viam platform manages:
