@@ -41,7 +41,6 @@ The built-in service type *vision*'s namespace is __rdk:service:vision__
 
 A model is an implementation of a resource type that implements all or some of the API methods of a resource type API.
 Models allow any number of versions of a given resource to be controlled with a consistent interface.
-
 This is powerful, because you only need to learn and code against one interface which remains the same for different models of the same component type.
 
 For example, some DC motors can be controlled with GPIO and PWM, which you can interface with in different ways depending on the attached controlling hardware.
