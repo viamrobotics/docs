@@ -67,7 +67,7 @@ Share a location with the members of any organization you belong to, or share a 
 
 After creating a new location, look in the upper right corner of the Viam app to confirm what parent organization your new location belongs to.
 
-{{< figure src="../img/app-usage/parent-org.png" width="400px" alt="The Parent Organization listing in the user profile, located in the upper right-hand corner of the Viam App." title="The user profile displays the user's initials and designated Parent Organization." >}}
+{{< figure src="../img/app-usage/parent-org.png" width="200px" alt="The user profile, located in the upper right-hand corner of the Viam App, displays the user's initials and the designated Parent Organization the user belongs to." title="The user profile displays the user's initials and designated Parent Organization." >}}
 
 Other members of the parent organization of a location are granted access to this location by default.
 
