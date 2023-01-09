@@ -329,13 +329,13 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration toget
 Head over to the **CONTROL** tab and choose the **run-slam** drop-down menu.
 Change the **Refresh frequency** to your desired frequency, move the webcam around slowly, and watch a map come to life!
 
-## Running ORB-SLAM3 with a dataset
+## Running Cartographer with a dataset
 
-The following setup allows you to run ORB-SLAM3 in offline mode using either one of your previously saved datasets, or our dataset that you can download and play with.
+The following setup allows you to run Cartographer in offline mode using either one of your previously saved datasets, or our dataset that you can download and play with.
 
 ### The dataset
 
-In offline mode, SLAM will use an existing dataset to create a map.
+In offline mode, SLAM will use an existing dataset to create a map. To enable offline mode, set the **use_live_data** flag to **false**. This tells the slam service to only use data found within the data directory you specified in your config.
 
 You might have an lidar dataset already saved in your `data_dir/data` directory from running SLAM in live mode.
 If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-old-office-small-pcd.zip" target="_blank">Viam Old Office - Cartographer</a>.
@@ -352,7 +352,7 @@ The dataset is large, so it might take a while for it to copy over to your Pi.
 Next, `ssh` into your Pi, and run:
 
 ```bash
-unzip data.zip
+unzip viam-old-office-small-pcd.zip
 ```
 
 Now you're ready to configure SLAM to use your dataset and to run in offline mode.
@@ -398,13 +398,21 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 }
 ```
 
-Change the `"data_dir": "/home/YOUR_USERNAME/cartographer_dir"` directory to your home directory that you found out by typing `pwd`, followed by `/data`.
+Change the `"data_dir": "/home/YOUR_USERNAME/cartographer_dir"` directory to your home directory that you found out by typing `pwd`, followed by the name of your data directory. If using the dataset we provided the directory name would be `viam-old-office-small-pcd`
 Save the config.
 
 Head over to the **CONTROL** tab and choose the "run-slam" drop-down menu.
 Change the "Refresh frequency" to your desired frequency and watch a map come to life using the data in your dataset!
 
 ## Troubleshooting
+
+### Issue: Maps JPEG not appearing in UI
+
+When generating a larger map, it can take longer for cartographer to return the `JPEG` map endpoint. Reducing the frequency the endpoint returns should allow the map to return.
+
+### Issue: Maps not appearing as expected
+
+For cartographer, only `2D SLAM` is implemented currently. Because of this, cartographer assumes your LiDAR will remain at roughly the same height while in use. If maps are not building the way you expect, ensure your lidar is secure and at roughly the same height throughout the run.
 
 ## Additional Troubleshooting
 
