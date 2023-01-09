@@ -335,7 +335,7 @@ The following setup allows you to run Cartographer in offline mode using either 
 
 ### The dataset
 
-In offline mode, SLAM will use an existing dataset to create a map. To enable offline mode, set the **use_live_data** flag to **false**. This tells the slam service to only use data found within the data directory you specified in your config.
+In offline mode, SLAM will use an existing dataset to create a map.
 
 You might have an lidar dataset already saved in your `data_dir/data` directory from running SLAM in live mode.
 If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-old-office-small-pcd.zip" target="_blank">Viam Old Office - Cartographer</a>.
@@ -359,7 +359,7 @@ Now you're ready to configure SLAM to use your dataset and to run in offline mod
 
 ### Configuration using Viam
 
-Next, we will add SLAM to the configuration.
+Next, we will add SLAM to the configuration. To enable offline mode, we will set the **use_live_data** flag to **false**. This tells the slam service to only use data found within the data directory you specified in your config.
 
 First, `ssh` into your Pi and find out your home directory by typing `pwd`
 This is an example of what you might see:
