@@ -63,7 +63,7 @@ type: "docs"
 - [Viam's Fleet Management](./product-overviews/fleet-management/)
 - [Using Viam's SDKs as a Client Application](./product-overviews/sdk-as-client/)
 - [Viam's Data Management Platform](./product-overviews/data-management/)
-- [Extending Viam with custom resources](./product-overviews/extending-viam)
+- [Extend Viam with custom resources](./product-overviews/extending-viam)
 
 ## Tutorials
 
