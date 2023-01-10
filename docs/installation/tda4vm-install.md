@@ -13,17 +13,13 @@ The TDA4VM board is designed for high-performance processing, performing up to 8
 ## Texas Instruments Resources
 
 * Product Page
-(Spec sheet and Errata): 
-<a href="https://www.ti.com/product/TDA4VM" target="blank">ht<span></span>tps://www.ti.com/product/TDA4VM</a>
+(Spec sheet and Errata): <a href="https://www.ti.com/product/TDA4VM" target="blank">ht<span></span>tps://www.ti.com/product/TDA4VM</a>
 
-* Overview Page: 
-<a href="https://www.ti.com/tool/SK-TDA4VM" target="blank">ht<span></span>tps://www.ti.com/tool/SK-TDA4VM</a>
+* Overview Page: <a href="https://www.ti.com/tool/SK-TDA4VM" target="blank">ht<span></span>tps://www.ti.com/tool/SK-TDA4VM</a>
 
-* SK-TDA4VM User's Guide: 
-  <a href="https://www.ti.com/lit/ug/spruj21c/spruj21c.pdf" target="blank">ht<span></span>tps://www.ti.com/lit/ug/spruj21c/spruj21c.pdf</a>
+* SK-TDA4VM User's Guide: <a href="https://www.ti.com/lit/ug/spruj21c/spruj21c.pdf" target="blank">ht<span></span>tps://www.ti.com/lit/ug/spruj21c/spruj21c.pdf</a>
 
-* Support and Training: 
-<a href="https://www.ti.com/tool/SK-TDA4VM#support-training" target="blank">ht<span></span>tps://www.ti.com/tool/SK-TDA4VM#support-training</a>
+* Support and Training: <a href="https://www.ti.com/tool/SK-TDA4VM#support-training" target="blank">ht<span></span>tps://www.ti.com/tool/SK-TDA4VM#support-training</a>
 
 ## Downloads
 
@@ -49,13 +45,13 @@ You must extract the image from the zip file before attempting to flash the micr
 1. Insert the microSD card into a reader connected to your computer.
 1. Launch Balena Etcher.
 1. Click **Flash from File** to open the file selector.
-3. Navigate to and select the image you downloaded.
-4. Click **Select Target** to choose the storage device corresponding to your microSD card from the selector window.
-5. Click on the desired device, then click **Select** to continue.
-6. Click **Flash!**. 
+1. Navigate to and select the image you downloaded.
+1. Click **Select Target** to choose the storage device corresponding to your microSD card from the selector window.
+1. Click on the desired device, then click **Select** to continue.
+1. Click **Flash!**. 
    If you receive a warning concerning the size of the microSD card, ensure that you have inserted the proper microSD and also selected the proper device, then click, **Yes, I'm sure** to flash the board. 
    The flashing and verification process may take 10-20 minutes, depending on your system.
-7. On completion of the flashing and validation process, remove the microSD card from your computer and insert it into the TDA4VM.
+1. On completion of the flashing and validation process, remove the microSD card from your computer and insert it into the TDA4VM.
 
 {{< figure src="../img/tda4vm/completed.png" width="600px" alt="Successful image flash completion screen." title="Successful image flash completion screen." >}}
 
@@ -75,16 +71,16 @@ You must be logged in to the board to perform this section.
 
 1. Clone the TDA4VM repo: git clone https://github.com/viam-labs/tda4vm-setup.git
 1. Navigate to the setup directory: cd tda4vm-setup/
-2. Make the server setup script executable: chmod +x tda4vm-viam-setup.sh
-3. Launch the setup script: ./tda4vm-viam-setup.sh
+1. Make the server setup script executable: chmod +x tda4vm-viam-setup.sh
+1. Launch the setup script: ./tda4vm-viam-setup.sh
 1. In the Viam App, navigate to the **CONFIG** tab. 
-2. In the **Create Component** pane, enter a **Name** for the board, select "board" from the **Type** drop-down, and select "ti" from the **Model** drop-down.
-3. Click **Create Component**.
-4. Click **Save Config**.
-5. Navigate to the **SETUP** tab.
-6. Copy the command string provided in Item #1, then run the command in your terminal session to download the Viam app config to the board.
-7. Copy the command string provided in Item #2, then run the command in your terminal session to download and install the viam-server on the board.
-8. Await the connection confirmation. When the viam-server is connected, the Viam app displays:
+1. In the **Create Component** pane, enter a **Name** for the board, select "board" from the **Type** drop-down, and select "ti" from the **Model** drop-down.
+1. Click **Create Component**.
+1. Click **Save Config**.
+1. Navigate to the **SETUP** tab.
+1. Copy the command string provided in Item #1, then run the command in your terminal session to download the Viam app config to the board.
+1. Copy the command string provided in Item #2, then run the command in your terminal session to download and install the viam-server on the board.
+1. Await the connection confirmation. When the viam-server is connected, the Viam app displays:
 
 {{< figure src="../img/tda4vm/connected.png" width="300px" alt="Successful image flash completion screen." title="Successful image flash completion screen." >}}
 
