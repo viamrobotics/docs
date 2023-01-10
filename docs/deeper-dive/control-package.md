@@ -10,13 +10,24 @@ description: "The Control Package implements feedback control on an endpoint."
 ## Introduction
 
 The control package implements feedback control on an endpoint (plant).
-Users can design a control loop that monitors a process variable (PV) and compares it with a set point (SP).
-The difference between SP-PV is called the error. It is used to generate a control action to reduce this error to zero.
-Control loops are usually represented by a diagrammatic style knows as block diagram, in this representation the control loop is broken down into successive blocks or mathematical operations.
+With the control package, users can design a control loop that monitors a process variable (PV) and compares it with a set point (SP).
+The control package will generate a control action to reduce the error value between the SP and PV (*SP-PV*) to zero.
+
+Control loops are usually represented in a diagrammatic style known as a block diagram.
+Each block represents a transfer function of a component.
+In this representation, the control loop is broken down into successive "blocks".
 
 ## Example
 
-In the following example we define a control loop to control the speed of a motor. The motor has an encoder that reports the position of the motor. To obtain the speed, we must derive its position. Since measuring the position and deriving it to get the speed introduces some error, we need to apply a filter to remove that noise. We then calculate our error, SP - PV (in this particular case PV is the speed of the motor), and feed it into our PID. The PID controller does some mathematical magic gives us a value (for example, PWM) that we can feed into our endpoint.
+In the following example, a control loop is defined to control the speed of a motor.
+The motor has an encoder that reports the position of the motor.
+
+To obtain the speed, you must derive its position.
+Since measuring the position and deriving it to get the speed introduces some error, you need to apply a filter to remove that noise.
+
+We then calculate our error, (*SP-PV*) (in this particular case PV is the speed of the motor), and feed it into our PID.
+The PID controller applies a  correction to a control function, and outputs (for example, PWM) that can be given as output to the endpoint block.
+
 An important attribute of the control loop is the frequency at which it runs, basically the higher the frequency the better the control. That is, with more frequent steps, the resulting error is smaller, which translates into smaller corrections at each step of the control loop.
 
 ``` asciidoc
@@ -123,8 +134,8 @@ The Constant block outputs a constant signal. S_out = Cte
 ### Endpoint
 
 The Endpoint is a special type of block that is used to represent a plant.
-For now only DC motors with an encoder are supported as an endpoint.
-The motor_name attribute is unused for now and one should pass a Controllable interface when creating the loop.
+For now, only DC motors with an encoder are supported as an endpoint in the control package.
+The *motor_name* attribute is unused for now, and one should pass a Controllable interface when creating the loop.
 
 ``` json
 {
@@ -139,8 +150,8 @@ The motor_name attribute is unused for now and one should pass a Controllable in
 
 ### PID
 
-PID (or Proportional Integral Derivative ) is a widely used method to control a process variable.
-The PID takes an error which is equal to SP - PV, and calculate a value that can be feed back into the endpoint.
+PID (Proportional Integral Derivative) is a widely used method to control a process variable.
+The PID takes as input the error (equal to *SP - PV*), and calculates a value that can be fed back into the endpoint.
 The mathematical form of a PID is:
 
 u(t) = Kp\*e(t) + Ki\*int(e(t))\*dt + Kd\*(de(t)/dt)
@@ -151,12 +162,17 @@ Where:
 * e(t) is the error at time t
 * dt the time elapsed between two successive steps.
 
-Finding the proper gains for a PID controller can be quite difficult, there are two main approaches that one can use:
+Finding the proper gains for a PID controller can be quite difficult.
+There are two main approaches that one can use:
 
-1. **Manual Tuning** - In this case the user tries different gains values and using some visual feedback adjust them until a stable control can be achieve.
+1.**Manual Tuning** - With this approach, the user tries different gains values and, using some visual feedback, adjusts them until a stable control can be achieved.
+
 In most cases this is not a suitable way to estimate gains.
-2. **System Identification** - With System Identification we attempt the find the characteristics of plant and deduce the gains.
-Our current implementation record the step response of the plant and using the relay method estimate the ultimate gain Ku and oscillation period Tu of the plant.
+
+2.**System Identification** - With this approach, the user attempts to measure quantitative plant data and estimate the proper gains values from these characteristics.
+
+Our current implementation records the step response of the plant and uses the relay method to estimate the ultimate gain (*Ku*) and oscillation period (*Tu*) of the plant.
+
 Several methods to calculate Kp, Ki and Kd are implemented.
 
 ``` json
@@ -164,7 +180,7 @@ Several methods to calculate Kp, Ki and Kd are implemented.
     "name": "PID",
     "type": "PID",
     "attributes":{
-        "kP":0.0, # Set each gains to 0 to start the tuning process
+        "kP":0.0, # Set each gain to 0 to start the tuning process
         "kI":0.0,
         "kD":0.0,
         "limit_up":255.0, # Maximum value of the PID
@@ -196,7 +212,7 @@ Encoder to RPM converts encoder counts to rpm using ticks per rotation.
 
 ### Sum
 
-Sum blocks sums a number of Signals following a set sum\_string
+Sum blocks sum a number of Signals following a set sum\_string.
 
 ``` json
 {
@@ -211,10 +227,15 @@ Sum blocks sums a number of Signals following a set sum\_string
 
 ### Trapezoidal Velocity Profile Generator
 
-Position control of a motor can be achieve using the Trapezoidal Velocity Profile generator.
-On receipt of a newly, submitted set point, this block generates a velocity profile given the constraints set in the configuration.
-This profile can be divided in 3 phases : Acceleration, Constant Speed, and Deceleration, the generated profile is also dynamically adjusted during the deceleration phase ensuring the end position remains in the position window.
-The block also works as deadband controller when target position is reached preventing the motor moving outside the position window
+Position control of a motor can be achieved using the Trapezoidal Velocity Profile generator.
+
+On receipt of a newly submitted set point, this block generates a velocity profile given the constraints set in the configuration.
+
+This velocity profile can be divided into 3 phases: Acceleration, Constant Speed, and Deceleration
+
+The generated profile is also dynamically adjusted during the deceleration phase, ensuring the end position remains in the position window.
+
+The block also works as a deadband controller when the arget position is reached, preventing the motor from moving outside of the position window.
 
 ``` json
 "name":"trapz",
