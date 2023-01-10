@@ -44,12 +44,12 @@ After the system establishes a connection and configures your robot, the status 
 2. Click **CANCEL RESERVATION** to immediately end the rental session.
 3. Click **EXTEND RESERVATION** to extend the current session if there is time remaining and the next available rental slot is open.
 
-![alt_text](../img/try-viam/image27.png)
+![Screenshot of the Try Viam reservation management page.](../img/try-viam/reservation-management.png)
 
 You can always return to the reservation management page by clicking on the **TRY** tab.
 Clicking the timer in the top banner redirects you to the **CONTROL** tab where you can drive the robot.
 
-![alt_text](../img/try-viam/image12.png)
+![Screenshot of the top navigation bar of the Viam app with the Viam Rover time remaining indicator/button.](../img/try-viam/timer.png)
 
 ## The **CONTROL** tab
 
@@ -57,12 +57,12 @@ Upon **TRY YOUR ROBOT** you will land on the robot page for the rental rover wit
 The header contains the name of the rover, the host, and the IP address.
 The rental system randomly generates this information for each rental session:
 
-![alt_text](../img/try-viam/bannerinfo.png)
+![Screenshot of the top banner of a Try Viam rover robot page. The randomly-generated name for this rover is "solitary-voice".](../img/try-viam/bannerinfo.png)
 
 The **CONTROL** tab contains panels for each component configured on the rover: the base, the left and right motors, the web game pad, the board, and two cameras.
 The components are not displayed in any particular order and that order may vary between rovers and rentals.
 
-![alt_text](../img/try-viam/image28.png)
+![Screenshot of the component panels on the CONTROL tab of the Try Viam rover. None of them are expanded yet so they display as thin rectangles with component names and types shown.](../img/try-viam/control-panel-list.png)
 
 ### Base Control
 
@@ -71,20 +71,20 @@ Click the `viam_base` rectangle to expand the base control pane, revealing the c
 #### Camera Control (from the base panel)
 
 Selecting a camera allows you to view your Rental Rover as you move it around.
-You can choose “cam” for the front-facing camera or “overhead-cam:cam” for an overhead view of your Rover.
+You can choose “cam” for the front-facing camera or “overhead-cam:cam” for an overhead view of your rover.
 We recommend enabling both cameras so you can have a better sense of what's happening in the space.
 
-![alt_text](../img/try-viam/image10.png)
+![Screenshot of the viam_base component panel on the CONTROL tab. The Keyboard Disabled toggle is grey and not yet enabled.](../img/try-viam/initial-base-control.png)
 
-![alt_text](../img/try-viam/image5.png)
+![Screenshot of the viam_base component panel with the keyboard enabled (allowing use of the WASD keys to drive the base) and with the "cam" camera feed enabled.](../img/try-viam/enabled-base-control.png)
 
 The camera selection panel looks like this when expanded:
 
-![alt_text](../img/try-viam/image25.png)
+![Screenshot of the camera component panel of the CONTROL tab with the camera named "cam" selected and its feed displayed.](../img/try-viam/camera-expanded.png)
 
-Selecting both cams stacks the displays:
+Selecting both cameras stacks the displays:
 
-![alt_text](../img/try-viam/image9.png)
+![Screenshot showing both camera feeds stacked one above the other.](../img/try-viam/two-cams.png)
 
 Each time you show or hide a camera, **Keyboard Enabled** automatically toggles to **Keyboard Disabled**.
 
@@ -111,20 +111,20 @@ If you toggle from **KEYBOARD** to the **DISCRETE** tab, then you’ll see diffe
 In continuous movement mode you can set a speed at which the rover will move indefinitely in the specified direction.
 In discrete movement mode you can set a speed at which to move and a distance to cover before stopping.
 
-![alt_text](../img/try-viam/image29.png)
+![Screenshot of the DISCRETE tab of the viam_base component panel. Movement mode, movement type, and direction mode toggles are shown as well as a speed (mm/sec) field and a distance field (the latter of which is greyed out because the movement type toggle is set to continuous instead of discrete movement).](../img/try-viam/discrete.png)
 
 ### Camera Control (from the camera panels)
 
 Though the camera streams are accessible from the base component panel, you can also click either of the individual camera component panels in the **CONTROL** tab to view them individually and access more features.
-In these panels, you can refresh your camera at a certain frequency (live, refresh every minute, etc.) and you export screenshots from your camera streams.
+In these panels, you can refresh your camera at a certain frequency (live, refresh every minute, etc.) and you can export screenshots from your camera streams.
 
 **cam Stream**:
 
-![alt_text](../img/try-viam/image21.png)
+![Screenshot of the front-facing camera panel (for the component named "cam").](../img/try-viam/cam-panel.png)
 
 **overhead-cam:cam Stream**:
 
-![alt_text](../img/try-viam/image18.png)
+![Screenshot of the overhead camera panel (for the component named "overhead-cam").](../img/try-viam/overhead-cam-panel.png)
 
 ### Motor Control
 
