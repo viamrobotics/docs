@@ -7,7 +7,7 @@ tags: ["server", "rdk", "extending viam", "modular resources", "components", "se
 ---
 
 The Viam module system allows you to build custom resources ([components](/components) and [services](/services)) that can be seamlessly integrated into any robot running on Viam.
-Once configured, customs resources behave the same as built-in RDK resources.
+Once configured, custom resources behave the same as built-in RDK resources.
 We will refer to custom resources built and configured using the Viam module system as *modular resources* and *modules*, interchangeably.
 
 ## Viam resource basics
