@@ -61,7 +61,7 @@ The icon will not appear if there are any robots in the location.
 
 ### Sharing a location
 
-A location will always have a parent organization (the organization in which it was created). 
+A location will always have a parent organization (the organization in which it was created).
 Other members of the parent organization of a location are granted access to this location by default.
 
 There are two ways to share a location beyond its parent organization: share with all the members of an additional organization you belong to, or share a location with any other person or machine with *location secret keys*.
