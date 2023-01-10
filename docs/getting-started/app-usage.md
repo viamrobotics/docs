@@ -61,17 +61,9 @@ The icon will not appear if there are any robots in the location.
 
 ### Sharing a location
 
-There are two ways to share a location: share with all the members of an organization you belong to, or share a location with any person or machine with *location secret keys*.
+A location will always have a parent organization (the organization in which it was created). Other members of the parent organization of a location are granted access to this location by default.
 
-#### Sharing a location with a parent organization
-
-After creating a new location, look in the upper right corner of the Viam app to confirm what parent organization your new location belongs to.
-
-{{< figure src="../img/app-usage/parent-org.png" width="200px" alt="The user profile, located in the upper right-hand corner of the Viam App, displays the user's initials and the designated Parent Organization the user belongs to." title="The user profile displays the user's initials and designated Parent Organization." >}}
-
-Other members of the parent organization of a location are granted access to this location by default.
-
-If you choose to share the location with an additional organization, the location's parent organization will be designated as the *primary owner* of the location.
+There are two ways to share a location beyond its parent organization: share with all the members of an additional organization you belong to, or share a location with any other person or machine with *location secret keys*.
 
 #### Sharing a location with an additional organization
 
@@ -79,14 +71,13 @@ Share your location with another organization you belong to by selecting the org
 
 {{< figure src="../img/app-usage/add-org-drop-down.png" width="400px" alt="The Add Organization drop-down in the Viam app displays all organizations the user is a member of." title="The Add Organization drop-down displays all organizations the user is a member of." >}}
 
-
 The Viam app lists the newly added organization, along with the parent organization identified as the **primary owner**:
 
 {{< figure src="../img/app-usage/after-add-org.png" width="400px" alt="After adding another org, the Viam app lists it under the orgs that share this location list." title="The Viam app displays all orgs that share this location list." >}}
 
 #### Sharing a location using location secret keys
 
-Grant authority to access a location to any other person or machine by sharing a Location Secret Key.
+Grant authority to access a location to any other person or machine (regardless of organization membership) by sharing a location secret key.
 
 The Viam app lists the secret keys for a location in the **Location Secret Keys** drop-down:
 
@@ -96,14 +87,14 @@ Click the clipboard icon to copy a location secret key.
 
 Provide this key to allow for programmatic authentication and access to the location.
 
-You can add a new key to **Location Secret Keys** at any time, but you can only remove a key if there will be at least one other key remaining.  
+You can add a new key to **Location Secret Keys** at any time, but you can only remove a key if there will be at least one other key remaining.
 
 {{% alert title="Caution" color="caution" %}}
-Be cautious when sharing **Location Secret Keys**.
+Be cautious when using *location secret keys* in code.
 
 Do not make them publicly available, as any entity attempting to access your location who has this token will be verified for access, compromising the security of your system.
 
-Note *where* and *when* you share a key, and be aware that generating a new secret key will render all older keys invalid.
+Note *where* and *when* you utilize a key for sharing a location, and be aware that generating a new secret key will render all older keys invalid.
 {{% /alert %}}
 
 #### Share a location with Viam Support
