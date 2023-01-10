@@ -89,7 +89,7 @@ Click on the **Generate Key** button to generate a new key.
 Use this key in your code to authenticate access to the Robot or Signaling Service (App API).
 
 {{% alert title="Caution" color="caution" %}}
-Be cautious when using *location secret keys* in code.
+Be cautious when sharing *location secret keys* in your code or messages.
 
 Do not make a valid key publicly available, as any entity attempting to access your location who has this token will be authenticated, compromising the security of your system.
 
@@ -216,7 +216,7 @@ Copy the secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
 
 {{% alert title="Caution" color="caution" %}}
-Be cautious when using *robot part secret keys* in code.
+Be cautious when sharing *robot part secret keys* in your code or messages.
 
 Do not make a valid key publicly available, as any entity attempting to access your robot who has this token will be authenticated, compromising the security of your system.
 
