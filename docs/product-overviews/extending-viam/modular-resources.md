@@ -6,9 +6,8 @@ type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 ---
 
-The Viam module system allows you to build custom resources ([components](/components) and [services](/services)) that can be seamlessly integrated into any robot running on Viam.
+The Viam module system allows you to integrate custom resources ([components](/components) and [services](/services)) into any robot running on Viam.
 Once configured, custom resources behave the same as built-in RDK resources.
-We will refer to custom resources built and configured using the Viam module system as *modular resources* and *modules*, interchangeably.
 
 ## Viam resource basics
 
@@ -62,18 +61,16 @@ The Viam RDK handles dependency management.
 
 ### Startup
 
-RDK ensures that any configured custom resources are started alongside configured built-in resources.
-This includes ensuring that any custom APIs and models are registered (made available for use in configuration).
-Once the RDK has registered and started all modules, normal robot loading continues.
+RDK ensures that any configured modules are loaded automatically on startup, and that configured modular resource instances are started alongside configured built-in resources instances.
 
 ### Reconfiguration
 
-When you reconfigure a Viam robot (meaning, when you change its configuration), the behavior of modular resources versus built-in resources is equivalent.
-This means you can add, modify, and remove a modular resource from a running robot as normal.
+When you reconfigure a Viam robot (meaning, when you change its configuration), the behavior of modular resource instances versus built-in resource instances is equivalent.
+This means you can add, modify, and remove a modular resource instance from a running robot as normal.
 
 ### Shutdown
 
-During robot shutdown, the RDK handles modular resources similarly to built-in resources - it signals them for shutdown in topological (dependency) order.
+During robot shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
 ## Modular resources examples
 
@@ -90,23 +87,27 @@ The easiest way to get started is to:
 
 Add a modular resource to your robot configuration in three steps:
 
-1. Ensure that the modular resource can be accessed by the RDK
+1. Ensure that the module binary can be accessed by the RDK (see [Make the modular resource available to RDK](#make-the-modular-resource-available-to-rdk))
 2. Add a *module* to your robot configuration
-3. Add a *component* or *service* that references the configured module
+3. Add a *component* or *service* that references a component or service resource provided by the configured module
 
 ### Make the modular resource available to RDK
 
-In order for the RDK to manage a modular resource, the modular resource must be able to be run by the RDK.
-Therefore, you must ensure that the modular resource is executable in a location that the RDK can access.
-For example, if you are running the RDK on an Raspberry Pi you'll need to:
+In order for the RDK to manage a modular resource, the modular resource must be exposed by a module that is able to be run by the RDK.
+Therefore, you must ensure that any modular resource(s) are made available via a module binary executable in a location that the RDK can access.
+For example, if you are running the RDK on an Raspberry Pi you'll need to have an executable module on the Pi's filesystem.
 
-- Copy the modular resource code to the Pi
-- Build the modular resource to make an executable (binary)
+
+{{% alert title="Modules vs modular resources" color="tip" %}}  
+Modules are binary executables that can be managed by RDK through [module configuration](#add-a-module-to-your-robot-configuration).
+
+A configured module can make one or more modular resources available for configuration as component and/or service instances.
+{{% /alert %}}
 
 ### Add a module to your robot configuration
 
-Modular resources introduce an optional new top-level configuration block to robot configurations called *modules*.
-This allows you to instruct RDK to register and [manage](#modular-resource-management-with-the-rdk) any modular resources you'd like to use with your robot.
+The Viam module system introduces a new optional top-level configuration block to robot configurations called *modules*.
+This allows you to instruct RDK to load modules as well as register and [manage](#modular-resource-management-with-the-rdk) any modular resources made available by the module that you'd like to use with your robot.
 The RDK loads modules in the order you specify in the modules list.
 
 #### Required attributes - module
@@ -118,7 +119,7 @@ Name | Type | Default Value | Description
 
 ### Configure a component instance for a modular resource
 
-Once you have configured a modular resource as part of your robot configuration, you can instantiate any number of instances of that resource with the component or service configuration.
+Once you have configured a module as part of your robot configuration, you can instantiate any number of instances of a modular resource made availabkle by that module with the component or service configuration.
 All standard properties such as *attributes* and *depends_on* are supported for modular resources.
 In order to correctly reference a registered modular resource, you must configure the *namespace*, *type*, *name* and *model* properties.
 
@@ -162,9 +163,9 @@ This example motor implementation uses the standard (built-in) Viam motor API, b
 }
 ```
 
-## Modular resources as a remotes
+## Modular resources as remotes
 
-You can include modular resources as a [remote](/getting-started/high-level-overview/#remote) part of any configured Viam robot.
+[Remote](/getting-started/high-level-overview/#remote) parts may load their own modules and provide modular resources, just as the main part can.
 This means that you can compose a robot of any number of parts running in different compute locations, each containing both built-in and custom resources.
 
 ## Limitations
