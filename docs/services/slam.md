@@ -166,7 +166,6 @@ You can find more information on the `mode` in the description of the integrated
 | `port` | string |  (optional) Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
 | `delete_processed_data` | bool |  (optional) Setting `delete_processed_data: true` results in sensor data being deleted after it has be processed by the SLAM algorithm. This helps keep the data_directory clean after runs such as localization where the produced data does not need to be saved for future use. The default value is `true` if `use_live_data: true` and `false` if `use_live_data: false`. Setting `delete_processed_data: true` when `use_live_data: false` is invalid and will throw an error.
 
-
 If slam is being run in online mode, this parameter can be used to delete data after it has be processed by the SLAM algorithm. The default value for this is true (i.e. delete data) if running SLAM in online mode and false (i.e. don't delete data) if running SLAM in offline mode. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
 
