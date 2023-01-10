@@ -186,9 +186,6 @@ The **HISTORY** tab shows a timestamped diff view of your robot's configuration 
 ### Code Sample
 
 The **CODE SAMPLE** tab contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
-There is also a JSON stub you can copy if you wish to use this robot as a remote of another robot.
-
-{{%  snippet "secret-share.md" %}}  
 
 ### Control
 
@@ -211,6 +208,8 @@ This tab gives you the option of working on customizing your robot's functionali
 
 The **SECURITY** tab allows you to access and exchange the **Robot Part Secret Keys** of your robot.
 A *robot part secret* is a unique secret used by the robot to communicate with the cloud.
+
+{{< figure src="../img/app-usage/robot-part-secret-keys-drop-down.png" width="800px" alt="Screenshot of the SECURITY tab of a robot's page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down." title="Screenshot of the SECURITY tab of a robot's page." >}}
 
 Copy the secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
