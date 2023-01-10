@@ -205,11 +205,12 @@ Click **Go to Fancy** to return to the GUI format.
 
 ### Base Configuration
 
-Its type is “base” and its model is “wheeled”.
-The “wheel_circumference_mm” is 217.
-The “width_mm” is the distance between wheel centerlines, 260mm in this case.
 The "left" and "right" attributes represent the motors corresponding to the left and right sides of the rover.
-Since we named the motors “left” and “right”, the lists of motors for the left and right sides are simply "left", and "right", respectively.
+Since we named the motors "left" and "right", the lists of motors for the left and right sides are simply "left", and "right", respectively.
+Its type is “base” and its model is “wheeled”.
+The "wheel_circumference_mm" is 217.
+The "width_mm" is the distance between wheel centerlines, 260mm in this case.
+The "spin_slip_factor" of 1.76 is used in steering caluculations to account for slippage of the wheels against the ground while turning.
 
 **Attributes**:
 
@@ -217,6 +218,7 @@ Since we named the motors “left” and “right”, the lists of motors for th
 * **Left Motors**: left
 * **Wheel Circumference (mm)**: 217
 * **Width**: 260
+* **Spin Slip Factor**: 1.76
 
 ![Screenshot of the base configuration panel, showing right and left motors, wheel circumference set to 217 and width set to 260mm.](../img/try-viam/image36.png)
 
@@ -227,7 +229,7 @@ The **Video Path** is “video0”.
 
 For more information on choosing the correct video path, refer to our [camera configuration tutorial](/tutorials/configure-a-camera/#connect-and-configure-a-webcam).
 
-![alt_text](../img/try-viam/image33.png)
+![Screenshot of the webcam configuration panel.](../img/try-viam/camera-config.png)
 
 ### Gamepad Configuration
 
