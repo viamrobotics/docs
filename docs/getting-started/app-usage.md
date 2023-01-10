@@ -61,7 +61,8 @@ The icon will not appear if there are any robots in the location.
 
 ### Sharing a location
 
-A location will always have a parent organization (the organization in which it was created). Other members of the parent organization of a location are granted access to this location by default.
+A location will always have a parent organization (the organization in which it was created). 
+Other members of the parent organization of a location are granted access to this location by default.
 
 There are two ways to share a location beyond its parent organization: share with all the members of an additional organization you belong to, or share a location with any other person or machine with *location secret keys*.
 
@@ -83,11 +84,9 @@ The Viam app lists the secret keys for a location in the **Location Secret Keys*
 
 {{< figure src="../img/app-usage/location-secret-keys-drop-down.png" width="500px" alt="Screenshot of the list of secret keys that can grant access to a location displays in the location secret keys drop down menu of the Viam app." title="The Viam app displays the location secret keys that can be used to share a location." >}}
 
-Click the clipboard icon to copy a location secret key.
-
-Use this key in your code as an access token for the Robot or Signaling Service (App API).
-
-You can add a new key to **Location Secret Keys** at any time, but you can only remove a key if there will be at least one other key remaining.
+Copy the secret key (*authentication token*) by clicking on the clipboard icon.
+Click on the **Generate Key** button to generate a new key.
+Use this key in your code to authenticate access to the Robot or Signaling Service (App API).
 
 {{% alert title="Caution" color="caution" %}}
 Be cautious when using *location secret keys* in code.
@@ -210,12 +209,10 @@ This tab gives you the option of working on customizing your robot's functionali
 
 ### Security
 
-The **SECURITY** tab allows you to access and change the **Robot Part Secret Keys** of your robot. A *robot part secret* is a unique secret used by the robot to communicate with the cloud.
+The **SECURITY** tab allows you to access and exchange the **Robot Part Secret Keys** of your robot. A *robot part secret* is a unique secret used by the robot to communicate with the cloud.
 
 Copy the secret key (*authentication token*) by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
-
-You can add a new key to **Robot Part Secret Keys** at any time, but you can only remove a key if there will be at least one other key remaining.
 
 {{% alert title="Caution" color="caution" %}}
 Be cautious when using *robot part secret keys* in code.
