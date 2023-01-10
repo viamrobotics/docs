@@ -85,14 +85,14 @@ The Viam app lists the secret keys for a location in the **Location Secret Keys*
 
 Click the clipboard icon to copy a location secret key.
 
-Provide this key to allow for programmatic authentication and access to the location.
+Use this key in your code as an access token for the Robot or Signaling Service (App API).
 
 You can add a new key to **Location Secret Keys** at any time, but you can only remove a key if there will be at least one other key remaining.
 
 {{% alert title="Caution" color="caution" %}}
 Be cautious when using *location secret keys* in code.
 
-Do not make them publicly available, as any entity attempting to access your location who has this token will be verified for access, compromising the security of your system.
+Do not make a valid key publicly available, as any entity attempting to access your location who has this token will be authenticated, compromising the security of your system.
 
 Note *where* and *when* you utilize a key for sharing a location, and be aware that generating a new secret key will render all older keys invalid.
 {{% /alert %}}
@@ -207,3 +207,20 @@ Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
 This tab gives you the option of working on customizing your robot's functionality by using Viam’s block-based coding editor which implements Blockly and Python.
+
+### Security
+
+The **SECURITY** tab allows you to access and change the **Robot Part Secret Keys** of your robot. A *robot part secret* is a unique secret used by the robot to communicate with the cloud.
+
+Copy the secret key (*authentication token*) by clicking on the clipboard icon.
+Click on the **Generate Key** button to generate a new key.
+
+You can add a new key to **Robot Part Secret Keys** at any time, but you can only remove a key if there will be at least one other key remaining.
+
+{{% alert title="Caution" color="caution" %}}
+Be cautious when using *robot part secret keys* in code.
+
+Do not make a valid key publicly available, as any entity attempting to access your robot who has this token will be authenticated, compromising the security of your system.
+
+Note *where* and *when* you share a robot part secret key, and be aware that generating a new secret key will render all older keys invalid.
+{{% /alert %}}
