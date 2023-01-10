@@ -133,15 +133,15 @@ We named these motors “left” and “right” corresponding to their location
 Their initial state is **Idle**.
 You can click on the each panel and make your motor **RUN** or **STOP**.
 
-![alt_text](../img/try-viam/image6.png)
+![Screenshot of the left and right motor panels on the CONTROL tab.](../img/try-viam/left-right-panels.png)
 
 The left motor running at 45% power would look like this:
 
-![alt_text](../img/try-viam/image24.png)
+![Screenshot of the left motor control panel in Go mode with Direction of Rotation set to Forwards and Power Percent set to 45.](../img/try-viam/45-percent.png)
 
 Both motors running at the same time would look like this:
 
-![alt_text](../img/try-viam/image7.png)
+![Screenshot of the left and right motor control panels. A green "Running" icon is displayed on the upper right of both motor panels, and a "Position" indicator displays non-zero positions for both motors.](../img/try-viam/motors-running.png)
 
 In these panels, you can change the motors’ direction of rotation (which will cause them to go forward or backwards), and their power levels (which will cause them to go faster or slower).
 You can also see their current positions (based on encoder readings) in real time.
@@ -152,7 +152,7 @@ You will see a panel for a board component named "local".
 The Viam Rover's board is a Raspberry Pi.
 The board panel allows the user to get and set the states of individual GPIO pins on the board.
 
-![Screenshot of the board panel in the CONTROL tab, including fields to get and set GPIO pin states.](../img/try-viam/image11.png)
+![Screenshot of the board panel in the CONTROL tab, including fields to get and set GPIO pin states.](../img/try-viam/board-panel.png)
 
 #### Web Gamepad Control
 
@@ -162,11 +162,11 @@ You can find more information on the [WebGamepad in the Input Controller topic](
 
 **Disabled**:
 
-<img src="/tutorials/img/try-viam/image26.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller disabled position." width="50%"><br>
+<img src="/tutorials/img/try-viam/gamepad-disabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller disabled position." width="50%"><br>
 
 **Enabled**:
 
-<img src="/tutorials/img/try-viam/image8.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller enabled position." width="50%"><br>
+<img src="/tutorials/img/try-viam/gamepad-enabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller enabled position." width="50%"><br>
 
 ## Learning about robot configuration
 
@@ -176,7 +176,7 @@ One other thing you can do within your experience is see your configuration.
 On the Viam app, navigate to the **COMPONENTS** subtab, under **CONFIG**.
 There you can view each component in the robot and obtain more information about their configuration such as their attributes, component dependencies, pin assignments, etc.:
 
-![Screenshot of the CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](../img/try-viam/image32.png)
+![Screenshot of the CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](../img/try-viam/config-builder.png)
 
 ### Board Configuration
 
@@ -188,9 +188,9 @@ We named it "local" and configured it with **Type** "board" and **Model** "pi" (
 The encoders on the right and left motors are named, respectively, “Renc” and “Lenc”.
 They must be configured before the motors because the motors will depend on the encoders.
 
-![alt_text](../img/try-viam/image1.png)
+![Screenshot of the right encoder config panel with the board attribute set to "local" and the pins struct containing "i" set to "re".](../img/try-viam/right-encoder.png)
 
-![alt_text](../img/try-viam/image4.png)
+![Screenshot of the left encoder config panel.](../img/try-viam/left-encoder.png)
 
 ### Motor Configuration
 
@@ -220,7 +220,7 @@ The "spin_slip_factor" of 1.76 is used in steering caluculations to account for 
 * **Width**: 260
 * **Spin Slip Factor**: 1.76
 
-![Screenshot of the base configuration panel, showing right and left motors, wheel circumference set to 217 and width set to 260mm.](../img/try-viam/image36.png)
+![Screenshot of the base configuration panel, showing right and left motors, wheel circumference set to 217 and width set to 260mm.](../img/try-viam/base-config.png)
 
 ### Camera Configuration
 
@@ -229,14 +229,14 @@ The **Video Path** is “video0”.
 
 For more information on choosing the correct video path, refer to our [camera configuration tutorial](/tutorials/configure-a-camera/#connect-and-configure-a-webcam).
 
-![Screenshot of the webcam configuration panel.](../img/try-viam/camera-config.png)
+![Screenshot of the webcam configuration panel. The video path is set to "video0".](../img/try-viam/camera-config.png)
 
 ### Gamepad Configuration
 
 The final component is the web gamepad.
 The gamepad has a **Type** of “input_controller” and the **Model** is "webgamepad".
 
-![alt_text](../img/try-viam/image14.png)
+![Screenshot of the gamepad configuration panel. No attributes are configured.](../img/try-viam/gamepad-config.png)
 
 If you connect a generic gamepad controller to your computer, you can use it to control your robot.
 The gamepad requires a service to function, though.
@@ -253,7 +253,7 @@ The **SERVICES** subtab contains the “Base Remote Control” service which use
 
 The names for **base** and **input_controller** correspond to the naming scheme from the **COMPONENTS** tab.
 
-![alt_text](../img/try-viam/image3.png)
+![Screenshot of the base remote control service named "base_rc" on the Services sub-tab of the CONFIG tab.](../img/try-viam/base-rc.png)
 
 ### Raw JSON
 
@@ -261,7 +261,7 @@ So far we've been viewing our rover configuration in 'Builder' mode.
 This interface provides a user-friendly, guided experience, but ultimately, Viam robot configuration is output as JSON.
 You can view the complete JSON for your rover by clicking on **Raw JSON** at the top left of the **CONFIG** tab.
 
-![alt_text](../img/try-viam/image13.png)
+![Screenshot of the CONFIG tab with the mode toggled to Raw JSON. A section of the full raw JSON config is displayed but one would have to scroll to see all of it.](../img/try-viam/raw-json.png)
 
 To copy the config, click anywhere in the JSON and press **Ctrl+A** and then **Ctrl+C** on Windows or Linux platforms, or **CMD+A** and then **CMD+C** on macOS.
 
@@ -276,7 +276,7 @@ You can click **TRY NOW** to rent the rover again if no one is in the queue.
 
 The system provides an alert when your session is over.
 
-![alt_text](../img/try-viam/image12.png)
+![A screenshot from the Try Viam robot page that reads "Time is up! You can always request to play with the rover again."](../img/try-viam/end-of-session.png)
 
 Your rover rental location now contains your robot with the final configuration from the now ended session.
 
