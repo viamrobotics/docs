@@ -84,7 +84,7 @@ The Viam app lists the secret keys for a location in the **Location Secret Keys*
 
 {{< figure src="../img/app-usage/location-secret-keys-drop-down.png" width="500px" alt="Screenshot of the list of secret keys that can grant access to a location displays in the location secret keys drop down menu of the Viam app." title="The Viam app displays the location secret keys that can be used to share a location." >}}
 
-Copy the secret key (*authentication token*) by clicking on the clipboard icon.
+Copy the secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
 Use this key in your code to authenticate access to the Robot or Signaling Service (App API).
 
@@ -209,9 +209,10 @@ This tab gives you the option of working on customizing your robot's functionali
 
 ### Security
 
-The **SECURITY** tab allows you to access and exchange the **Robot Part Secret Keys** of your robot. A *robot part secret* is a unique secret used by the robot to communicate with the cloud.
+The **SECURITY** tab allows you to access and exchange the **Robot Part Secret Keys** of your robot.
+A *robot part secret* is a unique secret used by the robot to communicate with the cloud.
 
-Copy the secret key (*authentication token*) by clicking on the clipboard icon.
+Copy the secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
 
 {{% alert title="Caution" color="caution" %}}
