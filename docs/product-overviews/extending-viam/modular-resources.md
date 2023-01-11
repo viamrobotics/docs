@@ -97,7 +97,6 @@ In order for the RDK to manage a modular resource, the modular resource must be 
 Therefore, you must ensure that any modular resource(s) are made available via a module binary executable in a location that the RDK can access.
 For example, if you are running the RDK on an Raspberry Pi you'll need to have an executable module on the Pi's filesystem.
 
-
 {{% alert title="Modules vs modular resources" color="tip" %}}  
 Modules are binary executables that can be managed by RDK through [module configuration](#add-a-module-to-your-robot-configuration).
 
