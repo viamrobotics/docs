@@ -35,7 +35,7 @@ The Viam platform manages:
 
 For more detail, see the [modular resources documentation](/product-overviews/extending-viam/modular-resources/).
 
-## Using a Viam SDK as a server to create a custom component
+## Use a Viam SDK as a server to create a custom component
 
 Currently, modular resources are supported only with the Viam [Go SDK](https://pkg.go.dev/go.viam.com/rdk).
 If you are not using the Go SDK, you can add custom components using the Viam SDK of your choice to create a [server component implementation](/product-overviews/extending-viam/sdk-as-server/).
