@@ -100,7 +100,7 @@ For example, if you are running the RDK on an Raspberry Pi you'll need to have a
 {{% alert title="Modules vs modular resources" color="tip" %}}  
 Modules are binary executables that can be managed by RDK through [module configuration](#add-a-module-to-your-robot-configuration).
 
-A configured module can make one or more modular resources available for configuration as component and/or service instances.
+A configured module can make one or more modular resources available for configuration as a component and/or service instances.
 {{% /alert %}}
 
 ### Add a module to your robot configuration
