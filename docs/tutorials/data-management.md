@@ -29,10 +29,6 @@ In this tutorial, we will cover the basics of using Viam's Data Management servi
 
 ### Prerequisites
 
-{{% alert title="Warning" color="warning" %}}
-Currently, you can only access the data from the Viam Rover if you are in an organization you created. If you have been added to an organization, add a new [organization](https://app.viam.com/organizations) before continuing.
-{{% /alert %}}
-
 We recommend that you use the <a href="https://app.viam.com/try" target="_blank">Try Viam Rover</a> as a quick way to get started and to try out Viam's Data Manager.
 You can learn more about the Try Viam experience at [docs.viam.com/tutorials/try-viam/](/tutorials/try-viam/), and you can sign up for a 15 minute reservation slot at <a href="https://app.viam.com/try" target="_blank">app.viam.com/try</a>.
 
