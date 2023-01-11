@@ -34,7 +34,7 @@ You can see built-in Viam resource APIs in the [Viam API GitHub repository](http
 
 Viam APIs are uniquely namespaced, with each resource type represented as a *colon-delimited-triplet*.  
 For example, the built-in component type *camera*'s namespace is __rdk:component:camera__.
-The built-in service type *vision*'s namespace is __rdk:service:vision__
+The built-in service type *vision*'s namespace is __rdk:service:vision__.
 
 ### Models
 
