@@ -134,7 +134,7 @@ Name | Type | Default Value | Description
 ## Configuration example - custom motor
 
 The following example configuration illustrates how you can configure a robot that uses a custom motor implementation.
-This example motor implementation uses the standard (built-in) Viam motor API, but registers and uses a custom model __viam-contributor:motor:super-custom__
+This example motor implementation uses the built-in Viam motor API, but registers and uses a custom model __viam-contributor:motor:super-custom__.
 
 ``` json
 {
