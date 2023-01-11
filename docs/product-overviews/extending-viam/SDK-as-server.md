@@ -1,6 +1,6 @@
 ---
 title: "Use SDKs to extend Viam"
-linkTitle: "Custom resources with SDKs"
+linkTitle: "Custom Resources with SDKs"
 weight: 99
 type: "docs"
 tags: ["server", "sdk"]
