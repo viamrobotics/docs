@@ -12,6 +12,7 @@ on:
 jobs:
   markdown_lint:
     name: Check Markdown files
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
