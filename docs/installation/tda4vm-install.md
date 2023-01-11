@@ -1,27 +1,15 @@
 ---
 title: "TI TDA4VM Setup Guide"
-linkTitle: "TDA4VM Setup Guide"
+linkTitle: "TDA4VM Setup"
 weight: 25
 type: "docs"
 description: "A guide to imaging a TDA4VM, installing viam-server, and syncing the TDA4VM with the Viam app."
 # Doc contact - Mike
 ---
-## Overview
 
-The TDA4VM board is designed for high-performance processing, performing up to 8 trillion operations per second. It provides multiple interfaces, including USB 3.0, CAN-FD, UART (over USB), M.2 Keys E and M, as well as multi-camera support via CSI-2 (R-Pi compatible) and a 40-pin Semtec connector that supports up to eight cameras (requires a TIDA-01413 sensor fusion add-on).
+## Required downloads
 
-## Texas Instruments Resources
-
-* Product Page
-(Spec sheet and Errata): <a href="https://www.ti.com/product/TDA4VM" target="blank">ht<span></span>tps://www.ti.com/product/TDA4VM</a>
-
-* Overview Page: <a href="https://www.ti.com/tool/SK-TDA4VM" target="blank">ht<span></span>tps://www.ti.com/tool/SK-TDA4VM</a>
-
-* SK-TDA4VM User's Guide: <a href="https://www.ti.com/lit/ug/spruj21c/spruj21c.pdf" target="blank">ht<span></span>tps://www.ti.com/lit/ug/spruj21c/spruj21c.pdf</a>
-
-* Support and Training: <a href="https://www.ti.com/tool/SK-TDA4VM#support-training" target="blank">ht<span></span>tps://www.ti.com/tool/SK-TDA4VM#support-training</a>
-
-## Downloads
+You will need to download the following files to your computer:
 
 Download the <a href="https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-SK-TDA4VM" target="_blank">PROCESSOR-SDK-LINUX-SK-TDA4VM — Linux SDK for edge AI applications on TDA4VM Jacinto™ processors</a>[^image] image.
 
@@ -33,11 +21,14 @@ Next, download and install the <a href="https://github.com/balena-io/etcher/rele
 
 You will use the Balena Etcher to flash the micro-SD card.
 
-## Flashing the Image
+## Flashing the image
 
-
-{{% alert="Note" color="note" %}}
+{{% alert title="Note" color="note" %}}
 You must extract the image from the zip file before attempting to flash the microSD card.
+{{% /alert %}}
+
+{{% alert title="Note" color="note" %}}
+If you intend to perform video capture or use the Data Management service, you may need a higher capacity microSD card to hold the cached video or data. Otherwise, a 16GB microSD is sufficient to hold the linux board image and the viam-server. 
 {{% /alert %}}
 
 {{< figure src="../img/tda4vm/etcher.png" width="600px" alt="The Balena Etcher interface." title="The Balena Etcher interface." >}}
@@ -57,34 +48,37 @@ You must extract the image from the zip file before attempting to flash the micr
 
 ## Installing Viam Server on the TDA4VM
 
-### External Connection and Login
+### External connection and login
 
-1. Connect the ethernet, hdmi, and USB-C power cables to the board. 
+1. Connect the ethernet, HDMI, and USB-C power cables to the board.
 
 2. Use the credentials and IP address displayed in the upper right-hand corner of the monitor to SSH into the board:
 
 {{< figure src="../img/tda4vm/welcomescreen.png" width="600px" alt="TI Welcome Screen." title="TI Welcome Screen." >}}
 
-## Installing Viam-Server
+### Installing viam-server
 
-You must be logged in to the board to perform this section.
+Login to the board using SSH to complete this section.
 
-1. Clone the TDA4VM repo: git clone https://github.com/viam-labs/tda4vm-setup.git
-1. Navigate to the setup directory: cd tda4vm-setup/
-1. Make the server setup script executable: chmod +x tda4vm-viam-setup.sh
-1. Launch the setup script: ./tda4vm-viam-setup.sh
-1. In the Viam App, navigate to the **CONFIG** tab. 
-1. In the **Create Component** pane, enter a **Name** for the board, select "board" from the **Type** drop-down, and select "ti" from the **Model** drop-down.
-1. Click **Create Component**.
-1. Click **Save Config**.
-1. Navigate to the **SETUP** tab.
-1. Copy the command string provided in Item #1, then run the command in your terminal session to download the Viam app config to the board.
-1. Copy the command string provided in Item #2, then run the command in your terminal session to download and install the viam-server on the board.
-1. Await the connection confirmation. When the viam-server is connected, the Viam app displays:
+<OL>
+<li>Clone the TDA4VM repo:<br>
+<file>git clone https://github.com/viam-labs/tda4vm-setup.git</file></li>
+<li>Navigate to the setup directory:<br> <file>cd tda4vm-setup/</file> </li>
+<li>Make the server setup script executable:<br> <file>chmod +x tda4vm-viam-setup.sh</file> </li>
+<li>Launch the setup script:<br> <file>./tda4vm-viam-setup.sh </file></li>
+<li>In the Viam App, navigate to the <strong>CONFIG</strong> tab. </li>
+<li>In the <strong>Create Component</strong> pane, enter a <strong>Name</strong> for the board, select "board" from the <strong>Type</strong> drop-down, and select "ti" from the <strong>Model</strong> drop-down.</li>
+<li>Click <strong>Create Component</strong>.</li>
+<li>Click <strong>Save Config</strong>.</li>
+<li>Navigate to the <strong>SETUP</strong> tab.</li>
+<li>Copy the command string provided in <strong>Item #1</strong>, then run the command in your terminal session to download the Viam app config to the board.</li>
+<li>Copy the command string provided in <strong>Item #2</strong>, then run the command in your terminal session to download and install the viam-server on the board.</li>
+<li>Await the connection confirmation. When the viam-server is connected, the Viam app displays a successful image flash completion screen:
+</ol>
 
-{{< figure src="../img/tda4vm/connected.png" width="300px" alt="Successful image flash completion screen." title="Successful image flash completion screen." >}}
+{{< figure src="../img/tda4vm/connected.png" width="282px" alt="Successful image flash completion screen." title="Successful image flash completion screen.">}}
 
-## Restarting the Server
+### Restarting the server
 
 After SSHing into the board, run:
 
@@ -96,6 +90,6 @@ to restart the viam-server if necessary, or click **Restart** in the Viam App.
 
 Now that you have viam-server up and running on your TDA4VM, you can start configuring your robot and the real fun can begin!
 
-## Need Assistance?
+## Need assistance?
 
 You can ask questions on the [Viam Community Slack](http://viamrobotics.slack.com) and we will be happy to help.
