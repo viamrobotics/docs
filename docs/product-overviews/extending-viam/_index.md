@@ -15,7 +15,7 @@ Viam's [Robot Development Kit (RDK)](/product-overviews/rdk/) provides built-in 
 - High-level functionality exposed as [services](/services).
 
 Many robots can be composed entirely of these resources.
-However, sometimes you may encounter a hardware component that is not natively supported by Viam's RDK.
+However, sometimes you may have a hardware component that Viam's RDK does not natively support.
 In other cases, you may want to add new functionality to a component or expose a custom service securely through the Viam API and corresponding SDKs.
 
 Viam can be extended in these and other ways with the creation and usage of custom resources.
