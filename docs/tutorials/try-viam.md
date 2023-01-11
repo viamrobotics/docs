@@ -57,7 +57,7 @@ Upon **TRY YOUR ROBOT** you will land on the robot page for the rental rover wit
 The header contains the name of the rover, the host, and the IP address.
 The rental system randomly generates this information for each rental session:
 
-![Screenshot of the top banner of a Try Viam rover robot page. The randomly-generated name for this rover is "solitary-voice".](../img/try-viam/bannerinfo.png)
+![Screenshot of the top banner of a Try Viam rover robot page. The randomly generated name for this rover is "solitary-voice".](../img/try-viam/bannerinfo.png)
 
 The **CONTROL** tab contains panels for each component configured on the rover: the base, the left and right motors, the web game pad, the board, and two cameras.
 The components are not displayed in any particular order and that order may vary between rovers and rentals.
@@ -162,11 +162,11 @@ You can find more information on the [WebGamepad in the Input Controller topic](
 
 **Disabled**:
 
-<img src="/tutorials/img/try-viam/gamepad-disabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller disabled position." width="50%"><br>
+<img src="../tutorials/img/try-viam/gamepad-disabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller disabled position." width="50%"><br>
 
 **Enabled**:
 
-<img src="/tutorials/img/try-viam/gamepad-enabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller enabled position." width="50%"><br>
+<img src="../tutorials/img/try-viam/gamepad-enabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller enabled position." width="50%"><br>
 
 ## Learning about robot configuration
 
@@ -210,7 +210,7 @@ Since we named the motors "left" and "right", the lists of motors for the left a
 Its type is “base” and its model is “wheeled”.
 The "wheel_circumference_mm" is 217.
 The "width_mm" is the distance between wheel centerlines, 260mm in this case.
-The "spin_slip_factor" of 1.76 is used in steering caluculations to account for slippage of the wheels against the ground while turning.
+The "spin_slip_factor" of 1.76 is used in steering calculations to account for slippage of the wheels against the ground while turning.
 
 **Attributes**:
 
@@ -220,7 +220,7 @@ The "spin_slip_factor" of 1.76 is used in steering caluculations to account for 
 * **Width**: 260
 * **Spin Slip Factor**: 1.76
 
-![Screenshot of the base configuration panel, showing right and left motors, wheel circumference set to 217 and width set to 260mm.](../img/try-viam/base-config.png)
+![Screenshot of the base configuration panel, showing right and left motors, wheel circumference set to 217, width set to 260mm, and spin slip factor set to 1.76.](../img/try-viam/base-config.png)
 
 ### Camera Configuration
 
