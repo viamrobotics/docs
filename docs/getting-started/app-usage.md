@@ -65,9 +65,9 @@ A location will always have a parent organization (the organization in which it 
 Other members of the parent organization of a location are granted access to this location by default.
 
 There are two ways to share a location beyond its parent organization:
+
 - Share with all the members of an additional organization you belong to
 - Share programmatic access to a location with *location secret keys*.
-
 
 #### Sharing a location with an additional organization
 
@@ -82,7 +82,6 @@ The Viam app lists the newly added organization, along with the parent organizat
 #### Sharing a location using location secret keys
 
 Programmatic access to a location may be granted by sharing a location secret key.
-
 
 The Viam app lists the secret keys for a location in the **Location Secret Keys** drop-down:
 
