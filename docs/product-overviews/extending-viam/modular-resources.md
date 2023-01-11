@@ -118,7 +118,7 @@ Name | Type | Default Value | Description
 
 ### Configure a component instance for a modular resource
 
-Once you have configured a module as part of your robot configuration, you can instantiate any number of instances of a modular resource made availabkle by that module with the component or service configuration.
+Once you have configured a module as part of your robot configuration, you can instantiate any number of instances of a modular resource made available by that module with the component or service configuration.
 All standard properties such as *attributes* and *depends_on* are supported for modular resources.
 In order to correctly reference a registered modular resource, you must configure the *namespace*, *type*, *name*, and *model* properties.
 
