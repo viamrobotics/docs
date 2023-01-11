@@ -1,5 +1,5 @@
 ---
-title: "Using SDKs to extend Viam"
+title: "Use SDKs to extend Viam"
 linkTitle: "Custom resources with SDKs"
 weight: 99
 type: "docs"
