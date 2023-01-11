@@ -64,7 +64,10 @@ The icon will not appear if there are any robots in the location.
 A location will always have a parent organization (the organization in which it was created).
 Other members of the parent organization of a location are granted access to this location by default.
 
-There are two ways to share a location beyond its parent organization: share with all the members of an additional organization you belong to, or share a location with any other person or machine with *location secret keys*.
+There are two ways to share a location beyond its parent organization:
+- Share with all the members of an additional organization you belong to
+- Share programmatic access to a location with *location secret keys*.
+
 
 #### Sharing a location with an additional organization
 
@@ -78,7 +81,8 @@ The Viam app lists the newly added organization, along with the parent organizat
 
 #### Sharing a location using location secret keys
 
-Grant authority to access a location to any other person or machine (regardless of organization membership) by sharing a location secret key.
+Programmatic access to a location may be granted by sharing a location secret key.
+
 
 The Viam app lists the secret keys for a location in the **Location Secret Keys** drop-down:
 
