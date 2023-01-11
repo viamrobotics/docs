@@ -1,6 +1,6 @@
 ---
 title: "Extend Viam with custom components and services"
-linkTitle: "Extending Viam"
+linkTitle: "Extend Viam"
 weight: 60
 simple_list: true
 type: docs
