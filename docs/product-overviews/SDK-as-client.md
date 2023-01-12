@@ -1,7 +1,7 @@
 ---
 title: "Using Our SDKs for a Client Application"
-linkTitle: "SDKs as Client"
-weight: 99
+linkTitle: "SDKs"
+weight: 20
 type: "docs"
 description: "An introduction to Viam's SDKs and how to use them to access and control your robot."
 tags: ["client", "sdk"]

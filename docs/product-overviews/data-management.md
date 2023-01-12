@@ -1,7 +1,7 @@
 ---
 title: "Data Management"
 linkTitle: "Data Management"
-weight: 99
+weight: 20
 type: "docs"
 tags: ["data", "data management", "services"]
 # SME: Alexa Greenberg
