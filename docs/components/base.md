@@ -337,9 +337,9 @@ await myBase.spin(angle=10, velocity=1)
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- [angleDeg (float64)](https://pkg.go.dev/builtin#float64): The angle to spin in degrees.
+- [*angleDeg* (float64)](https://pkg.go.dev/builtin#float64): The angle to spin in degrees.
 Negative implies backwards.
-- [degsPerSec (float64)](https://pkg.go.dev/builtin#float64): The angular velocity at which to spin in degrees per second.
+- [*degsPerSec* (float64)](https://pkg.go.dev/builtin#float64): The angular velocity at which to spin in degrees per second.
 Negative implies backwards.
 - [extra (map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
