@@ -62,8 +62,8 @@ type: "docs"
 - [Overview of Viam-Server and RDK](./product-overviews/rdk/)
 - [Viam's Fleet Management](./product-overviews/fleet-management/)
 - [Using Viam's SDKs as a Client Application](./product-overviews/sdk-as-client/)
-- [Using Viam's SDKs for a Server Hardware Implementation](./product-overviews/sdk-as-server/)
 - [Viam's Data Management Platform](./product-overviews/data-management/)
+- [Extend Viam with custom resources](./product-overviews/extending-viam)
 
 ## Tutorials
 
