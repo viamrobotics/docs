@@ -162,7 +162,8 @@ To be calibrated by the user.
 ## Implementation
 
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
-<!-- [go.viam.com/rdk/components/base] -->
+
+[Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk)
 
 ## API
 
@@ -170,14 +171,10 @@ The base component supports the following methods:
 
 | Method Name                   | Golang                 | Python                              | Description                                                            |
 | ----------------------------- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------- |
-[MoveStraight] (#movestraight)  | [MoveStraight] [go_base]  |  [move_straight] [python_move_straight] | Move the base in a straight line across he given distance at the given velocity. |
-
-[Spin] (#spin) |  [Spin] [go_base] | [spin] [python_spin] | Move the base to the given angle, at the given angular velocity. |
-
-[SetPower](#setpower) | [SetPower] [go_base] | [set_power] [python_set_power] | Set the linear velocity power and angular velocity power of the base. |
-
-[SetVelocity](#setvelocity) | [SetVelocity][go_base] | [set_velocity] [python_set_velocity] | Set the linear velocity and angular velocity of the base. |
-
+[MoveStraight](#movestraight)  | [MoveStraight][go_base]  |  [move_straight][python_move_straight] | Move the base in a straight line across the given distance at the given velocity. |
+[Spin](#spin) |  [Spin][go_base] | [spin][python_spin] | Move the base to the given angle at the given angular velocity. |
+[SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the linear velocity power and angular velocity power of the base. |
+[SetVelocity](#setvelocity) | [SetVelocity][go_base] | [set_velocity][python_set_velocity] | Set the linear velocity and angular velocity of the base. |
 [Stop](#stop) | [Stop][go_base] | [stop][python_stop] | Stop the base. |
 
 [go_base]: https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/base#Base
@@ -245,31 +242,31 @@ func main() {
 
 ### MoveStraight
 
-Requests the base to move in a straight line across the given distance (in millimeters) at the given velocity (in millimeters per second).
+Requests the base to move in a straight line across the given distance (*mm*) at the given velocity (*mm/sec*).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- distance (int): The distance to move the base (in millimeters).
-Negative means backwards.
-- velocity (float): The velocity (in millimeters per second) at which to move the base.
-Negative means backwards.
+- [*distance* (int)](https://docs.python.org/3/library/functions.html#int): The distance to move in millimeters.
+Negative implies backwards.
+- [*velocity* (float)](https://docs.python.org/3/library/functions.html#float): The velocity at which to move in millimeters per second.
+Negative implies backwards.
 
 **Returns:**
 
 - None
 
-[Python SDK move_straight Documentation](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight)
+[Python SDK Docs: **move_straight**](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight)
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
-# Move the base 10mm at a velocity of 1 mm/s, forward
+# Move the base 10 mm at a velocity of 1 mm/s, forward
 await myBase.move_straight(distance=10, velocity=1)
 
-# Move the base 10mm at a velocity of -1 mm/s, backward
+# Move the base 10 mm at a velocity of -1 mm/s, backward
 await myBase.move_straight(distance=10, velocity=-1)
 ```
 
@@ -279,17 +276,17 @@ await myBase.move_straight(distance=10, velocity=-1)
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- distanceMm (int): The distance to move the base (in millimeters).
-Negative means backwards.
-- mmPerSec (float64): The velocity (in millimeters per second) at which to move the base.
-Negative means backwards.
-- extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
+- [*distanceMm* (int)](https://pkg.go.dev/builtin#int): The distance to move the base in millimeters.
+Negative implies backwards.
+- [*mmPerSec* (float64)](https://pkg.go.dev/builtin#float64): The velocity at which to move the base in millimeters per second.
+Negative implies backwards.
+- [extra (map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [error](https://pkg.go.dev/builtin#error): An error if one occurred.
+- [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK MoveStraight Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+[Go SDK Docs: **MoveStraight**](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
@@ -297,10 +294,10 @@ if err != nil {
   logger.Fatalf("cannot get base: %v", err)
 }
 
-// Move the base 10mm at a velocity of 1 mm/s, forward
+// Move the base 10 mm at a velocity of 1 mm/s, forward
 myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: 1)
 
-// Move the base 10mm at a velocity of -1 mm/s, backward
+// Move the base 10 mm at a velocity of -1 mm/s, backward
 myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: -1)
 ```
 
@@ -309,23 +306,23 @@ myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: -1)
 
 ### Spin
 
-Requests the base to move in a spinning motion, rotating from its origin to the given angle (in degrees) at the given angular velocity (in degrees per second).
+Requests the base to move in a spinning motion, rotating from its origin to the given angle (*degrees*) at the given angular velocity (*degrees/sec*).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- angle (float): The angle (in degrees) to spin.
-Negative means backwards.
-- velocity (float): The angular velocity (in degrees per second) at which to spin.
-Negative means backwards.
+- [*angle* (float)](https://docs.python.org/3/library/functions.html#float): The angle to spin in degrees.
+Negative implies backwards.
+- [*velocity* (float)](https://docs.python.org/3/library/functions.html#float): The angular velocity at which to spin in degrees per second.
+Negative implies backwards.
 
 **Returns:**
 
 - None
 
-[Python SDK spin Documentation](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin)
+[Python SDK Docs: **spin**](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin)
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
@@ -340,17 +337,17 @@ await myBase.spin(angle=10, velocity=1)
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- angleDeg (float64): The angle (in degrees) to spin.
-Negative means backwards.
-- degsPerSec (float64): The angular velocity (in degrees per second) at which to spin.
-Negative means backwards.
-- extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
+- [angleDeg (float64)](https://pkg.go.dev/builtin#float64): The angle to spin in degrees.
+Negative implies backwards.
+- [degsPerSec (float64)](https://pkg.go.dev/builtin#float64): The angular velocity at which to spin in degrees per second.
+Negative implies backwards.
+- [extra (map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [error](https://pkg.go.dev/builtin#error): An error if one occurred.
+- [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK Spin Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+[Go SDK Docs: **Spin**](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
@@ -367,25 +364,25 @@ myBase.Spin(context.Background(), angleDeg: 10, degsPerSec: 1)
 
 ### SetPower
 
-Sets the linear (Vector3) and angular (Vector3) velocity power of the base component.
+Sets the linear velocity power (*%, 1- to 1*) and angular velocity power (*%, 1- to 1*) of the base component.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- linear(Vector3): The desired linear velocity power percentage (-1 to 1).
+- [*linear* (Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity power percentage (-1 to 1).
 Only the Y component of the vector is used for a wheeled base.
-Negative means backwards.
-- angular(Vector3): The desired angular velocity power percentage (-1 to 1).
+Negative implies backwards.
+- [*angular* (Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity power percentage (-1 to 1).
 Only the Z component of the vector is used for a wheeled base.
-Here, a positive value means turning left and a negative value means turning right.
+Here, a positive value implies turning left and a negative value implies turning right.
 
 **Returns:**
 
 - None
 
-[Python SDK set_power Documentation](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power)
+[Python SDK Docs: **set_power**](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power)
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
@@ -400,17 +397,19 @@ await myBase.set_power(linear=Vector3(x=0,y=-1,z=0), angular=Vector3(x=0,y=0,z=-
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- linear (r3.Vector): The desired linear velocity power percentage (-1 to 1).
-Negative mean backwards.
-- angular (r3.Vector): The desired angular velocity power percentage (-1 to 1).
-Here, a positive value means turning left, and a negative value means turning right.
-- extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
+- [*linear* (r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The linear velocity power percentage (-1 to 1).
+Only the Y component of the vector is used for a wheeled base.
+Negative implies backwards.
+- [*angular* (r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The angular velocity power percentage (-1 to 1).
+Only the Z component of the vector is used for a wheeled base.
+Here, a positive value implies turning left and a negative value implies turning right.
+- [extra (map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [error](https://pkg.go.dev/builtin#error): An error if one occurred.
+- [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK SetPower Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+[Go SDK Docs: **SetPower**](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
@@ -427,27 +426,27 @@ myBase.SetPower(context.Background(), linear: r3.Vector{Y: -1}, angular: r3.Vect
 
 ### SetVelocity
 
-Sets the linear velocity (in millimeters per second) and angular velocity (in degrees per second) of the base component.
+Sets the linear velocity (*mm/sec*) and angular velocity (*degrees/sec*) of the base.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- linear(Vector3): The desired linear velocity of the base (in mm per second).
+- [*linear* (Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity in mm per second.
 Only the Y component of the vector is used for a wheeled base.
-- angular(Vector3): The desired angular velocity of the base (in degrees per second). Only the Z component of the vector is used for a wheeled base.
+- [*angular* (Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity in degrees per second. Only the Z component of the vector is used for a wheeled base.
 
 **Returns:**
 
 - None
 
-[Python SDK set_velocity Documentation](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity)
+[Python SDK Docs: **set_velocity**](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity)
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
-# Set the angular velocity to 1 mm/sec and the linear velocity to 1 deg/sec
+# Set the angular velocity to 1 mm/sec and the linear velocity to 1 degree/sec
 await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z=1))
 ```
 
@@ -457,15 +456,15 @@ await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- linear (r3.Vector): The linear velocity in mm per second.
-- angular (r3.Vector): The angular velocity in degrees per second.
-- extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
+- [*linear* (r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The linear velocity in mm per second. Only the Y component of the vector is used for a wheeled base.
+- [*angular* (r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The angular velocity in degrees per second. Only the Z component of the vector is used for a wheeled base.
+- [extra (map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [error](https://pkg.go.dev/builtin#error): An error if one occurred.
+- [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK SetVelocity Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+[Go SDK Docs: **SetVelocity**](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
@@ -482,7 +481,7 @@ myBase.SetPower(context.Background(), linear: r3.Vector{Y: 1}, angular: r3.Vecto
 
 ### Stop
 
-Requests the base component to stop moving immediately.
+Requests the base to stop moving immediately.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -495,12 +494,12 @@ Requests the base component to stop moving immediately.
 
 - None.
 
-[Python SDK stop Documentation](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop)
+[Python SDK Docs: **stop**](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop)
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
-# Move the base forward 10mm at a velocity of 1 mm/s
+# Move the base forward 10 mm at a velocity of 1 mm/s
 await myBase.move_straight(distance=10, velocity=1)
 
 # Stop the base
@@ -513,13 +512,13 @@ await myBase.stop()
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
+- [extra (map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [error](https://pkg.go.dev/builtin#error): An error if one occurred.
+- [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK Stop Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+[Go SDK Docs: **Stop**](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
@@ -527,7 +526,7 @@ if err != nil {
   logger.Fatalf("cannot get base: %v", err)
 }
 
-// Move the base forward 10mm at a velocity of 1 mm/s
+// Move the base forward 10 mm at a velocity of 1 mm/s
 myBase.MoveStraight(context.Background(), 10, 1)
 
 // Stop the base 
