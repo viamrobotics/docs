@@ -11,7 +11,7 @@ Once configured, custom resources behave the same as built-in RDK resources.
 
 ## Viam resource basics
 
-With modular resources you can:
+With modular resources, you can:
 
 - Create new models of existing (RDK built-in) component or service types
 - Create brand new resource types
@@ -27,14 +27,14 @@ Every Viam component and service type exposes an *API*.
 This API describes the interface for the particular component or service type.
 For example, the API of built-in component type [camera](/components/camera) exposes methods such as *GetImage*, and the API of built-in service type [vision](/services/vision) exposes methods such as *GetDetectionsFromCamera*.
 
-Each API corresponds with a Viam resource and is described through [protocol buffers](https://developers.google.com/protocol-buffers).
-You can see built-in Viam resource APIs in the [Viam API GitHub repository](https://github.com/viamrobotics/api).
+Each API corresponds with a Viam resource and is described through <a href="https://developers.google.com/protocol-buffers" target="_blank">protocol buffers</a>.
+You can see built-in Viam resource APIs in the <a href="https://github.com/viamrobotics/api" target="_blank">Viam API GitHub repository</a>.
 
 [Viam SDKs](/product-overviews/sdk-as-client/) that expose these APIs are available in various programming languages and allow you to control your robots [securely from anywhere](deeper-dive/robot-to-robot-comms/).
 
 Viam APIs are uniquely namespaced, with each resource type represented as a *colon-delimited-triplet*.  
-For example, the built-in component type *camera*'s namespace is __rdk:component:camera__.
-The built-in service type *vision*'s namespace is __rdk:service:vision__
+For example, the built-in component type *camera*'s API is __rdk:component:camera__.
+The built-in service type *vision*'s API is __rdk:service:vision__
 
 ### Models
 
@@ -42,14 +42,14 @@ A model is an implementation of a resource type that implements all or some of t
 Models allow any number of versions of a given resource to be controlled with a consistent interface.
 This is powerful, because you only need to learn and code against one interface which remains the same for different models of the same component type.
 
-For example, some DC motors can be controlled with GPIO and PWM, which you can interface with in different ways depending on the attached controlling hardware.
+For example, some DC motors can be controlled with GPIO, which you can interface with in different ways depending on the attached controlling hardware.
 Other DC motors are controlled with various serial protocols.
 This is simplified with Viam, as any motor model that implements the *rdk:component:motor* API can be powered with the *SetPower* method.
 
 Viam represents models with *colon-delimited-triplets*.
 For example, the __rdk:builtin:gpio__ model of the __rdk:component:motor__ API provides RDK support for GPIO-controlled DC motors and the __rdk:builtin:DMC4000__ model of the same __rdk:component:motor__ API provides support for the DMC 4000 motor.
 
-A common use-case for modular resources is to create a new model of an existing Viam API (resource type).
+A common use-case for modular resources is to create a new model using an existing Viam API.
 However, you can also create and expose new API types using modular resources.
 
 ## Modular Resource Management with the RDK
@@ -120,7 +120,7 @@ Name | Type | Default Value | Description
 
 Once you have configured a module as part of your robot configuration, you can instantiate any number of instances of a modular resource made availabkle by that module with the component or service configuration.
 All standard properties such as *attributes* and *depends_on* are supported for modular resources.
-In order to correctly reference a registered modular resource, you must configure the *namespace*, *type*, *name* and *model* properties.
+To correctly reference a registered modular resource, you must configure the *namespace*, *type*, *name* and *model* properties.
 
 #### Required attributes - modular component
 
@@ -170,6 +170,6 @@ This means that you can compose a robot of any number of parts running in differ
 ## Limitations
 
 Currently, modular resources are supported only with the Viam [Go SDK](https://pkg.go.dev/go.viam.com/rdk).
-We're working to add support to all of our SDKs, but in the meantime you can add custom components by using the Viam SDK of your choice to [create a custom component implementation server](/product-overviews/extending-viam/sdk-as-server/).
+We're working to add support to all of our SDKs, but in the meantime, you can add custom components by using the Viam SDK of your choice to [create a custom component implementation server](/product-overviews/extending-viam/sdk-as-server/).
 
 Custom models of the [arm](/components/arm) component type are not yet supported (as kinematic information is not currently exposed via the arm API), but support will be added soon.

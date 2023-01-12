@@ -18,7 +18,7 @@ Many robots can be composed entirely of these resources.
 However, sometimes you may encounter a hardware component that is not natively supported by Viam's RDK.
 In other cases, you may want to add new functionality to a component or expose a custom service securely through the Viam API and corresponding SDKs.
 
-Viam can be extended in these and other ways with the creation and usage of custom resources.
+You can extend Viam in these and other ways by creating and using custom resources.
 
 ## Modular resources
 
