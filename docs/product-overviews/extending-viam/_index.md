@@ -1,6 +1,6 @@
 ---
 title: "Extend Viam with custom components and services"
-linkTitle: "Extending Viam"
+linkTitle: "Extend Viam"
 weight: 60
 simple_list: true
 type: docs
@@ -15,7 +15,7 @@ Viam's [Robot Development Kit (RDK)](/product-overviews/rdk/) provides built-in 
 - High-level functionality exposed as [services](/services).
 
 Many robots can be composed entirely of these resources.
-However, sometimes you may encounter a hardware component that is not natively supported by Viam's RDK.
+However, sometimes you may have a hardware component that Viam's RDK does not natively support.
 In other cases, you may want to add new functionality to a component or expose a custom service securely through the Viam API and corresponding SDKs.
 
 You can extend Viam in these and other ways by creating and using custom resources.
@@ -35,7 +35,7 @@ The Viam platform manages:
 
 For more detail, see the [modular resources documentation](/product-overviews/extending-viam/modular-resources/).
 
-## Using a Viam SDK as a server to create a custom component
+## Use a Viam SDK as a server to create a custom component
 
 Currently, modular resources are supported only with the Viam [Go SDK](https://pkg.go.dev/go.viam.com/rdk).
 If you are not using the Go SDK, you can add custom components using the Viam SDK of your choice to create a [server component implementation](/product-overviews/extending-viam/sdk-as-server/).

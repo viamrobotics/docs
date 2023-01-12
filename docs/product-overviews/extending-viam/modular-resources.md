@@ -39,7 +39,7 @@ The built-in service type *vision*'s API is __rdk:service:vision__
 ### Models
 
 A model is an implementation of a resource type that implements all or some of the API methods of a resource type API.
-Models allow any number of versions of a given resource to be controlled with a consistent interface.
+Models allow you to control any number of versions of a given resource with a consistent interface.
 This is powerful, because you only need to learn and code against one interface which remains the same for different models of the same component type.
 
 For example, some DC motors can be controlled with GPIO, which you can interface with in different ways depending on the attached controlling hardware.
@@ -98,9 +98,9 @@ Therefore, you must ensure that any modular resource(s) are made available via a
 For example, if you are running the RDK on an Raspberry Pi you'll need to have an executable module on the Pi's filesystem.
 
 {{% alert title="Modules vs modular resources" color="tip" %}}  
-Modules are binary executables that can be managed by RDK through [module configuration](#add-a-module-to-your-robot-configuration).
+Modules are binary executables that can be managed by the RDK through [module configuration](#add-a-module-to-your-robot-configuration).
 
-A configured module can make one or more modular resources available for configuration as component and/or service instances.
+A configured module can make one or more modular resources available for configuration as a component and/or service instances.
 {{% /alert %}}
 
 ### Add a module to your robot configuration
@@ -118,7 +118,7 @@ Name | Type | Default Value | Description
 
 ### Configure a component instance for a modular resource
 
-Once you have configured a module as part of your robot configuration, you can instantiate any number of instances of a modular resource made availabkle by that module with the component or service configuration.
+Once you have configured a module as part of your robot configuration, you can instantiate any number of instances of a modular resource made available by that module with the component or service configuration.
 All standard properties such as *attributes* and *depends_on* are supported for modular resources.
 To correctly reference a registered modular resource, you must configure the *namespace*, *type*, *name* and *model* properties.
 
@@ -134,7 +134,7 @@ Name | Type | Default Value | Description
 ## Configuration example - custom motor
 
 The following example configuration illustrates how you can configure a robot that uses a custom motor implementation.
-This example motor implementation uses the standard (built-in) Viam motor API, but registers and uses a custom model __viam-contributor:motor:super-custom__
+This example motor implementation uses the built-in Viam motor API, but registers and uses a custom model __viam-contributor:motor:super-custom__.
 
 ``` json
 {

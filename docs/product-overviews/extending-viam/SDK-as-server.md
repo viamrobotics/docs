@@ -1,13 +1,13 @@
 ---
-title: "Using SDKs to extend Viam"
-linkTitle: "Custom resources with SDKs"
+title: "Use SDKs to extend Viam"
+linkTitle: "Custom Resources with SDKs"
 weight: 99
 type: "docs"
 tags: ["server", "sdk"]
 ---
 
 Viam's Robot Development Kit ([RDK](/product-overviews/rdk/)) provides a variety of components and services out of the box.
-If the components you are working with are not supported, Viam [modular resources](/product-overviews/modular-resources) allow you to add support for custom resources, allowing for seamless extension of the Viam platform.
+If the components you are working with are not supported, you can use Viam [modular resources](/product-overviews/modular-resources) to add support for custom resources which form a seamless extension of the Viam platform.
 
 Currently, [modular resource](/product-overviews/modular-resources) development is supported only with the [RDK (Golang SDK)](https://pkg.go.dev/go.viam.com/rdk).
 However, you can leverage any Viam [SDK](product-overviews/sdk-as-client/) to create a custom component implementation by using an SDK as a server.
