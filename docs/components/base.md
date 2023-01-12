@@ -162,3 +162,156 @@ To be calibrated by the user.
 ## Implementation
 
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
+<!-- [go.viam.com/rdk/components/base] -->
+
+## API
+
+The base component supports the following methods:
+
+| Method Name                   | Golang                 | Python                              | Description                                                            |
+| ----------------------------- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------- |
+[MoveStraight] (#movestraight)  | [MoveStraight] [go_base]  |  [move_straight] [python_move_straight] | Move the base in a straight line the given distance (int)(mm) at the given velocity (double/float)(mm/s). |
+
+[Spin] (#spin) |  [Spin] [go_base] | [spin] [python_spin] | Spin the base in place the given angle (float)(degrees), at the given angular velocity (float)(degrees/s) |
+
+[SetPower](#setpower) | [SetPower] [go_base] | [set_power] [python_set_power] | Set the linear velocity (Vector3) and angular velocity (Vector3) of the base |
+
+[SetVelocity](#setvelocity) | [SetVelocity][go_base] | [set_velocity] [python_set_velocity] | Set the linear velocity (Vector3) (mm/sec) and angular velocity (Vector3) (deg/sec) of the base |
+
+[Stop](#stop) | [Stop][go_base] | [stop][python_stop] | Stop the base |
+
+[IsMoving](#ismoving) | [][] | [is_moving][python_is_moving] | Get if the base is currently moving |
+
+[go_base]: https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/base#Base
+[python_move_straight]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.move_straight
+[python_spin]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.spin
+[python_set_power]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_power
+[python_set_velocity]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_velocity
+[python_stop]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.stop
+[python_is_moving]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.is_moving
+
+### Access and control your base with Viam's Client SDK Libraries
+<!-- wip, want a better way to phrase this than it was phrased formerly -->
+
+{{% alert title="Note" color="note" %}}
+
+Make sure you have set up your robot and connected it to the Viam app. Check out our [Client SDK Libraries Quick Start](/product-overviews/sdk-as-client/#quick-start-examples) documentation for an overview of how to get started connecting to your robot using these libraries, and our [Getting Started with the Viam App guide](/getting-started/app-usage/) for app-specific guidance.
+
+**Assumption:** A base called "my_base" is configured as a component of your robot on the Viam app.
+
+{{% /alert %}}
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.base import BaseClient
+
+async def main():
+    robot = await connect()
+
+    print('Resources:')
+    print(robot.resource_names)
+
+    # Get the base client from the robot
+    myBase = BaseClient.from_robot(robot=robot, name='my_base')
+
+    await robot.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+```go
+import (
+ "go.viam.com/rdk/components/base"
+)
+
+func main() {
+  // robot, err := client.New(...)
+
+  logger.Info("Resources:")
+  logger.Info(robot.ResourceNames())
+
+  // Get the base client from the robot.
+  myBase, err := base.FromRobot(robot, "my_base")
+  if err != nil {
+    logger.Fatalf("cannot get base: %v", err)
+  }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### MoveStraight
+
+The MoveStraight method requests the base of the robot to move in a straight line the given distance (int)(mm) at the given velocity (double/float)(mm/s).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- distance (int): The distance to move the base in millimeters. Negative implies backwards.
+- velocity (float): The velocity (in millimeters per second) at which to move the base. Again, negative implies backwards.
+
+**Returns:**
+
+- None
+
+[Python SDK move_straight Documentation](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight)
+
+```python
+myBase = BaseClient.from_robot(robot=robot, name='my_base')
+
+# Move the base forward 10mm at a velocity of 1 mm/s
+await myBase.move_straight(distance=10, velocity=1)
+
+# Move the base backward 10mm at a velocity of -1 mm/s
+await myBase.move_straight(distance=10, velocity=-1)
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+**Parameters:**
+
+- [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- distanceMm (int): The distance to move the base in millimeters. Negative implies backwards.
+- mmPerSec (float64): The velocity (in millimeters per second) at which to move the base. Again, negative implies backwards.
+- extra (map[string]interface{}): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [error](https://pkg.go.dev/builtin#error): An error if one occurred.
+
+[Go SDK MoveStraight Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+
+```go
+myBase, err := base.FromRobot(robot, "my_base")
+if err != nil {
+  logger.Fatalf("cannot get base: %v", err)
+}
+
+// Move the base forward 10mm at a velocity of 1 mm/s
+myServo.Move(context.Background(), 10, 1)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Spin
+
+The spin method requests the base of the robot to spin by a given angle in degrees at a given speed in degrees per second.
+
+### SetPower
+
+### SetVelocity
+
+### Stop
+
+### IsMoving
