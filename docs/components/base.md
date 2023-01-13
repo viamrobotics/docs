@@ -188,7 +188,7 @@ The base component supports the following methods:
 
 {{% alert title="Note" color="note" %}}
 
-Make sure you have set up your robot and connected it to the Viam app. Check out our [Client SDK Libraries Quick Start](https://docs.viam.com/product-overviews/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and our [Getting Started with the Viam App guide](https://docs.viam.com/getting-started/) for app-specific guidance.
+Make sure you have set up your robot and connected it to the Viam app. Check out our [Client SDK Libraries Quick Start](/product-overviews/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and our [Getting Started with the Viam App guide](/getting-started/) for app-specific guidance.
 
 **Assumption:** A base called "my_base" is configured as a component of your robot on the Viam app.
 
@@ -296,10 +296,10 @@ if err != nil {
   logger.Fatalf("cannot get base: %v", err)
 }
 
-// Move the base 10 mm at a velocity of 1 mm/s, forward
+// Move the base forward 10 mm at a velocity of 1 mm/s
 myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: 1)
 
-// Move the base 10 mm at a velocity of -1 mm/s, backward
+// Move the base backward 10 mm at a velocity of -1 mm/s
 myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: -1)
 ```
 
