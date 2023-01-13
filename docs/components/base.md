@@ -163,7 +163,7 @@ To be calibrated by the user.
 
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
 
-[Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk)
+[Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
 
 ## API
 
