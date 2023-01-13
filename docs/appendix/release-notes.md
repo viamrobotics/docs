@@ -42,13 +42,12 @@ description:
             This meant that a user needed to run a viam-server for their custom component and add it to their main part as a remote.
             With custom modular resources, users no longer need to run separate server instances for each custom resource which saves additional network requests.<br/>
 
-            {{< alert title="Note" color="note" >}}
-            This is a breaking change.
-            This breaking change affects ALL users who are using the Viam app to configure their robot.
-            You will need to update to at the latest version of the RDK (V3.0.0) to access your robot via the remote control page.
-            {{< /alert >}}
-
-            </td>
+{{< alert title="Note" color="note" >}}
+This is a breaking change.
+This breaking change affects ALL users who are using the Viam app to configure their robot.
+You will need to update to at the latest version of the RDK (V3.0.0) to access your robot via the remote control page.
+{{< /alert >}}
+</td>
         </tr>
     <tbody>
 </table>
