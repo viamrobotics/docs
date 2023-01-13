@@ -285,7 +285,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
 
 ## Let’s write some code
 
-<ol><li class="spacing">Make sure you have Python installed.
+1. Make sure you have Python installed.
 You can double-check this by running:
 
 ```bash
@@ -304,37 +304,39 @@ or
 python3.8 --version
 ```
 
-We at Viam are running Python 3.9.2 (Python 3.8 is also supported) for this tutorial.</li>
-<li class="spacing">Make sure you have the Viam Python SDK installed (<a href="https://python.viam.dev/">click for instructions</a>).</li>
+We at Viam are running Python 3.9.2 (Python 3.8 is also supported) for this tutorial.
 
-<li class="spacing">Open a file in your favorite IDE and paste in <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">the code from the earlier referenced repo</a>.</li>
-<li class="spacing">Adjust the components names to match the component names you created in your config file.
-In this case, the component names that you may need to change are <strong>scuttlebase</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
-<li class="spacing">From your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>), go to the <strong>CODE SAMPLE</strong> tab.
+2. Make sure you have the Viam Python SDK installed (<a href="https://python.viam.dev/">click for instructions</a>).
+
+1. Open a file in your favorite IDE and paste in <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">the code from the earlier referenced repo</a>.
+
+1. Adjust the components names to match the component names you created in your config file.
+In this case, the component names that you may need to change are <strong>scuttlebase</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.
+
+1. From your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>), go to the <strong>CODE SAMPLE</strong> tab.
 Find the Python SDK field and copy the robot address (which will likely have the form
-<span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file.
-This allows your code to connect to your robot.</li>
+<span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file. 
+This allows your code to connect to your robot.
 
 {{% alert title="Caution" color="caution" %}}  
 Do not share your robot secret or robot address publicly. Sharing this information compromises your system security by allowing unauthorized access to your computer.
 {{% /alert %}}
 
-<li class="spacing">Save the code in a directory of your choice.</li>
-<li class="spacing">To get the code onto the Pi you have a few options.
-If you intend to make lots of tweaks to the code over time it may be most convenient for you to set up a <a href="https://mutagen.io/documentation/introduction/getting-started/">Mutagen Sync</a> session from a directory on your computer to a directory on your Pi.
-If you’re just trying to get this running as quickly as possible, do the following:</li>
-<ol>
-<li class="spacing" style="list-style-type:lower-alpha">In your Pi terminal, navigate to the directory where you’d like to save your code.
-Run,</br><span class="file">nano rgb_follower.py</span></br>(or replace <span class="file">rgb_follower</span> with the your desired filename).</li>
-<li class="spacing" style="list-style-type:lower-alpha">Paste all your code into this file.</li>
-<li class="spacing" style="list-style-type:lower-alpha">Type <strong>CTRL + X</strong> to close the file.
-Type <strong>Y</strong> to confirm file modification, then press enter to finish.</li>
-</ol></ol>
+6. Save the code in a directory of your choice.
+1. To get the code onto the Pi you have a few options.
+If you intend to make lots of tweaks to the code over time it may be most convenient for you to set up a <a href="https://mutagen.io/documentation/introduction/getting-started/">Mutagen Sync</a>[^mutagen] session from a directory on your computer to a directory on your Pi.
 
-**References**:
+If you’re just trying to get this running as quickly as possible, do the following:
 
-- Line Follower Code on GitHub: <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">ht<span></span>tps://github.com/viam-labs/line-follower/blob/main/rgb_follower.py</a>
-- Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span></span>tps://mutagen.io/documentation/introduction/getting-started</a>
+- In your Pi terminal, navigate to the directory where you’d like to save your code.
+Run,</br><span class="file">nano rgb_follower.py</span></br>(or replace <span class="file">rgb_follower</span> with the your desired filename).
+
+- Paste all your code into this file.
+
+- Type <strong>CTRL + X</strong> to close the file.
+Type <strong>Y</strong> to confirm file modification, then press enter to finish.
+
+[^mutagen]:Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span></span>tps://mutagen.io/documentation/introduction/getting-started</a>
 
 ## Controlling your rover with Viam
 
