@@ -4,7 +4,7 @@ linkTitle: "Microcontrollers"
 weight: 50
 simple_list: false
 type: docs
-draft: false
+draft: true
 ---
 
 Viam maintains a lean version of viam-server that you can run on an ESP32 microcontroller.
@@ -14,3 +14,5 @@ This version of viam-server supports:
 - Components
 
 You can install it here:
+
+COMING SOON!
