@@ -188,7 +188,7 @@ The base component supports the following methods:
 
 {{% alert title="Note" color="note" %}}
 
-Make sure you have set up your robot and connected it to the Viam app. Check out our [Client SDK Libraries Quick Start](/product-overviews/sdk-as-client/#quick-start-examples) documentation for an overview of how to get started connecting to your robot using these libraries, and our [Getting Started with the Viam App guide](/getting-started/app-usage/) for app-specific guidance.
+Make sure you have set up your robot and connected it to the Viam app. Check out our [Client SDK Libraries Quick Start](https://docs.viam.com/product-overviews/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and our [Getting Started with the Viam App guide](https://docs.viam.com/getting-started/) for app-specific guidance.
 
 **Assumption:** A base called "my_base" is configured as a component of your robot on the Viam app.
 
@@ -242,16 +242,16 @@ func main() {
 
 ### MoveStraight
 
-Requests the base to move in a straight line across the given distance (*mm*) at the given velocity (*mm/sec*).
+Move the base in a straight line across the given distance (*mm*) at the given velocity (*mm/sec*).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- [*distance* (int)](https://docs.python.org/3/library/functions.html#int): The distance to move in millimeters.
+- *distance* [(int)](https://docs.python.org/3/library/functions.html#int): The distance to move in millimeters.
 Negative implies backwards.
-- [*velocity* (float)](https://docs.python.org/3/library/functions.html#float): The velocity at which to move in millimeters per second.
+- *velocity* [(float)](https://docs.python.org/3/library/functions.html#float): The velocity at which to move in millimeters per second.
 Negative implies backwards.
 
 **Returns:**
@@ -276,11 +276,11 @@ await myBase.move_straight(distance=10, velocity=-1)
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- [*distanceMm* (int)](https://pkg.go.dev/builtin#int): The distance to move the base in millimeters.
+- *distanceMm* [(int)](https://pkg.go.dev/builtin#int): The distance to move the base in millimeters.
 Negative implies backwards.
-- [*mmPerSec* (float64)](https://pkg.go.dev/builtin#float64): The velocity at which to move the base in millimeters per second.
+- *mmPerSec* [(float64)](https://pkg.go.dev/builtin#float64): The velocity at which to move the base in millimeters per second.
 Negative implies backwards.
-- [extra (map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -306,16 +306,16 @@ myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: -1)
 
 ### Spin
 
-Requests the base to move in a spinning motion, rotating from its origin to the given angle (*degrees*) at the given angular velocity (*degrees/sec*).
+Move the base in a spinning motion, rotating it to the given angle (*degrees*) at the given angular velocity (*degrees/sec*).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- [*angle* (float)](https://docs.python.org/3/library/functions.html#float): The angle to spin in degrees.
+- *angle* [(float)](https://docs.python.org/3/library/functions.html#float): The angle to spin in degrees.
 Negative implies backwards.
-- [*velocity* (float)](https://docs.python.org/3/library/functions.html#float): The angular velocity at which to spin in degrees per second.
+- *velocity* [(float)](https://docs.python.org/3/library/functions.html#float): The angular velocity at which to spin in degrees per second.
 Negative implies backwards.
 
 **Returns:**
@@ -337,11 +337,11 @@ await myBase.spin(angle=10, velocity=1)
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- [*angleDeg* (float64)](https://pkg.go.dev/builtin#float64): The angle to spin in degrees.
+- *angleDeg* [(float64)](https://pkg.go.dev/builtin#float64): The angle to spin in degrees.
 Negative implies backwards.
-- [*degsPerSec* (float64)](https://pkg.go.dev/builtin#float64): The angular velocity at which to spin in degrees per second.
+- *degsPerSec* [(float64)](https://pkg.go.dev/builtin#float64): The angular velocity at which to spin in degrees per second.
 Negative implies backwards.
-- [extra (map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -364,17 +364,17 @@ myBase.Spin(context.Background(), angleDeg: 10, degsPerSec: 1)
 
 ### SetPower
 
-Sets the linear velocity power (*%, 1- to 1*) and angular velocity power (*%, 1- to 1*) of the base component.
+Set the linear velocity power (*%, 1- to 1*) and angular velocity power (*%, 1- to 1*) of the base.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- [*linear* (Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity power percentage (-1 to 1).
+- *linear* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity power percentage (-1 to 1).
 Only the Y component of the vector is used for a wheeled base.
 Negative implies backwards.
-- [*angular* (Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity power percentage (-1 to 1).
+- *angular* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity power percentage (-1 to 1).
 Only the Z component of the vector is used for a wheeled base.
 Here, a positive value implies turning left and a negative value implies turning right.
 
@@ -397,13 +397,13 @@ await myBase.set_power(linear=Vector3(x=0,y=-1,z=0), angular=Vector3(x=0,y=0,z=-
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- [*linear* (r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The linear velocity power percentage (-1 to 1).
+- *linear* [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The linear velocity power percentage (-1 to 1).
 Only the Y component of the vector is used for a wheeled base.
 Negative implies backwards.
-- [*angular* (r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The angular velocity power percentage (-1 to 1).
+- *angular* [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The angular velocity power percentage (-1 to 1).
 Only the Z component of the vector is used for a wheeled base.
 Here, a positive value implies turning left and a negative value implies turning right.
-- [extra (map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -426,16 +426,16 @@ myBase.SetPower(context.Background(), linear: r3.Vector{Y: -1}, angular: r3.Vect
 
 ### SetVelocity
 
-Sets the linear velocity (*mm/sec*) and angular velocity (*degrees/sec*) of the base.
+Set the linear velocity (*mm/sec*) and angular velocity (*degrees/sec*) of the base.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- [*linear* (Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity in mm per second.
+- *linear* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity in mm per second.
 Only the Y component of the vector is used for a wheeled base.
-- [*angular* (Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity in degrees per second. Only the Z component of the vector is used for a wheeled base.
+- *angular* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity in degrees per second. Only the Z component of the vector is used for a wheeled base.
 
 **Returns:**
 
@@ -456,9 +456,9 @@ await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- [*linear* (r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The linear velocity in mm per second. Only the Y component of the vector is used for a wheeled base.
-- [*angular* (r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The angular velocity in degrees per second. Only the Z component of the vector is used for a wheeled base.
-- [extra (map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- *linear* [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The linear velocity in mm per second. Only the Y component of the vector is used for a wheeled base.
+- *angular* [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The angular velocity in degrees per second. Only the Z component of the vector is used for a wheeled base.
+- extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -473,7 +473,7 @@ if err != nil {
 }
 
 // Set the angular velocity to 1 mm/sec and the linear velocity to 1 deg/sec
-myBase.SetPower(context.Background(), linear: r3.Vector{Y: 1}, angular: r3.Vector{Z: 1})
+myBase.SetVelocity(context.Background(), linear: r3.Vector{Y: 1}, angular: r3.Vector{Z: 1})
 ```
 
 {{% /tab %}}
@@ -481,7 +481,7 @@ myBase.SetPower(context.Background(), linear: r3.Vector{Y: 1}, angular: r3.Vecto
 
 ### Stop
 
-Requests the base to stop moving immediately.
+Stop the base from moving immediately.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -512,7 +512,7 @@ await myBase.stop()
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- [extra (map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
