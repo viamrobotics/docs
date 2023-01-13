@@ -170,11 +170,19 @@ Do not share your robot secret or robot address publicly. Sharing this informati
 
 ### Control the mock robot arm
 
-While connected to the robot, you can verify the operation of the fake arm from the **CONTROL** tab or through code, which allows you to control and observe to positioning of the arm component in the terminal and in the GUI.
+While connected to the robot, you can verify the operation of the fake arm from the **CONTROL** tab or through code, which would allow you to control and observe to positioning of the arm component in the terminal and in the GUI.
 
-In the GUI, you can click **Modify All** to change the X, Y, and Z positions for joints in the arm. Alternatively, you could download and run <file>arm_move.py</file> to programmatically perform random changes and observe the returned positional value changes in the terminal, as well as on the **CONTROL** tab.
+#### Using the GUI
 
-### Creating the arm control file
+In the GUI, you can click **Modify All** to change the X, Y, and Z positions for joints in the arm. 
+
+### Using the SDK
+
+Alternatively, you can programmatically perform random changes and observe the returned positional value changes in the terminal, as well as on the **CONTROL** tab using either the Python SDK or the GO SDK.
+
+The next section describes the process for Python.
+
+#### Creating the arm control code
 
 Paste the boilerplate code from the CODE SAMPLE tab of the Viam app into a file named <file>arm-move.py</file> or into your code editor.
 <file>arm_move.py</file> imports the arm component from the Viam Python SDK and imports the random and async.io libraries.
