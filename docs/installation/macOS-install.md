@@ -1,7 +1,7 @@
 ---
 title: "Installing Viam Server on macOS"
 linkTitle: "Viam Server on macOS"
-weight: 10
+weight: 35
 type: "docs"
 description: "How to install and run viam-server on macOS and sync a machine with the Viam app ([https://app.viam.com](https://app.viam.com))"
 aliases:
@@ -35,7 +35,21 @@ You can download your robot's config file from the **SETUP** tab of your robot o
 
 4. **Connect and configure.** Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
 
-## How to run viam-server as a service on macOS
+## How to run viam-server on macOS
+
+### From the command line
+
+You can run viam-server again any time by running the command from setup step 3, always making sure to replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
+
+```bash
+viam-server -config ~/Downloads/viam-<YOUR_ROBOT_NAME>-main.json
+```
+
+You can also store the config file in a different folder (other than Downloads)--just make sure to run the above command with the correct filepath if you do so.
+
+Hit **Ctrl + C** on your keyboard to stop running viam-server.
+
+### As a system service
 
 Installing `viam-server` as a system service is not recommended for most use cases on macOS.
 However, if you are looking to create a robot that runs on macOS and you want it to run `viam-server` every time your OS boots up, then you will need to run `viam-server` as a service.
@@ -59,11 +73,19 @@ brew services restart viam-server
 
 ## How to update viam-server using Homebrew on macOS
 
-You can upgrade to the latest version of `viam-server` using Homebrew.
+You can upgrade to the latest *stable* version of `viam-server` using Homebrew.
 
 ```bash
 brew upgrade viam-server
 ```
+
+To upgrade to the *absolute* latest version of `viam-server` run this command:
+
+```bash
+brew upgrade viam-server --HEAD
+```
+
+There is not a way to automatically update viam-server on Mac, so we recommend running `brew upgrade viam-server` on a regular basis.
 
 ## How to troubleshoot viam-server on macOS
 

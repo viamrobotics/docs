@@ -1,7 +1,7 @@
 ---
 title: "Installing Viam Server on Linux Systems"
 linkTitle: "Viam Server on Linux"
-weight: 10
+weight: 30
 type: "docs"
 description: "How to install and run viam-server on Linux and sync a machine with the Viam app ([https://app.viam.com](https://app.viam.com))"
 aliases:
