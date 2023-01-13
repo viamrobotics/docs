@@ -199,6 +199,7 @@ Make sure you have set up your robot and connected it to the Viam app. Check out
 
 ```python
 from viam.components.base import BaseClient
+from viam.proto.common import Vector3
 
 async def main():
     robot = await connect()
@@ -221,6 +222,7 @@ if __name__ == '__main__':
 ```go
 import (
  "go.viam.com/rdk/components/base"
+ "github.com/golang/geo/r3"
 )
 
 func main() {
@@ -467,6 +469,8 @@ await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z
 [Go SDK Docs: **SetVelocity**](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
 
 ```go
+import "github.com/golang/geo/r3"
+
 myBase, err := base.FromRobot(robot, "my_base")
 if err != nil {
   logger.Fatalf("cannot get base: %v", err)
