@@ -173,7 +173,7 @@ The base component supports the following methods:
 | ----------------------------- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------- |
 [MoveStraight](#movestraight)  | [MoveStraight][go_base]  |  [move_straight][python_move_straight] | Move the base in a straight line across the given distance at the given velocity. |
 [Spin](#spin) |  [Spin][go_base] | [spin][python_spin] | Move the base to the given angle at the given angular velocity. |
-[SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the linear velocity power and angular velocity power of the base. |
+[SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the rate and direction of the linear and angular power of the base. |
 [SetVelocity](#setvelocity) | [SetVelocity][go_base] | [set_velocity][python_set_velocity] | Set the linear velocity and angular velocity of the base. |
 [Stop](#stop) | [Stop][go_base] | [stop][python_stop] | Stop the base. |
 
@@ -184,13 +184,13 @@ The base component supports the following methods:
 [python_set_velocity]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_velocity
 [python_stop]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.stop
 
-### Access and control your base with Viam's Client SDK Libraries
+### Control your base with Viam's Client SDK Libraries
 
 {{% alert title="Note" color="note" %}}
 
-Make sure you have set up your robot and connected it to the Viam app. Check out our [Client SDK Libraries Quick Start](/product-overviews/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and our [Getting Started with the Viam App guide](/getting-started/) for app-specific guidance.
+Make sure you have set up your robot and connected it to the Viam app. Check out the [Client SDK Libraries Quick Start](/product-overviews/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/getting-started/) for app-specific guidance.
 
-**Assumption:** A base called "my_base" is configured as a component of your robot on the Viam app.
+The following example assumes you have a base called "my_base" which is configured as a component of your robot on your Viam app. If your base has a different name, change the `name` in the example.
 
 {{% /alert %}}
 
@@ -202,14 +202,17 @@ from viam.components.base import BaseClient
 from viam.proto.common import Vector3
 
 async def main():
+    # Connect to your robot.
     robot = await connect()
 
+    # Log an info message with the names of the difference resources that are connected to your robot. 
     print('Resources:')
     print(robot.resource_names)
 
-    # Get the base client from the robot
+    # Connect to your base. 
     myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
+    # Disconnect from your robot. 
     await robot.close()
 
 if __name__ == '__main__':
@@ -222,20 +225,43 @@ if __name__ == '__main__':
 ```go
 import (
  "go.viam.com/rdk/components/base"
- "github.com/golang/geo/r3"
+ "github.com/golang/geo/r3"  
 )
 
-func main() {
-  // robot, err := client.New(...)
+func main() { 
 
+  // Create an instance of a logger. 
+  logger := golog.NewDevelopmentLogger("client")
+
+  // Connect to your robot. 
+  robot, err := client.New(
+      context.Background(),
+      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      logger,
+      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+          Type:    utils.CredentialsTypeRobotLocationSecret,
+          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      })),
+  )
+
+  // Log any errors that occur.
+  if err != nil {
+      logger.Fatal(err)
+  }
+
+  // Delay closing your connection to your robot until main() exits. 
+  defer robot.Close(context.Background())
+
+  // Log an info message with the names of the difference resources that are connected to your robot. 
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
 
-  // Get the base client from the robot.
+  // Connect to your base.
   myBase, err := base.FromRobot(robot, "my_base")
   if err != nil {
     logger.Fatalf("cannot get base: %v", err)
   }
+  
 }
 ```
 
@@ -260,15 +286,15 @@ Negative implies backwards.
 
 - None
 
-[Python SDK Docs: **move_straight**](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight)
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
-# Move the base 10 mm at a velocity of 1 mm/s, forward
+# Move the base 10 mm at a velocity of 1 mm/s, forward.
 await myBase.move_straight(distance=10, velocity=1)
 
-# Move the base 10 mm at a velocity of -1 mm/s, backward
+# Move the base 10 mm at a velocity of -1 mm/s, backward.
 await myBase.move_straight(distance=10, velocity=-1)
 ```
 
@@ -288,7 +314,7 @@ Negative implies backwards.
 
 - [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK Docs: **MoveStraight**](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
@@ -296,10 +322,10 @@ if err != nil {
   logger.Fatalf("cannot get base: %v", err)
 }
 
-// Move the base forward 10 mm at a velocity of 1 mm/s
+// Move the base forward 10 mm at a velocity of 1 mm/s.
 myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: 1)
 
-// Move the base backward 10 mm at a velocity of -1 mm/s
+// Move the base backward 10 mm at a velocity of -1 mm/s.
 myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: -1)
 ```
 
@@ -324,12 +350,12 @@ Negative implies backwards.
 
 - None
 
-[Python SDK Docs: **spin**](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin)
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
-# Spin the base 10 degrees at an angular velocity of 1 deg/sec
+# Spin the base 10 degrees at an angular velocity of 1 deg/sec.
 await myBase.spin(angle=10, velocity=1)
 ```
 
@@ -349,7 +375,7 @@ Negative implies backwards.
 
 - [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK Docs: **Spin**](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
@@ -357,7 +383,7 @@ if err != nil {
   logger.Fatalf("cannot get base: %v", err)
 }
 
-// Spin the base 10 degrees at an angular velocity of 1 deg/sec
+// Spin the base 10 degrees at an angular velocity of 1 deg/sec.
 myBase.Spin(context.Background(), angleDeg: 10, degsPerSec: 1)
 ```
 
@@ -366,31 +392,42 @@ myBase.Spin(context.Background(), angleDeg: 10, degsPerSec: 1)
 
 ### SetPower
 
-Set the linear velocity power (*%, 1- to 1*) and angular velocity power (*%, 1- to 1*) of the base.
+Set the linear and angular [power](https://www.britannica.com/science/power-physics) of the base, represented as the power rate for each direction in the range of (*-1.0 to 1.0*).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- *linear* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity power percentage (-1 to 1).
-Only the Y component of the vector is used for a wheeled base.
-Negative implies backwards.
-- *angular* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity power percentage (-1 to 1).
-Only the Z component of the vector is used for a wheeled base.
-Here, a positive value implies turning left and a negative value implies turning right.
+- *linear* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the linear power  of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Negative values imply a backwards direction in linear terms.
+Use solely the Y component of the vector when configuring a wheeled base.
+- *angular* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the angular power  of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Here, a positive value implies turning in a leftward direction and a negative value implies turning to the right.
+Use solely the Z component of the vector when configuring a wheeled base.
 
 **Returns:**
 
 - None
 
-[Python SDK Docs: **set_power**](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power)
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
-# Set the angular and linear velocity power to 100% backwards and 100% right
-await myBase.set_power(linear=Vector3(x=0,y=-1,z=0), angular=Vector3(x=0,y=0,z=-1))
+# Make your wheeled base move forward. Set linear power to 75%.
+print("move forward")
+await myBase.set_power(linear=Vector3(x=0,y=-.75,z=0), angular=Vector3(x=0,y=0,z=0))
+
+# Make your wheeled base move forward. Set linear power to -100%.
+print("move backward")
+await myBase.set_power(linear=Vector3(x=0,y=-1.0,z=0), angular=Vector3(x=0,y=0,z=0))
+
+# Make your wheeled base spin left. Set angular power to 100%.
+print("spin left")
+await myBase.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=1))
+
+# Make your wheeled base spin right. Set angular power to -75%.
+print("spin right")
+await myBase.set_power(linear=Vector3(x=0,y=-1.0,z=0), angular=Vector3(x=0,y=0,z=-.75))
 ```
 
 {{% /tab %}}
@@ -399,19 +436,16 @@ await myBase.set_power(linear=Vector3(x=0,y=-1,z=0), angular=Vector3(x=0,y=0,z=-
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- *linear* [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The linear velocity power percentage (-1 to 1).
-Only the Y component of the vector is used for a wheeled base.
-Negative implies backwards.
-- *angular* [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The angular velocity power percentage (-1 to 1).
-Only the Z component of the vector is used for a wheeled base.
-Here, a positive value implies turning left and a negative value implies turning right.
+- *linear* [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The rate and direction of the linear power  of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Here, negative values imply a backwards direction. Use solely the Y component of the vector when configuring a wheeled base.
+- *angular* [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The rate and direction of the angular power of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Here, a positive value implies turning in a leftward direction and a negative value implies turning to the right.
+Use solely the Z component of the vector when configuring a wheeled base.
 - extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
 - [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK Docs: **SetPower**](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
@@ -419,8 +453,33 @@ if err != nil {
   logger.Fatalf("cannot get base: %v", err)
 }
 
-// Set the angular and linear velocity power to 100% backwards and 100% right
-myBase.SetPower(context.Background(), linear: r3.Vector{Y: -1}, angular: r3.Vector{Z: -1})
+// Make your wheeled base move forward. Set linear power to 75%.
+logger.Info("move forward")
+err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: .75}, angular: r3.Vector{})
+if err != nil {
+    logger.Fatal(err)
+}
+
+// Make your wheeled base move backward. Set linear power to -100%.
+logger.Info("move backward")
+err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: -1}, angular: r3.Vector{})
+if err != nil {
+    logger.Fatal(err)
+}
+
+// Make your wheeled base spin left. Set angular power to 100%.
+logger.Info("spin left")
+err = myBase.SetPower(context.Background(), linear: r3.Vector{}, angular: r3.Vector{Z: 1})
+if err != nil {
+  logger.Fatal(err)
+}
+
+// Make your wheeled base spin right. Set angular power to -75%.
+logger.Info("spin right")
+err = mybase.SetPower(context.Background(), r3.Vector{}, r3.Vector{Z: -.75}, nil)
+if err != nil {
+  logger.Fatal(err)
+}
 ```
 
 {{% /tab %}}
@@ -443,12 +502,12 @@ Only the Y component of the vector is used for a wheeled base.
 
 - None
 
-[Python SDK Docs: **set_velocity**](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity)
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
-# Set the angular velocity to 1 mm/sec and the linear velocity to 1 degree/sec
+# Set the angular velocity to 1 mm/sec and the linear velocity to 1 degree/sec.
 await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z=1))
 ```
 
@@ -466,7 +525,7 @@ await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z
 
 - [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK Docs: **SetVelocity**](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
 
 ```go
 import "github.com/golang/geo/r3"
@@ -476,7 +535,7 @@ if err != nil {
   logger.Fatalf("cannot get base: %v", err)
 }
 
-// Set the angular velocity to 1 mm/sec and the linear velocity to 1 deg/sec
+// Set the angular velocity to 1 mm/sec and the linear velocity to 1 deg/sec.
 myBase.SetVelocity(context.Background(), linear: r3.Vector{Y: 1}, angular: r3.Vector{Z: 1})
 ```
 
@@ -498,15 +557,15 @@ Stop the base from moving immediately.
 
 - None.
 
-[Python SDK Docs: **stop**](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop)
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
-# Move the base forward 10 mm at a velocity of 1 mm/s
+# Move the base forward 10 mm at a velocity of 1 mm/s.
 await myBase.move_straight(distance=10, velocity=1)
 
-# Stop the base
+# Stop the base.
 await myBase.stop()
 ```
 
@@ -522,7 +581,7 @@ await myBase.stop()
 
 - [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK Docs: **Stop**](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
@@ -530,10 +589,10 @@ if err != nil {
   logger.Fatalf("cannot get base: %v", err)
 }
 
-// Move the base forward 10 mm at a velocity of 1 mm/s
+// Move the base forward 10 mm at a velocity of 1 mm/s.
 myBase.MoveStraight(context.Background(), 10, 1)
 
-// Stop the base 
+// Stop the base.
 myBase.Stop(context.Background())
 ```
 
