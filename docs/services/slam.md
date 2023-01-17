@@ -164,7 +164,7 @@ You can find more information on the `mode` in the description of the integrated
 | `map_rate_sec` | int | (optional) Map generation rate for saving current state (in seconds). The default value is `60`. Note: Setting `map_rate_sec` to a value of `0` causes the system to reset it to its default value of `60`.|
 | `data_rate_ms` | int |  (optional) Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. |
 | `port` | string |  (optional) Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
-| `delete_processed_data` | bool |  (optional) If set to `true`, sensor data is deleted after the SLAM algorithm has processed it. This helps reduce the amount of memory required to run SLAM. The default value is `true` if `use_live_data: true` and `false` if `use_live_data: false`. Setting `delete_processed_data: true` when `use_live_data: false` is invalid and will throw an error. |
+| `delete_processed_data` | bool |  (optional) With `delete_processed_data: true` sensor data is deleted after the SLAM algorithm has processed it. This helps reduce the amount of memory required to run SLAM. If `use_live_data: true`, the `delete_processed_data` defaults to `true` and if `use_live_data: false`, it defaults to false. `delete_processed_data: true` when `use_live_data: false` is invalid and will result in an error. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
 
 ### SLAM Library Specific Config Parameters
