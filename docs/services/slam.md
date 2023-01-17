@@ -42,7 +42,7 @@ We will be updating the timestamp format to the RFC339 Nano time format (here: `
 Running the SLAM Service with your robot requires the following:
 
 1. A binary running the custom SLAM library stored in your PATH (e.g., `/usr/local/bin`).
-2. Changes to the config specifiying which SLAM library is used, including library specific parameters.
+2. Changes to the config specifying which SLAM library is used, including library specific parameters.
 3. A data folder as it is pointed to by the config parameter `data_dir`.
 
 All three are explained in the following using ORB-SLAM3 as the application example.
@@ -87,6 +87,7 @@ The following is an example configuration for running ORB-SLAM3 in live `rgbd` m
     "attributes": {
       "data_dir": "<path_to_your_data_folder>",
       "sensors": ["color", "depth"],
+      "use_live_data": true,
       "map_rate_sec": 60,
       "data_rate_ms": 200,
       "config_params": {
@@ -109,6 +110,7 @@ Here is an example configuration:
     "attributes": {
       "data_dir": "<path_to_your_data_folder>",
       "sensors": [],
+      "use_live_data": false,
       "map_rate_sec": 120,
       "data_rate_ms": 100,
       "config_params": {
@@ -128,8 +130,8 @@ The following table provides an overview over the different SLAM modes, and how 
 
 | Mode | Description |
 | ---- | ----------- |
-| Live | SLAM runs in live mode if one or more `sensors` are provided. Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM. |
-| Offline | SLAM runs in offline mode if `sensors: []` is empty. This means it will look for and process images that are already saved in the `data_dir/data` directory. |
+| Live | Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM. SLAM runs in live mode if `use_live_data: true` and one or more `sensors` are present. If no sensors are provided, an error will be thrown. |
+| Offline | SLAM runs in offline mode if `use_live_data: false`. This means it will look for and process images that are already saved in the `data_dir/data` directory. |
 
 #### Pure Mapping, Pure Localization, and Update Mode
 
@@ -153,6 +155,7 @@ You can find more information on the `mode` in the description of the integrated
 | ---- | --------- | ----------- |
 | `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. |
 | `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in live mode. If the array is empty, SLAM runs in offline mode. |
+| `use_live_data` |  bool | This specifies whether to run in online mode (true) or offline mode (false). If `use_live_data: true` and `sensors: []`, an error will be thrown. If this parameter is set to true and no sensors are provided, SLAM will produce an error. |
 
 #### Optional Attributes
 
@@ -161,6 +164,7 @@ You can find more information on the `mode` in the description of the integrated
 | `map_rate_sec` | int | (optional) Map generation rate for saving current state (in seconds). The default value is `60`. Note: Setting `map_rate_sec` to a value of `0` causes the system to reset it to its default value of `60`.|
 | `data_rate_ms` | int |  (optional) Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. |
 | `port` | string |  (optional) Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
+| `delete_processed_data` | bool |  (optional) With `delete_processed_data: true` sensor data is deleted after the SLAM algorithm has processed it. This helps reduce the amount of memory required to run SLAM. If `use_live_data: true`, the `delete_processed_data` defaults to `true` and if `use_live_data: false`, it defaults to false. A `delete_processed_data: true` when `use_live_data: false` is invalid and will result in an error. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
 
 ### SLAM Library Specific Config Parameters
@@ -217,6 +221,8 @@ In this example, `mono` is selected with one camera stream named `color`:
     "attributes": {
       "data_dir": "<path_to_your_data_folder>",
       "sensors": ["color"],
+      "use_live_data": true,
+      "delete_processed_data": false,
       "map_rate_sec": 60,
       "data_rate_ms": 200,
       "config_params": {
