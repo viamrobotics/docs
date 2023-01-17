@@ -44,7 +44,7 @@ Running the SLAM Service with your robot requires the following:
 
 1. A binary running the custom SLAM library stored in your PATH (e.g., `/usr/local/bin`).
 2. Changes to the config specifying which SLAM library is used, including library specific parameters.
-3. A data folder matching the config parameter `data_dir`.
+3. A data folder as it is pointed to by the config parameter `data_dir`.
 
 All three are explained in the following using ORB-SLAM3 as the application example.
 
