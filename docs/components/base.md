@@ -203,7 +203,7 @@ async def main():
     # Connect to your robot.
     robot = await connect()
 
-    # Log an info message with the names of the difference resources that are connected to your robot. 
+    # Log an info message with the names of the different resources that are connected to your robot. 
     print('Resources:')
     print(robot.resource_names)
 
