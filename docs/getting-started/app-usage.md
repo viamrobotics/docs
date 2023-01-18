@@ -67,7 +67,7 @@ Other members of the parent organization of a location are granted access to thi
 There are two ways to share a location beyond its parent organization:
 
 - Share with all the members of an additional organization you belong to
-- Share programmatic access to a location with *location secret keys*.
+- Share programmatic access to a location with location secret keys.
 
 #### Sharing a location with an additional organization
 
@@ -81,7 +81,7 @@ The Viam app lists the newly added organization, along with the parent organizat
 
 #### Sharing a location using location secret keys
 
-Programmatic access to a location may be granted by sharing a location secret key.
+Grant programmatic access to your location by sharing a location secret key.
 
 The Viam app lists the secret keys for a location in the **Location Secret Keys** drop-down:
 
@@ -89,21 +89,21 @@ The Viam app lists the secret keys for a location in the **Location Secret Keys*
 
 Copy the secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
-Use this key in your code to authenticate access to the Robot or Signaling Service (App API).
+Use this key in your SDK code and scripts to authenticate your access to the robots in your location in the cloud.
 
 {{% alert title="Caution" color="caution" %}}
-Be cautious when sharing *location secret keys* in your code or messages.
+Be cautious when sharing location secret keys in your code or messages.
 
 Do not make a valid key publicly available, as any entity attempting to access your location who has this token will be authenticated, compromising the security of your system.
 
-Note *where* and *when* you utilize a key for sharing a location, and be aware that generating a new secret key will render all older keys invalid.
+Note *where* and *when* you share a location secret key. After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible.
 {{% /alert %}}
 
 #### Share a location with Viam Support
 
 You must share your location with the Viam Support team when requesting support.
 To do so, navigate to the proper location and click, **ADD VIAM SUPPORT**.
-The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from your location.
+The button toggles to **REMOVE VIAM SUPPORT**. Click to remove Viam Support from your location.
 
 #### Removing an organization from a shared location
 
@@ -210,7 +210,7 @@ This tab gives you the option of working on customizing your robot's functionali
 ### Security
 
 The **SECURITY** tab allows you to access and exchange the **Robot Part Secret Keys** of your robot.
-A *robot part secret* is a unique secret used by the robot to communicate with the cloud.
+A robot part secret is a unique secret used by the robot to communicate with the cloud.
 
 {{< figure src="../img/app-usage/robot-part-secret-keys-drop-down.png" width="800px" alt="Screenshot of the SECURITY tab of a robot's page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down." title="Screenshot of the SECURITY tab of a robot's page." >}}
 
@@ -218,9 +218,9 @@ Copy the secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
 
 {{% alert title="Caution" color="caution" %}}
-Be cautious when sharing *robot part secret keys* in your code or messages.
+Be cautious when sharing robot part secret keys in your code or messages.
 
 Do not make a valid key publicly available, as any entity attempting to access your robot who has this token will be authenticated, compromising the security of your system.
 
-Note *where* and *when* you share a robot part secret key, and be aware that generating a new secret key will render all older keys invalid.
+Note *where* and *when* you share a robot part secret key. After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible.
 {{% /alert %}}
