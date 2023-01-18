@@ -10,19 +10,19 @@ icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
 This page explains how to set up a generic sensor component with Viam.
-Viam has a few types of sensor implemented including an ultrasonic sensor, but this doc covers setting up a custom sensor so you can build a robot using almost any sort of sensor.
+Viam has a few types of sensor implemented including an ultrasonic sensor, temperature sensors and more, but this doc covers setting up a custom sensor so you can build a robot using almost any sort of sensor.
 
 {{% alert title="Note" color="note" %}}
 
-Viam has a separate, more specific component type called *movement sensor* specifically for Global Positioning Systems (GPS) units, IMUs, and other sensors that detect position, velocity, and acceleration.
+Viam has a separate, more specific component type called [movement sensor](/components/movement-sensor/) specifically for Global Positioning Systems (GPS) units, IMUs, and other sensors that detect position, velocity, and acceleration.
 
 {{% /alert %}}
 
-* [Encoders (component type)](/components/movement-sensor//).
+
 
 ## Hardware Requirements
 
-* Some sort of sensor, such as a [ultrasonic sensor](/components/ultrasonic-sensor/), [encoder](/components/encoder/), or [IMU](/components/imu/), or any other sensor that can connect to a robot.
+* [Ultrasonic sensor](/components/ultrasonic-sensor/), [encoder](/components/encoder/), or [IMU](/components/imu/), or any other sensor that can connect to a robot.
 * A [board](/components/board/)
 * Depending on the your sensor's output, an analog to digital converter may be necessary to allow the sensor to communicate with the board.
 
