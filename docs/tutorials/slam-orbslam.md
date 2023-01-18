@@ -102,7 +102,7 @@ Paste the following into the **Attributes** field of the SLAM service:
   "use_live_data": true,
   "delete_processed_data": false,
   "map_rate_sec": 60,
-  "data_rate_ms": 200,
+  "data_rate_msec": 200,
   "sensors": [
     "color"
   ],
@@ -130,7 +130,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
         "data_dir": "/home/YOUR_USERNAME/data",
         "use_live_data": true,
         "map_rate_sec": 60,
-        "data_rate_ms": 200,
+        "data_rate_msec": 200,
         "sensors": [
           "color"
         ],
@@ -199,7 +199,7 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration toget
         "use_live_data": true,
         "delete_processed_data": false,
         "map_rate_sec": 60,
-        "data_rate_ms": 200,
+        "data_rate_msec": 200,
         "sensors": [
           "color"
         ],
@@ -277,7 +277,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
       "type": "slam",
       "model": "orbslamv3",
       "attributes": {
-        "data_rate_ms": 200,
+        "data_rate_msec": 200,
         "sensors": [],
         "use_live_data": false,
         "delete_processed_data": false,
