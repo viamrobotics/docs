@@ -220,6 +220,7 @@ In the **CONFIG** tab, select the **Raw JSON** mode, then copy/paste the followi
 * Edit `"/home/YOUR_USERNAME/cartographer_dir"` to be your home directory path followed by `/cartographer_dir`.
   * This tells the service to create a directory named `cartographer_dir` within your home directory, and to save all data and maps to that location.
   * To find your machine's home directory path, run the `pwd` command in your terminal. Make sure to do this while your terminal is at the home directory level (denoted by `~`).
+  
 {{% alert title="Note" color="note" %}}
 If you are using a Raspberry Pi as your machine, you must `ssh` into your Pi to complete this step.
 
@@ -227,9 +228,9 @@ If you are using a Raspberry Pi as your machine, you must `ssh` into your Pi to 
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
 ```
-
 {{% /alert %}}
-6. Click **Save Config** to save the service.
+
+1. Click **Save Config** to save the service.
 
 At this point, your complete configuration should look like:
 
@@ -407,7 +408,6 @@ If you're using a Raspberry Pi as your machine, you must `ssh` into your Pi to c
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
 ```
-
 {{% /alert %}}
 
 5. Head over to the **CONTROL** tab and click on the drop-down menu of the service you created.
