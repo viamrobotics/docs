@@ -31,12 +31,12 @@ The wiring for your sensor depends on the specific sensor you are using. Refer t
 
 To create a custom sensor, you must create a set of attributes unique to that sensor model:
 
-| key | description |
-| --- | ------------ |
-| `name` |  The name that you use to refer to the sensor in your code. |
-| `type` |  For a sensor, the type is `sensor`. |
-| `model` |  The name you gave your custom sensor model |
-| `name` |
+| Key     | Description                                                |
+| ------- | ---------------------------------------------------------- |
+| `name`  | The name that you use to refer to the sensor in your code. |
+| `type`  | For a sensor, the type is `sensor`.                        |
+| `model` | The name you gave your custom sensor model                 |
+| `name`  |
 
 Don't forget to include any required attributes you define in your custom sensor component implementation.
 
