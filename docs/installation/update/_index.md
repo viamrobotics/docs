@@ -9,7 +9,9 @@ draft: false
 
 ## Channels
 
-There are two main channels for updates. If you download a file for one of them, its self-update function will only look for updates from that particular channel. That is to say, “latest” will get a lot of updates, and “stable” will get them less frequently.
+There are two main channels for updates.
+If you download a file for one of them, its self-update function will only look for updates from that particular channel.
+That is to say, “latest” will get a lot of updates, and “stable” will get them less frequently.
 
 ### Latest
 
@@ -18,10 +20,6 @@ This is updated on every merge to the main branch of the codebase from which `vi
 ### Stable
 
 Updates will be far less frequent.
-
-### Version-specific
-
-Lastly, there are also version-specific channels. If you download a file that has an explicit version in the name (e.g. viam-server-v0.1.2-aarch64.AppImage) then it will only check for updates against that exact version, effectively never updating. As such, installs of a specific version should generally be avoided, and this “channel” only exists for troubleshooting/archival purposes.
 
 ## Update Methods
 

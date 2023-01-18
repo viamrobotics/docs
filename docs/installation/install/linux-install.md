@@ -1,5 +1,5 @@
 ---
-title: "Installing Viam Server on Linux Systems"
+title: "Installing viam-server on Linux Systems"
 linkTitle: "Linux Install"
 weight: 30
 type: "docs"
@@ -7,6 +7,7 @@ aliases:
     - /getting-started/linux-install/
 # SME: James
 ---
+
 The viam-server is distributed as an AppImage.
 The AppImage is a single, self-contained binary that should run on any Linux system with the correct CPU architecture, with no need to install any dependencies (excepting FUSE as detailed in the troubleshooting section at the end).
 MacOS users will need to follow the [installing viam-server on macOS guide](../macos-install/).
@@ -46,7 +47,8 @@ To run viam-server, you have two options:
 
 #### Running Directly from the Command Line
 
-To run viam-server directly from the command line, you can use the following command, replacing "myconfig" with the name of your configuration file. `sudo` is necessary on a Pi to access GPIO pins, and it may be necessary in other cases depending on hardware permissions.
+To run viam-server directly from the command line, you can use the following command, replacing "myconfig" with the name of your configuration file.
+`sudo` is necessary on a Pi to access GPIO pins, and it may be necessary in other cases depending on hardware permissions.
 
 ```bash
 sudo ./viam-server -config myconfig.json

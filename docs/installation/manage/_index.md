@@ -2,13 +2,18 @@
 title: "Manage viam-server"
 linkTitle: "Manage"
 weight: 30
-simple_list: false
+no_list: true
 type: docs
 draft: false
 ---
 
+How you control viam-server will depend on whether or not you installed it as a system service.
+Find information for each situation in the tabs below.
+
 {{< tabs name="Starting and stopping viam-server">}}
 {{% tab name="Linux"%}}
+
+### As a system service
 
 After setting up the system service per the [Linux install instructions](/installation/install/linux-install/), the AppImage binary will be located at <file>/usr/local/bin/viam-server</file>, and a systemd service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
 
@@ -48,6 +53,8 @@ sudo systemctl disable viam-server
 ```
 
 <br>
+
+### From the command line
 
 If you want to run the binary directly, be sure to stop the service first, then run `sudo /usr/local/bin/viam-server path/to/my/config.json`.
 Note that on a Raspberry Pi, viam-server must always run as root in order to access the DMA subsystem for GPIO.

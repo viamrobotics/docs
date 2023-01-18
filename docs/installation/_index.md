@@ -2,7 +2,7 @@
 title: "Installation Guide"
 linkTitle: "Installation Guide"
 weight: 15
-simple_list: false
+no_list: true
 type: docs
 draft: false
 ---

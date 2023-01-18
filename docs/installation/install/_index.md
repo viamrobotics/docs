@@ -2,7 +2,7 @@
 title: "Install viam-server"
 linkTitle: "Install viam-server"
 weight: 20
-simple_list: false
+no_list: true
 type: docs
 ---
 
