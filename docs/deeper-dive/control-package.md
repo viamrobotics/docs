@@ -19,16 +19,18 @@ In this representation, the control loop is broken down into successive "blocks"
 
 ## Example
 
-In the following example, a control loop is defined to control the speed of a motor.
+The following example is a block diagram of a control loop defined to control the speed of a motor.
 The motor has an encoder that reports the position of the motor.
 
-To obtain the speed, you must derive its position.
-Since measuring the position and deriving it to get the speed introduces some error, you need to apply a filter to remove that noise.
+Measuring the reported position and deriving it to get the speed introduces some error, so you must apply a filter to remove the noise.
 
-We then calculate our error, (*SP-PV*) (in this particular case PV is the speed of the motor), and feed it into our PID.
-The PID controller applies a  correction to a control function, and outputs (for example, PWM) that can be given as output to the endpoint block.
+Then, calculate the error (*SP-PV*) (in this particular case PV is the speed of the motor) and feed it into your PID.
 
-An important attribute of the control loop is the frequency at which it runs, basically the higher the frequency the better the control. That is, with more frequent steps, the resulting error is smaller, which translates into smaller corrections at each step of the control loop.
+The PID controller applies a correction to a control function, and outputs the result of this correction to the endpoint block.
+
+An important attribute of the control loop is the frequency at which it runs. 
+The higher the frequency, the better the control. 
+With more frequent steps the resulting error is smaller, which translates into smaller corrections at each step of the control loop.
 
 ``` asciidoc
 
@@ -165,11 +167,11 @@ Where:
 Finding the proper gains for a PID controller can be quite difficult.
 There are two main approaches that one can use:
 
-1.**Manual Tuning** - With this approach, the user tries different gains values and, using some visual feedback, adjusts them until a stable control can be achieved.
+  1. **Manual Tuning** - With this approach, the user tries different gains values and, using some visual feedback, adjusts them until a stable control can be achieved.
 
 In most cases this is not a suitable way to estimate gains.
 
-2.**System Identification** - With this approach, the user attempts to measure quantitative plant data and estimate the proper gains values from these characteristics.
+  2. **System Identification** - With this approach, the user attempts to measure quantitative plant data and estimate the proper gains values from these characteristics.
 
 Our current implementation records the step response of the plant and uses the relay method to estimate the ultimate gain (*Ku*) and oscillation period (*Tu*) of the plant.
 
