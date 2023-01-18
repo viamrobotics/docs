@@ -1,11 +1,6 @@
 ---
-<<<<<<<< HEAD:docs/tutorials/slam-orbslam.md
 title: "Run SLAM on your Robot using a camera"
 linkTitle: "Run SLAM on your Robot using a camera"
-========
-title: "Run SLAM on your Robot"
-linkTitle: "Run SLAM on your Robot"
->>>>>>>> 0d70602 (DOCS-341: Reorganize docs (#594)):docs/services/slam/run-slam.md
 weight: 50
 type: "docs"
 draft: false
