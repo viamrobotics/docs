@@ -89,7 +89,7 @@ The following is an example configuration for running ORB-SLAM3 in live `rgbd` m
       "sensors": ["color", "depth"],
       "use_live_data": true,
       "map_rate_sec": 60,
-      "data_rate_ms": 200,
+      "data_rate_msec": 200,
       "config_params": {
         "mode": "rgbd"
       }
@@ -112,7 +112,7 @@ Here is an example configuration:
       "sensors": [],
       "use_live_data": false,
       "map_rate_sec": 120,
-      "data_rate_ms": 100,
+      "data_rate_msec": 100,
       "config_params": {
         "mode": "mono"
       }
@@ -162,7 +162,7 @@ You can find more information on the `mode` in the description of the integrated
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
 | `map_rate_sec` | int | (optional) Map generation rate for saving current state (in seconds). The default value is `60`. Note: Setting `map_rate_sec` to a value of `0` causes the system to reset it to its default value of `60`.|
-| `data_rate_ms` | int |  (optional) Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. |
+| `data_rate_msec` | int |  (optional) Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. |
 | `port` | string |  (optional) Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
 | `delete_processed_data` | bool |  (optional) With `delete_processed_data: true` sensor data is deleted after the SLAM algorithm has processed it. This helps reduce the amount of memory required to run SLAM. If `use_live_data: true`, the `delete_processed_data` defaults to `true` and if `use_live_data: false`, it defaults to false. A `delete_processed_data: true` when `use_live_data: false` is invalid and will result in an error. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
@@ -190,7 +190,7 @@ To recap, the directory is required to be structured as follows:
     └── config
 </pre>
 
-- `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `data_rate_ms`.
+- `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `data_rate_msec`.
 - `map` contains the generated maps, saved at `map_rate_sec`.
 - `config` contains all SLAM library specific config files.
 
@@ -224,7 +224,7 @@ In this example, `mono` is selected with one camera stream named `color`:
       "use_live_data": true,
       "delete_processed_data": false,
       "map_rate_sec": 60,
-      "data_rate_ms": 200,
+      "data_rate_msec": 200,
       "config_params": {
         "mode": "mono"
       }
