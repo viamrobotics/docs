@@ -62,7 +62,7 @@ Follow the <a href="https://github.com/viam-labs/camera-calibration" target="_bl
 ### Webcam
 
 `webcam` is a model that streams the camera data from a camera connected to the hardware.
-See our [How to Configure a Camera](/tutorials/configure-a-camera.md/) tutorial for a guide to configuring webcams.
+See our [How to Configure a Camera](/tutorials/configure-a-camera/) tutorial for a guide to configuring webcams.
 
 {{% alert title="Note" color="note"%}}
 In Viam parlance, webcams are standard, USB camera devices.
