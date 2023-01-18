@@ -14,10 +14,11 @@ Viam has a few types of sensor implemented including an ultrasonic sensor, tempe
 
 {{% alert title="Note" color="note" %}}
 
-Viam has a separate, more specific component type called [movement sensor](/components/movement-sensor/) specifically for Global Positioning Systems (GPS) units, IMUs, and other sensors that detect position, velocity, and acceleration.
+Viam has a separate, more specific component type called [movement sensor](/components/movement-sensor/) specifically for Global Positioning System (GPS) units, IMUs, and other sensors that detect position, velocity, and acceleration.
+
+Viam also has an [encoder component](/components/encoder/) that is distinct from sensor.
 
 {{% /alert %}}
-
 
 
 ## Hardware Requirements
