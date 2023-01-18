@@ -159,12 +159,6 @@ An example configuration file, including the board, motors, and base:
 `spin_slip_factor` (float): Used in steering calculations to correct for slippage between the wheels and the floor.
 To be calibrated by the user.
 
-## Implementation
-
-[Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
-
-[Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
-
 ## API
 
 The base component supports the following methods:
@@ -185,6 +179,9 @@ The base component supports the following methods:
 [python_stop]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.stop
 
 ### Control your base with Viam's Client SDK Libraries
+
+- [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
+- [Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
 
 {{% alert title="Note" color="note" %}}
 
@@ -262,7 +259,7 @@ func main() {
   if err != nil {
     logger.Fatalf("cannot get base: %v", err)
   }
-  
+
 }
 ```
 
@@ -271,7 +268,7 @@ func main() {
 
 ### MoveStraight
 
-Move the base in a straight line across the given distance (*mm*) at the given velocity (*mm/sec*).
+Move the base in a straight line across the given distance (mm) at the given velocity (mm/sec).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -287,7 +284,7 @@ Negative implies backwards.
 
 - None
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight).
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
@@ -335,7 +332,7 @@ myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: -1)
 
 ### Spin
 
-Move the base in a spinning motion, rotating it to the given angle (*degrees*) at the given angular velocity (*degrees/sec*).
+Move the base in a spinning motion, rotating it to the given angle (degrees) at the given angular velocity (degrees/sec).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -376,7 +373,7 @@ Negative implies backwards.
 
 - [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
@@ -401,9 +398,9 @@ Set the linear and angular power of the base, represented as a percentage of max
 **Parameters:**
 
 - *linear* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the linear power  of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Negative values imply a backwards direction in linear terms.
-Use solely the Y component of the vector when configuring a wheeled base.
-- `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the angular power of the base. In the range of [-1.0 to 1.0], with 1.0 meaning 100%. Here, a positive value implies turning in a leftward direction and a negative value implies turning to the right.
-Use only the Z component of the vector when controlling a wheeled base.
+Use only the Y component of the vector when configuring a wheeled base.
+- *angular* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the angular power  of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Here, a positive value implies turning in a leftward direction and a negative value implies turning to the right.
+Use only the Z component of the vector when configuring a wheeled base.
 
 **Returns:**
 
@@ -488,7 +485,7 @@ if err != nil {
 
 ### SetVelocity
 
-Set the linear velocity (*mm/sec*) and angular velocity (*degrees/sec*) of the base.
+Set the linear velocity (mm/sec) and angular velocity (degrees/sec) of the base.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -503,7 +500,7 @@ Only the Y component of the vector is used for a wheeled base.
 
 - None
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity).
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
@@ -526,7 +523,7 @@ await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z
 
 - [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 ```go
 import "github.com/golang/geo/r3"
@@ -558,7 +555,7 @@ Stop the base from moving immediately.
 
 - None.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop).
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
@@ -582,7 +579,7 @@ await myBase.stop()
 
 - [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
