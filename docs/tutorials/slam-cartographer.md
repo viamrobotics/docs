@@ -17,33 +17,34 @@ Breaking changes are likely to occur, and occur often.
 
 ## Introduction
 
-[SLAM](../../services/slam/) allows your robot to create a map of its surroundings, as well as find its location within that map.
+[SLAM](../../services/slam/) allows your robot to create a map of its surroundings and find its location within that map.
 
 This tutorial shows you how to run [Cartographer](https://github.com/cartographer-project) on your robot.
+
 You have two choices:
 
 * Run SLAM in online mode with an [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
-* Run SLAM in offline mode either with collected data or our provided example data.
+* Run SLAM in offline mode with the provided example data or data you have collected.
 
 ## Requirements
 
 * A Linux or macOS machine with the viam-server installed. You can find instructions for installing the viam-server on your machine in the **Setup** section.
-* If you are using a Raspberry Pi, you will need to install the Raspberry Pi OS on it. refer to [Installing Raspberry Pi OS on the Raspberry Pi](../../installation/rpi-setup/#installing-raspberry-pi-os), if necessary.
+* If you are using a Raspberry Pi, you must have Raspberry Pi OS installed on it. Refer to [Installing Raspberry Pi OS on the Raspberry Pi](../../installation/rpi-setup/#installing-raspberry-pi-os).
 * [optionally] An [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
 
 ## Setup
 
-If you haven’t already, please install the viam-server and set up your machine on the [Viam app](https://app.viam.com) per these instructions:
+If you haven’t already, install the viam-server and set up your machine on the [Viam app](https://app.viam.com) per these instructions:
 
 * [Linux install](/installation/linux-install/)
 * [macOS install](/installation/macos-install/)
 * [Raspberry Pi setup](/installation/rpi-setup/)
 
-Next, we'll install the Cartographer binary.
+Next, install the Cartographer binary.
 
 ### Installing Cartographer
 
-To install Cartographer, use one of the following based off your architecture:
+Install Cartographer with one of these commands:
 
 {{< tabs >}}
 {{% tab name="macOS" %}}
@@ -71,18 +72,18 @@ To install Cartographer, use one of the following based off your architecture:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Running Cartographer with an Rplidar
+## Running Cartographer with a Rplidar
 
-The following setup allows you to run Cartographer in live mode using an Rplidar.
+Run Cartographer in live mode using a Rplidar:
 
-### Configuration using Viam
+### Configuration with Viam
 
 The configuration of SLAM happens in two steps:
 
 1. Add an Rplidar as a modular component.
 2. Add SLAM to the existing configuration.
 
-#### Add an Rplidar
+#### Add Rdiplar as a Modular Component
 
 First, we need to install the Rplidar Module:
 
@@ -112,8 +113,9 @@ First, we need to install the Rplidar Module:
 {{% /tab %}}
 {{< /tabs >}}
 
-Connect the Rplidar into your machine. Add it as a modular component to your configuration on the [Viam app](https://app.viam.com/).
-Go to your robot's page on the [Viam app](https://app.viam.com/). In the **CONFIG** tab, click on "Raw JSON" and copy/paste the following configuration:
+Connect the Rplidar to your machine by adding it as a modular component to your configuration in the [Viam app](https://app.viam.com/).
+To do this, go to your robot's page on the [Viam app](https://app.viam.com/).
+In the **CONFIG** tab, click on "Raw JSON" and copy/paste the following configuration:
 
 {{< tabs >}}
 {{% tab name="macOS" %}}
@@ -167,14 +169,14 @@ Go to your robot's page on the [Viam app](https://app.viam.com/). In the **CONFI
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Add SLAM to the configuration
+#### Add SLAM to the Existing Configuration
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
-On the **CONFIG** tab, click the **SERVICES** sub-tab.
+On the **CONFIG** tab, click the **SERVICES** sub tab.
 
-Create a service with type `slam`, a name (we called ours `run-slam`) and a model `cartographer`.
+Create a service with type `slam`, a name (example: `run-slam`) and a model (`cartographer`).
 
-Paste the following into the **Attributes** field of the SLAM service:
+Paste the following into the **Attributes** field of this SLAM service:
 
 ```json
 {
@@ -192,7 +194,7 @@ Paste the following into the **Attributes** field of the SLAM service:
 }
 ```
 
-{{%expand "Click here if you prefer to use raw JSON rather than editing the Attributes field" %}}
+{{%expand "Click here if you prefer to use raw JSON rather than editing the **Attributes** field" %}}
 Click "Raw JSON" on the **CONFIG** tab, then copy/paste the following configuration:
 
 ```json-viam
@@ -221,16 +223,19 @@ Click "Raw JSON" on the **CONFIG** tab, then copy/paste the following configurat
 {{% /expand %}}
 <br>
 
-Change the `"data_dir": "/home/YOUR_USERNAME/cartographer_dir"` directory to your home directory, followed by `/cartographer_dir`. You can find the path to your home directory by typing `pwd` in the terminal on your machine. To do this on an RPI, you will need to `ssh` into it first. This is an example of what you might see on an RPi:
+Change the `"data_dir": "/home/YOUR_USERNAME/cartographer_dir"` directory to your home directory followed by `/cartographer_dir`. You can find the path to your home directory by running `pwd` in your machine's terminal.
+
+To run this command on an Rasberry Pi you must `ssh` into the Pi first.
+After SSH'ing into your pi and running the `pwd` command, your terminal should look like this:
 
 ```bash
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
 ```
 
-Doing this tells the slam service to create a directory named `cartographer_dir` and to save all data and maps to that location. Save the config.
+Changing the `"data_dir"` directory path tells the slam service to create a directory named `cartographer_dir` and to save all data and maps to that location. Save the config.
 
-In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration together with the Rplidar module now looks like this:
+If `YOUR_USERNAME` was `slam-bot`, your complete configuration with the Rplidar module should now look like this:
 
 {{< tabs >}}
 {{% tab name="macOS" %}}
@@ -331,23 +336,23 @@ Change the **Refresh frequency** to your desired frequency, move the Rplidar aro
 
 ## Running Cartographer with a dataset
 
-The following setup allows you to run Cartographer in offline mode using either one of your previously saved datasets, or our dataset that you can download and play with.
+Run Cartographer in offline mode using one of your previously saved datasets or Viam's lab dataset you can download and play with.
 
 ### The dataset
 
-In offline mode, SLAM will use an existing dataset to create a map.
+In offline mode SLAM uses an existing dataset to create a map.
 
-You might have a lidar dataset already saved in your `data_dir/data` directory from running SLAM in live mode.
-If not, don't worry! You can download our dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-old-office-small-pcd.zip" target="_blank">Viam Old Office - Cartographer</a>.
+You may have a lidar dataset already saved in your `data_dir/data` directory from running SLAM in live mode.
+If you do not already have this, you can download Viam's lab dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-old-office-small-pcd.zip" target="_blank">Viam Old Office - Cartographer</a>.
 
-If you downloaded our dataset and are using a Raspberry Pi, and assuming that the zip file is now located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following command:
+If you have downloaded Viam's lab dataset and are using a Raspberry Pi, assuming that the zip file is now located in your `~/Downloads` folder you can copy/paste it into your Pi by running this command:
 
 ```bash
 scp ~/Downloads/viam-old-office-small-pcd.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
 ```
 
-Be sure to replace `YOUR_USERNAME` and `YOUR_RPI_NAME` with your username and Pi name.
-The dataset is large, so it might take a while for it to copy over to your Pi.
+Replace `YOUR_USERNAME` and `YOUR_RPI_NAME` with your username and Pi name.
+The dataset is large, so it may take a while for it to copy over to your Pi.
 
 Next, `ssh` into your Pi, and run:
 
@@ -357,11 +362,11 @@ unzip viam-old-office-small-pcd.zip
 
 Now you're ready to configure SLAM to use your dataset and to run in offline mode.
 
-### Configuration using Viam
+### Configuring SLAM with Viam
 
-Next, we will add SLAM to the configuration. To enable offline mode, we will set the `use_live_data` flag to `false`. This tells the slam service to only use data found within the data directory you specified in your config.
+Next, add SLAM to your configuration on the Viam app. To enable offline mode, set the `use_live_data` flag to `false`. This tells the slam service to use only data found within the data directory you specified in your config.
 
-In your web browser, navigate to the robot you set up on the Viam app ([https://app.viam.com](https://app.viam.com)).
+In your web browser, navigate to your robot on the Viam app ([https://app.viam.com](https://app.viam.com)).
 In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
 
 ```json-viam
@@ -390,7 +395,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 }
 ```
 
-Change the `"data_dir": "/home/YOUR_USERNAME/viam-old-office-small-pcd"` directory to your home directory that you found out by typing `pwd`, followed by `viam-old-office-small-pcd`
+Change the `"data_dir": "/home/YOUR_USERNAME/viam-old-office-small-pcd"` directory path to your home directory path (found when running `pwd`), followed by `viam-old-office-small-pcd`.
 
 Head over to the **CONTROL** tab and choose the "run-slam" drop-down menu.
 Change the "Refresh frequency" to your desired frequency and watch a map come to life using the data in your dataset!
@@ -403,7 +408,7 @@ When generating a larger map, it can take longer for cartographer to return the 
 
 ### Issue: Maps not appearing as expected
 
-For cartographer, only `2D SLAM` is implemented currently. Because of this, cartographer assumes your LiDAR will remain at roughly the same height while in use. If maps are not building the way you expect, ensure your lidar is secure and at roughly the same height throughout the run.
+For Cartographer, only `2D SLAM` is implemented currently. Because of this, Cartographer assumes your LiDAR will remain at roughly the same height while in use. If maps are not building the way you expect, ensure your lidar is secure and at roughly the same height throughout the run.
 
 ## Additional Troubleshooting
 
