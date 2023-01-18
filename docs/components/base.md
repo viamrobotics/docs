@@ -434,7 +434,7 @@ await myBase.set_power(linear=Vector3(x=0,y=-1.0,z=0), angular=Vector3(x=0,y=0,z
 **Parameters:**
 
 - [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `linear` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The rate and direction of the linear power of the base. In the range of [-1.0 to 1.0], with 1.0 meaning 100%. Here, negative values imply a backwards direction. Use only the Y component of the vector when controlling a wheeled base, as the Y vector points forward.
+- *linear* [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The rate and direction of the linear power of the base. In the range of [-1.0 to 1.0], with 1.0 meaning 100%. Here, negative values imply a backwards direction. Use only the Y component of the vector when controlling a wheeled base, as the Y vector points forward.
 - *angular* [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The rate and direction of the angular power of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Here, a positive value implies turning in a leftward direction and a negative value implies turning to the right.
 Use only the Z component of the vector when controlling a wheeled base.
 - extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
