@@ -17,21 +17,28 @@ Viam has a separate, more specific component type called [movement sensor](/comp
 
 {{% /alert %}}
 
-
-
 ## Hardware Requirements
 
 * [Ultrasonic sensor](/components/ultrasonic-sensor/), [encoder](/components/encoder/), or [IMU](/components/imu/), or any other sensor that can connect to a robot.
 * A [board](/components/board/)
-* Depending on the your sensor's output, an analog to digital converter may be necessary to allow the sensor to communicate with the board.
+* Depending on your sensor's output, an analog to digital converter may be necessary to allow the sensor to communicate with the board.
 
 ## Wiring
 
-This depends on the sensor. Refer to the sensor’s data sheet for wiring details.
+The wiring for your sensor depends on the specific sensor you are using. Refer to the sensor’s data sheet for wiring details.
 
 ## Viam Configuration
 
-When you create a custom sensor you’ll create a set of attributes unique to that sensor model. The JSON file you create must include a type (`sensor`), model (whatever you named your custom sensor model), and name (of your choice; used to see that specific sensor in your code). You also must include whatever required attributes you define in your custom sensor component implementation.
+To create a custom sensor, you must create a set of attributes unique to that sensor model:
+
+| key | description |
+| --- | ------------ |
+| `name` |  The name that you use to refer to the sensor in your code. |
+| `type` |  For a sensor, the type is `sensor`. |
+| `model` |  The name you gave your custom sensor model |
+| `name` |
+
+Don't forget to include any required attributes you define in your custom sensor component implementation.
 
 ``` json
 {
