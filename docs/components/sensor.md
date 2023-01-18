@@ -52,9 +52,8 @@ Don't forget to include any required attributes you define in your custom sensor
 
 ## Getting Started With Sensors and the Viam SDK
 
-This example code reads values from an ultrasonic sensor connected to a robot.
-
-Assumption: A sensor called "ultra1" configured as a component of your robot.
+The following example configures an ultrasonic sensor component for a robot called `ultra1`.
+Once configured, the code connects to the robot and reads values from the configured sensor:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -64,9 +63,7 @@ from viam.components.sensor import Sensor
 
 robot = await connect()
 sensor = Sensor.from_robot(robot, "ultra1")
-distance = await sensor.get_readings()["distance"]
-readings = await sensor.get_readings()["distance"]
-distance = readings["distance"]
+readings = await sensor.get_readings()
 ```
 
 {{% /tab %}}
@@ -78,10 +75,8 @@ import (
 )
 
 ultra, err := sensor.FromRobot(robot, "ultra1")
-distance, err := ultra.Readings(context.Background())
+readings, err := ultra.Readings(context.Background())
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
-
-You can read more about sensor implementation in the [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/sensor/index.html).
