@@ -36,12 +36,6 @@ You can download your robot's config file from the **SETUP** tab of your robot o
 
 4. **Connect and configure.** Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
 
-## How to troubleshoot viam-server on macOS
+### Next Steps
 
-If you have already successfully connected `viam-server` to the Viam app, you can find all the `viam-server` logs on the **LOGS** tab of the Viam app.
-
-You can also read viam-server's log files locally.
-
-```bash
-cat $(brew --prefix)/var/log/viam.log
-```
+Continue to our [Managing viam-server Guide](/installation/manage/) to learn about running viam-server.

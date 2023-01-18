@@ -3,7 +3,6 @@ title: "Installing Viam Server on Linux Systems"
 linkTitle: "Linux Install"
 weight: 30
 type: "docs"
-description: "How to install and run viam-server on Linux and sync a machine with the Viam app"
 aliases:
     - /getting-started/linux-install/
 # SME: James
@@ -55,7 +54,7 @@ sudo ./viam-server -config myconfig.json
 
 To connect this instance of viam-server with a [Viam app](https://app.viam.com) robot, the contents of <file>myconfig.json</file> should be pasted from the **COPY VIAM-SERVER CONFIG** button at the top right of the **SETUP** tab of your robot on [https://app.viam.com](https://app.viam.com).
 
-![Screenshot of the top of the SETUP tab showing the COPY VIAM-SERVER CONFIG button in the upper right, highlighted with a red box.](../img/linux-install/install-config-button.png)
+![Screenshot of the top of the SETUP tab showing the COPY VIAM-SERVER CONFIG button in the upper right, highlighted with a red box.](../../img/linux-install/install-config-button.png)
 
 #### Installing as a System Service
 
@@ -80,21 +79,4 @@ You can disable this by commenting out the ExecPre line (the one with --aix-upda
 
 ### Next Steps
 
-Continue to our [Managing viam-server guide](/docs/installation/manage/_index) to learn about running viam-server.
-
-### Troubleshooting
-
-#### SquashFS Errors
-
-Looks like this...
-
-```bash
-Feb 10 13:11:26 hydro3-pi viam-server[933]: Something went wrong trying to read the squashfs image.
-Feb 10 13:11:26 hydro3-pi viam-server[933]: open dir error: No such file or directory
-```
-
-The update process may have been interrupted and left a corrupt file. Simply redownload the new file as instructed above.
-
-#### FUSE Errors
-
-FUSE (Filesystem-in-Userspace), is included in almost all modern Linux distributions by default. (The one real exception is that it doesn’t work (by default) due to security restrictions within Docker containers.) For more information on troubleshooting FUSE-related issues (including Docker workarounds) see here: [I get some errors related to something called “FUSE” — AppImage documentation](https://docs.appimage.org/user-guide/troubleshooting/fuse.html)
+Continue to our [Managing viam-server Guide](/installation/manage/) to learn about running viam-server.
