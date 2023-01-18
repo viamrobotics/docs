@@ -177,7 +177,7 @@ The base component supports the following methods:
 [SetVelocity](#setvelocity) | [SetVelocity][go_base] | [set_velocity][python_set_velocity] | Set the linear velocity and angular velocity of the base. |
 [Stop](#stop) | [Stop][go_base] | [stop][python_stop] | Stop the base. |
 
-[go_base]: https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/base#Base
+[go_base]: https://pkg.go.dev/go.viam.com/rdk/components/base#Base
 [python_move_straight]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.move_straight
 [python_spin]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.spin
 [python_set_power]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_power
@@ -190,7 +190,8 @@ The base component supports the following methods:
 
 Make sure you have set up your robot and connected it to the Viam app. Check out the [Client SDK Libraries Quick Start](/product-overviews/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/getting-started/) for app-specific guidance.
 
-The following example assumes you have a base called "my_base" which is configured as a component of your robot on your Viam app. If your base has a different name, change the `name` in the example.
+The following example assumes you have a base called "my_base" which is configured as a component of your robot in the Viam app.
+If your base has a different name, change the `name` in the example.
 
 {{% /alert %}}
 
@@ -314,7 +315,7 @@ Negative implies backwards.
 
 - [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
@@ -350,7 +351,7 @@ Negative implies backwards.
 
 - None
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin).
 
 ```python
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
@@ -392,7 +393,7 @@ myBase.Spin(context.Background(), angleDeg: 10, degsPerSec: 1)
 
 ### SetPower
 
-Set the linear and angular [power](https://www.britannica.com/science/power-physics) of the base, represented as the power rate for each direction in the range of (*-1.0 to 1.0*).
+Set the linear and angular power of the base, represented as a percentage of max power for each direction in the range of [-1.0 to 1.0].
 
 {{< tabs >}}
 {{% tab name="Python" %}}
