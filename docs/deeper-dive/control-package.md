@@ -28,8 +28,8 @@ Then, calculate the error (*SP-PV*) (in this particular case PV is the speed of 
 
 The PID controller applies a correction to a control function, and outputs the result of this correction to the endpoint block.
 
-An important attribute of the control loop is the frequency at which it runs. 
-The higher the frequency, the better the control. 
+An important attribute of the control loop is the frequency at which it runs.
+The higher the frequency, the better the control.
 With more frequent steps the resulting error is smaller, which translates into smaller corrections at each step of the control loop.
 
 ``` asciidoc
@@ -167,13 +167,10 @@ Where:
 Finding the proper gains for a PID controller can be quite difficult.
 There are two main approaches that one can use:
 
-  1. **Manual Tuning** - With this approach, the user tries different gains values and, using some visual feedback, adjusts them until a stable control can be achieved.
-
-In most cases this is not a suitable way to estimate gains.
-
+  1. **Manual Tuning** - With this approach, the user tries different gains values and, using some visual feedback, adjusts them until a stable control can be achieved. In most cases this is not a suitable way to estimate gains.
   2. **System Identification** - With this approach, the user attempts to measure quantitative plant data and estimate the proper gains values from these characteristics.
 
-Our current implementation records the step response of the plant and uses the relay method to estimate the ultimate gain (*Ku*) and oscillation period (*Tu*) of the plant.
+The following implementation records the step response of the plant and uses the relay method to estimate the ultimate gain (*Ku*) and oscillation period (*Tu*) of the plant.
 
 Several methods to calculate Kp, Ki and Kd are implemented.
 
@@ -233,7 +230,7 @@ Position control of a motor can be achieved using the Trapezoidal Velocity Profi
 
 On receipt of a newly submitted set point, this block generates a velocity profile given the constraints set in the configuration.
 
-This velocity profile can be divided into 3 phases: Acceleration, Constant Speed, and Deceleration
+This velocity profile can be divided into three phases: Acceleration, Constant Speed, and Deceleration
 
 The generated profile is also dynamically adjusted during the deceleration phase, ensuring the end position remains in the position window.
 
