@@ -397,7 +397,7 @@ Set the linear and angular power of the base, represented as a percentage of max
 
 **Parameters:**
 
-- *linear* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the linear power  of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Negative values imply a backwards direction in linear terms.
+- *linear* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the linear power of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Negative values imply a backwards direction in linear terms.
 Use only the Y component of the vector when configuring a wheeled base.
 - *angular* [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the angular power  of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Here, a positive value implies turning in a leftward direction and a negative value implies turning to the right.
 Use only the Z component of the vector when configuring a wheeled base.
