@@ -250,7 +250,7 @@ func main() {
   // Delay closing your connection to your robot until main() exits. 
   defer robot.Close(context.Background())
 
-  // Log an info message with the names of the difference resources that are connected to your robot. 
+  // Log an info message with the names of the different resources that are connected to your robot. 
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
 
