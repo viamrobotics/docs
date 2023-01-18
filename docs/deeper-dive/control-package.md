@@ -229,12 +229,10 @@ Sum blocks sum a number of Signals following a set sum\_string.
 Position control of a motor can be achieved using the Trapezoidal Velocity Profile generator.
 
 On receipt of a newly submitted set point, this block generates a velocity profile given the constraints set in the configuration.
-
 This velocity profile can be divided into three phases: Acceleration, Constant Speed, and Deceleration
 
 The generated profile is also dynamically adjusted during the deceleration phase, ensuring the end position remains in the position window.
-
-The block also works as a deadband controller when the arget position is reached, preventing the motor from moving outside of the position window.
+The block also works as a deadband controller when the target position is reached, preventing the motor from moving outside of the position window.
 
 ``` json
 "name":"trapz",
