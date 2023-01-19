@@ -14,11 +14,11 @@ If you don’t have a Viam Rover yet, you can [buy one here](https://www.viam.co
 
 ## Prerequisites
 
-* Raspberry Pi with Raspberry Pi OS Lite (64-bit) and `viam-server` installed.
-    To install Raspberry Pi OS abd `viam-server`, refer to the Raspberry Pi OS [installation guide](https://docs.viam.com/installation/rpi-setup/).
+* A Raspberry Pi 4 with Raspberry Pi OS Lite (64-bit) and `viam-server` installed.
+    To install Raspberry Pi OS and `viam-server`, refer to the Raspberry Pi OS [installation guide](https://docs.viam.com/installation/rpi-setup/).
 * The Pi is able to connect to [the Viam app](https://app.viam.com).
   To add your Pi to the Viam app, refer to [Adding your Pi on the Viam app](https://docs.viam.com/installation/rpi-setup/).
-* An assembled Viam Rover.
+* An assembled Viam Rover with the Raspberry Pi.
   For assembly instructions, see [Unbox and Set Up your Viam Rover](../rover-tutorial)
 
 ## Add the Fragment
@@ -32,7 +32,7 @@ On the **FRAGMENTS** tab, you can see the available fragments to add.
 Select `ViamRover202210b` for your Viam Rover.
 Click `ADD` to add the fragment to your robot configuration.
 
-![List of fragment](../img/fragments/fragments_list.png)
+![List of available fragments](../img/fragments/fragments_list.png)
 
 After you add the fragment, the config on the right side shows the robot's configuration with the new fragment.
 Click “Save Config” to save the new configuration.
@@ -70,7 +70,7 @@ The fragment adds the following components to your robot's JSON configuration:
 * A microphone, type: audio_input, with attributes "debug": false
 
 Adding a fragment to your robot adds the configuration to your robot but it does not automatically fill your robot configuration page in the app with these components.
-It is normal for your component tab on the builder view to be empty:
+It is normal for your **COMPONENTS** subtab on the builder view to be empty:
 
 ![Builder Tab](../img/fragments/builder_tab.png)
 
