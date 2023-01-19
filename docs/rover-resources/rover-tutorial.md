@@ -214,7 +214,7 @@ Due to the aluminum chassis and its expandable mounting features, you can extend
 With it, you can customize your rover by mounting additional sensors, lidar, robot arms...
 The following are just a few ideas, but you can expand or modify the rover kit with any components you want.
 
-For GPS navigation, we support NMEA (via serial and I2C) and RTK.
+For GPS navigation, we support NMEA (via serial and I<sup>2</sup>C) and RTK.
 Make and model don't make a difference as long as you use these protocols.
 See [Movement Sensor Component](/docs/components/movement-sensor.md) for more information.
 
