@@ -109,7 +109,7 @@ You must purchase the following pieces of hardware separately:
 
 <img src="../img/viam-rover/pi4.jpg" style="max-width:400px;width:100%" alt="Raspberry Pi 4" />
 
-Any Raspberry Pi 4 works as long as it runs the 64 bit Raspberry Pi OS.
+Any Raspberry Pi 4 works as long as it runs the 64-bit Raspberry Pi OS.
 
 #### MicroSD card and an adapter/reader
 
@@ -122,7 +122,7 @@ We recommend the button-top type, though either button or flat top can work.
 We have used batteries approximately 67.5mm in length, but the battery housing includes a spring to accommodate most batteries of that approximate length.
 Any brand is suitable as long as you comply with the battery safety requirements.
 
-Check the [safety](/../safety) section for more information.
+Check the [safety](#safety) section for more information.
 
 ## Safety
 
@@ -158,9 +158,9 @@ More detailed instructions are found in the sections below.
    Make sure that the camera is on the same side of the rover as the wheels as you attach it.
 6. Screw the top of the rover back on.
 
-### Install Raspbery Pi OS and viam-server
+### Install Raspberry Pi OS and viam-server
 
-Install the 64 bit Raspberry Pi OS using the [Raspberry Pi imager](https://www.raspberrypi.com/software/) and then install viam-server.
+Install the 64-bit Raspberry Pi OS using the [Raspberry Pi imager](https://www.raspberrypi.com/software/) and then install viam-server.
 For more detailed instructions, check out our Raspberry Pi [installation guide](https://docs.viam.com/installation/rpi-setup/).
 
 ### Attach the Raspberry Pi to the Rover
@@ -171,10 +171,10 @@ The rover's design allows you to reach the SD card slot at all times, so you can
 The Viam Rover kit includes four screws for mounting the Raspberry Pi.
 Look for them in a small plastic bag.
 You can screw them into the designated spots on the rover to attach the Raspberry Pi to the rover.
-The image below shows the four mounting holes for the Pi.
+The image below shows the four mounting holes for the Pi, circled in red.
 Your Rover comes with four hex pegs that you can mount the Pi on.
 
-<img src="../img/viam-rover/topless-rover.jpg" style="max-width:400px;width:100%" alt="The Viam Rover base with the top removed. The motors, chips and wires are exposed." />
+<img src="../img/viam-rover/topless-rover.jpg" style="max-width:500px;width:100%" alt="The Viam Rover base with the top removed. The motors, chips and wires are exposed." />
 
 ### Connect the wires
 
@@ -214,7 +214,9 @@ Due to the aluminum chassis and its expandable mounting features, you can extend
 With it, you can customize your rover by mounting additional sensors, lidar, robot arms...
 The following are just a few ideas, but you can expand or modify the rover kit with any components you want.
 
-For GPS navigation, we support NMEA (via serial and I2C) and RTK. Make and model don't make a difference as long as you use these protocols.
+For GPS navigation, we support NMEA (via serial and I<sup>2</sup>C) and RTK.
+Make and model don't make a difference as long as you use these protocols.
+See [Movement Sensor Component](/docs/components/movement-sensor.md) for more information.
 
 For lidar, we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).
 
