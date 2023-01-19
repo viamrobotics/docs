@@ -7,6 +7,7 @@ description: "Explanation of servo wiring and configuration in Viam."
 tags: ["servo", "components"]
 # SME: #team-bucket
 ---
+
 Hobby servos are a type of actuator comprising a small motor with built-in closed-loop control.
 
 The Viam `servo` component is designed to support hobby servos, not servomotors.
@@ -44,6 +45,7 @@ The following fields are required when configuring a servo:
 
   - `pi` is only compatible with Raspberry Pi.
   It has a timeout parameter to help prevent burning out cheap servos, but this is not necessary in most cases.
+  Unlike other servo models, it is implemented as part of the `pi` board component; see the code here: [https://github.com/viamrobotics/rdk/blob/main/components/board/pi/impl/servo.go](https://github.com/viamrobotics/rdk/blob/main/components/board/pi/impl/servo.go).
 
   - `fake` is for testing code without any actual hardware.
 
@@ -59,7 +61,7 @@ All models require the following:
 
 ### Example Config
 
-An example configuration file containing the necessary attributes is as follows:
+An example configuration file showing a board component and a servo component is as follows:
 
 {{< tabs name="Example Servo Config" >}}
 {{% tab name="Raw JSON" %}}
@@ -79,7 +81,8 @@ An example configuration file containing the necessary attributes is as follows:
       "model": "gpio",
       "attributes": {
         "pin": "16",
-        "board": "example-pi"
+        "board": "example-pi",
+        "frequency_hz": 50
       }
     }
   ]
@@ -101,7 +104,7 @@ An example configuration file containing the necessary attributes is as follows:
 | `min_angle_deg`         | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                    |
 | `max_angle_deg`         | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                    |
 | `starting_position_deg` | float64 | Starting position of the servo in degrees.                                                                                                                              |
-| `frequency_hz`          | uint    | The servo driver will attempt to change the GPIO pin's frequency. Default for a Pi is 19.2MHz.                                                                          |
+| `frequency_hz`          | uint    | The rate of pulses sent to the servo. The servo driver will attempt to change the GPIO pin's frequency (in Hz). **We recommend setting this to 50 for most servos driven by a Pi.**                           |
 | `pwm_resolution`        | uint    | Resolution of the PWM driver (e.g. number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution. |
 | `min_width_us`          | uint    | Override the safe minimum pulse width in microseconds. This affects PWM calculation.                                                                                    |
 | `max_width_us`          | uint    | Override the safe maximum pulse width in microseconds. This affects PWM calculation.                                                                                    |
@@ -125,9 +128,10 @@ The servo component supports the following methods:
 
 {{% alert title="Note" color="note" %}}
 
-First make sure you have setup your robot and connected it to the Viam app. Check out our [getting started section](/getting-started/) for details.
+First make sure you have set up your robot and connected it to the Viam app.
+Check out our [installation guide](/installation/) for details.
 
-**Assumption:** A servo called "my_servo" is configured as a component of your robot on the Viam app.
+**Assumption:** A servo called "my_servo" is configured as a component of your robot.
 
 {{% /alert %}}
 
