@@ -1,7 +1,7 @@
 ---
 title: "Unbox and Set Up your Viam Rover"
 linkTitle: "Unbox and Set Up your Viam Rover"
-weight: 41
+weight: 10
 type: "docs"
 tags: ["rover", "tutorial"]
 ---
