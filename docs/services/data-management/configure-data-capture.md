@@ -11,7 +11,7 @@ tags: ["data management", "cloud", "sync"]
 
 To capture data from one or more robots, you must add the [Data Management Service](../):
 
-1. On the your robots configuration page, navigate to the Services tab.
+1. On your robot's CONFIG page, navigate to the Services tab.
 2. At the bottom of the page you can create a service. Choose `Data Management` as the type and specify a name for your Data Management Service, for example `data_manager`.
 3. Then click `Create Service`.
 4. On the panel that appears, you can manage the capturing and syncing functions individually.
