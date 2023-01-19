@@ -36,7 +36,6 @@ To create a custom sensor, you must create a set of attributes unique to that se
 | `name`  | The name that you use to refer to the sensor in your code. |
 | `type`  | For a sensor, the type is `sensor`.                        |
 | `model` | The name you gave your custom sensor model                 |
-| `name`  |
 
 Don't forget to include any required attributes you define in your custom sensor component implementation.
 
