@@ -19,8 +19,8 @@
   * Standard development: `make serve-dev`
   * Development with draft files: `make serve-dev-draft`
   * Development with future files: `make serve-dev-future`
-  
-* You can just run `hugo serve` after installing hugo. This will show the dev view.
+
+* You can just run `hugo serve` after installing Hugo to show the prod view.
 
 ## Building
 
