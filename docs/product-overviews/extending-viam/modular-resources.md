@@ -30,7 +30,7 @@ For example, the API of built-in component type [camera](/components/camera) exp
 Each API corresponds with a Viam resource and is described through <a href="https://developers.google.com/protocol-buffers" target="_blank">protocol buffers</a>.
 You can see built-in Viam resource APIs in the <a href="https://github.com/viamrobotics/api" target="_blank">Viam API GitHub repository</a>.
 
-[Viam SDKs](/product-overviews/sdk-as-client/) that expose these APIs are available in various programming languages and allow you to control your robots [securely from anywhere](deeper-dive/robot-to-robot-comms/).
+[Viam SDKs](/product-overviews/sdk-as-client/) that expose these APIs are available in various programming languages and allow you to control your robots [securely from anywhere](/deeper-dive/robot-to-robot-comms/).
 
 Viam APIs are uniquely namespaced, with each resource type represented as a *colon-delimited-triplet*.  
 For example, the built-in component type *camera*'s API is __rdk:component:camera__.

@@ -109,7 +109,7 @@ Examples:
 ### Process
 
 Processes are scripts or programs run by the [Robot Development Kit (RDK)](/appendix/glossary/#rdk_anchor) whose lifecycle is managed by the viam-server.
-One example is running a [Software Development Kit (SDK)](/product-overviews/sdk-as-server/) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
+One example is running a [Software Development Kit (SDK)](/product-overviews/extending-viam/sdk-as-server/) server like the Python SDK where the implementation of a component is easier to create than in the RDK.
 
 ## SDKs
 

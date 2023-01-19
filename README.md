@@ -82,6 +82,8 @@ When you are ready to contribute changes to the docs:
 We are using `markdownlint` to ensure consistency in our documentation.
 Be sure that you have the [markdownlint VS Code extension](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) installed locally.
 
+We are also using `htmltest` to ensure links within the docs work. To test locally, install [`htmltest`](https://github.com/wjdp/htmltest).
+
 ### Front Matter
 
 ```markdown
