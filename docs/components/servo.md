@@ -61,7 +61,7 @@ All models require the following:
 
 ### Example Config
 
-An example configuration file showing a board component and a servo component is as follows:
+The following is an example configuration file showing a board component and a servo component:
 
 {{< tabs name="Example Servo Config" >}}
 {{% tab name="Raw JSON" %}}
