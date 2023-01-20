@@ -44,7 +44,7 @@ Your robot does not need to be permanently connected to the internet to work:
 
 - All APIs work locally or in the cloud
 - Data is cached locally and synced when possible
-- Configuration is cached to handle reboots
+- Configuration is cached
 - `viam-server` can act as both a client and a server.
   In other words, each instance can request services or resources, as well as provide them.
   This allows for tremendous flexibility.
