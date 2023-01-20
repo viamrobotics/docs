@@ -63,9 +63,9 @@ Note that on a Raspberry Pi, viam-server must always run as root in order to acc
 
 {{% tab name="macOS"%}}
 
-### From the command line
+### Run viam-server from the command line
 
-*(Recommended method on macOS)*
+(Recommended method on macOS)
 
 You can run viam-server by running the following command, always making sure to replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
 
@@ -79,7 +79,7 @@ Hit **Ctrl + C** on your keyboard to stop running viam-server.
 
 <br>
 
-### As a system service
+### Run as a system service
 
 Installing `viam-server` as a system service is not recommended for most use cases on macOS.
 However, if you are looking to create a robot that runs on macOS and you want it to run `viam-server` every time your OS boots up, then you will need to run `viam-server` as a service.
@@ -138,7 +138,7 @@ FUSE (Filesystem-in-Userspace), is included in almost all modern Linux distribut
 
 {{% tab name="macOS" %}}
 
-### View Logs
+### View viam-server Logs
 
 If you have already successfully connected `viam-server` to the Viam app, you can find all the `viam-server` logs on the **LOGS** tab of the [Viam app](https://app.viam.com/).
 

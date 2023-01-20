@@ -5,6 +5,7 @@ weight: 30
 type: "docs"
 aliases:
     - /getting-started/linux-install/
+    - /installation/linux-install/
 # SME: James
 ---
 
@@ -15,7 +16,9 @@ Windows and 32-bit systems are not supported.
 
 ## Installation Instructions
 
-In short, you'll download the file, make it executable, and run its self-install option to set it up as a system service. If you don't want to run it as a service, just run it. It's simply an executable binary.
+In short, you'll download the file, make it executable, and run its self-install option to set it up as a system service.
+If you don't want to run it as a service, just run it.
+It's simply an executable binary.
 
 ### URLs
 
@@ -29,9 +32,11 @@ In short, you'll download the file, make it executable, and run its self-install
 
 ### Detailed Steps
 
-Determine the CPU architecture (x86_64 or aarch64) of the target device by running `uname -m` on the command line. (Raspberry Pi and Jetson boards are aarch64 and most desktops and laptops are x86_64.)
+Determine the CPU architecture (x86_64 or aarch64) of the target device by running `uname -m` on the command line.
+(Raspberry Pi and Jetson boards are aarch64 and most desktops and laptops are x86_64.)
 
-Choose which URL to download from the list above. Run the following command ([**with the correct URL**](#urls)) to both download it and rename it to "viam-server" for ease of use:
+Choose which URL to download from the list above.
+Run the following command ([**with the correct URL**](#urls)) to both download it and rename it to "viam-server" for ease of use:
 
 ```bash
 curl -o viam-server http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage
@@ -62,13 +67,15 @@ To connect this instance of viam-server with a [Viam app](https://app.viam.com) 
 
 This is more common when setting up viam-server on a Raspberry Pi or something that will essentially only be turned on when you want to use the robot, so you want viam-server to start every time on boot.
 
-The following command will create a systemd service file at <file>/etc/systemd/system/viam-server.service</file> and set it to start on boot, using a config placed at <file>/etc/viam.json</file>. It will also move the actual binary (AppImage) to `/usr/local/bin/viam-server` (regardless of the previous filename.) Run the following command:
+The following command will create a systemd service file at <file>/etc/systemd/system/viam-server.service</file> and set it to start on boot, using a config placed at <file>/etc/viam.json</file>.
+It will also move the actual binary (AppImage) to `/usr/local/bin/viam-server` (regardless of the previous filename.) Run the following command:
 
 ```bash
 sudo ./viam-server --aix-install
 ```
 
-To connect this viam-server with a [Viam app](https://app.viam.com) robot, navigate to your robot page on [https://app.viam.com](https://app.viam.com). At the top right of the **SETUP** tab, click **COPY VIAM-SERVER CONFIG** and paste it into <file>/etc/viam.json</file>.
+To connect this viam-server with a [Viam app](https://app.viam.com) robot, navigate to your robot page on [https://app.viam.com](https://app.viam.com).
+At the top right of the **SETUP** tab, click **COPY VIAM-SERVER CONFIG** and paste it into <file>/etc/viam.json</file>.
 
 Start the service by running:
 
@@ -76,7 +83,8 @@ Start the service by running:
 sudo systemctl start viam-server
 ```
 
-The service is an AppImage and will check for updates and self-update automatically each time the service is started. Self-updates can take a couple of minutes, so the service may sometimes take a moment to start while this runs.
+The service is an AppImage and will check for updates and self-update automatically each time the service is started.
+Self-updates can take a couple of minutes, so the service may sometimes take a moment to start while this runs.
 You can disable this by commenting out the ExecPre line (the one with --aix-update on it) in the service file.
 
 ### Next Steps
