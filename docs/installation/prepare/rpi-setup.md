@@ -189,6 +189,7 @@ For these changes to take effect, you need to restart your Raspberry Pi if it ha
 ```bash
 sudo reboot
 ```
+
 ## Next Steps
 
 Now that your Pi has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
