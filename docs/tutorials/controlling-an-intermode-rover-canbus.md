@@ -54,11 +54,16 @@ Power your Raspberry Pi off and attach the PiCAN 2 by aligning the 40 way connec
 
 <img src="../img/intermode/can_terminal_conn.png"  style="float:right;margin-right:12px" alt="PiCAN Terminal Wiring." title="PiCAN Terminal Wiring." width="400" />
 
-Next, with the Intermode rover powered down, use the Intermode provided 6-wire amphenol connector to wire into 4 screw terminal on PiCAN bus.
-Connect one of the 12v wires (red) to the +12V terminal, one of the ground wires (black) to the GND terminal, the CAN low wire (blue) to the CAN_L terminal, and the CAN high wire (white) to the CAN_H terminal.
+Next, with the Intermode rover powered down, connect the 6-wire amphenol connector that comes with the rover to the 4 screw terminal on PiCAN bus:
+
+* Connect one of the 12v wires (red) to the +12V terminal
+* Connect one of the ground wires (black) to the GND terminal
+* Connect the CAN low wire (blue) to the CAN_L terminal
+* Connect the CAN high wire (white) to the CAN_H terminal.
+
 You will have two remaining wires (12v and ground).
 
-Now, connect the remaining two wires to the + (red) and - (black) **input** terminals on your buck converter.
+Connect the remaining two wires to the + (red) and - (black) **input** terminals on your buck converter.
 Attach the USB-C adaptor to the **output** of your buck converter, and plug this into your Pi.
 Powering up the Intermode should now power up your Pi and allow it to communicate with the rover via CAN bus!
 
