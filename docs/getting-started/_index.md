@@ -14,7 +14,8 @@ A *robot* in Viam is a computer running the Viam platform along with the hardwar
 The term component describes a piece of hardware that a computer controlls, like an arm or a motor.
 
 Robots can be small and simple or very complex.
-An IOT sensor is a robot. But a robot can also consist of multiple computers, with many components, acting as one unit.
+An IOT sensor is a robot.
+But a robot can also consist of multiple computers, with many components, acting as one unit.
 
 ![Robot components](img/robot-components.png)
 
@@ -23,7 +24,7 @@ An IOT sensor is a robot. But a robot can also consist of multiple computers, wi
 [`viam-server`](https://github.com/viamrobotics/rdk) is the open-source software which runs on each part of a robot. =
 A part is a computer which runs `viam-server` and:
 
-- Creates, configures, and maintains the robot's components
+- Creates, configures, and maintains the robot
 - Handles all communication securely
 - Runs drivers, user code, and any other software
 - Accepts API requests
@@ -32,6 +33,10 @@ A part is a computer which runs `viam-server` and:
 A robot's configuration lives in the cloud on the [Viam platform](https://app.viam.com).
 Configuration describes how hardware and software interact.
 A basic example that you can configure using the Viam platform is connecting a computer to a camera.
+
+{{% alert title="Info" color="tip" %}}
+Everything that runs on your robot is [open-source](http://github.com/viamrobotics).
+{{% /alert %}}
 
 ## Networking
 
@@ -42,10 +47,11 @@ Your robot does not need to be permanently connected to the internet to work:
 - Configuration is cached to handle reboots
 - `viam-server` can act as both a client and a server.
   In other words, each instance can request services or resources, as well as provide them.
+  This allows for tremendous flexibility.
 
 ## Communication
 
-TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is encrypted.
+TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is both authenticated and encrypted.
 
 Viam uses [WebRTC](https://webrtc.org/) to create secure peer to peer paths between robots and clients for fast, low latency communication.
 The Viam cloud does not receive any command or control information regarding your robots, ensuring low latency, robustness, and privacy.
@@ -75,6 +81,6 @@ Additional SDKs are coming soon, including Typescript, Rust, Java, C++, and Flut
 Start by borrowing one of our robots.
 Use [Try Viam](/getting-started/try-viam/).
 
-If you already have your own robot, [set up your own robot](/getting-started/app-usage/ and learn how to program your own robot.
+If you already have your own robot, [set up your own robot](/getting-started/app-usage/) and learn how to program your own robot.
 
 For more inspirations, check out our [tutorials](/tutorials) or visit our community on [Slack](https://viamrobotics.slack.com/) to get help or workshop ideas with others!
