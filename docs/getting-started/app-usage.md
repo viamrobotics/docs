@@ -28,7 +28,7 @@ You should see your name, email, and a list of organizations you belong to.
 If you used an email invite to sign up, the organization that invited you should be listed here.
 You also have a personal organization for projects not associated with other organizations.
 
-Click an organization name to navigate to its list of locations.
+Click an organization's name to navigate to its list of locations.
 
 ### Creating a new organization
 
@@ -61,24 +61,49 @@ The icon will not appear if there are any robots in the location.
 
 ### Sharing a location
 
-The Viam app allows you to share a location with any organization of which you are a member, as well as with the Viam Support Team.
+A location will always have a parent organization (the organization in which it was created).
+Other members of the parent organization of a location are granted access to this location by default.
 
-#### Sharing a location with a different organization
+There are two ways to share a location beyond its parent organization:
 
-If you are a member of more than one organization, the Viam app lists those organizations in the **Add Organization** drop-down:
+- Share with all the members of an additional organization you belong to
+- Share programmatic access to a location with location secret keys.
 
-{{< figure src="../img/app-usage/add-org-drop-down.png" width="400px" alt="The Add Organization drop-down displaying an organization where the user is also a member." title="The Add Organization drop-down displaying an organization where the user is also a member." >}}
+#### Sharing a location with an additional organization
 
-You can share your location with any listed organization by selecting it from the **Add Organization** drop-down and then clicking, **Add**.
-The Viam app lists the newly added organization:
+Share your location with another organization you belong to by selecting the organization from the **Add Organization** drop-down menu and clicking **Add**.
 
-{{< figure src="../img/app-usage/after-add-org.png" width="400px" alt="After adding another org, the Viam app lists it under the orgs that share this location list." title="The Viam app displays newly added orgs under the orgs that share this location list." >}}
+{{< figure src="../img/app-usage/add-org-drop-down.png" width="400px" alt="The Add Organization drop-down in the Viam app displays all organizations the user is a member of." title="The Add Organization drop-down displays all organizations the user is a member of." >}}
+
+The Viam app lists the newly added organization, along with the parent organization identified as the **primary owner**:
+
+{{< figure src="../img/app-usage/after-add-org.png" width="400px" alt="After adding another org, the Viam app lists it under the orgs that share this location list." title="The Viam app displays all orgs that share this location list." >}}
+
+#### Sharing a location using location secret keys
+
+Grant programmatic access to your location by sharing a location secret key.
+
+The Viam app lists the secret keys for a location in the **Location Secret Keys** drop-down:
+
+{{< figure src="../img/app-usage/location-secret-keys-drop-down.png" width="500px" alt="Screenshot of the list of secret keys that can grant access to a location displays in the location secret keys drop down menu of the Viam app." title="The Viam app displays the location secret keys that can be used to share a location." >}}
+
+Copy the secret key by clicking on the clipboard icon.
+Click on the **Generate Key** button to generate a new key.
+Use these keys in your SDK code and scripts to authenticate your access to the robots in your location in the cloud.
+
+{{% alert title="Caution" color="caution" %}}
+Be cautious when sharing location secret keys in your code or messages.
+
+Do not make a valid key publicly available, as any entity attempting to access your location who has this token will be authenticated, compromising the security of your system.
+
+Note *where* and *when* you share a location secret key. After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible, even though Viam supports flexible key rotation with up to two keys in use at one time.
+{{% /alert %}}
 
 #### Share a location with Viam Support
 
 You must share your location with the Viam Support team when requesting support.
 To do so, navigate to the proper location and click, **ADD VIAM SUPPORT**.
-The button toggles to **REMOVE VIAM SUPPORT**; Click to remove Viam Support from your location.
+The button toggles to **REMOVE VIAM SUPPORT**. Click to remove Viam Support from your location.
 
 #### Removing an organization from a shared location
 
@@ -166,7 +191,7 @@ The **HISTORY** tab shows a timestamped diff view of your robot's configuration 
 The **CODE SAMPLE** tab contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
 There is also a JSON stub you can copy if you wish to use this robot as a remote of another robot.
 
-{{%  snippet "secret-share.md" %}}  
+{{%  snippet "secret-share.md" %}}
 
 ### Control
 
@@ -184,3 +209,21 @@ Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
 This tab gives you the option of working on customizing your robot's functionality by using Viam’s block-based coding editor which implements Blockly and Python.
+
+### Security
+
+The **SECURITY** tab allows you to access and exchange the **Robot Part Secret Keys** of your robot.
+A robot part secret is a unique secret used by the robot to communicate with the cloud.
+
+{{< figure src="../img/app-usage/robot-part-secret-keys-drop-down.png" width="800px" alt="Screenshot of the SECURITY tab of a robot's page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down." title="Screenshot of the SECURITY tab of a robot's page." >}}
+
+Copy the secret key by clicking on the clipboard icon.
+Click on the **Generate Key** button to generate a new key.
+
+{{% alert title="Caution" color="caution" %}}
+Be cautious when sharing robot part secret keys in your code or messages.
+
+Do not make a valid key publicly available, as any entity attempting to access your robot who has this token will be authenticated, compromising the security of your system.
+
+Note *where* and *when* you share a robot part secret key. After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible, even though Viam supports flexible key rotation with up to two keys in use at one time.
+{{% /alert %}}
