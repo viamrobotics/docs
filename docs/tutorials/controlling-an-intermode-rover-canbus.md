@@ -64,34 +64,35 @@ Next, with the Intermode rover powered down, connect the 6-wire amphenol connect
 You will have two remaining wires (12v and ground).
 
 Connect the remaining two wires to the + (red) and - (black) **input** terminals on your buck converter.
-Attach the USB-C adaptor to the **output** of your buck converter, and plug this into your Pi.
-Powering up the Intermode should now power up your Pi and allow it to communicate with the rover via CAN bus!
+Attach the USB-C adaptor wires to the **output** of your buck converter, and plug the other end of the USB-C adaptor into your Pi.
+You can now power up the rover, which will provide power to your Pi and allow it to communicate with the rover via CAN bus!
 
 <img src="../img/intermode/intermode_wiring.jpg"  style="margin-right:12px" alt="Intermode, Pi Wiring." title="Intermode, Pi Wiring." width="800" />
 
 ### Software for the Intermode base modular resource
 
-We've created a github repository with a working modular resource implementation example, which is referenced in this tutorial and can be <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">found here</a>.
+Check out this <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">GitHub repository/a> for the working modular resource implementation example which we use in this tutorial.
 
-## Understanding the Intermode base modular resource
+## A modular resource for the Intermode base
 
-Viam includes [APIs](/product-overviews/extending-viam/modular-resources/#apis) for a number of common component types within viam-server.
+Viam includes [APIs](/product-overviews/extending-viam/modular-resources/#apis) for common component types within viam-server.
 The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base](/components/base) component.
 
-We'll walk through how we leveraged this API interface using code found in the <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">tutorial repository</a>.  If you are interested only in how to configure this modular resource code with your robot, you can skip to [using the intermode base resource](#use-the-intermode-base-modular-resource)
+If you want to read how to leverage this API to create a custom modular resource using code found in the <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">tutorial repository</a>, continue reading.  If you want to directly configure this modular resource code with your robot, skip to [using the intermode base resource](#use-the-intermode-base-modular-resource)
 
 ### Create a custom model using the Viam RDK base API
 
-For the Intermode rover, we'll want to conform to the base [API](/product-overviews/extending-viam/modular-resources/#apis), but create a new [model](/product-overviews/extending-viam/modular-resources/models) with its own implementation of each method.
-Both the **API** and **model** are colon-separated triplets where the first element is a namespace.
-Since we are conforming to an existing Viam API for [base](/components/base), the [API](/product-overviews/extending-viam/modular-resources/#apis) we'll use is:
+The [base](/components/base) component exposes an API for controlling a mobile robot’s movements. To use it for the Intermode rover, you must create a new [model](/product-overviews/extending-viam/modular-resources/models) with its own implementation of each method.
+
+Both the **API** and **model** of any Viam resource are represented as colon-separated triplets where the first element is a namespace.
+Since you will conform to an existing Viam API for [base](/components/base), the [API](/product-overviews/extending-viam/modular-resources/#apis) you will use is:
 **rdk:component:base**
 
-We're creating this base model for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
-We'll use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, we'll select a straight forward model name of "intermode". So our complete triplet is:
+This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
+Therefore, you will use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, a model name of "intermode". So our complete triplet is:
 **viamlabs:tutorial:intermode**
 
-The <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">module.go code</a> found in our tutorial's github repository creates this model and registers the component instance.  The *Subtype* of a resource contains its API triplet, so by using **base.Subtype** (see line 6 below) we are registering our new model with the *API* from the RDK's built-in base component(rdk:component:base).
+The <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">module.go code</a> creates this model and registers the component instance.  The *Subtype* of a resource contains its API triplet, so using **base.Subtype** (see line 6 below) registers our new model with the *API* from the RDK's built-in base component(rdk:component:base).
 
 ```go
 // namespace, model family, model
@@ -136,11 +137,11 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 
 ### Implement base methods
 
-Now that the modular resource code has registered the API it is using and its custom model, we can implement any number of methods provided by the base API.
-Since the Intermode rover's commands are in the CAN bus format, we'll need our modular resource code to translate any commands sent via the base API, like *SetPower*, *SetVelocity*, or *Stop* to <a href="https://en.wikipedia.org/wiki/CAN_bus#Frames" target="_blank">CAN bus frames</a>.
+Now that the modular resource code has registered the API it is using and its custom model, you can implement any number of methods provided by the base API.
+Since the Intermode rover's commands are in the CAN bus format, you need the modular resource code to translate any commands sent from the base API, like *SetPower*, *SetVelocity*, or *Stop* to <a href="https://en.wikipedia.org/wiki/CAN_bus#Frames" target="_blank">CAN bus frames</a>.
 Intermode provides documentation on how its <a href="https://github.com/viam-labs/tutorial-intermode/blob/main/can_interface.pdf" target="_blank">CAN frames</a> are formatted.
 
-This tutorial is not meant to line-by-line explain what this translation code does, but instead we'll point out the important details, and beyond that, you can follow the code implementation in the <a href="https://github.com/viam-labs/tutorial-intermode/blob/main/intermode-base/module.go" target="_blank">tutorial code</a>.
+At a high level, the <a href="https://github.com/viam-labs/tutorial-intermode/blob/main/intermode-base/module.go" target="_blank">tutorial code</a> does the following:
 
 1. The SetPower command implements the SetPower interface from the *rdk:component:base* API
 2. The parameters sent to SetPower are formatted as a *driveCommand*
@@ -206,9 +207,9 @@ Now, the intermode base can receive and execute *SetPower* commands using the sa
 
 In some cases, you may not want to implement specific methods provided by the resource type's [API](/product-overviews/extending-viam/modular-resources/#apis).
 For example, some hardware may not support specific functionality.
-When you want to leave a method unimplemented you must provide that method, and return an appropriate error message.
+When you want to leave a method unimplemented you must still create that method, but return an appropriate error message.
 
-In this example, we'll leave the *IsMoving* method unimplemented.
+In this tutorial, you will leave the *IsMoving* method unimplemented (for illustrative purposes).
 
 ```go
 func (base *interModeBase) IsMoving(ctx context.Context) (bool, error) {
@@ -218,29 +219,29 @@ func (base *interModeBase) IsMoving(ctx context.Context) (bool, error) {
 
 ## Use the Intermode base modular resource
 
-### Installing the modular resource
+### Install the modular resource
 
-Our modular resource code leverages libraries (specifically a <a href="https://github.com/go-daq/canbus" target="_blank">Can bus library</a>) that can run on Linux and interface with the PiCAN socket.
-We'll also be configuring RDK to load the module (after it is compiled.)
-Therefore, we'll need to make the modular resource code available on our Raspberry Pi.
+This tutorial's modular resource code leverages libraries (specifically a <a href="https://github.com/go-daq/canbus" target="_blank">Can bus library</a>) that can run on Linux and interface with the PiCAN socket.
+You will also be configuring viam-server (running on the pi) to load the module (after it is compiled.)
+For these reasons, you will need to make the modular resource code available on your Raspberry Pi.
 If you have git installed on your pi, this is as simple as running:
 
 ``` sh
 git clone https://github.com/viam-labs/tutorial-intermode
 ```
 
-in the directory you'd like to have the modular resource code run from.
+in a directory you'd like to have the modular resource code run from.
 If you don't have git installed on your pi, you'll need to first run:
 
 ``` sh
 sudo apt install git
 ```
 
-### Configuring the Intermode base resource
+### Configure the Intermode base resource
 
-If needed, first create a new robot in the [Viam app](/getting-started/app-usage/) and follow instructions in the setup tab to ensure the configuration can be read by the robot from the cloud.
+If you have not already, first create a new robot in the [Viam app](/getting-started/app-usage/) and follow the instructions in the setup tab to connect the robot to the cloud.
 
-In order to drive the Intermode base with Viam, you'll need add it to the robot configuration.
+In order to drive the Intermode base with Viam, you need add it to the robot configuration.
 You will specify where viam-server can find the module, and then configure a modular component instance for the Intermode base.
 
 In this example, we've cloned the git tutorial repo to */home/me/tutorial-intermode/*.
