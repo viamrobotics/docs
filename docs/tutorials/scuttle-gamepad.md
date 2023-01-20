@@ -70,7 +70,7 @@ Save the configuration and visit the control UI on the Viam app ([https://app.vi
 
 You should see the panel for the Controller Service and its connection indicator.
 This is how your web UI will look.
-Note the green Connection indicator:
+Note the green connection indicator:
 
 <img src="../img/scuttle-gamepad/pi-game-controller-panel.png" alt="Gamepad input UI" />
 
@@ -94,7 +94,7 @@ Hat0Y
 
 Testing these attributes tells you which mode you are in.
 
-## EasySMX ESM-9101 Wireless Controller Information
+## EasySMX ESM-9101 wireless controller information
 
 Here is a diagram of the gamepad.
 <table>
