@@ -10,7 +10,7 @@ description: "Integrate an Intermode rover as a modular resource based component
 
 ## Introduction
 
-The Viam platform comes with a component called [base](/components/base/), which adds some very useful abstractions for simplified control of mobile robots.
+The Viam platform comes with a component called [base](/components/base/), which adds useful abstractions for simplified control of mobile robots.
 Instead of controlling individual motors, the base component allows you to [do things](https://python.viam.dev/autoapi/viam/components/base/index.html#package-contents”) like “drive straight”, “spin”, “set velocity” and “stop”.  
 
 Many robotic rovers can be controlled out-of-the-box with the Viam **wheeled** base model - simply by specifying how your motorized wheels are configured.
