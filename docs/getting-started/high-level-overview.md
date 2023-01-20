@@ -16,7 +16,7 @@ Viam runs on your robot and the cloud.
 
 Everything that runs on your robot is open source and is available at [github.com/viamrobotics](http://github.com/viamrobotics).
 
-To get the most out of the Viam platform, we recommend using [app.viam.com/](http://app.viam.com/) to configure, manage, and control your robots.
+To get the most out of the Viam platform, we recommend using [app.viam.com](http://app.viam.com/) to configure, manage, and control your robots.
 
 A robot's configuration lives in the cloud.
 The configuration is a description of the hardware and higher level software services--for example, how a motor is connected to a Raspberry Pi, or what machine learning models you want to use for classification.
@@ -37,6 +37,8 @@ Robots will work even if the cloud is disconnected for weeks.
 - Configuration is cached to handle reboots
 - All APIs work locally or in the cloud
 - Data is cached locally and synced when possible
+
+See our [Installation Guide](/installation/) for information about installing and running viam-server.
 
 ## API
 
