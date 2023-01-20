@@ -15,8 +15,12 @@ clean:
 build-prod: clean setup
 	hugo $(PROD_OPTIONS)
 
-build-lint: clean setup
+build-dist: clean setup
 	hugo $(PROD_OPTIONS) -d dist
+
+htmltest: clean setup
+	hugo $(PROD_OPTIONS) -d dist
+	htmltest
 
 build-pr: clean setup
 	hugo $(PR_OPTIONS)

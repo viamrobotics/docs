@@ -28,7 +28,7 @@ jobs:
           echo baseURL = \"https://docs-test.viam.dev/${{ github.sha }}/public\" >> config_pr.toml
 
       - name: Build
-        run: make build-lint
+        run: make build-dist
 
       - name: Test HTML
         # https://github.com/wjdp/htmltest-action/
