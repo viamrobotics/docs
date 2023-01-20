@@ -51,7 +51,7 @@ C270 HD WEBCAM (usb-0000:01:00.0-1.2):
 
 Once your camera is connected, go to the **CONTROL** tab, and click on the "color" dropdown menu. Toggle "View Camera" and make sure you can see the live video feed from your camera.
 
-<img src="../img/configure-a-camera/03_camera_tutorial_image.png" alt="Camera view inside viam app" width="700px"><br>
+<img src="../img/configure-a-camera/03_camera_tutorial_image.png" alt="Camera view inside Viam app" width="700px"><br>
 
 ## General camera troubleshooting
 

@@ -35,7 +35,7 @@ The reference frame requires three pieces of information:
 
 * Orientation: The rotation that when applied to the axes of the parent's reference frame yields the axes of the component's reference frame
   * while this representation appears to represent an R4 Axis Angle, it is actually our own [orientation vector](/appendix/orientation-vector/) format.
-  * in the UI the type option currently controls whether to supply theta in degrees for  configuration purposes, but note that *the orientation vector stored and returned by the frame system will be in radians*.
+  * in the UI the type option currently controls whether to supply theta in degrees for configuration purposes, but note that *the orientation vector stored and returned by the frame system will be in radians*.
 
 The information mathematically operates in the following way.
 Let P be the parent's coordinate system and C be the component's coordinate system.
@@ -59,7 +59,7 @@ If you are using a component driver provided by Viam, the **Model JSON** should 
 
 ## How the Robot Builds the Frame System
 
-Once configuration is complete and the server is started, the robot builds a tree of reference frames with the world as the root node.
+Once the configuration is completed and the server is started, the robot builds a tree of reference frames with the world as the root node.
 
 A <a href="https://en.wikipedia.org/wiki/Topological_sorting" target="_blank">topologically-sorted list</a>[^tsl] of the generated reference frames is printed by the server and can be seen in the server logs.
 Viam regenerates this tree in the process of [reconfiguration](/product-overviews/fleet-management/#configurationlogging):
