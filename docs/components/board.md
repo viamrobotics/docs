@@ -306,7 +306,7 @@ I2C stands for inter-integrated circuit and is similar to SPI but requires fewer
 Some boards that support I2C have the SDA and SCL pins configured by default, so in your config file you need only specify which I2C bus you are using.
 For example, if you use I2C bus 1 on a Raspberry Pi 4, SDA and SCL will be pins 3 and 5, respectively.
 You will also need to enable I2C on your board if it is not enabled by default.
-Review the [instructions in our documentation](/installation/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi) to learn how to enable I2C on a Raspberry Pi 4.
+Review the [instructions in our documentation](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi) to learn how to enable I2C on a Raspberry Pi 4.
 <a href="https://pinout.xyz/pinout/i2c" target="_blank">Pinout.xyz</a>[^pocom] has additional information about I2C on Raspberry Pi.
 [^pocom]:I2C - Inter Integrated Circuit on Pinout.xyz:  <a href="https://pinout.xyz/pinout/i2c" target="_blank">ht<span></span>tps://pinout.xyz/pinout/i2c</a>
 

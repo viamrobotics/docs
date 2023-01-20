@@ -12,10 +12,10 @@ tags: ["vision", "detector", "base", "scuttle", "services"]
 
 In the Python code, you must add your robot's address and secret, which are found on the **CODE SAMPLE** tab of the Viam app at [https://app.viam.com](https://app.viam.com) in your web browser.
 Viam app pre-populates the **CODE SAMPLE** tab with the robot name, address, and secret:<br>
-<img src="../img/color-rdk-remote-cfg.png" />
+<img src="../img/color-rdk-remote-cfg.png" alt="Remote configuration json" />
 {{% /alert %}}
 
-{{% alert title="Caution" color="caution" %}}  
+{{% alert title="Caution" color="caution" %}}
 Do not share your robot secret or robot address publicly. Sharing this information compromises your system security by allowing unauthorized access to your computer.
 {{% /alert %}}
 

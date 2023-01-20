@@ -216,7 +216,7 @@ The following are just a few ideas, but you can expand or modify the rover kit w
 
 For GPS navigation, we support NMEA (via serial and I<sup>2</sup>C) and RTK.
 Make and model don't make a difference as long as you use these protocols.
-See [Movement Sensor Component](/docs/components/movement-sensor.md) for more information.
+See [Movement Sensor Component](/components/movement-sensor) for more information.
 
 For lidar, we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).
 

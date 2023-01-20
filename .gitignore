@@ -7,3 +7,4 @@ node_modules
 config_pr.toml
 .vscode
 dist
+tmp

@@ -10,7 +10,7 @@ tags: ["base", "camera", "raspberry pi", "scuttle"]
 
 * A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the viam-server installed.
 
-Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/rpi-setup/#installing-raspberry-pi-os), if necessary.
+Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os), if necessary.
 
 * <a href="https://www.scuttlerobot.org/shop/" target="_blank">A SCUTTLE Robot</a>[^asr]
 * A USB camera (webcam)
@@ -30,7 +30,7 @@ If you already have a Location, then this step is optional.</li>
 We will stay in <strong>Builder</strong> mode for this tutorial (as opposed to <strong>Raw JSON</strong>).</li>
 <img src="../img/scuttlebot/createcomponent.png" alt="A screenshot of the Viam app UI showing the CONFIG tab of a robot."></ol>
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
 {{% /alert %}}
 
@@ -95,7 +95,7 @@ The next step is to add a motor and make it spin a wheel.
 
 {{% /expand %}}
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 If your wheel turns in reverse when it should turn forward, add the <code>dir_flip</code> attribute (found by clicking <strong>SHOW OPTIONAL</strong>) and set it to "true."
 {{% /alert %}}
 
@@ -107,12 +107,12 @@ Save the config by clicking **SAVE CONFIG** at the bottom of the page, then clic
 Here you'll see a panel for the right `motor`.
 You'll use this panel to set the motor's `power` level.
 
-<img src="../img/scuttlebot/pi-moverhmotor.png">
+<img src="../img/scuttlebot/pi-moverhmotor.png" alt="Power level adjustment">
 
 Be careful when activating your robot!
 Start with the power level set to 10% and increase it incrementally until the wheel rotates at a reasonable speed, clicking **Run** at each increment.
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 A "whining" sound emitted from the motor indicates that the power level is not high enough to turn the armature.
 If this happens, increase the power level by 10% increments until it starts to turn.
 {{% /alert %}}
@@ -164,7 +164,7 @@ This will be very similar to adding the right motor.
 
 With both motors configured, the **CONTROL** tab now display panels for both motors:
 
-<img src="../img/scuttlebot/scuttle-bothmotors.png">
+<img src="../img/scuttlebot/scuttle-bothmotors.png" alt="Motor panels">
 
 Viam ([https://app.viam.com](https://app.viam.com)) displays component panels in order of their creation.
 Don't worry if your motor panels are not adjacent.
@@ -202,18 +202,18 @@ When you save the config and switch to the **CONTROL** tab, you'll see new contr
 In the **Keyboard** tab, toggle your keyboard control to active.
 Use **W** and **S** to go forward and back, and **A** and **D** to arc and spin.
 
-<img src="../img/scuttlebot/pi-kybrd-control.png" width="300px">
+<img src="../img/scuttlebot/pi-kybrd-control.png" width="300px" alt="WASD controls">
 
 If you click the **Discrete** tab, then you'll see different movement modes such as <code>Straight</code> and <code>Spin</code>; and different movement types such as <code>Continuous</code> and <code>Discrete</code> and directions such as <code>Forwards</code> and <code>Backwards</code>.
 
-<img src="../img/scuttlebot/pi-discrete.png"><br>
+<img src="../img/scuttlebot/pi-discrete.png" alt="Discrete controls"><br>
 
 Now you have a rover that you can drive using Viam's UI!
 Awesome!
 
 Try driving your SCUTTLE Robot around using the WASD keyboard controls described above.
 
-{{% alert title="Caution" color="caution" %}}  
+{{% alert title="Caution" color="caution" %}}
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
 {{% /alert %}}
 
@@ -226,7 +226,7 @@ Finally, we'll add a camera to your SCUTTLE Robot.
 3. Click **Create Component**.
 
 Now, you'll see the config panel for the camera component:
-<img src="../img/scuttlebot/pi-cam-control.png">
+<img src="../img/scuttlebot/pi-cam-control.png" alt="Camera component config panel" >
 
 On the camera config panel, set the <code>video_path</code>.
 This is often "video0," but please see our [camera configuration tutorial](/tutorials/configure-a-camera/#connect-and-configure-a-webcam) for more information on choosing the correct video path.
@@ -243,7 +243,7 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](../scuttle
 
 ## Documents referenced
 
-* [Installing Raspberry Pi OS on the Raspberry Pi](/installation/rpi-setup/#installing-raspberry-pi-os)
+* [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os)
 
 * [Color Detection with SCUTTLE Robot on Viam](../color-detection-scuttle/)
 
