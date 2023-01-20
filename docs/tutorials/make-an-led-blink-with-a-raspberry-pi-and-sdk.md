@@ -46,7 +46,7 @@ You will need the following hardware, tools, and software to complete this proje
 ### Software
 
 - <a href="https://go.dev/dl/" target="_blank">Golang</a>[^go] or <a href="https://www.python.org/downloads/" target="_blank">Python 3.9+</a>[^python]
-- [viam-server](/installation/linux-install/)
+- [viam-server](/installation/install/linux-install/)
 - [Viam Python SDK](https://python.viam.dev/) or [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
 
 ### How to install a Viam SDK
