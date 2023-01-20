@@ -71,7 +71,7 @@ You can now power up the rover, which will provide power to your Pi and allow it
 
 ### Software for the Intermode base modular resource
 
-Check out this <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">GitHub repository/a> for the working modular resource implementation example which we use in this tutorial.
+Check out this <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">GitHub repository</a> for the working modular resource implementation example which we use in this tutorial.
 
 ## A modular resource for the Intermode base
 
