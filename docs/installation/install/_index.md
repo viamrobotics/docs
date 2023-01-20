@@ -22,6 +22,6 @@ You can find more detailed instructions in our [Getting Started with the Viam Ap
 Find more information about installing, running and maintaining viam-server in the following guides:
 
 - For SBCs like Raspberry Pi as well as desktops and laptops running Linux:
-  - [Installing viam-server on Linux](/installation/linux-install/)
+  - [Installing viam-server on Linux](/installation/install/linux-install/)
 - For laptops or desktops running macOS:
-  - [Installing viam-server on Mac](/installation/macos-install/)
+  - [Installing viam-server on Mac](/installation/install/macos-install/)

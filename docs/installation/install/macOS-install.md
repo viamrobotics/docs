@@ -5,6 +5,7 @@ weight: 35
 type: "docs"
 aliases:
     - /getting-started/macos-install/
+    - /installation/macos-install/
 # SME: James
 ---
 `viam-server` is available for macOS users via [Homebrew](https://docs.brew.sh).
@@ -28,7 +29,8 @@ Before you proceed, ensure that you have Homebrew installed ([https://docs.brew.
 2. **Download the Viam app config to your Mac.** This config file tells the robot where to look on app.viam.com to pull its configuration information and allows you to monitor and control your robot from the Viam app.
 You can download your robot's config file from the **SETUP** tab of your robot on the Viam app.
 
-3. **Start viam-server on your Mac.** Run viam-server locally on your Mac with the config you just downloaded. Be sure that you replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
+3. **Start viam-server on your Mac.** Run viam-server locally on your Mac with the config you just downloaded.
+   Be sure that you replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
 
    ```bash
    viam-server -config ~/Downloads/viam-<YOUR_ROBOT_NAME>-main.json

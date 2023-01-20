@@ -134,7 +134,7 @@ The **SETUP** tab contains information for starting an instance of viam-server o
 Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
 
 {{% alert title="Tip" color="tip" %}}
-More in-depth information on installing viam-server can be found in our [Linux install](/installation/linux-install/) and [macOS install](/installation/macos-install/) docs.
+More in-depth information on installing viam-server can be found in our [Linux install](/installation/install/linux-install/) and [macOS install](/installation/install/macos-install/) docs.
 {{% /alert %}}
 
 ### Config
