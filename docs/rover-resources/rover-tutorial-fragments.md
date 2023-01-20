@@ -15,9 +15,9 @@ If you don’t have a Viam Rover yet, you can [buy one here](https://www.viam.co
 ## Prerequisites
 
 * A Raspberry Pi 4 with Raspberry Pi OS Lite (64-bit) and `viam-server` installed.
-    To install Raspberry Pi OS and `viam-server`, refer to the Raspberry Pi OS [installation guide](https://docs.viam.com/installation/rpi-setup/).
+    To install Raspberry Pi OS and `viam-server`, refer to the Raspberry Pi OS [installation guide](/installation/rpi-setup/).
 * The Pi is able to connect to [the Viam app](https://app.viam.com).
-  To add your Pi to the Viam app, refer to [Adding your Pi on the Viam app](https://docs.viam.com/installation/rpi-setup/).
+  To add your Pi to the Viam app, refer to [Adding your Pi on the Viam app](/installation/rpi-setup/).
 * An assembled Viam Rover with the Raspberry Pi.
   For assembly instructions, see [Unbox and Set Up your Viam Rover](../rover-tutorial)
 

@@ -31,7 +31,7 @@ Find more information about encoders, another component type, [here](../../compo
 [^rtk]: Real-time kinematic positioning: <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Real-time_kinematic_positioning</a>
 
 {{% alert title="Note" color="note" %}}
-Any movement sensor that uses I<sup>2</sup>C must be connected to a board that supports I<sup>2</sup>C and [has it enabled](/installation/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
+Any movement sensor that uses I<sup>2</sup>C must be connected to a board that supports I<sup>2</sup>C and [has it enabled](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
 {{% /alert %}}
 
 ## GPS

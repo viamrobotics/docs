@@ -50,8 +50,8 @@ All together, your kit looks like this:
 <img src="../img/viam-rover/encoder-motors.jpg" style="max-width:400px;width:100%" alt="two motors with encoders" />
 
 The motors come with integrated encoders.
-For further information on encoders, see [Encoder Component](https://docs.viam.com/components/encoder/).
-For more information on encoded DC motors, see [Motor Component](https://docs.viam.com/components/motor/#dc-motor-with-encoder).
+For further information on encoders, see [Encoder Component](/components/encoder/).
+For more information on encoded DC motors, see [Motor Component](/components/motor/#dc-motor-with-encoder).
 
 The kit also includes stiffer suspension springs that you can substitute for the ones on the rover.
 Generally, a stiff suspension helps with precise steering control.
@@ -69,16 +69,16 @@ L298 is a high voltage and high current motor drive chip, and H-Bridge is typica
 <img src="../img/viam-rover/webcam.jpg" style="max-width:400px;width:100%" alt="Webcam with cables" />
 
 The webcam that comes with the kit is a standard USB camera device and the rover has a custom camera mount for it.
-To find out more, see [Camera Component](https://docs.viam.com/components/camera).
+To find out more, see [Camera Component](/components/camera).
 
 #### 3D accelerometer
 
 <img src="../img/viam-rover/accelerometer.jpg" style="max-width:400px;width:100%" alt="A ADXL345 accelerometer" />
 
-The [ADXL345](https://docs.viam.com/components/movement-sensor/#adxl345) sensor manufactured by Analog Devices is a digital 3-axis accelerometer that can read acceleration up to ±16g for high-resolution (13-bit) measurements.
+The [ADXL345](/components/movement-sensor/#adxl345) sensor manufactured by Analog Devices is a digital 3-axis accelerometer that can read acceleration up to ±16g for high-resolution (13-bit) measurements.
 You can access it with a SPI (3-wire or 4-wire) or I<sup>2</sup>C digital interface.
 
-In Viam, you can configure it as a [movement sensor component](https://docs.viam.com/components/movement-sensor/).
+In Viam, you can configure it as a [movement sensor component](/components/movement-sensor/).
 
 #### Buck converter
 
@@ -161,7 +161,7 @@ More detailed instructions are found in the sections below.
 ### Install Raspberry Pi OS and viam-server
 
 Install the 64-bit Raspberry Pi OS using the [Raspberry Pi imager](https://www.raspberrypi.com/software/) and then install viam-server.
-For more detailed instructions, check out our Raspberry Pi [installation guide](https://docs.viam.com/installation/rpi-setup/).
+For more detailed instructions, check out our Raspberry Pi [installation guide](/installation/rpi-setup/).
 
 ### Attach the Raspberry Pi to the Rover
 
@@ -216,7 +216,7 @@ The following are just a few ideas, but you can expand or modify the rover kit w
 
 For GPS navigation, we support NMEA (via serial and I<sup>2</sup>C) and RTK.
 Make and model don't make a difference as long as you use these protocols.
-See [Movement Sensor Component](/docs/components/movement-sensor.md) for more information.
+See [Movement Sensor Component](/components/movement-sensor) for more information.
 
 For lidar, we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).
 

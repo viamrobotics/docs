@@ -129,7 +129,7 @@ func main() {
 
 ### How to get an image from a camera with Viam
 
-This reads a single image from a [camera](https://docs.viam.com/components/camera/) called "camera0" on the robot.
+This reads a single image from a [camera](/components/camera/) called "camera0" on the robot.
 
 Assumption: A camera called "camera0" is configured as a component of your robot.
 
@@ -172,7 +172,7 @@ defer release()
 
 ### How to use a motor with Viam
 
-This sends power commands to [motors](https://docs.viam.com/components/motor/) on the robot.
+This sends power commands to [motors](/components/motor/) on the robot.
 
 Assumption: Motors called "motor1" and "motor2" are configured as components of your robot.
 
@@ -222,7 +222,7 @@ m2.GoFor(context.Background(), 1000, 200, nil)
 
 ### How to use a sensor with Viam
 
-This example code reads values from a [sensor](https://docs.viam.com/components/sensor/) (an ultrasonic sensor in this example) connected to a robot.
+This example code reads values from a [sensor](/components/sensor/) (an ultrasonic sensor in this example) connected to a robot.
 
 Assumption: A sensor called "ultra1" is configured as a component of your robot.
 

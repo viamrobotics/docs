@@ -20,11 +20,11 @@ First, you will need to add a webcam to your configuration. In your web browser,
 
 Configure the webcam by clicking on the **CONFIG** tab. Go to the Builder, and create a component with **Name** "color" of **Type** "camera" and **Model** "webcam".
 
-<img src="../img/configure-a-camera/01_camera_tutorial_builder.png" width="700"><br>
+<img src="../img/configure-a-camera/01_camera_tutorial_builder.png" alt="Create component builder" width="700"><br>
 
 Once you click **Create Component**, you'll see a view on the component that looks like this:
 
-<img src="../img/configure-a-camera/02_camera_tutorial_config.png" width="700"><br>
+<img src="../img/configure-a-camera/02_camera_tutorial_config.png" alt="Component attributes JSON" width="700"><br>
 
 Manually add the camera path to the camera's attributes and save the config. A good bet is often `video0`:
 
@@ -51,7 +51,7 @@ C270 HD WEBCAM (usb-0000:01:00.0-1.2):
 
 Once your camera is connected, go to the **CONTROL** tab, and click on the "color" dropdown menu. Toggle "View Camera" and make sure you can see the live video feed from your camera.
 
-<img src="../img/configure-a-camera/03_camera_tutorial_image.png" width="700px"><br>
+<img src="../img/configure-a-camera/03_camera_tutorial_image.png" alt="Camera view inside Viam app" width="700px"><br>
 
 ## General camera troubleshooting
 
@@ -71,8 +71,6 @@ sudo reboot
 
 or by powering it off and on again.
 
-<iframe src="https://giphy.com/embed/DUtVdGeIU8lmo" width="336" height="184" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/the-it-crowd-DUtVdGeIU8lmo">via GIPHY</a></p>
-
 ### Issue: The "Export Screenshot" button doesn't work
 
 1. In the **CONTROL** tab, pick "Manual Refresh" under the "Refresh frequency".
@@ -80,9 +78,9 @@ or by powering it off and on again.
 3. Right click on the image, and choose "Save Image As..." to save the image.
 
 <br>
-<img src="../img/configure-a-camera/05_camera_tutorial_manual_img_save.png" width="700"><br>
+<img src="../img/configure-a-camera/05_camera_tutorial_manual_img_save.png" alt="Save image as menu" width="700"><br>
 
-## Additional Troubleshooting
+## Additional troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](../../appendix/troubleshooting/).
 

@@ -1,0 +1,14 @@
+DirectoryPath: "dist"
+EnforceHTTPS: false
+IgnoreEmptyHref: true
+IgnoreInternalEmptyHash: true
+IgnoreDirectoryMissingTrailingSlash: true
+IgnoreURLs:
+- "example.com"
+- "^/misc/js/script.js$"
+- "linkedin.com"
+- "app.viam.com"
+- "beaglebone.local"
+IgnoreDirs:
+- "lib"
+CacheExpires: "6h"
