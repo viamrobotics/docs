@@ -266,7 +266,7 @@ Change this to the correct location in *executable_path* when adding the module 
 
 More details about modules and how they work can be found in the [modular resources documentation](/product-overviews/extending-viam/modular-resources/#adding-a-module-to-your-robot-configuration).
 
-### Controlling the rover
+### Control the rover
 
 Once we've saved this configuration, you should see a *base* card in the robot's *control* tab and can drive the rover from there!  Be careful, the Intermode is a large and powerful rover - make sure you have the space to avoid obstacles.
 
