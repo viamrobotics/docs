@@ -14,6 +14,7 @@ See [What is Viam?](/getting-started/high-level-overview/) for more information.
   <div class="row">
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="prepare">
+            <br>
             <img src="img/thumbnails/viam-icon-board.png" width=200>
             <h4 style="text-align: left; margin-left: 0px;">Prepare</h4>
             <p style="text-align: left;">Prepare your computer before installing viam-server.</p>
@@ -21,6 +22,7 @@ See [What is Viam?](/getting-started/high-level-overview/) for more information.
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="install">
+            <br>
             <img src="img/thumbnails/viam-icon-data-capture.png" width=200>
             <h4 style="text-align: left; margin-left: 0px;">Install</h4>
             <p style="text-align: left;">Install viam-server on your machine.</p>
@@ -30,6 +32,7 @@ See [What is Viam?](/getting-started/high-level-overview/) for more information.
   <div class="row">
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="manage">
+            <br>
             <img src="img/thumbnails/viam-icon-sdk.png" width=200>
             <h4 style="text-align: left; margin-left: 0px;">Manage</h4>
             <p style="text-align: left;">Control and troubleshoot viam-server.</p>
@@ -37,6 +40,7 @@ See [What is Viam?](/getting-started/high-level-overview/) for more information.
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="update">
+            <br>
             <img src="img/thumbnails/viam-icon-motion.png" width=200>
             <h4 style="text-align: left; margin-left: 0px;">Update</h4>
             <p style="text-align: left;">Update your version of viam-server.</p>
