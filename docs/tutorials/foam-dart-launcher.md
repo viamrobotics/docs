@@ -30,16 +30,16 @@ Also, the configuration files shown in this tutorial *must* be modified if you u
 You can find more information on configuring different motors in the [Motor Component](/components/motor) topic.
 {{% /alert %}}
 
-### Hardware and Software Requirements
+### Hardware and software requirements
 
-* [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT)[^rpi], with viam-server installed per [our Raspberry Pi setup guide](https://docs.viam.com/getting-started/rpi-setup/).
+* [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT)[^rpi], with viam-server installed per [our Raspberry Pi setup guide](/getting-started/rpi-setup/).
 * [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)[^wrvr]
 * [A foam dart launcher](https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8)[^ng]
 * [A USB camera (webcam)](https://www.amazon.com/gp/product/B0972KK7BC/)[^cam] (optional, to see where you are going and aiming)
 * [A solenoid](https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/)[^sol]
 * [A relay](https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/)[^relay]
 * [A dual motor controller](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/)[^dmc].
-If you use a different motor driver, refer to the manufacturer’s data sheet and our [motor component topic](https://docs.viam.com/components/motor) to learn how to configure the pins.
+If you use a different motor driver, refer to the manufacturer’s data sheet and our [motor component topic](/components/motor) to learn how to configure the pins.
 * Jumper wires (breadboard wires)
 
 [^rpi]: A Raspberry Pi 4 microSD card: <a href="https://a.co/d/bxEdcAT/">ht<span></span>tps://a.co/d/bxEdcAT/
@@ -214,9 +214,9 @@ Don’t forget to make the base depend on the `left`, `right`, and the `board` c
 
 Now let’s add a camera to watch the video stream on the control panel as you move your rover.
 
-### Camera Configuration
+### Camera configuration
 
-Add your USB camera as a webcam. Please refer to [How to Configure a Camera > Connect and Configure a Camera](/configure-a-camera/#connect-and-configure-a-webcam) for complete instructions.
+Add your USB camera as a webcam. Please refer to [How to Configure a Camera > Connect and Configure a Camera](/tutorials/configure-a-camera/#connect-and-configure-a-webcam) for complete instructions.
 
 {{< figure src="../img/foam-dart-launcher/config-webcam.png"  alt="Camera Component Attribute Pane." title="Camera Component Attribute Pane" width="800" >}}
 
@@ -278,7 +278,7 @@ You could even add [object detection and machine learning](/services/vision/) an
 
 If you are looking for projects that would be a great next step in your journey of robots creation, we recommend that you check out the following tutorials:
 
-* [Tutorial List](https://docs.viam.com/#tutorials)
+* [Tutorial List](/#tutorials)
 
 If you have any issues getting Viam set up or get stuck, let us know on the [Viam Community Slack](http://viamrobotics.slack.com) and we'll be happy to help you get up and running.
 The Viam Community Slack is also a great place to connect with other developers learning how to build robots.

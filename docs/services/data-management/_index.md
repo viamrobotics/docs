@@ -37,7 +37,7 @@ To configure data capture, see [data capture](../data-management/configure-data-
 The Data Management Service syncs the stored data to the cloud at the user-defined frequency.
 Viam does not impose a minimum or maximum on the frequency of data syncing. However, in practice, your hardware or network speed may impose limits on the frequency of data syncing.
 
-If the internet becomes unavailable or the robot needs to restart during the sync process, the service will try to resume sync indefinitely. When the connection is restored and sync resumes, the service resumes sync where it left off without duplicating data. For more detailed information, see [Data Integrity](/#data-integrity).
+If the internet becomes unavailable or the robot needs to restart during the sync process, the service will try to resume sync indefinitely. When the connection is restored and sync resumes, the service resumes sync where it left off without duplicating data. For more detailed information, see [Considerations](#considerations).
 
 Once the service syncs a file to Viam's cloud, the service deletes the file locally from the robot's configured capture location.
 

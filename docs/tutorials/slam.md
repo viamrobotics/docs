@@ -29,7 +29,7 @@ The webcam can be installed on a robot, or just be held by hand.
 ## Requirements
 
 * A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspberry Pi OS on the Raspberry Pi](../../installation/rpi-setup/#installing-raspberry-pi-os), if necessary.
+Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os), if necessary.
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
 ## Setup
@@ -305,7 +305,7 @@ Save the config.
 Head over to the **CONTROL** tab and choose the "run-slam" drop-down menu.
 Change the "Refresh frequency" to your desired frequency and watch a map come to life using the data in your dataset!
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 It might take a couple of minutes before the first map is created and will be shown in the UI.
 {{% /alert %}}
 
@@ -315,7 +315,7 @@ It might take a couple of minutes before the first map is created and will be sh
 
 This issue has a couple of potential causes.
 
-<img src="../img/run_slam/01_slam_tutorial_no_map_points.png" width="700"><br>
+<img src="../img/run_slam/01_slam_tutorial_no_map_points.png" alt="Error getting slam map" width="700"><br>
 <br>
 
 First, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up.

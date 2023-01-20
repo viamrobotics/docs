@@ -56,7 +56,7 @@ It may be that the robot config generated broken “frame” information and pre
 Delete the entire “frame” object from the JSON config if you are not using it.
 The frame object looks like this:</td>
 </td>
-<td><img src="../img/ts-del-frame.png" width="150px"/></td>
+<td><img src="../img/ts-del-frame.png" alt="Frame JSON Object" width="150px"/></td>
 </tr>
 </table>
 

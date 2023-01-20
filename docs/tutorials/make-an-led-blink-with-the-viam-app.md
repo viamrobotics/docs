@@ -40,9 +40,9 @@ You will need the following tools to complete the project:
 
 Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi.
 We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](/installation/rpi-setup/) guide in the Viam documentation.
-Be sure to follow all the steps including [adding your Pi on the Viam app.](/installation/rpi-setup/#adding-your-pi-on-the-viam-app)
+Be sure to follow all the steps including [adding your Pi on the Viam app.](/installation/install/linux-install/)
 
-{{% alert title="Tip" color="tip" %}}  
+{{% alert title="Tip" color="tip" %}}
 If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>, and we will be happy to help you get up and running.
 {{% /alert %}}
 
@@ -100,7 +100,7 @@ The long anode should be connected to the resistor and the short cathode should 
 ## Configuring your bot using the Viam app
 
 Before proceeding, be sure that you have connected your Pi to the Viam app.
-Steps on how to do this can be found in the [Adding your Pi on the Viam App](/installation/rpi-setup/#adding-your-pi-on-the-viam-app) section of the Viam Documentation.
+Steps on how to do this can be found in the [Adding your Pi on the Viam App](/installation/install/linux-install/) section of the Viam Documentation.
 
 Now that we have gotten that out of the way, let's get back to configuring your robot's components.
 First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's **CONFIG** tab.
