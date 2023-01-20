@@ -50,7 +50,7 @@ Next, install the PiCAN 2 driver software <a href="https://copperhilltech.com/bl
 
 ### Hardware
 
-Now, power your Raspberry Pi off and attach the PiCAN 2 by aligning the 40 way connector and fitting to the top of the Pi using a spacer and screw as per the instructions <a href="https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi/" target="_blank">here</a>.
+Power your Raspberry Pi off and attach the PiCAN 2 by aligning the 40 way connector and fitting it to the top of the Pi using a spacer and a screw as per <a href="https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi/" target="_blank">the instructions</a>.
 
 <img src="../img/intermode/can_terminal_conn.png"  style="float:right;margin-right:12px" alt="PiCAN Terminal Wiring." title="PiCAN Terminal Wiring." width="400" />
 
