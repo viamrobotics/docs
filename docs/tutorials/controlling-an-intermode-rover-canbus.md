@@ -23,7 +23,7 @@ This is a powerful pairing: **Intermode** aims to make the hardware aspects of a
 The Intermode rover uses the <a href="https://en.wikipedia.org/wiki/CAN_bus" target="_blank">CAN bus</a> protocol, a robust and prevalent vehicle communication standard used in most modern vehicles.
 This tutorial will show how we can both leverage this protocol and abstract it into the Viam base interface so that the rover can then be controlled securely from anywhere with the programming language of your choice.
 
-## What you need for this tutorial
+## Requirements
 
 {{% alert title="Note" color="note"%}}
 If you are not in possession of an Intermode rover, many of the other concepts presented here may be relevant to your robotic project(s).  
