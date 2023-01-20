@@ -167,7 +167,7 @@ The base component supports the following methods:
 | ----------------------------- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------- |
 [MoveStraight](#movestraight)  | [MoveStraight][go_base]  |  [move_straight][python_move_straight] | Move the base in a straight line across the given distance at the given velocity. |
 [Spin](#spin) |  [Spin][go_base] | [spin][python_spin] | Move the base to the given angle at the given angular velocity. |
-[SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the rate and direction of the linear and angular power of the base. |
+[SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the relative power (out of max power) for linear and angular propulsion of the base. |
 [SetVelocity](#setvelocity) | [SetVelocity][go_base] | [set_velocity][python_set_velocity] | Set the linear velocity and angular velocity of the base. |
 [Stop](#stop) | [Stop][go_base] | [stop][python_stop] | Stop the base. |
 
@@ -332,7 +332,7 @@ myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: -1)
 
 ### Spin
 
-Move the base in a spinning motion, rotating it to the given angle (degrees) at the given angular velocity (degrees/sec).
+Turn the base in place, rotating it to the given angle (degrees) at the given angular velocity (degrees/sec).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -399,7 +399,9 @@ Set the linear and angular power of the base, represented as a percentage of max
 
 - `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the linear power of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Negative values imply a backwards direction in linear terms.
 Use only the Y component of the vector when controlling a wheeled base.
-- `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the angular power  of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Here, a positive value implies turning in a leftward direction and a negative value implies turning to the right.
+- `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the angular power  of the base.
+In the range of -1.0 to 1.0, with 1.0 meaning 100%.
+Here, a positive value implies turning in a leftward direction and a negative value implies turning to the right.
 Use only the Z component of the vector when controlling a wheeled base.
 
 **Returns:**
@@ -415,7 +417,7 @@ myBase = BaseClient.from_robot(robot=robot, name='my_base')
 print("move forward")
 await myBase.set_power(linear=Vector3(x=0,y=-.75,z=0), angular=Vector3(x=0,y=0,z=0))
 
-# Make your wheeled base move forward. Set linear power to -100%.
+# Make your wheeled base move backward. Set linear power to -100%.
 print("move backward")
 await myBase.set_power(linear=Vector3(x=0,y=-1.0,z=0), angular=Vector3(x=0,y=0,z=0))
 
@@ -425,7 +427,7 @@ await myBase.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=1)
 
 # Make your wheeled base spin right. Set angular power to -75%.
 print("spin right")
-await myBase.set_power(linear=Vector3(x=0,y=-1.0,z=0), angular=Vector3(x=0,y=0,z=-.75))
+await myBase.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=-.75))
 ```
 
 {{% /tab %}}
