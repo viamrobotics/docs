@@ -16,6 +16,7 @@ The term component describes a piece of hardware that a computer controls, like 
 Robots can be small and simple or very complex.
 An IOT sensor is a robot.
 But a robot can also consist of multiple computers, with many components, acting as one unit.
+Each computer that runs `viam-server` in a robot is called a part.
 
 ![Robot components](img/robot-components.png)
 
@@ -73,7 +74,7 @@ To see the Viam API specification, check [GitHub](https://github.com/viamrobotic
 
 We provide SDKs in several languages to easily connect to your robot, use components and services, and create custom modular resources.
 
-Viam currently has SDKs for Go and Python.
+Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk) and [Python](https://python.viam.dev/).
 Additional SDKs are coming soon, including Typescript, Rust, Java, C++, and Flutter.
 
 ## Next Steps
