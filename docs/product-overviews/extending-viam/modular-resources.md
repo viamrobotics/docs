@@ -164,7 +164,7 @@ This example motor implementation uses the built-in Viam motor API, but register
 
 ## Modular resources as remotes
 
-[Remote](/getting-started/high-level-overview/#remote) parts may load their own modules and provide modular resources, just as the main part can.
+Remote parts may load their own modules and provide modular resources, just as the main part can.
 This means that you can compose a robot of any number of parts running in different compute locations, each containing both built-in and custom resources.
 
 ## Limitations

@@ -15,7 +15,7 @@ It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and aut
 
 SDKs make it easier to interface with the robot without calling the gRPC API directly.
 
-<img src="../img/SDK-as-client/image1.png" alt ="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client." width="100%"><br>
+<img src="../img/SDK-as-client/image1.png" alt="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client." width="100%"><br>
 
 ## Viam's Client SDK Libraries
 
@@ -52,8 +52,9 @@ You can find more examples of Viam's SDKs on the [Python SDK example GitHub repo
 The easiest way to get started writing an application with Viam, is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**.
 These code snippets imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-{{% alert title="Caution" color="caution" %}}  
-Do not share your robot secret or robot address publicly. Sharing this information compromises your system security by allowing unauthorized access to your computer.
+{{% alert title="Caution" color="caution" %}}
+Do not share your robot secret or robot address publicly.
+Sharing this information compromises your system security by allowing unauthorized access to your computer.
 {{% /alert %}}
 
 The SDK connect script should look something like this:

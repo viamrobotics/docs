@@ -8,7 +8,7 @@ draft: false
 ---
 To use Viam software with your robot, you'll need to install a process called *viam-server* on your robot's computer.
 
-See [What is Viam?](/getting-started/high-level-overview/) for more information.
+See [What is Viam?](/getting-started/) for more information.
 
 <div class="container text-center">
   <div class="row">

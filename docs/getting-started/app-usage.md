@@ -1,4 +1,4 @@
---- 
+---
 title: "Getting Started with the Viam App"
 linkTitle: "Using the Viam App"
 weight: 2
