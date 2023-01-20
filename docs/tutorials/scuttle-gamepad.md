@@ -21,7 +21,7 @@ The following video demonstrates controlling a SCUTTLE Robot using a bluetooth g
 
 {{<video src="../videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a bluetooth gamepad" type="video/mp4">}}
 
-## Adding the Controller to the SCUTTLE's Config
+## Adding the controller to the SCUTTLE's config
 
 To add this controller to the robot’s config, from the Viam app ([https://app.viam.com](https://app.viam.com)), click on our old friend, **New COMPONENT**.
 <OL>
@@ -57,8 +57,8 @@ To link the controller's input to the base functionality, we need to add our fir
 Services are the software packages that provide our robots with cool and powerful functionality.
 
 1. Click **Create Service** under **services** at the top of the Viam app ([https://app.viam.com](https://app.viam.com)).
-2. Enter "Base Remote Control" for Component `type`. "Base Remote Control" is a service we provide for driving a rover with a gamepad.
-3. Enter **scuttle_gamepad** for the Service `name`.
+2. Enter "Base Remote Control" for **Component** `type`. "Base Remote Control" is a service we provide for driving a rover with a gamepad.
+3. Enter **scuttle_gamepad** for the **Service** `name`.
 
 <img src="../img/scuttle-gamepad/pi-game-create-service.png" alt="Create service builder" />
 
