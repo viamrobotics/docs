@@ -7,7 +7,7 @@ description: "An overview of Viam's Robot Development Kit (RDK)."
 tags: ["server", "rdk"]
 ---
 
-Make sure to understand the [Viam high-level overview first](../../getting-started/high-level-overview/).
+Make sure to understand the [Viam high-level overview first](../../getting-started).
 
 Viam's RDK is the open-source, on-robot portion of the Viam platform, that provides _viam-server_ and the Go SDK.
 

@@ -11,7 +11,7 @@ Hopefully you have had a chance to play around with the Viam Rover using the [Tr
 In this tutorial, we will introduce you to the Viam SDK (software development kit) so that you can write code in either Python or Golang to make your [Viam Rover](https://app.viam.com/try) move in a square.
 This is a great way to get a feel for what it's like to write code to control your robots using Viam.
 
-<img src="../img/try-viam-sdk/image1.gif" alt ="Overhead view of the Viam rover showing it as it drives in a square." width="100%"><br>
+<img src="../img/try-viam-sdk/image1.gif" alt="Overhead view of the Viam rover showing it as it drives in a square." width="100%"><br>
 
 ## How to install a Viam SDK
 
@@ -66,7 +66,7 @@ go run square.go
 If you successfully configured your robot and it is able to connect to the Viam app, you should see something like this printed to the terminal after running your program.
 What you see here is a list of the various resources, components, and services that have been configured to your robot in the Viam app.
 
-<img src="../img/try-viam-sdk/image3.png" alt ="A screenshot from the terminal that prints the output of print(robot.resource_names) when your Viam Rover has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%"><br>
+<img src="../img/try-viam-sdk/image3.png" alt="A screenshot from the terminal that prints the output of print(robot.resource_names) when your Viam Rover has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%"><br>
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -251,7 +251,7 @@ func main() {
 Now, go to the **CONTROL** tab, and make sure you can monitor the camera feed from your rover.
 When you run your code, you should be able to see your robot move in a square.
 
-<img src="../img/try-viam-sdk/image2.gif" alt ="Overhead view of the Viam rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square." width="100%"><br>
+<img src="../img/try-viam-sdk/image2.gif" alt="Overhead view of the Viam rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square." width="100%"><br>
 
 ## Next Steps
 
