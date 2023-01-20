@@ -11,7 +11,7 @@ In this post, you will be introduced to the basics of programming hardware by us
 This will allow you to write code to make an LED connected to the GPIO of a Raspberry Pi blink on and off.
 This tutorial is a good introduction to [Python](https://www.python.org/) or [Go](https://go.dev/) programming languages, and developing custom software for robots.
 
-<img src="../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.gif" alt ="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="100%"><br>
+<img src="../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.gif" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="100%"><br>
 
 {{% alert title="Note" color="note" %}}
 This is part 2 of Viam's Intro to Robotics series.
@@ -21,7 +21,7 @@ You should have already set up [your Raspberry Pi](/installation/prepare/rpi-set
 
 For reference, the circuit you are building for this tutorial looks like this:
 
-<img src="../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image1.png" alt ="Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins." width="100%"><br>
+<img src="../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image1.png" alt="Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins." width="100%"><br>
 
 ## What you'll need for this guide
 
@@ -94,7 +94,7 @@ go run blink.go
 If you successfully configured your robot and it is able to connect to the Viam app, you should see something like this printed to the terminal after running your program.
 What you see here is a list of the various resources, components, and services that have been configured to your robot in the Viam app.
 
-<img src="../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image4.png" alt ="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="500"><br>
+<img src="../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image4.png" alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="500"><br>
 
 {{% alert title="Tip" color="tip" %}}
 If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com).
@@ -165,7 +165,8 @@ if err != nil {
 {{< /tabs >}}
 
 Now that we have our board, and LED initialized, let's create an infinite loop that will blink the LED on and off.
-Within the `main` function, you can add the code to create an infinite loop, you can remove the line to close out the connection to your robot, since the infinite loop will never hit that line. Your completed `main` function should look like this:
+Within the `main` function, you can add the code to create an infinite loop, you can remove the line to close out the connection to your robot, since the infinite loop will never hit that line.
+Your completed `main` function should look like this:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -11,7 +11,7 @@ Viam is a complete software platform for robots.
 ## Robots
 
 A *robot* in Viam is a computer running the Viam platform along with the hardware the computer controls.
-The term component describes a piece of hardware that a computer controlls, like an arm or a motor.
+The term component describes a piece of hardware that a computer controls, like an arm or a motor.
 
 Robots can be small and simple or very complex.
 An IOT sensor is a robot.
@@ -21,8 +21,7 @@ But a robot can also consist of multiple computers, with many components, acting
 
 ## viam-server
 
-[`viam-server`](https://github.com/viamrobotics/rdk) is the open-source software which runs on each part of a robot. =
-A part is a computer which runs `viam-server` and:
+[`viam-server`](https://github.com/viamrobotics/rdk) is the open-source software which runs on each part of a robot and:
 
 - Creates, configures, and maintains the robot
 - Handles all communication securely

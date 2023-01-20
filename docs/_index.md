@@ -15,7 +15,7 @@ type: "docs"
         </p>
         <ul>
             <li>
-                <a href="/getting-started/high-level-overview">
+                <a href="/getting-started">
                     Viam Overview
                 </a>
             </li>
