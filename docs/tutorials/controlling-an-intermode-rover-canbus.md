@@ -238,7 +238,7 @@ sudo apt install git
 If needed, first create a new robot in the [Viam app](/getting-started/app-usage/) and follow instructions in the setup tab to ensure the configuration can be read by the robot from the cloud.
 
 In order to drive the Intermode base with Viam, you'll need add it to the robot configuration.
-What's important is that we tell RDK where to find the module, and then configure a modular component instance for the Intermode base.
+You will specify where viam-server can find the module, and then configure a modular component instance for the Intermode base.
 
 In this example, we've cloned the git tutorial repo to */home/me/tutorial-intermode/*.
 Change this to the correct location in *executable_path* when adding the module to your robot configuration.
