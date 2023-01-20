@@ -62,11 +62,11 @@ Services are the software packages that provide our robots with cool and powerfu
 
 <img src="../img/scuttle-gamepad/pi-game-create-service.png" alt="Create service builder" />
 
-After adding the Attributes, your config screen should appear similar to this:
+After adding the **Attributes**, your config screen should appear similar to this:
 
 <img src="../img/scuttle-gamepad/pi-game-service-config.png" alt="Service configuration" />
 
-Save the configuration and visit the control UI on The Viam app ([https://app.viam.com](https://app.viam.com)).
+Save the configuration and visit the control UI on the Viam app ([https://app.viam.com](https://app.viam.com)).
 
 You should see the panel for the Controller Service and its connection indicator.
 This is how your web UI will look.
