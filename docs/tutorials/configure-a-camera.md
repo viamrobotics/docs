@@ -80,7 +80,7 @@ or by powering it off and on again.
 <br>
 <img src="../img/configure-a-camera/05_camera_tutorial_manual_img_save.png" alt="Save image as menu" width="700"><br>
 
-## Additional Troubleshooting
+## Additional troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](../../appendix/troubleshooting/).
 

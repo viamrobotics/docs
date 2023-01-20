@@ -30,7 +30,7 @@ Also, the configuration files shown in this tutorial *must* be modified if you u
 You can find more information on configuring different motors in the [Motor Component](/components/motor) topic.
 {{% /alert %}}
 
-### Hardware and Software Requirements
+### Hardware and software requirements
 
 * [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT)[^rpi], with viam-server installed per [our Raspberry Pi setup guide](/getting-started/rpi-setup/).
 * [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)[^wrvr]
@@ -214,7 +214,7 @@ Don’t forget to make the base depend on the `left`, `right`, and the `board` c
 
 Now let’s add a camera to watch the video stream on the control panel as you move your rover.
 
-### Camera Configuration
+### Camera configuration
 
 Add your USB camera as a webcam. Please refer to [How to Configure a Camera > Connect and Configure a Camera](/tutorials/configure-a-camera/#connect-and-configure-a-webcam) for complete instructions.
 
