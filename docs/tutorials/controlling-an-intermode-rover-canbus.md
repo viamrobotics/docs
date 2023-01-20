@@ -72,15 +72,15 @@ We've created a github repository with a working modular resource implementation
 
 ## Understanding the Intermode base modular resource
 
-Viam includes [API](/product-overviews/extending-viam/modular-resources/#apis) interfaces for a number of common component types within Viam Server (otherwise known as the RDK - Robot Development Kit).
+Viam includes [APIs](/product-overviews/extending-viam/modular-resources/#apis) for a number of common component types within viam-server.
 The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base](/components/base) component.
 
 We'll walk through how we leveraged this API interface using code found in the <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">tutorial repository</a>.  If you are interested only in how to configure this modular resource code with your robot, you can skip to [using the intermode base resource](#use-the-intermode-base-modular-resource)
 
 ### Create a custom model using the Viam RDK base API
 
-For the Intermode rover, we'll want to conform to the base [API](/product-overviews/extending-viam/modular-resources/#apis) interface, but create a new [model](/product-overviews/extending-viam/modular-resources/models) with its own implementation of each method.
-Both the **API** interface and **model** are colon-separated triplets where the first element is a namespace.
+For the Intermode rover, we'll want to conform to the base [API](/product-overviews/extending-viam/modular-resources/#apis), but create a new [model](/product-overviews/extending-viam/modular-resources/models) with its own implementation of each method.
+Both the **API** and **model** are colon-separated triplets where the first element is a namespace.
 Since we are conforming to an existing Viam API for [base](/components/base), the [API](/product-overviews/extending-viam/modular-resources/#apis) we'll use is:
 **rdk:component:base**
 
@@ -133,7 +133,7 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 
 ### Implement base methods
 
-Now that the modular resource code has registered the API it is using and it's custom model, we can implement any number of methods provided by the base API.
+Now that the modular resource code has registered the API it is using and its custom model, we can implement any number of methods provided by the base API.
 Since the Intermode rover's commands are in the CAN bus format, we'll need our modular resource code to translate any commands sent via the base API, like *SetPower*, *SetVelocity*, or *Stop* to <a href="https://en.wikipedia.org/wiki/CAN_bus#Frames" target="_blank">CAN bus frames</a>.
 Intermode provides documentation on how its <a href="https://github.com/viam-labs/tutorial-intermode/blob/main/can_interface.pdf" target="_blank">CAN frames</a> are formatted.
 
@@ -142,6 +142,7 @@ This tutorial is not meant to line-by-line explain what this translation code do
 1. The SetPower command implements the SetPower interface from the *rdk:component:base* API
 2. The parameters sent to SetPower are formatted as a *driveCommand*
 3. The *driveCommand* is converted to a CAN frame, and set as the next command
+4. *publishThread* runs a loop continuously, sending the current command every 10ms (the Intermode base will otherwise time out)
 
 ``` go
 // this struct describes intermode base drive commands
