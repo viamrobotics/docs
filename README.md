@@ -1,4 +1,4 @@
-# Welcome to Viam Documenation
+# Welcome to Viam Documentation
 
 ## Dependencies
 
@@ -19,6 +19,8 @@
   * Standard development: `make serve-dev`
   * Development with draft files: `make serve-dev-draft`
   * Development with future files: `make serve-dev-future`
+
+* You can just run `hugo serve` after installing Hugo to show the prod view.
 
 ## Building
 

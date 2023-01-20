@@ -1,29 +1,31 @@
 ---
 title: "Data Management"
 linkTitle: "Data Management"
-weight: 99
+weight: 20
 type: "docs"
-description: "A guide to Viam's data ingestion and management tooling."
 tags: ["data", "data management", "services"]
 # SME: Alexa Greenberg
 ---
 
-## Data Capture and Synchronization to the Cloud
+The Data Management Service captures data from one or more components and securely syncs it to Viam's data platform. You can configure the frequency individually for each component. The service is designed for flexibility and efficiency while preventing data loss, data duplication, and other data management issues.
 
-The data management service supports capturing data from any component at a predefined frequency and syncing it with Viam's data platform.
+The service has two parts: [Data Capture](#data-capture) and [Cloud Sync](#cloud-sync).
 
-An example use case is a tomato picking gantry with a depth camera that captures images of crops on the vine.
-The image and point cloud data is collected at 10Hz.
-The gantry position is collected at 1kHz.
-All data is uploaded to Viam's cloud platform every minute.
+## Data Capture
 
-Once data is synchronized to the cloud, it is deleted from the robot, allowing for a data flywheel of continuous capture without running out of memory.
+Viam's Data Management Service captures data from one or more components locally on the robot's disk. The process runs in the background and, by default, stores data in the `/.viam/capture` directory.
 
-You can find detailed information in the [data management service documentation](/services/data-management/).
+For more information, see [Data Capture](../../services/data-management/#data-capture).
+
+## Cloud Sync
+
+Viam's Data Management Service securely syncs the specified data at the user-defined frequency to Viam's data platform.
+
+For more information, see [Cloud Sync](../../services/data-management/#cloud-sync).
 
 ## Viewing Data in Viam's Data Platform
 
-After the data management service synchronizes the uploaded data in Viam, you can view it within the Viam app at [https://app.viam.com/data/view](https://app.viam.com/data/view).
+After the Data Management Service synchronizes the uploaded data in Viam, you can view it within the Viam app at [https://app.viam.com/data/view](https://app.viam.com/data/view).
 
 Image (e.g, jpeg and png) data is viewable in the **IMAGES** tab, files and any other binary (e.g, point cloud data) is viewable in the **FILES** tab, and tabular sensor (e.g, gantry position) counts are viewable the **SENSOR DATA** tab.
 
