@@ -89,14 +89,14 @@ The Viam app lists the secret keys for a location in the **Location Secret Keys*
 
 Copy the secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
-Use this key in your SDK code and scripts to authenticate your access to the robots in your location in the cloud.
+Use these keys in your SDK code and scripts to authenticate your access to the robots in your location in the cloud.
 
 {{% alert title="Caution" color="caution" %}}
 Be cautious when sharing location secret keys in your code or messages.
 
 Do not make a valid key publicly available, as any entity attempting to access your location who has this token will be authenticated, compromising the security of your system.
 
-Note *where* and *when* you share a location secret key. After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible.
+Note *where* and *when* you share a location secret key. After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible, even though Viam supports flexible key rotation with up to two keys in use at one time.
 {{% /alert %}}
 
 #### Share a location with Viam Support
@@ -225,5 +225,5 @@ Be cautious when sharing robot part secret keys in your code or messages.
 
 Do not make a valid key publicly available, as any entity attempting to access your robot who has this token will be authenticated, compromising the security of your system.
 
-Note *where* and *when* you share a robot part secret key. After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible.
+Note *where* and *when* you share a robot part secret key. After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible, even though Viam supports flexible key rotation with up to two keys in use at one time.
 {{% /alert %}}
