@@ -32,6 +32,7 @@ But a robot can also consist of multiple computers, with many components, acting
 A robot's configuration lives in the cloud on the [Viam platform](https://app.viam.com).
 Configuration describes how hardware and software interact.
 A basic example that you can configure using the Viam platform is connecting a computer to a camera.
+A more advanced example is a computer connected to a camera, actuating components (like motors or arms), and an ML model.
 
 {{% alert title="Info" color="tip" %}}
 Everything that runs on your robot is [open-source](http://github.com/viamrobotics).
