@@ -4,13 +4,15 @@ linkTitle: "BeagleBone Setup"
 weight: 20
 type: "docs"
 description: "How to install and run viam-server on a BeagleBone AI-64."
+aliases: 
+    - "/installation/beaglebone-install/"
 # SMEs: Joe Karlsson, Shawn, Matt Dannenberg, and Rand
 ---
 
 The <a href="https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/" target="_blank">BeagleBone AI-64</a> from <a href="https://beagleboard.org/" target="_blank">BeagleBoard.org</a> is an open-source computer based on the Texas Instruments TDA4VM processor.
 In this tutorial, we will show you how to set up your BeagleBone AI-64 with Debian, and install Viam.
 
-{{% figure src="../img/beaglebone-install/image4.png" alt="BeagleBone AI-64 front at 45° angle." title="BeagleBone AI-64 front at 45° angle." %}}
+{{% figure src="/installation/img/beaglebone-install/image4.png" alt="BeagleBone AI-64 front at 45° angle." title="BeagleBone AI-64 front at 45° angle." %}}
 
 ## What you'll need for this guide
 
@@ -113,26 +115,6 @@ Run the following command to do verify the packages are up to date:
 sudo apt update && sudo apt dist-upgrade && sudo reboot
 ```
 
-### Setup your BeagleBone on the Viam app
-
-* Go to <a href="https://app.viam.com" target="_blank">app.viam.com</a>
-* Create a new robot
-* Go to the **SETUP** tab
-* Follow the instructions for Linux with an Aarch64 architecture installation.
-* Wait for the Viam app to confirm that you have connected to your BeagleBone.
-
-{{% figure src="../img/beaglebone-install/image2.png" alt="Screenshot from the Viam app showing a dialog box with a green checkmark and text that reads, Your robot is successfully connected! Proceed to the config tab." title="BeagleBone has successfully connect to Viam" %}}
-
-{{% alert title="Tip" color="tip" %}}
-
-For more information on installing Viam on a Linux machine, check out our [Linux installation guide](/installation/linux-install/).
-
-{{% /alert %}}
-
 ## Next steps
 
-Now that you have viam-server up and running on your BeagleBone, you can start configuring your robot and the real fun can begin!
-
-We recommend that you try our [LED blink tutorial](/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/) and [configuring a robot with a USB camera](/tutorials/configure-a-camera/) tutorial.
-These are a great place to get started and to ensure that your board is configured correctly.
-You can check out [our complete list of tutorials](https://docs.viam.com/tutorials/) for step-by-step project walk throughs demonstrating robot configuration.
+Now that your Pi has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
