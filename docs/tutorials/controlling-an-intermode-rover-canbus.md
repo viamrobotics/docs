@@ -26,7 +26,7 @@ This tutorial will show how we can both leverage this protocol and abstract it i
 ## Requirements
 
 {{% alert title="Note" color="note"%}}
-If you are not in possession of an Intermode rover, many of the other concepts presented here may be relevant to your robotic project(s).  
+Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic project(s).  
 While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/product-overviews/extending-viam/modular-resources/)-based projects.
 {{% /alert %}}
 
