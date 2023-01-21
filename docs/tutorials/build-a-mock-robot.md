@@ -10,7 +10,11 @@ tags: ["mock", "simulation"]
 ## Introduction
 
 In this post, we will show you how to build a mock robot using just your personal laptop so you can try using Viam without any robotic hardware.
+<<<<<<< HEAD
 This is a great way to learn how to build robots [the Viam way](/viam).
+=======
+This is a great way to learn how to build robots [the Viam way](/getting-started/).
+>>>>>>> 912e017 (Address Jon and Jessamy feedback on getting-started)
 
 Most Viam components come with a _fake_ model that can be useful when testing.
 These fake components interact with Viam like real hardware, but of course, do not actually exist.
@@ -122,7 +126,7 @@ go run index.go
 If you successfully configured your robot and it is able to connect to the Viam app you should see something like this printed to the terminal after running your program.
 What you see here is a list of the various resources (Like components, and services) that have been configured to your robot in the Viam app.
 
-<img src="../img/build-a-mock-robot/image1.png" alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam App. The output is an array of resources that have been pulled from the Viam App. Some of these are the Vision Service, Data Manager, and Board." width="100%"><br>
+<img src="../img/build-a-mock-robot/image1.png" alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%"><br>
 
 ### How to control your mock robot
 
@@ -285,8 +289,8 @@ Now that you have your mock robotic arm working, let's add a mock sub-part to yo
 
 A _robot_ in Viam is one or more computers combined into one logical robot.
 The bounds of a robot are usually pretty clear, but can be subjective.
-However, it's possible with Viam to create a robot that is made out of multiple computers.
-Each of these computer-controlled units is referred to as a **part**.
+However, it's possible with Viam to create a robot that is made up of multiple computers.
+Each of these computer-controlled units is referred to as a *part*.
 Most simple robots will have only one part, but can have as many parts as needed.
 
 Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.

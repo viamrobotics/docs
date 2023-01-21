@@ -13,12 +13,12 @@ Viam is a complete software platform for robots.
 ## Robots
 
 A *robot* in Viam is a computer running the Viam platform along with the hardware the computer controls.
-The term component describes a piece of hardware that a computer controls, like an arm or a motor.
+The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
 
 Robots can be small and simple or very complex.
 An IOT sensor is a robot.
 But a robot can also consist of multiple computers, with many components, acting as one unit.
-Each computer that runs `viam-server` in a robot is called a part.
+Each computer that runs `viam-server` in a robot is called a *part*.
 
 ![Robot components](img/robot-components.png)
 
@@ -32,7 +32,7 @@ Each computer that runs `viam-server` in a robot is called a part.
 - Accepts API requests
 - Runs services like computer vision, data synchronization, and motion planning
 
-A robot's configuration lives in the cloud on the [Viam platform](https://app.viam.com).
+A robot's configuration lives in the cloud on the [Viam app](https://app.viam.com).
 Configuration describes how hardware and software interact.
 A basic example that you can configure using the Viam platform is connecting a computer to a camera.
 A more advanced example is a computer connected to a camera, actuating components (like motors or arms), and an ML model.
@@ -56,7 +56,7 @@ Your robot does not need to be permanently connected to the internet to work:
 
 TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is both authenticated and encrypted.
 
-Viam uses [WebRTC](https://webrtc.org/) to create secure peer to peer paths between robots and clients for fast, low latency communication.
+Viam uses [WebRTC](https://webrtc.org/) to create secure peer-to-peer paths between robots and clients for fast, low latency communication.
 The Viam cloud does not receive any command or control information regarding your robots, ensuring low latency, robustness, and privacy.
 
 With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program your robot in most common programming languages.
@@ -84,6 +84,6 @@ Additional SDKs are coming soon, including Typescript, Rust, Java, C++, and Flut
 Start by borrowing one of our robots.
 Use [Try Viam](/try-viam/).
 
-If you already have your own robot, [set up your own robot](/program/app-usage/) and learn how to program your own robot.
+If you already have your own robot, [set up `viam-server`](/getting-started/app-usage/) and learn how Viam helps you prototype and scale.
 
-For more inspirations, check out our [tutorials](/tutorials) or visit our community on [Slack](https://viamrobotics.slack.com/) to get help or workshop ideas with others!
+For more inspiration, check out our [tutorials](/tutorials) or visit our community on [Slack](https://viamrobotics.slack.com/) to get help or workshop ideas with others!
