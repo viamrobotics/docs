@@ -4,7 +4,7 @@ linkTitle: "Control an Intermode Rover with Viam"
 weight: 60
 type: "docs"
 tags: ["modular resources", "extending viam", "components", "base", "CAN bus", "Intermode"]
-description: "Integrate an Intermode rover as a modular resource based component with CAN bus"
+description: "Integrate an Intermode rover as a modular-resource-based component with CAN bus."
 # SME: Matt Vella, Matt Dannenberg, James Otting
 ---
 
