@@ -290,7 +290,7 @@ Now that you have your mock robotic arm working, let's add a mock sub-part to yo
 A _robot_ in Viam is one or more computers combined into one logical robot.
 The bounds of a robot are usually pretty clear, but can be subjective.
 However, it's possible with Viam to create a robot that is made up of multiple computers.
-Each of these computer-controlled units is referred to as a *part*.
+Each of these computer-controlled units is referred to as a _part_.
 Most simple robots will have only one part, but can have as many parts as needed.
 
 Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
