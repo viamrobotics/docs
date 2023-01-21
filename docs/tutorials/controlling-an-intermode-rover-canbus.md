@@ -1,5 +1,5 @@
 ---
-title: "Control an Intermode Rover with CAN bus and Viam"
+title: "Control an Intermode Rover with CAN Bus and Viam"
 linkTitle: "Control an Intermode Rover with Viam"
 weight: 60
 type: "docs"
