@@ -94,7 +94,7 @@ Since you will conform to an existing Viam API for [base](/components/base), the
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
-Therefore, you will use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, a model name of "intermode". So our complete triplet is:
+Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, a model name of "intermode". So the complete triplet is:
 **viamlabs:tutorial:intermode**
 
 The <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">module.go code</a> creates this model and registers the component instance.  The *Subtype* of a resource contains its API triplet, so using **base.Subtype** (see line 6 below) registers our new model with the *API* from the RDK's built-in base component(rdk:component:base).
