@@ -18,21 +18,20 @@ The term *component* describes a piece of hardware that a computer controls, lik
 Robots can be small and simple or very complex.
 A movement sensor connected to a single-board computer is a robot.
 But a robot can also consist of multiple computers with many components, acting as one unit.
-Each computer that runs `viam-server` in a robot is called a *part*.
 
 ![Robot components](img/robot-components.png)
 
 ## viam-server
 
-[`viam-server`](https://github.com/viamrobotics/rdk) is the open-source software which runs on each part of a robot and:
+[`viam-server`](https://github.com/viamrobotics/rdk) is the open-source software which runs on each single-board computer in a robot and:
 
 - Creates, configures, and maintains the robot
-- Securely communicates with your robot and the [Viam app](https://app.viam.com)
+- Securely handles all communications
 - Runs drivers, custom code, and any other software
 - Accepts API requests
 - Runs services like computer vision, data synchronization, and motion planning
 
-A robot's configuration lives in the cloud on the [Viam app](https://app.viam.com).
+The Viam platform uses the cloud for configuration.
 Configuration describes how hardware and software interact.
 A basic example that you can configure using the Viam platform is connecting a computer to a camera.
 A more advanced example is a computer connected to a camera, actuating components (like motors or arms), and an ML model.
@@ -48,9 +47,8 @@ Your robot does not need to be permanently connected to the internet to work:
 - All APIs work locally or in the cloud
 - Data is cached locally and synced when possible
 - Configuration is cached
-- `viam-server` can act as both a client and a server.
-  In other words, each instance can request services or resources, as well as provide them.
-  This allows for tremendous flexibility.
+
+When your robot is connected (either LAN or WAN), `viam-server` can act as both a client and a server. In other words, each instance can request services or resources, as well as provide them. This allows for tremendous flexibility.
 
 ## Communication
 
