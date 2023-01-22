@@ -34,7 +34,7 @@ While this tutorial can be followed verbatim for the Intermode rover, much of it
 The tutorial uses the following hardware:
 
 * <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with viam-server installed per [our Raspberry Pi setup guide](/installation/prepare/rpi-setup/).
-* <a href="https://www.intermode.io/" target="_blank">An Intermode rover</a>
+* [An Intermode rover](https://www.intermode.io/)
 * <a href="https://copperhilltech.com/pican-2-can-bus-interface-for-raspberry-pi/" target="_blank">PiCAN 2 - Canbus interface for Raspberry Pi</a>
 * <a href="https://www.amazon.com/dp/B01M03288J" target="_blank">12V to 5V Buck Converter</a>
 * <a href="https://www.amazon.com/Type-C-Cable-10inch-22AWG-Pigtail/dp/B09C7SLHFP" target="_blank">USB-C Male Plug to  Pigtail Cable</a>
