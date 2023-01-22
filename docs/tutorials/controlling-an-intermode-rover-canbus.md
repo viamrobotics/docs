@@ -237,7 +237,7 @@ git clone https://github.com/viam-labs/tutorial-intermode
 ```
 
 in a directory you'd like to have the modular resource code run from.
-If you don't have git installed on your pi, you'll need to first run:
+If you don't have git installed on your Pi, you'll need to first run:
 
 ``` sh
 sudo apt install git
