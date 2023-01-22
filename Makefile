@@ -6,20 +6,21 @@ setup: git package.json
 
 PROD_OPTIONS=-e production --config config.toml,config_prod.toml --minify
 DEV_OPTIONS=-e development --config config.toml,config_dev.toml
+LOCAL_OPTIONS=-e development --config config.toml,config_local.toml
 PR_OPTIONS=-D $(PROD_OPTIONS) --config config.toml,config_pr.toml
 SERVE_OPTIONS=--baseURL http://localhost
 
 clean:
-	rm -rf public resources
+	rm -rf public resources dist
 
 build-prod: clean setup
 	hugo $(PROD_OPTIONS)
 
 build-dist: clean setup
-	hugo $(PROD_OPTIONS) -d dist
+	hugo $(LOCAL_OPTIONS) -d dist
 
 htmltest: clean setup
-	hugo $(PROD_OPTIONS) -d dist
+	hugo $(LOCAL_OPTIONS) -d dist
 	htmltest
 
 build-pr: clean setup
