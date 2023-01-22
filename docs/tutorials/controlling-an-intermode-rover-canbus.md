@@ -36,7 +36,7 @@ The tutorial uses the following hardware:
 * <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with viam-server installed per [our Raspberry Pi setup guide](/installation/prepare/rpi-setup/).
 * [An Intermode rover](https://www.intermode.io/)
 * [PiCAN 2 - Canbus interface for Raspberry Pi](https://copperhilltech.com/pican-2-can-bus-interface-for-raspberry-pi/)
-* <a href="https://www.amazon.com/dp/B01M03288J" target="_blank">12V to 5V Buck Converter</a>
+* [12V to 5V Buck Converter](https://www.amazon.com/dp/B01M03288J)
 * <a href="https://www.amazon.com/Type-C-Cable-10inch-22AWG-Pigtail/dp/B09C7SLHFP" target="_blank">USB-C Male Plug to  Pigtail Cable</a>
 
 ## Initial Setup
