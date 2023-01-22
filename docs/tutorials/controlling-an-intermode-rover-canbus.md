@@ -207,7 +207,7 @@ func (base *interModeBase) SetPower(ctx context.Context, linear, angular r3.Vect
 }
 ```
 
-Now, the intermode base can receive and execute *SetPower* commands using the same interface you'd use to send *SetPower* commands to any rover that is Viam-controlled.
+Now the intermode base can receive and execute *SetPower* commands using the same interface you'd use to send *SetPower* commands to any rover that is Viam-controlled.
 
 ### Leaving some methods unimplemented
 
