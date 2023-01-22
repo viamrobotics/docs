@@ -98,31 +98,18 @@ Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tut
 **viamlabs:tutorial:intermode**
 
 The <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">module.go code</a> creates this model and registers the component instance. 
-The *Subtype* of a resource contains its API triplet, so using **base.Subtype** (see line 6 below) registers our new model with the *API* from the RDK's built-in base component (rdk:component:base).
+The *Subtype* of a resource contains its API triplet, so using **base.Subtype** (see line 30 below) registers our new model with the *API* from the RDK's built-in base component (rdk:component:base).
 
 ```go
 // namespace, model family, model
 var model = resource.NewModel("viamlabs", "tutorial", "intermode")
-
-func init() {
-    registry.RegisterComponent(
-        base.Subtype, // the "base" API: "rdk:component:base"
-        model,
-        registry.Component{Constructor: func(
-            ctx context.Context,
-            deps registry.Dependencies,
-            config config.Component,
-            logger golog.Logger,
-        ) (interface{}, error) {
-            return newBase(config.Name, logger) // note: newBase() is not shown in this tutorial
-        }})
-}
 
 func main() {
     goutils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("intermodeBaseModule"))
 }
 
 func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
+    registerBase()
     modalModule, err := module.NewModuleFromArgs(ctx, logger)
 
     if err != nil {
@@ -138,6 +125,21 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
     }
     <-ctx.Done()
     return nil
+}
+
+// helper function to add the base's constructor and metadata to the component registry, so that we can later construct it.
+func registerBase() {
+    registry.RegisterComponent(
+        base.Subtype, // the "base" API: "rdk:component:base"
+        model,
+        registry.Component{Constructor: func(
+            ctx context.Context,
+            deps registry.Dependencies,
+            config config.Component,
+            logger golog.Logger,
+        ) (interface{}, error) {
+            return newBase(config.Name, logger) // note: newBase() is not shown in this tutorial
+        }})
 }
 ```
 
