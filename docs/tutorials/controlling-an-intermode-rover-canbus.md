@@ -245,7 +245,7 @@ sudo apt install git
 
 ### Configure the Intermode base resource
 
-If you have not already, first create a new robot in the [Viam app](/getting-started/app-usage/) and follow the instructions in the setup tab to connect the robot to the cloud.
+If you have not already, first create a new robot in the [Viam app](https://app.viam.com/) and follow the instructions in the **SETUP** tab to connect the robot to the cloud.
 
 In order to drive the Intermode base with Viam, you need to add it to the robot configuration.
 You will specify where viam-server can find the module, and then configure a modular component instance for the Intermode base.
