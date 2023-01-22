@@ -278,7 +278,8 @@ More details about modules and how they work can be found in the [modular resour
 
 ### Control the rover
 
-Once you save this configuration, you see a *base* card in the robot's *control* tab and can drive the rover from there. Be careful, the Intermode is a large and powerful rover - make sure you have the shutoff key in hand for emergencies and make sure you have enough space for the rover to move.
+Once you save this configuration, you see a *base* card in the robot's **CONTROL** tab and can drive the rover from there.
+Be careful, the Intermode is a large and powerful rover - make sure you have the shutoff key in hand for emergencies and make sure you have enough space for the rover to move.
 
 If you do not see the base card in the *control* tab, check the *logs* tab for possible setup or configuration errors.
 
