@@ -19,7 +19,7 @@ Creating a modular resouce for your robot allows you to issue commands using the
 <img src="../img/intermode/rover_outside.png"  style="float:left;margin-right:12px" alt="Intermode rover pictured outdoors." title="Intermode rover pictured outdoors." width="400" />
 
 While the concepts covered here are applicable to other hardware, we’ll specifically show you how to use Viam to control the <a href="https://www.intermode.io/" target="_blank">Intermode rover</a>.
-This is a powerful pairing: **Intermode** aims to make the hardware aspects of a mobile robot-based business simple and worry-free, while Viam simplifies the software aspects of any robotics business.
+This is a powerful pairing: **Intermode** aims to make the hardware aspects of a mobile-robot-based business simple and worry-free, while Viam simplifies the software aspects of any robotics business.
 
 The Intermode rover uses the <a href="https://en.wikipedia.org/wiki/CAN_bus" target="_blank">CAN bus</a> protocol, a robust and prevalent vehicle communication standard used in most modern vehicles.
 This tutorial will show how we can both leverage this protocol and abstract it into the Viam base interface so that the rover can then be controlled securely from anywhere with the programming language of your choice.
