@@ -43,7 +43,7 @@ The tutorial uses the following hardware:
 
 ### Raspberry Pi software setup
 
-Before proceeding, [set up `viam-server` on your Raspberry Pi ](/installation/rpi-setup/) and configure a (for now) empty robot configuration.
+Before proceeding, [set up `viam-server` on your Raspberry Pi](/installation/prepare/rpi-setup/) and configure a (for now) empty robot configuration.
 
 Next, install the PiCAN 2 driver software [following these instructions](https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi/).
 
