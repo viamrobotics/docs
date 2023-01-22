@@ -11,7 +11,7 @@ description: "Integrate an Intermode rover as a modular-resource-based component
 The Viam platform comes with a component called [base](/components/base/), which adds useful abstractions for simplified control of mobile robots.
 Instead of controlling individual motors, the base component allows you to [issue commands](https://python.viam.dev/autoapi/viam/components/base/index.html#package-contents) like “move_straight”, “spin”, “set_velocity” and “stop”.  
 
-Many robotic rovers can be controlled out-of-the-box with the Viam **wheeled** base model - simply by specifying how your motorized wheels are configured.
+Many robotic rovers can be controlled out-of-the-box with the Viam "wheeled" base model - simply by specifying how your motorized wheels are configured.
 But what if you want to control a rover or other mobile robot that does not expose direct motor control?
 This tutorial shows you how to create a [modular resource](/product-overviews/extending-viam/modular-resources/) (custom component).
 Creating a modular resouce for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/product-overviews/sdk-as-client/) of your choice.
