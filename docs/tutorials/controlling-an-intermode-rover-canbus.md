@@ -67,7 +67,7 @@ Next, with the Intermode rover powered down, connect the 6-wire amphenol connect
 You will have two remaining wires (12v and ground).
 
 Connect the remaining two wires to the + (red) and - (black) **input** terminals on your buck converter.
-Attach the USB-C adaptor wires to the **output** of your buck converter, and plug the other end of the USB-C adaptor into your Pi.
+Attach the USB-C adapter wires to the **output** of your buck converter, and plug the other end of the USB-C adapter into your Pi.
 You can now power up the rover, which will provide power to your Pi and allow it to communicate with the rover via CAN bus!
 
 <img src="../img/intermode/intermode_wiring.jpg"  style="margin-right:12px" alt="Intermode, Pi Wiring." title="Intermode, Pi Wiring." width="800" />
