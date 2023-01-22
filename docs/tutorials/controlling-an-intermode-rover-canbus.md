@@ -145,7 +145,7 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 
 Now that the modular resource code has registered the API it is using and its custom model, you can implement any number of methods provided by the base API.
 Since the Intermode rover's commands are in the CAN bus format, you need the modular resource code to translate any commands sent from the base API, like *SetPower*, *SetVelocity*, or *Stop* to <a href="https://en.wikipedia.org/wiki/CAN_bus#Frames" target="_blank">CAN bus frames</a>.
-Intermode provides documentation on how its <a href="https://github.com/viam-labs/tutorial-intermode/blob/main/can_interface.pdf" target="_blank">CAN frames</a> are formatted.
+Intermode provides documentation on how its [CAN frames](https://github.com/viam-labs/tutorial-intermode/blob/main/can_interface.pdf) are formatted.
 
 At a high level, the <a href="https://github.com/viam-labs/tutorial-intermode/blob/main/intermode-base/module.go" target="_blank">tutorial code</a> does the following:
 
