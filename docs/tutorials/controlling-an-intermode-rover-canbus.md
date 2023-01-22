@@ -251,7 +251,7 @@ In order to drive the Intermode base with Viam, you need to add it to the robot 
 You will specify where viam-server can find the module, and then configure a modular component instance for the Intermode base.
 
 In this example, we've cloned the git tutorial repo to */home/me/tutorial-intermode/*.
-Change this to the correct location in *executable_path* when adding the module to your robot configuration.
+Change this to the correct location in `executable_path` when adding the module to your robot configuration.
 
 ``` json
 {
