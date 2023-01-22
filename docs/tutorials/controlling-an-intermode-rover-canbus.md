@@ -230,7 +230,7 @@ func (base *interModeBase) IsMoving(ctx context.Context) (bool, error) {
 This tutorial's modular resource code leverages libraries (specifically a <a href="https://github.com/go-daq/canbus" target="_blank">CAN bus library</a>) that can run on Linux and interface with the PiCAN socket.
 Once you have compiled your resouce, you need to configure `viam-server` (running on the Pi) to load the module.
 For these reasons, you will need to make the modular resource code available on your Raspberry Pi.
-If you have git installed on your pi, this is as simple as running:
+If you have git installed on your Pi, this is as simple as running:
 
 ``` sh
 git clone https://github.com/viam-labs/tutorial-intermode
