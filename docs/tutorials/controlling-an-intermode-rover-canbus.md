@@ -81,7 +81,7 @@ Check out this <a href="https://github.com/viam-labs/tutorial-intermode" target=
 Viam includes [APIs](/product-overviews/extending-viam/modular-resources/#apis) for common component types within viam-server.
 The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/components/base).
 
-If you want to learn how to leverage this API to create a custom modular resource using code found in the <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">tutorial repository</a>, continue reading. 
+If you want to learn how to leverage this API to create a custom modular resource using code found in the <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">tutorial repository</a>, continue reading.
 If you want to directly configure this modular resource code with your robot, skip to [using the intermode base resource](#use-the-intermode-base-modular-resource)
 
 ### Create a custom model using the Viam RDK base API
@@ -97,7 +97,7 @@ This base model is being created for tutorial purposes only, and will implement 
 Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, a model name of "intermode". So the complete triplet is:
 **viamlabs:tutorial:intermode**
 
-The <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">module.go code</a> creates this model and registers the component instance. 
+The <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">module.go code</a> creates this model and registers the component instance.
 The *Subtype* of a resource contains its API triplet, so using **base.Subtype** (see line 30 below) registers our new model with the *API* from the RDK's built-in base component (rdk:component:base).
 
 ```go
