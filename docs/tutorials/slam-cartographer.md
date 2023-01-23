@@ -1,10 +1,10 @@
 ---
-title: "How to Run SLAM on your Robot using a LIDAR"
+title: "Run SLAM on your Robot with a LIDAR"
 linkTitle: "Run SLAM on your Robot using a LIDAR"
 weight: 50
 type: "docs"
-draft: false
-description: "Instructions to run SLAM with either a LIDAR or provided example data."
+draft: true
+description: "Instructions to run a Cartographer SLAM service with either a LIDAR (Rplidar A1 or A3) or an existing dataset."
 tags: ["slam", "camera", "services", "lidar"]
 # SMEs: Kat
 ---
@@ -17,14 +17,14 @@ Breaking changes are likely to occur, and occur often.
 
 ## Introduction
 
-[SLAM](../../services/slam/) allows your robot to create a map of its surroundings and find its location within that map.
+[Simultaneous Localization And Mapping (SLAM)](../../services/slam/) allows your robot to create a map of its surroundings and find its location within that map.
 
-This tutorial shows you how to run [Cartographer](https://github.com/cartographer-project), a system that provides real-time SLAM, on your robot.
+This tutorial shows you how to run [Cartographer](https://github.com/cartographer-project), a system that provides real-time SLAM, as a service on your robot.
 
 You have two choices:
 
-* Run SLAM in online (live) mode with a [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
-* Run SLAM in offline mode with the provided example data or data you have collected.
+* Run SLAM in online mode with a [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3) laser range scanning device.
+* Run SLAM in offline mode with Viam's lab dataset or data you've collected.
 
 ## Requirements
 
@@ -72,20 +72,20 @@ Install Cartographer with one of these commands:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Running Cartographer in Live Mode with a Rplidar
+## Running Cartographer in Online Mode with a Rplidar
 
-Run Cartographer in online (live) mode using a Rplidar:
+Run Cartographer as a live SLAM service in online mode with a Rplidar.
 
 ### Configuration with Viam
 
 Configure your robot to run Cartographer in live mode with a Rplidar in two steps:
 
-1. Add a Rplidar as a modular component.
+1. Add your Rplidar as a modular component.
 2. Add Cartographer as a SLAM service.
 
 #### Add a Rdiplar as a Modular Component
 
-First, we need to install the Rplidar Module:
+First, install the Rplidar Module:
 
 {{< tabs >}}
 {{% tab name="macOS" %}}
@@ -114,7 +114,9 @@ First, we need to install the Rplidar Module:
 {{< /tabs >}}
 
 Connect the Rplidar to your machine by adding it as a modular component to your configuration in the [Viam app](https://app.viam.com/).
-To do this, go to your robot's page on the [Viam app](https://app.viam.com/).
+
+Plug the Rplidar into your machine, and go to your robot's page on the [Viam app](https://app.viam.com/).
+
 In the **CONFIG** tab, click on "Raw JSON" and copy/paste the following configuration:
 
 {{< tabs >}}
@@ -169,7 +171,7 @@ In the **CONFIG** tab, click on "Raw JSON" and copy/paste the following configur
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Add Cartographer as a SLAM Service
+#### Add Cartographer in Online Mode as a SLAM Service
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 On the **CONFIG** tab, click the **SERVICES** sub tab.
@@ -223,17 +225,24 @@ Click "Raw JSON" on the **CONFIG** tab, then copy/paste the following configurat
 {{% /expand %}}
 <br>
 
-Change the `"data_dir": "/home/YOUR_USERNAME/cartographer_dir"` directory to your home directory followed by `/cartographer_dir`. You can find the path to your home directory by running `pwd` in your machine's terminal.
+Now, you must change the `"data_dir":` attribute (line 8 above) to be your home directory path followed by `/cartographer_dir`. 
 
-To run this command on an Rasberry Pi you must `ssh` into the Pi first.
-After SSH'ing into your pi and running the `pwd` command, your terminal should look like this:
+This tells the SLAM service to create a directory named `cartographer_dir` within your home directory and to save all data and maps to that location.
+
+Find the path to your home directory on your machine by running the `pwd` command in your machine's terminal.
+
+{{% alert title="Note" color="note" %}}
+If you are using a Raspberry Pi as your machine, you have to `ssh` into your Pi to complete this step.
+
+After SSH'ing into your pi and running `pwd`, your terminal should look like this:
 
 ```bash
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
 ```
+{{% /alert %}}
 
-Changing the `"data_dir"` directory path tells the slam service to create a directory named `cartographer_dir` and to save all data and maps to that location. Save the config.
+Save the config.
 
 If `YOUR_USERNAME` was `slam-bot`, your complete configuration (with the Rplidar module) should now look like this:
 
@@ -345,7 +354,7 @@ Configure your robot to run Cartographer in offline mode in two steps:
 1. Find an existing dataset to run Cartographer with.
 2. Add Cartographer in offline mode as a SLAM service.
 
-#### Find a Dataset to Run Cartographer
+#### Add a Dataset to run Cartographer
 
 In offline mode SLAM uses an existing dataset to create a map.
 
