@@ -1,7 +1,7 @@
 ---
 title: "How to Build a Line Follower with a Rover and a Webcam"
 linkTitle: "RGB Line Follower"
-weight: 35
+weight: 50
 type: "docs"
 description: "Build a line-following robot that relies on a webcam and color detection."
 tags: ["base", "vision", "detector", "camera", "services"]
@@ -29,7 +29,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 - A single board computer [running an instance of viam-server](/installation/rpi-setup/)
   - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
-- [A wheeled base component](../../components/base/)
+- [A wheeled base component](/components/base/)
   - We used a [SCUTTLE Robot](https://www.scuttlerobot.org/shop/) for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
 - RGB camera
   - A common off-the-shelf webcam [(such as this)](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html/) with a ribbon connector to the Pi’s camera module port.
@@ -51,10 +51,10 @@ Configure the board per the [Board Component topic](/components/board/).
 We named ours `local`.
 Use type `board` and model `pi` if you're using a Raspberry Pi.
 
-Configure the wheeled base per the [Base Component topic](../../components/base/).
+Configure the wheeled base per the [Base Component topic](/components/base/).
 We named ours `scuttlebase`.
 
-Configure the [camera](../../components/camera/) as described in this tutorial: [Connect and configure a webcam](../../tutorials/configure-a-camera/).
+Configure the [camera](/components/camera/) as described in this tutorial: [Connect and configure a webcam](/components/camera/configure-a-camera/).
 
 Your webcam configuration in the Config Builder will look something like this:
 
@@ -393,7 +393,7 @@ Be sure to update your `detect_color` parameter accordingly.
 
 ## Additional Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](../../appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com/) and we will be happy to help.
 

@@ -125,7 +125,7 @@ The servo component supports the following methods:
 
 {{% alert title="Note" color="note" %}}
 
-First make sure you have setup your robot and connected it to the Viam app. Check out our [getting started section](/getting-started/) for details.
+First make sure you have setup your robot and connected it to the Viam app. Check out our [getting started section](/viam/) for details.
 
 **Assumption:** A servo called "my_servo" is configured as a component of your robot on the Viam app.
 

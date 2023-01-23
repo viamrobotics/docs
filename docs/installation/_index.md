@@ -1,14 +1,14 @@
 ---
 title: "Installation Guide"
 linkTitle: "Installation Guide"
-weight: 15
+weight: 20
 no_list: true
 type: docs
 draft: false
 ---
 To use Viam software with your robot, you'll need to install a process called *viam-server* on your robot's computer.
 
-See [What is Viam?](/getting-started/) for more information.
+See [What is Viam?](/viam/) for more information.
 
 <div class="container text-center">
   <div class="row">
