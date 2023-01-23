@@ -13,21 +13,24 @@ Viam has a few types of sensor implemented including an ultrasonic sensor, tempe
 
 {{% alert title="Note" color="note" %}}
 
-Viam has a separate, more specific component type called [movement sensor](/components/movement-sensor/) specifically for Global Positioning Systems (GPS) units, IMUs, and other sensors that detect position, velocity, and acceleration.
+Viam has a separate, more specific component type called [movement sensor](/components/movement-sensor/) specifically for Global Positioning System (GPS) units, inertial measurement units (IMUs), and other sensors that detect position, velocity, and acceleration.
+
+Viam also has an [encoder component](/components/encoder/) that is distinct from sensor.
 
 {{% /alert %}}
 
-## Hardware Requirements
+## Hardware requirements
 
-* [Ultrasonic sensor](/components/ultrasonic-sensor/), [encoder](/components/encoder/), or [IMU](/components/imu/), or any other sensor that can connect to a robot.
+* Some sort of sensor, such as an ultrasonic sensor or temperature sensor
 * A [board](/components/board/)
 * Depending on your sensor's output, an analog to digital converter may be necessary to allow the sensor to communicate with the board.
 
 ## Wiring
 
-The wiring for your sensor depends on the specific sensor you are using. Refer to the sensor’s data sheet for wiring details.
+The wiring for your sensor depends on the specific sensor you are using.
+Refer to the sensor’s data sheet for wiring details.
 
-## Viam Configuration
+## Viam configuration
 
 To create a custom sensor, you must create a set of attributes unique to that sensor model:
 
@@ -61,7 +64,7 @@ Once configured, the code connects to the robot and reads values from the config
 from viam.components.sensor import Sensor
 
 robot = await connect()
-sensor = Sensor.from_robot(robot, "ultra1")
+sensor = Sensor.from_robot(robot, "mySensorName")
 readings = await sensor.get_readings()
 ```
 
