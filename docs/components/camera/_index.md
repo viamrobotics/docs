@@ -3,7 +3,7 @@ title: "Camera Component"
 linkTitle: "Camera"
 weight: 40
 type: "docs"
-description: "Explanation of camera configuration and usage in Viam."
+description: "Explanation of cameras (including webcams, depth cameras, and lidar) in Viam."
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
