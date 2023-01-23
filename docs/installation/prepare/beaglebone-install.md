@@ -16,9 +16,9 @@ In this tutorial, we will show you how to set up your BeagleBone AI-64 with Debi
 
 ## Hardware requirements
 
-You will need the following hardware, tools, and software to install Viam on a BeagleBone AI-64:
+You will need the following hardware, tools, and software to install viam-server on a BeagleBone AI-64:
 
-1. The BeagleBone AI-64
+1. A BeagleBone AI-64
 2. A microSD card
 3. A 5V barrel jack power supply
 4. [Optional] A microSD card reader
@@ -117,4 +117,4 @@ sudo apt update && sudo apt dist-upgrade && sudo reboot
 
 ## Next steps
 
-Now that your Pi has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
+Now that your BeagleBone has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
