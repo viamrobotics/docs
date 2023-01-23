@@ -187,7 +187,7 @@ The base component supports the following methods:
 
 Make sure you have set up your robot and connected it to the Viam app. Check out the [Client SDK Libraries Quick Start](/product-overviews/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/getting-started/) for app-specific guidance.
 
-The following example assumes you have a base called "my_base" which is configured as a component of your robot in the Viam app.
+The following example assumes you have a base called "my_base" which is configured as a component of your robot.
 If your base has a different name, change the `name` in the example.
 
 {{% /alert %}}
@@ -397,7 +397,8 @@ Set the linear and angular power of the base, represented as a percentage of max
 
 **Parameters:**
 
-- `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the linear power of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Negative values imply a backwards direction in linear terms.
+- `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's linear propulsion. In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
+Negative values imply a backwards direction.
 Use only the Y component of the vector when controlling a wheeled base.
 - `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the angular power  of the base.
 In the range of -1.0 to 1.0, with 1.0 meaning 100%.
