@@ -34,8 +34,8 @@ The reference frame requires three pieces of information:
   * keep in mind that +X is forward, +Y is left, and +Z is up
 
 * Orientation: The rotation that when applied to the axes of the parent's reference frame yields the axes of the component's reference frame
-  * while this representation appears to represent an R4 Axis Angle, it is actually our own [orientation vector](https://docs.viam.com/appendix/orientation-vector/) format.
-  * in the UI the type option currently controls whether to supply theta in degrees for  configuration purposes, but note that *the orientation vector stored and returned by the frame system will be in radians*.
+  * while this representation appears to represent an R4 Axis Angle, it is actually our own [orientation vector](/internals/orientation-vector/) format.
+  * in the UI the type option currently controls whether to supply theta in degrees for configuration purposes, but note that *the orientation vector stored and returned by the frame system will be in radians*.
 
 The information mathematically operates in the following way.
 Let P be the parent's coordinate system and C be the component's coordinate system.
@@ -53,16 +53,16 @@ For example, a traditional arm may have a reference frame whose origin is at its
 Each driver of such a component in the Viam system requires a JSON file named **Model JSON** that details the attachment of reference frames. However, that is a requirement for Viam's drivers. If you implement your own drivers, the decision whether to require Model JSON files will depend on your code.
 These reference frames are ingested by the Frame System *but not exposed via gRPC call* (meaning they are unavailable for inspection by any of the SDKs)
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the [**Model JSON** section](#model-json).
 {{% /alert %}}
 
 ## How the Robot Builds the Frame System
 
-Once configuration is complete and the server is started, the robot builds a tree of reference frames with the world as the root node.
+Once the configuration is completed and the server is started, the robot builds a tree of reference frames with the world as the root node.
 
 A <a href="https://en.wikipedia.org/wiki/Topological_sorting" target="_blank">topologically-sorted list</a>[^tsl] of the generated reference frames is printed by the server and can be seen in the server logs.
-Viam regenerates this tree in the process of [reconfiguration](https://docs.viam.com/product-overviews/fleet-management/#configurationlogging):
+Viam regenerates this tree in the process of [reconfiguration](/services/fleet-management/#configurationlogging):
 
 ![an example of a logged frame system](../img/frame_sys_log_example.png)
 
@@ -195,7 +195,7 @@ As the gantry extends, the arm will be moved accordingly.
 
 ## Accessing the Frame System
 
-The [robot service](https://docs.viam.com/services/robot-service/) supplies two gRPC library functions by which to interact with the Frame System:
+The [robot service](/services/robot-service/) supplies two gRPC library functions by which to interact with the Frame System:
 <ol>
 <li>TransformPose</li></OL>
 <ul><li>transforms a pose measured in one reference frame to the same pose as it would have been measured in another.</li></ul>
@@ -215,7 +215,7 @@ An arm on a gantry, for example, can be managed by the Frame System directly bec
 On the other hand, an arm on a rover that is unaware of its own position cannot be configured into the frame system because the rover can move freely with respect to the world frame. A knowledgeable user could code a mobile base with an organic SLAM system able to report its own position without the need for supplementary transforms.
 
 So, how do we deal with such components?
-One solution would be to introduce a motion tracker or a camera in combination with our [vision service](../../services/vision/) as a third component.
+One solution would be to introduce a motion tracker or a camera in combination with our [vision service](/services/vision/) as a third component.
 This component is fixed in space (making it configurable in the Frame System) and can supply the location and orientation of the rover in its own reference frame.
 This *supplemental transform* is the missing link to be able to transform a pose in the arm's reference frame to the world reference frame (or others that may exist in the frame system).
 
