@@ -3,7 +3,7 @@ title: "Movement Sensor Component"
 linkTitle: "Movement Sensor"
 weight: 70
 type: "docs"
-description: "Explanation of movement sensor configuration and usage in Viam."
+description: "Explanation of movement sensors (including GPS and IMU) in Viam."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
 # SME: Rand
 ---
