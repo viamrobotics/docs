@@ -74,7 +74,7 @@ It is normal for your **COMPONENTS** subtab on the builder view to be empty:
 
 ![Builder Tab](../img/fragments/builder_tab.png)
 
-Instead, your Raw JSON will have the fragment in it.
+Instead, your Raw JSON will reference the fragment in it.
 
 ![Raw JSON](../img/fragments/raw_json.png)
 
