@@ -3,7 +3,7 @@ title: "How to Run SLAM on your Robot using a LIDAR"
 linkTitle: "Run SLAM on your Robot using a LIDAR"
 weight: 50
 type: "docs"
-draft: true
+draft: false
 description: "Instructions to run SLAM with either a LIDAR or provided example data."
 tags: ["slam", "camera", "services", "lidar"]
 # SMEs: Kat
