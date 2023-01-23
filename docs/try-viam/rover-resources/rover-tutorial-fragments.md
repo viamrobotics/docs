@@ -67,14 +67,14 @@ The fragment adds the following components to your robot's JSON configuration:
   * Type: "movement_sensor"
   * and attributes of "i2c_bus": "default_i2c_bus", "use_alternate_i2c_address": false, and "board": "local".
   * Depends on: local.
-* A microphone, type: audio_input, with attributes "debug": false
+* A microphone, type: audio_input, with attributes "audio_path_pattern": "3a" and "debug": false.
 
 Adding a fragment to your robot adds the configuration to your robot but it does not automatically fill your robot configuration page in the app with these components.
 It is normal for your **COMPONENTS** subtab on the builder view to be empty:
 
 ![Builder Tab](../img/fragments/builder_tab.png)
 
-And your Raw JSON to have the fragment in it.
+Instead, your Raw JSON will reference the fragment in it.
 
 ![Raw JSON](../img/fragments/raw_json.png)
 
