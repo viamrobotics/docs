@@ -34,7 +34,7 @@ This defines the direction something is pointing in.
     - To do this, take a picture
     - Determine if the orientation is correct
     - If not, add 90 to Theta, and try again
-![camera example](../img/orientation-vector-camera.png)
+![camera example](../img/vector/orientation-vector-camera.png)
 
 ## Why we like it
 
