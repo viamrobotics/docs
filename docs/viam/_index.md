@@ -12,18 +12,17 @@ Viam is a complete software platform for robots.
 
 ## Robots
 
-A *robot* in Viam is a single-board computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), running `viam-server` along with the hardware the computer controls.
+A *robot* in Viam is a computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), running `viam-server` along with the hardware the computer controls.
 The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
 
 Robots can be small and simple or very complex.
-A movement sensor connected to a single-board computer is a robot.
-But a robot can also consist of multiple computers with many components, acting as one unit.
+A robot could be a single-board computer with a single sensor or LED wired to it, or a robot can consist of multiple computers with many components, acting as one unit.
 
 ![Robot components](img/robot-components.png)
 
 ## viam-server
 
-[`viam-server`](https://github.com/viamrobotics/rdk) is the open-source software which runs on each single-board computer in a robot and:
+[`viam-server`](https://github.com/viamrobotics/rdk) is the open-source software which runs on each computer in a robot and:
 
 - Creates, configures, and maintains the robot
 - Securely handles all communications
@@ -48,7 +47,9 @@ Your robot does not need to be permanently connected to the internet to work:
 - Data is cached locally and synced when possible
 - Configuration is cached
 
-When your robot is connected (either LAN or WAN), `viam-server` can act as both a client and a server. In other words, each instance can request services or resources, as well as provide them. This allows for tremendous flexibility.
+When your robot is connected (either LAN or WAN), `viam-server` can act as both a client and a server.
+In other words, each instance can request resources, as well as provide them.
+This allows for tremendous flexibility.
 
 ## Communication
 
@@ -82,6 +83,6 @@ Additional SDKs are coming soon, including Typescript, Rust, Java, C++, and Flut
 Start by borrowing one of our robots.
 Use [Try Viam](/try-viam/).
 
-If you already have your own robot, [set up `viam-server`](/getting-started/app-usage/) and learn how Viam helps you prototype and scale.
+If you already have your own robot, [set up `viam-server`](/installation/) and learn how Viam helps you prototype and scale.
 
 For more inspiration, check out our [tutorials](/tutorials) or visit our community on [Slack](https://viamrobotics.slack.com/) to get help or workshop ideas with others!
