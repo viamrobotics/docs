@@ -398,12 +398,11 @@ Set the linear and angular power of the base, represented as a percentage of max
 **Parameters:**
 
 - `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's linear propulsion. In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
-Negative values imply a backwards direction.
-Use only the Y component of the vector when controlling a wheeled base.
-- `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The rate and direction of the angular power  of the base.
-In the range of -1.0 to 1.0, with 1.0 meaning 100%.
-Here, a positive value implies turning in a leftward direction and a negative value implies turning to the right.
-Use only the Z component of the vector when controlling a wheeled base.
+Viam's coordinate system considers +Y to be the forward axis (+/- X left/right, +/- Z up/down), so use the Y component of this vector to move forward and backward when controlling a wheeled base.
+Negative "Y:" values imply moving backwards.
+- `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's angular propulsion.
+In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
+Use the Z component of this vector to spin left or right when controlling a wheeled base. Negative "Z:" values imply spinning to the right.
 
 **Returns:**
 
@@ -437,9 +436,12 @@ await myBase.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=-.
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `linear` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The rate and direction of the linear power of the base. In the range of [-1.0 to 1.0], with 1.0 meaning 100%. Here, negative values imply a backwards direction. Use only the Y component of the vector when controlling a wheeled base, as the Y vector points forward.
-- `angular` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The rate and direction of the angular power of the base. In the range of -1.0 to 1.0, with 1.0 meaning 100%. Here, a positive value implies turning in a leftward direction and a negative value implies turning to the right.
-Use only the Z component of the vector when controlling a wheeled base.
+- `linear` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The percentage of max power of the base's linear propulsion. In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
+Viam's coordinate system considers +Y to be the forward axis (+/- X left/right, +/- Z up/down), so use the Y component of this vector to move forward and backward when controlling a wheeled base.
+Negative "Y:" values imply moving backwards.
+- `angular` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The percentage of max power of the base's angular propulsion.
+In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
+Use the Z component of this vector to spin left or right when controlling a wheeled base. Negative "Z:" values imply spinning to the right.
 - `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
