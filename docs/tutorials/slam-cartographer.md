@@ -413,7 +413,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 }
 ```
 
-Change the `"data_dir"` directory path in this example to `"/home/YOUR_USERNAME/viam-old-office-small-pcd"`: your home directory path (found by running `pwd`) followed by `viam-old-office-small-pcd`.
+Change the `"data_dir": "/home/YOUR_USERNAME/viam-old-office-small-pcd"` directory path to your machine's home directory path (found by running `pwd`) followed by `/viam-old-office-small-pcd`.
 
 Head over to the **CONTROL** tab and click on the drop-down menu of the Cartographer SLAM service you configured.
 Change the "Refresh frequency" to your desired frequency and watch a map come to life using the data in your dataset!
