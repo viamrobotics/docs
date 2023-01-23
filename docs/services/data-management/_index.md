@@ -1,7 +1,7 @@
 ---
 title: "Data Management Service"
 linkTitle: "Data Management Service"
-weight: 10
+weight: 20
 simple_list: true
 type: "docs"
 tags: ["data management", "data", "services"]
@@ -34,7 +34,7 @@ To configure data capture, see [data capture](../data-management/configure-data-
 
 ## Cloud Sync
 
-The Data Management Service syncs the stored data to the cloud at the user-defined frequency.
+The Data Management Service securely syncs the specified data to the cloud at the user-defined frequency.
 Viam does not impose a minimum or maximum on the frequency of data syncing. However, in practice, your hardware or network speed may impose limits on the frequency of data syncing.
 
 If the internet becomes unavailable or the robot needs to restart during the sync process, the service will try to resume sync indefinitely. When the connection is restored and sync resumes, the service resumes sync where it left off without duplicating data. For more detailed information, see [Considerations](#considerations).
@@ -76,5 +76,10 @@ To configure cloud sync, see [configure cloud sync](../data-management/configure
     Currently, the Data Management Service can use the entire available disk space to store data.
     If the robot loses connectivity and remains disconnected, data capture can eventually use all disk space. Currently, Viam does not safeguard against this.
     {{< /alert >}}
+
+## Coming Soon
+
+- Data processing for ML model training
+- ML model to robot deployment
 
 ## Next steps
