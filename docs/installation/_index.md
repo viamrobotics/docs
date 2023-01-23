@@ -6,7 +6,7 @@ no_list: true
 type: docs
 draft: false
 ---
-To use Viam software with your robot, you'll need to install a process called *viam-server* on your robot's computer.
+To use Viam software with your robot, you need to install a binary called *viam-server* on your robot's computer.
 
 See [What is Viam?](/viam/) for more information.
 
@@ -25,7 +25,7 @@ See [What is Viam?](/viam/) for more information.
             <br>
             <img src="img/thumbnails/viam-icon-data-capture.png" alt="Viam data capture icon" width=200>
             <h4 style="text-align: left; margin-left: 0px;">Install</h4>
-            <p style="text-align: left;">Install viam-server on your machine.</p>
+            <p style="text-align: left;">Install viam-server on your robot.</p>
         </a>
     </div>
   </div>

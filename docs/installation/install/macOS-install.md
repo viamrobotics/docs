@@ -1,5 +1,5 @@
 ---
-title: "Installing viam-server on macOS"
+title: "Install viam-server on macOS"
 linkTitle: "macOS Install"
 weight: 35
 type: "docs"

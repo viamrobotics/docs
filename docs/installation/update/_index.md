@@ -28,11 +28,18 @@ Updates will be far less frequent.
 
 ### Manual / Service-based
 
-These app images have a built in self-update feature. To update manually, just run the file with “--aix-update” as the only argument. Ex: `sudo viam-server --aix-update`
+These app images have a built in self-update feature.
+To update manually, just run the file with “--aix-update” as the only argument.
+For example:
+
+```bash
+sudo viam-server --aix-update
+```
 
 When installed as a system service, this will be run automatically each time the service is started.
 
-Disable Service-based Updates
+#### Disable Service-based Updates
+
 If you want to DISABLE automatic updates from the service file, just comment out the following line in `/etc/systemd/system/viam-server.service` with a pound sign (#) so that it looks like this:
 
 ```bash
