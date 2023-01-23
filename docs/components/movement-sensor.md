@@ -5,6 +5,7 @@ weight: 70
 type: "docs"
 description: "Explanation of movement sensor configuration and usage in Viam."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
+icon: "img/components/imu.png"
 # SME: Rand
 ---
 The movement sensor component is an abstraction of a sensor that gives data on where a robot is and how fast it is moving.

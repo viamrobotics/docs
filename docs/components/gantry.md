@@ -6,6 +6,7 @@ weight: 50
 type: "docs"
 description: "Explanation of gantry configuration and usage in Viam."
 tags: ["gantry", "components"]
+icon: "img/components/gantry.png"
 # SME: Rand
 ---
 
