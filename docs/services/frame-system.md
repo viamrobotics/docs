@@ -34,7 +34,7 @@ The reference frame requires three pieces of information:
   * keep in mind that +X is forward, +Y is left, and +Z is up
 
 * Orientation: The rotation that when applied to the axes of the parent's reference frame yields the axes of the component's reference frame
-  * while this representation appears to represent an R4 Axis Angle, it is actually our own [orientation vector](/appendix/orientation-vector/) format.
+  * while this representation appears to represent an R4 Axis Angle, it is actually our own [orientation vector](/internals/orientation-vector/) format.
   * in the UI the type option currently controls whether to supply theta in degrees for configuration purposes, but note that *the orientation vector stored and returned by the frame system will be in radians*.
 
 The information mathematically operates in the following way.
