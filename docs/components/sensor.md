@@ -55,8 +55,7 @@ Don't forget to include any required attributes you define in your custom sensor
 
 ## Getting Started With Sensors and the Viam SDK
 
-The following example configures an ultrasonic sensor component for a robot called `ultra1`.
-Once configured, the code connects to the robot and reads values from the configured sensor:
+The following example connects to and gets readings from an ultrasonic sensor component named `mySensorName` (configuration done previously in JSON).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
