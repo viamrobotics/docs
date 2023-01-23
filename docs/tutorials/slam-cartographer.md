@@ -19,18 +19,18 @@ Breaking changes are likely to occur, and occur often.
 
 [SLAM](../../services/slam/) allows your robot to create a map of its surroundings and find its location within that map.
 
-This tutorial shows you how to run [Cartographer](https://github.com/cartographer-project), a real time SLAM system, on your robot.
+This tutorial shows you how to run [Cartographer](https://github.com/cartographer-project), a system that provides real-time SLAM, on your robot.
 
 You have two choices:
 
-* Run SLAM in online (live) mode with an [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
+* Run SLAM in online (live) mode with a [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
 * Run SLAM in offline mode with the provided example data or data you have collected.
 
 ## Requirements
 
 * A Linux or macOS machine with the viam-server installed. You can find instructions for installing the viam-server on your machine in the **Setup** section.
 * If you are using a Raspberry Pi, you must have Raspberry Pi OS installed on it. Refer to [Installing Raspberry Pi OS on the Raspberry Pi](../../installation/rpi-setup/#installing-raspberry-pi-os).
-* [optionally] An [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
+* [optionally] A [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
 
 ## Setup
 
