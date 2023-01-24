@@ -8,7 +8,7 @@ description: "A guide to imaging a TDA4VM to prepare it for viam-server installa
 
 ## Hardware requirements
 
-* A Texas Instruments TDA4VM single-board computer
+* A [Texas Instruments TDA4VM single-board computer](https://www.ti.com/tool/SK-TDA4VM)
 * A USB-C power cable to power the TDA4VM board
 * A microSD card
 * A desktop or laptop computer for flashing the microSD card
