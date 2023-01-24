@@ -198,17 +198,7 @@ There is also a JSON stub you can copy if you wish to use this robot as a remote
 The **CONTROL** tab allows you to control your robot using an interface for each component of your robot.
 This is done via WebRTC.
 For example, if you have configured a base with wheels, you can control your robot's movement with an arrow pad and fields to change base’s speed.
-If you have configured a camera component, a window in the Control tab displays the camera output.
-
-### Blockly
-
-{{% alert title="Note" color="note" %}}
-This is an experimental feature.
-Stability is not guaranteed.
-Breaking changes are likely to occur, and occur often.
-{{% /alert %}}
-
-This tab gives you the option of working on customizing your robot's functionality by using Viam’s block-based coding editor which implements Blockly and Python.
+If you have configured a camera component, a window in the **CONTROL** tab displays the camera output.
 
 ### Security
 
