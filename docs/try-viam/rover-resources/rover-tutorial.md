@@ -205,7 +205,8 @@ The following pinout corresponds to the diagram:
 ENA and ENB pins have little plastic jumpers that needs to get removed before wiring.
 
 {{< alert title="Note" color="note" >}}
-The motor driver on the Viam Rover has 8 pins and 6 wires, you must wire it with the outside row pins:
+The motor driver on the Viam Rover has 8 pins and 6 wires.
+You must wire it with the outside row pins:
 
 <img src="../img/viam-rover/wiring-closeup.jpg" style="max-width:400px;width:100%" alt="closeup of the motor driver wiring" />
 {{< /alert >}}
