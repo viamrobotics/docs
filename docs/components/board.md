@@ -59,7 +59,9 @@ The following board models are currently supported (not exhaustive):
 
 - **pi**: Raspberry Pi 4 or Pi Zero W
 
-- **ti**: BeagleBone AI 64
+- **beaglebone**: BeagleBone AI 64
+
+- **ti**: TDA4VM devkit
 
 - **jetson**: Nvidia Jetson Xavier NX
 

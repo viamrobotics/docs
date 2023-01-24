@@ -8,11 +8,13 @@ description: "A guide to imaging a TDA4VM to prepare it for viam-server installa
 
 ## Hardware requirements
 
-* A Texas Instruments TDA4VM single board computer
+* A Texas Instruments TDA4VM single-board computer
+* A USB-C power cable to power the TDA4VM board
 * A microSD card
-* An internet-connected computer
+* A desktop or laptop computer for flashing the microSD card
 * A way to connect the microSD card to the computer (a microSD slot or microSD reader)
-
+* An Ethernet cable
+* An HDMI cable
 
 ## Required downloads
 
@@ -30,41 +32,44 @@ You will use the Balena Etcher to flash the microSD card.
 You must extract the image from the zip file before flashing the microSD card.
 {{% /alert %}}
 
-{{% alert title="Note" color="note" %}}
-If you intend to perform video capture or use the Data Management service, you may need a higher capacity microSD card to hold the cached video or data.
-Otherwise, a 16GB microSD is sufficient to hold the linux board image and the viam-server.
-{{% /alert %}}
-
 <img src="../../img/ti-tda4vm/etcher.png" width="600px" alt="The Balena Etcher interface.">
 
 <br>
 <br>
 
 1. Insert the microSD card into a reader connected to your computer.
+
 2. Launch Balena Etcher.
+
 3. Click **Flash from File** to open the file selector.
+
 4. Navigate to and select the image you downloaded.
+
 5. Click **Select Target** to choose the storage device corresponding to your microSD card from the selector window.
+
 6. Click on the desired device, then click **Select** to continue.
+
 7. Click **Flash!**.
    If you receive a warning concerning the size of the microSD card, ensure that you have inserted the proper microSD and also selected the proper device, then click, **Yes, I'm sure** to flash the board.
    The flashing and verification process may take 10-20 minutes, depending on your system.
+
 8. On completion of the flashing and validation process, remove the microSD card from your computer and insert it into the TDA4VM.
 
 <img src="../../img/ti-tda4vm/completed.png" width="600px" alt="Successful image flash completion screen." >
 
-## Installing Viam Server on the TDA4VM
+## Install viam-server on the TDA4VM
 
 ### External connection and login
 
-1. Connect the ethernet, HDMI, and USB-C power cables to the board.
+1. Connect the Ethernet and HDMI cables to the board.
 
-2. Use the credentials and IP address displayed in the upper right-hand corner of the monitor to SSH into the board:
+1. Connect the board to power using the USB-C power cable.
+
+1. Use the credentials and IP address displayed in the upper right-hand corner of the monitor to SSH into the board:
 
 <img src="../../img/ti-tda4vm/welcomescreen.png" width="600px" alt="TI Welcome Screen." title="TI Welcome Screen." >
 
 ### Install viam-server
-
 
 Log in to the board using SSH to complete this section.
 
