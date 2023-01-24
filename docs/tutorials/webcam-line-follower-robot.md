@@ -80,12 +80,10 @@ We’ll use the Viam [vision service color detector](/services/vision/#detection
 
 In the **SERVICES** section of the **CONFIG** tab, configure a color detector for the color of your tape line.
 
-- Use a color picker like <a href="https://colorpicker.me/" target="_blank">colorpicker.me</a>[^colorpick] to approximate the color of your line and get the corresponding hexadecimal hash to put in your config.
+- Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding hexadecimal hash to put in your config.
 Put this hash in the `detect_color` parameter.
 We used #19FFD9 to represent the color of green electrical tape.
 
-[^colorpick]: Color picker: <a href="https://colorpicker.me/" target="_blank">ht<span></span>tps://colorpicker.me/</a>
-  
 - We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
 What this will look like in the Config Builder:
@@ -395,7 +393,7 @@ Be sure to update your `detect_color` parameter accordingly.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com/) and we will be happy to help.
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/) and we will be happy to help.
 
 ## Bonus Challenges
 

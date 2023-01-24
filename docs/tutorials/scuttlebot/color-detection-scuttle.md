@@ -25,9 +25,7 @@ Do not share your robot secret or robot address publicly. Sharing this informati
 
 ### Python.py Code
 
-<a href="https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0" target="_blank">**Python.py GIST**</a>[^hgist]
-
-[^hgist]:Python.py code Gist: <a href="https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0" target="_blank">ht<span></span>tps://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0</a>
+[**Python.py code**](https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0)
 
 ## Prerequisites
 
@@ -39,10 +37,7 @@ Perhaps you can start with a red sports ball to demo with.
 
 Download the <file>scuttle.py</file> code to a directory on your computer that you can remember.
 Feel free to choose your own location, but as an example, we’ve chosen the Desktop.
-We highly suggest using a virtual python environment like <a href="https://python-poetry.org" target="_blank">Poetry</a>[^poetry] or <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank">Miniconda</a>[^minicon].
-
-[^poetry]:Poetry: <a href="https://python-poetry.org" target="_blank">ht<span></span>tps://python-poetry.org</a>
-[^minicon]:Miniconda: <a href="https://docs.conda.io/en/latest/miniconda.html" target ="_blank">ht<span></span>tps://docs.conda.io/en/latest/miniconda.html</a>
+We highly suggest using a virtual python environment like [Poetry](https://python-poetry.org) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
 Then create an environment for Python by running the following on the terminal:
 
@@ -63,9 +58,7 @@ conda activate pysdk
 Poetry environments are implicitly activated.
 
 Before you can run the code, you need to install the "viam" module.
-Follow the <a href="https://github.com/viamrobotics/viam-python-sdk#installation" target="_blank">Python SDK installation</a>[^pos] guide to properly install the package.
-
-[^pos]:Python SDK installation: <a href="https://github.com/viamrobotics/viam-python-sdk#installation" target="_blank">ht<span></span>tps://github.com/viamrobotics/viam-python-sdk#installation</a>
+Follow the [Python SDK installation](https://github.com/viamrobotics/viam-python-sdk#installation) guide to properly install the package.
 
 NOTE: If using a python environment, ensure that the package is installed in the proper environment.
 

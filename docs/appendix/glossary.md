@@ -104,9 +104,7 @@ There is generally one robot part per CPU.
 
 **Gantry**: A robot that only uses linear motion to carry out a task; for example, the scaffolding of a 3D printer, which moves the print head around on motorized linear rails.
 
-<a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">**gRPC:**</a>[^grpc] An open source, cross-platform, high performance Remote Procedure Call (RPC) framework initially developed at Google in 2015. With gRPC, a client application can communicate directly with a server application on a different machine. This framework can run in any environment and efficiently connect distributed applications and services.
-
-[^grpc]:GRPC, webpage, 2022, Wikipedia authors:  <a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">ht<span><span>tps://en.wikipedia.org/wiki/GRPC</a>
+[**gRPC:**](https://en.wikipedia.org/wiki/GRPC) An open source, cross-platform, high performance Remote Procedure Call (RPC) framework initially developed at Google in 2015. With gRPC, a client application can communicate directly with a server application on a different machine. This framework can run in any environment and efficiently connect distributed applications and services.
 
 **Protocol Buffers (Protobuf)**: A free and open-source, language-neutral, cross-platform data format for serializing structured data.
 It is useful in developing programs to communicate with each other over a network or for storing data.

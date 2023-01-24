@@ -79,9 +79,7 @@ Using SSH Keys for authentication is a great way of securing your Raspberry Pi a
 If you select `Allow public-key authentication only`, and the section `set authorized_ keys for 'pi'` is pre-populated, that means you do have an existing public SSH key that is ready to use.
 In that case, you do not have to change this section.
 
-If this section is empty, you can either generate a new SSH key using <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank">these instructions</a>[^sshkey], or you can use password authentication instead.
-
-[^sshkey]:SSH Key Generation: <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank">ht<span></span>tps://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent</a>
+If this section is empty, you can either generate a new SSH key using [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead.
 
 ![Raspberry Pi Imager window showing "Set Hostname" and "Enable SSH" both selected.](/installation/img/rpi-setup/imager-set-ssh.png)
 

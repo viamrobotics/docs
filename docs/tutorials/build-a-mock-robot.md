@@ -82,7 +82,7 @@ Refer to the appropriate SDK documentation for SDK installation instructions.
 {{% /alert %}}
 
 {{% alert title="Tip" color="tip" %}}
-If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
 There, you will find a friendly developer community of people learning how to make robots using Viam.
 {{% /alert %}}
 
@@ -490,4 +490,4 @@ In this tutorial, we showed you how to set up a mock robot with a sub-part so th
 
 If you're ready to get started with building robots with real hardware components, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](/tutorials/).
 
-If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).

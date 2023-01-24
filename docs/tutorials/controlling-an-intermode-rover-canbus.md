@@ -284,4 +284,4 @@ Be careful, the Intermode is a large and powerful rover - make sure you have the
 
 If you do not see the base card in the **CONTROL** tab, check the **LOGS** tab for possible setup or configuration errors.
 
-If you have any issues or if you want to connect with other developers learning how to build robots with Viam, head over to the <a href="https://viamrobotics.slack.com/" target="_blank">Viam Community Slack</a>.
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, head over to the <a href="https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/" target="_blank">Viam Community Slack</a>.

@@ -70,7 +70,7 @@ What you see here is a list of the various resources, components, and services t
 
 {{% alert title="Tip" color="tip" %}}
 
-If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
 There you will find a friendly developer community of people learning how to make robots using Viam.
 
 {{% /alert %}}
@@ -264,4 +264,4 @@ You could also write some code to control the other components on the Viam Rover
 You could also control Viam's services, by adding [data management](/services/data-management/) to collect data in real time or [vision services](/services/vision/) to add color detection to your Rover.
 If you are ready to start building your own robots with Viam, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](/tutorials/).
 
-If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).

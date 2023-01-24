@@ -26,9 +26,7 @@ The Viam SLAM Service supports the integration of custom SLAM libraries with the
 
 As of 11 October 2022, the following SLAM library is integrated:
 
-- <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank">ORB-SLAM3</a>[^orb]
-
-[^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORB-SLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
+- [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
 
 {{% alert title="Note" color="note" %}}
 

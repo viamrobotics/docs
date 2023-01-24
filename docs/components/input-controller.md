@@ -10,9 +10,7 @@ icon: "img/components/controller.png"
 ---
 ## Input Interface
 
-The Input interface is defined in <a href="https://github.com/viamrobotics/rdk/blob/main/components/input/input.go" target="_blank">input/input.go</a>[^input] and you should view that file for details on specific methods and their uses.
-
-[^input]:input/input.go: <a href="https://github.com/viamrobotics/rdk/blob/main/components/input/input.go" target="_blank">ht<span></span>tps://github.com/viamrobotics/rdk/blob/main/components/input/input.go</a>
+The Input interface is defined in [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) and you should view that file for details on specific methods and their uses.
 
 ### Overview/Concepts
 
@@ -35,11 +33,11 @@ Input devices provide a Controller interface with three methods:
 
 #### EventType
 
-`EventType is an enumerated list, with items like ButtonPress, ButtonRelease, PositionChangeAbs, Connect, Disconnect, etc. See <a href="https://github.com/viamrobotics/rdk/blob/main/components/input/input.go" target="_blank">input/input.go</a>[^input] for the current list. This type is returned as part of every event (per above) and also used to select events the callback is interested in when registering. One note is that the special AllEvents value, if registered, will be called IN ADDITION TO any other callbacks registered. This is useful for debugging without interrupting normal controls, or for capturing extra/unknown events.
+`EventType is an enumerated list, with items like ButtonPress, ButtonRelease, PositionChangeAbs, Connect, Disconnect, etc. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the current list. This type is returned as part of every event (per above) and also used to select events the callback is interested in when registering. One note is that the special AllEvents value, if registered, will be called IN ADDITION TO any other callbacks registered. This is useful for debugging without interrupting normal controls, or for capturing extra/unknown events.
 
 #### Control types
 
-`input.Control` is another enumerated list that represents "well known" control types. For example, the X and Y axis of a primary joystick (a type of control which reports absolute position) should always be input.AbsoluteX and input.AbsoluteY. The secondary (right hand) joystick/thumbstick is input.AbsoluteRY and input.AbsoluteRY. Buttons are things line input.ButtonStart, or for trigger buttons, input.LT/RT. The typical 4-button configuration (under the right thumb) on most game pads uses generic compass directions instead of letter/shape labels, so that mappings aren't XBox/Nintendo/Playstation specific. Ex: "ButtonSouth" is the bottom-most button of the four, and corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation. "ButtonNorth" is likewise X/Y/Triangle. See <a href="https://github.com/viamrobotics/rdk/blob/main/components/input/input.go" target="_blank">input/input.go</a>[^input] for the full/current list. If new types need to be added, care should be taken to make them as generic and universal as possible. Look to the symbols in the Linux events subsystem for examples.
+`input.Control` is another enumerated list that represents "well known" control types. For example, the X and Y axis of a primary joystick (a type of control which reports absolute position) should always be input.AbsoluteX and input.AbsoluteY. The secondary (right hand) joystick/thumbstick is input.AbsoluteRY and input.AbsoluteRY. Buttons are things line input.ButtonStart, or for trigger buttons, input.LT/RT. The typical 4-button configuration (under the right thumb) on most game pads uses generic compass directions instead of letter/shape labels, so that mappings aren't XBox/Nintendo/Playstation specific. Ex: "ButtonSouth" is the bottom-most button of the four, and corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation. "ButtonNorth" is likewise X/Y/Triangle. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the full/current list. If new types need to be added, care should be taken to make them as generic and universal as possible. Look to the symbols in the Linux events subsystem for examples.
 
 #### Axes
 

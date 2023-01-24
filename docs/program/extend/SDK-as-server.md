@@ -45,6 +45,4 @@ The steps required in creating a custom component and connecting it to the RDK a
 
 You can view the complete tutorial on how to create a custom component in Python in the [Viam Python documentation](https://python.viam.dev/examples/example.html#create-custom-components).
 
-You can view more component implementation examples in <file>components.py</file>, found in the <a href="https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py" target="_blank">Viam Python SDK repo</a>[^compsamp].
-
-[^compsamp]:<file>components.py</file>: <a href="https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py" target="_blank">ht<span></span>tps://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py</a>
+You can view more component implementation examples in <file>components.py</file>, found in the [Viam Python SDK repo](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py).

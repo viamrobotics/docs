@@ -12,10 +12,8 @@ tags: ["base", "camera", "raspberry pi", "scuttle"]
 
 Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os), if necessary.
 
-* <a href="https://www.scuttlerobot.org/shop/" target="_blank">A SCUTTLE Robot</a>[^asr]
+* <a href="https://www.scuttlerobot.org/shop/" target="_blank">A SCUTTLE Robot</a>
 * A USB camera (webcam)
-
-[^asr]: SCUTTLE Robot: <a href="https://www.scuttlerobot.org/shop/" target="_blank">ht<span></span>tps://www.scuttlerobot.org/shop/</a>
 
 ## Start configuring your robot
 

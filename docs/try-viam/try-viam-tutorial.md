@@ -287,6 +287,6 @@ Learn how to use a Viam SDK to make the Viam Rover drive in a square in our [usi
 
 ## Next Steps
 
-If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
 
 If you'd like to pre-order your own Viam Rover, you can do so at <a href="https://www.viam.com/resources/rover" target="_blank">this link</a>.
