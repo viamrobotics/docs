@@ -104,10 +104,10 @@ Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
-This model uses real time kinematic positioning (RTK)[https://en.wikipedia.org/wiki/Real-time_kinematic_positioning].
+This model uses real time kinematic positioning [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning).
 `gps-rtk`, a module with a chip ([such as one of these from Sparkfun](https://www.sparkfun.com/rtk)) capable of generating positional accuracy of 2cm.
 The chip requires a correction source to get to the required positional accuracy.
-Our `gps-rtk` model uses an over-the-internet correction source (NTRIP)[https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol] and sends the data over serial or I<sup>2</sup>C.
+Our `gps-rtk` model uses an over-the-internet correction source [NTRIP](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) and sends the data over serial or I<sup>2</sup>C.
 
 As shown in the examples below, the `gps-rtk` model requires a `name`, `type` ("movement_sensor"), and `model` ("gps-rtk").
 In the `attributes` section, it requires connection configuration (see ["Connection Configuration,"](#connection-configuration) below), `correction_source` ("ntrip"), and an `ntrip_attributes` struct containing these:
