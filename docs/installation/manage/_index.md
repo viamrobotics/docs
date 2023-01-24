@@ -5,6 +5,8 @@ weight: 30
 no_list: true
 type: docs
 draft: false
+icon: "img/thumbnails/viam-icon-sdk.png"
+description: "Control and troubleshoot viam-server."
 ---
 
 How you control viam-server will depend on whether or not you installed it as a system service.

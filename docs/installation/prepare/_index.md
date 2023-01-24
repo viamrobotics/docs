@@ -5,6 +5,8 @@ weight: 10
 no_list: true
 type: docs
 draft: false
+icon: "img/thumbnails/viam-icon-board.png"
+description: "Prepare your computer before installing viam-server."
 ---
 
 Make sure your system is compatible with Viam.

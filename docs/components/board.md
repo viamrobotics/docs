@@ -5,6 +5,7 @@ weight: 20
 type: "docs"
 description: "Explanation of board configuration and usage in Viam."
 tags: ["board", "components"]
+icon: "img/components/board.png"
 # SMEs: Gautham, Rand
 ---
 

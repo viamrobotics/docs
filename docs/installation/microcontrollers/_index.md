@@ -5,6 +5,7 @@ weight: 50
 simple_list: false
 type: docs
 draft: true
+icon: "img/thumbnails/viam-icon-sdk.png"
 ---
 
 Viam maintains a lean version of viam-server that you can run on an ESP32 microcontroller.

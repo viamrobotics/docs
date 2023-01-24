@@ -5,6 +5,8 @@ weight: 40
 simple_list: false
 type: docs
 draft: false
+icon: "img/thumbnails/viam-icon-motion.png"
+description: "Update your version of viam-server."
 ---
 
 ## Channels
