@@ -17,7 +17,8 @@ Breaking changes are likely to occur, and occur often.
 
 ## Introduction
 
-SLAM, which stands for simultaneous localization and mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
+[Simultaneous Localization And Mapping (SLAM)](../../services/slam/) allows your robot to create a map of its surroundings and find its location within that map.
+SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
 Viam offers users an easy-to-use, intuitive method for interfacing with various cutting-edge SLAM algorithms.
 
 ## The Viam SLAM Service
@@ -49,9 +50,6 @@ All three are explained in the following using ORB-SLAM3 as the application exam
 
 ## The SLAM Library Binary
 
-A binary that is running the custom SLAM library is required and assumed to be stored in `/usr/local/bin`.
-For ORB-SLAM3, the location is defined <a href="https://github.com/viamrobotics/rdk/blob/7d15c61d59ee1f4948d116d605f4f23a199d2fb1/services/slam/slamlibraries.go#L48" target="_blank">here</a>.
-
 You can download and install the ORB-SLAM3 binaries as follows:
 
 - AArch64 (ARM64) (e.g., on an RPI):
@@ -71,6 +69,8 @@ Make the file executable by running:
 ```bash
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
+
+For ORB-SLAM3, the location is defined <a href="https://github.com/viamrobotics/rdk/blob/7d15c61d59ee1f4948d116d605f4f23a199d2fb1/services/slam/slamlibraries.go#L48" target="_blank">here</a>.
 
 ## Configuration Overview
 
