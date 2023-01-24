@@ -28,7 +28,7 @@ You have two choices:
 
 ## Requirements
 
-* A Linux or macOS machine with the viam-server installed. You can find instructions for installing the viam-server on your machine in the **Setup** section.
+* A Linux or macOS machine with `viam-server` installed. For more information on how to install `viam-server`, see [Install viam-server](/installation/install/).
 * If you are using a Raspberry Pi, you must have Raspberry Pi OS installed on it. Refer to [Installing Raspberry Pi OS on the Raspberry Pi](../../installation/rpi-setup/#installing-raspberry-pi-os).
 * [optionally] A [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3).
 
@@ -42,7 +42,7 @@ If you haven’t already, install the viam-server and set up your machine on the
 
 Next, install the Cartographer binary.
 
-### Installing Cartographer
+### Install Cartographer
 
 Install Cartographer with one of these commands:
 
@@ -72,7 +72,7 @@ Install Cartographer with one of these commands:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Running Cartographer in Online Mode with a Rplidar
+## Run Cartographer in Online Mode with a Rplidar
 
 Run Cartographer as a live SLAM service in online mode with a Rplidar.
 
@@ -233,8 +233,9 @@ Find the path to your home directory on your machine by running the `pwd` comman
 
 {{% alert title="Note" color="note" %}}
 If you are using a Raspberry Pi as your machine, you have to `ssh` into your Pi to complete this step.
+{{% /alert %}}
 
-After SSH'ing into your pi and running `pwd`, your terminal should look like this:
+After SSH'ing into your pi and running `pwd`, your terminal displays the home directory:
 
 ```bash
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
@@ -244,7 +245,7 @@ YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 
 Save the config.
 
-If `YOUR_USERNAME` was `slam-bot`, your complete configuration (with the Rplidar module) should now look like this:
+If `YOUR_USERNAME` is `slam-bot`, your complete configuration (with the Rplidar module) is:
 
 {{< tabs >}}
 {{% tab name="macOS" %}}
@@ -358,23 +359,14 @@ Configure your robot to run Cartographer in offline mode in two steps:
 
 In offline mode SLAM uses an existing dataset to create a map.
 
-You may have a lidar dataset already saved in your `data_dir/data` directory from running SLAM in live mode.
-You can also download and play with Viam's own lab dataset: <a href="https://storage.googleapis.com/viam-labs-datasets/viam-old-office-small-pcd.zip" target="_blank">Viam Old Office - Cartographer</a>.
-
-If you have downloaded Viam's lab dataset and are using a Raspberry Pi, assuming that the zip file is now located in your `~/Downloads` folder you can copy/paste it into your Pi by running this command:
-
-```bash
-scp ~/Downloads/viam-old-office-small-pcd.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
-```
-
-Replace `YOUR_USERNAME` and `YOUR_RPI_NAME` with your username and Pi name.
-The dataset is large, so it may take a while for it to copy over to your Pi.
-
-Next, `ssh` into your Pi, and run:
+If you don't already have a dataset in `data_dir/data` from running SLAM in live mode, download Viam's [lab dataset](https://storage.googleapis.com/viam-labs-datasets/viam-old-office-small-pcd.zip).
+Copy it to the machine running `viam-server` and unzip it.
+For example: 
 
 ```bash
+scp ~/Downloads/viam-old-office-small-pcd.zip YOUR_USERNAME@MACHINE.local:~/.
 unzip viam-old-office-small-pcd.zip
-```
+
 
 Now you're ready to configure SLAM to use your dataset and to run in offline mode.
 
@@ -382,9 +374,9 @@ Now you're ready to configure SLAM to use your dataset and to run in offline mod
 
 Next, add Cartographer as a SLAM service to your configuration on the Viam app.
 To enable offline mode, set the `use_live_data` flag to `false`.
-This tells the SLAM service to use only data found within the `data_dir` directory you specified in your config while running Simultaneous Location and Mapping.
+This tells the SLAM service to use only data found within the `data_dir` directory you specified in your config while running SLAM.
 
-In your web browser, navigate to your robot on the Viam app ([https://app.viam.com](https://app.viam.com)).
+In your web browser, navigate to your robot on [the Viam app](https://app.viam.com/robots)).
 In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
 
 ```json-viam
