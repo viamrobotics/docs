@@ -4,6 +4,8 @@ linkTitle: "Install viam-server"
 weight: 20
 no_list: true
 type: docs
+icon: "img/thumbnails/viam-icon-data-capture.png"
+description: "Install viam-server on your robot."
 ---
 
 ### Quickstart

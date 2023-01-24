@@ -5,6 +5,7 @@ weight: 80
 type: "docs"
 description: "Explanation of servo wiring and configuration in Viam."
 tags: ["servo", "components"]
+icon: "img/components/servo.png"
 # SME: #team-bucket
 ---
 

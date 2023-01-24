@@ -6,6 +6,7 @@ draft: false
 type: "docs"
 description: "Explanation of sensor configuration and usage in Viam."
 tags: ["sensor", "components"]
+icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
 This page explains how to set up a generic sensor component with Viam.
