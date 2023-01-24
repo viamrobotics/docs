@@ -11,11 +11,12 @@ description: "A guide to imaging a TDA4VM to prepare it for viam-server installa
 * A Texas Instruments TDA4VM single board computer
 * A microSD card
 * An internet-connected computer
-* A way to connect the microSD card to the computer (e.g., microSD slot or microSD reader)
+* A way to connect the microSD card to the computer (a microSD slot or microSD reader)
+
 
 ## Required downloads
 
-You will need to download the following files to your computer:
+Download the following files to your computer:
 
 Download the <a href="https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-SK-TDA4VM" target="_blank">PROCESSOR-SDK-LINUX-SK-TDA4VM — Linux SDK for edge AI applications on TDA4VM Jacinto™ processors</a> image.
 
@@ -23,10 +24,10 @@ Next, download and install the <a href="https://github.com/balena-io/etcher/rele
 
 You will use the Balena Etcher to flash the microSD card.
 
-## Flashing the image
+## Flash the image
 
 {{% alert title="Note" color="note" %}}
-You must extract the image from the zip file before attempting to flash the microSD card.
+You must extract the image from the zip file before flashing the microSD card.
 {{% /alert %}}
 
 {{% alert title="Note" color="note" %}}
@@ -62,7 +63,8 @@ Otherwise, a 16GB microSD is sufficient to hold the linux board image and the vi
 
 <img src="../../img/ti-tda4vm/welcomescreen.png" width="600px" alt="TI Welcome Screen." title="TI Welcome Screen." >
 
-### Installing viam-server
+### Install viam-server
+
 
 Log in to the board using SSH to complete this section.
 
