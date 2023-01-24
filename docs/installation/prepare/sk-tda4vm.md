@@ -67,9 +67,6 @@ You must extract the image from the zip file before flashing the microSD card.
 
 4. Use the credentials and IP address displayed in the upper right-hand corner of the monitor to SSH into the board.
 
-<br>
-<br>
-
 From the SSH session on the TDA4VM board:
 
 1. Clone the TDA4VM repo:
