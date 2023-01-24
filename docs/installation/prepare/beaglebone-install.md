@@ -3,22 +3,22 @@ title: "BeagleBone AI-64 Setup Guide"
 linkTitle: "BeagleBone Setup"
 weight: 20
 type: "docs"
-description: "How to install and run viam-server on a BeagleBone AI-64."
+description: "How to flash a BeagleBone AI-64 to prepare it for viam-server installation."
 aliases: 
     - "/installation/beaglebone-install/"
 # SMEs: Joe Karlsson, Shawn, Matt Dannenberg, and Rand
 ---
 
 The <a href="https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/" target="_blank">BeagleBone AI-64</a> from <a href="https://beagleboard.org/" target="_blank">BeagleBoard.org</a> is an open-source computer based on the Texas Instruments TDA4VM processor.
-In this tutorial, we will show you how to set up your BeagleBone AI-64 with Debian, and install Viam.
+In this tutorial, we will show you how to set up your BeagleBone AI-64 with Debian.
 
-{{% figure src="/installation/img/beaglebone-install/image4.png" alt="BeagleBone AI-64 front at 45° angle." title="BeagleBone AI-64 front at 45° angle." %}}
+<img src="/installation/img/beaglebone-install/image4.png" alt="BeagleBone AI-64 front at 45° angle.">
 
-## What you'll need for this guide
+## Hardware requirements
 
-You will need the following hardware, tools, and software to install Viam on a BeagleBone AI-64:
+You will need the following hardware, tools, and software to install viam-server on a BeagleBone AI-64:
 
-1. The BeagleBone AI-64
+1. A BeagleBone AI-64
 2. A microSD card
 3. A 5V barrel jack power supply
 4. [Optional] A microSD card reader
@@ -117,4 +117,4 @@ sudo apt update && sudo apt dist-upgrade && sudo reboot
 
 ## Next steps
 
-Now that your Pi has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
+Now that your BeagleBone has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
