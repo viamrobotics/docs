@@ -1,9 +1,9 @@
 ---
-title: "TI TDA4VM Setup Guide"
-linkTitle: "TDA4VM Setup"
+title: "SK-TDA4VM Setup Guide"
+linkTitle: "SK-TDA4VM Setup"
 weight: 25
 type: "docs"
-description: "A guide to imaging a TDA4VM to prepare it for viam-server installation."
+description: "A guide to imaging a Texas Instruments TDA4VM starter kit board to prepare it for viam-server installation."
 ---
 
 ## Hardware requirements
@@ -31,7 +31,7 @@ You will use the Balena Etcher to flash the microSD card.
 You must extract the image from the zip file before flashing the microSD card.
 {{% /alert %}}
 
-<img src="../../img/ti-tda4vm/etcher.png" width="600px" alt="The Balena Etcher interface.">
+<img src="../../img/sk-tda4vm/etcher.png" width="600px" alt="The Balena Etcher interface.">
 
 <br>
 <br>
@@ -54,7 +54,7 @@ You must extract the image from the zip file before flashing the microSD card.
 
 8. On completion of the flashing and validation process, remove the microSD card from your computer and insert it into the TDA4VM.
 
-<img src="../../img/ti-tda4vm/completed.png" width="600px" alt="Successful image flash completion screen." >
+<img src="../../img/sk-tda4vm/completed.png" width="600px" alt="Successful image flash completion screen." >
 
 ## Install Viam dependencies on the TDA4VM
 
@@ -64,7 +64,7 @@ You must extract the image from the zip file before flashing the microSD card.
 
 3. Use the credentials and IP address displayed in the upper right-hand corner of the monitor to SSH into the board:
 
-<img src="../../img/ti-tda4vm/welcomescreen.png" width="600px" alt="TI Welcome Screen." title="TI Welcome Screen." >
+<img src="../../img/sk-tda4vm/welcomescreen.png" width="600px" alt="TI Welcome Screen." title="TI Welcome Screen." >
 
 <br>
 <br>
