@@ -50,7 +50,7 @@ Here's an example of how a servo might be wired to a Raspberry Pi:
 
 ### Resistors
 
-Online Resistor Color Code Calculator](https://goodcalculators.com/resistor-color-code-calculator/) - Enter the desired resistor value in Ohms, kOhms, or MOhms, and press enter and this site displays the color bands for that resistor value.
+[Online Resistor Color Code Calculator](https://goodcalculators.com/resistor-color-code-calculator/) - Enter the desired resistor value in Ohms, kOhms, or MOhms, and press enter and this site displays the color bands for that resistor value.
 
 #### Resistor Value Chart
 
