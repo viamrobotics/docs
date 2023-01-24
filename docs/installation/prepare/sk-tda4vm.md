@@ -4,6 +4,7 @@ linkTitle: "SK-TDA4VM Setup"
 weight: 25
 type: "docs"
 description: "A guide to imaging a Texas Instruments TDA4VM starter kit board to prepare it for viam-server installation."
+#SMEs: Matt Dannenberg
 ---
 
 ## Hardware requirements
@@ -58,13 +59,13 @@ You must extract the image from the zip file before flashing the microSD card.
 
 ## Install Viam dependencies on the TDA4VM
 
-1. Connect the Ethernet and HDMI cables to the board.
+1. Connect the board to Ethernet.
 
-2. Connect the board to power using the USB-C power cable.
+2. Connect the board to a monitor with the HDMI cable.
 
-3. Use the credentials and IP address displayed in the upper right-hand corner of the monitor to SSH into the board:
+3. Connect the board to power using the USB-C power cable.
 
-<img src="../../img/sk-tda4vm/welcomescreen.png" width="600px" alt="TI Welcome Screen." title="TI Welcome Screen." >
+4. Use the credentials and IP address displayed in the upper right-hand corner of the monitor to SSH into the board.
 
 <br>
 <br>
