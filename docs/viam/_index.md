@@ -12,7 +12,7 @@ Viam is a complete software platform for robots.
 
 ## Robots
 
-A *robot* in Viam is a computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), running `viam-server` along with the hardware the computer controls.
+A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), running `viam-server` along with the hardware the computer controls.
 The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
 
 Robots can be small and simple or very complex.
