@@ -21,7 +21,7 @@ These all come with built-in GPIO pins.
 Another type of board is a GPIO peripheral such as a Numato GPIO Module, which cannot run the Viam server itself, but can take input from another computer running Viam and communicate with other hardware components.
 Note that a desktop computer does not typically have GPIO pins, so it cannot act as a board without a GPIO peripheral.
 
-![Image showing two board options: First, running the Viam Server locally and second, running via a peripheral plugged into the USB port of a computer that is running the Viam Server.]("../img/board/board-comp-options.png")
+![Image showing two board options: First, running the Viam Server locally and second, running via a peripheral plugged into the USB port of a computer that is running the Viam Server.](../img/board/board-comp-options.png)
 
 *Figure 1. Two different board options: SBC with GPIO pins running Viam server locally; or GPIO peripheral plugged into a computer's USB port, with the computer running Viam server.*
 
