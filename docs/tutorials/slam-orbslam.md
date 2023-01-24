@@ -1,5 +1,5 @@
 ---
-title: "How to Run SLAM on your Robot using a camera"
+title: "Run SLAM on your Robot using a camera"
 linkTitle: "Run SLAM on your Robot using a camera"
 weight: 50
 type: "docs"
