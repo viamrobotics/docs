@@ -1,7 +1,7 @@
 ---
 title: "How to Build a Line Follower with a Rover and a Webcam"
 linkTitle: "RGB Line Follower"
-weight: 35
+weight: 50
 type: "docs"
 description: "Build a line-following robot that relies on a webcam and color detection."
 tags: ["base", "vision", "detector", "camera", "services"]
@@ -13,28 +13,24 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 <div>
 <p><strong>Goal</strong>: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision#detection">vision service color detector</a>.
 </p></div>
-<div><img src="/tutorials/img/webcam-line-follower/lf-following1.gif" /></div>
+<div><img src="/tutorials/img/webcam-line-follower/lf-following1.gif" alt="Robot following a line"/></div>
 </div>
 
 **What you will learn**:<BR>
 
 - How to use the Viam vision service including color detectors
-- How to use the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk)[^psdk], including:
+- How to use the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk), including:
   - How to establish communication between the code you write and your robot
   - How to send commands to components of your robot
 
-[^psdk]: Viam Python SDK: <a href="https://github.com/viamrobotics/viam-python-sdk/" target="_blank">ht<span></span>tps://github.com/viamrobotics/viam-python-sdk</a>
-
-<a href="https://github.com/viam-labs/line-follower/" target="_blank">**Line Follower Code on GitHub**</a>[^repo]
-
-[^repo]: Line Follower GitHub repo: <a href="https://github.com/viam-labs/line-follower/" target="_blank">ht<span></span>tps://github.com/viam-labs/line-follower/</a>
+[**Line Follower Code on GitHub**](https://github.com/viam-labs/line-follower/)
 
 ## What you'll need
 
 - A single board computer [running an instance of viam-server](/installation/rpi-setup/)
   - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
-- [A wheeled base component](../../components/base/)
-  - We used a <a href="https://www.scuttlerobot.org/shop/" target="_blank" />SCUTTLE Robot</a>[^sr] for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
+- [A wheeled base component](/components/base/)
+  - We used a [SCUTTLE Robot](https://www.scuttlerobot.org/shop/) for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
 - RGB camera
   - A common off-the-shelf webcam [(such as this)](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html/) with a ribbon connector to the Pi’s camera module port.
   - You must mount the camera to the front of the rover pointing down towards the floor.
@@ -42,10 +38,8 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
   - Any color is suitable as long as its color is somewhat different from the floor color.
     For our tutorial, we used green electrical tape.
   - Non-shiny floors tend to work best.
-[^sr]: SCUTTLE Robot <a href="https://www.scuttlerobot.org/shop/" target="_blank" />ht<span></span>tps://scuttlerobot.org/shop/</a>
 
-<p class="Mycaption" ><em>Figure 1: A SCUTTLE robot base with a camera mounted on the front, pointing mostly down and slightly forwards.</em><br>
-<img src="/tutorials/img/webcam-line-follower/lf-scuttle2.png" width="600" /></p>
+<img src="/tutorials/img/webcam-line-follower/lf-scuttle2.png" alt="A SCUTTLE robot base with a camera mounted on the front, pointing mostly down and slightly forwards." width="600" />
 
 ## Configuration using Viam
 
@@ -57,14 +51,14 @@ Configure the board per the [Board Component topic](/components/board/).
 We named ours `local`.
 Use type `board` and model `pi` if you're using a Raspberry Pi.
 
-Configure the wheeled base per the [Base Component topic](../../components/base/).
+Configure the wheeled base per the [Base Component topic](/components/base/).
 We named ours `scuttlebase`.
 
-Configure the [camera](../../components/camera/) as described in this tutorial: [Connect and configure a webcam](../../tutorials/configure-a-camera/).
+Configure the [camera](/components/camera/) as described in this tutorial: [Connect and configure a webcam](/components/camera/configure-a-camera/).
 
 Your webcam configuration in the Config Builder will look something like this:
 
-![A screenshot of the webcam configuration UI with video_path set to video0.](/tutorials/img/webcam-line-follower/lf-cam-config.png)
+![The webcam configuration UI with video_path set to video0.](/tutorials/img/webcam-line-follower/lf-cam-config.png)
 
 Or if you prefer the raw JSON:
 
@@ -280,8 +274,7 @@ Once the line is back in the center front of the camera frame, the rover continu
 
 When the rover no longer sees any of the line color anywhere in the front portion of the camera frame, it stops and the program ends.
 
-<p class="Mycaption"><em>Figure 2: A GIF of what the camera sees as the rover moves along a green line.</em><br>
-<img class="center" src="/tutorials/img/webcam-line-follower/lf-tape-follow3.gif" width="300" /></p>
+<img class="center" src="/tutorials/img/webcam-line-follower/lf-tape-follow3.gif" alt="The green line the camera sees as the rover moves along it." width="300" />
 
 ## Let’s write some code
 
@@ -305,23 +298,23 @@ python3.8 --version
 ```
 
 We at Viam are running Python 3.9.2 (Python 3.8 is also supported) for this tutorial.</li>
-<li class="spacing">Make sure you have the Viam Python SDK installed (<a href="https://python.viam.dev/">click for instructions</a>).</li>
+<li class="spacing">Make sure you have the Viam Python SDK installed ([https://python.viam.dev/](click for instructions)).</li>
 
-<li class="spacing">Open a file in your favorite IDE and paste in <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">the code from the earlier referenced repo</a>.</li>
+<li class="spacing">Open a file in your favorite IDE and paste in [the code from the earlier referenced repo](https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py).</li>
 <li class="spacing">Adjust the components names to match the component names you created in your config file.
 In this case, the component names that you may need to change are <strong>scuttlebase</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
-<li class="spacing">From your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>), go to the <strong>CODE SAMPLE</strong> tab.
+<li class="spacing">From your robot’s page on the Viam app ([app.viam.com](https://app.viam.com/)), go to the <strong>CODE SAMPLE</strong> tab.
 Find the Python SDK field and copy the robot address (which will likely have the form
 <span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file.
 This allows your code to connect to your robot.</li>
 
-{{% alert title="Caution" color="caution" %}}  
+{{% alert title="Caution" color="caution" %}}
 Do not share your robot secret or robot address publicly. Sharing this information compromises your system security by allowing unauthorized access to your computer.
 {{% /alert %}}
 
 <li class="spacing">Save the code in a directory of your choice.</li>
 <li class="spacing">To get the code onto the Pi you have a few options.
-If you intend to make lots of tweaks to the code over time it may be most convenient for you to set up a <a href="https://mutagen.io/documentation/introduction/getting-started/">Mutagen Sync</a> session from a directory on your computer to a directory on your Pi.
+If you intend to make lots of tweaks to the code over time it may be most convenient for you to set up a [Mutagen Sync](https://mutagen.io/documentation/introduction/getting-started/)</a> session from a directory on your computer to a directory on your Pi.
 If you’re just trying to get this running as quickly as possible, do the following:</li>
 <ol>
 <li class="spacing" style="list-style-type:lower-alpha">In your Pi terminal, navigate to the directory where you’d like to save your code.
@@ -333,25 +326,23 @@ Type <strong>Y</strong> to confirm file modification, then press enter to finish
 
 **References**:
 
-- Line Follower Code on GitHub: <a href="https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py" target="_blank">ht<span></span>tps://github.com/viam-labs/line-follower/blob/main/rgb_follower.py</a>
-- Mutagen Sync: <a href="https://mutagen.io/documentation/introduction/getting-started/" target="_blank">ht<span></span>tps://mutagen.io/documentation/introduction/getting-started</a>
+- [Line Follower Code on GitHub](https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py)
+- [Mutagen Sync](https://mutagen.io/documentation/introduction/getting-started/)
 
 ## Controlling your rover with Viam
 
-<ol><li class="spacing">Go to your robot’s page on the Viam app (<a href="https://app.viam.com/">https://app.viam.com</a>).
+<ol><li class="spacing">Go to your robot’s page on the Viam app ([app.viam.com](https://app.viam.com/)).
 Verify that it’s connected by refreshing the page and ensuring that <strong>Last Online</strong> (in the top banner) says, “Live.”</li>
 <li class="spacing">Go to the <strong>CONTROL</strong> tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around.
 Ensure that the base moves as expected.
 If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.</li>
-<p  class="Mycaption"><em>Figure 3: Driving the base from the Viam app's CONTROL tab.</em><br>
-<img class="spacing" src="/tutorials/img/webcam-line-follower/lf-viamapp-base-view5.gif" width="600" /></p></li>
+<img class="spacing" src="/tutorials/img/webcam-line-follower/lf-viamapp-base-view5.gif" alt="Driving the base from the Viam app's CONTROL tab." width="600" /></li>
 <li class="spacing">Now for the creative part: Use your colored tape to make a path for your robot to follow.
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.</li>
 <li class="spacing">Set your robot on the line such that the line appears in the front of the camera’s view.
 Verify that the camera sees the line by viewing the camera feed on the <strong>CONTROL</strong> tab of the robot page.</li>
-<p class="Mycaption"><em>Figure 4: The camera view in the <strong>CONTROL</strong> tab on the robot page.</em><br>
-<img  class="spacing" src="/tutorials/img/webcam-line-follower/lf-cam-view6.png" width="600" /></p>
+<img  class="spacing" src="/tutorials/img/webcam-line-follower/lf-cam-view6.png" alt="The camera view in the control tab on the robot page" width="600" />
 
 <li class="spacing">In a terminal window, SSH to your Pi by running:<br>
 
@@ -402,7 +393,7 @@ Be sure to update your `detect_color` parameter accordingly.
 
 ## Additional Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](../../appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com/) and we will be happy to help.
 

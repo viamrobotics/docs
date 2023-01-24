@@ -19,8 +19,8 @@
   * Standard development: `make serve-dev`
   * Development with draft files: `make serve-dev-draft`
   * Development with future files: `make serve-dev-future`
-  
-* You can just run `hugo serve` after installing hugo. This will show the dev view.
+
+* You can just run `hugo serve` after installing Hugo to show the prod view.
 
 ## Building
 
@@ -82,6 +82,8 @@ When you are ready to contribute changes to the docs:
 We are using `markdownlint` to ensure consistency in our documentation.
 Be sure that you have the [markdownlint VS Code extension](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) installed locally.
 
+We are also using `htmltest` to ensure links within the docs work. To test locally, install [`htmltest`](https://github.com/wjdp/htmltest).
+
 ### Front Matter
 
 ```markdown
@@ -101,11 +103,11 @@ description: "Instructions for building a line-following robot that uses a webca
 
 ### Linking
 
-When linking to an image or another page in markdown, it's best to use a relative link. For example, if you were writing in `getting-started/high-level-overview.md`, Hugo sees this as a directory on the site of `docs.viam.com/getting-started/high-level-overview/`.
+When linking to an image or another page in markdown, it's best to use a relative link. For example, if you were writing in `viam/high-level-overview.md`, Hugo sees this as a directory on the site of `docs.viam.com/viam/`.
 
 * To link to another markdown file in the same directory as the markdown file, you would do e.g. `[mylink](../installation/)`. **Note the trailing slash as another markdown file is another web directory in Hugo**
 * To link to some image in the same directory as the markdown file, you would do e.g. `[mylink](../img/image1.png)`.
-* To link something in a different directory, you would do e.g. `[mylink](../../components/)`
+* To link something in a different directory, you would do e.g. `[mylink](/components/)`
 
 ### Prod/Draft/Future Pages
 

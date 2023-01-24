@@ -1,7 +1,7 @@
 ---
 title: "Motion Service"
 linkTitle: "Motion"
-weight: 20
+weight: 40
 type: "docs"
 description: "Explanation of the motion service, its configuration, and its functionality."
 tags: ["motion", "motion planning", "services"]

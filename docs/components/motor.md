@@ -5,6 +5,7 @@ weight: 70
 type: "docs"
 description: "Explanation of motor configuration and usage in Viam."
 tags: ["motor", "components"]
+icon: "img/components/motor.png"
 # SME: Rand, Jessamy
 ---
 {{% alert title="Note" color="note" %}}
