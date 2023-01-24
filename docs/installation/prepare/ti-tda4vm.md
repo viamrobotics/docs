@@ -20,10 +20,9 @@ description: "A guide to imaging a TDA4VM to prepare it for viam-server installa
 
 Download the following files to your computer:
 
-Download the <a href="https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-SK-TDA4VM" target="_blank">PROCESSOR-SDK-LINUX-SK-TDA4VM — Linux SDK for edge AI applications on TDA4VM Jacinto™ processors</a> image.
+* Download the <a href="https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-SK-TDA4VM" target="_blank">PROCESSOR-SDK-LINUX-SK-TDA4VM — Linux SDK for edge AI applications on TDA4VM Jacinto™ processors</a> image.
 
-Next, download and install the <a href="https://github.com/balena-io/etcher/releases/tag/v1.7.0" target="_blank">Balena Etcher</a> for your desktop/laptop OS.
-
+* Next, download and install the <a href="https://github.com/balena-io/etcher/releases/tag/v1.7.0" target="_blank">Balena Etcher</a> for your desktop/laptop OS.
 You will use the Balena Etcher to flash the microSD card.
 
 ## Flash the image
@@ -57,21 +56,20 @@ You must extract the image from the zip file before flashing the microSD card.
 
 <img src="../../img/ti-tda4vm/completed.png" width="600px" alt="Successful image flash completion screen." >
 
-## Install viam-server on the TDA4VM
-
-### External connection and login
+## Install Viam dependencies on the TDA4VM
 
 1. Connect the Ethernet and HDMI cables to the board.
 
-1. Connect the board to power using the USB-C power cable.
+2. Connect the board to power using the USB-C power cable.
 
-1. Use the credentials and IP address displayed in the upper right-hand corner of the monitor to SSH into the board:
+3. Use the credentials and IP address displayed in the upper right-hand corner of the monitor to SSH into the board:
 
 <img src="../../img/ti-tda4vm/welcomescreen.png" width="600px" alt="TI Welcome Screen." title="TI Welcome Screen." >
 
-### Install viam-server
+<br>
+<br>
 
-Log in to the board using SSH to complete this section.
+From the SSH session on the TDA4VM board:
 
 1. Clone the TDA4VM repo:
 
@@ -79,23 +77,25 @@ Log in to the board using SSH to complete this section.
    git clone https://github.com/viam-labs/tda4vm-setup.git
    ```
 
-1. Navigate to the setup directory:
+2. Navigate to the setup directory:
 
    ```bash
    cd tda4vm-setup/
    ```
 
-1. Make the server setup script executable:
+3. Make the server setup script executable:
 
    ```bash
    chmod +x tda4vm-viam-setup.sh
    ```
 
-1. Launch the setup script:
+4. Launch the setup script to install viam-server dependencies:
 
    ```bash
    ./tda4vm-viam-setup.sh
    ```
+
+   Once this process completes, the board will reboot.
 
 ## Next steps
 
