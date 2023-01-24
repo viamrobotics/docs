@@ -3,8 +3,9 @@ title: "Movement Sensor Component"
 linkTitle: "Movement Sensor"
 weight: 70
 type: "docs"
-description: "Explanation of movement sensor configuration and usage in Viam."
+description: "Explanation of movement sensors (including GPS and IMU) in Viam."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
+icon: "img/components/imu.png"
 # SME: Rand
 ---
 The movement sensor component is an abstraction of a sensor that gives data on where a robot is and how fast it is moving.
@@ -19,8 +20,8 @@ Currently (12 December 2022), the Viam [RDK](../../appendix/glossary/#rdk_anchor
 The `cameramono` RDK model is experimental and uses a camera to output data on its position and orientation (from visual odometry).
 
 We specifically cover GPS and IMU units in this documentation.
-Find the more [generic sensor component here](../../components/sensor/).
-Find more information about encoders, another component type, [here](../../components/encoder/).
+Find the more [generic sensor component here](/components/sensor/).
+Find more information about encoders, another component type, [here](/components/encoder/).
 
 [^kalman]: Kalman filter: <a href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Kalman_filter</a>
 
@@ -31,7 +32,7 @@ Find more information about encoders, another component type, [here](../../compo
 [^rtk]: Real-time kinematic positioning: <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Real-time_kinematic_positioning</a>
 
 {{% alert title="Note" color="note" %}}
-Any movement sensor that uses I<sup>2</sup>C must be connected to a board that supports I<sup>2</sup>C and [has it enabled](/installation/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
+Any movement sensor that uses I<sup>2</sup>C must be connected to a board that supports I<sup>2</sup>C and [has it enabled](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
 {{% /alert %}}
 
 ## GPS
@@ -505,7 +506,7 @@ Breaking changes are likely to occur, and occur often.
 We have integrated an experimental package that uses a visual odometry algorithm with dead reckoning to track the Position, Orientation, LinearVelocity and AngularVelocity of the camera’s frame.
 The `cameramono` model can use any single camera with this algorithm.
 
-In a Viam configuration file, a camera used as a movement sensor will require a [`camera` type component](../../components/camera/) and then a `movementsensor` type component that depends on the `camera` component, and a `motion_estimation_config` based on the camera properties.
+In a Viam configuration file, a camera used as a movement sensor will require a [`camera` type component](/components/camera/) and then a `movementsensor` type component that depends on the `camera` component, and a `motion_estimation_config` based on the camera properties.
 
 ```json
 {

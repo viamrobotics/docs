@@ -1,8 +1,19 @@
 ---
 title: "Services"
 linkTitle: "Services"
-weight: 50
-simple_list: true
+weight: 40
+no_list: true
 type: docs
-description: "Product Overviews provides the necessary information to make use of available services within the Viam system."
 ---
+
+There are three types of service APIs:
+
+- Cloud Applications
+  - [Data Management](/services/data-management/)
+  - [Fleet Management](/services/fleet-management/)
+- Component Services
+  - [Frame System](/services/frame-system/)
+  - [Motion](/services/motion/)
+  - [SLAM](/services/slam/)
+  - [Vision](/services/vision/)
+- The [Robot Service](/services/robot-service/)

@@ -1,0 +1,47 @@
+# .github/workflows/run-htmltest.yml
+# (c) 2021 Robb Romans
+#
+# Run htmltest link checker on generated HTML output in dist/
+# https://github.com/wjdp/htmltest
+#
+name: run-htmltest
+on: pull_request
+jobs:
+  htmltest:
+    runs-on: [self-hosted, x64, private]
+    container:
+      image: ghcr.io/viamrobotics/canon:amd64
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true # Fetch Hugo themes
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+          extended: true
+      - name: Temp config
+        run: |
+          echo url_latest_version = \"https://docs-test.viam.dev/${{ github.sha }}/public\" > config_pr.toml
+          echo baseURL = \"https://docs-test.viam.dev/${{ github.sha }}/public\" >> config_pr.toml
+
+      - name: Build
+        run: make build-dist
+
+      - name: Test HTML
+        # https://github.com/wjdp/htmltest-action/
+        # Don't fail the build on broken links
+        continue-on-error: false
+        uses: wjdp/htmltest-action@master
+        with:
+          # For consistency, use the same config file as for local builds
+          config: .htmltest.yml
+      - name: Archive htmltest results
+        uses: actions/upload-artifact@v3
+        # Note: Set ACTIONS_RUNTIME_TOKEN env variable to test with nektos/act
+        with:
+          name: htmltest-report
+          path: tmp/.htmltest/htmltest.log
+          retention-days: 7 # Default is 90 days
