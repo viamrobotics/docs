@@ -1,11 +1,12 @@
 ---
 title: "Your own Viam Rover"
 linkTitle: "Your own Viam Rover"
-weight: 100
+weight: 80
 simple_list: true
 type: docs
 aliases:
     - /viam-rover-resources
+description: Tutorials to help you get started with your own Viam Rover.
 ---
 
 If you want to try Viam, you can also [order your own Viam rover](https://www.viam.com/resources/rover).

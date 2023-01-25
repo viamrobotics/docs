@@ -1,7 +1,7 @@
 ---
 title: "Try Viam FAQ"
 linkTitle: "Try Viam FAQ"
-weight: 90
+weight: 50
 type: "docs"
 description: "Frequently Asked Questions about Try Viam"
 ---

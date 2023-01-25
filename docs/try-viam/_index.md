@@ -3,38 +3,50 @@ title: "Try Viam"
 linkTitle: "Try Viam"
 weight: 15
 type: "docs"
-description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 minutes."
+description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 minutes or ordering your own."
 ---
 
-Watch the tutorial video below for a quick walkthrough of Try Viam, including how to reserve a Viam Rover, navigate the Viam platform, and teleoperate the rover.
+<div class="container text-center">
+  <div class="row">
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <br>
+        <img src="img/try-viam/reservation-management.png" alt="Overhead view of the Viam rover showing it as it drives in a square.">
+        <br>
+        <a href="try-viam-tutorial/">
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Borrow a rover right now</h4>
+            <p style="text-align: left;">Rent and remotely configure and control a Viam Rover located on-site at Viam in NYC.</p>
+        </a>
+    </div>
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <br>
+        <img src="rover-resources/img/viam-rover/rover-side.jpg" alt="detectionCam stream displaying a color detection.">
+        <br>
+        <a href="../../tutorials/viam-rover/try-viam-color-detection">
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Order and build your own rover</h4>
+            <p style="text-align: left;"> Order your own preassembled rover, add a raspberry pi and some batteries, and get rolling.</p>
+        <a>
+    </div>
+  </div>
+</div>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YYpZ9CVDwMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+## Get started with Viam
 
-## Getting Started with Viam
+Once you have rented or received yout Viam rover, you can:
 
-When you try Viam for the first time, you'll want to get a feel for how it works.
-The best way to do that is to take over a Viam Rover in our robotics lab for 15 minutes.
-You'll be able to drive the robot around, see what it sees, and control its sensors and actuators.
-You could try things like:
+- teleoperate (that means drive) the rover from wherever you are
+- see what the rover sees using services like computer vision or data management
+- configure and control the rover's sensors and actuators in the Viam app
+- write code to control the rover
 
-- Teleoperating the rover from wherever you are!
-- Writing some code to control the rover
-- Using services like computer vision or data management
-- Seeing how the rover's components are set up in the intuitive configuration interface
+If you have rented a rover, follow the [Try Viam tutorial](/tutorials/viam-rover/).
+If you have ordered and received your own rover, start by [unboxing and setting up your Viam rover].
 
-Find more detailed instructions in our [Try Viam tutorial](/tutorials/viam-rover/).
+## Control your rover with SDKs
 
-For a limited time, you can [pre-order your own Viam Rover here](http://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
+If you want to control and automate your rover with Python or Go, use the [Viam SDKs](/program/sdk-as-client).
 
-## Getting started with the SDKs
+Viam also exposes exposes a gRPC [API for robot controls](https://github.com/viamrobotics/api).
 
-Viam offers SDKs in popular languages which wrap the viam-server [gRPC](https://grpc.io/) APIs and streamline connection, authentication, and encryption against a server.
-Using an SDK, you will be able to quickly write code to control and automate your robot(s).
-
-Viam-server exposes gRPC [APIs for robot controls](https://github.com/viamrobotics/api).
-It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and authentication over those APIs.
-
-SDKs make it easier to interface with the robot by providing easy to use, idiomatic interfaces in the programming language of your choice.
-You can learn more about the Viam SDKs in the [SDKs as Client](/program/sdk-as-client).
+Both the API and the SDKs support [WebRTC](https://webrtcforthecurious.com/). The SDKs provide a wrapper around the viam-server [gRPC](https://grpc.io/) API and streamline connection, authentication, and encryption against a server.
 
 ## Next steps
