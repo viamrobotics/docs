@@ -180,7 +180,7 @@ The arm component supports the following methods:
 
 | Method Name                   | Golang                 | Python                              | Description                                                            |
 | ----------------------------- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------- |
-| [EndPosition](#endposition)                 | [EndPosition][go_arm]       | [get_end_position][python_get_end_position]                 | Get the current position of the arm as a Pose.                                  |
+| [GetEndPosition](#getendposition)                 | [EndPosition][go_arm]       | [get_end_position][python_get_end_position]                 | Get the current position of the arm as a Pose.                                  |
 | [MoveToPosition](#movetoposition) | [MoveToPosition][go_arm]| [move_to_position][python_move_to_position] | Move the end of the arm to the desired Pose. |
 | [MoveToJointPositions](#movetojointpositions)                 | [MoveToJointPositions][go_arm]       | [move_to_joint_positions][python_move_to_joint_positions]                 | Move each joint on the arm to the desired position.                                                      |
 | [GetJointPositions](#getjointpositions)                 | [GetJointPositions][go_arm]       | [get_joint_positions][python_get_joint_positions]                 | Get the current position of each joint on the arm.                                                       |
@@ -202,7 +202,7 @@ The arm component supports the following methods:
 
 {{% alert title="Note" color="note" %}}
 
-Make sure you have set up your robot and connected it to the Viam app. Check out the [Client SDK Libraries Quick Start](/product-overviews/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
+Make sure you have set up your robot and connected it to the Viam app. Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
 
 The following example assumes you have an arm called "my_arm" configured as a component of your robot. If your arm has a different name, change the `name` in the example.
 
