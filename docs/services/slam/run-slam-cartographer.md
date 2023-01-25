@@ -409,6 +409,7 @@ If you're using a Raspberry Pi as your machine, you must `ssh` into your Pi to c
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
 ```
+
 {{% /alert %}}
 
 * Save the config.
