@@ -33,7 +33,9 @@ Input devices provide a Controller interface with three methods:
 
 #### EventType
 
-`EventType is an enumerated list, with items like ButtonPress, ButtonRelease, PositionChangeAbs, Connect, Disconnect, etc. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the current list. This type is returned as part of every event (per above) and also used to select events the callback is interested in when registering. One note is that the special AllEvents value, if registered, will be called IN ADDITION TO any other callbacks registered. This is useful for debugging without interrupting normal controls, or for capturing extra/unknown events.
+`EventType` is an enumerated list, with items like ButtonPress, ButtonRelease, PositionChangeAbs, Connect, Disconnect, etc. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the current list.
+This type is returned as part of every event (per above) and also used to select events the callback is interested in when registering.
+One note is that the special AllEvents value, if registered, will be called IN ADDITION TO any other callbacks registered. This is useful for debugging without interrupting normal controls, or for capturing extra/unknown events.
 
 #### Control types
 

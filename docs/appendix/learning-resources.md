@@ -54,7 +54,7 @@ Here's an example of how a servo might be wired to a Raspberry Pi:
 
 #### Resistor Value Chart
 
-![Chart of standard colors to values for electronic components. An example resistor with green, red, and orange bands is shown. The value is 52 times 10 to the third power, or 52,000 Ohms."](../img/resistor.png)
+![Chart of standard colors to values for electronic components. An example resistor with green, red, and orange bands is shown. The value is 52 times 10 to the third power, or 52,000 Ohms.](../img/resistor.png)
 
 You can easily learn resistor color markings without referring to a chart by remembering this jingle:
 
