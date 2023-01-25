@@ -1,7 +1,7 @@
 ---
 title: "Tutorials"
 linkTitle: "Tutorials"
-weight: 90
+weight: 70
 type: "docs"
 description: "Build something with a Viam Rover."
 ---

@@ -6,7 +6,7 @@ simple_list: true
 type: docs
 aliases:
     - /viam-rover-resources
-description: Tutorials to help you get started with your own Viam Rover.
+description: Get your own Viam rover and set it up.
 ---
 
 If you want to try Viam, you can also [order your own Viam rover](https://www.viam.com/resources/rover).

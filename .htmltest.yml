@@ -10,6 +10,7 @@ IgnoreURLs:
 - "app.viam.com"
 - "beaglebone.local"
 - "instagram.com"
+- "twitter.com"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"

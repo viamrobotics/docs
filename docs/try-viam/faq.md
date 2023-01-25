@@ -3,7 +3,7 @@ title: "Try Viam FAQ"
 linkTitle: "Try Viam FAQ"
 weight: 50
 type: "docs"
-description: "Frequently Asked Questions about Try Viam"
+description: "Frequently Asked Questions about Try Viam."
 ---
 Try Viam is a way you can try out the platform without setting up any hardware yourself. You can take over a Viam Rover in our robotics lab for 15 minutes to play around!
 
