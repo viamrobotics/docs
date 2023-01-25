@@ -6,6 +6,9 @@ type: "docs"
 description: "Instructions for configuring a SCUTTLE Robot on the Viam platform."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 ---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LAMxYci242E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Requirements
 
 * A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the viam-server installed.
@@ -23,7 +26,8 @@ Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/
 <li class="spacing">Go to the Viam app at <a href="https://app.viam.com" target="_blank">https://app.viam.com</a>.</li>
 <li class="spacing">If you already created your robot in the app, navigate to its <strong>CONFIG</strong> tab and skip to <a href="./#configuring-the-board">Configuring the board</a>.</li>
 <li class="spacing">Create an <strong>Organization</strong>.
-If you already have an Organization, then this step is optional. If you need help with organizations and locations, see our <a href="/program/app-usage/">guide to using the Viam app</a>.</li>
+If you already have an Organization, then this step is optional.
+If you need help with organizations and locations, see our <a href="/program/app-usage/">guide to using the Viam app</a>.</li>
 <li class="spacing">Create a <strong>Location</strong>.
 If you already have a Location, then this step is optional.</li>
 <li class="spacing">Create a <strong>robot</strong> and navigate to its <strong>CONFIG</strong> tab.
@@ -45,8 +49,7 @@ As long as you're consistent, you can name the board whatever you want.</li>
 <li class="spacing">Select "pi" from the <strong>Model</strong> drop-down.</li>
 <li class="spacing">Click <strong>Create Component</strong> and the board component panel will expand.
 We don't need to worry about any other attributes for this component.</li>
-<img src="../../img/scuttlebot/board-empty-json.png" alt="Screenshot of the component configuration panel for a board component.
-The name (local), type (board) and model (pi) are shown at the top of the panel. No other attributes are configured."></ol>
+<img src="../../img/scuttlebot/board-empty-json.png" alt="Screenshot of the component configuration panel for a board component. The name (local), type (board) and model (pi) are shown at the top of the panel. No other attributes are configured."></ol>
 
 ## Configuring the motors
 
