@@ -180,12 +180,12 @@ The arm component supports the following methods:
 
 | Method Name                   | Golang                 | Python                              | Description                                                            |
 | ----------------------------- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------- |
-| [EndPosition](#end-position)                 | [EndPosition][go_arm]       | [get_end_position][python_get_end_position]                 | Gets the current position of the arm as a Pose.                                  |
-| [MoveToPosition](#move-to-position) | [MoveToPosition][go_arm]| [move_to_position][python_move_to_position] | Moves the end of the arm to the desired Pose. |
-| [MoveToJointPositions](#move-to-joint-positions)                 | [MoveToJointPositions][go_arm]       | [move_to_joint_positions][python_move_to_joint_positions]                 | Moves each joint on the arm to the desired angle while avoiding obstacles as desired.                                                      |
-| [GetJointPositions](#get-joint-positions)                 | [GetJointPositions][go_arm]       | [get_joint_positions][python_get_joint_positions]                 | Gets the current position of the arm.                                                       |
-| [Stop](#stop)                 | [Stop][go_arm]       | [stop][python_stop]                 | Stops the arm.                                                       |
-| [IsMoving](#stop)                 | [IsMoving][go_arm]       | [is_moving][python_is_moving]                 | Gets if the arm is currently moving.                                                       |
+| [EndPosition](#endposition)                 | [EndPosition][go_arm]       | [get_end_position][python_get_end_position]                 | Get the current position of the arm as a Pose.                                  |
+| [MoveToPosition](#movetoposition) | [MoveToPosition][go_arm]| [move_to_position][python_move_to_position] | Move the end of the arm to the desired Pose. |
+| [MoveToJointPositions](#movetojointpositions)                 | [MoveToJointPositions][go_arm]       | [move_to_joint_positions][python_move_to_joint_positions]                 | Move each joint on the arm to the desired position.                                                      |
+| [GetJointPositions](#getjointpositions)                 | [GetJointPositions][go_arm]       | [get_joint_positions][python_get_joint_positions]                 | Get the current position of each joint on the arm.                                                       |
+| [Stop](#stop)                 | [Stop][go_arm]       | [stop][python_stop]                 | Stop the arm from moving.                                                       |
+| [IsMoving](#stop)                 | [IsMoving][go_arm]       | [is_moving][python_is_moving]                 | Get if the arm is currently moving.                                                       |
 
 [go_arm]: https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm
 [python_get_end_position]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_end_position
@@ -195,13 +195,16 @@ The arm component supports the following methods:
 [python_stop]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.stop
 [python_is_moving]: https://google.com
 
-### Control your Arm with the Viam SDK Libraries
+### Control your Arm with Viam's Client SDK Libraries
+
+- [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/arm/index.html)
+- [Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/arm)
 
 {{% alert title="Note" color="note" %}}
 
-Make sure you have set up your robot and connected it to the Viam app. Check out our [Client SDK Libraries Quick Start](/product-overviews/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and our [Getting Started with the Viam App guide](/getting-started/) for app-specific guidance.
+Make sure you have set up your robot and connected it to the Viam app. Check out the [Client SDK Libraries Quick Start](/product-overviews/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
 
-**Assumption:** An arm called "my_arm" is configured as a component of your robot in the Viam app.
+The following example assumes you have an arm called "my_arm" configured as a component of your robot. If your arm has a different name, change the `name` in the example.
 
 {{% /alert %}}
 
@@ -209,14 +212,24 @@ Make sure you have set up your robot and connected it to the Viam app. Check out
 {{% tab name="Python" %}}
 
 ```python
-from viam.components.arm import ArmClient
+from viam.components.arm import Arm, JointPositions
+from viam.proto.common import Pose, WorldState
+
 async def main():
-    robot = await connect()
-    print('Resources:')
-    print(robot.resource_names)
-    # Get the arm client from the robot
-    myArm = ArmClient.from_robot(robot=robot, name='my_arm')
-    await robot.close()
+
+  # Connect to your robot.
+  robot = await connect()
+
+  # Log an info message with the names of the different resources that are connected to your robot. 
+  print('Resources:')
+  print(robot.resource_names)
+
+  # Connect to your arm. 
+  myArm = Arm.from_robot(robot=robot, name='my_arm')
+
+  # Disconnect from your robot. 
+  await robot.close()
+
 if __name__ == '__main__':
     asyncio.run(main())
 ```
@@ -226,17 +239,46 @@ if __name__ == '__main__':
 
 ```go
 import (
- "go.viam.com/rdk/components/arm"
+  "go.viam.com/rdk/components/arm"
+  "go.viam.com/rdk/referenceframe"
+  "go.viam.com/rdk/spatialmath"
+  componentpb "go.viam.com/api/component/arm/v1"
 )
-func main() {
-  //robot, err := client.New(...)
+
+func main() { 
+
+  // Create an instance of a logger. 
+  logger := golog.NewDevelopmentLogger("client")
+
+  // Connect to your robot. 
+  robot, err := client.New(
+      context.Background(),
+      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      logger,
+      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+          Type:    utils.CredentialsTypeRobotLocationSecret,
+          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      })),
+  )
+
+  // Log any errors that occur.
+  if err != nil {
+      logger.Fatal(err)
+  }
+
+  // Delay closing your connection to your robot until main() exits. 
+  defer robot.Close(context.Background())
+
+  // Log an info message with the names of the different resources that are connected to your robot. 
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
-  // Get the arm client from the robot.
+
+  // Connect to your arm.
   myArm, err := arm.FromRobot(robot, "my_arm")
   if err != nil {
     logger.Fatalf("cannot get arm: %v", err)
   }
+
 }
 ```
 
@@ -245,27 +287,28 @@ func main() {
 
 ### GetEndPosition
 
-<!-- Move the base in a straight line across the given distance (*mm*) at the given velocity (*mm/sec*). -->
+Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-<!-- - *distance* [(int)](https://docs.python.org/3/library/functions.html#int): The distance to move in millimeters.
-Negative implies backwards.
-- *velocity* [(float)](https://docs.python.org/3/library/functions.html#float): The velocity at which to move in millimeters per second.
-Negative implies backwards. -->
+- None
 
 **Returns:**
 
-- *mmPerSec* [(float64)](https://pkg.go.dev/builtin#float64): The velocity
+- `Pose` [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's current position as a 6 dof (six degrees of freedom) pose.
+The `Pose` is composed of values for location and orientation with respect to the origin.
+Location is expressed as distance, which is represented by x, y, and z coordinate values.
+Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
 
-[Python SDK Docs: **get_end_position**](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_end_position)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_end_position).
 
 ```python
-myArm = ArmClient.from_robot(robot=robot, name='my_arm')
-# TEMP TEMP Move the base 10 mm at a velocity of 1 mm/s, forward
+myArm = Arm.from_robot(robot=robot, name='my_arm')
+
+# Get the end position of the arm as a Pose.
 pos = await myArm.get_end_position()
 ```
 
@@ -274,25 +317,32 @@ pos = await myArm.get_end_position()
 
 **Parameters:**
 
-- [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- [spatialmath.Pose](https://pkg.go.dev/go.viam.com/rdk@v0.2.12/spatialmath#Pose): A representation of the arm's current position as a 6dof pose, position and orientation, with respect to the origin. See [Go SDK Docs: **Pose**](https://pkg.go.dev/go.viam.com/rdk@v0.2.12/spatialmath#Pose) and [Python SDK Docs: **pose**](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose) for more information on how to use a Pose.
-
-[Go SDK Docs: **GetEndPosition**](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm)
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- `Pose` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 dof (six degrees of freedom) pose.
+The `Pose` is composed of values for location and orientation with respect to the origin.
+Location is expressed as distance, which is represented by x, y, and z coordinate values.
+Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
+  
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
-// TEMP TEMP Move the base forward 10 mm at a velocity of 1 mm/s
-myArm.GetEndPosition(context.Background(), temp: 10, temp: 1)
-// TEMP TEMP Move the base backward 10 mm at a velocity of -1 mm/s
-myArm.GetEndPosition(context.Background(), temp: 10, temp: -1)
+
+// Get the end position of the arm as a Pose. 
+err, pos := myArm.GetEndPosition(context.Background())
+
+// Log any errors that occur. 
+if err != nil {
+  logger.Fatalf("cannot get end position of arm: %v", err)
+}
 ```
 
 {{% /tab %}}
@@ -300,28 +350,35 @@ myArm.GetEndPosition(context.Background(), temp: 10, temp: -1)
 
 ### MoveToPosition
 
-<!-- Move the base in a straight line across the given distance (*mm*) at the given velocity (*mm/sec*). -->
+Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose).
+Plan for the arm to avoid obstacles and comply with the constraints for movement specified in [(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-<!-- - *distance* [(int)](https://docs.python.org/3/library/functions.html#int): The distance to move in millimeters.
-Negative implies backwards.
-- *velocity* [(float)](https://docs.python.org/3/library/functions.html#float): The velocity at which to move in millimeters per second.
-Negative implies backwards. -->
+- `pose` [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's current position as a 6 dof (six degrees of freedom) pose.
+The `Pose` is composed of values for location and orientation with respect to the origin.
+Location is expressed as distance, which is represented by x, y, and z coordinate values.
+Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
+- `world_state`[(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState): Obstacles that the arm must avoid while it moves from its original position to the position specified in `pose`.
+A `WorldState` can include a variety of attributes, including a list of obstacles around the object (`obstacles`), a list of spaces the robot may operate within (`interaction_spaces`), and a list of supplemental transforms (`transforms`). These fields are optional.
 
 **Returns:**
 
 - None
 
-[Python SDK Docs: **move_to_position**](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_to_position)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_to_position).
 
 ```python
-myArm = ArmClient.from_robot(robot=robot, name='my_arm')
-# TEMP TEMP Move the arm 10 mm at a velocity of 1 mm/s, forward
-await myArm.move_to_position(temp=10, temp=1)
+myArm = Arm.from_robot(robot=robot, name='my_arm')
+
+# Create a Pose for the arm.
+examplePose = Pose(x=5, y=5, z=5, o_x=5, o_y=5, o_z=5, theta=20)
+
+# Move your arm to the Pose. 
+await myArm.move_to_position(pose=examplePose, world_state=WorldState())
 ```
 
 {{% /tab %}}
@@ -329,26 +386,31 @@ await myArm.move_to_position(temp=10, temp=1)
 
 **Parameters:**
 
-- [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-<!-- - *distanceMm* [(int)](https://pkg.go.dev/builtin#int): The distance to move the base in millimeters.
-Negative implies backwards.
-- *mmPerSec* [(float64)](https://pkg.go.dev/builtin#float64): The velocity at which to move the base in millimeters per second.
-Negative implies backwards. -->
-- extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `Pose` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 dof (six degrees of freedom) pose.
+The `Pose` is composed of values for location and orientation with respect to the origin.
+Location is expressed as distance, which is represented by x, y, and z coordinate values.
+Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
+- `world_state`[(WorldState)](https://pkg.go.dev/go.viam.com/rdk@v0.2.12/referenceframe#WorldState): Obstacles that the arm must avoid while it moves from its original position to the position specified in `pose`. A `WorldState` can include a variety of attributes, including a list of obstacles around the object (`obstacles`), a list of spaces the robot may operate within (`interaction_spaces`), and a list of supplemental transforms (`transforms`). These fields are optional.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK Docs: **MoveToPosition**](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
-// TEMP TEMP Move the base forward 10 mm at a velocity of 1 mm/s
-myArm.MoveToPosition(context.Background(), temp: 10, temp: 1)
+
+// Create a Pose for the arm. 
+examplePose = []float64{x: 5, y: 5, z: 5, o_x: 5, o_y: 5, o_z: 5, theta:20}
+
+// Move your arm to the Pose. 
+myArm.MoveToPosition(context.Background(), pose: examplePose, referenceframe.WorldState())
 ```
 
 {{% /tab %}}
@@ -356,30 +418,33 @@ myArm.MoveToPosition(context.Background(), temp: 10, temp: 1)
 
 ### MoveToJointPositions
 
-<!-- Move the base in a straight line across the given distance (*mm*) at the given velocity (*mm/sec*). -->
+Move each joint on the arm to the position specified in `positions`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-<!-- - *distance* [(int)](https://docs.python.org/3/library/functions.html#int): The distance to move in millimeters.
-Negative implies backwards.
-- *velocity* [(float)](https://docs.python.org/3/library/functions.html#float): The velocity at which to move in millimeters per second.
-Negative implies backwards. -->
+- `positions` [(JointPositions)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions): The desired position of each joint of the arm at the end of movement.
+JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
 
 **Returns:**
 
 - None
 
-[Python SDK Docs: **move_to_joint_positions**](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_to_joint_positions)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_to_joint_positions)
 
 ```python
-myArm = ArmClient.from_robot(robot=robot, name='my_arm')
-# TEMP TEMP Move the base 10 mm at a velocity of 1 mm/s, forward
-await myArm.move_to_joint_positions(temp=10, temp=1)
-# TEMP TEMPMove the base 10 mm at a velocity of -1 mm/s, backward
-await myBase.move_to_joint_positions(temp=10, temp=-1)
+myArm = Arm.from_robot(robot=robot, name='my_arm')
+
+# Declare a list of values with your desired rotational value for each joint on the arm.
+degrees = [0.0, 45.0, 0.0, 0.0, 0.0]
+
+# Declare a new JointPositions with these values.  
+jointPos = arm.move_to_joint_positions(JointPositions(values=[0.0, 45.0, 0.0, 0.0, 0.0]))
+
+# Move each joint of the arm to the position these values specify.
+await myBase.move_to_joint_positions(positions= jointPos)
 ```
 
 {{% /tab %}}
@@ -387,28 +452,31 @@ await myBase.move_to_joint_positions(temp=10, temp=-1)
 
 **Parameters:**
 
-- [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-<!-- - *distanceMm* [(int)](https://pkg.go.dev/builtin#int): The distance to move the base in millimeters.
-Negative implies backwards.
-- *mmPerSec* [(float64)](https://pkg.go.dev/builtin#float64): The velocity at which to move the base in millimeters per second.
-Negative implies backwards. -->
-- extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `positions` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
+JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK Docs: **MoveToJointPositions**](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
-// TEMP TEMP Move the base forward 10 mm at a velocity of 1 mm/s
-myArm.MoveToJointPositions(context.Background(), temp: 10, temp: 1)
-// TEMP TEMP Move the base backward 10 mm at a velocity of -1 mm/s
-myArm.MoveToJointPositions(context.Background(), temp: 10, temp: -1)
+
+// Declare an array of values with your desired rotational value for each joint on the arm. 
+degrees := []float64{4.0, 5.0, 6.0}
+
+// Declare a new JointPositions with these values.
+jointPos := componentpb.JointPositions{Values= degrees}
+
+// Move each joint of the arm to the position these values specify.
+myArm.MoveToJointPositions(context.Background(), jointPos)
 ```
 
 {{% /tab %}}
@@ -416,28 +484,27 @@ myArm.MoveToJointPositions(context.Background(), temp: 10, temp: -1)
 
 ### GetJointPositions
 
-<!-- Move the base in a straight line across the given distance (*mm*) at the given velocity (*mm/sec*). -->
+Get the current position of each joint on the arm.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-<!-- - *distance* [(int)](https://docs.python.org/3/library/functions.html#int): The distance to move in millimeters.
-Negative implies backwards.
-- *velocity* [(float)](https://docs.python.org/3/library/functions.html#float): The velocity at which to move in millimeters per second.
-Negative implies backwards. -->
-
+- None
+  
 **Returns:**
 
-- None
+- `positions` [(JointPositions)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions): The position of each joint of the arm.
+JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
 
-[Python SDK Docs: **get_joint_positions**](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_joint_positions)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_joint_positions)
 
 ```python
-myArm = ArmClient.from_robot(robot=robot, name='my_arm')
-# TEMP TEMP Move the base 10 mm at a velocity of 1 mm/s, forward
-await myArm.get_joint_positions(temp=10, temp=1)
+myArm = Arm.from_robot(robot=robot, name='my_arm')
+
+# Get the current position of each joint on the arm as JointPositions. 
+pos = await myArm.get_joint_positions()
 ```
 
 {{% /tab %}}
@@ -445,28 +512,31 @@ await myArm.get_joint_positions(temp=10, temp=1)
 
 **Parameters:**
 
-- [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-<!-- - *distanceMm* [(int)](https://pkg.go.dev/builtin#int): The distance to move the base in millimeters.
-Negative implies backwards.
-- *mmPerSec* [(float64)](https://pkg.go.dev/builtin#float64): The velocity at which to move the base in millimeters per second.
-Negative implies backwards. -->
-- extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- `positions` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
+JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
 
-[Go SDK Docs: **GetEndPosition**](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
-// TEMP TEMP Move the base forward 10 mm at a velocity of 1 mm/s
-myArm.GetJointPositions(context.Background(), temp: 10, temp: 1)
-// TEMP TEMP Move the base backward 10 mm at a velocity of -1 mm/s
-myArm.GetJointPositions(context.Background(), temp: 10, temp: -1)
+
+// Get the current position of each joint on the arm as JointPositions. 
+pos, err := myArm.GetJointPositions(context.Background())
+
+// Log any errors that occur. 
+if err != nil {
+  logger.Fatalf("cannot get JointPositions of arm: %v", err)
+}
+
 ```
 
 {{% /tab %}}
@@ -474,30 +544,26 @@ myArm.GetJointPositions(context.Background(), temp: 10, temp: -1)
 
 ### Stop
 
-<!-- Move the base in a straight line across the given distance (*mm*) at the given velocity (*mm/sec*). -->
+Stop all motion of the arm.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-<!-- - *distance* [(int)](https://docs.python.org/3/library/functions.html#int): The distance to move in millimeters.
-Negative implies backwards.
-- *velocity* [(float)](https://docs.python.org/3/library/functions.html#float): The velocity at which to move in millimeters per second.
-Negative implies backwards. -->
-
+- None
+  
 **Returns:**
 
 - None
 
-[Python SDK Docs: **stop**](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.stop)
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.stop).
 
 ```python
-myArm = ArmClient.from_robot(robot=robot, name='my_arm')
-# TEMP TEMP Move the base 10 mm at a velocity of 1 mm/s, forward
-await myArm.move_to_position(temp=10, temp=1)
-# TEMP TEMPMove the base 10 mm at a velocity of -1 mm/s, backward
-await myArm.stop(temp=10, temp=-1)
+myArm = Arm.from_robot(robot=robot, name='my_arm')
+
+# Stop all motion of the arm. It is assumed that the arm stops immediately.
+await myArm.stop()
 ```
 
 {{% /tab %}}
@@ -505,34 +571,27 @@ await myArm.stop(temp=10, temp=-1)
 
 **Parameters:**
 
-- [Context](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-<!-- - *distanceMm* [(int)](https://pkg.go.dev/builtin#int): The distance to move the base in millimeters.
-Negative implies backwards.
-- *mmPerSec* [(float64)](https://pkg.go.dev/builtin#float64): The velocity at which to move the base in millimeters per second.
-Negative implies backwards. -->
-- extra [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [error](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-[Go SDK Docs: **GetEndPosition**](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
-// TEMP TEMP Move the base forward 10 mm at a velocity of 1 mm/s
-myArm.MoveToPosition(context.Background(), temp: 10, temp: 1)
-// TEMP TEMP Move the base backward 10 mm at a velocity of -1 mm/s
-myArm.Stop(context.Background(), temp: 10, temp: -1)
+
+// Stop all motion of the arm.
+myArm.Stop(context.Background())
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
-
-<!-- ## IsMoving -->
 
 ## Next Steps
 
