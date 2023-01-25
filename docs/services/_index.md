@@ -8,12 +8,12 @@ type: docs
 
 There are three types of service APIs:
 
-- the [Robot](/services/robot-service/)
 - Cloud Applications
-  - [fleet management](/services/fleet-management/)
-  - [data management](/services/data-management/)
+  - [Data Management](/services/data-management/)
+  - [Fleet Management](/services/fleet-management/)
 - Component Services
-  - [Motion](/services/motion/)
   - [Frame System](/services/frame-system/)
+  - [Motion](/services/motion/)
   - [SLAM](/services/slam/)
   - [Vision](/services/vision/)
+- The [Robot Service](/services/robot-service/)
