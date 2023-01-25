@@ -174,7 +174,7 @@ Now that you learned how to drive your rover with the UI, let’s go a bit furth
 One other thing you can do within your experience is see your configuration.
 
 On the Viam app, navigate to the **COMPONENTS** subtab, under **CONFIG**.
-There you can view the configuration for each component in the robot: their attributes, component dependencies, pin assignments, etc.:
+There you can view the configuration for each component in the robot: their attributes, component dependencies, pin assignments, etc.
 
 ![Screenshot of the CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](../img/try-viam/config-builder.png)
 
