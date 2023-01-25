@@ -190,6 +190,36 @@ For these changes to take effect, you need to restart your Raspberry Pi if it ha
 sudo reboot
 ```
 
+## Adding additional Wifi credentials
+
+As you flash your Pi, you are being prompted to configure your Wifi credentials. If you move your robot to a different location, you will have to change the Wifi that it is connected to. In this case, you can simply update the configuration by creating a new wpa_supplicant.conf file on the “boot” partition. The steps are explained below.
+
+To configure one or more new Wifi connections on the Raspberry Pi, plug your Pi's microSD card into your computer. Create a text file called `wpa_supplicant.conf`, and make sure to have the text file in Plain Text format and not Rich Text format.
+
+Paste the following example into the file, replacing "<Name of your wireless LAN>" and "<Password for your wireless LAN>" with your credentials. Be sure to use UNIX (LF) line breaks in your text editor.
+
+Save the file and eject the microSD card. Put the microSD card back into the Pi and boot it. The `wpa_supplicant.conf` file will be read by the Pi on boot, and the file will disappear but the Wifi credentials will be updated.
+
+You can duplicate the “network” section to add additional wifi networks (for example your work, and your home). The "priority" attribute is optional and can be used to prioritize networks if multiple networks are configured (with higher numbers being prioritized).
+
+```bash
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=us
+
+network={
+ ssid="Name of your wireless LAN"
+ psk="Password for your wireless LAN"
+ priority=10
+}
+
+network={
+ssid="Name of your other wireless LAN"
+psk="Password for your other wireless LAN"
+priority=20
+}
+```
+
 ## Next Steps
 
 Now that your Pi has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
