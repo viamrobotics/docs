@@ -337,7 +337,7 @@ if err != nil {
 }
 
 // Get the end position of the arm as a Pose. 
-err, pos := myArm.GetEndPosition(context.Background())
+err, pos := myArm.EndPosition(context.Background())
 
 // Log any errors that occur. 
 if err != nil {
