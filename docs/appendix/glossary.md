@@ -21,7 +21,7 @@ Boards like Jetson and Pi run _viam-server_ and can expose the board component i
 You can run a client application on the same part that runs the viam-server, or on a separate device.
 Client applications typically use an SDK to talk to their robot.
 
-**Component**: A resource that represents a physical component in a robot which a computer controls; for example, a servo, camera, or an arm.
+**Component**: A resource that represents a physical component in a robot which a computer controls; for example, a servo, a camera, or an arm.
 
 **Fragment**: A reusable configuration block representing a common hardware pattern.
 For example, if you are deploying a specific mobile robot that is always physically connected the same way, you can create a fragment to make managing your fleet easy.
@@ -63,7 +63,7 @@ You can establish remotes to parts in different robots. However, Viam recommends
 **Remote UI**: Uses the Web JS SDK and provides UI elements to control a robot via WebRTC.
 
 **Robot**: An organizational concept, consisting of either one _part_, or multiple _parts_ working closely together to complete tasks.
-The robot represents the configuration and entry point for one or more computers and components coupled into one logical grouping of parts that work together to complete tasks.
+The robot represents the configuration and entry point for one or more computers (and the components they control) coupled into one logical grouping of parts that work together to complete tasks.
 A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor.
 A robot always has a main part that receives client requests, and any number of other parts.
 
