@@ -24,7 +24,7 @@ This tutorial shows you how to run [Cartographer](https://github.com/cartographe
 You have two options:
 
 * Run Cartographer SLAM in online mode with a [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device.
-* Run Cartographer SLAM in offline mode with Viam's [lab dataset](https://storage.googleapis.com/viam-labs-datasets/) or with data you've collected.
+* Run Cartographer SLAM in offline mode with Viam's [lab dataset](https://storage.googleapis.com/viam-labs-datasets/viam-old-office-small-pcd.zip) or with data you've collected.
 
 ## Requirements
 
