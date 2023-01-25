@@ -214,7 +214,6 @@ In the **CONFIG** tab, select the **Raw JSON** mode, then copy/paste the followi
 ```
 
 {{% /expand %}}
-<br>
 5. Now, change the `"data_dir":` attribute (line 8):
 
 * Edit `"/home/YOUR_USERNAME/cartographer_dir"` to be your home directory path followed by `/cartographer_dir`.
@@ -228,9 +227,9 @@ If you are using a Raspberry Pi as your machine, you must `ssh` into your Pi to 
 YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 /home/YOUR_USERNAME
 ```
-{{% /alert %}}
 
-1. Click **Save Config** to save the service.
+{{% /alert %}}
+6. Click **Save Config** to save the service.
 
 At this point, your complete configuration should look like:
 
@@ -327,7 +326,6 @@ At this point, your complete configuration should look like:
 
   {{% /tab %}}
   {{< /tabs >}}
-
 7. Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-slam`).
 8. Change the **Refresh frequency** to your desired frequency, move the Rplidar device around slowly, and watch a map start to appear.
 
