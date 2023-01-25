@@ -32,8 +32,8 @@ As of October 11, 2022, the following SLAM library is integrated:
 [^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORB-SLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
 
 {{% alert title="Note" color="note" %}}
-
 - Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`.
+
 The timestamp is appended to each filename before images, maps, and *.yaml files are saved.
 The timestamp format will be updated to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
 {{% /alert %}}
@@ -248,6 +248,7 @@ You can use all parameters except for `mode` and `debug` to fine-tune ORB-SLAM's
 | `orb_n_levels` | (optional) ORB parameter. Number of levels in the scale pyramid. |  8 |
 | `orb_n_ini_th_fast` | (optional) ORB parameter. Initial FAST threshold. | 20 |
 | `orb_n_min_th_fast` | (optional) ORB parameter. Lower threshold if no corners detected. | 7 |
+
 | `stereo_th_depth` | (optional) Number of stereo baselines used to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | 40 |
 | `depth_map_factor` | (optional) Factor to transform the depth map to real units. | 1000 |
 | `stereo_b` | (optional) Stereo baseline in meters. | 0.0745 |
