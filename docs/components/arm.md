@@ -586,7 +586,7 @@ if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
 
-// Stop all motion of the arm.
+// Stop all motion of the arm. It is assumed that the arm stops immediately.
 myArm.Stop(context.Background())
 ```
 
