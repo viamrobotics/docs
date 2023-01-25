@@ -99,11 +99,17 @@ sudo reboot
 
 ## Hardware setup
 
-The Freenove hardware instructions are comprehensive. Follow their assembly instructions, including servo setup (i.e. all of Chapters 2 and 3, and the section of Chapter 4 about calibration) before proceeding.
+The Freenove hardware instructions are comprehensive.
+Follow their assembly instructions, including servo setup (i.e., all of Chapters 2 and 3, and the section of Chapter 4 about calibration) before proceeding.
 
-## Create a connection test file
+## Check connection between the robot dog server and the midlayer
 
-In a convenient directory on your development machine (desktop or laptop), create a Python file and open it in your favorite IDE.
+Let's test the connection between the Freenove server running on your robot dog and the code running on your development machine (laptop or desktop) before proceeding with the custom component implementation.
+This way, you can isolate any client-server connection problems if they arise.
+
+### Create a connection test file
+
+In a convenient directory on your development machine, create a Python file and open it in your favorite IDE.
 We named ours "dog_test.py" and opened it in Visual Studio Code.
 
 Paste the following code snippet into the file you created:
@@ -114,7 +120,7 @@ Paste the following code snippet into the file you created:
 import socket, time
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(("PASTE IP ADDRESS HERE", 5001))
+s.connect(("PASTE DOG IP ADDRESS HERE", 5001))
 
 cmd = "CMD_MOVE_FORWARD#8"
 s.send(cmd.encode("utf-8"))
@@ -132,5 +138,64 @@ Save the file.
 Go to the robot page (on the Viam app) for your robot dog that you set up when installing viam-server on the Pi.
 
 In the banner towards the top of the page, the IP address of the robot dog Pi is displayed under **ips**.
-Copy this number (usually a string of four numbers separated by periods) into the `dog_test.py` file in place of `PASTE IP ADDRESS HERE`.
+Copy this number (usually a string of four numbers separated by periods) into the `dog_test.py` file in place of `PASTE DOG IP ADDRESS HERE`.
 Save the file.
+
+### Test the connection
+
+Place the robot dog on a flat, open surface where it has room to take a few steps without, say, falling off a desk.
+
+Now you are ready to run the connection test file.
+
+You'll be working in two terminal windows on your development machine: one for the robot dog Pi and one for the development machine.
+
+In one terminal, SSH into the Pi using the username and hostname you set up when imaging the Pi, for example:
+
+```bash
+ssh fido@robotdog.local
+```
+
+Navigate to the `~/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` directory.
+
+Start the robot dog server by running:
+
+```bash
+sudo python main.py -tn
+```
+
+In another terminal, navigate to the directory on your development machine where you saved `dog_test.py`.
+Run the connection test file with the following command:
+
+```bash
+python dog_test.py
+```
+
+If the dog walks forward for a few seconds and then stops, we were successfully able to send commands from our test file to the robot dog server.
+Hurray!
+Continue on to implement the base.
+
+If the robot dog did not respond, double check your IP address, make sure the robot dog server is still running, and make sure the robot has adequate power. You can also try turning the robot off and on again, and then retrying the process.
+
+## Implement the custom base code
+
+From the Raspberry Pi terminal home directory, create a directory to hold your custom code files:
+
+```bash
+mkdir RobotDog
+```
+
+### Define the custom base interface
+
+To create a custom base model, you need to subclass the base component type.
+In other words, you need a script that defines what each base component method (for example `set_power`) makes the robot dog do.
+
+Take a look at [<file>my_robot_dog.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/my_robot_dog.py).
+It creates a "RobotDog" model of the base component type, and defines the `set_power`, `stop`, `is_moving`, and `do` methods by specifying which corresponding commands to send to the Freenove dog server when each of these methods is called.
+Feel free to tweak the specific contents of each of these method definitions, and add support for other base methods like `spin`.
+
+Save [<file>my_robot_dog.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/my_robot_dog.py) into the <file>RobotDog</file> directory you created.
+
+### Register the custom component
+
+Save [<file>python_server.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/python_server.py) into the <file>RobotDog</file> directory.
+The <file>python_server.py</file> file registers the custom component so robots can connect to it.
