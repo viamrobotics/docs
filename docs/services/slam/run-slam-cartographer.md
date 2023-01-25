@@ -1,6 +1,6 @@
 ---
 title: "Run SLAM on your Robot with a LIDAR"
-linkTitle: "Run SLAM on your Robot using a LIDAR"
+linkTitle: "Run SLAM on your Robot with a LIDAR"
 weight: 50
 type: "docs"
 draft: false
@@ -17,7 +17,7 @@ Breaking changes are likely to occur, and occur often.
 
 ## Introduction
 
-[Simultaneous Localization And Mapping (SLAM)](../../services/slam/) allows your robot to create a map of its surroundings and find its location within that map.
+[Simultaneous Localization And Mapping (SLAM)](../../slam/) allows your robot to create a map of its surroundings and find its location within that map.
 
 This tutorial shows you how to run [Cartographer](https://github.com/cartographer-project), a system that provides real-time SLAM, as a service on your robot.
 
@@ -326,6 +326,7 @@ At this point, your complete configuration should look like:
 
   {{% /tab %}}
   {{< /tabs >}}
+
 7. Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-slam`).
 8. Change the **Refresh frequency** to your desired frequency, move the Rplidar device around slowly, and watch a map start to appear.
 
@@ -425,6 +426,6 @@ If maps are not building the way you expect, make sure your Rplidar is secure an
 
 ## Additional Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](../../appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com) and we will be happy to help.
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.

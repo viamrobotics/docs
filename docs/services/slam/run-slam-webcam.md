@@ -1,6 +1,6 @@
 ---
-title: "Run SLAM on your Robot using a camera"
-linkTitle: "Run SLAM on your Robot using a camera"
+title: "Run SLAM on your Robot with a Webcam"
+linkTitle: "Run SLAM on your Robot with a Webcam"
 weight: 50
 type: "docs"
 draft: false

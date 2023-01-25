@@ -32,10 +32,11 @@ As of October 11, 2022, the following SLAM library is integrated:
 [^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORB-SLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
 
 {{% alert title="Note" color="note" %}}
-- Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`.
 
+- Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`.
 The timestamp is appended to each filename before images, maps, and *.yaml files are saved.
 The timestamp format will be updated to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
+
 {{% /alert %}}
 
 ## Requirements
