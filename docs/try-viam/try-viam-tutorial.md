@@ -285,6 +285,10 @@ Your rover rental location now contains your robot with the final configuration 
 You can write your own code to control the Viam robot using Viam's SDKs.
 Learn how to use a Viam SDK to make the Viam Rover drive in a square in our [using the Viam SDK to control your Viam Rover tutorial](/tutorials/viam-rover/try-viam-sdk/).
 
+## Using Vision Service with the Viam Rover
+
+You can use Viam's Vision Service to detect colors around the Viam rink with a detection camera. Learn how to use the Vision Service in our [detect a color with your Viam Rover tutorial](/tutorials/viam-rover/try-viam-color-detection/).
+
 ## Next Steps
 
 If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
