@@ -228,3 +228,7 @@ See [Movement Sensor Component](/components/movement-sensor) for more informatio
 For lidar, we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).
 
 For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
+
+## Next Steps
+
+- [Add the Viam Fragment to your Robot](/try-viam/rover-resources/rover-tutorial-fragments/)
