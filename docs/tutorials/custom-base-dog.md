@@ -20,7 +20,7 @@ This tutorial is an example of option two, using [this robot dog kit and its ope
 <img src="../img/custom-base-dog/base-control-dog.gif" style="float:left;margin-right:12px" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." width="400" />
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
-You will also be able to use the **CONTROL** tab in the Viam app to remotely drive the dog around using WASD keys on your keyboard while viewing the camera feed.
+You will also be able to use the **CONTROL** tab in the Viam app to remotely drive the dog around using your keyboard while viewing the camera feed.
 You’ll learn to implement a custom component type in Viam, and you’ll be equipped to implement other sorts of custom components in the future for whatever robots you dream up.
 
 ## Code used in this tutorial
@@ -39,7 +39,7 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 
 ## Raspberry Pi setup
 
-Freenove provides a lot of information about how to set up and use a Raspberry Pi in chapters 0 and 1 of their tutorial, some of which overlaps with Viam setup guides, so to avoid confusion, here’s all you need to do for the purposes of this tutorial:
+Freenove documentation includes Raspberry Pi setup instructions but we recommend the following steps to make sure the Pi is set up for this tutorial:
 
 1. Follow the steps in our [Raspberry Pi Setup Guide](/installation/rpi-setup/) to install Raspberry Pi OS Lite (64 bit).
 
