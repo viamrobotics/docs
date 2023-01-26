@@ -23,6 +23,12 @@ By the end of the tutorial, you will be able to drive this dog around using the 
 You will also be able to use the **CONTROL** tab in the Viam app to remotely drive the dog around using WASD keys on your keyboard while viewing the camera feed.
 You’ll learn to implement a custom component type in Viam, and you’ll be equipped to implement other sorts of custom components in the future for whatever robots you dream up.
 
+## Code used in this tutorial
+
+- <https://github.com/viam-labs/robot-dog-base>
+
+- <https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/tree/master/Code>
+
 ## Hardware requirements
 
 - [Freenove Robot Dog Kit for Raspberry Pi](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi)
@@ -227,18 +233,6 @@ This can be changed by passing in a host and/or port parameter to the serve func
 Now that the custom base code is set up, you need to configure all your hardware components.
 Navigate to the **COMPONENTS** sub-tab of the **CONFIG** tab.
 
-### Configure the board
-
-The board component represents the Raspberry Pi.
-
-In the **Create Component** field, give your [board](/components/board/) a name.
-We called ours "local".
-In the **Type** drop-down select `board`.
-In the **Model** drop-down select `pi`.
-Click **Create Component**.
-
-No attributes are needed for the board.
-
 ### Configure the base
 
 In the **Create Component** field, give your base a name.
@@ -248,8 +242,6 @@ In the **Model** field, type in "RobotDog".
 Click **Create Component**.
 
 You don't need to add any attributes to the base component.
-
-In the **Depends On** field select "local" (or whatever you named your board).
 
 Click **Save Config**.
 
@@ -325,7 +317,7 @@ We added a 5 second time delay to the [<file>python_server.py</file>](https://gi
 
 If you prefer, you can start the processes manually from command terminals on the Pi.
 
-First, from the `/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/` directory start the Freenove robot dog server:
+First, from the `home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/` directory start the Freenove robot dog server:
 
 ```bash
 sudo python main.py -tn
@@ -374,7 +366,7 @@ If you want to send commands directly to the dog server instead of running `my_r
     nc <DOG IP ADDRESS> 5001
     ```
 
-3. You can now type commands and hit enter to send them to the Freenove robot dog server.
+3. You can now type commands ([see the list of available commands here](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Code/Client/Command.py)) and hit enter to send them to the Freenove robot dog server.
   For example:
 
     ```bash
