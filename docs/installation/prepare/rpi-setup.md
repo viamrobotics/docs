@@ -196,7 +196,7 @@ As you flash your Pi, you are prompted to configure your Wifi credentials.
 
 If you move your robot to a different location, you will have to update the Wifi credentials.
 
-You can update the wifi configuration by creating a new wpa_supplicant.conf file on the “boot” partition.
+You can update the Wifi configuration by creating a new wpa_supplicant.conf file on the “boot” partition.
 
 The steps are explained below.
 
