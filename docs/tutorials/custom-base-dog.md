@@ -8,7 +8,7 @@ description: "How to integrate a custom base component with the Viam Python SDK.
 # Author: Jessamy Taylor
 ---
 
-The [base component type](/docs/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://docs.viam.com/) remote control interface.
+The [base component type](/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://docs.viam.com/) remote control interface.
 
 Viam natively supports a wheeled base model, but what if you have a quadruped or other form of rover that isn't compatible with the wheeled model?
 Not to worry!
@@ -43,7 +43,7 @@ Follow the steps in our [Raspberry Pi Setup Guide](/installation/rpi-setup/) to 
 If you choose to install the full Raspberry Pi OS (64 bit) including the desktop environment and recommended software (as Freenove instructs in Chapter 0 of their tutorial), that will also work; set up viam-server in the same way on the **SETUP** tab once you have the Pi OS installed.
 {{% /alert %}}
 
-Then [install viam-server and connect your robot to the Viam app](../installation/install/).
+Then [install viam-server and connect your robot to the Viam app](/installation/install/).
 
 SSH into the Pi to complete the following steps.
 
