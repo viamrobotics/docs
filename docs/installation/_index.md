@@ -15,7 +15,7 @@ See [What is Viam?](/viam/) for more information.
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="prepare">
             <br>
-            <img src="img/thumbnails/viam-icon-board.png" alt="Viam board icon" width=200>
+            <img src="img/thumbnails/prepare.png" alt="Prepare" width=100%>
             <h4 style="text-align: left; margin-left: 0px;">Prepare</h4>
             <p style="text-align: left;">Prepare your computer before installing viam-server.</p>
         <a>
@@ -23,7 +23,7 @@ See [What is Viam?](/viam/) for more information.
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="install">
             <br>
-            <img src="img/thumbnails/viam-icon-data-capture.png" alt="Viam data capture icon" width=200>
+            <img src="img/thumbnails/install.png" alt="Install" width=100%>
             <h4 style="text-align: left; margin-left: 0px;">Install</h4>
             <p style="text-align: left;">Install viam-server on your robot.</p>
         </a>
@@ -33,7 +33,7 @@ See [What is Viam?](/viam/) for more information.
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="manage">
             <br>
-            <img src="img/thumbnails/viam-icon-sdk.png" alt="Viam SDK icon" width=200>
+            <img src="img/thumbnails/manage.png" alt="Manage" width=100%>
             <h4 style="text-align: left; margin-left: 0px;">Manage</h4>
             <p style="text-align: left;">Control and troubleshoot viam-server.</p>
         </a>
@@ -41,7 +41,7 @@ See [What is Viam?](/viam/) for more information.
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="update">
             <br>
-            <img src="img/thumbnails/viam-icon-motion.png" alt="Viam motion icon" width=200>
+            <img src="img/thumbnails/update.png" alt="Update" width=100%>
             <h4 style="text-align: left; margin-left: 0px;">Update</h4>
             <p style="text-align: left;">Update your version of viam-server.</p>
         </a>
