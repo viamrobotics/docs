@@ -233,4 +233,4 @@ priority=20
 
 ## Next Steps
 
-Now that your Pi has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
+Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional Wifi credentials, continue to our [viam-server installation guide](/installation/install/).
