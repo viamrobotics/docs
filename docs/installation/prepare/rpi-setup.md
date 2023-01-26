@@ -210,6 +210,7 @@ The steps are explained below.
 The `wpa_supplicant.conf` file will be read by the Pi on boot, and the file will disappear but the Wifi credentials will be updated.
 
 You can duplicate the “network” section to add additional Wifi networks (for example your work, and your home).
+
 The "priority" attribute is optional and can be used to prioritize networks if multiple networks are configured (higher numbers are prioritized).
 
 ```bash
