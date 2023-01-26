@@ -9,12 +9,12 @@
       <div class="row">
         {{ range sort $pages ".Weight"}}
         <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-          {{ if .Params.icon }}
-            <img src="{{ .Params.icon }} " alt="{{ .Title }}" width=100%>
-          {{ end }}
           <a href="{{ .Permalink }}">
+            {{ if .Params.icon }}
+              <img src="{{ .Params.icon }} " alt="{{ .Title }}" width=100%>
+            {{ end }}
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">{{ if .Title }} {{ .Title }} {{ else }} Untitled {{ end }}</h4>
-          <a>
+          </a>
           <p style="text-align: left;">{{ if .Description }} {{ .Description }} {{ else }}  {{ end }}</p>
         </div>
         {{ end }}
