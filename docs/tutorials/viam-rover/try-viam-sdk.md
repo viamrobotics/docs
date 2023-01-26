@@ -36,7 +36,7 @@ The easiest way to get started writing an application with Viam is to navigate t
 
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 
-Next, paste the boilerplate code from the **CODE SAMPLE** tab of the Viam app into a file named <file>drive.py</file> or <file>drive.go</file> file in your code editor, and save your file.
+Next, paste the boilerplate code from the **CODE SAMPLE** tab of the Viam app into a file named <file>square.py</file> or <file>square.go</file> file in your code editor, and save your file.
 
 Now run the code to verify that the Viam SDK is properly installed and that the viam-server instance on your robot is live.
 
@@ -55,7 +55,7 @@ python3 square.py
 If using Golang, you will need to initialize your project, and install the necessary libraries.
 
 ```bash
-go init mod square
+go mod init square
 go mod tidy
 go run square.go
 ```
@@ -170,19 +170,11 @@ Paste this snippet above your `main()` function:
 
 ```python
 async def moveInSquare(base):
-  # moves the Viam Rover forward 500mm at 500mm/s
-  await base.move_straight(velocity=500, distance=500)
-  # spins the Viam Rover 90 degrees at 100 degrees per second
-  await base.spin(velocity=100, angle=90)
-
-  await base.move_straight(velocity=500, distance=500)
-  await base.spin(velocity=100, angle=90)
-
-  await base.move_straight(velocity=500, distance=500)
-  await base.spin(velocity=100, angle=90)
-
-  await base.move_straight(velocity=500, distance=500)
-  await base.spin(velocity=100, angle=90)
+  for _ in range(4):
+    # moves the Viam Rover forward 500mm at 500mm/s
+    await base.move_straight(velocity=500, distance=500)
+    # spins the Viam Rover 90 degrees at 100 degrees per second
+    await base.spin(velocity=100, angle=90)
 ```
 
 {{% /tab %}}
@@ -190,19 +182,12 @@ async def moveInSquare(base):
 
 ```go
 func moveInSquare(ctx context.Context, base base.Base) {
-  // moves the Viam Rover forward 600mm at 500mm/s
-  base.MoveStraight(ctx, 600, 500.0, nil)
-  // spins the Viam Rover 90 degrees at 100 degrees per second
-  base.Spin(ctx, 90, 100.0, nil)
-
-  base.MoveStraight(ctx, 600, 500.0, nil)
-  base.Spin(ctx, 90, 100.0, nil)
-
-  base.MoveStraight(ctx, 600, 500.0, nil)
-  base.Spin(ctx, 90, 100.0, nil)
-
-  base.MoveStraight(ctx, 600, 500.0, nil)
-  base.Spin(ctx, 90, 100.0, nil)
+  for i:=0; i<4; i++ {
+    // moves the Viam Rover forward 600mm at 500mm/s
+    base.MoveStraight(ctx, 600, 500.0, nil)
+    // spins the Viam Rover 90 degrees at 100 degrees per second
+    base.Spin(ctx, 90, 100.0, nil)
+  }
 }
 ```
 
