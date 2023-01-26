@@ -39,7 +39,7 @@ To create a custom sensor, you must create a set of attributes unique to that se
 | ------- | ----------------------------------------------------------   |
 | `name`  | The name that you use to refer to the sensor in your code.   |
 | `type`  | For a sensor, the type is `sensor`.                          |
-| `model` | The model of sensor used ("ultrasonic"). Either a built-in Viam model or one you define when implementing a custom sensor model. |
+| `model` | The model of sensor used (for example, "ultrasonic"). Either a built-in Viam model or one you define when implementing a custom sensor model. |
 
 Don't forget to include any required attributes you define in your custom sensor component implementation.
 
