@@ -200,7 +200,7 @@ You can update the Wifi configuration by creating a new wpa_supplicant.conf file
 
 The steps are explained below.
 
-To configure one or more new Wifi connections on the Raspberry Pi, plug your Pi's microSD card into your computer. Create a text file called `wpa_supplicant.conf`, and make sure to have the text file in Plain Text format and not Rich Text format.
+1. Plug your Pi's microSD card into your computer and create a text file called `wpa_supplicant.conf`.
 
 Paste the following example into the file, replacing "<Name of your wireless LAN>" and "<Password for your wireless LAN>" with your credentials. Be sure to use UNIX (LF) line breaks in your text editor.
 
