@@ -20,15 +20,12 @@ Since gantries are linearly moving components, each gantry can only move in one 
 A multi-axis gantry is composed of many single-axis gantries.
 The multiple axis system is composed of the supplied gantry names.
 
-### Requirements
+Most robots with gantries will need at least the following hardware:
 
-A gantry in Viam requires the following:
-
-* A board or controller that can detect changes in voltage on gpio pins.
-* A motor:
-  * An encoded motor
-  * A stepper motor
-    * Requires limit switches to be set in the gantry config or offsets to be set in stepper motor.
+* A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins.
+* A [motor](/components/motor/).
+  * Encoded motor
+  * Stepper motor: Requires setting limit switches in the config of the gantry or setting offsets in the config of the stepper motor.
 * Limit switches to attach to the brackets
 
 <!-- Each gantry can be given a reference [frame](/services/frame-system/) in the configuration that describes its translation and orientation to the world. -->
@@ -36,9 +33,9 @@ A gantry in Viam requires the following:
 
 ## Configuration
 
-### Single-Axis Gantry Attributes
+### Attributes of a Single-Axis Gantry
 
-The attributes are configured as such for a single-axis gantry:
+For a single-axis gantry, the attributes for configuration are:
 
 <table>
   <tr>
