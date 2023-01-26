@@ -13,6 +13,7 @@ The Viam servo component is designed to support hobby servos, not servomotors.
 
 Hobby servos are a type of [actuator](https://en.wikipedia.org/wiki/Actuator).
 A hobby servo consists of a small motor with built-in closed-loop control.
+
 - Configure an industrial servomotor as a [motor](/components/motor/) with an [encoder](/components/encoder/).
 
 Most robots with a servo will need at least the following hardware:
@@ -76,19 +77,16 @@ Refer to the following example configuration file, including the board and servo
 
   - `pi` is the recommended model when configuring a hobby servo wired to a Raspberry Pi.
   Unlike other servo models, it is implemented as part of the `pi` board component; [you can see the code here](https://github.com/viamrobotics/rdk/blob/main/components/board/pi/impl/servo.go).
-
   - `gpio` is the general-purpose model, compatible with Viam-supported boards.
-
   - `fake` is for testing code without any actual hardware.
 
 **Required Attributes**: 
 
 In addition to the required fields, all servo models require the following `attributes` to be defined in your configuration:
 
-  - `pin` (string): The board pin (with PWM capabilities) to which the servo's control wire is attached.
-  Use pin number, not GPIO number.
-
-  - `board` (string): The name of the board to which the servo is wired.
+- `pin` (string): The board pin (with PWM capabilities) that the servo's control wire is attached to.
+Use the pin number, not the GPIO number.
+- `board` (string): The name of the board to which the servo is wired.
 
 **Optional Attributes**:
 
@@ -210,9 +208,12 @@ func main() {
 Move the servo to the desired angle in degrees.
 
 {{% alert title="Note" color="note" %}}
-If you are using a continuous rotation servo, you can still use the Move command. Please note that instead of moving to a given position, the servo will start moving at a set speed.
 
-The speed will be related to the "angle" you pass in as a linear approximation, but you will need to determine based on your own hardware which "angle" represents your desired speed.
+If you are using a continuous rotation servo, you can still use the Move command.
+Please note that instead of moving to a given position, the servo will start moving at a set speed.
+
+The speed will be related to the "angle" you pass in as a linear approximation, but you will need to determine from your hardware which "angle" represents your desired speed.
+
 {{% /alert %}}
 
 {{< tabs >}}
@@ -225,6 +226,7 @@ The speed will be related to the "angle" you pass in as a linear approximation, 
 - `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
   
 **Returns:**
+
 - None
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.move).
