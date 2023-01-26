@@ -10,7 +10,7 @@ icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
 This page explains how to set up a generic sensor component with Viam.
-Viam has a few types of sensor implemented including an ultrasonic sensor, temperature sensors and more, but this doc covers setting up a custom sensor so you can build a robot using almost any sort of sensor.
+Viam has a few types of sensor implemented including an ultrasonic sensor, and certain temperature sensors, but this doc covers setting up a custom sensor so you can build a robot using almost any sort of sensor.
 
 {{% alert title="Note" color="note" %}}
 
