@@ -156,7 +156,7 @@ You can find more information on the `mode` in the description of the integrated
 | ---- | --------- | ----------- |
 | `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. |
 | `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in live mode. If the array is empty, SLAM runs in offline mode. |
-| `use_live_data` |  bool | This specifies whether to run in online mode (true) or offline mode (false). If `use_live_data: true` and `sensors: []`, an error will be thrown. If this parameter is set to true and no sensors are provided, SLAM will produce an error. |
+| `use_live_data` |  bool | This specifies whether to run in live mode (true) or offline mode (false). If `use_live_data: true` and `sensors: []`, an error will be thrown. If this parameter is set to true and no sensors are provided, SLAM will produce an error. |
 
 #### Optional Attributes
 
