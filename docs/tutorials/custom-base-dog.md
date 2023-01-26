@@ -74,7 +74,7 @@ If the name of the directory where you store and run your code is different, be 
 
 {{% /alert %}}
 
-1. Check which version of Python you have installed on the Pi:
+6. Check which version of Python you have installed on the Pi:
 
     ```bash
     python --version
@@ -82,30 +82,30 @@ If the name of the directory where you store and run your code is different, be 
 
     If it isn’t Python 3.8 or later, be sure to install an updated version of Python (and double-check that you're running the latest Raspberry Pi OS too).
 
-2. Install the [Viam Python SDK](https://python.viam.dev/):
+7. Install the [Viam Python SDK](https://python.viam.dev/):
 
     ```bash
     pip install viam-sdk
     ```
 
-3. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
+8. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
 
-4. Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of 24 January 2023).
+9. Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of 24 January 2023).
 
-5. Install smbus so that the servo code works:
+10. Install smbus so that the servo code works:
 
     ```bash
     sudo apt-get install python3-smbus
     ```
 
-6. Follow Chapter 1, Step 3 (page 42 as of 24 January 2023) of the Freenove tutorial to complete the software installation:
+11. Follow Chapter 1, Step 3 (page 42 as of 24 January 2023) of the Freenove tutorial to complete the software installation:
 
     ```bash
     cd /home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code
     sudo python setup.py
     ```
 
-7. Restart the Raspberry Pi:
+12. Restart the Raspberry Pi:
 
     ```bash
     sudo reboot
