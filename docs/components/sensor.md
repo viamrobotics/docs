@@ -83,4 +83,4 @@ readings, err := ultra.Readings(context.Background())
 {{% /tab %}}
 {{< /tabs >}}
 
-You can read more about sensor implementation in the [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/sensor/index.html) or the [Go RDK Documentation](https://pkg.go.dev/go.viam.com/rdk).
+You can read more about sensor implementation in the [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/sensor/index.html) or the [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk).
