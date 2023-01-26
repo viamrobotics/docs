@@ -204,7 +204,11 @@ To configure one or more new Wifi connections on the Raspberry Pi, plug your Pi'
 
 Paste the following example into the file, replacing "<Name of your wireless LAN>" and "<Password for your wireless LAN>" with your credentials. Be sure to use UNIX (LF) line breaks in your text editor.
 
-Save the file and eject the microSD card. Put the microSD card back into the Pi and boot it. The `wpa_supplicant.conf` file will be read by the Pi on boot, and the file will disappear but the Wifi credentials will be updated.
+3. Save the file and eject the microSD card. 
+
+4. Put the microSD card back into the Pi and boot the Pi. 
+
+    The `wpa_supplicant.conf` file will be read by the Pi on boot, and the file will disappear but the Wifi credentials will be updated.
 
 You can duplicate the “network” section to add additional wifi networks (for example your work, and your home). The "priority" attribute is optional and can be used to prioritize networks if multiple networks are configured (with higher numbers being prioritized).
 
