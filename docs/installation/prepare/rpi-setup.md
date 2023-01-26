@@ -192,7 +192,6 @@ sudo reboot
 
 ## Adding additional Wifi credentials
 
-
 If you move your robot to a different Wifi network, you will have to update the Wifi credentials.
 
 You can update the Wifi configuration by creating a new `wpa_supplicant.conf` file on the “boot” partition.
