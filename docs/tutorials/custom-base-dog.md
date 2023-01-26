@@ -285,11 +285,11 @@ Configure it like this:
 - **Arguments**: none
 - **Command**: `python python_server.py`
 
-Paste the following into the process config field, replacing `/home/fido/RobotDog/python-server.py` with the correct path to your <file>python-server.py</file> file (i.e., your username in place of "fido"):
+Click **Save Config** at the bottom of the window.
 
 ![Screenshot of the Processes sub-tab of the Config tab, showing two processes configured as detailed above.](../img/custom-base-dog/process-config.png)
 
-{{% expand "Click to view raw JSON" %}}
+{{% expand "Click to see what the processes config will look like in Raw JSON mode." %}}
 
 ```json
 "processes": [
