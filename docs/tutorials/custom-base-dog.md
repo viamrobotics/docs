@@ -10,7 +10,6 @@ description: "How to integrate a custom base component with the Viam Python SDK.
 
 The [base component type](/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
 
-
 Viam natively supports a wheeled base model, but if you have a quadruped or other form of rover that isn't compatible with the wheeled model, you have two options:
 
 1. Use Viam's Go SDK to [create a custom component as a modular resource](/program/extend/modular-resources/).
@@ -36,65 +35,67 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 
 Freenove provides a lot of information about how to set up and use a Raspberry Pi in chapters 0 and 1 of their tutorial, some of which overlaps with Viam setup guides, so to avoid confusion, here’s all you need to do for the purposes of this tutorial:
 
-Follow the steps in our [Raspberry Pi Setup Guide](/installation/rpi-setup/) to install Raspberry Pi OS Lite (64 bit).
+1. Follow the steps in our [Raspberry Pi Setup Guide](/installation/rpi-setup/) to install Raspberry Pi OS Lite (64 bit).
 
 {{% alert title=Note color="note" %}}
-If you choose to install the full Raspberry Pi OS (64 bit) including the desktop environment and recommended software (as Freenove instructs in Chapter 0 of their tutorial), that will also work; set up viam-server in the same way on the **SETUP** tab once you have the Pi OS installed.
+
+If you choose to install the full Raspberry Pi OS (64 bit) including the desktop environment and recommended software (as Freenove instructs in Chapter 0 of their tutorial), that will also work.
+
 {{% /alert %}}
 
-Then [install viam-server and connect your robot to the Viam app](/installation/install/).
+2. [Install viam-server and connect your robot to the Viam app](/installation/install/).
 
-SSH into the Pi to complete the following steps.
+3. SSH into the Pi to complete the following steps.
 
-Install pip and then git:
+4. Install pip and then git:
 
-```bash
-sudo apt install pip
-sudo apt install git
-```
+    ```bash
+    sudo apt install pip
+    sudo apt install git
+    ```
 
-Install the Freenove robot dog code by running the following command from the home directory of the Pi:
+5. Install the Freenove robot dog code by running the following command from the home directory of the Pi:
 
-```bash
-git clone https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi
-```
+    ```bash
+    git clone https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi
+    ```
 
-Check which version of Python you have installed on the Pi:
+6. Check which version of Python you have installed on the Pi:
 
-```bash
-python --version
-```
+    ```bash
+    python --version
+    ```
 
-If it isn’t Python 3.8 or later, be sure to install an updated version of Python.
+    If it isn’t Python 3.8 or later, be sure to install an updated version of Python.
 
-Install the [Viam Python SDK](https://python.viam.dev/):
+7. Install the [Viam Python SDK](https://python.viam.dev/):
 
-```bash
-pip install viam-sdk
-```
+    ```bash
+    pip install viam-sdk
+    ```
 
-Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
+8. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
 
-Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of 24 January 2023).
+9. Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of 24 January 2023).
 
-Install smbus so that the servo code works:
+10. Install smbus so that the servo code works:
 
-```bash
-sudo apt-get install python3-smbus
-```
+    ```bash
+    sudo apt-get install python3-smbus
+    ```
 
-Follow Chapter 1, Step 3 (page 42 as of 24 January 2023) of the Freenove tutorial to complete the software installation:
+11. Follow Chapter 1, Step 3 (page 42 as of 24 January 2023) of the Freenove tutorial to complete the software installation:
 
-```bash
-cd ~/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code
-sudo python setup.py
-```
+    ```bash
+    cd ~/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code
+    sudo python setup.py
+    ```
 
-Restart the Raspberry Pi:
+12. Restart the Raspberry Pi:
 
-```bash
-sudo reboot
-```
+    ```bash
+    sudo reboot
+    ```
 
 ## Hardware setup
 
@@ -133,7 +134,7 @@ Save the file.
 
 ### Find IP address
 
-Go to the robot page (on the Viam app) for your robot dog that you set up when installing viam-server on the Pi.
+Go to the [robot page](https://app.viam.com/robots) for your robot dog that you created when installing viam-server on the Pi.
 
 In the banner towards the top of the page, the IP address of the robot dog Pi is displayed under **ips**.
 Copy the IP into the `dog_test.py` file in place of `PASTE DOG IP ADDRESS HERE`.
@@ -258,7 +259,12 @@ Configure the ribbon camera on the dog as a `webcam`, following our [Configure a
 
 ## Start the servers
 
-The Freenove robot dog server (which we saved as `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py`) and then the custom component server (`/home/fido/RobotDog/python-server.py`) must be started in order for the custom base component to be supported so that you can drive it from the Viam app.
+To operate the dog, you need to start the two servers in order:
+
+- First, the Freenove robot dog server (which you saved as `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py`).
+- Then, the custom component server (`/home/fido/RobotDog/python-server.py`).
+  This one must be started second because it sends requests to the Freenove dog server, so it will throw errors if it can't find that server when it tries to start.
+
 You have two options for starting the servers: automatic or manual.
 
 ### Option 1: Configure processes to automatically start the servers on boot
@@ -309,6 +315,12 @@ Click **Save Config** at the bottom of the window.
 
 {{% /expand %}}
 
+{{% alert title="Note" color="note" %}}
+
+We added a 5 second time delay to the [<file>python_server.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/python_server.py#L15) code so that even though these two processes will start simultaneously, there will be time for the Freenove server to start up before the custom component server starts sending requests to it.
+
+{{% /alert %}}
+
 ### Option 2: Start the processes manually from the command line
 
 If you prefer, you can start the processes manually from command terminals on the Pi.
@@ -325,8 +337,6 @@ Start the custom component server by running:
 ```bash
 python python_server.py
 ```
-
-It is important to start the custom component server *after* the Freenove server because the custom component server is a client of the Freenove server.
 
 ## Driving the robot from the Viam app
 
@@ -350,7 +360,7 @@ Depending on the speed of your server connection, you may need to hold down the 
 
 If your servos aren't moving as expected or at all, try turning the whole robot off for a while to let them cool down.
 
-If you want to send commands directly to the dog server instead of running `my_robot_dog.py` (which may be helpful for debugging specific commands) you can do the following:
+If you want to send commands directly to the dog server instead of running `my_robot_dog.py` (which may be helpful for debugging specific commands, especially if you're adding your own functionality and need to calibrate servo speeds/positions) you can do the following:
 
 1. Install Netcat if it isn't already installed:
 
