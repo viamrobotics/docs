@@ -341,7 +341,7 @@ if err != nil {
 }
 
 // Get the end position of the arm as a Pose. 
-err, pos := myArm.EndPosition(context.Background())
+err, pos := myArm.EndPosition(context.Background(), nil)
 
 // Log any errors that occur. 
 if err != nil {
@@ -419,7 +419,7 @@ if err != nil {
 examplePose = []float64{x: 5, y: 5, z: 5, o_x: 5, o_y: 5, o_z: 5, theta:20}
 
 // Move your arm to the Pose. 
-myArm.MoveToPosition(context.Background(), pose: examplePose, referenceframe.WorldState())
+myArm.MoveToPosition(context.Background(), pose: examplePose, referenceframe.WorldState(), nil)
 ```
 
 {{% /tab %}}
@@ -493,7 +493,7 @@ degrees := []float64{4.0, 5.0, 6.0}
 jointPos := componentpb.JointPositions{Values= degrees}
 
 // Move each joint of the arm to the position these values specify.
-myArm.MoveToJointPositions(context.Background(), jointPos)
+myArm.MoveToJointPositions(context.Background(), jointPos, nil)
 ```
 
 {{% /tab %}}
@@ -548,7 +548,7 @@ if err != nil {
 }
 
 // Get the current position of each joint on the arm as JointPositions. 
-pos, err := myArm.GetJointPositions(context.Background())
+pos, err := myArm.GetJointPositions(context.Background(), nil)
 
 // Log any errors that occur. 
 if err != nil {
@@ -606,7 +606,7 @@ if err != nil {
 }
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
-myArm.Stop(context.Background())
+myArm.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -660,7 +660,7 @@ if err != nil {
 }
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
-myArm.Stop(context.Background())
+myArm.Stop(context.Background(), nil)
 
 // Log if the arm is currently moving.
 is_moving, err := myArm.IsMoving(context.Background())
