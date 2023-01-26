@@ -60,44 +60,52 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
     sudo apt install git
     ```
 
-5. Install the Freenove robot dog code by running the following command from the home directory of the Pi:
+5. Navigate to the directory on the Pi where you'd like to install the Freenove robot dog code (for example `/home/fido/`).
+Install the code by running the following command:
 
     ```bash
     git clone https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi
     ```
 
-6. Check which version of Python you have installed on the Pi:
+{{% alert title="Note" color="note" %}}
+
+This tutorial uses `/home/fido/` as an example home directory in various example filepaths and code snippets.
+If the name of the directory where you store and run your code is different, be sure to use the correct filepath when running these commands.
+
+{{% /alert %}}
+
+1. Check which version of Python you have installed on the Pi:
 
     ```bash
     python --version
     ```
 
-    If it isn’t Python 3.8 or later, be sure to install an updated version of Python.
+    If it isn’t Python 3.8 or later, be sure to install an updated version of Python (and double-check that you're running the latest Raspberry Pi OS too).
 
-7. Install the [Viam Python SDK](https://python.viam.dev/):
+2. Install the [Viam Python SDK](https://python.viam.dev/):
 
     ```bash
     pip install viam-sdk
     ```
 
-8. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
+3. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
 
-9. Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of 24 January 2023).
+4. Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of 24 January 2023).
 
-10. Install smbus so that the servo code works:
+5. Install smbus so that the servo code works:
 
     ```bash
     sudo apt-get install python3-smbus
     ```
 
-11. Follow Chapter 1, Step 3 (page 42 as of 24 January 2023) of the Freenove tutorial to complete the software installation:
+6. Follow Chapter 1, Step 3 (page 42 as of 24 January 2023) of the Freenove tutorial to complete the software installation:
 
     ```bash
-    cd ~/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code
+    cd /home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code
     sudo python setup.py
     ```
 
-12. Restart the Raspberry Pi:
+7. Restart the Raspberry Pi:
 
     ```bash
     sudo reboot
@@ -160,7 +168,7 @@ In one terminal, SSH into the Pi using the username and hostname you set up when
 ssh fido@robotdog.local
 ```
 
-Navigate to the `~/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` directory.
+Navigate to the `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` directory.
 
 Start the robot dog server by running:
 
