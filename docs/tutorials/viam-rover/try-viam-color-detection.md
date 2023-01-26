@@ -159,4 +159,4 @@ You have learned how to configure a color detector with the vision service, and 
 If you are ready to continue tinkering with your rental rover, head to our ["How to use the Viam SDK to control your Viam Rover" tutorial](/tutorials/viam-rover/try-viam-sdk/).
 In that tutorial, we will introduce you to the Viam SDK (software development kit) so that you can write code in either Python or Golang to make your Viam Rover move in a square.
 
-If you want to connect with other developers learning how to build robots or if you have any issues whatsoever during Try Viam experience, let us know on the [Viam Community Slack](http://viamrobotics.slack.com/), and we will be happy to help you get up and running.
+If you want to connect with other developers learning how to build robots or if you have any issues whatsoever during Try Viam experience, let us know on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/), and we will be happy to help you get up and running.

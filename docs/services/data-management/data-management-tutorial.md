@@ -184,4 +184,4 @@ You could use your data to track your robot's usage over time, and even build da
 If you are ready to start building your own robots with Viam, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](/tutorials/).
 You can also purchase your very own Viam Rover at <a href="https://www.viam.com/resources/rover" target="_blank">viam.com/resources/rover</a>.
 
-If you have any issues or if you want to connect with other developers learning how to build robots with Viam, head over to the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>.
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, head over to the <a href="https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw" target="_blank">Viam Community Slack</a>.

@@ -22,10 +22,8 @@ Try Viam is a way you can try out the platform without setting up any hardware y
 ## My robot had an error, a system crash, or is physically stuck
 
 1. The timer does not stop at any time.
-2. Notify support via our Community Slack[^cs].
+2. Notify support via [our Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
 3. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your Location. Refer to [Managing Locations and sub-locations](/program/app-usage/#managing-locations-and-sub-locations) in the **Using the Viam App** topic.
-
-[^cs]: Viam Support on Slack: [(ht<span></span>tps://viamrobotics.slack.com/archives/C042LE6LWQ6)](https://viamrobotics.slack.com/archives/C042LE6LWQ6)
 
 ## Can I extend my time?
 

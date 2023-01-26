@@ -43,7 +43,7 @@ We recommend that you follow along with the [Installing Viam Server on Raspberry
 Be sure to follow all the steps including [adding your Pi on the Viam app.](/installation/install/linux-install/)
 
 {{% alert title="Tip" color="tip" %}}
-If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>, and we will be happy to help you get up and running.
+If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the <a href="https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw" target="_blank">Viam Community Slack</a>, and we will be happy to help you get up and running.
 {{% /alert %}}
 
 ## Building the circuit
@@ -56,7 +56,7 @@ The resistor is used to limit the current that is being drawn and is called a *c
 
 ### GPIO Pinout
 
-*General-purpose input/output* (GPIO) is a digital signal <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">pin</a>[^pin] on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
+*General-purpose input/output* (GPIO) is a digital signal [pin](https://en.wikipedia.org/wiki/Pin_(electronics)) on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
 
 <img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image10.png" alt="Photo showing a Raspberry Pi 4 with a white box around the GPIO pins on the Pi and big red letters that say, 'GPIO Pins.'" width="100%"><br>
 
@@ -76,7 +76,7 @@ Then there's numbering them by function or GPIO connection.
 These are the big numbers, e.g. "GPIO 22".
 These numbers are helpful for understanding the function of each pin.
 
-When in doubt, the website <a href="https://pinout.xyz/" target="_blank">pinout.xyz</a>[^pinout] is useful for identifying pins.
+When in doubt, the website [pinout.xyz](https://pinout.xyz/) is useful for identifying pins.
 It gives you the exact layout and role of each pin.
 
 ### Circuit explanation
@@ -145,7 +145,7 @@ We recommend that you check out the next part in this series, [How to Make an LE
 
 If you are looking for some more projects that would be a great next step in your robotics journey, check out our other [tutorials](/tutorials/).
 
-If you want to connect with other developers learning how to build robots or if you have any issues whatsoever getting Viam set up, let us know on the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>[^slack], and we will be happy to help you get up and running.
+If you want to connect with other developers learning how to build robots or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw), and we will be happy to help you get up and running.
 
 ## Hardware URL list
 
@@ -157,7 +157,3 @@ If you want to connect with other developers learning how to build robots or if 
     <li>Red LED: <a href="http://amzn.to/2Ex2v5q" target="_blank">ht<span></span>tp://amzn.to/2Ex2v5q</a></li>
     <li>Multimeter (optional): <a href="http://amzn.to/2qWurxS" target="_blank">ht<span></span>tp://amzn.to/2qWurxS</a></li>
 </ul>
-
-[^pin]: <a href="https://en.wikipedia.org/wiki/Pin_(electronics)" target="_blank">Wikipedia: htt<span></span>ps://en.wikipedia.org/wiki/Pin_electronics</a>
-[^pinout]: <a href="https://pinout.xyz/" target="_blank">Pinout: pinout.xyz</a>
-[^slack]: <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack: ht<span></span>tp://viamrobotics.slack.com</a>

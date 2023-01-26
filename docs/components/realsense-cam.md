@@ -9,9 +9,7 @@ tags: ["camera", "realsense camera", "components"]
 ---
 There are two ways to add your intel RealSense camera to Viam. You can either use a gRPC server or an HTTP server.
 
-You can find the source code for these servers in the <a href="https://github.com/viamrobotics/camera-servers" target="_blank">Viam Robotics repo</a>[^camserve]
-
-[^camserve]:Camera serve source code:  <a href="https://github.com/viamrobotics/camera-servers" target="_blank">ht<span></span>tps://github.com/viamrobotics/camera-servers</a>
+You can find the source code for these servers in the [Viam Robotics repo](https://github.com/viamrobotics/camera-servers).
 
 ## Using the gRPC Server
 

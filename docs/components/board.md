@@ -11,10 +11,7 @@ icon: "img/components/board.png"
 
 In the Viam framework, a **board** is the signal wire hub of a robot.
 It sends signals to the other hardware components, and may or may not also act as the software hub, running an instance of the Viam server on its CPU.
-Boards have general purpose input/output (GPIO) pins through
-which they can transmit <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">PWM</a>[^pwm] and other signals.
-
-[^pwm]:PWM (Pulse Width Modulation): <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Pulse-width_modulation</a>
+Boards have general purpose input/output (GPIO) pins through which they can transmit [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation) and other signals.
 
 Some examples of boards include Raspberry Pi, BeagleBone, and Jetson.
 These are all single-board computers (SBCs) capable of advanced computation, including running the Viam server.
@@ -23,7 +20,7 @@ These all come with built-in GPIO pins.
 Another type of board is a GPIO peripheral such as a Numato GPIO Module, which cannot run the Viam server itself, but can take input from another computer running Viam and communicate with other hardware components.
 Note that a desktop computer does not typically have GPIO pins, so it cannot act as a board without a GPIO peripheral.
 
-<img src="../img/board/board-comp-options.png" alt="Image showing two board options: First, running the Viam Server locally and second, running via a peripheral plugged into the USB port of a computer that is running the Viam Server.">
+![Image showing two board options: First, running the Viam Server locally and second, running via a peripheral plugged into the USB port of a computer that is running the Viam Server.](../img/board/board-comp-options.png)
 
 *Figure 1. Two different board options: SBC with GPIO pins running Viam server locally; or GPIO peripheral plugged into a computer's USB port, with the computer running Viam server.*
 
@@ -274,12 +271,10 @@ The following are brief descriptions of each protocol Viam supports, as well as 
 
 ### SPI Bus
 
-<a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface" target="_blank">Serial Peripheral Interface (SPI)</a>[^spi] uses several pins for serial communication: main out/serial in (MOSI); main in/serial out (MISO); SCLK which is a clock for serial communication; and chip enable (also called chip select) pins.
+[Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) uses several pins for serial communication: main out/serial in (MOSI); main in/serial out (MISO); SCLK which is a clock for serial communication; and chip enable (also called chip select) pins.
 If you are using a Raspberry Pi, the “built-in” chip select pins are labeled CE0 and CE1 on the pinout sheet.
 The required connections between corresponding board pins and peripheral device pins must be wired, but each of these pins does not need to be specified in the config as most boards have them configured by default.
 Only the index of the entire bus must be specified.
-
-[^spi]:Serial Peripheral Interface (SPI):  <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Serial_Peripheral_Interface</a>
 
 #### Configuration
 
@@ -310,8 +305,7 @@ Some boards that support I2C have the SDA and SCL pins configured by default, so
 For example, if you use I2C bus 1 on a Raspberry Pi 4, SDA and SCL will be pins 3 and 5, respectively.
 You will also need to enable I2C on your board if it is not enabled by default.
 Review the [instructions in our documentation](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi) to learn how to enable I2C on a Raspberry Pi 4.
-<a href="https://pinout.xyz/pinout/i2c" target="_blank">Pinout.xyz</a>[^pocom] has additional information about I2C on Raspberry Pi.
-[^pocom]:I2C - Inter Integrated Circuit on Pinout.xyz:  <a href="https://pinout.xyz/pinout/i2c" target="_blank">ht<span></span>tps://pinout.xyz/pinout/i2c</a>
+[Pinout.xyz](https://pinout.xyz/pinout/i2c) has additional information about I2C on Raspberry Pi.
 
 #### Configuration
 
