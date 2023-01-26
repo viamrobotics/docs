@@ -192,7 +192,13 @@ sudo reboot
 
 ## Adding additional Wifi credentials
 
-As you flash your Pi, you are being prompted to configure your Wifi credentials. If you move your robot to a different location, you will have to change the Wifi that it is connected to. In this case, you can simply update the configuration by creating a new wpa_supplicant.conf file on the “boot” partition. The steps are explained below.
+As you flash your Pi, you are prompted to configure your Wifi credentials.
+
+If you move your robot to a different location, you will have to update the Wifi credentials.
+
+You can update the wifi configuration by creating a new wpa_supplicant.conf file on the “boot” partition.
+
+The steps are explained below.
 
 To configure one or more new Wifi connections on the Raspberry Pi, plug your Pi's microSD card into your computer. Create a text file called `wpa_supplicant.conf`, and make sure to have the text file in Plain Text format and not Rich Text format.
 
