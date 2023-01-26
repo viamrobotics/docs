@@ -201,7 +201,7 @@ The steps are explained below.
 
 1. Plug your Pi's microSD card into your computer and create a plain text file called `wpa_supplicant.conf`.
 
-2. Paste the following example into the file, replacing "<Name of your wireless LAN>" and "<Password for your wireless LAN>" with your credentials. Be sure to use UNIX (LF) line breaks in your text editor.
+2. Paste the following example into the file, replacing "Name of your wireless LAN" and "Password for your wireless LAN" with your credentials. Be sure to use UNIX (LF) line breaks in your text editor.
 
 3. Save the file and eject the microSD card. 
 
