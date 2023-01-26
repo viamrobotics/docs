@@ -193,7 +193,7 @@ The arm component supports the following methods:
 [python_move_to_joint_positions]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.move_to_joint_positions
 [python_get_joint_positions]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_joint_positions
 [python_stop]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.stop
-[python_is_moving]: https://google.com
+[python_is_moving]: https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.is_moving
 
 ### Control your Arm with Viam's Client SDK Libraries
 
@@ -241,6 +241,7 @@ if __name__ == '__main__':
 
 ```go
 import (
+  "context"
   "go.viam.com/rdk/components/arm"
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/spatialmath"
@@ -296,7 +297,8 @@ Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- None
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -305,7 +307,7 @@ The `Pose` is composed of values for location and orientation with respect to th
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_end_position).
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_end_position).
 
 ```python
 myArm = Arm.from_robot(robot=robot, name='my_arm')
@@ -352,7 +354,7 @@ if err != nil {
 
 ### MoveToPosition
 
-Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose).
+Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose), relative to the base of the arm.
 Plan for the arm to avoid obstacles and comply with the constraints for movement specified in [(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState).
 
 {{< tabs >}}
@@ -367,12 +369,14 @@ Orientation is expressed as an orientation vector, which is represented by o_x, 
 - `world_state`[(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState): Obstacles that the arm must avoid while it moves from its original position to the position specified in `pose`.
 A `WorldState` can include a variety of attributes, including a list of obstacles around the object (`obstacles`), a list of spaces the robot may operate within (`interaction_spaces`), and a list of supplemental transforms (`transforms`).
 These fields are optional.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
 - None
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_to_position).
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.move_to_position).
 
 ```python
 myArm = Arm.from_robot(robot=robot, name='my_arm')
@@ -425,6 +429,12 @@ myArm.MoveToPosition(context.Background(), pose: examplePose, referenceframe.Wor
 
 Move each joint on the arm to the position specified in `positions`.
 
+{{% alert title="Note" color="note" %}}
+
+Collision checks are not enabled when doing direct joint control with MoveToJointPositions().
+
+{{% /alert %}}
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -432,12 +442,14 @@ Move each joint on the arm to the position specified in `positions`.
 
 - `positions` [(JointPositions)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions): The desired position of each joint of the arm at the end of movement.
 JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
 - None
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_to_joint_positions)
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.move_to_joint_positions)
 
 ```python
 myArm = Arm.from_robot(robot=robot, name='my_arm')
@@ -496,14 +508,15 @@ Get the current position of each joint on the arm.
 
 **Parameters:**
 
-- None
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
   
 **Returns:**
 
 - `positions` [(JointPositions)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions): The position of each joint of the arm.
 JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_joint_positions)
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_joint_positions)
 
 ```python
 myArm = Arm.from_robot(robot=robot, name='my_arm')
@@ -556,13 +569,14 @@ Stop all motion of the arm.
 
 **Parameters:**
 
-- None
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
   
 **Returns:**
 
 - None
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.stop).
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.stop).
 
 ```python
 myArm = Arm.from_robot(robot=robot, name='my_arm')
@@ -593,6 +607,67 @@ if err != nil {
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 myArm.Stop(context.Background())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### IsMoving
+
+Get if the arm is currently moving.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+  
+**Returns:**
+
+- `is_moving` [(bool)](https://docs.python.org/c-api/bool.html): If it is true or false that the arm is currently moving.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.is_moving).
+
+```python
+myArm = Arm.from_robot(robot=robot, name='my_arm')
+
+# Stop all motion of the arm. It is assumed that the arm stops immediately.
+await myArm.stop()
+
+# Print if the arm is currently moving.
+print(myArm.is_moving())
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- `is_moving` [(bool)](https://pkg.go.dev/builtin#bool): If it is true or false that the arm is currently moving.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+```go
+myArm, err := arm.FromRobot(robot, "my_arm")
+if err != nil {
+  logger.Fatalf("cannot get arm: %v", err)
+}
+
+// Stop all motion of the arm. It is assumed that the arm stops immediately.
+myArm.Stop(context.Background())
+
+// Log if the arm is currently moving.
+is_moving, err := myArm.IsMoving(context.Background())
+if err != nil {
+  logger.Fatalf("cannot get if arm is moving: %v", err)
+}
+logger.Info(is_moving)
 ```
 
 {{% /tab %}}
