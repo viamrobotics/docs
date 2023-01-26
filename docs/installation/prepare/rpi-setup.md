@@ -192,7 +192,6 @@ sudo reboot
 
 ## Adding additional Wifi credentials
 
-As you flash your Pi, you are prompted to configure your Wifi credentials.
 
 If you move your robot to a different Wifi network, you will have to update the Wifi credentials.
 
