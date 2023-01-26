@@ -174,7 +174,8 @@ If the dog walks forward for a few seconds and then stops, we were successfully 
 Hurray!
 Continue on to implement the base.
 
-If the robot dog did not respond, double check your IP address, make sure the robot dog server is still running, and make sure the robot has adequate power. You can also try turning the robot off and on again, and then retrying the process.
+If the robot dog did not respond, double check your IP address, make sure the robot dog server is still running, and make sure the robot has adequate power.
+You can also try turning the robot off and on again, and then retrying the process.
 
 ## Implement the custom base code
 
@@ -192,10 +193,196 @@ In other words, you need a script that defines what each base component method (
 Take a look at [<file>my_robot_dog.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/my_robot_dog.py).
 It creates a "RobotDog" model of the base component type, and defines the `set_power`, `stop`, `is_moving`, and `do` methods by specifying which corresponding commands to send to the Freenove dog server when each of these methods is called.
 Feel free to tweak the specific contents of each of these method definitions, and add support for other base methods like `spin`.
+You can [read about the base API here](/components/base/#api).
 
 Save [<file>my_robot_dog.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/my_robot_dog.py) into the <file>RobotDog</file> directory you created.
 
 ### Register the custom component
 
+Now that the methods for the custom component are defined, you need to make your custom component available to any robots trying to connect to it.
+
 Save [<file>python_server.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/python_server.py) into the <file>RobotDog</file> directory.
-The <file>python_server.py</file> file registers the custom component so robots can connect to it.
+The <file>python_server.py</file> file creates an RPC server that forwards gRPC requests from viam-server (or elsewhere) to the custom component.
+
+## Configure the custom component server as a remote
+
+You need to tell your robot how to access the custom component server you created.
+This is accomplished by configuring the custom component server as a *remote*.
+
+Back over on the [Viam app](https://app.viam.com), go to your robot's **CONFIG** tab.
+Click the **REMOTES** sub-tab.
+Name your remote "my-custom-base" and click **Create Remote**.
+In the **Address** field put `localhost: 9090`.
+Click **Save Config** at the bottom of the page.
+
+<img src="../img/custom-base-dog/remote-config.png" alt="Screenshot of the Viam app Config tab with the Remotes sub-tab open, showing my-custom-base configured as a remote." width=80% >
+
+{{% alert title="Note" color="note" %}}
+
+As noted in [the Python SDK documentation](https://python.viam.dev/), when you call srv.serve(), the default host and port is localhost:9090.
+This can be changed by passing in a host and/or port parameter to the serve function.
+
+{{% /alert %}}
+
+## Configure the components
+
+Now that the custom base code is set up, we need to configure all our hardware components.
+Navigate to the **COMPONENTS** sub-tab of the **CONFIG** tab.
+
+### Configure the board
+
+The board component represents the Raspberry Pi.
+
+In the **Create Component** field, give your [board](/components/board/) a name.
+We called ours "local".
+In the **Type** drop-down select `board`.
+In the **Model** drop-down select `pi`.
+Click **Create Component**.
+
+No attributes are needed for the board.
+
+### Configure the base
+
+In the **Create Component** field, give your base a name.
+We called ours "quadruped".
+In the **Type** drop-down select `base`.
+In the **Model** field, manually type in "RobotDog".
+Click **Create Component**.
+
+We don't need to add any attributes to the base component.
+
+In the **Depends On** field select "local" (or whatever you named your board).
+
+Click **Save Config**.
+
+### Configure the camera
+
+Configure the ribbon camera on the dog as a `webcam`, following our [Configure a Camera](/components/camera/configure-a-camera/) tutorial.
+
+## Start the servers
+
+The Freenove robot dog server (which we saved as `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py`) and then the custom component server (`/home/fido/RobotDog/python-server.py`) must be started in order for the custom base component to be supported so that you can drive it from the Viam app.
+You have two options for starting the servers: automatic or manual.
+
+### Option 1: Configure processes to automatically start the servers on boot
+
+Click the **PROCESSES** sub-tab of the **CONFIG** tab.
+
+Create a new process called "1st" (or whatever you like).
+This process will start the Freenove robot dog server so it is ready to receive commands from the custom component server.
+Fill out the config panel as follows:
+
+- **Working Directory**: `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` (changing "/home/fido" to the name of your home directory where you downloaded the Freenove code)
+- **Logging**: Toggle to the on position so you can view logs for this server process
+- **Arguments**: `-tn` so that the Freenove server starts without launching their GUI
+- **Command**: `python main.py`
+
+Create a second process to start the custom component server.
+Configure it like this:
+
+- **Working Directory**: `/home/fido/RobotDog` (changing "/home/fido" to the correct path)
+- **Logging**: Toggle to the on position so you can view logs for this server process
+- **Arguments**: none
+- **Command**: `python python_server.py`
+
+Paste the following into the process config field, replacing `/home/fido/RobotDog/python-server.py` with the correct path to your <file>python-server.py</file> file (i.e., your username in place of "fido"):
+
+![Screenshot of the Processes sub-tab of the Config tab, showing two processes configured as detailed above.](../img/custom-base-dog/process-config.png)
+
+{{% expand "Click to view raw JSON" %}}
+
+```json
+"processes": [
+    {
+      "log": true,
+      "name": "python main.py",
+      "id": "1st",
+      "cwd": "/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server",
+      "args": "-tn"
+    },
+    {
+      "args": "",
+      "id": "2nd",
+      "log": true,
+      "name": "python python_server.py",
+      "cwd": "/home/fido/RobotDog"
+    }
+  ]
+```
+
+{{% /expand %}}
+
+### Option 2: Start the processes manually from the command line
+
+If you prefer, you can start the processes manually from command terminals on the Pi.
+
+First, from the `/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/` directory start the Freenove robot dog server:
+
+```bash
+sudo python main.py -tn
+```
+
+Then, open another terminal, SSH to the Pi, and navigate to the directory where you saved your custom Viam component code (for example, `/home/fido/RobotDog/`).
+Start the custom component server by running:
+
+```bash
+python python_server.py
+```
+
+It is important to start the custom component server *after* the Freenove server because the custom component server is a client of the Freenove server.
+
+## Driving the robot from the Viam app
+
+Navigate to the **CONTROL** tab.
+
+Click the **my-custom-base:my-robot-dog** component panel to expand it and reveal the controls.
+
+![Screenshot of the Control tab with the custom base card expanded to reveal arrow control buttons.](../img/custom-base-dog/control-tab.png)
+
+Use the **W**, **A**, **S** and **D** buttons to make the robot walk forward, turn left, walk backward or turn right.
+Toggle the **Keyboard Disabled** switch to **Keyboard Enabled** to use the WASD keys on your keyboard.
+Enable the camera stream from the **Select Cameras** drop-down.
+
+{{% alert title="Note" color="note" %}}
+
+Depending on the speed of your server connection, you may need to hold down the base control button/key for a second or two before anything happens.
+
+{{% /alert %}}
+
+## Troubleshooting
+
+If your servos aren't moving as expected or at all, try turning the whole robot off for a while to let them cool down.
+
+If you want to send commands directly to the dog server instead of running `my_robot_dog.py` (which may be helpful for debugging specific commands) you can do the following:
+
+1. Install Netcat if it isn't already installed:
+
+    ```bash
+    sudo apt install netcat
+    ```
+
+2. Connect directly to the robot dog by running the following command (replacing <DOG IP ADDRESS> with the correct IP address, i.e. `nc 10.0.0.123`) from the command line while SSHed into the Pi:
+
+    ```bash
+    nc <DOG IP ADDRESS> 5001
+    ```
+
+3. You can now type commands and hit enter to send them to the Freenove robot dog server.
+  For example:
+
+    ```bash
+    CMD_TURN_LEFT#30
+    CMD_STOP
+    ```
+
+## Next steps
+
+In this tutorial you learned how to implement a custom component model and control it using the Viam app.
+You learned about configuring remotes and processes.
+You drove the robot dog around using the Viam **CONTROL** tab.
+
+Going forward, you could use the Do command to add more functionality to the robot.
+You could use the Viam [vision service](/services/vision/) with the robot dog's [camera component](/components/camera/).
+For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/scuttlebot/color-detection-scuttle/) or to [follow a colored line](/tutorials/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.
+
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
