@@ -1,10 +1,10 @@
 ---
-title: "Run SLAM on your Robot with a Webcam"
-linkTitle: "Run SLAM on your Robot with a Webcam"
+title: "Run ORB-SLAM3 on your Robot with a Webcam"
+linkTitle: "Run ORB-SLAM3 on your Robot with a Webcam"
 weight: 50
 type: "docs"
 draft: false
-description: "Instructions to run SLAM with either a webcam or provided example data."
+description: "Instructions to run ORB-SLAM3 with a webcam or sample dataset."
 tags: ["slam", "camera", "services"]
 # SMEs: Kat
 ---
@@ -70,7 +70,7 @@ Configure your robot to run ORB-SLAM3 with a webcam in two steps:
 
 #### Step 1: Add and Calibrate your Webcam
 
-Follow these tutorials to connect and calibrate your webcam:
+Follow these tutorials to connect and calibrate your webcam as a modular component of your robot:
 
 * [Connect and configure a webcam](/components/camera/configure-a-camera/#connect-and-configure-a-webcam)
 * [Calibrate a camera](/components/camera/camera-calibration)
@@ -304,23 +304,12 @@ This tells the service to use only data found within the `data_dir` directory sp
   * This tells the service to read from the directory located at this path and to save all data and maps to that location.
   * To find your machine's home directory path, run the `pwd` command in your terminal. Make sure to do this while your terminal is at the home directory level (denoted by `~`).
 
-{{% alert title="Note" color="note" %}}
-If you're using a Raspberry Pi as your machine, you must `ssh` into your Pi to complete this step.
-
-```bash
-YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
-/home/YOUR_USERNAME
-```
-
-{{% /alert %}}
-
 * Save the config.
-
 * Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-offline-slam`).
 * Change the **Refresh frequency** to your desired frequency, move the webcam around slowly, and watch a map start to appear.
 
 {{% alert title="Note" color="note" %}}
-It might take a couple of minutes before the first map is created and will be shown in the UI.
+It may take a couple of minutes for the first map to show in the UI.
 {{% /alert %}}
 
 ## Troubleshooting

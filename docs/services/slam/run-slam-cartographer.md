@@ -1,10 +1,10 @@
 ---
-title: "Run SLAM on your Robot with a LIDAR"
-linkTitle: "Run SLAM on your Robot with a LIDAR"
+title: "Run Cartographer SLAM on your Robot with a LIDAR"
+linkTitle: "Run Cartographer SLAM on your Robot with a LIDAR"
 weight: 50
 type: "docs"
 draft: false
-description: "Instructions to run a Cartographer SLAM service with either a LIDAR (Rplidar A1 or A3) or an existing dataset."
+description: "Instructions to run Cartographer SLAM with a LIDAR (Rplidar A1 or A3) or sample dataset."
 tags: ["slam", "camera", "services", "lidar"]
 # SMEs: Kat
 ---
@@ -28,7 +28,9 @@ You have two options:
 
 ## Requirements
 
-* A Linux or macOS machine with `viam-server` and `Cartographer` installed.
+<!-- MACOS: TODO -->
+<!-- * A Linux or macOS machine with `viam-server` and `Cartographer` installed. -->
+* A Linux machine with `viam-server` and `Cartographer` installed.
 * [optionally] A [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device.
 
 For more information on how to install `viam-server` and set up your machine on the [Viam app](https://app.viam.com), see [Install viam-server](/installation/install/).
@@ -38,13 +40,6 @@ For more information on how to install `viam-server` and set up your machine on 
 Install Cartographer with one of these commands:
 
 {{< tabs >}}
-{{% tab name="macOS" %}}
-
-  ```bash
-  brew tap viamrobotics/brews && brew install carto-grpc-server
-  ```
-
-{{% /tab %}}
 {{% tab name="Linux aarch64" %}}
 
   ```bash
@@ -63,6 +58,10 @@ Install Cartographer with one of these commands:
 {{% /tab %}}
 {{< /tabs >}}
 
+  <!-- ```bash TAB MACOS: TODO
+  brew tap viamrobotics/brews && brew install carto-grpc-server
+  ``` -->
+
 ## Run Cartographer in Live Mode with a Rplidar
 
 Run Cartographer as a live SLAM service with a Rplidar.
@@ -79,13 +78,6 @@ Configure your robot to run Cartographer with a Rplidar in two steps:
 First, install the Rplidar Module:
 
 {{< tabs >}}
-{{% tab name="macOS" %}}
-
-  ```bash
-  brew tap viamrobotics/brews && brew install rplidar-module
-  ```
-
-{{% /tab %}}
 {{% tab name="Linux aarch64" %}}
 
   ```bash
@@ -104,7 +96,11 @@ First, install the Rplidar Module:
 {{% /tab %}}
 {{< /tabs >}}
 
-Now add the Rplidar as a modular component of your robot in the [Viam app](https://app.viam.com/):
+  <!-- ```bash TAB MACOS: TODO
+  brew tap viamrobotics/brews && brew install rplidar-module
+  ``` -->
+
+Now, add the Rplidar as a modular component of your robot in the [Viam app](https://app.viam.com/):
 
 * Physically connect the Rplidar to your machine.
 * Go to your robot's page on the [Viam app](https://app.viam.com/).
@@ -112,9 +108,32 @@ Now add the Rplidar as a modular component of your robot in the [Viam app](https
 * Copy the following configuration code for your Rplidar device. Paste it into the "Raw JSON":
 
   {{< tabs >}}
-  {{% tab name="macOS" %}}
+  {{% tab name="Linux" %}}
 
-```json
+  ```json
+  {
+    "components": [
+      {
+        "namespace": "rdk",
+        "type": "camera",
+        "depends_on": [],
+        "model": "viam:lidar:rplidar",
+        "name": "rplidar"
+      }
+    ],
+    "modules": [
+      {
+        "executable_path": "rplidar-module",
+        "name": "rplidar-module"
+      }
+    ]
+  }
+  ```
+
+  {{% /tab %}}
+  {{< /tabs >}}
+
+<!-- json TAB MACOS: TODO 
 {
   "components": [
     {
@@ -134,34 +153,7 @@ Now add the Rplidar as a modular component of your robot in the [Viam app](https
       "name": "rplidar_module"
     }
   ]
-}
-```
-
-  {{% /tab %}}
-  {{% tab name="Linux" %}}
-
-  ```json
-{
-  "components": [
-    {
-      "namespace": "rdk",
-      "type": "camera",
-      "depends_on": [],
-      "model": "viam:lidar:rplidar",
-      "name": "rplidar"
-    }
-  ],
-  "modules": [
-    {
-      "executable_path": "rplidar-module",
-      "name": "rplidar-module"
-    }
-  ]
-}
-  ```
-
-  {{% /tab %}}
-  {{< /tabs >}}
+} -->
 
 * Save the config.
 
@@ -238,53 +230,6 @@ YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 At this point, your complete configuration should look like:
 
   {{< tabs >}}
-  {{% tab name="macOS" %}}
-
-  ```json-viam
-  {
-    "components": [
-      {
-        "namespace": "rdk",
-        "type": "camera",
-        "depends_on": [],
-        "model": "viam:lidar:rplidar",
-        "attributes": {
-          "device_path": "/dev/tty.SLAB_USBtoUART"
-        },
-        "name": "rplidar"
-      }
-    ],
-    "modules": [
-      {
-        "executable_path": "rplidar-module",
-        "name": "rplidar_module"
-      }
-    ],
-    "services": [
-      {
-        "attributes": {
-          "config_params": {
-            "min_range": "0.3",
-            "max_range": "12",
-            "debug": "false",
-            "mode": "2d"
-          },
-          "data_dir": "/home/YOUR_USERNAME/cartographer_dir",
-          "map_rate_sec": 60,
-          "data_rate_msec": 200,
-          "delete_processed_data": false,
-          "use_live_data": true,
-          "sensors": ["rplidar"]
-        },
-        "model": "cartographer",
-        "name": "run-slam",
-        "type": "slam"
-      }
-    ]
-  }
-  ```
-
-  {{% /tab %}}
   {{% tab name="Linux" %}}
 
   ```json-viam
@@ -330,6 +275,50 @@ At this point, your complete configuration should look like:
 
   {{% /tab %}}
   {{< /tabs >}}
+
+  <!-- json-viam TAB MACOS: TODO
+  {
+    "components": [
+      {
+        "namespace": "rdk",
+        "type": "camera",
+        "depends_on": [],
+        "model": "viam:lidar:rplidar",
+        "attributes": {
+          "device_path": "/dev/tty.SLAB_USBtoUART"
+        },
+        "name": "rplidar"
+      }
+    ],
+    "modules": [
+      {
+        "executable_path": "rplidar-module",
+        "name": "rplidar_module"
+      }
+    ],
+    "services": [
+      {
+        "attributes": {
+          "config_params": {
+            "min_range": "0.3",
+            "max_range": "12",
+            "debug": "false",
+            "mode": "2d"
+          },
+          "data_dir": "/home/YOUR_USERNAME/cartographer_dir",
+          "map_rate_sec": 60,
+          "data_rate_msec": 200,
+          "delete_processed_data": false,
+          "use_live_data": true,
+          "sensors": ["rplidar"]
+        },
+        "model": "cartographer",
+        "name": "run-slam",
+        "type": "slam"
+      }
+    ]
+  }
+  ``` -->
 
 * Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-slam`).
 * Change the **Refresh frequency** to your desired frequency, move the Rplidar device around slowly, and watch a map start to appear.
@@ -402,19 +391,13 @@ This tells the service to use only data found within the `data_dir` directory sp
   * This tells the service to read from the directory located at this path and to save all data and maps to that location.
   * To find your machine's home directory path, run the `pwd` command in your terminal. Make sure to do this while your terminal is at the home directory level (denoted by `~`).
 
-{{% alert title="Note" color="note" %}}
-If you're using a Raspberry Pi as your machine, you must `ssh` into your Pi to complete this step.
-
-```bash
-YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
-/home/YOUR_USERNAME
-```
-
-{{% /alert %}}
-
 * Save the config.
 * Head over to the **CONTROL** tab and click on the drop-down menu of the service you created (example: `run-slam-offline`).
 * Change the **Refresh frequency** to your desired frequency, move the Rplidar device around slowly, and watch a map start to appear.
+
+{{% alert title="Note" color="note" %}}
+It may take a couple of minutes for the first map to show in the UI.
+{{% /alert %}}
 
 ## Troubleshooting
 
