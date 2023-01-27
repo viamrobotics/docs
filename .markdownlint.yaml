@@ -16,6 +16,9 @@ MD024:
   # Only check sibling headings
   siblings_only: true
 
+# List numbering
+MD029: false
+
 # MD033/no-inline-html - Inline HTML
 MD033: false
 
