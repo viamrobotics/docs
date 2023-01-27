@@ -151,7 +151,7 @@ Save the file.
 Go to the [robot page](https://app.viam.com/robots) for your robot dog that you created when installing viam-server on the Pi.
 
 In the banner towards the top of the page, the IP address of the robot dog Pi is displayed under **ips**.
-Copy the IP into the `dog_test.py` file in place of `PASTE DOG IP ADDRESS HERE`.
+Copy the IP into the <file>dog_test.py</file> file in place of `PASTE DOG IP ADDRESS HERE`.
 Save the file.
 
 ### Test the connection
@@ -168,7 +168,7 @@ In one terminal, SSH into the Pi using the username and hostname you set up when
 ssh fido@robotdog.local
 ```
 
-Navigate to the `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` directory.
+Navigate to the <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server</file> directory.
 
 Start the robot dog server by running:
 
@@ -176,7 +176,7 @@ Start the robot dog server by running:
 sudo python main.py -tn
 ```
 
-In the other terminal window, navigate to the directory on your development machine where you saved `dog_test.py`.
+In the other terminal window, navigate to the directory on your development machine where you saved <file>dog_test.py</file>.
 Run the connection test file with the following command:
 
 ```bash
@@ -261,9 +261,13 @@ Configure the ribbon camera on the dog as a `webcam`, following our [Configure a
 
 To operate the dog, you need to start the two servers in order:
 
-- First, the Freenove robot dog server (which you saved as `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py`).
-- Then, the custom component server (`/home/fido/RobotDog/python-server.py`).
+- First, the Freenove robot dog server (which you saved as <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py</file>).
+- Then, the custom component server (<file>/home/fido/RobotDog/python-server.py</file>).
   This one must be started second because it sends requests to the Freenove dog server, so it will throw errors if it can't find that server when it tries to start.
+
+<!---  
+
+# ADD THIS BACK IN AFTER APP-1227 IS DONE. TEST IT FIRST.
 
 You have two options for starting the servers: automatic or manual.
 
@@ -277,7 +281,7 @@ Fill out the config panel as follows:
 
 - **Working Directory**: `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` (changing "/home/fido" to the name of your home directory where you downloaded the Freenove code)
 - **Logging**: Toggle to the on position so you can view logs for this server process
-- **Arguments**: `-tn` so that the Freenove server starts without launching their GUI
+- **Arguments**: `main.py -tn` so that the Freenove server starts without launching their GUI
 - **Command**: `python main.py`
 
 Create a second process to start the custom component server.
@@ -285,8 +289,8 @@ Configure it like this:
 
 - **Working Directory**: `/home/fido/RobotDog` (changing "/home/fido" to the correct path)
 - **Logging**: Toggle to the on position so you can view logs for this server process
-- **Arguments**: none
-- **Command**: `python python_server.py`
+- **Arguments**: python_server.py
+- **Command**: `python`
 
 Click **Save Config** at the bottom of the window.
 
@@ -298,16 +302,19 @@ Click **Save Config** at the bottom of the window.
 "processes": [
     {
       "log": true,
-      "name": "python main.py",
+      "name": "python",
       "id": "1st",
       "cwd": "/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server",
-      "args": "-tn"
+      "args": [
+        "main.py",
+        -tn"
+      ]
     },
     {
-      "args": "",
+      "args": "python_server.py",
       "id": "2nd",
       "log": true,
-      "name": "python python_server.py",
+      "name": "python",
       "cwd": "/home/fido/RobotDog"
     }
   ]
@@ -325,13 +332,15 @@ We added a 5 second time delay to the [<file>python_server.py</file>](https://gi
 
 If you prefer, you can start the processes manually from command terminals on the Pi.
 
-First, from the `home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/` directory start the Freenove robot dog server:
+--->
+
+From the <file>home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/</file> directory start the Freenove robot dog server:
 
 ```bash
 sudo python main.py -tn
 ```
 
-Then, open another terminal, SSH to the Pi, and navigate to the directory where you saved your custom Viam component code (for example, `/home/fido/RobotDog/`).
+Then, open another terminal, SSH to the Pi, and navigate to the directory where you saved your custom Viam component code (for example, <file>/home/fido/RobotDog/</file>).
 Start the custom component server by running:
 
 ```bash
@@ -360,7 +369,7 @@ Depending on the speed of your server connection, you may need to hold down the 
 
 If your servos aren't moving as expected or at all, try turning the whole robot off for a while to let them cool down.
 
-If you want to send commands directly to the dog server instead of running `my_robot_dog.py` (which may be helpful for debugging specific commands, especially if you're adding your own functionality and need to calibrate servo speeds/positions) you can do the following:
+If you want to send commands directly to the dog server instead of running <file>my_robot_dog.py</file> (which may be helpful for debugging specific commands, especially if you're adding your own functionality and need to calibrate servo speeds/positions) you can do the following:
 
 1. Install Netcat if it isn't already installed:
 
