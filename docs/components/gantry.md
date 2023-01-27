@@ -6,6 +6,7 @@ weight: 50
 type: "docs"
 description: "Explanation of gantry configuration and usage in Viam."
 tags: ["gantry", "components"]
+icon: "img/components/gantry.png"
 # SME: Rand
 ---
 
@@ -133,7 +134,7 @@ The attributes are configured as such for a single-axis gantry:
   </tr>
 </table>
 
-A frame can also be added to a one axis gantry attribute to describe its position in the local “world” [frame](/services/frame-system.md/).
+A frame can also be added to a one axis gantry attribute to describe its position in the local “world” [frame](/services/frame-system/).
 
 ### Multi-Axis Gantry Attributes
 

@@ -6,27 +6,42 @@ draft: false
 type: "docs"
 description: "Explanation of sensor configuration and usage in Viam."
 tags: ["sensor", "components"]
+icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
 This page explains how to set up a generic sensor component with Viam.
-Viam has a few types of sensor implemented including an ultrasonic sensor, but this doc will go over setting up a custom sensor so you can implement almost any sort of sensor.
-Note that Viam has a separate, more specific component type called *movement sensor* specifically for GPS units, IMUs, and other sensors that detect position, velocity and acceleration.
-<!-- * [Movement Sensors](../movementsensor/) Not quite ready to land movement-sensor doc --->
-* [Encoders (component type)](../encoder/).
+Viam has a few types of sensor implemented including an ultrasonic sensor, and certain temperature sensors, but this doc covers setting up a custom sensor so you can build a robot using almost any sort of sensor.
 
-## Hardware Requirements
+{{% alert title="Note" color="note" %}}
 
-* Some sort of sensor
-* A [board](../board/)
-* Depending on the type of sensor output, an analog to digital converter may be necessary to allow the sensor to communicate with the board
+Viam has a separate, more specific component type called [movement sensor](/components/movement-sensor/) specifically for Global Positioning System (GPS) units, inertial measurement units (IMUs), and other sensors that detect position, velocity, and acceleration.
+
+Viam also has an [encoder component](/components/encoder/) that is distinct from sensor.
+
+{{% /alert %}}
+
+## Hardware requirements
+
+* Some sort of sensor, such as an ultrasonic sensor or temperature sensor
+* A [board](/components/board/)
+* Depending on your sensor's output type (analog or digital), an analog to digital converter may be necessary to allow the sensor to communicate with the board.
 
 ## Wiring
 
-This will depend on the sensor. Refer to the sensor’s data sheet.
+The wiring for your sensor depends on the specific sensor you are using.
+Refer to the sensor’s data sheet for wiring details.
 
-## Viam Configuration
+## Viam configuration
 
-When you create a custom sensor you’ll create a set of attributes unique to that sensor model. The JSON file you create must include a type (`sensor`), model (whatever you named your custom sensor model), and name (of your choice; used to refer to that specific sensor in your code). You will also need to include whatever required attributes you define in your custom sensor component implementation.
+To create a custom sensor, you must create a set of attributes unique to that sensor model:
+
+| Key     | Description                                                  |
+| ------- | ----------------------------------------------------------   |
+| `name`  | The name that you use to refer to the sensor in your code.   |
+| `type`  | For a sensor, the type is `sensor`.                          |
+| `model` | The model of sensor used (for example, "ultrasonic"). Either a built-in Viam model or one you define when implementing a custom sensor model. |
+
+Don't forget to include any required attributes you define in your custom sensor component implementation.
 
 ``` json
 {
@@ -38,11 +53,9 @@ When you create a custom sensor you’ll create a set of attributes unique to th
 }
 ```
 
-## Getting started with sensors and the Viam SDK
+## Getting Started With Sensors and the Viam SDK
 
-This example code reads values from an ultrasonic sensor connected to a robot.
-
-Assumption: A sensor called "ultra1" is configured as a component of your robot.
+The following example connects to and gets readings from an ultrasonic sensor component named `mySensorName` (configuration done previously in JSON):
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -51,8 +64,8 @@ Assumption: A sensor called "ultra1" is configured as a component of your robot.
 from viam.components.sensor import Sensor
 
 robot = await connect()
-sensor = Sensor.from_robot(robot, "ultra1")
-distance = await sensor.get_readings()["distance"]
+sensor = Sensor.from_robot(robot, "mySensorName")
+readings = await sensor.get_readings()
 ```
 
 {{% /tab %}}
@@ -64,10 +77,10 @@ import (
 )
 
 ultra, err := sensor.FromRobot(robot, "ultra1")
-distance, err := ultra.Readings(context.Background())
+readings, err := ultra.Readings(context.Background())
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-You can read more about sensor implementation in the [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/sensor/index.html).
+You can read more about sensor implementation in the [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/sensor/index.html) or the [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk).

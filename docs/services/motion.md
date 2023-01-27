@@ -1,7 +1,7 @@
 ---
 title: "Motion Service"
 linkTitle: "Motion"
-weight: 20
+weight: 40
 type: "docs"
 description: "Explanation of the motion service, its configuration, and its functionality."
 tags: ["motion", "motion planning", "services"]
@@ -363,11 +363,9 @@ extra = {"motion_profile": "free"}
 
 * CBiRRT
 
-Currently, the only algorithm available for use is CBiRRT, which stands for Constrained, Bidirectional implementation of <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">RRT</a>[^RRT].
+Currently, the only algorithm available for use is CBiRRT, which stands for Constrained, Bidirectional implementation of [RRT](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree).
 It will create paths which are guaranteed to conform to specified constraints, and attempt to smooth them afterwards as needed.
 By default, it will use a “free” constraint, that is, it will not constrain the path of motion at all.
 This is to ensure that paths will be found when using defaults, even in highly constrained scenarios.
 
-The CBiRRT algorithm used by Viam is based on the algorithm described in this paper: <a href="https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf" target="_blank">ht<span></span>tps://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf]</a>
-
-[^RRT]: RRT: <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Rapidly-exploring_random_tree</a>
+The CBiRRT algorithm used by Viam is based on the algorithm described in this paper: [https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf](https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf).

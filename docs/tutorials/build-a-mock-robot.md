@@ -10,7 +10,7 @@ tags: ["mock", "simulation"]
 ## Introduction
 
 In this post, we will show you how to build a mock robot using just your personal laptop so you can try using Viam without any robotic hardware.
-This is a great way to learn how to build robots [the Viam way](/getting-started/high-level-overview/).
+This is a great way to learn how to build robots [the Viam way](/viam).
 
 Most Viam components come with a _fake_ model that can be useful when testing.
 These fake components interact with Viam like real hardware, but of course, do not actually exist.
@@ -38,7 +38,7 @@ Go to [app.viam.com](https://app.viam.com) and sign up.
 - Create a new robot
 - Go to the **CONFIG** tab.
 
-<img src="../img/build-a-mock-robot/image4.png" alt ="A screenshot from the Viam app showing the CONFIG tab from the mock robot." width="100%"><br>
+<img src="../img/build-a-mock-robot/image4.png" alt="A screenshot from the Viam app showing the CONFIG tab from the mock robot." width="100%"><br>
 
 For this tutorial, we will show you how to set up a mock robot with a fake motor and arm.
 
@@ -57,7 +57,7 @@ Follow the steps outlined on the **SETUP** tab of the Viam app in order to insta
 
 When you add the fake motor and arm components to your robot, the Viam app automatically generates a UI for your motor and arm under the **CONTROL** tab.
 
-<img src="../img/build-a-mock-robot/image3.png" alt ="Screenshot from the Viam app showing the CONTROL tab with the fake arm, and motor components." width="100%"><br>
+<img src="../img/build-a-mock-robot/image3.png" alt="Screenshot from the Viam app showing the CONTROL tab with the fake arm, and motor components." width="100%"><br>
 
 If you were configuring a real motor and arm, you would be able to control it from this section of the app.
 You could do things like control the direction and speed of the motor, and change the joint positions of your robotic arm.
@@ -82,7 +82,7 @@ Refer to the appropriate SDK documentation for SDK installation instructions.
 {{% /alert %}}
 
 {{% alert title="Tip" color="tip" %}}
-If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
 There, you will find a friendly developer community of people learning how to make robots using Viam.
 {{% /alert %}}
 
@@ -92,8 +92,9 @@ The easiest way to get started writing an application with Viam is to navigate t
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 Next, paste that boilerplate code from the **CODE SAMPLE** tab of the Viam app into a file named <file>index.py</file> or <file>index.go </file>file in your code editor, and save your file.
 
-{{% alert title="Caution" color="caution" %}}  
-Do not share your robot secret or robot address publicly. Sharing this information compromises your system security by allowing unauthorized access to your computer.
+{{% alert title="Caution" color="caution" %}}
+Do not share your robot secret or robot address publicly.
+Sharing this information compromises your system security by allowing unauthorized access to your computer.
 {{% /alert %}}
 
 You can now run the code.
@@ -121,7 +122,7 @@ go run index.go
 If you successfully configured your robot and it is able to connect to the Viam app you should see something like this printed to the terminal after running your program.
 What you see here is a list of the various resources (Like components, and services) that have been configured to your robot in the Viam app.
 
-<img src="../img/build-a-mock-robot/image1.png" alt ="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam App. The output is an array of resources that have been pulled from the Viam App. Some of these are the Vision Service, Data Manager, and Board." width="100%"><br>
+<img src="../img/build-a-mock-robot/image1.png" alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%"><br>
 
 ### How to control your mock robot
 
@@ -236,7 +237,8 @@ func randomMovement (ctx context.Context, a arm.Arm ) {
 {{% /tab %}}
 {{< /tabs >}}
 
-You can run this code by invoking this function located below your arm initialization in main. Your main function, should look like this:
+You can run this code by invoking this function located below your arm initialization in main.
+Your main function, should look like this:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -273,7 +275,7 @@ func main() {
 
 Now when you run this code, you should see the new mock arm positions listed in the command line, if you open the **CONTROL** tab of your mock robot, you should see the robot's arm positions changing in real-time along with the code on your development machine.
 
-<img src="../img/build-a-mock-robot/image2.gif" alt ="GIF of a terminal window on the right with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side, is the mock arm from the CONTROL tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app." width="100%"><br>
+<img src="../img/build-a-mock-robot/image2.gif" alt="GIF of a terminal window on the right with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side, is the mock arm from the CONTROL tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app." width="100%"><br>
 
 ## How to create a mock sub-part
 
@@ -282,16 +284,20 @@ Now that you have your mock robotic arm working, let's add a mock sub-part to yo
 ### What is a part?
 
 A _robot_ in Viam is one or more computers combined into one logical robot.
-The bounds of a robot are usually pretty clear, but can be subjective. However, it's possible with Viam to create a robot that is made out of multiple computers. Each of these computer-controlled units is referred to as a **part**. Most simple robots will have only one part, but can have as many parts as needed.
+The bounds of a robot are usually pretty clear, but can be subjective.
+However, it's possible with Viam to create a robot that is made up of multiple computers.
+Each of these computer-controlled units is referred to as a _part_.
+Most simple robots will have only one part, but can have as many parts as needed.
 
 Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
-You can access any sub-part either directly, or via any part above it in the tree. Each part runs a single _viam-server_ instance.
+You can access any sub-part either directly, or via any part above it in the tree.
+Each part runs a single _viam-server_ instance.
 
 ## How to configure a sub-part in the Viam app
 
 On your robot's page on the Viam app, click on the **MAIN PART** button, name your part and click **ADD NEW**.
 
-<img src="../img/build-a-mock-robot/image5.png" alt ="Screenshot of the Viam app with a dropdown below the main part. 'SubPart' is written in the textbox." width="100%"><br>
+<img src="../img/build-a-mock-robot/image5.png" alt="Screenshot of the Viam app with a dropdown below the main part. 'SubPart' is written in the textbox." width="100%"><br>
 
 You will be creating a mock independent computer-controlled sub-part with a motor.
 This could be anything, but let's say for the purpose of this tutorial that this motor controls a conveyor belt in front of our mock arm on an assembly line.
@@ -308,13 +314,15 @@ From the **CODE SAMPLE** tab of your sub-part:
 - Navigate back to the **CONFIG** and then the **REMOTES** tab of your main robot
 - Paste your sub-part's configuration.
 
-<img src="../img/build-a-mock-robot/image8.png" alt ="Screenshot from the Viam App showing the CONFIG > REMOTES with the sub-part's remote config file pasted in." width="80%"><br>
+<img src="../img/build-a-mock-robot/image8.png" alt="Screenshot from the Viam App showing the CONFIG > REMOTES with the sub-part's remote config file pasted in." width="80%"><br>
 
 ### How to start a new instance of viam-server for your mock sub-part
 
-Since every part needs to run an instance of viam-server, you will need to bind the sub-part to a new port so we can run two servers on your machine at the same time. We are using port `8081`, but you can use any open port you want.
+Since every part needs to run an instance of viam-server, you will need to bind the sub-part to a new port so we can run two servers on your machine at the same time.
+We are using port `8081`, but you can use any open port you want.
 
-You can do this by going to **CONFIG** and then going to the **NETWORK** tab. Here, you will paste the following:
+You can do this by going to **CONFIG** and then going to the **NETWORK** tab.
+Here, you will paste the following:
 
 ```json-viam
 {
@@ -328,7 +336,7 @@ Be sure to save before continuing.
 
 In the upper right corner of the **SETUP** tab, click **COPY VIAM-SERVER CONFIG**.
 
-<img src="../img/build-a-mock-robot/image9.png" alt ="Screenshot from the Viam app showing the 'Copy Viam-Server Config' button highlighted by a red box."><br>
+<img src="../img/build-a-mock-robot/image9.png" alt="Screenshot from the Viam app showing the 'Copy Viam-Server Config' button highlighted by a red box."><br>
 
 On your local machine, create a new file called <file>viam-sub-part.json</file>, then paste the contents of your server config into that file and save.
 From the terminal, navigate to the directory where you saved the config file, and run this command to create a new instance of viam-server using this configuration.
@@ -339,7 +347,7 @@ viam-server -config viam-sub-part.json
 
 If you have two instances of viam-server running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main robots **CONTROL** tab.
 
-![Screenshot of the Viam app's Control tab for the main part. Lists the main arm, and the sub motor part.](../img/build-a-mock-robot/image6.png)
+![Screenshot of the Viam app's Control tab for the main part that lists the main arm, and the sub motor part.](../img/build-a-mock-robot/image6.png)
 
 ## How to control a sub-part using the Viam SDK
 
@@ -480,6 +488,6 @@ When you run this code, you will see your mock sub motor toggling between runnin
 
 In this tutorial, we showed you how to set up a mock robot with a sub-part so that you can learn more about using fake components, setting up a local development environment, and writing code using a Viam SDK.
 
-If you're ready to get started with building robots with real hardware components, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](https://docs.viam.com/tutorials/).
+If you're ready to get started with building robots with real hardware components, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](/tutorials/).
 
-If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).

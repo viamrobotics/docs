@@ -39,7 +39,7 @@ For example, UR5e is a model of the arm component type.
 Processes are often used to create a new local instance of viam-server to implement drivers for custom components, or to run a client application.
 They provide a bespoke, OS-specific process managed by the viam-server to either run once or indefinitely; for example, to run one of Viam's camera servers.
 
-<a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. [Read More](../../product-overviews/rdk/)
+<a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. [Read More](/program/rdk/)
 
 **Resource**: Resources are individual, addressable elements of a robot (RDK definition) operated by parts.
 Parts operate two types of Resources: physical components and software services.
@@ -104,9 +104,7 @@ There is generally one robot part per CPU.
 
 **Gantry**: A robot that only uses linear motion to carry out a task; for example, the scaffolding of a 3D printer, which moves the print head around on motorized linear rails.
 
-<a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">**gRPC:**</a>[^grpc] An open source, cross-platform, high performance Remote Procedure Call (RPC) framework initially developed at Google in 2015. With gRPC, a client application can communicate directly with a server application on a different machine. This framework can run in any environment and efficiently connect distributed applications and services.
-
-[^grpc]:GRPC, webpage, 2022, Wikipedia authors:  <a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">ht<span><span>tps://en.wikipedia.org/wiki/GRPC</a>
+[**gRPC:**](https://en.wikipedia.org/wiki/GRPC) An open source, cross-platform, high performance Remote Procedure Call (RPC) framework initially developed at Google in 2015. With gRPC, a client application can communicate directly with a server application on a different machine. This framework can run in any environment and efficiently connect distributed applications and services.
 
 **Protocol Buffers (Protobuf)**: A free and open-source, language-neutral, cross-platform data format for serializing structured data.
 It is useful in developing programs to communicate with each other over a network or for storing data.

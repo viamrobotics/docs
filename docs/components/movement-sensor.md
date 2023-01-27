@@ -3,8 +3,9 @@ title: "Movement Sensor Component"
 linkTitle: "Movement Sensor"
 weight: 70
 type: "docs"
-description: "Explanation of movement sensor configuration and usage in Viam."
+description: "Explanation of movement sensors (including GPS and IMU) in Viam."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
+icon: "img/components/imu.png"
 # SME: Rand
 ---
 The movement sensor component is an abstraction of a sensor that gives data on where a robot is and how fast it is moving.
@@ -13,25 +14,17 @@ We have chosen to abstract these types of sensors into one common API.
 There are many different types of sensors that can provide data for some or all of the following methods: `Position`, `Orientation`, `LinearVelocity`, `AngularVelocity` and `CompassHeadings`.
 A global positioning system (GPS) can provide position, linear velocity and compass headings.
 An inertial measurement unit (IMU) can provide angular velocity and orientation.
-We can further apply algorithms, such as a <a href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank">Kalman filter</a>[^kalman], to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
+We can further apply algorithms, such as a [Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter), to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
 
-Currently (12 December 2022), the Viam [RDK](../../appendix/glossary/#rdk_anchor) supports two [IMU models](#imu) (manufactured by WitMotion and VectorNav), a [gyroscope/accelerometer](#mpu6050) from TDK InvenSense, and two [GPS models](#gps): <a href="https://en.wikipedia.org/wiki/NMEA_0183" target="_blank">NMEA-based</a>[^nmea] GPS modules and <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">NTRIP-based</a>[^ntrip] <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">RTK</a>[^rtk] GPS models.
+Currently (12 December 2022), the Viam [RDK](../../appendix/glossary/#rdk_anchor) supports two [IMU models](#imu) (manufactured by WitMotion and VectorNav), a [gyroscope/accelerometer](#mpu6050) from TDK InvenSense, and two [GPS models](#gps): [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS modules and [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models.
 The `cameramono` RDK model is experimental and uses a camera to output data on its position and orientation (from visual odometry).
 
 We specifically cover GPS and IMU units in this documentation.
-Find the more [generic sensor component here](../../components/sensor/).
-Find more information about encoders, another component type, [here](../../components/encoder/).
-
-[^kalman]: Kalman filter: <a href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Kalman_filter</a>
-
-[^nmea]: NMEA 0183: <a href="https://en.wikipedia.org/wiki/NMEA_0183" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/NMEA_0183</a>
-
-[^ntrip]: Network Transport of RTCM via Internet Protocol (NTRIP): <a href="https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol</a>
-
-[^rtk]: Real-time kinematic positioning: <a href="https://en.wikipedia.org/wiki/Real-time_kinematic_positioning" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Real-time_kinematic_positioning</a>
+Find the more [generic sensor component here](/components/sensor/).
+Find more information about encoders, another component type, [here](/components/encoder/).
 
 {{% alert title="Note" color="note" %}}
-Any movement sensor that uses I<sup>2</sup>C must be connected to a board that supports I<sup>2</sup>C and [has it enabled](/installation/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
+Any movement sensor that uses I<sup>2</sup>C must be connected to a board that supports I<sup>2</sup>C and [has it enabled](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
 {{% /alert %}}
 
 ## GPS
@@ -111,12 +104,10 @@ Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
-This model uses real time kinematic positioning (RTK)[^rtk].
-`gps-rtk`, a module with a chip (<a href="https://www.sparkfun.com/rtk" target="_blank">such as one of these from Sparkfun</a>[^chips]) capable of generating positional accuracy of 2cm.
+This model uses real time kinematic positioning [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning).
+`gps-rtk`, a module with a chip ([such as one of these from Sparkfun](https://www.sparkfun.com/rtk)) capable of generating positional accuracy of 2cm.
 The chip requires a correction source to get to the required positional accuracy.
-Our `gps-rtk` model uses an over-the-internet correction source (NTRIP)[^ntrip] and sends the data over serial or I<sup>2</sup>C.
-
-[^chips]: Sparkfun RTK Chips: <a href="https://www.sparkfun.com/rtk" target="_blank">ht<span></span>tps://www.sparkfun.com/rtk</a>
+Our `gps-rtk` model uses an over-the-internet correction source [NTRIP](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) and sends the data over serial or I<sup>2</sup>C.
 
 As shown in the examples below, the `gps-rtk` model requires a `name`, `type` ("movement_sensor"), and `model` ("gps-rtk").
 In the `attributes` section, it requires connection configuration (see ["Connection Configuration,"](#connection-configuration) below), `correction_source` ("ntrip"), and an `ntrip_attributes` struct containing these:
@@ -447,7 +438,7 @@ Name | Type | Default Value | Description
 
 ### MPU6050
 
-The <a href="https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/" target = "_blank">MPU6050 sensor manufactured by TDK InvenSense</a>[^mpu] is a combination accelerometer and gyroscope.
+The [MPU6050 sensor manufactured by TDK InvenSense](https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/) is a combination accelerometer and gyroscope.
 It supplies angular velocity data about the three axes, supporting the `AngularVelocity` method.
 It also supplies linear acceleration data in three directions.
 The linear acceleration data (as well as all the other data from the MPU6050) can be accessed using the `GetReadings` method from the more general [sensor component](/components/sensor/), which movement sensors wrap.
@@ -505,7 +496,7 @@ Breaking changes are likely to occur, and occur often.
 We have integrated an experimental package that uses a visual odometry algorithm with dead reckoning to track the Position, Orientation, LinearVelocity and AngularVelocity of the camera’s frame.
 The `cameramono` model can use any single camera with this algorithm.
 
-In a Viam configuration file, a camera used as a movement sensor will require a [`camera` type component](../../components/camera/) and then a `movementsensor` type component that depends on the `camera` component, and a `motion_estimation_config` based on the camera properties.
+In a Viam configuration file, a camera used as a movement sensor will require a [`camera` type component](/components/camera/) and then a `movementsensor` type component that depends on the `camera` component, and a `motion_estimation_config` based on the camera properties.
 
 ```json
 {
