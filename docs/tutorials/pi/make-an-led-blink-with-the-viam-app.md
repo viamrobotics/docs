@@ -22,7 +22,7 @@ You will need the following tools to complete the project:
 <ol>
     <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
 <ol type="a">
-<li>Refer to the <a href="https://docs.viam.com/installation/rpi-setup" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
+<li>Refer to the <a href="https://docs.viam.com/installation/prepare/rpi-setup" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 </ol>
     <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
     <li><a href="http://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
@@ -34,12 +34,12 @@ You will need the following tools to complete the project:
 
 ### Software
 
-- [viam-server](/installation/rpi-setup/)
+- [viam-server](/installation/prepare/rpi-setup/)
 
 ## Project setup
 
 Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi.
-We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](/installation/rpi-setup/) guide in the Viam documentation.
+We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](/installation/prepare/rpi-setup/) guide in the Viam documentation.
 Be sure to follow all the steps including [adding your Pi on the Viam app.](/installation/install/linux-install/)
 
 {{% alert title="Tip" color="tip" %}}
