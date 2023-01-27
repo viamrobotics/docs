@@ -15,7 +15,7 @@ Viam natively supports a wheeled base model, but if you have a quadruped or othe
 1. Use Viam's Go SDK to [create a custom component as a modular resource](/program/extend/modular-resources/).
 2. Use another Viam SDK (for example, the Python SDK) to [create a custom resource server](/program/extend/sdk-as-server/).
 
-This tutorial is an example of option two, using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
+This tutorial demonstrates option two, using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
 <img src="../img/custom-base-dog/base-control-dog.gif" style="float:left;margin-right:12px" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." width="400" />
 
@@ -272,7 +272,7 @@ You have two options for starting the servers: automatic or manual.
 Click the **PROCESSES** sub-tab of the **CONFIG** tab.
 
 Create a new process and give it a name (for example "1st").
-This process will start the Freenove robot dog server so it is ready to receive commands from the custom component server.
+Once configured, this process will start the Freenove robot dog server so it is ready to receive commands from the custom component server.
 Fill out the config panel as follows:
 
 - **Working Directory**: `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` (changing "/home/fido" to the name of your home directory where you downloaded the Freenove code)
