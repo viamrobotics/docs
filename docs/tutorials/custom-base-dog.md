@@ -204,6 +204,16 @@ In other words, you need a script that defines what each base component method (
 
 Take a look at [<file>my_robot_dog.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/my_robot_dog.py).
 It creates a "RobotDog" model of the base component type, and defines the `set_power`, `stop`, `is_moving`, and `do` methods by specifying which corresponding commands to send to the Freenove dog server when each of these methods is called.
+For example, the `stop` method sends a command (`CMD_MOVE_STOP#8`) to the robot dog server to stop the dog from moving:
+
+```python
+    async def stop(self, extra: Optional[Dict[str, Any]] = None, **kwargs):
+        self.is_stopped = True
+
+        command = "CMD_MOVE_STOP#8\n"
+        self.send_data(command)
+```
+
 Feel free to tweak the specific contents of each of these method definitions, and add support for other base methods like `spin`.
 You can [read about the base API here](/components/base/#api).
 
