@@ -32,6 +32,14 @@ Here's an example of how a servo might be wired to a Raspberry Pi:
 
 ![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](../img/servo/servo-wiring.png)
 
+{{% alert title="Note" color="note" }}
+
+Instead of powering the servo with a separate power supply, you may choose to power it using the 5V and ground pins on the board.
+This can work well so long as the servo is not under any significant load.
+Just keep in mind that if the servo draws too much power, it can cause the board to temporarily lose power.
+
+{{% /alert %}}
+
 ## Viam Configuration
 
 The following fields are required when configuring a servo:
@@ -79,9 +87,11 @@ The following is an example configuration file showing a board component and a s
       "type": "servo",
       "model": "pi",
       "attributes": {
-        "pin": "16",
-        "board": "example-pi"
-      }
+        "pin": "16"
+      },
+      "depends_on": [
+        "example-pi"
+      ]
     }
   ]
 }
