@@ -343,4 +343,3 @@ Global options can be passed after the *viam* CLI keyword with any subsequent co
 | ----------- | ----------- |
 | --debug | enable debug logging (default: false) |
 | --config <file>| load configuration from *file* |
-
