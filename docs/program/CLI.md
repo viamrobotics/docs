@@ -84,65 +84,114 @@ Help can be accessed by passing it as a command option for CLI command, for exam
 viam organizations help
 ```
 
-### Commands
+## Commands
 
-#### auth
+### auth
 
 The *auth* command prompts the user to authorize their device for CLI usage.  See [Authenticate](#authenticate)
 
-##### command options
+#### synopsis
+
+``` bash
+viam auth
+viam auth print-access-token
+```
+
+#### command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | print-access-token      | prints the access token the CLI will use during an authenticated CLI session      | - |
 | help      | return help      | - |
 
-#### logout
+### logout
 
 The *logout* command ends an authenticated CLI session
 
-##### command options
+#### synopsis
 
-None available.
+``` bash
+viam logout
+```
 
-#### whoami
+#### command options
+
+None.
+
+### whoami
 
 The *whoami* command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is not an authenticated session.
 
-##### command options
+#### synopsis
 
-None available.
+``` bash
+viam whoami
+```
 
-#### organizations
+#### command options
+
+None.
+
+### organizations
 
 The *organizations* command lists all organizations that the authenticated user belongs to.
 
-##### command options
+#### synopsis
+
+``` bash
+viam organizations list
+```
+
+#### command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | list      | list all organizations (name and id) that the authenticated user belongs to    | - |
 | help      | return help      | - |
 
-#### locations
+### locations
 
 The *locations* command lists all locations that the authenticated user has access to, grouped by organization.
 Results can be filtered by organization.
 
-##### command options
+#### synopsis
+
+``` bash
+viam locations list [<organization id>]
+```
+
+
+#### command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | list      | list all locations (name and id) that the authenticated user has access to, grouped by organization  | **organization id** : return results for specified organization only |
 | help      | return help      | - |
 
-#### data
+### data
 
 The *data* command allows you to manage robot data.
 This includes exporting data in the format of your choice and deleting selected data.
 All data management commands can target specifically filtered data from across your robot fleet.
 
-##### command options
+#### synopsis
+
+``` bash
+viam data export --destination=<output path> --data-type=<output data type> [...named args]
+viam data delete [...named args]
+```
+
+##### examples
+
+``` bash
+# export tabular data to /home/robot/data for org abc, location 123
+viam data export --destination=/home/robot/data --data_type=tabular --org_ids=abc --location_ids=123
+
+# export binary data from all orgs and locations, component name myComponent to /home/robot/data
+viam data export --destination=/home/robot/data --data_type=tabular --component_name myComponent
+```
+
+#### command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
@@ -150,7 +199,7 @@ All data management commands can target specifically filtered data from across y
 | delete      | delete data  | - |
 | help      | return help      | - |
 
-###### named arguments
+##### named arguments
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
@@ -172,25 +221,31 @@ All data management commands can target specifically filtered data from across y
 | --robot_name *value*     | filter by specified robot name       |export, delete|false |
 | --tags *value*     | filter by specified tag (accepts comma-separated list)       |export, delete|false |
 
-#### robots
+### robots
 
 The *robots* command lists all robots that the authenticated user has access to, filtered by organization and location.
 
-##### command options
+#### synopsis
+
+``` bash
+viam robots list
+```
+
+#### command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | list      | list all robots (name and id) that the authenticated user has access to in the specified organization and location  |- |
 | help      | return help|-|
 
-###### named arguments
+##### named arguments
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | --organization *value*     | organization name to filter by       |list|true |
 | --location *value*     |  location name to filter by   |list|true |
 
-#### robot
+### robot
 
 The *robot* command allows you to manage your robot fleet.
 This includes:
@@ -200,48 +255,92 @@ This includes:
 * Controlling a robot by issuing component and service commands
 * Accessing your robot via secure shell (when this feature is enabled)
 
-##### command options
+#### synopsis
+
+``` bash
+viam robot status --organization=<org name> --location=<location name> --robot=<robot id>
+viam robot logs --organization=<org name> --location=<location name> --robot=<robot id> [...named args]
+viam robot part status --organization=<org name> --location=<location name> --robot=<robot id>
+viam robot part run --organization=<org name> --location=<location name> --robot=<robot id> [--stream] --data <meth>
+viam robot part shell --organization=<org name> --location=<location name> --robot=<robot id>
+```
+
+##### examples
+
+``` bash
+# get robot status
+viam robot status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Ro-bot's Org" --location myLoc
+
+# stream error level logs from a robot part
+viam robot part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Ro-bot's Org" --location myLoc --part "myrover-main" --tail true
+
+# stream classifications from a robot part every 500 milliseconds from the Viam vision service with classifier "stuff_detector"
+viam robot part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Ro-bot's Org" --location myLoc --part "myrover-main" --stream 500ms --data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' viam.service.vision.v1.VisionService.GetClassificationsFromCamera
+```
+
+#### command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | status      | retrieve robot status for a specified robot  | - |
 | logs      | retrieve logs for a specified robot | - |
-| part      | manage a specified robot part  | status, run, shell (see [part positional arguments](#part---positional-arguments)) |
+| part      | manage a specified robot part  | status, run, logs, shell (see [part positional arguments](#part---positional-arguments)) |
 | help      | return help      | - |
 
-###### part - positional arguments
+##### part - positional arguments
 
 |        argument     |       description
 | ----------- | ----------- | -----------
 | status     | retrieve robot status for a specified robot part  
 | run     |  run a component or service command, optionally at a specified interval.  For commands that return data in their response, this can be thus be used to stream data at this interval
+| logs     |  get logs for the specified robot part
 | shell     |  access a robot part securely via secure shell.  This feature must be enabled.
 | help      | return help
 
-###### named arguments
+##### named arguments
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | --organization *value*     | organization name that the robot belongs to       |status,logs,part|true |
 | --location *value*     |  location name that the robot belongs to    |status,logs,part|true |
 | --robot *value*     |  robot id for which the command is being issued   |status,logs,part|true |
-| --errors *value*     |  boolean, return only errors (default: false)   |logs|true |
-| --part *value*     |  part name for which the command is being issued    |logs|true |
-| --data *value*     |  command data for the command being request to run (see [data argument](#part-run---data-argument))   |part(run)|true |
-| --stream *value*     |  part name for which the command is being issued    |part(run)|true |
+| --errors *value*     |  boolean, return only errors (default: false)   |logs|false |
+| --part *value*     |  part name for which the command is being issued    |logs|false |
+| --tail *value*     |  tail (stream) logs, boolean(default false)    |part(logs)|false |
+| --stream *value*     |  if specified, the interval in which to stream the specified data, e.g. 100ms or 1s    |part(run)|false |
+| --data *value*     |  command data for the command being request to run (see [data argument](#part-run---stream-and---data-arguments))   |part(run)|true |
 
-###### part run - data argument
+##### part run --stream and --data arguments
 
 Issuing the *part* command with the *run* positional argument allows you to run component and service (resource) commands for a selected robot part.
 
-It is required that you specify both the resource command (in the form of the protobuf API command) and the arguments for the specified resource command in JSON format with the *--data* argument.  The format of what is passed to the --data argument is:
+The --data parameter is required and you must specify both:
 
-```bash
-'{"arg1": "val1"}' <protobuf uri>
+* Method arguments in JSON format
+* A resource method (in the form of the protobuf package and method path)
+
+The format of what is passed to the --data argument is:
+
+``` bash
+'{"arg1": "val1"}' <protobuf path>
 ```
+
+The protobuf path for the Viam package and method can be found in the [Viam api package](https://github.com/viamrobotics/api/tree/main/proto/viam)
 
 For example:
 
+``` bash {linenos=false}
+'{"name": "vision", "camera_name": "cam", "classifier_name": "my_classifier", "n":1}' viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ```
-'{"name": "vision", "camera_name": "cam", "classifier_name": "my_classifier", "n":1}' proto.api.service.vision.v1.VisionService.GetClassificationsFromCamera
-```
+
+The *--stream* argument, when included in the CLI command prior to the --data command will stream data back at the specified interval.
+
+## Global options
+
+Global options can be passed after the *viam* CLI keyword with any subsequent command.
+
+|        global option     |       description |
+| ----------- | ----------- |
+| --debug | enable debug logging (default: false) |
+| --config <file>| load configuration from *file* |
+
