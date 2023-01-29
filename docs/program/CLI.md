@@ -1,6 +1,6 @@
 ---
-title: "Command Line Tool"
-linkTitle: "Command Line Tool"
+title: "Viam CLI"
+linkTitle: "CLI"
 weight: 99
 type: "docs"
 description: "Manage and control your robots from the command line."
