@@ -64,7 +64,7 @@ Your authentication session will be valid for 24 hours, unless you explicitly [l
 With the Viam CLI installed and authenticated, you can issue calls to to your robot fleet.
 All Viam CLI calls use the following format:
 
-**viam [global options] command [command options] [arguments...]**
+<b>viam [global options] command [command options] [arguments...]</b>
 
 |        parameter     |       description      |
 | ----------- | ----------- |
