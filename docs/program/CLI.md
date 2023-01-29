@@ -6,7 +6,7 @@ type: "docs"
 description: "Manage and control your robots from the command line."
 ---
 
-The Viam CLI (command line interface) tool enables you to manage all your robots across organizations and locations from the command line.
+The Viam CLI (command line interface) tool enables you to manage your robots across organizations and locations from the command line.
 The CLI lets you:
 
 * Retrieve organization and location information
@@ -61,26 +61,27 @@ Your authentication session will be valid for 24 hours, unless you explicitly [l
 
 ## Manage your robots with the Viam CLI
 
+With the Viam CLI installed and authenticated, you can issue calls to to your robot fleet.
 All Viam CLI calls use the following format:
 
 **viam [global options] command [command options] [arguments...]**
 
 |        parameter     |       description      |
 | ----------- | ----------- |
-| global options      | *optional* - list of flags that apply for commands      |
-| command   | *required* - the specific CLI command to run        |
+| [global options](#global-options)      | *optional* - list of flags that apply for commands      |
+| [command](#commands)  | *required* - the specific CLI command to run        |
 | command options   | *required for some commands*  - the operation to run for the specified command.     |
 | arguments   | *required for some commands* arguments for the specified command operation. Some commands take positional arguments, some named arguments      |
 
 The Viam CLI has a built-in help system that lists all available commands.  It can be accessed at any time by issuing the command:
 
-```
+``` bash
 viam help
 ```
 
-Help can be accessed by passing it as a command option for CLI command, for example:
+Contextual help can be also be accessed by passing it as a command option for any CLI command, for example:
 
-```
+``` bash
 viam organizations help
 ```
 
@@ -159,7 +160,6 @@ Results can be filtered by organization.
 ``` bash
 viam locations list [<organization id>]
 ```
-
 
 #### command options
 
