@@ -73,6 +73,8 @@ All Viam CLI calls use the following format:
 | command options   | *required for some commands*  - the operation to run for the specified command.     |
 | arguments   | *required for some commands* arguments for the specified command operation. Some commands take positional arguments, some named arguments      |
 
+### CLI help
+
 The Viam CLI has a built-in help system that lists all available commands.  It can be accessed at any time by issuing the command:
 
 ``` bash
