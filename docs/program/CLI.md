@@ -51,13 +51,13 @@ viam auth
 This will open a new browser window with a prompt to start the authentication process.
 If a browser window does not open, the CLI will present a URL for you to manually open in your browser.
 
-<img src="/program/img/cli/auth_start.png"  style="border:1px solid" alt="Viam CLI auth process." title="Viam CLI auth process." width="300" />
+<img src="../img/cli/auth_start.png"  style="border:1px solid" alt="Viam CLI auth process." title="Viam CLI auth process." width="300" />
 
 After you click confirm, you will be prompted to sign up for Viam if you have not, or sign in if you have an account and are not yet signed in.
 After you have successfully been confirmed as logged-in, you will get a success screen, and can now use the Viam CLI.
 Your authentication session will be valid for 24 hours, unless you explicitly [log out](#logout).
 
-<img src="/program/img/cli/auth_end.png"  style="float;right;border:1px solid" alt="Viam CLI auth process complete." title="Viam CLI auth process complete." width="300" />
+<img src="../img/cli/auth_end.png"  style="float;right;border:1px solid" alt="Viam CLI auth process complete." title="Viam CLI auth process complete." width="300" />
 
 ## Manage your robots with the Viam CLI
 
