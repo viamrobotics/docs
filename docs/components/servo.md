@@ -80,7 +80,7 @@ Refer to the following example configuration file, including the board and servo
   - `gpio` is the general-purpose model, compatible with Viam-supported boards.
   - `fake` is for testing code without any actual hardware.
 
- - **Depends On**: For model `pi`, you must include the name of the board in the `depends_on` field.
+- **Depends On**: For model `pi`, you must include the name of the board in the `depends_on` field.
 
 **Required Attributes**:
 
