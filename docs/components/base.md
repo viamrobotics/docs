@@ -11,6 +11,9 @@ icon: "img/components/base.png"
 
 <img src="../img/base/base-trk-rover-w-arm.png" alt="A robot comprised of a base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. There are width and diameter labels on the diagram because width and circumference (pi times diameter) are required attributes when configuring a base component." />
 
+A **base** is the physical platform that other parts of a robot attach to.
+In `viam-server`, the **base** component is configured with the **board** of the robot and any **motor** components attached to the base to provide an interface to control the movement of the whole physical base of the robot.
+
 As shown above, most robots with wheeled bases will need at least the following hardware:
 
 - A [board component](/components/board/) that can run `viam-server`.
