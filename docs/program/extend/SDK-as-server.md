@@ -43,6 +43,8 @@ The steps required in creating a custom component and connecting it to the RDK a
 
 3. Start the Server and register the running server as a remote
 
-You can view the complete tutorial on how to create a custom component in Python in the [Viam Python documentation](https://python.viam.dev/examples/example.html#create-custom-components).
+You can view the complete tutorial on how to create a custom component using Python in the [Viam Python documentation](https://python.viam.dev/examples/example.html#create-custom-components).
 
-You can view more component implementation examples in <file>components.py</file>, found in the [Viam Python SDK repo](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py).
+Find more component implementation examples in [<file>components.py</file> in the Viam Python SDK repo](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py).
+
+For a walk-through of one specific example, see the [Custom Quadruped Base tutorial](/tutorials/custom-base-dog/).
