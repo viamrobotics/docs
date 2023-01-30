@@ -80,7 +80,7 @@ Refer to the following example configuration file, including the board and servo
   - `gpio` is the general-purpose model, compatible with Viam-supported boards.
   - `fake` is for testing code without any actual hardware.
 
-**Required Attributes**: 
+**Required Attributes**:
 
 In addition to the required fields, all servo models require the following `attributes` to be defined in your configuration:
 
@@ -124,10 +124,10 @@ The servo component supports the following methods:
 
 {{% alert title="Note" color="note" %}}
 
-Make sure you have set up your robot and connected it to the Viam app. Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/getting-started/) for app-specific guidance.
+Make sure you have set up your robot and connected it to the Viam app. Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
 
 The following example assumes you have a servo called "my_servo" configured as a component of your robot.
-If your base has a different name, change the `name` in the example.
+If your servo has a different name, change the `name` in the example.
 
 {{% /alert %}}
 
