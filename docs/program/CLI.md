@@ -319,7 +319,7 @@ viam whoami
 
 ## Global options
 
-Global options can be passed after the *viam* CLI keyword with any subsequent command.
+You can pass global options after the *viam* CLI keyword with any command.
 
 |        global option     |       description |
 | ----------- | ----------- |
