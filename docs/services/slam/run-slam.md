@@ -34,7 +34,7 @@ Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/
 
 ## Setup
 
-If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](/installation/rpi-setup/).
+If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](/installation/prepare/rpi-setup/).
 
 Next, we'll install the ORB-SLAM3 binary.
 

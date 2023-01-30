@@ -1,2 +1,3 @@
 baseURL = "/"
 relativeURLs = true
+disableAliases = true
