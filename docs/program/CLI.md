@@ -263,9 +263,9 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| --organization      | organization name that the robot belongs to       |status,logs,part|true |
-| --location     |  location name that the robot belongs to    |status,logs,part|true |
-| --robot      |  robot id for which the command is being issued   |status,logs,part|true |
+| --organization      | organization name that the robot belongs to       |status, logs, part|true |
+| --location     |  location name that the robot belongs to    |status, logs, part|true |
+| --robot      |  robot id for which the command is being issued   |status, logs, part|true |
 | --errors      |  boolean, return only errors (default: false)   |logs|false |
 | --part      |  part name for which the command is being issued    |logs|false |
 | --tail     |  tail (stream) logs, boolean(default false)    |part(logs)|false |
