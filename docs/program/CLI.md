@@ -13,6 +13,12 @@ The CLI lets you:
 * Manage robot fleet data and logs
 * Control robots by issuing component and service commands.
 
+For example, this CLI command moves a servo to the 75 degree position:
+
+``` bash
+viam robot part run --robot 82c608a-1be9-46a5 --organization "Ro-bot's Org" --location myLoc --part "myrobot-main" --data '{"name": "myServo", "angle_deg":75}' viam.component.servo.v1.ServoService.MoveRequest
+```
+
 ## Install
 
 If you have [Go installed](https://go.dev/doc/install), you can install the Viam CLI with the 'go install' command:
