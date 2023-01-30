@@ -179,7 +179,7 @@ viam locations list [<organization id>]
 
 ### logout
 
-The *logout* command ends an authenticated CLI session
+The `logout` command ends an authenticated CLI session
 
 #### synopsis
 
