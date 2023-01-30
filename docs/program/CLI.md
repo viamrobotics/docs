@@ -16,7 +16,9 @@ The CLI lets you:
 For example, this CLI command moves a servo to the 75 degree position:
 
 ``` bash
-viam robot part run --robot 82c608a-1be9-46a5 --organization "Ro-bot's Org" --location myLoc --part "myrobot-main" --data '{"name": "myServo", "angle_deg":75}' viam.component.servo.v1.ServoService.MoveRequest
+viam robot part run --robot 82c608a-1be9-46a5 --organization "Robot's Org" \
+--location myLoc --part "myrobot-main" --data '{"name": "myServo", "angle_deg":75}' \
+viam.component.servo.v1.ServoService.MoveRequest
 ```
 
 ## Install
@@ -119,10 +121,12 @@ Examples:
 
 ``` bash
 # export tabular data to /home/robot/data for org abc, location 123
-viam data export --destination=/home/robot/data --data_type=tabular --org_ids=abc --location_ids=123
+viam data export --destination=/home/robot/data --data_type=tabular \
+--org_ids=abc --location_ids=123
 
-# export binary data from all orgs and locations, component name myComponent to /home/robot/data
-viam data export --destination=/home/robot/data --data_type=tabular --component_name myComponent
+# export binary data from all orgs and locations, component name myComponent
+viam data export --destination=/home/robot/data --data_type=tabular \
+--component_name myComponent
 ```
 
 #### command options
@@ -219,18 +223,21 @@ viam robot part status --organization=<org name> --location=<location name> --ro
 viam robot part run --organization=<org name> --location=<location name> --robot=<robot id> [--stream] --data <meth>
 viam robot part shell --organization=<org name> --location=<location name> --robot=<robot id>
 ```
-
 ##### examples
 
 ``` bash
 # get robot status
-viam robot status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Ro-bot's Org" --location myLoc
+viam robot status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
 
 # stream error level logs from a robot part
-viam robot part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Ro-bot's Org" --location myLoc --part "myrover-main" --tail true
+viam robot part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
+--organization "Robot's Org" --location myLoc --part "myrover-main" --tail true
 
 # stream classifications from a robot part every 500 milliseconds from the Viam vision service with classifier "stuff_detector"
-viam robot part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Ro-bot's Org" --location myLoc --part "myrover-main" --stream 500ms --data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' viam.service.vision.v1.VisionService.GetClassificationsFromCamera
+viam robot part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
+--organization "Robot's Org" --location myLoc --part "myrover-main" --stream 500ms \
+--data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \
+viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ```
 
 #### command options
@@ -285,7 +292,8 @@ The protobuf path for the Viam package and method can be found in the [Viam api 
 For example:
 
 ``` bash {linenos=false}
-'{"name": "vision", "camera_name": "cam", "classifier_name": "my_classifier", "n":1}' viam.service.vision.v1.VisionService.GetClassificationsFromCamera
+'{"name": "vision", "camera_name": "cam", "classifier_name": "my_classifier", "n":1}' \
+viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ```
 
 The `--stream` argument, when included in the CLI command prior to the `--data` command will streams data back at the specified interval.
