@@ -25,9 +25,9 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 
 ## Code used in this tutorial
 
-- <https://github.com/viam-labs/robot-dog-base>
+- [Robot Dog Base Code on GitHub](https://github.com/viam-labs/robot-dog-base)
 
-- <https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/tree/master/Code>
+- [Freenove Robot Dog Kit for Raspberry Pi Code on GitHub](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/tree/master/Code)
 
 ## Hardware requirements
 
@@ -61,7 +61,7 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
     ```
 
 5. Navigate to the directory on the Pi where you'd like to install the Freenove robot dog code (for example `/home/fido/`).
-Install the code by running the following command:
+Get the code by running the following command:
 
     ```bash
     git clone https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi
@@ -80,7 +80,7 @@ If the name of the directory where you store and run your code is different, be 
     python --version
     ```
 
-    If it isn’t Python 3.8 or later, be sure to install an updated version of Python (and double-check that you're running the latest Raspberry Pi OS too).
+    If it isn’t Python 3.8 or later, install an updated version of Python and double-check that you're running the latest Raspberry Pi OS.
 
 7. Install the [Viam Python SDK](https://python.viam.dev/):
 
@@ -117,7 +117,7 @@ Follow the Freenove hardware assembly instructions, including servo setup (all o
 
 ## Check connection between the robot dog server and the midlayer
 
-Let's test the connection between the Freenove server running on your robot dog and the code running on your development machine (laptop or desktop) before proceeding with the custom component implementation.
+Before proceeding with the custom component implementation, follow the instructions in this section to test the connection between the Freenove server running on your robot dog and the code running on your development machine (laptop or desktop).
 This way, you can isolate any client-server connection problems if you encounter one.
 
 ### Create a connection test file
@@ -151,7 +151,8 @@ Save the file.
 Go to the [robot page](https://app.viam.com/robots) for your robot dog that you created when installing viam-server on the Pi.
 
 In the banner towards the top of the page, the IP address of the robot dog Pi is displayed under **ips**.
-Copy the IP into the <file>dog_test.py</file> file in place of `PASTE DOG IP ADDRESS HERE`.
+Copy the IP.
+Inside <file>dog_test.py</file>, replace `PASTE DOG IP ADDRESS HERE` with the copied IP.
 Save the file.
 
 ### Test the connection
@@ -183,7 +184,7 @@ Run the connection test file with the following command:
 python dog_test.py
 ```
 
-If the dog walks forward for a few seconds and then stops, you were successfully able to send commands from your test file to the robot dog server.
+If the dog walks forward for a few seconds and then stops, the connection works and you can successfully send commands to the robot dog server.
 Continue on to implement the base.
 
 If the robot dog did not respond, double check your IP address, make sure the robot dog server is still running, and make sure the robot has adequate power.
@@ -191,7 +192,8 @@ You can also try turning the robot off and on again, and then retrying the proce
 
 ## Implement the custom base code
 
-From the Raspberry Pi terminal home directory, create a directory to hold your custom code files:
+From the Raspberry Pi terminal, create a directory inside the home directory to hold your custom code files:
+
 
 ```bash
 mkdir RobotDog
@@ -242,7 +244,7 @@ Click **Save Config** at the bottom of the page.
 {{% alert title="Note" color="note" %}}
 
 When you call srv.serve(), the default host and port is localhost:9090.
-This can be changed by passing in a host and/or port parameter to the serve function.
+If you want to use a different host or port, pass it as a parameter to the serve function.
 
 {{% /alert %}}
 
@@ -265,7 +267,7 @@ Click **Save Config**.
 
 ### Configure the camera
 
-Configure the ribbon camera on the dog as a `webcam`, following our [Configure a Camera](/components/camera/configure-a-camera/) tutorial.
+Configure the ribbon camera on the dog as a `webcam`, following the [Configure a Camera](/components/camera/configure-a-camera/) tutorial.
 
 ## Start the servers
 
@@ -407,7 +409,7 @@ In this tutorial you learned how to implement a custom component model and contr
 You learned about configuring remotes and processes.
 You drove the robot dog around using the Viam **CONTROL** tab.
 
-To add more functionality, try using the Do command.
+To add more functionality, try defining more of the base API methods for this model.
 You could also use the Viam [vision service](/services/vision/) with the robot dog's [camera component](/components/camera/).
 For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/scuttlebot/color-detection-scuttle/) or to [follow a colored line](/tutorials/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.
 
