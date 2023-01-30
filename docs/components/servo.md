@@ -35,8 +35,8 @@ Here's an example of how a servo might be wired to a Raspberry Pi:
 {{% alert title="Note" color="note" %}}
 
 Instead of powering the servo with a separate power supply, you may choose to power it using the 5V and ground pins on the board.
-This can work well so long as the servo is not under any significant load.
-Just keep in mind that if the servo draws too much power, it can cause the board to temporarily lose power.
+This can work, as long as the servo is not under any significant load.
+Keep in mind that if the servo draws too much power, it can cause the board to temporarily lose power.
 
 {{% /alert %}}
 
