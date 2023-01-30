@@ -276,7 +276,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 Issuing the *part* command with the `run` positional argument allows you to run component and service (resource) commands for a selected robot part.
 
-The --data parameter is required and you must specify both:
+The `--data` parameter is required and you must specify both:
 
 * Method arguments in JSON format
 * A resource method (in the form of the protobuf package and method path)
