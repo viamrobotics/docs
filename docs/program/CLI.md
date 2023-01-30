@@ -99,7 +99,7 @@ viam auth print-access-token
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| print-access-token      | prints the access token the CLI will use during an authenticated CLI session      | - |
+| print-access-token      | prints the access token the CLI uses during an authenticated CLI session      | - |
 | help      | return help      | - |
 
 ### data
