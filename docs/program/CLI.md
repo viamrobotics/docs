@@ -150,7 +150,7 @@ viam data export --destination=/home/robot/data --data_type=tabular --component_
 
 ### locations
 
-The *locations* command lists all locations that the authenticated user has access to, grouped by organization.
+The *locations* command lists all locations that the authenticated session has access to, grouped by organization.
 Results can be filtered by organization.
 
 #### synopsis
@@ -178,7 +178,7 @@ viam logout
 
 ### organizations
 
-The *organizations* command lists all organizations that the authenticated user belongs to.
+The *organizations* command lists all organizations that the authenticated session belongs to.
 
 #### synopsis
 
@@ -285,7 +285,7 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 ### robots
 
-The *robots* command lists all robots that the authenticated user has access to, filtered by organization and location.
+The *robots* command lists all robots that the authenticated session has access to, filtered by organization and location.
 
 #### synopsis
 
