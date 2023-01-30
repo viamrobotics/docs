@@ -27,11 +27,8 @@ The Viam SLAM Service supports the integration of custom SLAM libraries with the
 
 The following SLAM libraries are integrated:
 
-- <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank">ORB-SLAM3</a>[^orb]
-- <a href="https://github.com/cartographer-project" target="_blank">Cartographer</a>[^carto]
-
-[^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORB-SLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
-[^carto]: <a href="https://github.com/cartographer-project" target="_blank"> Cartographer: ht<span></span>tps:https://github.com/cartographer-project</a>
+- [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
+- [Cartographer](https://github.com/cartographer-project)
 
 {{% alert title="Note" color="note" %}}
 
