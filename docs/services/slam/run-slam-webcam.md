@@ -1,10 +1,10 @@
 ---
-title: "Run SLAM on your Robot"
-linkTitle: "Run SLAM on your Robot"
+title: "Run ORB-SLAM3 on your Robot with a Webcam"
+linkTitle: "Run ORB-SLAM3 on your Robot with a Webcam"
 weight: 50
 type: "docs"
 draft: false
-description: "Instructions to run SLAM with either a webcam or provided example data."
+description: "Instructions to run ORB-SLAM3 with a webcam or sample dataset."
 tags: ["slam", "camera", "services"]
 # SMEs: Kat
 ---
@@ -17,84 +17,70 @@ Breaking changes are likely to occur, and occur often.
 
 ## Introduction
 
-[SLAM](/services/slam/) allows your robot to create a map of its surroundings, as well as find its location within that map.
+[Simultaneous Localization And Mapping (SLAM)](../../slam/) allows your robot to create a map of its surroundings and find its location within that map.
 
-This tutorial shows you how to run ORB-SLAM3 on your robot.
-You have two choices:
+This tutorial shows you how to run [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3), software that provides real-time SLAM, as a service on your robot.
 
-* Run SLAM in online mode with a webcam.
-The webcam can be installed on a robot, or just be held by hand.
-* Run SLAM in offline mode either with collected data or our provided example data.
+You have two options:
+
+1. Run ORB-SLAM3 in live mode with a webcam.
+The webcam can be installed on a robot, or just held in your hand.
+1. Run ORB-SLAM3 in offline mode with Viam's [lab dataset](https://storage.googleapis.com/viam-labs-datasets/viam-office-hallway-1-rgbd.zip) or with data you've collected.
 
 ## Requirements
 
-* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the viam-server installed.
-Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os), if necessary.
+* A Linux or macOS machine with `viam-server` and `ORB-SLAM3` installed.
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
-## Setup
+For more information on how to install `viam-server` and set up your machine on the [Viam app](https://app.viam.com), see [Install viam-server](/installation/install/).
 
-If you haven’t already, please set up the Raspberry Pi on the [Viam app](https://app.viam.com) per [these instructions](/installation/prepare/rpi-setup/).
+### Install the ORB-SLAM3 Binary
 
-Next, we'll install the ORB-SLAM3 binary.
+Install ORB-SLAM3 with one of these commands:
 
-### Installing the ORB-SLAM3 binary
+{{< tabs >}}
+{{% tab name="Linux aarch64" %}}
 
-First, `ssh` into your Pi and then check the architecture of your system by running `lscpu`.
-Depending on the output download and install one of the following ORB-SLAM3 binaries:
+  ```bash
+  sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
+  sudo chmod a+rx /usr/local/bin/orb_grpc_server
+  ```
 
-* AArch64 (ARM64) (e.g., on an RPI):
+{{% /tab %}}
+{{% tab name="Linux x86_64" %}}
 
-    ```bash
-    sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
-    ```
+  ```bash
+  sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
+  sudo chmod a+rx /usr/local/bin/orb_grpc_server
+  ```
 
-* x86_64:
+{{% /tab %}}
+{{< /tabs >}}
 
-    ```bash
-    sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
-    ```
+## Run ORB-SLAM3 in Live Mode with a Webcam
 
-Make the file executable by running:
+Run ORB-SLAM3 as a live SLAM service with a webcam.
 
-```bash
-sudo chmod a+rx /usr/local/bin/orb_grpc_server
-```
+### Configuration with Viam
 
-## Running ORB-SLAM3 with a webcam
+Configure your robot to run ORB-SLAM3 with a webcam in two steps:
 
-The following setup allows you to run ORB-SLAM3 in live mode using a webcam.
+1. Add your webcam and calibrate it.
+2. Add ORB-SLAM3 as a SLAM service in live mode.
 
-### Configuration using Viam
+#### Step 1: Add and Calibrate your Webcam
 
-The configuration of SLAM happens in two steps:
-
-1. Add a webcam and calibrate it.
-2. Add SLAM to the existing configuration.
-
-#### Add a webcam and calibrate it
-
-Follow these tutorials to connect and calibrate your webcam:
+Follow these tutorials to connect and calibrate your webcam as a modular component of your robot:
 
 * [Connect and configure a webcam](/components/camera/configure-a-camera/#connect-and-configure-a-webcam)
 * [Calibrate a camera](/components/camera/camera-calibration)
 
-#### Add SLAM to the configuration
+#### Step 2: Add ORB-SLAM3 as a SLAM Service in Live Mode
 
-Find out your home directory by `ssh`-ing into your Pi, and typing `pwd`.
-This is an example of what you might see:
-
-```bash
-YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
-/home/YOUR_USERNAME
-```
-
-Go to your robot's page on the [Viam app](https://app.viam.com/).
-On the **CONFIG** tab, click the **SERVICES** sub-tab.
-
-Create a service with type `slam`, a name (we called ours `run-slam`) and a model `orbslamv3`.
-
-Paste the following into the **Attributes** field of the SLAM service:
+* Go to your robot's page on the [Viam app](https://app.viam.com/).
+* On the **CONFIG** tab, click the **SERVICES** sub tab.
+* Create a service with type `slam`, a name (example: `run-slam`) and a model (`orbslamv3`).
+* Paste the following into the **Attributes** field of the SLAM service:
 
 ```json
 {
@@ -102,7 +88,7 @@ Paste the following into the **Attributes** field of the SLAM service:
   "use_live_data": true,
   "delete_processed_data": false,
   "map_rate_sec": 60,
-  "data_rate_ms": 200,
+  "data_rate_msec": 200,
   "sensors": [
     "color"
   ],
@@ -130,7 +116,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
         "data_dir": "/home/YOUR_USERNAME/data",
         "use_live_data": true,
         "map_rate_sec": 60,
-        "data_rate_ms": 200,
+        "data_rate_msec": 200,
         "sensors": [
           "color"
         ],
@@ -150,12 +136,25 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 ```
 
 {{% /expand %}}
-<br>
+</br>
 
-Change the `"data_dir": "/home/YOUR_USERNAME/data"` directory to your home directory that you found out by typing `pwd`, followed by `/data`.
-Save the config.
+* Now, change the `"data_dir":` attribute on line 8. Edit `"/home/YOUR_USERNAME/data"` to match the path to your existing dataset on your machine, followed by `/data`.
+  * This tells the service to create a directory named `data` within your home directory, and to save all data and maps to that location.
+  * To find your machine's home directory path, run the `pwd` command in your terminal. Make sure to do this while your terminal is at the home directory level (denoted by `~`).
 
-In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration together with the [previously obtained camera configuration](#add-a-webcam-and-calibrate-it) now looks like this:
+{{% alert title="Note" color="note" %}}
+If you're using a Raspberry Pi as your machine, you must `ssh` into your Pi to complete this step.
+
+```bash
+YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
+/home/YOUR_USERNAME
+```
+
+{{% /alert %}}
+
+* Save the config.
+
+At this point, your complete configuration should look like:
 
 ```json-viam
 {
@@ -199,7 +198,7 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration toget
         "use_live_data": true,
         "delete_processed_data": false,
         "map_rate_sec": 60,
-        "data_rate_ms": 200,
+        "data_rate_msec": 200,
         "sensors": [
           "color"
         ],
@@ -219,19 +218,26 @@ In our case, `YOUR_USERNAME` is `slam-bot`, and our complete configuration toget
 }
 ```
 
-Head over to the **CONTROL** tab and choose the **run-slam** drop-down menu.
-Change the **Refresh frequency** to your desired frequency, move the webcam around slowly, and watch a map come to life!
+* Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-slam`).
+* Change the **Refresh frequency** to your desired frequency, move the webcam around slowly, and watch a map start to appear.
 
 {{% alert title="Note" color="note" %}}  
 It might take a couple of minutes before the first map is created and will be shown in the UI.
 Keep moving the camera slowly within your space and wait for the map to get created.
 {{% /alert %}}
 
-## Running ORB-SLAM3 with a dataset
+## Run ORB-SLAM3 in Offline Mode with a Dataset
 
-The following setup allows you to run ORB-SLAM3 in offline mode using either one of your previously saved datasets, or our dataset that you can download and play with.
+Run ORB-SLAM3 in offline mode using one of your previously saved datasets or Viam's lab dataset.
 
-### The dataset
+### Configuration with Viam
+
+Configure your robot to run ORB-SLAM3 in offline mode in two steps:
+
+1. Find an existing dataset to run ORB-SLAM3 with.
+2. Add ORB-SLAM3 as a SLAM service in offline mode.
+
+#### Step 1: Find a Dataset for ORB-SLAM3 to Use
 
 In offline mode, SLAM will use an existing dataset to create a map.
 
@@ -255,20 +261,15 @@ unzip data.zip
 
 Now you're ready to configure SLAM to use your dataset and to run in offline mode.
 
-### Configuration using Viam
+#### Step 2: Add ORB-SLAM3 as a SLAM Service in Offline Mode
 
-Next, we will add SLAM to the configuration.
+Now that you have chosen a dataset that the service can use to build its map, you can set up ORB-SLAM3 to run on your robot without a webcam.
 
-First, `ssh` into your Pi and find out your home directory by typing `pwd`
-This is an example of what you might see:
+To enable offline mode, set the `use_live_data` flag to `false`.
+This tells the service to use only data found within the `data_dir` directory specified in your config while running SLAM.
 
-```bash
-YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
-/home/YOUR_USERNAME
-```
-
-In your web browser, navigate to the robot you set up on the Viam app ([https://app.viam.com](https://app.viam.com)).
-In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
+* In your web browser, navigate to the robot you set up on the Viam app ([https://app.viam.com](https://app.viam.com)).
+* In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
 
 ```json-viam
 {
@@ -277,7 +278,7 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
       "type": "slam",
       "model": "orbslamv3",
       "attributes": {
-        "data_rate_ms": 200,
+        "data_rate_msec": 200,
         "sensors": [],
         "use_live_data": false,
         "delete_processed_data": false,
@@ -299,14 +300,16 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 }
 ```
 
-Change the `"data_dir": "/home/YOUR_USERNAME/data"` directory to your home directory that you found out by typing `pwd`, followed by `/data`.
-Save the config.
+* Now, change the `"data_dir":` attribute on line 8. Edit `"/home/YOUR_USERNAME/data"` to match the path to your existing dataset on your machine.
+  * This tells the service to read from the directory located at this path and to save all data and maps to that location.
+  * To find your machine's home directory path, run the `pwd` command in your terminal. Make sure to do this while your terminal is at the home directory level (denoted by `~`).
 
-Head over to the **CONTROL** tab and choose the "run-slam" drop-down menu.
-Change the "Refresh frequency" to your desired frequency and watch a map come to life using the data in your dataset!
+* Save the config.
+* Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-offline-slam`).
+* Change the **Refresh frequency** to your desired frequency, move the webcam around slowly, and watch a map start to appear.
 
 {{% alert title="Note" color="note" %}}
-It might take a couple of minutes before the first map is created and will be shown in the UI.
+It may take a couple of minutes for the first map to show in the UI.
 {{% /alert %}}
 
 ## Troubleshooting
@@ -319,14 +322,14 @@ This issue has a couple of potential causes.
 <br>
 
 First, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up.
-Both in online and offline mode this might mean that you have to wait a little while before you can see a map on the UI.
+In both live and offline mode, this might mean that you have to wait a little while before you can see a map on the UI.
 
 Second, map generation depends on the quality of the dataset.
 For consecutive images, the camera's focus should not be moved too far from that of the previous image, and images should contain enough details that can be detected by ORB-SLAM3.
 Images from a white wall for example will not successfully generate a map.
 Try to point the camera into areas that contain a lot of information, such as objects, window frames, and similar.
 
-Furthermore, in online mode, it helps to move the camera around _slowly_, such that consecutive images contain similar items that can be matched to each other.
+In live mode, it helps to move the camera around _slowly_, so that consecutive images containing similar items can be matched to each other.
 
 In offline mode, it can be difficult to determine the quality of the dataset.
 If no map can be generated using the offline dataset, a new dataset should be generated.
