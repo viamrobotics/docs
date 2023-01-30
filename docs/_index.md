@@ -19,7 +19,11 @@ type: "docs"
         </a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+<<<<<<< HEAD
         <a href="try-viam">
+=======
+        <a href="/try-viam/">
+>>>>>>> JohnN193-john-carto-v1
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Try Viam</h4>
             <p style="text-align: left;">Control and program a borrowed rover.</p>
         <a>
