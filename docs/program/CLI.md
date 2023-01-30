@@ -163,7 +163,7 @@ viam locations list [<organization id>]
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| list      | list all locations (name and id) that the authenticated user has access to, grouped by organization  | **organization id** : return results for specified organization only |
+| list      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
 | help      | return help      | - |
 
 ### logout
@@ -190,7 +190,7 @@ viam organizations list
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| list      | list all organizations (name and id) that the authenticated user belongs to    | - |
+| list      | list all organizations (name and id) that the authenticated session belongs to    | - |
 | help      | return help      | - |
 
 ### robot
@@ -297,7 +297,7 @@ viam robots list
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| list      | list all robots (name and id) that the authenticated user has access to in the specified organization and location  |- |
+| list      | list all robots (name and id) that the authenticated session has access to in the specified organization and location  |- |
 | help      | return help|-|
 
 ##### named arguments
