@@ -76,7 +76,7 @@ The Viam CLI has a built-in help system that lists all available commands.  It c
 viam help
 ```
 
-Contextual help can be also be accessed by passing it as a command option for any CLI command, for example:
+You can also access contextual help by passing `help` as a command option for any CLI command, for example:
 
 ``` bash
 viam organizations help
