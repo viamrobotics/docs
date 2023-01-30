@@ -70,8 +70,6 @@ Make the file executable by running:
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
 
-For ORB-SLAM3, the location is defined <a href="https://github.com/viamrobotics/rdk/blob/7d15c61d59ee1f4948d116d605f4f23a199d2fb1/services/slam/slamlibraries.go#L48" target="_blank">here</a>.
-
 ## Configuration Overview
 
 To add the SLAM service to your robot, you need to add the _name_, _type_, _model_, and SLAM library specific _attributes_ to the configuration of your robot.
