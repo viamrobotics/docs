@@ -70,7 +70,7 @@ viam [global options] command [command options] [arguments...]
 
 ### CLI help
 
-The Viam CLI has a built-in help system that lists all available commands.  It can be accessed at any time by issuing the command:
+The Viam CLI has a built-in help system that lists all available commands. You can access it at any time by issuing the command:
 
 ``` bash
 viam help
