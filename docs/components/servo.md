@@ -69,24 +69,26 @@ Refer to the following example configuration file, including the board and servo
 
 **Required Fields**:
 
-- **Name**: A name of the user's choosing by which to identify the component
+- **Name**: a name that identifies the component
 
-- **Type**: `servo` for all servos
+- **Type**: `servo`
 
 - **Model**: Either `pi`, `gpio`, or `fake`:
 
   - `pi` is the recommended model when configuring a hobby servo wired to a Raspberry Pi.
-  Unlike other servo models, it is implemented as part of the `pi` board component; [you can see the code here](https://github.com/viamrobotics/rdk/blob/main/components/board/pi/impl/servo.go).
+  Unlike other servo models, it is implemented as part of the [`pi` board component](https://github.com/viamrobotics/rdk/blob/main/components/board/pi/impl/servo.go).
   - `gpio` is the general-purpose model, compatible with Viam-supported boards.
   - `fake` is for testing code without any actual hardware.
 
+ - **Depends On**: For model `pi`, you must include the name of the board in the `depends_on` field.
+
 **Required Attributes**:
 
-In addition to the required fields, all servo models require the following `attributes` to be defined in your configuration:
+In addition to the required fields, all servo models require the following `attributes` in your configuration:
 
 - `pin` (string): The board pin (with PWM capabilities) that the servo's control wire is attached to.
 Use the pin number, not the GPIO number.
-- `board` (string): The name of the board to which the servo is wired.
+- `board` (string): The name of the board to which the servo is wired. Required for `gpio` model; does not apply to `pi` model.
 
 **Optional Attributes**:
 
@@ -171,11 +173,11 @@ func main() {
   // Connect to your robot. 
   robot, err := client.New(
       context.Background(),
-      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CODE SAMPLE TAB OF THE VIAM APP]",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CODE SAMPLE TAB OF THE VIAM APP]",
       })),
   )
 
@@ -209,7 +211,7 @@ Move the servo to the desired angle in degrees.
 
 {{% alert title="Note" color="note" %}}
 
-If you are using a continuous rotation servo, you can still use the Move command.
+If you are using a continuous rotation servo, you can still use the `Move` command.
 Please note that instead of moving to a given position, the servo will start moving at a set speed.
 
 The speed will be related to the "angle" you pass in as a linear approximation, but you will need to determine from your hardware which "angle" represents your desired speed.
