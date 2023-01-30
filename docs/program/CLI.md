@@ -254,7 +254,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 |        argument     |       description
 | ----------- | ----------- | -----------
 | status     | retrieve robot status for a specified robot part  
-| run     |  run a component or service command, optionally at a specified interval.  For commands that return data in their response, this can be thus be used to stream data at this interval
+| run     |  run a component or service command, optionally at a specified interval.  For commands that return data in their response, you can use this to stream data.
 | logs     |  get logs for the specified robot part
 | shell     |  access a robot part securely via secure shell.  This feature must be enabled.
 | help      | return help
