@@ -106,9 +106,9 @@ viam auth print-access-token
 
 ### data
 
-The *data* command allows you to manage robot data.
-This includes exporting data in the format of your choice and deleting selected data.
-All data management commands can target specifically filtered data from across your robot fleet.
+The `data` command allows you to manage robot data.
+With it, you can export data in the format of your choice or delete specified data.
+You can filter the data this command operates on.
 
 #### synopsis
 
