@@ -82,7 +82,7 @@ Parts connect to other parts by establishing a remote.
 For example, one robot may be composed of two parts, a Jetson and a Pi.
 There is generally one robot part per CPU.
 
-**SDK (Software Development Kit)**: Viam provides an SDK to help you write client applications, and create custom implementations of viam-server to support custom components.
+**SDK (Software Development Kit)**: Viam provides an SDK to help you write client applications, and create support for custom component types.
 
 * One per language.
 * Can be used as a server for a custom component implementation.
