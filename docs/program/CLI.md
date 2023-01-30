@@ -43,7 +43,7 @@ This will open a new browser window with a prompt to start the authentication pr
 If a browser window does not open, the CLI will present a URL for you to manually open in your browser.
 Follow the instructions to complete the authentication process.
 
-A successfully authenticated session will be valid for 24 hours, unless you explicitly [log out](#logout).
+A successfully authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
 ## Manage your robots with the Viam CLI
 
