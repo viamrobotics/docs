@@ -144,7 +144,7 @@ viam data export --destination=/home/robot/data --data_type=tabular --component_
 | --component_model   | filter by specified component model       |export, delete|false |
 | --start      | ISO-8601 timestamp indicating the start of the interval       |export, delete|false |
 | --end      | ISO-8601 timestamp indicating the end of the interval       |export, delete|false |
-| --location_ids      | filter by specified location id (accepts comma-separated list)       |false |
+| --location_ids      | filter by specified location id (accepts comma-separated list)       |export, delete|false |
 | --method       | filter by specified method       |export, delete|false |
 | --mime_types      | filter by specified MIME type (accepts comma-separated list)       |export, delete|false |
 | --org_ids     | filter by specified organizations id (accepts comma-separated list)       |export, delete|false |
