@@ -15,22 +15,15 @@ The CLI lets you:
 
 ## Install
 
-Currently, the Viam CLI is included [with the RDK open-source repository](https://github.com/viamrobotics/rdk/tree/main/cli).
-
-To use the CLI, first clone the Viam RDK repository with git:
+You can install the Viam CLI with the 'go install' command (which requires that you first have the [Go language installed](https://go.dev/doc/install) on your system):
 
 ``` bash
-git clone https://github.com/viamrobotics/rdk.git
+go install go.viam.com/rdk/cli/cmd@latest
 ```
 
-Then, from the root of the repository, run the following command to install the CLI:
-
-``` bash
-go build -o ~/go/bin/viam cli/cmd/main.go
-```
-
-Now, issue the *viam* command from your terminal.
-You should see help instructions returned.  If you do not, it is likely that your local go *bin/* path needs to be made available in your environment.
+Once installed, issue the *viam* command from your terminal.
+You should see help instructions returned.
+If you do not, it is likely that your local go *bin/* path needs to be made available in your environment.
 Do this by running:
 
 ``` bash
@@ -50,14 +43,9 @@ viam auth
 
 This will open a new browser window with a prompt to start the authentication process.
 If a browser window does not open, the CLI will present a URL for you to manually open in your browser.
+Follow the instructions to complete the authentication process.
 
-<img src="../img/cli/auth_start.png"  style="border:1px solid" alt="Viam CLI auth process." title="Viam CLI auth process." width="300" />
-
-After you click confirm, you will be prompted to sign up for Viam if you have not, or sign in if you have an account and are not yet signed in.
-After you have successfully been confirmed as logged-in, you will get a success screen, and can now use the Viam CLI.
-Your authentication session will be valid for 24 hours, unless you explicitly [log out](#logout).
-
-<img src="../img/cli/auth_end.png"  style="float;right;border:1px solid" alt="Viam CLI auth process complete." title="Viam CLI auth process complete." width="300" />
+A successfully authenticated session will be valid for 24 hours, unless you explicitly [log out](#logout).
 
 ## Manage your robots with the Viam CLI
 
@@ -105,69 +93,6 @@ viam auth print-access-token
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | print-access-token      | prints the access token the CLI will use during an authenticated CLI session      | - |
-| help      | return help      | - |
-
-### logout
-
-The *logout* command ends an authenticated CLI session
-
-#### synopsis
-
-``` bash
-viam logout
-```
-
-#### command options
-
-None.
-
-### whoami
-
-The *whoami* command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is not an authenticated session.
-
-#### synopsis
-
-``` bash
-viam whoami
-```
-
-#### command options
-
-None.
-
-### organizations
-
-The *organizations* command lists all organizations that the authenticated user belongs to.
-
-#### synopsis
-
-``` bash
-viam organizations list
-```
-
-#### command options
-
-|        command option     |       description      | positional arguments
-| ----------- | ----------- | ----------- |
-| list      | list all organizations (name and id) that the authenticated user belongs to    | - |
-| help      | return help      | - |
-
-### locations
-
-The *locations* command lists all locations that the authenticated user has access to, grouped by organization.
-Results can be filtered by organization.
-
-#### synopsis
-
-``` bash
-viam locations list [<organization id>]
-```
-
-#### command options
-
-|        command option     |       description      | positional arguments
-| ----------- | ----------- | ----------- |
-| list      | list all locations (name and id) that the authenticated user has access to, grouped by organization  | **organization id** : return results for specified organization only |
 | help      | return help      | - |
 
 ### data
@@ -223,29 +148,50 @@ viam data export --destination=/home/robot/data --data_type=tabular --component_
 | --robot_name *value*     | filter by specified robot name       |export, delete|false |
 | --tags *value*     | filter by specified tag (accepts comma-separated list)       |export, delete|false |
 
-### robots
+### locations
 
-The *robots* command lists all robots that the authenticated user has access to, filtered by organization and location.
+The *locations* command lists all locations that the authenticated user has access to, grouped by organization.
+Results can be filtered by organization.
 
 #### synopsis
 
 ``` bash
-viam robots list
+viam locations list [<organization id>]
 ```
 
 #### command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| list      | list all robots (name and id) that the authenticated user has access to in the specified organization and location  |- |
-| help      | return help|-|
+| list      | list all locations (name and id) that the authenticated user has access to, grouped by organization  | **organization id** : return results for specified organization only |
+| help      | return help      | - |
 
-##### named arguments
+### logout
 
-|        argument     |       description | applicable commands | required
-| ----------- | ----------- | ----------- | ----------- |
-| --organization *value*     | organization name to filter by       |list|true |
-| --location *value*     |  location name to filter by   |list|true |
+The *logout* command ends an authenticated CLI session
+
+#### synopsis
+
+``` bash
+viam logout
+```
+
+### organizations
+
+The *organizations* command lists all organizations that the authenticated user belongs to.
+
+#### synopsis
+
+``` bash
+viam organizations list
+```
+
+#### command options
+
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| list      | list all organizations (name and id) that the authenticated user belongs to    | - |
+| help      | return help      | - |
 
 ### robot
 
@@ -337,6 +283,40 @@ For example:
 
 The *--stream* argument, when included in the CLI command prior to the --data command will stream data back at the specified interval.
 
+### robots
+
+The *robots* command lists all robots that the authenticated user has access to, filtered by organization and location.
+
+#### synopsis
+
+``` bash
+viam robots list
+```
+
+#### command options
+
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| list      | list all robots (name and id) that the authenticated user has access to in the specified organization and location  |- |
+| help      | return help|-|
+
+##### named arguments
+
+|        argument     |       description | applicable commands | required
+| ----------- | ----------- | ----------- | ----------- |
+| --organization *value*     | organization name to filter by       |list|true |
+| --location *value*     |  location name to filter by   |list|true |
+
+### whoami
+
+The *whoami* command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is not an authenticated session.
+
+#### synopsis
+
+``` bash
+viam whoami
+```
+
 ## Global options
 
 Global options can be passed after the *viam* CLI keyword with any subsequent command.
@@ -344,4 +324,3 @@ Global options can be passed after the *viam* CLI keyword with any subsequent co
 |        global option     |       description |
 | ----------- | ----------- |
 | --debug | enable debug logging (default: false) |
-| --config <file>| load configuration from *file* |
