@@ -66,7 +66,7 @@ viam [global options] command [command options] [arguments...]
 | [global options](#global-options)      | *optional* - list of flags that apply for commands      |
 | [command](#commands)  | *required* - the specific CLI command to run        |
 | command options   | *required for some commands*  - the operation to run for the specified command.     |
-| arguments   | *required for some commands* arguments for the specified command operation. Some commands take positional arguments, some named arguments      |
+| arguments   | *required for some commands* - the arguments for the specified command operation. Some commands take positional arguments, some named arguments .     |
 
 ### CLI help
 
