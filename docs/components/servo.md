@@ -9,12 +9,12 @@ icon: "img/components/servo.png"
 # SME: #team-bucket
 ---
 
-The Viam servo component is designed to support hobby servos, not servomotors.
+The Viam servo component supports hobby servos.
 
 Hobby servos are a type of [actuator](https://en.wikipedia.org/wiki/Actuator).
 A hobby servo consists of a small motor with built-in closed-loop control.
 
-- Configure an industrial servomotor as a [motor](/components/motor/) with an [encoder](/components/encoder/).
+- The servo component does not support servomotors. To configure an industrial servomotor, use the [motor](/components/motor/) component with an [encoder](/components/encoder/).
 
 Most robots with a servo will need at least the following hardware:
 
