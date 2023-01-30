@@ -288,7 +288,7 @@ The format of what is passed to the `--data` argument is:
 '{"arg1": "val1"}' <protobuf path>
 ```
 
-The protobuf path for the Viam package and method can be found in the [Viam api package](https://github.com/viamrobotics/api/tree/main/proto/viam)
+You can find the protobuf path for the Viam package and method in the [Viam api package](https://github.com/viamrobotics/api/tree/main/proto/viam) by navigating to the component or service directory and then clicking on the resource file. The protobuf path is the package name.
 
 For example:
 
