@@ -92,27 +92,23 @@ viam organizations help
 
 The *auth* command helps you authorize your device for CLI usage.  See [Authenticate](#authenticate)
 
-Synopsis:
-
 ``` bash
 viam auth
 viam auth print-access-token
 ```
 
-#### command options
+#### Command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| print-access-token      | prints the access token the CLI uses during an authenticated CLI session      | - |
-| help      | return help      | - |
+| `print-access-token`      | prints the access token the CLI uses during an authenticated CLI session      | - |
+| `help`      | return help      | - |
 
 ### data
 
 The `data` command allows you to manage robot data.
 With it, you can export data in the format of your choice or delete specified data.
 You can filter the data this command operates on.
-
-Synopsis:
 
 ``` bash
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
@@ -131,59 +127,55 @@ viam data export --destination=/home/robot/data --data_type=tabular \
 --component_name myComponent
 ```
 
-#### command options
+#### Command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| export      | export data in a specified format to a specified location  | - |
-| delete      | delete data  | - |
-| help      | return help      | - |
+| `export`      | export data in a specified format to a specified location  | - |
+| `delete`      | delete data  | - |
+| `help`      | return help      | - |
 
-##### named arguments
+##### Named arguments
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| --destination      | output directory for downloaded data       |export|true |
-| --data_type     |  data type to be downloaded: either binary or tabular   |export|true |
-| --component_name      | filter by specified component name  |export, delete| false |
-| --component_type     | filter by specified component type       |export, delete|false |
-| --component_model   | filter by specified component model       |export, delete|false |
-| --start      | ISO-8601 timestamp indicating the start of the interval       |export, delete|false |
-| --end      | ISO-8601 timestamp indicating the end of the interval       |export, delete|false |
-| --location_ids      | filter by specified location id (accepts comma-separated list)       |export, delete|false |
-| --method       | filter by specified method       |export, delete|false |
-| --mime_types      | filter by specified MIME type (accepts comma-separated list)       |export, delete|false |
-| --org_ids     | filter by specified organizations id (accepts comma-separated list)       |export, delete|false |
-| --parallel      | number of download requests to make in parallel, with a default value of 10       |export, delete|false |
-| --part_id      | filter by specified part id      |export, delete|false |
-| --part_name     | filter by specified part name       |export, delete|false |
-| --robot_id     | filter by specified robot id       |export, delete|false |
-| --robot_name      | filter by specified robot name       |export, delete|false |
-| --tags      | filter by specified tag (accepts comma-separated list)       |export, delete|false |
+| `--destination`      | output directory for downloaded data       |`export`|true |
+| `--data_type`     |  data type to be downloaded: either binary or tabular   |`export`|true |
+| `--component_name`      | filter by specified component name  |`export`, `delete`| false |
+| `--component_type`     | filter by specified component type       |`export`, `delete`|false |
+| `--component_model`   | filter by specified component model       |`export`, `delete`|false |
+| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`|false |
+| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`|false |
+| `--location_ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`|false |
+| `--method`       | filter by specified method       |`export`, `delete`|false |
+| `--mime_types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
+| `--org_ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`|false |
+| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
+| `--part_id`      | filter by specified part id      |`export`, `delete`|false |
+| `--part_name`     | filter by specified part name       |`export`, `delete`|false |
+| `--robot_id`     | filter by specified robot id       |`export`, `delete`|false |
+| `--robot_name`      | filter by specified robot name       |`export`, `delete`|false |
+| `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`|false |
 
 ### locations
 
 The *locations* command lists all locations that the authenticated session has access to, grouped by organization.
 You can filter results by organization.
 
-Synopsis:
-
 ``` bash
 viam locations list [<organization id>]
 ```
 
-#### command options
+#### Command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| list      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
-| help      | return help      | - |
+| `list`      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
+| `help`      | return help      | - |
 
 ### logout
 
 The `logout` command ends an authenticated CLI session
-
-Synopsis:
 
 ``` bash
 viam logout
@@ -193,18 +185,16 @@ viam logout
 
 The *organizations* command lists all organizations that the authenticated session belongs to.
 
-Synopsis:
-
 ``` bash
 viam organizations list
 ```
 
-#### command options
+#### Command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| list      | list all organizations (name and id) that the authenticated session belongs to    | - |
-| help      | return help      | - |
+| `list`      | list all organizations (name and id) that the authenticated session belongs to    | - |
+| `help`      | return help      | - |
 
 ### robot
 
@@ -215,8 +205,6 @@ This includes:
 * Retrieving robot and robot part logs
 * Controlling a robot by issuing component and service commands
 * Accessing your robot via secure shell (when this feature is enabled)
-
-Synopsis:
 
 ``` bash
 viam robot status --organization=<org name> --location=<location name> --robot=<robot id>
@@ -243,39 +231,39 @@ viam robot part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ```
 
-#### command options
+#### Command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| status      | retrieve robot status for a specified robot  | - |
-| logs      | retrieve logs for a specified robot | - |
-| part      | manage a specified robot part  | status, run, logs, shell (see [part positional arguments](#part---positional-arguments)) |
-| help      | return help      | - |
+| `status`      | retrieve robot status for a specified robot  | - |
+| `logs`      | retrieve logs for a specified robot | - |
+| `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
+| `help`      | return help      | - |
 
-##### part - positional arguments
+##### Positional arguments: part
 
 |        argument     |       description
 | ----------- | ----------- | -----------
-| status     | retrieve robot status for a specified robot part  
-| run     |  run a component or service command, optionally at a specified interval.  For commands that return data in their response, you can use this to stream data.
-| logs     |  get logs for the specified robot part
-| shell     |  access a robot part securely via secure shell.  This feature must be enabled.
-| help      | return help
+| `status`     | retrieve robot status for a specified robot part  
+| `run`     |  run a component or service command, optionally at a specified interval.  For commands that return data in their response, you can use this to stream data.
+| `logs`     |  get logs for the specified robot part
+| `shell`     |  access a robot part securely via secure shell.  This feature must be enabled.
+| `help`      | return help
 
-##### named arguments
+##### Named arguments
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| --organization      | organization name that the robot belongs to       |status, logs, part|true |
-| --location     |  location name that the robot belongs to    |status, logs, part|true |
-| --robot      |  robot id for which the command is being issued   |status, logs, part|true |
-| --errors      |  boolean, return only errors (default: false)   |logs|false |
-| --part      |  part name for which the command is being issued    |logs|false |
-| --tail     |  tail (stream) logs, boolean(default false)    |part(logs)|false |
-| --stream      |  if specified, the interval in which to stream the specified data, e.g. 100ms or 1s    |part(run)|false |
-| --data      |  command data for the command being request to run (see [data argument](#part-run---stream-and---data-arguments))   |part(run)|true |
+| `--organization`      | organization name that the robot belongs to       |`status`, `logs`, `part`|true |
+| `--location`     |  location name that the robot belongs to    |`status`, `logs`, `part`|true |
+| `--robot`      |  robot id for which the command is being issued   |`status`, `logs`, `part`|true |
+| `--errors`      |  boolean, return only errors (default: false)   |`logs`|false |
+| `--part`      |  part name for which the command is being issued    |`logs`|false |
+| `--tail`     |  tail (stream) logs, boolean(default false)    |`part logs`|false |
+| `--stream`      |  if specified, the interval in which to stream the specified data, e.g. 100ms or 1s    |`part run`|false |
+| `--data`      |  command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments))   |`part run`|true |
 
-##### part run --stream and --data arguments
+##### Using the --stream and --data arguments
 
 Issuing the *part* command with the `run` positional argument allows you to run component and service (resource) commands for a selected robot part.
 
@@ -305,31 +293,27 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 The *robots* command lists all robots that the authenticated session has access to, filtered by organization and location.
 
-Synopsis:
-
 ``` bash
 viam robots list
 ```
 
-#### command options
+#### Command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| list      | list all robots (name and id) that the authenticated session has access to in the specified organization and location  |- |
-| help      | return help|-|
+| `list`      | list all robots (name and id) that the authenticated session has access to in the specified organization and location  |- |
+| `help`      | return help|-|
 
-##### named arguments
+##### Named arguments
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| --organization     | organization name to filter by       |list|true |
-| --location    |  location name to filter by   |list|true |
+| `--organization`     | organization name to filter by       |list|true |
+| `--location`    |  location name to filter by   |list|true |
 
 ### whoami
 
 The *whoami* command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
-
-Synopsis:
 
 ``` bash
 viam whoami
@@ -341,4 +325,4 @@ You can pass global options after the *viam* CLI keyword with any command.
 
 |        global option     |       description |
 | ----------- | ----------- |
-| --debug | enable debug logging (default: false) |
+| `--debug` | enable debug logging (default: false) |
