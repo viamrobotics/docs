@@ -5,7 +5,7 @@ weight: 60
 simple_list: true
 type: docs
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "Using modular resources and SDKs to extend Viam"
+description: "Using modular resources and SDKs to extend Viam."
 ---
 
 
