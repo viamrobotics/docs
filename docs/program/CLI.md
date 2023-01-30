@@ -50,7 +50,7 @@ A successfully authenticated session is valid for 24 hours, unless you explicitl
 ## Manage your robots with the Viam CLI
 
 With the Viam CLI installed and authenticated, you can use it to issue commands to your robot fleet.
-All Viam CLI calls use the following format:
+All Viam CLI commands use the following format:
 
 <b>viam [global options] command [command options] [arguments...]</b>
 
