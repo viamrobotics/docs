@@ -21,14 +21,12 @@ If you have [Go installed](https://go.dev/doc/install), you can install the Viam
 go install go.viam.com/rdk/cli/cmd@latest
 ```
 
-Once installed, issue the *viam* command from your terminal.
-You should see help instructions returned.
-If you do not, it is likely that your local go *bin/* path needs to be made available in your environment.
-Do this by running:
+To confirm `viam` is installed and ready to use, issue the *viam* command from your terminal.
+If you see help instructions, everything is correctly installed.
+If you do not see help instructions, add your local go *bin/* directory to your `PATH` variable. If you use `bash` as your shell, you can use the following command:
 
 ``` bash
 echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
-```
 
 Note that if you are using a shell other than bash, you may need to modify the above command.
 
