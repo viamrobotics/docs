@@ -11,7 +11,8 @@ icon: "img/components/servo.png"
 
 The Viam servo component supports interfacing with hobby servos, small motors with built-in closed-loop control, installed on robots. These hobby servers are a type of [actuator](https://en.wikipedia.org/wiki/Actuator), and are useful in robotics because their position is easily and precisely controlled.
 
-- The servo component does not support servomotors. To configure an industrial servomotor, use the [motor](/components/motor/) component with an [encoder](/components/encoder/).
+- The servo component does not support servomotors.
+To configure an industrial servomotor, use the [motor](/components/motor/) component with an [encoder](/components/encoder/).
 
 Most robots with a servo need at least the following hardware:
 
@@ -81,7 +82,7 @@ Refer to the following example configuration file, including the board and servo
 
 **Required Attributes**:
 
-In addition to the required fields, all servo models require the following `attributes` in your configuration:
+In addition to the required fields, servo models require the following `attributes` in their configuration:
 
 - `pin` (string): The board pin (with PWM capabilities) that the servo's control wire is attached to.
 Use the pin number, not the GPIO number.
