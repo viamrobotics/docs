@@ -15,7 +15,7 @@ The CLI lets you:
 
 ## Install
 
-You can install the Viam CLI with the 'go install' command (which requires that you first have the [Go language installed](https://go.dev/doc/install) on your system):
+If you have [Go installed](https://go.dev/doc/install), you can install the Viam CLI with the 'go install' command:
 
 ``` bash
 go install go.viam.com/rdk/cli/cmd@latest
