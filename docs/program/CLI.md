@@ -115,7 +115,7 @@ viam data export --destination=<output path> --data-type=<output data type> [...
 viam data delete [...named args]
 ```
 
-##### examples
+Examples:
 
 ``` bash
 # export tabular data to /home/robot/data for org abc, location 123
