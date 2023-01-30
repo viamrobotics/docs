@@ -57,7 +57,7 @@ Install ORB-SLAM3 with one of these commands:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Run ORB-SLAM2 in Live Mode with a Webcam
+## Run ORB-SLAM3 in Live Mode with a Webcam
 
 Run ORB-SLAM3 as a live SLAM service with a webcam.
 
@@ -336,6 +336,6 @@ If no map can be generated using the offline dataset, a new dataset should be ge
 
 ## Additional Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/docs/appendix/troubleshooting.md).
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.

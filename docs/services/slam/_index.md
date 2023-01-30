@@ -246,7 +246,6 @@ You can use all parameters except for `mode` and `debug` to fine-tune ORB-SLAM's
 | `orb_n_levels` | (optional) ORB parameter. Number of levels in the scale pyramid. |  8 |
 | `orb_n_ini_th_fast` | (optional) ORB parameter. Initial FAST threshold. | 20 |
 | `orb_n_min_th_fast` | (optional) ORB parameter. Lower threshold if no corners detected. | 7 |
-
 | `stereo_th_depth` | (optional) Number of stereo baselines used to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | 40 |
 | `depth_map_factor` | (optional) Factor to transform the depth map to real units. | 1000 |
 | `stereo_b` | (optional) Stereo baseline in meters. | 0.0745 |
