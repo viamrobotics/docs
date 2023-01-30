@@ -20,20 +20,29 @@ Since gantries are linearly moving components, each gantry can only move in one 
 A multi-axis gantry is composed of many single-axis gantries.
 The multiple axis system is composed of the supplied gantry names.
 
-Most robots with gantries will need at least the following hardware:
+- This makes it a common machine design for simple positioning and placement, as a linear axis establishes a stiffer layout across the robot than an open chain of links, making holding or repetitively positioning the end effector more attainable.
+- Configure a customized encoded motor controller with a gantry to move the linear rail.
 
-* A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins.
-* A [motor](/components/motor/).
-  * Encoded motor
-  * Stepper motor: Requires setting limit switches in the config of the gantry or setting offsets in the config of the stepper motor.
-* Limit switches to attach to the brackets
+This component abstracts the hardware of a gantry to give you an easy interface for moving linear rails, even many at once (multi-axis).
 
-<!-- Each gantry can be given a reference [frame](/services/frame-system/) in the configuration that describes its translation and orientation to the world. -->
-<!-- The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation. -->
+- A multi-axis gantry component is made up of many single-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
+- Each gantry can be given a reference [frame](/services/frame-system/) in configuration that describes its translation and orientation to the world.
+- The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation. The “world” frame of each gantry becomes the moveable frame of the gantry.
 
-## Configuration
+Gantry components can only be controlled in terms of linear motion.
+Each gantry can only move in one axis within the limits of its length.
 
-### Attributes of a Single-Axis Gantry
+**Requirements:**
+
+- A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins.
+- A [motor](/components/motor/).
+  - Encoded motor
+  - Stepper motor: Requires setting limit switches in the config of the gantry or setting offsets in the config of the stepper motor.
+- Limit switches to attach to the brackets
+
+### Configuration
+
+#### Single-Axis
 
 For a single-axis gantry, the attributes for configuration are:
 
@@ -128,7 +137,7 @@ For a single-axis gantry, the attributes for configuration are:
 
 A frame can also be added to a one axis gantry attribute to describe its position in the local "world" [frame](/services/frame-system/).
 
-### Multi-Axis Gantry Attributes
+#### Multi-Axis
 
 A multi-axis gantry component is made up of many one-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
 <!-- Each gantry can be given a reference [frame](/services/frame-system/) in configuration that describes its translation and orientation to the world.
@@ -192,10 +201,11 @@ Refer to the following example configuration for a multi-axis gantry:
   </tr>
 </table>
 
-## Gantry Methods
+## Troubleshooting
 
-All gantries implement the following methods:
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
+<<<<<<< HEAD
 <table>
   <tr>
    <td><strong>Method Name</strong>
@@ -634,3 +644,6 @@ if err != nil {
 ## Implementation
 
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/gantry/index.html)
+=======
+>>>>>>> dc7b93c (mdlint)
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
