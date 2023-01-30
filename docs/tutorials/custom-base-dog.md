@@ -154,7 +154,7 @@ Save the file.
 Go to the [robot page](https://app.viam.com/robots) for your robot dog that you created when installing `viam-server` on the Pi.
 
 In the banner towards the top of the page, the IP address of the robot dog Pi is displayed under **ips**.
-Copy the IP.
+Copy the IP to your clipboard.
 Inside <file>dog_test.py</file>, replace `PASTE DOG IP ADDRESS HERE` with the copied IP.
 Save the file.
 
