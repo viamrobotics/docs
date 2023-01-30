@@ -309,7 +309,7 @@ viam robots list
 
 ### whoami
 
-The *whoami* command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is not an authenticated session.
+The *whoami* command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
 
 #### synopsis
 
