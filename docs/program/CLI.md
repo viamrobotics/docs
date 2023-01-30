@@ -223,6 +223,7 @@ viam robot part status --organization=<org name> --location=<location name> --ro
 viam robot part run --organization=<org name> --location=<location name> --robot=<robot id> [--stream] --data <meth>
 viam robot part shell --organization=<org name> --location=<location name> --robot=<robot id>
 ```
+
 ##### examples
 
 ``` bash
