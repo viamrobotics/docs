@@ -281,7 +281,7 @@ The `--data` parameter is required and you must specify both:
 * Method arguments in JSON format
 * A resource method (in the form of the protobuf package and method path)
 
-The format of what is passed to the --data argument is:
+The format of what is passed to the `--data` argument is:
 
 ``` bash
 '{"arg1": "val1"}' <protobuf path>
