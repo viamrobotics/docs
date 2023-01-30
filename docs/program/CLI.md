@@ -162,7 +162,7 @@ viam data export --destination=/home/robot/data --data_type=tabular \
 ### locations
 
 The *locations* command lists all locations that the authenticated session has access to, grouped by organization.
-Results can be filtered by organization.
+You can filter results by organization.
 
 #### synopsis
 
