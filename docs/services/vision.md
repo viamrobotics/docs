@@ -131,7 +131,7 @@ vision.VisModelConfig{
 if err != nil {
     logger.Fatalf("could not add vision model: %v", err)
 }
-detNames, err := visService.DetectorNames(context.Background())
+detNames, err := visService.DetectorNames(context.Background(), nil)
 if err != nil {
     logger.Fatalf("could not list detectors: %v", err)
 }
@@ -139,7 +139,7 @@ logger.Info("Vision Resources:")
 logger.Info(detNames)
 
 // Apply the color detector to the image from your camera (configured as "camera_1")
-detections, err := visService.DetectionsFromCamera(context.Background(), "camera_1", "detector_1")
+detections, err := visService.DetectionsFromCamera(context.Background(), "camera_1", "detector_1", nil)
 if err != nil {
     logger.Fatalf("could not get detections: %v", err)
 }
