@@ -10,7 +10,7 @@ tags: ["data management", "cloud", "sync"]
 Prior to exporting data for the first time, verify that Go is installed.
 Then, to export data:
 
-1. Install the [Viam CLI](/program/cli) and [authenticate](/program/cli/#authenticate).
+1. Install the [Viam CLI](/program/cli/) and [authenticate](/program/cli/#authenticate).
 
 2. Below the **SEARCH** button in the **FILTERING** panel, click **COPY EXPORT COMMAND** to copy the export command to the clipboard.
 
