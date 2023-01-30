@@ -86,7 +86,7 @@ viam organizations help
 
 ### auth
 
-The *auth* command prompts the user to authorize their device for CLI usage.  See [Authenticate](#authenticate)
+The *auth* command helps you authorize your device for CLI usage.  See [Authenticate](#authenticate)
 
 #### synopsis
 
