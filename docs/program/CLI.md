@@ -33,6 +33,7 @@ If you do not see help instructions, add your local go *bin/* directory to your 
 
 ``` bash
 echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
+```
 
 {{% alert title="Tip" color="tip" %}}
 If you are using a shell other than bash, you may need to modify the above command.
