@@ -214,15 +214,13 @@ Without this file, classes will read “1”, “2”, etc.
 
 ##### TFLite Model Limitations
 
-We strongly recommend that you package your .tflite model with metadata in the standard form given by the schema (<a href="https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs" target="_blank">found here</a>[^schema]). In the absence of metadata, your TFLite model must satisfy the following requirements:
+We strongly recommend that you package your .tflite model with metadata in the standard form given by [this schema](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs). In the absence of metadata, your TFLite model must satisfy the following requirements:
 
 1. A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1)
-1. At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
-1. Bounding box output tensor must be ordered [x x y y], where x is an x-boundary (xmin or xmax) of the bounding box and the same is true for y. Each value should be between 0 and 1, designating the percentage of the image at which the boundary can be found.
+2. At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
+3. Bounding box output tensor must be ordered [x x y y], where x is an x-boundary (xmin or xmax) of the bounding box and the same is true for y. Each value should be between 0 and 1, designating the percentage of the image at which the boundary can be found.
 
 These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1. Feel free to use one of these architectures or build your own!
-
-[^schema]: TFLite schema: <a href="https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs" target="_blank">ht<span></span>tps://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs</a>
 
 ## Classification
 
@@ -280,20 +278,18 @@ The types of segmenters supported are:
 * **min_points_in_segment** is an integer that sets a minimum size to the returned objects, and filters out all other found objects below that size.
 * **clustering_radius_mm** is a floating point number that specifies how far apart points can be (in units of  mm) in order to be considered part of the same object.  A small clustering radius will more likely split different parts of a large object into distinct objects.  A large clustering radius may aggregate closely spaced objects into one object.
   * 3.0 is a decent starting value.
-* **mean_k_filtering (optional)** is an integer parameter used in <a href="https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html" target="_blank">a subroutine to eliminate the noise in the point clouds</a>[^mkf].  It should be set to be 5-10% of the number of min_points_in_segment.
+* **mean_k_filtering (optional)** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).  It should be set to be 5-10% of the number of min_points_in_segment.
   * Start with 5% and go up if objects are still too noisy.
   * If you don’t want to use the filtering, set the number to 0 or less.
-
-[^mkf]: Mean K: <a href="https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html" target="_blank">ht<span></span>tps://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html</a>
 
 #### Detector Segmenters
 
 * **detector_name** is the name of the detector already registered in the vision service that will be turned into a segmenter.
 * **confidence_threshold_pct** is a number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5.
-* **mean_k** is an integer parameter used in <a href="https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html" target="_blank">a subroutine to eliminate the noise in the point clouds</a>[^mkf].  It should be set to be 5-10% of the minimum segment size.
+* **mean_k** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).  It should be set to be 5-10% of the minimum segment size.
   * Start with 5% and go up if objects are still too noisy.
   * If you don’t want to use the filtering, set the number to 0 or less.
-* **sigma** is a floating point parameter used in <a href="https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html" target="_blank">a subroutine to eliminate the noise in the point clouds</a>[^mkf].
+* **sigma** is a floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).
     It should usually be set between 1.0 and 2.0.
   * 1.25 is usually a good default.
     If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower.

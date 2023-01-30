@@ -27,7 +27,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 ## What you'll need
 
-- A single board computer [running an instance of viam-server](/installation/rpi-setup/)
+- A single board computer [running an instance of viam-server](/installation/prepare/rpi-setup/)
   - This tutorial assumes the use of a Raspberry Pi running a 64-bit Linux distribution, but these instructions could potentially be adapted for other boards.
 - [A wheeled base component](/components/base/)
   - We used a [SCUTTLE Robot](https://www.scuttlerobot.org/shop/) for this project, but any number of other wheeled bases could work, as long as they can carry the compute module and camera, and can turn in place.
@@ -43,7 +43,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 ## Configuration using Viam
 
-If you haven’t already, please set up the Raspberry Pi per [these instructions](/installation/rpi-setup/).
+If you haven’t already, please set up the Raspberry Pi per [these instructions](/installation/prepare/rpi-setup/).
 
 ### Configuring the hardware components
 
@@ -80,12 +80,10 @@ We’ll use the Viam [vision service color detector](/services/vision/#detection
 
 In the **SERVICES** section of the **CONFIG** tab, configure a color detector for the color of your tape line.
 
-- Use a color picker like <a href="https://colorpicker.me/" target="_blank">colorpicker.me</a>[^colorpick] to approximate the color of your line and get the corresponding hexadecimal hash to put in your config.
+- Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding hexadecimal hash to put in your config.
 Put this hash in the `detect_color` parameter.
 We used #19FFD9 to represent the color of green electrical tape.
 
-[^colorpick]: Color picker: <a href="https://colorpicker.me/" target="_blank">ht<span></span>tps://colorpicker.me/</a>
-  
 - We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
 What this will look like in the Config Builder:
@@ -395,7 +393,7 @@ Be sure to update your `detect_color` parameter accordingly.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-You can also ask questions on the [Viam Community Slack](http://viamrobotics.slack.com/) and we will be happy to help.
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/) and we will be happy to help.
 
 ## Bonus Challenges
 

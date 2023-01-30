@@ -161,7 +161,7 @@ More detailed instructions are found in the sections below.
 ### Install Raspberry Pi OS and viam-server
 
 Install the 64-bit Raspberry Pi OS using the [Raspberry Pi imager](https://www.raspberrypi.com/software/) and then install viam-server.
-For more detailed instructions, check out our Raspberry Pi [installation guide](/installation/rpi-setup/).
+For more detailed instructions, check out our Raspberry Pi [installation guide](/installation/prepare/rpi-setup/).
 
 ### Attach the Raspberry Pi to the Rover
 

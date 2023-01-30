@@ -13,9 +13,7 @@ SLAM, which stands for Simultaneous Localization and Mapping, is an important ar
 
 As of 01 June 2022, we support the following SLAM libraries:
 
-<a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank">ORBSLAM3</a>[^orb]
-
-[^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORBSLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
+[ORBSLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
 
 ## Current Architecture
 

@@ -32,9 +32,9 @@ Otherwise, you'll see an estimate of the next available start time.
 Click **RESERVE ROVER** to get in the queue.
 If the wait is longer than four minutes you will receive a “Time to Play” email when it’s your turn.
 
-### Access your Rover Rental
+### Access your rover rental
 
-From the confirmation email, click **Take Me to My Rover** to open Try Viam with your Robot in the **CONTROL** tab, or click **TRY NOW** from <a href="https://app.viam.com/try" target="_blank">the TRY page</a>.
+From the confirmation email, click **Take Me to My Rover** to open Try Viam with your robot in the **CONTROL** tab, or click **TRY NOW** from <a href="https://app.viam.com/try" target="_blank">the TRY page</a>.
 
 Try Viam steps through various screens as the system readies your robot.
 
@@ -57,18 +57,18 @@ Upon **TRY YOUR ROBOT** you will land on the robot page for the rental rover wit
 The header contains the name of the rover, the host, and the IP address.
 The rental system randomly generates this information for each rental session:
 
-![Screenshot of the top banner of a Try Viam rover robot page. The randomly generated name for this rover is "solitary-voice".](../img/try-viam/bannerinfo.png)
+![Screenshot of the top banner of a Try Viam rover robot page. The randomly generated name for this rover is "solitary-voice."](../img/try-viam/bannerinfo.png)
 
 The **CONTROL** tab contains panels for each component configured on the rover: the base, the left and right motors, the web game pad, the board, and two cameras.
 The components are not displayed in any particular order and that order may vary between rovers and rentals.
 
 ![Screenshot of the component panels on the CONTROL tab of the Try Viam rover. None of them are expanded yet so they display as thin rectangles with component names and types shown.](../img/try-viam/control-panel-list.png)
 
-### Base Control
+### Base control
 
 Click the `viam_base` rectangle to expand the base control pane, revealing the camera feed and driving interfaces described below.
 
-#### Camera Control (from the base panel)
+#### Camera control (from the base panel)
 
 Selecting a camera allows you to view your Rental Rover as you move it around.
 You can choose “cam” for the front-facing camera or “overhead-cam:cam” for an overhead view of your rover.
@@ -95,7 +95,7 @@ This automation is for safety purposes.
 
 {{% /alert %}}
 
-#### Movement Control
+#### Movement control
 
 To move your rover using the Viam app, click on **viam_base** and toggle **Keyboard disabled** to off (grey) to enable.
 
@@ -105,7 +105,7 @@ You can also use your keyboard’s arrow keys to control the movement.
 
 Note that keyboard control is disabled when the **Keyboard Disabled** switch is greyed out.
 
-##### Discrete Movement Control
+##### Discrete movement control
 
 If you toggle from **KEYBOARD** to the **DISCRETE** tab, then you’ll see different movement modes: “Straight” and “Spin,” different movement types: “Continuous” and “Discrete,” and directions: “Forwards” and “Backwards.”
 In continuous movement mode you can set a speed at which the rover will move indefinitely in the specified direction.
@@ -113,7 +113,7 @@ In discrete movement mode you can set a speed at which to move and a distance to
 
 ![Screenshot of the DISCRETE tab of the viam_base component panel. Movement mode, movement type, and direction mode toggles are shown as well as a speed (mm/sec) field and a distance field (the latter of which is greyed out because the movement type toggle is set to continuous instead of discrete movement).](../img/try-viam/discrete.png)
 
-### Camera Control (from the camera panels)
+### Camera control (from the camera panels)
 
 Though the camera streams are accessible from the base component panel, you can also click either of the individual camera component panels in the **CONTROL** tab to view them individually and access more features.
 In these panels, you can refresh your camera at a certain frequency (live, refresh every minute, etc.) and you can export screenshots from your camera streams.
@@ -126,9 +126,9 @@ In these panels, you can refresh your camera at a certain frequency (live, refre
 
 ![Screenshot of the overhead camera panel (for the component named "overhead-cam").](../img/try-viam/overhead-cam-panel.png)
 
-### Motor Control
+### Motor control
 
-Some other preconfigured components in your robot config are the motors (which allow you to move the base).
+Some other components in your robot config are the motors (which allow you to move the base).
 We named these motors “left” and “right” corresponding to their location on the rover base.
 Their initial state is **Idle**.
 You can click on the each panel and make your motor **RUN** or **STOP**.
@@ -146,15 +146,15 @@ Both motors running at the same time would look like this:
 In these panels, you can change the motors’ direction of rotation (which will cause them to go forward or backwards), and their power levels (which will cause them to go faster or slower).
 You can also see their current positions (based on encoder readings) in real time.
 
-#### Board Control
+#### Board control
 
-You will see a panel for a board component named "local".
+You will see a panel for a board component named "local."
 The Viam Rover's board is a Raspberry Pi.
 The board panel allows the user to get and set the states of individual GPIO pins on the board.
 
 ![Screenshot of the board panel in the CONTROL tab, including fields to get and set GPIO pin states.](../img/try-viam/board-panel.png)
 
-#### Web Gamepad Control
+#### Web gamepad control
 
 Finally, you will see your web gamepad component panel.
 This type of input is disabled by default, but if you have a compatible gamepad you'd like to use to drive the rover, you can enable it by toggling the **Enabled** switch.
@@ -174,25 +174,25 @@ Now that you learned how to drive your rover with the UI, let’s go a bit furth
 One other thing you can do within your experience is see your configuration.
 
 On the Viam app, navigate to the **COMPONENTS** subtab, under **CONFIG**.
-There you can view each component in the robot and obtain more information about their configuration such as their attributes, component dependencies, pin assignments, etc.:
+There you can view the configuration for each component in the robot: their attributes, component dependencies, pin assignments, etc.
 
 ![Screenshot of the CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](../img/try-viam/config-builder.png)
 
-### Board Configuration
+### Board configuration
 
 The [board component](/components/board/) represents the Raspberry Pi on the rover.
 We named it "local" and configured it with **Type** "board" and **Model** "pi" (the model for Raspberry Pis).
 
-### Encoder Configuration
+### Encoder configuration
 
-The encoders on the right and left motors are named, respectively, “Renc” and “Lenc”.
+The encoders on the right and left motors are named, respectively, “Renc” and “Lenc.”
 They must be configured before the motors because the motors will depend on the encoders.
 
 ![Screenshot of the right encoder config panel with the board attribute set to "local" and the pins struct containing "i" set to "re".](../img/try-viam/right-encoder.png)
 
 ![Screenshot of the left encoder config panel.](../img/try-viam/left-encoder.png)
 
-### Motor Configuration
+### Motor configuration
 
 Both motors on this rover are of model "gpio" which is the model for basic DC motors.
 
@@ -203,7 +203,7 @@ The **Attributes** pane contains the current JSON configuration for this compone
 Beside it, the **Attribute Guide** contains a complete list of available attributes for this component type.
 Click **Go to Fancy** to return to the GUI format.
 
-### Base Configuration
+### Base configuration
 
 The "left" and "right" attributes represent the motors corresponding to the left and right sides of the rover.
 Since we named the motors "left" and "right", the lists of motors for the left and right sides are simply "left", and "right", respectively.
@@ -222,7 +222,7 @@ The "spin_slip_factor" of 1.76 is used in steering calculations to account for s
 
 ![Screenshot of the base configuration panel, showing right and left motors, wheel circumference set to 217, width set to 260mm, and spin slip factor set to 1.76.](../img/try-viam/base-config.png)
 
-### Camera Configuration
+### Camera configuration
 
 In the camera component, you will see the **Type** as “camera” and the **Model** as “webcam”.
 The **Video Path** is “video0”.
@@ -231,10 +231,10 @@ For more information on choosing the correct video path, refer to our [camera co
 
 ![Screenshot of the webcam configuration panel. The video path is set to "video0".](../img/try-viam/camera-config.png)
 
-### Gamepad Configuration
+### Gamepad configuration
 
 The final component is the web gamepad.
-The gamepad has a **Type** of “input_controller” and the **Model** is "webgamepad".
+The gamepad has a **Type** of “input_controller” and the **Model** is "webgamepad."
 
 ![Screenshot of the gamepad configuration panel. No attributes are configured.](../img/try-viam/gamepad-config.png)
 
@@ -285,12 +285,13 @@ Your rover rental location now contains your robot with the final configuration 
 You can write your own code to control the Viam robot using Viam's SDKs.
 Learn how to use a Viam SDK to make the Viam Rover drive in a square in our [using the Viam SDK to control your Viam Rover tutorial](/tutorials/viam-rover/try-viam-sdk/).
 
-## Using Vision Service with the Viam Rover
+## Using the vision service with the Viam Rover
 
-You can use Viam's Vision Service to detect colors around the Viam rink with a detection camera. Learn how to use the Vision Service in our [detect a color with your Viam Rover tutorial](/tutorials/viam-rover/try-viam-color-detection/).
+You can use Viam's vision service to detect colors around the Viam rink with a detection camera.
+Learn how to use the vision service in our [detect a color with your Viam Rover tutorial](/tutorials/viam-rover/try-viam-color-detection/).
 
-## Next Steps
+## Next steps
 
-If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
 
 If you'd like to pre-order your own Viam Rover, you can do so at <a href="https://www.viam.com/resources/rover" target="_blank">this link</a>.

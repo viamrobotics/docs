@@ -54,12 +54,14 @@ To enable the data capture on your robot, do the following:
 Here, you will add a service so your robot can sync data to the Viam app in the cloud.
 
 - For "type", select "Data Manager" from the drop-down, and give your service a name.
-We used "viam_data_manager" for this tutorial.
+We used "viam-data-manager" for this tutorial.
 
 - Be sure that Data Capture is enabled and cloud sync is disabled (for now).
 Enabling data capture here will allow you to capture data from your robot's components.
 You can leave the default directory in which your captured data is stored on-robot.
 By default, it saves it to the <file>/.viam/capture</file> directory on your robot.
+
+- Set **Interval** to **1**.
 
 ![Screenshot from the Data Management service showing the Data Capture option enabled and the cloud sync option disabled.](../img/data-management/image3.png)
 
@@ -67,7 +69,8 @@ By default, it saves it to the <file>/.viam/capture</file> directory on your rob
 
 ## Configuring data capture for a component
 
-With data capture enabled, you can now configure data capture for specific components on your robot running Viam. You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
+With data capture enabled, you can now configure data capture for specific components on your robot running Viam.
+You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
 
 {{% alert title="Note" color="note" %}}
 
@@ -142,7 +145,8 @@ Now, let's export that image data from the Viam's Data Management service in the
 
 To export data from Viam, you will need to do the following:
 
-On your computer, initialize a new Go module in a new directory. You can do this by running the following in your terminal:
+On your computer, initialize a new Go module in a new directory.
+You can do this by running the following in your terminal:
 
 ```bash
 mkdir viam-rover-data-capture && cd viam-rover-data-capture
@@ -155,7 +159,8 @@ Next you will need to install the Viam CLI:
 go get go.viam.com/rdk/cli/cmd
 ```
 
-Once you have the Viam CLI installed, you will need to authenticate with Viam. You can do this by running the following command and following the prompts in your terminal:
+Once you have the Viam CLI installed, you will need to authenticate with Viam.
+You can do this by running the following command and following the prompts in your terminal:
 
 ```bash
 go run go.viam.com/rdk/cli/cmd auth
@@ -184,4 +189,4 @@ You could use your data to track your robot's usage over time, and even build da
 If you are ready to start building your own robots with Viam, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](/tutorials/).
 You can also purchase your very own Viam Rover at <a href="https://www.viam.com/resources/rover" target="_blank">viam.com/resources/rover</a>.
 
-If you have any issues or if you want to connect with other developers learning how to build robots with Viam, head over to the <a href="http://viamrobotics.slack.com" target="_blank">Viam Community Slack</a>.
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, head over to the <a href="https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw" target="_blank">Viam Community Slack</a>.

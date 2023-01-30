@@ -85,4 +85,4 @@ Use [Try Viam](/try-viam/).
 
 If you already have your own robot, [set up `viam-server`](/installation/) and learn how Viam helps you prototype and scale.
 
-For more inspiration, check out our [tutorials](/tutorials) or visit our community on [Slack](https://viamrobotics.slack.com/) to get help or workshop ideas with others!
+For more inspiration, check out our [tutorials](/tutorials) or visit our community on [Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/) to get help or workshop ideas with others!

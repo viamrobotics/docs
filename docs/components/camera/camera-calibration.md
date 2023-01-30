@@ -8,10 +8,9 @@ tags: ["camera", "components"]
 ---
 ## Camera Calibration
 
-To calibrate a camera, follow the instructions in the [camera calibration repository](https://github.com/viam-labs/camera-calibration)[^cc] to obtain the `intrinsic_parameters` and `distortion_parameters`.
-[^cc]: Camera calibration repository: <a href="https://github.com/viam-labs/camera-calibration" target="_blank">ht<span></span>tps://github.com/viam-labs/camera-calibration</a>
+To calibrate a camera, follow the instructions in the [camera calibration repository](https://github.com/viam-labs/camera-calibration) to obtain the `intrinsic_parameters` and `distortion_parameters`.
 
-You will need to print out the checkerboard and take images of the checkerboard from various angles by clicking **Export Screenshot** on the camera component control.  
+You will need to print out the checkerboard and take images of the checkerboard from various angles by clicking **Export Screenshot** on the camera component control.
 
 After running the calibration script from the [camera calibration repository](https://github.com/viam-labs/camera-calibration), you'll get a print out of the `intrinsic_parameters` and `distortion_parameters`. We will use the values we've obtained from our camera as an example moving forward:
 

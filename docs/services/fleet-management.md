@@ -57,8 +57,6 @@ Logs are automatically sent to the cloud so you can view them easily.
 
 If the user uses remote control in the Viam app ([https://app.viam.com](https://app.viam.com)) UI, then all communication to the robot is via WebRTC.
 
-* <a href="https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection" target="_blank">WebRTC Docs</a>[^webrtc]
-
-[^webrtc]:WebRTC Documentation: <a href="https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection" target="_blank">ht<span></span>tps://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection</a>
+* [WebRTC Docs](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection)
 
 Local communication between parts can be done over gRPC or WebRTC.

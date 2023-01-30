@@ -57,8 +57,7 @@ Here are details about each of the fields in the camera config:
 }
 ```
 
-Follow the <a href="https://github.com/viam-labs/camera-calibration" target="_blank">camera calibration tutorial</a>[^cc] to calibrate a camera and extract the `intrinsic_parameters` and `distortion_parameters`.
-[^cc]: Camera calibration: <a href="https://github.com/viam-labs/camera-calibration" target="_blank">ht<span></span>tps://github.com/viam-labs/camera-calibration</a>
+Follow the [camera calibration tutorial](/components/camera/camera-calibration/) to calibrate a camera and extract the `intrinsic_parameters` and `distortion_parameters`.
 
 ### Webcam
 
@@ -125,7 +124,7 @@ The model for using the velodyne lidar. The velodyne must be running locally at 
     "type": "camera",
     "model" : "velodyne",
     "attributes": {
-        "port": int,  
+        "port": int,
         "ttl_ms": int,
     }
 }
@@ -147,7 +146,7 @@ FFmpeg is a model that allows you to use a video file or stream as a camera.
             "name": string,
             "args": [string, string, ..],
             "kw_args": { ... }
-            } 
+            }
         ],
         "input_kw_args": { ... },
         "output_kw_args": { ... },
@@ -359,8 +358,7 @@ Overlay overlays the depth and color 2D images. Useful in order to debug the ali
 
 The Undistort transform undistorts the input image according to the intrinsics and distortion parameters specified within the camera parameters.
 Currently only supports a Brown-Conrady model of distortion (20 September 2022).
-For further information, please refer to the <a href="https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a" target="_blank">OpenCV docs[^ocvd].
-[^ocvd]: OpenCV docs: <a href="https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a" target="_blank">ht<span></span>tps://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a</a>
+For further information, please refer to the [OpenCV docs](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a).
 
 ```json-viam
 {
