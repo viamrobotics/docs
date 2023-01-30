@@ -49,7 +49,7 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
 
 {{% /alert %}}
 
-2. [Install viam-server and connect your robot to the Viam app](/installation/install/).
+2. [Install `viam-server` and connect your robot to the Viam app](/installation/install/).
 
 3. SSH into the Pi to complete the following steps.
 
@@ -57,6 +57,9 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
 
     ```bash
     sudo apt install pip
+    ```
+
+    ```bash
     sudo apt install git
     ```
 
@@ -148,7 +151,7 @@ Save the file.
 
 ### Find IP address
 
-Go to the [robot page](https://app.viam.com/robots) for your robot dog that you created when installing viam-server on the Pi.
+Go to the [robot page](https://app.viam.com/robots) for your robot dog that you created when installing `viam-server` on the Pi.
 
 In the banner towards the top of the page, the IP address of the robot dog Pi is displayed under **ips**.
 Copy the IP.
@@ -194,7 +197,6 @@ You can also try turning the robot off and on again, and then retrying the proce
 
 From the Raspberry Pi terminal, create a directory inside the home directory to hold your custom code files:
 
-
 ```bash
 mkdir RobotDog
 ```
@@ -226,7 +228,7 @@ Save [<file>my_robot_dog.py</file>](https://github.com/viam-labs/robot-dog-base/
 Now that you defined the methods for the custom component, you need to make your custom component available to any robots trying to connect to it.
 
 Save [<file>python_server.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/python_server.py) into the <file>RobotDog</file> directory.
-The <file>python_server.py</file> file creates an RPC server that forwards gRPC requests from viam-server (or elsewhere) to the custom component.
+The <file>python_server.py</file> file creates an RPC server that forwards gRPC requests from `viam-server` (or elsewhere) to the custom component.
 
 ## Configure the custom component server as a remote
 
