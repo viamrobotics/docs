@@ -23,13 +23,15 @@ Viam offers users an easy-to-use, intuitive method for interfacing with various 
 
 ## The Viam SLAM Service
 
-The Viam SLAM Service supports the integration of custom SLAM libraries with the Viam RDK via the SLAM Service API.
+The Viam SLAM Service supports the integration of custom SLAM libraries with the Viam RDK through the SLAM Service API.
 
-As of October 11, 2022, the following SLAM library is integrated:
+The following SLAM libraries are integrated:
 
 - <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank">ORB-SLAM3</a>[^orb]
+- <a href="https://github.com/cartographer-project" target="_blank">Cartographer</a>[^carto]>
 
 [^orb]: <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3" target="_blank"> ORB-SLAM3: ht<span></span>tps://github.com/UZ-SLAMLab/ORB_SLAM3</a>
+[^carto]: <a href="https://github.com/cartographer-project" target="_blank"> Cartographer: ht<span></span>tps:https://github.com/cartographer-project</a>
 
 {{% alert title="Note" color="note" %}}
 
