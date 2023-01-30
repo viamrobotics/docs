@@ -53,7 +53,7 @@ All three are explained in the following using ORB-SLAM3 as the application exam
 
 ## The SLAM Library Binary
 
-You can download and install the ORB-SLAM3 binaries as follows:
+Download the ORB-SLAM3 binaries into `usr/local/bin`:
 
 - AArch64 (ARM64) (e.g., on an RPI):
 

@@ -62,13 +62,13 @@ Install Cartographer with one of these commands:
   brew tap viamrobotics/brews && brew install carto-grpc-server
   ``` -->
 
-## Run Cartographer in Live Mode with a Rplidar
+## Run Cartographer in Live Mode with an Rplidar
 
-Run Cartographer as a live SLAM service with a Rplidar.
+Run Cartographer as a live SLAM service with an Rplidar.
 
 ### Configuration with Viam
 
-Configure your robot to run Cartographer with a Rplidar in two steps:
+Configure your robot to run Cartographer with an Rplidar in two steps:
 
 1. Add your Rplidar as a modular component.
 2. Add Cartographer as a SLAM service in live mode.
