@@ -61,7 +61,9 @@ A successfully authenticated session is valid for 24 hours, unless you explicitl
 With the Viam CLI installed and authenticated, you can use it to issue commands to your robot fleet.
 All Viam CLI commands use the following format:
 
+``` bash
 viam [global options] command [command options] [arguments...]
+```
 
 |        parameter     |       description      |
 | ----------- | ----------- |
@@ -90,7 +92,7 @@ viam organizations help
 
 The *auth* command helps you authorize your device for CLI usage.  See [Authenticate](#authenticate)
 
-#### synopsis
+Synopsis:
 
 ``` bash
 viam auth
@@ -110,7 +112,7 @@ The `data` command allows you to manage robot data.
 With it, you can export data in the format of your choice or delete specified data.
 You can filter the data this command operates on.
 
-#### synopsis
+Synopsis:
 
 ``` bash
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
@@ -164,7 +166,7 @@ viam data export --destination=/home/robot/data --data_type=tabular \
 The *locations* command lists all locations that the authenticated session has access to, grouped by organization.
 You can filter results by organization.
 
-#### synopsis
+Synopsis:
 
 ``` bash
 viam locations list [<organization id>]
@@ -181,7 +183,7 @@ viam locations list [<organization id>]
 
 The `logout` command ends an authenticated CLI session
 
-#### synopsis
+Synopsis:
 
 ``` bash
 viam logout
@@ -191,7 +193,7 @@ viam logout
 
 The *organizations* command lists all organizations that the authenticated session belongs to.
 
-#### synopsis
+Synopsis:
 
 ``` bash
 viam organizations list
@@ -214,7 +216,7 @@ This includes:
 * Controlling a robot by issuing component and service commands
 * Accessing your robot via secure shell (when this feature is enabled)
 
-#### synopsis
+Synopsis:
 
 ``` bash
 viam robot status --organization=<org name> --location=<location name> --robot=<robot id>
@@ -224,7 +226,7 @@ viam robot part run --organization=<org name> --location=<location name> --robot
 viam robot part shell --organization=<org name> --location=<location name> --robot=<robot id>
 ```
 
-##### examples
+Examples:
 
 ``` bash
 # get robot status
@@ -303,7 +305,7 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 The *robots* command lists all robots that the authenticated session has access to, filtered by organization and location.
 
-#### synopsis
+Synopsis:
 
 ``` bash
 viam robots list
@@ -327,7 +329,7 @@ viam robots list
 
 The *whoami* command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
 
-#### synopsis
+Synopsis:
 
 ``` bash
 viam whoami
