@@ -137,23 +137,23 @@ viam data export --destination=/home/robot/data --data_type=tabular --component_
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| --destination *value*     | output directory for downloaded data       |export|true |
-| --data_type *value*     |  data type to be downloaded: either binary or tabular   |export|true |
-| --component_name *value*     | filter by specified component name  |export, delete| false |
-| --component_type *value*    | filter by specified component type       |export, delete|false |
-| --component_model *value*     | filter by specified component model       |export, delete|false |
-| --start *value*     | ISO-8601 timestamp indicating the start of the interval       |export, delete|false |
-| --end *value*     | ISO-8601 timestamp indicating the end of the interval       |export, delete|false |
-| --location_ids *value*     | filter by specified location id (accepts comma-separated list)       |false |
-| --method *value*      | filter by specified method       |export, delete|false |
-| --mime_types *value*     | filter by specified MIME type (accepts comma-separated list)       |export, delete|false |
-| --org_ids *value*     | filter by specified organizations id (accepts comma-separated list)       |export, delete|false |
-| --parallel *value*     | number of download requests to make in parallel, with a default value of 10       |export, delete|false |
-| --part_id *value*     | filter by specified part id      |export, delete|false |
-| --part_name *value*     | filter by specified part name       |export, delete|false |
-| --robot_id *value*     | filter by specified robot id       |export, delete|false |
-| --robot_name *value*     | filter by specified robot name       |export, delete|false |
-| --tags *value*     | filter by specified tag (accepts comma-separated list)       |export, delete|false |
+| --destination      | output directory for downloaded data       |export|true |
+| --data_type     |  data type to be downloaded: either binary or tabular   |export|true |
+| --component_name      | filter by specified component name  |export, delete| false |
+| --component_type     | filter by specified component type       |export, delete|false |
+| --component_model   | filter by specified component model       |export, delete|false |
+| --start      | ISO-8601 timestamp indicating the start of the interval       |export, delete|false |
+| --end      | ISO-8601 timestamp indicating the end of the interval       |export, delete|false |
+| --location_ids      | filter by specified location id (accepts comma-separated list)       |false |
+| --method       | filter by specified method       |export, delete|false |
+| --mime_types      | filter by specified MIME type (accepts comma-separated list)       |export, delete|false |
+| --org_ids     | filter by specified organizations id (accepts comma-separated list)       |export, delete|false |
+| --parallel      | number of download requests to make in parallel, with a default value of 10       |export, delete|false |
+| --part_id      | filter by specified part id      |export, delete|false |
+| --part_name     | filter by specified part name       |export, delete|false |
+| --robot_id     | filter by specified robot id       |export, delete|false |
+| --robot_name      | filter by specified robot name       |export, delete|false |
+| --tags      | filter by specified tag (accepts comma-separated list)       |export, delete|false |
 
 ### locations
 
@@ -256,14 +256,14 @@ viam robot part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "R
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| --organization *value*     | organization name that the robot belongs to       |status,logs,part|true |
-| --location *value*     |  location name that the robot belongs to    |status,logs,part|true |
-| --robot *value*     |  robot id for which the command is being issued   |status,logs,part|true |
-| --errors *value*     |  boolean, return only errors (default: false)   |logs|false |
-| --part *value*     |  part name for which the command is being issued    |logs|false |
-| --tail *value*     |  tail (stream) logs, boolean(default false)    |part(logs)|false |
-| --stream *value*     |  if specified, the interval in which to stream the specified data, e.g. 100ms or 1s    |part(run)|false |
-| --data *value*     |  command data for the command being request to run (see [data argument](#part-run---stream-and---data-arguments))   |part(run)|true |
+| --organization      | organization name that the robot belongs to       |status,logs,part|true |
+| --location     |  location name that the robot belongs to    |status,logs,part|true |
+| --robot      |  robot id for which the command is being issued   |status,logs,part|true |
+| --errors      |  boolean, return only errors (default: false)   |logs|false |
+| --part      |  part name for which the command is being issued    |logs|false |
+| --tail     |  tail (stream) logs, boolean(default false)    |part(logs)|false |
+| --stream      |  if specified, the interval in which to stream the specified data, e.g. 100ms or 1s    |part(run)|false |
+| --data      |  command data for the command being request to run (see [data argument](#part-run---stream-and---data-arguments))   |part(run)|true |
 
 ##### part run --stream and --data arguments
 
@@ -311,8 +311,8 @@ viam robots list
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| --organization *value*     | organization name to filter by       |list|true |
-| --location *value*     |  location name to filter by   |list|true |
+| --organization     | organization name to filter by       |list|true |
+| --location    |  location name to filter by   |list|true |
 
 ### whoami
 
