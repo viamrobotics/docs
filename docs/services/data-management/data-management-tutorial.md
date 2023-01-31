@@ -145,25 +145,11 @@ Now, let's export that image data from the Viam's Data Management service in the
 
 To export data from Viam, you will need to do the following:
 
-On your computer, initialize a new Go module in a new directory.
-You can do this by running the following in your terminal:
+First, install the [Viam CLI](/program/cli) and [authenticate](/program/cli/#authenticate).
 
-```bash
-mkdir viam-rover-data-capture && cd viam-rover-data-capture
-go mod init viam-rover
-```
-
-Next you will need to install the Viam CLI:
-
-```bash
-go get go.viam.com/rdk/cli/cmd
-```
-
-Once you have the Viam CLI installed, you will need to authenticate with Viam.
-You can do this by running the following command and following the prompts in your terminal:
-
-```bash
-go run go.viam.com/rdk/cli/cmd auth
+``` bash
+go install go.viam.com/rdk/cli/cmd@latest
+viam auth
 ```
 
 Once you are authenticated with your Viam account, you will be able to run your export command.
@@ -171,7 +157,9 @@ Head back to the **DATA** page in the Viam app at <a href="https://app.viam.com/
 
 ![A red box highlights the "copy export command" button from the Viam app with an image gallery of captured images from the Viam Rover on the right.](../img/data-management/image4.png)
 
+Now, run the copied command by pasting it into a terminal.
 This command uses the Viam CLI to download the data locally onto your computer based on the search criteria you select in the Viam app.
+
 Once the command has finished running and downloading the images, you should be able to view and use the data locally in a new directory named `data`.
 Since images are downloaded in parallel, some may be out of order.
 Sort your folder by filename in order to see them in chronological order.

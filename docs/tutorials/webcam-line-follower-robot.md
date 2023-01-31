@@ -11,7 +11,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 <div style="column-count:2;column-gap-40px">
 <div>
-<p><strong>Goal</strong>: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision#detection">vision service color detector</a>.
+<p>**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision#detection">vision service color detector</a>.
 </p></div>
 <div><img src="/tutorials/img/webcam-line-follower/lf-following1.gif" alt="Robot following a line"/></div>
 </div>
@@ -276,90 +276,83 @@ When the rover no longer sees any of the line color anywhere in the front portio
 
 ## Let’s write some code
 
-<ol><li class="spacing">Make sure you have Python installed.
-You can double-check this by running:
+1. Make sure you have Python installed.
+   You can double-check this by running:
 
-```bash
-python --version
-```
+   ```bash
+   python --version
+   ```
 
-or if you have multiple versions of Python installed, try
+   or if you have multiple versions of Python installed, try
 
-```bash
-python3.9 --version
-```
+   ```bash
+   python3.9 --version
+   ```
 
-or
+   or
 
-```bash
-python3.8 --version
-```
+   ```bash
+   python3.8 --version
+   ```
 
-We at Viam are running Python 3.9.2 (Python 3.8 is also supported) for this tutorial.</li>
-<li class="spacing">Make sure you have the Viam Python SDK installed ([https://python.viam.dev/](click for instructions)).</li>
+   We at Viam are running Python 3.9.2 (Python 3.8 is also supported) for this tutorial.
 
-<li class="spacing">Open a file in your favorite IDE and paste in [the code from the earlier referenced repo](https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py).</li>
-<li class="spacing">Adjust the components names to match the component names you created in your config file.
-In this case, the component names that you may need to change are <strong>scuttlebase</strong>, <strong>my_camera</strong>, and <strong>green_detector</strong>.</li>
-<li class="spacing">From your robot’s page on the Viam app ([app.viam.com](https://app.viam.com/)), go to the <strong>CODE SAMPLE</strong> tab.
-Find the Python SDK field and copy the robot address (which will likely have the form
-<span class="file">robotName-main.1234abcd.local.viam.cloud:8080</span>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file.
-This allows your code to connect to your robot.</li>
+2. Make sure you have the [Viam Python SDK](https://python.viam.dev/) installed.
+3. Open a file in your favorite IDE and paste in [the code from the earlier referenced repo](https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py).
+4. Adjust the component names to match the component names you created in your config file.
+   In this case, the component names that you may need to change are **scuttlebase**, **my_camera**, and **green_detector**.
+5. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **CODE SAMPLE** tab.
+   Find the Python SDK field and copy the robot address (which will likely have the form <file>robotName-main.1234abcd.local.viam.cloud:8080</file>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file.
+   This allows your code to connect to your robot.
 
-{{% alert title="Caution" color="caution" %}}
-Do not share your robot secret or robot address publicly. Sharing this information compromises your system security by allowing unauthorized access to your computer.
-{{% /alert %}}
+   {{% alert title="Caution" color="caution" %}}
+   Do not share your robot secret or robot address publicly.
+   Sharing this information compromises your system security by allowing unauthorized access to your computer.
+   {{% /alert %}}
 
-<li class="spacing">Save the code in a directory of your choice.</li>
-<li class="spacing">To get the code onto the Pi you have a few options.
-If you intend to make lots of tweaks to the code over time it may be most convenient for you to set up a [Mutagen Sync](https://mutagen.io/documentation/introduction/getting-started/)</a> session from a directory on your computer to a directory on your Pi.
-If you’re just trying to get this running as quickly as possible, do the following:</li>
-<ol>
-<li class="spacing" style="list-style-type:lower-alpha">In your Pi terminal, navigate to the directory where you’d like to save your code.
-Run,</br><span class="file">nano rgb_follower.py</span></br>(or replace <span class="file">rgb_follower</span> with the your desired filename).</li>
-<li class="spacing" style="list-style-type:lower-alpha">Paste all your code into this file.</li>
-<li class="spacing" style="list-style-type:lower-alpha">Type <strong>CTRL + X</strong> to close the file.
-Type <strong>Y</strong> to confirm file modification, then press enter to finish.</li>
-</ol></ol>
+6. Save the code in a directory of your choice.
+7. To get the code onto the Pi you have a few options.
+   If you intend to make lots of tweaks to the code over time it may be most convenient for you to set up a [Mutagen Sync](https://mutagen.io/documentation/introduction/getting-started/) session from a directory on your computer to a directory on your Pi.
+   If you’re just trying to get this running as quickly as possible, do the following:
 
-**References**:
-
-- [Line Follower Code on GitHub](https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py)
-- [Mutagen Sync](https://mutagen.io/documentation/introduction/getting-started/)
+   1. In your Pi terminal, navigate to the directory where you’d like to save your code.
+      Run, <file>nano rgb_follower.py</file> (or replace <file>rgb_follower</file> with the your desired filename).
+   2. Paste all your code into this file.
+      Type **CTRL + X** to close the file.
+      Type **Y** to confirm file modification, then press enter to finish.
 
 ## Controlling your rover with Viam
 
-<ol><li class="spacing">Go to your robot’s page on the Viam app ([app.viam.com](https://app.viam.com/)).
-Verify that it’s connected by refreshing the page and ensuring that <strong>Last Online</strong> (in the top banner) says, “Live.”</li>
-<li class="spacing">Go to the <strong>CONTROL</strong> tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around.
-Ensure that the base moves as expected.
-If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.</li>
-<img class="spacing" src="/tutorials/img/webcam-line-follower/lf-viamapp-base-view5.gif" alt="Driving the base from the Viam app's CONTROL tab." width="600" /></li>
-<li class="spacing">Now for the creative part: Use your colored tape to make a path for your robot to follow.
-Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
-Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.</li>
-<li class="spacing">Set your robot on the line such that the line appears in the front of the camera’s view.
-Verify that the camera sees the line by viewing the camera feed on the <strong>CONTROL</strong> tab of the robot page.</li>
-<img  class="spacing" src="/tutorials/img/webcam-line-follower/lf-cam-view6.png" alt="The camera view in the control tab on the robot page" width="600" />
+1. Go to your robot’s page on [the Viam app](https://app.viam.com/).
+   Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, “Live.”
+2. Go to the **CONTROL** tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around.
+   Ensure that the base moves as expected.
+   If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.
+   <img class="spacing" src="/tutorials/img/webcam-line-follower/lf-viamapp-base-view5.gif" alt="Driving the base from the Viam app's CONTROL tab." width="600" />
+3. Now for the creative part: Use your colored tape to make a path for your robot to follow.
+   Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
+   Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
+4. Set your robot on the line such that the line appears in the front of the camera’s view.
+   Verify that the camera sees the line by viewing the camera feed on the **CONTROL** tab of the robot page.
+   <img  class="spacing" src="/tutorials/img/webcam-line-follower/lf-cam-view6.png" alt="The camera view in the control tab on the robot page" width="600" />
+5. In a terminal window, SSH to your Pi by running:
 
-<li class="spacing">In a terminal window, SSH to your Pi by running:<br>
+   ```bash
+   ssh <your_username>@<your_pi’s_name>.local
+   ```
 
-```bash
-ssh <your_username>@<your_pi’s_name>.local
-```
+   Replace the angle brackets and the example text with your actual Pi username and the name of your Pi.
+   Remember to delete the angle brackets!
 
-replacing the angle brackets and the example text with your actual Pi username and the name of your Pi.
-Remember to delete the angle brackets!</li>
+6. In this Pi terminal go ahead and run the code:
 
-<li class="spacing">In this Pi terminal go ahead and run the code:
+   ```bash
+   python ~/myCode/rgb_follower.py
+   ```
 
-```bash
-python ~/myCode/rgb_follower.py
-```
+   Be sure to replace <span class="file">~/myCode</span> with the path to the directory where you saved your Python script, and <file>rgb_follower.py</file> with whatever you named your Python script file.
+   You may need to call `python3.9` or `python3.8` instead of `python`, depending on how you configured your Pi.
 
-Be sure to replace <span class="file">~/myCode</span> with the path to the directory where you saved your Python script, and <span class="file">rgb_follower.py</span> with whatever you named your Python script file.
-You may need to call “python3.9” or "python3.8" instead of “python,” depending on how you configured your Pi.</li>
-</ol></ol>
 The robot should continue moving along the line until it no longer sees the color of your detector except at the back of the frame, at which point it should stop moving and the code will terminate.
 
 ## Summary

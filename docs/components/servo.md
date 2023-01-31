@@ -15,17 +15,21 @@ Servos can be useful in robotics because their position is easily and precisely 
 - The servo component does not support servomotors.
 To configure an industrial servomotor, use the [motor](/components/motor/) component with an [encoder](/components/encoder/).
 
-{{% alert title="Caution" color="caution" %}}  
-Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
-{{% /alert %}}
-
 Example wiring diagram for a servo wired to a Raspberry Pi board:  
 
 ![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](../img/servo/servo-wiring.png)
 
+{{% alert title="Note" color="note" %}}
+
+Instead of powering the servo with a separate power supply, you may choose to power it using the 5V and ground pins on the board.
+This can work, as long as the servo is not under any significant load.
+Keep in mind that if the servo draws too much power, it can cause the board to temporarily lose power.
+
+{{% /alert %}}
+
 Most robots with a servo need at least the following hardware:
 
-- A [board component](/components/board/) that can run `viam-server`.
+- A [board component](/components/board/) that can run `viam-server`
 - A servo
 - A power supply for the board
 - A power supply for the servo
@@ -50,9 +54,11 @@ Refer to the following example configuration file, including the board and servo
       "type": "servo",
       "model": "pi",
       "attributes": {
-        "pin": "16",
-        "board": "example-pi"
-      }
+        "pin": "16"
+      },
+      "depends_on": [
+        "example-pi"
+      ]
     }
   ]
 }

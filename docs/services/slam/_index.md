@@ -17,22 +17,25 @@ Breaking changes are likely to occur, and occur often.
 
 ## Introduction
 
-SLAM, which stands for simultaneous localization and mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
-At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various cutting edge SLAM algorithms.
+[Simultaneous Localization And Mapping (SLAM)](../../services/slam/) allows your robot to create a map of its surroundings and find its location within that map.
+SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
+Viam offers users an easy-to-use, intuitive method for interfacing with various cutting-edge SLAM algorithms.
 
 ## The Viam SLAM Service
 
-The Viam SLAM Service supports the integration of custom SLAM libraries with the Viam RDK via the SLAM Service API.
+The Viam SLAM Service supports the integration of custom SLAM libraries with the Viam RDK through the SLAM Service API.
 
-As of 11 October 2022, the following SLAM library is integrated:
+The following SLAM libraries are integrated:
 
 - [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
+- [Cartographer](https://github.com/cartographer-project)
 
 {{% alert title="Note" color="note" %}}
 
 - Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`.
-We append the timestamp to each filename prior to saving images, maps, and *.yaml files.
-We will be updating the timestamp format to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
+The timestamp is appended to each filename before images, maps, and *.yaml files are saved.
+The timestamp format will be updated to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
+
 {{% /alert %}}
 
 ## Requirements
@@ -47,10 +50,7 @@ All three are explained in the following using ORB-SLAM3 as the application exam
 
 ## The SLAM Library Binary
 
-A binary that is running the custom SLAM library is required and is assumed to be stored in `/usr/local/bin`.
-For ORB-SLAM3, the location is defined <a href="https://github.com/viamrobotics/rdk/blob/7d15c61d59ee1f4948d116d605f4f23a199d2fb1/services/slam/slamlibraries.go#L48" target="_blank">here</a>.
-
-You can download and install the ORB-SLAM3 binaries as follows:
+Download the ORB-SLAM3 binaries into `usr/local/bin`:
 
 - AArch64 (ARM64) (e.g., on an RPI):
 
@@ -74,7 +74,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 
 To add the SLAM service to your robot, you need to add the _name_, _type_, _model_, and SLAM library specific _attributes_ to the configuration of your robot.
 
-The following is an example configuration for running ORB-SLAM3 in live `rgbd` mode on your robot, provided that it has two [camera streams](/components/camera/#camera-models) available: `"color"` for RGB images, and `"depth"` for depth data.
+The following is an example configuration for running ORB-SLAM3 in live `rgbd` mode on your robot, if it has two [camera streams](/components/camera/#camera-models) available: `"color"` for RGB images, and `"depth"` for depth data.
 
 ``` json
 "services": [
@@ -87,7 +87,7 @@ The following is an example configuration for running ORB-SLAM3 in live `rgbd` m
       "sensors": ["color", "depth"],
       "use_live_data": true,
       "map_rate_sec": 60,
-      "data_rate_ms": 200,
+      "data_rate_msec": 200,
       "config_params": {
         "mode": "rgbd"
       }
@@ -110,7 +110,7 @@ Here is an example configuration:
       "sensors": [],
       "use_live_data": false,
       "map_rate_sec": 120,
-      "data_rate_ms": 100,
+      "data_rate_msec": 100,
       "config_params": {
         "mode": "mono"
       }
@@ -122,7 +122,7 @@ Here is an example configuration:
 ### SLAM Modes Overview
 
 The combination of configuration parameters and existing data in the `data_dir` define the behavior of the running SLAM Service.
-The following table provides an overview over the different SLAM modes, and how they can be set.
+This table provides an overview of the different SLAM modes and how to set them.
 
 #### Live vs Offline Mode
 
@@ -153,15 +153,15 @@ You can find more information on the `mode` in the description of the integrated
 | ---- | --------- | ----------- |
 | `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. |
 | `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in live mode. If the array is empty, SLAM runs in offline mode. |
-| `use_live_data` |  bool | This specifies whether to run in online mode (true) or offline mode (false). If `use_live_data: true` and `sensors: []`, an error will be thrown. If this parameter is set to true and no sensors are provided, SLAM will produce an error. |
+| `use_live_data` |  bool | This specifies whether to run in live mode (true) or offline mode (false). If `use_live_data: true` and `sensors: []`, an error will be thrown. If this parameter is set to true and no sensors are provided, SLAM will produce an error. |
 
 #### Optional Attributes
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
 | `map_rate_sec` | int | (optional) Map generation rate for saving current state (in seconds). The default value is `60`. Note: Setting `map_rate_sec` to a value of `0` causes the system to reset it to its default value of `60`.|
-| `data_rate_ms` | int |  (optional) Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is `200`. |
-| `port` | string |  (optional) Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned. |
+| `data_rate_msec` | int |  (optional) Data generation rate for collecting sensor data to feed to SLAM (in milliseconds). The default value is `200`. |
+| `port` | string |  (optional) Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
 | `delete_processed_data` | bool |  (optional) With `delete_processed_data: true` sensor data is deleted after the SLAM algorithm has processed it. This helps reduce the amount of memory required to run SLAM. If `use_live_data: true`, the `delete_processed_data` defaults to `true` and if `use_live_data: false`, it defaults to false. A `delete_processed_data: true` when `use_live_data: false` is invalid and will result in an error. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
 
@@ -178,7 +178,7 @@ You can find details on which inputs you can include for the available libraries
 
 A running SLAM service saves the sensor data it uses and the maps and config files it produces locally on the device in the directory as specified in the config as `data_dir`.
 
-To recap, the directory is required to be structured as follows:
+To recap, the directory must be structured as follows:
 
 <pre>
 .
@@ -188,7 +188,7 @@ To recap, the directory is required to be structured as follows:
     └── config
 </pre>
 
-- `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `data_rate_ms`.
+- `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `data_rate_msec`.
 - `map` contains the generated maps, saved at `map_rate_sec`.
 - `config` contains all SLAM library specific config files.
 
@@ -196,7 +196,7 @@ To recap, the directory is required to be structured as follows:
 If this directory structure is not present, the SLAM service creates it.
 {{% /alert %}}
 
-The data in the data directory dictates what type of SLAM will be run:
+The data present in the map subdirectory dictates SLAM's mode at runtime:
 
 - If the `map` subdirectory is empty, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).
 - If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (UPDATING MODE).
@@ -206,7 +206,7 @@ The data in the data directory dictates what type of SLAM will be run:
 ### Introduction
 
 ORB-SLAM3 can perform sparse SLAM using monocular or RGB-D images.
-This must be specified in the configuration under `config_params` (i.e., `mono` or `rgbd`).
+You must specify this in the configuration under `config_params` (i.e., `mono` or `rgbd`).
 
 In this example, `mono` is selected with one camera stream named `color`:
 
@@ -222,7 +222,7 @@ In this example, `mono` is selected with one camera stream named `color`:
       "use_live_data": true,
       "delete_processed_data": false,
       "map_rate_sec": 60,
-      "data_rate_ms": 200,
+      "data_rate_msec": 200,
       "config_params": {
         "mode": "mono"
       }
@@ -233,8 +233,9 @@ In this example, `mono` is selected with one camera stream named `color`:
 
 ### Configuration Overview
 
-The following table gives an overview over the config parameters for ORB-SLAM3.
-All parameters except for `mode` are optional. You can use all parameters except for `mode` and `debug` to fine-tune ORB-SLAM's algorithm.
+This table is an overview of the config parameters for ORB-SLAM3.
+All parameters except for `mode` are optional.
+You can use all parameters except for `mode` and `debug` to fine-tune ORB-SLAM's algorithm.
 
 | Parameter Mode | Description - The Type of SLAM to Use | Default Value |
 | -------------- | ------------------------------------- | ------------------- |
@@ -245,6 +246,6 @@ All parameters except for `mode` are optional. You can use all parameters except
 | `orb_n_levels` | (optional) ORB parameter. Number of levels in the scale pyramid. |  8 |
 | `orb_n_ini_th_fast` | (optional) ORB parameter. Initial FAST threshold. | 20 |
 | `orb_n_min_th_fast` | (optional) ORB parameter. Lower threshold if no corners detected. | 7 |
-| `stereo_th_depth` | (optional) The number of the stereo baselines we use to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | 40 |
+| `stereo_th_depth` | (optional) Number of stereo baselines used to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | 40 |
 | `depth_map_factor` | (optional) Factor to transform the depth map to real units. | 1000 |
 | `stereo_b` | (optional) Stereo baseline in meters. | 0.0745 |
