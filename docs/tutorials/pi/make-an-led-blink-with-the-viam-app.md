@@ -38,8 +38,8 @@ You will need the following tools to complete the project:
 
 ## Project setup
 
-Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install Viam Server on the Pi.
-We recommend that you follow along with the [Installing Viam Server on Raspberry Pi](/installation/prepare/rpi-setup/) guide in the Viam documentation.
+Before you proceed with building your circuit, you are going to need to set up the operating system on your Raspberry Pi and install `viam-server` on the Pi.
+We recommend that you follow along with the [Installing `viam-server` on Raspberry Pi](/installation/prepare/rpi-setup/) guide in the Viam documentation.
 Be sure to follow all the steps including [adding your Pi on the Viam app.](/installation/install/linux-install/)
 
 {{% alert title="Tip" color="tip" %}}

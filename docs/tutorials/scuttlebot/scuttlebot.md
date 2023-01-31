@@ -11,7 +11,7 @@ tags: ["base", "camera", "raspberry pi", "scuttle"]
 
 ## Requirements
 
-* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the viam-server installed.
+* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the `viam-server` installed.
 
 Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os), if necessary.
 

@@ -27,13 +27,13 @@ This tutorial will show how we can both leverage this protocol and abstract it i
 ## Hardware requirements
 
 {{% alert title="Note" color="note"%}}
-Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic project(s).  
+Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic project(s).
 While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/program/extend/modular-resources/)-based projects.
 {{% /alert %}}
 
 The tutorial uses the following hardware:
 
-* <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with viam-server installed per [our Raspberry Pi setup guide](/installation/prepare/rpi-setup/).
+* <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with `viam-server` installed per [our Raspberry Pi setup guide](/installation/prepare/rpi-setup/).
 * [An Intermode rover](https://www.intermode.io/)
 * [PiCAN 2 - Canbus interface for Raspberry Pi](https://copperhilltech.com/pican-2-can-bus-interface-for-raspberry-pi/)
 * [12V to 5V Buck Converter](https://www.amazon.com/dp/B01M03288J)
@@ -78,7 +78,7 @@ Check out this <a href="https://github.com/viam-labs/tutorial-intermode" target=
 
 ## A modular resource for the Intermode base
 
-Viam includes [APIs](/program/extend/modular-resources/#apis) for common component types within viam-server.
+Viam includes [APIs](/program/extend/modular-resources/#apis) for common component types within `viam-server`.
 The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/components/base).
 
 If you want to learn how to leverage this API to create a custom modular resource using code found in the <a href="https://github.com/viam-labs/tutorial-intermode" target="_blank">tutorial repository</a>, continue reading.
@@ -249,7 +249,7 @@ sudo apt install git
 If you have not already, first create a new robot in the [Viam app](https://app.viam.com/) and follow the instructions in the **SETUP** tab to connect the robot to the cloud.
 
 In order to drive the Intermode base with Viam, you need to add it to the robot configuration.
-You will specify where viam-server can find the module, and then configure a modular component instance for the Intermode base.
+You will specify where `viam-server` can find the module, and then configure a modular component instance for the Intermode base.
 
 In this example, we've cloned the git tutorial repo to `/home/me/tutorial-intermode/`.
 Change this to the correct location in `executable_path` when adding the module to your robot configuration.
