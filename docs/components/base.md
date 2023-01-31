@@ -9,23 +9,23 @@ icon: "img/components/base.png"
 # SMEs: Steve B
 ---
 
+A *base* is the platform that the other parts of a mobile robot attach to.
+
+In `viam-server`, the *base* component is configured with any *motor* components attached to the base, and the *board*, to provide an interface to control the movement of the whole physical base of the robot.
+
 <img src="../img/base/base-trk-rover-w-arm.png" alt="A robot comprised of a base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. There are width and diameter labels on the diagram because width and circumference (pi times diameter) are required attributes when configuring a base component." />
 
-A **base** is the physical platform that other parts of a robot attach to.
-In `viam-server`, the **base** component is configured with the **board** of the robot and any **motor** components attached to the base to provide an interface to control the movement of the whole physical base of the robot.
+Most mobile robots with a base need at least the following hardware:
 
-As shown above, most robots with wheeled bases will need at least the following hardware:
+- A [board component](/components/board/) that can run `viam-server`: a computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer with GPIO.
 
-- A [board component](/components/board/) that can run `viam-server`.
-That is to say, a computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer with GPIO.
+- Motors attached to wheels or propellers-- or other actuators (devices that produce motion in a system). These are necessary to move the base.
 
-- Two or more motors with wheels attached
+- A power supply for the board.
 
-- A power supply for the board
+- A power supply for the actuators.
 
-- A power supply for the motors
-
-- Some sort of chassis to hold everything together
+- Some sort of chassis to hold everything together.
 
 Example wiring diagram for a base with one motor on each side:
 
@@ -33,13 +33,13 @@ Example wiring diagram for a base with one motor on each side:
 
 Note that your base's wiring will vary depending on your choice of board, motors, motor drivers, and power supply.
 
-## Configure your base with Viam
+## Configuration
 
-If you want to configure a base as a component of your robot, ensure that the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base are also configured as components of your robot.
+To configure a base as a component of your robot, first ensure that the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base are also configured as components of your robot.
 
-- Configure each motor according to its type. Find more information on wiring and configuring different types of motors in the [motor component page](/components/motor/).
+- Configure each motor according to its type.
 
-When configuring the base component, ensure that the base `attributes` section correctly refers to all the motors that move the base right or left.
+Find more information on wiring and configuring different types of motors in the [motor component page](/components/motor/).
 
 Refer to the following example configuration file, including the board, motors, and base:
 
@@ -619,3 +619,37 @@ myBase.Stop(context.Background(), nil)
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+
+## Next Steps
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/yahboom-rover/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Drive a Yahboom Rover with a Gamepad</h4>
+            <p style="text-align: left;">Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.</p>
+        </a>
+    </div>
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/controlling-an-intermode-rover-canbus/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Control an Intermode Rover with CAN Bus and Viam</h4>
+            <p style="text-align: left;">How to abstract CAN bus protocol to control an Intermode rover with Viam.</p>
+        </a>
+    </div>
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/viam-rover/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Drive the Viam Rover with the Viam SDK</h4>
+            <p style="text-align: left;">Try Viam by using the Viam SDK to make your Viam Rover move in a square.</p>
+        </a>
+    </div>
+  </div>
+</div>
