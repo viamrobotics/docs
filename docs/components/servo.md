@@ -9,17 +9,11 @@ icon: "img/components/servo.png"
 # SME: #team-bucket
 ---
 
-The Viam servo component supports interfacing with hobby servos, small motors with built-in closed-loop control, installed on robots. These hobby servers are a type of [actuator](https://en.wikipedia.org/wiki/Actuator), and are useful in robotics because their position is easily and precisely controlled.
+The Viam servo component supports hobby servos: small motors with built-in closed-loop control.
+Servos can be useful in robotics because their position is easily and precisely controlled.
 
 - The servo component does not support servomotors.
 To configure an industrial servomotor, use the [motor](/components/motor/) component with an [encoder](/components/encoder/).
-
-Most robots with a servo need at least the following hardware:
-
-- A [board component](/components/board/) that can run `viam-server`.
-- A servo
-- A power supply for the board
-- A power supply for the servo
 
 {{% alert title="Caution" color="caution" %}}  
 Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
@@ -29,7 +23,14 @@ Example wiring diagram for a servo wired to a Raspberry Pi board:
 
 ![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](../img/servo/servo-wiring.png)
 
-## Configure your servo with Viam
+Most robots with a servo need at least the following hardware:
+
+- A [board component](/components/board/) that can run `viam-server`.
+- A servo
+- A power supply for the board
+- A power supply for the servo
+
+## Configuration
 
 Refer to the following example configuration file, including the board and servo:
 
@@ -106,11 +107,11 @@ The `gpio` model has the following attributes, which are optional to define in y
 
 The servo component supports the following methods:
 
-| Method Name                   | Golang                 | Python                              | Description                                                            |
-| ----------------------------- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------- |
-| [Move](#move)                 | [Move][go_servo]       | [move][python_move]                 | Move the servo to the desired angle.                                  |
-| [Position](#position) | [Position][go_servo]| [get_position][python_get_position] | Get the current angle of the servo. |
-| [Stop](#stop)                 | [Stop][go_servo]       | [stop][python_stop]                 | Stop the servo.                                                       |
+| Method Name | Golang | Python | Description |
+| ----------- | -------| ------ | ----------- |
+| [Move](#move) | [Move][go_servo] | [move][python_move] | Move the servo to the desired angle. |
+| [Position](#position) | [Position][go_servo] | [get_position][python_get_position] | Get the current angle of the servo. |
+| [Stop](#stop) | [Stop][go_servo] | [stop][python_stop] | Stop the servo. |
 
 [go_servo]: https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo
 [python_move]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.move
@@ -400,3 +401,23 @@ myServo.Stop(context.Background(), nil)
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+
+## Next Steps
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/yahboom-rover/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Drive a Yahboom Rover with a Gamepad</h4>
+            <p style="text-align: left;">Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.</p>
+        </a>
+    </div>
+  </div>
+</div>
