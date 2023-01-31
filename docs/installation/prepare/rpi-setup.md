@@ -209,7 +209,7 @@ You can duplicate the "network" section to add additional Wifi networks (for exa
 
 The "priority" attribute is optional and can be used to prioritize networks if multiple networks are configured (higher numbers are prioritized).
 
-```bash
+```bash  {class="line-numbers linkable-line-numbers"}
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 country=us

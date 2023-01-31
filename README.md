@@ -64,7 +64,7 @@ When you are ready to contribute changes to the docs:
 1. Export your Google Document as `.docx` file. Go to "File" -> "Download as" -> "Microsoft Word (.docx)".
 2. Use [Pandoc](https://pandoc.org/) to convert to markdown and export media to a directory. Here's an example command:
 
-   ```bash
+   ```bash {class="line-numbers linkable-line-numbers"}
    pandoc --wrap=preserve --extract-media ./ NAME_OF_YOUR_DOCUMENT.docx -o NAME_OF_YOUR_DOCUMENT.md
    ```
 

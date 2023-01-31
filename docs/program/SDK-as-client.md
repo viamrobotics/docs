@@ -62,7 +62,7 @@ The SDK connect script should look something like this:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 import asyncio
 
 from viam.robot.client import RobotClient
@@ -93,7 +93,7 @@ if __name__ == '__main__':
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 package main
 
 import (
@@ -137,7 +137,7 @@ Assumption: A camera called "camera0" is configured as a component of your robot
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.camera import Camera
 
 robot = await connect() # refer to connect code above
@@ -148,7 +148,7 @@ image = await camera.get_image()
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
 "go.viam.com/rdk/components/camera"
 )
@@ -180,7 +180,7 @@ Assumption: Motors called "motor1" and "motor2" are configured as components of 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.motor import Motor
 
 robot = await connect() # refer to connect code above
@@ -199,7 +199,7 @@ await motor2.go_for(1000, 200)
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
 "time"
 "go.viam.com/rdk/components/motor"
@@ -230,7 +230,7 @@ Assumption: A sensor called "ultra1" is configured as a component of your robot.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.sensor import Sensor
 robot = await connect()
 sensor = Sensor.from_robot(robot, "ultra1")
@@ -240,7 +240,7 @@ distance = await sensor.get_readings()["distance"]
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
 "go.viam.com/rdk/components/sensor"
 )
@@ -261,7 +261,7 @@ Assumption: A camera called "camera0" and a vision service called "detector_1" a
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.services.vision import VisionServiceClient
 
 robot = await connect()
@@ -272,7 +272,7 @@ detections = await vision.get_detections_from_camera("camera_0", "detector_1")
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
 "go.viam.com/rdk/services/vision"
 )

@@ -48,7 +48,7 @@ This is how you configure a wheeled base:
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -241,7 +241,7 @@ If your base has a different name, change the `name` in the example.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.base import BaseClient
 from viam.proto.common import Vector3
 
@@ -266,7 +266,7 @@ if __name__ == '__main__':
 {{% /tab %}}
 {{% tab name="Golang" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
  "go.viam.com/rdk/components/base"
  "github.com/golang/geo/r3"  
@@ -332,7 +332,7 @@ Negative implies backwards.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Move the base 10 mm at a velocity of 1 mm/s, forward.
@@ -360,7 +360,7 @@ Negative implies backwards.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 if err != nil {
   logger.Fatalf("cannot get base: %v", err)
@@ -396,7 +396,7 @@ Negative implies backwards.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Spin the base 10 degrees at an angular velocity of 1 deg/sec.
@@ -421,7 +421,7 @@ Negative implies backwards.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 if err != nil {
   logger.Fatalf("cannot get base: %v", err)
@@ -456,7 +456,7 @@ Use the Z component of this vector to spin left or right when controlling a whee
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Make your wheeled base move forward. Set linear power to 75%.
@@ -496,7 +496,7 @@ Use the Z component of this vector to spin left or right when controlling a whee
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 if err != nil {
   logger.Fatalf("cannot get base: %v", err)
@@ -553,7 +553,7 @@ Only the Y component of the vector is used for a wheeled base.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Set the angular velocity to 1 mm/sec and the linear velocity to 1 degree/sec.
@@ -576,7 +576,7 @@ await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import "github.com/golang/geo/r3"
 
 myBase, err := base.FromRobot(robot, "my_base")
@@ -608,7 +608,7 @@ Stop the base from moving immediately.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Move the base forward 10 mm at a velocity of 1 mm/s.
@@ -632,7 +632,7 @@ await myBase.stop()
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 if err != nil {
   logger.Fatalf("cannot get base: %v", err)

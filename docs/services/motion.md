@@ -70,7 +70,7 @@ This enables things like the tweaking of individual parameters used by the algor
 
 The following code uses the [Viam Python SDK](https://python.viam.dev/) to move an arm to a point in front of a camera and approach that point from a particular direction:
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 // This is a robot with an arm named "myArm" and a down-pointing camera named "cam".
 // The pose of the arm relative to `world` is {x=0,y=0,z=0}
 // The pose of the camera relative to `world` is {x=600,y=0,z=700, o_z=-1}
@@ -184,7 +184,7 @@ This parameter is not used for anything in the built-in motion service.
 
 The following code is a minumal example using the [Viam Python SDK](https://python.viam.dev/) to get the pose of the tip of a gripper "myRobot:myGripper" which is attached to the end of an arm, in the "world" referenceframe
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.services.motion import MotionServiceClient
 
 // assume that the connect function is written and will return a valid robot
@@ -197,7 +197,7 @@ gripperPoseInWorld = await robot.get_pose(component_name="myRobot:myGripper", de
 
 For a more complicated example, let's take the same scenario and get the pose of the same gripper with respect to an object which is situated at a location (100, 200, 0) relative to the "world" frame:
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.services.motion import MotionServiceClient
 from viam.proto.common import Transform, PoseInFrame, Pose
 
@@ -273,7 +273,7 @@ This has the following sub-options:
 
 **Example usage**:
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 extra = {"motion_profile": "linear"}
 ```
 

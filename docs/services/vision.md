@@ -86,7 +86,7 @@ These code snippets expect you to have a camera named "camera_1" configured as a
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
 
 vision = VisionServiceClient.from_robot(robot)
@@ -105,7 +105,7 @@ detections = await vision.get_detections_from_camera("camera_1", "detector_1")
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
 "go.viam.com/rdk/config"
 "go.viam.com/rdk/services/vision"

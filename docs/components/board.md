@@ -108,7 +108,7 @@ These code snippets expect you to have a board named "local" configured as a com
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.board import Board
 
 local = Board.from_robot(robot, 'local')
@@ -125,7 +125,7 @@ await led.set(False)
 {{% /tab %}}
 {{% tab name="Golang" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
   "time"
   "go.viam.com/rdk/components/board"
@@ -234,7 +234,7 @@ you only need to getGPIOpin by name.
 
 An example:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -290,7 +290,7 @@ Only the index of the entire bus must be specified.
 
 The attributes section of a board using SPI will contain the following:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "spis": [
     {
@@ -319,7 +319,7 @@ Review the [instructions in our documentation](/installation/prepare/rpi-setup/#
 
 #### Configuration
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "i2cs": [
     {

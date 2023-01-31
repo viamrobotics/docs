@@ -60,7 +60,7 @@ The following example connects to and gets readings from an ultrasonic sensor co
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.sensor import Sensor
 
 robot = await connect()
@@ -71,7 +71,7 @@ readings = await sensor.get_readings()
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
 "go.viam.com/rdk/components/sensor"
 )
