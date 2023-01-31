@@ -350,71 +350,77 @@ END MARKETING CSS
   border-width: 0 0 0 8px;
 }
 .alert-warning hr {
-  border-top-color: #ff9f9f; }
-  .alert-warning .alert-link {
-    color: #520000; }
+  border-top-color: #ff9f9f;
+}
+.alert-warning .alert-link {
+  color: #520000;
+}
 
 
-    .alert-note {
-      color: black;
-      background: whitesmoke;
-      border-color: blue;
-      border-bottom-left-radius: .5rem;
-      border-top-left-radius: .5rem;
-      border-style: solid;
-      border-color: blue;
-      border-width: 0 0 0 8px;
-    }
-    .alert-note hr {
-      border-top-color: #ff9f9f; }
-      .alert-note .alert-link {
-        color: #520000; }
+.alert-note {
+  color: black;
+  background: whitesmoke;
+  border-color: blue;
+  border-bottom-left-radius: .5rem;
+  border-top-left-radius: .5rem;
+  border-style: solid;
+  border-color: blue;
+  border-width: 0 0 0 8px;
+}
+.alert-note hr {
+  border-top-color: #ff9f9f;
+}
+.alert-note .alert-link {
+  color: #520000;
+}
 
 
-        .alert-caution {
-          color: black;
-          background: whitesmoke;
-          border-color: #eba71b;
-          border-bottom-left-radius: .5rem;
-          border-top-left-radius: .5rem;
-          border-style: solid;
-          border-color: #f0b93f;
-          border-width: 0 0 0 8px;
-        }
-        .alert-caution hr {
-          border-top-color: #ff9f9f; }
-          .alert-caution .alert-link {
-            color: #520000; }
+.alert-caution {
+  color: black;
+  background: whitesmoke;
+  border-color: #eba71b;
+  border-bottom-left-radius: .5rem;
+  border-top-left-radius: .5rem;
+  border-style: solid;
+  border-color: #f0b93f;
+  border-width: 0 0 0 8px;
+}
+.alert-caution hr {
+  border-top-color: #ff9f9f;
+}
+.alert-caution .alert-link {
+  color: #520000;
+}
 
 
-            .alert-tip {
-              color: black;
-              background: whitesmoke;
-              border-color: #1be020;
-              border-bottom-left-radius: .5rem;
-              border-top-left-radius: .5rem;
-              border-style: solid;
-              border-color: #1be020;
-              border-width: 0 0 0 8px;
-            }
+.alert-tip {
+  color: black;
+  background: whitesmoke;
+  border-color: #1be020;
+  border-bottom-left-radius: .5rem;
+  border-top-left-radius: .5rem;
+  border-style: solid;
+  border-color: #1be020;
+  border-width: 0 0 0 8px;
+}
 
 
 
-            /* END CSS FOR NOTES, CAUTIONS, WARNINGS */
+/* END CSS FOR NOTES, CAUTIONS, WARNINGS */
 
 
-            /* START CSS FOR EXPANDER */
+/* START CSS FOR EXPANDER */
 
-            .expand-label {
-              font-family: Space Grotesk, sans-serif;
-              font-weight:bold;
-              font-size: 12px !important;
-              background-color:#e7ecff;
+.expand-label {
+  font-family: Space Grotesk, sans-serif;
+  font-weight:bold;
+  font-size: 12px !important;
+  background-color:#e7ecff;
 
-            }
-            .expand-content {
-              border:cornflowerblue solid 1px;
+}
+.expand-content {
+  border:cornflowerblue solid 1px;
 
-            }
+}
 
-            /* END CSS FOR EXPANDER */
+/* END CSS FOR EXPANDER */
