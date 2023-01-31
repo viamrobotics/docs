@@ -1,5 +1,5 @@
 ---
-title: "Control your Component"
+title: "Control a Component"
 linkTitle: "Control a Component"
 weight: 12
 type: "docs"
@@ -15,7 +15,7 @@ The arm component supports the following methods:
 
 | Method Name | Golang | Python | Description |
 | ----------- | ------ | ------ | ----------- |
-| [Method Name](#method-name)   | [MethodName][go_method_code]   | [method_name][python_method_code]   | Description    |
+| [MethodName](#methodname)   | [MethodName][go_method_code]   | [method_name][python_method_code]   | Description    |
 | [Method Name](#method-name)   | [MethodName][go_method_code]   | [method_name][python_method_code]   | Description    |
 | [Method Name](#method-name)   | [MethodName][go_method_code]   | [method_name][python_method_code]   | Description    |
 

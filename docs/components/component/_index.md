@@ -10,7 +10,7 @@ draft: true
 # SMEs:
 ---
 
-Brief description of the component and you can do with it.
+Brief description of the component and what you can do with it.
 
 Use cases:
 
@@ -22,7 +22,7 @@ Requirements:
 - Board
 - ...
 
-### Configuration
+## Configuration
 
 ```json-viam
 {
@@ -36,7 +36,7 @@ Requirements:
 }
 ```
 
-You can configure the following attributes:
+Configure the following attributes:
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
