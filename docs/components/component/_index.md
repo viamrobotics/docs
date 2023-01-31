@@ -27,6 +27,14 @@ Most robots with a COMPONENT need at least the following hardware:
 
 ## Configuration
 
+{{< tabs name="TabPanelExample" >}}
+{{% tab name="UI"%}}
+
+Description of how to configure the component in the UI
+
+{{% /tab %}}
+{{% tab name="JSON" %}}
+
 ```json-viam
 {
     "name": "COMPONENT_name",
@@ -41,10 +49,8 @@ Most robots with a COMPONENT need at least the following hardware:
 
 Configure the following attributes:
 
-| Attribute | Type | Description |
-| --------- | ---- | ----------- |
-| `attribute1`         | string | Description. |
-| `attribute2`         | int | *Optional.* Description. |
+- `attribute1` (`string`): Description.
+- `attribute1` (`string`): *Optional.* Description.
 
 The following is an example configuration for an Example component:
 
@@ -59,6 +65,9 @@ The following is an example configuration for an Example component:
     }
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Troubleshooting
 
