@@ -10,7 +10,7 @@ icon: "img/components/board.png"
 ---
 
 In the Viam framework, a **board** is the signal wire hub of a robot.
-It sends signals to the other hardware components, and may or may not also act as the software hub, running an instance of the Viam server on its CPU.
+It sends signals to the other hardware components, and may or may not also act as the software hub, running an instance of `viam-server` on its CPU.
 Boards have general purpose input/output (GPIO) pins through which they can transmit [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation) and other signals.
 
 Some examples of boards include Raspberry Pi, BeagleBone, and Jetson.
