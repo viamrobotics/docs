@@ -15,7 +15,7 @@ By default, the Data Management Service syncs data to Viam's cloud every 5 minut
 
 The JSON configuration for the Data Management Service is:
 
-```json
+```json {class="line-numbers linkable-line-numbers" data-line="6"}
 {
   "components": [ ],
   "services": [
