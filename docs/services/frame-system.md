@@ -13,7 +13,7 @@ The Frame System is especially important as it is the basis for many of Viam's o
 In this page, we will explain:
 
 * How to configure a robot's components to make use of the frame system
-* How the viam server builds the frame system from the configuration information
+* How `viam-server` builds the frame system from the configuration information
 * How to access and use reference frame information from the frame system service
 * How other component and service functions implicitly utilize the frame system
 
@@ -118,7 +118,7 @@ We supply this frame information when configuring the arm component, making sure
             "y": 0,
             "z": 1,
             "th": 0
-          }        
+          }
         }
       }
     }
@@ -128,7 +128,7 @@ We supply this frame information when configuring the arm component, making sure
 
 ### Example 2: A robot arm attached to a gantry (a component fixed to the actuator of another component)
 
-Here, the gantry origin is coincident with the world origin (0,0,0).  
+Here, the gantry origin is coincident with the world origin (0,0,0).
 Note: this is the default translation, it is optional in the JSON configuration (we are including it for illustrative purposes).
 
 After configuring the gantry frame, we can configure the arm.  The base of the arm mounted to the gantry 100mm above that origin, so we specify the arm's parent as the name of our gantry and offset Z by 100.
@@ -232,7 +232,7 @@ As explained in the [Model Configuration](#model-configuration) section, some co
 
 When writing a driver for a particular piece of hardware that implements one of these components, you must create its accompanying **Model JSON** file.
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 There is currently (15 Sept 2022) no user interface in the Viam app (<a href="https://app.viam.com">app.viam.com</a>) by which to create these files.
 {{% /alert %}}
 
@@ -350,7 +350,7 @@ Below are JSON examples for each parameter type used by our [Universal Robots](h
                 "x": 0,
                 "y": 0,
                 "z": -99.7
-            },            
+            },
             "geometry": {
                 "x": 80,
                 "y": 150,

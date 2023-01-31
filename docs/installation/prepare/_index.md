@@ -21,5 +21,5 @@ If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone
 - [BeagleBone AI-64 Setup Guide](/installation/prepare/beaglebone-install/)
 - [Texas Instruments SK-TDA4VM Setup Guide](/installation/prepare/sk-tda4vm/)
 
-If you plan to run viam-server on your laptop or desktop with a Linux or Mac operating system, no special prep is required.
-Proceed to [install viam-server](/installation/install/).
+If you plan to run `viam-server` on your laptop or desktop with a Linux or Mac operating system, no special prep is required.
+Proceed to [install `viam-server`](/installation/install/).

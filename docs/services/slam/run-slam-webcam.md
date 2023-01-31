@@ -221,7 +221,7 @@ At this point, your complete configuration should look like:
 * Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-slam`).
 * Change the **Refresh frequency** to your desired frequency, move the webcam around slowly, and watch a map start to appear.
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 It might take a couple of minutes before the first map is created and will be shown in the UI.
 Keep moving the camera slowly within your space and wait for the map to get created.
 {{% /alert %}}

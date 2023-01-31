@@ -9,9 +9,9 @@ aliases:
 # SME: James
 ---
 
-The viam-server is distributed as an AppImage.
+`viam-server` is distributed as an AppImage.
 The AppImage is a single, self-contained binary that should run on any Linux system with the correct CPU architecture, with no need to install any dependencies (excepting FUSE as detailed in the troubleshooting section at the end).
-MacOS users need to follow the [installing viam-server on macOS guide](../macos-install/).
+MacOS users need to follow the [installing `viam-server` on macOS guide](../macos-install/).
 Windows and 32-bit systems are not supported.
 
 ## Installation Instructions
@@ -48,24 +48,24 @@ Make the file executable by running:
 chmod 755 viam-server
 ```
 
-To run viam-server, you have two options:
+To run `viam-server`, you have two options:
 
 #### Running Directly from the Command Line
 
-To run viam-server directly from the command line, you can use the following command, replacing "myconfig" with the name of your configuration file.
+To run `viam-server` directly from the command line, you can use the following command, replacing "myconfig" with the name of your configuration file.
 `sudo` is necessary on a Pi to access GPIO pins, and it may be necessary in other cases depending on hardware permissions.
 
 ```bash
 sudo ./viam-server -config myconfig.json
 ```
 
-To connect this instance of viam-server with a [Viam app](https://app.viam.com) robot, the contents of <file>myconfig.json</file> should be pasted from the **COPY VIAM-SERVER CONFIG** button at the top right of the **SETUP** tab of your robot on [https://app.viam.com](https://app.viam.com).
+To connect this instance of `viam-server` with a [Viam app](https://app.viam.com) robot, the contents of <file>myconfig.json</file> should be pasted from the **COPY VIAM-SERVER CONFIG** button at the top right of the **SETUP** tab of your robot on [https://app.viam.com](https://app.viam.com).
 
 ![Screenshot of the top of the SETUP tab showing the COPY VIAM-SERVER CONFIG button in the upper right, highlighted with a red box.](../../img/linux-install/install-config-button.png)
 
 #### Installing as a System Service
 
-This is more common when setting up viam-server on a Raspberry Pi or something that will essentially only be turned on when you want to use the robot, so you want viam-server to start every time on boot.
+This is more common when setting up viam-server on a Raspberry Pi or something that will essentially only be turned on when you want to use the robot, so you want `viam-server` to start every time on boot.
 
 The following command will create a systemd service file at <file>/etc/systemd/system/viam-server.service</file> and set it to start on boot, using a config placed at <file>/etc/viam.json</file>.
 It will also move the actual binary (AppImage) to <file>/usr/local/bin/viam-server</file> (regardless of the previous filename).
@@ -75,7 +75,7 @@ Run the following command:
 sudo ./viam-server --aix-install
 ```
 
-To connect this viam-server with a [Viam app](https://app.viam.com) robot, navigate to your robot page on [https://app.viam.com](https://app.viam.com).
+To connect this `viam-server` with a [Viam app](https://app.viam.com) robot, navigate to your robot page on [https://app.viam.com](https://app.viam.com).
 At the top right of the **SETUP** tab, click **COPY VIAM-SERVER CONFIG** and paste it into <file>/etc/viam.json</file>.
 
 Start the service by running:
@@ -90,4 +90,4 @@ You can disable this by commenting out the ExecPre line (the one with --aix-upda
 
 ### Next Steps
 
-Continue to our [Managing viam-server Guide](/installation/manage/) to learn about running viam-server.
+Continue to our [Managing `viam-server` Guide](/installation/manage/) to learn about running `viam-server`.
