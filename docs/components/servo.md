@@ -19,6 +19,13 @@ Example wiring diagram for a servo wired to a Raspberry Pi board:
 
 ![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](../img/servo/servo-wiring.png)
 
+Most robots with a servo need at least the following hardware:
+
+- A [board component](/components/board/) that can run `viam-server`
+- A servo
+- A power supply for the board
+- A power supply for the servo
+
 {{% alert title="Note" color="note" %}}
 
 Instead of powering the servo with a separate power supply, you may choose to power it using the 5V and ground pins on the board.
@@ -26,13 +33,6 @@ This can work, as long as the servo is not under any significant load.
 Keep in mind that if the servo draws too much power, it can cause the board to temporarily lose power.
 
 {{% /alert %}}
-
-Most robots with a servo need at least the following hardware:
-
-- A [board component](/components/board/) that can run `viam-server`
-- A servo
-- A power supply for the board
-- A power supply for the servo
 
 ## Configuration
 
@@ -131,7 +131,7 @@ The servo component supports the following methods:
 
 {{% alert title="Note" color="note" %}}
 
-The following example assumes you have a servo called "my_servo" configured as a component of your robot, and that your robot is connected online on [the Viam app](https://app.viam.com/).
+The following example assumes you have a servo called "my_servo" configured as a component of your robot, and that your robot is connected on [the Viam app](https://app.viam.com/).
 If your servo has a different name, change the `name` in the example.
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
