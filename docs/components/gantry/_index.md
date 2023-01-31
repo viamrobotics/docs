@@ -1,7 +1,7 @@
 ---
 title: "Gantry Component"
 linkTitle: "Gantry"
-draft: true
+draft: false
 weight: 50
 type: "docs"
 description: "Explanation of gantry configuration and usage in Viam."
@@ -10,28 +10,27 @@ icon: "img/components/gantry.png"
 # SME: Rand
 ---
 
-You can use a **gantry** on a robot to hold and position a variety of end-effectors: devices designed to attach to the robot and interact with the environment to perform tasks.
+The Viam *gantry* component supports robots with gantries.
 
-A gantry uses linear rails to move an end effector across space.
+You can use a gantry on a robot to hold and position a variety of end-effectors: devices designed to attach to the robot and interact with the environment to perform tasks.
 
-- This makes it a common machine design for simple positioning and placement, as a linear axis establishes a stiffer layout across the robot than an open chain of links, making holding or repetitively positioning the end effector more attainable.
-- Configure a customized encoded motor controller with a gantry to move the linear rail.
+Gantries use linear rails to move the end effectors, so they can only be controlled in terms of linear motion and are constrained by the length of the rail "axis" in movement.
 
-This component abstracts the hardware of a gantry to give you an easy interface for moving linear rails, even many at once (multi-axis).
+- Despite the limitations, this design makes gantries a common machine design for simple positioning and placement.
+A linear axis establishes a stiffer layout across the robot than an open chain of links, making holding or repetitively positioning the end effector more attainable.
+
+With `viam-server`, this component abstracts the hardware of a gantry to give you an easy interface for moving the linear rails on gantries, even many at once (multi-axis).
 
 - A multi-axis gantry component is made up of many single-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
 - Each gantry can be given a reference [frame](/services/frame-system/) in configuration that describes its translation and orientation to the world.
 - The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation. The “world” frame of each gantry becomes the moveable frame of the gantry.
 
-Gantry components can only be controlled in terms of linear motion.
-Each gantry can only move in one axis within the limits of its length.
+Most robots with a gantry need at least the following hardware:
 
-**Requirements:**
-
-- A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins.
-- A [motor](/components/motor/).
-  - Encoded motor
-  - Stepper motor: Requires setting limit switches in the config of the gantry or setting offsets in the config of the stepper motor.
+- A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
+- A [motor](/components/motor/) that can move the linear rail(s)
+  - Encoded motor: See [dc motor with encoder](/components/motor/#dc-motor-with-encoder) and [encoder component](/components/encoder/) for more information.
+  - Stepper motor: Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches to attach to the brackets
 
 ### Configuration
@@ -165,17 +164,3 @@ In addition to the attributes for single-axis gantries, multi-axis gantries also
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
-
-### Next Steps
-
-<div class="container text-center">
-  <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="install">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Relevant tutorial name</h4>
-            <p style="text-align: left;">Description.</p>
-        </a>
-    </div>
-  </div>
-</div>

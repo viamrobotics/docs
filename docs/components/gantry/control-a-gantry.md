@@ -48,7 +48,7 @@ If your gantry has a different name, change the `name` in the example.
 {{% tab name="Python" %}}
 
 ```python
-from viam.components.gantry import GantryClient
+from viam.components.gantry import Gantry
 from viam.proto.common import WorldState
 
 async def main():
@@ -60,7 +60,7 @@ async def main():
     print(robot.resource_names)
 
     # Connect to your gantry.
-    myGantry = GantryClient.from_robot(robot=robot, name='my_gantry')
+    myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
 
     # Disconnect from your robot. 
     await robot.close()
@@ -120,15 +120,246 @@ func main() {
 
 ### Position
 
-Get the current position
+Get the current positions of the axis of the gantry (mm).
 
 ### MoveToPosition
 
+Move the axes of the gantry to the desired positions (mm).
+Plan for the gantry to avoid obstacles and comply with the constraints for movement specified in [(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `positions` [(List[float])](https://docs.python.org/3/library/typing.html#typing.List): A list of positions for the axes of the gantry to move to, in millimeters.
+- `world_state`[(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState): Obstacles that the gantry must avoid while it moves from its original position to the position specified in `pose`.
+A `WorldState` can include a variety of attributes, including a list of obstacles around the object (`obstacles`), a list of spaces the robot may operate within (`interaction_spaces`), and a list of supplemental transforms (`transforms`).
+These fields are optional.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.move_to_position).
+
+```python
+myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
+
+# Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multiaxis, with 5 axes.
+examplePositions = [1, 2, 3, 4, 5]
+
+# Move the axes of the gantry to the positions specified. 
+await myGantry.move_to_position(positions=examplePositions, world_state=WorldState())
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `positions` [[]float64](https://pkg.go.dev/builtin#float64): A list of positions for the axes of the gantry to move to, in millimeters.
+- `world_state`[(WorldState)](https://pkg.go.dev/go.viam.com/rdk@v0.2.12/referenceframe#WorldState): Obstacles that the gantry must avoid while it moves from its original position to the position specified in `pose`.
+A `WorldState` can include a variety of attributes, including a list of obstacles around the object (`obstacles`), a list of spaces the robot may operate within (`interaction_spaces`), and a list of supplemental transforms (`transforms`).
+These fields are optional.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
+
+```go
+myGantry, err := gantry.FromRobot(robot, "my_gantry")
+if err != nil {
+  logger.Fatalf("cannot get gantry: %v", err)
+}
+
+// Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multiaxis, with 5 axes.
+examplePositions = []float64{1, 2, 3, 4, 5}
+
+// Move the axes of the gantry to the positions specified. 
+myGantry.MoveToPosition(context.Background(), examplePositions, referenceframe.WorldState(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Lengths
+
+Get the lengths of the axes of the gantry (mm).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `lengths_mm` [(List[float])](https://docs.python.org/3/library/typing.html#typing.List): A list of the lengths of the axes of the gantry in millimeters.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.get_joint_positions)
+
+```python
+myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
+
+# Get the lengths of the axes of the gantry in millimeters.
+lengths_mm = await myGantry.get_lengths()
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `lengths_mm` [[]float64](https://pkg.go.dev/builtin#float64): A list of the lengths of the axes of the gantry in millimeters.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
+
+```go
+myGantry, err := gantry.FromRobot(robot, "my_gantry")
+if err != nil {
+  logger.Fatalf("cannot get gantry: %v", err)
+}
+
+// Get the lengths of the axes of the gantry in millimeters.
+lengths_mm, err := myGantry.Lengths(context.Background(), nil)
+
+// Log any errors that occur. 
+if err != nil {
+  logger.Fatalf("cannot get axis lengths of gantry: %v", err)
+}
+
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### Stop
 
+Stop all motion of the gantry.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+  
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.stop).
+
+```python
+myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
+
+# Stop all motion of the gantry. It is assumed that the gantry stops immediately.
+await myGantry.stop()
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
+
+```go
+myGantry, err := gantry.FromRobot(robot, "my_gantry")
+if err != nil {
+  logger.Fatalf("cannot get gantry: %v", err)
+}
+
+// Stop all motion of the gantry. It is assumed that the gantry stops immediately.
+myGantry.Stop(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### IsMoving
+
+Get if the gantry is currently moving.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+  
+**Returns:**
+
+- `is_moving` [(bool)](https://docs.python.org/c-api/bool.html): If it is true or false that the gantry is currently moving.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.is_moving).
+
+```python
+myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
+
+# Stop all motion of the gantry. It is assumed that the gantry stops immediately.
+await myGantry.stop()
+
+# Print if the gantry is currently moving.
+print(myGantry.is_moving())
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- `is_moving` [(bool)](https://pkg.go.dev/builtin#bool): If it is true or false that the gantry is currently moving.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
+
+```go
+myGantry, err := gantry.FromRobot(robot, "my_gantry")
+if err != nil {
+  logger.Fatalf("cannot get gantry: %v", err)
+}
+
+// Stop all motion of the gantry. It is assumed that the gantry stops immediately.
+myGantry.Stop(context.Background(), nil)
+
+// Log if the gantry is currently moving.
+is_moving, err := myGantry.IsMoving(context.Background())
+if err != nil {
+  logger.Fatalf("cannot get if gantry is moving: %v", err)
+}
+logger.Info(is_moving)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Troubleshooting
 
