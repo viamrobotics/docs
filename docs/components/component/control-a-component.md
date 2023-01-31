@@ -16,7 +16,7 @@ The arm component supports the following methods:
 | Method Name | Golang | Python | Description |
 | ----------- | ------ | ------ | ----------- |
 | [MethodName](#methodname)   | [MethodName][go_method_code]   | [method_name][python_method_code]   | Description    |
-| [Method Name](#method-name)   | [MethodName][go_method_code]   | [methodname][python_method_code]   | Description    |
+| [Method Name](#methodname)   | [MethodName][go_method_code]   | [method_name][python_method_code]   | Description    |
 | [Method Name](#methodname)   | [MethodName][go_method_code]   | [method_name][python_method_code]   | Description    |
 
 [go_method_code]: https://pkg.go.dev/go.viam.com/rdk/components/component#Arm

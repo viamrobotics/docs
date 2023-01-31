@@ -5,11 +5,13 @@ weight: 10
 type: "docs"
 description: "A NAME is a ..."
 tags: ["camera", "components"]
-# icon: "img/components/name.png"
+icon: "../img/components.png"
 draft: true
 no_list: true
 # SMEs:
 ---
+
+<img src="../img/components.png"  style="float:right" alt="Component picture" width="400" />
 
 Brief description of the component and what you can do with it.
 
@@ -18,7 +20,7 @@ Use cases:
 - A brief description of one sample use case.
 - ...
 
-Requirements:
+Most robots with a COMPONENT need at least the following hardware:
 
 - Board
 - ...
@@ -62,12 +64,12 @@ The following is an example configuration for an Example component:
 
 Troubleshooting information for configuration errors.
 
-### Next Steps
+## Next Steps
 
 <div class="container text-center">
   <div class="row">
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="prepare">
+        <a href="control-a-component">
             <br>
             <h4 style="text-align: left; margin-left: 0px;">Control a COMPONENTNAME</h4>
             <p style="text-align: left;">Control your COMPONENTNAME.</p>
