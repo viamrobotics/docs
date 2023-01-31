@@ -7,6 +7,7 @@ description: "A NAME is a ..."
 tags: ["camera", "components"]
 # icon: "img/components/name.png"
 draft: true
+no_list: true
 # SMEs:
 ---
 
