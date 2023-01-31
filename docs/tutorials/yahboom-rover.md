@@ -127,7 +127,8 @@ Make sure the 8bitdo controller mode switch is set to S, hold down Start for a f
 For more information about the controller buttons and Bluetooth modes, consult the manual included with the controller.
 
 Run `sudo bluetoothctl scan on` to list all Bluetooth devices within reach of the Raspberry Pi.
-As you do this, in terminal make sure you are in your pi and not in your computer. This command will scan all the devices but the 8bitdo controller will have a MAC address that begins E4:17:D8.
+As you do this, in terminal make sure you are in your Pi and not in your computer.
+This command will scan all the devices but the 8bitdo controller will have a MAC address that begins E4:17:D8.
 
 ![A screenshot of a Mac command prompt with the command ssh hazal_pi@hazal_pi.local.](../img/yahboom-rover/ssh-pilocal.png)
 

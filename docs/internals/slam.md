@@ -68,9 +68,13 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If you wish to
 
 ### Required Attributes
 
-**algorithm** (string): Name of the SLAM library/algorithm to be used. Current options are cartographer or orbslamv3.
+**algorithm** (string): Name of the SLAM library/algorithm to be used.
+Current options are cartographer or orbslamv3.
 
-**data_dir** (string): This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If these have not been provided, they will be created by the SLAM service. The data in the data directory also dictate what type of SLAM will be run:
+**data_dir** (string): This is the data directory used for saving input sensor/map data and output maps/visualizations.
+It has an architecture consisting of three internal folders, config, data and map.
+If these have not been provided, they will be created by the SLAM service.
+The data in the data directory also dictate what type of SLAM will be run:
 
 - If no map is provided in the data folder, the SLAM algorithm will generate a new map using all the provided data (PURE MAPPING MODE)
 
@@ -82,22 +86,33 @@ The SLAM binaries used are stored in <file>/usr/local/bin</file>. If you wish to
 
 ### Optional Attributes
 
-**map_rate_sec** (int): Map generation rate for saving current state (in seconds). The default value is 60. If an integer is less or equal to 0 then SLAM is run in localization mode.
+**map_rate_sec** (int): Map generation rate for saving current state (in seconds).
+The default value is 60.
+If an integer is less or equal to 0 then SLAM is run in localization mode.
 
-**data_rate_ms** (int): Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds). The default value is 200. If 0, no new data is sent to the SLAM algorithm.
+**data_rate_ms** (int): Data generation rate for collecting sensor data to be fed into SLAM (in milliseconds).
+The default value is 200.
+If 0, no new data is sent to the SLAM algorithm.
 
-**input_file_pattern** (string): File glob describing how to ingest previously saved sensor data. Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y.
+**input_file_pattern** (string): File glob describing how to ingest previously saved sensor data.
+Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y.
+
 {{% alert title="Note" color="note" %}}  
-X and Y are the file numbers since the most recent map data package in the data folder. If nil, includes all previously saved data.
+X and Y are the file numbers since the most recent map data package in the data folder.
+If nil, includes all previously saved data.
 {{% /alert %}}
-**port** (string): Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is given a random available port will be assigned.
+
+**port** (string): Port for SLAM gRPC server.
+If running locally, this should be in the form `localhost:<PORT>`.
+If no value is given a random available port will be assigned.
 
 **config_params** (map[string] string): Parameters specific to the
 inputted SLAM library.
 
 ### SLAM Library Attributes
 
-`config_params` is a catch-all attribute for parameters that are unique to the in-use SLAM library. `config_params` often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching, to name a few.
+`config_params` is a catch-all attribute for parameters that are unique to the in-use SLAM library.
+`config_params` often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching, to name a few.
 
 You can find details on which inputs you can include for the available libraries in the following sections.
 
@@ -159,11 +174,12 @@ git clone --recurse-submodules git@github.com:viamrobotics/slam.git
 
 #### ORBSLAM3 Setup
 
-This setup documents the current process for getting ORBSLAM3 working locally on a raspberry pi.
+This setup documents the current process for getting ORBSLAM3 working locally on a Raspberry Pi.
 
 ##### Dependencies
 
-The following are the required dependencies for building and running ORBSLAM3. In addition you should ensure the most recent version of the orbslam submodule is located in your directory with
+The following are the required dependencies for building and running ORBSLAM3.
+In addition you should ensure the most recent version of the orbslam submodule is located in your directory with
 
 ```bash
 git submodule update \--init \--recursive
@@ -221,7 +237,7 @@ cd \~/slam/slam-libraries/viam-orb-slam
 ./build_orbslam.sh
 ```
 
-Should the code fail the initial setup (your pi freezes and requires a restart), change the *make -j\`nproc\`* flags into *make -j2*
+Should the code fail the initial setup (your Pi freezes and requires a restart), change the *make -j\`nproc\`* flags into *make -j2*
 
 After building, use the following command to move the binary to `/usr/local/bin`:
 
@@ -231,7 +247,8 @@ sudo cp bin/orb_grpc_server /usr/local/bin
 
 In addition, make sure the binary is added in SLAMlibraries.go for ORBSLAM3 in rdk.
 
-Lastly, move the vocabulary file into your data directory. You must do this whenever a new data directory will be used.
+Lastly, move the vocabulary file into your data directory.
+You must do this whenever a new data directory will be used.
 
 ```bash
 cp ORB_SLAM3/Vocabulary/ORBvoc.txt ~/YOUR_DATA_DIR/config

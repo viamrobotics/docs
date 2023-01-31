@@ -34,7 +34,7 @@ The following related errors may cause this issue:
 <th>Resolution
 </th>
 <td>Add the missing name in components and save the config.
-Run <file>sudo systemctl restart viam-server.service</file> in the terminal to restart the server.
+Run <code>sudo systemctl restart viam-server.service</code> in the terminal to restart the server.
 </td>
 </tr>
 </table>
@@ -77,7 +77,7 @@ The frame object looks like this:</td>
 <tr>
 <th>Resolution
 </th>
-<td>Run <file>/root/viam -remove</file> in the terminal to clear cache config from the Pi.
+<td>Run <code>>/root/viam -remove</code> in the terminal to clear cache config from the Pi.
 Re-try the operation.
 </td>
 
@@ -112,7 +112,7 @@ Re-try the operation.
 <tr>
 <th>Resolution
 </th>
-<td>Run <file>sudo systemctl restart viam-server.service</file> in the terminal to restart the server.
+<td>Run <code>sudo systemctl restart viam-server.service</code> in the terminal to restart the server.
 </td>
 </tr>
 </table>
@@ -122,14 +122,14 @@ Re-try the operation.
 <table style="border: solid black 1px;">
 <th>What/Why:
 </th>
-<td>Check if you forgot to enter the pi name and check for any other missing component specs in config.
+<td>Check if you forgot to enter the board name and check for any other missing component specs in config.
 </td>
 </tr>
 <tr>
 <th>Resolution
 </th>
 <td>Add any missing components.
-Run <file>sudo systemctl restart viam-server.service</file> in the terminal to restart the server.
+Run <code>sudo systemctl restart viam-server</code> in the terminal to restart the server.
 </td>
 </tr>
 </table>
