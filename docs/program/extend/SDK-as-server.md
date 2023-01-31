@@ -14,7 +14,7 @@ However, you can leverage any Viam [SDK](/program/extend/sdk-as-server) to creat
 
 ## What is a server component implementation?
 
-The `viam-server` component implementation allows you to create custom components that interface with the `viam-server` using Viam's SDKs.
+The custom component server implementation allows you to create custom components that interface with the `viam-server` using Viam's SDKs.
 A server component is a subclass of a [component](https://python.viam.dev/autoapi/viam/components/component_base/index.html#module-viam.components.component_base) that allows you to register the new component with the `viam-server` as a [*remote*](/appendix/glossary/#remote_anchor) after you spin up an SDK server (which can have one or many custom components).
 
 In other words, a server component implementation is a way for you to connect to, control, and monitor any unsupported robots, sensors, or components using any of Viam's clients, including our SDKs and the Viam app.

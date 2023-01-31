@@ -22,8 +22,7 @@ This tutorial requires the following hardware:
 {{% alert title="Note" color="note" %}}
 
 If you already have a 64-bit Linux distribution installed on your Pi, you can skip ahead to [installing `viam-server`](/installation/install/linux-install/).
-To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running viam-server):
-`ssh` into your Pi and then run `lscpu`.
+To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running viam-server), `ssh` into your Pi and then run `lscpu`.
 
 Example output:
 
