@@ -70,13 +70,11 @@ h3, .h3 {
 
 /* Added H4 and H5 in response to DAD-97 */
 h4, .h4 {
-  font-size: 16pt !important;
+  font-size: 14pt !important;
 }
 
 h5, .h5 {
-  font-size: 16pt !important;
-  font-weight: 400;
-  font-style: italic;
+  font-size: 12pt !important;
 }
 h7 {
   font-size: 10pt !important;
@@ -133,7 +131,7 @@ h5:after
 {
   content:' ';
   display:block;
-  border:1px dashed  black;
+  border:1px solid  black;
   margin-right:75%;
 }
 
