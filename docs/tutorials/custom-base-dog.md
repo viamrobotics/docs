@@ -382,29 +382,34 @@ Depending on the speed of your server connection, you may need to hold down the 
 
 ## Troubleshooting
 
-If your servos aren't moving as expected or at all, try turning the whole robot off for a while to let them cool down.
+- If your servos aren't moving as expected or at all, try turning the whole robot off for a while to let them cool down.
 
-If you want to send commands directly to the dog server instead of running <file>my_robot_dog.py</file> (which may be helpful for debugging specific commands, especially if you're adding your own functionality and need to calibrate servo speeds/positions) you can do the following:
+- Make sure the robot's batteries have adequate charge.
+If you have otherwise unexplained connection errors, try powering things off and charging the batteries for a while before attempting to SSH to the Pi again.
 
-1. Install Netcat if it isn't already installed:
+- If certain sensors or servos aren't being found by the software, turn off the robot and make sure all wires are fully connected before turning it back on.
 
-    ```bash
-    sudo apt install netcat
-    ```
+- If you want to send commands directly to the dog server instead of running <file>my_robot_dog.py</file> (which may be helpful for debugging specific commands, especially if you're adding your own functionality and need to calibrate servo speeds/positions) you can do the following:
 
-2. Connect directly to the robot dog by running the following command (replacing <DOG IP ADDRESS> with the correct IP address, for example `nc 10.0.0.123`) from the command line while SSHed into the Pi:
+  1. Install Netcat if it isn't already installed:
 
-    ```bash
-    nc <DOG IP ADDRESS> 5001
-    ```
+      ```bash
+      sudo apt install netcat
+      ```
 
-3. You can now type commands ([see the list of available commands here](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Code/Client/Command.py)) and hit enter to send them to the Freenove robot dog server.
-  For example:
+  2. Connect directly to the robot dog by running the following command (replacing <DOG IP ADDRESS> with the correct IP address, for example `nc 10.0.0.123`) from the command line while SSHed into the Pi:
 
-    ```bash
-    CMD_TURN_LEFT#30
-    CMD_STOP
-    ```
+      ```bash
+      nc <DOG IP ADDRESS> 5001
+      ```
+
+  3. You can now type commands ([see the list of available commands here](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Code/Client/Command.py)) and hit enter to send them to the Freenove robot dog server.
+    For example:
+
+      ```bash
+      CMD_TURN_LEFT#30
+      CMD_STOP
+      ```
 
 ## Next steps
 
