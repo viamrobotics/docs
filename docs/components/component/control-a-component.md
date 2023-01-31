@@ -22,7 +22,7 @@ The arm component supports the following methods:
 [go_method_code]: https://pkg.go.dev/go.viam.com/rdk/components/component#Arm
 [python_method_code]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_end_position
 
-### Method Name
+### `MethodName`
 
 {{< tabs >}}
 {{% tab name="Python" %}}
