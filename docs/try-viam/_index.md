@@ -15,7 +15,7 @@ description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 mi
 During your rover rental, you can [try out some of the Viam platform functionality](try-viam-tutorial/):
 
 - Drive the rover from wherever you are
-- Use services like computer vision and data management to identify colors and objects
+- Use services like computer vision to identify colors and objects
 - Explore the configuration and control interface for the rover's sensors and actuators in the Viam app
 - Write code to control the rover
 
