@@ -77,7 +77,7 @@ The frame object looks like this:</td>
 <tr>
 <th>Resolution
 </th>
-<td>Run <code>>/root/viam -remove</code> in the terminal to clear cache config from the Pi.
+<td>Run <code>/root/viam -remove</code> in the terminal to clear cache config from the Pi.
 Re-try the operation.
 </td>
 
