@@ -9,7 +9,7 @@ icon: "img/components/servo.png"
 # SME: #team-bucket
 ---
 
-The Viam servo component supports hobby servos: small motors with built-in closed-loop control.
+The Viam *servo* component supports hobby servos: small motors with built-in closed-loop control.
 Servos can be useful in robotics because their position is easily and precisely controlled.
 
 - The servo component does not support servomotors.
