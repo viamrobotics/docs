@@ -68,7 +68,8 @@ To connect this instance of viam-server with a [Viam app](https://app.viam.com) 
 This is more common when setting up viam-server on a Raspberry Pi or something that will essentially only be turned on when you want to use the robot, so you want viam-server to start every time on boot.
 
 The following command will create a systemd service file at <file>/etc/systemd/system/viam-server.service</file> and set it to start on boot, using a config placed at <file>/etc/viam.json</file>.
-It will also move the actual binary (AppImage) to `/usr/local/bin/viam-server` (regardless of the previous filename.) Run the following command:
+It will also move the actual binary (AppImage) to <file>/usr/local/bin/viam-server</file> (regardless of the previous filename).
+Run the following command:
 
 ```bash
 sudo ./viam-server --aix-install
