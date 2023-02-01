@@ -82,7 +82,7 @@ The Location **must** be "Rover Rental".
 
 ## Which Organization does this robot belong to?
 
-Your robot belongs to the [Organization](http://localhost:1313/program/app-usage/#navigating-organizations) you were in when you made the request.
+Your robot belongs to the [Organization](/program/app-usage/#navigating-organizations) you were in when you made the request.
 
 ## Can I share this Location with a friend to work on the robot together?
 
