@@ -28,7 +28,7 @@ To capture data from one or more robots, you must add the [Data Management Servi
 
 ![data capture configuration](../../img/data-capture-config.png)
 
-The JSON configuration for the Data Management service is:
+The JSON configuration for the Data Management Service is:
 
 ```json
 {
