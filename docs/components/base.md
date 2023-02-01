@@ -3,7 +3,7 @@ title: "Base Component"
 linkTitle: "Base"
 weight: 10
 type: "docs"
-description: "Explanation of base configuration and usage in Viam."
+description: "Explanation of a base component, the platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
 icon: "img/components/base.png"
 # SMEs: Steve B
@@ -11,13 +11,15 @@ icon: "img/components/base.png"
 
 A *base* is the platform that the other parts of a mobile robot attach to.
 
-In `viam-server`, the *base* component is configured with any *motor* components attached to the base, and the *board*, to provide an interface to control the movement of the whole physical base of the robot.
+Configure your robot's *base* component to reference any *motor* components attached to the base.
+By organizing these components into a base component, you gain an interface to control the movement of the whole physical base of the robot.
 
-<img src="../img/base/base-trk-rover-w-arm.png" alt="A robot comprised of a base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. There are width and diameter labels on the diagram because width and circumference (pi times diameter) are required attributes when configuring a base component." />
+<img src="../img/base/base-trk-rover-w-arm.png" alt="A robot comprised of a base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." />
 
 Most mobile robots with a base need at least the following hardware:
 
-- A [board component](/components/board/) that can run `viam-server`: a computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer with GPIO.
+- A [board component](/components/board/) that can run a `viam-server` instance.
+   For example, a computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer with GPIO.
 
 - Motors attached to wheels or propellers-- or other actuators (devices that produce motion in a system). These are necessary to move the base.
 
@@ -35,15 +37,49 @@ Note that your base's wiring will vary depending on your choice of board, motors
 
 ## Configuration
 
-To configure a base as a component of your robot, first ensure that the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base are also configured as components of your robot.
+To configure a base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
 
-- Configure each motor according to its type.
+Refer to the following example configuration file for a wheeled base:
 
-Find more information on wiring and configuring different types of motors in the [motor component page](/components/motor/).
+{{< tabs name="Example Base Config" >}}
+{{% tab name="Template JSON" %}}
 
-Refer to the following example configuration file, including the board, motors, and base:
+```json-viam
+{
+  "components": [
+    {
+      "attributes": {},
+      "model": "<model>",
+      "name": "<board_name>",
+      "type": "board"
+    },
+    {
+      "attributes": {
+        "board": "<board_name>",
+        "max_rpm": <max_rpm>,
+        "pins": { ... }
+      },
+      "model": "<model>",
+      "name": "<motor_name>",
+      "type": "motor"
+    },
+    ... ,
+    {
+      "attributes": {
+        "attribute_name": [
+          "motor_name"
+        ],
+        ...
+      },
+      "model": "<model>",
+      "name": "<base_name>",
+      "type": "base"
+    }
+  ]
+}
+```
 
-{{< tabs name="Example Servo Config" >}}
+{{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
 ```json-viam
@@ -191,7 +227,7 @@ The base component supports the following methods:
 
 Make sure you have set up your robot and connected it to the Viam app. Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
 
-The following example assumes you have a base called "my_base" configured as a component of your robot.
+The following example assumes you have a base called "my_base" which is configured as a component of your robot.
 If your base has a different name, change the `name` in the example.
 
 {{% /alert %}}
@@ -200,26 +236,21 @@ If your base has a different name, change the `name` in the example.
 {{% tab name="Python" %}}
 
 ```python
-from viam.components.base import Base
+from viam.components.base import BaseClient
 from viam.proto.common import Vector3
 
 async def main():
     # Connect to your robot.
     robot = await connect()
 
-    # Log an info message with the names of the different resources that are connected to your robot.
+    # Log an info message with the names of the different resources that are connected to your robot. 
     print('Resources:')
     print(robot.resource_names)
 
-<<<<<<< HEAD
-    # Connect to your base.
-    myBase = BaseClient.from_robot(robot=robot, name='my_base')
-=======
     # Connect to your base. 
-    myBase = Base.from_robot(robot=robot, name='my_base')
->>>>>>> 1d5673b (change references to BaseClient.from_robot)
+    myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
-    # Disconnect from your robot.
+    # Disconnect from your robot. 
     await robot.close()
 
 if __name__ == '__main__':
@@ -232,15 +263,15 @@ if __name__ == '__main__':
 ```go
 import (
  "go.viam.com/rdk/components/base"
- "github.com/golang/geo/r3"
+ "github.com/golang/geo/r3"  
 )
 
-func main() {
+func main() { 
 
-  // Create an instance of a logger.
+  // Create an instance of a logger. 
   logger := golog.NewDevelopmentLogger("client")
 
-  // Connect to your robot.
+  // Connect to your robot. 
   robot, err := client.New(
       context.Background(),
       "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
@@ -256,10 +287,10 @@ func main() {
       logger.Fatal(err)
   }
 
-  // Delay closing your connection to your robot until main() exits.
+  // Delay closing your connection to your robot until main() exits. 
   defer robot.Close(context.Background())
 
-  // Log an info message with the names of the different resources that are connected to your robot.
+  // Log an info message with the names of the different resources that are connected to your robot. 
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
 
@@ -288,8 +319,6 @@ Move the base in a straight line across the given distance (mm) at the given vel
 Negative implies backwards.
 - `velocity` [(float)](https://docs.python.org/3/library/functions.html#float): The velocity at which to move in millimeters per second.
 Negative implies backwards.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -298,7 +327,7 @@ Negative implies backwards.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight).
 
 ```python
-myBase = Base.from_robot(robot=robot, name='my_base')
+myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Move the base 10 mm at a velocity of 1 mm/s, forward.
 await myBase.move_straight(distance=10, velocity=1)
@@ -332,10 +361,10 @@ if err != nil {
 }
 
 // Move the base forward 10 mm at a velocity of 1 mm/s.
-myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: 1, nil)
+myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: 1)
 
 // Move the base backward 10 mm at a velocity of -1 mm/s.
-myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: -1, nil)
+myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: -1)
 ```
 
 {{% /tab %}}
@@ -354,8 +383,6 @@ Turn the base in place, rotating it to the given angle (degrees) at the given an
 Negative implies backwards.
 - `velocity` [(float)](https://docs.python.org/3/library/functions.html#float): The angular velocity at which to spin in degrees per second.
 Negative implies backwards.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -364,7 +391,7 @@ Negative implies backwards.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin).
 
 ```python
-myBase = Base.from_robot(robot=robot, name='my_base')
+myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Spin the base 10 degrees at an angular velocity of 1 deg/sec.
 await myBase.spin(angle=10, velocity=1)
@@ -416,8 +443,6 @@ Negative "Y:" values imply moving backwards.
 - `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's angular propulsion.
 In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
 Use the Z component of this vector to spin left or right when controlling a wheeled base. Negative "Z:" values imply spinning to the right.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call
 
 **Returns:**
 
@@ -426,7 +451,7 @@ Use the Z component of this vector to spin left or right when controlling a whee
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power).
 
 ```python
-myBase = Base.from_robot(robot=robot, name='my_base')
+myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Make your wheeled base move forward. Set linear power to 75%.
 print("move forward")
@@ -473,21 +498,21 @@ if err != nil {
 
 // Make your wheeled base move forward. Set linear power to 75%.
 logger.Info("move forward")
-err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: .75}, angular: r3.Vector{}, nil)
+err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: .75}, angular: r3.Vector{})
 if err != nil {
     logger.Fatal(err)
 }
 
 // Make your wheeled base move backward. Set linear power to -100%.
 logger.Info("move backward")
-err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: -1}, angular: r3.Vector{}, nil)
+err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: -1}, angular: r3.Vector{})
 if err != nil {
     logger.Fatal(err)
 }
 
 // Make your wheeled base spin left. Set angular power to 100%.
 logger.Info("spin left")
-err = myBase.SetPower(context.Background(), linear: r3.Vector{}, angular: r3.Vector{Z: 1}, nil)
+err = myBase.SetPower(context.Background(), linear: r3.Vector{}, angular: r3.Vector{Z: 1})
 if err != nil {
   logger.Fatal(err)
 }
@@ -515,8 +540,6 @@ Set the linear velocity (mm/sec) and angular velocity (degrees/sec) of the base.
 - `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity in mm per second.
 Only the Y component of the vector is used for a wheeled base.
 - `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity in degrees per second. Only the Z component of the vector is used for a wheeled base.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -525,7 +548,7 @@ Only the Y component of the vector is used for a wheeled base.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity).
 
 ```python
-myBase = Base.from_robot(robot=robot, name='my_base')
+myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Set the angular velocity to 1 mm/sec and the linear velocity to 1 degree/sec.
 await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z=1))
@@ -556,7 +579,7 @@ if err != nil {
 }
 
 // Set the angular velocity to 1 mm/sec and the linear velocity to 1 deg/sec.
-myBase.SetVelocity(context.Background(), linear: r3.Vector{Y: 1}, angular: r3.Vector{Z: 1}, nil)
+myBase.SetVelocity(context.Background(), linear: r3.Vector{Y: 1}, angular: r3.Vector{Z: 1})
 ```
 
 {{% /tab %}}
@@ -571,8 +594,7 @@ Stop the base from moving immediately.
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call
+- None
 
 **Returns:**
 
@@ -581,7 +603,7 @@ Stop the base from moving immediately.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop).
 
 ```python
-myBase = Base.from_robot(robot=robot, name='my_base')
+myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Move the base forward 10 mm at a velocity of 1 mm/s.
 await myBase.move_straight(distance=10, velocity=1)
@@ -611,10 +633,10 @@ if err != nil {
 }
 
 // Move the base forward 10 mm at a velocity of 1 mm/s.
-myBase.MoveStraight(context.Background(), 10, 1, nil)
+myBase.MoveStraight(context.Background(), 10, 1)
 
 // Stop the base.
-myBase.Stop(context.Background(), nil)
+myBase.Stop(context.Background())
 ```
 
 {{% /tab %}}
