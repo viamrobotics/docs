@@ -205,7 +205,6 @@ Refer to the following example configuration for a multi-axis gantry:
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-<<<<<<< HEAD
 <table>
   <tr>
    <td><strong>Method Name</strong>
@@ -644,6 +643,4 @@ if err != nil {
 ## Implementation
 
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/gantry/index.html)
-=======
->>>>>>> dc7b93c (mdlint)
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
