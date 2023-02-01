@@ -4,7 +4,7 @@ linkTitle: "BeagleBone Setup"
 weight: 20
 type: "docs"
 description: "How to flash a BeagleBone AI-64 to prepare it for viam-server installation."
-aliases: 
+aliases:
     - "/installation/beaglebone-install/"
 # SMEs: Joe Karlsson, Shawn, Matt Dannenberg, and Rand
 ---
@@ -16,7 +16,7 @@ In this tutorial, we will show you how to set up your BeagleBone AI-64 with Debi
 
 ## Hardware requirements
 
-You will need the following hardware, tools, and software to install viam-server on a BeagleBone AI-64:
+You will need the following hardware, tools, and software to install `viam-server` on a BeagleBone AI-64:
 
 1. A BeagleBone AI-64
 2. A microSD card

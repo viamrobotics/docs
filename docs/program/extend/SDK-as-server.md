@@ -14,7 +14,7 @@ However, you can leverage any Viam [SDK](/program/extend/sdk-as-server) to creat
 
 ## What is a server component implementation?
 
-The Viam server component implementation allows you to create custom components that interface with the `viam-server` using Viam's SDKs.
+The custom component server implementation allows you to create custom components that interface with the `viam-server` using Viam's SDKs.
 A server component is a subclass of a [component](https://python.viam.dev/autoapi/viam/components/component_base/index.html#module-viam.components.component_base) that allows you to register the new component with the `viam-server` as a [*remote*](/appendix/glossary/#remote_anchor) after you spin up an SDK server (which can have one or many custom components).
 
 In other words, a server component implementation is a way for you to connect to, control, and monitor any unsupported robots, sensors, or components using any of Viam's clients, including our SDKs and the Viam app.
@@ -29,7 +29,7 @@ For example, let's say that you have built a custom robotic arm that is not supp
 You will need to create a server component and register the new arm in order to use it with the Viam SDK.
 Once your new arm is registered, you will be able to use it remotely with Viam.
 
-{{% alert title="Tip" color="tip" %}}  
+{{% alert title="Tip" color="tip" %}}
 Here is an example of [how to create a new arm server component in the Python SDK documentation](https://python.viam.dev/examples/example.html#subclass-a-component).
 {{% /alert %}}
 
@@ -43,6 +43,8 @@ The steps required in creating a custom component and connecting it to the RDK a
 
 3. Start the Server and register the running server as a remote
 
-You can view the complete tutorial on how to create a custom component in Python in the [Viam Python documentation](https://python.viam.dev/examples/example.html#create-custom-components).
+You can view the complete tutorial on how to create a custom component using Python in the [Viam Python documentation](https://python.viam.dev/examples/example.html#create-custom-components).
 
-You can view more component implementation examples in <file>components.py</file>, found in the [Viam Python SDK repo](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py).
+Find more component implementation examples in [<file>components.py</file> in the Viam Python SDK repo](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py).
+
+For a walk-through of one specific example, see the [Custom Quadruped Base tutorial](/tutorials/custom-base-dog/).

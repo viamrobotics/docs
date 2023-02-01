@@ -16,7 +16,7 @@ This tutorial is a good introduction to [Python](https://www.python.org/) or [Go
 {{% alert title="Note" color="note" %}}
 This is part 2 of Viam's Intro to Robotics series.
 If you haven't completed [Part 1](/tutorials/pi/make-an-led-blink-with-the-viam-app/), be sure to go back and complete that before starting on this tutorial.
-You should have already set up [your Raspberry Pi](/installation/prepare/rpi-setup), [set up viam-server](/installation/install), built your circuit, and [connected your robot to the Viam app](/installation/install/linux-install/) before proceeding.
+You should have already set up [your Raspberry Pi](/installation/prepare/rpi-setup), [set up `viam-server`](/installation/install), built your circuit, and [connected your robot to the Viam app](/installation/install/linux-install/) before proceeding.
 {{% /alert %}}
 
 For reference, the circuit you are building for this tutorial looks like this:
@@ -70,7 +70,7 @@ These code snippets import all the necessary libraries and set up a connection w
 Next, paste that boilerplate code from the **CODE SAMPLE** tab of the Viam app into a file named <file>blink.py</file> or <file>blink.go</file> file in your code editor, and save your file.
 
 You can now run the code.
-Doing so will ensure that the Viam SDK is properly installed and that the viam-server instance on your robot is live.
+Doing so will ensure that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
 
 You can run your code by typing the following into the terminal:
 
@@ -216,7 +216,7 @@ func main() {
   defer robot.Close(context.Background())
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
-  
+
   // Initialize the board
   myBoard, err := board.FromRobot(robot, "myBoard")
   if err != nil {
@@ -227,7 +227,7 @@ func main() {
   if err != nil {
     logger.Fatalf("could not get led: %v", err)
   }
-  
+
   //   Infinite loop that will blink the LED on and off.
   for {
     // When True, sets the LED pin to high/on.
@@ -281,7 +281,7 @@ If you get an error, you can check your code against my complete code here:
 
 **Completed code**: <a href="https://github.com/viam-labs/LED-Blink" target="_blank">ht<span></span>tps://github.com/viam-labs/LED-Blink</a>
 
-{{% alert title="Tip" color="tip" %}}  
+{{% alert title="Tip" color="tip" %}}
 If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
 There, you will find a friendly developer community of people learning how to make robots using Viam.
 {{% /alert %}}

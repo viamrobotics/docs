@@ -7,6 +7,10 @@ description: "Instructions for renting and remotely configuring and controlling 
 tags: ["try viam", "app"]
 ---
 
+Watch the tutorial video below for a quick walkthrough of Try Viam, including how to reserve a Viam Rover, navigate the Viam platform, and teleoperate the rover.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YYpZ9CVDwMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 _Try Viam_ is a way to try out the Viam platform without setting up any hardware yourself.
 You can take over a Viam Rover in our robotics lab for 15 minutes to play around!
 

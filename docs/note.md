@@ -40,6 +40,7 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 {{% /tab %}}
 {{% tab name="Examples" %}}
+
 <div>
  <h3>What is Rendered?</h3>
  <p>It renders <i>vanilla</i> HTML and markdown, Alerts, and images. For example, these two images:</p>
@@ -51,6 +52,13 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 </div>
 <br>
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## You can use `code` in headers
+
+[You can use `code` in links](www.viam.com)
 
 ### Syntax Highlighting with Backticks
 
@@ -106,9 +114,6 @@ This is **some markdown.**
 {{< alert title="Note" color="note" >}}
 It can even contain shortcodes.
 {{< /alert >}}
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ## Using Expanders
 

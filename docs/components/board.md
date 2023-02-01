@@ -10,23 +10,23 @@ icon: "img/components/board.png"
 ---
 
 In the Viam framework, a **board** is the signal wire hub of a robot.
-It sends signals to the other hardware components, and may or may not also act as the software hub, running an instance of the Viam server on its CPU.
+It sends signals to the other hardware components, and may or may not also act as the software hub, running an instance of `viam-server` on its CPU.
 Boards have general purpose input/output (GPIO) pins through which they can transmit [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation) and other signals.
 
 Some examples of boards include Raspberry Pi, BeagleBone, and Jetson.
-These are all single-board computers (SBCs) capable of advanced computation, including running the Viam server.
+These are all single-board computers (SBCs) capable of advanced computation, including running `viam-server`.
 These all come with built-in GPIO pins.
 
-Another type of board is a GPIO peripheral such as a Numato GPIO Module, which cannot run the Viam server itself, but can take input from another computer running Viam and communicate with other hardware components.
+Another type of board is a GPIO peripheral such as a Numato GPIO Module, which cannot run `viam-server` itself, but can take input from another computer running Viam and communicate with other hardware components.
 Note that a desktop computer does not typically have GPIO pins, so it cannot act as a board without a GPIO peripheral.
 
-![Image showing two board options: First, running the Viam Server locally and second, running via a peripheral plugged into the USB port of a computer that is running the Viam Server.](../img/board/board-comp-options.png)
+![Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server.](../img/board/board-comp-options.png)
 
-*Figure 1. Two different board options: SBC with GPIO pins running Viam server locally; or GPIO peripheral plugged into a computer's USB port, with the computer running Viam server.*
+*Figure 1. Two different board options: SBC with GPIO pins running `viam-server` locally; or GPIO peripheral plugged into a computer's USB port, with the computer running `viam-server`.*
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers.
-In these cases, the board itself must run an instance of Viam server.
+In these cases, the board itself must run an instance of `viam-server`.
 {{% /alert %}}
 
 ## General Hardware Requirements
@@ -101,7 +101,7 @@ In the snippet below, we are using the `gpio_pin_by_name` method to get a GPIO p
 We are then using the `set` method to set the pin high.
 This will turn on the LED connected to the pin 8.
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 These code snippets expect you to have a board named "local" configured as a component of your robot, and an LED connected to pin 8.
 {{% /alert %}}
 

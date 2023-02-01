@@ -1,14 +1,14 @@
 ---
 title: "Troubleshooting"
 linkTitle: "Troubleshooting"
-weight: 
+weight:
 type: "docs"
 description: "A guide to basic troubleshooting of a Viam-based robotic system, easy fixes to common problems, and a list of known issues."
 ---
 This document lists known issues, common troubleshooting steps (e.g., check that the SBC plugged in and turned on, etc.) and common errors, and how we resolved them.
 It differs from the FAQ in that the FAQ contains broad, high-level questions about Viam and its software while this section contains specific instructions for resolving software difficulties.
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 
 While every effort has been made to include all common/known issues and their possible resolutions, this list is not comprehensive.
 {{% /alert %}}
@@ -34,7 +34,7 @@ The following related errors may cause this issue:
 <th>Resolution
 </th>
 <td>Add the missing name in components and save the config.
-Run <code>sudo systemctl restart viam-server.service</code> in the terminal to restart the server.
+Run <code>sudo systemctl restart viam-server</code> in the terminal to restart the server.
 </td>
 </tr>
 </table>
@@ -112,7 +112,7 @@ Re-try the operation.
 <tr>
 <th>Resolution
 </th>
-<td>Run <code>sudo systemctl restart viam-server.service</code> in the terminal to restart the server.
+<td>Run <code>sudo systemctl restart viam-server</code> in the terminal to restart the server.
 </td>
 </tr>
 </table>

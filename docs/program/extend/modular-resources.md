@@ -75,6 +75,7 @@ During robot shutdown, the RDK handles modular resource instances similarly to b
 ## Modular resources examples
 
 Detailed, working examples of various types of modular resources are [included with the RDK](https://github.com/viamrobotics/rdk/tree/main/examples/customresources).
+For a full walk-through of one example, see the [Control an Intermode Rover with CAN Bus and Viam tutorial](/tutorials/controlling-an-intermode-rover-canbus/).
 
 The easiest way to get started is to:
 

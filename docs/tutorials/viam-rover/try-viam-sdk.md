@@ -38,7 +38,7 @@ These code snippets import all the necessary libraries and set up a connection w
 
 Next, paste the boilerplate code from the **CODE SAMPLE** tab of the Viam app into a file named <file>square.py</file> or <file>square.go</file> file in your code editor, and save your file.
 
-Now run the code to verify that the Viam SDK is properly installed and that the viam-server instance on your robot is live.
+Now run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
 
 You can run your code by typing the following into the terminal:
 

@@ -20,7 +20,7 @@ A robot could be a single-board computer with a single sensor or LED wired to it
 
 ![Robot components](img/robot-components.png)
 
-## viam-server
+## `viam-server`
 
 [`viam-server`](https://github.com/viamrobotics/rdk) is the open-source software which runs on each computer in a robot and:
 

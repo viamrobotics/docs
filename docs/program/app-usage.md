@@ -149,17 +149,17 @@ To delete a part or make it the main part, use the buttons in the top right of t
 
 {{< figure src="../img/app-usage/part-mgmt.png" width="800px" alt="Screenshot of the CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons." title="Screenshot of the CONFIG tab of a robot's page highlighting the Make main part and Delete Part buttons (boxed in red)." >}}
 
-If you've connected your robot to a machine running viam-server (instructions below), the banner also displays when the robot was last online, which version of viam-server it is running, the host name, IP address(es), and its operating system.
+If you've connected your robot to a machine running `viam-server` (instructions below), the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, IP address(es), and its operating system.
 
 The following tabs are found on the robot page:
 
 ### Setup
 
-The **SETUP** tab contains information for starting an instance of viam-server on your robot's computer.
+The **SETUP** tab contains information for starting an instance of `viam-server` on your robot's computer.
 Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
 
 {{% alert title="Tip" color="tip" %}}
-More in-depth information on installing viam-server can be found in our [Linux install](/installation/install/linux-install/) and [macOS install](/installation/install/macos-install/) docs.
+More in-depth information on installing `viam-server` can be found in our [Linux install](/installation/install/linux-install/) and [macOS install](/installation/install/macos-install/) docs.
 {{% /alert %}}
 
 ### Config
