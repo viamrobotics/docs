@@ -5,8 +5,104 @@ weight: 110
 draft: false
 type: "docs"
 description:
-# SME: Mike A.
+# SME: Naomi
 ---
+
+## 31 January 2023
+
+{{< tabs >}}
+{{% tab name="Versions" %}}
+
+## Release Versions
+
+* rdk - **v0.2.14**
+* api - **v0.1.63**
+* slam - **v0.1.17**
+* viam-python-sdk - **v0.2.8**
+* goutils - **v0.1.9**
+* rust-utils - **v0.0.9**
+
+(**Bold=updated version**)
+
+{{% /tab %}}
+
+{{% tab name="New Features" %}}
+
+## New Features
+
+### Add Power Input to Remote Control
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>Users can now set the power of the base from the remote control UI. This sets the power percentage being sent to the motors that are driving the base which determines its overall speed.
+            <img src="../img/base-power-control.png" alt="Base power control in the UI"> </img>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+### New Drivers in the RDK: AM5 Encoder
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>RDK now natively supports the AM5 encoder. This is the encoder that is included in the scuttle robot.
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+{{% /tab %}}
+
+{{% tab name="Improvements" %}}
+
+## Improvements
+
+### Linear Acceleration
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                We added a <code>GetLinearAcceleration</code> method to the movement sensor API. This allows us to represent IMUs that are commonly used by hobbyists using the movement sensor interface.
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+### Capsule Support & Improved UR5 Kinematics
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                We have added support for capsule geometries to our motion planning service. Using this new geometry type, we have also improved our representation of the kinematics of a UR5 arm.
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+{{% /tab %}}
+{{% tab name="Issue Resolutions" %}}
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>
+                Assertion Error
+            </strong></td>
+            <td>We were previously not able to send error messages over webRTC to the python SDK. This meant that users would see an unhelpful error "Assertion Error" message. Now, we are able to surface those errors so that users have more feedback as they program in Python.</td>
+        </tr>
+    <tbody>
+</table>
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## 28 December 2022
 
