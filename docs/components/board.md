@@ -52,7 +52,8 @@ simply as in this example:
 
 ![An example of a JSON config file for a board component.](../img/board/board-gen-config.png)
 
-All boards will be of type **board**. Specify the correct **model** for your board.
+All boards will be of type **board**.
+Specify the correct **model** for your board.
 The following board models are currently supported (not exhaustive):
 
 - **pi**: Raspberry Pi 4 or Pi Zero W
@@ -65,7 +66,8 @@ The following board models are currently supported (not exhaustive):
 
 - **numato**: Numato GPIO model
 
-Give your board a **name**. Choose any name you like, and note that this name is how you will refert to this particular board in your code and when configuring other components.
+Give your board a **name**.
+Choose any name you like, and note that this name is how you will refer to this particular board in your code and when configuring other components.
 
 ## Using GPIO
 
@@ -89,11 +91,15 @@ GPIO pins are built for logic levels of power, i.e., 3.3V and 16mA per pin.
 Power amplification (a motor driver or relay) would be necessary.
 - Receive signals over 3.3V (or whatever the logic voltage is on a given board).
 
-If you are using GPIO pin methods like `gpio_pin_by_name` ([documented in our Python SDK](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.gpio_pin_by_name)) you do not need to configure anything about the pins in your config file. The pins are automatically configured based on the board model you put in your config, and you can access them using the board pin number (*not* the GPIO number). You can find these pin numbers from an online service such as <a href="https://pinout.xyz" Target="_blank">pinout.xyz</a> or by running `pinout` in your Pi terminal.
+If you are using GPIO pin methods like `gpio_pin_by_name` ([documented in our Python SDK](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.gpio_pin_by_name)) you do not need to configure anything about the pins in your config file.
+The pins are automatically configured based on the board model you put in your config, and you can access them using the board pin number (*not* the GPIO number).
+You can find these pin numbers from an online service such as <a href="https://pinout.xyz" Target="_blank">pinout.xyz</a> or by running `pinout` in your Pi terminal.
 
 ### Getting started with GPIO and the Viam SDK
 
-In the snippet below, we are using the `gpio_pin_by_name` method to get a GPIO pin by name. We are then using the `set` method to set the pin high. This will turn on the LED connected to the pin 8.
+In the snippet below, we are using the `gpio_pin_by_name` method to get a GPIO pin by name.
+We are then using the `set` method to set the pin high.
+This will turn on the LED connected to the pin 8.
 
 {{% alert title="Note" color="note" %}}
 These code snippets expect you to have a board named "local" configured as a component of your robot, and an LED connected to pin 8.
@@ -149,7 +155,8 @@ led.Set(context.Background(), false, nil)
 ## Analogs
 
 If an analog to digital converter (ADC) chip is being used in your
-robot, analog readers (analogs) will have to be configured. An ADC takes
+robot, analog readers (analogs) will have to be configured.
+An ADC takes
 a voltage as input and converts it to an integer output (for example, a
 number between 0 and 1023 in the case of the 10 bit MCP3008 chip).
 
@@ -157,7 +164,8 @@ number between 0 and 1023 in the case of the 10 bit MCP3008 chip).
 
 Some boards like Numato have built-in ADCs which makes configuration more straightforward.
 
-Some boards (such as Raspberry Pi) communicate with the ADC over SPI so both analog and SPI must be configured. An example:
+Some boards (such as Raspberry Pi) communicate with the ADC over SPI so both analog and SPI must be configured.
+An example:
 
 ``` json
 {
@@ -208,14 +216,16 @@ Name | Type | Default Value | Description
 #### Optional Fields
 
 **average_over_ms** (int) and **samples_per_sec** (int): Together these
-allow for the use of AnalogSmoother. Specify the duration in
+allow for the use of AnalogSmoother.
+Specify the duration in
 milliseconds over which the rolling average of the input should be
 taken, and the sampling rate in samples per second, respectively.
 
 ## Digital Interrupts
 
 Digital interrupts are useful when your code needs to be notified
-immediately anytime there is a change in GPIO value. Contrast this with
+immediately anytime there is a change in GPIO value.
+Contrast this with
 running the Get method on a GPIO pin only at specific times when you
 want to know its value, which you can do without configuring interrupts;
 you only need to getGPIOpin by name.

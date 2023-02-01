@@ -41,7 +41,8 @@ For example, UR5e is a model of the arm component type.
 Processes are often used to create a new local instance of viam-server to implement drivers for custom components, or to run a client application.
 They provide a bespoke, OS-specific process managed by the viam-server to either run once or indefinitely; for example, to run one of Viam's camera servers.
 
-<a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. [Read More](/program/rdk/)
+<a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more.
+[Read More](/program/rdk/)
 
 **Resource**: Resources are individual, addressable elements of a robot (RDK definition) operated by parts.
 Parts operate two types of Resources: physical components and software services.
@@ -58,7 +59,8 @@ Within a robot, a main part always establishes a remote to each of the other par
 When a remote is established, the part establishing the remote will surface all of the other part’s resources as its own.
 A client application connecting to the part will see all of the part’s local resources and remote resources.
 
-You can establish remotes to parts in different robots. However, Viam recommends using a client application to control interaction between robots.
+You can establish remotes to parts in different robots.
+However, Viam recommends using a client application to control interaction between robots.
 
 **Remote UI**: Uses the Web JS SDK and provides UI elements to control a robot via WebRTC.
 
@@ -75,7 +77,8 @@ One main part receiving client application requests and relaying them to the oth
 **Robot Config**: The complete configuration of a single robot part.
 Typically expressed in JSON.
 
-**Robot Part**: A part runs an instance of viam-server to operate underlying resources – hardware components, software services, and any additional processes. Parts expose a uniform API for their resources.
+**Robot Part**: A part runs an instance of viam-server to operate underlying resources – hardware components, software services, and any additional processes.
+Parts expose a uniform API for their resources.
 
 Every robot has a main part that receives client requests and any number of other parts.
 Parts connect to other parts by establishing a remote.
@@ -107,7 +110,9 @@ There is generally one robot part per CPU.
 
 **Gantry**: A robot that only uses linear motion to carry out a task; for example, the scaffolding of a 3D printer, which moves the print head around on motorized linear rails.
 
-[**gRPC:**](https://en.wikipedia.org/wiki/GRPC) An open source, cross-platform, high performance Remote Procedure Call (RPC) framework initially developed at Google in 2015. With gRPC, a client application can communicate directly with a server application on a different machine. This framework can run in any environment and efficiently connect distributed applications and services.
+[**gRPC:**](https://en.wikipedia.org/wiki/GRPC) An open source, cross-platform, high performance Remote Procedure Call (RPC) framework initially developed at Google in 2015.
+With gRPC, a client application can communicate directly with a server application on a different machine.
+This framework can run in any environment and efficiently connect distributed applications and services.
 
 **Protocol Buffers (Protobuf)**: A free and open-source, language-neutral, cross-platform data format for serializing structured data.
 It is useful in developing programs to communicate with each other over a network or for storing data.
