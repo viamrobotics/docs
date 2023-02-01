@@ -13,17 +13,17 @@ To capture data from one or more robots, you must add the [Data Management Servi
 
 1. On your robot's CONFIG page, navigate to the Services tab.
 2. At the bottom of the page you can create a service.
-    Choose `Data Management` as the type and specify a name for your Data Management Service, for example `data_manager`.
+   Choose `Data Management` as the type and specify a name for your Data Management Service, for example `data_manager`.
 3. Then click `Create Service`.
 4. On the panel that appears, you can manage the capturing and syncing functions individually.
-    The Data Management Service captures data every 5 minutes in the `/.viam/capture` directory by default.
+   The Data Management Service captures data every 5 minutes in the `/.viam/capture` directory by default.
 
-    You can change the interval and directory.
+   You can change the interval and directory.
 
-    {{< alert title="Info" color="tip" >}}
-    If you change the directory for data capture only new data is stored in the new directory.
-    Existing data remains in the directory where it was stored.
-    {{< /alert >}}
+   {{< alert title="Info" color="tip" >}}
+   If you change the directory for data capture only new data is stored in the new directory.
+   Existing data remains in the directory where it was stored.
+   {{< /alert >}}
 5. Click `Save Config`.
 
 ![data capture configuration](../../img/data-capture-config.png)
@@ -64,7 +64,7 @@ To add data capture for a component, navigate to the components tab on your robo
 For each component you can capture data for, there is a `Data Capture Configuration` section in its panel.
 Click `Add Method` and then select the method type and the capture frequency.
 
-For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options  `Position` and `IsPowered`.
+For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
 ![component config example](../../img/data-service-component-config.png)
 
@@ -201,7 +201,7 @@ The following example captures data from two analog readers that provide a volta
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
                 // You have to explicitly set the component type to ensure the
-                // Pi knows what the part is because it cannot automatically
+                // board knows what the part is because it cannot automatically
                 // detect it.
                 "type": {
                   "Type": {
@@ -225,7 +225,7 @@ The following example captures data from two analog readers that provide a volta
                 "method": "Gpio",
                 "capture_frequency_hz": 1,
                 // You have to explicitly set the component type to ensure
-                // the Pi knows what the part is because it cannot
+                // the board knows what the part is because it cannot
                 // detect it.
                 "type": {
                   "subtype": "board",
