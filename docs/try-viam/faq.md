@@ -69,16 +69,10 @@ Once you have your new rental rover:
 Unfortunately, there is no recovery path for a deleted robot.
 If you delete your robot and have a current reservation, click **Cancel Reservation** and then request a new reservation.
 
-## Can I rename my robot or location?
+## Can I rename my robot or change the location?
 
-You can rename your robot.
-However, changing the **Location** will break your robot.
-If this occurs, use the Viam app to rename the Location `Rover Rental`.
-
-{{% alert title="Caution" color="caution" %}}
-Do not change the Location name.
-The Location **must** be "Rover Rental".
-{{% /alert %}}
+You can rename your robot or change the location.
+If you change the location, you must refresh the page.
 
 ## Which organization does this robot belong to?
 
