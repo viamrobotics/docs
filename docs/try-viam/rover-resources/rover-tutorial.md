@@ -149,7 +149,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 In short, you will work through the following steps.
 More detailed instructions are found in the sections below.
 
-1. Install Raspberry Pi OS and viam-server on the microSD card.
+1. Install Raspberry Pi OS and `viam-server` on the microSD card.
    Put it in your Pi’s slot.
 2. Unscrew the top of the rover.
 3. Screw the Pi to the base.
@@ -158,14 +158,14 @@ More detailed instructions are found in the sections below.
    Make sure that the camera is on the same side of the rover as the wheels as you attach it.
 6. Screw the top of the rover back on.
 
-### Install Raspberry Pi OS and viam-server
+### Install Raspberry Pi OS and `viam-server`
 
-Install the 64-bit Raspberry Pi OS using the [Raspberry Pi imager](https://www.raspberrypi.com/software/) and then install viam-server.
+Install the 64-bit Raspberry Pi OS using the [Raspberry Pi imager](https://www.raspberrypi.com/software/) and then install `viam-server`.
 For more detailed instructions, check out our Raspberry Pi [installation guide](/installation/prepare/rpi-setup/).
 
 ### Attach the Raspberry Pi to the Rover
 
-Once you have installed Raspberry Pi OS and viam-server on your SD card, and put your SD card in the slot on your Pi, you can screw the Raspberry Pi to the rover.
+Once you have installed Raspberry Pi OS and `viam-server` on your SD card, and put your SD card in the slot on your Pi, you can screw the Raspberry Pi to the rover.
 The rover's design allows you to reach the SD card slot at all times, so you can pop the SD card in and out whenever you need to.
 
 The Viam Rover kit includes four screws for mounting the Raspberry Pi.

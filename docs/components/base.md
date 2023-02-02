@@ -11,7 +11,7 @@ icon: "img/components/base.png"
 
 Most robots with wheeled bases will comprise at least the following:
 
-- A [board component](/components/board/) that can run a viam-server instance.
+- A [board component](/components/board/) that can run a `viam-server` instance.
 That is to say, a computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer with GPIO.
 
 - Two or more motors with wheels attached
@@ -204,14 +204,14 @@ async def main():
     # Connect to your robot.
     robot = await connect()
 
-    # Log an info message with the names of the different resources that are connected to your robot. 
+    # Log an info message with the names of the different resources that are connected to your robot.
     print('Resources:')
     print(robot.resource_names)
 
-    # Connect to your base. 
+    # Connect to your base.
     myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
-    # Disconnect from your robot. 
+    # Disconnect from your robot.
     await robot.close()
 
 if __name__ == '__main__':
@@ -224,15 +224,15 @@ if __name__ == '__main__':
 ```go
 import (
  "go.viam.com/rdk/components/base"
- "github.com/golang/geo/r3"  
+ "github.com/golang/geo/r3"
 )
 
-func main() { 
+func main() {
 
-  // Create an instance of a logger. 
+  // Create an instance of a logger.
   logger := golog.NewDevelopmentLogger("client")
 
-  // Connect to your robot. 
+  // Connect to your robot.
   robot, err := client.New(
       context.Background(),
       "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
@@ -248,10 +248,10 @@ func main() {
       logger.Fatal(err)
   }
 
-  // Delay closing your connection to your robot until main() exits. 
+  // Delay closing your connection to your robot until main() exits.
   defer robot.Close(context.Background())
 
-  // Log an info message with the names of the different resources that are connected to your robot. 
+  // Log an info message with the names of the different resources that are connected to your robot.
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
 

@@ -12,17 +12,18 @@ tags: ["data management", "cloud", "sync"]
 To capture data from one or more robots, you must add the [Data Management Service](../):
 
 1. On your robot's CONFIG page, navigate to the Services tab.
-2. At the bottom of the page you can create a service. Choose `Data Management` as the type and specify a name for your Data Management Service, for example `data_manager`.
+2. At the bottom of the page you can create a service.
+   Choose `Data Management` as the type and specify a name for your Data Management Service, for example `data_manager`.
 3. Then click `Create Service`.
 4. On the panel that appears, you can manage the capturing and syncing functions individually.
-    The Data Management Service captures data every 5 minutes in the `/.viam/capture` directory by default.
+   The Data Management Service captures data every 5 minutes in the `/.viam/capture` directory by default.
 
-    You can change the interval and directory.
+   You can change the interval and directory.
 
-    {{< alert title="Info" color="tip" >}}
-    If you change the directory for data capture only new data is stored in the new directory.
-    Existing data remains in the directory where it was stored.
-    {{< /alert >}}
+   {{< alert title="Info" color="tip" >}}
+   If you change the directory for data capture only new data is stored in the new directory.
+   Existing data remains in the directory where it was stored.
+   {{< /alert >}}
 5. Click `Save Config`.
 
 ![data capture configuration](../../img/data-capture-config.png)
@@ -47,7 +48,8 @@ The JSON configuration for the Data Management Service is:
 
 ## Configure Data Capture for Individual Components
 
-Once you have added the data capture service, you must specify the data you want to capture at a component level. The following components support data capture:
+Once you have added the data capture service, you must specify the data you want to capture at a component level.
+The following components support data capture:
 
 - Arm
 - Board
@@ -58,9 +60,11 @@ Once you have added the data capture service, you must specify the data you want
 - Movement Sensor (includes GPS)
 - Servo
 
-To add data capture for a component, navigate to the components tab on your robot configuration page. For each component you can capture data for, there is a `Data Capture Configuration` section in its panel. Click `Add Method` and then select the method type and the capture frequency.
+To add data capture for a component, navigate to the components tab on your robot configuration page.
+For each component you can capture data for, there is a `Data Capture Configuration` section in its panel.
+Click `Add Method` and then select the method type and the capture frequency.
 
-For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options  `Position` and `IsPowered`.
+For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
 ![component config example](../../img/data-service-component-config.png)
 
@@ -134,9 +138,11 @@ If you want to remove a capture method from the configuration, click the `delete
 
 ## Configure Data Capture for Remote Parts
 
-Viam supports data capture from remote parts. For example, if you use a component that does not have a linux operating system or that does not have enough storage or processing power, you can still process and capture the data from the component by adding it as a remote part.
+Viam supports data capture from remote parts.
+For example, if you use a component that does not have a Linux operating system or that does not have enough storage or processing power, you can still process and capture the data from the component by adding it as a remote part.
 
-Currently, you can only configure data capture from remote components by adding them to your JSON configuration. To add them to your JSON configuration you must explicitly add the part's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
+Currently, you can only configure data capture from remote components by adding them to your JSON configuration.
+To add them to your JSON configuration you must explicitly add the part's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
 
 | Key | Description |
 | --- | ----------- |
@@ -195,7 +201,7 @@ The following example captures data from two analog readers that provide a volta
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
                 // You have to explicitly set the component type to ensure the
-                // pi knows what the part is because it cannot automatically
+                // main board knows what the part is because it cannot automatically
                 // detect it.
                 "type": {
                   "Type": {
@@ -219,7 +225,7 @@ The following example captures data from two analog readers that provide a volta
                 "method": "Gpio",
                 "capture_frequency_hz": 1,
                 // You have to explicitly set the component type to ensure
-                // the pi knows what the part is because it cannot
+                // the main board knows what the part is because it cannot
                 // detect it.
                 "type": {
                   "subtype": "board",

@@ -26,7 +26,8 @@ await arm.move_to_position(pose=pos, world_state=WorldState())
 
 This document will teach you how to configure, connect to, and move the arms with preprogrammed support from Viam, as well as introduce you to the steps required to implement support for any other arm.
 
-An arm consists of movable pieces, joints, immovable pieces, and links. Joints may rotate, translate, or both, while a link will always be the same shape.
+An arm consists of movable pieces, joints, immovable pieces, and links.
+Joints may rotate, translate, or both, while a link will always be the same shape.
 
 An arm can be thought of as something that can set or get joint positions, and can compute the cartesian position of its end effector(s) given its set of joint positions.
 Arms will also support moving to a specified cartesian position, something that requires inverse kinematics and motion planning to determine the ending joint positions.

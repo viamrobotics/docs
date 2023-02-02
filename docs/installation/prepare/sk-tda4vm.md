@@ -87,7 +87,7 @@ From the SSH session on the TDA4VM board:
    chmod +x tda4vm-viam-setup.sh
    ```
 
-4. Launch the setup script to install viam-server dependencies:
+4. Launch the setup script to install `viam-server` dependencies:
 
    ```bash
    ./tda4vm-viam-setup.sh

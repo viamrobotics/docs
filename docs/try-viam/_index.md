@@ -6,35 +6,26 @@ type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 minutes."
 ---
 
-Watch the tutorial video below for a quick walkthrough of Try Viam, including how to reserve a Viam Rover, navigate the Viam platform, and teleoperate the rover.
+[Rent and remotely configure and control a Viam Rover](https://app.viam.com/try) located on-site at Viam in NYC:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YYpZ9CVDwMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Overhead view of the Viam rover showing it as it drives in a square.](img/try-viam/reservation-management.png)](https://app.viam.com/try)
 
-## Getting Started with Viam
+## Get started with Viam
 
-When you try Viam for the first time, you'll want to get a feel for how it works.
-The best way to do that is to take over a Viam Rover in our robotics lab for 15 minutes.
-You'll be able to drive the robot around, see what it sees, and control its sensors and actuators.
-You could try things like:
+During your rover rental, you can [try out some of the Viam platform functionality](try-viam-tutorial/):
 
-- Teleoperating the rover from wherever you are!
-- Writing some code to control the rover
-- Using services like computer vision or data management
-- Seeing how the rover's components are set up in the intuitive configuration interface
+- Drive the rover from wherever you are
+- Use services like computer vision to identify colors and objects
+- Explore the configuration and control interface for the rover's sensors and actuators in the Viam app
+- Write code to control the rover
 
-Find more detailed instructions in our [Try Viam tutorial](/tutorials/viam-rover/).
+## Control your rover with SDKs
 
-For a limited time, you can [pre-order your own Viam Rover here](http://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
+If you want to control and automate your rover with Python or Go, use the [Viam SDKs](/program/sdk-as-client).
 
-## Getting started with the SDKs
+Viam also exposes exposes a gRPC [API for robot controls](https://github.com/viamrobotics/api).
 
-Viam offers SDKs in popular languages which wrap the viam-server [gRPC](https://grpc.io/) APIs and streamline connection, authentication, and encryption against a server.
-Using an SDK, you will be able to quickly write code to control and automate your robot(s).
-
-Viam-server exposes gRPC [APIs for robot controls](https://github.com/viamrobotics/api).
-It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and authentication over those APIs.
-
-SDKs make it easier to interface with the robot by providing easy to use, idiomatic interfaces in the programming language of your choice.
-You can learn more about the Viam SDKs in the [SDKs as Client](/program/sdk-as-client).
+Both the API and the SDKs support [WebRTC](https://webrtcforthecurious.com/).
+The SDKs provide a wrapper around the viam-server [gRPC](https://grpc.io/) API and streamline connection, authentication, and encryption against a server.
 
 ## Next steps

@@ -8,7 +8,7 @@ tags: ["base", "gamepad", "yahboom", "app"]
 ---
 ## Requirements
 
-- A Raspberry Pi 4 running an instance of viam-server.
+- A Raspberry Pi 4 running an instance of `viam-server`.
 See our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) for instructions.
 - A [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot)
 - A Bluetooth gamepad controller. For this tutorial we used [this 8BitDo controller](https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch).
@@ -51,7 +51,7 @@ You can ignore the other optional attributes.
 
 Save the config by clicking **Save Config** at the bottom of the page.
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 If you are using a motor with encoders, you need to specify the ticks per rotation.
 {{% /alert %}}
 
@@ -127,7 +127,8 @@ Make sure the 8bitdo controller mode switch is set to S, hold down Start for a f
 For more information about the controller buttons and Bluetooth modes, consult the manual included with the controller.
 
 Run `sudo bluetoothctl scan on` to list all Bluetooth devices within reach of the Raspberry Pi.
-As you do this, in terminal make sure you are in your pi and not in your computer. This command will scan all the devices but the 8bitdo controller will have a MAC address that begins E4:17:D8.
+As you do this, in terminal make sure you are in your Pi and not in your computer.
+This command will scan all the devices but the 8bitdo controller will have a MAC address that begins E4:17:D8.
 
 ![A screenshot of a Mac command prompt with the command ssh hazal_pi@hazal_pi.local.](../img/yahboom-rover/ssh-pilocal.png)
 
