@@ -45,8 +45,9 @@ Add your first component, the [board](/components/board/) (in this case the Rasp
 2. Select the component **Type**, "board."
 3. Select "pi" from the **Model** drop-down.
 4. Click **Create Component** and the board component panel will expand.
-   We don't need to worry about any other attributes for this component.
-   ![Screenshot of the component configuration panel for a board component. The name (local), type (board) and model (pi) are shown at the top of the panel. No other attributes are configured.](../../img/scuttlebot/board-empty-json.png)
+
+We don't need to worry about any other attributes for this component.
+![Screenshot of the component configuration panel for a board component. The name (local), type (board) and model (pi) are shown at the top of the panel. No other attributes are configured.](../../img/scuttlebot/board-empty-json.png)
 
 ## Configuring the motors
 
