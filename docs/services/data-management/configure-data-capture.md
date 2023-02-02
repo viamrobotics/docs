@@ -201,7 +201,7 @@ The following example captures data from two analog readers that provide a volta
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
                 // You have to explicitly set the component type to ensure the
-                // board knows what the part is because it cannot automatically
+                // main board knows what the part is because it cannot automatically
                 // detect it.
                 "type": {
                   "Type": {
@@ -225,7 +225,7 @@ The following example captures data from two analog readers that provide a volta
                 "method": "Gpio",
                 "capture_frequency_hz": 1,
                 // You have to explicitly set the component type to ensure
-                // the board knows what the part is because it cannot
+                // the main board knows what the part is because it cannot
                 // detect it.
                 "type": {
                   "subtype": "board",
