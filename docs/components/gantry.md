@@ -34,17 +34,53 @@ Each gantry can only move in one axis within the limits of its length.
 
 **Requirements:**
 
-- A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins.
-- A [motor](/components/motor/).
-  - Encoded motor
-  - Stepper motor: Requires setting limit switches in the config of the gantry or setting offsets in the config of the stepper motor.
-- Limit switches to attach to the brackets
+- A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
+- A [motor](/components/motor/) that can move linear rails
+  - Encoded motor: See [dc motor with encoder](/components/motor/#dc-motor-with-encoder) and [encoder component](/components/encoder/) for more information.
+  - Stepper motor: Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
+- Limit switches, to attach to the ends of the gantry's axis
 
 ### Configuration
 
-#### Single-Axis
+Configuring this component on your robot with a gantry enables you to get and change the position of the linear rail axes.
+You can easily configure your component, as pictured below, on the [Viam App](https://app.viam.com/).
 
-For a single-axis gantry, the attributes for configuration are:
+#### One-Axis
+
+Refer to the following example configuration for a one-axis gantry:
+
+{{< tabs name="Example Gantry Config One-Axis" >}}
+{{< tab name="Config Builder" >}}
+
+<img src="../img/gantry/gantry-config-ui-oneaxis.png" alt="Picture of what an example configuration for a one-axis gantry component looks like in the Viam App config builder." width="800"/>
+
+{{< /tab >}}
+{{% tab name="Raw JSON" %}}
+
+```json-viam
+{
+  "components": [
+    {
+      "name": <your_oneaxis_gantry_name>,
+      "type": "gantry",
+      "model": "oneaxis",
+      "attributes": {
+        "motor": <your_motor_name>,
+        "length_mm": 800,
+        "axis": {
+          "X": 0,
+          "Y": 0,
+          "Z": 0
+        }
+      },
+      "depends_on": []
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 <table>
   <tr>
@@ -64,7 +100,7 @@ For a single-axis gantry, the attributes for configuration are:
       board
     </td>
     <td>
-      The name of the board that is connected to the and limit pin switches.
+      The name of the board that is connected to the limit switches and pins.
     </td>
   </tr>
   <tr>
@@ -86,25 +122,27 @@ For a single-axis gantry, the attributes for configuration are:
   </tr>
   <tr>
     <td>
-      limit_pin_enabled
+      limit_pin_enabled_high
     </td>
     <td>
-      Is the Limit Pin enabled? I.e., true (pin HIGH)?
+      If it is true or false that the limit pins are enabled.
     </td>
   </tr>
   <tr>
     <td>
-      mm_per_revolution
+      length_mm
     </td>
     <td>
-      How far the gantry moves linearly per one revolution of the motor’s output
-      shaft.
-      <p>
-        This typically corresponds to
-        <p>
-          Distance = PulleyDiameter *2* pi
-          <p>
-            or the pitch of a linear screw.
+      The length of the axis of the gantry in mm.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      mm_per_rev
+    </td>
+    <td>
+      How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output
+      shaft. This typically corresponds to Distance = PulleyDiameter*2*pi, or the pitch of a linear screw.
     </td>
   </tr>
   <tr>
@@ -112,7 +150,7 @@ For a single-axis gantry, the attributes for configuration are:
       gantry_rpm
     </td>
     <td>
-      The gantry’s motor’s default rpm.
+      The gantry motor's default rpm.
     </td>
   </tr>
   <tr>
@@ -123,21 +161,21 @@ For a single-axis gantry, the attributes for configuration are:
       The axis in which the gantry is allowed to move relative to the reference
       frame (x, y, z).
       <p>
-        You can add a frame to a single-axis gantry attribute to describe its
-        position in the local "world" frame.
+        You can add a frame to a one-axis gantry attribute to describe its
+        position in the local “world” frame.
         <p>
           See
           <a href="/services/frame-system">
             Frame System
           </a>
-          for further information.
+          for more information.
     </td>
   </tr>
 </table>
 
-A frame can also be added to a one axis gantry attribute to describe its position in the local "world" [frame](/services/frame-system/).
+A frame can also be added to a one-axis gantry attribute to describe its position in the local “world” [frame](/services/frame-system/).
 
-#### Multi-Axis
+#### Multi Axis
 
 A multi-axis gantry component is made up of many one-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
 <!-- Each gantry can be given a reference [frame](/services/frame-system/) in configuration that describes its translation and orientation to the world.
@@ -191,12 +229,10 @@ Refer to the following example configuration for a multi-axis gantry:
   </tr>
   <tr>
     <td>
-      <strong>
         subaxes_list
-      </strong>
     </td>
     <td>
-      A complete list of the sub-axes that compose the multi-axis gantry.
+      A complete list of the sub-axes, the one-axis gantries that make up the multi-axis gantry.
     </td>
   </tr>
 </table>
