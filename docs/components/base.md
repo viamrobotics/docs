@@ -3,7 +3,7 @@ title: "Base Component"
 linkTitle: "Base"
 weight: 10
 type: "docs"
-description: "Explanation of a base component, the platform that the other parts of a mobile robot attach to."
+description: "The base component is the platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
 icon: "img/components/base.png"
 # SMEs: Steve B
@@ -12,16 +12,17 @@ icon: "img/components/base.png"
 A *base* is the platform that the other parts of a mobile robot attach to.
 
 Configure your robot's *base* component to reference any *motor* components attached to the base.
-By organizing these components into a base component, you gain an interface to control the movement of the whole physical base of the robot.
+By configuring a base component, organizing individual components to produce coordinated movement, you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
 
 <img src="../img/base/base-trk-rover-w-arm.png" alt="A robot comprised of a base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." />
 
 Most mobile robots with a base need at least the following hardware:
 
 - A [board component](/components/board/) that can run a `viam-server` instance.
-   For example, a computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer with GPIO.
+   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
 
-- Motors attached to wheels or propellers-- or other actuators (devices that produce motion in a system). These are necessary to move the base.
+- Some sort of actuators to move the base.
+  Usually [motors](/components/motor/) attached to wheels or propellers.
 
 - A power supply for the board.
 
@@ -39,10 +40,13 @@ Note that your base's wiring will vary depending on your choice of board, motors
 
 To configure a base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
 
-Refer to the following example configuration file for a wheeled base:
+Refer to the following example configuration for a wheeled base:
 
 {{< tabs name="Example Base Config" >}}
-{{% tab name="Template JSON" %}}
+{{% tab name="In-App Config" %}}
+<img src="../img/base/base-ui-config.png" alt="Picture of what an example configuration for a wheeled base looks like in the Viam App, with Attributes & Depends On drop-downs and the option to add a frame." width="800"/>
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
 
 ```json-viam
 {
@@ -80,7 +84,7 @@ Refer to the following example configuration file for a wheeled base:
 ```
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="Example Raw JSON" %}}
 
 ```json-viam
 {
@@ -137,7 +141,7 @@ Refer to the following example configuration file for a wheeled base:
 ```
 
 {{% /tab %}}
-{{< tab name="Annotated JSON" >}}
+{{< tab name="Example Annotated JSON" >}}
 
 <img src="../img/base/base-json.png" alt="An image of the JSON configuration file with annotations explaining some of the attributes."/>
 
@@ -163,7 +167,7 @@ Refer to the following example configuration file for a wheeled base:
   <tr>
     <td><code>model</code></td>
     <td>string</td>
-    <td>Select "wheeled" unless you have a "boat".</td>
+    <td>Use "wheeled" unless you have a "boat".</td>
   </tr>
   <tr>
     <td><code>name</code></td>
