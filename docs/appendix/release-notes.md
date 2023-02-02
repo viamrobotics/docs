@@ -135,7 +135,7 @@ description:
             <td>This new feature allows users to implement their own custom components or component models using our Go SDK.
             We are now working to add support in each of our SDKs so that users can create custom resources in a variety of programming languages.
             Previously, the only way for users to implement custom resources was to use an SDK as a server.
-            This meant that a user needed to run a `viam-server` for their custom component and add it to their main part as a remote.
+            This meant that a user needed to run a <code>viam-server</code> for their custom component and add it to their main part as a remote.
             With custom modular resources, users no longer need to run separate server instances for each custom resource which saves additional network requests.<br/>
 
 {{< alert title="Note" color="note" >}}
@@ -213,9 +213,9 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
             <td>
                 <ol>
                     <li>Kinematic information is now transferred over the robot API.
-                    This means that the motion service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote `viam-server`.</li>
+                    This means that the motion service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote <code>viam-server</code>.</li>
                     <li>Arms are now an input to the motion service.
-                    This means that the motion service can plan for a robot that has an arm component regardless of whether the arm is on a main or remote `viam-server`.</li>
+                    This means that the motion service can plan for a robot that has an arm component regardless of whether the arm is on a main or remote <code>viam-server</code>.</li>
                 </ol>
             </td>
         </tr>
