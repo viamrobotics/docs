@@ -28,17 +28,7 @@ From the **TRY** page, click **TRY NOW** to reserve a time slot.
 
 ### Create a reservation
 
-<<<<<<< HEAD
-The Try Viam landing page displays the **Next time slot** or **Estimated Time to Start** and other status information.
-
-If a Viam Rover is available, you can click **TRY NOW** to start your 15 minutes.
-Then click **TRY YOUR ROBOT** to access your rental.
-Otherwise, you'll see an estimate of the next available start time.
-Click **RESERVE ROVER** to get in the queue.
-If the wait is longer than four minutes you will receive a "Time to Play" email when it’s your turn.
-=======
 {{< readfile "create-a-reservation.md" >}}
->>>>>>> e28d6bb (Update FAQ)
 
 ### Access your rover rental
 

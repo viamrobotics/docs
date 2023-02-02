@@ -57,6 +57,10 @@ Once you have your new rental rover:
 6. Replace the *entire* existing config with your copied config.
 7. Click **Save Config**.
 
+{{< alert title="Tip" color="tip" >}}
+You can also reuse your code for the rover for other robots that you configure with Viam in the future.
+{{< /alert >}}
+
 ## What happens to my rented rover after the rental session?
 
 1. On session expiration, Viam removes the "live" status from the robot.
@@ -104,4 +108,4 @@ Reserve yours today [here](http://viam.com/resources/rover?utm_source=slack&utm_
 ## Why can't I use the Rover's microphone?
 
 For security reasons, Viam has disabled the microphone on Rover Rentals.
-The microphone on [Viam Rover's shipped to users](/try-viam/rover-resources/) functions normally.
+The microphone on [Viam Rovers shipped to users](/try-viam/rover-resources/) functions normally.
