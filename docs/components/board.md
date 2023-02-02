@@ -3,7 +3,7 @@ title: "Board Component"
 linkTitle: "Board"
 weight: 20
 type: "docs"
-description: "Explanation of a board, the signal wire hub component of a robot."
+description: "The board component is the signal wire hub of a robot and provide access to GPIO pins."
 tags: ["board", "components"]
 icon: "img/components/board.png"
 # SMEs: Gautham, Rand
@@ -11,15 +11,14 @@ icon: "img/components/board.png"
 
 A *board* is the signal wire hub of a robot.
 
-A robot's board component sends signals to the other hardware components of the robot.
-
-- Boards have general purpose input/output (GPIO) pins.
-- Through these pins, they can transmit [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation) and other signals.
+A robot's board component has general purpose input/output (GPIO) pins.
+Through these pins, the board can transmit [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation) and other signals to any hardware components connected to the board.
 
 The board may or may not also act as the software hub of the robot, running an instance of `viam-server` on its CPU.
 
 Some examples of boards include Raspberry Pi, BeagleBone, and Jetson.
 These are all single-board computers (SBCs) capable of advanced computation, including running `viam-server`.
+They act not only as the signal wire hub (*board*) for the robot, but also as the software hub.
 
 Another type of board is a GPIO peripheral, such as a Numato GPIO Module, which cannot run `viam-server` itself, but can take input from another computer running `viam-server` to communicate with other hardware components.
 
@@ -142,9 +141,9 @@ You can find these pin numbers from an online service such as <a href="https://p
 
 #### Getting started with GPIO and the Viam SDK
 
-In the snippet below, we are using the `gpio_pin_by_name` method to get a GPIO pin by name.
-We are then using the `set` method to set the pin high.
-This will turn on the LED connected to the pin 8.
+In the snippet below, we use the `gpio_pin_by_name` method to get a GPIO pin by name.
+We then use the `set` method to set the pin to high.
+This will turn on the LED connected to pin 8.
 
 {{% alert title="Note" color="note" %}}
 These code snippets expect you to have a board named "local" configured as a component of your robot, and an LED connected to pin 8.
@@ -261,16 +260,13 @@ Name | Type | Default Value | Description
 
 **average_over_ms** (int) and **samples_per_sec** (int): Together these
 allow for the use of AnalogSmoother.
-Specify the duration in milliseconds over which the rolling average of the input should be
-taken, and the sampling rate in samples per second, respectively.
+Specify the duration in milliseconds over which the rolling average of the input should be taken, and the sampling rate in samples per second, respectively.
 
 ### Digital Interrupts
 
 Digital interrupts are useful when your code needs to be notified
 immediately anytime there is a change in GPIO value.
-Contrast this with running the Get method on a GPIO pin only at specific times when you
-want to know its value, which you can do without configuring interrupts;
-you only need to getGPIOpin by name.
+Contrast this with running the `Get` method on a GPIO pin only at specific times when you want to know its value, which you can do without configuring interrupts; you only need to call `Get` on the name yielded by `GPIOPinByName`.
 
 #### Configuration
 
