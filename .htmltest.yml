@@ -11,6 +11,7 @@ IgnoreURLs:
 - "beaglebone.local"
 - "instagram.com"
 - "twitter.com"
+- "github.com/viamrobotics/"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"
