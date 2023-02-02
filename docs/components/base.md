@@ -38,12 +38,12 @@ Note that your base's wiring will vary depending on your choice of board, motors
 
 ## Configuration
 
-To configure a base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
+To configure a base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base. You can easily configure your component, as pictured below, on the [Viam App](https://app.viam.com/).
 
 Refer to the following example configuration for a wheeled base:
 
 {{< tabs name="Example Base Config" >}}
-{{% tab name="In-App Config" %}}
+{{% tab name="Config Builder" %}}
 <img src="../img/base/base-ui-config.png" alt="Picture of what an example configuration for a wheeled base looks like in the Viam App, with Attributes & Depends On drop-downs and the option to add a frame." width="800"/>
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -53,18 +53,18 @@ Refer to the following example configuration for a wheeled base:
   "components": [
     {
       "attributes": {},
-      "model": "<model>",
-      "name": "<board_name>",
+      "model": <model>,
+      "name": <board_name>,
       "type": "board"
     },
     {
       "attributes": {
-        "board": "<board_name>",
+        "board": <board_name>,
         "max_rpm": <max_rpm>,
         "pins": { ... }
       },
-      "model": "<model>",
-      "name": "<motor_name>",
+      "model": <model>,
+      "name": <motor_name>,
       "type": "motor"
     },
     ... ,
@@ -75,8 +75,8 @@ Refer to the following example configuration for a wheeled base:
         ],
         ...
       },
-      "model": "<model>",
-      "name": "<base_name>",
+      "model": <model>,
+      "name": <base_name",
       "type": "base"
     }
   ]
@@ -84,7 +84,7 @@ Refer to the following example configuration for a wheeled base:
 ```
 
 {{% /tab %}}
-{{% tab name="Example Raw JSON" %}}
+{{% tab name="Example JSON" %}}
 
 ```json-viam
 {
@@ -141,7 +141,7 @@ Refer to the following example configuration for a wheeled base:
 ```
 
 {{% /tab %}}
-{{< tab name="Example Annotated JSON" >}}
+{{< tab name="Annotated JSON" >}}
 
 <img src="../img/base/base-json.png" alt="An image of the JSON configuration file with annotations explaining some of the attributes."/>
 
