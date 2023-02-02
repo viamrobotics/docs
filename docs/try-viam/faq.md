@@ -7,7 +7,7 @@ description: "Frequently Asked Questions about Try Viam."
 ---
 
 Try Viam allows you to try the Viam platform without setting up any hardware yourself.
-Instead you can take over a Viam Rover in our robotics lab for 15 minutes to play around!
+For 15 minutes, no matter where you are in the world, you can take over and play around with a Viam Rover in our robotics lab!
 
 ## How do I make a reservation to take over a Viam Rover?
 
@@ -15,7 +15,7 @@ Instead you can take over a Viam Rover in our robotics lab for 15 minutes to pla
 
 ## My robot had an error, a system crash, or is physically stuck
 
-1. Please notify our support on [our Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
+1. Please notify Viam support on [our Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
 2. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your *Location*.
    Refer to [Managing Locations and sub-locations](/program/app-usage/#managing-locations-and-sub-locations) in the **Using the Viam App** topic.
 
@@ -69,7 +69,7 @@ Once you have your new rental rover:
 Unfortunately, there is no recovery path for a deleted robot.
 If you delete your robot and have a current reservation, click **Cancel Reservation** and then request a new reservation.
 
-## Can I rename my robot or **Location**?
+## Can I rename my robot or location?
 
 You can rename your robot.
 However, changing the **Location** will break your robot.
@@ -80,13 +80,13 @@ Do not change the Location name.
 The Location **must** be "Rover Rental".
 {{% /alert %}}
 
-## Which Organization does this robot belong to?
+## Which organization does this robot belong to?
 
-Your robot belongs to the [Organization](/program/app-usage/#navigating-organizations) you were in when you made the request.
+Your robot belongs to the [organization](/program/app-usage/#navigating-organizations) you were in when you made the request.
 
 ## Can I share this Location with a friend to work on the robot together?
 
-Sure, you can [invite other users to your Organization](/program/app-usage/#managing-locations-and-sub-locations) to collaborate on your robot.
+Sure, you can [invite other users to your organization](/program/app-usage/#managing-locations-and-sub-locations) to collaborate on your robot.
 As members of your organization, those users have full control of your robot.
 Another collaboration option is to use screen sharing in a Zoom or Webex session.
 

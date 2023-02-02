@@ -11,7 +11,7 @@
    Once that is complete, the status on the TRY tab changes to **RUNNING**, and you can click “**Try Your Robot**” to access your rented Viam Rover.
 
    {{< alert title="Note" color="note" >}}
-   Viam creates a location called “Rover Rental” in your organization (if necessary), and adds a Viam Rover with a basic config and a random name (like wispy-shape) to your Rover Rental Location.
+   Viam creates a location called “Rover Rental” in your account's organization, and adds a Viam Rover with a basic config and a random name (like wispy-shape) as a robot in this location.
    {{< /alert >}}
 
 3. **Click "Try Your Robot" to use your Viam Rover.**
