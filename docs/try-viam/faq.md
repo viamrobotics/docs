@@ -16,8 +16,8 @@ For 15 minutes, no matter where you are in the world, you can take over and play
 ## My robot had an error, a system crash, or is physically stuck
 
 1. Please notify Viam support on [our Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
-2. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your *Location*.
-   Refer to [Managing Locations and sub-locations](/program/app-usage/#managing-locations-and-sub-locations) in the **Using the Viam App** topic.
+2. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your *location*.
+   Refer to [Managing Locations and sub-locations](/program/app-usage/#managing-locations-and-sub-locations).
 
 ## Can I extend my time?
 
@@ -34,8 +34,8 @@ Click **Cancel Reservation** on the **[Try page](https://app.viam.com/try)** to 
 
 ## How can I reuse my rented rover?
 
-Your robot config stays in your Viam account.
-You can access your robot, write code using a Viam SDK, and modify its config after your reservation time ends.
+After using Try Viam, your robot config stays in your Viam account.
+You can access your robot page, write code to control it, and modify its config after your reservation time ends.
 However, you can no longer operate it.
 
 Each reservation is fulfilled with a *new* robot with the standard starting config.
