@@ -1,7 +1,9 @@
 1. **Click on the "TRY" tab in the Viam app.**
+
    Log into Viam and go to the **[TRY](https://app.viam.com/try)** tab.
    (If you don't have an account, it only takes a minute to sign up.)
 2. **Click "Try Now" or "Reserve Rover" to reserve your slot.**
+
    The Try Viam landing page displays the **Next time slot** or **Estimated Time to Start** and other status information.
    If no one's using a Viam Rover, you'll take over immediately.
    Otherwise, you'll see an estimated time for the next slot on the TRY tab.
@@ -15,7 +17,8 @@
    {{< /alert >}}
 
 3. **Click "Try Your Robot" to use your Viam Rover.**
+
    You’ll be able to control a Viam Rover in the Viam robotics lab for 15 minutes.
    You can see a session timer in the top banner.
 
-   You can see how the rover is configured, write code to control the rover, teleoperate the rover, and more.
+   You can see the rover's configuration, write code to control the rover, drive the rover, and more.
