@@ -27,8 +27,8 @@ Once your reservation start and the system has reset the rover configuration for
 ![The Try Viam reservation management page with the try your robot button.](../img/try-viam/reservation-management.png)
 
 {{< alert title="Note" color="note" >}}
-During your rental, if you want to extend the reservation, go back to [the **TRY** tab](https://app.viam.com/try) and click **EXTEND RESERVATION**
-If the option is not available, that means there is another reservation
+During your rental, if you want to extend the reservation, go back to [the **TRY** tab](https://app.viam.com/try) and click **EXTEND RESERVATION**.
+If the option is not available, that means there is another reservation waiting.
 In this case join the queue again once your rental is over.
 
 If you want to cancel the reservation, go back to [the **TRY** tab](https://app.viam.com/try) and click **CANCEL RESERVATION**
