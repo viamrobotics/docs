@@ -4,22 +4,26 @@ linkTitle: "Gantry"
 draft: false
 weight: 50
 type: "docs"
-description: "Explanation of gantry configuration and usage in Viam."
+description: "A gantry is a mechanical system that you can use to hold and position a variety of end-effectors."
 tags: ["gantry", "components"]
 icon: "img/components/gantry.png"
 # SME: Rand
 ---
 
 A *gantry* on a robot is a mechanical system that you can use to hold and position a variety of end-effectors: devices designed to attach to the robot and interact with the environment to perform tasks.
+The linear rail design makes gantries a common design on robots for simple positioning and placement.
+A customized encoded motor controller can be used in the configuration of a gantry to move the linear rail.
 
-A multi-axis gantry component is made up of many single-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
+This component abstracts the hardware of a gantry to give you an easy interface for moving linear rails, even many at once (multi-axis).
+A multi-axis gantry is composed of many single-axis gantries.
+The multiple axis system is composed of the supplied gantry names.
 <!-- - Each gantry can be given a reference [frame](/services/frame-system/) in configuration that describes its translation and orientation to the world.
 - The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation. The “world” frame of each gantry becomes the moveable frame of the gantry. -->
 
 Gantry components can only be controlled in terms of linear motion.
-Each gantry can only move in one axis within the limits of its length.
+Each gantry can only move in one axis within the limits of the length of the linear rail.
 
-**Requirements:**
+Most robots with a gantry need at least the following hardware:
 
 - A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
 - A [motor](/components/motor/) that can move linear rails
@@ -147,7 +151,7 @@ This is how you configure a one-axis gantry:
     <td>
       The axis in which the gantry is allowed to move relative to the reference
       frame (x, y, z).
-      <p>
+      <!-- <p>
         You can add a frame to a one-axis gantry attribute to describe its
         position in the local "world" frame.
         <p>
@@ -155,7 +159,7 @@ This is how you configure a one-axis gantry:
           <a href="/services/frame-system">
             Frame System
           </a>
-          for more information.
+          for more information. -->
     </td>
   </tr>
 </table>
@@ -163,6 +167,8 @@ This is how you configure a one-axis gantry:
 A frame can also be added to a one-axis gantry attribute to describe its position in the local "world" [frame](/services/frame-system/).
 
 #### Multi Axis
+
+A multi-axis gantry component is made up of many single-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
 
 This is how you configure a multi-axis gantry:
 
