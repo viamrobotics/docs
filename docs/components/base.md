@@ -70,10 +70,14 @@ Refer to the following example configuration for a wheeled base:
     ... ,
     {
       "attributes": {
-        "attribute_name": [
-          "motor_name"
+        "left": [
+          <left_motor_name_1>
         ],
-        ...
+        "right": [
+          <right_motor_name_1>
+        ],
+        "wheel_circumference_mm": <#>,
+        "width_mm": <#>
       },
       "model": <model>,
       "name": <base_name>,
@@ -227,14 +231,10 @@ The base component supports the following methods:
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
 - [Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
 
-{{% alert title="Note" color="note" %}}
-
-Make sure you have set up your robot and connected it to the Viam app. Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
 
 The following example assumes you have a base called "my_base" which is configured as a component of your robot.
 If your base has a different name, change the `name` in the example.
-
-{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
