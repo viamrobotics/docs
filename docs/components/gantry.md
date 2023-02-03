@@ -12,22 +12,9 @@ icon: "img/components/gantry.png"
 
 A *gantry* on a robot is a mechanical system that you can use to hold and position a variety of end-effectors: devices designed to attach to the robot and interact with the environment to perform tasks.
 
-The linear rail design makes gantries a common design on robots for simple positioning and placement.
-A customized encoded motor controller can be used in the configuration of a gantry to move the linear rail.
-This component abstracts this type of hardware to give the user an easy interface for moving many linear rails.
-
-Since gantries are linearly moving components, each gantry can only move in one axis within the limits of its length.
-A multi-axis gantry is composed of many single-axis gantries.
-The multiple axis system is composed of the supplied gantry names.
-
-- This makes it a common machine design for simple positioning and placement, as a linear axis establishes a stiffer layout across the robot than an open chain of links, making holding or repetitively positioning the end effector more attainable.
-- Configure a customized encoded motor controller with a gantry to move the linear rail.
-
-This component abstracts the hardware of a gantry to give you an easy interface for moving linear rails, even many at once (multi-axis).
-
-- A multi-axis gantry component is made up of many single-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
-- Each gantry can be given a reference [frame](/services/frame-system/) in configuration that describes its translation and orientation to the world.
-- The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation. The “world” frame of each gantry becomes the moveable frame of the gantry.
+A multi-axis gantry component is made up of many single-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
+<!-- - Each gantry can be given a reference [frame](/services/frame-system/) in configuration that describes its translation and orientation to the world.
+- The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation. The “world” frame of each gantry becomes the moveable frame of the gantry. -->
 
 Gantry components can only be controlled in terms of linear motion.
 Each gantry can only move in one axis within the limits of its length.
@@ -36,8 +23,8 @@ Each gantry can only move in one axis within the limits of its length.
 
 - A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
 - A [motor](/components/motor/) that can move linear rails
-  - Encoded motor: See [dc motor with encoder](/components/motor/#dc-motor-with-encoder) and [encoder component](/components/encoder/) for more information.
-  - Stepper motor: Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
+  - Encoded motor: See [DC motor with encoder](/components/motor/#dc-motor-with-encoder) and [encoder component](/components/encoder/) for more information.
+  - [Stepper motor](/components/motor/#stepper-motor): Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
 
 ### Configuration
@@ -47,7 +34,7 @@ You can easily configure your component, as pictured below, on the [Viam App](ht
 
 #### One-Axis
 
-Refer to the following example configuration for a one-axis gantry:
+This is how you configure a one-axis gantry:
 
 {{< tabs name="Example Gantry Config One-Axis" >}}
 {{< tab name="Config Builder" >}}
@@ -162,7 +149,7 @@ Refer to the following example configuration for a one-axis gantry:
       frame (x, y, z).
       <p>
         You can add a frame to a one-axis gantry attribute to describe its
-        position in the local “world” frame.
+        position in the local "world" frame.
         <p>
           See
           <a href="/services/frame-system">
@@ -173,15 +160,11 @@ Refer to the following example configuration for a one-axis gantry:
   </tr>
 </table>
 
-A frame can also be added to a one-axis gantry attribute to describe its position in the local “world” [frame](/services/frame-system/).
+A frame can also be added to a one-axis gantry attribute to describe its position in the local "world" [frame](/services/frame-system/).
 
 #### Multi Axis
 
-A multi-axis gantry component is made up of many one-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
-<!-- Each gantry can be given a reference [frame](/services/frame-system/) in configuration that describes its translation and orientation to the world.
-The system will then use any reference frames in the one-axis configs to place the gantries in the correct position and orientation. The “world” frame of each gantry becomes the moveable frame of the gantry. -->
-
-Refer to the following example configuration for a multi-axis gantry:
+This is how you configure a multi-axis gantry:
 
 {{< tabs name="Example Gantry Config Multi-Axis" >}}
 {{< tab name="Config Builder" >}}
@@ -236,71 +219,6 @@ Refer to the following example configuration for a multi-axis gantry:
     </td>
   </tr>
 </table>
-
-## Troubleshooting
-
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
-
-<table>
-  <tr>
-   <td><strong>Method Name</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><file>GetPosition </file>
-   </td>
-   <td>Returns an array of floats that describe the current position to the gantry in each axis on which it moves.
-<p>
-The units are millimeters. A single-axis gantry returns a list with one element. A three-axis gantry returns a list containing three elements.
-   </td>
-  </tr>
-  <tr>
-   <td><file>MoveToPosition </file>
-   </td>
-   <td>Takes in a list of positions (units millimeters) and moves each axis of the gantry to the corresponding position.
-<p>
-The number of elements in the list must equal the number of moveable axes on the gantry, and the order of the elements in the list correspond to the order of the axes present in the gantry.
-   </td>
-  </tr>
-  <tr>
-   <td><file>GetLengths </file>
-   </td>
-   <td>Returns a list of lengths of each axis of the gantry in millimeters.
-   </td>
-  </tr>
-  <tr>
-   <td><file>Stop </file>
-   </td>
-   <td>Stops the actuating components of the Gantry.
-   </td>
-  </tr>
-  <tr>
-   <td><file>Do </file>
-   </td>
-   <td>Viam supplies this interface on each component to allow for additional, non-standard functionality that users may wish to include that is <em>not</em> available from  Viam’s interfaces.
-   </td>
-  </tr>
-  <tr>
-   <td><file>ModelFrame </file>
-   </td>
-   <td>Returns the Gantry model. This interface is used in Motion Planning. It is an interface that is used in <a href="/services/motion">motion service</a>.
-   </td>
-  </tr>
-  <tr>
-   <td><file>CurrentInputs </file>
-   </td>
-   <td>gets the positions of each axis of the gantry and transforms them into an Input type. It is used by the <a href="/services/motion">motion service</a>.
-   </td>
-  </tr>
-  <tr>
-   <td><file>GoToInputs </file>
-   </td>
-   <td>returns results from motion planning and Inputs to the gantry, and sends them to MoveToPosition as positions. It is used by the <a href="/services/motion">motion service</a>.
-   </td>
-  </tr>
-  </table>
 
 ## Code Examples
 
@@ -676,7 +594,36 @@ if err != nil {
 }
 ```
 
-## Implementation
+## Troubleshooting
 
-[Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/gantry/index.html)
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+
+## Next Steps
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/yahboom-rover/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Drive a Yahboom Rover with a Gamepad</h4>
+            <p style="text-align: left;">Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.</p>
+        </a>
+    </div>
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/controlling-an-intermode-rover-canbus/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Control an Intermode Rover with CAN Bus and Viam</h4>
+            <p style="text-align: left;">How to abstract CAN bus protocol to control an Intermode rover with Viam.</p>
+        </a>
+    </div>
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/viam-rover/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Drive the Viam Rover with the Viam SDK</h4>
+            <p style="text-align: left;">Try Viam by using the Viam SDK to make your Viam Rover move in a square.</p>
+        </a>
+    </div>
+  </div>
+</div>
