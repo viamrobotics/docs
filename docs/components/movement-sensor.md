@@ -384,7 +384,7 @@ Example IMU-VectorNav config:
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----
 `board` | string | - | The name of the board to which the device is wired
-`spi` | string | The name of the SPI bus over which the device communicates with the board. On a Raspberry Pi, people often use the bus named “1.”
+`spi` | string | The name of the SPI bus over which the device communicates with the board. On a Raspberry Pi, people often use the bus named "1."
 `chip_select_pin` | string | - | The board pin (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device.
 `spi_baud_rate` | int | 115200 | The rate at which data is sent from the IMU.
 `polling_frequency_hz` | int |
@@ -471,7 +471,7 @@ Configuration of this sensor requires configuring a movement sensor component wi
                 "use_alt_i2c_address": true,
                 "i2c_bus": "default_i2c_bus",
                 "board": "local"
-            }   
+            }
         }
     ]
 }

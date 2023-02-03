@@ -111,9 +111,9 @@ When linking to an image or another page in markdown, it's best to use a relativ
 
 ### Prod/Draft/Future Pages
 
-Add “Draft=true” to the Front Matter to set the page to Draft. Hugo will not build draft pages into production. You can commit and push the page and it won’t display in production. This could let you push the page to Main without displaying it in production, but let others access it locally from the git tree without changing the branch. To view the page locally, use `make serve-prod-draft` or `make serve-dev-draft`.
+Add "Draft=true" to the Front Matter to set the page to Draft. Hugo will not build draft pages into production. You can commit and push the page and it won’t display in production. This could let you push the page to Main without displaying it in production, but let others access it locally from the git tree without changing the branch. To view the page locally, use `make serve-prod-draft` or `make serve-dev-draft`.
 
-Add “Future=true” to the Front Matter to begin building a page to production on a certain date (e.g., a release date). This allows you to add a page in the production system and only display it from a selected date using Hugo's `buildFuture` build option in `config.toml` and the `Future=true`. To view the page locally prior to the date, use `make serve-prod-future` or `make serve-dev-future`.
+Add "Future=true" to the Front Matter to begin building a page to production on a certain date (e.g., a release date). This allows you to add a page in the production system and only display it from a selected date using Hugo's `buildFuture` build option in `config.toml` and the `Future=true`. To view the page locally prior to the date, use `make serve-prod-future` or `make serve-dev-future`.
 
 #### Other Setup/Config Information
 
@@ -143,7 +143,7 @@ The formatting works identically to MkDocs: it’s still markdown. But Hugo is b
 To add a footnote:
 
 ```markdown
-“Some completely[^mfn] random text. “
+"Some completely[^mfn] random text. "
 
 [^mfn]: this is the text for the footnote
 ```
