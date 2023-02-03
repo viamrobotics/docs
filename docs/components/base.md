@@ -164,21 +164,6 @@ Refer to the following example configuration for a wheeled base:
 </thead>
 <tbody>
   <tr>
-    <td><code>type</code></td>
-    <td>string</td>
-    <td>Use "base" for any base component</td>
-  </tr>
-  <tr>
-    <td><code>model</code></td>
-    <td>string</td>
-    <td>Use "wheeled" unless you have a "boat".</td>
-  </tr>
-  <tr>
-    <td><code>name</code></td>
-    <td>string</td>
-    <td>Name your base.</td>
-  </tr>
-  <tr>
     <td><code>left</code></td>
     <td>array of strings</td>
     <td>List with the names of all drive motors on the left side of the base. There may be one or more motors.</td>
