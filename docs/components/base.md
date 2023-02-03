@@ -76,7 +76,7 @@ Refer to the following example configuration for a wheeled base:
         ...
       },
       "model": <model>,
-      "name": <base_name",
+      "name": <base_name>,
       "type": "base"
     }
   ]
