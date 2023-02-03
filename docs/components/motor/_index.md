@@ -12,8 +12,8 @@ aliases:
 # SME: Rand, Jessamy
 ---
 
-Electric motors are the most common form of actuator in robotics.
-Viam natively supports the following models of motor:
+Electric motors are the most common form of [actuator](https://en.wikipedia.org/wiki/Actuator) in robotics.
+The Viam *motor* component type natively supports the following models of motor:
 
 Model | Supported hardware
 ---------- | ------------------
@@ -24,7 +24,7 @@ Model | Supported hardware
 [`fake`](#fake) | Used to test code without hardware
 
 {{% alert title="Note" color="note" %}}
-Information on hobby servos (i.e., servomotors) is located in the <a href="../servo">Servo Component Document</a>.
+Information on hobby servos (i.e., servomotors) is located in the [servo component documentation](/components/servo/).
 {{% /alert %}}
 
 ## GPIO
