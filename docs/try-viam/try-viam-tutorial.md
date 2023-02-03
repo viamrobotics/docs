@@ -3,7 +3,7 @@ title: "Control A Rented Viam Rover"
 linkTitle: "Control A Rented Viam Rover"
 weight: 39
 type: "docs"
-description: "Remotely configure and control a Viam Rover located on-site at Viam in NYC."
+description: "Remotely control a Viam Rover located on-site at Viam in NYC."
 tags: ["try viam", "app"]
 ---
 
@@ -50,7 +50,7 @@ Clicking the timer in the top banner redirects you to the **CONTROL** tab where 
 
 ## The **CONTROL** tab
 
-Click on the timer at the top to go to the rental rover's **CONTROL** tab where you can drive the robot.
+Click on the timer at the top to go to the rental rover's **CONTROL** tab where you can drive the robot and interact with each of the robot's components.
 
 At the top of the page you can see the randomly assigned name of the rover, the host, and the IP address.
 
@@ -69,6 +69,8 @@ The order of these components may vary.
 ![Screenshot of the component panels on the CONTROL tab of the Try Viam rover. None of them are expanded yet so they display as thin rectangles with component names and types shown.](../img/try-viam/control-panel-list.png)
 
 ### Base control
+
+The [base component](/components/base) is the platform that the other parts of a mobile robot attach to.
 
 Click the `viam_base` component to expand the base control pane to reveal the camera feed and driving interfaces.
 
@@ -114,12 +116,11 @@ If you go from the from **KEYBOARD** to the **DISCRETE** tab, you can choose bet
 
 ### Camera control
 
-While you can view the camera streams [from the base component panel](#camera-views), you need to access the individual camera component panel to access more features.
-In these panels, you can:
+While you can view the camera streams [from the base component panel](#camera-views), you can access more features on each individual [camera component](/components/camera) panel. In these panels, you can:
 
 - Set the refresh frequency
 - Export screenshots
-- View point cloud data
+- View point cloud data (for robots with depth cameras)
 
 **cam Stream**:
 
@@ -131,14 +132,14 @@ In these panels, you can:
 
 ### Motor control
 
-The motor components enable you to move the base.
-The motors are named `left` and `right` corresponding to their location on the rover base.
+The [motor components](/components/motor) enable you to move the base.
+The motors are named `left` and `right`, corresponding to their location on the rover base.
 Their initial state is **Idle**.
 You can click on each motor panel and make the motor **RUN** or **STOP**.
 
 ![The left and right motor panels on the CONTROL tab.](../img/try-viam/left-right-panels.png)
 
-You can also run each moter at a different power level to go faster or slower and at different rotation directions to go forwards or backwards.
+You can also run each motor at a different power level to go faster or slower and at different rotation directions to go forwards or backwards.
 You can also see their current positions (based on encoder readings) in real time:
 
 ![The left motor running at 20% power and forwards and right motor running at 80% power and backwards.](../img/try-viam/motors-running.png)
@@ -147,7 +148,8 @@ You can also see their current positions (based on encoder readings) in real tim
 
 #### Board control
 
-The board component is named "local" and controls a Raspberry Pi onboard the Viam Rover.
+The [board](/components/board) component is the signal wire hub of a robot.
+For the Viam Rover, the board component is named `local` and controls a Raspberry Pi on the Viam Rover.
 With it, you can control the states of individual GPIO pins on the board.
 
 ![Screenshot of the board panel in the CONTROL tab, including fields to get and set GPIO pin states.](../img/try-viam/board-panel.png)
@@ -174,47 +176,59 @@ On the Viam app, navigate to the **COMPONENTS** subtab, under **CONFIG**.
 There you can view the configuration for each component in the robot: their attributes, component dependencies, pin assignments, etc.
 =======
 Navigate to the **COMPONENTS** subtab, under **CONFIG**.
+<<<<<<< HEAD
 There you can view the configuration for each component in the robot: their attributes, component dependencies, pin assignments, and more.
 >>>>>>> a70d78b (Update Try Viam tutorial)
+=======
+There you can view the configuration for each component in the robot: attributes, component dependencies, pin assignments, and more.
+>>>>>>> dd30906 (Address feedback)
 
 ![Screenshot of the CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](../img/try-viam/config-builder.png)
 
 ### Board configuration
 
-The [board component](/components/board/) `local` configures the Raspberry Pi on the rover with **Type** `board` and the **Model** for Raspberry Pis `pi`.
+The [board](/components/board) component is the signal wire hub of a robot which allows you to control the states of individual GPIO pins on the board.
+For the Viam Rover, the board component controls a Raspberry Pi with **Name** `local`, **Type** `board`, and **Model** `pi`.
 
 ### Encoder configuration
 
-The encoders on the left and right motors are `Lenc` and `Renc` respectively.
-When configuring your own robot, you must configure them before the motors because the motors depend on the encoders.
+An [encoder](/components/encoder) is a device that is used to sense angular position, direction and/or speed of rotation. In this case,
+the encoders on the left and right motors are `Lenc` and `Renc` and configure the pins to `le` and `re`.
+
+{{< alert title="Note" color="note" >}}
+When configuring encoded motors for your own robot, you must configure the encoders before the motors because the motors depend on the encoders.
+{{< /alert >}}
 
 ![Screenshot of the right encoder config panel with the board attribute set to "local" and the pins struct containing "i" set to "re".](../img/try-viam/right-encoder.png)
 
 ### Motor configuration
 
-Both motors on this rover use the model `gpio` which is the model for basic DC motors.
+Both [motors](/components/motor) on this rover use the model `gpio` which is the model for basic DC motors that are connected to and controlled by the configured board.
 
 The attributes section lists the board the motor is wired to, and since the rover's motors are encoded the user interface also shows the encoded motor attributes: the encoder name, motor ramp rate limit, encoder ticks per rotation, and max RPM limit.
 
 You can click **Go to Advanced** to view the attributes field in raw JSON format.
 The **Attributes** pane contains the current JSON configuration for this component.
 The **Attribute Guide** contains a complete list of available attributes for this component type.
-Click **Go to Fancy** to return to the normal user interface.
+Click **Go to Fancy** to return to the default graphical user interface.
 
 ### Base configuration
 
-The base's type is `base` and its model is `wheeled`.
-The `left` and `right` attributes configure the motors on the left and right side of the rover, named `left` and `right`.
-The `Wheel Circumference` is 217.
-The `Width` is the distance between wheel centerlines, 260mm in this case.
-The `Spin Slip Factor` of 1.76 is used in steering calculations to account for slippage of the wheels against the ground while turning.
+The [base component](/components/base) is the platform that the other parts of a mobile robot attach to.
+By configuring a base component, the individual components are organized to produce coordinated movement and you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
+The base's type is `base` and its model is `wheeled` which configures a robot with wheels on its base, like the Viam Rover.
+The **left** and **right** attributes configure the motors on the left and right side of the rover, which are named `left` and `right`, respectively.
+
+The **Wheel Circumference** (in millimeters) is 217.
+The **Width** is the distance between wheel centerlines, 260mm in this case.
+The **Spin Slip Factor** of 1.76 is used in steering calculations to account for slippage of the wheels against the ground while turning.
 
 ![Screenshot of the base configuration panel, showing right and left motors, wheel circumference set to 217, width set to 260mm, and spin slip factor set to 1.76.](../img/try-viam/base-config.png)
 
 ### Camera configuration
 
-The camera component has the **Type** `camera` and the **Model** `webcam`.
-The **Video Path** is `video0`.
+The [camera component](/components/camera/) configures the webcam that is plugged into the Raspberry Pi of the rover.
+The camera component has the **Type** `camera`, the **Model** `webcam`, and the **Video Path** is `video0`.
 
 For more information on choosing the correct video path, refer to our [camera configuration tutorial](/components/camera/configure-a-camera/#connect-and-configure-a-webcam).
 
@@ -222,7 +236,7 @@ For more information on choosing the correct video path, refer to our [camera co
 
 ### Gamepad configuration
 
-The web gamepad has the **Type** `input_controller` and the **Model** `webgamepad`.
+The [web gamepad](/components/input-controller/#webgamepad) component has the **Type** `input_controller` and the **Model** `webgamepad`.
 
 ![No attributes are configured in the gamepad configuration panel.](../img/try-viam/gamepad-config.png)
 
