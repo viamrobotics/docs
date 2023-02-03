@@ -10,11 +10,15 @@ icon: "img/components/gantry.png"
 # SME: Rand
 ---
 
-## Overview
+A *gantry* on a robot is a mechanical system that you can use to hold and position a variety of end-effectors: devices designed to attach to the robot and interact with the environment to perform tasks.
 
-A gantry is a specific type of robot component that uses only linear links to move an end effector in 3D space.
-A gantry can only control the position of the end effector, and is a commonly used machine design for simple positioning and placement.
-A linear axis has the advantage of being a stiffer machine layout than an open chain of links, and holding or repetitively positioning the end effector is more attainable in this configuration.
+The linear rail design makes gantries a common design on robots for simple positioning and placement.
+A customized encoded motor controller can be used in the configuration of a gantry to move the linear rail.
+This component abstracts this type of hardware to give the user an easy interface for moving many linear rails.
+
+Since gantries are linearly moving components, each gantry can only move in one axis within the limits of its length.
+A multi-axis gantry is composed of many single-axis gantries.
+The multiple axis system is composed of the supplied gantry names.
 
 ### Requirements
 
@@ -27,19 +31,10 @@ A gantry in Viam requires the following:
     * Requires limit switches to be set in the gantry config or offsets to be set in stepper motor.
 * Limit switches to attach to the brackets
 
-A customized encoded motor controller can be used in the configuration of a gantry to move the linear rail.
-This component abstracts this type of hardware to give the user an easy interface for moving many linear rails.
+<!-- Each gantry can be given a reference [frame](/services/frame-system/) in the configuration that describes its translation and orientation to the world. -->
+<!-- The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation. -->
 
-Since gantries are linearly moving components, each gantry can only move in one axis within the limits of its length.
-
-Each gantry can be given a reference [frame](/services/frame-system/) in the configuration that describes its translation and orientation to the world.
-
-A multi-axis gantry is composed of many single-axis gantries.
-The multiple axis system is composed of the supplied gantry names.
-The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation.
-The “world” frame of each gantry becomes the moveable frame of the gantry before it in order.
-
-## Attribute Configuration
+## Configuration
 
 ### Single-Axis Gantry Attributes
 
@@ -138,7 +133,42 @@ A frame can also be added to a one axis gantry attribute to describe its positio
 
 ### Multi-Axis Gantry Attributes
 
-In addition to the attributes for single-axis gantries, multi-axis gantries also use these attributes:
+A multi-axis gantry component is made up of many one-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
+<!-- Each gantry can be given a reference [frame](/services/frame-system/) in configuration that describes its translation and orientation to the world.
+The system will then use any reference frames in the one-axis configs to place the gantries in the correct position and orientation. The “world” frame of each gantry becomes the moveable frame of the gantry. -->
+
+Refer to the following example configuration for a multi-axis gantry:
+
+{{< tabs name="Example Gantry Config Multi-Axis" >}}
+{{< tab name="Config Builder" >}}
+
+<img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="TODO" width="800"/>
+
+{{< /tab >}}
+{{% tab name="Raw JSON" %}}
+
+```json-viam
+{
+  "components": [
+    {
+      "name": <your_multiaxis_gantry_name>,
+      "type": "gantry",
+      "model": "multiaxis",
+      "attributes": {
+        "subaxes_list": [
+          <your_oneaxis_gantry_name_1>,
+          <your_oneaxis_gantry_name_2>,
+          <your_oneaxis_gantry_name_3>
+        ]
+      },
+      "depends_on": []
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 <table>
   <tr>
@@ -232,161 +262,87 @@ The number of elements in the list must equal the number of moveable axes on the
 
 ## Code Examples
 
-### Example Multi-Axis Gantry Configuration
+### Control your Gantry with Viam's Client SDK Libraries
 
-``` json
-{
-    "components": [
-        {
-            "name": "local",
-            "type": "board",
-            "model": "pi"
-        },
-        {
-            "name": "xmotor",
-            "type": "motor",
-            "model": "gpiostepper",
-            "attributes": {
-                "board": "local",
-                "pins": {
-                    "dir": "dirx",
-                    "pwm": "pwmx",
-                    "step": "stepx"
-                },
-                "stepperDelay": 50,
-                "ticksPerRotation": 200
-            }
-        },
-        {
-            "name": "ymotor",
-            "type": "motor",
-            "model": "gpiostepper",
-            "attributes": {
-                "board": "local",
-                "pins": {
-                    "dir": "diry",
-                    "pwm": "pwmy",
-                    "step": "stepy"
-                },
-                "stepperDelay": 50,
-                "ticksPerRotation": 200
-            }
-        },
-        {
-            "name": "zmotor",
-            "type": "motor",
-            "model": "gpiostepper",
-            "attributes": {
-                "board": "local",
-                "pins": {
-                    "dir": "dirz",
-                    "pwm": "pwmz",
-                    "step": "stepz"
-                },
-                "stepperDelay": 50,
-                "ticksPerRotation": 200
-            }
-        },
-        {
-            "name": "xaxis",
-            "type": "gantry",
-            "model": "oneaxis",
-            "attributes": {
-                "length_mm": 1000,
-                "board": "local",
-                "limit_pin_enabled_high": false,
-                "limit_pins": [
-                    "xlim1",
-                    "xlim2"
-                ],
-                "motor": "xmotor",
-                "rpm": 500,
-                "axis": {
-                    "x": 1,
-                    "y": 0,
-                    "z": 0
-                }
-            }
-        },
-        {
-            "name": "yaxis",
-            "type": "gantry",
-            "model": "oneaxis",
-            "attributes": {
-                "length_mm": 1000,
-                "board": "local",
-                "limit_pin_enabled_high": false,
-                "limit_pins": [
-                    "ylim1",
-                    "ylim2"
-                ],
-                "motor": "ymotor",
-                "rpm": 500,
-                "axis": {
-                    "x": 0,
-                    "y": 1,
-                    "z": 0
-                }
-            }
-        },
-        {
-            "name": "zaxis",
-            "type": "gantry",
-            "model": "oneaxis",
-            "attributes": {
-                "length_mm": 1000,
-                "board": "local",
-                "limit_pin_enabled_high": false,
-                "limit_pins": [
-                    "zlim1",
-                    "zlim2"
-                ],
-                "motor": "zmotor",
-                "rpm": 500,
-                "axis": {
-                    "x": 0,
-                    "y": 0,
-                    "z": 1
-                }
-            },
-            "frame": {
-                "parent": "world",
-                "orientation": {
-                    "type": "euler_angles",
-                    "value": {
-                        "roll": 0,
-                        "pitch": 40,
-                        "yaw": 0
-                    }
-                },
-                "translation": {
-                    "x": 0,
-                    "y": 3,
-                    "z": 0
-                }
-            }
-        },
-        {
-            "name": "test",
-            "type": "gantry",
-            "model": "multiaxis",
-            "attributes": {
-                "subaxes_list": [
-                    "xaxis",
-                    "yaxis",
-                    "zaxis"
-                ]
-            }
-        }
-    ]
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
+
+The following example assumes you have a gantry called "my_gantry" configured as a component of your robot.
+If your gantry has a different name, change the `name` in the example.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.gantry import Gantry
+from viam.proto.common import WorldState
+
+async def main():
+    # Connect to your robot.
+    robot = await connect()
+
+    # Log an info message with the names of the different resources that are connected to your robot. 
+    print('Resources:')
+    print(robot.resource_names)
+
+    # Connect to your gantry.
+    myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
+
+    # Disconnect from your robot. 
+    await robot.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+```go
+import (
+ "go.viam.com/rdk/components/gantry"
+ "go.viam.com/rdk/referenceframe"
+)
+
+func main() { 
+
+  // Create an instance of a logger. 
+  logger := golog.NewDevelopmentLogger("client")
+
+  // Connect to your robot. 
+  robot, err := client.New(
+      context.Background(),
+      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      logger,
+      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+          Type:    utils.CredentialsTypeRobotLocationSecret,
+          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      })),
+  )
+
+  // Log any errors that occur.
+  if err != nil {
+      logger.Fatal(err)
+  }
+
+  // Delay closing your connection to your robot until main() exits. 
+  defer robot.Close(context.Background())
+
+  // Log an info message with the names of the different resources that are connected to your robot. 
+  logger.Info("Resources:")
+  logger.Info(robot.ResourceNames())
+
+  // Connect to your gantry.
+  myGantry, err := gantry.FromRobot(robot, "my_gantry")
+  if err != nil {
+    logger.Fatalf("cannot get gantry: %v", err)
+  }
+
 }
 ```
 
-## Implementation
+{{% /tab %}}
+{{< /tabs >}}
 
-<<<<<<< HEAD
-[Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/gantry/index.html)
-=======
 ### Position
 
 Get the current positions of the axis of the gantry (mm).
@@ -449,7 +405,6 @@ if err != nil {
 ### MoveToPosition
 
 Move the axes of the gantry to the desired positions (mm).
-Plan for the gantry to avoid obstacles and comply with the constraints for movement specified in [(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -457,9 +412,8 @@ Plan for the gantry to avoid obstacles and comply with the constraints for movem
 **Parameters:**
 
 - `positions` [(List[float])](https://docs.python.org/3/library/typing.html#typing.List): A list of positions for the axes of the gantry to move to, in millimeters.
-- `world_state`[(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState): Obstacles that the gantry must avoid while it moves from its original position to the position specified in `pose`.
-A `WorldState` can include a variety of attributes, including a list of obstacles around the object (`obstacles`), a list of spaces the robot may operate within (`interaction_spaces`), and a list of supplemental transforms (`transforms`).
-These fields are optional.
+- `world_state`[(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState): Optional and not yet fully implemented, see [the arm component](/components/arm/) for an example of usage with full component implementation.
+Specifies obstacles that the gantry must avoid while it moves from its original position to the position specified in `pose`.
 - `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -486,9 +440,8 @@ await myGantry.move_to_position(positions=examplePositions, world_state=WorldSta
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `positions` [([]float64)](https://pkg.go.dev/builtin#float64): A list of positions for the axes of the gantry to move to, in millimeters.
-- `world_state`[(WorldState)](https://pkg.go.dev/go.viam.com/rdk@v0.2.12/referenceframe#WorldState): Obstacles that the gantry must avoid while it moves from its original position to the position specified in `pose`.
-A `WorldState` can include a variety of attributes, including a list of obstacles around the object (`obstacles`), a list of spaces the robot may operate within (`interaction_spaces`), and a list of supplemental transforms (`transforms`).
-These fields are optional.
+- `world_state`[(WorldState)](https://pkg.go.dev/go.viam.com/rdk@v0.2.12/referenceframe#WorldState): Optional and not yet fully implemented, see [the arm component](/components/arm/) for an example of usage with full component implementation.
+Specifies obstacles that the gantry must avoid while it moves from its original position to the position specified in `pose`.
 - `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -679,29 +632,4 @@ is_moving, err := myGantry.IsMoving(context.Background())
 if err != nil {
   logger.Fatalf("cannot get if gantry is moving: %v", err)
 }
-logger.Info(is_moving)
 ```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-## Troubleshooting
-
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
-
-You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
-
-## Next Steps
-
-<div class="container text-center">
-  <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/tutorials/custom-base-dog/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Control a Robot Dog with a Custom Viam Base Component</h4>
-            <p style="text-align: left;">How to integrate a custom base component with the Viam Python SDK.</p>
-        <a>
-    </div>
-  </div>
-</div>
->>>>>>> parent of 116a0b3 (explain worldstate implementation)
