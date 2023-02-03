@@ -23,7 +23,7 @@ Hobby servos contain a small electric motor, a series of gears, and a potentiome
 It also contains a closed-loop position control circuit that takes a [Pulse Width Modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal input and holds the shaft at a certain angle based on that input.
 
 A typical servo will take PWM pulses ranging from 1ms to 2ms long, and map this range to a 180 degree range of possible positions.
-A 1.5ms signal will hold the servo in the middle or “neutral” position, 1ms will move it to 90 degrees from there in one direction, and 2ms will move it 90 degrees from neutral in the opposite direction.
+A 1.5ms signal will hold the servo in the middle or "neutral" position, 1ms will move it to 90 degrees from there in one direction, and 2ms will move it 90 degrees from neutral in the opposite direction.
 Note that some servos have a different PWM range, mapping to a different set of angles.
 
 #### Hardware Requirements
@@ -40,11 +40,11 @@ A typical servo control setup comprises the following:
 
 #### Wiring
 
-{{% alert title="Caution" color="caution" %}}  
+{{% alert title="Caution" color="caution" %}}
 Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
 {{% /alert %}}
 
-Here's an example of how a servo might be wired to a Raspberry Pi:  
+Here's an example of how a servo might be wired to a Raspberry Pi:
 
 ![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](/components/img/servo/servo-wiring.png)
 

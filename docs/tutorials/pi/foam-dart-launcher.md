@@ -177,7 +177,7 @@ After clicking **Create Component** you’ll see the **Component Pin Assignment*
 Select **In1/In2** since that is compatible with the input type our motor controller expects.
 In the **A/In1** and **B/In2** drop-downs, choose `11 GPIO 17` and `13 GPIO 27`, respectively, for the left motor, and `16 GPIO 23` and `18 GPIO 24`, respectively, for the right motor.
 
-Select the name of the board the motor controller is wired to (“board”) from the **Board** drop-down.
+Select the name of the board the motor controller is wired to ("board") from the **Board** drop-down.
 
 <table>
 <tr><td style="background:white; border-right: 1px solid black; padding-right: 25px">

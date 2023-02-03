@@ -324,7 +324,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
 ## Controlling your rover with Viam
 
 1. Go to your robot’s page on [the Viam app](https://app.viam.com/).
-   Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, “Live.”
+   Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, "Live."
 2. Go to the **CONTROL** tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around.
    Ensure that the base moves as expected.
    If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.

@@ -46,14 +46,14 @@ Run <code>sudo systemctl restart viam-server</code> in the terminal to restart t
 <th>What/Why:
 </th>
 <td colspan="2">Check if there is a frame attribute in the components in the fancy config or in the raw JSON config.
-It may be that the robot config generated broken “frame” information and pre-populated the translation values with empty strings when they are currently programmed to be floats on the backend.
+It may be that the robot config generated broken "frame" information and pre-populated the translation values with empty strings when they are currently programmed to be floats on the backend.
 </td>
 </tr>
 <tr>
 <th>Resolution
 </th>
 <td width="50%">
-Delete the entire “frame” object from the JSON config if you are not using it.
+Delete the entire "frame" object from the JSON config if you are not using it.
 The frame object looks like this:</td>
 </td>
 <td><img src="../img/ts-del-frame.png" alt="Frame JSON Object" width="150px"/></td>
@@ -84,7 +84,7 @@ Re-try the operation.
 </tr>
 </table>
 
-#### Error #2: SSH error on the terminal: “ssh:connect to host name-pi.local port 22: host is down”
+#### Error #2: SSH error on the terminal: "ssh:connect to host name-pi.local port 22: host is down"
 
 <table style="border: solid black 1px;">
 <th>What/Why:
@@ -100,7 +100,7 @@ Re-try the operation.
 </tr>
 </table>
 
-#### Error #3: “Rolling back draft changes due to error” or “Error reconfiguring robot”, both errors end with: ‘error: error processing draft changes: resource “rdk:component:board/local” not found”
+#### Error #3: "Rolling back draft changes due to error" or "Error reconfiguring robot", both errors end with: ‘error: error processing draft changes: resource "rdk:component:board/local" not found"
 
 <table style="border: solid black 1px;">
 <tr>

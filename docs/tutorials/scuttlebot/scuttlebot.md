@@ -179,7 +179,7 @@ From the **CONFIG** tab:
 7. Enter "250" in `wheel_circumference_mm`.
 
     The `left` and `right` attributes represent the motors corresponding to the left and right sides of the rover.
-    Since we named the motors "left" and "right", you can simply add “left” and “right” between the brackets for your set of motors, respectively.
+    Since we named the motors "left" and "right", you can simply add "left" and "right" between the brackets for your set of motors, respectively.
 
 The attributes of your base component's config should look something like this:
 

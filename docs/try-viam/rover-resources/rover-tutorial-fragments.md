@@ -35,20 +35,20 @@ Click `ADD` to add the fragment to your robot configuration.
 ![List of available fragments](../img/fragments/fragments_list.png)
 
 After you add the fragment, the config on the right side shows the robot's configuration with the new fragment.
-Click “Save Config” to save the new configuration.
+Click "Save Config" to save the new configuration.
 
 ![Fragment configuration](../img/fragments/fragment_configuration.png)
 
 The fragment adds the following components to your robot's JSON configuration:
 
 * [Board component](/components/board/), which is the Raspberry Pi.
-  * Within the board component attributes, digital interrupts: “re” to pin “37” and “le” to pin “35” and I2Cs: name “default_i2c_bus” and bus “1”.
+  * Within the board component attributes, digital interrupts: "re" to pin "37" and "le" to pin "35" and I2Cs: name "default_i2c_bus" and bus "1".
 * Right gpio [motor](/components/motor/).
-  * Within the motor attributes, board: “local”, encoder: “Renc”, ticks per rotation: "996”.
+  * Within the motor attributes, board: "local", encoder: "Renc", ticks per rotation: "996".
   * Within the component pin assignment, type: In1/In2, A/In1: "16 GPIO 23", B/In2: "18 GPIO 24", PWM: "22 GPIO 25".
   * Depends on local and Renc.
 * Left gpio [motor](/components/motor/).
-  * Within the motor attributes, board: “local”, encoder: “Lenc”, ticks per rotation: "996”.
+  * Within the motor attributes, board: "local", encoder: "Lenc", ticks per rotation: "996".
   * Within the component pin assignment, type: In1/In2, A/In1: "11 GPIO 17", B/In2: "13 GPIO 27", PWM: "15 GPIO 22".
   * Depends on local and Lenc.
 * A wheeled Viam [base](/components/base/) with attributes:

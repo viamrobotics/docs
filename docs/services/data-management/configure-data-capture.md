@@ -132,7 +132,7 @@ You may capture data from one or more component methods:
 - To enable or disable data capture for a configured component or method, use the `on/off` toggle.
 - To change the frequency of data capture for a method, enter the number of measurements you wish to capture per second in the frequency field.
 
-After adding configuration for the methods, click “Save Config”.
+After adding configuration for the methods, click "Save Config".
 
 If you want to remove a capture method from the configuration, click the `delete` icon.
 
