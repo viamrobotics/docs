@@ -27,6 +27,8 @@ Most robots with a COMPONENT need at least the following hardware:
 
 ## Configuration
 
+Configuring this component on your robot enables you to ....
+You can easily configure your component, as pictured below, on the [Viam App](https://app.viam.com/).
 {{< tabs name="TabPanelExample" >}}
 {{% tab name="UI"%}}
 
