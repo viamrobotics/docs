@@ -16,7 +16,6 @@ A customized encoded motor controller can be used in the configuration of a gant
 
 This component abstracts the hardware of a gantry to give you an easy interface for moving linear rails, even many at once (multi-axis).
 A multi-axis gantry is composed of many single-axis gantries.
-The multiple axis system is composed of the supplied gantry names.
 <!-- - Each gantry can be given a reference [frame](/services/frame-system/) in configuration that describes its translation and orientation to the world.
 - The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation. The “world” frame of each gantry becomes the moveable frame of the gantry. -->
 
@@ -163,8 +162,7 @@ This is how you configure a one-axis gantry:
     </td>
   </tr>
 </table>
-
-A frame can also be added to a one-axis gantry attribute to describe its position in the local "world" [frame](/services/frame-system/).
+<!-- A frame can also be added to a one-axis gantry attribute to describe its position in the local "world" [frame](/services/frame-system/). -->
 
 #### Multi Axis
 
