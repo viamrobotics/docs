@@ -17,16 +17,30 @@ The Viam *motor* component type natively supports the following models of motor:
 
 Model | Supported hardware <a name="model-table"></a>
 ---------- | ------------------
-[`gpio`](./gpio) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor)
-[`gpiostepper`](./gpio-stepper) | [Stepper motor](https://en.wikipedia.org/wiki/Stepper_motor) driven by a basic stepper driver
-[`TMC5072`](#tmc5072-stepper) | Stepper motor driven by [the TMC5072 chip](https://www.trinamic.com/support/eval-kits/details/tmc5072-bob/)
-[`DMC4000`](#dmc4000-stepper) | Stepper motor driven by a [DMC-40x0 series motion controller](https://www.galil.com/motion-controllers/multi-axis/dmc-40x0)
-[`fake`](#fake) | Used to test code without hardware
+[`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor)
+[`gpiostepper`](./gpio-stepper/) | [Stepper motor](https://en.wikipedia.org/wiki/Stepper_motor) driven by a basic stepper driver
+[`TMC5072`](./tmc5072/) | Stepper motor driven by [the TMC5072 chip](https://www.trinamic.com/support/eval-kits/details/tmc5072-bob/)
+[`DMC4000`](./dmc4000/) | Stepper motor driven by a [DMC-40x0 series motion controller](https://www.galil.com/motion-controllers/multi-axis/dmc-40x0)
+[`fake`](./fake/) | Used to test code without hardware
 
 As is evident in the table above, how you configure your motor with Viam depends more on the [motor driver](https://www.wellpcb.com/what-is-motor-driver.html) than on the motor itself.
 
 This document assumes you have motor, compatible motor driver, and power supply.
 You'll also need a [board](/components/board/) to send signals to the motor driver[^dmcboard].
+
+## API
+
+Method Name | Golang | Python | Description
+----------- | ------ | ------ | -----------
+[SetPower](#setpower)    | SetPower | set_power |
+[GoFor](#gofor) | GoFor  | [go_for](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_for) | Spin the motor the specified number of revolutions at specified RPM.
+[GoTo](#goto) | GoTo   | go_to |
+[ResetZeroPosition](#resetzeroposition) | ResetZeroPosition | reset_zero_position |
+[GetPosition](#getposition) | GetPosition | get_position |
+[GetProperties](#getproperties) | GetProperties | get_properties |
+[Stop](#stop) | Stop | stop |
+[IsPowered](#ispowered) | IsPowered | is_powered |
+[IsMoving](#ismoving) | IsMoving | is_moving |
 
 ## Configuration
 
@@ -40,7 +54,13 @@ Field | Description
 `type` | `motor` is the type for all motor components.
 `model` | Depends on the motor driver; see the list of models in the [table above](#model-table).
 
-<br>
+Refer to the document for your specific motor model for attribute configuration information:
+
+- [`gpio`](./gpio/)
+- [`gpiostepper`](./gpio-stepper/)
+- [`TMC5072`](./tmc5072/)
+- [`DMC4000`](./dmc4000/)
+- [`fake`](./fake/)
 
 ```json
 {
@@ -58,7 +78,7 @@ Field | Description
       "type": "motor",
       "model": "<model, e.g. 'gpio'>",
       "attributes": {
-        "<ATTRIBUTES VARY DEPENDING ON MOTOR MODEL; SEE BELOW>"
+        "<ATTRIBUTES VARY DEPENDING ON MOTOR MODEL; SEE RESPECTIVE DOCUMENTATION>"
         "board": "local"
       },
       "depends_on": []
@@ -67,21 +87,9 @@ Field | Description
 }
 ```
 
-## GPIO
+[^dmcboard]: The `DMC4000` model does not require a board.
 
-## GPIO Stepper
-
-## TMC5072 Stepper
-
-## DMC4000 Stepper
-
-This is a highly featured motion controller that, unlike the other motor models listed, does not require a board component.
-
-## Fake
-
-## Next Steps
-
-## Usage example
+### Usage example
 
 {{% alert title="Note" color="note" %}}
 
@@ -138,4 +146,22 @@ m2.GoFor(context.Background(), 1000, 200, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-[^dmcboard]: The `DMC4000` model does not require a board.
+### API Details
+
+#### SetPower
+
+#### GoFor
+
+#### GoTo
+
+#### ResetZeroPosition
+
+#### GetPosition
+
+#### GetProperties
+
+#### Stop
+
+#### IsPowered
+
+#### IsMoving

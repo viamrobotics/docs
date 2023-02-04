@@ -14,7 +14,7 @@ An example configuration for a `gpio` motor:
 {{< tabs name="gpio-config">}}
 {{% tab name="Builder UI" %}}
 
-<img src="/components/img/motor/gpio-config.png" alt="Screenshot of a gpio motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
+<img src="/components/img/motor/gpio-config-ui.png" alt="Screenshot of a gpio motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -63,9 +63,9 @@ An example configuration for a `gpio` motor:
 
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
-`board` | string | --        | Name of board to which the motor driver is wired.
-`max_rpm` | float | --         | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the “GoFor” method unusable.
-`pins` | object | --  | A structure that holds pin configuration information.
+`board` | string | -- | Name of board to which the motor driver is wired.
+`max_rpm` | float | -- | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the “GoFor” method unusable.
+`pins` | object | -- | A structure that holds pin configuration information.
 
 Nested within `pins` (note that only two or three of these are required depending on your motor driver; see [Pin Information](#pin-information) below for more details):
 
@@ -103,6 +103,13 @@ Name | Type | Default Value | Description
 
 ## Wiring examples
 
+{{% alert title="Note" color="note" %}}
+
+The following are just examples and do not apply to all motor setups.
+Refer to your motor and motor driver data sheets for information on power requirements and how to properly wire your motor.
+
+{{% /alert %}}
+
 ### Brushed DC motor
 
 Taking a 12V brushed DC motor controlled by a [DRV8256E Single Brushed DC Motor Driver Carrier](https://www.pololu.com/product/4038) wired to a Raspberry Pi as an example, the wiring diagram would look like this:
@@ -119,7 +126,7 @@ They typically require a PWM/DIR input or an A/B (In1/In2) and PWM input to set 
 The key difference between a brushed and brushless motor driver is on the motor output side.
 Brushless motors typically have three power connections (commonly referred to as A, B and C; or sometimes Phase 1, 2 and 3) and 3 sensor connections (commonly referred to as Hall A, Hall B, and Hall C) running between the motor and driver.
 
-The configuration file of a BLDC motor with Viam is the same as that of a brushed motor [(detailed above)](#viam-configuration).
+The configuration file of a BLDC motor with Viam is the same as [that of a brushed motor](#gpio-config).
 Only the output side of the driver board is different, i.e., more wires connect the driver to the motor.
 
 ![motor-brushless-dc-wiring](/components/img/motor/motor-brushless-dc-wiring.png)

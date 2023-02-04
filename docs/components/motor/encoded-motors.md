@@ -12,12 +12,65 @@ Other times, you may add an encoder to a motor.
 See the [encoder component documentation](/components/encoder/) for more information on encoders.
 
 Viam supports motors with encoders within model `gpio`.
-Configuration of an encoder requires configuring the encoder [per the encoder documentation](/components/encoder) in addition to the [standard “gpio” model attributes](/components/motor/gpio/).
-Here’s an example config file:
+Configuration of an encoder requires configuring the encoder [per the encoder documentation](/components/encoder) in addition to the [standard `gpio` model attributes](/components/motor/gpio/).
+
+Here’s an example configuration:
+
+{{< tabs name="encoder-config">}}
+{{% tab name="Builder UI" %}}
+
+<img src="/components/img/motor/encoded-config-ui.png" alt="Screenshot of an encoded motor config in the Viam app UI." style="max-width:800px;width:100%" >
+
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+```json
+{
+  "components": [
+    {
+      "name": "local",
+      "type": "board",
+      "model": "pi",
+      "attributes": {}
+    },
+    {
+      "name": "myEncoder",
+      "type": "encoder",
+      "model": "incremental",
+      "attributes": {
+        "board": "local",
+        "pins": {
+          "a": "13",
+          "b": "15"
+        }
+      }
+    },
+    {
+      "name": "myMotor1",
+      "type": "motor",
+      "model": "gpio",
+      "attributes": {
+        "board": "local",
+        "max_rpm": 500,
+        "pins": {
+          "pwm": "16",
+          "dir": "18"
+        },
+        "encoder": "myEncoder",
+        "ticks_per_rotation": 9600
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+
+{{% tab name="Annotated JSON" %}}
 
 ![motor-encoded-dc-json](/components/img/motor/motor-encoded-dc-json.png)
-
-[Click here for the raw JSON.](/components/example-configs/motor-encoded-config.json)
+{{% /tab %}}
+{{< /tabs >}}
 
 #### Required Attributes
 
@@ -39,6 +92,6 @@ Name | Type | Description
 ## Wiring Example
 
 Here's an example of an encoded DC motor wired with [the MAX14870 Single Brushed DC Motor Driver Carrier](https://www.pololu.com/product/2961).
-This wiring example corresponds to the [example config above]().
+This wiring example corresponds to the [example config above](#encoder-config).
 
 ![motor-encoded-dc-wiring](/components/img/motor/motor-encoded-dc-wiring.png)

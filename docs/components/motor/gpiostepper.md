@@ -13,8 +13,46 @@ Viam also supports some more advanced stepper driver chips ([TMC5072](/component
 Refer to those
 Here’s an example of a basic stepper driver config:
 
-![motor-gpiostepper-json](../img/motor/motor-gpiostepper-json.png)
-[Click here for the raw JSON.](../example-configs/motor-gpiostepper-config.json)
+{{< tabs name="gpiostepper-config">}}
+{{% tab name="Builder UI" %}}
+
+<img src="/components/img/motor/gpiostepper-config-ui.png" alt="Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15, respectively." style="max-width:800px;width:100%" >
+
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+```json
+{
+  "components": [
+    {
+      "name": "example-board",
+      "type": "board",
+      "model": "pi"
+    },
+    {
+      "name": "example-motor",
+      "type": "motor",
+      "model": "gpiostepper",
+      "attributes": {
+        "board": "example-board",
+        "pins": {
+          "step": "13",
+          "dir": "15"
+        },
+        "ticks_per_rotation": 200
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Annotated JSON" %}}
+
+![motor-gpiostepper-json](/components/img/motor/motor-gpiostepper-json.png)
+
+{{% /tab %}}
+{{< /tabs >}}
 
 #### Required Attributes for Steppers
 
