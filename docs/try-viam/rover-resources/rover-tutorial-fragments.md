@@ -3,7 +3,7 @@ title: "Add the Viam Fragment to your Robot"
 linkTitle: "Add the Viam Fragment to your Robot"
 weight: 20
 type: "docs"
-tags: ["rover", "tutorial"]
+tags: ["rover", "viam rover", "tutorial"]
 ---
 
 A fragment is a reusable configuration block representing a common hardware pattern.

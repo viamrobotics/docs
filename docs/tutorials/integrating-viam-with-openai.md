@@ -1,0 +1,290 @@
+---
+title: "Create a companion robot by integrating Viam with OpenAI"
+linkTitle: "Create an AI companion robot"
+weight: 60
+type: "docs"
+tags: ["base", "AI", "ChatGPT", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
+description: "Integrate an Intermode rover as a modular-resource-based component with CAN bus."
+# SME: Matt Vella
+---
+
+When we think of robots, most of us tend to group them into categories:
+
+* useful robots
+* bad or scary robots
+* good robots
+
+<img src="../img/ai-integration/rosey.jpeg"  style="float:right;margin-right:150px;margin-left: 20px;" alt="Rosey the robot, from the Jetsons." title="Rosey the robot, from the Jetsons." width="350" />
+
+One type of “good” robot is a companion robot - a robot created for the purposes of providing real or apparent companionship for human beings.
+While some [examples](https://www.google.com/search?q=companion+robot) have recently been brought to market - primarily for children and elderly - we are all familiar with robots from popular movies that ultimately have proven to be endearing companions and became embedded in our culture.
+Think [C3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
+
+AI like [ChatGPT](https://openai.com/blog/chatgpt/) is making companion robots with realistic, human-like speech a potential reality.
+Combined with the Viam platform’s built-in [computer vision](/services/vision), ML model support, and [locomotion](/components/base/) - we can create a simple version of such a robot that:
+
+* Listens and responds using ChatGPT.
+* Follows commands like "move forward" and "spin".
+* Makes observations about its environment with prompts like "What do you see?".
+
+This tutorial will provide step-by-step instructions to show you how to create an AI-integrated Viam robot, including a supply list and sample code.
+
+## Hardware requirements
+
+{{% alert title="Note" color="note"%}}
+In this tutorial, we are using the [Viam rover](https://www.viam.com/resources/rover), but you can use any robotic [base](/components/base/).
+{{% /alert %}}
+
+The tutorial uses the following hardware:
+
+* <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with [`viam-server` installed](/installation/prepare/rpi-setup/).
+* [Viam rover](https://www.viam.com/resources/rover)
+* [270 degree servo](https://www.amazon.com/ANNIMOS-Digital-Waterproof-DS3218MG-Control/dp/B076CNKQX4/)
+* [USB powered speaker](https://www.amazon.com/Bluetooth-Portable-Wireless-Speakers-Playtime/dp/B07PLFCP3W/)
+
+## Initial Setup
+
+### Raspberry Pi software setup
+
+Before proceeding, [set up `viam-server` on your Raspberry Pi](/installation/prepare/rpi-setup/) and configure a (for now) empty robot configuration.
+
+Next, 
+
+### Hardware
+
+{{% alert title="Caution" color="caution" %}}
+Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
+{{% /alert %}}
+
+Power your Raspberry Pi off and attach the PiCAN 2 by aligning the 40 way connector and fitting it to the top of the Pi using a spacer and a screw as per [the instructions](https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi).
+
+<img src="../img/intermode/can_terminal_conn.png"  style="float:right;margin-right:12px" alt="PiCAN Terminal Wiring." title="PiCAN Terminal Wiring." width="400" />
+
+Next, with the Intermode rover powered down, connect the 6-wire amphenol connector that comes with the rover to the 4 screw terminal on PiCAN bus:
+
+* Connect one of the 12V wires (red) to the +12V terminal
+* Connect one of the ground wires (black) to the GND terminal
+* Connect the CAN low wire (blue) to the CAN_L terminal
+* Connect the CAN high wire (white) to the CAN_H terminal.
+
+You will have two remaining wires (12v and ground).
+
+Connect the remaining two wires to the + (red) and - (black) **input** terminals on your buck converter.
+Attach the USB-C adapter wires to the **output** of your buck converter, and plug the other end of the USB-C adapter into your Pi.
+You can now power up the rover, which will provide power to your Pi and allow it to communicate with the rover via CAN bus!
+
+<img src="../img/intermode/intermode_wiring.jpg"  style="margin-right:12px" alt="Intermode, Pi Wiring." title="Intermode, Pi Wiring." width="800" />
+
+### Software for the Intermode base modular resource
+
+Check out this [GitHub repository](https://github.com/viam-labs/tutorial-intermode) for the working modular resource implementation example which we use in this tutorial.
+
+## A modular resource for the Intermode base
+
+Viam includes [APIs](/program/extend/modular-resources/#apis) for common component types within `viam-server`.
+The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/components/base).
+
+If you want to learn how to leverage this API to create a custom modular resource using code found in the [tutorial repository](https://github.com/viam-labs/tutorial-intermode), continue reading.
+If you want to directly configure this modular resource code with your robot, skip to [using the intermode base resource](#use-the-intermode-base-modular-resource)
+
+### Create a custom model using the Viam RDK base API
+
+The [base](/components/base) component exposes an API for controlling a mobile robot’s movements.
+To use it for the Intermode rover, you must create a new [model](/program/extend/modular-resources/#models) with its own implementation of each method.
+
+Both the **API** and **model** of any Viam resource are represented as colon-separated triplets where the first element is a namespace.
+Since you will conform to an existing Viam API for [base](/components/base), the [API](/program/extend/modular-resources/#apis) you will use is:
+**rdk:component:base**
+
+This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
+Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, a model name of "intermode". So the complete triplet is:
+**viamlabs:tutorial:intermode**
+
+The [module.go code](https://github.com/viam-labs/tutorial-intermode) creates this model and registers the component instance.
+The *Subtype* of a resource contains its API triplet, so using **base.Subtype** (see line 30 below) registers our new model with the *API* from the RDK's built-in base component (rdk:component:base).
+
+```go
+// namespace, model family, model
+var model = resource.NewModel("viamlabs", "tutorial", "intermode")
+
+func main() {
+    goutils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("intermodeBaseModule"))
+}
+
+func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
+    registerBase()
+    modalModule, err := module.NewModuleFromArgs(ctx, logger)
+
+    if err != nil {
+        return err
+    }
+    modalModule.AddModelFromRegistry(ctx, base.Subtype, model)
+
+    err = modalModule.Start(ctx)
+    defer modalModule.Close(ctx)
+
+    if err != nil {
+        return err
+    }
+    <-ctx.Done()
+    return nil
+}
+
+// helper function to add the base's constructor and metadata to the component registry, so that we can later construct it.
+func registerBase() {
+    registry.RegisterComponent(
+        base.Subtype, // the "base" API: "rdk:component:base"
+        model,
+        registry.Component{Constructor: func(
+            ctx context.Context,
+            deps registry.Dependencies,
+            config config.Component,
+            logger golog.Logger,
+        ) (interface{}, error) {
+            return newBase(config.Name, logger) // note: newBase() is not shown in this tutorial
+        }})
+}
+```
+
+### Implement base methods
+
+Now that the modular resource code has registered the API it is using and its custom model, you can implement any number of methods provided by the base API.
+Since the Intermode rover's commands are in the CAN bus format, you need the modular resource code to translate any commands sent from the base API, like *SetPower*, *SetVelocity*, or *Stop* to [CAN bus frames](https://en.wikipedia.org/wiki/CAN_bus#Frames).
+Intermode provides documentation on how its [CAN frames](https://github.com/viam-labs/tutorial-intermode/blob/main/can_interface.pdf) are formatted.
+
+At a high level, the [tutorial code](https://github.com/viam-labs/tutorial-intermode/blob/main/intermode-base/module.go) does the following:
+
+1. The SetPower command implements the SetPower interface from the *rdk:component:base* API
+2. The parameters sent to SetPower are formatted as a *driveCommand*
+3. The *driveCommand* is converted to a CAN frame, and set as the next command
+4. *publishThread* runs a loop continuously, sending the current command every 10ms (the Intermode base will otherwise time out)
+
+``` go
+// this struct describes intermode base drive commands
+type driveCommand struct {
+    Accelerator   float64
+    Brake         float64
+    SteeringAngle float64
+    Gear          byte
+    SteerMode     byte
+}
+
+func (base *interModeBase) setNextCommand(ctx context.Context, cmd modalCommand) error {
+    if err := ctx.Err(); err != nil {
+        return err
+    }
+    select {
+    case <-ctx.Done():
+        return ctx.Err()
+    case base.nextCommandCh <- cmd.toFrame(base.logger):
+    }
+    return nil
+}
+
+// toFrame convert the drive command to a CANBUS data frame.
+func (cmd *driveCommand) toFrame(logger golog.Logger) canbus.Frame {
+    frame := canbus.Frame{
+        ID:   driveId,
+        Data: make([]byte, 0, 8),
+        Kind: canbus.SFF,
+    }
+    frame.Data = append(frame.Data, calculateAccelAndBrakeBytes(cmd.Accelerator)...)
+    frame.Data = append(frame.Data, calculateSteeringAngleBytes(cmd.SteeringAngle)...)
+
+    if cmd.Accelerator < 0 {
+        cmd.Gear = gears[gearReverse]
+    }
+    frame.Data = append(frame.Data, cmd.Gear, cmd.SteerMode)
+
+    logger.Debugw("frame", "data", frame.Data)
+
+    return frame
+}
+
+func (base *interModeBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
+    return base.setNextCommand(ctx, &driveCommand{
+        Accelerator:   linear.Y * 100,  // the base API provides linear.Y between -1 (full reverse) and 1 (full forward)
+        Brake:         0,
+        SteeringAngle: angular.Z * 100, // the base API provides angular.Z between -1 (full left) and 1 (full right)
+        Gear:          gears[gearDrive],
+        SteerMode:     steerModes[steerModeFourWheelDrive],
+    })
+}
+```
+
+Now the intermode base can receive and execute *SetPower* commands using the same interface you'd use to send *SetPower* commands to any rover that is Viam-controlled.
+
+### Leaving some methods unimplemented
+
+In some cases, you may not want to implement specific methods provided by the resource type's [API](/program/extend/modular-resources/#apis).
+For example, some hardware may not support specific functionality.
+When you want to leave a method unimplemented you must still create that method, but return an appropriate error message.
+
+In this tutorial, you will leave the *IsMoving* method unimplemented (for illustrative purposes).
+
+```go
+func (base *interModeBase) IsMoving(ctx context.Context) (bool, error) {
+    return false, utils.NewUnimplementedInterfaceError((*interModeBase)(nil), "intermodeBase does not yet support IsMoving()")
+}
+```
+
+## Use the Intermode base modular resource
+
+### Install the modular resource
+
+This tutorial's modular resource code leverages libraries (specifically a [CAN bus library](https://github.com/go-daq/canbus)) that can run on Linux and interface with the PiCAN socket.
+Once you have compiled your resouce, you need to configure `viam-server` (running on the Pi) to load the module.
+To be able to run the modular resource code from the Pi, make the modular resource code available on your Raspberry Pi.
+If you have git installed on your Pi, this is as simple as running the following command in the directory for your modular resource code:
+
+``` sh
+git clone https://github.com/viam-labs/tutorial-intermode
+```
+
+If you don't have git installed on your Pi, you'll need to first run:
+
+``` sh
+sudo apt install git
+```
+
+### Configure the Intermode base resource
+
+If you have not already, first create a new robot in the [Viam app](https://app.viam.com/) and follow the instructions in the **SETUP** tab to connect the robot to the cloud.
+
+In order to drive the Intermode base with Viam, you need to add it to the robot configuration.
+You will specify where `viam-server` can find the module, and then configure a modular component instance for the Intermode base.
+
+In this example, we've cloned the git tutorial repo to `/home/me/tutorial-intermode/`.
+Change this to the correct location in `executable_path` when adding the module to your robot configuration.
+
+``` json
+{
+  "modules": [
+    {
+      "name": "intermode-base",
+      "executable_path": "/home/me/tutorial-intermode/intermode-base/run.sh"
+    }
+  ],
+    "components": [
+        {
+        "type": "component",
+        "name": "base",
+        "model": "viamlabs:tutorial:intermode",
+        "namespace": "rdk",
+        "attributes": {},
+        "depends_on": []
+        }
+    ]
+}
+```
+
+More details about modules and how they work can be found in the [modular resources documentation](/program/extend/modular-resources/#add-a-module-to-your-robot-configuration).
+
+### Control the rover
+
+Once you save this configuration, you see a *base* card in the robot's **CONTROL** tab and can drive the rover from there.
+Be careful, the Intermode is a large and powerful rover - make sure you have the shutoff key in hand for emergencies and make sure you have enough space for the rover to move.
+
+If you do not see the base card in the **CONTROL** tab, check the **LOGS** tab for possible setup or configuration errors.
+
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/).
