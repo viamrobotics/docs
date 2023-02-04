@@ -37,14 +37,50 @@ This tutorial will provide step-by-step instructions to show you how to create a
 * [270 degree servo](https://www.amazon.com/ANNIMOS-Digital-Waterproof-DS3218MG-Control/dp/B076CNKQX4/)
 * [USB powered speaker](https://www.amazon.com/Bluetooth-Portable-Wireless-Speakers-Playtime/dp/B07PLFCP3W/)
 * A servo mounting bracket - [3D printed](https://www.thingiverse.com/thing:3995995) or [purchased](https://www.amazon.com/Bolsen-Servos-Bracket-Sensor-Compatible/dp/B07HQB95VY/)
-* A servo disc - [3D printed]() (preferred) or [purchased](https://www.amazon.com/outstanding-Silvery-Aluminum-Steering-Screws/dp/B0BDDZW1FG/)
+* A servo disc - [3D printed](https://github.com/viam-labs/tutorial-openai-integration/blob/main/servo_disc_large.stl) (preferred) or [purchased](https://www.amazon.com/outstanding-Silvery-Aluminum-Steering-Screws/dp/B0BDDZW1FG/)
 
-## Initial Setup
-
-### Rover setup
+## Rover setup
 
 This tutorial assumes that you have already set up your Viam Rover.
-If not, follow the Viam Rover [setup instructions](/try-viam/rover-resources/rover-tutorial/).
+If not, first follow the Viam Rover [setup instructions](/try-viam/rover-resources/rover-tutorial/).
+
+### Connect the servo
+
+We'll use a servo in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
+
+{{% alert title="Caution" color="caution" %}}
+Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
+{{% /alert %}}
+
+Power off your rover.
+Wire your servo to the Pi by attaching the black wire to ground, red wire to an available 5V pin, and yellow wire to pin 8.
+
+### Mount the servo to your rover
+
+Using the bracket you printed or purchased, attach the servo mount to the Viam rover so that the servo output spline is facing outward in the front of the rover(screws required, mounting holes should line up).
+Attach the servo to the bracket.
+
+<img src="../img/ai-integration/servo_mounted.jpg"   alt="Servo mounted on Viam rover." title="Servo mounted on Viam rover." width="300" />
+
+### Servo disc
+
+<img src="../img/ai-integration/3emotion.png"  style="float:right;margin-right:150px;margin-left: 20px;" alt="Emotion wheel." title="Emotion wheel." width="220" />
+
+If you are 3D printing the servo disc, [download the STL file](https://github.com/viam-labs/tutorial-openai-integration/blob/main/servo_disc_large.stl) from the tutorial repository and print it.
+Attach the servo disc to the servo by fitting it to the servo's output spline.
+
+Now, download print the [emoji wheel](https://github.com/viam-labs/tutorial-openai-integration/blob/main/3emotion.png) with a color or black and white printer.
+Cut the wheel out with scissors.
+Do not attach it to the servo wheel yet.
+
+### Speaker
+
+Connect your speaker to your Pi:
+
+* Connect the USB power cable to the speaker and any available USB port on the Pi.
+* Connect 3.5mm audio cable to the speaker and the audio jack on the Pi.
+
+Both cables come with the speaker in the [hardware list](#hardware-list), and can otherwise be easily acquired.
 
 ### Set up tutorial software
 
@@ -63,7 +99,7 @@ Therefore, this tutorial uses the [text-davinci-003](https://platform.openai.com
 When the ChatGPT model becomes available, it is expected that the only modification to this tutorial is to change the *model* specified in the [completion](https://platform.openai.com/docs/api-reference/completions) API call.
 {{% /alert %}}
 
-Choose a location on your Raspberry Pi and clone the tutorial code repository.
+Power on your Pi, choose a location on your Raspberry Pi and clone the tutorial code repository.
 If you have git installed on your Pi, this is as simple as running the following command in the selected directory:
 
 ``` sh
@@ -76,37 +112,9 @@ If you don't have git installed on your Pi, you'll need to first run:
 sudo apt install git
 ```
 
-### Hardware
+## Configuration
 
-#### Connect the servo
+Now that we've set up the rover by attaching the servo and making the tutorial software available on the Pi, we can configure the rover to:
 
-We'll use a servo in this project to indicate emotion, by rotating the servo to a position that show a happy, sad, or angry emoji.
-
-{{% alert title="Caution" color="caution" %}}
-Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
-{{% /alert %}}
-
-Power off your rover.
-Wire your servo to the Pi by attaching the black wire to ground, red wire to an available 5V pin, and yellow wire to pin 8.
-
-Configure the servo by going adding a [servo](/components/servo) component of model `pi` to your robot's configuration.
-
-#### Servo disc
-
-<img src="../img/ai-integration/3emotion.png"  style="float:right;margin-right:150px;margin-left: 20px;" alt="Emotion wheel." title="Emotion wheel." width="220" />
-
-If you are 3D printing the servo disc, [download the STL file](https://github.com/viam-labs/tutorial-openai-integration/blob/main/servo_disc_large.stl) from the tutorial repository and print it.
-Attach the servo disc to the servo by fitting it to the servo's output spline.
-
-Now, download print the [emoji wheel](https://github.com/viam-labs/tutorial-openai-integration/blob/main/3emotion.png) with a color or black and white printer.
-Cut the wheel out with scissors.
-Do not attach it to the servo wheel yet.
-
-#### Speaker
-
-Connect your speaker to your Pi:
-
-* Connect the USB power cable to the speaker and any available USB port on the Pi.
-* Connect 3.5mm audio cable to the speaker and the audio jack on the Pi.
-
-Both cables come with the speaker in the [hardware list](#hardware-list), and can otherwise be easily acquired.
+* Recognize and operate the servo
+* Make the ML classifier model available for use by the Viam vision service
