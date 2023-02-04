@@ -3,7 +3,7 @@ title: "Control a Robot Dog with a Custom Viam Base Component"
 linkTitle: "Custom Quadruped Base"
 weight: 55
 type: "docs"
-tags: ["sdk", "extending viam", "components", "base"]
+tags: ["sdk", "extending viam", "components", "base", "python"]
 description: "How to integrate a custom base component with the Viam Python SDK."
 # SMEs: James Otting, Eric Daniels
 # Author: Jessamy Taylor
