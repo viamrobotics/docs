@@ -14,7 +14,7 @@ An example configuration for a `gpio` motor:
 {{< tabs name="gpio-config">}}
 {{% tab name="Builder UI" %}}
 
-<img src="/components/img/motor/gpio-config-ui.png" alt="Screenshot of a gpio motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
+<img src="../../img/motor/gpio-config-ui.png" alt="Screenshot of a gpio motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -52,7 +52,7 @@ An example configuration for a `gpio` motor:
 {{% /tab %}}
 {{% tab name="Annotated JSON" %}}
 
-![motor-gpio-json](/components/img/motor/motor-gpio-json.png)
+![motor-gpio-json](../../img/motor/motor-gpio-json.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -114,7 +114,7 @@ Refer to your motor and motor driver data sheets for information on power requir
 
 Taking a 12V brushed DC motor controlled by a [DRV8256E Single Brushed DC Motor Driver Carrier](https://www.pololu.com/product/4038) wired to a Raspberry Pi as an example, the wiring diagram would look like this:
 
-![An example wiring diagram showing a Raspberry Pi, 12V power supply, DRV8256E motor driver, and 12V brushed DC motor. The logic side of the driver is connected to the Pi's ground and 3.3V pins. The driver pin for PWM goes to pin 32 on the Pi and the direction pin goes to pin 36 on the Pi. The motor side of the motor driver is connected to the ground and 12V terminals of a power supply and the OUT1 and OUT2 pins go to the two terminals of the motor.](/components/img/motor/motor-brushed-dc-wiring.png)
+![An example wiring diagram showing a Raspberry Pi, 12V power supply, DRV8256E motor driver, and 12V brushed DC motor. The logic side of the driver is connected to the Pi's ground and 3.3V pins. The driver pin for PWM goes to pin 32 on the Pi and the direction pin goes to pin 36 on the Pi. The motor side of the motor driver is connected to the ground and 12V terminals of a power supply and the OUT1 and OUT2 pins go to the two terminals of the motor.](../../img/motor/motor-brushed-dc-wiring.png)
 
 The signal wires in the diagram run from two GPIO pins on the Pi to the DIR and PWM pins on the motor driver.
 Refer to a [Raspberry Pi pinout schematic](https://pinout.xyz/) to locate generic GPIO pins and determine their pin numbers for configuration.
@@ -129,4 +129,4 @@ Brushless motors typically have three power connections (commonly referred to as
 The configuration file of a BLDC motor with Viam is the same as [that of a brushed motor](#gpio-config).
 Only the output side of the driver board is different, i.e., more wires connect the driver to the motor.
 
-![motor-brushless-dc-wiring](/components/img/motor/motor-brushless-dc-wiring.png)
+![motor-brushless-dc-wiring](../../img/motor/motor-brushless-dc-wiring.png)

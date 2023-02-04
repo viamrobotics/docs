@@ -16,7 +16,7 @@ Here’s an example of a basic stepper driver config:
 {{< tabs name="gpiostepper-config">}}
 {{% tab name="Builder UI" %}}
 
-<img src="/components/img/motor/gpiostepper-config-ui.png" alt="Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15, respectively." style="max-width:800px;width:100%" >
+<img src="../../img/motor/gpiostepper-config-ui.png" alt="Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15, respectively." style="max-width:800px;width:100%" >
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -49,7 +49,7 @@ Here’s an example of a basic stepper driver config:
 {{% /tab %}}
 {{% tab name="Annotated JSON" %}}
 
-![motor-gpiostepper-json](/components/img/motor/motor-gpiostepper-json.png)
+![motor-gpiostepper-json](../../img/motor/motor-gpiostepper-json.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -70,4 +70,4 @@ Name | Type | Description
 
 ## Wiring Example
 
-![motor-gpiostepper-wiring](/components/img/motor/motor-gpiostepper-wiring.png)
+![motor-gpiostepper-wiring](../../img/motor/motor-gpiostepper-wiring.png)

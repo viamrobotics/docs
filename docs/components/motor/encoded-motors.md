@@ -19,7 +19,7 @@ Here’s an example configuration:
 {{< tabs name="encoder-config">}}
 {{% tab name="Builder UI" %}}
 
-<img src="/components/img/motor/encoded-config-ui.png" alt="Screenshot of an encoded motor config in the Viam app UI." style="max-width:800px;width:100%" >
+<img src="../../img/motor/encoded-config-ui.png" alt="Screenshot of an encoded motor config in the Viam app UI." style="max-width:800px;width:100%" >
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -68,7 +68,7 @@ Here’s an example configuration:
 
 {{% tab name="Annotated JSON" %}}
 
-![motor-encoded-dc-json](/components/img/motor/motor-encoded-dc-json.png)
+![motor-encoded-dc-json](../../img/motor/motor-encoded-dc-json.png)
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -94,4 +94,4 @@ Name | Type | Description
 Here's an example of an encoded DC motor wired with [the MAX14870 Single Brushed DC Motor Driver Carrier](https://www.pololu.com/product/2961).
 This wiring example corresponds to the [example config above](#encoder-config).
 
-![motor-encoded-dc-wiring](/components/img/motor/motor-encoded-dc-wiring.png)
+![motor-encoded-dc-wiring](../../img/motor/motor-encoded-dc-wiring.png)

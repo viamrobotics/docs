@@ -20,7 +20,7 @@ Field | Description
 {{< tabs name="fake-config">}}
 {{% tab name="Builder UI" %}}
 
-<img src="/components/img/motor/fake-config-ui.png" alt="Screenshot of a gpio motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
+<img src="../../img/motor/fake-config-ui.png" alt="Screenshot of a gpio motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
