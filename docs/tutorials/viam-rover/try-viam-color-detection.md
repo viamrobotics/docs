@@ -39,7 +39,7 @@ This tutorial uses the hex color #7a4f5c (a reddish color).
 
 **Hex color #7a4f5c**: <img src="../../img/try-viam-color-detection/7a4f5c.png" alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color." >
 
-Copy the following configuration, into the attributes of your rover’s Vision Service:
+Copy the following configuration into the attributes of your rover’s Vision Service:
 
 ```json-viam
 {
