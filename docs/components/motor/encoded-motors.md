@@ -81,6 +81,8 @@ Name | Type | Description
 `encoder` | string | Should match name of the encoder you configure as an `encoder` component.
 `ticks_per_rotation` | string | Number of ticks in a full rotation of the encoder (and motor shaft).
 
+`max_rpm` does *not* apply to encoded `gpio` motors.
+
 #### Optional Attributes
 
 In addition to the optional attributes listed in the [non-encoded DC motor section](/components/motor/gpio/#optional-attributes), encoded motors have the following additional options:

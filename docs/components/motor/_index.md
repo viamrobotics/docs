@@ -18,7 +18,7 @@ The Viam *motor* component type natively supports the following models of motor:
 Model | Supported hardware <a name="model-table"></a>
 ---------- | ------------------
 [`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor)
-[`gpiostepper`](./gpio-stepper/) | [Stepper motor](https://en.wikipedia.org/wiki/Stepper_motor) driven by a basic stepper driver
+[`gpiostepper`](./gpiostepper/) | [Stepper motor](https://en.wikipedia.org/wiki/Stepper_motor) driven by a basic stepper driver
 [`TMC5072`](./tmc5072/) | Stepper motor driven by [the TMC5072 chip](https://www.trinamic.com/support/eval-kits/details/tmc5072-bob/)
 [`DMC4000`](./dmc4000/) | Stepper motor driven by a [DMC-40x0 series motion controller](https://www.galil.com/motion-controllers/multi-axis/dmc-40x0)
 [`fake`](./fake/) | Used to test code without hardware

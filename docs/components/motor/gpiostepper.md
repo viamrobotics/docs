@@ -54,7 +54,7 @@ Here’s an example of a basic stepper driver config:
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Required Attributes for Steppers
+### Required Attributes
 
 Name | Type | Description
 -------------- | ---- | ---------------
@@ -62,12 +62,12 @@ Name | Type | Description
 `pins` | object | A structure containing "step" and "dir" pin numbers; see example JSON above.
 `ticks_per_rotation` | integer | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common.
 
-#### Optional Attributes
+### Optional Attributes
 
 Name | Type | Description
 -------------- | ---- | ---------------
 `stepper_delay` | uint | Time in microseconds to remain high for each step. Default is 20.
 
-## Wiring Example
+### Wiring Example
 
 ![motor-gpiostepper-wiring](../../img/motor/motor-gpiostepper-wiring.png)

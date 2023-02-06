@@ -126,7 +126,7 @@ They typically require a PWM/DIR input or an A/B (In1/In2) and PWM input to set 
 The key difference between a brushed and brushless motor driver is on the motor output side.
 Brushless motors typically have three power connections (commonly referred to as A, B and C; or sometimes Phase 1, 2 and 3) and 3 sensor connections (commonly referred to as Hall A, Hall B, and Hall C) running between the motor and driver.
 
-The configuration file of a BLDC motor with Viam is the same as [that of a brushed motor](#gpio-config).
+The configuration file of a BLDC motor with Viam is the same as that of a brushed motor.
 Only the output side of the driver board is different, i.e., more wires connect the driver to the motor.
 
-![motor-brushless-dc-wiring](../../img/motor/motor-brushless-dc-wiring.png)
+![An example wiring diagram showing a Raspberry Pi, 12V power supply, RioRand 400W brushless DC motor controller, and 3 phase 12V brushless DC motor. The motor has three power wires (one for each phase) and five sensor wires (two to power the sensor and one for each of the three Hall effect sensors).](../../img/motor/motor-brushless-dc-wiring.png)
