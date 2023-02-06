@@ -152,7 +152,7 @@ This is how you configure a wheeled base:
 {{< /tab >}}
 {{< /tabs >}}
 
-**Required**
+### Required Attributes
 
 <table>
 <thead>
@@ -187,7 +187,7 @@ This is how you configure a wheeled base:
 </tbody>
 </table>
 
-**Optional**
+### Optional Attributes
 
 <table>
 <thead>
