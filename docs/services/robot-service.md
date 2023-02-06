@@ -1,6 +1,6 @@
 ---
 title: "Robot Service"
-linkTitle: "Robot Service"
+linkTitle: "Robot"
 description: "Explanation of the robot service, its configuration, and its functionality."
 type: "docs"
 weight: 10

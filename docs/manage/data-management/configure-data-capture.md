@@ -1,7 +1,7 @@
 ---
 title: "Configure Data Capture"
 linkTitle: "Configure Data Capture"
-weight: 20
+weight: 35
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 # SME: Aaron Casas
