@@ -22,9 +22,8 @@ You will need the following hardware, tools, and software to install `viam-serve
 1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
 2. A microSD card (32GB UHS-1 minimum recommended)
 3. A way to connect the microSD card to the computer (e.g., microSD slot or microSD reader)
-4. USB keyboard and mouse
-5. An internet-connected computer with computer display (HDMI or DP)
-6. 5V-2A Micro-USB power supply
+4. An internet-connected computer with computer display (HDMI or DP), keyboard, and mouse
+5. 5V-2A Micro-USB power supply
 
 ## Jetson Nano Setup Guide
 
