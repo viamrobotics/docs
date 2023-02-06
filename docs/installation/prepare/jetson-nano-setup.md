@@ -23,7 +23,7 @@ You will need the following hardware, tools, and software to install `viam-serve
 2. A microSD card (32GB UHS-1 minimum recommended)
 3. A way to connect the microSD card to the computer (e.g., microSD slot or microSD reader)
 4. An internet-connected computer with computer display (HDMI or DP), keyboard, and mouse
-5. 5V-2A Micro-USB power supply
+5. 5V-2A DC (recommended) or Micro-USB power supply
 
 ## Jetson Nano Setup Guide
 
