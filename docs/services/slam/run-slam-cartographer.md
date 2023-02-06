@@ -383,7 +383,7 @@ This tells the service to use only data found within the `data_dir` directory sp
         "data_rate_msec": 200,
         "delete_processed_data": false,
         "use_live_data": false,
-        "sensors": ["rplidar"]
+        "sensors": []
       },
       "model": "cartographer",
       "name": "run-slam-offline",
@@ -400,7 +400,7 @@ This tells the service to use only data found within the `data_dir` directory sp
 
 * Save the config.
 * Head over to the **CONTROL** tab and click on the drop-down menu of the service you created (example: `run-slam-offline`).
-* Change the **Refresh frequency** to your desired frequency, move the Rplidar device around slowly, and watch a map start to appear.
+* Refresh until the map appears, or change the **Refresh frequency** to your desired frequency.
 
 {{% alert title="Note" color="note" %}}
 It may take a couple of minutes for the first map to show in the UI.
