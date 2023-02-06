@@ -55,7 +55,7 @@ There are three important things to know about obstacles:
     This will ensure that obstacles that are temporarily attached to moving components do not cause collisions during the movement.
   * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (i.e., an arm frame will be solved for the pose of its end effector), geometries are interpreted as being “part of” their frame, rather than “at the end of” the frame.
     Thus, their poses are relative to the _origin_ of the specified frame.
-    A geometry given in the frame of the arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
+    A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
 * **Interaction spaces**: These are geometries which are effectively the inverse of obstacles- they specify where the inherent geometries of a kinematics chain _may_ exist, and disallow them from exiting that geometry.
 Interaction spaces should fully envelop the geometries of any movable component with geometries.
 If any movable geometry is outside the given interaction space at the start of the motion, the movement will fail as the constraint will have been violated.
@@ -359,7 +359,13 @@ This profile takes no parameters.
 extra = {"motion_profile": "free"}
 ```
 
-## Planning Algorithms
+## Planning Algorithm
+
+Viam implements two planning algorithms, both based in principle on <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">RRT</a>[^RRT].
+
+* RRT*-Connect
+
+RRT*-Connect is an asypmptotically optimal planner that samples the plannign space randomly 
 
 * CBiRRT
 
