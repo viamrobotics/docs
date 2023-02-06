@@ -33,7 +33,6 @@ Most robots with a gantry need at least the following hardware:
 ### Configuration
 
 Configuring this component on your robot with a gantry enables you to get and change the position of the linear rail axes.
-You can easily configure your component, as pictured below, on the [Viam App](https://app.viam.com/).
 
 #### One-Axis
 
@@ -42,7 +41,7 @@ This is how you configure a one-axis gantry:
 {{< tabs name="Example Gantry Config One-Axis" >}}
 {{< tab name="Config Builder" >}}
 
-<img src="../img/gantry/gantry-config-ui-oneaxis.png" alt="Picture of what an example configuration for a one-axis gantry component looks like in the Viam App config builder." width="800"/>
+<img src="../img/gantry/gantry-config-ui-oneaxis.png" alt="Picture of what an example configuration for a one-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
 {{% tab name="Raw JSON" %}}
@@ -51,19 +50,26 @@ This is how you configure a one-axis gantry:
 {
   "components": [
     {
-      "name": <your_oneaxis_gantry_name>,
+      "depends_on": [],
+      "name": <your_gantry_name>,
       "type": "gantry",
       "model": "oneaxis",
       "attributes": {
+        "board": <your_board_name>,
         "motor": <your_motor_name>,
+        "gantry_rpm": 500,
+        "limit_pins": [
+          <your_lim_1>,
+          <your_lim_2>
+        ],
+        "limit_pin_enabled_high": false,
         "length_mm": 800,
         "axis": {
+          "Z": 0,
           "X": 0,
-          "Y": 0,
-          "Z": 0
+          "Y": 0
         }
-      },
-      "depends_on": []
+      }
     }
   ]
 }
@@ -173,7 +179,7 @@ This is how you configure a multi-axis gantry:
 {{< tabs name="Example Gantry Config Multi-Axis" >}}
 {{< tab name="Config Builder" >}}
 
-<img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="TODO" width="800"/>
+<img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="Picture of what an example configuration for a one-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
 {{% tab name="Raw JSON" %}}
@@ -195,6 +201,157 @@ This is how you configure a multi-axis gantry:
       "depends_on": []
     }
   ]
+}
+```
+
+{{< /tab >}}
+{{% tab name="Full JSON Example" %}}
+
+```json-viam
+{
+    "components": [
+        {
+            "name": "local",
+            "type": "board",
+            "model": "pi"
+        },
+        {
+            "name": "xmotor",
+            "type": "motor",
+            "model": "gpiostepper",
+            "attributes": {
+                "board": "local",
+                "pins": {
+                    "dir": "dirx",
+                    "pwm": "pwmx",
+                    "step": "stepx"
+                },
+                "stepperDelay": 50,
+                "ticksPerRotation": 200
+            }
+        },
+        {
+            "name": "ymotor",
+            "type": "motor",
+            "model": "gpiostepper",
+            "attributes": {
+                "board": "local",
+                "pins": {
+                    "dir": "diry",
+                    "pwm": "pwmy",
+                    "step": "stepy"
+                },
+                "stepperDelay": 50,
+                "ticksPerRotation": 200
+            }
+        },
+        {
+            "name": "zmotor",
+            "type": "motor",
+            "model": "gpiostepper",
+            "attributes": {
+                "board": "local",
+                "pins": {
+                    "dir": "dirz",
+                    "pwm": "pwmz",
+                    "step": "stepz"
+                },
+                "stepperDelay": 50,
+                "ticksPerRotation": 200
+            }
+        },
+        {
+            "name": "xaxis",
+            "type": "gantry",
+            "model": "oneaxis",
+            "attributes": {
+                "length_mm": 1000,
+                "board": "local",
+                "limit_pin_enabled_high": false,
+                "limit_pins": [
+                    "xlim1",
+                    "xlim2"
+                ],
+                "motor": "xmotor",
+                "gantry_rpm": 500,
+                "axis": {
+                    "x": 1,
+                    "y": 0,
+                    "z": 0
+                }
+            }
+        },
+        {
+            "name": "yaxis",
+            "type": "gantry",
+            "model": "oneaxis",
+            "attributes": {
+                "length_mm": 1000,
+                "board": "local",
+                "limit_pin_enabled_high": false,
+                "limit_pins": [
+                    "ylim1",
+                    "ylim2"
+                ],
+                "motor": "ymotor",
+                "gantry_rpm": 500,
+                "axis": {
+                    "x": 0,
+                    "y": 1,
+                    "z": 0
+                }
+            }
+        },
+        {
+            "name": "zaxis",
+            "type": "gantry",
+            "model": "oneaxis",
+            "attributes": {
+                "length_mm": 1000,
+                "board": "local",
+                "limit_pin_enabled_high": false,
+                "limit_pins": [
+                    "zlim1",
+                    "zlim2"
+                ],
+                "motor": "zmotor",
+                "gantry_rpm": 500,
+                "axis": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 1
+                }
+            },
+            "frame": {
+                "parent": "world",
+                "orientation": {
+                    "type": "euler_angles",
+                    "value": {
+                        "roll": 0,
+                        "pitch": 40,
+                        "yaw": 0
+                    }
+                },
+                "translation": {
+                    "x": 0,
+                    "y": 3,
+                    "z": 0
+                }
+            }
+        },
+        {
+            "name": "test",
+            "type": "gantry",
+            "model": "multiaxis",
+            "attributes": {
+                "subaxes_list": [
+                    "xaxis",
+                    "yaxis",
+                    "zaxis"
+                ]
+            }
+        }
+    ]
 }
 ```
 
@@ -275,11 +432,11 @@ func main() {
   // Connect to your robot. 
   robot, err := client.New(
       context.Background(),
-      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE SECURITY TAB OF THE VIAM APP]",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE LOCATION'S PAGE IN THE VIAM APP]",
       })),
   )
 
@@ -597,6 +754,9 @@ if err != nil {
   logger.Fatalf("cannot get if gantry is moving: %v", err)
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Troubleshooting
 
