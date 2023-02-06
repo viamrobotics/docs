@@ -105,7 +105,8 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
 * Physically connect the Rplidar to your machine.
 * Go to your robot's page on the [Viam app](https://app.viam.com/).
 * In the **CONFIG** tab, select **Raw JSON** mode.
-* Copy the following configuration code for your Rplidar device. Paste it into the "Raw JSON":
+* Copy the following configuration code for your Rplidar device.
+  Paste it into the "Raw JSON":
 
   {{< tabs >}}
   {{% tab name="Linux" %}}
@@ -133,7 +134,7 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
   {{% /tab %}}
   {{< /tabs >}}
 
-<!-- json TAB MACOS: TODO 
+<!-- json TAB MACOS: TODO
 {
   "components": [
     {
@@ -178,6 +179,7 @@ Now that you've added your Rplidar device as a modular component of your robot, 
   "map_rate_sec": 60,
   "data_rate_msec": 200,
   "delete_processed_data": false,
+  "use_live_data": true,
   "sensors": ["rplidar"]
 }
 ```
@@ -199,6 +201,7 @@ In the **CONFIG** tab, select the **Raw JSON** mode, then copy/paste the followi
         "map_rate_sec": 60,
         "data_rate_msec": 200,
         "delete_processed_data": false,
+        "use_live_data": true,
         "sensors": ["rplidar"]
       },
       "model": "cartographer",
@@ -211,10 +214,12 @@ In the **CONFIG** tab, select the **Raw JSON** mode, then copy/paste the followi
 {{% /expand %}}
 </br>
 
-* Now, change the `"data_dir":` attribute on line 8. Edit `"/home/YOUR_USERNAME/cartographer_dir"` to match your home directory path on your machine, followed by `/cartographer_dir`.
+* Now, change the `"data_dir":` attribute on line 8.
+  Edit `"/home/YOUR_USERNAME/cartographer_dir"` to match your home directory path on your machine, followed by `/cartographer_dir`.
   * This tells the service to create a directory named `cartographer_dir` within your home directory, and to save all data and maps to that location.
-  * To find your machine's home directory path, run the `pwd` command in your terminal. Make sure to do this while your terminal is at the home directory level (denoted by `~`).
-  
+  * To find your machine's home directory path, run the `pwd` command in your terminal.
+    Make sure to do this while your terminal is at the home directory level (denoted by `~`).
+
 {{% alert title="Note" color="note" %}}
 If you are using a Raspberry Pi as your machine, you must `ssh` into your Pi to complete this step.
 
@@ -342,7 +347,7 @@ In offline mode SLAM uses an existing dataset to create a map.
 * If you don't already have a dataset in `data_dir/data` from running SLAM in live mode, download Viam's [lab dataset](https://storage.googleapis.com/viam-labs-datasets/viam-old-office-small-pcd.zip).
 Copy it to the machine running `viam-server` and unzip it.
 For example:
-  
+
 ```bash
 scp ~/Downloads/viam-old-office-small-pcd.zip YOUR_USERNAME@MACHINE.local:~/.
 unzip viam-old-office-small-pcd.zip
@@ -359,7 +364,8 @@ This tells the service to use only data found within the `data_dir` directory sp
 
 * Go to your robot's page on [the Viam app](https://app.viam.com/robots).
 * In the **CONFIG** tab, select **Raw JSON** mode.
-* Copy the following configuration code for your Cartographer service. Paste it into the "Raw JSON":
+* Copy the following configuration code for your Cartographer service.
+  Paste it into the "Raw JSON":
 
 ```json-viam
 {
@@ -389,7 +395,8 @@ This tells the service to use only data found within the `data_dir` directory sp
 
 * Now, change the `"data_dir":` attribute on line 8. Edit `"/home/YOUR_USERNAME/viam-old-office-small-pcd"` to match the path to your existing dataset on your machine.
   * This tells the service to read from the directory located at this path and to save all data and maps to that location.
-  * To find your machine's home directory path, run the `pwd` command in your terminal. Make sure to do this while your terminal is at the home directory level (denoted by `~`).
+  * To find your machine's home directory path, run the `pwd` command in your terminal.
+    Make sure to do this while your terminal is at the home directory level (denoted by `~`).
 
 * Save the config.
 * Head over to the **CONTROL** tab and click on the drop-down menu of the service you created (example: `run-slam-offline`).
@@ -403,7 +410,8 @@ It may take a couple of minutes for the first map to show in the UI.
 
 ### Issue: Maps JPEG not Appearing in UI
 
-When generating a larger map, it can take longer for Cartographer to return the `JPEG` map endpoint. Reducing the frequency the endpoint returns should allow the map to return.
+When generating a larger map, it can take longer for Cartographer to return the `JPEG` map endpoint.
+Reducing the frequency the endpoint returns should allow the map to return.
 
 ### Issue: Maps not Appearing as Expected
 
