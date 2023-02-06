@@ -40,7 +40,7 @@ Note that your base's wiring will vary depending on your choice of board, motors
 
 To configure a base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base. You can easily configure your component, as pictured below, on the [Viam App](https://app.viam.com/).
 
-Refer to the following example configuration for a wheeled base:
+This is how you configure a wheeled base:
 
 {{< tabs name="Example Base Config" >}}
 {{% tab name="Config Builder" %}}
