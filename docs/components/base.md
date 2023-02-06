@@ -38,7 +38,7 @@ Note that your base's wiring will vary depending on your choice of board, motors
 
 ## Configuration
 
-To configure a base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base. You can easily configure your component, as pictured below, on the [Viam App](https://app.viam.com/).
+To configure a base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
 
 This is how you configure a wheeled base:
 
@@ -152,12 +152,12 @@ This is how you configure a wheeled base:
 {{< /tab >}}
 {{< /tabs >}}
 
-### Required Attributes
+**Required**
 
 <table>
 <thead>
   <tr>
-    <th>Name</th>
+    <th>Attribute</th>
     <th>Type</th>
     <th>Description</th>
   </tr>
@@ -187,17 +187,32 @@ This is how you configure a wheeled base:
 </tbody>
 </table>
 
-### Optional Attributes
+**Optional**
 
-`spin_slip_factor` (float): Used in steering calculations to correct for slippage between the wheels and the floor.
-To be calibrated by the user.
+<table>
+<thead>
+  <tr>
+    <th>Attribute</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><code>spin_slip_factor</code></td>
+    <td>float</td>
+    <td>Used in steering calculations to correct for slippage between the wheels and the floor. To be calibrated by the user.</td>
+  </tr>
+
+</tbody>
+</table>
 
 ## API
 
 The base component supports the following methods:
 
-| Method Name                   | Golang                 | Python                              | Description                                                            |
-| ----------------------------- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------- |
+| Method Name | Golang | Python | Description |
+| ----------- | ------ | ------ | ----------- |
 [MoveStraight](#movestraight)  | [MoveStraight][go_base]  |  [move_straight][python_move_straight] | Move the base in a straight line across the given distance at the given velocity. |
 [Spin](#spin) |  [Spin][go_base] | [spin][python_spin] | Move the base to the given angle at the given angular velocity. |
 [SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the relative power (out of max power) for linear and angular propulsion of the base. |
@@ -211,14 +226,16 @@ The base component supports the following methods:
 [python_set_velocity]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_velocity
 [python_stop]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.stop
 
-### Control your base with Viam's Client SDK Libraries
+## Code Examples
+
+### Control your Base with Viam's Client SDK Libraries
 
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
 - [Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
 
-The following example assumes you have a base called "my_base" which is configured as a component of your robot.
+The following example assumes you have a wheeled base called "my_base" which is configured as a component of your robot.
 If your base has a different name, change the `name` in the example.
 
 {{< tabs >}}
