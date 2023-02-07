@@ -15,9 +15,9 @@ If you don’t have a Viam Rover yet, you can [buy one here](https://www.viam.co
 ## Prerequisites
 
 * A Raspberry Pi 4 with Raspberry Pi OS Lite (64-bit) and `viam-server` installed.
-    To install Raspberry Pi OS and `viam-server`, refer to the Raspberry Pi OS [installation guide](/installation/rpi-setup/).
+    To install Raspberry Pi OS and `viam-server`, refer to the Raspberry Pi OS [installation guide](/installation/prepare/rpi-setup/).
 * The Pi is able to connect to [the Viam app](https://app.viam.com).
-  To add your Pi to the Viam app, refer to [Adding your Pi on the Viam app](/installation/rpi-setup/).
+  To add your Pi to the Viam app, refer to [Adding your Pi on the Viam app](/installation/prepare/rpi-setup/).
 * An assembled Viam Rover with the Raspberry Pi.
   For assembly instructions, see [Unbox and Set Up your Viam Rover](../rover-tutorial)
 
@@ -35,20 +35,20 @@ Click `ADD` to add the fragment to your robot configuration.
 ![List of available fragments](../img/fragments/fragments_list.png)
 
 After you add the fragment, the config on the right side shows the robot's configuration with the new fragment.
-Click “Save Config” to save the new configuration.
+Click "Save Config" to save the new configuration.
 
 ![Fragment configuration](../img/fragments/fragment_configuration.png)
 
 The fragment adds the following components to your robot's JSON configuration:
 
 * [Board component](/components/board/), which is the Raspberry Pi.
-  * Within the board component attributes, digital interrupts: “re” to pin “37” and “le” to pin “35” and I2Cs: name “default_i2c_bus” and bus “1”.
+  * Within the board component attributes, digital interrupts: "re" to pin "37" and "le" to pin "35" and I2Cs: name "default_i2c_bus" and bus "1".
 * Right gpio [motor](/components/motor/).
-  * Within the motor attributes, board: “local”, encoder: “Renc”, ticks per rotation: "996”.
+  * Within the motor attributes, board: "local", encoder: "Renc", ticks per rotation: "996".
   * Within the component pin assignment, type: In1/In2, A/In1: "16 GPIO 23", B/In2: "18 GPIO 24", PWM: "22 GPIO 25".
   * Depends on local and Renc.
 * Left gpio [motor](/components/motor/).
-  * Within the motor attributes, board: “local”, encoder: “Lenc”, ticks per rotation: "996”.
+  * Within the motor attributes, board: "local", encoder: "Lenc", ticks per rotation: "996".
   * Within the component pin assignment, type: In1/In2, A/In1: "11 GPIO 17", B/In2: "13 GPIO 27", PWM: "15 GPIO 22".
   * Depends on local and Lenc.
 * A wheeled Viam [base](/components/base/) with attributes:

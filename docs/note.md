@@ -40,6 +40,7 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 {{% /tab %}}
 {{% tab name="Examples" %}}
+
 <div>
  <h3>What is Rendered?</h3>
  <p>It renders <i>vanilla</i> HTML and markdown, Alerts, and images. For example, these two images:</p>
@@ -51,6 +52,13 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 </div>
 <br>
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## You can use `code` in headers
+
+[You can use `code` in links](www.viam.com)
 
 ### Syntax Highlighting with Backticks
 
@@ -107,9 +115,6 @@ This is **some markdown.**
 It can even contain shortcodes.
 {{< /alert >}}
 
-{{% /tab %}}
-{{< /tabs >}}
-
 ## Using Expanders
 
 Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it.
@@ -136,7 +141,7 @@ Within the expander, you can still use most other shortcodes and syntax highligh
 **Prism syntax highlighting works in expanders, as do most other shortcodes.**
 
 ``` python
-motion_svc = MotionServiceClient.from_robot(robot, "NAME”)
+motion_svc = MotionServiceClient.from_robot(robot, "NAME")
 arm = Arm.from_robot(robot=robot, name='xArm6')
 pos = await arm.get_end_position()
 
@@ -231,7 +236,7 @@ The figure shortcode enhances the existing figure and figurecaption html tags. F
 
 {{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
 
-This shortcode places the caption (i.e., the “title”) above the table. The **title** is set in 12pt italic with a green underline.
+This shortcode places the caption (i.e., the "title") above the table. The **title** is set in 12pt italic with a green underline.
 
 Figure styles the Attribution text as body text.
 

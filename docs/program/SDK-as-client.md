@@ -7,7 +7,7 @@ description: "An introduction to Viam's SDKs and how to use them to access and c
 tags: ["client", "sdk"]
 ---
 
-Viam offers SDKs in popular languages which wrap the viam-server [gRPC](https://grpc.io/) APIs and streamline connection, authentication, and encryption against a server.
+Viam offers SDKs in popular languages which wrap the `viam-server` [gRPC](https://grpc.io/) APIs and streamline connection, authentication, and encryption against a server.
 Using the SDK, you will be able to quickly write code to control and automate your robot(s).
 
 Viam-server exposes gRPC [APIs for robot controls](https://github.com/viamrobotics/api).
@@ -190,7 +190,7 @@ motor2 = Motor.from_robot(robot, "motor2")
 # power motor1 at 100% for 3 seconds
 await motor1.set_power(1)
 await asyncio.sleep(3)
-await motor1.stop()   
+await motor1.stop()
 
 # Run motor2 at 1000 rpm for 200 rotations
 await motor2.go_for(1000, 200)
@@ -263,7 +263,7 @@ Assumption: A camera called "camera0" and a vision service called "detector_1" a
 
 ```python
 from viam.services.vision import VisionServiceClient
-                                                                   
+
 robot = await connect()
 vision = VisionServiceClient.from_robot(robot)
 detections = await vision.get_detections_from_camera("camera_0", "detector_1")

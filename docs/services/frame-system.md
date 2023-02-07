@@ -13,7 +13,7 @@ The Frame System is especially important as it is the basis for many of Viam's o
 In this page, we will explain:
 
 * How to configure a robot's components to make use of the frame system
-* How the viam server builds the frame system from the configuration information
+* How `viam-server` builds the frame system from the configuration information
 * How to access and use reference frame information from the frame system service
 * How other component and service functions implicitly utilize the frame system
 
@@ -61,12 +61,10 @@ If you are using a component driver provided by Viam, the **Model JSON** should 
 
 Once the configuration is completed and the server is started, the robot builds a tree of reference frames with the world as the root node.
 
-A <a href="https://en.wikipedia.org/wiki/Topological_sorting" target="_blank">topologically-sorted list</a>[^tsl] of the generated reference frames is printed by the server and can be seen in the server logs.
+A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs.
 Viam regenerates this tree in the process of [reconfiguration](/services/fleet-management/#configurationlogging):
 
 ![an example of a logged frame system](../img/frame_sys_log_example.png)
-
-[^tsl]: Topological Sorting (wiki): <a href="https://en.wikipedia.org/wiki/Topological_sorting" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Topological_sorting</a>
 
 Viam builds this tree by looking at the frame portion of each component in the robot's configuration (including those defined on any remotes) and creating two reference frames.
 
@@ -120,7 +118,7 @@ We supply this frame information when configuring the arm component, making sure
             "y": 0,
             "z": 1,
             "th": 0
-          }        
+          }
         }
       }
     }
@@ -130,7 +128,7 @@ We supply this frame information when configuring the arm component, making sure
 
 ### Example 2: A robot arm attached to a gantry (a component fixed to the actuator of another component)
 
-Here, the gantry origin is coincident with the world origin (0,0,0).  
+Here, the gantry origin is coincident with the world origin (0,0,0).
 Note: this is the default translation, it is optional in the JSON configuration (we are including it for illustrative purposes).
 
 After configuring the gantry frame, we can configure the arm.  The base of the arm mounted to the gantry 100mm above that origin, so we specify the arm's parent as the name of our gantry and offset Z by 100.
@@ -234,7 +232,7 @@ As explained in the [Model Configuration](#model-configuration) section, some co
 
 When writing a driver for a particular piece of hardware that implements one of these components, you must create its accompanying **Model JSON** file.
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 There is currently (15 Sept 2022) no user interface in the Viam app (<a href="https://app.viam.com">app.viam.com</a>) by which to create these files.
 {{% /alert %}}
 
@@ -244,19 +242,14 @@ This means that a user will fork our [repository](https://github.com/viamrobotic
 
 We currently support two methods of supplying reference frame parameters for a kinematic chain:
 
-1. <a href="https://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html" target="_blank">Spatial Vector Algebra</a>[^sva] (SVA) - supplying reference frame information for each link and each joint.
-2. <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters" target="_blank">Denavit-Hartenberg</a>[^dh] (DH) parameters.
-
-[^sva]: Spatial Vector Algebra (SVA):  <a href="https://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html" target="_blank">ht<span></span>tps://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html</a>
-
-[^dh]: Denavit-Hartenberg (DH): <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters</a>
+1. [Spatial Vector Algebra (SVA)](https://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html) - supplying reference frame information for each link and each joint.
+2. [Denavit-Hartenberg (DH)](https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters) parameters.
 
 Of the two methods, Viam prefers Spacial Vector Algebra over Denavit-Hartenberg.
 
 Viam wants roboticists to be able to specify link frames arbitrarily, which DH parameters are unable to guarantee. We also want roboticists to make their own (messy) robots; accurate identification of DH parameters for a mass-produced robot can be exceedingly difficult. Furthermore, incorrect SVA parameters are much easier to troubleshoot than incorrect DH parameters.
 
-Below are JSON examples for each parameter type used by our Universal Robots[^ur] arms driver:
-[^ur]: Universal Robots: <a href="https://www.universal-robots.com/" target="_blank">ht<span></span>tps://www.universal-robots.com/</a>
+Below are JSON examples for each parameter type used by our [Universal Robots](https://www.universal-robots.com/) arms driver:
 
 #### Example: kinematic_param_type=SVA
 
@@ -357,7 +350,7 @@ Below are JSON examples for each parameter type used by our Universal Robots[^ur
                 "x": 0,
                 "y": 0,
                 "z": -99.7
-            },            
+            },
             "geometry": {
                 "x": 80,
                 "y": 150,

@@ -6,29 +6,30 @@ type: "docs"
 description: "Instructions for configuring a SCUTTLE Robot on the Viam platform."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 ---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LAMxYci242E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Requirements
 
-* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the viam-server installed.
+* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the `viam-server` installed.
 
 Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os), if necessary.
 
-* <a href="https://www.scuttlerobot.org/shop/" target="_blank">A SCUTTLE Robot</a>[^asr]
+* [A SCUTTLE Robot](https://www.scuttlerobot.org/shop/)
 * A USB camera (webcam)
-
-[^asr]: SCUTTLE Robot: <a href="https://www.scuttlerobot.org/shop/" target="_blank">ht<span></span>tps://www.scuttlerobot.org/shop/</a>
 
 ## Start configuring your robot
 
-<ol>
-<li class="spacing">Go to the Viam app at <a href="https://app.viam.com" target="_blank">https://app.viam.com</a>.</li>
-<li class="spacing">If you already created your robot in the app, navigate to its <strong>CONFIG</strong> tab and skip to <a href="./#configuring-the-board">Configuring the board</a>.</li>
-<li class="spacing">Create an <strong>Organization</strong>.
-If you already have an Organization, then this step is optional. If you need help with organizations and locations, see our <a href="/program/app-usage/">guide to using the Viam app</a>.</li>
-<li class="spacing">Create a <strong>Location</strong>.
-If you already have a Location, then this step is optional.</li>
-<li class="spacing">Create a <strong>robot</strong> and navigate to its <strong>CONFIG</strong> tab.
-We will stay in <strong>Builder</strong> mode for this tutorial (as opposed to <strong>Raw JSON</strong>).</li>
-<img src="../../img/scuttlebot/createcomponent.png" alt="A screenshot of the Viam app UI showing the CONFIG tab of a robot."></ol>
+1. Go to [the Viam app](https://app.viam.com).
+2. If you already created your robot in the app, navigate to its **CONFIG** tab and skip to [Configuring the board](#configuring-the-board).
+3. Create an **Organization**.
+   If you already have an Organization, then this step is optional.
+   If you need help with organizations and locations, see our [guide to using the Viam app](/program/app-usage/).
+4. Create a **Location**.
+   If you already have a Location, then this step is optional.
+5. Create a **robot** and navigate to its **CONFIG** tab.
+   We will stay in **Builder** mode for this tutorial (as opposed to **Raw JSON**).
+   ![A screenshot of the Viam app UI showing the CONFIG tab of a robot.](../../img/scuttlebot/createcomponent.png)
 
 {{% alert title="Note" color="note" %}}
 When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
@@ -36,17 +37,17 @@ When naming components, remember to use consistent letter casing to avoid proble
 
 ## Configuring the board
 
-Add your first component, the <a href="/components/board/">board</a> (in this case the Raspberry Pi).</li>
-<ol>
-<li class="spacing">Enter a name for your board in the <strong>Name</strong> field.
-In this tutorial, we've named the board "local."
-As long as you're consistent, you can name the board whatever you want.</li>
-<li class="spacing">Select the component <strong>Type</strong>, "board."</li>
-<li class="spacing">Select "pi" from the <strong>Model</strong> drop-down.</li>
-<li class="spacing">Click <strong>Create Component</strong> and the board component panel will expand.
-We don't need to worry about any other attributes for this component.</li>
-<img src="../../img/scuttlebot/board-empty-json.png" alt="Screenshot of the component configuration panel for a board component.
-The name (local), type (board) and model (pi) are shown at the top of the panel. No other attributes are configured."></ol>
+Add your first component, the [board](/components/board/) (in this case the Raspberry Pi).
+
+1. Enter a name for your board in the **Name** field.
+   In this tutorial, we've named the board "local."
+   As long as you're consistent, you can name the board whatever you want.
+2. Select the component **Type**, "board."
+3. Select "pi" from the **Model** drop-down.
+4. Click **Create Component** and the board component panel will expand.
+
+We don't need to worry about any other attributes for this component.
+![Screenshot of the component configuration panel for a board component. The name (local), type (board) and model (pi) are shown at the top of the panel. No other attributes are configured.](../../img/scuttlebot/board-empty-json.png)
 
 ## Configuring the motors
 
@@ -54,22 +55,19 @@ The name (local), type (board) and model (pi) are shown at the top of the panel.
 
 The next step is to add a motor and make it spin a wheel.
 
-<ol>
-<li class="spacing">Begin by adding the right motor, naming the component "right".</li>
-<li class="spacing">Select "motor" from the <strong>Type</strong> drop-down.</li>
-<li class="spacing">Select "gpio" from the <strong>Model</strong> drop-down.</li>
-<li class="spacing">Click <strong>Create Component</strong>, which will generate the motor component panel.</li>
-<li class="spacing">Then select <code>local</code> from the <strong>Board</strong> drop-down (since the motor is wired to the Raspberry Pi named "local").</li>
-<li class="spacing">Set <strong>Max RPM</strong> to <code>100</code>.
+1. Begin by adding the right motor, naming the component "right".
+2. Select "motor" from the **Type** drop-down.
+3. Select "gpio" from the **Model** drop-down.
+4. Click **Create Component**, which will generate the motor component panel.
+5. Then select `local` from the **Board** drop-down (since the motor is wired to the Raspberry Pi named "local").
+6. Set **Max RPM** to `100`.
+7. Next, you'll need to describe how the motor is wired to the Pi:
+   1. Switch the Component Pin Assignment Type to **In1/In2**.
+   2. Set **A/In1** to `16`.
+   3. Set **B/In2** to `15`.
+   4. Leave the `pwm` (pulse-width modulation) pin blank, because this specific motor driver’s configuration does not require a separate PWM pin.
 
-<li class="spacing">Next, you'll need to describe how the motor is wired to the Pi:</li>
-<ol type="a">
-  <li class="spacing">Switch the Component Pin Assignment Type to <strong>In1/In2</strong>.</li>
-  <li class="spacing">Set <strong>A/In1</strong> to <code>16</code>.</li>
-  <li class="spacing">Set <strong>B/In2</strong> to <code>15</code>.</li>
-  <li class="spacing">Leave the <code>pwm</code> (pulse-width modulation) pin blank, because this specific motor driver’s configuration does not require a separate PWM pin.</li>
-</ol></ol>
-<img src="../../img/scuttlebot/pi-rhwheel.png" alt="Screenshot of the motor config panel with the attributes set as described above.">
+![Screenshot of the motor config panel with the attributes set as described above.](../../img/scuttlebot/pi-rhwheel.png)
 <br><br>
 
 {{% expand "Click to view the raw JSON for the right motor" %}}
@@ -96,7 +94,7 @@ The next step is to add a motor and make it spin a wheel.
 {{% /expand %}}
 
 {{% alert title="Note" color="note" %}}
-If your wheel turns in reverse when it should turn forward, add the <code>dir_flip</code> attribute (found by clicking <strong>SHOW OPTIONAL</strong>) and set it to "true."
+If your wheel turns in reverse when it should turn forward, add the `dir_flip` attribute (found by clicking **SHOW OPTIONAL**) and set it to "true."
 {{% /alert %}}
 
 ### Testing the motor configuration
@@ -107,7 +105,7 @@ Save the config by clicking **SAVE CONFIG** at the bottom of the page, then clic
 Here you'll see a panel for the right `motor`.
 You'll use this panel to set the motor's `power` level.
 
-<img src="../../img/scuttlebot/pi-moverhmotor.png" alt="Power level adjustment">
+![Power level adjustment](../../img/scuttlebot/pi-moverhmotor.png)
 
 Be careful when activating your robot!
 Start with the power level set to 10% and increase it incrementally until the wheel rotates at a reasonable speed, clicking **Run** at each increment.
@@ -121,22 +119,18 @@ At this point, the right-side wheel should be working.
 ### Adding the left motor
 
 Now, you're ready to add the left-side motor.
-This will be very similar to adding the right motor.
+This will be similar to adding the right motor.
 
-<ol>
-<li class="spacing">Name the component "left".</li>
-<li class="spacing">Select "motor" from the <strong>Type</strong> drop-down.</li>
-<li class="spacing">Select "gpio" from the <strong>Model</strong> drop-down.</li>
-<li class="spacing">Click <strong>Create Component</strong>.</li>
-<li class="spacing">Select <code>local</code> from the <strong>Board</strong> drop-down.</li>
-<li class="spacing">Set the <strong>Max RPM</strong> attribute to <code>100</code>.
-<li class="spacing">Configure the motor's pins:</li>
-<ol type="a">
-<li class="spacing">Switch the Component Pin Assignment Type to <strong>In1/In2</strong>.</li>
-  <li class="spacing">Set <strong>A/In1</strong> to <code>12</code>.</li>
-  <li class="spacing">Set <strong>B/In2</strong> to <code>11</code>.</li>
-</ol>
-</ol>
+1. Name the component "left".
+2. Select "motor" from the **Type** drop-down.
+3. Select "gpio" from the **Model** drop-down.
+4. Click **Create Component**.
+5. Select `local` from the **Board** drop-down.
+6. Set the **Max RPM** attribute to `100`.
+7. Configure the motor's pins:
+   1. Switch the Component Pin Assignment Type to **In1/In2**.
+   2. Set **A/In1** to `12`.
+   3. Set **B/In2** to `11`.
 
 {{% expand "Click to view the raw JSON for the left motor" %}}
 
@@ -177,15 +171,15 @@ Configuring a base component will give you a nice UI for moving the rover around
 From the **CONFIG** tab:
 
 1. Give your base a name.
-1. Enter "base" in **Type**.
-1. Enter "wheeled" in **Model**.
-1. In the **Right Motors** drop-down select "right."
-1. In the **Left Motors** drop-down select "left."
-1. Enter "400" in <code>width_mm</code> (measured between the midpoints of the wheels).
-1. Enter "250" in <code>wheel_circumference_mm</code>.
+2. Enter "base" in **Type**.
+3. Enter "wheeled" in **Model**.
+4. In the **Right Motors** drop-down select "right."
+5. In the **Left Motors** drop-down select "left."
+6. Enter "400" in `width_mm` (measured between the midpoints of the wheels).
+7. Enter "250" in `wheel_circumference_mm`.
 
-    The <code>left</code> and <code>right</code> attributes represent the motors corresponding to the left and right sides of the rover.
-    Since we named the motors "left" and "right", you can simply add “left” and “right” between the brackets for your set of motors, respectively.
+    The `left` and `right` attributes represent the motors corresponding to the left and right sides of the rover.
+    Since we named the motors "left" and "right", you can simply add "left" and "right" between the brackets for your set of motors, respectively.
 
 The attributes of your base component's config should look something like this:
 
@@ -204,7 +198,7 @@ Use **W** and **S** to go forward and back, and **A** and **D** to arc and spin.
 
 <img src="../../img/scuttlebot/pi-kybrd-control.png" width="300px" alt="WASD controls">
 
-If you click the **Discrete** tab, then you'll see different movement modes such as <code>Straight</code> and <code>Spin</code>; and different movement types such as <code>Continuous</code> and <code>Discrete</code> and directions such as <code>Forwards</code> and <code>Backwards</code>.
+If you click the **Discrete** tab, then you'll see different movement modes such as `Straight` and `Spin`; and different movement types such as `Continuous` and `Discrete` and directions such as `Forwards` and `Backwards`.
 
 <img src="../../img/scuttlebot/pi-discrete.png" alt="Discrete controls"><br>
 
@@ -228,7 +222,7 @@ Finally, we'll add a camera to your SCUTTLE Robot.
 Now, you'll see the config panel for the camera component:
 <img src="../../img/scuttlebot/pi-cam-control.png" alt="Camera component config panel" >
 
-On the camera config panel, set the <code>video_path</code>.
+On the camera config panel, set the `video_path`.
 This is often "video0," but please see our [camera configuration tutorial](/components/camera/configure-a-camera/#connect-and-configure-a-webcam) for more information on choosing the correct video path.
 
 Once you save the config, you'll be able to see your camera's stream in the **CONTROL** tab.

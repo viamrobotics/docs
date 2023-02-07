@@ -47,11 +47,11 @@ For the component **Type**, select **arm/motor**.
 Then you can name them whatever you like (You will need to reference these names later once we connect to your mock robot with the Python SDK).
 For each **Model**, select **fake**, then click **new component**.
 
-### How to install viam-server on your computer
+### How to install `viam-server` on your computer
 
-Before you proceed with controlling your mock robot, you are going to need to install viam-server on your development machine.
+Before you proceed with controlling your mock robot, you are going to need to install `viam-server` on your development machine.
 
-Follow the steps outlined on the **SETUP** tab of the Viam app in order to install viam-server on your local computer.
+Follow the steps outlined on the **SETUP** tab of the Viam app in order to install `viam-server` on your local computer.
 
 ## Controlling your mock robot using the Viam app
 
@@ -82,7 +82,7 @@ Refer to the appropriate SDK documentation for SDK installation instructions.
 {{% /alert %}}
 
 {{% alert title="Tip" color="tip" %}}
-If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
 There, you will find a friendly developer community of people learning how to make robots using Viam.
 {{% /alert %}}
 
@@ -98,7 +98,7 @@ Sharing this information compromises your system security by allowing unauthoriz
 {{% /alert %}}
 
 You can now run the code.
-Doing so will verifies that the Viam SDK is properly installed, that the viam-server instance on your robot is alive, and that the computer running the program is able to connect to that instance.
+Doing so will verifies that the Viam SDK is properly installed, that the `viam-server` instance on your robot is alive, and that the computer running the program is able to connect to that instance.
 
 You can run your code by typing the following into the terminal:
 
@@ -316,9 +316,9 @@ From the **CODE SAMPLE** tab of your sub-part:
 
 <img src="../img/build-a-mock-robot/image8.png" alt="Screenshot from the Viam App showing the CONFIG > REMOTES with the sub-part's remote config file pasted in." width="80%"><br>
 
-### How to start a new instance of viam-server for your mock sub-part
+### How to start a new instance of `viam-server` for your mock sub-part
 
-Since every part needs to run an instance of viam-server, you will need to bind the sub-part to a new port so we can run two servers on your machine at the same time.
+Since every part needs to run an instance of `viam-server`, you will need to bind the sub-part to a new port so we can run two servers on your machine at the same time.
 We are using port `8081`, but you can use any open port you want.
 
 You can do this by going to **CONFIG** and then going to the **NETWORK** tab.
@@ -332,20 +332,20 @@ Here, you will paste the following:
 
 Be sure to save before continuing.
 
-### How to run a second instance of viam-server for your sub-part
+### How to run a second instance of `viam-server` for your sub-part
 
 In the upper right corner of the **SETUP** tab, click **COPY VIAM-SERVER CONFIG**.
 
 <img src="../img/build-a-mock-robot/image9.png" alt="Screenshot from the Viam app showing the 'Copy Viam-Server Config' button highlighted by a red box."><br>
 
 On your local machine, create a new file called <file>viam-sub-part.json</file>, then paste the contents of your server config into that file and save.
-From the terminal, navigate to the directory where you saved the config file, and run this command to create a new instance of viam-server using this configuration.
+From the terminal, navigate to the directory where you saved the config file, and run this command to create a new instance of `viam-server` using this configuration.
 
 ```bash
 viam-server -config viam-sub-part.json
 ```
 
-If you have two instances of viam-server running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main robots **CONTROL** tab.
+If you have two instances of `viam-server` running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main robots **CONTROL** tab.
 
 ![Screenshot of the Viam app's Control tab for the main part that lists the main arm, and the sub motor part.](../img/build-a-mock-robot/image6.png)
 
@@ -490,4 +490,4 @@ In this tutorial, we showed you how to set up a mock robot with a sub-part so th
 
 If you're ready to get started with building robots with real hardware components, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](/tutorials/).
 
-If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](http://viamrobotics.slack.com).
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure that you head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).

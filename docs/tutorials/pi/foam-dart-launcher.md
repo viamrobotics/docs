@@ -32,23 +32,15 @@ You can find more information on configuring different motors in the [Motor Comp
 
 ### Hardware and software requirements
 
-* [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT)[^rpi], with viam-server installed per [our Raspberry Pi setup guide](/installation/prepare/).
-* [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)[^wrvr]
-* [A foam dart launcher](https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8)[^ng]
-* [A USB camera (webcam)](https://www.amazon.com/gp/product/B0972KK7BC/)[^cam] (optional, to see where you are going and aiming)
-* [A solenoid](https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/)[^sol]
-* [A relay](https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/)[^relay]
-* [A dual motor controller](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/)[^dmc].
+* [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per [our Raspberry Pi setup guide](/installation/prepare/).
+* [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)
+* [A foam dart launcher](https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8)
+* [A USB camera (webcam)](https://www.amazon.com/gp/product/B0972KK7BC/) (optional, to see where you are going and aiming)
+* [A solenoid](https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/)
+* [A relay](https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/)
+* [A dual motor controller](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/)
 If you use a different motor driver, refer to the manufacturer’s data sheet and our [motor component topic](/components/motor) to learn how to configure the pins.
 * Jumper wires (breadboard wires)
-
-[^rpi]: A Raspberry Pi 4 microSD card: <a href="https://a.co/d/bxEdcAT/">ht<span></span>tps://a.co/d/bxEdcAT/
-[^wrvr]: A wheeled rover: <a href="https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/" target="_blank">ht<span></span>tps://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/</a>
-[^ng]: Foam dart launcher: <a href="https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8/" target="_blank">ht<span></span>tps://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8/</a>
-[^cam]: Webcam: <a href="https://www.amazon.com/gp/product/B0972KK7BC/" target="_blank">ht<span></span>tps://www.amazon.com/gp/product/B0972KK7BC/</a>
-[^sol]: Solenoid: <a href="https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/" target="_blank">ht<span></span>tps://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/</a>
-[^relay]: Relay: <a href="https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/" target="_blank">ht<span></span>tps://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/</a>
-[^dmc]: Dual H-bridge Motor Controller: <a href="https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/" target="_blank">ht<span></span>tps://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/</a>
 
 ### Tools and Consumables
 
@@ -185,11 +177,11 @@ After clicking **Create Component** you’ll see the **Component Pin Assignment*
 Select **In1/In2** since that is compatible with the input type our motor controller expects.
 In the **A/In1** and **B/In2** drop-downs, choose `11 GPIO 17` and `13 GPIO 27`, respectively, for the left motor, and `16 GPIO 23` and `18 GPIO 24`, respectively, for the right motor.
 
-Select the name of the board the motor controller is wired to (“board”) from the **Board** drop-down.
+Select the name of the board the motor controller is wired to ("board") from the **Board** drop-down.
 
 <table>
 <tr><td style="background:white; border-right: 1px solid black; padding-right: 25px">
-{{< figure src="../../img/foam-dart-launcher/left-motor.png"  alt="Motor Component Attribute Pane (left motor)." title="Left Motor Component Configuration Pane" width="400">}}  
+{{< figure src="../../img/foam-dart-launcher/left-motor.png"  alt="Motor Component Attribute Pane (left motor)." title="Left Motor Component Configuration Pane" width="400">}}
 </td><td style="background:white;">
 {{< figure src="../../img/foam-dart-launcher/right-motor.png"  alt="Motor Component Attribute Pane (right motor)." title="Right Motor Component Configuration Pane" width="400">}}
 </td></tr></table>
@@ -280,5 +272,5 @@ If you are looking for projects that would be a great next step in your journey 
 
 * [Tutorial List](/tutorials)
 
-If you have any issues getting Viam set up or get stuck, let us know on the [Viam Community Slack](http://viamrobotics.slack.com) and we'll be happy to help you get up and running.
+If you have any issues getting Viam set up or get stuck, let us know on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we'll be happy to help you get up and running.
 The Viam Community Slack is also a great place to connect with other developers learning how to build robots.

@@ -5,7 +5,7 @@ weight: 50
 type: "docs"
 description: "Explanation of encoder configuration and usage in Viam."
 tags: ["encoder", "components"]
-icon: "img/components/wheel.png"
+icon: "img/components/encoder.png"
 # SME: Rand
 ---
 An encoder is a device that is used to sense angular position, direction and/or speed of rotation.
@@ -20,11 +20,9 @@ An encoder could also be positioned on a passive joint or other rotational objec
 
 ## Mechanism
 
-Viam supports <a href="https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs" target="_blank">quadrature encoders</a>[^qe], which output two phases that can be used together to detect how far something has turned and in which direction.
+Viam supports [quadrature encoders](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs), which output two phases that can be used together to detect how far something has turned and in which direction.
 Each phase output goes to a different pin on the board.
-Viam also supports single pin “pulse output” encoders which give relative position but not direction.
-
-[^qe]:quadrature encoders: <a href="https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs</a>
+Viam also supports single pin "pulse output" encoders which give relative position but not direction.
 
 In either case position can only be determined relative to the starting position; these encoders are incremental and do not indicate absolute position.
 Absolute encoders are another type of hardware that is not natively supported in Viam as of August 19th, 2022.

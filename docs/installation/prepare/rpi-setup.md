@@ -21,15 +21,14 @@ This tutorial requires the following hardware:
 
 {{% alert title="Note" color="note" %}}
 
-If you already have a 64-bit Linux distrubution installed on your Pi, you can skip ahead to [installing viam-server](/installation/install/linux-install/).
-To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running viam-server):
+If you already have a 64-bit Linux distribution installed on your Pi, you can skip ahead to [installing `viam-server`](/installation/install/linux-install/).
+To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running viam-server), `ssh` into your Pi and then run `lscpu`.
 
-`ssh` into your Pi and then run `lscpu`.
 Example output:
 
-![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspbery Pi. A red box highlights the command and the top of the output which reads "Architecture: aarch64."](/installation/img/rpi-setup/lscpu-output.png)
+![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads "Architecture: aarch64."](/installation/img/rpi-setup/lscpu-output.png)
 
-If the value of “Architecture: _'xxxxxx'_” ends in "64", you can skip ahead to [installing viam-server](/installation/install/linux-install/).
+If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [installing `viam-server`](/installation/install/linux-install/).
 
 {{% /alert %}}
 
@@ -52,7 +51,7 @@ You should be greeted with a window that looks like:
 ![Raspberry Pi Imager launcher window showing a "Choose OS" and "Choose Storage" buttons.](/installation/img/rpi-setup/imager-launch-screen.png)
 
 Select `CHOOSE OS`.
-Since you need a 64-bit version of Linux, you will need to select it from the `Rapsberry Pi OS (other)` menu.
+Since you need a 64-bit version of Linux, you will need to select it from the `Raspberry Pi OS (other)` menu.
 
 ![Raspberry Pi Imager window showing "Raspberry Pi OS (Other) is selected.](/installation/img/rpi-setup/select-other-custom-os.png)
 
@@ -79,9 +78,7 @@ Using SSH Keys for authentication is a great way of securing your Raspberry Pi a
 If you select `Allow public-key authentication only`, and the section `set authorized_ keys for 'pi'` is pre-populated, that means you do have an existing public SSH key that is ready to use.
 In that case, you do not have to change this section.
 
-If this section is empty, you can either generate a new SSH key using <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank">these instructions</a>[^sshkey], or you can use password authentication instead.
-
-[^sshkey]:SSH Key Generation: <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank">ht<span></span>tps://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent</a>
+If this section is empty, you can either generate a new SSH key using [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead.
 
 ![Raspberry Pi Imager window showing "Set Hostname" and "Enable SSH" both selected.](/installation/img/rpi-setup/imager-set-ssh.png)
 
@@ -106,7 +103,7 @@ In the past, malware infected thousands of Raspberry Pi devices that were using 
 Source: <a href="https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/" target="_blank">ht<span></span>tps://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/</a>
 {{< /alert >}}
 
-Lastly, you should connect your Pi to Wi-Fi, so that you can run viam-server wirelessly.
+Lastly, you should connect your Pi to Wi-Fi, so that you can run `viam-server` wirelessly.
 Check `Configure wireless LAN` and enter your wireless network credentials.
 SSID (short for Service Set Identifier) is your Wi-Fi network name, and password is the network password.
 Change the section `Wireless LAN country` to where your router is currently being operated and then hit save:
@@ -137,7 +134,7 @@ After granting permissions to the Imager, it will begin writing and then verifyi
 
 Remove the microSD card from your computer when it is complete:
 
-![You will be notified with a dialouge box informing you that Raspberry Pi OS Lite has been written successfully."](/installation/img/rpi-setup/imager-done.png)
+![You will be notified with a dialogue box informing you that Raspberry Pi OS Lite has been written successfully."](/installation/img/rpi-setup/imager-done.png)
 
 Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
 A red LED will turn on to indicate that the Pi is connected to power.
@@ -159,7 +156,7 @@ Example: if your username is 'USERNAME' and your hostname is 'pi': then it shoul
 ssh <USERNAME>@<HOSTNAME>.local
 ```
 
-If you are prompted “Are you sure you want to continue connecting?”, type “yes” and hit enter.
+If you are prompted "Are you sure you want to continue connecting?", type "yes" and hit enter.
 Then, enter your password.
 You should be greeted by a login message and a command prompt.
 
@@ -190,6 +187,46 @@ For these changes to take effect, you need to restart your Raspberry Pi if it ha
 sudo reboot
 ```
 
+## Adding additional Wifi credentials
+
+If you move your robot to a different Wifi network, you will have to update the Wifi credentials.
+
+You can update the Wifi configuration by creating a new `wpa_supplicant.conf` file on the "boot" partition.
+
+The steps are explained below.
+
+1. Plug your Pi's microSD card into your computer and create a plain text file called `wpa_supplicant.conf`.
+
+2. Paste the following example into the file, replacing "Name of your wireless LAN" and "Password for your wireless LAN" with your credentials. Be sure to use UNIX (LF) line breaks in your text editor.
+
+3. Save the file and eject the microSD card.
+
+4. Put the microSD card back into the Pi and boot the Pi.
+
+The `wpa_supplicant.conf` file will be read by the Pi on boot, and the file will disappear but the Wifi credentials will be updated.
+
+You can duplicate the "network" section to add additional Wifi networks (for example your work, and your home).
+
+The "priority" attribute is optional and can be used to prioritize networks if multiple networks are configured (higher numbers are prioritized).
+
+```bash
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=us
+
+network={
+ ssid="Name of your wireless LAN"
+ psk="Password for your wireless LAN"
+ priority=10
+}
+
+network={
+ssid="Name of your other wireless LAN"
+psk="Password for your other wireless LAN"
+priority=20
+}
+```
+
 ## Next Steps
 
-Now that your Pi has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
+Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional Wifi credentials, continue to our [`viam-server` installation guide](/installation/install/).

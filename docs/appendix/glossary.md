@@ -21,7 +21,7 @@ Boards like Jetson and Pi run _viam-server_ and can expose the board component i
 You can run a client application on the same part that runs the viam-server, or on a separate device.
 Client applications typically use an SDK to talk to their robot.
 
-**Component**: A resource that represents a physical component in a robot; for example, a servo, camera, or an arm.
+**Component**: A resource that represents a physical component in a robot which a computer controls; for example, a servo, a camera, or an arm.
 
 **Fragment**: A reusable configuration block representing a common hardware pattern.
 For example, if you are deploying a specific mobile robot that is always physically connected the same way, you can create a fragment to make managing your fleet easy.
@@ -35,11 +35,14 @@ The location of a frame is described in relation to its parent frame using rigid
 **Model**: A particular implementation of a component type.
 For example, UR5e is a model of the arm component type.
 
+**Part**: A computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), running `viam-server` along with the hardware components the computer controls.
+
 **Process**: Processes are binaries or scripts that run on a part.
 Processes are often used to create a new local instance of viam-server to implement drivers for custom components, or to run a client application.
 They provide a bespoke, OS-specific process managed by the viam-server to either run once or indefinitely; for example, to run one of Viam's camera servers.
 
-<a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more. [Read More](/program/rdk/)
+<a id="rdk_anchor" />**RDK (Robot Development Kit)**: The official Viam-developed codebase that provides all functionality of an SDK and more.
+[Read More](/program/rdk/)
 
 **Resource**: Resources are individual, addressable elements of a robot (RDK definition) operated by parts.
 Parts operate two types of Resources: physical components and software services.
@@ -56,11 +59,13 @@ Within a robot, a main part always establishes a remote to each of the other par
 When a remote is established, the part establishing the remote will surface all of the other part’s resources as its own.
 A client application connecting to the part will see all of the part’s local resources and remote resources.
 
-You can establish remotes to parts in different robots. However, Viam recommends using a client application to control interaction between robots.
+You can establish remotes to parts in different robots.
+However, Viam recommends using a client application to control interaction between robots.
 
 **Remote UI**: Uses the Web JS SDK and provides UI elements to control a robot via WebRTC.
 
-**Robot**: The configuration and entry point for a computer and components coupled into one logical grouping of parts that work together to complete tasks.
+**Robot**: An organizational concept, consisting of either one _part_, or multiple _parts_ working closely together to complete tasks.
+The robot represents the configuration and entry point for one or more computers (and the components they control) coupled into one logical grouping of parts that work together to complete tasks.
 A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor.
 A robot always has a main part that receives client requests, and any number of other parts.
 
@@ -72,14 +77,15 @@ One main part receiving client application requests and relaying them to the oth
 **Robot Config**: The complete configuration of a single robot part.
 Typically expressed in JSON.
 
-**Robot Part**: A part runs an instance of viam-server to operate underlying resources – hardware components, software services, and any additional processes. Parts expose a uniform API for their resources.
+**Robot Part**: A part runs an instance of viam-server to operate underlying resources – hardware components, software services, and any additional processes.
+Parts expose a uniform API for their resources.
 
 Every robot has a main part that receives client requests and any number of other parts.
-Parts connect to other parts by establishing a remote.  
+Parts connect to other parts by establishing a remote.
 For example, one robot may be composed of two parts, a Jetson and a Pi.
 There is generally one robot part per CPU.
 
-**SDK (Software Development Kit)**: Viam provides an SDK to help you write client applications,and create custom implementations of viam-server to support custom components.
+**SDK (Software Development Kit)**: Viam provides an SDK to help you write client applications, and create support for custom component types.
 
 * One per language.
 * Can be used as a server for a custom component implementation.
@@ -104,9 +110,9 @@ There is generally one robot part per CPU.
 
 **Gantry**: A robot that only uses linear motion to carry out a task; for example, the scaffolding of a 3D printer, which moves the print head around on motorized linear rails.
 
-<a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">**gRPC:**</a>[^grpc] An open source, cross-platform, high performance Remote Procedure Call (RPC) framework initially developed at Google in 2015. With gRPC, a client application can communicate directly with a server application on a different machine. This framework can run in any environment and efficiently connect distributed applications and services.
-
-[^grpc]:GRPC, webpage, 2022, Wikipedia authors:  <a href="https://en.wikipedia.org/wiki/GRPC" target="_blank">ht<span><span>tps://en.wikipedia.org/wiki/GRPC</a>
+[**gRPC:**](https://en.wikipedia.org/wiki/GRPC) An open source, cross-platform, high performance Remote Procedure Call (RPC) framework initially developed at Google in 2015.
+With gRPC, a client application can communicate directly with a server application on a different machine.
+This framework can run in any environment and efficiently connect distributed applications and services.
 
 **Protocol Buffers (Protobuf)**: A free and open-source, language-neutral, cross-platform data format for serializing structured data.
 It is useful in developing programs to communicate with each other over a network or for storing data.

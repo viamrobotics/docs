@@ -9,9 +9,7 @@ tags: ["camera", "realsense camera", "components"]
 ---
 There are two ways to add your intel RealSense camera to Viam. You can either use a gRPC server or an HTTP server.
 
-You can find the source code for these servers in the <a href="https://github.com/viamrobotics/camera-servers" target="_blank">Viam Robotics repo</a>[^camserve]
-
-[^camserve]:Camera serve source code:  <a href="https://github.com/viamrobotics/camera-servers" target="_blank">ht<span></span>tps://github.com/viamrobotics/camera-servers</a>
+You can find the source code for these servers in the [Viam Robotics repo](https://github.com/viamrobotics/camera-servers).
 
 ## Using the gRPC Server
 
@@ -138,7 +136,7 @@ The endpoints that it creates are:
 ## Create a Camera to Display Point Clouds
 
 Click **CONFIG** and then click **COMPONENTS**.
-Enter the following camera model:  “dual_stream”
+Enter the following camera model:  "dual_stream"
 
 ``` json
 {
@@ -157,4 +155,4 @@ Enter the following camera model:  “dual_stream”
 ```
 
 This configures one camera that shows both, the color stream as a 2D image, and the 3D point cloud.
-To display the depth image as the 2D image, you can change the stream parameter to “depth.”
+To display the depth image as the 2D image, you can change the stream parameter to "depth."

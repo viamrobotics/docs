@@ -11,7 +11,6 @@ Add styles or override variables from the theme here.
   float: left;
   width: 50%;
   padding: 10px;
-   
 }
 
 .mra-row:after {
@@ -57,132 +56,123 @@ START MARKETING CSS
 */
 /* START Adjust Heading sizes*/
 h1, .h1 {
-    font-size: 32pt !important;
-    margin-left: 0px;
-   }
-   
-   h2, .h2 {
-    font-size: 24 pt !important;
-    margin-left: 24px;
+  font-size: 32pt !important;
+  margin-left: 0px;
+}
 
-   }
-   
-   h3, .h3 {
-    font-size: 18pt !important;
-    margin-left: 40px;
-   }
+h2, .h2 {
+  font-size: 24 pt !important;
+}
 
-      /* Added H4 and H5 in response to DAD-97 */
-      /* Added rules and increased indents */
-   h4, .h4 {
-    font-size: 16pt !important;
-    margin-left: 60px;
-   }
+h3, .h3 {
+  font-size: 18pt !important;
+}
 
-   h5, .h5 {
-    font-size: 16pt !important;
-    font-weight: 400;
-    font-style: italic;
-    margin-left: 70px;
-   }
-   h7 {
-    font-size: 10pt !important;
-    font-weight: 400;
-    font-style: italic;
-    text-decoration: underline green;
-   }
+/* Added H4 and H5 in response to DAD-97 */
+h4, .h4 {
+  font-size: 14pt !important;
+}
 
- /* This class prevents h4 headings in alerts from indenting */   
+h5, .h5 {
+  font-size: 12pt !important;
+}
+h7 {
+  font-size: 10pt !important;
+  font-weight: 400;
+  font-style: italic;
+  text-decoration: underline green;
+}
+
+/* This class prevents h4 headings in alerts from indenting */
 .plain{
   margin-left: 0;
 }
-  /* This prevents the h4 heading rules from appearing in alerts */   
+/* This prevents the h4 heading rules from appearing in alerts */
 .plain:after{
-    content:' ';
-    display:none;
-
+  content:' ';
+  display:none;
 }
 
-   /* END Adjust Heading sizes*/
+/* END Adjust Heading sizes*/
 
 /* */
 
 h1:after
 {
-    content:' ';
-    display:block;
-    border:1px solid black;
+  content:' ';
+  display:block;
+  border:1px solid black;
 }
 
 h2:after
 {
-    content:' ';
-    display:block;
-    border:1px solid black;
-    margin-right:25%;
+  content:' ';
+  display:block;
+  border:1px solid black;
+  margin-right:25%;
 }
 
 h3:after
 {
-    content:' ';
-    display:block;
-    border:1px solid black;
-    margin-right:50%;
+  content:' ';
+  display:block;
+  border:1px solid black;
+  margin-right:50%;
 }
 
 h4:after
 {
-    content:' ';
-    display:block;
-    border:1px solid black;
-    margin-right:50%;
+  content:' ';
+  display:block;
+  border:1px solid black;
+  margin-right:50%;
 }
 h5:after
 {
-    content:' ';
-    display:block;
-    border:1px dashed  black;
-    margin-right:75%;
+  content:' ';
+  display:block;
+  border:1px solid  black;
+  margin-right:75%;
 }
 
-   
+
 .td-sidebar {
 
-/*NAV Panel changes*/    
-/* background */
-background-color: #f2f2f2;   
+  /*NAV Panel changes*/
+  /* background */
+  background-color: #f2f2f2;
 }
 /* font color */
 /* This font color relieves the overall heaviness of the LH menu.  */
 .td-sidebar-nav .td-sidebar-link__page {
-    color: #495057;
- }
+  color: #495057;
+}
 /* This font color sets the active item to heavy black */
- .td-sidebar-nav-active-item{
+.td-sidebar-nav-active-item{
   color: black;
 }
 
 
 
-/* font weight */ 
- .td-sidebar-nav .td-sidebar-link__page{
-    font-weight:600;  /* LH TOC Font weight  */
- }
+/* font weight */
+.td-sidebar-nav .td-sidebar-link__page{
+  font-weight:600;  /* LH TOC Font weight  */
+}
 
 
- .td-toc #TableOfContents a {
-    color: black; /* Color of the RH TOC text */
-    font-weight:400;  /* LH TOC Font weight  */    
-    }
-
-
-    .td-navbar {
-        background: black;
-    }
+.td-toc #TableOfContents a {
+  color: black; /* Color of the RH TOC text */
+  font-weight:400;  /* LH TOC Font weight  */
+}
 
 
 .td-navbar {
-    background: black !important;
+  background: black;
+}
+
+
+.td-navbar {
+  background: black !important;
 }
 
 
@@ -190,32 +180,32 @@ background-color: #f2f2f2;
 
 /* sets the footer to black. */
 .bg-dark {
-    background-color: black !important;
+  background-color: black !important;
 }
 
 
 /* sets the base font heavier than the theme. */
 .td-content p, .td-content li, .td-content td {
-    font-weight: normal;
-    color: black;
+  font-weight: normal;
+  color: black;
 }
 
 
 
 .td-sidebar-nav .td-sidebar-link.tree-root {
-    font-weight: 700;
-    color: black;
-    border-bottom: 1px #30638E solid;
-    margin-bottom: 1rem;
+  font-weight: 700;
+  color: black;
+  border-bottom: 1px #30638E solid;
+  margin-bottom: 1rem;
 }
 
 
 
 .breadcrumb-item + .breadcrumb-item::before {
-    float: left;
-    padding-right: 0.5rem;
-    color: black;
-    content: ">>";
+  float: left;
+  padding-right: 0.5rem;
+  color: black;
+  content: ">>";
 }
 
 /*
@@ -227,12 +217,12 @@ END MARKETING CSS
 /* I added margins, changed Preload to 600px. The default was 100% */
 
 .video-shortcode {
-    margin: 12px 0 12px 0;
-    border:solid 1px;
-    border-color: blue;
-    max-width: 600PX;
-    height: auto;
-  }
+  margin: 12px 0 12px 0;
+  border:solid 1px;
+  border-color: blue;
+  max-width: 600PX;
+  height: auto;
+}
 /* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/ */
 
 /**/
@@ -280,54 +270,50 @@ END MARKETING CSS
 // Style alert boxes.
 
 .alert {
-    font-weight: $font-weight-medium;
-    background: $white;
-    color: inherit;
-    border-radius: 0;
+  font-weight: $font-weight-medium;
+  background: $white;
+  color: inherit;
+  border-radius: 0;
 
-    @each $color, $value in $theme-colors {
-        &-#{$color} {
-            & .alert-heading {
-                color: $value;
-            }
+  @each $color, $value in $theme-colors {
+    &-#{$color} {
+      & .alert-heading {
+        color: $value;
+      }
 
-            border-style: solid;
-            -webkit-border-top-left-radius: 5px;
-            -webkit-border-bottom-left-radius: 5px;
-            -moz-border-radius-topleft: 5px;
-            -moz-border-radius-bottomleft: 5px;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-            border-color: $value;
-            border-width: 0 0 0 12px;
-        }
+      border-style: solid;
+      -webkit-border-top-left-radius: 5px;
+      -webkit-border-bottom-left-radius: 5px;
+      -moz-border-radius-topleft: 5px;
+      -moz-border-radius-bottomleft: 5px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-color: $value;
+      border-width: 0 0 0 12px;
     }
+  }
 }
 
 .alert-heading { // left margin for h4 in alerts
-margin-left: 0; 
+  margin-left: 0;
 }
 .alert-heading::after { // blocks display h4 rules in alerts
   content:' ';
   display:none;
-
 }
 
 .note,
 .caution,
 .warning {
-
   border-left-width: 4px;
   border-left-style: solid;
   position: relative;
   border-color: var(--primary-color);
-
   display: block;
 }
 .note #exclamation-icon,
 .caution #exclamation-icon,
 .warning #exclamation-icon {
-
   fill: var(--primary-color);
   position: absolute;
   top: 35%;
@@ -335,17 +321,17 @@ margin-left: 0;
   /*background-color: white;*/
 }
 
-  .admonition-content {
-    display: block;
-    margin: 0px;
-    padding: .125em 1em;
-    /*margin-left: 1em;*/
-    margin-top: 2em;
-    margin-bottom: 2em;
-    overflow-x: auto;
-    /*font-size: .9375em;*/
-    background-color: var(--black-05);
-  }
+.admonition-content {
+  display: block;
+  margin: 0px;
+  padding: .125em 1em;
+  /*margin-left: 1em;*/
+  margin-top: 2em;
+  margin-bottom: 2em;
+  overflow-x: auto;
+  /*font-size: .9375em;*/
+  background-color: var(--black-05);
+}
 
 /* color: sets the text color in the alert*/
 /* background: sets the background color in the alert*/
@@ -356,62 +342,68 @@ margin-left: 0;
 .alert-warning {
   color: black;
   background: whitesmoke;
-  border-color: #ffb8b8; 
+  border-color: #ffb8b8;
   border-bottom-left-radius: .5rem;
   border-top-left-radius: .5rem;
-border-style: solid;
-    border-color: red;
-    border-width: 0 0 0 8px;
+  border-style: solid;
+  border-color: red;
+  border-width: 0 0 0 8px;
 }
-  .alert-warning hr {
-    border-top-color: #ff9f9f; }
+.alert-warning hr {
+  border-top-color: #ff9f9f;
+}
 .alert-warning .alert-link {
-    color: #520000; }
-  
+  color: #520000;
+}
+
 
 .alert-note {
   color: black;
   background: whitesmoke;
-  border-color: blue; 
+  border-color: blue;
   border-bottom-left-radius: .5rem;
   border-top-left-radius: .5rem;
-border-style: solid;
-    border-color: blue;
-    border-width: 0 0 0 8px;
+  border-style: solid;
+  border-color: blue;
+  border-width: 0 0 0 8px;
 }
-  .alert-note hr {
-    border-top-color: #ff9f9f; }
+.alert-note hr {
+  border-top-color: #ff9f9f;
+}
 .alert-note .alert-link {
-    color: #520000; }
+  color: #520000;
+}
 
 
 .alert-caution {
   color: black;
   background: whitesmoke;
-  border-color: #eba71b; 
+  border-color: #eba71b;
   border-bottom-left-radius: .5rem;
   border-top-left-radius: .5rem;
-border-style: solid;
-    border-color: #f0b93f;
-    border-width: 0 0 0 8px;
+  border-style: solid;
+  border-color: #f0b93f;
+  border-width: 0 0 0 8px;
 }
-  .alert-caution hr {
-    border-top-color: #ff9f9f; }
+.alert-caution hr {
+  border-top-color: #ff9f9f;
+}
 .alert-caution .alert-link {
-    color: #520000; }
+  color: #520000;
+}
 
 
 .alert-tip {
   color: black;
   background: whitesmoke;
-  border-color: #1be020; 
+  border-color: #1be020;
   border-bottom-left-radius: .5rem;
   border-top-left-radius: .5rem;
-border-style: solid;
-    border-color: #1be020;
-    border-width: 0 0 0 8px;
+  border-style: solid;
+  border-color: #1be020;
+  border-width: 0 0 0 8px;
 }
-    
+
 
 
 /* END CSS FOR NOTES, CAUTIONS, WARNINGS */
@@ -420,10 +412,10 @@ border-style: solid;
 /* START CSS FOR EXPANDER */
 
 .expand-label {
-font-family: Space Grotesk, sans-serif;
-font-weight:bold;
-font-size: 12px !important; 
-background-color:#e7ecff;
+  font-family: Space Grotesk, sans-serif;
+  font-weight:bold;
+  font-size: 12px !important;
+  background-color:#e7ecff;
 
 }
 .expand-content {

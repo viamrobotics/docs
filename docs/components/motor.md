@@ -43,7 +43,7 @@ motor2 = Motor.from_robot(robot, "motor2")
 # power motor1 at 100% for 3 seconds
 await motor1.set_power(1)
 await asyncio.sleep(3)
-await motor1.stop()   
+await motor1.stop()
 
 # run motor2 at 1000 rpm for 200 rotations
 await motor2.go_for(1000, 200)
@@ -82,7 +82,7 @@ m2.GoFor(context.Background(), 1000, 200, nil)
 A common motor control setup comprises the following:
 
 - A computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer, or a desktop computer outfitted with a GPIO peripheral
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 There are other ways to interface with motors such as Serial, CAN bus, and EtherCAT that require special motor controllers and are beyond the scope of this document
 {{% /alert %}}
 
@@ -103,11 +103,9 @@ Always disconnect devices from power before plugging, unplugging or moving wires
 ### Mechanism
 
 DC motors use magnetic fields to convert direct (one-way) electrical current into mechanical torque.
-<a href="https://en.wikipedia.org/wiki/Brushed_DC_electric_motor" target="_blank">Brushed DC motors</a>[^bdcm] use an electrical contact called a “brush” to route current to the right place at a given moment to create continuous rotation.
+[Brushed DC motors](https://en.wikipedia.org/wiki/Brushed_DC_electric_motor) use an electrical contact called a "brush" to route current to the right place at a given moment to create continuous rotation.
 Increasing the input current increases the output motor torque (and also speed, assuming a constant load).
 Switching the direction of the input current changes the direction of motor rotation.
-
-[^bdcm]: Brushed DC motors: <a href="https://en.wikipedia.org/wiki/Brushed_DC_electric_motor" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Brushed_DC_electric_motor</a>
 
 ### Brushed DC Motor Drivers
 
@@ -117,39 +115,35 @@ The driver data sheet will specify which one to use.
 
 #### Pins
 
-- PWM/DIR: One digital input (such as a GPIO pin) sends a <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">pulse width modulation</a>[^pwm] (PWM) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
+- PWM/DIR: One digital input (such as a GPIO pin) sends a [pulse width modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
 - In1/In2 (or A/B): One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled via PWM through one or both pins.
 - In1/In2 + PWM: Three pins: an In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
 
-[^pwm]:Pulse Width Modulation (PWM): <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Pulse-width_modulation</a>
-
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 Often, instead of buying just the tiny motor driver chip itself, you’ll purchase a motor driver carrier board which consists of the chip containing the logic gates, attached to a small breakout board which gives you places to attach the necessary wires.
 In this article we’ll refer to this whole motor driver board as a motor driver.
 
-Note that in RDK, “board” refers to the device with GPIO pins (such as a Raspberry Pi, or a GPIO peripheral attached to a desktop computer) that sends signals to the motor drivers and other devices.
-In the config file, “motor” technically refers to the motor driver for a given motor.
+Note that in RDK, "board" refers to the device with GPIO pins (such as a Raspberry Pi, or a GPIO peripheral attached to a desktop computer) that sends signals to the motor drivers and other devices.
+In the config file, "motor" technically refers to the motor driver for a given motor.
 {{% /alert %}}
 
 ### Wiring
 
 Brushed DC motors are relatively simple to wire.
-Taking a 12V brushed DC motor controlled by a Raspberry Pi via <a href="https://www.pololu.com/product/4038" target="_blank">this motor driver</a>[^mtd] as an example, the wiring diagram would look like this:  
+Taking a 12V brushed DC motor controlled by a Raspberry Pi with [the DRV8256E Single Brushed DC Motor Driver Carrier](https://www.pololu.com/product/4038) as an example, the wiring diagram would look like this:
 
-[^mtd]:DRV8256E Single Brushed DC Motor Driver Carrier: <a href="https://www.pololu.com/product/4038" target="_blank">ht<span></span>tps://www.pololu.com/product/4038</a>
-
-![brushed-dc-wiring](../img/motor/motor-brushed-dc-wiring.png)  
+![brushed-dc-wiring](../img/motor/motor-brushed-dc-wiring.png)
 
 The signal wires in the diagram run from two GPIO pins on the Pi to the DIR and PWM pins on the motor driver.
 Refer to a Raspberry Pi pinout schematic to locate generic GPIO pins and determine their pin numbers for configuration.
 
 ### Viam Configuration
 
-A brushed DC motor without an encoder should be configured with “gpio” as the model.
-Most motor types require a “board” attribute, and also need to depend on that same board.
-For example:  
+A brushed DC motor without an encoder should be configured with "gpio" as the model.
+Most motor types require a "board" attribute, and also need to depend on that same board.
+For example:
 
-![motor-gpio-json](../img/motor/motor-gpio-json.png)  
+![motor-gpio-json](../img/motor/motor-gpio-json.png)
 [Click here for the raw JSON.](../example-configs/motor-gpio-config.json)
 
 #### Required Attributes - Non-Encoded DC Motor
@@ -157,7 +151,7 @@ For example:
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 `board` | string | --        | Name of board to which the motor driver is wired.
-`max_rpm` | float | --         | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the “GoFor” method unusable.
+`max_rpm` | float | --         | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the "GoFor" method unusable.
 `pins` | object | --  | A structure that holds pin configuration information.
 
 Nested within `pins` (note that only two or three of these are required depending on your motor driver; see [Pins](#pins) above for more information):
@@ -174,9 +168,9 @@ Name | Type | Description |
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 `min_power_pct` | float | 0.0 | Sets a limit on minimum power percentage sent to the motor
-`max_power_pct` | float | 1.0 | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor  
-`pwm_freq` | uint | 800 | Sets the PWM pulse frequency in Hz.  Many motors operate optimally in the kHz range.
-`dir_flip` | bool | False | Flips the direction of the signal sent if there is a DIR pin  
+`max_power_pct` | float | 1.0 | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor
+`pwm_freq` | uint | 800 | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range.
+`dir_flip` | bool | False | Flips the direction of the signal sent if there is a DIR pin
 `en_high` / `en_low` | string | -- | Some drivers have optional enable pins that enable or disable the driver chip. If your chip requires a high signal to be enabled, add `en_high` with the pin number to the pins section. If you need a low signal use `en_low`.
 
 ## Brushless DC Motor
@@ -186,7 +180,7 @@ Name | Type | Default Value | Description
 A brushless DC motor (BLDC motor) uses an electronic system to switch its electromagnets on and off at the correct times, instead of the physical brush used in brushed motors.
 BLDCs function similarly to brushed motors, but they are more durable and efficient because they don’t contain a brush that wears out as it rubs on the spinning components.
 The relative position of the magnets must be known by the driver so that the right coils can be powered at any given moment.
-Some motors have a built-in set of Hall effect sensors for this purpose, and others detect forces in the unpowered coils for a “sensorless” configuration.
+Some motors have a built-in set of Hall effect sensors for this purpose, and others detect forces in the unpowered coils for a "sensorless" configuration.
 
 ### Brushless DC Motor Drivers
 
@@ -200,7 +194,7 @@ Brushless motors typically have three power connections (commonly referred to as
 The configuration file of a BLDC motor with Viam is the same as that of a brushed motor [(detailed above)](#viam-configuration).
 Only the output side of the driver board is different, i.e., more wires connect the driver to the motor.
 
-![motor-brushless-dc-wiring](../img/motor/motor-brushless-dc-wiring.png)  
+![motor-brushless-dc-wiring](../img/motor/motor-brushless-dc-wiring.png)
 
 ## DC Motor With Encoder
 
@@ -210,19 +204,17 @@ See the [Encoder Component Doc](../encoder/) for more information on encoders.
 
 ### Wiring
 
-Here's an example of an encoded DC motor wired with <a href="https://www.pololu.com/product/2961" target="_blank">this motor driver</a>[^tmd2].
+Here's an example of an encoded DC motor wired with [the MAX14870 Single Brushed DC Motor Driver Carrier](https://www.pololu.com/product/2961).
 
-[^tmd2]:MAX14870 Single Brushed DC Motor Driver Carrier: <a href="https://www.pololu.com/product/2961" target="_blank">ht<span></span>tps://www.pololu.com/product/2961</a>
-
-![motor-encoded-dc-wiring](../img/motor/motor-encoded-dc-wiring.png)  
+![motor-encoded-dc-wiring](../img/motor/motor-encoded-dc-wiring.png)
 
 ### Viam Configuration
 
-Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.”
-Configuration of an encoder requires configuring the encoder [per the encoder topic](../encoder) in addition to the [standard “gpio” model attributes](#required-attributes---non-encoded-dc-motor).
-Here’s an example config file:  
+Viam supports a brushed or brushless DC motor with a quadrature encoder within model "gpio."
+Configuration of an encoder requires configuring the encoder [per the encoder topic](../encoder) in addition to the [standard "gpio" model attributes](#required-attributes---non-encoded-dc-motor).
+Here’s an example config file:
 
-![motor-encoded-dc-json](../img/motor/motor-encoded-dc-json.png)  
+![motor-encoded-dc-json](../img/motor/motor-encoded-dc-json.png)
 
 [Click here for the raw JSON.](../example-configs/motor-encoded-config.json)
 
@@ -237,7 +229,7 @@ Name | Type | Description
 
 #### Optional Attributes - Encoded DC Motor
 
-In addition to the optional attributes listed in the [non-encoded DC motor section](#optional-attributes---non-encoded-dc-motor), encoded motors have the following additional options:  
+In addition to the optional attributes listed in the [non-encoded DC motor section](#optional-attributes---non-encoded-dc-motor), encoded motors have the following additional options:
 
 Name | Type | Description
 -------------- | ---- | ---------------
@@ -259,16 +251,16 @@ Each pair of wires makes a loop through a coil of the motor.
 In the case of a four wire (bi-polar) stepper, one pair of wires may be labeled A1 and A2 and the other B1 and B2.
 Refer to the motor data sheet for correct wiring.
 
-![motor-gpiostepper-wiring](../img/motor/motor-gpiostepper-wiring.png)  
+![motor-gpiostepper-wiring](../img/motor/motor-gpiostepper-wiring.png)
 
 In this particular example the enable pin on the upper left corner of the driver is connected to ground to pull it low for our purposes.
 
 ### Viam Configuration
 
 Viam supports steppers controlled in one of two ways: a basic stepper driver chip that takes step and DIR input via GPIO and simply moves one step per pulse (for these, use model "gpiostepper"), or more advanced chips (e.g., TMC5072, DMC4000) that have their own microcontrollers that conveniently handle things like speed and acceleration control.
-Here’s an example of a basic stepper driver config:  
+Here’s an example of a basic stepper driver config:
 
-![motor-gpiostepper-json](../img/motor/motor-gpiostepper-json.png)  
+![motor-gpiostepper-json](../img/motor/motor-gpiostepper-json.png)
 [Click here for the raw JSON.](../example-configs/motor-gpiostepper-config.json)
 
 #### Required Attributes for Steppers

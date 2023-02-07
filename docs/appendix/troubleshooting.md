@@ -1,14 +1,14 @@
 ---
 title: "Troubleshooting"
 linkTitle: "Troubleshooting"
-weight: 
+weight:
 type: "docs"
 description: "A guide to basic troubleshooting of a Viam-based robotic system, easy fixes to common problems, and a list of known issues."
 ---
 This document lists known issues, common troubleshooting steps (e.g., check that the SBC plugged in and turned on, etc.) and common errors, and how we resolved them.
 It differs from the FAQ in that the FAQ contains broad, high-level questions about Viam and its software while this section contains specific instructions for resolving software difficulties.
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 
 While every effort has been made to include all common/known issues and their possible resolutions, this list is not comprehensive.
 {{% /alert %}}
@@ -34,7 +34,7 @@ The following related errors may cause this issue:
 <th>Resolution
 </th>
 <td>Add the missing name in components and save the config.
-Run <file>sudo systemctl restart viam-server.service</file> in the terminal to restart the server.
+Run <code>sudo systemctl restart viam-server</code> in the terminal to restart the server.
 </td>
 </tr>
 </table>
@@ -46,14 +46,14 @@ Run <file>sudo systemctl restart viam-server.service</file> in the terminal to r
 <th>What/Why:
 </th>
 <td colspan="2">Check if there is a frame attribute in the components in the fancy config or in the raw JSON config.
-It may be that the robot config generated broken “frame” information and pre-populated the translation values with empty strings when they are currently programmed to be floats on the backend.
+It may be that the robot config generated broken "frame" information and pre-populated the translation values with empty strings when they are currently programmed to be floats on the backend.
 </td>
 </tr>
 <tr>
 <th>Resolution
 </th>
 <td width="50%">
-Delete the entire “frame” object from the JSON config if you are not using it.
+Delete the entire "frame" object from the JSON config if you are not using it.
 The frame object looks like this:</td>
 </td>
 <td><img src="../img/ts-del-frame.png" alt="Frame JSON Object" width="150px"/></td>
@@ -77,14 +77,14 @@ The frame object looks like this:</td>
 <tr>
 <th>Resolution
 </th>
-<td>Run <file>/root/viam -remove</file> in the terminal to clear cache config from the Pi.
+<td>Run <code>/root/viam -remove</code> in the terminal to clear cache config from the Pi.
 Re-try the operation.
 </td>
 
 </tr>
 </table>
 
-#### Error #2: SSH error on the terminal: “ssh:connect to host name-pi.local port 22: host is down”
+#### Error #2: SSH error on the terminal: "ssh:connect to host name-pi.local port 22: host is down"
 
 <table style="border: solid black 1px;">
 <th>What/Why:
@@ -100,7 +100,7 @@ Re-try the operation.
 </tr>
 </table>
 
-#### Error #3: “Rolling back draft changes due to error” or “Error reconfiguring robot”, both errors end with: ‘error: error processing draft changes: resource “rdk:component:board/local” not found”
+#### Error #3: "Rolling back draft changes due to error" or "Error reconfiguring robot", both errors end with: ‘error: error processing draft changes: resource "rdk:component:board/local" not found"
 
 <table style="border: solid black 1px;">
 <tr>
@@ -112,7 +112,7 @@ Re-try the operation.
 <tr>
 <th>Resolution
 </th>
-<td>Run <file>sudo systemctl restart viam-server.service</file> in the terminal to restart the server.
+<td>Run <code>sudo systemctl restart viam-server</code> in the terminal to restart the server.
 </td>
 </tr>
 </table>
@@ -122,14 +122,14 @@ Re-try the operation.
 <table style="border: solid black 1px;">
 <th>What/Why:
 </th>
-<td>Check if you forgot to enter the pi name and check for any other missing component specs in config.
+<td>Check if you forgot to enter the board name and check for any other missing component specs in config.
 </td>
 </tr>
 <tr>
 <th>Resolution
 </th>
 <td>Add any missing components.
-Run <file>sudo systemctl restart viam-server.service</file> in the terminal to restart the server.
+Run <code>sudo systemctl restart viam-server</code> in the terminal to restart the server.
 </td>
 </tr>
 </table>

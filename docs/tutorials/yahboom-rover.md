@@ -8,14 +8,10 @@ tags: ["base", "gamepad", "yahboom", "app"]
 ---
 ## Requirements
 
-- A Raspberry Pi 4 running an instance of viam-server.
-See our [Raspberry Pi Setup Guide](/installation/rpi-setup/) for instructions.
-- A <a href="https://category.yahboom.net/collections/robotics/products/4wdrobot" target="_blank">Yahboom 4WD Smart Robot</a>[^yahboom]
-- A Bluetooth gamepad controller. For this tutorial we used <a href="https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch" target="_blank">this 8BitDo controller</a>[^8bitdo].
-
-[^yahboom]: Yahboom 4WD Smart Robot with AI vision features for Raspberry Pi 4B: <a href="https://category.yahboom.net/collections/robotics/products/4wdrobot" target="_blank">ht<span>tps://category.yahboom.net/collections/robotics/products/4wdrobot</a>
-
-[^8bitdo]: 8BitDo Pro 2 Bluetooth Controller: <a href="https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch" target="_blank">ht<span>tps://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch</a>
+- A Raspberry Pi 4 running an instance of `viam-server`.
+See our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) for instructions.
+- A [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot)
+- A Bluetooth gamepad controller. For this tutorial we used [this 8BitDo controller](https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch).
 
 ## Configuring the Board
 
@@ -55,7 +51,7 @@ You can ignore the other optional attributes.
 
 Save the config by clicking **Save Config** at the bottom of the page.
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 If you are using a motor with encoders, you need to specify the ticks per rotation.
 {{% /alert %}}
 
@@ -131,7 +127,8 @@ Make sure the 8bitdo controller mode switch is set to S, hold down Start for a f
 For more information about the controller buttons and Bluetooth modes, consult the manual included with the controller.
 
 Run `sudo bluetoothctl scan on` to list all Bluetooth devices within reach of the Raspberry Pi.
-As you do this, in terminal make sure you are in your pi and not in your computer. This command will scan all the devices but the 8bitdo controller will have a MAC address that begins E4:17:D8.
+As you do this, in terminal make sure you are in your Pi and not in your computer.
+This command will scan all the devices but the 8bitdo controller will have a MAC address that begins E4:17:D8.
 
 ![A screenshot of a Mac command prompt with the command ssh hazal_pi@hazal_pi.local.](../img/yahboom-rover/ssh-pilocal.png)
 
@@ -153,9 +150,7 @@ To confirm the connection, you can list connected devices with: `sudo bluetoothc
 
 ![A screenshot of a Pi terminal showing the above bluetoothctl commands and their outputs.](../img/yahboom-rover/bluetoothpair-connect.png)
 
-If you would like a stronger understanding of `bluetoothctl` and managing Bluetooth devices in Linux, we recommend <a href="https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/" target="_blank">this guide</a>[^bluetooth].
-
-[^bluetooth]: Manage Bluetooth Devices on Linux Using bluetoothctl: <a href="https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/" target="_blank">ht<span>tps://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/</a>
+If you would like a stronger understanding of `bluetoothctl` and managing Bluetooth devices in Linux, we recommend [this guide](https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/).
 
 Now you can add this controller to the robot’s config.
 In the next **Create Component** field, name the component `8bit-do-controller`.

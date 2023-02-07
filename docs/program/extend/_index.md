@@ -5,7 +5,7 @@ weight: 60
 simple_list: true
 type: docs
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "Using modular resources and SDKs to extend Viam"
+description: "Using modular resources and SDKs to extend Viam."
 ---
 
 
@@ -41,3 +41,22 @@ Currently, modular resources are supported only with the Viam [Go SDK](https://p
 If you are not using the Go SDK, you can add custom components using the Viam SDK of your choice to create a [server component implementation](/program/extend/sdk-as-server/).
 
 ## See also
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/controlling-an-intermode-rover-canbus/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Modular Resource Example</h4>
+            <p style="text-align: left;">This tutorial uses modular resources to control a custom base with CAN bus.</p>
+        <a>
+    </div>
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/custom-base-dog/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Python SDK Custom Resource Example</h4>
+            <p style="text-align: left;">This tutorial uses the Viam Python SDK to control a robot dog.</p>
+        </a>
+    </div>
+  </div>
+</div>
