@@ -118,3 +118,62 @@ Now that we've set up the rover by attaching the servo and making the tutorial s
 
 * Recognize and operate the servo
 * Make the ML classifier model available for use by the Viam vision service
+
+### Configure the servo
+
+To configure your [servo](/components/servo), go to your rover's **CONFIG** page, scroll to the bottom and create a new instance of the `servo` component.
+Name it *servo1* (or something else if you prefer, but then you will need to update references to it in the tutorial code).
+
+Since you've attached your servo to a Raspberry Pi, choose the model `pi`.
+Click **Create Component**.
+
+<img src="../img/ai-integration/servo_component_add.png" style="border:1px solid #000" alt="Adding the servo component." title="Adding the servo component." width="900" />
+
+Now, in the card for *servo1*, add the following configuration in attributes to tell viam-server that the servo is attached to GPIO pin 8, then press the **Save Config** button.
+
+``` json
+{
+  "pin": "8"
+}
+```
+
+viam-server should now reconfigure and make the servo available for use.
+Click into the **CONTROL** tab.
+You should see a card for *servo1*.
+From there, you can change the angle of your servo by increments of 1 and 10 degrees.
+
+Move the servo to 0 degrees, and attach the emotion wheel to the servo with the happy emoji facing upwards and centered.
+We found that set up this way, the following positions accurately show the corresponding emojis, but you can verify and update the tutorial code if needed:
+
+* happy: 0 degrees
+* angry: 75 degrees
+* sad: 157 degrees
+
+### Configure the Vision service and classifier
+
+Click back to the **CONFIG** page and then to the **SERVICES** tab.
+From there, scroll to the bottom and create a new service of type *Vision* named 'vision'.
+
+<img src="../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the vision service." title="Adding the vision service." width="500" />
+
+Now, add the following configuration to the attributes for the Vision service.
+You are registering a model of type `tflite_classifier` named `stuff_classifier`.
+Your companion robot will use this to - well, classify stuff (using an ML model trained using the [ImageNet image database](https://www.image-net.org/))!
+
+Make sure you press "Save config" to finish adding the classifier.
+
+``` json
+{
+  "register_models": [
+    {
+      "name": "stuff_classifier",
+      "parameters": {
+        "label_path": "/home/<username>/tutorial-chatgpt-integration/labels.txt",
+        "num_threads": 1,
+        "model_path": "/home/<username>/tutorial-chatgpt-integration/lite-model_imagenet_mobilenet_v3_large_075_224_classification_5_metadata_1.tflite"
+      },
+      "type": "tflite_classifier"
+    }
+  ]
+}
+```
