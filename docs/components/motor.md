@@ -33,7 +33,7 @@ Read on to learn how to configure motor components.
 
 Example code should be placed after the `robot = await connect()` function in `main()`.
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.motor import Motor
 
 robot = await connect() # refer to connect code
@@ -54,7 +54,7 @@ await motor2.go_for(1000, 200)
 
 Example code should be placed after the `robot, err := client.New(...)` function in `main()`.
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
 "time"
 "go.viam.com/rdk/components/motor"

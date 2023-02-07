@@ -14,7 +14,7 @@ The end effector is able to be placed at arbitrary cartesian positions relative 
 
 As an example, to move an xArm6 whose component name is "my_xArm6" forwards in the X direction by 300mm:
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.arm import Arm
 from viam.proto.api.common import WorldState
 
@@ -54,7 +54,7 @@ If there is no way to move to the desired location in a straight line for the ar
 
 ## Viam Configuration
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [{
       "attributes": {
@@ -91,9 +91,9 @@ Individual arm implementations have their own sets of configurable parameters th
 For example, for an xArm6 or an xArm7, there are three parameters:
 
 - **host**: A string representing the IP address of the arm.
-  
+
 - **speed** (Optional. Default: 20.0): A float representing the desired maximum joint movement speed in degrees/second.
-  
+
 - **acceleration** (Optional. Default: 50.0):  A float representing the desired maximum joint acceleration in degrees/second/second.
 
 ## Examples
@@ -214,7 +214,7 @@ If your arm has a different name, change the `name` in the example.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.arm import Arm, JointPositions
 from viam.proto.common import Pose, WorldState
 
@@ -223,14 +223,14 @@ async def main():
   # Connect to your robot.
   robot = await connect()
 
-  # Log an info message with the names of the different resources that are connected to your robot. 
+  # Log an info message with the names of the different resources that are connected to your robot.
   print('Resources:')
   print(robot.resource_names)
 
-  # Connect to your arm. 
+  # Connect to your arm.
   myArm = Arm.from_robot(robot=robot, name='my_arm')
 
-  # Disconnect from your robot. 
+  # Disconnect from your robot.
   await robot.close()
 
 if __name__ == '__main__':
@@ -240,7 +240,7 @@ if __name__ == '__main__':
 {{% /tab %}}
 {{% tab name="Golang" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
   "context"
   "go.viam.com/rdk/components/arm"
@@ -249,12 +249,12 @@ import (
   componentpb "go.viam.com/api/component/arm/v1"
 )
 
-func main() { 
+func main() {
 
-  // Create an instance of a logger. 
+  // Create an instance of a logger.
   logger := golog.NewDevelopmentLogger("client")
 
-  // Connect to your robot. 
+  // Connect to your robot.
   robot, err := client.New(
       context.Background(),
       "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
@@ -270,10 +270,10 @@ func main() {
       logger.Fatal(err)
   }
 
-  // Delay closing your connection to your robot until main() exits. 
+  // Delay closing your connection to your robot until main() exits.
   defer robot.Close(context.Background())
 
-  // Log an info message with the names of the different resources that are connected to your robot. 
+  // Log an info message with the names of the different resources that are connected to your robot.
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
 
@@ -310,7 +310,7 @@ Orientation is expressed as an orientation vector, which is represented by o_x, 
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_end_position).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myArm = Arm.from_robot(robot=robot, name='my_arm')
 
 # Get the end position of the arm as a Pose.
@@ -332,19 +332,19 @@ pos = await myArm.get_end_position()
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
-  
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
 
-// Get the end position of the arm as a Pose. 
+// Get the end position of the arm as a Pose.
 err, pos := myArm.EndPosition(context.Background(), nil)
 
-// Log any errors that occur. 
+// Log any errors that occur.
 if err != nil {
   logger.Fatalf("cannot get end position of arm: %v", err)
 }
@@ -379,13 +379,13 @@ These fields are optional.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.move_to_position).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myArm = Arm.from_robot(robot=robot, name='my_arm')
 
 # Create a Pose for the arm.
 examplePose = Pose(x=5, y=5, z=5, o_x=5, o_y=5, o_z=5, theta=20)
 
-# Move your arm to the Pose. 
+# Move your arm to the Pose.
 await myArm.move_to_position(pose=examplePose, world_state=WorldState())
 ```
 
@@ -410,16 +410,16 @@ These fields are optional.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
 
-// Create a Pose for the arm. 
+// Create a Pose for the arm.
 examplePose = []float64{x: 5, y: 5, z: 5, o_x: 5, o_y: 5, o_z: 5, theta:20}
 
-// Move your arm to the Pose. 
+// Move your arm to the Pose.
 myArm.MoveToPosition(context.Background(), pose: examplePose, referenceframe.WorldState(), nil)
 ```
 
@@ -452,13 +452,13 @@ JointPositions can have one attribute, `values`, a list of joint positions with 
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.move_to_joint_positions)
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myArm = Arm.from_robot(robot=robot, name='my_arm')
 
 # Declare a list of values with your desired rotational value for each joint on the arm.
 degrees = [0.0, 45.0, 0.0, 0.0, 0.0]
 
-# Declare a new JointPositions with these values.  
+# Declare a new JointPositions with these values.
 jointPos = arm.move_to_joint_positions(JointPositions(values=[0.0, 45.0, 0.0, 0.0, 0.0]))
 
 # Move each joint of the arm to the position these values specify.
@@ -481,13 +481,13 @@ JointPositions can have one attribute, `values`, a list of joint positions with 
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
 
-// Declare an array of values with your desired rotational value for each joint on the arm. 
+// Declare an array of values with your desired rotational value for each joint on the arm.
 degrees := []float64{4.0, 5.0, 6.0}
 
 // Declare a new JointPositions with these values.
@@ -511,7 +511,7 @@ Get the current position of each joint on the arm.
 
 - `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-  
+
 **Returns:**
 
 - `positions` [(JointPositions)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions): The position of each joint of the arm.
@@ -519,10 +519,10 @@ JointPositions can have one attribute, `values`, a list of joint positions with 
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_joint_positions)
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myArm = Arm.from_robot(robot=robot, name='my_arm')
 
-# Get the current position of each joint on the arm as JointPositions. 
+# Get the current position of each joint on the arm as JointPositions.
 pos = await myArm.get_joint_positions()
 ```
 
@@ -542,16 +542,16 @@ JointPositions can have one attribute, `values`, a list of joint positions with 
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
 
-// Get the current position of each joint on the arm as JointPositions. 
+// Get the current position of each joint on the arm as JointPositions.
 pos, err := myArm.GetJointPositions(context.Background(), nil)
 
-// Log any errors that occur. 
+// Log any errors that occur.
 if err != nil {
   logger.Fatalf("cannot get JointPositions of arm: %v", err)
 }
@@ -572,14 +572,14 @@ Stop all motion of the arm.
 
 - `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-  
+
 **Returns:**
 
 - None
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.stop).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myArm = Arm.from_robot(robot=robot, name='my_arm')
 
 # Stop all motion of the arm. It is assumed that the arm stops immediately.
@@ -600,7 +600,7 @@ await myArm.stop()
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
@@ -623,14 +623,14 @@ Get if the arm is currently moving.
 **Parameters:**
 
 - None
-  
+
 **Returns:**
 
 - `is_moving` [(bool)](https://docs.python.org/c-api/bool.html): If it is true or false that the arm is currently moving.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.is_moving).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myArm = Arm.from_robot(robot=robot, name='my_arm')
 
 # Stop all motion of the arm. It is assumed that the arm stops immediately.
@@ -654,7 +654,7 @@ print(myArm.is_moving())
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)

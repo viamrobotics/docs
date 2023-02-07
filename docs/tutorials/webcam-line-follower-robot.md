@@ -62,7 +62,7 @@ Your webcam configuration in the Config Builder will look something like this:
 
 Or if you prefer the raw JSON:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
     {
       "name": "my_camera",
       "type": "camera",
@@ -92,7 +92,7 @@ What this will look like in the Config Builder:
 
 Raw JSON:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "register_models": [
     {
@@ -120,7 +120,7 @@ You'll need to edit the `pipeline` section as well with `type` set to `"detectio
 
 You can paste the following into the **Attributes** section of the `show_detections` config builder:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "stream": "color",
   "source": "my_camera",
@@ -146,7 +146,7 @@ You may have different pin numbers and other attributes depending on your hardwa
 
 {{%expand "Click to view JSON" %}}
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {

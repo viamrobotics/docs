@@ -55,7 +55,7 @@ However, the incremental model is recommended as encoders with two signal wires 
 
 The following example shows the configuration of a board and an encoder.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {

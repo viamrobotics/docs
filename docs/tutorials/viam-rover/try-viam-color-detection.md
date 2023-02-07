@@ -40,7 +40,7 @@ Clicking **Create Service** automatically creates a new service for your rover, 
 
 Copy the following configuration into the attributes of your rover’s vision service.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
  "register_models": [
    {
@@ -117,7 +117,7 @@ We picked 0.3 which means if the detection service is 30% confident of the color
 
 JSON configuration is here if you wish to copy paste it into your Viam rover's config:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
  "source": "cam",
  "pipeline": [

@@ -100,7 +100,7 @@ Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tut
 The [module.go code](https://github.com/viam-labs/tutorial-intermode) creates this model and registers the component instance.
 The *Subtype* of a resource contains its API triplet, so using **base.Subtype** (see line 30 below) registers our new model with the *API* from the RDK's built-in base component (rdk:component:base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 // namespace, model family, model
 var model = resource.NewModel("viamlabs", "tutorial", "intermode")
 
@@ -219,7 +219,7 @@ When you want to leave a method unimplemented you must still create that method,
 
 In this tutorial, you will leave the *IsMoving* method unimplemented (for illustrative purposes).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 func (base *interModeBase) IsMoving(ctx context.Context) (bool, error) {
     return false, utils.NewUnimplementedInterfaceError((*interModeBase)(nil), "intermodeBase does not yet support IsMoving()")
 }

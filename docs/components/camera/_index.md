@@ -38,7 +38,7 @@ Here are details about each of the fields in the camera config:
   * `distortion_parameters`: these are modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens.
  Optional.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 "intrinsic_parameters": { # optional field, intrinsic parameters for 2D <-> transforms
     "height_px": 720, # height of the image in pixels
     "width_px": 1280, # width of the image in pixels
@@ -70,7 +70,7 @@ In Viam parlance, webcams are standard, USB camera devices.
 Viam recommends using a standard webcam rather than a "ribbon" cam (typical a bare camera with a ribbon and connector for mating to a Pi) as they can be very unreliable.
 {{% /alert %}}
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -88,7 +88,7 @@ Viam recommends using a standard webcam rather than a "ribbon" cam (typical a ba
 
 Fake is a fake camera that always returns the same image, which is an image of a chess board. This camera also returns a point cloud.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -102,7 +102,7 @@ Fake is a fake camera that always returns the same image, which is an image of a
 Image_file is a model where the frames for the color and depth images are acquired from a file path.
 Either file path is optional.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -118,7 +118,7 @@ Either file path is optional.
 
 The model for using the velodyne lidar. The velodyne must be running locally at address `0.0.0.0`.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -134,7 +134,7 @@ The model for using the velodyne lidar. The velodyne must be running locally at 
 
 FFmpeg is a model that allows you to use a video file or stream as a camera.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -162,7 +162,7 @@ If you need to specify the intrinsics/extrinsics, or homography parameters, to d
 If they don’t need to be aligned, you can use `join_color_depth`.
 You then specify the stream field to specify which aligned picture you want to stream.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -188,7 +188,7 @@ You then specify the stream field to specify which aligned picture you want to s
 
 The `align_color_depth_extrinsics` model uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align the two images.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -216,7 +216,7 @@ The `align_color_depth_extrinsics` model uses the intrinsics of the color and de
 
 The `align_color_depth_homography` camera model uses a homography matrix to align the color and depth images.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -241,7 +241,7 @@ The `align_color_depth_homography` camera model uses a homography matrix to alig
 
 Combine the point clouds from multiple camera sources and project them to be from the point of view of target_frame
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -263,7 +263,7 @@ Below are the available transformations, and the attributes they need.
 
 Example config:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -283,7 +283,7 @@ Example config:
 The Identity transform does nothing to the image.
 You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "type": "identity",
     "attributes": {
@@ -297,7 +297,7 @@ You can use this transform to change the underlying camera source's intrinsic pa
 The Rotate transformation rotates the image by 180 degrees.
 This feature is useful for when the camera is installed upside down on your robot.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "type": "rotate",
     "attributes": {
@@ -310,11 +310,11 @@ This feature is useful for when the camera is installed upside down on your robo
 
 The Resize transform resizes the image to the specified height and width.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "type": "resize",
     "attributes": {
-        "width_px": int, 
+        "width_px": int,
         "height_px": int
     }
 }
@@ -325,7 +325,7 @@ The Resize transform resizes the image to the specified height and width.
 The Depth-to-Pretty transform takes a depth image and turns it into a colorful image, with blue indicating distant points and red indicating nearby points.
 Actual depth information is lost in the transform.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "type": "depth_to_pretty",
     "attributes": {
@@ -338,7 +338,7 @@ Actual depth information is lost in the transform.
 
 Overlay overlays the depth and color 2D images. Useful in order to debug the alignment of the two images.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "type": "overlay",
     "attributes": {
@@ -360,7 +360,7 @@ The Undistort transform undistorts the input image according to the intrinsics a
 Currently only supports a Brown-Conrady model of distortion (20 September 2022).
 For further information, please refer to the [OpenCV docs](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a).
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "type": "undistort",
     "attributes": {
@@ -387,7 +387,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 The Detections transform takes the input image and overlays the detections from a given detector present within the [Vision Service](/services/vision/).
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "type": "detections",
     "attributes": {
@@ -401,13 +401,13 @@ The Detections transform takes the input image and overlays the detections from 
 
 The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "type": "depth_edges",
     "attributes": {
         "high_threshold_pct": float, # between 0.0 - 1.0
         "low_threshold_pct": float, # between 0.0 - 1.0
-        "blur_radius_px": float # smooth image before applying filter 
+        "blur_radius_px": float # smooth image before applying filter
     }
 }
 ```
@@ -416,7 +416,7 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 
 Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "type": "depth_preprocess",
     "attributes": {
@@ -435,7 +435,7 @@ If you have two endpoints, one for color images and one for depth images, you ca
 
 single_stream is a model where there is a camera server streaming image data. You must specify if it is streaming "color", "depth" data. Single_stream can only output a point cloud if a "depth" stream is selected. Color streams will fail at producing point clouds.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -451,7 +451,7 @@ single_stream is a model where there is a camera server streaming image data. Yo
 
 dual_stream is a model where there are two camera servers streaming data, one is the color stream, and the other is the depth stream. This is useful for generating colorful point clouds.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -476,7 +476,7 @@ For more details, check out [this link to our camera server repository](https://
 If you are getting "timeout" errors from GRPC when adding a `webcam` model, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box):
 
 ```bash
-$ sudo raspi-config
+sudo raspi-config
 Interface Options -> Camera -> Enable Camera
 Restart the Pi
 ```

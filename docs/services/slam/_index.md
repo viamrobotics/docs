@@ -192,7 +192,7 @@ To recap, the directory must be structured as follows:
 - `map` contains the generated maps, saved at `map_rate_sec`.
 - `config` contains all SLAM library specific config files.
 
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 If this directory structure is not present, the SLAM service creates it.
 {{% /alert %}}
 

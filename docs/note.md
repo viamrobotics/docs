@@ -64,7 +64,7 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 Line numbering is on by default.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
 "word":"As before, three backticks and the language name enables Prism syntax highlighting.",
 "note":"Use "json-viam" as the language to highlight Viam's keywords."
