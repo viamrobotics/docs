@@ -273,7 +273,7 @@ This has the following sub-options:
 
 **Example usage**:
 
-```python {class="line-numbers linkable-line-numbers"}
+```python
 extra = {"motion_profile": "linear"}
 ```
 
