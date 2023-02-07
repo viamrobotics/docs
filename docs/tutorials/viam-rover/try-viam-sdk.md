@@ -97,12 +97,12 @@ Your main function should look like this:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="5"}
 async def main():
-  robot = await connect()
+    robot = await connect()
 
-  # Get the base component from the Viam Rover
-  roverBase = Base.from_robot(robot, 'viam_base')
+    # Get the base component from the Viam Rover
+    roverBase = Base.from_robot(robot, 'viam_base')
 
-  await robot.close()
+    await robot.close()
 ```
 
 Now that your Viam Rover base is initialized, you can write code to drive it in a square.
@@ -110,30 +110,30 @@ Paste this snippet above your `main()` function:
 
 ```python
 async def moveInSquare(base):
-  for _ in range(4):
-    # moves the Viam Rover forward 500mm at 500mm/s
-    await base.move_straight(velocity=500, distance=500)
-    print("move straight")
-    # spins the Viam Rover 90 degrees at 100 degrees per second
-    await base.spin(velocity=100, angle=90)
-    print("spin 90 degrees")
+    for _ in range(4):
+        # moves the Viam Rover forward 500mm at 500mm/s
+        await base.move_straight(velocity=500, distance=500)
+        print("move straight")
+        # spins the Viam Rover 90 degrees at 100 degrees per second
+        await base.spin(velocity=100, angle=90)
+        print("spin 90 degrees")
 ```
 
-You can run this code by invoking the `moveInSquare()` function below the code that initializes your base.
+Invoke the `moveInSquare()` function in your main function after initializing your base.
 
 Your main function should now look like this:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
 async def main():
-  robot = await connect()
+    robot = await connect()
 
-  # Get the base component from the Viam Rover
-  roverBase = Base.from_robot(robot, 'viam_base')
+    # Get the base component from the Viam Rover
+    roverBase = Base.from_robot(robot, 'viam_base')
 
-  # Move the Viam Rover in a square
-  await moveInSquare(roverBase)
+    # Move the Viam Rover in a square
+    await moveInSquare(roverBase)
 
-  await robot.close()
+    await robot.close()
 ```
 
 {{% /tab %}}
@@ -160,27 +160,27 @@ Your main function should look like this:
 
 ```go {class="line-numbers linkable-line-numbers" data-line="19-22"}
 func main() {
-  logger := golog.NewDevelopmentLogger("client")
-  robot, err := client.New(
-    context.Background(),
-    "ADDRESS_FROM_VIAM_APP",
-    logger,
-    client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-      Type: utils.CredentialsTypeRobotLocationSecret,
-      Payload: "SECRET_FROM_VIAM_APP",
-    })),
-  )
-  if err != nil {
-    logger.Fatal(err)
-  }
+    logger := golog.NewDevelopmentLogger("client")
+    robot, err := client.New(
+        context.Background(),
+        "ADDRESS_FROM_VIAM_APP",
+        logger,
+        client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+            Type: utils.CredentialsTypeRobotLocationSecret,
+            Payload: "SECRET_FROM_VIAM_APP",
+        })),
+    )
+    if err != nil {
+        logger.Fatal(err)
+    }
 
-  defer robot.Close(context.Background())
+    defer robot.Close(context.Background())
 
-  // Get the base from the Viam Rover
-  roverBase, err := base.FromRobot(robot, "viam_base")
-  if err != nil {
-    logger.Fatalf("cannot get base: %v", err)
-  }
+    // Get the base from the Viam Rover
+    roverBase, err := base.FromRobot(robot, "viam_base")
+    if err != nil {
+        ogger.Fatalf("cannot get base: %v", err)
+    }
 }
 ```
 
@@ -189,32 +189,32 @@ Paste this snippet above your `main()` function:
 
 ```go
 func moveInSquare(ctx context.Context, base base.Base, logger golog.Logger) {
-  for i := 0; i < 4; i++ {
-    // moves the Viam Rover forward 600mm at 500mm/s
-    base.MoveStraight(ctx, 600, 500.0, nil)
-    logger.Info("move straight")
-    // spins the Viam Rover 90 degrees at 100 degrees per second
-    base.Spin(ctx, 90, 100.0, nil)
-    logger.Info("spin 90 degrees")
+    for i := 0; i < 4; i++ {
+        // moves the Viam Rover forward 600mm at 500mm/s
+        base.MoveStraight(ctx, 600, 500.0, nil)
+        logger.Info("move straight")
+        // spins the Viam Rover 90 degrees at 100 degrees per second
+        base.Spin(ctx, 90, 100.0, nil)
+        logger.Info("spin 90 degrees")
   }
 }
 ```
 
-You can run this code by invoking the `moveInSquare()` function below the code that initializes your base.
+Invoke the `moveInSquare()` function in your main function after initializing your base.
 
 Your main function should now look like this:
 
 ```go {class="line-numbers linkable-line-numbers" data-line="10"}
 func main() {
-  // Connect rover to Viam...
-  // Get the base from the Viam Rover
-  roverBase, err := base.FromRobot(robot, "viam_base")
-  if err != nil {
-    logger.Fatalf("cannot get base: %v", err)
-  }
+    // Connect rover to Viam...
+    // Get the base from the Viam Rover
+    roverBase, err := base.FromRobot(robot, "viam_base")
+    if err != nil {
+        logger.Fatalf("cannot get base: %v", err)
+    }
 
-  // Move the Viam Rover in a square
-  moveInSquare(context.Background(), roverBase, logger)
+    // Move the Viam Rover in a square
+    moveInSquare(context.Background(), roverBase, logger)
 }
 ```
 
@@ -254,13 +254,13 @@ async def connect():
     return await RobotClient.at_address('ADDRESS_FROM_VIAM_APP', opts)
 
 async def moveInSquare(base):
-  for _ in range(4):
-    # moves the Viam Rover forward 500mm at 500mm/s
-    await base.move_straight(velocity=500, distance=500)
-    print("move straight")
-    # spins the Viam Rover 90 degrees at 100 degrees per second
-    await base.spin(velocity=100, angle=90)
-    print("spin 90 degrees")
+    for _ in range(4):
+        # moves the Viam Rover forward 500mm at 500mm/s
+        await base.move_straight(velocity=500, distance=500)
+        print("move straight")
+        # spins the Viam Rover 90 degrees at 100 degrees per second
+        await base.spin(velocity=100, angle=90)
+        print("spin 90 degrees")
 
 async def main():
     robot = await connect()
@@ -286,49 +286,49 @@ if __name__ == '__main__':
 package main
 
 import (
-  "context"
+    "context"
 
-  "github.com/edaniels/golog"
-  "go.viam.com/rdk/components/base"
-  "go.viam.com/rdk/robot/client"
-  "go.viam.com/rdk/utils"
-  "go.viam.com/utils/rpc"
+    "github.com/edaniels/golog"
+    "go.viam.com/rdk/components/base"
+    "go.viam.com/rdk/robot/client"
+    "go.viam.com/rdk/utils"
+    "go.viam.com/utils/rpc"
 )
 
 func moveInSquare(ctx context.Context, base base.Base, logger golog.Logger) {
-  for i := 0; i < 4; i++ {
-    // moves the Viam Rover forward 600mm at 500mm/s
-    base.MoveStraight(ctx, 600, 500.0, nil)
-    logger.Info("move straight")
-    // spins the Viam Rover 90 degrees at 100 degrees per second
-    base.Spin(ctx, 90, 100.0, nil)
-    logger.Info("spin 90 degrees")
-  }
+    for i := 0; i < 4; i++ {
+        // moves the Viam Rover forward 600mm at 500mm/s
+        base.MoveStraight(ctx, 600, 500.0, nil)
+        logger.Info("move straight")
+        // spins the Viam Rover 90 degrees at 100 degrees per second
+        base.Spin(ctx, 90, 100.0, nil)
+        logger.Info("spin 90 degrees")
+    }
 }
 
 func main() {
-  logger := golog.NewDevelopmentLogger("client")
-  robot, err := client.New(
-    context.Background(),
-    "ADDRESS_FROM_VIAM_APP",
-    logger,
-    client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-      Type: utils.CredentialsTypeRobotLocationSecret,
-      Payload: "SECRET_FROM_VIAM_APP",
-    })),
-  )
-  if err != nil {
-    logger.Fatal(err)
-  }
-  defer robot.Close(context.Background())
+    logger := golog.NewDevelopmentLogger("client")
+    robot, err := client.New(
+        context.Background(),
+        "ADDRESS_FROM_VIAM_APP",
+        logger,
+        client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+            Type:    utils.CredentialsTypeRobotLocationSecret,
+            Payload: "SECRET_FROM_VIAM_APP",
+        })),
+    )
+    if err != nil {
+        logger.Fatal(err)
+    }
+    defer robot.Close(context.Background())
 
-  // Get the base from the Viam Rover
-  roverBase, err := base.FromRobot(robot, "viam_base")
-  if err != nil {
-    logger.Fatalf("cannot get base: %v", err)
-  }
+    // Get the base from the Viam Rover
+    roverBase, err := base.FromRobot(robot, "viam_base")
+    if err != nil {
+        logger.Fatalf("cannot get base: %v", err)
+    }
 
-  moveInSquare(context.Background(), roverBase, logger)
+    moveInSquare(context.Background(), roverBase, logger)
 }
 ```
 
