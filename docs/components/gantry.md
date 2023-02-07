@@ -97,48 +97,15 @@ This is how you configure a one-axis gantry:
     </td>
     <td>
       The name of the board that is connected to the limit switches and pins.
+      If limit pins exist, board is required.
     </td>
   </tr>
   <tr>
     <td>
-      motor
+      *motor
     </td>
     <td>
       The name of the motor that moves the gantry.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      limit_pins
-    </td>
-    <td>
-      The pins attached to the limit switches on either end. Optional for encoded
-      motor gantry types.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      limit_pin_enabled_high
-    </td>
-    <td>
-      If it is true or false that the limit pins are enabled.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      length_mm
-    </td>
-    <td>
-      The length of the axis of the gantry in mm.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      mm_per_rev
-    </td>
-    <td>
-      How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output
-      shaft. This typically corresponds to Distance = PulleyDiameter*2*pi, or the pitch of a linear screw.
     </td>
   </tr>
   <tr>
@@ -151,11 +118,54 @@ This is how you configure a one-axis gantry:
   </tr>
   <tr>
     <td>
-      axis
+      limit_pins
     </td>
     <td>
-      The axis in which the gantry is allowed to move relative to the reference
-      frame (x, y, z).
+      The pins attached to the limit switches on either end.
+      If motor type is not encoded, limit_pins is required.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      limit_pin_enabled_high
+    </td>
+    <td>
+      If it is true or false that the limit pins are enabled.
+      Default is false.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      *length_mm
+    </td>
+    <td>
+      The length of the axis of the gantry in mm.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      mm_per_rev
+    </td>
+    <td>
+      How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output
+      shaft.
+      This typically corresponds to Distance = PulleyDiameter*pi, or the pitch of a linear screw.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      gantry_rpm
+    </td>
+    <td>
+      The gantry motor's default rpm.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      *axis
+    </td>
+    <td>
+      The axis in which the gantry is allowed to move (x, y, z).
       <!-- <p>
         You can add a frame to a one-axis gantry attribute to describe its
         position in the local "world" frame.
@@ -170,6 +180,9 @@ This is how you configure a one-axis gantry:
 </table>
 <!-- A frame can also be added to a one-axis gantry attribute to describe its position in the local "world" [frame](/services/frame-system/). -->
 
+(*) Indicates an attribute is required.
+() Indicates an attribute is optional.
+
 #### Multi Axis
 
 A multi-axis gantry component is made up of many single-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
@@ -179,7 +192,7 @@ This is how you configure a multi-axis gantry:
 {{< tabs name="Example Gantry Config Multi-Axis" >}}
 {{< tab name="Config Builder" >}}
 
-<img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="Picture of what an example configuration for a one-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
+<img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="Example configuration for a one-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
 {{% tab name="Raw JSON" %}}
@@ -463,6 +476,8 @@ func main() {
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## API
 
 ### Position
 
