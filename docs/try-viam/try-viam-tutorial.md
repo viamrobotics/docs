@@ -87,7 +87,7 @@ You can also view and control the camera streams from the [individual camera com
 
 #### Movement control
 
-To move your rover, click on **viam_base**
+To move your rover, click on **viam_base**.
 You can use the **W**, **A**, **S**, and **D** buttons to move forward, turn left, move backwards, and turn right.
 
 If you enable the keyboard toggle, you can also control the rover's movement with the **W**, **A**, **S**, and **D** keys and the arrow keys on your keyboard.
@@ -139,7 +139,7 @@ You can click on each motor panel and make the motor **RUN** or **STOP**.
 
 ![The left and right motor panels on the CONTROL tab.](../img/try-viam/left-right-panels.png)
 
-You can also run each motor at a different power level to go faster or slower and at different rotation directions to go forwards or backwards.
+Run each motor at a different power level to go faster or slower, and toggle rotation directions to go forwards or backwards.
 You can also see their current positions (based on encoder readings) in real time:
 
 ![The left motor running at 20% power and forwards and right motor running at 80% power and backwards.](../img/try-viam/motors-running.png)
@@ -148,7 +148,10 @@ You can also see their current positions (based on encoder readings) in real tim
 
 #### Board control
 
-The [board](/components/board) component is the signal wire hub of a robot.
+The [board](/components/board) component refers to a single board computer, like the Raspberry Pi, BeagleBone, or Jetson, or a GPIO peripheral like the Numato GPIO Module.
+No matter the make or model, the board of your robot is its signal wire hub.
+Configuring a board component allows you to control the states of individual GPIO pins to command the electrical signals sent through and received by the board.
+
 For the Viam Rover, the board component is named `local` and controls a Raspberry Pi on the Viam Rover.
 With it, you can control the states of individual GPIO pins on the board.
 
@@ -188,12 +191,12 @@ There you can view the configuration for each component in the robot: attributes
 ### Board configuration
 
 The [board](/components/board) component is the signal wire hub of a robot which allows you to control the states of individual GPIO pins on the board.
-For the Viam Rover, the board component controls a Raspberry Pi with **Name** `local`, **Type** `board`, and **Model** `pi`.
+For the Viam Rover, the board component is a Raspberry Pi with **Name** `local`, **Type** `board`, and **Model** `pi`.
 
 ### Encoder configuration
 
-An [encoder](/components/encoder) is a device that is used to sense angular position, direction and/or speed of rotation. In this case,
-the encoders on the left and right motors are `Lenc` and `Renc` and configure the pins to `le` and `re`.
+An [encoder](/components/encoder) is a device that is used to sense angular position, direction and/or speed of rotation.
+In this case, the encoders on the left and right motors are `Lenc` and `Renc` and configure the pins to `le` and `re`.
 
 {{< alert title="Note" color="note" >}}
 When configuring encoded motors for your own robot, you must configure the encoders before the motors because the motors depend on the encoders.
