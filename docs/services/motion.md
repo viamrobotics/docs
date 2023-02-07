@@ -360,7 +360,7 @@ This profile takes no parameters.
 extra = {"motion_profile": "free"}
 ```
 
-## Planning Algorithm
+## Planning Algorithms
 
 Viam implements two planning algorithms, both based in principle on <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">RRT</a>[^RRT].
 
