@@ -51,7 +51,6 @@ Here’s an example configuration:
       "model": "gpio",
       "attributes": {
         "board": "local",
-        "max_rpm": 500,
         "pins": {
           "pwm": "16",
           "dir": "18"

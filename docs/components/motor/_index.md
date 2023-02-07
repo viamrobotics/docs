@@ -32,15 +32,26 @@ You'll also need a [board](/components/board/) to send signals to the motor driv
 
 Method Name | Golang | Python | Description
 ----------- | ------ | ------ | -----------
-[SetPower](#setpower)    | SetPower | set_power |
-[GoFor](#gofor) | GoFor  | [go_for](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_for) | Spin the motor the specified number of revolutions at specified RPM.
-[GoTo](#goto) | GoTo   | go_to |
-[ResetZeroPosition](#resetzeroposition) | ResetZeroPosition | reset_zero_position |
-[GetPosition](#getposition) | GetPosition | get_position |
-[GetProperties](#getproperties) | GetProperties | get_properties |
-[Stop](#stop) | Stop | stop |
-[IsPowered](#ispowered) | IsPowered | is_powered |
-[IsMoving](#ismoving) | IsMoving | is_moving |
+[SetPower](#setpower) | [SetPower][go_motor] | [set_power][python_set_power] | Set the "percentage" (between -1 and 1) of power to send to the motor. 1 is full power; -1 is 100% power backwards.
+[GoFor](#gofor) | [GoFor][go_motor]  | [go_for][python_go_for] | Spin the motor the specified number of revolutions at specified RPM.
+[GoTo](#goto) | [GoTo][go_motor]   | [go_to][pthon_go_to] |
+[ResetZeroPosition](#resetzeroposition) | [ResetZeroPosition][go_motor] | [reset_zero_position][python_reset_zero_position] |
+[GetPosition](#getposition) | [GetPosition][go_motor] | [get_position][python_get_position] |
+[GetProperties](#getproperties) | [GetProperties][go_motor] | [get_properties][python_get_properties] |
+[Stop](#stop) | [Stop][go_motor] | [stop][python_stop] |
+[IsPowered](#ispowered) | [IsPowered][go_motor] | [is_powered][python_is_powered] |
+[IsMoving](#ismoving) | [IsMoving][go_motor] | [is_moving][python_is_moving] |
+
+[go_motor]: https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor
+[python_set_power]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.set_power
+[python_go_for]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_for
+[pthon_go_to]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_to
+[python_reset_zero_position]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.reset_zero_position
+[python_get_position]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.get_position
+[python_get_properties]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.get_properties
+[python_stop]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.stop
+[python_is_powered]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_powered
+[python_is_moving]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_moving
 
 ## Configuration
 
@@ -148,20 +159,154 @@ m2.GoFor(context.Background(), 1000, 200, nil)
 
 ### API Details
 
+In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor)
+or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#).
+
 #### SetPower
+
+Set the "percentage" (between -1 and 1) of power to send to the motor.
+1 is full power; -1 is 100% power backwards.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `power` (float): Power between -1 and 1. Negative is backwards.
+
+**Returns:**
+
+- None
+
+**Example usage:**
+
+```python
+myMotor = Motor.from_robot(robot = robot, name = 'my_motor')
+
+# Set the power to 40% forwards.
+await myMotor.set_power(power = 0.4)
+```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+**Parameters:**
+
+- `ctx` (context):
+- `powerPct` (float64):
+- `extra` (map[string]interface{})
+
+**Returns:**
+
+- `error` (error): An error, if one occurred.
+
+**Example usage:**
+
+```go
+myMotor, err := motor.FromRobot(robot, "motor1")
+
+// Set the motor power to 40% forwards.
+myMotor.SetPower(context.Background(), 1, nil)
+
+```
+
+<!--
+{{% /tab %}}
+{{< /tabs >}}
 
 #### GoFor
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
 #### GoTo
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+{{% /tab %}}
+
+{{% tab name="Golang" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 #### ResetZeroPosition
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+{{% /tab %}}
+
+{{% tab name="Golang" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
 #### GetPosition
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+{{% /tab %}}
+
+{{% tab name="Golang" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 #### GetProperties
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+{{% /tab %}}
+
+{{% tab name="Golang" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
 #### Stop
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+{{% /tab %}}
+
+{{% tab name="Golang" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 #### IsPowered
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+{{% /tab %}}
+
+{{% tab name="Golang" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
 #### IsMoving
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+{{% /tab %}}
+
+{{% tab name="Golang" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
+-->
