@@ -23,7 +23,9 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 ## Add the Vision Service
 
-Navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CONFIG** tab, and click on **SERVICES**.
+Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
+Click on the robot you wish to add the Vision service to.
+Select the **CONFIG** tab, and click on **SERVICES**.
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
 
@@ -31,7 +33,7 @@ To create a [Vision Service](/services/vision/):
 2. Enter `vision` as the **Name**.
 3. Click **Create Service**.
 
-<img src="../../img/try-viam-color-detection/create-service.png" alt="The Viam app's Create Service tab lists the type as vision and name as vision, with a Create Service button.">
+<img src="../../img/try-viam-color-detection/create-service.png" alt="The Create Service panel lists the type as vision and name as vision, with a Create Service button.">
 
 ## Detect a color
 
@@ -93,9 +95,9 @@ To create a [transform camera](/components/camera/#transform):
 3. Select `transform` as the **Model**.
 4. Click **Create Component**.
 
-![The Viam app showing the Create Component panel populated with a cam component. The name is detectionCam, the type is camera, and the model is transform.](../../img/try-viam-color-detection/create-component-pane.png)
+![The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.](../../img/try-viam-color-detection/create-component-pane.png)
 
-Viam generates an empty **Attributes** section for the detectionCam's component panel.
+Viam generates an empty **Attributes** section for the detection camera's component panel.
 The panel's **Attribute Guide** section displays the available attributes for the selected component.
 
 {{% alert title="Tip" color="tip" %}}
@@ -121,31 +123,30 @@ Copy the following JSON configuration into the Attributes section:
 }
 ```
 
-- `source` is the name of the physical camera on the rover, which is the camera you want to get the detections from.
-  By default, the camera's name is `cam`.
-- In `attributes`
-  - The `detector_name` is the name of your detector.
-    If you copied the one from above, the name is `my_color_detector`.
-  - The `confidence_threshold` is 0.3 which means a color is detected if the detection service is at least 30% confident of the color.
-- The `type` is `detections`.
+<br>
+
+| Field | Default value | Description |
+| ----- | ------------- | ----------- |
+| `source` | `cam` | The name of the physical camera on the rover, which provides the visual feed to get detections from. |
+| `attributes` | | The attributes of this detectionCam. |
+| `attributes.detector_name` | `my_color_detector` | The name of this detectionCam. |
+| `attributes.confidence_threshold` | `0.3` (30%) | The percentage of confidence in the color being present the detection service needs to detect a color. |
+| `type` | `detections` | The type of the component. |
 
 ![The Viam app showing the detectionCam component section. It contains the Attributes section with a skeleton configuration, including source, pipeline, type, and attributes. The panel has an Attributes section populated with transform camera component attributes. The are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](../../img/try-viam-color-detection/detectioncam-component-panel.png)
 
 After adding the component and its attributes, click **SAVE CONFIG**.
 
-## Test your transform camera in the control tab
+## Test your transform camera in the CONTROL tab
 
 In the **CONTROL** tab, click on your base component and add the detection camera from the **Select Cameras** drop down.
-If you have configured the component and service correctly, you see the `detectionCam`.
-Select it.
+
 Next, enable the keyboard and move your rover around until your camera detects the configured color.
-Each time your camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
+Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
 
 ![Base component panel displaying an example color detection.](../../img/try-viam-color-detection/detected-example.png)
 
 If you scroll down in the **CONTROL** tab, you can also click on the detectionCam's own section to view its stream there.
-
-![The Viam app showing the detectionCam component panel. The Refresh Frequency selector is set to live, and the Export Frequency button is beside it. The detectionCam stream is visible and displays a red square surrounded by a red a color detection box labeled Rose:1.00."](../../img/try-viam-color-detection/detectioncam-comp-stream.png)
 
 ## Next Steps
 
