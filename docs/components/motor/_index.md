@@ -157,12 +157,12 @@ m2.GoFor(context.Background(), 1000, 200, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### API Details
+## API Details
 
 In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor)
 or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#).
 
-#### SetPower
+### SetPower
 
 Set the "percentage" (between -1 and 1) of power to send to the motor.
 1 is full power; -1 is 100% power backwards.
@@ -181,7 +181,7 @@ Set the "percentage" (between -1 and 1) of power to send to the motor.
 **Example usage:**
 
 ```python
-myMotor = Motor.from_robot(robot = robot, name = 'my_motor')
+myMotor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Set the power to 40% forwards.
 await myMotor.set_power(power = 0.4)
@@ -192,7 +192,7 @@ await myMotor.set_power(power = 0.4)
 
 **Parameters:**
 
-- `ctx` (context):
+- `ctx` (context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `powerPct` (float64):
 - `extra` (map[string]interface{})
 
@@ -206,107 +206,144 @@ await myMotor.set_power(power = 0.4)
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Set the motor power to 40% forwards.
-myMotor.SetPower(context.Background(), 1, nil)
+myMotor.SetPower(context.Background(), 0.4, nil)
 
 ```
 
-<!--
 {{% /tab %}}
 {{< /tabs >}}
 
-#### GoFor
+### GoFor
+
+Spin the motor the specified number of revolutions at specified revolutions per minute.
+When `rpm` or `revolutions` is a negative value, the rotation will be in the backward direction.
+If both `rpm` and `revolutions` are negative, the motor will spin in the forward direction.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
+**Parameters:**
+
+- `rpm` (float): Speed at which the motor should move in revolutions per minute (negative implies backwards).
+- `revolutions` (float): Number of revolutions the motor should run for (negative implies backwards).
+
+**Returns:**
+
+- None
+
+**Example usage:**
+
+```python
+myMotor = Motor.from_robot(robot=robot, name='my_motor')
+
+# Turn the motor 7.2 revolutions at 60 RPM.
+await myMotor.go_for(rpm=60, revolutions=7.2)
+```
+
 {{% /tab %}}
 {{% tab name="Golang" %}}
+
+**Parameters:**
+
+- `ctx` (context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `rpm` (float): Speed at which the motor should move in revolutions per minute (negative implies backwards).
+- `revolutions` (float): Number of revolutions the motor should run for (negative implies backwards).
+  If revolutions is 0, this will run the motor at `rpm` indefinitely.
+  If revolutions != 0, this will block until the number of revolutions has been completed or another operation comes in.
+- `extra` (map[string]interface{})
+
+**Returns:**
+
+- `error` (error): An error, if one occurred.
+
+**Example usage:**
+
+```go
+myMotor, err := motor.FromRobot(robot, "motor1")
+
+// Turn the motor 7.2 revolutions at 60 RPM.
+myMotor.GoFor(context.Background(), 60, 7.2, nil)
+```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-#### GoTo
+### GoTo
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-
+python
 {{% /tab %}}
 
 {{% tab name="Golang" %}}
-
+go
 {{% /tab %}}
 {{< /tabs >}}
 
-#### ResetZeroPosition
+### ResetZeroPosition
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-
+python
 {{% /tab %}}
 
 {{% tab name="Golang" %}}
-
+go
 {{% /tab %}}
 {{< /tabs >}}
 
-#### GetPosition
+### GetPosition
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-
+p
 {{% /tab %}}
 
 {{% tab name="Golang" %}}
-
+g
 {{% /tab %}}
 {{< /tabs >}}
 
-#### GetProperties
+### GetProperties
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-
+p
 {{% /tab %}}
-
 {{% tab name="Golang" %}}
-
+g
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Stop
+### Stop
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-
+p
 {{% /tab %}}
-
 {{% tab name="Golang" %}}
-
+g
 {{% /tab %}}
 {{< /tabs >}}
 
-#### IsPowered
+### IsPowered
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-
+p
 {{% /tab %}}
-
 {{% tab name="Golang" %}}
-
+g
 {{% /tab %}}
 {{< /tabs >}}
 
-#### IsMoving
+### IsMoving
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-
+p
 {{% /tab %}}
-
 {{% tab name="Golang" %}}
-
+g
 {{% /tab %}}
 {{< /tabs >}}
-
--->
