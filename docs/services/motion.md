@@ -378,7 +378,7 @@ It will create paths which are guaranteed to conform to specified constraints, a
 By default, it will use a “free” constraint, that is, it will not constrain the path of motion at all.
 This is to ensure that paths will be found when using defaults.
 CBiRRT will return the first valid path that it finds.
-The CBiRRT algorithm used by Viam is based on the algorithm described in this paper: <a href="https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf" target="_blank">ht<span></span>tps://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf]</a>
+The CBiRRT algorithm used by Viam is based on the algorithm described in this paper: <a href="https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf" target="_blank"><span></span>www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf</a>
 
 By default, Viam uses a hybrid approach.
 First, RRT*-Connect is run for 1.5 seconds.
