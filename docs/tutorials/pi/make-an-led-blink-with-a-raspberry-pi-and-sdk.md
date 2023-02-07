@@ -112,7 +112,7 @@ We will need this component in order to interact with the GPIO pins on our Raspb
 
 At the top of your <file>blink.py</file> file, add the following to the import statement without removing any of the other imports
 
-```python {class="line-numbers linkable-line-numbers"}
+```python
 from viam.components.board import Board
 ```
 
