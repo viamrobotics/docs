@@ -11,9 +11,9 @@ This tutorial shows how to use the Viam [Vision Service](/services/vision/) to m
 
 {{<video src="../../videos/scuttledemos_colordetection.mp4" type="video/mp4">}}
 
-### Python.py Code
+### Code used in this tutorial
 
-[**Python.py code**](https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0)
+[`scuttle.py` GitHub Gist](https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0)
 
 ## Prerequisites
 
