@@ -83,7 +83,7 @@ The first thing you need to do is import the [base component](https://python.via
 The base is responsible for controlling the motors attached to the base of the rover.
 Add the following line of code to your imports:
 
-```python {class="line-numbers linkable-line-numbers"}
+```python
 from viam.components.base import Base
 ```
 
