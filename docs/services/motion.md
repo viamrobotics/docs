@@ -23,6 +23,7 @@ Viam’s Motion Service is enabled in RDK by default, and no extra configuration
 The “Move” endpoint is the primary way to move multiple components, or to move any object to any other location.
 Given a destination pose and a component to move to that destination, the motion service will construct a full kinematic chain from goal to destination including all movable components in between, and will solve that chain to place the goal at the destination while meeting specified constraints.
 It will then execute that movement to move the actual robot, and return whether or not this process succeeded.
+The volumes associated with all configured robot parts locally or remote will be taken into account for each request to ensure that collisions do not occur.
 
 {{% alert title="Note" color="note" %}}
 The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles and interaction spaces as documented below.
@@ -363,17 +364,29 @@ extra = {"motion_profile": "free"}
 
 Viam implements two planning algorithms, both based in principle on <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">RRT</a>[^RRT].
 
-* RRT*-Connect
+**`RRT*-Connect`**:
+RRT*-Connect is an asypmptotically optimal planner that samples the planning space randomly, connecting viable paths as it finds them.
+It will continue sampling after it finds its first valid path, and if it finds future paths that are more efficient, it will update to report those instead.
+For Viam, efficiency/path quality is measured in terms of total kinematics state excursion.
+For an arm, this refers to joints; the total amount of joint change will be minimized.
+For a gantry, this refers to the amount of linear movement.
+This algorithm is able to route around obstacles, but is unable to satisfy topological constraints.
 
-RRT*-Connect is an asypmptotically optimal planner that samples the plannign space randomly 
-
-* CBiRRT
-
-Currently, the only algorithm available for use is CBiRRT, which stands for Constrained, Bidirectional implementation of <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">RRT</a>[^RRT].
+**`CBiRRT`**:
+CBiRRT stands for Constrained, Bidirectional implementation of <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">RRT</a>[^RRT].
 It will create paths which are guaranteed to conform to specified constraints, and attempt to smooth them afterwards as needed.
 By default, it will use a “free” constraint, that is, it will not constrain the path of motion at all.
-This is to ensure that paths will be found when using defaults, even in highly constrained scenarios.
-
+This is to ensure that paths will be found when using defaults.
+CBiRRT will return the first valid path that it finds.
 The CBiRRT algorithm used by Viam is based on the algorithm described in this paper: <a href="https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf" target="_blank">ht<span></span>tps://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf]</a>
+
+By default, Viam uses a hybrid approach.
+First, RRT*-Connect is run for 1.5 seconds.
+If a path is not returned, then CBiRRT is called to attempt to find a path, as it takes a more incremental approach which tends to be more likely to find paths in more difficult, constrained scenarios.
+If CBiRRT is successful, then this path will be returned.
+If unsuccessful, an error is returned.
+However, if RRT*-Connect is initially successful, the path will be evaluated for optimality.
+If the total amount of joint excursion is more than double the minimum possible to go directly to the best Inverse Kinematics solution, then CBiRRT will be run anyway, to attempt to get a better path.
+The two paths will be smoothed, and compared to one another, and the most optimal path will be returned.
 
 [^RRT]: RRT: <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree" target="_blank">ht<span></span>tps://en.wikipedia.org/wiki/Rapidly-exploring_random_tree</a>
