@@ -28,21 +28,22 @@ As is evident in the table above, how you configure your motor with Viam depends
 This document assumes you have motor, compatible motor driver, and power supply.
 You'll also need a [board](/components/board/) to send signals to the motor driver[^dmcboard].
 
-## API
+## API Overview
 
 Method Name | Golang | Python | Description
 ----------- | ------ | ------ | -----------
-[SetPower](#setpower) | [SetPower][go_motor] | [set_power][python_set_power] | Set the "percentage" (between -1 and 1) of power to send to the motor. 1 is full power; -1 is 100% power backwards.
-[GoFor](#gofor) | [GoFor][go_motor]  | [go_for][python_go_for] | Spin the motor the specified number of revolutions at specified RPM.
-[GoTo](#goto) | [GoTo][go_motor]   | [go_to][pthon_go_to] |
-[ResetZeroPosition](#resetzeroposition) | [ResetZeroPosition][go_motor] | [reset_zero_position][python_reset_zero_position] |
-[GetPosition](#getposition) | [GetPosition][go_motor] | [get_position][python_get_position] |
-[GetProperties](#getproperties) | [GetProperties][go_motor] | [get_properties][python_get_properties] |
-[Stop](#stop) | [Stop][go_motor] | [stop][python_stop] |
-[IsPowered](#ispowered) | [IsPowered][go_motor] | [is_powered][python_is_powered] |
-[IsMoving](#ismoving) | [IsMoving][go_motor] | [is_moving][python_is_moving] |
+[SetPower](#setpower) | [SetPower][go_motor] | [set_power][python_set_power] | Set the "percentage" of power to send to the motor.
+[GoFor](#gofor) | [GoFor][go_motor] | [go_for][python_go_for] | Spin the motor the specified number of revolutions at specified RPM.
+[GoTo](#goto) | [GoTo][go_motor] | [go_to][pthon_go_to] | Send the motor to a specified position (in terms of revolutions from home) at a specified speed.
+[ResetZeroPosition](#resetzeroposition) | [ResetZeroPosition][go_motor] | [reset_zero_position][python_reset_zero_position] | Set the current position to be the new zero (home) position.
+[GetPosition](#getposition) | [Position][go_motor] | [get_position][python_get_position] | Reports the position of the motor based on its encoder. Not supported on all motors.
+[GetProperties](#getproperties) | [Properties][go_motor] | [get_properties][python_get_properties] | Returns whether or not the motor supports certain optional features.
+[Stop](#stop) | [Stop][go_motor] | [stop][python_stop] | Cuts power to the motor off immediately, without any gradual step down.
+[IsPowered](#ispowered) | [IsPowered][go_motor] | [is_powered][python_is_powered] | Returns whether or not the motor is currently on, and the percent power.
+[IsMoving](#ismoving) | [IsMoving][go_motor_moving] | [is_moving][python_is_moving] | Returns whether the motor is moving or not.
 
 [go_motor]: https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor
+[go_motor_moving]: https://pkg.go.dev/go.viam.com/rdk@v0.2.15/resource#MovingCheckable
 [python_set_power]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.set_power
 [python_go_for]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_for
 [pthon_go_to]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_to
@@ -100,7 +101,7 @@ Refer to the document for your specific motor model for attribute configuration 
 
 [^dmcboard]: The `DMC4000` model does not require a board.
 
-### Usage example
+## Usage example
 
 {{% alert title="Note" color="note" %}}
 
@@ -172,7 +173,7 @@ Set the "percentage" (between -1 and 1) of power to send to the motor.
 
 **Parameters:**
 
-- `power` (float): Power between -1 and 1. Negative is backwards.
+- `power` [(float)](https://docs.python.org/3/library/functions.html#float): Power as a "percentage" of max, between -1 and 1. Negative is backwards.
 
 **Returns:**
 
@@ -192,9 +193,9 @@ await myMotor.set_power(power = 0.4)
 
 **Parameters:**
 
-- `ctx` (context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `powerPct` (float64):
-- `extra` (map[string]interface{})
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `powerPct` [(float64)](https://pkg.go.dev/builtin#float64): Power as a "percentage" of max, between -1 and 1. Negative is backwards.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -224,8 +225,8 @@ If both `rpm` and `revolutions` are negative, the motor will spin in the forward
 
 **Parameters:**
 
-- `rpm` (float): Speed at which the motor should move in revolutions per minute (negative implies backwards).
-- `revolutions` (float): Number of revolutions the motor should run for (negative implies backwards).
+- `rpm` [(float)](https://docs.python.org/3/library/functions.html#float): Speed at which the motor should move in revolutions per minute (negative implies backwards).
+- `revolutions` [(float)](https://docs.python.org/3/library/functions.html#float): Number of revolutions the motor should run for (negative implies backwards).
 
 **Returns:**
 
@@ -245,12 +246,12 @@ await myMotor.go_for(rpm=60, revolutions=7.2)
 
 **Parameters:**
 
-- `ctx` (context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `rpm` (float): Speed at which the motor should move in revolutions per minute (negative implies backwards).
-- `revolutions` (float): Number of revolutions the motor should run for (negative implies backwards).
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `rpm` [(float64)](https://pkg.go.dev/builtin#float64): Speed at which the motor should move in revolutions per minute (negative implies backwards).
+- `revolutions` [(float64)](https://pkg.go.dev/builtin#float64): Number of revolutions the motor should run for (negative implies backwards).
   If revolutions is 0, this will run the motor at `rpm` indefinitely.
   If revolutions != 0, this will block until the number of revolutions has been completed or another operation comes in.
-- `extra` (map[string]interface{})
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -270,25 +271,103 @@ myMotor.GoFor(context.Background(), 60, 7.2, nil)
 
 ### GoTo
 
+Turn the motor to a specified position (in terms of revolutions from home/zero) at a specified speed in revolutions per minute (RPM).
+Regardless of the directionality of the `rpm`, the motor will move towards the specified target position.
+This will block until the position has been reached.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
-python
-{{% /tab %}}
 
+**Parameters:**
+
+- `rpm` [(float)](https://docs.python.org/3/library/functions.html#float): Speed at which the motor should move in revolutions per minute (absolute value).
+- `position_revolutions` [(float)](https://docs.python.org/3/library/functions.html#float): Target position relative to home/zero, in revolutions.
+
+**Returns:**
+
+- None
+
+**Example usage:**
+
+```python
+myMotor = Motor.from_robot(robot=robot, name='my_motor')
+
+# Turn the motor to 8.3 revolutions from home at 75 RPM.
+await myMotor.go_to(rpm=75, revolutions=8.3)
+```
+
+{{% /tab %}}
 {{% tab name="Golang" %}}
-go
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `rpm` [(float64)](https://pkg.go.dev/builtin#float64): Speed at which the motor should move in revolutions per minute (absolute value).
+- `positionRevolutions` [(float64)](https://pkg.go.dev/builtin#float64): Target position relative to home/zero, in revolutions.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `error` (error): An error, if one occurred.
+
+**Example usage:**
+
+```go
+myMotor, err := motor.FromRobot(robot, "motor1")
+
+// Turn the motor to 8.3 revolutions from home at 75 RPM.
+myMotor.GoTo(context.Background(), 75, 8.3, nil)
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
 ### ResetZeroPosition
 
+Set the current position (modified by `offset`) to be the new zero (home) position.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
-python
-{{% /tab %}}
 
+**Parameters:**
+
+- `offset` [(float)](https://docs.python.org/3/library/functions.html#float): The offset from the current position to the new home (zero) position.
+
+**Returns:**
+
+- None
+
+**Example usage:**
+
+```python
+myMotor = Motor.from_robot(robot=robot, name='my_motor')
+
+# Set the current position as the new home position with no offset.
+await myMotor.reset_zero_position(offset=0.0)
+```
+
+{{% /tab %}}
 {{% tab name="Golang" %}}
-go
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `offset` [(float64)](https://pkg.go.dev/builtin#float64): The offset from the current position to the new home (zero) position.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `error` (error): An error, if one occurred.
+
+**Example usage:**
+
+```go
+myMotor, err := motor.FromRobot(robot, "motor1")
+
+// Set the current position as the new home position with no offset.
+myMotor.ResetZeroPosition(context.Background(), 0.0, nil)
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
