@@ -324,7 +324,7 @@ The gantry component supports the following methods:
 
 ### Control your Gantry with Viam's Client SDK Libraries
 
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
 
 The following example assumes you have a gantry called "my_gantry" configured as a component of your robot.
 If your gantry has a different name, change the `name` in the example.
