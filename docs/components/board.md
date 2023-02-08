@@ -46,6 +46,11 @@ Most robots with a board need at least the following hardware:
 Refer to the following example configuration file for a single-board computer like Raspberry Pi:
 
 {{< tabs name="Example Board Config" >}}
+{{% tab name="Config Builder" %}}
+
+![An example of configuration for a one-axis gantry component in the Viam App config builder.](../img/board/board-config-ui.png)
+
+{{% /tab %}}
 {{% tab name="Template JSON" %}}
 
 ```json-viam
@@ -53,15 +58,15 @@ Refer to the following example configuration file for a single-board computer li
   "components": [
     {
       "type": "board",
-      "model": <model>
-      "name": <name>
+      "model": <your_model>
+      "name": <your_name>
     }
   ]
 }
 ```
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="Full JSON Example" %}}
 
 ```json-viam
 {
@@ -69,16 +74,11 @@ Refer to the following example configuration file for a single-board computer li
     {
       "type": "board",
       "model": "pi"
-      "name": "local"
+      "name": "viam-board-example"
     }
   ]
 }
 ```
-
-{{% /tab %}}
-{{% tab name="Annotated JSON" %}}
-
-![An example of a JSON config file for a board component.](../img/board/board-gen-config.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -89,7 +89,7 @@ Refer to the following example configuration file for a single-board computer li
 | `model` | *Required* | Specify the correct `model` for your board. |
 | `name`  | *Required* | Choose any name you like. Note that the `name` you choose is how you will refer to this particular board in your code. |
 
-Supported board models include:
+For the `model`, supported board models include:
 
 - **pi**: Raspberry Pi 4 or Pi Zero W
 
@@ -108,7 +108,7 @@ If your application involves more than GPIO, and other board attributes or commu
 Read on to learn more about using GPIO, advanced configuration for different communication methods, and working with your board component.
 {{% /alert %}}
 
-## Deeper Dives
+## Deeper Dives: Advanced Configuration
 
 ### Using GPIO
 
