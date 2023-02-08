@@ -52,7 +52,7 @@ If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone
 
 <div class="container text-left">
     <div class="row">
-        <img src="../img/thumbnails/pc.png" style="max-width:100px">
+        <img src="../img/thumbnails/pc.png" style="max-width:100px" alt="Desktop computer">
         <div class="col">
             <br>
             <p> If you plan to run <code>viam-server</code> on your laptop or desktop with a Linux or Mac operating system, no special prep is required. Proceed to <a href="/installation/install/">install <code>viam-server</code></a>. </p>
