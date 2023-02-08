@@ -28,7 +28,7 @@ From the **TRY** page, click **TRY NOW** to reserve a time slot.
 
 ### Create a reservation
 
-{{< readfile "create-a-reservation.md" >}}
+{{< readfile "/static/include/create-a-reservation.md" >}}
 
 ### Access your rover rental
 
