@@ -212,13 +212,13 @@ Then connect the camera's usb cable to the Pi.
 
 ### Turn the rover on
 
-Once you have wired up all the components, reattach teh top of the rover and fasten the screws.
+Once you have wired up all the components, reattach the top of the rover and fasten the screws.
 Insert the batteries and turn the rover on.
 If the Pi has power, the lights on the Raspberry Pi will light up.
 
 ### Connect to the Viam app
 
-While the Pi boots, go to [app.viam.com](https://app.viam.com/robot) and [add a robot](/program/app-usage/#adding-a-new-robot).
+While the Pi boots, go to [app.viam.com](https://app.viam.com/robot) and [add a robot](/manage/app-usage/#adding-a-new-robot).
 On the robot's setup page, select `Linux` and `Aarch64`.
 `SSH` into the Pi and follow the instructions on the robot's setup page to download `viam-server` and configure your robot.
 
