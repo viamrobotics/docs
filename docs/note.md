@@ -1,5 +1,5 @@
 ---
-title: "Mike's Test File"
+title: "Test File"
 linkTitle: "Test"
 weight: 1
 draft: true
@@ -214,7 +214,7 @@ The "title" and "color" keywords and the names of colors ("tip," "note," etc.) a
 Use for tips
 {{< /alert >}}
 
-{{< alert title="Info" color="tip" >}}
+{{< alert title="Info" color="info" >}}
 Use for extra background information
 {{< /alert >}}
 

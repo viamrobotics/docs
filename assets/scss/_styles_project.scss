@@ -374,7 +374,6 @@ END MARKETING CSS
   color: #520000;
 }
 
-
 .alert-caution {
   color: black;
   background: whitesmoke;
@@ -393,7 +392,7 @@ END MARKETING CSS
 }
 
 
-.alert-tip {
+.alert-tip, .alert-info {
   color: black;
   background: whitesmoke;
   border-color: #1be020;
@@ -404,6 +403,9 @@ END MARKETING CSS
   border-width: 0 0 0 8px;
 }
 
+.alert-info .alert-heading {
+  color: black;
+}
 
 
 /* END CSS FOR NOTES, CAUTIONS, WARNINGS */
