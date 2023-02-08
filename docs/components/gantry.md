@@ -82,13 +82,13 @@ This is how you configure a one-axis gantry:
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
 | board  |  Optional | The name of the board that is connected to the limit switches and pins. If limit pins exist, board is required. |
-| **motor** | **Required** | The name of the motor that moves the gantry. |
+| *motor* | *Required* | The name of the motor that moves the gantry. |
 | limit_pins  | Optional | The pins attached to the limit switches on either end. If motor type is not encoded, limit_pins is required. |
 | limit_pin_enabled_high | Optional | If it is true or false that the limit pins are enabled. Default is false. |
-| **length_mm** | **Required** | The length of the axis of the gantry in mm. |
+| *length_mm* | *Required* | The length of the axis of the gantry in mm. |
 | mm_per_rev | Optional | How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output shaft. This typically corresponds to Distance = PulleyDiameter*pi, or the pitch of a linear screw. |
 | gantry_rpm | Optional | The gantry motor's default rpm. |
-| **axis** | **Required** | The axis in which the gantry is allowed to move (x, y, z). |
+| *axis* | *Required* | The axis in which the gantry is allowed to move (x, y, z). |
 
 #### Multi-Axis
 
