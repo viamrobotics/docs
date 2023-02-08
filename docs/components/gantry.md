@@ -419,7 +419,7 @@ Get the current positions of the axis of the gantry (mm).
 
 - `positions` [(List[float])](https://docs.python.org/3/library/typing.html#typing.List): A list of the position of the axes of the gantry in millimeters.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.get_position)
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.get_position).
 
 ```python
 myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
@@ -542,7 +542,7 @@ Get the lengths of the axes of the gantry (mm).
 
 - `lengths_mm` [(List[float])](https://docs.python.org/3/library/typing.html#typing.List): A list of the lengths of the axes of the gantry in millimeters.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.lengths)
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.lengths).
 
 ```python
 myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
