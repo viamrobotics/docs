@@ -130,18 +130,6 @@ The [web gamepad component](/components/input-controller/#webgamepad) is disable
 
 ## Learn about robot configuration
 
-<<<<<<< HEAD
-<img src="../img/try-viam/gamepad-disabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller disabled position." style="max-width:400px"><br>
-
-**Enabled**:
-
-<img src="../img/try-viam/gamepad-enabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller enabled position." style="max-width:400px"><br>
-
-## Learning about robot configuration
-
-Now that you learned how to drive your rover with the UI, let’s go a bit further.
-One other thing you can do within your experience is see your configuration.
-
 On the Viam app, navigate to the **COMPONENTS** subtab, under **CONFIG**.
 There you can view the configuration for each component in the robot: attributes, component dependencies, pin assignments, and more.
 
