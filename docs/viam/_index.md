@@ -35,7 +35,7 @@ Configuration describes how hardware and software interact.
 A basic example that you can configure using the Viam platform is connecting a computer to a camera.
 A more advanced example is a computer connected to a camera, actuating components (like motors or arms), and an ML model.
 
-{{% alert title="Info" color="tip" %}}
+{{% alert title="Info" color="info" %}}
 Everything Viam runs on your robot is [open-source](http://github.com/viamrobotics).
 {{% /alert %}}
 

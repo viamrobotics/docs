@@ -34,7 +34,7 @@ A GPS is useful for knowing where you are and how fast you’re going.
 `Position`, `CompassHeading` and `LinearVelocity` data are provided by all GPS modules.
 Fix and Correction data are available by using the sensor GetReadings method, which is available because GPSes wrap the sensor component.
 
-{{% alert title="Info" color="tip" %}}
+{{% alert title="Info" color="info" %}}
 As with any Viam component configuration, configuring a movement sensor component requires a `name` of your choosing, a `type` ("movement_sensor"), and a `model` (see sections below for options).
 Each GPS model must have either serial or I<sup>2</sup>C communication configured.
 [Click here to jump to the communication config attribute information.](#connection-configuration)
