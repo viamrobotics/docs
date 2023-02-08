@@ -20,7 +20,7 @@ This tutorial shows how to use the Viam [Vision Service](/services/vision/) to m
 The prerequisite of this tutorial is to have a [SCUTTLE rover](https://www.scuttlerobot.org/) connected to the [Viam app](https://app.viam.com).
 Please refer to the [Configure a SCUTTLE Robot tutorial](../scuttlebot/) if you have not already configured your SCUTTLE.
 
-### Code environment setup
+### Set up your code environment
 
 We highly suggest using a virtual Python environment like [Poetry](https://python-poetry.org) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
@@ -73,7 +73,7 @@ Save the file.
 
 Now you are ready to run the code!
 
-## Running the code
+## Run the code
 
 Now you should try to drive the SCUTTLE around following the color red.
 You can use something like a red sports ball or book cover as a target to follow.
