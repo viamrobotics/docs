@@ -83,8 +83,11 @@ Refer to the following example configuration file for a single-board computer li
 {{% /tab %}}
 {{< /tabs >}}
 
-All boards will be of type `board`.
-Specify the correct `model` for your board.
+| Attribute | Inclusion | Description |
+| ----------- | -------------- | --------------  |
+| `type`  |  *Required* | All boards will be of type `board`. |
+| `model` | *Required* | Specify the correct `model` for your board. |
+| `name`  | *Required* | Choose any name you like. Note that the `name` you choose is how you will refer to this particular board in your code. |
 
 Supported board models include:
 
@@ -97,10 +100,6 @@ Supported board models include:
 - **jetson**: Nvidia Jetson Xavier NX
 
 - **numato**: Numato GPIO model
-
-Give your board a `name`.
-Choose any name you like.
-Note that the `name` you choose is how you will refer to this particular board in your code.
 
 {{% alert title="Note" color="note" %}}
 Please note that board configuration depends on your particular use case.
