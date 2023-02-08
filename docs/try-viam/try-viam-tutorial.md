@@ -22,7 +22,7 @@ The Try Viam area also has an overhead camera to provide a view of the rental ro
 
 ### Access the system
 
-While logged in with a Viam account, navigate to <a href="https://app.viam.com/try" target="_blank">TRY in the Viam app</a> to make a reservation.
+While logged in with a Viam account, navigate to <a href="https://app.viam.com/try" target="_blank">**TRY** in the Viam app</a> to make a reservation.
 (If you don't have an account, it only takes a minute to sign up.)
 From the **TRY** page, click **TRY NOW** to reserve a time slot.
 

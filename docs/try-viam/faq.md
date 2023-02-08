@@ -105,7 +105,7 @@ Here are some tutorials which you can follow:
 If you want to get your own Viam Rover, we’re also taking pre-orders for a limited quantity of Viam Rovers.
 Reserve yours today [here](http://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
 
-## Why can't I use the Rover's microphone?
+## Why can't I use the rover's microphone?
 
-For security reasons, Viam has disabled the microphone on Rover Rentals.
+For security reasons, Viam has disabled the microphone on rover rentals.
 The microphone on [Viam Rovers shipped to users](/try-viam/rover-resources/) functions normally.
