@@ -96,8 +96,12 @@ ct {
 
 /* START Misc Paragraph and Class Changes */
 code {
-    // font-size:1rem !important; # code should be the same size as surrounding text
-    // color: #222 !important;
+    color: #222 !important;
+    font-size: 100% !important;
+}
+
+a > code {
+    color: #3176d9 !important;
 }
 
 div.lead {
