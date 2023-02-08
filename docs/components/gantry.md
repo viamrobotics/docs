@@ -26,8 +26,9 @@ Most robots with a gantry need at least the following hardware:
 
 - A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
 - A [motor](/components/motor/) that can move linear rails
-  - Encoded motor: See [DC motor with encoder](/components/motor/#dc-motor-with-encoder) and [encoder component](/components/encoder/) for more information.
-  - [Stepper motor](/components/motor/#stepper-motor): Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
+  - Encoded motor: See [DC motor with encoder](/components/motor/#dc-motor-with-encoder) and [encoder component](/components/encoder/).
+  - Stepper motor: See [Stepper motor](/components/motor/#stepper-motor).
+  Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
 
 ### Configuration
@@ -78,112 +79,18 @@ This is how you configure a one-axis gantry:
 {{% /tab %}}
 {{< /tabs >}}
 
-<table>
-  <tr>
-    <td>
-      <strong>
-        Attribute
-      </strong>
-    </td>
-    <td>
-      <strong>
-        Description
-      </strong>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      board
-    </td>
-    <td>
-      The name of the board that is connected to the limit switches and pins.
-      If limit pins exist, board is required.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      *motor
-    </td>
-    <td>
-      The name of the motor that moves the gantry.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      gantry_rpm
-    </td>
-    <td>
-      The gantry motor's default rpm.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      limit_pins
-    </td>
-    <td>
-      The pins attached to the limit switches on either end.
-      If motor type is not encoded, limit_pins is required.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      limit_pin_enabled_high
-    </td>
-    <td>
-      If it is true or false that the limit pins are enabled.
-      Default is false.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      *length_mm
-    </td>
-    <td>
-      The length of the axis of the gantry in mm.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      mm_per_rev
-    </td>
-    <td>
-      How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output
-      shaft.
-      This typically corresponds to Distance = PulleyDiameter*pi, or the pitch of a linear screw.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      gantry_rpm
-    </td>
-    <td>
-      The gantry motor's default rpm.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      *axis
-    </td>
-    <td>
-      The axis in which the gantry is allowed to move (x, y, z).
-      <!-- <p>
-        You can add a frame to a one-axis gantry attribute to describe its
-        position in the local "world" frame.
-        <p>
-          See
-          <a href="/services/frame-system">
-            Frame System
-          </a>
-          for more information. -->
-    </td>
-  </tr>
-</table>
-<!-- A frame can also be added to a one-axis gantry attribute to describe its position in the local "world" [frame](/services/frame-system/). -->
+| Attribute | Inclusion | Description |
+| ----------- | -------------- | --------------  |
+| board  |  Optional | The name of the board that is connected to the limit switches and pins. If limit pins exist, board is required. |
+| **motor** | **Required** | The name of the motor that moves the gantry. |
+| limit_pins  | Optional | The pins attached to the limit switches on either end. If motor type is not encoded, limit_pins is required. |
+| limit_pin_enabled_high | Optional | If it is true or false that the limit pins are enabled. Default is false. |
+| **length_mm** | **Required** | The length of the axis of the gantry in mm. |
+| mm_per_rev | Optional | How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output shaft. This typically corresponds to Distance = PulleyDiameter*pi, or the pitch of a linear screw. |
+| gantry_rpm | Optional | The gantry motor's default rpm. |
+| **axis** | **Required** | The axis in which the gantry is allowed to move (x, y, z). |
 
-(*) Indicates an attribute is required.
-() Indicates an attribute is optional.
-
-#### Multi Axis
+#### Multi-Axis
 
 A multi-axis gantry component is made up of many single-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
 
@@ -394,6 +301,25 @@ This is how you configure a multi-axis gantry:
   </tr>
 </table>
 
+## API
+
+The gantry component supports the following methods:
+
+| Method Name | Golang | Python | Description |
+| ----------- | ------ | ------ | ----------- |
+[Position](#position) | [Position][go_gantry]  |  [get_position][python_get_position] | Get the current positions of the axes of the gantry in mm. |
+[MoveToPosition](#movetoposition) | [MoveToPosition][go_gantry] | [move_to_position][python_move_to_position] | Move the axes of the gantry to the desired positions. |
+[Lengths](#lengths) | [Lengths][go_gantry] | [get_lengths][python_get_lengths] | Get the lengths of the axes of the gantry in mm. |
+[Stop](#stop) | [Stop][go_gantry] | [stop][python_stop] | Stop the gantry from moving. |
+[IsMoving](#stop) | [IsMoving][go_gantry] | [stop][python_is_moving] | Get if the gantry is currently moving. |
+
+[go_gantry]: https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry
+[python_get_position]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.get_position
+[python_move_to_position]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.move_to_position
+[python_get_lengths]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.get_lengths
+[python_stop]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.stop
+[python_is_moving]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.is_moving
+
 ## Code Examples
 
 ### Control your Gantry with Viam's Client SDK Libraries
@@ -476,8 +402,6 @@ func main() {
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## API
 
 ### Position
 
