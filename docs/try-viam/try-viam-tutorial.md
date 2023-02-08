@@ -148,9 +148,7 @@ You can also see their current positions (based on encoder readings) in real tim
 
 #### Board control
 
-The [board](/components/board) component refers to a single board computer, like the Raspberry Pi, BeagleBone, or Jetson, or a GPIO peripheral like the Numato GPIO Module.
-No matter the make or model, the board of your robot is its signal wire hub.
-Configuring a board component allows you to control the states of individual GPIO pins to command the electrical signals sent through and received by the board.
+The [board component](/components/board) is the signal wire hub of a robot which allows you to control the states of individual GPIO pins on the board.
 
 For the Viam Rover, the board component is named `local` and controls a Raspberry Pi on the Viam Rover.
 With it, you can control the states of individual GPIO pins on the board.
@@ -190,7 +188,8 @@ There you can view the configuration for each component in the robot: attributes
 
 ### Board configuration
 
-The [board](/components/board) component is the signal wire hub of a robot which allows you to control the states of individual GPIO pins on the board.
+The [board component](/components/board) component is the signal wire hub of a robot.
+Configuring a board component allows you to control the states of individual GPIO pins to command the electrical signals sent through and received by the board.
 For the Viam Rover, the board component is a Raspberry Pi with **Name** `local`, **Type** `board`, and **Model** `pi`.
 
 ### Encoder configuration
