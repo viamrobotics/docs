@@ -26,7 +26,7 @@ viam.component.servo.v1.ServoService.MoveRequest
 If you have [Go installed](https://go.dev/doc/install), you can install the Viam CLI with the 'go install' command:
 
 ``` bash
-go install go.viam.com/rdk/cli/cmd@latest
+go install go.viam.com/rdk/cli/viam@latest
 ```
 
 To confirm `viam` is installed and ready to use, issue the *viam* command from your terminal.
