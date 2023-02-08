@@ -13,8 +13,8 @@ Once you create an account, you can configure your first robot, connect your rob
 
 All communication happens securely over HTTPS using secret tokens that are in the robot's configuration.
 
-{{% alert title="Tip" color="tip" %}}  
-For a walkthrough of app.viam.com, check out [our guide on how to use the Viam app](/program/app-usage/).
+{{% alert title="Tip" color="tip" %}}
+For a walkthrough of app.viam.com, check out [our guide on how to use the Viam app](/manage/app-usage/).
 {{% /alert %}}
 
 ## Robot Hierarchy

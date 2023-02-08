@@ -148,7 +148,7 @@
     el.classList.add('highlight');
   });
   document.querySelectorAll("body").forEach((el) => {
-    el.classList.add('line-numbers');
+    el.classList.add('no-line-numbers');
   });
   var obs = new MutationObserver(function (e) {
     Prism.highlightAll();

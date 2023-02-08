@@ -136,7 +136,7 @@ The update process may have been interrupted and left a corrupt file. Simply red
 
 FUSE (Filesystem-in-Userspace), is included in almost all modern Linux distributions by default.
 (The one real exception is that it doesn’t work (by default) due to security restrictions within Docker containers.)
-For more information on troubleshooting FUSE-related issues (including Docker workarounds) see here: [I get some errors related to something called “FUSE” — AppImage documentation](https://docs.appimage.org/user-guide/troubleshooting/fuse.html).
+For more information on troubleshooting FUSE-related issues (including Docker workarounds) see here: [I get some errors related to something called "FUSE" — AppImage documentation](https://docs.appimage.org/user-guide/troubleshooting/fuse.html).
 
 {{% /tab %}}
 

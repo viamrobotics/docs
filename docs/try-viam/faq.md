@@ -11,19 +11,19 @@ Try Viam is a way you can try out the platform without setting up any hardware y
 
 1. **Click on ‘TRY’ in Viam.** Log into Viam and go to the **[TRY](https://app.viam.com/try)** tab. (If you don’t have an account, it only takes a minute to sign up.)
 2. **Click ‘Try Now’ to reserve your slot.** If no one’s using a Viam Rover, you’ll take over immediately. Otherwise, you’ll see an estimated time for the next slot on the TRY tab. If your reserved time slot is more than 30 minutes away, we’ll send you an email confirming your reservation and an email when it’s your turn to use the rover.
-3. **Use your reserved Viam Rover on Viam.** See “What happens when my reservation starts?” below for info on how to use the Viam Rover you reserved.
+3. **Use your reserved Viam Rover on Viam.** See "What happens when my reservation starts?" below for info on how to use the Viam Rover you reserved.
 
 ## What happens when my reservation starts?
 
-1. When it is your turn to take over a Viam Rover, the status on the **[TRY](https://app.viam.com/try)** tab will change to **SETTING UP ROBOT**. Once that is complete, the status on the TRY tab will change to **RUNNING**, and you can click “**Try Your Robot**” to access your reserved Viam Rover.
-2. Viam creates a location called “Rover Rental” in your organization (if necessary), and adds a Viam Rover with a basic configuration and a random name (e.g., wispy-shape, black-moon, etc.) to your Rover Rental Location.
+1. When it is your turn to take over a Viam Rover, the status on the **[TRY](https://app.viam.com/try)** tab will change to **SETTING UP ROBOT**. Once that is complete, the status on the TRY tab will change to **RUNNING**, and you can click "**Try Your Robot**" to access your reserved Viam Rover.
+2. Viam creates a location called "Rover Rental" in your organization (if necessary), and adds a Viam Rover with a basic configuration and a random name (e.g., wispy-shape, black-moon, etc.) to your Rover Rental Location.
 3. You’ll be able to control a Viam Rover in the Viam robotics lab for 15 minutes. A session timer will be displayed in the top banner. You can see how the rover is configured, write code to control the rover, teleoperate the rover, and more.
 
 ## My robot had an error, a system crash, or is physically stuck
 
 1. The timer does not stop at any time.
 2. Notify support via [our Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
-3. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your Location. Refer to [Managing Locations and sub-locations](/program/app-usage/#managing-locations-and-sub-locations) in the **Using the Viam App** topic.
+3. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your Location. Refer to [Managing Locations and sub-locations](/manage/app-usage/#managing-locations-and-sub-locations) in the **Using the Viam App** topic.
 
 ## Can I extend my time?
 
@@ -40,9 +40,9 @@ For your next session, you can copy the config from your previous robot to the n
 At any time prior to the start of your new rental:
 
 1. Access [https://app.viam.com/](https://app.viam.com/try)
-2. Under **LOCATIONS**, click “Rover Rental.”
+2. Under **LOCATIONS**, click "Rover Rental."
 3. Click the robot name whose configuration you wish to reuse.
-4. Select “Raw JSON” on the **Mode** selector.
+4. Select "Raw JSON" on the **Mode** selector.
 5. Click anywhere in the displayed JSON configuration and press **CTRL+A** on Windows and Linux platforms, or **CMD+A** on macOS, to copy the _entire_ configuration.
 
 {{%  alert title="Note" color="note" %}}
@@ -53,7 +53,7 @@ Save this configuration for later use, if desired.
 When you open your new rental in Try Viam:
 
 1. Click **CONFIG**.
-2. Select “Raw JSON” from the **Mode** selector.
+2. Select "Raw JSON" from the **Mode** selector.
 3. Click anywhere in the displayed JSON configuration and press **CTRL+A** on Windows and Linux, or **CMD+A** on macOS, to select the entire JSON configuration, then press **Delete**.
 4. Paste in your saved configuration.
 5. Click **Save Config**.
@@ -62,7 +62,7 @@ This allows you to make updates between sessions to prepare for future sessions.
 
 ## What happens to my Rover Rental robot after the rental session?
 
-1. On session expiration, Viam removes the “live” status from the robot.
+1. On session expiration, Viam removes the "live" status from the robot.
 2. Viam then removes your configuration from the physical robot in preparation for its next rental.
 3. The Rover Rental Location and _the final configuration of all previous Rover Rental robots remain visible to your organization_.
 You can continue modifying the configurations as desired.
@@ -76,7 +76,7 @@ If you delete your robot and have a current reservation, the only option availab
 
 You can rename your robot as desired.
 However, changing the Location will break your robot.
-If this occurs, use the Viam app to rename the Location name back to its default, which is “Rover Rental”.
+If this occurs, use the Viam app to rename the Location name back to its default, which is "Rover Rental".
 
 {{% alert title="Caution" color="caution" %}}
 Do not change the Location name.

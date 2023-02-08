@@ -22,7 +22,7 @@ An encoder could also be positioned on a passive joint or other rotational objec
 
 Viam supports [quadrature encoders](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs), which output two phases that can be used together to detect how far something has turned and in which direction.
 Each phase output goes to a different pin on the board.
-Viam also supports single pin “pulse output” encoders which give relative position but not direction.
+Viam also supports single pin "pulse output" encoders which give relative position but not direction.
 
 In either case position can only be determined relative to the starting position; these encoders are incremental and do not indicate absolute position.
 Absolute encoders are another type of hardware that is not natively supported in Viam as of August 19th, 2022.
@@ -55,7 +55,7 @@ However, the incremental model is recommended as encoders with two signal wires 
 
 The following example shows the configuration of a board and an encoder.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {

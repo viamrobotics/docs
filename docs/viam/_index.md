@@ -67,7 +67,7 @@ There are four categories of APIs:
 - [Robot](/services/robot-service/) - high level robot commands
 - [Components](/components) like motors, arms, GPS
 - [Services](/services) like computer vision, motion planning, SLAM
-- Cloud Applications like [fleet management](/services/fleet-management), [data management](/services/data-management)
+- Cloud Applications like [fleet management](/manage/fleet-management), [data management](/manage/data-management)
 
 To see the Viam API specification, check [GitHub](https://github.com/viamrobotics/api).
 

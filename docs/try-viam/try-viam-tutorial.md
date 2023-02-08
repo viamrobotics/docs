@@ -34,7 +34,7 @@ If a Viam Rover is available, you can click **TRY NOW** to start your 15 minutes
 Then click **TRY YOUR ROBOT** to access your rental.
 Otherwise, you'll see an estimate of the next available start time.
 Click **RESERVE ROVER** to get in the queue.
-If the wait is longer than four minutes you will receive a “Time to Play” email when it’s your turn.
+If the wait is longer than four minutes you will receive a "Time to Play" email when it’s your turn.
 
 ### Access your rover rental
 
@@ -75,7 +75,7 @@ Click the `viam_base` rectangle to expand the base control pane, revealing the c
 #### Camera control (from the base panel)
 
 Selecting a camera allows you to view your Rental Rover as you move it around.
-You can choose “cam” for the front-facing camera or “overhead-cam:cam” for an overhead view of your rover.
+You can choose "cam" for the front-facing camera or "overhead-cam:cam" for an overhead view of your rover.
 We recommend enabling both cameras so you can have a better sense of what's happening in the space.
 
 ![Screenshot of the viam_base component panel on the CONTROL tab. The Keyboard Disabled toggle is grey and not yet enabled.](../img/try-viam/initial-base-control.png)
@@ -111,7 +111,7 @@ Note that keyboard control is disabled when the **Keyboard Disabled** switch is 
 
 ##### Discrete movement control
 
-If you toggle from **KEYBOARD** to the **DISCRETE** tab, then you’ll see different movement modes: “Straight” and “Spin,” different movement types: “Continuous” and “Discrete,” and directions: “Forwards” and “Backwards.”
+If you toggle from **KEYBOARD** to the **DISCRETE** tab, then you’ll see different movement modes: "Straight" and "Spin," different movement types: "Continuous" and "Discrete," and directions: "Forwards" and "Backwards."
 In continuous movement mode you can set a speed at which the rover will move indefinitely in the specified direction.
 In discrete movement mode you can set a speed at which to move and a distance to cover before stopping.
 
@@ -133,7 +133,7 @@ In these panels, you can refresh your camera at a certain frequency (live, refre
 ### Motor control
 
 Some other components in your robot config are the motors (which allow you to move the base).
-We named these motors “left” and “right” corresponding to their location on the rover base.
+We named these motors "left" and "right" corresponding to their location on the rover base.
 Their initial state is **Idle**.
 You can click on the each panel and make your motor **RUN** or **STOP**.
 
@@ -189,7 +189,7 @@ We named it "local" and configured it with **Type** "board" and **Model** "pi" (
 
 ### Encoder configuration
 
-The encoders on the right and left motors are named, respectively, “Renc” and “Lenc.”
+The encoders on the right and left motors are named, respectively, "Renc" and "Lenc."
 They must be configured before the motors because the motors will depend on the encoders.
 
 ![Screenshot of the right encoder config panel with the board attribute set to "local" and the pins struct containing "i" set to "re".](../img/try-viam/right-encoder.png)
@@ -211,7 +211,7 @@ Click **Go to Fancy** to return to the GUI format.
 
 The "left" and "right" attributes represent the motors corresponding to the left and right sides of the rover.
 Since we named the motors "left" and "right", the lists of motors for the left and right sides are simply "left", and "right", respectively.
-Its type is “base” and its model is “wheeled”.
+Its type is "base" and its model is "wheeled".
 The "wheel_circumference_mm" is 217.
 The "width_mm" is the distance between wheel centerlines, 260mm in this case.
 The "spin_slip_factor" of 1.76 is used in steering calculations to account for slippage of the wheels against the ground while turning.
@@ -228,8 +228,8 @@ The "spin_slip_factor" of 1.76 is used in steering calculations to account for s
 
 ### Camera configuration
 
-In the camera component, you will see the **Type** as “camera” and the **Model** as “webcam”.
-The **Video Path** is “video0”.
+In the camera component, you will see the **Type** as "camera" and the **Model** as "webcam".
+The **Video Path** is "video0".
 
 For more information on choosing the correct video path, refer to our [camera configuration tutorial](/components/camera/configure-a-camera/#connect-and-configure-a-webcam).
 
@@ -238,7 +238,7 @@ For more information on choosing the correct video path, refer to our [camera co
 ### Gamepad configuration
 
 The final component is the web gamepad.
-The gamepad has a **Type** of “input_controller” and the **Model** is "webgamepad."
+The gamepad has a **Type** of "input_controller" and the **Model** is "webgamepad."
 
 ![Screenshot of the gamepad configuration panel. No attributes are configured.](../img/try-viam/gamepad-config.png)
 
@@ -247,7 +247,7 @@ The gamepad requires a service to function, though.
 Fortunately, we added one for you!
 
 Navigate to the **SERVICES** section under the **CONFIG** tab.
-The **SERVICES** subtab contains the “Base Remote Control” service which uses three attributes:
+The **SERVICES** subtab contains the "Base Remote Control" service which uses three attributes:
 
 **Base Remote Control Attributes**:
 

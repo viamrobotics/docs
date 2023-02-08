@@ -1,7 +1,7 @@
 ---
 title: "Configure Data Capture"
 linkTitle: "Configure Data Capture"
-weight: 20
+weight: 35
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 # SME: Aaron Casas
@@ -30,7 +30,7 @@ To capture data from one or more robots, you must add the [Data Management Servi
 
 The JSON configuration for the Data Management Service is:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [ ],
   "services": [
@@ -70,7 +70,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
 
 This is an example JSON configuration capturing data from the `ReadImage` method of a camera:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 
 {
   "services": [
@@ -132,7 +132,7 @@ You may capture data from one or more component methods:
 - To enable or disable data capture for a configured component or method, use the `on/off` toggle.
 - To change the frequency of data capture for a method, enter the number of measurements you wish to capture per second in the frequency field.
 
-After adding configuration for the methods, click “Save Config”.
+After adding configuration for the methods, click "Save Config".
 
 If you want to remove a capture method from the configuration, click the `delete` icon.
 
@@ -153,7 +153,7 @@ To add them to your JSON configuration you must explicitly add the part's `type`
 
 This is an example for an `esp32` board:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 "type": {
     "Type": {
         "type": "component",
@@ -173,7 +173,7 @@ This is an example for an `esp32` board:
 
 The following example captures data from two analog readers that provide a voltage reading and from pin 27 of the board's GPIO:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "services": [
     {

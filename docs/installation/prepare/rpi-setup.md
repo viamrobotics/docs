@@ -28,7 +28,7 @@ Example output:
 
 ![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads "Architecture: aarch64."](/installation/img/rpi-setup/lscpu-output.png)
 
-If the value of “Architecture: _'xxxxxx'_” ends in "64", you can skip ahead to [installing `viam-server`](/installation/install/linux-install/).
+If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [installing `viam-server`](/installation/install/linux-install/).
 
 {{% /alert %}}
 
@@ -156,7 +156,7 @@ Example: if your username is 'USERNAME' and your hostname is 'pi': then it shoul
 ssh <USERNAME>@<HOSTNAME>.local
 ```
 
-If you are prompted “Are you sure you want to continue connecting?”, type “yes” and hit enter.
+If you are prompted "Are you sure you want to continue connecting?", type "yes" and hit enter.
 Then, enter your password.
 You should be greeted by a login message and a command prompt.
 
@@ -191,7 +191,7 @@ sudo reboot
 
 If you move your robot to a different Wifi network, you will have to update the Wifi credentials.
 
-You can update the Wifi configuration by creating a new `wpa_supplicant.conf` file on the “boot” partition.
+You can update the Wifi configuration by creating a new `wpa_supplicant.conf` file on the "boot" partition.
 
 The steps are explained below.
 
@@ -205,11 +205,11 @@ The steps are explained below.
 
 The `wpa_supplicant.conf` file will be read by the Pi on boot, and the file will disappear but the Wifi credentials will be updated.
 
-You can duplicate the “network” section to add additional Wifi networks (for example your work, and your home).
+You can duplicate the "network" section to add additional Wifi networks (for example your work, and your home).
 
 The "priority" attribute is optional and can be used to prioritize networks if multiple networks are configured (higher numbers are prioritized).
 
-```bash
+```bash  {class="line-numbers linkable-line-numbers"}
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 country=us

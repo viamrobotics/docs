@@ -37,7 +37,7 @@ Each gantry can be given a reference [frame](/services/frame-system/) in the con
 A multi-axis gantry is composed of many single-axis gantries.
 The multiple axis system is composed of the supplied gantry names.
 The system will then use any reference frames in the single-axis configs to place the gantries in the correct position and orientation.
-The “world” frame of each gantry becomes the moveable frame of the gantry before it in order.
+The "world" frame of each gantry becomes the moveable frame of the gantry before it in order.
 
 ## Attribute Configuration
 
@@ -123,7 +123,7 @@ The attributes are configured as such for a single-axis gantry:
       frame (x, y, z).
       <p>
         You can add a frame to a single-axis gantry attribute to describe its
-        position in the local “world” frame.
+        position in the local "world" frame.
         <p>
           See
           <a href="/services/frame-system">
@@ -134,7 +134,7 @@ The attributes are configured as such for a single-axis gantry:
   </tr>
 </table>
 
-A frame can also be added to a one axis gantry attribute to describe its position in the local “world” [frame](/services/frame-system/).
+A frame can also be added to a one axis gantry attribute to describe its position in the local "world" [frame](/services/frame-system/).
 
 ### Multi-Axis Gantry Attributes
 

@@ -14,7 +14,7 @@ You will need to print out the checkerboard and take images of the checkerboard 
 
 After running the calibration script from the [camera calibration repository](https://github.com/viam-labs/camera-calibration), you'll get a print out of the `intrinsic_parameters` and `distortion_parameters`. We will use the values we've obtained from our camera as an example moving forward:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 "intrinsic_parameters": {
     "fy": 940.2928257873841,
     "height_px": 480,
@@ -38,7 +38,7 @@ Copy/paste the parameters you obtained into your camera config by going into the
 
 For us, the finished config now looks like this:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {

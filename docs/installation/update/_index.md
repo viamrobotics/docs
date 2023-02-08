@@ -13,7 +13,7 @@ description: "Update your version of viam-server."
 
 There are two main channels for updates.
 If you download a file for one of them, its self-update function will only look for updates from that particular channel.
-That is to say, “latest” will get a lot of updates, and “stable” will get them less frequently.
+That is to say, "latest" will get a lot of updates, and "stable" will get them less frequently.
 
 ### Latest
 
@@ -31,7 +31,7 @@ Updates will be far less frequent.
 ### Manual / Service-based
 
 These app images have a built in self-update feature.
-To update manually, just run the file with “--aix-update” as the only argument.
+To update manually, just run the file with "--aix-update" as the only argument.
 For example:
 
 ```bash

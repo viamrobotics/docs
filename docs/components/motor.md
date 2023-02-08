@@ -33,7 +33,7 @@ Read on to learn how to configure motor components.
 
 Example code should be placed after the `robot = await connect()` function in `main()`.
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.motor import Motor
 
 robot = await connect() # refer to connect code
@@ -54,7 +54,7 @@ await motor2.go_for(1000, 200)
 
 Example code should be placed after the `robot, err := client.New(...)` function in `main()`.
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
 "time"
 "go.viam.com/rdk/components/motor"
@@ -103,7 +103,7 @@ Always disconnect devices from power before plugging, unplugging or moving wires
 ### Mechanism
 
 DC motors use magnetic fields to convert direct (one-way) electrical current into mechanical torque.
-[Brushed DC motors](https://en.wikipedia.org/wiki/Brushed_DC_electric_motor) use an electrical contact called a “brush” to route current to the right place at a given moment to create continuous rotation.
+[Brushed DC motors](https://en.wikipedia.org/wiki/Brushed_DC_electric_motor) use an electrical contact called a "brush" to route current to the right place at a given moment to create continuous rotation.
 Increasing the input current increases the output motor torque (and also speed, assuming a constant load).
 Switching the direction of the input current changes the direction of motor rotation.
 
@@ -123,8 +123,8 @@ The driver data sheet will specify which one to use.
 Often, instead of buying just the tiny motor driver chip itself, you’ll purchase a motor driver carrier board which consists of the chip containing the logic gates, attached to a small breakout board which gives you places to attach the necessary wires.
 In this article we’ll refer to this whole motor driver board as a motor driver.
 
-Note that in RDK, “board” refers to the device with GPIO pins (such as a Raspberry Pi, or a GPIO peripheral attached to a desktop computer) that sends signals to the motor drivers and other devices.
-In the config file, “motor” technically refers to the motor driver for a given motor.
+Note that in RDK, "board" refers to the device with GPIO pins (such as a Raspberry Pi, or a GPIO peripheral attached to a desktop computer) that sends signals to the motor drivers and other devices.
+In the config file, "motor" technically refers to the motor driver for a given motor.
 {{% /alert %}}
 
 ### Wiring
@@ -139,8 +139,8 @@ Refer to a Raspberry Pi pinout schematic to locate generic GPIO pins and determi
 
 ### Viam Configuration
 
-A brushed DC motor without an encoder should be configured with “gpio” as the model.
-Most motor types require a “board” attribute, and also need to depend on that same board.
+A brushed DC motor without an encoder should be configured with "gpio" as the model.
+Most motor types require a "board" attribute, and also need to depend on that same board.
 For example:
 
 ![motor-gpio-json](../img/motor/motor-gpio-json.png)
@@ -151,7 +151,7 @@ For example:
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 `board` | string | --        | Name of board to which the motor driver is wired.
-`max_rpm` | float | --         | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the “GoFor” method unusable.
+`max_rpm` | float | --         | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the "GoFor" method unusable.
 `pins` | object | --  | A structure that holds pin configuration information.
 
 Nested within `pins` (note that only two or three of these are required depending on your motor driver; see [Pins](#pins) above for more information):
@@ -180,7 +180,7 @@ Name | Type | Default Value | Description
 A brushless DC motor (BLDC motor) uses an electronic system to switch its electromagnets on and off at the correct times, instead of the physical brush used in brushed motors.
 BLDCs function similarly to brushed motors, but they are more durable and efficient because they don’t contain a brush that wears out as it rubs on the spinning components.
 The relative position of the magnets must be known by the driver so that the right coils can be powered at any given moment.
-Some motors have a built-in set of Hall effect sensors for this purpose, and others detect forces in the unpowered coils for a “sensorless” configuration.
+Some motors have a built-in set of Hall effect sensors for this purpose, and others detect forces in the unpowered coils for a "sensorless" configuration.
 
 ### Brushless DC Motor Drivers
 
@@ -210,8 +210,8 @@ Here's an example of an encoded DC motor wired with [the MAX14870 Single Brushed
 
 ### Viam Configuration
 
-Viam supports a brushed or brushless DC motor with a quadrature encoder within model “gpio.”
-Configuration of an encoder requires configuring the encoder [per the encoder topic](../encoder) in addition to the [standard “gpio” model attributes](#required-attributes---non-encoded-dc-motor).
+Viam supports a brushed or brushless DC motor with a quadrature encoder within model "gpio."
+Configuration of an encoder requires configuring the encoder [per the encoder topic](../encoder) in addition to the [standard "gpio" model attributes](#required-attributes---non-encoded-dc-motor).
 Here’s an example config file:
 
 ![motor-encoded-dc-json](../img/motor/motor-encoded-dc-json.png)

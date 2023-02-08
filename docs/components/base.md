@@ -3,45 +3,92 @@ title: "Base Component"
 linkTitle: "Base"
 weight: 10
 type: "docs"
-description: "Explanation of base configuration and usage in Viam."
+description: "The base component is the platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
 icon: "img/components/base.png"
 # SMEs: Steve B
 ---
 
-Most robots with wheeled bases will comprise at least the following:
+A *base* is the platform that the other parts of a mobile robot attach to.
+
+Configure your robot's *base* component to reference any *motor* components attached to the base.
+By configuring a base component, organizing individual components to produce coordinated movement, you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
+
+<img src="../img/base/base-trk-rover-w-arm.png" alt="A robot comprised of a base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." />
+
+Most mobile robots with a base need at least the following hardware:
 
 - A [board component](/components/board/) that can run a `viam-server` instance.
-That is to say, a computing device with general purpose input/output (GPIO) pins such as a Raspberry Pi or other single-board computer with GPIO.
+   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
 
-- Two or more motors with wheels attached
+- Some sort of actuators to move the base.
+  Usually [motors](/components/motor/) attached to wheels or propellers.
 
-- A power supply for the board
+- A power supply for the board.
 
-- A power supply for the motors
+- A power supply for the actuators.
 
-- Some sort of chassis to hold everything together
+- Some sort of chassis to hold everything together.
 
-For example:
-
-<img src="../img/base/base-trk-rover-w-arm.png" alt="A robot comprised of a base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. There are width and diameter labels on the diagram because width and circumference (pi times diameter) are required attributes when configuring a base component." />
-
-An example of a wiring diagram for a base that has one motor on each side is shown below.
-Note that this will vary greatly depending on choice of motors, motor drivers, power supply, and board.
+Example wiring diagram for a base with one motor on each side:
 
 <img src="../img/base/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberry Pi, motor drivers, motors, power supply, and voltage regulator for the rover."/>
 
+Note that your base's wiring will vary depending on your choice of board, motors, motor drivers, and power supply.
+
 ## Configuration
 
-Configuring a base involves configuring the drive motors and ensuring the base attributes section contains the names of all motors that move the base right or left, respectively.
-Configure each motor according to its type.
-You can find more information on wiring and configuring different types of motors in the [motor topic](../motor/).
-The [board](/components/board/) controlling the base must also be configured.
+To configure a base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
 
-An example configuration file, including the board, motors, and base:
+This is how you configure a wheeled base:
 
-{{< tabs name="Example Servo Config" >}}
+{{< tabs name="Example Base Config" >}}
+{{% tab name="Config Builder" %}}
+<img src="../img/base/base-ui-config.png" alt="Picture of what an example configuration for a wheeled base looks like in the Viam App, with Attributes & Depends On drop-downs and the option to add a frame." width="800"/>
+{{% /tab %}}
 {{% tab name="Raw JSON" %}}
+
+```json-viam {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "attributes": {},
+      "model": <model>,
+      "name": <board_name>,
+      "type": "board"
+    },
+    {
+      "attributes": {
+        "board": <board_name>,
+        "max_rpm": <max_rpm>,
+        "pins": { ... }
+      },
+      "model": <model>,
+      "name": <motor_name>,
+      "type": "motor"
+    },
+    ... ,
+    {
+      "attributes": {
+        "left": [
+          <left_motor_name_1>
+        ],
+        "right": [
+          <right_motor_name_1>
+        ],
+        "wheel_circumference_mm": <#>,
+        "width_mm": <#>
+      },
+      "model": <model>,
+      "name": <base_name>,
+      "type": "base"
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Example JSON" %}}
 
 ```json-viam
 {
@@ -110,27 +157,12 @@ An example configuration file, including the board, motors, and base:
 <table>
 <thead>
   <tr>
-    <th>Name</th>
+    <th>Attribute</th>
     <th>Type</th>
     <th>Description</th>
   </tr>
 </thead>
 <tbody>
-  <tr>
-    <td><code>type</code></td>
-    <td>string</td>
-    <td>Use "base" for any base component</td>
-  </tr>
-  <tr>
-    <td><code>model</code></td>
-    <td>string</td>
-    <td>Select "wheeled" unless you have a "boat".</td>
-  </tr>
-  <tr>
-    <td><code>name</code></td>
-    <td>string</td>
-    <td>Name your base.</td>
-  </tr>
   <tr>
     <td><code>left</code></td>
     <td>array of strings</td>
@@ -157,15 +189,30 @@ An example configuration file, including the board, motors, and base:
 
 ### Optional Attributes
 
-`spin_slip_factor` (float): Used in steering calculations to correct for slippage between the wheels and the floor.
-To be calibrated by the user.
+<table>
+<thead>
+  <tr>
+    <th>Attribute</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><code>spin_slip_factor</code></td>
+    <td>float</td>
+    <td>Used in steering calculations to correct for slippage between the wheels and the floor. To be calibrated by the user.</td>
+  </tr>
+
+</tbody>
+</table>
 
 ## API
 
 The base component supports the following methods:
 
-| Method Name                   | Golang                 | Python                              | Description                                                            |
-| ----------------------------- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------- |
+| Method Name | Golang | Python | Description |
+| ----------- | ------ | ------ | ----------- |
 [MoveStraight](#movestraight)  | [MoveStraight][go_base]  |  [move_straight][python_move_straight] | Move the base in a straight line across the given distance at the given velocity. |
 [Spin](#spin) |  [Spin][go_base] | [spin][python_spin] | Move the base to the given angle at the given angular velocity. |
 [SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the relative power (out of max power) for linear and angular propulsion of the base. |
@@ -179,24 +226,22 @@ The base component supports the following methods:
 [python_set_velocity]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_velocity
 [python_stop]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.stop
 
-### Control your base with Viam's Client SDK Libraries
+## Code Examples
+
+### Control your Base with Viam's Client SDK Libraries
 
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
 - [Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
 
-{{% alert title="Note" color="note" %}}
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
 
-Make sure you have set up your robot and connected it to the Viam app. Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
-
-The following example assumes you have a base called "my_base" which is configured as a component of your robot.
+The following example assumes you have a wheeled base called "my_base" which is configured as a component of your robot.
 If your base has a different name, change the `name` in the example.
-
-{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.base import BaseClient
 from viam.proto.common import Vector3
 
@@ -221,7 +266,7 @@ if __name__ == '__main__':
 {{% /tab %}}
 {{% tab name="Golang" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
  "go.viam.com/rdk/components/base"
  "github.com/golang/geo/r3"
@@ -235,11 +280,11 @@ func main() {
   // Connect to your robot.
   robot, err := client.New(
       context.Background(),
-      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE SECURITY TAB OF THE VIAM APP]",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE LOCATION'S PAGE IN THE VIAM APP]",
       })),
   )
 
@@ -287,7 +332,7 @@ Negative implies backwards.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Move the base 10 mm at a velocity of 1 mm/s, forward.
@@ -315,7 +360,7 @@ Negative implies backwards.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 if err != nil {
   logger.Fatalf("cannot get base: %v", err)
@@ -351,7 +396,7 @@ Negative implies backwards.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Spin the base 10 degrees at an angular velocity of 1 deg/sec.
@@ -376,7 +421,7 @@ Negative implies backwards.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 if err != nil {
   logger.Fatalf("cannot get base: %v", err)
@@ -411,7 +456,7 @@ Use the Z component of this vector to spin left or right when controlling a whee
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Make your wheeled base move forward. Set linear power to 75%.
@@ -451,7 +496,7 @@ Use the Z component of this vector to spin left or right when controlling a whee
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 if err != nil {
   logger.Fatalf("cannot get base: %v", err)
@@ -508,7 +553,7 @@ Only the Y component of the vector is used for a wheeled base.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Set the angular velocity to 1 mm/sec and the linear velocity to 1 degree/sec.
@@ -531,7 +576,7 @@ await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import "github.com/golang/geo/r3"
 
 myBase, err := base.FromRobot(robot, "my_base")
@@ -563,7 +608,7 @@ Stop the base from moving immediately.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myBase = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Move the base forward 10 mm at a velocity of 1 mm/s.
@@ -587,7 +632,7 @@ await myBase.stop()
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 if err != nil {
   logger.Fatalf("cannot get base: %v", err)
@@ -602,3 +647,37 @@ myBase.Stop(context.Background())
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+
+## Next Steps
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/yahboom-rover/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Drive a Yahboom Rover with a Gamepad</h4>
+            <p style="text-align: left;">Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.</p>
+        </a>
+    </div>
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/controlling-an-intermode-rover-canbus/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Control an Intermode Rover with CAN Bus and Viam</h4>
+            <p style="text-align: left;">How to abstract CAN bus protocol to control an Intermode rover with Viam.</p>
+        </a>
+    </div>
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/viam-rover/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Drive the Viam Rover with the Viam SDK</h4>
+            <p style="text-align: left;">Try Viam by using the Viam SDK to make your Viam Rover move in a square.</p>
+        </a>
+    </div>
+  </div>
+</div>

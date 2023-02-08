@@ -1,7 +1,7 @@
 ---
 title: "Data Management Service"
 linkTitle: "Data Management Service"
-weight: 20
+weight: 30
 simple_list: true
 type: "docs"
 tags: ["data management", "data", "services"]

@@ -1,7 +1,7 @@
 ---
-title: "Get started with the Viam App"
-linkTitle: "Start with the Viam App"
-weight: 20
+title: "Get started with the Viam app"
+linkTitle: "Get started with the Viam app"
+weight: 10
 type: "docs"
 description: "A guide to getting started with app.viam.com."
 ---
@@ -9,7 +9,7 @@ The [Viam app](https://app.viam.com/) is a tool for configuring, controlling, an
 This guide covers how to manage organizations, locations, robots, and robot parts from the Viam app.
 
 {{% alert title="Info" color="tip" %}}
-For more conceptual information about what organizations, locations, robots, and parts represent, see our [fleet management overview](/services/fleet-management/).
+For more conceptual information about what organizations, locations, robots, and parts represent, see our [fleet management overview](/manage/fleet-management/).
 {{% /alert %}}
 
 ## Creating an account

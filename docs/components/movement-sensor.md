@@ -50,7 +50,7 @@ The `gps-nmea` model can be connected via and send data through a serial connect
 
 #### GPS-NMEA over USB/Serial
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "depends_on": [],
     "model": "gps-nmea",
@@ -70,7 +70,7 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 #### GPS-NMEA over I<sup>2</sup>C
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "depends_on": [],
     "model": "gps-nmea",
@@ -128,7 +128,7 @@ Name | Type | Default Value | Description
 
 Example config:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "depends_on": [],
     "model": "gps-rtk",
@@ -156,7 +156,7 @@ Example config:
 
 Example config:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "depends_on": [],
     "model": "gps-nmea",
@@ -197,7 +197,7 @@ For all of the following RTK-station configurations, `children` is the list of o
 
 #### RTK-Station using NTRIP
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "model": "rtk-station",
     "name": "my-rtk-station",
@@ -221,7 +221,7 @@ For all of the following RTK-station configurations, `children` is the list of o
 
 #### RTK-Station using I<sup>2</sup>C
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "model": "rtk-station",
     "name": "my-rtk-station",
@@ -247,7 +247,7 @@ For all of the following RTK-station configurations, `children` is the list of o
 
 #### RTK-Station using Serial/USB
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "children": [
         "gps1"
@@ -284,7 +284,7 @@ Name | Type | Default Value | Description
 
 Serial communication uses a filepath instead of relying on any specific piece of board hardware, so no "board" attribute is needed when configuring a movement sensor with this communication method.
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "<my-movement-sensor-name>",
     "type": "<TYPE>",
@@ -313,7 +313,7 @@ Name | Type | Default Value | Description
 
 You'll also need to configure the `board` attribute with the name of the board to which the I<sup>2</sup>C connection is being made.
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "<my-movement-sensor-name>",
     "type": "<TYPE>",
@@ -346,7 +346,7 @@ They are configured with model `imu-wit` or `imu-vectornav`, respectively.
 
 Example IMU-WIT config:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "myIMU",
     "type": "movement_sensor",
@@ -363,7 +363,7 @@ Example IMU-WIT config:
 
 Example IMU-VectorNav config:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "myIMU",
     "type": "movement_sensor",
@@ -384,7 +384,7 @@ Example IMU-VectorNav config:
 Name | Type | Default Value | Description
 ----- | ----- | ----- | -----
 `board` | string | - | The name of the board to which the device is wired
-`spi` | string | The name of the SPI bus over which the device communicates with the board. On a Raspberry Pi, people often use the bus named “1.”
+`spi` | string | The name of the SPI bus over which the device communicates with the board. On a Raspberry Pi, people often use the bus named "1."
 `chip_select_pin` | string | - | The board pin (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device.
 `spi_baud_rate` | int | 115200 | The rate at which data is sent from the IMU.
 `polling_frequency_hz` | int |
@@ -398,7 +398,7 @@ Calling `GetReadings` (a method supported by all [sensor components](/components
 
 Configure this sensor with type `movement_sensor` and model `accel-adxl345` as well as a board component with an I<sup>2</sup>C bus:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -446,7 +446,7 @@ Unlike the IMUs listed above, it does not contain magnetometers or provide orien
 
 Configuration of this sensor requires configuring a movement sensor component with model `gyro-mpu6050` as well as a board component with an I<sup>2</sup>C bus:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "components": [
         {
@@ -471,7 +471,7 @@ Configuration of this sensor requires configuring a movement sensor component wi
                 "use_alt_i2c_address": true,
                 "i2c_bus": "default_i2c_bus",
                 "board": "local"
-            }   
+            }
         }
     ]
 }
@@ -498,7 +498,7 @@ The `cameramono` model can use any single camera with this algorithm.
 
 In a Viam configuration file, a camera used as a movement sensor will require a [`camera` type component](/components/camera/) and then a `movementsensor` type component that depends on the `camera` component, and a `motion_estimation_config` based on the camera properties.
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "components": [
         {

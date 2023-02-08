@@ -62,7 +62,7 @@ Your webcam configuration in the Config Builder will look something like this:
 
 Or if you prefer the raw JSON:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
     {
       "name": "my_camera",
       "type": "camera",
@@ -92,7 +92,7 @@ What this will look like in the Config Builder:
 
 Raw JSON:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "register_models": [
     {
@@ -120,7 +120,7 @@ You'll need to edit the `pipeline` section as well with `type` set to `"detectio
 
 You can paste the following into the **Attributes** section of the `show_detections` config builder:
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "stream": "color",
   "source": "my_camera",
@@ -146,7 +146,7 @@ You may have different pin numbers and other attributes depending on your hardwa
 
 {{%expand "Click to view JSON" %}}
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -324,7 +324,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
 ## Controlling your rover with Viam
 
 1. Go to your robot’s page on [the Viam app](https://app.viam.com/).
-   Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, “Live.”
+   Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, "Live."
 2. Go to the **CONTROL** tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around.
    Ensure that the base moves as expected.
    If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.

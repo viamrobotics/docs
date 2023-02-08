@@ -10,7 +10,7 @@ tags: ["data management", "data", "services", "try viam"]
 
 ## Introduction
 
-One key feature of Viam is the included [Data Management service](/services/data-management/), which helps you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
+One key feature of Viam is the included [Data Management service](/manage/data-management/), which helps you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
 
 Viam's Data Management service has two distinct parts: [data capture](#enabling-data-capture-with-the-data-management-service) and [data sync](#enabling-cloud-sync-on-the-data-management-service).
 
@@ -145,7 +145,7 @@ Now, let's export that image data from the Viam's Data Management service in the
 
 To export data from Viam, you will need to do the following:
 
-First, install the [Viam CLI](/program/cli) and [authenticate](/program/cli/#authenticate).
+First, install the [Viam CLI](/manage/cli) and [authenticate](/manage/cli/#authenticate).
 
 ``` bash
 go install go.viam.com/rdk/cli/cmd@latest
