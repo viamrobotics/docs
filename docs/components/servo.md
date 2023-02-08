@@ -134,7 +134,7 @@ The servo component supports the following methods:
 The following example assumes you have a servo called "my_servo" configured as a component of your robot, and that your robot is connected on [the Viam app](https://app.viam.com/).
 If your servo has a different name, change the `name` in the example.
 
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
 
 {{% /alert %}}
 

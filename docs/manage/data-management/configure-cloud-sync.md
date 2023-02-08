@@ -1,7 +1,7 @@
 ---
 title: "Configure Cloud Sync"
 linkTitle: "Configure Cloud Sync"
-weight: 30
+weight: 40
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 # SME: Aaron Casas

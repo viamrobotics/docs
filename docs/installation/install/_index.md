@@ -11,7 +11,7 @@ description: "Install viam-server on your robot."
 ### Quickstart
 
 1. Go to the [Viam app](https://app.viam.com) and add a new robot.
-You can find more detailed instructions in our [Getting Started with the Viam App guide](/program/app-usage/#adding-a-new-robot).
+You can find more detailed instructions in our [Getting Started with the Viam App guide](/manage/app-usage/#adding-a-new-robot).
 2. Click the **SETUP** tab on your robot page.
 3. Toggle the **Mode** and **Architecture** settings to be compatible with your device.
 4. Follow the steps on the **SETUP** tab to install `viam-server`.

@@ -80,7 +80,7 @@ For a full walk-through of one example, see the [Control an Intermode Rover with
 The easiest way to get started is to:
 
 1. Include one of the provided examples in your Viam robot config (see [Using a modular resource with your robot](#use-a-modular-resource-with-your-robot))
-2. Control the custom resource on the Viam app's [__CONTROL__ tab](/program/app-usage/#control)
+2. Control the custom resource on the Viam app's [__CONTROL__ tab](/manage/app-usage/#control)
 3. Control the custom resource programmatically with a [Viam SDK](/program/sdk-as-client/)
 4. Experiment by changing the resource's behavior.
 
@@ -98,7 +98,7 @@ In order for the RDK to manage a modular resource, the modular resource must be 
 Therefore, you must ensure that any modular resource(s) are made available via a module binary executable in a location that the RDK can access.
 For example, if you are running the RDK on an Raspberry Pi you'll need to have an executable module on the Pi's filesystem.
 
-{{% alert title="Modules vs modular resources" color="tip" %}}  
+{{% alert title="Modules vs modular resources" color="tip" %}}
 Modules are binary executables that can be managed by the RDK through [module configuration](#add-a-module-to-your-robot-configuration).
 
 A configured module can make one or more modular resources available for configuration as a component and/or service instances.

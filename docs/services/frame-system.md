@@ -1,7 +1,7 @@
 ---
 title: "The Robot Frame System"
 linkTitle: "Frame System"
-summary: "Describes the frame system, its configuration, and its functionality."
+description: "Describes the frame system, its configuration, and its functionality."
 type: docs
 weight: 45
 tags: ["frame system", "services"]
@@ -62,7 +62,7 @@ If you are using a component driver provided by Viam, the **Model JSON** should 
 Once the configuration is completed and the server is started, the robot builds a tree of reference frames with the world as the root node.
 
 A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs.
-Viam regenerates this tree in the process of [reconfiguration](/services/fleet-management/#configurationlogging):
+Viam regenerates this tree in the process of [reconfiguration](/manage/fleet-management/#configurationlogging):
 
 ![an example of a logged frame system](../img/frame_sys_log_example.png)
 
