@@ -10,7 +10,7 @@ description: "Build something with a Viam Rover."
 <p>Follow one of these tutorials with your borrowed or owned rover:</p>
 </div>
 
-<div class="container text-center">
+<div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <br>
@@ -18,7 +18,7 @@ description: "Build something with a Viam Rover."
         <br>
         <a href="../../tutorials/viam-rover/try-viam-sdk">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive with the Viam SDK</h4>
-            <p style="text-align: left;">Using the Viam SDK to make your Viam Rover move in a square.</p>
+            <p style="text-align: left;">Use the Viam SDK to make your Viam Rover move in a square.</p>
         </a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
@@ -27,7 +27,7 @@ description: "Build something with a Viam Rover."
         <br>
         <a href="../../tutorials/viam-rover/try-viam-color-detection">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect a Color</h4>
-            <p style="text-align: left;">Using the vision service in the Viam app to detect a color.</p>
+            <p style="text-align: left;">Use the vision service in the Viam app to detect a color.</p>
         <a>
     </div>
   </div>

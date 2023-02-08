@@ -22,19 +22,13 @@ The Try Viam area also has an overhead camera to provide a view of the rental ro
 
 ### Access the system
 
-While logged in with a Viam account, navigate to <a href="https://app.viam.com/try" target="_blank">TRY in the Viam app</a> to make a reservation.
-(If you don’t have an account, it only takes a minute to sign up.)
+While logged in with a Viam account, navigate to <a href="https://app.viam.com/try" target="_blank">**TRY** in the Viam app</a> to make a reservation.
+(If you don't have an account, it only takes a minute to sign up.)
 From the **TRY** page, click **TRY NOW** to reserve a time slot.
 
 ### Create a reservation
 
-The Try Viam landing page displays the **Next time slot** or **Estimated Time to Start** and other status information.
-
-If a Viam Rover is available, you can click **TRY NOW** to start your 15 minutes.
-Then click **TRY YOUR ROBOT** to access your rental.
-Otherwise, you'll see an estimate of the next available start time.
-Click **RESERVE ROVER** to get in the queue.
-If the wait is longer than four minutes you will receive a "Time to Play" email when it’s your turn.
+{{< readfile "/static/include/create-a-reservation.md" >}}
 
 ### Access your rover rental
 
@@ -166,11 +160,11 @@ You can find more information on the [WebGamepad in the Input Controller topic](
 
 **Disabled**:
 
-<img src="../img/try-viam/gamepad-disabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller disabled position." width="50%"><br>
+<img src="../img/try-viam/gamepad-disabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller disabled position." style="max-width:400px"><br>
 
 **Enabled**:
 
-<img src="../img/try-viam/gamepad-enabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller enabled position." width="50%"><br>
+<img src="../img/try-viam/gamepad-enabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller enabled position." style="max-width:400px"><br>
 
 ## Learning about robot configuration
 

@@ -15,7 +15,7 @@ It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and aut
 
 SDKs make it easier to interface with the robot without calling the gRPC API directly.
 
-<img src="../img/SDK-as-client/image1.png" alt="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client." width="100%"><br>
+<img src="../img/SDK-as-client/image1.png" alt="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client."><br>
 
 ## Viam's Client SDK Libraries
 
