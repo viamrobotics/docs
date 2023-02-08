@@ -69,7 +69,7 @@ Field | Description
 Refer to the document for your specific motor model for attribute configuration information:
 
 - [`gpio`](./gpio/)
-- [`gpiostepper`](./gpio-stepper/)
+- [`gpiostepper`](./gpiostepper/)
 - [`TMC5072`](./tmc5072/)
 - [`DMC4000`](./dmc4000/)
 - [`fake`](./fake/)

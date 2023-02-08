@@ -15,7 +15,7 @@ Field | Description
 ----- | -----------
 `name` | Choose a name to identify the motor.
 `type` | `motor` is the type for all motor components.
-`model` | Depends on the motor driver; see the list of models in the [table above](#model-table).
+`model` | `fake`
 
 {{< tabs name="fake-config">}}
 {{% tab name="Builder UI" %}}
