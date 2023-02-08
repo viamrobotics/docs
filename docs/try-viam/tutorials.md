@@ -10,7 +10,7 @@ description: "Build something with a Viam Rover."
 <p>Follow one of these tutorials with your borrowed or owned rover:</p>
 </div>
 
-<div class="container text-center">
+<div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <br>

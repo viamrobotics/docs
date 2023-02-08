@@ -10,7 +10,7 @@ type: "docs"
 <p>Learn how to prototype, configure, and program a robot using the Viam Platform.</p>
 </div>
 
-<div class="container text-center">
+<div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="viam">
