@@ -241,7 +241,7 @@ For more information on choosing the correct video path, refer to our [camera co
 
 The [web gamepad](/components/input-controller/#webgamepad) component has the **Type** `input_controller` and the **Model** `webgamepad`.
 
-![No attributes are configured in the gamepad configuration panel.](../img/try-viam/gamepad-config.png)
+![The gamepad configuration panel. No attributes are configured.](../img/try-viam/gamepad-config.png)
 
 If you connect a generic gamepad controller to your computer, you can use it to control your robot.
 
