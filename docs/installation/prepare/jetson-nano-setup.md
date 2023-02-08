@@ -1,36 +1,61 @@
 ---
-title: "NVIDIA® Jetson Nano™ Setup Guide"
-linkTitle: "Jetson Nano™ Setup"
+title: "NVIDIA Jetson Nano Setup Guide"
+linkTitle: "Jetson Nano Setup"
 weight: 20
 type: "docs"
 draft: false
-description: "How to set up the Jetson Nano Developer Kit to prepare your NVIDIA® Jetson Nano™ for viam-server installation."
-aliases:
-    - "/installation/jetson-nano-setup/"
+description: "How to set up the Jetson Nano Developer Kit to prepare your NVIDIA Jetson Nano for viam-server installation."
 # SMEs: Pete Garafano
 ---
 
-The [Jetson Nano™](https://developer.nvidia.com/embedded/jetson-nano) from [NVIDIA®](https://www.nvidia.com/) is a small computer that is built for embedded applications and is capable of supporting modern AI workloads.
-Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) to prepare your NVIDIA® Jetson Nano™ for `viam-server` installation.
+The [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano) from [NVIDIA](https://www.nvidia.com/) is a small computer that is built for embedded applications and is capable of supporting modern AI workloads.
+Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) to prepare your NVIDIA Jetson Nano for `viam-server` installation.
 
-<p style="text-align:center;"><img src="../../installation/img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Picture of the front of the NVIDIA® Jetson Nano™ single-board computer." styles="max-width:500px"></p>
+<p style="text-align:center;"><img src="../../installation/img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Picture of the front of the NVIDIA Jetson Nano single-board computer." styles="max-width:500px"></p>
+
+{{< alert title="Note" color="note" >}}
+
+This board is experimental. Stability is not guaranteed.
+
+{{% /alert %}}
 
 ## Hardware Requirements
 
 You need the following hardware, tools, and software to install `viam-server` on a Jetson Nano:
 
+Initial Setup with Display Attached
+
 1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
-2. A microSD card (at least 32GB UHS-1)
-3. A way to connect the microSD card to the computer (like a,microSD slot or microSD reader)
-4. An internet-connected computer.
-5. 5V-2A DC (recommended) or Micro-USB power supply
+2. A microSD card (32GB UHS-1 minimum recommended)
+3. A computer display (HDMI or DP) with USB keyboard and mouse
+4. A way to connect the microSD card to the computer (like a microSD slot or microSD reader)
+5. Ethernet cable and/or Wifi dongle, to establish network connection on the Nano
+6. 5V-2A DC with barrel jack connector and/or Micro-USB power supply, to power the Nano
+
+Initial Setup in Headless Mode
+
+1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
+2. A microSD card (32GB UHS-1 minimum recommended)
+3. An internet-connected computer
+4. A way to connect the computer to the Nano (like a USB 2.0 A-Male to Micro B Cable)
+5. A way to connect the microSD card to the computer (like a microSD slot or microSD reader)
+6. Ethernet cable and/or Wifi dongle, to establish network connection on the Nano
+7. 5V-2A DC with barrel jack connector power supply, to power the Nano (Micro-USB port will be taken by the cable connection to computer)
 
 ## Jetson Nano Setup Guide
 
 1. Follow the instructions in [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit).
-2. Once you have completed the *Introduction*, *Prepare for Setup*, *Write Image to the microSD Card*, and *Setup and First Boot* sections of NVIDIA's instructions, return to the Viam docs.
-3. Your Jetson Nano now has a Viam-compatible operating system installed.
+Once you have reached *Next Steps*, return to the Viam docs.
+1. Your Jetson Nano now has a Viam-compatible operating system installed.
     Continue to our [viam-server installation guide](/installation/install/).
+    Note that the Jetson Nano has aarch64 CPU architecture.
+
+{{< alert title="Note" color="note" >}}
+
+You may have issues installing `curl` on your Nano.
+Use `wget http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage` to download the `viam-server` binary if you run into issues with `curl`.
+
+{{% /alert %}}
 
 ## Troubleshooting
 
