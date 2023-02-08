@@ -10,7 +10,7 @@ To use Viam software with your robot, you need to install a binary called *viam-
 
 See [What is Viam?](/viam/) for more information.
 
-<div class="container text-center">
+<div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="prepare">

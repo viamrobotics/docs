@@ -656,7 +656,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next Steps
 
-<div class="container text-center">
+<div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="/tutorials/yahboom-rover/">
