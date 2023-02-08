@@ -75,12 +75,15 @@ Do not attach it to the servo wheel yet.
 
 ### Speaker
 
+You'll need a speaker attached to your rover so that you can hear the responses generated from OpenAI converted from text to speech.
+
 Connect your speaker to your Pi:
 
 * Connect the USB power cable to the speaker and any available USB port on the Pi.
 * Connect 3.5mm audio cable to the speaker and the audio jack on the Pi.
 
 Both cables come with the speaker in the [hardware list](#hardware-list), and can otherwise be easily acquired.
+You may also want to attach your speaker to the top of your rover with [double-sided foam tape](https://www.amazon.com/3M-Natural-Polyurethane-Double-Coated/dp/B007Y7CA3C/), but this is optional.
 
 ### Set up tutorial software
 
@@ -90,7 +93,7 @@ The git repository for this tutorial contains code that integrates with:
 * Google text/speech tools
 * OpenAI
 
-It also contains an open source machine learning classifier model.
+It also contains an open source machine learning [classifier model](https://tfhub.dev/google/lite-model/imagenet/mobilenet_v3_large_100_224/classification/5/metadata/1).
 
 {{% alert title="Note" color="note"%}}
 At the time this tutorial was written, OpenAI was not yet offering the ChatGPT model with their [official API](https://platform.openai.com/overview).
@@ -160,7 +163,8 @@ Now, add the following configuration to the attributes for the Vision service.
 You are registering a model of type `tflite_classifier` named `stuff_classifier`.
 Your companion robot will use this to - well, classify stuff (using an ML model trained using the [ImageNet image database](https://www.image-net.org/))!
 
-Make sure you press "Save config" to finish adding the classifier.
+Update the `label_path` and `model_path` to match where you [copied the tutorial software](#set-up-tutorial-software).
+Press "Save config" to finish adding the classifier.
 
 ``` json
 {
