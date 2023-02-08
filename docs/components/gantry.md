@@ -42,7 +42,7 @@ This is how you configure a one-axis gantry:
 {{< tabs name="Example Gantry Config One-Axis" >}}
 {{< tab name="Config Builder" >}}
 
-<img src="../img/gantry/gantry-config-ui-oneaxis.png" alt="Picture of what an example configuration for a one-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
+![Example configuration for a one-axis gantry component looks like in the Viam App config builder.](../img/gantry/gantry-config-ui-oneaxis.png)
 
 {{< /tab >}}
 {{% tab name="Raw JSON" %}}
