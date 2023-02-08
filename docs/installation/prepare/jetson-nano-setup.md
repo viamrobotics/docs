@@ -10,26 +10,27 @@ aliases:
 # SMEs: Pete Garafano
 ---
 
-The [Jetson Nano™](https://developer.nvidia.com/embedded/jetson-nano) from [NVIDIA®](https://www.nvidia.com/) is a small, powerful computer that, despite its small size, is built for embedded applications and AI IoT, and is capable of supporting modern AI workloads.
-Set up your NVIDIA Jetson Nano with the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit).
+The [Jetson Nano™](https://developer.nvidia.com/embedded/jetson-nano) from [NVIDIA®](https://www.nvidia.com/) is a small computer that is built for embedded applications and is capable of supporting modern AI workloads.
+Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) to prepare your NVIDIA® Jetson Nano™ for `viam-server` installation.
 
-<p style="text-align:center;"><img src="/installation/img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Picture of the front of the NVIDIA® Jetson Nano™ single-board computer." width="50%"></p>
+<p style="text-align:center;"><img src="../../installation/img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Picture of the front of the NVIDIA® Jetson Nano™ single-board computer." styles="max-width:500px"></p>
 
 ## Hardware Requirements
 
-You will need the following hardware, tools, and software to install `viam-server` on a Jetson Nano:
+You need the following hardware, tools, and software to install `viam-server` on a Jetson Nano:
 
 1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
-2. A microSD card (32GB UHS-1 minimum recommended)
-3. A way to connect the microSD card to the computer (e.g., microSD slot or microSD reader)
-4. An internet-connected computer with computer display (HDMI or DP), keyboard, and mouse
+2. A microSD card (at least 32GB UHS-1)
+3. A way to connect the microSD card to the computer (like a,microSD slot or microSD reader)
+4. An internet-connected computer.
 5. 5V-2A DC (recommended) or Micro-USB power supply
 
 ## Jetson Nano Setup Guide
 
-1. Follow the instructions from [NVIDIA®](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) to get started with your Jetson Nano Developer Kit.
+1. Follow the instructions in [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit).
 2. Once you have completed the *Introduction*, *Prepare for Setup*, *Write Image to the microSD Card*, and *Setup and First Boot* sections of NVIDIA's instructions, return to the Viam docs.
-3. Now that your Jetson Nano has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
+3. Your Jetson Nano now has a Viam-compatible operating system installed.
+    Continue to our [viam-server installation guide](/installation/install/).
 
 ## Troubleshooting
 
