@@ -160,11 +160,11 @@ You can find more information on the [WebGamepad in the Input Controller topic](
 
 **Disabled**:
 
-<img src="../img/try-viam/gamepad-disabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller disabled position." width="50%"><br>
+<img src="../img/try-viam/gamepad-disabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller disabled position." style="max-width:400px"><br>
 
 **Enabled**:
 
-<img src="../img/try-viam/gamepad-enabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller enabled position." width="50%"><br>
+<img src="../img/try-viam/gamepad-enabled.png" alt="Screenshot of the input controller panel in the CONTROL tab with the switch in the controller enabled position." style="max-width:400px"><br>
 
 ## Learning about robot configuration
 

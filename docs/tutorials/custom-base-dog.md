@@ -242,7 +242,7 @@ Name your remote "my-custom-base" and click **Create Remote**.
 In the **Address** field put `localhost: 9090`.
 Click **Save Config** at the bottom of the page.
 
-<img src="../img/custom-base-dog/remote-config.png" alt="Screenshot of the Viam app Config tab with the Remotes sub-tab open, showing my-custom-base configured as a remote." width=80% >
+<img src="../img/custom-base-dog/remote-config.png" alt="Screenshot of the Viam app Config tab with the Remotes sub-tab open, showing my-custom-base configured as a remote." style="max-width:400px" >
 
 {{% alert title="Note" color="note" %}}
 
@@ -280,7 +280,7 @@ To operate the dog, you need to start the two servers in order:
 - Then, the custom component server (<file>/home/fido/RobotDog/python-server.py</file>).
   This one must be started second because it sends requests to the Freenove dog server, so it will throw errors if it can't find that server when it tries to start.
 
-<!---  
+<!---
 
 # ADD THIS BACK IN AFTER APP-1227 IS DONE. TEST IT FIRST.
 

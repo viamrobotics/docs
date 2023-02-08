@@ -11,7 +11,7 @@ tags: ["board", "raspberry pi", "app"]
 In this post, we will show you how to use Viam to make an LED blink with a Raspberry Pi.
 This tutorial is a great place to start if you have never built a robot or a circuit before.
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image9.gif" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="50%"><br>
+<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image9.gif" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." wstyle="max-width:300px"><br>
 
 ## What you'll need for this guide
 
