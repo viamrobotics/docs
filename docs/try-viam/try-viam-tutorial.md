@@ -15,38 +15,7 @@ The Try Viam area also has an overhead camera to provide a view of the rental ro
 
 Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](/try-viam/reserve-a-rover/#using-the-reservation-system), [navigate the Viam platform](/program/app-usage/), and [drive the rover](#the-control-tab):
 
-<<<<<<< HEAD
-### Access the system
-
-While logged in with a Viam account, navigate to <a href="https://app.viam.com/try" target="_blank">**TRY** in the Viam app</a> to make a reservation.
-(If you don't have an account, it only takes a minute to sign up.)
-From the **TRY** page, click **TRY NOW** to reserve a time slot.
-
-### Create a reservation
-
-{{< readfile "/static/include/create-a-reservation.md" >}}
-
-### Access your rover rental
-
-From the confirmation email, click **Take Me to My Rover** to open Try Viam with your robot in the **CONTROL** tab, or click **TRY NOW** from <a href="https://app.viam.com/try" target="_blank">the TRY page</a>.
-
-Try Viam steps through various screens as the system readies your robot.
-
-After the system establishes a connection and configures your robot, the status capsule displays **RUNNING**, and several buttons:
-
-1. Click **TRY YOUR ROBOT** to access your rental robot page.
-2. Click **CANCEL RESERVATION** to immediately end the rental session.
-3. Click **EXTEND RESERVATION** to extend the current session if there is time remaining and the next available rental slot is open.
-
-![Screenshot of the Try Viam reservation management page.](../img/try-viam/reservation-management.png)
-
-You can always return to the reservation management page by clicking on the **TRY** tab.
-Clicking the timer in the top banner redirects you to the **CONTROL** tab where you can drive the robot.
-
-![Screenshot of the top navigation bar of the Viam app with the Viam Rover time remaining indicator/button.](../img/try-viam/timer.png)
-=======
 <iframe width="560" height="315" src="https://www.youtube.com/embed/YYpZ9CVDwMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
->>>>>>> 47fd10e (Update Try Viam tutorial)
 
 ## The **CONTROL** tab
 
@@ -174,15 +143,7 @@ Now that you learned how to drive your rover with the UI, let’s go a bit furth
 One other thing you can do within your experience is see your configuration.
 
 On the Viam app, navigate to the **COMPONENTS** subtab, under **CONFIG**.
-There you can view the configuration for each component in the robot: their attributes, component dependencies, pin assignments, etc.
-=======
-Navigate to the **COMPONENTS** subtab, under **CONFIG**.
-<<<<<<< HEAD
-There you can view the configuration for each component in the robot: their attributes, component dependencies, pin assignments, and more.
->>>>>>> a70d78b (Update Try Viam tutorial)
-=======
 There you can view the configuration for each component in the robot: attributes, component dependencies, pin assignments, and more.
->>>>>>> dd30906 (Address feedback)
 
 ![Screenshot of the CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](../img/try-viam/config-builder.png)
 
