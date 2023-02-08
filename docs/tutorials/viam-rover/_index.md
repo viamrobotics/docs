@@ -24,7 +24,7 @@ description: "Color detection and SDK tutorials for the Viam Rover."
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <br>
-        <img src="../../tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png" alt="detectionCam stream displaying a color detection.">
+        <img src="../img/try-viam-color-detection/detectioncam-comp-stream.png" alt="detectionCam stream displaying a color detection.">
         <br>
         <a href="../../tutorials/viam-rover/try-viam-color-detection">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect a Color</h4>
