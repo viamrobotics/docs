@@ -34,6 +34,7 @@ Most robots with a gantry need at least the following hardware:
 ### Configuration
 
 Configuring this component on your robot with a gantry enables you to get and change the position of the linear rail axes.
+You can configure your robot, as shown below, on the [Viam app](https://app.viam.com).
 
 #### One-Axis
 
@@ -42,7 +43,7 @@ This is how you configure a one-axis gantry:
 {{< tabs name="Example Gantry Config One-Axis" >}}
 {{< tab name="Config Builder" >}}
 
-![Example configuration for a one-axis gantry component looks like in the Viam App config builder.](../img/gantry/gantry-config-ui-oneaxis.png)
+<img src="../img/gantry/gantry-config-ui-oneaxis.png" alt="Example of what configuration for a one-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
 {{% tab name="Raw JSON" %}}
@@ -81,14 +82,14 @@ This is how you configure a one-axis gantry:
 
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
-| board  |  Optional | The name of the board that is connected to the limit switches and pins. If limit pins exist, board is required. |
-| *motor* | *Required* | The name of the motor that moves the gantry. |
-| limit_pins  | Optional | The pins attached to the limit switches on either end. If motor type is not encoded, limit_pins is required. |
-| limit_pin_enabled_high | Optional | If it is true or false that the limit pins are enabled. Default is false. |
-| *length_mm* | *Required* | The length of the axis of the gantry in mm. |
-| mm_per_rev | Optional | How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output shaft. This typically corresponds to Distance = PulleyDiameter*pi, or the pitch of a linear screw. |
-| gantry_rpm | Optional | The gantry motor's default rpm. |
-| *axis* | *Required* | The axis in which the gantry is allowed to move (x, y, z). |
+| `board`  |  Optional | The name of the board that is connected to the limit switches and pins. If limit pins exist, board is required. |
+| `motor` | *Required* | The name of the motor that moves the gantry. |
+| `limit_pins`  | Optional | The pins attached to the limit switches on either end. If motor type is not encoded, limit_pins is required. |
+| `limit_pin_enabled_high` | Optional | If it is true or false that the limit pins are enabled. Default is false. |
+| `length_mm` | *Required* | The length of the axis of the gantry in mm. |
+| `mm_per_rev` | Optional | How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output shaft. This typically corresponds to Distance = PulleyDiameter*pi, or the pitch of a linear screw. |
+| `gantry_rpm` | Optional | The gantry motor's default rpm. |
+| `axis` | *Required* | The axis in which the gantry is allowed to move (x, y, z). |
 
 #### Multi-Axis
 
@@ -99,7 +100,7 @@ This is how you configure a multi-axis gantry:
 {{< tabs name="Example Gantry Config Multi-Axis" >}}
 {{< tab name="Config Builder" >}}
 
-<img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="Example configuration for a one-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
+<img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="Example of what configuration for a multi-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
 {{% tab name="Raw JSON" %}}
@@ -278,28 +279,9 @@ This is how you configure a multi-axis gantry:
 {{% /tab %}}
 {{< /tabs >}}
 
-<table>
-  <tr>
-    <td>
-      <strong>
-        Attribute
-      </strong>
-    </td>
-    <td>
-      <strong>
-        Description
-      </strong>
-    </td>
-  </tr>
-  <tr>
-    <td>
-        subaxes_list
-    </td>
-    <td>
-      A complete list of the sub-axes, the one-axis gantries that make up the multi-axis gantry.
-    </td>
-  </tr>
-</table>
+| Attribute | Inclusion | Description |
+| ----------- | -------------- | --------------  |
+| `subaxes_list`  | *Required* | A complete list of the sub-axes, the one-axis gantries that make up the multi-axis gantry. |
 
 ## API
 
