@@ -14,7 +14,7 @@ aliases:
 
 This tutorial requires the following hardware:
 
-* A Raspberry Pi single board computer
+* A [Raspberry Pi single board computer](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
 * A microSD card
 * An internet-connected computer
 * A way to connect the microSD card to the computer (e.g., microSD slot or microSD reader)
