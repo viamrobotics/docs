@@ -6,7 +6,7 @@ no_list: true
 type: docs
 draft: false
 ---
-To use Viam software with your robot, you need to install and run an executable binary called `viam-server` on the computer you want to use to control the robot.
+To use Viam software with your robot, you need to install and run an binary called `viam-server` on the computer you want to use to control the robot.
 
 If that computer is a single-board-computer like a Raspberry Pi or Beaglebone, you need to prepare the computer by setting up the board with a viam-compatible operating system.
 
