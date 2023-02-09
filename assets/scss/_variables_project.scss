@@ -149,3 +149,9 @@ file {
 .video-shortcode {
   width: --webkit-fill-available;
 }
+
+/* START CSS for enforcing a max width on video content */
+.embed-responsive.embed-responsive-16by9 {
+  max-width: 560px
+}
+/* END CSS for enforcing a max width on video content */

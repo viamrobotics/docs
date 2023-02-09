@@ -22,15 +22,14 @@ For 15 minutes, no matter where you are in the world, you can take over and play
 ## Can I extend my time?
 
 Sure!
-If the next time slot is open, you can click **Extend Reservation** on the **Try** page.
-You must do this *before your session ends* to reset the timer to 15 minutes.
-When your session ends, you can no longer extend it.
-If your session ends, you can always create a new reservation.
+
+{{< readfile "/static/include/try-viam/extend-a-reservation.md" >}}
 
 ## Can I cancel my reservation/session?
 
 Yes.
-Click **Cancel Reservation** on the **[Try page](https://app.viam.com/try)** to either release your queued reservation or to immediately end your active session.
+
+{{< readfile "/static/include/try-viam/cancel-a-reservation.md" >}}
 
 ## How can I reuse my rented rover?
 

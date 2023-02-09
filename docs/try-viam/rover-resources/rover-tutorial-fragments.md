@@ -4,6 +4,7 @@ linkTitle: "Add the Viam Fragment to your Robot"
 weight: 20
 type: "docs"
 tags: ["rover", "tutorial"]
+description: "Configure your rover by adding the Viam-provided configuration fragment to your rover."
 ---
 
 To be able to drive your rover, you need to configure it.
