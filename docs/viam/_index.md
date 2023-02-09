@@ -12,7 +12,7 @@ Viam is a complete software platform for robots.
 
 #### Platform Quickstart: Using the App
 
-The most simple way to create your first robot on the Viam platform is through our user interface for connecting with and managing robots, the [Viam app](app.viam.com).
+The simplest way to create your first robot on the Viam platform is through our user interface for connecting with and managing robots, the [Viam app](app.viam.com).
 
 Create an account, and create a new robot on there, even if you don't know what you want your robot to look like yet.
 You'll be redirected to a control center for this new robot.
@@ -32,7 +32,7 @@ To make use of these features, all you need to do is:
 1) Follow one of our [installation guides](/installation) to connect a development machine or a single-board computer to the in-app control center.
 2) Configure the robot's [components](/components) and [services](/services).
 
-## What's a robot?
+## Robot
 
 A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), running `viam-server` along with the hardware the computer controls.
 The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
@@ -56,8 +56,6 @@ The Viam platform uses the cloud for configuration.
 Configuration describes how hardware and software interact.
 A basic example that you can configure using the Viam platform is connecting a computer to a camera.
 A more advanced example is a computer connected to a camera, actuating components (like motors or arms), and an ML model.
-
-Skip ahead to our [installation guide](/installation/) to get started with installing and running `viam-server` on your robot.
 
 {{% alert title="Info" color="info" %}}
 Everything Viam runs on your robot is [open-source](http://github.com/viamrobotics).

@@ -1,6 +1,6 @@
 ---
 title: "Program a Robot"
-linkTitle: "Program Robots: the SDKs and RDK"
+linkTitle: "Program Robots"
 weight: 50
 simple_list: false
 type: docs
