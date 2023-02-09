@@ -6,6 +6,11 @@ type: "docs"
 description: "Try Viam by using the Viam SDK to make your Viam Rover move in a square."
 tags: ["base", "viam rover", "try viam", "sdk"]
 ---
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/daU5iNsSO0w" allowfullscreen></iframe>
+</div>
+
 The Viam SDKs allow you to write code in either Python or Golang to control a [Viam Rover](https://app.viam.com/try).
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
 
