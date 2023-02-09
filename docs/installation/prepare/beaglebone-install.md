@@ -9,7 +9,7 @@ aliases:
 # SMEs: Joe Karlsson, Shawn, Matt Dannenberg, and Rand
 ---
 
-The [BeagleBone AI-64]("https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/") from [BeagleBoard.org](https://beagleboard.org/) is an open-source single-board computer with a Debian GNU/Linux operating system based on the Texas Instruments TDA4VM processor.
+The [BeagleBone AI-64](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/) from [BeagleBoard.org](https://beagleboard.org/) is an open-source single-board computer with a Debian GNU/Linux operating system based on the Texas Instruments TDA4VM processor.
 Follow this guide to set up your BeagleBone AI-64 and prepare it for `viam-server` installation.
 
 <img src="/installation/img/beaglebone-install/image4.png" alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle.">
@@ -75,15 +75,15 @@ You can SSH into your BeagleBone from your personal computer by running the foll
 
 By default, the hostname, username and password on a BeagleBone are:
 
-* Hostname: `beaglebone`
-* Username: `debian`
-* Password: `temppwd`
+- Hostname: `beaglebone`
+- Username: `debian`
+- Password: `temppwd`
   
 Therefore, if you are using the default settings on your BeagleBone, the command will be:
 
 `ssh debian@beaglebone.local`
 
-#### Step 4: Update your BeagleBone:
+#### Step 4: Update your BeagleBone
 
 Run the following command in the terminal of your personal computer after SSH'ing into your BeagleBone to verify all packages are up to date:
 
