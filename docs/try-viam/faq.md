@@ -23,13 +23,13 @@ For 15 minutes, no matter where you are in the world, you can take over and play
 
 Sure!
 
-{{< readfile "extend-a-reservation.md" >}}
+{{< readfile "/static/include/try-viam/extend-a-reservation.md" >}}
 
 ## Can I cancel my reservation/session?
 
 Yes.
 
-{{< readfile "cancel-a-reservation.md" >}}
+{{< readfile "/static/include/try-viam/cancel-a-reservation.md" >}}
 
 ## How can I reuse my rented rover?
 

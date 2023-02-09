@@ -18,7 +18,7 @@ Watch this tutorial video for a walkthrough of Try Viam, including [how to reser
 
 ### Create a reservation
 
-{{< readfile "create-a-reservation.md" >}}
+{{< readfile "/static/include/try-viam/create-a-reservation.md" >}}
 
 ### Access your rover rental
 
@@ -41,11 +41,11 @@ You can also click on the timer at the top to go back to the rental rover's **CO
 
 ## Extend your reservation
 
-{{< readfile "extend-a-reservation.md" >}}
+{{< readfile "/static/include/try-viam/extend-a-reservation.md" >}}
 
 ## Cancel my reservation/session
 
-{{< readfile "cancel-a-reservation.md" >}}
+{{< readfile "/static/include/try-viam/cancel-a-reservation.md" >}}
 
 ## Next steps
 
