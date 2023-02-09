@@ -10,31 +10,39 @@ icon: "img/components/board.png"
 ---
 
 A *board* is the signal wire hub of a robot.
+If your board is capable of running `viam-server`, it can act not only as the signal wire hub for your robot, but also as the software hub.
 
-Generally, a board will be either a computing device with general purpose input/output (GPIO) pins, such as a Raspberry Pi or other single-board computer, or a desktop computer outfitted with a GPIO peripheral
+![Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server.](../img/board/board-comp-options.png)
+
+*Figure 1. Two different board options: a single-board-computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`.*
+
+#### What does "signal wire hub" mean?
 
 A robot's board component has general purpose input/output (GPIO) pins.
 Through these pins, the board can transmit [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation) and other signals to any hardware components connected to the board.
 
-The board may or may not also act as the software hub of the robot, running an instance of `viam-server` on its CPU.
+#### What can I use as my board?
 
-Some examples of boards include [Raspberry Pi](/installation/prepare/rpi-setup/), [BeagleBone](/installation/prepare/beaglebone-install/), and Jetson.
-These are all single-board computers (SBCs) capable of advanced computation, including running `viam-server`.
-They act not only as the signal wire hub (*board*) for the robot, but also as the software hub.
+Generally, you should use a small computing device with GPIO pins or a desktop computer outfitted with a GPIO peripheral.
 
-Another type of board is a GPIO peripheral, such as a Numato GPIO Module, which cannot run `viam-server` itself, but can take input from another computer running `viam-server` to communicate with other hardware components.
+Both of these options enable your board to act as both the signal wire and software hub of your robot, running `viam-server` and sending signals to the other components of the robot.
+
+**Small Computing Device with GPIO Pins:**
+
+This refers to single-board computers like the [Raspberry Pi](/installation/prepare/rpi-setup/), [BeagleBone](/installation/prepare/beaglebone-install/), and Jetson.
+
+- These are all small computing devices that are capable of advanced computation, including running `viam-server`.
+
+**Desktop Computer outfitted with a GPIO Peripheral**:
+
+A desktop computer does not typically have GPIO pins, so it can only act as the board of your robot if you have connected it to a GPIO peripheral.
+
+- A GPIO peripheral, such as a Numato GPIO Module, cannot run `viam-server` itself, but can take input from another computer running `viam-server` to communicate with other hardware components.
+- You can use any computer capable of running `viam-server` as your board, as long as it's attached to a GPIO peripheral.
 
 {{% alert title="Note" color="note" %}}
-A desktop computer does not typically have GPIO pins, so it can only act as a board if you have connected it to a GPIO peripheral.
-{{% /alert %}}
-
-![Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server.](../img/board/board-comp-options.png)
-
-*Figure 1. Two different board options: SBC with GPIO pins running `viam-server` locally; or GPIO peripheral plugged into a computer's USB port, with the computer running `viam-server`.*
-
-{{% alert title="Note" color="note" %}}
+If you want to use just a single-board computer to control your robot, the board itself must run `viam-server`.
 The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers.
-In these cases, the board itself must run an instance of `viam-server`.
 {{% /alert %}}
 
 Most robots with a board need at least the following hardware:
