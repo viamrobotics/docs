@@ -15,6 +15,15 @@ description: "Color detection and SDK tutorials for the Viam Rover."
   <div class="row">
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <br>
+        <img src="../../try-viam/rover-resources/img/viam-rover/rover-front.jpg" alt="A Viam Rover.">
+        <br>
+        <a href="../../try-viam/rover-resources/rover-tutorial/">
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Unbox and Set Up your Viam Rover</h4>
+            <p style="text-align: left;">Contents of the Viam Rover kit and instructions for wiring your rover.</p>
+        </a>
+    </div>
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <br>
         <img src="../../tutorials/img/try-viam-sdk/image1.gif" alt="Overhead view of the Viam rover showing it as it drives in a square.">
         <br>
         <a href="../../tutorials/viam-rover/try-viam-sdk">
