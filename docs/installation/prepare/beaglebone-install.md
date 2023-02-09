@@ -9,112 +9,92 @@ aliases:
 # SMEs: Joe Karlsson, Shawn, Matt Dannenberg, and Rand
 ---
 
-The <a href="https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/" target="_blank">BeagleBone AI-64</a> from <a href="https://beagleboard.org/" target="_blank">BeagleBoard.org</a> is an open-source computer based on the Texas Instruments TDA4VM processor.
-In this tutorial, we will show you how to set up your BeagleBone AI-64 with Debian.
+The [BeagleBone AI-64]("https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/") from [BeagleBoard.org](https://beagleboard.org/) is an open-source single-board computer with a Debian GNU/Linux operating system based on the Texas Instruments TDA4VM processor.
+Follow this guide to set up your BeagleBone AI-64 and prepare it for `viam-server` installation.
 
-<img src="/installation/img/beaglebone-install/image4.png" alt="BeagleBone AI-64 front at 45° angle.">
+<img src="/installation/img/beaglebone-install/image4.png" alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle.">
 
-## Hardware requirements
+## Hardware Requirements
 
-You will need the following hardware, tools, and software to install `viam-server` on a BeagleBone AI-64:
+You need the following hardware, tools, and software to install `viam-server` on a BeagleBone AI-64:
 
-1. A BeagleBone AI-64
-2. A microSD card
-3. A 5V barrel jack power supply
-4. [Optional] A microSD card reader
-5. [Optional] An ethernet cable or a WiFi card
+1. A [BeagleBone AI-64](https://beagleboard.org/ai-64)
+2. A 5V barrel jack (recommended) and/or USB-C power supply, to power the BeagleBone
+3. Ethernet cable and/or WiFi dongle, to establish network connection on the BeagleBone
+4. [Optional] A microSD card and a way to connect the microSD card to the computer (like a microSD slot or microSD reader)
+    - This is required if you need to set up your BeagleBone for the first time or update your BeagleBone to the latest software image.
 
-## BeagleBone AI-64 Installation Guide
+## BeagleBone AI-64 Setup Guide
 
 {{% alert title="Note" color="note" %}}
 
-Depending on how old of a software image you already have running on your BeagleBone, you might need to update your BeagleBone to the latest software image.
-If you experience any issues getting Viam working on your BeagleBone, you should consult the BeagleBone getting started documentation at <a href="https://beagleboard.org/getting-started" target="_blank">beagleboard.org/getting-started</a> for steps on updating your BeagleBone.
+If you have already powered up and connected to your BeagleBone before coming to this guide, you might want to skip ahead to our [installation guide](/installation/install/).
+
+However, you might need to update your BeagleBone to the latest software so your OS can run `viam-server`.
+
+If you experience any issues getting Viam working on your BeagleBone, consult the [BeagleBone documentation](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) for help updating your BeagleBone, or reach out on the [the Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
 
 {{% /alert %}}
 
-### Power your BeagleBone
+The following instructions mirror the instructions given in the BeagleBoard documentation at [Connecting up your BeagleBone](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) and [Getting Started with your BeagleBone](https://beagleboard.org/getting-started).
+If you want additional help setting up your BeagleBone, you can follow the guides there and return to the Viam docs after SSH'ing into your BeagleBone.
 
-You need a data connection from the BeagleBone to your computer.
-A USB-C to USB-C from your computer to your BeagleBone is the most convenient method to make the data connection.
-Although it is possible to power the BeagleBone via its USB-C connection, we recommend that you use a separate 5VDC power source (e.g., 5VDC charger) via the BeagleBoard's barrel jack as that is more reliable.
-When powered on, you'll see the power (PWR or ON) LED lit steadily.
-Within a minute or so, you should see the other LEDs blinking.
+### Overview
 
-### Enable a network connection
+Follow the instructions below to set up your Beaglebone and prepare it for running `viam-server`.
 
-You will need to connect an ethernet cable to your BeagleBone in order to connect to it.
-If your computer supports mDNS (Multicast DNS), you should see your Beagle at <a href="https://beaglebone.local" target="_blank">beaglebone.local</a>.
-Using any web browser (except Internet Explorer) you can test to see if your BeagleBone has successfully connected to the internet.
+#### Step 1: Power your BeagleBone
+
+Power your board by plugging in a 5VDC power source into the BeagleBone's barrel jack. You can also power the BeagleBone with a micro-USB cable, but a 5VDC power source is recommended for optimum performance.
+
+You should see a LED on the board labeled *PWR* or *ON* lit steadily.
+
+#### Step 2: Enable a network connection
+
+You need to enable a network connection on your BeagleBone to install `viam-server` on it.
+You can do this by connecting an ethernet cable to your BeagleBone's ethernet port.
 
 {{% alert title="Note" color="note" %}}
 
-You can also connect to the internet via _internet connection sharing_.
+You can also connect to the internet via internet connection sharing.
 
-If you are connecting to your BeagleBone with macOS, you can use <a href="https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac" target="_blank">Internet Sharing over USB</a> to connect to the internet.
-After enabling it on your machine, SSH into your BeagleBone, and run the following: `sudo dhclient usb1`.
+If your personal computer is macOS, you can use [internet sharing over USB](https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac) to connect to the internet.
+After enabling the option on your machine, SSH into your BeagleBone and run the following command: `sudo dhclient usb1`.
 
-For Linux, you can follow this <a href="https://fastbitlab.com/how-to-enable-internet-over-usb/" target="_blank">tutorial for enabling internet over USB</a>.
+If your PC is Linux, you can follow the tutorial at [fastbitlab.com/how-to-enable-internet-over-usb/](https://fastbitlab.com/how-to-enable-internet-over-usb/) to enable internet sharing over USB.
 
 {{% /alert %}}
 
-The table below summarizes the typical addresses depending on how you are connecting to your BeagleBoard.
+- If your personal computer supports mDNS (Multicast DNS), you can check to see if your BeagleBone board has established a network connection by visiting [beaglebone.local](https://beaglebone.local).
 
-|     IP Address      | Connection Type  | Operating System(s)  |
-|:------------------: |:---------------: |:-------------------: |
-| 192.168.7.2         | USB              | Windows              |
-| 192.168.6.2         | USB              | Mac OS X, Linux      |
-| 192.168.8.1         | WiFi             | all                  |
-| beaglebone.local    | all              | mDNS enabled         |
-| beaglebone-2.local  | all              | mDNS enabled         |
+#### Step 2: SSH into your BeagleBone from your PC
 
-### SSH into your BeagleBone
+You can SSH into your BeagleBone from your personal computer by running the following command in your terminal:
 
-You can SSH into your BeagleBone by running the following from your terminal:
+`ssh <your-username>@<your-hostname>.local`
 
-{{% alert title="Note" color="note" %}}
+By default, the hostname, username and password on a BeagleBone are:
 
-The default username and password supplied by BeagleBone is:
-
+* Hostname: `beaglebone`
 * Username: `debian`
 * Password: `temppwd`
+  
+Therefore, if you are using the default settings on your BeagleBone, the command will be:
 
-{{% /alert %}}
+`ssh debian@beaglebone.local`
 
-```bash
-ssh debian@beaglebone.local
-```
+#### Step 4: Update your BeagleBone:
 
-### Check that your BeagleBone is connected to the internet
+Run the following command in the terminal of your personal computer after SSH'ing into your BeagleBone to verify all packages are up to date:
 
-After you SSH into your BeagleBone, you can check that your BeagleBone is connected to the internet by running the following command:
+`sudo apt update && sudo apt dist-upgrade && sudo reboot`
 
-```bash
-ping -c 3 google.com
-```
+#### Step 5: Move to installing `viam-server`
 
-If you see a response like the one below, you are connected to the internet.
+Now that your BeagleBone has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/) to install `viam-server` on the board.
 
-```bash
-PING google.com (209.85.234.138): 56 data bytes
-64 bytes from 209.85.234.138: icmp_seq=0 ttl=55 time=31.852 ms
-64 bytes from 209.85.234.138: icmp_seq=1 ttl=55 time=35.585 ms
-64 bytes from 209.85.234.138: icmp_seq=2 ttl=55 time=43.308 ms
+## Troubleshooting
 
---- google.com ping statistics ---
-3 packets transmitted, 3 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 31.852/36.915/43.308/4.771 ms
-```
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-### Update your BeagleBone
-
-Next, best practice suggests that you always ensure that the latest packages are installed.
-Run the following command to do verify the packages are up to date:
-
-```bash
-sudo apt update && sudo apt dist-upgrade && sudo reboot
-```
-
-## Next steps
-
-Now that your BeagleBone has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
