@@ -11,18 +11,22 @@ icon: "img/components/board.png"
 
 A *board* is the signal wire hub of a robot.
 
+Generally, a board will be either a computing device with general purpose input/output (GPIO) pins, such as a Raspberry Pi or other single-board computer, or a desktop computer outfitted with a GPIO peripheral
+
 A robot's board component has general purpose input/output (GPIO) pins.
 Through these pins, the board can transmit [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation) and other signals to any hardware components connected to the board.
 
 The board may or may not also act as the software hub of the robot, running an instance of `viam-server` on its CPU.
 
-Some examples of boards include Raspberry Pi, BeagleBone, and Jetson.
+Some examples of boards include [Raspberry Pi](/installation/prepare/rpi-setup/), [BeagleBone](/installation/prepare/beaglebone-install/), and Jetson.
 These are all single-board computers (SBCs) capable of advanced computation, including running `viam-server`.
 They act not only as the signal wire hub (*board*) for the robot, but also as the software hub.
 
 Another type of board is a GPIO peripheral, such as a Numato GPIO Module, which cannot run `viam-server` itself, but can take input from another computer running `viam-server` to communicate with other hardware components.
 
-- Note that a desktop computer does not typically have GPIO pins, so it cannot act as a board without a GPIO peripheral.
+{{% alert title="Note" color="note" %}}
+A desktop computer does not typically have GPIO pins, so it can only act as a board if you have connected it to a GPIO peripheral.
+{{% /alert %}}
 
 ![Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server.](../img/board/board-comp-options.png)
 
@@ -35,9 +39,8 @@ In these cases, the board itself must run an instance of `viam-server`.
 
 Most robots with a board need at least the following hardware:
 
-- The board: Either a computing device with general purpose input/output (GPIO) pins, such as a Raspberry Pi or other single-board computer, or a desktop computer outfitted with a GPIO peripheral
 - Power supply
-  - Must supply the correct voltage and sufficient current to avoid damaging or power cycling the board. See the board's data sheet for requirements.
+  - Must supply the correct voltage and sufficient current to avoid damaging or power cycling the board. See the data sheet of your board for requirements.
   - For example: a Raspberry Pi 4 takes a 5V power supply and converts it to 3.3V for its logic circuitry.
     The easiest way to power it is with a 5V USB-C power supply.
 
