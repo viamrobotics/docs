@@ -1,14 +1,3 @@
----
-title: "BeagleBone AI-64 Setup Guide"
-linkTitle: "BeagleBone Setup"
-weight: 20
-type: "docs"
-description: "How to flash a BeagleBone AI-64 to prepare it for viam-server installation."
-aliases:
-    - "/installation/beaglebone-install/"
-# SMEs: Joe Karlsson, Shawn, Matt Dannenberg, and Rand
----
-
 The <a href="https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/" target="_blank">BeagleBone AI-64</a> from <a href="https://beagleboard.org/" target="_blank">BeagleBoard.org</a> is an open-source computer based on the Texas Instruments TDA4VM processor.
 In this tutorial, we will show you how to set up your BeagleBone AI-64 with Debian.
 

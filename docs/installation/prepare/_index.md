@@ -15,34 +15,6 @@ Viam is supported on:
 - Linux 64-bit operating systems
 - macOS
 
-If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone, prepare your SBC by following the relevant setup document:
-
-<div class="container text-center">
-  <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/installation/prepare/rpi-setup/">
-            <br>
-            <img src="../img/thumbnails/raspberry-pi-4-b-2gb.jpg" alt="Raspberry Pi">
-            <p style="text-align: left; margin-left: 0px; font-weight:bold">Raspberry Pi</h4>
-        <a>
-    </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/installation/prepare/beaglebone-install/">
-            <br>
-            <img src="/installation/img/thumbnails/beaglebone.png" alt="BeagleBone AI 64">
-            <p style="text-align: left; margin-left: 0px; font-weight:bold">BeagleBone AI-64</h4>
-        </a>
-    </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/installation/prepare/sk-tda4vm/">
-            <br>
-            <img src="../img/thumbnails/tda4vm.png" alt="SK-TDA4VM">
-            <p style="text-align: left; margin-left: 0px; font-weight:bold">Texas Instruments SK-TDA4VM</h4>
-        </a>
-    </div>
-  </div>
-</div><br><br>
-
 <div class="container text-left">
     <div class="row">
         <img src="../img/thumbnails/pc.png" style="max-width:100px" alt="Desktop computer">
@@ -52,3 +24,28 @@ If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone
         </div>
     </div>
 </div>
+
+
+If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone, prepare your SBC by following the relevant setup document:
+
+{{< tabs name="TabPanelExample" >}}
+{{% tab name="BeagleBone AI-64"%}}
+
+{{< readfile "beaglebone-install.md" >}}
+
+{{% /tab %}}
+
+{{% tab name="Raspberry Pi" %}}
+
+{{< readfile "rpi-setup.md" >}}
+
+{{% /tab %}}
+
+{{% tab name="SK-TDA4VM" %}}
+
+{{< readfile "sk-tda4vm.md" >}}
+
+
+{{% /tab %}}
+
+{{< /tabs >}}

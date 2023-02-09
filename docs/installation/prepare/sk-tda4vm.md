@@ -1,12 +1,3 @@
----
-title: "SK-TDA4VM Setup Guide"
-linkTitle: "SK-TDA4VM Setup"
-weight: 25
-type: "docs"
-description: "A guide to imaging a Texas Instruments TDA4VM starter kit board to prepare it for viam-server installation."
-#SMEs: Matt Dannenberg
----
-
 ## Hardware requirements
 
 * A [Texas Instruments TDA4VM single-board computer](https://www.ti.com/tool/SK-TDA4VM)

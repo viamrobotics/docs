@@ -1,15 +1,3 @@
----
-title: "Raspberry Pi Setup Guide"
-linkTitle: "Raspberry Pi Setup"
-weight: 15
-type: "docs"
-description: "A guide to imaging a Raspberry Pi to prepare it for viam-server installation."
-aliases:
-    - /getting-started/rpi-setup/
-    - /installation/rpi-setup/
-# SME: James
----
-
 ## Hardware requirements
 
 This tutorial requires the following hardware:
