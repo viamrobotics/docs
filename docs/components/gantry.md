@@ -68,7 +68,7 @@ This is how you configure a one-axis gantry:
         "length_mm": 800,
         "axis": {
           "Z": 0,
-          "X": 0,
+          "X": 1,
           "Y": 0
         }
       }
