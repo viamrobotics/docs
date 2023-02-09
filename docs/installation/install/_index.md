@@ -16,6 +16,10 @@ You can find more detailed instructions in our [Getting Started with the Viam Ap
 3. Toggle the **Mode** and **Architecture** settings to be compatible with your device.
 4. Follow the steps on the **SETUP** tab to install `viam-server`.
 
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/daU5iNsSO0w" allowfullscreen></iframe>
+</div>
+
 ### Detailed Instructions
 
 Find more information about installing `viam-server` in the following guides:
