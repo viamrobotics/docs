@@ -10,17 +10,28 @@ aliases:
 
 Viam is a complete software platform for robots.
 
-## Robots
+#### Platform Quickstart: Using the App
+
+The most simple way to create your first robot on the Viam platform is through our user interface for connecting with and managing robots, the [Viam app](app.viam.com).
+
+Create an account, and create a new robot on there, even if you don't know what you want your robot to look like yet.
+You'll be redirected to a control center for this new robot.
+
+After that, you can walk through our documentation to learn more about the platform, assemble your robot (*hint:* you don't need much more than a PC or single-board-computer), and connect it to the in-app control center.
+
+Read on to learn more.
+
+## What's a robot?
 
 A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), running `viam-server` along with the hardware the computer controls.
 The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
 
 Robots can be small and simple or very complex.
-A robot could be a single-board computer with a single sensor or LED wired to it, or a robot can consist of multiple computers with many components, acting as one unit.
+A robot can be a single-board computer with a single [sensor](../components/sensor.md) or LED wired to it, or a robot can consist of multiple computers with many physical components connected, acting as one unit.
 
 ![Robot components](img/robot-components.png)
 
-## `viam-server`
+## `viam-server`: The software on your robot
 
 [`viam-server`](https://github.com/viamrobotics/rdk) is the open-source software which runs on each computer in a robot and:
 
@@ -35,11 +46,13 @@ Configuration describes how hardware and software interact.
 A basic example that you can configure using the Viam platform is connecting a computer to a camera.
 A more advanced example is a computer connected to a camera, actuating components (like motors or arms), and an ML model.
 
+Skip ahead to our [installation guide](/installation/) to get started with installing and running `viam-server` on your robot.
+
 {{% alert title="Info" color="info" %}}
 Everything Viam runs on your robot is [open-source](http://github.com/viamrobotics).
 {{% /alert %}}
 
-## Networking
+## Networking: Connect to your robot
 
 Your robot does not need to be permanently connected to the internet to work:
 
@@ -51,7 +64,7 @@ When your robot is connected (either LAN or WAN), `viam-server` can act as both 
 In other words, each instance can request resources, as well as provide them.
 This allows for tremendous flexibility.
 
-## Communication
+## Communication: Talk to your robot
 
 TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is both authenticated and encrypted.
 
@@ -60,7 +73,7 @@ The Viam cloud does not receive any command or control information regarding you
 
 With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program your robot in most common programming languages.
 
-## APIs
+## APIs: Do things with your robot
 
 There are four categories of APIs:
 
@@ -71,7 +84,7 @@ There are four categories of APIs:
 
 To see the Viam API specification, check [GitHub](https://github.com/viamrobotics/api).
 
-## SDKs
+## SDKs: Program your robot
 
 We provide SDKs in several languages to easily connect to your robot, use components and services, and create custom modular resources.
 

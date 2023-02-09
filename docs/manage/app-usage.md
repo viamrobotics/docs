@@ -1,6 +1,6 @@
 ---
 title: "Get started with the Viam app"
-linkTitle: "Get started with the Viam app"
+linkTitle: "Get Started with the Viam App"
 weight: 10
 type: "docs"
 description: "A guide to getting started with app.viam.com."

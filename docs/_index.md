@@ -14,21 +14,21 @@ type: "docs"
   <div class="row">
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="viam">
-            <img src="img/understand.png" alt="Understand the Viam platform" width=100% style="margin-top: 1em">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Understand Viam</h4>
+            <img src="img/understand.png" alt="Learn about Viam in 3 Minutes" width=100% style="margin-top: 1em">
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Viam in 3 Minutes</h4>
             <p style="text-align: left;">Learn the concepts you need to know to work with Viam.</p>
         </a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="try-viam">
-            <img src="img/tryviam.png" alt="Try Viam rover" width=100% style="margin-top: 1em">
+            <img src="img/tryviam.png" alt="Try the Viam rover" width=100% style="margin-top: 1em">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Try Viam</h4>
             <p style="text-align: left;">Control and program a borrowed rover.</p>
         <a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em;">
         <a href="installation">
-            <img src="img/install.png" alt="Install Viam" width=100% style="margin-top: 1em">
+            <img src="img/install.png" alt="How to install the Viam Software" width=100% style="margin-top: 1em">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Install Viam</h4>
             <p style="text-align: left;">Install viam-server on your robot and connect your robot to the Viam app.</p>
         </a>
@@ -39,7 +39,7 @@ type: "docs"
         <a href="components">
             <img src="img/components.png" alt="Components" width=100% style="margin-top: 1em">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Components</h4>
-            <p style="text-align: left;">Configure and use the components of your robot.</p>
+            <p style="text-align: left;">Configure and control the components of your robot.</p>
         </a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
@@ -53,7 +53,7 @@ type: "docs"
         <a href="program">
             <img src="img/program.png" alt="Programming a robot" width=100% style="margin-top: 1em">
              <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Program a Robot</h4>
-            <p style="text-align: left;">Use the Robot Developing Kit to bring your robot to life.</p>
+            <p style="text-align: left;">Use the Robot Development Kit to bring your robot to life.</p>
         </a>
     </div>
   </div>
