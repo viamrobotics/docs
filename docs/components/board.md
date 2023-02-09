@@ -112,12 +112,7 @@ For the `model`, supported board models include:
 
 - **numato**: Numato GPIO model
 
-{{% alert title="Note" color="note" %}}
-Please note that board configuration depends on your particular use case.
-If your application involves more than GPIO, and other board attributes or communication methods are required, configuring your board will not be as simple as in the above example.
-
-Read on to learn more about using GPIO, advanced configuration for different communication methods, and working with your board component.
-{{% /alert %}}
+For more advanced configuration options, read on.
 
 ## Deeper Dives: Advanced Configuration
 
