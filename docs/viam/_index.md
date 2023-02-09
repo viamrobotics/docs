@@ -17,9 +17,19 @@ The most simple way to create your first robot on the Viam platform is through o
 Create an account, and create a new robot on there, even if you don't know what you want your robot to look like yet.
 You'll be redirected to a control center for this new robot.
 
-After that, you can walk through our documentation to learn more about the platform, assemble your robot (*hint:* you don't need much more than a PC or single-board-computer), and connect it to the in-app control center.
+The Viam platform natively handles the following for you:
+- **Data management** enabling you to capture and sync data from one or more robots.
+- **Fleet management** enabling you to configure, control, debug, and manage entire fleets of robots.
+- **Motion** enabling your robot to plan and move itself.
+- **Vision** enabling your robot to intelligently see and interpret the world around it.
+- **[Simultaneous Localization And Mapping (SLAM)]** enabling your roobot to map its surroundings and find its position on a map. 
 
-Read on to learn more.
+On top of these services, the Viam platform provides a consistent programming interface for all robots, allowing you to program your robots in the language of your choice.
+
+To make use of these features, all you need to do is:
+1) Follow one of our [installation guides] to connect a development machine or a single-board computer to the in-app control center.
+2) Configure the robots [components]() and [services]().
+
 
 ## What's a robot?
 
@@ -73,7 +83,7 @@ The Viam cloud does not receive any command or control information regarding you
 
 With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program your robot in most common programming languages.
 
-## APIs: Do things with your robot
+## APIs: Services for your robot
 
 There are four categories of APIs:
 

@@ -8,7 +8,7 @@ draft: false
 ---
 To use Viam software with your robot, you need to install and run an executable binary called `viam-server` on the computer you want to use to control the robot.
 
-If that computer is a single-board-computer like a Raspberry Pi or Beaglebone, you will want to prepare the computer first by setting up the board with a viam-compatible operating system.
+If that computer is a single-board-computer like a Raspberry Pi or Beaglebone, you need to prepare the computer by setting up the board with a viam-compatible operating system.
 
 See [What is Viam?](/viam/) for more information.
 
@@ -27,7 +27,7 @@ See [What is Viam?](/viam/) for more information.
             <br>
             <img src="img/thumbnails/install.png" alt="Install" width=100%>
             <h4 style="text-align: left; margin-left: 0px;">Install</h4>
-            <p style="text-align: left;">Install viam-server on your robot's computer.</p>
+            <p style="text-align: left;">Install <code>viam-server</code> on your robot's computer.</p>
         </a>
     </div>
   </div>
@@ -45,7 +45,7 @@ See [What is Viam?](/viam/) for more information.
             <br>
             <img src="img/thumbnails/update.png" alt="Update" width=100%>
             <h4 style="text-align: left; margin-left: 0px;">Update</h4>
-            <p style="text-align: left;">Keep your version of viam-server up to date.</p>
+            <p style="text-align: left;">Keep your version of <code>viam-server</code> up to date.</p>
         </a>
     </div>
   </div>
