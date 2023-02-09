@@ -26,7 +26,7 @@ It will then execute that movement to move the actual robot, and return whether 
 The volumes associated with all configured robot parts (local and remote) will be taken into account for each request to ensure that collisions do not occur.
 
 {{% alert title="Note" color="note" %}}
-The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles and interaction spaces as documented below.
+The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles as documented below.
 This may result in motions which appear unintuitive.
 To apply motion constraints (experimental), see the [`extra` parameter](#extra_anchor).
 {{% /alert %}}
@@ -44,8 +44,8 @@ This means that if the `destination` and `component_name` are the same frame.
 For example an arm (or a gripper attached to one), then a pose of {X: 10, Y: 0, Z: 0} will move that arm’s end effector or gripper by 10 mm in the local X direction.
 
 **`world_state`**: This data structure specifies various information about the world around the robot which is used to augment the motion solving process.
-There are three pieces of world_state: obstacles, interaction spaces, and transforms.
-Each will be discussed in detail:
+There are two pieces of world_state: obstacles and transforms.
+Both will be discussed in detail:
 
 * **Obstacles**: These are geometries located at a pose relative to some frame.
 When solving a motion plan with movable frames that contain inherent geometries, the solved path will be constrained such that at no point will any of those inherent geometries intersect with the specified obstacles.
@@ -57,9 +57,6 @@ There are three important things to know about obstacles:
   * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (i.e., an arm frame will be solved for the pose of its end effector), geometries are interpreted as being "part of" their frame, rather than "at the end of" the frame.
     Thus, their poses are relative to the _origin_ of the specified frame.
     A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
-* **Interaction spaces**: These are geometries which are effectively the inverse of obstacles- they specify where the inherent geometries of a kinematics chain _may_ exist, and disallow them from exiting that geometry.
-Interaction spaces should fully envelop the geometries of any movable component with geometries.
-If any movable geometry is outside the given interaction space at the start of the motion, the movement will fail as the constraint will have been violated.
 * **Transforms**: These are a list of _PoseInFrame_ messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
 The `destination` may be one of these, but at present the `component_name` may not be.
 
