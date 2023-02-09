@@ -23,7 +23,7 @@ Install either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Gola
 If you are [renting your rover](https://app.viam.com/try), we recommend that you get the Viam SDK set up before your reservation starts.
 This way, you can maximize the amount of time you have using the Viam Rover.
 
-If you are running out of time during your rental, you can [extend your rover rental](/try-viam/try-viam-tutorial/#extending-time) as long as there are no other reservations.
+If you are running out of time during your rental, you can [extend your rover rental](/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
 ## Connect to your Viam Rover

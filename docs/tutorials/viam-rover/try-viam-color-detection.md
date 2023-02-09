@@ -18,7 +18,7 @@ You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try
 {{< alert title="Tip" color="tip" >}}
 If you are [renting your rover](https://app.viam.com/try), we recommend that you skim through this page before renting your rover.
 
-Be aware that if you are running out of time during your rental, you can [extend your rover rental](/try-viam/try-viam-tutorial/#extending-time) as long as there are no other reservations.
+Be aware that if you are running out of time during your rental, you can [extend your rover rental](/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
 ## Add the Vision Service
