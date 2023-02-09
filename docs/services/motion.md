@@ -385,5 +385,5 @@ If a path is not returned, then CBiRRT is called to attempt to find a path, as i
 If CBiRRT is successful, then this path will be returned.
 If unsuccessful, an error is returned.
 However, if RRT*-Connect is initially successful, the path will be evaluated for optimality.
-If the total amount of joint excursion is more than double the minimum possible to go directly to the best Inverse Kinematics solution, then CBiRRT will be run anyway, to attempt to get a better path.
-The two paths will be smoothed, and compared to one another, and the most optimal path will be returned.
+If the total amount of joint excursion is more than double the minimum possible to go directly to the best Inverse Kinematics solution, then CBiRRT will be run to attempt to get a better path than what RRT*-Connect was able to create.
+The two paths will be smoothed, then compared to one another, and the most optimal path will be returned.
