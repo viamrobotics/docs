@@ -34,7 +34,7 @@ Method Name | Golang | Python | Description
 ----------- | ------ | ------ | -----------
 [SetPower](#setpower) | [SetPower][go_motor] | [set_power][python_set_power] | Set the "percentage" of power to send to the motor.
 [GoFor](#gofor) | [GoFor][go_motor] | [go_for][python_go_for] | Spin the motor the specified number of revolutions at specified RPM.
-[GoTo](#goto) | [GoTo][go_motor] | [go_to][pthon_go_to] | Send the motor to a specified position (in terms of revolutions from home) at a specified speed.
+[GoTo](#goto) | [GoTo][go_motor] | [go_to][python_go_to] | Send the motor to a specified position (in terms of revolutions from home) at a specified speed.
 [ResetZeroPosition](#resetzeroposition) | [ResetZeroPosition][go_motor] | [reset_zero_position][python_reset_zero_position] | Set the current position to be the new zero (home) position.
 [GetPosition](#getposition) | [Position][go_motor] | [get_position][python_get_position] | Reports the position of the motor based on its encoder. Not supported on all motors.
 [GetProperties](#getproperties) | [Properties][go_motor] | [get_properties][python_get_properties] | Returns whether or not the motor supports certain optional features.
@@ -46,7 +46,7 @@ Method Name | Golang | Python | Description
 [go_motor_moving]: https://pkg.go.dev/go.viam.com/rdk@v0.2.15/resource#MovingCheckable
 [python_set_power]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.set_power
 [python_go_for]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_for
-[pthon_go_to]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_to
+[python_go_to]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_to
 [python_reset_zero_position]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.reset_zero_position
 [python_get_position]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.get_position
 [python_get_properties]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.get_properties
@@ -199,7 +199,7 @@ await myMotor.set_power(power = 0.4)
 
 **Returns:**
 
-- `error` (error): An error, if one occurred.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example usage:**
 
@@ -255,7 +255,7 @@ await myMotor.go_for(rpm=60, revolutions=7.2)
 
 **Returns:**
 
-- `error` (error): An error, if one occurred.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example usage:**
 
@@ -308,7 +308,7 @@ await myMotor.go_to(rpm=75, revolutions=8.3)
 
 **Returns:**
 
-- `error` (error): An error, if one occurred.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example usage:**
 
@@ -357,7 +357,7 @@ await myMotor.reset_zero_position(offset=0.0)
 
 **Returns:**
 
-- `error` (error): An error, if one occurred.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example usage:**
 
@@ -373,24 +373,99 @@ myMotor.ResetZeroPosition(context.Background(), 0.0, nil)
 
 ### GetPosition
 
+Report the position of the motor based on its encoder. The value returned is the number of revolutions relative to its zero position. This method will raise an exception if position reporting is not supported by the motor.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
-p
-{{% /tab %}}
 
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(float)](https://docs.python.org/3/library/functions.html#float) Number of revolutions the motor is away from zero/home.
+
+**Example usage:**
+
+```python
+myMotor = Motor.from_robot(robot=robot, name='my_motor')
+
+# Get the current position of the motor.
+await myMotor.get_position()
+```
+
+{{% /tab %}}
 {{% tab name="Golang" %}}
-g
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(float64)](https://pkg.go.dev/builtin#float64) The unit returned is the number of revolutions which is intended to be fed back into calls of GoFor.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example usage:**
+
+```go
+myMotor, err := motor.FromRobot(robot, "motor1")
+
+// Get the current position of the motor.
+myMotor.Position(context.Background(), nil)
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
 ### GetProperties
 
+Report a dictionary mapping optional properties to whether it is supported by this motor.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
-p
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(Properties)](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.Properties) Map of feature names to supported status.
+
+**Example usage:**
+
+```python
+myMotor = Motor.from_robot(robot=robot, name='my_motor')
+
+# Report a dictionary mapping optional properties to whether it is supported by this motor.
+await myMotor.get_properties()
+```
+
 {{% /tab %}}
 {{% tab name="Golang" %}}
-g
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- (map[[Feature]](https://pkg.go.dev/go.viam.com/rdk/components/motor#Feature)[bool](https://pkg.go.dev/builtin#bool), [error](https://pkg.go.dev/builtin#error)) A map indicating whether or not the motor supports certain optional featueres.
+- `error` (error): An error, if one occurred.
+
+**Example usage:**
+
+```go
+myMotor, err := motor.FromRobot(robot, "motor1")
+
+// Return whether or not the motor supports certain optional features.
+myMotor.Properties(context.Background(), nil)
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 

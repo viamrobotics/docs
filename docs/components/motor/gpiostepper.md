@@ -7,10 +7,11 @@ description: "How to configure a motor with model `gpiostepper`"
 # SMEs: Rand, James
 ---
 
-The Viam `gpiostepper` model of motor component supports [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled basic stepper driver chips that take step and DIR input via GPIO and simply move the motor one step per pulse
+The Viam `gpiostepper` model of motor component supports [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by basic stepper driver chips that take step and direction input via GPIO and simply move the motor one step per pulse.
 
 Viam also supports some more advanced stepper driver chips ([TMC5072](/components/motor/tmc5072/), [DMC4000](/components/motor/dmc4000/)) that have their own microcontrollers that handle things like speed and acceleration control.
-Refer to those
+Refer to those docs for more information.
+
 Here’s an example of a basic stepper driver config:
 
 {{< tabs name="gpiostepper-config">}}
