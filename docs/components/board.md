@@ -146,9 +146,9 @@ You can find these pin numbers from an online service such as <a href="https://p
 
 #### Getting started with GPIO and the Viam SDK
 
-In the snippet below, we use the `gpio_pin_by_name` method to get a GPIO pin by name.
-We then use the `set` method to set the pin to high.
-This will turn on the LED connected to pin 8.
+The following snippet uses the `gpio_pin_by_name` method to get a GPIO pin by name.
+It then uses the `set` method to set the pin to high.
+This turns the LED connected to pin 8 on.
 
 {{% alert title="Note" color="note" %}}
 These code snippets expect you to have a board named "local" configured as a component of your robot, and an LED connected to pin 8.
