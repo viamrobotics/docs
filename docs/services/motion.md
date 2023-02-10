@@ -23,9 +23,10 @@ Viam’s Motion Service is enabled in RDK by default, and no extra configuration
 The "Move" endpoint is the primary way to move multiple components, or to move any object to any other location.
 Given a destination pose and a component to move to that destination, the motion service will construct a full kinematic chain from goal to destination including all movable components in between, and will solve that chain to place the goal at the destination while meeting specified constraints.
 It will then execute that movement to move the actual robot, and return whether or not this process succeeded.
+The volumes associated with all configured robot parts (local and remote) will be taken into account for each request to ensure that collisions do not occur.
 
 {{% alert title="Note" color="note" %}}
-The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles and interaction spaces as documented below.
+The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles as documented below.
 This may result in motions which appear unintuitive.
 To apply motion constraints (experimental), see the [`extra` parameter](#extra_anchor).
 {{% /alert %}}
@@ -43,8 +44,8 @@ This means that if the `destination` and `component_name` are the same frame.
 For example an arm (or a gripper attached to one), then a pose of {X: 10, Y: 0, Z: 0} will move that arm’s end effector or gripper by 10 mm in the local X direction.
 
 **`world_state`**: This data structure specifies various information about the world around the robot which is used to augment the motion solving process.
-There are three pieces of world_state: obstacles, interaction spaces, and transforms.
-Each will be discussed in detail:
+There are two pieces of world_state: obstacles and transforms.
+Both will be discussed in detail:
 
 * **Obstacles**: These are geometries located at a pose relative to some frame.
 When solving a motion plan with movable frames that contain inherent geometries, the solved path will be constrained such that at no point will any of those inherent geometries intersect with the specified obstacles.
@@ -55,10 +56,7 @@ There are three important things to know about obstacles:
     This will ensure that obstacles that are temporarily attached to moving components do not cause collisions during the movement.
   * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (i.e., an arm frame will be solved for the pose of its end effector), geometries are interpreted as being "part of" their frame, rather than "at the end of" the frame.
     Thus, their poses are relative to the _origin_ of the specified frame.
-    A geometry given in the frame of the arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
-* **Interaction spaces**: These are geometries which are effectively the inverse of obstacles- they specify where the inherent geometries of a kinematics chain _may_ exist, and disallow them from exiting that geometry.
-Interaction spaces should fully envelop the geometries of any movable component with geometries.
-If any movable geometry is outside the given interaction space at the start of the motion, the movement will fail as the constraint will have been violated.
+    A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
 * **Transforms**: These are a list of _PoseInFrame_ messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
 The `destination` may be one of these, but at present the `component_name` may not be.
 
@@ -361,11 +359,31 @@ extra = {"motion_profile": "free"}
 
 ## Planning Algorithms
 
-* CBiRRT
+Viam implements two planning algorithms, both based in principle on [RRT](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree).
 
-Currently, the only algorithm available for use is CBiRRT, which stands for Constrained, Bidirectional implementation of [RRT](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree).
+### RRT*-Connect
+
+RRT*-Connect is an asypmptotically optimal planner that samples the planning space randomly, connecting viable paths as it finds them.
+It will continue sampling after it finds its first valid path, and if it finds future paths that are more efficient, it will update to report those instead.
+For Viam, efficiency/path quality is measured in terms of total kinematics state excursion.
+For an arm, this refers to joints; the total amount of joint change will be minimized.
+For a gantry, this refers to the amount of linear movement.
+This algorithm is able to route around obstacles, but is unable to satisfy topological constraints.
+
+### CBiRRT
+
+CBiRRT stands for Constrained, Bidirectional implementation of [RRT](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree).
 It will create paths which are guaranteed to conform to specified constraints, and attempt to smooth them afterwards as needed.
 By default, it will use a "free" constraint, that is, it will not constrain the path of motion at all.
-This is to ensure that paths will be found when using defaults, even in highly constrained scenarios.
+This is to ensure that paths will be found when using defaults.
+CBiRRT will return the first valid path that it finds.
+The CBiRRT algorithm used by Viam is based on the algorithm described in this paper: <https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf>
 
-The CBiRRT algorithm used by Viam is based on the algorithm described in this paper: [https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf](https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf).
+By default, Viam uses a hybrid approach.
+First, RRT*-Connect is run for 1.5 seconds.
+If a path is not returned, then CBiRRT is called to attempt to find a path, as it takes a more incremental approach which tends to be more likely to find paths in more difficult, constrained scenarios.
+If CBiRRT is successful, then this path will be returned.
+If unsuccessful, an error is returned.
+However, if RRT*-Connect is initially successful, the path will be evaluated for optimality.
+If the total amount of joint excursion is more than double the minimum possible to go directly to the best Inverse Kinematics solution, then CBiRRT will be run to attempt to get a better path than what RRT*-Connect was able to create.
+The two paths will be smoothed, then compared to one another, and the most optimal path will be returned.
