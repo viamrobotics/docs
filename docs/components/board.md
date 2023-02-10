@@ -12,9 +12,7 @@ icon: "img/components/board.png"
 A *board* is the signal wire hub of a robot that provides access to GPIO pins.
 If your board is capable of running `viam-server`, it can act not only as the signal wire hub for your robot, but also as the software hub.
 
-![Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server.](../img/board/board-comp-options.png)
-
-*Figure 1. Two different board options: a single-board-computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`.*
+{{% figure src="../img/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board-computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
 #### What does "signal wire hub" mean?
 
