@@ -1,5 +1,5 @@
 ---
-title: "Using Our SDKs for a Client Application"
+title: "Create Client Application with the SDKs"
 linkTitle: "SDKs"
 weight: 30
 type: "docs"
@@ -7,57 +7,80 @@ description: "An introduction to Viam's SDKs and how to use them to access and c
 tags: ["client", "sdk"]
 ---
 
-Viam offers SDKs in popular languages which wrap the `viam-server` [gRPC](https://grpc.io/) APIs and streamline connection, authentication, and encryption against a server.
-Using the SDK, you will be able to quickly write code to control and automate your robot(s).
+Viam offers SDKs in popular languages which wrap the `viam-server` [gRPC APIs for robot controls](https://github.com/viamrobotics/api) and [WebRTC](https://webrtcforthecurious.com/) to
 
-Viam-server exposes gRPC [APIs for robot controls](https://github.com/viamrobotics/api).
-It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and authentication over those APIs.
-
-SDKs make it easier to interface with the robot without calling the gRPC API directly.
+- Streamline connection, authentication, and encryption against a server
+- Enable you to interface with robots without calling the gRPC API directly
 
 <img src="../img/SDK-as-client/image1.png" alt="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client."><br>
 
-## Viam's Client SDK Libraries
+## Install an SDK
 
-Viam's Client SDKs support several ways to connect and control your robots, with many new ways to connect coming soon.
+Install either the [Go](https://pkg.go.dev/go.viam.com/rdk) or [Python](https://python.viam.dev/) SDK on your computer.
 
-- [Python SDK](https://python.viam.dev/)
+## Configure `viam-server` to use the Viam app or work locally
 
-- [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
+Configuring `viam-server` with the Viam app allows you to make use of the cloud features of Viam:
 
-## Quick Start Examples
+- Data Management
+- Fleet Management
+- Vision Service
+- ...
 
-{{% alert title="Note" color="note" %}}
+If you don't need these features or need to run your robots on a local network, use a local configuration.
 
-Before you get started, ensure that you:
+{{< tabs name="Viam-server configuration" >}}
+{{% tab name="Viam app"%}}
 
-- Go to [app.viam.com](https://app.viam.com/).
+1. Go to [app.viam.com](https://app.viam.com/).
+2. Create a new robot.
+3. Go to the **SETUP** tab and follow the instructions there.
 
-- Create a new robot.
+{{% /tab %}}
+{{% tab name="Local Network" %}}
 
-- Go to the **SETUP** tab and follow the instructions there.
+1. Create a config file for `viam-server` called <file>config.json</file>:
 
-- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk) or [Python](https://python.viam.dev/) SDK on your computer.
+   The config file contains all of the configuration information for your robot. Add the `"auth"`  argument:
 
-{{% /alert %}}
+    ```json-viam {class="line-numbers linkable-line-numbers" data-line="6-10"}
+    {
+        "components": [
+            ...
+        ],
+        "services": [],
+        "auth": {
+            "handlers": [
+                { "type": "api-key", "config": { "keys": ["hello"] } }
+            ]
+        }
+    }
+    ```
 
-{{% alert title="Tip" color="tip" %}}
+2. [Download and install `viam-server`](https://docs.viam.com/installation/install/).
 
-You can find more examples of Viam's SDKs on the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1) or the [Golang SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples).
+3. Run `viam-server`:
 
-{{% /alert %}}
+   ```sh
+   sudo viam-server -config config.json
+   ```
+
+   To run `viam-server` as a system service, see [Installing as a System Service](/installation/install/linux-install/#installing-as-a-system-service).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### How to connect to your robot with Viam
-
-The easiest way to get started writing an application with Viam, is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**.
-These code snippets imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
 {{% alert title="Caution" color="caution" %}}
 Do not share your robot secret or robot address publicly.
 Sharing this information compromises your system security by allowing unauthorized access to your computer.
 {{% /alert %}}
 
-The SDK connect script should look something like this:
+If you are using the Viam app, navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**.
+These code snippets imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
+
+If you are using a local configuration, use the following code:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -69,14 +92,15 @@ from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='SECRET FROM THE VIAM APP')
+    credentials = Credentials(
+        type='api-key',
+        payload='SECRET' # need to add a step to generate this
+    )
     opts = RobotClient.Options(
         refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+        dial_options=DialOptions(credentials=credentials)
     )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+    return await RobotClient.at_address('localhost:8080', opts)
 
 async def main():
     robot = await connect()
@@ -109,11 +133,11 @@ func main() {
   logger := golog.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
-      "ADDRESS FROM THE VIAM APP",
+      "localhost:8080",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-          Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "SECRET FROM THE VIAM APP",
+          Type:    utils.CredentialsTypeAPIKey,
+          Payload: "SECRET",
       })),
   )
   if err != nil {
@@ -127,6 +151,10 @@ func main() {
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Examples
+
+You can find more examples of Viam's SDKs on the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1) or the [Golang SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples).
 
 ### How to get an image from a camera with Viam
 
