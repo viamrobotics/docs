@@ -6,6 +6,7 @@ type: "docs"
 description: "How to flash a BeagleBone AI-64 to prepare it for viam-server installation."
 aliases:
     - "/installation/beaglebone-install/"
+    - "/installation/prepare/beaglebone-install/"
 # SMEs: Shawn, Matt Dannenberg, and Rand
 ---
 
