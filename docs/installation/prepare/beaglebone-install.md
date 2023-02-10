@@ -39,22 +39,11 @@ If the board has power, the LED on the board labeled *PWR* or *ON* is lit steadi
 
 You need to enable a network connection on your BeagleBone to install `viam-server` on it.
 You can do this in multiple ways:
+
 - Connect an ethernet cable to your BeagleBone's ethernet port.
-- If you are on macOS, use [internet sharing over USB](https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac) to connect to the internet.
+- If you are working on a macOS machine, use [internet sharing over USB](https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac) to share your connection.
    After enabling the option on your machine, SSH into your BeagleBone and run `sudo dhclient usb1`.
-- If you are one Linux machine, follow the tutorial at [fastbitlab.com/how-to-enable-internet-over-usb/](https://fastbitlab.com/how-to-enable-internet-over-usb/) to enable internet sharing over USB.
-
-{{% alert title="Note" color="note" %}}
-
-You can also connect to the internet via internet connection sharing.
-
-If your personal computer is macOS, you can use [internet sharing over USB](https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac) to connect to the internet.
-After enabling the option on your machine, SSH into your BeagleBone and run the following command: `sudo dhclient usb1`.
-
-If your PC is Linux, you can follow the tutorial at [fastbitlab.com/how-to-enable-internet-over-usb/](https://fastbitlab.com/how-to-enable-internet-over-usb/) to enable internet sharing over USB.
-
-{{% /alert %}}
-
+- If you are working on a Linux machine, follow the tutorial at [fastbitlab.com/how-to-enable-internet-over-usb/](https://fastbitlab.com/how-to-enable-internet-over-usb/) to enable internet sharing over USB.
 - If your personal computer supports mDNS (Multicast DNS), you can check to see if your BeagleBone board has established a network connection by visiting [beaglebone.local](https://beaglebone.local).
 
 ### Step 3: SSH into your BeagleBone from your PC
