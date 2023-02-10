@@ -523,9 +523,11 @@ myMotor.Stop(context.Background(), nil)
 
 ### IsPowered
 
+Returns whether or not the motor is currently running, and the percent power (between 0 and 1; if the motor is off the percent power will be 0).
+Stepper motors will report `true` if they are being powered while holding a position, as well as when they are turning.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
-Returns whether or not the motor is currently running, and the percent power (between 0 and 1; if the motor is off the percent power will be 0).
 
 **Parameters:**
 
@@ -577,8 +579,10 @@ logger.Info(pct)
 
 ### IsMoving
 
-Returns whether the motor is currently moving.
-Only supported in the Python SDK.
+Returns whether the motor is currently moving under its own power.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 **Parameters:**
 
@@ -597,3 +601,18 @@ myMotor = Motor.from_robot(robot=robot, name='my_motor')
 moving = await myMotor.is_moving()
 print('Moving:', moving)
 ```
+
+{{% /tab %}}
+{{% tab name="Golang" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(bool)](https://pkg.go.dev/builtin#bool): True if the motor is currently moving.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+{{% /tab %}}
+{{< /tabs >}}
