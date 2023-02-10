@@ -3,13 +3,13 @@ title: "Board Component"
 linkTitle: "Board"
 weight: 20
 type: "docs"
-description: "The board component is the signal wire hub of a robot and provide access to GPIO pins."
+description: "The board component is the signal wire hub of a robot that provides access to GPIO pins."
 tags: ["board", "components"]
 icon: "img/components/board.png"
 # SMEs: Gautham, Rand
 ---
 
-A *board* is the signal wire hub of a robot.
+A *board* is the signal wire hub of a robot that provides access to GPIO pins.
 If your board is capable of running `viam-server`, it can act not only as the signal wire hub for your robot, but also as the software hub.
 
 ![Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server.](../img/board/board-comp-options.png)
@@ -41,7 +41,7 @@ A desktop computer does not typically have GPIO pins, so it can only act as the 
 - You can use any computer capable of running `viam-server` as your board, as long as it's attached to a GPIO peripheral.
 
 {{% alert title="Note" color="note" %}}
-If you want to use just a single-board computer to control your robot, the board itself must run `viam-server`.
+If you want to use the GPIO pins on your single-board computer to control your robot, the board itself must run `viam-server`.
 The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers.
 {{% /alert %}}
 
