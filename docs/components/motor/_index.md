@@ -9,7 +9,7 @@ icon: "img/components/motor.png"
 # no_list: true
 aliases:
     - /components/motor/
-# SME: Rand, Jessamy
+# SME: Rand
 ---
 
 Electric motors are the most common form of [actuator](https://en.wikipedia.org/wiki/Actuator) in robotics.
@@ -392,7 +392,7 @@ Report the position of the motor based on its encoder. The value returned is the
 myMotor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Get the current position of the motor.
-await myMotor.get_position()
+position = await myMotor.get_position()
 ```
 
 {{% /tab %}}
@@ -405,8 +405,8 @@ await myMotor.get_position()
 
 **Returns:**
 
-- [(float64)](https://pkg.go.dev/builtin#float64) The unit returned is the number of revolutions which is intended to be fed back into calls of GoFor.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(float64)](https://pkg.go.dev/builtin#float64): The unit returned is the number of revolutions which is intended to be fed back into calls of GoFor.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example usage:**
 
@@ -414,7 +414,7 @@ await myMotor.get_position()
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Get the current position of the motor.
-myMotor.Position(context.Background(), nil)
+position, _ := myMotor.Position(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -433,7 +433,7 @@ Report a dictionary mapping optional properties to whether it is supported by th
 
 **Returns:**
 
-- [(Properties)](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.Properties) Map of feature names to supported status.
+- [(Properties)](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.Properties): Map of feature names to supported status.
 
 **Example usage:**
 
@@ -441,7 +441,9 @@ Report a dictionary mapping optional properties to whether it is supported by th
 myMotor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Report a dictionary mapping optional properties to whether it is supported by this motor.
-await myMotor.get_properties()
+properties = await myMotor.get_properties()
+print('Properties:')
+print(properties)
 ```
 
 {{% /tab %}}
@@ -454,8 +456,8 @@ await myMotor.get_properties()
 
 **Returns:**
 
-- (map[[Feature]](https://pkg.go.dev/go.viam.com/rdk/components/motor#Feature)[bool](https://pkg.go.dev/builtin#bool), [error](https://pkg.go.dev/builtin#error)) A map indicating whether or not the motor supports certain optional featueres.
-- `error` (error): An error, if one occurred.
+- (map[[Feature]](https://pkg.go.dev/go.viam.com/rdk/components/motor#Feature)[bool](https://pkg.go.dev/builtin#bool), [error](https://pkg.go.dev/builtin#error)) A map indicating whether or not the motor supports certain optional features.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example usage:**
 
@@ -463,7 +465,9 @@ await myMotor.get_properties()
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Return whether or not the motor supports certain optional features.
-myMotor.Properties(context.Background(), nil)
+properties, _ := myMotor.Properties(context.Background(), nil)
+logger.Info("Properties:")
+logger.Info(properties)
 ```
 
 {{% /tab %}}
@@ -471,12 +475,49 @@ myMotor.Properties(context.Background(), nil)
 
 ### Stop
 
+Turn the power to the motor off immediately, without any gradual step down.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
-p
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+**Example usage:**
+
+```python
+myMotor = Motor.from_robot(robot=robot, name='my_motor')
+
+# Stop the motor.
+await myMotor.stop()
+```
+
 {{% /tab %}}
 {{% tab name="Golang" %}}
-g
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example usage:**
+
+```go
+myMotor, err := motor.FromRobot(robot, "motor1")
+
+// Stop the motor.
+myMotor.Stop(context.Background(), nil)
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -484,20 +525,75 @@ g
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-p
+Returns whether or not the motor is currently running, and the percent power (between 0 and 1; if the motor is off the percent power will be 0).
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [tuple](https://docs.python.org/3/library/stdtypes.html#tuple)[[bool](https://docs.python.org/3/library/functions.html#bool), [float](https://docs.python.org/3/library/functions.html#float)]: The bool is true if the motor is currently running; false if not. The float represents the current power percentage of the motor (between 0 and 1).
+
+**Example usage:**
+
+```python
+myMotor = Motor.from_robot(robot=robot, name='my_motor')
+
+# Check whether the motor is currently running.
+powered = await myMotor.is_powered()
+print('Powered:', powered)
+```
+
 {{% /tab %}}
 {{% tab name="Golang" %}}
-g
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(bool)](https://pkg.go.dev/builtin#bool): True if the motor is currently running; false if not.
+- [(float64)](https://pkg.go.dev/builtin#float64): The current power percentage of the motor (between 0 and 1).
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example usage:**
+
+```go
+myMotor, err := motor.FromRobot(robot, "motor1")
+
+// Check whether the motor is currently running.
+powered, pct, _ := myMotor.IsPowered(context.Background(), nil)
+logger.Info("Is powered?")
+logger.Info(powered)
+logger.Info("Power percent:")
+logger.Info(pct)
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
 ### IsMoving
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-p
-{{% /tab %}}
-{{% tab name="Golang" %}}
-g
-{{% /tab %}}
-{{< /tabs >}}
+Returns whether the motor is currently moving.
+Only supported in the Python SDK.
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(bool)](https://docs.python.org/3/library/functions.html#bool): True if the motor is currently moving; false if not.
+
+**Example usage:**
+
+```python
+myMotor = Motor.from_robot(robot=robot, name='my_motor')
+
+# Check whether the motor is currently moving.
+moving = await myMotor.is_moving()
+print('Moving:', moving)
+```
