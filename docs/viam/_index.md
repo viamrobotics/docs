@@ -10,7 +10,7 @@ aliases:
 
 Viam is a complete software platform for robots.
 
-#### Platform Quickstart: Using the App
+### Platform Quickstart: Using the App
 
 The simplest way to create your first robot on the Viam platform is through our user interface for connecting with and managing robots, the [Viam app](app.viam.com).
 
