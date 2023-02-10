@@ -8,7 +8,7 @@ icon: "img/thumbnails/viam-icon-data-capture.png"
 description: "Install viam-server on your robot."
 ---
 
-If you have [a compatible operating system set up on your computer](/installation/prepare/) you are ready to install `viam-server`.
+If you have a compatible operating system on your computer, you are ready to install `viam-server`.
 
 ### Quickstart
 

@@ -22,28 +22,28 @@ If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="/installation/prepare/rpi-setup/">
             <br>
-            <img src="../img/thumbnails/raspberry-pi-4-b-2gb.jpg" alt="Raspberry Pi">
+            <img src="img/thumbnails/raspberry-pi-4-b-2gb.jpg" alt="Raspberry Pi">
             <p style="text-align: left; margin-left: 0px; font-weight:bold">Raspberry Pi</h4>
         <a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="/installation/prepare/beaglebone-install/">
             <br>
-            <img src="/installation/img/thumbnails/beaglebone.png" alt="BeagleBone AI 64">
+            <img src="img/thumbnails/beaglebone.png" alt="BeagleBone AI 64">
             <p style="text-align: left; margin-left: 0px; font-weight:bold">BeagleBone AI-64</h4>
         </a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="/installation/prepare/sk-tda4vm/">
             <br>
-            <img src="../img/thumbnails/tda4vm.png" alt="SK-TDA4VM">
+            <img src="img/thumbnails/tda4vm.png" alt="SK-TDA4VM">
             <p style="text-align: left; margin-left: 0px; font-weight:bold">Texas Instruments SK-TDA4VM</h4>
         </a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="/installation/prepare/jetson-nano-setup/">
             <br>
-            <img src="../img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="SK-TDA4VM">
+            <img src="img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="SK-TDA4VM">
             <p style="text-align: left; margin-left: 0px; font-weight:bold">NVIDIA Jetson Nano</h4>
         </a>
     </div>
@@ -64,6 +64,14 @@ If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone
 
 <div class="container text-center">
   <div class="row">
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="install">
+            <br>
+            <img src="img/thumbnails/install.png" alt="Manage" width=100%>
+            <h4 style="text-align: left; margin-left: 0px;">Install <code>viam-server</code></h4>
+            <p style="text-align: left;">Install <code>viam-server</code> on Linux or macOS.</p>
+        </a>
+    </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="manage">
             <br>
