@@ -18,7 +18,7 @@ Viam is supported on:
 If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone, prepare your SBC by following the relevant setup document:
 
 - [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/)
-- [BeagleBone AI-64 Setup Guide](/installation/prepare/beaglebone-install/)
+- [BeagleBone AI-64 Setup Guide](/installation/prepare/beaglebone-setup/)
 - [Texas Instruments SK-TDA4VM Setup Guide](/installation/prepare/sk-tda4vm/)
 
 If you plan to run `viam-server` on your laptop or desktop with a Linux or Mac operating system, no special prep is required.
