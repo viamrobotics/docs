@@ -27,21 +27,21 @@ Both of these options enable your board to act as both the signal wire and softw
 
 **Small Computing Device with GPIO Pins:**
 
-This refers to single-board computers like the [Raspberry Pi](/installation/prepare/rpi-setup/), [BeagleBone](/installation/prepare/beaglebone-install/), and Jetson.
+This refers to single-board computers like the [Raspberry Pi](/installation/prepare/rpi-setup/), [BeagleBone](/installation/prepare/beaglebone-install/), and [Jetson](/installation/prepare/jetson-nano-setup/).
 
-- These are all small computing devices that are capable of advanced computation, including running `viam-server`.
-
-**Desktop Computer outfitted with a GPIO Peripheral**:
-
-A desktop computer does not typically have GPIO pins, so it can only act as the board of your robot if you have connected it to a GPIO peripheral.
-
-- A GPIO peripheral, such as a Numato GPIO Module, cannot run `viam-server` itself, but can take input from another computer running `viam-server` to communicate with other hardware components.
-- You can use any computer capable of running `viam-server` as your board, as long as it's attached to a GPIO peripheral.
+- These are all small computing devices outfitted with GPIO pins that are capable of advanced computation, including running `viam-server`.
 
 {{% alert title="Note" color="note" %}}
 If you want to use the GPIO pins on your single-board computer to control your robot, the board itself must run `viam-server`.
 The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers.
 {{% /alert %}}
+
+**Desktop Computer outfitted with a GPIO Peripheral**:
+
+A GPIO peripheral can act as the signal wire hub of your robot. However, it does not have the computer required to run `viam-server` on the robot, so it can only act as the *board* if you have physically connected it to another computer.
+
+- In this case, the computer running `viam-server` sends signals through the GPIO peripheral to communicate with the other hardware components.
+- You can use any computer capable of running `viam-server`, as long as it is connected to the GPIO peripheral.
 
 Most robots with a board need at least the following hardware:
 
