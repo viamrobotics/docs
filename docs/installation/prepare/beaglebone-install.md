@@ -24,21 +24,9 @@ You need the following hardware, tools, and software to install `viam-server` on
 4. (Optional) A microSD card and a way to connect the microSD card to the computer (like a microSD slot or microSD reader)
     - This is required if you need to set up your BeagleBone for the first time or update your BeagleBone to the latest software image.
 
-
-{{% alert title="Note" color="note" %}}
-
-If you have already powered up and connected to your BeagleBone before coming to this guide, skip ahead to the [installation guide](/installation/install/).
-
-However, you might need to update your BeagleBone to the latest software so your OS can run `viam-server`.
-
-If you experience any issues getting Viam working on your BeagleBone, consult the [BeagleBone documentation](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) for help updating your BeagleBone, or reach out on the [the Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
-
-{{% /alert %}}
-
 The following instructions mirror the instructions given in the BeagleBoard documentation at [Connecting up your BeagleBone](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) and [Getting Started with your BeagleBone](https://beagleboard.org/getting-started).
+
 If you want additional help setting up your BeagleBone, you can follow the guides there and return to the Viam docs after SSH'ing into your BeagleBone.
-
-
 
 ### Step 1: Power your BeagleBone
 
@@ -97,6 +85,6 @@ Now that your BeagleBone has a Viam-compatible operating system installed, conti
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If you experience any issues getting Viam working on your BeagleBone, consult the [BeagleBone documentation](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) for help updating your BeagleBone, or reach out on the [the Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
 
-You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
