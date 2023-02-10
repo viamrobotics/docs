@@ -24,8 +24,8 @@ Each gantry can only move in one axis within the limits of the length of the lin
 
 Most robots with a gantry need at least the following hardware:
 
-- A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
-- A [motor](/components/motor/) that can move linear rails
+- A [board component](/components/board/) or controller that can detect changes in voltage on GPIO pins.
+- A [motor](/components/motor/) that can move linear rails.
   - Encoded motor: See [DC motor with encoder](/components/motor/#dc-motor-with-encoder) and [encoder component](/components/encoder/).
   - Stepper motor: See [Stepper motor](/components/motor/#stepper-motor).
   Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
