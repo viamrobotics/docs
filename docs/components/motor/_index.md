@@ -23,36 +23,33 @@ Model | Supported hardware <a name="model-table"></a>
 [`DMC4000`](./dmc4000/) | Stepper motor driven by a [DMC-40x0 series motion controller](https://www.galil.com/motion-controllers/multi-axis/dmc-40x0)
 [`fake`](./fake/) | Used to test code without hardware
 
-As is evident in the table above, how you configure your motor with Viam depends more on the [motor driver](https://www.wellpcb.com/what-is-motor-driver.html) than on the motor itself.
+How you configure your motor with Viam depends more on the [motor driver](https://www.wellpcb.com/what-is-motor-driver.html) than on the motor itself.
 
 This document assumes you have motor, compatible motor driver, and power supply.
 You'll also need a [board](/components/board/) to send signals to the motor driver[^dmcboard].
 
+Most robots with a motor need at least the following hardware:
+
+- The motor itself
+- An appropriate motor driver
+  - Takes GPIO signals from the computer and sends the corresponding signals and power to the motor.
+    Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements
+- A [board component](https://docs.viam.com/components/board/) to send signals to the motor driver[^dmcboard].
+  For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
+
 ## API Overview
 
-Method Name | Golang | Python | Description
------------ | ------ | ------ | -----------
-[SetPower](#setpower) | [SetPower][go_motor] | [set_power][python_set_power] | Set the "percentage" of power to send to the motor.
-[GoFor](#gofor) | [GoFor][go_motor] | [go_for][python_go_for] | Spin the motor the specified number of revolutions at specified RPM.
-[GoTo](#goto) | [GoTo][go_motor] | [go_to][python_go_to] | Send the motor to a specified position (in terms of revolutions from home) at a specified speed.
-[ResetZeroPosition](#resetzeroposition) | [ResetZeroPosition][go_motor] | [reset_zero_position][python_reset_zero_position] | Set the current position to be the new zero (home) position.
-[GetPosition](#getposition) | [Position][go_motor] | [get_position][python_get_position] | Reports the position of the motor based on its encoder. Not supported on all motors.
-[GetProperties](#getproperties) | [Properties][go_motor] | [get_properties][python_get_properties] | Returns whether or not the motor supports certain optional features.
-[Stop](#stop) | [Stop][go_motor] | [stop][python_stop] | Cuts power to the motor off immediately, without any gradual step down.
-[IsPowered](#ispowered) | [IsPowered][go_motor] | [is_powered][python_is_powered] | Returns whether or not the motor is currently on, and the percent power.
-[IsMoving](#ismoving) | [IsMoving][go_motor_moving] | [is_moving][python_is_moving] | Returns whether the motor is moving or not.
-
-[go_motor]: https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor
-[go_motor_moving]: https://pkg.go.dev/go.viam.com/rdk@v0.2.15/resource#MovingCheckable
-[python_set_power]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.set_power
-[python_go_for]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_for
-[python_go_to]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_to
-[python_reset_zero_position]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.reset_zero_position
-[python_get_position]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.get_position
-[python_get_properties]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.get_properties
-[python_stop]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.stop
-[python_is_powered]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_powered
-[python_is_moving]: https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_moving
+Method Name | Description
+----------- | -----------
+[SetPower](#setpower) | Set the "percentage" of power to send to the motor.
+[GoFor](#gofor) | Spin the motor the specified number of revolutions at specified RPM.
+[GoTo](#goto) | Send the motor to a specified position (in terms of revolutions from home) at a specified speed.
+[ResetZeroPosition](#resetzeroposition) | Set the current position to be the new zero (home) position.
+[GetPosition](#getposition) | Reports the position of the motor based on its encoder. Not supported on all motors.
+[GetProperties](#getproperties) | Returns whether or not the motor supports certain optional features.
+[Stop](#stop) | Cuts power to the motor off immediately, without any gradual step down.
+[IsPowered](#ispowered) | Returns whether or not the motor is currently on, and the percent power.
+[IsMoving](#ismoving) | Returns whether the motor is moving or not.
 
 ## Configuration
 
@@ -103,13 +100,8 @@ Refer to the document for your specific motor model for attribute configuration 
 
 ## Usage example
 
-{{% alert title="Note" color="note" %}}
-
-Before you get started, ensure that you, go to [app.viam.com](https://app.viam.com/), create a new robot and go to the **SETUP** tab and follow the instructions there.
-
-The following example assumes motors called "motor1" and "motor2" are configured as components of your robot.
-
-{{% /alert %}}
+The following example assumes you have motors called "motor1" and "motor2" configured as components of your robot.
+If your gantry has a different name, change the `name` in the example.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -179,6 +171,8 @@ Set the "percentage" (between -1 and 1) of power to send to the motor.
 
 - None
 
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.set_power).
+
 **Example usage:**
 
 ```python
@@ -200,6 +194,8 @@ await myMotor.set_power(power = 0.4)
 **Returns:**
 
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 **Example usage:**
 
@@ -232,6 +228,8 @@ If both `rpm` and `revolutions` are negative, the motor will spin in the forward
 
 - None
 
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_for).
+
 **Example usage:**
 
 ```python
@@ -256,6 +254,8 @@ await myMotor.go_for(rpm=60, revolutions=7.2)
 **Returns:**
 
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 **Example usage:**
 
@@ -287,6 +287,8 @@ This will block until the position has been reached.
 
 - None
 
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_to).
+
 **Example usage:**
 
 ```python
@@ -309,6 +311,8 @@ await myMotor.go_to(rpm=75, revolutions=8.3)
 **Returns:**
 
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 **Example usage:**
 
@@ -337,6 +341,8 @@ Set the current position (modified by `offset`) to be the new zero (home) positi
 
 - None
 
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.reset_zero_position).
+
 **Example usage:**
 
 ```python
@@ -358,6 +364,8 @@ await myMotor.reset_zero_position(offset=0.0)
 **Returns:**
 
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 **Example usage:**
 
@@ -386,6 +394,8 @@ Report the position of the motor based on its encoder. The value returned is the
 
 - [(float)](https://docs.python.org/3/library/functions.html#float) Number of revolutions the motor is away from zero/home.
 
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.get_position).
+
 **Example usage:**
 
 ```python
@@ -407,6 +417,8 @@ position = await myMotor.get_position()
 
 - [(float64)](https://pkg.go.dev/builtin#float64): The unit returned is the number of revolutions which is intended to be fed back into calls of GoFor.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 **Example usage:**
 
@@ -435,6 +447,8 @@ Report a dictionary mapping optional properties to whether it is supported by th
 
 - [(Properties)](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.Properties): Map of feature names to supported status.
 
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.get_properties).
+
 **Example usage:**
 
 ```python
@@ -458,6 +472,8 @@ print(properties)
 
 - (map[[Feature]](https://pkg.go.dev/go.viam.com/rdk/components/motor#Feature)[bool](https://pkg.go.dev/builtin#bool), [error](https://pkg.go.dev/builtin#error)) A map indicating whether or not the motor supports certain optional features.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 **Example usage:**
 
@@ -488,6 +504,8 @@ Turn the power to the motor off immediately, without any gradual step down.
 
 - None
 
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.stop).
+
 **Example usage:**
 
 ```python
@@ -508,6 +526,8 @@ await myMotor.stop()
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 **Example usage:**
 
@@ -537,6 +557,8 @@ Stepper motors will report `true` if they are being powered while holding a posi
 
 - [tuple](https://docs.python.org/3/library/stdtypes.html#tuple)[[bool](https://docs.python.org/3/library/functions.html#bool), [float](https://docs.python.org/3/library/functions.html#float)]: The bool is true if the motor is currently running; false if not. The float represents the current power percentage of the motor (between 0 and 1).
 
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_powered).
+
 **Example usage:**
 
 ```python
@@ -560,6 +582,8 @@ print('Powered:', powered)
 - [(bool)](https://pkg.go.dev/builtin#bool): True if the motor is currently running; false if not.
 - [(float64)](https://pkg.go.dev/builtin#float64): The current power percentage of the motor (between 0 and 1).
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 **Example usage:**
 
@@ -592,6 +616,8 @@ Returns whether the motor is currently moving under its own power.
 
 - [(bool)](https://docs.python.org/3/library/functions.html#bool): True if the motor is currently moving; false if not.
 
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_moving).
+
 **Example usage:**
 
 ```python
@@ -607,12 +633,25 @@ print('Moving:', moving)
 
 **Parameters:**
 
-- None
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
 **Returns:**
 
 - [(bool)](https://pkg.go.dev/builtin#bool): True if the motor is currently moving.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.15/resource#MovingCheckable).
+
+**Example usage:**
+
+```go
+myMotor, err := motor.FromRobot(robot, "motor1")
+
+// Check whether the motor is currently moving.
+moving, _ := myMotor.IsMoving(context.Background())
+logger.Info("Is moving?")
+logger.Info(moving)
+```
 
 {{% /tab %}}
 {{< /tabs >}}

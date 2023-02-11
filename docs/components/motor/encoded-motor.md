@@ -8,11 +8,11 @@ description: "How to configure an encoded motor."
 ---
 
 Some motors come with encoders integrated with or attached to them.
-Other times, you may add an encoder to a motor.
+You can also add an encoder to a motor.
 See the [encoder component documentation](/components/encoder/) for more information on encoders.
 
 Viam supports motors with encoders within model `gpio`.
-Configuration of an encoder requires configuring the encoder [per the encoder documentation](/components/encoder) in addition to the [standard `gpio` model attributes](/components/motor/gpio/).
+To configure an encoded motor, you must configure the encoder [per the encoder documentation](/components/encoder) and then configure a `gpio` motor with an `encoder` attribute in addition to the [standard `gpio` model attributes](/components/motor/gpio/).
 
 Here’s an example configuration:
 
