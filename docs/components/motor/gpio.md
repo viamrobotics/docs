@@ -9,6 +9,9 @@ description: "How to configure a motor with model `gpio`"
 
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).
 
+[Encoders](/components/encoder/) can be configured to work with `gpio` motors.
+Find more information in the [encoded motor documentation](/components/motor/encoded-motor/).
+
 An example configuration for a `gpio` motor:
 
 {{< tabs name="gpio-config">}}
@@ -64,7 +67,7 @@ An example configuration for a `gpio` motor:
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 `board` | string | -- | Name of board to which the motor driver is wired.
-`max_rpm` | float | -- | This is an estimate of the maximum RPM the motor will run at with full power under no load. The go_for method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, it can be set to zero but this will render the “GoFor” method unusable.
+`max_rpm` | float | -- | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed.
 `pins` | object | -- | A structure that holds pin configuration information.
 
 Nested within `pins` (note that only two or three of these are required depending on your motor driver; see [Pin Information](#pin-information) below for more details):
@@ -100,6 +103,7 @@ Name | Type | Default Value | Description
 `pwm_freq` | uint | 800 | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range.
 `dir_flip` | bool | False | Flips the direction of the signal sent if there is a DIR pin
 `en_high` / `en_low` | string | -- | Some drivers have optional enable pins that enable or disable the driver chip. If your chip requires a high signal to be enabled, add `en_high` with the pin number to the pins section. If you need a low signal use `en_low`.
+`encoder` | string | -- | The name of an encoder attached to this motor. See [encoded motor](/components/motor/encoded-motor/).
 
 ## Wiring examples
 
