@@ -10,6 +10,10 @@ icon: "img/components/gantry.png"
 # SME: Rand
 ---
 
+<div style="width:40%;">
+{{% figure src="../img/gantry/gantry-illustration.png" alt="Example of what a multi axis robot gantry looks like as a black and white illustration." title="A multi-axis gantry robot."%}}
+</div>
+
 A *gantry* on a robot is a mechanical system that you can use to hold and position a variety of end-effectors: devices designed to attach to the robot and interact with the environment to perform tasks.
 The linear rail design makes gantries a common design on robots for simple positioning and placement.
 A customized encoded motor controller can be used in the configuration of a gantry to move the linear rail.
