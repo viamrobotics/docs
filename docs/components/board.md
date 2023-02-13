@@ -11,9 +11,9 @@ icon: "img/components/board.png"
 
 A *board* is the signal wire hub of a robot that provides access to GPIO pins.
 
-If your board has a computer that is capable of running `viam-server`, or is physically connected to one, it can act not only as the signal wire hub for your robot, but also as the software hub.
+If your board has a computer that is capable of running `viam-server`, or is connected to one, it can act not only as the signal wire hub for your robot, but also as the software hub.
 
-Configure a board component on your robot to control and read from the other hardware components of the robot, signaling through the GPIO pins on the board as directed by a computer running `viam-server`.
+Configure a board component on your robot to control and read from the other hardware components of the robot, signaling through the GPIO pins on the board as overseen by a computer running `viam-server`.
 
 {{% figure src="../img/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
@@ -45,7 +45,7 @@ The GPIO pins of various boards (including Raspberry Pi) are not accessible to e
 A GPIO peripheral can act as the signal wire hub of your robot.
 However, a board like this does not contain a computer to run `viam-server` on the robot, so it can only act as the *board* if you have physically connected it to another computer.
 
-In this case, the computer running `viam-server` sends signals through the GPIO peripheral to communicate with the other hardware components of the robot.
+In this case, the computer running `viam-server` signals through the GPIO peripheral's GPIO pins to communicate with the other hardware components of the robot.
 
 You can use any computer capable of running `viam-server`, whether it's your personal computer or another machine, as long as it is connected to the GPIO peripheral.
 
@@ -136,10 +136,9 @@ Here are a few use cases:
   - Light up an LED or similar.
   - Switch a relay.
 - Send a PWM signal to control the speed of a motor or servo.
-- Read the state of the pin (i.e., the voltage), which can be used to monitor the status of whatever is connected to it.
-- Receive digital signals from sensors, as detailed in the [Analogs section below](#analogs).
+- Read the state of the pin (High/Low), which can be used to monitor the status of whatever is connected to it.
+- Receive digital signals from sensors [see I2C & SPI protocols](#i2c) and [Analogs](#analogs) sections below.
 - Receive input as a digital interrupt, [detailed below](#digital-interrupts).
-- Communicate using different protocols such as I2C and SPI bus.
 
 Some things GPIO pins *cannot* do:
 
