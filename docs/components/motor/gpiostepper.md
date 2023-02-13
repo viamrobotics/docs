@@ -71,4 +71,14 @@ Name | Type | Description
 
 ### Wiring Example
 
-![motor-gpiostepper-wiring](../../img/motor/motor-gpiostepper-wiring.png)
+Typically, a stepper motor will have an even number of wires.
+Each pair of wires forms a loop through a coil of the motor.
+In the case of a four wire (bi-polar) stepper, one pair of wires may be labeled A1 and A2 and the other B1 and B2.
+Refer to your motor data sheet and motor driver data sheet for correct wiring.
+
+The following example uses a Big Tree Tech breakout board with a [TMC2209 stepper driver](https://www.trinamic.com/products/integrated-circuits/details/tmc2209-la/) to drive a two phase stepper motor.
+
+![An example wiring diagram for a four wire Nema 17 stepper motor driven by a Big Tree Tech TMC2209 stepper driver. The driver is connected to a Raspberry Pi with step and dir pins, as well as logic power wires. A separate 12V power supply is attached to the motor driver to power the motor.](../../img/motor/motor-gpiostepper-wiring.png)
+
+In this particular example the enable pin on the upper left corner of the driver is connected to ground to pull it low.
+See data sheet for details.
