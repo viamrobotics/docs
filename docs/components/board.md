@@ -27,7 +27,7 @@ Both of these options enable your board to act as both the signal wire and softw
 
 **Single-Board Computer with GPIO Pins:**
 
-This refers to boards like the [Raspberry Pi](/installation/prepare/rpi-setup/), [BeagleBone](/installation/prepare/beaglebone-install/), and [Jetson](/installation/prepare/jetson-nano-setup/).
+This refers to boards like the [Raspberry Pi](/installation/prepare/rpi-setup/), [BeagleBone](/installation/prepare/beaglebone-setup/), and [Jetson](/installation/prepare/jetson-nano-setup/).
 
 These are all small computing devices outfitted with GPIO pins that are capable of advanced computation, including running `viam-server`.
 
