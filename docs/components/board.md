@@ -10,20 +10,24 @@ icon: "img/components/board.png"
 ---
 
 A *board* is the signal wire hub of a robot that provides access to GPIO pins.
-If your board is capable of running `viam-server`, it can act not only as the signal wire hub for your robot, but also as the software hub.
 
-{{% figure src="../img/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board-computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
+If your board has a computer that is capable of running `viam-server`, or is physically connected to one, it can act not only as the signal wire hub for your robot, but also as the software hub.
+
+Configure a board component on your robot to control and read from the other hardware components of the robot, signaling through the GPIO pins on the board as directed by a computer running `viam-server`.
+
+{{% figure src="../img/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
 #### What does "signal wire hub" mean?
 
 A robot's board component has general purpose input/output (GPIO) pins.
-Through these pins, the board can transmit [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation) and other signals to any hardware components connected to the board.
+As the name suggests, these pins can be inputs or outputs, and can be set high or low--that is, turned on or off--and thus used to signal (or read signals from) other hardware.
+Many GPIO implementations also support [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation), or can be used as more advanced signaling systems such as [I2C](#i2c), [SPI](#spi-bus), or UART/Serial.
 
 #### What can I use as my board?
 
 Generally, you should use a single-board computer with GPIO pins or a computer outfitted with a GPIO peripheral.
 
-Both of these options enable your board to act as both the signal wire and software hub of your robot, running `viam-server` and sending signals to the other components of the robot.
+This way, overseen by a computer running `viam-server`, the GPIO pins on your board can receive signals from and send signals to the hardware components of your robot.
 
 **Single-Board Computer with GPIO Pins:**
 
@@ -38,7 +42,8 @@ The GPIO pins of various boards (including Raspberry Pi) are not accessible to e
 
 **Computer outfitted with a GPIO Peripheral**:
 
-A GPIO peripheral can act as the signal wire hub of your robot. However, a board like this does not contain a computer to run `viam-server` on the robot, so it can only act as the *board* if you have physically connected it to another computer.
+A GPIO peripheral can act as the signal wire hub of your robot.
+However, a board like this does not contain a computer to run `viam-server` on the robot, so it can only act as the *board* if you have physically connected it to another computer.
 
 In this case, the computer running `viam-server` sends signals through the GPIO peripheral to communicate with the other hardware components of the robot.
 
@@ -62,7 +67,7 @@ Refer to the following example configuration file for a single-board computer li
 {{< tabs name="Example Board Config" >}}
 {{% tab name="Config Builder" %}}
 
-![An example of configuration for a one-axis gantry component in the Viam App config builder.](../img/board/board-config-ui.png)
+![An example of configuration for a single-board computer in the Viam App config builder.](../img/board/board-config-ui.png)
 
 {{% /tab %}}
 {{% tab name="Template JSON" %}}
@@ -105,15 +110,15 @@ Refer to the following example configuration file for a single-board computer li
 
 For the `model`, supported board models include:
 
-- **pi**: Raspberry Pi 4 or Pi Zero W
+- **pi**: Raspberry Pi 4 or Pi Zero W2 recommended
 
 - **beaglebone**: BeagleBone AI 64
 
 - **ti**: TDA4VM devkit
 
-- **jetson**: Nvidia Jetson Xavier NX
+- **jetson**: Nvidia Jetson Xavier NX, Nvidia Jetson Nano
 
-- **numato**: Numato GPIO model
+- **numato**: Numato GPIO model (GPIO peripheral)
 
 For more advanced configuration options, read on.
 
@@ -327,7 +332,7 @@ The following are brief descriptions of each protocol Viam supports, as well as 
 
 #### SPI Bus
 
-[Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) uses several pins for serial communication: main out/serial in (MOSI); main in/serial out (MISO); SCLK which is a clock for serial communication; and chip enable (also called chip select) pins.
+[Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) uses several pins for serial communication: main out/secondary in (MOSI); main in/secondary out (MISO); SCLK, a clock for serial communication; and chip enable (also called chip select) pins.
 If you are using a Raspberry Pi, the "built-in" chip select pins are labeled CE0 and CE1 on the pinout sheet.
 The required connections between corresponding board pins and peripheral device pins must be wired, but each of these pins does not need to be specified in the config as most boards have them configured by default.
 Only the index of the entire bus must be specified.
