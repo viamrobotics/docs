@@ -39,7 +39,7 @@ To make use of these features, all you need to do is:
 ## Robot
 
 A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) single-board computer, running `viam-server` and sending signals to control hardware connected to it.
-See the [board](/docs/components/board/) component page for more information about what this computer can be.
+See the [board](/components/board/) component page for more information about what this computer can be.
 
 Robots can be small and simple or very complex.
 A robot can be a single-board computer with a single [sensor](/components/sensor/) or LED wired to it, or a robot can consist of multiple computers with many physical components connected, acting as one unit.
