@@ -17,7 +17,7 @@ The simplest way to create your first robot on the Viam platform is through our 
 Create an account, and create a new robot on there, even if you don't know what you want your robot to look like yet.
 You'll be redirected to a control center for this new robot.
 
-The Viam platform natively handles the following for you:
+Examples of what the Viam platform handles natively for you are:
 
 - **Data management** enabling you to capture and sync data from one or more robots.
 - **Fleet management** enabling you to configure, control, debug, and manage entire fleets of robots.
@@ -34,11 +34,12 @@ To make use of these features, all you need to do is:
 
 ## Robot
 
-A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), running `viam-server` along with the hardware the computer controls.
-The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
+A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), running `viam-server` and sending signals to the hardware the computer controls.
 
 Robots can be small and simple or very complex.
 A robot can be a single-board computer with a single [sensor](/components/sensor/) or LED wired to it, or a robot can consist of multiple computers with many physical components connected, acting as one unit.
+
+The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
 
 ![Robot components](img/robot-components.png)
 
