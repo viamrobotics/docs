@@ -29,7 +29,7 @@ Both of these options enable your board to act as both the signal wire and softw
 
 This refers to single-board computers like the [Raspberry Pi](/installation/prepare/rpi-setup/), [BeagleBone](/installation/prepare/beaglebone-install/), and [Jetson](/installation/prepare/jetson-nano-setup/).
 
-- These are all small computing devices outfitted with GPIO pins that are capable of advanced computation, including running `viam-server`.
+These are all small computing devices outfitted with GPIO pins that are capable of advanced computation, including running `viam-server`.
 
 {{% alert title="Note" color="note" %}}
 If you want to use the GPIO pins on your single-board computer to control your robot, the board itself must run `viam-server`.
@@ -46,8 +46,10 @@ A GPIO peripheral can act as the signal wire hub of your robot. However, it does
 Most robots with a board need at least the following hardware:
 
 - Power supply
-  - Must supply the correct voltage and sufficient current to avoid damaging or power cycling the board. See the data sheet of your board for requirements.
-  - For example: a Raspberry Pi 4 takes a 5V power supply and converts it to 3.3V for its logic circuitry.
+   Must supply the correct voltage and sufficient current to avoid damaging or power cycling the board.
+   See the data sheet of your board for requirements.
+   For example, a Raspberry Pi 4 takes a 5V power supply and converts it to 3.3V for its logic circuitry.
+   The easiest way to power it is with a 5V USB-C power supply.
     The easiest way to power it is with a 5V USB-C power supply.
 
 ## Configuration
@@ -94,9 +96,9 @@ Refer to the following example configuration file for a single-board computer li
 
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
-| `type`  |  *Required* | All boards will be of type `board`. |
+| `type`  |  *Required* | All boards are of type `board`. |
 | `model` | *Required* | Specify the correct `model` for your board. |
-| `name`  | *Required* | Choose any name you like. Note that the `name` you choose is how you will refer to this particular board in your code. |
+| `name`  | *Required* | Choose a name for your board. Note that the `name` you choose is the name you need to refer to this particular board in your code. |
 
 For the `model`, supported board models include:
 
