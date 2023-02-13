@@ -7,7 +7,7 @@ description: "How to configure a motor with model `gpiostepper`"
 # SMEs: Rand, James
 ---
 
-The Viam `gpiostepper` model of motor component supports [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by basic stepper driver chips that take step and direction input via GPIO and simply move the motor one step per pulse.
+The Viam `gpiostepper` model of motor component supports [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by basic stepper driver chips (such as [DRV8825](https://www.ti.com/product/DRV8825) or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)) that take step and direction input via GPIO and simply move the motor one step per pulse.
 
 Viam also supports some more advanced stepper driver chips ([TMC5072](/components/motor/tmc5072/), [DMC4000](/components/motor/dmc4000/)) that have their own microcontrollers that handle things like speed and acceleration control.
 Refer to those docs for more information.
@@ -76,7 +76,7 @@ Each pair of wires forms a loop through a coil of the motor.
 In the case of a four wire (bi-polar) stepper, one pair of wires may be labeled A1 and A2 and the other B1 and B2.
 Refer to your motor data sheet and motor driver data sheet for correct wiring.
 
-The following example uses a Big Tree Tech breakout board with a [TMC2209 stepper driver](https://www.trinamic.com/products/integrated-circuits/details/tmc2209-la/) to drive a two phase stepper motor.
+The following example uses a Big Tree Tech breakout board with a [TMC2209 integrated circuit](https://www.trinamic.com/products/integrated-circuits/details/tmc2209-la/) to drive a two phase stepper motor.
 
 ![An example wiring diagram for a four wire Nema 17 stepper motor driven by a Big Tree Tech TMC2209 stepper driver. The driver is connected to a Raspberry Pi with step and dir pins, as well as logic power wires. A separate 12V power supply is attached to the motor driver to power the motor.](../../img/motor/motor-gpiostepper-wiring.png)
 

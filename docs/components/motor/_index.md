@@ -32,8 +32,8 @@ Most robots with a motor need at least the following hardware:
 
 - The motor itself
 - An appropriate motor driver
-  - Takes GPIO signals from the computer and sends the corresponding signals and power to the motor.
-    Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements
+  - Takes signals from the computer and sends the corresponding signals and power to the motor.
+    Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements.
 - A [board component](https://docs.viam.com/components/board/) to send signals to the motor driver[^dmcboard].
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
 
