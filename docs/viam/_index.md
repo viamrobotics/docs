@@ -17,7 +17,11 @@ The simplest way to create your first robot on the Viam platform is through our 
 Create an account, and create a new robot on there, even if you don't know what you want your robot to look like yet.
 You'll be redirected to a control center for this new robot.
 
-Examples of what the Viam platform handles natively for you are:
+{{< figure src="img/board-viam-server.png" width="20%" text-align="center" alt="A diagram of a single-board computer running viam-server." title="A simple robot, a single-board computer running the viam-server software." >}}
+
+<br>
+
+For robotic control, the Viam platform handles many aspects natively *for* you, including:
 
 - **Data management** enabling you to capture and sync data from one or more robots.
 - **Fleet management** enabling you to configure, control, debug, and manage entire fleets of robots.
@@ -25,7 +29,7 @@ Examples of what the Viam platform handles natively for you are:
 - **Vision** enabling your robot to intelligently see and interpret the world around it.
 - **Simultaneous Localization And Mapping (SLAM)** enabling your robot to map its surroundings and find its position on a map.
 
-On top of these services, the Viam platform provides a consistent programming interface for all robots, allowing you to program your robots in the language of your choice.
+On top of these services, the Viam platform provides a consistent programming interface for all robots, allowing you to control your robots with code in the language of your choice.
 
 To make use of these features, all you need to do is:
 
@@ -34,7 +38,8 @@ To make use of these features, all you need to do is:
 
 ## Robot
 
-A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), running `viam-server` and sending signals to the hardware the computer controls.
+A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) single-board computer, running `viam-server` and sending signals to control hardware connected to it.
+See the [board](/docs/components/board/) component page for more information about what this computer can be.
 
 Robots can be small and simple or very complex.
 A robot can be a single-board computer with a single [sensor](/components/sensor/) or LED wired to it, or a robot can consist of multiple computers with many physical components connected, acting as one unit.
