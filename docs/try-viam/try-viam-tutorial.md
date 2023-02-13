@@ -183,7 +183,7 @@ The **Spin Slip Factor** of 1.76 is used in steering calculations to account for
 The [camera component](/components/camera/) configures the webcam that is plugged into the Raspberry Pi of the rover.
 The camera component has the **Type** `camera`, the **Model** `webcam`, and the **Video Path** is `video0`.
 
-For more information on choosing the correct video path, refer to our [camera configuration tutorial](/components/camera/configure-a-camera/#connect-and-configure-a-webcam).
+For more information on choosing the correct video path, refer to our [camera configuration tutorial](/components/camera/webcam).
 
 ![The video path in the webcam configuration panel is set to "video0".](../img/try-viam/camera-config.png)
 

@@ -72,8 +72,8 @@ Configure your robot to run ORB-SLAM3 with a webcam in two steps:
 
 Follow these tutorials to connect and calibrate your webcam as a modular component of your robot:
 
-* [Connect and configure a webcam](/components/camera/configure-a-camera/#connect-and-configure-a-webcam)
-* [Calibrate a camera](/components/camera/camera-calibration)
+* [Connect and configure a webcam](/components/camera/webcam)
+* [Calibrate a camera](/components/camera/calibrate)
 
 #### Step 2: Add ORB-SLAM3 as a SLAM Service in Live Mode
 
@@ -140,7 +140,8 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 
 * Now, change the `"data_dir":` attribute on line 8. Edit `"/home/YOUR_USERNAME/data"` to match the path to your existing dataset on your machine, followed by `/data`.
   * This tells the service to create a directory named `data` within your home directory, and to save all data and maps to that location.
-  * To find your machine's home directory path, run the `pwd` command in your terminal. Make sure to do this while your terminal is at the home directory level (denoted by `~`).
+  * To find your machine's home directory path, run the `pwd` command in your terminal.
+    Make sure to do this while your terminal is at the home directory level (denoted by `~`).
 
 {{% alert title="Note" color="note" %}}
 If you're using a Raspberry Pi as your machine, you must `ssh` into your Pi to complete this step.
@@ -302,7 +303,8 @@ This tells the service to use only data found within the `data_dir` directory sp
 
 * Now, change the `"data_dir":` attribute on line 8. Edit `"/home/YOUR_USERNAME/data"` to match the path to your existing dataset on your machine.
   * This tells the service to read from the directory located at this path and to save all data and maps to that location.
-  * To find your machine's home directory path, run the `pwd` command in your terminal. Make sure to do this while your terminal is at the home directory level (denoted by `~`).
+  * To find your machine's home directory path, run the `pwd` command in your terminal.
+    Make sure to do this while your terminal is at the home directory level (denoted by `~`).
 
 * Save the config.
 * Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-offline-slam`).
