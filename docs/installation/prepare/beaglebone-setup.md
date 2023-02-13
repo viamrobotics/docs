@@ -7,14 +7,13 @@ description: "How to flash a BeagleBone AI-64 to prepare it for viam-server inst
 aliases:
     - "/installation/beaglebone-install/"
     - "/installation/prepare/beaglebone-install/"
-    - "../../installation/prepare/beaglebone-install/"
 # SMEs: Shawn, Matt Dannenberg, and Rand
 ---
 
 The [BeagleBone AI-64](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/) from [BeagleBoard.org](https://beagleboard.org/) is an open-source single-board computer with a Debian GNU/Linux operating system based on the Texas Instruments TDA4VM processor.
 Follow this guide to set up your BeagleBone AI-64 and prepare it for `viam-server` installation.
 
-<img src="../../img/beaglebone-install/image4.png" alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle.">
+<img src="../../img/beaglebone-setup/image4.png" alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle.">
 
 ## Hardware Requirements
 
