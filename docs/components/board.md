@@ -21,13 +21,13 @@ Through these pins, the board can transmit [PWM (Pulse Width Modulation)](https:
 
 #### What can I use as my board?
 
-Generally, you should use a small computing device with GPIO pins or a desktop computer outfitted with a GPIO peripheral.
+Generally, you should use a single-board computer with GPIO pins or a computer outfitted with a GPIO peripheral.
 
 Both of these options enable your board to act as both the signal wire and software hub of your robot, running `viam-server` and sending signals to the other components of the robot.
 
-**Small Computing Device with GPIO Pins:**
+**Single-Board Computer with GPIO Pins:**
 
-This refers to single-board computers like the [Raspberry Pi](/installation/prepare/rpi-setup/), [BeagleBone](/installation/prepare/beaglebone-install/), and [Jetson](/installation/prepare/jetson-nano-setup/).
+This refers to boards like the [Raspberry Pi](/installation/prepare/rpi-setup/), [BeagleBone](/installation/prepare/beaglebone-install/), and [Jetson](/installation/prepare/jetson-nano-setup/).
 
 These are all small computing devices outfitted with GPIO pins that are capable of advanced computation, including running `viam-server`.
 
@@ -36,21 +36,24 @@ If you want to use the GPIO pins on your single-board computer to control your r
 The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers.
 {{% /alert %}}
 
-**Desktop Computer outfitted with a GPIO Peripheral**:
+**Computer outfitted with a GPIO Peripheral**:
 
-A GPIO peripheral can act as the signal wire hub of your robot. However, it does not have the computer required to run `viam-server` on the robot, so it can only act as the *board* if you have physically connected it to another computer.
+A GPIO peripheral can act as the signal wire hub of your robot. However, a board like this does not contain a computer to run `viam-server` on the robot, so it can only act as the *board* if you have physically connected it to another computer.
 
-- In this case, the computer running `viam-server` sends signals through the GPIO peripheral to communicate with the other hardware components.
-- You can use any computer capable of running `viam-server`, as long as it is connected to the GPIO peripheral.
+In this case, the computer running `viam-server` sends signals through the GPIO peripheral to communicate with the other hardware components of the robot.
+
+You can use any computer capable of running `viam-server`, whether it's your personal computer or another machine, as long as it is connected to the GPIO peripheral.
+
+<!-- ESP-32 - mini RDK -->
+<br>
 
 Most robots with a board need at least the following hardware:
 
-- Power supply
-   Must supply the correct voltage and sufficient current to avoid damaging or power cycling the board.
-   See the data sheet of your board for requirements.
-   For example, a Raspberry Pi 4 takes a 5V power supply and converts it to 3.3V for its logic circuitry.
-   The easiest way to power it is with a 5V USB-C power supply.
-    The easiest way to power it is with a 5V USB-C power supply.
+- A power supply with the correct voltage and current to avoid damaging or power cycling the board.
+See the data sheet of your board model for requirements.
+
+  - For example, a Raspberry Pi 4 takes a 5V power supply and converts it to 3.3V for its logic circuitry.
+  The easiest way to power it is with a 5V USB-C power supply.
 
 ## Configuration
 
