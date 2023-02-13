@@ -184,7 +184,7 @@ func main() {
     // Get the base from the Viam Rover
     roverBase, err := base.FromRobot(robot, "viam_base")
     if err != nil {
-        ogger.Fatalf("cannot get base: %v", err)
+        logger.Fatalf("cannot get base: %v", err)
     }
 }
 ```
