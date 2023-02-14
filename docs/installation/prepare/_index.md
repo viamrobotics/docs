@@ -1,6 +1,6 @@
 ---
-title: "Prepare Your Computer"
-linkTitle: "Prepare Your Computer"
+title: "Prepare your Computer"
+linkTitle: "Prepare for viam-server"
 weight: 10
 no_list: true
 type: docs

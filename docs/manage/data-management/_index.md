@@ -5,6 +5,7 @@ weight: 30
 simple_list: true
 type: "docs"
 tags: ["data management", "data", "services"]
+description: "Sync data captured by the robot's components to the cloud."
 # SME: Aaron Casas
 ---
 

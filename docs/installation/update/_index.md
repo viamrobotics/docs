@@ -1,6 +1,6 @@
 ---
 title: "Update viam-server"
-linkTitle: "Update"
+linkTitle: "Update viam-server"
 weight: 40
 simple_list: false
 type: docs
