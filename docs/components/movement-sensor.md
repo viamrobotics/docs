@@ -3,7 +3,7 @@ title: "Movement Sensor Component"
 linkTitle: "Movement Sensor"
 weight: 70
 type: "docs"
-description: "Explanation of movement sensors (including GPS and IMU) in Viam."
+description: "A movement sensor is a special type of sensor that sends data about where a robot is and how fast it is moving to the computer controlling a robot."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
 icon: "img/components/imu.png"
 # SME: Rand

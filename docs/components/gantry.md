@@ -4,13 +4,13 @@ linkTitle: "Gantry"
 draft: false
 weight: 50
 type: "docs"
-description: "A gantry is a mechanical system that you can use to hold and position a variety of end-effectors."
+description: "A gantry is a mechanical system composed of linear rails that can precisely position an attached device."
 tags: ["gantry", "components"]
 icon: "img/components/gantry.png"
 # SME: Rand
 ---
 
-A *gantry* on a robot is a mechanical system that you can use to hold and position a variety of end-effectors: devices designed to attach to the robot and interact with the environment to perform tasks.
+A *gantry* on a robot is a mechanical system made up of one or more linear rails that you can use to hold and position a variety of end-effectors: devices designed to attach to the robot and interact with the environment to perform tasks.
 The linear rail design makes gantries a common design on robots for simple positioning and placement.
 A customized encoded motor controller can be used in the configuration of a gantry to move the linear rail.
 

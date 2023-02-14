@@ -3,7 +3,7 @@ title: "Encoder Component"
 linkTitle: "Encoder"
 weight: 50
 type: "docs"
-description: "Explanation of encoder configuration and usage in Viam."
+description: "An encoder is a special type of sensor, usually built into a motor, that sends information about rotation to the computer controlling a robot."
 tags: ["encoder", "components"]
 icon: "img/components/encoder.png"
 # SME: Rand

@@ -3,7 +3,7 @@ title: "Camera Component"
 linkTitle: "Camera"
 weight: 40
 type: "docs"
-description: "Explanation of cameras (including webcams, depth cameras, and lidar) in Viam."
+description: "A camera perceives 2D and/or 3D images and sends them to the computer controlling a robot."
 tags: ["camera", "components"]
 icon: "img/components/camera.png"
 # SMEs: Bijan, vision team

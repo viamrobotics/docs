@@ -3,7 +3,7 @@ title: "Board Component"
 linkTitle: "Board"
 weight: 20
 type: "docs"
-description: "The board component is the signal wire hub of a robot that provides access to GPIO pins."
+description: "A robot's board is its signal wire hub, providing access to GPIO pins for digital signaling with the computer controlling a robot."
 tags: ["board", "components"]
 icon: "img/components/board.png"
 # SMEs: Gautham, Rand
