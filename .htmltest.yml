@@ -3,11 +3,6 @@ EnforceHTTPS: true
 IgnoreEmptyHref: true
 IgnoreInternalEmptyHash: true
 IgnoreDirectoryMissingTrailingSlash: true
-IgnoreHTTPS:
-- "http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage"
-- "http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage"
-- "http://packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage"
-- "http://packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage"
 IgnoreURLs:
 - "example.com"
 - "^/misc/js/script.js$"
@@ -17,6 +12,8 @@ IgnoreURLs:
 - "instagram.com"
 - "twitter.com"
 - "github.com/viamrobotics/"
+IgnoreHTTPS:
+- "packages.viam.com"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"
