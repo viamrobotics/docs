@@ -36,7 +36,7 @@ A basic example that you can configure using the Viam platform is connecting a c
 A more advanced example is a computer connected to a camera, actuating components (like motors or arms), and an ML model.
 
 {{% alert title="Info" color="info" %}}
-Everything Viam runs on your robot is [open-source](http://github.com/viamrobotics).
+Everything Viam runs on your robot is [open-source](https://github.com/viamrobotics).
 {{% /alert %}}
 
 ## Networking
