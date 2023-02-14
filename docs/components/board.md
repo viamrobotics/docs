@@ -110,7 +110,7 @@ Refer to the following example configuration file for a single-board computer li
 
 For the `model`, supported board models include:
 
-- **pi**: Raspberry Pi 4 or Pi Zero W2 recommended
+- **pi**: Raspberry Pi 4 or Pi Zero W2
 
 - **beaglebone**: BeagleBone AI 64
 
