@@ -27,6 +27,9 @@ jobs:
           echo url_latest_version = \"https://docs-test.viam.dev/${{ github.sha }}/public\" > config_pr.toml
           echo baseURL = \"https://docs-test.viam.dev/${{ github.sha }}/public\" >> config_pr.toml
 
+      - name: Cat
+        run: cat .htmltest.yml
+
       - name: Build
         run: make build-dist
 
