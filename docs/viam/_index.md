@@ -76,7 +76,7 @@ It all depends on your use case and configuration.
 - Data is cached locally and synced when possible
 - Configuration is cached
 
-When your robot is connected (either LAN or WAN), viam-server can act as both a client and a server.
+When your robot is connected (either LAN or WAN), `viam-server` can act as both a client and a server.
 In other words, each instance can request resources, as well as provide them.
 This allows for tremendous flexibility in terms of your architecture design.
 
