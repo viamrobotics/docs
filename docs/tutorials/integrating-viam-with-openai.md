@@ -3,7 +3,7 @@ title: "Integrate Viam with OpenAI to create a companion robot"
 linkTitle: "Create an AI companion robot"
 weight: 60
 type: "docs"
-tags: ["base", "AI", "ChatGPT", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
+tags: ["base", "AI", "ChatGPT", "servo", "vision", "computer vision", "camera", "viam rover", "python", "AI"]
 description: "Harness AI to add life to your Viam rover."
 # SME: Matt Vella
 ---
@@ -126,11 +126,12 @@ sudo apt-get install python3
 sudo apt install python3-pip
 ```
 
-You'll also need to install pyaudio:
+You'll also need to install pyaudio, alsa, and flac:
 
 ``` bash
 sudo apt install python3-pyaudio
 sudo apt-get install alsa-tools alsa-utils
+sudo apt-get install flac
 ```
 
 Now, install the tutorial requirements by running the following command from inside the directory where the tutorial code was cloned:
@@ -146,11 +147,18 @@ In order to acquire OpenAI credentials, you'll need to [sign up for OpenAI](http
 Once you have both sets of credentials, create a file called run.sh, adding the following and updating the credentials within:
 
 ``` bash
+#!/usr/bin/sh
 export OPENAPI_KEY=abc
 export OPENAPI_ORG=xyz
 export VIAM_SECRET=123
 export VIAM_ADDRESS=789
 python rosey.py
+```
+
+Then, make `run.sh` executable:
+
+``` bash
+chmod 755 run.sh
 ```
 
 ## Configuration
@@ -219,3 +227,43 @@ Press "Save config" to finish adding the classifier.
   ]
 }
 ```
+
+## Bring "Rosey" to life
+
+Now we have the rover and tutorial code set up and it is time to bring your companion robot to life!
+Let's call her "Rosey", and bring her to life by running:
+
+``` bash
+./run.sh
+```
+
+Now, you can start talking to Rosey.
+<img src="../img/ai-integration/rosey_robot.jpg"  style="float:right;margin-right:0px;margin-left: 20px;" alt="Viam Rover Rosey." title="Viam Rover Rosey." width="350" />
+Any time she hears the keyword "Rosey", she will pay attention to anything you say immediately afterwards.
+For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI, and you'll get a response back similar to *"It is impossible to predict what will happen today. Every day is different and unpredictable!"*
+
+If you explore the tutorial code, you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
+For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
+
+If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read an OpenAI-generated response about what it sees.  A "mood" will also be selected at random, and the response will be generated with that mood.
+
+<img src="../img/ai-integration/yoda.jpeg"  style="float:left;margin-right:20px;margin-left: 0px;" alt="Viam Rover Rosey." title="Viam Rover Rosey." width="300" />
+
+The GPT-3 model is also quite good at responding in the style of known personas, so you can also say *"Hey Rosey, act like Yoda"*, and from that point on responses will be generated in the style of Yoda!  The tutorial code has a number of characters you can try, and to pick one randomly you can say *"Rosey, act random"*.
+You can even guess who Rosey is acting like by saying *"Rosey, I think you are Scooby Doo!"*
+
+Much of Rosey's behavior can be modified by changing the values of parameters in the tutorial code's `params.py` file.
+You can change Rosey's name to something else, add characters, adjust the classifier confidence threshold, and more.
+
+## Next Steps
+
+What you've seen in this tutorial is a very basic integration between a Viam-powered robot and OpenAI.
+There's a lot that could be done to make this a more production-ready companion robot.
+Some ideas:
+
+* Make the voice recognition software listen in the background, so the robot can move and interact with the world while listening and responding.
+* Integrate another ML model that is used to follow a human (when told to do so).
+* Add Lidar and integrate Viam's [SLAM Service](/services/slam) to map the world around it.
+* Use Viam's [Data Management](/manage/data-management/) to collect environmental data and use this data to train new ML models that allow the robot improve its functionality.
+
+We'd love to see where you decide to take it - let us and others know at the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/).
