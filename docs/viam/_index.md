@@ -17,10 +17,6 @@ The simplest way to create your first robot on the Viam platform is through our 
 Create an account, and create a new robot on there, even if you don't know what you want your robot to look like yet.
 You'll be redirected to a control center for this new robot.
 
-{{< figure src="img/board-viam-server.png" width="20%" text-align="center" alt="A diagram of a single-board computer running viam-server." title="A simple robot, a single-board computer running the viam-server software." >}}
-
-<br>
-
 For robotic control, the Viam platform handles many aspects natively *for* you, including:
 
 - **Data management** enabling you to capture and sync data from one or more robots.
@@ -38,11 +34,12 @@ To make use of these features, all you need to do is:
 
 ## Robot
 
-A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) single-board computer, running `viam-server` and sending signals to control hardware connected to it.
-See the [board](/components/board/) component page for more information about what this computer can be.
+A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) single-board computer, running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
+
+<img src="img/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." style="max-width:270px; display: block; margin: 0 auto"></img>
 
 Robots can be small and simple or very complex.
-A robot can be a single-board computer with a single [sensor](/components/sensor/) or LED wired to it, or a robot can consist of multiple computers with many physical components connected, acting as one unit.
+One robot can be just a single-board computer with a single [sensor](/components/sensor/) or LED wired to it, or another robot can consist of multiple computers with many physical components connected, acting as one unit.
 
 The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
 
