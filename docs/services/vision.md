@@ -42,7 +42,7 @@ More about the parameters and model types can be found under the corresponding o
 
 ## Configuring your VisModels with the Viam app
 
-To add a vision model to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the “register_models” field in the attributes field of the vision service config. If you're using the "Config > Services" tab on Viam, you'll see that adding a vision service invites you to directly fill in the "attributes."
+To add a vision model to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the "register_models" field in the attributes field of the vision service config. If you're using the "Config > Services" tab on Viam, you'll see that adding a vision service invites you to directly fill in the "attributes."
 
 ``` json
 "services": [
@@ -86,7 +86,7 @@ These code snippets expect you to have a camera named "camera_1" configured as a
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
 
 vision = VisionServiceClient.from_robot(robot)
@@ -105,7 +105,7 @@ detections = await vision.get_detections_from_camera("camera_1", "detector_1")
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
 "go.viam.com/rdk/config"
 "go.viam.com/rdk/services/vision"
@@ -153,9 +153,9 @@ if len(detections) > 0 {
 
 ## Detection
 
-_2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct “objects” of interest in the scene. Any camera that can return 2D images can use 2D object detection.
+_2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct "objects" of interest in the scene. Any camera that can return 2D images can use 2D object detection.
 
-What an object “is” depends on what is required for the task at hand.
+What an object "is" depends on what is required for the task at hand.
 To accommodate the open-ended-ness of what kind of object a user may need to identify, the service provides different types of detectors, both heuristic and machine-learning based, so that users can create, register, and use detectors suited for their own purposes.
 
 ### The Detection API
@@ -210,7 +210,7 @@ This attribute is absolutely required.
 The default value is 1.
 * **label_path**: The path to a .txt file that holds class labels for your TFLite model, as a string.
 The SDK expects this text file to contain an ordered listing of the class labels.
-Without this file, classes will read “1”, “2”, etc.
+Without this file, classes will read "1", "2", etc.
 
 ##### TFLite Model Limitations
 
@@ -253,11 +253,11 @@ This attribute is absolutely required.
 The default value is 1.
 * **label_path**: The path to a .txt file that holds class labels for your TFLite model, as a string.
 The SDK expects this text file to contain an ordered listing of the class labels.
-Without this file, classes will read “1”, “2”, etc.
+Without this file, classes will read "1", "2", etc.
 
 ## Segmentation
 
-_3D Object Segmentation_ is the process of separating and returning a list of the found “objects” from a 3D scene.  The "objects" are a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinate of the object.   Future updates to the service may return more information about the objects.
+_3D Object Segmentation_ is the process of separating and returning a list of the found "objects" from a 3D scene.  The "objects" are a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinate of the object.   Future updates to the service may return more information about the objects.
 
 Any camera that can return 3D pointclouds can use 3D object segmentation.
 
@@ -270,7 +270,7 @@ Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/
 The types of segmenters supported are:
 
 * **radius_clustering_segmenter**: Radius\_clustering is a segmenter that finds well separated objects above a flat plane.  It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.  Unfortunately it is a bit slow, and can take up to 30s to segment the scene.
-* **detector_segmenter**: Object segmenters are automatically created from detectors in the vision service.  Any registered detector "x" defined in “register\_models” field or added later to the vision service becomes a segmenter with the name "x\_segmenter".  It begins by finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
+* **detector_segmenter**: Object segmenters are automatically created from detectors in the vision service.  Any registered detector "x" defined in "register\_models" field or added later to the vision service becomes a segmenter with the name "x\_segmenter".  It begins by finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
 
 #### Radius Clustering Segmenter parameters
 

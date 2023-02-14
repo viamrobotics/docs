@@ -28,7 +28,7 @@ Once you click **Create Component**, you'll see a view on the component that loo
 
 Manually add the camera path to the camera's attributes and save the config. A good bet is often `video0`:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "video_path": "video0"
 }

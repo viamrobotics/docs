@@ -24,7 +24,7 @@ Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/
 2. If you already created your robot in the app, navigate to its **CONFIG** tab and skip to [Configuring the board](#configuring-the-board).
 3. Create an **Organization**.
    If you already have an Organization, then this step is optional.
-   If you need help with organizations and locations, see our [guide to using the Viam app](/program/app-usage/).
+   If you need help with organizations and locations, see our [guide to using the Viam app](/manage/app-usage/).
 4. Create a **Location**.
    If you already have a Location, then this step is optional.
 5. Create a **robot** and navigate to its **CONFIG** tab.
@@ -72,7 +72,7 @@ The next step is to add a motor and make it spin a wheel.
 
 {{% expand "Click to view the raw JSON for the right motor" %}}
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "name": "right",
   "type": "motor",
@@ -134,7 +134,7 @@ This will be similar to adding the right motor.
 
 {{% expand "Click to view the raw JSON for the left motor" %}}
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "name": "left",
   "type": "motor",
@@ -179,11 +179,11 @@ From the **CONFIG** tab:
 7. Enter "250" in `wheel_circumference_mm`.
 
     The `left` and `right` attributes represent the motors corresponding to the left and right sides of the rover.
-    Since we named the motors "left" and "right", you can simply add “left” and “right” between the brackets for your set of motors, respectively.
+    Since we named the motors "left" and "right", you can simply add "left" and "right" between the brackets for your set of motors, respectively.
 
 The attributes of your base component's config should look something like this:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
  "width_mm": 400,
  "wheel_circumference_mm": 250,

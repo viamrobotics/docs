@@ -9,7 +9,7 @@ description: "Integrate an Intermode rover as a modular-resource-based component
 ---
 
 The Viam platform comes with a component called [base](/components/base/), which adds useful abstractions for simplified control of mobile robots.
-Instead of controlling individual motors, the base component allows you to [issue commands](https://python.viam.dev/autoapi/viam/components/base/index.html#package-contents) like “move_straight”, “spin”, “set_velocity” and “stop”.
+Instead of controlling individual motors, the base component allows you to [issue commands](https://python.viam.dev/autoapi/viam/components/base/index.html#package-contents) like "move_straight", "spin", "set_velocity" and "stop".
 
 Many robotic rovers can be controlled out-of-the-box with the Viam "wheeled" base model - simply by specifying how your motorized wheels are configured.
 But what if you want to control a rover or other mobile robot that does not expose direct motor control?
@@ -100,7 +100,7 @@ Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tut
 The [module.go code](https://github.com/viam-labs/tutorial-intermode) creates this model and registers the component instance.
 The *Subtype* of a resource contains its API triplet, so using **base.Subtype** (see line 30 below) registers our new model with the *API* from the RDK's built-in base component (rdk:component:base).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 // namespace, model family, model
 var model = resource.NewModel("viamlabs", "tutorial", "intermode")
 
@@ -219,7 +219,7 @@ When you want to leave a method unimplemented you must still create that method,
 
 In this tutorial, you will leave the *IsMoving* method unimplemented (for illustrative purposes).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 func (base *interModeBase) IsMoving(ctx context.Context) (bool, error) {
     return false, utils.NewUnimplementedInterfaceError((*interModeBase)(nil), "intermodeBase does not yet support IsMoving()")
 }

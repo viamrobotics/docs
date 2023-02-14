@@ -15,7 +15,7 @@ Servos can be useful in robotics because their position is easily and precisely 
 - The servo component does not support servomotors.
 To configure an industrial servomotor, use the [motor](/components/motor/) component with an [encoder](/components/encoder/).
 
-Example wiring diagram for a servo wired to a Raspberry Pi board:  
+Example wiring diagram for a servo wired to a Raspberry Pi board:
 
 ![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](../img/servo/servo-wiring.png)
 
@@ -41,7 +41,7 @@ Refer to the following example configuration file, including the board and servo
 {{< tabs name="Example Servo Config" >}}
 {{% tab name="Raw JSON" %}}
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -134,21 +134,21 @@ The servo component supports the following methods:
 The following example assumes you have a servo called "my_servo" configured as a component of your robot, and that your robot is connected on [the Viam app](https://app.viam.com/).
 If your servo has a different name, change the `name` in the example.
 
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/program/app-usage/) for app-specific guidance.
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
 
 {{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.servo import Servo
 
 async def main():
     # Connect to your robot.
     robot = await connect()
 
-    # Log an info message with the names of the different resources that are connected to your robot. 
+    # Log an info message with the names of the different resources that are connected to your robot.
     print('Resources:')
     print(robot.resource_names)
 
@@ -165,17 +165,17 @@ if __name__ == '__main__':
 {{% /tab %}}
 {{% tab name="Golang" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
  "go.viam.com/rdk/components/servo"
 )
 
 func main() {
-  
-  // Create an instance of a logger. 
+
+  // Create an instance of a logger.
   logger := golog.NewDevelopmentLogger("client")
 
-  // Connect to your robot. 
+  // Connect to your robot.
   robot, err := client.New(
       context.Background(),
       "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CODE SAMPLE TAB OF THE VIAM APP]",
@@ -191,10 +191,10 @@ func main() {
       logger.Fatal(err)
   }
 
-  // Delay closing your connection to your robot until main() exits. 
+  // Delay closing your connection to your robot until main() exits.
   defer robot.Close(context.Background())
 
-  // Log an info message with the names of the different resources that are connected to your robot. 
+  // Log an info message with the names of the different resources that are connected to your robot.
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
 
@@ -231,14 +231,14 @@ The speed will be related to the "angle" you pass in as a linear approximation, 
 - `angle` [(int)](https://docs.python.org/3/library/functions.html#int): The desired angle of the servo in degrees.
 - `extra` [(Optional[Mapping[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-  
+
 **Returns:**
 
 - None
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.move).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myServo = Servo.from_robot(robot=robot, name='my_servo')
 
 # Move the servo from its origin to the desired angle of 10 degrees.
@@ -263,7 +263,7 @@ await myServo.move(90)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myServo, err := servo.FromRobot(robot, "my_servo")
 if err != nil {
   logger.Fatalf("cannot get servo: %v", err)
@@ -297,13 +297,13 @@ Get the current set angle of the servo in degrees.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.get_position).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myServo = Servo.from_robot(robot=robot, name='my_servo')
 
 # Move the servo from its origin to the desired angle of 10 degrees.
 await myServo.move(10)
 
-# Get the current set angle of the servo. 
+# Get the current set angle of the servo.
 pos1 = await myServo.get_position()
 
 # Move the servo from its origin to the desired angle of 20 degrees.
@@ -328,7 +328,7 @@ pos2 = await myServo.get_position()
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myServo, err := servo.FromRobot(robot, "my_servo")
 if err != nil {
   logger.Fatalf("cannot get servo: %v", err)
@@ -368,7 +368,7 @@ Stop the servo from moving.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.stop).
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 myServo = Servo.from_robot(robot=robot, name='my_servo')
 
 # Move the servo from its origin to the desired angle of 10 degrees.
@@ -392,7 +392,7 @@ await myServo.stop()
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myServo, err := servo.FromRobot(robot, "my_servo")
 if err != nil {
   logger.Fatalf("cannot get servo: %v", err)

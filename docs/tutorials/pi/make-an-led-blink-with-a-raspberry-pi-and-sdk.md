@@ -121,7 +121,7 @@ from viam.components.board import Board
 
 In <file>blink.go</file>, and inside the `import` block at the top of the file, add the following to the import statements without removing any of the other imports:
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
   "fmt"
   "time"
@@ -138,7 +138,7 @@ At the bottom of the <code>main()</code> function, paste the following:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 # Initialize the board and the LED on pin 8
 local = Board.from_robot(robot, 'local')
 led = await local.gpio_pin_by_name('8')
@@ -147,7 +147,7 @@ led = await local.gpio_pin_by_name('8')
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 // Initialize the board
 myBoard, err := board.FromRobot(robot, "myBoard")
 if err != nil {
@@ -171,7 +171,7 @@ Your completed `main` function should look like this:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 async def main():
     robot = await connect()
 
@@ -198,7 +198,7 @@ async def main():
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 func main() {
   logger := golog.NewDevelopmentLogger("client")
   robot, err := client.New(

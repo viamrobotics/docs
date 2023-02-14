@@ -56,7 +56,7 @@ The Gamepad module provides an `input.Controller` interface that represents a st
 
 ### Configuration Example
 
-```json
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "components": [
         {
@@ -88,7 +88,7 @@ There are currently mappings for a wired XBox 360 controller, and wireless XBox 
 
 The below example defines a single callback function (motorCtl) that handles input events, and turns them into motor.SetPower() commands. It's essentially all that's needed to drive a four wheel, skid steer platform, and uses the L/R analog triggers to control a "winder" motor, that raises/lowers a front end (like a bulldozer.) Lastly, it registers this callback for a selected set of axes.
 
-```Go
+```go {class="line-numbers linkable-line-numbers"}
 motorCtl := func(ctx context.Context, event input.Event) {
     if event.Event != input.PositionChangeAbs {
         return

@@ -1,7 +1,7 @@
 ---
 title: "The Robot Frame System"
 linkTitle: "Frame System"
-summary: "Describes the frame system, its configuration, and its functionality."
+description: "Describes the frame system, its configuration, and its functionality."
 type: docs
 weight: 45
 tags: ["frame system", "services"]
@@ -62,7 +62,7 @@ If you are using a component driver provided by Viam, the **Model JSON** should 
 Once the configuration is completed and the server is started, the robot builds a tree of reference frames with the world as the root node.
 
 A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs.
-Viam regenerates this tree in the process of [reconfiguration](/services/fleet-management/#configurationlogging):
+Viam regenerates this tree in the process of [reconfiguration](/manage/fleet-management/#configurationlogging):
 
 ![an example of a logged frame system](../img/frame_sys_log_example.png)
 
@@ -93,7 +93,7 @@ Note: because we are using the default orientation, it is optional in the JSON c
 
 We supply this frame information when configuring the arm component, making sure that the parent is "world".
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -134,7 +134,7 @@ Note: this is the default translation, it is optional in the JSON configuration 
 After configuring the gantry frame, we can configure the arm.  The base of the arm mounted to the gantry 100mm above that origin, so we specify the arm's parent as the name of our gantry and offset Z by 100.
 As the gantry extends, the arm will be moved accordingly.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -253,7 +253,7 @@ Below are JSON examples for each parameter type used by our [Universal Robots](h
 
 #### Example: kinematic_param_type=SVA
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "UR5e",
     "kinematic_param_type": "SVA",
@@ -460,7 +460,7 @@ Below are JSON examples for each parameter type used by our [Universal Robots](h
 
 #### Example: kinematic_param_type=DH
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "UR5e",
     "kinematic_param_type": "DH",

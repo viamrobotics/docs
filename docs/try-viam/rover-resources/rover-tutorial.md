@@ -140,7 +140,7 @@ Dispose of lithium-ion batteries per manufacturer instructions.
 Warning: Damage may occur to the Raspberry Pi and/or Viam Rover if wired incorrectly.
 Refer to the manufacturer’s instructions for correct wiring.
 
-Disclaimer: This product is preliminary and experimental in nature, and is provided “AS IS” without any representation or warranty of any kind.
+Disclaimer: This product is preliminary and experimental in nature, and is provided "AS IS" without any representation or warranty of any kind.
 Viam does not make any promise or warranty that the product will meet your requirements or be error free.
 Some states do not allow the exclusion or disclaimer of implied warranties, so the above exclusions may not apply to you.
 

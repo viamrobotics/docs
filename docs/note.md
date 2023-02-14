@@ -64,7 +64,7 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 Line numbering is on by default.
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
 "word":"As before, three backticks and the language name enables Prism syntax highlighting.",
 "note":"Use "json-viam" as the language to highlight Viam's keywords."
@@ -141,7 +141,7 @@ Within the expander, you can still use most other shortcodes and syntax highligh
 **Prism syntax highlighting works in expanders, as do most other shortcodes.**
 
 ``` python
-motion_svc = MotionServiceClient.from_robot(robot, "NAME”)
+motion_svc = MotionServiceClient.from_robot(robot, "NAME")
 arm = Arm.from_robot(robot=robot, name='xArm6')
 pos = await arm.get_end_position()
 
@@ -236,7 +236,7 @@ The figure shortcode enhances the existing figure and figurecaption html tags. F
 
 {{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
 
-This shortcode places the caption (i.e., the “title”) above the table. The **title** is set in 12pt italic with a green underline.
+This shortcode places the caption (i.e., the "title") above the table. The **title** is set in 12pt italic with a green underline.
 
 Figure styles the Attribution text as body text.
 

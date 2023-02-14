@@ -137,7 +137,7 @@ At the top of your <file>index.py</file> file, paste the following:
 
 The first thing you need to do is import the [arm component](https://python.viam.dev/autoapi/viam/components/arm/client/index.html) from the Viam Python SDK, and the [random](https://docs.python.org/3/library/random.html) and [async.io](https://docs.python.org/3/library/asyncio.html) libraries.
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.arm import ArmClient, JointPositions
 import random
 import asyncio
@@ -148,7 +148,7 @@ import asyncio
 
 The first thing you need to do is import the [arm component](https://github.com/viamrobotics/rdk/blob/main/components/arm/client.go) from the Viam Golang SDK, and the [random](https://pkg.go.dev/math/rand) and [time](https://pkg.go.dev/time) libraries.
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
   "fmt"
   "math/rand"
@@ -167,14 +167,14 @@ In the main function, paste the following, while ensuring that the name of your 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 arm = ArmClient.from_robot(robot=robot, name='my_main_arm')
 ```
 
 {{% /tab %}}
 {{% tab name="Golang" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_main_arm")
 if err != nil {
     logger.Fatalf("cannot get arm: %v", err)
@@ -189,7 +189,7 @@ Now that your mock arm has been initialized, you can write some code to control 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 # Gets a random position for each servo on the arm that is within the safe range of motion of the arm. Returns a new array of safe joint positions.
 def getRandoms():
     return [random.randint(-90, 90),
@@ -212,7 +212,7 @@ async def randomMovement(arm: ArmClient):
 {{% /tab %}}
 {{% tab name="Golang" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 // Returns an array of random floats between two numbers
 func getRandoms(min, max float64) []float64 {
     res := make([]float64, 5)
@@ -243,7 +243,7 @@ Your main function, should look like this:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 async def main():
     robot = await connect()
 
@@ -259,7 +259,7 @@ async def main():
 {{% /tab %}}
 {{% tab name="Golang" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 func main() {
   // Connect to the robot...
   myArm, err := arm.FromRobot(robot, "my_main_arm")
@@ -324,7 +324,7 @@ We are using port `8081`, but you can use any open port you want.
 You can do this by going to **CONFIG** and then going to the **NETWORK** tab.
 Here, you will paste the following:
 
-```json-viam
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "bind_address": "localhost:8081"
 }
@@ -359,7 +359,7 @@ Now that you have your mock sub-part connected as a remote to your main mock rob
 To control your motor sub-part, you will need to import the [Motor Client](https://python.viam.dev/autoapi/viam/components/motor/client/index.html).
 Paste this at the top of your file:
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.motor import MotorClient
 ```
 
@@ -368,7 +368,7 @@ from viam.components.motor import MotorClient
 
 To control your motor sub-part, you will need to import the [Motor Client](https://github.com/viamrobotics/rdk/blob/main/components/motor/client.go). Paste this at the top of your file:
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
   "go.viam.com/rdk/components/motor"
 )
@@ -383,14 +383,14 @@ Be sure that your motor's name matches the one that you have listed in your robo
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 motor = MotorClient.from_robot(robot=robot, name='sub-part:my_sub_motor')
 ```
 
 {{% /tab %}}
 {{% tab name="Golang" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myMotor, err := motor.FromRobot(robot, "my_sub_motor")
 if err != nil {
   logger.Fatalf("cannot get motor: %v", err)
@@ -406,7 +406,7 @@ You can do that with this function.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 # Toggles the motor on and off every second
 async def toggleMotor(motor: MotorClient):
     while (True):
@@ -422,7 +422,7 @@ async def toggleMotor(motor: MotorClient):
 {{% /tab %}}
 {{% tab name="Golang" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 // Toggles the motor on and off every second
 func toggleMotor (ctx context.Context, m motor.Motor) {
   for {
@@ -445,7 +445,7 @@ Your main function should look similar to this snippet:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 async def main():
     robot = await connect()
     print('Resources:')
@@ -460,7 +460,7 @@ async def main():
 {{% /tab %}}
 {{% tab name="Golang" %}}
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 func main() {
   // Connect to the robot...
   myMotor, err := motor.FromRobot(robot, "my_sub_motor")
