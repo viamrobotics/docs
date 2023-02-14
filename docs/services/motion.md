@@ -23,9 +23,10 @@ Viam’s Motion Service is enabled in RDK by default, and no extra configuration
 The "Move" endpoint is the primary way to move multiple components, or to move any object to any other location.
 Given a destination pose and a component to move to that destination, the motion service will construct a full kinematic chain from goal to destination including all movable components in between, and will solve that chain to place the goal at the destination while meeting specified constraints.
 It will then execute that movement to move the actual robot, and return whether or not this process succeeded.
+The volumes associated with all configured robot parts (local and remote) will be taken into account for each request to ensure that collisions do not occur.
 
 {{% alert title="Note" color="note" %}}
-The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles and interaction spaces as documented below.
+The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles as documented below.
 This may result in motions which appear unintuitive.
 To apply motion constraints (experimental), see the [`extra` parameter](#extra_anchor).
 {{% /alert %}}
@@ -43,8 +44,8 @@ This means that if the `destination` and `component_name` are the same frame.
 For example an arm (or a gripper attached to one), then a pose of {X: 10, Y: 0, Z: 0} will move that arm’s end effector or gripper by 10 mm in the local X direction.
 
 **`world_state`**: This data structure specifies various information about the world around the robot which is used to augment the motion solving process.
-There are three pieces of world_state: obstacles, interaction spaces, and transforms.
-Each will be discussed in detail:
+There are two pieces of world_state: obstacles and transforms.
+Both will be discussed in detail:
 
 * **Obstacles**: These are geometries located at a pose relative to some frame.
 When solving a motion plan with movable frames that contain inherent geometries, the solved path will be constrained such that at no point will any of those inherent geometries intersect with the specified obstacles.
@@ -55,10 +56,7 @@ There are three important things to know about obstacles:
     This will ensure that obstacles that are temporarily attached to moving components do not cause collisions during the movement.
   * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (i.e., an arm frame will be solved for the pose of its end effector), geometries are interpreted as being "part of" their frame, rather than "at the end of" the frame.
     Thus, their poses are relative to the _origin_ of the specified frame.
-    A geometry given in the frame of the arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
-* **Interaction spaces**: These are geometries which are effectively the inverse of obstacles- they specify where the inherent geometries of a kinematics chain _may_ exist, and disallow them from exiting that geometry.
-Interaction spaces should fully envelop the geometries of any movable component with geometries.
-If any movable geometry is outside the given interaction space at the start of the motion, the movement will fail as the constraint will have been violated.
+    A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
 * **Transforms**: These are a list of _PoseInFrame_ messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
 The `destination` may be one of these, but at present the `component_name` may not be.
 
@@ -175,29 +173,33 @@ It consists of the following fields:
 * `pose_in_observer_frame`: This field provides the relationship between the frame being added and another frame
 * `physical_object`: An optional `Geometry` can be added to the frame being added
 
-When `supplemental_transforms` are provided, a frame system will be created within the context of the `GetPose` function. This new frame system will build off the robot's frame system and will incorporate the `Transforms` provided.  If the result of adding the `Transforms` will result in a disconnected frame system an error will be thrown.
+When `supplemental_transforms` are provided, a frame system will be created within the context of the `GetPose` function.
+This new frame system will build off the robot's frame system and will incorporate the `Transforms` provided.
+If the result of adding the `Transforms` will result in a disconnected frame system an error will be thrown.
 
 **`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they wish to pass to their own motion planning implementation.
 This parameter is not used for anything in the built-in motion service.
 
 #### Example
 
-The following code is a minumal example using the [Viam Python SDK](https://python.viam.dev/) to get the pose of the tip of a gripper "myRobot:myGripper" which is attached to the end of an arm, in the "world" referenceframe
+The following code is a minumal example using the [Viam Python SDK](https://python.viam.dev/) to get the pose of the tip of a gripper `myGripper` which is attached to the end of an arm, in the "world" referenceframe
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.components.gripper import Gripper
 from viam.services.motion import MotionServiceClient
 
 // assume that the connect function is written and will return a valid robot
 robot = await connect()
 
 motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
-gripperPoseInWorld = await robot.get_pose(component_name="myRobot:myGripper", destination_frame="world")
-
+gripperName = Gripper.get_resource_name("myGripper")
+gripperPoseInWorld = await robot.get_pose(component_name=gripperName, destination_frame="world")
 ```
 
 For a more complicated example, let's take the same scenario and get the pose of the same gripper with respect to an object which is situated at a location (100, 200, 0) relative to the "world" frame:
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.components.gripper import Gripper
 from viam.services.motion import MotionServiceClient
 from viam.proto.common import Transform, PoseInFrame, Pose
 
@@ -208,12 +210,12 @@ motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
 objectPose = Pose(x=100, y=200, z=0, o_x=0, o_y=0, o_z=1, theta=0)
 objectPoseInFrame = PoseInFrame(reference_frame="world", pose=objectPose)
 objectTransform = Transform(reference_frame="object", pose_in_observer_frame=objectPoseInFrame)
+gripperName = Gripper.get_resource_name("myGripper")
 gripperPoseInObjectFrame = await motion.get_pose(
-  component_name="myGripper",
+  component_name=gripperName,
   destination_frame="world",
   supplemental_transforms=objectTransform
 )
-
 ```
 
 ## Motion Profile Constraints
@@ -238,38 +240,10 @@ The linear constraint (`{"motion_profile": "linear"}`) forces the path taken by 
 If the start and goal orientations are different, the orientation along the path will follow the quaternion Slerp (Spherical Linear Interpolation) of the orientation from start to goal.
 This has the following sub-options:
 
-<table>
-  <tr>
-   <td><strong>Parameter Name</strong>
-   </td>
-   <td><strong>Type</strong>
-   </td>
-   <td><strong>Default</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>line_tolerance
-   </td>
-   <td>float
-   </td>
-   <td>0.1
-   </td>
-   <td>Max linear deviation from straight-line between start and goal, in mm.
-   </td>
-  </tr>
-  <tr>
-   <td>orient_tolerance
-   </td>
-   <td>float
-   </td>
-   <td>0.05
-   </td>
-   <td>Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal.
-   </td>
-  </tr>
-</table>
+| Parameter Name | Type | Default | Description |
+| -------------- | ---- | ------- | ----------- |
+| line_tolerance | float | 0.1 | Max linear deviation from straight-line between start and goal, in mm. |
+| orient_tolerance | float | 0.05 | Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal. |
 
 **Example usage**:
 
@@ -283,28 +257,9 @@ The pseudolinear constraint (`{"motion_profile": "pseudolinear"}`) restricts the
 Linear and orientation deviation are determined separately, so if a motion has a large linear difference but has identical starting and ending orientations, the motion will hold its orientation constant while allowing some linear deflection.
 This has the following suboption:
 
-<table>
-  <tr>
-   <td><strong>Parameter Name</strong>
-   </td>
-   <td><strong>Type</strong>
-   </td>
-   <td><strong>Default</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>tolerance
-   </td>
-   <td>float
-   </td>
-   <td>0.8
-   </td>
-   <td>Allowable linear and orientation deviation from direct interpolation path, as a proportion of the linear and orientation distances between start and goal.
-   </td>
-  </tr>
-</table>
+| Parameter Name | Type | Default | Description |
+| -------------- | ---- | ------- | ----------- |
+| tolerance | float | 0.8 | Allowable linear and orientation deviation from direct interpolation path, as a proportion of the linear and orientation distances between start and goal. |
 
 **Example usage**:
 
@@ -318,28 +273,9 @@ The orientation constraint (`{"motion_profile": "orientation"}`) places a restri
 This is similar to the "orient_tolerance" option in the linear profile, but without any path restrictions.
 If set to zero, a movement with identical starting and ending orientations will hold that orientation throughout the movement.
 
-<table>
-  <tr>
-   <td><strong>Parameter Name</strong>
-   </td>
-   <td><strong>Type</strong>
-   </td>
-   <td><strong>Default</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>tolerance
-   </td>
-   <td>float
-   </td>
-   <td>0.05
-   </td>
-   <td>Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal.
-   </td>
-  </tr>
-</table>
+| Parameter Name | Type | Default | Description |
+| -------------- | ---- | ------- | ----------- |
+| tolerance | float | 0.05 | Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal. |
 
 **Example usage**:
 
@@ -361,11 +297,31 @@ extra = {"motion_profile": "free"}
 
 ## Planning Algorithms
 
-* CBiRRT
+Viam implements two planning algorithms, both based in principle on [RRT](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree).
 
-Currently, the only algorithm available for use is CBiRRT, which stands for Constrained, Bidirectional implementation of [RRT](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree).
+### RRT*-Connect
+
+RRT*-Connect is an asypmptotically optimal planner that samples the planning space randomly, connecting viable paths as it finds them.
+It will continue sampling after it finds its first valid path, and if it finds future paths that are more efficient, it will update to report those instead.
+For Viam, efficiency/path quality is measured in terms of total kinematics state excursion.
+For an arm, this refers to joints; the total amount of joint change will be minimized.
+For a gantry, this refers to the amount of linear movement.
+This algorithm is able to route around obstacles, but is unable to satisfy topological constraints.
+
+### CBiRRT
+
+CBiRRT stands for Constrained, Bidirectional implementation of [RRT](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree).
 It will create paths which are guaranteed to conform to specified constraints, and attempt to smooth them afterwards as needed.
 By default, it will use a "free" constraint, that is, it will not constrain the path of motion at all.
-This is to ensure that paths will be found when using defaults, even in highly constrained scenarios.
+This is to ensure that paths will be found when using defaults.
+CBiRRT will return the first valid path that it finds.
+The CBiRRT algorithm used by Viam is based on the algorithm described in this paper: <https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf>
 
-The CBiRRT algorithm used by Viam is based on the algorithm described in this paper: [https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf](https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf).
+By default, Viam uses a hybrid approach.
+First, RRT*-Connect is run for 1.5 seconds.
+If a path is not returned, then CBiRRT is called to attempt to find a path, as it takes a more incremental approach which tends to be more likely to find paths in more difficult, constrained scenarios.
+If CBiRRT is successful, then this path will be returned.
+If unsuccessful, an error is returned.
+However, if RRT*-Connect is initially successful, the path will be evaluated for optimality.
+If the total amount of joint excursion is more than double the minimum possible to go directly to the best Inverse Kinematics solution, then CBiRRT will be run to attempt to get a better path than what RRT*-Connect was able to create.
+The two paths will be smoothed, then compared to one another, and the most optimal path will be returned.

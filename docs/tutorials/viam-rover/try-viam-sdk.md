@@ -6,6 +6,11 @@ type: "docs"
 description: "Try Viam by using the Viam SDK to make your Viam Rover move in a square."
 tags: ["base", "viam rover", "try viam", "sdk"]
 ---
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/daU5iNsSO0w" allowfullscreen></iframe>
+</div>
+
 The Viam SDKs allow you to write code in either Python or Golang to control a [Viam Rover](https://app.viam.com/try).
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
 
@@ -23,7 +28,7 @@ Install either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Gola
 If you are [renting your rover](https://app.viam.com/try), we recommend that you get the Viam SDK set up before your reservation starts.
 This way, you can maximize the amount of time you have using the Viam Rover.
 
-If you are running out of time during your rental, you can [extend your rover rental](/try-viam/try-viam-tutorial/#extending-time) as long as there are no other reservations.
+If you are running out of time during your rental, you can [extend your rover rental](/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
 ## Connect to your Viam Rover
@@ -179,7 +184,7 @@ func main() {
     // Get the base from the Viam Rover
     roverBase, err := base.FromRobot(robot, "viam_base")
     if err != nil {
-        ogger.Fatalf("cannot get base: %v", err)
+        logger.Fatalf("cannot get base: %v", err)
     }
 }
 ```

@@ -1,44 +1,47 @@
 ---
-title: "Try Viam: Detect a Color with your Viam Rover using the Vision Service"
+title: "Detect color with a Viam Rover"
 linkTitle: "Detect Color"
 weight: 41
 type: "docs"
-description: "Instructions for using the Vision Service in the Viam app to detect a color with the Viam Rover."
+description: "Use the Vision Service in the Viam app to detect a color with the Viam Rover."
 tags: ["vision", "detector", "camera", "viam rover", "try viam", "services"]
 # SMEs: Hazal
 ---
 
-## Introduction
+The [Vision Service](/services/vision) enables a robot to use its cameras to see and interpret the world around it.
+The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
 
-This tutorial will guide you through using a [Try Viam](https://app.viam.com/try) Rover rental to detect the color red by adding a color detector to Viam's [vision service](/services/vision/).
-The only prerequisite is you need to have an active reservation for one of Viam's rental rovers.
-We already added different colors around the rink on each wall.
+In this tutorial you will learn how to configure a color detector with the Vision Service and how to leverage that detector with a transform camera to detect the color red.
 
-But why should I use this service, one might ask?
-The vision service enables the robot to use its on-board cameras to see and interpret the world around it.
-The service also grants you the ease of creating different types of detectors, which allows you to then leverage them to program your robots to do interesting things.
-We can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
-The opportunities are endless.
+You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
 
-Now let’s dive in.
+{{< alert title="Tip" color="tip" >}}
+If you are [renting your rover](https://app.viam.com/try), we recommend that you skim through this page before renting your rover.
 
-## Adding the vision service
+Be aware that if you are running out of time during your rental, you can [extend your rover rental](/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
+{{< /alert >}}
 
-Let’s start with adding the vision service to your rover.
-In Viam App, head to the **CONFIG** tab, and click on **SERVICES**.
-Scroll down to the **Create Service** section.
+## Add the Vision Service
 
-1. Enter "vision" in **Type** from the drop-down.
-2. Enter "vision" in **Name**.
+Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
+Click on the robot you wish to add the Vision service to.
+Select the **CONFIG** tab, and click on **SERVICES**.
+Scroll to the **Create Service** section.
+To create a [Vision Service](/services/vision/):
+
+1. Select `Vision` as the **Type**.
+2. Enter `vision` as the **Name**.
 3. Click **Create Service**.
 
-{{< figure src="../../img/try-viam-color-detection/create-service.png" width="400px" alt="Screenshot from the Viam app's Create Service tab. It lists the type as vision and name as vision, with a Create Service button on the right." title="Create Service pane from CONFIG -> SERVICES" >}}
+<img src="../../img/try-viam-color-detection/create-service.png" alt="The Create Service panel lists the type as vision and name as vision, with a Create Service button.">
 
-Clicking **Create Service** automatically creates a new service for your rover, but that does not set any attributes for the service.
+## Detect a color
 
-{{< figure src="../../img/try-viam-color-detection/vision-service-tab.png" width="700px" alt="Screenshot from the Viam app showing the Vision service panel. The panel has an empty Attributes section with an empty line numbered, 1. On the upper right side there is a trash bin icon." title="Vision service panel displaying an empty Attributes section." >}}
+This tutorial uses the hex color #7a4f5c (a reddish color).
 
-Copy the following configuration into the attributes of your rover’s vision service.
+**Hex color #7a4f5c**: <img src="../../img/try-viam-color-detection/7a4f5c.png" alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color." >
+
+Copy the following configuration into the attributes of your rover’s Vision Service:
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
@@ -56,66 +59,54 @@ Copy the following configuration into the attributes of your rover’s vision se
 }
 ```
 
-After adding the detector configuration, the Vision Service panel should look like this:
+<img src="../../img/try-viam-color-detection/populated-service-attributes.png" width="700px" alt="Screenshot from the Viam app showing the Vision service panel. The panel has an Attributes panel populated with Vision Service attributes. On the upper right side there is a trash bin icon.">
 
-{{< figure src="../../img/try-viam-color-detection/populated-service-attributes.png" width="700px" alt="Screenshot from the Viam app showing the Vision service panel. The panel has an Attributes panel populated with vision service attributes. On the upper right side there is a trash bin icon." title="Vision service tab displaying a populated Attributes Panel." >}}
+The configuration adds a `model` of `type` `color_detector` with the color as a parameter.
+The `color_detector` is a heuristic-based detector that draws boxes around objects according to their hue.
 
-This configuration creates a detector that will find the hex color #7a4f5c (a reddish color) when you use it with images from your robot’s cameras.
-You can change the color to your liking and experiment with it.
-You can also play with the `hue_tolerance_pct` value to detect this color with more or less precision.
+Click **SAVE CONFIG** and head to the **COMPONENTS** tab.
 
-**Hex color #7a4f5c**: <img src="../../img/try-viam-color-detection/7a4f5c.png" alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color." >
+You cannot interact directly with the [Vision Service](/services/vision/).
+To be able to interact with the Vision Service you must configure a camera component to wrap the service.
 
-The `color_detector` we use is a heuristic-based detector that draws boxes around objects according to their hue (note that the detector does not detect black, perfect greys[^pg], or white).
-
-[^pg]:"Perfect shades of grey" are those greys where the red, green, and blue color component values are equal, i.e., R=G=B. For example, in hex: #A3A3A3; in RGB: 128, 128, 128.
-
-To learn more, head to our [Vision Service](/services/vision/) topic (ht<span></span>tps://docs.viam.com/services/vision/) for additional information on how to configure and use Viam's Vision Service.
-Now, click **SAVE CONFIG** and head to the **COMPONENTS** tab.
-
-## How to configure a transform camera to use the color detector
-
-{{% alert title="Tip" color="tip" %}}
+{{< alert title="Tip" color="tip" >}}
+If you want to detect other colors, change the color parameter `detect_color`.
 Object colors can vary dramatically based on the light source.
-In your own projects, or if you decide to pick another color to detect, verify the desired color detection value under actual lighting conditions.
-For example, by using a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia), to determine the color value from the actual cam component image.
-{{% /alert %}}
+We recommend you verify the desired color detection value under actual lighting conditions.
+To determine the color value from the actual cam component image, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
 
-After adding the vision service and color detector, we’ll add a new [camera](/components/camera/) to our Viam Rover.
-Viam camera components can be [physical](/components/camera/#webcam) (like that already configured on the rover), or virtual (such as the [transform camera](/components/camera/#transform), which transforms the output from the physical camera).
-To display the detections, we will use the transform camera.
+If the color is not reliably detected, increase the `hue_tolerance_pct`.
 
-To learn more about the camera component, head to the [Camera component](/components/camera/) topic.
+Note that the detector does not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
+{{< /alert >}}
 
-Scroll down to see the **Create Component** section in **COMPONENTS** tab of the Viam app.
+## Configure a transform camera to use the color detector
 
-1. Enter the desired name in **Name**. We named ours, "detectionCam".
-2. Enter "camera" in **Type**.
-3. Enter "transform" in **Model**.
+Viam [camera](/components/camera/) components can be [physical](/components/camera/#webcam) like the one already configured on the rover, or virtual.
+A virtual camera transforms the output from a physical camera.
+
+To use the color detector, you need to configure a [transform camera](/components/camera/#transform).
+
+Navigate to the Scroll down to the **COMPONENTS** tab in the Viam app and scroll to the **Create Component** section.
+To create a [transform camera](/components/camera/#transform):
+
+1. Enter a name for **Name**, for example `detectionCam`.
+2. Select `camera` as the **Type**.
+3. Select `transform` as the **Model**.
 4. Click **Create Component**.
 
-{{< figure src="../../img/try-viam-color-detection/create-component-pane.png" width="600px" alt="Screenshot from the Viam app showing the Create Component panel populated with a cam component. The name is detectionCam, the type is camera, and the model is transform. The Create Component button is on the right." title="Create Component panel populated with a camera component." >}}
+![The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.](../../img/try-viam-color-detection/create-component-pane.png)
 
-After creating the component, Viam automatically generates an empty **Attributes** section for the detectionCam's component panel.
+Viam generates an empty **Attributes** section for the detection camera's component panel.
 The panel's **Attribute Guide** section displays the available attributes for the selected component.
 
-{{< figure src="../../img/try-viam-color-detection/empty-detectioncam-component-panel.png" width="700px" alt="Screenshot from the Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon." title="An unpopulated Create Component panel for a camera component." >}}
-
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 Attribute Guides always prefix required attributes with an asterisk.
 {{% /alert %}}
 
-`source` is the name of the physical camera on the rover, which is the camera you want to get the detections from.
-The camera's name in the config is "cam", so we will use that.
-The `Type` will be "detections".
-In **Attributes**, you must add a `detector_name`.
-We named ours "my_color_detector".
-Next, you must add the `confidence_threshold`.
-We picked 0.3 which means if the detection service is 30% confident of the color, it will detect it.
+![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](../../img/try-viam-color-detection/empty-detectioncam-component-panel.png)
 
-{{< figure src="../../img/try-viam-color-detection/detectioncam-component-panel.png" width="700px" alt="Screenshot from the Viam app showing the detectionCam component section. It contains the Attributes section with a skeleton configuration, including source, pipeline, type, and attributes. The panel has an Attributes section populated with transform camera component attributes. The are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon." title="The detectionCam component displayed on the Camera Component Panel." >}}
-
-JSON configuration is here if you wish to copy paste it into your Viam rover's config:
+Copy the following JSON configuration into the Attributes section:
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
@@ -132,33 +123,34 @@ JSON configuration is here if you wish to copy paste it into your Viam rover's c
 }
 ```
 
-After adding the component and its attributes, click **SAVE CONFIG** and head to the **CONTROL** tab.
+<br>
 
-## Testing your transform camera with the vision service in the control tab
+| Field | Default value | Description |
+| ----- | ------------- | ----------- |
+| `source` | `cam` | The name of the physical camera on the rover, which provides the visual feed to get detections from. |
+| `attributes` | | The attributes of this detectionCam. |
+| `attributes.detector_name` | `my_color_detector` | The name of this detectionCam. |
+| `attributes.confidence_threshold` | `0.3` (30%) | The percentage of confidence in the color being present the detection service needs to detect a color. |
+| `type` | `detections` | The type of the component. |
 
-In the **CONTROL** tab, toggle your base component and add the detection camera from **Select Cameras** drop down.
-detectionCam should be available if you have configured your component and service correctly.
-When you enable the keyboard, you will be able to move the rover and see how your detection works.
-Each time your camera sees the color, it will draw a red rectangle around it labeled with the detection confidence level.
+![The Viam app showing the detectionCam component section. It contains the Attributes section with a skeleton configuration, including source, pipeline, type, and attributes. The panel has an Attributes section populated with transform camera component attributes. The are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](../../img/try-viam-color-detection/detectioncam-component-panel.png)
 
-{{< figure src="../../img/try-viam-color-detection/detected-example.png" width="700px" alt="." title="Base component panel displaying an example color detection." >}}
+After adding the component and its attributes, click **SAVE CONFIG**.
 
-We recommend that you test the functionality of Viam's vision services and cameras by enabling your other camera, cam, to compare its view with the detection camera's view.
+## Test your transform camera in the CONTROL tab
 
-{{< figure src="../../img/try-viam-color-detection/both-cams.png" width="700px" alt="Screenshot from the Viam app showing the base component panel with the keyboard buttons W, A, S, D. The Keyboard enabled button is green (enabled). The cam stream is on the right, with the detectionCam stream displayed below it. The displays have identical views. The detectionCam stream displays an overlay of a red color detection box with the label, rose:1.00 surrounding the red square." title="Base component panel displaying the cam and detectionCam streams for comparison." >}}
+In the **CONTROL** tab, click on your base component and add the detection camera from the **Select Cameras** drop down.
 
-If you scroll down in the  **CONTROL** tab, you will see the detectionCam's own section.
-You can also view its stream there.
+Next, enable the keyboard and move your rover around until your camera detects the configured color.
+Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
 
-{{< figure src="../../img/try-viam-color-detection/detectioncam-comp-stream.png" width="600px" alt="Screenshot from the Viam app showing the detectionCam component panel. The Hide Camera button is green. The Refresh Frequency selector is set to live, and the Export Frequency button is beside it on the right. The detectionCam stream is visible and displays a red square surrounded by a red a color detection box labeled Rose:1.00." title="detectionCam stream displaying a color detection." >}}
+![Base component panel displaying an example color detection.](../../img/try-viam-color-detection/detected-example.png)
 
-## Summary
+If you scroll down in the **CONTROL** tab, you can also click on the detectionCam's own section to view its stream there.
 
-Congratulations!
-If you followed along, you have successfully used Viam to make your rental rover detect the color red in the rental rink.
-You have learned how to configure a color detector with the vision service, and how to leverage that detector with a transform camera.
+## Next Steps
 
-If you are ready to continue tinkering with your rental rover, head to our ["How to use the Viam SDK to control your Viam Rover" tutorial](/tutorials/viam-rover/try-viam-sdk/).
-In that tutorial, we will introduce you to the Viam SDK (software development kit) so that you can write code in either Python or Golang to make your Viam Rover move in a square.
+If you're ready for more, try making your rover detect other colors.
+You could also write some code with a Viam SDK to [make your Viam Rover move in a square](/tutorials/viam-rover/try-viam-sdk/).
 
-If you want to connect with other developers learning how to build robots or if you have any issues whatsoever during Try Viam experience, let us know on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/), and we will be happy to help you get up and running.
+If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure to head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).

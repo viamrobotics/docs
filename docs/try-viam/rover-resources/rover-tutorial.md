@@ -4,17 +4,24 @@ linkTitle: "Unbox and Set Up your Viam Rover"
 weight: 10
 type: "docs"
 tags: ["rover", "tutorial"]
+description: "A list of the contents of the Viam Rover kit, instructions for wiring your rover, and links for additional hardware."
 ---
 
-## Unbox and set up your Viam Rover
+The [Viam Rover](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, and a 3D accelerometer module.
 
-The Viam Rover comes preassembled with two encoded motors with suspension, a webcam with an integrated microphone, and a 3D accelerometer module.
-You must purchase a Raspberry Pi 4 and four 18650 batteries (with charger) separately.
-This guide covers what's inside the kit (and what is not), describes each component, provides instructions for wiring your rover, and includes links for additional hardware.
+{{< alert title="Note" color="note" >}}
+You must purchase the following hardware separately:
+
+- A Raspberry Pi 4
+- Four 18650 batteries (with charger)
+- A MicroSD card and an adapter/reader
+{{< /alert >}}
 
 <img src="../img/viam-rover/rover-front.jpg" style="max-width:400px;width:100%" alt="The front of the assembled Viam Rover" />
 
-### What's inside the kit
+This guide covers what's inside the kit, describes each component, provides instructions for wiring your rover, and includes links for additional hardware.
+
+## What's inside the kit
 
 1. One assembled Viam Rover.
 
@@ -43,35 +50,35 @@ All together, your kit looks like this:
 
 <img src="../img/viam-rover/box-contents.jpg" style="max-width:400px;width:100%" alt="A Viam Rover shipping box contents" />
 
-### Rover components
+## Rover components
 
-#### Dual drive motors with suspension and integrated motor encoders
+### Dual drive motors with suspension and integrated motor encoders
 
 <img src="../img/viam-rover/encoder-motors.jpg" style="max-width:400px;width:100%" alt="two motors with encoders" />
 
 The motors come with integrated encoders.
-For further information on encoders, see [Encoder Component](/components/encoder/).
-For more information on encoded DC motors, see [Motor Component](/components/motor/#dc-motor-with-encoder).
+For information on encoders, see [Encoder Component](/components/encoder/).
+For information on encoded DC motors, see [Motor Component](/components/motor/#dc-motor-with-encoder).
 
 The kit also includes stiffer suspension springs that you can substitute for the ones on the rover.
 Generally, a stiff suspension helps with precise steering control.
 In contrast, a soft suspension allows the wheels to move up and down to absorb small bumps on the rover's path.
 
-#### Motor driver
+### Motor driver
 
 <img src="../img/viam-rover/motor-driver.png" style="max-width:400px;width:100%" alt="A L298N motor driver" />
 
 The kit comes with an L298N driver dual H-Bridge DC motor driver.
 L298 is a high voltage and high current motor drive chip, and H-Bridge is typically used to control the rotating direction and speed of DC motors.
 
-#### 720p webcam, with integrated microphone
+### 720p webcam, with integrated microphone
 
 <img src="../img/viam-rover/webcam.jpg" style="max-width:400px;width:100%" alt="Webcam with cables" />
 
 The webcam that comes with the kit is a standard USB camera device and the rover has a custom camera mount for it.
-To find out more, see [Camera Component](/components/camera).
+For more information, see [Camera Component](/components/camera).
 
-#### 3D accelerometer
+### 3D accelerometer
 
 <img src="../img/viam-rover/accelerometer.jpg" style="max-width:400px;width:100%" alt="A ADXL345 accelerometer" />
 
@@ -80,40 +87,26 @@ You can access it with a SPI (3-wire or 4-wire) or I<sup>2</sup>C digital interf
 
 In Viam, you can configure it as a [movement sensor component](/components/movement-sensor/).
 
-#### Buck converter
+### Buck converter
 
 <img src="../img/viam-rover/buck-converter.jpg" style="max-width:400px;width:100%" alt="A mini560 buck converter" />
 
 A buck converter is a DC-to-DC power converter and you use it to step down voltage from its input to its output.
 The 5A mini560 step-down module has high conversion efficiency and low heat generation.
 
-#### Toggle switch
+### Toggle switch
 
 <img src="../img/viam-rover/toggle-switch.jpg" style="max-width:400px;width:100%" alt="A toggle switch" />
 
 The toggle switch comes wired to the rover and you use it to turn the power on and off.
 
-#### Battery pack
+### Battery pack
 
 <img src="../img/viam-rover/battery-pack.jpg" style="max-width:400px;width:100%" alt="A battery pack" />
 
 The rover comes with a battery holder.
-You must purchase four 18650 batteries (and their charger) separately.
+You must purchase four 18650 batteries (and a charger) separately.
 The battery holder also has a female jack for an external DC power supply.
-
-### What's not inside the kit
-
-You must purchase the following pieces of hardware separately:
-
-#### [Raspberry Pi 4 single board computer](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
-
-<img src="../img/viam-rover/pi4.jpg" style="max-width:400px;width:100%" alt="Raspberry Pi 4" />
-
-Any Raspberry Pi 4 works as long as it runs the 64-bit Raspberry Pi OS.
-
-#### MicroSD card and an adapter/reader
-
-In addition to the microSD card, you also need an internet-connected computer and a way to connect the microSD card to the computer (for example, a microSD slot or microSD adapter/reader).
 
 #### Four 18650 batteries with a charger
 
@@ -132,13 +125,17 @@ This product is not a toy and is not suitable for children under 12.
 
 Switch the rover off when not in use.
 
-Warning: Lithium-ion batteries may pose a flammable hazard.
+{{< alert title="Warning" color="warning" >}}
+Lithium-ion batteries may pose a flammable hazard.
 This product requires four 18650 lithium-ion batteries.
 Refer to the battery manufacturer’s operating instructions to ensure safe operation of the Viam Rover.
 Dispose of lithium-ion batteries per manufacturer instructions.
+{{< /alert >}}
 
-Warning: Damage may occur to the Raspberry Pi and/or Viam Rover if wired incorrectly.
+{{< alert title="Caution" color="caution" >}}
+Damage may occur to the Raspberry Pi and/or Viam Rover if wired incorrectly.
 Refer to the manufacturer’s instructions for correct wiring.
+{{< /alert >}}
 
 Disclaimer: This product is preliminary and experimental in nature, and is provided "AS IS" without any representation or warranty of any kind.
 Viam does not make any promise or warranty that the product will meet your requirements or be error free.
@@ -146,41 +143,38 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 
 ## Setup
 
-In short, you will work through the following steps.
-More detailed instructions are found in the sections below.
+This is the recommended order to assemble your rover:
 
-1. Install Raspberry Pi OS and `viam-server` on the microSD card.
-   Put it in your Pi’s slot.
-2. Unscrew the top of the rover.
-3. Screw the Pi to the base.
-4. Wire your Pi to the motor controller and accelerometer (following the instructions in the next section).
-5. Connect all the jumper wires and the USB camera.
-   Make sure that the camera is on the same side of the rover as the wheels as you attach it.
-6. Screw the top of the rover back on.
+1. [Install Raspberry Pi OS on the microSD card.](#install-raspberry-pi-os)
+2. [Unscrew the top of the rover and screw the Pi to the base.](#attach-the-raspberry-pi-to-the-rover)
+3. [Conenct the components.](#connect-the-wires)
+4. [Screw the top of the rover back on and turn the rover on.](#turn-the-rover-on)
+5. [Install `viam-server` and connect to the Viam app.](#connect-to-the-viam-app)
 
-### Install Raspberry Pi OS and `viam-server`
+### Install Raspberry Pi OS
 
-Install the 64-bit Raspberry Pi OS using the [Raspberry Pi imager](https://www.raspberrypi.com/software/) and then install `viam-server`.
+Install a 64-bit Raspberry Pi OS with the [Raspberry Pi imager](https://www.raspberrypi.com/software/) and put it in your Pi’s microSD card slot.
 For more detailed instructions, check out our Raspberry Pi [installation guide](/installation/prepare/rpi-setup/).
 
 ### Attach the Raspberry Pi to the Rover
 
-Once you have installed Raspberry Pi OS and `viam-server` on your SD card, and put your SD card in the slot on your Pi, you can screw the Raspberry Pi to the rover.
-The rover's design allows you to reach the SD card slot at all times, so you can pop the SD card in and out whenever you need to.
-
-The Viam Rover kit includes four screws for mounting the Raspberry Pi.
-Look for them in a small plastic bag.
-You can screw them into the designated spots on the rover to attach the Raspberry Pi to the rover.
-The image below shows the four mounting holes for the Pi, circled in red.
-Your Rover comes with four hex pegs that you can mount the Pi on.
+Once you have installed Raspberry Pi OS and `viam-server`, put your SD card in the slot on your Pi.
+To be able to attach the Raspberry Pi, unscrew the top of the rover with the biggest Allen key.
+Then use the smallest Allen key and the provided M2.5 screws to attach the Raspberry Pi to your rover in the designated spots.
+The following image shows the four mounting holes for the Pi, circled in red:
 
 <img src="../img/viam-rover/topless-rover.jpg" style="max-width:500px;width:100%" alt="The Viam Rover base with the top removed. The motors, chips and wires are exposed." />
 
+{{< alert title="Tip" color="tip" >}}
+The rover's design allows you to reach the SD card slot at all times, so you can remove or reinsert the SD card without removing the top of the rover.
+{{< /alert >}}
+
 ### Connect the wires
+
+Wire your Pi to the buck converter, the acceleration tilt module, the DC motor driver:
 
 ![Closeup of the wiring diagram, showcasing the Pi, motor driver, accelerometer, and buck converter, wired according to the table below.](../img/viam-rover/wiring-diagram.png)
 
-This diagram shows the acceleration tilt module, the DC motor driver, and the Raspberry Pi and how you need to connect the wires.
 The following pinout corresponds to the diagram:
 
 | Component | Component Pin | Raspberry Pi Pin | Wire Color |
@@ -202,33 +196,47 @@ The following pinout corresponds to the diagram:
 | DC Motor Driver | 3.3V power | 1 | red |
 | DC Motor Driver | Encoder Right | 37 | white |
 
-ENA and ENB pins have little plastic jumpers that needs to get removed before wiring.
+{{< alert title="Tip" color="tip" >}}
+En A and En B pins have little plastic jumpers that needs to get removed before wiring.
 
-{{< alert title="Note" color="note" >}}
 The motor driver on the Viam Rover has 8 pins and 6 wires.
 You must wire it with the outside row pins:
 
 <img src="../img/viam-rover/wiring-closeup.jpg" style="max-width:400px;width:100%" alt="closeup of the motor driver wiring" />
 {{< /alert >}}
 
+Then connect the camera's usb cable to the Pi.
+
 ![Wiring diagram showcasing the Pi, motors, driver, camera, and all other rover components.](../img/viam-rover/wiring-diagram-rover.png)
 
 <img src="../img/viam-rover/rover-with-pi.jpg" style="max-width:600px;width:100%" alt="the Pi, motors, driver, and all other rover components" />
 
-### Extensibility
+### Turn the rover on
 
-Due to the aluminum chassis and its expandable mounting features, you can extend the Viam Rover.
-With it, you can customize your rover by mounting additional sensors, lidar, robot arms...
-The following are just a few ideas, but you can expand or modify the rover kit with any components you want.
+Once you have wired up all the components, reattach the top of the rover and fasten the screws.
+Insert the batteries and turn the rover on.
+If the Pi has power, the lights on the Raspberry Pi will light up.
 
-For GPS navigation, we support NMEA (via serial and I<sup>2</sup>C) and RTK.
-Make and model don't make a difference as long as you use these protocols.
-See [Movement Sensor Component](/components/movement-sensor) for more information.
+### Connect to the Viam app
 
-For lidar, we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).
+While the Pi boots, go to [app.viam.com](https://app.viam.com/robot) and [add a robot](/manage/app-usage/#adding-a-new-robot).
+On the robot's **SETUP** tab, select `Linux` and `Aarch64`.
+`SSH` into the Pi and follow the instructions on the robot's **SETUP** tab to download `viam-server` and configure your robot.
 
-For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
+To configure your rover so you can start driving it, [add the Viam Fragment to your Robot](/try-viam/rover-resources/rover-tutorial-fragments/).
 
 ## Next Steps
 
-- [Add the Viam Fragment to your Robot](/try-viam/rover-resources/rover-tutorial-fragments/)
+Check out our other [tutorials that use the Viam Rover](/tutorials/viam-rover/).
+
+### Extensibility
+
+Due to the aluminum chassis and its expandable mounting features, you can extend the Viam Rover.
+With it, you can customize your rover by mounting additional sensors, lidar, robot arms, or other components.
+The following are just a few ideas, but you can expand or modify the rover kit with any components you want:
+
+- For GPS navigation, we support NMEA (via serial and I<sup>2</sup>C) and RTK.
+  Make and model don't make a difference as long as you use these protocols.
+  See [Movement Sensor Component](/components/movement-sensor) for more information.
+- For [LiDAR laser range scanning](/services/slam/run-slam-cartographer), we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).
+- For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.

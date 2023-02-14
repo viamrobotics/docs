@@ -20,7 +20,7 @@ To capture data from one or more robots, you must add the [Data Management Servi
 
    You can change the interval and directory.
 
-   {{< alert title="Info" color="tip" >}}
+   {{< alert title="Info" color="info" >}}
    If you change the directory for data capture only new data is stored in the new directory.
    Existing data remains in the directory where it was stored.
    {{< /alert >}}
