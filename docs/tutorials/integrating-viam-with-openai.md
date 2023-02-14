@@ -44,6 +44,8 @@ This tutorial will provide step-by-step instructions to show you how to create a
 This tutorial assumes that you have already set up your Viam Rover.
 If not, first follow the Viam Rover [setup instructions](/try-viam/rover-resources/rover-tutorial/).
 
+If you are not using a Viam Rover, install [install viam-server](/installation/) and configure your robot with the [appropriate components](/components/).
+
 ### Connect the servo
 
 We'll use a servo in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
@@ -113,6 +115,42 @@ If you don't have git installed on your Pi, you'll need to first run:
 
 ``` sh
 sudo apt install git
+```
+
+Now that you have cloned the repository, you'll need to install dependencies.
+If you do not have Python 3 and pip3 installed, do this first:
+
+``` bash
+sudo apt update && sudo apt upgrade -y
+sudo apt-get install python3
+sudo apt install python3-pip
+```
+
+You'll also need to install pyaudio:
+
+``` bash
+sudo apt install python3-pyaudio
+sudo apt-get install alsa-tools alsa-utils
+```
+
+Now, install the tutorial requirements by running the following command from inside the directory where the tutorial code was cloned:
+
+``` bash
+pip install -r requirements.txt
+```
+
+Finally, you'll need both Viam robot credentials and OpenAI API credentials in order to run the software.
+Viam credentials can be copied from the *CODE SAMPLE* tab on your Viam robot page.
+In order to acquire OpenAI credentials, you'll need to [sign up for OpenAI](https://openai.com/api/) and [set up API keys](https://platform.openai.com/account/api-keys).
+
+Once you have both sets of credentials, create a file called run.sh, adding the following and updating the credentials within:
+
+``` bash
+export OPENAPI_KEY=abc
+export OPENAPI_ORG=xyz
+export VIAM_SECRET=123
+export VIAM_ADDRESS=789
+python rosey.py
 ```
 
 ## Configuration
