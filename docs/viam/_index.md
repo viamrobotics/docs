@@ -66,15 +66,19 @@ Everything Viam runs on your robot is [open-source](http://github.com/viamroboti
 
 ## Networking: Connecting to your robot
 
-Your robot does not need to be permanently connected to the internet to work:
+Your robot does not need to be connected to the cloud.
+
+The `viam-server` software resides on your robot alongside your configurations, your code, and appropriate services.
+In scenarios without cloud connectivity, you can still connect your robot to a LAN or to any relevant devices (such as a gamepad).
+It all depends on your use case and configuration.
 
 - All APIs work locally or in the cloud
 - Data is cached locally and synced when possible
 - Configuration is cached
 
-When your robot is connected (either LAN or WAN), `viam-server` can act as both a client and a server.
+When your robot is connected (either LAN or WAN), viam-server can act as both a client and a server.
 In other words, each instance can request resources, as well as provide them.
-This allows for tremendous flexibility.
+This allows for tremendous flexibility in terms of your architecture design.
 
 ## Communication: Talking to your robot
 
