@@ -1,6 +1,6 @@
 ---
 title: "Manage viam-server"
-linkTitle: "Manage"
+linkTitle: "Manage viam-server"
 weight: 30
 no_list: true
 type: docs

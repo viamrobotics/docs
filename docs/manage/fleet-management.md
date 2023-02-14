@@ -3,7 +3,7 @@ title: "Fleet Management"
 linkTitle: "Fleet Management"
 weight: 30
 type: "docs"
-description: "Manage your robots in the cloud"
+description: "Manage fleets of robots in the cloud."
 tags: ["fleet management", "cloud", "app"]
 ---
 

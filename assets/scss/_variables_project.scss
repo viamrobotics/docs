@@ -96,8 +96,12 @@ ct {
 
 /* START Misc Paragraph and Class Changes */
 code {
-    // font-size:1rem !important; # code should be the same size as surrounding text
-    // color: #222 !important;
+    color: #222 !important;
+    font-size: 100% !important;
+}
+
+a > code {
+    color: #3176d9 !important;
 }
 
 div.lead {
@@ -134,3 +138,20 @@ file {
 }
 /* END CSS for Highlighting the current RH TOC section */
 
+/* START CSS for box layouts on landing pages and next steps sections */
+
+.container.td-max-width-on-larger-screens {
+  margin-left: inherit;
+}
+
+/* END CSS for box layouts on landing pages and next steps sections */
+
+.video-shortcode {
+  width: --webkit-fill-available;
+}
+
+/* START CSS for enforcing a max width on video content */
+.embed-responsive.embed-responsive-16by9 {
+  max-width: 600px
+}
+/* END CSS for enforcing a max width on video content */
