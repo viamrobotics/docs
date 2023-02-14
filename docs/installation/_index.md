@@ -19,7 +19,7 @@ See [What is Viam?](/viam/) for more information.
             <br>
             <img src="img/thumbnails/prepare.png" alt="Prepare" width=100%>
             <h4 style="text-align: left; margin-left: 0px;">Prepare</h4>
-            <p style="text-align: left;">Prepare your computer before installing viam-server.</p>
+            <p style="text-align: left;">Prepare your computer before installing <code>viam-server</code>.</p>
         <a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
@@ -37,7 +37,7 @@ See [What is Viam?](/viam/) for more information.
             <br>
             <img src="img/thumbnails/manage.png" alt="Manage" width=100%>
             <h4 style="text-align: left; margin-left: 0px;">Manage</h4>
-            <p style="text-align: left;">Control and troubleshoot viam-server.</p>
+            <p style="text-align: left;">Control and troubleshoot <code>viam-server</code>.</p>
         </a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
