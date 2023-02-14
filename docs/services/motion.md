@@ -173,29 +173,33 @@ It consists of the following fields:
 * `pose_in_observer_frame`: This field provides the relationship between the frame being added and another frame
 * `physical_object`: An optional `Geometry` can be added to the frame being added
 
-When `supplemental_transforms` are provided, a frame system will be created within the context of the `GetPose` function. This new frame system will build off the robot's frame system and will incorporate the `Transforms` provided.  If the result of adding the `Transforms` will result in a disconnected frame system an error will be thrown.
+When `supplemental_transforms` are provided, a frame system will be created within the context of the `GetPose` function.
+This new frame system will build off the robot's frame system and will incorporate the `Transforms` provided.
+If the result of adding the `Transforms` will result in a disconnected frame system an error will be thrown.
 
 **`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they wish to pass to their own motion planning implementation.
 This parameter is not used for anything in the built-in motion service.
 
 #### Example
 
-The following code is a minumal example using the [Viam Python SDK](https://python.viam.dev/) to get the pose of the tip of a gripper "myRobot:myGripper" which is attached to the end of an arm, in the "world" referenceframe
+The following code is a minumal example using the [Viam Python SDK](https://python.viam.dev/) to get the pose of the tip of a gripper `myGripper` which is attached to the end of an arm, in the "world" referenceframe
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.components.gripper import Gripper
 from viam.services.motion import MotionServiceClient
 
 // assume that the connect function is written and will return a valid robot
 robot = await connect()
 
 motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
-gripperPoseInWorld = await robot.get_pose(component_name="myRobot:myGripper", destination_frame="world")
-
+gripperName = Gripper.get_resource_name("myGripper")
+gripperPoseInWorld = await robot.get_pose(component_name=gripperName, destination_frame="world")
 ```
 
 For a more complicated example, let's take the same scenario and get the pose of the same gripper with respect to an object which is situated at a location (100, 200, 0) relative to the "world" frame:
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.components.gripper import Gripper
 from viam.services.motion import MotionServiceClient
 from viam.proto.common import Transform, PoseInFrame, Pose
 
@@ -206,12 +210,12 @@ motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
 objectPose = Pose(x=100, y=200, z=0, o_x=0, o_y=0, o_z=1, theta=0)
 objectPoseInFrame = PoseInFrame(reference_frame="world", pose=objectPose)
 objectTransform = Transform(reference_frame="object", pose_in_observer_frame=objectPoseInFrame)
+gripperName = Gripper.get_resource_name("myGripper")
 gripperPoseInObjectFrame = await motion.get_pose(
-  component_name="myGripper",
+  component_name=gripperName,
   destination_frame="world",
   supplemental_transforms=objectTransform
 )
-
 ```
 
 ## Motion Profile Constraints
@@ -236,38 +240,10 @@ The linear constraint (`{"motion_profile": "linear"}`) forces the path taken by 
 If the start and goal orientations are different, the orientation along the path will follow the quaternion Slerp (Spherical Linear Interpolation) of the orientation from start to goal.
 This has the following sub-options:
 
-<table>
-  <tr>
-   <td><strong>Parameter Name</strong>
-   </td>
-   <td><strong>Type</strong>
-   </td>
-   <td><strong>Default</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>line_tolerance
-   </td>
-   <td>float
-   </td>
-   <td>0.1
-   </td>
-   <td>Max linear deviation from straight-line between start and goal, in mm.
-   </td>
-  </tr>
-  <tr>
-   <td>orient_tolerance
-   </td>
-   <td>float
-   </td>
-   <td>0.05
-   </td>
-   <td>Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal.
-   </td>
-  </tr>
-</table>
+| Parameter Name | Type | Default | Description |
+| -------------- | ---- | ------- | ----------- |
+| line_tolerance | float | 0.1 | Max linear deviation from straight-line between start and goal, in mm. |
+| orient_tolerance | float | 0.05 | Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal. |
 
 **Example usage**:
 
@@ -281,28 +257,9 @@ The pseudolinear constraint (`{"motion_profile": "pseudolinear"}`) restricts the
 Linear and orientation deviation are determined separately, so if a motion has a large linear difference but has identical starting and ending orientations, the motion will hold its orientation constant while allowing some linear deflection.
 This has the following suboption:
 
-<table>
-  <tr>
-   <td><strong>Parameter Name</strong>
-   </td>
-   <td><strong>Type</strong>
-   </td>
-   <td><strong>Default</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>tolerance
-   </td>
-   <td>float
-   </td>
-   <td>0.8
-   </td>
-   <td>Allowable linear and orientation deviation from direct interpolation path, as a proportion of the linear and orientation distances between start and goal.
-   </td>
-  </tr>
-</table>
+| Parameter Name | Type | Default | Description |
+| -------------- | ---- | ------- | ----------- |
+| tolerance | float | 0.8 | Allowable linear and orientation deviation from direct interpolation path, as a proportion of the linear and orientation distances between start and goal. |
 
 **Example usage**:
 
@@ -316,28 +273,9 @@ The orientation constraint (`{"motion_profile": "orientation"}`) places a restri
 This is similar to the "orient_tolerance" option in the linear profile, but without any path restrictions.
 If set to zero, a movement with identical starting and ending orientations will hold that orientation throughout the movement.
 
-<table>
-  <tr>
-   <td><strong>Parameter Name</strong>
-   </td>
-   <td><strong>Type</strong>
-   </td>
-   <td><strong>Default</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>tolerance
-   </td>
-   <td>float
-   </td>
-   <td>0.05
-   </td>
-   <td>Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal.
-   </td>
-  </tr>
-</table>
+| Parameter Name | Type | Default | Description |
+| -------------- | ---- | ------- | ----------- |
+| tolerance | float | 0.05 | Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal. |
 
 **Example usage**:
 
