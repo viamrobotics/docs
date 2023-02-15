@@ -187,7 +187,7 @@ Now, in the panel for *servo1*, add the following configuration in attributes to
 }
 ```
 
-viam-server should now reconfigure and make the servo available for use.
+`viam-server` will now make the servo available for use.
 Click into the **CONTROL** tab.
 You should see a card for *servo1*.
 From there, you can change the angle of your servo by increments of 1 or 10 degrees.
