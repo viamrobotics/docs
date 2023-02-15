@@ -81,4 +81,4 @@ The following example uses a Big Tree Tech breakout board with a [TMC2209 integr
 ![An example wiring diagram for a four wire Nema 17 stepper motor driven by a Big Tree Tech TMC2209 stepper driver. The driver is connected to a Raspberry Pi with step and dir pins, as well as logic power wires. A separate 12V power supply is attached to the motor driver to power the motor.](../../img/motor/motor-gpiostepper-wiring.png)
 
 In this particular example the enable pin on the upper left corner of the driver is connected to ground to pull it low.
-See data sheet for details.
+See the data sheet of your stepper motor and stepper motor driver for information on how to wire your specific hardware.
