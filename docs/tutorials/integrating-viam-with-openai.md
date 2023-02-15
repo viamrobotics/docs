@@ -112,7 +112,7 @@ If you have git installed on your Pi, this is as simple as running the following
 git clone https://github.com/viam-labs/tutorial-openai-integration
 ```
 
-If you don't have git installed on your Pi, you'll need to first run:
+If you don't have git installed on your Pi, you will need to first run:
 
 ``` sh
 sudo apt install git
