@@ -246,7 +246,7 @@ For example, if you say *"Hello Rosey, what do you think will happen today?"*, t
 If you explore the tutorial code, you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
 For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
 
-If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read an OpenAI-generated response about what it sees.  A "mood" will also be selected at random, and the response will be generated with that mood.
+If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read an OpenAI-generated response about what it sees. Also, a "mood" will be selected at random, and the response will be generated with that mood.
 
 <img src="../img/ai-integration/yoda.jpeg"  style="float:left;margin-right:20px;margin-left: 0px;" alt="Viam Rover Rosey." title="Viam Rover Rosey." width="300" />
 
