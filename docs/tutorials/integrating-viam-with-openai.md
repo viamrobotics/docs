@@ -86,7 +86,7 @@ Connect your speaker to your Pi:
 * Connect 3.5mm audio cable to the speaker and the audio jack on the Pi.
 
 Both cables come with the speaker in the [hardware list](#hardware-list), and can otherwise be easily acquired.
-You may also want to attach your speaker to the top of your rover with [double-sided foam tape](https://www.amazon.com/3M-Natural-Polyurethane-Double-Coated/dp/B007Y7CA3C/), but this is optional.
+You can also attach your speaker to the top of your rover with [double-sided foam tape](https://www.amazon.com/3M-Natural-Polyurethane-Double-Coated/dp/B007Y7CA3C/), but this is optional.
 
 ### Set up tutorial software
 
