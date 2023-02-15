@@ -211,7 +211,7 @@ You are registering a model of **type** `tflite_classifier` **named** `stuff_cla
 Your companion robot will use this to - well, classify stuff (using an ML model trained using the [ImageNet image database](https://www.image-net.org/))!
 
 Update the `label_path` and `model_path` to match where you [copied the tutorial software](#set-up-tutorial-software).
-Press "Save config" to finish adding the classifier.
+Click **Save config** to finish adding the classifier.
 
 ``` json
 {
