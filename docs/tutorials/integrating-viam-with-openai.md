@@ -119,7 +119,7 @@ sudo apt install git
 ```
 
 Now that you have cloned the repository, you'll need to install dependencies.
-If you do not have Python 3 and pip3 installed, do this first:
+If you do not have python3 and pip3 installed, do this first:
 
 ``` bash
 sudo apt update && sudo apt upgrade -y
