@@ -127,7 +127,7 @@ sudo apt-get install python3
 sudo apt install python3-pip
 ```
 
-You'll also need to install pyaudio, alsa, and flac:
+You will also need to install pyaudio, alsa, and flac:
 
 ``` bash
 sudo apt install python3-pyaudio
