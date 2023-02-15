@@ -21,7 +21,7 @@ While some [examples](https://www.google.com/search?q=companion+robot) have rece
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
-Combined with the Viam platform’s built-in [computer vision](/services/vision), ML model support, and [locomotion](/components/base/) - we can easily create a simple version of such a robot that:
+By combining ChaptGPT with the Viam platform’s built-in [computer vision service](/services/vision), ML model support, and [locomotion](/components/base/), you can easily create a simple companion robot that:
 
 * Listens with a microphone, converts speech-to-text, gets a response from OpenAI.
 * Converts GPT response text to speech and "reads" this through a speaker.
