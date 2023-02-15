@@ -72,7 +72,7 @@ Attach the servo to the bracket.
 If you are 3D printing the servo disc, [download the STL file](https://github.com/viam-labs/tutorial-openai-integration/blob/main/servo_disc_large.stl) from the tutorial repository and print it.
 Attach the servo disc to the servo by fitting it to the servo's output spline.
 
-Now, download print the [emoji wheel](https://github.com/viam-labs/tutorial-openai-integration/blob/main/3emotion.png) with a color or black and white printer.
+Now, download and print the [emoji wheel](https://github.com/viam-labs/tutorial-openai-integration/blob/main/3emotion.png) with a color, or black and white printer.
 Cut the wheel out with scissors.
 Do not attach it to the servo wheel yet.
 
