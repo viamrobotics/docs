@@ -24,7 +24,7 @@ AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are
 By combining ChaptGPT with the Viam platform’s built-in [computer vision service](/services/vision), ML model support, and [locomotion](/components/base/), you can easily create a simple companion robot that:
 
 * Listens with a microphone, converts speech-to-text, gets a response from OpenAI.
-* Converts GPT response text to speech and "reads" this through a speaker.
+* Converts GPT response text to speech and "speaks" the response through a speaker.
 * Follows commands like "move forward" and "spin".
 * Makes observations about its environment with prompts like "What do you see?".
 
