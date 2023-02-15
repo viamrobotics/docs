@@ -100,7 +100,7 @@ The relay works as a switch to turn on and off the solenoid.
 This allows us to activate the foam dart launcher via a GPIO pin on the board.
 
 {{% alert title="Note" color="note"%}}
-We cannot directly power these components from GPIO pins, since there is a board limitation which restricts GPIO pins to providing 3.3V and a very limited current supply (16mA).
+We cannot directly power these components from GPIO pins, since there is a board limitation that restricts GPIO pins to providing 3.3V and a very limited current supply (16mA).
 Even the 3V and 5.5V power pins on the Pi supply are limited to about 1A.
 
 If a component attempts to pull more current than that, you risk power cycling the Pi.
