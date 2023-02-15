@@ -52,7 +52,7 @@ If you are using a different rover, the [Viam Rover setup instructions](https://
 We'll use a [servo](/components/servo) in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
 
 {{% alert title="Caution" color="caution" %}}
-Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
+Always disconnect devices from power before plugging, unplugging, moving wires, or otherwise modifying electrical circuits.
 {{% /alert %}}
 
 Power off your rover.
