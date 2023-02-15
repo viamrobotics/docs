@@ -28,7 +28,7 @@ By combining ChaptGPT with the Viam platform’s built-in [computer vision servi
 * Follows commands like "move forward" and "spin".
 * Makes observations about its environment with prompts like "What do you see?".
 
-This tutorial will show you how to use the Viam platform to create an AI-integrated robot.
+This tutorial will show you how to use the Viam platform to create an AI-integrated robot in less than 200 lines of code.
 
 ## Hardware list
 
@@ -48,7 +48,7 @@ If you are not using a Viam Rover, install [install viam-server](/installation/)
 
 ### Connect the servo
 
-We'll use a servo in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
+We'll use a [servo](/components/servo) in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
 
 {{% alert title="Caution" color="caution" %}}
 Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
