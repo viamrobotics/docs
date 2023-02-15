@@ -83,7 +83,7 @@ You need a speaker attached to your rover so that you can hear the responses gen
 Connect your speaker to your Pi:
 
 * Connect the USB power cable to the speaker and any available USB port on the Pi.
-* Connect 3.5mm audio cable to the speaker and the audio jack on the Pi.
+* Connect the 3.5mm audio cable to the speaker and the audio jack on the Pi.
 
 Both cables come with the speaker in the [hardware list](#hardware-list), and can otherwise be easily acquired.
 You can also attach your speaker to the top of your rover with [double-sided foam tape](https://www.amazon.com/3M-Natural-Polyurethane-Double-Coated/dp/B007Y7CA3C/), but this is optional.
