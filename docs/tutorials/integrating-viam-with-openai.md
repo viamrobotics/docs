@@ -105,7 +105,7 @@ Therefore, this tutorial uses the [text-davinci-003](https://platform.openai.com
 When the ChatGPT model becomes available, you should be able to modify this tutorial by just changing the *model* specified in the [completion](https://platform.openai.com/docs/api-reference/completions) API call.
 {{% /alert %}}
 
-Power on your Pi, choose a location on your Raspberry Pi and clone the tutorial code repository.
+Power on  and choose a location on your Raspberry Pi, and clone the tutorial code repository.
 If you have git installed on your Pi, this is as simple as running the following command in the selected directory:
 
 ``` sh
