@@ -172,7 +172,7 @@ Now that we've set up the rover by attaching the servo and making the tutorial s
 ### Configure the servo
 
 To configure your [servo](/components/servo), go to your rover's **CONFIG** page, scroll to the bottom and create a new instance of the `servo` component.
-Name it *servo1* (or something else if you prefer, but then you will need to update references to it in the tutorial code).
+Name it `servo1` (or something else if you prefer, but then you will need to update references to it in the tutorial code).
 
 Since you've attached your servo to a Raspberry Pi, choose the model `pi`.
 Click **Create Component**.
