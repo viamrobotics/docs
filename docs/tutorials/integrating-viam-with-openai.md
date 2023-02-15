@@ -260,6 +260,7 @@ You can change Rosey's name to something else, add characters, adjust the classi
 
 What you've seen in this tutorial is a very basic integration between a Viam-powered robot and OpenAI.
 There's a lot that could be done to make this a more production-ready companion robot.
+
 Some ideas:
 
 * Make the voice recognition software listen in the background, so the robot can move and interact with the world while listening and responding.
