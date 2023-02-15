@@ -250,7 +250,7 @@ If you ask *"what do you see"*, it will use the rover's camera and a machine lea
 
 <img src="../img/ai-integration/yoda.jpeg"  style="float:left;margin-right:20px;margin-left: 0px;" alt="Viam Rover Rosey." title="Viam Rover Rosey." width="300" />
 
-The GPT-3 model is also quite good at responding in the style of known personas, so you can also say *"Hey Rosey, act like Yoda"*, and from that point on responses will be generated in the style of Yoda!  The tutorial code has a number of characters you can try, and to pick one randomly you can say *"Rosey, act random"*.
+The GPT-3 model is quite good at responding in the style of known personas, so you can also say *"Hey Rosey, act like Yoda"*, and from that point on, responses will be generated in the style of Yoda! The tutorial code has a number of characters you can try, and to pick one randomly, you can say *"Rosey, act random"*.
 You can even guess who Rosey is acting like by saying *"Rosey, I think you are Scooby Doo!"*
 
 Much of Rosey's behavior can be modified by changing the values of parameters in the tutorial code's `params.py` file.
