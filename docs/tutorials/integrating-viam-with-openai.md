@@ -143,7 +143,7 @@ pip install -r requirements.txt
 
 Finally, you will need both Viam robot credentials and OpenAI API credentials in order to run the software.
 Viam credentials can be copied from the *CODE SAMPLE* tab on your [Viam robot page](https://app.viam.com).
-In order to acquire OpenAI credentials, you'll need to [sign up for OpenAI](https://openai.com/api/) and [set up API keys](https://platform.openai.com/account/api-keys).
+To acquire OpenAI credentials, [sign up for OpenAI](https://openai.com/api/) and [set up API keys](https://platform.openai.com/account/api-keys).
 
 Once you have both of the credentials, create a file called `run.sh`, add the following, and update the credentials within:
 
