@@ -213,7 +213,7 @@ Let’s add a base to be able to control them together.
 
 ### Base Configuration
 
-Configure a [base component](/components/base/) to coordinate your motors so you can move them around with your keyboard.
+Configure a [base component](/components/base/) to coordinate your motors so you can move the base around with your keyboard.
 
 Give it a **Name** (you can just call it "base"), set **Type** to `base`, set **Model** to `wheeled`, and click **Create Component**.
 
