@@ -1,3 +1,2 @@
-baseURL = "/"
+baseURL = "http://localhost"
 disableAliases = true
-relativeURLs = true
