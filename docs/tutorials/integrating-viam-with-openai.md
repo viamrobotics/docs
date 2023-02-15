@@ -26,7 +26,7 @@ By combining ChaptGPT with the Viam platform’s built-in [computer vision servi
 * Listens with a microphone, converts speech-to-text, gets a response from OpenAI.
 * Converts GPT response text to speech and "speaks" the response through a speaker.
 * Follows commands like "move forward" and "spin".
-* Makes observations about its environment with prompts like "What do you see?".
+* Makes observations about its environment when asked questions like "What do you see?".
 
 This tutorial will show you how to use the Viam platform to create an AI-integrated robot in less than 200 lines of code.
 
