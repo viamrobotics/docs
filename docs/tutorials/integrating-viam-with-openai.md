@@ -265,6 +265,6 @@ Some ideas:
 * Make the voice recognition software listen in the background, so the robot can move and interact with the world while listening and responding.
 * Integrate another ML model that is used to follow a human (when told to do so).
 * Add Lidar and integrate Viam's [SLAM Service](/services/slam) to map the world around it.
-* Use Viam's [Data Management](/manage/data-management/) to collect environmental data and use this data to train new ML models that allow the robot improve its functionality.
+* Use Viam's [Data Management](/manage/data-management/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
 
 We'd love to see where you decide to take this. If you build your own companion robot, let us and others know on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/).
