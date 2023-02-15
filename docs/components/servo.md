@@ -3,7 +3,7 @@ title: "Servo Component"
 linkTitle: "Servo"
 weight: 80
 type: "docs"
-description: "A hobby servo is a special type of small motor that's position can be precisely controlled by the computer controlling a robot."
+description: "A hobby servo is a special type of small motor whose position you can precisely control."
 tags: ["servo", "components"]
 icon: "img/components/servo.png"
 # SME: #team-bucket

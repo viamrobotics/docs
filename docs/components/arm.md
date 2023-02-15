@@ -3,7 +3,7 @@ title: "Arm Component"
 linkTitle: "Arm"
 weight: 10
 type: "docs"
-description: "A robotic arm has a fixed end, a body of links and joints, and an end with a device that can be positioned precisely."
+description: "A robotic arm has a fixed end, a body of links and joints, and an end with a device which you can position precisely."
 tags: ["arm", "components"]
 icon: "img/components/arm.png"
 # SME: Peter L

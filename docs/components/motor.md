@@ -3,7 +3,7 @@ title: "Motor Component"
 linkTitle: "Motor"
 weight: 70
 type: "docs"
-description: "A motor is a rotating machine part that transforms electrical energy into mechanical energy."
+description: "A motor is a rotating machine that transforms electrical energy into mechanical energy."
 tags: ["motor", "components"]
 icon: "img/components/motor.png"
 # SME: Rand, Jessamy

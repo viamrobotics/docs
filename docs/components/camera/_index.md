@@ -3,7 +3,7 @@ title: "Camera Component"
 linkTitle: "Camera"
 weight: 40
 type: "docs"
-description: "A camera perceives 2D and/or 3D images and sends them to the computer controlling a robot."
+description: "A camera perceives 2D or 3D images and sends them to the computer controlling the robot."
 tags: ["camera", "components"]
 icon: "img/components/camera.png"
 # SMEs: Bijan, vision team
