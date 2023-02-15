@@ -60,7 +60,7 @@ Wire your servo to the Pi by attaching the black wire to ground, red wire to an 
 
 ### Mount the servo to your rover
 
-Using the bracket you printed or purchased, attach the servo mount to the Viam rover so that the servo output spline is facing outward in the front of the rover(screws required, mounting holes should line up).
+Using the bracket you printed or purchased, attach the servo mount to the Viam rover so that the servo output spline is facing outward in the front of the rover (screws required, mounting holes should line up).
 Attach the servo to the bracket.
 
 <img src="../img/ai-integration/servo_mounted.jpg"   alt="Servo mounted on Viam rover." title="Servo mounted on Viam rover." width="300" />
