@@ -207,7 +207,7 @@ From there, scroll to the bottom and create a new service of type `vision` named
 <img src="../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the vision service." title="Adding the vision service." width="500" />
 
 Now, add the following configuration to the attributes for the Vision Service.
-You are registering a model of type `tflite_classifier` named `stuff_classifier`.
+You are registering a model of **type** `tflite_classifier` **named** `stuff_classifier`.
 Your companion robot will use this to - well, classify stuff (using an ML model trained using the [ImageNet image database](https://www.image-net.org/))!
 
 Update the `label_path` and `model_path` to match where you [copied the tutorial software](#set-up-tutorial-software).
