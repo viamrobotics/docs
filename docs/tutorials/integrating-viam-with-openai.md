@@ -21,10 +21,10 @@ While some [examples](https://www.google.com/search?q=companion+robot) have rece
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) is making companion robots with realistic, human-like speech a potential reality.
-Combined with the Viam platform’s built-in [computer vision](/services/vision), ML model support, and [locomotion](/components/base/) - we can create a simple version of such a robot that:
+Combined with the Viam platform’s built-in [computer vision](/services/vision), ML model support, and [locomotion](/components/base/) - we can easily create a simple version of such a robot that:
 
 * Listens with a microphone, converts speech-to-text, gets a response from OpenAI.
-* Converts ChatGPT text to speech and "reads" this through a speaker.
+* Converts GPT response text to speech and "reads" this through a speaker.
 * Follows commands like "move forward" and "spin".
 * Makes observations about its environment with prompts like "What do you see?".
 
@@ -33,7 +33,7 @@ This tutorial will provide step-by-step instructions to show you how to create a
 ## Hardware list
 
 * <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with [`viam-server` installed](/installation/prepare/rpi-setup/).
-* [Viam rover](https://www.viam.com/resources/rover) (Note: this tutorial can also be adapted to work with any other configured rover that has a webcam and a microphone)
+* [Viam rover](https://www.viam.com/resources/rover) (note: this tutorial can also be adapted to work with any other configured rover that has a webcam and a microphone)
 * [270 degree servo](https://www.amazon.com/ANNIMOS-Digital-Waterproof-DS3218MG-Control/dp/B076CNKQX4/)
 * [USB powered speaker](https://www.amazon.com/Bluetooth-Portable-Wireless-Speakers-Playtime/dp/B07PLFCP3W/)
 * A servo mounting bracket - [3D printed](https://www.thingiverse.com/thing:3995995) or [purchased](https://www.amazon.com/Bolsen-Servos-Bracket-Sensor-Compatible/dp/B07HQB95VY/)
@@ -92,8 +92,8 @@ You may also want to attach your speaker to the top of your rover with [double-s
 The git repository for this tutorial contains code that integrates with:
 
 * [viam-server](/viam/#viam-server)
-* Google text/speech tools
-* OpenAI
+* [Google text/speech tools](https://gtts.readthedocs.io/en/latest/)
+* [OpenAI](https://openai.com/api/)
 
 It also contains an open source machine learning [classifier model](https://tfhub.dev/google/lite-model/imagenet/mobilenet_v3_large_100_224/classification/5/metadata/1).
 
@@ -134,17 +134,17 @@ sudo apt-get install alsa-tools alsa-utils
 sudo apt-get install flac
 ```
 
-Now, install the tutorial requirements by running the following command from inside the directory where the tutorial code was cloned:
+Now, install python library dependencies by running the following command from inside the directory where the tutorial code was cloned:
 
 ``` bash
 pip install -r requirements.txt
 ```
 
 Finally, you'll need both Viam robot credentials and OpenAI API credentials in order to run the software.
-Viam credentials can be copied from the *CODE SAMPLE* tab on your Viam robot page.
+Viam credentials can be copied from the *CODE SAMPLE* tab on your [Viam robot page](https://app.viam.com).
 In order to acquire OpenAI credentials, you'll need to [sign up for OpenAI](https://openai.com/api/) and [set up API keys](https://platform.openai.com/account/api-keys).
 
-Once you have both sets of credentials, create a file called run.sh, adding the following and updating the credentials within:
+Once you have both sets of credentials create a file called `run.sh`, adding the following and updating the credentials within:
 
 ``` bash
 #!/usr/bin/sh
@@ -201,7 +201,7 @@ We found that set up this way, the following positions accurately show the corre
 ### Configure the Vision service and classifier
 
 Click back to the **CONFIG** page and then to the **SERVICES** tab.
-From there, scroll to the bottom and create a new service of type *Vision* named 'vision'.
+From there, scroll to the bottom and create a new service of type `vision` named 'vision'.
 
 <img src="../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the vision service." title="Adding the vision service." width="500" />
 
@@ -240,7 +240,7 @@ Let's call her "Rosey", and bring her to life by running:
 Now, you can start talking to Rosey.
 <img src="../img/ai-integration/rosey_robot.jpg"  style="float:right;margin-right:0px;margin-left: 20px;" alt="Viam Rover Rosey." title="Viam Rover Rosey." width="350" />
 Any time she hears the keyword "Rosey", she will pay attention to anything you say immediately afterwards.
-For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI, and you'll get a response back similar to *"It is impossible to predict what will happen today. Every day is different and unpredictable!"*
+For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI's completion API, and you'll get a response back similar to *"It is impossible to predict what will happen today. Every day is different and unpredictable!"*
 
 If you explore the tutorial code, you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
 For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
@@ -266,4 +266,4 @@ Some ideas:
 * Add Lidar and integrate Viam's [SLAM Service](/services/slam) to map the world around it.
 * Use Viam's [Data Management](/manage/data-management/) to collect environmental data and use this data to train new ML models that allow the robot improve its functionality.
 
-We'd love to see where you decide to take it - let us and others know at the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/).
+We'd love to see where you decide to take this - let us and others know at the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/).
