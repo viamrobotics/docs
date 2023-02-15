@@ -202,7 +202,7 @@ We found that if set up this way, the following positions accurately show the co
 ### Configure the Vision Service and classifier
 
 Click the **CONFIG** tab and then the **SERVICES** subtab.
-From there, scroll to the bottom and create a new service of type `vision` named 'vision'.
+From there, scroll to the bottom and create a new service of **type** `vision` named 'vision'.
 
 <img src="../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the vision service." title="Adding the vision service." width="500" />
 
