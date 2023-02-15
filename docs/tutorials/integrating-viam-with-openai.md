@@ -102,7 +102,7 @@ It also contains an open source machine learning [classifier model](https://tfhu
 At the time this tutorial was written, OpenAI was not yet offering the ChatGPT model with their [official API](https://platform.openai.com/overview).
 Therefore, this tutorial uses the [text-davinci-003](https://platform.openai.com/docs/models/davinci) GPT-3 model.
 
-When the ChatGPT model becomes available, it is expected that the only modification to this tutorial is to change the *model* specified in the [completion](https://platform.openai.com/docs/api-reference/completions) API call.
+When the ChatGPT model becomes available, you should be able to modify this tutorial by just changing the *model* specified in the [completion](https://platform.openai.com/docs/api-reference/completions) API call.
 {{% /alert %}}
 
 Power on your Pi, choose a location on your Raspberry Pi and clone the tutorial code repository.
