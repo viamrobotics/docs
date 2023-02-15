@@ -28,7 +28,7 @@ By combining ChaptGPT with the Viam platform’s built-in [computer vision servi
 * Follows commands like "move forward" and "spin".
 * Makes observations about its environment with prompts like "What do you see?".
 
-This tutorial will provide step-by-step instructions to show you how to create an AI-integrated Viam robot, including a supply list and sample code.
+This tutorial will show you how to use the Viam platform to create an AI-integrated robot.
 
 ## Hardware list
 
