@@ -25,13 +25,10 @@ Model | Supported hardware <a name="model-table"></a>
 
 How you configure your motor with Viam depends more on the [motor driver](https://www.wellpcb.com/what-is-motor-driver.html) than on the motor itself.
 
-This document assumes you have motor, compatible motor driver, and power supply.
-You'll also need a [board](/components/board/) to send signals to the motor driver[^dmcboard].
-
 Most robots with a motor need at least the following hardware:
 
 - The motor itself
-- An appropriate motor driver
+- A compatible motor driver
   - Takes signals from the computer and sends the corresponding signals and power to the motor.
     Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements.
 - A [board component](https://docs.viam.com/components/board/) to send signals to the motor driver[^dmcboard].
@@ -106,45 +103,47 @@ If your gantry has a different name, change the `name` in the example.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-This example sends power commands to motors on the robot.
+Example code should be placed after the `robot = await connect()` function in `main()`.
 
 ```python
 from viam.components.motor import Motor
 
-robot = await connect() # refer to connect code
+robot = await connect() # Refer to CODE SAMPLE tab code
 motor1 = Motor.from_robot(robot, "motor1")
 motor2 = Motor.from_robot(robot, "motor2")
 
-# power motor1 at 100% for 3 seconds
+# Power motor1 at 100% for 3 seconds
 await motor1.set_power(1)
 await asyncio.sleep(3)
 await motor1.stop()
 
-# run motor2 at 1000 rpm for 200 rotations
+# Run motor2 at 1000 rpm for 200 rotations
 await motor2.go_for(1000, 200)
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
+Example code should be placed after the `robot, err := client.New(...)` function in `main()`.
+
 ```go
 import (
-"time"
-"go.viam.com/rdk/components/motor"
+  "time"
+  "go.viam.com/rdk/components/motor"
 )
 
-robot, err := client.New() // refer to connect code
-// grab the motors from the robot
+robot, err := client.New() // Refer to CODE SAMPLE tab code
+// Grab the motors from the robot
 m1, err := motor.FromRobot(robot, "motor1")
 m2, err := motor.FromRobot(robot, "motor2")
 
-// power motor1 at 100% for 3 seconds
-m1.SetPower(context.Background(), 1, nil)
+// Power motor1 at 100% for 3 seconds
+m1.SetPower(context.TODO(), 1, nil)
 time.Sleep(3 * time.Second)
-m1.Stop(context.Background(), nil)
+m1.Stop(context.TODO(), nil)
 
-// run motor2 at 1000 RPM for 200 rotations
-m2.GoFor(context.Background(), 1000, 200, nil)
+// Run motor2 at 1000 RPM for 200 rotations
+m2.GoFor(context.TODO(), 1000, 200, nil)
 ```
 
 {{% /tab %}}
@@ -183,7 +182,7 @@ await myMotor.set_power(power = 0.4)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -203,7 +202,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Set the motor power to 40% forwards.
-myMotor.SetPower(context.Background(), 0.4, nil)
+myMotor.SetPower(context.TODO(), 0.4, nil)
 
 ```
 
@@ -240,7 +239,7 @@ await myMotor.go_for(rpm=60, revolutions=7.2)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -263,7 +262,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Turn the motor 7.2 revolutions at 60 RPM.
-myMotor.GoFor(context.Background(), 60, 7.2, nil)
+myMotor.GoFor(context.TODO(), 60, 7.2, nil)
 ```
 
 {{% /tab %}}
@@ -299,7 +298,7 @@ await myMotor.go_to(rpm=75, revolutions=8.3)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -320,7 +319,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Turn the motor to 8.3 revolutions from home at 75 RPM.
-myMotor.GoTo(context.Background(), 75, 8.3, nil)
+myMotor.GoTo(context.TODO(), 75, 8.3, nil)
 ```
 
 {{% /tab %}}
@@ -353,7 +352,7 @@ await myMotor.reset_zero_position(offset=0.0)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -373,7 +372,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Set the current position as the new home position with no offset.
-myMotor.ResetZeroPosition(context.Background(), 0.0, nil)
+myMotor.ResetZeroPosition(context.TODO(), 0.0, nil)
 ```
 
 {{% /tab %}}
@@ -406,7 +405,7 @@ position = await myMotor.get_position()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -426,7 +425,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Get the current position of the motor.
-position, _ := myMotor.Position(context.Background(), nil)
+position, _ := myMotor.Position(context.TODO(), nil)
 ```
 
 {{% /tab %}}
@@ -461,7 +460,7 @@ print(properties)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -481,7 +480,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Return whether or not the motor supports certain optional features.
-properties, _ := myMotor.Properties(context.Background(), nil)
+properties, _ := myMotor.Properties(context.TODO(), nil)
 logger.Info("Properties:")
 logger.Info(properties)
 ```
@@ -516,7 +515,7 @@ await myMotor.stop()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -535,7 +534,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Stop the motor.
-myMotor.Stop(context.Background(), nil)
+myMotor.Stop(context.TODO(), nil)
 ```
 
 {{% /tab %}}
@@ -570,7 +569,7 @@ print('Powered:', powered)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -591,7 +590,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Check whether the motor is currently running.
-powered, pct, _ := myMotor.IsPowered(context.Background(), nil)
+powered, pct, _ := myMotor.IsPowered(context.TODO(), nil)
 logger.Info("Is powered?")
 logger.Info(powered)
 logger.Info("Power percent:")
@@ -629,7 +628,7 @@ print('Moving:', moving)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -648,7 +647,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v
 myMotor, err := motor.FromRobot(robot, "motor1")
 
 // Check whether the motor is currently moving.
-moving, _ := myMotor.IsMoving(context.Background())
+moving, _ := myMotor.IsMoving(context.TODO())
 logger.Info("Is moving?")
 logger.Info(moving)
 ```
