@@ -189,7 +189,7 @@ Now, in the panel for *servo1*, add the following configuration in attributes to
 
 `viam-server` will now make the servo available for use.
 Click on the **CONTROL** tab.
-You should see a card for *servo1*.
+You should see a panel for `servo1`.
 From there, you can change the angle of your servo by increments of 1 or 10 degrees.
 
 Move the servo to 0 degrees, and attach the emotion wheel to the servo with the happy emoji facing upwards and centered.
