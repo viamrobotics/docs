@@ -169,7 +169,7 @@ Now that we've set up the rover by attaching the servo and making the tutorial s
 * Recognize and operate the servo
 * Make the ML classifier model available for use by the Viam vision service
 
-### Configure the servo
+### 1. Configure the servo
 
 To configure your [servo](/components/servo), go to your rover's **CONFIG** page, scroll to the bottom and create a new instance of the `servo` component.
 Name it `servo1` (or something else if you prefer, but then you will need to update references to it in the tutorial code).
@@ -199,7 +199,7 @@ We found that if set up this way, the following positions accurately show the co
 * angry: 75 degrees
 * sad: 157 degrees
 
-### Configure the Vision Service and classifier
+### 1. Configure the Vision Service and classifier
 
 Click the **CONFIG** tab and then the **SERVICES** subtab.
 From there, scroll to the bottom and create a new service of **type** `vision` named 'vision'.
