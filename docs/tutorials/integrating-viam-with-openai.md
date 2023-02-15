@@ -20,7 +20,7 @@ One type of “good” robot is a companion robot - a robot created for the purp
 While some [examples](https://www.google.com/search?q=companion+robot) have recently been brought to market, primarily marketed towards children and the elderly, we are all familiar with robots from popular movies that ultimately have proven to be endearing companions and became embedded in our culture.
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
-AI like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) is making companion robots with realistic, human-like speech a potential reality.
+AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
 Combined with the Viam platform’s built-in [computer vision](/services/vision), ML model support, and [locomotion](/components/base/) - we can easily create a simple version of such a robot that:
 
 * Listens with a microphone, converts speech-to-text, gets a response from OpenAI.
