@@ -102,7 +102,7 @@ Here are some tutorials which you can follow:
 - [Detect a Color](/tutorials/viam-rover/try-viam-color-detection)
 
 If you want to get your own Viam Rover, we’re also taking pre-orders for a limited quantity of Viam Rovers.
-Reserve yours today [here](http://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
+Reserve yours today [here](https://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
 
 ## Why can't I use the rover's microphone?
 
