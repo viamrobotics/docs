@@ -106,7 +106,7 @@ When the ChatGPT model becomes available, you should be able to modify this tuto
 {{% /alert %}}
 
 Power on  and choose a location on your Raspberry Pi, and clone the tutorial code repository.
-If you have git installed on your Pi, this is as simple as running the following command in the selected directory:
+If you have git installed on your Pi, this is as simple as running the following command in the preferred directory from your terminal:
 
 ``` sh
 git clone https://github.com/viam-labs/tutorial-openai-integration
