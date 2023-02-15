@@ -40,7 +40,7 @@ While some Arm models build inverse kinematics into their software, many do not.
 Arm drivers are also paired, in the RDK, with JSON files that describe the kinematics parameters of each arm.
 
 - When you configure a supported arm model to connect to `viam-server`, the Arm driver will load and parse the kinematics file for the Viam RDK's [Frame System](/services/frame-system/) service to use.
- - The `Frame System` will allow you to easily calculate where any part of your robot is relative to any other part, other robot, or piece of the environment.
+- The `Frame System` will allow you to easily calculate where any part of your robot is relative to any other part, other robot, or piece of the environment.
 
 </details>
 
