@@ -141,8 +141,7 @@ To deserialize the returned information into a numpy array, use the Open3D libra
 
 **Returns:**
 
-- `pointcloud` (`bytes`):
-- The pointcloud data (Tuple[bytes, str]).
+- `pointcloud` (`bytes`): The pointcloud data.
 - `mimetype` (`str`): The mimetype of the pointcloud (for example PCD).
 
 ```python {class="line-numbers linkable-line-numbers"}
