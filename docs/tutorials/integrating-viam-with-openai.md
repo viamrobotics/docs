@@ -135,7 +135,7 @@ sudo apt-get install alsa-tools alsa-utils
 sudo apt-get install flac
 ```
 
-Now, install python library dependencies by running the following command from inside the directory where the tutorial code was cloned:
+Now, install the python library dependencies by running the following command from inside the directory where you cloned the code:
 
 ``` bash
 pip install -r requirements.txt
