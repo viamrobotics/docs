@@ -223,7 +223,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `properties` ([`Properties`](https://pkg.go.dev/go.viam.com/rdk/components/camera#Properties)): Properties that are intrinsic to the particular implementation of a camera.
+- `properties` ([`Properties`](https://pkg.go.dev/go.viam.com/rdk/components/camera#Properties)): Properties of the particular implementation of a camera.
 - `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
