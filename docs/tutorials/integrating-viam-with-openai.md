@@ -231,7 +231,7 @@ Press "Save config" to finish adding the classifier.
 
 ## Bring "Rosey" to life
 
-Now we have the rover and tutorial code set up and it is time to bring your companion robot to life!
+With the rover and tutorial code set up and it is time to bring your companion robot to life!
 Let's call her "Rosey", and bring her to life by running:
 
 ``` bash
