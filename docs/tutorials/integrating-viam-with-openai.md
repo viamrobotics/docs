@@ -78,7 +78,7 @@ Do not attach it to the servo wheel yet.
 
 ### Speaker
 
-You'll need a speaker attached to your rover so that you can hear the responses generated from OpenAI converted from text to speech.
+You need a speaker attached to your rover so that you can hear the responses generated from OpenAI, and converted from text to speech.
 
 Connect your speaker to your Pi:
 
