@@ -37,7 +37,7 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 * [270 degree servo](https://www.amazon.com/ANNIMOS-Digital-Waterproof-DS3218MG-Control/dp/B076CNKQX4/)
 * [USB powered speaker](https://www.amazon.com/Bluetooth-Portable-Wireless-Speakers-Playtime/dp/B07PLFCP3W/)
 * A servo mounting bracket - [3D printed](https://www.thingiverse.com/thing:3995995) or [purchased](https://www.amazon.com/Bolsen-Servos-Bracket-Sensor-Compatible/dp/B07HQB95VY/)
-* A servo disc - [3D printed](https://github.com/viam-labs/tutorial-openai-integration/blob/main/servo_disc_large.stl) (preferred) or [purchased](https://www.amazon.com/outstanding-Silvery-Aluminum-Steering-Screws/dp/B0BDDZW1FG/)
+* A servo disc - [3D printed](https://github.com/viam-labs/tutorial-openai-integration/blob/main/servo_disc_large.stl) (preferred, as it is an ideal size) or [purchased](https://www.amazon.com/outstanding-Silvery-Aluminum-Steering-Screws/dp/B0BDDZW1FG/)
 
 ## Rover setup
 
@@ -47,7 +47,7 @@ If not, first follow the Viam Rover [setup instructions](/try-viam/rover-resourc
 If you are not using a Viam Rover, [install viam-server](/installation/) and configure your robot with the [appropriate components](/components/).
 If you are using a different rover, the [Viam Rover setup instructions](https://docs.viam.com/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
 
-### Connect the servo
+### 1. Connect the servo
 
 We'll use a [servo](/components/servo) in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
 
@@ -58,14 +58,14 @@ Always disconnect devices from power before plugging, unplugging, moving wires, 
 Power off your rover.
 Wire your servo to the Pi by attaching the black wire to ground, red wire to [an available 5V pin](https://pinout.xyz/pinout/5v_power), and yellow wire to [pin 8](https://pinout.xyz/pinout/pin8_gpio14).
 
-### Mount the servo to your rover
+### 2. Mount the servo to your rover
 
 Using the bracket you printed or purchased, attach the servo mount to the Viam rover so that the servo output spline is facing outward in the front of the rover (screws required, mounting holes should line up).
 Attach the servo to the bracket.
 
 <img src="../img/ai-integration/servo_mounted.jpg"   alt="Servo mounted on Viam rover." title="Servo mounted on Viam rover." width="300" />
 
-### Servo disc
+### 3. Servo disc
 
 <img src="../img/ai-integration/3emotion.png"  style="float:right;margin-right:150px;margin-left: 20px;" alt="Emotion wheel." title="Emotion wheel." width="220" />
 
@@ -76,7 +76,7 @@ Now, download and print the [emoji wheel](https://github.com/viam-labs/tutorial-
 Cut the wheel out with scissors.
 Do not attach it to the servo wheel yet.
 
-### Speaker
+### 4. Speaker
 
 You need a speaker attached to your rover so that you can hear the responses generated from OpenAI, and converted from text to speech.
 
@@ -88,9 +88,9 @@ Connect your speaker to your Pi:
 Both cables come with the speaker in the [hardware list](#hardware-list), and can otherwise be easily acquired.
 You can also attach your speaker to the top of your rover with [double-sided foam tape](https://www.amazon.com/3M-Natural-Polyurethane-Double-Coated/dp/B007Y7CA3C/), but this is optional.
 
-### Set up tutorial software
+### 5. Set up tutorial software
 
-The git repository for this tutorial contains code that integrates with:
+The [git repository](https://github.com/viam-labs/tutorial-openai-integration) for this tutorial contains code that integrates with:
 
 * [viam-server](/viam/#viam-server)
 * [Google text/speech tools](https://gtts.readthedocs.io/en/latest/)
@@ -243,7 +243,7 @@ Now, you can start talking to Rosey.
 Any time she hears the keyword "Rosey", she will pay attention to anything you say immediately afterwards.
 For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI's completion API, and you'll get a response back similar to *"It is impossible to predict what will happen today. Every day is different and unpredictable!"*
 
-If you explore the tutorial code, you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
+If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-integration/blob/45ce0e3f2b7bad33f568cd4273e6721aa2ceffe5/rosey.py#L144), you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
 For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
 
 If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read an OpenAI-generated response about what it sees. Also, a "mood" will be selected at random, and the response will be generated with that mood.
@@ -253,7 +253,7 @@ If you ask *"what do you see"*, it will use the rover's camera and a machine lea
 The GPT-3 model is quite good at responding in the style of known personas, so you can also say *"Hey Rosey, act like Yoda"*, and from that point on, responses will be generated in the style of Yoda! The tutorial code has a number of characters you can try, and to pick one randomly, you can say *"Rosey, act random"*.
 You can even guess who Rosey is acting like by saying *"Rosey, I think you are Scooby Doo!"*
 
-Much of Rosey's behavior can be modified by changing the values of parameters in the tutorial code's `params.py` file.
+Much of Rosey's behavior can be modified by changing the values of parameters in the tutorial code's [params.py](https://github.com/viam-labs/tutorial-openai-integration/blob/main/params.py) file.
 You can change Rosey's name to something else, add characters, adjust the classifier confidence threshold, and more.
 
 ## Next steps
