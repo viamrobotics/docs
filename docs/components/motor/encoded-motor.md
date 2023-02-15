@@ -7,6 +7,9 @@ description: "How to configure an encoded motor."
 # SMEs: Rand, James
 ---
 
+Use an [encoder](/components/encoder/) with a motor to create a closed feedback loop for better control of your robot.
+Instead of sending speed or position commands to the motor and hoping for the best, the encoder lets the computer know how the motor is actually rotating in the real world, so adjustments can be made to achieve the desired motor movement.
+
 Some motors come with encoders integrated with or attached to them.
 You can also add an encoder to a motor.
 See the [encoder component documentation](/components/encoder/) for more information on encoders.

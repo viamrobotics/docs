@@ -98,10 +98,10 @@ The PWM pin does not have to be configured for motor drivers that use only In1 a
 
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
-`min_power_pct` | float | 0.0 | Sets a limit on minimum power percentage sent to the motor
-`max_power_pct` | float | 1.0 | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor
+`min_power_pct` | float | 0.0 | Sets a limit on minimum power percentage sent to the motor.
+`max_power_pct` | float | 1.0 | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor.
 `pwm_freq` | uint | 800 | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range.
-`dir_flip` | bool | False | Flips the direction of the signal sent if there is a DIR pin
+`dir_flip` | bool | False | Flips the direction of "forward" versus "backward" rotation.
 `en_high` / `en_low` | string | -- | Some drivers have optional enable pins that enable or disable the driver chip. If your chip requires a high signal to be enabled, add `en_high` with the pin number to the pins section. If you need a low signal use `en_low`.
 `encoder` | string | -- | The name of an encoder attached to this motor. See [encoded motor](/components/motor/encoded-motor/).
 
