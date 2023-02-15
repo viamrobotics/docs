@@ -4,7 +4,7 @@ linkTitle: "Gantry"
 draft: false
 weight: 50
 type: "docs"
-description: "A gantry is a mechanical system composed of linear rails that can precisely position an attached device."
+description: "A mechanical system of linear rails that can precisely position an attached device."
 tags: ["gantry", "components"]
 icon: "img/components/gantry.png"
 # SME: Rand

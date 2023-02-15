@@ -4,7 +4,7 @@ linkTitle: "Sensor (Generic)"
 weight: 70
 draft: false
 type: "docs"
-description: "A sensor sends information about the outside world to the computer controlling a robot."
+description: "A device that sends information about the outside world to the computer controlling a robot."
 tags: ["sensor", "components"]
 icon: "img/components/sensor.png"
 # SME: #team-bucket

@@ -3,7 +3,7 @@ title: "Base Component"
 linkTitle: "Base"
 weight: 10
 type: "docs"
-description: "A robotic base is the platform that the other parts of a mobile robot attach to."
+description: "The moving platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
 icon: "img/components/base.png"
 # SMEs: Steve B
