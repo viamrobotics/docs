@@ -3,7 +3,7 @@ title: "Integrate Viam with OpenAI to create a companion robot"
 linkTitle: "Create an AI companion robot"
 weight: 60
 type: "docs"
-tags: ["base", "AI", "ChatGPT", "servo", "vision", "computer vision", "camera", "viam rover", "python", "AI"]
+tags: ["base", "AI", "ChatGPT", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
 description: "Harness AI to add life to your Viam rover."
 # SME: Matt Vella
 ---
