@@ -16,7 +16,7 @@ This robot will be able to move around and launch foam darts.
 This project is a great place to start if you are new to building robots, have a love for Nerf toys, an occasion to target something and launch a dart at it, or if you just want to troll your friends.
 Don’t forget to be careful and have fun!
 
-{{< figure src="../../img/foam-dart-launcher/init-image-nerf-robot.gif" width="400px" alt="Robot launching a dart from a foam dart launcher taped to the robot." title="Robot launching a dart from a foam dart launcher taped to the robot." >}}
+<img src="../../img/foam-dart-launcher/init-image-nerf-robot.gif" width="400px" alt="Robot launching a dart from a foam dart launcher taped to the robot.">
 
 ## What You’ll Need for This Tutorial
 
@@ -100,14 +100,13 @@ The relay works as a switch to turn on and off the solenoid.
 This allows us to activate the foam dart launcher via a GPIO pin on the board.
 
 {{% alert title="Note" color="note"%}}
-We cannot directly power these components from GPIO pins, since there board limitation which restricts GPIO pins to providing 3.3V and a very limited current supply (16mA).
-This board limitation restricts GPIO pins to providing 3.3V and a very limited current supply (16mA).
+We cannot directly power these components from GPIO pins, since there is a board limitation that restricts GPIO pins to providing 3.3V and a very limited current supply (16mA).
 Even the 3V and 5.5V power pins on the Pi supply are limited to about 1A.
 
 If a component attempts to pull more current than that, you risk power cycling the Pi.
 That is why we use a relay to supply 5VDC with a higher current to actuate the solenoid.
 This is standard practice for power control circuits in many situations.
-For example, by using a common off-the-shelf (COTS) 15A light switch to actuate a relay bank, it is possible to control hundreds of amps of lighting for an entire office floor.
+For example, by using a common off-the-shelf 15A light switch to actuate a relay bank, it is possible to control hundreds of amps of lighting for an entire office floor.
 {{% /alert %}}
 
 {{< figure src="../../img/foam-dart-launcher/power-relay.jpg" width="400px" alt="Power relay." title="Power relay." >}}
@@ -160,90 +159,181 @@ Try activating the solenoid manually to ensure that it hits the foam dart launch
 
 Create a new robot in the Viam app and give it a name.
 
-### Pi Configuration (board)
+### Board Configuration (Raspberry Pi)
 
-Add your board with the name `board`, type `board`, and model `pi`.
+Add your board with the **Name** `local`, **Type** `board`, and **Model** `pi`.
 Click **Create Component**.
 
-{{< figure src="../../img/foam-dart-launcher/add-board.png"  alt="Viam App Board component attribute pane." title="Board Component Attribute Pane" width="800" >}}
+<img src="../../img/foam-dart-launcher/add-board.png"  alt="Viam app board component attribute pane." width="800" >
 
-You can name your board whatever you want, we picked `board` for simplicity.
+You can name your board whatever you want, we picked `local`.
 Just remember to use that name consistently in the following steps.
 
-### Motors Configuration (Left and Right)
+### Motor Configuration
 
-Add the left [motor](/components/motor/) with the name `left`, type `motor`, and model `gpio`, then add the right motor with the name `right`, type `motor` and model `gpio`.
-After clicking **Create Component** you’ll see the **Component Pin Assignment** toggle.
-Select **In1/In2** since that is compatible with the input type our motor controller expects.
-In the **A/In1** and **B/In2** drop-downs, choose `11 GPIO 17` and `13 GPIO 27`, respectively, for the left motor, and `16 GPIO 23` and `18 GPIO 24`, respectively, for the right motor.
+#### Left Motor
 
-Select the name of the board the motor controller is wired to ("board") from the **Board** drop-down.
+Add the left [motor](/components/motor/) with the **Name** `left`, **Type** `motor`, and **Model** `gpio`.
+Click **Create Component**.
 
-<table>
-<tr><td style="background:white; border-right: 1px solid black; padding-right: 25px">
-{{< figure src="../../img/foam-dart-launcher/left-motor.png"  alt="Motor Component Attribute Pane (left motor)." title="Left Motor Component Configuration Pane" width="400">}}
-</td><td style="background:white;">
-{{< figure src="../../img/foam-dart-launcher/right-motor.png"  alt="Motor Component Attribute Pane (right motor)." title="Right Motor Component Configuration Pane" width="400">}}
-</td></tr></table>
+Select the name of the board the motor controller is wired to (for example, "local") from the **Board** drop-down.
+
+Toggle the **Component Pin Assignment Type** to **In1/In2** since that is compatible with the input type our motor controller expects.
+
+In the **A/In1** and **B/In2** drop-downs, choose `11 GPIO 17` and `13 GPIO 27`, respectively.
+
+Set **Max RPM** to `150`.
+
+<img src="../../img/foam-dart-launcher/left-motor.png"  alt="Left motor component config UI." width="800">
+
+Click **SAVE CONFIG** at the bottom of the screen.
+
+#### Right Motor
+
+Add the right motor with the **Name** `right`, **Type** `motor` and **Model** `gpio`.
+Click **Create Component**.
+
+Select the name of the board the motor controller is wired to (for example, "local") from the **Board** drop-down.
+
+Toggle the **Component Pin Assignment Type** to **In1/In2**.
+
+For **A/In1** select `16 GPIO 23` and for **B/In2** select `18 GPIO 24`.
+
+Set **Max RPM** to `150`.
+
+<img src="../../img/foam-dart-launcher/right-motor.png"  alt="Right motor component config UI." width="800">
 
 Click **SAVE CONFIG** at the bottom of the screen.
 Then go to the **CONTROL** tab where you will now see the buttons you can use to control the motors:
 
-{{< figure src="../../img/foam-dart-launcher/LR-motor-config-panes.png"  alt="Left and right motor configuration panes." title="Left and Right Motor Configuration Panes" width="800">}}
+<img src="../../img/foam-dart-launcher/LR-motor-config-panes.png"  alt="Left and right motor configuration panes." width="800">
 
-Now, you can move around your wheels separately.
+Now you can drive your left and right wheels separately.
 Let’s add a base to be able to control them together.
 
 ### Base Configuration
 
-Add your motors to the [base](/components/base/) so you can move them around with your keyboard.
+Configure a [base component](/components/base/) to coordinate your motors so you can move the base around with your keyboard.
 
-Here we must specify the wheel circumference and the width between the wheels (measured centerline to centerline).
-Depending on your rover, you can change these numbers.
-Don’t forget to make the base depend on the `left`, `right`, and the `board` components.
+Give it a **Name** (you can just call it "base"), set **Type** to `base`, set **Model** to `wheeled`, and click **Create Component**.
 
-{{< figure src="../../img/foam-dart-launcher/config-base.png"  alt="Base Component Attribute Pane." title="Base Component Attribute Pane" width="800">}}
+From the **Right Motors** and **Left Motors** drop downs, select `right` and `left`, respectively (the motors you configured in the previous step).
+
+Set the **Wheel Circumference** to `200` and the **Width** to `130` if you used [the same rover we did](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/).
+If you used different hardware, measure the diameter of your wheels and multiply by pi for the circumference.
+Measure the distance between the centers of the right and left wheels to find the width.
+
+<img src="../../img/foam-dart-launcher/config-base.png"  alt="Base Component Attribute Pane." width=800><br>
 
 Now let’s add a camera to watch the video stream on the control panel as you move your rover.
 
-### Camera configuration
+### Camera Configuration
 
-Add your USB camera as a webcam. Please refer to [How to Configure a Camera > Connect and Configure a Camera](/components/camera/configure-a-camera/#connect-and-configure-a-webcam) for complete instructions.
+Add your USB camera as a webcam.
+Please refer to [How to Configure a Camera > Connect and Configure a Camera](/components/camera/configure-a-camera/#connect-and-configure-a-webcam) for complete instructions.
 
-{{< figure src="../../img/foam-dart-launcher/config-webcam.png"  alt="Camera Component Attribute Pane." title="Camera Component Attribute Pane" width="800" >}}
+<img src="../../img/foam-dart-launcher/config-webcam.png"  alt="Camera Component Attribute Pane." title="Camera Component Attribute Pane" width="800"><br>
 
-If you go back to the **CONTROL** tab, you will see your base and camera.
+If you go back to the **CONTROL** tab and click to expand the base panel, you will see your base and camera:
 
-{{< figure src="../../img/foam-dart-launcher/base-cam-view.png"  alt="Camera view from the Base component's keyboard tab." title="Camera View from the Base Component's Keyboard Tab." width="800">}}
+<img src="../../img/foam-dart-launcher/base-cam-view.png"  alt="Camera view from the Base component's keyboard tab." title="Camera View from the Base Component's Keyboard Tab." width="800">
 
 Toggle the switch under **Keyboard Disabled** to enable keyboard control, then use the W, A, S, and D keys on your keyboard to move your rover around.
 You can view the camera stream at the same time.
-If you scroll down, you will see your camera as a component. From the camera component pane, you can change the camera's refresh frequency and also export screenshots from your camera.
 
-{{< figure src="../../img/foam-dart-launcher/camera-cam-view.png"  alt="Camera view from the Camera component pane." title="Camera View from the Camera Component Pane." width="800">}}
+### Final Config
+
+The full raw JSON config file generated by the configuration steps you just completed will look like this:
+
+{{% expand "Click to view the raw JSON for the dart launcher robot" %}}
+
+```json
+{
+  "components": [
+    {
+      "name": "local",
+      "type": "board",
+      "model": "pi",
+      "attributes": {},
+      "depends_on": []
+    },
+    {
+      "name": "left",
+      "type": "motor",
+      "model": "gpio",
+      "attributes": {
+        "pins": {
+          "a": "11",
+          "b": "13",
+          "pwm": ""
+        },
+        "board": "local",
+        "max_rpm": 150
+      },
+      "depends_on": []
+    },
+    {
+      "name": "right",
+      "type": "motor",
+      "model": "gpio",
+      "attributes": {
+        "pins": {
+          "a": "16",
+          "b": "18",
+          "pwm": ""
+        },
+        "board": "local",
+        "max_rpm": 150
+      },
+      "depends_on": []
+    },
+    {
+      "name": "base",
+      "type": "base",
+      "model": "wheeled",
+      "attributes": {
+        "width_mm": 130,
+        "wheel_circumference_mm": 200,
+        "left": [
+          "left"
+        ],
+        "right": [
+          "right"
+        ]
+      },
+      "depends_on": []
+    },
+    {
+      "name": "camera",
+      "type": "camera",
+      "model": "webcam",
+      "attributes": {
+        "video_path": "video0"
+      },
+      "depends_on": []
+    }
+  ]
+}
+```
+
+{{% /expand %}}
+<br>
+If you prefer you can copy paste it, replacing the **Raw JSON** field on your robot's **CONFIG** tab instead of going through all the steps above.
 
 ## Toggling GPIO Pin States
 
 The board card in the **CONTROL** tab provides a way to change the state of the pin connected to the solenoid.
 If you click the board component, you will be able to see your GPIO pin and its current state.
-In the **Set** part of the GPIO section, select pin 37 (the pin we wired to control the solenoid).
+In the **Set** part of the GPIO section, select pin **37** (the pin we wired to control the solenoid).
 If you set the pin state to high, the solenoid will actuate.
 If you set it to low, it should deactivate the solenoid.
-Since we already assembled the robot, setting pin 37 to high launches your foam dart launcher if its loaded.
+Since we already assembled the robot, setting pin 37 to **high** launches your foam dart launcher if its loaded.
 
 {{< figure src="../../img/foam-dart-launcher/board-low.png"  alt="Board component, G P I O section showing Low selected on the Pin State drop-down." title="Board component, GPIO section showing Low selected on the Pin State drop-down" width="800">}}
 
 {{< figure src="../../img/foam-dart-launcher/board-displaying-high.png"  alt="Board component, G P I O section with pin 37 set to High." title="Board component, GPIO section with pin 37 set to High." width="800">}}
 
 {{< figure src="../../img/foam-dart-launcher/board-high.png"  alt="Board component, G P I O section showing High selected on the Pin State drop-down." title="Board component, GPIO section showing High selected on the Pin State drop-down" width="800">}}
-
-## Debug Information
-
-If any component fails to appear when connecting to the robot in the Viam app, check the **LOGS** tab for potential errors.
-
-## Final Code
-
-The raw JSON for the entire configuration can be found here if you wish to copy it into your config: [https://gist.github.com/mestcihazal/7683fbdd0975579b44295b3208757b5a](https://gist.github.com/mestcihazal/7683fbdd0975579b44295b3208757b5a)
 
 ## Control via the Viam App
 
@@ -262,15 +352,17 @@ You can see the demo video of it in action here:
 
 {{< video src="../../videos/FoamDartLauncherRobotDemo.mp4" type="video/mp4">}}
 
+## Troubleshooting
+
+If any component fails to appear when connecting to the robot in the Viam app, check the **LOGS** tab for potential errors.
+
 ## Summary
 
 In this tutorial, you learned how to create a remotely-controlled foam dart launching robot activated by the GPIO pins on a Raspberry Pi using Viam.
 You could use this same concept as the basis for a security robot that launches darts at people if they enter your room, a Nerf ball blaster dog toy, a kitten treat shooter for cats to fetch in excitement, you name it!
 You could even add [object detection and machine learning](/services/vision/) and activate the launcher only when the camera sees a specific object or person.
 
-If you are looking for projects that would be a great next step in your journey of robots creation, we recommend that you check out the following tutorials:
-
-* [Tutorial List](/tutorials)
+If you are looking for a new robotics project, check out our other [tutorials](/tutorials/).
 
 If you have any issues getting Viam set up or get stuck, let us know on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we'll be happy to help you get up and running.
 The Viam Community Slack is also a great place to connect with other developers learning how to build robots.
