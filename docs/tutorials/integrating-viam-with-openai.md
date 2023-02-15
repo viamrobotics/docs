@@ -199,7 +199,7 @@ We found that if set up this way, the following positions accurately show the co
 * angry: 75 degrees
 * sad: 157 degrees
 
-### Configure the Vision service and classifier
+### Configure the Vision Service and classifier
 
 Click the **CONFIG** tab and then the **SERVICES** subtab.
 From there, scroll to the bottom and create a new service of type `vision` named 'vision'.
