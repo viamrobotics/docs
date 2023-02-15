@@ -159,7 +159,7 @@ python rosey.py
 Then, make `run.sh` executable:
 
 ``` bash
-chmod 755 run.sh
+chmod +x run.sh
 ```
 
 ## Configuration
