@@ -145,7 +145,7 @@ Finally, you'll need both Viam robot credentials and OpenAI API credentials in o
 Viam credentials can be copied from the *CODE SAMPLE* tab on your [Viam robot page](https://app.viam.com).
 In order to acquire OpenAI credentials, you'll need to [sign up for OpenAI](https://openai.com/api/) and [set up API keys](https://platform.openai.com/account/api-keys).
 
-Once you have both sets of credentials create a file called `run.sh`, adding the following and updating the credentials within:
+Once you have both of the credentials, create a file called `run.sh`, add the following, and update the credentials within:
 
 ``` bash
 #!/usr/bin/sh
