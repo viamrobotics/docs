@@ -4,7 +4,7 @@ linkTitle: "Drive with the SDK"
 weight: 40
 type: "docs"
 description: "Try Viam by using the Viam SDK to make your Viam Rover move in a square."
-tags: ["base", "viam rover", "try viam", "sdk"]
+tags: ["base", "viam rover", "try viam", "sdk", "python"]
 ---
 
 <div class="embed-responsive embed-responsive-16by9">

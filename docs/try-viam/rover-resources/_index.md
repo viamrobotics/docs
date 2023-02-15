@@ -4,6 +4,7 @@ linkTitle: "Your own Viam Rover"
 weight: 80
 simple_list: true
 type: docs
+tags: ["rover", "viam rover"]
 aliases:
     - /viam-rover-resources
 description: Get your own Viam rover and set it up.
