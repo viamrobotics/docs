@@ -256,7 +256,7 @@ You can even guess who Rosey is acting like by saying *"Rosey, I think you are S
 Much of Rosey's behavior can be modified by changing the values of parameters in the tutorial code's `params.py` file.
 You can change Rosey's name to something else, add characters, adjust the classifier confidence threshold, and more.
 
-## Next Steps
+## Next steps
 
 What you've seen in this tutorial is a very basic integration between a Viam-powered robot and OpenAI.
 There's a lot that could be done to make this a more production-ready companion robot.
