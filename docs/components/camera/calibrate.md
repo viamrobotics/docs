@@ -20,7 +20,7 @@ pip install opencv-python
 
 1. Print out the [checkerboard](https://github.com/viam-labs/camera-calibration/blob/main/Checkerboard-A4-25mm-8x6.pdf) and attach it to a flat surface that doesn't distort the checkerboard.
 2. Take images of the checkerboard with your camera from various angles and distances.
-   You can use the **Export Screenshot** button on the camera component in your the [Viam app](http://localhost:1313/manage/app-usage/) on your robot's components tab.
+   You can use the **Export Screenshot** button on the camera panel of your robot's **CONTROL** tab in the [Viam app](https://app.viam.com).
    Save between 10 - 15 images (see [examples](https://github.com/viam-labs/camera-calibration#example-images)).
 
   {{< alert title="Note" color="note" >}}
