@@ -17,11 +17,11 @@ Use a homography matrix to align the color and depth images.
 On the <b>COMPONENTS</b> tab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>align_color_depth_homography</code> model.
 <br>
-<img src="../img/create-align-color-depth-homography.png" alt="Creation of an align color depth homography view in the Viam App config builder." />
+<img src="../img/create-align-color-depth-homography.png" alt="Creation of an align color depth homography view in the Viam app config builder." />
 <br>
 Fill in the attributes for your align color depth homography view:
 <br>
-<img src="../img/configure-align-color-depth-homography.png" alt="Configuration of an align color depth homography view in the Viam App config builder." />
+<img src="../img/configure-align-color-depth-homography.png" alt="Configuration of an align color depth homography view in the Viam app config builder." />
 <br>
 
 {{< /tab >}}

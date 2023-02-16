@@ -15,7 +15,7 @@ It can be used with a webcam, lidar, time-of-flight sensor, or another type of [
 
 The API for camera components allows you to:
 
-- Request single images or a stream in 2D color or displaying z-depth.
+- Request single images or a stream in 2D color, or display z-depth.
   For a 2D image each pixel has a color value and for z-depth each pixel has a uint16 representing depth in mm.
 
 - Request the next Point Cloud.
@@ -29,11 +29,11 @@ Most mobile robots with a camera need at least the following hardware:
 ## Configuration
 
 The configuration of your camera component depends on your camera model.
-You can use models to
+You can use different models to:
 
-- configure physical cameras that generate images or point clouds
-- combine streams from multiple cameras into one
-- transform and process images.
+- Configure physical cameras that generate images or point clouds.
+- Combine streams from multiple cameras into one.
+- Transform and process images.
 
 For configuration information, click on one of the following models:
 
@@ -46,13 +46,13 @@ For configuration information, click on one of the following models:
 | [`fake`](fake) | A camera model for testing. |
 | [`single_stream`](single-stream) | A HTTP server camera that streams image data from an HTTP endpoint. |
 | [`dual_stream`](dual-stream) | A HTTP server camera that combines the streams of two camera servers to create colorful point clouds. |
-| [`join_color_depth`](join-color-depth) | Used to join the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image. |
+| [`join_color_depth`](join-color-depth) | Joins the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image. |
 | [`align_color_depth_extrinsics`](align-color-depth-extrinsics) | Uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images. |
 | [`align_color_depth_homography`](align-color-depth-homography) | Uses a homography matrix to align the color and depth images. |
 | [`join_color_depth`](join-pointclouds) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
 | [`join_color_depth`](transform) | A pipeline for applying transformations to an input image source. |
 
-## Control your Camera with Viam's Client SDK Libraries
+## Control your camera with Viam's client SDK libraries
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
 
@@ -64,8 +64,8 @@ The camera component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-| [GetImage](#getimage) | Returns the next image from the camera as an `Image` or a `RawImage`. Be sure to close the image when finished. |
-| [GetPointCloud](#getpointcloud) | Returns the next point cloud from the camera as bytes with a mimetype describing the structure of the data. |
+| [GetImage](#getimage) | Returns the next image from the camera as an `Image` or a `RawImage`. |
+| [GetPointCloud](#getpointcloud) | Returns the next point cloud from the camera. |
 | [GetProperties](#getproperties) | Returns the camera intrinsic and camera distortion parameters. |
 
 ### GetImage
@@ -94,7 +94,7 @@ frame = await my_cam.get_image()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.get_image).
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -127,7 +127,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetPointCloud
 
-Get the next point cloud from the camera as bytes with a mimetype describing the structure of the data.
+Get the next point cloud from the camera as bytes with a mime type describing the structure of the data.
 The consumer of this call should encode the bytes into the formatted suggested by the mimetype.
 
 To deserialize the returned information into a numpy array, use the Open3D library.
@@ -142,7 +142,7 @@ To deserialize the returned information into a numpy array, use the Open3D libra
 **Returns:**
 
 - `pointcloud` (`bytes`): The pointcloud data.
-- `mimetype` (`str`): The mimetype of the pointcloud (for example PCD).
+- `mimetype` (`str`): The mime type of the pointcloud (for example PCD).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import numpy as np

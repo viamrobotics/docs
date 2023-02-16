@@ -20,11 +20,11 @@ If you need to adjust the alignment between the depth and color frames, use the 
 On the <b>COMPONENTS</b> tab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>join_color_depth</code> model.
 <br>
-<img src="../img/create-join-color-depth.png" alt="Creation of a join color depth view in the Viam App config builder." />
+<img src="../img/create-join-color-depth.png" alt="Creation of a join color depth view in the Viam app config builder." />
 <br>
 Fill in the attributes for your join color depth view:
 <br>
-<img src="../img/configure-join-color-depth.png" alt="Configuration of a join color depth view in the Viam App config builder." />
+<img src="../img/configure-join-color-depth.png" alt="Configuration of a join color depth view in the Viam app config builder." />
 <br>
 
 {{< /tab >}}

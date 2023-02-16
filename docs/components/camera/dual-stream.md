@@ -22,7 +22,7 @@ Enter a name for your camera, select the type <code>camera</code>, and select th
 <br>
 Fill in the attributes for dual stream camera:
 <br>
-<img src="../img/configure-dual-stream.png" alt="Configuration of a dual stream camera in the Viam App config builder." />
+<img src="../img/configure-dual-stream.png" alt="Configuration of a dual stream camera in the Viam app config builder." />
 <br>
 
 {{< /tab >}}

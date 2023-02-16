@@ -23,11 +23,11 @@ Viam recommends using a standard webcam rather than a ribbon cam (typically a ba
 On the <b>COMPONENTS</b> tab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>webcam</code> model.
 <br>
-<img src="../img/create-webcam.png" alt="Creation of webcam camera in the Viam App config builder." />
+<img src="../img/create-webcam.png" alt="Creation of webcam camera in the Viam app config builder." />
 <br>
 Fill in the attributes for your webcam view:
 <br>
-<img src="../img/configure-webcam.png" alt="Configuration of a webcam camera in the Viam App config builder." />
+<img src="../img/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." />
 <br>
 
 {{< /tab >}}

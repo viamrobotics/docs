@@ -51,7 +51,7 @@ Configure the board per the [Board Component topic](/components/board/).
 We named ours `local`.
 Use type `board` and model `pi` if you're using a Raspberry Pi.
 
-Configure the wheeled base per the [Base Component topic](/components/base/).
+Configure the wheeled base per the [Base Component documentation](/components/base/).
 We named ours `scuttlebase`.
 
 [Configure the camera as a webcam](/components/camera/webcam).

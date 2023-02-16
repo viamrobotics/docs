@@ -17,11 +17,11 @@ An `image_file` camera gets color and depth images frames from a file path.
 On the <b>COMPONENTS</b> tab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>image_file</code> model.
 <br>
-<img src="../img/create-image-file.png" alt="Creation of an image file camera in the Viam App config builder." />
+<img src="../img/create-image-file.png" alt="Creation of an image file camera in the Viam app config builder." />
 <br>
 Fill in the attributes for your image file camera:
 <br>
-<img src="../img/configure-image-file.png" alt="Configuration of an image file camera in the Viam App config builder." />
+<img src="../img/configure-image-file.png" alt="Configuration of an image file camera in the Viam app config builder." />
 <br>
 
 {{< /tab >}}

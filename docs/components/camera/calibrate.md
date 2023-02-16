@@ -29,7 +29,7 @@ pip install opencv-python
 3. Save [`cameraCalib.py`](https://github.com/viam-labs/camera-calibration/blob/main/cameraCalib.py)
 4. Run `python3 cameraCalib.py YOUR_PICTURES_DIRECTORY`.
 
-   Example Output:
+   Example output:
 
    ```json-viam {class="line-numbers linkable-line-numbers"}
    "intrinsic_parameters": {

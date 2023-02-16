@@ -23,7 +23,7 @@ import (
 )
 
 // grab the camera from the robot
-cameraName := "camera0" // make sure to use the same name as in the json/APP
+cameraName := "camera0" // make sure to use the same component name that you have in your robot configuration 
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)

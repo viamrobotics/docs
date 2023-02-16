@@ -17,7 +17,7 @@ Combine the point clouds from multiple camera sources and project them to be fro
 On the <b>COMPONENTS</b> tab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>join_pointclouds</code> model.
 <br>
-<img src="../img/create-join-pointclouds.png" alt="Creation of a Join Pointclouds view in the Viam App config builder." />
+<img src="../img/create-join-pointclouds.png" alt="Creation of a Join Pointclouds view in the Viam app config builder." />
 <br>
 Fill in the attributes for your join pointclouds view:
 <br>

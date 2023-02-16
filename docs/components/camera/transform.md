@@ -18,11 +18,11 @@ The transformations are applied in the order they are written in the pipeline.
 On the <b>COMPONENTS</b> tab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>align_color_depth_extrinsics</code> model.
 <br>
-<img src="../img/create-transform.png" alt="Creation of an transform view in the Viam App config builder." />
+<img src="../img/create-transform.png" alt="Creation of an transform view in the Viam app config builder." />
 <br>
 Fill in the attributes for your transform view:
 <br>
-<img src="../img/configure-transform.png" alt="Configuration of an transform view in the Viam App config builder." />
+<img src="../img/configure-transform.png" alt="Configuration of an transform view in the Viam app config builder." />
 <br>
 
 {{< /tab >}}
@@ -268,7 +268,7 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 {{% /tab %}}
 {{% tab name="Depth Preprocess" %}}
 
-Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map
+Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map.
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
