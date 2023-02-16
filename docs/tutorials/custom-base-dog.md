@@ -272,7 +272,6 @@ Click **Save Config**.
 
 Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/components/camera/webcam).
 
-
 ## Start the servers
 
 To operate the dog, you need to start the two servers in order:

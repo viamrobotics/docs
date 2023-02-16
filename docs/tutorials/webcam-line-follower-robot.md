@@ -56,7 +56,7 @@ We named ours `scuttlebase`.
 
 [Configure the camera as a webcam](/components/camera/webcam).
 
-Your webcam configuration in the Config Builder will look something like this:
+Your webcam configuration will look something like this:
 
 ![The webcam configuration UI with video_path set to video0.](/tutorials/img/webcam-line-follower/lf-cam-config.png)
 
