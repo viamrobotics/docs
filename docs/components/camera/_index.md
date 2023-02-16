@@ -11,7 +11,7 @@ icon: "img/components/camera.png"
 ---
 
 A camera component is a source of 2D and/or 3D images.
-It can be used with a webcam, lidar, time-of-flight sensor, or another type of [camera](http://www.google.com).
+You can use the component to configurea webcam, lidar, time-of-flight sensor, or another type of camera.
 
 The API for camera components allows you to:
 

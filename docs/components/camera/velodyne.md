@@ -15,7 +15,7 @@ The velodyne must be running locally at address `0.0.0.0`.
 {{< tab name="Config Builder" >}}
 
 <br>
-On the <b>COMPONENTS</b> tab, navigate to the <b>Create Component</b> menu.
+On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>velodyne</code> model.
 <br>
 <img src="../img/create-velodyne.png" alt="Creation of a velodyne camera in the Viam app config builder." />

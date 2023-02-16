@@ -14,7 +14,7 @@ Use the intrinsics of the color and depth camera, as well as the extrinsic pose 
 {{< tab name="Config Builder" >}}
 
 <br>
-On the <b>COMPONENTS</b> tab, navigate to the <b>Create Component</b> menu.
+On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>align_color_depth_extrinsics</code> model.
 <br>
 <img src="../img/create-align-color-depth-extrinsics.png" alt="Creation of an align color depth extrinsics view in the Viam app config builder." />

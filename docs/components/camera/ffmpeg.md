@@ -14,7 +14,7 @@ A `ffmpeg` camera uses a video file or stream as a camera.
 {{< tab name="Config Builder" >}}
 
 <br>
-On the <b>COMPONENTS</b> tab, navigate to the <b>Create Component</b> menu.
+On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>join_color_depth</code> model.
 <br>
 <img src="../img/create-ffmpeg.png" alt="Creation of a ffmpeg camera in the Viam app config builder." />
