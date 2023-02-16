@@ -1,6 +1,6 @@
 ---
-title: "Configure a Join Pointclouds View"
-linkTitle: "Join Pointclouds"
+title: "Configure a Join Point Clouds View"
+linkTitle: "Join Point Clouds"
 weight: 40
 type: "docs"
 description: "Combine the point clouds from multiple camera sources and project them to be from the point of view of target_frame."
@@ -10,18 +10,18 @@ tags: ["camera", "components"]
 
 Combine the point clouds from multiple camera sources and project them to be from the point of view of target_frame:
 
-{{< tabs name="Configure a Join Pointclouds View" >}}
+{{< tabs name="Configure a Join Point Clouds View" >}}
 {{< tab name="Config Builder" >}}
 
 <br>
 On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>join_pointclouds</code> model.
 <br>
-<img src="../img/create-join-pointclouds.png" alt="Creation of a Join Pointclouds view in the Viam app config builder." />
+<img src="../img/create-join-pointclouds.png" alt="Creation of a Join Point Clouds view in the Viam app config builder." />
 <br>
-Fill in the attributes for your join pointclouds view:
+Fill in the attributes for your join point clouds view:
 <br>
-<img src="../img/configure-join-pointclouds.png" alt="Configuration of a Join Pointclouds view in the Viam App config builder." />
+<img src="../img/configure-join-pointclouds.png" alt="Configuration of a Join Point Clouds view in the Viam App config builder." />
 <br>
 
 {{< /tab >}}
@@ -60,7 +60,7 @@ Fill in the attributes for your join pointclouds view:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for join pointcloud views:
+The following attributes are available for join point clouds views:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
