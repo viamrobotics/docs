@@ -3,7 +3,7 @@ title: "Arm Component"
 linkTitle: "Arm"
 weight: 10
 type: "docs"
-description: "Explanation of arm configuration and usage in Viam."
+description: "A robotic arm is made up of a series of links and joints, ending with a device you can position."
 tags: ["arm", "components"]
 icon: "img/components/arm.png"
 # SME: Peter L

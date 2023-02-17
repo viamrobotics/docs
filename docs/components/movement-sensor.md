@@ -3,7 +3,7 @@ title: "Movement Sensor Component"
 linkTitle: "Movement Sensor"
 weight: 70
 type: "docs"
-description: "Explanation of movement sensors (including GPS and IMU) in Viam."
+description: "A sensor that measures location, kinematic data, or both."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
 icon: "img/components/imu.png"
 # SME: Rand

@@ -3,7 +3,7 @@ title: "Input Controller Component"
 linkTitle: "Input Controller"
 weight: 60
 type: "docs"
-description: "Explanation of input controller/gamepad configuration and usage in Viam."
+description: "An input controller, like a gamepad or elevator button panel, is a device humans use to control a robot's actions."
 tags: ["input controller", "components"]
 icon: "img/components/controller.png"
 # SME: James

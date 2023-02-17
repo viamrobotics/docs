@@ -3,7 +3,7 @@ title: "Encoder Component"
 linkTitle: "Encoder"
 weight: 50
 type: "docs"
-description: "Explanation of encoder configuration and usage in Viam."
+description: "A special type of sensor that measures rotation of a motor or joint."
 tags: ["encoder", "components"]
 icon: "img/components/encoder.png"
 # SME: Rand
