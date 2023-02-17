@@ -54,11 +54,9 @@ Refer to the following example configuration file, including the board and servo
       "type": "servo",
       "model": "pi",
       "attributes": {
-        "pin": "16"
-      },
-      "depends_on": [
-        "example-pi"
-      ]
+        "pin": "16",
+        "board": "example-pi"
+      }
     }
   ]
 }
@@ -85,28 +83,26 @@ Refer to the following example configuration file, including the board and servo
   - `gpio` is the general-purpose model, compatible with Viam-supported boards.
   - `fake` is for testing code without any actual hardware.
 
-- **Depends On**: For model `pi`, you must include the name of the board in the `depends_on` field.
-
 **Required Attributes**:
 
 In addition to the required fields, servo models require the following `attributes` in their configuration:
 
 - `pin` (string): The board pin (with PWM capabilities) that the servo's control wire is attached to.
 Use the pin number, not the GPIO number.
-- `board` (string): The name of the board to which the servo is wired. Required for `gpio` model; does not apply to `pi` model.
+- `board` (string): The name of the board to which the servo is wired.
 
 **Optional Attributes**:
 
 The `gpio` model has the following attributes, which are optional to define in your configuration:
 
-| Attribute Name          | Type    | Description                                                                                                                                                             |
-| ----------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `min_angle_deg`         | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                    |
-| `max_angle_deg`         | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                    |
-| `starting_position_deg` | float64 | Starting position of the servo in degrees.                                                                                                                              |
+| Attribute Name          | Type    | Description |
+| ----------------------- | ------- | ----------- |
+| `min_angle_deg`         | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation. |
+| `max_angle_deg`         | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation. |
+| `starting_position_deg` | float64 | Starting position of the servo in degrees. |
 | `frequency_hz`          | uint    | The rate of pulses sent to the servo. The servo driver will attempt to change the GPIO pin's frequency (in Hz). The recommended PWM frequency for servos is typically in the range of 40-200 Hz, with most servos using 50 Hz (see your servo's data sheet). Maximum supported frequency by this driver is 450Hz |
 | `pwm_resolution`        | uint    | Resolution of the PWM driver (e.g. number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution. |
-| `min_width_us`          | uint    | Override the safe minimum pulse width in microseconds. This affects PWM calculation.                                                                                    |
+| `min_width_us`          | uint    | Override the safe minimum pulse width in microseconds. This affects PWM calculation. |
 | `max_width_us`          | uint    | Override the safe maximum pulse width in microseconds. This affects PWM calculation. |
 
 ## API
