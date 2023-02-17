@@ -27,9 +27,9 @@ If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone
         <a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/installation/prepare/beaglebone-install/">
+        <a href="/installation/prepare/beaglebone-setup/">
             <br>
-            <img src="/installation/img/thumbnails/beaglebone.png" alt="BeagleBone AI 64">
+            <img src="../img/thumbnails/beaglebone.png" alt="BeagleBone AI 64">
             <p style="text-align: left; margin-left: 0px; font-weight:bold">BeagleBone AI-64</h4>
         </a>
     </div>
