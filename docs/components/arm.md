@@ -14,7 +14,7 @@ icon: "img/components/arm.png"
 ---
 
 Robotic arms are serial chains of joints and links, with a fixed end and an end effector end.
-Joints may rotate, translate, or both, while a link will always be the same shape.
+Joints may rotate, translate, or both, while a link is a rigid connector between joints.
 
 In simple terms, an *arm* is a component that has one end that is fixed in place on the robot, and another end that has a device you can position precisely.
 
@@ -55,7 +55,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 <br>
 <details> <summary> <code>viam-server</code> self-collision preventation + obstacle avoidance </summary>
 
-- If there is no way to move to the desired location in a straight line for the arm in question, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
+- If there is no way for the arm to move to the desired location in a straight line, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
   
 </details>
 
@@ -66,11 +66,11 @@ Refer to the following example configuration for a robotic arm of model `xArm6`:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-<img src="../img/arm/arm-ui-config-xarm6.png" alt="Picture of what an example configuration for an arm of model xArm6 looks like in the Viam App, with Attributes & Depends On drop-downs and the option to add a frame." max-width="800px"/>
+<img src="../img/arm/arm-ui-config-xarm6.png" alt="Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." max-width="800px"/>
 
 {{% /tab %}}
 
-{{% tab name="Raw Json" %}}
+{{% tab name="Raw JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
@@ -104,7 +104,7 @@ Refer to the following example configuration for a robotic arm of model `xArm6`:
 ```
 
 {{% /tab %}}
-{{% tab name="Example Json" %}}
+{{% tab name="Example JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
