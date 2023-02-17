@@ -3,11 +3,7 @@ title: "Arm Component"
 linkTitle: "Arm"
 weight: 10
 type: "docs"
-<<<<<<< HEAD
 description: "A robotic arm is made up of a series of links and joints, ending with a device you can position."
-=======
-description: "A robotic arm has a fixed end, a body of links and joints, and an end with a device which you can position precisely."
->>>>>>> 1586421 (revise arm page)
 tags: ["arm", "components"]
 icon: "img/components/arm.png"
 # SME: Peter L
