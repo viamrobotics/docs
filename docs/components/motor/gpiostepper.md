@@ -61,7 +61,7 @@ Name | Type | Description
 -------------- | ---- | ---------------
 `board` | string | Should match name of board to which the motor driver is wired.
 `pins` | object | A structure containing "step" and "dir" pin numbers; see example JSON above.
-`ticks_per_rotation` | integer | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common.
+`ticks_per_rotation` | integer | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common. If your data sheet specifies this in terms of degrees per step, divide 360 by that number to get ticks per rotation.
 
 ### Optional Attributes
 
