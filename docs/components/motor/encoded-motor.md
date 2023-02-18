@@ -20,7 +20,7 @@ To configure an encoded motor, you must configure the encoder [per the encoder d
 Here’s an example configuration:
 
 {{< tabs name="encoder-config">}}
-{{% tab name="Builder UI" %}}
+{{% tab name="Config Builder" %}}
 
 <img src="../../img/motor/encoded-config-ui.png" alt="Screenshot of an encoded motor config in the Viam app UI." style="max-width:800px;width:100%" >
 

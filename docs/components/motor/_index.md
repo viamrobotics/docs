@@ -24,6 +24,7 @@ Model | Supported hardware <a name="model-table"></a>
 [`fake`](./fake/) | Used to test code without hardware
 
 How you configure your motor with Viam depends more on the [motor driver](https://www.wellpcb.com/what-is-motor-driver.html) than on the motor itself.
+Click the model names above for configuration information.
 
 Most robots with a motor need at least the following hardware:
 
@@ -33,6 +34,8 @@ Most robots with a motor need at least the following hardware:
     Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements.
 - A [board component](https://docs.viam.com/components/board/) to send signals to the motor driver[^dmcboard].
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
+
+[^dmcboard]: The `DMC4000` model does not require a board.
 
 ## API Overview
 
@@ -47,53 +50,6 @@ Method Name | Description
 [Stop](#stop) | Cuts power to the motor off immediately, without any gradual step down.
 [IsPowered](#ispowered) | Returns whether or not the motor is currently on, and the percent power.
 [IsMoving](#ismoving) | Returns whether the motor is moving or not.
-
-## Configuration
-
-To configure a motor as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired[^dmcboard].
-
-Configure your motor with the universal component fields:
-
-Field | Description
------ | -----------
-`name` | Choose a name to identify the motor.
-`type` | `motor` is the type for all motor components.
-`model` | Depends on the motor driver; see the list of models in the [table above](#model-table).
-
-Refer to the document for your specific motor model for attribute configuration information:
-
-- [`gpio`](./gpio/)
-- [`gpiostepper`](./gpiostepper/)
-- [`TMC5072`](./tmc5072/)
-- [`DMC4000`](./dmc4000/)
-- [`fake`](./fake/)
-
-```json
-{
-  "components": [
-    {
-      "name": "local",
-      "type": "board",
-      "model": "<board model>",
-      "attributes": {},
-      "depends_on": [],
-      
-    },
-    {
-      "name": "example-gpio",
-      "type": "motor",
-      "model": "<model, e.g. 'gpio'>",
-      "attributes": {
-        "<ATTRIBUTES VARY DEPENDING ON MOTOR MODEL; SEE RESPECTIVE DOCUMENTATION>"
-        "board": "local"
-      },
-      "depends_on": []
-    }
-  ]
-}
-```
-
-[^dmcboard]: The `DMC4000` model does not require a board.
 
 ## Usage example
 

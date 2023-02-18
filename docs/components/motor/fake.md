@@ -10,7 +10,9 @@ description: "How to configure a motor with model `fake`"
 Configuring a `fake` motor can be convenient for testing software without using any hardware.
 For example, you can use a `fake` component as a placeholder while waiting on a hardware shipment, so that other components that depend on this motor (for example, a [base](/components/base)) won't fail to initialize, and your SDK code won't throw errors when it fails to find a physical motor connected to your robot.
 
-To configure a `fake` motor as a component of your robot, you don't need any hardware, and you don't need to configure any attributes (though you can configure optional ones).
+## Configuration
+
+To configure a `fake` motor as a component of your robot, you don't need any hardware, and you don't need to configure any attributes (though you can configure [optional ones](#optional-attributes)).
 
 Just configure your `fake` motor with a name, type and model:
 
@@ -21,7 +23,7 @@ Field | Description
 `model` | `fake`
 
 {{< tabs name="fake-config">}}
-{{% tab name="Builder UI" %}}
+{{% tab name="Config Builder" %}}
 
 <img src="../../img/motor/fake-config-ui.png" alt="Screenshot of a gpio motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
 
