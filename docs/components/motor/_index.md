@@ -37,7 +37,7 @@ Most robots with a motor need at least the following hardware:
 
 [^dmcboard]: The `DMC4000` model does not require a board.
 
-## API Overview
+## API
 
 Method Name | Description
 ----------- | -----------
@@ -105,7 +105,7 @@ m2.GoFor(context.TODO(), 1000, 200, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-## API Details
+## Method Details
 
 In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor)
 or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#).
