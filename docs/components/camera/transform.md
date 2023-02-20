@@ -226,7 +226,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 {{% /tab %}}
 {{% tab name="Detections" %}}
 
-The Detections transform takes the input image and overlays the detections from a given detector present within the [Vision Service](/services/vision/).
+The Detections transform takes the input image and overlays the detections from a given detector configured within the [Vision Service](/services/vision/).
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
@@ -240,8 +240,8 @@ The Detections transform takes the input image and overlays the detections from 
 
 **Attributes:**
 
-- `detector_name`: The name of the detector defined in the [Vision Service](/services/vision).
-- `confidence_threshold`: Specify to only display detections above the specified threshold.
+- `detector_name`: The name of the detector configured in the [Vision Service](/services/vision).
+- `confidence_threshold`: Specify to only display detections above the specified threshold (decimal between 0 and 1).
 
 {{% /tab %}}
 {{% tab name="Depth Edges" %}}
