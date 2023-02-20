@@ -19,7 +19,7 @@ This camera also returns a point cloud.
 On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>fake</code> model.
 <br>
-<img src="../img/create-fake.png" alt="Creation of a join color depth view in the Viam app config builder." />
+<img src="../img/create-fake.png" alt="Creation of a join color depth view in the Viam app config builder." style="max-width:600px" />
 <br>
 Fill in the attributes for your join color depth view:
 <br>

@@ -18,7 +18,7 @@ The transformations are applied in the order they are written in the pipeline.
 On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
 Enter a name for your camera, select the type <code>camera</code>, and select the <code>align_color_depth_extrinsics</code> model.
 <br>
-<img src="../img/create-transform.png" alt="Creation of an transform view in the Viam app config builder." />
+<img src="../img/create-transform.png" alt="Creation of an transform view in the Viam app config builder." style="max-width:500px" />
 <br>
 Fill in the attributes for your transform view:
 <br>
