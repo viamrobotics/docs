@@ -1,0 +1,3 @@
+#! /bin/bash
+
+vale --config .vale.ini $(git diff --diff-filter=d --name-only $1)

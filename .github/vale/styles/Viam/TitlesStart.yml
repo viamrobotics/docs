@@ -1,0 +1,6 @@
+extends: existence
+message: Avoid using the article “%s as the first word in a heading.”
+level: error
+scope: heading
+tokens:
+  - '^(?:a|an|the).+'
