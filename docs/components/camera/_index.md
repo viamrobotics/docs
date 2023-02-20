@@ -11,14 +11,14 @@ icon: "img/components/camera.png"
 ---
 
 A camera component is a source of 2D and/or 3D images.
-You can use the component to configurea webcam, lidar, time-of-flight sensor, or another type of camera.
+You can use the component to configure a webcam, lidar, time-of-flight sensor, or another type of camera.
 
 The API for camera components allows you to:
 
 - Request single images or a stream in 2D color, or display z-depth.
   For a 2D image each pixel has a color value and for z-depth each pixel has a uint16 representing depth in mm.
 
-- Request the next Point Cloud.
+- Request a Point Cloud.
   Each 3D point cloud image consists of a set of coordinates (x,y,z) representing depth in mm.
 
 Most mobile robots with a camera need at least the following hardware:
@@ -50,7 +50,7 @@ For configuration information, click on one of the following models:
 | [`align_color_depth_extrinsics`](align-color-depth-extrinsics) | Uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images. |
 | [`align_color_depth_homography`](align-color-depth-homography) | Uses a homography matrix to align the color and depth images. |
 | [`join_color_depth`](join-pointclouds) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
-| [`join_color_depth`](transform) | A pipeline for applying transformations to an input image source. |
+| [`transform`](transform) | A pipeline for applying transformations to an input image source. |
 
 ## Control your camera with Viam's client SDK libraries
 
@@ -70,7 +70,7 @@ The camera component supports the following methods:
 
 ### GetImage
 
-Get the next image from the camera as an `Image` or `RawImage`.
+Get an image from the camera as an `Image` or `RawImage`.
 Be sure to close the image when finished.
 
 {{< tabs >}}
@@ -127,7 +127,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetPointCloud
 
-Get the next point cloud from the camera as bytes with a mime type describing the structure of the data.
+Get a point cloud from the camera as bytes with a mime type describing the structure of the data.
 The consumer of this call should encode the bytes into the formatted suggested by the mimetype.
 
 To deserialize the returned information into a numpy array, use the Open3D library.
