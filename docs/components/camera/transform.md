@@ -8,7 +8,7 @@ tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-Use the transform model to apply transformation to input source images.
+Use the transform model to apply transformations to input source images.
 The transformations are applied in the order they are written in the pipeline.
 
 {{< tabs name="Example transform view" >}}
@@ -82,8 +82,7 @@ You can use this transform to change the underlying camera source's intrinsic pa
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
-    "type": "identity",
-    "attributes": { }
+    "type": "identity"
 }
 ```
 

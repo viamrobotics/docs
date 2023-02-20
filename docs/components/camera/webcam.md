@@ -3,12 +3,12 @@ title: "Configure a Webcam"
 linkTitle: "Webcam"
 weight: 33
 type: "docs"
-description: "Configure a standard USB camera that streams camera data."
+description: "Configure a standard camera that streams camera data."
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-A `webcam` camera is generally a standard USB camera that streams camera data.
+A `webcam` camera is a standard camera that streams camera data.
 
 {{% alert title="Tip" color="tip"%}}
 

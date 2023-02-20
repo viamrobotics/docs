@@ -16,15 +16,9 @@ You can use the component to configure a webcam, lidar, time-of-flight sensor, o
 The API for camera components allows you to:
 
 - Request single images or a stream in 2D color, or display z-depth.
-  For a 2D image each pixel has a color value and for z-depth each pixel has a uint16 representing depth in mm.
 
-- Request a Point Cloud.
+- Request a point cloud.
   Each 3D point cloud image consists of a set of coordinates (x,y,z) representing depth in mm.
-
-Most mobile robots with a camera need at least the following hardware:
-
-- A board component that can run a viam-server instance.
-  For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
 
 ## Configuration
 
@@ -39,10 +33,10 @@ For configuration information, click on one of the following models:
 
 | Model | Description |
 | ----- | ----------- |
-| [`ffmpeg`](ffmpeg) | Uses a video file or stream as a camera. |
+| [`ffmpeg`](ffmpeg) | Uses a camera, a video file, or a stream as a camera. |
 | [`image_file`](image-file) | Gets color and depth images frames from a file path. |
 | [`velodyne`](velodyne) | Uses velodyne lidar. |
-| [`webcam`](webcam) | A standard USB camera that streams camera data. |
+| [`webcam`](webcam) | A standard camera that streams camera data. |
 | [`fake`](fake) | A camera model for testing. |
 | [`single_stream`](single-stream) | A HTTP server camera that streams image data from an HTTP endpoint. |
 | [`dual_stream`](dual-stream) | A HTTP server camera that combines the streams of two camera servers to create colorful point clouds. |
@@ -64,22 +58,21 @@ The camera component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-| [GetImage](#getimage) | Returns the next image from the camera as an `Image` or a `RawImage`. |
-| [GetPointCloud](#getpointcloud) | Returns the next point cloud from the camera. |
+| [GetImage](#getimage) | Returns an image from the camera encoded in the format specified by the MIME type. |
+| [GetPointCloud](#getpointcloud) | Returns a point cloud from the camera. |
 | [GetProperties](#getproperties) | Returns the camera intrinsic and camera distortion parameters. |
 
 ### GetImage
 
-Get an image from the camera as an `Image` or `RawImage`.
-Be sure to close the image when finished.
+Returns an image from the camera encoded in the format specified by the MIME type.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `mime_type` (`str`): The desired mime type of the image.
-  This does not guarantee output type.
+- `mime_type` (`str`): The MIME type of the image.
+  The returned MIME type is not guaranteed to match the image output type.
 
 **Returns:**
 
@@ -90,6 +83,8 @@ my_cam = Camera.from_robot(robot=robot, name='my_camera')
 
 frame = await my_cam.get_image()
 ```
+
+Be sure to close the image when finished.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.get_image).
 
@@ -103,7 +98,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `stream` ([`gostream.VideoStream`](https://pkg.go.dev/github.com/edaniels/gostream)): TEXT
+- `stream` ([`gostream.VideoStream`](https://pkg.go.dev/github.com/edaniels/gostream)): A `VideoStream` that streams video until closed.
 - `err` ([error](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -127,10 +122,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetPointCloud
 
-Get a point cloud from the camera as bytes with a mime type describing the structure of the data.
-The consumer of this call should encode the bytes into the formatted suggested by the mimetype.
-
-To deserialize the returned information into a numpy array, use the Open3D library.
+Get a point cloud from the camera as bytes with a MIME type describing the structure of the data.
+The consumer of this call should encode the bytes into the formatted suggested by the MIME type.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -142,7 +135,9 @@ To deserialize the returned information into a numpy array, use the Open3D libra
 **Returns:**
 
 - `pointcloud` (`bytes`): The pointcloud data.
-- `mimetype` (`str`): The mime type of the pointcloud (for example PCD).
+- `mimetype` (`str`): The MIME type of the pointcloud (for example PCD).
+
+To deserialize the returned information into a numpy array, use the Open3D library:
 
 ```python {class="line-numbers linkable-line-numbers"}
 import numpy as np
@@ -170,7 +165,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `pointCloud` ([pointcloud.PointCloud](https://pkg.go.dev/go.viam.com/rdk@v0.2.16/pointcloud#PointCloud)): A general purpose container of points.
+- `pointCloud` ([pointcloud.PointCloud](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud)): A general purpose container of points.
   It does not dictate whether or not the cloud is sparse or dense.
 - `err` ([error](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
@@ -190,29 +185,26 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetProperties
 
-Get the next image from the camera as an `Image` or `RawImage`.
-Be sure to close the image when finished.
+Get the camera intrinsic parameters and camera distortion parameters
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `mime_type` (`str`): The desired mime type of the image.
-  This does not guarantee output type.
+- None.
 
 **Returns:**
 
-- `frame` (`Image` or [`RawImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.RawImage)): The requested frame.
+- `properties` ([`Properties`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties)): The properties of the camera.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_cam = Camera.from_robot(robot=robot, name='my_camera')
 
-frame = await my_cam.get_properties()
-frame.close()
+properties = await my_cam.get_properties()
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.get_image).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.get_properties).
 
 {{% /tab %}}
 {{% tab name="Go" %}}

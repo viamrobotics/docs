@@ -3,12 +3,12 @@ title: "Configure a FFmpeg Camera"
 linkTitle: "FFmpeg"
 weight: 30
 type: "docs"
-description: "Configure a camera that uses a video file or stream as a camera."
+description: "Uses a camera, a video file, or a stream as a camera."
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-A `ffmpeg` camera uses a video file or stream as a camera.
+A `ffmpeg` camera uses a canera, a video file, or a stream as a camera.
 
 {{< tabs name="Configure a ffmpeg camera" >}}
 {{< tab name="Config Builder" >}}

@@ -75,8 +75,6 @@ The following attributes are available for single stream cameras:
 If you have a camera that uses its own SDK to access its images and point clouds (like an Intel RealSense camera), you can attach a camera server as a remote component to your robot.
 These remote cameras show up just like regular cameras on your robot.
 
-For more details, check out [our camera server repository](https://github.com/viamrobotics/camera-servers).
-
 ## View the camera stream
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}

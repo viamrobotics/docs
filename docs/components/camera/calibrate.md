@@ -9,11 +9,12 @@ tags: ["camera", "components"]
 
 ### Prerequisites
 
-Install `numpy` and `opencv-python`
+The calibration code uses the `numpy` and `opencv-python` packages.
+To follow along, install the libraries:
 
 ```bash
-pip install numpy
-pip install opencv-python
+pip3 install numpy
+pip3 install opencv-python
 ```
 
 ### Instructions
