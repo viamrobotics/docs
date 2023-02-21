@@ -9,3 +9,4 @@ config_pr.toml
 dist
 tmp
 bin
+.vale.ini

@@ -2,7 +2,7 @@ extends: existence
 message: "Don’t hyphenate words like '%s' unless it’s necessary to avoid confusion."
 link: https://docs.rackspace.com/docs/style-guide/terminology/alphabetical-terms
 ignorecase: true
-level: error
+level: suggestion
 action:
   name: convert
   params:

@@ -2,11 +2,10 @@ extends: existence
 message: "Don't use '%s'."
 link: 'https://docs.rackspace.com/docs/style-guide/terminology/alphabetical-terms'
 ignorecase: true
-level: error
+level: warning
 tokens:
   - abortion
   - and/or
-  - and so on
   - slash mark
   - billion
   - biweekly

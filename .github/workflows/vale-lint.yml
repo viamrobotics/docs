@@ -13,8 +13,9 @@ jobs:
       - uses: errata-ai/vale-action@reviewdog
         with:
           reporter: github-check
+          filter_mode: file
           fail_on_error: true
-          level: warning
+          level: error
           debug: true
         env:
           # Required, set by GitHub actions automatically:

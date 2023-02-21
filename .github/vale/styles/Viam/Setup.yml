@@ -2,7 +2,7 @@
 
 extends: substitution
 message: Use %s instead of “%s”
-level: error
+level: suggestion
 # Use 'setup' (noun) or 'set up' (verb).
 pos: 'setup/VB|set/NN up/\w+|set-up/\w+'
 ignorecase: true
