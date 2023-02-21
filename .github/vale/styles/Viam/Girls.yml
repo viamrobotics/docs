@@ -1,7 +1,7 @@
 extends: existence
 message: "Unless you are referring to children, use the term woman/women."
 ignorecase: true
-level: error
+level: warning
 tokens:
   - girl
   - girls
