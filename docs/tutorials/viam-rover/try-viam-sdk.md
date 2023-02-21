@@ -11,7 +11,7 @@ tags: ["base", "viam rover", "try viam", "sdk", "python"]
     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/daU5iNsSO0w" allowfullscreen></iframe>
 </div>
 
-The Viam SDKs allow you to write code in either Python or Golang to control a [Viam Rover](https://app.viam.com/try).
+The Viam SDKs allow you to write code in either Python or Go to control a [Viam Rover](https://app.viam.com/try).
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
 
 <img src="../../img/try-viam-sdk/image1.gif" alt="Overhead view of the Viam Rover showing it as it drives in a square." width="100%"><br>
@@ -22,7 +22,7 @@ You can also directly see the [complete code for the tutorial](#complete-code).
 
 ## Install a Viam SDK
 
-Install either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer.
+Install either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer.
 
 {{< alert title="Tip" color="tip" >}}
 If you are [renting your rover](https://app.viam.com/try), we recommend that you get the Viam SDK set up before your reservation starts.
@@ -33,7 +33,7 @@ If you are running out of time during your rental, you can [extend your rover re
 
 ## Connect to your Viam Rover
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python** or **Golang**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python** or **Go**.
 
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 
@@ -54,7 +54,7 @@ python3 square.py
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-If using Golang, you need to initialize your project, and install the necessary libraries before running the program.
+If using Go, you need to initialize your project, and install the necessary libraries before running the program.
 
 ```bash
 go mod init square
@@ -142,7 +142,7 @@ async def main():
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 The first thing you need to do is import the [base component](https://pkg.go.dev/go.viam.com/rdk@v0.2.4/components/base#Base).
 The base is responsible for controlling the motors attached to the base of the rover.
@@ -285,7 +285,7 @@ if __name__ == '__main__':
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 package main

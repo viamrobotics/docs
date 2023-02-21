@@ -287,8 +287,8 @@ This is how you configure a multi-axis gantry:
 
 The gantry component supports the following methods:
 
-| Method Name | Golang | Python | Description |
-| ----------- | ------ | ------ | ----------- |
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
 [Position](#position) | [Position][go_gantry]  |  [get_position][python_get_position] | Get the current positions of the axes of the gantry in mm. |
 [MoveToPosition](#movetoposition) | [MoveToPosition][go_gantry] | [move_to_position][python_move_to_position] | Move the axes of the gantry to the desired positions. |
 [Lengths](#lengths) | [Lengths][go_gantry] | [get_lengths][python_get_lengths] | Get the lengths of the axes of the gantry in mm. |
@@ -322,14 +322,14 @@ async def main():
     # Connect to your robot.
     robot = await connect()
 
-    # Log an info message with the names of the different resources that are connected to your robot. 
+    # Log an info message with the names of the different resources that are connected to your robot.
     print('Resources:')
     print(robot.resource_names)
 
     # Connect to your gantry.
     myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
 
-    # Disconnect from your robot. 
+    # Disconnect from your robot.
     await robot.close()
 
 if __name__ == '__main__':
@@ -337,7 +337,7 @@ if __name__ == '__main__':
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go
 import (
@@ -345,12 +345,12 @@ import (
  "go.viam.com/rdk/referenceframe"
 )
 
-func main() { 
+func main() {
 
-  // Create an instance of a logger. 
+  // Create an instance of a logger.
   logger := golog.NewDevelopmentLogger("client")
 
-  // Connect to your robot. 
+  // Connect to your robot.
   robot, err := client.New(
       context.Background(),
       "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE SECURITY TAB OF THE VIAM APP]",
@@ -366,10 +366,10 @@ func main() {
       logger.Fatal(err)
   }
 
-  // Delay closing your connection to your robot until main() exits. 
+  // Delay closing your connection to your robot until main() exits.
   defer robot.Close(context.Background())
 
-  // Log an info message with the names of the different resources that are connected to your robot. 
+  // Log an info message with the names of the different resources that are connected to your robot.
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
 
@@ -411,7 +411,7 @@ positions = await myGantry.get_position()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -434,7 +434,7 @@ if err != nil {
 // Get the current positions of the axes of the gantry in millimeters.
 position, err := myGantry.Position(context.Background(), nil)
 
-// Log any errors that occur. 
+// Log any errors that occur.
 if err != nil {
   logger.Fatalf("cannot get positions of gantry axes: %v", err)
 }
@@ -471,12 +471,12 @@ myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
 # Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multiaxis, with 3 axes.
 examplePositions = [1, 2, 3]
 
-# Move the axes of the gantry to the positions specified. 
+# Move the axes of the gantry to the positions specified.
 await myGantry.move_to_position(positions=examplePositions, world_state=WorldState())
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -501,7 +501,7 @@ if err != nil {
 // Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multiaxis, with 3 axes.
 examplePositions = []float64{1, 2, 3}
 
-// Move the axes of the gantry to the positions specified. 
+// Move the axes of the gantry to the positions specified.
 myGantry.MoveToPosition(context.Background(), examplePositions, referenceframe.WorldState(), nil)
 ```
 
@@ -534,7 +534,7 @@ lengths_mm = await myGantry.get_lengths()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -557,7 +557,7 @@ if err != nil {
 // Get the lengths of the axes of the gantry in millimeters.
 lengths_mm, err := myGantry.Lengths(context.Background(), nil)
 
-// Log any errors that occur. 
+// Log any errors that occur.
 if err != nil {
   logger.Fatalf("cannot get axis lengths of gantry: %v", err)
 }
@@ -578,7 +578,7 @@ Stop all motion of the gantry.
 
 - `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-  
+
 **Returns:**
 
 - None
@@ -593,7 +593,7 @@ await myGantry.stop()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -629,7 +629,7 @@ Get if the gantry is currently moving.
 **Parameters:**
 
 - None
-  
+
 **Returns:**
 
 - `is_moving` [(bool)](https://docs.python.org/c-api/bool.html): If it is true or false that the gantry is currently moving.
@@ -647,7 +647,7 @@ print(myGantry.is_moving())
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 

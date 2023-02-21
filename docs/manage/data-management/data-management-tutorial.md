@@ -41,7 +41,7 @@ The data management setup process will be mostly the same, but you will need to 
 
 {{% /alert %}}
 
-If you are planning on following along with and using the [data export feature to download data captured from your robot locally](#exporting-captured-data-from-the-viam-app), you will also need to install the <a href="https://go.dev/dl/" target="_blank">Golang binary</a> on your local development computer.
+If you are planning on following along with and using the [data export feature to download data captured from your robot locally](#exporting-captured-data-from-the-viam-app), you will also need to install the <a href="https://go.dev/dl/" target="_blank">Go binary</a> on your local development computer.
 We suggest that you install this before your reservation starts to maximize your time with your rover.
 
 ## Enabling data capture with the Data Management service

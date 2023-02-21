@@ -173,14 +173,14 @@ await arm.move_to_position(pose=pos, world_state=worldstate)
 ## Implementation
 
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/arm/index.html)
-- [Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/arm)
+- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/arm)
 
 ## API
 
 The arm component supports the following methods:
 
-| Method Name                   | Golang                 | Python                              | Description                                                            |
-| ----------------------------- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------- |
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
 | [GetEndPosition](#getendposition)                 | [EndPosition][go_arm]       | [get_end_position][python_get_end_position]                 | Get the current position of the arm as a Pose.                                  |
 | [MoveToPosition](#movetoposition) | [MoveToPosition][go_arm]| [move_to_position][python_move_to_position] | Move the end of the arm to the desired Pose. |
 | [MoveToJointPositions](#movetojointpositions)                 | [MoveToJointPositions][go_arm]       | [move_to_joint_positions][python_move_to_joint_positions]                 | Move each joint on the arm to the desired position.                                                      |
@@ -199,7 +199,7 @@ The arm component supports the following methods:
 ### Control your Arm with Viam's Client SDK Libraries
 
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/arm/index.html)
-- [Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/arm)
+- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/arm)
 
 {{% alert title="Note" color="note" %}}
 
@@ -238,7 +238,7 @@ if __name__ == '__main__':
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
@@ -318,7 +318,7 @@ pos = await myArm.get_end_position()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -390,7 +390,7 @@ await myArm.move_to_position(pose=examplePose, world_state=WorldState())
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -466,7 +466,7 @@ await myBase.move_to_joint_positions(positions= jointPos)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -527,7 +527,7 @@ pos = await myArm.get_joint_positions()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -587,7 +587,7 @@ await myArm.stop()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -641,7 +641,7 @@ print(myArm.is_moving())
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
