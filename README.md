@@ -134,7 +134,8 @@ This menu is a list of page sections and also has items to print or open a doc i
 
 ### The Index Files
 
-There are two kinds: index.html and _index.html. The index.html works just as you’d expect. The_index.html is found inside page bundles, which are no more than a self-contained directory having the markdown files and image files under the same directory. We’re using_index.html files.
+There are two kinds: index.html and _index.html.
+The index.html works just as you’d expect. The_index.html is found inside page bundles, which are no more than a self-contained directory having the markdown files and image files under the same directory. We’re using_index.html files.
 The_index.html file act as a landing page into the page bundle (i.e., directory). It lists the page title of each page in the bundle (you can have many pages) and can also display the lead-in paragraph (i.e., the description from the Front Matter) for the page.
 The formatting works identically to MkDocs: it’s still markdown. But Hugo is better at handling basic HTML and the extra HTML that we need for some layout tasks. So now list indenting works as expected.
 

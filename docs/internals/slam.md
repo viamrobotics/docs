@@ -9,9 +9,9 @@ tags: ["slam", "services"]
 # SMEs: Jeremy, Kat
 ---
 
-SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers. At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various cutting edge SLAM algorithms that may be useful in their mission.
+SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers. At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various SLAM algorithms that may be useful in their mission.
 
-As of 01 June 2022, we support the following SLAM libraries:
+As of June 01, 2022, we support the following SLAM libraries:
 
 [ORBSLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
 
@@ -26,7 +26,7 @@ The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ 
 Coming soon!
 
 TODO: Do we want to discuss that RGBD cameras produce a rgb and depth folder inside data?
---> Add an explanation of what kind of subfolders are created for the "mono" case and the "rgbd" case (i.e. rgb, and rgbd + depth). Elaborate on what the user should keep in mind when creating & integrating their own slam libraries, and whether or not it is important for them to document the subfolders that are created.
+--> Add an explanation of what kind of subfolders are created for the "mono" case and the "rgbd" case (that is rgb, and rgbd + depth). Elaborate on what the user should keep in mind when creating & integrating their own slam libraries, and whether or not it is important for them to document the subfolders that are created.
 
 <pre>
 .
@@ -160,7 +160,7 @@ Forthcoming
 
 ## Installation
 
-### Via an App Image
+### Using an App Image
 
 Coming soon!
 

@@ -30,7 +30,7 @@ For example, if you are deploying a specific mobile robot that is always physica
 A frame represents a coordinate system that is used to describe position and orientation.
 The location of a frame is described in relation to its parent frame using rigid transformations rather than in absolute terms.
 
-**Frame System**: A hierarchy of frames that are related to one another via coordinate transformations.
+**Frame System**: A hierarchy of frames that are related to one another through coordinate transformations.
 
 **Model**: A particular implementation of a component type.
 For example, UR5e is a model of the arm component type.
@@ -54,7 +54,7 @@ Typically expressed in JSON.
 
 <a id="remote_anchor" />**Remote**: A robot part which is controlled by another robot part.
 The connection from one part to another part.
-Remotes are established using direct gRPC or gRPC via WebRTC.
+Remotes are established using direct gRPC or gRPC through WebRTC.
 Within a robot, a main part always establishes a remote to each of the other parts associated with the robot.
 When a remote is established, the part establishing the remote will surface all of the other part’s resources as its own.
 A client application connecting to the part will see all of the part’s local resources and remote resources.
@@ -62,7 +62,7 @@ A client application connecting to the part will see all of the part’s local r
 You can establish remotes to parts in different robots.
 However, Viam recommends using a client application to control interaction between robots.
 
-**Remote UI**: Uses the Web JS SDK and provides UI elements to control a robot via WebRTC.
+**Remote UI**: Uses the Web JS SDK and provides UI elements to control a robot using WebRTC.
 
 **Robot**: An organizational concept, consisting of either one _part_, or multiple _parts_ working closely together to complete tasks.
 The robot represents the configuration and entry point for one or more computers (and the components they control) coupled into one logical grouping of parts that work together to complete tasks.
@@ -77,7 +77,7 @@ One main part receiving client application requests and relaying them to the oth
 **Robot Config**: The complete configuration of a single robot part.
 Typically expressed in JSON.
 
-**Robot Part**: A part runs an instance of viam-server to operate underlying resources – hardware components, software services, and any additional processes.
+**Robot Part**: A part runs an instance of viam-server to operate underlying resources such as hardware components, software services, and any additional processes.
 Parts expose a uniform API for their resources.
 
 Every robot has a main part that receives client requests and any number of other parts.
@@ -122,4 +122,4 @@ An algorithm that allows a robot to navigate around a space creating or updating
 
 **Web Sockets**: A computer communications protocol that provides full-duplex communication channels over a single Transmission Control Protocol (TCP) connection.
 
-**WebRTC**: An open source project which provides applications with real-time communication (RTC) via application programming interfaces (API) allowing powerful voice and video integration.
+**WebRTC**: An open source project which provides applications with real-time communication (RTC) using application programming interfaces (API) allowing powerful voice and video integration.

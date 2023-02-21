@@ -19,7 +19,7 @@ Watch this tutorial video for a walkthrough of Try Viam, including [how to reser
     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/YYpZ9CVDwMU" allowfullscreen></iframe>
 </div>
 
-## The **CONTROL** tab
+## **CONTROL** tab
 
 Click on the timer at the top to go to the rental rover's **CONTROL** tab where you can drive the robot and interact with each of the robot's components.
 

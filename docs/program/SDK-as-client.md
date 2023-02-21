@@ -8,7 +8,7 @@ tags: ["client", "sdk"]
 ---
 
 Viam offers SDKs in popular languages which wrap the `viam-server` [gRPC](https://grpc.io/) APIs and streamline connection, authentication, and encryption against a server.
-Using the SDK, you will be able to quickly write code to control and automate your robot(s).
+Using the SDK, you will be able to quickly write code to control and automate your robots.
 
 Viam-server exposes gRPC [APIs for robot controls](https://github.com/viamrobotics/api).
 It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and authentication over those APIs.

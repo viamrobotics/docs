@@ -158,7 +158,7 @@ _2D Object Detection_ is the process of taking a 2D image from a camera and iden
 What an object "is" depends on what is required for the task at hand.
 To accommodate the open-ended-ness of what kind of object a user may need to identify, the service provides different types of detectors, both heuristic and machine-learning based, so that users can create, register, and use detectors suited for their own purposes.
 
-### The Detection API
+### Detection API
 
 Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 
@@ -210,7 +210,7 @@ This attribute is absolutely required.
 The default value is 1.
 * **label_path**: The path to a .txt file that holds class labels for your TFLite model, as a string.
 The SDK expects this text file to contain an ordered listing of the class labels.
-Without this file, classes will read "1", "2", etc.
+Without this file, classes will read "1", "2", and so on
 
 ##### TFLite Model Limitations
 
@@ -224,11 +224,11 @@ These requirements are satisfied by a few publicly available model architectures
 
 ## Classification
 
-_2D Image Classification_ is the process of taking a 2D image from a camera and deciding which class label, out of many, best describes the given image.  Any camera that can return 2D images can use 2D image classification.
+_2D Image Classification_ is the process of taking a 2D image from a camera and deciding which class label, out of many, best describes the given image. Any camera that can return 2D images can use 2D image classification.
 
 Which class labels may be considered for classification varies and will depend on the machine learning model and how it was trained.
 
-### The Classification API
+### Classification API
 
 Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 
@@ -253,15 +253,16 @@ This attribute is absolutely required.
 The default value is 1.
 * **label_path**: The path to a .txt file that holds class labels for your TFLite model, as a string.
 The SDK expects this text file to contain an ordered listing of the class labels.
-Without this file, classes will read "1", "2", etc.
+Without this file, classes will read "1", "2", and so on.
 
 ## Segmentation
 
-_3D Object Segmentation_ is the process of separating and returning a list of the found "objects" from a 3D scene.  The "objects" are a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinate of the object.   Future updates to the service may return more information about the objects.
+_3D Object Segmentation_ is the process of separating and returning a list of the found "objects" from a 3D scene. The "objects" are a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinate of the object.
+Future updates to the service may return more information about the objects.
 
 Any camera that can return 3D pointclouds can use 3D object segmentation.
 
-### The Segmentation API
+### Segmentation API
 
 Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/index.html) documentation for the API.
 
@@ -269,16 +270,16 @@ Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/
 
 The types of segmenters supported are:
 
-* **radius_clustering_segmenter**: Radius\_clustering is a segmenter that finds well separated objects above a flat plane.  It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.  Unfortunately it is a bit slow, and can take up to 30s to segment the scene.
-* **detector_segmenter**: Object segmenters are automatically created from detectors in the vision service.  Any registered detector "x" defined in "register\_models" field or added later to the vision service becomes a segmenter with the name "x\_segmenter".  It begins by finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
+* **radius_clustering_segmenter**: Radius\_clustering is a segmenter that finds well separated objects above a flat plane. It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other. Unfortunately it is a bit slow, and can take up to 30s to segment the scene.
+* **detector_segmenter**: Object segmenters are automatically created from detectors in the vision service. Any registered detector "x" defined in "register\_models" field or added later to the vision service becomes a segmenter with the name "x\_segmenter". It begins by finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
 
 #### Radius Clustering Segmenter parameters
 
-* **min_points_in_plane** is an integer that specifies how many points there must be in a flat surface for it to count as a plane.  This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps.
+* **min_points_in_plane** is an integer that specifies how many points there must be in a flat surface for it to count as a plane. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps.
 * **min_points_in_segment** is an integer that sets a minimum size to the returned objects, and filters out all other found objects below that size.
-* **clustering_radius_mm** is a floating point number that specifies how far apart points can be (in units of  mm) in order to be considered part of the same object.  A small clustering radius will more likely split different parts of a large object into distinct objects.  A large clustering radius may aggregate closely spaced objects into one object.
+* **clustering_radius_mm** is a floating point number that specifies how far apart points can be (in units of mm) in order to be considered part of the same object. A small clustering radius will more likely split different parts of a large object into distinct objects. A large clustering radius may aggregate closely spaced objects into one object.
   * 3.0 is a decent starting value.
-* **mean_k_filtering (optional)** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).  It should be set to be 5-10% of the number of min_points_in_segment.
+* **mean_k_filtering (optional)** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the number of min_points_in_segment.
   * Start with 5% and go up if objects are still too noisy.
   * If you don’t want to use the filtering, set the number to 0 or less.
 
@@ -286,7 +287,7 @@ The types of segmenters supported are:
 
 * **detector_name** is the name of the detector already registered in the vision service that will be turned into a segmenter.
 * **confidence_threshold_pct** is a number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5.
-* **mean_k** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).  It should be set to be 5-10% of the minimum segment size.
+* **mean_k** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size.
   * Start with 5% and go up if objects are still too noisy.
   * If you don’t want to use the filtering, set the number to 0 or less.
 * **sigma** is a floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html).

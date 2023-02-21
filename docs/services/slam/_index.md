@@ -21,7 +21,7 @@ Breaking changes are likely to occur, and occur often.
 SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
 Viam offers users an easy-to-use, intuitive method for interfacing with various cutting-edge SLAM algorithms.
 
-## The Viam SLAM Service
+## Viam SLAM Service
 
 The Viam SLAM Service supports the integration of custom SLAM libraries with the Viam RDK through the SLAM Service API.
 
@@ -48,7 +48,7 @@ Running the SLAM Service with your robot requires the following:
 
 All three are explained in the following using ORB-SLAM3 as the application example.
 
-## The SLAM Library Binary
+## SLAM Library Binary
 
 Download the ORB-SLAM3 binaries into `usr/local/bin`:
 
@@ -174,7 +174,7 @@ You can find details on which inputs you can include for the available libraries
 
 - [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
 
-## The Data Directory
+## Data Directory
 
 A running SLAM service saves the sensor data it uses and the maps and config files it produces locally on the device in the directory as specified in the config as `data_dir`.
 

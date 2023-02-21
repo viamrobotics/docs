@@ -173,7 +173,7 @@ sudo apt upgrade
 
 ## Enabling Specific Communication Protocols on the Raspberry Pi
 
-If you are using hardware that requires I2C, SPI, serial, or one-wire protocols to communicate with your Pi, you will need to enable them via `raspi-config`.
+If you are using hardware that requires I2C, SPI, serial, or one-wire protocols to communicate with your Pi, you will need to enable them using `raspi-config`.
 
 Launch the config tool by running the following command:
 

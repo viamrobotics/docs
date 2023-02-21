@@ -290,7 +290,7 @@ Each of these computer-controlled units is referred to as a _part_.
 Most simple robots will have only one part, but can have as many parts as needed.
 
 Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
-You can access any sub-part either directly, or via any part above it in the tree.
+You can access any sub-part either directly, or through any part above it in the tree.
 Each part runs a single _viam-server_ instance.
 
 ## How to configure a sub-part in the Viam app

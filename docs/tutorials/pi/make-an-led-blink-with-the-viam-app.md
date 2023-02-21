@@ -95,7 +95,7 @@ You can use your multimeter to double-check the resistor value or check yours us
 When hooking up the circuit, note the *polarity* of the LED.
 You will notice that the LED has long and short leads.
 The long lead is the positive side, which is known as the anode, the short lead is the negative side, which is known as the cathode.
-The long anode should be connected to the resistor and the short cathode should be connected to the ground via the blue jumper wire and pin 6 on the Raspberry Pi as shown on the diagram.
+The long anode should be connected to the resistor and the short cathode should be connected to the ground using the blue jumper wire and pin 6 on the Raspberry Pi as shown on the diagram.
 
 ## Configuring your bot using the Viam app
 
@@ -138,7 +138,7 @@ You can play around with values **low** and **high** by setting them differently
 
 Congratulations!
 If you have followed along, you have just successfully used Viam to make an LED blink with a Raspberry Pi!
-Hopefully, you have learned how the GPIO on a Raspberry Pi works, and how to build circuits for LED bulbs.
+You have learned how the GPIO on a Raspberry Pi works, and how to build circuits for LED bulbs.
 
 You are ready for your next robotics project.
 We recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](../make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.

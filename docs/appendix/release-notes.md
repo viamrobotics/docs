@@ -141,7 +141,7 @@ description:
 {{< alert title="Note" color="note" >}}
 This is a breaking change.
 This breaking change affects ALL users who are using the Viam app to configure their robot.
-You will need to update to at the latest version of the RDK (V3.0.0) to access your robot via the remote control page.
+You will need to update to at the latest version of the RDK (V3.0.0) to access your robot using the remote control page.
 {{< /alert >}}
 </td>
         </tr>
@@ -154,7 +154,7 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>Users that are implementing their own arms are now able to supply kinematic information via URDF files.
+            <td>Users that are implementing their own arms are now able to supply kinematic information using URDF files.
             This is a convenience for our users since URDF files are readily available for common hardware. </td>
         </tr>
     <tbody>
@@ -377,7 +377,7 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>We added a new servo model called <code>GPIO</code>. This represents <emphasis>any</emphasis> servo that is connected directly to <emphasis>any</emphasis> board via GPIO pins. We created this component in response to the common practice of connecting servos to separate hats, such as the <code>PCA9685</code>, rather than connecting directly to the board. Our previous implementation required a direct connection from the servo to the Raspberry Pi.</td>
+            <td>We added a new servo model called <code>GPIO</code>. This represents <emphasis>any</emphasis> servo that is connected directly to <emphasis>any</emphasis> board using GPIO pins. We created this component in response to the common practice of connecting servos to separate hats, such as the <code>PCA9685</code>, rather than connecting directly to the board. Our previous implementation required a direct connection from the servo to the Raspberry Pi.</td>
         </tr>
         <tr>
             <td><strong>What does it affect?</strong></td>
@@ -392,7 +392,7 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>We added a new badge in the <code>Current Operations</code> card of the remote control page of the Viam app. This badge lists the RTT (round trip time) of a request from your client to the robot, i.e., the time to complete one request/response cycle.</td>
+            <td>We added a new badge in the <code>Current Operations</code> card of the remote control page of the Viam app. This badge lists the RTT (round trip time) of a request from your client to the robot, that is the time to complete one request/response cycle.</td>
         </tr>
     <tbody>
 </table>

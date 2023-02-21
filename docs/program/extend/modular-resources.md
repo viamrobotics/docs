@@ -95,7 +95,7 @@ Add a modular resource to your robot configuration in three steps:
 ### Make the modular resource available to RDK
 
 In order for the RDK to manage a modular resource, the modular resource must be exposed by a module that is able to be run by the RDK.
-Therefore, you must ensure that any modular resource(s) are made available via a module binary executable in a location that the RDK can access.
+Therefore, you must ensure that any modular resource is made available through a module binary executable in a location that the RDK can access.
 For example, if you are running the RDK on an Raspberry Pi you'll need to have an executable module on the Pi's filesystem.
 
 {{% alert title="Modules vs modular resources" color="tip" %}}
@@ -173,4 +173,4 @@ This means that you can compose a robot of any number of parts running in differ
 Currently, modular resources are supported only with the Viam [Go SDK](https://pkg.go.dev/go.viam.com/rdk).
 We're working to add support to all of our SDKs, but in the meantime, you can add custom components by using the Viam SDK of your choice to [create a custom component implementation server](/program/extend/sdk-as-server/).
 
-Custom models of the [arm](/components/arm) component type are not yet supported (as kinematic information is not currently exposed via the arm API), but support will be added soon.
+Custom models of the [arm](/components/arm) component type are not yet supported (as kinematic information is not currently exposed through the arm API), but support will be added soon.

@@ -8,7 +8,7 @@ tags: ["camera", "components"]
 icon: "img/components/camera.png"
 # SMEs: Bijan, vision team
 ---
-A Viam Camera is a source of 2D and/or 3D images (e.g. a webcam, lidar, time-of-flight sensor, etc). A single image is returned from the camera upon request, and images can be streamed continuously from the camera by using systems that do fast, repeated requests.
+A Viam Camera is a source of 2D and/or 3D images (like a webcam, lidar, or time-of-flight sensor). A single image is returned from the camera upon request, and images can be streamed continuously from the camera by using systems that do fast, repeated requests.
 
 There are two basic things you can do with a camera component:
 
@@ -466,7 +466,7 @@ dual_stream is a model where there are two camera servers streaming data, one is
 
 ## Camera Servers
 
-If you have a camera that uses its own SDK to access its images and point clouds (e.g. an Intel RealSense camera), you can attach a camera server as a remote component to your robot.
+If you have a camera that uses its own SDK to access its images and point clouds (like an Intel RealSense camera), you can attach a camera server as a remote component to your robot.
 These remote cameras will show up just like regular cameras on your robot.
 
 For more details, check out [this link to our camera server repository](https://github.com/viamrobotics/camera-servers).

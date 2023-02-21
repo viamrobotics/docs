@@ -143,7 +143,7 @@ Here are a few use cases:
 Some things GPIO pins *cannot* do:
 
 - Power a motor or other high power draw device directly.
-GPIO pins are built for logic levels of power, i.e., 3.3V and 16mA per pin.
+GPIO pins are built for logic levels of power, that is 3.3V and 16mA per pin.
 Power amplification (a motor driver or relay) would be necessary.
 - Receive signals over 3.3V (or whatever the logic voltage is on a given board).
 

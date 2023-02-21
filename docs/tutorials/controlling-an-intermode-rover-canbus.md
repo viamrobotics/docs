@@ -27,7 +27,7 @@ This tutorial will show how we can both leverage this protocol and abstract it i
 ## Hardware requirements
 
 {{% alert title="Note" color="note"%}}
-Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic project(s).
+Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic projects.
 While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/program/extend/modular-resources/)-based projects.
 {{% /alert %}}
 
@@ -53,7 +53,7 @@ Next, install the PiCAN 2 driver software [following these instructions](https:/
 Always disconnect devices from power before plugging, unplugging or moving wires or otherwise modifying electrical circuits.
 {{% /alert %}}
 
-Power your Raspberry Pi off and attach the PiCAN 2 by aligning the 40 way connector and fitting it to the top of the Pi using a spacer and a screw as per [the instructions](https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi).
+Power your Raspberry Pi off and attach the PiCAN 2 by aligning the 40 way connector and fitting it to the top of the Pi [using a spacer and a screw](https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi).
 
 <img src="../img/intermode/can_terminal_conn.png"  style="float:right;margin-right:12px" alt="PiCAN Terminal Wiring." title="PiCAN Terminal Wiring." width="400" />
 
@@ -68,7 +68,7 @@ You will have two remaining wires (12v and ground).
 
 Connect the remaining two wires to the + (red) and - (black) **input** terminals on your buck converter.
 Attach the USB-C adapter wires to the **output** of your buck converter, and plug the other end of the USB-C adapter into your Pi.
-You can now power up the rover, which will provide power to your Pi and allow it to communicate with the rover via CAN bus!
+You can now power up the rover, which will provide power to your Pi and allow it to communicate with the rover using CAN bus!
 
 <img src="../img/intermode/intermode_wiring.jpg"  style="margin-right:12px" alt="Intermode, Pi Wiring." title="Intermode, Pi Wiring." width="800" />
 
@@ -94,11 +94,11 @@ Since you will conform to an existing Viam API for [base](/components/base), the
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
-Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, a model name of "intermode". So the complete triplet is:
+Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, a model name of "intermode". The complete triplet is:
 **viamlabs:tutorial:intermode**
 
 The [module.go code](https://github.com/viam-labs/tutorial-intermode) creates this model and registers the component instance.
-The *Subtype* of a resource contains its API triplet, so using **base.Subtype** (see line 30 below) registers our new model with the *API* from the RDK's built-in base component (rdk:component:base).
+The *Subtype* of a resource contains its API triplet, so using `base.Subtype` (see line 30 below) registers our new model with the *API* from the RDK's built-in base component (rdk:component:base).
 
 ```go {class="line-numbers linkable-line-numbers"}
 // namespace, model family, model

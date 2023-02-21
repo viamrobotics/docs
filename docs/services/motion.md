@@ -124,10 +124,10 @@ motion.move(component_name=armRes,destination=PoseInFrame(reference_frame="myArm
 
 ### MoveSingleComponent
 
-The `MoveSingleComponent` endpoint, while it looks very similar to the "Move" endpoint above, may result in radically different behavior when called.
+The `MoveSingleComponent` endpoint, while it looks similar to the "Move" endpoint above, may result in radically different behavior when called.
 
 _`MoveSingleComponent` is meant to allow the user to bypass Viam’s internal motion planning entirely, if desired, for a single component._ If the component in question supports the `MoveToPosition` method taking a Pose as a parameter, this call will use the frame system to translate the given destination into the frame of the specified component, and will then call `MoveToPosition` on that one component to move it to the desired location.
-As of 18 October 2022, arms are the only component supported by this feature.
+As of October 18, 2022, arms are the only component supported by this feature.
 
 As the name of the method suggests, only the single component specified by `component_name` will move.
 
@@ -140,7 +140,7 @@ If this method is called with an arm which uses Viam’s motion planning on the 
 
 **`component_name`**: This is the name of the piece of the robot to which `MoveToPosition` should be called with the transformed destination.
 This component must support the `MoveToPosition`API call with a Pose.
-As of 10 October 2022, Arm is the only component so supported.
+As of October 10, 2022, Arm is the only component so supported.
 
 **`destination`**: A `PoseInFrame` describing where the `component_name` should end up.
 This can be any pose, from the perspective of any component whose location is known in the robot’s `FrameSystem`.
@@ -220,8 +220,8 @@ gripperPoseInObjectFrame = await motion.get_pose(
 
 ## Motion Profile Constraints
 
-Currently (18 October 2022), there is no built in, top level way to specify different constraints.
-However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to "motion_profile" via the `extra` parameter, along with individual algorithm variables.
+Currently (October 18, 2022), there is no built in, top level way to specify different constraints.
+However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to "motion_profile" using the `extra` parameter, along with individual algorithm variables.
 This is not available in the Viam app.
 Available constraints all control the topological movement of the moving component along its path.
 
@@ -230,7 +230,7 @@ For a usage example, see [sample code above](#examples).
 The available constraints--linear, psuedolinear, orientation, and free--are covered in the following sub-sections.
 
 {{% alert title="Note" %}}
-The motion profile constraints passed via the `extra` parameter are experimental features.
+The motion profile constraints passed using the `extra` parameter are experimental features.
 Stability is not guaranteed.
 {{% /alert %}}
 
