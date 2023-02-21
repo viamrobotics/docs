@@ -28,6 +28,10 @@ This will build and serve `/public` from a separate, non-Hugo server, at [http:/
 
 `make build-prod && python3 -m http.server 9000 --directory public`
 
+## Vale Linting
+
+When you open a PR, your changes will be checked against a few style rules. To run this check locally, follow the instructions in the [Vale Readme](.github/vale/README.md).
+
 ## Publishing
 
 This is handled automatically by a GitHub Action on push.
