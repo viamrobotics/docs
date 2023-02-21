@@ -43,13 +43,13 @@ Before you get started, ensure that you:
 
 {{% alert title="Tip" color="tip" %}}
 
-You can find more examples of Viam's SDKs on the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1) or the [Golang SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples).
+You can find more examples of Viam's SDKs on the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1) or the [Go SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples).
 
 {{% /alert %}}
 
 ### How to connect to your robot with Viam
 
-The easiest way to get started writing an application with Viam, is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**.
+The easiest way to get started writing an application with Viam, is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
 These code snippets imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
 {{% alert title="Caution" color="caution" %}}

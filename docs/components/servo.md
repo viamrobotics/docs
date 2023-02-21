@@ -113,8 +113,8 @@ The `gpio` model has the following attributes, which are optional to define in y
 
 The servo component supports the following methods:
 
-| Method Name | Golang | Python | Description |
-| ----------- | -------| ------ | ----------- |
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
 | [Move](#move) | [Move][go_servo] | [move][python_move] | Move the servo to the desired angle. |
 | [Position](#position) | [Position][go_servo] | [get_position][python_get_position] | Get the current angle of the servo. |
 | [Stop](#stop) | [Stop][go_servo] | [stop][python_stop] | Stop the servo. |
@@ -127,7 +127,7 @@ The servo component supports the following methods:
 ### Control your servo with Viam's Client SDK Libraries
 
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)
-- [Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/servo)
+- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/servo)
 
 {{% alert title="Note" color="note" %}}
 
@@ -163,7 +163,7 @@ if __name__ == '__main__':
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
@@ -249,7 +249,7 @@ await myServo.move(90)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -314,7 +314,7 @@ pos2 = await myServo.get_position()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -379,7 +379,7 @@ await myServo.stop()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
