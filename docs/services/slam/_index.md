@@ -42,7 +42,7 @@ The timestamp format will be updated to the RFC339 Nano time format (here: `2022
 
 Running the SLAM Service with your robot requires the following:
 
-1. A binary running the custom SLAM library stored in your PATH (e.g., `/usr/local/bin`).
+1. A binary running the custom SLAM library stored in your PATH (like `/usr/local/bin`).
 2. Changes to the config specifying which SLAM library is used, including library specific parameters.
 3. A data folder as it is pointed to by the config parameter `data_dir`.
 
@@ -52,7 +52,7 @@ All three are explained in the following using ORB-SLAM3 as the application exam
 
 Download the ORB-SLAM3 binaries into `usr/local/bin`:
 
-- AArch64 (ARM64) (e.g., on an RPI):
+- AArch64 (ARM64) (use the following command on an RPI):
 
     ```bash
     sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
@@ -128,7 +128,7 @@ This table provides an overview of the different SLAM modes and how to set them.
 
 | Mode | Description |
 | ---- | ----------- |
-| Live | Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM. SLAM runs in live mode if `use_live_data: true` and one or more `sensors` are present. If no sensors are provided, an error will be thrown. |
+| Live | Live mode means that SLAM grabs the most recent sensor readings (like images) from the `sensors` and uses those to perform SLAM. SLAM runs in live mode if `use_live_data: true` and one or more `sensors` are present. If no sensors are provided, an error will be thrown. |
 | Offline | SLAM runs in offline mode if `use_live_data: false`. This means it will look for and process images that are already saved in the `data_dir/data` directory. |
 
 #### Pure Mapping, Pure Localization, and Update Mode

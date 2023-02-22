@@ -27,7 +27,7 @@ The below is a current list of interfaces provided by the Robot Service.
     </tr>
     <tr>
         <td>DiscoverComponents</td>
-        <td>Returns a best-effort configuration for a resource subtype and model that can be discovered on the robot (e.g., webcam on a Pi).</td>
+        <td>Returns a best-effort configuration for a resource subtype and model that can be discovered on the robot (like a webcam on a Pi).</td>
     </tr>
     <tr>
         <td>FrameSystemConfig</td>

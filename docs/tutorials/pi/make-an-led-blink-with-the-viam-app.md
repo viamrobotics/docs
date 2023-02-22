@@ -70,10 +70,10 @@ You can program 26 of the GPIO pins.
 One thing to note that might be confusing with the pin numbering on Raspberry Pis: There are 40 physical pins numbered from 1 to 40.
 That is *board pin numbering*, corresponding to the pin's physical location on the board.
 When working with the GPIO pins with Viam, you will use the board numbers.
-e.g., Pin 1 can be located pretty easily, since Pin 1 is always the pin whose corner is rounded.
+For example, Pin 1 can be located pretty easily, since Pin 1 is always the pin whose corner is rounded.
 
 Then there's numbering them by function or GPIO connection.
-These are the big numbers, e.g. "GPIO 22".
+These are the big numbers, like "GPIO 22".
 These numbers are helpful for understanding the function of each pin.
 
 When in doubt, the website [pinout.xyz](https://pinout.xyz/) is useful for identifying pins.

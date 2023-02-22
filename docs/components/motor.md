@@ -257,7 +257,7 @@ In this particular example the enable pin on the upper left corner of the driver
 
 ### Viam Configuration
 
-Viam supports steppers controlled in one of two ways: a basic stepper driver chip that takes step and DIR input through GPIO and simply moves one step per pulse (for these, use model "gpiostepper"), or more advanced chips (e.g., TMC5072, DMC4000) that have their own microcontrollers that conveniently handle things like speed and acceleration control.
+Viam supports steppers controlled in one of two ways: a basic stepper driver chip that takes step and DIR input through GPIO and simply moves one step per pulse (for these, use model "gpiostepper"), or more advanced chips (like TMC5072, DMC4000) that have their own microcontrollers that conveniently handle things like speed and acceleration control.
 Here’s an example of a basic stepper driver config:
 
 ![motor-gpiostepper-json](../img/motor/motor-gpiostepper-json.png)

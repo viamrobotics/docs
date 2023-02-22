@@ -1,7 +1,7 @@
 extends: substitution
 message: "Consider if '%s' makes sense instead of '%s'."
 link: 'https://docs.google.com/document/d/1-SAcVPWcZHM1Na88d0_k5HVmc3tRtRHgmrXzKD3uF2I/edit'
-level: suggestion
+level: warning
 ignorecase: true
 action:
   name: replace
@@ -9,11 +9,10 @@ swap:
   viam app: Viam app
   Viam App: Viam app
   Viam platform: Viam platform
-  viam: Viam
   Scuttle robot: SCUTTLE Robot
   Scuttle Robot: SCUTTLE Robot
   Viam-server: viam-server
   Viam server: viam-server
   Viam-Server: viam-server
-  Config Tab: Config tab
-  CONFIG tab: Config tab
+  Config Tab: CONFIG tab
+  Config tab: CONFIG tab
