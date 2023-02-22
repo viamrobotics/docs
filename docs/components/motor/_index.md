@@ -13,7 +13,7 @@ aliases:
 ---
 
 Electric motors are the most common form of [actuator](https://en.wikipedia.org/wiki/Actuator) in robotics.
-The Viam *motor* component type natively supports the following models of motor:
+The *motor* component type natively supports the following models of motor:
 
 Model | Supported hardware <a name="model-table"></a>
 ---------- | ------------------
@@ -113,7 +113,8 @@ or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/motor/index
 ### SetPower
 
 Set the "percentage" (between -1 and 1) of power to send to the motor.
-1 is full power; -1 is 100% power backwards.
+1 is 100% power forwards; -1 is 100% power backwards.
+
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -168,8 +169,9 @@ myMotor.SetPower(context.TODO(), 0.4, nil)
 ### GoFor
 
 Spin the motor the specified number of revolutions at specified revolutions per minute.
-When `rpm` or `revolutions` is a negative value, the rotation will be in the backward direction.
-If both `rpm` and `revolutions` are negative, the motor will spin in the forward direction.
+When `rpm` or `revolutions` is a negative value, the motor spins in the backward direction.
+If both `rpm` and `revolutions` are negative, the motor spins in the forward direction.
+
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -336,7 +338,9 @@ myMotor.ResetZeroPosition(context.TODO(), 0.0, nil)
 
 ### GetPosition
 
-Report the position of the motor based on its encoder. The value returned is the number of revolutions relative to its zero position. This method will raise an exception if position reporting is not supported by the motor.
+Report the position of the motor based on its encoder.
+The value returned is the number of revolutions relative to its zero position.
+This method raises an exception if position reporting is not supported by the motor.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -446,7 +450,7 @@ logger.Info(properties)
 
 ### Stop
 
-Turn the power to the motor off immediately, without any gradual step down.
+Cut the power to the motor immediately, without any gradual step down.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
