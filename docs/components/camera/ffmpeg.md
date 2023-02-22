@@ -8,7 +8,7 @@ tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-A `ffmpeg` camera uses a canera, a video file, or a stream as a camera.
+A `ffmpeg` camera uses a camera, a video file, or a stream as a camera.
 
 {{< tabs name="Configure a ffmpeg camera" >}}
 {{< tab name="Config Builder" >}}
