@@ -53,7 +53,7 @@ Method Name | Description
 ## Usage example
 
 The following example assumes you have motors called "motor1" and "motor2" configured as components of your robot.
-If your gantry has a different name, change the `name` in the example.
+If your motor has a different name, change the `name` in the example.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
