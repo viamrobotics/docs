@@ -210,7 +210,7 @@ This attribute is absolutely required.
 The default value is 1.
 * **label_path**: The path to a .txt file that holds class labels for your TFLite model, as a string.
 The SDK expects this text file to contain an ordered listing of the class labels.
-Without this file, classes will read "1", "2", and so on
+Without this file, classes will read "1", "2", and so on.
 
 ##### TFLite Model Limitations
 

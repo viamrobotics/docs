@@ -68,7 +68,7 @@ Viam regenerates this tree in the process of [reconfiguration](/manage/fleet-man
 
 Viam builds this tree by looking at the frame portion of each component in the robot's configuration (including those defined on any remotes) and creating two reference frames.
 
-* One reference frame is given the name of the component and represents the actuator or final link in the component's kinematic chain (e.g., the end of an arm, the platform of a gantry, and so on).
+* One reference frame is given the name of the component and represents the actuator or final link in the component's kinematic chain (for example, the end of an arm, the platform of a gantry, and so on).
 * Viam creates an additional static reference frame whose translation and orientation relative to its parent is provided by the user in configuration. Viam names this reference frame with the component name and the suffix *"_origin"*. For example, "right-arm_<em>origin</em>".
 
 As an example, let's consider an arm on a gantry.

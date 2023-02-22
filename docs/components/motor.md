@@ -9,7 +9,7 @@ icon: "img/components/motor.png"
 # SME: Rand, Jessamy
 ---
 {{% alert title="Note" color="note" %}}
-Information on hobby servos (for example servomotors) is located in the <a href="../servo">Servo Component Document</a>.
+Information on hobby servos is located in the <a href="../servo">Servo Component Document</a>.
 {{% /alert %}}
 Electric motors are the most common form of actuator in robotics.
 The majority of motors used in robotics require a direct current (DC) input.
@@ -89,7 +89,7 @@ There are other ways to interface with motors such as Serial, CAN bus, and Ether
 - A DC motor
 - An appropriate motor driver
   - Takes GPIO signals from the computer and sends the corresponding signals and power to the motor
-  - Selected based on the type of motor (brushed, brushless, or stepper) and its power requirements
+  - Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements
 - An appropriate power supply
   - Note that the logic side of the driver may be powered by 3.3V from the Pi or other device, but the motor power side must not be powered by the computer’s GPIO pins.
     The motor driver should be connected to an independent power supply that can provide the peak current required by the motor.
@@ -116,7 +116,7 @@ The driver data sheet will specify which one to use.
 #### Pins
 
 - PWM/DIR: One digital input (such as a GPIO pin) sends a [pulse width modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
-- In1/In2 (or A/B): One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled by PWM through one or both pins.
+- In1/In2 (or A/B): One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled using PWM through one or both pins.
 - In1/In2 + PWM: Three pins: an In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
 
 {{% alert title="Note" color="note" %}}

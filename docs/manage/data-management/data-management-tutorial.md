@@ -74,7 +74,8 @@ You can choose the components, corresponding methods, and the frequency of the d
 
 {{% alert title="Note" color="note" %}}
 
-We're enabling data capture from a camera for this tutorial, but did you know that you can enable data capture on most [Viam components](/components/)? This allows you to capture not just image data, but sensor data, robot state data, and so on
+We're enabling data capture from a camera for this tutorial, but did you know that you can enable data capture on most [Viam components](/components/)?
+This allows you to capture not just image data, but sensor data, robot state data, and so on.
 
 {{% /alert %}}
 

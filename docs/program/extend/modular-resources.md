@@ -95,7 +95,7 @@ Add a modular resource to your robot configuration in three steps:
 ### Make the modular resource available to RDK
 
 In order for the RDK to manage a modular resource, the modular resource must be exposed by a module that is able to be run by the RDK.
-Therefore, you must ensure that any modular resource is made available through a module binary executable in a location that the RDK can access.
+Therefore, you must ensure that any modular resource is made available with a module binary executable in a location that the RDK can access.
 For example, if you are running the RDK on an Raspberry Pi you'll need to have an executable module on the Pi's filesystem.
 
 {{% alert title="Modules vs modular resources" color="tip" %}}

@@ -221,7 +221,7 @@ gripperPoseInObjectFrame = await motion.get_pose(
 ## Motion Profile Constraints
 
 Currently (October 18, 2022), there is no built in, top level way to specify different constraints.
-However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to "motion_profile" using the `extra` parameter, along with individual algorithm variables.
+However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to "motion_profile" inside the `extra` parameter, along with individual algorithm variables.
 This is not available in the Viam app.
 Available constraints all control the topological movement of the moving component along its path.
 

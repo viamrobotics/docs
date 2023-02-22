@@ -94,7 +94,8 @@ Since you will conform to an existing Viam API for [base](/components/base), the
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
-Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, a model name of "intermode". The complete triplet is:
+Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, a model name of "intermode".
+The complete triplet is:
 **viamlabs:tutorial:intermode**
 
 The [module.go code](https://github.com/viam-labs/tutorial-intermode) creates this model and registers the component instance.

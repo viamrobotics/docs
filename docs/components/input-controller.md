@@ -117,7 +117,8 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 
 ## WebGamepad
 
-This allows a gamepad to be connected remotely, using a browser and the html5 Gamepad API. To use it, add a component to the robot's config like below:
+This allows a gamepad to be connected remotely, using a browser and the HTML5 Gamepad API.
+To use it, add a component to the robot's config as in the example below:
 
 ### Config
 
@@ -139,7 +140,7 @@ You **must** use "WebGamepad" as the `name` of the web gamepad controller. This 
 
 ### Use
 
-When viewing a robot's UI (for example `myrobot.local:8080`) you'll see the WebGamepad component. Connect any compatible gamepad to your PC and press any button/stick (for privacy/security the browser won't report a gamepad until an input has been sent) and you should see the name of your controller appear, and the input displays respond to the controls. When ready, click "Enable" in the upper right to "connect" the controller to the robot, and let it begin receiving inputs.
+When viewing a robot's UI (for example, `myrobot.local:8080`) you'll see the WebGamepad component. Connect any compatible gamepad to your PC and press any button/stick (for privacy/security the browser won't report a gamepad until an input has been sent) and you should see the name of your controller appear, and the input displays respond to the controls. When ready, click "Enable" in the upper right to "connect" the controller to the robot, and let it begin receiving inputs.
 
 ## Mux
 

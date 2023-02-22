@@ -97,7 +97,7 @@ We’ll configure the camera in the Viam app in later steps.
 
 The solenoid component actuates the foam dart launcher trigger.
 The relay works as a switch to turn on and off the solenoid.
-This allows us to activate the foam dart launcher through a GPIO pin on the board.
+This allows us to activate the foam dart launcher with a GPIO pin on the board.
 
 {{% alert title="Note" color="note"%}}
 We cannot directly power these components from GPIO pins, since there is a board limitation that restricts GPIO pins to providing 3.3V and a very limited current supply (16mA).
@@ -146,7 +146,7 @@ For example, by using a common off-the-shelf 15A light switch to actuate a relay
   Right now it receives 5 volts, but some solenoids can support up to 12 volts.
   If necessary, you can connect the solenoid to another power supply such as a 9 volt battery.
   Check the details of your solenoid[^solvolt].
-4. Tape the solenoid in such a manner that it makes good contact with the trigger when activated through the relay.
+4. Tape the solenoid in such a manner that it makes good contact with the trigger when activated with the relay.
 5. Attach all of your components to the base.
 
 [^rb]: If you use the rubber band method, you may need to pull the rubber bands away from the trigger when reloading the foam dart launcher so it can reset and load properly.

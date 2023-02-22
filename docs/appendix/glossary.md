@@ -77,7 +77,7 @@ One main part receiving client application requests and relaying them to the oth
 **Robot Config**: The complete configuration of a single robot part.
 Typically expressed in JSON.
 
-**Robot Part**: A part runs an instance of viam-server to operate underlying resources such as hardware components, software services, and any additional processes.
+**Robot Part**: A part runs an instance of `viam-server` to operate underlying resources such as hardware components, software services, and any additional processes.
 Parts expose a uniform API for their resources.
 
 Every robot has a main part that receives client requests and any number of other parts.
