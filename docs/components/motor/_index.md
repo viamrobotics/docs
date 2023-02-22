@@ -40,25 +40,25 @@ Most robots with a motor need at least the following hardware:
 
 Method Name | Description
 ----------- | -----------
-[SetPower](#setpower) | Sets the "percentage" of power to send to the motor.
+[SetPower](#setpower) | Sets the power to send to the motor as a portion of max power.
 [GoFor](#gofor) | Spins the motor the specified number of revolutions at specified RPM.
 [GoTo](#goto) | Sends the motor to a specified position (in terms of revolutions from home) at a specified speed.
 [ResetZeroPosition](#resetzeroposition) | Sets the current position to be the new zero (home) position.
 [GetPosition](#getposition) | Reports the position of the motor based on its encoder. Not supported on all motors.
 [GetProperties](#getproperties) | Returns whether or not the motor supports certain optional features.
 [Stop](#stop) | Cuts power to the motor off immediately, without any gradual step down.
-[IsPowered](#ispowered) | Returns whether or not the motor is currently on, and the percent power.
+[IsPowered](#ispowered) | Returns whether or not the motor is currently on, and the amount of power to it.
 [IsMoving](#ismoving) | Returns whether the motor is moving or not.
 
 ## Usage example
 
-The following example assumes you have motors called "motor1" and "motor2" configured as components of your robot.
+The following example assumes you have motors called `motor1` and `motor2` configured as components of your robot.
 If your motor has a different name, change the `name` in the example.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Example code should be placed after the `robot = await connect()` function in `main()`.
+Place the example code after the `robot = await connect()` function in `main()`.
 
 ```python
 from viam.components.motor import Motor
@@ -111,15 +111,17 @@ or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/motor/index
 
 ### SetPower
 
-Sets the "percentage" (between -1 and 1) of power to send to the motor.
+Sets the portion of max power to send to the motor (between -1 and 1).
 1 is 100% power forwards; -1 is 100% power backwards.
+
+Power is expressed as a floating point between -1 and 1 that scales between -100% and 100% power.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `power` [(float)](https://docs.python.org/3/library/functions.html#float): Power as a "percentage" of max, between -1 and 1. Negative is backwards.
+- `power` [(float)](https://docs.python.org/3/library/functions.html#float): Portion of full power to send to the motor expressed as a floating point between -1 and 1. 1 is 100% power forwards; -1 is 100% power backwards.
 
 **Returns:**
 
@@ -142,7 +144,7 @@ await myMotor.set_power(power = 0.4)
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `powerPct` [(float64)](https://pkg.go.dev/builtin#float64): Power as a "percentage" of max, between -1 and 1. Negative is backwards.
+- `powerPct` [(float64)](https://pkg.go.dev/builtin#float64): Portion of full power to send to the motor expressed as a floating point between -1 and 1. 1 is 100% power forwards; -1 is 100% power backwards.
 - `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -499,7 +501,7 @@ myMotor.Stop(context.TODO(), nil)
 
 ### IsPowered
 
-Returns whether or not the motor is currently running, and the percent power (between 0 and 1; if the motor is off the percent power will be 0).
+Returns whether or not the motor is currently running, and the portion of max power (between 0 and 1; if the motor is off the power will be 0).
 Stepper motors will report `true` if they are being powered while holding a position, as well as when they are turning.
 
 {{< tabs >}}
@@ -511,7 +513,8 @@ Stepper motors will report `true` if they are being powered while holding a posi
 
 **Returns:**
 
-- [tuple](https://docs.python.org/3/library/stdtypes.html#tuple)[[bool](https://docs.python.org/3/library/functions.html#bool), [float](https://docs.python.org/3/library/functions.html#float)]: The bool is true if the motor is currently running; false if not. The float represents the current power percentage of the motor (between 0 and 1).
+- [tuple](https://docs.python.org/3/library/stdtypes.html#tuple)[[bool](https://docs.python.org/3/library/functions.html#bool), [float](https://docs.python.org/3/library/functions.html#float)]: The bool is true if the motor is currently running; false if not.
+The float represents the current portion of max power to the motor (between 0 and 1).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_powered).
 
@@ -536,7 +539,7 @@ print('Powered:', powered)
 **Returns:**
 
 - [(bool)](https://pkg.go.dev/builtin#bool): True if the motor is currently running; false if not.
-- [(float64)](https://pkg.go.dev/builtin#float64): The current power percentage of the motor (between 0 and 1).
+- [(float64)](https://pkg.go.dev/builtin#float64): The current portion of max power to the motor (between 0 and 1).
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
