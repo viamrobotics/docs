@@ -394,6 +394,7 @@ Name | Type | Default Value | Description
 ### ADXL345
 
 The ADXL345 sensor manufactured by Analog Devices is a 3 axis accelerometer.
+It supplies linear acceleration data about the three axes, supporting the `LinearAcceleration` method.
 Calling `GetReadings` (a method supported by all [sensor components](/components/sensor/)) on it will yield linear acceleration data.
 
 Configure this sensor with type `movement_sensor` and model `accel-adxl345` as well as a board component with an I<sup>2</sup>C bus:
@@ -439,7 +440,7 @@ Name | Type | Default Value | Description
 ### MPU6050
 
 The [MPU6050 sensor manufactured by TDK InvenSense](https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/) is a combination accelerometer and gyroscope.
-It supplies angular velocity data about the three axes, supporting the `AngularVelocity` method.
+It supplies linear acceleration and angular velocity data about the three axes, supporting the `AngularVelocity` and  `LinearAcceleration` methods.
 It also supplies linear acceleration data in three directions.
 The linear acceleration data (as well as all the other data from the MPU6050) can be accessed using the `GetReadings` method from the more general [sensor component](/components/sensor/), which movement sensors wrap.
 Unlike the IMUs listed above, it does not contain magnetometers or provide orientation data.
