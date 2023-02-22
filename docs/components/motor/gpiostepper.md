@@ -1,9 +1,9 @@
 ---
-title: "Configure a `gpiostepper` motor"
+title: "Configure a gpiostepper motor"
 linkTitle: "gpiostepper"
 weight: 20
 type: "docs"
-description: "How to configure a motor with model `gpiostepper`"
+description: "Configure a stepper motor with a basic driver."
 # SMEs: Rand, James
 ---
 

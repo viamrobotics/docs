@@ -3,7 +3,7 @@ title: "Configure a fake motor"
 linkTitle: "fake"
 weight: 70
 type: "docs"
-description: "How to configure a motor with model `fake`"
+description: "Configure a fake motor to test software without any hardware."
 # SMEs: Rand, James
 ---
 

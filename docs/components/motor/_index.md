@@ -28,10 +28,9 @@ Click the model names above for configuration information.
 
 Most robots with a motor need at least the following hardware:
 
-- The motor itself
-- A compatible motor driver
-  - Takes signals from the computer and sends the corresponding signals and power to the motor.
-    Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements.
+- The motor itself.
+- A compatible motor driver. This takes signals from the computer and sends the corresponding signals and power to the motor.
+  Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements.
 - A [board component](https://docs.viam.com/components/board/) to send signals to the motor driver[^dmcboard].
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
 
@@ -41,10 +40,10 @@ Most robots with a motor need at least the following hardware:
 
 Method Name | Description
 ----------- | -----------
-[SetPower](#setpower) | Set the "percentage" of power to send to the motor.
-[GoFor](#gofor) | Spin the motor the specified number of revolutions at specified RPM.
-[GoTo](#goto) | Send the motor to a specified position (in terms of revolutions from home) at a specified speed.
-[ResetZeroPosition](#resetzeroposition) | Set the current position to be the new zero (home) position.
+[SetPower](#setpower) | Sets the "percentage" of power to send to the motor.
+[GoFor](#gofor) | Spins the motor the specified number of revolutions at specified RPM.
+[GoTo](#goto) | Sends the motor to a specified position (in terms of revolutions from home) at a specified speed.
+[ResetZeroPosition](#resetzeroposition) | Sets the current position to be the new zero (home) position.
 [GetPosition](#getposition) | Reports the position of the motor based on its encoder. Not supported on all motors.
 [GetProperties](#getproperties) | Returns whether or not the motor supports certain optional features.
 [Stop](#stop) | Cuts power to the motor off immediately, without any gradual step down.
@@ -112,9 +111,8 @@ or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/motor/index
 
 ### SetPower
 
-Set the "percentage" (between -1 and 1) of power to send to the motor.
+Sets the "percentage" (between -1 and 1) of power to send to the motor.
 1 is 100% power forwards; -1 is 100% power backwards.
-
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -168,10 +166,9 @@ myMotor.SetPower(context.TODO(), 0.4, nil)
 
 ### GoFor
 
-Spin the motor the specified number of revolutions at specified revolutions per minute.
+Spins the motor the specified number of revolutions at specified revolutions per minute.
 When `rpm` or `revolutions` is a negative value, the motor spins in the backward direction.
 If both `rpm` and `revolutions` are negative, the motor spins in the forward direction.
-
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -204,8 +201,8 @@ await myMotor.go_for(rpm=60, revolutions=7.2)
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `rpm` [(float64)](https://pkg.go.dev/builtin#float64): Speed at which the motor should move in revolutions per minute (negative implies backwards).
 - `revolutions` [(float64)](https://pkg.go.dev/builtin#float64): Number of revolutions the motor should run for (negative implies backwards).
-  If revolutions is 0, this will run the motor at `rpm` indefinitely.
-  If revolutions != 0, this will block until the number of revolutions has been completed or another operation comes in.
+  If revolutions is 0, this runs the motor at `rpm` indefinitely.
+  If revolutions != 0, this blocks until the number of revolutions has been completed or another operation comes in.
 - `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -228,9 +225,9 @@ myMotor.GoFor(context.TODO(), 60, 7.2, nil)
 
 ### GoTo
 
-Turn the motor to a specified position (in terms of revolutions from home/zero) at a specified speed in revolutions per minute (RPM).
+Turns the motor to a specified position (in terms of revolutions from home/zero) at a specified speed in revolutions per minute (RPM).
 Regardless of the directionality of the `rpm`, the motor will move towards the specified target position.
-This will block until the position has been reached.
+This blocks until the position has been reached.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

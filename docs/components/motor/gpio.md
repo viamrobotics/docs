@@ -4,7 +4,7 @@ title: "Configure a gpio motor"
 linkTitle: "gpio"
 weight: 10
 type: "docs"
-description: "How to configure a motor with model `gpio`"
+description: "Configure brushed or brushless DC motors."
 # SMEs: Rand, James
 ---
 
