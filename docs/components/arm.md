@@ -153,7 +153,105 @@ Supported arm models include:
 - `fake`: [no physical hardware - see Viam GitHub](https://github.com/viamrobotics/rdk/tree/main/components/arm/fake)
 - `wrapper_arm`: [implementation that wraps a partially implemented arm - see Viam GitHub](https://github.com/viamrobotics/rdk/tree/main/components/arm/wrapper)
 
+<<<<<<< HEAD
 ## Code Examples
+=======
+1. First perform a linear movement 300mm +X from its starting point, then a linear movement back to the starting point, assuming the +300mm position is within the arm's workspace.
+If you have trouble with this, try starting the arm in the home position.
+1. Next, it will define an obstacle along the straight-line path between the start and the same goal from above.
+It will then call the Viam Motion Service to move the arm (rather than `arm.move_to_position`), which is able to route around the hypothetical obstacle. It will return to the starting point, again routing around the obstacle.
+1. Finally, it will call `arm.move_to_position` to the goal as in the first movement, but this time passing the obstacle.
+As there is no straight-line path to the goal that does not intersect the obstacle, this request will fail with a "unable to solve for position" GRPC error.
+
+``` python
+arm = Arm.from_robot(robot=robot, name="xArm6")
+pos = await arm.get_end_position()
+
+print("~~~~TESTING ARM LINEAR MOVE~~~~~")
+pos = await arm.get_end_position()
+print(pos)
+pos.x += 300
+# Note we are passing an empty worldstate
+await arm.move_to_position(pose=pos, world_state=WorldState())
+pos = await arm.get_end_position()
+print(pos)
+pos.x -= 300
+await asyncio.sleep(1)
+await arm.move_to_position(pose=pos, world_state=WorldState())
+
+print("~~~~TESTING MOTION SERVICE MOVE~~~~~")
+
+geom = Geometry(
+    center=Pose(x=pos.x + 150, y=pos.y, z=pos.z),
+    box=RectangularPrism(width_mm=2, length_mm=5, depth_mm=5),
+)
+geomFrame = GeometriesInFrame(reference_frame="xArm6", geometries=[geom])
+worldstate = WorldState(obstacles=[geomFrame])
+
+pos = await arm.get_end_position()
+jpos = await arm.get_joint_positions()
+print(pos)
+print("joints", jpos)
+pos.x += 300
+
+for resname in robot.resource_names:
+    if resname.name == "xArm6":
+        armRes = resname
+
+# We pass the WorldState above with the geometry. The arm should successfully route around it.
+await motionServ.move(
+    component_name=armRes,
+    destination=PoseInFrame(reference_frame="world", pose=pos),
+    world_state=worldstate,
+)
+pos = await arm.get_end_position()
+jpos = await arm.get_joint_positions()
+print(pos)
+print("joints", jpos)
+pos.x -= 300
+await asyncio.sleep(1)
+await motionServ.move(
+    component_name=armRes,
+    destination=PoseInFrame(reference_frame="world", pose=pos),
+    world_state=worldstate,
+)
+
+print("~~~~TESTING ARM MOVE- SHOULD FAIL~~~~~")
+pos = await arm.get_end_position()
+print(pos)
+pos.x += 300
+# We pass the WorldState above with the geometry. As arm.move_to_position will enforce linear motion, this should fail
+# since there is no linear path from start to goal that does not intersect the obstacle.
+await arm.move_to_position(pose=pos, world_state=worldstate)
+
+```
+
+## Implementation
+
+- [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/arm/index.html)
+- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/arm)
+
+## API
+
+The arm component supports the following methods:
+
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
+| [GetEndPosition](#getendposition)                 | [EndPosition][go_arm]       | [get_end_position][python_get_end_position]                 | Get the current position of the arm as a Pose.                                  |
+| [MoveToPosition](#movetoposition) | [MoveToPosition][go_arm]| [move_to_position][python_move_to_position] | Move the end of the arm to the desired Pose. |
+| [MoveToJointPositions](#movetojointpositions)                 | [MoveToJointPositions][go_arm]       | [move_to_joint_positions][python_move_to_joint_positions]                 | Move each joint on the arm to the desired position.                                                      |
+| [GetJointPositions](#getjointpositions)                 | [GetJointPositions][go_arm]       | [get_joint_positions][python_get_joint_positions]                 | Get the current position of each joint on the arm.                                                       |
+| [Stop](#stop)                 | [Stop][go_arm]       | [stop][python_stop]                 | Stop the arm from moving.                                                       |
+| [IsMoving](#stop)                 | [IsMoving][go_arm]       | [is_moving][python_is_moving]                 | Get if the arm is currently moving.                                                       |
+
+[go_arm]: https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm
+[python_get_end_position]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_end_position
+[python_move_to_position]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.move_to_position
+[python_move_to_joint_positions]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.move_to_joint_positions
+[python_get_joint_positions]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_joint_positions
+[python_stop]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.stop
+[python_is_moving]: https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.is_moving
+>>>>>>> 370c656 (Add Service capitalization rules)
 
 ### Control your Arm with Viam's Client SDK Libraries
 

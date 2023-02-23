@@ -391,7 +391,7 @@ The Detections transform takes the input image and overlays the detections from 
 {
     "type": "detections",
     "attributes": {
-        "detector_name": string, # the name within the vision service
+        "detector_name": string, # the name within the Vision Service
         "confidence_threshold": float # only display detections above threshold
     }
 }

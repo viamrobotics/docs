@@ -3,7 +3,7 @@ title: "Motion Service"
 linkTitle: "Motion"
 weight: 40
 type: "docs"
-description: "Explanation of the motion service, its configuration, and its functionality."
+description: "Explanation of the Motion Service, its configuration, and its functionality."
 tags: ["motion", "motion planning", "services"]
 # SME: Peter Lo Verso
 ---
@@ -21,7 +21,7 @@ Viam’s Motion Service is enabled in RDK by default, and no extra configuration
 ### Move
 
 The "Move" endpoint is the primary way to move multiple components, or to move any object to any other location.
-Given a destination pose and a component to move to that destination, the motion service will construct a full kinematic chain from goal to destination including all movable components in between, and will solve that chain to place the goal at the destination while meeting specified constraints.
+Given a destination pose and a component to move to that destination, the Motion Service will construct a full kinematic chain from goal to destination including all movable components in between, and will solve that chain to place the goal at the destination while meeting specified constraints.
 It will then execute that movement to move the actual robot, and return whether or not this process succeeded.
 The volumes associated with all configured robot parts (local and remote) will be taken into account for each request to ensure that collisions do not occur.
 
@@ -178,7 +178,7 @@ This new frame system will build off the robot's frame system and will incorpora
 If the result of adding the `Transforms` will result in a disconnected frame system an error will be thrown.
 
 **`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they wish to pass to their own motion planning implementation.
-This parameter is not used for anything in the built-in motion service.
+This parameter is not used for anything in the built-in Motion Service.
 
 #### Example
 

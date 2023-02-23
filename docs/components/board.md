@@ -67,7 +67,7 @@ Refer to the following example configuration file for a single-board computer li
 {{< tabs name="Example Board Config" >}}
 {{% tab name="Config Builder" %}}
 
-![An example of configuration for a single-board computer in the Viam App config builder.](../img/board/board-config-ui.png)
+![An example of configuration for a single-board computer in the Viam app config builder.](../img/board/board-config-ui.png)
 
 {{% /tab %}}
 {{% tab name="Template JSON" %}}

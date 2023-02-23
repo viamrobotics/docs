@@ -4,7 +4,7 @@ linkTitle: "SLAM Technical"
 weight: 70
 type: "docs"
 draft: true
-description: "Background and technical information for the Viam SLAM service, its configuration, its functionality, and its interfaces."
+description: "Background and technical information for the Viam SLAM Service, its configuration, its functionality, and its interfaces."
 tags: ["slam", "services"]
 # SMEs: Jeremy, Kat
 ---
@@ -17,7 +17,7 @@ As of June 01, 2022, we support the following SLAM libraries:
 
 ## Current Architecture
 
-The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above. It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
+The SLAM Service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above. It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
 
 <img src="../img/slam-service-arch.png"/>
 
@@ -73,7 +73,7 @@ Current options are cartographer or orbslamv3.
 
 **data_dir** (string): This is the data directory used for saving input sensor/map data and output maps/visualizations.
 It has an architecture consisting of three internal folders, config, data and map.
-If these have not been provided, they will be created by the SLAM service.
+If these have not been provided, they will be created by the SLAM Service.
 The data in the data directory also dictate what type of SLAM will be run:
 
 - If no map is provided in the data folder, the SLAM algorithm will generate a new map using all the provided data (PURE MAPPING MODE)

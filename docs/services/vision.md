@@ -3,16 +3,16 @@ title: "Vision Service"
 linkTitle: "Vision"
 weight: 90
 type: "docs"
-description: "Explanation of the vision service, its configuration, and its functionality."
+description: "Explanation of the Vision Service, its configuration, and its functionality."
 tags: ["vision", "computer vision", "CV", "services"]
 # SMEs: Bijan, Khari
 ---
 ## Intro and Summary
 
-The vision service enables the robot to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
+The Vision Service enables the robot to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
 We're here to help you with everything that happens _after_ you have your image data.
 
-Currently, there are three operations available through the vision service:
+Currently, there are three operations available through the Vision Service:
 
 * **Detection (or 2D object detection)**: Allows a user to get bounding boxes around identified objects in a 2D image according to a user-defined algorithm. Many detection algorithms also include class label and confidence as output.
 
@@ -20,7 +20,7 @@ Currently, there are three operations available through the vision service:
 
 * **Segmentation (or 3D object segmentation)**: Allows a user to get point clouds of identified objects in a 3D image according to a user-defined algorithm.
 
-The vision service is a default service on the robot, and can be initialized without attributes.
+The Vision Service is a default service on the robot, and can be initialized without attributes.
 
 {{% alert title="Tip" color="tip" %}}
 To read code examples of how to use Viam's Vision Service with the Viam Python and Go SDKs, checkout our example repo: <a href="https://github.com/viamrobotics/vision-service-examples" target="_blank">ht<span></span>tps://github.com/viamrobotics/vision-service-examples</a>
@@ -42,7 +42,7 @@ More about the parameters and model types can be found under the corresponding o
 
 ## Configuring your VisModels with the Viam app
 
-To add a vision model to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the "register_models" field in the attributes field of the vision service config. If you're using the "Config > Services" tab on Viam, you'll see that adding a vision service invites you to directly fill in the "attributes."
+To add a vision model to your robot, you need to add the _name_, _type_, and _parameters_ of the desired detector to the "register_models" field in the attributes field of the Vision Service config. If you're using the "Config > Services" tab on Viam, you'll see that adding a Vision Service invites you to directly fill in the "attributes."
 
 ``` json
 "services": [
@@ -77,7 +77,7 @@ To add a vision model to your robot, you need to add the _name_, _type_, and _pa
 
 ## Getting started with Vision Services and the Viam SDK
 
-In the snippet below, we are getting the robot’s vision service and then running a color detector vision model on an image, verifying that the color detector vision service is on the robot, and then applying the color detector to the image from the camera.
+In the snippet below, we are getting the robot’s Vision Service and then running a color detector vision model on an image, verifying that the color detector Vision Service is on the robot, and then applying the color detector to the image from the camera.
 
 {{% alert title="Note" color="note" %}}
 These code snippets expect you to have a camera named "camera_1" configured as a component of your robot.
@@ -91,7 +91,7 @@ from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelTy
 
 vision = VisionServiceClient.from_robot(robot)
 
-# Add a color detector to the vision service and verify that it is there.
+# Add a color detector to the Vision Service and verify that it is there.
 colorDetParams = {"detect_color": "#7ba4a5", "hue_tolerance_pct": 0.06, "segment_size_px": 200}
 colorDet = VisModelConfig(name="detector_1", type=VisModelType("color_detector"), parameters=colorDetParams)
 await vision.add_detector(colorDet)
@@ -113,10 +113,10 @@ import (
 
 visService, err := vision.FirstFromRobot(robot)
 if err != nil {
-    logger.Fatalf("cannot get vision service: %v", err)
+    logger.Fatalf("Cannot get Vision Service: %v", err)
 }
 
-// Add a color detector to the vision service and verify that it is there.
+// Add a color detector to the Vision Service and verify that it is there.
 err = visService.AddDetector(context.Background(),
 vision.VisModelConfig{
     Name: "detector_1",
@@ -133,7 +133,7 @@ if err != nil {
 }
 detNames, err := visService.DetectorNames(context.Background(), nil)
 if err != nil {
-    logger.Fatalf("could not list detectors: %v", err)
+    logger.Fatalf("Could not list detectors: %v", err)
 }
 logger.Info("Vision Resources:")
 logger.Info(detNames)
@@ -141,7 +141,7 @@ logger.Info(detNames)
 // Apply the color detector to the image from your camera (configured as "camera_1")
 detections, err := visService.DetectionsFromCamera(context.Background(), "camera_1", "detector_1", nil)
 if err != nil {
-    logger.Fatalf("could not get detections: %v", err)
+    logger.Fatalf("Could not get detections: %v", err)
 }
 if len(detections) > 0 {
     logger.Info(detections[0])
@@ -271,7 +271,7 @@ Check out the [Python SDK](https://python.viam.dev/autoapi/viam/services/vision/
 The types of segmenters supported are:
 
 * **radius_clustering_segmenter**: Radius\_clustering is a segmenter that finds well separated objects above a flat plane. It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other. Unfortunately it is a bit slow, and can take up to 30s to segment the scene.
-* **detector_segmenter**: Object segmenters are automatically created from detectors in the vision service. Any registered detector "x" defined in "register\_models" field or added later to the vision service becomes a segmenter with the name "x\_segmenter". It begins by finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
+* **detector_segmenter**: Object segmenters are automatically created from detectors in the Vision Service. Any registered detector "x" defined in "register\_models" field or added later to the Vision Service becomes a segmenter with the name "x\_segmenter". It begins by finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
 
 #### Radius Clustering Segmenter parameters
 
@@ -285,7 +285,7 @@ The types of segmenters supported are:
 
 #### Detector Segmenters
 
-* **detector_name** is the name of the detector already registered in the vision service that will be turned into a segmenter.
+* **detector_name** is the name of the detector already registered in the Vision Service that will be turned into a segmenter.
 * **confidence_threshold_pct** is a number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5.
 * **mean_k** is an integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size.
   * Start with 5% and go up if objects are still too noisy.

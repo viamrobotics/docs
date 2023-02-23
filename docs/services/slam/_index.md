@@ -4,13 +4,13 @@ linkTitle: "SLAM"
 weight: 70
 draft: false
 type: "docs"
-description: "Explanation of the SLAM service, its configuration, and its functionality."
+description: "Explanation of the SLAM Service, its configuration, and its functionality."
 tags: ["slam", "services"]
 # SMEs: Kat, Jeremy
 ---
 
 {{% alert title="Note" color="note" %}}
-The SLAM service is an experimental feature.
+The SLAM Service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
@@ -72,7 +72,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 
 ## Configuration Overview
 
-To add the SLAM service to your robot, you need to add the _name_, _type_, _model_, and SLAM library specific _attributes_ to the configuration of your robot.
+To add the SLAM Service to your robot, you need to add the _name_, _type_, _model_, and SLAM library specific _attributes_ to the configuration of your robot.
 
 The following is an example configuration for running ORB-SLAM3 in live `rgbd` mode on your robot, if it has two [camera streams](/components/camera/#camera-models) available: `"color"` for RGB images, and `"depth"` for depth data.
 
@@ -151,7 +151,7 @@ You can find more information on the `mode` in the description of the integrated
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. |
+| `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM Service creates it. |
 | `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in live mode. If the array is empty, SLAM runs in offline mode. |
 | `use_live_data` |  bool | This specifies whether to run in live mode (true) or offline mode (false). If `use_live_data: true` and `sensors: []`, an error will be thrown. If this parameter is set to true and no sensors are provided, SLAM will produce an error. |
 
@@ -176,7 +176,7 @@ You can find details on which inputs you can include for the available libraries
 
 ## Data Directory
 
-A running SLAM service saves the sensor data it uses and the maps and config files it produces locally on the device in the directory as specified in the config as `data_dir`.
+A running SLAM Service saves the sensor data it uses and the maps and config files it produces locally on the device in the directory as specified in the config as `data_dir`.
 
 To recap, the directory must be structured as follows:
 
@@ -193,7 +193,7 @@ To recap, the directory must be structured as follows:
 - `config` contains all SLAM library specific config files.
 
 {{% alert title="Note" color="note" %}}
-If this directory structure is not present, the SLAM service creates it.
+If this directory structure is not present, the SLAM Service creates it.
 {{% /alert %}}
 
 The data present in the map subdirectory dictates SLAM's mode at runtime:

@@ -49,7 +49,7 @@ description:
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>RDK now natively supports the AM5 encoder. This is the encoder that is included in the scuttle robot.
+            <td>RDK now natively supports the AM5 encoder. This is the encoder that is included in the SCUTTLE Robot.
             </td>
         </tr>
     <tbody>
@@ -206,16 +206,16 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>We made several improvements to the motion service that make it agnostic to the networking topology of a users robot.</td>
+            <td>We made several improvements to the Motion Service that make it agnostic to the networking topology of a users robot.</td>
         </tr>
         <tr>
             <td><strong>What does it affect?</strong></td>
             <td>
                 <ol>
                     <li>Kinematic information is now transferred over the robot API.
-                    This means that the motion service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote <code>viam-server</code>.</li>
-                    <li>Arms are now an input to the motion service.
-                    This means that the motion service can plan for a robot that has an arm component regardless of whether the arm is on a main or remote <code>viam-server</code>.</li>
+                    This means that the Motion Service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote <code>viam-server</code>.</li>
+                    <li>Arms are now an input to the Motion Service.
+                    This means that the Motion Service can plan for a robot that has an arm component regardless of whether the arm is on a main or remote <code>viam-server</code>.</li>
                 </ol>
             </td>
         </tr>
@@ -453,11 +453,11 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>Adding dependencies to services allows Viam to initialize and configure resources in the correct order. For example, if the SLAM service depends on a LiDAR, it will always initialize the LiDAR before the service.</td>
+            <td>Adding dependencies to services allows Viam to initialize and configure resources in the correct order. For example, if the SLAM Service depends on a LiDAR, it will always initialize the LiDAR before the service.</td>
         </tr>
         <tr>
             <td><strong>What does it affect?</strong></td>
-            <td><strong>Breaking Change</strong>: This impacts users of the SLAM service. Users must now specify which sensors they are using in the <code>depends_on</code> field of the SLAM configuration.
+            <td><strong>Breaking Change</strong>: This impacts users of the SLAM Service. Users must now specify which sensors they are using in the <code>depends_on</code> field of the SLAM configuration.
             Other service configurations are not affected.</td>
         </tr>
     <tbody>

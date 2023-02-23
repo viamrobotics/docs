@@ -224,7 +224,7 @@ viam robot status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Ro
 viam robot part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --tail true
 
-# stream classifications from a robot part every 500 milliseconds from the Viam vision service with classifier "stuff_detector"
+# stream classifications from a robot part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
 viam robot part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --stream 500ms \
 --data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \

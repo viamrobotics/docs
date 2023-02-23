@@ -33,7 +33,7 @@ If you are running out of time during your rental, you can [extend your rover re
 
 ## Connect to your Viam Rover
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python** or **Go**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python** or **Go**.
 
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 
@@ -347,6 +347,6 @@ Can you make it move in a circle?
 A figure-eight?
 You could also write some code to control the other components on the Viam Rover, like the [camera](/components/camera/), or the rover's [motors](/components/motor/).
 
-You could also control Viam's services, by adding [data management](/manage/data-management/) to collect data in real time or [vision services](/services/vision/) to [add color detection to your Rover](/tutorials/viam-rover/try-viam-color-detection/).
+You could also control Viam's services, by adding [data management](/manage/data-management/) to collect data in real time or [Vision Services](/services/vision/) to [add color detection to your Rover](/tutorials/viam-rover/try-viam-color-detection/).
 
 If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure to head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).

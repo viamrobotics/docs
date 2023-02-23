@@ -43,7 +43,7 @@ This is how you configure a one-axis gantry:
 {{< tabs name="Example Gantry Config One-Axis" >}}
 {{< tab name="Config Builder" >}}
 
-<img src="../img/gantry/gantry-config-ui-oneaxis.png" alt="Example of what configuration for a one-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
+<img src="../img/gantry/gantry-config-ui-oneaxis.png" alt="Example of what configuration for a one-axis gantry component looks like in the Viam app config builder." style="width:100%"/>
 
 {{< /tab >}}
 {{% tab name="Raw JSON" %}}
@@ -100,7 +100,7 @@ This is how you configure a multi-axis gantry:
 {{< tabs name="Example Gantry Config Multi-Axis" >}}
 {{< tab name="Config Builder" >}}
 
-<img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="Example of what configuration for a multi-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
+<img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="Example of what configuration for a multi-axis gantry component looks like in the Viam app config builder." style="width:100%"/>
 
 {{< /tab >}}
 {{% tab name="Raw JSON" %}}
