@@ -10,7 +10,7 @@ tags: ["input controller", "components"]
 
 Configuring a `webgamepad` input controller allows you to use a web-based gamepad as a device to communicate with your robot.
 
-This allows a gamepad to be connected remotely through a browser and the `html5` Gamepad API.
+This allows a gamepad to connect to your robot remotely through a browser and the `html5` Gamepad API.
 
 {{% alert="Note" color="note" %}}
 You **must** use "WebGamepad" as the `name` of the web gamepad controller. This restriction will be removed in the future.
@@ -58,6 +58,19 @@ When ready, click "Enable" in the upper right to "connect" the controller to the
 {{% alert="Note" color="note" %}}
 For your security, the browser won't report a gamepad until an input has been sent.
 {{% /alert %}}
+<!-- TODO: testing, may need to add more info re. this tutorial (or at the least add it to next steps)
+
+Using the gamepad requires a service.
+To see how the service is configured, navigate to the **SERVICES** section under the **CONFIG** tab.
+The **SERVICES** subtab contains the "Base Remote Control" service which uses three attributes:
+
+- **base**: `viam_base`
+- **control_mode**: `joystickControl`
+- **input_controller**: `WebGamepad`
+
+The names for **base** and **input_controller** correspond to the naming scheme from the **COMPONENTS** tab.
+
+![Screenshot of the base remote control service named "base_rc" on the Services sub-tab of the CONFIG tab.](../img/try-viam/base-rc.png) -->
 
 ## Troubleshooting
 

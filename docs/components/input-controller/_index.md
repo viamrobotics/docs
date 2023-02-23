@@ -163,7 +163,7 @@ The `motorCtl` callback function controls 5 motors: left front & back `FL` `BL`,
 - The `event.Control` logic determines the case for setting the power of each motor by which button is pressed on the input controller `input`.
 
 {{% alert="Note" color="note" %}}
-See the [motor component page](/docs/components/motor.md) for more information on motor control, and the [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/input) for more information about using Go to control your robot.
+See the [motor component page](../motor.md) for more information on motor control, and the [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/input) for more information about using Go to control your robot.
 {{% /alert %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -202,7 +202,10 @@ The input controller component supports the following methods:
 
 | Method Name | Go | Python | Description |
 | ----------- | -- | ------ | ----------- |
-[Controls](#controls) | [Controls][go_input]  |  [get_controls][python_get_controls] | Get a list of input `Controls` that this Controller provides. | [Events](#event) | [Events][go_input] | [get_events][python_get_events] | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). | [RegisterControlCallback](#registercontrolcallback) | [RegisterControlCallback][go_input] | [register_control_callback][python_register_control_callback] | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). | [TriggerEvent](#triggerevent) | [TriggerEvent][go_triggerable] | [trigger_event][python_trigger_event] | Directly send an [Event](#event), like a button press, to your robot from external code. |
+| [Controls](#controls) | [Controls][go_input]  |  [get_controls][python_get_controls] | Get a list of input `Controls` that this Controller provides. |
+| [Events](#events) | [Events][go_input] | [get_events][python_get_events] | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). |
+| [RegisterControlCallback](#registercontrolcallback) | [RegisterControlCallback][go_input] | [register_control_callback][python_register_control_callback] | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). |
+| [TriggerEvent](#triggerevent) | [TriggerEvent][go_triggerable] | [trigger_event][python_trigger_event] | Directly send an [Event](#event-object) to your robot. |
 
 [go_input]: https://pkg.go.dev/go.viam.com/rdk/components/input#Controller
 [go_triggerable]: https://pkg.go.dev/go.viam.com/rdk/components/input#Triggerable
@@ -479,7 +482,7 @@ See [Control Field](#control-field) below for more information.
 A string representing the type of Event that has occured in the [Event Object](#event-object).
 
 - To select for events of all type when registering callback function with [RegisterControlCallback](#registercontrolcallback), you can use `AllEvents` as your `EventType`.
-- The registered function will then be called, *in addition to* any other callback functions you've registered, every time an `Event` happens on your `Controller`.
+- The registered function is then called in addition to any other callback functions you've registered, every time an `Event` happens on your `Controller`.
 This is useful for debugging without interrupting normal controls, or for capturing extra or unknown events.
 
 Registered `EventTypes` are defined as followed:
@@ -567,33 +570,39 @@ The typical 4-button configuration on most gamepads uses generic compass directi
 
 See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the most current version of the above list of supported `Controls`.
 
-<!-- ###### Axes
+### Axes
 
 `Axes` can be either Absolute or Relative.
-Absolute axes report where they are each time.
-This is the method used by things like joysticks/thumbsticks, analog triggers, etc.--basically anything that "returns to center" on its own.
-Relative axes, on the other hand, are used by mice/trackpads/etc., and report a relative change in distance.
-For now, only the `gamepad` implementation exists, so only Absolute axes are in use.
-Absolute axes report a "PositionChangeAbs" EventType, and the Value is a float64 between -1.0 and +1.0, with center/neutral always being 0.0.
-The one special case is single-direction axes (like analog triggers, gas/brake pedals, etc.)
-On these, the "neutral" point is still 0.0, but they may only ever go into the positive direction.
-Lastly, note that for Y (vertical) axes, the positive direction is "nose up" which is pulling back on the stick.
 
-###### Buttons
+**Absolute:**
+
+- Absolute axes report where they are each time.
+- This is the method used by devices like joysticks and thumbsticks.
+Anything that "returns to center" on its own.
+- Absolute axes report a "PositionChangeAbs" [EventType](#eventtype-field). The value here is a float64 between -1.0 and +1.0, with the center (neutral) value always being 0.0.
+- For Y (vertical) axes, the positive direction is "nose up," which is equivalent to pulling back on the stick.
+
+The one special case here is single-direction axes, on analog triggers and gas or brake pedals.
+These devices still use Absolute axes.
+The "neutral" point is still 0.0, but they may only ever go into the positive direction.
+
+**Relative:**
+
+- Relative axes report a relative change in distance.
+- This is the method used by devices like mice and trackpads.
+
+### Buttons
 
 Buttons are a simpler case.
 They report either `ButtonPress` or `ButtonRelease` as their `EventType`, and the value is either 0 (for released) or 1 (for pressed.)
-Note that registering a callback for the `ButtonChange` `Event` is merely a convenience for filtering, and will register the same callback to both `ButtonPress` and `ButtonRelease`, but `ButtonChange` will not be reported in an actual `Event`. 
+Note that registering a callback for the `ButtonChange` `Event` is merely a convenience for filtering, and will register the same callback to both `ButtonPress` and `ButtonRelease`, but `ButtonChange` will not be reported in an actual `Event`.
 
-## Work in Progress Models
-
- TODO sierra's notes for PR review: don't understand this section very well but not sure if I should remove
-what is meant exactly by mappings, and where precisely would you submit a PR to? messaged matt d. s
+### Work in Progress Models
 
 There are currently mappings for a wired XBox 360 controller, and wireless XBox Series X|S, along with the 8bitdo Pro 2 bluetooth gamepad (which works great with the Raspberry Pi.)
 The XBox controllers emulate an XBox 360 gamepad when in wired mode, as does the 8bitdo.
 Because of that, any unknown gamepad will be be mapped that way.
-If you have another controller though, feel free to submit a PR with new mappings. -->
+If you have another controller that you want to use to control your robot, feel free to submit a PR on the [Viam Robotics Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) with new mappings.
 
 ## SDK Documentation
 
