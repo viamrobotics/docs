@@ -11,7 +11,7 @@ For 15 minutes, no matter where you are in the world, you can take over and play
 
 ## How do I make a reservation to take over a Viam Rover?
 
-{{< readfile "/static/include/create-a-reservation.md" >}}
+{{< readfile "/static/include/try-viam/create-a-reservation.md" >}}
 
 ## My robot had an error, a system crash, or is physically stuck
 
