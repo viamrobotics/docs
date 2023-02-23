@@ -81,8 +81,8 @@ The following attributes are available for `gamepad` input controllers:
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
 | `board` | *Required* | The name of the board component with GPIO or ADC pins to use as the controlling device. |
-| `buttons` | *Required* | The buttons available for control. These should be physically attached to the GPIO/ADC board. |
-| `axes` | *Required* | The axes available for control. These should be physically attached to the GPIO/ADC board. |
+| `buttons` | *Required* | The [Buttons](../#buttons) available for control. These should be physically attached to the GPIO/ADC board. |
+| `axes` | *Required* | The [Axes](../#axes) available for control. These should be physically attached to the GPIO/ADC board. |
 
 ## Troubleshooting
 

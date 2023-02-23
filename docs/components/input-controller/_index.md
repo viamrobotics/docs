@@ -18,7 +18,7 @@ Most robots with an input controller need at least the following hardware:
 - A [board component](/components/board/).
 - A power supply.
 - A device that turns human input into electronic signals.
-- (Optional) A component that you can direct the input to control the position of, like an [arm](/components/arm/).
+- Optional: A component that you can direct the input to control the position of, like an [arm](/components/arm/).
 
 ## Configuration
 
@@ -472,10 +472,9 @@ Access the source code of these methods on the [Viam Github](https://github.com/
 Each `Event` object represents a singular event from the input device, and has four fields:
 
 1. `Time`: `time.Time` the event occurred
-2. `Event`: `input.EventType` representing the most recent status of the `Control` on the `Controller`, as it was changed. See [EventType Field](#eventtype-field) below for more information.
-3. `Control`: `input.Control` representing which axis/button/etc. on the `Controller` was changed.
-See [Control Field](#control-field) below for more information.
-4. `Value`: `float64` indicating the position of an axis (`-1.0 to +1.0`) or the state of a button (`0` or `1`) on the `Controller`.
+2. `Event`: Represents the most recent status of the `Control` on the Controller.
+3. `Control`: Represents which [Axis](#axes), [Button](#buttons), or Pedal on the Controller was changed.
+4. `Value`: `float64` indicating the position of an [Axis](#axes) (`-1.0 to +1.0`) or the state of a [Button](#buttons) (`0` or `1`) on the Controller.
 
 ### EventType Field
 
@@ -593,9 +592,15 @@ The "neutral" point is still 0.0, but they may only ever go into the positive di
 
 ### Buttons
 
-Buttons are a simpler case.
-They report either `ButtonPress` or `ButtonRelease` as their `EventType`, and the value is either 0 (for released) or 1 (for pressed.)
-Note that registering a callback for the `ButtonChange` `Event` is merely a convenience for filtering, and will register the same callback to both `ButtonPress` and `ButtonRelease`, but `ButtonChange` will not be reported in an actual `Event`.
+Buttons report either `ButtonPress` or `ButtonRelease` as their [EventType](#eventtype-field).
+
+**Value:** Will be either 0 or 1.
+
+- `0`: released
+- `1`: pressed
+
+Note that registering a callback for the `ButtonChange` [EventType](#eventtype-field) is merely a convenience for filtering.
+Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, but `ButtonChange` is not reported in an actual [Event Object](#event-object).
 
 ### Work in Progress Models
 
