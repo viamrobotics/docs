@@ -303,8 +303,7 @@ This tells the service to use only data found within the `data_dir` directory sp
 
 * Now, change the `"data_dir":` attribute on line 8. Edit `"/home/YOUR_USERNAME/data"` to match the path to your existing dataset on your machine.
   * This tells the service to read from the directory located at this path and to save all data and maps to that location.
-  * To find your machine's home directory path, run the `pwd` command in your terminal.
-    Make sure to do this while your terminal is at the home directory level (denoted by `~`).
+  * To find the home directory path for the logged-in user, run `echo $HOME` in your terminal.
 
 * Save the config.
 * Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-offline-slam`).
