@@ -55,7 +55,7 @@ Refer to the following example configuration for a robotic arm of model `xArm6`:
 
 {{% /tab %}}
 
-{{% tab name="Raw Json" %}}
+{{% tab name="Raw JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
