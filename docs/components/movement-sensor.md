@@ -11,7 +11,7 @@ icon: "img/components/imu.png"
 The movement sensor component is an abstraction of a sensor that gives data on where a robot is and how fast it is moving.
 
 We have chosen to abstract these types of sensors into one common API.
-There are many different types of sensors that can provide data for some or all of the following methods: `Position`, `Orientation`, `LinearVelocity`, `AngularVelocity`,  `LinearAcceleration` and `CompassHeadings`.
+There are many different types of sensors that can provide data for some or all of the following methods: `Position`, `Orientation`, `LinearVelocity`, `AngularVelocity`, `LinearAcceleration` and `CompassHeadings`.
 A global positioning system (GPS) can provide position, linear velocity and compass headings.
 An inertial measurement unit (IMU) can provide angular velocity and orientation.
 We can further apply algorithms, such as a [Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter), to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
@@ -440,7 +440,7 @@ Name | Type | Default Value | Description
 ### MPU6050
 
 The [MPU6050 sensor manufactured by TDK InvenSense](https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/) is a combination accelerometer and gyroscope.
-It supplies linear acceleration and angular velocity data about the three axes, supporting the `AngularVelocity` and  `LinearAcceleration` methods.
+It supplies linear acceleration and angular velocity data about the three axes, supporting the `AngularVelocity` and `LinearAcceleration` methods.
 It also supplies linear acceleration data in three directions.
 The linear acceleration data (as well as all the other data from the MPU6050) can be accessed using the `GetReadings` method from the more general [sensor component](/components/sensor/), which movement sensors wrap.
 Unlike the IMUs listed above, it does not contain magnetometers or provide orientation data.
