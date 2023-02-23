@@ -9,50 +9,87 @@ icon: "img/components/arm.png"
 # SME: Peter L
 ---
 
-Arms are serial chains of joints and links, with a fixed end and an end effector end.
-The end effector is able to be placed at arbitrary cartesian positions relative to the base of the arm, and can be moved to cartesian coordinates or controlled directly via the joint positions.
+A robotic arm is a serial chain of joints and links, with a fixed end and an end effector end.
+Joints may rotate, translate, or both, while a link is a rigid connector between joint.
 
-As an example, to move an xArm6 whose component name is "my_xArm6" forwards in the X direction by 300mm:
+In simple terms, an *arm* has two ends: one fixed in place, and one with a device you can position.
 
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.arm import Arm
-from viam.proto.api.common import WorldState
+When controlling an arm component, you can place the end effector device at arbitrary cartesian positions relative to the base of the arm.
+You can do this by calling the `MoveToPosition` method to move the end effector from its origin to specified cartesian coordinates, or by controlling the joint positions directly with the `MoveToJointPositions` method.
 
-arm = Arm.from_robot(robot=robot, name='my_xArm6')
-pos = await arm.get_end_position()
-pos.x += 300
-await arm.move_to_position(pose=pos, world_state=WorldState())
-```
-
-This document will teach you how to configure, connect to, and move the arms with preprogrammed support from Viam, as well as introduce you to the steps required to implement support for any other arm.
-
-An arm consists of movable pieces, joints, immovable pieces, and links.
-Joints may rotate, translate, or both, while a link will always be the same shape.
-
-An arm can be thought of as something that can set or get joint positions, and can compute the cartesian position of its end effector(s) given its set of joint positions.
-Arms will also support moving to a specified cartesian position, something that requires inverse kinematics and motion planning to determine the ending joint positions.
-
-The way most supported arms are set up is via a driver in Viam's RDK which is compatible with whatever software API is supported by that specific arm's manufacturer.
-This driver handles turning the arm on and off, engaging brakes as needed (if supported), querying the arm for its current joint position, and sending requests for the arm to move to a specified set of joint positions.
-
-Arm drivers are paired with JSON files describing the kinematics parameters of each arm.
-The arm driver will load and parse the kinematics file to be used with the Frame System that is part of RDK.
-The Frame System will allow you to easily calculate where any part of your robot is relative to any other part, other robot, or piece of the environment.
-
-All arms have a "Home" position, which corresponds to setting all joint angles to 0.
-
-While some arms include onboard inverse kinematics, many do not.
-Most Viam RDK arm drivers bypass any onboard inverse kinematics, and use Viam's motion planning instead.
-When an arm is moved via the `move_to_position` call, it is enforced that the movement will follow a straight line, and not deviate from the start or end orientations more than the start and orientations differ from one another.
-If there is no way to move to the desired location in a straight line for the arm in question, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
-
-## Features
+When controlling an arm with `viam-server`, the following features are implemented for you:
 
 - Linear motion planning
 - Self-collision prevention
 - Obstacle avoidance
 
-## Viam Configuration
+#### `viam-server` Motion Planning with your Arm's Native Software
+
+Arm models are supported with a driver built to be compatible with the software API that model's manufacturer supports.
+While some Arm models build inverse kinematics into their software, many do not.
+  
+- Most of the Arm drivers for the Viam RDK bypass any onboard inverse kinematics, and use Viam's [Motion Planning](/services/motion/) service instead.
+
+- This driver handles turning the arm on and off, engaging brakes as needed (if supported), querying the arm for its current joint position, and sending requests for the arm to move to a specified set of joint positions.
+
+Arm drivers are also paired, in the RDK, with JSON files that describe the kinematics parameters of each arm.
+
+- When you configure a supported arm model to connect to `viam-server`, the Arm driver will load and parse the kinematics file for the Viam RDK's [Frame System](/services/frame-system/) service to use.
+
+- The `Frame System` will allow you to easily calculate where any part of your robot is relative to any other part, other robot, or piece of the environment.
+
+- All arms have a `Home` position, which corresponds to setting all joint angles to 0.
+
+- When an arm is moved via the `move_to_position` call, the movement will follow a straight line, and not deviate from the start or end orientations more than the start and orientations differ from one another
+
+- If there is no way for the arm to move to the desired location in a straight line, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
+
+## Configuration
+
+Refer to the following example configuration for a robotic arm of model `xArm6`:
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
+
+<img src="../img/arm/arm-ui-config-xarm6.png" alt="Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." max-width="800px"/>
+
+{{% /tab %}}
+
+{{% tab name="Raw JSON" %}}
+
+```json-viam {class="line-numbers linkable-line-numbers"}
+{
+  "components": [{
+      "attributes": {
+          "host": <your_arms_ip_address_on_your_network> 
+      },
+      "depends_on": [],
+      "frame": {
+          "orientation": {
+              "type": "ov_degrees",
+              "value": {
+                  "th": 0,
+                  "x": 0,
+                  "y": 0,
+                  "z": 1
+              }
+          },
+          "parent": "world",
+          "translation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+          }
+      },
+      "model": "xArm6",
+      "name": <your_arm_name>,
+      "type": "arm"
+  }]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Example JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
@@ -85,116 +122,38 @@ If there is no way to move to the desired location in a straight line for the ar
 }
 ```
 
-### Optional Attributes
+{{% /tab %}}
+{{% /tabs %}}
 
-Individual arm implementations have their own sets of configurable parameters that vary by vendor.
-For example, for an xArm6 or an xArm7, there are three parameters:
+All arms are required to be configured with a `type`, `model`, and `name`.
+However, different arm models have their own sets of configurable parameters that vary by vendor.
 
-- **host**: A string representing the IP address of the arm.
+For example, for an `xArm6` or an `xArm7`, there are three optional parameters:
 
-- **speed** (Optional. Default: 20.0): A float representing the desired maximum joint movement speed in degrees/second.
+| Attribute | Inclusion | Description |
+| ----------- | -------------- | --------------  |
+| `type`  |  *Required* | All arms are of type `arm`. |
+| `model` | *Required* | Specify the correct `model` for your board. |
+| `name`  | *Required* | Choose a name for your board. Note that the `name` you choose is the name you need to refer to this particular board in your code. |
+| `host`  |  Optional | A string representing the IP address of the arm. Find this when setting up your arm model. |
+| `speed` | Optional | Default: `20.0`. A float representing the desired maximum speed of joint movement in degrees/second. |
+| `acceleration`  | Optional | Default: `50.0`. A float representing the desired maximum joint acceleration in degrees/second/second. |
 
-- **acceleration** (Optional. Default: 50.0):  A float representing the desired maximum joint acceleration in degrees/second/second.
+<br>
 
-## Examples
+Supported arm models include:
 
-The following code for an xArm6 will do the following:
+- `eva`: [Automata Eva](https://automata.tech/products/hardware/about-eva/)
+- `trossen-vx300s`: [Trossen Robotics ViperX 300](https://www.trossenrobotics.com/viperx-300-robot-arm.aspx)
+- `trossen-wx250s`: [Trossen Robotics WidowX 250](https://www.trossenrobotics.com/widowx-250-robot-arm.aspx)
+- `ur5e`: [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot/)
+- `xArm6`: [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6)
+- `xArm7`: [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7)
+- `yahboom-dofbot`: [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm)
+- `fake`: [no physical hardware - see Viam GitHub](https://github.com/viamrobotics/rdk/tree/main/components/arm/fake)
+- `wrapper_arm`: [implementation that wraps a partially implemented arm - see Viam GitHub](https://github.com/viamrobotics/rdk/tree/main/components/arm/wrapper)
 
-1. First perform a linear movement 300mm +X from its starting point, then a linear movement back to the starting point, assuming the +300mm position is within the arm's workspace.
-If you have trouble with this, try starting the arm in the home position.
-1. Next, it will define an obstacle along the straight-line path between the start and the same goal from above.
-It will then call the Viam motion service to move the arm (rather than `arm.move_to_position`), which is able to route around the hypothetical obstacle. It will return to the starting point, again routing around the obstacle.
-1. Finally, it will call `arm.move_to_position` to the goal as in the first movement, but this time passing the obstacle.
-As there is no straight-line path to the goal that does not intersect the obstacle, this request will fail with a "unable to solve for position" GRPC error.
-
-``` python
-arm = Arm.from_robot(robot=robot, name="xArm6")
-pos = await arm.get_end_position()
-
-print("~~~~TESTING ARM LINEAR MOVE~~~~~")
-pos = await arm.get_end_position()
-print(pos)
-pos.x += 300
-# Note we are passing an empty worldstate
-await arm.move_to_position(pose=pos, world_state=WorldState())
-pos = await arm.get_end_position()
-print(pos)
-pos.x -= 300
-await asyncio.sleep(1)
-await arm.move_to_position(pose=pos, world_state=WorldState())
-
-print("~~~~TESTING MOTION SERVICE MOVE~~~~~")
-
-geom = Geometry(
-    center=Pose(x=pos.x + 150, y=pos.y, z=pos.z),
-    box=RectangularPrism(width_mm=2, length_mm=5, depth_mm=5),
-)
-geomFrame = GeometriesInFrame(reference_frame="xArm6", geometries=[geom])
-worldstate = WorldState(obstacles=[geomFrame])
-
-pos = await arm.get_end_position()
-jpos = await arm.get_joint_positions()
-print(pos)
-print("joints", jpos)
-pos.x += 300
-
-for resname in robot.resource_names:
-    if resname.name == "xArm6":
-        armRes = resname
-
-# We pass the WorldState above with the geometry. The arm should successfully route around it.
-await motionServ.move(
-    component_name=armRes,
-    destination=PoseInFrame(reference_frame="world", pose=pos),
-    world_state=worldstate,
-)
-pos = await arm.get_end_position()
-jpos = await arm.get_joint_positions()
-print(pos)
-print("joints", jpos)
-pos.x -= 300
-await asyncio.sleep(1)
-await motionServ.move(
-    component_name=armRes,
-    destination=PoseInFrame(reference_frame="world", pose=pos),
-    world_state=worldstate,
-)
-
-print("~~~~TESTING ARM MOVE- SHOULD FAIL~~~~~")
-pos = await arm.get_end_position()
-print(pos)
-pos.x += 300
-# We pass the WorldState above with the geometry. As arm.move_to_position will enforce linear motion, this should fail
-# since there is no linear path from start to goal that does not intersect the obstacle.
-await arm.move_to_position(pose=pos, world_state=worldstate)
-
-```
-
-## Implementation
-
-- [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/arm/index.html)
-- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/arm)
-
-## API
-
-The arm component supports the following methods:
-
-| Method Name | Go | Python | Description |
-| ----------- | -- | ------ | ----------- |
-| [GetEndPosition](#getendposition)                 | [EndPosition][go_arm]       | [get_end_position][python_get_end_position]                 | Get the current position of the arm as a Pose.                                  |
-| [MoveToPosition](#movetoposition) | [MoveToPosition][go_arm]| [move_to_position][python_move_to_position] | Move the end of the arm to the desired Pose. |
-| [MoveToJointPositions](#movetojointpositions)                 | [MoveToJointPositions][go_arm]       | [move_to_joint_positions][python_move_to_joint_positions]                 | Move each joint on the arm to the desired position.                                                      |
-| [GetJointPositions](#getjointpositions)                 | [GetJointPositions][go_arm]       | [get_joint_positions][python_get_joint_positions]                 | Get the current position of each joint on the arm.                                                       |
-| [Stop](#stop)                 | [Stop][go_arm]       | [stop][python_stop]                 | Stop the arm from moving.                                                       |
-| [IsMoving](#stop)                 | [IsMoving][go_arm]       | [is_moving][python_is_moving]                 | Get if the arm is currently moving.                                                       |
-
-[go_arm]: https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm
-[python_get_end_position]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_end_position
-[python_move_to_position]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.move_to_position
-[python_move_to_joint_positions]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.move_to_joint_positions
-[python_get_joint_positions]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_joint_positions
-[python_stop]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.stop
-[python_is_moving]: https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.is_moving
+## Code Examples
 
 ### Control your Arm with Viam's Client SDK Libraries
 
@@ -288,6 +247,120 @@ func main() {
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### Detailed Code Examples
+
+#### Move Forwards
+
+This Python code will do the following to a robotic arm of model `xArm6`:
+
+1. Move the arm 300mm forwards in the X direction.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.components.arm import Arm
+from viam.proto.api.common import WorldState
+
+arm = Arm.from_robot(robot=robot, name='my_xArm6')
+pos = await arm.get_end_position()
+pos.x += 300
+await arm.move_to_position(pose=pos, world_state=WorldState())
+```
+
+#### Move Back and Forth Through Obstacles
+
+This Python code will do the following to a robotic arm of model `xArm6`:
+
+1. Move the arm 300mm forwards in the X direction.
+2. Move the arm 300mm backwards in the X direction, to its starting point. If you have trouble with this, try starting the arm in the home position.
+3. Define an obstacle along the straight-line path between the start and the same goal from above (+300mm).
+4. Call the Viam motion service to move the arm (rather than `arm.move_to_position`), moving the arm around the hypothetical obstacle.
+5. Return the arm to the starting point, again routing around the obstacle.
+6. Finally, call `arm.move_to_position` to move the arm toward the goal (as in the first movement, +300mm), passing the obstacle.
+As there is no straight-line path to the goal that does not intersect the obstacle, this request will fail with a "unable to solve for position" GRPC error.
+
+``` python
+arm = Arm.from_robot(robot=robot, name="xArm6")
+pos = await arm.get_end_position()
+
+print("~~~~TESTING ARM LINEAR MOVE~~~~~")
+pos = await arm.get_end_position()
+print(pos)
+pos.x += 300
+# Note we are passing an empty worldstate
+await arm.move_to_position(pose=pos, world_state=WorldState())
+pos = await arm.get_end_position()
+print(pos)
+pos.x -= 300
+await asyncio.sleep(1)
+await arm.move_to_position(pose=pos, world_state=WorldState())
+
+print("~~~~TESTING MOTION SERVICE MOVE~~~~~")
+
+geom = Geometry(
+    center=Pose(x=pos.x + 150, y=pos.y, z=pos.z),
+    box=RectangularPrism(width_mm=2, length_mm=5, depth_mm=5),
+)
+geomFrame = GeometriesInFrame(reference_frame="xArm6", geometries=[geom])
+worldstate = WorldState(obstacles=[geomFrame])
+
+pos = await arm.get_end_position()
+jpos = await arm.get_joint_positions()
+print(pos)
+print("joints", jpos)
+pos.x += 300
+
+for resname in robot.resource_names:
+    if resname.name == "xArm6":
+        armRes = resname
+
+# We pass the WorldState above with the geometry. The arm should successfully route around it.
+await motionServ.move(
+    component_name=armRes,
+    destination=PoseInFrame(reference_frame="world", pose=pos),
+    world_state=worldstate,
+)
+pos = await arm.get_end_position()
+jpos = await arm.get_joint_positions()
+print(pos)
+print("joints", jpos)
+pos.x -= 300
+await asyncio.sleep(1)
+await motionServ.move(
+    component_name=armRes,
+    destination=PoseInFrame(reference_frame="world", pose=pos),
+    world_state=worldstate,
+)
+
+print("~~~~TESTING ARM MOVE- SHOULD FAIL~~~~~")
+pos = await arm.get_end_position()
+print(pos)
+pos.x += 300
+# We pass the WorldState above with the geometry. As arm.move_to_position will enforce linear motion, this should fail
+# since there is no linear path from start to goal that does not intersect the obstacle.
+await arm.move_to_position(pose=pos, world_state=worldstate)
+
+```
+
+## API
+
+The arm component supports the following methods:
+
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
+| [GetEndPosition](#getendposition)                 | [EndPosition][go_arm]       | [get_end_position][python_get_end_position]                 | Get the current position of the arm as a Pose.                                  |
+| [MoveToPosition](#movetoposition) | [MoveToPosition][go_arm]| [move_to_position][python_move_to_position] | Move the end of the arm to the desired Pose. |
+| [MoveToJointPositions](#movetojointpositions)                 | [MoveToJointPositions][go_arm]       | [move_to_joint_positions][python_move_to_joint_positions]                 | Move each joint on the arm to the desired position.                                                      |
+| [GetJointPositions](#getjointpositions)                 | [GetJointPositions][go_arm]       | [get_joint_positions][python_get_joint_positions]                 | Get the current position of each joint on the arm.                                                       |
+| [Stop](#stop)                 | [Stop][go_arm]       | [stop][python_stop]                 | Stop the arm from moving.                                                       |
+| [IsMoving](#stop)                 | [IsMoving][go_arm]       | [is_moving][python_is_moving]                 | Get if the arm is currently moving.                                                       |
+
+[go_arm]: https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm
+[python_get_end_position]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_end_position
+[python_move_to_position]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.move_to_position
+[python_move_to_joint_positions]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.move_to_joint_positions
+[python_get_joint_positions]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_joint_positions
+[python_stop]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.stop
+[python_is_moving]: https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.is_moving
 
 ### GetEndPosition
 
