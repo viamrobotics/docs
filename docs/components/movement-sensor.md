@@ -11,7 +11,7 @@ icon: "img/components/imu.png"
 The movement sensor component is an abstraction of a sensor that gives data on where a robot is and how fast it is moving.
 
 We have chosen to abstract these types of sensors into one common API.
-There are many different types of sensors that can provide data for some or all of the following methods: `Position`, `Orientation`, `LinearVelocity`, `AngularVelocity` and `CompassHeadings`.
+There are many different types of sensors that can provide data for some or all of the following methods: `Position`, `Orientation`, `LinearVelocity`, `AngularVelocity`,  `LinearAcceleration` and `CompassHeadings`.
 A global positioning system (GPS) can provide position, linear velocity and compass headings.
 An inertial measurement unit (IMU) can provide angular velocity and orientation.
 We can further apply algorithms, such as a [Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter), to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
@@ -332,7 +332,7 @@ You'll also need to configure the `board` attribute with the name of the board t
 
 ## IMU
 
-An inertial measurement unit (IMU) can provide `AngularVelocity`, `Orientation`, and `CompassHeading` methods out of the box (ordered from most common to least common).
+An inertial measurement unit (IMU) can provide `AngularVelocity`, `Orientation`, `CompassHeading`, and `LinearAcceleration` methods out of the box (ordered from most common to least common).
 Acceleration and Magnetometer data are available by using the Sensor `GetReadings` method, which IMUs wrap.
 We have included IMUs from two manufacturers in our RDK.
 
