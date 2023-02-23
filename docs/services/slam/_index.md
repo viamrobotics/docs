@@ -206,7 +206,7 @@ The data present in the map subdirectory dictates SLAM's mode at runtime:
 ### Introduction
 
 ORB-SLAM3 can perform sparse SLAM using monocular or RGB-D images.
-You must specify this in the configuration under `config_params` (i.e., `mono` or `rgbd`).
+You must specify this in the configuration under `config_params` (as `mono` or `rgbd`).
 
 In this example, `mono` is selected with one camera stream named `color`:
 

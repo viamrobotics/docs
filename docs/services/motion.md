@@ -38,7 +38,7 @@ Note that this is solved such that the distal end of the component arrives at th
 For example, if a robotic arm is specified, the piece that will arrive at the destination is the end effector mount point, not the base of the arm where it is mounted.
 
 **`destination`**: A `PoseInFrame` describing where the `component_name` should end up.
-This can be any pose, from the perspective of any component whose location is known in the robot’s FrameSystem (i.e., it has a `frame` attribute in the Viam config).
+This can be any pose, from the perspective of any component whose location is configured as the `frame` attribute in the Viam config and is therefore known in the robot’s FrameSystem.
 Note that the Pose specified is relative to the distal end of the frame being specified.
 This means that if the `destination` and `component_name` are the same frame.
 For example an arm (or a gripper attached to one), then a pose of {X: 10, Y: 0, Z: 0} will move that arm’s end effector or gripper by 10 mm in the local X direction.
@@ -54,7 +54,7 @@ There are three important things to know about obstacles:
     If a motion is begun and an obstacle specified such that it is in a location where it intersects with a component in the kinematic chain, collisions between that obstacle and that particular piece of the kinematic chain will not be checked.
   * Obstacles whose parents (or grand… parent) may move as part of a solve request, will be assumed to move along with their parent while solving.
     This will ensure that obstacles that are temporarily attached to moving components do not cause collisions during the movement.
-  * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (i.e., an arm frame will be solved for the pose of its end effector), geometries are interpreted as being "part of" their frame, rather than "at the end of" the frame.
+  * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (for example, an arm frame will be solved for the pose of its end effector), geometries are interpreted as being "part of" their frame, rather than "at the end of" the frame.
     Thus, their poses are relative to the _origin_ of the specified frame.
     A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
 * **Transforms**: These are a list of _PoseInFrame_ messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.

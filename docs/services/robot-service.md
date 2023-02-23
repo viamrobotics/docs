@@ -67,7 +67,7 @@ The below is a current list of interfaces provided by the Robot Service.
 
 ## Operation and Operation IDs
 
-**Operation IDs** are how Viam tracks in-flight operations/robot commands over gRPC (i.e., network requests).
+**Operation IDs** are how Viam tracks in-flight operations/robot commands over gRPC network requests.
 
 The robot creates a unique **Operation ID** for every request (operation).
 This ID expires once the request is completed.
