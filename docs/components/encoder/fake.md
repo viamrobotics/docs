@@ -2,7 +2,7 @@
 title: "Configure a fake encoder"
 linkTitle: "fake"
 type: "docs"
-description: "Configure an fake encoder."
+description: "Configure a fake encoder."
 tags: ["encoder", "components"]
 # SMEs: Rand
 ---
