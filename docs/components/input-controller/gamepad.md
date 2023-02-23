@@ -21,13 +21,13 @@ Refer to the following example configuration for an input controller of model `g
 <img src="../img/gamepad-input-controller-ui-config.png" alt="What an example configuration for a linux-based gamepad input controller component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
-{{% tab name="Raw Json" %}}
+{{% tab name="Raw JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
-      "name":  <your-gamepad-input-controller-name>,
+      "name":  <your-gamepad-input-controller>,
       "type": "input_controller",
       "model": "gamepad",
       "attributes": {
@@ -35,7 +35,7 @@ Refer to the following example configuration for an input controller of model `g
         "auto_reconnect": false
       },
       "depends_on": [
-        <your-board-name>
+        <your-board>
       ]
     }, ...
 }
@@ -49,9 +49,11 @@ The following attributes are available for `gamepad` input controllers:
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
 | `dev_file` | *Optional* | If `dev_file` is left blank or not included, `viam-server` will search and use the first gamepad it finds that's connected to the computer controlling your robot. If you want to specify a device, give the absolute path to the input device event file. For example: "<file>/dev/input/event42</file>" |
-| `auto_reconnect` | *Optional* | If set to `true`, `viam-server` will set the device to be automatically connected, waiting for a device to connect during a robot's start-up, and start-up will fail if a device is not connected. Defaults to `false` if not included. |
+| `auto_reconnect` | *Optional* | If set to `true`, `viam-server` sets the device to be automatically connected, waiting for a device to connect during a robot's start-up, and start-up fails if a device is not connected. Defaults to `false` if not included. |
 
-Note that `auto_reconnect` applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices.
+{{% alert="Note" color="note" %}}
+`auto_reconnect` applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices.
+{{% /alert %}}
 
 ## Troubleshooting
 

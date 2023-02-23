@@ -26,7 +26,7 @@ Refer to the following example configuration for an input controller of model `g
 {
     "components": [
     {
-      "name": "gpio-input-controller",
+      "name": <your-gpio-input-controller>,
       "type": "input_controller",
       "model": "gpio",
       "attributes": {
