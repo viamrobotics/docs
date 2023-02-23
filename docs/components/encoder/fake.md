@@ -7,7 +7,7 @@ tags: ["encoder", "components"]
 # SMEs: Rand
 ---
 
-The `fake` encoder is an encoder model for testing.
+The `fake` encoder is an encoder model for testing code without any hardware.
 
 {{< tabs name="Configure an fake encoder" >}}
 {{< tab name="Config Builder" >}}
