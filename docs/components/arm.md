@@ -89,7 +89,7 @@ Refer to the following example configuration for a robotic arm of model `xArm6`:
 ```
 
 {{% /tab %}}
-{{% tab name="Example Json" %}}
+{{% tab name="Example JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
