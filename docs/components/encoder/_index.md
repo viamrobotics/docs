@@ -22,7 +22,7 @@ The encoder component supports:
 - Absolute encoders which provide angular measurements directly.
 
 Both encoders are incremental and do not indicate absolute positions.
-Therefore, both the component can only determine the position relative to the starting position.
+Therefore, the component can only determine the position relative to the starting position.
 
 Most robots with an encoder (quadrature or single phase) need at least the following hardware:
 
