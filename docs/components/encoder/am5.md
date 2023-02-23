@@ -11,7 +11,7 @@ The `AM5-AS5048` encoder uses an I2C or SPI interface to connect.
 
 ## Requirements
 
-1. To configure an AM5-AS5048 Encoder, you must add an I2c bus needs to your board:
+1. To configure an AM5-AS5048 encoder, you must add an I2C bus needs to your board:
 
     ```json-viam
     {
