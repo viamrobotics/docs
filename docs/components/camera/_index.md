@@ -185,7 +185,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetProperties
 
-Get the camera intrinsic parameters and camera distortion parameters
+Get the camera intrinsic parameters and camera distortion parameters.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
