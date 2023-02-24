@@ -104,7 +104,7 @@ The `gpio` model has the following attributes, which are optional to define in y
 | `pwm_resolution`        | uint    | Resolution of the PWM driver (e.g. number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution. |
 | `min_width_us`          | uint    | Override the safe minimum pulse width in microseconds. This affects PWM calculation. |
 | `max_width_us`          | uint    | Override the safe maximum pulse width in microseconds. This affects PWM calculation. |
-| `maxRotation`           | uint    | Default: 180. Specifies the maximum angle of rotation. Only for the `pi` model. |
+| `max_rotation`           | uint    | Default: 180. Specifies the maximum angle of rotation based on the hardware. Only for the `pi` model. |
 
 ## API
 
