@@ -41,7 +41,7 @@ For configuration information, click on one of the following models:
 | Model | Description |
 | ----- | ----------- |
 | [`AM5-AS5048`](am5) | The `AM5-AS5048` encoder uses an I2C or SPI interface to connect. |
-| [`arduino`](arduino) | An encoder using the arduino board. |
+| [`arduino`](arduino) | An encoder using an arduino board. |
 | [`fake`](fake) | An encoder model for testing. |
 | [`incremental`](incremental) | A two phase encoder. |
 | [`single`](single) | A single pin "pulse output" encoder which returns its relative position but no direction. |

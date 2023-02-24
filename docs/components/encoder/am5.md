@@ -30,7 +30,8 @@ The `AM5-AS5048` encoder uses an I2C or SPI interface to connect.
     }
     ```
 
-2. Any motors using the `AM5-AS5048` encoder must set `ticks_per_rotation` to `1`. This is because the AM5 encoder is an absolute encoder which provides angular measurements directly.
+2. Any motors using the `AM5-AS5048` encoder must set `ticks_per_rotation` to `1`.
+   This is because the AM5 encoder is an absolute encoder which provides angular measurements directly.
 
 ## Configuration
 

@@ -7,7 +7,7 @@ tags: ["encoder", "components"]
 # SMEs: Rand
 ---
 
-The `arduino` encoder uses an I2C or SPI interface to connect.
+The `arduino` encoder requires configuring two pins on the board to which the encoder is wired.
 
 {{< tabs name="Configure an arduino Encoder" >}}
 {{< tab name="Config Builder" >}}
