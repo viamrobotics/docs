@@ -24,7 +24,7 @@ Be aware that if you are running out of time during your rental, you can [extend
 ## Add the Vision Service
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the Vision service to.
+Click on the robot you wish to add the Vision Service to.
 Select the **CONFIG** tab, and click on **SERVICES**.
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
@@ -59,7 +59,7 @@ Copy the following configuration into the attributes of your rover’s Vision Se
 }
 ```
 
-<img src="../../img/try-viam-color-detection/populated-service-attributes.png" width="700px" alt="Screenshot from the Viam app showing the Vision service panel. The panel has an Attributes panel populated with Vision Service attributes. On the upper right side there is a trash bin icon.">
+<img src="../../img/try-viam-color-detection/populated-service-attributes.png" width="700px" alt="Screenshot from the Viam app showing the Vision Service panel. The panel has an Attributes panel populated with Vision Service attributes. On the upper right side there is a trash bin icon.">
 
 The configuration adds a `model` of `type` `color_detector` with the color as a parameter.
 The `color_detector` is a heuristic-based detector that draws boxes around objects according to their hue.

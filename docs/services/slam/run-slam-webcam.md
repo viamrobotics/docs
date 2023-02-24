@@ -10,7 +10,7 @@ tags: ["slam", "camera", "services"]
 ---
 
 {{% alert title="Note" color="note" %}}
-The SLAM service is an experimental feature.
+The SLAM Service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
@@ -59,14 +59,14 @@ Install ORB-SLAM3 with one of these commands:
 
 ## Run ORB-SLAM3 in Live Mode with a Webcam
 
-Run ORB-SLAM3 as a live SLAM service with a webcam.
+Run ORB-SLAM3 as a live SLAM Service with a webcam.
 
 ### Configuration with Viam
 
 Configure your robot to run ORB-SLAM3 with a webcam in two steps:
 
 1. Add your webcam and calibrate it.
-2. Add ORB-SLAM3 as a SLAM service in live mode.
+2. Add ORB-SLAM3 as a SLAM Service in live mode.
 
 #### Step 1: Add and Calibrate your Webcam
 
@@ -80,7 +80,7 @@ Follow these tutorials to connect and calibrate your webcam as a modular compone
 * Go to your robot's page on the [Viam app](https://app.viam.com/).
 * On the **CONFIG** tab, click the **SERVICES** sub tab.
 * Create a service with type `slam`, a name (example: `run-slam`) and a model (`orbslamv3`).
-* Paste the following into the **Attributes** field of the SLAM service:
+* Paste the following into the **Attributes** field of the SLAM Service:
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
@@ -235,7 +235,7 @@ Run ORB-SLAM3 in offline mode using one of your previously saved datasets or Via
 Configure your robot to run ORB-SLAM3 in offline mode in two steps:
 
 1. Find an existing dataset to run ORB-SLAM3 with.
-2. Add ORB-SLAM3 as a SLAM service in offline mode.
+2. Add ORB-SLAM3 as a SLAM Service in offline mode.
 
 #### Step 1: Find a Dataset for ORB-SLAM3 to Use
 

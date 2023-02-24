@@ -25,7 +25,7 @@ Each phase output goes to a different pin on the board.
 Viam also supports single pin "pulse output" encoders which give relative position but not direction.
 
 In either case position can only be determined relative to the starting position; these encoders are incremental and do not indicate absolute position.
-Absolute encoders are another type of hardware that is not natively supported in Viam as of August 19th, 2022.
+Absolute encoders are another type of hardware that is not natively supported in Viam as of August 19, 2022.
 
 ## Viam Configuration
 

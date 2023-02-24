@@ -21,7 +21,7 @@ While some [examples](https://www.google.com/search?q=companion+robot) have rece
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
-By combining ChaptGPT with the Viam platform’s built-in [computer vision service](/services/vision), ML model support, and [locomotion](/components/base/), you can within a few hours create a simple companion robot that:
+By combining ChaptGPT with the Viam platform’s built-in [computer Vision Service](/services/vision), ML model support, and [locomotion](/components/base/), you can within a few hours create a simple companion robot that:
 
 * Listens with a microphone, converts speech-to-text, gets a response from OpenAI.
 * Converts GPT response text to speech and "speaks" the response through a speaker.
@@ -171,7 +171,7 @@ chmod +x run.sh
 Now that we've set up the rover by attaching the servo and making the tutorial software available on the Pi, we can configure the rover to:
 
 * Recognize and operate the servo
-* Make the ML classifier model available for use by the Viam vision service
+* Make the ML classifier model available for use by the Viam Vision Service
 
 ### 1. Configure the servo
 
@@ -208,7 +208,7 @@ We found that if set up this way, the following positions accurately show the co
 Click the **CONFIG** tab and then the **SERVICES** subtab.
 From there, scroll to the bottom and create a new service of **type** `vision` named 'vision'.
 
-<img src="../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the vision service." title="Adding the vision service." width="500" />
+<img src="../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the Vision Service." title="Adding the Vision Service." width="500" />
 
 Now, add the following configuration to the attributes for the Vision Service.
 You are registering a model of **type** `tflite_classifier` **named** `stuff_classifier`.

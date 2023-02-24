@@ -231,7 +231,7 @@ Once you save the config, you'll be able to see your camera's stream in the **CO
 
 ## On completion
 
-After successfully completing this tutorial, you have a fully configured SCUTTLE robot.
+After successfully completing this tutorial, you have a fully configured SCUTTLE Robot.
 You can drive it around and view its camera stream.
 
 To take things to the next level, check out our [Color Detection with SCUTTLE Robot](/tutorials/scuttlebot/color-detection-scuttle/) tutorial or create your own camera-related tutorial.

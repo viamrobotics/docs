@@ -9,7 +9,7 @@ tags: ["data management", "cloud", "sync"]
 
 After the Data Management Service synchronizes the uploaded data in Viam, you can view it within the Viam app at [https://app.viam.com/data/view](https://app.viam.com/data/view).
 
-Image (e.g, jpeg and png) data is viewable in the **IMAGES** tab, files and any other binary (e.g, point cloud data) is viewable in the **FILES** tab, and tabular sensor (e.g, gantry position) counts are viewable the **SENSOR DATA** tab.
+Image (like jpeg and png) data is viewable in the **IMAGES** tab, files and any other binary (like point cloud data) is viewable in the **FILES** tab, and tabular sensor (like gantry position) counts are viewable the **SENSOR DATA** tab.
 
 Clicking on a single image or file shows a **Details** panel on the right with capture metadata.
 

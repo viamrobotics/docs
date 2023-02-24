@@ -44,7 +44,7 @@ This is how you configure a wheeled base:
 
 {{< tabs name="Example Base Config" >}}
 {{% tab name="Config Builder" %}}
-<img src="../img/base/base-ui-config.png" alt="Picture of what an example configuration for a wheeled base looks like in the Viam App, with Attributes & Depends On drop-downs and the option to add a frame." width="800"/>
+<img src="../img/base/base-ui-config.png" alt="Picture of what an example configuration for a wheeled base looks like in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." width="800"/>
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 

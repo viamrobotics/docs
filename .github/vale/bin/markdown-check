@@ -1,0 +1,5 @@
+#! /bin/bash
+
+markdownlint --config .markdownlint.yaml $(git diff --diff-filter=d --name-only $1 | grep '\.md$')
+
+# USAGE: markdown-check HEAD~

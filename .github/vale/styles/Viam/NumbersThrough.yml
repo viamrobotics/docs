@@ -1,0 +1,8 @@
+extends: existence
+message: "Don’t use the word inclusive in your description ('%s')."
+link: 'https://docs.rackspace.com/docs/style-guide/style/numbers'
+ignorecase: true
+level: warning
+nonword: true
+tokens:
+  - 'through .*, inclusive'

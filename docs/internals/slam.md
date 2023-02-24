@@ -4,20 +4,20 @@ linkTitle: "SLAM Technical"
 weight: 70
 type: "docs"
 draft: true
-description: "Background and technical information for the Viam SLAM service, its configuration, its functionality, and its interfaces."
+description: "Background and technical information for the Viam SLAM Service, its configuration, its functionality, and its interfaces."
 tags: ["slam", "services"]
 # SMEs: Jeremy, Kat
 ---
 
-SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers. At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various cutting edge SLAM algorithms that may be useful in their mission.
+SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers. At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various SLAM algorithms that may be useful in their mission.
 
-As of 01 June 2022, we support the following SLAM libraries:
+As of June 01, 2022, we support the following SLAM libraries:
 
 [ORBSLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
 
 ## Current Architecture
 
-The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above. It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
+The SLAM Service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above. It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
 
 <img src="../img/slam-service-arch.png"/>
 
@@ -26,7 +26,7 @@ The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ 
 Coming soon!
 
 TODO: Do we want to discuss that RGBD cameras produce a rgb and depth folder inside data?
---> Add an explanation of what kind of subfolders are created for the "mono" case and the "rgbd" case (i.e. rgb, and rgbd + depth). Elaborate on what the user should keep in mind when creating & integrating their own slam libraries, and whether or not it is important for them to document the subfolders that are created.
+--> Add an explanation of what kind of subfolders are created for the "mono" case and the "rgbd" case (that is rgb, and rgbd + depth). Elaborate on what the user should keep in mind when creating & integrating their own slam libraries, and whether or not it is important for them to document the subfolders that are created.
 
 <pre>
 .
@@ -73,7 +73,7 @@ Current options are cartographer or orbslamv3.
 
 **data_dir** (string): This is the data directory used for saving input sensor/map data and output maps/visualizations.
 It has an architecture consisting of three internal folders, config, data and map.
-If these have not been provided, they will be created by the SLAM service.
+If these have not been provided, they will be created by the SLAM Service.
 The data in the data directory also dictate what type of SLAM will be run:
 
 - If no map is provided in the data folder, the SLAM algorithm will generate a new map using all the provided data (PURE MAPPING MODE)
@@ -118,7 +118,7 @@ You can find details on which inputs you can include for the available libraries
 
 #### OrbSLAM
 
-OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (i.e., "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
+OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (as "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
 
 <table>
     <tr>
@@ -160,7 +160,7 @@ Forthcoming
 
 ## Installation
 
-### Via an App Image
+### Using an App Image
 
 Coming soon!
 

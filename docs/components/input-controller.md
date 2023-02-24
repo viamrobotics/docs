@@ -27,24 +27,24 @@ Input devices provide a Controller interface with three methods:
 `Events` are passed to registered callback functions and are returned by Events(). They represent a singular event from the input device and have four fields:
 
 1. Time
-1. Event (This is an input.EventType, and represents a change in status of a control, i.e. a button press, a button release, or a change in position along a joystick axis.)
-1. Control (This is an input.Control, and represents the axis/button/etc. involved.)
+1. Event (This is an `input.EventType`, and represents a change in status of a control: a button press, a button release, or a change in position along a joystick axis.)
+1. Control (This is an `input.Control`, and represents the axis, button, or other control item involved.)
 1. Value (this is a float64, used for the position of an axis, or state of a button.)
 
 #### EventType
 
-`EventType` is an enumerated list, with items like ButtonPress, ButtonRelease, PositionChangeAbs, Connect, Disconnect, etc. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the current list.
+`EventType` is an enumerated list, with items like ButtonPress, ButtonRelease, PositionChangeAbs, Connect, Disconnect, and others. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the current list.
 This type is returned as part of every event (per above) and also used to select events the callback is interested in when registering.
 One note is that the special AllEvents value, if registered, will be called IN ADDITION TO any other callbacks registered. This is useful for debugging without interrupting normal controls, or for capturing extra/unknown events.
 
 #### Control types
 
-`input.Control` is another enumerated list that represents "well known" control types. For example, the X and Y axis of a primary joystick (a type of control which reports absolute position) should always be input.AbsoluteX and input.AbsoluteY. The secondary (right hand) joystick/thumbstick is input.AbsoluteRY and input.AbsoluteRY. Buttons are things line input.ButtonStart, or for trigger buttons, input.LT/RT. The typical 4-button configuration (under the right thumb) on most game pads uses generic compass directions instead of letter/shape labels, so that mappings aren't XBox/Nintendo/Playstation specific. Ex: "ButtonSouth" is the bottom-most button of the four, and corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation. "ButtonNorth" is likewise X/Y/Triangle. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the full/current list. If new types need to be added, care should be taken to make them as generic and universal as possible. Look to the symbols in the Linux events subsystem for examples.
+`input.Control` is another enumerated list that represents "well known" control types. For example, the X and Y axis of a primary joystick (a type of control which reports absolute position) should always be `input.AbsoluteX` and `input.AbsoluteY`. The secondary (right hand) joystick/thumbstick is `input.AbsoluteRY` and `input.AbsoluteRY`. Buttons are things line `input.ButtonStart`, or for trigger buttons, `input.LT/RT`. The typical 4-button configuration (under the right thumb) on most game pads uses generic compass directions instead of letter/shape labels, so that mappings aren't XBox/Nintendo/Playstation specific. Ex: "ButtonSouth" is the bottom-most button of the four, and corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation. "ButtonNorth" is likewise X/Y/Triangle. See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the full/current list. If new types need to be added, care should be taken to make them as generic and universal as possible. Look to the symbols in the Linux events subsystem for examples.
 
 #### Axes
 
-`Axes` can be either Absolute or Relative. Absolute axes report where they are each time and this is the method used by things like joysticks/thumbsticks, analog triggers, etc.--basically anything that "returns to center" on its own. Relative axes, on the other hand, are used by mice/trackpads/etc., and report a relative change in distance.
-For now, only the gamepad implementation exists, so only Absolute axes are in use. Absolute axes report a "PostionChangeAbs" EventType and the Value is a float64 between -1.0 and +1.0, with center/neutral always being 0.0. The one special case is single-direction axes (like analog triggers, gas/brake pedals, etc.) On these, the "neutral" point is still 0.0, but they may only ever go into the positive direction. Lastly, note that for Y (vertical) axes, the positive direction is "nose up" which is pulling back on the stick.
+`Axes` can be either Absolute or Relative. Absolute axes report where they are each time and this is the method used by things like joysticks/thumbsticks, analog triggers, and other devices - basically anything that "returns to center" on its own. Relative axes, on the other hand, are used by mice, trackpads, and similar devices, and report a relative change in distance.
+For now, only the gamepad implementation exists, so only Absolute axes are in use. Absolute axes report a "PostionChangeAbs" EventType and the Value is a float64 between -1.0 and +1.0, with center/neutral always being 0.0. The one special case is single-direction axes (like analog triggers, gas/brake pedals, and similar devices) On these, the "neutral" point is still 0.0, but they may only ever go into the positive direction. Lastly, note that for Y (vertical) axes, the positive direction is "nose up" which is pulling back on the stick.
 
 #### Buttons
 
@@ -86,7 +86,7 @@ There are currently mappings for a wired XBox 360 controller, and wireless XBox 
 
 ### Sample (motor control)
 
-The below example defines a single callback function (motorCtl) that handles input events, and turns them into motor.SetPower() commands. It's essentially all that's needed to drive a four wheel, skid steer platform, and uses the L/R analog triggers to control a "winder" motor, that raises/lowers a front end (like a bulldozer.) Lastly, it registers this callback for a selected set of axes.
+The below example defines a single callback function (motorCtl) that handles input events, and turns them into `motor.SetPower()` commands. It's essentially all that's needed to drive a four wheel, skid steer platform, and uses the L/R analog triggers to control a "winder" motor, that raises/lowers a front end (like a bulldozer.) Lastly, it registers this callback for a selected set of axes.
 
 ```go {class="line-numbers linkable-line-numbers"}
 motorCtl := func(ctx context.Context, event input.Event) {
@@ -117,7 +117,8 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 
 ## WebGamepad
 
-This allows a gamepad to be connected remotely, via a browser and the html5 Gamepad API. To use it, add a component to the robot's config like below:
+This allows a gamepad to be connected remotely, using a browser and the HTML5 Gamepad API.
+To use it, add a component to the robot's config as in the example below:
 
 ### Config
 
@@ -139,7 +140,7 @@ You **must** use "WebGamepad" as the `name` of the web gamepad controller. This 
 
 ### Use
 
-When viewing a robot's UI (e.g. myrobot.local:8080) you'll see the WebGamepad component. Connect any compatible gamepad to your PC and press any button/stick (for privacy/security the browser won't report a gamepad until an input has been sent) and you should see the name of your controller appear, and the input displays respond to the controls. When ready, click "Enable" in the upper right to "connect" the controller to the robot, and let it begin receiving inputs.
+When viewing a robot's UI (for example, `myrobot.local:8080`) you'll see the WebGamepad component. Connect any compatible gamepad to your PC and press any button/stick (for privacy/security the browser won't report a gamepad until an input has been sent) and you should see the name of your controller appear, and the input displays respond to the controls. When ready, click "Enable" in the upper right to "connect" the controller to the robot, and let it begin receiving inputs.
 
 ## Mux
 

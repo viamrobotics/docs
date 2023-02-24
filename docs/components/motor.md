@@ -9,7 +9,7 @@ icon: "img/components/motor.png"
 # SME: Rand, Jessamy
 ---
 {{% alert title="Note" color="note" %}}
-Information on hobby servos (i.e., servomotors) is located in the <a href="../servo">Servo Component Document</a>.
+Information on hobby servos is located in the <a href="../servo">Servo Component Document</a>.
 {{% /alert %}}
 Electric motors are the most common form of actuator in robotics.
 The majority of motors used in robotics require a direct current (DC) input.
@@ -89,7 +89,7 @@ There are other ways to interface with motors such as Serial, CAN bus, and Ether
 - A DC motor
 - An appropriate motor driver
   - Takes GPIO signals from the computer and sends the corresponding signals and power to the motor
-  - Selected based on the type of motor (i.e. brushed, brushless, or stepper) and its power requirements
+  - Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements
 - An appropriate power supply
   - Note that the logic side of the driver may be powered by 3.3V from the Pi or other device, but the motor power side must not be powered by the computer’s GPIO pins.
     The motor driver should be connected to an independent power supply that can provide the peak current required by the motor.
@@ -116,7 +116,7 @@ The driver data sheet will specify which one to use.
 #### Pins
 
 - PWM/DIR: One digital input (such as a GPIO pin) sends a [pulse width modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
-- In1/In2 (or A/B): One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled via PWM through one or both pins.
+- In1/In2 (or A/B): One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled using PWM through one or both pins.
 - In1/In2 + PWM: Three pins: an In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
 
 {{% alert title="Note" color="note" %}}
@@ -192,7 +192,7 @@ Brushless motors typically have three power connections (commonly referred to as
 ### Wiring and Configuration
 
 The configuration file of a BLDC motor with Viam is the same as that of a brushed motor [(detailed above)](#viam-configuration).
-Only the output side of the driver board is different, i.e., more wires connect the driver to the motor.
+Only the output side of the driver board is different, that means more wires connect the driver to the motor.
 
 ![motor-brushless-dc-wiring](../img/motor/motor-brushless-dc-wiring.png)
 
@@ -257,7 +257,7 @@ In this particular example the enable pin on the upper left corner of the driver
 
 ### Viam Configuration
 
-Viam supports steppers controlled in one of two ways: a basic stepper driver chip that takes step and DIR input via GPIO and simply moves one step per pulse (for these, use model "gpiostepper"), or more advanced chips (e.g., TMC5072, DMC4000) that have their own microcontrollers that conveniently handle things like speed and acceleration control.
+Viam supports steppers controlled in one of two ways: a basic stepper driver chip that takes step and DIR input through GPIO and simply moves one step per pulse (for these, use model "gpiostepper"), or more advanced chips (like TMC5072, DMC4000) that have their own microcontrollers that conveniently handle things like speed and acceleration control.
 Here’s an example of a basic stepper driver config:
 
 ![motor-gpiostepper-json](../img/motor/motor-gpiostepper-json.png)
