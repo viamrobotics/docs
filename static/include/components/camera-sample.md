@@ -1,7 +1,7 @@
 This reads a single image from a [camera](/components/camera/) called "camera0" on the robot.
 
 The following example assumes you have a camera called `camera0` configured as a component of your robot.
-If your camera has a different name, change the `name` in the example.
+If your camera has a different name in the Viam app, change the `name` in the example.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
