@@ -43,7 +43,7 @@ For configuration information, click on one of the following models:
 | [`join_color_depth`](join-color-depth) | Joins the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image. |
 | [`align_color_depth_extrinsics`](align-color-depth-extrinsics) | Uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images. |
 | [`align_color_depth_homography`](align-color-depth-homography) | Uses a homography matrix to align the color and depth images. |
-| [`join_color_depth`](join-pointclouds) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
+| [`join_pointclouds`](join-pointclouds) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
 | [`transform`](transform) | A pipeline for applying transformations to an input image source. |
 
 ## Control your camera with Viam's client SDK libraries
@@ -60,7 +60,7 @@ The camera component supports the following methods:
 | ----------- | ----------- |
 | [GetImage](#getimage) | Returns an image from the camera encoded in the format specified by the MIME type. |
 | [GetPointCloud](#getpointcloud) | Returns a point cloud from the camera. |
-| [GetProperties](#getproperties) | Returns the camera intrinsic and camera distortion parameters. |
+| [GetProperties](#getproperties) | Returns the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
 
 ### GetImage
 
@@ -123,7 +123,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ### GetPointCloud
 
 Get a point cloud from the camera as bytes with a MIME type describing the structure of the data.
-The consumer of this call should encode the bytes into the formatted suggested by the MIME type.
+The consumer of this call should decode the bytes into the format suggested by the MIME type.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -185,7 +185,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetProperties
 
-Get the camera intrinsic parameters and camera distortion parameters.
+Get the camera intrinsic parameters and camera distortion, as well as whether the camera supports returning point clouds.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

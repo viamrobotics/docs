@@ -36,15 +36,15 @@ Fill in the attributes for your align color depth homography view:
         "intrinsic_parameters": {
             "width_px": <integer>,
             "height_px": <integer>,
-            "fx": <number>,
-            "fy": <number>,
-            "ppx": <number>,
-            "ppy": <number>
+            "fx": <float64>,
+            "fy": <float64>,
+            "ppx": <float64>,
+            "ppy": <float64>
         },
         "homography": {
-            "transform": [ <number>, <number>, <number>,
-                           <number>, <number>, <number>,
-                           <number>, <number>, <number> ],
+            "transform": [ <float64>, <float64>, <float64>,
+                           <float64>, <float64>, <float64>,
+                           <float64>, <float64>, <float64> ],
             "depth_to_color": <boolean>,
             "rotate_depth_degs": <integer>
         },
@@ -52,11 +52,11 @@ Fill in the attributes for your align color depth homography view:
         "depth_camera_name": "<camera_name>",
         "output_image_type": "<color|depth>",
         "distortion_parameters": {
-            "rk1": <number>,
-            "rk2": <number>,
-            "rk3": <number>,
-            "tp1": <number>,
-            "tp2": <number>
+            "rk1": <float64>,
+            "rk2": <float64>,
+            "rk3": <float64>,
+            "tp1": <float64>,
+            "tp2": <float64>
         },
         "debug": <boolean>
     }
@@ -71,7 +71,7 @@ The following attributes are available for align color depth homography views:
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
 | `intrinsic_parameters` | *Required* | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
-| `homography` | *Required* | Parameters that morph the depth points to overlay the color points and align the images: <ul> <li> <code>transform</code>: 9 floats representing the 3x3 homography matrix of the depth to color, or color to depth camera. </li> <li> <code>depth_to_color</code>: Whether to turn the depth information into colors. </li> <li> <code>rotate_depth_degs</code>: Degrees by which to rotate the depth camera image. </li> </ul> |
+| `homography` | *Required* | Parameters that morph the depth points to overlay the color points and align the images: <ul> <li> <code>transform</code>: 9 floats representing the 3x3 homography matrix of the depth to color, or color to depth camera. </li> <li> <code>depth_to_color</code>: Whether to transform depth camera points to color camera points. </li> <li> <code>rotate_depth_degs</code>: Degrees by which to rotate the depth camera image. </li> </ul> |
 | `color_camera_name` | *Required* | Name of the color camera to pull images from. |
 | `depth_camera_name` | *Required* | Name of the depth camera to pull images from. |
 | `output_image_type` | *Required* | Specify `color` or `depth` for the output stream. |

@@ -37,17 +37,17 @@ Fill in the attributes for dual stream camera:
         "intrinsic_parameters": {
             "width_px": <integer>,
             "height_px": <integer>,
-            "fx": <number>,
-            "fy": <number>,
-            "ppx": <number>,
-            "ppy": <number>
+            "fx": <float64>,
+            "fy": <float64>,
+            "ppx": <float64>,
+            "ppy": <float64>
         },
         "distortion_parameters": {
-            "rk1": <number>,
-            "rk2": <number>,
-            "rk3": <number>,
-            "tp1": <number>,
-            "tp2": <number>
+            "rk1": <float64>,
+            "rk2": <float64>,
+            "rk3": <float64>,
+            "tp1": <float64>,
+            "tp2": <float64>
         },
         "stream": "<color|depth>",
         "debug": <boolean>,

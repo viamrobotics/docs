@@ -36,10 +36,10 @@ Fill in the attributes for your align color depth extrinsics view:
         "intrinsic_parameters": {
             "width_px": <integer>,
             "height_px": <integer>,
-            "fx": <number>,
-            "fy": <number>,
-            "ppx": <number>,
-            "ppy": <number>
+            "fx": <float64>,
+            "fy": <float64>,
+            "ppx": <float64>,
+            "ppy": <float64>
         },
         "output_image_type": "<color|depth>",
         "color_camera_name": "<camera_name>",

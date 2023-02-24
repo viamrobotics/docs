@@ -42,17 +42,17 @@ Fill in the attributes for your join color depth view:
         "intrinsic_parameters": {
           "width_px": <integer>, # the expected width of the aligned pic
           "height_px": <integer>, # the expected height of the aligned pic
-          "fx": <number>,
-          "fy": <number>,
-          "ppx": <number>,
-          "ppy": <number>
+          "fx": <float64>,
+          "fy": <float64>,
+          "ppx": <float64>,
+          "ppy": <float64>
         },
         "distortion_parameters": {
-          "rk1": <number>,
-          "rk2": <number>,
-          "rk3": <number>,
-          "tp1": <number>,
-          "tp2": <number>
+          "rk1": <float64>,
+          "rk2": <float64>,
+          "rk3": <float64>,
+          "tp1": <float64>,
+          "tp2": <float64>
         },
         "debug": <boolean>
     }
