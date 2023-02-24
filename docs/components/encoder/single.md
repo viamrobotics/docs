@@ -8,6 +8,7 @@ tags: ["encoder", "components"]
 ---
 
 Configuring a `single` encoder requires configuring one pin (`i`) on the board to which the encoder is wired.
+The single pin receives the output used to calculate the relative position.
 
 {{< tabs name="Configure an single encoder" >}}
 {{< tab name="Config Builder" >}}

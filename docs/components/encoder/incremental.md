@@ -7,7 +7,10 @@ tags: ["encoder", "components"]
 # SMEs: Rand
 ---
 
+Use the `incremental` encoder model to configure [Quadrature encoders](https://en.wikipedia.org/wiki/Incremental_encoder).
+
 Configuring an `incremental` encoder requires configuring two pins on the board to which the encoder is wired.
+These two pins provide the phase outputs used to measure the speed and direction of rotation in relation to a given reference point.
 
 {{< tabs name="Configure an incremental encoder" >}}
 {{< tab name="Config Builder" >}}
