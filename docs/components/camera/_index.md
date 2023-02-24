@@ -99,7 +99,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - `stream` ([`gostream.VideoStream`](https://pkg.go.dev/github.com/edaniels/gostream)): A `VideoStream` that streams video until closed.
-- `err` ([error](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myCam, err := camera.FromRobot(robot, cameraName)
@@ -165,9 +165,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `pointCloud` ([pointcloud.PointCloud](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud)): A general purpose container of points.
+- `pointCloud` ([`pointcloud.PointCloud`](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud)): A general purpose container of points.
   It does not dictate whether or not the cloud is sparse or dense.
-- `err` ([error](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myCam, err := camera.FromRobot(robot, cameraName)

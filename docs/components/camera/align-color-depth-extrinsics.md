@@ -50,7 +50,7 @@ Fill in the attributes for your align color depth extrinsics view:
                 "ppx": <float64>,
                 "ppy": <float64>
             },
-	        "depth_to_color_extrinsic_parameters": {
+                "depth_to_color_extrinsic_parameters": {
                 "translation_mm": [ <float64>, <float64>, <float64>],
                 "rotation_rads": [ <float64>, <float64>, <float64>,
                                    <float64>, <float64>, <float64>,
