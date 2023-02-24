@@ -7,7 +7,7 @@ tags: ["encoder", "components"]
 # SMEs: Rand
 ---
 
-The `AM5-AS5048` encoder uses an I2C or SPI interface to connect.
+The [`AM5-AS5048`](https://ams.com/en/as5048a) encoder is an absolute encoder that uses an I2C or SPI interface to connect.
 
 ## Requirements
 
