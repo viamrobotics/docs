@@ -392,7 +392,7 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>We added a new badge in the <code>Current Operations</code> card of the remote control page of the Viam app. This badge lists the RTT (round trip time) of a request from your client to the robot, that is the time to complete one request/response cycle.</td>
+            <td>We added a new badge in the <code>Current Operations</code> card of the remote control page of the Viam app. This badge lists the RTT (round trip time) of a request from your client to the robot (the time to complete one request/response cycle).</td>
         </tr>
     <tbody>
 </table>
