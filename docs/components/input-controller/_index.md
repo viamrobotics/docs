@@ -15,9 +15,8 @@ Configuring an *input* component allows you to implement one of these devices in
 
 Most robots with an input controller need at least the following hardware:
 
-- A device that turns human input into electronic signals.
-- A component that you can direct the input to control the position of, like an [arm](/components/arm/) or [motor](/components/motor). See those pages for additional required hardware and configuration.
-- A power supply or batteries.
+- A power supply cable or batteries.
+- (Optional) A component that you can direct the input to control the position of, like an [arm](/components/arm/) or [motor](/components/motor). See those pages for additional required hardware and configuration.
 
 ## Configuration
 
