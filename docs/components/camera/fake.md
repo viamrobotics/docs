@@ -48,8 +48,8 @@ The following attributes are available for fake cameras:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
-| `width` | *Optional* | The width of the image. |
-| `height` | *Optional* | The height of the image. |
+| `width` | *Optional* | The width of the image in pixels. |
+| `height` | *Optional* | The height of the image in pixels. |
 
 ## View the camera stream
 
