@@ -12,7 +12,7 @@ Configuring a `gpio` input controller allows you to use a GPIO or ADC based devi
 
 ## Configuration
 
-Refer to the following example configuration for an input controller of model `gpio` with a GPIO based board device:
+Refer to the following example configuration for an input controller of model `gpio` with a GPIO based board device. Note that the full config is only visible in the "Raw JSON" tab:
 
 {{< tabs name="Configure a `gpio` input controller" >}}
 {{< tab name="Config Builder" >}}
@@ -81,8 +81,8 @@ The following attributes are available for `gamepad` input controllers:
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
 | `board` | *Required* | The name of the board component with GPIO or ADC pins to use as the controlling device. |
-| `buttons` | *Required* | The [Buttons](../#buttons) available for control. These should be physically attached to the GPIO/ADC board. |
-| `axes` | *Required* | The [Axes](../#axes) available for control. These should be physically attached to the GPIO/ADC board. |
+| `buttons` | *Required* | The [Buttons](../#button-controls) available for control. These should be connected to the GPIO/ADC board. |
+| `axes` | *Required* | The [Axes](../#axis-controls) available for control. These should be connected to the GPIO/ADC board. |
 
 ## Troubleshooting
 

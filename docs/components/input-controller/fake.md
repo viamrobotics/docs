@@ -10,6 +10,9 @@ tags: ["input controller", "components"]
 
 Configuring a `fake` input controller allows you to test an input controller communicating with your robot, without any physical hardware.
 
+This controller can have [Controls](../#control-field) defined in `attributes`, but only ever returns a single event on the X axis.
+It behaves like a joystick with the [Event.value](../#event-object) stuck at 0.7.
+
 ## Configuration
 
 Refer to the following example configuration for an input controller of model `fake`:
