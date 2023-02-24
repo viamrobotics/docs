@@ -20,6 +20,10 @@ If you're signing up without an invitation link, go to [app.viam.com](https://ap
 
 ## Navigating organizations
 
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/eb7v6dabCGQ" allowfullscreen></iframe>
+</div>
+
 Click the drop down in the upper right corner of the page.
 You should see your name, email, and a list of organizations you belong to.
 
