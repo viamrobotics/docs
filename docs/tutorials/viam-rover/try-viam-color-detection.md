@@ -87,7 +87,7 @@ A virtual camera transforms the output from a physical camera.
 
 To view output from the color detector overlaid on images from a physical camera, you need to configure a [transform camera](/components/camera/transform).
 
-Navigate to the Scroll down to the **COMPONENTS** tab in the Viam app and scroll to the **Create Component** section.
+Navigate to the **COMPONENTS** tab in the Viam app and scroll to the **Create Component** section.
 To create a [transform camera](/components/camera/transform):
 
 1. Enter a name for **Name**, for example `detectionCam`.
