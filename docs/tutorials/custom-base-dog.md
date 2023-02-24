@@ -270,7 +270,7 @@ Click **Save Config**.
 
 ### Configure the camera
 
-Configure the ribbon camera on the dog as a `webcam`, following the [Configure a Camera](/components/camera/configure-a-camera/) tutorial.
+Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/components/camera/webcam).
 
 ## Start the servers
 

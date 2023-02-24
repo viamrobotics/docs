@@ -4,483 +4,284 @@ linkTitle: "Camera"
 weight: 40
 type: "docs"
 description: "A camera captures 2D or 3D images and sends them to the computer controlling the robot."
+no_list: true
 tags: ["camera", "components"]
 icon: "img/components/camera.png"
 # SMEs: Bijan, vision team
 ---
-A Viam Camera is a source of 2D and/or 3D images (like a webcam, lidar, or time-of-flight sensor). A single image is returned from the camera upon request, and images can be streamed continuously from the camera by using systems that do fast, repeated requests.
 
-There are two basic things you can do with a camera component:
+A camera component is a source of 2D and/or 3D images.
+You can use the component to configure a webcam, lidar, time-of-flight sensor, or another type of camera.
 
-1. Request the next Image (which is a 2D Color(RGB), or Depth(Z) image).
+The API for camera components allows you to:
 
-   * A 2D image always has its x,y units in pixels. For Color, the pixel value is a RGB value, and for Depth it is a uint16 representing depth in mm.
+- Request single images or a stream in 2D color, or display z-depth.
 
-2. Request the next Point Cloud (which is a 3D image)
+- Request a point cloud.
+  Each 3D point cloud image consists of a set of coordinates (x,y,z) representing depth in mm.
 
-   * A 3D point cloud has all of its (x,y,z) coordinates in units of mm.
+## Configuration
 
-## Camera Models
+The configuration of your camera component depends on your camera model.
+You can use different models to:
 
-Here are details about each of the fields in the camera config:
+- Configure physical cameras that generate images or point clouds.
+- Combine streams from multiple cameras into one.
+- Transform and process images.
 
-* **Type** is the component type, which will always be "camera".
-* **Name** is the name of the component.
-* **Model** is how the component will be set up. Some model types are for setting up physical cameras where images and point clouds originate, some are for combining streams from multiple cameras into one, and the `transform` model is for transforming and processing images.
-* **Attributes** are the details that the model requires to work. What attributes are required depends on the model selected. There are some common attributes that can be attached to all camera models.
-  * `stream`: this can be either "color" or "depth" and specifies which kind of image should be returned from the camera stream.
- Only required for certain models; see example configs below.
-  * `debug`: "true" or "false", and enables the debug outputs from the camera.
- Optional.
-  * `intrinsic_parameters`: these are the intrinsic parameters of the camera used to do 2D <-> 3D projections.
- Optional for most camera models.
- Required for `join_color_depth`.
-  * `distortion_parameters`: these are modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens.
- Optional.
+For configuration information, click on one of the following models:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
-"intrinsic_parameters": { # optional field, intrinsic parameters for 2D <-> transforms
-    "height_px": 720, # height of the image in pixels
-    "width_px": 1280, # width of the image in pixels
-    "fx": 900.538000, # focal length in pixels, x direction
-    "fy": 900.818000, # focal length in pixels, y direction
-    "ppx": 648.934000, # x center point in pixels
-    "ppy": 367.736000 # y center point in pixels
-}
+| Model | Description |
+| ----- | ----------- |
+| [`ffmpeg`](ffmpeg) | Uses a camera, a video file, or a stream as a camera. |
+| [`image_file`](image-file) | Gets color and depth images frames from a file path. |
+| [`velodyne`](velodyne) | Uses velodyne lidar. |
+| [`webcam`](webcam) | A standard camera that streams camera data. |
+| [`fake`](fake) | A camera model for testing. |
+| [`single_stream`](single-stream) | A HTTP client camera that streams image data from an HTTP endpoint. |
+| [`dual_stream`](dual-stream) | A HTTP client camera that combines the streams of two camera servers to create colorful point clouds. |
+| [`join_color_depth`](join-color-depth) | Joins the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image. |
+| [`align_color_depth_extrinsics`](align-color-depth-extrinsics) | Uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images. |
+| [`align_color_depth_homography`](align-color-depth-homography) | Uses a homography matrix to align the color and depth images. |
+| [`join_pointclouds`](join-pointclouds) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
+| [`transform`](transform) | A pipeline for applying transformations to an input image source. |
 
-"distortion_parameters": {  # optional field, distortion parameters
-    "rk1": 0.158701,
-    "rk2": -0.485405,
-    "rk3": 0.435342,
-    "tp1": -0.00143327,
-    "tp2": -0.000705919
-}
+## Control your camera with Viam's client SDK libraries
+
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
+
+{{< readfile "/static/include/components/camera-sample.md" >}}
+
+## API
+
+The camera component supports the following methods:
+
+| Method Name | Description |
+| ----------- | ----------- |
+| [GetImage](#getimage) | Returns an image from the camera encoded in the format specified by the MIME type. |
+| [GetPointCloud](#getpointcloud) | Returns a point cloud from the camera. |
+| [GetProperties](#getproperties) | Returns the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
+
+### GetImage
+
+Returns an image from the camera encoded in the format specified by the MIME type.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `mime_type` (`str`): The MIME type of the image.
+  The returned MIME type is not guaranteed to match the image output type.
+
+**Returns:**
+
+- `frame` (`Image` or [`RawImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.RawImage)): The requested frame.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_cam = Camera.from_robot(robot=robot, name='my_camera')
+
+frame = await my_cam.get_image()
 ```
 
-Follow the [camera calibration tutorial](/components/camera/camera-calibration/) to calibrate a camera and extract the `intrinsic_parameters` and `distortion_parameters`.
+Be sure to close the image when finished.
 
-### Webcam
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.get_image).
 
-`webcam` is a model that streams the camera data from a camera connected to the hardware.
-See our [How to Configure a Camera](/components/camera/configure-a-camera/) tutorial for a guide to configuring webcams.
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-{{% alert title="Note" color="note"%}}
-In Viam parlance, webcams are standard, USB camera devices.
+**Parameters:**
 
-Viam recommends using a standard webcam rather than a "ribbon" cam (typical a bare camera with a ribbon and connector for mating to a Pi) as they can be very unreliable.
-{{% /alert %}}
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `errHandlers` ([`ErrorHandler`](https://pkg.go.dev/github.com/edaniels/gostream#ErrorHandler)): A handler for errors allowing for logic based on consecutively retrieved errors).
 
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model" : "webcam",
-    "attributes": {
-        "video_path": string, # path to the webcam
-        "width_px": int, # (optional) camera image width, used with video_path to find camera with this resolution
-        "height_px": int, # (optional) camera image height, used with video_path to find camera
-        "format": string # (optional) image format, used with video_path to find camera
-    }
+**Returns:**
+
+- `stream` ([`gostream.VideoStream`](https://pkg.go.dev/github.com/edaniels/gostream)): A `VideoStream` that streams video until closed.
+- `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myCam, err := camera.FromRobot(robot, cameraName)
+if err != nil {
+  logger.Fatalf("cannot get camera: %v", err)
 }
+
+// gets the stream from a camera
+stream, err := myCam.Stream(context.Background())
+
+// gets an image from the camera stream
+img, release, err := stream.Next(context.Background())
+defer release()
 ```
 
-### Fake
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
 
-Fake is a fake camera that always returns the same image, which is an image of a chess board. This camera also returns a point cloud.
+{{% /tab %}}
+{{< /tabs >}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model" : "fake",
-    "attributes": {}
-}
+### GetPointCloud
+
+Get a point cloud from the camera as bytes with a MIME type describing the structure of the data.
+The consumer of this call should decode the bytes into the format suggested by the MIME type.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- `pointcloud` (`bytes`): The pointcloud data.
+- `mimetype` (`str`): The MIME type of the pointcloud (for example PCD).
+
+To deserialize the returned information into a numpy array, use the Open3D library:
+
+```python {class="line-numbers linkable-line-numbers"}
+import numpy as np
+import open3d as o3d
+
+my_cam = Camera.from_robot(robot=robot, name='my_camera')
+
+data, _ = await my_cam.get_point_cloud()
+
+# write the point cloud into a temporary file
+with open("/tmp/pointcloud_data.pcd", "wb") as f:
+    f.write(data)
+pcd = o3d.io.read_point_cloud("/tmp/pointcloud_data.pcd")
+points = np.asarray(pcd.points)
 ```
 
-### Image File
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.get_point_cloud).
 
-Image_file is a model where the frames for the color and depth images are acquired from a file path.
-Either file path is optional.
+{{% /tab %}}
+{{% tab name="Golang" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model" : "image_file",
-    "attributes": {
-        "color_image_file_path": string, # the file path to the color image,
-        "depth_image_file_path": string # the file path to the depth image,
-    }
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- `pointCloud` ([`pointcloud.PointCloud`](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud)): A general purpose container of points.
+  It does not dictate whether or not the cloud is sparse or dense.
+- `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myCam, err := camera.FromRobot(robot, cameraName)
+if err != nil {
+  logger.Fatalf("cannot get camera: %v", err)
 }
+
+pointCloud, err := myCam.NextPointCloud(context.Background())
 ```
 
-### Velodyne
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
 
-The model for using the velodyne lidar. The velodyne must be running locally at address `0.0.0.0`.
+{{% /tab %}}
+{{< /tabs >}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model" : "velodyne",
-    "attributes": {
-        "port": int,
-        "ttl_ms": int,
-    }
-}
+### GetProperties
+
+Get the camera intrinsic parameters and camera distortion, as well as whether the camera supports returning point clouds.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- `properties` ([`Properties`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties)): The properties of the camera.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_cam = Camera.from_robot(robot=robot, name='my_camera')
+
+properties = await my_cam.get_properties()
 ```
 
-### FFmpeg
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.get_properties).
 
-FFmpeg is a model that allows you to use a video file or stream as a camera.
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model" : "ffmpeg",
-    "attributes": {
-        "video_path": string,
-        "filters": [ # optional
-            {
-            "name": string,
-            "args": [string, string, ..],
-            "kw_args": { ... }
-            }
-        ],
-        "input_kw_args": { ... },
-        "output_kw_args": { ... },
-    }
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- `properties` ([`Properties`](https://pkg.go.dev/go.viam.com/rdk/components/camera#Properties)): Properties of the particular implementation of a camera.
+- `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myCam, err := camera.FromRobot(robot, cameraName)
+if err != nil {
+  logger.Fatalf("cannot get camera: %v", err)
 }
+
+// gets the properties from a camera
+properties, err := myCam.Properties(context.Background())
+
 ```
 
-### Join Color Depth
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
 
-Model `join_color_depth` is used to join the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image.
-In this case, rather than entering the URL of each camera, you just enter the names of the color and depth camera in the attribute field, and the `join_color_depth` camera will combine the streams from them both.
-If you need to specify the intrinsics/extrinsics, or homography parameters, to do the alignment between the depth and color frames if they need to be shifted in some way, use the [`align_color_depth_extrinsics`](#align-color-depth-extrinsics) model or [`align_color_depth_homography`](#align-color-depth-homography) model, respectively, detailed next.
-If they don’t need to be aligned, you can use `join_color_depth`.
-You then specify the stream field to specify which aligned picture you want to stream.
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model" : "join_color_depth",
-    "attributes": {
-        "output_image_type": "string", # either "color" or "depth" to specify the output stream
-        "color_camera_name": "string", # name of the color camera from which to pull
-        "depth_camera_name": "string", # name of the depth camera from which to pull
-        "intrinsic_parameters": { # for projecting RGBD images to 2D <-> 3D
-            "width_px": int, # the expected width of the aligned pic
-            "height_px": int, # the expected height of the aligned pic
-            "fx": 0,
-            "fy": 0,
-            "ppx": 0,
-            "ppy": 0
-        },
-        "distortion_parameters": {...} # optional
-    }
-}
-```
-
-### Align Color Depth Extrinsics
-
-The `align_color_depth_extrinsics` model uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align the two images.
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model" : "align_color_depth_homography",
-    "attributes": {
-        "debug": false,
-        "output_image_type": "string", # either "color" or "depth" to specify the output stream
-        "color_camera_name": "string", # name of the color camera from which to pull
-        "depth_camera_name": "string", # name of the depth camera from which to pull
-        "intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D
-        "camera_system": { # the intrinsic/extrinsic parameters that relate the two cameras together
-            in order to join the images
-            "color_intrinsic_parameters": {...}, # same form as standard intrinsic params on every camera
-            "depth_intrinsic_parameters": {...}, # same form as standard intrinsic params on every camera
-            "depth_to_color_extrinsic_parameters": {
-                "rotation_rads": [...], # the 3x3 rotation matrix expressed as a list of 9 radians
-                "translation_mm": [...] # a list of 3 numbers representing the translation from depth to color in mm
-            }
-        }
-    }
-}
-```
-
-### Align Color Depth Homography
-
-The `align_color_depth_homography` camera model uses a homography matrix to align the color and depth images.
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model" : "align_color_depth_homography",
-    "attributes": {
-        "debug": false,
-        "output_image_type": "string", # either "color" or "depth" to specify the output stream
-        "color_camera_name": "string", # name of the color camera from which to pull
-        "depth_camera_name": "string", # name of the depth camera from which to pull
-        "intrinsic_parameters": {...}, # for projecting RGBD images to 2D <-> 3D
-        "homography": { # homography parameters that morph the depth points to overlay
-            the color points and align the images
-            "transform": [...], # 9 floats representing the 3x3 homography matrix of the depth to color, or color to depth camera
-            "depth_to_color": false,
-            "rotate_depth_degs": -90 # degrees by which to rotate the depth camera image
-        }
-    }
-}
-```
-
-### Join Pointclouds
-
-Combine the point clouds from multiple camera sources and project them to be from the point of view of target_frame
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model" : "join_pointclouds",
-    "attributes": {
-        "source_cameras": ["cam1", "cam2", "cam3"], # camera sources to combine
-        "target_frame": "arm1", # the frame of reference for the points in the merged point cloud.
-        "merge_method": "", # [opt] either "naive" or "icp"; defaults to "naive".
-        "proximity_threshold_mm": 1 # [opt] defines how close 2 points should be together to be considered the same point when merged.
-    }
-}
-```
-
-### Transform
-
-The Transform model creates a pipeline for applying transformations to an input image source.
-Transformations get applied in the order they are written in the pipeline.
-Below are the available transformations, and the attributes they need.
-
-Example config:
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model": "transform",
-    "attributes" : {
-        "source" : "physical_cam",
-        "pipeline": [
-            { "type": "rotate", "attributes": {} },
-            { "type": "resize", "attributes": {"width_px":200, "height_px" 100} }
-        ]
-    }
-}
-```
-
-#### _Identity_
-
-The Identity transform does nothing to the image.
-You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "type": "identity",
-    "attributes": {
-        # no attributes
-    }
-}
-```
-
-#### _Rotate_
-
-The Rotate transformation rotates the image by 180 degrees.
-This feature is useful for when the camera is installed upside down on your robot.
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "type": "rotate",
-    "attributes": {
-        # no attributes
-    }
-}
-```
-
-#### _Resize_
-
-The Resize transform resizes the image to the specified height and width.
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "type": "resize",
-    "attributes": {
-        "width_px": int,
-        "height_px": int
-    }
-}
-```
-
-#### _Depth to Pretty_
-
-The Depth-to-Pretty transform takes a depth image and turns it into a colorful image, with blue indicating distant points and red indicating nearby points.
-Actual depth information is lost in the transform.
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "type": "depth_to_pretty",
-    "attributes": {
-        # no attributes
-    }
-}
-```
-
-#### _Overlay_
-
-Overlay overlays the depth and color 2D images. Useful in order to debug the alignment of the two images.
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "type": "overlay",
-    "attributes": {
-        "intrinsic_parameters": {
-            "width_px": int,
-            "height_px": int,
-            "ppx": float, # the image center x point
-            "ppy": float, # the image center y point
-            "fx": float, # the image focal x
-            "fy": float, # the image focal y
-        }
-    }
-}
-```
-
-#### _Undistort_
-
-The Undistort transform undistorts the input image according to the intrinsics and distortion parameters specified within the camera parameters.
-Currently only supports a Brown-Conrady model of distortion (20 September 2022).
-For further information, please refer to the [OpenCV docs](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a).
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "type": "undistort",
-    "attributes": {
-        "intrinsic_parameters": {
-            "width_px": int,
-            "height_px": int,
-            "ppx": float, # the image center x point
-            "ppy": float, # the image center y point
-            "fx": float, # the image focal x
-            "fy": float, # the image focal y
-        },
-        "distortion_parameters": {
-            "rk1": float, # radial distortion
-            "rk2": float,
-            "rk3": float,
-            "tp1": float, # tangential distortion
-            "tp2": float
-        }
-    }
-}
-```
-
-#### _Detections_
-
-The Detections transform takes the input image and overlays the detections from a given detector present within the [Vision Service](/services/vision/).
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "type": "detections",
-    "attributes": {
-        "detector_name": string, # the name within the Vision Service
-        "confidence_threshold": float # only display detections above threshold
-    }
-}
-```
-
-#### _Depth Edges_
-
-The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "type": "depth_edges",
-    "attributes": {
-        "high_threshold_pct": float, # between 0.0 - 1.0
-        "low_threshold_pct": float, # between 0.0 - 1.0
-        "blur_radius_px": float # smooth image before applying filter
-    }
-}
-```
-
-#### _Depth Preprocess_
-
-Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "type": "depth_preprocess",
-    "attributes": {
-        # no attributes
-    }
-}
-```
-
-### HTTP server cameras
-
-If you have an HTTP endpoint that is streaming images, you can create a Viam camera from that URL.
-If you want to create a camera for 2D images, use a `single_stream` server.
-If you have two endpoints, one for color images and one for depth images, you can use `dual_stream` so that you can also directly generate point clouds.
-
-#### Single Stream
-
-single_stream is a model where there is a camera server streaming image data. You must specify if it is streaming "color", "depth" data. Single_stream can only output a point cloud if a "depth" stream is selected. Color streams will fail at producing point clouds.
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model" : "single_stream",
-    "attributes": {
-        "url": string # the camera server url,
-        "stream": string # options are "color", "depth",
-    }
-}
-```
-
-#### Dual Stream
-
-dual_stream is a model where there are two camera servers streaming data, one is the color stream, and the other is the depth stream. This is useful for generating colorful point clouds.
-
-```json-viam {class="line-numbers linkable-line-numbers"}
-{
-    "name": "camera_name",
-    "type": "camera",
-    "model" : "dual_stream",
-    "attributes": {
-        "color": string, # the color stream url,
-        "depth": string, # the depth stream url,
-        "stream": string # "color" or "depth" image will be returned when calling Next(). NextPointCloud() returns the full colorful point cloud.
-    }
-}
-```
-
-## Camera Servers
-
-If you have a camera that uses its own SDK to access its images and point clouds (like an Intel RealSense camera), you can attach a camera server as a remote component to your robot.
-These remote cameras will show up just like regular cameras on your robot.
-
-For more details, check out [this link to our camera server repository](https://github.com/viamrobotics/camera-servers).
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Troubleshooting
 
-If you are getting "timeout" errors from GRPC when adding a `webcam` model, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box):
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-```bash
-sudo raspi-config
-Interface Options -> Camera -> Enable Camera
-Restart the Pi
-```
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
 
-## Implementation
+## Next Steps
 
-[Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/camera/index.html)
+<div class="container text-center">
+  <div class="row">
+        <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+          <a href="calibrate/">
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
+                Calibrate a Camera
+            </h4>
+          </a>
+          <p style="text-align: left;"> Calibrate a camera and extract the intrinsic and distortion parameters. </p>
+        </div>
+        <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+          <a href="transform/">
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
+                Transform a Camera
+            </h4>
+          </a>
+          <p style="text-align: left;"> Instructions for transforming a webcam. </p>
+        </div>
+      <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+          <a href="../../services/vision">
+              <br>
+              <h4 style="text-align: left; margin-left: 0px;">Vision Service</h4>
+              <p style="text-align: left;">The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.</p>
+          <a>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/viam-rover/try-viam-color-detection/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Detect color with a Viam Rover</h4>
+            <p style="text-align: left;">Use the vision service in the Viam app to detect a color.</p>
+        </a>
+    </div>
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/scuttlebot/color-detection-scuttle/">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Colored Object Follower</h4>
+            <p style="text-align: left;">Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software.</p>
+        </a>
+    </div>
+  </div>
+</div>

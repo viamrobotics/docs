@@ -51,12 +51,12 @@ Configure the board per the [Board Component topic](/components/board/).
 We named ours `local`.
 Use type `board` and model `pi` if you're using a Raspberry Pi.
 
-Configure the wheeled base per the [Base Component topic](/components/base/).
+Configure the wheeled base per the [Base Component documentation](/components/base/).
 We named ours `scuttlebase`.
 
-Configure the [camera](/components/camera/) as described in this tutorial: [Connect and configure a webcam](/components/camera/configure-a-camera/).
+[Configure the camera as a webcam](/components/camera/webcam).
 
-Your webcam configuration in the Config Builder will look something like this:
+Your webcam configuration will look something like this:
 
 ![The webcam configuration UI with video_path set to video0.](/tutorials/img/webcam-line-follower/lf-cam-config.png)
 
@@ -110,7 +110,7 @@ Raw JSON:
 
 ### Configuring the visualizer
 
-This step is optional, but if you'd like to see the bounding boxes that the color detector comes up with, you'll need to configure a [transform camera](/components/camera/#transform).
+This step is optional, but if you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
 In the **CONFIG** tab, make a new component with name `show_detections`, type `camera` and model `transform`.

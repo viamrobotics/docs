@@ -230,7 +230,7 @@ Now let’s add a camera to watch the video stream on the control panel as you m
 ### Camera Configuration
 
 Add your USB camera as a webcam.
-Please refer to [How to Configure a Camera > Connect and Configure a Camera](/components/camera/configure-a-camera/#connect-and-configure-a-webcam) for complete instructions.
+Please refer to [our webcam documentation](/components/camera/webcam) for complete instructions.
 
 <img src="../../img/foam-dart-launcher/config-webcam.png"  alt="Camera Component Attribute Pane." title="Camera Component Attribute Pane" width="800"><br>
 
