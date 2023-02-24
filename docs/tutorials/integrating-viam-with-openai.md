@@ -14,7 +14,9 @@ When we think of robots, most of us tend to group them into categories:
 * bad or scary robots
 * good robots
 
-<img src="../img/ai-integration/rosey.jpeg"  style="float:right;margin-right:150px;margin-left: 20px;" alt="Rosey the robot, from the Jetsons." title="Rosey the robot, from the Jetsons." width="350" />
+<div class="td-max-width-on-larger-screens">
+  <img src="../img/ai-integration/rosey.jpeg"  style="float:right;margin-left:1em;" alt="Rosey the robot, from the Jetsons." title="Rosey the robot, from the Jetsons." width="350" />
+</div>
 
 One type of “good” robot is a companion robot - a robot created for the purposes of providing real or apparent companionship for human beings.
 While some [examples](https://www.google.com/search?q=companion+robot) have recently been brought to market, primarily marketed towards children and the elderly, we are all familiar with robots from popular movies that ultimately have proven to be endearing companions and became embedded in our culture.
@@ -71,7 +73,9 @@ Attach the servo to the bracket.
 
 ### 3. Servo disc
 
-<img src="../img/ai-integration/3emotion.png"  style="float:right;margin-right:150px;margin-left: 20px;" alt="Emotion wheel." title="Emotion wheel." width="220" />
+<div class="td-max-width-on-larger-screens">
+  <img src="../img/ai-integration/3emotion.png"  style="float:right;margin-left: 1em;" alt="Emotion wheel." title="Emotion wheel." width="220" />
+</div>
 
 If you are 3D printing the servo disc, [download the STL file](https://github.com/viam-labs/tutorial-openai-integration/blob/main/servo_disc_large.stl) and print it.
 Attach the servo disc to the servo by fitting it to the servo's output spline.
@@ -250,15 +254,19 @@ For example, if you say *"Hello Rosey, what do you think will happen today?"*, t
 If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-integration/blob/45ce0e3f2b7bad33f568cd4273e6721aa2ceffe5/rosey.py#L144), you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
 For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
 
-If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read an OpenAI-generated response about what it sees. Also, a "mood" will be selected at random, and the response will be generated with that mood.
-
+<div class="td-max-width-on-larger-screens">
 <img src="../img/ai-integration/yoda.jpeg"  style="float:left;margin-right:20px;margin-left: 0px;" alt="Viam Rover Rosey." title="Viam Rover Rosey." width="300" />
+
+If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read an OpenAI-generated response about what it sees. Also, a "mood" will be selected at random, and the response will be generated with that mood.
 
 The GPT-3 model is quite good at responding in the style of known personas, so you can also say *"Hey Rosey, act like Yoda"*, and from that point on, responses will be generated in the style of Yoda! The tutorial code has a number of characters you can try, and to pick one randomly, you can say *"Rosey, act random"*.
 You can even guess who Rosey is acting like by saying *"Rosey, I think you are Scooby Doo!"*
 
 Much of Rosey's behavior can be modified by changing the values of parameters in the tutorial code's [params.py](https://github.com/viam-labs/tutorial-openai-integration/blob/main/params.py) file.
 You can change Rosey's name to something else, add characters, adjust the classifier confidence threshold, and more.
+</div>
+<br>
+<br>
 
 ## Next steps
 
