@@ -8,8 +8,8 @@ tags: ["input controller", "components"]
 # SMEs: James
 ---
 
-Configuring a `gamepad` input controller allows you to use a Linux-based gamepad as a device to communicate with your robot.
-Most standard gamepads, such as xbox or playstation type game controllers, are Linux-based.
+Configuring a `gamepad` input controller allows you to use a Linux-supported gamepad as a device to communicate with your robot.
+Most standard gamepads, such as xbox or playstation type game controllers, as well as many joysticks, racing wheels, etc. have Linux support.
 
 ## Configuration
 
@@ -33,11 +33,8 @@ Refer to the following example configuration for an input controller of model `g
       "attributes": {
         "dev_file": "",
         "auto_reconnect": false
-      },
-      "depends_on": [
-        <your-board>
-      ]
-    }, ...
+      }
+    }
 }
 ```
 

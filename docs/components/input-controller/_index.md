@@ -38,7 +38,7 @@ Once you've configured your input controller according to model type, you can wr
 
 ## Code Examples
 
-### Control your Input Controller with Viam's Client SDK Libraries
+### Control your robot with an Input Controller using Viam's Client SDK Libraries
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam app guide](/manage/app-usage/) for app-specific guidance.
 
@@ -56,13 +56,12 @@ from viam.robot.client import RobotClient
 async def connect_controller():
     creds = Credentials(
         type='robot-location-secret',
-        payload='clt3sb77hlv48s01c9rsafev7r4yeqf5g3hbm9xg35053bep') # GRAB YOUR ROBOT LOCATION SECRET VALUE [Can be found in robot's Code Sample Tab in app.viam.com].
+        payload= "GRAB YOUR ROBOT LOCATION SECRET VALUE [Can be found in robot's Code Sample Tab in app.viam.com]"
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    # GRAB YOUR ROBOT'S REMOTE ADDRESS [Can be found in robot's Control Tab in app.viam.com).
-    return await RobotClient.at_address('fake-input-controller-main.0b2qnylnp0.viam.cloud', opts)
+    return await RobotClient.at_address("GRAB YOUR ROBOT'S REMOTE ADDRESS [Can be found in robot's Control Tab in app.viam.com", opts)
 
 # Define a function to handle the controller.
 async def handleController(controller):
@@ -218,10 +217,13 @@ The map represents the most recent input event for each input [Control](#control
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_events).
 
 ```python
-myController = Controller.from_robot(robot=myRobotWithController, name='my_robot_with_controller')
+myController = Controller.from_robot(robot=myRobotWithController, name='my_robot_with_controller') ...
 
-# Get the most recent event for each input Control.
+# Get the most recent Event for each input.Control.
 events = await myController.get_events()
+
+# Print out the most recent Event for each input.Control. 
+print(f'Events:\n{events}')
 ```
 
 {{% /tab %}}
@@ -243,9 +245,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myController, err := controller.FromRobot(myRobotWithController, "my_robot_with_controller")
 if err != nil {
   logger.Fatalf("cannot get controller: %v", err)
-}
+} ...
 
-// Get the most recent event for each input Control.
+// Get the most recent Event for each input.Control.
 events, err := myController.Events(context.Background(), nil)
 
 // Log any errors that occur.
@@ -253,6 +255,9 @@ if err != nil {
   logger.Fatalf("cannot get list of recent events from controller: %v", err)
 }
 
+// Log the most recent Event for each input.Control.
+logger.Info("Controls:")
+logger.Info(events)
 ```
 
 {{% /tab %}}
@@ -277,10 +282,13 @@ Get a list of the input `Controls` that this `Controller` provides.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_position).
 
 ```python
-myController = Controller.from_robot(robot=myRobotWithController, name='my_robot_with_controller')
+myController = Controller.from_robot(robot=myRobotWithController, name='my_robot_with_controller') ...
 
-# Get the list of Controls provided by the Controller.
+# Get the list of Controls provided by the controller.
 controls = await myController.get_controls()
+
+# Print the list of Controls provided by the controller.
+print(f'Controls:\n{controls}')
 ```
 
 {{% /tab %}}
@@ -302,9 +310,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myController, err := controller.FromRobot(myRobotWithController, "my_robot_with_controller")
 if err != nil {
   logger.Fatalf("cannot get controller: %v", err)
-}
+} ...
 
-// Get the list of Controls provided by the Controller.
+// Get the list of Controls provided by the controller.
 controls, err := myController.Controls(context.Background(), nil)
 
 // Log any errors that occur.
@@ -312,6 +320,9 @@ if err != nil {
   logger.Fatalf("cannot get controls provided by controller: %v", err)
 }
 
+// Log the list of Controls provided by the controller. 
+logger.Info("Controls:")
+logger.Info(events)
 ```
 
 {{% /tab %}}
@@ -349,23 +360,17 @@ cmd = {}
 async def connect_controller():
     creds = Credentials(
         type='robot-location-secret',
-        payload='clt3sb77hlv48s01c9rsafev7r4yeqf5g3hbm9xg35053bep') # GRAB YOUR ROBOT LOCATION SECRET VALUE [Can be found in robot's Code Sample Tab in app.viam.com].
+        payload= "GRAB YOUR ROBOT LOCATION SECRET VALUE [Can be found in robot's Code Sample Tab in app.viam.com]."
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    # GRAB YOUR ROBOT'S REMOTE ADDRESS [Can be found in robot's Control Tab in app.viam.com].
-    return await RobotClient.at_address('fake-input-controller-main.0b2qnylnp0.viam.cloud', opts)
+    return await RobotClient.at_address("GRAB YOUR ROBOT'S REMOTE ADDRESS [Can be found in robot's Control Tab in app.viam.com", opts)
     
 # Define the function to register in handleController()
 def handle_accelerator(event):
     print("moving!:", event.value)
-    global cmd
-    accel = (event.value - 0.1) / 0.9
-    if event.value < 0.1:
-        accel = 0
-        
-    cmd = {"y": accel}
+    ...
 
 # Define a function that handles the Controller.
 async def handleController(controller):
@@ -384,7 +389,6 @@ async def handleController(controller):
 
     while True:
         await asyncio.sleep(0.01)
-        global cmd
 
 async def main():
     # Connect to your robot with controller. 
@@ -525,7 +529,7 @@ This method is currently only supported for input controllers of model `webgamep
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.trigger_event).
 
 ```python
-myController = Controller.from_robot(robot=myRobotWithController, name='my_robot_with_controller')
+myController = Controller.from_robot(robot=myRobotWithController, name='my_robot_with_controller') ... 
 
 # Define a "Button is Pressed" event.
 button_is_pressed_event = Event(time(), EventType.BUTTON_PRESS, Control.BUTTON_START, 1.0)
@@ -553,7 +557,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myController, err := controller.FromRobot(myRobotWithController, "my_robot_with_controller")
 if err != nil {
   logger.Fatalf("cannot get controller: %v", err)
-}
+} ... 
 
 // Define a "Button is Pressed" event.
 buttonIsPressedEvent := input.Event{Time: time.Now(), Event: input.ButtonPress, Control: input.ButtonStart, Value: 1.0}
@@ -563,7 +567,7 @@ err := myController.TriggerEvent(ctx Context.background(), buttonIsPressedEvent,
 
 // Log any errors that occur.
 if err != nil {
-  logger.Fatalf("cannot get positions of controller axes: %v", err)
+  logger.Fatalf("cannot trigger event on controller: %v", err)
 }
 
 ```

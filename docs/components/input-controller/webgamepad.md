@@ -36,10 +36,8 @@ Refer to the following example configuration for an input controller of model `w
       "type": "input_controller",
       "model": "webgamepad",
       "attributes": {},
-      "depends_on": [
-        <your-board>
-      ]
-    }, ...
+      "depends_on": []
+    }
 }
 ```
 

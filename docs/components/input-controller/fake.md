@@ -29,11 +29,8 @@ Refer to the following example configuration for an input controller of model `f
       "name": <your-fake-input-controller>,
       "type": "input_controller",
       "model": "fake",
-      "attributes": {},
-      "depends_on": [
-        <your-board>
-      ]
-    }, ...
+      "attributes": {}
+    }
 }
 ```
 
