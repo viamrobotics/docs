@@ -4,6 +4,7 @@ linkTitle: "arduino"
 type: "docs"
 description: "Configure an arduino encoder."
 tags: ["encoder", "components"]
+draft: true
 # SMEs: Rand
 ---
 

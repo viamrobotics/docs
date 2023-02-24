@@ -40,7 +40,6 @@ For configuration information, click on one of the following models:
 | Model | Description |
 | ----- | ----------- |
 | [`AM5-AS5048`](am5) | The `AM5-AS5048` encoder is an absolute encoder that which can connect using an I2C interface. |
-| [`arduino`](arduino) | An encoder using an arduino board. |
 | [`fake`](fake) | An encoder model for testing. |
 | [`incremental`](incremental) | A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point. |
 | [`single`](single) | A single pin "pulse output" encoder which returns its relative position but no direction. |
