@@ -8,7 +8,7 @@ tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-Use a homography matrix to align the color and depth images.
+When you have a depth image and you need it to overlay on top of a color image exactly, a homography matrix can apply the necessary distortions to the depth image for it to overlap.
 
 {{< tabs name="Configure an Align Color Depth Homography Camera" >}}
 {{< tab name="Config Builder" >}}

@@ -8,11 +8,17 @@ tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-A `single_stream` HTTP server camera is a camera server streaming image data from an HTTP endpoint.
+A `single_stream` camera reads from a HTTP server streaming image data.
+
+The server that the model reads from should output an image:
+
+- If it's a color image server, then it should output JPEG, PNG, or our custom VIAM color format, [`image/vnd.viam.rgba`](https://github.com/viamrobotics/rdk/blob/main/rimage/image_file.go#L51).
+- If it's a depth image server, it should output either a Z16 PNG, or our custom VIAM depth format, [`image/vnd.viam.dep`](https://github.com/viamrobotics/rdk/blob/main/rimage/image_file.go#L87).
+
 Your `single_stream` camera can output:
 
-- a `depth` stream which outputs a point cloud
-- a `color` stream which outputs color values in 2D
+- A `depth` stream which outputs a 2D depth map or, if you provide `intrinsic_parameters`, a point cloud.
+- A `color` stream which outputs color values in 2D.
 
 {{< tabs name="Configure a single Stream Camera" >}}
 {{< tab name="Config Builder" >}}

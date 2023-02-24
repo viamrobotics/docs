@@ -74,9 +74,9 @@ The following attributes are available for ffmpeg cameras:
 | `distortion_parameters` | *Optional* | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
 | `debug` | *Optional* | Enables the debug outputs from the camera if `true`. Defaults to `false`. |
 | `video_path` | *Required* | The file path to the color image. |
-| `input_kw_args` | *Optional* | The input kw arguments ???. |
+| `input_kw_args` | *Optional* | The input keyword arguments. |
 | `filters` | *Optional* | The file path to the depth image. Array of filter objects that specify: <ul> <li> <code>name</code>: The name of the filter. </li> <li> <code>args</code>: The arguments for the filter. </li> <li> <code>kw_args</code>: The kw arugments for the filter ???. </li> </ul> |
-| `output_kw_args` | *Optional* | The output kw arguments ???. |
+| `output_kw_args` | *Optional* | The output keyword arguments. |
 
 ## View the camera stream
 

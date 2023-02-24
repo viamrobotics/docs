@@ -9,7 +9,7 @@ tags: ["camera", "components"]
 ---
 
 A `velodyne` camera uses velodyne lidar.
-The velodyne must be running locally at address `0.0.0.0`.
+The velodyne must be running locally at address `127.0.0.1`.
 
 {{< tabs name="Configure a Velodyne Camera" >}}
 {{< tab name="Config Builder" >}}
