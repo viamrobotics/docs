@@ -8,7 +8,7 @@ tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-A `dual_stream` HTTP server camera combines the streams of two camera servers to create colorful point clouds.
+A `dual_stream` HTTP client camera combines the streams of two camera servers to create colorful point clouds.
 One camera server streams a color stream and the other camera server streams a depth stream.
 
 {{< tabs name="Configure a Dual Stream Camera" >}}

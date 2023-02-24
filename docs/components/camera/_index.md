@@ -38,8 +38,8 @@ For configuration information, click on one of the following models:
 | [`velodyne`](velodyne) | Uses velodyne lidar. |
 | [`webcam`](webcam) | A standard camera that streams camera data. |
 | [`fake`](fake) | A camera model for testing. |
-| [`single_stream`](single-stream) | A HTTP server camera that streams image data from an HTTP endpoint. |
-| [`dual_stream`](dual-stream) | A HTTP server camera that combines the streams of two camera servers to create colorful point clouds. |
+| [`single_stream`](single-stream) | A HTTP client camera that streams image data from an HTTP endpoint. |
+| [`dual_stream`](dual-stream) | A HTTP client camera that combines the streams of two camera servers to create colorful point clouds. |
 | [`join_color_depth`](join-color-depth) | Joins the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image. |
 | [`align_color_depth_extrinsics`](align-color-depth-extrinsics) | Uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images. |
 | [`align_color_depth_homography`](align-color-depth-homography) | Uses a homography matrix to align the color and depth images. |
