@@ -43,7 +43,7 @@ This tutorial uses the hex color #7a4f5c (a reddish color).
 
 Copy the following configuration into the attributes of your rover’s Vision Service:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
  "register_models": [
    {
@@ -108,7 +108,7 @@ Attribute Guides always prefix required attributes with an asterisk.
 
 Copy the following JSON configuration into the Attributes section:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
  "source": "cam",
  "pipeline": [

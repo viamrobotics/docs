@@ -62,16 +62,16 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 ### Syntax Highlighting with Backticks
 
-Line numbering is on by default.
+Line numbering is off by default.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
 "word":"As before, three backticks and the language name enables Prism syntax highlighting.",
-"note":"Use "json-viam" as the language to highlight Viam's keywords."
 }
 ```
 
-With just line 6 highlighted. See <https://prismjs.com/plugins/line-highlight/> for more:
+With just line 6 highlighted.
+See <https://prismjs.com/plugins/line-highlight/> for more:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="6"}
 while (True):

@@ -324,7 +324,7 @@ We are using port `8081`, but you can use any open port you want.
 You can do this by going to **CONFIG** and then going to the **NETWORK** tab.
 Here, you will paste the following:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "bind_address": "localhost:8081"
 }

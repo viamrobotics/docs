@@ -57,7 +57,7 @@ Refer to the following example configuration for a robotic arm of model `xArm6`:
 
 {{% tab name="Raw JSON" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [{
       "attributes": {
@@ -91,7 +91,7 @@ Refer to the following example configuration for a robotic arm of model `xArm6`:
 {{% /tab %}}
 {{% tab name="Example JSON" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [{
       "attributes": {

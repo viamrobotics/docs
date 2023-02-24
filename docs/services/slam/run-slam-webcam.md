@@ -82,7 +82,7 @@ Follow these tutorials to connect and calibrate your webcam as a modular compone
 * Create a service with type `slam`, a name (example: `run-slam`) and a model (`orbslamv3`).
 * Paste the following into the **Attributes** field of the SLAM service:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "data_dir": "/home/YOUR_USERNAME/data",
   "use_live_data": true,
@@ -107,7 +107,7 @@ Follow these tutorials to connect and calibrate your webcam as a modular compone
 {{%expand "Click here if you prefer to use raw JSON mode" %}}
 In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
   "services": [
     {
       "type": "slam",
@@ -156,7 +156,7 @@ YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 
 At this point, your complete configuration should look like:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -271,7 +271,7 @@ This tells the service to use only data found within the `data_dir` directory sp
 * In your web browser, navigate to the robot you set up on the Viam app ([https://app.viam.com](https://app.viam.com)).
 * In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "services": [
     {
