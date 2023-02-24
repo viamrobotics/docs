@@ -110,7 +110,7 @@ Raw JSON:
 
 ### Configuring the visualizer
 
-This step is optional, but if you'd like to see the bounding boxes that the color detector comes up with, you'll need to configure a [transform camera](/components/camera/transform).
+This step is optional, but if you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
 In the **CONFIG** tab, make a new component with name `show_detections`, type `camera` and model `transform`.
