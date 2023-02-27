@@ -159,7 +159,7 @@ file {
 /* START Fix code content that ignores td-max-width-on-larger-screens */
 
 @media (min-width: 992px) {
-  .td-content > .code-toolbar {
+  .td-content > .expand {
     width: 80%;
   }
 }
