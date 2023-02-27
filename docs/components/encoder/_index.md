@@ -12,7 +12,7 @@ no_list: true
 
 An encoder is a type of sensor that can detect speed and direction of rotation of a motor or a joint.
 It is often used in conjunction with a motor, and is sometimes even built into a motor.
-An encoder could also be positioned on a passive joint or other rotational object to keep track of the joint angle.
+An encoder could also be positioned on a passive joint or other rotating object to keep track of the joint angle.
 
 The encoder component supports:
 
