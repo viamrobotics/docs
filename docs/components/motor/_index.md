@@ -562,7 +562,7 @@ logger.Info(pct)
 
 ### IsMoving
 
-Returns whether the motor is currently moving under its own power.
+Returns whether the motor is actively moving (or attempting to move) under its own power.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

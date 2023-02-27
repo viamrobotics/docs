@@ -90,7 +90,7 @@ There are three common ways for the computing device to communicate with a brush
 The driver data sheet will specify which one to use.
 
 - PWM/DIR: One digital input (such as a GPIO pin) sends a [pulse width modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
-- In1/In2 (or A/B): One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled via PWM through one or both pins.
+- In1/In2 (or A/B): One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled with PWM through one or both pins.
 - In1/In2 + PWM: Three pins: an In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
 
 {{% alert title="Note" color="note" %}}
@@ -136,6 +136,6 @@ The key difference between a brushed and brushless motor driver is on the motor 
 Brushless motors typically have three power connections (commonly referred to as A, B and C; or sometimes Phase 1, 2 and 3) and 3 sensor connections (commonly referred to as Hall A, Hall B, and Hall C) running between the motor and driver.
 
 The configuration file of a BLDC motor with Viam is the same as that of a brushed motor.
-Only the output side of the driver board is different, i.e., more wires connect the driver to the motor.
+Only the output side of the driver board is different in that more wires connect the driver to the motor.
 
 ![An example wiring diagram showing a Raspberry Pi, 12V power supply, RioRand 400W brushless DC motor controller, and 3 phase 12V brushless DC motor. The motor has three power wires (one for each phase) and five sensor wires (two to power the sensor and one for each of the three Hall effect sensors).](../../img/motor/motor-brushless-dc-wiring.png)
