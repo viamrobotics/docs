@@ -17,7 +17,7 @@ Viam is supported on:
 
 If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone, prepare your SBC by following the relevant setup document:
 
-<div class="container text-center">
+<div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="/installation/prepare/rpi-setup/">
@@ -50,7 +50,7 @@ If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone
   </div>
 </div><br><br>
 
-<div class="container text-left">
+<div class="container text-left td-max-width-on-larger-screens">
     <div class="row">
         <img src="../img/thumbnails/pc.png" style="max-width:100px" alt="Desktop computer">
         <div class="col">
