@@ -102,4 +102,4 @@ Then [configure data capture](configure-data-capture) as needed and [configure c
 
 Once you have configured data capture and cloud sync, you can [view](view) and [export](export) your data.
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/data-management-tutorial).
