@@ -10,7 +10,7 @@ description: "Sync data captured by the robot's components to the cloud."
 ---
 
 The Data Management Service captures data from one or more components and securely syncs it to Viam's data platform.
-You can configure the frequency individually for each component.
+You can configure capture frequency individually for each component.
 The service is designed for flexibility and efficiency while preventing data loss, data duplication, and other data management issues.
 
 The service has two parts: [Data Capture](#data-capture) and [Cloud Sync](#cloud-sync).
