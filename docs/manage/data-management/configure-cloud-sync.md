@@ -9,10 +9,10 @@ tags: ["data management", "cloud", "sync"]
 
 Before you can configure [cloud sync](../#cloud-sync), you must [add the Data Management Service](../configure-data-capture/#add-the-data-management-service).
 
-To enable cloud sync, navigate to the **SERVICES** tab on your robot's **CONFIG** tab and enable `Syncing` for your [Data Management Service](../).
+To enable cloud sync, navigate to the **SERVICES** tab on your robot's **CONFIG** tab and enable **Syncing** for your [Data Management Service](../).
 Click **Save Config** at the bottom of the window.
 
-Now the data that you captured locally will sync automatically with the Viam app in the cloud.
+Now the data that you capture locally will sync automatically with the Viam app in the cloud.
 
 ![data capture configuration](../../img/data-capture-config.png)
 
