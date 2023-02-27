@@ -23,7 +23,7 @@ While some [examples](https://www.google.com/search?q=companion+robot) have rece
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
-By combining ChaptGPT with the Viam platform’s built-in [computer Vision Service](/services/vision), ML model support, and [locomotion](/components/base/), you can within a few hours create a simple companion robot that:
+By combining ChaptGPT with the Viam platform’s built-in [computer Vision Service](/services/vision), ML model support, and [locomotion](/components/base/), you can within a few hours create a basic companion robot that:
 
 * Listens with a microphone, converts speech-to-text, gets a response from OpenAI.
 * Converts GPT response text to speech and "speaks" the response through a speaker.
@@ -114,7 +114,7 @@ When the ChatGPT model becomes available, you should be able to modify this tuto
 {{% /alert %}}
 
 Power on  and choose a location on your Raspberry Pi, and clone the tutorial code repository.
-If you have git installed on your Pi, this is as simple as running the following command in the preferred directory from your terminal:
+If you have git installed on your Pi, run the following command in the preferred directory from your terminal:
 
 ``` sh
 git clone https://github.com/viam-labs/tutorial-openai-integration
