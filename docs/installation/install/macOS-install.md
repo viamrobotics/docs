@@ -8,7 +8,7 @@ aliases:
     - /installation/macos-install/
 # SME: James
 ---
-`viam-server` is available for macOS users via [Homebrew](https://docs.brew.sh).
+`viam-server` is available for macOS users through [Homebrew](https://docs.brew.sh).
 You should install `viam-server` on your Mac if you are using a Mac as the basis for your robot.
 If your robot runs a Linux-based OS, then be sure to follow the [installing `viam-server` on Linux](../linux-install/) guide.
 

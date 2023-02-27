@@ -1,0 +1,82 @@
+---
+title: "Configure a Join Color Depth View"
+linkTitle: "Join Color Depth"
+weight: 39
+type: "docs"
+description: "Combine and align the streams of a color and a depth camera."
+tags: ["camera", "components"]
+# SMEs: Bijan, vision team
+---
+
+Combine the streams of a color and a depth camera already registered in your config to create a view that outputs the combined and aligned image.
+
+This specific model is good if you don’t need to align the streams.
+If you need to adjust the alignment between the depth and color frames, use the [`align_color_depth_extrinsics`](../align-color-depth-extrinsics) model or the[`align_color_depth_homography`](../align-color-depth-homography) model.
+
+{{< tabs name="Configure a Join Color Depth View" >}}
+{{< tab name="Config Builder" >}}
+
+<br>
+On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
+Enter a name for your camera, select the type <code>camera</code>, and select the <code>join_color_depth</code> model.
+<br>
+<img src="../img/create-join-color-depth.png" alt="Creation of a join color depth view in the Viam app config builder." style="max-width:500px" />
+<br>
+Fill in the attributes for your join color depth view:
+<br>
+<img src="../img/configure-join-color-depth.png" alt="Configuration of a join color depth view in the Viam app config builder." />
+<br>
+
+{{< /tab >}}
+{{% tab name="Raw JSON" %}}
+
+```json-viam {class="line-numbers linkable-line-numbers"}
+{
+    "name": "<camera_name>",
+    "type": "camera",
+    "model" : "join_color_depth",
+    "attributes": {
+        "output_image_type": "<color|depth>",
+        "color_camera_name": "<camera_name>",
+        "depth_camera_name": "<camera_name>",
+        "intrinsic_parameters": {
+          "width_px": <integer>, # the expected width of the aligned pic
+          "height_px": <integer>, # the expected height of the aligned pic
+          "fx": <float64>,
+          "fy": <float64>,
+          "ppx": <float64>,
+          "ppy": <float64>
+        },
+        "distortion_parameters": {
+          "rk1": <float64>,
+          "rk2": <float64>,
+          "rk3": <float64>,
+          "tp1": <float64>,
+          "tp2": <float64>
+        },
+        "debug": <boolean>
+    }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The following attributes are available for join color depth views:
+
+| Name | Inclusion | Description |
+| ---- | --------- | ----------- |
+| `output_image_type` | *Required* | Specify `color` or `depth` for the output stream. |
+| `color_camera_name` | *Required* | Name of the color camera to pull images from. |
+| `depth_camera_name` | *Required* | Name of the depth camera to pull images from. |
+| `intrinsic_parameters` | *Required* | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
+| `distortion_parameters` | *Optional* | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
+| `debug` | *Optional* | Enables the debug outputs from the camera if `true`. Defaults to `false`. |
+
+## View the camera stream
+
+{{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
+
+## Next Steps
+
+{{< readfile "/static/include/components/camera-model-next-steps.md" >}}

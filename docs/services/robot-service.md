@@ -27,7 +27,7 @@ The below is a current list of interfaces provided by the Robot Service.
     </tr>
     <tr>
         <td>DiscoverComponents</td>
-        <td>Returns a best-effort configuration for a resource subtype and model that can be discovered on the robot (e.g., webcam on a Pi).</td>
+        <td>Returns a best-effort configuration for a resource subtype and model that can be discovered on the robot (like a webcam on a Pi).</td>
     </tr>
     <tr>
         <td>FrameSystemConfig</td>
@@ -67,7 +67,7 @@ The below is a current list of interfaces provided by the Robot Service.
 
 ## Operation and Operation IDs
 
-**Operation IDs** are how Viam tracks in-flight operations/robot commands over gRPC (i.e., network requests).
+**Operation IDs** are how Viam tracks in-flight operations/robot commands over gRPC network requests.
 
 The robot creates a unique **Operation ID** for every request (operation).
 This ID expires once the request is completed.
@@ -78,7 +78,7 @@ Users can cancel an operation by passing in its **Operation ID,** and can also b
 For example, consider two _connected_ robots. Robot "A," with an attached base and navigation service and robot "B," operating remotely with an attached GPS.
 A client’s request to the navigation service to move "A" creates a new **Operation ID**.
 
-The request to the attached base is a local request (i.e., a non-gRPC request) between the navigation service and its base and does not create a new **Operation ID**.
-However, the navigation service request to the GPS is via gRPC, which spawns a new operation and thus another **Operation ID**.
+The request to the attached base is a local request (that is, a non-gRPC request) between the navigation service and its base and does not create a new **Operation ID**.
+However, the navigation service request to the GPS is through gRPC, which spawns a new operation and thus another **Operation ID**.
 
 Canceling the initial **Operation ID** cancels the first operation on the navigation service, but that does not cancel the second operation (obtaining the location from the remote GPS).

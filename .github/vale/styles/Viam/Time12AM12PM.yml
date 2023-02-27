@@ -1,0 +1,8 @@
+extends: existence
+message: When referring to 12 AM, use 12 midnight or just midnight. When
+         referring to 12 PM, use 12 noon or just noon ('%s').
+link: 'https://docs.rackspace.com/docs/style-guide/style/time'
+level: error
+nonword: true
+tokens:
+  - '(\s12 [A,P]M\b)'

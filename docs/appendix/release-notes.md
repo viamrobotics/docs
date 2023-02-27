@@ -49,7 +49,7 @@ description:
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>RDK now natively supports the AM5 encoder. This is the encoder that is included in the scuttle robot.
+            <td>RDK now natively supports the AM5 encoder. This is the encoder that is included in the SCUTTLE Robot.
             </td>
         </tr>
     <tbody>
@@ -141,7 +141,7 @@ description:
 {{< alert title="Note" color="note" >}}
 This is a breaking change.
 This breaking change affects ALL users who are using the Viam app to configure their robot.
-You will need to update to at the latest version of the RDK (V3.0.0) to access your robot via the remote control page.
+You will need to update to at the latest version of the RDK (V3.0.0) to access your robot using the remote control page.
 {{< /alert >}}
 </td>
         </tr>
@@ -154,7 +154,7 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>Users that are implementing their own arms are now able to supply kinematic information via URDF files.
+            <td>Users that are implementing their own arms are now able to supply kinematic information using URDF files.
             This is a convenience for our users since URDF files are readily available for common hardware. </td>
         </tr>
     <tbody>
@@ -206,16 +206,16 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>We made several improvements to the motion service that make it agnostic to the networking topology of a users robot.</td>
+            <td>We made several improvements to the Motion Service that make it agnostic to the networking topology of a users robot.</td>
         </tr>
         <tr>
             <td><strong>What does it affect?</strong></td>
             <td>
                 <ol>
                     <li>Kinematic information is now transferred over the robot API.
-                    This means that the motion service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote <code>viam-server</code>.</li>
-                    <li>Arms are now an input to the motion service.
-                    This means that the motion service can plan for a robot that has an arm component regardless of whether the arm is on a main or remote <code>viam-server</code>.</li>
+                    This means that the Motion Service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote <code>viam-server</code>.</li>
+                    <li>Arms are now an input to the Motion Service.
+                    This means that the Motion Service can plan for a robot that has an arm component regardless of whether the arm is on a main or remote <code>viam-server</code>.</li>
                 </ol>
             </td>
         </tr>
@@ -377,7 +377,7 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>We added a new servo model called <code>GPIO</code>. This represents <emphasis>any</emphasis> servo that is connected directly to <emphasis>any</emphasis> board via GPIO pins. We created this component in response to the common practice of connecting servos to separate hats, such as the <code>PCA9685</code>, rather than connecting directly to the board. Our previous implementation required a direct connection from the servo to the Raspberry Pi.</td>
+            <td>We added a new servo model called <code>GPIO</code>. This represents <emphasis>any</emphasis> servo that is connected directly to <emphasis>any</emphasis> board using GPIO pins. We created this component in response to the common practice of connecting servos to separate hats, such as the <code>PCA9685</code>, rather than connecting directly to the board. Our previous implementation required a direct connection from the servo to the Raspberry Pi.</td>
         </tr>
         <tr>
             <td><strong>What does it affect?</strong></td>
@@ -392,7 +392,7 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>We added a new badge in the <code>Current Operations</code> card of the remote control page of the Viam app. This badge lists the RTT (round trip time) of a request from your client to the robot, i.e., the time to complete one request/response cycle.</td>
+            <td>We added a new badge in the <code>Current Operations</code> card of the remote control page of the Viam app. This badge lists the RTT (round trip time) of a request from your client to the robot (the time to complete one request/response cycle).</td>
         </tr>
     <tbody>
 </table>
@@ -453,11 +453,11 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>Adding dependencies to services allows Viam to initialize and configure resources in the correct order. For example, if the SLAM service depends on a LiDAR, it will always initialize the LiDAR before the service.</td>
+            <td>Adding dependencies to services allows Viam to initialize and configure resources in the correct order. For example, if the SLAM Service depends on a LiDAR, it will always initialize the LiDAR before the service.</td>
         </tr>
         <tr>
             <td><strong>What does it affect?</strong></td>
-            <td><strong>Breaking Change</strong>: This impacts users of the SLAM service. Users must now specify which sensors they are using in the <code>depends_on</code> field of the SLAM configuration.
+            <td><strong>Breaking Change</strong>: This impacts users of the SLAM Service. Users must now specify which sensors they are using in the <code>depends_on</code> field of the SLAM configuration.
             Other service configurations are not affected.</td>
         </tr>
     <tbody>

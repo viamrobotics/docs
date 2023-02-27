@@ -4,7 +4,7 @@ linkTitle: "Sensor"
 weight: 70
 draft: false
 type: "docs"
-description: "Explanation of sensor configuration and usage in Viam."
+description: "A device that sends information about the outside world to the computer controlling a robot."
 tags: ["sensor", "components"]
 icon: "img/components/sensor.png"
 # SME: #team-bucket

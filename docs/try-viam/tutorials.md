@@ -27,7 +27,7 @@ description: "Build something with a Viam Rover."
         <br>
         <a href="../../tutorials/viam-rover/try-viam-color-detection">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect a Color</h4>
-            <p style="text-align: left;">Use the vision service in the Viam app to detect a color.</p>
+            <p style="text-align: left;">Use the Vision Service in the Viam app to detect a color.</p>
         <a>
     </div>
   </div>

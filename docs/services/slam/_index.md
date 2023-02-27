@@ -4,13 +4,13 @@ linkTitle: "SLAM"
 weight: 70
 draft: false
 type: "docs"
-description: "Explanation of the SLAM service, its configuration, and its functionality."
+description: "Explanation of the SLAM Service, its configuration, and its functionality."
 tags: ["slam", "services"]
 # SMEs: Kat, Jeremy
 ---
 
 {{% alert title="Note" color="note" %}}
-The SLAM service is an experimental feature.
+The SLAM Service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
@@ -21,7 +21,7 @@ Breaking changes are likely to occur, and occur often.
 SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
 Viam offers users an easy-to-use, intuitive method for interfacing with various cutting-edge SLAM algorithms.
 
-## The Viam SLAM Service
+## Viam SLAM Service
 
 The Viam SLAM Service supports the integration of custom SLAM libraries with the Viam RDK through the SLAM Service API.
 
@@ -42,17 +42,17 @@ The timestamp format will be updated to the RFC339 Nano time format (here: `2022
 
 Running the SLAM Service with your robot requires the following:
 
-1. A binary running the custom SLAM library stored in your PATH (e.g., `/usr/local/bin`).
+1. A binary running the custom SLAM library stored in your PATH (like `/usr/local/bin`).
 2. Changes to the config specifying which SLAM library is used, including library specific parameters.
 3. A data folder as it is pointed to by the config parameter `data_dir`.
 
 All three are explained in the following using ORB-SLAM3 as the application example.
 
-## The SLAM Library Binary
+## SLAM Library Binary
 
 Download the ORB-SLAM3 binaries into `usr/local/bin`:
 
-- AArch64 (ARM64) (e.g., on an RPI):
+- AArch64 (ARM64) (use the following command on an RPI):
 
     ```bash
     sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
@@ -72,9 +72,9 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 
 ## Configuration Overview
 
-To add the SLAM service to your robot, you need to add the _name_, _type_, _model_, and SLAM library specific _attributes_ to the configuration of your robot.
+To add the SLAM Service to your robot, you need to add the _name_, _type_, _model_, and SLAM library specific _attributes_ to the configuration of your robot.
 
-The following is an example configuration for running ORB-SLAM3 in live `rgbd` mode on your robot, if it has two [camera streams](/components/camera/#camera-models) available: `"color"` for RGB images, and `"depth"` for depth data.
+The following is an example configuration for running ORB-SLAM3 in live `rgbd` mode on your robot, if it has two camera streams available: `"color"` for RGB images, and `"depth"` for depth data.
 
 ``` json
 "services": [
@@ -128,7 +128,7 @@ This table provides an overview of the different SLAM modes and how to set them.
 
 | Mode | Description |
 | ---- | ----------- |
-| Live | Live mode means that SLAM grabs the most recent sensor readings (e.g., images) from the `sensors` and uses those to perform SLAM. SLAM runs in live mode if `use_live_data: true` and one or more `sensors` are present. If no sensors are provided, an error will be thrown. |
+| Live | Live mode means that SLAM grabs the most recent sensor readings (like images) from the `sensors` and uses those to perform SLAM. SLAM runs in live mode if `use_live_data: true` and one or more `sensors` are present. If no sensors are provided, an error will be thrown. |
 | Offline | SLAM runs in offline mode if `use_live_data: false`. This means it will look for and process images that are already saved in the `data_dir/data` directory. |
 
 #### Pure Mapping, Pure Localization, and Update Mode
@@ -151,7 +151,7 @@ You can find more information on the `mode` in the description of the integrated
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM service creates it. |
+| `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM Service creates it. |
 | `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in live mode. If the array is empty, SLAM runs in offline mode. |
 | `use_live_data` |  bool | This specifies whether to run in live mode (true) or offline mode (false). If `use_live_data: true` and `sensors: []`, an error will be thrown. If this parameter is set to true and no sensors are provided, SLAM will produce an error. |
 
@@ -174,9 +174,9 @@ You can find details on which inputs you can include for the available libraries
 
 - [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
 
-## The Data Directory
+## Data Directory
 
-A running SLAM service saves the sensor data it uses and the maps and config files it produces locally on the device in the directory as specified in the config as `data_dir`.
+A running SLAM Service saves the sensor data it uses and the maps and config files it produces locally on the device in the directory as specified in the config as `data_dir`.
 
 To recap, the directory must be structured as follows:
 
@@ -193,7 +193,7 @@ To recap, the directory must be structured as follows:
 - `config` contains all SLAM library specific config files.
 
 {{% alert title="Note" color="note" %}}
-If this directory structure is not present, the SLAM service creates it.
+If this directory structure is not present, the SLAM Service creates it.
 {{% /alert %}}
 
 The data present in the map subdirectory dictates SLAM's mode at runtime:
@@ -206,7 +206,7 @@ The data present in the map subdirectory dictates SLAM's mode at runtime:
 ### Introduction
 
 ORB-SLAM3 can perform sparse SLAM using monocular or RGB-D images.
-You must specify this in the configuration under `config_params` (i.e., `mono` or `rgbd`).
+You must specify this in the configuration under `config_params` (as `mono` or `rgbd`).
 
 In this example, `mono` is selected with one camera stream named `color`:
 

@@ -18,10 +18,10 @@ aliases:
 
 This tutorial requires the following hardware:
 
-* A Raspberry Pi single board computer
+* A [Raspberry Pi single board computer](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
 * A microSD card
 * An internet-connected computer
-* A way to connect the microSD card to the computer (e.g., microSD slot or microSD reader)
+* A way to connect the microSD card to the computer (microSD slot or microSD reader)
 
 {{% alert title="Note" color="note" %}}
 
@@ -173,7 +173,7 @@ sudo apt upgrade
 
 ## Enabling Specific Communication Protocols on the Raspberry Pi
 
-If you are using hardware that requires I2C, SPI, serial, or one-wire protocols to communicate with your Pi, you will need to enable them via `raspi-config`.
+If you are using hardware that requires I2C, SPI, serial, or one-wire protocols to communicate with your Pi, you will need to enable them using `raspi-config`.
 
 Launch the config tool by running the following command:
 

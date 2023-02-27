@@ -3,7 +3,7 @@ title: "Base Component"
 linkTitle: "Base"
 weight: 10
 type: "docs"
-description: "The base component is the platform that the other parts of a mobile robot attach to."
+description: "The moving platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
 icon: "img/components/base.png"
 # SMEs: Steve B
@@ -44,7 +44,7 @@ This is how you configure a wheeled base:
 
 {{< tabs name="Example Base Config" >}}
 {{% tab name="Config Builder" %}}
-<img src="../img/base/base-ui-config.png" alt="Picture of what an example configuration for a wheeled base looks like in the Viam App, with Attributes & Depends On drop-downs and the option to add a frame." width="800"/>
+<img src="../img/base/base-ui-config.png" alt="Picture of what an example configuration for a wheeled base looks like in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." width="800"/>
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
@@ -211,8 +211,8 @@ This is how you configure a wheeled base:
 
 The base component supports the following methods:
 
-| Method Name | Golang | Python | Description |
-| ----------- | ------ | ------ | ----------- |
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
 [MoveStraight](#movestraight)  | [MoveStraight][go_base]  |  [move_straight][python_move_straight] | Move the base in a straight line across the given distance at the given velocity. |
 [Spin](#spin) |  [Spin][go_base] | [spin][python_spin] | Move the base to the given angle at the given angular velocity. |
 [SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the relative power (out of max power) for linear and angular propulsion of the base. |
@@ -231,7 +231,7 @@ The base component supports the following methods:
 ### Control your Base with Viam's Client SDK Libraries
 
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
-- [Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
+- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
 
@@ -264,7 +264,7 @@ if __name__ == '__main__':
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
@@ -343,7 +343,7 @@ await myBase.move_straight(distance=10, velocity=-1)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -404,7 +404,7 @@ await myBase.spin(angle=10, velocity=1)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -477,7 +477,7 @@ await myBase.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=-.
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -561,7 +561,7 @@ await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -619,7 +619,7 @@ await myBase.stop()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 

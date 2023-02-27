@@ -7,7 +7,7 @@ description: "Intro to hardware programming using the Viam SDK to make an LED bl
 tags: ["board", "raspberry pi", "sdk"]
 # SME: Joe Karlsson
 ---
-In this post, you will be introduced to the basics of programming hardware by using either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) to make an LED blink.
+In this post, you will be introduced to the basics of programming hardware by using either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) to make an LED blink.
 This will allow you to write code to make an LED connected to the GPIO of a Raspberry Pi blink on and off.
 This tutorial is a good introduction to [Python](https://www.python.org/) or [Go](https://go.dev/) programming languages, and developing custom software for robots.
 
@@ -45,13 +45,13 @@ You will need the following hardware, tools, and software to complete this proje
 
 ### Software
 
-- [Golang](https://go.dev/dl/) or [Python 3.9+](https://www.python.org/downloads/)
+- [Go](https://go.dev/dl/) or [Python 3.9+](https://www.python.org/downloads/)
 - [viam-server](/installation/install/linux-install/)
-- [Viam Python SDK](https://python.viam.dev/) or [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
+- [Viam Python SDK](https://python.viam.dev/) or [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
 
 ### How to install a Viam SDK
 
-In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer.
+In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer.
 Use which ever programming language you are most comfortable with.
 
 {{% alert title="Note" color="note" %}}
@@ -59,13 +59,13 @@ Use which ever programming language you are most comfortable with.
 Refer to the appropriate SDK documentation for SDK installation instructions.
 
 - [Viam Python SDK](https://python.viam.dev/)
-- [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
+- [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
 
 {{% /alert %}}
 
 ### How to connect your robot to the Viam SDK
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 Next, paste that boilerplate code from the **CODE SAMPLE** tab of the Viam app into a file named <file>blink.py</file> or <file>blink.go</file> file in your code editor, and save your file.
 

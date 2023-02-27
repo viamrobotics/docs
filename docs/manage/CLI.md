@@ -90,7 +90,7 @@ viam organizations help
 
 ### auth
 
-The *auth* command helps you authorize your device for CLI usage.  See [Authenticate](#authenticate)
+The *auth* command helps you authorize your device for CLI usage. See [Authenticate](#authenticate)
 
 ``` bash
 viam auth
@@ -204,7 +204,7 @@ This includes:
 * Retrieving robot and robot part status
 * Retrieving robot and robot part logs
 * Controlling a robot by issuing component and service commands
-* Accessing your robot via secure shell (when this feature is enabled)
+* Accessing your robot with a secure shell (when this feature is enabled)
 
 ``` bash
 viam robot status --organization=<org name> --location=<location name> --robot=<robot id>
@@ -224,7 +224,7 @@ viam robot status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Ro
 viam robot part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --tail true
 
-# stream classifications from a robot part every 500 milliseconds from the Viam vision service with classifier "stuff_detector"
+# stream classifications from a robot part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
 viam robot part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --stream 500ms \
 --data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \
@@ -245,9 +245,9 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 |        argument     |       description
 | ----------- | ----------- | -----------
 | `status`     | retrieve robot status for a specified robot part
-| `run`     |  run a component or service command, optionally at a specified interval.  For commands that return data in their response, you can use this to stream data.
+| `run`     |  run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data.
 | `logs`     |  get logs for the specified robot part
-| `shell`     |  access a robot part securely via secure shell.  This feature must be enabled.
+| `shell`     |  access a robot part securely using a secure shell. This feature must be enabled.
 | `help`      | return help
 
 ##### Named arguments
@@ -260,7 +260,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `--errors`      |  boolean, return only errors (default: false)   |`logs`|false |
 | `--part`      |  part name for which the command is being issued    |`logs`|false |
 | `--tail`     |  tail (stream) logs, boolean(default false)    |`part logs`|false |
-| `--stream`      |  if specified, the interval in which to stream the specified data, e.g. 100ms or 1s    |`part run`|false |
+| `--stream`      |  if specified, the interval in which to stream the specified data, for example, 100ms or 1s    |`part run`|false |
 | `--data`      |  command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments))   |`part run`|true |
 
 ##### Using the --stream and --data arguments

@@ -20,6 +20,10 @@ If you're signing up without an invitation link, go to [app.viam.com](https://ap
 
 ## Navigating organizations
 
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/eb7v6dabCGQ" allowfullscreen></iframe>
+</div>
+
 Click the drop down in the upper right corner of the page.
 You should see your name, email, and a list of organizations you belong to.
 
@@ -149,7 +153,7 @@ To delete a part or make it the main part, use the buttons in the top right of t
 
 {{< figure src="../img/app-usage/part-mgmt.png" width="800px" alt="Screenshot of the CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons." title="Screenshot of the CONFIG tab of a robot's page highlighting the Make main part and Delete Part buttons (boxed in red)." >}}
 
-If you've connected your robot to a machine running `viam-server` (instructions below), the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, IP address(es), and its operating system.
+If you've connected your robot to a machine running `viam-server` (instructions below), the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
 
 The following tabs are found on the robot page:
 
@@ -196,7 +200,7 @@ There is also a JSON stub you can copy if you wish to use this robot as a remote
 ### Control
 
 The **CONTROL** tab allows you to control your robot using an interface for each component of your robot.
-This is done via WebRTC.
+This is done through WebRTC.
 For example, if you have configured a base with wheels, you can control your robot's movement with an arrow pad and fields to change base’s speed.
 If you have configured a camera component, a window in the **CONTROL** tab displays the camera output.
 

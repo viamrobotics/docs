@@ -3,7 +3,7 @@ title: "Board Component"
 linkTitle: "Board"
 weight: 20
 type: "docs"
-description: "The board component is the signal wire hub of a robot that provides access to GPIO pins."
+description: "The signal wire hub of a robot, with GPIO pins for transmitting signals between the robot's computer and its other components."
 tags: ["board", "components"]
 icon: "img/components/board.png"
 # SMEs: Gautham, Rand
@@ -67,7 +67,7 @@ Refer to the following example configuration file for a single-board computer li
 {{< tabs name="Example Board Config" >}}
 {{% tab name="Config Builder" %}}
 
-![An example of configuration for a single-board computer in the Viam App config builder.](../img/board/board-config-ui.png)
+![An example of configuration for a single-board computer in the Viam app config builder.](../img/board/board-config-ui.png)
 
 {{% /tab %}}
 {{% tab name="Template JSON" %}}
@@ -143,7 +143,7 @@ Here are a few use cases:
 Some things GPIO pins *cannot* do:
 
 - Power a motor or other high power draw device directly.
-GPIO pins are built for logic levels of power, i.e., 3.3V and 16mA per pin.
+GPIO pins are built for logic levels of power, that is 3.3V and 16mA per pin.
 Power amplification (a motor driver or relay) would be necessary.
 - Receive signals over 3.3V (or whatever the logic voltage is on a given board).
 
@@ -179,7 +179,7 @@ await led.set(False)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (

@@ -12,6 +12,7 @@ IgnoreURLs:
 - "instagram.com"
 - "twitter.com"
 - "github.com/viamrobotics/"
+- "openai.com"
 - "packages.viam.com" #IgnoreHTTPS does not work on staging
 IgnoreDirs:
 - "lib"

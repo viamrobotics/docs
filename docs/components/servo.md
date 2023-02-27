@@ -3,7 +3,7 @@ title: "Servo Component"
 linkTitle: "Servo"
 weight: 80
 type: "docs"
-description: "Explanation of servo wiring and configuration in Viam."
+description: "A hobby servo is a special type of small motor whose position you can precisely control."
 tags: ["servo", "components"]
 icon: "img/components/servo.png"
 # SME: #team-bucket
@@ -54,11 +54,9 @@ Refer to the following example configuration file, including the board and servo
       "type": "servo",
       "model": "pi",
       "attributes": {
-        "pin": "16"
-      },
-      "depends_on": [
-        "example-pi"
-      ]
+        "pin": "16",
+        "board": "example-pi"
+      }
     }
   ]
 }
@@ -85,36 +83,35 @@ Refer to the following example configuration file, including the board and servo
   - `gpio` is the general-purpose model, compatible with Viam-supported boards.
   - `fake` is for testing code without any actual hardware.
 
-- **Depends On**: For model `pi`, you must include the name of the board in the `depends_on` field.
-
 **Required Attributes**:
 
 In addition to the required fields, servo models require the following `attributes` in their configuration:
 
 - `pin` (string): The board pin (with PWM capabilities) that the servo's control wire is attached to.
 Use the pin number, not the GPIO number.
-- `board` (string): The name of the board to which the servo is wired. Required for `gpio` model; does not apply to `pi` model.
+- `board` (string): The name of the board to which the servo is wired.
 
 **Optional Attributes**:
 
 The `gpio` model has the following attributes, which are optional to define in your configuration:
 
-| Attribute Name          | Type    | Description                                                                                                                                                             |
-| ----------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `min_angle_deg`         | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                    |
-| `max_angle_deg`         | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation.                                                                    |
-| `starting_position_deg` | float64 | Starting position of the servo in degrees.                                                                                                                              |
+| Attribute Name          | Type    | Description |
+| ----------------------- | ------- | ----------- |
+| `min_angle_deg`         | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation. |
+| `max_angle_deg`         | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation. |
+| `starting_position_deg` | float64 | Starting position of the servo in degrees. |
 | `frequency_hz`          | uint    | The rate of pulses sent to the servo. The servo driver will attempt to change the GPIO pin's frequency (in Hz). The recommended PWM frequency for servos is typically in the range of 40-200 Hz, with most servos using 50 Hz (see your servo's data sheet). Maximum supported frequency by this driver is 450Hz |
-| `pwm_resolution`        | uint    | Resolution of the PWM driver (e.g. number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution. |
+| `pwm_resolution`        | uint    | Resolution of the PWM driver (for example, the number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution. |
 | `min_width_us`          | uint    | Override the safe minimum pulse width in microseconds. This affects PWM calculation.                                                                                    |
 | `max_width_us`          | uint    | Override the safe maximum pulse width in microseconds. This affects PWM calculation. |
+| `max_rotation`           | uint    | Default: 180. Specifies the maximum angle of rotation based on the hardware. Only for the `pi` model. |
 
 ## API
 
 The servo component supports the following methods:
 
-| Method Name | Golang | Python | Description |
-| ----------- | -------| ------ | ----------- |
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
 | [Move](#move) | [Move][go_servo] | [move][python_move] | Move the servo to the desired angle. |
 | [Position](#position) | [Position][go_servo] | [get_position][python_get_position] | Get the current angle of the servo. |
 | [Stop](#stop) | [Stop][go_servo] | [stop][python_stop] | Stop the servo. |
@@ -127,7 +124,7 @@ The servo component supports the following methods:
 ### Control your servo with Viam's Client SDK Libraries
 
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)
-- [Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/servo)
+- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/servo)
 
 {{% alert title="Note" color="note" %}}
 
@@ -163,7 +160,7 @@ if __name__ == '__main__':
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
@@ -249,7 +246,7 @@ await myServo.move(90)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -314,7 +311,7 @@ pos2 = await myServo.get_position()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -379,7 +376,7 @@ await myServo.stop()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 

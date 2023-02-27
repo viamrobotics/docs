@@ -14,14 +14,16 @@ When we think of robots, most of us tend to group them into categories:
 * bad or scary robots
 * good robots
 
-<img src="../img/ai-integration/rosey.jpeg"  style="float:right;margin-right:150px;margin-left: 20px;" alt="Rosey the robot, from the Jetsons." title="Rosey the robot, from the Jetsons." width="350" />
+<div class="td-max-width-on-larger-screens">
+  <img src="../img/ai-integration/rosey.jpeg"  style="float:right;margin-left:1em;" alt="Rosey the robot, from the Jetsons." title="Rosey the robot, from the Jetsons." width="350" />
+</div>
 
 One type of “good” robot is a companion robot - a robot created for the purposes of providing real or apparent companionship for human beings.
 While some [examples](https://www.google.com/search?q=companion+robot) have recently been brought to market, primarily marketed towards children and the elderly, we are all familiar with robots from popular movies that ultimately have proven to be endearing companions and became embedded in our culture.
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
-By combining ChaptGPT with the Viam platform’s built-in [computer vision service](/services/vision), ML model support, and [locomotion](/components/base/), you can within a few hours create a simple companion robot that:
+By combining ChaptGPT with the Viam platform’s built-in [computer Vision Service](/services/vision), ML model support, and [locomotion](/components/base/), you can within a few hours create a basic companion robot that:
 
 * Listens with a microphone, converts speech-to-text, gets a response from OpenAI.
 * Converts GPT response text to speech and "speaks" the response through a speaker.
@@ -30,7 +32,9 @@ By combining ChaptGPT with the Viam platform’s built-in [computer vision servi
 
 This tutorial will show you how to use the Viam platform to create an AI-integrated robot with less than 200 lines of code.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vR2oE4iKY6A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/vR2oE4iKY6A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 ## Hardware list
 
@@ -69,7 +73,9 @@ Attach the servo to the bracket.
 
 ### 3. Servo disc
 
-<img src="../img/ai-integration/3emotion.png"  style="float:right;margin-right:150px;margin-left: 20px;" alt="Emotion wheel." title="Emotion wheel." width="220" />
+<div class="td-max-width-on-larger-screens">
+  <img src="../img/ai-integration/3emotion.png"  style="float:right;margin-left: 1em;" alt="Emotion wheel." title="Emotion wheel." width="220" />
+</div>
 
 If you are 3D printing the servo disc, [download the STL file](https://github.com/viam-labs/tutorial-openai-integration/blob/main/servo_disc_large.stl) and print it.
 Attach the servo disc to the servo by fitting it to the servo's output spline.
@@ -108,7 +114,7 @@ When the ChatGPT model becomes available, you should be able to modify this tuto
 {{% /alert %}}
 
 Power on  and choose a location on your Raspberry Pi, and clone the tutorial code repository.
-If you have git installed on your Pi, this is as simple as running the following command in the preferred directory from your terminal:
+If you have git installed on your Pi, run the following command in the preferred directory from your terminal:
 
 ``` sh
 git clone https://github.com/viam-labs/tutorial-openai-integration
@@ -169,7 +175,7 @@ chmod +x run.sh
 Now that we've set up the rover by attaching the servo and making the tutorial software available on the Pi, we can configure the rover to:
 
 * Recognize and operate the servo
-* Make the ML classifier model available for use by the Viam vision service
+* Make the ML classifier model available for use by the Viam Vision Service
 
 ### 1. Configure the servo
 
@@ -206,7 +212,7 @@ We found that if set up this way, the following positions accurately show the co
 Click the **CONFIG** tab and then the **SERVICES** subtab.
 From there, scroll to the bottom and create a new service of **type** `vision` named 'vision'.
 
-<img src="../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the vision service." title="Adding the vision service." width="500" />
+<img src="../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the Vision Service." title="Adding the Vision Service." width="500" />
 
 Now, add the following configuration to the attributes for the Vision Service.
 You are registering a model of **type** `tflite_classifier` **named** `stuff_classifier`.
@@ -248,15 +254,19 @@ For example, if you say *"Hello Rosey, what do you think will happen today?"*, t
 If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-integration/blob/45ce0e3f2b7bad33f568cd4273e6721aa2ceffe5/rosey.py#L144), you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
 For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
 
-If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read an OpenAI-generated response about what it sees. Also, a "mood" will be selected at random, and the response will be generated with that mood.
-
+<div class="td-max-width-on-larger-screens">
 <img src="../img/ai-integration/yoda.jpeg"  style="float:left;margin-right:20px;margin-left: 0px;" alt="Viam Rover Rosey." title="Viam Rover Rosey." width="300" />
+
+If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read an OpenAI-generated response about what it sees. Also, a "mood" will be selected at random, and the response will be generated with that mood.
 
 The GPT-3 model is quite good at responding in the style of known personas, so you can also say *"Hey Rosey, act like Yoda"*, and from that point on, responses will be generated in the style of Yoda! The tutorial code has a number of characters you can try, and to pick one randomly, you can say *"Rosey, act random"*.
 You can even guess who Rosey is acting like by saying *"Rosey, I think you are Scooby Doo!"*
 
 Much of Rosey's behavior can be modified by changing the values of parameters in the tutorial code's [params.py](https://github.com/viam-labs/tutorial-openai-integration/blob/main/params.py) file.
 You can change Rosey's name to something else, add characters, adjust the classifier confidence threshold, and more.
+</div>
+<br>
+<br>
 
 ## Next steps
 
