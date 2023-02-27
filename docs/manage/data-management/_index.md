@@ -97,7 +97,7 @@ To configure cloud sync, see [configure cloud sync](../data-management/configure
 
 ## Next steps
 
-To use the Data Management Service, [add the Data Management Service](../configure-data-capture/#add-the-data-management-service). Then [configure data capture](configure-data-capture) as needed and [configure cloud sync](configure-cloud-sync).
+To use the Data Management Service, [add the Data Management Service](configure-data-capture/#add-the-data-management-service). Then [configure data capture](configure-data-capture) as needed and [configure cloud sync](configure-cloud-sync).
 
 Once you have configured data capture and cloud sync, you can [view](view) and [export](export) your data.
 
