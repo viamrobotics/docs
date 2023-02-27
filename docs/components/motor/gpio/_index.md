@@ -10,7 +10,7 @@ description: "Configure brushed or brushless DC motors."
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).
 
 [Encoders](/components/encoder/) can be configured to work with `gpio` motors.
-Find more information in the [encoded motor documentation](/components/motor/encoded-motor/).
+Find more information in the [encoded motor documentation](/components/motor/gpio/encoded-motor/).
 
 ## Configuration
 
@@ -108,7 +108,7 @@ Name | Type | Default Value | Description
 `pwm_freq` | uint | 800 | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range.
 `dir_flip` | bool | False | Flips the direction of "forward" versus "backward" rotation.
 `en_high` / `en_low` | string | -- | Some drivers have optional enable pins that enable or disable the driver chip. If your chip requires a high signal to be enabled, add `en_high` with the pin number to the pins section. If you need a low signal use `en_low`.
-`encoder` | string | -- | The name of an encoder attached to this motor. See [encoded motor](/components/motor/encoded-motor/).
+`encoder` | string | -- | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/).
 
 ## Wiring examples
 

@@ -8,7 +8,7 @@ description: "How to configure an encoded motor."
 ---
 
 Use an [encoder](/components/encoder/) with a motor to create a closed feedback loop for better control of your robot.
-Instead of sending speed or position commands to the motor and hoping for the best, the encoder lets the computer know how the motor is actually rotating in the real world, so adjustments can be made to achieve the desired motor movement.
+Instead of sending speed or position commands without a way to verify the motor's behavior, the encoder lets the computer know how the motor is actually rotating in the real world, so adjustments can be made to achieve the desired motor movement.
 
 Some motors come with encoders integrated with or attached to them.
 You can also add an encoder to a motor.
@@ -22,7 +22,7 @@ Here’s an example configuration:
 {{< tabs name="encoder-config">}}
 {{% tab name="Config Builder" %}}
 
-<img src="../../img/motor/encoded-config-ui.png" alt="Screenshot of an encoded motor config in the Viam app UI." style="max-width:800px;width:100%" >
+<img src="../../img/motor/gpio/encoded-config-ui.png" alt="Screenshot of an encoded motor config in the Viam app UI." style="max-width:800px;width:100%" >
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}

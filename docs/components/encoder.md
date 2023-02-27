@@ -30,7 +30,7 @@ Absolute encoders are another type of hardware that is not natively supported in
 ## Viam Configuration
 
 Configuring an encoder requires configuring two pins on the board to which the encoder is wired, as well as configuring the [board component](/components/board/).
-In the case of an encoded motor, the motor must be configured as well, per [the encoded motor component documentation](/components/motor/encoded-motor/).
+In the case of an encoded motor, the motor must be configured as well, per [the encoded motor component documentation](/components/motor/gpio/encoded-motor/).
 
 ### Required Attributes
 
