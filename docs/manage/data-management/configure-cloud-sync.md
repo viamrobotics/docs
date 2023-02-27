@@ -93,6 +93,6 @@ In the example pictured here, the Data Management Service syncs the configured c
 
 ## Next Steps
 
-To view your captured data in the cloud, see [View Data](../view-data).
+To view your captured data in the cloud, see [View Data](../view).
 
 For a comprehensive tutorial on data management, see [Intro to Data Management](../data-management-tutorial).
