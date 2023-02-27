@@ -63,6 +63,7 @@ The following components support data capture:
 - Gantry
 - Motor
 - Movement Sensor (includes GPS)
+- Sensor
 - Servo
 
 To add data capture for a component, navigate to the **COMPONENTS** tab on your robot's **CONFIG** page.
