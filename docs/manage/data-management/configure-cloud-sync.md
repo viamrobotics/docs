@@ -7,7 +7,7 @@ tags: ["data management", "cloud", "sync"]
 # SME: Aaron Casas
 ---
 
-Before you can configure [cloud sync](../#cloud-sync), you must [configure data capture](../configure-data-capture).
+Before you can configure [cloud sync](../#cloud-sync), you must [add the Data Management Service](../configure-data-capture/#add-the-data-management-service).
 
 To enable cloud sync, navigate to the **SERVICES** tab on your robot's **CONFIG** tab and enable `Syncing` for your [Data Management Service](../).
 Click **Save Config** at the bottom of the window.
