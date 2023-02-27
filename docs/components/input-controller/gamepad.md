@@ -9,7 +9,7 @@ tags: ["input controller", "components"]
 ---
 
 Configuring a `gamepad` input controller allows you to use a Linux-supported gamepad as a device to communicate with your robot.
-Most standard gamepads, such as xbox or playstation type game controllers, as well as many joysticks, racing wheels, etc. have Linux support.
+Linux supports most standard gamepads, such as PlayStation or Xbox type game controllers, as well as many joysticks, racing wheels, and more.
 
 ## Configuration
 
@@ -45,8 +45,8 @@ The following attributes are available for `gamepad` input controllers:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
-| `dev_file` | *Optional* | If `dev_file` is left blank or not included, `viam-server` will search and use the first gamepad it finds that's connected to the computer controlling your robot. If you want to specify a device, give the absolute path to the input device event file. For example: "<file>/dev/input/event42</file>" |
-| `auto_reconnect` | *Optional* | If set to `true`, `viam-server` sets the device to be automatically connected, waiting for a device to connect during a robot's start-up, and start-up fails if a device is not connected. Defaults to `false` if not included. |
+| `dev_file` | *Optional* | If `dev_file` is left blank or not included, `viam-server` will search and use the first gamepad it finds that's connected to the computer controlling your robot. If you want to specify a device, give the absolute path to the input device event file. For example: `/dev/input/event42` |
+| `auto_reconnect` | *Optional* | If set to `true`, `viam-server` tries to connect the device automatically. It waits for a device to connect during a robot's start-up, and start-up fails if a device is not connected. Defaults to `false` if not included. |
 
 {{% alert="Note" color="note" %}}
 `auto_reconnect` applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices.

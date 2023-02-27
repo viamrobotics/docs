@@ -12,13 +12,13 @@ Configuring a `mux` (multiplexed) input controller allows you to combine one or 
 
 This lets you control a robot from different locations, such as the web and a locally connected gamepad, or use multiple controllers as one device.
 
-For example, a joystick could be added to a numpad.
+For example, you could use a joystick alongside a numpad.
 
 ## Configuration
 
-{{% alert="Note" color="note" %}}
-You must give the other input controllers their own component configuration, as shown below with a `gamepad` and `webgamepad`, to combine them in the `mux` model.
-{{% /alert %}}
+To combine multiple controlers into a `mux` controller, you must first configure each controller individually.
+
+The following example combines a `gamepad` and a `webgamepad` controller:
 
 Refer to the following example configuration for an input controller of model `mux`:
 
@@ -28,7 +28,7 @@ Refer to the following example configuration for an input controller of model `m
 <img src="../img/mux-input-controller-ui-config.png" alt="Example of what configuration for a multiplexed input controller component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
-{{% tab name="Raw Json" %}}
+{{% tab name="Raw JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
@@ -76,10 +76,10 @@ The following attributes are available for `mux` input controllers:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
-| `sources` | *Required* | The `name` of each input controller component that should be combined in the `mux` model. |
+| `sources` | *Required* | An array of `name`s of each input controller component that should be combined in the `mux` model. |
 
 {{% alert="Note" color="note" %}}
-You must also put each name in `sources` in `depends_on`, as shown above.
+You must put each controller's `name` that you add in `sources` in `depends_on`.
 This tells the program loading the config to fully load the source components first.
 {{% /alert %}}
 

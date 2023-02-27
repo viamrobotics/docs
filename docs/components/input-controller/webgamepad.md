@@ -18,7 +18,7 @@ You **must** use "WebGamepad" as the `name` of the web gamepad controller. This 
 
 ## Configuration
 
-Refer to the following example configuration for an input controller of model `webgamepad`:
+Use the following configuration for an input controller of model `webgamepad`:
 
 {{< tabs name="Configure a `webgamepad` input controller" >}}
 {{< tab name="Config Builder" >}}
@@ -44,16 +44,17 @@ Refer to the following example configuration for an input controller of model `w
 {{% /tab %}}
 {{< /tabs >}}
 
-## Use
+## Usage
 
-After adding the above configuration, when viewing your robot in [the Viam app](https://app.viam.com) or at your robot's local address (like "myrobot.local:8080"), you'll see the WebGamepad component.
+After configuring your gamepad, you can see the WebGamepad component when viewing your robot in [the Viam app](https://app.viam.com) or at your robot's local address (for example [myrobot.local:8080](myrobot.local:8080)).
 
 Connect any compatible web-based gamepad to your PC, and press any button or stick on the gamepad.
 Then, you should see the name of your controller appear where you're viewing your robot, and the input displays respond to the controls.
 
-When ready, click "Enable" in the upper right to "connect" the controller to the robot, and let it begin receiving inputs.
+When ready, click "Enable" in the upper right to "connect" the controller to the robot and the robot will begin receiving inputs from the gamepad.
 
 {{% alert="Note" color="note" %}}
+You have to press a button or move a stick on your gamepad for the browser to report the gamepad.
 For your security, the browser won't report a gamepad until an input has been sent.
 {{% /alert %}}
 <!-- TODO: testing, may need to add more info re. this tutorial (or at the least add it to next steps)
