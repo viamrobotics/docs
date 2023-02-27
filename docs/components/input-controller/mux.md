@@ -25,7 +25,7 @@ Refer to the following example configuration for an input controller of model `m
 {{< tabs name="Configure a `mux` input controller" >}}
 {{< tab name="Config Builder" >}}
 
-<img src="../img/mux-input-controller-ui-config.png" alt="Example of what configuration for a multiplexed input controller component looks like in the Viam App config builder." style="width:100%"/>
+<img src="../img/mux-input-controller-ui-config.png" alt="What configuration for a multiplexed input controller component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
 {{% tab name="Raw JSON" %}}
