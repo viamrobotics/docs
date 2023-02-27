@@ -33,7 +33,7 @@ By combining ChaptGPT with the Viam platform’s built-in [computer Vision Servi
 This tutorial will show you how to use the Viam platform to create an AI-integrated robot with less than 200 lines of code.
 
 <div class="embed-responsive embed-responsive-16by9">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vR2oE4iKY6A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/vR2oE4iKY6A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 ## Hardware list
