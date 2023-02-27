@@ -20,6 +20,7 @@ Refer to the following example configuration for an input controller of model `g
 <img src="../img/gpio-input-controller-ui-config.png" alt="Example of what configuration for a GPIO based device input controller component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
+
 {{% tab name="Raw JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
@@ -31,6 +32,60 @@ Refer to the following example configuration for an input controller of model `g
       "model": "gpio",
       "attributes": {
         "board": <your-GPIO-board>,
+        "buttons": {
+          <name>: {
+            "control": <button-control>,
+            "invert": false,
+            "debounce_msec": 5
+          },
+          <name>: {
+            "control": <button-control>,
+            "invert": true,
+            "debounce_msec": 5
+          }
+        },
+        "axes": {
+          <name>: {
+            "control": <axis-control>,
+            "min": 0,
+            "max": 1023,
+            "poll_hz": 50,
+            "deadzone": 30,
+            "min_change": 5,
+            "bidirectional": false,
+            "invert": false
+          },
+          <name>: {
+            "control": <axis-control>,
+            "min": 0,
+            "max": 1023,
+            "poll_hz": 50,
+            "deadzone": 30,
+            "min_change": 5,
+            "bidirectional": true,
+            "invert": true
+          }
+        }
+      },
+      "depends_on": [
+        <your-GPIO-board>
+      ]
+    }, ...
+}
+```
+
+{{% /tab %}}
+{{% tab name="Example JSON" %}}
+
+```json-viam {class="line-numbers linkable-line-numbers"}
+{
+    "components": [
+    {
+      "name": "my_gpio_ic",
+      "type": "input_controller",
+      "model": "gpio",
+      "attributes": {
+        "board": "piboard",
         "buttons": {
           "interrupt1": {
             "control": "ButtonNorth",
@@ -67,7 +122,7 @@ Refer to the following example configuration for an input controller of model `g
         }
       },
       "depends_on": [
-        <your-GPIO-board>
+        "piboard"
       ]
     }, ...
 }
@@ -76,13 +131,13 @@ Refer to the following example configuration for an input controller of model `g
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for `gamepad` input controllers:
+The following attributes are available for `gpio` input controllers:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
 | `board` | *Required* | The name of the board component with GPIO or ADC pins to use as the controlling device. |
-| `buttons` | *Required* | The [Buttons](../#button-controls) available for control. These should be connected to the GPIO/ADC board. |
-| `axes` | *Required* | The [Axes](../#axis-controls) available for control. These should be connected to the GPIO/ADC board. |
+| `buttons` | *Required* | The [Buttons](../#button-controls) available for control. These should be connected to the GPIO/ADC board. <br> Each button's fields: </li> <li> <code>name</code>: Name of the [Digital Interrupt](../board/#digital-interrupts) that reports digital input for the button switch Control, as configured on the board component. </li> <li> <code>control</code>: The [Control](../#control-field) type to use when reporting events as this button's state is changed. </li> <li> <code>Invert</code>: Boolean indicating if the digital input (high/low) should be inverted when reporting button Control value indicating button state. This option is given because digital switches vary between high & low as their default at rest. <br>`true`: `0` is pressed, and `1` is released. <br>`false`: `0` is released, and `1` is pressed.  </li> <li> <code>DebounceMS</code>: How many milliseconds to wait between interrupt readings before reporting multiple presses. This is needed because some switch presses can result in 5-10 interrupts reported consecutively within a few milliseconds. </li> </ul>  |
+| `axes` | *Required* | The [Axes](../#axis-controls) available for control. These should be connected to the GPIO/ADC board. <br> Each axis's fields: </li> <li> <code>name</code>: Name of the [Analog Reader](../board/#analogs) that reports ADC values for the axis Control, as configured on the [board](../board/) component. </li> <li> <code>control</code>: The [Control](../#control-field) type to use when reporting events as this axis's position is changed. </li> <li> <code>min</code>: The minimum ADC value that the analog reader can report as this axis's position changes. </li> <li> <code>max</code>: The maximum ADC value that the analog reader can report as this axis's position changes. </li> <li> <code>Bidirectional</code>: Boolean indicating if the axis changes position in 1 direction, like on an analog trigger or pedal, or 2, like on an analog control stick. <br>`true`: The axis should center at `0`. <br> `false`: `0` is still the neutral point of the axis, but only positive change values can be reported.  </li> <li> <code>Deadzone</code>: The absolute ADC value change from the neutral `0` point to still consider as a neutral reporting. This option is given so tiny wiggles on loose controls don't result in events being reported. </li><li> <code>MinChange</code>: The minimum absolute ADC value change from the previous ADC value reading that can occur before reporting a new [`PositionChangeAbs Event`](../#event-object). This option is given so tiny wiggles on loose controls don't result in events being reported. </li><li> <code>PollHz</code>: How many times per second to report a new ADC reading that can generate an event. </li><li> <code>Invert</code>: Boolean indicating if the direction of the axis should be flipped when translating ADC value readings to the axis Control value indicating position change. </br> `true`: flips the direction of the axis so that the `min` ADC value is reported as the `max` axis Control value. </br> `true`: keeps the direction of the axis the same, so that the `min` ADC value is reported as the `min` axis Control value. </li> </ul> |
 
 ## Troubleshooting
 

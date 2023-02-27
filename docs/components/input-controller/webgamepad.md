@@ -30,6 +30,7 @@ Use the following configuration for an input controller of model `webgamepad`:
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
+    "services": [] 
     "components": [
     {
       "name": "WebGamepad",
@@ -38,6 +39,7 @@ Use the following configuration for an input controller of model `webgamepad`:
       "attributes": {},
       "depends_on": []
     }
+    ]
 }
 ```
 
