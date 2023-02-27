@@ -40,7 +40,7 @@ Fill in the attributes for your encoder:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for webcams:
+The following attributes are available for `fake` encoders:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
