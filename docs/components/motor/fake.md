@@ -34,6 +34,25 @@ Field | Description
 {
   "components": [
     {
+      "name": <motor_name>,
+      "type": "motor",
+      "model": "fake",
+      "attributes": {
+        <...>
+      },
+      "depends_on": []
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Example JSON" %}}
+
+```json
+{
+  "components": [
+    {
       "name": "fake-motor",
       "type": "motor",
       "model": "fake",

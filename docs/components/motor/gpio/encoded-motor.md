@@ -22,7 +22,7 @@ Here’s an example configuration:
 {{< tabs name="encoder-config">}}
 {{% tab name="Config Builder" %}}
 
-<img src="../../img/motor/gpio/encoded-config-ui.png" alt="Screenshot of an encoded motor config in the Viam app UI." style="max-width:800px;width:100%" >
+<img src="../../../img/motor/encoded-config-ui.png" alt="Screenshot of an encoded motor config in the Viam app UI." style="max-width:800px;width:100%" >
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -31,10 +31,54 @@ Here’s an example configuration:
 {
   "components": [
     {
+      "name": <board_name>,
+      "type": "board",
+      "model": <board_model>,
+      "attributes": {},
+      "depends_on": []
+    },
+    {
+      "name": <encoder_name>,
+      "type": "encoder",
+      "model": "incremental",
+      "attributes": {
+        "board": <board_name>,
+        "pins": {
+          "a": <first_pin_number>,
+          "b": <second_pin_number>
+        }
+      },
+      "depends_on": []
+    },
+    {
+      "name": <motor_name>,
+      "type": "motor",
+      "model": "gpio",
+      "attributes": {
+        "board": <board_name>,
+        "pins": {
+          <...>
+        },
+        <...other_board_attributes...>
+      },
+      "depends_on": []
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Example JSON" %}}
+
+```json
+{
+  "components": [
+    {
       "name": "local",
       "type": "board",
       "model": "pi",
-      "attributes": {}
+      "attributes": {},
+      "depends_on": []
     },
     {
       "name": "myEncoder",
@@ -46,7 +90,8 @@ Here’s an example configuration:
           "a": "13",
           "b": "15"
         }
-      }
+      },
+      "depends_on": []
     },
     {
       "name": "myMotor1",
@@ -60,7 +105,8 @@ Here’s an example configuration:
         },
         "encoder": "myEncoder",
         "ticks_per_rotation": 9600
-      }
+      },
+      "depends_on": []
     }
   ]
 }
@@ -70,7 +116,7 @@ Here’s an example configuration:
 
 {{% tab name="Annotated JSON" %}}
 
-![motor-encoded-dc-json](../../img/motor/motor-encoded-dc-json.png)
+![motor-encoded-dc-json](../../../img/motor/motor-encoded-dc-json.png)
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -98,4 +144,4 @@ Name | Type | Description
 Here's an example of an encoded DC motor wired with [the MAX14870 Single Brushed DC Motor Driver Carrier](https://www.pololu.com/product/2961).
 This wiring example corresponds to the [example config above](#encoder-config).
 
-![motor-encoded-dc-wiring](../../img/motor/motor-encoded-dc-wiring.png)
+![motor-encoded-dc-wiring](../../../img/motor/motor-encoded-dc-wiring.png)

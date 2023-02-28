@@ -599,7 +599,7 @@ print('Moving:', moving)
 - [(bool)](https://pkg.go.dev/builtin#bool): True if the motor is currently moving.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.15/resource#MovingCheckable).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
 
 **Example usage:**
 

@@ -27,6 +27,41 @@ An example configuration for a `gpio` motor:
 <img src="../../img/motor/gpio-config-ui.png" alt="Screenshot of a gpio motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
 
 {{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+```json
+{
+  "components": [
+    {
+      "name": <board_name>,
+      "type": "board",
+      "model": <board_model>,
+      "attributes": {},
+      "depends_on": [],
+    },
+    {
+      "name": <motor_name>,
+      "type": "motor",
+      "model": "gpio",
+      "attributes": {
+        "pins": {
+          <...>
+        },
+        "board": <board_name>,
+        "max_rpm": <int>,
+        "min_power_pct": <float>,
+        "max_power_pct": <float>,
+        "pwm_freq": <float>,
+        "dir_flip": <float>,
+        "en_low": <float>
+      },
+      "depends_on": []
+    }
+  ]
+}
+```
+
+{{% /tab %}}
 {{% tab name="Example JSON" %}}
 
 ```json
@@ -44,14 +79,12 @@ An example configuration for a `gpio` motor:
       "type": "motor",
       "model": "gpio",
       "attributes": {
-        {
-          "pins": {
-            "dir": "36",
-            "pwm": "32",
-          },
+        "pins": {
+          "dir": "36",
+          "pwm": "32",
+        },
         "board": "local",
         "max_rpm": 500
-        }
       },
       "depends_on": []
     }

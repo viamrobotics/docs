@@ -33,6 +33,38 @@ Here’s an example of a basic stepper driver config:
 {
   "components": [
     {
+      "name": <board_name>,
+      "type": "board",
+      "model": <board_model>,
+      "attributes": {},
+      "depends_on": [],
+    },
+    {
+      "name": <motor_name>,
+      "type": "motor",
+      "model": "gpiostepper",
+      "attributes": {
+        "board": <board_name>,
+        "pins": {
+          "step": <board pin number (string) of step pin>,
+          "dir": <board pin number (string) of direction pin>
+        },
+        "ticks_per_rotation": <int>,
+        "stepper_delay": <uint>
+      },
+      "depends_on": []
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Example JSON" %}}
+
+```json
+{
+  "components": [
+    {
       "name": "example-board",
       "type": "board",
       "model": "pi"
