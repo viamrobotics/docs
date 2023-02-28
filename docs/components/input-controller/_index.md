@@ -3,20 +3,21 @@ title: "Input Controller Component"
 linkTitle: "Input Controller"
 weight: 60
 type: "docs"
+no_list: true
 description: "An input controller, like a gamepad or elevator button panel, is a device humans use to control a robot's actions."
 tags: ["input controller", "components"]
 icon: "img/components/controller.png"
 # SME: James
 ---
 
-You should already be familiar with human-interface devices, like keyboards and mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers, from your daily life.
+You are likely already familiar with human-interface devices, like keyboards and mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers, from your daily life.
 
-Configuring an *input* component allows you to implement one of these devices into your robot, enabling you to control your robot's actions by interacting with the device.
+Configuring an *input* component allows you to use one of these devices with your robot, enabling you to control your robot's actions by interacting with the device.
 
 Most robots with an input controller need at least the following hardware:
 
 - A power supply cable or batteries.
-- (Optional) A component that you can direct the input to control the position of, like an [arm](/components/arm/) or [motor](/components/motor). See those pages for additional required hardware and configuration.
+- A component that you can control, like an [arm](/components/arm/) or [motor](/components/motor).
 
 ## Configuration
 
@@ -26,22 +27,23 @@ For configuration information, click on one of the following models:
 
 | Model | Description |
 | ----- | ----------- |
-| [`gamepad`](gamepad) | Implement a linux based gamepad as an input controller. |
-| [`gpio`](gpio) | Implement a GPIO/ADC based device as an input controller. |
-| [`mux`](mux) | Implement a [multiplexed](https://en.wikipedia.org/wiki/Multiplexer) controller, combining multiple sources of input. |
-| [`webgamepad`](webgamepad) | Implement a web based gamepad as an input controller. |
+| [`gamepad`](gamepad) | X-box, Playstation, and similar controllers. |
+| [`gpio`](gpio) | Customizable GPIO/ADC based device using a Board. |
+| [`mux`](mux) | [Multiplexed](https://en.wikipedia.org/wiki/Multiplexer) controller, combining multiple sources of input. |
+| [`webgamepad`](webgamepad) | A remote, web based gamepad. |
 | [`fake`](fake) | A model for testing, with [no physical hardware - see Viam GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
 
 Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 
 ## Code Examples
+Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 
 ### Detailed Code Examples
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The below Python code is an example of controlling a wheeled base with a Logitech G920 steering wheel controller.
+The following Python code is an example of controlling a wheeled base with a Logitech G920 steering wheel controller.
 
 ``` python {id="python-example" class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -163,7 +165,7 @@ if __name__ == '__main__':
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The below Go code is an example of how to use an input controller to drive a robot with four wheels & a skid steer platform.
+The following Go code is an example of how to use an input controller to drive a robot with four wheels & a skid steer platform.
 
 The `motorCtl` callback function controls 5 motors: left front & back `FL` `BL`, right front & back `FL` `BL`, and a `winder` motor that raises and lowers a front-end like a bulldozer.
 
@@ -204,7 +206,7 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 {{< /tabs >}}
 
 {{% alert="Note" color="note" %}}
-Access the complete repository for the above Python example on Viam's Github [here](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
+Access the complete repository for the Python example on [Github](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
 {{% /alert %}}
 
 ### Control your robot with an Input Controller with Viam's Client SDK Libraries
@@ -347,7 +349,7 @@ func main() {
 {{% alert="Note" color="note" %}}
 The `Controller` interface is defined in the Viam RDK [here](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go).
 
-Access complete example code for controlling a wheeled base with a Logitech G920 steering wheel on Viam's Github [here](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
+Access complete example code for controlling a wheeled base with a Logitech G920 steering wheel on [GitHub](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
 {{% /alert %}}
 
 ## API
