@@ -47,7 +47,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 
 1. Follow the instructions in [Getting Started with Jetson AGX Orin Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-agx-orin-devkit) to boot up your Orin for the first time.
 
-    If you have already booted up your Orin, start with "Step 2 - Install JetPack Components" to make sure you have you have installed the latest NVIDIA JetPack components.
+    If you have already booted up your Orin, start with "Step 2 - Install JetPack Components" to make sure you have installed the latest NVIDIA JetPack components.
 
     Look at the Troubleshooting section below for help navigating these instructions.
     Once you have reached *Next Steps*, return to the Viam docs.
@@ -80,7 +80,7 @@ If this command fails, try using `wget http://packages.viam.com/apps/viam-server
 - NVIDIA Step 2 - Install JetPack Components
   - After running `sudo apt dist-upgrade`, if you are prompted with "Package distributer has shipped an updated version" hit `y` to install the updated version.
   - Do not run `sudo apt install nvidia-jetpack` in your terminal until after `sudo reboot` has completed.
-  - If your board is powered off after `sudo reboot` has completed and refuses to turn on, disconnect and reconnect the power cable and hit the power button.
+  - If your board is powered off after `sudo reboot` has completed and refuses to turn on, disconnect and reconnect the power cable and push the power button.
   - It is normal for JetPack installation to take a very long time, up to an hour or more.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
