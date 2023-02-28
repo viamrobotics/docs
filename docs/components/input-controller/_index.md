@@ -27,18 +27,24 @@ For configuration information, click on one of the following models:
 
 | Model | Description |
 | ----- | ----------- |
-| [`gamepad`](gamepad) | X-box, Playstation, and similar controllers. |
-| [`gpio`](gpio) | Customizable GPIO/ADC based device using a Board. |
+| [`gamepad`](gamepad) | X-box, Playstation, and similar controllers with Linux support. |
+| [`gpio`](gpio) | Customizable GPIO/ADC based device using a board component. |
 | [`mux`](mux) | [Multiplexed](https://en.wikipedia.org/wiki/Multiplexer) controller, combining multiple sources of input. |
 | [`webgamepad`](webgamepad) | A remote, web based gamepad. |
-| [`fake`](fake) | A model for testing, with [no physical hardware - see Viam GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
+| [`fake`](fake) | A model for testing, with [no physical hardware - see GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
 
 Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 
-## Code Examples
-Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
+## Work in Progress Models
 
-### Detailed Code Examples
+Mappings are currently available for a wired XBox 360 controller, and wireless XBox Series X|S, along with the 8bitdo Pro 2 bluetooth gamepad (which works great with the Raspberry Pi.)
+
+The XBox controllers emulate an XBox 360 gamepad when in wired mode, as does the 8bitdo.
+
+Because of that, any unknown gamepad will be be mapped that way.
+If you have another controller that you want to use to control your robot, feel free to submit a PR on the [Viam Robotics Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) with new mappings.
+
+## Detailed Code Examples
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -61,22 +67,24 @@ cmd = {}
 async def connect_modal():
     creds = Credentials(
         type='robot-location-secret',
-        payload='...')
+        payload="xyzabclocationexample"), # Robot location secret value from app.viam.com Code Sample tab.
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('...viam.cloud', opts)
+    return await RobotClient.at_address('robot123example.locationxyzexample.viam.com' # Robot remote address from app.viam.com Code Sample tab.
+    , opts)
 
 async def connect_controller():
     creds = Credentials(
         type='robot-location-secret',
-        payload='...')
+        payload="xyzabclocationexample"), # Robot location secret value from app.viam.com Code Sample tab.
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('...viam.cloud', opts)
+    return await RobotClient.at_address("robot123example.locationxyzexample.viam.com", # Robot remote address from app.viam.com Code Sample tab.
+    , opts)
 
 def handle_turning(event):
     global turn_amt
@@ -172,7 +180,6 @@ The `motorCtl` callback function controls 5 motors: left front & back `FL` `BL`,
 The `event.Control` logic is registered as a callback function to determine the case for setting the power of each motor from which button is pressed on the input controller.
 
 ```go {id="go-example" class="line-numbers linkable-line-numbers"}
-
 // Define a single callback function
 motorCtl := func(ctx context.Context, event input.Event) {
     if event.Event != input.PositionChangeAbs {
@@ -227,12 +234,13 @@ from viam.robot.client import RobotClient
 async def connect_controller():
     creds = Credentials(
         type='robot-location-secret',
-        payload= "GRAB YOUR ROBOT LOCATION SECRET VALUE [Can be found in robot's Code Sample Tab in app.viam.com]"
+        payload= "xyzabclocationexample"), # Robot location secret value from app.viam.com Code Sample tab.
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address("GRAB YOUR ROBOT'S REMOTE ADDRESS [Can be found in robot's Control Tab in app.viam.com", opts)
+    return await RobotClient.at_address("robot123example.locationxyzexample.viam.com", # Robot remote address from app.viam.com Code Sample tab.
+    opts)
 
 # Define a function to handle the controller.
 async def handleController(controller):
@@ -302,18 +310,18 @@ func main() {
     // Connect to your robot.
     myRobotWithController, err := client.New(
         context.Background(),
-        "GRAB YOUR ROBOT'S REMOTE ADDRESS [Can be found in robot's Control Tab in app.viam.com)",
+        "xyzabclocationexample", // Robot location secret value from app.viam.com Code Sample tab.
         logger,
         client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
             Type:    utils.CredentialsTypeRobotLocationSecret,
-            Payload: "GRAB YOUR ROBOT LOCATION SECRET VALUE [Can be found in robot's Code Sample Tab in app.viam.com]",
+            Payload: "robot123example.locationxyzexample.viam.com" // Robot remote address from app.viam.com Code Sample tab.
         })),
     )
 
     // Get the controller from the robot.
     myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
-    // Log any errors that occur.
+    // Log any errors that occur and exit if an error is found.
     if err != nil {
         logger.Fatalf("cannot get controller: %v", err)
     }
@@ -347,379 +355,8 @@ func main() {
 {{< /tabs >}}
 
 {{% alert="Note" color="note" %}}
-The `Controller` interface is defined in the Viam RDK [here](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go).
-
-Access complete example code for controlling a wheeled base with a Logitech G920 steering wheel on [GitHub](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
+The `Controller` interface is defined in [the Viam RDK](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go).
 {{% /alert %}}
-
-## API
-
-The input controller component supports the following methods:
-
-| Method Name | Go | Python | Description |
-| ----------- | -- | ------ | ----------- |
-| [Controls](#controls) | [Controls][go_input]  |  [get_controls][python_get_controls] | Get a list of input `Controls` that this Controller provides. |
-| [Events](#events) | [Events][go_input] | [get_events][python_get_events] | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). |
-| [RegisterControlCallback](#registercontrolcallback) | [RegisterControlCallback][go_input] | [register_control_callback][python_register_control_callback] | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). |
-| [TriggerEvent](#triggerevent) | [TriggerEvent][go_triggerable] | [trigger_event][python_trigger_event] | Directly send an [Event](#event-object) to your robot. |
-
-[go_input]: https://pkg.go.dev/go.viam.com/rdk/components/input#Controller
-[go_triggerable]: https://pkg.go.dev/go.viam.com/rdk/components/input#Triggerable
-[python_get_controls]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.get_controls
-[python_get_events]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.get_events
-[python_register_control_callback]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback
-[python_trigger_event]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.trigger_event
-
-### Events
-
-This method returns the current state of the controller as a map of [Event Objects](#event-object), representing the most recent event that has occured on each available [Control](#control-field).
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- `events` [(Dict[Control, Event])](https://docs.python.org/3/library/typing.html#typing.Dict): A dictionary mapping the most recent Event for each Control.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_events).
-
-```python {class="line-numbers linkable-line-numbers"}
-# Get the most recent Event for each Control.
-recent_events = await myController.get_events()
-
-# Print out the most recent Event for each Control.
-print(f'Recent Events:\n{recent_events}')
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- `events` [(map[Control]Event)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): A map mapping the most recent Event for each Control.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
-
-```go {class="line-numbers linkable-line-numbers"}
-// Get the most recent Event for each Control.
-recent_events, err := myController.Events(context.Background(), nil)
-
-// Log any errors that occur.
-if err != nil {
-  logger.Fatalf("cannot get list of recent events from controller: %v", err)
-}
-
-// Log the most recent Event for each Control.
-logger.Info("Recent Events: %v", recent_events)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### Controls
-
-Get a list of the [Controls](#control-field) that your controller provides.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- `controls` [(List[Control])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): List of Controls provided by the controller.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_position).
-
-```python {class="line-numbers linkable-line-numbers"}
-myController = Controller.from_robot(robot=myRobotWithController, name='my_controller') ...
-
-# Get the list of Controls provided by the controller.
-controls = await myController.get_controls()
-
-# Print the list of Controls provided by the controller.
-print(f'Controls:\n{controls}')
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- `positions` [([]float64)](https://pkg.go.dev/builtin#float64): List of controls provided by the controller.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
-
-```go {class="line-numbers linkable-line-numbers"}
-myController, err := controller.FromRobot(myRobotWithController, "my_controller")
-if err != nil {
-  logger.Fatalf("cannot get controller: %v", err)
-} ...
-
-// Get the list of Controls provided by the controller.
-controls, err := myController.Controls(context.Background(), nil)
-
-// Log any errors that occur.
-if err != nil {
-  logger.Fatalf("cannot get controls provided by controller: %v", err)
-}
-
-// Log the list of Controls provided by the controller. 
-logger.Info("Controls:")
-logger.Info(controls)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### RegisterControlCallback
-
-Defines a callback function to execute whenever one of the [EventTypes](#eventtype-field) selected occurs on the given [Control](#control-field).
-
-You can only register one callback function per [Event](#event-object) for each [Control](#control-field).
-A second call to register a callback function for a [EventType](#eventtype-field) on a [Control](#control-field) replaces any function that was already registered.
-
-You can pass a `nil` function here to "deregister" a callback.
-
-{{% alert="Note" color="note" %}}
-Registering a callback for the `ButtonChange` [EventType](#eventtype-field) is merely a convenience for filtering.
-Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, but `ButtonChange` is not reported in an actual [Event Object](#event-object).
-{{% /alert %}}
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `control` [(Control)](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): The [Control](#control-field) to register the function for.
-- `triggers` [(List[EventType])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.EventType): The [EventTypes](#eventtype-field) that trigger the function.
-- `function` [(Optional[ControlFunction])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback): The function to run when the specified triggers are invoked.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- None
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback).
-
-```python {class="line-numbers linkable-line-numbers"}
-''' import ... 
-    async def connect_controller(): ... 
-    [See the Code Example subsection of this page for full connection start code].
-'''
-
-# Define a function to handle pressing the Start Menu Button "BUTTON_START" on your controller, printing out the start time.
-def print_start_time(event):
-    print(f'Start Menu Button was pressed at this time:\n{event.time}')
-
-# Define a function that handles the controller.
-async def handle_controller(controller):
-
-    # Get the most recent Events on the controller.
-    recent_events = await controller.get_events()
-
-    # Register the function print_start_time to fire when "BUTTON_START" has the event "ButtonPress" occur.
-    if Control.BUTTON_START in recent_events:
-        controller.register_control_callback(Control.BUTTON_START, [EventType.BUTTON_PRESS], print_start_time)
-    else:
-        print("Oops! Couldn't find that the start button was pressed! Is your controller connected?")
-        exit()
-
-    while True:
-        await asyncio.sleep(0.01)
-
-async def main():
-
-    # Connect to your robot. 
-    myRobotWithController = await connect_controller()
-
-    # Get your controller from the robot. 
-    myController = Controller.from_robot(robot=myRobotWithController, name='my_controller')
-
-    # Run the handle_controller function.
-    await handle_controller(myController)
-
-    # Wait to disconnect from the robot.
-    await myController.close()
-
-if __name__ == '__main__':
-    asyncio.run(main())
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
-- `control`[(Control)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): The [Control](#control-field) to register the function for.
-- `ctrlFunc` [(ControlFunction)](https://pkg.go.dev/go.viam.com/rdk/components/input#ControlFunction): The function to run when the specified triggers are invoked.
-- `triggers` [([]EventType)](https://pkg.go.dev/go.viam.com/rdk/components/input#EventType): The [EventTypes](#eventtype-field) that trigger the function.
-
-**Returns:**
-
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
-
-```go {class="line-numbers linkable-line-numbers"}
-// import {} ... [See the Code Example subsection of this page for full connection start code.]
-
-// Define a function to handle Events that occur on the controller. 
-func handleController(controller input.Controller) {
-
-    // Define a function to handle pressing the Start Menu Button "ButtonStart" on your controller, logging the start time.
-    printStartTime := func(ctx context.Context, event input.Event) {
-        logger.Info("Start Menu Button was pressed at this time: %v", event.Time)
-    }
-
-    // Define the EventType "ButtonPress" to serve as the trigger for printStartTime. 
-    triggers := [1]input.EventType{input.ButtonPress}
-
-    // Register the printStartTime function to fire when "ButtonStart" has the event "ButtonPress" occur.
-    err := controller.RegisterControlCallback(context.Background(), Control: input.ButtonStart, triggers, printStartTime, nil)
-
-    // Log any errors that occur.
-    if err != nil {
-    logger.Fatalf("Oops! Couldn't find that the start button was pressed! Is your controller connected?: %v", err)
-    }
-}
-
-func main() {
-
-    // Create an instance of a logger.
-    logger := golog.NewDevelopmentLogger("client")
-
-    // Connect to your robot.
-    myRobotWithController, err := client.New(
-        context.Background(),
-        "GRAB YOUR ROBOT'S REMOTE ADDRESS [Can be found in robot's Control Tab in app.viam.com)",
-        logger,
-        client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-            Type:    utils.CredentialsTypeRobotLocationSecret,
-            Payload: "GRAB YOUR ROBOT LOCATION SECRET VALUE [Can be found in robot's Code Sample Tab in app.viam.com]",
-        })),
-    )
-
-    // Get the controller from the robot. 
-    myController, err := input.FromRobot(myRobotWithController, "my_controller")
-
-    // Log any errors that occur.
-    if err != nil {
-        logger.Fatalf("cannot get controller: %v", err)
-    }
-
-    // Log an info message with the names of the different resources that are connected to your robot.
-    logger.Info("Resources:")
-    logger.Info(myRobotWithController.ResourceNames())
-
-    // Get the controller's Controls.
-    controls, err := myController.Controls(context.Background(), nil)
-
-    // Print out the controller's Controls.
-    logger.Info("Controls:")
-    logger.Info(resp)
-
-    // Log any errors that occur.
-    if err != nil {
-        logger.Fatal(err)
-    }
-
-    // Run the handleController function.
-    err := handleController(myController)
-
-    // Delay closing your connection to your robot until main() exits.
-    defer robot.Close(context.Background())
-
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### TriggerEvent
-
-Directly send an [Event Object](#event-object) from external code.
-
-{{% alert="Note" color="note" %}}
-This method is currently only supported for input controllers of model `webgamepad`.
-{{% /alert %}}
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `event` [(Event)](#event-object): The `Event` to trigger on the controller.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- None
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.trigger_event).
-
-```python {class="line-numbers linkable-line-numbers"}
-# Define a "Button is Pressed" event for the control BUTTON_START.
-button_is_pressed_event = Event(time(), EventType.BUTTON_PRESS, Control.BUTTON_START, 1.0)
-
-# Trigger the event on your controller. Set this trigger to timeout if it has not completed in 7 seconds. 
-await myController.trigger_event(event=my_event, timeout=7.0)
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `event` [(Event)](#event-object): The `Event` to trigger on the controller.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
-
-```go {class="line-numbers linkable-line-numbers"}
-// Define a "Button is Pressed" event for the control ButtonStart.
-buttonIsPressedEvent := input.Event{Time: time.Now(), Event: input.ButtonPress, Control: input.ButtonStart, Value: 1.0}
-
-// Trigger the event on your controller.
-err := myController.TriggerEvent(ctx Context.background(), buttonIsPressedEvent, nil)
-
-// Log any errors that occur.
-if err != nil {
-  logger.Fatalf("cannot trigger event on controller: %v", err)
-}
-
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ## Event Object
 
@@ -1036,14 +673,374 @@ If your input controller is a gamepad with digital menu buttons, this is what th
 | `ButtonRecord` | Recording |
 | `ButtonEStop` | Stop |
 
-## Work in Progress Models
+## API
 
-Mappings are currently available for a wired XBox 360 controller, and wireless XBox Series X|S, along with the 8bitdo Pro 2 bluetooth gamepad (which works great with the Raspberry Pi.)
+The input controller component supports the following methods:
 
-The XBox controllers emulate an XBox 360 gamepad when in wired mode, as does the 8bitdo.
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
+| [Controls](#controls) | [Controls][go_input]  |  [get_controls][python_get_controls] | Get a list of input `Controls` that this Controller provides. |
+| [Events](#events) | [Events][go_input] | [get_events][python_get_events] | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). |
+| [RegisterControlCallback](#registercontrolcallback) | [RegisterControlCallback][go_input] | [register_control_callback][python_register_control_callback] | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). |
+| [TriggerEvent](#triggerevent) | [TriggerEvent][go_triggerable] | [trigger_event][python_trigger_event] | Directly send an [Event](#event-object) to your robot. |
 
-Because of that, any unknown gamepad will be be mapped that way.
-If you have another controller that you want to use to control your robot, feel free to submit a PR on the [Viam Robotics Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) with new mappings.
+[go_input]: https://pkg.go.dev/go.viam.com/rdk/components/input#Controller
+[go_triggerable]: https://pkg.go.dev/go.viam.com/rdk/components/input#Triggerable
+[python_get_controls]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.get_controls
+[python_get_events]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.get_events
+[python_register_control_callback]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback
+[python_trigger_event]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.trigger_event
+
+### RegisterControlCallback
+
+Defines a callback function to execute whenever one of the [EventTypes](#eventtype-field) selected occurs on the given [Control](#control-field).
+
+You can only register one callback function per [Event](#event-object) for each [Control](#control-field).
+A second call to register a callback function for a [EventType](#eventtype-field) on a [Control](#control-field) replaces any function that was already registered.
+
+You can pass a `nil` function here to "deregister" a callback.
+
+{{% alert="Note" color="note" %}}
+Registering a callback for the `ButtonChange` [EventType](#eventtype-field) is merely a convenience for filtering.
+Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, but `ButtonChange` is not reported in an actual [Event Object](#event-object).
+{{% /alert %}}
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `control` [(Control)](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): The [Control](#control-field) to register the function for.
+- `triggers` [(List[EventType])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.EventType): The [EventTypes](#eventtype-field) that trigger the function.
+- `function` [(Optional[ControlFunction])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback): The function to run when the specified triggers are invoked.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback).
+
+```python {class="line-numbers linkable-line-numbers"}
+''' import ... 
+    async def connect_controller(): ... 
+    [See the Code Example subsection of this page for full connection start code].
+'''
+
+# Define a function to handle pressing the Start Menu Button "BUTTON_START" on your controller, printing out the start time.
+def print_start_time(event):
+    print(f'Start Menu Button was pressed at this time:\n{event.time}')
+
+# Define a function that handles the controller.
+async def handle_controller(controller):
+
+    # Get the most recent Events on the controller.
+    recent_events = await controller.get_events()
+
+    # Register the function print_start_time to fire when "BUTTON_START" has the event "ButtonPress" occur.
+    if Control.BUTTON_START in recent_events:
+        controller.register_control_callback(Control.BUTTON_START, [EventType.BUTTON_PRESS], print_start_time)
+    else:
+        print("Oops! Couldn't find that the start button was pressed! Is your controller connected?")
+        exit()
+
+    while True:
+        await asyncio.sleep(0.01)
+
+async def main():
+
+    # Connect to your robot. 
+    myRobotWithController = await connect_controller()
+
+    # Get your controller from the robot. 
+    myController = Controller.from_robot(robot=myRobotWithController, name='my_controller')
+
+    # Run the handle_controller function.
+    await handle_controller(myController)
+
+    # Wait to disconnect from the robot.
+    await myController.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `control`[(Control)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): The [Control](#control-field) to register the function for.
+- `ctrlFunc` [(ControlFunction)](https://pkg.go.dev/go.viam.com/rdk/components/input#ControlFunction): The function to run when the specified triggers are invoked.
+- `triggers` [([]EventType)](https://pkg.go.dev/go.viam.com/rdk/components/input#EventType): The [EventTypes](#eventtype-field) that trigger the function.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
+
+```go {class="line-numbers linkable-line-numbers"}
+// import {} ... [See the Code Example subsection of this page for full connection start code.]
+
+// Define a function to handle Events that occur on the controller. 
+func handleController(controller input.Controller) {
+
+    // Define a function to handle pressing the Start Menu Button "ButtonStart" on your controller, logging the start time.
+    printStartTime := func(ctx context.Context, event input.Event) {
+        logger.Info("Start Menu Button was pressed at this time: %v", event.Time)
+    }
+
+    // Define the EventType "ButtonPress" to serve as the trigger for printStartTime. 
+    triggers := [1]input.EventType{input.ButtonPress}
+
+    // Register the printStartTime function to fire when "ButtonStart" has the event "ButtonPress" occur.
+    err := controller.RegisterControlCallback(context.Background(), Control: input.ButtonStart, triggers, printStartTime, nil)
+
+    // Log any errors that occur and exit if an error is found.
+    if err != nil {
+    logger.Fatalf("Oops! Couldn't find that the start button was pressed! Is your controller connected?: %v", err)
+    }
+}
+
+func main() {
+
+    // Create an instance of a logger.
+    logger := golog.NewDevelopmentLogger("client")
+
+    // Connect to your robot.
+    myRobotWithController, err := client.New(
+        context.Background(),
+        "robot123example.locationxyzexample.viam.com", // Robot remote address from app.viam.com Code Sample tab.
+        logger,
+        client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+            Type:    utils.CredentialsTypeRobotLocationSecret,
+            Payload: "xyzabclocationexample" // Robot location secret value from app.viam.com Code Sample tab
+        })),
+    )
+
+    // Get the controller from the robot. 
+    myController, err := input.FromRobot(myRobotWithController, "my_controller")
+
+    // Log any errors that occur and exit if an error is found.
+    if err != nil {
+        logger.Fatalf("cannot get controller: %v", err)
+    }
+
+    // Log an info message with the names of the different resources that are connected to your robot.
+    logger.Info("Resources:")
+    logger.Info(myRobotWithController.ResourceNames())
+
+    // Get the controller's Controls.
+    controls, err := myController.Controls(context.Background(), nil)
+
+    // Print out the controller's Controls.
+    logger.Info("Controls:")
+    logger.Info(resp)
+
+    // Log any errors that occur.
+    if err != nil {
+        logger.Fatal(err)
+    }
+
+    // Run the handleController function.
+    err := handleController(myController)
+
+    // Delay closing your connection to your robot until main() exits.
+    defer robot.Close(context.Background())
+
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Events
+
+This method returns the current state of the controller as a map of [Event Objects](#event-object), representing the most recent event that has occured on each available [Control](#control-field).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `events` [(Dict[Control, Event])](https://docs.python.org/3/library/typing.html#typing.Dict): A dictionary mapping the most recent Event for each Control.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_events).
+
+```python {class="line-numbers linkable-line-numbers"}
+# Get the most recent Event for each Control.
+recent_events = await myController.get_events()
+
+# Print out the most recent Event for each Control.
+print(f'Recent Events:\n{recent_events}')
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `events` [(map[Control]Event)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): A map mapping the most recent Event for each Control.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
+
+```go {class="line-numbers linkable-line-numbers"}
+// Get the most recent Event for each Control.
+recent_events, err := myController.Events(context.Background(), nil)
+
+// Log any errors that occur and exit if an error is found.
+if err != nil {
+  logger.Fatalf("cannot get list of recent events from controller: %v", err)
+}
+
+// Log the most recent Event for each Control.
+logger.Info("Recent Events: %v", recent_events)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Controls
+
+Get a list of the [Controls](#control-field) that your controller provides.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `controls` [(List[Control])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): List of Controls provided by the controller.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_position).
+
+```python {class="line-numbers linkable-line-numbers"}
+myController = Controller.from_robot(robot=myRobotWithController, name='my_controller') ...
+
+# Get the list of Controls provided by the controller.
+controls = await myController.get_controls()
+
+# Print the list of Controls provided by the controller.
+print(f'Controls:\n{controls}')
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `positions` [([]float64)](https://pkg.go.dev/builtin#float64): List of controls provided by the controller.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
+
+```go {class="line-numbers linkable-line-numbers"}
+myController, err := controller.FromRobot(myRobotWithController, "my_controller")
+if err != nil {
+  logger.Fatalf("cannot get controller: %v", err)
+} ...
+
+// Get the list of Controls provided by the controller.
+controls, err := myController.Controls(context.Background(), nil)
+
+// Log any errors that occur and exit if an error is found.
+if err != nil {
+  logger.Fatalf("cannot get controls provided by controller: %v", err)
+}
+
+// Log the list of Controls provided by the controller. 
+logger.Info("Controls:")
+logger.Info(controls)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+<!-- ### TriggerEvent
+
+Directly send an [Event Object](#event-object) from external code.
+
+{{% alert="Note" color="note" %}}
+This method is currently only supported for input controllers of model `webgamepad`.
+{{% /alert %}}
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `event` [(Event)](#event-object): The `Event` to trigger on the controller.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.trigger_event).
+
+```python {class="line-numbers linkable-line-numbers"}
+# Define a "Button is Pressed" event for the control BUTTON_START.
+button_is_pressed_event = Event(time(), EventType.BUTTON_PRESS, Control.BUTTON_START, 1.0)
+
+# Trigger the event on your controller. Set this trigger to timeout if it has not completed in 7 seconds. 
+await myController.trigger_event(event=my_event, timeout=7.0)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `event` [(Event)](#event-object): The `Event` to trigger on the controller.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
+
+```go {class="line-numbers linkable-line-numbers"}
+// Define a "Button is Pressed" event for the control ButtonStart.
+buttonIsPressedEvent := input.Event{Time: time.Now(), Event: input.ButtonPress, Control: input.ButtonStart, Value: 1.0}
+
+// Trigger the event on your controller.
+err := myController.TriggerEvent(ctx Context.background(), buttonIsPressedEvent, nil)
+
+// Log any errors that occur.
+if err != nil {
+  logger.Fatalf("cannot trigger event on controller: %v", err)
+}
+
+```
+
+{{% /tab %}}
+{{< /tabs >}} -->
 
 ## SDK Documentation
 

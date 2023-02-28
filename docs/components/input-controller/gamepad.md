@@ -1,9 +1,9 @@
 ---
-title: "Configure a linux-based gamepad"
+title: "Configure a linux-supported gamepad"
 linkTitle: "gamepad"
 weight: 30
 type: "docs"
-description: "Configure a linux-based gamepad as an input controller."
+description: "Configure a linux-supported gamepad as an input controller."
 tags: ["input controller", "components"]
 # SMEs: James
 ---
@@ -46,10 +46,44 @@ The following attributes are available for `gamepad` input controllers:
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
 | `dev_file` | *Optional* | If `dev_file` is left blank or not included, `viam-server` will search and use the first gamepad it finds that's connected to the computer controlling your robot. If you want to specify a device, give the absolute path to the input device event file. For example: `/dev/input/event42` |
-| `auto_reconnect` | *Optional* | If set to `true`, `viam-server` tries to connect the device automatically. It waits for a device to connect during a robot's start-up, and start-up fails if a device is not connected. Defaults to `false` if not included. |
+| `auto_reconnect` | *Optional* | Applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices. If set to `true`, `viam-server` tries to connect the device automatically. It waits for a device to connect during a robot's start-up, and start-up fails if a device is not connected. Defaults to `false` if not included. |
+
+## Usage
+
+Connect your controller to your computer.
+If you haven't done so already, create a robot in [the Viam app](https://app.viam.com), and follow the instructions in the **SETUP** tab to start `viam-server` on your computer and connect to the robot.
+
+Then, click on the robot's **CONFIG** tab and configure an `input_controller` component of model `gamepad`, as shown above.
+
+Next, click on the **SERVICES** sub tab of **CONFIG** and add a service of type `base_remote_control`.
+
+<img src="../img/base-rc-service-config.png" alt="What an example configuration for the Base Remote Control service of a web-based gamepad input controller component looks like in the Viam App." style="width:100%"/>
 
 {{% alert="Note" color="note" %}}
-`auto_reconnect` applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices.
+You do not need to configure a base component and control it with the input controls to use the "Base Remote Control" service to connect to your controller.
+
+For now, `"control_mode": "joystickControl"` does not affect the controls that are available to use on your gamepad.
+Buttons are still available with this configuration.
+
+Support for this component is still experimental, and this page will be updated as the interface develops.
+{{% /alert %}}
+
+After both the service and component are configured, navigate to the **CONTROL** tab.
+There, you should be able to see a drop-down menu appear with the name of your gamepad.
+Click **Enable**, and click buttons on your controller.
+Then, you should see the controls of your robot and the current input for each control displayed.
+
+<img src="../img/gamepad-enabled-app.png" alt="The dropdown as a table of controls available and their inputs in the Control tab of the Viam app." style="width:100%"/>
+
+Press any button or toggle any stick on the gamepad.
+You should now be able to see the row of control inputs respond to your button presses and stick toggles.
+For example, this is what the row of inputs above looks like *after* pressing the left button on the diamond button pad of the connected PS4 controller.
+
+<img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available and their inputs in the Control tab of the Viam app." style="width:100%"/>
+
+{{% alert="Note" color="note" %}}
+You have to press a button or move a stick on your gamepad for the browser to report the gamepad.
+For your security, the browser won't report a gamepad until an input has been sent.
 {{% /alert %}}
 
 ## Troubleshooting
