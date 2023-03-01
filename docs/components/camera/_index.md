@@ -20,14 +20,14 @@ The API for camera components allows you to:
 - Request a point cloud.
   Each 3D point cloud image consists of a set of coordinates (x,y,z) representing depth in mm.
 
-## Configuration
-
 The configuration of your camera component depends on your camera model.
 You can use different models to:
 
 - Configure physical cameras that generate images or point clouds.
 - Combine streams from multiple cameras into one.
 - Transform and process images.
+
+## Configuration
 
 For configuration information, click on one of the following models:
 
@@ -48,7 +48,7 @@ For configuration information, click on one of the following models:
 
 ## Control your camera with Viam's client SDK libraries
 
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
 
 {{< readfile "/static/include/components/camera-sample.md" >}}
 
