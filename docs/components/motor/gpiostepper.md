@@ -24,7 +24,7 @@ Here’s an example of a basic stepper driver config:
 {{< tabs name="gpiostepper-config">}}
 {{% tab name="Config Builder" %}}
 
-<img src="../../img/motor/gpiostepper-config-ui.png" alt="Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15, respectively." style="max-width:800px;width:100%" >
+<img src="../../img/motor/gpiostepper-config-ui.png" alt="Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15, respectively." style="max-width:900px;width:100%" >
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
