@@ -8,7 +8,10 @@ tags: ["encoder", "components"]
 ---
 
 Configuring a `single` encoder requires configuring one pin (`i`) on the board to which the encoder is wired.
-The single pin receives a signal from the rotating encoder and software calculates the relative position that the motor has roatedt.
+A `single` encoder sends a signal from the rotating encoder over a single wire to one pin on the board.
+Software calculates the relative position that the motor has rotated.
+
+Configuring a `single` encoder requires configuring one pin (`i`) on the board to which the encoder is wired.
 The direction of spin is dictated by the motor that has this encoder's name in its `encoder` attribute field.
 
 {{< tabs name="Configure an single encoder" >}}
