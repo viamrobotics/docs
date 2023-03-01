@@ -35,7 +35,7 @@ For the arm, you may want to capture joint positions at 1Hz.
 If your requirements change and you want to capture data from both components at 10Hz, you can change the configurations at any time by changing the number.
 
 Data capture is frequently used with [Cloud Sync](#cloud-sync).
-However, if you want to manage your robot's captured data yourself, you can enable only data capture for components on your robot.
+However, if you want to manage your robot's captured data yourself, you can enable only data capture without cloud sync.
 
 To configure data capture, see [data capture](../data-management/configure-data-capture).
 

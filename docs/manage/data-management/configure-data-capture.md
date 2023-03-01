@@ -162,7 +162,7 @@ To add them to your JSON configuration you must explicitly add the part's `type`
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
 
-{{%expand "Click to view the JSON configuration for an esp32 board" %}}
+{{%expand "Click to view the JSON configuration for an ESP32 board" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 "type": {
