@@ -25,7 +25,7 @@ Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedi
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
 By combining ChaptGPT with the Viam platform’s built-in [computer Vision Service](/services/vision), ML model support, and [locomotion](/components/base/), you can within a few hours create a basic companion robot that:
 
-* Listens with a microphone, converts speech-to-text, gets a response from OpenAI.
+* Listens with a microphone, converts speech-to-text, gets a response from ChatGPT.
 * Converts GPT response text to speech and "speaks" the response through a speaker.
 * Follows commands like "move forward" and "spin".
 * Makes observations about its environment when asked questions like "What do you see?".
@@ -86,7 +86,7 @@ Do not attach it to the servo wheel yet.
 
 ### 4. Speaker
 
-You need a speaker attached to your rover so that you can hear the responses generated from OpenAI, and converted from text to speech.
+You need a speaker attached to your rover so that you can hear the responses generated from ChatGPT, and converted from text to speech.
 
 Connect your speaker to your Pi:
 
@@ -105,13 +105,6 @@ The [git repository](https://github.com/viam-labs/tutorial-openai-integration) f
 * [OpenAI](https://openai.com/api/)
 
 It also contains an open source machine learning [classifier model](https://tfhub.dev/google/lite-model/imagenet/mobilenet_v3_large_100_224/classification/5/metadata/1).
-
-{{% alert title="Note" color="note"%}}
-At the time this tutorial was written, OpenAI was not yet offering the ChatGPT model with their [official API](https://platform.openai.com/overview).
-Therefore, this tutorial uses the [text-davinci-003](https://platform.openai.com/docs/models/davinci) GPT-3 model.
-
-When the ChatGPT model becomes available, you should be able to modify this tutorial by just changing the *model* specified in the [completion](https://platform.openai.com/docs/api-reference/completions) API call.
-{{% /alert %}}
 
 Power on  and choose a location on your Raspberry Pi, and clone the tutorial code repository.
 If you have git installed on your Pi, run the following command in the preferred directory from your terminal:
@@ -227,9 +220,9 @@ Click **Save config** to finish adding the classifier.
     {
       "name": "stuff_classifier",
       "parameters": {
-        "label_path": "/home/<username>/tutorial-chatgpt-integration/labels.txt",
+        "label_path": "/home/<username>/tutorial-openai-integration/labels.txt",
         "num_threads": 1,
-        "model_path": "/home/<username>/tutorial-chatgpt-integration/lite-model_imagenet_mobilenet_v3_large_075_224_classification_5_metadata_1.tflite"
+        "model_path": "/home/<username>/tutorial-openai-integration/lite-model_imagenet_mobilenet_v3_large_075_224_classification_5_metadata_1.tflite"
       },
       "type": "tflite_classifier"
     }
@@ -249,7 +242,7 @@ Let's call her "Rosey", and bring her to life by running:
 Now, you can start talking to Rosey.
 <img src="../img/ai-integration/rosey_robot.jpg"  style="float:right;margin-right:0px;margin-left: 20px;" alt="Viam Rover Rosey." title="Viam Rover Rosey." width="350" />
 Any time she hears the keyword "Rosey", she will pay attention to anything you say immediately afterwards.
-For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI's completion API, and you'll get a response back similar to *"It is impossible to predict what will happen today. Every day is different and unpredictable!"*
+For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI's chat completion API, and you'll get a response back similar to *"It is impossible to predict what will happen today. Every day is different and unpredictable!"*
 
 If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-integration/blob/45ce0e3f2b7bad33f568cd4273e6721aa2ceffe5/rosey.py#L144), you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
 For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
@@ -257,7 +250,7 @@ For example, there are a number of commands that will cause the rover to move - 
 <div class="td-max-width-on-larger-screens">
 <img src="../img/ai-integration/yoda.jpeg"  style="float:left;margin-right:20px;margin-left: 0px;" alt="Viam Rover Rosey." title="Viam Rover Rosey." width="300" />
 
-If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read an OpenAI-generated response about what it sees. Also, a "mood" will be selected at random, and the response will be generated with that mood.
+If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read a ChatGPT-generated response about what it sees. Also, a "mood" will be selected at random, and the response will be generated with that mood.
 
 The GPT-3 model is quite good at responding in the style of known personas, so you can also say *"Hey Rosey, act like Yoda"*, and from that point on, responses will be generated in the style of Yoda! The tutorial code has a number of characters you can try, and to pick one randomly, you can say *"Rosey, act random"*.
 You can even guess who Rosey is acting like by saying *"Rosey, I think you are Scooby Doo!"*
