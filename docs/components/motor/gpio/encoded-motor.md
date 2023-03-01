@@ -19,7 +19,8 @@ To configure an encoded motor, you must configure the encoder [per the encoder d
 
 Here’s an example configuration:
 
-{{< tabs name="encoder-config">}}
+<a id="encoder-config">
+{{< tabs >}}
 {{% tab name="Config Builder" %}}
 
 <img src="../../../img/motor/encoded-config-ui.png" alt="Screenshot of an encoded motor config in the Viam app UI." style="max-width:800px;width:100%" >
@@ -142,6 +143,6 @@ Name | Type | Description
 ## Wiring Example
 
 Here's an example of an encoded DC motor wired with [the MAX14870 Single Brushed DC Motor Driver Carrier](https://www.pololu.com/product/2961).
-This wiring example corresponds to the example config above.
+This wiring example corresponds to the [example config above](#encoder-config).
 
 ![motor-encoded-dc-wiring](../../../img/motor/motor-encoded-dc-wiring.png)
