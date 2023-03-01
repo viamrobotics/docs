@@ -142,6 +142,6 @@ Name | Type | Description
 ## Wiring Example
 
 Here's an example of an encoded DC motor wired with [the MAX14870 Single Brushed DC Motor Driver Carrier](https://www.pololu.com/product/2961).
-This wiring example corresponds to the [example config above](#encoder-config).
+This wiring example corresponds to the example config above.
 
 ![motor-encoded-dc-wiring](../../../img/motor/motor-encoded-dc-wiring.png)
