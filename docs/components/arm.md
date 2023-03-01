@@ -162,8 +162,7 @@ Supported arm models include:
 
 {{% alert title="Note" color="note" %}}
 
-Make sure you have set up your robot and connected it to the Viam app.
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
 
 {{% /alert %}}
 
