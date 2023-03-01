@@ -68,7 +68,7 @@ If this command fails, try using `wget http://packages.viam.com/apps/viam-server
 
 - NVIDIA Step 1 - Run through Ubuntu Setup (oem config)
   - Headless Mode Tips:
-    - Once you reach "On your computer, use a serial terminal application to connect via host serial port to the developer kit", proceed to "Complete oem-config via USB from your computer".
+    - Once you reach **step e** which instructs you to connect through the host host serial port, the instructions to connect are immediately under **step e**.
       Follow those steps according to the type of computer you're using.
     - After running `sudo screen`, note that the `Password` input prompt immediately following refers to your computer's system password.
   - "Jetson Initial configuration" (oem-config) Command Prompt Tips:
