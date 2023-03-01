@@ -416,13 +416,25 @@ END MARKETING CSS
 .expand-label {
   font-family: Space Grotesk, sans-serif;
   font-weight:bold;
-  font-size: 12px !important;
-  background-color:#e7ecff;
-
+  background-color: whitesmoke;
+  border: black solid 1px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  i {
+    font-size: inherit !important;
+  }
 }
-.expand-content {
-  border:cornflowerblue solid 1px;
 
+.expand-content {
+  border-top: black solid 0px;
+  border-left: black solid 1px;
+  border-right: black solid 1px;
+  border-bottom: black solid 1px;
+  background: whitesmoke;
+  padding: 1rem;
+}
+
+.expand {
+  padding-bottom: 1rem;
 }
 
 /* END CSS FOR EXPANDER */
