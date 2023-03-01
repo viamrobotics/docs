@@ -8,6 +8,92 @@ description:
 # SME: Naomi
 ---
 
+## 28 February 2023
+
+{{< tabs >}}
+{{% tab name="Versions" %}}
+
+## Release Versions
+
+* rdk - **v0.2.18**
+* api - **v0.1.83**
+* slam - **v0.1.22**
+* viam-python-sdk - **v0.2.10**
+* goutils - **v0.1.13**
+* rust-utils - **v0.0.10**
+
+(**Bold=updated version**)
+
+{{% /tab %}}
+
+{{% tab name="New Features" %}}
+
+## New Features
+
+### Reuse rovers in TRY VIAM
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                Users that have already created a robot using TRY VIAM can now reuse their rovers.
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+### Dynamic Code Samples Tab
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                The code sample included for each SDK now dynamically updates as users edit their config.
+                We instantiate each resource as it is added to the config and provide an example of how to call a simple `Get` method.
+                <img src="../img/dynamic-code-sample.gif" alt="An example of how a python code sample"> </img>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+{{% /tab %}}
+
+{{% tab name="Improvements" %}}
+
+## Improvements
+
+### Base control card
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                We added automated end to end tests in our UI.
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+{{% /tab %}}
+{{% tab name="Issue Resolutions" %}}
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>
+                Link Error
+            </strong></td>
+            <td>Updated a link that points to our <a href="https://docs.viam.com/appendix/glossary/#remote_anchor">documentation website</a> following changes to our docs page.</td>
+        </tr>
+    <tbody>
+</table>
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## 31 January 2023
 
 {{< tabs >}}
