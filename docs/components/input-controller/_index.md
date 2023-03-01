@@ -276,7 +276,7 @@ async def main():
     await handleController(myController)
 
     # Wait to disconnect from the robot.
-    await myController.close()
+    await myRobotWithController.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
@@ -682,14 +682,14 @@ The input controller component supports the following methods:
 | [Controls](#controls) | [Controls][go_input]  |  [get_controls][python_get_controls] | Get a list of input `Controls` that this Controller provides. |
 | [Events](#events) | [Events][go_input] | [get_events][python_get_events] | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). |
 | [RegisterControlCallback](#registercontrolcallback) | [RegisterControlCallback][go_input] | [register_control_callback][python_register_control_callback] | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). |
-| [TriggerEvent](#triggerevent) | [TriggerEvent][go_triggerable] | [trigger_event][python_trigger_event] | Directly send an [Event](#event-object) to your robot. |
+<!-- | [TriggerEvent](#triggerevent) | [TriggerEvent][go_triggerable] | [trigger_event][python_trigger_event] | Directly send an [Event](#event-object) to your robot. | -->
 
 [go_input]: https://pkg.go.dev/go.viam.com/rdk/components/input#Controller
-[go_triggerable]: https://pkg.go.dev/go.viam.com/rdk/components/input#Triggerable
+<!-- [go_triggerable]: https://pkg.go.dev/go.viam.com/rdk/components/input#Triggerable -->
 [python_get_controls]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.get_controls
 [python_get_events]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.get_events
 [python_register_control_callback]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback
-[python_trigger_event]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.trigger_event
+<!-- [python_trigger_event]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.trigger_event -->
 
 ### RegisterControlCallback
 
