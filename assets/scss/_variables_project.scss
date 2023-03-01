@@ -164,29 +164,5 @@ file {
   }
 }
 
-.td-content .expand-label {
-  font-size: inherit !important;
-  background: whitesmoke;
-  border: black solid 1px;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  i {
-    font-size: inherit !important;
-  }
-}
-
-.td-content .expand-content {
-  border-top: black solid 0px;
-  border-left: black solid 1px;
-  border-right: black solid 1px;
-  border-bottom: black solid 1px;
-  background: whitesmoke;
-  padding: 1rem;
-}
-
-.td-content > .expand {
-  width: 80%;
-  padding-bottom: 1rem;
-}
-
 /* END Fix expander content */
 
