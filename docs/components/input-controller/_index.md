@@ -67,23 +67,23 @@ cmd = {}
 async def connect_modal():
     creds = Credentials(
         type='robot-location-secret',
-        payload="xyzabclocationexample"), # Robot location secret value from app.viam.com Code Sample tab.
+        payload="xyzabclocationexample"), # ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('robot123example.locationxyzexample.viam.com' # Robot remote address from app.viam.com Code Sample tab.
+    return await RobotClient.at_address('robot123example.locationxyzexample.viam.com' # ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
     , opts)
 
 async def connect_controller():
     creds = Credentials(
         type='robot-location-secret',
-        payload="xyzabclocationexample"), # Robot location secret value from app.viam.com Code Sample tab.
+        payload="xyzabclocationexample"), # ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address("robot123example.locationxyzexample.viam.com", # Robot remote address from app.viam.com Code Sample tab.
+    return await RobotClient.at_address("robot123example.locationxyzexample.viam.com", # ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
     , opts)
 
 def handle_turning(event):
@@ -234,12 +234,12 @@ from viam.robot.client import RobotClient
 async def connect_controller():
     creds = Credentials(
         type='robot-location-secret',
-        payload= "xyzabclocationexample"), # Robot location secret value from app.viam.com Code Sample tab.
+        payload= "xyzabclocationexample"), # ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address("robot123example.locationxyzexample.viam.com", # Robot remote address from app.viam.com Code Sample tab.
+    return await RobotClient.at_address("robot123example.locationxyzexample.viam.com", # ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
     opts)
 
 # Define a function to handle the controller.
@@ -289,8 +289,11 @@ if __name__ == '__main__':
 ```go {class="line-numbers linkable-line-numbers"}
 import (
     "context"
+
+    "github.com/edaniels/golog"
     "github.com/pkg/errors"
     "go.viam.com/rdk/components/input"
+    "go.viam.com/utils"
 )
 
 // Define a function to handle the controller. 
@@ -303,18 +306,20 @@ func handleController(controller input.Controller) {
 }
 
 func main() {
+    utils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("client"))
+}
 
-    // Create an instance of a logger.
-    logger := golog.NewDevelopmentLogger("client")
+
+func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
 
     // Connect to your robot.
     myRobotWithController, err := client.New(
         context.Background(),
-        "xyzabclocationexample", // Robot location secret value from app.viam.com Code Sample tab.
+        "xyzabclocationexample", // ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
         logger,
         client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
             Type:    utils.CredentialsTypeRobotLocationSecret,
-            Payload: "robot123example.locationxyzexample.viam.com" // Robot remote address from app.viam.com Code Sample tab.
+            Payload: "robot123example.locationxyzexample.viam.com" // ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
         })),
     )
 
@@ -345,8 +350,19 @@ func main() {
     // Run the handleController function.
     err := HandleController(myController)
 
-    // Delay closing your connection to your robot until main() exits.
-    defer robot.Close(context.Background())
+    // Delay closing your connection to your robot.
+    err = myRobotWithController.Start(ctx)
+    defer myRobotWithController.Close(ctx)
+
+    // Watch for errors.
+    if err != nil {
+        return err
+    }
+
+    // Wait to exit mainWithArgs() until Context is Done.
+    <-ctx.Done()
+    
+    return nil
 
 }
 ```
@@ -806,22 +822,24 @@ func handleController(controller input.Controller) {
 }
 
 func main() {
+    utils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("client"))
+}
 
-    // Create an instance of a logger.
-    logger := golog.NewDevelopmentLogger("client")
+
+func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
 
     // Connect to your robot.
     myRobotWithController, err := client.New(
         context.Background(),
-        "robot123example.locationxyzexample.viam.com", // Robot remote address from app.viam.com Code Sample tab.
+        "xyzabclocationexample", // ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
         logger,
         client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
             Type:    utils.CredentialsTypeRobotLocationSecret,
-            Payload: "xyzabclocationexample" // Robot location secret value from app.viam.com Code Sample tab
+            Payload: "robot123example.locationxyzexample.viam.com" // ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
         })),
     )
 
-    // Get the controller from the robot. 
+    // Get the controller from the robot.
     myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
     // Log any errors that occur and exit if an error is found.
@@ -846,10 +864,21 @@ func main() {
     }
 
     // Run the handleController function.
-    err := handleController(myController)
+    err := HandleController(myController)
 
-    // Delay closing your connection to your robot until main() exits.
-    defer robot.Close(context.Background())
+    // Delay closing your connection to your robot.
+    err = myRobotWithController.Start(ctx)
+    defer myRobotWithController.Close(ctx)
+
+    // Watch for errors.
+    if err != nil {
+        return err
+    }
+
+    // Wait to exit mainWithArgs() until Context is Done.
+    <-ctx.Done()
+    
+    return nil
 
 }
 ```
