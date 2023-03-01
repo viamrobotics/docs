@@ -50,11 +50,14 @@ Refer to the [Configuration Examples](#configuration-examples) section for more 
 
 Many components are non-trivial kinematic chains and require an additional set of intermediate reference frames.
 For example, a traditional arm may have a reference frame whose origin is at its base, but it also has an alternating sequence of links and joints whose frames of reference matter when attempting to move the arm to a certain pose.
-Each driver of such a component in the Viam system requires a JSON file named **Model JSON** that details the attachment of reference frames. However, that is a requirement for Viam's drivers. If you implement your own drivers, the decision whether to require Model JSON files will depend on your code.
-These reference frames are ingested by the Frame System *but not exposed via gRPC call* (meaning they are unavailable for inspection by any of the SDKs)
+Each driver of such a component in the Viam system requires a JSON file named **Model JSON** that details the attachment of reference frames.
+However, that is a requirement for Viam's drivers.
+If you implement your own drivers, the decision whether to require Model JSON files will depend on your code.
+These reference frames are ingested by the Frame System *but not exposed through gRPC call* (meaning they are unavailable for inspection by any of the SDKs).
 
 {{% alert title="Note" color="note" %}}
-If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged. Otherwise, please refer to the [**Model JSON** section](#model-json).
+If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged.
+Otherwise, please refer to the [**Model JSON** section](#model-json).
 {{% /alert %}}
 
 ## How the Robot Builds the Frame System
@@ -68,8 +71,10 @@ Viam regenerates this tree in the process of [reconfiguration](/manage/fleet-man
 
 Viam builds this tree by looking at the frame portion of each component in the robot's configuration (including those defined on any remotes) and creating two reference frames.
 
-* One reference frame is given the name of the component and represents the actuator or final link in the component's kinematic chain (e.g., the end of an arm, the platform of a gantry, etc.).
-* Viam creates an additional static reference frame whose translation and orientation relative to its parent is provided by the user in configuration. Viam names this reference frame with the component name and the suffix *"_origin"*. For example, "right-arm_<em>origin</em>".
+* One reference frame is given the name of the component and represents the actuator or final link in the component's kinematic chain (for example, the end of an arm, the platform of a gantry, and so on).
+* Viam creates an additional static reference frame whose translation and orientation relative to its parent is provided by the user in configuration.
+  Viam names this reference frame with the component name and the suffix *"_origin"*.
+  For example, "right-arm_<em>origin</em>".
 
 As an example, let's consider an arm on a gantry.
 
@@ -131,7 +136,8 @@ We supply this frame information when configuring the arm component, making sure
 Here, the gantry origin is coincident with the world origin (0,0,0).
 Note: this is the default translation, it is optional in the JSON configuration (we are including it for illustrative purposes).
 
-After configuring the gantry frame, we can configure the arm.  The base of the arm mounted to the gantry 100mm above that origin, so we specify the arm's parent as the name of our gantry and offset Z by 100.
+After configuring the gantry frame, we can configure the arm.
+The base of the arm mounted to the gantry 100mm above that origin, so we specify the arm's parent as the name of our gantry and offset Z by 100.
 As the gantry extends, the arm will be moved accordingly.
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -210,21 +216,23 @@ This concept exists to compensate for the fact that the Frame System maintained 
 
 An arm on a gantry, for example, can be managed by the Frame System directly because the base of the arm is fixed with respect to the gantry's platform, and the gantry's zero position is fixed with respect to the world reference frame.
 
-On the other hand, an arm on a rover that is unaware of its own position cannot be configured into the frame system because the rover can move freely with respect to the world frame. A knowledgeable user could code a mobile base with an organic SLAM system able to report its own position without the need for supplementary transforms.
+On the other hand, an arm on a rover that is unaware of its own position cannot be configured into the frame system because the rover can move freely with respect to the world frame.
+A knowledgeable user could code a mobile base with an organic SLAM system able to report its own position without the need for supplementary transforms.
 
-So, how do we deal with such components?
-One solution would be to introduce a motion tracker or a camera in combination with our [vision service](/services/vision/) as a third component.
+How do we deal with such components?
+One solution would be to introduce a motion tracker or a camera in combination with our [Vision Service](/services/vision/) as a third component.
 This component is fixed in space (making it configurable in the Frame System) and can supply the location and orientation of the rover in its own reference frame.
 This *supplemental transform* is the missing link to be able to transform a pose in the arm's reference frame to the world reference frame (or others that may exist in the frame system).
 
 Both TransformPose and FrameSystemConfig optionally take in these supplemental transforms.
 
-Functions of some services and components take in a WorldState parameter (e.g., ArmMoveToPosition).
+Functions of some services and components take in a WorldState parameter (like `ArmMoveToPosition`).
 This data structure includes an entry for supplying supplemental transforms for use by internal calls to the Frame System.
 
 ## Reference
 
-Viam uses model files written in JSON, similar to the URDF files used in ROS. JSON files are better suited for use in Python environments.
+Viam uses model files written in JSON, similar to the URDF files used in ROS.
+JSON files are better suited for use in Python environments.
 
 ### Model JSON
 
@@ -236,7 +244,8 @@ When writing a driver for a particular piece of hardware that implements one of 
 There is currently (15 Sept 2022) no user interface in the Viam app (<a href="https://app.viam.com">app.viam.com</a>) by which to create these files.
 {{% /alert %}}
 
-Furthermore, only our Go implementation supports creation of custom **Model JSON** files (15 Sept 2022) as a way if ingesting kinematic parameters is provided in our Go repository. Native support for specifying kinematic parameters of arms is not yet supported in the Python SDK."
+Furthermore, only our Go implementation supports creation of custom **Model JSON** files (15 Sept 2022) as a way if ingesting kinematic parameters is provided in our Go repository.
+Native support for specifying kinematic parameters of arms is not yet supported in the Python SDK."
 
 This means that a user will fork our [repository](https://github.com/viamrobotics/rdk), create one of these files in that fork, and then use it to build the package for running the server.
 
@@ -247,7 +256,9 @@ We currently support two methods of supplying reference frame parameters for a k
 
 Of the two methods, Viam prefers Spacial Vector Algebra over Denavit-Hartenberg.
 
-Viam wants roboticists to be able to specify link frames arbitrarily, which DH parameters are unable to guarantee. We also want roboticists to make their own (messy) robots; accurate identification of DH parameters for a mass-produced robot can be exceedingly difficult. Furthermore, incorrect SVA parameters are much easier to troubleshoot than incorrect DH parameters.
+Viam wants roboticists to be able to specify link frames arbitrarily, which DH parameters are unable to guarantee.
+We also want roboticists to make their own (messy) robots; accurate identification of DH parameters for a mass-produced robot can be exceedingly difficult.
+Furthermore, incorrect SVA parameters are much easier to troubleshoot than incorrect DH parameters.
 
 Below are JSON examples for each parameter type used by our [Universal Robots](https://www.universal-robots.com/) arms driver:
 

@@ -12,7 +12,7 @@ Viam is a complete software platform for robots.
 
 ### Platform Quickstart: Using the App
 
-The simplest way to create your first robot on the Viam platform is through our user interface for connecting with and managing robots, the [Viam app](app.viam.com).
+The simplest way to create your first robot on the Viam platform is through our user interface for connecting with and managing robots, the [Viam app](https://app.viam.com/).
 
 Create an account, and create a new robot on there, even if you don't know what you want your robot to look like yet.
 You'll be redirected to a control center for this new robot.

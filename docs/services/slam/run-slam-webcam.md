@@ -10,7 +10,7 @@ tags: ["slam", "camera", "services"]
 ---
 
 {{% alert title="Note" color="note" %}}
-The SLAM service is an experimental feature.
+The SLAM Service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
@@ -59,28 +59,28 @@ Install ORB-SLAM3 with one of these commands:
 
 ## Run ORB-SLAM3 in Live Mode with a Webcam
 
-Run ORB-SLAM3 as a live SLAM service with a webcam.
+Run ORB-SLAM3 as a live SLAM Service with a webcam.
 
 ### Configuration with Viam
 
 Configure your robot to run ORB-SLAM3 with a webcam in two steps:
 
 1. Add your webcam and calibrate it.
-2. Add ORB-SLAM3 as a SLAM service in live mode.
+2. Add ORB-SLAM3 as a SLAM Service in live mode.
 
 #### Step 1: Add and Calibrate your Webcam
 
 Follow these tutorials to connect and calibrate your webcam as a modular component of your robot:
 
-* [Connect and configure a webcam](/components/camera/configure-a-camera/#connect-and-configure-a-webcam)
-* [Calibrate a camera](/components/camera/camera-calibration)
+* [Connect and configure a webcam](/components/camera/webcam)
+* [Calibrate a camera](/components/camera/calibrate)
 
 #### Step 2: Add ORB-SLAM3 as a SLAM Service in Live Mode
 
 * Go to your robot's page on the [Viam app](https://app.viam.com/).
 * On the **CONFIG** tab, click the **SERVICES** sub tab.
 * Create a service with type `slam`, a name (example: `run-slam`) and a model (`orbslamv3`).
-* Paste the following into the **Attributes** field of the SLAM service:
+* Paste the following into the **Attributes** field of the SLAM Service:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -140,7 +140,8 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 
 * Now, change the `"data_dir":` attribute on line 8. Edit `"/home/YOUR_USERNAME/data"` to match the path to your existing dataset on your machine, followed by `/data`.
   * This tells the service to create a directory named `data` within your home directory, and to save all data and maps to that location.
-  * To find your machine's home directory path, run the `pwd` command in your terminal. Make sure to do this while your terminal is at the home directory level (denoted by `~`).
+  * To find your machine's home directory path, run the `pwd` command in your terminal.
+    Make sure to do this while your terminal is at the home directory level (denoted by `~`).
 
 {{% alert title="Note" color="note" %}}
 If you're using a Raspberry Pi as your machine, you must `ssh` into your Pi to complete this step.
@@ -235,7 +236,7 @@ Run ORB-SLAM3 in offline mode using one of your previously saved datasets or Via
 Configure your robot to run ORB-SLAM3 in offline mode in two steps:
 
 1. Find an existing dataset to run ORB-SLAM3 with.
-2. Add ORB-SLAM3 as a SLAM service in offline mode.
+2. Add ORB-SLAM3 as a SLAM Service in offline mode.
 
 #### Step 1: Find a Dataset for ORB-SLAM3 to Use
 
@@ -302,7 +303,7 @@ This tells the service to use only data found within the `data_dir` directory sp
 
 * Now, change the `"data_dir":` attribute on line 8. Edit `"/home/YOUR_USERNAME/data"` to match the path to your existing dataset on your machine.
   * This tells the service to read from the directory located at this path and to save all data and maps to that location.
-  * To find your machine's home directory path, run the `pwd` command in your terminal. Make sure to do this while your terminal is at the home directory level (denoted by `~`).
+  * To find the home directory path for the logged-in user, run `echo $HOME` in your terminal.
 
 * Save the config.
 * Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-offline-slam`).

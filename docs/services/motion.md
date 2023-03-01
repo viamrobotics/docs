@@ -3,7 +3,7 @@ title: "Motion Service"
 linkTitle: "Motion"
 weight: 40
 type: "docs"
-description: "Explanation of the motion service, its configuration, and its functionality."
+description: "Explanation of the Motion Service, its configuration, and its functionality."
 tags: ["motion", "motion planning", "services"]
 # SME: Peter Lo Verso
 ---
@@ -21,7 +21,7 @@ Viam’s Motion Service is enabled in RDK by default, and no extra configuration
 ### Move
 
 The "Move" endpoint is the primary way to move multiple components, or to move any object to any other location.
-Given a destination pose and a component to move to that destination, the motion service will construct a full kinematic chain from goal to destination including all movable components in between, and will solve that chain to place the goal at the destination while meeting specified constraints.
+Given a destination pose and a component to move to that destination, the Motion Service will construct a full kinematic chain from goal to destination including all movable components in between, and will solve that chain to place the goal at the destination while meeting specified constraints.
 It will then execute that movement to move the actual robot, and return whether or not this process succeeded.
 The volumes associated with all configured robot parts (local and remote) will be taken into account for each request to ensure that collisions do not occur.
 
@@ -38,7 +38,7 @@ Note that this is solved such that the distal end of the component arrives at th
 For example, if a robotic arm is specified, the piece that will arrive at the destination is the end effector mount point, not the base of the arm where it is mounted.
 
 **`destination`**: A `PoseInFrame` describing where the `component_name` should end up.
-This can be any pose, from the perspective of any component whose location is known in the robot’s FrameSystem (i.e., it has a `frame` attribute in the Viam config).
+This can be any pose, from the perspective of any component whose location is configured as the `frame` attribute in the Viam config and is therefore known in the robot’s FrameSystem.
 Note that the Pose specified is relative to the distal end of the frame being specified.
 This means that if the `destination` and `component_name` are the same frame.
 For example an arm (or a gripper attached to one), then a pose of {X: 10, Y: 0, Z: 0} will move that arm’s end effector or gripper by 10 mm in the local X direction.
@@ -54,7 +54,7 @@ There are three important things to know about obstacles:
     If a motion is begun and an obstacle specified such that it is in a location where it intersects with a component in the kinematic chain, collisions between that obstacle and that particular piece of the kinematic chain will not be checked.
   * Obstacles whose parents (or grand… parent) may move as part of a solve request, will be assumed to move along with their parent while solving.
     This will ensure that obstacles that are temporarily attached to moving components do not cause collisions during the movement.
-  * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (i.e., an arm frame will be solved for the pose of its end effector), geometries are interpreted as being "part of" their frame, rather than "at the end of" the frame.
+  * Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (for example, an arm frame will be solved for the pose of its end effector), geometries are interpreted as being "part of" their frame, rather than "at the end of" the frame.
     Thus, their poses are relative to the _origin_ of the specified frame.
     A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
 * **Transforms**: These are a list of _PoseInFrame_ messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
@@ -124,10 +124,10 @@ motion.move(component_name=armRes,destination=PoseInFrame(reference_frame="myArm
 
 ### MoveSingleComponent
 
-The `MoveSingleComponent` endpoint, while it looks very similar to the "Move" endpoint above, may result in radically different behavior when called.
+The `MoveSingleComponent` endpoint, while it looks similar to the "Move" endpoint above, may result in radically different behavior when called.
 
 _`MoveSingleComponent` is meant to allow the user to bypass Viam’s internal motion planning entirely, if desired, for a single component._ If the component in question supports the `MoveToPosition` method taking a Pose as a parameter, this call will use the frame system to translate the given destination into the frame of the specified component, and will then call `MoveToPosition` on that one component to move it to the desired location.
-As of 18 October 2022, arms are the only component supported by this feature.
+As of October 18, 2022, arms are the only component supported by this feature.
 
 As the name of the method suggests, only the single component specified by `component_name` will move.
 
@@ -140,7 +140,7 @@ If this method is called with an arm which uses Viam’s motion planning on the 
 
 **`component_name`**: This is the name of the piece of the robot to which `MoveToPosition` should be called with the transformed destination.
 This component must support the `MoveToPosition`API call with a Pose.
-As of 10 October 2022, Arm is the only component so supported.
+As of October 10, 2022, Arm is the only component so supported.
 
 **`destination`**: A `PoseInFrame` describing where the `component_name` should end up.
 This can be any pose, from the perspective of any component whose location is known in the robot’s `FrameSystem`.
@@ -178,7 +178,7 @@ This new frame system will build off the robot's frame system and will incorpora
 If the result of adding the `Transforms` will result in a disconnected frame system an error will be thrown.
 
 **`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they wish to pass to their own motion planning implementation.
-This parameter is not used for anything in the built-in motion service.
+This parameter is not used for anything in the built-in Motion Service.
 
 #### Example
 
@@ -220,8 +220,8 @@ gripperPoseInObjectFrame = await motion.get_pose(
 
 ## Motion Profile Constraints
 
-Currently (18 October 2022), there is no built in, top level way to specify different constraints.
-However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to "motion_profile" via the `extra` parameter, along with individual algorithm variables.
+Currently (October 18, 2022), there is no built in, top level way to specify different constraints.
+However, several have been pre-programmed and are accessible when using the Go RDK or the Python SDK by passing a string naming the constraint to "motion_profile" inside the `extra` parameter, along with individual algorithm variables.
 This is not available in the Viam app.
 Available constraints all control the topological movement of the moving component along its path.
 
@@ -230,7 +230,7 @@ For a usage example, see [sample code above](#examples).
 The available constraints--linear, psuedolinear, orientation, and free--are covered in the following sub-sections.
 
 {{% alert title="Note" %}}
-The motion profile constraints passed via the `extra` parameter are experimental features.
+The motion profile constraints passed using the `extra` parameter are experimental features.
 Stability is not guaranteed.
 {{% /alert %}}
 

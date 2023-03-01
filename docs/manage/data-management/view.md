@@ -1,17 +1,34 @@
 ---
-title: "View Data in Viam's Data Platform"
+title: "View and Filter Data"
 linkTitle: "View Data"
-weight: 30
+weight: 38
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 # SME: Aaron Casas
 ---
 
-After the Data Management Service synchronizes the uploaded data in Viam, you can view it within the Viam app at [https://app.viam.com/data/view](https://app.viam.com/data/view).
+After the Data Management Service synchronizes the uploaded data in Viam, you can view it on the [**DATA** page in the Viam cloud](https://app.viam.com/data/view).
 
-Image (e.g, jpeg and png) data is viewable in the **IMAGES** tab, files and any other binary (e.g, point cloud data) is viewable in the **FILES** tab, and tabular sensor (e.g, gantry position) counts are viewable the **SENSOR DATA** tab.
+![Images, files, and sensors tabs](../img/data-management/tabs.png)
 
-Clicking on a single image or file shows a **Details** panel on the right with capture metadata.
+The **DATA** page shows:
 
-You can filter on data in the left **FILTERING** panel.
-For example, if you specify "kitchen1" for Location, "camera" for Component Type, and click **SEARCH**, you will see all camera data that has been captured on any robots that belong to your "kitchen1" location.
+- **IMAGES**: PNG or JPEG files
+- **FILES**: binary data like point cloud data
+- **SENSOR DATA**: tabular sensor counts (like gantry position)
+
+If you click on an image or a file, a **Details** panel appears on the right with capture metadata.
+
+![Images, files, and sensors tabs](../img/data-management/data_view.png)
+
+## Filter Data
+
+On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **FILTERING** panel.
+
+For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on robots that belong to your `Rover Rental` location.
+
+## Next Steps
+
+To export your captured data from the cloud, see [Export Data](../configure-cloud-sync).
+
+For a comprehensive tutorial on data management, see [Intro to Data Management](../data-management-tutorial).

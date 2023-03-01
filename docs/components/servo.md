@@ -101,9 +101,10 @@ The `gpio` model has the following attributes, which are optional to define in y
 | `max_angle_deg`         | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation. |
 | `starting_position_deg` | float64 | Starting position of the servo in degrees. |
 | `frequency_hz`          | uint    | The rate of pulses sent to the servo. The servo driver will attempt to change the GPIO pin's frequency (in Hz). The recommended PWM frequency for servos is typically in the range of 40-200 Hz, with most servos using 50 Hz (see your servo's data sheet). Maximum supported frequency by this driver is 450Hz |
-| `pwm_resolution`        | uint    | Resolution of the PWM driver (e.g. number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution. |
-| `min_width_us`          | uint    | Override the safe minimum pulse width in microseconds. This affects PWM calculation. |
+| `pwm_resolution`        | uint    | Resolution of the PWM driver (for example, the number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution. |
+| `min_width_us`          | uint    | Override the safe minimum pulse width in microseconds. This affects PWM calculation.                                                                                    |
 | `max_width_us`          | uint    | Override the safe maximum pulse width in microseconds. This affects PWM calculation. |
+| `max_rotation`           | uint    | Default: 180. Specifies the maximum angle of rotation based on the hardware. Only for the `pi` model. |
 
 ## API
 
@@ -163,7 +164,8 @@ if __name__ == '__main__':
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
- "go.viam.com/rdk/components/servo"
+  "context"
+  "go.viam.com/rdk/components/servo"
 )
 
 func main() {

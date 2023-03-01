@@ -58,7 +58,7 @@ All together, your kit looks like this:
 
 The motors come with integrated encoders.
 For information on encoders, see [Encoder Component](/components/encoder/).
-For information on encoded DC motors, see [Motor Component](/components/motor/#dc-motor-with-encoder).
+For more information on encoded DC motors, see [Encoded Motors](/components/motor/gpio/encoded-motor/).
 
 The kit also includes stiffer suspension springs that you can substitute for the ones on the rover.
 Generally, a stiff suspension helps with precise steering control.
@@ -235,7 +235,7 @@ Due to the aluminum chassis and its expandable mounting features, you can extend
 With it, you can customize your rover by mounting additional sensors, lidar, robot arms, or other components.
 The following are just a few ideas, but you can expand or modify the rover kit with any components you want:
 
-- For GPS navigation, we support NMEA (via serial and I<sup>2</sup>C) and RTK.
+- For GPS navigation, we support NMEA (using serial and I<sup>2</sup>C) and RTK.
   Make and model don't make a difference as long as you use these protocols.
   See [Movement Sensor Component](/components/movement-sensor) for more information.
 - For [LiDAR laser range scanning](/services/slam/run-slam-cartographer), we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).

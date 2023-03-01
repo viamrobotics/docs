@@ -1,0 +1,27 @@
+extends: substitution
+message: "Consider if '%s' makes sense instead of '%s'."
+link: 'https://docs.google.com/document/d/1-SAcVPWcZHM1Na88d0_k5HVmc3tRtRHgmrXzKD3uF2I/edit'
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  viam app: Viam app
+  Viam App: Viam app
+  Viam platform: Viam platform
+  Scuttle robot: SCUTTLE Robot
+  Scuttle Robot: SCUTTLE Robot
+  Viam-server: viam-server
+  Viam server: viam-server
+  Viam-Server: viam-server
+  Config Tab: CONFIG tab
+  Config tab: CONFIG tab
+  Vision service: Vision Service
+  vision service: Vision Service
+  Motion service: Motion Service
+  motion service: Motion Service
+  slam service: SLAM Service
+  Slam service: SLAM Service
+  SLAM service: SLAM Service
+  Data Management service: Data Management Service
+  Data Management service: Data Management Service

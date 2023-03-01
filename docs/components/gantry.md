@@ -24,10 +24,10 @@ Each gantry can only move in one axis within the limits of the length of the lin
 
 Most robots with a gantry need at least the following hardware:
 
-- A [board component](/components/board/) or controller that can detect changes in voltage on GPIO pins.
-- A [motor](/components/motor/) that can move linear rails.
-  - Encoded motor: See [DC motor with encoder](/components/motor/#dc-motor-with-encoder) and [encoder component](/components/encoder/).
-  - Stepper motor: See [Stepper motor](/components/motor/#stepper-motor).
+- A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
+- A [motor](/components/motor/) that can move linear rails
+  - Encoded motor: See [DC motor with encoder](/components/motor/gpio/encoded-motor/) and [encoder component](/components/encoder/).
+  - Stepper motor: See [Stepper motor](/components/motor/gpiostepper/).
   Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
 
@@ -43,7 +43,7 @@ This is how you configure a one-axis gantry:
 {{< tabs name="Example Gantry Config One-Axis" >}}
 {{< tab name="Config Builder" >}}
 
-<img src="../img/gantry/gantry-config-ui-oneaxis.png" alt="Example of what configuration for a one-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
+<img src="../img/gantry/gantry-config-ui-oneaxis.png" alt="Example of what configuration for a one-axis gantry component looks like in the Viam app config builder." style="width:100%"/>
 
 {{< /tab >}}
 {{% tab name="Raw JSON" %}}
@@ -100,7 +100,7 @@ This is how you configure a multi-axis gantry:
 {{< tabs name="Example Gantry Config Multi-Axis" >}}
 {{< tab name="Config Builder" >}}
 
-<img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="Example of what configuration for a multi-axis gantry component looks like in the Viam App config builder." style="width:100%"/>
+<img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="Example of what configuration for a multi-axis gantry component looks like in the Viam app config builder." style="width:100%"/>
 
 {{< /tab >}}
 {{% tab name="Raw JSON" %}}
@@ -341,8 +341,9 @@ if __name__ == '__main__':
 
 ```go
 import (
- "go.viam.com/rdk/components/gantry"
- "go.viam.com/rdk/referenceframe"
+  "context"
+  "go.viam.com/rdk/components/gantry"
+  "go.viam.com/rdk/referenceframe"
 )
 
 func main() {
@@ -353,11 +354,11 @@ func main() {
   // Connect to your robot.
   robot, err := client.New(
       context.Background(),
-      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE SECURITY TAB OF THE VIAM APP]",
+      "ADD YOUR ROBOT ADDRESS HERE. You can find this on the Code Sample tab of app.viam.com.",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE LOCATION'S PAGE IN THE VIAM APP]",
+          Payload: "ADD YOUR LOCATION SECRET HERE. You can find this on the Code Sample tab of app.viam.com",
       })),
   )
 

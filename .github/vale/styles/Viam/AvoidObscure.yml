@@ -1,0 +1,17 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: 'https://docs.rackspace.com/docs/style-guide/terminology/general-term-guidelines/avoid-obscure-words'
+level: error
+ignorecase: true
+action:
+  name: replace
+swap:
+  eg: for example, such as
+  e\.g: for example, such as
+  etc\.: and so on
+  ie: that is
+  i\.e: that is
+  as per: according to, by way of
+  via: through, by, with
+  '(?:vs\.)[\s]': versus
+  ergo: therefore

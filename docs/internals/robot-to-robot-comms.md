@@ -6,7 +6,7 @@ type: "docs"
 description: "Explanation of how a robot and its parts interact at the communication layer."
 ---
 When building a robot application in the Viam app [https://app.viam.com](https://app.viam.com), a user typically begins by configuring their robot which can consist of one or more parts.
-Next they will test that it is wired up properly via the Viam app's Control page.
+Next they will test that it is wired up properly using the Viam app's Control page.
 Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
 This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the robot.
 
@@ -37,7 +37,7 @@ Once connected, it will take the following series of actions:
 
 <li>Find the largest object by volume.</li>
 
-<li>Take the object's center pose and tell the motion service to move the arm to that point.</li>
+<li>Take the object's center pose and tell the Motion Service to move the arm to that point.</li>
 
 <li>Go back to 1.</li>
 </OL>
@@ -56,7 +56,7 @@ Let's breakdown how these steps are executed.
 <li>The Camera will return the PointCloud data to RDK Part</li>
 
 <li>RDK Part 1 will use a point cloud segmentation algorithm to segment geometries in the PointCloud.</li>
-{{% alert title="Note" color="note" %}}  
+{{% alert title="Note" color="note" %}}
 The points returned are respective to the reference frame of the camera.
 This will become important in a moment.
 {{% /alert %}}
@@ -68,19 +68,19 @@ This will become important in a moment.
 <li>The application will iterate over the geometries of the segmented point clouds returned to it and find the object with the greatest volume and record its center pose.</li>
 </ol>
 
-<li>Take the object's center pose and tell the motion service to move the arm to that point:</li>
+<li>Take the object's center pose and tell the Motion Service to move the arm to that point:</li>
 
 ![motion-service-move-flow](../img/robot-to-robot-comms/motion-service-move-flow.png)
 
 <ol type="a">
-<li>The SDK application will send a Move request for the arm to the Motion service on RDK Part 1 with the destination set to the center point determined by the application.</li>
+<li>The SDK application will send a Move request for the arm to the Motion Service on RDK Part 1 with the destination set to the center point determined by the application.</li>
 
-<li>RDK Part 1's Motion service will break down the Move request and perform the necessary frame transforms before sending the requests along to the relevant components.
+<li>RDK Part 1's Motion Service will break down the Move request and perform the necessary frame transforms before sending the requests along to the relevant components.
 This is where the frame system comes into play.
 Our center pose came from the camera but we want to move the arm to that position even though the arm lives in its own frame.
 The frame system logic in the RDK automatically handles the transformation logic between these two reference frames while also handling understanding how the frame systems are connected across the two parts.</li>
 
-<li>Having computed the pose in the reference frame of the arm, the Motion service takes this pose, and sends a plan on how to move the arm in addition to the gantry to achieve this new goal pose to RDK Part 2.
+<li>Having computed the pose in the reference frame of the arm, the Motion Service takes this pose, and sends a plan on how to move the arm in addition to the gantry to achieve this new goal pose to RDK Part 2.
 The plan consists of a series of movements that combine inverse kinematics, mathematics, and constraints based motion planning to get the arm and gantry to their goal positions.</li>
 
 <li>In executing the plan, which is being coordinated on RDK Part 1, Part 1 will send messages to the Arm and Gantry on RDK Part 2.

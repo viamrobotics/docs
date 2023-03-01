@@ -8,7 +8,7 @@ tags: ["client", "sdk"]
 ---
 
 Viam offers SDKs in popular languages which wrap the `viam-server` [gRPC](https://grpc.io/) APIs and streamline connection, authentication, and encryption against a server.
-Using the SDK, you will be able to quickly write code to control and automate your robot(s).
+Using the SDK, you will be able to quickly write code to control and automate your robots.
 
 Viam-server exposes gRPC [APIs for robot controls](https://github.com/viamrobotics/api).
 It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and authentication over those APIs.
@@ -130,46 +130,7 @@ func main() {
 
 ### How to get an image from a camera with Viam
 
-This reads a single image from a [camera](/components/camera/) called "camera0" on the robot.
-
-Assumption: A camera called "camera0" is configured as a component of your robot.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.camera import Camera
-
-robot = await connect() # refer to connect code above
-camera = Camera.from_robot(robot, "camera0")
-image = await camera.get_image()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-"go.viam.com/rdk/components/camera"
-)
-
-// grab the camera from the robot
-cameraName := "camera0" // make sure to use the same name as in the json/APP
-cam, err := camera.FromRobot(robot, cameraName)
-if err != nil {
-  logger.Fatalf("cannot get camera: %v", err)
-}
-
-// gets the stream from a camera
-camStream, err := cam.Stream(context.Background())
-
-// gets an image from the camera stream
-img, release, err := camStream.Next(context.Background())
-defer release()
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+{{< readfile "/static/include/components/camera-sample.md" >}}
 
 ### How to use a motor with Viam
 
@@ -252,11 +213,11 @@ distance, err := ultra.Readings(context.Background())
 {{% /tab %}}
 {{< /tabs >}}
 
-### How use the Viam vision service
+### How use the Viam Vision Service
 
-The following code gets the robot's [vision service](https://python.viam.dev/autoapi/viam/services/vision/index.html?highlight=vision#module-viam.services.vision) and then runs a detection model on an image to get a list of detections from the image.
+The following code gets the robot's [Vision Service](https://python.viam.dev/autoapi/viam/services/vision/index.html?highlight=vision#module-viam.services.vision) and then runs a detection model on an image to get a list of detections from the image.
 
-Assumption: A camera called "camera0" and a vision service called "detector_1" are configured as a component and a service on your robot.
+Assumption: A camera called "camera0" and a Vision Service called "detector_1" are configured as a component and a service on your robot.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -277,7 +238,7 @@ import (
 "go.viam.com/rdk/services/vision"
 )
 
-// gets Viam's vision service to add a TF-Lite model for person detection
+// gets Viam's Vision Service to add a TF-Lite model for person detection
 visionSrv, err := vision.FirstFromRobot(r)
 
 // get detection bounding boxes

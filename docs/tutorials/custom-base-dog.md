@@ -94,7 +94,7 @@ If the name of the directory where you store and run your code is different, be 
 
 8. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
 
-9. Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of 24 January 2023).
+9. Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of January 24, 2023).
 
 10. Install smbus so that the servo code works:
 
@@ -102,7 +102,7 @@ If the name of the directory where you store and run your code is different, be 
     sudo apt-get install python3-smbus
     ```
 
-11. Follow Chapter 1, Step 3 (page 42 as of 24 January 2023) of the Freenove tutorial to complete the software installation:
+11. Follow Chapter 1, Step 3 (page 42 as of January 24, 2023) of the Freenove tutorial to complete the software installation:
 
     ```bash
     cd /home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code
@@ -242,7 +242,7 @@ Name your remote "my-custom-base" and click **Create Remote**.
 In the **Address** field put `localhost: 9090`.
 Click **Save Config** at the bottom of the page.
 
-<img src="../img/custom-base-dog/remote-config.png" alt="Screenshot of the Viam app Config tab with the Remotes sub-tab open, showing my-custom-base configured as a remote." style="max-width:400px" >
+<img src="../img/custom-base-dog/remote-config.png" alt="Screenshot of the Viam app CONFIG tab with the Remotes sub-tab open, showing my-custom-base configured as a remote." style="max-width:400px" >
 
 {{% alert title="Note" color="note" %}}
 
@@ -270,7 +270,7 @@ Click **Save Config**.
 
 ### Configure the camera
 
-Configure the ribbon camera on the dog as a `webcam`, following the [Configure a Camera](/components/camera/configure-a-camera/) tutorial.
+Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/components/camera/webcam).
 
 ## Start the servers
 
@@ -418,7 +418,7 @@ You learned about configuring remotes and processes.
 You drove the robot dog around using the Viam **CONTROL** tab.
 
 To add more functionality, try defining more of the base API methods for this model.
-You could also use the Viam [vision service](/services/vision/) with the robot dog's [camera component](/components/camera/).
+You could also use the Viam [Vision Service](/services/vision/) with the robot dog's [camera component](/components/camera/).
 For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/scuttlebot/color-detection-scuttle/) or to [follow a colored line](/tutorials/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.
 
 If you have any issues or if you want to connect with other developers learning how to build robots with Viam, head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).

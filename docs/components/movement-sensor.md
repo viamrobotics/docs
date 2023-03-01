@@ -46,7 +46,7 @@ We have integrated the following GPS modules into Viam’s RDK:
 ### GPS-NMEA
 
 This GPS model uses communication standards set by the National Marine Electronics Association (NMEA).
-The `gps-nmea` model can be connected via and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board:
+The `gps-nmea` model can be connected using and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board:
 
 #### GPS-NMEA over USB/Serial
 
