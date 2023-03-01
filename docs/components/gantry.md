@@ -354,11 +354,11 @@ func main() {
   // Connect to your robot.
   robot, err := client.New(
       context.Background(),
-      "Add your robot address here. You can find this on the Code Sample tab of app.viam.com.",
+      "ADD YOUR ROBOT ADDRESS HERE. You can find this on the Code Sample tab of app.viam.com.",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "Add your location secret here. You can find this on the Code Sample tab of app.viam.com",
+          Payload: "ADD YOUR LOCATION SECRET HERE. You can find this on the Code Sample tab of app.viam.com",
       })),
   )
 
