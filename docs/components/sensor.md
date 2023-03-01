@@ -86,11 +86,12 @@ func main() {
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
           Payload: "Add your Location Secret here. You can find this on the Code Sample tab of app.viam.com.",
-      })),
+      }))
+      )
 
     ultra, err := sensor.FromRobot(robot, "ultra1")
     readings, err := ultra.Readings(context.Background())
-  )
+ }
 ```
 
 {{% /tab %}}
