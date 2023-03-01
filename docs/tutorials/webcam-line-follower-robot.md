@@ -7,7 +7,9 @@ description: "Build a line-following robot that relies on a webcam and color det
 tags: ["base", "vision", "detector", "camera", "services", "python"]
 ---
 
-<img src="/tutorials/img/webcam-line-follower/lf-following1.gif" style="float:right;margin-right:100px;margin-left:14px;width:130px" alt="Robot following a line"/>
+<div class="td-max-width-on-larger-screens">
+      <img src="/tutorials/img/webcam-line-follower/lf-following1.gif" class="float-right" style="margin-left:1em;width:150px" alt="Robot following a line"/>
+    </div>
 
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
