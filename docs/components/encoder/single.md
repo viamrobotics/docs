@@ -7,7 +7,6 @@ tags: ["encoder", "components"]
 # SMEs: Rand
 ---
 
-Configuring a `single` encoder requires configuring one pin (`i`) on the board to which the encoder is wired.
 A `single` encoder sends a signal from the rotating encoder over a single wire to one pin on the board.
 Software calculates the relative position that the motor has rotated.
 
