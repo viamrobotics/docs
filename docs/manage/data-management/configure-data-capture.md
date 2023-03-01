@@ -28,10 +28,7 @@ To capture data from one or more robots, you must first add the [Data Management
 
 ![data capture configuration](../../img/data-capture-config.png)
 
-{{%expand "Click to view the JSON configuration" %}}
-<br>
-
-Example raw JSON configuration for Data Management:
+{{%expand "Click to view the JSON configuration for the Data Management Service" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
@@ -78,10 +75,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
 
 ![component config example](../../img/data-service-component-config.png)
 
-{{%expand "Click to view the JSON configuration" %}}
-<br>
-
-**This is an example JSON configuration capturing data from the `ReadImage` method of a camera:**
+{{%expand "Click to view an example JSON configuration capturing data from the ReadImage method of a camera" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 
@@ -168,10 +162,7 @@ To add them to your JSON configuration you must explicitly add the part's `type`
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
 
-{{%expand "Click to view the JSON configuration for an ESP32 board" %}}
-<br>
-
-**This is an example for an `esp32` board:**
+{{%expand "Click to view the JSON configuration for an esp32 board" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 "type": {
@@ -193,12 +184,9 @@ To add them to your JSON configuration you must explicitly add the part's `type`
 
 {{% /expand%}}
 
-<br>
-
 {{%expand "Click to view the JSON configuration for the ReadImage method of a camera" %}}
-<br>
 
-**The following example captures data from two analog readers that provide a voltage reading and from pin 27 of the board's GPIO:**
+The following example captures data from two analog readers that provide a voltage reading and from pin 27 of the board's GPIO:
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
