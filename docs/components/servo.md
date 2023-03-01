@@ -165,6 +165,7 @@ if __name__ == '__main__':
 ```go {class="line-numbers linkable-line-numbers"}
 import (
   "context"
+  "github.com/edaniels/golog"
   "go.viam.com/rdk/components/servo"
 )
 

@@ -85,6 +85,9 @@ Example code should be placed after the `robot, err := client.New(...)` function
 import (
   "context"
   "time"
+  
+  "github.com/edaniels/golog"
+
   "go.viam.com/rdk/components/motor"
 )
 

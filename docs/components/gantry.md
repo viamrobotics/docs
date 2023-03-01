@@ -342,6 +342,9 @@ if __name__ == '__main__':
 ```go
 import (
   "context"
+
+  "github.com/edaniels/golog"
+  
   "go.viam.com/rdk/components/gantry"
   "go.viam.com/rdk/referenceframe"
 )
