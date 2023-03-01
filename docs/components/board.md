@@ -183,6 +183,7 @@ await led.set(False)
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
+  "context"
   "time"
   "go.viam.com/rdk/components/board"
 )

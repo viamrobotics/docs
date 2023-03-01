@@ -268,8 +268,9 @@ if __name__ == '__main__':
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
- "go.viam.com/rdk/components/base"
- "github.com/golang/geo/r3"
+  "context"
+  "go.viam.com/rdk/components/base"
+  "github.com/golang/geo/r3"
 )
 
 func main() {

@@ -83,6 +83,7 @@ Example code should be placed after the `robot, err := client.New(...)` function
 
 ```go
 import (
+  "context"
   "time"
   "go.viam.com/rdk/components/motor"
 )
