@@ -9,7 +9,7 @@ from viam.components.camera import Camera
 
 robot = await connect() # refer to connect code above
 my_cam = Camera.from_robot(robot, "camera0")
-# gets an image from the camera stream
+# Gets a single image from the camera stream
 image = await my_cam.get_image()
 ```
 
