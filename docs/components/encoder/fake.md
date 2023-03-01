@@ -31,17 +31,9 @@ Fill in the attributes for your encoder:
     "name": "<encoder_name>",
     "type": "encoder",
     "model" : "fake",
-    "attributes": {
-      "update_rate_msec": <integer>
-    }
+    "attributes": {}
 }
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
-
-The following attributes are available for `fake` encoders:
-
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `update_rate_msec` | *Required* | The update rate in milliseconds. |

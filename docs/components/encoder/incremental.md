@@ -15,6 +15,8 @@ These two pins provide the phase outputs used to measure the speed and direction
 {{< tabs name="Configure an incremental encoder" >}}
 {{< tab name="Config Builder" >}}
 
+**test**
+
 <br>
 On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
 Enter a name for your encoder, select the type <code>encoder</code>, and select the <code>incremental</code> model.
