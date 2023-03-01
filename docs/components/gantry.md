@@ -360,7 +360,6 @@ func main() {
           Type:    utils.CredentialsTypeRobotLocationSecret,
           Payload: "Add your location secret here. You can find this on the Code Sample tab of app.viam.com",
       })),
-      
   )
 
   // Log any errors that occur.
