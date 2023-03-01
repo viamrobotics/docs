@@ -13,7 +13,7 @@ After the Data Management Service synchronizes the uploaded data in Viam, you ca
 
 The **DATA** page shows:
 
-- **IMAGES**: png or jpeg files
+- **IMAGES**: PNG or JPEG files
 - **FILES**: binary data like point cloud data
 - **SENSOR DATA**: tabular sensor counts (like gantry position)
 
@@ -25,7 +25,7 @@ If you click on an image or a file, a **Details** panel appears on the right wit
 
 On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **FILTERING** panel.
 
-For example, if you specify `Rover Rental` for Location and click **SEARCH**, you can see all data captured on robots that belong to your `Rover Rental` location.
+For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on robots that belong to your `Rover Rental` location.
 
 ## Next Steps
 

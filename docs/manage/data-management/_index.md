@@ -46,7 +46,7 @@ Viam does not impose a minimum or maximum on the frequency of data syncing.
 However, in practice, your hardware or network speed may impose limits on the frequency of data syncing.
 
 If the internet becomes unavailable or the robot needs to restart during the sync process, the service will try to resume sync indefinitely.
-When the connection is restored and sync resumes, the service resumes sync where it left off without duplicating data.
+When the connection is restored, the service resumes the syncing process where it left off without duplicating data.
 For more detailed information, see [Considerations](#considerations).
 
 Once the service syncs a file to Viam's cloud, the service deletes the file locally from the robot's configured capture location.
@@ -59,7 +59,7 @@ To configure cloud sync, see [configure cloud sync](../data-management/configure
 
 ### Considerations
 
-- **Security**: The Data Management Service uses grpc, that means your data is encrypted while in flight.
+- **Security**: The Data Management Service uses gRPC calls to send and receive data, so your data is encrypted while in flight.
   When data is stored in the cloud, it is encrypted at rest by the cloud storage provider.
 
 - **Data Integrity**: Viam's Data Management Service is designed to safeguard against data loss, data duplication and otherwise compromised data.
@@ -97,7 +97,8 @@ To configure cloud sync, see [configure cloud sync](../data-management/configure
 
 ## Next steps
 
-To use the Data Management Service, [add the Data Management Service](configure-data-capture/#add-the-data-management-service). Then [configure data capture](configure-data-capture) as needed and [configure cloud sync](configure-cloud-sync).
+To use the Data Management Service, [add the Data Management Service](configure-data-capture/#add-the-data-management-service) to your robot.
+Then [configure data capture](configure-data-capture) as needed and [configure cloud sync](configure-cloud-sync).
 
 Once you have configured data capture and cloud sync, you can [view](view) and [export](export) your data.
 

@@ -31,7 +31,7 @@ To capture data from one or more robots, you must first add the [Data Management
 {{%expand "Click to view the JSON configuration" %}}
 <br>
 
-**The JSON configuration for the Data Management Service is:**
+Example raw JSON configuration for Data Management:
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
@@ -66,7 +66,7 @@ The following components support data capture:
 - Sensor
 - Servo
 
-To add data capture for a component, navigate to the **COMPONENTS** tab on your robot's **CONFIG** page.
+To add data capture for a component, navigate to the **CONFIG** tab of your robot's page in the Viam app.
 
 For each component you can capture data for, there is a `Data Capture Configuration` section in its panel.
 Click `Add Method` and then select the method type and the capture frequency.
@@ -168,7 +168,7 @@ To add them to your JSON configuration you must explicitly add the part's `type`
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
 
-{{%expand "Click to view the JSON configuration for an esp32 board" %}}
+{{%expand "Click to view the JSON configuration for an ESP32 board" %}}
 <br>
 
 **This is an example for an `esp32` board:**
