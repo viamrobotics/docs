@@ -28,7 +28,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 **Initial Setup with Display Attached:**
 
 1. A [Jetson AGX Orin Developer Kit](https://www.arrow.com/en/products/945-13730-0000-000/nvidia)
-2. A PC monitor (HDMI or DP)
+2. A PC monitor (HDMI or DisplayPort)
 3. USB keyboard and mouse
 4. A DisplayPort to HDMI adapter/cable, to connect the Orin to the monitor
 5. Ethernet cable and/or Wifi dongle, to connect the Orin to the Internet
