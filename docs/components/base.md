@@ -233,7 +233,7 @@ The base component supports the following methods:
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
 - [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
 
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
 
 The following example assumes you have a wheeled base called "my_base" which is configured as a component of your robot.
 If your base has a different name, change the `name` in the example.
@@ -268,8 +268,9 @@ if __name__ == '__main__':
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
- "go.viam.com/rdk/components/base"
- "github.com/golang/geo/r3"
+  "context"
+  "go.viam.com/rdk/components/base"
+  "github.com/golang/geo/r3"
 )
 
 func main() {

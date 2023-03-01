@@ -1,6 +1,4 @@
-This reads a single image from a [camera](/components/camera/) called "camera0" on the robot.
-
-The following example assumes you have a camera called `camera0` configured as a component of your robot.
+The following example assumes you have a [camera](/components/camera/) called `camera0` configured as a component of your robot.
 If your camera has a different name in the Viam app, change the `name` in the example.
 
 {{< tabs >}}
@@ -11,6 +9,7 @@ from viam.components.camera import Camera
 
 robot = await connect() # refer to connect code above
 my_cam = Camera.from_robot(robot, "camera0")
+# Gets a single image from the camera stream
 image = await my_cam.get_image()
 ```
 
@@ -23,7 +22,7 @@ import (
 )
 
 // grab the camera from the robot
-cameraName := "camera0" // make sure to use the same component name that you have in your robot configuration 
+cameraName := "camera0" // make sure to use the same component name that you have in your robot configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)

@@ -24,10 +24,10 @@ Each gantry can only move in one axis within the limits of the length of the lin
 
 Most robots with a gantry need at least the following hardware:
 
-- A [board component](/components/board/) or controller that can detect changes in voltage on GPIO pins.
-- A [motor](/components/motor/) that can move linear rails.
-  - Encoded motor: See [DC motor with encoder](/components/motor/#dc-motor-with-encoder) and [encoder component](/components/encoder/).
-  - Stepper motor: See [Stepper motor](/components/motor/#stepper-motor).
+- A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
+- A [motor](/components/motor/) that can move linear rails
+  - Encoded motor: See [DC motor with encoder](/components/motor/gpio/encoded-motor/) and [encoder component](/components/encoder/).
+  - Stepper motor: See [Stepper motor](/components/motor/gpiostepper/).
   Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
 
@@ -306,7 +306,7 @@ The gantry component supports the following methods:
 
 ### Control your Gantry with Viam's Client SDK Libraries
 
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
 
 The following example assumes you have a gantry called "my_gantry" configured as a component of your robot.
 If your gantry has a different name, change the `name` in the example.
@@ -341,8 +341,9 @@ if __name__ == '__main__':
 
 ```go
 import (
- "go.viam.com/rdk/components/gantry"
- "go.viam.com/rdk/referenceframe"
+  "context"
+  "go.viam.com/rdk/components/gantry"
+  "go.viam.com/rdk/referenceframe"
 )
 
 func main() {
@@ -353,11 +354,11 @@ func main() {
   // Connect to your robot.
   robot, err := client.New(
       context.Background(),
-      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE SECURITY TAB OF THE VIAM APP]",
+      "ADD YOUR ROBOT ADDRESS HERE. You can find this on the Code Sample tab of app.viam.com.",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE LOCATION'S PAGE IN THE VIAM APP]",
+          Payload: "ADD YOUR LOCATION SECRET HERE. You can find this on the Code Sample tab of app.viam.com",
       })),
   )
 

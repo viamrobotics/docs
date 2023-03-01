@@ -156,11 +156,13 @@ file {
 }
 /* END CSS for enforcing a max width on video content */
 
-/* START Fix code content that ignores td-max-width-on-larger-screens */
+/* START Fix expander content */
 
 @media (min-width: 992px) {
-  .td-content > .code-toolbar {
+  .td-content > .expand {
     width: 80%;
   }
 }
-/* END Fix code content that ignores td-max-width-on-larger-screens */
+
+/* END Fix expander content */
+

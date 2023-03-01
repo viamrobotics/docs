@@ -43,8 +43,15 @@ If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
         <a href="/installation/prepare/jetson-nano-setup/">
             <br>
-            <img src="../img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="SK-TDA4VM">
+            <img src="../img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Jetson Nano">
             <p style="text-align: left; margin-left: 0px; font-weight:bold">Jetson Nano</h4>
+        </a>
+    </div>
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/installation/prepare/jetson-agx-orin-setup/">
+            <br>
+            <img src="../img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png" alt="Jetson AGX Orin">
+            <p style="text-align: left; margin-left: 0px; font-weight:bold">Jetson AGX Orin</h4>
         </a>
     </div>
   </div>
