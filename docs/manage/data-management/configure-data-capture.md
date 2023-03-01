@@ -41,7 +41,7 @@ Example raw JSON configuration for Data Management:
       "name": "data_manager",
       "type": "data_manager",
       "attributes": {
-        "sync_interval_mins": 5,
+        "sync_interval_mins": 1,
         "capture_dir": "/.viam/capture"
       }
     }
