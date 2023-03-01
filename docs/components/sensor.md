@@ -73,11 +73,24 @@ readings = await sensor.get_readings()
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
-"go.viam.com/rdk/components/sensor"
+    "context"
+    "go.viam.com/rdk/components/sensor"
 )
 
-ultra, err := sensor.FromRobot(robot, "ultra1")
-readings, err := ultra.Readings(context.Background())
+func main() { 
+    // Connect to your robot.
+    robot, err := client.New(
+        context.Background(),
+        "Add your Robot Address here. You can find this on the Code Sample tab of app.viam.com.",
+        logger,
+      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+          Type:    utils.CredentialsTypeRobotLocationSecret,
+          Payload: "Add your Location Secret here. You can find this on the Code Sample tab of app.viam.com.",
+      })),
+
+    ultra, err := sensor.FromRobot(robot, "ultra1")
+    readings, err := ultra.Readings(context.Background())
+  )
 ```
 
 {{% /tab %}}

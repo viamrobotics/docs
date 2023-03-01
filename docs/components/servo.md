@@ -164,7 +164,8 @@ if __name__ == '__main__':
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
- "go.viam.com/rdk/components/servo"
+  "context"
+  "go.viam.com/rdk/components/servo"
 )
 
 func main() {

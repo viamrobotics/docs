@@ -341,8 +341,9 @@ if __name__ == '__main__':
 
 ```go
 import (
- "go.viam.com/rdk/components/gantry"
- "go.viam.com/rdk/referenceframe"
+  "context"
+  "go.viam.com/rdk/components/gantry"
+  "go.viam.com/rdk/referenceframe"
 )
 
 func main() {
@@ -353,12 +354,13 @@ func main() {
   // Connect to your robot.
   robot, err := client.New(
       context.Background(),
-      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE SECURITY TAB OF THE VIAM APP]",
+      "Add your robot address here. You can find this on the Code Sample tab of app.viam.com.",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE LOCATION'S PAGE IN THE VIAM APP]",
+          Payload: "Add your location secret here. You can find this on the Code Sample tab of app.viam.com",
       })),
+      
   )
 
   // Log any errors that occur.
