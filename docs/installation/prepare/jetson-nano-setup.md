@@ -11,7 +11,7 @@ description: "Set up the Jetson Nano Developer Kit to prepare your NVIDIA Jetson
 The [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano) from [NVIDIA](https://www.nvidia.com/) is a small computer that is built for embedded applications and is capable of supporting modern AI workloads.
 Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) to prepare your NVIDIA Jetson Nano for `viam-server` installation.
 
-<p style="margin:auto; width:500px;"><img src="../../img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="The front of the NVIDIA Jetson Nano single-board computer development kit." ></p>
+<div class="td-max-width-on-larger-screens text-center"><img src="../../img/jetson-nano-setup/jetson-nano-dev-kit.png" style="max-width:400px" alt="The front of the NVIDIA Jetson Nano single-board computer development kit."></div>
 
 {{< alert title="Note" color="note" >}}
 
