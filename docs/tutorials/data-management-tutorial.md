@@ -112,7 +112,7 @@ For more detailed information see [Configure Data Capture](../../manage/data-man
 ## Enable cloud sync
 
 Enabling cloud sync allows you to securely access all your robot's data in the Viam app in the cloud.
-To enable the cloud sync on your robot, you will need to do the following:
+To enable cloud sync on your robot, do the following:
 
 - Navigate to the **CONFIG** tab, then select **SERVICES**.
 - Navigate to [the Data Management Service you created above](#add-the-data-management-service).
