@@ -74,6 +74,7 @@ readings = await sensor.get_readings()
 ```go {class="line-numbers linkable-line-numbers"}
 import (
     "context"
+    "github.com/edaniels/golog"
     "go.viam.com/rdk/components/sensor"
 )
 

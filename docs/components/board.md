@@ -185,6 +185,9 @@ await led.set(False)
 import (
   "context"
   "time"
+
+  "github.com/edaniels/golog"
+  
   "go.viam.com/rdk/components/board"
 )
 

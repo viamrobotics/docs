@@ -269,6 +269,9 @@ if __name__ == '__main__':
 ```go {class="line-numbers linkable-line-numbers"}
 import (
   "context"
+
+  "github.com/edaniels/golog"
+
   "go.viam.com/rdk/components/base"
   "github.com/golang/geo/r3"
 )
@@ -578,7 +581,7 @@ await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 ```go {class="line-numbers linkable-line-numbers"}
-import "github.com/golang/geo/r3"
+// import "github.com/golang/geo/r3" ...
 
 myBase, err := base.FromRobot(robot, "my_base")
 if err != nil {

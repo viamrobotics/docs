@@ -201,9 +201,12 @@ if __name__ == '__main__':
 ```go {class="line-numbers linkable-line-numbers"}
 import (
   "context"
+  "github.com/edaniels/golog"
+
   "go.viam.com/rdk/components/arm"
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/spatialmath"
+
   componentpb "go.viam.com/api/component/arm/v1"
 )
 
