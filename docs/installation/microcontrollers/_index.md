@@ -31,16 +31,22 @@ Viam recommends using [our fork](https://github.com/npmenard/esp-idf) of the ESP
 
 ## Hardware Requirements
 
-You need the following hardware, tools, and software to create a new project on an ESP32 with the micro-RDK version of `viam-server`:
+You need the following hardware, tools, and software to create a new project on an ESP32 with the micro-RDK:
 
 - An Expressif ESP32 microcontroller.
 Viam recommends purchasing the ESP32 with a development board: see development kit options [here](https://www.espressif.com/en/products/devkits).
-- A USB-C cable for connecting the ESP32 to your PC (included with ESP32 DevKits).
-- A Micro-USB (recommended), 5V/GND header pin or 3V3/GND header pin power supply.
+- A USB-C cable for connecting the ESP32 to your development machine (included with ESP32 DevKits).
+- A Micro-USB (recommended, included with ESP32 DevKits), 5V/GND header pin or 3V3/GND header pin power supply.
+
+{{< alert title="Note" color="note" >}}
+
+If you are using a personal computer without a USB-C port as your development machine, you may need to purchase a [USB-C Female to USB Male adapter](https://www.amazon.com/s?k=USB+C+Female+to+USB+Male+Adapter&i=electronics&crid=1Q54BEA33DKU3&sprefix=usb+c+female+to+usb+male+adapter%2Celectronics%2C90&ref=nb_sb_noss_1) to connect the ESP32 to your PC.
+
+{{% /alert %}}
 
 ### Install ESP-IDF
 
-Start by completing Step 1 of [these instructions](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html), following the appropriate steps for your PC / development machine's architecture, and then return here.
+Start by completing Step 1 of [these instructions](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html), following the appropriate steps for your development machine's architecture, and then return here.
 
 Clone Viam's fork of the ESP-IDF:
 
