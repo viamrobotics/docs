@@ -205,13 +205,15 @@ index f75b465..2b0ba9c 100644
 
 ### Configure the ESP32 as a Remote
 
-To programmatically control the robot now running on the ESP32, you need another robot to host your
-application, as the microcontroller lacks the required processing power.
+To programmatically control the robot now running on the ESP32, you need to connect it to another robot that is running the full-featured `viam-server`, as the microcontroller lacks the required processing power to do so.
+This second "robot" can be as simple as an instance of `viam-server` running on your personal computer.
+
+By configuring the ESP32 robot as a remote of a robot running `viam-server`, you can establish a secure connection between the two robots.
 
 Navigate to [the Viam app](https://app.viam.com).
 Create and configure a new robot, or select an existing robot that you want to add the ESP32 to.
 
-Add the ESP32-backed robot as a `remote` of your new or existing robot:
+Add the ESP32-backed robot as a remote of your new or existing robot:
 
 <p style="max-width:800px;"><img src="../img/esp32-setup/esp32-remote-creation.png" alt="Adding the ESP32 as a remote in the Viam app Config builder." ></p>
 
