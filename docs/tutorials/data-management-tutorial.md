@@ -143,7 +143,7 @@ For more detailed information see [View and Filter Data](../../manage/data-manag
 You've successfully saved data from your robot in the cloud.
 Now, let's export that image data from the Viam app onto your local computer.
 
-To export data from Viam, you will need to do the following:
+To export data from Viam:
 
 1. First, install the [Viam CLI](/manage/cli) and [authenticate](/manage/cli/#authenticate):
 
