@@ -44,178 +44,6 @@ The XBox controllers emulate an XBox 360 gamepad when in wired mode, as does the
 Because of that, any unknown gamepad will be be mapped that way.
 If you have another controller that you want to use to control your robot, feel free to submit a PR on the [Viam Robotics Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) with new mappings.
 
-## Detailed Code Examples
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-The following Python code is an example of controlling a wheeled base with a Logitech G920 steering wheel controller.
-
-``` python {id="python-example" class="line-numbers linkable-line-numbers"}
-import asyncio
-
-from viam.components.base import Base
-from viam.components.input import Control, Controller, EventType
-from viam.proto.common import Vector3
-from viam.robot.client import RobotClient
-from viam.rpc.dial import Credentials, DialOptions
-
-turn_amt = 0
-modal = 0
-cmd = {}
-
-async def connect_modal():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload="xyzabclocationexample"), # ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
-    )
-    return await RobotClient.at_address('robot123example.locationxyzexample.viam.com' # ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
-    , opts)
-
-async def connect_controller():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload="xyzabclocationexample"), # ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
-    )
-    return await RobotClient.at_address("robot123example.locationxyzexample.viam.com", # ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
-    , opts)
-
-def handle_turning(event):
-    global turn_amt
-    turn_amt = -event.value
-    print("turning:", turn_amt)
-
-def handle_brake(event):
-    if event.value != 0:
-        print("braking!:", event.value)
-        global cmd
-        cmd = {"y": 0}
-        print("broke")
-
-def handle_accelerator(event):
-    print("moving!:", event.value)
-    global cmd
-    accel = (event.value - 0.1) / 0.9
-    if event.value < 0.1:
-        accel = 0
-        
-    cmd = {"y": accel}
-
-def handle_clutch(event):
-    print("moving!:", event.value)
-    global cmd
-    accel = (event.value - 0.1) / 0.9
-    if event.value < 0.1:
-        accel = 0
-        
-    cmd = {"y": -accel}
-
-async def handleController(controller):
-    resp = await controller.get_events()
-    # Show the input controller's buttons/axes
-    print(f'Controls:\n{resp}')
-
-    if Control.ABSOLUTE_PEDAL_ACCELERATOR in resp:
-        controller.register_control_callback(Control.ABSOLUTE_PEDAL_ACCELERATOR, [EventType.POSITION_CHANGE_ABSOLUTE], handle_accelerator)
-    else:
-        print("Accelerator Pedal not found! Exiting! Are your steering wheel and pedals hooked up?")
-        exit()
-
-    if Control.ABSOLUTE_PEDAL_BRAKE in resp:
-        controller.register_control_callback(Control.ABSOLUTE_PEDAL_BRAKE, [EventType.POSITION_CHANGE_ABSOLUTE], handle_brake)
-    else:
-        print("Brake Pedal not found! Exiting!")
-        exit()
-
-    if Control.ABSOLUTE_PEDAL_CLUTCH in resp:
-        controller.register_control_callback(Control.ABSOLUTE_PEDAL_CLUTCH, [EventType.POSITION_CHANGE_ABSOLUTE], handle_clutch)
-    else:
-        print("Accelerator Pedal not found! Exiting! Are your steering wheel and pedals hooked up?")
-        exit()
-
-    if Control.ABSOLUTE_X in resp:
-        controller.register_control_callback(Control.ABSOLUTE_X, [EventType.POSITION_CHANGE_ABSOLUTE], handle_turning)
-    else:
-        print("Wheel not found! Exiting!")
-        exit()
-
-    while True:
-        await asyncio.sleep(0.01)
-        global cmd
-        if "y" in cmd:
-            respon = await modal.set_power(linear=Vector3(x=0,y=cmd["y"],z=0), angular=Vector3(x=0,y=0,z=turn_amt))
-            cmd = {}
-            print(respon)
-
-async def main():
-    g920_viam = await connect_controller()
-    modal_viam = await connect_modal()
-
-    g920 = Controller.from_robot(g920_viam, 'wheel')
-    global modal
-    modal = Base.from_robot(modal_viam, 'modal-base-server:base')
-
-    await handleController(g920)
-
-    await g920_viam.close()
-    await modal_viam.close()
-
-if __name__ == '__main__':
-    asyncio.run(main())
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-The following Go code is an example of how to use an input controller to drive a robot with four wheels & a skid steer platform.
-
-The `motorCtl` callback function controls 5 motors: left front & back `FL` `BL`, right front & back `FL` `BL`, and a `winder` motor that raises and lowers a front-end like a bulldozer.
-
-The `event.Control` logic is registered as a callback function to determine the case for setting the power of each motor from which button is pressed on the input controller.
-
-```go {id="go-example" class="line-numbers linkable-line-numbers"}
-// Define a single callback function
-motorCtl := func(ctx context.Context, event input.Event) {
-    if event.Event != input.PositionChangeAbs {
-        return
-    }
-
-    speed := float32(math.Abs(event.Value))
-
-    // Handle input events, commands to set the power of motor components (SetPower method)
-    switch event.Control {
-        case input.AbsoluteY:
-            motorFL.SetPower(ctx, speed)
-            motorBL.SetPower(ctx, speed)
-        case input.AbsoluteRY:
-            motorFR.SetPower(ctx, speed * -1)
-            motorBR.SetPower(ctx, speed * -1)
-        case input.AbsoluteZ:
-            motorWinder.SetPower(ctx, speed)
-        case input.AbsoluteRZ:
-            motorWinder.SetPower(ctx, speed * -1)
-    }
-}
-
-// Registers callback from motorCtl for a selected set of axes
-for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input.AbsoluteZ, input.AbsoluteRZ} {
-    err = g.RegisterControlCallback(ctx, control, []input.EventType{input.PositionChangeAbs}, motorCtl)
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% alert="Note" color="note" %}}
-Access the complete repository for the Python example on [Github](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
-{{% /alert %}}
-
 ### Control your robot with an Input Controller with Viam's Client SDK Libraries
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam app guide](/manage/app-usage/) for app-specific guidance.
@@ -372,6 +200,179 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 
 {{% alert="Note" color="note" %}}
 The `Controller` interface is defined in [the Viam RDK](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go).
+
+{{% /alert %}}
+
+## Usage Examples
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+The following Python code is an example of controlling a wheeled base with a Logitech G920 steering wheel controller.
+
+``` python {id="python-example" class="line-numbers linkable-line-numbers"}
+import asyncio
+
+from viam.components.base import Base
+from viam.components.input import Control, Controller, EventType
+from viam.proto.common import Vector3
+from viam.robot.client import RobotClient
+from viam.rpc.dial import Credentials, DialOptions
+
+turn_amt = 0
+modal = 0
+cmd = {}
+
+async def connect_modal():
+    creds = Credentials(
+        type='robot-location-secret',
+        payload="xyzabclocationexample"), # ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
+    opts = RobotClient.Options(
+        refresh_interval=0,
+        dial_options=DialOptions(credentials=creds)
+    )
+    return await RobotClient.at_address('robot123example.locationxyzexample.viam.com' # ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
+    , opts)
+
+async def connect_controller():
+    creds = Credentials(
+        type='robot-location-secret',
+        payload="xyzabclocationexample"), # ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
+    opts = RobotClient.Options(
+        refresh_interval=0,
+        dial_options=DialOptions(credentials=creds)
+    )
+    return await RobotClient.at_address("robot123example.locationxyzexample.viam.com", # ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
+    , opts)
+
+def handle_turning(event):
+    global turn_amt
+    turn_amt = -event.value
+    print("turning:", turn_amt)
+
+def handle_brake(event):
+    if event.value != 0:
+        print("braking!:", event.value)
+        global cmd
+        cmd = {"y": 0}
+        print("broke")
+
+def handle_accelerator(event):
+    print("moving!:", event.value)
+    global cmd
+    accel = (event.value - 0.1) / 0.9
+    if event.value < 0.1:
+        accel = 0
+        
+    cmd = {"y": accel}
+
+def handle_clutch(event):
+    print("moving!:", event.value)
+    global cmd
+    accel = (event.value - 0.1) / 0.9
+    if event.value < 0.1:
+        accel = 0
+        
+    cmd = {"y": -accel}
+
+async def handleController(controller):
+    resp = await controller.get_events()
+    # Show the input controller's buttons/axes
+    print(f'Controls:\n{resp}')
+
+    if Control.ABSOLUTE_PEDAL_ACCELERATOR in resp:
+        controller.register_control_callback(Control.ABSOLUTE_PEDAL_ACCELERATOR, [EventType.POSITION_CHANGE_ABSOLUTE], handle_accelerator)
+    else:
+        print("Accelerator Pedal not found! Exiting! Are your steering wheel and pedals hooked up?")
+        exit()
+
+    if Control.ABSOLUTE_PEDAL_BRAKE in resp:
+        controller.register_control_callback(Control.ABSOLUTE_PEDAL_BRAKE, [EventType.POSITION_CHANGE_ABSOLUTE], handle_brake)
+    else:
+        print("Brake Pedal not found! Exiting!")
+        exit()
+
+    if Control.ABSOLUTE_PEDAL_CLUTCH in resp:
+        controller.register_control_callback(Control.ABSOLUTE_PEDAL_CLUTCH, [EventType.POSITION_CHANGE_ABSOLUTE], handle_clutch)
+    else:
+        print("Accelerator Pedal not found! Exiting! Are your steering wheel and pedals hooked up?")
+        exit()
+
+    if Control.ABSOLUTE_X in resp:
+        controller.register_control_callback(Control.ABSOLUTE_X, [EventType.POSITION_CHANGE_ABSOLUTE], handle_turning)
+    else:
+        print("Wheel not found! Exiting!")
+        exit()
+
+    while True:
+        await asyncio.sleep(0.01)
+        global cmd
+        if "y" in cmd:
+            respon = await modal.set_power(linear=Vector3(x=0,y=cmd["y"],z=0), angular=Vector3(x=0,y=0,z=turn_amt))
+            cmd = {}
+            print(respon)
+
+async def main():
+    g920_viam = await connect_controller()
+    modal_viam = await connect_modal()
+
+    g920 = Controller.from_robot(g920_viam, 'wheel')
+    global modal
+    modal = Base.from_robot(modal_viam, 'modal-base-server:base')
+
+    await handleController(g920)
+
+    await g920_viam.close()
+    await modal_viam.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+The following Go code is an example of how to use an input controller to drive a robot with four wheels & a skid steer platform.
+
+The `motorCtl` callback function controls 5 motors: left front & back `FL` `BL`, right front & back `FL` `BL`, and a `winder` motor that raises and lowers a front-end like a bulldozer.
+
+The `event.Control` logic is registered as a callback function to determine the case for setting the power of each motor from which button is pressed on the input controller.
+
+```go {id="go-example" class="line-numbers linkable-line-numbers"}
+// Define a single callback function
+motorCtl := func(ctx context.Context, event input.Event) {
+    if event.Event != input.PositionChangeAbs {
+        return
+    }
+
+    speed := float32(math.Abs(event.Value))
+
+    // Handle input events, commands to set the power of motor components (SetPower method)
+    switch event.Control {
+        case input.AbsoluteY:
+            motorFL.SetPower(ctx, speed, nil)
+            motorBL.SetPower(ctx, speed, nil)
+        case input.AbsoluteRY:
+            motorFR.SetPower(ctx, speed * -1, nil)
+            motorBR.SetPower(ctx, speed * -1, nil)
+        case input.AbsoluteZ:
+            motorWinder.SetPower(ctx, speed, nil)
+        case input.AbsoluteRZ:
+            motorWinder.SetPower(ctx, speed * -1, nil)
+    }
+}
+
+// Registers callback from motorCtl for a selected set of axes
+for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input.AbsoluteZ, input.AbsoluteRZ} {
+    err = g.RegisterControlCallback(ctx, control, []input.EventType{input.PositionChangeAbs}, motorCtl)
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% alert="Note" color="note" %}}
+Access the complete repository for the Python example on [Github](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
 {{% /alert %}}
 
 ## Event Object
