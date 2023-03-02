@@ -23,7 +23,7 @@ import (
 )
 
 // grab the camera from the robot
-cameraName := "camera0" // make sure to use the same component name that you have in your robot configuration 
+cameraName := "camera0" // make sure to use the same component name that you have in your robot configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
@@ -36,3 +36,6 @@ camStream, err := myCam.Stream(context.Background())
 img, release, err := camStream.Next(context.Background())
 defer release()
 ```
+
+{{% /tab %}}
+{{% /tabs %}}
