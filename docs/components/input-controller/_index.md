@@ -21,7 +21,7 @@ Most robots with an input controller need at least the following hardware:
 
 ## Configuration
 
-Configuration depends on which `model` the type of device you wish to configure falls under.
+Configuration depends on which `model` the device you wish to configure falls under.
 
 For configuration information, click on one of the following models:
 
