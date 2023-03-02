@@ -19,7 +19,7 @@ Now the data that you capture will sync automatically with the Viam app in the c
 By default, the Data Management Service syncs data to Viam's cloud every 5 minutes.
 To change the sync interval, specify an interval in minutes in the interval field.
 
-{{%expand "Click to view the JSON configuratio for the Data Management Service" %}}
+{{%expand "Click to view the JSON configuration for the Data Management Service" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
