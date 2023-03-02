@@ -35,3 +35,6 @@ camStream, err := myCam.Stream(context.Background())
 img, release, err := camStream.Next(context.Background())
 defer release()
 ```
+
+{{% /tab %}}
+{{% /tabs %}}
