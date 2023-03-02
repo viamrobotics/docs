@@ -1,5 +1,5 @@
 ---
-title: "Accessing and Moving a Robot Arm"
+title: "Access and Move a Robot Arm"
 linkTitle: "Access and Move a Robot Arm"
 weight: 5
 type: "docs"
@@ -9,13 +9,13 @@ tags: ["arm", "motion"]
 ---
 
 {{< alert title="Caution" color="caution" >}}
-Before continuing, a word of caution: Whether you are using a real robotic arm or a virtual one, please keep in mind that all Motion tutorials are heavily geared towards action.
+Please keep in mind that all Motion tutorials are heavily geared towards action.
 You are tasking robots to move through space and around obstacles, so pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your robot.
 Stay safe!
 {{< /alert >}}
 
-Your first experiences with Viam's Motion service typically starts with a robotic arm.
-Before going down the path of doing complex maneuvers with Viam's Motion service, we suggest getting familiar with the Arm component, its interfaces, and how these things work with real robotic hardware.
+Your first experience with Viam's Motion Service typically starts with a robotic arm.
+Before going down the path of doing complex maneuvers with Viam's Motion Service, we suggest getting familiar with the [arm component](/components/arm/), its interfaces, and how these things work with real robotic hardware.
 This tutorial shows you how to interact with arms, helps you understand the ways in which arms describe their state, and assists you in issuing movement commands to a robotic arm.
 Code examples in this tutorial assume the use of a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but any supported arm model may be used.
 
@@ -39,16 +39,16 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 ## Configure A Robot
 
 1. Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-2. Create a new robot
-3. Select the **CONFIG** tab
+2. Create a new robot.
+3. Select the **CONFIG** tab.
 4. Under the **COMPONENTS** section, create a component with the following attributes:
 
-* Choose `Arm` as the **type** selection
-* Choose your desired model in the **model** selection
+* Choose `Arm` as the **Type** selection
+* Choose your desired model in the **Model** selection
   * The `xArm 6` choice may be further down the model list
-* Enter `myArm` as the **name** for this component
+* Enter `myArm` as the **Name** for this component
 
-5. In the newly created `myArm` component, fill in some additional details:
+5. In the newly created `myArm` component panel, fill in some additional details:
 
 * Enter the IP address for your robot controller in the **Host** field
 * Enter a desired velocity *(in degrees per second)* for the robot arm's motions in the **Speed** field
@@ -63,7 +63,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 Before leaving the Viam app, go to the **CODE SAMPLE** tab and copy the code sample for the programming language you are working in.
 Paste this boilerplate code into a new script and run the script to verify you can connect to your robot.
-Several parts of this code sample will be replaced or amended, so we have provided a full tutorial script at the bottom of this tutorial if confusion arises.
+Several parts of this code sample will be replaced or amended, so we have provided a [full tutorial script](#full-tutorial-code) at the bottom of this tutorial if confusion arises.
 
 This robot configuration should be specified as you launch `viam-server` before going through the rest of this tutorial.
 
@@ -100,7 +100,7 @@ The following lines from the full **Python** tutorial code enable you to use the
 {{< /tabs >}}
 
 The state of a robot arm can also be described as the **combined positions of each joint** attached to the arm.
-You can access a robot arm's "joint states" (as they are sometimes referred) by calling a different method on the arm component.
+You can access a robot arm's "joint states" (as they are sometimes referred to) by calling a different method on the arm component.
 The code below can be executed right after you get the end effector pose from the prior code sample; notice the different way in which these two pieces of information are presented.
 
 {{< tabs >}}
@@ -123,8 +123,8 @@ The code below can be executed right after you get the end effector pose from th
 
 Both representations of an arm's state are important.
 Sometimes you may wish to direct an arm in terms of joint positions, sometimes you may need to describe the position of another object with respect to the end of the robot arm.
-There is a mathematical relationship that allows us to convert between these two representations, known as the **forwards and inverse kinematics**, which is foundational to complex robotic motion.
-We will not cover forwards and inverse kinematics in this tutorial, but resources for further reading on these topics are linked in the **Next Steps** section.
+There is a mathematical relationship that allows us to convert between these two representations, known as the **forward and inverse kinematics**, which is foundational to complex robotic motion.
+We will not cover forward and inverse kinematics in this tutorial, but resources for further reading on these topics are linked in the **Next Steps** section.
 
 ## Moving the Arm
 
@@ -140,7 +140,7 @@ First, you can initiate motion with a joint position command.
 You must import an additional Go library to access the data structure that Viam uses to encode joint positions, which is shown next. A final note:
 
 {{< alert title="Caution" color="caution" >}}
-Executing code presented after this point WILL induce motion in a connected robotic arm!
+Executing code presented after this point *will* induce motion in a connected robotic arm!
 {{< /alert >}}
 
 {{< tabs >}}
@@ -216,7 +216,8 @@ Add `from viam.proto.common import Pose, WorldState` to your import list and add
 
 In this way, you can quickly adjust one or more elements of position AND orientation simultaneously, by modifying other elements of the original arm pose.
 
-For all motion actions taken in this tutorial, there may be joint positions or poses that are unreachable for particular reasons (potential collisions, a pose in space is unreachable because the arm is too short). Keep an eye on your client script's feedback and the `viam-server` logs for any issues that may arise.
+For all motion actions taken in this tutorial, there may be joint positions or poses that are unreachable for particular reasons (potential collisions, a pose in space is unreachable because the arm is too short).
+Regularly check your client script's feedback and the `viam-server` logs for any issues that may arise.
 
 ## Next Steps and References
 
