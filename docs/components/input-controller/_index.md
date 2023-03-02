@@ -35,7 +35,7 @@ For configuration information, click on one of the following models:
 
 Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 
-## Work in Progress Models
+### Work in Progress Models
 
 Mappings are currently available for a wired XBox 360 controller, and wireless XBox Series X|S, along with the 8bitdo Pro 2 bluetooth gamepad (which works great with the Raspberry Pi.)
 
