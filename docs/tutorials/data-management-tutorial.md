@@ -96,7 +96,7 @@ To enable image data capture for a camera component, follow these steps:
 
 4. Click **Save Config** at the bottom of the window.
 
-Now your image data will be saved locally on your robot to the <file>/.viam/capture</file> directory (or wherever you configured your captured data to be saved in your Data Management Service).
+Now your image data will be saved locally on your robot in <file>/.viam/capture</file>, or whatever directory you configured the captured data from your Data Management Service to be saved to.
 
 ![Screenshot from the Viam app showing the data capture settings used for this tutorial.](../img/data-management/image5.png)
 
