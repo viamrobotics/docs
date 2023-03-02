@@ -174,7 +174,7 @@ For more detailed information see [Export Data](../../manage/data-management/exp
 
 ## Next steps
 
-In this tutorial, you have learned how to use Data Management, hot to capture camera data, sync that data from your robot to the cloud, and view and export the data.
+In this tutorial, you have learned how to use Data Management to capture camera data, sync that data from your robot to the cloud, and view and export the data.
 
 Now it's up to you, set up data management for your orbots to track your robot's usage over time and build dashboards to visualize the data from your robot ot to train machine learning models to detect hand gestures or objects.
 
