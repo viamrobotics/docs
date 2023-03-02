@@ -176,6 +176,7 @@ For more detailed information see [Export Data](../../manage/data-management/exp
 
 In this tutorial, you have learned how to use Data Management to capture camera data, sync that data from your robot to the cloud, and view and export the data.
 
-Now it's up to you, set up data management for your orbots to track your robot's usage over time and build dashboards to visualize the data from your robot ot to train machine learning models to detect hand gestures or objects.
+Now, it's up to you.
+Set up data management for your robots to track your robot's usage over time, build dashboards to visualize the data from your robot, or train machine learning models to detect hand gestures or objects.
 
 If you have any issues or if you want to connect with other developers learning how to build robots with Viam, head over to the <a href="https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw" target="_blank">Viam Community Slack</a>.
