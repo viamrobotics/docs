@@ -94,6 +94,7 @@ To enable image data capture for a camera component, follow these steps:
    - You should also select the Mime Type that you want to capture.
      For this tutorial, we are capturing `image/jpeg` data.
 
+<br>
 4. Click **Save Config** at the bottom of the window.
 
 Now your image data will be saved locally on your robot in <file>/.viam/capture</file>, or whatever directory you configured the captured data from your Data Management Service to be saved to.
