@@ -135,44 +135,23 @@ description:
 {{% /tab %}}
 {{% tab name="Issue Resolutions" %}}
 
-<table style="margin-bottom:18px">
-    <tbody style="vertical-align:top;">
-        <tr>
-            <td width="120px"><strong>
-                Viam Server goes into restart loop instead of using cached config
-            </strong></td>
-            <td>
-                When restarting a <code>viam-server</code> that was previously connected to the internet and cached the config - it went into a restart loop when it does not have access to the internet.
-            </td>
-        </tr>
-        <tr>
-            <td width="120px"><strong>
-                Never have long-lived I2CHandle objects
-            </strong></td>
-            <td>
-                Creating an <code>I2CHandle</code> locks the I2C bus that spawned it, and closing the handle unlocks the bus again. That way, only one device can talk over the bus at a time, and you don’t get race conditions. However, if a component creates a handle in its constructor, it locks the bus forever, which means no other component can use that bus.<br>
-                <br>
-                We have changed components that stored an <code>I2CHandle</code>, so that they instead just store a pointer to the board <code>board.I2C</code> bus itself, create a new handle when they want to send a command, and close it again as soon as they're done.
-            </td>
-        </tr>
-        <tr>
-            <td width="120px"><strong>
-                Sensor does not show GPS readings
-            </strong></td>
-            <td>
-                We changed <code>sensor.Readings ["position"]</code> field to return the values of the <code>*geo.Point</code> being accessed.
-            </td>
-        </tr>
-        <tr>
-            <td width="120px"><strong>
-                Add implicit dependencies to servo implementation
-            </strong></td>
-            <td>
-                All component drivers can now declare dependencies, which are used to infer the order or instantiation.
-            </td>
-        </tr>
-    <tbody>
-</table>
+#### Viam Server goes into restart loop instead of using cached config
+
+When restarting a <code>viam-server</code> that was previously connected to the internet and cached the config - it went into a restart loop when it does not have access to the internet.
+
+#### Never have long-lived I2CHandle objects
+
+Creating an <code>I2CHandle</code> locks the I2C bus that spawned it, and closing the handle unlocks the bus again. That way, only one device can talk over the bus at a time, and you don’t get race conditions. However, if a component creates a handle in its constructor, it locks the bus forever, which means no other component can use that bus.<br>
+<br>
+We have changed components that stored an <code>I2CHandle</code>, so that they instead just store a pointer to the board <code>board.I2C</code> bus itself, create a new handle when they want to send a command, and close it again as soon as they're done.
+
+#### Sensor does not show GPS readings
+
+We changed <code>sensor.Readings ["position"]</code> field to return the values of the <code>*geo.Point</code> being accessed.
+
+#### Add implicit dependencies to servo implementation
+
+All component drivers can now declare dependencies, which are used to infer the order or instantiation.
 
 {{% /tab %}}
 {{< /tabs >}}
