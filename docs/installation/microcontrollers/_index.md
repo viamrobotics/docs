@@ -29,9 +29,18 @@ See [Github](https://github.com/viamrobotics/micro-rdk) for code examples and mo
 ESP-IDF is the development framework for Espressif SoCs (System-on-Chips), supported on Windows, Linux and macOS.
 Viam recommends using [our fork](https://github.com/npmenard/esp-idf) of the ESP-IDF framework to support camera configuration.
 
+## Hardware Requirements
+
+You need the following hardware, tools, and software to create a new project on an ESP32 with the micro-RDK version of `viam-server`:
+
+- An Expressif ESP32 microcontroller.
+Viam recommends purchasing the ESP32 with a development board: see development kit options [here](https://www.espressif.com/en/products/devkits).
+- A USB-C cable for connecting the ESP32 to your PC (included with ESP32 DevKits).
+- A Micro-USB (recommended), 5V/GND header pin or 3V3/GND header pin power supply.
+
 ### Install ESP-IDF
 
-Start by completing Step 1 of [these instructions](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html), following the appropriate steps for your development machine's architecture, and then return here.
+Start by completing Step 1 of [these instructions](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html), following the appropriate steps for your PC / development machine's architecture, and then return here.
 
 Clone Viam's fork of the ESP-IDF:
 
@@ -206,7 +215,7 @@ index f75b465..2b0ba9c 100644
 ### Configure the ESP32 as a Remote
 
 To programmatically control the robot now running on the ESP32, you need to connect it to another robot that is running the full-featured `viam-server`, as the microcontroller lacks the required processing power to do so.
-This second "robot" can be as simple as an instance of `viam-server` running on your personal computer.
+This second "robot" can be as simple as an instance of `viam-server` running on your development machine.
 
 By configuring the ESP32 robot as a remote of a robot running `viam-server`, you can establish a secure connection between the two robots.
 
