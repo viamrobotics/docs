@@ -25,6 +25,8 @@ Viam's Client SDKs support several ways to connect and control your robots, with
 
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 
+- [Typescript SDK](https://ts.viam.dev/)
+
 ## Quick Start Examples
 
 {{% alert title="Note" color="note" %}}
@@ -37,13 +39,13 @@ Before you get started, ensure that you:
 
 - Go to the **SETUP** tab and follow the instructions there.
 
-- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk) or [Python](https://python.viam.dev/) SDK on your computer.
+- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), or [Typescript](https://ts.viam.dev/) SDK on your computer.
 
 {{% /alert %}}
 
 {{% alert title="Tip" color="tip" %}}
 
-You can find more examples of Viam's SDKs on the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1) or the [Go SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples).
+You can find more examples of Viam's SDKs in the <file>examples</file> folder of the [Python SDK GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1), the [Go SDK GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples), or the [Typescript SDK GitHub repository](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples).
 
 {{% /alert %}}
 
@@ -126,6 +128,50 @@ func main() {
 ```
 
 {{% /tab %}}
+{{% tab name="Typescript" %}}
+
+```ts {class="line-numbers linkable-line-numbers"}
+import { Client, MotorClient } from "@viamrobotics/sdk";
+import type { Credentials } from "@viamrobotics/rpc/src/dial";
+
+async function connect() {
+  // You can remove this block entirely if your robot is not authenticated.
+  // Otherwise, replace with an actual secret.
+  const secret = "<SECRET>";
+  const creds: Credentials = {
+    payload: secret,
+    type: "robot-location-secret",
+  };
+
+  // Replace with the host of your actual robot running Viam.
+  const host = "<HOST>";
+  const client = new Client(host);
+
+  // Omit `creds` if your robot is not authenticated.
+  await client.connect(undefined, creds);
+
+  return client;
+}
+
+async function main() {
+  // Connect to client
+  let client: Client;
+  try {
+    client = await connect();
+    console.log("connected!");
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+
+  // get resources??
+
+}
+
+main();
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### How to get an image from a camera with Viam
@@ -177,6 +223,75 @@ m1.Stop(context.Background(), nil)
 
 // Run motor2 at 1000 RPM for 200 rotations
 m2.GoFor(context.Background(), 1000, 200, nil)
+```
+
+{{% /tab %}}
+{{% tab name="Typescript" %}}
+
+```ts {class="line-numbers linkable-line-numbers"}
+import { Client, MotorClient } from "@viamrobotics/sdk";
+import type { Credentials } from "@viamrobotics/rpc/src/dial";
+
+async function connect() {
+  // You can remove this block entirely if your robot is not authenticated.
+  // Otherwise, replace with an actual secret.
+  const secret = "<SECRET>";
+  const creds: Credentials = {
+    payload: secret,
+    type: "robot-location-secret",
+  };
+
+  // Replace with the host of your actual robot running Viam.
+  const host = "<HOST>";
+  const client = new Client(host);
+
+  // Omit `creds` if your robot is not authenticated.
+  await client.connect(undefined, creds);
+
+  return client;
+}
+
+function button() {
+  return <HTMLButtonElement>document.getElementById("main-button");
+}
+
+// This function runs a motor component with a given named on your robot.
+// Feel free to replace it whatever logic you want to test out!
+async function run(client: Client) {
+  // Replace with the name of a motor on your robot.
+  const name = "<MOTOR NAME>";
+  const mc = new MotorClient(client, name);
+
+  try {
+    button().disabled = true;
+
+    console.log(await mc.getPosition());
+    await mc.goFor(100, 10);
+    console.log(await mc.getPosition());
+  } finally {
+    button().disabled = false;
+  }
+}
+
+async function main() {
+  // Connect to client
+  let client: Client;
+  try {
+    client = await connect();
+    console.log("connected!");
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+
+  // Make the button in our app do something interesting
+  button().onclick = async () => {
+    await run(client);
+  };
+  button().disabled = false;
+}
+
+main();
 ```
 
 {{% /tab %}}
