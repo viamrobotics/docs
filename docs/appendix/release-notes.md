@@ -8,6 +8,154 @@ description:
 # SME: Naomi
 ---
 
+## 28 February 2023
+
+{{< tabs >}}
+{{% tab name="Versions" %}}
+
+## Release Versions
+
+* rdk - **v0.2.18**
+* api - **v0.1.83**
+* slam - **v0.1.22**
+* viam-python-sdk - **v0.2.10**
+* goutils - **v0.1.13**
+* rust-utils - **v0.0.10**
+
+(**Bold=updated version**)
+
+{{% /tab %}}
+
+{{% tab name="New Features" %}}
+
+## New Features
+
+### Reuse rovers in TRY VIAM
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                Users of TRY VIAM now have the option to reuse a robot config if they want to continue working on a project that they started in a prior session.
+                <img src="../img/reuse-rovers.gif" alt="Select a rover to reuse in the UI"> </img>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+### Dynamic Code Samples Tab
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                The code sample included for each SDK dynamically updates as resources are added to the config. We instantiate each resource and provide an example of how to call a simple <code>Get</code> method so that users can start coding right away without needing to import and provide the name of all of the components and services in their config.
+                <img src="../img/dynamic-code-sample.gif" alt="Example of the python code sample generated for the Viam Rover fragment" title="Example of the python code sample generated for the Viam Rover fragment"> </img>
+                <img src="../img/example-output-try-viam.gif" alt="Example output from running the example code used in the TRY VIAM experience " title="Example output from running the example code used in the TRY VIAM experience "> </img>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+### Typescript SDK
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                Users that want to create web interfaces to control their robots can use the new Typescript SDK as a client. The RDK server running on the robot is able to detect if a given SDK client session has lost communication because it tries to maintain a heartbeat once every 2 seconds. Users can choose to opt-out of this session management.
+                <ul>
+                <li>
+                    <a href="https://ts.viam.dev/">Typescript SDK Docs</a>
+                </li>
+                <li>
+                    <a href="https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/teleop">Teleop Example from Github page</a>
+                    <img src="../img/teleop-example.gif" alt="Example of the python code sample generated for the Viam Rover fragment" title="Example of the python code sample generated for the Viam Rover fragment"> </img>
+                </li>
+                </ul>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+### Frame System Visualizer
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                Users can now set up a frame system on their robot using a 3D visualizer located in the **FRAME SYSTEM** tab on the config UI. Setting up the frame system hierarchy of a robot enables the RDK to transform poses between different component reference frames. Users can also give individual components a geometry so that the RDK’s builtin motion planner can avoid obstacles while path planning.
+                <ul>
+                <li>
+                    <img src="../img/frame-system-visualizer.gif" alt="Example of configuring a frame system for a Viam Rover that has a camera and a lidar" title="Example of configuring a frame system for a Viam Rover that has a camera and a lidar"> </img>
+                </li>
+                </ul>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+### Viam for Microcontrollers
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                Micro-RDK is a lightweight version of the RDK that is capable of running on an ESP32.  Examples & detailed set up instructions can be found in the <a href="https://github.com/viamrobotics/micro-rdk">Micro-RDK GitHub repo.</a>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+{{% /tab %}}
+
+{{% tab name="Improvements" %}}
+
+## Improvements
+
+### Base control card UI
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                We have improved the UI of the base control card to make it easier to view multiple camera streams while remotely controlling a base. When a robots config contains SLAM, we also now provide a view of the SLAM Map with a dot to indicate where the robot is currently localized within that map.
+                <img src="../img/base-control-card-ui.png" alt="Base component card UI"> </img>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+{{% /tab %}}
+{{% tab name="Issue Resolutions" %}}
+
+#### Viam Server goes into restart loop instead of using cached config
+
+When restarting a <code>viam-server</code> that was previously connected to the internet and cached the config - it went into a restart loop when it does not have access to the internet.
+
+#### Never have long-lived I2CHandle objects
+
+Creating an <code>I2CHandle</code> locks the I2C bus that spawned it, and closing the handle unlocks the bus again. That way, only one device can talk over the bus at a time, and you don’t get race conditions. However, if a component creates a handle in its constructor, it locks the bus forever, which means no other component can use that bus.<br>
+<br>
+We have changed components that stored an <code>I2CHandle</code>, so that they instead just store a pointer to the board <code>board.I2C</code> bus itself, create a new handle when they want to send a command, and close it again as soon as they're done.
+
+#### Sensor does not show GPS readings
+
+We changed <code>sensor.Readings ["position"]</code> field to return the values of the <code>*geo.Point</code> being accessed.
+
+#### Add implicit dependencies to servo implementation
+
+All component drivers can now declare dependencies, which are used to infer the order or instantiation.
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## 31 January 2023
 
 {{< tabs >}}
