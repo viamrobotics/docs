@@ -35,12 +35,13 @@ Here is an example of [how to create a new arm server component in the Python SD
 
 ## What is required to create a custom component?
 
-The steps required in creating a custom component and connecting it to the RDK are
+The steps required in creating a custom component and connecting it to the RDK are:
 
 1. Subclass a component and implement desired functions
-
+    - For functions you do not wish to implement with the Python SDK, you must at least define them by putting `pass` or `raise NotImplementedError()` in the function.
+    Otherwise, the class won't instantiate.
+    - Similarly, when using the Go SDK, you must define all functions but you can leave the ones you do not wish to implement empty.
 2. Create an `rpc.server.Server` instance and register the custom component
-
 3. Start the Server and register the running server as a remote
 
 You can view the complete tutorial on how to create a custom component using Python in the [Viam Python documentation](https://python.viam.dev/examples/example.html#create-custom-components).
