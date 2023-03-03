@@ -46,7 +46,7 @@ This is how you configure a one-axis gantry:
 <img src="../img/gantry/gantry-config-ui-oneaxis.png" alt="Example of what configuration for a one-axis gantry component looks like in the Viam app config builder." style="width:100%"/>
 
 {{< /tab >}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json-viam
 {
@@ -103,7 +103,7 @@ This is how you configure a multi-axis gantry:
 <img src="../img/gantry/gantry-config-ui-multiaxis.png" alt="Example of what configuration for a multi-axis gantry component looks like in the Viam app config builder." style="width:100%"/>
 
 {{< /tab >}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json-viam
 {
@@ -344,7 +344,7 @@ import (
   "context"
 
   "github.com/edaniels/golog"
-  
+
   "go.viam.com/rdk/components/gantry"
   "go.viam.com/rdk/referenceframe"
 )

@@ -39,7 +39,7 @@ Keep in mind that if the servo draws too much power, it can cause the board to t
 Refer to the following example configuration file, including the board and servo:
 
 {{< tabs name="Example Servo Config" >}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

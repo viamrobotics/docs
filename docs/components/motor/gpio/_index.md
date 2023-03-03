@@ -27,7 +27,7 @@ An example configuration for a `gpio` motor:
 <img src="../../img/motor/gpio-config-ui.png" alt="Screenshot of a gpio motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json
 {
@@ -62,7 +62,7 @@ An example configuration for a `gpio` motor:
 ```
 
 {{% /tab %}}
-{{% tab name="Example JSON" %}}
+{{% tab name="JSON Example" %}}
 
 ```json
 {

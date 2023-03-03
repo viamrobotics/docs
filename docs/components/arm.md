@@ -55,7 +55,7 @@ Refer to the following example configuration for a robotic arm of model `xArm6`:
 
 {{% /tab %}}
 
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -89,7 +89,7 @@ Refer to the following example configuration for a robotic arm of model `xArm6`:
 ```
 
 {{% /tab %}}
-{{% tab name="Example JSON" %}}
+{{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
