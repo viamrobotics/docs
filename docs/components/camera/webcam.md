@@ -26,7 +26,7 @@ Fill in the attributes for your webcam view:
 <br>
 
 {{< /tab >}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {

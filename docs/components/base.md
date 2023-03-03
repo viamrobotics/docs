@@ -46,7 +46,7 @@ This is how you configure a wheeled base:
 {{% tab name="Config Builder" %}}
 <img src="../img/base/base-ui-config.png" alt="Picture of what an example configuration for a wheeled base looks like in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." width="800"/>
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -88,7 +88,7 @@ This is how you configure a wheeled base:
 ```
 
 {{% /tab %}}
-{{% tab name="Example JSON" %}}
+{{% tab name="JSON Example" %}}
 
 ```json
 {

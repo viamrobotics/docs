@@ -28,7 +28,7 @@ Field | Description
 <img src="../../img/motor/fake-config-ui.png" alt="Screenshot of a gpio motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json
 {
@@ -47,7 +47,7 @@ Field | Description
 ```
 
 {{% /tab %}}
-{{% tab name="Example JSON" %}}
+{{% tab name="JSON Example" %}}
 
 ```json
 {
