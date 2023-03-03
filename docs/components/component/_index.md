@@ -28,7 +28,7 @@ Most robots with a COMPONENT need at least the following hardware:
 ## Configuration
 
 Configuring this component on your robot enables you to ....
-You can easily configure your component, as pictured below, on the [Viam App](https://app.viam.com/).
+You can easily configure your component, as pictured below, on the [Viam app](https://app.viam.com/).
 {{< tabs name="TabPanelExample" >}}
 {{% tab name="UI"%}}
 
@@ -37,7 +37,7 @@ Description of how to configure the component in the UI
 {{% /tab %}}
 {{% tab name="JSON" %}}
 
-```json-viam
+```json
 {
     "name": "COMPONENT_name",
     "type": "component",
@@ -56,7 +56,7 @@ Configure the following attributes:
 
 The following is an example configuration for an Example component:
 
-```json-viam
+```json
 {
     "name": "COMPONENT_name",
     "type": "component",

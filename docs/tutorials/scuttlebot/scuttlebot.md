@@ -74,7 +74,7 @@ The next step is to add a motor and make it spin a wheel.
 
 {{% expand "Click to view the raw JSON for the right motor" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "right",
   "type": "motor",
@@ -136,7 +136,7 @@ This will be similar to adding the right motor.
 
 {{% expand "Click to view the raw JSON for the left motor" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "left",
   "type": "motor",
@@ -185,7 +185,7 @@ From the **CONFIG** tab:
 
 The attributes of your base component's config should look something like this:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
  "width_mm": 400,
  "wheel_circumference_mm": 250,

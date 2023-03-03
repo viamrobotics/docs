@@ -30,7 +30,7 @@ To capture data from one or more robots, you must first add the [Data Management
 
 {{%expand "Click to view the JSON configuration for the Data Management Service" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [ ],
   "services": [
@@ -77,7 +77,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
 
 {{%expand "Click to view an example JSON configuration capturing data from the ReadImage method of a camera" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 
 {
   "services": [
@@ -164,7 +164,7 @@ To add them to your JSON configuration you must explicitly add the part's `type`
 
 {{%expand "Click to view the JSON configuration for an ESP32 board" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "type": {
     "Type": {
         "type": "component",
@@ -188,7 +188,7 @@ To add them to your JSON configuration you must explicitly add the part's `type`
 
 The following example captures data from two analog readers that provide a voltage reading and from pin 27 of the board's GPIO:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "services": [
     {

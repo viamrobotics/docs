@@ -96,7 +96,7 @@ For `wheel_circumference_mm` use `220`.
 
 If you click **Go to Advanced** you can see that the Attributes field now contains the following:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "width_mm": 150,
   "wheel_circumference_mm": 220,
@@ -171,7 +171,7 @@ You can `name` this service `yahboom_gamepad_control` and give it the `type` `ba
 Click **Create Service**.
 You will need to configure the following attributes for this service: `base` should be `yahboom-base` and `input_controller` should be `8bit-do-controller`:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "base": "yahboom-base",
   "input_controller": "8bit-do-controller"
@@ -182,7 +182,7 @@ You will need to configure the following attributes for this service: `base` sho
 
 If you can not see a section where you can add the attributes, you can go to **Raw JSON** mode, and add this code:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
   "services": [
     {
       "name": "yahboom-gamepad-control",

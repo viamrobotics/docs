@@ -72,7 +72,7 @@ Refer to the following example configuration file for a single-board computer li
 {{% /tab %}}
 {{% tab name="Template JSON" %}}
 
-```json-viam
+```json
 {
   "components": [
     {
@@ -87,7 +87,7 @@ Refer to the following example configuration file for a single-board computer li
 {{% /tab %}}
 {{% tab name="Full JSON Example" %}}
 
-```json-viam
+```json
 {
   "components": [
     {
@@ -288,7 +288,7 @@ Contrast this with running the `Get` method on a GPIO pin only at specific times
 
 An example:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -344,7 +344,7 @@ Only the index of the entire bus must be specified.
 
 The attributes section of a board using SPI will contain the following:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "spis": [
     {
@@ -373,7 +373,7 @@ Review the [instructions in our documentation](/installation/prepare/rpi-setup/#
 
 ##### Configuration
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "i2cs": [
     {

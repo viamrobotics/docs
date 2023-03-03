@@ -21,7 +21,7 @@ To change the sync interval, specify an interval in minutes in the interval fiel
 
 {{%expand "Click to view the JSON configuratio for the Data Management Service" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [ ],
   "services": [
@@ -63,7 +63,7 @@ In the example pictured here, the Data Management Service syncs the configured c
 
 {{%expand "Click to view the JSON configuration for this example" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [ ],
   "services": [

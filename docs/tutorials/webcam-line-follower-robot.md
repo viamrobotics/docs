@@ -6,17 +6,16 @@ type: "docs"
 description: "Build a line-following robot that relies on a webcam and color detection."
 tags: ["base", "vision", "detector", "camera", "services", "python"]
 ---
+
+<div class="td-max-width-on-larger-screens">
+      <img src="../img/webcam-line-follower/lf-following1.gif" class="float-right" style="margin-left:1em;width:150px" alt="Robot following a line"/>
+</div>
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
-<div style="column-count:2;column-gap-40px">
-<div>
-<p>**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision#detection">Vision Service color detector</a>.
-</p></div>
-<div><img src="/tutorials/img/webcam-line-follower/lf-following1.gif" alt="Robot following a line"/></div>
-</div>
+**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision#detection">Vision Service color detector</a>.
 
-**What you will learn**:<BR>
+**What you will learn**:
 
 - How to use the Viam Vision Service including color detectors
 - How to use the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk), including:
@@ -62,7 +61,7 @@ Your webcam configuration will look something like this:
 
 Or if you prefer the raw JSON:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
     {
       "name": "my_camera",
       "type": "camera",
@@ -92,7 +91,7 @@ What this will look like in the Config Builder:
 
 Raw JSON:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "register_models": [
     {
@@ -120,7 +119,7 @@ You'll need to edit the `pipeline` section as well with `type` set to `"detectio
 
 You can paste the following into the **Attributes** section of the `show_detections` config builder:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "stream": "color",
   "source": "my_camera",
@@ -146,7 +145,7 @@ You may have different pin numbers and other attributes depending on your hardwa
 
 {{%expand "Click to view JSON" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {

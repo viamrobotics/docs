@@ -131,7 +131,7 @@ We named ours "dog_test.py" and opened it in Visual Studio Code.
 
 Paste the following code snippet into the file you created:
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 # dog_test.py is for testing the connection
 
 import socket, time

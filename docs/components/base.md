@@ -48,7 +48,7 @@ This is how you configure a wheeled base:
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -90,7 +90,7 @@ This is how you configure a wheeled base:
 {{% /tab %}}
 {{% tab name="Example JSON" %}}
 
-```json-viam
+```json
 {
   "components": [
     {

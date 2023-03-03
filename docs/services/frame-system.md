@@ -98,7 +98,7 @@ Note: because we are using the default orientation, it is optional in the JSON c
 
 We supply this frame information when configuring the arm component, making sure that the parent is "world".
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -140,7 +140,7 @@ After configuring the gantry frame, we can configure the arm.
 The base of the arm mounted to the gantry 100mm above that origin, so we specify the arm's parent as the name of our gantry and offset Z by 100.
 As the gantry extends, the arm will be moved accordingly.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -264,7 +264,7 @@ Below are JSON examples for each parameter type used by our [Universal Robots](h
 
 #### Example: kinematic_param_type=SVA
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "UR5e",
     "kinematic_param_type": "SVA",
@@ -471,7 +471,7 @@ Below are JSON examples for each parameter type used by our [Universal Robots](h
 
 #### Example: kinematic_param_type=DH
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "UR5e",
     "kinematic_param_type": "DH",

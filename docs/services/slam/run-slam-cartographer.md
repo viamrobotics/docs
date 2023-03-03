@@ -187,7 +187,7 @@ Now that you've added your Rplidar device as a modular component of your robot, 
 {{%expand "Click here if you prefer to use Raw JSON to build your service" %}}
 In the **CONFIG** tab, select the **Raw JSON** mode, then copy/paste the following configuration:
 
-```json-viam
+```json
   "services": [
     {
       "attributes": {
@@ -237,7 +237,7 @@ At this point, your complete configuration should look like:
   {{< tabs >}}
   {{% tab name="Linux" %}}
 
-  ```json-viam
+  ```json
   {
     "components": [
       {
@@ -281,7 +281,7 @@ At this point, your complete configuration should look like:
   {{% /tab %}}
   {{< /tabs >}}
 
-  <!-- json-viam TAB MACOS: TODO
+  <!-- json TAB MACOS: TODO
   {
     "components": [
       {
@@ -367,7 +367,7 @@ This tells the service to use only data found within the `data_dir` directory sp
 * Copy the following configuration code for your Cartographer service.
   Paste it into the "Raw JSON":
 
-```json-viam
+```json
 {
   "services": [
     {

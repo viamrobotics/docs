@@ -38,7 +38,7 @@ Therefore, for <strong>Model</strong>, please manually enter, "gamepad," (withou
 Please add the following Attributes:
 </OL>
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
  "base": "scuttle",
  "input_controller": "gamepad"

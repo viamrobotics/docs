@@ -41,7 +41,7 @@ Refer to the following example configuration file, including the board and servo
 {{< tabs name="Example Servo Config" >}}
 {{% tab name="Raw JSON" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
