@@ -78,7 +78,7 @@ The following attributes are available for `mux` input controllers:
 | ---- | --------- | ----------- |
 | `sources` | *Required* | An array of `name`s of each input controller component that should be combined in the `mux` model. |
 
-{{% alert="Note" color="note" %}}
+{{% alert title="Note" color="note" %}}
 You must put each controller's `name` that you add in `sources` in `depends_on`.
 This tells the program loading the config to fully load the source components first.
 {{% /alert %}}

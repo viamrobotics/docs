@@ -14,18 +14,19 @@ You are likely already familiar with human-interface devices, like keyboards and
 
 Configuring an *input* component allows you to use devices like these with your robot, enabling you to control your robot's actions by interacting with the device.
 
-This component currently supports device like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
-[Register callback functions](#registercontrolcallback) to Controls with the `input` API to handle [Events](#events) that occur when the state of the control changes.
+This component currently supports devices like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
+To use the controller's inputs, you must [register callback functions](#registercontrolcallback) to the _Controls_ with the `input` API.
+The callback functions can then handle the [Events](#events) that are sent when the Control is activated or moved, for example, when a button is pushed.
 
 Most robots with an input controller need at least the following hardware:
 
-- A robot with a computer capable of running `viam-server`.
+- A computer capable of running `viam-server`.
 - A power supply cable or batteries for the input device and the robot.
 - A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor).
 
 ## Configuration
 
-Configuration depends on which `model` the device you wish to configure falls under.
+Configuration depends on the `model` of your device.
 
 For configuration information, click on one of the following models:
 
@@ -41,7 +42,7 @@ Once you've configured your input controller according to model type, you can wr
 
 ### Control your robot with an Input Controller with Viam's Client SDK Libraries
 
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam app guide](/manage/app-usage/) for app-specific guidance.
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
 
 The following example assumes you have a controller called "my_controller" configured as a component of your robot.
 If your input controller has a different name, change the `name` in the example.
@@ -193,7 +194,7 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert="Note" color="note" %}}
+{{% alert title="Note" color="note" %}}
 The `Controller` interface is defined in [the Viam RDK](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go).
 
 {{% /alert %}}
@@ -218,27 +219,15 @@ turn_amt = 0
 modal = 0
 cmd = {}
 
-async def connect_modal():
+async def connect_robot(host, payload):
     creds = Credentials(
         type='robot-location-secret',
-        payload="xyzabclocationexample"), # ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
+        payload=payload),
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('robot123example.locationxyzexample.viam.com' # ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
-    , opts)
-
-async def connect_controller():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload="xyzabclocationexample"), # ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
-    )
-    return await RobotClient.at_address("robot123example.locationxyzexample.viam.com", # ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
-    , opts)
+    return await RobotClient.at_address(host, opts)
 
 def handle_turning(event):
     global turn_amt
@@ -308,17 +297,19 @@ async def handleController(controller):
             print(respon)
 
 async def main():
-    g920_viam = await connect_controller()
-    modal_viam = await connect_modal()
+     # ADD YOUR ROBOT REMOTE ADDRESS and LOCATION SECRET VALUES.
+     # This can be found in the Code Sample tab of app.viam.com.
+     g920_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
+    modal_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
 
-    g920 = Controller.from_robot(g920_viam, 'wheel')
+    g920 = Controller.from_robot(g920_robot, 'wheel')
     global modal
-    modal = Base.from_robot(modal_viam, 'modal-base-server:base')
+    modal = Base.from_robot(modal_robot, 'modal-base-server:base')
 
     await handleController(g920)
 
-    await g920_viam.close()
-    await modal_viam.close()
+    await g920_robot.close()
+    await modal_robot.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
@@ -366,7 +357,7 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert="Note" color="note" %}}
+{{% alert title="Note" color="note" %}}
 Access the complete repository for the Python example on [Github](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
 {{% /alert %}}
 
@@ -375,7 +366,7 @@ Access the complete repository for the Python example on [Github](https://github
 Each `Event` object represents a singular event from the input device, and has four fields:
 
 1. `Time`: `time.Time` the event occurred.
-2. `Event`: `EventType` indicating the most recent status of the specified control on the controller.
+2. `Event`: `EventType` indicating the type of event (e.g. specific button actuation or axes movement)
 3. `Control`: `Control` indicating which [Axis](#axis-controls), [Button](#button-controls), or Pedal on the controller has been changed.
 4. `Value`: `float64` indicating the position of an [Axis](#axis-controls) or the state of a [Button](#button-controls) on the specified control.
 
@@ -387,7 +378,7 @@ A string representing the type of Event that has occurred in the [Event Object](
 - The registered function is then called in addition to any other callback functions you've registered, every time an `Event` happens on your controller.
 This is useful for debugging without interrupting normal controls, or for capturing extra or unknown events.
 
-Registered `EventTypes` are defined as followed:
+Registered `EventTypes` definitions:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -569,13 +560,13 @@ See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/in
 
 ### Axis Controls
 
-{{% alert="Note" color="note" %}}
+{{% alert title="Note" color="note" %}}
 Currently, only `Absolute` axes are supported.
 
 `Relative` axes, reporting a relative change in distance, used by devices like mice and trackpads, will be supported in the future.
 {{% /alert %}}
 
-Devices like joysticks and thumbsticks—anything that "returns to center" on its own—use `Absolute` axis control types.
+Devices like joysticks and thumbsticks which "return to center" on their own use `Absolute` axis control types.
 
 These controls report a `PositionChangeAbs` [EventType](#eventtype-field).
 
@@ -621,7 +612,7 @@ If your input controller has a directional pad with analog buttons on the pad, t
 | `AbsoluteHat0X` | Left DPAD Button Press | Neutral | Right DPAD Button Press |
 | `AbsoluteHat0Y` | Up DPAD Button Press | Neutral | Down DPAD Button Press |
 
-{{% alert="Note" color="note" %}}
+{{% alert title="Note" color="note" %}}
 Devices like analog triggers and gas or brake pedals use `Absolute` axes, but they only report position change in the positive direction.
 The neutral point of the axes is still `0.0`.
 {{% /alert %}}
@@ -666,7 +657,7 @@ If your input controller is a gamepad with digital trigger buttons, this is what
 
 #### Digital Buttons for Sticks
 
-If your input controller is a gamepad with a joystick with digital buttons, this is what the controls for those buttons report as.
+If your input controller is a gamepad with "clickable" thumbsticks, this is what thumbstick presses report as.
 
 | Name | Description |
 | ---- | ----------- |
@@ -712,7 +703,7 @@ A second call to register a callback function for a [EventType](#eventtype-field
 
 You can pass a `nil` function here to "deregister" a callback.
 
-{{% alert="Note" color="note" %}}
+{{% alert title="Note" color="note" %}}
 Registering a callback for the `ButtonChange` [EventType](#eventtype-field) is merely a convenience for filtering.
 Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, but `ButtonChange` is not reported in an actual [Event Object](#event-object).
 {{% /alert %}}
@@ -1007,7 +998,7 @@ logger.Info(controls)
 
 Directly send an [Event Object](#event-object) from external code.
 
-{{% alert="Note" color="note" %}}
+{{% alert title="Note" color="note" %}}
 This method is currently only supported for input controllers of model `webgamepad`.
 {{% /alert %}}
 
