@@ -1003,7 +1003,6 @@ logger.Info(controls)
 
 {{% /tab %}}
 {{< /tabs >}}
-
 <!-- ### TriggerEvent
 
 Directly send an [Event Object](#event-object) from external code.
