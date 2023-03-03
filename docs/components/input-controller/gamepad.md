@@ -86,6 +86,15 @@ You have to press a button or move a stick on your gamepad for the browser to re
 For your security, the browser won't report a gamepad until an input has been sent.
 {{% /alert %}}
 
+### Work in Progress Models
+
+Mappings are currently available for a wired XBox 360 controller, and wireless XBox Series X|S, along with the 8bitdo Pro 2 bluetooth gamepad (which works great with the Raspberry Pi).
+
+The XBox controllers emulate an XBox 360 gamepad when in wired mode, as does the 8bitdo.
+
+Because of that, any unknown gamepad will be be mapped that way.
+If you have another controller that you want to use to control your robot, feel free to submit a PR on [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) with new mappings.
+
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

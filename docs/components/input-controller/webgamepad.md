@@ -54,7 +54,7 @@ Use the following configuration for an input controller of model `webgamepad`:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Usage
+## Usage with Base Remote Control Service
 
 Connect your controller to your computer.
 If you haven't done so already, create a robot in [the Viam app](https://app.viam.com), and follow the instructions in the **SETUP** tab to start `viam-server` on your computer and connect to the robot.
@@ -91,6 +91,15 @@ For example, this is what the row of inputs above looks like *after* pressing th
 You have to press a button or move a stick on your gamepad for the browser to report the gamepad.
 For your security, the browser won't report a gamepad until an input has been sent.
 {{% /alert %}}
+
+### Work in Progress Models
+
+Mappings are currently available for a wired XBox 360 controller, and wireless XBox Series X|S, along with the 8bitdo Pro 2 bluetooth gamepad (which works great with the Raspberry Pi).
+
+The XBox controllers emulate an XBox 360 gamepad when in wired mode, as does the 8bitdo.
+
+Because of that, any unknown gamepad will be be mapped that way.
+If you have another controller that you want to use to control your robot, feel free to submit a PR on [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) with new mappings.
 
 ## Troubleshooting
 

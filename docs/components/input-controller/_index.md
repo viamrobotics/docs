@@ -4,7 +4,7 @@ linkTitle: "Input Controller"
 weight: 60
 type: "docs"
 no_list: true
-description: "An input controller, like a gamepad or elevator button panel, is a device humans use to control a robot's actions."
+description: "An input controller, like a gamepad or joystick, is a device humans use to control a robot's actions."
 tags: ["input controller", "components"]
 icon: "img/components/controller.png"
 # SME: James
@@ -12,12 +12,16 @@ icon: "img/components/controller.png"
 
 You are likely already familiar with human-interface devices, like keyboards and mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers, from your daily life.
 
-Configuring an *input* component allows you to use one of these devices with your robot, enabling you to control your robot's actions by interacting with the device.
+Configuring an *input* component allows you to use devices like these with your robot, enabling you to control your robot's actions by interacting with the device.
+
+This component currently supports device like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
+[Register callback functions](#registercontrolcallback) to Controls with the `input` API to handle [Events](#events) that occur when the state of the control changes.
 
 Most robots with an input controller need at least the following hardware:
 
-- A power supply cable or batteries.
-- A component that you can control, like an [arm](/components/arm/) or [motor](/components/motor).
+- A robot with a computer capable of running `viam-server`.
+- A power supply cable or batteries for the input device and the robot.
+- A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor).
 
 ## Configuration
 
@@ -34,15 +38,6 @@ For configuration information, click on one of the following models:
 | [`fake`](fake) | A model for testing, with [no physical hardware - see GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
 
 Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
-
-### Work in Progress Models
-
-Mappings are currently available for a wired XBox 360 controller, and wireless XBox Series X|S, along with the 8bitdo Pro 2 bluetooth gamepad (which works great with the Raspberry Pi.)
-
-The XBox controllers emulate an XBox 360 gamepad when in wired mode, as does the 8bitdo.
-
-Because of that, any unknown gamepad will be be mapped that way.
-If you have another controller that you want to use to control your robot, feel free to submit a PR on the [Viam Robotics Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) with new mappings.
 
 ### Control your robot with an Input Controller with Viam's Client SDK Libraries
 
@@ -386,7 +381,7 @@ Each `Event` object represents a singular event from the input device, and has f
 
 ### EventType Field
 
-A string representing the type of Event that has occured in the [Event Object](#event-object).
+A string representing the type of Event that has occurred in the [Event Object](#event-object).
 
 - To select for events of all type when registering callback function with [RegisterControlCallback](#registercontrolcallback), you can use `AllEvents` as your `EventType`.
 - The registered function is then called in addition to any other callback functions you've registered, every time an `Event` happens on your controller.
