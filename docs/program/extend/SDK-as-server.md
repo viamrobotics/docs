@@ -30,7 +30,7 @@ You will need to create a server component and register the new arm in order to 
 Once your new arm is registered, you will be able to use it remotely with Viam.
 
 {{% alert title="Tip" color="tip" %}}
-Here is an example of [how to create a new arm server component in the Python SDK documentation](https://python.viam.dev/examples/example.html#subclass-a-component).
+Here is an example of [how to create a custom arm component in the Python SDK documentation](https://python.viam.dev/examples/example.html#subclass-a-component).
 {{% /alert %}}
 
 ## What is required to create a custom component?
