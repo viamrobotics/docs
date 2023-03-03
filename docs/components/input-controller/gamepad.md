@@ -70,16 +70,17 @@ Support for this component is still experimental, and this page will be updated 
 
 After both the service and component are configured, navigate to the **CONTROL** tab.
 There, you should be able to see a drop-down menu appear with the name of your gamepad.
-Click **Enable**, and click buttons on your controller.
 Then, you should see the controls of your robot and the current input for each control displayed.
 
 <img src="../img/gamepad-enabled-app.png" alt="The dropdown as a table of controls available and their inputs in the Control tab of the Viam app." style="width:100%"/>
 
 Press any button or toggle any stick on the gamepad.
 You should now be able to see the row of control inputs respond to your button presses and stick toggles.
-For example, this is what the row of inputs above looks like *after* pressing the left button on the diamond button pad of the connected PS4 controller.
+For example, this is what the row of inputs above looks like *after* pressing the left button on the diamond button pad of the connected `webgamepad` PS4 controller.
 
-<img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available and their inputs in the Control tab of the Viam app." style="width:100%"/>
+<img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app." style="width:100%"/>
+
+Note that on your `gamepad`, the controls available might look different than this example, and the **Enable** toggle shown is not presented when a linux-supported `gamepad` model is connected.
 
 {{% alert title="Note" color="note" %}}
 You have to press a button or move a stick on your gamepad for the browser to report the gamepad.

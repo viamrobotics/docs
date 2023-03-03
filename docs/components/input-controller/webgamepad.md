@@ -85,7 +85,7 @@ Press any button or toggle any stick on the gamepad.
 You should now be able to see the row of control inputs respond to your button presses and stick toggles.
 For example, this is what the row of inputs above looks like *after* pressing the left button on the diamond button pad of the connected PS4 controller.
 
-<img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available and their inputs in the Control tab of the Viam app." style="width:100%"/>
+<img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app." style="width:100%"/>
 
 {{% alert title="Note" color="note" %}}
 You have to press a button or move a stick on your gamepad for the browser to report the gamepad.

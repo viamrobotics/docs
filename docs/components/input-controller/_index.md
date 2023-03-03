@@ -15,7 +15,7 @@ You are likely already familiar with human-interface devices, like keyboards and
 Configuring an *input* component allows you to use devices like these with your robot, enabling you to control your robot's actions by interacting with the device.
 
 This component currently supports devices like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
-To use the controller's inputs, you must [register callback functions](#registercontrolcallback) to the _Controls_ with the `input` API.
+To use the controller's inputs, you must [register callback functions](#registercontrolcallback) to the *Controls* with the `input` API.
 The callback functions can then handle the [Events](#events) that are sent when the Control is activated or moved, for example, when a button is pushed.
 
 Most robots with an input controller need at least the following hardware:
@@ -366,7 +366,7 @@ Access the complete repository for the Python example on [Github](https://github
 Each `Event` object represents a singular event from the input device, and has four fields:
 
 1. `Time`: `time.Time` the event occurred.
-2. `Event`: `EventType` indicating the type of event (e.g. specific button actuation or axes movement)
+2. `Event`: `EventType` indicating the type of event (for example, a specific button press or axis movement).
 3. `Control`: `Control` indicating which [Axis](#axis-controls), [Button](#button-controls), or Pedal on the controller has been changed.
 4. `Value`: `float64` indicating the position of an [Axis](#axis-controls) or the state of a [Button](#button-controls) on the specified control.
 
@@ -994,7 +994,7 @@ logger.Info(controls)
 
 {{% /tab %}}
 {{< /tabs >}}
-<!-- ### TriggerEvent
+<!-- ### TriggerEvent NOTE: This method should be documented when support is available for all input components.
 
 Directly send an [Event Object](#event-object) from external code.
 
