@@ -12,19 +12,9 @@ aliases:
 # SME: Rand
 ---
 
-Electric motors are the most common form of [actuator](https://en.wikipedia.org/wiki/Actuator) in robotics.
-The *motor* component type natively supports the following models of motor:
-
-Model | Supported hardware <a name="model-table"></a>
----------- | ------------------
-[`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor)
-[`gpiostepper`](./gpiostepper/) | [Stepper motor](https://en.wikipedia.org/wiki/Stepper_motor) driven by a basic stepper driver
-[`TMC5072`](./tmc5072/) | Stepper motor driven by [the TMC5072 chip](https://www.trinamic.com/support/eval-kits/details/tmc5072-bob/)
-[`DMC4000`](./dmc4000/) | Stepper motor driven by a [DMC-40x0 series motion controller](https://www.galil.com/motion-controllers/multi-axis/dmc-40x0)
-[`fake`](./fake/) | Used to test code without hardware
-
-How you configure your motor with Viam depends more on the [motor driver](https://www.wellpcb.com/what-is-motor-driver.html) than on the motor itself.
-Click the model names above for configuration information.
+Electric motors are machines that convert electricity into rotary motion.
+They are the most common form of [actuator](https://en.wikipedia.org/wiki/Actuator) in robotics.
+The *motor* component type natively supports brushed DC motors, brushless DC motors, and stepper motors controlled by a variety of [motor drivers](https://www.wellpcb.com/what-is-motor-driver.html).
 
 Most robots with a motor need at least the following hardware:
 
@@ -36,21 +26,20 @@ Most robots with a motor need at least the following hardware:
 
 [^dmcboard]: The `DMC4000` model does not require a board.
 
-## API
+## Configuration
 
-Method Name | Description
------------ | -----------
-[SetPower](#setpower) | Sets the power to send to the motor as a portion of max power.
-[GoFor](#gofor) | Spins the motor the specified number of revolutions at specified RPM.
-[GoTo](#goto) | Sends the motor to a specified position (in terms of revolutions from home) at a specified speed.
-[ResetZeroPosition](#resetzeroposition) | Sets the current position to be the new zero (home) position.
-[GetPosition](#getposition) | Reports the position of the motor based on its encoder. Not supported on all motors.
-[GetProperties](#getproperties) | Returns whether or not the motor supports certain optional features.
-[Stop](#stop) | Cuts power to the motor off immediately, without any gradual step down.
-[IsPowered](#ispowered) | Returns whether or not the motor is currently on, and the amount of power to it.
-[IsMoving](#ismoving) | Returns whether the motor is moving or not.
+How you configure your motor with Viam depends more on the motor driver than on the motor itself.
+Click the model names below for configuration information:
 
-## Usage example
+Model | Supported hardware <a name="model-table"></a>
+---------- | ------------------
+[`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor)
+[`gpiostepper`](./gpiostepper/) | [Stepper motor](https://en.wikipedia.org/wiki/Stepper_motor) driven by a basic stepper driver
+[`TMC5072`](./tmc5072/) | Stepper motor driven by [the TMC5072 chip](https://www.trinamic.com/support/eval-kits/details/tmc5072-bob/)
+[`DMC4000`](./dmc4000/) | Stepper motor driven by a [DMC-40x0 series motion controller](https://www.galil.com/motion-controllers/multi-axis/dmc-40x0)
+[`fake`](./fake/) | Used to test code without hardware
+
+## Control your motor with Viam's client SDK libraries
 
 The following example assumes you have motors called `motor1` and `motor2` configured as components of your robot.
 If your motor has a different name, change the `name` in the example.
@@ -108,7 +97,19 @@ m2.GoFor(context.TODO(), 1000, 200, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-## Method Details
+## API
+
+Method Name | Description
+----------- | -----------
+[SetPower](#setpower) | Sets the power to send to the motor as a portion of max power.
+[GoFor](#gofor) | Spins the motor the specified number of revolutions at specified RPM.
+[GoTo](#goto) | Sends the motor to a specified position (in terms of revolutions from home) at a specified speed.
+[ResetZeroPosition](#resetzeroposition) | Sets the current position to be the new zero (home) position.
+[GetPosition](#getposition) | Reports the position of the motor based on its encoder. Not supported on all motors.
+[GetProperties](#getproperties) | Returns whether or not the motor supports certain optional features.
+[Stop](#stop) | Cuts power to the motor off immediately, without any gradual step down.
+[IsPowered](#ispowered) | Returns whether or not the motor is currently on, and the amount of power to it.
+[IsMoving](#ismoving) | Returns whether the motor is moving or not.
 
 In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor)
 or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#).
