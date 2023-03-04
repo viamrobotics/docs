@@ -40,6 +40,8 @@ For configuration information, click on one of the following models:
 
 Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 
+## Usage
+
 ### Control your robot with an Input Controller with Viam's Client SDK Libraries
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
@@ -199,169 +201,9 @@ The `Controller` interface is defined in [the Viam RDK](https://github.com/viamr
 
 {{% /alert %}}
 
-## Usage Examples
+## Types
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-The following Python code is an example of controlling a wheeled base with a Logitech G920 steering wheel controller.
-
-``` python {id="python-example" class="line-numbers linkable-line-numbers"}
-import asyncio
-
-from viam.components.base import Base
-from viam.components.input import Control, Controller, EventType
-from viam.proto.common import Vector3
-from viam.robot.client import RobotClient
-from viam.rpc.dial import Credentials, DialOptions
-
-turn_amt = 0
-modal = 0
-cmd = {}
-
-async def connect_robot(host, payload):
-    creds = Credentials(
-        type='robot-location-secret',
-        payload=payload),
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
-    )
-    return await RobotClient.at_address(host, opts)
-
-def handle_turning(event):
-    global turn_amt
-    turn_amt = -event.value
-    print("turning:", turn_amt)
-
-def handle_brake(event):
-    if event.value != 0:
-        print("braking!:", event.value)
-        global cmd
-        cmd = {"y": 0}
-        print("broke")
-
-def handle_accelerator(event):
-    print("moving!:", event.value)
-    global cmd
-    accel = (event.value - 0.1) / 0.9
-    if event.value < 0.1:
-        accel = 0
-        
-    cmd = {"y": accel}
-
-def handle_clutch(event):
-    print("moving!:", event.value)
-    global cmd
-    accel = (event.value - 0.1) / 0.9
-    if event.value < 0.1:
-        accel = 0
-        
-    cmd = {"y": -accel}
-
-async def handleController(controller):
-    resp = await controller.get_events()
-    # Show the input controller's buttons/axes
-    print(f'Controls:\n{resp}')
-
-    if Control.ABSOLUTE_PEDAL_ACCELERATOR in resp:
-        controller.register_control_callback(Control.ABSOLUTE_PEDAL_ACCELERATOR, [EventType.POSITION_CHANGE_ABSOLUTE], handle_accelerator)
-    else:
-        print("Accelerator Pedal not found! Exiting! Are your steering wheel and pedals hooked up?")
-        exit()
-
-    if Control.ABSOLUTE_PEDAL_BRAKE in resp:
-        controller.register_control_callback(Control.ABSOLUTE_PEDAL_BRAKE, [EventType.POSITION_CHANGE_ABSOLUTE], handle_brake)
-    else:
-        print("Brake Pedal not found! Exiting!")
-        exit()
-
-    if Control.ABSOLUTE_PEDAL_CLUTCH in resp:
-        controller.register_control_callback(Control.ABSOLUTE_PEDAL_CLUTCH, [EventType.POSITION_CHANGE_ABSOLUTE], handle_clutch)
-    else:
-        print("Accelerator Pedal not found! Exiting! Are your steering wheel and pedals hooked up?")
-        exit()
-
-    if Control.ABSOLUTE_X in resp:
-        controller.register_control_callback(Control.ABSOLUTE_X, [EventType.POSITION_CHANGE_ABSOLUTE], handle_turning)
-    else:
-        print("Wheel not found! Exiting!")
-        exit()
-
-    while True:
-        await asyncio.sleep(0.01)
-        global cmd
-        if "y" in cmd:
-            respon = await modal.set_power(linear=Vector3(x=0,y=cmd["y"],z=0), angular=Vector3(x=0,y=0,z=turn_amt))
-            cmd = {}
-            print(respon)
-
-async def main():
-     # ADD YOUR ROBOT REMOTE ADDRESS and LOCATION SECRET VALUES.
-     # This can be found in the Code Sample tab of app.viam.com.
-     g920_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
-    modal_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
-
-    g920 = Controller.from_robot(g920_robot, 'wheel')
-    global modal
-    modal = Base.from_robot(modal_robot, 'modal-base-server:base')
-
-    await handleController(g920)
-
-    await g920_robot.close()
-    await modal_robot.close()
-
-if __name__ == '__main__':
-    asyncio.run(main())
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-The following Go code is an example of how to use an input controller to drive a robot with four wheels & a skid steer platform.
-
-The `motorCtl` callback function controls 5 motors: left front & back `FL` `BL`, right front & back `FL` `BL`, and a `winder` motor that raises and lowers a front-end like a bulldozer.
-
-The `event.Control` logic is registered as a callback function to determine the case for setting the power of each motor from which button is pressed on the input controller.
-
-```go {id="go-example" class="line-numbers linkable-line-numbers"}
-// Define a single callback function
-motorCtl := func(ctx context.Context, event input.Event) {
-    if event.Event != input.PositionChangeAbs {
-        return
-    }
-
-    speed := float32(math.Abs(event.Value))
-
-    // Handle input events, commands to set the power of motor components (SetPower method)
-    switch event.Control {
-        case input.AbsoluteY:
-            motorFL.SetPower(ctx, speed, nil)
-            motorBL.SetPower(ctx, speed, nil)
-        case input.AbsoluteRY:
-            motorFR.SetPower(ctx, speed * -1, nil)
-            motorBR.SetPower(ctx, speed * -1, nil)
-        case input.AbsoluteZ:
-            motorWinder.SetPower(ctx, speed, nil)
-        case input.AbsoluteRZ:
-            motorWinder.SetPower(ctx, speed * -1, nil)
-    }
-}
-
-// Registers callback from motorCtl for a selected set of axes
-for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input.AbsoluteZ, input.AbsoluteRZ} {
-    err = g.RegisterControlCallback(ctx, control, []input.EventType{input.PositionChangeAbs}, motorCtl)
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% alert title="Note" color="note" %}}
-Access the complete repository for the Python example on [Github](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
-{{% /alert %}}
-
-## Event Object
+### Event Object
 
 Each `Event` object represents a singular event from the input device, and has four fields:
 
@@ -370,9 +212,9 @@ Each `Event` object represents a singular event from the input device, and has f
 3. `Control`: `Control` indicating which [Axis](#axis-controls), [Button](#button-controls), or Pedal on the controller has been changed.
 4. `Value`: `float64` indicating the position of an [Axis](#axis-controls) or the state of a [Button](#button-controls) on the specified control.
 
-### EventType Field
+#### EventType Field
 
-A string representing the type of Event that has occurred in the [Event Object](#event-object).
+A string-like type indicating the specific type of input event, such as a button press or axis movement.
 
 - To select for events of all type when registering callback function with [RegisterControlCallback](#registercontrolcallback), you can use `AllEvents` as your `EventType`.
 - The registered function is then called in addition to any other callback functions you've registered, every time an `Event` happens on your controller.
@@ -469,7 +311,7 @@ See [the Viam RDK](https://github.com/viamrobotics/rdk/blob/main/components/inpu
 {{% /tab %}}
 {{< /tabs >}}
 
-### Control Field
+#### Control Field
 
 A string representing the physical input location, like a specific axis or button, of your `Controller` that the [Event Object](#event-object) is coming from.
 
@@ -558,7 +400,7 @@ See [the Viam RDK](https://github.com/viamrobotics/rdk/blob/main/components/inpu
 
 See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the most current version of the above list of supported `Controls`.
 
-### Axis Controls
+#### Axis Controls
 
 {{% alert title="Note" color="note" %}}
 Currently, only `Absolute` axes are supported.
@@ -566,17 +408,17 @@ Currently, only `Absolute` axes are supported.
 `Relative` axes, reporting a relative change in distance, used by devices like mice and trackpads, will be supported in the future.
 {{% /alert %}}
 
-Devices like joysticks and thumbsticks which "return to center" on their own use `Absolute` axis control types.
+Devices like joysticks and thumbsticks which "return to center/neutral" on their own use `Absolute` axis control types.
 
 These controls report a `PositionChangeAbs` [EventType](#eventtype-field).
 
 **Value:** A `float64` between `-1.0` and `+1.0`.
 
-- `1.0`: Maximum position change in the positive direction.
-- `0.0`: Center value. No position change.
-- `-1.0`: Maximum position change in the negative direction.
+- `1.0`: Maximum position in the positive direction.
+- `0.0`: Center, neutral position.
+- `-1.0`: Maximum position in the negative direction.
 
-#### AbsoluteXYZ Axes
+##### AbsoluteXYZ Axes
 
 If your input controller has a analog control stick, this is what the stick's controls report as.
 
@@ -585,25 +427,24 @@ If your input controller has a analog control stick, this is what the stick's co
 | Name | `-1.0` | `0.0` | `1.0` |
 | ---- | ------ | ----- | ----- |
 | `AbsoluteX` | Stick Left | Neutral | Stick Right |
-| `AbsoluteY` | Stick Down | Neutral | Stick Up |
-| `AbsoluteZ` | Stick Vertical Down | Neutral | Stick Vertical Up |
+| `AbsoluteY` | Stick Forward | Neutral | Stick Backwards |
 
-#### AbsoluteR-XYZ Axes
+##### AbsoluteR-XYZ Axes
 
 If your input controller has two analog sticks, this is what the right stick's controls report as.
 
 | Name | `-1.0` | `0.0` | `1.0` |
 | ---- | ------ | ----- | ----- |
 | `AbsoluteRX` | Stick Left | Neutral | Stick Right |
-| `AbsoluteRY` | Stick Down | Neutral | Stick Up |
-| `AbsoluteRZ` | Stick Vertical Down | Neutral | Stick Vertical Up |
+| `AbsoluteRY` | Stick Forward | Neutral | Stick Backwards |
+| `AbsoluteRZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
 
 **Y - Z up & down:**
 
-- `Y` axes: up is "nose up," indicates *pulling* back on the joystick.
-- `Z` axes: vertical up and down, indicates a *pushing* motion on the joystick.
+- `Y` axes: Positive direction is "nose up," and indicates *pulling* back on the joystick.
+- `Z` axes: Usually not present on controller joysticks. If present, represents *yaw*, or left/right rotation. Triggle or throttle buttons might report this axis.
 
-#### AbsoluteHat Axes
+##### AbsoluteHat Axes
 
 If your input controller has a directional pad with analog buttons on the pad, this is what those controls report as.
 
@@ -617,7 +458,7 @@ Devices like analog triggers and gas or brake pedals use `Absolute` axes, but th
 The neutral point of the axes is still `0.0`.
 {{% /alert %}}
 
-### Button Controls
+#### Button Controls
 
 Button Controls report either `ButtonPress` or `ButtonRelease` as their [EventType](#eventtype-field).
 
@@ -626,14 +467,16 @@ Button Controls report either `ButtonPress` or `ButtonRelease` as their [EventTy
 - `0`: released
 - `1`: pressed
 
-#### Action Buttons (ABXY)
+##### Action Buttons (ABXY)
 
 If your input controller is a gamepad with digital action buttons, this is what the controls for these buttons report as.
 
-**Quick Orientation Tips:**
+{{% alert title="tip" color="tip" %}}
+As different systems label the actual buttons differently, we use compass directions for consistency.
 
 - `ButtonSouth` corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation.
 - `ButtonNorth` corresponds to "X" on Nintendo, "Y" on XBox, and "Triangle" on Playstation.
+{{% /alert %}}
 
 |Diamond 4-Action Button Pad | Rectangle 4-Action Button Pad |
 |--|--|
@@ -647,7 +490,7 @@ If your input controller is a gamepad with digital action buttons, this is what 
 |--|--|
 |<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonSouth`</td><td>Left</td></tr><tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr> </table>|
 
-#### Trigger Buttons (Bumper)
+##### Trigger Buttons (Bumper)
 
 If your input controller is a gamepad with digital trigger buttons, this is what the controls for those buttons report as.
 
@@ -655,7 +498,9 @@ If your input controller is a gamepad with digital trigger buttons, this is what
 |--|--|
 |<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Left</td></tr><tr><td>`ButtonRT`</td><td>Right</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Top-left</td></tr><tr><td>`ButtonRT`</td><td>Top-right</td></tr><tr><td>`ButtonLT2`</td><td>Bottom-left</td></tr><tr><td>`ButtonRT2`</td><td>Bottom-right</td></tr> </table>|
 
-#### Digital Buttons for Sticks
+If your trigger buttons are analog, they report `AbsoluteZ` (left or solo) and `Absolute RZ` (right in duo) *axes* Controls.
+
+##### Digital Buttons for Sticks
 
 If your input controller is a gamepad with "clickable" thumbsticks, this is what thumbstick presses report as.
 
@@ -664,17 +509,18 @@ If your input controller is a gamepad with "clickable" thumbsticks, this is what
 | `ButtonLThumb` | Left or upper button for stick |
 | `ButtonRThumb` | Right or lower button for stick |
 
-#### Menu Buttons
+##### Miscellaneous Buttons
 
-If your input controller is a gamepad with digital menu buttons, this is what the controls for those buttons report as.
+Many devices have additional buttons.
+If your input controller is a gamepad with these common buttons, this is what the controls for those buttons report as.
 
 | Name | Description |
 | ---- | ----------- |
-| `ButtonSelect` | Select (Duo) |
-| `ButtonStart` | Start (Duo) |
-| `ButtonMenu` | Start (Solo) |
+| `ButtonSelect` | Select or - |
+| `ButtonStart` | Start or + |
+| `ButtonMenu` | Usually the central "Home" or Xbox/PS "Logo" button |
 | `ButtonRecord` | Recording |
-| `ButtonEStop` | Stop |
+| `ButtonEStop` | Emergency Stop (on some industrial controllers) |
 
 ## API
 
@@ -715,7 +561,7 @@ Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, 
 
 - `control` [(Control)](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): The [Control](#control-field) to register the function for.
 - `triggers` [(List[EventType])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.EventType): The [EventTypes](#eventtype-field) that trigger the function.
-- `function` [(Optional[ControlFunction])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback): The function to run when the specified triggers are invoked.
+- `function` [([ControlFunction])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback): The function to run when the specified triggers are invoked.
 - `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -737,35 +583,18 @@ def print_start_time(event):
 # Define a function that handles the controller.
 async def handle_controller(controller):
 
-    # Get the most recent Events on the controller.
-    recent_events = await controller.get_events()
+    # Get the list of Controls on the controller.
+    controls = await controller.get_controls()
 
     # Register the function print_start_time to fire when "BUTTON_START" has the event "ButtonPress" occur.
-    if Control.BUTTON_START in recent_events:
+    if Control.BUTTON_START in controls:
         controller.register_control_callback(Control.BUTTON_START, [EventType.BUTTON_PRESS], print_start_time)
     else:
-        print("Oops! Couldn't find that the start button was pressed! Is your controller connected?")
+        print("Oops! Couldn't find the start button control! Is your controller connected?")
         exit()
 
     while True:
-        await asyncio.sleep(0.01)
-
-async def main():
-
-    # Connect to your robot. 
-    myRobotWithController = await connect_controller()
-
-    # Get your controller from the robot. 
-    myController = Controller.from_robot(robot=myRobotWithController, name='my_controller')
-
-    # Run the handle_controller function.
-    await handle_controller(myController)
-
-    # Wait to disconnect from the robot.
-    await myController.close()
-
-if __name__ == '__main__':
-    asyncio.run(main())
+        await asyncio.sleep(1.0)
 ```
 
 {{% /tab %}}
@@ -799,74 +628,16 @@ func handleController(controller input.Controller) {
     // Define the EventType "ButtonPress" to serve as the trigger for printStartTime. 
     triggers := [1]input.EventType{input.ButtonPress}
 
-    // Register the printStartTime function to fire when "ButtonStart" has the event "ButtonPress" occur.
-    err := controller.RegisterControlCallback(context.Background(), Control: input.ButtonStart, triggers, printStartTime, nil)
-
-    // Log any errors that occur and exit if an error is found.
-    if err != nil {
-    logger.Fatalf("Oops! Couldn't find that the start button was pressed! Is your controller connected?: %v", err)
-    }
-}
-
-func main() {
-    utils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("client"))
-}
-
-
-func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
-
-    // Connect to your robot.
-    myRobotWithController, err := client.New(
-        context.Background(),
-        "xyzabclocationexample", // ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
-        logger,
-        client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-            Type:    utils.CredentialsTypeRobotLocationSecret,
-            Payload: "robot123example.locationxyzexample.viam.com" // ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
-        })),
-    )
-
-    // Get the controller from the robot.
-    myController, err := input.FromRobot(myRobotWithController, "my_controller")
-
-    // Log any errors that occur and exit if an error is found.
-    if err != nil {
-        logger.Fatalf("cannot get controller: %v", err)
-    }
-
-    // Log an info message with the names of the different resources that are connected to your robot.
-    logger.Info("Resources:")
-    logger.Info(myRobotWithController.ResourceNames())
-
     // Get the controller's Controls.
     controls, err := myController.Controls(context.Background(), nil)
 
-    // Print out the controller's Controls.
-    logger.Info("Controls:")
-    logger.Info(resp)
-
     // Log any errors that occur.
     if err != nil {
-        logger.Fatal(err)
+        logger.Fatalf("Oops! Is your controller connected? %v", err)
     }
 
-    // Run the handleController function.
-    err := HandleController(myController)
-
-    // Delay closing your connection to your robot.
-    err = myRobotWithController.Start(ctx)
-    defer myRobotWithController.Close(ctx)
-
-    // Watch for errors.
-    if err != nil {
-        return err
-    }
-
-    // Wait to exit mainWithArgs() until Context is Done.
-    <-ctx.Done()
-    
-    return nil
-
+    // Register the printStartTime function to fire when "ButtonStart" has the event "ButtonPress" occur.
+    err := controller.RegisterControlCallback(context.Background(), Control: input.ButtonStart, triggers, printStartTime, nil)
 }
 ```
 
@@ -1056,6 +827,163 @@ if err != nil {
 
 {{% /tab %}}
 {{< /tabs >}} -->
+
+## Usage Examples
+
+### Control a Wheeled Base with a Logitech G920 Steering Wheel Controller
+
+The following Python code is an example of controlling a wheeled base with a Logitech G920 steering wheel controller, configured as a `gamepad` input controller.
+
+``` python {id="python-example" class="line-numbers linkable-line-numbers"}
+import asyncio
+
+from viam.components.base import Base
+from viam.components.input import Control, Controller, EventType
+from viam.proto.common import Vector3
+from viam.robot.client import RobotClient
+from viam.rpc.dial import Credentials, DialOptions
+
+turn_amt = 0
+modal = 0
+cmd = {}
+
+async def connect_robot(host, payload):
+    creds = Credentials(
+        type='robot-location-secret',
+        payload=payload),
+    opts = RobotClient.Options(
+        refresh_interval=0,
+        dial_options=DialOptions(credentials=creds)
+    )
+    return await RobotClient.at_address(host, opts)
+
+def handle_turning(event):
+    global turn_amt
+    turn_amt = -event.value
+    print("turning:", turn_amt)
+
+def handle_brake(event):
+    if event.value != 0:
+        print("braking!:", event.value)
+        global cmd
+        cmd = {"y": 0}
+        print("broke")
+
+def handle_accelerator(event):
+    print("moving!:", event.value)
+    global cmd
+    accel = (event.value - 0.1) / 0.9
+    if event.value < 0.1:
+        accel = 0
+        
+    cmd = {"y": accel}
+
+def handle_clutch(event):
+    print("moving!:", event.value)
+    global cmd
+    accel = (event.value - 0.1) / 0.9
+    if event.value < 0.1:
+        accel = 0
+        
+    cmd = {"y": -accel}
+
+async def handleController(controller):
+    resp = await controller.get_events()
+    # Show the input controller's buttons/axes
+    print(f'Controls:\n{resp}')
+
+    if Control.ABSOLUTE_PEDAL_ACCELERATOR in resp:
+        controller.register_control_callback(Control.ABSOLUTE_PEDAL_ACCELERATOR, [EventType.POSITION_CHANGE_ABSOLUTE], handle_accelerator)
+    else:
+        print("Accelerator Pedal not found! Exiting! Are your steering wheel and pedals hooked up?")
+        exit()
+
+    if Control.ABSOLUTE_PEDAL_BRAKE in resp:
+        controller.register_control_callback(Control.ABSOLUTE_PEDAL_BRAKE, [EventType.POSITION_CHANGE_ABSOLUTE], handle_brake)
+    else:
+        print("Brake Pedal not found! Exiting!")
+        exit()
+
+    if Control.ABSOLUTE_PEDAL_CLUTCH in resp:
+        controller.register_control_callback(Control.ABSOLUTE_PEDAL_CLUTCH, [EventType.POSITION_CHANGE_ABSOLUTE], handle_clutch)
+    else:
+        print("Accelerator Pedal not found! Exiting! Are your steering wheel and pedals hooked up?")
+        exit()
+
+    if Control.ABSOLUTE_X in resp:
+        controller.register_control_callback(Control.ABSOLUTE_X, [EventType.POSITION_CHANGE_ABSOLUTE], handle_turning)
+    else:
+        print("Wheel not found! Exiting!")
+        exit()
+
+    while True:
+        await asyncio.sleep(0.01)
+        global cmd
+        if "y" in cmd:
+            respon = await modal.set_power(linear=Vector3(x=0,y=cmd["y"],z=0), angular=Vector3(x=0,y=0,z=turn_amt))
+            cmd = {}
+            print(respon)
+
+async def main():
+    # ADD YOUR ROBOT REMOTE ADDRESS and LOCATION SECRET VALUES.
+    # This can be found in the Code Sample tab of app.viam.com.
+    g920_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
+    modal_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
+
+    g920 = Controller.from_robot(g920_robot, 'wheel')
+    global modal
+    modal = Base.from_robot(modal_robot, 'modal-base-server:base')
+
+    await handleController(g920)
+
+    await g920_robot.close()
+    await modal_robot.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+### Drive a robot with Four Wheels & a Skid Steer Platform
+
+The following Go code is part of an example of using an input controller to drive a robot with four wheels & a skid steer platform.
+
+The `motorCtl` callback function controls 5 motors: left front & back `FL` `BL`, right front & back `FL` `BL`, and a `winder` motor that raises and lowers a front-end like a bulldozer.
+
+The `event.Control` logic is registered as a callback function to determine the case for setting the power of each motor from which button is pressed on the input controller.
+
+```go {id="go-example" class="line-numbers linkable-line-numbers"}
+// Define a single callback function
+motorCtl := func(ctx context.Context, event input.Event) {
+    if event.Event != input.PositionChangeAbs {
+        return
+    }
+
+    speed := float32(math.Abs(event.Value))
+
+    // Handle input events, commands to set the power of motor components (SetPower method)
+    switch event.Control {
+        case input.AbsoluteY:
+            motorFL.SetPower(ctx, speed, nil)
+            motorBL.SetPower(ctx, speed, nil)
+        case input.AbsoluteRY:
+            motorFR.SetPower(ctx, speed * -1, nil)
+            motorBR.SetPower(ctx, speed * -1, nil)
+        case input.AbsoluteZ:
+            motorWinder.SetPower(ctx, speed, nil)
+        case input.AbsoluteRZ:
+            motorWinder.SetPower(ctx, speed * -1, nil)
+    }
+}
+
+// Registers callback from motorCtl for a selected set of axes
+for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input.AbsoluteZ, input.AbsoluteRZ} {
+    err = g.RegisterControlCallback(ctx, control, []input.EventType{input.PositionChangeAbs}, motorCtl)
+}
+```
+
+{{% alert title="Note" color="note" %}}
+Access the complete repository for the Python example on [Github](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
+{{% /alert %}}
 
 ## SDK Documentation
 

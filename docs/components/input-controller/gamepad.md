@@ -21,7 +21,7 @@ Refer to the following example configuration for an input controller of model `g
 <img src="../img/gamepad-input-controller-ui-config.png" alt="What an example configuration for a linux-based gamepad input controller component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
@@ -46,7 +46,7 @@ The following attributes are available for `gamepad` input controllers:
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
 | `dev_file` | *Optional* | If `dev_file` is left blank or not included, `viam-server` will search and use the first gamepad it finds that's connected to the computer controlling your robot. If you want to specify a device, give the absolute path to the input device event file. For example: `/dev/input/event42`. |
-| `auto_reconnect` | *Optional* | Applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices. If set to `true`, `viam-server` tries to (re)connect the device automatically. It waits for a device to connect during a robot's start-up. If set to false (default) then start-up fails if a device is not already connected. 
+| `auto_reconnect` | *Optional* | Applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices. If set to `true`, `viam-server` tries to (re)connect the device automatically. It waits for a device to connect during a robot's start-up. If set to false (default) then start-up fails if a device is not already connected.
 
 ## Usage with Base Remote Control Service
 
@@ -55,12 +55,15 @@ If you haven't done so already, create a robot in [the Viam app](https://app.via
 
 Then, click on the robot's **CONFIG** tab and configure an `input_controller` component of model `gamepad`, as shown above.
 
+Configure a base component with name `base` and model `fake` as well.
+This component does not need to have any attributes added to its configuration, but will keep the service from having errors as it starts.
+
 Next, click on the **SERVICES** sub tab of **CONFIG** and add a service of type `base_remote_control`.
 
 <img src="../img/base-rc-service-config.png" alt="What an example configuration for the Base Remote Control service of a web-based gamepad input controller component looks like in the Viam App." style="width:100%"/>
 
-{{% alert title="Note" color="note" title%}}
-You do not need to configure a base component and control it with the input controls to use the "Base Remote Control" service to connect to your controller.
+{{% alert title="Note" color="note" %}}
+You do not have a real base to use the "Base Remote Control" service to connect to your controller.
 
 For now, `"control_mode": "joystickControl"` does not affect the controls that are available to use on your gamepad.
 Buttons are still available with this configuration.
@@ -81,11 +84,6 @@ For example, this is what the row of inputs above looks like *after* pressing th
 <img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app." style="width:100%"/>
 
 Note that on your `gamepad`, the controls available might look different than this example, and the **Enable** toggle shown is not presented when a linux-supported `gamepad` model is connected.
-
-{{% alert title="Note" color="note" %}}
-You have to press a button or move a stick on your gamepad for the browser to report the gamepad.
-For your security, the browser won't report a gamepad until an input has been sent.
-{{% /alert %}}
 
 ### Work in Progress Models
 

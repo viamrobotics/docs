@@ -22,7 +22,7 @@ Note that the full config is only visible in the "Raw JSON" tab:
 
 {{< /tab >}}
 
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {

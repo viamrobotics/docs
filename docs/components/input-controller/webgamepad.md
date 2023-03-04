@@ -24,7 +24,7 @@ Use the following configuration for an input controller of model `webgamepad`:
 <img src="../img/webgamepad-input-controller-ui-config.png" alt="What an example configuration for a web-based gamepad input controller component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
@@ -61,12 +61,15 @@ If you haven't done so already, create a robot in [the Viam app](https://app.via
 
 Then, click on the robot's **CONFIG** tab and configure an `input_controller` component of model `webgamepad`, as shown above.
 
+Configure a base component with name `base` and model `fake` as well.
+This component does not need to have any attributes added to its configuration, but will keep the service from having errors as it starts.
+
 Next, click on the **SERVICES** sub tab of **CONFIG** and add a service of type `base_remote_control`.
 
 <img src="../img/base-rc-service-config.png" alt="What an example configuration for the Base Remote Control service of a web-based gamepad input controller component looks like in the Viam App." style="width:100%"/>
 
-{{% alert="Note" color="note" %}}
-You do not need to configure a base component and control it with the input controls to use the "Base Remote Control" service to connect to your controller.
+{{% alert="Note" title="Note" color="note" %}}
+You do not need to have a real base to use the "Base Remote Control" service to connect to your controller.
 
 For now, `"control_mode": "joystickControl"` does not affect the controls that are available to use on your gamepad.
 Buttons are still available with this configuration.

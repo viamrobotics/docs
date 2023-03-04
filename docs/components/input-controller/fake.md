@@ -23,7 +23,7 @@ Refer to the following example configuration for an input controller of model `f
 <img src="../img/fake-input-controller-ui-config.png" alt="What an example configuration for a fake input controller component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {

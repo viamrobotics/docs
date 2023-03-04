@@ -28,7 +28,7 @@ Refer to the following example configuration for an input controller of model `m
 <img src="../img/mux-input-controller-ui-config.png" alt="What configuration for a multiplexed input controller component looks like in the Viam App config builder." style="width:100%"/>
 
 {{< /tab >}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
