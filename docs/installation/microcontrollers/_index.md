@@ -8,7 +8,7 @@ icon: "img/thumbnails/viam-icon-sdk.png"
 # SMEs: Nicolas Menard
 ---
 
-The micro-RDK is a lightweight version of Viam's [Robot Development Kit](https://github.com/viamrobotics/rdk). The micro-RDK allows you to run a smaller version of `viam-server` on resource-limited embedded systems like the ESP32.
+The micro-RDK is a lightweight version of Viam's [Robot Development Kit](https://github.com/viamrobotics/rdk). The micro-RDK allows you to run a smaller version of `viam-server` on microcontroller resource-limited embedded systems.
 
 The micro-RDK supports:
 
@@ -271,27 +271,27 @@ In the pinout diagram of the ESP32, the pins are labeled like this:
 Once you have identified an appropriate pin, follow these steps to add it.
 In this example, we want to add GPIO pin 35, which is labeled `ADC1_7` in the pinout diagram:
 
-- Create a new ADC channel:
+1. Create a new ADC channel:
 
-``` rust
-let my_analog_channel = adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
-            AdcChannelDriver::new(periph.pins.gpio35)?;
-```
+    ``` rust
+    let my_analog_channel = adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
+                AdcChannelDriver::new(periph.pins.gpio35)?;
+    ```
 
-- Create the actual Analog reader (note that `adc1` is declared above):
+2. Create the actual Analog reader:
 
-``` rust
-let my_analog_reader = Esp32AnalogReader::new("A2".to_string(), my_analog_channel, adc1.clone());
-```
+    ``` rust
+    let my_analog_reader = Esp32AnalogReader::new("A2".to_string(), my_analog_channel, adc1.clone());
+    ```
 
-- Finally, add the collection of analog readers:
+3. Finally, add the collection of analog readers:
 
-``` rust
-let analog_readers = vec![
-            Rc::new(RefCell::new(analog1)),
-            Rc::new(RefCell::new(my_analog_reader)),
-        ];
-```
+    ``` rust
+    let analog_readers = vec![
+                Rc::new(RefCell::new(analog1)),
+                Rc::new(RefCell::new(my_analog_reader)),
+            ];
+    ```
 
 ## Next Steps
 
@@ -301,7 +301,8 @@ Espressif maintains a good QEMU emulator supporting the ESP32, we recommend usin
 development.
 See [here](https://github.com/espressif/qemu) for more information.
 
-#### MacOS
+{{< tabs >}}
+{{% tab name="MacOS" %}}
 
 Run the following command to install the QEMU ESP32 Emulator:
 
@@ -317,7 +318,8 @@ cd qemu
 cd build && ninja
 ```
 
-#### Linux
+{{% /tab %}}
+{{% tab name="Linux" %}}
 
 On Ubuntu or Debian, first make sure you have the `libgcrypt` library and headers installed by running the following command:
 
@@ -335,6 +337,9 @@ cd qemu
     --disable-capstone --disable-vnc --disable-sdl --disable-gtk
 cd build && ninja
 ```
+
+{{% /tab %}}
+{{% /tabs %}}
 
 Add `export QEMU_ESP32_XTENSA=<path-to-clone-qemu>/build/` to your `.zshrc` or `.bashrc`, or save this command to run in your terminal every session you wish to use the QEMU emulator.
 
