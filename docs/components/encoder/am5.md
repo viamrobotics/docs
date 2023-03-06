@@ -37,7 +37,7 @@ This model supports the [AS5048A](https://ams.com/en/as5048a) sensor.
 ## Configuration
 
 {{< tabs name="Configure an AM5-AS5048 Encoder" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
 <br>
 On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
@@ -50,7 +50,7 @@ Fill in the attributes for your encoder:
 <img src="../img/configure-am5.png" alt="Configuration of an AM5 encoder in the Viam app config builder." />
 <br>
 
-{{< /tab >}}
+{{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}

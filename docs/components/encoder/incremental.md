@@ -13,7 +13,7 @@ Configuring an `incremental` encoder requires configuring two pins on the board 
 These two pins provide the phase outputs used to measure the speed and direction of rotation in relation to a given reference point.
 
 {{< tabs name="Configure an incremental encoder" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
 **test**
 
@@ -28,7 +28,7 @@ Fill in the attributes for your encoder:
 <img src="../img/configure-incremental.png" alt="Configuration of an AM5 encoder in the Viam app config builder." />
 <br>
 
-{{< /tab >}}
+{{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}

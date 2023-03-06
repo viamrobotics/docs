@@ -11,7 +11,7 @@ draft: true
 The `arduino` encoder requires configuring two pins on the board to which the encoder is wired.
 
 {{< tabs name="Configure an arduino Encoder" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
 <br>
 On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
@@ -24,7 +24,7 @@ Fill in the attributes for your encoder:
 <img src="../img/configure-arduino.png" alt="Configuration of an AM5 encoder in the Viam app config builder." />
 <br>
 
-{{< /tab >}}
+{{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
