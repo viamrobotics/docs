@@ -213,6 +213,55 @@ Try driving your SCUTTLE Robot around using the WASD keyboard controls described
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
 {{% /alert %}}
 
+## Configuring the encoders
+
+Before configuring the encoders, you must specify the bus number on the board as `"1"`.
+
+```json-viam
+{
+      "name": "<board_name>",
+      "type": "board",
+      "model": "<model_name>"
+      "attributes": {
+        "i2cs": [
+          {
+            "bus": "1",
+            "name": "main"
+          }
+        ]
+      },
+      "depends_on": [],
+}
+```
+
+Now, configure the left and right encoders as follows:
+
+- left:
+
+ ```json
+ {
+   "board": "<board_name>",
+   "connection_type": "i2c",
+   "i2c_attributes": {
+     "i2c_bus": "main",
+     "i2c_addr": 64
+   }
+ }
+ ```
+
+- right:
+
+ ```json
+ {
+   "board": "<board_name>",
+   "connection_type": "i2c",
+   "i2c_attributes": {
+     "i2c_bus": "main",
+     "i2c_addr": 65
+   }
+ }
+ ```
+
 ## Configuring the camera
 
 Finally, we'll add a camera to your SCUTTLE Robot.

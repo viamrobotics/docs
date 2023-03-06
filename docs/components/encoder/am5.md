@@ -10,9 +10,9 @@ tags: ["encoder", "components"]
 The [`AM5-AS5048`](https://ams.com/en/as5048a) encoder is an absolute encoder that uses an I2C or SPI interface to connect.
 This model supports the [AS5048A](https://ams.com/en/as5048a) sensor.
 
-## Dependencies
+Before you can configure the encoder, you must change some other configuration details:
 
-1. To configure an AM5-AS5048 encoder, you must configure an I2C bus on your [board](../../board):
+1. You must configure an I2C bus on your [board](../../board):
 
     ```json-viam
     {
@@ -34,7 +34,7 @@ This model supports the [AS5048A](https://ams.com/en/as5048a) sensor.
 2. Any motors using the `AM5-AS5048` encoder must set `ticks_per_rotation` to `1`.
    This is because the AM5 encoder is an absolute encoder which provides angular measurements directly.
 
-## Configuration
+Now you can configure the encoder:
 
 {{< tabs name="Configure an AM5-AS5048 Encoder" >}}
 {{% tab name="Config Builder" %}}
@@ -77,54 +77,3 @@ The following attributes are available for AM5-AS5048 encoders:
 | `board` | *Required* | The name of the board to which the encoder is connected. |
 | `connection_type` | *Required* | Use `"i2c"`. |
 | `i2c_attributes` | *Required* | The attributes to configure i2c connection: <ul> <li> <code>i2c_bus</code>: The name of the bus that was added to the board. Example: `"main"`. </li> <li> <code>i2c_addr</code>: The address of the bus. Example: `64`. </li> </ul> |
-
-### Configure a SCUTTLE bot
-
-If you are configuring a SCUTTLE bot, you must:
-
-- Specify the bus number on the board as `"1"`.
-
-  ```json-viam
-  {
-        "name": "<board_name>",
-        "type": "board",
-        "model": "<model_name>"
-        "attributes": {
-          "i2cs": [
-            {
-              "bus": "1",
-              "name": "main"
-            }
-          ]
-        },
-        "depends_on": [],
-  }
-  ```
-
-- Configure the left and right encoders as follows:
-
-  - left:
-
-    ```json
-    {
-      "board": "<board_name>",
-      "connection_type": "i2c",
-      "i2c_attributes": {
-        "i2c_bus": "main",
-        "i2c_addr": 64
-      }
-    }
-    ```
-
-  - right:
-
-    ```json
-    {
-      "board": "<board_name>",
-      "connection_type": "i2c",
-      "i2c_attributes": {
-        "i2c_bus": "main",
-        "i2c_addr": 65
-      }
-    }
-    ```
