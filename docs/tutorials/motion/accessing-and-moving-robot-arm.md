@@ -55,9 +55,9 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
   * For an `xArm 6`, a safe value is **15** degrees per second.
 
 6. Add a **Frame** to this component
-  * You will not need to change the default values that populate the new frame card
+   * You will not need to change the default values that populate the new frame card
 
-<img src="../../img/motion/access_02_arm_config.png" width="700px" alt="Sample robot arm configuration with several fields filled out.">
+   <img src="../../img/motion/access_02_arm_config.png" width="700px" alt="Sample robot arm configuration with several fields filled out.">
 
 7. Save this robot configuration
 
@@ -200,9 +200,8 @@ For example, the below code gets the arm's end position, makes a 100 millimeter 
 You must import some additional Python packages to synthesize new poses and to provide an empty `WorldState` to the arm component's `move_to_position` command.
 Add `from viam.proto.common import Pose, WorldState` to your import list and add the sample code below to your own client script.
 
-# Generate a simple pose move +100mm in the +Z direction of the arm
-
 ```python {class="line-numbers linkable-line-numbers"}
+# Generate a simple pose move +100mm in the +Z direction of the arm
 cmd_arm_pose = await my_arm_component.get_end_position()
 cmd_arm_pose.z += 100.0
 await arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
