@@ -35,12 +35,13 @@ Here is an example of [how to create a custom arm component in the Python SDK do
 
 ## What is required to create a custom component?
 
-The steps required in creating a custom component and connecting it to the RDK are:
+To create a custom component and connect it to the RDK:
 
 1. Subclass a component and implement desired functions
-    - For functions you do not wish to implement with the Python SDK, you must at least define them by putting `pass` or `raise NotImplementedError()` in the function.
+    - If you are using the Python SDK, you must define all functions.
+      For functions you do not want to implement, put `pass` or `raise NotImplementedError()` in the function.
     Otherwise, the class won't instantiate.
-    - Similarly, when using the Go SDK, you must define all functions but you can leave the ones you do not wish to implement empty.
+    - If you are using the Go SDK, you must define all functions but you can leave the ones you do not wish to implement empty.
 2. Create an `rpc.server.Server` instance and register the custom component
 3. Start the Server and register the running server as a remote
 
