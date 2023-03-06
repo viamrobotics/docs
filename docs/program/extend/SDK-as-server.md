@@ -30,17 +30,19 @@ You will need to create a server component and register the new arm in order to 
 Once your new arm is registered, you will be able to use it remotely with Viam.
 
 {{% alert title="Tip" color="tip" %}}
-Here is an example of [how to create a new arm server component in the Python SDK documentation](https://python.viam.dev/examples/example.html#subclass-a-component).
+Here is an example of [how to create a custom arm component in the Python SDK documentation](https://python.viam.dev/examples/example.html#subclass-a-component).
 {{% /alert %}}
 
 ## What is required to create a custom component?
 
-The steps required in creating a custom component and connecting it to the RDK are
+To create a custom component and connect it to the RDK:
 
 1. Subclass a component and implement desired functions
-
+    - If you are using the Python SDK, you must define all functions.
+      For functions you do not want to implement, put `pass` or `raise NotImplementedError()` in the function.
+    Otherwise, the class won't instantiate.
+    - If you are using the Go SDK, you must define all functions but you can leave the ones you do not wish to implement empty.
 2. Create an `rpc.server.Server` instance and register the custom component
-
 3. Start the Server and register the running server as a remote
 
 You can view the complete tutorial on how to create a custom component using Python in the [Viam Python documentation](https://python.viam.dev/examples/example.html#create-custom-components).
