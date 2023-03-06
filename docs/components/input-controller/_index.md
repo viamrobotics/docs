@@ -430,6 +430,7 @@ If your input controller has a analog control stick, this is what the stick's co
 | ---- | ------ | ----- | ----- |
 | `AbsoluteX` | Stick Left | Neutral | Stick Right |
 | `AbsoluteY` | Stick Forward | Neutral | Stick Backwards |
+| `AbsoluteZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
 
 ##### AbsoluteR-XYZ Axes
 
@@ -444,7 +445,7 @@ If your input controller has two analog sticks, this is what the right stick's c
 **Y - Z up & down:**
 
 - `Y` axes: Positive direction is "nose up," and indicates *pulling* back on the joystick.
-- `Z` axes: Usually not present on controller joysticks. If present, represents *yaw*, or left/right rotation. Triggle or throttle buttons might report this axis.
+- `Z` axes: Usually not present on controller joysticks. If present, represents *yaw*, or left/right rotation. Trigger or throttle buttons might report this axis.
 
 ##### AbsoluteHat Axes
 
@@ -573,11 +574,6 @@ Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback).
 
 ```python {class="line-numbers linkable-line-numbers"}
-''' import ... 
-    async def connect_controller(): ... 
-    [See the Code Example subsection of this page for full connection start code].
-'''
-
 # Define a function to handle pressing the Start Menu Button "BUTTON_START" on your controller, printing out the start time.
 def print_start_time(event):
     print(f'Start Menu Button was pressed at this time:\n{event.time}')
@@ -617,8 +613,6 @@ async def handle_controller(controller):
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// import {} ... [See the Code Example subsection of this page for full connection start code.]
-
 // Define a function to handle Events that occur on the controller. 
 func handleController(controller input.Controller) {
 

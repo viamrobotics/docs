@@ -18,9 +18,7 @@ For example, you could use a joystick alongside a numpad.
 
 To combine multiple controlers into a `mux` controller, you must first configure each controller individually.
 
-The following example combines a `gamepad` and a `webgamepad` controller:
-
-Refer to the following example configuration for an input controller of model `mux`:
+The following example configuration combines a `gamepad` and a `webgamepad` controller:
 
 {{< tabs name="Configure a `mux` input controller" >}}
 {{< tab name="Config Builder" >}}

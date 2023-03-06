@@ -83,8 +83,6 @@ For example, this is what the row of inputs above looks like *after* pressing th
 
 <img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app." style="width:100%"/>
 
-Note that on your `gamepad`, the controls available might look different than this example, and the **Enable** toggle shown is not presented when a non-web based `gamepad` model is connected.
-
 Note that on your `gamepad`, the controls available might look different than this example, and the **Enable** toggle shown is not presented when a linux-supported `gamepad` model is connected.
 
 ### Work in Progress Models
