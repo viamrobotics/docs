@@ -15,18 +15,14 @@ These two pins provide the phase outputs used to measure the speed and direction
 {{< tabs name="Configure an incremental encoder" >}}
 {{% tab name="Config Builder" %}}
 
-**test**
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your encoder, select the type `encoder`, and select the `incremental` model.
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your encoder, select the type <code>encoder</code>, and select the <code>incremental</code> model.
-<br>
 <img src="../img/create-incremental.png" alt="Creation of an incremental encoder in the Viam app config builder." style="max-width:600px" />
-<br>
+
 Fill in the attributes for your encoder:
-<br>
+
 <img src="../img/configure-incremental.png" alt="Configuration of an AM5 encoder in the Viam app config builder." />
-<br>
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}

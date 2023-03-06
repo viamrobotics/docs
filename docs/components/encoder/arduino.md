@@ -13,16 +13,14 @@ The `arduino` encoder requires configuring two pins on the board to which the en
 {{< tabs name="Configure an arduino Encoder" >}}
 {{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your encoder, select the type <code>encoder</code>, and select the <code>arduino</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your encoder, select the type `encoder`, and select the `arduino` model.
+
 <img src="../img/create-arduino.png" alt="Creation of an Arduino encoder in the Viam app config builder." style="max-width:600px" />
-<br>
+
 Fill in the attributes for your encoder:
-<br>
+
 <img src="../img/configure-arduino.png" alt="Configuration of an AM5 encoder in the Viam app config builder." />
-<br>
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}

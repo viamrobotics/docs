@@ -14,20 +14,18 @@ Configuring a `single` encoder requires configuring one pin (`i`) on the board t
 The direction of spin is dictated by the motor that has this encoder's name in its `encoder` attribute field.
 
 {{< tabs name="Configure an single encoder" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your encoder, select the type <code>encoder</code>, and select the <code>single</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your encoder, select the type `encoder`, and select the `single` model.
+
 <img src="../img/create-single.png" alt="Creation of a single encoder in the Viam app config builder." style="max-width:600px" />
-<br>
-Fill in the attributes for your encoder:
-<br>
-<img src="../img/configure-single.png" alt="Configuration of an AM5 encoder in the Viam app config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for your encoder:
+
+<img src="../img/configure-single.png" alt="Configuration of an AM5 encoder in the Viam app config builder." />
+
+{{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
