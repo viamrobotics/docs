@@ -45,14 +45,14 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 * Choose `Arm` as the **Type** selection
 * Choose your desired model in the **Model** selection
-  * The `xArm 6` choice may be further down the model list
+  * If you're using an xArm 6, choose the `xArm6` model from the drop-down list
 * Enter `myArm` as the **Name** for this component
 
 5. In the newly created `myArm` component panel, fill in some additional details:
 
 * Enter the IP address for your robot controller in the **Host** field
 * Enter a desired velocity *(in degrees per second)* for the robot arm's motions in the **Speed** field
-  * For an `xArm 6`, a safe value is **15** degrees per second.
+  * For an `xArm6`, a safe value is `15` degrees per second.
 
 6. Add a **Frame** to this component
    * You will not need to change the default values that populate the new frame card
