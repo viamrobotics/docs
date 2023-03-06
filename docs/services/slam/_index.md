@@ -135,7 +135,7 @@ This table provides an overview of the different SLAM modes and how to set them.
 
 | Mode | Description |
 | ---- | ----------- |
-| PURE MAPPING | In the PURE MAPPING MODE, a new map is generated from scratch. This mode is triggered if no map is found in the `data_dir/data` directory. |
+| PURE MAPPING | In the PURE MAPPING MODE, a new map is generated from scratch. This mode is triggered if no map is found in the `data_dir/map` directory. |
 | UPDATING | In UPDATING MODE, an existing map is being changed and updated with new data. This mode is triggered when a map is found in the `data_dir/map` directory and `map_rate_sec` is set greater than or equal to `0`. Note: Setting `map_rate_sec` to a value of `0` causes the system to reset it to its default value of `60`.|
 
 #### SLAM Library-Specific Sensor Mode
