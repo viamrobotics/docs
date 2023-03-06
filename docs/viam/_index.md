@@ -8,63 +8,99 @@ aliases:
     - /getting-started
 ---
 
-Viam is a complete software platform for robots.
+Viam is a software platform that supports every step of your robot development lifecycle.
 
-### Platform Quickstart: Using the App
+## Plan your robot
 
-The simplest way to create your first robot on the Viam platform is through our user interface for connecting with and managing robots, the [Viam app](https://app.viam.com/).
+The first step in any project is planning, and Viam comes out-of-the-box ready to support your robotic ideas as they become a reality.
 
-Create an account, and create a new robot on there, even if you don't know what you want your robot to look like yet.
+<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/633d91b848050946efcf0690_viam-overview-illustrations-build.svg" alt="A diagram of robotic parts and software" style="float: right; max-width:250px; display: block; margin: auto auto auto 20px"></img>
+
+* What **hardware** does your robot require?
+Many [robotic components](/components) are supported by the Viam platform, meaning you will not need to write a single line of code to use them.
+* What **functionality** does your robot need?
+[Viam's services](/services) include computer vision, motion planning, SLAM, data management, machine learning and more - so your robot can do more, and you'll need to do less.
+* What do you want your robot architecture to look like?
+Viam supports multi-part robots that use secure communication channels across local networks and the cloud, all of which can be managed via a uniform API.
+* Leverage community contributed and custom resources so you can [extend](/program/extend) Viam as you want.
+
+Building robots is an exciting endeavor, and the [**Viam community**](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) is there to help during planning and beyond.
+
+## Get up and running
+
+A *robot* in Viam consists of [at least one computer](/installation/prepare/), like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) single-board computer, running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
+
+<img src="img/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." style="float: left; max-width:270px; display: block; margin: auto 20px auto auto"></img>
+
+The Viam platform provides a user interface for connecting with and managing robots, the [Viam app](https://app.viam.com/).
+Create an account, then create a new robot instance.
 You'll be redirected to a control center for this new robot.
 
-For robotic control, the Viam platform handles many aspects natively *for* you, including:
+To make use of these features, all you need to do is follow one of our [installation guides](/installation) to connect a development machine or a single-board computer to the in-app control center.
 
-- **Data management** enabling you to capture and sync data from one or more robots.
-- **Fleet management** enabling you to configure, control, debug, and manage entire fleets of robots.
-- **Motion** enabling your robot to plan and move itself.
-- **Vision** enabling your robot to intelligently see and interpret the world around it.
-- **Simultaneous Localization And Mapping (SLAM)** enabling your robot to map its surroundings and find its position on a map.
+This will install [`viam-server`](https://github.com/viamrobotics/rdk) which is the open-source software which:
 
-On top of these services, the Viam platform provides a consistent programming interface for all robots, allowing you to control your robots with code in the language of your choice.
+* Creates, configures, and maintains the robot
+* Securely handles all communications
+* Runs drivers, custom code, and any other software
+* Accepts API requests
+* Runs services like computer vision, data synchronization, and motion planning
 
-To make use of these features, all you need to do is:
+{{% alert title="Info" color="info" %}}
+Everything Viam runs on your robot is [open-source](https://github.com/viamrobotics).
+{{% /alert %}}
 
-1) Follow one of our [installation guides](/installation) to connect a development machine or a single-board computer to the in-app control center.
-2) Configure the robot's [components](/components) and [services](/services).
-
-## Robot
-
-A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) single-board computer, running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
-
-<img src="img/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." style="max-width:270px; display: block; margin: 0 auto"></img>
+## Configure your robot
 
 Robots can be small and simple or very complex.
 One robot can be just a single-board computer with a single [sensor](/components/sensor/) or LED wired to it, or another robot can consist of multiple computers with many physical components connected, acting as one unit.
 
 The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
 
-![Robot components](img/robot-components.png)
+The Viam platform allows you to specify what parts and components your robot is made up with the Viam App.
+For each component or part that makes up your robot:
 
-## `viam-server`: The software on your robot
+<img src="img/test_components.png" alt="Multiple components being tested in the Viam App." style="float: right; max-width:320px; display: block; margin: auto auto auto 10px"></img>
 
-[`viam-server`](https://github.com/viamrobotics/rdk) is the open-source software which runs on each computer in a robot and:
+1. Add it to your robot by [choosing the component type](/manage/app-usage/#config) (example: `camera`) and model (example: `webcam`)
+2. Immediately test it with the visual [control tab](/manage/app-usage/#control)
+3. See any problems with in-app [logs](/manage/app-usage/#logs), review or roll back configuration [history](/manage/app-usage/#history)
 
-- Creates, configures, and maintains the robot
-- Securely handles all communications
-- Runs drivers, custom code, and any other software
-- Accepts API requests
-- Runs services like computer vision, data synchronization, and motion planning
+Now that you've configured your robot's hardware, you can now add high level functionality that helps with robot control, including:
 
-The Viam platform uses the cloud for configuration.
-Configuration describes how hardware and software interact.
-A basic example that you can configure using the Viam platform is connecting a computer to a camera.
-A more advanced example is a computer connected to a camera, actuating components (like motors or arms), and an ML model.
+* **Data management** enabling you to capture and sync data from one or more robots, and use that data for machine learning and beyond.
+* **Fleet management** enabling you to configure, control, debug, and manage entire fleets of robots.
+* **Motion planning** enabling your robot to plan and move itself.
+* **Vision** enabling your robot to intelligently see and interpret the world around it.
+* **Simultaneous Localization And Mapping (SLAM)** enabling your robot to map its surroundings and find its position on a map.
 
-{{% alert title="Info" color="info" %}}
-Everything Viam runs on your robot is [open-source](https://github.com/viamrobotics).
-{{% /alert %}}
+These services are configured and tested in the same way: click to add a new service, configure it, and test it in the Viam App.
 
-## Networking: Connecting to your robot
+## Control your robot
+
+<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram of a single-board computer running viam-server." style="float: right; max-width:270px; display: block; margin: auto auto auto auto"></img>
+
+On top of these services, the Viam platform provides a consistent programming interface for all robots, allowing you to [control your robots](/program/sdk-as-client/) with code in the **language of your choice**.
+Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk) and [Python](https://python.viam.dev/).
+Additional SDKs are coming soon, including Typescript, Rust, Java, C++, and Flutter.
+
+TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is both authenticated and encrypted.
+Viam uses [WebRTC](https://webrtc.org/) to create secure peer-to-peer paths between robots and clients for fast, low latency communication.
+The Viam cloud does not receive any command or control information regarding your robots, ensuring low latency, robustness, and privacy.
+With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program your robot in most common programming languages.
+
+This provides flexibility and security whether you are building tight control loops for autonomous mobile robots, event-based triggers for IoT devices, or custom web-based robot management interfaces.
+
+There are four categories of APIs:
+
+* [Robot](/services/robot-service/) - high level robot commands
+* [Components](/components) like motors, arms, GPS
+* [Services](/services) like computer vision, motion planning, SLAM
+* Cloud Applications like [fleet management](/manage/fleet-management), [data management](/manage/data-management)
+
+To see the Viam API specification, check [GitHub](https://github.com/viamrobotics/api).
+
+### Network flexibility
 
 Your robot does not need to be connected to the cloud.
 
@@ -72,40 +108,22 @@ The `viam-server` software resides on your robot alongside your configurations, 
 In scenarios without cloud connectivity, you can still connect your robot to a LAN, or to any relevant devices (such as a gamepad).
 It all depends on your use case and configuration.
 
-- All APIs work locally or in the cloud
-- Data is cached locally and synced when possible
-- Configuration is cached
+* All APIs work locally or in the cloud
+* Data is cached locally and synced when possible
+* Configuration is cached
 
 When your robot is connected (to either LAN or WAN), `viam-server` can act as both a client and a server.
 In other words, each instance can request resources, as well as provide them.
 This allows for tremendous flexibility in terms of your architecture design.
 
-## Communication: Talking to your robot
+## Scale
 
-TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is both authenticated and encrypted.
+With robots in production, Viam provides [fleet management capabilities](manage/fleet-management/) to help you scale.
+This includes:
 
-Viam uses [WebRTC](https://webrtc.org/) to create secure peer-to-peer paths between robots and clients for fast, low latency communication.
-The Viam cloud does not receive any command or control information regarding your robots, ensuring low latency, robustness, and privacy.
-
-With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program your robot in most common programming languages.
-
-## APIs: Services for your robot
-
-There are four categories of APIs:
-
-- [Robot](/services/robot-service/) - high level robot commands
-- [Components](/components) like motors, arms, GPS
-- [Services](/services) like computer vision, motion planning, SLAM
-- Cloud Applications like [fleet management](/manage/fleet-management), [data management](/manage/data-management)
-
-To see the Viam API specification, check [GitHub](https://github.com/viamrobotics/api).
-
-## SDKs: Programming your robot
-
-We provide SDKs in several languages to easily connect to your robot, use components and services, and create custom modular resources.
-
-Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk) and [Python](https://python.viam.dev/).
-Additional SDKs are coming soon, including Typescript, Rust, Java, C++, and Flutter.
+* Managing permissions within your organization and locations.
+* Managing software across your fleet, including deployment of code and machine learning models
+* Keeping your robot configuration and capabilities up-to-date.
 
 ## Next Steps
 

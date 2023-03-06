@@ -16,7 +16,7 @@ type: "docs"
         <a href="viam">
             <img src="img/understand.png" alt="Learn about Viam in 3 Minutes" width=100% style="margin-top: 1em">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Viam in 3 Minutes</h4>
-            <p style="text-align: left;">Learn the concepts you need to know to work with Viam.</p>
+            <p style="text-align: left;">Build and manage your robots with Viam.</p>
         </a>
     </div>
     <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
