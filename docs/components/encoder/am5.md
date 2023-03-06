@@ -93,7 +93,7 @@ If you are configuring a SCUTTLE bot, you must:
           "i2cs": [
             {
               "bus": "1",
-              "name": "<main>"
+              "name": "main"
             }
           ]
         },
