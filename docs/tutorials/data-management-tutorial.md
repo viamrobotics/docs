@@ -88,7 +88,7 @@ To enable image data capture for a camera component, follow these steps:
    The camera component has a section labeled **Data Capture Configuration**.
 3. Click `Add Method` to enable data capture for this camera.
 
-   - Set the **Type** to "ReadImage" and the **Frequency** to "0.333".
+   - Set the **Type** to "ReadImage" and the **Frequency** to `0.333`.
      This will capture an image from the camera roughly once every 3 seconds.
      Feel free to adjust the frequency if you want the camera to capture more or less image data.
    - You should also select the MIME type that you want to capture.
