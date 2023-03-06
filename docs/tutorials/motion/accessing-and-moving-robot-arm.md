@@ -67,64 +67,75 @@ Several parts of this code sample will be replaced or amended, so we have provid
 
 This robot configuration should be specified as you launch `viam-server` before going through the rest of this tutorial.
 
-## Accessing the Arm 
+## Accessing the Arm
 
 Once you have set up the server with the robot configuration from earlier, you can use the `Arm` component in your client scripts to start interacting with your robotic arm!
 The `Arm` component library has several methods to simplify accessing and working with robotic arms.
 This tutorial will start with accessing and fetching data about the robotic arm's current position:
 
 {{< tabs >}}
-{{% tab name="Go" %}}
-The following lines from the full **Go** tutorial code enable you to use the `myArm` component you configured earlier, and then call the `EndPosition` method to get the position of the **end of the robot arm with respect to the arm's base**.
-
-<!-- Insert code link here to portion of Go sample with ...
-    myArmResource = arm.Named("myArm")
-    myArmComponent, err := arm.FromRobot(robot, "myArm")
-    myArmReturnValue, err := myArmComponent.EndPosition(context.Background(), nil)
-    if err != nil { 
-      fmt.Println(err) 
-    }
-    fmt.Println("myArm EndPosition return value: %s", myArmReturnValue)
--->
-{{% /tab %}}
 {{% tab name="Python" %}}
-The following lines from the full **Python** tutorial code enable you to use the `myArm` component you configured earlier, and then call the `get_end_position` method to get the position of the **end of the robot arm with respect to the arm's base**.
+The following lines from the [full **Python** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
+The code then calls the `get_end_position` method to get the position of the **end of the robot arm with respect to the arm's base**.
 
-<!-- Insert code link here to portion of Python sample with ...
-    my_arm_resource = Arm.get_resource_name("myArm")
-    my_arm_component = Arm.from_robot(robot, "myArm")
-    my_arm_return_value = await my_arm_component.get_end_position()
-    print(f"myArm get_end_position return value: {my_arm_return_value}")
--->
+```python {class="line-numbers linkable-line-numbers"}
+my_arm_resource = Arm.get_resource_name("myArm")
+my_arm_component = Arm.from_robot(robot, "myArm")
+my_arm_return_value = await my_arm_component.get_end_position()
+print(f"myArm get_end_position return value: {my_arm_return_value}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+The following lines from the [full **Go** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
+The code then calls the `EndPosition` method to get the position of the **end of the robot arm with respect to the arm's base**.
+
+```go {class="line-numbers linkable-line-numbers"}
+myArmResource = arm.Named("myArm")
+myArmComponent, err := arm.FromRobot(robot, "myArm")
+myArmReturnValue, err := myArmComponent.EndPosition(context.Background(), nil)
+if err != nil {
+  fmt.Println(err)
+}
+fmt.Println("myArm EndPosition return value: %s", myArmReturnValue)
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
 The state of a robot arm can also be described as the **combined positions of each joint** attached to the arm.
 You can access a robot arm's "joint states" (as they are sometimes referred to) by calling a different method on the arm component.
-The code below can be executed right after you get the end effector pose from the prior code sample; notice the different way in which these two pieces of information are presented.
+Use the following code right after the code that gets the end effector pose from the prior code sample.
+When you run the code, you'll see that these two pieces of information are presented differently.
 
 {{< tabs >}}
-{{% tab name="Go" %}}
-<!-- Insert code link here to portion of Go sample with ...
-    myArmJointPositions, err := myArmComponent.JointPositions(context.Background(), nil)
-    if err != nil { 
-      fmt.Println(err) 
-    }
-    fmt.Println("myArm JointPositions return value: %s", myArmJointPositions)
--->
-{{% /tab %}}
 {{% tab name="Python" %}}
-<!-- Insert code link here to portion of Python sample with ...
-    my_arm_joint_positions = await my_arm_component.get_joint_positions()
-    print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
--->
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm_joint_positions = await my_arm_component.get_joint_positions()
+print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+myArmJointPositions, err := myArmComponent.JointPositions(context.Background(), nil)
+if err != nil {
+  fmt.Println(err)
+}
+fmt.Println("myArm JointPositions return value: %s", myArmJointPositions)
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
+<!-- TODO(ADD EXAMPLE OUTPUT) -->
+
 Both representations of an arm's state are important.
 Sometimes you may wish to direct an arm in terms of joint positions, sometimes you may need to describe the position of another object with respect to the end of the robot arm.
-There is a mathematical relationship that allows us to convert between these two representations, known as the **forward and inverse kinematics**, which is foundational to complex robotic motion.
-We will not cover forward and inverse kinematics in this tutorial, but resources for further reading on these topics are linked in the **Next Steps** section.
+There is a mathematical relationship that allows you to convert between these two representations, known as the **forward and inverse kinematics**, which is foundational to complex robotic motion.
+We will not cover forward and inverse kinematics in this tutorial, but resources for further reading on these topics are linked in the [**Next Steps**](#next-steps-and-references) section.
 
 ## Moving the Arm
 
@@ -137,33 +148,36 @@ Let's start with joint position commands, as their formulation is a little simpl
 ### Joint Position Commands
 
 First, you can initiate motion with a joint position command.
-You must import an additional Go library to access the data structure that Viam uses to encode joint positions, which is shown next. A final note:
+You must import an additional Go library to access the data structure that Viam uses to encode joint positions, which is shown next.
+A final note:
 
 {{< alert title="Caution" color="caution" >}}
 Executing code presented after this point *will* induce motion in a connected robotic arm!
 {{< /alert >}}
 
 {{< tabs >}}
-{{% tab name="Go" %}}
-Add `armapi "go.viam.com/api/component/arm/v1"` to your import list, and you will now be able to assign values to an `armapi.JointPositions` data structure.
-See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data being passed to the `MoveToJointPositions` function.
-
-<!-- Insert code link here to portion of Go sample with ...
-    cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 0.1}}
-    err = myArmComponent.MoveToJointPositions(ctx, cmdJointPositions, nil)
-    if err != nil { 
-      fmt.Println(err) 
-    }
--->
-{{% /tab %}}
 {{% tab name="Python" %}}
 Add `from viam.proto.component.arm import JointPositions` to your import list, and you will now be able to assign values to a `JointPositions` data structure.
 See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data being passed to the `move_to_joint_positions` function.
 
-<!-- Insert code link here to portion of Python sample with ...
-    cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 0.1])
-    await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
--->
+```python {class="line-numbers linkable-line-numbers"}
+cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 0.1])
+await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+Add `armapi "go.viam.com/api/component/arm/v1"` to your import list, and you will now be able to assign values to an `armapi.JointPositions` data structure.
+See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data being passed to the `MoveToJointPositions` function.
+
+```go {class="line-numbers linkable-line-numbers"}
+cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 0.1}}
+err = myArmComponent.MoveToJointPositions(ctx, cmdJointPositions, nil)
+if err != nil {
+  fmt.Println(err)
+}
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -182,35 +196,38 @@ You can then pass the adjusted pose back to the arm as a **goal** pose for the p
 For example, the below code gets the arm's end position, makes a 100 millimeter adjustment in the +Z direction, and then uses that adjustment as a goal when commanding arm motion.
 
 {{< tabs >}}
-{{% tab name="Go" %}}
-You must import some additional Go packages to synthesize new poses through the `spatialmath` library, and to provide an empty `WorldState` to the arm component's `MoveToPosition` command.
-Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to your import list and then add the sample code below to your own client script.
-
-<!-- Insert code link here to portion of Go sample with ...
-    currentArmPose, err := myArmComponent.EndPosition(context.Background(), nil)
-    if err != nil {
-      fmt.Println(err)
-    }
-    adjustedArmPoint := currentArmPose.Point()
-    adjustedArmPoint.Z += 100.0
-    cmdArmPose := spatialmath.NewPose(adjustedArmPoint, currentArmPose.Orientation())
-
-    err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, &referenceframe.WorldState{}, nil)
-    if err != nil {
-      fmt.Println(err)
-    }
--->
-{{% /tab %}}
 {{% tab name="Python" %}}
 You must import some additional Python packages to synthesize new poses and to provide an empty `WorldState` to the arm component's `move_to_position` command.
 Add `from viam.proto.common import Pose, WorldState` to your import list and add the sample code below to your own client script.
 
-<!-- Insert code link here to portion of Python sample with ...
-    # Generate a simple pose move +100mm in the +Z direction of the arm
-    cmd_arm_pose = await my_arm_component.get_end_position()
-    cmd_arm_pose.z += 100.0
-    await arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
--->
+# Generate a simple pose move +100mm in the +Z direction of the arm
+
+```python {class="line-numbers linkable-line-numbers"}
+cmd_arm_pose = await my_arm_component.get_end_position()
+cmd_arm_pose.z += 100.0
+await arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+You must import some additional Go packages to synthesize new poses through the `spatialmath` library, and to provide an empty `WorldState` to the arm component's `MoveToPosition` command.
+Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to your import list and then add the sample code below to your own client script.
+
+```go {class="line-numbers linkable-line-numbers"}
+currentArmPose, err := myArmComponent.EndPosition(context.Background(), nil)
+if err != nil {
+  fmt.Println(err)
+}
+adjustedArmPoint := currentArmPose.Point()
+adjustedArmPoint.Z += 100.0
+cmdArmPose := spatialmath.NewPose(adjustedArmPoint, currentArmPose.Orientation())
+
+err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, &referenceframe.WorldState{}, nil)
+if err != nil {
+  fmt.Println(err)
+}
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -222,7 +239,7 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 ## Next Steps and References
 
 <!-- TODO: Content below struck out for the moment, saved to point at the next tutorial "Plan Motions with an Arm and with a Gripper" -->
-<!-- 
+<!--
 If you would like to continue onto working with Viam's Motion service, go to the next tutorial in this series: "[Plan Motions with an Arm and with a Gripper](/tutorials/motion/plan-motions-with-arm-gripper/)".
 -->
 
@@ -233,6 +250,63 @@ For more resources on robot kinematics, read through the Wikipedia pages for [Fo
 ## Full Tutorial Code
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {id="access-move-arm-python-ex" class="line-numbers linkable-line-numbers" data-line=""}
+import asyncio
+
+from viam.components.arm import Arm
+from viam.proto.common import WorldState
+from viam.proto.component.arm import JointPositions
+from viam.robot.client import RobotClient
+from viam.rpc.dial import Credentials, DialOptions
+
+
+async def connect():
+    creds = Credentials(
+        type='robot-location-secret',
+        payload='<ROBOT SECRET PAYLOAD>')
+    opts = RobotClient.Options(
+        refresh_interval=0,
+        dial_options=DialOptions(credentials=creds)
+    )
+    return await RobotClient.at_address('<ROBOT ADDRESS>', opts)
+
+async def main():
+    robot = await connect()
+
+    print('Resources:')
+    print(robot.resource_names)
+
+    # myArm
+    my_arm_resource = Arm.get_resource_name("myArm")
+    my_arm_component = Arm.from_robot(robot, "myArm")
+
+    # End Position of myArm
+    my_arm_end_position = await my_arm_component.get_end_position()
+    print(f"myArm get_end_position return value: {my_arm_end_position}")
+
+    # Joint Positions of myArm
+    my_arm_joint_positions = await my_arm_component.get_joint_positions()
+    print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
+
+    # Command a joint position move, small adjustment to the last joint
+    cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 0.1])
+    await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
+
+    # Generate a simple pose move +100mm in the +Z direction of the arm
+    cmd_arm_pose = await my_arm_component.get_end_position()
+    cmd_arm_pose.z += 100.0
+    await arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
+
+    # Don't forget to close the robot when you're done!
+    await robot.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go {id="access-move-arm-go-ex" class="line-numbers linkable-line-numbers" data-line=""}
@@ -274,29 +348,29 @@ func main() {
   // myArm
   myArmResource = arm.Named("myArm")
   myArmComponent, err := arm.FromRobot(robot, "myArm")
-  if err != nil { 
-    fmt.Println(err) 
+  if err != nil {
+    fmt.Println(err)
   }
 
   // End Position of myArm
   myArmEndPosition, err := myArmComponent.EndPosition(context.Background(), nil)
-  if err != nil { 
-    fmt.Println(err) 
+  if err != nil {
+    fmt.Println(err)
   }
   fmt.Println("myArm EndPosition return value: %s", myArmEndPosition)
 
   // Joint Positions of myArm
   myArmJointPositions, err := myArmComponent.JointPositions(context.Background(), nil)
-  if err != nil { 
-    fmt.Println(err) 
+  if err != nil {
+    fmt.Println(err)
   }
   fmt.Println("myArm JointPositions return value: %s", myArmJointPositions)
 
   // Command a joint position move, small adjustment to the last joint
   cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 0.1}}
   err = myArmComponent.MoveToJointPositions(ctx, cmdJointPositions, nil)
-  if err != nil { 
-    fmt.Println(err) 
+  if err != nil {
+    fmt.Println(err)
   }
 
   // Generate a simple pose move +100mm in the +Z direction of the arm
@@ -313,63 +387,6 @@ func main() {
     fmt.Println(err)
   }
 }
-```
-
-{{% /tab %}}
-{{% tab name="Python" %}}
-
-```python {id="access-move-arm-python-ex" class="line-numbers linkable-line-numbers" data-line=""}
-import asyncio
-
-from viam.components.arm import Arm
-from viam.proto.common import WorldState
-from viam.proto.component.arm import JointPositions
-from viam.robot.client import RobotClient
-from viam.rpc.dial import Credentials, DialOptions
-
-
-async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='<ROBOT SECRET PAYLOAD>')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
-    )
-    return await RobotClient.at_address('<ROBOT ADDRESS>', opts)
-
-async def main():
-    robot = await connect()
-
-    print('Resources:')
-    print(robot.resource_names)
-    
-    # myArm
-    my_arm_resource = Arm.get_resource_name("myArm")
-    my_arm_component = Arm.from_robot(robot, "myArm")
-
-    # End Position of myArm
-    my_arm_end_position = await my_arm_component.get_end_position()
-    print(f"myArm get_end_position return value: {my_arm_end_position}")
-
-    # Joint Positions of myArm
-    my_arm_joint_positions = await my_arm_component.get_joint_positions()
-    print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
-
-    # Command a joint position move, small adjustment to the last joint
-    cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 0.1])
-    await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
-
-    # Generate a simple pose move +100mm in the +Z direction of the arm
-    cmd_arm_pose = await my_arm_component.get_end_position()
-    cmd_arm_pose.z += 100.0
-    await arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
-
-    # Don't forget to close the robot when you're done!
-    await robot.close()
-
-if __name__ == '__main__':
-    asyncio.run(main())
 ```
 
 {{% /tab %}}
