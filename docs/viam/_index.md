@@ -78,7 +78,7 @@ These services are configured and tested in the same way: click to add a new ser
 
 ## Control your robot
 
-<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram of a single-board computer running viam-server." style="float: right; max-width:270px; display: block; margin: auto auto auto auto"></img>
+<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure robot control." style="float: right; max-width:270px; display: block; margin: auto auto auto auto"></img>
 
 On top of these services, the Viam platform provides a consistent programming interface for all robots, allowing you to [control your robots](/program/sdk-as-client/) with code in the **language of your choice**.
 Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk) and [Python](https://python.viam.dev/).
