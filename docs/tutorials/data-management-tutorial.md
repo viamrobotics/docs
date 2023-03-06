@@ -8,6 +8,10 @@ tags: ["data management", "data", "services", "try viam"]
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 
+In this tutorial, we will cover how to use Data Management, including capturing camera data, syncing that data from your robot to the cloud to be able to view and filter through it, and downloading it to your computer.
+
+## Data Management
+
 One key feature of Viam is [Data Management](/manage/data-management/), which helps you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
 
 Viam's Data Management Service has two distinct parts: [data capture](#add-the-data-management-service) and [cloud sync](#enable-cloud-sync).
@@ -23,9 +27,7 @@ Plus, your data is encrypted in transit and at rest in the cloud, so it is alway
 Data capture is frequently used with data sync.
 However, if you want to manage your robot's captured data yourself, it's possible to enable data capture for components on your robot, but disable data sync.
 
-In this tutorial, we will cover how to use Data Management, including capturing camera data, syncing that data from your robot to the cloud to be able to view and filter through it, and downloading it to your computer.
-
-### Requirements
+## Requirements
 
 1. **A rented or owned robot**
 
