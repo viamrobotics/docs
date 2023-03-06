@@ -13,21 +13,23 @@ A guide to getting started with using an [Expressif ESP32 microcontroller](https
 
 ## The micro-RDK
 
-The micro-RDK is a lightweight version of Viam's [Robot Development Kit](https://github.com/viamrobotics/rdk) that supports running `viam-server` on resource-limited embedded systems like the ESP32.
+The micro-RDK is a lightweight version of Viam's [Robot Development Kit](https://github.com/viamrobotics/rdk). The micro-RDK allows you to run a smaller version of `viam-server` on resource-limited embedded systems like the ESP32.
 
-The micro-RDK version of `viam-server` supports:
+The micro-RDK supports:
+
 
 - Viam app connectivity
 - Component control
 
-The only microcontroller the micro-RDK currently supports is the ESP32.
+The only microcontroller the micro-RDK currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
 
-See [Github](https://github.com/viamrobotics/micro-rdk) for code examples and more information about the micro-RDK.
+See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information about the micro-RDK.
 
 ## Getting Started
 
 ESP-IDF is the development framework for Espressif SoCs (System-on-Chips), supported on Windows, Linux and macOS.
-Viam recommends using [our fork](https://github.com/npmenard/esp-idf) of the ESP-IDF framework to support camera configuration.
+To install the micro-RDK on your Expressif ESP32 microcontroller. you first need to install the ESP-IDF development framework, which is supported on Windows, Linux, and macOS.
+If your project makes use of camera, you must install [this fork](https://github.com/npmenard/esp-idf) of the ESP-IDF framework.
 
 ## Hardware Requirements
 
@@ -109,9 +111,7 @@ export LIBCLANG_PATH= ...
 
 Doing so is not recommended, as this may cause conflicts with other toolchains.
 As an alternative, the script prompts you to save the export file `export-esp.sh`.
-Viam recommends following this method.
-
-Run the following command to save the `./export-esp.sh` file at `$HOME/esp/esp-idf/export-esp-rs.sh`:
+Instead, run the following command to save the `./export-esp.sh` file at `$HOME/esp/esp-idf/export-esp-rs.sh`:
 
 ``` shell
 mv ./export-esp.sh $HOME/esp/esp-idf/export-esp-rs.sh
@@ -170,13 +170,13 @@ cargo generate --git https://github.com/viamrobotics/micro-rdk-template.git
 If you would like, you can use `mkdir` to initialize a new repository in the directory you created by running `cargo-generate`, to track any changes you make to the generated project.
 
 You will be prompted to paste a Viam robot configuration file (`viam.json`) into the terminal.
-Click the **Copy viam-server config** button on the **SETUP** tab of your robot on [the Viam app](https://app.viam.com) to obtain the `.json`.
+Click the **Copy viam-server config** button on the **SETUP** tab of your robot on [the Viam app](https://app.viam.com) to obtain the config file.
 
 All of the generated files should be safe to commit as a project on Github, with the exception of `viam.json`, since it contains a secret key.
 
 ### Upload the Project
 
-Modify the contents of the file src/main.rs to your liking and run:
+Modify the contents of <file>src/main.rs</file> to your liking and run:
 
 ``` shell
 make upload
@@ -199,7 +199,7 @@ If everything went well, your ESP32 will be programmed so that you will be able 
 
 If you encounter a crash due to stack overflow, you may need to increase the stack available to the main task.
 
-Edit the generated `sdkconfig.defaults` file as follows, and flash the board again:
+In the generated <file>sdkconfig.defaults</file> set the `CONFIG_ESP_MAIN_TASK_STACK_SIZE` to `32768`. The diff of your changes should look like this:
 
 ``` diff
 diff --git a/sdkconfig.defaults b/sdkconfig.defaults
@@ -262,12 +262,12 @@ let pins = vec![PinDriver::output(periph.pins.gpio18.downgrade_output())?,
     PinDriver::output(periph.pins.gpio21.downgrade_output())?,];
 ```
 
-Now you can change & read the state of pin 21 from [the Viam app](https://app.viam.com).
+Now you can change and read the state of pin 21 from [the Viam app](https://app.viam.com).
 
 #### Add a New Analog Reader
 
 Adding a new analog reader requires a few more steps.
-First, you will want to identify a pin capable of analog reading.
+First, identify a pin capable of analog reading.
 
 In the pinout diagram of the ESP32, the pins are labeled like this:
 
@@ -300,7 +300,7 @@ let analog_readers = vec![
 
 ### Install Espressif's QEMU ESP32 Emulator
 
-Espressif maintains a pretty good QEMU emulator supporting the ESP32, we recommend using it during
+Espressif maintains a good QEMU emulator supporting the ESP32, we recommend using it during
 development.
 See [here](https://github.com/espressif/qemu) for more information.
 
