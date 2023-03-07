@@ -295,10 +295,12 @@ In this example, we want to add GPIO pin 35, which is labeled `ADC1_7` in the pi
 
 ## Next Steps
 
+To continue developing your robot with an ESP32 microcontroller, Viam suggests utilizing Espressif's QEMU ESP32 machine and userspace emulator and virtualizer.
+Follow these instructions to install and build the emulator.
+
 ### Install Espressif's QEMU ESP32 Emulator
 
-Espressif maintains a good QEMU emulator supporting the ESP32, we recommend using it during
-development.
+Espressif maintains a good QEMU emulator supporting the ESP32.
 See [here](https://github.com/espressif/qemu) for more information.
 
 {{< tabs >}}
@@ -369,7 +371,7 @@ make debug-local
 
 ### Troubleshooting
 
-If you are unable to connect to the esp32-backed robot as a remote, try adding `:4545` to the end of the value set in the remote's `Address` field.
+If you are unable to connect to the ESP32-backed robot as a remote, try adding `:4545` to the end of the value set in the remote's `Address` field.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
