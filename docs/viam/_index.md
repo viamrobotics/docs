@@ -42,7 +42,7 @@ To use the Viam platform with your robot, you must [install](/installation) the 
 - Securely handles all communications.
 - Runs drivers, custom code, and any other software.
 - Accepts API requests.
-- Runs services like computer vision, data synchronization, and motion planning
+- Runs services like computer vision, data synchronization, and motion planning.
 
 {{% alert title="Info" color="info" %}}
 Everything Viam runs on your robot is [open-source](https://github.com/viamrobotics).
