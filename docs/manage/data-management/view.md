@@ -9,7 +9,7 @@ tags: ["data management", "cloud", "sync"]
 
 After the Data Management Service synchronizes the uploaded data in Viam, you can view it on the [**DATA** page in the Viam cloud](https://app.viam.com/data/view).
 
-![Images, files, and sensors tabs](../img/data-management/tabs.png)
+![Images, files, and sensors tabs](../img/tabs.png)
 
 The **DATA** page shows:
 
@@ -19,7 +19,7 @@ The **DATA** page shows:
 
 If you click on an image or a file, a **Details** panel appears on the right with capture metadata.
 
-![Images, files, and sensors tabs](../img/data-management/data_view.png)
+![Images, files, and sensors tabs](../img/data_view.png)
 
 ## Filter Data
 
@@ -31,4 +31,4 @@ For example, if you specify `Rover Rental` for location and click **SEARCH**, yo
 
 To export your captured data from the cloud, see [Export Data](../configure-cloud-sync).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/data-management-tutorial).
