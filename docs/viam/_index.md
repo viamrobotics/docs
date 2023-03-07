@@ -96,7 +96,7 @@ There are four categories of APIs:
 - [Services](/services) like computer vision, motion planning, SLAM
 - Cloud applications like [Fleet Management](/manage/fleet-management), [Data Management](/manage/data-management)
 
-You can see the Viam API specification, on [GitHub](https://github.com/viamrobotics/api).
+You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).
 
 ### Network flexibility
 
