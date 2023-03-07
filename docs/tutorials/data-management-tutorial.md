@@ -16,7 +16,7 @@ One key feature of Viam is [Data Management](/manage/data-management/), which he
 
 Viam's Data Management Service has two distinct parts: [data capture](#add-the-data-management-service) and [cloud sync](#enable-cloud-sync).
 
-**Data capture** allows you to capture data for specific components on your robot running Viam.
+**Data capture** allows you to capture data from specific components on your robot running Viam.
 You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
 
 **Cloud sync** runs in the background and uploads your robot's captured data to Viam's cloud at a defined frequency.
