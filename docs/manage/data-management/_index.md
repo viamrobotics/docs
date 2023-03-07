@@ -55,7 +55,7 @@ As before, consider the example of a tomato picking robot.
 When you initially set the robot up you may want to sync captured data to the cloud every five minutes.
 If you change your mind and want your robot to sync less frequently, you can change the sync frequency, for example, to once a day.
 
-To configure cloud sync, see [configure cloud sync](../data-management/configure-cloud-sync)
+To configure cloud sync, see [configure cloud sync](../data-management/configure-cloud-sync).
 
 ### Considerations
 
@@ -102,4 +102,4 @@ Then [configure data capture](configure-data-capture) as needed and [configure c
 
 Once you have configured data capture and cloud sync, you can [view](view) and [export](export) your data.
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/data-management-tutorial).

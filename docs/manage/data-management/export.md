@@ -19,7 +19,7 @@ To export data from the Data Management Service in the cloud:
 1. Navigate to the [**DATA** page in the Viam app](https://app.viam.com/data/view).
 2. Below the **SEARCH** button in the **FILTERING** panel, click **COPY EXPORT COMMAND** to copy the export command to the clipboard.
 
-   ![The "copy export command" button from the Viam app.](../img/data-management/image4.png)
+   ![The "copy export command" button from the Viam app.](../img/copy_command.png)
 
 3. Run the copied command in a terminal:
 
@@ -41,4 +41,4 @@ You can see more information about exporting data in the [Viam CLI documentation
 
 ## Next Steps
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/data-management-tutorial).

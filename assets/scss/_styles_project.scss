@@ -55,32 +55,66 @@ a.footnote-ref::after {
 START MARKETING CSS
 */
 /* START Adjust Heading sizes*/
+
+.td-navbar .navbar-brand {
+  font-family: Space Mono, sans-serif;
+  font-size: 0.833rem;
+  line-height: 1.667em;
+  letter-spacing: 0.1875rem;
+  padding: 5px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  a {
+    color: white;
+  }
+}
+
+.td-navbar .nav-link {
+  font-family: Space Mono, sans-serif;
+  font-weight: 400;
+  font-size: 0.833rem;
+  line-height: 1.667em;
+  letter-spacing: 0.1875rem;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
 h1, .h1 {
-  font-size: 32pt !important;
+  font-family: Space Mono, sans-serif;
+  font-size: 2.33rem;
   margin-left: 0px;
 }
 
 h2, .h2 {
-  font-size: 24 pt !important;
+  font-size: 1.5rem !important;
+  line-height: 2.625rem;
 }
 
 h3, .h3 {
-  font-size: 18pt !important;
+  font-size: 1.1667rem !important;
 }
 
 /* Added H4 and H5 in response to DAD-97 */
 h4, .h4 {
-  font-size: 14pt !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.4375em;
 }
 
 h5, .h5 {
-  font-size: 12pt !important;
+  font-size: 0.833 !important;
 }
-h7 {
-  font-size: 10pt !important;
+
+h7, .h7 {
+  font-size: 0.833rem !important;
+  line-height: 1.0625rem;
   font-weight: 400;
   font-style: italic;
   text-decoration: underline green;
+}
+
+.td-content > h3 {
+  margin-bottom: 0.667rem;
 }
 
 /* This class prevents h4 headings in alerts from indenting */
@@ -95,111 +129,104 @@ h7 {
 
 /* END Adjust Heading sizes*/
 
-/* */
-
-h1:after
-{
-  content:' ';
-  display:block;
-  border:1px solid black;
-}
-
-h2:after
-{
-  content:' ';
-  display:block;
-  border:1px solid black;
-  margin-right:25%;
-}
-
-h3:after
-{
-  content:' ';
-  display:block;
-  border:1px solid black;
-  margin-right:50%;
-}
-
-h4:after
-{
-  content:' ';
-  display:block;
-  border:1px solid black;
-  margin-right:50%;
-}
-h5:after
-{
-  content:' ';
-  display:block;
-  border:1px solid  black;
-  margin-right:75%;
-}
-
 
 .td-sidebar {
-
   /*NAV Panel changes*/
   /* background */
   background-color: #f2f2f2;
+  letter-spacing: 0.0625rem;
 }
+
+// TODO (show progress when scrolling)
+// .td-toc {
+//   border-left: 2px solid #1be020;
+//   padding-left: 16px;
+//   height: fit-content;
+// }
+
+.td-toc #TableOfContents ul li a {
+  font-size: 0.833rem;
+  font-weight: 500;
+  letter-spacing: 0.0625rem;
+  color: #333333;
+  text-decoration: none;
+}
+
+.td-toc #TableOfContents ul li li a {
+  font-size: 0.833rem;
+  font-weight: 400;
+  letter-spacing: 0.0625rem;
+  color: #666666;
+}
+
 /* font color */
 /* This font color relieves the overall heaviness of the LH menu.  */
 .td-sidebar-nav .td-sidebar-link__page {
   color: #495057;
 }
-/* This font color sets the active item to heavy black */
-.td-sidebar-nav-active-item{
+
+// All navbar items except the active one
+.td-sidebar-nav .td-sidebar-link {
   color: black;
+  text-decoration: none;
 }
 
+// The active navbar item
+.td-sidebar-nav-active-item {
+  color: #0000EA;;
+  font-weight: $font-weight-bold;
+}
+
+// Expanded headers should be bold
+
+
+.breadcrumb {
+  font-size: 1rem;
+  letter-spacing: 0.0625rem;
+  a {
+    text-decoration: none;
+  }
+}
+
+a {
+  color: #0000EA;
+  h1, h2, h3, h4, h5, h6, h7, p {
+    color: black;
+  }
+}
+
+p, li {
+  color: #515151;
+  a {
+    text-decoration: underline;
+  }
+}
 
 
 /* font weight */
-.td-sidebar-nav .td-sidebar-link__page{
-  font-weight:600;  /* LH TOC Font weight  */
-}
-
-
-.td-toc #TableOfContents a {
-  color: black; /* Color of the RH TOC text */
-  font-weight:400;  /* LH TOC Font weight  */
-}
-
-
-.td-navbar {
-  background: black;
-}
-
 
 .td-navbar {
   background: black !important;
 }
-
-
-
 
 /* sets the footer to black. */
 .bg-dark {
   background-color: black !important;
 }
 
-
 /* sets the base font heavier than the theme. */
 .td-content p, .td-content li, .td-content td {
   font-weight: normal;
-  color: black;
+  font-size: 1rem !important;
+  line-height: 1.75em !important;
 }
 
-
-
 .td-sidebar-nav .td-sidebar-link.tree-root {
-  font-weight: 700;
+  font-weight: 400;
   color: black;
   border-bottom: 1px #30638E solid;
   margin-bottom: 1rem;
 }
-
-
 
 .breadcrumb-item + .breadcrumb-item::before {
   float: left;
@@ -271,31 +298,33 @@ END MARKETING CSS
 
 .alert {
   font-weight: $font-weight-medium;
-  background: $white;
-  color: inherit;
-  border-radius: 0;
+  background-color: whitesmoke;
+  color: black;
+  border: 1px solid black;
+  box-shadow: 8px 8px 0 0 #000;
+  margin-right: 8px;
 
   @each $color, $value in $theme-colors {
     &-#{$color} {
       & .alert-heading {
         color: $value;
       }
-
-      border-style: solid;
-      -webkit-border-top-left-radius: 5px;
-      -webkit-border-bottom-left-radius: 5px;
-      -moz-border-radius-topleft: 5px;
-      -moz-border-radius-bottomleft: 5px;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-color: $value;
-      border-width: 0 0 0 12px;
     }
   }
+  p {
+    color: black;
+  }
+}
+
+.td-content .alert:not(:first-child) {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .alert-heading { // left margin for h4 in alerts
   margin-left: 0;
+  letter-spacing: 0.0625em;
+  text-transform: uppercase;
 }
 .alert-heading::after { // blocks display h4 rules in alerts
   content:' ';
@@ -339,15 +368,12 @@ END MARKETING CSS
 /* .alert-warning hr: doesn't seem to do anything*/
 /* .alert-warning .alert-link: doesn't seem to do anything*/
 
+.alert a {
+  text-decoration: underline;
+}
+
 .alert-warning {
-  color: black;
-  background: whitesmoke;
-  border-color: #ffb8b8;
-  border-bottom-left-radius: .5rem;
-  border-top-left-radius: .5rem;
-  border-style: solid;
-  border-color: red;
-  border-width: 0 0 0 8px;
+  box-shadow: 8px 8px 0 0 red;
 }
 .alert-warning hr {
   border-top-color: #ff9f9f;
@@ -358,14 +384,7 @@ END MARKETING CSS
 
 
 .alert-note {
-  color: black;
-  background: whitesmoke;
-  border-color: blue;
-  border-bottom-left-radius: .5rem;
-  border-top-left-radius: .5rem;
-  border-style: solid;
-  border-color: blue;
-  border-width: 0 0 0 8px;
+  box-shadow: 8px 8px 0 0 blue;
 }
 .alert-note hr {
   border-top-color: #ff9f9f;
@@ -375,14 +394,7 @@ END MARKETING CSS
 }
 
 .alert-caution {
-  color: black;
-  background: whitesmoke;
-  border-color: #eba71b;
-  border-bottom-left-radius: .5rem;
-  border-top-left-radius: .5rem;
-  border-style: solid;
-  border-color: #f0b93f;
-  border-width: 0 0 0 8px;
+  box-shadow: 8px 8px 0 0 #f0b93f;
 }
 .alert-caution hr {
   border-top-color: #ff9f9f;
@@ -393,14 +405,7 @@ END MARKETING CSS
 
 
 .alert-tip, .alert-info {
-  color: black;
-  background: whitesmoke;
-  border-color: #1be020;
-  border-bottom-left-radius: .5rem;
-  border-top-left-radius: .5rem;
-  border-style: solid;
-  border-color: #1be020;
-  border-width: 0 0 0 8px;
+  box-shadow: 8px 8px 0 0 #1be020;
 }
 
 .alert-info .alert-heading {
@@ -438,3 +443,40 @@ END MARKETING CSS
 }
 
 /* END CSS FOR EXPANDER */
+
+/* START card styling */
+.hover-card {
+  border: 1px solid #000;
+  box-shadow: 5px 5px 0 0 #000;
+  margin: 1em;
+  min-width: 200px;
+  width: 200px;
+  max-width: 200px;
+}
+
+.hover-card:hover {
+  box-shadow: 8px 8px 0 0 #000;
+
+  -webkit-transform: translate(-3px,-3px);
+  -ms-transform: translate(-3px,-3px);
+  transform: translate(-3px,-3px);
+}
+
+.hover-card.hover-card-small {
+  min-width: 130px;
+  width: 130px;
+  max-width: 130px;
+}
+
+@media (min-width: 992px) {
+  .hover-card {
+    min-width: 300px;
+    width: 300px;
+    max-width: 300px;
+  }
+  .hover-card.hover-card-small {
+    max-width: 200px;
+  }
+}
+
+/* END card styling */

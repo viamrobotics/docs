@@ -14,7 +14,7 @@ See [What is Viam?](/viam/) for more information.
 
 <div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="prepare">
             <br>
             <img src="img/thumbnails/prepare.png" alt="Prepare" width=100%>
@@ -22,7 +22,7 @@ See [What is Viam?](/viam/) for more information.
             <p style="text-align: left;">Prepare your computer before installing <code>viam-server</code>.</p>
         <a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="install">
             <br>
             <img src="img/thumbnails/install.png" alt="Install" width=100%>
@@ -32,7 +32,7 @@ See [What is Viam?](/viam/) for more information.
     </div>
   </div>
   <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="manage">
             <br>
             <img src="img/thumbnails/manage.png" alt="Manage" width=100%>
@@ -40,7 +40,7 @@ See [What is Viam?](/viam/) for more information.
             <p style="text-align: left;">Control and troubleshoot <code>viam-server</code>.</p>
         </a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="update">
             <br>
             <img src="img/thumbnails/update.png" alt="Update" width=100%>

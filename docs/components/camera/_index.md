@@ -244,7 +244,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 <div class="container text-center">
   <div class="row">
-        <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <div class="col hover-card">
           <a href="calibrate/">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
                 Calibrate a Camera
@@ -252,7 +252,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
           </a>
           <p style="text-align: left;"> Calibrate a camera and extract the intrinsic and distortion parameters. </p>
         </div>
-        <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <div class="col hover-card">
           <a href="transform/">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
                 Transform a Camera
@@ -260,7 +260,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
           </a>
           <p style="text-align: left;"> Instructions for transforming a webcam. </p>
         </div>
-      <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+      <div class="col hover-card">
           <a href="../../services/vision">
               <br>
               <h4 style="text-align: left; margin-left: 0px;">Vision Service</h4>
@@ -269,14 +269,14 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
       </div>
     </div>
   <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="/tutorials/viam-rover/try-viam-color-detection/">
             <br>
             <h4 style="text-align: left; margin-left: 0px;">Detect color with a Viam Rover</h4>
             <p style="text-align: left;">Use the vision service in the Viam app to detect a color.</p>
         </a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="/tutorials/scuttlebot/color-detection-scuttle/">
             <br>
             <h4 style="text-align: left; margin-left: 0px;">Colored Object Follower</h4>

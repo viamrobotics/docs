@@ -79,14 +79,14 @@ Troubleshooting information for configuration errors.
 
 <div class="container text-center">
   <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="control-a-component">
             <br>
             <h4 style="text-align: left; margin-left: 0px;">Control a COMPONENTNAME</h4>
             <p style="text-align: left;">Control your COMPONENTNAME.</p>
         <a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="install">
             <br>
             <h4 style="text-align: left; margin-left: 0px;">Relevant tutorial name</h4>

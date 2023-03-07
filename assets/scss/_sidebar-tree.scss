@@ -5,6 +5,7 @@
     padding-right: 0.5rem;
     margin-right: -15px;
     margin-left: -15px;
+    font-size: 1rem;
 
     @include media-breakpoint-up(md) {
         @supports (position: sticky) {
@@ -32,16 +33,19 @@
         @include media-breakpoint-up(md) {
             & .ul-1 ul {
                 padding-left: 1.5em;
+                font-size: 0.833rem;
             }
         }
-
-
         padding-left: 0;
     }
 
     &__section-title {
         display: block;
-        font-weight: $font-weight-medium;
+        font-weight: $font-weight-normal;
+
+        .active-path {
+            font-weight: $font-weight-bold;
+        }
 
         .active {
             font-weight: $font-weight-bold;
@@ -58,7 +62,7 @@
 
         &__page {
             color: $gray-700;
-            font-weight: $font-weight-light;
+            font-weight: $font-weight-normal;
         }
     }
 
@@ -140,11 +144,9 @@
             }
         }
 
-
         @include media-breakpoint-up(xl) {
             flex: 0 1 320px;
         }
-
 
         .td-search-box {
             width: 100%;
