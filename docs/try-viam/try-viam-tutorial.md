@@ -13,13 +13,13 @@ You can take over a Viam Rover in our robotics lab for 15 minutes to play around
 The rental rover is made up of a chassis with a Raspberry Pi 4B single board computer, two motors, encoders, and a camera.
 The Try Viam area also has an overhead camera to provide a view of the rental rover, allowing you to view its movements in real time.
 
-Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](/try-viam/reserve-a-rover/#using-the-reservation-system), [navigate the Viam platform](/manage/app-usage/), and [drive the rover](#the-control-tab):
+Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](/try-viam/reserve-a-rover/#using-the-reservation-system), [navigate the Viam platform](/manage/app-usage/), and [drive the rover](#control-tab):
 
 <div class="embed-responsive embed-responsive-16by9">
     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/YYpZ9CVDwMU" allowfullscreen></iframe>
 </div>
 
-## The **CONTROL** tab
+## **CONTROL** tab
 
 Click on the timer at the top to go to the rental rover's **CONTROL** tab where you can drive the robot and interact with each of the robot's components.
 
@@ -183,7 +183,7 @@ The **Spin Slip Factor** of 1.76 is used in steering calculations to account for
 The [camera component](/components/camera/) configures the webcam that is plugged into the Raspberry Pi of the rover.
 The camera component has the **Type** `camera`, the **Model** `webcam`, and the **Video Path** is `video0`.
 
-For more information on choosing the correct video path, refer to our [camera configuration tutorial](/components/camera/configure-a-camera/#connect-and-configure-a-webcam).
+For more information on choosing the correct video path, refer to our [webcam documentation](/components/camera/webcam).
 
 ![The video path in the webcam configuration panel is set to "video0".](../img/try-viam/camera-config.png)
 
@@ -221,7 +221,7 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
 
 <div class="container text-center">
   <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <br>
         <img src="../../tutorials/img/try-viam-sdk/image1.gif" alt="Overhead view of the Viam rover showing it as it drives in a square.">
         <br>
@@ -230,16 +230,16 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
             <p style="text-align: left;">Use the Viam SDK to make your Viam Rover move in a square.</p>
         </a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <br>
         <img src="../../tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png" alt="detectionCam stream displaying a color detection.">
         <br>
         <a href="../../tutorials/viam-rover/try-viam-color-detection">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect a Color</h4>
-            <p style="text-align: left;">Use the vision service in the Viam app to detect a color.</p>
+            <p style="text-align: left;">Use the Vision Service in the Viam app to detect a color.</p>
         <a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <br>
         <img src="../rover-resources/img/viam-rover/rover-front.jpg" style="max-width:400px;width:100%" alt="The front of the assembled Viam Rover" />
         <br>

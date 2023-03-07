@@ -1,5 +1,5 @@
 DirectoryPath: "dist"
-EnforceHTTPS: false
+EnforceHTTPS: true
 IgnoreEmptyHref: true
 IgnoreInternalEmptyHash: true
 IgnoreDirectoryMissingTrailingSlash: true
@@ -12,6 +12,8 @@ IgnoreURLs:
 - "instagram.com"
 - "twitter.com"
 - "github.com/viamrobotics/"
+- "openai.com"
+- "packages.viam.com" #IgnoreHTTPS does not work on staging
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"

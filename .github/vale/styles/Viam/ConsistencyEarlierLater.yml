@@ -1,0 +1,8 @@
+extends: existence
+message: "To refer to product releases, use earlier or later."
+link: 'https://docs.rackspace.com/docs/style-guide/terminology/general-term-guidelines/use-consistent-time-references'
+nonword: false
+level: suggestion
+tokens:
+  - '(SDK \d.\d.* (higher|lower|above|below|older|newer))'
+  - '((higher|lower|above|below|older|newer).*SDK \d.\d)'

@@ -11,7 +11,7 @@ For 15 minutes, no matter where you are in the world, you can take over and play
 
 ## How do I make a reservation to take over a Viam Rover?
 
-{{< readfile "/static/include/create-a-reservation.md" >}}
+{{< readfile "/static/include/try-viam/create-a-reservation.md" >}}
 
 ## My robot had an error, a system crash, or is physically stuck
 
@@ -102,7 +102,7 @@ Here are some tutorials which you can follow:
 - [Detect a Color](/tutorials/viam-rover/try-viam-color-detection)
 
 If you want to get your own Viam Rover, we’re also taking pre-orders for a limited quantity of Viam Rovers.
-Reserve yours today [here](http://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
+Reserve yours today [here](https://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
 
 ## Why can't I use the rover's microphone?
 

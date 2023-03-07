@@ -10,7 +10,7 @@ tags: ["slam", "camera", "services", "lidar"]
 ---
 
 {{% alert title="Note" color="note" %}}
-The SLAM service is an experimental feature.
+The SLAM Service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
@@ -64,14 +64,14 @@ Install Cartographer with one of these commands:
 
 ## Run Cartographer in Live Mode with an Rplidar
 
-Run Cartographer as a live SLAM service with an Rplidar.
+Run Cartographer as a live SLAM Service with an Rplidar.
 
 ### Configuration with Viam
 
 Configure your robot to run Cartographer with an Rplidar in two steps:
 
 1. Add your Rplidar as a modular component.
-2. Add Cartographer as a SLAM service in live mode.
+2. Add Cartographer as a SLAM Service in live mode.
 
 #### Step 1: Add your Rdiplar as a Modular Component
 
@@ -187,7 +187,7 @@ Now that you've added your Rplidar device as a modular component of your robot, 
 {{%expand "Click here if you prefer to use Raw JSON to build your service" %}}
 In the **CONFIG** tab, select the **Raw JSON** mode, then copy/paste the following configuration:
 
-```json-viam
+```json
   "services": [
     {
       "attributes": {
@@ -237,7 +237,7 @@ At this point, your complete configuration should look like:
   {{< tabs >}}
   {{% tab name="Linux" %}}
 
-  ```json-viam
+  ```json
   {
     "components": [
       {
@@ -281,7 +281,7 @@ At this point, your complete configuration should look like:
   {{% /tab %}}
   {{< /tabs >}}
 
-  <!-- json-viam TAB MACOS: TODO
+  <!-- json TAB MACOS: TODO
   {
     "components": [
       {
@@ -337,7 +337,7 @@ Run Cartographer in offline mode using one of your previously saved LIDAR datase
 Configure your robot to run Cartographer in offline mode in two steps:
 
 1. Find an existing dataset to run Cartographer with.
-2. Add Cartographer as a SLAM service in offline mode.
+2. Add Cartographer as a SLAM Service in offline mode.
 
 #### Step 1: Find a Dataset for Cartographer to Use
 
@@ -367,7 +367,7 @@ This tells the service to use only data found within the `data_dir` directory sp
 * Copy the following configuration code for your Cartographer service.
   Paste it into the "Raw JSON":
 
-```json-viam
+```json
 {
   "services": [
     {

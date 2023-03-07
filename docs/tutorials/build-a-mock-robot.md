@@ -21,7 +21,7 @@ In this tutorial, you will set up, control, and program a mock robotic arm and a
 ## What you'll need for this guide
 
 - A laptop or desktop running Linux or macOS.
-- [Golang](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/).
+- [Go](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/).
 - A code editor of your choice.
 - If you are running macOS, ensure you have [Homebrew](https://brew.sh/) installed and up to date on your Mac.
 
@@ -29,7 +29,7 @@ In this tutorial, you will set up, control, and program a mock robotic arm and a
 
 ### Set up your account on the Viam app
 
-The first thing you need to do is set up your account on the Viam App.
+The first thing you need to do is set up your account on the Viam app.
 Go to [app.viam.com](https://app.viam.com) and sign up.
 
 ### Configure your mock robot
@@ -70,14 +70,14 @@ Next, you will need to configure your mock robotic arm with the Viam Python SDK 
 
 ### How to install a Viam SDK
 
-In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk). Use which ever programming language you are most comfortable with.
+In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk). Use which ever programming language you are most comfortable with.
 
 {{% alert title="Note" color="note" %}}
 
 Refer to the appropriate SDK documentation for SDK installation instructions.
 
 - [Viam Python SDK](https://python.viam.dev/)
-- [Viam Golang SDK](https://pkg.go.dev/go.viam.com/rdk)
+- [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 
 {{% /alert %}}
 
@@ -88,7 +88,7 @@ There, you will find a friendly developer community of people learning how to ma
 
 ### How to connect to your mock robot with the Viam SDK
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Golang SDK**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 Next, paste that boilerplate code from the **CODE SAMPLE** tab of the Viam app into a file named <file>index.py</file> or <file>index.go </file>file in your code editor, and save your file.
 
@@ -110,7 +110,7 @@ python3 index.py
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```bash
 go run index.go
@@ -144,9 +144,9 @@ import asyncio
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
-The first thing you need to do is import the [arm component](https://github.com/viamrobotics/rdk/blob/main/components/arm/client.go) from the Viam Golang SDK, and the [random](https://pkg.go.dev/math/rand) and [time](https://pkg.go.dev/time) libraries.
+The first thing you need to do is import the [arm component](https://github.com/viamrobotics/rdk/blob/main/components/arm/client.go) from the Viam Go SDK, and the [random](https://pkg.go.dev/math/rand) and [time](https://pkg.go.dev/time) libraries.
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
@@ -172,7 +172,7 @@ arm = ArmClient.from_robot(robot=robot, name='my_main_arm')
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_main_arm")
@@ -210,7 +210,7 @@ async def randomMovement(arm: ArmClient):
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Returns an array of random floats between two numbers
@@ -257,7 +257,7 @@ async def main():
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 func main() {
@@ -290,7 +290,7 @@ Each of these computer-controlled units is referred to as a _part_.
 Most simple robots will have only one part, but can have as many parts as needed.
 
 Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
-You can access any sub-part either directly, or via any part above it in the tree.
+You can access any sub-part either directly, or through any part above it in the tree.
 Each part runs a single _viam-server_ instance.
 
 ## How to configure a sub-part in the Viam app
@@ -314,7 +314,7 @@ From the **CODE SAMPLE** tab of your sub-part:
 - Navigate back to the **CONFIG** and then the **REMOTES** tab of your main robot
 - Paste your sub-part's configuration.
 
-<img src="../img/build-a-mock-robot/image8.png" alt="Screenshot from the Viam App showing the CONFIG > REMOTES with the sub-part's remote config file pasted in." width="80%"><br>
+<img src="../img/build-a-mock-robot/image8.png" alt="Screenshot from the Viam app showing the CONFIG > REMOTES with the sub-part's remote config file pasted in." width="80%"><br>
 
 ### How to start a new instance of `viam-server` for your mock sub-part
 
@@ -324,7 +324,7 @@ We are using port `8081`, but you can use any open port you want.
 You can do this by going to **CONFIG** and then going to the **NETWORK** tab.
 Here, you will paste the following:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "bind_address": "localhost:8081"
 }
@@ -364,7 +364,7 @@ from viam.components.motor import MotorClient
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 To control your motor sub-part, you will need to import the [Motor Client](https://github.com/viamrobotics/rdk/blob/main/components/motor/client.go). Paste this at the top of your file:
 
@@ -388,7 +388,7 @@ motor = MotorClient.from_robot(robot=robot, name='sub-part:my_sub_motor')
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 myMotor, err := motor.FromRobot(robot, "my_sub_motor")
@@ -420,7 +420,7 @@ async def toggleMotor(motor: MotorClient):
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Toggles the motor on and off every second
@@ -458,7 +458,7 @@ async def main():
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 func main() {

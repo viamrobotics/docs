@@ -4,7 +4,7 @@ linkTitle: "Sensor"
 weight: 70
 draft: false
 type: "docs"
-description: "Explanation of sensor configuration and usage in Viam."
+description: "A device that sends information about the outside world to the computer controlling a robot."
 tags: ["sensor", "components"]
 icon: "img/components/sensor.png"
 # SME: #team-bucket
@@ -73,11 +73,26 @@ readings = await sensor.get_readings()
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
-"go.viam.com/rdk/components/sensor"
+    "context"
+    "github.com/edaniels/golog"
+    "go.viam.com/rdk/components/sensor"
 )
 
-ultra, err := sensor.FromRobot(robot, "ultra1")
-readings, err := ultra.Readings(context.Background())
+func main() { 
+    // Connect to your robot.
+    robot, err := client.New(
+        context.Background(),
+        "ADD YOUR ROBOT ADDRESS HERE. You can find this on the Code Sample tab of app.viam.com.",
+        logger,
+      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+          Type:    utils.CredentialsTypeRobotLocationSecret,
+          Payload: "ADD YOUR LOCATION SECRET HERE. You can find this on the Code Sample tab of app.viam.com.",
+      })),
+  )
+
+    ultra, err := sensor.FromRobot(robot, "ultra1")
+    readings, err := ultra.Readings(context.Background())
+ }
 ```
 
 {{% /tab %}}

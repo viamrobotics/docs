@@ -22,3 +22,6 @@ MD033: false
 
 # First line in a file should be a top-level heading
 MD041: false
+
+# Code block style expect indented
+MD046: false

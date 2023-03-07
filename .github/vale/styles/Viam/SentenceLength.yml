@@ -1,0 +1,8 @@
+extends: occurrence
+message: "Try to keep sentences short (< 25 words)."
+link: "https://docs.rackspace.com/docs/style-guide/writing/write-clear-concise-sentences-paragraphs"
+scope: sentence
+level: suggestion
+max: 25
+tokens:
+  - '\b(\w+)\b'

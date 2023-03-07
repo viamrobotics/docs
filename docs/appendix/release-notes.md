@@ -8,6 +8,154 @@ description:
 # SME: Naomi
 ---
 
+## 28 February 2023
+
+{{< tabs >}}
+{{% tab name="Versions" %}}
+
+## Release Versions
+
+* rdk - **v0.2.18**
+* api - **v0.1.83**
+* slam - **v0.1.22**
+* viam-python-sdk - **v0.2.10**
+* goutils - **v0.1.13**
+* rust-utils - **v0.0.10**
+
+(**Bold=updated version**)
+
+{{% /tab %}}
+
+{{% tab name="New Features" %}}
+
+## New Features
+
+### Reuse rovers in TRY VIAM
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                Users of TRY VIAM now have the option to reuse a robot config if they want to continue working on a project that they started in a prior session.
+                <img src="../img/reuse-rovers.gif" alt="Select a rover to reuse in the UI"> </img>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+### Dynamic Code Samples Tab
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                The code sample included for each SDK dynamically updates as resources are added to the config. We instantiate each resource and provide an example of how to call a simple <code>Get</code> method so that users can start coding right away without needing to import and provide the name of all of the components and services in their config.
+                <img src="../img/dynamic-code-sample.gif" alt="Example of the python code sample generated for the Viam Rover fragment" title="Example of the python code sample generated for the Viam Rover fragment"> </img>
+                <img src="../img/example-output-try-viam.gif" alt="Example output from running the example code used in the TRY VIAM experience " title="Example output from running the example code used in the TRY VIAM experience "> </img>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+### Typescript SDK
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                Users that want to create web interfaces to control their robots can use the new Typescript SDK as a client. The RDK server running on the robot is able to detect if a given SDK client session has lost communication because it tries to maintain a heartbeat once every 2 seconds. Users can choose to opt-out of this session management.
+                <ul>
+                <li>
+                    <a href="https://ts.viam.dev/">Typescript SDK Docs</a>
+                </li>
+                <li>
+                    <a href="https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/teleop">Teleop Example from Github page</a>
+                    <img src="../img/teleop-example.gif" alt="Example of the python code sample generated for the Viam Rover fragment" title="Example of the python code sample generated for the Viam Rover fragment"> </img>
+                </li>
+                </ul>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+### Frame System Visualizer
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                Users can now set up a frame system on their robot using a 3D visualizer located in the **FRAME SYSTEM** tab on the config UI. Setting up the frame system hierarchy of a robot enables the RDK to transform poses between different component reference frames. Users can also give individual components a geometry so that the RDK’s builtin motion planner can avoid obstacles while path planning.
+                <ul>
+                <li>
+                    <img src="../img/frame-system-visualizer.gif" alt="Example of configuring a frame system for a Viam Rover that has a camera and a lidar" title="Example of configuring a frame system for a Viam Rover that has a camera and a lidar"> </img>
+                </li>
+                </ul>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+### Viam for Microcontrollers
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                Micro-RDK is a lightweight version of the RDK that is capable of running on an ESP32.  Examples & detailed set up instructions can be found in the <a href="https://github.com/viamrobotics/micro-rdk">Micro-RDK GitHub repo.</a>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+{{% /tab %}}
+
+{{% tab name="Improvements" %}}
+
+## Improvements
+
+### Base control card UI
+
+<table style="margin-bottom:18px">
+    <tbody style="vertical-align:top;">
+        <tr>
+            <td width="120px"><strong>What is it?</strong></td>
+            <td>
+                We have improved the UI of the base control card to make it easier to view multiple camera streams while remotely controlling a base. When a robots config contains SLAM, we also now provide a view of the SLAM Map with a dot to indicate where the robot is currently localized within that map.
+                <img src="../img/base-control-card-ui.png" alt="Base component card UI"> </img>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+{{% /tab %}}
+{{% tab name="Issue Resolutions" %}}
+
+#### Viam Server goes into restart loop instead of using cached config
+
+When restarting a <code>viam-server</code> that was previously connected to the internet and cached the config - it went into a restart loop when it does not have access to the internet.
+
+#### Never have long-lived I2CHandle objects
+
+Creating an <code>I2CHandle</code> locks the I2C bus that spawned it, and closing the handle unlocks the bus again. That way, only one device can talk over the bus at a time, and you don’t get race conditions. However, if a component creates a handle in its constructor, it locks the bus forever, which means no other component can use that bus.<br>
+<br>
+We have changed components that stored an <code>I2CHandle</code>, so that they instead just store a pointer to the board <code>board.I2C</code> bus itself, create a new handle when they want to send a command, and close it again as soon as they're done.
+
+#### Sensor does not show GPS readings
+
+We changed <code>sensor.Readings ["position"]</code> field to return the values of the <code>*geo.Point</code> being accessed.
+
+#### Add implicit dependencies to servo implementation
+
+All component drivers can now declare dependencies, which are used to infer the order or instantiation.
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## 31 January 2023
 
 {{< tabs >}}
@@ -49,7 +197,7 @@ description:
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>RDK now natively supports the AM5 encoder. This is the encoder that is included in the scuttle robot.
+            <td>RDK now natively supports the AM5 encoder. This is the encoder that is included in the SCUTTLE Robot.
             </td>
         </tr>
     <tbody>
@@ -141,7 +289,7 @@ description:
 {{< alert title="Note" color="note" >}}
 This is a breaking change.
 This breaking change affects ALL users who are using the Viam app to configure their robot.
-You will need to update to at the latest version of the RDK (V3.0.0) to access your robot via the remote control page.
+You will need to update to at the latest version of the RDK (V3.0.0) to access your robot using the remote control page.
 {{< /alert >}}
 </td>
         </tr>
@@ -154,7 +302,7 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>Users that are implementing their own arms are now able to supply kinematic information via URDF files.
+            <td>Users that are implementing their own arms are now able to supply kinematic information using URDF files.
             This is a convenience for our users since URDF files are readily available for common hardware. </td>
         </tr>
     <tbody>
@@ -206,16 +354,16 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>We made several improvements to the motion service that make it agnostic to the networking topology of a users robot.</td>
+            <td>We made several improvements to the Motion Service that make it agnostic to the networking topology of a users robot.</td>
         </tr>
         <tr>
             <td><strong>What does it affect?</strong></td>
             <td>
                 <ol>
                     <li>Kinematic information is now transferred over the robot API.
-                    This means that the motion service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote <code>viam-server</code>.</li>
-                    <li>Arms are now an input to the motion service.
-                    This means that the motion service can plan for a robot that has an arm component regardless of whether the arm is on a main or remote <code>viam-server</code>.</li>
+                    This means that the Motion Service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote <code>viam-server</code>.</li>
+                    <li>Arms are now an input to the Motion Service.
+                    This means that the Motion Service can plan for a robot that has an arm component regardless of whether the arm is on a main or remote <code>viam-server</code>.</li>
                 </ol>
             </td>
         </tr>
@@ -377,7 +525,7 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>We added a new servo model called <code>GPIO</code>. This represents <emphasis>any</emphasis> servo that is connected directly to <emphasis>any</emphasis> board via GPIO pins. We created this component in response to the common practice of connecting servos to separate hats, such as the <code>PCA9685</code>, rather than connecting directly to the board. Our previous implementation required a direct connection from the servo to the Raspberry Pi.</td>
+            <td>We added a new servo model called <code>GPIO</code>. This represents <emphasis>any</emphasis> servo that is connected directly to <emphasis>any</emphasis> board using GPIO pins. We created this component in response to the common practice of connecting servos to separate hats, such as the <code>PCA9685</code>, rather than connecting directly to the board. Our previous implementation required a direct connection from the servo to the Raspberry Pi.</td>
         </tr>
         <tr>
             <td><strong>What does it affect?</strong></td>
@@ -392,7 +540,7 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>We added a new badge in the <code>Current Operations</code> card of the remote control page of the Viam app. This badge lists the RTT (round trip time) of a request from your client to the robot, i.e., the time to complete one request/response cycle.</td>
+            <td>We added a new badge in the <code>Current Operations</code> card of the remote control page of the Viam app. This badge lists the RTT (round trip time) of a request from your client to the robot (the time to complete one request/response cycle).</td>
         </tr>
     <tbody>
 </table>
@@ -453,11 +601,11 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>Adding dependencies to services allows Viam to initialize and configure resources in the correct order. For example, if the SLAM service depends on a LiDAR, it will always initialize the LiDAR before the service.</td>
+            <td>Adding dependencies to services allows Viam to initialize and configure resources in the correct order. For example, if the SLAM Service depends on a LiDAR, it will always initialize the LiDAR before the service.</td>
         </tr>
         <tr>
             <td><strong>What does it affect?</strong></td>
-            <td><strong>Breaking Change</strong>: This impacts users of the SLAM service. Users must now specify which sensors they are using in the <code>depends_on</code> field of the SLAM configuration.
+            <td><strong>Breaking Change</strong>: This impacts users of the SLAM Service. Users must now specify which sensors they are using in the <code>depends_on</code> field of the SLAM configuration.
             Other service configurations are not affected.</td>
         </tr>
     <tbody>

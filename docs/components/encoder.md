@@ -3,7 +3,7 @@ title: "Encoder Component"
 linkTitle: "Encoder"
 weight: 50
 type: "docs"
-description: "Explanation of encoder configuration and usage in Viam."
+description: "A special type of sensor that measures rotation of a motor or joint."
 tags: ["encoder", "components"]
 icon: "img/components/encoder.png"
 # SME: Rand
@@ -25,12 +25,12 @@ Each phase output goes to a different pin on the board.
 Viam also supports single pin "pulse output" encoders which give relative position but not direction.
 
 In either case position can only be determined relative to the starting position; these encoders are incremental and do not indicate absolute position.
-Absolute encoders are another type of hardware that is not natively supported in Viam as of August 19th, 2022.
+Absolute encoders are another type of hardware that is not natively supported in Viam as of August 19, 2022.
 
 ## Viam Configuration
 
 Configuring an encoder requires configuring two pins on the board to which the encoder is wired, as well as configuring the [board component](/components/board/).
-In the case of an encoded motor, the motor must be configured as well, per [the motor component topic](/components/motor/#dc-motor-with-encoder).
+In the case of an encoded motor, the motor must be configured as well, per [the encoded motor component documentation](/components/motor/gpio/encoded-motor/).
 
 ### Required Attributes
 

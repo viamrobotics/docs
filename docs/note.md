@@ -62,16 +62,16 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 ### Syntax Highlighting with Backticks
 
-Line numbering is on by default.
+Line numbering is off by default.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
 "word":"As before, three backticks and the language name enables Prism syntax highlighting.",
-"note":"Use "json-viam" as the language to highlight Viam's keywords."
 }
 ```
 
-With just line 6 highlighted. See <https://prismjs.com/plugins/line-highlight/> for more:
+With just line 6 highlighted.
+See <https://prismjs.com/plugins/line-highlight/> for more:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="6"}
 while (True):
@@ -119,7 +119,7 @@ It can even contain shortcodes.
 
 Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it.
 
-Within the expander, you can still use most other shortcodes and syntax highlighting via Prism functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable.<br><br>
+Within the expander, you can still use most other shortcodes and syntax highlighting from Prism functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable.<br><br>
 
 **Screen Capture of an Expander**
 <img style="border:solid 1px black" alt="Screen capture of the expander control rendered on a documentation page" src="/img/expander-example.png">
@@ -205,7 +205,7 @@ await arm.move_to_position(pose=pos, world_state=worldstate)
 **Warning**: Use to notify the reader of an issue to avoid loss of life, personal injury, and health hazards. Electrical and physical safety fall into this category.
 
 {{< alert title="Tip" color="tip" >}}
-The "title" and "color" keywords and the names of colors ("tip," "note," etc.) are case sensitive. If you use uppercase, Alerts will not have a title and the color border will be incorrect.
+The "title" and "color" keywords and the names of colors ("tip," "note," and so on) are case sensitive. If you use uppercase, Alerts will not have a title and the color border will be incorrect.
 {{< /alert >}}
 
 {{< figure src="/img/alert-markdown.png"  alt="The shortcodes used to display Alerts." title="Shortcodes for Alerts" >}}
@@ -236,7 +236,7 @@ The figure shortcode enhances the existing figure and figurecaption html tags. F
 
 {{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
 
-This shortcode places the caption (i.e., the "title") above the table. The **title** is set in 12pt italic with a green underline.
+This shortcode places the caption (that is the "title") above the table. The **title** is set in 12pt italic with a green underline.
 
 Figure styles the Attribution text as body text.
 

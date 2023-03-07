@@ -24,7 +24,7 @@ Be aware that if you are running out of time during your rental, you can [extend
 ## Add the Vision Service
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the Vision service to.
+Click on the robot you wish to add the Vision Service to.
 Select the **CONFIG** tab, and click on **SERVICES**.
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
@@ -43,7 +43,7 @@ This tutorial uses the hex color #7a4f5c (a reddish color).
 
 Copy the following configuration into the attributes of your rover’s Vision Service:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
  "register_models": [
    {
@@ -59,7 +59,7 @@ Copy the following configuration into the attributes of your rover’s Vision Se
 }
 ```
 
-<img src="../../img/try-viam-color-detection/populated-service-attributes.png" width="700px" alt="Screenshot from the Viam app showing the Vision service panel. The panel has an Attributes panel populated with Vision Service attributes. On the upper right side there is a trash bin icon.">
+<img src="../../img/try-viam-color-detection/populated-service-attributes.png" width="700px" alt="Screenshot from the Viam app showing the Vision Service panel. The panel has an Attributes panel populated with Vision Service attributes. On the upper right side there is a trash bin icon.">
 
 The configuration adds a `model` of `type` `color_detector` with the color as a parameter.
 The `color_detector` is a heuristic-based detector that draws boxes around objects according to their hue.
@@ -82,13 +82,13 @@ Note that the detector does not detect black, perfect greys (greys where the red
 
 ## Configure a transform camera to use the color detector
 
-Viam [camera](/components/camera/) components can be [physical](/components/camera/#webcam) like the one already configured on the rover, or virtual.
+Viam [camera](/components/camera/) components can be [physical](/components/camera/webcam) like the one already configured on the rover, or virtual.
 A virtual camera transforms the output from a physical camera.
 
-To use the color detector, you need to configure a [transform camera](/components/camera/#transform).
+To view output from the color detector overlaid on images from a physical camera, you need to configure a [transform camera](/components/camera/transform).
 
-Navigate to the Scroll down to the **COMPONENTS** tab in the Viam app and scroll to the **Create Component** section.
-To create a [transform camera](/components/camera/#transform):
+Navigate to the **COMPONENTS** tab in the Viam app and scroll to the **Create Component** section.
+To create a [transform camera](/components/camera/transform):
 
 1. Enter a name for **Name**, for example `detectionCam`.
 2. Select `camera` as the **Type**.
@@ -108,7 +108,7 @@ Attribute Guides always prefix required attributes with an asterisk.
 
 Copy the following JSON configuration into the Attributes section:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
  "source": "cam",
  "pipeline": [

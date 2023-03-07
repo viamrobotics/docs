@@ -3,7 +3,7 @@ title: "Movement Sensor Component"
 linkTitle: "Movement Sensor"
 weight: 70
 type: "docs"
-description: "Explanation of movement sensors (including GPS and IMU) in Viam."
+description: "A sensor that measures location, kinematic data, or both."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
 icon: "img/components/imu.png"
 # SME: Rand
@@ -11,7 +11,7 @@ icon: "img/components/imu.png"
 The movement sensor component is an abstraction of a sensor that gives data on where a robot is and how fast it is moving.
 
 We have chosen to abstract these types of sensors into one common API.
-There are many different types of sensors that can provide data for some or all of the following methods: `Position`, `Orientation`, `LinearVelocity`, `AngularVelocity` and `CompassHeadings`.
+There are many different types of sensors that can provide data for some or all of the following methods: `Position`, `Orientation`, `LinearVelocity`, `AngularVelocity`, `LinearAcceleration` and `CompassHeadings`.
 A global positioning system (GPS) can provide position, linear velocity and compass headings.
 An inertial measurement unit (IMU) can provide angular velocity and orientation.
 We can further apply algorithms, such as a [Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter), to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
@@ -46,11 +46,11 @@ We have integrated the following GPS modules into Viam’s RDK:
 ### GPS-NMEA
 
 This GPS model uses communication standards set by the National Marine Electronics Association (NMEA).
-The `gps-nmea` model can be connected via and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board:
+The `gps-nmea` model can be connected using and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board:
 
 #### GPS-NMEA over USB/Serial
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "depends_on": [],
     "model": "gps-nmea",
@@ -70,7 +70,7 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 #### GPS-NMEA over I<sup>2</sup>C
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "depends_on": [],
     "model": "gps-nmea",
@@ -128,7 +128,7 @@ Name | Type | Default Value | Description
 
 Example config:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "depends_on": [],
     "model": "gps-rtk",
@@ -156,7 +156,7 @@ Example config:
 
 Example config:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "depends_on": [],
     "model": "gps-nmea",
@@ -197,7 +197,7 @@ For all of the following RTK-station configurations, `children` is the list of o
 
 #### RTK-Station using NTRIP
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "model": "rtk-station",
     "name": "my-rtk-station",
@@ -221,7 +221,7 @@ For all of the following RTK-station configurations, `children` is the list of o
 
 #### RTK-Station using I<sup>2</sup>C
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "model": "rtk-station",
     "name": "my-rtk-station",
@@ -247,7 +247,7 @@ For all of the following RTK-station configurations, `children` is the list of o
 
 #### RTK-Station using Serial/USB
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "children": [
         "gps1"
@@ -284,7 +284,7 @@ Name | Type | Default Value | Description
 
 Serial communication uses a filepath instead of relying on any specific piece of board hardware, so no "board" attribute is needed when configuring a movement sensor with this communication method.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<my-movement-sensor-name>",
     "type": "<TYPE>",
@@ -313,7 +313,7 @@ Name | Type | Default Value | Description
 
 You'll also need to configure the `board` attribute with the name of the board to which the I<sup>2</sup>C connection is being made.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<my-movement-sensor-name>",
     "type": "<TYPE>",
@@ -332,7 +332,7 @@ You'll also need to configure the `board` attribute with the name of the board t
 
 ## IMU
 
-An inertial measurement unit (IMU) can provide `AngularVelocity`, `Orientation`, and `CompassHeading` methods out of the box (ordered from most common to least common).
+An inertial measurement unit (IMU) can provide `AngularVelocity`, `Orientation`, `CompassHeading`, and `LinearAcceleration` methods out of the box (ordered from most common to least common).
 Acceleration and Magnetometer data are available by using the Sensor `GetReadings` method, which IMUs wrap.
 We have included IMUs from two manufacturers in our RDK.
 
@@ -346,7 +346,7 @@ They are configured with model `imu-wit` or `imu-vectornav`, respectively.
 
 Example IMU-WIT config:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "myIMU",
     "type": "movement_sensor",
@@ -363,7 +363,7 @@ Example IMU-WIT config:
 
 Example IMU-VectorNav config:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "myIMU",
     "type": "movement_sensor",
@@ -394,11 +394,12 @@ Name | Type | Default Value | Description
 ### ADXL345
 
 The ADXL345 sensor manufactured by Analog Devices is a 3 axis accelerometer.
+It supplies linear acceleration data about the three axes, supporting the `LinearAcceleration` method.
 Calling `GetReadings` (a method supported by all [sensor components](/components/sensor/)) on it will yield linear acceleration data.
 
 Configure this sensor with type `movement_sensor` and model `accel-adxl345` as well as a board component with an I<sup>2</sup>C bus:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -439,14 +440,14 @@ Name | Type | Default Value | Description
 ### MPU6050
 
 The [MPU6050 sensor manufactured by TDK InvenSense](https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/) is a combination accelerometer and gyroscope.
-It supplies angular velocity data about the three axes, supporting the `AngularVelocity` method.
+It supplies linear acceleration and angular velocity data about the three axes, supporting the `AngularVelocity` and `LinearAcceleration` methods.
 It also supplies linear acceleration data in three directions.
 The linear acceleration data (as well as all the other data from the MPU6050) can be accessed using the `GetReadings` method from the more general [sensor component](/components/sensor/), which movement sensors wrap.
 Unlike the IMUs listed above, it does not contain magnetometers or provide orientation data.
 
 Configuration of this sensor requires configuring a movement sensor component with model `gyro-mpu6050` as well as a board component with an I<sup>2</sup>C bus:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "components": [
         {
@@ -498,7 +499,7 @@ The `cameramono` model can use any single camera with this algorithm.
 
 In a Viam configuration file, a camera used as a movement sensor will require a [`camera` type component](/components/camera/) and then a `movementsensor` type component that depends on the `camera` component, and a `motion_estimation_config` based on the camera properties.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "components": [
         {

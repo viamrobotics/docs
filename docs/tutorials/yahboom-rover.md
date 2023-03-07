@@ -4,7 +4,7 @@ linkTitle: "Drive a Yahboom Rover with a Gamepad"
 weight: 50
 type: "docs"
 description: "Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app."
-tags: ["base", "gamepad", "yahboom", "app"]
+tags: ["base", "gamepad", "yahboom", "app", "rover"]
 ---
 ## Requirements
 
@@ -96,7 +96,7 @@ For `wheel_circumference_mm` use `220`.
 
 If you click **Go to Advanced** you can see that the Attributes field now contains the following:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "width_mm": 150,
   "wheel_circumference_mm": 220,
@@ -116,9 +116,9 @@ Try playing around with these and get a sense of how the base moves.
 
 ![A screenshot of the CONTROL tab UI with buttons to make the base move.](../img/yahboom-rover/baseui.png)
 
-Awesome! Now you have a rover which you can drive via a webUI.
+Awesome! Now you have a rover which you can drive using a webUI.
 But wouldn’t it be more fun to drive it around like an RC car? Now you can try attaching a Bluetooth controller and using that to control the rover.
-If you’ve ever connected a Bluetooth device via the Linux command line, great! If not, strap in, it’s going to be a bit of a ride.
+If you’ve ever connected a Bluetooth device using the Linux command line, great! If not, strap in, it’s going to be a bit of a ride.
 If you would like to skip adding a Bluetooth controller, [jump ahead to the Configuring the Camera Component section](#configuring-the-camera-component) of the tutorial.
 
 ## Connecting a Bluetooth Controller
@@ -164,14 +164,14 @@ This config adds the controller to the robot, but doesn’t give it any function
 To link the controller input to the four-wheel base functionality, you need to add our first `service`.
 Services are the software packages which provide our robots with cool and powerful functionality.
 
-So far we've been working on the **COMPONENTS** sub-tab of the **CONFIG** tab, but now we'll switch to the **SERVICES** sub-tab.
+Until this point we've been working on the **COMPONENTS** sub-tab of the **CONFIG** tab, but now we'll switch to the **SERVICES** sub-tab.
 Click **SERVICES** at the top of the **CONFIG** tab.
 You will be using the **Create Service** card here.
 You can `name` this service `yahboom_gamepad_control` and give it the `type` `base_remote_control`, which is a service Viam provides for driving a rover with a gamepad.
 Click **Create Service**.
 You will need to configure the following attributes for this service: `base` should be `yahboom-base` and `input_controller` should be `8bit-do-controller`:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "base": "yahboom-base",
   "input_controller": "8bit-do-controller"
@@ -182,7 +182,7 @@ You will need to configure the following attributes for this service: `base` sho
 
 If you can not see a section where you can add the attributes, you can go to **Raw JSON** mode, and add this code:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
   "services": [
     {
       "name": "yahboom-gamepad-control",
@@ -205,7 +205,7 @@ But wait!
 This rover has a camera on it.
 
 Once again, find the **Create Component** section at the bottom of the **CONFIG** tab.
-Follow [these instructions on how to connect and configure a camera](/components/camera/configure-a-camera/#connect-and-configure-a-webcam).
+Follow [these instructions on how to connect and configure a camera](/components/camera/webcam).
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
 

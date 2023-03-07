@@ -3,7 +3,7 @@ title: "Base Component"
 linkTitle: "Base"
 weight: 10
 type: "docs"
-description: "The base component is the platform that the other parts of a mobile robot attach to."
+description: "The moving platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
 icon: "img/components/base.png"
 # SMEs: Steve B
@@ -44,11 +44,11 @@ This is how you configure a wheeled base:
 
 {{< tabs name="Example Base Config" >}}
 {{% tab name="Config Builder" %}}
-<img src="../img/base/base-ui-config.png" alt="Picture of what an example configuration for a wheeled base looks like in the Viam App, with Attributes & Depends On drop-downs and the option to add a frame." width="800"/>
+<img src="../img/base/base-ui-config.png" alt="Picture of what an example configuration for a wheeled base looks like in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." width="800"/>
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -88,9 +88,9 @@ This is how you configure a wheeled base:
 ```
 
 {{% /tab %}}
-{{% tab name="Example JSON" %}}
+{{% tab name="JSON Example" %}}
 
-```json-viam
+```json
 {
   "components": [
     {
@@ -211,8 +211,8 @@ This is how you configure a wheeled base:
 
 The base component supports the following methods:
 
-| Method Name | Golang | Python | Description |
-| ----------- | ------ | ------ | ----------- |
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
 [MoveStraight](#movestraight)  | [MoveStraight][go_base]  |  [move_straight][python_move_straight] | Move the base in a straight line across the given distance at the given velocity. |
 [Spin](#spin) |  [Spin][go_base] | [spin][python_spin] | Move the base to the given angle at the given angular velocity. |
 [SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the relative power (out of max power) for linear and angular propulsion of the base. |
@@ -231,9 +231,9 @@ The base component supports the following methods:
 ### Control your Base with Viam's Client SDK Libraries
 
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
-- [Golang SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
+- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
 
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries, and the [Getting Started with the Viam App guide](/manage/app-usage/) for app-specific guidance.
+Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
 
 The following example assumes you have a wheeled base called "my_base" which is configured as a component of your robot.
 If your base has a different name, change the `name` in the example.
@@ -264,12 +264,16 @@ if __name__ == '__main__':
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
- "go.viam.com/rdk/components/base"
- "github.com/golang/geo/r3"
+  "context"
+
+  "github.com/edaniels/golog"
+
+  "go.viam.com/rdk/components/base"
+  "github.com/golang/geo/r3"
 )
 
 func main() {
@@ -343,7 +347,7 @@ await myBase.move_straight(distance=10, velocity=-1)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -404,7 +408,7 @@ await myBase.spin(angle=10, velocity=1)
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -477,7 +481,7 @@ await myBase.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=-.
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -561,7 +565,7 @@ await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -577,7 +581,7 @@ await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 ```go {class="line-numbers linkable-line-numbers"}
-import "github.com/golang/geo/r3"
+// import "github.com/golang/geo/r3" ...
 
 myBase, err := base.FromRobot(robot, "my_base")
 if err != nil {
@@ -619,7 +623,7 @@ await myBase.stop()
 ```
 
 {{% /tab %}}
-{{% tab name="Golang" %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -658,21 +662,21 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 <div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="/tutorials/yahboom-rover/">
             <br>
             <h4 style="text-align: left; margin-left: 0px;">Drive a Yahboom Rover with a Gamepad</h4>
             <p style="text-align: left;">Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.</p>
         </a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="/tutorials/controlling-an-intermode-rover-canbus/">
             <br>
             <h4 style="text-align: left; margin-left: 0px;">Control an Intermode Rover with CAN Bus and Viam</h4>
             <p style="text-align: left;">How to abstract CAN bus protocol to control an Intermode rover with Viam.</p>
         </a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="/tutorials/viam-rover/">
             <br>
             <h4 style="text-align: left; margin-left: 0px;">Drive the Viam Rover with the Viam SDK</h4>

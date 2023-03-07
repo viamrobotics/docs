@@ -11,7 +11,7 @@ On completion of this tutorial you'll be able to drive the SCUTTLE around like a
 
 ## Prerequisites
 
-* A pre-configured and controllable (via keyboard on the Viam app ([https://app.viam.com](https://app.viam.com)) Scuttle Robot.
+* A pre-configured and controllable (using a keyboard and the Viam app ([https://app.viam.com](https://app.viam.com)) SCUTTLE Robot.
 Refer to the [Setting up a SCUTTLE with Viam](/tutorials/scuttlebot/scuttlebot) tutorial, if necessary.
 
 * Connection to the Viam app
@@ -38,7 +38,7 @@ Therefore, for <strong>Model</strong>, please manually enter, "gamepad," (withou
 Please add the following Attributes:
 </OL>
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
  "base": "scuttle",
  "input_controller": "gamepad"

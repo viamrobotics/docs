@@ -25,9 +25,9 @@ You will need the following tools to complete the project:
 <li>Refer to the <a href="https://docs.viam.com/installation/prepare/rpi-setup" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
 </ol>
     <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
-    <li><a href="http://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
-    <li><a href="http://amzn.to/2Dmainw" target="_blank">Resistor pack </a>You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands</li>
-    <li><a href="http://amzn.to/2Ex2v5q" target="_blank">LED</a></li>
+    <li><a href="https://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
+    <li><a href="https://amzn.to/2Dmainw" target="_blank">Resistor pack </a>You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands</li>
+    <li><a href="https://amzn.to/2Ex2v5q" target="_blank">LED</a></li>
 </ol>
 
 [Click to view the hardware URL listing](#hardware-url-list)
@@ -70,10 +70,10 @@ You can program 26 of the GPIO pins.
 One thing to note that might be confusing with the pin numbering on Raspberry Pis: There are 40 physical pins numbered from 1 to 40.
 That is *board pin numbering*, corresponding to the pin's physical location on the board.
 When working with the GPIO pins with Viam, you will use the board numbers.
-e.g., Pin 1 can be located pretty easily, since Pin 1 is always the pin whose corner is rounded.
+For example, Pin 1 can be located pretty easily, since Pin 1 is always the pin whose corner is rounded.
 
 Then there's numbering them by function or GPIO connection.
-These are the big numbers, e.g. "GPIO 22".
+These are the big numbers, like "GPIO 22".
 These numbers are helpful for understanding the function of each pin.
 
 When in doubt, the website [pinout.xyz](https://pinout.xyz/) is useful for identifying pins.
@@ -95,7 +95,7 @@ You can use your multimeter to double-check the resistor value or check yours us
 When hooking up the circuit, note the *polarity* of the LED.
 You will notice that the LED has long and short leads.
 The long lead is the positive side, which is known as the anode, the short lead is the negative side, which is known as the cathode.
-The long anode should be connected to the resistor and the short cathode should be connected to the ground via the blue jumper wire and pin 6 on the Raspberry Pi as shown on the diagram.
+The long anode should be connected to the resistor and the short cathode should be connected to the ground using the blue jumper wire and pin 6 on the Raspberry Pi as shown on the diagram.
 
 ## Configuring your bot using the Viam app
 
@@ -138,7 +138,7 @@ You can play around with values **low** and **high** by setting them differently
 
 Congratulations!
 If you have followed along, you have just successfully used Viam to make an LED blink with a Raspberry Pi!
-Hopefully, you have learned how the GPIO on a Raspberry Pi works, and how to build circuits for LED bulbs.
+You have learned how the GPIO on a Raspberry Pi works, and how to build circuits for LED bulbs.
 
 You are ready for your next robotics project.
 We recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](../make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.
@@ -152,8 +152,8 @@ If you want to connect with other developers learning how to build robots or if 
 <ul>
     <li>Raspberry Pi 3 or 4: <a href="https://a.co/d/5Tn67G3" target="_blank">ht<span></span>tps://a.co/d/5Tn67G3</a></li>
     <li>Solderless breadboard: <a href="https://amzn.to/2Q4Z5Ta" target="_blank">ht<span></span>tps://amzn.to/2Q4Z5Ta</a></li>
-    <li>Jumper wires for easy hookup: <a href="http://amzn.to/2qVhd4y" target="_blank">ht<span></span>tp://amzn.to/2qVhd4y</a></li>
-    <li>Resistor pack: <a href="http://amzn.to/2Dmainw" target="_blank">ht<span></span>tp://amzn.to/2Dmainw</a></li>
-    <li>Red LED: <a href="http://amzn.to/2Ex2v5q" target="_blank">ht<span></span>tp://amzn.to/2Ex2v5q</a></li>
-    <li>Multimeter (optional): <a href="http://amzn.to/2qWurxS" target="_blank">ht<span></span>tp://amzn.to/2qWurxS</a></li>
+    <li>Jumper wires for easy hookup: <a href="https://amzn.to/2qVhd4y" target="_blank">ht<span></span>tp://amzn.to/2qVhd4y</a></li>
+    <li>Resistor pack: <a href="https://amzn.to/2Dmainw" target="_blank">ht<span></span>tp://amzn.to/2Dmainw</a></li>
+    <li>Red LED: <a href="https://amzn.to/2Ex2v5q" target="_blank">ht<span></span>tp://amzn.to/2Ex2v5q</a></li>
+    <li>Multimeter (optional): <a href="https://amzn.to/2qWurxS" target="_blank">ht<span></span>tp://amzn.to/2qWurxS</a></li>
 </ul>

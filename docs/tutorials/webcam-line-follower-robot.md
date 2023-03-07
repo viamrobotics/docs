@@ -4,21 +4,20 @@ linkTitle: "RGB Line Follower"
 weight: 50
 type: "docs"
 description: "Build a line-following robot that relies on a webcam and color detection."
-tags: ["base", "vision", "detector", "camera", "services"]
+tags: ["base", "vision", "detector", "camera", "services", "python"]
 ---
-Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
-This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
-<div style="column-count:2;column-gap-40px">
-<div>
-<p>**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision#detection">vision service color detector</a>.
-</p></div>
-<div><img src="/tutorials/img/webcam-line-follower/lf-following1.gif" alt="Robot following a line"/></div>
+<div class="td-max-width-on-larger-screens">
+      <img src="../img/webcam-line-follower/lf-following1.gif" class="float-right" style="margin-left:1em;width:150px" alt="Robot following a line"/>
 </div>
+Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
+This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.<br><br>
 
-**What you will learn**:<BR>
+**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision#detection">Vision Service color detector</a>.
 
-- How to use the Viam vision service including color detectors
+**What you will learn**:
+
+- How to use the Viam Vision Service including color detectors
 - How to use the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk), including:
   - How to establish communication between the code you write and your robot
   - How to send commands to components of your robot
@@ -39,7 +38,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
     For our tutorial, we used green electrical tape.
   - Non-shiny floors tend to work best.
 
-<img src="/tutorials/img/webcam-line-follower/lf-scuttle2.png" alt="A SCUTTLE robot base with a camera mounted on the front, pointing mostly down and slightly forwards." width="600" />
+<img src="/tutorials/img/webcam-line-follower/lf-scuttle2.png" alt="A SCUTTLE Robot base with a camera mounted on the front, pointing mostly down and slightly forwards." width="600" />
 
 ## Configuration using Viam
 
@@ -51,18 +50,18 @@ Configure the board per the [Board Component topic](/components/board/).
 We named ours `local`.
 Use type `board` and model `pi` if you're using a Raspberry Pi.
 
-Configure the wheeled base per the [Base Component topic](/components/base/).
+Configure the wheeled base per the [Base Component documentation](/components/base/).
 We named ours `scuttlebase`.
 
-Configure the [camera](/components/camera/) as described in this tutorial: [Connect and configure a webcam](/components/camera/configure-a-camera/).
+[Configure the camera as a webcam](/components/camera/webcam).
 
-Your webcam configuration in the Config Builder will look something like this:
+Your webcam configuration will look something like this:
 
 ![The webcam configuration UI with video_path set to video0.](/tutorials/img/webcam-line-follower/lf-cam-config.png)
 
 Or if you prefer the raw JSON:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
     {
       "name": "my_camera",
       "type": "camera",
@@ -74,9 +73,9 @@ Or if you prefer the raw JSON:
     }
 ```
 
-### Configuring the vision service
+### Configuring the Vision Service
 
-We’ll use the Viam [vision service color detector](/services/vision/#detection) to identify the line to follow.
+We’ll use the Viam [Vision Service color detector](/services/vision/#detection) to identify the line to follow.
 
 In the **SERVICES** section of the **CONFIG** tab, configure a color detector for the color of your tape line.
 
@@ -88,11 +87,11 @@ We used #19FFD9 to represent the color of green electrical tape.
 
 What this will look like in the Config Builder:
 
-![A screenshot of the vision service configuration on the SERVICES sub-tab of the CONFIG tab. The attributes field has been populated with raw JSON identical to that in the copy-pasteable JSON field below.](/tutorials/img/webcam-line-follower/lf-vis-config.png)
+![A screenshot of the Vision Service configuration on the SERVICES sub-tab of the CONFIG tab. The attributes field has been populated with raw JSON identical to that in the copy-pasteable JSON field below.](/tutorials/img/webcam-line-follower/lf-vis-config.png)
 
 Raw JSON:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "register_models": [
     {
@@ -110,7 +109,7 @@ Raw JSON:
 
 ### Configuring the visualizer
 
-This step is optional, but if you'd like to see the bounding boxes that the color detector comes up with, you'll need to configure a [transform camera](/components/camera/#transform).
+This step is optional, but if you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
 In the **CONFIG** tab, make a new component with name `show_detections`, type `camera` and model `transform`.
@@ -120,7 +119,7 @@ You'll need to edit the `pipeline` section as well with `type` set to `"detectio
 
 You can paste the following into the **Attributes** section of the `show_detections` config builder:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "stream": "color",
   "source": "my_camera",
@@ -141,12 +140,12 @@ If you save the config and go to the **CONTROL** tab, you should now be able to 
 
 ### Full example config
 
-Below is an example JSON file that includes the board, base and camera components, and a vision service color detector.
+Below is an example JSON file that includes the board, base and camera components, and a Vision Service color detector.
 You may have different pin numbers and other attributes depending on your hardware setup.
 
 {{%expand "Click to view JSON" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -359,7 +358,7 @@ The robot should continue moving along the line until it no longer sees the colo
 
 By now you have learned how to configure a wheeled base and camera with Viam.
 You have access to the **CONTROL** tab from which you can drive your rover around with WASD keys.
-You have learned to use the Viam vision service color detector, which can be useful in many other projects.
+You have learned to use the Viam Vision Service color detector, which can be useful in many other projects.
 You have a rover following a path of your choice, anywhere you want it to go!
 
 ## Troubleshooting
@@ -377,7 +376,7 @@ This will give it a wider field of view so it takes longer for the line to go ou
 
 Things to try:
 
-- Add a `saturation_cutoff_pct` and/or a `value_cutoff_percent` [(documented here)](/services/vision/#color-detector-parameters) to your vision service parameters.
+- Add a `saturation_cutoff_pct` and/or a `value_cutoff_percent` [(documented here)](/services/vision/#color-detector-parameters) to your Vision Service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
 Be sure to update your `detect_color` parameter accordingly.

@@ -74,7 +74,7 @@ The next step is to add a motor and make it spin a wheel.
 
 {{% expand "Click to view the raw JSON for the right motor" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "right",
   "type": "motor",
@@ -136,7 +136,7 @@ This will be similar to adding the right motor.
 
 {{% expand "Click to view the raw JSON for the left motor" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "left",
   "type": "motor",
@@ -185,7 +185,7 @@ From the **CONFIG** tab:
 
 The attributes of your base component's config should look something like this:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
  "width_mm": 400,
  "wheel_circumference_mm": 250,
@@ -225,13 +225,13 @@ Now, you'll see the config panel for the camera component:
 <img src="../../img/scuttlebot/pi-cam-control.png" alt="Camera component config panel" >
 
 On the camera config panel, set the `video_path`.
-This is often "video0," but please see our [camera configuration tutorial](/components/camera/configure-a-camera/#connect-and-configure-a-webcam) for more information on choosing the correct video path.
+This is often "video0," you can see our [camera configuration tutorial](/components/camera/webcam) for more information on choosing the correct video path.
 
 Once you save the config, you'll be able to see your camera's stream in the **CONTROL** tab.
 
 ## On completion
 
-After successfully completing this tutorial, you have a fully configured SCUTTLE robot.
+After successfully completing this tutorial, you have a fully configured SCUTTLE Robot.
 You can drive it around and view its camera stream.
 
 To take things to the next level, check out our [Color Detection with SCUTTLE Robot](/tutorials/scuttlebot/color-detection-scuttle/) tutorial or create your own camera-related tutorial.
