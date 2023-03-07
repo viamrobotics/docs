@@ -32,7 +32,7 @@ However, if you want to manage your robot's captured data yourself, it's possibl
 1. **A rented or owned robot**
 
    Viam's Data Management features will work on any robot running Viam.
-   To follow along with this tutorial, you can use one of your own robots or you can [rent a rover](https://app.viam.com/try) and use it to try out Viam's Data Manager without having to configure your own hardware.
+   To follow along with this tutorial, you can use one of your own robots, or you can [rent a rover](https://app.viam.com/try) and use it to try out Viam's Data Manager without having to configure your own hardware.
 
    To learn more about the Try Viam experience, see [Try Viam](/try-viam/).
 
