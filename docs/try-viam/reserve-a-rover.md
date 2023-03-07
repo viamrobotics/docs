@@ -53,7 +53,7 @@ You can also click on the timer at the top to go back to the rental rover's **CO
 
 <div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <br>
         <img src="../rover-resources/img/viam-rover/rover-front.jpg" style="max-width:400px;width:100%" alt="The front of the assembled Viam Rover" />
         <br>
@@ -62,7 +62,7 @@ You can also click on the timer at the top to go back to the rental rover's **CO
             <p style="text-align: left;">Remotely configure and control a Viam Rover located on-site at Viam in NYC.</p>
         <a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <br>
         <img src="../../tutorials/img/try-viam-sdk/image1.gif" alt="Overhead view of the Viam rover showing it as it drives in a square.">
         <br>
@@ -71,7 +71,7 @@ You can also click on the timer at the top to go back to the rental rover's **CO
             <p style="text-align: left;">Use the Viam SDK to make your Viam Rover move in a square.</p>
         </a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <br>
         <img src="../../tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png" alt="detectionCam stream displaying a color detection.">
         <br>
