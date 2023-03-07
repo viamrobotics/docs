@@ -113,10 +113,6 @@ h7, .h7 {
   text-decoration: underline green;
 }
 
-.td-content > h2 {
-  margin-bottom: 2rem;
-}
-
 .td-content > h3 {
   margin-bottom: 0.667rem;
 }
@@ -318,6 +314,11 @@ END MARKETING CSS
   p {
     color: black;
   }
+}
+
+.td-content .alert:not(:first-child) {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .alert-heading { // left margin for h4 in alerts
