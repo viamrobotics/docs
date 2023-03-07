@@ -15,8 +15,10 @@ You are likely already familiar with human-interface devices, like keyboards and
 Configuring an *input* component allows you to use devices like these with your robot, enabling you to control your robot's actions by interacting with the device.
 
 This component currently supports devices like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
-To use the controller's inputs, you must [register callback functions](#registercontrolcallback) to the *Controls* with the `input` API.
-The callback functions can then handle the [Events](#events) that are sent when the Control is activated or moved, for example, when a button is pushed.
+To use the controller's inputs, you must [register callback functions](#registercontrolcallback) to the [Controls](#control-field) with the `input` API.
+
+The callback functions can then handle the [Events](#events) that are sent when the Control is activated or moved.
+For example, when a specific button is pushed, the callback function registered to it can move another component, or print a specific output.
 
 Most robots with an input controller need at least the following hardware:
 
@@ -120,6 +122,7 @@ import (
     "github.com/pkg/errors"
     "go.viam.com/rdk/components/input"
     "go.viam.com/utils"
+    "golang.org/x/exp/slices"
 )
 
 // Define a function to handle the controller. 
@@ -395,14 +398,12 @@ AbsolutePedalBrake       Control = "AbsolutePedalBrake"
 AbsolutePedalClutch      Control = "AbsolutePedalClutch"
 ```
 
-See [the Viam RDK](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the most current version of supported `Control` types.
+See [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the most current version of supported `Control` types.
 
 {{% /tab %}}
 {{< /tabs >}}
 
-See [input/input.go](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the most current version of the above list of supported `Controls`.
-
-#### Axis Controls
+### Axis Controls
 
 {{% alert title="Note" color="note" %}}
 Currently, only `Absolute` axes are supported.
@@ -410,7 +411,7 @@ Currently, only `Absolute` axes are supported.
 `Relative` axes, reporting a relative change in distance, used by devices like mice and trackpads, will be supported in the future.
 {{% /alert %}}
 
-Devices like joysticks and thumbsticks which "return to center/neutral" on their own use `Absolute` axis control types.
+Analog devices like joysticks and thumbsticks which "return to center/neutral" on their own use `Absolute` axis control types.
 
 These controls report a `PositionChangeAbs` [EventType](#eventtype-field).
 
@@ -420,34 +421,29 @@ These controls report a `PositionChangeAbs` [EventType](#eventtype-field).
 - `0.0`: Center, neutral position.
 - `-1.0`: Maximum position in the negative direction.
 
-##### AbsoluteXYZ Axes
+#### AbsoluteXY Axes
 
-If your input controller has a analog control stick, this is what the stick's controls report as.
+If your input controller has an analog stick, this is what the stick's controls report as.
 
-- If your input controller is a gamepad with two analog sticks, this is what the left joystick controls report as.
+Alternatively, if your input controller has *two* analog sticks, this is what the left joystick's controls report as.
 
 | Name | `-1.0` | `0.0` | `1.0` |
 | ---- | ------ | ----- | ----- |
 | `AbsoluteX` | Stick Left | Neutral | Stick Right |
 | `AbsoluteY` | Stick Forward | Neutral | Stick Backwards |
-| `AbsoluteZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
 
-##### AbsoluteR-XYZ Axes
+#### AbsoluteR-XY Axes
 
-If your input controller has two analog sticks, this is what the right stick's controls report as.
+If your input controller has *two* analog sticks, this is what the right joystick's controls report as.
 
 | Name | `-1.0` | `0.0` | `1.0` |
 | ---- | ------ | ----- | ----- |
 | `AbsoluteRX` | Stick Left | Neutral | Stick Right |
 | `AbsoluteRY` | Stick Forward | Neutral | Stick Backwards |
-| `AbsoluteRZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
 
-**Y - Z up & down:**
+- For `Y` axes, the positive direction is "nose up," and indicates *pulling* back on the joystick.
 
-- `Y` axes: Positive direction is "nose up," and indicates *pulling* back on the joystick.
-- `Z` axes: Usually not present on controller joysticks. If present, represents *yaw*, or left/right rotation. Trigger or throttle buttons might report this axis.
-
-##### AbsoluteHat Axes
+#### Hat/D-Pad Axes
 
 If your input controller has a directional pad with analog buttons on the pad, this is what those controls report as.
 
@@ -456,12 +452,33 @@ If your input controller has a directional pad with analog buttons on the pad, t
 | `AbsoluteHat0X` | Left DPAD Button Press | Neutral | Right DPAD Button Press |
 | `AbsoluteHat0Y` | Up DPAD Button Press | Neutral | Down DPAD Button Press |
 
+#### Z Axes (Analog Trigger Sticks)
+
 {{% alert title="Note" color="note" %}}
 Devices like analog triggers and gas or brake pedals use `Absolute` axes, but they only report position change in the positive direction.
 The neutral point of the axes is still `0.0`.
 {{% /alert %}}
 
-#### Button Controls
+| Name | `-1.0` | `0.0` | `1.0` |
+| ---- | ------ | ----- | ----- |
+| `AbsoluteZ` | | Neutral | Stick Pulled |
+| `AbsoluteRZ` | | Neutral | Stick Pulled |
+
+`Z` axes are usually not present on most controller joysticks.
+
+If present, they are typically analog trigger sticks, and unidirectional, scaling only from `0` to `1.0` as they are pulled, as shown above.
+
+`AbsoluteZ` is reported if there is one trigger stick, and `AbsoluteZ` (left) and `AbsoluteRZ` (right) is reported if there are two trigger sticks.
+
+Z axes can be present on flight-style joysticks, reporting *yaw*, or left/right rotation, as shown below.
+This is not common.
+
+| Name | `-1.0` | `0.0` | `1.0` |
+| ---- | ------ | ----- | ----- |
+| `AbsoluteZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
+| `AbsoluteRZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
+
+### Button Controls
 
 Button Controls report either `ButtonPress` or `ButtonRelease` as their [EventType](#eventtype-field).
 
@@ -470,11 +487,11 @@ Button Controls report either `ButtonPress` or `ButtonRelease` as their [EventTy
 - `0`: released
 - `1`: pressed
 
-##### Action Buttons (ABXY)
+#### Action Buttons (ABXY)
 
 If your input controller is a gamepad with digital action buttons, this is what the controls for these buttons report as.
 
-{{% alert title="tip" color="tip" %}}
+{{% alert title="Tip" color="tip" %}}
 As different systems label the actual buttons differently, we use compass directions for consistency.
 
 - `ButtonSouth` corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation.
@@ -493,7 +510,7 @@ As different systems label the actual buttons differently, we use compass direct
 |--|--|
 |<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonSouth`</td><td>Left</td></tr><tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr> </table>|
 
-##### Trigger Buttons (Bumper)
+#### Trigger Buttons (Bumper)
 
 If your input controller is a gamepad with digital trigger buttons, this is what the controls for those buttons report as.
 
@@ -501,9 +518,7 @@ If your input controller is a gamepad with digital trigger buttons, this is what
 |--|--|
 |<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Left</td></tr><tr><td>`ButtonRT`</td><td>Right</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Top-left</td></tr><tr><td>`ButtonRT`</td><td>Top-right</td></tr><tr><td>`ButtonLT2`</td><td>Bottom-left</td></tr><tr><td>`ButtonRT2`</td><td>Bottom-right</td></tr> </table>|
 
-If your trigger buttons are analog, they report `AbsoluteZ` (left or solo) and `Absolute RZ` (right in duo) *axes* Controls.
-
-##### Digital Buttons for Sticks
+#### Digital Buttons for Sticks
 
 If your input controller is a gamepad with "clickable" thumbsticks, this is what thumbstick presses report as.
 
@@ -512,7 +527,7 @@ If your input controller is a gamepad with "clickable" thumbsticks, this is what
 | `ButtonLThumb` | Left or upper button for stick |
 | `ButtonRThumb` | Right or lower button for stick |
 
-##### Miscellaneous Buttons
+#### Miscellaneous Buttons
 
 Many devices have additional buttons.
 If your input controller is a gamepad with these common buttons, this is what the controls for those buttons report as.
@@ -584,7 +599,7 @@ async def handle_controller(controller):
     # Get the list of Controls on the controller.
     controls = await controller.get_controls()
 
-    # Register the function print_start_time to fire when "BUTTON_START" has the event "ButtonPress" occur.
+    # If the "BUTTON_START" Control is found, register the function print_start_time to fire when "BUTTON_START" has the event "ButtonPress" occur.
     if Control.BUTTON_START in controls:
         controller.register_control_callback(Control.BUTTON_START, [EventType.BUTTON_PRESS], print_start_time)
     else:
@@ -613,7 +628,7 @@ async def handle_controller(controller):
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Define a function to handle Events that occur on the controller. 
+// Define a function that handles the controller.
 func handleController(controller input.Controller) {
 
     // Define a function to handle pressing the Start Menu Button "ButtonStart" on your controller, logging the start time.
@@ -627,13 +642,13 @@ func handleController(controller input.Controller) {
     // Get the controller's Controls.
     controls, err := myController.Controls(context.Background(), nil)
 
-    // Log any errors that occur.
-    if err != nil {
-        logger.Fatalf("Oops! Is your controller connected? %v", err)
+    // If the "ButtonStart" Control is found, register the function printStartTime to fire when "ButtonStart" has the event "ButtonPress" occur.
+    if slices.Contains(controls, Control.ButtonStart) {
+        err := controller.RegisterControlCallback(context.Background(), Control: input.ButtonStart, triggers, printStartTime, nil)
     }
-
-    // Register the printStartTime function to fire when "ButtonStart" has the event "ButtonPress" occur.
-    err := controller.RegisterControlCallback(context.Background(), Control: input.ButtonStart, triggers, printStartTime, nil)
+     else {
+        logger.Fatalf("Oops! Couldn't find the start button control! Is your controller connected?")
+    }
 }
 ```
 
@@ -735,7 +750,7 @@ print(f'Controls:\n{controls}')
 
 **Returns:**
 
-- `positions` [([]float64)](https://pkg.go.dev/builtin#float64): List of controls provided by the controller.
+- `controls` [([]float64)](https://pkg.go.dev/builtin#float64): List of controls provided by the controller.
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).

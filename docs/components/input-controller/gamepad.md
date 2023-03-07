@@ -63,7 +63,7 @@ Next, click on the **SERVICES** sub tab of **CONFIG** and add a service of type 
 <img src="../img/base-rc-service-config.png" alt="What an example configuration for the Base Remote Control service of a web-based gamepad input controller component looks like in the Viam App." style="width:100%"/>
 
 {{% alert title="Note" color="note" %}}
-You do not have a real base to use the "Base Remote Control" service to connect to your controller.
+You do not have to possess base hardware to use the "Base Remote Control" service to connect to your controller.
 
 For now, `"control_mode": "joystickControl"` does not affect the controls that are available to use on your gamepad.
 Buttons are still available with this configuration.
