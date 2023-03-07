@@ -8,7 +8,7 @@ tags: ["data management", "data", "services", "try viam"]
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 
-In this tutorial, we will cover how to use Data Management, including capturing camera data, syncing that data from your robot to the cloud to be able to view and filter through it, and downloading it to your computer.
+In this tutorial, we will cover how to use Data Management, including capturing camera data, syncing that data from your robot to the cloud, viewing and filtering synced data, and downloading it to your computer.
 
 ## Data Management
 
