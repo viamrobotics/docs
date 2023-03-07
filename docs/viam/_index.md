@@ -40,7 +40,7 @@ To use the Viam platform with your robot, you must [install](/installation) the 
 
 - Creates, configures, and maintains the robot.
 - Securely handles all communications.
-- Runs drivers, custom code, and any other software
+- Runs drivers, custom code, and any other software.
 - Accepts API requests
 - Runs services like computer vision, data synchronization, and motion planning
 
