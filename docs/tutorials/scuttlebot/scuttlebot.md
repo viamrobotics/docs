@@ -13,12 +13,12 @@ tags: ["base", "camera", "raspberry pi", "scuttle"]
 
 ## Requirements
 
-* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the `viam-server` installed.
+- A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the `viam-server` installed.
 
 Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os), if necessary.
 
-* [A SCUTTLE Robot](https://www.scuttlerobot.org/shop/)
-* A USB camera (webcam)
+- [A SCUTTLE Robot](https://www.scuttlerobot.org/shop/)
+- A USB camera (webcam)
 
 ## Start configuring your robot
 
@@ -238,29 +238,29 @@ Now, configure the left and right encoders as follows:
 
 - left:
 
- ```json
- {
-   "board": "<board_name>",
-   "connection_type": "i2c",
-   "i2c_attributes": {
-     "i2c_bus": "main",
-     "i2c_addr": 64
-   }
- }
- ```
+  ```json
+  {
+    "board": "<board_name>",
+    "connection_type": "i2c",
+    "i2c_attributes": {
+      "i2c_bus": "main",
+      "i2c_addr": 64
+    }
+  }
+  ```
 
 - right:
 
- ```json
- {
-   "board": "<board_name>",
-   "connection_type": "i2c",
-   "i2c_attributes": {
-     "i2c_bus": "main",
-     "i2c_addr": 65
-   }
- }
- ```
+  ```json
+  {
+    "board": "<board_name>",
+    "connection_type": "i2c",
+    "i2c_attributes": {
+      "i2c_bus": "main",
+      "i2c_addr": 65
+    }
+  }
+  ```
 
 ## Configuring the camera
 
@@ -288,10 +288,10 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](/tutorials
 
 ## Documents referenced
 
-* [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os)
+- [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os)
 
-* [Color Detection with SCUTTLE Robot on Viam](/tutorials/scuttlebot/color-detection-scuttle/)
+- [Color Detection with SCUTTLE Robot on Viam](/tutorials/scuttlebot/color-detection-scuttle/)
 
-* [Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad](/tutorials/scuttlebot/scuttle-gamepad/)
+- [Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad](/tutorials/scuttlebot/scuttle-gamepad/)
 
-* [Line Following with SCUTTLE Robot on Viam](/tutorials/webcam-line-follower-robot/)
+- [Line Following with SCUTTLE Robot on Viam](/tutorials/webcam-line-follower-robot/)
