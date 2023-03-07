@@ -187,7 +187,7 @@ import (
   "time"
 
   "github.com/edaniels/golog"
-  
+
   "go.viam.com/rdk/components/board"
 )
 
@@ -405,7 +405,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 <div class="container text-center">
   <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <a href="/tutorials/pi/make-an-led-blink-with-the-viam-app/">
             <br>
             <h4 style="text-align: left; margin-left: 0px;">Blink an LED with a Pi and the Viam App</h4>

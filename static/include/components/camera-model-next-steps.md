@@ -1,6 +1,6 @@
 <div class="container text-center">
   <div class="row">
-      <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+      <div class="col hover-card">
         <a href="../calibrate/">
           <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
               Calibrate a Camera
@@ -8,7 +8,7 @@
         </a>
         <p style="text-align: left;"> Calibrate a camera and extract the intrinsic and distortion parameters. </p>
       </div>
-      <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+      <div class="col hover-card">
         <a href="../transform/">
           <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
               Transform a Camera
@@ -16,7 +16,7 @@
         </a>
         <p style="text-align: left;"> Instructions for transforming a webcam. </p>
       </div>
-      <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+      <div class="col hover-card">
           <a href="../../../services/vision">
               <br>
               <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Vision Service</h4>

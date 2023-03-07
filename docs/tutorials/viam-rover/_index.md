@@ -13,7 +13,7 @@ description: "Color detection and SDK tutorials for the Viam Rover."
 
 <div class="container text-center">
   <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <br>
         <img src="../../try-viam/rover-resources/img/viam-rover/rover-front.jpg" alt="A Viam Rover.">
         <br>
@@ -22,7 +22,7 @@ description: "Color detection and SDK tutorials for the Viam Rover."
             <p style="text-align: left;">Contents of the Viam Rover kit and instructions for wiring your rover.</p>
         </a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <br>
         <img src="../../tutorials/img/try-viam-sdk/image1.gif" alt="Overhead view of the Viam rover showing it as it drives in a square.">
         <br>
@@ -31,7 +31,7 @@ description: "Color detection and SDK tutorials for the Viam Rover."
             <p style="text-align: left;">Use the Viam SDK to make your Viam Rover move in a square.</p>
         </a>
     </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card">
         <br>
         <img src="../img/try-viam-color-detection/detectioncam-comp-stream.png" alt="detectionCam stream displaying a color detection.">
         <br>
