@@ -67,7 +67,6 @@ Paste this boilerplate code into a file and run the script to verify you can con
 Throughout this tutorial you will replace and amend this code.
 The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
 
-
 ## Accessing the Arm
 
 The `arm` component library has several methods to simplify accessing and working with robotic arms.
