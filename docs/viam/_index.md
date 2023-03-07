@@ -32,7 +32,7 @@ A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https
 
 <img src="img/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." style="float: left; max-width:270px; display: block; margin: auto 20px auto auto"></img>
 
-The Viam platform provides a user interface for connecting with and managing robots, the [Viam app](https://app.viam.com/).
+The Viam platform provides a user interface for connecting to and managing robots, the [Viam app](https://app.viam.com/).
 Create an account, then create a new robot instance.
 You'll be redirected to a control center for this new robot.
 
