@@ -9,7 +9,7 @@
       <div class="row">
         {{ range sort $pages ".Weight"}}
         <a href="{{ .Permalink }}">
-          <div class="col hover-card">
+          <div class="col hover-card hover-card-small">
             {{ if .Params.icon }}
               <img src="{{ .Params.icon }} " alt="{{ .Title }}" width=100%>
             {{ end }}
