@@ -13,7 +13,6 @@ icon: "img/components/gantry.png"
 A robotic *gantry* is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector).
 A 3D printer is an example of a three-axis gantry where each linear actuator can move the print head along one axis.
 The linear rail design makes gantries a common and reliable system for simple positioning and placement tasks.
-A customized encoded motor controller can be used in the configuration of a gantry to move the linear rail.
 
 This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once (multi-axis).
 A multi-axis gantry is composed of many single-axis gantries.
