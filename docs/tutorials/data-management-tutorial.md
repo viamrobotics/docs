@@ -86,7 +86,7 @@ To enable image data capture for a camera component, follow these steps:
 
 1. Navigate to the **COMPONENTS** tab on your robot's **CONFIG** page.
 2. Scroll down to the camera component.
-   (On the Viam Rover, the camera is named `cam`.)
+   If you are using a Viam Rover, the camera is named `cam`.
    The camera component has a section labeled **Data Capture Configuration**.
 3. Click `Add Method` to enable data capture for this camera.
 
