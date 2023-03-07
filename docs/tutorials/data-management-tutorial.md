@@ -170,7 +170,7 @@ To export data from Viam:
    Once the command has finished running and downloading the data, you can view and use the data locally in a new directory named <file>data</file>.
 
    Since images are downloaded in parallel, some may be out of order.
-   Sort your folder by filename in order to see them in chronological order.
+   Sort your folder by filename to see them in chronological order.
 
 For more detailed information see [Export Data](../../manage/data-management/export/).
 
