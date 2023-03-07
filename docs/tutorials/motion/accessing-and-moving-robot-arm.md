@@ -21,7 +21,7 @@ Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/p
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../img/access_01_xarm6.png"  style="float:right;margin-left:12px" alt="A picture of the UFACTORY xArm 6." width="400px" />
+  <img src="../../img/motion/access_01_xarm6.png" style="float:right;margin-left:12px" alt="A picture of the UFACTORY xArm 6." width="400px">
 </div>
 
 <!-- TODO(DOCS-419): Content below struck out for the moment, saved to refer to impending changes in Arm component docs outlining the ability to use a fully virtual arm. -->
