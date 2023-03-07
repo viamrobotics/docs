@@ -80,9 +80,23 @@ The code then calls the `get_end_position` method to get the position of the **e
 ```python {class="line-numbers linkable-line-numbers"}
 my_arm_resource = Arm.get_resource_name("myArm")
 my_arm_component = Arm.from_robot(robot, "myArm")
-my_arm_return_value = await my_arm_component.get_end_position()
-print(f"myArm get_end_position return value: {my_arm_return_value}")
+my_arm_end_position = await my_arm_component.get_end_position()
+print(f"myArm get_end_position return value: {my_arm_end_position}")
 ```
+
+You should see output that looks similar to the following:
+
+```bash
+myArm get_end_position return value: x: 200.73450755898915
+y: 0.0028507667654201754
+z: 108.63966593621173
+o_x: -0.019650946400315308
+o_y: -1.5485718223024914e-07
+o_z: -0.99980690150926033
+theta: -179.99979233107763
+```
+
+The `x`, `y`, and `z` values correspond to the `position` element of the pose, while the `o_x`, `o_y`, `o_z`, and `theta` values are for the `orientation` element of the pose (presented as an [Orientation Vector](https://docs.viam.com/internals/orientation-vector/)).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -92,12 +106,22 @@ The code then calls the `EndPosition` method to get the position of the **end of
 ```go {class="line-numbers linkable-line-numbers"}
 myArmResource = arm.Named("myArm")
 myArmComponent, err := arm.FromRobot(robot, "myArm")
-myArmReturnValue, err := myArmComponent.EndPosition(context.Background(), nil)
+myArmEndPosition, err := myArmComponent.EndPosition(context.Background(), nil)
 if err != nil {
   fmt.Println(err)
 }
-fmt.Println("myArm EndPosition return value: %s", myArmReturnValue)
+fmt.Println("myArm EndPosition position value:", myArmEndPosition.Point())
+fmt.Println("myArm EndPosition orientation value:", myArmEndPosition.Orientation())
 ```
+
+You should see output that looks similar to the following:
+
+```bash
+myArm EndPosition position value: (200.734507558989150766137755, 0.002850766765420175395673, 108.639665936211727625959611)
+myArm EndPosition orientation value: &{-0.009825947555660422 -2.127840592298059e-06 0.9999517242097753 -5.6523269754840597e-08}
+```
+
+The `Position` and `Orientation` values are the two parts of a `Pose`, but you can inspect them separately (as you have done here) or together.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -115,6 +139,19 @@ my_arm_joint_positions = await my_arm_component.get_joint_positions()
 print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 ```
 
+You should see output that looks similar to the following:
+
+```bash
+myArm get_joint_positions return value: values: 0.00043945314765093886
+values: 0.46724854536551791
+values: 0.64500731344456741
+values: -0.00098876951707685271
+values: 0.013732909913080547
+values: 0.00076904296930648713
+```
+
+Each individual value corresponds to the current position of a particular joint on your robot. You can also see these values reflected on the Control tab in the Viam app for your robot arm.
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -123,13 +160,19 @@ myArmJointPositions, err := myArmComponent.JointPositions(context.Background(), 
 if err != nil {
   fmt.Println(err)
 }
-fmt.Println("myArm JointPositions return value: %s", myArmJointPositions)
+fmt.Println("myArm JointPositions return value:", myArmJointPositions)
 ```
+
+You should see output that looks similar to the following:
+
+```bash
+myArm JointPositions return value: values:0.00043945314765093886  values:0.4672485453655179  values:0.6450073134445674  values:-0.0009887695170768527  values:0.013732909913080547  values:0.0007690429693064871
+```
+
+Each individual value corresponds to the current position of a particular joint on your robot. You can also see these values reflected on the **CONTROL** tab in the Viam app for your robot arm.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-<!-- TODO(ADD EXAMPLE OUTPUT) -->
 
 Both representations of an arm's state are important.
 Sometimes you may wish to direct an arm in terms of joint positions, sometimes you may need to describe the position of another object with respect to the end of the robot arm.
@@ -353,14 +396,15 @@ func main() {
   if err != nil {
     fmt.Println(err)
   }
-  fmt.Println("myArm EndPosition return value: %s", myArmEndPosition)
+  fmt.Println("myArm EndPosition position value:", myArmEndPosition.Point())
+  fmt.Println("myArm EndPosition orientation value:", myArmEndPosition.Orientation())
 
   // Joint Positions of myArm
   myArmJointPositions, err := myArmComponent.JointPositions(context.Background(), nil)
   if err != nil {
     fmt.Println(err)
   }
-  fmt.Println("myArm JointPositions return value: %s", myArmJointPositions)
+  fmt.Println("myArm JointPositions return value:", myArmJointPositions)
 
   // Command a joint position move, small adjustment to the last joint
   cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 0.1}}
