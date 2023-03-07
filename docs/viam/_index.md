@@ -82,7 +82,7 @@ The Viam platform provides a consistent programming interface for all robots, al
 Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk) and [Python](https://python.viam.dev/).
 Additional SDKs are coming soon, including Typescript, Rust, Java, C++, and Flutter.
 
-TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is both authenticated and encrypted.
+TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is authenticated and encrypted.
 Viam uses [WebRTC](https://webrtc.org/) to create secure peer-to-peer paths between robots and clients for fast, low latency communication.
 The Viam cloud does not receive any command or control information regarding your robots, ensuring low latency, robustness, and privacy.
 With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program your robot in most common programming languages.
