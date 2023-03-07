@@ -192,7 +192,7 @@ A final note:
 {{< alert title="Caution" color="caution" >}}
 Executing code presented after this point *will* induce motion in a connected robotic arm!
 {{< /alert >}}
-
+<br><br>
 {{< tabs >}}
 {{% tab name="Python" %}}
 Add `from viam.proto.component.arm import JointPositions` to your import list to be able to assign values to a `JointPositions` data structure.
