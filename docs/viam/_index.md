@@ -85,7 +85,7 @@ Additional SDKs are coming soon, including Typescript, Rust, Java, C++, and Flut
 TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is authenticated and encrypted.
 Viam uses [WebRTC](https://webrtc.org/) to create secure peer-to-peer paths between robots and clients for fast, low latency communication.
 The Viam cloud does not receive any command or control information regarding your robots, ensuring low latency, robustness, and privacy.
-With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program your robot in most common programming languages.
+With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program your robot in many common programming languages.
 
 This provides flexibility and security whether you are building tight control loops for autonomous mobile robots, event-based triggers for IoT devices, or custom web-based robot management interfaces.
 
