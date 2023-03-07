@@ -449,7 +449,9 @@ END MARKETING CSS
   border: 1px solid #000;
   box-shadow: 5px 5px 0 0 #000;
   margin: 1em;
-  min-width: 300px;
+  min-width: 200px;
+  width: 200px;
+  max-width: 200px;
 }
 
 .hover-card:hover {
@@ -461,15 +463,19 @@ END MARKETING CSS
 }
 
 .hover-card.hover-card-small {
-  min-width: 200px;
+  min-width: 130px;
+  width: 130px;
+  max-width: 130px;
 }
 
 @media (min-width: 992px) {
   .hover-card {
-    max-width: 400px;
+    min-width: 300px;
+    width: 300px;
+    max-width: 300px;
   }
   .hover-card.hover-card-small {
-    max-width: 300px;
+    max-width: 200px;
   }
 }
 
