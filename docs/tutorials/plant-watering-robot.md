@@ -32,26 +32,26 @@ raspberry pi?  -->
 
 ## Getting Started
 
-First, see our [Microcontroller Setup: the Micro-RDK](../installation/microcontrollers/) guide to creating an ESP32-backed robot with Viam.
+First, see our [Microcontroller Setup: the Micro-RDK](../../installation/microcontrollers/) guide to creating an ESP32-backed robot with Viam.
 
 That guide provides detailed instructions on getting all the necessary prerequisites for this tutorial installed on your local development machine, creating a project with the micro-RDK to upload onto your microcontroller, connecting it to Viam as a robot, and adding that robot as a remote of another robot running `viam-server`.
 
-When following this tutorial, you will modify the <file>main.RS</file> Rust code from the [project template you generated when following these instructions](../installation/microcontrollers/#generate-a-new-project-from-the-micro-rdk-template), and add a Python file utilizing the Viam Python SDK to control the plant watering robot.
+When following this tutorial, you will modify the <file>Main.rs</file> Rust code from the [project template you generated when following these instructions](../../installation/microcontrollers#generate-a-new-project-from-the-micro-rdk-template), and add a Python file utilizing the Viam Python SDK to control the plant watering robot.
 
-### Edit `main.RS` from the Micro-RDK Template
+### Edit `Main.rs` from the Micro-RDK Template
 
 Make sure that when following these instructions, you have not yet modified your code from the template available [here](https://github.com/viamrobotics/micro-rdk-template/blob/main/src/main.rs).
 
-If you have already modified it, use an [online Diff checker](https://www.diffchecker.com/) or `git diff main1.rs main2.rs` to find the differences between your <file>main.rs</file> and the [example](#full-example-code) <file>main.rs</file>.
+If you have already modified it, use an [online Diff checker](https://www.diffchecker.com/) or `git diff main1.rs main2.rs` to find the differences between your <file>Main.rs</file> and the [example](#full-example-code) <file>Main.rs</file>.
 
-You can also copy the example <file>main.rs</file> code from [here](#full-example-code) to use as your <file>main.rs</file> if you do not wish to make individual modifications.
+You can also copy the example <file>Main.rs</file> code from [here](#full-example-code) to use as your <file>Main.rs</file> if you do not wish to make individual modifications.
 
-1. Delete the `use` declarations (lines 7-25) from your <file>main.rs</file> and replace with the following code:
+1. Delete the `use` declarations (lines 7-25) from your <file>Main.rs</file> and replace with the following code:
 
-    <details>
-    <summary>use declarations</summary>
+    {{%expand "use declarations" %}}
 
-    ``` rust
+    ``` rust {class="line-numbers linkable-line-numbers"}
+
     use anyhow::bail;
     use esp_idf_hal::gpio::OutputPin;
     use esp_idf_hal::prelude::Peripherals;
@@ -81,18 +81,16 @@ You can also copy the example <file>main.rs</file> code from [here](#full-exampl
     use std::sync::Arc;
     use std::sync::Mutex;
     use std::time::Duration;
+
     ```
 
-    </details>
+    {{% /expand%}}
 
-<br>
+2. Delete lines 42-106 in `main()` and replace with the following code:
 
-1. Delete lines 42-106 in `main()` and replace with the following code:
+    {{%expand "let robot = { ... }" %}}
 
-    <details>
-            <summary>let robot = { ... }</summary>
-
-    ``` rust
+    ``` rust {class="line-numbers linkable-line-numbers"}
     let robot = {
             use esp_idf_hal::adc::config::Config;
             use esp_idf_hal::adc::{self, AdcChannelDriver, AdcDriver, Atten11dB};
@@ -181,16 +179,13 @@ You can also copy the example <file>main.rs</file> code from [here](#full-exampl
     }
     ```
 
-    </details>
-
-<br>
+    {{% /expand%}}
 
 3. Add a new `runserver()` function in between `main()` and `start_wifi()` with the following code:
 
-    <details>
-        <summary>runserver()</summary>
+    {{%expand "runserver()" %}}
 
-    ``` rust
+    ``` rust {class="line-numbers linkable-line-numbers"}
     fn runserver(robot: Esp32Robot, client_handle: Option<TaskHandle_t>) -> anyhow::Result<()> {
         let cfg = {
             let cert = include_bytes!(concat!(env!("OUT_DIR"), "/ca.crt"));
@@ -235,30 +230,37 @@ You can also copy the example <file>main.rs</file> code from [here](#full-exampl
     }
     ```
 
-    </details>
+    {{% /expand%}}
 
 ## Add Python Control Code
 
 Now, to control your ESP32 backed robot, add Python control code to run on your ESP32.
 
 While setting up your ESP32 backed robot, you should have added it as a remote of another robot that is controlled by a computer with the necessary processing power to run the full version of `viam-server`.
-This might be just your local development machine [TODO: CAN LINK TO MACOS-LINUX VIAM-SERVER INSTRUCTIONS HERE].
-In this tutorial, we are using a Raspberry Pi single-board computer [TODO: LINK TO RASPBERRY PI SETUP INSTRUCTIONS HERE] to act as our secondary robot instance.
 
-Make sure this robot, whatever it might look like, is running an instance of `viam-server` and has a live connection, with the ESP32 backed-robot added as a remote [TODO: LINK TO MICROCONTROLLER REMOTE INSTRUCTIONS HERE].
+- This might be just your local development machine.
+Find instructions for installing and running `viam-server` on MacOs or Linux machines [here.](../../installation/install/)
+- In the example code for this tutorial, we are using a Raspberry Pi single-board computer to act as our secondary robot instance.
+See our [Raspberry Pi Setup Guide](../../installation/prepare/rpi-setup/) for information on how to get `viam-server` up and running on your Raspberry Pi.
 
-Navigate to this robot's page in [the Viam app](https://app.viam.com), and click on the **CONTROL** tab.
+Make sure this robot is running an instance of `viam-server` and has a live connection, with the ESP32 backed-robot [added as a remote](../../installation/microcontrollers#configure-the-esp32-as-a-remote).
+
+Follow the below instructions to start working on your Python Control Code:
+
+1. Navigate to your `viam-server` robot's page in [the Viam app](https://app.viam.com), and click on the **CONTROL** tab.
 Follow the instructions in this tab.
-Install the Python SDK if you have not already.
-Then, click **COPY CODE** to copy a code sample that establishes a connection with this robot when run.
 
-Paste this code sample into a new file in the directory where you have saved your micro-RDK template code, using your preferred IDE.
-Name the file whatever you want, and save it.
-In this example, the control code is named `Water-esp32.py`.
+   - Install the Python SDK if you have not already.
+   - Then, click **COPY CODE** to copy a code sample that establishes a connection with this robot when run.
 
-The beginning of your new file should look like the following code sample:
+2. Paste this code sample into a new file in the directory where you have saved your micro-RDK template code, using your preferred IDE.
 
-``` python
+   - Name the file whatever you want, and save it.
+   - In the [example code](#full-example-code) this tutorial follows, the control code is named <file>Water-esp32.py</file>.
+
+The beginning of your new file should look similar to the following:
+
+``` python {class="line-numbers linkable-line-numbers"}
 import asyncio
 import datetime
 import signal
@@ -280,9 +282,9 @@ async def connect():
 ```
 
 <br>
-Add the following imports to the beginning of your file if they are not present:
+Add the following imports to the beginning of your file if they are not already present:
 
-``` python
+``` python {class="line-numbers linkable-line-numbers"}
 import datetime
 import signal
 
@@ -291,10 +293,11 @@ from viam.components.board import Board
 
 ### `WaterLevelUnit` Class
 
-Then, after `async def connect()`, add a new class for your water level analog reader units.
+Now, after `async def connect()`, add a new class for your water level analog reader units.
+
 Create this class with two attributes: a `reader` and a `threshold`.
 
-``` python
+``` python {class="line-numbers linkable-line-numbers"}
 class WaterLevelUnit:
     reader : Board.AnalogReader
     threshold : int
@@ -311,11 +314,12 @@ class WaterLevelUnit:
 
 ### `PumpUnit` Class
 
-Next, add a new class for your water pump units.
+Now, add a new class for your water pump units.
+
 Create this class with four attributes: a `Board`, a `pin`, a `pumpTime`, and a `name`.
 <!-- TODO: could possibly make above a table with definitions for each attribute  -->
 
-``` python
+``` python {class="line-numbers linkable-line-numbers"}
 class PumpUnit:
     board : Board # Your ESP32 board.
     pin : int # The GPIO pin number on your ESP32 board that the pump is connected to.
@@ -330,13 +334,16 @@ class PumpUnit:
     
 ```
 
-Next, define a `runPump` and a `stopPump` function to belong to this class.
+Define a `runPump` and a `stopPump` function to belong to this class.
+<br>
 
-- `runPump` sets the ESP32 GPIO pin identified by the PumpUnit's `pin` attribute to `True` (HIGH), giving power to the pump and turning it  on.
-  - If an exception occurs, a `CancelledError` is raised, and the pin's power is set to `False` (LOW).
-- `stopPump` sets the ESP32 GPIO pin identified by the PumpUnit's `pin` attribute to `False` (LOW), turning the power to the pump off.
+`runPump` sets the ESP32 GPIO pin identified by the PumpUnit's `pin` attribute to `True` (HIGH), giving power to the pump and turning it  on.
 
-``` python
+- If an exception occurs, a `CancelledError` is raised, and the pin's power is set to `False` (LOW).
+
+`stopPump` sets the ESP32 GPIO pin identified by the PumpUnit's `pin` attribute to `False` (LOW), turning the power to the pump off.
+
+``` python {class="line-numbers linkable-line-numbers"}
     async def runPump(self):
         print("Running the pump {} {}".format(self.name,self.pin))
         pin = await self.board.gpio_pin_by_name(self.pin) # Get the GPIO pin of the specified ID number from the ESP32 board.
@@ -358,6 +365,7 @@ Next, define a `runPump` and a `stopPump` function to belong to this class.
 ### `PlantUnit` Class
 
 Now, add a new class, `PlantUnit` to define each of your plants you want to water.
+
 Create this class with six attributes: `reader`, `pump`, `cooldown`, `next_allowed_activation`, `min_moisture`, and `name`.
 
 Add two functions to belong to this class: `waterPlant()` and `stop()`.
@@ -365,7 +373,7 @@ Add two functions to belong to this class: `waterPlant()` and `stop()`.
 - `waterPlant()` runs in each `PlantUnit` you create at an interval defined by `cooldown` and `next_allowed_activation`, as long as the moisture level (*mm*) read by the moisture reader is found to be greater than the minimum moisture level specified by `min_moisture`.
 - `stop()` stops watering the plant, calling to the pump's `stop()` function.
 
-``` python
+``` python {class="line-numbers linkable-line-numbers"}
 class PlantUnit:
     reader : Board.AnalogReader # The analog moisture reader for this plant unit, connected to your ESP32 board.
     pump: PumpUnit # The pump for this plant unit, connected to your ESP32 board. 
@@ -412,10 +420,9 @@ Now, you can used nested dictionaries to define the configuration of the hardwar
 
 For example, the following code defines an ESP32 board named `esp1` connected to one `WaterLevelUnit` with a water level reader and water box, and two plant boxes (`PlantUnit`), each with 1 pump (`PumpUnit`) and 1 soil moisture reader.
 
-Modify this example code to your specifics for [TODO: minimum and maximum moisture levels, pumps, cooldown, pins].
+<!-- Modify this example code to your specifics for [TODO: minimum and maximum moisture levels, pumps, cooldown, pins]. -->
 
-``` python
-
+``` python {class="line-numbers linkable-line-numbers"}
 esp1 = {"esp1" : {"name" : "esp32-plant-1-main:board",
                    "attributes" : {"WaterLevel" : {"type" : "level",
                                                    "min" : 700,
@@ -443,7 +450,7 @@ Now that you've defined the `WaterLevelUnit`, `PumpUnit`, and `PlantUnit` classe
 
 TODO: WATERING SYSTEM EXPLANATION
 
-``` python
+``` python {class="line-numbers linkable-line-numbers"}
 class WateringSystem:
     waterLevel : WaterLevelUnit
     plantUints : list[PlantUnit]
@@ -488,7 +495,9 @@ class WateringSystem:
 
 ### Put it All Together in `main()` and `shutdown()`
 
-``` python
+TODO: talk about what's happening down here
+
+``` python {class="line-numbers linkable-line-numbers"}
 async def main():
     robot = await connect()
 
@@ -504,6 +513,7 @@ async def main():
             break;
     print("done here")
     await robot.close()
+
 async def shutdown(signal, loop):
     """Cleanup tasks tied to the service's shutdown."""
     print("killing loops")
@@ -520,6 +530,7 @@ async def shutdown(signal, loop):
 if __name__ == '__main__':
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
+
     # May want to catch other signals too
     signals = (signal.SIGHUP, signal.SIGTERM, signal.SIGINT)
     for s in signals:
@@ -530,16 +541,20 @@ if __name__ == '__main__':
         loop.run_forever()
     finally:
         loop.close()
-        print("Successfully shutdown the Mayhem service.")
+        print("Successfully shut down the Mayhem service.")
 ```
 
 ## Run Your Python Control Code
+
+TODO: talk about commands to run this as control code for your esp32 backed robot
 
 ## Full Example Code
 
 <file>Main.rs</file>:
 
-``` rust
+{{%expand "Click to view the full Main.rs Example Code" %}}
+
+``` rust  {class="line-numbers linkable-line-numbers"}
 const SSID: &str = env!("MINI_RDK_WIFI_SSID");
 const PASS: &str = env!("MINI_RDK_WIFI_PASSWORD");
 
@@ -779,9 +794,13 @@ fn start_wifi(
 }
 ```
 
+{{% /expand%}}
+
 <file>Water-esp32.py</file>:
 
-``` python
+{{%expand "Click to view the full Water-esp32.py Example Code" %}}
+
+``` python  {class="line-numbers linkable-line-numbers"}
 import asyncio
 import datetime
 import signal
@@ -992,6 +1011,8 @@ if __name__ == '__main__':
         loop.close()
         print("Successfully shutdown the Mayhem service.")
 ```
+
+{{% /expand%}}
 
 ## Next Steps
 
