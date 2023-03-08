@@ -4,7 +4,7 @@ linkTitle: "Make a Plant Watering Robot with the ESP32"
 weight: 50
 type: "docs"
 description: "Instructions for creating a plant watering robot with an ESP-32 microcontroller and Viam's micro-RDK."
-tags: ["base", "microcontrollers", "app", "rover"]
+tags: ["base", "microcontrollers", "app", "esp32"]
 ---
 
 ## Hardware Requirements
