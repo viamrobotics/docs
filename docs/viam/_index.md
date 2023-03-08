@@ -123,7 +123,7 @@ This includes:
 - Managing software across your fleet, including deployment of code and machine learning models.
 - Keeping your robot configuration and capabilities up-to-date.
 
-## Next Steps
+## Next steps
 
 Start by borrowing one of our robots.
 Use [Try Viam](/try-viam/).
