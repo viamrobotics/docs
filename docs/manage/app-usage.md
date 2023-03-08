@@ -75,9 +75,9 @@ There are two ways to share a location beyond its parent organization:
 
 #### Sharing a location with an additional organization
 
-Share your location with another organization you belong to by selecting the organization from the **Add Organization** drop-down menu and clicking **Add**.
+Share your location with another organization you belong to by selecting the organization from the **Add Organization** drop-down menu and clicking **Share**.
 
-{{< figure src="../img/app-usage/add-org-drop-down.png" width="400px" alt="The Add Organization drop-down in the Viam app displays all organizations the user is a member of." title="The Add Organization drop-down displays all organizations the user is a member of." >}}
+{{< figure src="../img/app-usage/add-org-drop-down.png" width="500px" alt="The Add Organization drop-down in the Viam app displays all organizations the user is a member of." title="The Add Organization drop-down displays all organizations the user is a member of." >}}
 
 The Viam app lists the newly added organization, along with the parent organization identified as the **primary owner**:
 
