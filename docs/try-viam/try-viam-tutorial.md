@@ -128,7 +128,7 @@ With it, you can control the states of individual GPIO pins on the board.
 
 #### Web gamepad control
 
-The [web gamepad component](/components/input-controller/#webgamepad) is disabled by default, but if you have a compatible gamepad, you can enable the **Enabled** toggle.
+The [web gamepad component](/components/input-controller/webgamepad) is disabled by default, but if you have a compatible gamepad, you can enable the **Enabled** toggle.
 
 ## Learn about robot configuration
 
@@ -189,7 +189,7 @@ For more information on choosing the correct video path, refer to our [webcam do
 
 ### Gamepad configuration
 
-The [web gamepad](/components/input-controller/#webgamepad) component has the **Type** `input_controller` and the **Model** `webgamepad`.
+The [web gamepad](/components/input-controller/webgamepad) component has the **Type** `input_controller` and the **Model** `webgamepad`.
 
 ![The gamepad configuration panel. No attributes are configured.](../img/try-viam/gamepad-config.png)
 
