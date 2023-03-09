@@ -91,7 +91,6 @@ The Viam cloud does not receive any command or control information regarding you
 With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program your robot in many common programming languages.
 
 This provides flexibility and security whether you are building tight control loops for autonomous mobile robots, event-based triggers for IoT devices, or custom web-based robot management interfaces.
-You can build tight control loops for autonomous mobile robots, event-based triggers for IoT devices, or custom web-based robot management interfaces.
 
 There are four categories of APIs:
 
