@@ -501,27 +501,30 @@ class WateringSystem:
 
 ### Put it All Together in `main()` and `shutdown()`
 
-TODO: talk about what's happening down here
+Now, it's time to write the code that will run on your ESP32-backed robot into the `main()` function of your Python control file.
 
 ``` python {class="line-numbers linkable-line-numbers"}
 async def main():
-    robot = await connect()
+    robot = await connect() # Connect the ESP32-remote robot
 
-    water = WateringSystem(robot,esp1)
+    water = WateringSystem(robot, esp1) # Create a new WateringSystem instance with the ESP32-remote robot and the ESP32 config dictionary
 
-    await water.configure()
+    await water.configure() # Wait for the new WateringSystem to configure
+
+    # Run this until you raise a CancelledError by stopping the WateringSystem
     while True:
         try:
             await water.runOnce()
-            await asyncio.sleep(30)
+            await asyncio.sleep(30) # Sleep for 30 seconds in between each run of the WateringSystem's runOnce function
         except asyncio.CancelledError:
-            await water.stop()
-            break;
-    print("done here")
-    await robot.close()
+            await water.stop() # Stop the WateringSystem
+            break; # Break out of the while loop
+
+    print("done with watering!")
+    await robot.close() # Close your connection to the ESP32-remote robot
 
 async def shutdown(signal, loop):
-    """Cleanup tasks tied to the service's shutdown."""
+    """Clean-up tasks to shut down the Mayhem service."""
     print("killing loops")
 
     tasks = [t for t in asyncio.all_tasks() if t is not
@@ -891,7 +894,7 @@ class PumpUnit:
         self.pumpTime = p
         self.name = name
     async def runPump(self):
-        print("runing pump {} {}".format(self.name,self.pin))
+        print("running pump {} {}".format(self.name,self.pin))
         pin = await self.board.gpio_pin_by_name(self.pin)
         try:
             await pin.set(True)
@@ -922,7 +925,7 @@ class PlantUnit:
         self.min_moisture = mm
         self.name = name
     async def waterPlant(self):
-        print("Runing plant {}".format(self.name))
+        print("Running plant {}".format(self.name))
         if self.next_allowed_activation < datetime.datetime.now():
             val = await self.reader.read()
             print("Current moisture level is {} min is {}".format(val,self.min_moisture))
@@ -987,7 +990,7 @@ async def main():
         except asyncio.CancelledError:
             await water.stop()
             break;
-    print("done here")
+    print("done with watering!")
     await robot.close()
 async def shutdown(signal, loop):
     """Cleanup tasks tied to the service's shutdown."""
