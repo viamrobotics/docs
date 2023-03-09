@@ -90,7 +90,7 @@ Viam uses [WebRTC](https://webrtc.org/) to create secure peer-to-peer paths betw
 The Viam cloud does not receive any command or control information regarding your robots, ensuring low latency, robustness, and privacy.
 With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program your robot in many common programming languages.
 
-This provides flexibility and security.
+This provides flexibility and security whether you are building tight control loops for autonomous mobile robots, event-based triggers for IoT devices, or custom web-based robot management interfaces.
 You can build tight control loops for autonomous mobile robots, event-based triggers for IoT devices, or custom web-based robot management interfaces.
 
 There are four categories of APIs:
