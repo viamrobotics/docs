@@ -120,7 +120,7 @@ With it you can:
 
 - Managing permissions within your organization and locations.
 - Manage software across your fleet, including deployment of code and machine learning models.
-- Keeping your robot configuration and capabilities up-to-date.
+- Keep your robot configuration and capabilities up-to-date.
 
 ## Next steps
 
