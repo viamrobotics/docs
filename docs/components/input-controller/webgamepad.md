@@ -65,7 +65,7 @@ Then, you should see the [Controls](../#control-field) on your input controller 
 
 You should now be able to see the row of control inputs respond to your button presses and stick toggles.
 
-For example, this is how the row of [Controls](../#control-field) appears after pressing the left button on the diamond button pad of the connected PS4 controller:
+For example, this is how the row of [Controls](../#control-field) appears after pressing the circle (west) button on the button pad of the connected PS4 controller:
 
 <img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app." style="width:100%"/>
 

@@ -70,12 +70,12 @@ Now, you should see the [Controls](../#control-field) on your input controller a
 
 You should now be able to see the row of [Controls](../#control-field) respond to your button presses and stick toggles.
 
-For example, this is what the row of inputs above looks like after pressing the left button on the diamond button pad of a connected `webgamepad` PS4 controller:
+For example, this is what the row of inputs above looks like after pressing the circle (west) button on the button pad of a PS4 controller connected as a `webgamepad` :
 
 <img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app. This is for a WebGamepad model." style="width:100%"/>
 
 {{% alert title="Note" color="note" %}}
-The **Enable** toggle shown in this example is not presented when a linux-supported `gamepad` model is connected.
+The **Enable** toggle shown in this example is only shown for the `webgamepad` and not shown when a linux-supported `gamepad` model is directly connected.
 {{% /alert %}}
 
 ### Work in Progress Models
