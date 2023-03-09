@@ -242,13 +242,20 @@ Now, configure the left and right encoders as follows:
 
   ```json
   {
-    "board": "<board_name>",
-    "connection_type": "i2c",
-    "i2c_attributes": {
-      "i2c_bus": "main",
-      "i2c_addr": 64
+```suggestion
+      "name": "<encoder_name>",
+      "type": "encoder",
+      "model": "AM5-AS5048"
+      "board": "<board_name>",
+       "attributes": {
+           "board": "<board_name>",
+           "connection_type": "i2c",
+            "i2c_attributes": {
+                "i2c_bus": "main",
+                "i2c_addr": 64
+            }
+       }
     }
-  }
   ```
 
 - Right encoder:
@@ -257,13 +264,19 @@ Now, configure the left and right encoders as follows:
 
   ```json
   {
-    "board": "<board_name>",
-    "connection_type": "i2c",
-    "i2c_attributes": {
-      "i2c_bus": "main",
-      "i2c_addr": 65
+      "name": "<encoder_name>",
+      "type": "encoder",
+      "model": "AM5-AS5048"
+      "board": "<board_name>",
+       "attributes": {
+           "board": "<board_name>",
+           "connection_type": "i2c",
+            "i2c_attributes": {
+                "i2c_bus": "main",
+                "i2c_addr": 65
+            }
+       }
     }
-  }
   ```
 
 ## Configuring the camera
