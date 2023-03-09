@@ -242,7 +242,6 @@ Now, configure the left and right encoders as follows:
 
   ```json
   {
-```suggestion
       "name": "<encoder_name>",
       "type": "encoder",
       "model": "AM5-AS5048"
