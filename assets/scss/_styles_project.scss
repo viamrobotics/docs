@@ -463,19 +463,19 @@ END MARKETING CSS
 }
 
 .hover-card.hover-card-small {
-  min-width: 130px;
-  width: 130px;
-  max-width: 130px;
+  min-width: fit-content;
+  max-width: 200px;
 }
 
 @media (min-width: 992px) {
   .hover-card {
-    min-width: 300px;
+    min-width: fit-content;
     width: 300px;
     max-width: 300px;
   }
   .hover-card.hover-card-small {
-    max-width: 200px;
+    min-width: fit-content;
+    max-width: 250px;
   }
 }
 
