@@ -414,7 +414,7 @@ class PlantUnit:
         await self.pump.stop()
 ```
 
-### Define your Board's Unit Setup with a Nested Dictionary
+### Define your Board's Whole Configuration with a Nested Dictionary
 
 Now, you can used nested dictionaries to define the configuration of the hardware units that you have connected to your ESP32 board, adding all the required attributes for the `WaterLevelUnit`, `PumpUnit`, and `PlantUnit` classes.
 
@@ -448,19 +448,21 @@ esp1 = {"esp1" : {"name" : "esp32-plant-1-main:board",
 
 Now that you've defined the `WaterLevelUnit`, `PumpUnit`, and `PlantUnit` classes, and added all the required attributes to your ESP32 board nested dictionary, you can define a class for the `WateringSystem` as a whole.
 
-TODO: WATERING SYSTEM EXPLANATION
+Create this class with four attributes: `waterLevel`, `plantUnits`, `robot`, and `config`.
 
 ``` python {class="line-numbers linkable-line-numbers"}
 class WateringSystem:
-    waterLevel : WaterLevelUnit
-    plantUints : list[PlantUnit]
-    robot = RobotClient
-    config: dict
+    waterLevel : WaterLevelUnit  # The WaterLevelUnit in this watering systems
+    plantUnits : list[PlantUnit] # A list of the plantUnits in this watering system
+    robot = RobotClient # The robot that your ESP32-backed robot controlling this watering system is configured as a remote of
+    config: dict # Your controlling ESP32's configuration as a nested dictionary
+
     def __init__(self, robot: RobotClient, config):
-        self.plantUints = list()
+        self.plantUnits = list()
         self.waterLevel = None
         self.robot = robot
         self.config = config
+
     async def configure(self):
         waterLevel = None
         plantUnits = list()
@@ -478,18 +480,22 @@ class WateringSystem:
                     plant = PlantUnit(r=moistureReader,p=pump,cooldown=v["cooldown"],mm=v["min"],name=k)
                     plantUnits.append(plant)
         self.waterLevel = waterLevel
-        self.plantUints = plantUnits
+        self.plantUnits = plantUnits
+
     async def runOnce(self):
         if self.waterLevel == None:
             return
         print("Checking if water level is ok")
+
         if await self.waterLevel.isWaterLevelOk() == False:
             print("Not enough water")
-        print("water level good")
-        for plant in self.plantUints:
+
+        print("water level good") ''' TODO: should I add an else here? lol '''
+        for plant in self.plantUnits:
             await plant.waterPlant()
+
     async def stop(self):
-        for plant in self.plantUints:
+        for plant in self.plantUnits:
             await plant.stop()
 ```
 
@@ -929,11 +935,11 @@ class PlantUnit:
 
 class WateringSystem:
     waterLevel : WaterLevelUnit
-    plantUints : list[PlantUnit]
+    plantUnits : list[PlantUnit]
     robot = RobotClient
     config: dict
     def __init__(self, robot: RobotClient, config):
-        self.plantUints = list()
+        self.plantUnits = list()
         self.waterLevel = None
         self.robot = robot
         self.config = config
@@ -954,7 +960,7 @@ class WateringSystem:
                     plant = PlantUnit(r=moistureReader,p=pump,cooldown=v["cooldown"],mm=v["min"],name=k)
                     plantUnits.append(plant)
         self.waterLevel = waterLevel
-        self.plantUints = plantUnits
+        self.plantUnits = plantUnits
     async def runOnce(self):
         if self.waterLevel == None:
             return
@@ -962,10 +968,10 @@ class WateringSystem:
         if await self.waterLevel.isWaterLevelOk() == False:
             print("Not enough water")
         print("water level good")
-        for plant in self.plantUints:
+        for plant in self.plantUnits:
             await plant.waterPlant()
     async def stop(self):
-        for plant in self.plantUints:
+        for plant in self.plantUnits:
             await plant.stop()
 
 async def main():
