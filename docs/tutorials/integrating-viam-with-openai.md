@@ -100,7 +100,7 @@ You can also attach your speaker to the top of your rover with [double-sided foa
 
 The [git repository](https://github.com/viam-labs/tutorial-openai-integration) for this tutorial contains code that integrates with:
 
-* [viam-server](/viam/#viam-server-the-software-on-your-robot)
+* [viam-server](/viam/#get-started)
 * [Google text/speech tools](https://gtts.readthedocs.io/en/latest/)
 * [OpenAI](https://openai.com/api/)
 
