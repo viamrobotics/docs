@@ -48,42 +48,35 @@ The following attributes are available for `gamepad` input controllers:
 | `dev_file` | *Optional* | If `dev_file` is left blank or not included, `viam-server` will search and use the first gamepad it finds that's connected to the computer controlling your robot. If you want to specify a device, give the absolute path to the input device event file. For example: `/dev/input/event42`. |
 | `auto_reconnect` | *Optional* | Applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices. If set to `true`, `viam-server` tries to (re)connect the device automatically. It waits for a device to connect during a robot's start-up. If set to false (default) then start-up fails if a device is not already connected.
 
-## Usage with Base Remote Control Service
+## Usage
 
 Connect your controller to your computer.
+Follow the instructions included with your gamepad to make this connection.
+
 If you haven't done so already, create a robot in [the Viam app](https://app.viam.com), and follow the instructions in the **SETUP** tab to start `viam-server` on your computer and connect to the robot.
 
 Then, click on the robot's **CONFIG** tab and configure an `input_controller` component of model `gamepad`, as shown above.
+Save the config.
 
-Configure a base component with name `base` and model `fake` as well.
-This component does not need to have any attributes added to its configuration, but will keep the service from having errors as it starts.
+Next, navigate to the **CONTROL** tab.
+You should see a drop-down menu with the name of your gamepad.
+Click on the drop-down menu to expand it.
 
-Next, click on the **SERVICES** sub tab of **CONFIG** and add a service of type `base_remote_control`.
-
-<img src="../img/base-rc-service-config.png" alt="What an example configuration for the Base Remote Control service of a web-based gamepad input controller component looks like in the Viam App." style="width:100%"/>
-
-{{% alert title="Note" color="note" %}}
-You do not have to possess base hardware to use the "Base Remote Control" service to connect to your controller.
-
-For now, `"control_mode": "joystickControl"` does not affect the controls that are available to use on your gamepad.
-Buttons are still available with this configuration.
-
-Support for this component is still experimental, and this page will be updated as the interface develops.
-{{% /alert %}}
-
-After both the service and component are configured, navigate to the **CONTROL** tab.
-There, you should be able to see a drop-down menu appear with the name of your gamepad.
-Then, you should see the controls of your robot and the current input for each control displayed.
+Now, you should see the [Controls](../#control-field) on your input controller appear:
 
 <img src="../img/gamepad-enabled-app.png" alt="The dropdown as a table of controls available and their inputs in the Control tab of the Viam app." style="width:100%"/>
 
-Press any button or toggle any stick on the gamepad.
-You should now be able to see the row of control inputs respond to your button presses and stick toggles.
-For example, this is what the row of inputs above looks like *after* pressing the left button on the diamond button pad of the connected `webgamepad` PS4 controller.
+<br>
 
-<img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app." style="width:100%"/>
+You should now be able to see the row of [Controls](../#control-field) respond to your button presses and stick toggles.
 
-Note that on your `gamepad`, the controls available might look different than this example, and the **Enable** toggle shown is not presented when a linux-supported `gamepad` model is connected.
+For example, this is what the row of inputs above looks like after pressing the circle (west) button on the button pad of a PS4 controller connected as a `webgamepad` :
+
+<img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app. This is for a WebGamepad model." style="width:100%"/>
+
+{{% alert title="Note" color="note" %}}
+The **Enable** toggle shown in this example is only shown for the `webgamepad` and not shown when a linux-supported `gamepad` model is directly connected.
+{{% /alert %}}
 
 ### Work in Progress Models
 
@@ -91,10 +84,14 @@ Mappings are currently available for a wired XBox 360 controller, and wireless X
 
 The XBox controllers emulate an XBox 360 gamepad when in wired mode, as does the 8bitdo.
 
-Because of that, any unknown gamepad will be be mapped that way.
+Because of that, any unknown gamepad is mapped as an XBox 360.
+
 If you have another controller that you want to use to control your robot, feel free to submit a PR on [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) with new mappings.
 
 ## Troubleshooting
+
+- If you are not able to see a drop-down menu with the name of your controller appear in the **Control** tab, try specifying the `dev_file` attribute to match the exact path to your device.
+You can also try setting `auto_reconnect` to `True`.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
