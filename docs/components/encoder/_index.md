@@ -31,7 +31,7 @@ Most robots with an encoder need at least the following hardware:
 
 ## Configuration
 
-To configure am encoder as a component of your robot, first configure the [board](/components/board/) controlling the encoder.
+To configure an encoder as a component of your robot, first configure the [board](/components/board/) controlling the encoder.
 If you are configuring an encoded motor, you must also configure the [motor](/components/motor/) first.
 
 The configuration of your encoder component depends on your encoder model.
