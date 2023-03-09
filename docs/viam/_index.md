@@ -71,6 +71,8 @@ After configuring your robot's hardware, you can configure high level functional
 - **Simultaneous Localization And Mapping (SLAM)** enabling your robot to map its surroundings and find its position on a map.
 
 
+![Robot components](img/robot-components.png)
+
 ## Control your robot
 
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure robot control." style="float: right; max-width:270px; display: block; margin: auto auto auto auto"></img>
