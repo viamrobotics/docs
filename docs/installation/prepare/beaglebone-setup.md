@@ -44,7 +44,7 @@ You can do this in multiple ways:
 - Connect an ethernet cable to your BeagleBone's ethernet port.
 - If you are working on a macOS machine, use [internet sharing over USB](https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac) to share your connection.
    After enabling the option on your machine, SSH into your BeagleBone and run `sudo dhclient usb1`.
-- If you are working on a Linux machine, follow the tutorial at [fastbitlab.com/how-to-enable-internet-over-usb/](https://fastbitlab.com/how-to-enable-internet-over-usb/) to enable internet sharing over USB.
+- If you are working on a Linux machine, look [here](https://elinux.org/Beagleboard:Terminal_Shells) for tips on enabling a network connection.
 - If your personal computer supports mDNS (Multicast DNS), you can check to see if your BeagleBone board has established a network connection by visiting [beaglebone.local](https://beaglebone.local).
 
 ### Step 3: SSH into your BeagleBone from your PC
