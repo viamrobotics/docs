@@ -10,16 +10,16 @@ icon: "img/components/gantry.png"
 # SME: Rand
 ---
 
-A *gantry* on a robot is a mechanical system made up of one or more linear rails that can hold and position a variety of end-effectors: devices designed to attach to the robot and interact with the environment to perform tasks.
-The linear rail design makes gantries a common design on robots for simple positioning and placement.
-A customized encoded motor controller can be used in the configuration of a gantry to move the linear rail.
+A robotic *gantry* is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector).
+A 3D printer is an example of a three-axis gantry where each linear actuator can move the print head along one axis.
+The linear rail design makes gantries a common and reliable system for simple positioning and placement tasks.
 
-This component abstracts the hardware of a gantry to give you an easy interface for moving linear rails, even many at once (multi-axis).
+This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once (multi-axis).
 A multi-axis gantry is composed of many single-axis gantries.
 
 <img src="../img/gantry/gantry-illustration.png" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." style="max-width:300px; display: block; margin: 0 auto"></img>
 
-Gantry components can only be controlled in terms of linear motion.
+Gantry components can only be controlled in terms of linear motion (you cannot rotate them).
 Each gantry can only move in one axis within the limits of the length of the linear rail.
 
 Most robots with a gantry need at least the following hardware:
