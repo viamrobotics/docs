@@ -62,7 +62,7 @@ For each component that makes up your robot:
 2. Test it with the visual [control tab](/manage/app-usage/#control)
 3. See any problems with in-app [logs](/manage/app-usage/#logs), review or roll back configuration [history](/manage/app-usage/#history)
 
-Now that you've configured your robot's hardware, you can add high level functionality that helps with robot control, including:
+After configuring your robot's hardware, you can configure high level functionality the same way:
 
 - **Data Management** enabling you to capture and sync data from one or more robots, and use that data for machine learning and beyond.
 - **Fleet management** enabling you to configure, control, debug, and manage entire fleets of robots.
