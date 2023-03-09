@@ -70,7 +70,6 @@ After configuring your robot's hardware, you can configure high level functional
 - **Vision** enabling your robot to intelligently see and interpret the world around it.
 - **Simultaneous Localization And Mapping (SLAM)** enabling your robot to map its surroundings and find its position on a map.
 
-These services are configured and tested in the same way as components: click to add a new service, configure it, and test it in the Viam app.
 
 ## Control your robot
 
