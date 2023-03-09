@@ -53,7 +53,6 @@ A robot can be a single-board computer with a single [sensor](/components/sensor
 
 The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
 
-The Viam platform allows you to specify what components make up your robot with the Viam app.
 For each component that makes up your robot:
 
 <img src="img/test_components.png" alt="Multiple components being tested in the Viam app." style="float: right; max-width:320px; display: block; margin: auto auto auto 10px"></img>
