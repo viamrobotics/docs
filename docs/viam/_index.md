@@ -49,7 +49,7 @@ Everything Viam runs on your robot is [open-source](https://github.com/viamrobot
 ## Configure your robot
 
 Robots can be small and simple or very complex.
-One robot can be just a single-board computer with a single [sensor](/components/sensor/) or LED wired to it, or another robot can consist of multiple computers with many physical components connected, acting as one unit.
+A robot can be a single-board computer with a single [sensor](/components/sensor/) or LED wired to it, or a robot can consist of multiple computers with many physical components connected, acting as one unit.
 
 The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
 
