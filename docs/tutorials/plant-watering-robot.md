@@ -490,7 +490,7 @@ class WateringSystem:
         if await self.waterLevel.isWaterLevelOk() == False:
             print("Not enough water")
 
-        print("water level good") ''' TODO: should I add an else here? lol '''
+        print("water level good")
         for plant in self.plantUnits:
             await plant.waterPlant()
 
@@ -511,7 +511,7 @@ async def main():
 
     await water.configure() # Wait for the new WateringSystem to configure
 
-    # Run this until you raise a CancelledError by stopping the WateringSystem
+    # Run this until you raise a CancelledError and stop the WateringSystem
     while True:
         try:
             await water.runOnce()
@@ -522,9 +522,13 @@ async def main():
 
     print("done with watering!")
     await robot.close() # Close your connection to the ESP32-remote robot
+```
 
+Then, you might want to add a `shutdown` function to shut down all the tasks that were running:
+
+``` python
 async def shutdown(signal, loop):
-    """Clean-up tasks to shut down the Mayhem service."""
+    """Clean-up tasks."""
     print("killing loops")
 
     tasks = [t for t in asyncio.all_tasks() if t is not
@@ -535,12 +539,17 @@ async def shutdown(signal, loop):
     print(f"Cancelling {len(tasks)} outstanding tasks")
     await asyncio.gather(*tasks, return_exceptions=True)
     loop.stop()
-    
+
+```
+
+Now, add this `if` statement at the bottom of your control file to make `main()` run if the Python file is running, and `shutdown()` happen when the Python file stops running:
+
+``` python
 if __name__ == '__main__':
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
-    # May want to catch other signals too
+    # Catching and handling 
     signals = (signal.SIGHUP, signal.SIGTERM, signal.SIGINT)
     for s in signals:
         loop.add_signal_handler(
@@ -550,12 +559,34 @@ if __name__ == '__main__':
         loop.run_forever()
     finally:
         loop.close()
-        print("Successfully shut down the Mayhem service.")
+        print("Successfully shut down!")
 ```
 
 ## Run Your Python Control Code
 
-TODO: talk about commands to run this as control code for your esp32 backed robot
+Open the terminal of the computer that is controlling the robot running `viam-server` that your ESP32-backed robot is a remote of.
+
+If the computer is a single-board computer like a Raspberry Pi, ssh into it from your local development machine.
+
+Run the following command, replacing the brackets `<>` with your chosen file path and file name: `python <path-to-your-file>/<your-control-file-name>.py`
+
+Now, your plant watering system is up and running!
+
+{{< alert title="Tip" color="tip" >}}
+
+`Ctrl+C` to exit out of the Python program.
+
+{{% /alert %}}
+
+If you are not sure what your file path is, try running `pwd` in your terminal after `cd`ing to the directory where your file is stored.
+
+For example:
+
+``` shell
+~ % cd Desktop/micro-rdk 
+micro-rdk % pwd
+/Users/myusername/Desktop/micro-rdk
+```
 
 ## Full Example Code
 
