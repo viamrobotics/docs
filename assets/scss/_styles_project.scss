@@ -195,6 +195,17 @@ a {
   }
 }
 
+a:hover {
+  color: #0000EA;
+  h1, h2, h3, h4, h5, h6, h7, p {
+    color: black;
+  }
+}
+
+a > code {
+  color: #0000EA !important;
+}
+
 p, li {
   color: #515151;
   a {
@@ -371,6 +382,11 @@ END MARKETING CSS
 .alert a {
   text-decoration: underline;
 }
+
+.alert a:hover {
+  text-decoration: none;
+}
+
 
 .alert-warning {
   box-shadow: 8px 8px 0 0 red;
