@@ -236,7 +236,9 @@ Before configuring the encoders, you must configure I2C bus `1` on the board:
 
 Now, configure the left and right encoders as follows:
 
-- left:
+- Left encoder:
+    - Configure the left encoder with *Name* `lenc`, **Type** `encoder`, and **Model** `AM5-AS5048`.
+    - Paste the following in the **Attributes** field, changing the board name to match the name of your board:
 
   ```json
   {
@@ -249,7 +251,9 @@ Now, configure the left and right encoders as follows:
   }
   ```
 
-- right:
+- Right encoder:
+    - Configure the left encoder with *Name* `renc`, **Type** `encoder`, and **Model** `AM5-AS5048`.
+    - Paste the following in the **Attributes** field, changing the board name to match the name of your board:
 
   ```json
   {
