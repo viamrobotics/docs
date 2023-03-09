@@ -3,7 +3,7 @@ title: "Run ORB-SLAM3 on your Robot with a Webcam"
 linkTitle: "Run ORB-SLAM3 on your Robot with a Webcam"
 weight: 50
 type: "docs"
-draft: false
+draft: true
 description: "Instructions to run ORB-SLAM3 with a webcam or sample dataset."
 tags: ["slam", "camera", "services"]
 # SMEs: Kat
