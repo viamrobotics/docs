@@ -26,7 +26,7 @@ You can build simple robots or multi-part robots that use secure communication c
 
 Join the [**Viam community**](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) to collaborate during planning and beyond.
 
-## Get up and running
+## Get started
 
 A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) single-board computer, running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
 
