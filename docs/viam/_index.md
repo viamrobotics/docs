@@ -22,8 +22,7 @@ You will not need to write a single line of code to integrate them, and swapping
 - **Functionality**:
 You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in [services](/services).
 - **Architecture**:
-You can build simple robots or multipart robots that utilize secure communication channels across local networks and the cloud.
-All of these can then be managed with a uniform API.
+You can build simple robots or multi-part robots that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
 - **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/program/extend) Viam.
 
 Join the [**Viam community**](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) to collaborate during planning and beyond.
@@ -36,11 +35,7 @@ A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https
 
 The Viam platform provides a user interface for connecting to and managing robots, the [Viam app](https://app.viam.com/).
 
-To use the Viam platform with your robot, log into [the app](https://app.viam.com/), create a new robot, and [install](/installation) the [`viam-server`](https://github.com/viamrobotics/rdk) binary.
-
-<br> <br>
-
-`viam-server` software:
+To use the Viam platform with your robot, log into [the app](https://app.viam.com/), create a new robot, and [install](/installation) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
 
 - Creates, configures, and maintains the robot.
 - Securely handles all communications.
