@@ -17,11 +17,13 @@ When using Viam, this is what you'll need to know to plan your robot:
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/633d91b848050946efcf0690_viam-overview-illustrations-build.svg" alt="A diagram of robotic parts and software" style="float: right; max-width:250px; display: block; margin: auto auto auto 20px"></img>
 
 - **Hardware**:
-Many [robotic components](/components) are natively supported by the Viam platform. You will not need to write a single line of code to integrate them, and swapping out component models will not require code changes.
+Many [robotic components](/components) are natively supported by the Viam platform.
+You will not need to write a single line of code to integrate them, and swapping out component models will not require code changes.
 - **Functionality**:
-You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam built-in [services](/services).
+You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in [services](/services).
 - **Architecture**:
-You can build simple robots or multi-part robots that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
+You can build simple robots or multipart robots that utilize secure communication channels across local networks and the cloud.
+All of these can then be managed with a uniform API.
 - **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/program/extend) Viam.
 
 Join the [**Viam community**](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) to collaborate during planning and beyond.
@@ -34,7 +36,11 @@ A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https
 
 The Viam platform provides a user interface for connecting to and managing robots, the [Viam app](https://app.viam.com/).
 
-To use the Viam platform with your robot, add the robot in the app and [install](/installation) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
+To use the Viam platform with your robot, log into [the app](https://app.viam.com/), create a new robot, and [install](/installation) the [`viam-server`](https://github.com/viamrobotics/rdk) binary.
+
+<br> <br>
+
+`viam-server` software:
 
 - Creates, configures, and maintains the robot.
 - Securely handles all communications.
@@ -74,7 +80,7 @@ After configuring your robot's hardware, you can configure high level functional
 ## Control your robot
 
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure robot control." style="float: right; max-width:270px; display: block; margin: auto auto auto auto"></img>
-  s
+
 The Viam platform provides a consistent programming interface for all robots, allowing you to [control your robots](/program/sdk-as-client/) with code in the **language of your choice**.
 Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk) and [Python](https://python.viam.dev/).
 Additional SDKs are coming soon, including Typescript, Rust, Java, C++, and Flutter.
@@ -84,7 +90,8 @@ Viam uses [WebRTC](https://webrtc.org/) to create secure peer-to-peer paths betw
 The Viam cloud does not receive any command or control information regarding your robots, ensuring low latency, robustness, and privacy.
 With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program your robot in many common programming languages.
 
-This provides flexibility and security whether you are building tight control loops for autonomous mobile robots, event-based triggers for IoT devices, or custom web-based robot management interfaces.
+This provides flexibility and security.
+You can build tight control loops for autonomous mobile robots, event-based triggers for IoT devices, or custom web-based robot management interfaces.
 
 There are four categories of APIs:
 
