@@ -69,7 +69,6 @@ After configuring your robot's hardware, you can configure high level functional
 - **Vision** enabling your robot to intelligently see and interpret the world around it.
 - **Simultaneous Localization And Mapping (SLAM)** enabling your robot to map its surroundings and find its position on a map.
 
-
 ![Robot components](img/robot-components.png)
 
 ## Control your robot
