@@ -113,7 +113,7 @@ This allows for tremendous flexibility in terms of your architecture design.
 
 ## Scale
 
-With robots in production, Viam provides [fleet management capabilities](manage/fleet-management/) to help you scale.
+With robots in production, Viam provides [fleet management capabilities](/manage/fleet-management/) to help you scale.
 With it you can:
 
 - Manage permissions within your organization and locations.
