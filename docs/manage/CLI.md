@@ -123,7 +123,7 @@ viam data export --destination=/home/robot/data --data_type=tabular \
 --org_ids=abc --location_ids=123
 
 # export binary data from all orgs and locations, component name myComponent
-viam data export --destination=/home/robot/data --data_type=tabular \
+viam data export --destination=/home/robot/data --data_type=binary \
 --component_name myComponent
 ```
 
