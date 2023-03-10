@@ -35,7 +35,7 @@ A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https
 
 The Viam platform provides a user interface for connecting to and managing robots, the [Viam app](https://app.viam.com/).
 
-To use the Viam platform with your robot, log into [the app](https://app.viam.com/), create a new robot, and [install](/installation) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
+To use the Viam platform with your robot, log in to [the app](https://app.viam.com/), create a new robot, and [install](/installation) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
 
 - Creates, configures, and maintains the robot.
 - Securely handles all communications.

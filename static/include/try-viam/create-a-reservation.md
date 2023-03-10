@@ -1,6 +1,6 @@
 1. **Click on the "TRY" tab in the Viam app.**
 
-   Log into Viam and go to the **[TRY](https://app.viam.com/try)** tab.
+   Log in to Viam and go to the **[TRY](https://app.viam.com/try)** tab.
    (If you don't have an account, it only takes a minute to sign up.)
 2. **Click "Try Now" or "Reserve Rover" to reserve your slot.**
 
