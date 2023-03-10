@@ -20,7 +20,7 @@ Enter a name for your encoder, select the type `encoder`, and select the `arduin
 
 Fill in the attributes for your encoder:
 
-<img src="../img/configure-arduino.png" alt="Configuration of an AM5 encoder in the Viam app config builder." />
+<img src="../img/configure-arduino.png" alt="Configuration of an Arduino encoder in the Viam app config builder." />
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
