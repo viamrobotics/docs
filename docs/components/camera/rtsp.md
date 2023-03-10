@@ -54,7 +54,7 @@ Fill in the attributes for your RTSP camera:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for rtsp cameras:
+The following attributes are available for RTSP cameras:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
