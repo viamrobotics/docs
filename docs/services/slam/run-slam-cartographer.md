@@ -30,7 +30,7 @@ You have two options:
 
 <!-- MACOS: TODO -->
 <!-- * A Linux or macOS machine with `viam-server` and `Cartographer` installed. -->
-* A Linux machine with `viam-server` and `Cartographer` installed.
+* A Linux or MacOS machine with `viam-server` and `Cartographer` installed.
 * [optionally] A [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device.
 
 For more information on how to install `viam-server` and set up your machine on the [Viam app](https://app.viam.com), see [Install viam-server](/installation/install/).
@@ -56,11 +56,14 @@ Install Cartographer with one of these commands:
   ```
 
 {{% /tab %}}
-{{< /tabs >}}
+{{% tab name="MacOS" %}}
 
-  <!-- ```bash TAB MACOS: TODO
+  ``` bash
   brew tap viamrobotics/brews && brew install carto-grpc-server
-  ``` -->
+  ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Run Cartographer in Live Mode with an Rplidar
 
@@ -94,11 +97,14 @@ First, install the Rplidar Module:
   ```
 
 {{% /tab %}}
-{{< /tabs >}}
+{{% tab name="MacOS" %}}
 
-  <!-- ```bash TAB MACOS: TODO
+  ```bash
   brew tap viamrobotics/brews && brew install rplidar-module
-  ``` -->
+  ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 Now, add the Rplidar as a modular component of your robot in the [Viam app](https://app.viam.com/):
 
@@ -132,29 +138,33 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
   ```
 
   {{% /tab %}}
-  {{< /tabs >}}
+  {{% tab name="MacOS" %}}
 
-<!-- json TAB MACOS: TODO
-{
-  "components": [
-    {
-      "namespace": "rdk",
-      "type": "camera",
-      "depends_on": [],
-      "model": "viam:lidar:rplidar",
-      "attributes": {
-        "device_path": "/dev/tty.SLAB_USBtoUART"
-      },
-      "name": "rplidar"
-    }
-  ],
-  "modules": [
-    {
-      "executable_path": "rplidar-module",
-      "name": "rplidar_module"
-    }
-  ]
-} -->
+  ```json
+  {
+    "components": [
+      {
+        "namespace": "rdk",
+        "type": "camera",
+        "depends_on": [],
+        "model": "viam:lidar:rplidar",
+        "attributes": {
+          "device_path": "/dev/tty.SLAB_USBtoUART"
+        },
+        "name": "rplidar"
+      }
+    ],
+    "modules": [
+      {
+        "executable_path": "rplidar-module",
+        "name": "rplidar_module"
+      }
+    ]
+  }
+  ```
+
+  {{% /tab %}}
+  {{< /tabs >}}
 
 * Save the config.
 
@@ -172,12 +182,11 @@ Now that you've added your Rplidar device as a modular component of your robot, 
   "config_params": {
     "min_range": "0.3",
     "max_range": "12",
-    "debug": "false",
     "mode": "2d"
   },
   "data_dir": "/home/YOUR_USERNAME/cartographer_dir",
   "map_rate_sec": 60,
-  "data_rate_msec": 200,
+  "data_rate_ms": 200,
   "delete_processed_data": false,
   "use_live_data": true,
   "sensors": ["rplidar"]
@@ -265,7 +274,7 @@ At this point, your complete configuration should look like:
           },
           "data_dir": "/home/YOUR_USERNAME/cartographer_dir",
           "map_rate_sec": 60,
-          "data_rate_msec": 200,
+          "data_rate_ms": 200,
           "delete_processed_data": false,
           "use_live_data": true,
           "sensors": ["rplidar"]
@@ -279,9 +288,9 @@ At this point, your complete configuration should look like:
   ```
 
   {{% /tab %}}
-  {{< /tabs >}}
+  {{% tab name="MacOS" %}}
 
-  <!-- json TAB MACOS: TODO
+  ``` json
   {
     "components": [
       {
@@ -312,7 +321,7 @@ At this point, your complete configuration should look like:
           },
           "data_dir": "/home/YOUR_USERNAME/cartographer_dir",
           "map_rate_sec": 60,
-          "data_rate_msec": 200,
+          "data_rate_ms": 200,
           "delete_processed_data": false,
           "use_live_data": true,
           "sensors": ["rplidar"]
@@ -323,14 +332,17 @@ At this point, your complete configuration should look like:
       }
     ]
   }
-  ``` -->
+  ```
+
+  {{% /tab %}}
+  {{< /tabs >}}
 
 * Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-slam`).
 * Change the **Refresh frequency** to your desired frequency, move the Rplidar device around slowly, and watch a map start to appear.
 
 ## Run Cartographer in Offline Mode with a Dataset
 
-Run Cartographer in offline mode using one of your previously saved LIDAR datasets or Viam's lab dataset.
+Run Cartographer in offline mode using one of your previously saved LIDAR datasets or Viam's [lab dataset](https://storage.googleapis.com/viam-labs-datasets/viam-old-office-small-pcd.zip).
 
 ### Configuration with Viam
 
@@ -343,7 +355,7 @@ Configure your robot to run Cartographer in offline mode in two steps:
 
 In offline mode SLAM uses an existing dataset to create a map.
 
-* If you already have a dataset in `data_dir/data` from running SLAM in live mode, or wish to use another dataset for SLAM, grab the path to that dataset on your machine to complete part 4 of Step 2.
+* If you already have a dataset in `data_dir/data` from running SLAM in live mode, or wish to use another dataset for SLAM, grab the path to that dataset on your machine for your `"data_dir"` configuration attribute.
 * If you don't already have a dataset in `data_dir/data` from running SLAM in live mode, download Viam's [lab dataset](https://storage.googleapis.com/viam-labs-datasets/viam-old-office-small-pcd.zip).
 Copy it to the machine running `viam-server` and unzip it.
 For example:
@@ -380,7 +392,7 @@ This tells the service to use only data found within the `data_dir` directory sp
         },
         "data_dir": "/home/YOUR_USERNAME/viam-old-office-small-pcd",
         "map_rate_sec": 60,
-        "data_rate_msec": 200,
+        "data_rate_ms": 200,
         "delete_processed_data": false,
         "use_live_data": false,
         "sensors": []
@@ -402,16 +414,13 @@ This tells the service to use only data found within the `data_dir` directory sp
 * Head over to the **CONTROL** tab and click on the drop-down menu of the service you created (example: `run-slam-offline`).
 * Refresh until the map appears, or change the **Refresh frequency** to your desired frequency.
 
-{{% alert title="Note" color="note" %}}
-It may take a couple of minutes for the first map to show in the UI.
-{{% /alert %}}
-
 ## Troubleshooting
 
 ### Issue: Maps JPEG not Appearing in UI
 
-When generating a larger map, it can take longer for Cartographer to return the `JPEG` map endpoint.
-Reducing the frequency the endpoint returns should allow the map to return.
+When generating a larger map, it can take a while for the Cartographer service to return the `JPEG` map.
+
+Reducing the frequency the Cartographer service returns the map by adjusting **Refresh frequency** should help the JPEG visualization to appear consistently.
 
 ### Issue: Maps not Appearing as Expected
 

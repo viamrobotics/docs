@@ -30,14 +30,6 @@ The following SLAM libraries are integrated:
 - [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
 - [Cartographer](https://github.com/cartographer-project)
 
-{{% alert title="Note" color="note" %}}
-
-- Viam creates a timestamp following this format: `2022-10-10T09_28_50.2630`.
-The timestamp is appended to each filename before images, maps, and *.yaml files are saved.
-The timestamp format will be updated to the RFC339 Nano time format (here: `2022-10-10T09:28:50Z26:30`) in the near future.
-
-{{% /alert %}}
-
 ## Requirements
 
 Running the SLAM Service with your robot requires the following:
@@ -52,23 +44,34 @@ All three are explained in the following using ORB-SLAM3 as the application exam
 
 Download the ORB-SLAM3 binaries into `usr/local/bin`:
 
-- AArch64 (ARM64) (use the following command on an RPI):
+{{< tabs >}}
+{{< tab name="AArch64 (ARM64)" >}}
 
-    ```bash
-    sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
-    ```
-
-- x86_64:
-
-    ```bash
-    sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
-    ```
+```bash
+sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
+```
 
 Make the file executable by running:
 
 ```bash
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
+
+{{< /tab >}}
+{{% tab name="x86_64" %}}
+
+```bash
+sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
+```
+
+Make the file executable by running:
+
+```bash
+sudo chmod a+rx /usr/local/bin/orb_grpc_server
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Configuration Overview
 
@@ -87,7 +90,7 @@ The following is an example configuration for running ORB-SLAM3 in live `rgbd` m
       "sensors": ["color", "depth"],
       "use_live_data": true,
       "map_rate_sec": 60,
-      "data_rate_msec": 200,
+      "data_rate_ms": 200,
       "config_params": {
         "mode": "rgbd"
       }
@@ -110,7 +113,7 @@ Here is an example configuration:
       "sensors": [],
       "use_live_data": false,
       "map_rate_sec": 120,
-      "data_rate_msec": 100,
+      "data_rate_ms": 100,
       "config_params": {
         "mode": "mono"
       }
@@ -135,15 +138,17 @@ This table provides an overview of the different SLAM modes and how to set them.
 
 | Mode | Description |
 | ---- | ----------- |
-| PURE MAPPING | In the PURE MAPPING MODE, a new map is generated from scratch. This mode is triggered if no map is found in the `data_dir/map` directory. |
-| UPDATING | In UPDATING MODE, an existing map is being changed and updated with new data. This mode is triggered when a map is found in the `data_dir/map` directory and `map_rate_sec` is set greater than or equal to `0`. Note: Setting `map_rate_sec` to a value of `0` causes the system to reset it to its default value of `60`.|
+| PURE MAPPING | In PURE MAPPING mode, a new map is generated from scratch. This mode is triggered if no map is found in the `data_dir/map` directory. |
+| UPDATING | In UPDATING mode, an existing map is being changed and updated with new data. This mode is triggered when a map is found in the `data_dir/map` directory and `map_rate_sec` is set greater than `0`.|
+| LOCALIZING | In LOCALIZING mode, the map is not changed. Data is used to localize on an existing map. This is similar to updating mode, except the loaded map is not changed. This mode is triggered when a map is found in the `data_dir/map` directory and `map_rate_sec` is equal to `0`. |
 
 #### SLAM Library-Specific Sensor Mode
 
 Every integrated SLAM library requires `mode` to be specified under its config parameters, which defines which sensor types or combinations are used.
-You can find more information on the `mode` in the description of the integrated library:
+You can find more information on the `mode` in the description of the integrated libraries:
 
 - [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
+- [Integrated Library: CARTOGRAPHER](run-slam-cartographer)
 
 ### General Config Parameters
 
@@ -152,15 +157,15 @@ You can find more information on the `mode` in the description of the integrated
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
 | `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM Service creates it. |
-| `sensors` | string[] | Names of sensors whose data is input to SLAM. If sensors are provided, SLAM runs in live mode. If the array is empty, SLAM runs in offline mode. |
+| `sensors` | string[] | Names of sensors whose data is input to SLAM. |
 | `use_live_data` |  bool | This specifies whether to run in live mode (true) or offline mode (false). If `use_live_data: true` and `sensors: []`, an error will be thrown. If this parameter is set to true and no sensors are provided, SLAM will produce an error. |
 
 #### Optional Attributes
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `map_rate_sec` | int | (optional) Map generation rate for saving current state (in seconds). The default value is `60`. Note: Setting `map_rate_sec` to a value of `0` causes the system to reset it to its default value of `60`.|
-| `data_rate_msec` | int |  (optional) Data generation rate for collecting sensor data to feed to SLAM (in milliseconds). The default value is `200`. |
+| `map_rate_sec` | int | (optional) Map generation rate for saving current state (in seconds). The default value is `60`. Note: Setting `map_rate_sec` to `0` causes SLAM to run in LOCALIZATION mode. |
+| `data_rate_ms` | int |  (optional) Data generation rate for collecting sensor data to feed to SLAM (in milliseconds). The default value is `200`. |
 | `port` | string |  (optional) Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
 | `delete_processed_data` | bool |  (optional) With `delete_processed_data: true` sensor data is deleted after the SLAM algorithm has processed it. This helps reduce the amount of memory required to run SLAM. If `use_live_data: true`, the `delete_processed_data` defaults to `true` and if `use_live_data: false`, it defaults to false. A `delete_processed_data: true` when `use_live_data: false` is invalid and will result in an error. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
@@ -188,7 +193,7 @@ To recap, the directory must be structured as follows:
     └── config
 </pre>
 
-- `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `data_rate_msec`.
+- `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `data_rate_ms`.
 - `map` contains the generated maps, saved at `map_rate_sec`.
 - `config` contains all SLAM library specific config files.
 
@@ -199,7 +204,7 @@ If this directory structure is not present, the SLAM Service creates it.
 The data present in the map subdirectory dictates SLAM's mode at runtime:
 
 - If the `map` subdirectory is empty, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).
-- If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (UPDATING MODE).
+- If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (UPDATING MODE or LOCALIZATION MODE).
 
 ## Integrated Library: ORB-SLAM3
 
@@ -222,7 +227,7 @@ In this example, `mono` is selected with one camera stream named `color`:
       "use_live_data": true,
       "delete_processed_data": false,
       "map_rate_sec": 60,
-      "data_rate_msec": 200,
+      "data_rate_ms": 200,
       "config_params": {
         "mode": "mono"
       }
