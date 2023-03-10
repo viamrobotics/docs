@@ -281,6 +281,26 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 - None.
 
 {{% /tab %}}
+{{% tab name="Classifications" %}}
+
+Classifications overlay text from the `GetClassifications` method of the [Vision Service](../../../services/vision) onto the image.
+
+```json-viam {class="line-numbers linkable-line-numbers"}
+{
+    "type": "classifications",
+    "attributes": {
+        "classifier_name": string,
+        "confidence_threshold": float
+    }
+}
+```
+
+**Attributes:**
+
+- `classifier_name`: The name of the classifier in the [Vision Service](../../../services/vision).
+- `confidence_threshold`: The threshold above which to display classifications.
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ## Example
