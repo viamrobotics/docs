@@ -364,5 +364,4 @@ You could even add [object detection and machine learning](/services/vision/) an
 
 If you are looking for a new robotics project, check out our other [tutorials](/tutorials/).
 
-If you have any issues getting Viam set up or get stuck, let us know on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we'll be happy to help you get up and running.
-The Viam Community Slack is also a great place to connect with other developers learning how to build robots.
+{{< readfile "/static/include/social.md" >}}

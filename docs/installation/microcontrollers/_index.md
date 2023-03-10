@@ -234,7 +234,7 @@ Add the ESP32-backed robot as a remote of your new or existing robot:
 
 Ensure that the controlling robot is live in [the Viam app](https://app.viam.com).
 If the connection is present, the ESP32-backed robot is now programmatically available.
-  
+
 ### Modify the Generated Template
 
 You can find the declaration of the robot in the generated file `src/main.rs`.
@@ -375,4 +375,4 @@ If you are unable to connect to the ESP32-backed robot as a remote, try adding `
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+{{< readfile "/static/include/social.md" >}}

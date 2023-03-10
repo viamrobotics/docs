@@ -19,7 +19,7 @@
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
         {{ with .Site.Params.copyright }}<small class="text-white">&copy; {{ now.Year}} {{ .}} {{ T "footer_all_rights_reserved" }}</small><BR>{{ end }}
           {{ with .Site.Params.privacy_policy }}<small class="ml-2"><a href="{{ . }}" target="_blank" rel="noopener">{{ "PRIVACY POLICY" }}</a></small>{{ end }}
-          {{ with .Site.Params.tos_statement }}<small class="ml-2"><a href="{{ . }}" target="_blank" rel="noopener">{{ "TERMS" }}</a></small> {{ end }}        
+          {{ with .Site.Params.tos_statement }}<small class="ml-2"><a href="{{ . }}" target="_blank" rel="noopener">{{ "TERMS" }}</a></small> {{ end }}
 
         {{ with .Site.Params.user_agreement }}<small class="ml-2"><a href="{{ . }}" target="_blank" rel="noopener">{{ "USER AGREEMENT" }}</a></small>{{ end }}
 	{{ if not .Site.Params.ui.footer_about_disable }}

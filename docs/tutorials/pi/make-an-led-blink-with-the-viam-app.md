@@ -42,9 +42,7 @@ Before you proceed with building your circuit, you are going to need to set up t
 We recommend that you follow along with the [Installing `viam-server` on Raspberry Pi](/installation/prepare/rpi-setup/) guide in the Viam documentation.
 Be sure to follow all the steps including [adding your Pi on the Viam app.](/installation/install/linux-install/)
 
-{{% alert title="Tip" color="tip" %}}
-If you have any issues whatsoever setting up Viam on your Raspberry Pi, let us know on the <a href="https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw" target="_blank">Viam Community Slack</a>, and we will be happy to help you get up and running.
-{{% /alert %}}
+{{< readfile "/static/include/social.md" >}}
 
 ## Building the circuit
 
@@ -145,7 +143,7 @@ We recommend that you check out the next part in this series, [How to Make an LE
 
 If you are looking for some more projects that would be a great next step in your robotics journey, check out our other [tutorials](/tutorials/).
 
-If you want to connect with other developers learning how to build robots or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw), and we will be happy to help you get up and running.
+{{< readfile "/static/include/social.md" >}}
 
 ## Hardware URL list
 

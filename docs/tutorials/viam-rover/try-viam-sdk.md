@@ -349,4 +349,4 @@ You could also write some code to control the other components on the Viam Rover
 
 You could also control Viam's services, by adding [data management](/manage/data-management/) to collect data in real time or [Vision Services](/services/vision/) to [add color detection to your Rover](/tutorials/viam-rover/try-viam-color-detection/).
 
-If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure to head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
+{{< readfile "/static/include/social.md" >}}

@@ -25,7 +25,7 @@ You can make use of computer vision, motion planning, SLAM, data management, mac
 You can build simple robots or multi-part robots that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
 - **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/program/extend) Viam.
 
-Join the [**Viam community**](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) to collaborate during planning and beyond.
+Join the [**Viam community**](https://discord.gg/FupYGq8W) to collaborate during planning and beyond.
 
 ## Get started
 
@@ -128,4 +128,4 @@ Use [Try Viam](/try-viam/).
 
 If you already have your own robot, [set up `viam-server`](/installation/) and learn how Viam helps you prototype and scale.
 
-For more inspiration, check out our [tutorials](/tutorials) or visit our community on [Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/) to get help or workshop ideas with others!
+For more inspiration, check out our [tutorials](/tutorials) or visit our community on [Discord](https://discord.gg/FupYGq8W) to get help or workshop ideas with others!

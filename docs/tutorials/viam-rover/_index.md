@@ -45,6 +45,4 @@ description: "Color detection and SDK tutorials for the Viam Rover."
 
 <br>
 <br>
-<div>
-<p>Have questions, or want to meet other people working on robots? Join our <a href="https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw">Community Slack</a>.</p>
-</div>
+{{< readfile "/static/include/social.md" >}}

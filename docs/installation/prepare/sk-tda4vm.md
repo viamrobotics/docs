@@ -101,4 +101,4 @@ Now that your board has a Viam-compatible operating system installed, continue t
 
 ## Need assistance?
 
-You can ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+{{< readfile "/static/include/social.md" >}}
