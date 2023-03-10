@@ -12,20 +12,18 @@ An `image_file` camera gets color and depth images frames from a file path.
 If you provide a depth image, as well as the intrinsic parameters of the camera that took that depth image, then the camera will also provide a point cloud.
 
 {{< tabs name="Configure an Image File Camera" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your camera, select the type <code>camera</code>, and select the <code>image_file</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your camera, select the type `camera`, and select the `image_file` model.
+
 <img src="../img/create-image-file.png" alt="Creation of an image file camera in the Viam app config builder." style="max-width:500px" />
-<br>
-Fill in the attributes for your image file camera:
-<br>
-<img src="../img/configure-image-file.png" alt="Configuration of an image file camera in the Viam app config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for your image file camera:
+
+<img src="../img/configure-image-file.png" alt="Configuration of an image file camera in the Viam app config builder." />
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}

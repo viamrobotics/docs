@@ -11,20 +11,18 @@ tags: ["camera", "components"]
 Use the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images.
 
 {{< tabs name="Configure an Align Color Depth Extrinsics View" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your camera, select the type <code>camera</code>, and select the <code>align_color_depth_extrinsics</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your camera, select the type `camera`, and select the `align_color_depth_extrinsics` model.
+
 <img src="../img/create-align-color-depth-extrinsics.png" alt="Creation of an align color depth extrinsics view in the Viam app config builder." style="max-width:600px" />
-<br>
-Fill in the attributes for your align color depth extrinsics view:
-<br>
-<img src="../img/configure-align-color-depth-extrinsics.png" alt="Configuration of an align color depth extrinsics view in the Viam app config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for your align color depth extrinsics view:
+
+<img src="../img/configure-align-color-depth-extrinsics.png" alt="Configuration of an align color depth extrinsics view in the Viam app config builder." />
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}

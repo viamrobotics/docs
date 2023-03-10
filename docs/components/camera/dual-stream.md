@@ -12,20 +12,18 @@ A `dual_stream` HTTP client camera combines the streams of two camera servers to
 One camera server streams a color stream and the other camera server streams a depth stream.
 
 {{< tabs name="Configure a Dual Stream Camera" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your camera, select the type <code>camera</code>, and select the <code>dual_stream</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your camera, select the type `camera`, and select the `dual_stream` model.
+
 <img src="../img/create-dual-stream.png" alt="Creation of a dual stream camera in the Viam App config builder." style="max-width:600px" />
-<br>
-Fill in the attributes for dual stream camera:
-<br>
-<img src="../img/configure-dual-stream.png" alt="Configuration of a dual stream camera in the Viam app config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for dual stream camera:
+
+<img src="../img/configure-dual-stream.png" alt="Configuration of a dual stream camera in the Viam app config builder." />
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}

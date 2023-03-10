@@ -1,7 +1,7 @@
 ---
 title: "Configure an RTSP camera"
 linkTitle: "RTSP"
-weight: 33
+weight: 34
 type: "docs"
 description: "Configure a Real Time Streaming Protocol (RTSP) camera."
 tags: ["camera", "components"]
@@ -11,20 +11,18 @@ tags: ["camera", "components"]
 The `rtsp` camera model supports cameras with an RTSP address.
 
 {{< tabs name="Configure an rtsp camera" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your camera, select the type <code>camera</code>, and select the <code>rtsp</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your camera, select the type `camera`, and select the `rtsp` model.
+
 <img src="../img/create-rtsp.png" alt="Creation of a rtsp camera in the Viam app config builder." style="max-width:600px" />
-<br>
-Fill in the attributes for your rtsp camera:
-<br>
-<img src="../img/configure-rtsp.png" alt="Configuration of a rtsp camera in the Viam app config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for your RTSP camera:
+
+<img src="../img/configure-rtsp.png" alt="Configuration of a rtsp camera in the Viam app config builder." />
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}

@@ -12,20 +12,18 @@ Use the transform model to apply transformations to input source images.
 The transformations are applied in the order they are written in the pipeline.
 
 {{< tabs name="Example transform view" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your camera, select the type <code>camera</code>, and select the <code>transform</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your camera, select the type `camera`, and select the `transform` model.
+
 <img src="../img/create-transform.png" alt="Creation of an transform view in the Viam app config builder." style="max-width:500px" />
-<br>
-Fill in the attributes for your transform view:
-<br>
-<img src="../img/configure-transform.png" alt="Configuration of an transform view in the Viam app config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for your transform view:
+
+<img src="../img/configure-transform.png" alt="Configuration of an transform view in the Viam app config builder." />
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
@@ -316,14 +314,12 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
     </div>
     <div class="col hover-card">
         <a href="/tutorials/viam-rover/try-viam-color-detection/">
-            <br>
             <h4 style="text-align: left; margin-left: 0px;">Detect color with a Viam Rover</h4>
             <p style="text-align: left;">Use the vision service in the Viam app to detect a color.</p>
         </a>
     </div>
     <div class="col hover-card">
         <a href="/tutorials/scuttlebot/color-detection-scuttle/">
-            <br>
             <h4 style="text-align: left; margin-left: 0px;">Colored Object Follower</h4>
             <p style="text-align: left;">Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software.</p>
         </a>
