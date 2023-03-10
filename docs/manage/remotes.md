@@ -20,10 +20,66 @@ Remotes are established using direct [gRPC](https://grpc.io/), or gRPC through [
 
 Once you configure a remote, the main robot can access all the components and services configured on the remote robot as though they are part of the main robot.
 
-## Parts and Sub-Parts
+## Configuration
 
-Robots are organized into *parts*, where each part represents a computer (a single-board computer like a Rapsberry Pi or a desktop, laptop, or other computer), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+Robots are organized into *parts*, where each part represents a computer (a single-board computer like a Raspberry Pi or a desktop, laptop, or other computer), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+
+To connect two computers that are part of the *same robot*, [configure a sub-part](#configure-a-sub-part).
+
+To connect two computers that are part of *different robots*, [configure a remote](#configure-a-remote).
+
+### Configure a sub-part
 
 You can make a multi-part robot by first configuring one part (which we'll call the "main" part), and then configuring one or more sub-parts.
 
+Use the parts drop-down menu on the [Viam app](https://app.viam.com) to add a new sub-part:
+
 ![The Viam app interface with the part drop-down open. A new part called "my-sub-part" is being created.](../img/remotes/sub-part-config.png)
+
+<br>
+
+{{% alert title="Note" color="note" %}}
+
+When you create a sub-part, a *remote* connection is established between the main part and the sub-part without you needing to explicitly configure a remote.
+
+{{% /alert %}}
+
+### Configure a remote
+
+If you'd like to establish a remote connection that between parts of two different robots, configure a `remote` as follows:
+
+1. Go to the Viam app robot page of the robot part to which you wish to establish the remote.
+2. Click the **CODE SAMPLE** tab.
+3. On the **Language** toggle, select **Remotes**.
+4. Copy the `address` of the robot to your clipboard.
+
+![The Viam app CODE SAMPLE tab with Remotes selected and a copyable JSON snippet with the name, address and secret of the robot part.](../img/remotes/remote-address.png)
+
+5. Go to the Viam app robot page of the robot from which you want to establish a remote connection.
+6. Click the **CONFIG** tab, and then click the **REMOTES** sub-tab.
+
+![The Viam app CONFIG tab with the REMOTES sub-tab open.](../img/remotes/remote-create.png)
+
+7. Give the remote connection a name (you can just use the name of the other robot part, for example, "my-other-robot-main") and click **Create Remote**.
+8. Paste the `address` (for example, `my-other-robot-main.abc1de23f4.viam.cloud`) into the **Address** field.
+9. Click **Add Auth** and paste the `secret` from the other robot's **CODE SAMPLE** tab into the **Auth Key** field.
+
+![The Viam app CONFIG tab with a remote configured.](../img/remotes/remote-config.png)
+
+## Usage
+
+Once your remote is configured, you can able to access all the components and services configured on the remote robot part as though they are resources of your main robot.
+The difference is that the names of the components have the remote robot part name prepended to them.
+For example, instead of calling
+
+```python
+servo = Servo.from_robot(robot=robot, name='my_servo')
+```
+
+you need to call
+
+```python
+servo = Servo.from_robot(robot=robot, name='my-other-robot-main:my_servo')
+```
+
+For an example of controlling a motor that is a component of a sub-part, see [that section of our Mock Robot tutorial](https://docs.viam.com/tutorials/build-a-mock-robot/#how-to-control-a-sub-part-using-the-viam-sdk).
