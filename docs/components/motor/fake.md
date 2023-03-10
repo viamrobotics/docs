@@ -62,7 +62,7 @@ Field | Description
           "pwm": ""
         },
         "board": "",
-        "direction_flip": false
+        "dir_flip": false
       },
       "depends_on": []
     }
@@ -87,7 +87,7 @@ Name | Type | Default Value | Description
 `encoder` | string | -- | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). *If an encoder is configured on a `fake` motor, `ticks_per_rotation` becomes required.*
 `max_rpm` | float | -- | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. *For non-encoded fake motors, this is required or a default is assigned.*
 `ticks_per_rotation` | int | -- | *Becomes required for calculations if an encoder is configured (unlike on a real motor).* For a stepper motor, the number of steps in one full rotation (200 is common). For an encoded motor, how many encoder ticks in one full rotation. See data sheet (for a real motor).
-`direction_flip` | bool | False | Flips the direction of "forward" versus "backward" rotation.
+`dir_flip` | bool | False | Flips the direction of "forward" versus "backward" rotation.
 `pins` | object | -- | A structure that holds pin configuration information.
 
 Nested within the `pins` struct:
