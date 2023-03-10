@@ -13,12 +13,12 @@ tags: ["base", "camera", "raspberry pi", "scuttle"]
 
 ## Requirements
 
-* A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the `viam-server` installed.
+- A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the `viam-server` installed.
 
 Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os), if necessary.
 
-* [A SCUTTLE Robot](https://www.scuttlerobot.org/shop/)
-* A USB camera (webcam)
+- [A SCUTTLE Robot](https://www.scuttlerobot.org/shop/)
+- A USB camera (webcam)
 
 ## Start configuring your robot
 
@@ -213,6 +213,71 @@ Try driving your SCUTTLE Robot around using the WASD keyboard controls described
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
 {{% /alert %}}
 
+## Configuring the encoders
+
+Before configuring the encoders, you must configure I2C bus `1` on the board:
+
+```json-viam
+{
+      "name": "<board_name>",
+      "type": "board",
+      "model": "<model_name>"
+      "attributes": {
+        "i2cs": [
+          {
+            "bus": "1",
+            "name": "main"
+          }
+        ]
+      },
+      "depends_on": [],
+}
+```
+
+Now, configure the left and right encoders as follows:
+
+- Left encoder:
+  - Configure the left encoder with *Name* `lenc`, **Type** `encoder`, and **Model** `AM5-AS5048`.
+  - Paste the following in the **Attributes** field, changing the board name to match the name of your board:
+
+  ```json
+  {
+      "name": "<encoder_name>",
+      "type": "encoder",
+      "model": "AM5-AS5048"
+      "board": "<board_name>",
+       "attributes": {
+           "board": "<board_name>",
+           "connection_type": "i2c",
+            "i2c_attributes": {
+                "i2c_bus": "main",
+                "i2c_addr": 64
+            }
+       }
+    }
+  ```
+
+- Right encoder:
+  - Configure the left encoder with *Name* `renc`, **Type** `encoder`, and **Model** `AM5-AS5048`.
+  - Paste the following in the **Attributes** field, changing the board name to match the name of your board:
+
+  ```json
+  {
+      "name": "<encoder_name>",
+      "type": "encoder",
+      "model": "AM5-AS5048"
+      "board": "<board_name>",
+       "attributes": {
+           "board": "<board_name>",
+           "connection_type": "i2c",
+            "i2c_attributes": {
+                "i2c_bus": "main",
+                "i2c_addr": 65
+            }
+       }
+    }
+  ```
+
 ## Configuring the camera
 
 Finally, we'll add a camera to your SCUTTLE Robot.
@@ -239,10 +304,10 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](/tutorials
 
 ## Documents referenced
 
-* [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os)
+- [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os)
 
-* [Color Detection with SCUTTLE Robot on Viam](/tutorials/scuttlebot/color-detection-scuttle/)
+- [Color Detection with SCUTTLE Robot on Viam](/tutorials/scuttlebot/color-detection-scuttle/)
 
-* [Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad](/tutorials/scuttlebot/scuttle-gamepad/)
+- [Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad](/tutorials/scuttlebot/scuttle-gamepad/)
 
-* [Line Following with SCUTTLE Robot on Viam](/tutorials/webcam-line-follower-robot/)
+- [Line Following with SCUTTLE Robot on Viam](/tutorials/webcam-line-follower-robot/)
