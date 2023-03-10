@@ -8,19 +8,19 @@ tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-A `fake` arm is an arm model for testing without any physical hardware.
+Configure a `fake` arm to test different models of robotic arms without any physical hardware.
 
 Configure a `fake` arm as follows:
 
 {{< tabs name="Configure a Fake Arm" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
 <img src="../img/fake-arm-ui-config.png" alt="Creation of a fake ur5e arm in the Viam app config builder." style="max-width:600px" />
 
 <br>
-Note that this visual example sets the <code>fake</code> arm to act as a <code>ur5e</code> arm.
+Note that this visual example sets the `fake` arm to act as a `ur5e` arm.
 
-{{< /tab >}}
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}

@@ -9,7 +9,7 @@ tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configuring a `trossen-vx300s` arm allows you to integrate a [Trossen Robotics ViperX 300](https://www.trossenrobotics.com/viperx-300-robot-arm.aspx) robotic arm into a Viam-based robot.
+Configure a `trossen-vx300s` arm to integrate a [Trossen Robotics ViperX 300](https://www.trossenrobotics.com/viperx-300-robot-arm.aspx) into your robot.
 
 Configure a `trossen-vx300s` arm as follows:
 
