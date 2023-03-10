@@ -17,7 +17,7 @@ Breaking changes are likely to occur, and occur often.
 
 ## Introduction
 
-[Simultaneous Localization And Mapping (SLAM)](../../services/slam/) allows your robot to create a map of its surroundings and find its location within that map.
+[Simultaneous Localization And Mapping (SLAM)](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping) allows your robot to create a map of its surroundings and find its location within that map.
 SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
 Viam offers users an easy-to-use, intuitive method for interfacing with various cutting-edge SLAM algorithms.
 
@@ -45,9 +45,9 @@ All three are explained in the following using ORB-SLAM3 as the application exam
 Download the ORB-SLAM3 binaries into `usr/local/bin`:
 
 {{< tabs >}}
-{{< tab name="AArch64 (ARM64)" >}}
+{{% tab name="AArch64/ARM64" %}}
 
-```bash
+``` bash
 sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
 ```
 
@@ -75,9 +75,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 
 ## Configuration Overview
 
-To add the SLAM Service to your robot, you need to add the _name_, _type_, _model_, and SLAM library specific _attributes_ to the configuration of your robot.
-
-The following is an example configuration for running ORB-SLAM3 in live `rgbd` mode on your robot, if it has two camera streams available: `"color"` for RGB images, and `"depth"` for depth data.
+An example configuration for running ORB-SLAM3 in live `rgbd` mode on your robot with two camera streams available, `color` for RGB images, and `depth` for depth data:
 
 ``` json
 "services": [
@@ -86,7 +84,7 @@ The following is an example configuration for running ORB-SLAM3 in live `rgbd` m
     "model": "orbslamv3",
     "type": "slam",
     "attributes": {
-      "data_dir": "<path_to_your_data_folder>",
+      "data_dir": "<path_to_your_data_folder_on_your_machine>",
       "sensors": ["color", "depth"],
       "use_live_data": true,
       "map_rate_sec": 60,
@@ -99,8 +97,7 @@ The following is an example configuration for running ORB-SLAM3 in live `rgbd` m
 ]
 ```
 
-Assuming that there is already sensor data in `data_dir/data`, you can also run SLAM in offline mode.
-Here is an example configuration:
+If you have already populated a folder named `data` at the path pointed to by the `data_dir` attribute from running the SLAM service before, you can also run SLAM in offline mode:
 
 ``` json
 "services": [
@@ -109,7 +106,7 @@ Here is an example configuration:
     "model": "orbslamv3",
     "type": "slam",
     "attributes": {
-      "data_dir": "<path_to_your_data_folder>",
+      "data_dir": "<path_to_your_data_folder_on_your_machine>",
       "sensors": [],
       "use_live_data": false,
       "map_rate_sec": 120,
@@ -131,8 +128,8 @@ This table provides an overview of the different SLAM modes and how to set them.
 
 | Mode | Description |
 | ---- | ----------- |
-| Live | Live mode means that SLAM grabs the most recent sensor readings (like images) from the `sensors` and uses those to perform SLAM. SLAM runs in live mode if `use_live_data: true` and one or more `sensors` are present. If no sensors are provided, an error will be thrown. |
-| Offline | SLAM runs in offline mode if `use_live_data: false`. This means it will look for and process images that are already saved in the `data_dir/data` directory. |
+| Live | Live mode means that SLAM grabs the most recent sensor readings (like images) from the `sensors` and uses those to perform SLAM. SLAM runs in live mode if `use_live_data` is `true` and one or more `sensors` are present. If no sensors are provided, an error will be thrown. |
+| Offline | SLAM runs in offline mode if `use_live_data` is `false`. This means the service will look for and process images that are already saved in the `data_dir/data` directory. |
 
 #### Pure Mapping, Pure Localization, and Update Mode
 
@@ -156,7 +153,7 @@ You can find more information on the `mode` in the description of the integrated
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `data_dir` | string | This is the data directory used for saving input sensor/map data and output maps/visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM Service creates it. |
+| `data_dir` | string | This is the data directory used for saving input <file>sensor/map</file> data and output <file>map/</file> visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM Service creates it. |
 | `sensors` | string[] | Names of sensors whose data is input to SLAM. |
 | `use_live_data` |  bool | This specifies whether to run in live mode (true) or offline mode (false). If `use_live_data: true` and `sensors: []`, an error will be thrown. If this parameter is set to true and no sensors are provided, SLAM will produce an error. |
 
@@ -164,10 +161,10 @@ You can find more information on the `mode` in the description of the integrated
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `map_rate_sec` | int | (optional) Map generation rate for saving current state (in seconds). The default value is `60`. Note: Setting `map_rate_sec` to `0` causes SLAM to run in LOCALIZATION mode. |
-| `data_rate_ms` | int |  (optional) Data generation rate for collecting sensor data to feed to SLAM (in milliseconds). The default value is `200`. |
-| `port` | string |  (optional) Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
-| `delete_processed_data` | bool |  (optional) With `delete_processed_data: true` sensor data is deleted after the SLAM algorithm has processed it. This helps reduce the amount of memory required to run SLAM. If `use_live_data: true`, the `delete_processed_data` defaults to `true` and if `use_live_data: false`, it defaults to false. A `delete_processed_data: true` when `use_live_data: false` is invalid and will result in an error. |
+| `map_rate_sec` | int | Map generation rate for saving current state *(seconds)*. The default value is `60`. Note: Setting `map_rate_sec` to `0` causes SLAM to run in LOCALIZATION mode. |
+| `data_rate_ms` | int | Data generation rate for collecting sensor data to feed to SLAM *(milliseconds)*. Default: `200`. |
+| `port` | string | Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
+| `delete_processed_data` | bool |  With `delete_processed_data: true` sensor data is deleted after the SLAM algorithm has processed it. This helps reduce the amount of memory required to run SLAM. If `use_live_data: true`, the `delete_processed_data` defaults to `true` and if `use_live_data: false`, it defaults to false. A `delete_processed_data: true` when `use_live_data: false` is invalid and will result in an error. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
 
 ### SLAM Library Specific Config Parameters
@@ -245,12 +242,12 @@ You can use all parameters except for `mode` and `debug` to fine-tune ORB-SLAM's
 | Parameter Mode | Description - The Type of SLAM to Use | Default Value |
 | -------------- | ------------------------------------- | ------------------- |
 | `mode` | `rgbd` or `mono` | No default |
-| `debug` | (optional) `bool` | `false` |
-| `orb_n_features` | (optional) ORB parameter. Number of features per image. | 1250 |
-| `orb_scale_factor` | (optional) ORB parameter. Scale factor between levels in the scale pyramid. | 1.2 |
-| `orb_n_levels` | (optional) ORB parameter. Number of levels in the scale pyramid. |  8 |
-| `orb_n_ini_th_fast` | (optional) ORB parameter. Initial FAST threshold. | 20 |
-| `orb_n_min_th_fast` | (optional) ORB parameter. Lower threshold if no corners detected. | 7 |
-| `stereo_th_depth` | (optional) Number of stereo baselines used to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | 40 |
-| `depth_map_factor` | (optional) Factor to transform the depth map to real units. | 1000 |
-| `stereo_b` | (optional) Stereo baseline in meters. | 0.0745 |
+| `debug` | *(Optional)* `bool` | `false` |
+| `orb_n_features` | *(Optional)* ORB parameter. Number of features per image. | 1250 |
+| `orb_scale_factor` | *(Optional)* ORB parameter. Scale factor between levels in the scale pyramid. | 1.2 |
+| `orb_n_levels` | *(Optional)* ORB parameter. Number of levels in the scale pyramid. |  8 |
+| `orb_n_ini_th_fast` | *(Optional)* ORB parameter. Initial FAST threshold. | 20 |
+| `orb_n_min_th_fast` | *(Optional)* ORB parameter. Lower threshold if no corners detected. | 7 |
+| `stereo_th_depth` | *(Optional)* Number of stereo baselines used to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | 40 |
+| `depth_map_factor` | *(Optional)* Factor to transform the depth map to real units. | 1000 |
+| `stereo_b` | *(Optional)* Stereo baseline in meters. | 0.0745 |
