@@ -1,14 +1,14 @@
 ---
-title: "Configure an AM5-AS5048 encoder"
-linkTitle: "AM5-AS5048"
+title: "Configure an AMS-AS5048 encoder"
+linkTitle: "AMS-AS5048"
 type: "docs"
-description: "Configure an AM5-AS5048 encoder."
+description: "Configure an AMS-AS5048 encoder."
 tags: ["encoder", "components"]
 # SMEs: Rand
 ---
 
-The [`AM5-AS5048`](https://ams.com/en/as5048a) encoder is an absolute encoder that uses an I2C or SPI interface to connect.
-This model supports the [AS5048A](https://ams.com/en/as5048a) sensor.
+The `AMS-AS5048` encoder model supports AMS's [AS5048](https://ams.com/en/as5048a) encoder.
+This is an absolute encoder that uses an I2C or SPI interface to connect.
 
 To can configure the encoder, you must change some other configuration details:
 
@@ -31,22 +31,22 @@ To can configure the encoder, you must change some other configuration details:
     }
     ```
 
-2. Any motors using the `AM5-AS5048` encoder must set `ticks_per_rotation` to `1`.
-   This is because the AM5 encoder is an absolute encoder which provides angular measurements directly.
+2. Any motors using the `AMS-AS5048` encoder must set `ticks_per_rotation` to `1`.
+   This is because the AS5048 encoder is an absolute encoder which provides angular measurements directly.
 
 Now you can configure the encoder:
 
-{{< tabs name="Configure an AM5-AS5048 Encoder" >}}
+{{< tabs name="Configure an AMS-AS5048 Encoder" >}}
 {{% tab name="Config Builder" %}}
 
 On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
-Enter a name for your encoder, select the type `encoder`, and select the `AM5-AS5048` model.
+Enter a name for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
 
-<img src="../img/create-am5.png" alt="Creation of an AM5 encoder in the Viam app config builder." style="max-width:600px" />
+<img src="../img/create-am5.png" alt="Creation of an AS5048 encoder in the Viam app config builder." style="max-width:600px" />
 
 Fill in the attributes for your encoder:
 
-<img src="../img/configure-am5.png" alt="Configuration of an AM5 encoder in the Viam app config builder." />
+<img src="../img/configure-am5.png" alt="Configuration of an AS5048 encoder in the Viam app config builder." />
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -55,7 +55,7 @@ Fill in the attributes for your encoder:
 {
     "name": "<encoder_name>",
     "type": "encoder",
-    "model" : "AM5-AS5048",
+    "model" : "AMS-AS5048",
     "attributes": {
       "board": "<board_name>",
       "connection_type": "i2c",
@@ -70,7 +70,7 @@ Fill in the attributes for your encoder:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for `AM5-AS5048` encoders:
+The following attributes are available for `AMS-AS5048` encoders:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |

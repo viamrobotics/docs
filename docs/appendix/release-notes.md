@@ -191,13 +191,13 @@ All component drivers can now declare dependencies, which are used to infer the 
     <tbody>
 </table>
 
-### New Drivers in the RDK: AM5 Encoder
+### New Drivers in the RDK: AMS AS5048 Encoder
 
 <table style="margin-bottom:18px">
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>RDK now natively supports the AM5 encoder. This is the encoder that is included in the SCUTTLE Robot.
+            <td>RDK now natively supports the AMS AS5048 encoder. This is the encoder that is included in the SCUTTLE Robot.
             </td>
         </tr>
     <tbody>

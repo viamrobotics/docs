@@ -15,11 +15,11 @@ The `fake` encoder is an encoder model for testing code without any hardware.
 On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `fake` model.
 
-<img src="../img/create-fake.png" alt="Creation of a Fake encoder in the Viam app config builder." style="max-width:600px" />
+<img src="../img/create-fake.png" alt="Creation of a fake encoder in the Viam app config builder." style="max-width:600px" />
 
 Fill in the attributes for your encoder:
 
-<img src="../img/configure-fake.png" alt="Configuration of an AM5 encoder in the Viam app config builder." />
+<img src="../img/configure-fake.png" alt="Configuration of a fake encoder in the Viam app config builder." />
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
