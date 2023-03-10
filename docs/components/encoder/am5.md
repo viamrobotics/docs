@@ -10,7 +10,7 @@ tags: ["encoder", "components"]
 The [`AM5-AS5048`](https://ams.com/en/as5048a) encoder is an absolute encoder that uses an I2C or SPI interface to connect.
 This model supports the [AS5048A](https://ams.com/en/as5048a) sensor.
 
-Before you can configure the encoder, you must change some other configuration details:
+To can configure the encoder, you must change some other configuration details:
 
 1. You must configure an I2C bus on your [board](../../board):
 
