@@ -11,6 +11,9 @@ tags: ["camera", "components"]
 Use the transform model to apply transformations to input source images.
 The transformations are applied in the order they are written in the pipeline.
 
+If you are using detectors, you can also transform them.
+However, classifiers cannot be transformed.
+
 {{< tabs name="Example transform view" >}}
 {{< tab name="Config Builder" >}}
 
