@@ -18,19 +18,19 @@ Learn about [the Viam platform in 3 minutes](viam).
         <div class="landing-hover-card-padding yellow">
             <h4>Try Viam</h4>
             <p style="text-align: left;"><a href="try-viam">Borrow a Viam rover</a> from the comfort of your home right now or follow along with some <a href="tutorials">example robot rutorials</a>.</p>
-        <img src="tutorials/img/try-viam-sdk/image1.gif">
+        <img src="tutorials/img/try-viam-sdk/image1.gif" alt="A Viam Rover moving about">
     </div>
     </div>
     <div class="col landing-hover-card ">
         <div class="landing-hover-card-padding purple">
         <h4>Configure your robots</h4>
         <div style="text-align: left">
-        <ol>
+        <ol style="padding-inline-start: 1.1rem">
         <li><a href="installation">Install Viam</a> on your robot</li>
         <li><a href="manage/app-usage/">Connect to the Viam app</a></li>
         <li>Configure the robot's <a href="components">components</a> and <a href="services">services</a></li>
         </ol>
-        <img src="img/blink.gif">
+        <img src="img/blink.gif" alt="A blinking led connected to a Raspberry Pi">
         </div>
     </div>
 <<<<<<< HEAD
@@ -66,15 +66,22 @@ Learn about [the Viam platform in 3 minutes](viam).
             Program and control your robots in <a href="https://python.viam.dev/">Python</a> or <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>.
         </p>
         <p>More language support coming soon!</p>
-        <img src="img/code.png">
+        <img src="img/code.png" alt="Robot code">
         </div>
     </div>
     <div class="col landing-hover-card">
         <div class="landing-hover-card-padding pink">
+<<<<<<< HEAD
         <a href="https://discord.gg/viam">
             <h4>Community</h4>
             <p style="text-align: left;">Have questions, or want to meet other people working on robots? Join us in the Community Discord!</p>
             <img src="img/community.gif">
+=======
+        <a href="https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw">
+            <h4>Join the Community</h4>
+            <p style="text-align: left;">Have questions, or want to meet other people working on robots? Join us in the Community Slack!</p>
+            <img src="img/community.gif" alt="A robot drawing a heart">
+>>>>>>> c46ac59 (Add alt text)
         </a>
         </div>
     </div>
