@@ -3,12 +3,13 @@ title: "Configure an RTSP camera"
 linkTitle: "RTSP"
 weight: 34
 type: "docs"
-description: "Configure a Real Time Streaming Protocol (RTSP) camera."
+description: "Configure a streaming camera with an MJPEG track."
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-The `rtsp` camera model supports cameras with an RTSP address.
+The `rtsp` camera model supports streaming cameras with MJPEG tracks.
+The model doesn’t support streaming cameras with H264/MP4 tracks.
 
 {{< tabs name="Configure an rtsp camera" >}}
 {{% tab name="Config Builder" %}}
