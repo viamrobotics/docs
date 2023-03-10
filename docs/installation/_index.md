@@ -14,39 +14,47 @@ See [What is Viam?](/viam/) for more information.
 
 <div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
-    <div class="col hover-card">
-        <a href="prepare">
-            <br>
-            <img src="img/thumbnails/prepare.png" alt="Prepare" width=100%>
-            <h4 style="text-align: left; margin-left: 0px;">Prepare</h4>
-            <p style="text-align: left;">Prepare your computer before installing <code>viam-server</code>.</p>
-        <a>
-    </div>
-    <div class="col hover-card">
-        <a href="install">
-            <br>
-            <img src="img/thumbnails/install.png" alt="Install" width=100%>
-            <h4 style="text-align: left; margin-left: 0px;">Install</h4>
-            <p style="text-align: left;">Install <code>viam-server</code> on your robot's computer.</p>
-        </a>
-    </div>
+    <a href="prepare">
+      <div class="col hover-card">
+        <br />
+        <img src="img/thumbnails/prepare.png" alt="Prepare" width="100%" />
+        <h4 style="text-align: left; margin-left: 0px">Prepare</h4>
+        <p style="text-align: left">
+          Prepare your computer before installing <code>viam-server</code>.
+        </p>
+      </div>
+    </a>
+    <a href="install">
+      <div class="col hover-card">
+        <br />
+        <img src="img/thumbnails/install.png" alt="Install" width="100%" />
+        <h4 style="text-align: left; margin-left: 0px">Install</h4>
+        <p style="text-align: left">
+          Install <code>viam-server</code> on your robot's computer.
+        </p>
+      </div>
+    </a>
   </div>
   <div class="row">
-    <div class="col hover-card">
-        <a href="manage">
-            <br>
-            <img src="img/thumbnails/manage.png" alt="Manage" width=100%>
-            <h4 style="text-align: left; margin-left: 0px;">Manage</h4>
-            <p style="text-align: left;">Control and troubleshoot <code>viam-server</code>.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <a href="update">
-            <br>
-            <img src="img/thumbnails/update.png" alt="Update" width=100%>
-            <h4 style="text-align: left; margin-left: 0px;">Update</h4>
-            <p style="text-align: left;">Keep your version of <code>viam-server</code> up to date.</p>
-        </a>
-    </div>
+    <a href="manage">
+      <div class="col hover-card">
+        <br />
+        <img src="img/thumbnails/manage.png" alt="Manage" width="100%" />
+        <h4 style="text-align: left; margin-left: 0px">Manage</h4>
+        <p style="text-align: left">
+          Control and troubleshoot <code>viam-server</code>.
+        </p>
+      </div>
+    </a>
+    <a href="update">
+      <div class="col hover-card">
+        <br />
+        <img src="img/thumbnails/update.png" alt="Update" width="100%" />
+        <h4 style="text-align: left; margin-left: 0px">Update</h4>
+        <p style="text-align: left">
+          Keep your version of <code>viam-server</code> up to date.
+        </p>
+      </div>
+    </a>
   </div>
 </div>
