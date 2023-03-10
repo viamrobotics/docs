@@ -9,7 +9,7 @@ tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configuring a `yahboom-dofbot` arm allows you to integrate a [Trossen Robotics ViperX 300](https://www.trossenrobotics.com/viperx-300-robot-arm.aspx) robotic arm into a Viam-based robot.
+Configure a `yahboom-dofbot` arm to integrate the [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) into your robot.
 
 Configure a `yahboom-dofbot` arm as follows:
 

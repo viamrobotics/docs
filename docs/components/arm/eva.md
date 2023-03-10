@@ -9,7 +9,7 @@ tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configuring a `eva` arm allows you to integrate a [Automata Eva](https://automata.tech/products/hardware/about-eva/) robotic arm into a Viam-based robot.
+Configure an `eva` arm to integrate a [Automata Eva](https://automata.tech/products/hardware/about-eva/) robotic arm into your robot.
 
 Configure an `eva` arm as follows:
 

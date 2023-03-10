@@ -9,7 +9,7 @@ tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configuring a `trossen-wx250s` arm allows you to integrate a [Trossen Robotics WidowX 250](https://www.trossenrobotics.com/widowx-250-robot-arm.aspx) robotic arm into a Viam-based robot.
+Configure a `trossen-wx250s` arm to integrate a [Trossen Robotics WidowX 250](https://www.trossenrobotics.com/widowx-250-robot-arm.aspx) into your robot.
 
 Configure a `trossen-wx250s` arm as follows:
 

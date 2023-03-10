@@ -43,7 +43,7 @@ The following attributes are available for fake arms:
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
 | `arm-model` | *Optional* | The name of the robotic arm model you want your fake arm to act as. This attribute must match the `name` of one of the arms Viam currently supports. See [here](../#configuration) for supported model names. |
-| `model-path` | *Optional* | The path to a compatible ArmModel JSON configuration file that you want your fake arm to act as. This path is within your `viam-server` instances' RDK directory. An example: <file>components/arm/universalrobots/ur5e.json</file> `model-path` corresponds to [Github here.](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur5e.json) |
+| `model-path` | *Optional* | The path to a compatible ArmModel JSON or URDF configuration file that you want your fake arm to act as. This path is within your `viam-server` instances' RDK directory from the `fake` model. An example: <file>../universalrobots/ur5e.json</file> `model-path` corresponds to [GitHub here.] |
 
 {{% alert title="Note" color="note" %}}
 

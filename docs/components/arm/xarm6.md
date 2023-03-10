@@ -8,7 +8,7 @@ tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configuring a `xArm6` arm allows you to integrate a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) robotic arm into a Viam-based robot.
+Configure a `xArm6` arm to integrate a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) into your robot.
 
 Configure a `xArm6` arm as follows:
 

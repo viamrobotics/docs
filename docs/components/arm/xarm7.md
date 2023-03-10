@@ -8,7 +8,7 @@ tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configuring a `xArm7` arm allows you to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) robotic arm into a Viam-based robot.
+Configure a `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your robot.
 
 Configure a `xArm7` arm as follows:
 
