@@ -70,7 +70,7 @@ Fill in the attributes for your encoder:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for AM5-AS5048 encoders:
+The following attributes are available for `AM5-AS5048` encoders:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
