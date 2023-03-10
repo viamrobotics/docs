@@ -83,4 +83,4 @@ You can also click on the timer at the top to go back to the rental rover's **CO
   </div>
 </div>
 
-Have questions, or want to meet other people working on robots? Join the [Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw").
+{{< readfile "/static/include/social.md" >}}

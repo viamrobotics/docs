@@ -273,4 +273,4 @@ Some ideas:
 * Add Lidar and integrate Viam's [SLAM Service](/services/slam) to map the world around it.
 * Use Viam's [Data Management](/manage/data-management/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
 
-We'd love to see where you decide to take this. If you build your own companion robot, let us and others know on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw/).
+We'd love to see where you decide to take this. If you build your own companion robot, let us and others know on the [Community Discord](https://discord.gg/viam).

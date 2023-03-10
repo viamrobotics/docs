@@ -125,7 +125,7 @@ import (
     "golang.org/x/exp/slices"
 )
 
-// Define a function to handle the controller. 
+// Define a function to handle the controller.
 func handleController(controller input.Controller) {
     # Get the most recent events on the controller.
     resp, err := controller.Events()
@@ -190,7 +190,7 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 
     // Wait to exit mainWithArgs() until Context is Done.
     <-ctx.Done()
-    
+
     return nil
 
 }
@@ -636,7 +636,7 @@ func handleController(controller input.Controller) {
         logger.Info("Start Menu Button was pressed at this time: %v", event.Time)
     }
 
-    // Define the EventType "ButtonPress" to serve as the trigger for printStartTime. 
+    // Define the EventType "ButtonPress" to serve as the trigger for printStartTime.
     triggers := [1]input.EventType{input.ButtonPress}
 
     // Get the controller's Controls.
@@ -769,7 +769,7 @@ if err != nil {
   logger.Fatalf("cannot get controls provided by controller: %v", err)
 }
 
-// Log the list of Controls provided by the controller. 
+// Log the list of Controls provided by the controller.
 logger.Info("Controls:")
 logger.Info(controls)
 ```
@@ -803,7 +803,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 # Define a "Button is Pressed" event for the control BUTTON_START.
 button_is_pressed_event = Event(time(), EventType.BUTTON_PRESS, Control.BUTTON_START, 1.0)
 
-# Trigger the event on your controller. Set this trigger to timeout if it has not completed in 7 seconds. 
+# Trigger the event on your controller. Set this trigger to timeout if it has not completed in 7 seconds.
 await myController.trigger_event(event=my_event, timeout=7.0)
 ```
 
@@ -886,7 +886,7 @@ def handle_accelerator(event):
     accel = (event.value - 0.1) / 0.9
     if event.value < 0.1:
         accel = 0
-        
+
     cmd = {"y": accel}
 
 def handle_clutch(event):
@@ -895,7 +895,7 @@ def handle_clutch(event):
     accel = (event.value - 0.1) / 0.9
     if event.value < 0.1:
         accel = 0
-        
+
     cmd = {"y": -accel}
 
 async def handleController(controller):
@@ -1005,7 +1005,7 @@ Access the complete repository for the Python example on [Github](https://github
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+{{< readfile "/static/include/social.md" >}}
 
 ## Next Steps
 

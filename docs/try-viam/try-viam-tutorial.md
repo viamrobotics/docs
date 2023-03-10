@@ -251,4 +251,4 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
   </div>
 </div>
 
-Have questions, or want to meet other people working on robots? Join the [Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw").
+{{< readfile "/static/include/social.md" >}}

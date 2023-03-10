@@ -15,7 +15,7 @@ For 15 minutes, no matter where you are in the world, you can take over and play
 
 ## My robot had an error, a system crash, or is physically stuck
 
-1. Please notify Viam support on [our Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
+1. Please notify Viam support on [our Community Discord](https://discord.gg/viam).
 2. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your *location*.
    Refer to [Managing Locations and sub-locations](/manage/app-usage/#managing-locations-and-sub-locations).
 
@@ -102,7 +102,7 @@ Here are some tutorials which you can follow:
 - [Detect a Color](/tutorials/viam-rover/try-viam-color-detection)
 
 If you want to get your own Viam Rover, we’re also taking pre-orders for a limited quantity of Viam Rovers.
-Reserve yours today [here](https://viam.com/resources/rover?utm_source=slack&utm_medium=social&utm_campaign=try-viam).
+Reserve yours today [here](https://viam.com/resources/rover).
 
 ## Why can't I use the rover's microphone?
 

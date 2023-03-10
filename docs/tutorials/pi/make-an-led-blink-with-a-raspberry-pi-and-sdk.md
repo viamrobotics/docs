@@ -97,7 +97,7 @@ What you see here is a list of the various resources, components, and services t
 <img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image4.png" alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="500"><br>
 
 {{% alert title="Tip" color="tip" %}}
-If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
+{{< readfile "/static/include/social.md" >}}
 There, you will find a friendly developer community of people learning how to make robots using Viam.
 {{% /alert %}}
 
@@ -281,10 +281,7 @@ If you get an error, you can check your code against my complete code here:
 
 **Completed code**: <a href="https://github.com/viam-labs/LED-Blink" target="_blank">ht<span></span>tps://github.com/viam-labs/LED-Blink</a>
 
-{{% alert title="Tip" color="tip" %}}
-If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
-There, you will find a friendly developer community of people learning how to make robots using Viam.
-{{% /alert %}}
+{{< readfile "/static/include/social.md" >}}
 
 ## Summary
 
@@ -292,7 +289,7 @@ In this tutorial, you learned the basics of controlling your robot using the Via
 
 If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, check out one of following [Tutorial List](..).
 
-If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw), and we will be happy to help you get up and running.
+{{< readfile "/static/include/social.md" >}}
 
 ## Components URL List
 

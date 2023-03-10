@@ -58,7 +58,7 @@ By default, the hostname, username and password on a BeagleBone are:
 - Hostname: `beaglebone`
 - Username: `debian`
 - Password: `temppwd`
-  
+
 Therefore, if you are using the default settings on your BeagleBone, the command is:
 
 `ssh debian@beaglebone.local`
@@ -75,6 +75,7 @@ Now that your BeagleBone has a Viam-compatible operating system installed, conti
 
 ## Troubleshooting
 
-If you experience any issues getting Viam working on your BeagleBone, consult the [BeagleBone documentation](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) for help updating your BeagleBone, or reach out on the [the Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
+If you experience any issues getting Viam working on your BeagleBone, consult the [BeagleBone documentation](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) for help updating your BeagleBone.
+{{< readfile "/static/include/social.md" >}}
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

@@ -102,9 +102,9 @@ enable = false
   icon = "fab fa-github"
   desc = "Development takes place here!"
 [[params.links.developer]]
-  name = "Slack"
-  url = "https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw"
-  icon = "fab fa-slack"
+  name = "Discord"
+  url = "https://discord.gg/viam"
+  icon = "fab fa-discord"
   desc = "Chat with other project developers"
 [[params.links.developer]]
   name = "Developer Help"

@@ -282,7 +282,7 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 If you would like to continue onto working with Viam's Motion service, go to the next tutorial in this series: "[Plan Motions with an Arm and with a Gripper](/tutorials/motion/plan-motions-with-arm-gripper/)".
 -->
 
-If you have any issues or if you want to connect with other developers learning how to build robots with Viam, be sure to head over to the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw).
+{{< readfile "/static/include/social.md" >}}
 
 For more resources on robot kinematics, read through the Wikipedia pages for [Forward kinematics](https://en.wikipedia.org/wiki/Forward_kinematics) and [Inverse kinematics](https://en.wikipedia.org/wiki/Inverse_kinematics).
 
