@@ -19,6 +19,7 @@ Example use cases include:
 Remotes are established using direct [gRPC](https://grpc.io/), or gRPC through [WebRTC](https://webrtc.org/).
 
 Once you configure a remote, the main robot can access all the components and services configured on the remote robot as though they are part of the main robot.
+This is a one-way connection: The main robot part can access the resources of the remote robot part, but the remote robot cannot access the resources of the robot part remoting into it.
 
 ## Configuration
 
@@ -31,6 +32,7 @@ To connect two computers that are part of *different robots*, [configure a remot
 ### Configure a sub-part
 
 You can make a multi-part robot by first configuring one part (which we'll call the "main" part), and then configuring one or more sub-parts.
+The main part will be able to access the resources of its sub-parts.
 
 Use the parts drop-down menu on the [Viam app](https://app.viam.com) to add a new sub-part:
 
@@ -46,16 +48,18 @@ When you create a sub-part, a *remote* connection is established between the mai
 
 ### Configure a remote
 
-If you'd like to establish a remote connection that between parts of two different robots, configure a `remote` as follows:
+If you'd like to establish a remote connection between parts of two different robots, configure a `remote`.
 
 1. Go to the Viam app robot page of the robot part to which you wish to establish the remote.
+   This is the robot part whose resources will be accessible to the other robot part.
 2. Click the **CODE SAMPLE** tab.
 3. On the **Language** toggle, select **Remotes**.
 4. Copy the `address` of the robot to your clipboard.
 
 ![The Viam app CODE SAMPLE tab with Remotes selected and a copyable JSON snippet with the name, address and secret of the robot part.](../img/remotes/remote-address.png)
 
-5. Go to the Viam app robot page of the robot from which you want to establish a remote connection.
+5. Go to the Viam app robot page of the robot part from which you want to establish a remote connection.
+   This is the robot part that will be able to access the resources of the other robot part.
 6. Click the **CONFIG** tab, and then click the **REMOTES** sub-tab.
 
 ![The Viam app CONFIG tab with the REMOTES sub-tab open.](../img/remotes/remote-create.png)
