@@ -1,7 +1,7 @@
 ---
 title: "Configure a Fake Camera"
 linkTitle: "Fake"
-weight: 34
+weight: 35
 type: "docs"
 description: Configure a camera to use for testing."
 tags: ["camera", "components"]

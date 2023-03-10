@@ -1,7 +1,7 @@
 ---
 title: "Configure a Single Stream Camera"
 linkTitle: "Single Stream"
-weight: 35
+weight: 36
 type: "docs"
 description: "Configure a camera that streams image data from an HTTP endpoint."
 tags: ["camera", "components"]
