@@ -57,7 +57,7 @@ You can also click on the timer at the top to go back to the rental rover's **CO
         <br>
         <img src="../rover-resources/img/viam-rover/rover-front.jpg" style="max-width:400px;width:100%" alt="The front of the assembled Viam Rover" />
         <br>
-        <a href="../rover-resources/">
+        <a href="../try-viam-tutorial/">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Control a Rented Rover</h4>
             <p style="text-align: left;">Remotely configure and control a Viam Rover located on-site at Viam in NYC.</p>
         <a>
