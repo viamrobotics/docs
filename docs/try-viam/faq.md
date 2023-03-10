@@ -15,7 +15,7 @@ For 15 minutes, no matter where you are in the world, you can take over and play
 
 ## My robot had an error, a system crash, or is physically stuck
 
-1. Please notify Viam support on [our Community Discord](https://discord.gg/FupYGq8W).
+1. Please notify Viam support on [our Community Discord](https://discord.gg/viam).
 2. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your *location*.
    Refer to [Managing Locations and sub-locations](/manage/app-usage/#managing-locations-and-sub-locations).
 

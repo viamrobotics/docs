@@ -60,5 +60,5 @@ type: "docs"
 <br>
 <br>
 <div>
-<p>Have questions, or want to meet other people working on robots? Join our <a href="https://discord.gg/FupYGq8W">Community Discord</a>.</p>
+<p>Have questions, or want to meet other people working on robots? Join our <a href="https://discord.gg/viam">Community Discord</a>.</p>
 </div>
