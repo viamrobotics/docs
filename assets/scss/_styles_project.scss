@@ -501,6 +501,10 @@ END MARKETING CSS
   box-shadow: 5px 5px 0 0 #000;
 }
 
+.landing-hover-card-padding.yellow {
+  box-shadow: 5px 5px 0 0 #FFD400;
+}
+
 .landing-hover-card-padding.green {
   box-shadow: 5px 5px 0 0 #00ef83;
 }
@@ -515,6 +519,14 @@ END MARKETING CSS
 
  .landing-hover-card-padding.pink {
   box-shadow: 5px 5px 0 0 #ff79ff;
+}
+
+.landing-hover-card-padding.yellow:hover {
+  box-shadow: 8px 8px 0 0 #FFD400;
+
+  -webkit-transform: translate(-3px,-3px);
+  -ms-transform: translate(-3px,-3px);
+  transform: translate(-3px,-3px);
 }
 
  .landing-hover-card-padding.green:hover {
