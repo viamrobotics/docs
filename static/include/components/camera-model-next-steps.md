@@ -18,7 +18,6 @@
       </div>
       <div class="col hover-card">
           <a href="../../../services/vision">
-              <br>
               <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Vision Service</h4>
               <p style="text-align: left;">The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.</p>
           <a>
