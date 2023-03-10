@@ -161,7 +161,7 @@ You can also copy the example <file>Main.rs</file> code from [here](#full-exampl
             Ok(hnd) => Some(hnd),
         };
 
-        // start mdns service
+        // start the robot server service
         let _mdms = {
             let mut mdns = EspMdns::take()?;
             mdns.set_hostname(ROBOT_NAME)?;
@@ -317,14 +317,13 @@ class WaterLevelUnit:
 Now, add a new class for your water pump units.
 
 Create this class with four attributes: a `Board`, a `pin`, a `pumpTime`, and a `name`.
-<!-- TODO: could possibly make above a table with definitions for each attribute  -->
 
 ``` python {class="line-numbers linkable-line-numbers"}
 class PumpUnit:
-    board : Board # Your ESP32 board.
-    pin : int # The GPIO pin number on your ESP32 board that the pump is connected to.
-    pumpTime : int # Time to sleep in between running the pump, in milliseconds. 
-    name: str # The name you want to give the PumpUnit.
+    board : Board # Your ESP32 board
+    pin : int # The GPIO pin number on your ESP32 board that the pump is connected to
+    pumpTime : int # Time to sleep in between running the pump, in milliseconds 
+    name: str # The name you want to give the PumpUnit
 
     def __init__(self, b : Board, pin, p, name):
         self.board = b
@@ -346,20 +345,20 @@ Define a `runPump` and a `stopPump` function to belong to this class.
 ``` python {class="line-numbers linkable-line-numbers"}
     async def runPump(self):
         print("Running the pump {} {}".format(self.name,self.pin))
-        pin = await self.board.gpio_pin_by_name(self.pin) # Get the GPIO pin of the specified ID number from the ESP32 board.
+        pin = await self.board.gpio_pin_by_name(self.pin) # Get the GPIO pin of the specified ID number from the ESP32 board
         try:
             await pin.set(True)
-            await asyncio.sleep(self.pumpTime) # Wait PumpUnit.pumpTime milliseconds before running the pump again.
+            await asyncio.sleep(self.pumpTime) # Wait PumpUnit.pumpTime milliseconds before running the pump again
         except asyncio.CancelledError:
             await pin.set(False)
             raise
-        await pin.set(False) # Set the GPIO pin back to False (LOW), turning it off, before running the pump again.
+        await pin.set(False) # Set the GPIO pin back to False (LOW), turning it off, before running the pump again
 
     async def stopPump(self):
         try :
-            await pin.set(False) # Set the GPIO pin back to False (LOW), turning it off. 
+            await pin.set(False) # Set the GPIO pin back to False (LOW), turning it off
         except:
-            raise # Raise an error if setting the pin to False fails.
+            raise # Raise an error if setting the pin to False fails
 ```
 
 ### `PlantUnit` Class
@@ -375,12 +374,12 @@ Add two functions to belong to this class: `waterPlant()` and `stop()`.
 
 ``` python {class="line-numbers linkable-line-numbers"}
 class PlantUnit:
-    reader : Board.AnalogReader # The analog moisture reader for this plant unit, connected to your ESP32 board.
-    pump: PumpUnit # The pump for this plant unit, connected to your ESP32 board. 
-    cooldown: int # Time in seconds to wait in between watering the plant with waterPlant().
-    next_allowed_activation: datetime.datetime # Set dynamically on each run of waterPlant(): Exact date and time to water the plant next.
-    min_moisture : int # Minimum moisture level, in mm, required to run the pump with runPump() when waterPlant() is run.
-    name: str # The name you want to give this PlantUnit(). 
+    reader : Board.AnalogReader # The analog moisture reader for this plant unit, connected to your ESP32 board
+    pump: PumpUnit # The pump for this plant unit, connected to your ESP32 board
+    cooldown: int # Time in seconds to wait in between watering the plant with waterPlant()
+    next_allowed_activation: datetime.datetime # Set dynamically on each run of waterPlant(): Exact date and time to water the plant next
+    min_moisture : int # Minimum moisture level, in mm, required to run the pump with runPump() when waterPlant() is run
+    name: str # The name you want to give this PlantUnit()
     
     def __init__(self, r : Board.AnalogReader, p : PumpUnit, cooldown, mm, name):
         self.reader = r
@@ -390,26 +389,26 @@ class PlantUnit:
         self.min_moisture = mm
         self.name = name
 
-    # Water the plant with the PlantUnit's pump, using PumpUnit's runPump().
+    # Water the plant with the PlantUnit's pump, using PumpUnit's runPump()
     async def waterPlant(self):
         print("Running waterPlant for plant {}".format(self.name))
 
-        # Check to see if the current date & time is past the date & time required for the next allowed activation of the watering system. 
+        # Check to see if the current date & time is past the date & time required for the next allowed activation of the watering system
         if self.next_allowed_activation < datetime.datetime.now():
             val = await self.reader.read() # Read the current moisture level.
-            print("Current moisture level is {} min is {}".format(val,self.min_moisture)) # Print out the current moisture level (mm).
+            print("Current moisture level is {} min is {}".format(val,self.min_moisture)) # Print out the current moisture level (mm)
 
-            # If the current moisture level is greater than the minimum moisture level required, run the pump for this unit.
+            # If the current moisture level is greater than the minimum moisture level required, run the pump for this unit
             if val > self.min_moisture:
                 await self.pump.runPump()
 
-            # Set the next date & time required for the next allowed activation of the watering system. 
+            # Set the next date & time required for the next allowed activation of the watering system
             self.next_allowed_activation = datetime.datetime.now() + datetime.timedelta(seconds=self.cooldown)
 
-            # Print out the date and time of the next allowed activation of the watering system. 
+            # Print out the date and time of the next allowed activation of the watering system 
             print("Plant {} next run is {}".format(self.name,self.next_allowed_activation))
 
-    # Stop watering the plant with the PlantUnit's pump, using PumpUnit's stop().
+    # Stop watering the plant with the PlantUnit's pump, using PumpUnit's stop()
     async def stop(self):
         await self.pump.stop()
 ```
@@ -463,6 +462,7 @@ class WateringSystem:
         self.robot = robot
         self.config = config
 
+    # Configure the individual units from your ESP32 configuration nested dictionary
     async def configure(self):
         waterLevel = None
         plantUnits = list()
@@ -482,6 +482,7 @@ class WateringSystem:
         self.waterLevel = waterLevel
         self.plantUnits = plantUnits
 
+    # Run the watering system once, watering the plants if the water level is OK
     async def runOnce(self):
         if self.waterLevel == None:
             return
@@ -494,6 +495,7 @@ class WateringSystem:
         for plant in self.plantUnits:
             await plant.waterPlant()
 
+    # Stop running the watering system
     async def stop(self):
         for plant in self.plantUnits:
             await plant.stop()
