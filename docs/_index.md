@@ -18,7 +18,7 @@ Learn about [the Viam platform in 3 minutes](viam).
         <div class="landing-hover-card-padding yellow">
             <h4>Try Viam</h4>
             <p style="text-align: left;"><a href="try-viam">Borrow a Viam rover</a> from the comfort of your home right now or follow along with some <a href="tutorials">example robot tutorials</a>.</p>
-        <img src="tutorials/img/try-viam-sdk/image1.gif" alt="A Viam Rover moving about">
+        <img src="img/dog.gif" alt="A robot dog walking back and forth">
     </div>
     </div>
     <div class="col landing-hover-card ">
