@@ -72,7 +72,7 @@ To configure cloud sync, see [configure cloud sync](../data-management/configure
     Once the service retries and successfully connects, data synchronization resumes at 33%.
 
     {{< alert title="Caution" color="caution" >}}
-    If you disable cloud sync for a component that was interrupted mid-sync, data capture will not resume.
+If you disable cloud sync for a component that was interrupted mid-sync, data capture will not resume.
     {{< /alert >}}
 
 <!-- TODO(npentrel): uncomment once implemented
@@ -85,9 +85,9 @@ To configure cloud sync, see [configure cloud sync](../data-management/configure
     To ensure that the robot can store all data captured while it has no connection, you need to provide enough local data storage.
 
     {{< alert title="Warning" color="warning" >}}
-    Currently, the Data Management Service can use the entire available disk space to store data.
-    If the robot loses connectivity and remains disconnected, data capture can eventually use all disk space.
-    Currently, Viam does not safeguard against this.
+Currently, the Data Management Service can use the entire available disk space to store data.
+If the robot loses connectivity and remains disconnected, data capture can eventually use all disk space.
+Currently, Viam does not safeguard against this.
     {{< /alert >}}
 
 ## Coming Soon
