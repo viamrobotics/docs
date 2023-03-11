@@ -349,4 +349,4 @@ You could also write some code to control the other components on the Viam Rover
 
 You could also control Viam's services, by adding [data management](/manage/data-management/) to collect data in real time or [Vision Services](/services/vision/) to [add color detection to your Rover](/tutorials/viam-rover/try-viam-color-detection/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

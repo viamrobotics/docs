@@ -375,4 +375,4 @@ If you are unable to connect to the ESP32-backed robot as a remote, try adding `
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

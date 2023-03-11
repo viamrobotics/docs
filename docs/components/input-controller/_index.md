@@ -1005,7 +1005,7 @@ Access the complete repository for the Python example on [Github](https://github
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 
 ## Next Steps
 

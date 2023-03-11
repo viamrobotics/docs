@@ -76,6 +76,6 @@ Now that your BeagleBone has a Viam-compatible operating system installed, conti
 ## Troubleshooting
 
 If you experience any issues getting Viam working on your BeagleBone, consult the [BeagleBone documentation](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) for help updating your BeagleBone.
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

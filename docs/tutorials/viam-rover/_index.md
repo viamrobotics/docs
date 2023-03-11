@@ -45,4 +45,4 @@ description: "Color detection and SDK tutorials for the Viam Rover."
 
 <br>
 <br>
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

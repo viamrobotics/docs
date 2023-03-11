@@ -251,4 +251,4 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
   </div>
 </div>
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

@@ -82,7 +82,7 @@ Refer to the appropriate SDK documentation for SDK installation instructions.
 {{% /alert %}}
 
 {{% alert title="Tip" color="tip" %}}
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 There, you will find a friendly developer community of people learning how to make robots using Viam.
 {{% /alert %}}
 
@@ -490,4 +490,4 @@ In this tutorial, we showed you how to set up a mock robot with a sub-part so th
 
 If you're ready to get started with building robots with real hardware components, you should pick up a Raspberry Pi and try building one of Viam's introductory robots on the [tutorials page in our documentation](/tutorials/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

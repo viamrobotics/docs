@@ -385,7 +385,7 @@ Be sure to update your `detect_color` parameter accordingly.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 
 ## Bonus Challenges
 

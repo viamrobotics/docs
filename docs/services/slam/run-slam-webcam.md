@@ -339,4 +339,4 @@ If no map can be generated using the offline dataset, a new dataset should be ge
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
