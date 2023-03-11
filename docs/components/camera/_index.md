@@ -58,13 +58,15 @@ The camera component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-| [GetImage](#getimage) | Returns an image from the camera encoded in the format specified by the MIME type. |
+| [GetImage](#getimage) | Returns an image from the camera. |
 | [GetPointCloud](#getpointcloud) | Returns a point cloud from the camera. |
 | [GetProperties](#getproperties) | Returns the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
+| [DoCommand](#DoCommand) | Sends or receives arbitrary commands. |
 
 ### GetImage
 
-Returns an image from the camera encoded in the format specified by the MIME type.
+Returns an image from the camera.
+You can request a specific MIME type but the returned MIME type is not guaranteed.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -228,6 +230,47 @@ if err != nil {
 properties, err := myCam.Properties(context.Background())
 
 ```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DoCommand
+
+Execute commands that are not already defined on the component.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (`Dict[str, Any]`): The command to execute.
+
+**Returns:**
+
+- `result` (`Dict[str, Any]`): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+async def do(self, command: Dict[str, Any]) -> Dict[str, Any]
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+ DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error)
+
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` (`cmd map[string]interface{}`): The command to execute.
+
+**Returns:**
+
+- `results` (`cmd map[string]interface{}`): Result of the executed command.
+- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
 
