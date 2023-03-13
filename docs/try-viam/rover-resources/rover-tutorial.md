@@ -172,7 +172,7 @@ The rover's design allows you to reach the SD card slot at all times, so you can
 ### Connect the wires
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this piece of paper](img/rpi4_rover_leaf.pdf) which has labels for the pins and carefully push it onto the pins.
+To make it easier for you to see which pin is which, you can print out [this piece of paper](../img/rpi4_rover_leaf.pdf) which has labels for the pins and carefully push it onto the pins.
 Only attach the paper when the Pi is unplugged.
 To make attaching the paper easier, use a credit card.
 {{< /alert >}}
