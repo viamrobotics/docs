@@ -364,4 +364,4 @@ You could even add [object detection and machine learning](/services/vision/) an
 
 If you are looking for a new robotics project, check out our other [tutorials](/tutorials/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

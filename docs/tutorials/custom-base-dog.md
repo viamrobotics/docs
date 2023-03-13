@@ -421,4 +421,4 @@ To add more functionality, try defining more of the base API methods for this mo
 You could also use the Viam [Vision Service](/services/vision/) with the robot dog's [camera component](/components/camera/).
 For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/scuttlebot/color-detection-scuttle/) or to [follow a colored line](/tutorials/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

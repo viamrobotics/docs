@@ -180,4 +180,4 @@ In this tutorial, you have learned how to use Data Management to capture camera 
 
 You can now set up data management for your robots to track your robot's usage over time, build dashboards to visualize the data from your robot, or train machine learning models to detect hand gestures or objects.
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

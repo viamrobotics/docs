@@ -49,4 +49,4 @@ description: "Build something with a Viam Rover."
 
 <br>
 <br>
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

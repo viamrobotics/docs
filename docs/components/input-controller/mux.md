@@ -85,4 +85,4 @@ This tells the program loading the config to fully load the source components fi
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

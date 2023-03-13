@@ -423,4 +423,4 @@ If maps are not building the way you expect, make sure your Rplidar is secure an
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

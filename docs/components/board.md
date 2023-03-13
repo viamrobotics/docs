@@ -399,7 +399,7 @@ See the [example code above](#getting-started-with-gpio-and-the-viam-sdk) to get
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 
 ## Next Steps
 

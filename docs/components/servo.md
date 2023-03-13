@@ -412,7 +412,7 @@ myServo.Stop(context.Background(), nil)
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 
 ## Next Steps
 

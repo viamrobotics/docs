@@ -1,6 +1,6 @@
 {{/* This is a mod of the readfile shortcode
   This reads the provided filename from "/assets/include/snippet"
-  Don't add anything to the file except the material to display. 
+  Don't add anything to the file except the material to display.
   They don't need frontmatter.
   Note that the font is not correct. I'm looking for a fix.
     */}}
@@ -30,7 +30,7 @@ path */}}
 if the file is not found */}}
 
 {{ if fileExists ($.Scratch.Get "filepath") }}
-{{- $.Scratch.Get "filepath" | os.ReadFile | .Page.RenderString | safeHTML -}}
+<p>{{- $.Scratch.Get "filepath" | os.ReadFile | .Page.RenderString | safeHTML -}}</p>
 {{ else }}
 
 <p style="color: #D74848"><b><i>The file <code>{{ $.Scratch.Get "filepath" }}</code> was not found.</i></b></p>

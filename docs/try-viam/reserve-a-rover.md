@@ -83,4 +83,4 @@ You can also click on the timer at the top to go back to the rental rover's **CO
   </div>
 </div>
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

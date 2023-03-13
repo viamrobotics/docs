@@ -97,7 +97,7 @@ What you see here is a list of the various resources, components, and services t
 <img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image4.png" alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="500"><br>
 
 {{% alert title="Tip" color="tip" %}}
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 There, you will find a friendly developer community of people learning how to make robots using Viam.
 {{% /alert %}}
 
@@ -281,7 +281,7 @@ If you get an error, you can check your code against my complete code here:
 
 **Completed code**: <a href="https://github.com/viam-labs/LED-Blink" target="_blank">ht<span></span>tps://github.com/viam-labs/LED-Blink</a>
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 
 ## Summary
 
@@ -289,7 +289,7 @@ In this tutorial, you learned the basics of controlling your robot using the Via
 
 If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, check out one of following [Tutorial List](..).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 
 ## Components URL List
 

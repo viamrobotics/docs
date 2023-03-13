@@ -287,4 +287,4 @@ Be careful, the Intermode is a large and powerful rover - make sure you have the
 
 If you do not see the base card in the **CONTROL** tab, check the **LOGS** tab for possible setup or configuration errors.
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
