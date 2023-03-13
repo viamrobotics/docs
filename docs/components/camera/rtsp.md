@@ -1,27 +1,27 @@
 ---
-title: "Configure a Dual Stream Camera"
-linkTitle: "Dual Stream"
-weight: 37
+title: "Configure an RTSP camera"
+linkTitle: "RTSP"
+weight: 34
 type: "docs"
-description: "Combine the streams of two camera servers to create colorful point clouds."
+description: "Configure a streaming camera with an MJPEG track."
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-A `dual_stream` HTTP client camera combines the streams of two camera servers to create colorful point clouds.
-One camera server streams a color stream and the other camera server streams a depth stream.
+The `rtsp` camera model supports streaming cameras with MJPEG tracks.
+The model doesn’t support streaming cameras with H264/MP4 tracks.
 
-{{< tabs name="Configure a Dual Stream Camera" >}}
+{{< tabs name="Configure an rtsp camera" >}}
 {{% tab name="Config Builder" %}}
 
 On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
-Enter a name for your camera, select the type `camera`, and select the `dual_stream` model.
+Enter a name for your camera, select the type `camera`, and select the `rtsp` model.
 
-<img src="../img/create-dual-stream.png" alt="Creation of a dual stream camera in the Viam App config builder." style="max-width:600px" />
+<img src="../img/create-rtsp.png" alt="Creation of a rtsp camera in the Viam app config builder." style="max-width:600px" />
 
-Fill in the attributes for dual stream camera:
+Fill in the attributes for your RTSP camera:
 
-<img src="../img/configure-dual-stream.png" alt="Configuration of a dual stream camera in the Viam app config builder." />
+<img src="../img/configure-rtsp.png" alt="Configuration of a rtsp camera in the Viam app config builder." />
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -30,7 +30,8 @@ Fill in the attributes for dual stream camera:
 {
     "name": "<camera_name>",
     "type": "camera",
-    "model" : "dual_stream",
+    "model" : "rtsp",
+    "rtsp_address": "<string>",
     "attributes": {
         "intrinsic_parameters": {
             "width_px": <integer>,
@@ -46,11 +47,7 @@ Fill in the attributes for dual stream camera:
             "rk3": <float64>,
             "tp1": <float64>,
             "tp2": <float64>
-        },
-        "stream": "<color|depth>",
-        "debug": <boolean>,
-        "color_url": <string>,
-        "depth_url": <string>
+        }
     }
 }
 ```
@@ -58,16 +55,13 @@ Fill in the attributes for dual stream camera:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for dual stream cameras views:
+The following attributes are available for RTSP cameras:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
+| `rtsp_address` | *Required* | The RTSP address where the camera streams. |
 | `intrinsic_parameters` | *Optional* | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
 | `distortion_parameters` | *Optional* | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
-| `stream` | *Required* | `color` or `depth`. The image to be returned when you call `Next()` or `NextPointCloud()`. |
-| `debug` | *Optional* | Enables the debug outputs from the camera if `true`. Defaults to `false`. |
-| `color_url` | *Required* | The color stream url. |
-| `depth_url` | *Required* | The depth stream url. |
 
 ## View the camera stream
 

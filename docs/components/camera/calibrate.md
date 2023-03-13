@@ -112,7 +112,6 @@ The following is a full example config:
     </div>
     <div class="col hover-card">
         <a href="/tutorials/viam-rover/try-viam-color-detection/">
-            <br>
             <h4 style="text-align: left; margin-left: 0px;">Detect color with a Viam Rover</h4>
             <p style="text-align: left;">Use the vision service in the Viam app to detect a color.</p>
         </a>

@@ -12,20 +12,18 @@ tags: ["camera", "components"]
 If the camera drivers are among those in [this mediadevices repository](https://github.com/pion/mediadevices). the camera will work with the webcam model.
 
 {{< tabs name="Configure a Webcam" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your camera, select the type <code>camera</code>, and select the <code>webcam</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your camera, select the type `camera`, and select the `webcam` model.
+
 <img src="../img/create-webcam.png" alt="Creation of webcam camera in the Viam app config builder." style="max-width:500px" />
-<br>
-Fill in the attributes for your webcam view:
-<br>
-<img src="../img/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for your webcam view:
+
+<img src="../img/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." />
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
@@ -65,8 +63,8 @@ The following attributes are available for webcams:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
-| `intrinsic_parameters` | *Optional* | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
-| `distortion_parameters` | *Optional* | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
+| `intrinsic_parameters` | *Optional* | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> `width_px`: The expected width of the aligned image in pixels. </li> <li> `height_px`: The expected height of the aligned image in pixels. </li> <li> `fx`: The image center x point. </li> <li> `fy`: The image center y point. </li> <li> `ppx`: The image focal x. </li> <li> `ppy`: The image focal y. </li> </ul> |
+| `distortion_parameters` | *Optional* | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
 | `debug` | *Optional* | Enables the debug outputs from the camera if `true`. Defaults to `false`. |
 | `format` | *Optional* | The camera image format, used with video_path to find camera. |
 | `video_path` | *Optional* | The path to the webcam. Often `video0`. If you don't provide a video path, it defaults to the first valid video path it finds. |

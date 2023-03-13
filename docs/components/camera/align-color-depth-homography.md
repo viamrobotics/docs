@@ -11,20 +11,18 @@ tags: ["camera", "components"]
 When you have a depth image and you need it to overlay on top of a color image exactly, a homography matrix can apply the necessary distortions to the depth image for it to overlap.
 
 {{< tabs name="Configure an Align Color Depth Homography Camera" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your camera, select the type <code>camera</code>, and select the <code>align_color_depth_homography</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your camera, select the type `camera`, and select the `align_color_depth_homography` model.
+
 <img src="../img/create-align-color-depth-homography.png" alt="Creation of an align color depth homography view in the Viam app config builder." style="max-width:600px" />
-<br>
-Fill in the attributes for your align color depth homography view:
-<br>
-<img src="../img/configure-align-color-depth-homography.png" alt="Configuration of an align color depth homography view in the Viam app config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for your align color depth homography view:
+
+<img src="../img/configure-align-color-depth-homography.png" alt="Configuration of an align color depth homography view in the Viam app config builder." />
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}

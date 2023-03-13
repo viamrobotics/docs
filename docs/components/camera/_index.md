@@ -37,6 +37,7 @@ For configuration information, click on one of the following models:
 | [`image_file`](image-file) | Gets color and depth images frames from a file path. |
 | [`velodyne`](velodyne) | Uses velodyne lidar. |
 | [`webcam`](webcam) | A standard camera that streams camera data. |
+| [`rtsp`](rtsp) | A streaming camera with an MJPEG track. |
 | [`fake`](fake) | A camera model for testing. |
 | [`single_stream`](single-stream) | A HTTP client camera that streams image data from an HTTP endpoint. |
 | [`dual_stream`](dual-stream) | A HTTP client camera that combines the streams of two camera servers to create colorful point clouds. |

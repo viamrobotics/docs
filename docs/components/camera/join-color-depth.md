@@ -14,20 +14,18 @@ This specific model is good if you don’t need to align the streams.
 If you need to adjust the alignment between the depth and color frames, use the [`align_color_depth_extrinsics`](../align-color-depth-extrinsics) model or the[`align_color_depth_homography`](../align-color-depth-homography) model.
 
 {{< tabs name="Configure a Join Color Depth View" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your camera, select the type <code>camera</code>, and select the <code>join_color_depth</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your camera, select the type `camera`, and select the `join_color_depth` model.
+
 <img src="../img/create-join-color-depth.png" alt="Creation of a join color depth view in the Viam app config builder." style="max-width:500px" />
-<br>
-Fill in the attributes for your join color depth view:
-<br>
-<img src="../img/configure-join-color-depth.png" alt="Configuration of a join color depth view in the Viam app config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for your join color depth view:
+
+<img src="../img/configure-join-color-depth.png" alt="Configuration of a join color depth view in the Viam app config builder." />
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}

@@ -1,7 +1,7 @@
 ---
 title: "Configure a Single Stream Camera"
 linkTitle: "Single Stream"
-weight: 35
+weight: 36
 type: "docs"
 description: "Configure a camera that streams image data from an HTTP endpoint."
 tags: ["camera", "components"]
@@ -21,20 +21,18 @@ Your `single_stream` camera can output:
 - A `color` stream which outputs color values in 2D.
 
 {{< tabs name="Configure a single Stream Camera" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your camera, select the type <code>camera</code>, and select the <code>single_stream</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your camera, select the type `camera`, and select the `single_stream` model.
+
 <img src="../img/create-single-stream.png" alt="Creation of a single stream camera in the Viam app config builder." style="max-width:500px" />
-<br>
-Fill in the attributes for your single stream camera:
-<br>
-<img src="../img/configure-single-stream.png" alt="Configuration of a single stream camera in the Viam App config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for your single stream camera:
+
+<img src="../img/configure-single-stream.png" alt="Configuration of a single stream camera in the Viam App config builder." />
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
