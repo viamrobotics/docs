@@ -171,6 +171,12 @@ The rover's design allows you to reach the SD card slot at all times, so you can
 
 ### Connect the wires
 
+{{< alert title="Tip" color="tip" >}}
+To make it easier for you to see which pin is which, you can print out [this piece of paper](../img/rpi4_rover_leaf.pdf) which has labels for the pins and carefully push it onto the pins.
+Only attach the paper when the Pi is unplugged.
+To make attaching the paper easier, use a credit card.
+{{< /alert >}}
+
 Wire your Pi to the buck converter, the acceleration tilt module, the DC motor driver:
 
 ![Closeup of the wiring diagram, showcasing the Pi, motor driver, accelerometer, and buck converter, wired according to the table below.](../img/viam-rover/wiring-diagram.png)
