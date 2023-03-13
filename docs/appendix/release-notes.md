@@ -291,6 +291,7 @@ This is a breaking change.
 This breaking change affects ALL users who are using the Viam app to configure their robot.
 You will need to update to at the latest version of the RDK (V3.0.0) to access your robot using the remote control page.
 {{< /alert >}}
+
 </td>
         </tr>
     <tbody>
@@ -399,12 +400,12 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
             <td>We previously used bidirectional streaming, with the robot streaming sensor readings to the app and the app streaming acknowledgements of progress back to the robot.
             We switched to a simpler unary approach which is more performant on batched unary calls, is easier to load balance, and maintains ordered captures.<br>
 
-            {{< alert title="Note" color="note" >}}
-            This breaking change will NOT affect most users.
-            If you have previously captured data on your robot that has not yet been synced, enable syncing to get that data into app.viam before using the new release.
-            {{< /alert >}}
+{{< alert title="Note" color="note" >}}
+This breaking change will NOT affect most users.
+If you have previously captured data on your robot that has not yet been synced, enable syncing to get that data into app.viam before using the new release.
+{{< /alert >}}
 
-            </td>
+</td>
         </tr>
     <tbody>
 </table>
@@ -586,11 +587,11 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
             <td><strong>What does it affect?</strong></td>
             <td>Users of the Go SDK <strong>must</strong> update their code to specify <code>extra</code> in the arguments that pass into each request.
 
-            {{% alert title="Note" color="note" %}}
-            This breaking change does NOT affect users of the Python SDK.
-            {{% /alert %}}
+{{% alert title="Note" color="note" %}}
+This breaking change does NOT affect users of the Python SDK.
+{{% /alert %}}
 
-            </td>
+</td>
         </tr>
     <tbody>
 </table>
