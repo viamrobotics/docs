@@ -380,7 +380,7 @@ If you don't already have a dataset in `data_dir/data` from running SLAM in live
     ```
 
 2. Rename the unzipped folder to `data` and place it in the cartographer_dir directory.
- 
+
     For example:
 
     ``` bash
