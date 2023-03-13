@@ -2,7 +2,6 @@
 title: "SLAM Service"
 linkTitle: "SLAM"
 weight: 70
-draft: false
 type: "docs"
 description: "Explanation of the SLAM Service, its configuration, and its functionality."
 tags: ["slam", "services"]
@@ -88,7 +87,7 @@ An example configuration for running ORB-SLAM3 in live `rgbd` mode on your robot
       "sensors": ["color", "depth"],
       "use_live_data": true,
       "map_rate_sec": 60,
-      "data_rate_ms": 200,
+      "data_rate_msec": 200,
       "config_params": {
         "mode": "rgbd"
       }
@@ -110,7 +109,7 @@ If you have already populated a folder named `data` at the path pointed to by th
       "sensors": [],
       "use_live_data": false,
       "map_rate_sec": 120,
-      "data_rate_ms": 100,
+      "data_rate_msec": 100,
       "config_params": {
         "mode": "mono"
       }
@@ -137,7 +136,7 @@ This table provides an overview of the different SLAM modes and how to set them.
 | ---- | ----------- |
 | PURE MAPPING | In PURE MAPPING mode, a new map is generated from scratch. This mode is triggered if no map is found in the `data_dir/map` directory. |
 | UPDATING | In UPDATING mode, an existing map is being changed and updated with new data. This mode is triggered when a map is found in the `data_dir/map` directory and `map_rate_sec` is set greater than `0`.|
-| LOCALIZING | In LOCALIZING mode, the map is not changed. Data is used to localize on an existing map. This is similar to updating mode, except the loaded map is not changed. This mode is triggered when a map is found in the `data_dir/map` directory and `map_rate_sec` is equal to `0`. |
+| LOCALIZING | In LOCALIZING mode, the map is not changed. Data is used to localize on an existing map. This is similar to UPDATING mode, except the loaded map is not changed. This mode is triggered when a map is found in the `data_dir/map` directory and `map_rate_sec` is equal to `0`. |
 
 #### SLAM Library-Specific Sensor Mode
 
@@ -161,8 +160,8 @@ You can find more information on the `mode` in the description of the integrated
 
 | Name | Data Type | Description |
 | ---- | --------- | ----------- |
-| `map_rate_sec` | int | Map generation rate for saving current state *(seconds)*. The default value is `60`. Note: Setting `map_rate_sec` to `0` causes SLAM to run in LOCALIZATION mode. |
-| `data_rate_ms` | int | Data generation rate for collecting sensor data to feed to SLAM *(milliseconds)*. Default: `200`. |
+| `map_rate_sec` | int | Map generation rate for saving current state *(seconds)*. The default value is `60`. Note: Setting `map_rate_sec` to `0` causes SLAM to run in `LOCALIZING` mode. |
+| `data_rate_msec` | int | Data generation rate for collecting sensor data to feed to SLAM *(milliseconds)*. Default: `200`. |
 | `port` | string | Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
 | `delete_processed_data` | bool |  With `delete_processed_data: true` sensor data is deleted after the SLAM algorithm has processed it. This helps reduce the amount of memory required to run SLAM. If `use_live_data: true`, the `delete_processed_data` defaults to `true` and if `use_live_data: false`, it defaults to false. A `delete_processed_data: true` when `use_live_data: false` is invalid and will result in an error. |
 | `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
@@ -175,6 +174,7 @@ These often deal with the internal algorithms being run and will affect such asp
 You can find details on which inputs you can include for the available libraries in the following section:
 
 - [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
+- [Integrated Library: Cartographer](#integrated-library-cartographer)
 
 ## Data Directory
 
@@ -190,7 +190,7 @@ To recap, the directory must be structured as follows:
     └── config
 </pre>
 
-- `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `data_rate_ms`.
+- `data` contains all the sensor data collected from the sensors listed in `sensors`, saved at `data_rate_msec`.
 - `map` contains the generated maps, saved at `map_rate_sec`.
 - `config` contains all SLAM library specific config files.
 
@@ -201,7 +201,7 @@ If this directory structure is not present, the SLAM Service creates it.
 The data present in the map subdirectory dictates SLAM's mode at runtime:
 
 - If the `map` subdirectory is empty, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).
-- If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (UPDATING MODE or LOCALIZATION MODE).
+- If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (`UPDATING` mode or `LOCALIZING` mode).
 
 ## Integrated Library: ORB-SLAM3
 
@@ -224,7 +224,7 @@ In this example, `mono` is selected with one camera stream named `color`:
       "use_live_data": true,
       "delete_processed_data": false,
       "map_rate_sec": 60,
-      "data_rate_ms": 200,
+      "data_rate_msec": 200,
       "config_params": {
         "mode": "mono"
       }
@@ -251,3 +251,134 @@ You can use all parameters except for `mode` and `debug` to fine-tune ORB-SLAM's
 | `stereo_th_depth` | *(Optional)* Number of stereo baselines used to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | 40 |
 | `depth_map_factor` | *(Optional)* Factor to transform the depth map to real units. | 1000 |
 | `stereo_b` | *(Optional)* Stereo baseline in meters. | 0.0745 |
+
+## Integrated Library: Cartographer
+
+### Introduction
+
+Cartographer performs dense SLAM using LIDAR data.
+
+Specify whether this LIDAR data is preloaded or collected live by a Rplidar device with the attribute `use_live_data`.
+
+To run Cartographer in live mode, follow [these instructions](add-rplidar-module) to add your Rplidar device as a modular component of your robot, and refer to this example configuration:
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+``` json
+{
+  "modules": [
+    {
+      "name": "rplidar_module",
+      "executable_path": "/home/<YOUR_USERNAME>/rplidar-module-local-aarch64.AppImage"
+    }
+  ],
+  "components": [
+    {
+      "namespace": "rdk",
+      "type": "camera",
+      "depends_on": [],
+      "model": "viam:lidar:rplidar",
+      "name": "rplidar"
+    }
+  ],
+  "services": [
+    {
+      "type": "slam",
+      "attributes": {
+        "config_params": {
+          "min_range": "0.3",
+          "max_range": "12",
+          "mode": "2d"
+        },
+        "data_rate_msec": 200,
+        "delete_processed_data": false,
+        "use_live_data": true,
+        "sensors": [
+          "rplidar"
+        ],
+        "port": "localhost:8083",
+        "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+        "map_rate_sec": 60
+      },
+        "model": "cartographer",
+        "name": "run-slam"
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="MacOS" %}}
+
+``` json
+{
+  "components": [
+    {
+      "namespace": "rdk",
+      "type": "camera",
+      "depends_on": [],
+      "model": "viam:lidar:rplidar",
+      "attributes": {
+        "device_path": "/dev/tty.SLAB_USBtoUART"
+      },
+      "name": "rplidar"
+    }
+  ],
+  "services": [
+    {
+      "attributes": {
+        "map_rate_sec": 60,
+        "data_rate_msec": 200,
+        "use_live_data": true,
+        "sensors": [
+          "rplidar"
+        ],
+        "config_params": {
+          "mode": "2d",
+          "min_range": "0.3",
+          "max_range": "12"
+        },
+        "port": "localhost:8083",
+        "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+        "delete_processed_data": false
+      },
+      "model": "cartographer",
+      "name": "run-slam",
+      "type": "slam"
+    }
+  ],
+  "modules": [
+    {
+      "executable_path": "/Users/<YOUR_USERNAME>/rplidar/bin/rplidar-module",
+      "name": "rplidar_module"
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+For more information and an example configuration for running [Cartographer in Offline Mode](run-slam-cartographer#run-cartographer-in-offline-mode-with-a-dataset), see [this tutorial](run-slam-cartographer).
+
+### Configuration Overview
+
+This table is an overview of the config parameters for Cartographer.
+All parameters except for `mode` are optional.
+Use these parameters to fine-tune Cartographer's algorithm.
+
+| Parameter Mode | Description | Default Value | Tuning Priority | Notes |
+| -------------- | ----------- | ------------- | --------------- |----- |
+| `mode` | `2d` | None | High | |
+| `optimize_every_n_nodes` | How often data is optimized against past data. | `3` | High | |
+| `num_range_data` | Number of measurements in each submap. | `100` | High | |
+| `missing_data_ray_length` | Set length of rays that were missing. | `25` | Medium | Nominally set to max length. |
+| `max_range` | Maximum range of valid measurements. | `25` | Medium | |
+| `min_range` | Minimum range of valid measurements. | `0.2` | Medium | |
+| `max_submaps_to_keep` | Number of submaps to use and track for localization mapping. | `3` | High | Only for LOCALIZING mode. |
+| `fresh_submaps_count` | Length of submap history considered when updating mapping. | `3` | High | Only for UPDATING mode. |
+| `min_covered_area` | Max area (*m&sup2*) that could have changed when updating mapping. | `1.0` | Medium | Only for UPDATING mode. |
+| `min_added_submaps_count` | Minimum number of added submaps during run when updating mapping. | `1` | Medium | Only for UPDATING mode. |
+| `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | `20.0` | Low | Normalized with translational and rotational. |
+| `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | `10.0` | Low | Normalized with occupied and rotational. |

@@ -76,96 +76,7 @@ Configure your robot to run Cartographer with a Rplidar in two steps:
 
 #### Step 1: Add your Rdiplar as a Modular Component
 
-First, install the Rplidar Module:
-
-{{< tabs >}}
-{{% tab name="Linux aarch64" %}}
-
-```bash
-sudo curl -o /usr/local/bin/rplidar-module http://packages.viam.com/apps/rplidar/rplidar-module-latest-aarch64.AppImage
-sudo chmod a+rx /usr/local/bin/rplidar-module
-```
-
-{{% /tab %}}
-{{% tab name="Linux x86_64" %}}
-
-```bash
-sudo curl -o /usr/local/bin/rplidar-module http://packages.viam.com/apps/rplidar/rplidar-module-latest-x86_64.AppImage
-sudo chmod a+rx /usr/local/bin/rplidar-module
-```
-
-{{% /tab %}}
-{{% tab name="MacOS" %}}
-
-```bash
-brew tap viamrobotics/brews && brew install rplidar-module
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Now, add the Rplidar as a modular component of your robot in the [Viam app](https://app.viam.com/):
-
-* Physically connect the Rplidar to your machine.
-* Go to your robot's page on the [Viam app](https://app.viam.com/).
-* In the **CONFIG** tab, select **Raw JSON** mode.
-* Copy the following configuration code for your Rplidar device.
-  Paste it into the **Raw JSON** block:
-
-  {{< tabs >}}
-  {{% tab name="Linux" %}}
-
-  ```json
-  {
-    "components": [
-      {
-        "namespace": "rdk",
-        "type": "camera",
-        "depends_on": [],
-        "model": "viam:lidar:rplidar",
-        "name": "rplidar"
-      }
-    ],
-    "modules": [
-      {
-        "executable_path": "rplidar-module",
-        "name": "rplidar-module"
-      }
-    ]
-  }
-  ```
-
-  {{% /tab %}}
-  {{% tab name="MacOS" %}}
-
-  ```json
-  {
-    "components": [
-      {
-        "namespace": "rdk",
-        "type": "camera",
-        "depends_on": [],
-        "model": "viam:lidar:rplidar",
-        "attributes": {
-          "device_path": "/dev/tty.SLAB_USBtoUART"
-        },
-        "name": "rplidar"
-      }
-    ],
-    "modules": [
-      {
-        "executable_path": "rplidar-module",
-        "name": "rplidar_module"
-      }
-    ]
-  }
-  ```
-
-  {{% /tab %}}
-  {{< /tabs >}}
-
-* Save the config.
-* Check the **LOGS** of your robot in the Viam app to make sure your Rplidar has connected and no errors are being raised.
+Follow [these instructions](add-rplidar-module) to add your Rplidar device as a modular component of your robot.
 
 #### Step 2: Add Cartographer as a SLAM Service in Live Mode
 
@@ -185,7 +96,7 @@ Now that you've added your Rplidar device as a modular component of your robot, 
   },
   "data_dir": "/home/YOUR_USERNAME/cartographer_dir",
   "map_rate_sec": 60,
-  "data_rate_ms": 200,
+  "data_rate_msec": 200,
   "delete_processed_data": false,
   "use_live_data": true,
   "sensors": ["rplidar"]
@@ -249,6 +160,12 @@ At this point, your complete configuration should look like:
 
   ```json
   {
+    "modules": [
+      {
+        "name": "rplidar_module",
+        "executable_path": "/home/<YOUR_USERNAME>/rplidar-module-local-aarch64.AppImage"
+      }
+    ],
     "components": [
       {
         "namespace": "rdk",
@@ -258,30 +175,27 @@ At this point, your complete configuration should look like:
         "name": "rplidar"
       }
     ],
-    "modules": [
-      {
-        "executable_path": "rplidar-module",
-        "name": "rplidar_module"
-      }
-    ],
     "services": [
       {
+        "type": "slam",
         "attributes": {
           "config_params": {
             "min_range": "0.3",
             "max_range": "12",
             "mode": "2d"
           },
-          "data_dir": "/home/YOUR_USERNAME/cartographer_dir",
-          "map_rate_sec": 60,
-          "data_rate_ms": 200,
+          "data_rate_msec": 200,
           "delete_processed_data": false,
           "use_live_data": true,
-          "sensors": ["rplidar"]
+          "sensors": [
+            "rplidar"
+          ],
+          "port": "localhost:8083",
+          "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+          "map_rate_sec": 60,
         },
         "model": "cartographer",
-        "name": "run-slam",
-        "type": "slam"
+        "name": "run-slam"
       }
     ]
   }
@@ -304,30 +218,33 @@ At this point, your complete configuration should look like:
         "name": "rplidar"
       }
     ],
-    "modules": [
-      {
-        "executable_path": "rplidar-module",
-        "name": "rplidar_module"
-      }
-    ],
     "services": [
       {
         "attributes": {
-          "config_params": {
-            "min_range": "0.3",
-            "max_range": "12",
-            "mode": "2d"
-          },
-          "data_dir": "/home/YOUR_USERNAME/cartographer_dir",
           "map_rate_sec": 60,
-          "data_rate_ms": 200,
-          "delete_processed_data": false,
+          "data_rate_msec": 200,
           "use_live_data": true,
-          "sensors": ["rplidar"]
+          "sensors": [
+            "rplidar"
+          ],
+          "config_params": {
+            "mode": "2d",
+            "min_range": "0.3",
+            "max_range": "12"
+          },
+          "port": "localhost:8083",
+          "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR<",
+          "delete_processed_data": false
         },
         "model": "cartographer",
         "name": "run-slam",
         "type": "slam"
+      }
+    ],
+    "modules": [
+      {
+        "executable_path": "/Users/<YOUR_USERNAME>/rplidar/bin/rplidar-module",
+        "name": "rplidar_module"
       }
     ]
   }
@@ -411,7 +328,7 @@ This tells the service to use only data found within the `data_dir` directory sp
             },
             "data_dir": "/home/YOUR_USERNAME/cartographer_dir/data",
             "map_rate_sec": 60,
-            "data_rate_ms": 200,
+            "data_rate_msec": 200,
             "delete_processed_data": false,
             "use_live_data": false,
             "sensors": []
@@ -451,7 +368,9 @@ Only `2D SLAM` is currently implemented for Cartographer.
 Because of this, Cartographer assumes your Rplidar will remain at roughly the same height while in use.
 If maps are not building the way you expect, make sure your Rplidar is secure and at roughly the same height throughout the run.
 
-## Additional Troubleshooting
+## Next Steps
+
+Try adjusting Cartographer's [config parameters](../#configuration-overview) to fine tune the SLAM algorithm.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
