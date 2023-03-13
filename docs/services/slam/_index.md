@@ -18,41 +18,21 @@ Breaking changes are likely to occur, and occur often.
 
 [Simultaneous Localization And Mapping (SLAM)](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping) allows your robot to create a map of its surroundings and find its location within that map.
 SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
-Viam offers users an easy-to-use, intuitive method for interfacing with various cutting-edge SLAM algorithms.
 
-## Viam SLAM Service
-
-The Viam SLAM Service supports the integration of custom SLAM libraries with the Viam RDK through the SLAM Service API.
-
+The Viam SLAM Service supports the integration of SLAM as a service on your robot.
 The following SLAM libraries are integrated:
 
 - [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
 - [Cartographer](https://github.com/cartographer-project)
 
-## Requirements
+Install the binaries required to utilize these libraries on your machine by running the following commands:
 
-Running the SLAM Service with your robot requires the following:
-
-1. A binary running the custom SLAM library stored in your PATH (like `/usr/local/bin`).
-2. Changes to the config specifying which SLAM library is used, including library specific parameters.
-3. A data folder as it is pointed to by the config parameter `data_dir`.
-
-All three are explained in the following using ORB-SLAM3 as the application example.
-
-## SLAM Library Binary
-
-Download the ORB-SLAM3 binaries into `usr/local/bin`:
-
+`ORB-SLAM3`:
 {{< tabs >}}
 {{% tab name="AArch64/ARM64" %}}
 
 ``` bash
 sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
-```
-
-Make the file executable by running:
-
-```bash
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
 
@@ -61,124 +41,85 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 
 ```bash
 sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
-```
-
-Make the file executable by running:
-
-```bash
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-## Configuration Overview
+`Cartographer`:
 
-An example configuration for running ORB-SLAM3 in live `rgbd` mode on your robot with two camera streams available, `color` for RGB images, and `depth` for depth data:
+{{< tabs >}}
+{{% tab name="Linux aarch64" %}}
 
-``` json
-"services": [
-  {
-    "name": "testorb",
-    "model": "orbslamv3",
-    "type": "slam",
-    "attributes": {
-      "data_dir": "<path_to_your_data_folder_on_your_machine>",
-      "sensors": ["color", "depth"],
-      "use_live_data": true,
-      "map_rate_sec": 60,
-      "data_rate_msec": 200,
-      "config_params": {
-        "mode": "rgbd"
-      }
-    }
-  }
-]
+``` bash
+sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-aarch64.AppImage
+sudo chmod a+rx /usr/local/bin/carto_grpc_server
 ```
 
-If you have already populated a folder named `data` at the path pointed to by the `data_dir` attribute from running the SLAM service before, you can also run SLAM in offline mode:
+{{% /tab %}}
+{{% tab name="Linux x86_64" %}}
 
-``` json
-"services": [
-  {
-    "name": "testorb",
-    "model": "orbslamv3",
-    "type": "slam",
-    "attributes": {
-      "data_dir": "<path_to_your_data_folder_on_your_machine>",
-      "sensors": [],
-      "use_live_data": false,
-      "map_rate_sec": 120,
-      "data_rate_msec": 100,
-      "config_params": {
-        "mode": "mono"
-      }
-    }
-  }
-]
+``` bash
+sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-x86_64.AppImage
+sudo chmod a+rx /usr/local/bin/carto_grpc_server
 ```
 
-### SLAM Modes Overview
+{{% /tab %}}
+{{% tab name="MacOS" %}}
 
-The combination of configuration parameters and existing data in the `data_dir` define the behavior of the running SLAM Service.
-This table provides an overview of the different SLAM modes and how to set them.
+``` bash
+brew tap viamrobotics/brews && brew install carto-grpc-server
+```
 
-#### Live vs Offline Mode
+{{% /tab %}}
+{{< /tabs >}}
 
-| Mode | Description |
-| ---- | ----------- |
-| Live | Live mode means that SLAM grabs the most recent sensor readings (like images) from the `sensors` and uses those to perform SLAM. SLAM runs in live mode if `use_live_data` is `true` and one or more `sensors` are present. If no sensors are provided, an error will be thrown. |
-| Offline | SLAM runs in offline mode if `use_live_data` is `false`. This means the service will look for and process images that are already saved in the `data_dir/data` directory. |
+## Configuration
 
-#### Pure Mapping, Pure Localization, and Update Mode
+You can configure your robot to use SLAM on [the Viam app](https://app.viam.com).
+Navigate to the **CONFIG** tab on your robot's page, and from there, navigate to the **SERVICES** subtab.
 
-| Mode | Description |
-| ---- | ----------- |
-| PURE MAPPING | In PURE MAPPING mode, a new map is generated from scratch. This mode is triggered if no map is found in the `data_dir/map` directory. |
-| UPDATING | In UPDATING mode, an existing map is being changed and updated with new data. This mode is triggered when a map is found in the `data_dir/map` directory and `map_rate_sec` is set greater than `0`.|
-| LOCALIZING | In LOCALIZING mode, the map is not changed. Data is used to localize on an existing map. This is similar to UPDATING mode, except the loaded map is not changed. This mode is triggered when a map is found in the `data_dir/map` directory and `map_rate_sec` is equal to `0`. |
+Add a service with type `slam`, whatever name you want, and the model of the library you want to use.
 
-#### SLAM Library-Specific Sensor Mode
+Use [this JSON template](#integrated-library-orb-slam3) to configure the service with the ORB-SLAM3 library, and [this JSON template](#integrated-library-cartographer) to configure the service with the Cartographer library.
+Then, adjust general attributes and library-specific config-params.
 
-Every integrated SLAM library requires `mode` to be specified under its config parameters, which defines which sensor types or combinations are used.
-You can find more information on the `mode` in the description of the integrated libraries:
+### General Attributes
 
-- [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
-- [Integrated Library: CARTOGRAPHER](run-slam-cartographer)
+| Name | Data Type | Inclusion | Description |
+| ---- | --------- | --------- | ----------- |
+| `data_dir` | string | **Required** | This is [the data directory](#data_dir-data-directory) used for saving input <file>sensor/map</file> data and output <file>map/</file> visualizations. Must be structured as specified [here](#data_dir-data-directory). |
+| `sensors` | string[] | **Required** | Names of [sensors](../../components/sensor/) providing data to the SLAM service. |
+| `use_live_data` | bool | **Required** | This specifies whether to run in Live or Offline mode. <pre><ul> `true`: Live mode. The service grabs the most recent sensor readings and uses those to perform SLAM. If no `sensors` are provided, an error will be thrown. </ul><ul>`false`: Offline mode. The service uses image data stored in the [data directory](#data_dir-data-directory) to perform SLAM.</ul></pre> |
+| `map_rate_sec` | int | Optional | Map generation rate for saving current state *(seconds)*. <pre> Default: `60`. </pre> |
+| `data_rate_msec` | int | Optional | Data generation rate for collecting sensor data to feed to SLAM *(milliseconds)*. <pre> Default: `200`. </pre> |
+| `port` | string | Optional | Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
+| `delete_processed_data` | bool | Optional | <pre><ul> `true`: sensor data is deleted after the SLAM algorithm has processed it. </ul><ul> `false`: sensor data is not deleted after the SLAM algorithm has processed it. </ul></pre> Setting this to `true` helps to reduce the amount of memory required to run SLAM. |
+| `config_params` |  map[string] string | Optional | Parameters specific to the `model` of SLAM library. |
 
-### General Config Parameters
+{{% alert title="Caution" color="caution" %}}
 
-#### Required Attributes
+- If `use_live_data: true`, `delete_processed_data: true` by default.
+- If `use_live_data: false`, `delete_processed_data: false` by default.
 
-| Name | Data Type | Description |
-| ---- | --------- | ----------- |
-| `data_dir` | string | This is the data directory used for saving input <file>sensor/map</file> data and output <file>map/</file> visualizations. It has an architecture consisting of three internal folders, config, data and map. If this directory structure is not present, the SLAM Service creates it. |
-| `sensors` | string[] | Names of sensors whose data is input to SLAM. |
-| `use_live_data` |  bool | This specifies whether to run in live mode (true) or offline mode (false). If `use_live_data: true` and `sensors: []`, an error will be thrown. If this parameter is set to true and no sensors are provided, SLAM will produce an error. |
+Setting `delete_processed_data: true` and `use_live_data: false` is invalid and will result in an error.
+{{% /alert %}}
 
-#### Optional Attributes
+### `config_params`
 
-| Name | Data Type | Description |
-| ---- | --------- | ----------- |
-| `map_rate_sec` | int | Map generation rate for saving current state *(seconds)*. The default value is `60`. Note: Setting `map_rate_sec` to `0` causes SLAM to run in `LOCALIZING` mode. |
-| `data_rate_msec` | int | Data generation rate for collecting sensor data to feed to SLAM *(milliseconds)*. Default: `200`. |
-| `port` | string | Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
-| `delete_processed_data` | bool |  With `delete_processed_data: true` sensor data is deleted after the SLAM algorithm has processed it. This helps reduce the amount of memory required to run SLAM. If `use_live_data: true`, the `delete_processed_data` defaults to `true` and if `use_live_data: false`, it defaults to false. A `delete_processed_data: true` when `use_live_data: false` is invalid and will result in an error. |
-| `config_params` |  map[string] string | Parameters specific to the used SLAM library. |
+The `config_params` attribute is populated with parameters that are unique to the SLAM library being used.
 
-### SLAM Library Specific Config Parameters
+You can use these parameters to fine-tune the algorithms these libraries utilize in aspects like submap size, mapping update rate, and feature matching details.
 
-The `config_params` is a catch-all attribute for parameters that are unique to the SLAM library being used.
-These often deal with the internal algorithms being run and will affect such aspects as submap size, update rate, and details on how to perform feature matching to name a few.
+To see library-specific `config_params` available, navigate to these sections:
 
-You can find details on which inputs you can include for the available libraries in the following section:
+- [Integrated Library: ORB-SLAM3](#library-specific-config_params)
+- [Integrated Library: Cartographer](#library-specific-config_params-1)
 
-- [Integrated Library: ORB-SLAM3](#integrated-library-orb-slam3)
-- [Integrated Library: Cartographer](#integrated-library-cartographer)
+### `data_dir`: Data Directory
 
-## Data Directory
-
-A running SLAM Service saves the sensor data it uses and the maps and config files it produces locally on the device in the directory as specified in the config as `data_dir`.
+A running SLAM Service saves the sensor data it uses and the maps and config files it produces locally on the device in the directory path specified by the [General Attribute](#general-attributes) `data_dir`.
 
 To recap, the directory must be structured as follows:
 
@@ -198,19 +139,26 @@ To recap, the directory must be structured as follows:
 If this directory structure is not present, the SLAM Service creates it.
 {{% /alert %}}
 
-The data present in the map subdirectory dictates SLAM's mode at runtime:
+### Mapping Modes
 
-- If the `map` subdirectory is empty, the SLAM algorithm generates a new map using all the provided data (PURE MAPPING MODE).
-- If a map is found in the `map` subdirectory, it will be used as a priori information for the SLAM run and only data generated after the map was created will be used (`UPDATING` mode or `LOCALIZING` mode).
+These modes dictate SLAM's mapping behavior at runtime, but are not configured as a part of the SLAM service's JSON configuration.
+The mode utilized by the SLAM service is determined by the information found in the [data directory](#data_dir-data-directory) at runtime.
+
+| Mode | Description | Dictation |
+| ---- | ----------- | ------- |
+| PURE MAPPING | In PURE MAPPING mode, a new map is generated from scratch. | This mode is triggered if no map is found in the `data_dir/map` directory at runtime. |
+| UPDATING | In UPDATING mode, an existing map is being changed and updated with new data. | This mode is triggered when a map is found in the `data_dir/map` directory at runtime if the attribute `"map_rate_sec"` is `> 0`.|
+| LOCALIZING | In LOCALIZING mode, the map is not changed. Data is used to localize on an existing map. This is similar to UPDATING mode, except the loaded map is not changed. | This mode is triggered when a map is found in the `data_dir/map` directory at runtime if the attribute `"map_rate_sec" = 0`. |
 
 ## Integrated Library: ORB-SLAM3
 
-### Introduction
-
 ORB-SLAM3 can perform sparse SLAM using monocular or RGB-D images.
-You must specify this in the configuration under `config_params` (as `mono` or `rgbd`).
 
-In this example, `mono` is selected with one camera stream named `color`:
+### Example Configuration
+
+#### Live Mode
+
+An example configuration for running ORB-SLAM3 in live mode, with `rgbd` image data, with two camera streams available (`color` for RGB images and `depth` for depth data):
 
 ``` json
 "services": [
@@ -219,12 +167,35 @@ In this example, `mono` is selected with one camera stream named `color`:
     "model": "orbslamv3",
     "type": "slam",
     "attributes": {
-      "data_dir": "<path_to_your_data_folder>",
-      "sensors": ["color"],
+      "data_dir": "/home/<YOUR_USERNAME>/<ORBSLAM_DIR>",
+      "sensors": ["color", "depth"],
       "use_live_data": true,
-      "delete_processed_data": false,
       "map_rate_sec": 60,
       "data_rate_msec": 200,
+      "config_params": {
+        "mode": "rgbd"
+      }
+    }
+  }
+]
+```
+
+#### Offline Mode
+
+An example configuration for running ORB-SLAM3 in offline mode:
+
+``` json
+"services": [
+  {
+    "name": "testorb",
+    "model": "orbslamv3",
+    "type": "slam",
+    "attributes": {
+      "data_dir": "/home/<YOUR_USERNAME>/<ORBSLAM_DIR>",
+      "sensors": [],
+      "use_live_data": false,
+      "map_rate_sec": 120,
+      "data_rate_msec": 100,
       "config_params": {
         "mode": "mono"
       }
@@ -233,32 +204,30 @@ In this example, `mono` is selected with one camera stream named `color`:
 ]
 ```
 
-### Configuration Overview
+### Library-Specific `config_params`
 
-This table is an overview of the config parameters for ORB-SLAM3.
-All parameters except for `mode` are optional.
-You can use all parameters except for `mode` and `debug` to fine-tune ORB-SLAM's algorithm.
-
-| Parameter Mode | Description - The Type of SLAM to Use | Default Value |
-| -------------- | ------------------------------------- | ------------------- |
-| `mode` | `rgbd` or `mono` | No default |
-| `debug` | *(Optional)* `bool` | `false` |
-| `orb_n_features` | *(Optional)* ORB parameter. Number of features per image. | 1250 |
-| `orb_scale_factor` | *(Optional)* ORB parameter. Scale factor between levels in the scale pyramid. | 1.2 |
-| `orb_n_levels` | *(Optional)* ORB parameter. Number of levels in the scale pyramid. |  8 |
-| `orb_n_ini_th_fast` | *(Optional)* ORB parameter. Initial FAST threshold. | 20 |
-| `orb_n_min_th_fast` | *(Optional)* ORB parameter. Lower threshold if no corners detected. | 7 |
-| `stereo_th_depth` | *(Optional)* Number of stereo baselines used to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | 40 |
-| `depth_map_factor` | *(Optional)* Factor to transform the depth map to real units. | 1000 |
-| `stereo_b` | *(Optional)* Stereo baseline in meters. | 0.0745 |
+| Parameter Mode | Description | Inclusion | Default Value |
+| -------------- | ----------- | --------- | ------------- |
+| `mode` | `rgbd` or `mono` | **Required** | No default |
+| `debug` | Boolean specifying if the service should be run in debug mode. Affects log output. | Optional | `false` |
+| `orb_n_features` | Number of features per image. | Optional | `1250` |
+| `orb_scale_factor` | Scale factor between levels in the scale pyramid. | Optional | `1.2` |
+| `orb_n_levels` | Number of levels in the scale pyramid. | Optional | `8` |
+| `orb_n_ini_th_fast` | Initial FAST threshold. | Optional | `20` |
+| `orb_n_min_th_fast` | Lower threshold if no corners detected. | Optional | `7` |
+| `stereo_th_depth` | Number of stereo baselines used to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | Optional | `40` |
+| `depth_map_factor` | Factor to transform the depth map to real units. | Optional | `1000` |
+| `stereo_b` | Stereo baseline in meters. | Optional | `0.0745` |
 
 ## Integrated Library: Cartographer
-
-### Introduction
 
 Cartographer performs dense SLAM using LIDAR data.
 
 Specify whether this LIDAR data is preloaded or collected live by a Rplidar device with the attribute `use_live_data`.
+
+### Example Configuration
+
+#### Live Mode
 
 To run Cartographer in live mode, follow [these instructions](add-rplidar-module) to add your Rplidar device as a modular component of your robot, and refer to this example configuration:
 
@@ -298,7 +267,7 @@ To run Cartographer in live mode, follow [these instructions](add-rplidar-module
           "rplidar"
         ],
         "port": "localhost:8083",
-        "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+        "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
         "map_rate_sec": 60
       },
         "model": "cartographer",
@@ -360,25 +329,23 @@ To run Cartographer in live mode, follow [these instructions](add-rplidar-module
 {{% /tab %}}
 {{< /tabs >}}
 
+#### Offline Mode
+
 For more information and an example configuration for running [Cartographer in Offline Mode](run-slam-cartographer#run-cartographer-in-offline-mode-with-a-dataset), see [this tutorial](run-slam-cartographer).
 
-### Configuration Overview
+### Library-Specific `config_params`
 
-This table is an overview of the config parameters for Cartographer.
-All parameters except for `mode` are optional.
-Use these parameters to fine-tune Cartographer's algorithm.
-
-| Parameter Mode | Description | Default Value | Tuning Priority | Notes |
-| -------------- | ----------- | ------------- | --------------- |----- |
-| `mode` | `2d` | None | High | |
-| `optimize_every_n_nodes` | How often data is optimized against past data. | `3` | High | |
-| `num_range_data` | Number of measurements in each submap. | `100` | High | |
-| `missing_data_ray_length` | Set length of rays that were missing. | `25` | Medium | Nominally set to max length. |
-| `max_range` | Maximum range of valid measurements. | `25` | Medium | |
-| `min_range` | Minimum range of valid measurements. | `0.2` | Medium | |
-| `max_submaps_to_keep` | Number of submaps to use and track for localization mapping. | `3` | High | Only for LOCALIZING mode. |
-| `fresh_submaps_count` | Length of submap history considered when updating mapping. | `3` | High | Only for UPDATING mode. |
-| `min_covered_area` | Max area (*m&sup2*) that could have changed when updating mapping. | `1.0` | Medium | Only for UPDATING mode. |
-| `min_added_submaps_count` | Minimum number of added submaps during run when updating mapping. | `1` | Medium | Only for UPDATING mode. |
-| `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | `20.0` | Low | Normalized with translational and rotational. |
-| `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | `10.0` | Low | Normalized with occupied and rotational. |
+| Parameter Mode | Description | Inclusion | Default Value | Tuning Priority | Notes |
+| -------------- | ----------- | --------- | ------------- | --------------- |----- |
+| `mode` | `2d` | **Required** | None | High | |
+| `optimize_every_n_nodes` | How often data is optimized against past data. | Optional | `3` | High | |
+| `num_range_data` | Number of measurements in each submap. | Optional | `100` | High | |
+| `missing_data_ray_length` | Set length of rays that were missing. | Optional | `25` | Medium | Nominally set to max length. |
+| `max_range` | Maximum range of valid measurements. | Optional | `25` | Medium | Optional |
+| `min_range` | Minimum range of valid measurements. | Optional | `0.2` | Medium | Optional |
+| `max_submaps_to_keep` | Number of submaps to use and track for localization mapping. | Optional | `3` | High | Only for LOCALIZING mode. |
+| `fresh_submaps_count` | Length of submap history considered when updating mapping. | Optional | `3` | High | Only for UPDATING mode. |
+| `min_covered_area` | Max area, in square meters, that could have changed when updating mapping. | Optional | `1.0` | Medium | Only for UPDATING mode. |
+| `min_added_submaps_count` | Minimum number of added submaps during run when updating mapping. | Optional | `1` | Medium | Only for UPDATING mode. |
+| `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Low | Normalized with translational and rotational. |
+| `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Low | Normalized with occupied and rotational. |
