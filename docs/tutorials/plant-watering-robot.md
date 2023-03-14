@@ -3,25 +3,25 @@ title: "How to Make a Plant Watering Robot with the ESP32"
 linkTitle: "Make a Plant Watering Robot with the ESP32"
 weight: 50
 type: "docs"
-description: "Instructions for creating a plant watering robot with an ESP-32 microcontroller and Viam's micro-RDK."
+description: "Instructions for creating a plant watering robot with an ESP32 microcontroller and Viam's micro-RDK."
 tags: ["base", "microcontrollers", "app", "esp32"]
 ---
 
 ## Hardware Requirements
 
-- An [ESP-32 microcontroller with a development board](https://www.amazon.com/gp/product/B087TNPQCV/ref=ppx_yo_dt_b_asin_title_o06_s00?ie=UTF8&psc=1).
+- An [ESP32 microcontroller with a Development Board](https://www.amazon.com/gp/product/B087TNPQCV/ref=ppx_yo_dt_b_asin_title_o06_s00?ie=UTF8&psc=1)
 - An [ESP32 Breakout Terminal GPIO Expansion Board](https://www.amazon.com/gp/product/B09VMXQTM8/ref=ppx_yo_dt_b_asin_title_o06_s01?ie=UTF8&th=1)
 - A [5V Relay Module](https://www.amazon.com/gp/product/B08PP8HXVD/ref=ppx_yo_dt_b_asin_title_o03_s00?ie=UTF8&psc=1)
-- [USB 5V Buck Converter Module](https://www.amazon.com/UCTRONICS-Converter-Transformer-Voltage-Regulator/dp/B07XXWQ49N/ref=sr_1_9?crid=3QAVCP90TW32&keywords=12v+buck+buck&qid=1678304842&s=electronics&sprefix=12v+buck+buck%2Celectronics%2C89&sr=1-9)
+- A [USB 5V Buck Converter Module](https://www.amazon.com/UCTRONICS-Converter-Transformer-Voltage-Regulator/dp/B07XXWQ49N/ref=sr_1_9?crid=3QAVCP90TW32&keywords=12v+buck+buck&qid=1678304842&s=electronics&sprefix=12v+buck+buck%2Celectronics%2C89&sr=1-9)
 <!-- - specific power supply cord -->
 
-Each of these requirements are for creating one Plant Watering unit.
+Each of these requirements are for creating one Plant Watering unit:
 
 - One or more plants in a planter box.
 - A box filled with water.
 - An analog [soil moisture sensor](https://www.amazon.com/gp/product/B07SYBSHGX/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1) (connected to ESP32).
 - An analog [water level sensor](https://www.amazon.com/CQRobot-Consumption-Resistance-Temperature-Properties/dp/B07ZMGW3QJ/ref=sr_1_4?crid=1542UHAWN6D43&keywords=water+immersion+sensor+arduino&qid=1678306219&sprefix=water+immersion+sensor+arduino%2Caps%2C92&sr=8-4) (connected to ESP32).
-- [DC 5V Mini Water Pump](https://www.amazon.com/gp/product/B09TGK9N5Q/ref=ppx_yo_dt_b_asin_title_o03_s01?ie=UTF8&psc=1) (connected to ESP-32).
+- [DC 5V Mini Water Pump](https://www.amazon.com/gp/product/B09TGK9N5Q/ref=ppx_yo_dt_b_asin_title_o03_s01?ie=UTF8&psc=1) (connected to ESP32).
 
 ## Getting Started
 
@@ -31,23 +31,29 @@ That guide provides detailed instructions on getting all the necessary prerequis
 
 When following this tutorial, you will modify the <file>Main.rs</file> Rust code from the [project template you generated when following these instructions](../../installation/microcontrollers#generate-a-new-project-from-the-micro-rdk-template), and add a Python file utilizing the Viam Python SDK to control the plant watering robot.
 
-## Hardware Setup
+## Setting up Your Plant Watering Robot
+
+WIP: will work with nicolas and fahmina
 
 - breakout board
 - inputs setup: need to link to `Main.rs` edits to go in between
 - box setup
 
-<!-- TODO: steps and pictures for getting all the hardware pieced together -->
-<!-- - add in a note saying to write down what GPIO pins you've connected the pumps etc. to, can show where you'll put them in / link back and forth in between nested dictionaries setup below & main.RS pin exposing
-- add in a note saying not to connect to power supply until you're doing the software setup with your micro-RDK-- can link to section from microcontroller setup guide -->
+## Programming Your Plant Watering Robot
 
 ### Edit `Main.rs` from the Micro-RDK Template
 
-These modifications use the ESP-IDF HAL library to read analog inputs from several GPIO pins on the breakout board attached to the microcontroller, and converts them to ResourceTypes to create an Esp32Robot instance.
+These modifications use the [esp_idf_hal crate](https://esp-rs.github.io/esp-idf-hal/esp_idf_hal/) to read analog inputs from several GPIO pins on the breakout board attached to the microcontroller, and convert them to ResourceTypes to create an Esp32Robot instance (Step 1 and 2).
+
+The program initializes a Wi-Fi connection and passes the IP address of the microcontroller device to a new `RobotClientConfig` instance (Step 2).
+If the robot client is not successfully started, a robot server is started instead with the `run_server()` function (Step 3).
+Then, a new mDNS service is started, allowing the devices on the wifi network to discover and communicate with each other using domain names rather than IP addresses.
+
+<!-- TODO: this needs more work -->
 
 Make sure that when following these instructions, you have not yet modified your code from the template available [here](https://github.com/viamrobotics/micro-rdk-template/blob/main/src/main.rs).
 
-If you have already modified it, use an [online Diff checker](https://www.diffchecker.com/) or `git diff main1.rs main2.rs` to find the differences between your <file>Main.rs</file> and the [example](#full-example-code) <file>Main.rs</file>.
+If you have already modified it, you can use an [online Diff checker](https://www.diffchecker.com/) or `git diff main1.rs main2.rs` to find the differences between your <file>Main.rs</file> and the [example](#full-example-code) <file>Main.rs</file>.
 
 You can also copy the example <file>Main.rs</file> code from [here](#full-example-code) to use as your <file>Main.rs</file> if you do not wish to make individual modifications.
 
@@ -114,13 +120,17 @@ let robot = {
             &Config::new().calibration(true),
         )?));
 
+        // New analog reader on Breakout Board peripheral pin 34 -> Plant5
         let adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
             AdcChannelDriver::new(periph.pins.gpio34)?;
         let analog1 = Esp32AnalogReader::new("Plant5".to_string(), adc_chan, adc1.clone());
 
+        // New analog reader on Breakout Board peripheral pin 32 -> Plant3
         let adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
             AdcChannelDriver::new(periph.pins.gpio32)?;
         let analog2 = Esp32AnalogReader::new("Plant3".to_string(), adc_chan, adc1.clone());
+
+        // New analog reader on Breakout Board peripheral pin 33 -> Plant4
         let adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
             AdcChannelDriver::new(periph.pins.gpio33)?;
         let analog3 = Esp32AnalogReader::new("Plant4".to_string(), adc_chan, adc1.clone());
@@ -151,11 +161,13 @@ let robot = {
         Esp32Robot::new(res)
     };
 
+    // initializes a Wi-Fi connection and gets info of ip address
     let (ip, _wifi) = {
         let wifi = start_wifi(periph.modem, sys_loop_stack)?;
         (wifi.sta_netif().get_ip_info()?.ip, wifi)
     };
 
+    // initialize RobotClientConfig with ESP32-backed robot's location secret and id
     let client_cfg = { RobotClientConfig::new(ROBOT_SECRET.to_string(), ROBOT_ID.to_string(), ip) };
 
     let hnd = match mini_rdk::esp32::robot_client::start(client_cfg) {
@@ -237,18 +249,18 @@ fn runserver(robot: Esp32Robot, client_handle: Option<TaskHandle_t>) -> anyhow::
 
     {{% /expand%}}
 
-## Add Python Control Code
+### Add Python Control Code
 
 Now, to control your ESP32-backed robot, add Python control code to run on your ESP32.
 
-While setting up your ESP32-backed robot, you should have added it as a remote of another robot that is controlled by a computer with the necessary processing power to run the full version of `viam-server`.
+While setting up your ESP32-backed robot, you should have added it as a *"remote"* of another robot that is controlled by a computer with the necessary processing power to run the full version of `viam-server`.
+
+Make sure that your ESP32 remote robot is running an instance of `viam-server` and has a live connection, with the ESP32-backed robot [added as a remote](../../installation/microcontrollers#configure-the-esp32-as-a-remote).
 
 - This might be just your local development machine.
 Find instructions for installing and running `viam-server` on MacOs or Linux machines [here.](../../installation/install/)
-- In the example code for this tutorial, we are using a Raspberry Pi single-board computer to act as our secondary robot instance.
+- The [full example code](#full-example-code) for this tutorial uses a Raspberry Pi single-board computer to act as the secondary robot instance.
 See our [Raspberry Pi Setup Guide](../../installation/prepare/rpi-setup/) for information on how to get `viam-server` up and running on your Raspberry Pi.
-
-Make sure this robot is running an instance of `viam-server` and has a live connection, with the ESP32-backed robot [added as a remote](../../installation/microcontrollers#configure-the-esp32-as-a-remote).
 
 Follow the below instructions to start working on your Python Control Code:
 
@@ -258,7 +270,7 @@ Follow the instructions in this tab.
    - Install the Python SDK if you have not already.
    - Then, click **COPY CODE** to copy a code sample that establishes a connection with this robot when run.
 
-2. Paste this code sample into a new file in the directory where you have saved your micro-RDK template code, using your preferred IDE.
+1. Paste this code sample into a new file in the directory where you have saved your micro-RDK template code, using your preferred IDE.
 
    - Name the file whatever you want, and save it.
    - In the [example code](#full-example-code) this tutorial follows, the control code is named <file>Water-esp32.py</file>.
@@ -296,7 +308,7 @@ import signal
 from viam.components.board import Board
 ```
 
-### `WaterLevelUnit` Class
+#### `WaterLevelUnit` Class
 
 Now, after `async def connect()`, add a new class for your water level analog reader units.
 
@@ -317,7 +329,7 @@ class WaterLevelUnit:
 
 ```
 
-### `PumpUnit` Class
+#### `PumpUnit` Class
 
 Now, add a new class for your water pump units.
 
@@ -366,7 +378,7 @@ Define a `runPump` and a `stopPump` function to belong to this class.
             raise # Raise an error if setting the pin to False fails
 ```
 
-### `PlantUnit` Class
+#### `PlantUnit` Class
 
 Now, add a new class, `PlantUnit` to define each of your plants you want to water.
 
@@ -418,13 +430,14 @@ class PlantUnit:
         await self.pump.stop()
 ```
 
-### Define your Board's Whole Configuration with a Nested Dictionary
+#### Define your Board's Whole Configuration with a Nested Dictionary
 
 Now, you can used nested dictionaries to define the configuration of the hardware units that you have connected to your ESP32 board, adding all the required attributes for the `WaterLevelUnit`, `PumpUnit`, and `PlantUnit` classes.
 
-For example, the following code defines an ESP32 board named `esp1` connected to one `WaterLevelUnit` with a water level reader and water box, and two plant boxes (`PlantUnit`), each with 1 pump (`PumpUnit`) and 1 soil moisture reader.
+For example:
 
-<!-- Modify this example code to your specifics for [TODO: minimum and maximum moisture levels, pumps, cooldown, pins]. -->
+- The following code defines an ESP32 board named `esp1` connected to one `WaterLevelUnit` with a water level reader and water box, and two plant boxes (`PlantUnit`), each with 1 pump (`PumpUnit`) and 1 soil moisture reader.
+- Modify the values for `"min"`, `"max"`, `"cooldown"`, etc. to adjust how your plant watering system works.
 
 ``` python {class="line-numbers linkable-line-numbers"}
 esp1 = {"esp1" : {"name" : "esp32-plant-1-main:board",
@@ -448,7 +461,7 @@ esp1 = {"esp1" : {"name" : "esp32-plant-1-main:board",
     }
 ```
 
-### `WateringSystem` Class
+#### `WateringSystem` Class
 
 Now that you've defined the `WaterLevelUnit`, `PumpUnit`, and `PlantUnit` classes, and added all the required attributes to your ESP32 board nested dictionary, you can define a class for the `WateringSystem` as a whole.
 
@@ -506,7 +519,7 @@ class WateringSystem:
             await plant.stop()
 ```
 
-### Put it All Together in `main()` and `shutdown()`
+#### Put it All Together in `main()` and `shutdown()`
 
 Now, it's time to write the code that will run on your ESP32-backed robot into the `main()` function of your Python control file.
 
@@ -531,7 +544,7 @@ async def main():
     await robot.close() # Close your connection to the ESP32-remote robot
 ```
 
-Then, you might want to add a `shutdown` function to shut down all the tasks that were running:
+Then, add a `shutdown` function to shut down all the tasks that were running:
 
 ``` python
 async def shutdown(signal, loop):
@@ -549,7 +562,7 @@ async def shutdown(signal, loop):
 
 ```
 
-Now, add this `if` statement at the bottom of your control file to make `main()` run if the Python file is running, and `shutdown()` happen when the Python file stops running:
+Now, add this `if` statement at the bottom of your control file to make `main()` run when the Python file is executed, and `shutdown()` happen when the Python file's execution is canceled:
 
 ``` python
 if __name__ == '__main__':
@@ -569,11 +582,11 @@ if __name__ == '__main__':
         print("Successfully shut down!")
 ```
 
-## Run Your Python Control Code
+### Run Your Python Control Code
 
 Open the terminal of the computer that is controlling the robot running `viam-server` that your ESP32-backed robot is a remote of.
 
-If the computer is a single-board computer like a Raspberry Pi, ssh into it from your local development machine.
+If the computer is a single-board computer like a Raspberry Pi, `ssh` into it from your local development machine.
 
 Run the following command, replacing the brackets `<>` with your chosen file path and file name: `python <path-to-your-file>/<your-control-file-name>.py`
 
