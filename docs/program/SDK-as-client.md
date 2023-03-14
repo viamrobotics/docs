@@ -1,24 +1,24 @@
 ---
-title: "Write a Client Application with Viam's SDKs"
-linkTitle: "SDKs"
-weight: 30
+title: "Program your Robot with Viam's SDKs"
+linkTitle: "Program your Robot with Viam's SDKs"
+weight: 40
 type: "docs"
-description: "An introduction to Viam's SDKs and how to use them to access and control your robot."
+description: "An introduction to Viam's SDKs and how to use them to write code to access and control your robot."
 tags: ["client", "sdk"]
 ---
 
-Viam offers Software Development Kits that wrap the `viam-server` [gRPC](https://grpc.io/) [APIs](https://github.com/viamrobotics/api) and streamline connection, authentication, and encryption.
+Viam offers Software Development Kits (SDKs) that wrap the `viam-server` [gRPC](https://grpc.io/) [APIs](https://github.com/viamrobotics/api) and streamline connection, authentication, and encryption.
 
 <img src="../img/SDK-as-client/image1.png" alt="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client."><br>
 
 Use the SDK of your preferred language to write code to control your robots.
 
-Viam currently offers Client SDK libraries for the following two languages:
+Viam currently offers SDKs for the following two languages:
 
 * [Python SDK](https://python.viam.dev/)
 * [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 
-Click on the above links for more information on installation and usage.
+Click on the links above to read more about installation and usage of each SDK.
 
 ## Installation
 
@@ -58,11 +58,11 @@ You can find more examples of Viam's SDKs on the [Python SDK example GitHub repo
 
 ### Connection Code Snippets
 
-To get starting writing connection and control code with your preferred SDK, navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
+To get starting writing programs with your preferred SDK, navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
 
-These connection code snippets import all the of necessary libraries and set up a connection with the Viam app in the cloud.
+These boilerplate connection code snippets import all of the necessary libraries and set up a client connection to your remote or local robot.
 
-Your connection code snippet should look similar to this:
+Your boilerplate connection code snippet should look similar to this:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -220,7 +220,7 @@ distance, err := ultra.Readings(context.Background())
 {{% /tab %}}
 {{< /tabs >}}
 
-### Use the Viam Vision Service
+#### Use the Viam Vision Service
 
 The following code gets the robot's [Vision Service](https://python.viam.dev/autoapi/viam/services/vision/index.html?highlight=vision#module-viam.services.vision) and then runs a detection model on an image to get a list of detections from the image.
 
@@ -263,3 +263,8 @@ Navigate to your computer's terminal and run the following commands, editing the
 
 * Python: `python ~/myCode/myViamFile.py`
 * Go: `go run ~/myCode/myViamFile.py`
+
+## Next Steps
+
+You can also use the Viam SDKs to create custom components and provide additional functionality to a robot.
+See [Extend Viam](../extend/modular-resources/) for more information.
