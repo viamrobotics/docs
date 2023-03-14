@@ -48,7 +48,7 @@ When you create a sub-part, a *remote* connection is established between the mai
 
 ### Configure a remote
 
-To establish a remote connection between parts of two different robots, configure a `remote`.
+To establish a connection between a part of one robot and a part of a second robot, configure a `remote` on the first robot's part.
 
 1. Go to the Viam app robot page of the robot part to which you wish to establish the remote.
    This is the robot part whose resources will be accessible to the other robot part.
@@ -73,7 +73,7 @@ To establish a remote connection between parts of two different robots, configur
 ## Usage
 
 Once your remote is configured, you can able to access all the components and services configured on the remote robot part as though they are resources of your main robot.
-The difference is that the names of the components have the remote robot part name prepended to them.
+The only difference is that the names of the components have the remote robot part name prepended to them.
 For example, instead of calling
 
 ```python
