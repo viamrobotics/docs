@@ -244,7 +244,7 @@ Add `from viam.proto.common import Pose, WorldState` to your import list and add
 # Generate a simple pose move +100mm in the +Z direction of the arm
 cmd_arm_pose = await my_arm_component.get_end_position()
 cmd_arm_pose.z += 100.0
-await arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
+await my_arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
 ```
 
 {{% /tab %}}
@@ -336,7 +336,7 @@ async def main():
     # Generate a simple pose move +100mm in the +Z direction of the arm
     cmd_arm_pose = await my_arm_component.get_end_position()
     cmd_arm_pose.z += 100.0
-    await arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
+    await my_arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
 
     # Don't forget to close the robot when you're done!
     await robot.close()
