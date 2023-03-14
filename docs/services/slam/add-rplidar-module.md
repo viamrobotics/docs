@@ -1,7 +1,7 @@
 ---
 title: "Add a Rplidar as a Modular Component"
 linkTitle: "Add a Rplidar as a Modular Component"
-weight: 70
+weight: 40
 type: "docs"
 description: "How to add a Rplidar as a modular component of your robot."
 tags: ["slam", "services"]
@@ -13,8 +13,6 @@ The SLAM Service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
-
-## Instructions
 
 First, install the Rplidar Module:
 
