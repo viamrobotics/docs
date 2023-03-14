@@ -10,12 +10,12 @@ icon: "img/components/arm.png"
 ---
 
 A robotic arm is a serial chain of joints and links, with a fixed end and an end effector end.
-Joints may rotate, translate, or both, while a link is a rigid connector between joint.
+Joints may rotate, translate, or both, while a link is a rigid connector between joints.
 
 In simple terms, an *arm* has two ends: one fixed in place, and one with a device you can position.
 
-When controlling an arm component, you can place the end effector device at arbitrary cartesian positions relative to the base of the arm.
-You can do this by calling the `MoveToPosition` method to move the end effector from its origin to specified cartesian coordinates, or by controlling the joint positions directly with the `MoveToJointPositions` method.
+When controlling an arm component, you can place the end effector at arbitrary cartesian positions relative to the base of the arm.
+You can do this by calling the `MoveToPosition` method to move the end effector to specified cartesian coordinates, or by controlling the joint positions directly with the `MoveToJointPositions` method.
 
 When controlling an arm with `viam-server`, the following features are implemented for you:
 
