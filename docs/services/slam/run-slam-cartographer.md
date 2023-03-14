@@ -66,7 +66,7 @@ brew tap viamrobotics/brews && brew install carto-grpc-server
 
 ### Add your Rdiplar as a Modular Component
 
-Follow [these instructions](../add-rplidar-module) to add your Rplidar device as a modular component of your robot.
+Follow [these instructions](../../../program/extend/modular-resources/add-rplidar-module/) to add your Rplidar device as a modular component of your robot.
 
 ### Add the Cartographer Service
 
@@ -120,7 +120,7 @@ In the **CONFIG** tab, select the **Raw JSON** mode, then copy/paste the followi
   ]
 ```
 
-    {{% /expand %}}
+  {{% /expand %}}
 
 5. Now, change the `data_dir` attribute on line 8 to point to to a directory on your machine that you want to store your SLAM data in.
 See [SLAM: Data Directory](../#data_dir-data-directory) for more information and notes on structure.
@@ -342,7 +342,7 @@ If maps are not building the way you expect, make sure your Rplidar is secure an
 
 ## Next Steps
 
-Try adjusting Cartographer's [config parameters](../#library-specific-config_params-1) to fine-tune the SLAM algorithm.
+Try adjusting Cartographer's [config parameters](../#cartographer-config_params) to fine-tune the SLAM algorithm.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 

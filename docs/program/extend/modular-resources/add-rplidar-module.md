@@ -105,3 +105,30 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
 5. Save the config.
 
 Check the **LOGS** tab of your robot in the Viam app to make sure your Rplidar has connected and no errors are being raised.
+
+## Troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+{{< snippet "social.md" >}}
+
+## Next Steps
+
+<div class="container text-center">
+  <div class="row">
+        <div class="col hover-card">
+          <a href="../../../../services/slam/run-slam-cartographer">
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
+                Cartographer SLAM
+            </h4>
+          </a>
+          <p style="text-align: left;"> Run Cartographer SLAM on your Robot with a Rplidar. </p>
+        </div>
+      <div class="col hover-card">
+          <a href="../../../../services/slam">
+              <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">SLAM Service</h4>
+              <p style="text-align: left;"> Explanation of the SLAM Service, its configuration, and its functionality. </p>
+          <a>
+      </div>
+    </div>
+</div>

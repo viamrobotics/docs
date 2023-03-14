@@ -25,11 +25,13 @@ The following SLAM libraries are integrated:
 - [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
 - [Cartographer](https://github.com/cartographer-project)
 
+### Requirements
+
 Install the binaries required to utilize these libraries on your machine by running the following commands:
 
 `ORB-SLAM3`:
 {{< tabs >}}
-{{% tab name="AArch64/ARM64" %}}
+{{% tab name="Linux aarch64" %}}
 
 ``` bash
 sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
@@ -37,7 +39,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
 
 {{< /tab >}}
-{{% tab name="x86_64" %}}
+{{% tab name="Linux x86_64" %}}
 
 ```bash
 sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
@@ -83,7 +85,7 @@ Navigate to the **CONFIG** tab on your robot's page, and from there, navigate to
 Add a service with type `slam`, whatever name you want, and the model of the library you want to use.
 
 Use [this JSON template](#integrated-library-orb-slam3) to configure the service with the ORB-SLAM3 library, and [this JSON template](#integrated-library-cartographer) to configure the service with the Cartographer library.
-Then, adjust general attributes and library-specific config-params.
+Then, adjust general attributes and library-specific `config-params`.
 
 ### General Attributes
 
@@ -114,8 +116,8 @@ You can use these parameters to fine-tune the algorithms these libraries utilize
 
 To see library-specific `config_params` available, navigate to these sections:
 
-- [Integrated Library: ORB-SLAM3](#library-specific-config_params)
-- [Integrated Library: Cartographer](#library-specific-config_params-1)
+- [Integrated Library: ORB-SLAM3](#orb-slam3-config_params)
+- [Integrated Library: Cartographer](#cartographer-config_params)
 
 ### `data_dir`: Data Directory
 
@@ -204,7 +206,7 @@ An example configuration for running ORB-SLAM3 in offline mode:
 ]
 ```
 
-### Library-Specific `config_params`
+### ORB-SLAM3 `config_params`
 
 | Parameter Mode | Description | Inclusion | Default Value |
 | -------------- | ----------- | --------- | ------------- |
@@ -229,7 +231,7 @@ Specify whether this LIDAR data is preloaded or collected live by a Rplidar devi
 
 #### Live Mode
 
-To run Cartographer in live mode, follow [these instructions](add-rplidar-module) to add your Rplidar device as a modular component of your robot, and refer to this example configuration:
+To run Cartographer in live mode, follow [these instructions](../../../program/extend/modular-resources/add-rplidar-module/) to add your Rplidar device as a modular component of your robot, and refer to this example configuration:
 
 {{< tabs >}}
 {{% tab name="Linux" %}}
@@ -360,19 +362,20 @@ Refer to this example configuration for running Cartographer SLAM in offline mod
 
 For more information about running [Cartographer in Offline Mode](run-slam-cartographer#run-cartographer-in-offline-mode-with-a-dataset), see [this tutorial](run-slam-cartographer).
 
-### Library-Specific `config_params`
+### Cartographer `config_params`
 
-| Parameter Mode | Description | Inclusion | Default Value | Tuning Priority | Notes |
-| -------------- | ----------- | --------- | ------------- | --------------- |----- |
-| `mode` | `2d` | **Required** | None | High | |
-| `optimize_every_n_nodes` | How often data is optimized against past data. | Optional | `3` | High | |
-| `num_range_data` | Number of measurements in each submap. | Optional | `100` | High | |
-| `missing_data_ray_length` | Replaces the length of ranges that are further than max_range with this value. | Optional | `25` | Medium | Nominally set to max length. |
-| `max_range` | Maximum range of valid measurements. | Optional | `25` | Medium | Optional |
-| `min_range` | Minimum range of valid measurements. | Optional | `0.2` | Medium | Optional |
-| `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | High | Only for LOCALIZING mode. |
-| `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | High | Only for UPDATING mode. |
-| `min_covered_area` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Medium | Only for UPDATING mode. |
-| `min_added_submaps_count` | The minimum number of added submaps before deletion of the old submap is considered. | Optional | `1` | Medium | Only for UPDATING mode. |
-| `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Low | Normalized with translational and rotational. |
-| `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Low | Normalized with occupied and rotational. |
+| Parameter Mode | Description | Inclusion | Default Value | Notes |
+| -------------- | ----------- | --------- | ------------- | ----- |
+| `mode` | `2d` | **Required** | None | |
+| `optimize_every_n_nodes` | How many trajectory nodes are inserted before the global optimization is run. | Optional | `3` | |
+| `num_range_data` | Number of measurements in each submap. | Optional | `100` | |
+| `missing_data_ray_length` | Replaces the length of ranges that are further than max_range with this value. | Optional | `25` | Nominally set to max length. |
+| `max_range` | Maximum range of valid measurements. | Optional | `25` | |
+| `min_range` | Minimum range of valid measurements. | Optional | `0.2` | |
+| `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | Only for LOCALIZING mode. |
+| `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | Only for UPDATING mode. |
+| `min_covered_area` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Only for UPDATING mode. |
+| `min_added_submaps_count` | The minimum number of added submaps before deletion of the old submap is considered. | Optional | `1` | Only for UPDATING mode. |
+| `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Normalized with translational and rotational. |
+| `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Normalized with occupied and rotational. |
+| `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | `1.0` | Normalized with translational and occupied. |
