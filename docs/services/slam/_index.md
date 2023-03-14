@@ -331,7 +331,34 @@ To run Cartographer in live mode, follow [these instructions](add-rplidar-module
 
 #### Offline Mode
 
-For more information and an example configuration for running [Cartographer in Offline Mode](run-slam-cartographer#run-cartographer-in-offline-mode-with-a-dataset), see [this tutorial](run-slam-cartographer).
+Refer to this example configuration for running Cartographer SLAM in offline mode:
+
+```json
+    {
+      "services": [
+        {
+          "attributes": {
+            "config_params": {
+              "min_range": "0.3",
+              "max_range": "12",
+              "mode": "2d"
+            },
+            "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>/data",
+            "map_rate_sec": 60,
+            "data_rate_msec": 200,
+            "delete_processed_data": false,
+            "use_live_data": false,
+            "sensors": []
+          },
+          "model": "cartographer",
+          "name": "run-slam-offline",
+          "type": "slam"
+        }
+      ]
+    }
+```
+
+For more information about running [Cartographer in Offline Mode](run-slam-cartographer#run-cartographer-in-offline-mode-with-a-dataset), see [this tutorial](run-slam-cartographer).
 
 ### Library-Specific `config_params`
 
