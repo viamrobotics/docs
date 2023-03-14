@@ -10,8 +10,10 @@ tags: ["base", "microcontrollers", "app", "esp32"]
 ## Hardware Requirements
 
 - An [ESP-32 microcontroller with a development board](https://www.amazon.com/gp/product/B087TNPQCV/ref=ppx_yo_dt_b_asin_title_o06_s00?ie=UTF8&psc=1).
-
-<!-- TODO: extension boards etc, may need to consult further with nick m. -->
+- An [ESP32 Breakout Terminal GPIO Expansion Board](https://www.amazon.com/gp/product/B09VMXQTM8/ref=ppx_yo_dt_b_asin_title_o06_s01?ie=UTF8&th=1)
+- A [5V Relay Module](https://www.amazon.com/gp/product/B08PP8HXVD/ref=ppx_yo_dt_b_asin_title_o03_s00?ie=UTF8&psc=1)
+- [USB 5V Buck Converter Module](https://www.amazon.com/UCTRONICS-Converter-Transformer-Voltage-Regulator/dp/B07XXWQ49N/ref=sr_1_9?crid=3QAVCP90TW32&keywords=12v+buck+buck&qid=1678304842&s=electronics&sprefix=12v+buck+buck%2Celectronics%2C89&sr=1-9)
+<!-- - specific power supply cord -->
 
 Each of these requirements are for creating one Plant Watering unit.
 
@@ -20,15 +22,6 @@ Each of these requirements are for creating one Plant Watering unit.
 - An analog [soil moisture sensor](https://www.amazon.com/gp/product/B07SYBSHGX/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1) (connected to ESP32).
 - An analog [water level sensor](https://www.amazon.com/CQRobot-Consumption-Resistance-Temperature-Properties/dp/B07ZMGW3QJ/ref=sr_1_4?crid=1542UHAWN6D43&keywords=water+immersion+sensor+arduino&qid=1678306219&sprefix=water+immersion+sensor+arduino%2Caps%2C92&sr=8-4) (connected to ESP32).
 - [DC 5V Mini Water Pump](https://www.amazon.com/gp/product/B09TGK9N5Q/ref=ppx_yo_dt_b_asin_title_o03_s01?ie=UTF8&psc=1) (connected to ESP-32).
-<!-- power supplies? water level reader?
-
-raspberry pi?  -->
-
-## Hardware Setup
-
-<!-- TODO: steps and pictures for getting all the hardware pieced together -->
-<!-- - add in a note saying to write down what GPIO pins you've connected the pumps etc. to, can show where you'll put them in / link back and forth in between nested dictionaries setup below & main.RS pin exposing
-- add in a note saying not to connect to power supply until you're doing the software setup with your micro-RDK-- can link to section from microcontroller setup guide -->
 
 ## Getting Started
 
@@ -38,7 +31,19 @@ That guide provides detailed instructions on getting all the necessary prerequis
 
 When following this tutorial, you will modify the <file>Main.rs</file> Rust code from the [project template you generated when following these instructions](../../installation/microcontrollers#generate-a-new-project-from-the-micro-rdk-template), and add a Python file utilizing the Viam Python SDK to control the plant watering robot.
 
+## Hardware Setup
+
+- breakout board
+- inputs setup: need to link to `Main.rs` edits to go in between
+- box setup
+
+<!-- TODO: steps and pictures for getting all the hardware pieced together -->
+<!-- - add in a note saying to write down what GPIO pins you've connected the pumps etc. to, can show where you'll put them in / link back and forth in between nested dictionaries setup below & main.RS pin exposing
+- add in a note saying not to connect to power supply until you're doing the software setup with your micro-RDK-- can link to section from microcontroller setup guide -->
+
 ### Edit `Main.rs` from the Micro-RDK Template
+
+These modifications use the ESP-IDF HAL library to read analog inputs from several GPIO pins on the breakout board attached to the microcontroller, and converts them to ResourceTypes to create an Esp32Robot instance.
 
 Make sure that when following these instructions, you have not yet modified your code from the template available [here](https://github.com/viamrobotics/micro-rdk-template/blob/main/src/main.rs).
 
@@ -50,39 +55,39 @@ You can also copy the example <file>Main.rs</file> code from [here](#full-exampl
 
     {{%expand "use declarations" %}}
 
-    ``` rust {class="line-numbers linkable-line-numbers"}
+``` rust {class="line-numbers linkable-line-numbers"}
 
-    use anyhow::bail;
-    use esp_idf_hal::gpio::OutputPin;
-    use esp_idf_hal::prelude::Peripherals;
-    use esp_idf_hal::task::notify;
-    use esp_idf_svc::eventloop::EspSystemEventLoop;
-    use esp_idf_svc::mdns::EspMdns;
-    use esp_idf_svc::netif::{EspNetif, EspNetifWait};
-    use esp_idf_svc::wifi::EspWifi;
-    use esp_idf_sys::esp_wifi_set_ps;
-    use esp_idf_sys::vTaskDelay;
-    use esp_idf_sys::{self as _, TaskHandle_t}; // If using the `binstart` feature of `esp-idf-sys`, always keep this module imported
-    use futures_lite::future::block_on;
-    use hyper::server::conn::Http;
-    use log::*;
-    use mini_rdk::esp32::exec::Esp32Executor;
-    use mini_rdk::esp32::grpc::GrpcServer;
-    use mini_rdk::esp32::robot::Esp32Robot;
-    use mini_rdk::esp32::robot::ResourceType;
-    use mini_rdk::esp32::robot_client::RobotClientConfig;
-    use mini_rdk::esp32::tcp::Esp32Listener;
-    use mini_rdk::esp32::tls::{Esp32Tls, Esp32TlsServerConfig};
-    use mini_rdk::proto::common::v1::ResourceName;
-    use std::cell::RefCell;
-    use std::collections::HashMap;
-    use std::net::SocketAddr;
-    use std::rc::Rc;
-    use std::sync::Arc;
-    use std::sync::Mutex;
-    use std::time::Duration;
+use anyhow::bail;
+use esp_idf_hal::gpio::OutputPin;
+use esp_idf_hal::prelude::Peripherals;
+use esp_idf_hal::task::notify;
+use esp_idf_svc::eventloop::EspSystemEventLoop;
+use esp_idf_svc::mdns::EspMdns;
+use esp_idf_svc::netif::{EspNetif, EspNetifWait};
+use esp_idf_svc::wifi::EspWifi;
+use esp_idf_sys::esp_wifi_set_ps;
+use esp_idf_sys::vTaskDelay;
+use esp_idf_sys::{self as _, TaskHandle_t}; // If using the `binstart` feature of `esp-idf-sys`, always keep this module imported
+use futures_lite::future::block_on;
+use hyper::server::conn::Http;
+use log::*;
+use mini_rdk::esp32::exec::Esp32Executor;
+use mini_rdk::esp32::grpc::GrpcServer;
+use mini_rdk::esp32::robot::Esp32Robot;
+use mini_rdk::esp32::robot::ResourceType;
+use mini_rdk::esp32::robot_client::RobotClientConfig;
+use mini_rdk::esp32::tcp::Esp32Listener;
+use mini_rdk::esp32::tls::{Esp32Tls, Esp32TlsServerConfig};
+use mini_rdk::proto::common::v1::ResourceName;
+use std::cell::RefCell;
+use std::collections::HashMap;
+use std::net::SocketAddr;
+use std::rc::Rc;
+use std::sync::Arc;
+use std::sync::Mutex;
+use std::time::Duration;
 
-    ```
+```
 
     {{% /expand%}}
 
@@ -90,94 +95,94 @@ You can also copy the example <file>Main.rs</file> code from [here](#full-exampl
 
     {{%expand "let robot = { ... }" %}}
 
-    ``` rust {class="line-numbers linkable-line-numbers"}
-    let robot = {
-            use esp_idf_hal::adc::config::Config;
-            use esp_idf_hal::adc::{self, AdcChannelDriver, AdcDriver, Atten11dB};
-            use esp_idf_hal::gpio::PinDriver;
-            use mini_rdk::esp32::analog::Esp32AnalogReader;
-            use mini_rdk::esp32::board::EspBoard;
+``` rust {class="line-numbers linkable-line-numbers"}
+let robot = {
+        use esp_idf_hal::adc::config::Config;
+        use esp_idf_hal::adc::{self, AdcChannelDriver, AdcDriver, Atten11dB};
+        use esp_idf_hal::gpio::PinDriver;
+        use mini_rdk::esp32::analog::Esp32AnalogReader;
+        use mini_rdk::esp32::board::EspBoard;
 
-            let pins = vec![
-                PinDriver::output(periph.pins.gpio18.downgrade_output())?,
-                PinDriver::output(periph.pins.gpio19.downgrade_output())?,
-                PinDriver::output(periph.pins.gpio21.downgrade_output())?,
-            ];
+        let pins = vec![
+            PinDriver::output(periph.pins.gpio18.downgrade_output())?,
+            PinDriver::output(periph.pins.gpio19.downgrade_output())?,
+            PinDriver::output(periph.pins.gpio21.downgrade_output())?,
+        ];
 
-            let adc1 = Rc::new(RefCell::new(AdcDriver::new(
-                periph.adc1,
-                &Config::new().calibration(true),
-            )?));
+        let adc1 = Rc::new(RefCell::new(AdcDriver::new(
+            periph.adc1,
+            &Config::new().calibration(true),
+        )?));
 
-            let adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
-                AdcChannelDriver::new(periph.pins.gpio34)?;
-            let analog1 = Esp32AnalogReader::new("Plant5".to_string(), adc_chan, adc1.clone());
+        let adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
+            AdcChannelDriver::new(periph.pins.gpio34)?;
+        let analog1 = Esp32AnalogReader::new("Plant5".to_string(), adc_chan, adc1.clone());
 
-            let adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
-                AdcChannelDriver::new(periph.pins.gpio32)?;
-            let analog2 = Esp32AnalogReader::new("Plant3".to_string(), adc_chan, adc1.clone());
-            let adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
-                AdcChannelDriver::new(periph.pins.gpio33)?;
-            let analog3 = Esp32AnalogReader::new("Plant4".to_string(), adc_chan, adc1.clone());
+        let adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
+            AdcChannelDriver::new(periph.pins.gpio32)?;
+        let analog2 = Esp32AnalogReader::new("Plant3".to_string(), adc_chan, adc1.clone());
+        let adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
+            AdcChannelDriver::new(periph.pins.gpio33)?;
+        let analog3 = Esp32AnalogReader::new("Plant4".to_string(), adc_chan, adc1.clone());
 
-            let board = EspBoard::new(
-                pins,
-                vec![
-                    Rc::new(RefCell::new(analog1)),
-                    Rc::new(RefCell::new(analog2)),
-                    Rc::new(RefCell::new(analog3)),
-                ],
-            );
+        let board = EspBoard::new(
+            pins,
+            vec![
+                Rc::new(RefCell::new(analog1)),
+                Rc::new(RefCell::new(analog2)),
+                Rc::new(RefCell::new(analog3)),
+            ],
+        );
 
-            let board = Arc::new(Mutex::new(board));
+        let board = Arc::new(Mutex::new(board));
 
-            let mut res: mini_rdk::esp32::robot::ResourceMap = HashMap::with_capacity(1);
+        let mut res: mini_rdk::esp32::robot::ResourceMap = HashMap::with_capacity(1);
 
-            res.insert(
-                ResourceName {
-                    namespace: "rdk".to_string(),
-                    r#type: "component".to_string(),
-                    subtype: "board".to_string(),
-                    name: "board".to_string(),
-                },
-                ResourceType::Board(board),
-            );
+        res.insert(
+            ResourceName {
+                namespace: "rdk".to_string(),
+                r#type: "component".to_string(),
+                subtype: "board".to_string(),
+                name: "board".to_string(),
+            },
+            ResourceType::Board(board),
+        );
 
-            Esp32Robot::new(res)
-        };
+        Esp32Robot::new(res)
+    };
 
-        let (ip, _wifi) = {
-            let wifi = start_wifi(periph.modem, sys_loop_stack)?;
-            (wifi.sta_netif().get_ip_info()?.ip, wifi)
-        };
+    let (ip, _wifi) = {
+        let wifi = start_wifi(periph.modem, sys_loop_stack)?;
+        (wifi.sta_netif().get_ip_info()?.ip, wifi)
+    };
 
-        let client_cfg = { RobotClientConfig::new(ROBOT_SECRET.to_string(), ROBOT_ID.to_string(), ip) };
+    let client_cfg = { RobotClientConfig::new(ROBOT_SECRET.to_string(), ROBOT_ID.to_string(), ip) };
 
-        let hnd = match mini_rdk::esp32::robot_client::start(client_cfg) {
-            Err(e) => {
-                log::error!("couldn't start robot client {:?} will start the server", e);
-                None
-            }
-            Ok(hnd) => Some(hnd),
-        };
-
-        // start the robot server service
-        let _mdms = {
-            let mut mdns = EspMdns::take()?;
-            mdns.set_hostname(ROBOT_NAME)?;
-            mdns.set_instance_name(ROBOT_NAME)?;
-            mdns.add_service(None, "_rpc", "_tcp", 80, &[])?;
-            mdns
-        };
-
-        if let Err(e) = runserver(robot, hnd) {
-            log::error!("robot server failed with error {:?}", e);
-            panic!()
+    let hnd = match mini_rdk::esp32::robot_client::start(client_cfg) {
+        Err(e) => {
+            log::error!("couldn't start robot client {:?} will start the server", e);
+            None
         }
+        Ok(hnd) => Some(hnd),
+    };
 
+    // start the robot server service
+    let _mdms = {
+        let mut mdns = EspMdns::take()?;
+        mdns.set_hostname(ROBOT_NAME)?;
+        mdns.set_instance_name(ROBOT_NAME)?;
+        mdns.add_service(None, "_rpc", "_tcp", 80, &[])?;
+        mdns
+    };
+
+    if let Err(e) = runserver(robot, hnd) {
+        log::error!("robot server failed with error {:?}", e);
         panic!()
     }
-    ```
+
+    panic!()
+}
+```
 
     {{% /expand%}}
 
@@ -185,65 +190,65 @@ You can also copy the example <file>Main.rs</file> code from [here](#full-exampl
 
     {{%expand "runserver()" %}}
 
-    ``` rust {class="line-numbers linkable-line-numbers"}
-    fn runserver(robot: Esp32Robot, client_handle: Option<TaskHandle_t>) -> anyhow::Result<()> {
-        let cfg = {
-            let cert = include_bytes!(concat!(env!("OUT_DIR"), "/ca.crt"));
-            let key = include_bytes!(concat!(env!("OUT_DIR"), "/key.key"));
-            Esp32TlsServerConfig::new(
-                cert.as_ptr(),
-                cert.len() as u32,
-                key.as_ptr(),
-                key.len() as u32,
-            )
-        };
-        let tls = Box::new(Esp32Tls::new_server(&cfg));
-        let address: SocketAddr = "0.0.0.0:80".parse().unwrap();
-        let mut listener = Esp32Listener::new(address.into(), Some(tls))?;
-        let exec = Esp32Executor::new();
-        let srv = GrpcServer::new(Arc::new(Mutex::new(robot)));
-        if let Some(hnd) = client_handle {
-            if unsafe { notify(hnd, 1) } {
-                log::info!("successfully notified client task");
-                unsafe {
-                    vTaskDelay(1000);
-                };
-            } else {
-                log::error!("failed to notity client task had handle {:?}", hnd);
-            }
+``` rust {class="line-numbers linkable-line-numbers"}
+fn runserver(robot: Esp32Robot, client_handle: Option<TaskHandle_t>) -> anyhow::Result<()> {
+    let cfg = {
+        let cert = include_bytes!(concat!(env!("OUT_DIR"), "/ca.crt"));
+        let key = include_bytes!(concat!(env!("OUT_DIR"), "/key.key"));
+        Esp32TlsServerConfig::new(
+            cert.as_ptr(),
+            cert.len() as u32,
+            key.as_ptr(),
+            key.len() as u32,
+        )
+    };
+    let tls = Box::new(Esp32Tls::new_server(&cfg));
+    let address: SocketAddr = "0.0.0.0:80".parse().unwrap();
+    let mut listener = Esp32Listener::new(address.into(), Some(tls))?;
+    let exec = Esp32Executor::new();
+    let srv = GrpcServer::new(Arc::new(Mutex::new(robot)));
+    if let Some(hnd) = client_handle {
+        if unsafe { notify(hnd, 1) } {
+            log::info!("successfully notified client task");
+            unsafe {
+                vTaskDelay(1000);
+            };
         } else {
-            log::error!("no handle")
+            log::error!("failed to notity client task had handle {:?}", hnd);
         }
-        loop {
-            let stream = listener.accept()?;
-            block_on(exec.run(async {
-                let err = Http::new()
-                    .with_executor(exec.clone())
-                    .http2_max_concurrent_streams(1)
-                    .serve_connection(stream, srv.clone())
-                    .await;
-                if err.is_err() {
-                    log::error!("server error {}", err.err().unwrap());
-                }
-            }));
-        }
+    } else {
+        log::error!("no handle")
     }
-    ```
+    loop {
+        let stream = listener.accept()?;
+        block_on(exec.run(async {
+            let err = Http::new()
+                .with_executor(exec.clone())
+                .http2_max_concurrent_streams(1)
+                .serve_connection(stream, srv.clone())
+                .await;
+            if err.is_err() {
+                log::error!("server error {}", err.err().unwrap());
+            }
+        }));
+    }
+}
+```
 
     {{% /expand%}}
 
 ## Add Python Control Code
 
-Now, to control your ESP32 backed robot, add Python control code to run on your ESP32.
+Now, to control your ESP32-backed robot, add Python control code to run on your ESP32.
 
-While setting up your ESP32 backed robot, you should have added it as a remote of another robot that is controlled by a computer with the necessary processing power to run the full version of `viam-server`.
+While setting up your ESP32-backed robot, you should have added it as a remote of another robot that is controlled by a computer with the necessary processing power to run the full version of `viam-server`.
 
 - This might be just your local development machine.
 Find instructions for installing and running `viam-server` on MacOs or Linux machines [here.](../../installation/install/)
 - In the example code for this tutorial, we are using a Raspberry Pi single-board computer to act as our secondary robot instance.
 See our [Raspberry Pi Setup Guide](../../installation/prepare/rpi-setup/) for information on how to get `viam-server` up and running on your Raspberry Pi.
 
-Make sure this robot is running an instance of `viam-server` and has a live connection, with the ESP32 backed-robot [added as a remote](../../installation/microcontrollers#configure-the-esp32-as-a-remote).
+Make sure this robot is running an instance of `viam-server` and has a live connection, with the ESP32-backed robot [added as a remote](../../installation/microcontrollers#configure-the-esp32-as-a-remote).
 
 Follow the below instructions to start working on your Python Control Code:
 
