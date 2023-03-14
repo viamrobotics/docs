@@ -367,12 +367,12 @@ For more information about running [Cartographer in Offline Mode](run-slam-carto
 | `mode` | `2d` | **Required** | None | High | |
 | `optimize_every_n_nodes` | How often data is optimized against past data. | Optional | `3` | High | |
 | `num_range_data` | Number of measurements in each submap. | Optional | `100` | High | |
-| `missing_data_ray_length` | Set length of rays that were missing. | Optional | `25` | Medium | Nominally set to max length. |
+| `missing_data_ray_length` | Replaces the length of ranges that are further than max_range with this value. | Optional | `25` | Medium | Nominally set to max length. |
 | `max_range` | Maximum range of valid measurements. | Optional | `25` | Medium | Optional |
 | `min_range` | Minimum range of valid measurements. | Optional | `0.2` | Medium | Optional |
-| `max_submaps_to_keep` | Number of submaps to use and track for localization mapping. | Optional | `3` | High | Only for LOCALIZING mode. |
-| `fresh_submaps_count` | Length of submap history considered when updating mapping. | Optional | `3` | High | Only for UPDATING mode. |
-| `min_covered_area` | Max area, in square meters, that could have changed when updating mapping. | Optional | `1.0` | Medium | Only for UPDATING mode. |
-| `min_added_submaps_count` | Minimum number of added submaps during run when updating mapping. | Optional | `1` | Medium | Only for UPDATING mode. |
+| `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | High | Only for LOCALIZING mode. |
+| `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | High | Only for UPDATING mode. |
+| `min_covered_area` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Medium | Only for UPDATING mode. |
+| `min_added_submaps_count` | The minimum number of added submaps before deletion of the old submap is considered. | Optional | `1` | Medium | Only for UPDATING mode. |
 | `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Low | Normalized with translational and rotational. |
 | `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Low | Normalized with occupied and rotational. |
