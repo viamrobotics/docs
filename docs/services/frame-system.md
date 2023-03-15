@@ -1,7 +1,7 @@
 ---
 title: "The Robot Frame System"
 linkTitle: "Frame System"
-description: "Explanation of the Robot Frame System service, its configuration, and its functionality."
+description: "Explanation of the Frame System service, its configuration, and its functionality."
 type: docs
 weight: 45
 tags: ["frame system", "services"]
