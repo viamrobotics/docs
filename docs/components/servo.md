@@ -106,22 +106,7 @@ The `gpio` model has the following attributes, which are optional to define in y
 | `max_width_us`          | uint    | Override the safe maximum pulse width in microseconds. This affects PWM calculation. |
 | `max_rotation`           | uint    | Default: 180. Specifies the maximum angle of rotation based on the hardware. Only for the `pi` model. |
 
-## API
-
-The servo component supports the following methods:
-
-| Method Name | Go | Python | Description |
-| ----------- | -- | ------ | ----------- |
-| [Move](#move) | [Move][go_servo] | [move][python_move] | Move the servo to the desired angle. |
-| [Position](#position) | [Position][go_servo] | [get_position][python_get_position] | Get the current angle of the servo. |
-| [Stop](#stop) | [Stop][go_servo] | [stop][python_stop] | Stop the servo. |
-
-[go_servo]: https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo
-[python_move]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.move
-[python_get_position]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.get_position
-[python_stop]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.stop
-
-### Control your servo with Viam's Client SDK Libraries
+## Control your servo with Viam's client SDK libraries
 
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)
 - [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/servo)
@@ -208,6 +193,21 @@ func main() {
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## API
+
+The servo component supports the following methods:
+
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
+| [Move](#move) | [Move][go_servo] | [move][python_move] | Move the servo to the desired angle. |
+| [Position](#position) | [Position][go_servo] | [get_position][python_get_position] | Get the current angle of the servo. |
+| [Stop](#stop) | [Stop][go_servo] | [stop][python_stop] | Stop the servo. |
+
+[go_servo]: https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo
+[python_move]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.move
+[python_get_position]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.get_position
+[python_stop]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.stop
 
 ### Move
 
