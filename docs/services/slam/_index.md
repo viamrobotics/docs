@@ -231,7 +231,7 @@ Specify whether this LIDAR data is preloaded or collected live by a Rplidar devi
 
 #### Live Mode
 
-To run Cartographer in live mode, follow [these instructions](../../../program/extend/modular-resources/add-rplidar-module/) to add your Rplidar device as a modular component of your robot, and refer to this example configuration:
+To run Cartographer in live mode, follow [these instructions](../../program/extend/modular-resources/add-rplidar-module/) to add your Rplidar device as a modular component of your robot, and refer to this example configuration:
 
 {{< tabs >}}
 {{% tab name="Linux" %}}
