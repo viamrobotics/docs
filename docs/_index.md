@@ -33,13 +33,13 @@ type: "docs"
             <p style="text-align: left;">Install viam-server on your robot and connect your robot to the Viam app.</p>
         </a>
     </div>
-    <a href="components">
     <div class="col hover-card">
-            <img src="img/components.png" alt="Components" style="padding-top: 1em">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Components</h4>
-            <p style="text-align: left;">Configure and control the components of your robot.</p>
-    </div>
+    <a href="components">
+        <img src="img/components.png" alt="Components" style="padding-top: 1em">
+        <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Components</h4>
+        <p style="text-align: left;">Configure and control the components of your robot.</p>
     </a>
+    </div>
     <div class="col hover-card">
         <a href="services">
             <img src="img/services.png" alt="Services" style="padding-top: 1em">
