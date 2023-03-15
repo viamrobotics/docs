@@ -260,7 +260,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-
 **Parameters:**
 
 - `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
