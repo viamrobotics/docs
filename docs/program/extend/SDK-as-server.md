@@ -22,8 +22,8 @@ In other words, a custom component implementation is a way for you to integrate 
 ## Why use the SDK to create a custom component implementation?
 
 While the main Viam RDK is written in Go, you can create custom components using the Viam SDKs (like Python) and connect them to a robot as a remote component.
-This allows you to use hardware that is not natively supported by Viam, without having to use Go if you prefer not to.
-Once you have created and registered your custom component with `viam-server`, you will be able to control and monitor your component from the Viam SDK and from the [Viam app](https://app.viam.com/).
+This allows you to use hardware that is not natively supported by Viam.
+Once you create and register your custom component with `viam-server`, you will be able to control and monitor your component from the Viam SDK and from the [Viam app](https://app.viam.com/).
 
 ## What is required to create a custom component?
 
