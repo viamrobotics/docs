@@ -260,7 +260,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 {{% /tab %}}
 {{% tab name="Go" %}}
 
- DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error)
 
 **Parameters:**
 
