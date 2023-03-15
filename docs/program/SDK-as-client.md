@@ -7,7 +7,7 @@ description: "An introduction to Viam's SDKs and how to use them to write code t
 tags: ["client", "sdk"]
 ---
 
-Viam offers Software Development Kits (SDKs) that wrap the `viam-server` [gRPC](https://grpc.io/) [APIs](https://github.com/viamrobotics/api) and streamline connection, authentication, and encryption.
+Viam offers software development kits (SDKs) that wrap the `viam-server` [gRPC](https://grpc.io/) [APIs](https://github.com/viamrobotics/api) and streamline connection, authentication, and encryption.
 
 <img src="../img/SDK-as-client/image1.png" alt="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client."><br>
 
@@ -58,7 +58,7 @@ You can find more examples of Viam's SDKs on the [Python SDK example GitHub repo
 
 ### Connection Code Snippets
 
-To get starting writing programs with your preferred SDK, navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
+To get starting writing programs with your preferred SDK, navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, select the language (**Python** or **Golang**) and copy the boilerplate code.
 
 These boilerplate connection code snippets import all of the necessary libraries and set up a client connection to your remote or local robot.
 
