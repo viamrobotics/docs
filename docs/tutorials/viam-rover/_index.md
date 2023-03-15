@@ -66,4 +66,4 @@ description: "Color detection and SDK tutorials for the Viam Rover."
 
 <br>
 <br>
-{{< snippet "social.md" >}}
+<p>Have questions, or want to meet other people working on robots? Join our <a href="https://discord.gg/viam">Community Discord</a>.</p>

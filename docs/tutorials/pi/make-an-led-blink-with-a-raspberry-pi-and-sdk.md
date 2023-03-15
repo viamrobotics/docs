@@ -281,7 +281,7 @@ If you get an error, you can check your code against my complete code here:
 
 **Completed code**: <a href="https://github.com/viam-labs/LED-Blink" target="_blank">ht<span></span>tps://github.com/viam-labs/LED-Blink</a>
 
-{{< snippet "social.md" >}}
+If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Community Discord](https://discord.gg/viam).
 
 ## Summary
 
@@ -289,7 +289,10 @@ In this tutorial, you learned the basics of controlling your robot using the Via
 
 If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, check out one of following [Tutorial List](..).
 
-{{< snippet "social.md" >}}
+{{% alert title="Tip" color="tip" %}}
+If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Community Discord](https://discord.gg/viam).
+There, you will find a friendly developer community of people learning how to make robots using Viam.
+{{% /alert %}}
 
 ## Components URL List
 
