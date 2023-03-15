@@ -30,7 +30,7 @@ Learn about [the Viam platform in 3 minutes](viam).
         <li><a href="manage/app-usage/">Connect to the Viam app</a></li>
         <li>Configure <a href="components">components</a> and <a href="services">services</a></li>
         </ol>
-        <img src="img/blink.gif" alt="A blinking led connected to a Raspberry Pi">
+        <img src="img/blink.gif" alt="A blinking L E D connected to a Raspberry Pi">
         </div>
     </div>
 <<<<<<< HEAD
