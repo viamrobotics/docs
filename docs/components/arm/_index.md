@@ -36,7 +36,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 - When you configure a supported arm model to connect to `viam-server`, the Arm driver will load and parse the kinematics file for the Viam RDK's [Frame System](/services/frame-system/) service to use.
 
-- The `Frame System` will allow you to easily calculate where any part of your robot is relative to any other part, other robot, or piece of the environment.
+- The [Frame System](/services/frame-system/) will allow you to easily calculate where any part of your robot is relative to any other part, other robot, or piece of the environment.
 
 - All arms have a `Home` position, which corresponds to setting all joint angles to 0.
 
@@ -60,9 +60,7 @@ Supported arm models include:
 | `yahboom-dofbot` | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
 | `wrapper_arm` | A model used to wrap a partially implemented arm. |
 
-## Usage
-
-### Control your Arm with Viam's Client SDK Libraries
+## Control your arm with Viam's client SDK libraries
 
 The following example assumes you have an arm called "my_arm" configured as a component of your robot.
 If your arm has a different name, change the `name` in the example.
@@ -77,13 +75,13 @@ from viam.proto.common import Pose, WorldState
 async def main():
 
   # Connect to your robot.
-  robot = await connect()
+  robot = await connect() # Define a function to connect to your robot: see the CODE SAMPLE tab of your robot's page in app.viam.com.
 
   # Log an info message with the names of the different resources that are connected to your robot.
   print('Resources:')
   print(robot.resource_names)
 
-  # Connect to your arm.
+  # Get your arm from your robot.
   myArm = Arm.from_robot(robot=robot, name='my_arm')
 
   # Disconnect from your robot.
@@ -113,16 +111,8 @@ func main() {
   // Create an instance of a logger.
   logger := golog.NewDevelopmentLogger("client")
 
-  // Connect to your robot.
-  robot, err := client.New(
-      context.Background(),
-      "xyzablocationexample", // ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
-      logger,
-      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-          Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "robot123example.locationxyzexample.viam.com" // ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
-      })),
-  )
+  // Define a function to connect to your robot: see the CODE SAMPLE tab of your robot's page in app.viam.com.
+  robot, err := client.New( ... )
 
   // Log any errors that occur.
   if err != nil {
@@ -136,7 +126,7 @@ func main() {
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
 
-  // Connect to your arm.
+  // Get your arm from your robot.
   myArm, err := arm.FromRobot(robot, "my_arm")
   if err != nil {
     logger.Fatalf("cannot get arm: %v", err)
@@ -157,7 +147,7 @@ The arm component supports the following methods:
 | [GetEndPosition](#getendposition) | [EndPosition][go_arm] | [get_end_position][python_get_end_position] | Get the current position of the arm as a Pose. |
 | [MoveToPosition](#movetoposition) | [MoveToPosition][go_arm]| [move_to_position][python_move_to_position] | Move the end of the arm to the desired Pose. |
 | [MoveToJointPositions](#movetojointpositions) | [MoveToJointPositions][go_arm] | [move_to_joint_positions][python_move_to_joint_positions] | Move each joint on the arm to the desired position. |
-| [GetJointPositions](#getjointpositions) | [GetJointPositions][go_arm] | [get_joint_positions][python_get_joint_positions] | Get the current position of each joint on the arm. |
+| [JointPositions](#jointpositions) | [JointPositions][go_arm] | [get_joint_positions][python_get_joint_positions] | Get the current position of each joint on the arm. |
 | [Stop](#stop) | [Stop][go_arm] | [stop][python_stop] | Stop the arm from moving. |
 | [IsMoving](#stop) | [IsMoving][go_arm] | [is_moving][python_is_moving] | Get if the arm is currently moving. |
 
@@ -380,7 +370,7 @@ myArm.MoveToJointPositions(context.Background(), jointPos, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### GetJointPositions
+### JointPositions
 
 Get the current position of each joint on the arm.
 
@@ -429,7 +419,7 @@ if err != nil {
 }
 
 // Get the current position of each joint on the arm as JointPositions.
-pos, err := myArm.GetJointPositions(context.Background(), nil)
+pos, err := myArm.JointPositions(context.Background(), nil)
 
 // Log any errors that occur.
 if err != nil {
@@ -553,100 +543,6 @@ logger.Info(is_moving)
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Usage Examples
-
-### Move Forwards
-
-This Python code will do the following to a robotic arm of model `xArm6`:
-
-1. Move the arm 300mm forwards in the X direction.
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.arm import Arm
-from viam.proto.api.common import WorldState
-
-arm = Arm.from_robot(robot=robot, name='my_xArm6')
-pos = await arm.get_end_position()
-pos.x += 300
-await arm.move_to_position(pose=pos, world_state=WorldState())
-```
-
-### Move Back and Forth Through Obstacles
-
-This Python code will do the following to a robotic arm of model `xArm6`:
-
-1. Move the arm 300mm forwards in the X direction.
-2. Move the arm 300mm backwards in the X direction, to its starting point.
-   If you have trouble with this, try starting the arm in the home position.
-3. Define an obstacle along the straight-line path between the start and the same goal from above (+300mm).
-4. Call the Viam motion service to move the arm (rather than `arm.move_to_position`), moving the arm around the hypothetical obstacle.
-5. Return the arm to the starting point, again routing around the obstacle.
-6. Finally, call `arm.move_to_position` to move the arm toward the goal (as in the first movement, +300mm), passing the obstacle.
-As there is no straight-line path to the goal that does not intersect the obstacle, this request will fail with a "unable to solve for position" GRPC error.
-
-``` python
-arm = Arm.from_robot(robot=robot, name="xArm6")
-pos = await arm.get_end_position()
-
-print("~~~~TESTING ARM LINEAR MOVE~~~~~")
-pos = await arm.get_end_position()
-print(pos)
-pos.x += 300
-# Note we are passing an empty worldstate
-await arm.move_to_position(pose=pos, world_state=WorldState())
-pos = await arm.get_end_position()
-print(pos)
-pos.x -= 300
-await asyncio.sleep(1)
-await arm.move_to_position(pose=pos, world_state=WorldState())
-
-print("~~~~TESTING MOTION SERVICE MOVE~~~~~")
-
-geom = Geometry(
-    center=Pose(x=pos.x + 150, y=pos.y, z=pos.z),
-    box=RectangularPrism(width_mm=2, length_mm=5, depth_mm=5),
-)
-geomFrame = GeometriesInFrame(reference_frame="xArm6", geometries=[geom])
-worldstate = WorldState(obstacles=[geomFrame])
-
-pos = await arm.get_end_position()
-jpos = await arm.get_joint_positions()
-print(pos)
-print("joints", jpos)
-pos.x += 300
-
-for resname in robot.resource_names:
-    if resname.name == "xArm6":
-        armRes = resname
-
-# We pass the WorldState above with the geometry. The arm should successfully route around it.
-await motionServ.move(
-    component_name=armRes,
-    destination=PoseInFrame(reference_frame="world", pose=pos),
-    world_state=worldstate,
-)
-pos = await arm.get_end_position()
-jpos = await arm.get_joint_positions()
-print(pos)
-print("joints", jpos)
-pos.x -= 300
-await asyncio.sleep(1)
-await motionServ.move(
-    component_name=armRes,
-    destination=PoseInFrame(reference_frame="world", pose=pos),
-    world_state=worldstate,
-)
-
-print("~~~~TESTING ARM MOVE- SHOULD FAIL~~~~~")
-pos = await arm.get_end_position()
-print(pos)
-pos.x += 300
-# We pass the WorldState above with the geometry. As arm.move_to_position will enforce linear motion, this should fail
-# since there is no linear path from start to goal that does not intersect the obstacle.
-await arm.move_to_position(pose=pos, world_state=worldstate)
-
-```
 
 ## SDK Documentation
 

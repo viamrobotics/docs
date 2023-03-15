@@ -42,8 +42,8 @@ The following attributes are available for fake arms:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
-| `arm-model` | *Optional* | The name of the robotic arm model you want your fake arm to act as. This attribute must match the `name` of one of the arms Viam currently supports. See [here](../#configuration) for supported model names. |
-| `model-path` | *Optional* | The path to a compatible ArmModel JSON or URDF configuration file that you want your fake arm to act as. This path should point to the exact location where your configuration file is located on your computer running `viam-server`. |
+| `arm-model` | Optional | The name of the robotic arm model you want your fake arm to act as. This attribute must match the `name` of one of the arms Viam currently supports. See [here](../#configuration) for supported model names. |
+| `model-path` | Optional | The path to a compatible Arm's ModelJSON or URDF configuration file that you want your fake arm to act as. This path should point to the exact location where your configuration file is located on your computer running `viam-server`. |
 
 {{% alert title="Caution" color="caution" %}}
 

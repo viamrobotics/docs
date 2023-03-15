@@ -91,8 +91,8 @@ Configure a `xArm6` arm as follows:
 
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
-| `host`  |  *Optional* | A string representing the IP address of the arm. Find this when setting up your arm model. |
-| `speed` | *Optional* | Default: `20.0`. A float representing the desired maximum speed of joint movement in degrees/second. |
-| `acceleration`  | *Optional* | Default: `50.0`. A float representing the desired maximum joint acceleration in degrees/second/second. |
+| `host`  | **Required** | A string representing the IP address of the arm. Find this when setting up your arm model. |
+| `speed` | **Required** | Default: `20.0`. A float representing the desired maximum speed of joint movement in degrees/second. |
+| `acceleration`  | **Required** | Default: `50.0`. A float representing the desired maximum joint acceleration in degrees/second/second. |
 
 See [the Frame system](../../../services/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown above.
