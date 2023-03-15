@@ -316,8 +316,8 @@ END MARKETING CSS
   background-color: whitesmoke;
   color: black;
   border: 1px solid black;
-  box-shadow: 8px 8px 0 0 #000;
-  margin-right: 8px;
+  box-shadow: 5px 5px 0 0 #000;
+  margin-right: 5px;
 
   @each $color, $value in $theme-colors {
     &-#{$color} {
@@ -393,7 +393,7 @@ END MARKETING CSS
 
 
 .alert-warning {
-  box-shadow: 8px 8px 0 0 red;
+  box-shadow: 5px 5px 0 0 red;
 }
 .alert-warning hr {
   border-top-color: #ff9f9f;
@@ -404,7 +404,7 @@ END MARKETING CSS
 
 
 .alert-note {
-  box-shadow: 8px 8px 0 0 blue;
+  box-shadow: 5px 5px 0 0 blue;
 }
 .alert-note hr {
   border-top-color: #ff9f9f;
@@ -414,7 +414,7 @@ END MARKETING CSS
 }
 
 .alert-caution {
-  box-shadow: 8px 8px 0 0 #f0b93f;
+  box-shadow: 5px 5px 0 0 #f0b93f;
 }
 .alert-caution hr {
   border-top-color: #ff9f9f;
@@ -425,7 +425,7 @@ END MARKETING CSS
 
 
 .alert-tip, .alert-info {
-  box-shadow: 8px 8px 0 0 #1be020;
+  box-shadow: 5px 5px 0 0 #1be020;
 }
 
 .alert-info .alert-heading {
@@ -487,6 +487,59 @@ END MARKETING CSS
   min-width: 200px;
   width: 200px;
   max-width: 200px;
+}
+
+.landing-hover-card {
+  margin: 1em auto;
+  min-width: 300px;
+  max-width: 450px;
+  display: flex;
+}
+
+.landing-hover-card-padding {
+  padding: 1rem;
+  border: 1px solid #000;
+  box-shadow: 5px 5px 0 0 #000;
+}
+
+.landing-hover-card-padding.yellow:hover {
+  box-shadow: 8px 8px 0 0 #FFD400;
+
+  -webkit-transform: translate(-3px,-3px);
+  -ms-transform: translate(-3px,-3px);
+  transform: translate(-3px,-3px);
+}
+
+ .landing-hover-card-padding.green:hover {
+  box-shadow: 8px 8px 0 0 #00ef83;
+
+  -webkit-transform: translate(-3px,-3px);
+  -ms-transform: translate(-3px,-3px);
+  transform: translate(-3px,-3px);
+}
+
+ .landing-hover-card-padding.purple:hover {
+  box-shadow: 8px 8px 0 0 #a51aff;
+
+  -webkit-transform: translate(-3px,-3px);
+  -ms-transform: translate(-3px,-3px);
+  transform: translate(-3px,-3px);
+}
+
+ .landing-hover-card-padding.teal:hover {
+  box-shadow: 8px 8px 0 0 #00e8e8;
+
+  -webkit-transform: translate(-3px,-3px);
+  -ms-transform: translate(-3px,-3px);
+  transform: translate(-3px,-3px);
+}
+
+ .landing-hover-card-padding.pink:hover {
+  box-shadow: 8px 8px 0 0 #ff79ff;
+
+  -webkit-transform: translate(-3px,-3px);
+  -ms-transform: translate(-3px,-3px);
+  transform: translate(-3px,-3px);
 }
 
 @media (min-width: 992px) {
