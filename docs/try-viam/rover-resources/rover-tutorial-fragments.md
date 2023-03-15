@@ -87,21 +87,17 @@ If you want each component to show up in your **COMPONENTS** subtab so you can v
 <div class="container text-center">
   <div class="row">
     <div class="col hover-card">
-        <br>
-        <img src="../../../tutorials/img/try-viam-sdk/image1.gif" alt="Overhead view of the Viam rover showing it as it drives in a square.">
-        <br>
         <a href="../../../tutorials/viam-rover/try-viam-sdk">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive with the Viam SDK</h4>
-            <p style="text-align: left;">Using the Viam SDK to make your Viam Rover move in a square.</p>
+          <img src="../../../tutorials/img/try-viam-sdk/image1.gif" width=100% style="padding-top: 1em" alt="Overhead view of the Viam rover showing it as it drives in a square.">
+          <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive with the Viam SDK</h4>
+          <p style="text-align: left;">Using the Viam SDK to make your Viam Rover move in a square.</p>
         </a>
     </div>
     <div class="col hover-card">
-        <br>
-        <img src="../../../tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png" alt="detectionCam stream displaying a color detection.">
-        <br>
         <a href="../../../tutorials/viam-rover/try-viam-color-detection">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect a Color</h4>
-            <p style="text-align: left;">Using the Vision Service in the Viam app to detect a color.</p>
+          <img src="../../../tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png" width=100% style="padding-top: 1em" alt="detectionCam stream displaying a color detection.">
+          <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect a Color</h4>
+          <p style="text-align: left;">Using the Vision Service in the Viam app to detect a color.</p>
         <a>
     </div>
   </div>

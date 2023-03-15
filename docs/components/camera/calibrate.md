@@ -98,21 +98,21 @@ The following is a full example config:
   <div class="row">
     <div class="col hover-card">
         <a href="../transform/">
-        <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
-            Transform a Camera
-        </h4>
+          <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
+              Transform a Camera
+          </h4>
+          <p style="text-align: left;"> Calibrate a camera and extract the intrinsic and distortion parameters. </p>
         </a>
-        <p style="text-align: left;"> Calibrate a camera and extract the intrinsic and distortion parameters. </p>
     </div>
     <div class="col hover-card">
         <a href="control-a-component">
-        <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Vision Service</h4>
-        <p style="text-align: left;">The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.</p>
-        <a>
+          <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Vision Service</h4>
+          <p style="text-align: left;">The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.</p>
+        </a>
     </div>
     <div class="col hover-card">
         <a href="/tutorials/viam-rover/try-viam-color-detection/">
-            <h4 style="text-align: left; margin-left: 0px;">Detect color with a Viam Rover</h4>
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em">Detect color with a Viam Rover</h4>
             <p style="text-align: left;">Use the vision service in the Viam app to detect a color.</p>
         </a>
     </div>

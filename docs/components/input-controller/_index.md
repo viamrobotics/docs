@@ -1011,10 +1011,9 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 <div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card hover-card-small">
         <a href="/tutorials/yahboom-rover/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Drive a Yahboom Rover with a Gamepad</h4>
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive a Yahboom Rover with a Gamepad</h4>
             <p style="text-align: left;">Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.</p>
         </a>
     </div>

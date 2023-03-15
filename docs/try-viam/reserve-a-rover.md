@@ -53,29 +53,23 @@ You can also click on the timer at the top to go back to the rental rover's **CO
 
 <div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
-    <div class="col hover-card">
-        <br>
-        <img src="../rover-resources/img/viam-rover/rover-front.jpg" style="max-width:400px;width:100%" alt="The front of the assembled Viam Rover" />
-        <br>
+    <div class="col hover-card hover-card-small">
         <a href="../try-viam-tutorial/">
+            <img src="../rover-resources/img/viam-rover/rover-front.jpg" width=100% style="padding-top: 1em" alt="The front of the assembled Viam Rover" />
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Control a Rented Rover</h4>
             <p style="text-align: left;">Remotely configure and control a Viam Rover located on-site at Viam in NYC.</p>
         <a>
     </div>
-    <div class="col hover-card">
-        <br>
-        <img src="../../tutorials/img/try-viam-sdk/image1.gif" alt="Overhead view of the Viam rover showing it as it drives in a square.">
-        <br>
+    <div class="col hover-card hover-card-small">
         <a href="../../tutorials/viam-rover/try-viam-sdk">
+            <img src="../../tutorials/img/try-viam-sdk/image1.gif" width=100% style="padding-top: 1em" alt="Overhead view of the Viam rover showing it as it drives in a square.">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive with the Viam SDK</h4>
             <p style="text-align: left;">Use the Viam SDK to make your Viam Rover move in a square.</p>
         </a>
     </div>
-    <div class="col hover-card">
-        <br>
-        <img src="../../tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png" alt="detectionCam stream displaying a color detection.">
-        <br>
+    <div class="col hover-card hover-card-small">
         <a href="../../tutorials/viam-rover/try-viam-color-detection">
+            <img src="../../tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png" width=100% style="padding-top: 1em" alt="detectionCam stream displaying a color detection.">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect a Color</h4>
             <p style="text-align: left;">Use the Vision Service in the Viam app to detect a color.</p>
         <a>
