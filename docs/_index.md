@@ -43,29 +43,6 @@ Learn about [the Viam platform in 3 minutes](viam).
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <div class="col hover-card">
-    <a href="components">
-        <img src="img/components.png" alt="Components" style="padding-top: 1em">
-        <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Components</h4>
-        <p style="text-align: left;">Configure and control the components of your robot.</p>
-    </a>
-    </div>
-    <div class="col hover-card">
-        <a href="services">
-            <img src="img/services.png" alt="Services" style="padding-top: 1em">
-            <h4 style="text-align: left; margin-left: 0px;margin-top: 1em;">Services</h4>
-            <p style="text-align: left;">Make use of Viam's services for data and fleet management, as well as other services that make using your components easier.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <a href="program">
-            <img src="img/program.png" alt="Programming a robot" style="padding-top: 1em">
-             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Program a Robot</h4>
-            <p style="text-align: left;">Use the Robot Development Kit to bring your robot to life.</p>
-        </a>
-=======
->>>>>>> 0bb8acf (Landing pagge v3)
     </div>
   </div>
   <div class="row">
