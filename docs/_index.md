@@ -39,6 +39,7 @@ Learn about [the Viam platform in 3 minutes](viam).
                 <video autoplay loop muted playsinline alt="A blinking L.E.D. connected to a Raspberry Pi" width="100%">
                     <source src="img/blink.webm" type="video/webm" />
                     <source src="img/blink.mp4" type="video/mp4" />
+                    <source src="img/heart.mov" type="video/mov" />
                 </video>
             </div>
         </div>
