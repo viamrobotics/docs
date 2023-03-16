@@ -16,18 +16,21 @@ Example use cases include:
 - A swarm of drones with limited onboard computing power.
   They send images to a computer with significant computing power that runs machine learning code, and sends requests back to the drones based on the data.
 
-Remotes are established using direct [gRPC](https://grpc.io/), or gRPC through [WebRTC](https://webrtc.org/).
+Robots are organized into *parts*, where each part represents a computer (a single-board computer like a Raspberry Pi or a desktop, laptop, or other computer), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+
+Remotes are connections between parts.
+They are established using the best network path available.
 
 Once you configure a remote, the main robot part can access all the components and services configured on the remote robot part as though they were entities of the main robot part.
 This is a one-way connection: The main robot part can access the resources of the remote robot part, but the remote robot cannot access the resources of the robot part remoting into it.
 
+Remotes are used in two ways: to connect parts within the same robot, and to connect parts of different robots.
+
 ## Configuration
 
-Robots are organized into *parts*, where each part represents a computer (a single-board computer like a Raspberry Pi or a desktop, laptop, or other computer), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+To connect two computers within the *same robot*, [configure a sub-part](#configure-a-sub-part).
 
-To connect two computers that are part of the *same robot*, [configure a sub-part](#configure-a-sub-part).
-
-To connect two computers that are part of *different robots*, [configure a remote](#configure-a-remote).
+To connect two computers that are parts of *different robots*, [configure a remote](#configure-a-remote).
 
 ### Configure a sub-part
 
