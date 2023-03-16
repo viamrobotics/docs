@@ -14,7 +14,7 @@ Example use cases include:
 - Two rovers mapping a room with SLAM.
   If they can communicate, they can coordinate to divide the work efficiently and avoid crashing into one another.
 - A swarm of drones with limited onboard computing power.
-  They send images to a computer with significant computing power running an ML model, and receive predictions from their image data..
+  They send images to a computer with significant computing power running an ML model, and receive predictions from their image data.
 
 Robots are organized into *parts*, where each part represents a computer (a single-board computer like a Raspberry Pi or a desktop, laptop, or other computer) running `viam-server`, the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
 Every robot has a main part, and multi-part robots have one or more sub-parts representing additional computers running `viam-server`.
