@@ -38,7 +38,14 @@ Note that your base's wiring will vary depending on your choice of board, motors
 
 ## Configuration
 
-The following models are available:
+Supported base models include:
+
+| Model | Description |
+| ----- | ----------- |
+| [`fake`](fake) | A model used for testing, with no physical hardware. |
+| [`wheeled`](wheeled) | Mobile wheeled robot |
+| [`boat`](boat) | Mobile boat robot |
+| [`agilex-limo`](agilex-limo) | [Agilex LIMO Mobile Robot](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
 
 ## Control your base with Viam's client SDK libraries
 
