@@ -16,7 +16,7 @@ A `agilex-limo` base is a model for [LIMO](https://global.agilex.ai/products/lim
 On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
 Enter a name for your base, select the type `base`, and select the `agilex-limo` model.
 
-<img src="../img/agilex-limo-ui-config.png" alt="An example configuration for a agilex-limo base in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." style="max-width:900px"/>
+<img src="../img/agilex-limo-ui-config.png" alt="An example configuration for a agilex-limo base in the Viam app Config Builder." style="max-width:900px"/>
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -36,6 +36,7 @@ Enter a name for your base, select the type `base`, and select the `agilex-limo`
     }
 }
 ```
+
 {{% /tab %}}
 {{< /tabs >}}
 

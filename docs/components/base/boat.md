@@ -3,6 +3,7 @@ title: "Configure a Boat Base"
 linkTitle: "boat"
 weight: 35
 type: "docs"
+draft: "true"
 description: "Configure a boat base."
 tags: ["base", "components"]
 # SMEs: Steve B
@@ -37,6 +38,7 @@ Enter a name for your base, select the type `base`, and select the `agilex-limo`
     }
 }
 ```
+
 {{% /tab %}}
 {{< /tabs >}}
 

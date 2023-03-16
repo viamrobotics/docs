@@ -11,23 +11,17 @@ icon: "img/components/base.png"
 
 A *base* is the platform that the other parts of a mobile robot attach to.
 
-Configure your robot's *base* component to reference any *motor* components attached to the base.
 By configuring a base component, organizing individual components to produce coordinated movement, you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
 
-<img src="img/base-trk-rover-w-arm.png" alt="A robot comprised of a base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." />
+<img src="img/base-trk-rover-w-arm.png" alt="A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component."/>
 
 Most mobile robots with a base need at least the following hardware:
 
-- A [board component](/components/board/) that can run a `viam-server` instance.
-   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
-
+- A [board](/components/board/).
 - Some sort of actuators to move the base.
   Usually [motors](/components/motor/) attached to wheels or propellers.
-
 - A power supply for the board.
-
 - A power supply for the actuators.
-
 - Some sort of chassis to hold everything together.
 
 Example wiring diagram for a base with one motor on each side:
@@ -44,8 +38,8 @@ Supported base models include:
 | ----- | ----------- |
 | [`fake`](fake) | A model used for testing, with no physical hardware. |
 | [`wheeled`](wheeled) | Mobile wheeled robot |
-| [`boat`](boat) | Mobile boat robot |
-| [`agilex-limo`](agilex-limo) | [Agilex LIMO Mobile Robot](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
+| [`agilex-limo`](agilex-limo) | [Agilex LIMO Mobile Robot](https://global.agilex.ai/products/limo) |
+| `boat` | Mobile boat robot |
 
 ## Control your base with Viam's client SDK libraries
 
@@ -54,7 +48,7 @@ Supported base models include:
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
 
-The following example assumes you have a wheeled base called "my_base" which is configured as a component of your robot.
+The following example assumes you have a wheeled base called "my_base" configured as a component of your robot.
 If your base has a different name, change the `name` in the example.
 
 {{< tabs >}}
