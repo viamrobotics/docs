@@ -270,7 +270,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `results` (`cmd map[string]interface{}`): Result of the executed command.
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
+For more information, see the [Go SDK Docs](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/camera/camera.go#L268).
 
 {{% /tab %}}
 {{< /tabs >}}
