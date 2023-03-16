@@ -17,7 +17,7 @@ To configure a `wheeled` base as a component of your robot, first configure the 
 On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
 Enter a name for your base, select the type `base`, and select the `wheeled` model.
 
-<img src="../../img/base/base-ui-config.png" alt="An example configuration for a wheeled base in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." style="max-width:600px"/>
+<img src="../img/base-ui-config.png" alt="An example configuration for a wheeled base in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." style="max-width:600px"/>
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -121,7 +121,7 @@ Enter a name for your base, select the type `base`, and select the `wheeled` mod
 {{% /tab %}}
 {{< tab name="Annotated JSON" >}}
 
-<img src="../../img/base/base-json.png" alt="An image of the JSON configuration file with annotations explaining some of the attributes."/>
+<img src="../img/base-json.png" alt="An image of the JSON configuration file with annotations explaining some of the attributes."/>
 
 {{< /tab >}}
 {{< /tabs >}}
@@ -134,6 +134,4 @@ The following attributes are available for `wheeled` bases:
 | `right` | string[] | **Required** | List with the names of all drive motors on the right side of the base. There may be one or more motors. |
 | `wheel_circumference_mm` | int | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
 | `width_mm` | int | **Required** | Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
-| `spin_slip_factor` | float | Optional | Used in steering calculations to correct for slippage between the wheels and the floor. If utilized, [calibrated](https://www.engineeringtoolbox.com/electrical-motor-slip-d_652.html) by the user. |
-
-## Next Steps
+| `spin_slip_factor` | float | Optional | Can be used in steering calculations to correct for slippage between the wheels and the floor. If utilized, calibrated by the user. |
