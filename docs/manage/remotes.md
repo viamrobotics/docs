@@ -18,7 +18,7 @@ Example use cases include:
 
 Remotes are established using direct [gRPC](https://grpc.io/), or gRPC through [WebRTC](https://webrtc.org/).
 
-Once you configure a remote, the main robot can access all the components and services configured on the remote robot as though they are part of the main robot.
+Once you configure a remote, the main robot part can access all the components and services configured on the remote robot part as though they were entities of the main robot part.
 This is a one-way connection: The main robot part can access the resources of the remote robot part, but the remote robot cannot access the resources of the robot part remoting into it.
 
 ## Configuration
@@ -31,7 +31,7 @@ To connect two computers that are part of *different robots*, [configure a remot
 
 ### Configure a sub-part
 
-You can make a multi-part robot by first configuring one part (which we'll call the "main" part), and then configuring one or more sub-parts.
+You can make a multi-part robot by first configuring one part which is the "main" part, and then configuring one or more sub-parts.
 The main part will be able to access the resources of its sub-parts.
 
 Use the parts drop-down menu on the [Viam app](https://app.viam.com) to add a new sub-part:
@@ -72,7 +72,7 @@ To establish a connection between a part of one robot and a part of a second rob
 
 ## Usage
 
-Once your remote is configured, you can able to access all the components and services configured on the remote robot part as though they are resources of your main robot.
+Once your remote is configured, you can access all the components and services configured on the remote robot part as though they were resources of your main robot.
 The only difference is that the names of the components have the remote robot part name prepended to them.
 For example, instead of calling
 
@@ -86,4 +86,4 @@ you need to call
 servo = Servo.from_robot(robot=robot, name='my-other-robot-main:my_servo')
 ```
 
-For an example of controlling a motor that is a component of a sub-part, see [that section of our Mock Robot tutorial](https://docs.viam.com/tutorials/build-a-mock-robot/#how-to-control-a-sub-part-using-the-viam-sdk).
+For an example that controls a motor that is a component of a sub-part, see [the Mock Robot tutorial](https://docs.viam.com/tutorials/build-a-mock-robot/#how-to-control-a-sub-part-using-the-viam-sdk).
