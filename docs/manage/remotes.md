@@ -14,9 +14,10 @@ Example use cases include:
 - Two rovers mapping a room with SLAM.
   If they can communicate, they can coordinate to divide the work efficiently and avoid crashing into one another.
 - A swarm of drones with limited onboard computing power.
-  They send images to a computer with significant computing power that runs machine learning code, and sends requests back to the drones based on the data.
+  They send images to a computer with significant computing power running an ML model, and receive predictions from their image data..
 
-Robots are organized into *parts*, where each part represents a computer (a single-board computer like a Raspberry Pi or a desktop, laptop, or other computer), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+Robots are organized into *parts*, where each part represents a computer (a single-board computer like a Raspberry Pi or a desktop, laptop, or other computer) running `viam-server`, the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+Every robot has a main part, and multi-part robots have one or more sub-parts representing additional computers running `viam-server`.
 
 Remotes are connections between parts.
 They are established using the best network path available.
@@ -36,8 +37,9 @@ To connect two computers that are parts of *different robots*, [configure a remo
 
 You can make a multi-part robot by first configuring one part which is the "main" part, and then configuring one or more sub-parts.
 The main part will be able to access the resources of its sub-parts.
+Sub-parts will *not* have access to the resources of the main part.
 
-Use the parts drop-down menu on the [Viam app](https://app.viam.com) to add a new sub-part:
+Use the parts drop-down menu in the top banner of your robot's page on the [Viam app](https://app.viam.com) to add a new sub-part:
 
 ![The Viam app interface with the part drop-down open. A new part called "my-sub-part" is being created.](../img/remotes/sub-part-config.png)
 
