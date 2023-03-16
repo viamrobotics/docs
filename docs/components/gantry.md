@@ -31,12 +31,12 @@ Most robots with a gantry need at least the following hardware:
   Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
 
-### Configuration
+## Configuration
 
 Configuring this component on your robot with a gantry enables you to get and change the position of the linear rail axes.
 You can configure your robot, as shown below, on the [Viam app](https://app.viam.com).
 
-#### One-Axis
+### One-Axis
 
 This is how you configure a one-axis gantry:
 
@@ -91,7 +91,7 @@ This is how you configure a one-axis gantry:
 | `gantry_rpm` | Optional | The gantry motor's default rpm. |
 | `axis` | *Required* | The axis in which the gantry is allowed to move (x, y, z). |
 
-#### Multi-Axis
+### Multi-Axis
 
 A multi-axis gantry component is made up of many single-axis gantries, with each referenced in configuration in the multi-axis models' attribute `subaxes_list`.
 
@@ -283,28 +283,7 @@ This is how you configure a multi-axis gantry:
 | ----------- | -------------- | --------------  |
 | `subaxes_list`  | *Required* | A complete list of the sub-axes, the one-axis gantries that make up the multi-axis gantry. |
 
-## API
-
-The gantry component supports the following methods:
-
-| Method Name | Go | Python | Description |
-| ----------- | -- | ------ | ----------- |
-[Position](#position) | [Position][go_gantry]  |  [get_position][python_get_position] | Get the current positions of the axes of the gantry in mm. |
-[MoveToPosition](#movetoposition) | [MoveToPosition][go_gantry] | [move_to_position][python_move_to_position] | Move the axes of the gantry to the desired positions. |
-[Lengths](#lengths) | [Lengths][go_gantry] | [get_lengths][python_get_lengths] | Get the lengths of the axes of the gantry in mm. |
-[Stop](#stop) | [Stop][go_gantry] | [stop][python_stop] | Stop the gantry from moving. |
-[IsMoving](#stop) | [IsMoving][go_gantry] | [stop][python_is_moving] | Get if the gantry is currently moving. |
-
-[go_gantry]: https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry
-[python_get_position]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.get_position
-[python_move_to_position]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.move_to_position
-[python_get_lengths]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.get_lengths
-[python_stop]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.stop
-[python_is_moving]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.is_moving
-
-## Code Examples
-
-### Control your Gantry with Viam's Client SDK Libraries
+## Control your gantry with Viam's client SDK libraries
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
 
@@ -388,6 +367,25 @@ func main() {
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## API
+
+The gantry component supports the following methods:
+
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
+[Position](#position) | [Position][go_gantry]  |  [get_position][python_get_position] | Get the current positions of the axes of the gantry in mm. |
+[MoveToPosition](#movetoposition) | [MoveToPosition][go_gantry] | [move_to_position][python_move_to_position] | Move the axes of the gantry to the desired positions. |
+[Lengths](#lengths) | [Lengths][go_gantry] | [get_lengths][python_get_lengths] | Get the lengths of the axes of the gantry in mm. |
+[Stop](#stop) | [Stop][go_gantry] | [stop][python_stop] | Stop the gantry from moving. |
+[IsMoving](#stop) | [IsMoving][go_gantry] | [stop][python_is_moving] | Get if the gantry is currently moving. |
+
+[go_gantry]: https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry
+[python_get_position]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.get_position
+[python_move_to_position]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.move_to_position
+[python_get_lengths]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.get_lengths
+[python_stop]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.stop
+[python_is_moving]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.is_moving
 
 ### Position
 

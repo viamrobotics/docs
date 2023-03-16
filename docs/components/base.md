@@ -207,28 +207,7 @@ This is how you configure a wheeled base:
 </tbody>
 </table>
 
-## API
-
-The base component supports the following methods:
-
-| Method Name | Go | Python | Description |
-| ----------- | -- | ------ | ----------- |
-[MoveStraight](#movestraight)  | [MoveStraight][go_base]  |  [move_straight][python_move_straight] | Move the base in a straight line across the given distance at the given velocity. |
-[Spin](#spin) |  [Spin][go_base] | [spin][python_spin] | Move the base to the given angle at the given angular velocity. |
-[SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the relative power (out of max power) for linear and angular propulsion of the base. |
-[SetVelocity](#setvelocity) | [SetVelocity][go_base] | [set_velocity][python_set_velocity] | Set the linear velocity and angular velocity of the base. |
-[Stop](#stop) | [Stop][go_base] | [stop][python_stop] | Stop the base. |
-
-[go_base]: https://pkg.go.dev/go.viam.com/rdk/components/base#Base
-[python_move_straight]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.move_straight
-[python_spin]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.spin
-[python_set_power]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_power
-[python_set_velocity]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_velocity
-[python_stop]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.stop
-
-## Code Examples
-
-### Control your Base with Viam's Client SDK Libraries
+## Control your base with Viam's client SDK libraries
 
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
 - [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
@@ -315,6 +294,25 @@ func main() {
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## API
+
+The base component supports the following methods:
+
+| Method Name | Go | Python | Description |
+| ----------- | -- | ------ | ----------- |
+[MoveStraight](#movestraight)  | [MoveStraight][go_base]  |  [move_straight][python_move_straight] | Move the base in a straight line across the given distance at the given velocity. |
+[Spin](#spin) |  [Spin][go_base] | [spin][python_spin] | Move the base to the given angle at the given angular velocity. |
+[SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the relative power (out of max power) for linear and angular propulsion of the base. |
+[SetVelocity](#setvelocity) | [SetVelocity][go_base] | [set_velocity][python_set_velocity] | Set the linear velocity and angular velocity of the base. |
+[Stop](#stop) | [Stop][go_base] | [stop][python_stop] | Stop the base. |
+
+[go_base]: https://pkg.go.dev/go.viam.com/rdk/components/base#Base
+[python_move_straight]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.move_straight
+[python_spin]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.spin
+[python_set_power]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_power
+[python_set_velocity]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_velocity
+[python_stop]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.stop
 
 ### MoveStraight
 

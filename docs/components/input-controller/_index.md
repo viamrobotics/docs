@@ -42,9 +42,7 @@ For configuration information, click on one of the following models:
 
 Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 
-## Usage
-
-### Control your robot with an Input Controller with Viam's Client SDK Libraries
+## Control your robot with an input controller with Viam's client SDK libraries
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
 
