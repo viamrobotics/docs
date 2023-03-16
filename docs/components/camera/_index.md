@@ -238,7 +238,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### DoCommand
 
-Execute commands that are not already defined on the component.
+Execute model-specific commands that are not otherwise defined by the component API.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
