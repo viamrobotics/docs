@@ -64,6 +64,14 @@ If this command fails, try using `wget http://packages.viam.com/apps/viam-server
 
 {{% /alert %}}
 
+## Serial Communication Protocol Tips
+
+| Data Sheet ID | Pins | Viam ID | `jetson-io.py` ID | `jetson-io.py` Enablement |
+| ------------- | ---- | ------- | ----------------- | ------------------------- |
+| I2C_GP2_DAT, I2C_GP2_CLK | 3, 5 | i2c bus id `1` | `i2c2` | Cannot be disabled |
+| I2c_GP5_DAT, I2C_GP5_CLK | 27, 28 | i2c bus id `7` | `i2c8` | Cannot be disabled |
+| SPI1_DOUT, SPI1_DIN, SPI1_SCK, SPI1_CS0, SPI1_CS1 | 19, 21, 23, 24, 26 | SPI bus id `0` | `spi1` | Must be enabled, must add `spidev` to `/etc/modules` |
+
 ## Troubleshooting
 
 - NVIDIA Step 1 - Run through Ubuntu Setup (oem config)
