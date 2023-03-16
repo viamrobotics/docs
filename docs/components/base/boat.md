@@ -46,15 +46,15 @@ The following attributes are available for `boat` bases:
 | ---- | ---- | --------- | ----------- |
 | `length_mm` | int | **Required** | Length of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
 | `width_mm` | int | **Required** | Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left motors. Can be an approximation. |
-| `IMU` | string | **Required** |  |
+| `IMU` | string | **Required** | [Inertial Measurement Unit](/components/movement-sensor/#imu-configuration) |
 | `Motors` | string[] | **Required** | JSON struct with the configuration attributes for each motor attached to the boat inside. |
 
 Each [motor](/components/motor/) inside of `Motors` has the following attributes available:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `Name` | string | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
-| `x_offset_mm` | int | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
-| `y_offset_mm` | int | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
-| `angle_degs` | int | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
-| `Weight` | int | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
+| `Name` | string | **Required** | Name of the motor. |
+| `x_offset_mm` | int | **Required** | |
+| `y_offset_mm` | int | **Required** | |
+| `angle_degs` | int | **Required** | |
+| `Weight` | int | **Required** | |
