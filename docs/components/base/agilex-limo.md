@@ -1,9 +1,9 @@
 ---
-title: "Configure a Agilex Limo Base"
+title: "Configure a Agilex LIMO Base"
 linkTitle: "agilex-limo"
 weight: 35
 type: "docs"
-description: "Configure an Agilex Limo base."
+description: "Configure an Agilex LIMO base."
 tags: ["base", "components"]
 # SMEs: Matt Vella, Steve B
 ---
