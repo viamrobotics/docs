@@ -1,7 +1,7 @@
 ---
 title: "Data Management"
 linkTitle: "Data Management"
-weight: 30
+weight: 40
 no_list: true
 type: "docs"
 tags: ["data management", "data", "services"]
