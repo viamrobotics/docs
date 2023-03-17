@@ -19,7 +19,8 @@ The *motor* component type natively supports brushed DC motors, brushless DC mot
 Most robots with a motor need at least the following hardware:
 
 - The motor itself.
-- A compatible motor driver. This takes signals from the computer and sends the corresponding signals and power to the motor.
+- A compatible motor driver.
+  This takes signals from the computer and sends the corresponding signals and power to the motor.
   Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements.
 - A [board component](https://docs.viam.com/components/board/) to send signals to the motor driver[^dmcboard].
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
@@ -74,7 +75,7 @@ Example code should be placed after the `robot, err := client.New(...)` function
 import (
   "context"
   "time"
-  
+
   "github.com/edaniels/golog"
 
   "go.viam.com/rdk/components/motor"
@@ -110,6 +111,7 @@ Method Name | Description
 [Stop](#stop) | Cuts power to the motor off immediately, without any gradual step down.
 [IsPowered](#ispowered) | Returns whether or not the motor is currently on, and the amount of power to it.
 [IsMoving](#ismoving) | Returns whether the motor is moving or not.
+[DoCommand](#docommand) | Sends or receives model-specific commands.
 
 In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor)
 or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#).
@@ -619,3 +621,8 @@ logger.Info(moving)
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+Model-specific commands are covered with each model's documentation.
