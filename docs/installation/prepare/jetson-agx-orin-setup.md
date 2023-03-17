@@ -31,17 +31,19 @@ You need the following hardware, tools, and software to install `viam-server` on
 2. A PC monitor (HDMI or DisplayPort)
 3. USB keyboard and mouse
 4. A DisplayPort to HDMI adapter/cable, to connect the Orin to the monitor
-5. Ethernet cable and/or Wifi dongle, to connect the Orin to the Internet
-6. USB Type-C power supply, to power the Orin (included with the AGX Orin Developer Kit)
+5. USB Type-C power supply, to power the Orin (included with the AGX Orin Developer Kit)
+6. (Optional) Ethernet cable, to connect the Orin to the internet without Wifi access
 
 **Initial Setup in Headless Mode:**
 
 1. A [Jetson AGX Orin Developer Kit](https://www.arrow.com/en/products/945-13730-0000-000/nvidia)
 2. An internet-connected Windows, Linux, or Mac computer
 3. A way to connect the computer to the Orin (for example, the USB Type-A to USB Type-C Cable included with the AGX Orin Developer Kit)
-   1. (Optional) If your computer doesn't have a USB Type-A port, you may need to attach a [USB-C hub](https://toomanyadapters.com/best-usb-hubs/) or similar device to your computer to connect to the Orin
-4. Ethernet cable and/or Wifi dongle, to connect the Orin to the Internet
-5. USB Type-C power supply, to power the Orin (included with the AGX Orin Developer Kit)
+
+   (Optional) If your computer doesn't have a USB Type-A port, you may need to attach a [USB-C hub](https://toomanyadapters.com/best-usb-hubs/) or similar device to your computer to connect to the Orin
+
+4. USB Type-C power supply, to power the Orin (included with the AGX Orin Developer Kit)
+5. (Optional) Ethernet cable, to connect the Orin to the internet without Wifi access
 
 ## Jetson Orin Setup Guide
 
@@ -66,11 +68,11 @@ If this command fails, try using `wget http://packages.viam.com/apps/viam-server
 
 ## Serial Communication Protocol Tips
 
-| Data Sheet ID | Pins | Viam ID | `jetson-io.py` ID | `jetson-io.py` Enablement |
-| ------------- | ---- | ------- | ----------------- | ------------------------- |
-| I2C_GP2_DAT, I2C_GP2_CLK | 3, 5 | i2c bus id `1` | `i2c2` | Cannot be disabled |
-| I2c_GP5_DAT, I2C_GP5_CLK | 27, 28 | i2c bus id `7` | `i2c8` | Cannot be disabled |
-| SPI1_DOUT, SPI1_DIN, SPI1_SCK, SPI1_CS0, SPI1_CS1 | 19, 21, 23, 24, 26 | SPI bus id `0` | `spi1` | Must be enabled, must add `spidev` to `/etc/modules` |
+| Data Sheet ID | GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID | `/dev` name | Notes |
+| ------------- | --------------- | ----------- | ----------------- | ----------- | ----- |
+| I2C_GP2_DAT, I2C_GP2_CLK | 3, 5 | `1` | `i2c2` | `dev/i2c2` | |
+| I2c_GP5_DAT, I2C_GP5_CLK | 27, 28 | `7` | `i2c8` | `dev/i2c8` | |
+| SPI1_DOUT, SPI1_DIN, SPI1_SCK, SPI1_CS0, SPI1_CS1 | 19, 21, 23, 24, 26 | `0` | `spi1` | `dev/spi1` | Must be enabled, must add `spidev` to `/etc/modules` |
 
 ## Troubleshooting
 
@@ -88,7 +90,7 @@ If this command fails, try using `wget http://packages.viam.com/apps/viam-server
 - NVIDIA Step 2 - Install JetPack Components
   - After running `sudo apt dist-upgrade`, if you are prompted with "Package distributer has shipped an updated version" hit `y` to install the updated version.
   - Do not run `sudo apt install nvidia-jetpack` in your terminal until after `sudo reboot` has completed.
-  - If your board is powered off after `sudo reboot` has completed and refuses to turn on, disconnect and reconnect the power cable and push the power button.
+  - If your board is powered off after `sudo reboot` has completed and refuses to turn on, disconnect and reconnect the power cable.
   - It is normal for JetPack installation to take a very long time, up to an hour or more.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
