@@ -89,7 +89,7 @@ This provides flexibility and security whether you are building tight control lo
 
 There are four categories of APIs:
 
-- [Robot](/services/robot-service/) - high level robot commands
+- [Robot](https://github.com/viamrobotics/rdk/blob/main/robot/server/server.go) provides high level robot commands
 - [Components](/components) like motors, arms, GPS
 - [Services](/services) like computer vision, motion planning, SLAM
 - Cloud applications like [Fleet Management](/manage/fleet-management), [Data Management](/manage/data-management)
