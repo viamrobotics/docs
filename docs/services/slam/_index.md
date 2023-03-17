@@ -93,11 +93,11 @@ Then, adjust general attributes and library-specific `config-params`.
 | ---- | --------- | --------- | ----------- |
 | `data_dir` | string | **Required** | This is [the data directory](#data_dir-data-directory) used for saving input <file>sensor/map</file> data and output <file>map/</file> visualizations. Must be structured as specified [here](#data_dir-data-directory). |
 | `sensors` | string[] | **Required** | Names of [sensors](../../components/sensor/) providing data to the SLAM service. |
-| `use_live_data` | bool | **Required** | This specifies whether to run in Live or Offline mode. <ul> `true`: Live mode. The service grabs the most recent sensor readings and uses those to perform SLAM. If no `sensors` are provided, an error will be thrown. </ul><ul>`false`: Offline mode. The service uses image data stored in the [data directory](#data_dir-data-directory) to perform SLAM.</ul> |
+| `use_live_data` | bool | **Required** | <p>This specifies whether to run in Live or Offline mode.</p> <ul> `true`: Live mode. The service grabs the most recent sensor readings and uses those to perform SLAM. If no `sensors` are provided, an error will be thrown. </ul><ul>`false`: Offline mode. The service uses image data stored in the [data directory](#data_dir-data-directory) to perform SLAM.</ul> |
 | `map_rate_sec` | int | Optional | Map generation rate for saving current state *(seconds)*. <ul> Default: `60`. </ul> |
 | `data_rate_msec` | int | Optional | Data generation rate for collecting sensor data to feed to SLAM *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `port` | string | Optional | Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
-| `delete_processed_data` | bool | Optional | Setting this to `true` helps to reduce the amount of memory required to run SLAM. <ul> `true`: sensor data is deleted after the SLAM algorithm has processed it. </ul><ul> `false`: sensor data is not deleted after the SLAM algorithm has processed it. </ul> |
+| `delete_processed_data` | bool | Optional | <p>Setting this to `true` helps to reduce the amount of memory required to run SLAM.</p> <ul> `true`: sensor data is deleted after the SLAM algorithm has processed it. </ul><ul> `false`: sensor data is not deleted after the SLAM algorithm has processed it. </ul> |
 | `config_params` |  map[string] string | Optional | Parameters specific to the `model` of SLAM library. |
 
 {{% alert title="Caution" color="caution" %}}

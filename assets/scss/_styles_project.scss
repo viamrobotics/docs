@@ -559,3 +559,11 @@ END MARKETING CSS
 .nav-link {
   text-decoration: none;
 }
+
+/* START CSS to ensure lists within columns of markdown aren't indented */
+
+td > ul, td > ol {
+  padding-inline-start: 0;
+}
+
+/* END CSS to ensure lists within columns of markdown aren't indented */
