@@ -68,7 +68,7 @@ If this command fails, try using `wget http://packages.viam.com/apps/viam-server
 
 ## Serial Communication Protocol Tips
 
-| Data Sheet ID | GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID | `/dev` name | Notes |
+| Data Sheet ID | GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID | `/dev` Path ID | Notes |
 | ------------- | --------------- | ----------- | ----------------- | ----------- | ----- |
 | I2C_GP2_DAT, I2C_GP2_CLK | 3, 5 | `1` | `i2c2` | `dev/i2c2` | |
 | I2c_GP5_DAT, I2C_GP5_CLK | 27, 28 | `7` | `i2c8` | `dev/i2c8` | |
