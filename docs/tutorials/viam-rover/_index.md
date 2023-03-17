@@ -11,7 +11,7 @@ description: "Color detection and SDK tutorials for the Viam Rover."
 <p>Follow one of these tutorials with your borrowed or owned rover:</p>
 </div>
 
-<div class="container text-center">
+<div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
     <div class="col hover-card">
       <a href="../../try-viam/rover-resources/rover-tutorial/">

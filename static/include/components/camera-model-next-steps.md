@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
       <div class="col hover-card">
         <a href="../calibrate/">

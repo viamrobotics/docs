@@ -219,7 +219,7 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
 
 ## Next steps
 
-<div class="container text-center">
+<div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
     <div class="col hover-card">
         <a href="../../tutorials/viam-rover/try-viam-sdk">
