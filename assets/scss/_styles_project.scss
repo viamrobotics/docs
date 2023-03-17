@@ -567,3 +567,34 @@ td > ul, td > ol {
 }
 
 /* END CSS to ensure lists within columns of markdown aren't indented */
+
+/* START TAB CSS consistency */
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
+  border-color: black black white;
+}
+
+.nav-tabs .nav-link {
+  border-width: 1px;
+  border-style: solid;
+  border-color: white rgb(209, 213, 219) black  rgb(209, 213, 219);
+  border-radius: 0;
+  padding: 0.25rem 1rem;
+  color: rgb(78, 79, 82);
+  background-color: rgb(241, 241, 244)
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: white rgb(209, 213, 219) black  rgb(209, 213, 219);
+}
+
+.nav.nav-tabs > .nav-item {
+  margin-bottom: -1px;
+}
+
+.tab-content {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+/* END TAB CSS consistency */
