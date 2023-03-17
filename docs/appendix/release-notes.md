@@ -59,17 +59,17 @@ description:
     <tbody>
 </table>
 
-### Typescript SDK
+### TypeScript SDK
 
 <table style="margin-bottom:18px">
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>
-                Users that want to create web interfaces to control their robots can use the new Typescript SDK as a client. The RDK server running on the robot is able to detect if a given SDK client session has lost communication because it tries to maintain a heartbeat once every 2 seconds. Users can choose to opt-out of this session management.
+                Users that want to create web interfaces to control their robots can use the new TypeScript SDK as a client. The RDK server running on the robot is able to detect if a given SDK client session has lost communication because it tries to maintain a heartbeat once every 2 seconds. Users can choose to opt-out of this session management.
                 <ul>
                 <li>
-                    <a href="https://ts.viam.dev/">Typescript SDK Docs</a>
+                    <a href="https://ts.viam.dev/">TypeScript SDK Docs</a>
                 </li>
                 <li>
                     <a href="https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/teleop">Teleop Example from Github page</a>
