@@ -92,7 +92,7 @@ For example,
   Technically, you can put your config file anywhere you want as long as when starting `viam-server`, you pass in the path to the config file.
   <file>/etc/viam.json</file> is just the default location.
 
-### The CONFIG tab
+## The CONFIG tab
 
 The **CONFIG** tab is a central feature of your robot's page on the [Viam app](https://app.viam.com).
 
@@ -132,8 +132,26 @@ Components of the same model are supported using the same low-level code.
 
 For services, the `type` specifies which of the Viam services you want to use on your robot, such as the Vision Service or the Motion Service.
 
-## Fragments
+## Modules
+
+To add a [modular resource](https://docs.viam.com/program/extend/modular-resources/) as a component or service of your robot, configure a module.
+
+## Remotes
+
+Configuring a remote is a way to connect two separate robots so one can access the resources of the other.
+Find more information in our remotes documentation.
 
 ## Processes
 
-## Remotes
+## Fragments
+
+Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple robots.
+For example, if you have multiple robots with the same hardware, wired the same way, you can create and share a fragment and add it to any number of robots.
+When changes are made to the fragment, those changes are automatically carried to all robots that include the fragment in their config.
+
+You can add a fragment to a robot's config and also add other configuration outside the fragment.
+For example, if you have lots of identical rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
+
+## Best practices
+
+## Troubleshooting
