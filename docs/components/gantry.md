@@ -48,7 +48,7 @@ This is how you configure a one-axis gantry:
 {{< /tab >}}
 {{% tab name="JSON Template" %}}
 
-```json-viam
+```json
 {
   "components": [
     {
@@ -105,7 +105,7 @@ This is how you configure a multi-axis gantry:
 {{< /tab >}}
 {{% tab name="JSON Template" %}}
 
-```json-viam
+```json
 {
   "components": [
     {
@@ -128,7 +128,7 @@ This is how you configure a multi-axis gantry:
 {{< /tab >}}
 {{% tab name="Full JSON Example" %}}
 
-```json-viam
+```json
 {
     "components": [
         {

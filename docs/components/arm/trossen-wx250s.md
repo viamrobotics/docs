@@ -16,7 +16,7 @@ Configure a `trossen-wx250s` arm as follows:
 {{< tabs name="Configure a trossen-wx250 Arm" >}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<arm_name">",
     "type": "arm",

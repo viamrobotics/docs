@@ -217,7 +217,7 @@ Ensure that your robot has sufficient space to drive around without hitting anyo
 
 Before configuring the encoders, you must configure I2C bus `1` on the board:
 
-```json-viam
+```json
 {
       "name": "<board_name>",
       "type": "board",
