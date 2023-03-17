@@ -19,19 +19,18 @@ Example use cases include:
 Robots are organized into *parts*, where each part represents a computer (a single-board computer like a Raspberry Pi or a desktop, laptop, or other computer) running `viam-server`, the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
 Every robot has a main part, and multi-part robots have one or more sub-parts representing additional computers running `viam-server`.
 
-Remotes are connections between parts.
-They are established using the best network path available.
+There are two ways to link robot parts:
 
-Once you configure a remote, the main robot part can access all the components and services configured on the remote robot part as though they were entities of the main robot part.
+- To connect two computers within the *same robot*, [configure a sub-part](#configure-a-sub-part).
+
+- To connect two computers that are parts of *different robots*, [configure a remote](#configure-a-remote).
+
+Connections between robots are established using the best network path available.
+
+When you configure a remote or a sub-part, the main robot part can access all the components and services configured on the remote robot part as though they were entities of the main robot part.
 This is a one-way connection: The main robot part can access the resources of the remote robot part, but the remote robot cannot access the resources of the robot part remoting into it.
 
-Remotes are used in two ways: to connect parts within the same robot, and to connect parts of different robots.
-
 ## Configuration
-
-To connect two computers within the *same robot*, [configure a sub-part](#configure-a-sub-part).
-
-To connect two computers that are parts of *different robots*, [configure a remote](#configure-a-remote).
 
 ### Configure a sub-part
 
@@ -47,7 +46,7 @@ Use the parts drop-down menu in the top banner of your robot's page on the [Viam
 
 {{% alert title="Note" color="note" %}}
 
-When you create a sub-part, a *remote* connection is established between the main part and the sub-part without you needing to explicitly configure a remote.
+When you create a sub-part, a connection is established between the main part and the sub-part without you needing to explicitly configure a remote.
 
 {{% /alert %}}
 
@@ -55,7 +54,7 @@ When you create a sub-part, a *remote* connection is established between the mai
 
 To establish a connection between a part of one robot and a part of a second robot, configure a `remote` on the first robot's part.
 
-1. Go to the Viam app robot page of the robot part to which you wish to establish the remote.
+1. Go to the Viam app robot page of the robot part to which you wish to establish the remote connection.
    This is the robot part whose resources will be accessible to the other robot part.
 2. Click the **CODE SAMPLE** tab.
 3. On the **Language** toggle, select **Remotes**.
