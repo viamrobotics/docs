@@ -172,9 +172,9 @@ The rover's design allows you to reach the SD card slot at all times, so you can
 ### Connect the wires
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this piece of paper](../img/rpi4_rover_leaf.pdf) which has labels for the pins and carefully push it onto the pins.
+To make it easier for you to see which pin is which, you can print out [this piece of paper at 100% scaling level](../img/rpi4_rover_leaf_A4.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
 Only attach the paper when the Pi is unplugged.
-To make attaching the paper easier, use a credit card.
+To make attaching the paper easier, use a credit card or a small screwdriver.
 {{< /alert >}}
 
 Wire your Pi to the buck converter, the acceleration tilt module, the DC motor driver:
