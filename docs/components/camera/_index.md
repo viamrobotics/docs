@@ -61,12 +61,13 @@ The camera component supports the following methods:
 | [GetImage](#getimage) | Returns an image from the camera. |
 | [GetPointCloud](#getpointcloud) | Returns a point cloud from the camera. |
 | [GetProperties](#getproperties) | Returns the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
-| [DoCommand](#docommand) | Sends or receives arbitrary commands. |
+| [DoCommand](#docommand) | Sends or receives model-specific commands. |
 
 ### GetImage
 
 Returns an image from the camera.
 You can request a specific MIME type but the returned MIME type is not guaranteed.
+If the server does not know how to return the specified MIME type, the server returns the image in another format instead.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -239,6 +240,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
+For native models, model-specific commands are covered with each model's documentation.
+If you are implementing your own camera, and add features that have no native API method, this is how you access them.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -252,7 +255,10 @@ Execute model-specific commands that are not otherwise defined by the component 
 - `result` (`Dict[str, Any]`): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-async def do(self, command: Dict[str, Any]) -> Dict[str, Any]
+my_cam = Camera.from_robot(robot, "camera0")
+
+command = {"cmd": "test", "data1": 500}
+result = my_cam.do(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
@@ -267,10 +273,17 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Returns:**
 
-- `results` (`cmd map[string]interface{}`): Result of the executed command.
+- `result` (`cmd map[string]interface{}`): Result of the executed command.
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/camera/camera.go#L268).
+```go {class="line-numbers linkable-line-numbers"}
+  myCam, err := camera.FromRobot(robot, "my camera")
+
+  command := map[string]interface{}{"cmd": "test", "data1": 500}
+  result, err := myCam.DoCommand(context.Background(), command)
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/camera/camera.go#L268).
 
 {{% /tab %}}
 {{< /tabs >}}
