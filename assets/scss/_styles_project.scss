@@ -611,3 +611,21 @@ footer small {
 }
 
 /* END no whitespace beneath footer */
+
+/* START scroll to top styling */
+
+#scrollButton {
+  position: sticky;
+  left: 100%;
+  bottom: 1rem;
+  border-radius: 0;
+  border: 1px solid black;
+  background-color: whitesmoke;
+  margin: 0;
+  padding: 1px 6px;
+  i {
+    color: black;
+  }
+}
+
+/* END scroll to top styling */
