@@ -3,6 +3,7 @@ title: "Robot Service"
 linkTitle: "Robot"
 description: "Explanation of the robot service, its configuration, and its functionality."
 type: "docs"
+draft: "true"
 weight: 10
 tags: ["robot state", "services"]
 # SME: Cheuk
