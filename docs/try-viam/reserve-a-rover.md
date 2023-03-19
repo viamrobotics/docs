@@ -62,7 +62,12 @@ You can also click on the timer at the top to go back to the rental rover's **CO
     </div>
     <div class="col hover-card hover-card-small">
         <a href="../../tutorials/viam-rover/try-viam-sdk">
-            <img src="../../tutorials/img/try-viam-sdk/image1.gif" width=100% style="padding-top: 1em" alt="Overhead view of the Viam rover showing it as it drives in a square.">
+            <div class="landing-video-container" style="padding-top: 1em">
+                <video autoplay loop muted playsinline alt="Overhead view of the Viam rover showing it as it drives in a square." width="100%">
+                    <source src="../../tutorials/img/try-viam-sdk/image1.webm" type="video/webm" />
+                    <source src="../../tutorials/img/try-viam-sdk/image1.mp4" type="video/mp4" />
+                </video>
+            </div>
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive with the Viam SDK</h4>
             <p style="text-align: left;">Use the Viam SDK to make your Viam Rover move in a square.</p>
         </a>

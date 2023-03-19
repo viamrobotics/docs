@@ -24,15 +24,15 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 {{% tab name="Support"%}}
 **Supported**
 
-* Markdown and HTML images.
-* Alert Shortcode
-* PRISM syntax highlighting (the three backticks)
-* "codelang" highlighting (add codelang="language" to tab element). It's very ugly, needs css work, and is not recommended at this time.
+- Markdown and HTML images.
+- Alert Shortcode
+- PRISM syntax highlighting (the three backticks)
+- "codelang" highlighting (add codelang="language" to tab element). It's very ugly, needs css work, and is not recommended at this time.
 
 ### Not Supported
 
-* Footnotes
-* Expanders
+- Footnotes
+- Expanders
 
 ### Example Usage
 
@@ -45,9 +45,9 @@ The following is an example of the <file>secret-share.md</file> alert added usin
  <h3>What is Rendered?</h3>
  <p>It renders <i>vanilla</i> HTML and markdown, Alerts, and images. For example, these two images:</p>
 
-* **Markdown Image Example**<br>
+- **Markdown Image Example**<br>
 ![expand example](/img/expander-markdown.png)<br>
-* **HTML Image Example** (with border)<br>
+- **HTML Image Example*- (with border)<br>
 <img style="border:solid 1px black" src="/img/expander-markdown.png" alt="Screen capture of Tab/Tabs Shortcode Usage">
 
 </div>
@@ -232,11 +232,11 @@ Use to notify the reader of information to avoid loss of life, personal injury, 
 
 ## Using the Figure Shortcode
 
-The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr** element for attribution text and **attrlink** if you wish to add a link to the attribution text.
+The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr*- element for attribution text and **attrlink*- if you wish to add a link to the attribution text.
 
 {{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
 
-This shortcode places the caption (that is the "title") above the table. The **title** is set in 12pt italic with a green underline.
+This shortcode places the caption (that is the "title") above the table. The **title*- is set in 12pt italic with a green underline.
 
 Figure styles the Attribution text as body text.
 
@@ -245,3 +245,38 @@ Figure styles the Attribution text as body text.
 {{< readfile "/static/include/sample.md" >}}
 
 Section content before this line is contained in an included file: /static/include/sample.md
+
+## GIFs and Videos
+
+There are a few issues to consider with these:
+
+- Some MP4 files aren't natively supported on iPhones.
+  If you add an MP4 file, test it on mobile with the deployed link on the PR.
+- GIFs use a lot of bandwidth.
+  More than videos.
+  The [best practice](https://developer.chrome.com/en/docs/lighthouse/performance/efficient-animated-content/) is to not use them.
+
+Instead use a video div with two sources:
+
+```md
+<!-- remove space -->
+{ {<video webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">} }
+```
+
+{{<video webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">}}
+
+or if you want a video without controls - mimicking a GIF:
+
+```md
+<!-- remove space -->
+{ {<gif webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">}}
+```
+
+{{<gif webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">}}
+
+And to create the source files, run these commands:
+
+```sh
+ffmpeg -i PATH_TO_GIF_OR_VID -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c:a eac3 -b:a 224k PATH_TO_GIF_OR_VID.mp4
+ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
+```

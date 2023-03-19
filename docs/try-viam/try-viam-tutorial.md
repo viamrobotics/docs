@@ -115,7 +115,7 @@ You can also see their current positions (based on encoder readings) in real tim
 
 ![The left motor running at 20% power and forwards and right motor running at 80% power and backwards.](../img/try-viam/motors-running.png)
 
-![The robot rotating with the left motor running at 20% power and forwards and right motor running at 80% power and backwards.](../img/try-viam/rotating.gif)
+{{<gif webm_src="../img/try-viam/rotating.webm" mp4_src="../img/try-viam/rotating.mp4" alt="The robot rotating with the left motor running at 20% power and forwards and right motor running at 80% power and backwards.">}}
 
 #### Board control
 
@@ -223,7 +223,9 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
   <div class="row">
     <div class="col hover-card">
         <a href="../../tutorials/viam-rover/try-viam-sdk">
-            <img src="../../tutorials/img/try-viam-sdk/image1.gif" width=100% style="padding-top: 1em" alt="Overhead view of the Viam rover showing it as it drives in a square.">
+            <div style="padding-top:1em">
+                {{<gif webm_src="../../tutorials/img/try-viam-sdk/image1.webm" mp4_src="../../tutorials/img/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam rover showing it as it drives in a square.">}}
+            </div>
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive with the Viam SDK</h4>
             <p style="text-align: left;">Use the Viam SDK to make your Viam Rover move in a square.</p>
         </a>
