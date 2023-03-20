@@ -7,6 +7,9 @@ description: "Calibrate a camera and extract the intrinsic and distortion parame
 tags: ["camera", "components"]
 ---
 
+To calibrate a camera, you can use the classical example of a [chessboard](https://en.wikipedia.org/wiki/Chessboard_detection).
+The chessboard is often used because the geometry makes it a good test case for detection and processing.
+
 ### Prerequisites
 
 The calibration code uses the `numpy` and `opencv-python` packages.
@@ -20,13 +23,20 @@ pip3 install opencv-python
 ### Instructions
 
 1. Print out the [checkerboard](https://github.com/viam-labs/camera-calibration/blob/main/Checkerboard-A4-25mm-8x6.pdf) and attach it to a flat surface that doesn't distort the checkerboard.
-2. Take images of the checkerboard with your camera from various angles and distances.
+   Good surfaces are completely flat like a table, an non-textured wall or an acrylic plate.
+   Do not hold the image in the air with your hands or tape it to a textured surface such as a textured wall, cardboard, or folder.
+2. Take images of the checkerboard with your camera from various angles and distances that show the entire image, including the edges.
+   Ensure the image is well and thoroughly lit to avoid distortions affecting the vision algorithms.
    You can use the **Export Screenshot** button on the camera panel of your robot's **CONTROL** tab in the [Viam app](https://app.viam.com).
    Save between 10 - 15 images (see [examples](https://github.com/viam-labs/camera-calibration#example-images)).
 
    {{< alert title="Note" color="note" >}}
    In order for the calibration to be compatible with the rdk, take the images by running the camera using the rdk.
    {{< /alert >}}
+
+   Example of good images:
+   ![Example of good images](../img/calibrate/ExampleImages.png)
+
 3. Save [`cameraCalib.py`](https://github.com/viam-labs/camera-calibration/blob/main/cameraCalib.py)
 4. Run `python3 cameraCalib.py YOUR_PICTURES_DIRECTORY`.
 
