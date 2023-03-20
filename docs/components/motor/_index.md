@@ -139,10 +139,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-myMotor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Set the power to 40% forwards.
-await myMotor.set_power(power = 0.4)
+await my_motor.set_power(power = 0.4)
 ```
 
 {{% /tab %}}
@@ -196,10 +196,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-myMotor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Turn the motor 7.2 revolutions at 60 RPM.
-await myMotor.go_for(rpm=60, revolutions=7.2)
+await my_motor.go_for(rpm=60, revolutions=7.2)
 ```
 
 {{% /tab %}}
@@ -255,10 +255,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-myMotor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Turn the motor to 8.3 revolutions from home at 75 RPM.
-await myMotor.go_to(rpm=75, revolutions=8.3)
+await my_motor.go_to(rpm=75, revolutions=8.3)
 ```
 
 {{% /tab %}}
@@ -309,10 +309,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-myMotor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Set the current position as the new home position with no offset.
-await myMotor.reset_zero_position(offset=0.0)
+await my_motor.reset_zero_position(offset=0.0)
 ```
 
 {{% /tab %}}
@@ -364,10 +364,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-myMotor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Get the current position of the motor.
-position = await myMotor.get_position()
+position = await my_motor.get_position()
 ```
 
 {{% /tab %}}
@@ -417,10 +417,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-myMotor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Report a dictionary mapping optional properties to whether it is supported by this motor.
-properties = await myMotor.get_properties()
+properties = await my_motor.get_properties()
 print('Properties:')
 print(properties)
 ```
@@ -474,10 +474,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-myMotor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Stop the motor.
-await myMotor.stop()
+await my_motor.stop()
 ```
 
 {{% /tab %}}
@@ -528,10 +528,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-myMotor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Check whether the motor is currently running.
-powered = await myMotor.is_powered()
+powered = await my_motor.is_powered()
 print('Powered:', powered)
 ```
 
@@ -587,10 +587,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-myMotor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name='my_motor')
 
 # Check whether the motor is currently moving.
-moving = await myMotor.is_moving()
+moving = await my_motor.is_moving()
 print('Moving:', moving)
 ```
 
@@ -625,4 +625,52 @@ logger.Info(moving)
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
-Model-specific commands are covered with each model's documentation.
+For native models, model-specific commands are covered with each model's documentation.
+If you are implementing your own motor and add features that have no native API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (`Dict[str, Any]`): The command to execute.
+
+**Returns:**
+
+- `result` (`Dict[str, Any]`): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_motor = Motor.from_robot(robot=robot, name='my_motor')
+
+raw_dict = {
+  "command": "raw",
+  "raw_input": "home"
+}
+await my_motor.do_command(raw_dict)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` (`cmd map[string]interface{}`): The command to execute.
+
+**Returns:**
+
+- `result` (`cmd map[string]interface{}`): Result of the executed command.
+- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myMotor, err := motor.FromRobot(robot, "motor1")
+
+resp, err := myMotor.DoCommand(ctx, map[string]interface{}{"command": "jog", "raw_input": "home"})
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/motor/motor.go#L213).
+
+{{% /tab %}}
+{{< /tabs >}}
