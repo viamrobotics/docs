@@ -3,6 +3,7 @@ EnforceHTTPS: true
 IgnoreEmptyHref: true
 IgnoreInternalEmptyHash: true
 IgnoreDirectoryMissingTrailingSlash: true
+HTTPHeaders: {"User-Agent": "Chrome/51.0.2704.106"}
 IgnoreURLs:
 - "example.com"
 - "^/misc/js/script.js$"
