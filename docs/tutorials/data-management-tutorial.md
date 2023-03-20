@@ -14,7 +14,7 @@ In this tutorial, we will cover how to use Data Management, including capturing 
 
 One key feature of Viam is [Data Management](/manage/data-management/), which helps you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
 
-Viam's Data Management Service has two distinct parts: [data capture](#add-the-data-management-service) and [cloud sync](#enable-cloud-sync).
+Viam's Data Management Service has two distinct parts: data capture and cloud sync.
 
 **Data capture** allows you to capture data from specific components on your robot running Viam.
 You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
@@ -59,14 +59,12 @@ To enable the data capture on your robot, do the following:
    This service syncs data from your robot to the Viam app in the cloud.
 3. Then click **Create Service**.
 4. On the panel that appears, you can manage the capturing and syncing functions individually.
-   The Data Management Service captures data every 5 minutes in the <file>/.viam/capture</file> directory by default.
+   The Data Management Service captures data every 0.1 minutes in the <file>/.viam/capture</file> directory by default.
 
-   Set the **Interval** to **1** min.
-   You can leave the default directory in which your captured data is stored on-robot.
-   By default, it saves it to the <file>/.viam/capture</file> directory on your robot.
-5. Click **Save Config** at the bottom of the window.
+   You can leave the default settings as they are.
+   Click **Save Config** at the bottom of the window.
 
-![Screenshot from the Data Management Service showing the Data Capture option enabled and the cloud sync option disabled.](../img/data-management/image3.png)
+![Data Management Card](../img/data-management/data-manager.png)
 
 For more detailed information see [Add the Data Management Service](../../manage/data-management/configure-data-capture/#add-the-data-management-service).
 
@@ -109,23 +107,7 @@ On your robot, navigate to the <file>/.viam/capture</file> directory and check f
 
 {{% /alert %}}
 
-For more detailed information see [Configure Data Capture](../../manage/data-management/configure-data-capture/#configure-data-capture-for-individual-components).
-
-## Enable cloud sync
-
-Enabling cloud sync allows you to securely access all your robot's data in the Viam app in the cloud.
-To enable cloud sync on your robot, do the following:
-
-- Navigate to the **CONFIG** tab, then select **SERVICES**.
-- Navigate to [the Data Management Service you created above](#add-the-data-management-service).
-- In the **Cloud Sync** section, enable **Syncing**.
-- Click **Save Config** at the bottom of the window.
-
-![Screenshot from the Data Management Service showing the Data Capture and the cloud sync option enabled.](../img/data-management/image2.png)
-
-Now the data that you capture locally will sync automatically with the Viam app in the cloud.
-
-For more detailed information see [Configure Cloud Sync](../../manage/data-management/configure-cloud-sync/).
+For more detailed information see [Configure Data Capture](../../manage/data-management/configure-data-capture/#configure-data-capture-for-individual-components) and [Configure Cloud Sync](../../manage/data-management/configure-cloud-sync/).
 
 ## View and filter captured data
 
