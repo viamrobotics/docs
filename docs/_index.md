@@ -18,12 +18,7 @@ Learn about [the Viam platform in 3 minutes](viam).
         <div class="landing-hover-card-padding yellow">
             <h4>Try Viam</h4>
             <p style="text-align: left;"><a href="try-viam">Drive a Viam rover</a> from the comfort of your home right now or follow along with some <a href="tutorials">example robot tutorials</a>.</p>
-            <div class="landing-video-container">
-                <video autoplay loop muted playsinline alt="A Viam Rover moving about" width="100%">
-                    <source src="img/rover.webm" type="video/webm" />
-                    <source src="img/rover.mp4" type="video/mp4" />
-                </video>
-            </div>
+            {{<gif webm_src="img/rover.webm" mp4_src="img/rover.mp4" alt="A Viam Rover moving about">}}
         </div>
     </div>
     <div class="col landing-hover-card ">
@@ -35,12 +30,7 @@ Learn about [the Viam platform in 3 minutes](viam).
             <li><a href="manage/app-usage/">Connect to the Viam app</a></li>
             <li>Configure <a href="components">components</a> and <a href="services">services</a></li>
             </ol>
-            <div class="landing-video-container">
-                <video autoplay loop muted playsinline alt="A blinking L.E.D. connected to a Raspberry Pi" width="100%">
-                    <source src="img/blink.webm" type="video/webm" />
-                    <source src="img/blink.mp4" type="video/mp4" />
-                </video>
-            </div>
+            {{<gif webm_src="img/blink.webm" mp4_src="img/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
         </div>
     </div>
     </div>
@@ -60,12 +50,7 @@ Learn about [the Viam platform in 3 minutes](viam).
         <a href="https://discord.gg/viam">
             <h4>Community</h4>
             <p style="text-align: left;">Have questions, or want to meet other people working on robots? Join us in the Community Discord!</p>
-            <div class="landing-video-container">
-                <video autoplay loop muted playsinline alt="A robot drawing a heart" width="100%">
-                    <source src="img/heart.webm" type="video/webm" />
-                    <source src="img/heart.mp4" type="video/mp4" />
-                </video>
-            </div>
+            {{<gif webm_src="img/heart.webm" mp4_src="img/heart.mp4" alt="A robot drawing a heart">}}
         </a>
         </div>
     </div>

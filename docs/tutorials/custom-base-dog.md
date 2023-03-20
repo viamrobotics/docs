@@ -18,7 +18,9 @@ Viam natively supports a wheeled base model, but if you have a quadruped or othe
 
 This tutorial demonstrates option two, using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
-<img src="../img/custom-base-dog/base-control-dog.gif" style="float:left;margin-right:12px" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." width="400" />
+<div style="float:left;margin-right:12px">
+  {{<gif webm_src="../img/custom-base-dog/base-control-dog.webm" mp4_src="../img/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." max-width="400px">}}
+</div>
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
 You will also be able to use the **CONTROL** tab in the Viam app to remotely drive the dog around using your keyboard while viewing the camera feed.

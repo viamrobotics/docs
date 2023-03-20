@@ -29,10 +29,9 @@ description: "Color detection and SDK tutorials for the Viam Rover."
     </div>
     <div class="col hover-card">
       <a href="../../tutorials/viam-rover/try-viam-sdk">
-        <img
-          src="../../tutorials/img/try-viam-sdk/image1.gif"
-          alt="Overhead view of the Viam rover showing it as it drives in a square."
-          style="margin-top: 1em;" />
+        <div style="margin-top: 1em;">
+          {{<gif webm_src="../../tutorials/img/try-viam-sdk/image1.webm" mp4_src="../../tutorials/img/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam rover showing it as it drives in a square.">}}
+        </div>
         <h4 style="text-align: left; margin-left: 0px; margin-top: 1em">
           Drive with the Viam SDK
         </h4>
