@@ -19,7 +19,7 @@ Refer to the [Setting up a SCUTTLE with Viam](/tutorials/scuttlebot/scuttlebot) 
 
 The following video demonstrates controlling a SCUTTLE Robot using a bluetooth gamepad:<br>
 
-{{<video src="../../videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a bluetooth gamepad" type="video/mp4">}}
+{{<video webm_src="../../videos/scuttledemos_gamepad.webm" mp4_src="../../videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a bluetooth gamepad">}}
 
 ## Adding the controller to the SCUTTLE's config
 

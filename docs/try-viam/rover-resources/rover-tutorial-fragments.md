@@ -88,7 +88,9 @@ If you want each component to show up in your **COMPONENTS** subtab so you can v
   <div class="row">
     <div class="col hover-card">
         <a href="../../../tutorials/viam-rover/try-viam-sdk">
-          <img src="../../../tutorials/img/try-viam-sdk/image1.gif" width=100% style="padding-top: 1em" alt="Overhead view of the Viam rover showing it as it drives in a square.">
+          <div style="padding-top: 1em">
+            {{<gif webm_src="../../../tutorials/img/try-viam-sdk/image1.webm" mp4_src="../../../tutorials/img/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam rover showing it as it drives in a square.">}}
+          </div>
           <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive with the Viam SDK</h4>
           <p style="text-align: left;">Using the Viam SDK to make your Viam Rover move in a square.</p>
         </a>

@@ -8,8 +8,11 @@ tags: ["base", "vision", "detector", "camera", "services", "python"]
 ---
 
 <div class="td-max-width-on-larger-screens">
-      <img src="../img/webcam-line-follower/lf-following1.gif" class="float-right" style="margin-left:1em;width:150px" alt="Robot following a line"/>
+ <div style="margin-left:1em;width:150px; float: right;">
+  {{<gif webm_src="../img/webcam-line-follower/lf-following1.webm" mp4_src="../img/webcam-line-follower/lf-following1.mp4" alt="Robot following a line">}}
+  </div>
 </div>
+
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.<br><br>
 
@@ -271,7 +274,7 @@ Once the line is back in the center front of the camera frame, the rover continu
 
 When the rover no longer sees any of the line color anywhere in the front portion of the camera frame, it stops and the program ends.
 
-<img class="center" src="/tutorials/img/webcam-line-follower/lf-tape-follow3.gif" alt="The green line the camera sees as the rover moves along it." width="300" />
+{{<gif webm_src="/tutorials/img/webcam-line-follower/lf-tape-follow3.webm" mp4_src="/tutorials/img/webcam-line-follower/lf-tape-follow3.mp4" alt="The green line the camera sees as the rover moves along it." max-width="300px">}}
 
 ## Let’s write some code
 
@@ -327,13 +330,15 @@ When the rover no longer sees any of the line color anywhere in the front portio
 2. Go to the **CONTROL** tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around.
    Ensure that the base moves as expected.
    If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.
-   <img class="spacing" src="/tutorials/img/webcam-line-follower/lf-viamapp-base-view5.gif" alt="Driving the base from the Viam app's CONTROL tab." width="600" />
+
+   {{<gif webm_src="/tutorials/img/webcam-line-follower/lf-viamapp-base-view5.webm" mp4_src="/tutorials/img/webcam-line-follower/lf-viamapp-base-view5.mp4" alt="Driving the base from the Viam app's CONTROL tab." max-width="600px">}}
+
 3. Now for the creative part: Use your colored tape to make a path for your robot to follow.
    Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
    Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
 4. Set your robot on the line such that the line appears in the front of the camera’s view.
    Verify that the camera sees the line by viewing the camera feed on the **CONTROL** tab of the robot page.
-   <img  class="spacing" src="/tutorials/img/webcam-line-follower/lf-cam-view6.png" alt="The camera view in the control tab on the robot page" width="600" />
+   <img src="/tutorials/img/webcam-line-follower/lf-cam-view6.png" alt="The camera view in the control tab on the robot page" width="600" />
 5. In a terminal window, SSH to your Pi by running:
 
    ```bash

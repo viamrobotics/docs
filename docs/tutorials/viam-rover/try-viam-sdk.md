@@ -14,7 +14,9 @@ tags: ["base", "viam rover", "try viam", "sdk", "python"]
 The Viam SDKs allow you to write code in either Python or Go to control a [Viam Rover](https://app.viam.com/try).
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
 
-<img src="../../img/try-viam-sdk/image1.gif" alt="Overhead view of the Viam Rover showing it as it drives in a square." width="100%"><br>
+<div class="td-max-width-on-larger-screens">
+{{<gif webm_src="../../img/try-viam-sdk/image1.webm" mp4_src="../../img/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square.">}}
+</div>
 
 {{< alert title="Tip" color="tip" >}}
 You can also directly see the [complete code for the tutorial](#complete-code).
@@ -232,7 +234,9 @@ If you are [renting your rover](https://app.viam.com/try), go to the **CONTROL**
 
 When you run your code, your robot moves in a square.
 
-<img src="../../img/try-viam-sdk/image2.gif" alt="Overhead view of the Viam Rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square." width="100%"><br>
+<div class="td-max-width-on-larger-screens">
+{{<gif webm_src="../../img/try-viam-sdk/image2.webm" mp4_src="../../img/try-viam-sdk/image2.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square.">}}
+</div>
 
 ## Complete Code
 
