@@ -13,7 +13,7 @@ To capture data from one or more robots, you must first add the [Data Management
 
 1. On your robot's **CONFIG** page, navigate to the **SERVICES** tab.
 2. At the bottom of the page you can create a service.
-   Choose `Data Management` as the type and specify a name for your Data Management Service, for example `viam-data-manager`.
+   Choose `Data Management` as the type and specify a name for your Data Management Service, for example `data-manager`.
 3. Then click `Create Service`.
 4. On the panel that appears, you can manage the capturing and syncing functions individually.
    The Data Management Service captures data every 0.1 minutes in the `/.viam/capture` directory by default.
