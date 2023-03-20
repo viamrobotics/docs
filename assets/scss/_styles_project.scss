@@ -599,3 +599,15 @@ td > ul, td > ol {
 }
 
 /* END TAB CSS consistency */
+
+/* START no whitespace beneath footer */
+
+body footer {
+  line-height: 1;
+}
+
+footer small {
+  line-height: 1.5;
+}
+
+/* END no whitespace beneath footer */
