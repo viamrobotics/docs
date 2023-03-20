@@ -278,7 +278,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-  myCam, err := camera.FromRobot(robot, "my camera")
+  myCam, err := camera.FromRobot(robot, "my_camera")
 
   command := map[string]interface{}{"cmd": "test", "data1": 500}
   result, err := myCam.DoCommand(context.Background(), command)

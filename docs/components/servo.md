@@ -135,7 +135,7 @@ async def main():
     print(robot.resource_names)
 
     # Connect to your servo.
-    myServo = Servo.from_robot(robot=robot, name='my_servo')
+    my_servo = Servo.from_robot(robot=robot, name='my_servo')
 
     # Disconnect from your robot.
     await robot.close()
@@ -198,16 +198,12 @@ func main() {
 
 The servo component supports the following methods:
 
-| Method Name | Go | Python | Description |
-| ----------- | -- | ------ | ----------- |
-| [Move](#move) | [Move][go_servo] | [move][python_move] | Move the servo to the desired angle. |
-| [Position](#position) | [Position][go_servo] | [get_position][python_get_position] | Get the current angle of the servo. |
-| [Stop](#stop) | [Stop][go_servo] | [stop][python_stop] | Stop the servo. |
-
-[go_servo]: https://pkg.go.dev/go.viam.com/rdk@v0.2.1/components/servo#Servo
-[python_move]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.move
-[python_get_position]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.get_position
-[python_stop]: https://python.viam.dev/autoapi/viam/components/servo/index.html#viam.components.servo.ServoClient.stop
+| Method Name | Description |
+| ----------- | ----------- |
+| [Move](#move) | Move the servo to the desired angle. |
+| [Position](#position) | Get the current angle of the servo. |
+| [Stop](#stop) | Stop the servo. |
+| [DoCommand](#docommand) | Sends or receives model-specific commands. |
 
 ### Move
 
@@ -218,7 +214,7 @@ Move the servo to the desired angle in degrees.
 If you are using a continuous rotation servo, you can use the `Move` command, but instead of moving to a given position, the servo will start moving at a set speed.
 
 The speed will be related to the "angle" you pass in as a linear approximation.
-90 degrees represents stop, 91 to 180 represents counter-clockwise rotation from slowest to fastest, and 89 to 1 represents clockwise from slowest to fastest.  
+90 degrees represents stop, 91 to 180 represents counter-clockwise rotation from slowest to fastest, and 89 to 1 represents clockwise from slowest to fastest.
 It is recommended that you test your servo to determine the desired speed.
 
 {{% /alert %}}
@@ -239,13 +235,13 @@ It is recommended that you test your servo to determine the desired speed.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.move).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myServo = Servo.from_robot(robot=robot, name='my_servo')
+my_servo = Servo.from_robot(robot=robot, name='my_servo')
 
 # Move the servo from its origin to the desired angle of 10 degrees.
-await myServo.move(10)
+await my_servo.move(10)
 
 # Move the servo from its origin to the desired angle of 90 degrees.
-await myServo.move(90)
+await my_servo.move(90)
 ```
 
 {{% /tab %}}
@@ -298,19 +294,19 @@ Get the current set angle of the servo in degrees.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.get_position).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myServo = Servo.from_robot(robot=robot, name='my_servo')
+my_servo = Servo.from_robot(robot=robot, name='my_servo')
 
 # Move the servo from its origin to the desired angle of 10 degrees.
-await myServo.move(10)
+await my_servo.move(10)
 
 # Get the current set angle of the servo.
-pos1 = await myServo.get_position()
+pos1 = await my_servo.get_position()
 
 # Move the servo from its origin to the desired angle of 20 degrees.
-await myServo.move(20)
+await my_servo.move(20)
 
 # Get the current set angle of the servo.
-pos2 = await myServo.get_position()
+pos2 = await my_servo.get_position()
 ```
 
 {{% /tab %}}
@@ -329,7 +325,7 @@ pos2 = await myServo.get_position()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(robot, "my_servo")
+my_servo, err := servo.FromRobot(robot, "my_servo")
 if err != nil {
   logger.Fatalf("cannot get servo: %v", err)
 }
@@ -369,13 +365,13 @@ Stop the servo from moving.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.stop).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myServo = Servo.from_robot(robot=robot, name='my_servo')
+my_servo = Servo.from_robot(robot=robot, name='my_servo')
 
 # Move the servo from its origin to the desired angle of 10 degrees.
-await myServo.move(10)
+await my_servo.move(10)
 
 # Stop the servo. It is assumed that the servo stops moving immediately.
-await myServo.stop()
+await my_servo.stop()
 ```
 
 {{% /tab %}}
@@ -404,6 +400,57 @@ myServo.Move(context.Background(), 10, nil)
 // Stop the servo. It is assumed that the servo stops moving immediately.
 myServo.Stop(context.Background(), nil)
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+For built-in models, model-specific commands are covered with each model's documentation.
+If you are implementing your own servo and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (`Dict[str, Any]`): The command to execute.
+
+**Returns:**
+
+- `result` (`Dict[str, Any]`): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_servo = Servo.from_robot(robot, "my_servo")
+
+command = {"cmd": "test", "data1": 500}
+result = my_servo.do(command)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` (`cmd map[string]interface{}`): The command to execute.
+
+**Returns:**
+
+- `result` (`cmd map[string]interface{}`): Result of the executed command.
+- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+  myServo, err := servo.FromRobot(robot, "my_servo")
+
+  command := map[string]interface{}{"cmd": "test", "data1": 500}
+  result, err := myServo.DoCommand(context.Background(), command)
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/servo/servo.go#L143).
 
 {{% /tab %}}
 {{< /tabs >}}
