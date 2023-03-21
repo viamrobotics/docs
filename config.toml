@@ -64,7 +64,7 @@ version_menu = "SDK Documentation"
  url="https://pkg.go.dev/go.viam.com/rdk"
 [[params.versions]]
  version = "TypeScript SDK Documentation"
- url="http://ts.viam.dev/"
+ url="https://ts.viam.dev/"
 # [[params.versions]]
 #  version = "Rust SDK Documentation"
 #  url = "https://rust.viam.dev/"
