@@ -7,7 +7,9 @@ description: "Details about configuring robots with Viam."
 tags: ["manage", "components"]
 ---
 
-Configuration is the process of telling your robot what *resources* (hardware [components](/components/) and software [services](/services/)) it has access to, and the relevant parameters of those resources, so that the robot software knows how to interact with its resources.
+To be able to use a robot, you must first configure it.
+
+A robot's configuration tells the code running the robot what *resources* (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
 
 This page details some overarching concepts and [best practices](#best-practices), and will help you understand what is going on in the background when you change your robot's configuration.
 
@@ -150,7 +152,9 @@ See the [services documentation](/services/) for more information.
 
 ## Modules
 
-To add a [modular resource](https://docs.viam.com/program/extend/modular-resources/) as a component or service of your robot, configure a module per the [modular resource documentation](/program/extend/modular-resources/#add-a-module-to-your-robot-configuration).
+[Modular resources](/program/extend/modular-resources/) are a way to add resource types or models that are not built into Viam.
+
+To add a modular resource as a component or service of your robot, configure a module per the [modular resource documentation](/program/extend/modular-resources/#add-a-module-to-your-robot-configuration).
 
 ## Remotes
 
@@ -217,13 +221,15 @@ Find more information in the [frame system documentation](/services/frame-system
 
 Some best practices when configuring your robot include:
 
-- Click **Save Config** before changing tabs, and before switching between **Builder** and **Raw JSON** mode.
+- Remember to click **Save Config** after making changes.
 - Configure one component at a time.
   After configuring each component and clicking **Save Config**, if your robot is powered and connected, test the component.
-	  Switch to the **CONTROL** tab and use the interface to interact with the component and check that it behaves as expected.
-	  It can take up to around 20 seconds for components to initialize on the **CONTROL** tab.
+  Switch to the **CONTROL** tab and use the interface to interact with the component and check that it behaves as expected.
+  It can take up to around 20 seconds for components to initialize on the **CONTROL** tab.
 
 ## Troubleshooting
+
+If you run into issues, here are some things to try:
 
 - Check the **LOGS** tab to check for any errors or other info from `viam-server`.
 - You can also view logs locally by running the following command on the robot:
