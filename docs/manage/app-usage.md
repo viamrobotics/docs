@@ -177,6 +177,8 @@ Raw JSON mode can be useful for users who are familiar with writing JSON, and fo
 Within the **CONFIG** tab (in builder mode) are separate sub-tabs for components, services, remotes, processes, network, authentication, and fragments, so be sure to configure these in their respective tabs.
 In raw JSON mode, all of these resources are displayed in a single text field.
 
+More information on configuration found in the [robot config documentation](/manage/configuration/).
+
 Details on configuring specific hardware components and services can be found in these topics:
 
 - [Components](/components/)

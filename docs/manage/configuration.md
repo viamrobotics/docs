@@ -9,16 +9,17 @@ tags: ["manage", "components"]
 
 To be able to use a robot, you must first configure it.
 
-A robot's configuration tells the code running the robot what *resources* (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
+A robot's configuration tells the code running the robot what *resources* (hardware *components* and software *services*) it has access to, as well as any relevant parameters for those resources.
 
-This page details some overarching concepts and [best practices](#best-practices), and will help you understand what is going on in the background when you change your robot's configuration.
+In addition to components and services, you can configure [modules](#modules), [remotes](#remotes), [processes](#processes), [fragments](#fragments), <!--[authorization keys](#authnetwork), -->and [frames](#frame-system), as detailed below.
 
-You can find specifics on how to configure a resource of a given type and model in the respective documentation:
+<br>
 
-- [Find information on supported component types here.](/components/)
-- [Find information on supported service types here.](/services/)
+{{% alert title=Tip color="tip" %}}
 
-In addition to components and services, you can configure [modules](#modules), [remotes](#remotes), [processes](#processes), [fragments](#fragments), [authorization keys](#authnetwork) and [frames](#frame-system), as detailed below.
+This document covers general configuration concepts and best practices, but if you want to get started with configuring your specific robot, you can head straight to the [component](/components/) or [service](/services/) documentation that is relevant to your robot.
+
+{{% /alert %}}
 
 ## Your robot's config file
 
@@ -116,7 +117,8 @@ The sections of the robot config (which each have corresponding sub-tabs on the 
 
 ## Components
 
-[Components](/components/) represent the pieces of hardware on your robot that you want to control with Viam.
+Components represent the pieces of hardware on your robot that you want to control with Viam.
+Find information on how to configure each supported component type in its respective [documentation](/components/).
 You must configure each component with a name, a model, a type, attributes, and dependencies:
 
 - `name`: Serves as an identifier when accessing the resource from your code, as well as when configuring other resources that are dependent on that resource.
@@ -129,7 +131,7 @@ You can choose any unique name for a component.
 Components of the same model are supported using the same low-level code.
 
 - `attributes`: A struct to define things like how the component is wired to the robot, its dimensions, and other specifications; attributes vary widely between models.
-  See the [component documentation](/components/) for a given comonent type and model for more details.
+  See the [component documentation](/components/) for a given component type and model for more details.
 
 - `depends_on`: Any components that a given component relies upon, and that must be initialized on boot before this component is initialized.
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
@@ -203,6 +205,9 @@ The corresponding raw JSON looks like this:
 
 ## Fragments
 
+*Fragments are an experimental feature.
+Stability is not guaranteed.*
+
 Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple robots.
 For example, if you have multiple robots with the same hardware, wired the same way, you can create and share a fragment and add it to any number of robots.
 When changes are made to the fragment, those changes are automatically carried to all robots that include the fragment in their config.
@@ -210,7 +215,25 @@ When changes are made to the fragment, those changes are automatically carried t
 You can add a fragment to a robot's config and also add other configuration outside the fragment.
 For example, if you have multiple identical rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
 
+To add a fragment to a robot:
+
+- Go to the **FRAGMENTS** sub-tab of your robot's **CONFIG** tab on the [Viam app](https://app.viam.com).
+- Look through the list of available fragments and click **ADD** next to any fragments you want to add to your robot.
+- Click **Save Config** at the bottom of the screen.
+
+{{% alert title="Note" color="note" %}}
+
+The components or other resources included in the fragment will *not* appear in the **COMPONENTS** sub-tab or in the `components` section of your config.
+You will simply see the fragment ID in the `fragments` section of your config, but all the resources *will* appear on the **CONTROL** tab when your robot comes on line, and they will be accessible from SDK code as regular resources of your robot.
+
+{{% /alert %}}
+
+To create a fragment, go to [https://app.viam.com/fragments](https://app.viam.com/fragments).
+
+For an example of adding a fragment to a robot, see the [Viam Rover fragment tutorial](/try-viam/rover-resources/rover-tutorial-fragments/).
+<!--
 ## Auth/network
+-->
 
 ## Frame system
 
