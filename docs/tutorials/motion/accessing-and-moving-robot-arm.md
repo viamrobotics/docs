@@ -78,8 +78,11 @@ The following lines from the [full **Python** tutorial code](#full-tutorial-code
 The code then calls the `get_end_position` method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```python {class="line-numbers linkable-line-numbers"}
+# Access myArm
 my_arm_resource = Arm.get_resource_name("myArm")
 my_arm_component = Arm.from_robot(robot, "myArm")
+
+# End Position of myArm
 my_arm_end_position = await my_arm_component.get_end_position()
 print(f"myArm get_end_position return value: {my_arm_end_position}")
 ```
@@ -104,8 +107,15 @@ The following lines from the [full **Go** tutorial code](#full-tutorial-code) en
 The code then calls the `EndPosition` method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myArmResource = arm.Named("myArm")
+// Access myArm
+myArmResource := arm.Named("myArm")
+fmt.Println("myArmResource:", myArmResource)
 myArmComponent, err := arm.FromRobot(robot, "myArm")
+if err != nil {
+  fmt.Println(err)
+}
+
+// End Position of myArm
 myArmEndPosition, err := myArmComponent.EndPosition(context.Background(), nil)
 if err != nil {
   fmt.Println(err)
@@ -135,6 +145,7 @@ When you run the code, you'll see that these two pieces of information are prese
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
+# Joint Positions of myArm
 my_arm_joint_positions = await my_arm_component.get_joint_positions()
 print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 ```
@@ -156,6 +167,7 @@ Each individual value corresponds to the current position of a particular joint 
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
+// Joint Positions of myArm
 myArmJointPositions, err := myArmComponent.JointPositions(context.Background(), nil)
 if err != nil {
   fmt.Println(err)
@@ -199,7 +211,8 @@ Add `from viam.proto.component.arm import JointPositions` to your import list to
 See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
-cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 0.1])
+# Command a joint position move, small adjustment to the last joint
+cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 15.0])
 await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 ```
 
@@ -211,8 +224,9 @@ Add `armapi "go.viam.com/api/component/arm/v1"` to your import list to be able t
 See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
 
 ```go {class="line-numbers linkable-line-numbers"}
-cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 0.1}}
-err = myArmComponent.MoveToJointPositions(ctx, cmdJointPositions, nil)
+// Command a joint position move, small adjustment to the last joint
+cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 15.0}}
+err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
 if err != nil {
   fmt.Println(err)
 }
@@ -221,7 +235,7 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-If you execute the sample joint move statement above, your arm should move the last joint a small amount.
+If you execute the sample joint move statement above, your arm should move the last joint a small amount (15 degrees).
 Feel free to experiment further with joint position commands by changing the values for each joint and re-sending the commands.
 
 When you are ready to move on, the next section will show you how to use **pose commands**.
@@ -253,6 +267,7 @@ You must import some additional Go packages to synthesize new poses through the 
 Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to your import list and then add the sample code below to your own client script.
 
 ```go {class="line-numbers linkable-line-numbers"}
+// Generate a simple pose move +100mm in the +Z direction of the arm
 currentArmPose, err := myArmComponent.EndPosition(context.Background(), nil)
 if err != nil {
   fmt.Println(err)
@@ -317,7 +332,7 @@ async def main():
     print('Resources:')
     print(robot.resource_names)
 
-    # myArm
+    # Access myArm
     my_arm_resource = Arm.get_resource_name("myArm")
     my_arm_component = Arm.from_robot(robot, "myArm")
 
@@ -330,7 +345,7 @@ async def main():
     print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 
     # Command a joint position move, small adjustment to the last joint
-    cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 0.1])
+    cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 15.0])
     await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 
     # Generate a simple pose move +100mm in the +Z direction of the arm
@@ -384,8 +399,9 @@ func main() {
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
 
-  // myArm
-  myArmResource = arm.Named("myArm")
+  // Access myArm
+  myArmResource := arm.Named("myArm")
+  fmt.Println("myArmResource:", myArmResource)
   myArmComponent, err := arm.FromRobot(robot, "myArm")
   if err != nil {
     fmt.Println(err)
@@ -407,8 +423,8 @@ func main() {
   fmt.Println("myArm JointPositions return value:", myArmJointPositions)
 
   // Command a joint position move, small adjustment to the last joint
-  cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 0.1}}
-  err = myArmComponent.MoveToJointPositions(ctx, cmdJointPositions, nil)
+  cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 15.0}}
+  err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
   if err != nil {
     fmt.Println(err)
   }
