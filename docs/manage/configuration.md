@@ -159,7 +159,7 @@ Find more information in our remotes documentation.
 
 ## Processes
 
-Configuring a process is a way to automatically run a specified script when the robot boots.
+To automatically run a specified script when the robot boots, configure a *process*.
 
 Start by giving the process a **Name** (`id` in raw JSON) (an identifier of your choice) and clicking **Create Process**.
 
@@ -204,7 +204,7 @@ For example, if you have multiple robots with the same hardware, wired the same 
 When changes are made to the fragment, those changes are automatically carried to all robots that include the fragment in their config.
 
 You can add a fragment to a robot's config and also add other configuration outside the fragment.
-For example, if you have lots of identical rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
+For example, if you have multiple identical rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
 
 ## Auth/network
 
@@ -219,7 +219,9 @@ Some best practices when configuring your robot include:
 
 - Click **Save Config** before changing tabs, and before switching between **Builder** and **Raw JSON** mode.
 - Configure one component at a time.
-  After configuring each component and clicking **Save Config**, if your robot is powered and **last online** in the top banner says "Live," you can test it by switching to the **CONTROL** tab and waiting for the component to initialize, and then using the **CONTROL** tab interface to interact with the component and check for the expected behavior.
+  After configuring each component and clicking **Save Config**, if your robot is powered and connected, test the component.
+	  Switch to the **CONTROL** tab and use the interface to interact with the component and check that it behaves as expected.
+	  It can take up to around 20 seconds for components to initialize on the **CONTROL** tab.
 
 ## Troubleshooting
 
@@ -243,6 +245,10 @@ Some best practices when configuring your robot include:
   {{% /tab %}}
   {{< /tabs >}}
 
+- Make sure all configured components are actually saved to your config.
+   If they aren't, you will see an **Unsaved Changes** note next to the **Save Config** button at the bottom of the config screen.
+- Try restarting `viam-server` by clicking **Restart** in the upper right corner of the app.
+   It takes a few minutes for the server to shut down and restart.
 - Make sure the issue is not hardware related.
   Some things to check are that the robot has adequate power, all wires are properly connected, and no chips or other hardware components are shorted or overheated.
 - {{< snippet "social.md" >}}
