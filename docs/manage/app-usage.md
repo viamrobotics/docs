@@ -100,14 +100,16 @@ Be cautious when sharing location secret keys in your code or messages.
 
 Do not make a valid key publicly available, as any entity attempting to access your location who has this token will be authenticated, compromising the security of your system.
 
-Note *where* and *when* you share a location secret key. After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible, even though Viam supports flexible key rotation with up to two keys in use at one time.
+Note *where* and *when* you share a location secret key.
+After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible, even though Viam supports flexible key rotation with up to two keys in use at one time.
 {{% /alert %}}
 
 #### Share a location with Viam Support
 
 You must share your location with the Viam Support team when requesting support.
 To do so, navigate to the proper location and click, **ADD VIAM SUPPORT**.
-The button toggles to **REMOVE VIAM SUPPORT**. Click to remove Viam Support from your location.
+The button toggles to **REMOVE VIAM SUPPORT**.
+Click to remove Viam Support from your location.
 
 #### Removing an organization from a shared location
 
@@ -147,7 +149,7 @@ Click the name of a robot to go to that robot's page, where you'll find a variet
 The banner at the top of the robot page displays the robot's location, name, and a drop down list of all parts of that robot.
 The first part you create will be the *main part* but you can create additional parts in the drop down.
 
-{{< figure src="../img/app-usage/part-drop-down.png" width="800px" alt="Screenshot of the robot page for an example robot. The parts drop down is open." title="Example Robot Page with the Parts drop-down open (boxed in red)." >}}
+{{< figure src="../img/app-usage/part-drop-down.png" width="800px" alt="The robot page for an example robot with the parts drop down open." title="Example Robot Page with the Parts drop-down open (boxed in red)." >}}
 
 To delete a part or make it the main part, use the buttons in the top right of the **CONFIG** tab.
 
@@ -171,7 +173,7 @@ More in-depth information on installing `viam-server` can be found in our [Linux
 Here you can start adding robot components, services, and remotes.
 
 Toggle between **Builder** (default) or **Raw JSON** using the **Mode** selector in the upper left.
-Builder provides a more graphical UI with added features such as a built-in webcam path discovery service.
+Builder provides a more graphical UI.
 Raw JSON mode can be useful for users who are familiar with writing JSON, and for seeing and editing everything at once.
 
 Within the **CONFIG** tab (in builder mode) are separate sub-tabs for components, services, remotes, processes, network, authentication, and fragments, so be sure to configure these in their respective tabs.
@@ -219,5 +221,6 @@ Be cautious when sharing robot part secret keys in your code or messages.
 
 Do not make a valid key publicly available, as any entity attempting to access your robot who has this token will be authenticated, compromising the security of your system.
 
-Note *where* and *when* you share a robot part secret key. After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible, even though Viam supports flexible key rotation with up to two keys in use at one time.
+Note *where* and *when* you share a robot part secret key.
+After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible, even though Viam supports flexible key rotation with up to two keys in use at one time.
 {{% /alert %}}
