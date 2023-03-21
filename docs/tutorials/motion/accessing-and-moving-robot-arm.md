@@ -211,7 +211,7 @@ Add `from viam.proto.component.arm import JointPositions` to your import list to
 See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Command a joint position move, small adjustment to the last joint
+# Command a joint position move: small adjustment to the last joint
 cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 15.0])
 await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 ```
@@ -224,7 +224,7 @@ Add `armapi "go.viam.com/api/component/arm/v1"` to your import list to be able t
 See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Command a joint position move, small adjustment to the last joint
+// Command a joint position move: small adjustment to the last joint
 cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 15.0}}
 err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
 if err != nil {
@@ -344,7 +344,7 @@ async def main():
     my_arm_joint_positions = await my_arm_component.get_joint_positions()
     print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 
-    # Command a joint position move, small adjustment to the last joint
+    # Command a joint position move: small adjustment to the last joint
     cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 15.0])
     await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 
@@ -422,7 +422,7 @@ func main() {
   }
   fmt.Println("myArm JointPositions return value:", myArmJointPositions)
 
-  // Command a joint position move, small adjustment to the last joint
+  // Command a joint position move: small adjustment to the last joint
   cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 15.0}}
   err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
   if err != nil {
