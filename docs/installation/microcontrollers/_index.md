@@ -180,6 +180,7 @@ You will be prompted to paste your Viam robot configuration information (`viam.j
 
 To obtain this, navigate to [the Viam app](https://app.viam.com).
 Click the **COPY VIAM-SERVER CONFIG** button on the right side of the **SETUP** tab of your robot.
+The Micro-RDK uses the config for communication with the Viam app.
 Paste this into your terminal.
 
 {{< alert title="Caution" color="caution" >}}
