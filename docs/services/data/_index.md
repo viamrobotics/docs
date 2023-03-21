@@ -6,6 +6,8 @@ no_list: true
 type: "docs"
 tags: ["data management", "data", "services"]
 description: "Sync data captured by the robot's components to the cloud."
+aliases:
+    - /data-management
 # SME: Aaron Casas
 ---
 
@@ -37,7 +39,7 @@ If your requirements change and you want to capture data from both components at
 Data capture is frequently used with [Cloud Sync](#cloud-sync).
 However, if you want to manage your robot's captured data yourself, you can enable only data capture without cloud sync.
 
-To configure data capture, see [data capture](../data-management/configure-data-capture).
+To configure data capture, see [data capture](../data/configure-data-capture).
 
 ## Cloud Sync
 
@@ -55,7 +57,7 @@ As before, consider the example of a tomato picking robot.
 When you initially set the robot up you may want to sync captured data to the cloud every five minutes.
 If you change your mind and want your robot to sync less frequently, you can change the sync frequency, for example, to once a day.
 
-To configure cloud sync, see [configure cloud sync](../data-management/configure-cloud-sync).
+To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync).
 
 ### Considerations
 
@@ -100,6 +102,6 @@ Currently, Viam does not safeguard against this.
 To use the Data Management Service, [add the Data Management Service](configure-data-capture/#add-the-data-management-service) to your robot.
 Then [configure data capture](configure-data-capture) as needed and [configure cloud sync](configure-cloud-sync).
 
-Once you have configured data capture and cloud sync, you can [view](view) and [export](export) your data.
+Once you have configured data capture and cloud sync, you can [view](../../manage/data/view) and [export](../../manage/data/export) your data.
 
 For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/data-management-tutorial).

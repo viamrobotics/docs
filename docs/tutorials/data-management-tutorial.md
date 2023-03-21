@@ -12,7 +12,7 @@ In this tutorial, we will cover how to use Data Management, including capturing 
 
 ## Data Management
 
-One key feature of Viam is [Data Management](/manage/data-management/), which helps you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
+One key feature of Viam is [Data Management](/manage/data/), which helps you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
 
 Viam's Data Management Service has two distinct parts: data capture and cloud sync.
 
@@ -66,7 +66,7 @@ To enable the data capture on your robot, do the following:
 
 ![Data Management Card](../img/data-management/data-manager.png)
 
-For more detailed information see [Add the Data Management Service](../../manage/data-management/configure-data-capture/#add-the-data-management-service).
+For more detailed information see [Add the Data Management Service](../../services/data/configure-data-capture/#add-the-data-management-service).
 
 ## Configure data capture for a component
 
@@ -107,7 +107,7 @@ On your robot, navigate to the <file>/.viam/capture</file> directory and check f
 
 {{% /alert %}}
 
-For more detailed information see [Configure Data Capture](../../manage/data-management/configure-data-capture/#configure-data-capture-for-individual-components) and [Configure Cloud Sync](../../manage/data-management/configure-cloud-sync/).
+For more detailed information see [Configure Data Capture](../../services/data/configure-data-capture/#configure-data-capture-for-individual-components) and [Configure Cloud Sync](../../services/data/configure-cloud-sync/).
 
 ## View and filter captured data
 
@@ -120,7 +120,7 @@ Now that you have data capture enabled for a camera on your Viam Rover, you can 
 
 ![The data page of the Viam app showing a gallery of the images captured from the Viam Rover.](../img/data-management/image1.png)
 
-For more detailed information see [View and Filter Data](../../manage/data-management/view/).
+For more detailed information see [View and Filter Data](../../manage/data/view/).
 
 ## Export captured data
 
@@ -154,7 +154,7 @@ To export data from Viam:
    Since images are downloaded in parallel, some may be out of order.
    Sort your folder by filename to see them in chronological order.
 
-For more detailed information see [Export Data](../../manage/data-management/export/).
+For more detailed information see [Export Data](../../manage/data/export/).
 
 ## Next steps
 
