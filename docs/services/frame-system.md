@@ -1,7 +1,7 @@
 ---
 title: "The Robot Frame System"
 linkTitle: "Frame System"
-description: "Explanation of the Frame System service, its configuration, and its functionality."
+description: "The Frame System holds contextual information that is required to make use of the position and orientation readings returned by some components."
 type: docs
 weight: 45
 tags: ["frame system", "services"]

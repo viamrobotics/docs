@@ -3,13 +3,13 @@ title: "Vision Service"
 linkTitle: "Vision"
 weight: 90
 type: "docs"
-description: "Explanation of the Vision Service, its configuration, and its functionality."
+description: "The Vision Service enables your robot to use its on-board cameras to intelligently see and interpret the world around it."
 tags: ["vision", "computer vision", "CV", "services"]
 # SMEs: Bijan, Khari
 ---
 ## Intro and Summary
 
-The Vision Service enables the robot to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
+The Vision Service enables a robot to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
 We're here to help you with everything that happens _after_ you have your image data.
 
 Currently, there are three operations available through the Vision Service:
