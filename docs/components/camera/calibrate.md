@@ -32,7 +32,7 @@ pip3 install opencv-python
 
    Example output:
 
-   ```json {class="line-numbers linkable-line-numbers"}
+   ```json-viam {class="line-numbers linkable-line-numbers"}
    "intrinsic_parameters": {
        "fy": 940.2928257873841,
        "height_px": 480,
@@ -56,7 +56,7 @@ pip3 install opencv-python
 
 The following is a full example config:
 
-```json {class="line-numbers linkable-line-numbers"}
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {

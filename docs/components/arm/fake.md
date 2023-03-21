@@ -24,7 +24,7 @@ Note that this visual example sets the `fake` arm to act as a `ur5e` arm.
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "<arm_name">",
     "type": "arm",
@@ -61,7 +61,7 @@ Refer to the following JSON examples for differences in configuration between th
 {{< tabs name="Configuration with arm-model or model-path" >}}
 {{% tab name="arm-model JSON Example" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "<arm-name">",
     "type": "arm",
@@ -75,7 +75,7 @@ Refer to the following JSON examples for differences in configuration between th
 {{% /tab %}}
 {{% tab name="model-path JSON Example" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "<arm-name">",
     "type": "arm",

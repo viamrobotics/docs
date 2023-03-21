@@ -16,7 +16,7 @@ Configure a `yahboom-dofbot` arm as follows:
 {{< tabs name="Configure a yahboom-dofbot Arm" >}}
 {{% tab name="JSON Template" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "<arm_name">",
     "type": "arm",

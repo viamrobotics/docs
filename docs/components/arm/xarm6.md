@@ -21,7 +21,7 @@ Configure a `xArm6` arm as follows:
 
 {{% tab name="JSON Template" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [{
       "attributes": {
@@ -55,7 +55,7 @@ Configure a `xArm6` arm as follows:
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [{
       "attributes": {

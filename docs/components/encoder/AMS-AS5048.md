@@ -14,7 +14,7 @@ To can configure the encoder, you must change some other configuration details:
 
 1. You must configure an I2C bus on your [board](../../board):
 
-    ```json
+    ```json-viam
     {
           "name": "<board_name>",
           "type": "board",
@@ -51,7 +51,7 @@ Fill in the attributes for your encoder:
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "<encoder_name>",
     "type": "encoder",

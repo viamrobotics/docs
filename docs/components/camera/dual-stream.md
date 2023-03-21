@@ -26,7 +26,7 @@ Fill in the attributes for dual stream camera:
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "<camera_name>",
     "type": "camera",

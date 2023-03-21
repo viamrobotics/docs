@@ -16,7 +16,7 @@ Configure an `eva` arm as follows:
 {{< tabs name="Configure an eva Arm" >}}
 {{% tab name="JSON Template" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
     "name": "<arm_name">",
     "type": "arm",

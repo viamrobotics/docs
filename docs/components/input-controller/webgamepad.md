@@ -26,7 +26,7 @@ Use the following configuration for an input controller of model `webgamepad`:
 {{< /tab >}}
 {{% tab name="JSON Template" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
+```json-viam {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
