@@ -235,6 +235,10 @@ To configure your rover so you can start driving it, [add the Viam Fragment to y
 
 Check out our other [tutorials that use the Viam Rover](/tutorials/viam-rover/).
 
+### Rover Build
+
+If you want to learn more about the rover, you can find the CAD files and bill-of-materials (BOM) on [GitHub](https://github.com/viamrobotics/VR1-22-A001).
+
 ### Extensibility
 
 Due to the aluminum chassis and its expandable mounting features, you can extend the Viam Rover.
