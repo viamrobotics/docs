@@ -117,7 +117,7 @@ Here’s an example configuration:
 
 {{% tab name="Annotated JSON" %}}
 
-![motor-encoded-dc-json](../../../img/motor/motor-encoded-dc-json.png)
+![Same example JSON as on the JSON example tab, with notes alongside it. See attribute table below for all the same information.](../../../img/motor/motor-encoded-dc-json.png)
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -145,4 +145,4 @@ Name | Type | Description
 Here's an example of an encoded DC motor wired with [the MAX14870 Single Brushed DC Motor Driver Carrier](https://www.pololu.com/product/2961).
 This wiring example corresponds to the [example config above](#encoder-config).
 
-![motor-encoded-dc-wiring](../../../img/motor/motor-encoded-dc-wiring.png)
+![Example wiring diagram with a Raspberry Pi, brushed DC motor, 12V power supply, and Pololu MAX14870 motor driver. The DIR pin of the driver is wired to pin 18 on the Pi. PWM goes to pin 16. The motor's encoder signal wires (out a and out b) go to pins 11 and 13 on the Pi. The motor's main power wires are connected to the motor driver while its encoder logic power wires are connected to the Pi.](../../../img/motor/motor-encoded-dc-wiring.png)
