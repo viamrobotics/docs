@@ -1,7 +1,7 @@
 ---
 title: "Robot Service"
 linkTitle: "Robot"
-description: "The Robot Service consists of a minimal set of APIs that most robots support."
+description: "The Robot Service consists of a set of robot monitoring and management APIs that most robots support."
 type: "docs"
 weight: 10
 tags: ["robot state", "services"]
