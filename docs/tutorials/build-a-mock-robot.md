@@ -39,8 +39,8 @@ Go to [app.viam.com](https://app.viam.com) and sign up.
 3. Go to the **CONFIG** tab.
 4. Configure the arm:
 
-  - Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
-  - Add the following attribute:
+   - Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
+   - Add the following attribute:
 
       ```json
       {
@@ -50,7 +50,7 @@ Go to [app.viam.com](https://app.viam.com) and sign up.
 
 5. Configure the motor:
 
-  - Create a new component called `myMotor` with **Type** `motor` and **Model** `fake`.
+   - Create a new component called `myMotor` with **Type** `motor` and **Model** `fake`.
 
 6. Save the configuration.
 
