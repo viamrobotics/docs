@@ -52,7 +52,7 @@ In this tutorial, we will show you how to set up a mock robot with a fake motor 
 
 5. Configure the motor:
 
-   1. Create a new component called `myMotor` with **Type** `motor` and **Model** `fake`.
+  - Create a new component called `myMotor` with **Type** `motor` and **Model** `fake`.
 
 6. Save the configuration.
 
