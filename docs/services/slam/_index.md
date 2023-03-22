@@ -3,7 +3,7 @@ title: "SLAM Service"
 linkTitle: "SLAM"
 weight: 70
 type: "docs"
-description: "Explanation of the SLAM Service, its configuration, and its functionality."
+description: "Simultaneous Localization And Mapping (SLAM) allows your robot to create a map of its surroundings and find its location within that map."
 tags: ["slam", "services"]
 # SMEs: Kat, Jeremy
 ---
