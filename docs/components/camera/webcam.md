@@ -19,7 +19,8 @@ Enter a name for your camera, select the type `camera`, and select the `webcam` 
 
 <img src="../img/create-webcam.png" alt="Creation of webcam camera in the Viam app config builder." style="max-width:500px" />
 
-Fill in the attributes for your webcam view:
+Fill in the attributes for your webcam view.
+If you click on the **Video Path** field while your robot is live, a drop down will autopopulate with identified camera paths.
 
 <img src="../img/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." />
 
