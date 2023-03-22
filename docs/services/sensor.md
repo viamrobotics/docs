@@ -4,7 +4,7 @@ linkTitle: "Sensor"
 weight: 70
 draft: true
 type: "docs"
-description: "This doc will explain the Sensor Service and when/how to use it in conjunction with the sensor components."
+description: "Coming soon."
 tags: ["sensor", "services"]
 ---
 ## Coming soon
