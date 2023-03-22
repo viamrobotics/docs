@@ -108,7 +108,7 @@ Sharing this information compromises your system security by allowing unauthoriz
 {{% /alert %}}
 
 You can now run the code.
-Doing so will verifies that the Viam SDK is properly installed, that the `viam-server` instance on your robot is alive, and that the computer running the program is able to connect to that instance.
+Doing so verifies that the Viam SDK is properly installed, that the `viam-server` instance on your robot is live, and that the computer running the program is able to connect to that instance.
 
 You can run your code by typing the following into the terminal:
 
