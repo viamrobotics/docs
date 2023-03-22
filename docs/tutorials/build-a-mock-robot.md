@@ -36,8 +36,8 @@ Go to [app.viam.com](https://app.viam.com) and sign up.
 
 In this tutorial, we will show you how to set up a mock robot with a fake motor and arm.
 
-1. Go to [app.viam.com](https://app.viam.com/)
-2. Create a new robot
+1. Go to [app.viam.com](https://app.viam.com/).
+2. Create a new robot.
 3. Go to the **CONFIG** tab.
 4. Configure the arm:
 
