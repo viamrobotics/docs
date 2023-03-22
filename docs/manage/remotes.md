@@ -27,6 +27,8 @@ Connections between robots are established using the best network path available
 When you configure a remote or a sub-part, the main robot part can access all the components and services configured on the remote robot part as though they were entities of the main robot part.
 This is a one-way connection: The main robot part can access the resources of the remote robot part, but the remote robot cannot access the resources of the robot part remoting into it.
 
+<img src="../img/remotes/remotes-diagram.png" alt="Example of a remote and a two part robot where the main (and only) part of robot 1 remotes into the main part of robot 2, and thus has access to all resources of robot 2." >
+
 ## Configuration
 
 ### Configure a sub-part
