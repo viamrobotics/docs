@@ -6,9 +6,9 @@ type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 minutes."
 ---
 
-[Rent and remotely configure and control a Viam Rover](https://app.viam.com/try) located on-site at Viam in NYC:
+[Rent and remotely configure and control a Viam Rover](https://app.viam.com/try) located on-site at Viam in New York:
 
-[![Overhead view of the Viam rover showing it as it drives in a square.](img/try-viam/reservation-management.png)](https://app.viam.com/try)
+{{<gif webm_src="img/rover-reservation.webm" mp4_src="img/rover-reservation.mp4" alt="Rover reservation management page" max-width="1000px">}}
 
 ## Get started with Viam
 

@@ -35,26 +35,8 @@ Yes.
 
 After using Try Viam, your robot config stays in your Viam account.
 You can access your robot page, write code to control it, and modify its config after your reservation time ends.
-However, you can no longer operate it.
 
-Each reservation is fulfilled with a *new* robot with the standard starting config.
-To reuse the config from your previous rental rover, copy the config from your previous robot to the new robot:
-
-1. Access the [Fleet page](https://app.viam.com/robots)
-2. Select **Rover Rental** on the **LOCATIONS** navigation bar on the left.
-3. Click the robot name whose config you wish to reuse.
-4. Select "Raw JSON" on the **Mode** selector.
-5. Copy the *entire* config.
-
-Once you have your new rental rover:
-
-1. Access the [Fleet page](https://app.viam.com/robots)
-2. Select **Rover Rental** on the **LOCATIONS** navigation bar on the left.
-3. Click on your new rental robot name.
-4. Click **CONFIG**.
-5. Select "Raw JSON" from the **Mode** selector.
-6. Replace the *entire* existing config with your copied config.
-7. Click **Save Config**.
+When you next rent a rover you can choose to configure it with a previous rover configuration from your account or create a new rover with the standard starting config.
 
 {{< alert title="Tip" color="tip" >}}
 You can also reuse your code for the rover for other robots that you configure with Viam in the future.
