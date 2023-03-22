@@ -34,7 +34,6 @@ Go to [app.viam.com](https://app.viam.com) and sign up.
 
 ### Configure your mock robot
 
-
 1. Go to [app.viam.com](https://app.viam.com/).
 2. Create a new robot.
 3. Go to the **CONFIG** tab.
