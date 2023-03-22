@@ -75,7 +75,7 @@ You could do things like control the direction and speed of the motor, and chang
 However, since we are building a mock robot using fake components, you will only see the robot's reported positions and speeds change from the UI.
 You will not be able to see your robot move in the physical world.
 
-Next, you will need to configure your mock robotic arm so you can write custom logic to control the mock robot.
+Next, you will install a Viam SDK so you can write custom logic to control the mock robot.
 
 ## Controlling your mock robot using a Viam SDK
 
