@@ -1,5 +1,5 @@
 ---
-title: "Remotes and Sub-Parts"
+title: "Parts, Sub-Parts and Remotes"
 linkTitle: "Remotes and Sub-Parts"
 weight: 40
 type: "docs"
@@ -7,23 +7,20 @@ description: "Connect robots to each other."
 tags: ["server", "components", "services"]
 ---
 
-Sometimes you want robots to communicate with each other.
-You can do this by establishing a secure connection called a *remote*.
-Example use cases include:
+When robots can communicate with each other, they can share resources and operate collaboratively.
+This document explains how to establish secure connections between robots.
 
-- Two rovers mapping a room with SLAM.
-  If they can communicate, they can coordinate to divide the work efficiently and avoid crashing into one another.
-- A swarm of drones with limited onboard computing power.
-  They send images to a computer with significant computing power running an ML model, and receive predictions from their image data.
+### Robot parts
 
 Robots are organized into *parts*, where each part represents a computer (a single-board computer like a Raspberry Pi or a desktop, laptop, or other computer) running `viam-server`, the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
-Every robot has a main part, and multi-part robots have one or more sub-parts representing additional computers running `viam-server`.
+Every robot has a main part.
+Multi-part robots also have one or more *sub-parts* representing additional computers running `viam-server`.
 
 There are two ways to link robot parts:
 
-- To connect two computers within the *same robot*, [configure a sub-part](#configure-a-sub-part).
+- **Sub-part**: If you have two computers within the *same robot*, use one as the main part and [connect the other to it as a sub-part](#configure-a-sub-part).
 
-- To connect two computers that are parts of *different robots*, [configure a remote](#configure-a-remote).
+- **Remote**: To connect two computers that are parts of *different robots*, [add one robot part as a remote part of the other robot](#configure-a-remote).
 
 Connections between robots are established using the best network path available.
 
@@ -68,9 +65,9 @@ To establish a connection between a part of one robot and a part of a second rob
 
 ![The Viam app CONFIG tab with the REMOTES sub-tab open.](../img/remotes/remote-create.png)
 
-7. Give the remote connection a name (you can just use the name of the other robot part, for example, "my-other-robot-main") and click **Create Remote**.
-8. Paste the `address` (for example, `my-other-robot-main.abc1de23f4.viam.cloud`) into the **Address** field.
-9. Click **Add Auth** and paste the `secret` from the other robot's **CODE SAMPLE** tab into the **Auth Key** field.
+1. Give the remote a name (you can just use the name of the other robot part, for example, "my-other-robot-main") and click **Create Remote**.
+2. Paste the `address` (for example, `my-other-robot-main.abc1de23f4.viam.cloud`) into the **Address** field.
+3. Click **Add Auth** and paste the `secret` from the other robot's **CODE SAMPLE** tab into the **Auth Key** field.
 
 ![The Viam app CONFIG tab with a remote configured.](../img/remotes/remote-config.png)
 
