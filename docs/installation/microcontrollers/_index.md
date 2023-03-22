@@ -42,7 +42,7 @@ Viam recommends purchasing the ESP32 with a development board: see development k
 
 ## Software Requirements
 
-TTo establish a connection with the ESP32 board and install the micro-RDK, you need to install the following software:
+To establish a connection with the ESP32 board and install the micro-RDK, you need to install the following software:
 
 - [ESP-IDF](#install-esp-idf)
 - [Rust](#install-rust)
