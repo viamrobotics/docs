@@ -41,8 +41,8 @@ In this tutorial, we will show you how to set up a mock robot with a fake motor 
 3. Go to the **CONFIG** tab.
 4. Configure the arm:
 
-   1. Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
-   2. Add the following attribute:
+  - Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
+  - Add the following attribute:
 
       ```json
       {
