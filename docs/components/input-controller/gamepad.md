@@ -23,7 +23,7 @@ Refer to the following example configuration for an input controller of model `g
 {{< /tab >}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -95,4 +95,4 @@ You can also try setting `auto_reconnect` to `True`.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

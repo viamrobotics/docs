@@ -64,4 +64,4 @@ If this command fails, try using `wget http://packages.viam.com/apps/viam-server
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

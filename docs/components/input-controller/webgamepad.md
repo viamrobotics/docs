@@ -26,7 +26,7 @@ Use the following configuration for an input controller of model `webgamepad`:
 {{< /tab >}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -78,4 +78,4 @@ For your security, the browser won't report a gamepad until an input has been se
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

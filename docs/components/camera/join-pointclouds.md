@@ -11,23 +11,21 @@ tags: ["camera", "components"]
 Combine the point clouds from multiple camera sources and project them to be from the point of view of target_frame:
 
 {{< tabs name="Configure a Join Point Clouds View" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your camera, select the type <code>camera</code>, and select the <code>join_pointclouds</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your camera, select the type `camera`, and select the `join_pointclouds` model.
+
 <img src="../img/create-join-pointclouds.png" alt="Creation of a Join Point Clouds view in the Viam app config builder." style="max-width:500px" />
-<br>
-Fill in the attributes for your join point clouds view:
-<br>
-<img src="../img/configure-join-pointclouds.png" alt="Configuration of a Join Point Clouds view in the Viam App config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for your join point clouds view:
+
+<img src="../img/configure-join-pointclouds.png" alt="Configuration of a Join Point Clouds view in the Viam App config builder." />
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<camera_name>",
     "type": "camera",

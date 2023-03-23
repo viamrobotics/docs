@@ -399,11 +399,11 @@ See the [example code above](#getting-started-with-gpio-and-the-viam-sdk) to get
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 
 ## Next Steps
 
-<div class="container text-center">
+<div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
     <div class="col hover-card">
         <a href="/tutorials/pi/make-an-led-blink-with-the-viam-app/">

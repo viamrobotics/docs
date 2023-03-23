@@ -25,7 +25,7 @@ Be aware that complete configuration is not visible in the "Config Builder" tab:
 
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "components": [
     {
@@ -79,7 +79,7 @@ Be aware that complete configuration is not visible in the "Config Builder" tab:
 {{% /tab %}}
 {{% tab name="Example JSON" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "components": [
     {
@@ -145,4 +145,4 @@ The following attributes are available for `gpio` input controllers:
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

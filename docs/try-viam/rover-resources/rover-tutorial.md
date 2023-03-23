@@ -171,6 +171,12 @@ The rover's design allows you to reach the SD card slot at all times, so you can
 
 ### Connect the wires
 
+{{< alert title="Tip" color="tip" >}}
+To make it easier for you to see which pin is which, you can print out [this piece of paper at 100% scaling level](../img/rpi4_rover_leaf_A4.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+Only attach the paper when the Pi is unplugged.
+To make attaching the paper easier, use a credit card or a small screwdriver.
+{{< /alert >}}
+
 Wire your Pi to the buck converter, the acceleration tilt module, the DC motor driver:
 
 ![Closeup of the wiring diagram, showcasing the Pi, motor driver, accelerometer, and buck converter, wired according to the table below.](../img/viam-rover/wiring-diagram.png)
@@ -197,7 +203,7 @@ The following pinout corresponds to the diagram:
 | DC Motor Driver | Encoder Right | 37 | white |
 
 {{< alert title="Tip" color="tip" >}}
-En A and En B pins have little plastic jumpers that needs to get removed before wiring.
+En A and En B pins have little plastic jumpers that you need to remove before wiring.
 
 The motor driver on the Viam Rover has 8 pins and 6 wires.
 You must wire it with the outside row pins:
@@ -205,7 +211,7 @@ You must wire it with the outside row pins:
 <img src="../img/viam-rover/wiring-closeup.jpg" style="max-width:400px;width:100%" alt="closeup of the motor driver wiring" />
 {{< /alert >}}
 
-Then connect the camera's usb cable to the Pi.
+Then connect the camera's USB cable to the Pi.
 
 ![Wiring diagram showcasing the Pi, motors, driver, camera, and all other rover components.](../img/viam-rover/wiring-diagram-rover.png)
 
@@ -228,6 +234,10 @@ To configure your rover so you can start driving it, [add the Viam Fragment to y
 ## Next Steps
 
 Check out our other [tutorials that use the Viam Rover](/tutorials/viam-rover/).
+
+### Rover Build
+
+If you want to learn more about the rover, you can find the CAD files and bill-of-materials (BOM) on [GitHub](https://github.com/viamrobotics/VR1-22-A001).
 
 ### Extensibility
 

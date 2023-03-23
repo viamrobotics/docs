@@ -101,4 +101,4 @@ Now that your board has a Viam-compatible operating system installed, continue t
 
 ## Need assistance?
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

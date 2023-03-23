@@ -28,7 +28,7 @@ The following example configuration combines a `gamepad` and a `webgamepad` cont
 {{< /tab >}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -85,4 +85,4 @@ This tells the program loading the config to fully load the source components fi
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

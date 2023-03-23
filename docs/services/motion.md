@@ -3,11 +3,11 @@ title: "Motion Service"
 linkTitle: "Motion"
 weight: 40
 type: "docs"
-description: "Explanation of the Motion Service, its configuration, and its functionality."
+description: "The Motion Service enables your robot to plan and move its components relative to itself, other robots, and the world."
 tags: ["motion", "motion planning", "services"]
 # SME: Peter Lo Verso
 ---
-Viam’s Motion Service enables your robot to plan and move itself or its components relative to itself, other robots, and the world.
+The Motion Service enables your robot to plan and move itself or its components relative to itself, other robots, and the world.
 The Motion Service brings together information gathered from the robot’s components regarding their current positions with the layout of components in the frame system, and enables planning of the necessary motions to move a component to a given destination.
 
 The Motion Service is capable of using motion planning algorithms locally on your robot to plan coordinated motion across many components, and is also capable of passing through movement requests to individual components which have implemented their own motion planning.
@@ -325,3 +325,17 @@ If unsuccessful, an error is returned.
 However, if RRT*-Connect is initially successful, the path will be evaluated for optimality.
 If the total amount of joint excursion is more than double the minimum possible to go directly to the best Inverse Kinematics solution, then CBiRRT will be run to attempt to get a better path than what RRT*-Connect was able to create.
 The two paths will be smoothed, then compared to one another, and the most optimal path will be returned.
+
+## Next Steps
+
+<div class="container text-center td-max-width-on-larger-screens">
+  <div class="row">
+    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+        <a href="/tutorials/motion/accessing-and-moving-robot-arm">
+            <br>
+            <h4 style="text-align: left; margin-left: 0px;">Access and Move a Robot Arm</h4>
+            <p style="text-align: left;">Tutorial on accessing and controlling one of the most fundamental systems in robotics: A robotic arm.</p>
+        </a>
+    </div>
+  </div>
+</div>

@@ -42,9 +42,7 @@ For configuration information, click on one of the following models:
 
 Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 
-## Usage
-
-### Control your robot with an Input Controller with Viam's Client SDK Libraries
+## Control your robot with an input controller with Viam's client SDK libraries
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
 
@@ -544,19 +542,13 @@ If your input controller is a gamepad with these common buttons, this is what th
 
 The input controller component supports the following methods:
 
-| Method Name | Go | Python | Description |
-| ----------- | -- | ------ | ----------- |
-| [Controls](#controls) | [Controls][go_input]  |  [get_controls][python_get_controls] | Get a list of input `Controls` that this Controller provides. |
-| [Events](#events) | [Events][go_input] | [get_events][python_get_events] | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). |
-| [RegisterControlCallback](#registercontrolcallback) | [RegisterControlCallback][go_input] | [register_control_callback][python_register_control_callback] | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). |
-<!-- | [TriggerEvent](#triggerevent) | [TriggerEvent][go_triggerable] | [trigger_event][python_trigger_event] | Directly send an [Event](#event-object) to your robot. | -->
-
-[go_input]: https://pkg.go.dev/go.viam.com/rdk/components/input#Controller
-<!-- [go_triggerable]: https://pkg.go.dev/go.viam.com/rdk/components/input#Triggerable -->
-[python_get_controls]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.get_controls
-[python_get_events]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.get_events
-[python_register_control_callback]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback
-<!-- [python_trigger_event]: https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.trigger_event -->
+| Method Name | Description |
+| ----------- | ----------- |
+| [Controls](#controls) | Get a list of input `Controls` that this Controller provides. |
+| [Events](#events) | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). |
+| [RegisterControlCallback](#registercontrolcallback) | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). |
+<!-- | [TriggerEvent](#triggerevent) | Directly send an [Event](#event-object) to your robot. | -->
+| [DoCommand](#docommand) | Sends or receives model-specific commands. |
 
 ### RegisterControlCallback
 
@@ -731,10 +723,10 @@ Get a list of the [Controls](#control-field) that your controller provides.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_position).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myController = Controller.from_robot(robot=myRobotWithController, name='my_controller') ...
+my_input_controller = Controller.from_robot(robot=myRobotWithController, name='my_controller') ...
 
 # Get the list of Controls provided by the controller.
-controls = await myController.get_controls()
+controls = await my_input_controller.get_controls()
 
 # Print the list of Controls provided by the controller.
 print(f'Controls:\n{controls}')
@@ -838,6 +830,57 @@ if err != nil {
 
 {{% /tab %}}
 {{< /tabs >}} -->
+
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+For built-in models, model-specific commands are covered with each model's documentation.
+If you are implementing your own input controller and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (`Dict[str, Any]`): The command to execute.
+
+**Returns:**
+
+- `result` (`Dict[str, Any]`): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_input_controller = Controller.from_robot(robot, "my_controller")
+
+command = {"cmd": "test", "data1": 500}
+result = my_input_controller.do(command)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` (`cmd map[string]interface{}`): The command to execute.
+
+**Returns:**
+
+- `result` (`cmd map[string]interface{}`): Result of the executed command.
+- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+  myController, err := input.FromRobot(robot, "my_controller")
+
+  command := map[string]interface{}{"cmd": "test", "data1": 500}
+  result, err := myController.DoCommand(context.Background(), command)
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/input/input.go#L254).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Usage Examples
 
@@ -1005,16 +1048,15 @@ Access the complete repository for the Python example on [Github](https://github
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 
 ## Next Steps
 
 <div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
+    <div class="col hover-card hover-card-small">
         <a href="/tutorials/yahboom-rover/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Drive a Yahboom Rover with a Gamepad</h4>
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive a Yahboom Rover with a Gamepad</h4>
             <p style="text-align: left;">Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.</p>
         </a>
     </div>

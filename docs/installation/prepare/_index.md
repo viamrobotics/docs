@@ -19,39 +19,34 @@ If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone
 
 <div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
-    <div class="col hover-card">
+    <div class="col hover-card hover-card-small">
         <a href="/installation/prepare/rpi-setup/">
-            <br>
-            <img src="../img/thumbnails/raspberry-pi-4-b-2gb.jpg" alt="Raspberry Pi">
-            <p style="text-align: left; margin-left: 0px; font-weight:bold">Raspberry Pi</h4>
+            <img src="../img/thumbnails/raspberry-pi-4-b-2gb.jpg" alt="Raspberry Pi" width=100% style="padding-top: 1em" >
+            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Raspberry Pi</h4>
         <a>
     </div>
-    <div class="col hover-card">
+    <div class="col hover-card hover-card-small">
         <a href="/installation/prepare/beaglebone-setup/">
-            <br>
-            <img src="../img/thumbnails/beaglebone.png" alt="BeagleBone AI 64">
-            <p style="text-align: left; margin-left: 0px; font-weight:bold">BeagleBone AI-64</h4>
+            <img src="../img/thumbnails/beaglebone.png" alt="BeagleBone AI 64" width=100% style="padding-top: 1em" >
+            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">BeagleBone AI-64</h4>
         </a>
     </div>
-    <div class="col hover-card">
+    <div class="col hover-card hover-card-small">
         <a href="/installation/prepare/sk-tda4vm/">
-            <br>
-            <img src="../img/thumbnails/tda4vm.png" alt="SK-TDA4VM">
-            <p style="text-align: left; margin-left: 0px; font-weight:bold">Texas Instruments SK-TDA4VM</h4>
+            <img src="../img/thumbnails/tda4vm.png" alt="SK-TDA4VM" width=100% style="padding-top: 1em" >
+            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Texas Instruments SK-TDA4VM</h4>
         </a>
     </div>
-    <div class="col hover-card">
+    <div class="col hover-card hover-card-small">
         <a href="/installation/prepare/jetson-nano-setup/">
-            <br>
-            <img src="../img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Jetson Nano">
-            <p style="text-align: left; margin-left: 0px; font-weight:bold">Jetson Nano</h4>
+            <img src="../img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Jetson Nano" width=100% style="padding-top: 1em" >
+            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Jetson Nano</h4>
         </a>
     </div>
-    <div class="col hover-card">
+    <div class="col hover-card hover-card-small">
         <a href="/installation/prepare/jetson-agx-orin-setup/">
-            <br>
-            <img src="../img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png" alt="Jetson AGX Orin">
-            <p style="text-align: left; margin-left: 0px; font-weight:bold">Jetson AGX Orin</h4>
+            <img src="../img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png" alt="Jetson AGX Orin" width=100% style="padding-top: 1em" >
+            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Jetson AGX Orin</h4>
         </a>
     </div>
   </div>

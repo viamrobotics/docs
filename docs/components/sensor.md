@@ -20,7 +20,7 @@ Viam also has an [encoder component](/components/encoder/) that is distinct from
 
 {{% /alert %}}
 
-## Hardware requirements
+Most robots with a sensor need at least the following hardware:
 
 * Some sort of sensor, such as an ultrasonic sensor or temperature sensor
 * A [board](/components/board/)
@@ -31,7 +31,7 @@ Viam also has an [encoder component](/components/encoder/) that is distinct from
 The wiring for your sensor depends on the specific sensor you are using.
 Refer to the sensor’s data sheet for wiring details.
 
-## Viam configuration
+## Configuration
 
 To create a custom sensor, you must create a set of attributes unique to that sensor model:
 
@@ -53,9 +53,9 @@ Don't forget to include any required attributes you define in your custom sensor
 }
 ```
 
-## Getting Started With Sensors and the Viam SDK
+## Control your sensor with Viam's client SDK libraries
 
-The following example connects to and gets readings from an ultrasonic sensor component named `mySensorName` (configuration done previously in JSON):
+The following example connects to and gets readings from an ultrasonic sensor component named `mySensorName`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

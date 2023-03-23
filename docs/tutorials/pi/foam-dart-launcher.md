@@ -16,7 +16,7 @@ This robot will be able to move around and launch foam darts.
 This project is a great place to start if you are new to building robots, have a love for Nerf toys, an occasion to target something and launch a dart at it, or if you just want to troll your friends.
 Don’t forget to be careful and have fun!
 
-<img src="../../img/foam-dart-launcher/init-image-nerf-robot.gif" width="400px" alt="Robot launching a dart from a foam dart launcher taped to the robot.">
+{{<gif webm_src="../../img/foam-dart-launcher/init-image-nerf-robot.webm" mp4_src="../../img/foam-dart-launcher/init-image-nerf-robot.mp4" alt="Robot launching a dart from a foam dart launcher taped to the robot." max-width="400px">}}
 
 ## What You’ll Need for This Tutorial
 
@@ -350,7 +350,7 @@ Since we already assembled the robot, setting pin 37 to **high** launches your f
 
 You can see the demo video of it in action here:
 
-{{< video src="../../videos/FoamDartLauncherRobotDemo.mp4" type="video/mp4">}}
+{{<video webm_src="../../videos/FoamDartLauncherRobotDemo.webm" mp4_src="../../videos/FoamDartLauncherRobotDemo.mp4" alt="Foam Dart Launcher Demo">}}
 
 ## Troubleshooting
 
@@ -364,4 +364,4 @@ You could even add [object detection and machine learning](/services/vision/) an
 
 If you are looking for a new robotics project, check out our other [tutorials](/tutorials/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}

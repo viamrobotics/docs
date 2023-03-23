@@ -37,6 +37,7 @@ For configuration information, click on one of the following models:
 | [`image_file`](image-file) | Gets color and depth images frames from a file path. |
 | [`velodyne`](velodyne) | Uses velodyne lidar. |
 | [`webcam`](webcam) | A standard camera that streams camera data. |
+| [`rtsp`](rtsp) | A streaming camera with an MJPEG track. |
 | [`fake`](fake) | A camera model for testing. |
 | [`single_stream`](single-stream) | A HTTP client camera that streams image data from an HTTP endpoint. |
 | [`dual_stream`](dual-stream) | A HTTP client camera that combines the streams of two camera servers to create colorful point clouds. |
@@ -58,13 +59,16 @@ The camera component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-| [GetImage](#getimage) | Returns an image from the camera encoded in the format specified by the MIME type. |
+| [GetImage](#getimage) | Returns an image from the camera. |
 | [GetPointCloud](#getpointcloud) | Returns a point cloud from the camera. |
 | [GetProperties](#getproperties) | Returns the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
+| [DoCommand](#docommand) | Sends or receives model-specific commands. |
 
 ### GetImage
 
-Returns an image from the camera encoded in the format specified by the MIME type.
+Returns an image from the camera.
+You can request a specific MIME type but the returned MIME type is not guaranteed.
+If the server does not know how to return the specified MIME type, the server returns the image in another format instead.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -234,37 +238,88 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 {{% /tab %}}
 {{< /tabs >}}
 
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+For native models, model-specific commands are covered with each model's documentation.
+If you are implementing your own camera and add features that have no native API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (`Dict[str, Any]`): The command to execute.
+
+**Returns:**
+
+- `result` (`Dict[str, Any]`): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_cam = Camera.from_robot(robot, "camera0")
+
+command = {"cmd": "test", "data1": 500}
+result = my_cam.do(command)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` (`cmd map[string]interface{}`): The command to execute.
+
+**Returns:**
+
+- `result` (`cmd map[string]interface{}`): Result of the executed command.
+- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+  myCam, err := camera.FromRobot(robot, "my_camera")
+
+  command := map[string]interface{}{"cmd": "test", "data1": 500}
+  result, err := myCam.DoCommand(context.Background(), command)
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/camera/camera.go#L268).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-{{< readfile "/static/include/social.md" >}}
+{{< snippet "social.md" >}}
 
 ## Next Steps
 
-<div class="container text-center">
+<div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
         <div class="col hover-card">
           <a href="calibrate/">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
                 Calibrate a Camera
             </h4>
-          </a>
           <p style="text-align: left;"> Calibrate a camera and extract the intrinsic and distortion parameters. </p>
+          </a>
         </div>
         <div class="col hover-card">
           <a href="transform/">
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
                 Transform a Camera
             </h4>
-          </a>
           <p style="text-align: left;"> Instructions for transforming a webcam. </p>
+          </a>
         </div>
       <div class="col hover-card">
           <a href="../../services/vision">
               <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Vision Service</h4>
               <p style="text-align: left;">The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.</p>
-          <a>
+          </a>
       </div>
     </div>
   <div class="row">

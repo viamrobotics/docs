@@ -12,23 +12,21 @@ A `velodyne` camera uses velodyne lidar.
 The velodyne must be running locally at address `127.0.0.1`.
 
 {{< tabs name="Configure a Velodyne Camera" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<br>
-On the <b>COMPONENTS</b> subtab, navigate to the <b>Create Component</b> menu.
-Enter a name for your camera, select the type <code>camera</code>, and select the <code>velodyne</code> model.
-<br>
+On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+Enter a name for your camera, select the type `camera`, and select the `velodyne` model.
+
 <img src="../img/create-velodyne.png" alt="Creation of a velodyne camera in the Viam app config builder." style="max-width:500px" />
-<br>
-Fill in the attributes for your velodyne camera:
-<br>
-<img src="../img/configure-velodyne.png" alt="Configuration of a velodyne camera in the Viam app config builder." />
-<br>
 
-{{< /tab >}}
+Fill in the attributes for your velodyne camera:
+
+<img src="../img/configure-velodyne.png" alt="Configuration of a velodyne camera in the Viam app config builder." />
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<camera_name>",
     "type": "camera",

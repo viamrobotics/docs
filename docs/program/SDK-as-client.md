@@ -25,6 +25,8 @@ Viam's Client SDKs support several ways to connect and control your robots, with
 
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 
+- [TypeScript SDK](https://ts.viam.dev/)
+
 ## Quick Start Examples
 
 {{% alert title="Note" color="note" %}}
@@ -37,20 +39,20 @@ Before you get started, ensure that you:
 
 - Go to the **SETUP** tab and follow the instructions there.
 
-- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk) or [Python](https://python.viam.dev/) SDK on your computer.
+- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), or [TypeScript](https://ts.viam.dev/) SDK on your computer.
 
 {{% /alert %}}
 
 {{% alert title="Tip" color="tip" %}}
 
-You can find more examples of Viam's SDKs on the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1) or the [Go SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples).
+You can find more examples of Viam's SDKs in the <file>examples</file> folder of the [Python SDK GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1), the [Go SDK GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples), or the [TypeScript SDK GitHub repository](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples).
 
 {{% /alert %}}
 
 ### How to connect to your robot with Viam
 
 The easiest way to get started writing an application with Viam, is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
-These code snippets imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
+These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 
 {{% alert title="Caution" color="caution" %}}
 Do not share your robot secret or robot address publicly.
@@ -126,124 +128,85 @@ func main() {
 ```
 
 {{% /tab %}}
-{{< /tabs >}}
+{{% tab name="TypeScript" %}}
 
-### How to get an image from a camera with Viam
+{{< alert title="Note" color="note" >}}
+The TypeScript SDK currently only support building web browser apps.
+{{< /alert >}}
 
-{{< readfile "/static/include/components/camera-sample.md" >}}
+```ts {class="line-numbers linkable-line-numbers"}
+import { Client, createRobotClient, RobotClient } from '@viamrobotics/sdk';
 
-### How to use a motor with Viam
+async function connect() {
+  // You can remove this block entirely if your robot is not authenticated.
+  // Otherwise, replace with an actual secret.
+  const secret = '<SECRET>';
+  const credential = {
+    payload: secret,
+    type: 'robot-location-secret',
+  };
 
-This sends power commands to [motors](/components/motor/) on the robot.
+  // Replace with the host of your actual robot running Viam.
+  const host = "<HOST>";
 
-Assumption: Motors called "motor1" and "motor2" are configured as components of your robot.
+  // Replace with the signaling address. If you are running your robot on Viam,
+  // it is most likely https://app.viam.com:443.
+  const signalingAddress = 'https://app.viam.com:443';
 
-{{< tabs >}}
-{{% tab name="Python" %}}
+  const iceServers = [{ urls: 'stun:global.stun.twilio.com:3478' }];
 
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.motor import Motor
+  return createRobotClient({
+    host,
+    credential,
+    authEntity: host,
+    signalingAddress,
+    iceServers
+  });
+}
 
-robot = await connect() # refer to connect code above
-motor1 = Motor.from_robot(robot, "motor1")
-motor2 = Motor.from_robot(robot, "motor2")
+async function main() {
+  // Connect to client
+  let client: Client;
+  try {
+    client = await connect();
+    console.log('connected!');
 
-# power motor1 at 100% for 3 seconds
-await motor1.set_power(1)
-await asyncio.sleep(3)
-await motor1.stop()
+    let resources = await client.resourceNames();
+    console.log('Resources:');
+    console.log(resources);
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+}
 
-# Run motor2 at 1000 rpm for 200 rotations
-await motor2.go_for(1000, 200)
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-"time"
-"go.viam.com/rdk/components/motor"
-)
-
-// grab the motors from the robot
-m1, err := motor.FromRobot(robot, "motor1")
-m2, err := motor.FromRobot(robot, "motor2")
-
-// power motor1 at 100% for 3 seconds
-m1.SetPower(context.Background(), 1, nil)
-time.Sleep(3 * time.Second)
-m1.Stop(context.Background(), nil)
-
-// Run motor2 at 1000 RPM for 200 rotations
-m2.GoFor(context.Background(), 1000, 200, nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### How to use a sensor with Viam
-
-This example code reads values from a [sensor](/components/sensor/) (an ultrasonic sensor in this example) connected to a robot.
-
-Assumption: A sensor called "ultra1" is configured as a component of your robot.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.sensor import Sensor
-robot = await connect()
-sensor = Sensor.from_robot(robot, "ultra1")
-distance = await sensor.get_readings()["distance"]
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-"go.viam.com/rdk/components/sensor"
-)
-
-ultra, err := sensor.FromRobot(robot, "ultra1")
-distance, err := ultra.Readings(context.Background())
+main();
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-### How use the Viam Vision Service
+## Next Steps
 
-The following code gets the robot's [Vision Service](https://python.viam.dev/autoapi/viam/services/vision/index.html?highlight=vision#module-viam.services.vision) and then runs a detection model on an image to get a list of detections from the image.
-
-Assumption: A camera called "camera0" and a Vision Service called "detector_1" are configured as a component and a service on your robot.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionServiceClient
-
-robot = await connect()
-vision = VisionServiceClient.from_robot(robot)
-detections = await vision.get_detections_from_camera("camera_0", "detector_1")
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-"go.viam.com/rdk/services/vision"
-)
-
-// gets Viam's Vision Service to add a TF-Lite model for person detection
-visionSrv, err := vision.FirstFromRobot(r)
-
-// get detection bounding boxes
-detections, err := visionSrv.Detections(context.Background(), img, "find_objects")
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+<div class="container text-center td-max-width-on-larger-screens">
+  <div class="row">
+    <div class="col hover-card hover-card-small">
+        <a href="../../components">
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Components</h4>
+            <p style="text-align: left;">Write code to access and control your components. You use natively supported components or extend Viam with custom components and services.</p>
+        </a>
+    </div>
+    <div class="col hover-card hover-card-small">
+        <a href="../../services">
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Services</h4>
+            <p style="text-align: left;">Integrate services like computer vision, motion planning, or SLAM.</p>
+        </a>
+    </div>
+    <div class="col hover-card hover-card-small">
+        <a href="../../components">
+            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Tutorials</h4>
+            <p style="text-align: left;">Follow along with some example robot tutorials.</p>
+        </a>
+    </div>
+  </div>
+</div>
