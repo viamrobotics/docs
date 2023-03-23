@@ -14,10 +14,9 @@ on:
 # Don't forget to tag back to @main before merge.
 
 jobs:
-  if: (contains(github.event.pull_request.labels.*.name, 'safe to test'))
-
   pr-deploy-and-comment:
     runs-on: [self-hosted, x64, private]
+    if: (contains(github.event.pull_request.labels.*.name, 'safe to test'))
     container:
       image: ghcr.io/viamrobotics/canon:amd64
     steps:
