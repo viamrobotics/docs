@@ -1,9 +1,9 @@
 ---
-title: "Integrate Viam with OpenAI to create a companion robot"
+title: "Integrate Viam with ChatGPT to create a companion robot"
 linkTitle: "Create an AI companion robot"
 weight: 60
 type: "docs"
-tags: ["base", "AI", "ChatGPT", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
+tags: ["base", "AI", "OpenAI", "ChatGPT", "ElevenLabs", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
 description: "Harness AI to add life to your Viam rover."
 # SME: Matt Vella
 ---
@@ -260,6 +260,25 @@ You can change Rosey's name to something else, add characters, adjust the classi
 </div>
 <br>
 <br>
+
+## Use realistic custom AI voices
+
+By default, Rosey will use Google TTS for audio voice generation.
+However, [ElevenLabs](https://elevenlabs.io/) can be used for enhanced AI voice generation.
+To use ElevenLabs, add your ElevenLabs API key to `run.sh` as follows:
+
+``` sh
+export ELEVENLABS_KEY=mykey
+```
+
+You can then assign voices to Rosey or any characters by adding the ElevenLabs voice name (including names of voices you have created with the [ElevenLabs VoiceLab](https://beta.elevenlabs.io/voice-lab)) in <file>params.py</file>.
+For example:
+
+``` json
+{ "linda belcher": { "voice": "domi" } }
+```
+
+This opens up some really interesting possibilities, like having your robot talk to you in a voice that sounds like your favorite celebrity, or having your robot tell your cat to "Get off of the table!" in an AI version of your own voice.
 
 ## Next steps
 
