@@ -1,4 +1,4 @@
-# Welcome to Viam Documentation
+# Welcome to the very good Viam Documentation
 
 ## Dependencies
 
