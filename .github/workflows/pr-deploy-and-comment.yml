@@ -1,13 +1,8 @@
 name: pr-deploy-and-comment
 
-concurrency:
-  group: pullrequest-untrusted-${{ github.head_ref }}
-  cancel-in-progress: true
-
 on:
-  pull_request_target:
-    branches: [ 'main' ]
-    types: [ 'labeled' ]
+  workflow_dispatch:
+  workflow_call:
 
 # To test workflow updates you need to work in a branch directly on viamrobotics/docs
 # and tag your working branch instead of @main in any viamrobotics/docs "uses" below.
