@@ -612,13 +612,11 @@ footer small {
 
 /* END no whitespace beneath footer */
 
-/* START scroll to top styling */
+/* START scroll to top and github styling */
 
-#scrollButton {
-  position: sticky;
-  left: 100%;
-  bottom: 1rem;
+.addedbutton {
   border: 1px solid black;
+  border-radius: 0;
   background-color: whitesmoke;
   margin: 0;
   padding: 1rem 1.25rem;
@@ -627,4 +625,18 @@ footer small {
   }
 }
 
-/* END scroll to top styling */
+#scrollButton {
+  position: sticky;
+  left: 100%;
+  bottom: 1rem;
+  border-radius: 0;
+}
+
+#edit-on-github {
+  float: right;
+  a {
+    color: #515151;
+  }
+}
+
+/* END scroll to top and github styling */

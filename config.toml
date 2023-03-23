@@ -115,6 +115,10 @@ enable = false
   icon = "fa fa-envelope"
   desc = "Ask questions about the Viam SDK"
 
+[params.github]
+repository = "viamrobotics/docs"
+branch = "main"
+
 [module]
   [module.hugoVersion]
     extended = true
