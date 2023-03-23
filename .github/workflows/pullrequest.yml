@@ -16,4 +16,4 @@ on:
 
 jobs:
   gotest:
-    uses: viamrobotics/docs/.github/workflows/pr-deploy-and-comment.yml@main
+    uses: viamrobotics/docs/.github/workflows/pr-deploy-and-comment.yml
