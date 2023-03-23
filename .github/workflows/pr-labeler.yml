@@ -1,8 +1,9 @@
 name: PR Test Label Manager
 
-on: pull_request_target
-    # branches: [ 'main' ]
-    # types: [ opened, synchronize, reopened ]
+on:
+  pull_request_target:
+    branches: [ 'main' ]
+    types: [ opened, synchronize, reopened ]
 
 jobs:
   pr_test_label_manager:
