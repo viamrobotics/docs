@@ -5,6 +5,7 @@ on:
     branches: [ 'main' ]
     types: [ opened, synchronize, reopened ]
 
+
 jobs:
   pr_test_label_manager:
     name: PR Test Label Manager
