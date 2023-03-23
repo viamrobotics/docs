@@ -66,7 +66,7 @@ description:
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>
-                Users that want to create web interfaces to control their robots can use the new TypeScript SDK as a client. The RDK server running on the robot is able to detect if a given SDK client session has lost communication because it tries to maintain a configurable heartbeat, by default once every 2 seconds. Users can choose to opt-out of this session management.
+                Users that want to create web interfaces to control their robots can use the new TypeScript SDK as a client. Currently only web browser apps are supported due to how networking is handled. The RDK server running on the robot is able to detect if a given SDK client session has lost communication because it tries to maintain a configurable heartbeat, by default once every 2 seconds. Users can choose to opt-out of this session management.
                 <ul>
                 <li>
                     <a href="https://ts.viam.dev/">TypeScript SDK Docs</a>
