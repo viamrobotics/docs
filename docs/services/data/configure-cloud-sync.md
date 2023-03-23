@@ -59,7 +59,7 @@ This is only applicable for files in a directory added as an additional sync pat
 
 In the example pictured here, the Data Management Service syncs the configured component data from `/tmp/capture` as well as all files in `/logs` every 5 minutes.
 
-![service config example](../../img/data-service-config.png)
+![service config example](../img/data-service-config.png)
 
 {{%expand "Click to view the JSON configuration for this example" %}}
 
@@ -87,6 +87,6 @@ In the example pictured here, the Data Management Service syncs the configured c
 
 ## Next Steps
 
-To view your captured data in the cloud, see [View Data](../view).
+To view your captured data in the cloud, see [View Data](../../../manage/data/view).
 
 For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/data-management-tutorial).

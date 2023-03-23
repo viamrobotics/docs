@@ -29,6 +29,6 @@ For example, if you specify `Rover Rental` for location and click **SEARCH**, yo
 
 ## Next Steps
 
-To export your captured data from the cloud, see [Export Data](../configure-cloud-sync).
+To export your captured data from the cloud, see [Export Data](../export).
 
 For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/data-management-tutorial).
