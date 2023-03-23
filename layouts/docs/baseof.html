@@ -20,9 +20,10 @@
           </aside>
           <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
             {{ partial "version-banner.html" . }}
+            {{ partial "edit-on-github.html" . }}
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
             {{ block "main" . }}{{ end }}
-            <button onclick="toTop()" id="scrollButton" title="Go to top" style="visibility: hidden;">
+            <button onclick="toTop()" class="addedbutton" id="scrollButton" title="Go to top" style="visibility: hidden;">
                 <i style="font-size:large;" class="fas fa-chevron-up"></i>
             </button>
         </main>
