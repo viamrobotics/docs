@@ -271,7 +271,7 @@ To use ElevenLabs, add your ElevenLabs API key to `run.sh` as follows:
 export ELEVENLABS_KEY=mykey
 ```
 
-You can then assign voices to Rosey or any characters by adding the Elevenlabs voice name (including names of voices you have created with the [ElevenLabs VoiceLab](https://beta.elevenlabs.io/voice-lab)) in params.py.
+You can then assign voices to Rosey or any characters by adding the ElevenLabs voice name (including names of voices you have created with the [ElevenLabs VoiceLab](https://beta.elevenlabs.io/voice-lab)) in <file>params.py</file>.
 For example:
 
 ``` json
