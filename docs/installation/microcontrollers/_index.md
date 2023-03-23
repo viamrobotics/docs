@@ -8,7 +8,15 @@ icon: "img/thumbnails/viam-icon-sdk.png"
 # SMEs: Nicolas Menard
 ---
 
+{{% alert title="ALPHA" color="note" %}}
+The `micro-RDK` is in alpha mode and many features mentioned on other pages are not yet supported and still being added.
+Stability is not guaranteed.
+Breaking changes are likely to occur, and occur often.
+{{% /alert %}}
+
 The micro-RDK is a lightweight version of the [Robot Development Kit](https://github.com/viamrobotics/rdk) which can run on resource-limited embedded systems.
+
+The only microcontroller the micro-RDK currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
 
 To use Viam on a microcontroller, you need to:
 
@@ -27,28 +35,25 @@ The micro-RDK currently only supports:
 - motors
 - encoders
 
-The only microcontroller the micro-RDK currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
-
 See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information about the micro-RDK.
 
 ## Hardware Rerquirements
 
-You need the following hardware to work with an ESP32 with the micro-RDK:
-
-- An Expressif ESP32 microcontroller.
+You need an an Expressif ESP32 microcontroller to use the micro-RDK.
 Viam recommends purchasing the ESP32 with a development board: see development kit options [here](https://www.espressif.com/en/products/devkits).
-- A USB-C cable for connecting the ESP32 to your development machine (included with ESP32 DevKits).
-- A Micro-USB (recommended, included with ESP32 DevKits), 5V/GND header pin or 3V3/GND header pin power supply.
 
 ## Software Requirements
 
-To establish a connection with the ESP32 board and install the micro-RDK, you need to install the following software:
+The micro-RDK is written in Rust.
+To use the micro-RDK with your ESP32 board, you need to install:
 
 - [ESP-IDF](#install-esp-idf)
 - [Rust](#install-rust)
 - [Rust ESP Toolchain](#install-the-rust-esp-toolchain-and-activate-the-esp-rs-virtual-environment)
 - [`cargo-generate`](#install-cargo-generate-with-cargo)
 - [`cargo-espflash`](#install-or-update-cargo-espflash)
+
+The following instructions cover installation for MacOS and Linux machines.
 
 ### Install ESP-IDF
 
@@ -85,8 +90,6 @@ To avoid conflicts with other toolchains, adding this command to your `.bashrc` 
 Save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
 
 ### Install Rust
-
-On MacOS and Linux machines, run the following command to download Rustup and install Rust:
 
 ``` shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
