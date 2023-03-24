@@ -12,17 +12,6 @@ On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate 
 
 ![The trained model](../img/stars-model.png)
 
-Click the **COPY** button to copy the model information.
-The model information looks like this:
-
-```json
-{
-    "package": "a1b23cde-fgh4-56i-j78k-l90123m45n6o/stars-model",
-    "version": "1234567891011",
-    "name": "stars-model"
-}
-```
-
 Next, navigate to your robot's [**CONFIG** tab](https://app.viam.com/robot) and click on the **SERVICES** subtab.
 
 Scroll to the bottom and create a new service with the **Type** `ml_models`.
