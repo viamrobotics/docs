@@ -382,4 +382,4 @@ For more information about running [Cartographer in Offline Mode](run-slam-carto
 | `min_added_submaps_count` | The minimum number of added submaps before deletion of the old submap is considered. | Optional | `1` | Only for UPDATING mode. |
 | `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Normalized with translational and rotational. |
 | `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Normalized with occupied and rotational. |
-| `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | `1.0` | Normalized with translational and occupied. |
+| `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | Normalized with translational and occupied. |
