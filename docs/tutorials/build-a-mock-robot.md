@@ -293,7 +293,7 @@ Most simple robots will have only one part, but can have as many parts as needed
 
 Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
 You can access any sub-part either directly, or through any part above it in the tree.
-Each part runs a single _viam-server_ instance.
+Each part runs a single `viam-server` instance.
 
 ## How to configure a sub-part in the Viam app
 
@@ -305,18 +305,6 @@ You will be creating a mock independent computer-controlled sub-part with a moto
 This could be anything, but let's say for the purpose of this tutorial that this motor controls a conveyor belt in front of our mock arm on an assembly line.
 
 Navigate to your new part's **CONFIG** page and create a new motor using the **fake** model.
-
-### How to add your sub-part as a remote
-
-Connecting your sub-part as a remote from your main robot will allow you to control your sub-parts all from one place inside of your main robot.
-
-From the **CODE SAMPLE** tab of your sub-part:
-
-- Copy the **Config as Remote Part**.
-- Navigate back to the **CONFIG** and then the **REMOTES** tab of your main robot
-- Paste your sub-part's configuration.
-
-<img src="../img/build-a-mock-robot/image8.png" alt="Screenshot from the Viam app showing the CONFIG > REMOTES with the sub-part's remote config file pasted in." width="80%"><br>
 
 ### How to start a new instance of `viam-server` for your mock sub-part
 
