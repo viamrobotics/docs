@@ -52,7 +52,9 @@ The model that you configure to be training will train on all images part of the
 
 1. Select **NEW MODEL**.
 2. Specify a **Model Name**.
-3. Select a **Classification Type**: either **Single Label** or **Multi Label**.
+3. Select a **Classification Type**:
+    - **Single Label**: predicts one label per image
+    - **Multi Label**: predicts multiple labels per image
 3. Select one or more tags to train on.
 4. Click **TRAIN MODEL**
 
