@@ -25,7 +25,10 @@ If the underlying data matching the filter changes because data is deleted or mo
 Therefore the data you are viewing may change as you label and train on the dataset.
 {{< /alert >}}
 
-If you would like to create a model that identifies an image of a star in a set of images, tag each image with `star` or `notstar` respectively.
+If you would like to create a model that identifies an image of a star in a set of images, tag each image with a star with a `star` tag.
+
+You can also optionally tag images without a star with a `notstar` tag.
+This allows you to filter down the data in your dataset further by adding the explicit tags as a filter, for example `star` and `notstar`.
 
 To tag an image, click on the image.
 More information about the image will open up to the right side, including **Tags**.
