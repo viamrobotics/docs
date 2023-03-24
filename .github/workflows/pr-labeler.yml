@@ -22,16 +22,8 @@ jobs:
             let prNumber = context.payload.pull_request && context.payload.pull_request.number;
             let orgResp = await github.rest.orgs.checkMembershipForUser({org: "viamrobotics", username: context.payload.sender.login});
             if (orgResp.status === 204) {
-              await github.rest.issues.addLabels({owner: "viamrobotics", repo: "docs", issue_number: prNumber, labels: ["safe to test"]});
+              await github.rest.issues.addLabels({owner: "viamrobotics", repo: "docs", issue_number: prNumber, labels: ["safe to build"]});
               return true;
             } else {
               return false;
             }
-      - name: Add Unsafe PR Comment
-        if: |
-          steps.check-membership.outputs.result != 'true' &&
-          ${{ contains(github.event.*.labels.*.name, 'safe to test') == 'false' }}
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          recreate: true
-          message: For security reasons, this PR must be labeled with `safe to test` in order for tests to run.
