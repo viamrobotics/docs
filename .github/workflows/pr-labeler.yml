@@ -13,6 +13,20 @@ jobs:
       github.event_name == 'pull_request_target' &&
       contains(fromJson('["opened", "synchronize", "reopened"]'), github.event.action)
     steps:
+      - name: "Check Label added"
+        uses: actions/github-script@v6
+        id: check-membership
+        with:
+          github-token: ${{ secrets.PR_TOKEN }}
+          script: |
+            let prNumber = context.payload.pull_request && context.payload.pull_request.number;
+            let orgResp = await github.rest.orgs.checkMembershipForUser({org: "viamrobotics", username: context.payload.sender.login});
+            if (orgResp.status === 204) {
+              // order of labeling events must be preserved, so two seperate calls
+              await github.rest.issues.addLabels({owner: "viamrobotics", repo: "docs", issue_number: prNumber, labels: ["safe to test"]});
+              return true;
+            }
+            return false;
       - name: "Check Membership and Label PR"
         uses: actions/github-script@v6
         id: check-membership
@@ -20,11 +34,6 @@ jobs:
           github-token: ${{ secrets.PR_TOKEN }}
           script: |
             let prNumber = context.payload.pull_request && context.payload.pull_request.number;
-            try {
-              await github.rest.issues.removeLabel({owner: "viamrobotics", repo: "docs", issue_number: prNumber, name: "safe to test"});
-            } catch (err) {
-              core.info(`Non-fatal error ${err}, while trying to remove 'safe to test' label.`);
-            }
             let orgResp = await github.rest.orgs.checkMembershipForUser({org: "viamrobotics", username: context.payload.sender.login});
             if (orgResp.status === 204) {
               // order of labeling events must be preserved, so two seperate calls
@@ -33,7 +42,7 @@ jobs:
             }
             return false;
       - name: Add Unsafe PR Comment
-        if: steps.check-membership.outputs.result != 'true'
+        if: steps.check-membership.outputs.result != 'true' && not(contains(github.event.pull_request.labels.*.name, 'safe to test'))
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           recreate: true
