@@ -156,6 +156,10 @@ The mode utilized by the SLAM service is determined by the information found in 
 
 ORB-SLAM3 can perform sparse SLAM using monocular or RGB-D images.
 
+{{% alert title="Note" color="note" %}}
+While ORB-SLAM3 does support the use of monocular cameras, for best results it is recommended that you use an RGB-D camera.
+{{% /alert %}}
+
 ### Example Configuration
 
 #### Live Mode
