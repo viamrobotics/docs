@@ -15,13 +15,12 @@ jobs:
     steps:
       - name: "Check for safe to test label"
         uses: actions/github-script@v6
-        id: label-added
+        id: label-present
         with:
           github-token: ${{ secrets.PR_TOKEN }}
           script: |
             return contains(github.event.pull_request.labels.*.name, 'safe to test'));
       - name: "Check Membership and Label PR"
-        if: steps.label-added.outputs.result != 'false'
         uses: actions/github-script@v6
         id: check-membership
         with:
@@ -38,7 +37,7 @@ jobs:
       - name: Add Unsafe PR Comment
         if: |
           steps.check-membership.outputs.result != 'true' &&
-          steps.label-added.outputs.result != 'false'
+          steps.label-present.outputs.result != 'false'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           recreate: true
