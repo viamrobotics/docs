@@ -37,12 +37,12 @@ To add a model to your robot, select it and click on the move right button.
 
 ![Create a machine learning models service](../img/added-model.png)
 
-Save the configuration and your model will be added to your robot at <file>/root/.viam/packages/<model-name></file>.
+Save the configuration and your model will be added to your robot at <file>$HOME/.viam/packages/<model-name>/<file-name></file>.
 
 To make use of your new model, use the Vision Service.
 Still on the **SERVICES** subtab add a new service with **Type** `Vision` and give it a name.
 
-Create a [tflite_classifier` classifier](../../vision/#classification) by adding the following configuration in the new Vision Service panel.
+Create a [`tflite_classifier` classifier](../../vision/#classification) by adding the following configuration in the new Vision Service panel.
 
 ```json
 {
