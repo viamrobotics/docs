@@ -12,7 +12,8 @@ This document explains how to establish secure connections between robots.
 
 ### Robot parts
 
-Robots are organized into *parts*, where each part represents a computer (a [single-board computer](/installation/prepare/) or a desktop, laptop, or other computer) running `viam-server`, the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+Robots are organized into *parts*, where each part represents a computer (a [single-board computer](/installation/prepare/), desktop, laptop, or other computer) running `viam-server`, the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+
 Every robot has a main part.
 Multi-part robots also have one or more *sub-parts* representing additional computers running `viam-server`.
 
@@ -41,13 +42,6 @@ Use the parts drop-down menu in the top banner of your robot's page on the [Viam
 
 ![The Viam app interface with the part drop-down open. A new part called "my-sub-part" is being created.](../img/parts-and-remotes/sub-part-config.png)
 
-<br>
-
-{{% alert title="Note" color="note" %}}
-
-When you create a sub-part, a connection is established between the main part and the sub-part without you needing to explicitly configure a remote.
-
-{{% /alert %}}
 
 ### Configure a remote
 
