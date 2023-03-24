@@ -19,7 +19,11 @@ jobs:
         with:
           github-token: ${{ secrets.PR_TOKEN }}
           script: |
-            return contains(github.event.pull_request.labels.*.name, 'safe to test'));
+            console.log(github.event.pull_request)
+            if (github.event.pull_request.labels) {
+              return contains(github.event.pull_request.labels.*.name, 'safe to test'));
+            }
+            return false;
       - name: "Check Membership and Label PR"
         uses: actions/github-script@v6
         id: check-membership
