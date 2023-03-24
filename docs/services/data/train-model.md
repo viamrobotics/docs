@@ -55,7 +55,10 @@ The model that you configure to be training will train on all images part of the
 3. Select a **Classification Type**:
     - **Single Label**: predicts one label per image
     - **Multi Label**: predicts multiple labels per image
-3. Select one or more tags to train on.
+4. Select one or more tags to train on.
+    The selected tags will be the possible tags the model predicts for a given image. 
+     - If you selected **Single Label**, the model will predict one of these labels or `UNKNOWN`.
+     - If you selected **Multi Label**, the model can predict one or more labels for each image.
 4. Click **TRAIN MODEL**
 
 ![Train model menu](../img/train-model-menu.png)
