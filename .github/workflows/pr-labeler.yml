@@ -22,15 +22,15 @@ jobs:
             let prNumber = context.payload.pull_request && context.payload.pull_request.number;
             let orgResp = await github.rest.orgs.checkMembershipForUser({org: "viamrobotics", username: context.payload.sender.login});
             if (orgResp.status === 204) {
-              // order of labeling events must be preserved, so two seperate calls
               await github.rest.issues.addLabels({owner: "viamrobotics", repo: "docs", issue_number: prNumber, labels: ["safe to test"]});
               return true;
+            } else {
+              return false;
             }
-            return false;
       - name: Add Unsafe PR Comment
         if: |
           steps.check-membership.outputs.result != 'true' &&
-           ${{ contains(github.event.*.labels.*.name, 'safe to test') == 'false' }}
+          ${{ contains(github.event.*.labels.*.name, 'safe to test') == 'false' }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           recreate: true
