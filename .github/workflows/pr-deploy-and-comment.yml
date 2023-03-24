@@ -1,11 +1,17 @@
 name: pr-deploy-and-comment
 
+concurrency:
+  group: pullrequest-untrusted-${{ github.head_ref }}
+  cancel-in-progress: true
+
 on:
-  workflow_dispatch:
-  pull_request:
+  pull_request_target:
+    branches: [ 'main' ]
+    types: [ 'labeled' ]
 
 jobs:
   pr-deploy-and-comment:
+    if: (github.event.label.name == 'safe to test')
     runs-on: [self-hosted, x64, private]
     container:
       image: ghcr.io/viamrobotics/canon:amd64
@@ -17,11 +23,11 @@ jobs:
             fetch-depth: 0
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2 
+        uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
           extended: true
-          
+
       - name: Temp config
         run: |
           echo url_latest_version = \"https://docs-test.viam.dev/${{ github.sha }}/public\" > config_pr.toml
