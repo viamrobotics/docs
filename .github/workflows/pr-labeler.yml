@@ -25,7 +25,6 @@ jobs:
             }
             return false;
       - name: "Check Membership and Label PR"
-        if: steps.label-added.outputs.result != 'false'
         uses: actions/github-script@v6
         id: check-membership
         with:
