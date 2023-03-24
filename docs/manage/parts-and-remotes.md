@@ -42,7 +42,6 @@ Use the parts drop-down menu in the top banner of your robot's page on the [Viam
 
 ![The Viam app interface with the part drop-down open. A new part called "my-sub-part" is being created.](../img/parts-and-remotes/sub-part-config.png)
 
-
 ### Configure a remote
 
 To establish a connection between a part of one robot and a part of a second robot, configure a `remote` on the first robot's part.
