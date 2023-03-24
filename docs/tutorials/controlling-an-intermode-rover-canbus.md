@@ -47,6 +47,10 @@ Before proceeding, [set up `viam-server` on your Raspberry Pi](/installation/pre
 
 Next, install the PiCAN 2 driver software [following these instructions](https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi/).
 
+{{% alert title="Note" color="note" %}}
+If you restart your pi, you will need to bring up the CAN interface again, as the above linked instructions do not set this process up to be managed on system start.
+{{% /alert %}}
+
 ### Hardware
 
 {{% alert title="Caution" color="caution" %}}
@@ -224,17 +228,19 @@ In this tutorial, you will leave the *IsMoving* method unimplemented (for illust
 
 ```go {class="line-numbers linkable-line-numbers"}
 func (base *interModeBase) IsMoving(ctx context.Context) (bool, error) {
-    return false, utils.NewUnimplementedInterfaceError((*interModeBase)(nil), "intermodeBase does not yet support IsMoving()")
+    return false, errors.New("IsMoving(): unimplemented")
 }
 ```
 
 ## Use the Intermode base modular resource
 
-### Install the modular resource
+### Copy the modular resource binary
 
-This tutorial's modular resource code leverages libraries (specifically a [CAN bus library](https://github.com/go-daq/canbus)) that can run on Linux and interface with the PiCAN socket.
-Once you have compiled your resouce, you need to configure `viam-server` (running on the Pi) to load the module.
-To be able to run the modular resource code from the Pi, make the modular resource code available on your Raspberry Pi.
+This tutorial's modular resource code leverages libraries (specifically a [CAN bus library](https://github.com/go-daq/canbus)) that run on Linux and interface with the PiCAN socket on your Raspberry Pi.
+The tutorial repository includes a compiled binary that is ready to run on 64-bit [Raspberry Pi OS](https://www.raspberrypi.com/software/).
+If you make changes to the tutorial code, you'll need to re-compile to create a new binary.
+
+To run the modular resource, first copy the module binary to your Raspberry Pi.
 If you have git installed on your Pi, this is as simple as running the following command in the directory for your modular resource code:
 
 ``` sh
@@ -262,12 +268,12 @@ Change this to the correct location in `executable_path` when adding the module 
   "modules": [
     {
       "name": "intermode-base",
-      "executable_path": "/home/me/tutorial-intermode/intermode-base/run.sh"
+      "executable_path": "/home/me/tutorial-intermode/intermode-base/intermode-model"
     }
   ],
     "components": [
         {
-        "type": "component",
+        "type": "base",
         "name": "base",
         "model": "viamlabs:tutorial:intermode",
         "namespace": "rdk",
