@@ -55,6 +55,21 @@ To be able to interact with the Vision Service you must:
 1. Configure a physical [camera component](../../../components/camera) to wrap the service.
 2. Configure a [transform camera](../../../components/camera/transform) to view output from the detector overlaid on images from the physical camera.
 
+    ```json
+    {
+    "pipeline": [
+        {
+        "type": "classifications",
+        "attributes": {
+            "confidence_threshold": 0.5,
+            "classifier_name": "my_classifier"
+        }
+        }
+    ],
+    "source": "<camera-name>"
+    }
+    ```
+
 After adding the component and its attributes, click **SAVE CONFIG**.
 
 Wait for the robot to reload, and then go to the **CONTROL** tab to test the stream of detections.
