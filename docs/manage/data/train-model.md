@@ -8,7 +8,7 @@ description: "Train an image classification model on labeled image data."
 # SME: Aaron Casas
 ---
 
-You can tag [images collected](../configure-data-capture) by robots and use the labeled data to train a **Single Label** or **Multi Label** image classification model within Viam.
+You can tag [images collected](../../../services/configure-data-capture) by robots and use the labeled data to train a **Single Label** or **Multi Label** image classification model within Viam.
 
 ## Label a dataset
 
