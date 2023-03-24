@@ -8,11 +8,7 @@ description: "Deploy an image classification model to a robot."
 # SME: Aaron Casas
 ---
 
-On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **MODELS** sub-tab.
-
-![The trained model](../img/stars-model.png)
-
-Next, navigate to your robot's [**CONFIG** tab](https://app.viam.com/robot) and click on the **SERVICES** subtab.
+Navigate to your robot's [**CONFIG** tab](https://app.viam.com/robot) and click on the **SERVICES** subtab.
 
 Scroll to the bottom and create a new service with the **Type** `ml_models`.
 
