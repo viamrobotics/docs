@@ -13,21 +13,15 @@ jobs:
       github.event_name == 'pull_request_target' &&
       contains(fromJson('["opened", "synchronize", "reopened"]'), github.event.action)
     steps:
-      - name: "Check Label added"
+      - name: "Check for safe to test label"
         uses: actions/github-script@v6
-        id: check-membership
+        id: label-added
         with:
           github-token: ${{ secrets.PR_TOKEN }}
           script: |
-            let prNumber = context.payload.pull_request && context.payload.pull_request.number;
-            let orgResp = await github.rest.orgs.checkMembershipForUser({org: "viamrobotics", username: context.payload.sender.login});
-            if (orgResp.status === 204) {
-              // order of labeling events must be preserved, so two seperate calls
-              await github.rest.issues.addLabels({owner: "viamrobotics", repo: "docs", issue_number: prNumber, labels: ["safe to test"]});
-              return true;
-            }
-            return false;
+            return contains(github.event.pull_request.labels.*.name, 'safe to test'));
       - name: "Check Membership and Label PR"
+        if: steps.label-added.outputs.result != 'false'
         uses: actions/github-script@v6
         id: check-membership
         with:
@@ -42,7 +36,9 @@ jobs:
             }
             return false;
       - name: Add Unsafe PR Comment
-        if: steps.check-membership.outputs.result != 'true' && not(contains(github.event.pull_request.labels.*.name, 'safe to test'))
+        if: |
+          steps.check-membership.outputs.result != 'true' &&
+          steps.label-added.outputs.result != 'false'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           recreate: true
