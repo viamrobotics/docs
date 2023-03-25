@@ -5,7 +5,7 @@ weight: 40
 no_list: true
 type: "docs"
 tags: ["data management", "data", "services"]
-description: "Sync data captured by the robot's components to the cloud."
+description: "Capture data from a robot's components and sync it to the cloud."
 aliases:
     - /data-management
 # SME: Aaron Casas
@@ -92,16 +92,18 @@ If the robot loses connectivity and remains disconnected, data capture can event
 Currently, Viam does not safeguard against this.
     {{< /alert >}}
 
-## Coming Soon
-
-- Data processing for ML model training
-- ML model to robot deployment
-
 ## Next steps
 
 To use the Data Management Service, [add the Data Management Service](configure-data-capture/#add-the-data-management-service) to your robot.
 Then [configure data capture](configure-data-capture) as needed and [configure cloud sync](configure-cloud-sync).
 
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/data-management-tutorial).
+
+### Accessing and exporting data
+
 Once you have configured data capture and cloud sync, you can [view](../../manage/data/view) and [export](../../manage/data/export) your data.
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/data-management-tutorial).
+### Machine Learning
+
+If you collect image data, you can use it to [train image classification models](../../manage/data/train-model) and [deploy these models to your robots](../../manage/data/deploy-model).
+You can also [upload and use existing models](../../manage/data/upload-model).
