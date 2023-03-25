@@ -44,23 +44,23 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 4. Select the **CONFIG** tab.
 5. Under the **COMPONENTS** section, create a component with the following attributes:
 
-* Choose `Arm` as the **Type** selection
-* Choose your desired model in the **Model** selection
-  * If you're using an xArm 6, choose the `xArm6` model from the drop-down list
-* Enter `myArm` as the **Name** for this component
+    * Choose `Arm` as the **Type** selection
+    * Choose your desired model in the **Model** selection
+      * If you're using an xArm 6, choose the `xArm6` model from the drop-down list
+    * Enter `myArm` as the **Name** for this component
 
 5. In the newly created `myArm` component panel, fill in some additional details:
 
-* Enter the IP address for your robot controller in the **Host** field
-* Enter a desired velocity *(in degrees per second)* for the robot arm's motions in the **Speed** field
-  * For an `xArm6`, a safe value is `15` degrees per second.
+    * Enter the IP address for your robot controller in the **Host** field
+    * Enter a desired velocity *(in degrees per second)* for the robot arm's motions in the **Speed** field
+      * For an `xArm6`, a safe value is `15` degrees per second.
 
-6. Add a **Frame** to this component
+6. Add a **Frame** to this component.
    * You will not need to change the default values that populate the new frame card
 
    <img src="../../img/motion/access_02_arm_config.png" width="700px" alt="Sample robot arm configuration with several fields filled out.">
 
-7. Save this robot configuration
+7. Save this robot configuration.
 
 Go to the **CODE SAMPLE** tab and copy the code sample for the programming language you are working in.
 Paste this boilerplate code into a file and run the script to verify you can connect to your robot.
