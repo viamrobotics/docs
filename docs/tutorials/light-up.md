@@ -160,3 +160,65 @@ The sample code below specifies the file locations of the model and labels, whic
     names = await vision.get_detector_names()
     print(names)
 ```
+
+Add the host address (for example, 10.1.11.221) of your smart plug that you found in the `kasa discover` step to the code shown below.
+
+In this snippet, if the camera detects a person, it will print to the terminal “This is a person!” and turn on the smart plug.
+If it does not find a person, it will write “There’s nobody here” and will turn off the plug.
+
+```python
+   #example: plug = SmartPlug('10.1.11.221')
+   plug = SmartPlug('replace with the host IP of your plug')
+   await plug.update()
+
+
+   await plug.turn_off()
+   state = "off"
+   for i in range(N):
+       image = await camera.get_image()
+       detections = await vision.get_detections(image, "person_detector")
+       found = False
+       for d in detections:
+           if d.confidence > 0.8:
+               print(d)
+               print()
+               if d.class_name.lower() == "person":
+                   print("This is a person!")
+                   found = True
+       if found:
+           #turn on the smart plug
+           await plug.turn_on()
+           await plug.update()
+           print("turning on")
+           state = "on"
+       else:
+           print("There's nobody here")
+           #turn off the smart plug
+           await plug.turn_off()
+           await plug.update()
+           print("turning off")
+           state = "off"
+```
+
+Next, save and run your code.
+You will see your plug turn on and off as you move in the frame of your computer's webcam!
+
+Your terminal should look like this as your project runs:
+
+```bash
+This is a person!
+turning on
+There's nobody here
+turning off
+```
+
+The complete code for this project can be found [here](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/lightupbot.py).
+
+## Summary
+
+In this tutorial, you learned how to build an object detection robot that turns your lights on using Viam.
+You could use this same concept to build a smart fan that only turns on if you are sitting at your desk working, turn on the lights in your bathroom mirror only when you are in front of the sink, or activate a pet feeder every time your cat looks at the camera.
+
+For more robotics projects, check out our [other tutorials](/tutorials/).
+
+{{< snippet "social.md" >}}
