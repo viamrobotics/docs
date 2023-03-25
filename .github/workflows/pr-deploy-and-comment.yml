@@ -6,7 +6,6 @@ concurrency:
 
 on:
   pull_request_target:
-    branches: [ 'main' ]
 
 jobs:
   pr-deploy-and-comment:
