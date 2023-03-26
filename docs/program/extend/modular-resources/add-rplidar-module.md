@@ -121,9 +121,9 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
             <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
                 Cartographer SLAM
             </h4>
+            <p style="text-align: left;"> Run Cartographer SLAM on your Robot with a Rplidar. </p>
           </a>
-          <p style="text-align: left;"> Run Cartographer SLAM on your Robot with a Rplidar. </p>
-        </div>
+         </div>
       <div class="col hover-card">
           <a href="../../../../services/slam">
               <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">SLAM Service</h4>
