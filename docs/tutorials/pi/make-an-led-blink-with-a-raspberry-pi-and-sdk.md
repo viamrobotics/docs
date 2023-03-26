@@ -34,7 +34,7 @@ You will need the following hardware, tools, and software to complete this proje
 <ol>
     <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
 <ol type="a">
-<li>Refer to the [Viam Raspberry Pi Setup Guide](/installation/prepare/rpi-setup) to setup your Pi.</li>
+    <li>Refer to the <a href="../../../installation/prepare/rpi-setup">Viam Raspberry Pi Setup Guide</a> to setup your Pi.</li>
 <li>You must also enable SSH on your Pi.</li>
 </ol>
     <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
