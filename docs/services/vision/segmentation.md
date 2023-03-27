@@ -128,7 +128,6 @@ Click **SAVE CONFIG** and head to the **COMPONENTS** tab.
 To add a vision model to your robot, add the `name`, `type`, and `parameters` of the desired segmenter to the `register_models` in the attributes field of the Vision Service config.
 For example:
 
-``` json {class="line-numbers linkable-line-numbers"}
 "services": [
     {
         "name": "vision1",
@@ -152,6 +151,16 @@ For example:
                 "label_path": "/path/to/labels.txt",
                 "num_threads": 1
               }
+            },
+            {
+                "name": "my_segmenter",
+                "type": "radius_clustering_segmenter",
+                "parameters": {
+                    "min_points_in_plane": 2,
+                    "min_points_in_segment": 2,
+                    "clustering_radius_mm": 3.0,
+                    "mean_k_filtering": 0
+                }
             }
           ]
         }
@@ -160,18 +169,6 @@ For example:
 ```
 
 {{% /expand%}}
-
-### Add a camera component and a "transform" model
-
-You cannot interact directly with the [Vision Service](/services/vision/).
-To be able to interact with the Vision Service you must:
-
-1. Configure a physical [camera component](../../../components/camera) to wrap the service.
-2. Configure a [transform camera](../../../components/camera/transform) to view output from the segmenter overlaid on images from the physical camera.
-
-After adding the component and its attributes, click **SAVE CONFIG**.
-
-Wait for the robot to reload, and then go to the **CONTROL** tab to test the stream of detections.
 
 ## Code
 
@@ -193,7 +190,7 @@ print("Vision Resources:")
 print(await vision.get_detector_names())
 
 # Apply the segmenter configured as my_segmenter to the image from your camera configured as "camera_1"
-detections = await vision.get_detections_from_camera("camera_1", "my_segmenter")
+segments = await vision.get_object_point_clouds("camera_1", "my_segmenter")
 
 await robot.close()
 ```
@@ -214,24 +211,24 @@ if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
 
-detNames, err := visService.DetectorNames(context.Background(), nil)
+segNames, err := visService.SegmenterNames(context.Background(), nil)
 if err != nil {
     logger.Fatalf("Could not list detectors: %v", err)
 }
 logger.Info("Vision Resources:")
-logger.Info(detNames)
+logger.Info(segNames)
 
 // Apply the color segmenter to the image from your camera (configured as "camera_1")
-detections, err := visService.DetectionsFromCamera(context.Background(), "camera_1", "my_segmenter", nil)
+segments, err := visService.GetObjectPointClouds(context.Background(), "camera_1", "my_segmenter", nil)
 if err != nil {
-    logger.Fatalf("Could not get detections: %v", err)
+    logger.Fatalf("Could not get segments: %v", err)
 }
 if len(detections) > 0 {
-    logger.Info(detections[0])
+    logger.Info(segments[0])
 }
 ```
 
-To learn more about the Detection API, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
+To learn more about the Segmentation API, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
 
 {{% /tab %}}
 {{< /tabs >}}
