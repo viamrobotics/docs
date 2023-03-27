@@ -132,7 +132,7 @@ To export data from Viam:
 1. First, install the [Viam CLI](/manage/cli) and [authenticate](/manage/cli/#authenticate):
 
    ```sh
-   go install go.viam.com/rdk/cli/cmd@latest
+   go install go.viam.com/rdk/cli/viam@latest
    viam auth
    ```
 
