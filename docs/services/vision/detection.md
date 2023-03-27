@@ -29,7 +29,7 @@ You can use the following types of detectors:
 ### `color_detector`
 
 A heuristic based detector that draws boxes around objects according to their hue.
-Color detectors do not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
+Color detectors do not detect black, perfect grays (grays where the red, green, and blue color component values are equal), or white.
 It only detects hues found on the color wheel.
 
 {{% alert title="Note" color="note" %}}
