@@ -198,7 +198,7 @@ First, add your Pi as a [board component](/components/board/):
 {{< tabs name="Configure an Pi Board" >}}
 {{% tab name="Config Builder" %}}
 
-<img src="/tutorials/img/plant-watering-pi/pi-board-config-builder.png" alt="Creation of a pi board in the Viam app config builder." style="max-width:800px" />
+<img src="../../img/plant-watering-pi/pi-board-config-builder.png" alt="Creation of a pi board in the Viam app config builder." style="max-width:800px" />
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -229,7 +229,7 @@ Make sure to add your board (in this example, named `local`) to this component's
 {{< tabs name="Configure an Pump Motor" >}}
 {{% tab name="Config Builder" %}}
 
-<img src="/tutorials/img/plant-watering-pi/pump-motor-config-builder.png" alt="Creation of a pump motor in the Viam app config builder." style="max-width:800px" />
+<img src="../../img/plant-watering-pi/pump-motor-config-builder.png" alt="Creation of a pump motor in the Viam app config builder." style="max-width:800px" />
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -261,7 +261,7 @@ Make sure to add your board (in this example, named `local`) to this component's
 
 ### Configure the Capacitive Soil Moisture Sensor as a Custom Sensor Component Model
 
-As the Capacitive Sensor moisture sensor is not currently one of Viam's built-in [sensor component](/components/sensor/) models, you now must use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/).
+As the Capacitive Sensor Moisture Sensor is not currently one of Viam's built-in [sensor component](/components/sensor/) models, you now must use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/).
 
 - In this case, the custom resource is a custom component model that extends the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html).
 - You instantiate this custom component as a server with the `viam.rpc.server` class.
@@ -345,7 +345,7 @@ Add your sensor server as a remote part, called `my-sensor-server`:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-<img src="/tutorials/img/plant-watering-pi/sensor-remote-config-builder.png" alt="Creation of a custom sensor remote in the Viam app config builder." style="max-width:800px" />
+<img src="../../img/plant-watering-pi/sensor-remote-config-builder.png" alt="Creation of a custom sensor remote in the Viam app config builder." style="max-width:800px" />
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -370,7 +370,7 @@ Then, navigate to the **PROCESSES** subtab and create a process called `run-sens
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-<img src="/tutorials/img/plant-watering-pi/sensor-process-config-builder.png" alt="Creation of a pump motor in the Viam app config builder." style="max-width:800px" />
+<img src="../../img/plant-watering-pi/sensor-process-config-builder.png" alt="Creation of a pump motor in the Viam app config builder." style="max-width:800px" />
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -419,7 +419,7 @@ vim plant-watering-robot.py
 
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
-<img src="/tutorials/img/plant-watering-pi/main-py.png" alt="The main.py function from your robot's Code Sample tab, ready to edit." style="max-width:800px" />
+<img src="../../img/plant-watering-pi/main-py.png" alt="The main.py function from your robot's Code Sample tab, ready to edit." style="max-width:800px" />
 
 <br>
 </br>
