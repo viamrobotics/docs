@@ -15,7 +15,7 @@ tags: ["base", "camera", "raspberry pi", "scuttle"]
 
 - A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the `viam-server` installed.
 
-Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os), if necessary.
+Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#install-raspberry-pi-os), if necessary.
 
 - [A SCUTTLE Robot](https://www.scuttlerobot.org/shop/)
 - A USB camera (webcam)
@@ -304,7 +304,7 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](/tutorials
 
 ## Documents referenced
 
-- [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os)
+- [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#install-raspberry-pi-os)
 
 - [Color Detection with SCUTTLE Robot on Viam](/tutorials/scuttlebot/color-detection-scuttle/)
 
