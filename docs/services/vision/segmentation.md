@@ -224,7 +224,7 @@ segments, err := visService.GetObjectPointClouds(context.Background(), "camera_1
 if err != nil {
     logger.Fatalf("Could not get segments: %v", err)
 }
-if len(detections) > 0 {
+if len(segments) > 0 {
     logger.Info(segments[0])
 }
 ```

@@ -201,7 +201,7 @@ classifications, err := visService.ClassificationsFromCamera(context.Background(
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
 }
-if len(detections) > 0 {
+if len(classifications) > 0 {
     logger.Info(classifications[0])
 }
 ```
