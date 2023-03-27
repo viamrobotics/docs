@@ -26,7 +26,8 @@ The types of classifiers supported are:
 
 ### TFLite classifier
 
-These are the available parameters in the classifier's configuration. For an example see [Configuration](#configuration).
+The following parameters are available for a `"tflite_classifier"`.
+For an example see [Configuration](#configuration).
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -48,7 +49,7 @@ These are the available parameters in the classifier's configuration. For an exa
 | --------- | ----------- |
 | `model_path` | The path to the .tflite model file, as a string. This attribute is absolutely required. |
 | `label_path` | The path to a .txt file that holds class labels for your TFLite model, as a string. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read "1", "2", and so on. |
-| `num_threads` | An integer that defines how many CPU threads to use to run inference. The default value is 1. |
+| `num_threads` | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
 ## Configuration
 
