@@ -4,23 +4,23 @@ linkTitle: "Make a Plant Watering Robot with a Raspberry Pi"
 weight: 50
 type: "docs"
 description: "Instructions for creating a plant watering robot with a Raspberry Pi single-board computer and Viam."
-tags: ["pi", "app", "esp32"]
+tags: ["raspberry pi", "app", "board", "motor"]
 ---
 
 ## Hardware Requirements
 
 - A Raspberry Pi with SD card
-- [Capacitive soil moisture sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ/ref=asc_df_B07QXZC8TQ/?tag=hyprod-20&linkCode=df0&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596&psc=1&tag=&ref=&adgrpid=71762478951&hvpone=&hvptwo=&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596)
-- [Peristaltic pump motor](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E/ref=asc_df_B01IUVHB8E/?tag=hyprod-20&linkCode=df0&hvadid=198093101467&hvpos=&hvnetw=g&hvrand=13835398343702336934&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-384674250225&psc=1) and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&ref=ppx_yo2ov_dt_b_product_details)
-- [Adafruit MCP3008 ADC](https://www.amazon.com/dp/B00NAY3RB2?psc=1&ref=ppx_yo2ov_dt_b_product_details)
-- A [motor speed controller](https://www.amazon.com/CHENBO-Trigger-Adjustment-Electronic-Controller/dp/B099RF72R1/ref=asc_df_B099RF72R1/?tag=hyprod-20&linkCode=df0&hvadid=532384528241&hvpos=&hvnetw=g&hvrand=11376239784428845641&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-1410298730875&th=1)
+- A [Capacitive Soil Moisture Sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ/ref=asc_df_B07QXZC8TQ/?tag=hyprod-20&linkCode=df0&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596&psc=1&tag=&ref=&adgrpid=71762478951&hvpone=&hvptwo=&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596)
+- A [Peristaltic Pump Motor](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E/ref=asc_df_B01IUVHB8E/?tag=hyprod-20&linkCode=df0&hvadid=198093101467&hvpos=&hvnetw=g&hvrand=13835398343702336934&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-384674250225&psc=1) and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&ref=ppx_yo2ov_dt_b_product_details)
+- An [Adafruit MCP3008 ADC](https://www.amazon.com/dp/B00NAY3RB2?psc=1&ref=ppx_yo2ov_dt_b_product_details)
+- A [Motor Speed Controller](https://www.amazon.com/CHENBO-Trigger-Adjustment-Electronic-Controller/dp/B099RF72R1/ref=asc_df_B099RF72R1/?tag=hyprod-20&linkCode=df0&hvadid=532384528241&hvpos=&hvnetw=g&hvrand=11376239784428845641&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-1410298730875&th=1)
 - 9V Battery
 
 ## Getting Started
 
-First, follow our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
+First, follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
 
-When following this tutorial, you will set up the plant watering robot, and code a Python file utilizing the Viam Python SDK to control the plant watering robot.
+Folliow this tutorial to set up the hardware for your plant watering robot and code a Python file utilizing the Viam Python SDK to control the plant watering robot with your Pi running `viam-server`.
 
 ## Set Up your Plant Watering Robot
 
