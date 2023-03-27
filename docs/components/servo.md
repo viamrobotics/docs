@@ -463,14 +463,12 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card">
-        <a href="/tutorials/yahboom-rover/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Drive a Yahboom Rover with a Gamepad</h4>
-            <p style="text-align: left;">Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+{{< card link="../../tutorials/yahboom-rover/" size="small">}}
+
+<h4>Drive a Yahboom Rover with a Gamepad</h4>
+
+Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.
+
+{{< /card >}}
+{{< /cards >}}

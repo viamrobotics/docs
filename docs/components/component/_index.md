@@ -77,21 +77,19 @@ Troubleshooting information for configuration errors.
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card">
-        <a href="control-a-component">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Control a COMPONENTNAME</h4>
-            <p style="text-align: left;">Control your COMPONENTNAME.</p>
-        <a>
-    </div>
-    <div class="col hover-card">
-        <a href="install">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Relevant tutorial name</h4>
-            <p style="text-align: left;">Description.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+{{< card link="control-a-component" size="small">}}
+
+<h4>Control a COMPONENTNAME</h4>
+
+Control a COMPONENTNAME.
+
+{{< /card >}}
+{{< card link="install" size="small">}}
+
+<h4>Relevant tutorial name</h4>
+
+Description.
+
+{{< /card >}}
+{{< /cards >}}

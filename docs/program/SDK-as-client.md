@@ -188,25 +188,27 @@ main();
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card hover-card-small">
-        <a href="../../components">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Components</h4>
-            <p style="text-align: left;">Write code to access and control your components. You use natively supported components or extend Viam with custom components and services.</p>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="../../services">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Services</h4>
-            <p style="text-align: left;">Integrate services like computer vision, motion planning, or SLAM.</p>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="../../components">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Tutorials</h4>
-            <p style="text-align: left;">Follow along with some example robot tutorials.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+{{< card link="../../components" size="small">}}
+
+<h4>Components</h4>
+
+Write code to access and control your components.
+You use natively supported components or extend Viam with custom components and services.
+
+{{< /card >}}
+{{< card link="../../services" size="small">}}
+
+<h4>Services</h4>
+
+Integrate services like computer vision, motion planning, or SLAM.
+
+{{< /card >}}
+{{< card link="../../components" size="small">}}
+
+<h4>Tutorials</h4>
+
+Follow along with some example robot tutorials.
+
+{{< /card >}}
+{{< /cards >}}

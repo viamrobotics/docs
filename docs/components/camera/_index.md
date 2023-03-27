@@ -297,43 +297,40 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-        <div class="col hover-card">
-          <a href="calibrate/">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
-                Calibrate a Camera
-            </h4>
-          <p style="text-align: left;"> Calibrate a camera and extract the intrinsic and distortion parameters. </p>
-          </a>
-        </div>
-        <div class="col hover-card">
-          <a href="transform/">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
-                Transform a Camera
-            </h4>
-          <p style="text-align: left;"> Instructions for transforming a webcam. </p>
-          </a>
-        </div>
-      <div class="col hover-card">
-          <a href="../../services/vision">
-              <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Vision Service</h4>
-              <p style="text-align: left;">The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.</p>
-          </a>
-      </div>
-    </div>
-  <div class="row">
-    <div class="col hover-card">
-        <a href="/tutorials/viam-rover/try-viam-color-detection/">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect color with a Viam Rover</h4>
-            <p style="text-align: left;">Use the vision service in the Viam app to detect a color.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <a href="/tutorials/scuttlebot/color-detection-scuttle/">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Colored Object Follower</h4>
-            <p style="text-align: left;">Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+{{< card link="calibrate/" size="small">}}
+
+<h4>Calibrate a Camera</h4>
+
+Calibrate a camera and extract the intrinsic and distortion parameters.
+
+{{< /card >}}
+{{< card link="transform/" size="small">}}
+
+<h4>Transform a Camera</h4>
+
+Instructions for transforming a webcam.
+
+{{< /card >}}
+{{< card link="../../services/vision" size="small">}}
+
+<h4>Vision Service</h4>
+
+The Vision Service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.
+
+{{< /card >}}
+{{< card link="../../tutorials/viam-rover/try-viam-color-detection/" size="small">}}
+
+<h4>Detect color with a Viam Rover</h4>
+
+Use the Vision Service in the Viam app to detect a color.
+
+{{< /card >}}
+{{< card link="../../tutorials/scuttlebot/color-detection-scuttle/" size="small">}}
+
+<h4>Colored Object Follower</h4>
+
+Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software.
+
+{{< /card >}}
+{{< /cards >}}
