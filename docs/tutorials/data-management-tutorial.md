@@ -70,7 +70,7 @@ For more detailed information see [Add the Data Management Service](../../servic
 
 ## Configure data capture for a component
 
-With data management enabled, you can now configure data capture for specific components on your robot running Viam.
+With the data management service added, you can now configure data capture for specific components on your robot running Viam.
 You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
 
 {{% alert title="Tip" color="tip" %}}
