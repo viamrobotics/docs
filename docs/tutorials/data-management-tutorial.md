@@ -144,7 +144,7 @@ To export data from Viam:
 4. Run the copied command in a terminal:
 
    ```sh
-   go run go.viam.com/rdk/cli/viam data export --org_ids=<org_id> --data_type=binary --mime_types=<mime_types> --destination=.
+   viam data export --org_ids=<org_id> --data_type=binary --mime_types=<mime_types> --destination=.
    ```
 
    This command uses the Viam CLI to download the data locally onto your computer based on the search criteria you select in the Viam app.
