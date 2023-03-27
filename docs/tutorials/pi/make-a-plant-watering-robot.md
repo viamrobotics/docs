@@ -148,21 +148,6 @@ vim adctesting.py
 
 Now, add the following Python code to `adctesting.py` to test reading values from your Capacitive Soil Moisture Sensor through your MCP3008 ADC:
 
-<!-- ``` python
-import time
-import Adafruit_MCP3008  as MCP
-
-# create the mcp object w GPIO numbers
-mcp = MCP.MCP3008(clk=11, cs=25, miso=9, mosi=10)
-
-
-print('Reading MCP3008 values, press Ctrl-C to quit...')
-while True:
-   print(mcp.read_adc(0)) 
-   time.sleep(1)
-
-``` -->
-
 ``` python
 import time
 import busio
