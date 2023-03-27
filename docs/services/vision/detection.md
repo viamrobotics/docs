@@ -51,11 +51,11 @@ These are the available parameters in the detector's configuration. For an examp
             "name": "<detector_name>",
             "type": "color_detector",
             "parameters": {
-            "detect_color" : "#ABCDEF",
-            "hue_tolerance_pct": <number>,
-            "segment_size_px": <integer>,
-            "saturation_cutoff_pct": <number>,
-            "value_cutoff_pct" <number>
+              "detect_color" : "#ABCDEF",
+              "hue_tolerance_pct": <number>,
+              "segment_size_px": <integer>,
+              "saturation_cutoff_pct": <number>,
+              "value_cutoff_pct" <number>
             }
         }
     ]
@@ -93,9 +93,9 @@ These are the available parameters in the detector's configuration. For an examp
             "name": "<detector_name>",
             "type": "tflite_classifier",
             "parameters": {
-            "model_path" : "/path/to/model.tflite",
-            "label_path": "/path/to/labels.txt",
-            "num_threads": <number>
+              "model_path" : "/path/to/model.tflite",
+              "label_path": "/path/to/labels.txt",
+              "num_threads": <number>
             }
         }
     ]
@@ -146,13 +146,13 @@ For example:
 {
  "register_models": [
    {
+     "name": "my_color_detector",
      "type": "color_detector",
      "parameters": {
        "detect_color": "#7a4f5c",
        "hue_tolerance_pct": 0.06,
        "segment_size_px": 100
-     },
-     "name": "my_color_detector"
+     }
    }
  ]
 }
@@ -189,6 +189,16 @@ For example:
                 "label_path": "/path/to/labels.txt",
                 "num_threads": 1
               }
+            },
+            {
+                "name": "my_segmenter",
+                "type": "radius_clustering_segmenter",
+                "parameters": {
+                    "min_points_in_plane": 2,
+                    "min_points_in_segment": 2,
+                    "clustering_radius_mm": 3.0,
+                    "mean_k_filtering": 0
+                }
             }
           ]
         }
@@ -230,7 +240,7 @@ print("Vision Resources:")
 print(await vision.get_detector_names())
 
 # Apply the color detector configured as detector_1 to the image from your camera configured as "camera_1"
-detections = await vision.get_detections_from_camera("camera_1", "detector_1")
+detections = await vision.get_detections_from_camera("camera_1", "my_color_detector")
 
 await robot.close()
 ```
@@ -259,7 +269,7 @@ logger.Info("Vision Resources:")
 logger.Info(detNames)
 
 // Apply the color detector to the image from your camera (configured as "camera_1")
-detections, err := visService.DetectionsFromCamera(context.Background(), "camera_1", "detector_1", nil)
+detections, err := visService.DetectionsFromCamera(context.Background(), "camera_1", "my_color_detector", nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }

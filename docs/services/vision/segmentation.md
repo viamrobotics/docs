@@ -18,13 +18,32 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 The types of segmenters supported are:
 
 - [**radius_clustering_segmenter**](#radius-clustering-segmenter): Radius clustering is a segmenter that identifies well separated objects above a flat plane.
-- [**detector_segmenter**](#detector-segmenter): Object segmenters are automatically created from [detectors](../detection) in the Vision Service.
+- [**detector_segmenter**](#detector-segmenter): Object segmenters are automatically created from detectors in the Vision Service.
 
 ### Radius Clustering Segmenter
 
 Radius clustering is a segmenter that identifies well separated objects above a flat plane.
 It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.
 It is slower than other segmenters and can take up to 30s to segment a scene.
+
+These are the available parameters in the segmenter's configuration. For an example see [Configuration](#configuration).
+
+``` json {class="line-numbers linkable-line-numbers"}
+{
+    "register_models": [
+        {
+            "name": "<segmenter_name>",
+            "type": "radius_clustering_segmenter",
+            "parameters": {
+                "min_points_in_plane": <integer>,
+                "min_points_in_segment": <integer>,
+                "clustering_radius_mm": <number>,
+                "mean_k_filtering": <integer>
+            }
+        }
+    ]
+}
+```
 
 | Parameter | Description |
 | --------- | ----------- |
@@ -39,6 +58,25 @@ Object segmenters are automatically created from [detectors](../detection) in th
 Any registered detector, for example `detector1`, defined in the `register_models` field or added later to the Vision Service becomes a segmenter with `_segmenter` appended to its name, for example `detector1_segmenter`.
 It begins by finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
 
+These are the available parameters in the segmenter's configuration. For an example see [Configuration](#configuration).
+
+``` json {class="line-numbers linkable-line-numbers"}
+{
+    "register_models": [
+        {
+            "name": "<segmenter_name>",
+            "type": "detector_segmenter",
+            "parameters": {
+                "detector_name": "<detector_name>",
+                "confidence_threshold_pct": <number>,
+                "mean_k": <integer>,
+                "sigma": <number>
+            }
+        }
+    ]
+}
+```
+
 | Parameter | Description |
 | --------- | ----------- |
 | `detector_name`| The name of the detector already registered in the Vision Service that will be turned into a segmenter. |
@@ -46,6 +84,158 @@ It begins by finding the 2D bounding boxes, and then returns the list of 3D poin
 | `mean_k` | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
 | `sigma` | A floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. |
 
-## Segmentation API
+## Configuration
 
-To learn more about the Segmentation API, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html) or the [Go RDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
+### Add the service and segmenter
+
+Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
+Click on the robot you wish to add the Vision Service to.
+Select the **CONFIG** tab, and click on **SERVICES**.
+
+Scroll to the **Create Service** section.
+To create a [Vision Service](/services/vision/):
+
+1. Select `Vision` as the **Type**.
+2. Enter a name as the **Name**.
+3. Click **Create Service**.
+
+<img src="../../../tutorials/img/try-viam-color-detection/create-service.png" alt="The Create Service panel lists the type as vision and name as vision, with a Create Service button.">
+
+In your Vision Service's panel, add a segmenter into the **Attributes** field.
+For example:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+ "register_models": [
+    {
+        "name": "my_segmenter",
+        "type": "radius_clustering_segmenter",
+        "parameters": {
+            "min_points_in_plane": 2,
+            "min_points_in_segment": 2,
+            "clustering_radius_mm": 3.0,
+            "mean_k_filtering": 0
+        }
+    }
+ ]
+}
+```
+
+Click **SAVE CONFIG** and head to the **COMPONENTS** tab.
+
+{{%expand "You can also configure the entire Vision Service and segmenter in raw JSON" %}}
+
+To add a vision model to your robot, add the `name`, `type`, and `parameters` of the desired segmenter to the `register_models` in the attributes field of the Vision Service config.
+For example:
+
+``` json {class="line-numbers linkable-line-numbers"}
+"services": [
+    {
+        "name": "vision1",
+        "type": "vision",
+        "attributes": {
+          "register_models": [
+            {
+              "name": "my_color_detector",
+              "type": "color_detector",
+              "parameters": {
+                "detect_color" : "#A3E2FF",
+                "hue_tolerance_pct": 0.06,
+                "segment_size_px": 100
+              }
+            },
+            {
+              "name": "my_classifier",
+              "type": "tflite_classifier",
+              "parameters": {
+                "model_path" : "/path/to/model.tflite",
+                "label_path": "/path/to/labels.txt",
+                "num_threads": 1
+              }
+            }
+          ]
+        }
+    }
+]
+```
+
+{{% /expand%}}
+
+### Add a camera component and a "transform" model
+
+You cannot interact directly with the [Vision Service](/services/vision/).
+To be able to interact with the Vision Service you must:
+
+1. Configure a physical [camera component](../../../components/camera) to wrap the service.
+2. Configure a [transform camera](../../../components/camera/transform) to view output from the segmenter overlaid on images from the physical camera.
+
+After adding the component and its attributes, click **SAVE CONFIG**.
+
+Wait for the robot to reload, and then go to the **CONTROL** tab to test the stream of detections.
+
+## Code
+
+The following code gets the robot’s Vision Service and then runs a segmenter vision model on an image from the robot's camera named `"camera_1"` in this example.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
+
+robot = await connect()
+# grab camera from the robot
+cam1 = Camera.from_robot(robot, "cam1")
+# grab Viam's vision service which has the segmenter already registered
+vision = VisionServiceClient.from_robot(robot)
+
+print("Vision Resources:")
+print(await vision.get_detector_names())
+
+# Apply the segmenter configured as my_segmenter to the image from your camera configured as "camera_1"
+detections = await vision.get_detections_from_camera("camera_1", "my_segmenter")
+
+await robot.close()
+```
+
+To learn more about the Detection API, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+import (
+"go.viam.com/rdk/config"
+"go.viam.com/rdk/services/vision"
+)
+
+visService, err := vision.FirstFromRobot(robot)
+if err != nil {
+    logger.Fatalf("Cannot get Vision Service: %v", err)
+}
+
+detNames, err := visService.DetectorNames(context.Background(), nil)
+if err != nil {
+    logger.Fatalf("Could not list detectors: %v", err)
+}
+logger.Info("Vision Resources:")
+logger.Info(detNames)
+
+// Apply the color segmenter to the image from your camera (configured as "camera_1")
+detections, err := visService.DetectionsFromCamera(context.Background(), "camera_1", "my_segmenter", nil)
+if err != nil {
+    logger.Fatalf("Could not get detections: %v", err)
+}
+if len(detections) > 0 {
+    logger.Info(detections[0])
+}
+```
+
+To learn more about the Detection API, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% alert title="Tip" color="tip" %}}
+To see more code examples of how to use Viam's Vision Service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
+{{% /alert %}}
