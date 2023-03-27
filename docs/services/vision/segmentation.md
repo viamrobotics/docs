@@ -173,7 +173,7 @@ For example:
 
 ## Code
 
-The following code gets the robot’s Vision Service and then runs a segmenter vision model on an image from the robot's camera named `"camera_1"` in this example.
+The following code gets the robot’s Vision Service and then runs a segmenter vision model on an image from the robot's camera `"camera_1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

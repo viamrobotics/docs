@@ -151,7 +151,7 @@ Wait for the robot to reload, and then go to the **CONTROL** tab to test the str
 
 ## Code
 
-The following code gets the robot’s Vision Service and then runs a classifier vision model on an image from the robot's camera named `"camera_1"` in this example.
+The following code gets the robot’s Vision Service and then runs a classifier vision model on an image from the robot's camera `"camera_1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
