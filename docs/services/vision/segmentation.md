@@ -20,7 +20,7 @@ The types of segmenters supported are:
 - [**radius_clustering_segmenter**](#radius-clustering-segmenter): Radius clustering is a segmenter that identifies well separated objects above a flat plane.
 - [**detector_segmenter**](#detector-segmenter): Object segmenters are automatically created from detectors in the Vision Service.
 
-### Radius Clustering Segmenter
+### `radius_clustering_segmenter`
 
 Radius clustering is a segmenter that identifies well separated objects above a flat plane.
 It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.
@@ -52,7 +52,7 @@ These are the available parameters in the segmenter's configuration. For an exam
 | `clustering_radius_mm` | A floating point number that specifies how far apart points can be (in units of mm) in order to be considered part of the same object. A small clustering radius will more likely split different parts of a large object into distinct objects. A large clustering radius may aggregate closely spaced objects into one object. 3.0 is a decent starting value. |
 | `mean_k_filtering (optional)` | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the number of min_points_in_segment. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
 
-### Detector Segmenter
+### `detector_segmenter`
 
 Object segmenters are automatically created from [detectors](../detection) in the Vision Service.
 Any registered detector, for example `detector1`, defined in the `register_models` field or added later to the Vision Service becomes a segmenter with `_segmenter` appended to its name, for example `detector1_segmenter`.

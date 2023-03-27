@@ -17,16 +17,16 @@ The returned detections consist of the bounding box around the identified object
 
 - `x_min`, `y_min`, `x_max`, `y_max` (int): specify the bounding box around the object.
 - `class_name` (string): specifies the label of the found object.
-- `confidence` (float): specifies the confidence of the assigned label between 0.0 and 1.0.
+- `confidence` (float): specifies the confidence of the assigned label. Between `0.0` and `1.0`, inclusive.
 
 ## Detector Types
 
 You can use the following types of detectors:
 
 - [**color_detector**](#color-detector): A heuristic based detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
-- [**tflite_detector**](#tflite-detector): A machine-learning based detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
+- [**tflite_detector**](#tflite-detector): A machine-learning based detector that draws bounding boxes according to the specified .tflite model file available on the robot’s hard drive.
 
-### Color detector
+### `color_detector`
 
 A heuristic based detector that draws boxes around objects according to their hue.
 Color detectors do not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
@@ -80,7 +80,7 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 
 {{% /alert %}}
 
-### TFLite detector
+### `tflite_detector`
 
 A machine-learning based detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
 
@@ -108,11 +108,11 @@ These are the available parameters in the detector's configuration. For an examp
 | `num_threads`| An integer that defines how many CPU threads to use to run inference. The default value is 1. |
 | `label_path`| The path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
 
-#### TFLite Model Limitations
+#### `tflite_model` Limitations
 
 We strongly recommend that you package your `.tflite` model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
 
-In the absence of metadata, your TFLite model must satisfy the following requirements:
+In the absence of metadata, your `.tflite` model must satisfy the following requirements:
 
 - A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1).
 - At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
