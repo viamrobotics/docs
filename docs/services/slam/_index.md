@@ -92,7 +92,7 @@ Then, adjust general attributes and library-specific `config-params`.
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
 | `data_dir` | string | **Required** | This is [the data directory](#data_dir-data-directory) used for saving input <file>sensor/map</file> data and output <file>map/</file> visualizations. Must be structured as specified [here](#data_dir-data-directory). |
-| `sensors` | string[] | **Required** | Names of [sensors](../../components/sensor/) providing data to the SLAM service. |
+| `sensors` | string[] | **Required** | Names of configured [camera components](../../components/camera/) providing data to the SLAM service. |
 | `use_live_data` | bool | **Required** | <p>This specifies whether to run in Live or Offline mode.</p> <ul> `true`: Live mode. The service grabs the most recent sensor readings and uses those to perform SLAM. If no `sensors` are provided, an error will be thrown. </ul><ul>`false`: Offline mode. The service uses image data stored in the [data directory](#data_dir-data-directory) to perform SLAM.</ul> |
 | `map_rate_sec` | int | Optional | Map generation rate for saving current state *(seconds)*. <ul> Default: `60`. </ul> |
 | `data_rate_msec` | int | Optional | Data generation rate for collecting sensor data to feed to SLAM *(milliseconds)*. <ul>Default: `200`.</ul> |
