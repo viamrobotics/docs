@@ -187,7 +187,7 @@ cam1 = Camera.from_robot(robot, "cam1")
 vision = VisionServiceClient.from_robot(robot)
 
 print("Vision Resources:")
-print(await vision.get_detector_names())
+print(await vision.get_segmenter_names())
 
 # Apply the segmenter configured as my_segmenter to the image from your camera configured as "camera_1"
 segments = await vision.get_object_point_clouds("camera_1", "my_segmenter")
@@ -195,7 +195,7 @@ segments = await vision.get_object_point_clouds("camera_1", "my_segmenter")
 await robot.close()
 ```
 
-To learn more about the Detection API, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
+To learn more about the Segmentation API, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
