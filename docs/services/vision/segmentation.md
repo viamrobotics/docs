@@ -128,6 +128,7 @@ Click **SAVE CONFIG** and head to the **COMPONENTS** tab.
 To add a vision model to your robot, add the `name`, `type`, and `parameters` of the desired segmenter to the `register_models` in the attributes field of the Vision Service config.
 For example:
 
+```json
 "services": [
     {
         "name": "vision1",
