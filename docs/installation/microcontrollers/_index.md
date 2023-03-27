@@ -42,6 +42,9 @@ See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and mo
 You need an an Expressif ESP32 microcontroller to use the micro-RDK.
 Viam recommends purchasing the ESP32 with a development board: see development kit options [here](https://www.espressif.com/en/products/devkits).
 
+Minimal configuration: 384kB Ram 4MB flash
+Recommended configuration: 384kB Ram + 8MB SPIRAM + 4MB Flash
+
 ## Software Requirements
 
 The micro-RDK is written in Rust.
@@ -197,6 +200,7 @@ All of the generated files should be safe to commit as a project on Github, with
 You can find the declaration of the robot in the generated file `src/main.rs`.
 This example exposes one GPIO pin (pin 18), and one analog reader attached to GPIO pin 34.
 Change the example as needed.
+
 You can, for example:
 
 {{%expand "Expose other pins" %}}
@@ -256,6 +260,12 @@ In this example, we want to add GPIO pin 35, which is labeled `ADC1_7` in the pi
 
 {{% /expand%}}
 
+{{% alert title="Note" color="note" %}}
+
+You can find a full example [here](https://github.com/viamrobotics/micro-rdk/blob/main/examples/esp32/esp32.rs).
+
+{{% /alert %}}
+
 ### Upload the Project and Connect to your ESP32 Board
 
 After modifying the contents of <file>src/main.rs</file> to your liking, run:
@@ -265,11 +275,6 @@ make upload
 ```
 
 While running `make upload`, you may be presented with an interactive menu of different serial port options to use to connect to the ESP32 board.
-Once you have identified the correct choice for your environment, you may bypass the menu by providing the correct port as a command line argument to future invocations of `make upload`:
-
-``` shell
-make ESPFLASH_FLASH_ARGS="-p /dev/cu.usbserial-130" upload
-```
 
 If successful, `make upload` will retain a serial connection to the board until `Ctrl-C` is pressed.
 To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
@@ -281,19 +286,10 @@ If everything went well, your ESP32 will be programmed so that you will be able 
 
 If you encounter a crash due to stack overflow, you may need to increase the stack available to the main task.
 
-In the generated <file>sdkconfig.defaults</file> set the `CONFIG_ESP_MAIN_TASK_STACK_SIZE` to `32768`. The diff of your changes should look like this:
+In the generated <file>sdkconfig.defaults</file> set the `CONFIG_ESP_MAIN_TASK_STACK_SIZE` to `32768`:
 
 ``` diff
-diff --git a/sdkconfig.defaults b/sdkconfig.defaults
-index f75b465..2b0ba9c 100644
---- a/sdkconfig.defaults
-+++ b/sdkconfig.defaults
-@@ -1,5 +1,5 @@
- # Rust often needs a bit of an extra main task stack size compared to C (the default is 3K)
--CONFIG_ESP_MAIN_TASK_STACK_SIZE=24576
-+CONFIG_ESP_MAIN_TASK_STACK_SIZE=32768
- CONFIG_ESP_MAIN_TASK_AFFINITY_CPU1=y
- # Use this to set FreeRTOS kernel tick frequency to 1000 Hz (100 Hz by default).
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=32768
 ```
 
 {{% /alert %}}
@@ -306,16 +302,23 @@ This second "robot" can be as simple as an instance of `viam-server` running on 
 ### Configure the ESP32 as a Remote
 
 Navigate to [the Viam app](https://app.viam.com).
-Create and configure a second new robot.
+Create and configure a second robot as the controller robot.
 
-Add the ESP32-backed robot as a remote of your new second robot to establish a secure connection between both robots:
+Add the ESP32-backed worker robot as a remote of your new controller robot to establish a secure connection between both robots:
 
 <div style="max-width:800px;"><img src="../img/esp32-setup/esp32-remote-creation.png" alt="Adding the ESP32 as a remote in the Viam app Config builder." ></div>
 
-1. Navigate to the **CONTROL** tab of the robot and copy its `Remote Address`.
-2. Navigate to the **CONFIG** tab, select the `Remotes` tab, and create a new remote.
-3. Set the `Address` field of the new remote to be the `Remote Address` you copied above.
-4. Set `TLS` for the remote to `Enabled`.
+1. Navigate to the **CODE SAMPLE** tab of the worker robot, click on **Remotes** and copy the `JSON`.
+
+![The remotes config information](../img/microcontroller/copy-remotes-json.png)
+
+2. Navigate to the **CONFIG** tab of the control robot, select the `Remotes` sub-tab, select the `JSON` mode and click **Create Remote**.
+
+![Create remote menu](../img/microcontroller/create-remote.png)
+
+3. Paste the copied `JSON` config into the configuration field.
+
+![Empty configuration field](../img/microcontroller/config-field.png)
 
 Ensure that the controlling robot is live in [the Viam app](https://app.viam.com).
 If it is, the ESP32-backed robot is now programmatically available.
