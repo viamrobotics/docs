@@ -34,18 +34,27 @@ Go to [app.viam.com](https://app.viam.com) and sign up.
 
 ### Configure your mock robot
 
-- Go to [app.viam.com](https://app.viam.com/)
-- Create a new robot
-- Go to the **CONFIG** tab.
+1. Go to [app.viam.com](https://app.viam.com/).
+2. Create a new robot.
+3. Go to the **CONFIG** tab.
+4. Configure the arm:
 
-<img src="../img/build-a-mock-robot/image4.png" alt="A screenshot from the Viam app showing the CONFIG tab from the mock robot." width="100%"><br>
+   - Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
+   - Add the following attribute:
 
-For this tutorial, we will show you how to set up a mock robot with a fake motor and arm.
+      ```json
+      {
+          "arm-model": "ur5e"
+      }
+      ```
 
-For each component, you will need to create a new component.
-For the component **Type**, select **arm/motor**.
-Then you can name them whatever you like (You will need to reference these names later once we connect to your mock robot with the Python SDK).
-For each **Model**, select **fake**, then click **new component**.
+5. Configure the motor:
+
+   - Create a new component called `myMotor` with **Type** `motor` and **Model** `fake`.
+
+6. Save the configuration.
+
+You will need to reference both component names later when you connect to your mock robot with the Python SDK.
 
 ### How to install `viam-server` on your computer
 
@@ -64,7 +73,7 @@ You could do things like control the direction and speed of the motor, and chang
 However, since we are building a mock robot using fake components, you will only see the robot's reported positions and speeds change from the UI.
 You will not be able to see your robot move in the physical world.
 
-Next, you will need to configure your mock robotic arm with the Viam Python SDK so you can write custom logic to control the mock robot.
+Next, you will install a Viam SDK so you can write custom logic to control the mock robot.
 
 ## Controlling your mock robot using a Viam SDK
 
@@ -98,7 +107,7 @@ Sharing this information compromises your system security by allowing unauthoriz
 {{% /alert %}}
 
 You can now run the code.
-Doing so will verifies that the Viam SDK is properly installed, that the `viam-server` instance on your robot is alive, and that the computer running the program is able to connect to that instance.
+Doing so verifies that the Viam SDK is properly installed, that the `viam-server` instance on your robot is live, and that the computer running the program is able to connect to that instance.
 
 You can run your code by typing the following into the terminal:
 
