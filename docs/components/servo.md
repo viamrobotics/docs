@@ -210,6 +210,9 @@ The servo component supports the following methods:
 Move the servo to the desired angle in degrees.
 
 {{% alert title="Note" color="note" %}}
+The GPIO servo model is an experimental feature.
+Stability is not guaranteed.
+Breaking changes are likely to occur, and occur often.
 
 If you are using a continuous rotation servo, you can use the `Move` command, but instead of moving to a given position, the servo will start moving at a set speed.
 
