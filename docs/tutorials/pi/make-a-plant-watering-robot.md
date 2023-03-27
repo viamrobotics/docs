@@ -1,26 +1,33 @@
 ---
 title: "How to Make a Plant Watering Robot with a Raspberry Pi"
-linkTitle: "Make a Plant Watering Robot with a Raspberry Pi"
+linkTitle: "Make a Plant Watering Robot with a Pi"
 weight: 50
 type: "docs"
 description: "Instructions for creating a plant watering robot with a Raspberry Pi single-board computer and Viam."
 tags: ["raspberry pi", "app", "board", "motor"]
+# SMES: Olivia Miller
 ---
 
-## Hardware Requirements
-
-- A Raspberry Pi with SD card
-- A [Capacitive Soil Moisture Sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ/ref=asc_df_B07QXZC8TQ/?tag=hyprod-20&linkCode=df0&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596&psc=1&tag=&ref=&adgrpid=71762478951&hvpone=&hvptwo=&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596)
-- A [Peristaltic Pump Motor](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E/ref=asc_df_B01IUVHB8E/?tag=hyprod-20&linkCode=df0&hvadid=198093101467&hvpos=&hvnetw=g&hvrand=13835398343702336934&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-384674250225&psc=1) and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&ref=ppx_yo2ov_dt_b_product_details)
-- An [Adafruit MCP3008 ADC](https://www.amazon.com/dp/B00NAY3RB2?psc=1&ref=ppx_yo2ov_dt_b_product_details)
-- A [Motor Speed Controller](https://www.amazon.com/CHENBO-Trigger-Adjustment-Electronic-Controller/dp/B099RF72R1/ref=asc_df_B099RF72R1/?tag=hyprod-20&linkCode=df0&hvadid=532384528241&hvpos=&hvnetw=g&hvrand=11376239784428845641&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-1410298730875&th=1)
-- 9V Battery
+![Picture of the plant watering robot on a desk.](../../img/plant-watering-pi/plant-watering-robot.png)
 
 ## Getting Started
 
-First, follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
+Follow this tutorial to set up an automatic plant watering system.
 
-Folliow this tutorial to set up the hardware for your plant watering robot and code a Python file utilizing the Viam Python SDK to control the plant watering robot with your Pi running `viam-server`.
+Complete the physical assembly and wiring, create the robot with `viam-server` and your Pi, configure your robot's components, and code a Python file utilizing the Viam Python SDK to control the plant watering robot with `viam-server` and your Pi.
+
+Completing this tutorial requires the following hardware:
+
+- A Raspberry Pi with SD card
+- A [Capacitive Soil Moisture Sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ/ref=asc_df_B07QXZC8TQ/?tag=hyprod-20&linkCode=df0&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596&psc=1&tag=&ref=&adgrpid=71762478951&hvpone=&hvptwo=&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596)
+- A [Peristaltic Pump](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E/ref=asc_df_B01IUVHB8E/?tag=hyprod-20&linkCode=df0&hvadid=198093101467&hvpos=&hvnetw=g&hvrand=13835398343702336934&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-384674250225&psc=1) motor and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&ref=ppx_yo2ov_dt_b_product_details)
+- An [Adafruit MCP3008 ADC](https://www.amazon.com/dp/B00NAY3RB2?psc=1&ref=ppx_yo2ov_dt_b_product_details)
+- A [Motor Speed Controller](https://www.amazon.com/CHENBO-Trigger-Adjustment-Electronic-Controller/dp/B099RF72R1/ref=asc_df_B099RF72R1/?tag=hyprod-20&linkCode=df0&hvadid=532384528241&hvpos=&hvnetw=g&hvrand=11376239784428845641&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-1410298730875&th=1)
+- 9V Battery
+- Planter box
+- A water cup or box
+
+First, follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
 
 ## Set Up your Plant Watering Robot
 
@@ -30,87 +37,448 @@ First, start by wiring your ADC to your Raspberry Pi board.
 
 Refer to the following pinout diagram for your MCP3008 Analog to Digital Converter:
 
-![Pinout diagram for the ADC.](../img/plant-watering-pi/adc-pinout.png)
+![Pinout diagram for the ADC.](../../img/plant-watering-pi/adc-pinout.png)
 
-Consult your Raspberry Pi's data sheet for your board's pinout diagram.
+Consult your Raspberry Pi's data sheet or [this resource](https://pinout.xyz/pinout/3v3_power) for your board's pinout diagram.
 
-[Wiring Diagram](#wiring-diagram)
+Wire the pins as follows:
 
-### Wire your Moisture Sensor
+| MCP3008 ADC Pin | Raspberry Pi Pin |
+| ----------- | ---------------- |
+| VDD | 3.3V |
+| VREF | 3.3V |
+| AGND | GND |
+| DGND | GND |
+| CLK | SCLK |
+| DOUT | MISO |
+| DIN | MOSI |
+| CS/SHDN | GPIO25 |
 
-[Wiring Diagram](#wiring-diagram)
+[**Wiring Diagram**](#wiring-diagram)
 
-### Enable SPI on your Pi
+### Wire your Soil Moisture Sensor
 
-### Configure your ADC readings on your Pi
+Next, wire your Capacitive Soil Moisture Sensor to your Pi and ADC.
 
-### Wire your Pump / Motor
+Refer to the following pinout diagram for your Capacitive Soil Moisture Sensor:
 
-Now, wire and power your Peristaltic pump to complete your hardware setup.
+![Pinout diagram for the Capacitive Soil Moisture Sensor.](../../img/plant-watering-pi/moisture-sensor-pinout.png)
 
-1. Connect your battery to the DC power pins on the motor speed controller.
-2. Then, connect the output pins to the pump.
+Wire the pins as follows:
+
+| Pi | ADC |
+|--|--|
+|<table> <tr><th>Moisture Sensor Pin</th><th>Raspberry Pi Pin</th></tr><tr><td>VCC</td><td>3.3V</td></tr><tr><td>GND</td><td>GND</td></tr> </table>| <table> <tr><th>Moisture Sensor Pin</th><th>MCP3008 ADC Pin</th></tr><tr><td>A0 (Analog Signal Output)</td><td>CH0</td></tr> </table>|
+
+[**Wiring Diagram**](#wiring-diagram)
+
+### Wire your Pump
+
+Now, wire and power your Peristaltic Pump [motor](/components/motor/) to complete your hardware setup.
+
+1. Connect your battery to the DC power pins on your motor speed controller.
+2. Then, connect the output pins on your motor speed controller to the pump.
 3. Connect the GND pin on the pump to the breadboard and terminal.
-4. Connect the PWM pin on the pump to Pin 12 of the Pi.
+4. Connect the PWM pin on the pump to [Pin 12](https://pinout.xyz/pinout/pin12_gpio18) of the Pi.
 
 ### Wiring Diagram
 
 Refer to the following full wiring diagram for your hardware setup:
 
-![The full wiring diagram for all the hardware for the Plant Watering Robot.](../img/plant-watering-pi/full-wiring.png)
+![The full wiring diagram for all the hardware for the Plant Watering Robot.](../../img/plant-watering-pi/full-wiring.png)
 
 ## Program Your Plant Watering Robot
 
-### Configure the Components of your Robot
+### Enable SPI on your Pi
+
+Now that you have wired your ADC and Moisture Sensor, make sure that SPI is enabled on your Pi.
+
+SSH into your Pi and run the following command:
+
+``` shell
+sudo raspi-config
+```
+
+Once the `raspi-config` interface is open, navigate to **Interface Options**:
+
+![Raspi-config Tool interface with Interface Options selected.](../../img/plant-watering-pi/interface-options.png)
+
+Then, click on **SPI**:
+
+![Raspi-config Tool interface with SPI selected.](../../img/plant-watering-pi/spi.png)
+
+Now, click **Yes** to enable SPI:
+
+![Raspi-config Tool interface with Yes selected for SPI enablement.](../../img/plant-watering-pi/spi-enabled.png)
+
+Finally, click **Finish** and restart your Pi.
+
+### Test your Soil Moisture readings on your Pi
+
+Next, install the Adafruit ADC library [`Adafruit_CircuitPython_MCP3xxx`](https://github.com/adafruit/Adafruit_CircuitPython_MCP3xxx/) on your Pi.
+
+First, make sure you have installed the required dependencies:
+
+- [Adafruit CircuitPython](https://github.com/adafruit/circuitpython)
+- [Bus Device](https://github.com/adafruit/Adafruit_CircuitPython_BusDevice)
+
+If you do not have these, download the Adafruit library and driver bundle to your Pi by following the instructions [here](https://github.com/adafruit/Adafruit_CircuitPython_Bundle).
+
+Run the following command while connected to your Pi with SSH to install [`Adafruit_CircuitPython_MCP3xxx`](https://github.com/adafruit/Adafruit_CircuitPython_MCP3xxx/):
+
+``` shell
+pip3 install adafruit-circuitpython-mcp3xxx
+```
+
+Create a new directory for your plant watering robot's files and navigate to this directory in your terminal session.
+For example, run the following commands:
+
+``` shell
+mkdir plant-watering-robot
+cd plant-watering-robot
+```
+
+After navigating to this directory, make a new Python file called `adctesting` and open up the file.
+For example, run the following commands:
+
+``` shell
+touch adctesting.py
+vim adctesting.py
+```
+
+Now, add the following Python code to `adctesting.py` to test reading values from your Capacitive Soil Moisture Sensor through your MCP3008 ADC:
+
+<!-- ``` python
+import time
+import Adafruit_MCP3008  as MCP
+
+# create the mcp object w GPIO numbers
+mcp = MCP.MCP3008(clk=11, cs=25, miso=9, mosi=10)
+
+
+print('Reading MCP3008 values, press Ctrl-C to quit...')
+while True:
+   print(mcp.read_adc(0)) 
+   time.sleep(1)
+
+``` -->
+
+``` python
+import time
+import busio
+import digitalio
+import board
+import adafruit_mcp3xxx.mcp3008 as MCP
+from adafruit_mcp3xxx.analog_in import AnalogIn
+
+# create the spi bus
+spi = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
+
+# create the cs (chip select)
+cs = digitalio.DigitalInOut(board.D25) # TODO: Need to check this: example was D5. Documentation is confusing.
+
+# create the mcp object
+mcp = MCP.MCP3008(spi, cs)
+
+# create an analog input channel on pin 0
+chan = AnalogIn(mcp, MCP.P0)
+
+print('Reading MCP3008 values, press Ctrl-C to quit...')
+while True:
+    print('Raw ADC Value: ', chan.value)
+    time.sleep(1)
+```
+
+Run the code as follows:
+
+``` shell
+sudo python3 adctesting.py
+```
+
+When running this code, you should see the Moisture Sensor values outputted by the MCP3008 in the range of `0` to `1023`.
+Test your sensor by putting it in air, water, and different soils to see how the values change.
+
+An example output:
+
+![Terminal output of Capacitive Soil Moisture Sensor values.](../../img/plant-watering-pi/moisture-sensor-output.png)
+
+### Configure the Components of your Robot in the Viam app
+
+Follow [this guide](/installation/install/) to install `viam-server` on your pi, create a new robot, and connect to it on [the Viam app](https://app.viam.com).
+
+After navigating to your new robot's page on the app, click on the **CONFIG** tab.
+
+First, add your Pi as a [board component](/components/board/):
+
+{{< tabs name="Configure an Pi Board" >}}
+{{% tab name="Config Builder" %}}
+
+<img src="/tutorials/img/plant-watering-pi/pi-board-config-builder.png" alt="Creation of a pi board in the Viam app config builder." style="max-width:800px" />
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": "local",
+      "type": "board",
+      "model": "pi",
+      "attributes": {},
+      "depends_on": []
+    }, // Motor JSON ...
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+<br>
+
+Then, add your pump as a [motor component](/components/motor/).
+
+Make sure to add your board (in this example, named `local`) to this component's `depends_on`, and `"max_rpm": 1000` and `"pwm": "12"` (the pin # that you wired the PWM to) to `attributes`:
+
+{{< tabs name="Configure an Pump Motor" >}}
+{{% tab name="Config Builder" %}}
+
+<img src="/tutorials/img/plant-watering-pi/pump-motor-config-builder.png" alt="Creation of a pump motor in the Viam app config builder." style="max-width:800px" />
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+// Board JSON ... },
+{
+    "name": "water-pump",
+    "type": "motor",
+    "model": "gpio",
+    "attributes": {
+    "pins": {
+        "a": "",
+        "b": "",
+        "dir": "",
+        "pwm": "12"
+    },
+    "board": "local",
+    "max_rpm": 1000
+    },
+    "depends_on": [
+    "local"
+    ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Configure the Capacitive Soil Moisture Sensor as a Custom Sensor Component Model
+
+As the Capacitive Sensor moisture sensor is not currently one of Viam's built-in [sensor component](/components/sensor/) models, you now must use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/).
+
+- In this case, the custom resource is a custom component model that extends the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html).
+- You instantiate this custom component as a server with the `viam.rpc.server` class.
+- Then, you add the component server as a remote part of your `plant-watering-robot`.
+
+If you haven't already, install the Viam Python SDK by following the instructions [here](https://python.viam.dev/).
+
+Navigate to the directory you created when [testing your soil moisture readings](#test-your-soil-moisture-readings-on-your-pi), `plant-watering-robot`, and create a new file, <file>sensor.py</file>.
+
+For example, run the following commands to create and open the file:
+
+``` shell
+cd plant-watering-robot
+touch sensor.py
+vim sensor.py
+```
+
+Paste the following code into <file>sensor.py</file>:
+
+```python
+import asyncio
+
+from viam.components.sensor import Sensor
+from viam.rpc.server import Server
+
+import busio
+import digitalio
+import board
+import adafruit_mcp3xxx.mcp3008 as MCP
+from adafruit_mcp3xxx.analog_in import AnalogIn
+import RPi.GPIO as GPIO
+
+class MoistureSensor(Sensor):
+
+   def __init__(self, name: str):
+        super(MoistureSensor,self).__init__(name)
+        sensor_pin = 4
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(sensor_pin, GPIO.IN)
+
+
+    # Implement the Viam Sensor API's get_readings() method
+    async def get_readings(self):
+        x = 0
+        input = []
+
+        # create the spi bus
+        spi = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
+
+        # create the cs (chip select)
+        cs = digitalio.DigitalInOut(board.D25) # TODO: Need to check this: example was D5. Documentation is confusing.
+
+        # create the mcp object
+        mcp = MCP.MCP3008(spi, cs)
+
+        # create an analog input channel on pin 0
+        chan = AnalogIn(mcp, MCP.P0)
+
+        while x<10:
+            # read adc channel 0
+            reading = chan.value
+            input.append(reading)
+            x+=1
+
+        return input
+
+async def main():
+   srv = Server(components=[MoistureSensor("moisture_sensor")])
+   await srv.serve()
+
+if __name__ == "__main__":
+   asyncio.run(main())
+```
+
+You can modify this example code as necessary.
+
+Now, go back to your robot's page on [the Viam app](https://app.viam.com) and navigate to the **CONFIG** tab, then to the **REMOTES** sub-tab.
+
+Add your sensor server as a remote part, called `my-sensor-server`:
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
+
+<img src="/tutorials/img/plant-watering-pi/sensor-remote-config-builder.png" alt="Creation of a custom sensor remote in the Viam app config builder." style="max-width:800px" />
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+// "components": [ board & motor ... ],
+"remotes": [
+    {
+      "name": "my-sensor-server",
+      "address": "localhost:9090"
+    }
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+<br>
+
+Then, navigate to the **PROCESSES** subtab and create a process called `run-sensor-server`:
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
+
+<img src="/tutorials/img/plant-watering-pi/sensor-process-config-builder.png" alt="Creation of a pump motor in the Viam app config builder." style="max-width:800px" />
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  // "components": [ board & motor ... ] ,
+  // "remotes" [ my-sensor-server ... ] ,
+  "processes": [
+    {
+      "id": "run-sensor-server",
+      "log": true,
+      "name": "sudo",
+      "args": [
+        "-u",
+        "<my_username>",
+        "python",
+        "sensor.py"
+      ],
+      "cwd": "/home/<my_username>/plant-watering-robot"
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### Add Python Control Code
 
-Follow the below instructions to start working on your Python Control Code:
+Follow these instructions to start working on your Python Control Code:
 
-1. Navigate to your `viam-server` robot's page in [the Viam app](https://app.viam.com), and click on the **CONTROL** tab.
+1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **CODE SAMPLE** tab.
 Follow the instructions in this tab.
+2. Click **COPY CODE** to copy a code sample that establishes a connection with your robot when run.
+3. Paste this code sample into a new file in your `plant-watering-robot` directory.
+4. Name the file <file>plant-watering-robot.py</file>, and save it.
+  
+For example, run the following commands to create and open the file:
 
-   - Install the Python SDK if you have not already.
-   - Then, click **COPY CODE** to copy a code sample that establishes a connection with this robot when run.
-
-1. Paste this code sample into a new file in the directory where you have saved your micro-RDK template code, using your preferred IDE.
-
-   - Name the file whatever you want, and save it.
-   - In the [example code](#full-example-code) this tutorial follows, the control code is named <file>Water-esp32.py</file>.
-
-The beginning of your new file should look similar to the following:
-
-``` python {class="line-numbers linkable-line-numbers"}
-import asyncio
-import datetime
-import signal
-
-from viam.robot.client import RobotClient
-from viam.rpc.dial import Credentials, DialOptions
-from viam.components.board import Board
-
-async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='xyz12345678910somerobotlocationsecret') // Your robot location secret
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
-    )
-    return await RobotClient.at_address('some-robot-name-main.123xyz.viam.cloud', opts) // Your robot address
-
+``` shell
+cd plant-watering-robot
+touch plant-watering-robot.py
+vim plant-watering-robot.py
 ```
+
+Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
+
+<img src="/tutorials/img/plant-watering-pi/main-py.png" alt="The main.py function from your robot's Code Sample tab, ready to edit." style="max-width:800px" />
 
 <br>
-Add the following imports to the beginning of your file if they are not already present:
+</br>
 
-``` python {class="line-numbers linkable-line-numbers"}
-import datetime
-import signal
+Use the Viam [motor](/components/motor#api) and [sensor](/components/sensor#control-your-sensor-with-viams-client-sdk-libraries) API methods.
+Determine at what [analog value from the Soil Moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant.
+Also, consider how often you would like to check the moisture levels of the plant, and how long the plant should be watered.
 
-from viam.components.board import Board
+You can get your components from the robot like this:
+
+```python
+sensor = Sensor.from_robot(robot = robot, name = 'moisture_sensor') # Note that this name, `moisture_sensor`, is defined in sensor.py
+water_pump = Motor.from_robot(robot = robot, name = 'water_pump')
 ```
 
-#### `WaterLevelUnit` Class
+And you can add your system logic to run continuously like this:
+
+```python
+ while True:
+
+    # Get moisture sensor readings
+    readings = await sensor.get_readings()
+    print(readings)
+    avg = sum(readings) / len(readings)
+    sleep(1)
+
+    if(avg > 950):
+    print('needs water')
+
+    # Run for 20 seconds
+    await water_pump.go_for(1000,200)
+
+    # Wait for the water to soak in
+    sleep(5)
+
+    # Recheck the avg
+    readings = await sensor.get_readings()
+    print(readings)
+    avg = sum(readings) / len(readings)
+    sleep(1)
+```
 
 ## Next Steps
+
+Now that you have created your automatic plant watering system with a Capacitive Soil Moisture Sensor, you can easily use Viam to automate other aspects of your garden.
+
+For example, you can use a [light sensor](https://www.amazon.com/Sensor-Module-Raspberry-Integrated-Circuits/dp/B07L15M5JG) or a [temperature sensor](https://www.amazon.com/KY-011-Cathode-Arduino-Starter-2-color/dp/B07869PKKF/ref=as_li_ss_tl?keywords=arduino+two+color+led+module&qid=1556591832&s=gateway&sr=8-2&th=1&linkCode=sl1&tag=murraynet-20&linkId=c36cd98be29498a9883b656c7011b6bb&language=en_US)!
