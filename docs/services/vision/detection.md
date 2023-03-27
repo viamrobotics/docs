@@ -17,7 +17,8 @@ The returned detections consist of the bounding box around the identified object
 
 - `x_min`, `y_min`, `x_max`, `y_max` (int): specify the bounding box around the object.
 - `class_name` (string): specifies the label of the found object.
-- `confidence` (float): specifies the confidence of the assigned label. Between `0.0` and `1.0`, inclusive.
+- `confidence` (float): specifies the confidence of the assigned label.
+  Between `0.0` and `1.0`, inclusive.
 
 ## Detector Types
 
@@ -42,8 +43,6 @@ If the color is not reliably detected, increase the `hue_tolerance_pct`.
 
 <br>
 
-These are the available parameters in the detector's configuration. For an example see [Configuration](#configuration).
-
 ``` json {class="line-numbers linkable-line-numbers"}
 {
     "register_models": [
@@ -62,13 +61,16 @@ These are the available parameters in the detector's configuration. For an examp
 }
 ```
 
-| Parameter | Description |
-| --------- | ----------- |
-| `detect_color` | The color to detect in the image, as a string of the form `#RRGGBB`. The color is written as a hexadecimal string prefixed by ‘#’. |
-| `hue_tolerance_pct` | A number bigger than 0.0 and smaller than or equal to 1.0 that defines how strictly the detector must match to the hue of the color requested. ~0.0 means the color must match exactly, while 1.0 matches to every color, regardless of the input color. 0.05 is a good starting value. |
-| `segment_size_px` | An integer that sets a minimum size (in pixels) of a contiguous color region to be detected, and filters out all other found objects below that size. |
-| `saturation_cutoff_pct (optional)` | A number > 0.0 and <= 1.0 which defines the minimum saturation before a color is ignored. Defaults to 0.2. |
-| `value_cutoff_pct (optional)` | A number > 0.0 and <= 1.0 which defines the minimum value before a color is ignored. Defaults to 0.3. |
+The following parameters are available for a `"color_detector"`.
+For an example see [Configuration](#configuration).
+
+| Parameter | Inclusion | Description |
+| --------- | --------- | ----------- |
+| `detect_color` | _Required_ | The color to detect in the image, as a string of the form `#RRGGBB`. The color is written as a hexadecimal string prefixed by ‘#’. |
+| `hue_tolerance_pct` | _Required_ | A number bigger than 0.0 and smaller than or equal to 1.0 that defines how strictly the detector must match to the hue of the color requested. ~0.0 means the color must match exactly, while 1.0 matches to every color, regardless of the input color. 0.05 is a good starting value. |
+| `segment_size_px` | _Required_ | An integer that sets a minimum size (in pixels) of a contiguous color region to be detected, and filters out all other found objects below that size. |
+| `saturation_cutoff_pct` | _Optional_ | A number > 0.0 and <= 1.0 which defines the minimum saturation before a color is ignored. Defaults to 0.2. |
+| `value_cutoff_pct` | _Optional_ | A number > 0.0 and <= 1.0 which defines the minimum value before a color is ignored. Defaults to 0.3. |
 
 {{% alert title="Note" color="note" %}}
 
@@ -83,8 +85,6 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 ### `tflite_detector`
 
 A machine-learning based detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
-
-These are the available parameters in the detector's configuration. For an example see [Configuration](#configuration).
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -102,11 +102,14 @@ These are the available parameters in the detector's configuration. For an examp
 }
 ```
 
-| Parameter | Description |
-| --------- | ----------- |
-| `model_path`| Required. The path to the `.tflite model` file, as a `string`. |
-| `num_threads`| An integer that defines how many CPU threads to use to run inference. The default value is 1. |
-| `label_path`| The path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
+The following parameters are available for a `"tflite_classifier"`.
+For an example see [Configuration](#configuration).
+
+| Parameter | Inclusion | Description |
+| --------- | --------- | ----------- |
+| `model_path`| _Required_ | The path to the `.tflite model` file, as a `string`. |
+| `num_threads`| _Optional_ | An integer that defines how many CPU threads to use to run inference. The default value is 1. |
+| `label_path`| _Optional_ | The path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
 
 #### `tflite_model` Limitations
 

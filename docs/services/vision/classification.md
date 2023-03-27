@@ -16,7 +16,8 @@ Which class labels may be considered for classification varies and will depend o
 The returned classifications consist of the image's class label and confidence score.
 
 * `class_name` (string): specifies the label of the found object.
-* `confidence` (float): specifies the confidence of the assigned label between 0.0 and 1.0.
+* `confidence` (float): specifies the confidence of the assigned label.
+  Between `0.0` and `1.0`, inclusive.
 
 ## Classifier Types
 
@@ -25,9 +26,6 @@ The types of classifiers supported are:
 * **tflite_classifier**: a machine-learning based classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
 ### TFLite classifier
-
-The following parameters are available for a `"tflite_classifier"`.
-For an example see [Configuration](#configuration).
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -45,11 +43,14 @@ For an example see [Configuration](#configuration).
 }
 ```
 
-| Parameter | Description |
-| --------- | ----------- |
-| `model_path` | The path to the .tflite model file, as a string. This attribute is absolutely required. |
-| `label_path` | The path to a .txt file that holds class labels for your TFLite model, as a string. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read "1", "2", and so on. |
-| `num_threads` | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
+The following parameters are available for a `"tflite_classifier"`.
+For an example see [Configuration](#configuration).
+
+| Parameter | Inclusion | Description |
+| --------- | --------- | ----------- |
+| `model_path` | _Required_ | The path to the .tflite model file, as a string. |
+| `label_path` | _Optional_ | The path to a .txt file that holds class labels for your TFLite model, as a string. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read "1", "2", and so on. |
+| `num_threads` | _Optional_ | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
 ## Configuration
 
