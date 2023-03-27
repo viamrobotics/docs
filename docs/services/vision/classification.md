@@ -22,7 +22,7 @@ The returned classifications consist of the image's class label and confidence s
 
 The types of classifiers supported are:
 
-* **tflite_classifier**: this a machine-learning based classifier that returns a class label and confidence score according to the specified tensorflow-lite model file available on the robot’s hard drive.
+* **tflite_classifier**: a machine-learning based classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
 ### TFLite classifier
 
