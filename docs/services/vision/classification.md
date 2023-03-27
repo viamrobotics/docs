@@ -165,10 +165,10 @@ cam1 = Camera.from_robot(robot, "cam1")
 vision = VisionServiceClient.from_robot(robot)
 
 print("Vision Resources:")
-print(await vision.get_detector_names())
+print(await vision.get_classifier_names())
 
 # Apply the classifier configured as my_classifier to the image from your camera configured as "camera_1"
-detections = await vision.get_detections_from_camera("camera_1", "my_classifier")
+classifications = await vision.get_classifications_from_camera("camera_1", "my_classifier")
 
 await robot.close()
 ```
@@ -189,20 +189,20 @@ if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
 
-detNames, err := visService.DetectorNames(context.Background(), nil)
+clsNames, err := visService.ClassifierNames(context.Background(), nil)
 if err != nil {
-    logger.Fatalf("Could not list detectors: %v", err)
+    logger.Fatalf("Could not list classifiers: %v", err)
 }
 logger.Info("Vision Resources:")
-logger.Info(detNames)
+logger.Info(clsNames)
 
 // Apply the color classifier to the image from your camera (configured as "camera_1")
-detections, err := visService.DetectionsFromCamera(context.Background(), "camera_1", "my_classifier", nil)
+classifications, err := visService.ClassificationsFromCamera(context.Background(), "camera_1", "my_classifier", nil)
 if err != nil {
-    logger.Fatalf("Could not get detections: %v", err)
+    logger.Fatalf("Could not get classifications: %v", err)
 }
 if len(detections) > 0 {
-    logger.Info(detections[0])
+    logger.Info(classifications[0])
 }
 ```
 
