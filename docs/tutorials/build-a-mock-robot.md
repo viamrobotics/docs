@@ -4,6 +4,9 @@ linkTitle: "Build a Mock Robot"
 weight: 41
 type: "docs"
 description: "Instructions for creating a mock robot using just your personal computer so you can try using Viam without any robotic hardware."
+webmSrc: "/tutorials/img/build-a-mock-robot/mock-robot.webm"
+mp4Src: "/tutorials/img/build-a-mock-robot/mock-robot.mp4"
+videoAlt: "A mock arm's joint positions from the control tab of the Viam app."
 tags: ["mock", "simulation"]
 ---
 

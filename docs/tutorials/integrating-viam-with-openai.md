@@ -5,6 +5,8 @@ weight: 60
 type: "docs"
 tags: ["base", "AI", "OpenAI", "ChatGPT", "ElevenLabs", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
 description: "Harness AI to add life to your Viam rover."
+image: "/tutorials/img/ai-integration/rosey_robot.jpg"
+imageAlt: "Viam Rover Rosey."
 # SME: Matt Vella
 ---
 

@@ -4,6 +4,8 @@ linkTitle: "Drive a Yahboom Rover with a Gamepad"
 weight: 50
 type: "docs"
 description: "Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app."
+image: "/tutorials/img/yahboom-rover/bluetoothpair-connect.png"
+imageAlt: "A Pi terminal showing the bluetoothctl commands and their outputs."
 tags: ["base", "gamepad", "yahboom", "app", "rover"]
 ---
 
@@ -78,7 +80,8 @@ The only difference will be the `Name` which will be `left` and the pins it is c
 
 ![A screenshot of the left motor configuration showing pin assignment and Max RPM set to 300.](../img/yahboom-rover/leftmotor.png)
 
-Save the config and hop over to the control view again. You should now see two motors and be able to make each set of wheels spin.
+Save the config and hop over to the control view again.
+You should now see two motors and be able to make each set of wheels spin.
 
 ![A screenshot of the CONTROL tab UI with buttons to control both sets of motors.](../img/yahboom-rover/motors.png)
 

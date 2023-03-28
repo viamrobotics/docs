@@ -1054,4 +1054,5 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< cards >}}
     {{< card link="/tutorials/yahboom-rover" size="small">}}
+    {{< card link="/tutorials/scuttlebot/scuttle-gamepad" size="small">}}
 {{< /cards >}}

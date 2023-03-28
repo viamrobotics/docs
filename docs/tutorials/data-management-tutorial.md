@@ -4,6 +4,8 @@ linkTitle: "Intro to Data Management"
 weight: 60
 type: "docs"
 description: "Configure data capture and cloud sync, filter and view captured data, and export your data."
+image: "/tutorials/img/data-management/image1.png"
+imageAlt: "The data page of the Viam app showing a gallery of the images captured from the Viam Rover."
 tags: ["data management", "data", "services", "try viam"]
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---

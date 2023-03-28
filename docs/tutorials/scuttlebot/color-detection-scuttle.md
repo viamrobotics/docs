@@ -1,9 +1,12 @@
 ---
-title: "How to Detect and Follow a Colored Object with the SCUTTLE Robot on Viam"
+title: "Detect and Follow a Colored Object with the SCUTTLE Robot on Viam"
 linkTitle: "Colored Object Follower"
 weight: 30
 type: "docs"
 description: "Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software."
+webmSrc: "/tutorials/videos/scuttledemos_colordetection.webm"
+mp4Src: "/tutorials/videos/scuttledemos_colordetection.mp4"
+videoAlt: "Detecting color with a Scuttle Robot"
 tags: ["vision", "detector", "base", "scuttle", "services"]
 ---
 
