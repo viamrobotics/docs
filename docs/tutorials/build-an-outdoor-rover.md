@@ -256,8 +256,6 @@ Navigate to the control tab.
 If all is set up correctly, you'll see cards for your left and right motors on this page.
 Open one up, and if your rover is in a safe position (on the ground or propped up), try running one!
 
-Caution: Be aware that these are powerful motors, so you don't want to start at 100% power right away.
-
 {{% alert title="Caution" color="caution" %}}
 Caution: Be aware that these are powerful motors, so you don't want to start at 100% power right away.
 {{% /alert %}}
