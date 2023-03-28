@@ -94,7 +94,7 @@ While doing this I realized that I'd also want to run the wires from the hub mot
 </div>
 
 At this point, I want to mention that although the case is intrinsically waterproof, we'll want to make sure that we waterproof any holes that we make in the case.
-For this, I used a marine epoxy from the hardware store, surrounding where the bolts went though the case.
+For this, I used marine epoxy from the hardware store, surrounding where the bolts went through the case.
 You can do the same where you pass the wires into the case; for added strength you can also use [wire pass-throughs](https://www.amazon.com/Black-Plastic-Waterproof-Cable-Connectors/dp/B0081DDUW8).
 
 To attach the hub motors, use galvanized carriage bolts with washers inserted from the inside of the case out to the bottom, then put the bolts through the mounts, add washers and nuts and tighten securely.
