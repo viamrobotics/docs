@@ -274,4 +274,4 @@ The following example captures data from two analog readers that provide a volta
 
 To sync your captured data with the cloud, [configure cloud sync](../configure-cloud-sync).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial).

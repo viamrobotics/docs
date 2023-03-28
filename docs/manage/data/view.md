@@ -33,4 +33,4 @@ To export your captured data from the cloud, see [Export Data](../export).
 
 If you have collected image data, you can use that data to [train image classification model](../train-model) within Viam.
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial).

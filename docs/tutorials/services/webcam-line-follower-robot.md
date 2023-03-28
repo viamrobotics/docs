@@ -12,7 +12,7 @@ videoAlt: "The green line the camera sees as the rover moves along it."
 
 <div class="td-max-width-on-larger-screens">
  <div style="margin-left:1em;width:150px; float: right;">
-  {{<gif webm_src="../img/webcam-line-follower/lf-following1.webm" mp4_src="../img/webcam-line-follower/lf-following1.mp4" alt="Robot following a line">}}
+  {{<gif webm_src="../../img/webcam-line-follower/lf-following1.webm" mp4_src="../../img/webcam-line-follower/lf-following1.mp4" alt="Robot following a line">}}
   </div>
 </div>
 

@@ -26,4 +26,4 @@ You can also [upload and use existing models](upload-model).
 
 ## Next steps
 
-For a comprehensive tutorial on data capture, synchronization, and accessing captures data, see [Intro to Data Management](../../tutorials/data-management-tutorial).
+For a comprehensive tutorial on data capture, synchronization, and accessing captures data, see [Intro to Data Management](../../tutorials/services/data-management-tutorial).

@@ -42,6 +42,6 @@ If you are not using the Go SDK, you can add custom components using the Viam SD
 ## See also
 
 {{< cards >}}
-    {{< card link="/tutorials/controlling-an-intermode-rover-canbus" size="small">}}
+    {{< card link="/tutorials/custom/controlling-an-intermode-rover-canbus" size="small">}}
     {{< card link="/tutorials/custom-base-dog" size="small">}}
 {{< /cards >}}

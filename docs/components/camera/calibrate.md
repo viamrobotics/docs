@@ -107,5 +107,5 @@ The following is a full example config:
 {{< cards >}}
   {{< card link="/components/camera/transform" size="small">}}
   {{< card link="/services/vision" size="small">}}
-  {{< card link="/tutorials/viam-rover/try-viam-color-detection" size="small">}}
+  {{< card link="/tutorials/services/try-viam-color-detection" size="small">}}
 {{< /cards >}}
