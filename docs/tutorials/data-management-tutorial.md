@@ -70,7 +70,7 @@ For more detailed information see [Add the Data Management Service](../../servic
 
 ## Configure data capture for a component
 
-With data capture enabled, you can now configure data capture for specific components on your robot running Viam.
+With the data management service added, you can now configure data capture for specific components on your robot running Viam.
 You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
 
 {{% alert title="Tip" color="tip" %}}
@@ -132,7 +132,7 @@ To export data from Viam:
 1. First, install the [Viam CLI](/manage/cli) and [authenticate](/manage/cli/#authenticate):
 
    ```sh
-   go install go.viam.com/rdk/cli/cmd@latest
+   go install go.viam.com/rdk/cli/viam@latest
    viam auth
    ```
 
@@ -144,7 +144,7 @@ To export data from Viam:
 4. Run the copied command in a terminal:
 
    ```sh
-   go run go.viam.com/rdk/cli/viam data export --org_ids=<org_id> --data_type=binary --mime_types=<mime_types> --destination=.
+   viam data export --org_ids=<org_id> --data_type=binary --mime_types=<mime_types> --destination=.
    ```
 
    This command uses the Viam CLI to download the data locally onto your computer based on the search criteria you select in the Viam app.
