@@ -123,11 +123,11 @@ Specifically, setting up the motor controllers correctly is a bit of a challenge
 
 ### Brushless motor controllers
 
-The first important note is that you'll need to be sure you're buying brushless motor controllers.
-This is imperative because brushless DC motors (BDLC for short) have a tradeoff: while they and their controllers are more expensive and complicated to set up, they are more reliable and durable.
+Be sure to buy motor controllers that are built specifically for brushless motors.
+This is imperative because brushless DC motors (BLDC for short) have a tradeoff: while they and their controllers are more expensive and complicated to set up, they are more reliable and durable.
 Brushless motors do not rely on mechanical brushes that are prone to wear; instead they require an electronic communicator in the form of a more expensive and complex motor controller.
 
-So let's get to it.
+Let's get to it.
 Note that all of the steps in this section will need to be done twice, as we will be controlling two motors (one on each side of the base).
 The procedure for each side will look like:
 
@@ -135,12 +135,12 @@ The procedure for each side will look like:
 2. Wire the hub motor to the motor controller
 3. Wire the battery to the motor controller
 4. Test controlling the motor with the motor controller potentiometer
-5. Wire to the raspberry pi
+5. Wire to the Raspberry Pi
 
 With the brushless motor controllers I used, you'll have to first solder a jumper where indicated in this diagram (label starts with "normally disconnected").
 This allows the pi to control the motor with PWM.
 You'll also need to solder two pins to the controller just to the left of the white wire harness mount.
-(P.S. - A truly clutch solder tip for those of you who may not be very experienced with soldering: **heat the pin** with the soldering iron, **not the solder itself**! Once the pin is hot, touch the soldier to it. When someone taught me this it changed my life.)
+(P.S. - A truly clutch solder tip for those of you who may not be very experienced with soldering: **heat the pin** with the soldering iron, **not the solder itself**! Once the pin is hot, touch the solder to it. When someone taught me this it changed my life.)
 
 <div class="td-max-width-on-larger-screens">
   <img src="../img/outdoor-rover-boxbot/motor-controller.jpg"  style="float:left;margin-right:1em;" alt="Brushless motor controller." title="Brushless motor controller." width="500" />
@@ -149,7 +149,7 @@ You'll also need to solder two pins to the controller just to the left of the wh
 You'll then connect the motor phase A, B, and C wires from your hub motor to the left side of the controller, and the 5 hall sensor wires to the white wire harness on the bottom right.
 It is also worth mentioning that you may need to extend the wires from your hub motors if they are not long enough to work with.
 Likely, the color of the wires from your hub motor will match the diagram - at the very least the 5v and GND should.
-If any of the phase wire colors don't match, you might need to try swapping them when testing with the potentiometer.
+If any of the phase wire colors don't match, you might need to swap them when testing with the potentiometer.
 
 <div class="td-max-width-on-larger-screens">
   <img src="../img/outdoor-rover-boxbot/wiring-diagram.png" alt="Full wiring diagram." title="Full wiring diagram." />
@@ -169,7 +169,7 @@ When you're done having fun with that, crank it back down until the motor is ful
 
 ### Organize the wires and components
 
-Now might be the time to figure out where you're laying everything out inside your case if you've not done so already.
+Now might be the time to figure out where you're laying everything out inside your case.
 You'll need a space for:
 
 <div class="td-max-width-on-larger-screens">
@@ -178,7 +178,7 @@ You'll need a space for:
 
 - Your already wired motor controllers
 - Your battery
-- Your pi
+- Your Pi
 - Your solar charge controller, if you're going to use solar charging
 
 As mentioned, having a case that comes with foam that can be easily cut/shaped is very helpful.
@@ -187,13 +187,13 @@ You don't need to match my layout pictured here, in fact it could certainly be b
 
 ### Connect the motor controllers to the Pi
 
-Once that's sorted out, we're ready to connect 3 wires from the motor controller to the pi (you'll probably need a [pi pinout diagram](https://pinout.xyz) handy):
+Once that's sorted out, we're ready to connect 3 wires from the motor controller to the Pi (you'll probably need a [Pi pinout diagram](https://pinout.xyz) handy):
 
-1. One from the pin you added labeled **G** to any GND terminal on the pi
-2. One from the pin you added labeled **P** to any available GPIO pin on the pi
-3. One from terminal labeled **DIRExternal potentiometer** to any available GPIO pin on the pi
+1. One from the pin you added labeled **G** to any GND terminal on the Pi
+2. One from the pin you added labeled **P** to any available GPIO pin on the Pi
+3. One from terminal labeled **DIRExternal potentiometer** to any available GPIO pin on the Pi
 
-Finally, you'll want to connect the wires from the 12V to the 5v pi power converter to the battery.
+Finally, you'll want to connect the wires from the 12V to the 5v Pi power converter to the battery.
 
 At this point, you can plug in any extra components to the Pi (GPS and camera, if you are using them).
 If they are USB-based (like ones in the parts list), this is straightforward.
@@ -206,7 +206,7 @@ We've now got all the hardware and wiring set up, so it is time to configure you
 You might be bracing yourself, as this part is usually much harder than what you just did.
 However, the Viam platform makes it relatively painless.
 
-First, let's install [viam-server](/installation/prepare/rpi-setup/) on your pi.
+First, let's install [viam-server](/installation/prepare/rpi-setup/) on your Pi.
 It should only take a few minutes and once you're done, you are ready to configure your robot.
 
 The Viam platform represents both individual hardware pieces and logical groupings of hardware as [components](/components/).
@@ -215,7 +215,7 @@ For this project, we'll configure:
 
 - One [board](/components/board/) component representing our Raspberry Pi
 - Two [motor](/components/motor/) components
-- One [base](/components/base/) component, referencing the two motors
+- One [base](/components/base/) component, referencing the two motors that make up the base
 
 Configuring these components will allow you to control your rover through the internet both manually and programmatically.
 Later, we can do more interesting things by configuring:
@@ -241,18 +241,18 @@ We'll call it "local" in this example.
 Next, create another component of type "motor", model "gpio".
 Call it "left" to represent the motor on the left side of your rover.
 Now we'll need to add some attributes.
-At minimum, we'll need to reference the board component we created in the last step by name, and the GPIO pins we connected from this motor to our pi.
-Other attributes (Max RPM, PWM Freq) are [important for motor control](/components/motor/gpio#brushless-dc-motor) and can vary based on your specific hub motors.
+We'll need to reference the board component we created in the last step by name, and the GPIO pins we connected from this motor to our Pi.
+Other attributes (Max RPM, PWM Freq) are [important for motor control](/components/motor/gpio#brushless-dc-motor) (Note that these might vary based on your specific hub motors, check the data sheet if you have one; or you can try the ones we use in this tutorial).
+Once you've configured the "left" motor, repeat for the "right" - make sure you're mapping the correct GPIO pins for each.
 Finally, one of the two motors we are connecting will need the "Direction Flip" attribute set to "true".
-It's ok if you are not sure which one, you can always switch them later.
-Regardless, once you've configured the "left" motor, repeat for the "right" - just make sure you're mapping the correct GPIO pins for each.
+It's ok if you are not sure which one, you can always switch them later after testing.
 
 <div class="td-max-width-on-larger-screens">
   <img src="../img/outdoor-rover-boxbot/motor-setup.png" alt="Motor setup." title="Motor setup." />
 </div>
 
 At this point, you can try controlling your motors with the Viam App.
-Navigate to the control tab.
+Navigate to the **CONTROL** tab.
 If all is set up correctly, you'll see cards for your left and right motors on this page.
 Open one up, and if your rover is in a safe position (on the ground or propped up), try running one!
 
@@ -260,7 +260,7 @@ Open one up, and if your rover is in a safe position (on the ground or propped u
 Caution: Be aware that these are powerful motors, so you don't want to start at 100% power right away.
 {{% /alert %}}
 
-If the motors don't appear on the control page, or are not running when expected, first check the "LOGS" tab to see if you see any errors - which would likely point out a bad configuration (a typo, a misplaced or missing attribute, etc).
+If the motors don't appear on the control page, or are not running when expected, first check the **LOGS** tab to see if you see any errors - which would likely point out a bad configuration (a typo, a misplaced or missing attribute, etc).
 If not, double check your wiring and how it maps to the GPIO pins you've configured.
 
 <div class="td-max-width-on-larger-screens">
@@ -288,7 +288,7 @@ You can measure your wheel's circumference and width between wheels, which will 
 You can now have some real fun.
 Try driving your rover by keyboard.
 Drive your [robot progammatically](/tutorials/viam-rover/try-viam-sdk/), use a [color detector](/tutorials/viam-rover/try-viam-color-detection/) or a [machine learning detector](/services/vision/#detection) to interact with the environment.
-Check out our [Python SDK documentation](https://python.viam.dev/) (or other SDK in the language of your choice) and start planning how you'll use your sturdy outdoor rover to do real things!
+Check out our [Python SDK documentation](https://python.viam.dev/) (or another SDK in the language of your choice) and start planning how you'll use your sturdy outdoor rover to do real things!
 
 If you're adding a camera, GPS, planning on using Viam's Navigation Service, or want to attach a solar panel and charge controller - this is all fairly plug and play with Viam and is covered in the [Viam documentation](/).
 
@@ -297,6 +297,6 @@ If you're adding a camera, GPS, planning on using Viam's Navigation Service, or 
 </div>
 
 I had a lot of fun building this rover, and hope you did as well.
-I am now programming mine to help keep unwanted animal pests away from my garden, garbage, and egg-laying ducks using Viam's data management, vision, and navigation services.
+I am now programming mine to help keep unwanted animals away from my garden, garbage, and egg-laying ducks using Viam's data management, vision, and navigation services.
 We are interested in hearing what you plan on doing with yours.
 You can tell us all about it over in the [Viam Community Discord](https://discord.gg/viam).
