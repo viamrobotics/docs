@@ -153,7 +153,7 @@ Commanding motion with the Motion Service has a more general feel than previous 
 In previous examples you controlled motion of individual components.
 Now you will use the Motion Service to control the motion of the robot as a whole.
 You will use the Motion Service's `Move` method to execute more general robotic motion.
-You can designate specific components to plan motion for by passing in the resource name (note the use of the arm resource in the code samples below).
+You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
 The `worldState` we constructed earlier is also passed in so that the Motion Service can consider additional information when planning.
 
 The sample pose given below can be adjusted to fit your specific circumstances.
@@ -163,6 +163,7 @@ Again, a note:
 
 {{< alert title="Caution" color="caution" >}}
 Executing code presented after this point *will* induce motion in a connected robotic arm!
+Keep the space around the arm clear!
 Keep the space around the arm clear!
 {{< /alert >}}
 <br><br>
