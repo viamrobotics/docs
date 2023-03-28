@@ -17,4 +17,5 @@ Follow one of these tutorials with your borrowed or owned rover:
 
 <br>
 
-Have questions, or want to meet other people working on robots? Join our [Community Discord](https://discord.gg/viam).
+Have questions, or want to meet other people working on robots?
+Join our [Community Discord](https://discord.gg/viam).
