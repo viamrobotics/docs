@@ -12,7 +12,11 @@ tags: ["raspberry pi", "app", "board", "motor"]
 
 ## Getting Started
 
-Follow this tutorial to set up an automatic plant watering system.
+Building a useful robot doesn't have to require complicated code or expensive equipment.
+With a Raspberry Pi and some cheap, basic hardware, you can keep your plants healthy and happy from anywhere in the world!
+
+Follow this tutorial to learn how to set up an automatic plant watering system, as pictured above.
+You can leave this plant watering robot on your windowsill or desk, refill the water supply as needed, and easily program the system to your specifications for watering your plants.
 
 Complete the physical assembly and wiring, [create and connect to a new robot](#configure-the-components-of-your-robot-in-the-viam-app), [configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app), [configure a custom Capacitive Soil Moisture model](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-sensor-component-model) [sensor](/components/sensor) component, and [code a Python file utilizing the Viam Python SDK](#add-python-control-code) to control the plant watering robot with `viam-server` and your Pi.
 
@@ -33,7 +37,12 @@ Make sure your Pi is flashed with a Viam-compatible operating system, and that y
 
 ## Set Up your Plant Watering Robot
 
+Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different parts together.
+Doing so ensures that the signals from the capacitive soil moisture sensor can be processed by the Pi, and that the Pi can signal to the peristaltic pump when it is time to pump water from the water's box to the plant's box.
+
 ### Wire your ADC
+
+Wiring an analog-to-digital converter (ADC) between your capacitive soil moisture sensor and Pi ensures that the analog signals created by the capacitive soil moisture sensor's readings can be processed by the Pi, which expects digital signals to come to it through its GPIO pins.
 
 First, start by wiring your ADC to your Raspberry Pi board.
 
@@ -60,11 +69,11 @@ Wire the pins as follows:
 
 ### Wire your Soil Moisture Sensor
 
-Next, wire your Capacitive Soil Moisture Sensor to your Pi and ADC.
+Next, wire your capacitive soil moisture sensor to your Pi and ADC.
 
-Refer to the following pinout diagram for your Capacitive Soil Moisture Sensor:
+Refer to the following pinout diagram for your capacitive soil moisture sensor:
 
-![Pinout diagram for the Capacitive Soil Moisture Sensor.](../../img/plant-watering-pi/moisture-sensor-pinout.png)
+![Pinout diagram for the capacitive soil moisture sensor.](../../img/plant-watering-pi/moisture-sensor-pinout.png)
 
 Wire the pins as follows:
 
@@ -151,7 +160,7 @@ touch adctesting.py
 vim adctesting.py
 ```
 
-Now, add the following Python code to `adctesting.py` to test reading values from your Capacitive Soil Moisture Sensor through your MCP3008 ADC:
+Now, add the following Python code to `adctesting.py` to test reading values from your capacitive soil moisture sensor through your MCP3008 ADC:
 
 ``` python
 import time
@@ -190,7 +199,7 @@ Test your sensor by putting it in air, water, and different soils to see how the
 
 An example output:
 
-![Terminal output of Capacitive Soil Moisture Sensor values.](../../img/plant-watering-pi/moisture-sensor-output.png)
+![Terminal output of capacitive soil moisture sensor values.](../../img/plant-watering-pi/moisture-sensor-output.png)
 
 ### Configure the Components of your Robot in the Viam app
 
@@ -266,7 +275,7 @@ Make sure to add your board (in this example, named `local`) to this component's
 
 ### Configure the Capacitive Soil Moisture Sensor as a Custom Sensor Component Model
 
-As the Capacitive Sensor Moisture Sensor is not currently one of Viam's built-in [sensor component](/components/sensor/) models, you now must use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/).
+As the capacitive soil moisture sensor is not currently one of Viam's built-in [sensor component](/components/sensor/) models, you now must use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/).
 
 - In this case, the custom resource is a custom component model that extends the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html).
 - You instantiate this custom component as a server with the `viam.rpc.server` class.
@@ -469,6 +478,6 @@ And you can add your system logic to run continuously like this:
 
 ## Next Steps
 
-Now that you have created your automatic plant watering system with a Capacitive Soil Moisture Sensor, you can easily use Viam to automate other aspects of your garden.
+Now that you have created your automatic plant watering system with a capacitive soil moisture sensor, you can easily use Viam to automate other aspects of your garden.
 
 For example, you can use a [light sensor](https://www.amazon.com/Sensor-Module-Raspberry-Integrated-Circuits/dp/B07L15M5JG) or a [temperature sensor](https://www.amazon.com/KY-011-Cathode-Arduino-Starter-2-color/dp/B07869PKKF/ref=as_li_ss_tl?keywords=arduino+two+color+led+module&qid=1556591832&s=gateway&sr=8-2&th=1&linkCode=sl1&tag=murraynet-20&linkId=c36cd98be29498a9883b656c7011b6bb&language=en_US)!
