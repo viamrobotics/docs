@@ -21,9 +21,9 @@ It will still be hard to learn how to expand and program it, but it's at least c
 <iframe width="415" height="737" src="https://www.youtube.com/embed/9OzwozzckdY" title="BoxBot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-Thankfully I work at Viam, where we are building a platform that makes robotics and robotic automation approachable, and therefore much easier to build useful robots.
+Fortunately I work at Viam, where we are building a platform that makes robotics and robotic automation approachable, and therefore much easier to build useful robots.
 Now, when I am an employee at *any* company one of the most important things is that I truly believe in the product.
-So, I challenged myself with the following proof: *"Can I build a weatherproof, outdoor rover that is capable of doing useful things for under \$500?"*
+Therefore, I challenged myself with the following proof: *"Can I build a weatherproof, outdoor rover that is capable of doing useful things for under $500?"*
 
 **Good news: the answer is yes, and it can be done in less than a day.**
 
@@ -138,7 +138,7 @@ The procedure for each side will look like:
 5. Wire to the raspberry pi
 
 With the brushless motor controllers I used, you'll have to first solder a jumper where indicated in this diagram (label starts with "normally disconnected").
-This allows the pi to control the motor via PWM.
+This allows the pi to control the motor with PWM.
 You'll also need to solder two pins to the controller just to the left of the white wire harness mount.
 (P.S. - A truly clutch solder tip for those of you who may not be very experienced with soldering: **heat the pin** with the soldering iron, **not the solder itself**! Once the pin is hot, touch the soldier to it. When someone taught me this it changed my life.)
 
@@ -196,7 +196,7 @@ Once that's sorted out, we're ready to connect 3 wires from the motor controller
 Finally, you'll want to connect the wires from the 12V to the 5v pi power converter to the battery.
 
 At this point, you can plug in any extra components to the Pi (GPS and camera, if you are using them).
-If they are USB-based as per the parts list, this is easy.
+If they are USB-based (like ones in the parts list), this is straightforward.
 
 ## Bring your robot to life
 
@@ -204,7 +204,7 @@ If they are USB-based as per the parts list, this is easy.
 
 We've now got all the hardware and wiring set up, so it is time to configure your robot to be controlled with software.
 You might be bracing yourself, as this part is usually much harder than what you just did.
-Thankfully, the Viam platform makes it relatively painless.
+However, the Viam platform makes it relatively painless.
 
 First, let's install [viam-server](/installation/prepare/rpi-setup/) on your pi.
 It should only take a few minutes and once you're done, you are ready to configure your robot.
