@@ -56,7 +56,7 @@ For example, you might not need a night-vision camera if you won't operate it at
 [12V to 5V DC USB Type-C Right Angle Step-Down Power Converter](https://www.amazon.com/gp/product/B086KTGRH1/)|1|$13.50|$13.50|To power the Pi from a 12v battery.|
 |[Brushless motor controller](https://www.amazon.com/RioRand-6-60V-Brushless-Electric-Controller/dp/B087M2378D)|2|$18|$36|
 |[Caster wheel](https://www.harborfreight.com/3-inch-x-3-4-quarter-inch-stem-swivel-caster-90997.html)|2|$5|$10|
-|Galvanized nuts/bolts, water sealing epoxy or caulk, washers, misc wires, brackets, etc|1|$15|$15|Bolts are for mounting your hub motors and other components. I used a bracket I had lying in my basement plus some bracket/rails from my kids erector set to mount the solar panel.|
+|Galvanized nuts/bolts, water sealing epoxy or caulk, washers, misc wires, brackets, etc|1|$15|$15|Bolts are for mounting your hub motors and other components. I used a bracket I had lying in my basement plus some brackets/rails from my kids' erector set to mount the solar panel.|
 |**TOTAL**|-|-|$420|
 
 You'll also need some basic tools:
