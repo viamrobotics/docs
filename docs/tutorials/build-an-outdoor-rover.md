@@ -35,7 +35,7 @@ The success of this project was based on two key factors:
 
 2. Pelican-style plastic boxes are not only able to protect your electronics against the elements, but are also sturdy enough for hub motors to be directly bolted on, and able to carry additional payload on top.
 
-Regardless of whatever real-life things you might have in mind for your outdoor robotic base, these parts are required for this design.
+Regardless of what future tasks you might have in mind for your outdoor robotic base, these parts are required for this design.
 Other advantages of using a case of this type is that you can easily open and close it to make adjustments, and you can conveniently carry the entire robot with the case's handle.
 
 ## Parts list for your Boxbot
