@@ -23,12 +23,12 @@ When controlling an arm with `viam-server`, the following features are implement
 - Self-collision prevention
 - Obstacle avoidance
 
-#### `viam-server` Motion Planning with your Arm's Native Software
+#### Motion planning with your arm's built-in software
 
-Arm models are supported with a driver built to be compatible with the software API that model's manufacturer supports.
-While some Arm models build inverse kinematics into their software, many do not.
+Each arm model is supported with a driver that is compatible with the software API that the model's manufacturer supports.
+While some arm models build inverse kinematics into their software, many do not.
 
-- Most of the Arm drivers for the Viam RDK bypass any onboard inverse kinematics, and use Viam's [Motion Planning](/services/motion/) service instead.
+- Most of the arm drivers for the Viam RDK bypass any onboard inverse kinematics, and use Viam's [Motion Service](/services/motion/) instead.
 
 - This driver handles turning the arm on and off, querying the arm for its current joint position, sending requests for the arm to move to a specified set of joint positions, and engaging brakes as needed, if supported.
 
