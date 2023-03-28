@@ -47,7 +47,7 @@ For example, you might not need a night-vision camera if you won't operate it at
 | --- | --- | --- | --- | --- |
 | [Weatherproof plastic case](https://www.alibaba.com/product-detail/Waterproof-Foam-Pu-eva-epe-xpe_1600097495864.html) | 1 | $30.50 | $30.50 | This is the key to protecting your electronics and holding the robot together. Make sure it is a thick, strong plastic and can fit the solar panel mounted on top. Finally, get one with adjustable foam inside - this is very handy for cushioning your electronic components.|
 | [Night vision camera](https://www.amazon.com/gp/product/B07C1N9R4Z)|1|$40|$40|Night vision is optional, but a webcam of some sort is highly recommended.|
-| Raspberry Pi 3B or 4B with empty microSD card|1|$100|$100|Due to supply shortages, Raspberry Pi prices are fluctuating dramatically.|
+| Raspberry Pi 3B or 4B with microSD card|1|$100|$100|Note: Due to supply shortages, Raspberry Pi prices are fluctuating dramatically.|
 | [12V Battery](https://www.amazon.com/LiFePO4-Battery-Miady-Rechargeable-Maintenance-Free/dp/B089VXSBC6)|1|$65|$65|Lots of options here - some motors might run better on 24v. You can use a battery with less storage if you don't plan to run it continuously.|
 | [Brushless hub motor wheels](https://www.alibaba.com/product-detail/Electric-Wheel-Hoverboard-DC-Hub-6_60615157026.html)|2|$30|$60|Better yet - source them from a used kids' [hoverboard](https://www.amazon.com/RIDE-SWFT-Hoverboard-Balancing-Front-Facing/dp/B08N5DSVY3) (this is what I did).|
 |[GPS module](https://www.amazon.com/Receiver-Antenna-Gmouse-Laptop-Navigation/dp/B073P3Y48Q/)|1|$20|$20|optional|
