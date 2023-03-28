@@ -49,7 +49,7 @@ For example, you might not need a night-vision camera if you won't operate it at
 | [Night vision camera](https://www.amazon.com/gp/product/B07C1N9R4Z)|1|$40|$40|Night vision is optional, but a webcam of some sort is highly recommended.|
 | Raspberry Pi 3B or 4B with microSD card|1|$100|$100|Note: Due to supply shortages, Raspberry Pi prices are fluctuating dramatically.|
 | [12V Battery](https://www.amazon.com/LiFePO4-Battery-Miady-Rechargeable-Maintenance-Free/dp/B089VXSBC6)|1|$65|$65|Lots of options here - some motors might run better on 24v. You can use a battery with less storage if you don't plan to run it continuously.|
-| [Brushless hub motor wheels](https://www.alibaba.com/product-detail/Electric-Wheel-Hoverboard-DC-Hub-6_60615157026.html)|2|$30|$60|Better yet - source them from a used kids' [hoverboard](https://www.amazon.com/RIDE-SWFT-Hoverboard-Balancing-Front-Facing/dp/B08N5DSVY3) (this is what I did).|
+| [Brushless hub motor wheels](https://www.alibaba.com/product-detail/Electric-Wheel-Hoverboard-DC-Hub-6_60615157026.html)|2|$30|$60|Better yet - source them from a used [hoverboard](https://www.amazon.com/RIDE-SWFT-Hoverboard-Balancing-Front-Facing/dp/B08N5DSVY3) (this is what I did, sorry son).|
 |[GPS module](https://www.amazon.com/Receiver-Antenna-Gmouse-Laptop-Navigation/dp/B073P3Y48Q/)|1|$20|$20|optional|
 |[Solar charge controller](https://www.amazon.com/Renogy-Wanderer-Amp-12V-24V/dp/B07NPDWZJ7)|1|$20|$20|optional|
 |[25w Solar panel](https://www.alibaba.com/product-detail/High-Efficiency-25W-Polycrystalline-Crystalline-Solar_60814369754.html)|1|$10|$10|optional|
