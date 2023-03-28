@@ -12,7 +12,7 @@ Approaching robotics can be daunting.
 Many of us who have tried have ended up with empty wallets, life to catch up on, and spare parts in our closets.
 Some of us have had some success starting with robotic kits or learning robots.
 You know - the ones that are fairly easy to get up and running, but ultimately are expensive toys?
-In my humble opinion, these robots are somewhat missing the point: people want to create robotics *that* *do real things, that solve real life problems*.
+In my humble opinion, these robots are somewhat missing the point: people want to create robots *that* *do real things, that solve real-life problems*.
 What to do?
 Well, you *can* certainly purchase a very capable outdoor robotic rover for upwards of 12 thousand dollars.
 It will still be hard to learn how to expand and program it, but it's at least capable, right?
