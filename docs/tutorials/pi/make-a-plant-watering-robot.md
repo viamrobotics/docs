@@ -14,7 +14,7 @@ tags: ["raspberry pi", "app", "board", "motor"]
 
 Follow this tutorial to set up an automatic plant watering system.
 
-Complete the physical assembly and wiring, create the robot with `viam-server` and your Pi, configure your robot's components, and code a Python file utilizing the Viam Python SDK to control the plant watering robot with `viam-server` and your Pi.
+Complete the physical assembly and wiring, [create and connect to a new robot](#configure-the-components-of-your-robot-in-the-viam-app), [configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app), [configure a custom Capacitive Soil Moisture model](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-sensor-component-model) [sensor](/components/sensor) component, and [code a Python file utilizing the Viam Python SDK](#add-python-control-code) to control the plant watering robot with `viam-server` and your Pi.
 
 Completing this tutorial requires the following hardware:
 
@@ -23,11 +23,13 @@ Completing this tutorial requires the following hardware:
 - A [Peristaltic Pump](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E/ref=asc_df_B01IUVHB8E/?tag=hyprod-20&linkCode=df0&hvadid=198093101467&hvpos=&hvnetw=g&hvrand=13835398343702336934&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-384674250225&psc=1) motor and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&ref=ppx_yo2ov_dt_b_product_details)
 - An [Adafruit MCP3008 ADC](https://www.amazon.com/dp/B00NAY3RB2?psc=1&ref=ppx_yo2ov_dt_b_product_details)
 - A [Motor Speed Controller](https://www.amazon.com/CHENBO-Trigger-Adjustment-Electronic-Controller/dp/B099RF72R1/ref=asc_df_B099RF72R1/?tag=hyprod-20&linkCode=df0&hvadid=532384528241&hvpos=&hvnetw=g&hvrand=11376239784428845641&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-1410298730875&th=1)
+- A Breadboard
 - 9V Battery
-- Planter box
-- A water cup or box
+- Plant Box
+- Water Cup or Box
 
-First, follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
+Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
+Make sure your Pi is flashed with a Viam-compatible operating system, and that you are able to SSH into it.
 
 ## Set Up your Plant Watering Robot
 
@@ -70,6 +72,8 @@ Wire the pins as follows:
 |--|--|
 |<table> <tr><th>Moisture Sensor Pin</th><th>Raspberry Pi Pin</th></tr><tr><td>VCC</td><td>3.3V</td></tr><tr><td>GND</td><td>GND</td></tr> </table>| <table> <tr><th>Moisture Sensor Pin</th><th>MCP3008 ADC Pin</th></tr><tr><td>A0 (Analog Signal Output)</td><td>CH0</td></tr> </table>|
 
+Put the soil moisture sensor inside of your plant box.
+
 [**Wiring Diagram**](#wiring-diagram)
 
 ### Wire your Pump
@@ -80,6 +84,7 @@ Now, wire and power your Peristaltic Pump [motor](/components/motor/) to complet
 2. Then, connect the output pins on your motor speed controller to the pump.
 3. Connect the GND pin on the pump to the breadboard and terminal.
 4. Connect the PWM pin on the pump to [Pin 12](https://pinout.xyz/pinout/pin12_gpio18) of the Pi.
+5. Connect the plastic tubing to the pump. Put the suction end inside of your water box, and the output end inside of your plant box.
 
 ### Wiring Diagram
 
