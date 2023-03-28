@@ -1,11 +1,12 @@
 ---
-title: "How to Set Up a Yahboom 4WD Rover with a Bluetooth Gamepad on Viam"
+title: "Drive a Yahboom Rover with a Gamepad"
 linkTitle: "Drive a Yahboom Rover with a Gamepad"
 weight: 50
 type: "docs"
 description: "Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app."
 tags: ["base", "gamepad", "yahboom", "app", "rover"]
 ---
+
 ## Requirements
 
 - A Raspberry Pi 4 running an instance of `viam-server`.

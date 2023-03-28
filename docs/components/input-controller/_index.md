@@ -1053,11 +1053,5 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-{{< card link="../../tutorials/yahboom-rover/" size="small">}}
-
-<h4>Drive a Yahboom Rover with a Gamepad</h4>
-
-Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.
-
-{{< /card >}}
+    {{< card link="/tutorials/yahboom-rover" size="small">}}
 {{< /cards >}}

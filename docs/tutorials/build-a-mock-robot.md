@@ -1,5 +1,5 @@
 ---
-title: "How to Build a Mock Robot"
+title: "Build a Mock Robot"
 linkTitle: "Build a Mock Robot"
 weight: 41
 type: "docs"

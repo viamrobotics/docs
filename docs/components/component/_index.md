@@ -78,18 +78,6 @@ Troubleshooting information for configuration errors.
 ## Next Steps
 
 {{< cards >}}
-{{< card link="control-a-component" size="small">}}
-
-<h4>Control a COMPONENTNAME</h4>
-
-Control a COMPONENTNAME.
-
-{{< /card >}}
-{{< card link="install" size="small">}}
-
-<h4>Relevant tutorial name</h4>
-
-Description.
-
-{{< /card >}}
+    {{< card link="/components/component/control-a-component" size="small">}}
+    {{< card link="/components/component/install" size="small">}}
 {{< /cards >}}

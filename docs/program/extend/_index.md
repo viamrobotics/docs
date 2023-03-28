@@ -42,18 +42,6 @@ If you are not using the Go SDK, you can add custom components using the Viam SD
 ## See also
 
 {{< cards >}}
-{{< card link="../../tutorials/controlling-an-intermode-rover-canbus/" size="small">}}
-
-<h4>Modular Resource Example</h4>
-
-This tutorial uses modular resources to control a custom base with CAN bus.
-
-{{< /card >}}
-{{< card link="../../tutorials/custom-base-dog/" size="small">}}
-
-<h4>Python SDK Custom Resource Example</h4>
-
-This tutorial uses the Viam Python SDK to control a robot dog.
-
-{{< /card >}}
+    {{< card link="/tutorials/controlling-an-intermode-rover-canbus" size="small">}}
+    {{< card link="/tutorials/custom-base-dog" size="small">}}
 {{< /cards >}}

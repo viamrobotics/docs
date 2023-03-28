@@ -325,25 +325,7 @@ Classifications overlay text from the `GetClassifications` method of the [Vision
 ## Next Steps
 
 {{< cards >}}
-{{< card link="../../../services/vision" size="small">}}
-
-<h4>Vision Service</h4>
-
-The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.
-
-{{< /card >}}
-{{< card link="/tutorials/viam-rover/try-viam-color-detection/" size="small">}}
-
-<h4>Detect color with a Viam Rover</h4>
-
-Use the vision service in the Viam app to detect a color.
-
-{{< /card >}}
-{{< card link="../../../tutorials/scuttlebot/color-detection-scuttle/" size="small">}}
-
-<h4>Colored Object Follower</h4>
-
-Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software.
-
-{{< /card >}}
+    {{< card link="/services/vision" size="small">}}
+    {{< card link="/tutorials/viam-rover/try-viam-color-detection" size="small">}}
+    {{< card link="/tutorials/scuttlebot/color-detection-scuttle" size="small">}}
 {{< /cards >}}

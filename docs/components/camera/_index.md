@@ -298,39 +298,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-{{< card link="calibrate/" size="small">}}
-
-<h4>Calibrate a Camera</h4>
-
-Calibrate a camera and extract the intrinsic and distortion parameters.
-
-{{< /card >}}
-{{< card link="transform/" size="small">}}
-
-<h4>Transform a Camera</h4>
-
-Instructions for transforming a webcam.
-
-{{< /card >}}
-{{< card link="../../services/vision" size="small">}}
-
-<h4>Vision Service</h4>
-
-The Vision Service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.
-
-{{< /card >}}
-{{< card link="../../tutorials/viam-rover/try-viam-color-detection/" size="small">}}
-
-<h4>Detect color with a Viam Rover</h4>
-
-Use the Vision Service in the Viam app to detect a color.
-
-{{< /card >}}
-{{< card link="../../tutorials/scuttlebot/color-detection-scuttle/" size="small">}}
-
-<h4>Colored Object Follower</h4>
-
-Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software.
-
-{{< /card >}}
+  {{< card link="/services/vision" size="small">}}
+  {{< card link="/tutorials/viam-rover/try-viam-color-detection" size="small">}}
+  {{< card link="/tutorials/scuttlebot/color-detection-scuttle" size="small">}}
 {{< /cards >}}

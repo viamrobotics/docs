@@ -115,18 +115,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-{{< card link="../../../../services/slam/run-slam-cartographer" size="small">}}
-
-<h4>Cartographer SLAM</h4>
-
-Run Cartographer SLAM on your Robot with a Rplidar.
-
-{{< /card >}}
-{{< card link="../../../../services/slam" size="small">}}
-
-<h4>SLAM Service</h4>
-
-Explanation of the SLAM Service, its configuration, and its functionality.
-
-{{< /card >}}
+  {{< card link="/services/slam/run-slam-cartographer" size="small">}}
+  {{< card link="/services/slam" size="small">}}
 {{< /cards >}}

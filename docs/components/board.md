@@ -404,11 +404,5 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-{{< card link="../../tutorials/pi/make-an-led-blink-with-the-viam-app/" size="small">}}
-
-<h4>Blink an LED with a Pi and the Viam App</h4>
-
-How to make an LED blink with a Raspberry Pi and the Viam app.
-
-{{< /card >}}
+  {{< card link="/tutorials/pi/make-an-led-blink-with-the-viam-app" size="small">}}
 {{< /cards >}}

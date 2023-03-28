@@ -706,25 +706,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-{{< card link="../../tutorials/yahboom-rover/" size="small">}}
-
-<h4>Drive a Yahboom Rover with a Gamepad</h4>
-
-Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.
-
-{{< /card >}}
-{{< card link="../../tutorials/controlling-an-intermode-rover-canbus/" size="small">}}
-
-<h4>Control an Intermode Rover with CAN Bus and Viam</h4>
-
-How to abstract CAN bus protocol to control an Intermode rover with Viam.
-
-{{< /card >}}
-{{< card link="../../tutorials/viam-rover/" size="small">}}
-
-<h4>Drive the Viam Rover with the Viam SDK</h4>
-
-Try Viam by using the Viam SDK to make your Viam Rover move in a square.
-
-{{< /card >}}
+  {{< card link="/tutorials/yahboom-rover" size="small">}}
+  {{< card link="/tutorials/viam-rover" size="small">}}
+  {{< card link="/tutorials/webcam-line-follower-robot" size="small">}}
 {{< /cards >}}

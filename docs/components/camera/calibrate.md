@@ -105,25 +105,7 @@ The following is a full example config:
 ## Next Steps
 
 {{< cards >}}
-{{< card link="../transform/" size="small">}}
-
-<h4>Transform a Camera</h4>
-
-Calibrate a camera and extract the intrinsic and distortion parameters.
-
-{{< /card >}}
-{{< card link="control-a-component" size="small">}}
-
-<h4>Vision Service</h4>
-
-The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.
-
-{{< /card >}}
-{{< card link="../../../tutorials/viam-rover/try-viam-color-detection/" size="small">}}
-
-<h4>Detect color with a Viam Rover</h4>
-
-Use the vision service in the Viam app to detect a color.
-
-{{< /card >}}
+  {{< card link="/components/camera/transform" size="small">}}
+  {{< card link="/services/vision" size="small">}}
+  {{< card link="/tutorials/viam-rover/try-viam-color-detection" size="small">}}
 {{< /cards >}}

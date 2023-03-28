@@ -4,6 +4,7 @@ linkTitle: "Arm"
 weight: 10
 type: "docs"
 description: "A robotic arm is made up of a series of links and joints, ending with a device you can position."
+no_list: true
 tags: ["arm", "components"]
 icon: "img/components/arm.png"
 # SME: Peter L
@@ -601,21 +602,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/tutorials/motion/accessing-and-moving-robot-arm">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Access and Move a Robot Arm</h4>
-            <p style="text-align: left;">Tutorial on accessing and controlling one of the most fundamental systems in robotics: A robotic arm.</p>
-        </a>
-    </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/services/motion">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Viam's Motion Service</h4>
-            <p style="text-align: left;">More information on Viam's Motion Service.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{< card link="/tutorials/motion/accessing-and-moving-robot-arm" size="small">}}
+  {{< card link="/services/motion" size="small">}}
+{{< /cards >}}

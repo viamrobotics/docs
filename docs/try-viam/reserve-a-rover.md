@@ -41,32 +41,9 @@ Once your reservation starts and the system has configured your rover, click **T
 ## Next steps
 
 {{< cards >}}
-{{< card link="../try-viam-tutorial/" size="small">}}
-
-![Control a Rented Rover](../rover-resources/img/viam-rover/rover-front.jpg)
-<h4>Control a Rented Rover</h4>
-
-Remotely configure and control a Viam Rover located on-site at Viam in New York.
-
-{{< /card >}}
-{{< card link="../../tutorials/viam-rover/try-viam-sdk/" size="small">}}
-
-{{<gif webm_src="../../tutorials/img/try-viam-sdk/image1.webm" mp4_src="../../tutorials/img/try-viam-sdk/image1.mp4" alt="A Viam Rover moving about">}}
-
-<h4>Drive with the Viam SDK</h4>
-
-Use the Viam SDK to make your Viam Rover move in a square.
-
-{{< /card >}}
-{{< card link="../../tutorials/viam-rover/try-viam-sdk" size="small">}}
-
-![detectionCam stream displaying a color detection](../../tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png)
-
-<h4>Detect a Color</h4>
-
-Use the Vision Service in the Viam app to detect a color.
-
-{{< /card >}}
+    {{< card link="/try-viam/try-viam-tutorial" size="small">}}
+    {{< card link="/tutorials/viam-rover/try-viam-sdk" size="small">}}
+    {{< card link="/tutorials/viam-rover/try-viam-color-detection" size="small">}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}

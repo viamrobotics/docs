@@ -189,26 +189,7 @@ main();
 ## Next Steps
 
 {{< cards >}}
-{{< card link="../../components" size="small">}}
-
-<h4>Components</h4>
-
-Write code to access and control your components.
-You use natively supported components or extend Viam with custom components and services.
-
-{{< /card >}}
-{{< card link="../../services" size="small">}}
-
-<h4>Services</h4>
-
-Integrate services like computer vision, motion planning, or SLAM.
-
-{{< /card >}}
-{{< card link="../../components" size="small">}}
-
-<h4>Tutorials</h4>
-
-Follow along with some example robot tutorials.
-
-{{< /card >}}
+  {{< card link="/components" size="small">}}
+  {{< card link="/services" size="small">}}
+  {{< card link="/components" size="small">}}
 {{< /cards >}}
