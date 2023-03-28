@@ -100,7 +100,7 @@ You can do the same where you pass the wires into the case; for added strength y
 To attach the hub motors, use galvanized carriage bolts with washers inserted from the inside of the case out to the bottom, then put the bolts through the mounts, add washers and nuts and tighten securely.
 The bolts I had were *way* too long, so I had to remove the excess length with the hacksaw - you can avoid this by getting the correct length from the beginning - just measure the depth of the mount plus the case thickness, plus some excess for the washer and securing the nut!
 
-At this point; you should have a not-yet powered wheeled base!
+At this point, you should have a not-yet-powered but assembled wheeled base!
 
 <div class="td-max-width-on-larger-screens">
   <img src="../img/outdoor-rover-boxbot/unpowered-base.jpg"  style="float:left;margin-right:1em;" alt="Assembled base, not yet powered." title="Assembled base, not yet powered." width="250" />
