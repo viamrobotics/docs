@@ -16,7 +16,7 @@ Most Viam components come with a _fake_ model that can be useful when testing.
 These fake components interact with Viam like real hardware, but of course, do not actually exist.
 We will be using these fake components to build out a mock robot and explore how to use Viam.
 
-In this tutorial, you will set up, control, and program a mock robotic arm and a mock motor sub-part using fake components.
+In this tutorial, you will set up, control, and program a mock robotic arm and a mock sub-part with a motor using fake components.
 
 ## What you'll need for this guide
 
@@ -302,7 +302,7 @@ Most simple robots will have only one part, but can have as many parts as needed
 
 Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
 You can access any sub-part either directly, or through any part above it in the tree.
-Each part runs a single _viam-server_ instance.
+Each part runs a single `viam-server` instance.
 
 ## How to configure a sub-part in the Viam app
 
@@ -314,18 +314,6 @@ You will be creating a mock independent computer-controlled sub-part with a moto
 This could be anything, but let's say for the purpose of this tutorial that this motor controls a conveyor belt in front of our mock arm on an assembly line.
 
 Navigate to your new part's **CONFIG** page and create a new motor using the **fake** model.
-
-### How to add your sub-part as a remote
-
-Connecting your sub-part as a remote from your main robot will allow you to control your sub-parts all from one place inside of your main robot.
-
-From the **CODE SAMPLE** tab of your sub-part:
-
-- Copy the **Config as Remote Part**.
-- Navigate back to the **CONFIG** and then the **REMOTES** tab of your main robot
-- Paste your sub-part's configuration.
-
-<img src="../img/build-a-mock-robot/image8.png" alt="Screenshot from the Viam app showing the CONFIG > REMOTES with the sub-part's remote config file pasted in." width="80%"><br>
 
 ### How to start a new instance of `viam-server` for your mock sub-part
 
@@ -362,12 +350,13 @@ If you have two instances of `viam-server` running on your local machine, you sh
 
 ## How to control a sub-part using the Viam SDK
 
-Now that you have your mock sub-part connected as a remote to your main mock robot, you will be able to control all of your robot's sub-parts with Viam's Python SDK. In fact, if you run your Python script again, and you review the output of `print(robot.resource_names)`, you will see that your sub-part will now be listed as an available resource for you to use.
+Now that you have your mock sub-part connected as a remote to your main mock robot, you will be able to control all of your sub-part's components and services with Viam's Python SDK.
+In fact, if you run your Python script again, and you review the output of `print(robot.resource_names)`, you will see that your sub-part's motor will now be listed as an available resource for you to use.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-To control your motor sub-part, you will need to import the [Motor Client](https://python.viam.dev/autoapi/viam/components/motor/client/index.html).
+To control your sub-part's motor, you will need to import the [Motor Client](https://python.viam.dev/autoapi/viam/components/motor/client/index.html).
 Paste this at the top of your file:
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -377,7 +366,7 @@ from viam.components.motor import MotorClient
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-To control your motor sub-part, you will need to import the [Motor Client](https://github.com/viamrobotics/rdk/blob/main/components/motor/client.go). Paste this at the top of your file:
+To control your sub-part's motor, you will need to import the [Motor Client](https://github.com/viamrobotics/rdk/blob/main/components/motor/client.go). Paste this at the top of your file:
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
