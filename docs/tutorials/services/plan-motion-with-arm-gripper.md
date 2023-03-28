@@ -1,9 +1,9 @@
 ---
-title: "Plan Motion with an Arm and with a Gripper"
+title: "Plan Motion with an Arm and a Gripper"
 linkTitle: "Plan Motion with an Arm"
 weight: 20
 type: "docs"
-description: "Start using the Motion service to generate motion for robot arms and other components."
+description: "Use the Motion Service to move robot arms and other components."
 tags: ["arm", "gripper", "motion"]
 # SMEs: William S.
 ---
@@ -14,13 +14,13 @@ Before running any code, ensure your robotic arm has enough space and that there
 Also pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your robot.
 {{< /alert >}}
 
-Moving individual components is a good way to start your Viam experience, but when looking to program and execute more complex robotic motions, more specialized parts of the RDK are required.
-The [Robot Development Kit (RDK)](/program/rdk/) provides a [Motion service](/services/motion/) which enables sophisticated movements involving one or many components of your robot.
-The Motion service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
-All that is necessary is that your robot includes components which can move, such as a robotic arm.
+Moving individual components is a good way to start using Viam, but there is so much more you can do.
+The [Motion Service](/services/motion/) enables sophisticated movements involving one or many components of your robot.
+The Motion Service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
+All you need is a robot with a component that can move, such as a robotic arm.
 
 {{< alert title="Note" color="note" >}}
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any arm model.
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
 {{< /alert >}}
 
 ## Prerequisites
@@ -33,16 +33,16 @@ Make sure you have mastery of the concepts outlined in the first Motion tutorial
 This tutorial picks up right where **Access and Move a Robot Arm** stops, so further examples depend on having a connected robot, client and service access, and other infrastructure in place.
 This also helps simplify and shorten the code examples presented below.
 
-For a helpful recap of what code we previously added, look at [the full code sample from the prior tutorial](/tutorials/motion/accessing-and-moving-robot-arm#full-tutorial-code).
+For a helpful recap of the code we previously added, look at [the full code sample from the prior tutorial](/tutorials/motion/accessing-and-moving-robot-arm#full-tutorial-code).
 
-## Configure a Robot
+## Configure a robot
 
-The robot configuration from the prior tutorial should be used for this tutorial.
+The [robot configuration from the prior tutorial](/tutorials/motion/accessing-and-moving-robot-arm/#configure-a-robot) should be used for this tutorial.
 We will revisit that robot configuration and add new components during specific sections below.
 
 ## Accessing the Motion Service
 
-Accessing the Motion service is very similar to accessing any other component or service within the Viam ecosystem.
+Accessing the Motion Service is very similar to accessing any other component or service within the Viam ecosystem.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -65,10 +65,10 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-Once the Motion service can be accessed, some familiar features become available.
+Once the Motion Service can be accessed, some familiar features become available.
 The Motion service has a method that can get the Pose of a component relative to a **reference frame**.
-In the tutorial where we interacted with an Arm component, the `EndPosition` method was what we used to determine the Pose of the end effector of `myArm`.
-The `GetPose` method provided by the Motion service serves a similar function to `EndPosition`, but allows for querying of Pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
+In the tutorial where we interacted with an arm component, we used the `EndPosition` method to determine the pose of the end effector of `myArm`.
+The `GetPose` method provided by the Motion Service serves a similar function to `EndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -93,9 +93,9 @@ fmt.Println("GetPose result for myArm orientation:", myArmMotionPose.Orientation
 {{% /tab %}}
 {{< /tabs >}}
 
-In this example, we are asking the Motion service where the end of `myArm` is with respect to the root "world" reference frame.
+In this example, we are asking the Motion Service where the end of `myArm` is with respect to the root "world" reference frame.
 
-## Describing the Robot's Working Environment
+## Describing the robot's working environment
 
 Now that the Motion service has been properly introduced, a small detour is warranted.
 The world around a robot may be full of objects that you may wish to prevent your robot from running into when commanding it to move.
@@ -136,7 +136,7 @@ worldState := &referenceframe.WorldState{
 {{% /tab %}}
 {{< /tabs >}}
 
-This example adds a "table" with the assumption that you may have mounted your robot arm to an elevated surface.
+This example adds a "table" with the assumption that you mounted your robot arm to an elevated surface.
 The 2000 millimeter by 2000 millimeter dimensions ensure that a sufficiently large box is considered, regardless of the real physical footprint of your mounting surface.
 Feel free to change these dimensions, including thickness (the Z coordinate in the above code samples), to match your environment more closely.
 Additional obstacles can also be *appended* as desired.
@@ -147,12 +147,14 @@ Within the App, the **Frame System** tab in the **Config** section of your robot
 
 <!-- TODO : Add a picture example of a geometry specified through the Frame System tab -->
 
-## Commanding an Arm to Move with the Motion Service
+## Commanding an arm to move with the Motion Service
 
-Commanding motion with the Motion service has a more general feel than previous examples that were commanding motion for individual components.
-The Motion's `Move` method is what you will use when executing more general robotic motion.
+Commanding motion with the Motion Service has a more general feel than previous examples that were commanding motion for individual components.
+In previous examples you controlled motion of individual components.
+Now you will use the Motion Service to control the motion of the robot as a whole.
+You will use the Motion Service's `Move` method to execute more general robotic motion.
 You can designate specific components to plan motion for by passing in the resource name (note the use of the arm resource in the code samples below).
-The `worldState` we constructed earlier is also passed in so that the Motion service can consider additional information when planning.
+The `worldState` we constructed earlier is also passed in so that the Motion Service can consider additional information when planning.
 
 The sample pose given below can be adjusted to fit your specific circumstances.
 Remember that X, Y, and Z coordinates are specified in millimeters.
@@ -161,6 +163,7 @@ Again, a note:
 
 {{< alert title="Caution" color="caution" >}}
 Executing code presented after this point *will* induce motion in a connected robotic arm!
+Keep the space around the arm clear!
 {{< /alert >}}
 <br><br>
 {{< tabs >}}
@@ -172,7 +175,7 @@ Executing code presented after this point *will* induce motion in a connected ro
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-Because of experimental API changes that are ongoing, we must pass in a `slam` service resource name when using the Motion service to Move.
+Because of ongoing experimental API changes, we must pass in a `slam` service resource name when using the Motion service to `Move`.
 Add `"go.viam.com/rdk/services/slam"` to your import list to provide access to the `slam` service.
 This tutorial will not cover any other SLAM content.
 
@@ -194,40 +197,40 @@ if err != nil {
 <!-- TODO : In the future, we should add some specific information on the importance of the frame chosen as the point of reference for PoseInFrame variables -->
 <!-- ## Managing Pose References -->
 
-## Commanding Other Components to Move with the Motion Service
+## Commanding other components to move with the Motion Service
 
 This section will require you to add a new component to your robot.
 One device that is very commonly attached to the end of a robot arm is a **gripper**.
 Most robot arms pick up and manipulate objects in the world through the use of a gripper, so learning how to directly command a gripper to move is highly valuable.
-Though future Motion service commands will command the gripper to move, ultimately the arm is doing all of the work in situation.
-This is made possible by the fact that the Motion service considers other parts of the robot (through the **Frame System**) when calculating how to achieve the desired motion.
+Though various Motion Service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
+This is possible because the Motion Service considers other parts of the robot (through the [Frame System](/services/frame-system/) when calculating how to achieve the desired motion.
 
-### Add a Gripper Component
+### Add a gripper component
 
-We need to do several things to prepare a new Gripper component for motion.
+We need to do several things to prepare a new gripper component for motion.
 
-1. Go back to your robot configuration in App.
+1. Go back to your robot configuration in the Viam app.
 2. Under the **COMPONENTS** section, add a new `gripper` component to your robot with the following attributes:
 
-* Choose `myGripper` as the name of this new component
-* Choose `gripper` as the desired **Type** selection
-* Choose `fake` as the desired **Model** selection
+* Set `myGripper` as the **Name** of this new component
+* Set the **Type** to `gripper`
+* Set the **Model** to `fake`
 
 3. Add a **Frame** to this component
 
-* Mark the parent as `myArm`
-* Mark the translation as something small in the +Z direction, ex. 90 mm
+* Set the parent as `myArm`
+* Set the translation as something small in the +Z direction, such as 90 mm
 * Leave the orientation as the default
-* Specify a "Box" for the geometry
-* Put in desired values for the Box's **Length**, **Width**, and **Height**, and the Box origin's **X**, **Y**, and **Z** values.
+* For **Geometry Type** choose **Box**
+* Enter desired values for the box's **Length**, **Width**, and **Height**, and the box origin's **X**, **Y**, and **Z** values.
 
-4. Mark the `myArm` component as what the new `myGripper` *Depends On*
+4. Include the `myArm` component in the **Depends On** drop-down for `myGripper`
 5. Save this new robot configuration
   * Your `viam-server` instance should update automatically.
 
 <!-- TODO : Add a picture of a sample gripper configuration -->
 
-Because the new gripper component is "attached" (via the parent specification in the Frame ) to `myArm`, we can produce motion plans using `myGripper` instead of `myArm` 
+Because the new gripper component is "attached" (with the parent specification in the Frame) to `myArm`, we can produce motion plans using `myGripper` instead of `myArm` 
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -239,7 +242,7 @@ Because the new gripper component is "attached" (via the parent specification in
 {{% /tab %}}
 {{% tab name="Go" %}}
 The last library you must import is the `gripper` library.
-This can be done by adding the `"go.viam.com/rdk/components/gripper"` library to your import list.
+Do this by adding the `"go.viam.com/rdk/components/gripper"` library to your import list.
 
 ```go {class="line-numbers linkable-line-numbers"}
 gripperName := "myGripper"
