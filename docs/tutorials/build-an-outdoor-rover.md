@@ -113,7 +113,7 @@ This will depend wildly on your weight and the strength of the case you purchase
 Now could be a good time to attach a camera in a similar way to how you attached the wheels, but through the top of the case.
 Don't forget that wherever you decide to feed the camera wire into the case, you'll want to be sure you leave enough slack to open and close the case.
 I found that the rover handles much better with the hub motors in the back, acting as rear-wheel drive.
-If you are not sure if that's how you'll want to run yours, wait until after you've tested how it handles to mount a camera.
+If you are not sure if that's how you'll want to run yours, wait until after you've tested how it handles, and then mount a camera.
 
 ## Wire it up
 
