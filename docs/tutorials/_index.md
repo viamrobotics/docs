@@ -16,47 +16,47 @@ For this reason, we list tutorials based on features you may be looking for.
 ## Your first robots
 
 {{< cards >}}
-    {{< card link="/tutorials/viam-rover/try-viam-sdk" size="small">}}
-    {{< card link="/tutorials/pi/make-an-led-blink-with-the-viam-app/" size="small" >}}
-    {{< card link="/tutorials/pi/make-an-led-blink-with-a-raspberry-pi-and-sdk/" size="small" >}}
+    {{< card link="/tutorials/get-started/try-viam-sdk" size="small">}}
+    {{< card link="/tutorials/get-started/make-an-led-blink-with-the-viam-app/" size="small" >}}
+    {{< card link="/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/" size="small" >}}
 {{< /cards >}}
 
 ## Configuration and Testing
 
 {{< cards >}}
-    {{< card link="/tutorials/build-a-mock-robot/" size="small" >}}
-    {{< card link="/tutorials/pi/foam-dart-launcher/" size="small">}}
-    {{< card link="/tutorials/scuttlebot/scuttlebot/" size="small" >}}
+    {{< card link="/tutorials/configure/build-a-mock-robot/" size="small" >}}
+    {{< card link="/tutorials/configure/foam-dart-launcher/" size="small">}}
+    {{< card link="/tutorials/configure/scuttlebot/" size="small" >}}
 {{< /cards >}}
 
 ## Controlling
 
 {{< cards >}}
-    {{< card link="/tutorials/scuttlebot/scuttle-gamepad/" size="small" >}}
-    {{< card link="/tutorials/yahboom-rover/" size="small" >}}
+    {{< card link="/tutorials/control/scuttle-gamepad/" size="small" >}}
+    {{< card link="/tutorials/control/yahboom-rover/" size="small" >}}
 {{< /cards >}}
 
 ## Services
 
 {{< cards >}}
-    {{< card link="/tutorials/motion/accessing-and-moving-robot-arm/" size="small" >}}
-    {{< card link="/tutorials/data-management-tutorial/" size="small" >}}
-    {{< card link="/tutorials/viam-rover/try-viam-color-detection" size="small">}}
-    {{< card link="/tutorials/scuttlebot/color-detection-scuttle/" size="small" >}}
-    {{< card link="/tutorials/webcam-line-follower-robot/" size="small" >}}
+    {{< card link="/tutorials/services/accessing-and-moving-robot-arm/" size="small" >}}
+    {{< card link="/tutorials/services/data-management-tutorial/" size="small" >}}
+    {{< card link="/tutorials/services/try-viam-color-detection" size="small">}}
+    {{< card link="/tutorials/services/color-detection-scuttle/" size="small" >}}
+    {{< card link="/tutorials/services/webcam-line-follower-robot/" size="small" >}}
 {{< /cards >}}
 
 ## Custom Resources
 
 {{< cards >}}
-    {{< card link="/tutorials/custom-base-dog/" size="small" >}}
-    {{< card link="/tutorials/controlling-an-intermode-rover-canbus/" size="small" >}}
+    {{< card link="/tutorials/custom/custom-base-dog/" size="small" >}}
+    {{< card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" >}}
 {{< /cards >}}
 
 ## Projects
 
 {{< cards >}}
-    {{< card link="/tutorials/integrating-viam-with-openai/" size="small" >}}
+    {{< card link="/tutorials/projects/integrating-viam-with-openai/" size="small" >}}
 {{< /cards >}}
 
 <br>
