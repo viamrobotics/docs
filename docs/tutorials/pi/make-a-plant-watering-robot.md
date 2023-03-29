@@ -38,14 +38,13 @@ Make sure your Pi is flashed with a Viam-compatible operating system, and that y
 
 ## Set Up your Plant Watering Robot
 
-Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different parts together.
+Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different components together.
 You will set up the robot to receive signals from the capacitive soil moisture sensor and signal to the peristaltic pump when it is time to pump water from the water's box to the plant's box.
 
 ### Wire your ADC
 
 The analog-to-digital converter (ADC) between your capacitive soil moisture sensor and Pi converts the analog signals created by the capacitive soil moisture sensor's readings to digital signals that can be processed by your Pi, which expects digital signals to come to it through its GPIO pins.
 
-Start by wiring your ADC to your Raspberry Pi board.
 
 Start by wiring your ADC to your Raspberry Pi board according to the following pinout diagram for your MCP3008 Analog to Digital Converter:
 
@@ -105,6 +104,7 @@ Refer to the following full wiring diagram for your hardware setup: [**Wiring Di
 ### Enable SPI on your Pi
 
 Now that you have wired your ADC and Moisture Sensor, make sure that the Serial Peripheral Interface (SPI) is enabled on your Pi.
+Enabling this protocol is necessary to allow the Pi to communicate with the Moisture Sensor peripheral.
 
 SSH into your Pi and run the following command:
 
