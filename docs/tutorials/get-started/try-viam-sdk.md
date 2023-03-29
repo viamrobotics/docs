@@ -3,7 +3,7 @@ title: "Drive the Viam Rover with the Viam SDK"
 linkTitle: "Drive with the SDK"
 weight: 40
 type: "docs"
-description: "Try Viam by using the Viam SDK to make your Viam Rover move in a square."
+description: "Use a Viam SDK to program a Viam Rover to move in a square."
 webmSrc: "/tutorials/img/try-viam-sdk/image1.webm"
 mp4Src: "/tutorials/img/try-viam-sdk/image1.mp4"
 videoAlt: "A Viam Rover driving in a square"
@@ -16,7 +16,7 @@ aliases:
     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/daU5iNsSO0w" allowfullscreen></iframe>
 </div>
 
-The Viam SDKs allow you to write code in either Python or Go to control a [Viam Rover](https://app.viam.com/try).
+The Viam SDKs allow you to write code in Python, Go, or TypeScript to control a Viam-connected robot like the [Viam Rover](https://app.viam.com/try).
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
 
 <div class="td-max-width-on-larger-screens">
