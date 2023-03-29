@@ -111,6 +111,10 @@ C270 HD WEBCAM (usb-0000:01:00.0-1.2):
  /dev/media4
 ```
 
+### CSI Camera not working on a Raspberry Pi
+
+If you are using a CSI camera on a Raspberry Pi, you need to [enable legacy mode](../../../installation/prepare/rpi-setup/#enable-communication-protocols).
+
 ### Timeout errors on a Raspberry Pi
 
 If you are getting "timeout" errors from GRPC when adding a `webcam` model on a Raspberry Pi, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box):
