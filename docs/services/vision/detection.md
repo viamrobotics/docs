@@ -248,7 +248,7 @@ detections = await vision.get_detections_from_camera("camera_1", "my_color_detec
 await robot.close()
 ```
 
-To learn more about the Detection API, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
+To learn more about how to use detection, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
