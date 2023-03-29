@@ -189,7 +189,7 @@ main();
 ## Next Steps
 
 {{< cards >}}
-  {{< card link="/components" size="small">}}
-  {{< card link="/services" size="small">}}
-  {{< card link="/components" size="small">}}
+  {{% card link="/components" size="small" %}}
+  {{% card link="/services" size="small" %}}
+  {{% card link="/components" size="small" %}}
 {{< /cards >}}

@@ -325,7 +325,7 @@ Classifications overlay text from the `GetClassifications` method of the [Vision
 ## Next Steps
 
 {{< cards >}}
-    {{< card link="/services/vision" size="small">}}
-    {{< card link="/tutorials/viam-rover/try-viam-color-detection" size="small">}}
-    {{< card link="/tutorials/scuttlebot/color-detection-scuttle" size="small">}}
+    {{% card link="/services/vision" size="small" %}}
+    {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
+    {{% card link="/tutorials/services/color-detection-scuttle" size="small" %}}
 {{< /cards >}}

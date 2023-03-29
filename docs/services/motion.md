@@ -329,5 +329,5 @@ The two paths will be smoothed, then compared to one another, and the most optim
 ## Next Steps
 
 {{< cards >}}
-  {{< card link="/tutorials/motion/accessing-and-moving-robot-arm" size="small" >}}
+  {{% card link="/tutorials/motion/accessing-and-moving-robot-arm" size="small" %}}
 {{< /cards >}}

@@ -235,7 +235,7 @@ To configure your rover so you can start driving it, [add the Viam Fragment to y
 
 ## Next Steps
 
-Check out our other [tutorials that use the Viam Rover](/tutorials/viam-rover/).
+Check out our other [tutorials that use the Viam Rover](../../tutorials).
 
 ### Rover Build
 

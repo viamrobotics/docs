@@ -706,7 +706,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{< card link="/tutorials/yahboom-rover" size="small">}}
-  {{< card link="/tutorials/viam-rover" size="small">}}
-  {{< card link="/tutorials/webcam-line-follower-robot" size="small">}}
+  {{% card link="/tutorials/yahboom-rover" size="small" %}}
+  {{% card link="/tutorials/viam-rover" size="small" %}}
+  {{% card link="/tutorials/webcam-line-follower-robot" size="small" %}}
 {{< /cards >}}

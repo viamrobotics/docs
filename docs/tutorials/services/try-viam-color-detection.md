@@ -153,6 +153,6 @@ If you scroll down in the **CONTROL** tab, you can also click on the detectionCa
 ## Next Steps
 
 If you're ready for more, try making your rover detect other colors.
-You could also write some code with a Viam SDK to [make your Viam Rover move in a square](/tutorials/viam-rover/try-viam-sdk/).
+You could also write some code with a Viam SDK to [make your Viam Rover move in a square](/tutorials/get-started/try-viam-sdk/).
 
 {{< snippet "social.md" >}}

@@ -4,9 +4,13 @@ linkTitle: "Blink an LED with a Pi and the SDK"
 weight: 40
 type: "docs"
 description: "Intro to hardware programming using the Viam SDK to make an LED blink."
+webmSrc: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.webm"
+mp4Src: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.mp4"
+videoAlt: "A blinking blue LED connected to a Raspberry Pi with jumper cables."
 tags: ["board", "raspberry pi", "sdk"]
 # SME: Joe Karlsson
 ---
+
 In this post, you will be introduced to the basics of programming hardware by using either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) to make an LED blink.
 This will allow you to write code to make an LED connected to the GPIO of a Raspberry Pi blink on and off.
 This tutorial is a good introduction to [Python](https://www.python.org/) or [Go](https://go.dev/) programming languages, and developing custom software for robots.
@@ -17,7 +21,7 @@ This tutorial is a good introduction to [Python](https://www.python.org/) or [Go
 
 {{% alert title="Note" color="note" %}}
 This is part 2 of Viam's Intro to Robotics series.
-If you haven't completed [Part 1](/tutorials/pi/make-an-led-blink-with-the-viam-app/), be sure to go back and complete that before starting on this tutorial.
+If you haven't completed [Part 1](/tutorials/get-started/make-an-led-blink-with-the-viam-app/), be sure to go back and complete that before starting on this tutorial.
 You should have already set up [your Raspberry Pi](/installation/prepare/rpi-setup), [set up `viam-server`](/installation/install), built your circuit, and [connected your robot to the Viam app](/installation/install/linux-install/) before proceeding.
 {{% /alert %}}
 
