@@ -3,7 +3,7 @@ title: "SK-TDA4VM Setup Guide"
 linkTitle: "SK-TDA4VM Setup"
 weight: 25
 type: "docs"
-description: "A guide to imaging a Texas Instruments TDA4VM starter kit board to prepare it for viam-server installation."
+description: "Image a Texas Instruments TDA4VM starter kit board to prepare it for viam-server installation."
 #SMEs: Matt Dannenberg
 ---
 
@@ -97,7 +97,7 @@ From the SSH session on the TDA4VM board:
 
 ## Next steps
 
-Now that your board has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/install/).
+Now that your board has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation#install-viam-server).
 
 ## Need assistance?
 

@@ -55,11 +55,11 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
 
 {{% /alert %}}
 
-2. [Install `viam-server` and connect your robot to the Viam app](/installation/install/).
+1. [Install `viam-server` and connect your robot to the Viam app](/installation#install-viam-server).
 
-3. SSH into the Pi to complete the following steps.
+2. SSH into the Pi to complete the following steps.
 
-4. Install pip and then git:
+3. Install pip and then git:
 
     ```bash
     sudo apt install pip
@@ -69,7 +69,7 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
     sudo apt install git
     ```
 
-5. Navigate to the directory on the Pi where you'd like to install the Freenove robot dog code (for example `/home/fido/`).
+4. Navigate to the directory on the Pi where you'd like to install the Freenove robot dog code (for example `/home/fido/`).
 Get the code by running the following command:
 
     ```bash
