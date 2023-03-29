@@ -44,7 +44,7 @@ Doing so ensures that the signals from the capacitive soil moisture sensor can b
 
 Wiring an analog-to-digital converter (ADC) between your capacitive soil moisture sensor and Pi ensures that the analog signals created by the capacitive soil moisture sensor's readings can be processed by the Pi, which expects digital signals to come to it through its GPIO pins.
 
-First, start by wiring your ADC to your Raspberry Pi board.
+Start by wiring your ADC to your Raspberry Pi board.
 
 Refer to the following pinout diagram for your MCP3008 Analog to Digital Converter:
 
@@ -131,17 +131,29 @@ Finally, click **Finish** and restart your Pi.
 
 Next, install the Adafruit ADC library [`Adafruit_CircuitPython_MCP3xxx`](https://github.com/adafruit/Adafruit_CircuitPython_MCP3xxx/) on your Pi.
 
-First, make sure you have installed the required dependencies:
+Before installation, make sure any packages on your Pi are up to date:
 
-- [Adafruit CircuitPython](https://github.com/adafruit/circuitpython)
-- [Bus Device](https://github.com/adafruit/Adafruit_CircuitPython_BusDevice)
+``` shell
+sudo apt update
+sudo apt upgrade
+```
 
-If you do not have these, download the Adafruit library and driver bundle to your Pi by following the instructions [here](https://github.com/adafruit/Adafruit_CircuitPython_Bundle).
+Make sure you have `pip` installed for Python 3:
+
+``` shell
+pip --version
+```
+
+If not, run the following command:
+
+``` shell
+sudo apt install python3-pip
+```
 
 Run the following command while connected to your Pi with SSH to install [`Adafruit_CircuitPython_MCP3xxx`](https://github.com/adafruit/Adafruit_CircuitPython_MCP3xxx/):
 
 ``` shell
-pip3 install adafruit-circuitpython-mcp3xxx
+sudo pip3 install adafruit-circuitpython-mcp3xxx
 ```
 
 Create a new directory for your plant watering robot's files and navigate to this directory in your terminal session.
@@ -157,7 +169,7 @@ For example, run the following commands:
 
 ``` shell
 touch adctesting.py
-vim adctesting.py
+nano adctesting.py
 ```
 
 Now, add the following Python code to `adctesting.py` to test reading values from your capacitive soil moisture sensor through your MCP3008 ADC:
@@ -194,7 +206,17 @@ Run the code as follows:
 sudo python3 adctesting.py
 ```
 
-When running this code, you should see the Moisture Sensor values outputted by the MCP3008 in the range of `0` to `1023`.
+{{% alert title="Tip" color="tip" %}}
+
+If running this code returns `ImportError: No module named busio`, try again after reinstalling `adafruit-blinka`:
+
+``` shell
+sudo pip3 install --force-reinstall adafruit-blinka
+```
+
+{{% /alert %}}
+
+Now, you should see the Moisture Sensor values outputted by the MCP3008 in the range of `0` to `1023`.
 Test your sensor by putting it in air, water, and different soils to see how the values change.
 
 An example output:
@@ -290,7 +312,7 @@ For example, run the following commands to create and open the file:
 ``` shell
 cd plant-watering-robot
 touch sensor.py
-vim sensor.py
+nano sensor.py
 ```
 
 Paste the following code into <file>sensor.py</file>:
@@ -428,7 +450,7 @@ For example, run the following commands to create and open the file:
 ``` shell
 cd plant-watering-robot
 touch plant-watering-robot.py
-vim plant-watering-robot.py
+nano plant-watering-robot.py
 ```
 
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
