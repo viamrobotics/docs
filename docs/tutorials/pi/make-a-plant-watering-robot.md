@@ -47,7 +47,7 @@ The analog-to-digital converter (ADC) between your capacitive soil moisture sens
 
 Start by wiring your ADC to your Raspberry Pi board.
 
-Refer to the following pinout diagram for your MCP3008 Analog to Digital Converter:
+Start by wiring your ADC to your Raspberry Pi board according to the following pinout diagram for your MCP3008 Analog to Digital Converter:
 
 ![Pinout diagram for the ADC.](../../img/plant-watering-pi/adc-pinout.png)
 
