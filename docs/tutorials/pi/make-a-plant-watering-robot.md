@@ -231,7 +231,7 @@ First, add your Pi as a [board component](/components/board/) by creating a new 
 {{< tabs name="Configure an Pi Board" >}}
 {{% tab name="Config Builder" %}}
 
-<img src="../../img/plant-watering-pi/pi-board-config-builder.png" alt="Creation of a pi board in the Viam app config builder." style="max-width:800px" />
+![Creation of a pi board in the Viam app config builder.](../../img/plant-watering-pi/pi-board-config-builder.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
