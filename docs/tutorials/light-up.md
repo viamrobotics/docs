@@ -58,11 +58,7 @@ Go to the [Viam app](https://app.viam.com) and make or log in to your account.
 
 Create a new robot.
 
-Go to the **SETUP** tab of your new robot's page.
-Select the correct **Mode** (Linux or Mac) and (if you're on Linux) **Architecture** for your computer.
-Most Linux desktops and laptops use **X86_64** architecture.
-
-Follow the steps on this tab to install `viam-server` on your computer.
+Go to the **SETUP** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](link to install docs).
 
 ## Configure object detection
 
@@ -78,7 +74,8 @@ On the **CONFIG** tab, create a new component:
 
 Click **Create Component** to add the camera.
 
-Click the **Video Path** box to reveal a drop-down populated with camera paths that have been identified on your machine.
+Click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
+
 Select the path to the camera you want to use.
 Often on Linux systems, this is `video0` or `video1`.
 On Mac, this is often a long string of letters and numbers.
@@ -99,7 +96,8 @@ As you do this, you will receive an email with subject line "TP-Link ID: Activat
 Next, follow the steps in Kasa's [How to set up my TP-Link Smart Plug Switch via Kasa guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
 Once it is connected, you will no longer need to use the mobile app.
 
-Next, open a terminal on your computer and run the following command to download the [smart plug Python API](https://github.com/python-kasa/python-kasa):
+Next, open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
+
 
 ```bash
 pip3 install python-kasa
