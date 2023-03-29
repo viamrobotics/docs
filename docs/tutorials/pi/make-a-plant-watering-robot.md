@@ -262,7 +262,7 @@ Add your board (in this example, named `local`) to this component's dependencies
 {{< tabs name="Configure an Pump Motor" >}}
 {{% tab name="Config Builder" %}}
 
-<img src="../../img/plant-watering-pi/pump-motor-config-builder.png" alt="Creation of a pump motor in the Viam app config builder." style="max-width:800px" />
+![Creation of a pump motor in the Viam app config builder.](../../img/plant-watering-pi/pump-motor-config-builder.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -296,7 +296,7 @@ Click **SAVE CONFIG**.
 
 Now, if you navigate to your robot's **CONTROL** tab, you should be able to control the motor by setting the power and direction of rotation and clicking the **RUN** button:
 
-<img src="../../img/plant-watering-pi/pump-motor-control.png" alt="Creation of a pump motor in the Viam app config builder." style="max-width:800px" />
+![Creation of a pump motor in the Viam app config builder.](../../img/plant-watering-pi/pump-motor-control.png)
 
 ### Configure the Capacitive Soil Moisture Sensor as a Custom Resource
 
@@ -395,7 +395,7 @@ Add your sensor server as a [remote part](/manage/parts-and-remotes/) called `my
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-<img src="../../img/plant-watering-pi/sensor-remote-config-builder.png" alt="Creation of a custom sensor remote in the Viam app config builder." style="max-width:800px" />
+![Creation of a custom sensor remote in the Viam app config builder."](../../img/plant-watering-pi/sensor-remote-config-builder.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -420,7 +420,7 @@ Then, navigate to the **PROCESSES** subtab and create a process called `run-sens
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-<img src="../../img/plant-watering-pi/sensor-process-config-builder.png" alt="Creation of a process to run the sensor remote server in the Viam app config builder." style="max-width:800px" />
+![Creation of a process to run the sensor remote server in the Viam app config builder.](../../img/plant-watering-pi/sensor-process-config-builder.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -454,7 +454,7 @@ Modify the `"args"` and `"cwd"` to match the path to your `plant-watering-robot`
 Click **SAVE CONFIG**.
 Now, when you navigate to your robot's **CONTROL** tab, you should be able to see your sensor readings:
 
-<img src="../../img/plant-watering-pi/sensor-reading-control.png" alt="Readings from a soil moisture sensor in the Viam app CONTROL tab." style="max-width:800px" />
+![Readings from a soil moisture sensor in the Viam app CONTROL tab.](../../img/plant-watering-pi/sensor-reading-control.png)
 
 ### Add Python Control Code
 
