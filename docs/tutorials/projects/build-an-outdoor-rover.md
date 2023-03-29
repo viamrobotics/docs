@@ -6,6 +6,8 @@ type: "docs"
 tags: ["base", "outdoor", "solar", "rover"]
 description: "How to build a very capable outdoor rover and control it with Viam."
 image: "/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"
+aliases:
+  /tutorials/build-an-outdoor-rover/
 imageAlt: "Completed rover with mounted solar panel."
 # SME: Matt Vella
 ---
