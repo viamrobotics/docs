@@ -403,14 +403,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card">
-        <a href="/tutorials/pi/make-an-led-blink-with-the-viam-app/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Blink an LED with a Pi and the Viam App</h4>
-            <p style="text-align: left;">How to make an LED blink with a Raspberry Pi and the Viam app.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{< card link="/tutorials/pi/make-an-led-blink-with-the-viam-app" size="small">}}
+{{< /cards >}}

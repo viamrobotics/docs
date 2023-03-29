@@ -188,25 +188,8 @@ main();
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card hover-card-small">
-        <a href="../../components">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Components</h4>
-            <p style="text-align: left;">Write code to access and control your components. You use natively supported components or extend Viam with custom components and services.</p>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="../../services">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Services</h4>
-            <p style="text-align: left;">Integrate services like computer vision, motion planning, or SLAM.</p>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="../../components">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Tutorials</h4>
-            <p style="text-align: left;">Follow along with some example robot tutorials.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{< card link="/components" size="small">}}
+  {{< card link="/services" size="small">}}
+  {{< card link="/components" size="small">}}
+{{< /cards >}}

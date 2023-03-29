@@ -4,6 +4,8 @@ linkTitle: "Control A Rented Viam Rover"
 weight: 39
 type: "docs"
 description: "Remotely control a Viam Rover located on-site at Viam in NYC."
+image: "/try-viam/rover-resources/img/viam-rover/rover-front.jpg"
+imageAlt: "The front of the assembled Viam Rover"
 tags: ["try viam", "app"]
 ---
 
@@ -219,32 +221,10 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
 
 ## Next steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card">
-        <a href="../../tutorials/viam-rover/try-viam-sdk">
-            <div style="padding-top:1em">
-                {{<gif webm_src="../../tutorials/img/try-viam-sdk/image1.webm" mp4_src="../../tutorials/img/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam rover showing it as it drives in a square.">}}
-            </div>
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive with the Viam SDK</h4>
-            <p style="text-align: left;">Use the Viam SDK to make your Viam Rover move in a square.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <a href="../../tutorials/viam-rover/try-viam-color-detection">
-            <img src="../../tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png" width=100% style="padding-top: 1em" alt="detectionCam stream displaying a color detection.">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect a Color</h4>
-            <p style="text-align: left;">Use the Vision Service in the Viam app to detect a color.</p>
-        <a>
-    </div>
-    <div class="col hover-card">
-        <a href="../rover-resources/">
-            <img src="../rover-resources/img/viam-rover/rover-front.jpg" width=100% style="padding-top: 1em" alt="The front of the  assembled Viam Rover" />
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Order a Rover</h4>
-            <p style="text-align: left;">Get your own Viam rover and set it up.</p>
-        <a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{< card link="/tutorials/viam-rover/try-viam-sdk" size="small">}}
+  {{< card link="/tutorials/viam-rover/try-viam-color-detection" size="small">}}
+  {{< card link="/try-viam/rover-resources" size="small">}}
+{{< /cards >}}
 
 {{< snippet "social.md" >}}

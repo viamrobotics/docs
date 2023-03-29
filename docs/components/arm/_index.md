@@ -4,6 +4,7 @@ linkTitle: "Arm"
 weight: 10
 type: "docs"
 description: "A robotic arm is made up of a series of links and joints, ending with a device you can position."
+no_list: true
 tags: ["arm", "components"]
 icon: "img/components/arm.png"
 # SME: Peter L
@@ -23,12 +24,12 @@ When controlling an arm with `viam-server`, the following features are implement
 - Self-collision prevention
 - Obstacle avoidance
 
-#### `viam-server` Motion Planning with your Arm's Native Software
+#### Motion planning with your arm's built-in software
 
-Arm models are supported with a driver built to be compatible with the software API that model's manufacturer supports.
-While some Arm models build inverse kinematics into their software, many do not.
+Each arm model is supported with a driver that is compatible with the software API that the model's manufacturer supports.
+While some arm models build inverse kinematics into their software, many do not.
 
-- Most of the Arm drivers for the Viam RDK bypass any onboard inverse kinematics, and use Viam's [Motion Planning](/services/motion/) service instead.
+- Most of the arm drivers for the Viam RDK bypass any onboard inverse kinematics, and use Viam's [Motion Service](/services/motion/) instead.
 
 - This driver handles turning the arm on and off, querying the arm for its current joint position, sending requests for the arm to move to a specified set of joint positions, and engaging brakes as needed, if supported.
 
@@ -601,21 +602,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/tutorials/motion/accessing-and-moving-robot-arm">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Access and Move a Robot Arm</h4>
-            <p style="text-align: left;">Tutorial on accessing and controlling one of the most fundamental systems in robotics: A robotic arm.</p>
-        </a>
-    </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/services/motion">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Viam's Motion Service</h4>
-            <p style="text-align: left;">More information on Viam's Motion Service.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{< card link="/tutorials/motion/accessing-and-moving-robot-arm" size="small">}}
+  {{< card link="/services/motion" size="small">}}
+{{< /cards >}}

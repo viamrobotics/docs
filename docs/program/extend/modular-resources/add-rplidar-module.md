@@ -114,21 +114,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-        <div class="col hover-card">
-          <a href="../../../../services/slam/run-slam-cartographer">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">
-                Cartographer SLAM
-            </h4>
-            <p style="text-align: left;"> Run Cartographer SLAM on your Robot with a Rplidar. </p>
-          </a>
-         </div>
-      <div class="col hover-card">
-          <a href="../../../../services/slam">
-              <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">SLAM Service</h4>
-              <p style="text-align: left;"> Explanation of the SLAM Service, its configuration, and its functionality. </p>
-          <a>
-      </div>
-    </div>
-</div>
+{{< cards >}}
+  {{< card link="/services/slam/run-slam-cartographer" size="small">}}
+  {{< card link="/services/slam" size="small">}}
+{{< /cards >}}

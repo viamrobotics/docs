@@ -328,14 +328,6 @@ The two paths will be smoothed, then compared to one another, and the most optim
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/tutorials/motion/accessing-and-moving-robot-arm">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Access and Move a Robot Arm</h4>
-            <p style="text-align: left;">Tutorial on accessing and controlling one of the most fundamental systems in robotics: A robotic arm.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{< card link="/tutorials/motion/accessing-and-moving-robot-arm" size="small" >}}
+{{< /cards >}}
