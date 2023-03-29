@@ -7,8 +7,8 @@ no_list: true
 ---
 
 {{< alert title="Tip" color="tip" >}}
-While tutorials may list specific hardware, the hardware only affects the configuration of a project.
-Once you have configured your components, you can use the same code of the tutorials with any hardare.
+While following a tutorial may require specific hardware, the hardware only affects the part of a project where you configure your components.
+If you are using different hardware your configuration will be different but you can still use the **same tutorial code**.
 
 For this reason, we list tutorials based on features you may be looking for.
 {{< /alert >}}
@@ -25,7 +25,6 @@ For this reason, we list tutorials based on features you may be looking for.
 
 {{< cards >}}
     {{< card link="/tutorials/configure/build-a-mock-robot/" size="small" >}}
-    {{< card link="/tutorials/configure/foam-dart-launcher/" size="small">}}
     {{< card link="/tutorials/configure/scuttlebot/" size="small" >}}
 {{< /cards >}}
 
@@ -56,6 +55,7 @@ For this reason, we list tutorials based on features you may be looking for.
 ## Projects
 
 {{< cards >}}
+    {{< card link="/tutorials/configure/foam-dart-launcher/" size="small">}}
     {{< card link="/tutorials/projects/integrating-viam-with-openai/" size="small" >}}
 {{< /cards >}}
 
