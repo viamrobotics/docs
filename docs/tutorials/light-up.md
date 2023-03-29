@@ -8,8 +8,8 @@ description: "How to turn a light on when your webcam sees a person."
 # Author: Hazal Mestci
 ---
 
-In this tutorial, we will show you how to build your very own object detection robot using Viam, your computer with a webcam, a [Kasa Smart Plug](https://www.kasasmart.com/us/products/smart-plugs), and a desk lamp.
-This robot will turn the lights on or off when it detects a person in front of it.
+This tutorial uses the Viam [Vision Service](/services/vision/) with your computer's built-in webcam to detect the presence of a person and turn a lamp on when you sit down at your desk.
+
 You can turn it into a night light for reading books, a security robot that alerts you when a person is close by, or a bathroom light that only activates when people enter; the opportunities are endless.
 
 This project is a great place to start if you are new to building robots, and have a smart plug laying around.
@@ -18,7 +18,7 @@ This project is a great place to start if you are new to building robots, and ha
 
 ## Hardware requirements
 
-The following hardware is used in this tutorial:
+You need the following hardware for this tutorial:
 
 - Computer with a webcam
   - This tutorial uses a MacBook Pro but any computer running macOS or 64-bit Linux will work
@@ -31,32 +31,16 @@ The following hardware is used in this tutorial:
 
 The following software is used in this tutorial:
 
-- [Python3](https://www.python.org/downloads/)
+- [Python 3.8 or newer](https://www.python.org/downloads/)
 - [`viam-server`](/installation/install/)
 - [Viam Python SDK](https://python.viam.dev/)
+  - The Viam Python SDK (software development kit) lets you control your Viam-powered robot by writing custom scripts in the Python programming language.
+  Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
 - [Project repo on GitHub](https://github.com/viam-labs/devrel-demos/tree/main/Light%20up%20bot)
-
-## Prerequisites
-
-Make sure you have a recent version of Python installed on your computer by running
-
-```bash
-python --version
-```
-
-If the output is Python 3.9.0 or later, you should be fine for this tutorial.
-If not, [download a newer version here](https://www.python.org/downloads/).
-
-The Viam Python SDK (software development kit) lets you control your robot by writing custom scripts in the Python programming language.
-Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
-
-Now you are ready to make your robot!
 
 ## Install `viam-server` and connect to your robot
 
-Go to the [Viam app](https://app.viam.com) and make or log in to your account.
-
-Create a new robot.
+Go to the [Viam app](https://app.viam.com) and create a new robot.
 
 Go to the **SETUP** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](link to install docs).
 
@@ -93,7 +77,7 @@ To connect the plug to your wifi, download the Kasa Smart app from the [App Stor
 When you first open the app, you will be prompted to create an account.
 As you do this, you will receive an email with subject line "TP-Link ID: Activation Required" to complete your account registration.
 
-Next, follow the steps in Kasa's [How to set up my TP-Link Smart Plug Switch via Kasa guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
+Next, follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
 Once it is connected, you will no longer need to use the mobile app.
 
 Next, open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
@@ -113,7 +97,7 @@ You should see this command output something like this:
 
 ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitute), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time and cloud).](../img/light-up/kasa-discover-output.png)
 
-Copy the host address (for example, 10.1.11.221).
+Copy the host address (for example, `10.1.11.221`).
 You will need to include it in your Python code in a later step.
 
 ## Write Python code to control your object detection robot
@@ -136,7 +120,7 @@ You will also generate a person detector function within your code, to detect a 
 
 {{% alert title="Info" color= "info" %}}
 
-Technically, you can detect any object that is listed in the <file>labels.txt</file> (such as a dog or a toilet) but for this tutorial, we are detecting a person.
+Technically, you can detect any object that is listed in the <file>labels.txt</file> (such as a dog or a chair) but for this tutorial, we are detecting a person.
 
 To detect something else with the camera, just change the string "person" to a different item in the <file>label.txt</file> file.
 
@@ -159,7 +143,7 @@ The sample code below specifies the file locations of the model and labels, whic
     print(names)
 ```
 
-Add the host address (for example, 10.1.11.221) of your smart plug that you found in the `kasa discover` step to the code shown below.
+Add the host address (for example, `10.1.11.221`) of your smart plug that you found in the [`kasa discover` step](#set-up-the-kasa-smart-plug) to the code shown below.
 
 In this snippet, if the camera detects a person, it will print to the terminal “This is a person!” and turn on the smart plug.
 If it does not find a person, it will write “There’s nobody here” and will turn off the plug.
