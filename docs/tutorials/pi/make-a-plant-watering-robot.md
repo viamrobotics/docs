@@ -1,6 +1,6 @@
 ---
 title: "Plant Watering Robot with a Raspberry Pi"
-linkTitle: "Watering Robot"
+linkTitle: "Plant Watering Robot"
 weight: 50
 type: "docs"
 description: "Create a plant watering robot with a Raspberry Pi single-board computer."
@@ -15,7 +15,7 @@ With a Raspberry Pi and some cheap, basic hardware, you can keep your plants hea
 
 Follow this tutorial to learn how to set up an automatic plant watering system:
 
-1.  [Complete the physical assembly and wiring](/#set-up-your-plant-watering-robot).
+1.  [Complete the physical assembly and wiring](#set-up-your-plant-watering-robot).
 2. [Create and connect to the robot](#configure-the-components-of-your-robot-in-the-viam-app).
 3. [Configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app).
 4. [Configure a custom Capacitive Soil Moisture sensor component](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-sensor-component-model).
@@ -23,13 +23,13 @@ Follow this tutorial to learn how to set up an automatic plant watering system:
 
 The tutorial uses the following hardware, but you can adjust it as needed:
 
-- A Raspberry Pi with SD card
-- A [Capacitive Soil Moisture Sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ/ref=asc_df_B07QXZC8TQ/?tag=hyprod-20&linkCode=df0&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596&psc=1&tag=&ref=&adgrpid=71762478951&hvpone=&hvptwo=&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596)
-- A [Peristaltic Pump](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E/ref=asc_df_B01IUVHB8E/?tag=hyprod-20&linkCode=df0&hvadid=198093101467&hvpos=&hvnetw=g&hvrand=13835398343702336934&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-384674250225&psc=1) motor and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&ref=ppx_yo2ov_dt_b_product_details)
-- An [Adafruit MCP3008 ADC](https://www.amazon.com/dp/B00NAY3RB2?psc=1&ref=ppx_yo2ov_dt_b_product_details)
-- A [Motor Speed Controller](https://www.amazon.com/CHENBO-Trigger-Adjustment-Electronic-Controller/dp/B099RF72R1/ref=asc_df_B099RF72R1/?tag=hyprod-20&linkCode=df0&hvadid=532384528241&hvpos=&hvnetw=g&hvrand=11376239784428845641&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-1410298730875&th=1)
-- A Breadboard
-- 9V Battery
+- A Raspberry Pi 3B or 4B with SD card
+- A [Capacitive Soil Moisture Sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ)
+- A [Peristaltic Pump](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E) motor and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&)
+- An [Adafruit MCP3008 ADC](https://www.amazon.com/dp/B00NAY3RB2?psc=1)
+- A [Motor Speed Controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS)
+- A [Breadboard](https://www.amazon.com/SunFounder-Raspberry-Breadboard-solderless-Circuit/dp/B07ZYR7R8X)
+- A [9V Battery](https://www.amazon.com/dp/B08BRJQQSL/) with [wire leads](https://www.amazon.com/Battery-Hard-Shell-Connector-Insulated-Wires/dp/B07WTYS1PM/)
 - Plant Box
 - Water Cup or Box
 
