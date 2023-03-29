@@ -1,9 +1,9 @@
 ---
-title: "Integrate Viam with OpenAI to create a companion robot"
+title: "Integrate Viam with ChatGPT to create a companion robot"
 linkTitle: "Create an AI companion robot"
 weight: 60
 type: "docs"
-tags: ["base", "AI", "ChatGPT", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
+tags: ["base", "AI", "OpenAI", "ChatGPT", "ElevenLabs", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
 description: "Harness AI to add life to your Viam rover."
 # SME: Matt Vella
 ---
@@ -261,6 +261,25 @@ You can change Rosey's name to something else, add characters, adjust the classi
 <br>
 <br>
 
+## Use realistic custom AI voices
+
+By default, Rosey will use Google TTS for audio voice generation.
+However, [ElevenLabs](https://elevenlabs.io/) can be used for enhanced AI voice generation.
+To use ElevenLabs, add your ElevenLabs API key to `run.sh` as follows:
+
+``` sh
+export ELEVENLABS_KEY=mykey
+```
+
+You can then assign voices to Rosey or any characters by adding the ElevenLabs voice name (including names of voices you have created with the [ElevenLabs VoiceLab](https://beta.elevenlabs.io/voice-lab)) in <file>params.py</file>.
+For example:
+
+``` json
+{ "linda belcher": { "voice": "domi" } }
+```
+
+This opens up some really interesting possibilities, like having your robot talk to you in a voice that sounds like your favorite celebrity, or having your robot tell your cat to "Get off of the table!" in an AI version of your own voice.
+
 ## Next steps
 
 What you've seen in this tutorial is a very basic integration between a Viam-powered robot and OpenAI.
@@ -271,6 +290,6 @@ Some ideas:
 * Make the voice recognition software listen in the background, so the robot can move and interact with the world while listening and responding.
 * Integrate another ML model that is used to follow a human (when told to do so).
 * Add Lidar and integrate Viam's [SLAM Service](/services/slam) to map the world around it.
-* Use Viam's [Data Management](/manage/data-management/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
+* Use Viam's [Data Management](/manage/data/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
 
 We'd love to see where you decide to take this. If you build your own companion robot, let us and others know on the [Community Discord](https://discord.gg/viam).

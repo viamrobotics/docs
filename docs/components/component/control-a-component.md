@@ -13,14 +13,11 @@ draft: true
 
 The arm component supports the following methods:
 
-| Method Name | Golang | Python | Description |
-| ----------- | ------ | ------ | ----------- |
-| [MethodName](#methodname)   | [MethodName][go_method_code]   | [method_name][python_method_code]   | Description    |
-| [Method Name](#methodname)   | [MethodName][go_method_code]   | [method_name][python_method_code]   | Description    |
-| [Method Name](#methodname)   | [MethodName][go_method_code]   | [method_name][python_method_code]   | Description    |
-
-[go_method_code]: https://pkg.go.dev/go.viam.com/rdk/components/component#Arm
-[python_method_code]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_end_position
+| Method Name | Description |
+| ----------- | ----------- |
+| [MethodName](#methodname)    | Description    |
+| [Method Name](#methodname)   | Description    |
+| [Method Name](#methodname)   | Description    |
 
 ### `MethodName`
 
@@ -70,17 +67,3 @@ Resolution description
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
-
-## Next Steps
-
-<div class="container text-center">
-  <div class="row">
-    <div class="col hover-card">
-        <a href="install">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Relevant tutorial name</h4>
-            <p style="text-align: left;">Description.</p>
-        </a>
-    </div>
-  </div>
-</div>

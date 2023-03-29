@@ -4,6 +4,8 @@ linkTitle: "Unbox and Set Up your Viam Rover"
 weight: 10
 type: "docs"
 tags: ["rover", "tutorial"]
+image: "/try-viam/rover-resources/img/viam-rover/rover-front.jpg"
+imageAlt: "A Viam Rover"
 description: "A list of the contents of the Viam Rover kit, instructions for wiring your rover, and links for additional hardware."
 ---
 
@@ -172,9 +174,9 @@ The rover's design allows you to reach the SD card slot at all times, so you can
 ### Connect the wires
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this piece of paper](../img/rpi4_rover_leaf.pdf) which has labels for the pins and carefully push it onto the pins.
+To make it easier for you to see which pin is which, you can print out [this piece of paper at 100% scaling level](../img/rpi4_rover_leaf_A4.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
 Only attach the paper when the Pi is unplugged.
-To make attaching the paper easier, use a credit card.
+To make attaching the paper easier, use a credit card or a small screwdriver.
 {{< /alert >}}
 
 Wire your Pi to the buck converter, the acceleration tilt module, the DC motor driver:
@@ -234,6 +236,10 @@ To configure your rover so you can start driving it, [add the Viam Fragment to y
 ## Next Steps
 
 Check out our other [tutorials that use the Viam Rover](/tutorials/viam-rover/).
+
+### Rover Build
+
+If you want to learn more about the rover, you can find the CAD files and bill-of-materials (BOM) on [GitHub](https://github.com/viamrobotics/VR1-22-A001).
 
 ### Extensibility
 

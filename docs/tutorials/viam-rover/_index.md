@@ -7,63 +7,15 @@ no_list: true
 description: "Color detection and SDK tutorials for the Viam Rover."
 ---
 
-<div>
-<p>Follow one of these tutorials with your borrowed or owned rover:</p>
-</div>
+Follow one of these tutorials with your borrowed or owned rover:
 
-<div class="container text-center">
-  <div class="row">
-    <a href="../../try-viam/rover-resources/rover-tutorial/">
-      <div class="col hover-card">
-        <br />
-        <img
-          src="../../try-viam/rover-resources/img/viam-rover/rover-front.jpg"
-          alt="A Viam Rover."
-        />
-        <br />
-        <h4 style="text-align: left; margin-left: 0px; margin-top: 1em">
-          Unbox and Set Up your Viam Rover
-        </h4>
-        <p style="text-align: left">
-          Contents of the Viam Rover kit and instructions for wiring your rover.
-        </p>
-      </div>
-    </a>
-    <a href="../../tutorials/viam-rover/try-viam-sdk">
-      <div class="col hover-card">
-        <br />
-        <img
-          src="../../tutorials/img/try-viam-sdk/image1.gif"
-          alt="Overhead view of the Viam rover showing it as it drives in a square."
-        />
-        <br />
-        <h4 style="text-align: left; margin-left: 0px; margin-top: 1em">
-          Drive with the Viam SDK
-        </h4>
-        <p style="text-align: left">
-          Use the Viam SDK to make your Viam Rover move in a square.
-        </p>
-      </div>
-    </a>
-    <a href="../../tutorials/viam-rover/try-viam-color-detection">
-      <div class="col hover-card">
-        <br />
-        <img
-          src="../img/try-viam-color-detection/detectioncam-comp-stream.png"
-          alt="detectionCam stream displaying a color detection."
-        />
-        <br />
-        <h4 style="text-align: left; margin-left: 0px; margin-top: 1em">
-          Detect a Color
-        </h4>
-        <p style="text-align: left">
-          Use the Vision Service in the Viam app to detect a color.
-        </p>
-      </div>
-    </a>
-  </div>
-</div>
+{{< cards >}}
+    {{< card link="/try-viam/rover-resources/rover-tutorial">}}
+    {{< card link="/tutorials/viam-rover/try-viam-sdk">}}
+    {{< card link="/tutorials/viam-rover/try-viam-color-detection">}}
+{{< /cards >}}
 
 <br>
-<br>
-{{< snippet "social.md" >}}
+
+Have questions, or want to meet other people working on robots?
+Join our [Community Discord](https://discord.gg/viam).

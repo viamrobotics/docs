@@ -27,7 +27,7 @@ Fill in the attributes for your encoder:
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<encoder_name>",
     "type": "encoder",
@@ -58,7 +58,7 @@ Viam also supports a model of encoder called [`"single"`](../single) which requi
 
 The following example shows the configuration of a board and an encoder:
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {

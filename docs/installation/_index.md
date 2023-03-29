@@ -14,47 +14,43 @@ See [What is Viam?](/viam/) for more information.
 
 <div class="container text-center td-max-width-on-larger-screens">
   <div class="row">
-    <a href="prepare">
-      <div class="col hover-card">
-        <br />
-        <img src="img/thumbnails/prepare.png" alt="Prepare" width="100%" />
+    <div class="col hover-card">
+      <a href="prepare">
+        <img src="img/thumbnails/prepare.png" alt="Prepare" width=100% style="padding-top: 1em" />
         <h4 style="text-align: left; margin-left: 0px">Prepare</h4>
         <p style="text-align: left">
           Prepare your computer before installing <code>viam-server</code>.
         </p>
-      </div>
-    </a>
-    <a href="install">
-      <div class="col hover-card">
-        <br />
-        <img src="img/thumbnails/install.png" alt="Install" width="100%" />
+      </a>
+    </div>
+    <div class="col hover-card">
+      <a href="install">
+        <img src="img/thumbnails/install.png" alt="Install" width=100% style="padding-top: 1em" />
         <h4 style="text-align: left; margin-left: 0px">Install</h4>
         <p style="text-align: left">
           Install <code>viam-server</code> on your robot's computer.
         </p>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
   <div class="row">
-    <a href="manage">
-      <div class="col hover-card">
-        <br />
-        <img src="img/thumbnails/manage.png" alt="Manage" width="100%" />
+    <div class="col hover-card">
+      <a href="manage">
+        <img src="img/thumbnails/manage.png" alt="Manage" width=100% style="padding-top: 1em" />
         <h4 style="text-align: left; margin-left: 0px">Manage</h4>
         <p style="text-align: left">
           Control and troubleshoot <code>viam-server</code>.
         </p>
-      </div>
-    </a>
-    <a href="update">
-      <div class="col hover-card">
-        <br />
-        <img src="img/thumbnails/update.png" alt="Update" width="100%" />
+      </a>
+    </div>
+    <div class="col hover-card">
+      <a href="update">
+        <img src="img/thumbnails/update.png" alt="Update" width=100% style="padding-top: 1em" />
         <h4 style="text-align: left; margin-left: 0px">Update</h4>
         <p style="text-align: left">
           Keep your version of <code>viam-server</code> up to date.
         </p>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
 </div>

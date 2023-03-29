@@ -19,14 +19,15 @@ Enter a name for your camera, select the type `camera`, and select the `webcam` 
 
 <img src="../img/create-webcam.png" alt="Creation of webcam camera in the Viam app config builder." style="max-width:500px" />
 
-Fill in the attributes for your webcam view:
+Fill in the attributes for your webcam view.
+If you click on the **Video Path** field while your robot is live, a drop down will autopopulate with identified camera paths.
 
 <img src="../img/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." />
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<camera_name>",
     "type": "camera",
@@ -109,6 +110,10 @@ C270 HD WEBCAM (usb-0000:01:00.0-1.2):
  /dev/video1
  /dev/media4
 ```
+
+### CSI Camera not working on a Raspberry Pi
+
+If you are using a CSI camera on a Raspberry Pi, you need to [enable legacy mode](../../../installation/prepare/rpi-setup/#enable-communication-protocols).
 
 ### Timeout errors on a Raspberry Pi
 

@@ -1,5 +1,5 @@
 ---
-title: "How to Configure a SCUTTLE Robot with a Camera"
+title: "Configure a SCUTTLE Robot with a Camera"
 linkTitle: "Configure a SCUTTLE Robot"
 weight: 15
 type: "docs"
@@ -15,7 +15,7 @@ tags: ["base", "camera", "raspberry pi", "scuttle"]
 
 - A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the `viam-server` installed.
 
-Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os), if necessary.
+Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#install-raspberry-pi-os), if necessary.
 
 - [A SCUTTLE Robot](https://www.scuttlerobot.org/shop/)
 - A USB camera (webcam)
@@ -217,7 +217,7 @@ Ensure that your robot has sufficient space to drive around without hitting anyo
 
 Before configuring the encoders, you must configure I2C bus `1` on the board:
 
-```json-viam
+```json
 {
       "name": "<board_name>",
       "type": "board",
@@ -304,7 +304,7 @@ Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](/tutorials
 
 ## Documents referenced
 
-- [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#installing-raspberry-pi-os)
+- [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#install-raspberry-pi-os)
 
 - [Color Detection with SCUTTLE Robot on Viam](/tutorials/scuttlebot/color-detection-scuttle/)
 

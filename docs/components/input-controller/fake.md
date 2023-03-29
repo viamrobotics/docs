@@ -25,7 +25,7 @@ Refer to the following example configuration for an input controller of model `f
 {{< /tab >}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {

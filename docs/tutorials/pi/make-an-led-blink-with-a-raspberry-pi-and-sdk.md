@@ -11,7 +11,9 @@ In this post, you will be introduced to the basics of programming hardware by us
 This will allow you to write code to make an LED connected to the GPIO of a Raspberry Pi blink on and off.
 This tutorial is a good introduction to [Python](https://www.python.org/) or [Go](https://go.dev/) programming languages, and developing custom software for robots.
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.gif" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." width="100%"><br>
+<div class="td-max-width-on-larger-screens">
+  {{<gif webm_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.webm" mp4_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.">}}
+</div>
 
 {{% alert title="Note" color="note" %}}
 This is part 2 of Viam's Intro to Robotics series.
@@ -32,7 +34,7 @@ You will need the following hardware, tools, and software to complete this proje
 <ol>
     <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
 <ol type="a">
-<li>Refer to the [Viam Raspberry Pi Setup Guide](/installation/prepare/rpi-setup) to setup your Pi.</li>
+    <li>Refer to the <a href="../../../installation/prepare/rpi-setup">Viam Raspberry Pi Setup Guide</a> to setup your Pi.</li>
 <li>You must also enable SSH on your Pi.</li>
 </ol>
     <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
@@ -273,7 +275,9 @@ go run blink.go
 
 And, if all goes well, you should see your LED blinking on and off again every second!
 
-![A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text "LED is on," and "LED is off" is printed out to the terminal onscreen.](../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.gif)
+<div class="td-max-width-on-larger-screens">
+  {{<gif webm_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.webm" mp4_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.mp4" alt="A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text LED is on, and LED is off is printed out to the terminal onscreen.">}}
+</div>
 
 You can exit this program by pressing **CTRL + C** in your terminal window.
 
@@ -281,7 +285,7 @@ If you get an error, you can check your code against my complete code here:
 
 **Completed code**: <a href="https://github.com/viam-labs/LED-Blink" target="_blank">ht<span></span>tps://github.com/viam-labs/LED-Blink</a>
 
-{{< snippet "social.md" >}}
+If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your computer, the best way to get help is over on the [Community Discord](https://discord.gg/viam).
 
 ## Summary
 
@@ -289,7 +293,10 @@ In this tutorial, you learned the basics of controlling your robot using the Via
 
 If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, check out one of following [Tutorial List](..).
 
-{{< snippet "social.md" >}}
+{{% alert title="Tip" color="tip" %}}
+If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Community Discord](https://discord.gg/viam).
+There, you will find a friendly developer community of people learning how to make robots using Viam.
+{{% /alert %}}
 
 ## Components URL List
 

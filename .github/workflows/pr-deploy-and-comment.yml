@@ -1,11 +1,17 @@
 name: pr-deploy-and-comment
 
+concurrency:
+  group: pullrequest-untrusted-${{ github.event.pull_request.head.sha }}
+  cancel-in-progress: true
+
 on:
-  workflow_dispatch:
-  pull_request:
+  pull_request_target:
+    branches: [ main ]
+    types: [ labeled, synchronize ]
 
 jobs:
   pr-deploy-and-comment:
+    if: ${{ contains(github.event.*.labels.*.name, 'safe to build') }}
     runs-on: [self-hosted, x64, private]
     container:
       image: ghcr.io/viamrobotics/canon:amd64
@@ -13,19 +19,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+            ref: ${{ github.event.pull_request.head.sha }}
             submodules: true  # fetch hugo themes
             fetch-depth: 0
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2 
+        uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
           extended: true
-          
+
       - name: Temp config
         run: |
-          echo url_latest_version = \"https://docs-test.viam.dev/${{ github.sha }}/public\" > config_pr.toml
-          echo baseURL = \"https://docs-test.viam.dev/${{ github.sha }}/public\" >> config_pr.toml
+          echo url_latest_version = \"https://docs-test.viam.dev/${{ github.event.pull_request.head.sha }}/public\" > config_pr.toml
+          echo baseURL = \"https://docs-test.viam.dev/${{ github.event.pull_request.head.sha }}/public\" >> config_pr.toml
 
       - name: Build
         run: make build-pr
@@ -39,11 +46,11 @@ jobs:
         uses: 'google-github-actions/upload-cloud-storage@v0'
         with:
           path: 'public'
-          destination: 'docs-test.viam.dev/${{ github.sha }}'
+          destination: 'docs-test.viam.dev/${{ github.event.pull_request.head.sha }}'
 
       - name: Comment on PR with link to rendered site
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
           recreate: true
-          message: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.sha }}/public'
+          message: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.event.pull_request.head.sha }}/public'
           GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}

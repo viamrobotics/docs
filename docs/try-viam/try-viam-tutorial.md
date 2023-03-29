@@ -4,6 +4,8 @@ linkTitle: "Control A Rented Viam Rover"
 weight: 39
 type: "docs"
 description: "Remotely control a Viam Rover located on-site at Viam in NYC."
+image: "/try-viam/rover-resources/img/viam-rover/rover-front.jpg"
+imageAlt: "The front of the assembled Viam Rover"
 tags: ["try viam", "app"]
 ---
 
@@ -21,11 +23,11 @@ Watch this tutorial video for a walkthrough of Try Viam, including [how to reser
 
 ## **CONTROL** tab
 
-Click on the timer at the top to go to the rental rover's **CONTROL** tab where you can drive the robot and interact with each of the robot's components.
+Click on the rover name at the top to go to the rental rover's **CONTROL** tab where you can drive the robot and interact with each of the robot's components.
 
 At the top of the page you can see the randomly assigned name of the rover, the host, and the IP address.
 
-![Screenshot of the top banner of a Try Viam rover robot page. The randomly generated name for this rover is "solitary-voice."](../img/try-viam/bannerinfo.png)
+![Screenshot of the top banner of a Try Viam rover robot page. The randomly generated name for this rover is "silent-forest"](../img/try-viam/bannerinfo.png)
 
 The **CONTROL** tab contains panels for each of the rover's components:
 
@@ -115,7 +117,7 @@ You can also see their current positions (based on encoder readings) in real tim
 
 ![The left motor running at 20% power and forwards and right motor running at 80% power and backwards.](../img/try-viam/motors-running.png)
 
-![The robot rotating with the left motor running at 20% power and forwards and right motor running at 80% power and backwards.](../img/try-viam/rotating.gif)
+{{<gif webm_src="../img/try-viam/rotating.webm" mp4_src="../img/try-viam/rotating.mp4" alt="The robot rotating with the left motor running at 20% power and forwards and right motor running at 80% power and backwards.">}}
 
 #### Board control
 
@@ -219,36 +221,10 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
 
 ## Next steps
 
-<div class="container text-center">
-  <div class="row">
-    <div class="col hover-card">
-        <br>
-        <img src="../../tutorials/img/try-viam-sdk/image1.gif" alt="Overhead view of the Viam rover showing it as it drives in a square.">
-        <br>
-        <a href="../../tutorials/viam-rover/try-viam-sdk">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive with the Viam SDK</h4>
-            <p style="text-align: left;">Use the Viam SDK to make your Viam Rover move in a square.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <br>
-        <img src="../../tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png" alt="detectionCam stream displaying a color detection.">
-        <br>
-        <a href="../../tutorials/viam-rover/try-viam-color-detection">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect a Color</h4>
-            <p style="text-align: left;">Use the Vision Service in the Viam app to detect a color.</p>
-        <a>
-    </div>
-    <div class="col hover-card">
-        <br>
-        <img src="../rover-resources/img/viam-rover/rover-front.jpg" style="max-width:400px;width:100%" alt="The front of the assembled Viam Rover" />
-        <br>
-        <a href="../rover-resources/">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Order a Rover</h4>
-            <p style="text-align: left;">Get your own Viam rover and set it up.</p>
-        <a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{< card link="/tutorials/viam-rover/try-viam-sdk" size="small">}}
+  {{< card link="/tutorials/viam-rover/try-viam-color-detection" size="small">}}
+  {{< card link="/try-viam/rover-resources" size="small">}}
+{{< /cards >}}
 
 {{< snippet "social.md" >}}

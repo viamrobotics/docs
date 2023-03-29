@@ -5,13 +5,15 @@ weight: 80
 simple_list: true
 type: docs
 tags: ["rover", "viam rover"]
+image: "/try-viam/rover-resources/img/viam-rover/rover-front.jpg"
+imageAlt: "The front of the assembled Viam Rover"
 aliases:
     - /viam-rover-resources
 description: Get your own Viam rover and set it up.
 ---
 
 {{< alert title="Tip" color="tip" >}}
-If you want to try Viam, you can [order your own Viam rover](https://www.viam.com/resources/rover) now.
+If you want a convenient mobile base for a variety of robotics projects, you can [order your own Viam rover](https://www.viam.com/resources/rover) now.
 {{< /alert >}}
 
 <div class="container td-max-width-on-larger-screens">

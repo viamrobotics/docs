@@ -28,7 +28,7 @@ The following example configuration combines a `gamepad` and a `webgamepad` cont
 {{< /tab >}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {

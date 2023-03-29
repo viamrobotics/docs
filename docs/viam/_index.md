@@ -29,7 +29,7 @@ Join the [**Viam community**](https://discord.gg/viam) to collaborate during pla
 
 ## Get started
 
-A *robot* in Viam consists of at least one computer, like a [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) single-board computer, running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
+A *robot* in Viam consists of at least one computer, typically a [single-board computer](/installation/prepare/), running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
 
 <img src="img/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." style="float: left; max-width:270px; display: block; margin: auto 20px auto auto"></img>
 
@@ -77,8 +77,8 @@ After configuring your robot's hardware, you can configure high level functional
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure robot control." style="float: right; max-width:270px; display: block; margin: auto auto auto auto"></img>
 
 The Viam platform provides a consistent programming interface for all robots, allowing you to [control your robots](/program/sdk-as-client/) with code in the **language of your choice**.
-Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk) and [Python](https://python.viam.dev/).
-Additional SDKs are coming soon, including Typescript, Rust, Java, C++, and Flutter.
+Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), and [TypeScript](https://ts.viam.dev/).
+Additional SDKs are coming soon, including Rust, Java, C++, and Flutter.
 
 TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is authenticated and encrypted.
 Viam uses [WebRTC](https://webrtc.org/) to create secure peer-to-peer paths between robots and clients for fast, low latency communication.
@@ -92,7 +92,7 @@ There are four categories of APIs:
 - [Robot](/services/robot-service/) - high level robot commands
 - [Components](/components) like motors, arms, GPS
 - [Services](/services) like computer vision, motion planning, SLAM
-- Cloud applications like [Fleet Management](/manage/fleet-management), [Data Management](/manage/data-management)
+- Cloud applications like [Fleet Management](/manage/fleet-management), [Data Management](/manage/data)
 
 You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).
 
