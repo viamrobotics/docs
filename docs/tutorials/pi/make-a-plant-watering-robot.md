@@ -164,7 +164,7 @@ mkdir plant-watering-robot
 cd plant-watering-robot
 ```
 
-After navigating to this directory, make a new Python file called `adctesting` and open up the file.
+After navigating to this directory, create a new Python file called <file>adctesting.py</file> and open up the file.
 For example, run the following commands:
 
 ``` shell
