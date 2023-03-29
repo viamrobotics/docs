@@ -13,16 +13,13 @@ tags: ["raspberry pi", "app", "board", "motor"]
 Building a useful robot doesn't have to require complicated code or expensive equipment.
 With a Raspberry Pi and some cheap, basic hardware, you can keep your plants healthy and happy from anywhere in the world!
 
-Follow this tutorial to learn how to set up an automatic plant watering system.
-You can leave this plant watering robot on your windowsill or desk, refill the water supply as needed, and easily program the system to your specifications for watering your plants.
-
 Follow this tutorial to learn how to set up an automatic plant watering system:
 
-1.  Complete the physical assembly and wiring.
+1.  [Complete the physical assembly and wiring](/#set-up-your-plant-watering-robot).
 2. [Create and connect to the robot](#configure-the-components-of-your-robot-in-the-viam-app).
 3. [Configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app).
-4. [Configure a custom Capacitive Soil Moisture model](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-sensor-component-model) sensor component.
-4. [Write code utilizing the Viam Python SDK](#add-python-control-code) to control the plant watering robot with `viam-server` and your Pi.
+4. [Configure a custom Capacitive Soil Moisture sensor component](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-sensor-component-model).
+5. [Write code utilizing the Viam Python SDK to control the plant watering robot](#add-python-control-code).
 
 The tutorial uses the following hardware, but you can adjust it as needed:
 
@@ -186,16 +183,16 @@ import board
 import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
 
-# create the spi bus
+# Create the SPI bus
 spi = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
 
-# create the cs (chip select)
-cs = digitalio.DigitalInOut(board.D25) # TODO: Need to check this: example was D5. Documentation is confusing.
+# Create the cs (chip select)
+cs = digitalio.DigitalInOut(board.D25)
 
-# create the mcp object
+# Create the MCP3008 object
 mcp = MCP.MCP3008(spi, cs)
 
-# create an analog input channel on pin 0
+# Create an analog input channel on Pin 0
 chan = AnalogIn(mcp, MCP.P0)
 
 print('Reading MCP3008 values, press Ctrl-C to quit...')
@@ -348,16 +345,16 @@ class MoistureSensor(Sensor):
         x = 0
         input = []
 
-        # create the spi bus
+        # Create the SPI bus
         spi = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
 
-        # create the cs (chip select)
-        cs = digitalio.DigitalInOut(board.D25) # TODO: Need to check this: example was D5. Documentation is confusing.
+        # Create the cs (chip select)
+        cs = digitalio.DigitalInOut(board.D25)
 
-        # create the mcp object
+        # Create the MCP3008 object
         mcp = MCP.MCP3008(spi, cs)
 
-        # create an analog input channel on pin 0
+        # Create an analog input channel on Pin 0
         chan = AnalogIn(mcp, MCP.P0)
 
         while x<10:
