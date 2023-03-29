@@ -39,7 +39,7 @@ Make sure your Pi is flashed with a Viam-compatible operating system, and that y
 ## Set Up your Plant Watering Robot
 
 Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different parts together.
-You will set up the robot to receive signals from the capacitive soil moisture sensor, and signal to the peristaltic pump when it is time to pump water from the water's box to the plant's box.
+You will set up the robot to receive signals from the capacitive soil moisture sensor and signal to the peristaltic pump when it is time to pump water from the water's box to the plant's box.
 
 ### Wire your ADC
 
@@ -51,7 +51,7 @@ Refer to the following pinout diagram for your MCP3008 Analog to Digital Convert
 
 ![Pinout diagram for the ADC.](../../img/plant-watering-pi/adc-pinout.png)
 
-Consult your Raspberry Pi's data sheet or [this resource](https://pinout.xyz/pinout/3v3_power) for your board's pinout diagram.
+Consult your Raspberry Pi's data sheet or [pinout.xyz](https://pinout.xyz/pinout/3v3_power) for your board's pinout diagram.
 
 Wire the pins as follows:
 
@@ -219,7 +219,6 @@ sudo pip3 install --force-reinstall adafruit-blinka
 Now, you should see the Moisture Sensor values outputted by the MCP3008 in the range of `0` to `1023`.
 Test your sensor by putting it in air, water, and different soils to see how the values change.
 
-An example output:
 
 ![Terminal output of capacitive soil moisture sensor values.](../../img/plant-watering-pi/moisture-sensor-output.png)
 
@@ -227,7 +226,7 @@ An example output:
 
 Follow [this guide](/installation/install/) to install `viam-server` on your pi, create a new robot, and connect to it on [the Viam app](https://app.viam.com).
 
-After navigating to your new robot's page on the app, click on the **CONFIG** tab.
+Then, navigate to your new robot's page on the app and click on the **CONFIG** tab.
 
 First, add your Pi as a [board component](/components/board/) by creating a new component with **type** `board` and **model** `pi`:
 
@@ -258,9 +257,9 @@ First, add your Pi as a [board component](/components/board/) by creating a new 
 
 <br>
 
-Then, add your pump as a [motor component](/components/motor/).
+Then, add your pump as a [motor component](/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
 
-Make sure to add your board (in this example, named `local`) to this component's `depends_on`, and `"max_rpm": 1000` and `"pwm": "12"` (the pin # that you wired the PWM to) to `attributes`:
+Add your board (in this example, named `local`) to this component's dependencies (`depends_on`) and set the attributes **Max RPM** to `1000` and **PWM**  to `12` (the pin # that you wired the PWM to).
 
 {{< tabs name="Configure an Pump Motor" >}}
 {{% tab name="Config Builder" %}}
@@ -299,9 +298,8 @@ Make sure to add your board (in this example, named `local`) to this component's
 
 As the capacitive soil moisture sensor is not currently one of Viam's built-in [sensor component](/components/sensor/) models, you now must use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/).
 
-- In this case, the custom resource is a custom component model that extends the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html).
-- You instantiate this custom component as a server with the `viam.rpc.server` class.
-- Then, you add the component server as a remote part of your `plant-watering-robot`.
+In this case, the custom resource is a custom component model that extends the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html).
+To use the custom component, you create a server using the `viam.rpc.server` class and once the server is running you add the server as a remote part of your `plant-watering-robot`.
 
 If you haven't already, install the Viam Python SDK by following the instructions [here](https://python.viam.dev/).
 
@@ -461,14 +459,14 @@ Now, you can add code into <file>plant-watering-robot.py</file> to write the log
 </br>
 
 Use the Viam [motor](/components/motor#api) and [sensor](/components/sensor#control-your-sensor-with-viams-client-sdk-libraries) API methods.
-Determine at what [analog value from the Soil Moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant.
+Determine at what [analog value from the Soil Moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant, as your thirsty plant's average moisture reading might differ from our example value of `950`.
 Also, consider how often you would like to check the moisture levels of the plant, and how long the plant should be watered.
 
 You can get your components from the robot like this:
 
 ```python
-sensor = Sensor.from_robot(robot = robot, name = 'moisture_sensor') # Note that this name, `moisture_sensor`, is defined in sensor.py
-water_pump = Motor.from_robot(robot = robot, name = 'water_pump')
+sensor = Sensor.from_robot(robot=robot, name='moisture_sensor') # Note that this name, `moisture_sensor`, is defined in sensor.py
+water_pump = Motor.from_robot(robot=robot, name='water_pump')
 ```
 
 And you can add your system logic to run continuously like this:
@@ -501,5 +499,5 @@ And you can add your system logic to run continuously like this:
 ## Next Steps
 
 Now that you have created your automatic plant watering system with a capacitive soil moisture sensor, you can easily use Viam to automate other aspects of your garden.
-
 For example, you can use a [light sensor](https://www.amazon.com/Sensor-Module-Raspberry-Integrated-Circuits/dp/B07L15M5JG) or a [temperature sensor](https://www.amazon.com/KY-011-Cathode-Arduino-Starter-2-color/dp/B07869PKKF/ref=as_li_ss_tl?keywords=arduino+two+color+led+module&qid=1556591832&s=gateway&sr=8-2&th=1&linkCode=sl1&tag=murraynet-20&linkId=c36cd98be29498a9883b656c7011b6bb&language=en_US)!
+If you build something based on this please share it in our [Community Discord](https://discord.gg/viam)  - we'd love to see it.
