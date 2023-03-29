@@ -42,7 +42,7 @@ Make sure your Pi is flashed with a Viam-compatible operating system, and that y
 ## Set Up your Plant Watering Robot
 
 Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different parts together.
-Doing so ensures that the signals from the capacitive soil moisture sensor can be processed by the Pi, and that the Pi can signal to the peristaltic pump when it is time to pump water from the water's box to the plant's box.
+You will set up the robot to receive signals from the capacitive soil moisture sensor, and signal to the peristaltic pump when it is time to pump water from the water's box to the plant's box.
 
 ### Wire your ADC
 
