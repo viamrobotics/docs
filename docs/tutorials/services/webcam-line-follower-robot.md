@@ -19,7 +19,7 @@ videoAlt: "The green line the camera sees as the rover moves along it."
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.<br><br>
 
-**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision#detection">Vision Service color detector</a>.
+**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision/detection">Vision Service color detector</a>.
 
 **What you will learn**:
 
@@ -81,7 +81,7 @@ Or if you prefer the raw JSON:
 
 ### Configuring the Vision Service
 
-We’ll use the Viam [Vision Service color detector](/services/vision/#detection) to identify the line to follow.
+We’ll use the Viam [Vision Service color detector](/services/vision/detection) to identify the line to follow.
 
 In the **SERVICES** section of the **CONFIG** tab, configure a color detector for the color of your tape line.
 
@@ -384,7 +384,7 @@ This will give it a wider field of view so it takes longer for the line to go ou
 
 Things to try:
 
-- Add a `saturation_cutoff_pct` and/or a `value_cutoff_percent` [(documented here)](/services/vision/#color-detector-parameters) to your Vision Service parameters.
+- Add a `saturation_cutoff_pct` and/or a `value_cutoff_percent` [(documented here)](/services/vision/detection#color_detector) to your Vision Service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
 Be sure to update your `detect_color` parameter accordingly.

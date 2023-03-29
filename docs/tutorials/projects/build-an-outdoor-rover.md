@@ -291,7 +291,7 @@ You can measure your wheel's circumference and width between wheels, which will 
 
 You can now have some real fun.
 Try driving your rover by keyboard.
-Drive your [robot programmatically](../../get-started/try-viam-sdk/), use a [color detector](../../services/try-viam-color-detection/) or a [machine learning object detector](/services/vision/#detection) to interact with the environment.
+Drive your [robot programmatically](../../get-started/try-viam-sdk/), use a [color detector](../../services/try-viam-color-detection/) or a [machine learning object detector](/services/vision/detection) to interact with the environment.
 Check out our [Python SDK documentation](https://python.viam.dev/) (or another SDK in the language of your choice) and start planning how you'll use your sturdy outdoor rover to do real things!
 
 If you're adding a camera, GPS, planning on using Viam's Navigation Service, or want to attach a solar panel and charge controller - this is all fairly plug and play with Viam and is covered in the [Viam documentation](/).
