@@ -1,9 +1,9 @@
 ---
-title: "How to Make a Plant Watering Robot with a Raspberry Pi"
-linkTitle: "Make a Plant Watering Robot with a Pi"
+title: "Plant Watering Robot with a Raspberry Pi"
+linkTitle: "Watering Robot"
 weight: 50
 type: "docs"
-description: "Instructions for creating a plant watering robot with a Raspberry Pi single-board computer and Viam."
+description: "Create a plant watering robot with a Raspberry Pi single-board computer."
 tags: ["raspberry pi", "app", "board", "motor"]
 # SMES: Olivia Miller
 ---
