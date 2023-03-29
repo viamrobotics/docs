@@ -15,9 +15,9 @@ Use the SDK of your preferred language to write code to control your robots.
 
 Viam currently offers SDKs for the following three languages:
 
-* [Python SDK](https://python.viam.dev/)
-* [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
-* [TypeScript SDK](https://ts.viam.dev/)
+- [Python SDK](https://python.viam.dev/)
+- [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
+- [TypeScript SDK](https://ts.viam.dev/)
 
 Click on the links above to read more about installation and usage of each SDK.
 
@@ -45,13 +45,10 @@ npm install --save @viamrobotics/sdk
 
 Before you get started, ensure that you:
 
-* Go to [app.viam.com](https://app.viam.com/).
-
-* Create a new robot.
-
-* Go to the **SETUP** tab and follow the instructions there.
-
-* Install either the [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), or [TypeScript](https://ts.viam.dev/) SDK on your computer.
+- Go to [app.viam.com](https://app.viam.com/).
+- Create a new robot.
+- Go to the **SETUP** tab and follow the instructions there.
+- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), or [TypeScript](https://ts.viam.dev/) SDK on your computer.
 
 {{% /alert %}}
 
