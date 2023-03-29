@@ -4,6 +4,9 @@ linkTitle: "Drive with the SDK"
 weight: 40
 type: "docs"
 description: "Try Viam by using the Viam SDK to make your Viam Rover move in a square."
+webmSrc: "/tutorials/img/try-viam-sdk/image1.webm"
+mp4Src: "/tutorials/img/try-viam-sdk/image1.mp4"
+videoAlt: "A Viam Rover driving in a square"
 tags: ["base", "viam rover", "try viam", "sdk", "python"]
 ---
 

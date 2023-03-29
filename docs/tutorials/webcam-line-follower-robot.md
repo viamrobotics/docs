@@ -1,5 +1,5 @@
 ---
-title: "How to Build a Line Follower with a Rover and a Webcam"
+title: "Build a Line Follower with a Rover and a Webcam"
 linkTitle: "RGB Line Follower"
 weight: 50
 type: "docs"

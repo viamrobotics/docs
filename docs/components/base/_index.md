@@ -273,12 +273,14 @@ Set the linear and angular power of the base, represented as a percentage of max
 
 **Parameters:**
 
-- `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's linear propulsion. In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
-Viam's coordinate system considers +Y to be the forward axis (+/- X left/right, +/- Z up/down), so use the Y component of this vector to move forward and backward when controlling a wheeled base.
-Negative "Y:" values imply moving backwards.
+- `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's linear propulsion.
+  In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
+  Viam's coordinate system considers +Y to be the forward axis (+/- X left/right, +/- Z up/down), so use the Y component of this vector to move forward and backward when controlling a wheeled base.
+  Negative "Y:" values imply moving backwards.
 - `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's angular propulsion.
-In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
-Use the Z component of this vector to spin left or right when controlling a wheeled base. Negative "Z:" values imply spinning to the right.
+  In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
+  Use the Z component of this vector to spin left or right when controlling a wheeled base.
+  Negative "Z:" values imply spinning to the right.
 
 **Returns:**
 
@@ -537,28 +539,8 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card">
-        <a href="/tutorials/yahboom-rover/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Drive a Yahboom Rover with a Gamepad</h4>
-            <p style="text-align: left;">Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <a href="/tutorials/controlling-an-intermode-rover-canbus/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Control an Intermode Rover with CAN Bus and Viam</h4>
-            <p style="text-align: left;">How to abstract CAN bus protocol to control an Intermode rover with Viam.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <a href="/tutorials/viam-rover/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Drive the Viam Rover with the Viam SDK</h4>
-            <p style="text-align: left;">Try Viam by using the Viam SDK to make your Viam Rover move in a square.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{< card link="/tutorials/yahboom-rover" size="small">}}
+  {{< card link="/tutorials/viam-rover" size="small">}}
+  {{< card link="/tutorials/webcam-line-follower-robot" size="small">}}
+{{< /cards >}}
