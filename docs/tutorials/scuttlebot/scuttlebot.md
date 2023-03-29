@@ -1,5 +1,5 @@
 ---
-title: "How to Configure a SCUTTLE Robot with a Camera"
+title: "Configure a SCUTTLE Robot with a Camera"
 linkTitle: "Configure a SCUTTLE Robot"
 weight: 15
 type: "docs"

@@ -324,25 +324,8 @@ Classifications overlay text from the `GetClassifications` method of the [Vision
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card hover-card-small">
-        <a href="../../../services/vision">
-        <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Vision Service</h4>
-        <p style="text-align: left;">The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.</p>
-        <a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="/tutorials/viam-rover/try-viam-color-detection/">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect color with a Viam Rover</h4>
-            <p style="text-align: left;">Use the vision service in the Viam app to detect a color.</p>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="/tutorials/scuttlebot/color-detection-scuttle/">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Colored Object Follower</h4>
-            <p style="text-align: left;">Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+    {{< card link="/services/vision" size="small">}}
+    {{< card link="/tutorials/viam-rover/try-viam-color-detection" size="small">}}
+    {{< card link="/tutorials/scuttlebot/color-detection-scuttle" size="small">}}
+{{< /cards >}}
