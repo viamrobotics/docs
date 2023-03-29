@@ -205,9 +205,9 @@ After saving the above code and adding control logic with Viam's API methods, ru
 
 For example:
 
-* Python: `python3 ~/myCode/myViamFile.py`
-* Go: `go run ~/myCode/myViamFile.py`
-* TypeScript: `tsc ~/myCode/myViamFile.ts`
+- Python: `python3 ~/myCode/myViamFile.py`
+- Go: `go run ~/myCode/myViamFile.py`
+- TypeScript: `tsc ~/myCode/myViamFile.ts`
 
 ## Next Steps
 
