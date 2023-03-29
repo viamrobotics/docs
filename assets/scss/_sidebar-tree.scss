@@ -61,7 +61,7 @@
     }
 
     .td-sidebar-link {
-        display: block;
+        display: inline-block;
         padding-bottom: 0.375rem;
 
         &__page {
@@ -94,6 +94,7 @@
     & > .td-sidebar-nav__section {
         padding-top: .5rem;
         padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 
     li i { // Layout of icons
@@ -164,4 +165,10 @@
     #content-desktop {display: none;}
     #content-mobile {display: block;}
     }
+}
+
+
+.submenu-toggle {
+    margin-right: -1.5em;
+    float: right;
 }
