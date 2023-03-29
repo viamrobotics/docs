@@ -66,7 +66,9 @@ Wire the pins as follows:
 | DIN | MOSI |
 | CS/SHDN | GPIO25 |
 
-[**Wiring Diagram**](#wiring-diagram)
+#### Wiring Diagram
+
+![The full wiring diagram for all the hardware for the Plant Watering Robot.](../../img/plant-watering-pi/full-wiring.png)
 
 ### Wire your Soil Moisture Sensor
 
@@ -84,7 +86,7 @@ Wire the pins as follows:
 
 Put the soil moisture sensor inside of your plant box.
 
-[**Wiring Diagram**](#wiring-diagram)
+Refer to the following full wiring diagram for your hardware setup: [**Wiring Diagram**](#wiring-diagram)
 
 ### Wire your Pump
 
@@ -96,17 +98,13 @@ Now, wire and power your Peristaltic Pump [motor](/components/motor/) to complet
 4. Connect the PWM pin on the pump to [Pin 12](https://pinout.xyz/pinout/pin12_gpio18) of the Pi.
 5. Connect the plastic tubing to the pump. Put the suction end inside of your water box, and the output end inside of your plant box.
 
-### Wiring Diagram
-
-Refer to the following full wiring diagram for your hardware setup:
-
-![The full wiring diagram for all the hardware for the Plant Watering Robot.](../../img/plant-watering-pi/full-wiring.png)
+Refer to the following full wiring diagram for your hardware setup: [**Wiring Diagram**](#wiring-diagram)
 
 ## Program Your Plant Watering Robot
 
 ### Enable SPI on your Pi
 
-Now that you have wired your ADC and Moisture Sensor, make sure that SPI is enabled on your Pi.
+Now that you have wired your ADC and Moisture Sensor, make sure that the Serial Peripheral Interface (SPI) is enabled on your Pi.
 
 SSH into your Pi and run the following command:
 
@@ -118,15 +116,16 @@ Once the `raspi-config` interface is open, navigate to **Interface Options**:
 
 ![Raspi-config Tool interface with Interface Options selected.](../../img/plant-watering-pi/interface-options.png)
 
-Then, click on **SPI**:
+Then, select **SPI**:
 
 ![Raspi-config Tool interface with SPI selected.](../../img/plant-watering-pi/spi.png)
 
-Now, click **Yes** to enable SPI:
+Now, select **Yes** to enable SPI:
 
 ![Raspi-config Tool interface with Yes selected for SPI enablement.](../../img/plant-watering-pi/spi-enabled.png)
 
-Finally, click **Finish** and restart your Pi.
+Finally, select **Finish**.
+Restart your Pi using `sudo reboot` to make these changes take effect.
 
 ### Test your Soil Moisture readings on your Pi
 
@@ -173,7 +172,7 @@ touch adctesting.py
 nano adctesting.py
 ```
 
-Now, add the following Python code to `adctesting.py` to test reading values from your capacitive soil moisture sensor through your MCP3008 ADC:
+Now, add the following Python code to <file>adctesting.py</file> to test reading values from your capacitive soil moisture sensor through your MCP3008 ADC:
 
 ``` python
 import time
@@ -230,7 +229,7 @@ Follow [this guide](/installation/install/) to install `viam-server` on your pi,
 
 After navigating to your new robot's page on the app, click on the **CONFIG** tab.
 
-First, add your Pi as a [board component](/components/board/):
+First, add your Pi as a [board component](/components/board/) by creating a new component with **type** `board` and **model** `pi`:
 
 {{< tabs name="Configure an Pi Board" >}}
 {{% tab name="Config Builder" %}}
