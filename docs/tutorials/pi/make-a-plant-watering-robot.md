@@ -463,10 +463,10 @@ Follow these instructions to start working on your Python control code:
 1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **CODE SAMPLE** tab.
 Follow the instructions in this tab.
 2. Click **COPY CODE** to copy a code sample that establishes a connection with your robot when run.
-3. Paste this code sample into a new file in your `plant-watering-robot` directory.
+3. Paste this code sample into a new file in the `plant-watering-robot` directory you created on your Pi.
 4. Name the file <file>plant-watering-robot.py</file>, and save it.
   
-For example, run the following commands to create and open the file:
+For example, run the following commands on your Pi to create and open the file:
 
 ``` shell
 cd plant-watering-robot
@@ -476,7 +476,7 @@ nano plant-watering-robot.py
 
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
-Add this code into the `main()` function of the program, after connecting to your robot and before closing the connection.
+Add this code into the `main()` function of the program.
 Use the Viam [motor](/components/motor#api) and [sensor](/components/sensor#control-your-sensor-with-viams-client-sdk-libraries) API methods.
 
 You can get your components from the robot like this:
@@ -511,6 +511,12 @@ And you can add your system logic to run continuously like this:
     print(readings)
     avg = sum(readings) / len(readings)
     sleep(1)
+```
+
+Save your <file>plantwatering.py</file> program with this logic added in, and then run it on your Pi like this:
+
+``` shell
+python3 plantwatering.py
 ```
 
 To tinker this example code to work best for you, determine at what [analog value from the Soil Moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant, as your thirsty plant's average moisture reading might differ from our example value of `950`.
