@@ -22,32 +22,12 @@ SLAM is an important area of ongoing research in robotics, particularly for mobi
 The Viam SLAM Service supports the integration of SLAM as a service on your robot.
 The following SLAM libraries are integrated:
 
-- [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
 - [Cartographer](https://github.com/cartographer-project)
+- [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
 
 ### Requirements
 
 Install the binaries required to utilize these libraries on your machine by running the following commands:
-
-`ORB-SLAM3`:
-{{< tabs >}}
-{{% tab name="Linux aarch64" %}}
-
-``` bash
-sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
-sudo chmod a+rx /usr/local/bin/orb_grpc_server
-```
-
-{{< /tab >}}
-{{% tab name="Linux x86_64" %}}
-
-```bash
-sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
-sudo chmod a+rx /usr/local/bin/orb_grpc_server
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 `Cartographer`:
 
@@ -72,6 +52,26 @@ sudo chmod a+rx /usr/local/bin/carto_grpc_server
 
 ``` bash
 brew tap viamrobotics/brews && brew install carto-grpc-server
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+`ORB-SLAM3`:
+{{< tabs >}}
+{{% tab name="Linux aarch64" %}}
+
+``` bash
+sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
+sudo chmod a+rx /usr/local/bin/orb_grpc_server
+```
+
+{{< /tab >}}
+{{% tab name="Linux x86_64" %}}
+
+```bash
+sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
+sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
 
 {{% /tab %}}
@@ -151,79 +151,6 @@ The mode utilized by the SLAM service is determined by the information found in 
 | PURE MAPPING | In PURE MAPPING mode, a new map is generated from scratch. | This mode is triggered if no map is found in the `data_dir/map` directory at runtime. |
 | UPDATING | In UPDATING mode, an existing map is being changed and updated with new data. | This mode is triggered when a map is found in the `data_dir/map` directory at runtime if the attribute `"map_rate_sec"` is `> 0`.|
 | LOCALIZING | In LOCALIZING mode, the map is not changed. Data is used to localize on an existing map. This is similar to UPDATING mode, except the loaded map is not changed. | This mode is triggered when a map is found in the `data_dir/map` directory at runtime if the attribute `"map_rate_sec" = 0`. |
-
-## Integrated Library: ORB-SLAM3
-
-ORB-SLAM3 can perform sparse SLAM using monocular or RGB-D images.
-
-{{% alert title="Note" color="note" %}}
-While ORB-SLAM3 does support the use of monocular cameras, for best results it is recommended that you use an RGB-D camera.
-{{% /alert %}}
-
-### Example Configuration
-
-#### Live Mode
-
-An example configuration for running ORB-SLAM3 in live mode, with `rgbd` image data, with two camera streams available (`color` for RGB images and `depth` for depth data):
-
-``` json
-"services": [
-  {
-    "name": "testorb",
-    "model": "orbslamv3",
-    "type": "slam",
-    "attributes": {
-      "data_dir": "/home/<YOUR_USERNAME>/<ORBSLAM_DIR>",
-      "sensors": ["color", "depth"],
-      "use_live_data": true,
-      "map_rate_sec": 60,
-      "data_rate_msec": 200,
-      "config_params": {
-        "mode": "rgbd"
-      }
-    }
-  }
-]
-```
-
-#### Offline Mode
-
-An example configuration for running ORB-SLAM3 in offline mode:
-
-``` json
-"services": [
-  {
-    "name": "testorb",
-    "model": "orbslamv3",
-    "type": "slam",
-    "attributes": {
-      "data_dir": "/home/<YOUR_USERNAME>/<ORBSLAM_DIR>",
-      "sensors": [],
-      "use_live_data": false,
-      "map_rate_sec": 120,
-      "data_rate_msec": 100,
-      "config_params": {
-        "mode": "mono"
-      }
-    }
-  }
-]
-```
-
-### ORB-SLAM3 `config_params`
-
-| Parameter Mode | Description | Inclusion | Default Value |
-| -------------- | ----------- | --------- | ------------- |
-| `mode` | `rgbd` or `mono` | **Required** | No default |
-| `debug` | Boolean specifying if the service should be run in debug mode. Affects log output. | Optional | `false` |
-| `orb_n_features` | Number of features per image. | Optional | `1250` |
-| `orb_scale_factor` | Scale factor between levels in the scale pyramid. | Optional | `1.2` |
-| `orb_n_levels` | Number of levels in the scale pyramid. | Optional | `8` |
-| `orb_n_ini_th_fast` | Initial FAST threshold. | Optional | `20` |
-| `orb_n_min_th_fast` | Lower threshold if no corners detected. | Optional | `7` |
-| `stereo_th_depth` | Number of stereo baselines used to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | Optional | `40` |
-| `depth_map_factor` | Factor to transform the depth map to real units. | Optional | `1000` |
-| `stereo_b` | Stereo baseline in meters. | Optional | `0.0745` |
 
 ## Integrated Library: Cartographer
 
@@ -383,3 +310,76 @@ For more information about running [Cartographer in Offline Mode](run-slam-carto
 | `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Normalized with translational and rotational. |
 | `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Normalized with occupied and rotational. |
 | `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | Normalized with translational and occupied. |
+    
+## Integrated Library: ORB-SLAM3
+
+ORB-SLAM3 can perform sparse SLAM using monocular or RGB-D images.
+
+{{% alert title="Note" color="note" %}}
+While ORB-SLAM3 does support the use of monocular cameras, for best results it is recommended that you use an RGB-D camera.
+{{% /alert %}}
+
+### Example Configuration
+
+#### Live Mode
+
+An example configuration for running ORB-SLAM3 in live mode, with `rgbd` image data, with two camera streams available (`color` for RGB images and `depth` for depth data):
+
+``` json
+"services": [
+  {
+    "name": "testorb",
+    "model": "orbslamv3",
+    "type": "slam",
+    "attributes": {
+      "data_dir": "/home/<YOUR_USERNAME>/<ORBSLAM_DIR>",
+      "sensors": ["color", "depth"],
+      "use_live_data": true,
+      "map_rate_sec": 60,
+      "data_rate_msec": 200,
+      "config_params": {
+        "mode": "rgbd"
+      }
+    }
+  }
+]
+```
+
+#### Offline Mode
+
+An example configuration for running ORB-SLAM3 in offline mode:
+
+``` json
+"services": [
+  {
+    "name": "testorb",
+    "model": "orbslamv3",
+    "type": "slam",
+    "attributes": {
+      "data_dir": "/home/<YOUR_USERNAME>/<ORBSLAM_DIR>",
+      "sensors": [],
+      "use_live_data": false,
+      "map_rate_sec": 120,
+      "data_rate_msec": 100,
+      "config_params": {
+        "mode": "mono"
+      }
+    }
+  }
+]
+```
+
+### ORB-SLAM3 `config_params`
+
+| Parameter Mode | Description | Inclusion | Default Value |
+| -------------- | ----------- | --------- | ------------- |
+| `mode` | `rgbd` or `mono` | **Required** | No default |
+| `debug` | Boolean specifying if the service should be run in debug mode. Affects log output. | Optional | `false` |
+| `orb_n_features` | Number of features per image. | Optional | `1250` |
+| `orb_scale_factor` | Scale factor between levels in the scale pyramid. | Optional | `1.2` |
+| `orb_n_levels` | Number of levels in the scale pyramid. | Optional | `8` |
+| `orb_n_ini_th_fast` | Initial FAST threshold. | Optional | `20` |
+| `orb_n_min_th_fast` | Lower threshold if no corners detected. | Optional | `7` |
+| `stereo_th_depth` | Number of stereo baselines used to classify a point as close or far. Close and far points are treated differently in several parts of the stereo SLAM algorithm. | Optional | `40` |
+| `depth_map_factor` | Factor to transform the depth map to real units. | Optional | `1000` |
+| `stereo_b` | Stereo baseline in meters. | Optional | `0.0745` |
