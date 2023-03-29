@@ -13,7 +13,7 @@ Viam offers software development kits (SDKs) that wrap the `viam-server` [gRPC](
 
 Use the SDK of your preferred language to write code to control your robots.
 
-Viam currently offers SDKs for the following two languages:
+Viam currently offers SDKs for the following three languages:
 
 * [Python SDK](https://python.viam.dev/)
 * [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
@@ -51,7 +51,7 @@ Before you get started, ensure that you:
 
 * Go to the **SETUP** tab and follow the instructions there.
 
-- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), or [TypeScript](https://ts.viam.dev/) SDK on your computer.
+* Install either the [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), or [TypeScript](https://ts.viam.dev/) SDK on your computer.
 
 {{% /alert %}}
 
@@ -210,7 +210,7 @@ For example:
 
 * Python: `python3 ~/myCode/myViamFile.py`
 * Go: `go run ~/myCode/myViamFile.py`
-* TypeScript: `tsc ~/myCode/myViamFile.py"
+* TypeScript: `tsc ~/myCode/myViamFile.ts`
 
 ## Next Steps
 
