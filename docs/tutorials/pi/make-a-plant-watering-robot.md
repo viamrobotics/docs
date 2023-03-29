@@ -18,7 +18,7 @@ Follow this tutorial to learn how to set up an automatic plant watering system:
 1. [Complete the physical assembly and wiring](#set-up-your-plant-watering-robot).
 2. [Create and connect to the robot](#configure-the-components-of-your-robot-in-the-viam-app).
 3. [Configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app).
-4. [Configure a custom Capacitive Soil Moisture sensor component](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-sensor-component-model).
+4. [Configure the Capacitive Soil Moisture Sensor as a custom resource](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-resource).
 5. [Write code utilizing the Viam Python SDK to control the plant watering robot](#add-python-control-code).
 
 The tutorial uses the following hardware, but you can adjust it as needed:
@@ -298,12 +298,22 @@ Now, if you navigate to your robot's **CONTROL** tab, you should be able to cont
 
 <img src="../../img/plant-watering-pi/pump-motor-control.png" alt="Creation of a pump motor in the Viam app config builder." style="max-width:800px" />
 
-### Configure the Capacitive Soil Moisture Sensor as a Custom Sensor Component Model
+### Configure the Capacitive Soil Moisture Sensor as a Custom Resource
 
-As the capacitive soil moisture sensor is not currently one of Viam's built-in [sensor component](/components/sensor/) models, you have to use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/).
+*Resources* refer to the different [components](/components/) and [services](/services/) Viam provides for robots to use.
+*Components* refer to types of hardware, and each component's built-in `models` support the most common models of this hardware.
+For example, the [sensor component](/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
 
-In this case, the custom resource is a custom component model that extends the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html).
-To use the custom component, you create a server using the `viam.rpc.server` class and once the server is running you add the server as a remote part of your `plant-watering-robot`.
+However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3).
+Although the capacitive soil moisture sensor is not currently one of Viam's built-in models, you can use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/) extending the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html), making it a model of sensor available for you to use on your robot.
+
+Create your custom sensor resource in 3 steps:
+
+1. Code a `MoistureSensor` class implementing the `GetReadings()` method that belongs to all members of the Viam sensor class, and instantiate this class on a RPC server in the `main()` function of your code.
+2. Add this "sensor server" as a [remote part](/manage/parts-and-remotes/) of your `plant-watering-robot`.
+3. Add a command that runs the program you coded instantiating the "sensor server" as a *process* of your robot.
+
+#### Code the `MoistureSensor` Class
 
 If you haven't already, install the Viam Python SDK by following the instructions [here](https://python.viam.dev/).
 
@@ -376,6 +386,8 @@ if __name__ == "__main__":
 
 You can modify this example code as necessary.
 
+#### Add the `MoistureSensor` Remote
+
 Now, go back to your robot's page on [the Viam app](https://app.viam.com) and navigate to the **CONFIG** tab, then to the **REMOTES** sub-tab.
 
 Add your sensor server as a [remote part](/manage/parts-and-remotes/) called `my-sensor-server`:
@@ -401,7 +413,7 @@ Add your sensor server as a [remote part](/manage/parts-and-remotes/) called `my
 {{% /tab %}}
 {{< /tabs >}}
 
-<br>
+#### Add the `MoistureSensor` Process
 
 Then, navigate to the **PROCESSES** subtab and create a process called `run-sensor-server`:
 
@@ -464,14 +476,8 @@ nano plant-watering-robot.py
 
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
-You can start by adding code into the `main()` function of the program, after connecting to your robot and before closing the connection.
-
-<br>
-</br>
-
+Add this code into the `main()` function of the program, after connecting to your robot and before closing the connection.
 Use the Viam [motor](/components/motor#api) and [sensor](/components/sensor#control-your-sensor-with-viams-client-sdk-libraries) API methods.
-Determine at what [analog value from the Soil Moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant, as your thirsty plant's average moisture reading might differ from our example value of `950`.
-Also, consider how often you would like to check the moisture levels of the plant, and how long the plant should be watered.
 
 You can get your components from the robot like this:
 
@@ -506,6 +512,9 @@ And you can add your system logic to run continuously like this:
     avg = sum(readings) / len(readings)
     sleep(1)
 ```
+
+To tinker this example code to work best for you, determine at what [analog value from the Soil Moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant, as your thirsty plant's average moisture reading might differ from our example value of `950`.
+Also, consider how often you would like to check the moisture levels of the plant, and how long the plant should be watered.
 
 ## Next Steps
 
