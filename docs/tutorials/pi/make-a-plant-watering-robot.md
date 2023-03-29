@@ -294,6 +294,12 @@ Add your board (in this example, named `local`) to this component's dependencies
 {{% /tab %}}
 {{< /tabs >}}
 
+Click **SAVE CONFIG**.
+
+Now, if you navigate to your robot's **CONTROL** tab, you should be able to control the motor by setting the power and direction of rotation and clicking the **RUN** button:
+
+<img src="../../img/plant-watering-pi/pump-motor-control.png" alt="Creation of a pump motor in the Viam app config builder." style="max-width:800px" />
+
 ### Configure the Capacitive Soil Moisture Sensor as a Custom Sensor Component Model
 
 As the capacitive soil moisture sensor is not currently one of Viam's built-in [sensor component](/components/sensor/) models, you have to use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/).
@@ -404,7 +410,7 @@ Then, navigate to the **PROCESSES** subtab and create a process called `run-sens
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-<img src="../../img/plant-watering-pi/sensor-process-config-builder.png" alt="Creation of a pump motor in the Viam app config builder." style="max-width:800px" />
+<img src="../../img/plant-watering-pi/sensor-process-config-builder.png" alt="Creation of a process to run the sensor remote server in the Viam app config builder." style="max-width:800px" />
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -433,9 +439,16 @@ Then, navigate to the **PROCESSES** subtab and create a process called `run-sens
 {{% /tab %}}
 {{< /tabs >}}
 
+Modify the `"args"` and `"cwd"` to match the path to your `plant-watering-robot` directory on your Pi.
+
+Click **SAVE CONFIG**.
+Now, when you navigate to your robot's **CONTROL** tab, you should be able to see your sensor readings:
+
+<img src="../../img/plant-watering-pi/sensor-reading-control.png" alt="Readings from a soil moisture sensor in the Viam app CONTROL tab." style="max-width:800px" />
+
 ### Add Python Control Code
 
-Follow these instructions to start working on your Python Control Code:
+Follow these instructions to start working on your Python control code:
 
 1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **CODE SAMPLE** tab.
 Follow the instructions in this tab.
