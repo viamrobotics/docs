@@ -87,8 +87,9 @@ With WebRTC established, Viam uses [gRPC](https://grpc.io/) so you can program y
 
 This provides flexibility and security whether you are building tight control loops for autonomous mobile robots, event-based triggers for IoT devices, or custom web-based robot management interfaces.
 
-There are three categories of APIs:
+There are four categories of APIs:
 
+- [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level robot commands
 - [Components](/components) like motors, arms, GPS
 - [Services](/services) like computer vision, motion planning, SLAM
 - Cloud applications like [Fleet Management](/manage/fleet-management), [Data Management](/manage/data-management)
