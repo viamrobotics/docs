@@ -71,7 +71,7 @@ The `color_detector` is a heuristic-based detector that draws boxes around objec
 Click **SAVE CONFIG** and head to the **COMPONENTS** tab.
 
 You cannot interact directly with the [Vision Service](/services/vision/).
-To be able to interact with the Vision Service you must configure a camera component to wrap the service.
+To be able to interact with the Vision Service you must configure a camera component.
 
 {{< alert title="Tip" color="tip" >}}
 If you want to detect other colors, change the color parameter `detect_color`.

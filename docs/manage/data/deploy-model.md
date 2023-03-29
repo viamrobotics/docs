@@ -27,7 +27,7 @@ Save the configuration and your model will be added to your robot at <file>$HOME
 To make use of your new model, use the Vision Service.
 Still on the **SERVICES** subtab add a new service with **Type** `Vision` and give it a name.
 
-Create a [`tflite_classifier` classifier](../../../services/vision/#classification) by adding the following configuration in the new Vision Service panel.
+Create a [`tflite_classifier` classifier](../../../services/vision/classification#tflite-classifier) by adding the following configuration in the new Vision Service panel.
 
 ```json
 {
@@ -52,7 +52,7 @@ Save the configuration.
 You cannot interact directly with the [Vision Service](/services/vision/).
 To be able to interact with the Vision Service you must:
 
-1. Configure a physical [camera component](../../../components/camera) to wrap the service.
+1. Configure a physical [camera component](../../../components/camera).
 2. Configure a [transform camera](../../../components/camera/transform) to view output from the detector overlaid on images from the physical camera.
 
     ```json
