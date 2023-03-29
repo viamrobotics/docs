@@ -10,17 +10,21 @@ tags: ["raspberry pi", "app", "board", "motor"]
 
 ![Picture of the plant watering robot on a desk.](../../img/plant-watering-pi/plant-watering-robot.png)
 
-## Getting Started
-
 Building a useful robot doesn't have to require complicated code or expensive equipment.
 With a Raspberry Pi and some cheap, basic hardware, you can keep your plants healthy and happy from anywhere in the world!
 
-Follow this tutorial to learn how to set up an automatic plant watering system, as pictured above.
+Follow this tutorial to learn how to set up an automatic plant watering system.
 You can leave this plant watering robot on your windowsill or desk, refill the water supply as needed, and easily program the system to your specifications for watering your plants.
 
-Complete the physical assembly and wiring, [create and connect to a new robot](#configure-the-components-of-your-robot-in-the-viam-app), [configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app), [configure a custom Capacitive Soil Moisture model](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-sensor-component-model) [sensor](/components/sensor) component, and [code a Python file utilizing the Viam Python SDK](#add-python-control-code) to control the plant watering robot with `viam-server` and your Pi.
+Follow this tutorial to learn how to set up an automatic plant watering system:
 
-Completing this tutorial requires the following hardware:
+1.  Complete the physical assembly and wiring.
+2. [Create and connect to the robot](#configure-the-components-of-your-robot-in-the-viam-app).
+3. [Configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app).
+4. [Configure a custom Capacitive Soil Moisture model](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-sensor-component-model) sensor component.
+4. [Write code utilizing the Viam Python SDK](#add-python-control-code) to control the plant watering robot with `viam-server` and your Pi.
+
+The tutorial uses the following hardware, but you can adjust it as needed:
 
 - A Raspberry Pi with SD card
 - A [Capacitive Soil Moisture Sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ/ref=asc_df_B07QXZC8TQ/?tag=hyprod-20&linkCode=df0&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596&psc=1&tag=&ref=&adgrpid=71762478951&hvpone=&hvptwo=&hvadid=343238573411&hvpos=&hvnetw=g&hvrand=14606440922488452520&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=pla-757549749596)
@@ -42,7 +46,7 @@ Doing so ensures that the signals from the capacitive soil moisture sensor can b
 
 ### Wire your ADC
 
-Wiring an analog-to-digital converter (ADC) between your capacitive soil moisture sensor and Pi ensures that the analog signals created by the capacitive soil moisture sensor's readings can be processed by the Pi, which expects digital signals to come to it through its GPIO pins.
+The analog-to-digital converter (ADC) between your capacitive soil moisture sensor and Pi converts the analog signals created by the capacitive soil moisture sensor's readings to digital signals that can be processed by your Pi, which expects digital signals to come to it through its GPIO pins.
 
 Start by wiring your ADC to your Raspberry Pi board.
 
