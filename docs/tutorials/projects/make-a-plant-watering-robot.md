@@ -5,6 +5,9 @@ weight: 50
 type: "docs"
 description: "Create a plant watering robot with a Raspberry Pi single-board computer."
 tags: ["raspberry pi", "app", "board", "motor"]
+image: "/tutorials/img/plant-watering-pi/preview.png"
+imageAlt: "Picture of the plant watering robot"
+
 # SMES: Olivia Miller
 ---
 
@@ -465,7 +468,7 @@ Follow the instructions in this tab.
 2. Click **COPY CODE** to copy a code sample that establishes a connection with your robot when run.
 3. Paste this code sample into a new file in the `plant-watering-robot` directory you created on your Pi.
 4. Name the file <file>plant-watering-robot.py</file>, and save it.
-  
+
 For example, run the following commands on your Pi to create and open the file:
 
 ``` shell

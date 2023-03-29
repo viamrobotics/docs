@@ -4,8 +4,8 @@ linkTitle: "Blink an LED with a Pi and the SDK"
 weight: 40
 type: "docs"
 description: "Intro to hardware programming using the Viam SDK to make an LED blink."
-webmSrc: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.webm"
-mp4Src: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.mp4"
+webmSrc: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.webm"
+mp4Src: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.mp4"
 videoAlt: "A blinking blue LED connected to a Raspberry Pi with jumper cables."
 tags: ["board", "raspberry pi", "sdk"]
 # SME: Joe Karlsson

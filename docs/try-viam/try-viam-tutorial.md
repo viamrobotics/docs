@@ -222,9 +222,9 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
 ## Next steps
 
 {{< cards >}}
-  {{< card link="/tutorials/get-started/try-viam-sdk" size="small">}}
-  {{< card link="/tutorials/services/try-viam-color-detection" size="small">}}
-  {{< card link="/try-viam/rover-resources" size="small">}}
+  {{% card link="/tutorials/get-started/try-viam-sdk" size="small" %}}
+  {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
+  {{% card link="/try-viam/rover-resources" size="small" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}
