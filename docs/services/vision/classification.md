@@ -169,13 +169,13 @@ vision = VisionServiceClient.from_robot(robot)
 print("Vision Resources:")
 print(await vision.get_classifier_names())
 
-# Apply the classifier configured as my_classifier to the image from your camera configured as "camera_1"
+# Apply the classifier configured as "my_classifier" to the image from your camera configured as "camera_1"
 classifications = await vision.get_classifications_from_camera("camera_1", "my_classifier")
 
 await robot.close()
 ```
 
-To learn more about the Classification API, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
+To learn more about how to use classification, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -208,7 +208,7 @@ if len(classifications) > 0 {
 }
 ```
 
-To learn more about the Classification API, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
+To learn more about how to use classification, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
 
 {{% /tab %}}
 {{< /tabs >}}

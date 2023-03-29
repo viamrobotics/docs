@@ -3,7 +3,7 @@ title: "Segmentation (or 3D object segmentation)"
 linkTitle: "Segmentation"
 weight: 20
 type: "docs"
-description: "Select an algorith that creates point clouds of identified objects in a 3D image."
+description: "Select an algorithm that creates point clouds of identified objects in a 3D image."
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 # SMEs: Bijan, Khari
 ---
@@ -24,7 +24,7 @@ The types of segmenters supported are:
 
 Radius clustering is a segmenter that identifies well separated objects above a flat plane.
 It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.
-It is slower than other segmenters and can take up to 30s to segment a scene.
+It is slower than other segmenters and can take up to 30 seconds to segment a scene.
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -198,7 +198,7 @@ segments = await vision.get_object_point_clouds("camera_1", "my_segmenter")
 await robot.close()
 ```
 
-To learn more about the Segmentation API, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
+To learn more about how to use segmentation, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -231,7 +231,7 @@ if len(segments) > 0 {
 }
 ```
 
-To learn more about the Segmentation API, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
+To learn more about how to use segmentation, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
 
 {{% /tab %}}
 {{< /tabs >}}

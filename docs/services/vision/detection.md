@@ -36,7 +36,7 @@ It only detects hues found on the color wheel.
 {{% alert title="Note" color="note" %}}
 Object colors can vary dramatically based on the light source.
 We recommend you verify the desired color detection value under actual lighting conditions.
-To determine the color value from the actual cam component image, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
+To determine the color value from the actual camera component image, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
 
 If the color is not reliably detected, increase the `hue_tolerance_pct`.
 {{< /alert >}}
@@ -225,7 +225,7 @@ Wait for the robot to reload, and then go to the **CONTROL** tab to test the str
 
 ## Code
 
-The following code gets the robot’s Vision Service and then runs a color detector vision model on an image from the robot's camera `"camera_1"`:
+The following code gets the robot’s vision service and then runs a color detector vision model on an image from the robot's camera `"camera_1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -281,7 +281,7 @@ if len(detections) > 0 {
 }
 ```
 
-To learn more about the Detection API, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
+To learn more about how to use detection, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
 
 {{% /tab %}}
 {{< /tabs >}}
