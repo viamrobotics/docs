@@ -11,7 +11,7 @@ tags: ["vision", "computer vision", "CV", "services", "classification"]
 _2D Image Classification_ is the process of taking a 2D image from a camera and deciding which class label, out of many, best describes the given image.
 Any camera that can return 2D images can use 2D image classification.
 
-Which class labels may be considered for classification varies and will depend on the machine learning model and how it was trained.
+The class labels used for classification vary and depend on the machine learning model and how it was trained.
 
 The returned classifications consist of the image's class label and confidence score.
 
@@ -23,7 +23,7 @@ The returned classifications consist of the image's class label and confidence s
 
 The types of classifiers supported are:
 
-* **tflite_classifier**: a machine-learning based classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
+* **tflite_classifier**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
 ### TFLite classifier
 
@@ -143,7 +143,7 @@ For example:
 You cannot interact directly with the [Vision Service](/services/vision/).
 To be able to interact with the Vision Service you must:
 
-1. Configure a physical [camera component](../../../components/camera) to wrap the service.
+1. Configure a physical [camera component](../../../components/camera).
 2. Configure a [transform camera](../../../components/camera/transform) to view output from the classifier overlaid on images from the physical camera.
 
 After adding the component and its attributes, click **SAVE CONFIG**.

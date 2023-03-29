@@ -52,7 +52,7 @@ Save the configuration.
 You cannot interact directly with the [Vision Service](/services/vision/).
 To be able to interact with the Vision Service you must:
 
-1. Configure a physical [camera component](../../../components/camera) to wrap the service.
+1. Configure a physical [camera component](../../../components/camera).
 2. Configure a [transform camera](../../../components/camera/transform) to view output from the detector overlaid on images from the physical camera.
 
     ```json

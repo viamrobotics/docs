@@ -11,7 +11,7 @@ tags: ["vision", "computer vision", "CV", "services", "detection"]
 _2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct "objects" of interest in the scene.
 Any camera that can return 2D images can use 2D object detection.
 
-The service provides different types of detectors, both heuristic and machine-learning based, so that you can create, register, and use detectors for any object you may need to identify.
+The service provides different types of detectors, both based on heuristics and machine learning, so that you can create, register, and use detectors for any object you may need to identify.
 
 The returned detections consist of the bounding box around the identified object, as well as its label and confidence score:
 
@@ -24,12 +24,12 @@ The returned detections consist of the bounding box around the identified object
 
 You can use the following types of detectors:
 
-- [**color_detector**](#color-detector): A heuristic based detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
-- [**tflite_detector**](#tflite-detector): A machine-learning based detector that draws bounding boxes according to the specified .tflite model file available on the robot’s hard drive.
+- [**color_detector**](#color_detector): A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
+- [**tflite_detector**](#tflite_detector): A machine learning detector that draws bounding boxes according to the specified .tflite model file available on the robot’s hard drive.
 
 ### `color_detector`
 
-A heuristic based detector that draws boxes around objects according to their hue.
+A heuristic detector that draws boxes around objects according to their hue.
 Color detectors do not detect black, perfect grays (grays where the red, green, and blue color component values are equal), or white.
 It only detects hues found on the color wheel.
 
@@ -84,7 +84,7 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 
 ### `tflite_detector`
 
-A machine-learning based detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
+A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -216,7 +216,7 @@ For example:
 You cannot interact directly with the [Vision Service](/services/vision/).
 To be able to interact with the Vision Service you must:
 
-1. Configure a physical [camera component](../../../components/camera) to wrap the service.
+1. Configure a physical [camera component](../../../components/camera).
 2. Configure a [transform camera](../../../components/camera/transform) to view output from the detector overlaid on images from the physical camera.
 
 After adding the component and its attributes, click **SAVE CONFIG**.
@@ -292,28 +292,8 @@ To see more code examples of how to use Viam's Vision Service, see [our example 
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card">
-        <a href="../../../tutorials/viam-rover/try-viam-color-detection/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Detect a Color</h4>
-            <p style="text-align: left;">Use the Vision Service in the Viam app to detect a color.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <a href="../../../tutorials/scuttlebot/color-detection-scuttle/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Colored Object Follower</h4>
-            <p style="text-align: left;">Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <a href="../../../tutorials/webcam-line-follower-robot/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">RGB Line Follower</h4>
-            <p style="text-align: left;">Build a line-following robot that relies on a webcam and color detection.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{% card link="/tutorials/services/try-viam-color-detection/" size="small" %}}
+  {{% card link="/tutorials/services/color-detection-scuttle/" size="small" %}}
+  {{% card link="/tutorials/services/webcam-line-follower-robot/" size="small" %}}
+{{< /cards >}}
