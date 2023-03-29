@@ -3,7 +3,7 @@ title: "Plant Watering Robot with a Raspberry Pi"
 linkTitle: "Plant Watering Robot"
 weight: 50
 type: "docs"
-description: "Create a plant watering robot with a Raspberry Pi single-board computer."
+description: "Create a plant watering robot with a Raspberry Pi."
 tags: ["raspberry pi", "app", "board", "motor"]
 image: "/tutorials/img/plant-watering-pi/preview.png"
 imageAlt: "Picture of the plant watering robot"
@@ -21,20 +21,20 @@ Follow this tutorial to learn how to set up an automatic plant watering system:
 1. [Complete the physical assembly and wiring](#set-up-your-plant-watering-robot).
 2. [Create and connect to the robot](#configure-the-components-of-your-robot-in-the-viam-app).
 3. [Configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app).
-4. [Configure the Capacitive Soil Moisture Sensor as a custom resource](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-resource).
+4. [Configure the capacitive soil moisture sensor as a custom resource](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-resource).
 5. [Write code utilizing the Viam Python SDK to control the plant watering robot](#add-python-control-code).
 
 The tutorial uses the following hardware, but you can adjust it as needed:
 
 - A Raspberry Pi 3B or 4B with SD card
-- A [Capacitive Soil Moisture Sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ)
-- A [Peristaltic Pump](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E) motor and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&)
+- A [capacitive soil moisture sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ)
+- A [peristaltic pump](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E) motor and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&)
 - An [Adafruit MCP3008 ADC](https://www.amazon.com/dp/B00NAY3RB2?psc=1)
-- A [Motor Speed Controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS)
-- A [Breadboard](https://www.amazon.com/SunFounder-Raspberry-Breadboard-solderless-Circuit/dp/B07ZYR7R8X)
-- A [9V Battery](https://www.amazon.com/dp/B08BRJQQSL/) with [wire leads](https://www.amazon.com/Battery-Hard-Shell-Connector-Insulated-Wires/dp/B07WTYS1PM/)
-- Plant Box
-- Water Cup or Box
+- A [motor speed controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS)
+- A [breadboard](https://www.amazon.com/SunFounder-Raspberry-Breadboard-solderless-Circuit/dp/B07ZYR7R8X)
+- A [9V battery](https://www.amazon.com/dp/B08BRJQQSL/) with [wire leads](https://www.amazon.com/Battery-Hard-Shell-Connector-Insulated-Wires/dp/B07WTYS1PM/)
+- A planter box or flower pot
+- A water container
 
 Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
 Make sure your Pi is flashed with a Viam-compatible operating system, and that you are able to SSH into it.
@@ -42,7 +42,7 @@ Make sure your Pi is flashed with a Viam-compatible operating system, and that y
 ## Set Up your Plant Watering Robot
 
 Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different components together.
-You will set up the robot to receive signals from the capacitive soil moisture sensor and signal to the peristaltic pump when it is time to pump water from the water's box to the plant's box.
+You will set up the robot to receive signals from the capacitive soil moisture sensor and signal to the peristaltic pump when it is time to pump water from the water's container to the plant's container.
 
 ### Wire your ADC
 
@@ -71,7 +71,7 @@ Wire the pins as follows:
 
 ![The full wiring diagram for all the hardware for the Plant Watering Robot.](../../img/plant-watering-pi/full-wiring.png)
 
-### Wire your Soil Moisture Sensor
+### Wire your Capacitive Soil Moisture Sensor
 
 Next, wire your capacitive soil moisture sensor to your Pi and ADC.
 
@@ -85,7 +85,7 @@ Wire the pins as follows:
 |--|--|
 |<table> <tr><th>Moisture Sensor Pin</th><th>Raspberry Pi Pin</th></tr><tr><td>VCC</td><td>3.3V</td></tr><tr><td>GND</td><td>GND</td></tr> </table>| <table> <tr><th>Moisture Sensor Pin</th><th>MCP3008 ADC Pin</th></tr><tr><td>A0 (Analog Signal Output)</td><td>CH0</td></tr> </table>|
 
-Put the soil moisture sensor inside of your plant box.
+Put the soil moisture sensor inside of the container holding your plant.
 
 Refer to the following full wiring diagram for your hardware setup: [**Wiring Diagram**](#wiring-diagram)
 
@@ -97,7 +97,7 @@ Now, wire and power your Peristaltic Pump [motor](/components/motor/) to complet
 2. Then, connect the output pins on your motor speed controller to the pump.
 3. Connect the GND pin on the pump to the breadboard and terminal.
 4. Connect the PWM pin on the pump to [Pin 12](https://pinout.xyz/pinout/pin12_gpio18) of the Pi.
-5. Connect the plastic tubing to the pump. Put the suction end inside of your water box, and the output end inside of your plant box.
+5. Connect the plastic tubing to the pump. Put the suction end inside of your water container, and the output end inside of the container holding your plant.
 
 Refer to the following full wiring diagram for your hardware setup: [**Wiring Diagram**](#wiring-diagram)
 
@@ -105,8 +105,8 @@ Refer to the following full wiring diagram for your hardware setup: [**Wiring Di
 
 ### Enable SPI on your Pi
 
-Now that you have wired your ADC and Moisture Sensor, make sure that the Serial Peripheral Interface (SPI) is enabled on your Pi.
-Enabling this protocol is necessary to allow the Pi to communicate with the Moisture Sensor peripheral.
+Now that you have wired your ADC and moisture sensor, make sure that the Serial Peripheral Interface (SPI) is enabled on your Pi.
+Enabling this protocol is necessary to allow the Pi to communicate with the moisture sensor peripheral.
 
 SSH into your Pi and run the following command:
 
@@ -218,7 +218,7 @@ sudo pip3 install --force-reinstall adafruit-blinka
 
 {{% /alert %}}
 
-Now, you should see the Moisture Sensor values outputted by the MCP3008 in the range of `0` to `1023`.
+Now, you should see the moisture sensor values outputted by the MCP3008 in the range of `0` to `1023`.
 Test your sensor by putting it in air, water, and different soils to see how the values change.
 
 ![Terminal output of capacitive soil moisture sensor values.](../../img/plant-watering-pi/moisture-sensor-output.png)
