@@ -15,7 +15,7 @@ With a Raspberry Pi and some cheap, basic hardware, you can keep your plants hea
 
 Follow this tutorial to learn how to set up an automatic plant watering system:
 
-1.  [Complete the physical assembly and wiring](#set-up-your-plant-watering-robot).
+1. [Complete the physical assembly and wiring](#set-up-your-plant-watering-robot).
 2. [Create and connect to the robot](#configure-the-components-of-your-robot-in-the-viam-app).
 3. [Configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app).
 4. [Configure a custom Capacitive Soil Moisture sensor component](#configure-the-capacitive-soil-moisture-sensor-as-a-custom-sensor-component-model).
@@ -44,7 +44,6 @@ You will set up the robot to receive signals from the capacitive soil moisture s
 ### Wire your ADC
 
 The analog-to-digital converter (ADC) between your capacitive soil moisture sensor and Pi converts the analog signals created by the capacitive soil moisture sensor's readings to digital signals that can be processed by your Pi, which expects digital signals to come to it through its GPIO pins.
-
 
 Start by wiring your ADC to your Raspberry Pi board according to the following pinout diagram for your MCP3008 Analog to Digital Converter:
 
@@ -218,7 +217,6 @@ sudo pip3 install --force-reinstall adafruit-blinka
 
 Now, you should see the Moisture Sensor values outputted by the MCP3008 in the range of `0` to `1023`.
 Test your sensor by putting it in air, water, and different soils to see how the values change.
-
 
 ![Terminal output of capacitive soil moisture sensor values.](../../img/plant-watering-pi/moisture-sensor-output.png)
 
