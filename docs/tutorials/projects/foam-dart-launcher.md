@@ -3,7 +3,7 @@ title: "Foam Dart Launcher Robot Tutorial"
 linkTitle: "Dart Launcher Robot"
 weight: 160
 type: "docs"
-description: "Use Viam to configure a rover and launch a foam dart activated by GPIO pins on a Raspberry Pi."
+description: "Build a foam dart launcher with a wheeled rover and a Raspberry Pi."
 webmSrc: "/tutorials/videos/foam-dart.webm"
 mp4Src: "/tutorials/videos/foam-dart.mp4"
 videoAlt: "Robot launching a dart."

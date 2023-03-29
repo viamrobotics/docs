@@ -4,7 +4,7 @@ linkTitle: "Build an Outdoor Rover"
 weight: 60
 type: "docs"
 tags: ["base", "outdoor", "solar", "rover"]
-description: "How to build a very capable outdoor rover and control it with Viam."
+description: "Build and control an affordable, functional outdoor rover."
 image: "/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"
 aliases:
   /tutorials/build-an-outdoor-rover/
