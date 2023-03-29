@@ -8,6 +8,8 @@ webmSrc: "/tutorials/img/try-viam-sdk/image1.webm"
 mp4Src: "/tutorials/img/try-viam-sdk/image1.mp4"
 videoAlt: "A Viam Rover driving in a square"
 tags: ["base", "viam rover", "try viam", "sdk", "python"]
+aliases:
+    - /tutorials/get-started/try-viam-sdk
 ---
 
 <div class="embed-responsive embed-responsive-16by9">

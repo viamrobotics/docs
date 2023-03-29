@@ -7,6 +7,8 @@ description: "Use the Vision Service in the Viam app to detect a color with the 
 image: "/tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png"
 imageAlt: "detectionCam stream displaying a color detection"
 tags: ["vision", "detector", "camera", "viam rover", "try viam", "services"]
+aliases:
+    - /tutorials/viam-rover/try-viam-color-detection
 # SMEs: Hazal
 ---
 
