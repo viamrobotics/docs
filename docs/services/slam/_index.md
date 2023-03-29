@@ -310,7 +310,6 @@ For more information about running [Cartographer in Offline Mode](run-slam-carto
 | `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Normalized with translational and rotational. |
 | `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Normalized with occupied and rotational. |
 | `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | Normalized with translational and occupied. |
-    
 ## Integrated Library: ORB-SLAM3
 
 ORB-SLAM3 can perform sparse SLAM using monocular or RGB-D images.
