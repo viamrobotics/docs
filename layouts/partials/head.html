@@ -47,6 +47,9 @@
 
 {{/* To comply with GDPR, cookie consent scripts places in head-end must execute before Google Analytics is enabled */ -}}
 {{ if hugo.IsProduction -}}
+  <!-- Start of viam Zendesk Widget script -->
+  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=6fb554be-87df-42b2-8d8f-bed8df3f886f">
+  </script> <!-- End of viam Zendesk Widget script -->
   {{ if hasPrefix .Site.GoogleAnalytics "G-" -}}
     {{ template "_internal/google_analytics.html" . -}}
   {{ else -}}
