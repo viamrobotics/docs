@@ -296,7 +296,7 @@ Add your board (in this example, named `local`) to this component's dependencies
 
 ### Configure the Capacitive Soil Moisture Sensor as a Custom Sensor Component Model
 
-As the capacitive soil moisture sensor is not currently one of Viam's built-in [sensor component](/components/sensor/) models, you now must use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/).
+As the capacitive soil moisture sensor is not currently one of Viam's built-in [sensor component](/components/sensor/) models, you have to use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/).
 
 In this case, the custom resource is a custom component model that extends the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html).
 To use the custom component, you create a server using the `viam.rpc.server` class and once the server is running you add the server as a remote part of your `plant-watering-robot`.
@@ -374,7 +374,7 @@ You can modify this example code as necessary.
 
 Now, go back to your robot's page on [the Viam app](https://app.viam.com) and navigate to the **CONFIG** tab, then to the **REMOTES** sub-tab.
 
-Add your sensor server as a remote part, called `my-sensor-server`:
+Add your sensor server as a [remote part](/manage/parts-and-remotes/) called `my-sensor-server`:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -453,7 +453,7 @@ nano plant-watering-robot.py
 
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
-<img src="../../img/plant-watering-pi/main-py.png" alt="The main.py function from your robot's Code Sample tab, ready to edit." style="max-width:800px" />
+You can start by adding code into the `main()` function of the program, after connecting to your robot and before closing the connection.
 
 <br>
 </br>
