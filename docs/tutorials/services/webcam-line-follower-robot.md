@@ -5,11 +5,14 @@ weight: 50
 type: "docs"
 description: "Build a line-following robot that relies on a webcam and color detection."
 tags: ["base", "vision", "detector", "camera", "services", "python"]
+webmSrc: "/tutorials/img/webcam-line-follower/lf-tape-follow3.webm"
+mp4Src: "/tutorials/img/webcam-line-follower/lf-tape-follow3.mp4"
+videoAlt: "The green line the camera sees as the rover moves along it."
 ---
 
 <div class="td-max-width-on-larger-screens">
  <div style="margin-left:1em;width:150px; float: right;">
-  {{<gif webm_src="../img/webcam-line-follower/lf-following1.webm" mp4_src="../img/webcam-line-follower/lf-following1.mp4" alt="Robot following a line">}}
+  {{<gif webm_src="../../img/webcam-line-follower/lf-following1.webm" mp4_src="../../img/webcam-line-follower/lf-following1.mp4" alt="Robot following a line">}}
   </div>
 </div>
 

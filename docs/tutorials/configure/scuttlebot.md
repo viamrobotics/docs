@@ -4,6 +4,8 @@ linkTitle: "Configure a SCUTTLE Robot"
 weight: 15
 type: "docs"
 description: "Instructions for configuring a SCUTTLE Robot on the Viam platform."
+image: "/tutorials/img/scuttlebot/createcomponent.png"
+imageAlt: "The Viam app UI showing the CONFIG tab of a robot."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 ---
 
@@ -299,15 +301,15 @@ Once you save the config, you'll be able to see your camera's stream in the **CO
 After successfully completing this tutorial, you have a fully configured SCUTTLE Robot.
 You can drive it around and view its camera stream.
 
-To take things to the next level, check out our [Color Detection with SCUTTLE Robot](/tutorials/scuttlebot/color-detection-scuttle/) tutorial or create your own camera-related tutorial.
-Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](/tutorials/scuttlebot/scuttle-gamepad/) tutorial or our [Line Follower Robot tutorial](/tutorials/webcam-line-follower-robot/).
+To take things to the next level, check out our [Color Detection with SCUTTLE Robot](/tutorials/services/color-detection-scuttle/) tutorial or create your own camera-related tutorial.
+Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](/tutorials/control/scuttle-gamepad/) tutorial or our [Line Follower Robot tutorial](/tutorials/services/webcam-line-follower-robot/).
 
 ## Documents referenced
 
 - [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#install-raspberry-pi-os)
 
-- [Color Detection with SCUTTLE Robot on Viam](/tutorials/scuttlebot/color-detection-scuttle/)
+- [Color Detection with SCUTTLE Robot on Viam](/tutorials/services/color-detection-scuttle/)
 
-- [Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad](/tutorials/scuttlebot/scuttle-gamepad/)
+- [Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad](/tutorials/control/scuttle-gamepad/)
 
-- [Line Following with SCUTTLE Robot on Viam](/tutorials/webcam-line-follower-robot/)
+- [Line Following with SCUTTLE Robot on Viam](/tutorials/services/webcam-line-follower-robot/)

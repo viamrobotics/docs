@@ -5,6 +5,9 @@ weight: 55
 type: "docs"
 tags: ["sdk", "extending viam", "components", "base", "python"]
 description: "How to integrate a custom base component with the Viam Python SDK."
+webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
+mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
+videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
 # SMEs: James Otting, Eric Daniels
 # Author: Jessamy Taylor
 ---
@@ -19,7 +22,7 @@ Viam natively supports a wheeled base model, but if you have a quadruped or othe
 This tutorial demonstrates option two, using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
 <div style="float:left;margin-right:12px">
-  {{<gif webm_src="../img/custom-base-dog/base-control-dog.webm" mp4_src="../img/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." max-width="400px">}}
+  {{<gif webm_src="../../img/custom-base-dog/base-control-dog.webm" mp4_src="../../img/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." max-width="400px">}}
 </div>
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
@@ -244,7 +247,7 @@ Name your remote "my-custom-base" and click **Create Remote**.
 In the **Address** field put `localhost: 9090`.
 Click **Save Config** at the bottom of the page.
 
-<img src="../img/custom-base-dog/remote-config.png" alt="Screenshot of the Viam app CONFIG tab with the Remotes sub-tab open, showing my-custom-base configured as a remote." style="max-width:400px" >
+<img src="../../img/custom-base-dog/remote-config.png" alt="Screenshot of the Viam app CONFIG tab with the Remotes sub-tab open, showing my-custom-base configured as a remote." style="max-width:400px" >
 
 {{% alert title="Note" color="note" %}}
 
@@ -311,7 +314,7 @@ Configure it like this:
 
 Click **Save Config** at the bottom of the window.
 
-![Screenshot of the Processes sub-tab of the Config tab, showing two processes configured as detailed above.](../img/custom-base-dog/process-config.png)
+![Screenshot of the Processes sub-tab of the Config tab, showing two processes configured as detailed above.](../../img/custom-base-dog/process-config.png)
 
 {{% expand "Click to see what the processes config will look like in Raw JSON mode." %}}
 
@@ -370,7 +373,7 @@ Navigate to the **CONTROL** tab.
 
 Click the **my-custom-base:my-robot-dog** component panel to expand it and reveal the controls.
 
-![Screenshot of the Control tab with the custom base card expanded to reveal arrow control buttons.](../img/custom-base-dog/control-tab.png)
+![Screenshot of the Control tab with the custom base card expanded to reveal arrow control buttons.](../../img/custom-base-dog/control-tab.png)
 
 1. Enable the camera stream from the **Select Cameras** drop-down.
 2. Toggle the **Keyboard Disabled** switch to **Keyboard Enabled** to use the WASD keys on your keyboard.
@@ -421,6 +424,6 @@ You drove the robot dog around using the Viam **CONTROL** tab.
 
 To add more functionality, try defining more of the base API methods for this model.
 You could also use the Viam [Vision Service](/services/vision/) with the robot dog's [camera component](/components/camera/).
-For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/scuttlebot/color-detection-scuttle/) or to [follow a colored line](/tutorials/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.
+For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/services/color-detection-scuttle/) or to [follow a colored line](/tutorials/services/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.
 
 {{< snippet "social.md" >}}

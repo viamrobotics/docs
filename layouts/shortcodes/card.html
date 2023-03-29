@@ -1,5 +1,5 @@
 {{ $size := (.Get "size") }}
-{{ $link := (.Get "link") }}
+{{ $link := (path.Clean (.Get "link")) }}
 {{ $baseurl := .Site.BaseURL }}
 {{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
   {{ $baseurl := (substr .Site.BaseURL 0 -1) }}
@@ -18,7 +18,7 @@
       {{ if .Params.image }}
         <img src="{{relURL (substr .Params.image 1)}}" alt="{{ .Params.imageAlt }}" width="100%" />
       {{ end }}
-      <h4> {{ .Title }} </h4>
+      <h4> {{ .Params.linkTitle }} </h4>
       <p> {{ .Description }} </p>
     </a>
     {{ end }}

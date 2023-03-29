@@ -47,5 +47,5 @@ For configuration information, click on one of the following models:
 ## Next Steps
 
 {{< cards >}}
-  {{< card link="/tutorials/scuttlebot/scuttlebot" size="small">}}
+  {{% card link="/tutorials/scuttlebot/scuttlebot" size="small" %}}
 {{< /cards >}}

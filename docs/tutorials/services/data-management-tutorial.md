@@ -4,6 +4,8 @@ linkTitle: "Intro to Data Management"
 weight: 60
 type: "docs"
 description: "Configure data capture and cloud sync, filter and view captured data, and export your data."
+image: "/tutorials/img/data-management/image1.png"
+imageAlt: "The data page of the Viam app showing a gallery of the images captured from the Viam Rover."
 tags: ["data management", "data", "services", "try viam"]
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
@@ -64,9 +66,9 @@ To enable the data capture on your robot, do the following:
    You can leave the default settings as they are.
    Click **Save Config** at the bottom of the window.
 
-![Data Management Card](../img/data-management/data-manager.png)
+![Data Management Card](../../img/data-management/data-manager.png)
 
-For more detailed information see [Add the Data Management Service](../../services/data/configure-data-capture/#add-the-data-management-service).
+For more detailed information see [Add the Data Management Service](../../../services/data/configure-data-capture/#add-the-data-management-service).
 
 ## Configure data capture for a component
 
@@ -98,7 +100,7 @@ To enable image data capture for a camera component, follow these steps:
 
 Now your image data will be saved locally on your robot in <file>/.viam/capture</file>, or whatever directory you configured the captured data from your Data Management Service to be saved to.
 
-![Screenshot from the Viam app showing the data capture settings used for this tutorial.](../img/data-management/image5.png)
+![Screenshot from the Viam app showing the data capture settings used for this tutorial.](../../img/data-management/image5.png)
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -107,7 +109,7 @@ On your robot, navigate to the <file>/.viam/capture</file> directory and check f
 
 {{% /alert %}}
 
-For more detailed information see [Configure Data Capture](../../services/data/configure-data-capture/#configure-data-capture-for-individual-components) and [Configure Cloud Sync](../../services/data/configure-cloud-sync/).
+For more detailed information see [Configure Data Capture](../../../services/data/configure-data-capture/#configure-data-capture-for-individual-components) and [Configure Cloud Sync](../../../services/data/configure-cloud-sync/).
 
 ## View and filter captured data
 
@@ -118,9 +120,9 @@ Now that you have data capture enabled for a camera on your Viam Rover, you can 
 - Select `Rover Rental` as the **Location**, and click **SEARCH**.
   If you have data capture set up correctly, you will see the captured images from your rover's camera.
 
-![The data page of the Viam app showing a gallery of the images captured from the Viam Rover.](../img/data-management/image1.png)
+![The data page of the Viam app showing a gallery of the images captured from the Viam Rover.](../../img/data-management/image1.png)
 
-For more detailed information see [View and Filter Data](../../manage/data/view/).
+For more detailed information see [View and Filter Data](../../../manage/data/view/).
 
 ## Export captured data
 
@@ -139,7 +141,7 @@ To export data from Viam:
 2. Head back to the [**DATA** page in the Viam app](https://app.viam.com/data/view).
 3. Below the **SEARCH** button in the **FILTERING** panel, click **COPY EXPORT COMMAND** to copy the export command to the clipboard.
 
-   ![The "copy export command" button from the Viam app.](../img/data-management/image4.png)
+   ![The "copy export command" button from the Viam app.](../../img/data-management/image4.png)
 
 4. Run the copied command in a terminal:
 
@@ -154,7 +156,7 @@ To export data from Viam:
    Since images are downloaded in parallel, some may be out of order.
    Sort your folder by filename to see them in chronological order.
 
-For more detailed information see [Export Data](../../manage/data/export/).
+For more detailed information see [Export Data](../../../manage/data/export/).
 
 ## Next steps
 
