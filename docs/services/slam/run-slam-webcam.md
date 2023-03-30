@@ -32,7 +32,7 @@ The webcam can be installed on a robot, or just held in your hand.
 * A Linux or macOS machine with `viam-server` and `ORB-SLAM3` installed.
 * [optionally] A webcam or other off-the-shelf RGB camera.
 
-For more information on how to install `viam-server` and set up your machine on the [Viam app](https://app.viam.com), see [Install viam-server](/installation/install/).
+For more information on how to install `viam-server` and set up your machine on the [Viam app](https://app.viam.com), see [Install viam-server](/installation#install-viam-server).
 
 ### Install the ORB-SLAM3 Binary
 

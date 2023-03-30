@@ -3,7 +3,7 @@ title: "BeagleBone AI-64 Setup Guide"
 linkTitle: "BeagleBone Setup"
 weight: 20
 type: "docs"
-description: "How to flash a BeagleBone AI-64 to prepare it for viam-server installation."
+description: "Flash a BeagleBone AI-64 to prepare it for viam-server installation."
 aliases:
     - "/installation/beaglebone-install/"
     - "/installation/prepare/beaglebone-install/"
@@ -71,7 +71,7 @@ After SSH'ing into your BeagleBone, verify all packages are up to date:
 
 ### Step 5: Install `viam-server`
 
-Now that your BeagleBone has a Viam-compatible operating system installed, continue to our [viam-server installation guide](../../install/linux-install/) to install `viam-server` on the board.
+Now that your BeagleBone has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation#install-viam-server) to install `viam-server` on the board.
 
 ## Troubleshooting
 
