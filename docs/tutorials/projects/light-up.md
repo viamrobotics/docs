@@ -82,16 +82,16 @@ To connect the plug to your wifi, download the Kasa Smart app from the [App Stor
 When you first open the app, you will be prompted to create an account.
 As you do this, you will receive an email with subject line "TP-Link ID: Activation Required" to complete your account registration.
 
-1. Follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
+2. Follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
 Once it is connected, you will no longer need to use the mobile app.
 
-1. Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
+3. Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
 
     ```bash
     pip3 install python-kasa
     ```
 
-2. <a name=kasa ></a> Run the following command to return information about your smart device:
+4. <a name=kasa ></a> Run the following command to return information about your smart device:
 
     ```bash
     kasa discover
