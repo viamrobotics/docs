@@ -3,6 +3,7 @@ title: "Robot Service"
 linkTitle: "Robot"
 description: "The Robot Service consists of a set of robot monitoring and management APIs that most robots support."
 type: "docs"
+draft: "true"
 weight: 10
 tags: ["robot state", "services"]
 # SME: Cheuk
