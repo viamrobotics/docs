@@ -272,7 +272,7 @@ Experiment and have fun.
 
 ## Next steps
 
-If you want more, head over to our documentation site and take a look at our [tutorials](/tutorials/).
+If you want to build more robots, head over to our documentation site and take a look at our [tutorials](/tutorials/).
 If you liked this tutorial and want to do more tutorials like these, then keep checking back for more single component tutorials.
 And if you didn't like this tutorial and would like to speak to my manager, their name is <img src="../../img/single-component-tutorials-servo-mousemover/censor.jpg" style="width:50px;" alt="Fuzzy box meant to censor text."></img>.
 (Update: apparently that's a big no no.)
