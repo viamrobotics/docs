@@ -176,11 +176,11 @@ If you do not want to run `viam-server` as a service, you can also run it manual
 {{% /tab %}}
 {{< /tabs >}}
 
-### Alternative ways of running `viam-server` on Linux
+### Starting `viam-server` on Linux
 
 To run `viam-server`, you have two options:
 
-#### Run Directly from the Command Line
+#### Start manually from the command line
 
 To run `viam-server` directly from the command line, you can use the following command, replacing "myconfig" with the name of your configuration file.
 `sudo` is necessary on some devices to access hardware.
@@ -189,7 +189,7 @@ To run `viam-server` directly from the command line, you can use the following c
 sudo ./viam-server -config myconfig.json
 ```
 
-#### Install as a System Service
+#### Start automatically on boot
 
 A system service starts `viam-server` every time you boot your device.
 
