@@ -165,7 +165,6 @@ from viam.rpc.dial import Credentials, DialOptions
 from viam.components.camera import Camera
 from viam.components.types import CameraMimeType
 from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType, Detection
-from PIL import ImageDraw
 import yagmail
 
 
@@ -182,13 +181,6 @@ async def connect():
         dial_options=DialOptions(credentials=creds)
     )
     return await RobotClient.at_address(robot_address, opts)
-
-# For displaying your detections with a red box around them, if needed
-def drawBox(d, frame):
-  rect = [d.x_min, d.y_min, d.x_max, d.y_max]
-  img1 = ImageDraw.Draw(frame)
-  img1.rectangle(rect, outline="red")
-  return frame
 
 async def main():
     robot = await connect()
@@ -222,9 +214,6 @@ async def main():
             if d.confidence > 0.8:
                 print(d)
                 print()
-                #you can use the below code for testing
-                #image = drawBox(d, image)
-                #image.show()
                 if d.class_name.lower() == "person":
                     print("This is a person!")
                     found = True
