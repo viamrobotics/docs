@@ -3,8 +3,11 @@ title: "Use Object Detection to Turn Your Lights On"
 linkTitle: "Turn on Lights with Object Detection"
 weight: 49
 type: "docs"
-tags: ["camera", "vision", "detector", "python"]
 description: "How to turn a light on when your webcam sees a person."
+webmSrc: "/tutorials/img/light-up/light-up.webm"
+mp4Src: "/tutorials/img/light-up/light-up.mp4"
+videoAlt: "Robot launching a dart."
+tags: ["camera", "vision", "detector", "python"]
 # Author: Hazal Mestci
 ---
 
@@ -14,7 +17,7 @@ You can turn it into a night light for reading books, a security robot that aler
 
 This project is a great place to start if you are new to building robots, because the only hardware it requires in addition to your computer is a [smart plug](https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-wifi-plug-mini) or smart bulb.
 
-{{< gif webm_src="../img/light-up/light-up.webm" mp4_src="../img/light-up/light-up.mp4" alt= "The project working: a person sitting at a desk with a computer and lightbulb set up in front of her. As she leaves the light turns off, and as she enters the frame, the light turns back on." >}}
+{{<gif webm_src="../../img/light-up/light-up.webm" mp4_src="../img/light-up/light-up.mp4" alt="The project working: a person sitting at a desk with a computer and lightbulb set up in front of her. As she leaves the light turns off, and as she enters the frame, the light turns back on.">}}
 
 ## Hardware requirements
 
@@ -50,7 +53,7 @@ Go to the **SETUP** tab of your new robot's page and follow the steps [to instal
 
 On your new robot's page, go to the **CONFIG** tab.
 
-![The CONFIG tab in Builder mode on the Viam app.](../img/light-up/config-tab.png)
+![The CONFIG tab in Builder mode on the Viam app.](../../img/light-up/config-tab.png)
 
 On the **CONFIG** tab, create a new component:
 
@@ -70,7 +73,7 @@ Click **Save Config** in the bottom left corner of the screen.
 
 Navigate to the **CONTROL** tab where you can see your camera working.
 
-{{< gif webm_src="../img/light-up/control-panel.webm" mp4_src="../img/light-up/control-panel.mp4" alt= "Opening the camera panel on the control tab, toggling the video feed on, and watching as a person wearing headphones waves at the camera." >}}
+{{< gif webm_src="../../img/light-up/control-panel.webm" mp4_src="../img/light-up/control-panel.mp4" alt= "Opening the camera panel on the control tab, toggling the video feed on, and watching as a person wearing headphones waves at the camera." >}}
 
 ## Set up the Kasa Smart Plug
 
@@ -96,7 +99,7 @@ Once it is connected, you will no longer need to use the mobile app.
 
     You should see this command output something like this:
 
-    ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time and cloud).](../img/light-up/kasa-discover-output.png)
+    ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time and cloud).](../../img/light-up/kasa-discover-output.png)
 
     Write down or save the host address (for example, `10.1.11.221`).
 You will need to include it in your Python code in a later step.
