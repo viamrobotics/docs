@@ -78,7 +78,7 @@ Navigate to the **CONTROL** tab where you can see your camera working.
 ## Set up the Kasa Smart Plug
 
 1. Plug your smart plug into any power outlet and turn it on by pressing the white button on the smart plug.
-To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android&gl=US) to your mobile phone.
+To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android) to your mobile phone.
 When you first open the app, you will be prompted to create an account.
 As you do this, you will receive an email with subject line "TP-Link ID: Activation Required" to complete your account registration.
 
