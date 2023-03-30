@@ -122,8 +122,17 @@ The AppImage is a single, self-contained binary that runs on any Linux system (e
 
 <br>
 
+Stable:
+
 ```bash
 curl http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server &&
+  chmod 755 viam-server && sudo ./viam-server --aix-install
+```
+
+Latest:
+
+```bash
+curl http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
@@ -132,8 +141,17 @@ curl http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppIma
 
 <br>
 
+Stable:
+
 ```bash
 curl http://packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server &&
+  chmod 755 viam-server && sudo ./viam-server --aix-install
+```
+
+Latest:
+
+```bash
+curl http://packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
