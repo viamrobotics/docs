@@ -166,7 +166,8 @@ from viam.components.camera import Camera
 from viam.components.types import CameraMimeType
 from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType, Detection
 from PIL import ImageDraw
-from yagmail
+import yagmail
+
 
 # These must be set. You can get them from your robot's 'CODE SAMPLE' tab
 robot_secret = os.getenv('ROBOT_SECRET') or ''
