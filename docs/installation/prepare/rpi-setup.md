@@ -10,9 +10,7 @@ aliases:
 # SME: James
 ---
 
-<div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/drl2p2of-qA" allowfullscreen></iframe>
-</div>
+{{<youtube embed_url="https://www.youtube.com/embed/drl2p2of-qA">}}
 <br>
 
 To install the Viam [RDK](/appendix/glossary/#rdk_anchor), you need a Raspberry Pi running a 64-bit Linux distribution.
