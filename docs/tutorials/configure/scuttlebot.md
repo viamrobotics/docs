@@ -9,7 +9,7 @@ imageAlt: "The Viam app UI showing the CONFIG tab of a robot."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 ---
 
-{{<youtube embed_url="https://www.youtube.com/embed/LAMxYci242E">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/LAMxYci242E">}}
 
 ## Requirements
 
