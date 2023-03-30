@@ -209,7 +209,6 @@ async def main():
 
     N = 100
       
-    #example: plug = SmartPlug('10.1.11.221')
     plug = SmartPlug('replace with the host IP of your plug')
     await plug.update()
 
