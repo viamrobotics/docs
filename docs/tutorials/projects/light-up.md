@@ -47,7 +47,7 @@ You will use the following software in this tutorial:
 
 Go to the [Viam app](https://app.viam.com) and create a new robot.
 
-Go to the **SETUP** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](link to install docs).
+Go to the **SETUP** tab of your new robot's page and follow the steps to install `viam-server` on your computer.
 
 ## Configure the camera component
 
