@@ -123,7 +123,8 @@ Some common ones:
 As an example, if you have T-Mobile your code will look like this:
 
 ```python
-yag.send('xxx-xxx-xxxx@tmomail.net', 'subject', contents)
+yag.send('xxxxxxxxxx@tmomail.net', 'subject', contents)
+
 ```
 
 This allows us to route the email to our phone as a text message.
