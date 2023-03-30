@@ -9,9 +9,7 @@ imageAlt: "The Viam app UI showing the CONFIG tab of a robot."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 ---
 
-<div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LAMxYci242E" allowfullscreen></iframe>
-</div>
+{{<youtube embed_url="https://www.youtube.com/embed/LAMxYci242E">}}
 
 ## Requirements
 
