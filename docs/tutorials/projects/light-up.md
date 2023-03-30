@@ -78,20 +78,20 @@ Navigate to the **CONTROL** tab where you can see your camera working.
 ## Set up the Kasa Smart Plug
 
 1. Plug your smart plug into any power outlet and turn it on by pressing the white button on the smart plug.
-To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android&gl=US) to your mobile phone.
+To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android) to your mobile phone.
 When you first open the app, you will be prompted to create an account.
 As you do this, you will receive an email with subject line "TP-Link ID: Activation Required" to complete your account registration.
 
-2. Follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
+1. Follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
 Once it is connected, you will no longer need to use the mobile app.
 
-3. Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
+1. Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
 
     ```bash
     pip3 install python-kasa
     ```
 
-4. <a name=kasa ></a> Run the following command to return information about your smart device:
+2. <a name=kasa ></a> Run the following command to return information about your smart device:
 
     ```bash
     kasa discover
