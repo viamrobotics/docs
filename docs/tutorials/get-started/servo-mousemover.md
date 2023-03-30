@@ -255,7 +255,7 @@ When taping the box shut be sure the servo with the circle cut out sits fairly f
 Add "babygates" or rails to keep the mouse from wandering off if it catches some friction.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="../../img/single-component-tutorials-servo-mousemover/finish-box.webm" mp4_src="../../img/single-component-tutorials-servo-mousemover/finish-box.mp4" alt="This is sped up gif showing a person plugging in the power cable to the raspberry pi through the power hole made earlier, then pushing the rocker switch to turn it on. When the raspberry pi is turned on, the circle turns for a millisecond. Then they draw a swirl design on the circle. Then they make the circle spin and put a mouse on it and it falls off immediately. The next thing they do is they put cardboard on two sides of the box and at the end they place the mouse on top.">}}
+  {{<gif webm_src="../../img/single-component-tutorials-servo-mousemover/finish-box.webm" mp4_src="../../img/single-component-tutorials-servo-mousemover/finish-box.mp4" alt="This is sped up gif showing a person plugging in the power cable to the raspberry pi through the power hole made earlier, then pushing the rocker switch to turn it on. When the Raspberry Pi is turned on, the circle turns for a millisecond. Then they draw a swirl design on the circle. Then they make the circle spin and put a mouse on it and it falls off immediately. The next thing they do is they put cardboard on two sides of the box and at the end, they place the mouse on top.">}}
 </div>
 
 ### Control your robot with code
