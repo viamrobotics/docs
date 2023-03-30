@@ -131,7 +131,7 @@ Now, follow this schematic to attach jumper wires to the servo and Raspberry Pi.
 - **5V** on servo attached to pin 2 on Pi
 - **PWM** on servo attached to pin 12 on Pi
 
-![Computer drawn photo schematic of a raspberry pi connected to a FS90R servo. It shows the yellow wire coming from the servo as the PWM wire and it's attached to pin twelve on the raspberry pi. The red wire coming from the servo is five volt wire and it's attached to pin two. The black wire coming from the servo is the ground wire and it's attached to pin eight.](../../img/single-component-tutorials-servo-mousemover/servo-wiring-diagram.png)
+![Computer-drawn photo schematic of a Raspberry Pi connected to a FS90R servo. It shows the yellow wire coming from the servo as the PWM wire and it's attached to pin twelve on the raspberry pi. The red wire coming from the servo is a five-volt wire and it's attached to pin two. The black wire coming from the servo is the ground wire and it's attached to pin eight.](../../img/single-component-tutorials-servo-mousemover/servo-wiring-diagram.png)
 
 Once you have the wires connected, attach the wheel/arm to servo and turn on the Raspberry Pi.
 
