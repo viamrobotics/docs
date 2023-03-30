@@ -19,6 +19,7 @@ For this reason, we list tutorials based on features you may be looking for.
     {{% card link="/tutorials/get-started/try-viam-sdk" size="small" %}}
     {{% card link="/tutorials/get-started/make-an-led-blink-with-the-viam-app/" size="small" %}}
     {{% card link="/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/" size="small" %}}
+    {{% card link="/tutorials/get-started//single-component-tutorials-servo-mousemover/" size="small" %}}
 {{< /cards >}}
 
 ## Configuration and Testing
