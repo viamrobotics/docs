@@ -14,9 +14,7 @@ tags: ["servo", "single component tutorial", "raspberry pi", "sdk", "python"]
 Have you or someone you've known been a person that works from home and needed to step out for a moment?
 Maybe it was to clear your head, grab your lunch, answer the door, and you get in trouble because it showed you as offline?
 
-<div class="embed-responsive embed-responsive-16by9">
-<iframe width="984" height="554" src="https://www.youtube.com/embed/sXWJE0ePHdA" title="Mouse Mover Teaser" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
+{{<youtube embed_url="https://www.youtube.com/embed/sXWJE0ePHdA">}}
 
 This tutorial will show you how to build a mouse mover using Viam, a Raspberry Pi, a servo, and an optical mouse.
 This robot will turn the continuous servo that's secured inside the box, which will turn the circle under the optical mouse. This will keep your computer from falling asleep.
@@ -66,16 +64,19 @@ First, install viam-server according to our [Raspberry Pi setup guide](/installa
 
 Next, run this command in your Raspberry Pi terminal to install the pip package manager. Select "yes" when it asks if you want to continue.
 
-`sudo apt-get install pip`
+```sh
+sudo apt-get install pip
 
 The command above installs the latest version of `python3` and `pip3` on your Raspberry Pi.
 To verify and get the version of the package, you can run the command:
 
-`pip3 --version`
+```sh
+pip3 --version
 
 The [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) allows you to write programs in the Python programming language to operate robots using Viam. To get the Python SDK working on the Raspberry Pi, run the following command in your Raspberry Pi terminal:
 
-`pip install viam-sdk`
+```sh
+pip install viam-sdk
 
 ## Test the SDK with your robot
 
@@ -87,20 +88,23 @@ Since we already installed the Python SDK, we can skip the first step. Copy the 
 
 ![A screenshot of the Viam app showing the CODE SAMPLE tab. On this tab it has Language: with four boxes, Python is black background with white text and has a checkmark indicating it is selected, then there's Golang, Typescript (Web), and Remotes with white backgrounds and black text. The page next says Python SDK (Documentation) with a link to Documentation. Below that there\'s a place that says "pip install viam-SDK" this is how you install the Viam Python SDK. Below that instruction is the instructions to "Then copy and run the following code to connect to your robot:" with 7 lines of code seen (the screenshot is incomplete).](../../img/single-component-tutorials-servo-mousemover/code-sample-page.png)
 
-The copied the code needs to go in a Python file on the Raspberry Pi.
-You can do so by creating a file directly inside the Raspberry Pi and editing the file with nano.
+The copied code needs to go in a Python file on the Raspberry Pi.
+You can do so by creating a file on the Raspberry Pi and editing the file with nano.
 
 Inside the Raspberry Pi Terminal, run the following command to create a folder to put our files in (name this folder whatever you want).
 
-`mkdir mousefolder`
+```sh
+mkdir mousefolder
 
 Go into mousefolder.
 
-`cd mousefolder`
+```sh
+cd mousefolder
 
 Create a file using nano with the .py which is the python file extension, (name this file whatever you want).
 
-`nano anyname.py`
+```sh
+nano anyname.py
 
 Paste the code you got from the **CODE SAMPLE** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
@@ -108,7 +112,8 @@ Paste the code you got from the **CODE SAMPLE** tab in the Viam app. Press CTRL+
 
 Now, run the code using the below command to get the resource information that lets us know if the connection is good or if there are any errors.
 
-`python3 anyname.py`
+```sh
+python3 anyname.py
 
 ![Raspberry pi computer terminal with black background and mostly white, but there's one teal word: "INFO" located at the top next to viam.rpc.dial (dial.py:209). The code shown below that is white text and shows Viam's RDK Resources, and it shows no error.](../../img/single-component-tutorials-servo-mousemover/resources-printed.png)
 
