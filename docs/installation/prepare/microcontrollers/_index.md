@@ -4,7 +4,7 @@ linkTitle: "Microcontroller Setup"
 weight: 50
 simple_list: false
 type: docs
-icon: "img/thumbnails/viam-icon-sdk.png"
+icon: "../img/thumbnails/esp32-espressif.png"
 # SMEs: Nicolas Menard
 ---
 
@@ -26,7 +26,7 @@ To use Viam on a microcontroller, you need to:
 To run both the micro-RDK and `viam-server`, you currently need two robots: one controlling robot which runs `viam-server` and a worker robot which runs the micro-RDK on your microcontroller.
 This second "robot" can be as simple as an instance of `viam-server` running on your development machine.
 
-![The control robot runs viam-server and connects to the microcontroller which runs the micro-RDK](../img/microcontroller/micro-rdk-overview.png)
+![The control robot runs viam-server and connects to the microcontroller which runs the micro-RDK](../../img/microcontroller/micro-rdk-overview.png)
 
 The micro-RDK currently only supports:
 
@@ -306,19 +306,19 @@ Create and configure a second robot as the controller robot.
 
 Add the ESP32-backed worker robot as a remote of your new controller robot to establish a secure connection between both robots:
 
-<div style="max-width:800px;"><img src="../img/esp32-setup/esp32-remote-creation.png" alt="Adding the ESP32 as a remote in the Viam app Config builder." ></div>
+<div style="max-width:800px;"><img src="../../img/esp32-setup/esp32-remote-creation.png" alt="Adding the ESP32 as a remote in the Viam app Config builder." ></div>
 
 1. Navigate to the **CODE SAMPLE** tab of the worker robot, click on **Remotes** and copy the `JSON`.
 
-![The remotes config information](../img/microcontroller/copy-remotes-json.png)
+![The remotes config information](../../img/microcontroller/copy-remotes-json.png)
 
 2. Navigate to the **CONFIG** tab of the control robot, select the `Remotes` sub-tab, select the `JSON` mode and click **Create Remote**.
 
-![Create remote menu](../img/microcontroller/create-remote.png)
+![Create remote menu](../../img/microcontroller/create-remote.png)
 
 3. Paste the copied `JSON` config into the configuration field.
 
-![Empty configuration field](../img/microcontroller/config-field.png)
+![Empty configuration field](../../img/microcontroller/config-field.png)
 
 Ensure that the controlling robot is live in [the Viam app](https://app.viam.com).
 If it is, the ESP32-backed robot is now programmatically available.

@@ -15,9 +15,11 @@ Find information for each situation in the tabs below.
 {{< tabs name="Starting and stopping viam-server">}}
 {{% tab name="Linux"%}}
 
+<br>
+
 ### As a system service
 
-After setting up the system service per the [Linux install instructions](/installation/install/linux-install/), the AppImage binary will be located at <file>/usr/local/bin/viam-server</file>, and a systemd service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
+After setting up the system service per the [Linux install instructions](/installation#install-viam-server), the AppImage binary will be located at <file>/usr/local/bin/viam-server</file>, and a systemd service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
 
 By default, the `viam-server` is configured to start when the machine boots.
 
@@ -130,7 +132,8 @@ Feb 10 13:11:26 hydro3-pi viam-server[933]: Something went wrong trying to read 
 Feb 10 13:11:26 hydro3-pi viam-server[933]: open dir error: No such file or directory
 ```
 
-The update process may have been interrupted and left a corrupt file. Simply redownload the new file as instructed above.
+The update process may have been interrupted and left a corrupt file.
+Simply redownload the new file as instructed above.
 
 ### FUSE Errors
 

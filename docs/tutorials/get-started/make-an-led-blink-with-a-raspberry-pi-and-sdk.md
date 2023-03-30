@@ -22,7 +22,7 @@ This tutorial is a good introduction to [Python](https://www.python.org/) or [Go
 {{% alert title="Note" color="note" %}}
 This is part 2 of Viam's Intro to Robotics series.
 If you haven't completed [Part 1](/tutorials/get-started/make-an-led-blink-with-the-viam-app/), be sure to go back and complete that before starting on this tutorial.
-You should have already set up [your Raspberry Pi](/installation/prepare/rpi-setup), [set up `viam-server`](/installation/install), built your circuit, and [connected your robot to the Viam app](/installation/install/linux-install/) before proceeding.
+You should have already set up [your Raspberry Pi](/installation/prepare/rpi-setup), [connected to the Viam app and set up `viam-server`](/installation#install-viam-server), and built your circuit before proceeding.
 {{% /alert %}}
 
 For reference, the circuit you are building for this tutorial looks like this:
@@ -52,7 +52,7 @@ You will need the following hardware, tools, and software to complete this proje
 ### Software
 
 - [Go](https://go.dev/dl/) or [Python 3.9+](https://www.python.org/downloads/)
-- [viam-server](/installation/install/linux-install/)
+- [viam-server](/installation#install-viam-server)
 - [Viam Python SDK](https://python.viam.dev/) or [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
 
 ### How to install a Viam SDK
