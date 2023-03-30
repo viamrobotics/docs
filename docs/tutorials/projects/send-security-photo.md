@@ -48,7 +48,6 @@ You will use the following software in this tutorial:
 - [yagmail](https://github.com/kootenpv/yagmail)
 - A gmail account to send emails. You can use an existing account, or create a new one.
 
-
 ## Configure your robot on the Viam app
 
 If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already have a robot set up on the [Viam app](https://app.viam.com), connected and live, with a [webcam configured](/components/camera/webcam/).
