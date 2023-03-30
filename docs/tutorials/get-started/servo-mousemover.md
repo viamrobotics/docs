@@ -116,7 +116,7 @@ Now, run the code using the below command to get the resource information that l
 python3 anyname.py
 ```
 
-![Raspberry pi computer terminal with black background and mostly white, but there's one teal word: "INFO" located at the top next to viam.rpc.dial (dial.py:209). The code shown below that is white text and shows Viam's RDK Resources, and it shows no error.](../../img/single-component-tutorials-servo-mousemover/resources-printed.png)
+![The output of the code showing a list of the resources.](../../img/single-component-tutorials-servo-mousemover/resources-printed.png)
 
 There are no errors in the resources above, so we have confirmed a good software connection between the Python SDK and your Viam robot!
 
