@@ -19,7 +19,7 @@ Maybe it was to clear your head, grab your lunch, answer the door, and you get i
 This tutorial will show you how to build a mouse mover using Viam, a Raspberry Pi, a servo, and an optical mouse.
 This robot will turn the continuous servo that's secured inside the box, which will turn the circle under the optical mouse. This will keep your computer from falling asleep.
 
-This project is a good place to begin if you're new to robots and would like to learn how to use a [servo component](/components/servo/) with the Viam app and Viam's [Python SDK](https://python.viam.dev/).
+This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/components/servo/) with the Viam app and Viam's [Python SDK](https://python.viam.dev/).
 
 <div class="td-max-width-on-larger-screens">
   {{<gif webm_src="../../img/single-component-tutorials-servo-mousemover/moving.webm" mp4_src="../../img/single-component-tutorials-servo-mousemover/moving.mp4" alt="Video of a mouse running erratically on the screen in a sweeping motion in front of the Viam app Control page with an overlaid video of a mouse on top of a cardboard box with a moving cardboard circle underneath it with red swirl lines on the circle.">}}
