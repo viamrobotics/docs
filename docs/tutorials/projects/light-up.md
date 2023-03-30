@@ -91,7 +91,7 @@ Once it is connected, you will no longer need to use the mobile app.
     pip3 install python-kasa
     ```
 
-4. <a name=kasa > Run the following command to return information about your smart device:
+4. <a name=kasa ></a> Run the following command to return information about your smart device:
 
     ```bash
     kasa discover
