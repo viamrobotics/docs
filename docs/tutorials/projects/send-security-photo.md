@@ -200,12 +200,6 @@ async def main():
     print(names)
 
     N = 100
-      
-    plug = SmartPlug('replace with the host IP of your plug')
-    await plug.update()
-
-    await plug.turn_off()
-    state = "off"
     for i in range(N):
         image = await camera.get_image()
         detections = await vision.get_detections(image, "person_detector")
