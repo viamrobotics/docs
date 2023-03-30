@@ -23,7 +23,7 @@ If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone
         <a href="/installation/prepare/rpi-setup/">
             <img src="../img/thumbnails/raspberry-pi-4-b-2gb.jpg" alt="Raspberry Pi" width=100% style="padding-top: 1em" >
             <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Raspberry Pi</h4>
-        <a>
+        </a>
     </div>
     <div class="col hover-card hover-card-small">
         <a href="/installation/prepare/beaglebone-setup/">
