@@ -4,6 +4,7 @@ linkTitle: "Arm"
 weight: 10
 type: "docs"
 description: "A robotic arm is made up of a series of links and joints, ending with a device you can position."
+no_list: true
 tags: ["arm", "components"]
 icon: "img/components/arm.png"
 # SME: Peter L
@@ -23,12 +24,12 @@ When controlling an arm with `viam-server`, the following features are implement
 - Self-collision prevention
 - Obstacle avoidance
 
-#### `viam-server` Motion Planning with your Arm's Native Software
+#### Motion planning with your arm's built-in software
 
-Arm models are supported with a driver built to be compatible with the software API that model's manufacturer supports.
-While some Arm models build inverse kinematics into their software, many do not.
+Each arm model is supported with a driver that is compatible with the software API that the model's manufacturer supports.
+While some arm models build inverse kinematics into their software, many do not.
 
-- Most of the Arm drivers for the Viam RDK bypass any onboard inverse kinematics, and use Viam's [Motion Planning](/services/motion/) service instead.
+- Most of the arm drivers for the Viam RDK bypass any onboard inverse kinematics, and use Viam's [Motion Service](/services/motion/) instead.
 
 - This driver handles turning the arm on and off, querying the arm for its current joint position, sending requests for the arm to move to a specified set of joint positions, and engaging brakes as needed, if supported.
 
@@ -82,7 +83,7 @@ async def main():
   print(robot.resource_names)
 
   # Get your arm from your robot.
-  myArm = Arm.from_robot(robot=robot, name='my_arm')
+  my_arm = Arm.from_robot(robot=robot, name='my_arm')
 
   # Disconnect from your robot.
   await robot.close()
@@ -142,22 +143,15 @@ func main() {
 
 The arm component supports the following methods:
 
-| Method Name | Go | Python | Description |
-| ----------- | -- | ------ | ----------- |
-| [GetEndPosition](#getendposition) | [EndPosition][go_arm] | [get_end_position][python_get_end_position] | Get the current position of the arm as a Pose. |
-| [MoveToPosition](#movetoposition) | [MoveToPosition][go_arm]| [move_to_position][python_move_to_position] | Move the end of the arm to the desired Pose. |
-| [MoveToJointPositions](#movetojointpositions) | [MoveToJointPositions][go_arm] | [move_to_joint_positions][python_move_to_joint_positions] | Move each joint on the arm to the desired position. |
-| [JointPositions](#jointpositions) | [JointPositions][go_arm] | [get_joint_positions][python_get_joint_positions] | Get the current position of each joint on the arm. |
-| [Stop](#stop) | [Stop][go_arm] | [stop][python_stop] | Stop the arm from moving. |
-| [IsMoving](#stop) | [IsMoving][go_arm] | [is_moving][python_is_moving] | Get if the arm is currently moving. |
-
-[go_arm]: https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm
-[python_get_end_position]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_end_position
-[python_move_to_position]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.move_to_position
-[python_move_to_joint_positions]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.move_to_joint_positions
-[python_get_joint_positions]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.get_joint_positions
-[python_stop]: https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.stop
-[python_is_moving]: https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.is_moving
+| Method Name | Description |
+| ----------- | ----------- |
+| [GetEndPosition](#getendposition) | Get the current position of the arm as a Pose. |
+| [MoveToPosition](#movetoposition) | Move the end of the arm to the desired Pose. |
+| [MoveToJointPositions](#movetojointpositions) | Move each joint on the arm to the desired position. |
+| [JointPositions](#jointpositions) | Get the current position of each joint on the arm. |
+| [Stop](#stop) | Stop the arm from moving. |
+| [IsMoving](#stop) | Get if the arm is currently moving. |
+| [DoCommand](#docommand) | Sends or receives model-specific commands. |
 
 ### GetEndPosition
 
@@ -181,10 +175,10 @@ Orientation is expressed as an orientation vector, which is represented by o_x, 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_end_position).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myArm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name='my_arm')
 
 # Get the end position of the arm as a Pose.
-pos = await myArm.get_end_position()
+pos = await my_arm.get_end_position()
 ```
 
 {{% /tab %}}
@@ -250,13 +244,13 @@ These fields are optional.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.move_to_position).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myArm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name='my_arm')
 
 # Create a Pose for the arm.
 examplePose = Pose(x=5, y=5, z=5, o_x=5, o_y=5, o_z=5, theta=20)
 
 # Move your arm to the Pose.
-await myArm.move_to_position(pose=examplePose, world_state=WorldState())
+await my_arm.move_to_position(pose=examplePose, world_state=WorldState())
 ```
 
 {{% /tab %}}
@@ -323,7 +317,7 @@ JointPositions can have one attribute, `values`, a list of joint positions with 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.move_to_joint_positions)
 
 ```python {class="line-numbers linkable-line-numbers"}
-myArm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name='my_arm')
 
 # Declare a list of values with your desired rotational value for each joint on the arm.
 degrees = [0.0, 45.0, 0.0, 0.0, 0.0]
@@ -332,7 +326,7 @@ degrees = [0.0, 45.0, 0.0, 0.0, 0.0]
 jointPos = arm.move_to_joint_positions(JointPositions(values=[0.0, 45.0, 0.0, 0.0, 0.0]))
 
 # Move each joint of the arm to the position these values specify.
-await myBase.move_to_joint_positions(positions= jointPos)
+await my_arm.move_to_joint_positions(positions= jointPos)
 ```
 
 {{% /tab %}}
@@ -390,10 +384,10 @@ JointPositions can have one attribute, `values`, a list of joint positions with 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_joint_positions)
 
 ```python {class="line-numbers linkable-line-numbers"}
-myArm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name='my_arm')
 
 # Get the current position of each joint on the arm as JointPositions.
-pos = await myArm.get_joint_positions()
+pos = await my_arm.get_joint_positions()
 ```
 
 {{% /tab %}}
@@ -413,13 +407,13 @@ JointPositions can have one attribute, `values`, a list of joint positions with 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myArm, err := arm.FromRobot(robot, "my_arm")
+my_arm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
 
 // Get the current position of each joint on the arm as JointPositions.
-pos, err := myArm.JointPositions(context.Background(), nil)
+pos, err := my_arm.JointPositions(context.Background(), nil)
 
 // Log any errors that occur.
 if err != nil {
@@ -450,10 +444,10 @@ Stop all motion of the arm.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.stop).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myArm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name='my_arm')
 
 # Stop all motion of the arm. It is assumed that the arm stops immediately.
-await myArm.stop()
+await my_arm.stop()
 ```
 
 {{% /tab %}}
@@ -501,13 +495,13 @@ Get if the arm is currently moving.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.is_moving).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myArm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name='my_arm')
 
 # Stop all motion of the arm. It is assumed that the arm stops immediately.
-await myArm.stop()
+await my_arm.stop()
 
 # Print if the arm is currently moving.
-print(myArm.is_moving())
+print(my_arm.is_moving())
 ```
 
 {{% /tab %}}
@@ -544,6 +538,57 @@ logger.Info(is_moving)
 {{% /tab %}}
 {{< /tabs >}}
 
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+For built-in models, model-specific commands are covered with each model's documentation.
+If you are implementing your own arm and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (`Dict[str, Any]`): The command to execute.
+
+**Returns:**
+
+- `result` (`Dict[str, Any]`): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot, "arm1")
+
+command = {"cmd": "test", "data1": 500}
+result = my_arm.do(command)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` (`cmd map[string]interface{}`): The command to execute.
+
+**Returns:**
+
+- `result` (`cmd map[string]interface{}`): Result of the executed command.
+- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+  myArm, err := arm.FromRobot(robot, "my arm")
+
+  command := map[string]interface{}{"cmd": "test", "data1": 500}
+  result, err := myArm.DoCommand(context.Background(), command)
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/arm/arm.go#L198).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## SDK Documentation
 
 - [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/arm/index.html)
@@ -557,21 +602,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/tutorials/motion/accessing-and-moving-robot-arm">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Access and Move a Robot Arm</h4>
-            <p style="text-align: left;">Tutorial on accessing and controlling one of the most fundamental systems in robotics: A robotic arm.</p>
-        </a>
-    </div>
-    <div class="col" style="border: 1px solid #000; box-shadow: 5px 5px 0 0 #000; margin: 1em">
-        <a href="/services/motion">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Viam's Motion Service</h4>
-            <p style="text-align: left;">More information on Viam's Motion Service.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{% card link="/tutorials/motion/accessing-and-moving-robot-arm" size="small" %}}
+  {{% card link="/services/motion" size="small" %}}
+{{< /cards >}}

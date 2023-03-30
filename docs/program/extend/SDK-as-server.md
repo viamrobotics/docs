@@ -49,4 +49,4 @@ You can view the complete tutorial on how to create a custom component using Pyt
 
 Find more component implementation examples in [<file>components.py</file> in the Viam Python SDK repo](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/server/v1/components.py).
 
-For a full walk-through of a different example, see the [Custom Quadruped Base tutorial](/tutorials/custom-base-dog/).
+For a full walk-through of a different example, see the [Custom Quadruped Base tutorial](/tutorials/custom/custom-base-dog/).

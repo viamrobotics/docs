@@ -25,7 +25,7 @@ Fill in the attributes for your align color depth extrinsics view:
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<camera_name>",
     "type": "camera",

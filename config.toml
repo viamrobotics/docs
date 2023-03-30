@@ -62,6 +62,9 @@ version_menu = "SDK Documentation"
 [[params.versions]]
  version = "Go Client SDK Documentation"
  url="https://pkg.go.dev/go.viam.com/rdk"
+[[params.versions]]
+ version = "TypeScript SDK Documentation"
+ url="https://ts.viam.dev/"
 # [[params.versions]]
 #  version = "Rust SDK Documentation"
 #  url = "https://rust.viam.dev/"
@@ -111,6 +114,10 @@ enable = false
   url = "mailto:developers-help@viam.com"
   icon = "fa fa-envelope"
   desc = "Ask questions about the Viam SDK"
+
+[params.github]
+repository = "viamrobotics/docs"
+branch = "main"
 
 [module]
   [module.hugoVersion]

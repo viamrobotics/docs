@@ -1,7 +1,7 @@
 ---
 title: "The Robot Frame System"
 linkTitle: "Frame System"
-description: "Explanation of the Frame System service, its configuration, and its functionality."
+description: "The Frame System holds reference frame information for the relative position of components in space."
 type: docs
 weight: 45
 tags: ["frame system", "services"]

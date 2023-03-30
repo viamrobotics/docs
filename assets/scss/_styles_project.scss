@@ -262,7 +262,8 @@ END MARKETING CSS
   margin: 12px 0 12px 0;
   border:solid 1px;
   border-color: blue;
-  max-width: 600PX;
+  max-width: 100%;
+  width: 600px;
   height: auto;
 }
 /* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/ */
@@ -473,6 +474,7 @@ END MARKETING CSS
   width: 200px;
   max-width: 200px;
   display: flex;
+  padding-top: 1rem
 }
 
 .hover-card:hover {
@@ -559,3 +561,97 @@ END MARKETING CSS
 .nav-link {
   text-decoration: none;
 }
+
+/* START CSS to ensure lists within columns of markdown aren't indented */
+
+td > ul, td > ol {
+  padding-inline-start: 0;
+}
+
+/* END CSS to ensure lists within columns of markdown aren't indented */
+
+/* START TAB CSS consistency */
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
+  border-color: black black white;
+}
+
+.nav-tabs .nav-link {
+  border-width: 1px;
+  border-style: solid;
+  border-color: white rgb(209, 213, 219) black  rgb(209, 213, 219);
+  border-radius: 0;
+  padding: 0.25rem 1rem;
+  color: rgb(78, 79, 82);
+  background-color: rgb(241, 241, 244)
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: white rgb(209, 213, 219) black  rgb(209, 213, 219);
+}
+
+.nav.nav-tabs > .nav-item {
+  margin-bottom: -1px;
+}
+
+.tab-content {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+/* END TAB CSS consistency */
+
+/* START no whitespace beneath footer */
+
+body footer {
+  line-height: 1;
+}
+
+footer small {
+  line-height: 1.5;
+}
+
+/* END no whitespace beneath footer */
+
+/* START scroll to top and github styling */
+
+.addedbutton {
+  border: 1px solid black;
+  border-radius: 0;
+  background-color: whitesmoke;
+  margin: 0;
+  padding: 1rem 1.25rem;
+  i {
+    color: black;
+  }
+}
+
+#scrollButton {
+  position: sticky;
+  left: 100%;
+  bottom: 1rem;
+  border-radius: 0;
+}
+
+#edit-on-github {
+  float: right;
+  a {
+    color: #515151;
+  }
+}
+
+/* END scroll to top and github styling */
+
+
+/* START cookie consent message */
+.cookieconsent-optout-marketing {
+  border: 1px solid black;
+  padding: 1rem;
+  box-shadow: 5px 5px 0 0 #a51aff;
+  margin: 1em;
+}
+
+.embed-responsive.embed-responsive-16by9 {
+  border: 1px solid black;
+}
+/* END cookie consent message */

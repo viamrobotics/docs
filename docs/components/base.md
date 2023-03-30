@@ -233,7 +233,7 @@ async def main():
     print(robot.resource_names)
 
     # Connect to your base.
-    myBase = BaseClient.from_robot(robot=robot, name='my_base')
+    my_base = BaseClient.from_robot(robot=robot, name='my_base')
 
     # Disconnect from your robot.
     await robot.close()
@@ -299,20 +299,14 @@ func main() {
 
 The base component supports the following methods:
 
-| Method Name | Go | Python | Description |
-| ----------- | -- | ------ | ----------- |
-[MoveStraight](#movestraight)  | [MoveStraight][go_base]  |  [move_straight][python_move_straight] | Move the base in a straight line across the given distance at the given velocity. |
-[Spin](#spin) |  [Spin][go_base] | [spin][python_spin] | Move the base to the given angle at the given angular velocity. |
-[SetPower](#setpower) | [SetPower][go_base] | [set_power][python_set_power] | Set the relative power (out of max power) for linear and angular propulsion of the base. |
-[SetVelocity](#setvelocity) | [SetVelocity][go_base] | [set_velocity][python_set_velocity] | Set the linear velocity and angular velocity of the base. |
-[Stop](#stop) | [Stop][go_base] | [stop][python_stop] | Stop the base. |
-
-[go_base]: https://pkg.go.dev/go.viam.com/rdk/components/base#Base
-[python_move_straight]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.move_straight
-[python_spin]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.spin
-[python_set_power]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_power
-[python_set_velocity]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.set_velocity
-[python_stop]: https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.stop
+| Method Name | Description |
+| ----------- | ----------- |
+| [MoveStraight](#movestraight)  | Move the base in a straight line across the given distance at the given velocity. |
+| [Spin](#spin) | Move the base to the given angle at the given angular velocity. |
+| [SetPower](#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base. |
+| [SetVelocity](#setvelocity) | Set the linear velocity and angular velocity of the base. |
+| [Stop](#stop) | Stop the base. |
+| [DoCommand](#docommand) | Sends or receives model-specific commands. |
 
 ### MoveStraight
 
@@ -399,10 +393,10 @@ Negative implies backwards.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myBase = BaseClient.from_robot(robot=robot, name='my_base')
+my_base = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Spin the base 10 degrees at an angular velocity of 1 deg/sec.
-await myBase.spin(angle=10, velocity=1)
+await my_base.spin(angle=10, velocity=1)
 ```
 
 {{% /tab %}}
@@ -445,12 +439,14 @@ Set the linear and angular power of the base, represented as a percentage of max
 
 **Parameters:**
 
-- `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's linear propulsion. In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
-Viam's coordinate system considers +Y to be the forward axis (+/- X left/right, +/- Z up/down), so use the Y component of this vector to move forward and backward when controlling a wheeled base.
-Negative "Y:" values imply moving backwards.
+- `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's linear propulsion.
+  In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
+  Viam's coordinate system considers +Y to be the forward axis (+/- X left/right, +/- Z up/down), so use the Y component of this vector to move forward and backward when controlling a wheeled base.
+  Negative "Y:" values imply moving backwards.
 - `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's angular propulsion.
-In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
-Use the Z component of this vector to spin left or right when controlling a wheeled base. Negative "Z:" values imply spinning to the right.
+  In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
+  Use the Z component of this vector to spin left or right when controlling a wheeled base.
+  Negative "Z:" values imply spinning to the right.
 
 **Returns:**
 
@@ -459,23 +455,23 @@ Use the Z component of this vector to spin left or right when controlling a whee
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myBase = BaseClient.from_robot(robot=robot, name='my_base')
+my_base = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Make your wheeled base move forward. Set linear power to 75%.
 print("move forward")
-await myBase.set_power(linear=Vector3(x=0,y=-.75,z=0), angular=Vector3(x=0,y=0,z=0))
+await my_base.set_power(linear=Vector3(x=0,y=-.75,z=0), angular=Vector3(x=0,y=0,z=0))
 
 # Make your wheeled base move backward. Set linear power to -100%.
 print("move backward")
-await myBase.set_power(linear=Vector3(x=0,y=-1.0,z=0), angular=Vector3(x=0,y=0,z=0))
+await my_base.set_power(linear=Vector3(x=0,y=-1.0,z=0), angular=Vector3(x=0,y=0,z=0))
 
 # Make your wheeled base spin left. Set angular power to 100%.
 print("spin left")
-await myBase.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=1))
+await my_base.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=1))
 
 # Make your wheeled base spin right. Set angular power to -75%.
 print("spin right")
-await myBase.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=-.75))
+await my_base.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=-.75))
 ```
 
 {{% /tab %}}
@@ -556,10 +552,10 @@ Only the Y component of the vector is used for a wheeled base.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myBase = BaseClient.from_robot(robot=robot, name='my_base')
+my_base = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Set the angular velocity to 1 mm/sec and the linear velocity to 1 degree/sec.
-await myBase.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z=1))
+await my_base.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z=1))
 ```
 
 {{% /tab %}}
@@ -611,13 +607,13 @@ Stop the base from moving immediately.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myBase = BaseClient.from_robot(robot=robot, name='my_base')
+my_base = BaseClient.from_robot(robot=robot, name='my_base')
 
 # Move the base forward 10 mm at a velocity of 1 mm/s.
-await myBase.move_straight(distance=10, velocity=1)
+await my_base.move_straight(distance=10, velocity=1)
 
 # Stop the base.
-await myBase.stop()
+await my_base.stop()
 ```
 
 {{% /tab %}}
@@ -650,6 +646,57 @@ myBase.Stop(context.Background())
 {{% /tab %}}
 {{< /tabs >}}
 
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+For built-in models, model-specific commands are covered with each model's documentation.
+If you are implementing your own base and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (`Dict[str, Any]`): The command to execute.
+
+**Returns:**
+
+- `result` (`Dict[str, Any]`): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_base = BaseClient.from_robot(robot, "my_base")
+
+command = {"cmd": "test", "data1": 500}
+result = my_base.do(command)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` (`cmd map[string]interface{}`): The command to execute.
+
+**Returns:**
+
+- `result` (`cmd map[string]interface{}`): Result of the executed command.
+- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+  myBase, err := base.FromRobot(robot, "my_base")
+
+  command := map[string]interface{}{"cmd": "test", "data1": 500}
+  result, err := myBase.DoCommand(context.Background(), command)
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/base/base.go#L168).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
@@ -658,28 +705,8 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card">
-        <a href="/tutorials/yahboom-rover/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Drive a Yahboom Rover with a Gamepad</h4>
-            <p style="text-align: left;">Instructions for getting a Yahboom 4WD Rover driving with a Bluetooth Gamepad and the Viam app.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <a href="/tutorials/controlling-an-intermode-rover-canbus/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Control an Intermode Rover with CAN Bus and Viam</h4>
-            <p style="text-align: left;">How to abstract CAN bus protocol to control an Intermode rover with Viam.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <a href="/tutorials/viam-rover/">
-            <br>
-            <h4 style="text-align: left; margin-left: 0px;">Drive the Viam Rover with the Viam SDK</h4>
-            <p style="text-align: left;">Try Viam by using the Viam SDK to make your Viam Rover move in a square.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{% card link="/tutorials/yahboom-rover" size="small" %}}
+  {{% card link="/tutorials/viam-rover" size="small" %}}
+  {{% card link="/tutorials/webcam-line-follower-robot" size="small" %}}
+{{< /cards >}}

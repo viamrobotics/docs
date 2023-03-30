@@ -84,21 +84,7 @@ If you want each component to show up in your **COMPONENTS** subtab so you can v
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card">
-        <a href="../../../tutorials/viam-rover/try-viam-sdk">
-          <img src="../../../tutorials/img/try-viam-sdk/image1.gif" width=100% style="padding-top: 1em" alt="Overhead view of the Viam rover showing it as it drives in a square.">
-          <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Drive with the Viam SDK</h4>
-          <p style="text-align: left;">Using the Viam SDK to make your Viam Rover move in a square.</p>
-        </a>
-    </div>
-    <div class="col hover-card">
-        <a href="../../../tutorials/viam-rover/try-viam-color-detection">
-          <img src="../../../tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png" width=100% style="padding-top: 1em" alt="detectionCam stream displaying a color detection.">
-          <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect a Color</h4>
-          <p style="text-align: left;">Using the Vision Service in the Viam app to detect a color.</p>
-        <a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+  {{% card link="/tutorials/get-started/try-viam-sdk" size="small" %}}
+  {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
+{{< /cards >}}

@@ -48,7 +48,7 @@ This is how you configure a one-axis gantry:
 {{< /tab >}}
 {{% tab name="JSON Template" %}}
 
-```json-viam
+```json
 {
   "components": [
     {
@@ -105,7 +105,7 @@ This is how you configure a multi-axis gantry:
 {{< /tab >}}
 {{% tab name="JSON Template" %}}
 
-```json-viam
+```json
 {
   "components": [
     {
@@ -128,7 +128,7 @@ This is how you configure a multi-axis gantry:
 {{< /tab >}}
 {{% tab name="Full JSON Example" %}}
 
-```json-viam
+```json
 {
     "components": [
         {
@@ -306,7 +306,7 @@ async def main():
     print(robot.resource_names)
 
     # Connect to your gantry.
-    myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
+    my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
 
     # Disconnect from your robot.
     await robot.close()
@@ -372,20 +372,14 @@ func main() {
 
 The gantry component supports the following methods:
 
-| Method Name | Go | Python | Description |
-| ----------- | -- | ------ | ----------- |
-[Position](#position) | [Position][go_gantry]  |  [get_position][python_get_position] | Get the current positions of the axes of the gantry in mm. |
-[MoveToPosition](#movetoposition) | [MoveToPosition][go_gantry] | [move_to_position][python_move_to_position] | Move the axes of the gantry to the desired positions. |
-[Lengths](#lengths) | [Lengths][go_gantry] | [get_lengths][python_get_lengths] | Get the lengths of the axes of the gantry in mm. |
-[Stop](#stop) | [Stop][go_gantry] | [stop][python_stop] | Stop the gantry from moving. |
-[IsMoving](#stop) | [IsMoving][go_gantry] | [stop][python_is_moving] | Get if the gantry is currently moving. |
-
-[go_gantry]: https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry
-[python_get_position]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.get_position
-[python_move_to_position]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.move_to_position
-[python_get_lengths]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.get_lengths
-[python_stop]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.stop
-[python_is_moving]: https://python.viam.dev/autoapi/viam/components/gantry/index.html#viam.components.gantry.Gantry.is_moving
+| Method Name | Description |
+| ----------- | ----------- |
+[Position](#position) | Get the current positions of the axes of the gantry in mm. |
+[MoveToPosition](#movetoposition) | Move the axes of the gantry to the desired positions. |
+[Lengths](#lengths) | Get the lengths of the axes of the gantry in mm. |
+[Stop](#stop) | Stop the gantry from moving. |
+[IsMoving](#stop) | Get if the gantry is currently moving. |
+| [DoCommand](#docommand) | Sends or receives model-specific commands. |
 
 ### Position
 
@@ -406,10 +400,10 @@ Get the current positions of the axis of the gantry (mm).
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.get_position).
 
 ```python
-myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
 
 # Get the current positions of the axes of the gantry in millimeters.
-positions = await myGantry.get_position()
+positions = await my_gantry.get_position()
 ```
 
 {{% /tab %}}
@@ -468,13 +462,13 @@ Specifies obstacles that the gantry must avoid while it moves from its original 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.move_to_position).
 
 ```python
-myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
 
 # Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multiaxis, with 3 axes.
 examplePositions = [1, 2, 3]
 
 # Move the axes of the gantry to the positions specified.
-await myGantry.move_to_position(positions=examplePositions, world_state=WorldState())
+await my_gantry.move_to_position(positions=examplePositions, world_state=WorldState())
 ```
 
 {{% /tab %}}
@@ -529,10 +523,10 @@ Get the lengths of the axes of the gantry (mm).
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.lengths).
 
 ```python
-myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
 
 # Get the lengths of the axes of the gantry in millimeters.
-lengths_mm = await myGantry.get_lengths()
+lengths_mm = await my_gantry.get_lengths()
 ```
 
 {{% /tab %}}
@@ -588,10 +582,10 @@ Stop all motion of the gantry.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.stop).
 
 ```python
-myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
 
 # Stop all motion of the gantry. It is assumed that the gantry stops immediately.
-await myGantry.stop()
+await my_gantry.stop()
 ```
 
 {{% /tab %}}
@@ -639,13 +633,13 @@ Get if the gantry is currently moving.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.is_moving).
 
 ```python
-myGantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
 
 # Stop all motion of the gantry. It is assumed that the gantry stops immediately.
-await myGantry.stop()
+await my_gantry.stop()
 
 # Print if the gantry is currently moving.
-print(myGantry.is_moving())
+print(my_gantry.is_moving())
 ```
 
 {{% /tab %}}
@@ -677,6 +671,57 @@ if err != nil {
   logger.Fatalf("cannot get if gantry is moving: %v", err)
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+For built-in models, model-specific commands are covered with each model's documentation.
+If you are implementing your own gantry and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (`Dict[str, Any]`): The command to execute.
+
+**Returns:**
+
+- `result` (`Dict[str, Any]`): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_gantry = Gantry.from_robot(robot, "my_gantry")
+
+command = {"cmd": "test", "data1": 500}
+result = my_gantry.do(command)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` (`cmd map[string]interface{}`): The command to execute.
+
+**Returns:**
+
+- `result` (`cmd map[string]interface{}`): Result of the executed command.
+- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+  myGantry, err := gantry.FromRobot(robot, "my_gantry")
+
+  command := map[string]interface{}{"cmd": "test", "data1": 500}
+  result, err := myGantry.DoCommand(context.Background(), command)
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/input/input.go#L254).
 
 {{% /tab %}}
 {{< /tabs >}}

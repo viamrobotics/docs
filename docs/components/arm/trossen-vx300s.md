@@ -16,7 +16,7 @@ Configure a `trossen-vx300s` arm as follows:
 {{< tabs name="Configure a trossen-vx300s Arm" >}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<arm_name">",
     "type": "arm",

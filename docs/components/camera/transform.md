@@ -26,7 +26,7 @@ Fill in the attributes for your transform view:
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<camera_name>",
     "type": "camera",
@@ -78,7 +78,7 @@ The following are the available transformations:
 The Identity transform does nothing to the image.
 You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "type": "identity"
 }
@@ -94,7 +94,7 @@ You can use this transform to change the underlying camera source's intrinsic pa
 The Rotate transformation rotates the image by 180 degrees.
 This feature is useful for when the camera is installed upside down on your robot.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "type": "rotate",
     "attributes": { }
@@ -110,7 +110,7 @@ This feature is useful for when the camera is installed upside down on your robo
 
 The Resize transform resizes the image to the specified height and width.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "type": "resize",
     "attributes": {
@@ -131,7 +131,7 @@ The Resize transform resizes the image to the specified height and width.
 The Depth-to-Pretty transform takes a depth image and turns it into a colorful image, with blue indicating distant points and red indicating nearby points.
 The actual depth information is lost in the transform.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "type": "depth_to_pretty",
     "attributes": { }
@@ -148,7 +148,7 @@ The actual depth information is lost in the transform.
 Overlays the depth and the color 2D images.
 Useful to debug the alignment of the two images.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "type": "overlay",
     "attributes": {
@@ -181,7 +181,7 @@ The Undistort transform undistorts the input image according to the intrinsics a
 Currently only supports a Brown-Conrady model of distortion (20 September 2022).
 For further information, please refer to the [OpenCV docs](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a).
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "type": "undistort",
     "attributes": {
@@ -225,7 +225,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 The Detections transform takes the input image and overlays the detections from a given detector configured within the [Vision Service](/services/vision/).
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "type": "detections",
     "attributes": {
@@ -245,7 +245,7 @@ The Detections transform takes the input image and overlays the detections from 
 
 The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "type": "depth_edges",
     "attributes": {
@@ -267,7 +267,7 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 
 Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "type": "depth_preprocess",
     "attributes": { }
@@ -283,7 +283,7 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 
 Classifications overlay text from the `GetClassifications` method of the [Vision Service](../../../services/vision) onto the image.
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "type": "classifications",
     "attributes": {
@@ -303,7 +303,7 @@ Classifications overlay text from the `GetClassifications` method of the [Vision
 
 ## Example
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "camera_name",
     "type": "camera",
@@ -324,25 +324,8 @@ Classifications overlay text from the `GetClassifications` method of the [Vision
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card hover-card-small">
-        <a href="../../../services/vision">
-        <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Vision Service</h4>
-        <p style="text-align: left;">The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it.</p>
-        <a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="/tutorials/viam-rover/try-viam-color-detection/">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Detect color with a Viam Rover</h4>
-            <p style="text-align: left;">Use the vision service in the Viam app to detect a color.</p>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="/tutorials/scuttlebot/color-detection-scuttle/">
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1em;">Colored Object Follower</h4>
-            <p style="text-align: left;">Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software.</p>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+    {{% card link="/services/vision" size="small" %}}
+    {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
+    {{% card link="/tutorials/services/color-detection-scuttle" size="small" %}}
+{{< /cards >}}

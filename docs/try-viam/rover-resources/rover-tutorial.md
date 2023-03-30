@@ -4,6 +4,8 @@ linkTitle: "Unbox and Set Up your Viam Rover"
 weight: 10
 type: "docs"
 tags: ["rover", "tutorial"]
+image: "/try-viam/rover-resources/img/viam-rover/rover-front.jpg"
+imageAlt: "A Viam Rover"
 description: "A list of the contents of the Viam Rover kit, instructions for wiring your rover, and links for additional hardware."
 ---
 
@@ -233,7 +235,11 @@ To configure your rover so you can start driving it, [add the Viam Fragment to y
 
 ## Next Steps
 
-Check out our other [tutorials that use the Viam Rover](/tutorials/viam-rover/).
+Check out our other [tutorials that use the Viam Rover](../../tutorials).
+
+### Rover Build
+
+If you want to learn more about the rover, you can find the CAD files and bill-of-materials (BOM) on [GitHub](https://github.com/viamrobotics/VR1-22-A001).
 
 ### Extensibility
 

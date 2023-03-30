@@ -24,7 +24,7 @@ Find the more [generic sensor component here](/components/sensor/).
 Find more information about encoders, another component type, [here](/components/encoder/).
 
 {{% alert title="Note" color="note" %}}
-Any movement sensor that uses I<sup>2</sup>C must be connected to a board that supports I<sup>2</sup>C and [has it enabled](/installation/prepare/rpi-setup/#enabling-specific-communication-protocols-on-the-raspberry-pi).
+Any movement sensor that uses I<sup>2</sup>C must be connected to a board that supports I<sup>2</sup>C and [has it enabled](/installation/prepare/rpi-setup/#enable-communication-protocols).
 {{% /alert %}}
 
 ## GPS
