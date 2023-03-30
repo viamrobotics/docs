@@ -12,7 +12,7 @@ This tutorial uses the Viam [Vision Service](/services/vision/) with your comput
 
 You can turn it into a night light for reading books, a security robot that alerts you when a person is close by, or a bathroom light that only activates when people enter; the opportunities are endless.
 
-This project is a great place to start if you are new to building robots, and have a smart plug laying around.
+This project is a great place to start if you are new to building robots, because the only hardware it requires in addition to your computer is a [smart plug](https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-wifi-plug-mini) or smart bulb.
 
 {{< gif webm_src="../img/light-up/light-up.webm" mp4_src="../img/light-up/light-up.mp4" alt= "The project working: a person sitting at a desk with a computer and lightbulb set up in front of her. As she leaves the light turns off, and as she enters the frame, the light turns back on." >}}
 
@@ -23,8 +23,10 @@ You need the following hardware for this tutorial:
 - Computer with a webcam
   - This tutorial uses a MacBook Pro but any computer running macOS or 64-bit Linux will work
 - Mobile phone (to download the Kasa Smart app)
-- [Kasa Smart Wi-Fi Plug Mini](https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-wifi-plug-mini)
-- [Kasa Smart Light Bulb](https://www.kasasmart.com/us/products/smart-lighting/kasa-smart-light-bulb-multicolor-kl125)
+- Either a smart plug or bulb:
+  - [Kasa Smart Wi-Fi Plug Mini](https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-wifi-plug-mini)
+    - (This is what we used for this tutorial.)
+  - [Kasa Smart Light Bulb](https://www.kasasmart.com/us/products/smart-lighting/kasa-smart-light-bulb-multicolor-kl125)
 - [Table Lamp Base](https://www.amazon.com/gp/product/B08KZNZVY7/ref=ppx_yo_dt_b_asin_title_o02_s00?) or similar
 
 ## Software requirements
@@ -44,7 +46,7 @@ Go to the [Viam app](https://app.viam.com) and create a new robot.
 
 Go to the **SETUP** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](link to install docs).
 
-## Configure object detection
+## Configure the camera component
 
 On your new robot's page, go to the **CONFIG** tab.
 
