@@ -46,7 +46,8 @@ You will use the following software in this tutorial:
   - The Viam Python SDK (software development kit) lets you control your Viam-powered robot by writing custom scripts in the Python programming language.
   Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
 - [yagmail](https://github.com/kootenpv/yagmail)
-- A gmail account to send emails.  You can use an existing account, or create a new one.
+- A gmail account to send emails. You can use an existing account, or create a new one.
+
 
 ## Configure your robot on the Viam app
 
