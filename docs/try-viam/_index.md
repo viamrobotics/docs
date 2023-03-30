@@ -3,7 +3,7 @@ title: "Try Viam"
 linkTitle: "Try Viam"
 weight: 15
 type: "docs"
-description: "Try Viam by taking over a Viam Rover in our robotics lab for 15 minutes."
+description: "Try Viam by taking over a Viam Rover in our robotics lab."
 ---
 
 [Rent and remotely configure and control a Viam Rover](https://app.viam.com/try) located on-site at Viam in New York:
