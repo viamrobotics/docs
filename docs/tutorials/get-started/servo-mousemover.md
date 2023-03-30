@@ -11,7 +11,7 @@ tags: ["servo", "single component tutorial", "raspberry pi", "sdk", "python"]
 # SME: Kacey Meier-Smith
 ---
 
-Have you or someone you've known been a person that works from home and needed to step out for a moment?
+Have you ever been working from home and needed to step out for a moment?
 Maybe it was to clear your head, grab your lunch, answer the door, and you get in trouble because it showed you as offline?
 
 {{<youtube embed_url="https://www.youtube.com/embed/sXWJE0ePHdA">}}
