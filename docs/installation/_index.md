@@ -191,7 +191,8 @@ sudo ./viam-server -config myconfig.json
 
 #### Start automatically on boot
 
-A system service starts `viam-server` every time you boot your device.
+If you install `viam-server` as a system service, `viam-server` starts automatically every time you boot your device.
+Note that this is the default way `viam-server` is set up if you follow the **SETUP** tab instructions on the [Viam app](https://app.viam.com).
 
 For this setup your configuration file must be at <file>/etc/viam.json</file>.
 
