@@ -54,7 +54,7 @@ This project is a good place to begin if you're new to robots and would like to 
 
 ## Install Viam software
 
-First, install viam-server according to our [Raspberry Pi setup guide](/installation/prepare/rpi-setup/)
+First, install viam-server according to our [installation guide](/installation/)
 
 Next, run this command in your Raspberry Pi terminal to install the pip package manager. Select "yes" when it asks if you want to continue.
 
