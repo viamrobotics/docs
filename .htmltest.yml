@@ -14,6 +14,7 @@ IgnoreURLs:
 - "github.com/viamrobotics/"
 - "openai.com"
 - "espressif.com"
+- "play.google.com"
 - "packages.viam.com" #IgnoreHTTPS does not work on staging
 IgnoreDirs:
 - "lib"
