@@ -7,7 +7,7 @@ description: "Frequently Asked Questions about Try Viam."
 ---
 
 Try Viam allows you to try the Viam platform without setting up any hardware yourself.
-For 15 minutes, no matter where you are in the world, you can take over and play around with a Viam Rover in our robotics lab!
+No matter where you are in the world you can take over and play around with a Viam Rover in our robotics lab!
 
 ## How do I make a reservation to take over a Viam Rover?
 
