@@ -1,17 +1,21 @@
 ---
-title: "Sensor Component"
-linkTitle: "Sensor"
-weight: 70
+title: "Create a Custom Sensor Model"
+linkTitle: "custom model"
+weight: 40
 draft: false
 type: "docs"
-description: "A device that sends information about the outside world to the computer controlling a robot."
+description: "Extend the sensor class to define a custom sensor model and build your robot with any type of sensor."
 tags: ["sensor", "components"]
 image: "/components/img/components/sensor.png"
 imageAlt: "sensor"
 # SME: #team-bucket
 ---
+
 This page explains how to set up a generic sensor component with Viam.
-Viam has a few types of sensor implemented including an ultrasonic sensor, and certain temperature sensors, but this doc covers setting up a custom sensor so you can build a robot using almost any sort of sensor.
+
+Viam has a few types of sensor models built-in including an ultrasonic sensor, and certain temperature sensors, but you can implement any other model of sensor for building your robot with Viam by extending the [sensor class]() and defining your own model.
+
+<!-- this doc covers setting up a custom sensor so you can build a robot using almost any sort of sensor. -->
 
 {{% alert title="Note" color="note" %}}
 
@@ -23,14 +27,8 @@ Viam also has an [encoder component](/components/encoder/) that is distinct from
 
 Most robots with a sensor need at least the following hardware:
 
-* Some sort of sensor, such as an ultrasonic sensor or temperature sensor
-* A [board](/components/board/)
-* Depending on your sensor's output type (analog or digital), an analog to digital converter may be necessary to allow the sensor to communicate with the board.
-
-## Wiring
-
-The wiring for your sensor depends on the specific sensor you are using.
-Refer to the sensor’s data sheet for wiring details.
+- A [board](/components/board/)
+- Depending on your sensor's output type (analog or digital), an analog to digital converter (ADC) may be necessary to allow the sensor to communicate with the board.
 
 ## Configuration
 
