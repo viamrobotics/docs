@@ -235,7 +235,7 @@ Grab a box cutter and cut out a power hole.
 Since the Raspberry Pi will be in a box and won't have much ventilation, cutting a courtesy hole to allow for it to vent is the least we could do to keep it from frying.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="../../img/single-component-tutorials-servo-mousemover/vent-box.webm" mp4_src="../../img/single-component-tutorials-servo-mousemover/vent-box.mp4" alt="This is sped up gif showing cutting the heat hole for the raspberry pi. First they put the raspberry pi inside and identify where they need to cut on the bottom of the box, they then pull the raspberry pi out. Then they use box cutters to cut a one inch by two inch hole.">}}
+  {{<gif webm_src="../../img/single-component-tutorials-servo-mousemover/vent-box.webm" mp4_src="../../img/single-component-tutorials-servo-mousemover/vent-box.mp4" alt="This is sped up gif showing cutting the heat hole for the Raspberry Pi. First, they put the Raspberry Pi inside and identify where they need to cut on the bottom of the box, they then pull the Raspberry Pi out. Then they use box cutters to cut a one-inch by two-inch hole.">}}
 </div>
 
 Be sure to tape the jumper wires out of the way of the servo.
