@@ -66,17 +66,20 @@ Next, run this command in your Raspberry Pi terminal to install the pip package 
 
 ```sh
 sudo apt-get install pip
+```
 
 The command above installs the latest version of `python3` and `pip3` on your Raspberry Pi.
 To verify and get the version of the package, you can run the command:
 
 ```sh
 pip3 --version
+```
 
 The [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) allows you to write programs in the Python programming language to operate robots using Viam. To get the Python SDK working on the Raspberry Pi, run the following command in your Raspberry Pi terminal:
 
 ```sh
 pip install viam-sdk
+```
 
 ## Test the SDK with your robot
 
@@ -95,16 +98,19 @@ Inside the Raspberry Pi Terminal, run the following command to create a folder t
 
 ```sh
 mkdir mousefolder
+```
 
 Go into mousefolder.
 
 ```sh
 cd mousefolder
+```
 
 Create a file using nano with the .py which is the python file extension, (name this file whatever you want).
 
 ```sh
 nano anyname.py
+```
 
 Paste the code you got from the **CODE SAMPLE** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
@@ -114,6 +120,7 @@ Now, run the code using the below command to get the resource information that l
 
 ```sh
 python3 anyname.py
+```
 
 ![Raspberry pi computer terminal with black background and mostly white, but there's one teal word: "INFO" located at the top next to viam.rpc.dial (dial.py:209). The code shown below that is white text and shows Viam's RDK Resources, and it shows no error.](../../img/single-component-tutorials-servo-mousemover/resources-printed.png)
 
