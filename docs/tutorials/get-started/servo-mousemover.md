@@ -25,12 +25,6 @@ This project is a good place to begin if you're new to robots and would like to 
   {{<gif webm_src="../../img/single-component-tutorials-servo-mousemover/moving.webm" mp4_src="../../img/single-component-tutorials-servo-mousemover/moving.mp4" alt="Video of a mouse running erratically on the screen in a sweeping motion in front of the Viam app Control page with an overlaid video of a mouse on top of a cardboard box with a moving cardboard circle underneath it with red swirl lines on the circle.">}}
 </div>
 
-{{< alert title="Tip" color="tip" >}}
-NOTE: This tutorial is part of Viam's Single Component Tutorial series, where you have the opportunity to learn how to use single components for low cost with Viam's platform in fun mini-tutorials.
-
-Stay tuned for more tutorials like this one and don't forget to [join our Discord](https://discord.gg/viam) if you have any questions in the meantime!
-{{< /alert >}}
-
 ## Requirements
 
 ### Hardware
