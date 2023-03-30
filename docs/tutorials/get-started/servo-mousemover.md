@@ -108,7 +108,7 @@ nano anyname.py
 
 Paste the code you got from the **CODE SAMPLE** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
-![Raspberry pi terminal showing the connect code from the previous example.](../../img/single-component-tutorials-servo-mousemover/sample-code.png)
+![Raspberry Pi terminal showing the connect code from the previous example.](../../img/single-component-tutorials-servo-mousemover/sample-code.png)
 
 Now, run the code using the below command to get the resource information that lets us know if the connection is good or if there are any errors.
 
