@@ -8,7 +8,7 @@ description: "How to turn a light on when your webcam sees a person."
 # Author: Hazal Mestci
 ---
 
-This tutorial uses the Viam [Vision Service](/services/vision/) with your computer's built-in webcam to detect the presence of a person and turn a lamp on when you sit down at your desk.
+This tutorial uses the Viam [Vision Service](/services/vision/) with your computer's built-in webcam to detect the presence of a person and turn on a lamp when you sit down at your desk.
 
 You can turn it into a night light for reading books, a security robot that alerts you when a person is close by, or a bathroom light that only activates when people enter; the opportunities are endless.
 
@@ -29,7 +29,7 @@ You need the following hardware for this tutorial:
 
 ## Software requirements
 
-The following software is used in this tutorial:
+You will use the following software in this tutorial:
 
 - [Python 3.8 or newer](https://www.python.org/downloads/)
 - [`viam-server`](/installation/install/)
@@ -72,67 +72,67 @@ Navigate to the **CONTROL** tab where you can see your camera working.
 
 ## Set up the Kasa Smart Plug
 
-Plug your smart plug into any power outlet and turn it on by pressing the white button on the smart plug.
+1. Plug your smart plug into any power outlet and turn it on by pressing the white button on the smart plug.
 To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android&gl=US) to your mobile phone.
 When you first open the app, you will be prompted to create an account.
 As you do this, you will receive an email with subject line "TP-Link ID: Activation Required" to complete your account registration.
 
-Next, follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
+2. Follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
 Once it is connected, you will no longer need to use the mobile app.
 
-Next, open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
+3. Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
 
+    ```bash
+    pip3 install python-kasa
+    ```
 
-```bash
-pip3 install python-kasa
-```
+4. <a name=kasa > Run the following command to return information about your smart device:
 
-Next, run the following command to return information about your smart device:
+    ```bash
+    kasa discover
+    ```
 
-```bash
-kasa discover
-```
+    You should see this command output something like this:
 
-You should see this command output something like this:
+    ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time and cloud).](../img/light-up/kasa-discover-output.png)
 
-![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitute), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time and cloud).](../img/light-up/kasa-discover-output.png)
-
-Copy the host address (for example, `10.1.11.221`).
+    Write down or save the host address (for example, `10.1.11.221`).
 You will need to include it in your Python code in a later step.
 
 ## Write Python code to control your object detection robot
 
-Navigate to the **CODE SAMPLE** tab on the Viam app.
+Now that you have your robot configured and your Kasa plug set up, you are ready to set up the code for the logic of the robot.
+The files used in this section can all be found in [the GitHub repo for this project](https://github.com/viam-labs/devrel-demos/tree/main/Light%20up%20bot).
+
+### Create the main script file
+
+On your computer, navigate to the directory where you want to put the code for this project.
+Create a file there called <file>lightupbot.py</file>.
+This will be the main script for the robot.
+Copy the entirety of [this file](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/lightupbot.py) and paste it into your <file>lightupbot.py</file> file.
+Save <file>lightupbot.py</file>.
+
+### Connect the code to the robot
+
+You need to tell the code how to access your specific robot (which in this case represents your computer and its webcam).
+
+1. Navigate to the **CODE SAMPLE** tab on the Viam app.
 Make sure **Python** is selected in the **Language** selector.
+2. In the code sample, find the `payload`, a long string of numbers and letters.
+Copy it and paste it into line 13 of <file>lightupbot.py</file> in place of `ROBOT_SECRET`.
+3. Find the robot address, of the form `robot-name-main.abc1ab123a1.viam.cloud`, and paste it into line 14 of <file>lightupbot.py</file> in place of `ROBOT_ADDRESS`.
 
-Click the **COPY CODE** button.
-Paste the code into a new Python file on your computer.
-This code connects your script to your robot.
+You also need to tell the code how to access your smart plug.
 
-Now you are ready to write the code to turn your smart plug on and off based on camera readings.
-You will use a [TFLite](https://www.tensorflow.org/lite) model to detect specific objects, and a corresponding text that holds class labels for your TFLite model.
-For more information on the Vision Service, check out our [documentation](/services/vision/).
+1. Add the host address (for example, `10.1.11.221`) of your smart plug that you found in the [`kasa discover` step](#kasa) to line 55 of <file>lightupbot.py</file>.
 
-In your Python code, as you set up the vision service parameters, you will need to change the `model_path` to where your TFLite package lives, and the `label_path` to where your text file lives.
-You can download them from [here](https://github.com/viam-labs/devrel-demos/tree/main/Light%20up%20bot).
+### Set the model path and label path
 
-You will also generate a person detector function within your code, to detect a person and trigger the camera.
+You will use the [Vision Service](/services/vision/) to interpret what your camera sees.
+You will configure the Vision Service to use a [TFLite](https://www.tensorflow.org/lite) model to detect specific objects, and a corresponding text file that holds class labels for your TFLite model.
 
-{{% alert title="Info" color= "info" %}}
-
-Technically, you can detect any object that is listed in the <file>labels.txt</file> (such as a dog or a chair) but for this tutorial, we are detecting a person.
-
-To detect something else with the camera, just change the string "person" to a different item in the <file>label.txt</file> file.
-
-```python
-               if d.class_name.lower() == "person":
-                   print("This is a person!")
-                   found = True
-```
-
-{{% /alert %}}
-
-The sample code below specifies the file locations of the model and labels, which object you are detecting, and it configures the detector.
+1. Take a look at lines 42-48 in <file>lightupbot.py</file>.
+These lines configure a Vision Service object detector to use the TFLite model and the list of labels:
 
 ```python
     vision = VisionServiceClient.from_robot(robot)
@@ -143,47 +143,26 @@ The sample code below specifies the file locations of the model and labels, whic
     print(names)
 ```
 
-Add the host address (for example, `10.1.11.221`) of your smart plug that you found in the [`kasa discover` step](#set-up-the-kasa-smart-plug) to the code shown below.
+2. Download [<file>effdet0.tflite</file>](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/effdet0.tflite) and [<file>labels.txt</file>](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/labels.txt) to your project directory.
+3. Line 44 of your <file>lightupbot.py</file> is where you specify the paths to these files.
+If you put them in the same directory as <file>lightupbot.py</file>, you don't need to edit this line.
+4. Save the file.
 
-In this snippet, if the camera detects a person, it will print to the terminal “This is a person!” and turn on the smart plug.
-If it does not find a person, it will write “There’s nobody here” and will turn off the plug.
+### Run the code
 
-```python
-   #example: plug = SmartPlug('10.1.11.221')
-   plug = SmartPlug('replace with the host IP of your plug')
-   await plug.update()
+Now you are ready to test your robot!
 
+From a command line on your computer, navigate to the project directory and run the code with this command:
 
-   await plug.turn_off()
-   state = "off"
-   for i in range(N):
-       image = await camera.get_image()
-       detections = await vision.get_detections(image, "person_detector")
-       found = False
-       for d in detections:
-           if d.confidence > 0.8:
-               print(d)
-               print()
-               if d.class_name.lower() == "person":
-                   print("This is a person!")
-                   found = True
-       if found:
-           #turn on the smart plug
-           await plug.turn_on()
-           await plug.update()
-           print("turning on")
-           state = "on"
-       else:
-           print("There's nobody here")
-           #turn off the smart plug
-           await plug.turn_off()
-           await plug.update()
-           print("turning off")
-           state = "off"
+```bash
+python3 lightupbot.py
 ```
 
-Next, save and run your code.
-You will see your plug turn on and off as you move in the frame of your computer's webcam!
+If the camera detects a person, it will print to the terminal “This is a person!” and turn on the smart plug.
+If it does not find a person, it will write “There’s nobody here” and will turn off the plug.
+
+Try moving in and out of your webcam's field of view.
+You will see your light turn on and off as the robot detects you!
 
 Your terminal should look like this as your project runs:
 
@@ -194,7 +173,21 @@ There's nobody here
 turning off
 ```
 
-The complete code for this project can be found [here](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/lightupbot.py).
+<br>
+
+{{% alert title="Info" color= "info" %}}
+
+You can actually detect any object that is listed in the <file>labels.txt</file> (such as a dog or a chair) but for this tutorial, we are detecting a person.
+
+To detect something else with the camera, just change the string "person" on line 69 of <file>lightupbot.py</file> to a different item in the <file>label.txt</file> file.
+
+```python
+if d.class_name.lower() == "person":
+    print("This is a person!")
+    found = True
+```
+
+{{% /alert %}}
 
 ## Summary
 
