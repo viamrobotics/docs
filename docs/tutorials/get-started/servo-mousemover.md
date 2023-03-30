@@ -205,7 +205,7 @@ Click on the top of the servo card to open the servo controls.
 Try changing the angle to a few different settings.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="../../img/single-component-tutorials-servo-mousemover/angle-100.webm" mp4_src="../../img/single-component-tutorials-servo-mousemover/angle-100.mp4" alt="A gif at the top of the CONTROL tab in the viam app. The pointer finger is pressing the 10 button and it changes the angle from 90 to 100 repeatedly. The red STOP button is in the upper right corner. There is a blue circular arrow depicting the servos direction as being counterclockwise. Below this is a gif of the raspberry pi to the left and the FS90R servo on the right. The servo stops, then spins counterclockwise repeatedly.">}}
+  {{<gif webm_src="../../img/single-component-tutorials-servo-mousemover/angle-100.webm" mp4_src="../../img/single-component-tutorials-servo-mousemover/angle-100.mp4" alt="A gif at the top of the CONTROL tab in the Viam app. The pointer finger is pressing the 10 button and it changes the angle from 90 to 100 repeatedly. The red STOP button is in the upper right corner. There is a blue circular arrow depicting the servo's direction as being counterclockwise. Below this is a gif of the Raspberry Pi to the left and the FS90R servo on the right. The servo stops, then spins counterclockwise repeatedly.">}}
 </div>
 
 ## Assemble the mouse mover
