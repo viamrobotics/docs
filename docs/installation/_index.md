@@ -158,7 +158,7 @@ curl http://packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImag
 {{% /tab %}}
 {{< /tabs >}}
 
-If you do not want to run `viam-server` as a service, you can also run it manually as a binary.
+If you do not want to run `viam-server` as a service, you can also [run it manually as a binary](#start-manually-from-the-command-line).
 
 </li>
 </ol>
