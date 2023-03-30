@@ -29,7 +29,7 @@ This project is a good place to begin if you're new to robots and would like to 
 
 ### Hardware
 
-- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with viam-server installed per our [Raspberry Pi setup guide](/installation/prepare/rpi-setup/)
+- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with viam-server installed per our [installation guide](/installation/)
 - microSD card reader
 - [Continuous rotation servo](https://a.co/d/2w0u6rK) (we used the FS90R servo)
 - Wheel or arm for servo (this comes in some of the FS90R packages)
