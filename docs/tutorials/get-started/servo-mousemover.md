@@ -108,7 +108,7 @@ nano anyname.py
 
 Paste the code you got from the **CODE SAMPLE** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
-![Raspberry pi computer terminal with black background and mostly white, but there's some green, teal, purple and red parts of the text. At the top it says GNU nano 5.4 anyname.py. Inside the terminal it shows the connect code from the previous example, but this time it's in the terminal. At the bottom it shows the settings for this nano program.](../../img/single-component-tutorials-servo-mousemover/sample-code.png)
+![Raspberry pi terminal showing the connect code from the previous example.](../../img/single-component-tutorials-servo-mousemover/sample-code.png)
 
 Now, run the code using the below command to get the resource information that lets us know if the connection is good or if there are any errors.
 
