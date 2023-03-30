@@ -17,9 +17,7 @@ The Try Viam area also has an overhead camera to provide a view of the rental ro
 
 Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](/try-viam/reserve-a-rover/#using-the-reservation-system), [navigate the Viam platform](/manage/app-usage/), and [drive the rover](#control-tab):
 
-<div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/YYpZ9CVDwMU" allowfullscreen></iframe>
-</div>
+{{<youtube embed_url="https://www.youtube.com/embed/YYpZ9CVDwMU">}}
 
 ## **CONTROL** tab
 

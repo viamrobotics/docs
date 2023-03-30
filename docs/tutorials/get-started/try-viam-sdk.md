@@ -12,9 +12,7 @@ aliases:
     - /tutorials/get-started/try-viam-sdk
 ---
 
-<div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/daU5iNsSO0w" allowfullscreen></iframe>
-</div>
+{{<youtube embed_url="https://www.youtube.com/embed/daU5iNsSO0w">}}
 
 The Viam SDKs allow you to write code in Python, Go, or TypeScript to control a Viam-connected robot like the [Viam Rover](https://app.viam.com/try).
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
