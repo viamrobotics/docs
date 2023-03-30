@@ -125,7 +125,7 @@ There are no errors in the resources above, so we have confirmed a good software
 First, **turn off your Raspberry Pi**.
 This will help prevent any accidents when connecting the hardware.
 
-Now, follow this schematic to attach jumper wires to the servo and Raspberry Pi.
+Now, follow this schematic diagram to attach jumper wires to the servo and Raspberry Pi.
 
 - **GND** on servo attached to pin 6 on Pi
 - **5V** on servo attached to pin 2 on Pi
