@@ -96,7 +96,8 @@ pip3 install yagmail
 {{% alert title="Tip" color="tip" %}}
 As you are programming the yagmail section of this project, you will be prompted to use your Gmail username and password within the code.
 If you use 2-step verification for your email, some apps or devices may be blocked from accessing your Google account.
-You can get an "Application-Specific Password" following this guide.
+You can get an "Application-Specific Password" following [this guide](https://support.google.com/accounts/answer/185833).
+
 App Passwords are 16-digit passcodes that allow the app or device access to your Google account.
 This step is optional.
 {{% /alert %}}
