@@ -1,0 +1,10 @@
+---
+title: "Configure an MPU-6050 Gyroscope/Accelerometer"
+linkTitle: "mpu6050"
+weight: 10
+type: "docs"
+description: "Configure an MPU-6050 movement sensor."
+# SMEs: Rand
+---
+
+The `mpu6050` movement sensor model supports a combination [gyroscope and accelerometer manufactured by TDK InvenSense](https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/).
