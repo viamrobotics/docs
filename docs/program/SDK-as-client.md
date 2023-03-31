@@ -23,23 +23,29 @@ Click on the links above to read more about installation and usage of each SDK.
 
 ## Installation
 
-Python:
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 ```shell
 pip install viam-sdk
 ```
 
-Go:
+{{% /tab %}}
+{{% tab name="Go" %}}
 
 ``` shell
 go get go.viam.com/rdk/robot/client
 ```
 
-TypeScript:
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
 
 ``` shell
 npm install --save @viamrobotics/sdk
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% alert title="Note" color="note" %}}
 
@@ -60,10 +66,16 @@ You can find more examples of Viam's SDKs in the <file>examples</file> folder of
 
 ### Connection Code Snippets
 
-The easiest way to get started writing an application with Viam, is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
-These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
+The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, select your preferred SDK, and copy the code generated for you.
 
 These boilerplate connection code snippets import all of the necessary libraries and set up a client connection to your remote or local robot.
+
+{{% alert title="Caution" color="caution" %}}
+
+Do not share your robot secret or robot address publicly.
+Sharing this information compromises your system security by allowing unauthorized access to your computer.
+
+{{% /alert %}}
 
 Your boilerplate connection code snippet should look similar to this:
 
@@ -189,16 +201,6 @@ async function main() {
 main();
 ```
 
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% alert title="Caution" color="caution" %}}
-
-Do not share your robot secret or robot address publicly.
-Sharing this information compromises your system security by allowing unauthorized access to your computer.
-
-{{% /alert %}}
-
 ## Run Your Code
 
 After saving the above code and adding control logic with Viam's API methods, run your program to control your Viam-connected robot.
@@ -207,12 +209,11 @@ For example:
 
 - Python: `python3 ~/myCode/myViamFile.py`
 - Go: `go run ~/myCode/myViamFile.py`
-- TypeScript: `tsc ~/myCode/myViamFile.ts`
+- Typescript: [see execution demo](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/vanilla)
 
 ## Next Steps
 
 {{< cards >}}
   {{% card link="/components" size="small" %}}
   {{% card link="/services" size="small" %}}
-  {{% card link="/components" size="small" %}}
 {{< /cards >}}
