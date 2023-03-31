@@ -1,6 +1,6 @@
 ---
-title: "Manage Robots"
-linkTitle: "Manage Robots"
-weight: 45
+title: "Manage"
+linkTitle: "Manage"
+weight: 20
 type: docs
 ---

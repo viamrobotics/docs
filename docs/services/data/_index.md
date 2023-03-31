@@ -1,5 +1,5 @@
 ---
-title: "Data Management"
+title: "Data Management Service"
 linkTitle: "Data Management"
 weight: 40
 no_list: true
