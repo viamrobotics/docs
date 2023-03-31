@@ -79,9 +79,7 @@ If you are using a single board computer (SBC) or a microcontroller, prepare you
 
 ## Install `viam-server`
 
-<div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gmIW9JoWStA" allowfullscreen></iframe>
-</div>
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/gmIW9JoWStA">}}
 <br>
 
 Once you have a compatible operating system on your computer, you are ready to install `viam-server`.
