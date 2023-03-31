@@ -1,44 +1,59 @@
 ---
-title: "Using Our SDKs for a Client Application"
-linkTitle: "SDKs"
-weight: 30
+title: "Program your Robot with Viam's SDKs"
+linkTitle: "Program your Robot with Viam's SDKs"
+weight: 40
 type: "docs"
-description: "An introduction to Viam's SDKs and how to use them to access and control your robot."
+description: "An introduction to Viam's SDKs and how to use them to write code to access and control your robot."
 tags: ["client", "sdk"]
 ---
 
-Viam offers SDKs in popular languages which wrap the `viam-server` [gRPC](https://grpc.io/) APIs and streamline connection, authentication, and encryption against a server.
-Using the SDK, you will be able to quickly write code to control and automate your robots.
-
-Viam-server exposes gRPC [APIs for robot controls](https://github.com/viamrobotics/api).
-It also supports [WebRTC](https://webrtcforthecurious.com/) connectivity and authentication over those APIs.
-
-SDKs make it easier to interface with the robot without calling the gRPC API directly.
+Viam offers software development kits (SDKs) that wrap the `viam-server` [gRPC](https://grpc.io/) [APIs](https://github.com/viamrobotics/api) and streamline connection, authentication, and encryption.
 
 <img src="../img/SDK-as-client/image1.png" alt="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client."><br>
 
-## Viam's Client SDK Libraries
+Use the SDK of your preferred language to write code to control your robots.
 
-Viam's Client SDKs support several ways to connect and control your robots, with many new ways to connect coming soon.
+Viam currently offers SDKs for the following three languages:
 
 - [Python SDK](https://python.viam.dev/)
-
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
-
 - [TypeScript SDK](https://ts.viam.dev/)
 
-## Quick Start Examples
+Click on the links above to read more about installation and usage of each SDK.
+
+## Installation
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```shell
+pip install viam-sdk
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+``` shell
+go get go.viam.com/rdk/robot/client
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+``` shell
+npm install --save @viamrobotics/sdk
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% alert title="Note" color="note" %}}
 
 Before you get started, ensure that you:
 
 - Go to [app.viam.com](https://app.viam.com/).
-
 - Create a new robot.
-
 - Go to the **SETUP** tab and follow the instructions there.
-
 - Install either the [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), or [TypeScript](https://ts.viam.dev/) SDK on your computer.
 
 {{% /alert %}}
@@ -49,17 +64,20 @@ You can find more examples of Viam's SDKs in the <file>examples</file> folder of
 
 {{% /alert %}}
 
-### How to connect to your robot with Viam
+### Code Samples
 
-The easiest way to get started writing an application with Viam, is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
-These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
+The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, select your preferred SDK, and copy the code generated for you.
+
+These boilerplate code samples import all of the necessary libraries and set up a client connection to your remote or local robot.
 
 {{% alert title="Caution" color="caution" %}}
+
 Do not share your robot secret or robot address publicly.
 Sharing this information compromises your system security by allowing unauthorized access to your computer.
+
 {{% /alert %}}
 
-The SDK connect script should look something like this:
+Your boilerplate code sample should look similar to this:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -186,10 +204,54 @@ main();
 {{% /tab %}}
 {{< /tabs >}}
 
+## Add Control Logic
+
+You can easily add control logic for each [component](/components/) of your robot by using the methods Viam has built into each component's API specification.
+
+Find documentation on how to use these methods here:
+
+- [Arm](/components/arm/#api)
+- [Base](/components/base/#api)
+- [Camera](/components/camera/#api)
+- [Gantry](/components/gantry/#api)
+- [Input Controller](/components/input-controller/#api)
+- [Motor](/components/motor/#api)
+- [Servo](/components/servo/#api)
+<!-- 
+Board & Sensor API Docs should be added soon on Viam Documentation, + Movement Sensor, Encoder, Gripper
+-->
+
+## Run Your Code
+
+After saving your boilerplate code sample and adding control logic with Viam's API methods, run your program to control your Viam-connected robot.
+
+For example:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+``` shell
+python3 ~/myCode/myViamFile.py
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+``` shell
+go run ~/myCode/myViamFile.py
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+For an example, see [this execution demo.](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/vanilla)
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Next Steps
 
 {{< cards >}}
   {{% card link="/components" size="small" %}}
   {{% card link="/services" size="small" %}}
-  {{% card link="/components" size="small" %}}
 {{< /cards >}}
