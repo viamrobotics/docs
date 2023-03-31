@@ -13,7 +13,7 @@ The camera always returns the same image, which is an image of a chess board.
 This camera also returns a point cloud.
 
 You can optionally specify either a height or width, and the image will be scaled to preserve a 16:9 aspect ratio.
-If you specify both a height and width, and the ratio is not 16:9, you will receive an image but no point cloud.
+You cannot specify both a height and width.
 
 {{< tabs name="Configure a Fake Camera" >}}
 {{% tab name="Config Builder" %}}
@@ -49,8 +49,8 @@ The following attributes are available for fake cameras:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
-| `width` | *Optional* | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. If you specify both a width and a height and the ratio is not 16:9, you will receive an image but no point cloud. |
-| `height` | *Optional* | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. If you specify both a width and a height and the ratio is not 16:9, you will receive an image but no point cloud. |
+| `width` | *Optional* | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height`. |
+| `height` | *Optional* | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height` |
 
 ## View the camera stream
 
