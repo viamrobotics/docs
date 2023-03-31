@@ -10,7 +10,6 @@ aliases:
     - /installation/macos-install/
     - /getting-started/linux-install/
     - /installation/linux-install/
-    - /installation/microcontrollers
     - /installation/install/
 
 ---
