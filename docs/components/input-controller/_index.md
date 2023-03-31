@@ -6,7 +6,8 @@ type: "docs"
 no_list: true
 description: "An input controller, like a gamepad or joystick, is a device humans use to control a robot's actions."
 tags: ["input controller", "components"]
-icon: "img/components/controller.png"
+image: "/components/img/components/controller.png"
+imageAlt: "input controller"
 # SME: James
 ---
 

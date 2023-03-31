@@ -5,19 +5,31 @@
 
   {{ $pages := union .Sections .Pages }}
 
-    <div id="archive" class="container td-max-width-on-larger-screens">
+    <div id="archive" class="card-container">
       <div class="row">
         {{ range sort $pages ".Weight"}}
           <div class="col hover-card hover-card-small">
-            <a href="{{ .Permalink }}">
-              {{ if .Params.icon }}
-              <img src="{{ .Params.icon }} " alt="{{ .Title }}" width=100%>
+            <a href="{{.RelPermalink}}">
+              {{ if .Params.webmSrc }}
+                <video autoplay loop muted playsinline preload="auto" alt="{{ .Params.videoAlt }}" width="100%">
+                  <source src="{{relURL (substr .Params.webmSrc 1) }}" type="video/webm">
+                  <source src="{{relURL (substr .Params.mp4Src 1) }}" type="video/mp4">
+                  There should have been a video here but your browser does not seem
+                  to support it.
+                </video>
+                {{ end }}
+              {{ if .Params.image }}
+                <div class="hover-card-img">
+                  <img src="{{relURL (substr .Params.image 1)}}" alt="{{ .Params.imageAlt }}" width="100%" />
+                </div>
               {{ end }}
-              <h4>
-                {{ if .Params.title_overwrite }} {{ .Params.title_overwrite }} {{ else }} {{ if .LinkTitle }} {{ .LinkTitle }} {{ else }} Untitled {{ end }} {{ end }}
-              </h4>
-              <p>{{ if .Description }} {{ .Description }} {{ else }}  {{ end }}</p>
-            </a>
+              <div>
+                <h4>
+                  {{ if .Params.title_overwrite }} {{ .Params.title_overwrite }} {{ else }} {{ if .LinkTitle }} {{ .LinkTitle }} {{ else }} Untitled {{ end }} {{ end }}
+                </h4>
+                <p>{{ if .Description }} {{ .Description }} {{ else }}  {{ end }}</p>
+              </div>
+          </a>
           </div>
         {{ end }}
       </div>
