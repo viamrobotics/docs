@@ -19,7 +19,8 @@ Also pay attention to your surroundings, double-check your code for correctness,
 The following instructions show you how to interact with an [arm component](/components/arm/), help you understand how an arm describes its state, and assist you in issuing movement commands to your robotic arm.
 
 {{< alert title="Note" color="note" >}}
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any arm model.
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
@@ -294,7 +295,11 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 
 ## Next Steps and References
 
-If you would like to continue onto working with Viam's Motion Service, go to the next tutorial in this series: "**[Plan Motion with an Arm and a Gripper](/tutorials/motion/plan-motion-with-arm-gripper/)**".
+If you would like to continue onto working with Viam's Motion service, go to the next tutorial in this series:
+
+{{< cards >}}
+  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
+{{< /cards >}}
 
 {{< snippet "social.md" >}}
 
