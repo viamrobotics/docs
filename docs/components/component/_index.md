@@ -78,6 +78,6 @@ Troubleshooting information for configuration errors.
 ## Next Steps
 
 {{< cards >}}
-    {{< card link="/components/component/control-a-component" size="small">}}
-    {{< card link="/components/component/install" size="small">}}
+    {{% card link="/components/component/control-a-component" size="small" %}}
+    {{% card link="/components/component/install" size="small" %}}
 {{< /cards >}}

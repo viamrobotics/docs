@@ -33,8 +33,14 @@ for (let menu of siteMenuSubmenus) {
     // add event listener on menu toggle
     let toggle = menu.querySelector("span").querySelector(".submenu-toggle");
     if (toggle) {
-        toggle.addEventListener("click", function () {
-            submenuToggle(menu, toggle);
-        });
+        if (menu.classList.contains('empty-node-submenu')) {
+            menu.querySelector("span").addEventListener('click', function () {
+                submenuToggle(menu, toggle);
+           });
+        } else {
+            toggle.addEventListener('click', function () {
+                submenuToggle(menu, toggle);
+            });
+        }
     }
-}
+};

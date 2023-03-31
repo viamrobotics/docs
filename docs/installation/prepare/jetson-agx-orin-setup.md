@@ -15,7 +15,8 @@ Follow this guide to set up the [Jetson AGX Orin Developer Kit](https://develope
 
 {{< alert title="Note" color="note" >}}
 
-This board is experimental. Stability is not guaranteed.
+This board is experimental.
+Stability is not guaranteed.
 This guide assumes that you have a Jetson AGX Orin Developer Kit with a Jetson AGX Orin module and reference carrier board, but you may want to use a different carrier board to incorporate your Orin into your robot.
 If so, the type of carrier board you use will affect your hardware requirements.
 
@@ -55,7 +56,7 @@ You need the following hardware, tools, and software to install `viam-server` on
     Once you have reached *Next Steps*, return to the Viam docs.
 
 2. Your Jetson AGX Orin now has a Viam-compatible operating system installed.
-    Continue to our [viam-server installation guide](/installation/install/).
+    Continue to our [viam-server installation guide](/installation#install-viam-server).
     Note that the Jetson AGX Orin has aarch64 CPU architecture.
 
 {{< alert title="Tip: <code>viam-server</code> installation with <code>curl</code>" color="tip" >}}

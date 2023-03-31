@@ -1,63 +1,11 @@
 ---
-title: "Prepare your Computer"
-linkTitle: "Prepare for viam-server"
+linkTitle: "Prepare Devices"
 weight: 10
-no_list: true
-type: docs
-draft: false
-icon: "img/thumbnails/viam-icon-board.png"
+empty_node: true
+type: "docs"
 description: "Prepare your computer before installing viam-server."
 ---
 
-Make sure your system is compatible with Viam.
-Viam is supported on:
+Refer to the [installation guide](../) for full instructions.
 
-- Linux 64-bit operating systems
-- macOS
-
-If you are using a single board computer (SBC) like a Raspberry Pi or BeagleBone, prepare your SBC by following the relevant setup document:
-
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card hover-card-small">
-        <a href="/installation/prepare/rpi-setup/">
-            <img src="../img/thumbnails/raspberry-pi-4-b-2gb.jpg" alt="Raspberry Pi" width=100% style="padding-top: 1em" >
-            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Raspberry Pi</h4>
-        <a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="/installation/prepare/beaglebone-setup/">
-            <img src="../img/thumbnails/beaglebone.png" alt="BeagleBone AI 64" width=100% style="padding-top: 1em" >
-            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">BeagleBone AI-64</h4>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="/installation/prepare/sk-tda4vm/">
-            <img src="../img/thumbnails/tda4vm.png" alt="SK-TDA4VM" width=100% style="padding-top: 1em" >
-            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Texas Instruments SK-TDA4VM</h4>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="/installation/prepare/jetson-nano-setup/">
-            <img src="../img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Jetson Nano" width=100% style="padding-top: 1em" >
-            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Jetson Nano</h4>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="/installation/prepare/jetson-agx-orin-setup/">
-            <img src="../img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png" alt="Jetson AGX Orin" width=100% style="padding-top: 1em" >
-            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Jetson AGX Orin</h4>
-        </a>
-    </div>
-  </div>
-</div><br><br>
-
-<div class="container text-left td-max-width-on-larger-screens">
-    <div class="row">
-        <img src="../img/thumbnails/pc.png" style="max-width:100px" alt="Desktop computer">
-        <div class="col">
-            <br>
-            <p> If you plan to run <code>viam-server</code> on your laptop or desktop with a Linux or Mac operating system, no special prep is required. Proceed to <a href="/installation/install/">install <code>viam-server</code></a>. </p>
-        </div>
-    </div>
-</div>
+<!-- This page is only accessible by manually accessing the /installation/prepare link -->

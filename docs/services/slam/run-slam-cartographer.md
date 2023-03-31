@@ -30,7 +30,7 @@ You'll need at least the following hardware:
 - A Linux or MacOS machine with `viam-server` and `Cartographer` installed.
 - (Optional, required for Live Mode) A [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device.
 
-For more information on how to install `viam-server` and set up your machine on the [Viam app](https://app.viam.com), see [Install viam-server](/installation/install/).
+For more information on how to install `viam-server` and set up your machine on the [Viam app](https://app.viam.com), see [Install viam-server](/installation#install-viam-server).
 
 ### Install the Cartographer Binary
 

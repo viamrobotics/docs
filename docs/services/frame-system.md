@@ -199,7 +199,7 @@ As the gantry extends, the arm will be moved accordingly.
 
 ## Accessing the Frame System
 
-The [robot service](/services/robot-service/) supplies two gRPC library functions by which to interact with the Frame System:
+The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies two methods to interact with the Frame System through gRPC calls:
 <ol>
 <li>TransformPose</li></OL>
 <ul><li>transforms a pose measured in one reference frame to the same pose as it would have been measured in another.</li></ul>

@@ -3,16 +3,14 @@ title: "Raspberry Pi Setup Guide"
 linkTitle: "Raspberry Pi Setup"
 weight: 15
 type: "docs"
-description: "A guide to imaging a Raspberry Pi to prepare it for viam-server installation."
+description: "Image a Raspberry Pi to prepare it for viam-server installation."
 aliases:
     - /getting-started/rpi-setup/
     - /installation/rpi-setup/
 # SME: James
 ---
 
-<div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/drl2p2of-qA" allowfullscreen></iframe>
-</div>
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/drl2p2of-qA">}}
 <br>
 
 To install the Viam [RDK](/appendix/glossary/#rdk_anchor), you need a Raspberry Pi running a 64-bit Linux distribution.
@@ -21,13 +19,14 @@ If you already have a 64-bit Linux distribution installed on your Pi, skip ahead
 
 {{%expand "Click to check whether the Linux installation on your Raspberry Pi is 64-bit" %}}
 
+If you already have a 64-bit Linux distribution installed on your Pi, you can skip ahead to [installing `viam-server`](../../#install-viam-server).
 To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running viam-server), `ssh` into your Pi and then run `lscpu`.
 
 Example output:
 
-![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads "Architecture: aarch64."](/installation/img/rpi-setup/lscpu-output.png)
+![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads "Architecture: aarch64."](../../img/rpi-setup/lscpu-output.png)
 
-If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [installing `viam-server`](/installation/install/linux-install/).
+If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [installing `viam-server`](../../#install-viam-server).
 
 {{% /expand%}}
 
@@ -44,13 +43,13 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
 1. Download the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and launch it.
 
-    ![Raspberry Pi Imager launcher window showing a "Choose OS" and "Choose Storage" buttons.](/installation/img/rpi-setup/imager-launch-screen.png)
+    ![Raspberry Pi Imager launcher window showing a "Choose OS" and "Choose Storage" buttons.](../../img/rpi-setup/imager-launch-screen.png)
 
 2. Select `CHOOSE OS`.
    Click on `Raspberry Pi OS (other)`.
-   ![Raspberry Pi Imager window showing "Raspberry Pi OS (Other) is selected.](/installation/img/rpi-setup/select-other-custom-os.png)
+   ![Raspberry Pi Imager window showing "Raspberry Pi OS (Other) is selected.](../../img/rpi-setup/select-other-custom-os.png)
    Select `Raspberry Pi OS Lite (64-bit)` from the  menu.
-   ![Raspberry Pi Imager window showing "Raspberry Pi OS Lite (64-bit)" is selected.](/installation/img/rpi-setup/select-other-rpi.png)
+   ![Raspberry Pi Imager window showing "Raspberry Pi OS Lite (64-bit)" is selected.](../../img/rpi-setup/select-other-rpi.png)
    You should be brought back to the initial launch screen.
 3. To make your Raspberry Pi easier to access in the next step, configure your Raspberry Pi's hostname, ssh credentials, and wifi.
    Click the gear-shaped settings icon in the lower right to bring up the Advanced options menu.
@@ -63,21 +62,21 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
    Check `Set hostname` and enter the name you would like to access the Pi by in that field.
 
-    There are two ways you can secure your Raspberry Pi: with an SSH key or with password authentication.
+   There are two ways you can secure your Raspberry Pi: with an SSH key or with password authentication.
 
-    To use the SSH key method: check `Enable SSH`.
-    Using SSH Keys for authentication is a great way of securing your Raspberry Pi as only someone with the private SSH key will be able to authenticate to your system.
-    If you select `Allow public-key authentication only`, and the section `set authorized_ keys for 'pi'` is pre-populated, that means you do have an existing public SSH key that is ready to use.
-    In that case, you do not have to change this section.
+   To use the SSH key method: check `Enable SSH`.
+   Using SSH Keys for authentication is a great way of securing your Raspberry Pi as only someone with the private SSH key will be able to authenticate to your system.
+   If you select `Allow public-key authentication only`, and the section `set authorized_ keys for 'pi'` is pre-populated, that means you do have an existing public SSH key that is ready to use.
+   In that case, you do not have to change this section.
 
-    If this section is empty, you can either generate a new SSH key using [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead.
+   If this section is empty, you can either generate a new SSH key using [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead.
 
-    ![Raspberry Pi Imager window showing "Set Hostname" and "Enable SSH" both selected.](/installation/img/rpi-setup/imager-set-ssh.png)
+   ![Raspberry Pi Imager window showing "Set Hostname" and "Enable SSH" both selected.](/installation/img/rpi-setup/imager-set-ssh.png)
 
-    If you decide to use the password authentication method: click on `Use password authentication`.
-    If you scroll down, you have the option to change the username, then to set a password:
+   If you decide to use the password authentication method: click on `Use password authentication`.
+   If you scroll down, you have the option to change the username, then to set a password:
 
-    ![Raspberry Pi Imager window showing the "Set username and password" option is selected.](/installation/img/rpi-setup/imager-set-passwordauthentication.png)
+   ![Raspberry Pi Imager window showing the "Set username and password" option is selected.](/installation/img/rpi-setup/imager-set-passwordauthentication.png)
 
     {{% alert title="Tip" color="tip" %}}
 Be sure that you remember the `hostname`, `username`, and `password` you use, as you will need this when you SSH into your Pi.
@@ -92,42 +91,42 @@ The default username and password on Raspberry Pis are
 However, it's bad practice to keep the default username and password on a Raspberry Pi since doing so makes it easy for hackers to get access to your Pi.
 In the past, malware infected thousands of Raspberry Pi devices that were using the default username and password.
 
-Source: <a href="https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/" target="_blank">ht<span></span>tps://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/</a>
+Source: [https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)
     {{< /alert >}}
 
     Lastly, you should connect your Pi to Wi-Fi, so that you can run `viam-server` wirelessly.
     Check `Configure wireless LAN` and enter your wireless network credentials.
     SSID (short for Service Set Identifier) is your Wi-Fi network name, and password is the network password.
     Change the section `Wireless LAN country` to where your router is currently being operated and then hit save:
-    ![Raspberry Pi Imager window showing the "Configure wireless LAN" option selected with SSID and password information for a wireless network.](/installation/img/rpi-setup/imager-set-wifi.png)
+    ![Raspberry Pi Imager window showing the "Configure wireless LAN" option selected with SSID and password information for a wireless network.](../../img/rpi-setup/imager-set-wifi.png)
 
     This should return you to the initial screen.
 
 4. Now you need to pick your storage medium, so click `CHOOSE STORAGE`:
 
-    ![Raspberry Pi Imager window showing the main page, and the "Choose Storage" button is selected.](/installation/img/rpi-setup/imager-selected-os.png)
+    ![Raspberry Pi Imager window showing the main page, and the "Choose Storage" button is selected.](../../img/rpi-setup/imager-selected-os.png)
 
     You may have many devices listed, select the microSD card you intend to use in your Raspberry Pi.
     If this page is blank and you do not have any listed, make sure your microSD card is connected to your computer correctly:
 
-    ![The storage screen is shown with a generic SD card available as an option.](/installation/img/rpi-setup/imager-select-storage.png)
+    ![The storage screen is shown with a generic SD card available as an option.](../../img/rpi-setup/imager-select-storage.png)
 
 5. After clicking save, double check your OS and Storage settings and then click `WRITE`:
 
-    ![A warning is shown that says "All existing data on the SD card will be erased. Are you sure that you want to continue?"](/installation/img/rpi-setup/imager-write-confirm.png)
+    ![A warning is shown that says "All existing data on the SD card will be erased. Are you sure that you want to continue?"](../../img/rpi-setup/imager-write-confirm.png)
 
     You will be prompted to confirm erasing your microSD card: select `YES`.
     You may also be prompted by your operating system to enter an Administrator password:
 
-    ![macOS admin password confirmation screen.](/installation/img/rpi-setup/imager-permission.png)
+    ![macOS admin password confirmation screen.](../../img/rpi-setup/imager-permission.png)
 
     After granting permissions to the Imager, it will begin writing and then verifying the Linux installation to the MicroSD card:
 
-    ![The Raspberry Pi Imager will display information on the status of the write.](/installation/img/rpi-setup/imager-writing.png)
+    ![The Raspberry Pi Imager will display information on the status of the write.](../../img/rpi-setup/imager-writing.png)
 
     Remove the microSD card from your computer when it is complete:
 
-    ![You will be notified with a dialogue box informing you that Raspberry Pi OS Lite has been written successfully."](/installation/img/rpi-setup/imager-done.png)
+    ![You will be notified with a dialogue box informing you that Raspberry Pi OS Lite has been written successfully."](../../img/rpi-setup/imager-done.png)
 
 6. Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
     A red LED will turn on to indicate that the Pi is connected to power.
@@ -172,7 +171,7 @@ sudo raspi-config
 
 Use your keyboard to select "Interface Options" and enable the relevant protocols.
 
-![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "3 Interface Options" option where you can find the I2C and other drivers](/installation/img/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
+![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "3 Interface Options" option where you can find the I2C and other drivers](../../img/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
 
 {{< alert title="Note" color="note" >}}
 When using a CSI camera, you need to enable legacy camera support.
@@ -186,7 +185,7 @@ sudo reboot
 
 ## Next Steps
 
-Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional Wifi credentials, continue to [install `viam-server`](/installation/install/).
+Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional Wifi credentials, continue to [install `viam-server`](../../#install-viam-server).
 
 ## Troubleshooting
 
@@ -230,3 +229,7 @@ psk="Password for your other wireless LAN"
 priority=20
 }
 ```
+
+## Next Steps
+
+Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional Wifi credentials, continue to our [`viam-server` installation guide](../../#install-viam-server).

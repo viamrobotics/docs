@@ -20,9 +20,7 @@ If you're signing up without an invitation link, go to [app.viam.com](https://ap
 
 ## Navigating organizations
 
-<div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/eb7v6dabCGQ" allowfullscreen></iframe>
-</div>
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/eb7v6dabCGQ">}}
 
 Click the drop down in the upper right corner of the page.
 You should see your name, email, and a list of organizations you belong to.
@@ -165,7 +163,7 @@ The **SETUP** tab contains information for starting an instance of `viam-server`
 Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
 
 {{% alert title="Tip" color="tip" %}}
-More in-depth information on installing `viam-server` can be found in our [Linux install](/installation/install/linux-install/) and [macOS install](/installation/install/macos-install/) docs.
+More in-depth information on installing `viam-server` can be found in our [Install Guide](/installation#install-viam-server).
 {{% /alert %}}
 
 ### Config

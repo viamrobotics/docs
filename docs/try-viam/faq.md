@@ -7,7 +7,7 @@ description: "Frequently Asked Questions about Try Viam."
 ---
 
 Try Viam allows you to try the Viam platform without setting up any hardware yourself.
-For 15 minutes, no matter where you are in the world, you can take over and play around with a Viam Rover in our robotics lab!
+No matter where you are in the world you can take over and play around with a Viam Rover in our robotics lab!
 
 ## How do I make a reservation to take over a Viam Rover?
 
@@ -80,8 +80,8 @@ If you would like to, you can [extend your reservation](/try-viam/faq/#can-i-ext
 Yes! You can rent the rover as many times as you’d like.
 Here are some tutorials which you can follow:
 
-- [Drive with the Viam SDK](/tutorials/viam-rover/try-viam-sdk)
-- [Detect a Color](/tutorials/viam-rover/try-viam-color-detection)
+- [Drive with the Viam SDK](/tutorials/get-started/try-viam-sdk)
+- [Detect a Color](/tutorials/services/try-viam-color-detection)
 
 If you want to get your own Viam Rover, we’re also taking pre-orders for a limited quantity of Viam Rovers.
 Reserve yours today [here](https://viam.com/resources/rover).

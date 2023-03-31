@@ -210,6 +210,9 @@ The servo component supports the following methods:
 Move the servo to the desired angle in degrees.
 
 {{% alert title="Note" color="note" %}}
+Support for continuous servos  with the GPIO servo model is experimental.
+Stability is not guaranteed.
+Breaking changes are likely to occur, and occur often.
 
 If you are using a continuous rotation servo, you can use the `Move` command, but instead of moving to a given position, the servo will start moving at a set speed.
 
@@ -464,5 +467,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{< card link="/tutorials/yahboom-rover" size="small">}}
+  {{% card link="/tutorials/yahboom-rover" size="small" %}}
+  {{% card link="/tutorials/integrating-viam-with-openai" size="small" %}}
 {{< /cards >}}
