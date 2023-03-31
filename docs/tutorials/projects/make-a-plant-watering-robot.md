@@ -44,17 +44,31 @@ Make sure your Pi is flashed with a Viam-compatible operating system, and that y
 Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different components together.
 You will set up the robot to receive signals from the capacitive soil moisture sensor and signal to the peristaltic pump when it is time to pump water from the water's container to the plant's container.
 
+### Full Wiring Diagram
+
+![The full wiring diagram for all the hardware for the Plant Watering Robot.](../../img/plant-watering-pi/full-wiring.png)
+
 ### Wire your ADC
 
 The analog-to-digital converter (ADC) between your capacitive soil moisture sensor and Pi converts the analog signals created by the capacitive soil moisture sensor's readings to digital signals that can be processed by your Pi, which expects digital signals to come to it through its GPIO pins.
 
-Start by wiring your ADC to your Raspberry Pi board according to the following pinout diagram for your MCP3008 Analog to Digital Converter:
+Start by wiring your ADC to your Raspberry Pi board.
+
+Consult your Raspberry Pi's data sheet or [pinout.xyz](https://pinout.xyz/pinout/3v3_power) for your board's pinout diagram.
+Reference the following pinout diagram for your MCP3008 Analog to Digital Converter:
 
 ![Pinout diagram for the ADC.](../../img/plant-watering-pi/adc-pinout.png)
 
-Consult your Raspberry Pi's data sheet or [pinout.xyz](https://pinout.xyz/pinout/3v3_power) for your board's pinout diagram.
+{{% alert title="Tip" color="tip" %}}
+The small oval shown in the pinout diagram above should be physically present on your ADC.
+Use this to orient the ADC to determine the location to insert your wires.
+{{% /alert %}}
 
-Wire the pins as follows:
+Insert the MCP3008 into your breadboard so that it bridges both sides.
+
+![ADC inserted into the breadboard](../../img/plant-watering-pi/adc-breadboard.png)
+
+Then, use the rows on the side of your MCP3008's pins and the GPIO pins on your PI to connect the pins with wires as follows:
 
 | MCP3008 ADC Pin | Raspberry Pi Pin |
 | ----------- | ---------------- |
@@ -66,10 +80,6 @@ Wire the pins as follows:
 | DOUT | MISO |
 | DIN | MOSI |
 | CS/SHDN | GPIO25 |
-
-#### Wiring Diagram
-
-![The full wiring diagram for all the hardware for the Plant Watering Robot.](../../img/plant-watering-pi/full-wiring.png)
 
 ### Wire your Capacitive Soil Moisture Sensor
 
@@ -87,8 +97,6 @@ Wire the pins as follows:
 
 Put the soil moisture sensor inside of the container holding your plant.
 
-Refer to the following full wiring diagram for your hardware setup: [**Wiring Diagram**](#wiring-diagram)
-
 ### Wire your Pump
 
 Now, wire and power your Peristaltic Pump [motor](/components/motor/) to complete your hardware setup.
@@ -98,8 +106,6 @@ Now, wire and power your Peristaltic Pump [motor](/components/motor/) to complet
 3. Connect the GND pin on the pump to the breadboard and terminal.
 4. Connect the PWM pin on the pump to [Pin 12](https://pinout.xyz/pinout/pin12_gpio18) of the Pi.
 5. Connect the plastic tubing to the pump. Put the suction end inside of your water container, and the output end inside of the container holding your plant.
-
-Refer to the following full wiring diagram for your hardware setup: [**Wiring Diagram**](#wiring-diagram)
 
 ## Program Your Plant Watering Robot
 
