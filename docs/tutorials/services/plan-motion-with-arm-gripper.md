@@ -93,12 +93,12 @@ Any components that have frame information (and, as a result, are added to the F
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the pose of myArm from the Motion Service
-myArmMotionPose, err = motionService.GetPose(context.Background(), myArmResource, referenceframe.World, nil, nil)
+myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResource, referenceframe.World, nil, nil)
 if err != nil {
   fmt.Println(err)
 }
-fmt.Println("GetPose result for myArm position:", myArmMotionPose.Point())  // TODO: Correct?
-fmt.Println("GetPose result for myArm orientation:", myArmMotionPose.Orientation())  // TODO: Correct?
+fmt.Println("Position of myArm from the Motion Service:", myArmMotionPose.Pose().Point())
+fmt.Println("Orientation of myArm from the Motion Service:", myArmMotionPose.Pose().Orientation())
 ```
 
 {{% /tab %}}
@@ -134,6 +134,7 @@ world_state = WorldState(obstacles=[obstacles_in_frame])
 
 {{% /tab %}}
 {{% tab name="Go" %}}
+You must import the r3 package to be able to add an `r3.Vector`, so add `"github.com/golang/geo/r3"` to your import list.
 The `WorldState` is available through the `referenceframe` library, but additional geometry data must be added in a piecewise fashion.
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -167,7 +168,9 @@ Additional obstacles can also be *appended* as desired.
 Within the App, the **Frame System** tab in the **Config** section of your robot gives you the ability to experiment with various geometry representations with better visual feedback.
 {{< /alert >}}
 
-<!-- TODO : Add a picture example of a geometry specified through the Frame System tab -->
+<div class="td-max-width-on-larger-screens">
+  <img src="../../img/motion/plan_01_frame_system_tab.png" width="700px" alt="A picture of the Frame System tab in use.">
+</div>
 
 ## Commanding an arm to move with the Motion Service
 
@@ -196,7 +199,7 @@ Keep the space around the arm clear!
 test_start_pose = Pose(x=510.0, y=0.0, z=526.0, o_x=0.7071, o_y=0.0, o_z=-0.7071, theta=0.0)
 test_start_pose_in_frame = PoseInFrame(reference_frame="world", pose=test_start_pose)
 
-await motion_srv.move(component_name=my_arm_resource, destination=test_start_pose_in_frame, world_state=world_state)
+await motion_service.move(component_name=my_arm_resource, destination=test_start_pose_in_frame, world_state=world_state)
 ```
 
 {{% /tab %}}
@@ -256,7 +259,9 @@ We need to do several things to prepare a new gripper component for motion.
 5. Save this new robot configuration
   * Your `viam-server` instance should update automatically.
 
-<!-- TODO : Add a picture of a sample gripper configuration -->
+<div class="td-max-width-on-larger-screens">
+  <img src="../../img/motion/plan_03_gripper_config.png" width="700px" alt="Sample gripper configuration with several fields filled out.">
+</div>
 
 Because the new gripper component is "attached" (with the parent specification in the Frame) to `myArm`, we can produce motion plans using `myGripper` instead of `myArm` 
 
@@ -268,13 +273,12 @@ Do this by adding `from viam.components.gripper import Gripper` to your import l
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_gripper_resource = Gripper.get_resource_name("myGripper")
-my_gripper_component = Gripper.from_robot(robot, "myGripper")
 
 # This will move the gripper in the -Z direction with respect to its own reference frame
 gripper_pose_rev = Pose(x=0.0, y=0.0, z=-100.0, o_x=0.0, o_y=0.0, o_z=1.0, theta=0.0)
 gripper_pose_rev_in_frame = PoseInFrame(reference_frame=my_gripper_resource.name, pose=gripper_pose_rev) # Note the change in frame name
 
-await motion_srv.move(component_name=gripper_resource, destination=gripper_pose_rev_in_frame, world_state=world_state)
+await motion_service.move(component_name=my_gripper_resource, destination=gripper_pose_rev_in_frame, world_state=world_state)
 ```
 
 {{% /tab %}}
@@ -393,16 +397,15 @@ async def main():
     test_start_pose = Pose(x=510.0, y=0.0, z=526.0, o_x=0.7071, o_y=0.0, o_z=-0.7071, theta=0.0)
     test_start_pose_in_frame = PoseInFrame(reference_frame="world", pose=test_start_pose)
 
-    await motion_srv.move(component_name=my_arm_resource, destination=test_start_pose_in_frame, world_state=world_state)
+    await motion_service.move(component_name=my_arm_resource, destination=test_start_pose_in_frame, world_state=world_state)
 
     my_gripper_resource = Gripper.get_resource_name("myGripper")
-    my_gripper_component = Gripper.from_robot(robot, "myGripper")
 
     # This will move the gripper in the -Z direction with respect to its own reference frame
     gripper_pose_rev = Pose(x=0.0, y=0.0, z=-100.0, o_x=0.0, o_y=0.0, o_z=1.0, theta=0.0)
     gripper_pose_rev_in_frame = PoseInFrame(reference_frame=my_gripper_resource.name, pose=gripper_pose_rev) # Note the change in frame name
 
-    await motion_srv.move(component_name=gripper_resource, destination=gripper_pose_rev_in_frame, world_state=world_state)
+    await motion_service.move(component_name=my_gripper_resource, destination=gripper_pose_rev_in_frame, world_state=world_state)
 
     # Don't forget to close the robot when you're done!
     await robot.close()
@@ -422,6 +425,7 @@ import (
   "fmt"
 
   "github.com/edaniels/golog"
+  "github.com/golang/geo/r3"
   armapi "go.viam.com/api/component/arm/v1"
   "go.viam.com/rdk/components/arm"
   "go.viam.com/rdk/components/gripper"
@@ -504,12 +508,12 @@ func main() {
   }
 
   // Get the pose of myArm from the Motion Service
-  myArmMotionPose, err = motionService.GetPose(context.Background(), myArmResource, referenceframe.World, nil, nil)
+  myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResource, referenceframe.World, nil, nil)
   if err != nil {
     fmt.Println(err)
   }
-  fmt.Println("GetPose result for myArm position:", myArmMotionPose.Point())
-  fmt.Println("GetPose result for myArm orientation:", myArmMotionPose.Orientation())
+  fmt.Println("Position of myArm from the Motion Service:", myArmMotionPose.Pose().Point())
+  fmt.Println("Orientation of myArm from the Motion Service:", myArmMotionPose.Pose().Orientation())
 
   // Add a table obstacle to a WorldState
   obstacles := make([]spatialmath.Geometry, 0)
