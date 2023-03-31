@@ -21,7 +21,7 @@ What to do?
 Well, you *can* certainly purchase a very capable outdoor robotic rover for upwards of 12 thousand dollars.
 It will still be hard to learn how to expand and program it, but it's at least capable, right?
 
-{{<youtube embed_url="https://www.youtube.com/embed/9OzwozzckdY">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/9OzwozzckdY">}}
 
 Fortunately I work at Viam, where we are building a platform that makes robotics and robotic automation approachable, and therefore much easier to build useful robots.
 Now, when I am an employee at *any* company one of the most important things is that I truly believe in the product.

@@ -12,7 +12,7 @@ You can take over a Viam Rover in our robotics lab to play around!
 
 Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](#using-the-reservation-system), [navigate the Viam platform](/manage/app-usage/), and [drive the rover](../try-viam-tutorial/#control-tab):
 
-{{<youtube embed_url="https://www.youtube.com/embed/YYpZ9CVDwMU">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/YYpZ9CVDwMU">}}
 
 ## Using the reservation system
 
