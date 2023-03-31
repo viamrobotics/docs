@@ -655,3 +655,9 @@ footer small {
   border: 1px solid black;
 }
 /* END cookie consent message */
+
+/* START GIFs should have a max width */
+
+.td-content > video {
+  max-width: 600px;
+}
