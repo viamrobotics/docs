@@ -46,15 +46,17 @@ You will set up the robot to receive signals from the capacitive soil moisture s
 
 ### Full Wiring Diagram
 
+Refer back to this diagram as you complete the steps to wire your hardware.
+
 ![The full wiring diagram for all the hardware for the Plant Watering Robot.](../../img/plant-watering-pi/full-wiring.png)
 
 ### Wire your ADC
 
-The analog-to-digital converter (ADC) between your capacitive soil moisture sensor and Pi converts the analog signals created by the capacitive soil moisture sensor's readings to digital signals that can be processed by your Pi, which expects digital signals to come to it through its GPIO pins.
+The analog-to-digital converter (ADC) converts the capacitive soil moisture sensor's analog readings to digital signals that can be processed by your Pi, which expects digital signals to come to it through its GPIO pins.
 
 Start by wiring your ADC to your Raspberry Pi board.
 
-Consult your Raspberry Pi's data sheet or [pinout.xyz](https://pinout.xyz/pinout/3v3_power) for your board's pinout diagram.
+You can find a Raspberry Pi pinout diagram at [pinout.xyz](https://pinout.xyz/pinout/3v3_power).
 Reference the following pinout diagram for your MCP3008 Analog to Digital Converter:
 
 ![Pinout diagram for the ADC.](../../img/plant-watering-pi/adc-pinout.png)
