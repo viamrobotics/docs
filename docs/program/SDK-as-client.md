@@ -210,21 +210,15 @@ You can easily add control logic for each [component](/components/) of your robo
 
 Find documentation on how to use these methods here:
 
-| Component | Viam Docs | Python SDK Docs | Go SDK Docs |
-| --------- | --------- | --------------- | ----------- |
-| Arm | [Viam](/components/arm/#api)| [Python](https://python.viam.dev/autoapi/viam/components/arm/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm) |
-| Base | [Viam](/components/base/#api) | [Python](https://python.viam.dev/autoapi/viam/components/base/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/base#Base) |
-| Camera | [Viam](/components/camera/#api) | [Python](https://python.viam.dev/autoapi/viam/components/camera/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera) |
-| Gantry | [Viam](/components/gantry/#api) | [Python](https://python.viam.dev/autoapi/viam/components/gantry/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry) |
-| Input Controller | [Viam](/components/input-controller/#api) | [Python](https://python.viam.dev/autoapi/viam/components/input/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller) |
-| Motor | [Viam](/components/motor/#api) | [Python](https://python.viam.dev/autoapi/viam/components/motor/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor) |
-| Sensor | [Viam](/components/sensor) | [Python](https://python.viam.dev/autoapi/viam/components/sensor/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor) |
-| Servo | [Viam](/components/servo/#api) | [Python](https://python.viam.dev/autoapi/viam/components/servo/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo) |
-| Board | [Viam](/components/board) | [Python](https://python.viam.dev/autoapi/viam/components/board/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/board#Board) |
+- [Arm](/components/arm/#api)
+- [Base](/components/base/#api)
+- [Camera](/components/camera/#api)
+- [Gantry](/components/gantry/#api)
+- [Input Controller](/components/input-controller/#api)
+- [Motor](/components/motor/#api)
+- [Servo](/components/servo/#api)
 <!-- 
-Board & Sensor API Docs should be added soon on Viam Documentation
-| Movement Sensor | [Viam](/components/movement-sensor) | [Python](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html) | [Go]() |
-| Encoder | [Viam](/components/encoder | TODO: Why does this not exist in the python auto-docs? | [Go]() | 
+Board & Sensor API Docs should be added soon on Viam Documentation, + Movement Sensor, Encoder, Gripper
 -->
 
 ## Run Your Code
