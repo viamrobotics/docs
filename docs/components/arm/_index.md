@@ -603,6 +603,6 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/motion/accessing-and-moving-robot-arm" size="small" %}}
+  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" size="small" %}}
   {{% card link="/services/motion" size="small" %}}
 {{< /cards >}}
