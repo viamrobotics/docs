@@ -7,6 +7,7 @@ description: "A robotic arm is made up of a series of links and joints, ending w
 no_list: true
 tags: ["arm", "components"]
 image: "/components/img/components/arm.png"
+imageAlt: "arm"
 # SME: Peter L
 ---
 

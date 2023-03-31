@@ -7,6 +7,7 @@ description: "A camera captures 2D or 3D images and sends them to the computer c
 no_list: true
 tags: ["camera", "components"]
 image: "/components/img/components/camera.png"
+imageAlt: "camera"
 # SMEs: Bijan, vision team
 ---
 

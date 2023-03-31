@@ -5,6 +5,7 @@ weight: 20
 type: "docs"
 description: "Flash a BeagleBone AI-64 to prepare it for viam-server installation."
 image: "/installation/img/thumbnails/beaglebone.png"
+imageAlt: "BeagleBone A I-64"
 aliases:
     - "/installation/beaglebone-install/"
     - "/installation/prepare/beaglebone-install/"

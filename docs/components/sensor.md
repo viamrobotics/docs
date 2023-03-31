@@ -7,6 +7,7 @@ type: "docs"
 description: "A device that sends information about the outside world to the computer controlling a robot."
 tags: ["sensor", "components"]
 image: "/components/img/components/sensor.png"
+imageAlt: "sensor"
 # SME: #team-bucket
 ---
 This page explains how to set up a generic sensor component with Viam.

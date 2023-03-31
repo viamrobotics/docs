@@ -7,6 +7,7 @@ type: "docs"
 description: "A mechanical system of linear rails that can precisely position an attached device."
 tags: ["gantry", "components"]
 image: "/components/img/components/gantry.png"
+imageAlt: "gantry"
 # SME: Rand
 ---
 

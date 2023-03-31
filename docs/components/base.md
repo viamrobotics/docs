@@ -6,6 +6,7 @@ type: "docs"
 description: "The moving platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
 image: "/components/img/components/base.png"
+imageAlt: "base"
 # SMEs: Steve B
 ---
 
