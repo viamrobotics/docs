@@ -294,10 +294,7 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 
 ## Next Steps and References
 
-<!-- TODO: Content below struck out for the moment, saved to point at the next tutorial "Plan Motions with an Arm and with a Gripper" -->
-<!--
-If you would like to continue onto working with Viam's Motion service, go to the next tutorial in this series: "[Plan Motions with an Arm and with a Gripper](/tutorials/motion/plan-motions-with-arm-gripper/)".
--->
+If you would like to continue onto working with Viam's Motion service, go to the next tutorial in this series: "**[Plan Motion with an Arm and a Gripper](/tutorials/motion/plan-motion-with-arm-gripper/)**".
 
 {{< snippet "social.md" >}}
 
