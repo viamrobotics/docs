@@ -9,3 +9,44 @@ tags: ["sensor", "components"]
 icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
+
+Configure a `sensirion-sht3xd` sensor to integrate a [Sensirion's SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) into your robot.
+
+Configure a `sensirion-sht3xd` sensor as follows:
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
+
+On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
+Enter a name for your sensor, select the type `sensor`, and select the `sensirion-sht3xd` model.
+
+<img src="../img/sensirion-sht3xd-sensor-ui-config.png" alt="Creation of a sensirion-sht3xd sensor in the Viam app config builder." style="max-width:800px" />
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": <your-sensirion-sht3xd-sensor-name>,
+      "type": "sensor",
+      "model": "sensirion-sht3xd",
+      "attributes": {
+        "board": <your-board-name>,
+        "i2c_bus": <number>
+      },
+      "depends_on": []
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+| Attribute | Inclusion | Description |
+| ----------- | -------------- | --------------  |
+| `board`  | **Required** | The `name` of the [board](/components/board) the sensor is connected to. |
+| `i2c_bus` | **Required** | The [I2C bus value](/components/board/#i2c) the sensor is connected to on the board. |
+| `i2c_address`  | Optional | Default: `0x44`. The [I2C device address](https://learn.adafruit.com/i2c-addresses/overview) of the sensor. |

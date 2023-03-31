@@ -11,7 +11,7 @@ icon: "img/components/sensor.png"
 ---
 
 A *sensor* is a device that can measure information about the outside world.
-Implementing a sensor component on your robot allows the information the sensor measures to be sent to the computer controlling the robot.
+Adding a sensor component to your robot allows the information the sensor measures to be sent to the computer controlling the robot.
 
 Most robots with a sensor need at least the following hardware:
 
@@ -25,18 +25,16 @@ Supported sensor models include:
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake) | A model used for testing, with no physical hardware. |
-| [`ultrasonic`](ultrasonic) | [An ultrasonic distance sensor](https://www.sparkfun.com/products/15569) |
-| [`bme-280`](bmo-280) | [BME280 environmental sensor](https://www.adafruit.com/product/2652) |
+| [`ultrasonic`](ultrasonic) | [An HC-S204 ultrasonic distance sensor](https://www.sparkfun.com/products/15569) |
+| [`bme280`](bme280) | [BME280 environmental sensor](https://www.adafruit.com/product/2652) |
 | [`ds18b20`](ds18b20) | [DS18B20 digital temperature sensor](https://www.adafruit.com/product/381) |
 | [`power_ina219`](power_ina219) | [INA219 current sensor](https://www.amazon.com/dp/B07QJW6L4C) |
-| [`renogy`](renogy)| [Renogy battery temperature sensor](https://www.amazon.com/Renogy-Battery-Temperature-Sensor-Controllers/dp/B07WMMJFWY) |
+| [`renogy`](renogy)| [Renogy solar charge controller with temperature sensor](https://www.amazon.com/Renogy-Battery-Temperature-Sensor-Controllers/dp/B07WMMJFWY) |
 | [`sensirion-sht3xd`](sensirion-sht3xd) | [Sensirion's SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) |
 
 Want to use another model of sensor to build your robot?
-You can easily implement any other model of sensor for building your robot with Viam by extending the [sensor class](https://github.com/viamrobotics/rdk/blob/main/components/sensor/sensor.go) and defining your own model.
+You can easily use another model of sensor for building your robot with Viam by defining your own model of [sensor](https://github.com/viamrobotics/rdk/blob/main/components/sensor/sensor.go).
 Follow [these instructions](create-custom) to define a custom sensor model.
-
-<!-- TODO: resolve above: Class vs package, go vs python?? and best way to really do so -- will need to revisit above before finalizing this page. TODO -->
 
 {{% alert title="Note" color="note" %}}
 
@@ -46,7 +44,7 @@ Viam also has an [encoder component](/components/encoder/) that is distinct from
 
 {{% /alert %}}
 
-## Control your sensor with Viam's Software Development Kits
+## Control your sensor with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **CODE SAMPLE** tab, select your preferred programming language, and copy the sample code generated.
 When executed, this sample code will create a connection to your robot as a client.
@@ -61,7 +59,7 @@ The sensor component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-[Readings](#get-readings) | Get the measurements or readings that this sensor provides. |
+[Readings](#readings) | Get the measurements or readings that this sensor provides. |
 <!-- | [DoCommand](#docommand) | Sends or receives model-specific commands. |  -->
 
 ### Readings
