@@ -10,6 +10,9 @@ aliases:
     - /installation/macos-install/
     - /getting-started/linux-install/
     - /installation/linux-install/
+    - /installation/microcontrollers
+    - /installation/install/
+
 ---
 To use Viam software with your robot, you need to install and run a binary called `viam-server` on the computer you want to use to control the robot.
 See [What is Viam?](/viam/) for more information.

@@ -5,6 +5,8 @@ weight: 50
 simple_list: false
 type: docs
 icon: "../img/thumbnails/esp32-espressif.png"
+aliases:
+    - /installation/microcontrollers
 # SMEs: Nicolas Menard
 ---
 
