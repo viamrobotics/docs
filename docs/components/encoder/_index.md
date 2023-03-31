@@ -5,7 +5,8 @@ weight: 50
 type: "docs"
 description: "A special type of sensor that measures rotation of a motor or joint."
 tags: ["encoder", "components"]
-icon: "img/components/encoder.png"
+image: "/components/img/components/encoder.png"
+imageAlt: "encoder"
 no_list: true
 # SME: Rand
 ---

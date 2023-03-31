@@ -16,10 +16,14 @@
         </video>
         {{ end }}
       {{ if .Params.image }}
-        <img src="{{relURL (substr .Params.image 1)}}" alt="{{ .Params.imageAlt }}" width="100%" />
+        <div class="hover-card-img">
+          <img src="{{relURL (substr .Params.image 1)}}" alt="{{ .Params.imageAlt }}" width="100%" />
+        </div>
       {{ end }}
-      <h4> {{ .Params.linkTitle }} </h4>
-      <p> {{ .Description }} </p>
+      <div>
+        <h4> {{ .Params.linkTitle }} </h4>
+        <p> {{ .Description }} </p>
+      </div>
     </a>
     {{ end }}
 </div>
