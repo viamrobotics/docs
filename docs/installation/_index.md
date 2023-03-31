@@ -38,46 +38,35 @@ Viam is supported on:
 
 If you are using a single board computer (SBC) or a microcontroller, prepare your device by following the relevant setup document:
 
-<div class="card-container">
-  <div class="row">
-    <div class="col hover-card hover-card-small">
-        <a href="prepare/rpi-setup/">
-            <img src="img/thumbnails/raspberry-pi-4-b-2gb.jpg" alt="Raspberry Pi" width=100% style="padding-top: 1em" >
-            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Raspberry Pi</h4>
-        <a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="prepare/beaglebone-setup/">
-            <img src="img/thumbnails/beaglebone.png" alt="BeagleBone AI 64" width=100% style="padding-top: 1em" >
-            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">BeagleBone AI-64</h4>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="prepare/sk-tda4vm/">
-            <img src="img/thumbnails/tda4vm.png" alt="SK-TDA4VM" width=100% style="padding-top: 1em" >
-            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Texas Instruments SK-TDA4VM</h4>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="prepare/jetson-nano-setup/">
-            <img src="img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Jetson Nano" width=100% style="padding-top: 1em" >
-            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Jetson Nano</h4>
-        </a>
-    </div>
-    <div class="col hover-card hover-card-small">
-        <a href="prepare/jetson-agx-orin-setup/">
-            <img src="img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png" alt="Jetson AGX Orin" width=100% style="padding-top: 1em" >
-            <h4 style="text-align: left; margin-left: 0px; font-weight:bold">Jetson AGX Orin</h4>
-        </a>
-    </div>
-      <div class="col hover-card hover-card-small">
-        <a href="prepare/microcontrollers">
-            <img src="img/thumbnails/esp32-espressif.png" alt="Expressif ESP32" width=100% style="padding-top: 1em; margin-top: 1rem;" >
-            <h4 style="text-align: left; margin-left: 0px; margin-top: 1rem; font-weight:bold">Expressif ESP32</h4>
-        </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+{{% manualcard link="prepare/rpi-setup/" size="small" %}}
+![Raspberry Pi](img/thumbnails/raspberry-pi-4-b-2gb.jpg)
+<h4>Raspberry Pi</h4>
+{{% /manualcard %}}
+
+{{% manualcard link="prepare/beaglebone-setup/" size="small" %}}
+![BeagleBone AI 64](img/thumbnails/beaglebone.png)
+<h4>BeagleBone AI-64</h4>
+{{% /manualcard %}}
+{{% manualcard link="prepare/sk-tda4vm/" size="small" %}}
+![SK-TDA4VM](img/thumbnails/tda4vm.png)
+<h4>Texas Instruments SK-TDA4VM</h4>
+{{% /manualcard %}}
+{{% manualcard link="prepare/jetson-nano-setup/" size="small" %}}
+![Jetson Nano](img/jetson-nano-setup/jetson-nano-dev-kit.png)
+<h4>Jetson Nano</h4>
+{{% /manualcard %}}
+{{% manualcard link="prepare/jetson-agx-orin-setup/" size="small" %}}
+![Jetson AGX Orin](img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png)
+<h4>Jetson AGX Orin</h4>
+{{% /manualcard %}}
+{{% manualcard link="prepare/microcontrollers" size="small" %}}
+![Expressif ESP32](img/thumbnails/esp32-espressif.png)
+<br>
+<br>
+<h4>Expressif ESP32</h4>
+{{% /manualcard %}}
+{{< /cards >}}
 
 ## Install `viam-server`
 
@@ -233,25 +222,14 @@ You can disable this by commenting out the ExecPre line (the one with --aix-upda
 
 ## Next Steps
 
-<div class="container text-center td-max-width-on-larger-screens">
-  <div class="row">
-    <div class="col hover-card">
-      <a href="manage">
-        <img src="img/thumbnails/manage.png" alt="Manage" width=100% style="padding-top: 1em" />
-        <h4 style="text-align: left; margin-left: 0px">Manage</h4>
-        <p style="text-align: left">
-          Control and troubleshoot <code>viam-server</code>.
-        </p>
-      </a>
-    </div>
-    <div class="col hover-card">
-      <a href="update">
-        <img src="img/thumbnails/update.png" alt="Update" width=100% style="padding-top: 1em" />
-        <h4 style="text-align: left; margin-left: 0px">Update</h4>
-        <p style="text-align: left">
-          Keep your version of <code>viam-server</code> up to date.
-        </p>
-      </a>
-    </div>
-  </div>
-</div>
+{{< cards >}}
+{{% manualcard link="manage" size="small" %}}
+![Manage](img/thumbnails/manage.png)
+<h4>Control and troubleshoot <code>viam-server</code>.</h4>
+{{% /manualcard %}}
+
+{{% manualcard link="prepare/beaglebone-setup/" size="small" %}}
+![Update](img/thumbnails/update.png)
+<h4>Keep your version of <code>viam-server</code> up to date.</h4>
+{{% /manualcard %}}
+{{< /cards >}}
