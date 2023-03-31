@@ -64,11 +64,11 @@ You can find more examples of Viam's SDKs in the <file>examples</file> folder of
 
 {{% /alert %}}
 
-### Connection Code Snippets
+### Code Samples
 
 The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, select your preferred SDK, and copy the code generated for you.
 
-These boilerplate connection code snippets import all of the necessary libraries and set up a client connection to your remote or local robot.
+These boilerplate code samples import all of the necessary libraries and set up a client connection to your remote or local robot.
 
 {{% alert title="Caution" color="caution" %}}
 
@@ -77,7 +77,7 @@ Sharing this information compromises your system security by allowing unauthoriz
 
 {{% /alert %}}
 
-Your boilerplate connection code snippet should look similar to this:
+Your boilerplate code sample should look similar to this:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -201,15 +201,59 @@ async function main() {
 main();
 ```
 
+{{% /tab %}}
+{{< /tabs >}}
+
+## Add Control Logic
+
+You can easily add control logic for each [component](/components/) of your robot by using the methods Viam has built into each component's API specification.
+
+Find documentation on how to use these methods here:
+
+| Component | Viam Docs | Python SDK Docs | Go SDK Docs |
+| --------- | --------- | --------------- | ----------- |
+| Arm | [Viam](/components/arm/#api)| [Python](https://python.viam.dev/autoapi/viam/components/arm/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm) |
+| Base | [Viam](/components/base/#api) | [Python](https://python.viam.dev/autoapi/viam/components/base/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/base#Base) |
+| Camera | [Viam](/components/camera/#api) | [Python](https://python.viam.dev/autoapi/viam/components/camera/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera) |
+| Gantry | [Viam](/components/gantry/#api) | [Python](https://python.viam.dev/autoapi/viam/components/gantry/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry) |
+| Input Controller | [Viam](/components/input-controller/#api) | [Python](https://python.viam.dev/autoapi/viam/components/input/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller) |
+| Motor | [Viam](/components/motor/#api) | [Python](https://python.viam.dev/autoapi/viam/components/motor/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor) |
+| Sensor | [Viam](/components/sensor/#api) | [Python](https://python.viam.dev/autoapi/viam/components/sensor/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor) |
+| Servo | [Viam](/components/servo/#api) | [Python](https://python.viam.dev/autoapi/viam/components/servo/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo) |
+| Board | [Viam](/components/board/#api) | [Python](https://python.viam.dev/autoapi/viam/components/board/index.html) | [Go](https://pkg.go.dev/go.viam.com/rdk/components/board#Board) |
+<!-- 
+Board & Sensor API Docs should be added soon on Viam Documentation
+| Movement Sensor | [Viam](/components/movement-sensor) | [Python](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html) | [Go]() |
+| Encoder | [Viam](/components/encoder | TODO: Why does this not exist in the python auto-docs? | [Go]() | 
+-->
+
 ## Run Your Code
 
-After saving the above code and adding control logic with Viam's API methods, run your program to control your Viam-connected robot.
+After saving your boilerplate code sample and adding control logic with Viam's API methods, run your program to control your Viam-connected robot.
 
 For example:
 
-- Python: `python3 ~/myCode/myViamFile.py`
-- Go: `go run ~/myCode/myViamFile.py`
-- Typescript: [see execution demo](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/vanilla)
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+``` shell
+python3 ~/myCode/myViamFile.py
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+``` shell
+go run ~/myCode/myViamFile.py
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+For an example, see [this execution demo.](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/vanilla)
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Next Steps
 
