@@ -4,6 +4,7 @@ linkTitle: "Raspberry Pi Setup"
 weight: 15
 type: "docs"
 description: "Image a Raspberry Pi to prepare it for viam-server installation."
+image: "/installation/img/thumbnails/raspberry-pi-4-b-2gb.jpg"
 aliases:
     - /getting-started/rpi-setup/
     - /installation/rpi-setup/

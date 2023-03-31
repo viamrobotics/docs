@@ -4,7 +4,8 @@ linkTitle: "Microcontroller Setup"
 weight: 50
 simple_list: false
 type: docs
-icon: "../img/thumbnails/esp32-espressif.png"
+image: "/installation/img/thumbnails/esp32-espressif.png"
+description: "Set up the Expressif ESP32 with the micro-RDK."
 aliases:
     - /installation/microcontrollers
 # SMEs: Nicolas Menard

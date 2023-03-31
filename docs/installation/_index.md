@@ -38,7 +38,7 @@ Viam is supported on:
 
 If you are using a single board computer (SBC) or a microcontroller, prepare your device by following the relevant setup document:
 
-<div class="container text-center td-max-width-on-larger-screens">
+<div class="card-container">
   <div class="row">
     <div class="col hover-card hover-card-small">
         <a href="prepare/rpi-setup/">

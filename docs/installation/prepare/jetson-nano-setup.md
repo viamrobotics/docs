@@ -3,7 +3,7 @@ title: "NVIDIA Jetson Nano Setup Guide"
 linkTitle: "Jetson Nano Setup"
 weight: 20
 type: "docs"
-draft: false
+image: "/installation/img/jetson-nano-setup/jetson-nano-dev-kit.png"
 description: "Set up the Jetson Nano Developer Kit to prepare your NVIDIA Jetson Nano for viam-server installation."
 # SMEs: Pete Garafano
 ---

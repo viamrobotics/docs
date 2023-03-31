@@ -4,6 +4,7 @@ linkTitle: "BeagleBone Setup"
 weight: 20
 type: "docs"
 description: "Flash a BeagleBone AI-64 to prepare it for viam-server installation."
+image: "/installation/img/thumbnails/beaglebone.png"
 aliases:
     - "/installation/beaglebone-install/"
     - "/installation/prepare/beaglebone-install/"
