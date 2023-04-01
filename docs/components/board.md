@@ -405,5 +405,5 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/pi/make-an-led-blink-with-the-viam-app" size="small" %}}
+  {{% card link="/tutorials/get-started/make-an-led-blink-with-the-viam-app" size="small" %}}
 {{< /cards >}}

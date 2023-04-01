@@ -1054,6 +1054,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/tutorials/yahboom-rover" size="small" %}}
-    {{% card link="/tutorials/scuttlebot/scuttle-gamepad" size="small" %}}
+    {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
+    {{% card link="/tutorials/control/scuttle-gamepad" size="small" %}}
 {{< /cards >}}
