@@ -677,6 +677,6 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/tutorials/yahboom-rover" size="small" %}}
-    {{% card link="/tutorials/scuttlebot/scuttlebot" size="small" %}}
+    {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
+    {{% card link="/tutorials/configure/scuttlebot" size="small" %}}
 {{< /cards >}}

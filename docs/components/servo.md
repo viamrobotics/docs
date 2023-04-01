@@ -468,6 +468,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/yahboom-rover" size="small" %}}
-  {{% card link="/tutorials/integrating-viam-with-openai" size="small" %}}
+  {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
+  {{% card link="/tutorials/projects/integrating-viam-with-openai" size="small" %}}
 {{< /cards >}}
