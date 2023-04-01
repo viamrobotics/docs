@@ -72,7 +72,7 @@ if err != nil {
 {{< /tabs >}}
 
 Once the Motion Service can be accessed, some familiar features become available.
-The Motion service has a method that can get the *pose* of a component relative to a **reference frame**.
+The Motion service has a method that can get the *pose* of a component relative to a *reference frame*.
 In the tutorial where we interacted with an arm component, we used the `EndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the Motion Service serves a similar function to `EndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
@@ -167,7 +167,7 @@ Feel free to change these dimensions, including thickness (the Z coordinate in t
 Additional obstacles can also be *appended* as desired.
 
 {{< alert title="Tip" color="note" >}}
-Within the App, the **Frame System** tab in the **Config** section of your robot gives you the ability to experiment with various geometry representations with better visual feedback.
+Within the app, the **Frame System** tab in the **CONFIG** section of your robot gives you the ability to experiment with various geometry representations with better visual feedback.
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
@@ -233,10 +233,10 @@ if err != nil {
 ## Command other components to move with the Motion Service
 
 This section will require you to add a new component to your robot.
-One device that is very commonly attached to the end of a robot arm is a **gripper**.
-Most robot arms pick up and manipulate objects in the world through the use of a gripper, so learning how to directly command a gripper to move is highly valuable.
+One device that is very commonly attached to the end of a robot arm is a *gripper*.
+Most robot arms pick up and manipulate objects in the world through the use of a gripper, so learning how to directly move a gripper is very useful.
 Though various Motion Service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
-This is possible because the Motion Service considers other parts of the robot (through the [Frame System](/services/frame-system/) when calculating how to achieve the desired motion.
+This is possible because the Motion Service considers other components of the robot (through the [Frame System](/services/frame-system/) when calculating how to achieve the desired motion.
 
 ### Add a gripper component
 
