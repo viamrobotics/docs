@@ -14,7 +14,7 @@ Before running any code, ensure your robotic arm has enough space and that there
 Also pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your robot.
 {{< /alert >}}
 
-Moving individual components, like [an arm](../services/accessing-and-moving-robot-arm/), is a good way to start using Viam, but there is so much more you can do.
+Moving individual components, like [an arm](../accessing-and-moving-robot-arm/), is a good way to start using Viam, but there is so much more you can do.
 The [Motion Service](/services/motion/) enables sophisticated movement involving one or many components of your robot.
 
 {{< alert title="Note" color="note" >}}
@@ -28,15 +28,15 @@ Before starting this tutorial, make sure you have the [Viam Python SDK](https://
 
 If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the controller before continuing.
 
-Make sure you have mastery of the concepts outlined in the first Motion tutorial, [Access and Move a Robot Arm](../services/accessing-and-moving-robot-arm/), before continuing.
+Make sure you have mastery of the concepts outlined in the first Motion tutorial, [Access and Move a Robot Arm](../accessing-and-moving-robot-arm/), before continuing.
 This tutorial picks up right where **Access and Move a Robot Arm** stops, so further examples depend on having a connected robot, client and service access, and other infrastructure in place.
 This also helps simplify and shorten the code examples presented below.
 
-For a helpful recap of the code we previously added, look at [the full code sample from the prior tutorial](../services/accessing-and-moving-robot-arm#full-tutorial-code).
+For a helpful recap of the code we previously added, look at [the full code sample from the prior tutorial](../accessing-and-moving-robot-arm#full-tutorial-code).
 
 ## Configure a robot
 
-The [robot configuration from the prior tutorial](../services/accessing-and-moving-robot-arm#configure-a-robot) should be used for this tutorial.
+The [robot configuration from the prior tutorial](../accessing-and-moving-robot-arm#configure-a-robot) should be used for this tutorial.
 We will revisit that robot configuration and add new components during specific sections below.
 
 The Motion Service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
@@ -171,7 +171,7 @@ Within the App, the **Frame System** tab in the **Config** section of your robot
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/motion/plan_01_frame_system_tab.png" width="700px" alt="A picture of the Frame System tab in use.">
+  <img src="../../img/motion/plan_01_frame_system_tab.png" width="900px" alt="A picture of the Frame System tab in use.">
 </div>
 
 ## Command an arm to move with the Motion Service
@@ -261,7 +261,7 @@ We need to do several things to prepare a new gripper component for motion.
   <img src="../../img/motion/plan_03_gripper_config.png" width="700px" alt="Sample gripper configuration with several fields filled out.">
 </div>
 
-Because the new gripper component is "attached" (with the parent specification in the Frame) to `myArm`, we can produce motion plans using `myGripper` instead of `myArm` 
+Because the new gripper component is "attached" (with the parent specification in the Frame) to `myArm`, we can produce motion plans using `myGripper` instead of `myArm`
 
 The last library you must import is the `gripper` library.
 
@@ -312,7 +312,7 @@ This has implications for how motion is calculated, and what final configuration
 
 ## Next Steps
 
-You've reached the end of this tutorial but if you want to learn more, have a look at our [other Motion tutorial](../services/accessing-and-moving-robot-arm/).
+You've reached the end of this tutorial but if you want to learn more, have a look at our [other Motion tutorial](../accessing-and-moving-robot-arm/).
 
 <!-- TODO: Content below struck out for the moment, saved to point at the next tutorial "Add Constraints to a Motion Plan" -->
 <!--
@@ -325,12 +325,11 @@ If you would like to continue onto working with complex motion constraints:
 
 {{< snippet "social.md" >}}
 
-<!-- TODO : Add more content here -->
-
 ## Full Tutorial Code
 
 {{< tabs >}}
 {{% tab name="Python" %}}
+
 ```python {id="plan-motion-python-ex" class="line-numbers linkable-line-numbers" data-line=""}
 import asyncio
 
@@ -548,20 +547,20 @@ func main() {
     logger.Fatal(err)
   }
 
-	gripperName := "myGripper"
-	gripperResource := gripper.Named(gripperName)
+  gripperName := "myGripper"
+  gripperResource := gripper.Named(gripperName)
 
-	// This will move the gripper in the -Z direction with respect to its own reference frame
-	gripperPoseRev := spatialmath.NewPose(
-		r3.Vector{X: 0.0, Y: 0.0, Z: -100.0},
-		&spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
-	)
-	gripperPoseRevInFrame := referenceframe.NewPoseInFrame(gripperName, gripperPoseRev) // Note the change in frame name
+  // This will move the gripper in the -Z direction with respect to its own reference frame
+  gripperPoseRev := spatialmath.NewPose(
+    r3.Vector{X: 0.0, Y: 0.0, Z: -100.0},
+    &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
+  )
+  gripperPoseRevInFrame := referenceframe.NewPoseInFrame(gripperName, gripperPoseRev) // Note the change in frame name
 
-	_, err = motionService.Move(context.Background(), gripperResource, gripperPoseRevInFrame, worldState, nil, slam.Named(""), nil)
-	if err != nil {
-		logger.Fatal(err)
-	}
+  _, err = motionService.Move(context.Background(), gripperResource, gripperPoseRevInFrame, worldState, nil, slam.Named(""), nil)
+  if err != nil {
+    logger.Fatal(err)
+  }
 }
 ```
 
