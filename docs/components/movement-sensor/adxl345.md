@@ -4,7 +4,7 @@ linkTitle: "accel-adxl345"
 weight: 10
 type: "docs"
 description: "Configure an ADXL345 digital accelerometer."
-# SMEs: Rand
+# SMEs: Rand, Kim Mishra
 ---
 
 The `accel-adxl345` movement sensor model supports the Analog Devices [ADXL345 digital accelerometer](https://www.analog.com/en/products/adxl345.html).

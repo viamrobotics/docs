@@ -31,10 +31,11 @@ Click the model names below for configuration information:
 
 Model | Supported hardware <a name="model-table"></a>
 ---------- | ------------------
-[`gps-nmea`](./gps-nmea/) | [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS models
-[`gps-rtk`](./gps-rtk/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models
-[`imu-wit`](./imu-wit/) | IMUs manufactured by [WitMotion](https://witmotion-sensor.com/)
-[`imu-vectornav`](./imu-wit) | IMUs manufactured by [VectorNav](https://www.vectornav.com/products)
+[`gps-nmea`](./gps/gps-nmea/) | [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS models
+[`gps-rtk`](./gps/gps-rtk/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models
+[`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://witmotion-sensor.com/)
+[`imu-vectornav`](./imu/imu-wit) | IMUs manufactured by [VectorNav](https://www.vectornav.com/products)
+[`accel-adxl345`](./accel-adxl345) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
 [`mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
 [`rtk-station`](./rtk-station/) | An **experimental** model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module.
 [`fake`](./fake/) | Used to test code without hardware
@@ -95,6 +96,8 @@ fmt.Println("my-imu LinearAcceleration return value: %s", linAccel)
 
 ## API
 
+Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
+
 Method Name | Description
 ----------- | -----------
 [GetPosition](#getposition) | Gets the current latitude, longitude and altitude.
@@ -124,7 +127,7 @@ Report the current GeoPoint (latitude, longitude) and altitude (in millimeters).
 
 **Returns:**
 
-- [(GeoPoint)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint) Abstract base class for protocol messages, containing latitude and longitude as floats.
+- [(GeoPoint)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint): Abstract base class for protocol messages, containing latitude and longitude as floats.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.get_position).
 
@@ -147,6 +150,8 @@ position = await my_sensor.get_position()
 
 **Returns:**
 
+<!-- does this also return altitude or not? -->
+- [*geo.Point](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): Contains the current latitude and longitude as floats.
 - [(float64)](https://pkg.go.dev/builtin#float64): The unit returned is the number of revolutions which is intended to be fed back into calls of GoFor.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
