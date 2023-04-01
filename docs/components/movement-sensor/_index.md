@@ -21,7 +21,7 @@ An inertial measurement unit (IMU) can provide angular velocity and orientation.
 We can further apply algorithms, such as a [Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter), to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
 
 We specifically cover GPS, accelerometer and IMU units in this documentation.
-Find the more [generic sensor component here](/components/sensor/).
+Find the more generic [sensor component here](/components/sensor/).
 Find more information about encoders, another component type, [here](/components/encoder/).
 
 ## Configuration

@@ -8,3 +8,99 @@ description: "Configure an NMEA-based GPS."
 ---
 
 The `gps-nmea` movement sensor model supports [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS units.
+
+This GPS model uses communication standards set by the National Marine Electronics Association (NMEA).
+The `gps-nmea` model can be connected using and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board:
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
+
+On the **COMPONENTS** sub-tab, navigate to the **Create Component** menu.
+Enter a name for your movement sensor, select the `movement-sensor` type, and select the `gps-nmea` model.
+
+![Creation of a `gps-nmea` movement sensor in the Viam app config builder.](../../img/gps-nmea-builder.png)
+
+Click **Create Component** and then fill in the attributes for your model.
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+```json
+{
+  "components": [
+    {
+      "name": <sensor_name>,
+      "type": "movement_sensor",
+      "model": gps-nmea,
+      "attributes": {
+        "board": <board_name>,
+        "connection_type": <"serial" or "I2C">,
+        "serial_attributes": {
+            "serial_baud_rate": <>,
+            "serial_path": <>
+        },
+        "i2c_attributes": {
+            "i2c_baud_rate": <>,
+            "i2c_addr": <>,
+            "i2c_bus": "<name_of_bus_on_board>"
+        },
+        "disable_nmea": <>
+      },
+      "depends_on": [],
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example: USB/Serial" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "depends_on": [],
+    "model": "gps-nmea",
+    "name": "UBLOX GPS",
+    "type": "movement_sensor",
+    "attributes": {
+        "connection_type": "serial",
+        "serial_attributes": {
+            "serial_baud_rate": 115200,
+            "serial_path": "/dev/serial/by-path/<device_ID>"
+        }
+    }
+}
+```
+
+Note that the example `"serial_path"` filepath is specific to serial devices connected to Linux systems.
+
+{{% /tab %}}
+{{% tab name="JSON Example: I2C" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "depends_on": [],
+    "model": "gps-nmea",
+    "name": "UBLOX GPS",
+    "type": "movement_sensor",
+    "attributes": {
+        "board": "local",
+        "connection_type": "I2C",
+        "i2c_attributes": {
+            "i2c_baud_rate": 115200,
+            "i2c_addr": 111,
+            "i2c_bus": "<name_of_bus_on_board>"
+        }
+    }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Attributes
+
+Name | Type | Default Value | Description
+---- | ---- | ------------- | -----
+`board` | string | - | Required for NMEA over I<sup>2</sup>C; the board connected to the chip. Not required for serial communication.
+`disable_nmea` | bool | false | Optional. If set to true, changes the NMEA message protocol to RTCM when using a chip as a base station.
+`connection_type` | string | - | "I2C" or "serial", respectively
