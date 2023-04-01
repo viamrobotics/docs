@@ -5,7 +5,8 @@ weight: 70
 type: "docs"
 description: "A sensor that measures location, kinematic data, or both."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
-icon: "img/components/imu.png"
+image: "/components/img/components/imu.png"
+imageAlt: "imu"
 # SME: Rand
 ---
 The movement sensor component is an abstraction of a sensor that gives data on where a robot is and how fast it is moving.

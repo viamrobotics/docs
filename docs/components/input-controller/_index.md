@@ -6,7 +6,8 @@ type: "docs"
 no_list: true
 description: "An input controller, like a gamepad or joystick, is a device humans use to control a robot's actions."
 tags: ["input controller", "components"]
-icon: "img/components/controller.png"
+image: "/components/img/components/controller.png"
+imageAlt: "input controller"
 # SME: James
 ---
 
@@ -1053,6 +1054,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/tutorials/yahboom-rover" size="small" %}}
-    {{% card link="/tutorials/scuttlebot/scuttle-gamepad" size="small" %}}
+    {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
+    {{% card link="/tutorials/control/scuttle-gamepad" size="small" %}}
 {{< /cards >}}

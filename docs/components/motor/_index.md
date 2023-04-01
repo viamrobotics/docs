@@ -5,10 +5,9 @@ weight: 70
 type: "docs"
 description: "A motor is a rotating machine that transforms electrical energy into mechanical energy."
 tags: ["motor", "components"]
-icon: "img/components/motor.png"
+image: "/components/img/components/motor.png"
+imageAlt: "motor"
 no_list: true
-aliases:
-    - /components/motor/
 # SME: Rand
 ---
 
@@ -678,6 +677,6 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/tutorials/yahboom-rover" size="small" %}}
-    {{% card link="/tutorials/scuttlebot/scuttlebot" size="small" %}}
+    {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
+    {{% card link="/tutorials/configure/scuttlebot" size="small" %}}
 {{< /cards >}}

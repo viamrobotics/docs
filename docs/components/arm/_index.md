@@ -6,7 +6,8 @@ type: "docs"
 description: "A robotic arm is made up of a series of links and joints, ending with a device you can position."
 no_list: true
 tags: ["arm", "components"]
-icon: "img/components/arm.png"
+image: "/components/img/components/arm.png"
+imageAlt: "arm"
 # SME: Peter L
 ---
 
@@ -603,6 +604,6 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/motion/accessing-and-moving-robot-arm" size="small" %}}
+  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" size="small" %}}
   {{% card link="/services/motion" size="small" %}}
 {{< /cards >}}

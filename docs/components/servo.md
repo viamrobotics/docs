@@ -5,7 +5,8 @@ weight: 80
 type: "docs"
 description: "A hobby servo is a special type of small motor whose position you can precisely control."
 tags: ["servo", "components"]
-icon: "img/components/servo.png"
+image: "/components/img/components/servo.png"
+imageAlt: "servo"
 # SME: #team-bucket
 ---
 
@@ -467,6 +468,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/yahboom-rover" size="small" %}}
-  {{% card link="/tutorials/integrating-viam-with-openai" size="small" %}}
+  {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
+  {{% card link="/tutorials/projects/integrating-viam-with-openai" size="small" %}}
 {{< /cards >}}

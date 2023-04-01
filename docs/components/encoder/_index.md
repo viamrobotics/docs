@@ -5,7 +5,8 @@ weight: 50
 type: "docs"
 description: "A special type of sensor that measures rotation of a motor or joint."
 tags: ["encoder", "components"]
-icon: "img/components/encoder.png"
+image: "/components/img/components/encoder.png"
+imageAlt: "encoder"
 no_list: true
 # SME: Rand
 ---
@@ -47,5 +48,5 @@ For configuration information, click on one of the following models:
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/scuttlebot/scuttlebot" size="small" %}}
+  {{% card link="/tutorials/configure/scuttlebot" size="small" %}}
 {{< /cards >}}

@@ -6,7 +6,8 @@ draft: false
 type: "docs"
 description: "A device that sends information about the outside world to the computer controlling a robot."
 tags: ["sensor", "components"]
-icon: "img/components/sensor.png"
+image: "/components/img/components/sensor.png"
+imageAlt: "sensor"
 # SME: #team-bucket
 ---
 This page explains how to set up a generic sensor component with Viam.
@@ -78,7 +79,7 @@ import (
     "go.viam.com/rdk/components/sensor"
 )
 
-func main() { 
+func main() {
     // Connect to your robot.
     robot, err := client.New(
         context.Background(),

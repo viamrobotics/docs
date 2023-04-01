@@ -5,7 +5,8 @@ weight: 20
 type: "docs"
 description: "The signal wire hub of a robot, with GPIO pins for transmitting signals between the robot's computer and its other components."
 tags: ["board", "components"]
-icon: "img/components/board.png"
+image: "/components/img/components/board.png"
+imageAlt: "board"
 # SMEs: Gautham, Rand
 ---
 
@@ -360,7 +361,7 @@ The attributes section of a board using SPI will contain the following:
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 |`name`| string|--| Choose a name for the SPI bus. Note that a component that uses this bus must then have this same name configured in its attributes.
-|`bus_select`| string|--| A Raspberry Pi has two SPI buses: 0 and 1. See data sheet for specifics on other boards.
+|`bus_select`| string|--| A Raspberry Pi has two SPI buses: `0` and `1`. See your board's data sheet for specifics on its SPI wiring.
 
 #### I2C
 
@@ -388,8 +389,8 @@ Review the [instructions in our documentation](/installation/prepare/rpi-setup/#
 
 Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
-|`name`| string|--| Choose a name for the SPI bus. Note that a component that uses this bus must then have this same name configured in its attributes.
-|`bus`| string|--| Usually a number such as 1. See board data sheet for specifics on its I2C wiring. Raspberry Pi recommends using bus 1.
+|`name`| string|--| Choose a name for the I2C bus. Note that a component that uses this bus must then have this same name configured in its attributes.
+|`bus`| string|--| Usually a number. Raspberry Pi recommends using bus `1`. See your board's data sheet for specifics on its I2C wiring.
 
 ## Implementation
 
@@ -404,5 +405,5 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/pi/make-an-led-blink-with-the-viam-app" size="small" %}}
+  {{% card link="/tutorials/get-started/make-an-led-blink-with-the-viam-app" size="small" %}}
 {{< /cards >}}

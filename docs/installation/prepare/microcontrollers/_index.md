@@ -4,7 +4,9 @@ linkTitle: "Microcontroller Setup"
 weight: 50
 simple_list: false
 type: docs
-icon: "../img/thumbnails/esp32-espressif.png"
+image: "/installation/img/thumbnails/esp32-espressif.png"
+imageAlt: "E S P 32 - espressif"
+description: "Set up the Expressif ESP32 with the micro-RDK."
 aliases:
     - /installation/microcontrollers
 # SMEs: Nicolas Menard
@@ -39,7 +41,7 @@ The micro-RDK currently only supports:
 
 See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information about the micro-RDK.
 
-## Hardware Rerquirements
+## Hardware Requirements
 
 You need an an Expressif ESP32 microcontroller to use the micro-RDK.
 Viam recommends purchasing the ESP32 with a development board: see development kit options [here](https://www.espressif.com/en/products/devkits).

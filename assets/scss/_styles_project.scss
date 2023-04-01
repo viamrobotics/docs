@@ -474,7 +474,7 @@ END MARKETING CSS
   width: 200px;
   max-width: 200px;
   display: flex;
-  padding-top: 1rem
+  padding: 1rem
 }
 
 .hover-card:hover {
@@ -485,11 +485,53 @@ END MARKETING CSS
   transform: translate(-3px,-3px);
 }
 
-.hover-card.hover-card-small {
-  min-width: 200px;
-  width: 200px;
-  max-width: 200px;
+@media (max-width: 650px) { // at least two cards fit next to one another
+  .hover-card.hover-card-small { // only one card
+    min-width: 90%;
+    width: 90%;
+    max-width: 90%;
+
+    a {
+      display: flex;
+
+      video {
+        max-width: 50%;
+        padding-right: 1rem;
+      }
+
+      .hover-card-img {
+        max-width: 50%;
+        margin: 0 1rem 1rem 0;
+        margin: auto;
+        padding-right: 1rem;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
+
+@media (min-width: 650px) { // at least two cards fit next to one another
+  .hover-card.hover-card-small {
+    min-width: 250px;
+    max-width: 250px;
+  }
+
+  a {
+    display: unset;
+  }
+}
+
+@media (min-width: 992px) {
+  .hover-card {
+    min-width: 300px;
+    width: 300px;
+    max-width: 300px;
+  }
+}
+
 
 .landing-hover-card {
   margin: 1em auto;
@@ -542,19 +584,6 @@ END MARKETING CSS
   -webkit-transform: translate(-3px,-3px);
   -ms-transform: translate(-3px,-3px);
   transform: translate(-3px,-3px);
-}
-
-@media (min-width: 992px) {
-  .hover-card {
-    min-width: 300px;
-    width: 300px;
-    max-width: 300px;
-  }
-  .hover-card.hover-card-small {
-    min-width: 250px;
-    width: 250px;
-    max-width: 250px;
-  }
 }
 
 /* END card styling */
