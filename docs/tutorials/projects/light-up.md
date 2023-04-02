@@ -171,14 +171,12 @@ You will see your light turn on and off as the robot detects you!
 
 Your terminal should look like this as your project runs:
 
-```bash
+```txt
 This is a person!
 turning on
 There's nobody here
 turning off
 ```
-
-<br>
 
 {{% alert title="Info" color= "info" %}}
 

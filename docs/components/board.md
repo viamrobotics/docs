@@ -51,7 +51,6 @@ In this case, the computer running `viam-server` signals through the GPIO periph
 You can use any computer capable of running `viam-server`, whether it's your personal computer or another machine, as long as it is connected to the GPIO peripheral.
 
 <!-- ESP-32 - mini RDK -->
-<br>
 
 Most robots with a board need at least the following hardware:
 

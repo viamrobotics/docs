@@ -140,8 +140,6 @@ YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
 
     {{% /alert %}}
 
-<br>
-
 6. Save the config.
 
 At this point, your complete configuration should look like:
