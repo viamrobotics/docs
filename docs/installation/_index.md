@@ -19,7 +19,7 @@ See [What is Viam?](/viam/) for more information.
 ## Preparation
 
 Make sure your system is compatible with Viam.
-Viam is supported on:
+You can run `viam-server` on any device that runs:
 
 - Linux 64-bit operating systems
 - macOS
