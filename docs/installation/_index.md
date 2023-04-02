@@ -21,7 +21,7 @@ See [What is Viam?](/viam/) for more information.
 Make sure your system is compatible with Viam.
 You can run `viam-server` on any device that runs:
 
-- Linux 64-bit operating systems
+- **any** Linux 64-bit operating systems
 - macOS
 
 <div class="container text-left td-max-width-on-larger-screens">
