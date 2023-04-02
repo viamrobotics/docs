@@ -30,7 +30,7 @@ Join the [**Viam community**](https://discord.gg/viam) to collaborate during pla
 ## Get started
 
 A *robot* in Viam consists of at least one computer, typically a [single-board computer](/installation/prepare/), running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
-Viam supports devices running on **any** 64-bit Linux OS or macOS.
+Viam supports devices running **any** 64-bit Linux OS or macOS.
 
 <img src="img/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." style="float: left; max-width:270px; display: block; margin: auto 20px auto auto"></img>
 
