@@ -137,12 +137,25 @@ h7, .h7 {
   letter-spacing: 0.0625rem;
 }
 
-// TODO (show progress when scrolling)
-// .td-toc {
-//   border-left: 2px solid #1be020;
-//   padding-left: 16px;
-//   height: fit-content;
-// }
+.td-toc > nav ul li {
+  border-left: 2px solid #1be020;
+  padding-left: 16px;
+  height: fit-content;
+}
+
+.td-toc > nav ul li.toc-active {
+  border-left: 2px solid #666666;
+}
+
+.td-toc > nav ul li ul li {
+  margin-left: -18px;
+  padding-left: 32px;
+  height: fit-content;
+}
+
+.td-toc > nav ul li ul li.toc-active {
+  border-left: 2px solid #666666;
+}
 
 .td-toc #TableOfContents ul li a {
   font-size: 0.833rem;
