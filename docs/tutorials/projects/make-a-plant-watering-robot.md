@@ -94,7 +94,7 @@ Refer to the following pinout diagram for the blue module part of your capacitiv
 
 ![Pinout diagram for the capacitive soil moisture sensor.](../../img/plant-watering-pi/moisture-sensor-pinout.png)
 
-Start by connecting the female jumper wires at the end of the sensor prongs to the blue module where the diagram is labeled "connect with probe."
+Start by connecting the female jumper wires at the end of the sensor prongs to the blue module where the diagram shown above is labeled "Connect with Probe."
 
 Then, wire the rest of the pins on the module to the Pi and ADC as follows:
 
@@ -118,7 +118,7 @@ As long as the end of the wire is touching the GND hole of the motor speed contr
 1. Connect the PWM pin on the pump to [Pin 12 (GPIO 18)](https://pinout.xyz/pinout/pin12_gpio18) of the Pi.
 Note that the controller does not come with header pins.
 You can either bend or soldier the jumper wires here to make the connection.
-As long as the end of the wire is touching the PWM hole of the motor speed controller, the pump should be able to function properly.
+As long as the end of the wire is touching the PWM hole of the motor speed controller, the pump should be able to function properly.}
 
 ## Program Your Plant Watering Robot
 
@@ -320,6 +320,12 @@ Now, if you navigate to your robot's **CONTROL** tab, you should be able to cont
 
 ![Creation of a pump motor in the Viam app config builder.](../../img/plant-watering-pi/pump-motor-control.png)
 
+{{% alert title="Tip" color="tip" %}}
+
+Now that you have set up your robot and are able to control your motor, you can put the suction tube of your pump into the water cup, and the output end into the plant!
+
+{{% /alert %}}
+
 ### Configure the Capacitive Soil Moisture Sensor as a Custom Resource
 
 *Resources* refer to the different [components](/components/) and [services](/services/) Viam provides for robots to use.
@@ -439,8 +445,10 @@ Add your sensor server as a [remote part](/manage/parts-and-remotes/) called `my
 {{< /tabs >}}
 
 {{% alert title="Caution" color="caution" %}}
+
 If you use the Config Builder to make your remote, make sure you have still added the line: `"insecure": true,` to the Raw JSON.
 This line determines that your server does need an SSL certificate.
+
 {{% /alert %}}
 
 #### Add the `MoistureSensor` Process
@@ -487,10 +495,12 @@ Now, when you navigate to your robot's **CONTROL** tab, you should be able to se
 ![Readings from a soil moisture sensor in the Viam app CONTROL tab.](../../img/plant-watering-pi/sensor-reading-control.png)
 
 {{% alert title="Tip" color="tip" %}}
+
 If you are having trouble seeing your sensor readings, check the **LOGS** table and filter by the **error** level to get more information about the issue.
 
 Make sure that you have modified `<my_username>` in the JSON template above to match your username on your Pi.
 You can run `pwd` in your terminal after SSH'ing into your Pi to see what your username is.
+
 {{% /alert %}}
 
 ### Add Python Control Code
@@ -552,8 +562,7 @@ Make sure to import `time` at the beginning of your version of <file>plant-water
 Also make sure to import `viam.components.sensor`.
 {{% /alert %}}
 
-Note that `await water_pump.go_for(rpm=1000, revolutions=200)` uses the [motor component's](/components/motor) `go_for` API method to turn the pump motor 200 revolutions at 1000 rpm.
-See motor's [API documentation](/components/motor#gofor) for more information.
+See the motor component's [API documentation](/components/motor#gofor) for more information about `water_pump.go_for()`.
 
 Save your <file>plant-watering-robot.py</file> program with this logic added in, and then run it on your Pi like this:
 
