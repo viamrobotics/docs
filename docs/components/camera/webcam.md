@@ -20,9 +20,11 @@ Enter a name for your camera, select the type `camera`, and select the `webcam` 
 <img src="../img/create-webcam.png" alt="Creation of webcam camera in the Viam app config builder." style="max-width:500px" />
 
 Fill in the attributes for your webcam view.
-If you click on the **Video Path** field while your robot is live, a drop down will autopopulate with identified camera paths.
+If you click on the **Video Path** field while your robot is live, a drop down autopopulates with identified camera paths.
 
 <img src="../img/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." />
+
+Use the following configuration and fill in the attributes for your webcam view:
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -78,9 +80,28 @@ The following attributes are available for webcams:
 
 ## Troubleshooting
 
-### `video0` does not work
+## Find the `video_path`
 
-If you're working on a linux machine, run `v4l2-ctl --list-devices` in your terminal to see available video paths.
+To list available `video_path`s use the following command:
+
+{{< tabs name="Find video devices" >}}
+{{% tab name="Linux" %}}
+
+```sh
+v4l2-ctl --list-devices
+```
+
+{{% /tab %}}
+{{% tab name="Mac" %}}
+
+```sh
+system_profiler SPCameraDataType
+```
+
+The Unique ID displayed for each camera is the `video_path`.
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### No visible live video feed
 
@@ -94,21 +115,6 @@ If this doesn't work, you can reboot your machine by running:
 
 ```bash
 sudo reboot
-```
-
-If `video0` does not work for you, you can find another potential `video_path` by typing the following in your terminal:
-
-```bash
-v4l2-ctl --list-devices
-```
-
-The output for a webcam looks like this, in which case `video1` might be the correct path to use for `video_path`:
-
-```bash
-C270 HD WEBCAM (usb-0000:01:00.0-1.2):
- /dev/video0
- /dev/video1
- /dev/media4
 ```
 
 ### CSI Camera not working on a Raspberry Pi
