@@ -4,7 +4,10 @@ linkTitle: "Plan Motion with an Arm"
 weight: 20
 type: "docs"
 description: "Use the Motion Service to move robot arms and other components."
-tags: ["arm", "gripper", "motion"]
+webmSrc: "/tutorials/videos/motion_armmoving.webm"
+mp4Src: "/tutorials/videos/motion_armmoving.mp4"
+videoAlt: "An arm moving with the Motion Service"
+tags: ["arm", "gripper", "motion", "services"]
 # SMEs: William S.
 ---
 

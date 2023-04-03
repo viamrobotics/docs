@@ -4,9 +4,9 @@ linkTitle: "Move a Robot Arm"
 weight: 5
 type: "docs"
 description: "Access and control one of the most fundamental systems in robotics: A robotic arm."
-tags: ["arm", "motion"]
 image: "/tutorials/img/motion/preview.jpg"
 imageAlt: "A robotic arm"
+tags: ["arm", "motion", "services"]
 # SMEs: William S.
 ---
 
