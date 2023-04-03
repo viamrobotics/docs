@@ -15,7 +15,7 @@ The Viam documentation aims to:
 We aim to be diect, friendly, and concise.
 
 Depending on the type of content, the audience may be beginners or advances.
-Use your judgment the concepts that need to be explained and when in doubt link to supporting content.
+Use your judgment to determine the concepts that need to be explained and when in doubt link to supporting content.
 
 ## Project structure
 
