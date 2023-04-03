@@ -105,7 +105,7 @@ The Unique ID displayed for each camera is the `video_path`.
 
 ### No visible live video feed
 
-If you're working on a linux machine, `ssh` into it, then restart `viam-server` by running:
+If you're working on a Linux machine, `ssh` into it, then restart `viam-server` by running:
 
 ```bash
 sudo systemctl restart viam-server
