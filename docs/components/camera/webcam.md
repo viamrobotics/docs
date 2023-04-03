@@ -60,6 +60,20 @@ Use the following configuration and fill in the attributes for your webcam:
 ```
 
 {{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "name": "my_cam",
+    "type": "camera",
+    "model" : "webcam",
+    "attributes": {
+        "video_path": "video0"
+    }
+}
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 The following attributes are available for webcams:
@@ -90,6 +104,9 @@ To list available `video_path`s use the following command:
 ```sh
 v4l2-ctl --list-devices
 ```
+
+The name of the device, listed after `/dev/` is the `video_path`.
+For example, if your device is at `/dev/video0`, your `video_path` is `video0`.
 
 {{% /tab %}}
 {{% tab name="Mac" %}}
