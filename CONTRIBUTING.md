@@ -35,7 +35,7 @@ To get started:
 
 1. Fork the official repo into your personal GitHub.
 2. Clone the forked repo to your local system.
-3. Add the remote remote path for the 'official' repository: `git remote add upstream git@github.com:viamrobotics/docs.git`
+3. Add the remote path for the 'official' repository: `git remote add upstream git@github.com:viamrobotics/docs.git`
 
 When you are ready to contribute changes to the docs:
 
