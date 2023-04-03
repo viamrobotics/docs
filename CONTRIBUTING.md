@@ -46,4 +46,8 @@ When you are ready to contribute changes to the docs:
 5. Commit your changes: ```git commit -am 'Add some feature'```
 6. Make sure your local branch is still up-to-date with the official repo: ```git pull upstream main```
 7. Push to the branch: ````git push origin my-new-feature````
-8. Submit a pull request :D
+8. Submit a pull request
+
+## Questions
+
+If you have questions or would like to chat, please find us on the [Community Discord](https://discord.gg/viam).
