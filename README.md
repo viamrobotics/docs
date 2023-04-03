@@ -77,7 +77,7 @@ When you are ready to contribute changes to the docs:
    ```
 
 3. After converting your document to markdown, you will still need to manually fix any conversion errors.
-   Here are something's that you will need to address:
+   Here are some things that you will need to address:
    1. Manually split up sentences so there is only one sentence per line.
    2. Update the path name on all images to point to the correct directory.
    3. Convert all internal links to relative links.

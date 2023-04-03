@@ -4,9 +4,9 @@ linkTitle: "Move a Robot Arm"
 weight: 5
 type: "docs"
 description: "Access and control one of the most fundamental systems in robotics: A robotic arm."
-tags: ["arm", "motion"]
 image: "/tutorials/img/motion/preview.jpg"
 imageAlt: "A robotic arm"
+tags: ["arm", "motion", "services"]
 # SMEs: William S.
 ---
 
@@ -19,7 +19,8 @@ Also pay attention to your surroundings, double-check your code for correctness,
 The following instructions show you how to interact with an [arm component](/components/arm/), help you understand how an arm describes its state, and assist you in issuing movement commands to your robotic arm.
 
 {{< alert title="Note" color="note" >}}
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any arm model.
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
@@ -294,10 +295,11 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 
 ## Next Steps and References
 
-<!-- TODO: Content below struck out for the moment, saved to point at the next tutorial "Plan Motions with an Arm and with a Gripper" -->
-<!--
-If you would like to continue onto working with Viam's Motion service, go to the next tutorial in this series: "[Plan Motions with an Arm and with a Gripper](/tutorials/motion/plan-motions-with-arm-gripper/)".
--->
+If you would like to continue onto working with Viam's Motion service, go to the next tutorial in this series:
+
+{{< cards >}}
+  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
+{{< /cards >}}
 
 {{< snippet "social.md" >}}
 

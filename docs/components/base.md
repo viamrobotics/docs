@@ -707,7 +707,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/yahboom-rover" size="small" %}}
-  {{% card link="/tutorials/viam-rover" size="small" %}}
-  {{% card link="/tutorials/webcam-line-follower-robot" size="small" %}}
+  {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
+  {{% card link="/tutorials/get-started/try-viam-sdk" size="small" %}}
+  {{% card link="/tutorials/services/webcam-line-follower-robot" size="small" %}}
 {{< /cards >}}
