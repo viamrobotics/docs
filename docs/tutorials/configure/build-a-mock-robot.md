@@ -69,7 +69,7 @@ Follow the steps outlined on the **SETUP** tab of the Viam app in order to insta
 
 When you add the fake motor and arm components to your robot, the Viam app automatically generates a UI for your motor and arm under the **CONTROL** tab.
 
-<img src="../../img/build-a-mock-robot/image3.png" alt="Screenshot from the Viam app showing the CONTROL tab with the fake arm, and motor components." width="100%"><br>
+<img src="../../img/build-a-mock-robot/image3.png" alt="Screenshot from the Viam app showing the CONTROL tab with the fake arm, and motor components." width="100%">
 
 If you were configuring a real motor and arm, you would be able to control it from this section of the app.
 You could do things like control the direction and speed of the motor, and change the joint positions of your robotic arm.
@@ -134,7 +134,7 @@ go run index.go
 If you successfully configured your robot and it is able to connect to the Viam app you should see something like this printed to the terminal after running your program.
 What you see here is a list of the various resources (Like components, and services) that have been configured to your robot in the Viam app.
 
-<img src="../../img/build-a-mock-robot/image1.png" alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%"><br>
+<img src="../../img/build-a-mock-robot/image1.png" alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%">
 
 ### How to control your mock robot
 
@@ -311,7 +311,7 @@ Each part runs a single `viam-server` instance.
 
 On your robot's page on the Viam app, click on the **MAIN PART** button, name your part and click **ADD NEW**.
 
-<img src="../../img/build-a-mock-robot/image5.png" alt="Screenshot of the Viam app with a dropdown below the main part. 'SubPart' is written in the textbox." width="100%"><br>
+<img src="../../img/build-a-mock-robot/image5.png" alt="Screenshot of the Viam app with a dropdown below the main part. 'SubPart' is written in the textbox." width="100%">
 
 You will be creating a mock independent computer-controlled sub-part with a motor.
 This could be anything, but let's say for the purpose of this tutorial that this motor controls a conveyor belt in front of our mock arm on an assembly line.
@@ -328,7 +328,7 @@ From the **CODE SAMPLE** tab of your sub-part:
 - Navigate back to the **CONFIG** and then the **REMOTES** tab of your main robot
 - Paste your sub-part's configuration.
 
-<img src="../../img/build-a-mock-robot/image8.png" alt="Screenshot from the Viam app showing the CONFIG > REMOTES with the sub-part's remote config file pasted in." width="80%"><br>
+<img src="../../img/build-a-mock-robot/image8.png" alt="Screenshot from the Viam app showing the CONFIG > REMOTES with the sub-part's remote config file pasted in." width="80%">
 
 ### How to start a new instance of `viam-server` for your mock sub-part
 
@@ -350,7 +350,7 @@ Be sure to save before continuing.
 
 In the upper right corner of the **SETUP** tab, click **COPY VIAM-SERVER CONFIG**.
 
-<img src="../../img/build-a-mock-robot/image9.png" alt="Screenshot from the Viam app showing the 'Copy Viam-Server Config' button highlighted by a red box."><br>
+<img src="../../img/build-a-mock-robot/image9.png" alt="Screenshot from the Viam app showing the 'Copy Viam-Server Config' button highlighted by a red box.">
 
 On your local machine, create a new file called <file>viam-sub-part.json</file>, then paste the contents of your server config into that file and save.
 From the terminal, navigate to the directory where you saved the config file, and run this command to create a new instance of `viam-server` using this configuration.

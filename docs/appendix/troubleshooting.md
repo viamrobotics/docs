@@ -239,6 +239,7 @@ None at this time.
 
 ### Browser Plugins
 
-1. **PLUGIN:** "**Allow right click - simple copy**" - This Chrome plugin prevents the user from configuring a Service in the Viam app (**app.viam.com** > **Config** > **3 Services**).<br>
-**Indication:** User unable to select a Service **Type** in the **Create Service** Pane.
+1. **PLUGIN:** "**Allow right click - simple copy**" - This Chrome plugin prevents the user from configuring a Service in the Viam app (**app.viam.com** > **Config** > **3 Services**).
+
+   **Indication:** User unable to select a Service **Type** in the **Create Service** Pane.
 After clicking to display the drop-down list, choosing an item does not populate the drop-down's "Selection."

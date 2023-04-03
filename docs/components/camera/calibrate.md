@@ -62,7 +62,7 @@ pip3 install opencv-python
 
 5. Copy the output which contains the `intrinsic_parameters` and `distortion_parameters` into the Raw JSON config on your robot's **CONFIG** tab.
 
-<img src="../img/camera_tutorial_copy_paste.png" width="800px"><br>
+<img src="../img/camera_tutorial_copy_paste.png" width="800px">
 
 The following is a full example config:
 

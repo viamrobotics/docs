@@ -27,7 +27,7 @@ You should have already set up [your Raspberry Pi](/installation/prepare/rpi-set
 
 For reference, the circuit you are building for this tutorial looks like this:
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image1.png" alt="Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins." width="100%"><br>
+<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image1.png" alt="Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins." width="100%">
 
 ## What you'll need for this guide
 
@@ -100,7 +100,7 @@ go run blink.go
 If you successfully configured your robot and it is able to connect to the Viam app, you should see something like this printed to the terminal after running your program.
 What you see here is a list of the various resources, components, and services that have been configured to your robot in the Viam app.
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image4.png" alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="500"><br>
+<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image4.png" alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="500">
 
 {{% alert title="Tip" color="tip" %}}
 {{< snippet "social.md" >}}
