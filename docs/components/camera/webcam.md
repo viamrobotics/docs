@@ -24,7 +24,7 @@ If you click on the **Video Path** field while your robot is live, a drop down a
 
 <img src="../img/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." />
 
-Use the following configuration and fill in the attributes for your webcam view:
+Use the following configuration and fill in the attributes for your webcam:
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
