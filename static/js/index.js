@@ -36,7 +36,7 @@ for (let menu of siteMenuSubmenus) {
         if (menu.classList.contains('empty-node-submenu')) {
             menu.querySelector("span").addEventListener('click', function () {
                 submenuToggle(menu, toggle);
-           });
+            });
         } else {
             toggle.addEventListener('click', function () {
                 submenuToggle(menu, toggle);
@@ -44,3 +44,67 @@ for (let menu of siteMenuSubmenus) {
         }
     }
 };
+
+// TOC highlighting
+
+var toc = document.querySelector( '#TableOfContents' );
+var tocItems;
+
+// Factor of screen size that the element must cross
+// before it's considered visible
+var TOP_MARGIN = 0.1,
+BOTTOM_MARGIN = 0.2;
+
+window.addEventListener( 'resize', getTocItems, false );
+window.addEventListener( 'scroll', setActiveElements, false );
+
+getTocItems();
+
+function getTocItems() {
+    tocItems = [].slice.call( toc.querySelectorAll( 'li' ) );
+
+    // Cache element references and measurements
+    tocItems = tocItems.map( function( item ) {
+        var anchor = item.querySelector( 'a' );
+        var target = document.getElementById( anchor.getAttribute( 'href' ).slice( 1 ) );
+
+        return {
+            listItem: item,
+            anchor: anchor,
+            target: target
+        };
+    } );
+
+    setActiveElements();
+}
+
+function setActiveElements() {
+    var windowHeight = window.innerHeight;
+    var visibleItems = 0;
+
+    // ensure at least one elem visible
+    let atLeastOne = false;
+    let lastElem;
+
+    for (var i = 0; i < tocItems.length; i++) {
+        let item = tocItems[i];
+        var targetBounds = item.target.getBoundingClientRect();
+
+        if( targetBounds.bottom > windowHeight * TOP_MARGIN && targetBounds.top < windowHeight * ( 1 - BOTTOM_MARGIN ) ) {
+            visibleItems += 1;
+            item.listItem.classList.add( 'toc-active' );
+            atLeastOne = true;
+        } else {
+            item.listItem.classList.remove( 'toc-active' );
+        }
+
+        if (targetBounds.bottom < windowHeight) {
+            lastElem = item;
+        }
+
+    }
+
+    if (!atLeastOne && lastElem) {
+        lastElem.listItem.classList.add( 'toc-active' );
+    }
+}
