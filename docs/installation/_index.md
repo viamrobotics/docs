@@ -87,8 +87,6 @@ Once you have a compatible operating system on your computer, you are ready to i
 {{< tabs name="Detailed Installation Instructions" >}}
 {{% tab name="Linux"%}}
 
-<br>
-
 `viam-server` is distributed as an AppImage.
 The AppImage is a single, self-contained binary that runs on any Linux system (except FUSE) with the correct CPU architecture, with no need to install any dependencies.
 
@@ -109,8 +107,6 @@ The AppImage is a single, self-contained binary that runs on any Linux system (e
 {{< tabs name="different-architectures" >}}
 {{% tab name="Aarch64"%}}
 
-<br>
-
 Stable:
 
 ```bash
@@ -127,8 +123,6 @@ curl http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppIma
 
 {{% /tab %}}
 {{% tab name="X86_64"%}}
-
-<br>
 
 Stable:
 
@@ -156,8 +150,6 @@ If you do not want to run `viam-server` as a service, you can also [run it manua
 
 {{% /tab %}}
 {{% tab name="macOS"%}}
-
-<br>
 
 `viam-server` is available for macOS users through [Homebrew](https://docs.brew.sh/Installation).
 
