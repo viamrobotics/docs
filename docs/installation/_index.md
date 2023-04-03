@@ -144,7 +144,7 @@ If you do not want to run `viam-server` as a service, you can also [run it manua
 </li>
 </ol>
 
-1. **Connect and configure.** Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
+3. **Connect and configure.** Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
 
 {{% /tab %}}
 {{% tab name="macOS"%}}
