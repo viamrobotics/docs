@@ -26,7 +26,7 @@ For information about Hugo and how to develop locally, see the [README](./README
 
 - Every sentence should be on a new line.
 
-## Pull Requests
+## Pull requests
 
 If you are making a small change, like fixing a typo or editing a few lines of text, you do not need to create an issue.
 However, if you plan to make bigger changes, we ask that you create an issue and discuss the change with us in advance.
