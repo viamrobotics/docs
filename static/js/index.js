@@ -82,15 +82,29 @@ function setActiveElements() {
     var windowHeight = window.innerHeight;
     var visibleItems = 0;
 
-    tocItems.forEach( function( item ) {
+    // ensure at least one elem visible
+    let atLeastOne = false;
+    let lastElem;
+
+    for (var i = 0; i < tocItems.length; i++) {
+        let item = tocItems[i];
         var targetBounds = item.target.getBoundingClientRect();
 
         if( targetBounds.bottom > windowHeight * TOP_MARGIN && targetBounds.top < windowHeight * ( 1 - BOTTOM_MARGIN ) ) {
             visibleItems += 1;
             item.listItem.classList.add( 'toc-active' );
-        }
-        else {
+            atLeastOne = true;
+        } else {
             item.listItem.classList.remove( 'toc-active' );
         }
-    } );
+
+        if (targetBounds.bottom < windowHeight) {
+            lastElem = item;
+        }
+
+    }
+
+    if (!atLeastOne && lastElem) {
+        lastElem.listItem.classList.add( 'toc-active' );
+    }
 }
