@@ -9,7 +9,7 @@ tags: ["client", "sdk"]
 
 Viam offers software development kits (SDKs) that wrap the `viam-server` [gRPC](https://grpc.io/) [APIs](https://github.com/viamrobotics/api) and streamline connection, authentication, and encryption.
 
-<img src="../img/SDK-as-client/image1.png" alt="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client."><br>
+<img src="../img/SDK-as-client/image1.png" alt="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.">
 
 Use the SDK of your preferred language to write code to control your robots.
 
@@ -217,7 +217,7 @@ Find documentation on how to use these methods here:
 - [Input Controller](/components/input-controller/#api)
 - [Motor](/components/motor/#api)
 - [Servo](/components/servo/#api)
-<!-- 
+<!--
 Board & Sensor API Docs should be added soon on Viam Documentation, + Movement Sensor, Encoder, Gripper
 -->
 

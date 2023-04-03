@@ -28,7 +28,6 @@ You can run `viam-server` on any device that runs:
     <div class="row">
         <img src="img/thumbnails/pc.png" style="max-width:100px" alt="Desktop computer">
         <div class="col">
-            <br>
             <p> If you plan to run <code>viam-server</code> on your laptop or desktop with a Linux or Mac operating system, no special prep is required. Proceed to <a href="#install-viam-server">Install <code>viam-server</code></a>. </p>
         </div>
     </div>
@@ -71,7 +70,6 @@ If you are using a single board computer (SBC) or a microcontroller, prepare you
 ## Install `viam-server`
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/gmIW9JoWStA">}}
-<br>
 
 Once you have a compatible operating system on your computer, you are ready to install `viam-server`.
 
@@ -146,7 +144,7 @@ If you do not want to run `viam-server` as a service, you can also [run it manua
 </li>
 </ol>
 
-3. **Connect and configure.** Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
+1. **Connect and configure.** Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
 
 {{% /tab %}}
 {{% tab name="macOS"%}}

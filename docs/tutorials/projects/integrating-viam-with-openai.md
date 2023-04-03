@@ -260,8 +260,6 @@ You can even guess who Rosey is acting like by saying *"Rosey, I think you are S
 Much of Rosey's behavior can be modified by changing the values of parameters in the tutorial code's [params.py](https://github.com/viam-labs/tutorial-openai-integration/blob/main/params.py) file.
 You can change Rosey's name to something else, add characters, adjust the classifier confidence threshold, and more.
 </div>
-<br>
-<br>
 
 ## Use realistic custom AI voices
 

@@ -17,8 +17,6 @@ Configure a `fake` arm as follows:
 
 <img src="../img/fake-arm-ui-config.png" alt="Creation of a fake ur5e arm in the Viam app config builder." style="max-width:800px" />
 
-<br>
-
 Note that this visual example sets the `fake` arm to act as a `ur5e` arm.
 
 {{% /tab %}}
@@ -54,9 +52,7 @@ If both attributes are specified, an error is thrown stating "can only populate 
 
 {{% /alert %}}
 
-<br>
 Refer to the following JSON examples for differences in configuration between the two attributes available:
-<br><br>
 
 {{< tabs name="Configuration with arm-model or model-path" >}}
 {{% tab name="arm-model JSON Example" %}}
@@ -93,7 +89,5 @@ Once you have successfully configured your `fake` arm, you can navigate to the *
 A drop-down menu should appear with the name of your arm that allows you to toggle the fake arm's joint positions and Cartesian end positions to dynamically test motion planning:
 
 <img src="../img/fake-arm-ui-remote-control.png" alt="Motion planning remote-control of a fake ur5e arm in the Viam app control tab." style="max-width:800px" />
-
-<br>
 
 Note that this visual example sets the `fake` arm to act as a  `ur5e` arm.
