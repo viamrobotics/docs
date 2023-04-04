@@ -136,8 +136,6 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
 
 {{% /expand%}}
 
-<br>
-
 You may capture data from one or more component methods:
 
 - To enable or disable data capture for a configured component or method, use the `on/off` toggle.

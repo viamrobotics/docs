@@ -319,8 +319,7 @@ It may take a couple of minutes for the first map to show in the UI.
 
 This issue has a couple of potential causes.
 
-<img src="../img/run_slam/01_slam_tutorial_no_map_points.png" alt="Error getting slam map" width="700"><br>
-<br>
+<img src="../img/run_slam/01_slam_tutorial_no_map_points.png" alt="Error getting slam map" width="700">
 
 First, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up.
 In both live and offline mode, this might mean that you have to wait a little while before you can see a map on the UI.

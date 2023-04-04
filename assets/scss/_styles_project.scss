@@ -137,12 +137,25 @@ h7, .h7 {
   letter-spacing: 0.0625rem;
 }
 
-// TODO (show progress when scrolling)
-// .td-toc {
-//   border-left: 2px solid #1be020;
-//   padding-left: 16px;
-//   height: fit-content;
-// }
+.td-toc > nav ul li {
+  border-left: 2px solid #1be020;
+  padding-left: 16px;
+  height: fit-content;
+}
+
+.td-toc > nav ul li.toc-active {
+  border-left: 2px solid #666666;
+}
+
+.td-toc > nav ul li ul li {
+  margin-left: -18px;
+  padding-left: 32px;
+  height: fit-content;
+}
+
+.td-toc > nav ul li ul li.toc-active {
+  border-left: 2px solid #666666;
+}
 
 .td-toc #TableOfContents ul li a {
   font-size: 0.833rem;
@@ -333,8 +346,8 @@ END MARKETING CSS
 }
 
 .td-content .alert:not(:first-child) {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .alert-heading { // left margin for h4 in alerts
@@ -624,6 +637,7 @@ td > ul, td > ol {
 }
 
 .tab-content {
+  padding-top: .7rem;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
@@ -689,4 +703,26 @@ footer small {
 
 .td-content > video {
   max-width: 600px;
+}
+
+.table {
+  margin-top: 1.5rem;
+}
+
+.td-content > img {
+  margin-bottom: 1rem;
+}
+
+.td-content > video {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.embed-responsive.embed-responsive-16by9 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.td-sidebar-toc {
+  border-left: unset;
 }

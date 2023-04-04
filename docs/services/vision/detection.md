@@ -41,8 +41,6 @@ To determine the color value from the actual camera component image, you can use
 If the color is not reliably detected, increase the `hue_tolerance_pct`.
 {{< /alert >}}
 
-<br>
-
 ``` json {class="line-numbers linkable-line-numbers"}
 {
     "register_models": [

@@ -66,8 +66,6 @@ Now, you should see the [Controls](../#control-field) on your input controller a
 
 <img src="../img/gamepad-enabled-app.png" alt="The dropdown as a table of controls available and their inputs in the Control tab of the Viam app." style="width:100%"/>
 
-<br>
-
 You should now be able to see the row of [Controls](../#control-field) respond to your button presses and stick toggles.
 
 For example, this is what the row of inputs above looks like after pressing the circle (west) button on the button pad of a PS4 controller connected as a `webgamepad` :

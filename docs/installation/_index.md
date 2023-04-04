@@ -19,16 +19,15 @@ See [What is Viam?](/viam/) for more information.
 ## Preparation
 
 Make sure your system is compatible with Viam.
-Viam is supported on:
+You can run `viam-server` on any device that runs:
 
-- Linux 64-bit operating systems
+- **any** Linux 64-bit operating systems
 - macOS
 
 <div class="container text-left td-max-width-on-larger-screens">
     <div class="row">
         <img src="img/thumbnails/pc.png" style="max-width:100px" alt="Desktop computer">
         <div class="col">
-            <br>
             <p> If you plan to run <code>viam-server</code> on your laptop or desktop with a Linux or Mac operating system, no special prep is required. Proceed to <a href="#install-viam-server">Install <code>viam-server</code></a>. </p>
         </div>
     </div>
@@ -71,7 +70,6 @@ If you are using a single board computer (SBC) or a microcontroller, prepare you
 ## Install `viam-server`
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/gmIW9JoWStA">}}
-<br>
 
 Once you have a compatible operating system on your computer, you are ready to install `viam-server`.
 
@@ -86,8 +84,6 @@ Once you have a compatible operating system on your computer, you are ready to i
 
 {{< tabs name="Detailed Installation Instructions" >}}
 {{% tab name="Linux"%}}
-
-<br>
 
 `viam-server` is distributed as an AppImage.
 The AppImage is a single, self-contained binary that runs on any Linux system (except FUSE) with the correct CPU architecture, with no need to install any dependencies.
@@ -109,8 +105,6 @@ The AppImage is a single, self-contained binary that runs on any Linux system (e
 {{< tabs name="different-architectures" >}}
 {{% tab name="Aarch64"%}}
 
-<br>
-
 Stable:
 
 ```bash
@@ -127,8 +121,6 @@ curl http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppIma
 
 {{% /tab %}}
 {{% tab name="X86_64"%}}
-
-<br>
 
 Stable:
 
@@ -156,8 +148,6 @@ If you do not want to run `viam-server` as a service, you can also [run it manua
 
 {{% /tab %}}
 {{% tab name="macOS"%}}
-
-<br>
 
 `viam-server` is available for macOS users through [Homebrew](https://docs.brew.sh/Installation).
 

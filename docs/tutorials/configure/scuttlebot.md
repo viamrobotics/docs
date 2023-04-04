@@ -156,7 +156,6 @@ This will be similar to adding the right motor.
 ```
 
 {{% /expand %}}
-<br>
 
 With both motors configured, the **CONTROL** tab now display panels for both motors:
 
@@ -202,7 +201,7 @@ Use **W** and **S** to go forward and back, and **A** and **D** to arc and spin.
 
 If you click the **Discrete** tab, then you'll see different movement modes such as `Straight` and `Spin`; and different movement types such as `Continuous` and `Discrete` and directions such as `Forwards` and `Backwards`.
 
-<img src="../../img/scuttlebot/pi-discrete.png" alt="Discrete controls"><br>
+<img src="../../img/scuttlebot/pi-discrete.png" alt="Discrete controls">
 
 Now you have a rover that you can drive using Viam's UI!
 Awesome!
