@@ -21,8 +21,7 @@ Once you have configured data capture and cloud sync, you can [view](view) and [
 
 ## Machine Learning
 
-If you collect image data, you can use it to [train image classification models](train-model) and [deploy these models to your robots](deploy-model).
-You can also [upload and use existing models](upload-model).
+To use collected data to train machine learning models or use existing models on your robots, see [Machine Learning](../ml).
 
 ## Next steps
 

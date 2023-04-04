@@ -31,6 +31,6 @@ For example, if you specify `Rover Rental` for location and click **SEARCH**, yo
 
 To export your captured data from the cloud, see [Export Data](../export).
 
-If you have collected image data, you can use that data to [train image classification model](../train-model) within Viam.
+You can use cloud image data to [train machine learning models](../../ml/train-model) within Viam.
 
 For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial).
