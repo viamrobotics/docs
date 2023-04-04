@@ -8,9 +8,11 @@ tags: ["base", "components"]
 # SMEs: Matt Vella, Steve B
 ---
 
-A `agilex-limo` base is a model for [LIMO](https://global.agilex.ai/products/limo), a mobile robot designed around the AgileX mobile platform.
+An `agilex-limo` base supports [LIMO](https://global.agilex.ai/products/limo), a mobile robot designed around the AgileX mobile platform.
 
-{{< tabs name="Configure a Wheeled Base" >}}
+Configure an `agilex-limo` base as follows:
+
+{{< tabs name="Configure an Agilex-Limo Base" >}}
 {{% tab name="Config Builder" %}}
 
 On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.

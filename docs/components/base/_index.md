@@ -3,6 +3,7 @@ title: "Base Component"
 linkTitle: "Base"
 weight: 10
 type: "docs"
+no_list: true
 description: "The moving platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
 image: "/components/img/components/base.png"

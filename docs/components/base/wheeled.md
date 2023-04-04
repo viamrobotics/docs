@@ -8,8 +8,10 @@ tags: ["base", "components"]
 # SMEs: Steve B
 ---
 
-A `wheeled` base is a model for a mobile robotic base with drive motors on both sides (differential steering).
+A `wheeled` base supports mobile robotic bases with drive motors on both sides (differential steering).
 To configure a `wheeled` base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
+
+Configure a `wheeled` base as follows:
 
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="Config Builder" %}}

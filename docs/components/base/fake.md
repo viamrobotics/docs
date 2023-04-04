@@ -13,11 +13,19 @@ Configure a `fake` base to test implementing a base component on your robot with
 Configure a `fake` base as follows:
 
 {{< tabs name="Configure a Fake Base" >}}
+{{% tab name="Config Builder" %}}
+
+On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
+Enter a name for your base, select the type `base`, and select the `fake` model.
+
+<img src="../img/fake-base-ui-config.png" alt="An example configuration for a fake base in the Viam app Config Builder." style="max-width:900px"/>
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json-viam {class="line-numbers linkable-line-numbers"}
 {
-    "name": <"base_name">,
+    "name": <"your_base_name">,
     "type": "base",
     "model": "fake",
     "attributes": {}
