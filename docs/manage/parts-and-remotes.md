@@ -1,6 +1,6 @@
 ---
-title: "Parts, Sub-Parts and Remotes"
-linkTitle: "Remotes and Sub-Parts"
+title: "Robot Architecture: Parts, Sub-Parts and Remotes"
+linkTitle: "Robot Architecture"
 weight: 40
 type: "docs"
 description: "Connect robots to each other."
