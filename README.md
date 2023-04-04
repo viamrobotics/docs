@@ -44,25 +44,6 @@ python3 -m http.server 9000 --directory public
 
 The docs are automatically published when a PR merges.
 
-## Style Guide
-
-### Vale Linting
-
-> **Tip**
-> We recommend you work in Visual Studio Code and install the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to make use of the vale linter.
-
-When you open a PR, your changes will be checked against a few style rules.
-To run this check locally, follow the instructions in the [Vale Readme](.github/vale/README.md).
-
-### `markdownlint`
-
-> **Tip**
-> We recommend you work in Visual Studio Code and install the [markdownlint extension](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint).
-
-### One sentence per line
-
-To make reviews easier, each new sentence should begin on a new line.
-
 ## Hugo Quickstart
 
 We write our docs in Markdown.
