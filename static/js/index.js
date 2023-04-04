@@ -55,56 +55,59 @@ var tocItems;
 var TOP_MARGIN = 0.1,
 BOTTOM_MARGIN = 0.2;
 
-window.addEventListener( 'resize', getTocItems, false );
-window.addEventListener( 'scroll', setActiveElements, false );
+if (toc) {
+    window.addEventListener( 'resize', getTocItems, false );
+    window.addEventListener( 'scroll', setActiveElements, false );
 
-getTocItems();
+    getTocItems();
 
-function getTocItems() {
-    tocItems = [].slice.call( toc.querySelectorAll( 'li' ) );
+    function getTocItems() {
+        tocItems = [].slice.call( toc.querySelectorAll( 'li' ) );
 
-    // Cache element references and measurements
-    tocItems = tocItems.map( function( item ) {
-        var anchor = item.querySelector( 'a' );
-        var target = document.getElementById( anchor.getAttribute( 'href' ).slice( 1 ) );
+        // Cache element references and measurements
+        tocItems = tocItems.map( function( item ) {
+            var anchor = item.querySelector( 'a' );
+            var target = document.getElementById( anchor.getAttribute( 'href' ).slice( 1 ) );
 
-        return {
-            listItem: item,
-            anchor: anchor,
-            target: target
-        };
-    } );
+            return {
+                listItem: item,
+                anchor: anchor,
+                target: target
+            };
+        } );
 
-    setActiveElements();
-}
-
-function setActiveElements() {
-    var windowHeight = window.innerHeight;
-    var visibleItems = 0;
-
-    // ensure at least one elem visible
-    let atLeastOne = false;
-    let lastElem;
-
-    for (var i = 0; i < tocItems.length; i++) {
-        let item = tocItems[i];
-        var targetBounds = item.target.getBoundingClientRect();
-
-        if( targetBounds.bottom > windowHeight * TOP_MARGIN && targetBounds.top < windowHeight * ( 1 - BOTTOM_MARGIN ) ) {
-            visibleItems += 1;
-            item.listItem.classList.add( 'toc-active' );
-            atLeastOne = true;
-        } else {
-            item.listItem.classList.remove( 'toc-active' );
-        }
-
-        if (targetBounds.bottom < windowHeight) {
-            lastElem = item;
-        }
-
+        setActiveElements();
     }
 
-    if (!atLeastOne && lastElem) {
-        lastElem.listItem.classList.add( 'toc-active' );
+    function setActiveElements() {
+        var windowHeight = window.innerHeight;
+        var visibleItems = 0;
+
+        // ensure at least one elem visible
+        let atLeastOne = false;
+        let lastElem;
+
+        for (var i = 0; i < tocItems.length; i++) {
+            let item = tocItems[i];
+            var targetBounds = item.target.getBoundingClientRect();
+
+            if( targetBounds.bottom > windowHeight * TOP_MARGIN && targetBounds.top < windowHeight * ( 1 - BOTTOM_MARGIN ) ) {
+                visibleItems += 1;
+                item.listItem.classList.add( 'toc-active' );
+                atLeastOne = true;
+            } else {
+                item.listItem.classList.remove( 'toc-active' );
+            }
+
+            if (targetBounds.bottom < windowHeight) {
+                lastElem = item;
+            }
+
+        }
+
+        if (!atLeastOne && lastElem) {
+            lastElem.listItem.classList.add( 'toc-active' );
+        }
     }
 }
+
