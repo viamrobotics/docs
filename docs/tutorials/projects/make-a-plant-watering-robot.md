@@ -60,12 +60,12 @@ The analog-to-digital converter (ADC) converts the capacitive soil moisture sens
 Start by wiring your ADC to your Raspberry Pi board.
 
 You can find a Raspberry Pi pinout diagram at [pinout.xyz](https://pinout.xyz/pinout/3v3_power).
-Reference the following pinout diagram for your MCP3008 Analog to Digital Converter:
+Reference the following pinout diagram for your MCP3008 analog-to-digital converter:
 
 ![Pinout diagram for the ADC.](../../img/plant-watering-pi/adc-pinout.png)
 
 {{% alert title="Tip" color="tip" %}}
-The small oval shown in the pinout diagram above should be physically present on your ADC.
+The half circle shown in the pinout diagram above should be physically present on your ADC.
 Use this to orient the ADC to determine the location to insert your wires.
 {{% /alert %}}
 
@@ -88,9 +88,9 @@ Then, use the rows on the side of your MCP3008's pins and the GPIO pins on your 
 
 ### Wire your Capacitive Soil Moisture Sensor
 
-Next, wire your capacitive soil moisture sensor to your Pi and ADC.
+Next, wire your [capacitive soil moisture sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ) to your Pi and ADC.
 
-Refer to the following pinout diagram for the blue module part of your capacitive soil moisture sensor:
+Reference this diagram of the blue module part of the sensor:
 
 ![Pinout diagram for the capacitive soil moisture sensor.](../../img/plant-watering-pi/moisture-sensor-pinout.png)
 
@@ -106,19 +106,27 @@ Put the soil moisture sensor inside of the container holding your plant.
 
 ### Wire your Pump
 
-Now, wire and power your Peristaltic Pump [motor](/components/motor/) to complete your hardware setup.
+Now, wire and power your Peristaltic Pump [motor](/components/motor/) and [motor speed controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS) to complete your hardware setup.
 
-1. Use your wire leads or [alligator wire clips](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to connect your battery to the DC power pins on your motor speed controller.
-Note that you must insert the end of the jumper wires into the DC gates on the controller and tighten the screws on these gates with your screwdriver to close the wires inside of the gates.
-1. Then, use [alligator wire clips](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to connect the output pins on your motor speed controller to the pump.
-Note that you must insert the end of the jumper wires into the output gates on the controller and tighten the screws on these gates with your screwdriver to close the wires inside of the gates.
-1. Connect the GND pin on the controller to GND on the Pi.
-You can either bend or soldier the jumper wires here to make the connection.
-As long as the end of the wire is touching the GND hole of the motor speed controller, the pump should be able to function properly.
-1. Connect the PWM pin on the pump to [Pin 12 (GPIO 18)](https://pinout.xyz/pinout/pin12_gpio18) of the Pi.
+Reference this diagram of the motor speed controller:
+
+![Pinout diagram for the motor speed controller.](../../img/plant-watering-pi/motor-speed-controller-diagram.png)
+
+1. Attach [alligator wire clips](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to your battery to connect it to the DC power pins on your motor speed controller.
+Match the **+** notation on the battery to the **+** DC power pin.
+2. Attach [alligator wire clips](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to the pump to connect the output pins on your motor speed controller to the pump.
+3. Connect the GND pin hole on the controller to GND on the Pi.
+4. Connect the PWM pin hole on the pump to [Pin 12 (GPIO 18)](https://pinout.xyz/pinout/pin12_gpio18) of the Pi.
 Note that the controller does not come with header pins.
-You can either bend or soldier the jumper wires here to make the connection.
-As long as the end of the wire is touching the PWM hole of the motor speed controller, the pump should be able to function properly.}
+
+{{% alert title="Tip" color="tip" %}}
+
+To complete steps 2 and 3, you must insert the end of the jumper wires into the DC and output pin gates on the motor speed controller and tighten the screws on these gates with your screwdriver to close the wires inside.
+
+For steps 3 and 4, note that the motor speed controller linked does not come with header pins.
+You can either bend or soldier the jumper wire here to make the connection between the jumper wire and the PWM hole of the controller.
+
+{{% /alert %}}
 
 ## Program Your Plant Watering Robot
 
@@ -279,7 +287,7 @@ First, add your Pi as a [board component](/components/board/) by creating a new 
 
 Then, add your pump as a [motor component](/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
 
-Add your board (in this example, named `local`) to this component's dependencies (`depends_on`) and set the attributes **Max RPM** to `1000` and **PWM**  to `12 GPIO 18` (the number and GPIO number of the pin that you wired the pump's PWM to).
+Set the motor's attributes **Max RPM** to `1000` and **PWM**  to `12 GPIO 18` (the number and GPIO number of the pin that you wired the pump's PWM to).
 
 {{< tabs name="Configure an Pump Motor" >}}
 {{% tab name="Config Builder" %}}
@@ -305,9 +313,7 @@ Add your board (in this example, named `local`) to this component's dependencies
     "board": "local",
     "max_rpm": 1000
     },
-    "depends_on": [
-    "local"
-    ]
+    "depends_on": []
 }
 ```
 
@@ -322,7 +328,7 @@ Now, if you navigate to your robot's **CONTROL** tab, you should be able to cont
 
 {{% alert title="Tip" color="tip" %}}
 
-Now that you have set up your robot and are able to control your motor, you can put the suction tube of your pump into the water cup, and the output end into the plant!
+Now that you have set up your robot and are able to control your motor, you can put the suction tube of your pump into the water cup, and the output tube into the plant!
 
 {{% /alert %}}
 
@@ -456,11 +462,6 @@ This line determines that your server does need an SSL certificate.
 Then, navigate to the **PROCESSES** subtab and create a process called `run-sensor-server`:
 
 {{< tabs >}}
-{{% tab name="Config Builder" %}}
-
-![Creation of a process to run the sensor remote server in the Viam app config builder.](../../img/plant-watering-pi/sensor-process-config-builder.png)
-
-{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -483,6 +484,11 @@ Then, navigate to the **PROCESSES** subtab and create a process called `run-sens
   ]
 }
 ```
+
+{{% /tab %}}
+{{% tab name="Config Builder" %}}
+
+![Creation of a process to run the sensor remote server in the Viam app config builder.](../../img/plant-watering-pi/sensor-process-config-builder.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -523,7 +529,7 @@ nano plant-watering-robot.py
 
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
-To start, you can your system logic code into the `main()` function of the program.
+To start, add your system logic code into the `main()` function of the program.
 Use the Viam [motor](/components/motor#api) and [sensor](/components/sensor#control-your-sensor-with-viams-client-sdk-libraries) API methods.
 
 You can get your components from the robot like this:
@@ -558,8 +564,8 @@ while True:
 ```
 
 {{% alert title="Tip" color="tip" %}}
-Make sure to import `time` at the beginning of your version of <file>plant-water-robot.py</file> to be able to use `sleep()`!
-Also make sure to import `viam.components.sensor`.
+Make sure to import `time` at the beginning of your version of <file>plant-watering-robot.py</file> to be able to use `sleep()`!
+Also, make sure to import `viam.components.sensor`.
 {{% /alert %}}
 
 See the motor component's [API documentation](/components/motor#gofor) for more information about `water_pump.go_for()`.
