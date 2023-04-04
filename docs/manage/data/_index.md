@@ -21,7 +21,7 @@ Once you have configured data capture and cloud sync, you can [view](view) and [
 
 ## Machine Learning
 
-To use machine learning on image data and train image classification models or use existing models on your robots, see [Machine Learning](../ml).
+To use collected data to train machine learning models or use existing models on your robots, see [Machine Learning](../ml).
 
 ## Next steps
 
