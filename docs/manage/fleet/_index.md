@@ -7,7 +7,7 @@ description: "Configure, control, debug, and manage your robots from the cloud a
 tags: ["fleet management", "cloud", "app"]
 ---
 
-Viam's fleet management system allows you to configure, control, debug, and manage your robots from the cloud at [https://app.viam.com](https://app.viam.com).
+Viam's fleet management allows you to configure, control, debug, and manage your robots from the cloud at [https://app.viam.com](https://app.viam.com).
 
 All communication happens securely over HTTPS using secret tokens that are in the robot's configuration.
 
