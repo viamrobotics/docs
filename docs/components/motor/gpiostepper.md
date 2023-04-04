@@ -3,11 +3,11 @@ title: "Configure a gpiostepper motor"
 linkTitle: "gpiostepper"
 weight: 20
 type: "docs"
-description: "Configure a stepper motor with a basic driver."
+description: "Configure a bipolar stepper motor with current regulation and 1/32 microstepping driven by a basic driver."
 # SMEs: Rand, James
 ---
 
-The `gpiostepper` model of the motor component supports [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by basic stepper driver chips (such as [DRV8825](https://www.ti.com/product/DRV8825) or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)) that take step and direction input through GPIO and simply move the motor one step per pulse.
+The `gpiostepper` model of the motor component supports bipolar [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by basic stepper driver chips (such as [DRV8825](https://www.ti.com/product/DRV8825) or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)) that take step and direction input through GPIO and move the motor one step per pulse.
 
 {{< alert title="Tip" color="tip" >}}
 Viam also supports some more advanced stepper driver chips ([TMC5072](../tmc5072/), [DMC4000](../dmc4000/)) that have their own microcontrollers that handle things like speed and acceleration control.
