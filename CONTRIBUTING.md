@@ -3,7 +3,6 @@
 Thank you for wanting to help us make the docs better.
 Every contribution is appreciated.
 
-Please read the following guide and our [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Goals
 
