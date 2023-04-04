@@ -247,7 +247,7 @@ Name your remote "my-custom-base" and click **Create Remote**.
 In the **Address** field put `localhost: 9090`.
 Click **Save Config** at the bottom of the page.
 
-<img src="../../img/custom-base-dog/remote-config.png" alt="Screenshot of the Viam app CONFIG tab with the Remotes sub-tab open, showing my-custom-base configured as a remote." style="max-width:400px" >
+![Screenshot of the Viam app CONFIG tab with the Remotes sub-tab open, showing my-custom-base configured as a remote.](../../img/custom-base-dog/remote-config.png)
 
 {{% alert title="Note" color="note" %}}
 
