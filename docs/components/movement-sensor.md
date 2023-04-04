@@ -536,5 +536,3 @@ In a Viam configuration file, a camera used as a movement sensor will require a 
 ## Software Implementation
 
 [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html)
-
-<br>

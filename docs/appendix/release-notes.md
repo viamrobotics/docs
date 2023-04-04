@@ -141,8 +141,8 @@ When restarting a <code>viam-server</code> that was previously connected to the 
 
 #### Never have long-lived I2CHandle objects
 
-Creating an <code>I2CHandle</code> locks the I2C bus that spawned it, and closing the handle unlocks the bus again. That way, only one device can talk over the bus at a time, and you don’t get race conditions. However, if a component creates a handle in its constructor, it locks the bus forever, which means no other component can use that bus.<br>
-<br>
+Creating an <code>I2CHandle</code> locks the I2C bus that spawned it, and closing the handle unlocks the bus again. That way, only one device can talk over the bus at a time, and you don’t get race conditions. However, if a component creates a handle in its constructor, it locks the bus forever, which means no other component can use that bus.
+
 We have changed components that stored an <code>I2CHandle</code>, so that they instead just store a pointer to the board <code>board.I2C</code> bus itself, create a new handle when they want to send a command, and close it again as soon as they're done.
 
 #### Sensor does not show GPS readings

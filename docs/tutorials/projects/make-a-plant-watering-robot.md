@@ -264,8 +264,6 @@ First, add your Pi as a [board component](/components/board/) by creating a new 
 {{% /tab %}}
 {{< /tabs >}}
 
-<br>
-
 Then, add your pump as a [motor component](/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
 
 Add your board (in this example, named `local`) to this component's dependencies (`depends_on`) and set the attributes **Max RPM** to `1000` and **PWM**  to `12` (the pin # that you wired the PWM to).
