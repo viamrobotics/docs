@@ -37,9 +37,9 @@ Supported base models include:
 
 | Model | Description |
 | ----- | ----------- |
-| [`fake`](fake) | A model used for testing, with no physical hardware. |
 | [`wheeled`](wheeled) | Mobile wheeled robot |
 | [`agilex-limo`](agilex-limo) | [Agilex LIMO Mobile Robot](https://global.agilex.ai/products/limo) |
+| [`fake`](fake) | A model used for testing, with no physical hardware |
 | `boat` | Mobile boat robot |
 
 ## Control your base with Viam's client SDK libraries
