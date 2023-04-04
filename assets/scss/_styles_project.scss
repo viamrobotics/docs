@@ -658,7 +658,7 @@ footer small {
 
 /* START scroll to top and github styling */
 
-.addedbutton {
+.docsbutton {
   border: 1px solid black;
   border-radius: 0;
   background-color: whitesmoke;
@@ -726,3 +726,38 @@ footer small {
 .td-sidebar-toc {
   border-left: unset;
 }
+
+/* Feedback container */
+
+.feedback--prompt {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.feedback--question {
+  display: inline;
+  padding-right: 1em;
+}
+
+.feedback--answer {
+  padding: 0.5rem 0.625rem;
+  margin-right: 0.5rem;
+}
+
+.feedback--response {
+  display: none;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.feedback--answer {
+  display: inline-block;
+}
+
+.feedback--response__visible {
+  display: block;
+}
+
+/* END Feedback container */
