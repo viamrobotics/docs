@@ -21,9 +21,24 @@ Use your judgment to determine the concepts that need to be explained and when i
 All documentation is in the [docs folder](docs).
 For information about Hugo and how to develop locally, see the [README](./README.md).
 
-## Style guide
+## Style Guide
 
-- Every sentence should be on a new line.
+### Vale Linting
+
+> **Tip**
+> We recommend you work in Visual Studio Code and install the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to make use of the vale linter.
+
+When you open a PR, your changes will be checked against a few style rules.
+To run this check locally, follow the instructions in the [Vale Readme](.github/vale/README.md).
+
+### `markdownlint`
+
+> **Tip**
+> We recommend you work in Visual Studio Code and install the [markdownlint extension](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint).
+
+### One sentence per line
+
+To make reviews easier, each new sentence should begin on a new line.
 
 ## Pull requests
 
