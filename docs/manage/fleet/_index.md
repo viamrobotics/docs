@@ -31,7 +31,7 @@ For information on how to manage organizations, see [Organizations](organization
 
 ## Configuration
 
-When a robot or a robot part first comes online, it requests its configuration from the [Viam app](https://app.viam.com).
+When a robot or a robot part that is managed with the Viam app first comes online, it requests its configuration from the [Viam app](https://app.viam.com).
 Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.
 The robot checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
 
