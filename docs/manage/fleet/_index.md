@@ -17,9 +17,9 @@ Whether you have one robot, or millions, you can manage them with Viam and organ
 
 {{< readfile "/static/include/manage/locations.md" >}}
 
-For information on how to manage locations, see [Locations](locations).
+![An image of two locations, New York, and Chicago, in one organization, Good Robots](../img/locations.png)
 
-<!-- IMAGE -->
+For information on how to manage locations, see [Locations](locations).
 
 ### Organization
 
