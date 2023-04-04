@@ -245,8 +245,9 @@ sudo pip3 install --force-reinstall adafruit-blinka
 
 {{% /alert %}}
 
-Now, you should see the moisture sensor values outputted by the MCP3008 in the range of `0` to `1023`.
-Test your sensor by putting it in air, water, and different soils to see how the values change.
+Now, you should see the moisture sensor values outputted by the MCP3008.
+
+Test your sensor by putting it in air, water, and different soils to see how the values change to determine your baseline for wet and dry values.
 
 ![Terminal output of capacitive soil moisture sensor values.](../../img/plant-watering-pi/moisture-sensor-output.png)
 
@@ -551,8 +552,8 @@ while True:
       # Calculate average moisture reading from the list of readings, to account for outliers
       avg_moisture = sum(soil_moisture) / len(soil_moisture)
 
-      # If the average moisture reading is less than 950, trigger pump watering 
-      if(avg_moisture > 950):
+      # If the average moisture reading is greater than 60000, trigger pump watering 
+      if(avg_moisture > 60000):
           print('this plant is too thirsty! giving it more water')
 
           # Run the water pump for 100 rev. at 1000 rpm
@@ -573,10 +574,10 @@ See the motor component's [API documentation](/components/motor#gofor) for more 
 Save your <file>plant-watering-robot.py</file> program with this logic added in, and then run it on your Pi like this:
 
 ``` shell
-python3 plant-watering-robot.py
+sudo python3 plant-watering-robot.py
 ```
 
-To tinker this example code to work best for you, determine at what [analog value from the Soil Moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant, as your thirsty plant's average moisture reading might differ from our example value of `950`.
+To tinker this example code to work best for you, determine at what [analog value from the Soil Moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant, as your thirsty plant's average moisture reading might differ from our example value of `60000`.
 Also, consider how often you would like to check the moisture levels of the plant, and how long the plant should be watered.
 
 ## Next Steps
