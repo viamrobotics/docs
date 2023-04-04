@@ -1,7 +1,7 @@
 ---
 title: "Configure a Agilex LIMO Base"
 linkTitle: "agilex-limo"
-weight: 35
+weight: 40
 type: "docs"
 description: "Configure an Agilex LIMO base."
 tags: ["base", "components"]

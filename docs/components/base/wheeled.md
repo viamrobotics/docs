@@ -1,7 +1,7 @@
 ---
 title: "Configure a Wheeled Base"
 linkTitle: "wheeled"
-weight: 35
+weight: 30
 type: "docs"
 description: "Configure a wheeled base."
 tags: ["base", "components"]
