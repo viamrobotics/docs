@@ -8,12 +8,12 @@ Every contribution is appreciated.
 
 The Viam documentation aims to:
 
-- educate users
-- help users accomplish tasks
+- Educate users
+- Help users accomplish tasks
 
-We aim to be diect, friendly, and concise.
+We aim to be direct, friendly, and concise.
 
-Depending on the type of content, the audience may be beginners or advanced.
+Depending on the type of content, the audience may be beginners or advanced users.
 Use your judgment to determine the concepts that need to be explained and when in doubt link to supporting content.
 
 ## Project structure
