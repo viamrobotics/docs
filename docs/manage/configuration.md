@@ -26,11 +26,13 @@ To begin with, that configuration is nearly empty.
 
 After you have completed the setup steps and successfully connected to your robot, go to the **CONFIG** tab to start adding to the configuration.
 
-{{< alert title="Note" color="note" >}}
+{{% alert title="Note" color="note" %}}
+
 Your robot does not need to stay connected to the Viam app after it has obtained its configuration file.
 The configuration is cached locally.
 If you cannot connect your robot to the internet at all, you can also [store the configuration file](#local-setup) on the robot itself.
-{{< /alert >}}
+
+{{% /alert %}}
 
 ## The CONFIG tab
 
@@ -148,14 +150,18 @@ Components of the same model are supported using the same low-level code.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
 
 {{% alert title="Tip" color="tip" %}}
+
 Find specific information on how to configure each supported component type in its respective [documentation](/components/).
+
 {{% /alert %}}
 
 <br>
 
 {{% alert title="Tip" color="tip" %}}
+
 When you configure a component on the **CONFIG** tab, it will also appear on the **CONTROL** tab which gives you an interface to test and interact with it.
 Meanwhile the **CODE SAMPLE** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdk-as-client/).
+
 {{% /alert %}}
 
 ## Services
@@ -223,10 +229,12 @@ The corresponding raw JSON looks like this:
 
 ## Fragments
 
-{{< alert title="Note" color="note" >}}
+{{% alert title="Note" color="note" %}}
+
 Fragments are an experimental feature.
 Stability is not guaranteed.
-{{< /alert >}}
+
+{{% /alert %}}
 
 Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple robots.
 For example, if you have multiple robots with the same hardware, wired the same way, you can create and share a fragment and add it to any number of robots.
