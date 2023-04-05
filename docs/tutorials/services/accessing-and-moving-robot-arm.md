@@ -92,7 +92,7 @@ print(f"myArm get_end_position return value: {my_arm_end_position}")
 
 You should see output that looks similar to the following:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 myArm get_end_position return value: x: 200.73450755898915
 y: 0.0028507667654201754
 z: 108.63966593621173
@@ -129,7 +129,7 @@ fmt.Println("myArm EndPosition orientation value:", myArmEndPosition.Orientation
 
 You should see output that looks similar to the following:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 myArm EndPosition position value: (200.734507558989150766137755, 0.002850766765420175395673, 108.639665936211727625959611)
 myArm EndPosition orientation value: &{-0.009825947555660422 -2.127840592298059e-06 0.9999517242097753 -5.6523269754840597e-08}
 ```
@@ -155,7 +155,7 @@ print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 
 You should see output that looks similar to the following:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 myArm get_joint_positions return value: values: 0.00043945314765093886
 values: 0.46724854536551791
 values: 0.64500731344456741
@@ -180,7 +180,7 @@ fmt.Println("myArm JointPositions return value:", myArmJointPositions)
 
 You should see output that looks similar to the following:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 myArm JointPositions return value: values:0.00043945314765093886  values:0.4672485453655179  values:0.6450073134445674  values:-0.0009887695170768527  values:0.013732909913080547  values:0.0007690429693064871
 ```
 

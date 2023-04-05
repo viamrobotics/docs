@@ -117,14 +117,14 @@ You can run your code by typing the following into the terminal:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 python3 index.py
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go run index.go
 ```
 
@@ -355,7 +355,7 @@ In the upper right corner of the **SETUP** tab, click **COPY VIAM-SERVER CONFIG*
 On your local machine, create a new file called <file>viam-sub-part.json</file>, then paste the contents of your server config into that file and save.
 From the terminal, navigate to the directory where you saved the config file, and run this command to create a new instance of `viam-server` using this configuration.
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam-server -config viam-sub-part.json
 ```
 

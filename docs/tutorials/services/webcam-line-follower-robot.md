@@ -284,19 +284,19 @@ When the rover no longer sees any of the line color anywhere in the front portio
 1. Make sure you have Python installed.
    You can double-check this by running:
 
-   ```bash
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    python --version
    ```
 
    or if you have multiple versions of Python installed, try
 
-   ```bash
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    python3.9 --version
    ```
 
    or
 
-   ```bash
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    python3.8 --version
    ```
 
@@ -344,7 +344,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
    <img src="/tutorials/img/webcam-line-follower/lf-cam-view6.png" alt="The camera view in the control tab on the robot page" width="600" />
 5. In a terminal window, SSH to your Pi by running:
 
-   ```bash
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    ssh <your_username>@<your_pi’s_name>.local
    ```
 
@@ -353,7 +353,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
 
 6. In this Pi terminal go ahead and run the code:
 
-   ```bash
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    python ~/myCode/rgb_follower.py
    ```
 

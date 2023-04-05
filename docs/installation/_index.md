@@ -107,14 +107,14 @@ The AppImage is a single, self-contained binary that runs on any Linux system (e
 
 Stable:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 curl http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
 Latest:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 curl http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
@@ -124,14 +124,14 @@ curl http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppIma
 
 Stable:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 curl http://packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
 Latest:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 curl http://packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
@@ -153,7 +153,7 @@ If you do not want to run `viam-server` as a service, you can also [run it manua
 
 1. **Install `viam-server` on your Mac**
 
-   ```bash
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    brew tap viamrobotics/brews && brew install viam-server
    ```
 
@@ -164,7 +164,7 @@ If you do not want to run `viam-server` as a service, you can also [run it manua
 3. **Start `viam-server` on your Mac.** Run viam-server locally on your Mac with the config you just downloaded.
    Replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
 
-   ```bash
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam-server -config ~/Downloads/viam-<YOUR_ROBOT_NAME>-main.json
    ```
 
@@ -182,7 +182,7 @@ To run `viam-server`, you have two options:
 To run `viam-server` directly from the command line, you can use the following command, replacing "myconfig" with the name of your configuration file.
 `sudo` is necessary on some devices to access hardware.
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo ./viam-server -config myconfig.json
 ```
 
@@ -196,13 +196,13 @@ For this setup your configuration file must be at <file>/etc/viam.json</file>.
 The following command creates a systemd service file at <file>/etc/systemd/system/viam-server.service</file> and sets it to start on boot, using a config placed at <file>/etc/viam.json</file>.
 It will also move the actual binary (AppImage) to <file>/usr/local/bin/viam-server</file> (regardless of the previous filename).
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo ./viam-server --aix-install
 ```
 
 Start the service by running:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl start viam-server
 ```
 

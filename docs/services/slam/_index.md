@@ -34,7 +34,7 @@ Install the binaries required to utilize these libraries on your machine by runn
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
 
-``` bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/carto_grpc_server
 ```
@@ -42,7 +42,7 @@ sudo chmod a+rx /usr/local/bin/carto_grpc_server
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
-``` bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/carto_grpc_server
 ```
@@ -50,7 +50,7 @@ sudo chmod a+rx /usr/local/bin/carto_grpc_server
 {{% /tab %}}
 {{% tab name="MacOS" %}}
 
-``` bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews && brew install carto-grpc-server
 ```
 
@@ -61,7 +61,7 @@ brew tap viamrobotics/brews && brew install carto-grpc-server
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
 
-``` bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
@@ -69,7 +69,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 {{< /tab >}}
 {{% tab name="Linux x86_64" %}}
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
