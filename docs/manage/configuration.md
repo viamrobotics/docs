@@ -167,7 +167,7 @@ To add a modular resource as a component or service of your robot, configure a m
 ## Remotes
 
 Configuring a remote is a way to connect two separate robots so one can access the resources of the other.
-Find more information in our remotes documentation.
+Find more information in our [remotes documentation](../parts-and-remotes).
 
 ## Processes
 
