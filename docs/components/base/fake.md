@@ -8,7 +8,7 @@ tags: ["base", "components"]
 # SMEs: Steve B
 ---
 
-Configure a `fake` base to test implementing a base component on your robot without any physical hardware.
+You can use a `fake` base to test implementing a base component on your robot without any physical hardware.
 
 Configure a `fake` base as follows:
 

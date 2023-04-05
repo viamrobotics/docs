@@ -3,7 +3,7 @@ title: "Configure a Wheeled Base"
 linkTitle: "wheeled"
 weight: 30
 type: "docs"
-description: "Configure a wheeled base."
+description: "Configure and wire a wheeled base."
 tags: ["base", "components"]
 # SMEs: Steve B
 ---
@@ -137,3 +137,11 @@ The following attributes are available for `wheeled` bases:
 | `wheel_circumference_mm` | int | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
 | `width_mm` | int | **Required** | Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
 | `spin_slip_factor` | float | Optional | Can be used in steering calculations to correct for slippage between the wheels and the floor. If utilized, calibrated by the user. |
+
+## Wire a Wheeled Base
+
+An example wiring diagram for a base with one motor on each side:
+
+<img src="../img/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberry Pi, motor drivers, motors, power supply, and voltage regulator for the rover."/>
+
+Note that your base's wiring will vary depending on your choice of board, motors, motor drivers, and power supply.

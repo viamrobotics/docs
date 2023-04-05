@@ -26,12 +26,6 @@ Most mobile robots with a base need at least the following hardware:
 - A power supply for the actuators.
 - Some sort of chassis to hold everything together.
 
-Example wiring diagram for a base with one motor on each side:
-
-<img src="img/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberry Pi, motor drivers, motors, power supply, and voltage regulator for the rover."/>
-
-Note that your base's wiring will vary depending on your choice of board, motors, motor drivers, and power supply.
-
 ## Configuration
 
 Supported base models include:
