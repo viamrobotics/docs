@@ -68,7 +68,7 @@ You can find more examples of Viam's SDKs in the <file>examples</file> folder of
 
 The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, select your preferred SDK, and copy the code generated for you.
 
-These boilerplate code samples import all of the necessary libraries and set up a client connection to your remote or local robot.
+These boilerplate code samples import all of the necessary libraries and set up a client connection to your {{< glossary_tooltip term_id="remote" text="remote">}} or local robot.
 
 {{% alert title="Caution" color="caution" %}}
 

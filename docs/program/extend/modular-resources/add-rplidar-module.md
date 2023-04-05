@@ -9,7 +9,7 @@ tags: ["slam", "services"]
 ---
 
 {{% alert title="Note" color="note" %}}
-The SLAM Service is an experimental feature.
+The {{< glossary_tooltip term_id="slam" >}} Service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}

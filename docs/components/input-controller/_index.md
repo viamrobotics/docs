@@ -887,7 +887,7 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/
 
 ### Control a Wheeled Base with a Logitech G920 Steering Wheel Controller
 
-The following Python code is an example of controlling a wheeled base with a Logitech G920 steering wheel controller, configured as a `gamepad` input controller.
+The following Python code is an example of controlling a wheeled {{% glossary_tooltip term_id="base" text="base"%}} with a Logitech G920 steering wheel controller, configured as a `gamepad` input controller.
 
 ``` python {id="python-example" class="line-numbers linkable-line-numbers"}
 import asyncio
