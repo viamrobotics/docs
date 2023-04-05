@@ -147,7 +147,7 @@ This can be any pose, from the perspective of any component whose location is kn
 It will be converted into the frame of the component named in `component_name` when passed to `MoveToPosition`.
 
 **`world_state`**: This data structure is structured identically to what is described above in "Move", and is intended to behave the same.
-However, a user’s own implementation of `MoveToPosition` may or may not make use of World State.
+However, a user’s own implementation of `MoveToPosition` may or may not make use of WorldState.
 
 **`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they like to pass to their own motion planning implementation.
 

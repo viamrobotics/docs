@@ -226,9 +226,6 @@ This *supplemental transform* is the missing link to be able to transform a pose
 
 Both TransformPose and FrameSystemConfig optionally take in these supplemental transforms.
 
-Functions of some services and components take in a WorldState parameter (like `ArmMoveToPosition`).
-This data structure includes an entry for supplying supplemental transforms for use by internal calls to the Frame System.
-
 ## Reference
 
 Viam uses model files written in JSON, similar to the URDF files used in ROS.
