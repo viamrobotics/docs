@@ -3,6 +3,7 @@ title: "Base Component"
 linkTitle: "Base"
 weight: 10
 type: "docs"
+no_list: true
 description: "The moving platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
 image: "/components/img/components/base.png"
@@ -12,201 +13,29 @@ imageAlt: "base"
 
 A *base* is the platform that the other parts of a mobile robot attach to.
 
-Configure your robot's *base* component to reference any *motor* components attached to the base.
 By configuring a base component, organizing individual components to produce coordinated movement, you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
 
-<img src="../img/base/base-trk-rover-w-arm.png" alt="A robot comprised of a base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." />
+<img src="img/base-trk-rover-w-arm.png" alt="A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component."/>
 
 Most mobile robots with a base need at least the following hardware:
 
-- A [board component](/components/board/) that can run a `viam-server` instance.
-   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
-
+- A [board](/components/board/).
 - Some sort of actuators to move the base.
   Usually [motors](/components/motor/) attached to wheels or propellers.
-
 - A power supply for the board.
-
 - A power supply for the actuators.
-
 - Some sort of chassis to hold everything together.
-
-Example wiring diagram for a base with one motor on each side:
-
-<img src="../img/base/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberry Pi, motor drivers, motors, power supply, and voltage regulator for the rover."/>
-
-Note that your base's wiring will vary depending on your choice of board, motors, motor drivers, and power supply.
 
 ## Configuration
 
-To configure a base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
+Supported base models include:
 
-This is how you configure a wheeled base:
-
-{{< tabs name="Example Base Config" >}}
-{{% tab name="Config Builder" %}}
-<img src="../img/base/base-ui-config.png" alt="Picture of what an example configuration for a wheeled base looks like in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." width="800"/>
-{{% /tab %}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "attributes": {},
-      "model": <model>,
-      "name": <board_name>,
-      "type": "board"
-    },
-    {
-      "attributes": {
-        "board": <board_name>,
-        "max_rpm": <max_rpm>,
-        "pins": { ... }
-      },
-      "model": <model>,
-      "name": <motor_name>,
-      "type": "motor"
-    },
-    ... ,
-    {
-      "attributes": {
-        "left": [
-          <left_motor_name_1>
-        ],
-        "right": [
-          <right_motor_name_1>
-        ],
-        "wheel_circumference_mm": <#>,
-        "width_mm": <#>
-      },
-      "model": <model>,
-      "name": <base_name>,
-      "type": "base"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json
-{
-  "components": [
-    {
-      "attributes": {},
-      "model": "pi",
-      "name": "follow-pi",
-      "type": "board"
-    },
-    {
-      "attributes": {
-        "board": "follow-pi",
-        "max_rpm": 300,
-        "pins": {
-          "dir": "16",
-          "pwm": "15"
-        }
-      },
-      "model": "gpio",
-      "name": "rightm",
-      "type": "motor"
-    },
-    {
-      "attributes": {
-        "board": "follow-pi",
-        "max_rpm": 300,
-        "pins": {
-          "dir": "13",
-          "pwm": "11"
-        }
-      },
-      "model": "gpio",
-      "name": "leftm",
-      "type": "motor"
-    },
-    {
-      "attributes": {
-        "left": [
-          "leftm"
-        ],
-        "right": [
-          "rightm"
-        ],
-        "wheel_circumference_mm": 183,
-        "width_mm": 195
-      },
-      "model": "wheeled",
-      "name": "tread-base",
-      "type": "base"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< tab name="Annotated JSON" >}}
-
-<img src="../img/base/base-json.png" alt="An image of the JSON configuration file with annotations explaining some of the attributes."/>
-
-{{< /tab >}}
-{{< /tabs >}}
-
-### Required Attributes
-
-<table>
-<thead>
-  <tr>
-    <th>Attribute</th>
-    <th>Type</th>
-    <th>Description</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><code>left</code></td>
-    <td>array of strings</td>
-    <td>List with the names of all drive motors on the left side of the base. There may be one or more motors.</td>
-  </tr>
-  <tr>
-    <td><code>right</code></td>
-    <td>array of strings</td>
-    <td>List with the names of all drive motors on the right side of the base. There may be one or more motors.</td>
-  </tr>
-  <tr>
-    <td><code>wheel_circumference_mm</code></td>
-    <td>int</td>
-    <td>The outermost circumference (not diameter!) of the drive wheels in millimeters. Used for odometry, so try to enter your best approximation of the effective circumference.</td>
-  </tr>
-  <tr>
-    <td><code>width_mm</code></td>
-    <td>int</td>
-    <td>Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels.</td>
-  </tr>
-
-</tbody>
-</table>
-
-### Optional Attributes
-
-<table>
-<thead>
-  <tr>
-    <th>Attribute</th>
-    <th>Type</th>
-    <th>Description</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><code>spin_slip_factor</code></td>
-    <td>float</td>
-    <td>Used in steering calculations to correct for slippage between the wheels and the floor. To be calibrated by the user.</td>
-  </tr>
-
-</tbody>
-</table>
+| Model | Description |
+| ----- | ----------- |
+| [`wheeled`](wheeled) | Mobile wheeled robot |
+| [`agilex-limo`](agilex-limo) | [Agilex LIMO Mobile Robot](https://global.agilex.ai/products/limo) |
+| [`fake`](fake) | A model used for testing, with no physical hardware |
+| `boat` | Mobile boat robot |
 
 ## Control your base with Viam's client SDK libraries
 
@@ -215,7 +44,7 @@ This is how you configure a wheeled base:
 
 Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
 
-The following example assumes you have a wheeled base called "my_base" which is configured as a component of your robot.
+The following example assumes you have a wheeled base called "my_base" configured as a component of your robot.
 If your base has a different name, change the `name` in the example.
 
 {{< tabs >}}
