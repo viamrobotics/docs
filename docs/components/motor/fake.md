@@ -14,7 +14,7 @@ For example, you can use a `fake` component as a placeholder while waiting on a 
 
 To configure a `fake` motor as a component of your robot, you don't need any hardware, and you don't need to configure any attributes (though you can configure [optional ones](#optional-attributes)).
 
-Just configure your `fake` motor with a name, type and model:
+Just configure your `fake` motor with a name, type, and model:
 
 Field | Description
 ----- | -----------
