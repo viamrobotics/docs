@@ -41,6 +41,8 @@ Each robot automatically sends logs to the cloud where you can view them from th
 
 ## Remote control
 
+The **CONTROL** tab in the [Viam app](https://app.viam.com) allows you to visually test and remotely operate robot components and services.
+All communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
 
-For local communication between [parts](../parts-and-remotes) you can use gRPC or WebRTC.
+For local communication between [parts](../parts-and-remotes) Viam uses gRPC or WebRTC.

@@ -1,5 +1,5 @@
 In Viam, every robot belongs to a location.
-A location is a virtual grouping of robots that allows you to organize robots and manage your fleets.
+A location is a virtual grouping of robots that allows you to organize robots and manage access.
 Generally, a location defines a group of robots that are geographically close to each other.
 
 For example, an organization called Good Robots Inc has two warehouses across New York and Oregon.
