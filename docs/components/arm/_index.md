@@ -174,67 +174,31 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 my_arm = Arm.from_robot(robot=robot, name='my_arm')
 # Get the end position of the arm as a Pose.
 pos = await my_arm.get_end_position()
-### GetEndPosition
-
-Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose).
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- `Pose` [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
-The `Pose` is composed of values for location and orientation with respect to the origin.
-Location is expressed as distance, which is represented by x, y, and z coordinate values.
-Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_end_position).
-
-```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name='my_arm')
-
-# Get the end position of the arm as a Pose.
-pos = await my_arm.get_end_position()
 ```
-
 {{% /tab %}}
 {{% tab name="Go" %}}
-
 **Parameters:**
-
 - `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
-
 **Returns:**
-
 - `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 - `Pose` [(`spatialmath.Pose`)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
-
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
-
 ```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
 if err != nil {
   logger.Fatalf("cannot get arm: %v", err)
 }
-
 // Get the end position of the arm as a Pose.
 err, pos := myArm.EndPosition(context.Background(), nil)
-
 // Log any errors that occur.
 if err != nil {
   logger.Fatalf("cannot get end position of arm: %v", err)
 }
 ```
-
 {{% /tab %}}
 {{< /tabs >}}
 
