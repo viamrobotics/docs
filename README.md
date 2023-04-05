@@ -51,7 +51,7 @@ If you haven't used Markdown before, have a look at this [cheat sheet](https://t
 
 ### Front Matter
 
-Each file that generates a side in Hugo starts with front matter that looks like this:
+Each file that generates a page in Hugo starts with front matter that looks like this:
 
 ```markdown
 ---
