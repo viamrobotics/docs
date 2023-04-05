@@ -69,10 +69,7 @@ The half circle shown in the pinout diagram above should be physically present o
 Use this to orient the ADC to determine the location to insert your wires.
 {{% /alert %}}
 
-Insert the MCP3008 into your breadboard so that it bridges both sides.
-
-![ADC inserted into the breadboard](../../img/plant-watering-pi/adc-breadboard.png)
-
+Insert the MCP3008 into your breadboard so that it bridges both sides of the divide.
 Then, use the rows on the side of your MCP3008's pins and the GPIO pins on your PI to connect the pins with wires as follows:
 
 | MCP3008 ADC Pin | Raspberry Pi Pin |
