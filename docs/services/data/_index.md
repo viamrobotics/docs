@@ -1,5 +1,5 @@
 ---
-title: "Data Management"
+title: "Data Management Service"
 linkTitle: "Data Management"
 weight: 40
 no_list: true
@@ -105,5 +105,5 @@ Once you have configured data capture and cloud sync, you can [view](../../manag
 
 ### Machine Learning
 
-If you collect image data, you can use it to [train image classification models](../../manage/data/train-model) and [deploy these models to your robots](../../manage/data/deploy-model).
-You can also [upload and use existing models](../../manage/data/upload-model).
+You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model) and then [deploy these models to your robots](../../manage/ml/deploy-model) from the Viam App.
+You can also [upload and use existing models](../../manage/ml/upload-model).

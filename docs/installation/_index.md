@@ -1,7 +1,7 @@
 ---
 title: "Installation Guide"
 linkTitle: "Installation Guide"
-weight: 20
+weight: 22
 no_list: true
 type: docs
 aliases:

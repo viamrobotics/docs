@@ -258,7 +258,7 @@ If you are in front of your computer's webcam, you should get a text!
 
 Your terminal should look like this as your project runs if you are in front of the camera for a bit, and then move away from the screen:
 
-```bash
+```txt
 This is a person!
 sending message
 x_min: 7
