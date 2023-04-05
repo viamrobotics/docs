@@ -151,8 +151,12 @@ Components of the same model are supported using the same low-level code.
 Find specific information on how to configure each supported component type in its respective [documentation](/components/).
 {{% /alert %}}
 
+<br>
+
+{{% alert title="Tip" color="tip" %}}
 When you configure a component on the **CONFIG** tab, it will also appear on the **CONTROL** tab which gives you an interface to test and interact with it.
 Meanwhile the **CODE SAMPLE** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdk-as-client/).
+{{% /alert %}}
 
 ## Services
 
