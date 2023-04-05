@@ -110,6 +110,13 @@ The **CONFIG** tab has sub-tabs for each section of your robot's config:
 - [Frames](#frame-system): Frames hold reference frame information for the relative position of components in space.
 <!--[Authorization keys](#authnetwork) -->
 
+{{% alert title="Tip" color="tip" %}}
+
+Simple robots often use only a few components (and perhaps services).
+Depending on your robot, you may not need to configure any modules, remotes, processes, fragments or frames.
+
+{{% /alert %}}
+
 ## Components
 
 Components represent the pieces of hardware on your robot that you want to control with Viam.
