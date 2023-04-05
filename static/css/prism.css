@@ -152,7 +152,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
 }
 
 .command-line-prompt {
-  background-color: #555;
+  background-color: black;
   border-right: 1px solid #999;
   display: block;
   float: left;
