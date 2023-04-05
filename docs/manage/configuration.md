@@ -1,6 +1,6 @@
 ---
-title: "Robot Configuration"
-linkTitle: "Robot Configuration"
+title: "Configure a Robot"
+linkTitle: "Configure a Robot"
 weight: 25
 type: "docs"
 description: "Details about configuring robots with Viam."
@@ -163,11 +163,11 @@ To automatically run a specified script when the robot boots, configure a *proce
 
 Start by giving the process a **Name** (`id` in raw JSON) (an identifier of your choice) and clicking **Create Process**.
 
-The following fields will expand (raw JSON attribute names shown in code style in parentheses):
+Then fill in the following fields:
 
-- **Executable** (`name`): (string) The command you want to execute when your robot connects to the server.
-- **Arguments** (`args`): (string) Optional arguments to follow the command
-- **Working Directory** (`cwd`): (string) Where you want the process to execute.
+- **Executable** (`name`): The command you want to execute when your robot connects to the server.
+- **Arguments** (`args`): Optional arguments to follow the command.
+- **Working Directory** (`cwd`): Where you want the process to execute.
   An optional setting that defaults to the directory where `viam-server` executes.
 
 You can also toggle whether you want errors and other messages to be logged, and whether to execute the command just once or keep running the process indefinitely.
@@ -199,8 +199,10 @@ The corresponding raw JSON looks like this:
 
 ## Fragments
 
-*Fragments are an experimental feature.
-Stability is not guaranteed.*
+{{< alert title="Note" color="note" >}}
+Fragments are an experimental feature.
+Stability is not guaranteed.
+{{< /alert >}}
 
 Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple robots.
 For example, if you have multiple robots with the same hardware, wired the same way, you can create and share a fragment and add it to any number of robots.
@@ -222,7 +224,7 @@ You will simply see the fragment ID in the `fragments` section of your config, b
 
 {{% /alert %}}
 
-To create a fragment, go to [https://app.viam.com/fragments](https://app.viam.com/fragments).
+To create a fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments).
 
 For an example of adding a fragment to a robot, see the [Viam Rover fragment tutorial](/try-viam/rover-resources/rover-tutorial-fragments/).
 <!--
@@ -231,18 +233,11 @@ For an example of adding a fragment to a robot, see the [Viam Rover fragment tut
 
 ## Frame system
 
+The frame system holds reference frame information for the relative position of components in space.
+
 Configure a frame for a given component on its panel on the **COMPONENTS** tab, then switch to the **FRAME SYSTEM** tab to visualize the relative positions.
 Find more information in the [frame system documentation](/services/frame-system/).
 
-## Best practices
-
-Some best practices when configuring your robot include:
-
-- Remember to click **Save Config** after making changes.
-- Configure one component at a time.
-  After configuring each component and clicking **Save Config**, if your robot is powered and connected, test the component.
-  Switch to the **CONTROL** tab and use the interface to interact with the component and check that it behaves as expected.
-  It can take up to around 20 seconds for components to initialize on the **CONTROL** tab.
 
 ## Troubleshooting
 
@@ -275,3 +270,7 @@ If you run into issues, here are some things to try:
 - Make sure the issue is not hardware related.
   Some things to check are that the robot has adequate power, all wires are properly connected, and no chips or other hardware components are shorted or overheated.
 - {{< snippet "social.md" >}}
+
+## Next Steps
+
+After configuring your robot, you can use the [Viam SDKs](../../program/sdk-as-client/) to program and control your robot.
