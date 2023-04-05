@@ -7,19 +7,9 @@ description: "Details about configuring robots with Viam."
 tags: ["manage", "components"]
 ---
 
-To be able to use a robot, you must first configure it.
+Before you can program a robot, you must configure it.
 
 A robot's configuration tells the code running the robot what *resources* (hardware *components* and software *services*) it has access to, as well as any relevant parameters for those resources.
-
-In addition to components and services, you can configure [modules](#modules), [remotes](#remotes), [processes](#processes), [fragments](#fragments), <!--[authorization keys](#authnetwork), -->and [frames](#frame-system), as detailed below.
-
-<br>
-
-{{% alert title=Tip color="tip" %}}
-
-This document covers general configuration concepts and best practices, but if you want to get started with configuring your specific robot, you can head straight to the [component](/components/) or [service](/services/) documentation that is relevant to your robot.
-
-{{% /alert %}}
 
 ## Your robot's config file
 
@@ -118,7 +108,7 @@ The sections of the robot config (which each have corresponding sub-tabs on the 
 ## Components
 
 Components represent the pieces of hardware on your robot that you want to control with Viam.
-Find information on how to configure each supported component type in its respective [documentation](/components/).
+
 You must configure each component with a name, a model, a type, attributes, and dependencies:
 
 - `name`: Serves as an identifier when accessing the resource from your code, as well as when configuring other resources that are dependent on that resource.
@@ -136,6 +126,10 @@ Components of the same model are supported using the same low-level code.
 - `depends_on`: Any components that a given component relies upon, and that must be initialized on boot before this component is initialized.
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
+
+{{% alert title="Tip" color="tip" %}}
+Find specific information on how to configure each supported component type in its respective [documentation](/components/).
+{{% /alert %}}
 
 When you configure a component on the **CONFIG** tab, it will also appear on the **CONTROL** tab which gives you an interface to test and interact with it.
 Meanwhile the **CODE SAMPLE** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdk-as-client/).
