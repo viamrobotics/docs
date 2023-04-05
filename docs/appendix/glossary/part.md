@@ -2,8 +2,9 @@
 title: Part
 id: part
 full_link: /manage/parts-and-remotes/
-short_description: A computer, like a Raspberry Pi, running viam-server along with the hardware components the computer controls.
+short_description: A single-board computer, desktop, laptop, or other computer running viam-server, the hardware components attached to it, and any services or other resources running on it.
 aka:
 ---
 
-A computer, like a Raspberry Pi, running viam-server along with the hardware {{< glossary_tooltip term_id="component" text="components" >}} the computer controls.
+Robots are organized into *parts*, where each part represents a computer (a [single-board computer](/installation/), desktop, laptop, or other computer) running `viam-server`, the hardware {{< glossary_tooltip term_id="component" text="components" >}} attached to it, and any {{< glossary_tooltip term_id="service" text="services" >}} or other resources running on it.
+For more information, see [Robot Architecture](/manage/parts-and-remotes).
