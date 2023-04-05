@@ -146,7 +146,7 @@ The arm component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-| [GetPose](#getpose) | Get the current position of the arm as a Pose with respect to other elements of the robot (such as another component or the robot’s fixed “world” frame). |
+| [GetPose](#getpose) | Get the current position of the arm as a Pose with respect to other elements of the robot. |
 | [GetEndPosition](#getendposition) | Get the current position of the arm as a Pose. |
 | [MoveToPosition](#movetoposition) | Move the end of the arm to the desired Pose. |
 | [MoveToJointPositions](#movetojointpositions) | Move each joint on the arm to the desired position. |
