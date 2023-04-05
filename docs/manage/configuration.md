@@ -11,7 +11,7 @@ Before you can program a robot, you must configure it.
 
 A robot's configuration tells the code running the robot what *resources* (hardware *components* and software *services*) it has access to, as well as any relevant parameters for those resources.
 
-To configure your robot, go to the [Viam app](https://app.viam.com), [create a new robot](/installation/install/) and follow the steps on the **SETUP** page.
+To start configuring, go to the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **SETUP** tab.
 
 The setup steps copy your robots credentials to your robot and store them at <file>/etc/viam.json</file>.
 The credentials look like this:
