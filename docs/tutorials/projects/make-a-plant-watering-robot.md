@@ -127,6 +127,8 @@ You can either bend or soldier the jumper wire here to make the connection betwe
 
 ## Program Your Plant Watering Robot
 
+{{<gif webm_src="../../img/plant-watering-pi/plant-watering-video.webm" mp4_src="../../img/plant-watering-pi/plant-watering-video.mp4" alt="The plant watering robot on a white desk. Camera goes up to the watering tube and pulls it out, showing the drip.">}}
+
 ### Enable SPI on your Pi
 
 Now that you have wired your ADC and moisture sensor, make sure that the Serial Peripheral Interface (SPI) is enabled on your Pi.
