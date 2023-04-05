@@ -147,7 +147,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
 
 
 .code-terminal > pre[class*="language-sh"] > code {
-  background-color: #555 !important;
+  background-color: black !important;
   color: white !important;
 }
 
