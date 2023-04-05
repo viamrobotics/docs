@@ -159,6 +159,21 @@ The arm component supports the following methods:
 
 Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to other elements of the robot (such as another component or the robot’s fixed “world” frame).
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+**Parameters:**
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+**Returns:**
+- `Pose` [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
+The `Pose` is composed of values for location and orientation with respect to the origin.
+Location is expressed as distance, which is represented by x, y, and z coordinate values.
+Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_end_position).
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=robot, name='my_arm')
+# Get the end position of the arm as a Pose.
+pos = await my_arm.get_end_position()
 ### GetEndPosition
 
 Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose).
