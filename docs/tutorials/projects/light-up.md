@@ -87,13 +87,13 @@ Once it is connected, you will no longer need to use the mobile app.
 
 3. Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
 
-    ```bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     pip3 install python-kasa
     ```
 
 4. <a name=kasa ></a> Run the following command to return information about your smart device:
 
-    ```bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     kasa discover
     ```
 
@@ -159,7 +159,7 @@ Now you are ready to test your robot!
 
 From a command line on your computer, navigate to the project directory and run the code with this command:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 python3 lightupbot.py
 ```
 
@@ -169,9 +169,10 @@ If it does not find a person, it will write “There’s nobody here” and will
 Try moving in and out of your webcam's field of view.
 You will see your light turn on and off as the robot detects you!
 
-Your terminal should look like this as your project runs:
+Your terminal output should look like this as your project runs:
 
-```txt
+```sh {id="terminal-output" class="command-line" data-prompt="$" data-output="2-5"}
+python3 lightupbot.py
 This is a person!
 turning on
 There's nobody here

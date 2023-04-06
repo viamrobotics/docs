@@ -90,7 +90,7 @@ Navigate to the **CONTROL** tab where you can see your camera working.
 
 Install yagmail (Yet Another Gmail/SMTP client) by running the following command in a terminal on your computer:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 pip3 install yagmail
 ```
 
@@ -250,7 +250,7 @@ You are ready to test your robot!
 
 From a command line on your computer, navigate to the project directory and run the code with this command:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 python3 chocolate_security.py
 ```
 
@@ -258,7 +258,8 @@ If you are in front of your computer's webcam, you should get a text!
 
 Your terminal should look like this as your project runs if you are in front of the camera for a bit, and then move away from the screen:
 
-```txt
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-25"}
+python3 chocolate_security.py
 This is a person!
 sending message
 x_min: 7

@@ -14,4 +14,9 @@
   Prism.highlightAll()
   // need two passes for whatever reason; who cares
   Prism.highlightAll()
+  document.querySelectorAll(".code-toolbar").forEach((el) => {
+    if (el.children && el.children[0].classList.contains("command-line")) {
+      el.classList.add("code-terminal");
+    }
+  });
 }())
