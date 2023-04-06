@@ -12,7 +12,7 @@ This document explains how to establish secure connections between robots.
 
 ### Robot parts
 
-Robots are organized into *parts*, where each part represents a computer (a [single-board computer](/installation/prepare/), desktop, laptop, or other computer) running `viam-server`, the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+Robots are organized into *parts*, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) [running `viam-server`](/installation/), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
 
 Every robot has a main part.
 Multi-part robots also have one or more *sub-parts* representing additional computers running `viam-server`.
