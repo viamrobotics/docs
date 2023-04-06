@@ -20,24 +20,17 @@ Add a new robot by providing a name in the **New Robot** field and clicking **AD
 
 Click the name of a robot to go to that robot's page, where you'll find a variety of tools for working with your robot.
 
-### Delete a robot
-
-You can delete a robot by checking the **Sure?** box in the lower left of the robot page and clicking **DELETE ROBOT**.
-
-![The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it.](../../img/app-usage/delete.png)
-
 ## Navigating the robot page
 
 The banner at the top of the robot page displays the robot's location, name, and a drop down list of all parts of that robot.
-The first part you create will be the _main part_ but you can create additional parts in the drop down.
+The first part you create is the _main part_ but you can create additional parts in the drop down.
 
-{{< figure src="../../img/app-usage/part-drop-down.png" width="800px" alt="The robot page for an example robot with the parts drop down open." title="Example Robot Page with the Parts drop-down open (boxed in red)." >}}
-
+![The robot page for an example robot with the parts drop down open.](../../img/app-usage/part-drop-down.png)
 To delete a part or make it the main part, use the buttons in the top right of the **CONFIG** tab.
 
-{{< figure src="../../img/app-usage/part-mgmt.png" width="800px" alt="Screenshot of the CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons." title="Screenshot of the CONFIG tab of a robot's page highlighting the Make main part and Delete Part buttons (boxed in red)." >}}
+![The CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons.](../../img/app-usage/part-mgmt.png)
 
-If you've connected your robot to a machine running `viam-server` (instructions below), the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
+If you've connected your robot to a machine running `viam-server`, the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
 
 The following tabs are found on the robot page:
 
@@ -52,19 +45,9 @@ More in-depth information on installing `viam-server` can be found in our [Insta
 
 ### Config
 
-Here you can start adding robot components, services, and remotes.
+On the **CONFIG** tab you can start adding robot components, services, and other robot resources.
 
-Toggle between **Builder** (default) or **Raw JSON** using the **Mode** selector in the upper left.
-Builder provides a more graphical UI.
-Raw JSON mode can be useful for users who are familiar with writing JSON, and for seeing and editing everything at once.
-
-Within the **CONFIG** tab (in builder mode) are separate sub-tabs for components, services, remotes, processes, network, authentication, and fragments, so be sure to configure these in their respective tabs.
-In raw JSON mode, all of these resources are displayed in a single text field.
-
-Details on configuring specific hardware components and services can be found in these topics:
-
-- [Components](/components/)
-- [Services](/services/)
+For more information, see the [configuration documentation](../../configuration/#the-config-tab).
 
 ### Logs
 
@@ -93,7 +76,7 @@ If you have configured a camera component, a window in the **CONTROL** tab displ
 The **SECURITY** tab allows you to access and exchange the **Robot Part Secret Keys** of your robot.
 A robot part secret is a unique secret used by the robot to communicate with the cloud.
 
-{{< figure src="../../img/app-usage/robot-part-secret-keys-drop-down.png" width="800px" alt="Screenshot of the SECURITY tab of a robot's page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down." title="Screenshot of the SECURITY tab of a robot's page." >}}
+![The SECURITY tab of a robot's page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](../../img/app-usage/robot-part-secret-keys-drop-down.png)
 
 Copy the secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
@@ -101,8 +84,14 @@ Click on the **Generate Key** button to generate a new key.
 {{% alert title="Caution" color="caution" %}}
 Be cautious when sharing robot part secret keys in your code or messages.
 
-Do not make a valid key publicly available, as any entity attempting to access your robot who has this token will be authenticated, compromising the security of your system.
+Do not make a secret key publicly available, as any entity who has this token has access to your robot, compromising the security of your system.
 
 Note _where_ and _when_ you share a robot part secret key.
 After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible, even though Viam supports flexible key rotation with up to two keys in use at one time.
 {{% /alert %}}
+
+### Delete a robot
+
+You can delete a robot by checking the **Sure?** box in the lower left of the robot page and clicking **DELETE ROBOT**.
+
+![The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it.](../../img/app-usage/delete.png)
