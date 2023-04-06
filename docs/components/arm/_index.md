@@ -72,7 +72,7 @@ If your arm has a different name, change the `name` in the example.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.arm import Arm, JointPositions
-from viam.proto.common import Pose, WorldState
+from viam.proto.common import Pose
 
 async def main():
 
@@ -221,7 +221,6 @@ if err != nil {
 ### MoveToPosition
 
 Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose), relative to the base of the arm.
-Plan for the arm to avoid obstacles and comply with the constraints for movement specified in [(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -232,9 +231,6 @@ Plan for the arm to avoid obstacles and comply with the constraints for movement
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
-- `world_state`[(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState): Obstacles that the arm must avoid while it moves from its original position to the position specified in `pose`.
-A `WorldState` can include a variety of attributes, including a list of obstacles around the object (`obstacles`), a list of spaces the robot may operate within (`interaction_spaces`), and a list of supplemental transforms (`transforms`).
-These fields are optional.
 - `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -251,7 +247,7 @@ my_arm = Arm.from_robot(robot=robot, name='my_arm')
 examplePose = Pose(x=5, y=5, z=5, o_x=5, o_y=5, o_z=5, theta=20)
 
 # Move your arm to the Pose.
-await my_arm.move_to_position(pose=examplePose, world_state=WorldState())
+await my_arm.move_to_position(pose=examplePose)
 ```
 
 {{% /tab %}}
@@ -264,9 +260,6 @@ await my_arm.move_to_position(pose=examplePose, world_state=WorldState())
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
-- `world_state`[(`WorldState`)](https://pkg.go.dev/go.viam.com/rdk@v0.2.12/referenceframe#WorldState): Obstacles that the arm must avoid while it moves from its original position to the position specified in `pose`.
-A `WorldState` can include a variety of attributes, including a list of obstacles around the object (`obstacles`), a list of spaces the robot may operate within (`interaction_spaces`), and a list of supplemental transforms (`transforms`).
-These fields are optional.
 - `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -285,7 +278,7 @@ if err != nil {
 examplePose = []float64{x: 5, y: 5, z: 5, o_x: 5, o_y: 5, o_z: 5, theta:20}
 
 // Move your arm to the Pose.
-myArm.MoveToPosition(context.Background(), pose: examplePose, referenceframe.WorldState(), nil)
+myArm.MoveToPosition(context.Background(), pose: examplePose, nil)
 ```
 
 {{% /tab %}}

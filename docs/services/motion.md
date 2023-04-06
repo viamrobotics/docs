@@ -23,7 +23,7 @@ Viam’s Motion Service is enabled in RDK by default, and no extra configuration
 The "Move" endpoint is the primary way to move multiple components, or to move any object to any other location.
 Given a destination pose and a component to move to that destination, the Motion Service will construct a full kinematic chain from goal to destination including all movable components in between, and will solve that chain to place the goal at the destination while meeting specified constraints.
 It will then execute that movement to move the actual robot, and return whether or not this process succeeded.
-The volumes associated with all configured robot parts (local and remote) will be taken into account for each request to ensure that collisions do not occur.
+The volumes associated with all configured robot components (local and remote) will be taken into account for each request to ensure that collisions do not occur.
 
 {{% alert title="Note" color="note" %}}
 The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles as documented below.
@@ -127,27 +127,34 @@ motion.move(component_name=armRes,destination=PoseInFrame(reference_frame="myArm
 The `MoveSingleComponent` endpoint, while it looks similar to the "Move" endpoint above, may result in radically different behavior when called.
 
 _`MoveSingleComponent` is meant to allow the user to bypass Viam’s internal motion planning entirely, if desired, for a single component._ If the component in question supports the `MoveToPosition` method taking a Pose as a parameter, this call will use the frame system to translate the given destination into the frame of the specified component, and will then call `MoveToPosition` on that one component to move it to the desired location.
-As of October 18, 2022, arms are the only component supported by this feature.
+As of April 5, 2023, arms are the only component supported by this feature.
 
 As the name of the method suggests, only the single component specified by `component_name` will move.
 
 An example of when this may be useful is if the user has implemented their own version of an arm, and wishes to use their own motion planning for it.
 That user will implement `MoveToPosition` on that arm using whatever method they desire to plan to the specified pose, and then can use this API endpoint to pass the destination in the frame of any other robot component.
 
+{{% alert title="Note" color="note" %}} <a id="move-vs-movetoposition">
+
 If this method is called with an arm which uses Viam’s motion planning on the backend, then this method is equivalent to using `robot.TransformPose` to transform the destination into the frame of the arm, and then calling `MoveToPosition` on the arm directly.
+Note that `arm.MoveToPosition` does not use `world_state`, so collision checking and obstacle avoidance _will not_ be performed.
+
+If you need collision checking and obstacle avoidance, use [`Move`](#move).
+
+{{% /alert %}}
 
 #### Parameters
 
 **`component_name`**: This is the name of the piece of the robot to which `MoveToPosition` should be called with the transformed destination.
-This component must support the `MoveToPosition`API call with a Pose.
-As of October 10, 2022, Arm is the only component so supported.
+This component must support the `MoveToPosition` API call with a Pose.
+As of April 5, 2023, arm is the only component so supported.
 
 **`destination`**: A `PoseInFrame` describing where the `component_name` should end up.
 This can be any pose, from the perspective of any component whose location is known in the robot’s `FrameSystem`.
 It will be converted into the frame of the component named in `component_name` when passed to `MoveToPosition`.
 
-**`world_state`**: This data structure is structured identically to what is described above in "Move", and is intended to behave the same.
-However, a user’s own implementation of `MoveToPosition` may or may not make use of World State.
+**`world_state`**: This data structure is structured identically to what is described above in "Move".
+However, a user’s own implementation of `MoveToPosition` may or may not make use of WorldState; see <a href="#move-vs-movetoposition">note above</a>.
 
 **`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they like to pass to their own motion planning implementation.
 

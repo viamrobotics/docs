@@ -296,7 +296,6 @@ If your gantry has a different name, change the `name` in the example.
 
 ```python
 from viam.components.gantry import Gantry
-from viam.proto.common import WorldState
 
 async def main():
     # Connect to your robot.
@@ -451,8 +450,6 @@ Move the axes of the gantry to the desired positions (mm).
 **Parameters:**
 
 - `positions` [(List[float])](https://docs.python.org/3/library/typing.html#typing.List): A list of positions for the axes of the gantry to move to, in millimeters.
-- `world_state`[(WorldState)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState): Optional and not yet fully implemented, see [the arm component](/components/arm/) for an example of usage with full component implementation.
-Specifies obstacles that the gantry must avoid while it moves from its original position to the position specified in `pose`.
 - `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -469,7 +466,7 @@ my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
 examplePositions = [1, 2, 3]
 
 # Move the axes of the gantry to the positions specified.
-await my_gantry.move_to_position(positions=examplePositions, world_state=WorldState())
+await my_gantry.move_to_position(positions=examplePositions)
 ```
 
 {{% /tab %}}
@@ -479,8 +476,6 @@ await my_gantry.move_to_position(positions=examplePositions, world_state=WorldSt
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `positions` [([]float64)](https://pkg.go.dev/builtin#float64): A list of positions for the axes of the gantry to move to, in millimeters.
-- `world_state`[(WorldState)](https://pkg.go.dev/go.viam.com/rdk@v0.2.12/referenceframe#WorldState): Optional and not yet fully implemented, see [the arm component](/components/arm/) for an example of usage with full component implementation.
-Specifies obstacles that the gantry must avoid while it moves from its original position to the position specified in `pose`.
 - `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -499,7 +494,7 @@ if err != nil {
 examplePositions = []float64{1, 2, 3}
 
 // Move the axes of the gantry to the positions specified.
-myGantry.MoveToPosition(context.Background(), examplePositions, referenceframe.WorldState(), nil)
+myGantry.MoveToPosition(context.Background(), examplePositions, nil)
 ```
 
 {{% /tab %}}

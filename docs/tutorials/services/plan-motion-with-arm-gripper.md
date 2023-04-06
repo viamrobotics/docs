@@ -380,7 +380,7 @@ async def main():
     # Generate a simple pose move +100mm in the +Z direction of the arm
     cmd_arm_pose = await my_arm_component.get_end_position()
     cmd_arm_pose.z += 100.0
-    await my_arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
+    await my_arm_component.move_to_position(pose=cmd_arm_pose)
 
     # Access the Motion Service
     motion_service = MotionServiceClient.from_robot(robot, "builtin")

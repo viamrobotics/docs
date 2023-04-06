@@ -254,19 +254,19 @@ For example, the following code gets the arm's end position, makes a 100 millime
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-You must import some additional Python packages to synthesize new poses and to provide an empty `WorldState` to the arm component's `move_to_position` command.
-Add `from viam.proto.common import Pose, WorldState` to your import list and add the sample code below to your own client script.
+You must import some additional Python packages to synthesize new poses for the arm component's `move_to_position` command.
+Add `from viam.proto.common import Pose` to your import list and add the sample code below to your own client script.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Generate a simple pose move +100mm in the +Z direction of the arm
 cmd_arm_pose = await my_arm_component.get_end_position()
 cmd_arm_pose.z += 100.0
-await my_arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
+await my_arm_component.move_to_position(pose=cmd_arm_pose)
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-You must import some additional Go packages to synthesize new poses through the `spatialmath` library, and to provide an empty `WorldState` to the arm component's `MoveToPosition` command.
+You must import some additional Go packages to synthesize new poses through the `spatialmath` library.
 Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to your import list and then add the sample code below to your own client script.
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -279,7 +279,7 @@ adjustedArmPoint := currentArmPose.Point()
 adjustedArmPoint.Z += 100.0
 cmdArmPose := spatialmath.NewPose(adjustedArmPoint, currentArmPose.Orientation())
 
-err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, &referenceframe.WorldState{}, nil)
+err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, nil)
 if err != nil {
   fmt.Println(err)
 }
@@ -314,7 +314,6 @@ For more resources on robot kinematics, read through the Wikipedia pages for [Fo
 import asyncio
 
 from viam.components.arm import Arm
-from viam.proto.common import WorldState
 from viam.proto.component.arm import JointPositions
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
@@ -355,7 +354,7 @@ async def main():
     # Generate a simple pose move +100mm in the +Z direction of the arm
     cmd_arm_pose = await my_arm_component.get_end_position()
     cmd_arm_pose.z += 100.0
-    await my_arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
+    await my_arm_component.move_to_position(pose=cmd_arm_pose)
 
     # Don't forget to close the robot when you're done!
     await robot.close()
@@ -442,7 +441,7 @@ func main() {
   adjustedArmPoint.Z += 100.0
   cmdArmPose := spatialmath.NewPose(adjustedArmPoint, currentArmPose.Orientation())
 
-  err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, &referenceframe.WorldState{}, nil)
+  err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, nil)
   if err != nil {
     fmt.Println(err)
   }
