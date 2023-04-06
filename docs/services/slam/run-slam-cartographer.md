@@ -152,7 +152,7 @@ At this point, your complete configuration should look like:
     "modules": [
       {
         "name": "rplidar_module",
-        "executable_path": "/home/<YOUR_USERNAME>/rplidar-module-local-aarch64.AppImage"
+        "executable_path": "/usr/local/bin/rplidar-module"
       }
     ],
     "components": [
@@ -181,7 +181,7 @@ At this point, your complete configuration should look like:
           ],
           "port": "localhost:8083",
           "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
-          "map_rate_sec": 60,
+          "map_rate_sec": 60
         },
         "model": "cartographer",
         "name": "run-slam"
