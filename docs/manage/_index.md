@@ -11,6 +11,7 @@ The [Viam app](https://app.viam.com/) has several key features:
 
 {{< cards >}}
   {{% card link="/manage/fleet" size="small" %}}
+  {{% card link="/manage/configuration" size="small" %}}
   {{% card link="/manage/data" size="small" %}}
   {{% card link="/manage/ml" size="small" %}}
   {{% card link="/manage/parts-and-remotes" size="small" %}}
