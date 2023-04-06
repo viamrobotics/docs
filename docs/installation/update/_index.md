@@ -34,7 +34,7 @@ These app images have a built in self-update feature.
 To update manually, just run the file with "--aix-update" as the only argument.
 For example:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo viam-server --aix-update
 ```
 
@@ -44,7 +44,7 @@ When installed as a system service, this will be run automatically each time the
 
 If you want to DISABLE automatic updates from the service file, just comment out the following line in `/etc/systemd/system/viam-server.service` with a pound sign (#) so that it looks like this:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 # ExecStartPre=-/usr/local/bin/viam-server --aix-update
 ```
 
@@ -60,13 +60,13 @@ There is typically no need to reinstall the system service (unless the new versi
 
 You can upgrade to the latest *stable* version of `viam-server` using Homebrew.
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew upgrade viam-server
 ```
 
 To upgrade to the *absolute latest* version of `viam-server` run this command:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew upgrade viam-server --HEAD
 ```
 

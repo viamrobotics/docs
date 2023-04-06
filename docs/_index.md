@@ -4,6 +4,7 @@ linkTitle: "Viam Documentation"
 weight: 1
 no_list: true
 type: "docs"
+hide_feedback: true
 ---
 
 Viam is a complete software platform for robots.

@@ -3,26 +3,27 @@ title: "Configure a gpiostepper motor"
 linkTitle: "gpiostepper"
 weight: 20
 type: "docs"
-description: "Configure a stepper motor with a basic driver."
+description: "Configure a bipolar stepper motor with current regulation and 1/32 microstepping driven by a basic driver."
 # SMEs: Rand, James
 ---
 
-The Viam `gpiostepper` model of motor component supports [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by basic stepper driver chips (such as [DRV8825](https://www.ti.com/product/DRV8825) or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)) that take step and direction input through GPIO and simply move the motor one step per pulse.
+The `gpiostepper` model of the motor component supports bipolar [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by basic stepper driver chips (such as [DRV8825](https://www.ti.com/product/DRV8825) or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)) that take step and direction input through GPIO and move the motor one step per pulse.
 
+{{< alert title="Tip" color="tip" >}}
 Viam also supports some more advanced stepper driver chips ([TMC5072](../tmc5072/), [DMC4000](../dmc4000/)) that have their own microcontrollers that handle things like speed and acceleration control.
-Refer to those docs for more information.
+{{< /alert >}}
 
 ## Configuration
 
-To configure a `gpiostepper` as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired.
+To configure a `gpiostepper` motor as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired.
 
 Then assign your motor a `name` (to identify the motor), `type` (`motor`) and `model` (`gpiostepper`), and fill in the [attributes](#required-attributes) that apply to your particular hardware.
 Refer to your motor and motor driver data sheets for specifics.
 
-Here’s an example of a basic stepper driver config:
-
 {{< tabs name="gpiostepper-config">}}
 {{% tab name="Config Builder" %}}
+
+Here’s an example of a basic stepper driver config:
 
 <img src="../../img/motor/gpiostepper-config-ui.png" alt="Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15, respectively." style="max-width:900px;width:100%" >
 
@@ -60,6 +61,8 @@ Here’s an example of a basic stepper driver config:
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
+
+Here’s an example of a basic stepper driver config:
 
 ```json
 {
@@ -99,7 +102,7 @@ Here’s an example of a basic stepper driver config:
 Name | Type | Description
 -------------- | ---- | ---------------
 `board` | string | Should match name of board to which the motor driver is wired.
-`pins` | object | A structure containing "step" and "dir" pin numbers; see example JSON above.
+`pins` | object | A JSON object containing `step` and `dir` pin numbers.
 `ticks_per_rotation` | integer | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common. If your data sheet specifies this in terms of degrees per step, divide 360 by that number to get ticks per rotation.
 
 ### Optional Attributes

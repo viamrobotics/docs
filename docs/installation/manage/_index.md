@@ -26,31 +26,31 @@ You can use the following commands to do so:
 
 Start:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl start viam-server
 ```
 
 Stop:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl stop viam-server
 ```
 
 Restart:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl restart viam-server
 ```
 
 Enable (start automatically after boot):
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl enable viam-server
 ```
 
 Disable (do not start automatically after boot):
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl disable viam-server
 ```
 
@@ -71,7 +71,7 @@ Note that on a Raspberry Pi, `viam-server` must always run as root in order to a
 
 You can run `viam-server` by running the following command, always making sure to replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam-server -config ~/Downloads/viam-<YOUR_ROBOT_NAME>-main.json
 ```
 
@@ -89,19 +89,19 @@ Once you have `viam-server` downloaded locally from Homebrew, you will need to u
 
 Start:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew services start viam-server
 ```
 
 Stop:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew services stop viam-server
 ```
 
 Restart:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew services restart viam-server
 ```
 
@@ -115,7 +115,7 @@ brew services restart viam-server
 
 ### View Logs
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo journalctl --unit=viam-server
 ```
 
@@ -123,9 +123,9 @@ If the robot is able to connect with the Viam app, logs can also be viewed in th
 
 ### SquashFS Errors
 
-Looks like this...
+Look like this...
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 Feb 10 13:11:26 hydro3-pi viam-server[933]: Something went wrong trying to read the squashfs image.
 Feb 10 13:11:26 hydro3-pi viam-server[933]: open dir error: No such file or directory
 ```
@@ -149,7 +149,7 @@ If you have already successfully connected `viam-server` to the Viam app, you ca
 
 You can also read `viam-server`'s log files locally.
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cat $(brew --prefix)/var/log/viam.log
 ```
 

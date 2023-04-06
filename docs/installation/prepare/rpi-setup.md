@@ -145,7 +145,7 @@ Example: if your username is 'USERNAME' and your hostname is 'pi': then it shoul
 
 {{% /alert  %}}
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 ssh <USERNAME>@<HOSTNAME>.local
 ```
 
@@ -155,7 +155,7 @@ You should be greeted by a login message and a command prompt.
 
 Next, it's good practice to update your Raspberry Pi to ensure all the latest packages are installed:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo apt update
 sudo apt upgrade
 ```
@@ -166,7 +166,7 @@ If you are using hardware that requires I2C, SPI, serial, or one-wire protocols 
 
 Launch the config tool by running the following command:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo raspi-config
 ```
 
@@ -180,7 +180,7 @@ When using a CSI camera, you need to enable legacy camera support.
 
 For these changes to take effect, you need to restart your Raspberry Pi if it hasn't already prompted you to do so.
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo reboot
 ```
 
