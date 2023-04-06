@@ -761,3 +761,20 @@ footer small {
 }
 
 /* END Feedback container */
+
+.glossary-anchor {
+  color: black;
+
+  svg {
+    visibility: hidden;
+  }
+}
+
+.glossary-anchor:hover {
+  color: black;
+
+  svg {
+    color: #0000EA;
+    visibility: initial;
+  }
+}

@@ -14,7 +14,7 @@ aliases:
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/drl2p2of-qA">}}
 
-To install the Viam [RDK](/appendix/glossary/#rdk_anchor), you need a Raspberry Pi running a 64-bit Linux distribution.
+To install the Viam {{< glossary_tooltip term_id="rdk" text="RDK" >}}, you need a Raspberry Pi running a 64-bit Linux distribution.
 
 If you already have a 64-bit Linux distribution installed on your Pi, skip ahead to [enable the required communication protocols for your hardware](#enable-communication-protocols).
 

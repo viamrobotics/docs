@@ -17,10 +17,10 @@ When using Viam, this is what you'll need to know to plan your robot:
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/633d91b848050946efcf0690_viam-overview-illustrations-build.svg" alt="A diagram of robotic parts and software" style="float: right; max-width:250px; display: block; margin: auto auto auto 20px"></img>
 
 - **Hardware**:
-Many [robotic components](/components) are natively supported by the Viam platform.
+Many {{< glossary_tooltip term_id="component" text="robotic components">}} are natively supported by the Viam platform.
 You will not need to write a single line of code to integrate them, and swapping out component models will not require code changes.
 - **Functionality**:
-You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in [services](/services).
+You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
 - **Architecture**:
 You can build simple robots or multi-part robots that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
 - **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/program/extend) Viam.

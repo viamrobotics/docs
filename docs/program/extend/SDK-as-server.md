@@ -15,7 +15,7 @@ However, you can leverage any Viam [SDK](/program/extend/sdk-as-server) to creat
 ## What is a custom component implementation?
 
 Implementing a custom component allows you to create a new component type (or a new model of an existing type, such as a new `arm` model) that interfaces with `viam-server` using Viam's SDKs.
-A custom component is a subclass of a [component](https://python.viam.dev/autoapi/viam/components/component_base/index.html#module-viam.components.component_base) that allows you to register the new component with the `viam-server` as a [*remote*](/appendix/glossary/#remote_anchor) after you spin up an SDK server (which can have one or many custom components).
+A custom component is a subclass of a [component](https://python.viam.dev/autoapi/viam/components/component_base/index.html#module-viam.components.component_base) that allows you to register the new component with the `viam-server` as a {{< glossary_tooltip term_id="remote" text="remote" >}} after you spin up an SDK server (which can have one or many custom components).
 
 In other words, a custom component implementation is a way for you to integrate unsupported components into a robot running on the Viam platform.
 
