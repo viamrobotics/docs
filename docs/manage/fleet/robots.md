@@ -31,11 +31,11 @@ You can delete a robot by checking the **Sure?** box in the lower left of the ro
 The banner at the top of the robot page displays the robot's location, name, and a drop down list of all parts of that robot.
 The first part you create will be the _main part_ but you can create additional parts in the drop down.
 
-{{< figure src="../../../img/app-usage/part-drop-down.png" width="800px" alt="The robot page for an example robot with the parts drop down open." title="Example Robot Page with the Parts drop-down open (boxed in red)." >}}
+{{< figure src="../../img/app-usage/part-drop-down.png" width="800px" alt="The robot page for an example robot with the parts drop down open." title="Example Robot Page with the Parts drop-down open (boxed in red)." >}}
 
 To delete a part or make it the main part, use the buttons in the top right of the **CONFIG** tab.
 
-{{< figure src="../../../img/app-usage/part-mgmt.png" width="800px" alt="Screenshot of the CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons." title="Screenshot of the CONFIG tab of a robot's page highlighting the Make main part and Delete Part buttons (boxed in red)." >}}
+{{< figure src="../../img/app-usage/part-mgmt.png" width="800px" alt="Screenshot of the CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons." title="Screenshot of the CONFIG tab of a robot's page highlighting the Make main part and Delete Part buttons (boxed in red)." >}}
 
 If you've connected your robot to a machine running `viam-server` (instructions below), the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
 
@@ -93,7 +93,7 @@ If you have configured a camera component, a window in the **CONTROL** tab displ
 The **SECURITY** tab allows you to access and exchange the **Robot Part Secret Keys** of your robot.
 A robot part secret is a unique secret used by the robot to communicate with the cloud.
 
-{{< figure src="../../../img/app-usage/robot-part-secret-keys-drop-down.png" width="800px" alt="Screenshot of the SECURITY tab of a robot's page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down." title="Screenshot of the SECURITY tab of a robot's page." >}}
+{{< figure src="../../img/app-usage/robot-part-secret-keys-drop-down.png" width="800px" alt="Screenshot of the SECURITY tab of a robot's page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down." title="Screenshot of the SECURITY tab of a robot's page." >}}
 
 Copy the secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
