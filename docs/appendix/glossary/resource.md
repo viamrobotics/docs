@@ -2,7 +2,7 @@
 title: Resource
 id: resource
 full_link:
-short_description: Stored instance of a container that holds a set of software needed to run an application.
+short_description: Resources are individual, addressable elements of a robot (RDK definition) operated by parts.
 aka:
 ---
 
