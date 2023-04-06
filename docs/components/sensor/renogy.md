@@ -2,7 +2,6 @@
 title: "Configure a renogy Sensor"
 linkTitle: "renogy"
 weight: 70
-draft: false
 type: "docs"
 description: "Configure a renogy model sensor."
 tags: ["sensor", "components"]
@@ -10,13 +9,14 @@ icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
 
-Configure a `renogy` sensor to integrate a [Renogy solar charge controller with temperature sensor](https://www.amazon.com/Renogy-Battery-Temperature-Sensor-Controllers/dp/B07WMMJFWY) into your robot.
+Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](https://www.amazon.com/Renogy-Battery-Temperature-Sensor-Controllers/dp/B07WMMJFWY) into your robot.
 
 Configure a `renogy` sensor as follows:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
+On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
 Enter a name for your sensor, select the type `sensor`, and select the `renogy` model.
 
 <img src="../img/renogy-sensor-ui-config.png" alt="Creation of a renogy sensor in the Viam app config builder." style="max-width:800px" />

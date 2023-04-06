@@ -2,7 +2,6 @@
 title: "Configure an ultrasonic Sensor"
 linkTitle: "ultrasonic"
 weight: 60
-draft: false
 type: "docs"
 description: "Configure an ultrasonic model sensor."
 tags: ["sensor", "components"]
@@ -10,7 +9,7 @@ icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
 
-Configure an `ultrasonic` sensor to integrate a [An HC-S204 ultrasonic distance sensor](https://www.sparkfun.com/products/15569) into your robot.
+Configure an `ultrasonic` sensor to integrate an [HC-S204 ultrasonic distance sensor](https://www.sparkfun.com/products/15569) into your robot.
 
 Configure a `ultrasonic` sensor as follows:
 
@@ -28,8 +27,10 @@ Enter a name for your sensor, select the type `sensor`, and select the `ultrason
       "type": "sensor",
       "model": "ultrasonic",
       "attributes": {
-        "trigger_pin": <number>
-        "board": <your-board-name>
+        "trigger_pin": <number>,
+        "echo_interrupt_pin": <your-digital-interrupt-name>,
+        "board": <your-board-name>,
+        "timeout_ms": <number>
       },
       "depends_on": []
     },
@@ -63,8 +64,9 @@ Enter a name for your sensor, select the type `sensor`, and select the `ultrason
       "model": "ultrasonic",
       "attributes": {
         "trigger_pin": "5",
-        "echo_interrupt_pin": "your-digital-interrupt-name",
-        "board": "your-board-name"
+        "echo_interrupt_pin": "your-example-echo-interrupt",
+        "board": "your-board-name",
+        "timeout_ms": "1000"
       },
       "depends_on": []
     },
@@ -75,7 +77,7 @@ Enter a name for your sensor, select the type `sensor`, and select the `ultrason
       "attributes": {
         "digital_interrupts": [
           {
-            "name": "your-example-interrupt",
+            "name": "your-example-echo-interrupt",
             "pin": "15"
           }
         ]
@@ -94,10 +96,10 @@ See [here](/components/board/#digital-interrupts) for instructions on how to mod
 
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
-| `trigger_pin` | **Required** | The pin number on the board that you have connected [the sensor's trigger pin](https://components101.com/sensors/ultrasonic-sensor-working-pinout-datasheet). Example: `"5"`. |
-| `echo_interrupt_pin` | **Required** | The name of the [digital interrupt](/components/board/#digital-interrupts) you have configured on your board that contains the pin number of the pin [the sensor's echo pin](https://components101.com/sensors/ultrasonic-sensor-working-pinout-datasheet) is connected to. Example: `"my-interrupt-1"`. |
+| `trigger_pin` | **Required** | The pin number on the board that you have connected [the sensor's trigger pin](https://www.sparkfun.com/products/15569). Example: `"5"`. |
+| `echo_interrupt_pin` | **Required** | The `name` of the [digital interrupt](/components/board/#digital-interrupts) you have configured on your board that contains the pin number of the pin [the sensor's echo pin](https://www.sparkfun.com/products/15569) is connected to. Example: `"my-interrupt-1"`. |
 | `board`  | **Required** | The `name` of the [board](/components/board) the sensor is connected to. |
-| `timeout_ms`  | **Required** | Time to wait in milliseconds before timing out of getting a reading from the sensor. Default: `1000`. |
+| `timeout_ms`  | Optional | Time to wait in milliseconds before timing out of requesting to get readings from the sensor. Default: `1000`. |
 
 {{% alert title="Tip" color="Tip" %}}
 

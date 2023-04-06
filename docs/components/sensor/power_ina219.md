@@ -34,7 +34,7 @@ Enter a name for your sensor, select the type `sensor`, and select the `power_in
       "model": "power_ina219",
       "attributes": {
         "board": <your-board-name>,
-        "i2c_bus": <number>
+        "i2c_bus": <your-i2c-bus-name>
       },
       "depends_on": []
     }
@@ -48,5 +48,5 @@ Enter a name for your sensor, select the type `sensor`, and select the `power_in
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
 | `board`  | **Required** | The `name` of the [board](/components/board) the sensor is connected to. |
-| `i2c_bus` | **Required** | The [I2C bus value](/components/board/#i2c) the sensor is connected to on the board. |
+| `i2c_bus` | **Required** | The `name` of the [I2C bus](/components/board/#i2c) on the board that the sensor is connected to. |
 | `i2c_address`  | Optional | Default: `0x40`. The [I2C device address](https://learn.adafruit.com/i2c-addresses/overview) of the sensor. |

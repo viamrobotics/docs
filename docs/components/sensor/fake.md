@@ -1,8 +1,7 @@
 ---
 title: "Create a Custom Sensor Model"
 linkTitle: "fake"
-weight: 50
-draft: false
+weight: 80
 type: "docs"
 description: "Configure a fake sensor to use for testing."
 tags: ["sensor", "components"]
@@ -38,4 +37,4 @@ Enter a name for your sensor, select the type `sensor`, and select the `fake` mo
 {{< /tabs >}}
 
 No attributes are available for `fake` sensors.
-Calling [readings](../_index.md#readings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.
+A call to [`Readings()`](../#readings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.

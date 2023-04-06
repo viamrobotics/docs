@@ -2,7 +2,6 @@
 title: "Configure a sensirion-sht3xd Sensor"
 linkTitle: "sensirion-sht3xd"
 weight: 70
-draft: false
 type: "docs"
 description: "Configure a sensirion-sht3xd model sensor."
 tags: ["sensor", "components"]
@@ -10,7 +9,7 @@ icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
 
-Configure a `sensirion-sht3xd` sensor to integrate a [Sensirion's SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) into your robot.
+Configure a `sensirion-sht3xd` sensor to integrate a [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) into your robot.
 
 Configure a `sensirion-sht3xd` sensor as follows:
 
@@ -34,7 +33,7 @@ Enter a name for your sensor, select the type `sensor`, and select the `sensirio
       "model": "sensirion-sht3xd",
       "attributes": {
         "board": <your-board-name>,
-        "i2c_bus": <number>
+        "i2c_bus": <your-i2c-bus-namer>
       },
       "depends_on": []
     }
@@ -48,5 +47,5 @@ Enter a name for your sensor, select the type `sensor`, and select the `sensirio
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
 | `board`  | **Required** | The `name` of the [board](/components/board) the sensor is connected to. |
-| `i2c_bus` | **Required** | The [I2C bus value](/components/board/#i2c) the sensor is connected to on the board. |
+| `i2c_bus` | **Required** | The `name` of the [I2C bus](/components/board/#i2c) on the board that the sensor is connected to. |
 | `i2c_address`  | Optional | Default: `0x44`. The [I2C device address](https://learn.adafruit.com/i2c-addresses/overview) of the sensor. |
