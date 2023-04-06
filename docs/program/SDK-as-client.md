@@ -33,14 +33,14 @@ pip install viam-sdk
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-``` shell
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go get go.viam.com/rdk/robot/client
 ```
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-``` shell
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 npm install --save @viamrobotics/sdk
 ```
 
@@ -230,14 +230,14 @@ For example:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-``` shell
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 python3 ~/myCode/myViamFile.py
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-``` shell
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go run ~/myCode/myViamFile.py
 ```
 
