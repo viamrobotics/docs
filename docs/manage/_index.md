@@ -18,7 +18,7 @@ The [Viam app](https://app.viam.com/) has several key features:
 
 <br>
 
-You can also manage and control your robots from the command line with our [CLI](CLI).
+You can also manage and control your robots from the command line with our [CLI](cli).
 
 ## Create an account
 
