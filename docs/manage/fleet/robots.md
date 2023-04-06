@@ -37,7 +37,7 @@ The following tabs are found on the robot page:
 ### Setup
 
 The **SETUP** tab contains information for starting an instance of `viam-server` on your robot's computer.
-Select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
+Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
 
 {{% alert title="Tip" color="tip" %}}
 More in-depth information on installing `viam-server` can be found in our [Install Guide](/installation#install-viam-server).
