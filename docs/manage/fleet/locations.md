@@ -37,8 +37,8 @@ Members of the organization have access to all locations in the organization by 
 
 There are two ways to share a location beyond its organization:
 
-- [Share a location with an additional organization](#sharing-a-location-with-an-additional-organization)
-- [Share a location using location secret keys](#sharing-a-location-using-location-secret-keys)
+- [Share a location with an additional organization](#share-a-location-with-an-additional-organization)
+- [Share a location using location secret keys](#share-a-location-using-location-secret-keys)
 
 #### Share a location with an additional organization
 

@@ -27,7 +27,7 @@ Learn about [the Viam platform in 3 minutes](viam).
         <div style="text-align: left">
             <ol style="padding-inline-start: 1.1rem">
             <li><a href="installation">Install Viam</a> on your robot</li>
-            <li><a href="manage/app-usage/">Connect to the Viam app</a></li>
+            <li><a href="manage/fleet/">Connect to the Viam app</a></li>
             <li>Configure <a href="components">components</a> and <a href="services">services</a></li>
             </ol>
             {{<gif webm_src="img/blink.webm" mp4_src="img/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
