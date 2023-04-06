@@ -342,7 +342,7 @@ If maps are not building the way you expect, make sure your Rplidar is secure an
 
 If there is a saved map in `data_dir/map` and saved data in `data_dir/data` from a previous run, then offline mode
 may error at startup, since the data has already been incorporated into the map. If that occurs, you can
-either clear `data_dir/map` to rerun offline mode, or clear `data_dir/data` to view the saved map.
+clear `data_dir/map` to rerun the dataset in offline mode.
 
 ## Next Steps
 
