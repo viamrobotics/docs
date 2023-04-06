@@ -26,7 +26,7 @@ Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/
 2. If you already created your robot in the app, navigate to its **CONFIG** tab and skip to [Configuring the board](#configuring-the-board).
 3. Create an **Organization**.
    If you already have an Organization, then this step is optional.
-   If you need help with organizations and locations, see our [guide to using the Viam app](/manage/app-usage/).
+   If you need help with organizations and locations, see our [guide to using the Viam app](/manage/fleet/).
 4. Create a **Location**.
    If you already have a Location, then this step is optional.
 5. Create a **robot** and navigate to its **CONFIG** tab.
