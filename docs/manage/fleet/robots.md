@@ -47,7 +47,7 @@ More in-depth information on installing `viam-server` can be found in our [Insta
 
 On the **CONFIG** tab you can start adding robot components, services, and other robot resources.
 
-For more information, see the [configuration documentation](../../manage/configuration/#the-config-tab).
+For more information, see the [configuration documentation](../../configuration/#the-config-tab).
 
 ### Logs
 
