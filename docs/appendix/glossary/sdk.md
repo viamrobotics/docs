@@ -14,4 +14,4 @@ Viam provides an SDK to help you write client applications, and create support f
   - That serves functionality for all registered resources.
 - Can be used as a client.
   - To connect to a robot implementing the Viam Robot API.
-- Effectively, non-golang versions of RDK’s resource authoring and activation functionality.
+- Effectively, non-golang versions of {{< glossary_tooltip term_id="rdk" text="RDK" >}}’s resource authoring and activation functionality.
