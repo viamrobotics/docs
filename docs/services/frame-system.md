@@ -226,7 +226,7 @@ This *supplemental transform* is the missing link to be able to transform a pose
 
 Both TransformPose and FrameSystemConfig optionally take in these supplemental transforms.
 
-Functions of some services and components take in a WorldState parameter (like `ArmMoveToPosition`).
+Functions of some services take in a WorldState parameter (like `motion_service.move(component_name, destination, world_state)`).
 This data structure includes an entry for supplying supplemental transforms for use by internal calls to the Frame System.
 
 ## Reference
