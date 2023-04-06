@@ -1,7 +1,7 @@
 ---
 title: SDK (Software Development Kit)
 id: sdk
-full_link:
+full_link: /program/sdk-as-client/
 short_description: Viam provides an SDK to help you write client applications, and create support for custom component types.
 aka:
 ---

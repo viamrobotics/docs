@@ -1,7 +1,7 @@
 ---
 title: Remote
 id: remote
-full_link:
+full_link: /manage/parts-and-remotes/
 short_description: A robot part which is controlled by another robot part.
 aka:
 ---

@@ -1,7 +1,7 @@
 ---
 title: Service
 id: service
-full_link:
+full_link: /services/
 short_description: Services are on-device software for complex capabilities such as SLAM, Computer Vision, Motion Planning, and Data Collection.
 aka:
 ---

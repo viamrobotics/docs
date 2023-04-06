@@ -1,7 +1,7 @@
 ---
 title: Part
 id: part
-full_link:
+full_link: /manage/parts-and-remotes/
 short_description: A computer, like a Raspberry Pi, running viam-server along with the hardware components the computer controls.
 aka:
 ---

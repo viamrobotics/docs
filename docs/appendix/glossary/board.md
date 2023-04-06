@@ -1,7 +1,7 @@
 ---
 title: Board
 id: board
-full_link:
+full_link: /components/board/
 short_description: An IO board that is, or is connected to, a robot part and used to express low-level electronics functionality such as GPIO, SPI, or I2C.
 aka:
 ---

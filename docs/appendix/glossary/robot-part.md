@@ -1,7 +1,7 @@
 ---
 title: Robot Part
 id: robot-part
-full_link:
+full_link: /manage/parts-and-remotes/
 short_description: A part runs an instance of viam-server to operate underlying resources such as hardware components, software services, and any additional processes.
 aka:
 ---

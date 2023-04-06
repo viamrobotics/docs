@@ -1,7 +1,7 @@
 ---
 title: SLAM
 id: slam
-full_link:
+full_link: /services/slam/
 short_description: Simultaneous localization and mapping.
 aka:
 ---
