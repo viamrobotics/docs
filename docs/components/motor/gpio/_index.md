@@ -19,10 +19,10 @@ To configure a DC motor as a component of your robot, first configure the [board
 Then assign your motor a `name` (to identify the motor), `type` (`motor`) and `model` (`gpio`), and fill in the [attributes](#required-attributes) that apply to your particular hardware.
 Refer to your motor and motor driver data sheets for specifics.
 
-An example configuration for a `gpio` motor:
-
 {{< tabs name="gpio-config">}}
 {{% tab name="Config Builder" %}}
+
+An example configuration for a `gpio` motor:
 
 <img src="../../img/motor/gpio-config-ui.png" alt="G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
 
@@ -63,6 +63,8 @@ An example configuration for a `gpio` motor:
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
+
+An example configuration for a `gpio` motor:
 
 ```json
 {

@@ -17,11 +17,11 @@ See the [encoder component documentation](/components/encoder/) for more informa
 Viam supports `gpio` model motors with encoders.
 To configure an encoded motor, you must configure the encoder [per the encoder documentation](/components/encoder) and then configure a `gpio` motor with an `encoder` attribute in addition to the [standard `gpio` model attributes](/components/motor/gpio/).
 
-Here’s an example configuration:
-
 <a id="encoder-config">
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
+
+Here’s an example configuration:
 
 <img src="../../../img/motor/encoded-config-ui.png" alt="Screenshot of an encoded motor config in the Viam app UI." style="max-width:800px;width:100%" >
 
@@ -70,6 +70,8 @@ Here’s an example configuration:
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
+
+Here’s an example configuration:
 
 ```json
 {
