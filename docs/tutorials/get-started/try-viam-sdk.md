@@ -52,7 +52,7 @@ You can run your code by typing the following into your terminal:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 python3 square.py
 ```
 
@@ -61,7 +61,7 @@ python3 square.py
 
 If using Go, you need to initialize your project, and install the necessary libraries before running the program.
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go mod init square
 go mod tidy
 go run square.go

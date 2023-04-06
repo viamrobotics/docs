@@ -276,7 +276,7 @@ or if you want a video without controls - mimicking a GIF:
 
 And to create the source files, run these commands:
 
-```sh
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 ffmpeg -i PATH_TO_GIF_OR_VID -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c:a eac3 -b:a 224k PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 ```

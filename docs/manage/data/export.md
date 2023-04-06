@@ -9,7 +9,7 @@ tags: ["data management", "cloud", "sync"]
 
 First, install the [Viam CLI](/manage/cli) and [authenticate](/manage/cli/#authenticate).
 
-``` bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/cli/cmd@latest
 viam auth
 ```
@@ -23,7 +23,7 @@ To export data from the Data Management Service in the cloud:
 
 3. Run the copied command in a terminal:
 
-   ```sh
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    go run go.viam.com/rdk/cli/viam data export --org_ids=<org_id> --data_type=binary --mime_types=<mime_types> --destination=.
    ```
 

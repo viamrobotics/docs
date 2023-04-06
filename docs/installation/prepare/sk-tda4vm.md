@@ -73,25 +73,25 @@ From the SSH session on the TDA4VM board:
 
 1. Clone the TDA4VM repo:
 
-   ```bash
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    git clone https://github.com/viam-labs/tda4vm-setup.git
    ```
 
 2. Navigate to the setup directory:
 
-   ```bash
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    cd tda4vm-setup/
    ```
 
 3. Make the server setup script executable:
 
-   ```bash
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    chmod +x tda4vm-viam-setup.sh
    ```
 
 4. Launch the setup script to install `viam-server` dependencies:
 
-   ```bash
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    ./tda4vm-viam-setup.sh
    ```
 
