@@ -11,7 +11,7 @@ imageAlt: "base"
 # SMEs: Steve B
 ---
 
-A {{< glossary_tooltip term_id="base" >}} is the platform that the other parts of a mobile robot attach to.
+A base is the platform that the other parts of a mobile robot attach to.
 
 By configuring a base component, organizing individual components to produce coordinated movement, you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
 
