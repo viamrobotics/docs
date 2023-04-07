@@ -709,7 +709,7 @@ footer small {
   margin-top: 1.5rem;
 }
 
-.td-content > img {
+.td-content img {
   margin-bottom: 1rem;
 }
 
@@ -761,3 +761,20 @@ footer small {
 }
 
 /* END Feedback container */
+
+.glossary-anchor {
+  color: black;
+
+  svg {
+    visibility: hidden;
+  }
+}
+
+.glossary-anchor:hover {
+  color: black;
+
+  svg {
+    color: #0000EA;
+    visibility: initial;
+  }
+}

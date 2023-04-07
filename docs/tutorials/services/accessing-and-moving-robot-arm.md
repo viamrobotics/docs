@@ -92,7 +92,7 @@ print(f"myArm get_end_position return value: {my_arm_end_position}")
 
 You should see output that looks similar to the following:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 myArm get_end_position return value: x: 200.73450755898915
 y: 0.0028507667654201754
 z: 108.63966593621173
@@ -129,7 +129,7 @@ fmt.Println("myArm EndPosition orientation value:", myArmEndPosition.Orientation
 
 You should see output that looks similar to the following:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 myArm EndPosition position value: (200.734507558989150766137755, 0.002850766765420175395673, 108.639665936211727625959611)
 myArm EndPosition orientation value: &{-0.009825947555660422 -2.127840592298059e-06 0.9999517242097753 -5.6523269754840597e-08}
 ```
@@ -155,7 +155,7 @@ print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 
 You should see output that looks similar to the following:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 myArm get_joint_positions return value: values: 0.00043945314765093886
 values: 0.46724854536551791
 values: 0.64500731344456741
@@ -180,7 +180,7 @@ fmt.Println("myArm JointPositions return value:", myArmJointPositions)
 
 You should see output that looks similar to the following:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 myArm JointPositions return value: values:0.00043945314765093886  values:0.4672485453655179  values:0.6450073134445674  values:-0.0009887695170768527  values:0.013732909913080547  values:0.0007690429693064871
 ```
 
@@ -254,19 +254,19 @@ For example, the following code gets the arm's end position, makes a 100 millime
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-You must import some additional Python packages to synthesize new poses and to provide an empty `WorldState` to the arm component's `move_to_position` command.
-Add `from viam.proto.common import Pose, WorldState` to your import list and add the sample code below to your own client script.
+You must import some additional Python packages to synthesize new poses for the arm component's `move_to_position` command.
+Add `from viam.proto.common import Pose` to your import list and add the sample code below to your own client script.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Generate a simple pose move +100mm in the +Z direction of the arm
 cmd_arm_pose = await my_arm_component.get_end_position()
 cmd_arm_pose.z += 100.0
-await my_arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
+await my_arm_component.move_to_position(pose=cmd_arm_pose)
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-You must import some additional Go packages to synthesize new poses through the `spatialmath` library, and to provide an empty `WorldState` to the arm component's `MoveToPosition` command.
+You must import some additional Go packages to synthesize new poses through the `spatialmath` library.
 Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to your import list and then add the sample code below to your own client script.
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -279,7 +279,7 @@ adjustedArmPoint := currentArmPose.Point()
 adjustedArmPoint.Z += 100.0
 cmdArmPose := spatialmath.NewPose(adjustedArmPoint, currentArmPose.Orientation())
 
-err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, &referenceframe.WorldState{}, nil)
+err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, nil)
 if err != nil {
   fmt.Println(err)
 }
@@ -314,7 +314,6 @@ For more resources on robot kinematics, read through the Wikipedia pages for [Fo
 import asyncio
 
 from viam.components.arm import Arm
-from viam.proto.common import WorldState
 from viam.proto.component.arm import JointPositions
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
@@ -355,7 +354,7 @@ async def main():
     # Generate a simple pose move +100mm in the +Z direction of the arm
     cmd_arm_pose = await my_arm_component.get_end_position()
     cmd_arm_pose.z += 100.0
-    await my_arm_component.move_to_position(pose=cmd_arm_pose, world_state=WorldState())
+    await my_arm_component.move_to_position(pose=cmd_arm_pose)
 
     # Don't forget to close the robot when you're done!
     await robot.close()
@@ -442,7 +441,7 @@ func main() {
   adjustedArmPoint.Z += 100.0
   cmdArmPose := spatialmath.NewPose(adjustedArmPoint, currentArmPose.Orientation())
 
-  err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, &referenceframe.WorldState{}, nil)
+  err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, nil)
   if err != nil {
     fmt.Println(err)
   }

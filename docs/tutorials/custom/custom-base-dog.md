@@ -61,18 +61,18 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
 
 3. Install pip and then git:
 
-    ```bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     sudo apt install pip
     ```
 
-    ```bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     sudo apt install git
     ```
 
 4. Navigate to the directory on the Pi where you'd like to install the Freenove robot dog code (for example `/home/fido/`).
 Get the code by running the following command:
 
-    ```bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     git clone https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi
     ```
 
@@ -85,7 +85,7 @@ If the name of the directory where you store and run your code is different, be 
 
 6. Check which version of Python you have installed on the Pi:
 
-    ```bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     python --version
     ```
 
@@ -93,7 +93,7 @@ If the name of the directory where you store and run your code is different, be 
 
 7. Install the [Viam Python SDK](https://python.viam.dev/):
 
-    ```bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     pip install viam-sdk
     ```
 
@@ -103,20 +103,20 @@ If the name of the directory where you store and run your code is different, be 
 
 10. Install smbus so that the servo code works:
 
-    ```bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     sudo apt-get install python3-smbus
     ```
 
 11. Follow Chapter 1, Step 3 (page 42 as of January 24, 2023) of the Freenove tutorial to complete the software installation:
 
-    ```bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     cd /home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code
     sudo python setup.py
     ```
 
 12. Restart the Raspberry Pi:
 
-    ```bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     sudo reboot
     ```
 
@@ -174,7 +174,7 @@ Open two terminal windows on your development machine: one for the robot dog Pi 
 
 In one terminal, SSH into the Pi using the username and hostname you set up when imaging the Pi, for example:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 ssh fido@robotdog.local
 ```
 
@@ -182,14 +182,14 @@ Navigate to the <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Se
 
 Start the robot dog server by running:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo python main.py -tn
 ```
 
 In the other terminal window, navigate to the directory on your development machine where you saved <file>dog_test.py</file>.
 Run the connection test file with the following command:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 python dog_test.py
 ```
 
@@ -203,7 +203,7 @@ You can also try turning the robot off and on again, and then retrying the proce
 
 From the Raspberry Pi terminal, create a directory inside the home directory to hold your custom code files:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 mkdir RobotDog
 ```
 
@@ -356,14 +356,14 @@ If you prefer, you can start the processes manually from command terminals on th
 
 From the <file>home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/</file> directory start the Freenove robot dog server:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo python main.py -tn
 ```
 
 Then, open another terminal, SSH to the Pi, and navigate to the directory where you saved your custom Viam component code (for example, <file>/home/fido/RobotDog/</file>).
 Start the custom component server by running:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 python python_server.py
 ```
 
@@ -398,20 +398,20 @@ If you have otherwise unexplained connection errors, try powering things off and
 
   1. Install Netcat if it isn't already installed:
 
-      ```bash
+      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       sudo apt install netcat
       ```
 
   2. Connect directly to the robot dog by running the following command (replacing <DOG IP ADDRESS> with the correct IP address, for example `nc 10.0.0.123`) from the command line while SSHed into the Pi:
 
-      ```bash
+      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       nc <DOG IP ADDRESS> 5001
       ```
 
   3. You can now type commands ([see the list of available commands here](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Code/Client/Command.py)) and hit enter to send them to the Freenove robot dog server.
     For example:
 
-      ```bash
+      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       CMD_TURN_LEFT#30
       CMD_STOP
       ```

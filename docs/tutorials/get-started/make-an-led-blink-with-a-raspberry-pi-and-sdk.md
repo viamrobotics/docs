@@ -83,14 +83,14 @@ You can run your code by typing the following into the terminal:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 python3 blink.py
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go run blink.go
 ```
 
@@ -263,14 +263,14 @@ You can run your code again by typing the following into the terminal:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 python3 blink.py
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go run blink.go
 ```
 

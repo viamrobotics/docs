@@ -41,7 +41,7 @@ Install ORB-SLAM3 with one of these commands:
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
 
-  ```bash
+  ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
   sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
   sudo chmod a+rx /usr/local/bin/orb_grpc_server
   ```
@@ -49,7 +49,7 @@ Install ORB-SLAM3 with one of these commands:
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
-  ```bash
+  ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
   sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
   sudo chmod a+rx /usr/local/bin/orb_grpc_server
   ```
@@ -146,8 +146,8 @@ In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configu
 {{% alert title="Note" color="note" %}}
 If you're using a Raspberry Pi as your machine, you must `ssh` into your Pi to complete this step.
 
-```bash
-YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
+```sh {id="terminal-prompt" class="command-line" data-prompt="YOUR_USERNAME@YOUR_RPI_NAME:~ $" data-output="2"}
+pwd
 /home/YOUR_USERNAME
 ```
 
@@ -247,7 +247,7 @@ If not, don't worry! You can download our dataset: <a href="https://storage.goog
 
 If you downloaded our dataset, and assuming that the zip file is now located in your `~/Downloads` folder, you can copy/paste it into your Pi by running the following command:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 scp ~/Downloads/data.zip YOUR_USERNAME@YOUR_RPI_NAME.local:~/.
 ```
 
@@ -256,7 +256,7 @@ The dataset is large, so it might take a while for it to copy over to your Pi.
 
 Next, `ssh` into your Pi, and run:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 unzip data.zip
 ```
 

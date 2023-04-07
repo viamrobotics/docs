@@ -17,10 +17,10 @@ When using Viam, this is what you'll need to know to plan your robot:
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/633d91b848050946efcf0690_viam-overview-illustrations-build.svg" alt="A diagram of robotic parts and software" style="float: right; max-width:250px; display: block; margin: auto auto auto 20px"></img>
 
 - **Hardware**:
-Many [robotic components](/components) are natively supported by the Viam platform.
+Many {{< glossary_tooltip term_id="component" text="robotic components">}} are natively supported by the Viam platform.
 You will not need to write a single line of code to integrate them, and swapping out component models will not require code changes.
 - **Functionality**:
-You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in [services](/services).
+You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
 - **Architecture**:
 You can build simple robots or multi-part robots that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
 - **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/program/extend) Viam.
@@ -59,9 +59,9 @@ For each component that makes up your robot:
 
 <img src="img/test_components.png" alt="Multiple components being tested in the Viam app." style="float: right; max-width:320px; display: block; margin: auto auto auto 10px"></img>
 
-1. Add it to your robot by [choosing the component type](/manage/app-usage/#config) (example: `camera`) and model (example: `webcam`)
-2. Test it with the visual [control tab](/manage/app-usage/#control)
-3. See any problems with in-app [logs](/manage/app-usage/#logs), review or roll back configuration [history](/manage/app-usage/#history)
+1. Add it to your robot by [choosing the component type](/manage/fleet/#configuration) (example: `camera`) and model (example: `webcam`)
+2. Test it with the visual [control tab](/manage/fleet/#remote-control)
+3. See any problems with in-app [logs](/manage/fleet/#logs), review or roll back configuration [history](/manage/fleet/#configuration)
 
 After configuring your robot's hardware, you can configure high level functionality the same way:
 
@@ -93,7 +93,7 @@ There are four categories of APIs:
 - [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level robot commands
 - [Components](/components) like motors, arms, GPS
 - [Services](/services) like computer vision, motion planning, SLAM
-- Cloud applications like [Fleet Management](/manage/fleet-management), [Data Management](/manage/data)
+- Cloud applications like [Fleet Management](/manage/fleet), [Data Management](/manage/data)
 
 You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).
 
@@ -115,7 +115,7 @@ This allows for tremendous flexibility in terms of your architecture design.
 
 ## Scale
 
-With robots in production, Viam provides [fleet management capabilities](/manage/fleet-management/) to help you scale.
+With robots in production, Viam provides [fleet management capabilities](/manage/fleet/) to help you scale.
 With it you can:
 
 - Manage permissions within your organization and locations.

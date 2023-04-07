@@ -9,7 +9,7 @@ tags: ["slam", "camera", "services", "lidar"]
 ---
 
 {{% alert title="Note" color="note" %}}
-The SLAM Service is an experimental feature.
+The {{< glossary_tooltip term_id="slam" >}} Service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
@@ -39,7 +39,7 @@ Install Cartographer by running the appropriate command for your machine's archi
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
 
-``` bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/carto_grpc_server
 ```
@@ -47,7 +47,7 @@ sudo chmod a+rx /usr/local/bin/carto_grpc_server
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
-``` bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/carto_grpc_server
 ```
@@ -55,7 +55,7 @@ sudo chmod a+rx /usr/local/bin/carto_grpc_server
 {{% /tab %}}
 {{% tab name="MacOS" %}}
 
-``` bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews && brew install carto-grpc-server
 ```
 
@@ -133,8 +133,8 @@ See [SLAM: Data Directory](../#data_dir-data-directory) for more information and
 
 If you are using a Raspberry Pi as your machine, you must `ssh` into your Pi to complete this step.
 
-``` shell
-YOUR_USERNAME@YOUR_RPI_NAME:~ $ pwd
+```sh {id="terminal-prompt" class="command-line" data-prompt="YOUR_USERNAME@YOUR_RPI_NAME:~ $" data-output="2"}
+pwd
 /home/YOUR_USERNAME
 ```
 
@@ -264,7 +264,7 @@ If you don't already have a dataset in `data_dir/data` from running SLAM in live
 
     For example:
 
-    ```bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     scp ~/Downloads/viam-old-office-small-pcd.zip YOUR_USERNAME@MACHINE.local:~/.
     unzip viam-old-office-small-pcd.zip
     ```
@@ -273,7 +273,7 @@ If you don't already have a dataset in `data_dir/data` from running SLAM in live
 
     For example:
 
-    ``` bash
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     cd /home/YOUR_USERNAME/cartographer_dir
     mv ~/Downloads/viam-old-office-small-pcd data/
     ```
@@ -337,6 +337,12 @@ Reducing the frequency the Cartographer service returns the map by adjusting **R
 Only `2D SLAM` is currently implemented for Cartographer.
 Because of this, Cartographer assumes your Rplidar will remain at roughly the same height while in use.
 If maps are not building the way you expect, make sure your Rplidar is secure and at roughly the same height throughout the run.
+
+### Issue: Offline mode produces an error after restart
+
+If there is a saved map in `data_dir/map` and saved data in `data_dir/data` from a previous run, then offline mode
+may error at startup, since the data has already been incorporated into the map. If that occurs, you can
+clear `data_dir/map` to rerun the dataset in offline mode.
 
 ## Next Steps
 

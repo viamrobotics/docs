@@ -88,7 +88,7 @@ You should now see two motors and be able to make each set of wheels spin.
 ## Configuring the Base
 
 Unite these wheel sets with a [base component](/components/base/), which is used to describe the physical structure onto which your components are mounted.
-Configuring a base will also give you a nice UI for moving the rover around.
+Configuring a {{% glossary_tooltip term_id="base" text="base"%}} will also give you a nice UI for moving the rover around.
 
 In the **Create Component** box, name the component `yahboom-base`.
 For the `Type` select `base` and for the `Model` select `wheeled`.

@@ -9,7 +9,7 @@ tags: ["slam", "services"]
 ---
 
 {{% alert title="Note" color="note" %}}
-The SLAM Service is an experimental feature.
+The {{< glossary_tooltip term_id="slam" >}} Service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
@@ -19,7 +19,7 @@ First, install the Rplidar Module:
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
 
-```bash
+```{id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/rplidar-module http://packages.viam.com/apps/rplidar/rplidar-module-latest-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/rplidar-module
 ```
@@ -27,7 +27,7 @@ sudo chmod a+rx /usr/local/bin/rplidar-module
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
-```bash
+```{id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/rplidar-module http://packages.viam.com/apps/rplidar/rplidar-module-latest-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/rplidar-module
 ```
@@ -35,7 +35,7 @@ sudo chmod a+rx /usr/local/bin/rplidar-module
 {{% /tab %}}
 {{% tab name="MacOS" %}}
 
-```bash
+```{id="terminal-prompt" class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews && brew install rplidar-module
 ```
 

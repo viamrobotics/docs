@@ -17,7 +17,7 @@ A global positioning system (GPS) can provide position, linear velocity and comp
 An inertial measurement unit (IMU) can provide angular velocity and orientation.
 We can further apply algorithms, such as a [Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter), to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
 
-Currently (12 December 2022), the Viam [RDK](../../appendix/glossary/#rdk_anchor) supports two [IMU models](#imu) (manufactured by WitMotion and VectorNav), a [gyroscope/accelerometer](#mpu6050) from TDK InvenSense, and two [GPS models](#gps): [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS modules and [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models.
+Currently (12 December 2022), the Viam {{< glossary_tooltip term_id="rdk" text="RDK" >}} supports two [IMU models](#imu) (manufactured by WitMotion and VectorNav), a [gyroscope/accelerometer](#mpu6050) from TDK InvenSense, and two [GPS models](#gps): [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS modules and [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models.
 The `cameramono` RDK model is experimental and uses a camera to output data on its position and orientation (from visual odometry).
 
 We specifically cover GPS and IMU units in this documentation.

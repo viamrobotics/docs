@@ -15,7 +15,7 @@ The chessboard is often used because the geometry makes it a good test case for 
 The calibration code uses the `numpy` and `opencv-python` packages.
 To follow along, install the libraries:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 pip3 install numpy
 pip3 install opencv-python
 ```
@@ -31,7 +31,7 @@ pip3 install opencv-python
    Save between 10 - 15 images (see [examples](https://github.com/viam-labs/camera-calibration#example-images)).
 
    {{< alert title="Note" color="note" >}}
-   In order for the calibration to be compatible with the rdk, take the images by running the camera using the rdk.
+   In order for the calibration to be compatible with the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, take the images by running the camera using the RDK.
    {{< /alert >}}
 
    Example of good images:

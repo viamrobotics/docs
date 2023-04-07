@@ -124,13 +124,13 @@ The Unique ID displayed for each camera is the `video_path`.
 
 If you're working on a Linux machine, `ssh` into it, then restart `viam-server` by running:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl restart viam-server
 ```
 
 If this doesn't work, you can reboot your machine by running:
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo reboot
 ```
 
@@ -142,7 +142,7 @@ If you are using a CSI camera on a Raspberry Pi, you need to [enable legacy mode
 
 If you are getting "timeout" errors from GRPC when adding a `webcam` model on a Raspberry Pi, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box):
 
-```bash
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo raspi-config
 Interface Options -> Camera -> Enable Camera
 Restart the Pi

@@ -65,7 +65,7 @@ Otherwise, please refer to the [**Model JSON** section](#model-json).
 Once the configuration is completed and the server is started, the robot builds a tree of reference frames with the world as the root node.
 
 A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs.
-Viam regenerates this tree in the process of [reconfiguration](/manage/fleet-management/#configurationlogging):
+Viam regenerates this tree in the process of [reconfiguration](/manage/fleet/#configuration):
 
 ![an example of a logged frame system](../img/frame_sys_log_example.png)
 
@@ -226,7 +226,7 @@ This *supplemental transform* is the missing link to be able to transform a pose
 
 Both TransformPose and FrameSystemConfig optionally take in these supplemental transforms.
 
-Functions of some services and components take in a WorldState parameter (like `ArmMoveToPosition`).
+Functions of some services take in a WorldState parameter (like `motion_service.move(component_name, destination, world_state)`).
 This data structure includes an entry for supplying supplemental transforms for use by internal calls to the Frame System.
 
 ## Reference

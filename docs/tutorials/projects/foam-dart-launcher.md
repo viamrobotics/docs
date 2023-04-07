@@ -35,7 +35,7 @@ You can find more information on configuring different motors in the [Motor Comp
 
 ### Hardware and software requirements
 
-* [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per [our Raspberry Pi setup guide](/installation/prepare/).
+* [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per [our Raspberry Pi setup guide](/installation/).
 * [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)
 * [A foam dart launcher](https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8)
 * [A USB camera (webcam)](https://www.amazon.com/gp/product/B0972KK7BC/) (optional, to see where you are going and aiming)
