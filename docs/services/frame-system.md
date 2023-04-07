@@ -21,47 +21,54 @@ In this page, we will explain:
 
 ## Configuration
 
-To supply reference frame information when configuring a component in [the Viam app](https://app.viam.com), click **Add Frame**.
+To adjust the Frame System from its default configuration for a particular [component](/components), add the following to its configuration:
 
-This opens the Frame card:
+{{< tabs name="Frame Configuration Instructions" >}}
+{{% tab name="Config Builder" %}}
 
-![add reference frame pane](../img/image8.png)
+Navigate to the **CONFIG** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's card, and click **Add Frame**:
 
-<!-- TODO: convert this to a table -->
+![add reference frame pane](../img/frame-card.png)
 
-Here, you can adjust these four attributes from their defaults for the component's reference frame:
+{{< /tab >}}
+{{% tab name="Raw JSON" %}}
 
-| Attribute | Description | Notes |
+{{% /tab %}}
+{{< /tabs >}}
+
+Configure the reference frame as follows:
+
+| Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
-| `Parent`  | **Required** | The parent reference frame of this frame. Default: **world**, default reference frame for all components on the robot acting as the universal reference frame. |
-| `Translation` | **Required** | Default: `{0, 0, 0}`. The coordinates that the origin of this component's reference frame has within its parent's reference frame. |
-| `Orientation`  | **Required** | Default: `{0, 0, 1, 0}`. The rotation that when applied to the axes of the parent's reference frame yields the axes of the component's reference frame. Can be specified as 3 types: `"Orientation Vector Degrees", "Orientation Vector Radians", and "Quaternion"`. |
+| `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
+| `Translation` | **Required** | Default: `{0, 0, 0}`. The coordinates that the origin of this component's reference frame has within its parent reference frame. |
+| `Orientation`  | **Required** | Default: `{0, 0, 1, 0}`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
+| `Geometry`  | **Required** | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere` and `Box`. |
 
-* `"Parent"`: The name of the parent reference frame of this frame.
-  * **world** is the name of a default reference frame that acts as the universal reference frame.
-  When a component would seemingly have no parent, its parent must be considered **world**.
+{{% alert title="Caution" color="caution" %}}
 
-* `"Translation"`: Difference between the origin point of this reference frame and the origin point of the parent's reference frame
-* The coordinates that the origin of this component's reference frame has within its parent's reference frame (these units are in millimeters)
+`Types` are offered in `Orientation` for ease of configuration, but the [orientation vector](/internals/orientation-vector/) type that is always stored and returned by the Frame System is `"Orientation Vector Radians"`.
+`"Degrees"` and `"Quaternion"` will be converted to `"Radians"`.
 
-<!-- TODO: make this a note overall -->
-  * keep in mind that +X is forward, +Y is left, and +Z is up
-
-* `"Orientation"`: The rotation that when applied to the axes of the parent's reference frame yields the axes of the component's reference frame
-  * while this representation appears to represent an R4 Axis Angle, it is actually our own [orientation vector](/internals/orientation-vector/) format.
-  * in the UI the type option currently controls whether to supply theta in degrees for configuration purposes, but note that *the orientation vector stored and returned by the frame system will be in radians*.
+{{% /alert %}}
 
 The information mathematically operates in the following way.
 Let P be the parent's coordinate system and C be the component's coordinate system.
 To get the coordinates in P of the vector (0,0,1) as measured in C, we apply the translation and orientation (as a rotation) to the vector (0,0,1) as measured in P.
 
-If some part of your component is fixed in space, you can determine the reference frame information by marking a fixed point within the physical space your robot will operate in as `"{0, 0, 0}"` the point of origin, and determining the translation and orientation values in respect to this.
+* Viam recommends that you mark a sensible origin point in the physical space in which your robot will operate. For example, the corner of a table the robot is on.
+  * This will be the origin point (`{0, 0, 0}`) of the `parent` reference frame.
+* Measure from this point to a point on the component guaranteed to be fixed to some point in the `parent` reference frame.
+  * This will be the origin point of this component in reference to its parent "world" or component frame.
+* With those two origin points in mind, you can calculate the `Translation` and `Orientation` information for each component.
 
-This will be the origin point of the "world" reference frame, or the origin point of this component in reference to another "parent" component.
+{{% alert title="Tip" color="tip" %}}
 
-### Configuration Examples
+Viam's coordinate system considers `+X` to be forward, `+Y` to be left, and `+Z` to be up.
 
-#### Component Attached to a Static Surface
+{{% /alert %}}
+
+### Component Attached to a Static Surface
 
 Imagine a robotic [arm](/components/arm) is attached to a table.
 Consider one corner of the table the arm is attached to to be the origin of the `"world"`.
@@ -116,7 +123,7 @@ We supply this frame information when configuring the arm component, making sure
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Component Attached to a Dynamic Component
+### Component Attached to a Dynamic Component
 
 * Let the point the gantry is fixed on the table be the origin of the `"world"` frame, with coordinates of `{0, 0, 0}`.
 * By calculating the translation and orientation (`G_offset`) of the gantry in respect to its `"World"` Frame, we can define a new reference frame for the gantry itself, `"G"`.
@@ -214,43 +221,40 @@ It is included as part of this example for illustrative purposes.
 
 Once you configure your robot and run `viam-server`, your robot will builds a tree of reference frames with the `world` as the root node.
 
-A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs.
-Viam regenerates this tree in the process of [reconfiguration](/manage/fleet-management/#configurationlogging):
+A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs:
 
 ![an example of a logged frame system](../img/frame_sys_log_example.png)
 
+Viam regenerates this tree in the process of [reconfiguration](/manage/fleet-management/#configurationlogging).
+
 Let's consider the example of a [component attached to a dynamic component](#component-attached-to-a-dynamic-component): a robotic arm, `A`, attached to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
+
+Let's use `G_offset` to refer to the configuration for the translation and orientation of the gantry from its world parent, and `A_offset` to refer to the configuration for the translation and orientation of the arm from its gantry parent.
 
 The resulting tree of reference frames:
 
 ![reference frame tree](../img/frame_tree.png)
 
-`G_offset` refers to the configuration for the translation and orientation of the gantry from its world parent, and `A_offset` refers to the configuration for the translation and orientation of the arm from its gantry parent.
+Viam builds the connections in this tree by looking at the `"frame"` portion of each component in the robot's configuration and defining *two* reference frames for each component:
 
-<!-- Within the software running on your robot, Viam builds the connections in this tree by looking at the `"frame"` portion of each component in the robot's configuration and defining **two** reference frames for each component:
+1. One with the name of the component, representing the actuator or final link in the component's kinematic chain: like `"A"` as the end of an arm.
+2. Another representing the origin of the component, defined with the component's name and the suffix *"_origin"*.
 
-* One with the name of the component, representing the actuator or final link in the component's kinematic chain (for example, `"A"` as the end of an arm).
-* Another representing the origin of the component: defined for each component with the component name and the suffix *"_origin"*.
-
-For example, in the code behind the reference frame tree shown above, the arm would have two reference frames: `"a_origin"` and `"A"`. `"a_origin"` would be the same as `"G"`. -->
+For example, in the robot's `viam-server` behind the reference frame tree shown above, the arm would have two reference frames: `"a_origin"` and `"A"`. `"a_origin"` would be the same as `"G"`.
 
 ## Accessing the Frame System
 
 The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies two methods to interact with the Frame System through gRPC calls:
-<ol>
-<li>TransformPose</li></OL>
-<ul><li>transforms a pose measured in one reference frame to the same pose as it would have been measured in another.</li></ul>
-<OL START="2">
-<li>FrameSystemConfig</li></OL>
-<ul><li>returns a topologically sorted list of all the reference frames monitored by the frame system.</li>
-<li>supplemental transforms (explained below) are merged into the tree and returned back in the result topologically sorted.</li>
-</ul>
+
+1. `TransformPose`: Transforms a pose measured in one reference frame to the same pose as it would have been measured in another.
+2. `FrameSystemConfig`: Returns a topologically sorted list of all the reference frames monitored by the frame system.
+Any [supplemental transforms](#handling-motion-with-supplemental-transforms) are also merged into the tree, topologically sorted, and returned.
 
 ### Handling Motion with Supplemental Transforms
 
 *Supplemental Transforms* exist to compensate for the fact that the Frame System built by a robot only knows how to coordinate the location of components in reference to a `"world"` frame with a fixed origin of `{0, 0, 0}`.
 
-In our [example of a dynamic arm attached to a dynamic gantry](#component-attached-to-a-dynamic-component), the arm could managed by the Frame System without supplemental transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's zero position is fixed with respect to the world reference frame.
+In our [example of a dynamic arm attached to a dynamic gantry](#component-attached-to-a-dynamic-component), the arm could managed by the Frame System without supplemental transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame.
 
 On the other hand, an arm attached to a [rover](/components/base/wheeled) that is unaware of its own position cannot be configured into the frame system because the rover can move freely with respect to the world frame.
 A knowledgeable user could code a mobile base with an organic SLAM system able to report its own position without the need for supplementary transforms.
