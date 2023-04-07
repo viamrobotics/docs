@@ -62,7 +62,7 @@ The sensor component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-[Readings](#readings) | Get the measurements or readings that this sensor provides. |
+| [Readings](#readings) | Get the measurements or readings that this sensor provides. |
 
 ### Readings
 
