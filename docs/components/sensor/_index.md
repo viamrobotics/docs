@@ -2,7 +2,7 @@
 title: "Sensor Component"
 linkTitle: "Sensor"
 weight: 70
-draft: false
+no_list: true
 type: "docs"
 description: "A device that sends information about the outside world to the computer controlling a robot."
 tags: ["sensor", "components"]
@@ -11,7 +11,7 @@ icon: "img/components/sensor.png"
 ---
 
 A *sensor* is a device that can measure information about the outside world.
-Adding a sensor component to your robot allows the information the sensor measures to be sent to the computer controlling the robot.
+Add a sensor component to your robot to send the information the sensor measures to the computer controlling the robot.
 
 Most robots with a sensor need at least the following hardware:
 
@@ -32,17 +32,17 @@ Supported sensor models include:
 | [`renogy`](renogy)| [Renogy battery temperature sensor](https://www.amazon.com/Renogy-Battery-Temperature-Sensor-Controllers/dp/B07WMMJFWY) |
 | [`sensirion-sht3xd`](sensirion-sht3xd) | [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) |
 
-Want to use another model of sensor to build your robot?
-You can implement a model of sensor that is not natively supported by Viam by creating and registering your own model of a sensor.
-This allows you to have the same access and control of the sensor through Viam as you would if it was already a registered model.
-Follow [these instructions](/program/extend/modular-resources/) to define a custom model of the sensor resource.
-See [here](https://github.com/viam-labs/wifi-sensor) for an example of using the Viam Go SDK to implement a [WiFi stength sensor](https://github.com/viam-labs/wifi-sensor/blob/main/linuxwifi/linuxwifi.go), and [here](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/module) for an example of creating a custom component module with the Viam Python SDK.
+You can implement a model of sensor that is not natively supported by Viam by [creating and registering your own model of a sensor](/program/extend/modular-resources/).
+This allows you to have the same access and control of the sensor through Viam as you would if it was a built-in model.
+
+See [the Viam Labs GitHub](https://github.com/viam-labs/wifi-sensor) for an example of using the Viam Go SDK to implement a [WiFi strength sensor](https://github.com/viam-labs/wifi-sensor/blob/main/linuxwifi/linuxwifi.go), and [the Viam Robotics GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/module) for an example of creating a custom component module with the Viam Python SDK.
 
 {{% alert title="Note" color="note" %}}
 
-Viam has a separate, more specific component type called [movement sensor](/components/movement-sensor/) specifically for Global Positioning System (GPS) units, inertial measurement units (IMUs), and other sensors that detect position, velocity, and acceleration.
+Viam has two component types defined separately from *sensor* that you can use to implement sensors with specific functions.
 
-Viam also has an [encoder component](/components/encoder/) that is distinct from sensor.
+1. [Movement sensor](/components/movement-sensor/) is defined for Global Positioning System (GPS) units, inertial measurement units (IMUs), and other sensors that detect position, velocity, and acceleration.
+2. [Encoder](/components/encoder/) is defined for sensors that can detect speed and direction of rotation of a motor or a joint.
 
 {{% /alert %}}
 

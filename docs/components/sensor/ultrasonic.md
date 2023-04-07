@@ -103,6 +103,6 @@ See [here](/components/board/#digital-interrupts) for instructions on how to mod
 
 {{% alert title="Tip" color="Tip" %}}
 
-An `trigger_pin` value of `5` would correspond to [Pin 5 GPIO 3](https://pinout.xyz/pinout/pin5_gpio3) on a Raspberry Pi.
+A `trigger_pin` value of `5` corresponds to [Pin 5 GPIO 3](https://pinout.xyz/pinout/pin5_gpio3) on a Raspberry Pi.
 
 {{% /alert %}}
