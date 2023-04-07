@@ -1,0 +1,73 @@
+---
+title: "Frame System Configuration for a Component attached to a Fixed Object"
+linkTitle: "Configure a Component on a Fixed Object"
+description: "How to configure the Frame System in an scenario where a component is fixed to a static object."
+type: docs
+weight: 45
+tags: ["frame system", "services"]
+# SMEs: Peter L, Gautham, Bijan
+---
+
+Imagine a robotic [arm](/components/arm) is attached to a table.
+
+Consider one corner of the table the arm is attached to to be the origin of the `"world"`, `(0, 0, 0)`.
+Measure from that point to the base of the arm to get the `"translation"` coordinates.
+
+- Suppose the arm is offset from the corner by 100mm in the positive X direction, and 250mm in the negative Y direction.
+- Supply this `"translation"` when configuring the arm component's `"frame"` information.
+- Leave `"parent"` and `"orientation"` at their default values.
+
+{{< tabs name="Example Frame Configuration of Component attached to Static Surface" >}}
+{{% tab name="Config Builder" %}}
+
+Navigate to the **CONFIG** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `"myArm"`'s card, and click **Add Frame**:
+
+![frame card example for this configuration](../img/frame_card_static.png)
+
+{{< /tab >}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "depends_on": [],
+      "name": "myArm",
+      "type": "arm",
+      "model": "ur5e",
+      "attributes": {
+        "host": "127.0.0.1"
+      },
+      "frame": {
+        "parent": "world",
+        "translation": {
+          "x": 100,
+          "y": -250,
+          "z": 0
+        },
+        "orientation": {
+          "type": "ov_degrees",
+          "value": {
+            "x": 0,
+            "y": 0,
+            "z": 1,
+            "th": 0
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% alert title="Tip" color="tip" %}}
+
+Note: `"myArm"` uses the default `"orientation"` from the `"world"` origin.
+
+You do not have to explicitly configure this on your robot, as it is the default.
+It is included as part of this example for illustrative purposes.
+
+{{% /alert %}}
