@@ -121,11 +121,11 @@ Enter a name for your base, select the type `base`, and select the `wheeled` mod
 ```
 
 {{% /tab %}}
-{{< tab name="Annotated JSON" >}}
+{{% tab name="Annotated JSON" %}}
 
 ![JSON configuration file for a wheeled base with annotations explaining some of the attributes.](../img/base-json.png)
 
-{{< /tab >}}
+{{% /tab %}}
 {{< /tabs >}}
 
 The following attributes are available for `wheeled` bases:
