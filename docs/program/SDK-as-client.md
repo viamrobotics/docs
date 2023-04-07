@@ -34,7 +34,7 @@ pip install viam-sdk
 {{% tab name="Go" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-go get go.viam.com/rdk/robot/client
+go install go.viam.com/rdk/robot/client@latest
 ```
 
 {{% /tab %}}
