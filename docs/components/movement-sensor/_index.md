@@ -6,7 +6,7 @@ type: "docs"
 description: "A sensor that measures location, kinematic data, or both."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
 icon: "img/components/imu.png"
-# no_list: true
+no_list: true
 aliases:
     - /components/movement-sensor/
 # SME: Rand
@@ -58,7 +58,7 @@ my_imu = MovementSensor.from_robot(robot, "my-imu")
 
 # Get the current linear acceleration
 lin_accel = await my_imu.get_linear_acceleration()
-print(f"my-imu get_linear_acceleration return value: {lin_accel}")
+print(f"my-imu linear acceleration in the x direction: {lin_accel.x}")
 ```
 
 {{% /tab %}}
@@ -88,7 +88,7 @@ linAccel, err := myIMU.LinearAcceleration(context.Background(), map[string]inter
 if err!=nil { 
   fmt.Println(err) 
 }
-fmt.Println("my-imu LinearAcceleration return value: %s", linAccel)
+fmt.Println("my-imu LinearAcceleration in the x direction: ", linAccel.X)
 ```
 
 {{% /tab %}}
@@ -151,7 +151,7 @@ position = await my_sensor.get_position()
 
 **Returns:**
 
-- [*geo.Point](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): Contains the current latitude and longitude as floats.
+- [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): Contains the current latitude and longitude as floats.
 - [(float64)](https://pkg.go.dev/builtin#float64): The altitude in millimeters.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
@@ -205,7 +205,7 @@ lin_vel = await my_sensor.get_linear_velocity()
 
 **Returns:**
 
-- [r3.Vector](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the linear velocity in the x, y and z directions in millimeters per second.
+- [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the linear velocity in the x, y and z directions in millimeters per second.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
@@ -216,7 +216,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 mySensor, err := movementsensor.FromRobot(robot, "sensor1")
 
 // Get the current linear velocity of the movement sensor.
-position, _ := mySensor.LinearVelocity(context.TODO(), nil)
+linVel, _ := mySensor.LinearVelocity(context.TODO(), nil)
 ```
 
 {{% /tab %}}
@@ -245,7 +245,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
 
 # Get the current angular velocity of the movement sensor.
-lin_vel = await my_sensor.get_angular_velocity()
+ang_vel = await my_sensor.get_angular_velocity()
+# Get the y component of angular velocity
+y_ang_vel = ang_vel.y
 ```
 
 {{% /tab %}}
@@ -258,7 +260,7 @@ lin_vel = await my_sensor.get_angular_velocity()
 
 **Returns:**
 
-- [r3.Vector](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the angular velocity about the x, y and z axes in radians per second.
+- [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the angular velocity about the x, y and z axes in radians per second.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
@@ -269,7 +271,233 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 mySensor, err := movementsensor.FromRobot(robot, "sensor1")
 
 // Get the current angular velocity of the movement sensor.
-position, _ := mySensor.AngularVelocity(context.TODO(), nil)
+angVel, _ := mySensor.AngularVelocity(context.TODO(), nil)
+// Get the y component of angular velocity
+yAngVel := angVel.Y
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetLinearAcceleration
+
+Report the current linear acceleration in the x, y and z directions (as a 3D vector) in millimeters per second per second.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(Vector3)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3): A 3D vector containing three floats representing the linear acceleration in the x, y and z directions in millimeters per second per second (mm/s<sup>2</sup>).
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_linear_acceleration).
+
+**Example usage:**
+
+```python
+my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+
+# Get the current linear acceleration of the movement sensor.
+lin_accel = await my_sensor.get_linear_acceleration()
+# Get the x component of linear acceleration
+x_lin_accel = lin_accel.x
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the linear acceleration in the x, y and z directions in millimeters per second per second (mm/s<sup>2</sup>).
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
+
+**Example usage:**
+
+```go
+mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+
+// Get the current linear acceleration of the movement sensor.
+linAccel, _ := mySensor.LinearAcceleration(context.TODO(), nil)
+// Get the x component of linear acceleration
+xAngVel := angAccel.X
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetCompassHeading
+
+Report the current [compass heading](https://en.wikipedia.org/wiki/Heading_(navigation)) in degrees.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(float)](https://docs.python.org/3/library/functions.html#float): Compass heading in degrees (between 0 and 360).
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_compass_heading).
+
+**Example usage:**
+
+```python
+my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+
+# Get the current compass heading of the movement sensor.
+heading = await my_sensor.get_compass_heading()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(float64)](https://pkg.go.dev/builtin#float64): The compass heading in degrees (between 0 and 360).
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
+
+**Example usage:**
+
+```go
+mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+
+// Get the current compass heading of the movement sensor.
+heading, _ := mySensor.CompassHeading(context.TODO(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetOrientation
+
+Report the current orientation of the sensor.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(Orientation)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Orientation): Abstract base class for protocol messages, containing `o_x`, `o_y`, `o_z`, and `theta`, which together represent a vector pointing in the direction that the sensor is pointing, and the angle (`theta`) of the sensor's rotation about that axis.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_orientation).
+
+**Example usage:**
+
+```python
+my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+
+# Get the current orientation vector of the movement sensor.
+orientation = await my_sensor.get_orientation()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(spacialmath.Orientation)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Orientation): Orientation is an interface used to express the different parameterizations of the orientation of the movement sensor in 3D Euclidean space.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
+
+**Example usage:**
+
+```go
+mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+
+// Get the current orientation of the movement sensor.
+sensorOrientation, _ := mySensor.Orientation(context.TODO(), nil)
+// Get the orientation vector (a unit vector pointing in the same direction as the sensor,
+// plus an angle representing the sensor's rotation about that axis)
+vector := sensorOrientation.OrientationVectorDegrees()
+fmt.Println("The x component of the orientation vector: ", vector.OX)
+fmt.Println("The y component of the orientation vector: ", vector.OY)
+fmt.Println("The z component of the orientation vector: ", vector.OZ)
+fmt.Println("The number of degrees that the movement sensor is rotated about the vector: ", vector.OX)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetProperties
+
+Get the supported properties of this sensor.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+<!--fix link
+- [(Properties)](): The supported properties of the movement sensor.
+-->
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_properties).
+
+**Example usage:**
+
+```python
+my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+
+# Get the supported properties of the movement sensor.
+properties = await my_sensor.get_properties()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(*movementsensor.Properties)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Properties): The supported properties of the movement sensor.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
+
+**Example usage:**
+
+```go
+mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+
+// Get the current compass heading of the movement sensor.
+properties, _ := mySensor.Properties(context.TODO(), nil)
 ```
 
 {{% /tab %}}
