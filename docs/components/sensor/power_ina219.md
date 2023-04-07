@@ -20,7 +20,7 @@ Configure a `power_ina219` sensor as follows:
 On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
 Enter a name for your sensor, select the type `sensor`, and select the `power_ina219` model.
 
-<img src="../img/power-ina219-sensor-ui-config.png" alt="Creation of a power_ina219 sensor in the Viam app config builder." style="max-width:800px" />
+![Creation of a power_ina219 sensor in the Viam app config builder.](../img/power-ina219-sensor-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
