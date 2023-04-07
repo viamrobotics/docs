@@ -218,7 +218,7 @@ You can disable this by commenting out the ExecPre line (the one with --aix-upda
 <h4>Control and troubleshoot <code>viam-server</code>.</h4>
 {{% /manualcard %}}
 
-{{% manualcard link="prepare/beaglebone-setup/" size="small" %}}
+{{% manualcard link="update" size="small" %}}
 ![Update](img/thumbnails/update.png)
 <h4>Keep your version of <code>viam-server</code> up to date.</h4>
 {{% /manualcard %}}
