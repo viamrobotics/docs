@@ -10,16 +10,14 @@ aliases:
     - /manage/app-usage
 ---
 
-The [Viam app](https://app.viam.com) provides fleet management allowing you to you to:
+The [Viam app](https://app.viam.com) provides fleet management allowing you to:
 
 - manage your robots and access to them with [locations](#locations), [organizations](#organization), and [permissions](#permissions)
 - [configure](#configuration) individual or groups of robots
 - [deploy code and machine learning models](#package-deployment) to robots
 - [remotely control](#remote-control) and [debug](#logs) robots
 
-All communication happens securely over HTTPS using secret tokens that are in the robot's configuration.
-
-Whether you have one robot, or millions, you can manage them with Viam and organize them into organizations and locations.
+All communication happens securely over HTTPS using secret tokens that are in a robot's configuration.
 
 ## Locations
 
