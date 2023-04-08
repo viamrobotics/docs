@@ -20,3 +20,5 @@ IgnoreURLs:
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"
+IgnoreDirectoryMissingTrailingSlash: true
+# IgnoreDirs: - if we need to ever ignore files
