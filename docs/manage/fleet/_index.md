@@ -12,7 +12,7 @@ aliases:
 
 The [Viam app](https://app.viam.com) provides fleet management allowing you to you to:
 
-- manage your robots with [Locations](#locations) and [Organizations](#organization)
+- manage your robots and access to them with [locations](#locations), [organizations](#organization), and [permissions](#permissions)
 - [configure](#configuration) individual or groups of robots
 - [deploy code and machine learning models](#package-deployment) to robots
 - [remotely control](#remote-control) and [debug](#logs) robots
