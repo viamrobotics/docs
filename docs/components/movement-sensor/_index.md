@@ -1,7 +1,7 @@
 ---
 title: "Movement Sensor Component"
 linkTitle: "Movement Sensor"
-weight: 75
+weight: 70
 type: "docs"
 description: "A sensor that measures location, kinematic data, or both."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
@@ -330,7 +330,7 @@ mySensor, err := movementsensor.FromRobot(robot, "sensor1")
 // Get the current linear acceleration of the movement sensor.
 linAccel, _ := mySensor.LinearAcceleration(context.TODO(), nil)
 // Get the x component of linear acceleration
-xAngVel := angAccel.X
+xAngVel := linAccel.X
 ```
 
 {{% /tab %}}
@@ -432,7 +432,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Example usage:**
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 mySensor, err := movementsensor.FromRobot(robot, "sensor1")
 
 // Get the current orientation of the movement sensor.
@@ -461,9 +461,8 @@ Get the supported properties of this sensor.
 - None
 
 **Returns:**
-<!--fix link
-- [(Properties)](): The supported properties of the movement sensor.
--->
+
+- ([Properties](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.Properties))<!--this link isn't very useful -->: The supported properties of the movement sensor.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_properties).
 
@@ -496,9 +495,181 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 mySensor, err := movementsensor.FromRobot(robot, "sensor1")
 
-// Get the current compass heading of the movement sensor.
+// Get the supported properties of the movement sensor.
 properties, _ := mySensor.Properties(context.TODO(), nil)
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### GetAccuracy
+
+Get the accuracy of the sensor (and/or precision, depending on the sensor model).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- (Dict[[str](https://docs.python.org/3/library/stdtypes.html#str), [float](https://docs.python.org/3/library/functions.html#float)]): The accuracy and/or precision of the sensor, if supported.
+  Contents depend on sensor model.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_accuracy).
+
+**Example usage:**
+
+```python
+my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+
+# Get the accuracy of the movement sensor.
+accuracy = await my_sensor.get_accuracy()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- (map[[string]](https://pkg.go.dev/builtin#string)[float32](https://pkg.go.dev/builtin#float32)): The accuracy and/or precision of the sensor, if supported.
+  Contents depend on sensor model.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
+
+**Example usage:**
+
+```go
+mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+
+// Get the accuracy of the movement sensor.
+accuracy, _ := mySensor.Accuracy(context.TODO(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetReadings
+
+Get all the measurements/data from the sensor.
+Results depend on the sensor model and can be of any type.
+If a sensor is not configured to take a certain measurement or fails to read a piece of data, that data will not appear in the readings dictionary.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- ([Mapping](https://docs.python.org/3/glossary.html#term-mapping)[[str](https://docs.python.org/3/library/stdtypes.html#str), Any]): An object containing the measurements from the sensor.
+  Contents depend on sensor model and can be of any type.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_readings).
+
+**Example usage:**
+
+```python
+my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+
+# Get the latest readings from the movement sensor.
+readings = await my_sensor.get_readings()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- (map[[string]](https://pkg.go.dev/builtin#string)interface{}): A map containing the measurements from the sensor.
+  Contents depend on sensor model and can be of any type.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs for Sensor](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor) (because `Readings` is part of the general sensor API that movement sensor wraps).
+
+**Example usage:**
+
+```go
+mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+
+// Get the latest readings from the movement sensor.
+readings, _ := mySensor.Readings(context.TODO(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+If you are implementing your own movement sensor and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (`Dict[str, Any]`): The command to execute.
+
+**Returns:**
+
+- `result` (`Dict[str, Any]`): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+
+reset_dict = {
+  "command": "reset",
+  "example_param": 30
+}
+do_response = await my_sensor.do_command(reset_dict)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` (`cmd map[string]interface{}`): The command to execute.
+
+**Returns:**
+
+- `result` (`cmd map[string]interface{}`): Result of the executed command.
+- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+
+resp, err := mySensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/components/movementsensor/movementsensor.go#L212).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Next Steps
+
+Try adding a movement sensor to your [mobile robot](../base/) and writing some code with our [SDKs](../../program/sdk-as-client/) to implement closed-loop movement control for your robot!
+
+Or, try configuring [data capture](../../services/data/) on your movement sensor!
+
+{{< snippet "social.md" >}}
