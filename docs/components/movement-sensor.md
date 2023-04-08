@@ -46,7 +46,7 @@ We have integrated the following GPS modules into Viam’s RDK:
 ### GPS-NMEA
 
 This GPS model uses communication standards set by the National Marine Electronics Association (NMEA).
-The `gps-nmea` model can be connected using and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board:
+The `gps-nmea` model can be connected using USB and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board:
 
 #### GPS-NMEA over USB/Serial
 
@@ -120,8 +120,8 @@ Name | Type | Default Value | Description
 `ntrip_password` | string | - | Password for the NTRIP server
  | | |
 **Optional:** | | |
-`ntrip_connect_attempts` | int | 10 | no | How many times to attempt connection before timing out
-`ntrip_baud` | int | defaults to `serial_baud_rate` | no | Only necessary if you want NTRIP baud rate to be different from serial baud rate.
+`ntrip_connect_attempts` | int | 10  | How many times to attempt connection before timing out
+`ntrip_baud` | int | defaults to `serial_baud_rate` | Only necessary if you want NTRIP baud rate to be different from serial baud rate.
 ---
 
 #### GPS-RTK with NTRIP over USB/Serial
@@ -159,7 +159,7 @@ Example config:
 ```json {class="line-numbers linkable-line-numbers"}
 {
     "depends_on": [],
-    "model": "gps-nmea",
+    "model": "gps-rtk",
     "name": "UBLOX GPS",
     "type": "movement_sensor",
     "attributes": {
@@ -172,7 +172,7 @@ Example config:
             "I2c_bus": "<name_of_bus_on_board>",
         },
         "ntrip_attributes": {
-       "ntrip_addr": "<ntrip_address>",
+            "ntrip_addr": "<ntrip_address>",
             "ntrip_baud": 38400,
             "ntrip_password": "<password>",
             "ntrip_username": "<username>"
