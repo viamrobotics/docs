@@ -60,7 +60,10 @@ The **HISTORY** tab shows a timestamped diff view of your robot's configuration 
 ### Code Sample
 
 The **CODE SAMPLE** tab contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
-There is also a JSON stub you can copy if you wish to use this robot as a remote of another robot.
+
+For more information on the SDKs, see [Program your Robot with Viam's SDKs](/program/sdk-as-client/).
+
+There is also a JSON stub you can copy if you wish to have your robot communicate with another robot as a [remote](../../parts-and-remotes/).
 
 {{%  snippet "secret-share.md" %}}
 
