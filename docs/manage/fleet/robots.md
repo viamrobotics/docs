@@ -7,7 +7,7 @@ description: "A robot is an organizational concept, consisting of either one or 
 tags: ["fleet management", "cloud", "app"]
 ---
 
-An organizational concept, consisting of either one _part_, or multiple _parts_ working closely together to complete tasks.
+A robot is an organizational concept, consisting of either one _part_, or multiple _parts_ working closely together to complete tasks.
 The robot represents the configuration and entry point for one or more computers (and the components they control) coupled into one logical grouping of parts that work together to complete tasks.
 A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor.
 A robot always has a main part that receives client requests, and any number of other parts.
@@ -45,9 +45,13 @@ More in-depth information on installing `viam-server` can be found in our [Insta
 
 ### Config
 
-On the **CONFIG** tab you can start adding robot components, services, and other robot resources.
+On the **CONFIG** tab you can start adding robot {{< glossary_tooltip term_id="component" text="components" >}}, services, and other robot resources.
 
 For more information, see the [configuration documentation](../../configuration/#the-config-tab).
+
+{{< alert title="Tip" color="tip" >}}
+If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robot](../../configuration).
+{{< /alert >}}
 
 ### Logs
 
@@ -61,7 +65,7 @@ The **HISTORY** tab shows a timestamped diff view of your robot's configuration 
 
 The **CODE SAMPLE** tab contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
 
-For more information on the SDKs, see [Program your Robot with Viam's SDKs](/program/sdk-as-client/).
+For more information on the SDKs, see [Program your Robot with Viam's SDKs](../../../program/sdk-as-client/).
 
 There is also a JSON stub you can copy if you wish to have your robot communicate with another robot as a [remote](../../parts-and-remotes/).
 

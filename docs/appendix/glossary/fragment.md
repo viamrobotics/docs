@@ -1,7 +1,7 @@
 ---
 title: Fragment
 id: fragment
-full_link:
+full_link: /manage/configuration/#fragments
 short_description: A reusable configuration block representing a common hardware pattern.
 aka:
 ---
