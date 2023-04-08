@@ -517,6 +517,14 @@ END MARKETING CSS
         margin: 0 1rem 1rem 0;
         margin: auto;
         padding-right: 1rem;
+
+        img {
+          margin-bottom: 0;
+        }
+      }
+
+      div.small-hover-card-div {
+        width: 50%;
       }
 
       p {
