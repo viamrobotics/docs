@@ -21,7 +21,7 @@
             <img src="{{relURL (substr .Params.image 1)}}" alt="{{ .Params.imageAlt }}" width="100%" />
           </div>
         {{ end }}
-        <div>
+        <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
           <h4> {{ .Params.linkTitle }} </h4>
           <p> {{ .Description }} </p>
         </div>
