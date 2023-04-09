@@ -19,7 +19,7 @@ When we think of robots, most of us tend to group them into categories:
 * good robots
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/ai-integration/rosey.jpeg"  style="float:right;margin-left:1em;" alt="Rosey the robot, from the Jetsons." title="Rosey the robot, from the Jetsons." width="350" />
+  <img src="../../img/ai-integration/rosey.jpeg" class="alignright" alt="Rosey the robot, from the Jetsons." title="Rosey the robot, from the Jetsons." style="max-width: 350px" />
 </div>
 
 One type of “good” robot is a companion robot - a robot created for the purposes of providing real or apparent companionship for human beings.
@@ -76,7 +76,7 @@ Attach the servo to the bracket.
 ### 3. Servo disc
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/ai-integration/3emotion.png"  style="float:right;margin-left: 1em;" alt="Emotion wheel." title="Emotion wheel." width="220" />
+  <img src="../../img/ai-integration/3emotion.png" class="alignright" alt="Emotion wheel." title="Emotion wheel." style="max-width: 220px" />
 </div>
 
 If you are 3D printing the servo disc, [download the STL file](https://github.com/viam-labs/tutorial-openai-integration/blob/main/servo_disc_large.stl) and print it.
@@ -242,7 +242,7 @@ Let's call her "Rosey", and bring her to life by running:
 ```
 
 Now, you can start talking to Rosey.
-<img src="../../img/ai-integration/rosey_robot.jpg"  style="float:right;margin-right:0px;margin-left: 20px;" alt="Viam Rover Rosey." title="Viam Rover Rosey." width="350" />
+<img src="../../img/ai-integration/rosey_robot.jpg" class="alignright" alt="Viam Rover Rosey." title="Viam Rover Rosey." style="max-width: 350px" />
 Any time she hears the keyword "Rosey", she will pay attention to anything you say immediately afterwards.
 For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI's chat completion API, and you'll get a response back similar to *"It is impossible to predict what will happen today. Every day is different and unpredictable!"*
 
@@ -250,7 +250,7 @@ If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-
 For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/ai-integration/yoda.jpeg"  style="float:left;margin-right:20px;margin-left: 0px;" alt="Viam Rover Rosey." title="Viam Rover Rosey." width="300" />
+<img src="../../img/ai-integration/yoda.jpeg" class="alignleft" alt="Viam Rover Rosey." title="Viam Rover Rosey." style="max-width: 300px" />
 
 If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read a ChatGPT-generated response about what it sees. Also, a "mood" will be selected at random, and the response will be generated with that mood.
 
