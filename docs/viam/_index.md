@@ -14,7 +14,8 @@ Viam is a complete software platform that supports every step of your robot deve
 
 When using Viam, this is what you'll need to know to plan your robot:
 
-<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/633d91b848050946efcf0690_viam-overview-illustrations-build.svg" alt="A diagram of robotic parts and software" style="float: right; max-width:250px; display: block; margin: auto auto auto 20px"></img>
+<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/633d91b848050946efcf0690_viam-overview-illustrations-build.svg" alt="A diagram of robotic parts and software" class="alignright"
+style="width:250px;"></img>
 
 - **Hardware**:
 Many {{< glossary_tooltip term_id="component" text="robotic components">}} are natively supported by the Viam platform.
@@ -32,7 +33,7 @@ Join the [**Viam community**](https://discord.gg/viam) to collaborate during pla
 A *robot* in Viam consists of at least one computer, typically a [single-board computer](/installation/prepare/), running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
 Viam supports devices running **any** 64-bit Linux OS or macOS.
 
-<img src="img/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." style="float: left; max-width:270px; display: block; margin: auto 20px auto auto"></img>
+<img src="img/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." class="alignleft" style="max-width:270px"></img>
 
 The Viam platform provides a user interface for connecting to and managing robots, the [Viam app](https://app.viam.com/).
 
@@ -57,7 +58,7 @@ The term *component* describes a piece of hardware that a computer controls, lik
 
 For each component that makes up your robot:
 
-<img src="img/test_components.png" alt="Multiple components being tested in the Viam app." style="float: right; max-width:320px; display: block; margin: auto auto auto 10px"></img>
+<img src="img/test_components.png" alt="Multiple components being tested in the Viam app." class="alignright" style="max-width:320px"></img>
 
 1. Add it to your robot by [choosing the component type](/manage/fleet/#configuration) (example: `camera`) and model (example: `webcam`)
 2. Test it with the visual [control tab](/manage/fleet/#remote-control)
@@ -75,7 +76,7 @@ After configuring your robot's hardware, you can configure high level functional
 
 ## Control your robot
 
-<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure robot control." style="float: right; max-width:270px; display: block; margin: auto auto auto auto"></img>
+<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure robot control." class="alignleft" style="max-width:270px;"></img>
 
 The Viam platform provides a consistent programming interface for all robots, allowing you to [control your robots](/program/sdk-as-client/) with code in the **language of your choice**.
 Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), and [TypeScript](https://ts.viam.dev/).
