@@ -38,33 +38,12 @@ You can run `viam-server` on any device that runs:
 If you are using a single board computer (SBC) or a microcontroller, prepare your device by following the relevant setup document:
 
 {{< cards >}}
-{{% manualcard link="prepare/rpi-setup/" size="small" %}}
-![Raspberry Pi](img/thumbnails/raspberry-pi-4-b-2gb.jpg)
-<h4>Raspberry Pi</h4>
-{{% /manualcard %}}
-
-{{% manualcard link="prepare/beaglebone-setup/" size="small" %}}
-![BeagleBone AI 64](img/thumbnails/beaglebone.png)
-<h4>BeagleBone AI-64</h4>
-{{% /manualcard %}}
-{{% manualcard link="prepare/sk-tda4vm/" size="small" %}}
-![SK-TDA4VM](img/thumbnails/tda4vm.png)
-<h4>Texas Instruments SK-TDA4VM</h4>
-{{% /manualcard %}}
-{{% manualcard link="prepare/jetson-nano-setup/" size="small" %}}
-![Jetson Nano](img/jetson-nano-setup/jetson-nano-dev-kit.png)
-<h4>Jetson Nano</h4>
-{{% /manualcard %}}
-{{% manualcard link="prepare/jetson-agx-orin-setup/" size="small" %}}
-![Jetson AGX Orin](img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png)
-<h4>Jetson AGX Orin</h4>
-{{% /manualcard %}}
-{{% manualcard link="prepare/microcontrollers" size="small" %}}
-![Expressif ESP32](img/thumbnails/esp32-espressif.png)
-<br>
-<br>
-<h4>Expressif ESP32</h4>
-{{% /manualcard %}}
+{{% card link="/installation/prepare/rpi-setup/" size="xs" %}}
+{{% card link="/installation/prepare/beaglebone-setup/" size="xs" %}}
+{{% card link="/installation/prepare/sk-tda4vm/" size="xs" %}}
+{{% card link="/installation/prepare/jetson-nano-setup/" size="xs" %}}
+{{% card link="/installation/prepare/jetson-agx-orin-setup/" size="xs" %}}
+{{% card link="/installation/prepare/microcontrollers" size="xs" %}}
 {{< /cards >}}
 
 ## Install `viam-server`
