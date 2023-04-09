@@ -23,7 +23,9 @@
         {{ end }}
         <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
           <h4> {{ .Params.linkTitle }} </h4>
+          {{ if ne $size "xs" }}
           <p> {{ .Description }} </p>
+          {{ end }}
         </div>
       </a>
       {{ end }}
