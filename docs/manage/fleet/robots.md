@@ -74,7 +74,7 @@ There is also a JSON stub you can copy if you wish to have your robot communicat
 ### Control
 
 The **CONTROL** tab allows you to control your robot using an interface for each component of your robot.
-This is done through WebRTC.
+This is done through {{< glossary_tooltip term_id="webrtc" >}}.
 For example, if you have configured a base with wheels, you can control your robot's movement with an arrow pad and fields to change base’s speed.
 If you have configured a camera component, a window in the **CONTROL** tab displays the camera output.
 

@@ -47,6 +47,16 @@ Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](
 
 A user can have one or more roles, granting the user the respective permissions of each role.
 
+## Robots
+
+An organizational concept, consisting of either one _{{< glossary_tooltip term_id="part" text="part" >}}_, or multiple _parts_ working closely together to complete tasks.
+
+The robot represents the configuration and entry point for one or more computers (and the {{< glossary_tooltip term_id="component" text="components" >}} they control) coupled into one logical grouping of parts that work together to complete tasks.
+A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor.
+A robot always has a main part that receives client requests and can have one or more other parts.
+
+For information on how to manage robots, see [Robots](robots).
+
 ## Configuration
 
 When a robot or a {{< glossary_tooltip term_id="part" text="robot part" >}} that is managed with the Viam app first comes online, it requests its configuration from the [Viam app](https://app.viam.com).

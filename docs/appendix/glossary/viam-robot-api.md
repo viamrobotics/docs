@@ -2,14 +2,15 @@
 title: Viam Robot API
 id: viam-robot-api
 full_link:
-short_description: The de facto description of how all resources can be communicated with.
+short_description: The specification for communication with resources.
 aka:
 ---
 
-The de facto description of how all resources can be communicated with.
+The specification for communication with resources.
 
-- The RDKs/SDKs implement this server side.
-- The RDKs/SDKs use this to act as clients.
-- Currently expressed as a collection of Protocol Buffer files.
-- Does not mandate gRPC as the transport mechanism.
-  - However, all RDKs/SDKs written by Viam use gRPC.
+- The RDKs/SDKs implement the Viam Robot API server-side.
+- The RDKs/SDKs use the Viam Robot API to act as clients.
+
+Currently, the Viam Robot API is defined in a collection of Protocol Buffer files.
+
+All RDKs/SDKs written by Viam use {{< glossary_tooltip term_id="grpc" text="gRPC" >}}  but the Viam Robot API itself does not mandate gRPC as the transport mechanism.

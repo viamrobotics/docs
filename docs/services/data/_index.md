@@ -61,7 +61,7 @@ To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync
 
 ### Considerations
 
-- **Security**: The Data Management Service uses gRPC calls to send and receive data, so your data is encrypted while in flight.
+- **Security**: The Data Management Service uses {{< glossary_tooltip term_id="grpc" text="gRPC" >}} calls to send and receive data, so your data is encrypted while in flight.
   When data is stored in the cloud, it is encrypted at rest by the cloud storage provider.
 
 - **Data Integrity**: Viam's Data Management Service is designed to safeguard against data loss, data duplication and otherwise compromised data.

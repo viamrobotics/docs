@@ -234,7 +234,7 @@ Save [<file>my_robot_dog.py</file>](https://github.com/viam-labs/robot-dog-base/
 Now that you defined the methods for the custom component, you need to make your custom component available to any robots trying to connect to it.
 
 Save [<file>python_server.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/python_server.py) into the <file>RobotDog</file> directory.
-The <file>python_server.py</file> file creates an RPC server that forwards gRPC requests from `viam-server` (or elsewhere) to the custom component.
+The <file>python_server.py</file> file creates an RPC server that forwards {{< glossary_tooltip term_id="grpc" text="gRPC" >}} requests from `viam-server` (or elsewhere) to the custom component.
 
 ## Configure the custom component server as a remote
 

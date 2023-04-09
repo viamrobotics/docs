@@ -19,8 +19,8 @@ In this page, we will explain:
 
 ## Configuration
 
-To supply reference frame information when configuring a component in the Viam app ([https://app.viam.com](https://app.viam.com)), click **Add Frame** to launch the Frame group where you will enter Reference Frame details.
-This opens the Frame group:
+To supply reference frame information when configuring a component in the Viam app ([https://app.viam.com](https://app.viam.com)), click **Add Frame** to launch the gRoup where you will enter Reference Frame details.
+This opens the gRoup:
 
 ![add reference frame pane](../img/image8.png)
 
@@ -53,7 +53,7 @@ For example, a traditional arm may have a reference frame whose origin is at its
 Each driver of such a component in the Viam system requires a JSON file named **Model JSON** that details the attachment of reference frames.
 However, that is a requirement for Viam's drivers.
 If you implement your own drivers, the decision whether to require Model JSON files will depend on your code.
-These reference frames are ingested by the Frame System *but not exposed through gRPC call* (meaning they are unavailable for inspection by any of the SDKs).
+These reference frames are ingested by the Frame System *but not exposed through {{< glossary_tooltip term_id="grpc" text="gRPC" >}} call* (meaning they are unavailable for inspection by any of the SDKs).
 
 {{% alert title="Note" color="note" %}}
 If you are using a component driver provided by Viam, the **Model JSON** should come pre-packaged.

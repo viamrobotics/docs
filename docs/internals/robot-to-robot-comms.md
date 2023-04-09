@@ -24,7 +24,7 @@ This robot is made of two parts and separate SDK-based application, which we'll 
 
 * The second and final part, RDK Part 2, consists of a Rapsberry Pi connected to a robotic arm over ethernet and a gantry over GPIO.
 
-RDK Part 1 will establish a bidirectional gRPC/WebRTC connection to RDK Part 2.
+RDK Part 1 will establish a bidirectional gRPC/{{< glossary_tooltip term_id="webrtc" >}} connection to RDK Part 2.
 RDK Part 1 is considered the controlling peer (client).
 RDK Part 2 is consider the controlled peer (server).
 
