@@ -144,8 +144,8 @@ This allows the pi to control the motor with PWM.
 You'll also need to solder two pins to the controller just to the left of the white wire harness mount.
 (P.S. - A truly clutch solder tip for those of you who may not be very experienced with soldering: **heat the pin** with the soldering iron, **not the solder itself**! Once the pin is hot, touch the solder to it. When someone taught me this it changed my life.)
 
-<div class="td-max-width-on-larger-screens">
-  <img src="../../img/outdoor-rover-boxbot/motor-controller.jpg" class="alignleft" alt="Brushless motor controller." title="Brushless motor controller." style="max-width: 500px" />
+<div class="td-max-width-on-larger-screens" style="max-width: 500px">
+  <img src="../../img/outdoor-rover-boxbot/motor-controller.jpg" class="alignleft" alt="Brushless motor controller." title="Brushless motor controller." />
 </div>
 
 You'll then connect the motor phase A, B, and C wires from your hub motor to the left side of the controller, and the 5 hall sensor wires to the white wire harness on the bottom right.
