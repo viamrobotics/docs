@@ -19,8 +19,8 @@ In this page, we will explain:
 
 ## Configuration
 
-To supply reference frame information when configuring a component in the Viam app ([https://app.viam.com](https://app.viam.com)), click **Add Frame** to launch the gRoup where you will enter Reference Frame details.
-This opens the gRoup:
+To supply reference frame information when configuring a component in the Viam app ([https://app.viam.com](https://app.viam.com)), click **Add Frame** to launch the Framge group where you will enter Reference Frame details.
+This opens the Frame group:
 
 ![add reference frame pane](../img/image8.png)
 
