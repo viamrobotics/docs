@@ -14,8 +14,7 @@ Viam is a complete software platform that supports every step of your robot deve
 
 When using Viam, this is what you'll need to know to plan your robot:
 
-<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/633d91b848050946efcf0690_viam-overview-illustrations-build.svg" alt="A diagram of robotic parts and software" class="alignright"
-style="width:250px;"></img>
+<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/633d91b848050946efcf0690_viam-overview-illustrations-build.svg" alt="A diagram of robotic parts and software" class="alignright" style="width:250px;"></img>
 
 - **Hardware**:
 Many {{< glossary_tooltip term_id="component" text="robotic components">}} are natively supported by the Viam platform.
