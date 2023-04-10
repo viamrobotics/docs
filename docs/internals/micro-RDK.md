@@ -8,3 +8,9 @@ tags: ["server", "rdk"]
 ---
 
 {{% readfile "/static/include/micro-rdk.md" %}}
+
+## Next steps
+
+{{< cards >}}
+  {{% card link="/installation/prepare/microcontrollers" size="small" %}}
+{{< /cards >}}
