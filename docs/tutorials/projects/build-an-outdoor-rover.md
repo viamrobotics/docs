@@ -73,7 +73,7 @@ You'll also need some basic tools:
 ## Build the base of your Boxbot
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/outdoor-rover-boxbot/cut-wheel-brackets.png"  style="float:right;margin-left:1em;" alt="Use a hacksaw to cut the wheel brackets." title="Use a hacksaw to cut the wheel brackets." width="200" />
+  <img src="../../img/outdoor-rover-boxbot/cut-wheel-brackets.png" class="alignright" alt="Use a hacksaw to cut the wheel brackets." title="Use a hacksaw to cut the wheel brackets." style="max-width: 200px" />
 </div>
 Hoverboard motors that come out of a toy hoverboard usually have large metal mounting brackets attached to them.
 This makes it much easier for you to attach them to the plastic case, and distributes the torque of the motors across more of the plastic case bottom, making the design more durable.
@@ -82,7 +82,7 @@ For this, I used a hacksaw.
 Hard work, but someone's gotta do it.
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/outdoor-rover-boxbot/caster-wheels.png"  style="float:left;margin-right:1em;margin-top:1em;" alt="Mounted caster wheels." title="Mounted caster wheels." width="200" />
+  <img src="../../img/outdoor-rover-boxbot/caster-wheels.png" class="alignleft" alt="Mounted caster wheels." title="Mounted caster wheels." style="max-width: 200px" />
 </div>
 
 Next, you'll mount the caster wheels to the "front" of the box (meaning what *will be* the front of the robot, which in reality is the left or right side of the box when facing the side of the box with the handle), and the hub motors to the rear, trying to ensure that the hub motor wheels are parallel to each other, and are not too close to the sides of the case.
@@ -92,7 +92,7 @@ For the hub motor mounts, drill two holes through each mount, line each one up, 
 While doing this I realized that I'd also want to run the wires from the hub motor into the case under the mount (to better protect the wires), so I drilled a smaller hole under where each of the mounts would be for that purpose.
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/outdoor-rover-boxbot/mounted-hub-motor.png"  style="float:right;margin-left:1em;" alt="Mounted hub motor." title="Mounted hub motor." width="250" />
+  <img src="../../img/outdoor-rover-boxbot/mounted-hub-motor.png" class="alignright" alt="Mounted hub motor." title="Mounted hub motor." style="max-width: 250px" />
 </div>
 
 At this point, I want to mention that although the case is intrinsically waterproof, we'll want to make sure that we waterproof any holes that we make in the case.
@@ -105,7 +105,7 @@ The bolts I had were *way* too long, so I had to remove the excess length with t
 At this point, you should have a not-yet-powered but assembled wheeled base!
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/outdoor-rover-boxbot/unpowered-base.jpg"  style="float:left;margin-right:1em;" alt="Assembled base, not yet powered." title="Assembled base, not yet powered." width="250" />
+  <img src="../../img/outdoor-rover-boxbot/unpowered-base.jpg" class="alignleft" alt="Assembled base, not yet powered." title="Assembled base, not yet powered." style="max-width: 250px" />
 </div>
 Try pushing your base around, but don't be too sad if it doesn't go perfectly straight; caster wheels don't exactly lend themselves to that (especially when not faced with constant forward force; you know this if you've ever let go of your shopping cart in the grocery store in the middle of a push).
 
@@ -144,8 +144,8 @@ This allows the pi to control the motor with PWM.
 You'll also need to solder two pins to the controller just to the left of the white wire harness mount.
 (P.S. - A truly clutch solder tip for those of you who may not be very experienced with soldering: **heat the pin** with the soldering iron, **not the solder itself**! Once the pin is hot, touch the solder to it. When someone taught me this it changed my life.)
 
-<div class="td-max-width-on-larger-screens">
-  <img src="../../img/outdoor-rover-boxbot/motor-controller.jpg"  style="float:left;margin-right:1em;" alt="Brushless motor controller." title="Brushless motor controller." width="500" />
+<div class="td-max-width-on-larger-screens" style="max-width: 500px">
+  <img src="../../img/outdoor-rover-boxbot/motor-controller.jpg" class="alignleft" alt="Brushless motor controller." title="Brushless motor controller." />
 </div>
 
 You'll then connect the motor phase A, B, and C wires from your hub motor to the left side of the controller, and the 5 hall sensor wires to the white wire harness on the bottom right.
@@ -175,7 +175,7 @@ Now might be the time to figure out where you're laying everything out inside yo
 You'll need a space for:
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/outdoor-rover-boxbot/case-layout.jpg"  style="float:right;margin-left:1em;" alt="Brushless motor controller." title="Brushless motor controller." width="400" />
+  <img src="../../img/outdoor-rover-boxbot/case-layout.jpg" class="alignright" alt="Brushless motor controller." title="Brushless motor controller." style="max-width: 400px" />
 </div>
 
 - Your already wired motor controllers
@@ -284,7 +284,7 @@ You can measure your wheel's circumference and width between wheels, which will 
 ## Take your Boxbot for a drive
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/outdoor-rover-boxbot/completed-rover.jpg"  style="float:right;margin-left:1em;" alt="Completed rover with mounted solar panel." title="Completed rover with mounted solar panel." width="350" />
+  <img src="../../img/outdoor-rover-boxbot/completed-rover.jpg"  class="alignright" alt="Completed rover with mounted solar panel." title="Completed rover with mounted solar panel." style="max-width: 350px" />
 </div>
 
 You can now have some real fun.
@@ -295,7 +295,7 @@ Check out our [Python SDK documentation](https://python.viam.dev/) (or another S
 If you're adding a camera, GPS, planning on using Viam's Navigation Service, or want to attach a solar panel and charge controller - this is all fairly plug and play with Viam and is covered in the [Viam documentation](/).
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/outdoor-rover-boxbot/matt-done.png"  style="float:left;margin-right:1em;" alt="Matt working on project." title="Matt working on project." width="250" />
+  <img src="../../img/outdoor-rover-boxbot/matt-done.png" class="alignleft" alt="Matt working on project." title="Matt working on project." style="max-width: 250px" />
 </div>
 
 I had a lot of fun building this rover, and hope you did as well.

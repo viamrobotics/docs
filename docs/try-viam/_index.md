@@ -10,7 +10,7 @@ aliases:
 
 [Rent and remotely configure and control a Viam Rover](https://app.viam.com/try) located on-site at Viam in New York:
 
-{{<gif webm_src="img/rover-reservation.webm" mp4_src="img/rover-reservation.mp4" alt="Rover reservation management page" max-width="1000px">}}
+{{<gif webm_src="img/rover-reservation.webm" mp4_src="img/rover-reservation.mp4" alt="Rover reservation management page" max-width="800px">}}
 
 ## Get started with Viam
 

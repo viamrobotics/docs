@@ -517,6 +517,14 @@ END MARKETING CSS
         margin: 0 1rem 1rem 0;
         margin: auto;
         padding-right: 1rem;
+
+        img {
+          margin-bottom: 0;
+        }
+      }
+
+      div.small-hover-card-div {
+        width: 50%;
       }
 
       p {
@@ -660,6 +668,7 @@ footer small {
 
 .docsbutton {
   border: 1px solid black;
+  color: black;
   border-radius: 0;
   background-color: whitesmoke;
   margin: 0;
@@ -777,4 +786,21 @@ footer small {
     color: #0000EA;
     visibility: initial;
   }
+}
+
+@media (min-width: 650px) {
+  img.alignright { padding: 4px; margin: 0 0 2px 20px; display: inline; }
+  img.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }
+  video.alignright { padding: 4px; margin: 0 0 2px 20px; display: inline; }
+  video.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }
+  div.alignright { padding: 4px; margin: 0 0 2px 20px; display: inline; }
+  div.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }
+  .alignright { float: right; }
+  .alignleft { float: left; }
+}
+
+// center on small screens
+@media (max-width: 650px) {
+  .alignright { display: block; margin-left: auto; margin-right: auto; }
+  .alignleft { display: block; margin-left: auto; margin-right: auto; }
 }

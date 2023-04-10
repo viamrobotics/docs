@@ -18,7 +18,7 @@ To configure a `boat` base as a component of your robot, first configure the [bo
 On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
 Enter a name for your base, select the type `base`, and select the `boat` model.
 
-<!-- <img src="../img/boat-ui-config.png" alt="An example configuration for a boat base in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." style="max-width:900px"/> -->
+<!-- ![An example configuration for a boat base in the Viam app Config Builder.](../img/boat-base-ui-config.png) -->
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
