@@ -1,7 +1,7 @@
 ---
 title: "Configure an Align Color Depth Extrinsics View"
 linkTitle: "Align Color Depth Extrinsics"
-weight: 37
+weight: 38
 type: "docs"
 description: "Use the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images."
 tags: ["camera", "components"]
