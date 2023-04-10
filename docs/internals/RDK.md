@@ -24,7 +24,7 @@ _viam-server_ is responsible for:
 - Managing configured processes
 - Connecting to other parts of your robot
 
-## Next
+## Next Steps
 
 {{< cards >}}
   {{% card link="/program/sdk-as-client/" size="small" %}}
