@@ -6,7 +6,7 @@ type: "docs"
 tags: ["server", "sdk"]
 ---
 
-Viam's Robot Development Kit ([RDK](/program/rdk/)) provides a variety of components and services out of the box.
+Viam's Robot Development Kit ([RDK](/internals/rdk/)) provides a variety of components and services out of the box.
 If the components you are working with are not supported, you can use Viam [modular resources](/program/extend/) to add support for custom resources which form a seamless extension of the Viam platform.
 
 Currently, [modular resource](/program/extend/) development is supported only with the [RDK (Go SDK)](https://pkg.go.dev/go.viam.com/rdk).
