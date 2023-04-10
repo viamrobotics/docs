@@ -4,6 +4,7 @@ linkTitle: "Frame System"
 description: "The Frame System holds reference frame information for the relative position of components in space."
 type: docs
 weight: 45
+no_list: true
 tags: ["frame system", "services"]
 # SMEs: Peter L, Gautham, Bijan
 ---
@@ -22,10 +23,69 @@ To adjust the Frame System from its default configuration for a particular [comp
 
 Navigate to the **CONFIG** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's card, and click **Add Frame**:
 
-![add reference frame pane](../img/frame-card.png)
+![add reference frame pane](img/frame_card.png)
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": <"your_component_name_1">,
+      "type": <"your_component_type_1">,
+      "model": <"your_component_model_1">,
+      "attributes": { ... },
+      "depends_on": [],
+      "frame": {
+        "parent": <"world">,
+        // default
+        "translation": {
+          "y": 0,
+          "z": 0,
+          "x": 0
+        },
+        // default
+        "orientation": {
+          "type": <"ov_degrees">,
+          "value": {
+            "x": 0,
+            "y": 0,
+            "z": 1,
+            "th": 0
+          }
+        }
+      }
+    },
+    {
+      "depends_on": [],
+      "name": <"your_component_name_2">,
+      "type": <"your_component_type_2">,
+      "model": <"your_component_model_2">,
+      "attributes": { ... },
+      "frame": {
+        "parent": <"your_component_name_1">,
+        // default
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        // default
+        "orientation": {
+          "type": <"ov_degrees">,
+          "value": {
+            "x": 0,
+            "y": 0,
+            "z": 1,
+            "th": 0
+          }
+        }
+      }
+    }
+  ]
+}
+```
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -35,9 +95,9 @@ Configure the reference frame as follows:
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
 | `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
-| `Translation` | **Required** | Default: `{0, 0, 0}`. The coordinates that the origin of this component's reference frame has within its parent reference frame. |
-| `Orientation`  | **Required** | Default: `{0, 0, 1, 0}`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
-| `Geometry`  | **Required** | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere` and `Box`. |
+| `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. |
+| `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
+| `Geometry`  | **Required** | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere`, `Box`, and `Capsule`. |
 
 {{% alert title="Caution" color="caution" %}}
 
@@ -59,28 +119,24 @@ For more information, see these two examples:
 
 ## Building the Frame System
 
-Once you configure your robot and run `viam-server`, your robot will builds a tree of reference frames with the `world` as the root node.
+Once you configure your robot and run `viam-server`, your robot builds a tree of reference frames with the `world` as the root node.
 
-A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs:
+A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the logs at `--debug` level:
 
-![an example of a logged frame system](../img/frame_sys_log_example.png)
+![an example of a logged frame system](img/frame_sys_log_example.png)
 
-Viam regenerates this tree in the process of [reconfiguration](/manage/fleet-management/#configurationlogging).
+`viam-server` regenerates this tree in the process of [reconfiguration](/manage/fleet-management/#configurationlogging).
 
-Let's consider our example of a [component attached to a dynamic component](/component-attached-to-a-dynamic-component): a robotic arm, `A`, attached to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
-
-Let's use `G_offset` to refer to the configuration for the translation of the gantry from its world parent, and `A_offset` to refer to the configuration for the translation of the arm from its gantry parent.
+Let's consider the example of a [component attached to a dynamic component](/component-attached-to-a-dynamic-component): a robotic arm, `A`, attached to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
 
 The resulting tree of reference frames looks like:
 
-![reference frame tree](../img/frame_tree.png)
+![reference frame tree](img/frame_tree.png)
 
-Viam builds the connections in this tree by looking at the `"frame"` portion of each component in the robot's configuration and defining *two* reference frames for each component:
+`viam-server` builds the connections in this tree by looking at the `"frame"` portion of each component in the robot's configuration and defining *two* reference frames for each component:
 
 1. One with the name of the component, representing the actuator or final link in the component's kinematic chain: like `"A"` as the end of an arm.
 2. Another representing the origin of the component, defined with the component's name and the suffix *"_origin"*.
-
-For example, in the robot's `viam-server` behind the reference frame tree shown above, the arm would have two reference frames: `"a_origin"` and `"A"`. `"a_origin"` would be the same as `"G"`.
 
 ## Accessing the Frame System
 
@@ -92,23 +148,26 @@ Any [supplemental transforms](#handling-motion-with-supplemental-transforms) are
 
 ## Supplemental Transforms
 
-*Supplemental Transforms* exist to compensate for the fact that the Frame System built by a robot only knows how to coordinate the location of components in reference to a `"world"` frame with a fixed origin of `{0, 0, 0}`.
+*Supplemental transforms* exist to compensate for the fact that the Frame System built for a robot only knows how to coordinate the location of components that are fixed to a point in space, allowing them to have a fixed origin in reference to a `world` reference frame with a fixed origin of `(0, 0, 0)`.
 
-In our [example of a dynamic arm attached to a dynamic gantry](/component-attached-to-a-dynamic-component), the arm can be managed by the Frame System without supplemental transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame.
+In our [example of dynamic attachment](/component-attached-to-a-dynamic-component), the arm can be managed by the Frame System without supplemental transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame.
 
-On the other hand, an arm attached to a [rover](/components/base/wheeled) that is unaware of its own position cannot be configured into the Frame System because the rover can move freely with respect to the `world` frame.
+However, a dynamic arm attached to a [dynamic rover](/components/base/wheeled) could not be configured into the Frame System if the rover is unaware of its own position, because the rover can move freely with respect to the `world` reference frame.
 
 To solve this problem:
 
-- You can introduce a [movement-sensor](/components/movement-sensor) or a [camera](/components/camera) in combination with our [Vision Service](/services/vision/) as a third component.
-- This component is fixed in space (making it configurable in the Frame System) and can supply the location and orientation of the rover in its own reference frame.
-- You can add the name of this component's reference frame into, for example, `supplemental_transforms` in your calls to Viam's motion service [`GetPose`](/services/motion/#getpose) method
-- [Both `TransformPose` and `FrameSystemConfig`](#accessing-the-frame-system) also have the option to take in these supplemental transforms. Functions of some services and components also take in a `WorldState` parameter, which includes an entry for supplying supplemental transforms for use by internal calls to the Frame System.
+- You can introduce a [movement sensor](/components/movement-sensor) or a [camera](/components/camera), in combination with our [Vision Service](/services/vision/), as a third component.
+- This component would be fixed in respect to the `world` reference frame, and could supply the location and orientation of the rover in its own reference frame.
 
-This *supplemental transform* is the missing link to be able to transform a pose in the arm's reference frame to the `world` reference frame.
+To add this component's reference frame into your robot's Frame System build, you can pass the `name` of this component's reference frame to various APIs.
+These *supplemental transforms* would be the missing link to be able to transform a [pose](/internals/orientation-vector) in that dynamic arm's reference frame to the `world` reference frame.
+
+- For example, you can pass this component's reference frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service [`GetPose`](/services/motion/#getpose) method.
+- Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` parameter.
+- Both [`TransformPose`](#accessing-the-frame-system) and [`FrameSystemConfig`](#accessing-the-frame-system) have the option to take in these supplemental transforms.
 
 {{% alert title="Tip" color="tip" %}}
 
-A knowledgeable user could code a [mobile base](/components/base/wheeled) that is able to report its own position without the need for supplemental transforms, with an organic [SLAM](/services/slam) system.
+A knowledgeable user could code a [mobile base](/components/base/wheeled) that is able to report its own position without the need for supplemental transforms with an organic [SLAM](/services/slam) system.
 
 {{% /alert %}}
