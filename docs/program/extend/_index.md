@@ -38,7 +38,7 @@ For more detail, see the [modular resources documentation](/program/extend/modul
 Currently, modular resources are supported only with the Viam [Go SDK](https://pkg.go.dev/go.viam.com/rdk).
 If you are not using the Go SDK, you can add custom components using the Viam SDK of your choice to create a [server component implementation](/program/extend/sdk-as-server/).
 
-## Next
+## Next steps
 
 {{< cards >}}
     {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus" size="small" %}}
