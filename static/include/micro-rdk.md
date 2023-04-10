@@ -21,9 +21,9 @@ This second "robot" can be as simple as an instance of `viam-server` running on 
 The micro-RDK currently only supports:
 
 - GPIO pins
-- analog readers
-- motors
-- encoders
+- Analog readers
+- Motors
+- Encoders
 
 See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information about the micro-RDK.
 
