@@ -26,7 +26,3 @@ The micro-RDK currently only supports:
 - Encoders
 
 See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information about the micro-RDK.
-
-{{< cards >}}
-  {{% card link="/internals/rdk/" size="small" %}}
-{{< /cards >}}
