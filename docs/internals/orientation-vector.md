@@ -13,7 +13,7 @@ To specify where an object is pointing, you use **theta** which describes the an
 ## Example: A camera in a room
 
 Imagine you have a room with a camera.
-The corner of the room is (0,0,0).
+The corner of the room is (0, 0, 0).
 
 To configure the camera into the frame system, you need to know where in the room the camera is, and where it's pointing.
 
