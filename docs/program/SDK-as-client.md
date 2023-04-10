@@ -3,13 +3,13 @@ title: "Program your Robot with Viam's SDKs"
 linkTitle: "Program your Robot with Viam's SDKs"
 weight: 40
 type: "docs"
-description: "An introduction to Viam's SDKs and how to use them to write code to access and control your robot."
+description: "Use Viam's SDKs to write code to access and control your robot."
 tags: ["client", "sdk"]
 ---
 
 Viam offers software development kits (SDKs) that wrap the `viam-server` [gRPC](https://grpc.io/) [APIs](https://github.com/viamrobotics/api) and streamline connection, authentication, and encryption.
 
-<img src="../img/SDK-as-client/image1.png" alt="Example diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.">
+<img src="../img/SDK-as-client/image1.png" alt="Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.">
 
 Use the SDK of your preferred language to write code to control your robots.
 
@@ -26,7 +26,7 @@ Click on the links above to read more about installation and usage of each SDK.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```shell
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 pip install viam-sdk
 ```
 
@@ -206,7 +206,7 @@ main();
 
 ## Add Control Logic
 
-You can easily add control logic for each [component](/components/) of your robot by using the methods Viam has built into each component's API specification.
+You can add control logic for each [component](/components/) of your robot by using the built-in component methods.
 
 Find documentation on how to use these methods here:
 
@@ -254,4 +254,5 @@ For an example, see [this execution demo.](https://github.com/viamrobotics/viam-
 {{< cards >}}
   {{% card link="/components" size="small" %}}
   {{% card link="/services" size="small" %}}
+  {{% card link="/program/extend/" size="small" %}}
 {{< /cards >}}
