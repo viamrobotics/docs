@@ -8,8 +8,9 @@ description: "A description of Viam's orientation vector method."
 
 A _pose_ specifies where an object is with respect to another reference point and which direction it is pointing.
 Pose includes a 3D vector specifying the position of the center of the object, as well as an *orientation vector* specifying the angle of the object in 3D space.
-To specify where an object is you use an orientation vector (**RX, RY, RZ**) that describes the difference between the center of the object and another reference frame.
-To specify where an object is pointing, you use **theta** which describes the angular position of the object around that vector.
+To specify which direction an object is pointing, you use an orientation vector (**OX, OY, OZ, theta**).
+The first three components of this vector form an axis pointing in the same direction as the object.
+**Theta** specifies the angle of the object's rotation about that axis.
 
 ## Example: A camera in a room
 
