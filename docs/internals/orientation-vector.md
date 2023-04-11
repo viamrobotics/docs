@@ -1,6 +1,6 @@
 ---
 title: "Orientation Vector"
-linkTitle: "Pose"
+linkTitle: "Orientation Vector"
 weight: 10
 type: "docs"
 description: "A description of Viam's orientation vector method."
