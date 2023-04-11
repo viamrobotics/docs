@@ -2,7 +2,7 @@
 title: Resource Config
 id: resource-config
 full_link:
-short_description: The configuration element of either a component or a service.
+short_description: The configuration element of a component, service, or other resource.
 aka:
 ---
 
