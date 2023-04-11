@@ -14,7 +14,7 @@ In this tutorial, we will cover how to use Data Management, including capturing 
 
 ## Data Management
 
-One key feature of Viam is [Data Management](/manage/data/), which helps you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
+One key feature of Viam is [Data Management](/data/), which helps you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
 
 Viam's Data Management Service has two distinct parts: data capture and cloud sync.
 
@@ -122,7 +122,7 @@ Now that you have data capture enabled for a camera on your Viam Rover, you can 
 
 ![The data page of the Viam app showing a gallery of the images captured from the Viam Rover.](../../img/data-management/image1.png)
 
-For more detailed information see [View and Filter Data](../../../manage/data/view/).
+For more detailed information see [View and Filter Data](../../../data/data/view/).
 
 ## Export captured data
 
@@ -131,7 +131,7 @@ Now, let's export that image data from the Viam app onto your local computer.
 
 To export data from Viam:
 
-1. First, install the [Viam CLI](/manage/cli) and [authenticate](/manage/cli/#authenticate):
+1. First, install the [Viam CLI](/organization/cli) and [authenticate](/organization/cli/#authenticate):
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    go install go.viam.com/rdk/cli/viam@latest
@@ -156,7 +156,7 @@ To export data from Viam:
    Since images are downloaded in parallel, some may be out of order.
    Sort your folder by filename to see them in chronological order.
 
-For more detailed information see [Export Data](../../../manage/data/export/).
+For more detailed information see [Export Data](../../../data/data/export/).
 
 ## Next steps
 

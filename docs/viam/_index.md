@@ -59,9 +59,9 @@ For each component that makes up your robot:
 
 <img src="img/test_components.png" alt="Multiple components being tested in the Viam app." class="alignright" style="max-width:320px"></img>
 
-1. Add it to your robot by [choosing the component type](/manage/fleet/#configuration) (example: `camera`) and model (example: `webcam`)
-2. Test it with the visual [control tab](/manage/fleet/#remote-control)
-3. See any problems with in-app [logs](/manage/fleet/#logs), review or roll back configuration [history](/manage/fleet/#configuration)
+1. Add it to your robot by [choosing the component type](/configuration) (example: `camera`) and model (example: `webcam`)
+2. Test it with the visual [control tab](/fleet#control)
+3. See any problems with in-app [logs](/fleet#logs), review or roll back configuration [history](/fleet#config)
 
 After configuring your robot's hardware, you can configure high level functionality the same way:
 
@@ -93,7 +93,7 @@ There are four categories of APIs:
 - [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level robot commands
 - [Components](/components) like motors, arms, GPS
 - [Services](/services) like computer vision, motion planning, SLAM
-- Cloud applications like [Fleet Management](/manage/fleet), [Data Management](/manage/data)
+- Cloud applications like [Fleet Management](/fleet), [Data Management](/data)
 
 You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).
 
@@ -115,7 +115,7 @@ This allows for tremendous flexibility in terms of your architecture design.
 
 ## Scale
 
-With robots in production, Viam provides [fleet management capabilities](/manage/fleet/) to help you scale.
+With robots in production, Viam provides [fleet management capabilities](/fleet/) to help you scale.
 With it you can:
 
 - Manage permissions within your organization and locations.

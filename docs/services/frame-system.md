@@ -65,7 +65,7 @@ Otherwise, please refer to the [**Model JSON** section](#model-json).
 Once the configuration is completed and the server is started, the robot builds a tree of reference frames with the world as the root node.
 
 A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the server logs.
-Viam regenerates this tree in the process of [reconfiguration](/manage/fleet/#configuration):
+Viam regenerates this tree in the process of [reconfiguration](/fleet#config):
 
 ![an example of a logged frame system](../img/frame_sys_log_example.png)
 

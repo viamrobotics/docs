@@ -1,7 +1,7 @@
 ---
 title: Fragment
 id: fragment
-full_link: /manage/configuration/#fragments
+full_link: /configuration/fragments
 short_description: A reusable configuration block that you can share across multiple robots.
 aka:
 ---

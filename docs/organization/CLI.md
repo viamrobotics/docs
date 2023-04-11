@@ -3,6 +3,7 @@ title: "Viam CLI"
 linkTitle: "CLI"
 weight: 99
 type: "docs"
+no_list: true
 description: "Manage and control your robots from the command line."
 ---
 
