@@ -313,12 +313,10 @@ You do not need to calculate that exact pose with respect to the **arm** or **wo
 You must only provide the object name (instead of the `gripperName` you saw in the code samples above) when making the `NewPoseInFrame` to pass into the `Move` function.
 This has implications for how motion is calculated, and what final configuration your robot will rest in after moving.
 
-## Next Steps
-
-You've reached the end of this tutorial but if you want to learn more, have a look at our [other Motion tutorial](../accessing-and-moving-robot-arm/).
-
 <!-- TODO: Content below struck out for the moment, saved to point at the next tutorial "Add Constraints to a Motion Plan" -->
 <!--
+## Next Steps
+
 If you would like to continue onto working with complex motion constraints:
 
 {{< cards >}}
