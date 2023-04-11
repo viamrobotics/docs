@@ -184,13 +184,17 @@ For these changes to take effect, you need to restart your Raspberry Pi if it ha
 sudo reboot
 ```
 
+## Next Steps
+
+Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional WiFi credentials, continue to our [`viam-server` installation guide](../../#install-viam-server).
+
 ## Troubleshooting
 
-### Add additional Wifi credentials
+### Add additional WiFi credentials
 
-If you move your robot to a different Wifi network, you will have to update the Wifi credentials.
+If you move your robot to a different WiFi network, you will have to update the WiFi credentials.
 
-You can update the Wifi configuration by creating a new `wpa_supplicant.conf` file on the "boot" partition.
+You can update the WiFi configuration by creating a new `wpa_supplicant.conf` file on the "boot" partition.
 
 The steps are explained below.
 
@@ -203,9 +207,9 @@ The steps are explained below.
 
 4. Put the microSD card back into the Pi and boot the Pi.
 
-The `wpa_supplicant.conf` file will be read by the Pi on boot, and the file will disappear but the Wifi credentials will be updated.
+The `wpa_supplicant.conf` file will be read by the Pi on boot, and the file will disappear but the WiFi credentials will be updated.
 
-You can duplicate the "network" section to add additional Wifi networks (for example your work, and your home).
+You can duplicate the "network" section to add additional WiFi networks (for example your work, and your home).
 
 The "priority" attribute is optional and can be used to prioritize networks if multiple networks are configured (higher numbers are prioritized).
 
@@ -226,7 +230,3 @@ psk="Password for your other wireless LAN"
 priority=20
 }
 ```
-
-## Next Steps
-
-Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional Wifi credentials, continue to our [`viam-server` installation guide](../../#install-viam-server).
