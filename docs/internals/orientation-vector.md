@@ -32,4 +32,4 @@ To configure the camera into the frame system, you need to know where in the roo
 **Theta** describes the angle of the camera.
 If your camera is perpendicular to one of the axes of your Frame system, you can test the correct value by using 0, 90, 180, or 270 for Theta and checking if the orientation of the picture is correct.
 
- RX, RY, RZ, and Theta together form the _Pose_ which defines the camera's position and where it is pointing.
+ RX, RY, RZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
