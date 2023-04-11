@@ -8,4 +8,4 @@ aka:
 
 A free and open-source, language-neutral, cross-platform data format for serializing structured data.
 
-It is useful in developing programs to communicate with each other over a network or for storing data.
+Protocol Buffers are useful in developing programs that communicate with each other over a network or for storing data.
