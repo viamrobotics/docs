@@ -17,7 +17,7 @@ Viam’s Robot Development Kit (RDK) RDK is the [open-source](https://github.com
 
 _viam-server_ is responsible for:
 
-- All gRPC and WebRTC communication
+- All {{< glossary_tooltip term_id="grpc" text="gRPC" >}} and {{< glossary_tooltip term_id="webrtc" >}} communication
 - Connecting robots to the cloud
 - Loading and managing connections to hardware [components](/components/)
 - Running built-in [services](/services/)

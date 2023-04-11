@@ -25,9 +25,9 @@ During your rover rental, you can [try out some of the Viam platform functionali
 
 If you want to control and automate your rover with Python or Go, use the [Viam SDKs](/program/sdk-as-client).
 
-Viam also exposes a gRPC [API for robot controls](https://github.com/viamrobotics/api).
+Viam also exposes a {{< glossary_tooltip term_id="grpc" text="gRPC" >}} [API for robot controls](https://github.com/viamrobotics/api).
 
-Both the API and the SDKs support [WebRTC](https://webrtcforthecurious.com/).
+Both the API and the SDKs support {{< glossary_tooltip term_id="webrtc" >}}.
 The SDKs provide a wrapper around the viam-server [gRPC](https://grpc.io/) API and streamline connection, authentication, and encryption against a server.
 
 ## Next steps

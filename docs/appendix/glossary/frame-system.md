@@ -2,7 +2,8 @@
 title: Frame System
 id: frame-system
 full_link: /services/frame-system/
-short_description: A hierarchy of frames that are related to one another through coordinate transformations.
+short_description: The frame system holds reference frame information for the relative position of components in space.
 aka:
 ---
-A hierarchy of frames that are related to one another through coordinate transformations.
+
+The frame system holds reference frame information for the relative position of components in space.

@@ -28,7 +28,7 @@ The Viam platform manages:
 
 - Starting and stopping the module binary (lifecycle)
 - Dependency management (modular resources may depend on other resources - both RDK built-in and other modular resources)
-- Securely exposing the modular resource's interface (protobuf-described API) alongside Viam RDK built-in APIs
+- Securely exposing the modular resource's interface ({{< glossary_tooltip term_id="protobuf" text="Protobuf" >}}-described API) alongside Viam RDK built-in APIs
 - Robot reconfiguration for any configured modular resource instances
 
 For more detail, see the [modular resources documentation](/program/extend/modular-resources/).
