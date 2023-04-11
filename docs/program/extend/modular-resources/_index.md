@@ -1,12 +1,34 @@
 ---
 title: "Create custom components and services as modular resources"
 linkTitle: "Modular Resources"
+description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
+image: "/tutorials/img/intermode/rover_outside.png"
 weight: 10
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 ---
 
 The Viam module system allows you to integrate custom [resources](/appendix/glossary/#term-resource) ([components](/components) and [services](/services)) into any robot running on Viam.
+
+<!-- ## Modular Resources
+
+You can use the Viam module system to build a custom [component](/components) or [service](/services), which can then be included in any Viam-powered robot.
+Once configured, modular resources behave identically to built-in RDK resources.
+
+The Viam platform manages:
+
+- Starting and stopping the module binary (lifecycle)
+- Dependency management (modular resources may depend on other resources - both RDK built-in and other modular resources)
+- Securely exposing the modular resource's interface (protobuf-described API) alongside Viam RDK built-in APIs
+- Robot reconfiguration for any configured modular resource instances
+
+For more detail, see [Modular Resources](/program/extend/modular-resources/).
+
+## Custom Components as Remotes
+
+You can also implement custom components by programming custom components with the SDK of your choice, registering them on a server, adding the server as a remote part of your robot, and adding a process to your robot that runs the server.
+
+For more detail, see [Custom Components as Remotes](/program/extend/sdk-as-server/). -->
 
 With modular resources, you can:
 
