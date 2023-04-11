@@ -17,7 +17,7 @@ With modular resources, you can:
 This means that functionality that the [RDK](/program/rdk/) provides for built-in resources is also automatically provided for user-created modular resources.
 Two key concepts exist across all Viam resources, built-in and modular, to facilitate this: [*APIs*](#apis) and [*models*](#models).
 
-## Key concepts
+## Key Concepts
 
 ### APIs
 
@@ -56,7 +56,7 @@ For example:
 A common use-case for modular resources is to create a new model using an existing Viam API.
 However, you can also create and expose new API types using modular resources.
 
-## Use a modular resource with your robot
+## Use a Modular Resource with Your Robot
 
 Add a modular resource to your robot configuration in five steps:
 
@@ -70,11 +70,11 @@ Add a modular resource to your robot configuration in five steps:
 4. Add a *module* to your robot configuration
 5. Add a *component* or *service* that references a component or service resource provided by the configured module -->
 
-### Code your module
+### Code Your Module
 
-### Create your executable module binary
+### Create Your Executable Module Binary
 
-### Make your module binary available to the RDK
+### Make Your Module Binary Available to the RDK
 
 In order for the RDK to manage a modular resource, the modular resource must be exposed by a module that is able to be run by the RDK.
 Therefore, you must ensure that any modular resource is made available with a module binary executable in a location that the RDK can access.
@@ -86,7 +86,7 @@ Modules are binary executables that can be managed by the RDK through [module co
 A configured module can make one or more modular resources available for configuration as a component and/or service instances.
 {{% /alert %}}
 
-### Configure your module
+### Configure Your Module
 
 The Viam module system introduces a new optional top-level configuration block to robot configurations called *modules*.
 This allows you to instruct RDK to load modules as well as register and [manage](#modular-resource-management-with-the-rdk) any modular resources made available by the module that you'd like to use with your robot.
@@ -99,7 +99,7 @@ The following properties are available for modules:
 `name` | string | **Required** | Name of the module you are registering |
 `executable_path` | string | **Required** | The filesystem path to the module executable on the robot part |
 
-### Configure your modular resource
+### Configure Your Modular Resource
 
 Once you have configured a module as part of your robot configuration, you can instantiate any number of instances of a modular resource made available by that module with the component or service configuration.
 All standard properties such as *attributes* and *depends_on* are supported for modular resources.
@@ -142,9 +142,29 @@ It registers a custom model __viam-contributor:motor:super-custom__ to use with 
 }
 ```
 
-## Next steps
+## More Information
 
-### Modular resources as remotes
+### Modular Resource Management
+
+#### Dependency Management
+
+Modular resources may depend on other built-in resources or other modular resources, and vice versa.
+The Viam RDK handles dependency management.
+
+#### Startup
+
+RDK ensures that any configured modules are loaded automatically on startup, and that configured modular resource instances are started alongside configured built-in resources instances.
+
+#### Reconfiguration
+
+When you change the configuration of a Viam robot, the behavior of modular resource instances versus built-in resource instances is equivalent.
+This means you can add, modify, and remove a modular resource instance from a running robot as normal.
+
+#### Shutdown
+
+During robot shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
+
+### Modular Resources as Remotes
 
 [Remote](/manage/parts-and-remotes/) parts may load their own modules and provide modular resources, just as the main part can.
 This means that you can compose a robot of any number of parts running in different compute locations, each containing both built-in and custom resources.
