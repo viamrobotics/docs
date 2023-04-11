@@ -89,7 +89,7 @@ A machine learning detector that draws bounding boxes according to the specified
     "register_models": [
         {
             "name": "<detector_name>",
-            "type": "tflite_classifier",
+            "type": "tflite_detector",
             "parameters": {
               "model_path" : "/path/to/model.tflite",
               "label_path": "/path/to/labels.txt",
@@ -100,7 +100,7 @@ A machine learning detector that draws bounding boxes according to the specified
 }
 ```
 
-The following parameters are available for a `"tflite_classifier"`.
+The following parameters are available for a `"tflite_detector"`.
 For an example see [Configuration](#configuration).
 
 | Parameter | Inclusion | Description |
