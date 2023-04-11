@@ -1,5 +1,5 @@
 ---
-title: "Create a Custom Sensor Model"
+title: "Create a fake Sensor"
 linkTitle: "fake"
 weight: 80
 type: "docs"

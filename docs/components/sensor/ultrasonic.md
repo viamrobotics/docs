@@ -9,15 +9,40 @@ icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
 
-Configure an `ultrasonic` sensor to integrate an [HC-S204 ultrasonic distance sensor](https://www.sparkfun.com/products/15569) into your robot.
-
-Configure a `ultrasonic` sensor as follows:
+Configure an `ultrasonic` sensor to integrate an [HC-S204 ultrasonic distance sensor](https://www.sparkfun.com/products/15569) into your robot:
 
 {{< tabs >}}
-{{% tab name="JSON Template" %}}
+{{% tab name="Config Builder" %}}
 
 On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
-Enter a name for your sensor, select the type `sensor`, and select the `ultrasonic` model.
+
+1. Configure your [board](/components/board).
+    Enter a name for your board, select the type `board`, and select the appropriate model.
+    Paste  `"digital_interrupts"` into the **Attributes** section:
+
+    ``` json
+    "digital_interrupts": [
+      {
+        "name": <your-digital-interrupt-name>,
+        "pin": <your-pin-number>
+      }
+    ]
+    ```
+
+    Replace `"name"` with a name of your choosing, and `"pin"` with the number of the pin on your board you have connected your sensor's echo pin to.
+    For example:
+
+    ![Creation of a ultrasonic sensor's board with digital interrupts configured in the Viam app config builder.](../img/ultrasonic-sensor-board-ui-config.png)
+
+2. Configure your sensor.
+    Enter a name for your sensor, select the type `sensor`, and select the `ultrasonic` model.
+    Paste your `"trigger_pin"`, `"echo_interrupt_pin"`, and `"board"` into the **Attibutes** section.
+    For example:
+
+    ![Creation of a ultrasonic sensor in the Viam app config builder.](../img/ultrasonic-sensor-ui-config.png)
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -91,8 +116,7 @@ Enter a name for your sensor, select the type `sensor`, and select the `ultrason
 {{% /tab %}}
 {{% /tabs %}}
 
-You must configure a digital interrupt as part of your [board's configuration](/components/board/#configuration) to configure this sensor.
-See [here](/components/board/#digital-interrupts) for instructions on how to modify the Template or Example JSON to do so.
+You must [configure a digital interrupt](/components/board/#digital-interrupts) as part of your [board's configuration](/components/board/#configuration) to configure this sensor.
 
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
@@ -101,7 +125,7 @@ See [here](/components/board/#digital-interrupts) for instructions on how to mod
 | `board`  | **Required** | The `name` of the [board](/components/board) the sensor is connected to. |
 | `timeout_ms`  | Optional | Time to wait in milliseconds before timing out of requesting to get readings from the sensor. Default: `1000`. |
 
-{{% alert title="Tip" color="Tip" %}}
+{{% alert title="Tip" color="tip" %}}
 
 A `trigger_pin` value of `5` corresponds to [Pin 5 GPIO 3](https://pinout.xyz/pinout/pin5_gpio3) on a Raspberry Pi.
 

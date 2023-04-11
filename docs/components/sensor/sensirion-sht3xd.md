@@ -9,9 +9,7 @@ icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
 
-Configure a `sensirion-sht3xd` sensor to integrate a [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) into your robot.
-
-Configure a `sensirion-sht3xd` sensor as follows:
+Configure a `sensirion-sht3xd` sensor to integrate a [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

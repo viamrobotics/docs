@@ -10,9 +10,7 @@ icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
 
-Configure a `power_ina219` sensor to integrate a [INA219 current sensor](https://www.amazon.com/dp/B07QJW6L4C) into your robot.
-
-Configure a `power_ina219` sensor as follows:
+Configure a `power_ina219` sensor to integrate a [INA219 current sensor](https://www.amazon.com/dp/B07QJW6L4C) into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

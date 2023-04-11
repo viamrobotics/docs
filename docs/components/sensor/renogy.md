@@ -9,9 +9,7 @@ icon: "img/components/sensor.png"
 # SME: #team-bucket
 ---
 
-Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](https://www.amazon.com/Renogy-Battery-Temperature-Sensor-Controllers/dp/B07WMMJFWY) into your robot.
-
-Configure a `renogy` sensor as follows:
+Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](https://www.amazon.com/Renogy-Battery-Temperature-Sensor-Controllers/dp/B07WMMJFWY) into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
