@@ -184,10 +184,6 @@ For these changes to take effect, you need to restart your Raspberry Pi if it ha
 sudo reboot
 ```
 
-## Next Steps
-
-Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional Wifi credentials, continue to [install `viam-server`](../../#install-viam-server).
-
 ## Troubleshooting
 
 ### Add additional Wifi credentials
@@ -233,4 +229,4 @@ priority=20
 
 ## Next Steps
 
-Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional Wifi credentials, continue to our [`viam-server` installation guide](../../#install-viam-server).
+Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional WiFi credentials, continue to our [`viam-server` installation guide](../../#install-viam-server).
