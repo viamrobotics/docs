@@ -56,8 +56,6 @@ Supported arm models include:
 | [`xArm6`](xarm6) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
 | [`xArm7`](xarm7) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
 | `eva` | [Automata Eva](https://automata.tech/products/hardware/about-eva/) |
-| `trossen-vx300s` | [Trossen Robotics ViperX 300](https://www.trossenrobotics.com/viperx-300-robot-arm.aspx) |
-| `trossen-wx250s`| [Trossen Robotics WidowX 250](https://www.trossenrobotics.com/widowx-250-robot-arm.aspx) |
 | `ur5e` | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot/) |
 | `yahboom-dofbot` | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
 | `wrapper_arm` | A model used to wrap a partially implemented arm. |
