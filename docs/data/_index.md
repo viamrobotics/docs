@@ -1,7 +1,7 @@
 ---
 title: "Data"
 linkTitle: "Data"
-weight: 41
+weight: 19
 type: docs
 no_list: true
 description: "Manage Data and use Machine Learning."
