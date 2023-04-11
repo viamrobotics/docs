@@ -6,6 +6,7 @@ short_description: A frame represents a coordinate system that describes the pos
 aka:
 ---
 
-A frame represents a coordinate system that describes position and orientation of an object in relation to the {{< glossary_tooltip term_id="frame-system" text="Frame System" >}}.
+A frame represents a coordinate system that describes the position and orientation of an object.
+See also {{< glossary_tooltip term_id="frame-system" text="Frame System" >}}.
 
 The location of a frame is described in relation to its parent frame using rigid transformations rather than in absolute terms.
