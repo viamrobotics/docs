@@ -1,5 +1,5 @@
 ---
-title: "Poses and Orientation Vectors"
+title: "Orientation Vector"
 linkTitle: "Pose"
 weight: 10
 type: "docs"
