@@ -12,34 +12,7 @@ aliases:
 # SMEs: Nicolas Menard
 ---
 
-{{% alert title="ALPHA" color="note" %}}
-The `micro-RDK` is in alpha mode and many features mentioned on other pages are not yet supported and still being added.
-Stability is not guaranteed.
-Breaking changes are likely to occur, and occur often.
-{{% /alert %}}
-
-The micro-RDK is a lightweight version of the [Robot Development Kit](https://github.com/viamrobotics/rdk) which can run on resource-limited embedded systems.
-
-The only microcontroller the micro-RDK currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
-
-To use Viam on a microcontroller, you need to:
-
-- run the micro-RDK on your microcontroller
-- run the full-featured `viam-server` on another machine
-
-To run both the micro-RDK and `viam-server`, you currently need two robots: one controlling robot which runs `viam-server` and a worker robot which runs the micro-RDK on your microcontroller.
-This second "robot" can be as simple as an instance of `viam-server` running on your development machine.
-
-![The control robot runs viam-server and connects to the microcontroller which runs the micro-RDK](../../img/microcontroller/micro-rdk-overview.png)
-
-The micro-RDK currently only supports:
-
-- GPIO pins
-- analog readers
-- motors
-- encoders
-
-See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information about the micro-RDK.
+{{% readfile "/static/include/micro-rdk.md" %}}
 
 ## Hardware Requirements
 

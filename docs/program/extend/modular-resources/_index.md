@@ -17,7 +17,7 @@ With modular resources, you can:
 - Create brand new resource types
 
 Modular resources that are configured and composed into a Viam robot behave identically to built-in resources.
-This means that functionality that the Viam [RDK](/program/rdk/) provides for built-in resources is also automatically provided for user-created resources.
+This means that functionality that the Viam [RDK](/internals/rdk/) provides for built-in resources is also automatically provided for user-created resources.
 
 Two key concepts exist across all Viam resources (built-in and modular) to facilitate this: *APIs* and *models*
 
