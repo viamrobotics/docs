@@ -9,7 +9,7 @@ tags: ["frame system", "services"]
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-Any robot configured in Viam comes with a service we call the Frame System: an internally managed and mostly static system for storing the "reference frame" of each component of a robot within a coordinate system configured by the user.
+Any robot configured in Viam comes with the Frame System service: an internally managed and mostly static system for storing the "reference frame" of each component of a robot within a coordinate system configured by the user.
 
 The Frame System is the basis for many of Viam's other services, like [motion](/services/motion) and [vision](/services/vision).
 It stores the required contextual information to use the position and orientation readings returned by some components.
@@ -101,7 +101,7 @@ Configure the reference frame as follows:
 
 {{% alert title="Caution" color="caution" %}}
 
-`Types` are offered in `Orientation` for ease of configuration, but the [orientation vector](/internals/orientation-vector/) type that is always stored and returned by the Frame System is `"Orientation Vector Radians"`.
+The `Orientation` parameter offers `Types` for ease of configuration, but the Frame System always stores and returns [orientation vectors](/internals/orientation-vector/) in `"Orientation Vector Radians"`.
 `"Degrees"` and `"Quaternion"` will be converted to `"Radians"`.
 
 {{% /alert %}}
@@ -160,7 +160,7 @@ To solve this problem:
 - This component would be fixed in respect to the `world` reference frame, and could supply the location and orientation of the rover in its own reference frame.
 
 To add this component's reference frame into your robot's Frame System build, you can pass the `name` of this component's reference frame to various APIs.
-These *supplemental transforms* would be the missing link to be able to transform a [pose](/internals/orientation-vector) in that dynamic arm's reference frame to the `world` reference frame.
+These *supplemental transforms* then supply the missing link to transform a [pose](/internals/orientation-vector) in that dynamic arm's reference frame to the `world` reference frame.
 
 - For example, you can pass this component's reference frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service [`GetPose`](/services/motion/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` parameter.
@@ -168,6 +168,6 @@ These *supplemental transforms* would be the missing link to be able to transfor
 
 {{% alert title="Tip" color="tip" %}}
 
-A knowledgeable user could code a [mobile base](/components/base/wheeled) that is able to report its own position without the need for supplemental transforms with an organic [SLAM](/services/slam) system.
+Experienced users can code a [mobile base](/components/base/wheeled) that is able to report its own position without the need for supplemental transforms with an organic [SLAM](/services/slam) system.
 
 {{% /alert %}}

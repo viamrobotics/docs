@@ -1,5 +1,5 @@
 ---
-title: "Configuring Complex Kinematic Chains"
+title: "Configure Complex Kinematic Chains"
 linkTitle: "Complex Kinematic Chains"
 weight: 70
 type: "docs"
@@ -10,9 +10,9 @@ tags: ["slam", "services"]
 
 Many components have complex kinematic chains and require an additional set of intermediate reference frames to use Viam's [motion service](/services/motion/).
 
-- For example, an [arm](/components/arm) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/internals/pose) with [`MoveToPositions()`](/components/arm/#movetopositions).
+- For example, an [arm](/components/arm) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/internals/pose) with [`MoveToPosition()`](/components/arm/#movetoposition).
 
-If you want to implement a component with a complex kinematic chain that is not already built into the RDK to build your robot with Viam, you need to add a file to your driver that details the attachment of the intermediate reference frames on the component.
+If you want to implement a component with a complex kinematic chain that is not already built into the RDK, you need to add a file to your driver that details the attachment of the intermediate reference frames on the component.
 
 This file can be a <file>.json</file> file in the [same format as Viam's built-in arm drivers](https://github.com/viamrobotics/rdk/blob/main/components/arm/xarm/xarm6_kinematics.json), or an [<file>.URDF</file> file](https://industrial-training-master.readthedocs.io/en/melodic/_source/session3/Intro-to-URDF.html).
 
@@ -25,14 +25,12 @@ Viam supports two formats for supplying kinematic parameters to configure interm
 
 {{% alert title="Note" color="note" %}}
 
-Of the two methods, Viam prefers Spacial Vector Algebra over Denavit-Hartenberg.
-
-Viam wants roboticists to be able to specify link frames arbitrarily, which DH parameters are unable to guarantee.
-We also want roboticists to be able to make their own robots and define new drivers, and incorrect SVA parameters are much easier to troubleshoot than incorrect DH parameters.
+Of the two methods, we prefer Spacial Vector Algebra over Denavit-Hartenberg because it allows you to specify link frames arbitrarily, which DH parameters are unable to guarantee.
+Additionally, if you are making your own robot and defining new drivers, incorrect SVA parameters are easier to troubleshoot than incorrect DH parameters. 
 
 {{% /alert %}}
 
-Reference this example <file>.json</file> configuration for each `kinematic_param_type`, as used by Viam's [Universal Robots](https://www.universal-robots.com/) [arm driver](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur5e.json):
+This is an example <file>.json</file> configuration as used by Viam's [Universal Robots](https://www.universal-robots.com/) [arm driver](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur5e.json):
 
 {{< tabs name="Kinematic Parameter Types" >}}
 {{% tab name="SVA" %}}
