@@ -17,6 +17,15 @@ Configure a `sensirion-sht3xd` sensor to integrate a [Sensirion SHT3x-DIS temper
 On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
 Enter a name for your sensor, select the type `sensor`, and select the `sensirion-sht3xd` model.
 
+Paste into the **Attributes** box:
+
+``` json
+{
+  "board": <your-board-name>,
+  "i2c_bus": <your-i2c-bus-name>
+}
+```
+
 ![Creation of a sensirion-sht3xd sensor in the Viam app config builder.](../img/sensirion-sht3xd-sensor-ui-config.png)
 
 {{% /tab %}}
@@ -31,7 +40,7 @@ Enter a name for your sensor, select the type `sensor`, and select the `sensirio
       "model": "sensirion-sht3xd",
       "attributes": {
         "board": <your-board-name>,
-        "i2c_bus": <your-i2c-bus-namer>
+        "i2c_bus": <your-i2c-bus-name>
       },
       "depends_on": []
     }
