@@ -7,7 +7,7 @@ tags: ["data management", "cloud", "sync"]
 # SME: Aaron Casas
 ---
 
-First, install the [Viam CLI](/organization/cli) and [authenticate](/organization/cli/#authenticate).
+First, install the [Viam CLI](/manage/cli) and [authenticate](/manage/cli/#authenticate).
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/cli/cmd@latest
@@ -30,14 +30,14 @@ To export data from the Data Management Service in the cloud:
    This command uses the Viam CLI to download the data locally onto your computer based on the search criteria you select in the Viam app.
 
    By default, the command creates a new directory named `data` in the current directory and downloads the specified data.
-   If you want to store the data in a different location, change the specified folder with the [`--destination` flag](../../../organization/cli/#named-arguments).
+   If you want to store the data in a different location, change the specified folder with the [`--destination` flag](../../cli/#named-arguments).
 
    Once the command has finished running and downloading the data, you can view and use the data locally.
 
    Since data is downloaded in parallel, the order is not guaranteed.
    Sort your folder by filename in order to see them in chronological order.
 
-You can see more information about exporting data in the [Viam CLI documentation](/organization/cli/#data).
+You can see more information about exporting data in the [Viam CLI documentation](/manage/cli/#data).
 
 ## Next Steps
 

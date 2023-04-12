@@ -3,8 +3,6 @@ title: "View and Filter Data"
 linkTitle: "View Data"
 weight: 38
 type: "docs"
-aliases:
-    - /manage/data/view
 tags: ["data management", "cloud", "sync"]
 # SME: Aaron Casas
 ---
