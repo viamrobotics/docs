@@ -111,7 +111,7 @@ To find the `path`s of all connected video devices, run the following command:
 v4l2-ctl --list-devices
 ```
 
-The `id` is a more consistent way to refer to the webcam.
+The `id` listed from `ls /dev/v4l/by-id/` is a more consistent way to refer to the webcam.
 
 {{% /tab %}}
 {{% tab name="Mac" %}}
