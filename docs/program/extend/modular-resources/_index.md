@@ -10,36 +10,16 @@ tags: ["server", "rdk", "extending viam", "modular resources", "components", "se
 
 The Viam module system allows you to integrate custom [resources](/appendix/glossary/#term-resource) ([components](/components) and [services](/services)) into any robot running on Viam.
 
-<!-- ## Modular Resources
-
-You can use the Viam module system to build a custom [component](/components) or [service](/services), which can then be included in any Viam-powered robot.
-Once configured, modular resources behave identically to built-in RDK resources.
-
-The Viam platform manages:
-
-- Starting and stopping the module binary (lifecycle)
-- Dependency management (modular resources may depend on other resources - both RDK built-in and other modular resources)
-- Securely exposing the modular resource's interface (protobuf-described API) alongside Viam RDK built-in APIs
-- Robot reconfiguration for any configured modular resource instances
-
-For more detail, see [Modular Resources](/program/extend/modular-resources/).
-
-## Custom Components as Remotes
-
-You can also implement custom components by programming custom components with the SDK of your choice, registering them on a server, adding the server as a remote part of your robot, and adding a process to your robot that runs the server.
-
-For more detail, see [Custom Components as Remotes](/program/extend/sdk-as-server/). -->
-
 With modular resources, you can:
 
 - Create new models of built-in component or service types
 - Create brand new resource types
 
-`viam-server` treats modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/program/rdk).
+`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/program/rdk).
 This means that functionality that the [RDK](/program/rdk/) provides for built-in resources is also automatically provided for user-created modular resources.
 Two key concepts exist across all Viam resources, built-in and modular, to facilitate this: [*APIs*](#apis) and [*models*](#models).
 
-## Key Concepts
+## Key concepts
 
 ### APIs
 
@@ -60,7 +40,7 @@ You can see built-in Viam resource APIs in the <a href="https://github.com/viamr
 
 ### Models
 
-A model is an implementation of a resource type that implements all or some of the API methods of a resource type's API.
+A *model* is an implementation of a resource type that implements all or some of the API methods of a resource type's API.
 
 Models allow you to control any number of versions of a given resource with a consistent interface.
 This is powerful, because you have all the same methods for interfacing with different models of the same component type.
@@ -78,67 +58,347 @@ For example:
 A common use-case for modular resources is to create a new model using an existing Viam API.
 However, you can also create and expose new API types using modular resources.
 
-## Use a Modular Resource with Your Robot
+## Use a modular resource with your robot
 
 Add a modular resource to your robot configuration in five steps:
 
 1. Code a module in Go or Python that implements a new resource and registers the component in the Viam RDK's [global registry of robotic parts](https://github.com/viamrobotics/rdk/blob/main/registry/registry.go).
-2. Create a binary executable file that runs your module.
-3. Save the module binary in a location where it can be accessed by the RDK.
-4. Add a *module*, which is built from the module binary, to the configuration of your robot.
+2. Create an executable file that runs your module.
+3. Save the executable in a location your `viam-server` instance can access.
+4. Add a *module* referencing this executable to the configuration of your robot.
 5. Add a new component or service referencing the custom resource provided by the configured *module* to the configuration of your robot.
 
-<!-- 3. Ensure that the module binary can be accessed by the RDK (see [Make the modular resource available to RDK](#make-the-modular-resource-available-to-rdk))
-4. Add a *module* to your robot configuration
-5. Add a *component* or *service* that references a component or service resource provided by the configured module -->
+{{% alert title="Modules vs. modular resources" color="tip" %}}
 
-### Code Your Module
+A configured *module* can make one or more *modular resources* available for configuration.
 
-### Create Your Executable Module Binary
-
-### Make Your Module Binary Available to the RDK
-
-In order for the RDK to manage a modular resource, the modular resource must be exposed by a module that is able to be run by the RDK.
-Therefore, you must ensure that any modular resource is made available with a module binary executable in a location that the RDK can access.
-For example, if you are running the RDK on an Raspberry Pi you'll need to have an executable module on the Pi's filesystem.
-
-{{% alert title="Modules vs modular resources" color="tip" %}}
-Modules are binary executables that can be managed by the RDK through [module configuration](#add-a-module-to-your-robot-configuration).
-
-A configured module can make one or more modular resources available for configuration as a component and/or service instances.
 {{% /alert %}}
 
-### Configure Your Module
+### Code your module
 
-The Viam module system introduces a new optional top-level configuration block to robot configurations called *modules*.
-This allows you to instruct RDK to load modules as well as register and [manage](#modular-resource-management-with-the-rdk) any modular resources made available by the module that you'd like to use with your robot.
-The RDK loads modules in the order you specify in the modules list.
+Code a module in the Go or Python programming languages with [Viam's SDKs](/program/sdk-as-client) that does the following:
+
+1. Implements a new resource.
+
+2. Registers the component in the Viam RDK's [global registry of robotic parts](https://github.com/viamrobotics/rdk/blob/main/registry/registry.go).
+
+For example:
+
+{{%expand "Click to view an example of a module implementing a new model of the base component type" %}}
+
+{{< tabs name="Examples of Modules" >}}
+{{% tab name="Go" %}}
+
+``` go {class="line-numbers linkable-line-numbers"}
+// Package mybase implements a base that only supports SetPower (basic forward/back/turn controls.)
+package mybase
+
+import (
+    "context"
+    "fmt"
+    "math"
+
+    "github.com/edaniels/golog"
+    "github.com/golang/geo/r3"
+    "github.com/pkg/errors"
+    "go.uber.org/multierr"
+
+    "go.viam.com/rdk/components/base"
+    "go.viam.com/rdk/components/generic"
+    "go.viam.com/rdk/components/motor"
+    "go.viam.com/rdk/config"
+    "go.viam.com/rdk/registry"
+    "go.viam.com/rdk/resource"
+    "go.viam.com/rdk/utils"
+)
+
+var (
+    Model            = resource.NewModel("acme", "demo", "mybase")
+    errUnimplemented = errors.New("unimplemented")
+)
+
+// STEP 1: Implements the methods the Viam RDK defines for the base API.
+
+// newBase
+func newBase(ctx context.Context, deps registry.Dependencies, config config.Component, logger golog.Logger) (interface{}, error) {
+    b := &MyBase{logger: logger}
+    err := b.Reconfigure(config, deps)
+    return b, err
+}
+
+// Reconfigure
+func (base *MyBase) Reconfigure(cfg config.Component, deps registry.Dependencies) error {
+    base.left = nil
+    base.right = nil
+    baseConfig, ok := cfg.ConvertedAttributes.(*MyBaseConfig)
+    if !ok {
+        return utils.NewUnexpectedTypeError(baseConfig, cfg.ConvertedAttributes)
+    }
+    var err error
+
+    base.left, err = motor.FromDependencies(deps, baseConfig.LeftMotor)
+    if err != nil {
+        return errors.Wrapf(err, "unable to get motor %v for mybase", baseConfig.LeftMotor)
+    }
+
+    base.right, err = motor.FromDependencies(deps, baseConfig.RightMotor)
+    if err != nil {
+        return errors.Wrapf(err, "unable to get motor %v for mybase", baseConfig.RightMotor)
+    }
+
+    // Good practice to stop motors
+    return multierr.Combine(base.left.Stop(context.Background(), nil), base.right.Stop(context.Background(), nil))
+}
+
+// Defines what the JSON for configuration should look like
+type MyBaseConfig struct {
+    LeftMotor  string `json:"motorL"`
+    RightMotor string `json:"motorR"`
+}
+
+// Validates JSON for configuration
+func (cfg *MyBaseConfig) Validate(path string) ([]string, error) {
+    if cfg.LeftMotor == "" {
+        return nil, fmt.Errorf(`expected "motorL" attribute for mybase %q`, path)
+    }
+    if cfg.RightMotor == "" {
+        return nil, fmt.Errorf(`expected "motorR" attribute for mybase %q`, path)
+    }
+
+    return []string{cfg.LeftMotor, cfg.RightMotor}, nil
+}
+
+// Attributes of the base
+type MyBase struct {
+    generic.Echo
+    left   motor.Motor
+    right  motor.Motor
+    logger golog.Logger
+}
+
+// MoveStraight: unimplemented
+func (base *MyBase) MoveStraight(ctx context.Context, distanceMm int, mmPerSec float64, extra map[string]interface{}) error {
+    return errUnimplemented
+}
+
+// Spin: unimplemented
+func (base *MyBase) Spin(ctx context.Context, angleDeg, degsPerSec float64, extra map[string]interface{}) error {
+    return errUnimplemented
+}
+
+// SetVelocity: unimplemented
+func (base *MyBase) SetVelocity(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
+    return errUnimplemented
+}
+
+// SetPower of the motors on the base
+func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
+    base.logger.Debugf("SetPower Linear: %.2f Angular: %.2f", linear.Y, angular.Z)
+    if math.Abs(linear.Y) < 0.01 && math.Abs(angular.Z) < 0.01 {
+        return base.Stop(ctx, extra)
+    }
+    sum := math.Abs(linear.Y) + math.Abs(angular.Z)
+    err1 := base.left.SetPower(ctx, (linear.Y-angular.Z)/sum, extra)
+    err2 := base.right.SetPower(ctx, (linear.Y+angular.Z)/sum, extra)
+    return multierr.Combine(err1, err2)
+}
+
+// Stop the base
+func (base *MyBase) Stop(ctx context.Context, extra map[string]interface{}) error {
+    base.logger.Debug("Stop")
+    err1 := base.left.Stop(ctx, extra)
+    err2 := base.right.Stop(ctx, extra)
+    return multierr.Combine(err1, err2)
+}
+
+// Check if the base is moving
+func (base *MyBase) IsMoving(ctx context.Context) (bool, error) {
+    for _, m := range []motor.Motor{base.left, base.right} {
+        isMoving, _, err := m.IsPowered(ctx, nil)
+        if err != nil {
+            return false, err
+        }
+        if isMoving {
+            return true, err
+        }
+    }
+    return false, nil
+}
+
+func (base *MyBase) Close(ctx context.Context) error {
+    return base.Stop(ctx, nil)
+}
+
+
+// STEP 2: Registers the component in the Viam RDK's global registry of robotic parts
+
+func init() {
+    registry.RegisterComponent(base.Subtype, Model, registry.Component{Constructor: newBase})
+
+    // Uses RegisterComponentAttributeMapConverter to register a custom configuration struct that has a Validate(string) ([]string, error) method. 
+    // The Validate method will automatically be called in RDK's module manager to validate MyBase's configuration and register implicit dependencies.
+    config.RegisterComponentAttributeMapConverter(
+        base.Subtype,
+        Model,
+        func(attributes config.AttributeMap) (interface{}, error) {
+            var conf MyBaseConfig
+            return config.TransformAttributeMapToStruct(&conf, attributes)
+        },
+        &MyBaseConfig{})
+}
+```
+
+This example is from the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
+See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) for more information about the functions and structure of this module.
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+COMING SOON
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /expand%}}
+
+{{% alert title="Caution" color="caution" %}}
+
+You must define all functions belonging to a built-in resource type if defining a new model. Otherwise, the class won’t instantiate.
+
+- If you are using the Python SDK, raise an `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
+- If you are using the Go SDK, return `errUnimplemented` or leave the body of functions you do not want to implement empty.
+
+{{% /alert %}}
+
+### Make your module executable
+
+Now, in order to add this module to your robot, you need to have a single [executable file](https://en.wikipedia.org/wiki/Executable) that runs your module when executed.
+Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
+
+One option is creating and save a new shell script (<file>.sh</file>) that runs your file.
+For example:
+
+{{< tabs name="Template Shell Scripts as Module Executables" >}}
+{{% tab name="Go" %}}
+
+``` shell
+#!/bin/sh
+cd <path-to-your-module-directory>
+
+go build ./
+exec ./<your-module-directory-name> $@
+```
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+``` shell
+#!/bin/sh
+cd <path-to-your-module-directory>
+
+# Be sure to use `exec` so that termination signals reach the python process,
+# or handle forwarding termination signals manually
+exec python3 <your-module-directory-name>.main $@
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+To make this file executable, run the following command in your terminal:
+
+``` shell
+sudo chmod +x <FILEPATH>/<FILENAME>
+```
+
+### Make sure `viam-server` can access your executable
+
+Ensure that the code defining your module is saved where the instance of `viam-server` behind your robot can read and execute it.
+
+For example, if you are running `viam-server` on an Raspberry Pi, you'll need to save the module on the Pi's filesystem.
+
+Obtain the path to the executable file on your computer's filesystem by running the following commands in your terminal:
+
+``` shell
+cd <path-to-your-module-directory>
+pwd
+```
+
+### Configure your module
+
+To configure your new *module* on your robot, navigate to the **CONFIG** tab of your robot's page on [the Viam app](https://app.viam.com) and click on the **MODULES** sub-tab.
 
 The following properties are available for modules:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-`name` | string | **Required** | Name of the module you are registering |
-`executable_path` | string | **Required** | The filesystem path to the module executable on the robot part |
+`name` | string | __Required__ | Name of the module you are registering. |
+`executable_path` | string | __Required__ | The robot's computer's filesystem path to the module executable. |
 
-### Configure Your Modular Resource
+Add these properties to your module's configuration:
 
-Once you have configured a module as part of your robot configuration, you can instantiate any number of instances of a modular resource made available by that module with the component or service configuration.
-All standard properties such as *attributes* and *depends_on* are supported for modular resources.
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
 
-To correctly reference a registered modular resource, you must configure the *namespace*, *type*, *name* and *model* properties:
+![Creation of a new module in the Viam app config builder.](/program/img/modular-resources/module-ui-config.png)
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
+    {
+      "name": <your-module-name>,
+      "executable_path": <path-on-your-filesystem-to/your-module-directory>
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+### Configure your modular resource
+
+Once you have configured a module as part of your robot configuration, you can instantiate any number of instances of a modular resource made available by that module by adding new components or services configured with your modular resources' new type or [model](#models).
+
+The following properties are available for modular resources:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `namespace` | string | **Required** | The namespace of the [API](#apis) (the first part of the [API](#apis) triplet) |
-| `type` | string | **Required** | The subtype of the [API](#apis) (the third part of the [API](#apis) triplet) |
-| `name` | string | **Required** | What you want to name this instance of your modular resource. |
-| `model` | string | **Required** | The [full triplet](#models) of the modular resource |
+| `namespace` | string | __Required__ | The namespace of the [API](#apis) (the first part of the [API](#apis) triplet). |
+| `type` | string | __Required__ | The subtype of the [API](#apis) (the third part of the [API](#apis) triplet). |
+| `name` | string | __Required__ | What you want to name this instance of your modular resource. |
+| `model` | string | __Required__ | The [full triplet](#models) of the modular resource. |
+
+All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
+The `attributes` available vary depending on your implementation.
+
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "namespace": <module-namespace>,
+      "type": <resource-type>,
+      "depends_on": [],
+      "model": <model-namespace>:<model-family-name>:<model-name>,
+      "name": <string>
+    }
+  ],
+  "modules": [ ... ] // Your module configuration.
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
 
 The following is an example configuration for a motor modular resource implementation.
 It registers a custom model __viam-contributor:motor:super-custom__ to use with the Viam [motor API](/components/motor#api):
 
-``` json
+```json {class="line-numbers linkable-line-numbers"}
 {
   "modules": [
     {
@@ -164,18 +424,21 @@ It registers a custom model __viam-contributor:motor:super-custom__ to use with 
 }
 ```
 
-## More Information
+{{% /tab %}}
+{{% /tabs %}}
 
-### Modular Resource Management
+## More information
+
+### Modular resource management
 
 #### Dependency Management
 
 Modular resources may depend on other built-in resources or other modular resources, and vice versa.
 The Viam RDK handles dependency management.
 
-#### Startup
+#### Start-up
 
-RDK ensures that any configured modules are loaded automatically on startup, and that configured modular resource instances are started alongside configured built-in resources instances.
+The RDK ensures that any configured modules are loaded automatically on start-up, and that configured modular resource instances are started alongside configured built-in resource instances.
 
 #### Reconfiguration
 
@@ -186,7 +449,7 @@ This means you can add, modify, and remove a modular resource instance from a ru
 
 During robot shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
-### Modular Resources as Remotes
+### Modular resources as remotes
 
 [Remote](/manage/parts-and-remotes/) parts may load their own modules and provide modular resources, just as the main part can.
 This means that you can compose a robot of any number of parts running in different compute locations, each containing both built-in and custom resources.
