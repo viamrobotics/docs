@@ -7,7 +7,7 @@ description: "A description of Viam's orientation vector method."
 ---
 
 A _pose_ specifies where an object is with respect to another reference point and which direction it is pointing.
-Pose includes a 3D vector specifying the position of the center of the object, as well as an *orientation vector* specifying the angle of the object in 3D space.
+Pose includes a 3D vector specifying the position of the center of the object, as well as an _orientation vector_ specifying the angle of the object in 3D space.
 To specify which direction an object is pointing, you use an orientation vector (**OX, OY, OZ, theta**).
 The first three components of this vector form an axis pointing in the same direction as the object.
 **Theta** specifies the angle of the object's rotation about that axis.
@@ -39,4 +39,3 @@ If your camera is perpendicular to one of the axes of your Frame system, you can
 - Easy to measure in the real world
 - No protractor needed
 - Rotation is pulled out as Theta which is often used independently and measured independently
-
