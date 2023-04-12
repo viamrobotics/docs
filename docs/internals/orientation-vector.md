@@ -33,3 +33,10 @@ To configure the camera into the frame system, you need to know where in the roo
 If your camera is perpendicular to one of the axes of your Frame system, you can test the correct value by using 0, 90, 180, or 270 for Theta and checking if the orientation of the picture is correct.
 
  RX, RY, RZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
+
+## Why Viam uses orientation vectors
+
+- Easy to measure in the real world
+- No protractor needed
+- Rotation is pulled out as Theta which is often used independently and measured independently
+
