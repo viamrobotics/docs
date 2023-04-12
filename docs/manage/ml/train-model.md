@@ -4,8 +4,6 @@ linkTitle: "Train Model"
 weight: 40
 type: "docs"
 tags: ["data management", "ml", "model training"]
-aliases:
-    - /manage/ml/train-model
 description: "Train an image classification model on labeled image data."
 # SME: Aaron Casas
 ---

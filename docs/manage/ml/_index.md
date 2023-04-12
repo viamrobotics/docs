@@ -4,8 +4,6 @@ linkTitle: "Machine Learning"
 weight: 40
 type: "docs"
 tags: ["data management", "data", "services"]
-aliases:
-    - /manage/ml
 description: "Access data captured by the robot's components and train image classification models on the data."
 # SME: Aaron Casas
 ---
