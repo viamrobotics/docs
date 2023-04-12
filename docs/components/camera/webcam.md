@@ -84,7 +84,7 @@ The following attributes are available for webcams:
 | `distortion_parameters` | *Optional* | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
 | `debug` | *Optional* | Enables the debug outputs from the camera if `true`. Defaults to `false`. |
 | `format` | *Optional* | The camera image format, used with video_path to find camera. |
-| `video_path` | *Optional* | The path to the webcam. Often `video0`. If you don't provide a video path, it defaults to the first valid video path it finds. |
+| `video_path` | *Optional* | The id of or the path to the webcam. Often `video0`. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the id of a webcam is more consistent than the path. |
 | `width_px` | *Optional* | The camera image width in pixels, used with video_path to find camera with this resolution. Defaults to the closest possible value to closest to 480. |
 | `height_px` | *Optional* | The camera image height in pixels, used with video_path to find camera with this resolution. Defaults to the closest possible value to closest to 640. |
 
@@ -102,11 +102,16 @@ To list available `video_path`s use the following command:
 {{% tab name="Linux" %}}
 
 ```sh
+ls /dev/v4l/by-id/
+```
+
+To find the `path`s of all connected video devices, run the following command:
+
+```sh
 v4l2-ctl --list-devices
 ```
 
-The name of the device, listed after `/dev/` is the `video_path`.
-For example, if your device is at `/dev/video0`, your `video_path` is `video0`.
+The `id` is a more consistent way to refer to the webcam.
 
 {{% /tab %}}
 {{% tab name="Mac" %}}
