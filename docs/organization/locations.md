@@ -3,6 +3,7 @@ title: "Manage Locations and Sub-locations"
 linkTitle: "Locations"
 weight: 30
 type: "docs"
+no_list: true
 description: "A location is a virtual grouping of robots that allows you to organize robots and manage your fleets."
 tags: ["fleet management", "cloud", "app"]
 ---
@@ -44,11 +45,11 @@ There are two ways to share a location beyond its organization:
 
 Share your location with another organization you belong to by selecting the organization from the **Add Organization** drop-down menu and clicking **Share**.
 
-![The Add Organization drop-down in the Viam app displays all organizations the user is a member of.](../../img/app-usage/add-org-drop-down.png)
+![The Add Organization drop-down in the Viam app displays all organizations the user is a member of.](../img/app-usage/add-org-drop-down.png)
 
 The location's page lists newly added organization, along with the organization identified as the **primary owner**:
 
-![After adding another org, the Viam app lists it under the orgs that share this location list.](../../img/app-usage/after-add-org.png)
+![After adding another org, the Viam app lists it under the orgs that share this location list.](../img/app-usage/after-add-org.png)
 
 ##### Remove an organization from a shared location
 
@@ -60,7 +61,7 @@ Grant programmatic access to your location by sharing a location secret key.
 
 You can see the secret keys for a location in the **Location Secret Keys** drop-down:
 
-![Screenshot of the list of secret keys that can grant access to a location displays in the location secret keys drop down menu of the Viam app.](../../img/app-usage/location-secret-keys-drop-down.png)
+![Screenshot of the list of secret keys that can grant access to a location displays in the location secret keys drop down menu of the Viam app.](../img/app-usage/location-secret-keys-drop-down.png)
 
 Copy the secret key by clicking on the clipboard icon.
 Use these keys in your SDK code and scripts to authenticate your access to the robots in your location in the cloud.

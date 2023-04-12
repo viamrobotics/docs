@@ -80,7 +80,7 @@ For a full walk-through of one example, see the [Control an Intermode Rover with
 The easiest way to get started is to:
 
 1. Include one of the provided examples in your Viam robot config (see [Using a modular resource with your robot](#use-a-modular-resource-with-your-robot))
-2. Control the custom resource on the Viam app's [__CONTROL__ tab](/manage/fleet/#remote-control)
+2. Control the custom resource on the Viam app's [__CONTROL__ tab](/fleet#control)
 3. Control the custom resource programmatically with a [Viam SDK](/program/sdk-as-client/)
 4. Experiment by changing the resource's behavior.
 
