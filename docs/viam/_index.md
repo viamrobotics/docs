@@ -61,7 +61,7 @@ For each component that makes up your robot:
 
 1. Add it to your robot by [choosing the component type](/configuration) (example: `camera`) and model (example: `webcam`)
 2. Test it with the visual [control tab](/fleet#control)
-3. See any problems with in-app [logs](/fleet#logs), review or roll back configuration [history](/fleet#config)
+3. See any problems with in-app [logs](/fleet#logs), review or roll back configuration [history](/fleet#configuration)
 
 After configuring your robot's hardware, you can configure high level functionality the same way:
 

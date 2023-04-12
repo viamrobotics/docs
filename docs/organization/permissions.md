@@ -14,6 +14,6 @@ Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](
 
 - **Owner**: Can see and edit [every tab on the robot page](../../fleet).
 - **Operator**: Can see and use only the [remote control tab](../../fleet#control).
-  Cannot see or edit the [**SETUP**](../../fleet#setup), [**CONFIG**](../../fleet#config), [**HISTORY**](../../fleet#history), [**LOGS**](../../fleet#logs), [**CODE SAMPLE**](../../fleet#code-sample), or [**SECURITY**](../../fleet#security) tabs.
+  Cannot see or edit the [**SETUP**](../../fleet#setup), [**CONFIG**](../../fleet#configuration), [**HISTORY**](../../fleet#history), [**LOGS**](../../fleet#logs), [**CODE SAMPLE**](../../fleet#code-sample), or [**SECURITY**](../../fleet#security) tabs.
 
 A user can have one or more roles, granting the user the respective permissions of each role.
