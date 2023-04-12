@@ -21,8 +21,10 @@ The credentials look like this:
 "secret":"ab0cd0efghijkl0m12no3pqrstuvw0xyza4bcd567891abcd"}}
 ```
 
-When you turn on your robot, `viam-server` starts up and uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the Viam app.
-To begin with, that configuration is nearly empty.
+When you turn on your robot, `viam-server` starts up and uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the [Viam app](https://app.viam.com).
+Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.
+The robot checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
+All communication happens securely over HTTPS using secret tokens that are in a robot's configuration.
 
 After you have completed the setup steps and successfully connected to your robot, go to the **CONFIG** tab to start adding to the configuration.
 

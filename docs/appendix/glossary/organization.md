@@ -1,11 +1,13 @@
 ---
-title: Location
-id: location
+title: Organization
+id: organization
 full_link:
-short_description: A location is a virtual grouping of robots that allows you to organize robots and manage access.
+short_description: An organization is a group of one or more locations that helps you organize your fleet.
 aka:
 ---
 
-A location is a virtual grouping of robots that allows you to organize robots and manage access.
+An organization is the highest level grouping in the Viam platform, which generally represents a company, or other institution.
+Every {{< glossary_tooltip term_id="location" text="location" >}} is grouped into an organization.
+You can also have organizations for departments or other entities, or for personal use.
 
 For more information, see [Fleet Management](/manage/fleet).
