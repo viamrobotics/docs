@@ -101,9 +101,9 @@ For a comprehensive tutorial on data management, see [Intro to Data Management](
 
 ### Accessing and exporting data
 
-Once you have configured data capture and cloud sync, you can [view](../../manage/data/view) and [export](../../manage/data/export) your data.
+Once you have configured data capture and cloud sync, you can [view](../../data/data/view) and [export](../../data/data/export) your data.
 
 ### Machine Learning
 
-You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model) and then [deploy these models to your robots](../../manage/ml/deploy-model) from the Viam App.
-You can also [upload and use existing models](../../manage/ml/upload-model).
+You can use data synced to the cloud to [train machine learning models](../../data/ml/train-model) and then [deploy these models to your robots](../../data/ml/deploy-model) from the Viam App.
+You can also [upload and use existing models](../../data/ml/upload-model).
