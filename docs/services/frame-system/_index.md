@@ -149,26 +149,30 @@ Any [supplemental transforms](#supplemental-transforms) are also merged into the
 
 ## Supplemental Transforms
 
-*Supplemental transforms* exist to compensate for the fact that the Frame System built for a robot only knows how to coordinate the location of components that are fixed to a point in space, allowing them to have a fixed origin in reference to a `world` reference frame with a fixed origin of `(0, 0, 0)`.
+*Supplemental Transforms* exist to help the Frame System determine the location of and relationships between objects not initially known to the robot.
 
-In our [example of dynamic attachment](/services/frame-system/component-on-dynamic), the arm can be managed by the Frame System without supplemental transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame.
+For example:
 
-However, a dynamic arm attached to a [dynamic rover](/components/base/wheeled) could not be configured into the Frame System if the rover is unaware of its own position, because the rover can move freely with respect to the `world` reference frame.
+- In our [example of dynamic attachment](/services/frame-system/component-on-dynamic), the arm can be managed by the Frame System without supplemental transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
 
-To solve this problem:
+    However, an arm with an attached [camera](/components/camera) might generate additional information about the poses of other objects with respect to references frames on the robot.
 
-- You can introduce a [movement sensor](/components/movement-sensor) or a [camera](/components/camera), in combination with our [Vision Service](/services/vision/), as a third component.
-- This component would be fixed in respect to the `world` reference frame, and could supply the location and orientation of the rover in its own reference frame.
+    With the [Vision Service](/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 
-To add this component's reference frame into your robot's Frame System build, you can pass the `name` of this component's reference frame to various APIs.
-These *supplemental transforms* then supply the missing link to transform a [pose](/internals/orientation-vector) in that dynamic arm's reference frame to the `world` reference frame.
+    If a [camera](/components/camera) is looking for an apple or an orange, the arm could be commanded to move to the detected fruit's location by providing a supplemental transform that contains the detected pose with respect to the camera that performed the detection.
 
-- For example, you can pass this component's reference frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service [`GetPose`](/services/motion/#getpose) method.
-- Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` parameter.
+    The detecting component (camera) would be fixed with respect to the `world` reference frame, and would supply the position and orientation of the detected object.
+
+    With this information, the Frame System could perform the right calculations to express the pose of the object in the `world` reference frame.
+
+Usage:
+
+- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's Motion Service's [`GetPose`](/services/motion/#getpose) method.
+- Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
 - Both [`TransformPose`](#accessing-the-frame-system) and [`FrameSystemConfig`](#accessing-the-frame-system) have the option to take in these supplemental transforms.
 
-{{% alert title="Tip" color="tip" %}}
+{{% alert title="TBD" color="note" %}}
 
-Experienced users can code a [mobile base](/components/base/wheeled) that is able to report its own position without the need for supplemental transforms with an organic [SLAM](/services/slam) system.
+Additional uses for supplemental transforms are being explored by the Viam team.
 
 {{% /alert %}}
