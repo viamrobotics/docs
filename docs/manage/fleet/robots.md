@@ -32,20 +32,21 @@ To delete a part or make it the main part, use the buttons in the top right of t
 
 If you've connected your robot to a machine running `viam-server`, the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
 
-The following tabs are found on the robot page:
+For each robot in your fleet, you start by setting up the robot on the **SETUP** tab:
 
 ### Setup
 
 The **SETUP** tab contains information for starting an instance of `viam-server` on your robot's computer.
-Be sure to select the correct **Mode** and **Architecture** for your system in the upper left of the tab.
+
+Once you select the correct **Mode** and **Architecture** for your system in the upper left of the tab, follow the instructions on the page to connect and set up your robot.
 
 {{% alert title="Tip" color="tip" %}}
 More in-depth information on installing `viam-server` can be found in our [Install Guide](/installation#install-viam-server).
 {{% /alert %}}
 
-### Config
+### Configuration
 
-On the **CONFIG** tab you can start adding robot {{< glossary_tooltip term_id="component" text="components" >}}, services, and other robot resources.
+After connecting your robot, go to the **CONFIG** tab, and start adding robot {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other robot resources.
 
 For more information, see the [configuration documentation](../../configuration/#the-config-tab).
 
@@ -55,15 +56,16 @@ If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fra
 
 ### Logs
 
-The **LOGS** tab displays debug and other logging information from your robot.
+Each robot automatically sends logs to the cloud which you can view on the **LOGS** tab.
 
 ### History
 
+The configuration of your robot and the code it runs are kept separate to make debugging easier.
 The **HISTORY** tab shows a timestamped diff view of your robot's configuration changes.
 
 ### Code Sample
 
-The **CODE SAMPLE** tab contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
+To start programming your robot, go to the **CODE SAMPLE** tab which contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
 
 For more information on the SDKs, see [Program your Robot with Viam's SDKs](../../../program/sdk-as-client/).
 
@@ -73,17 +75,19 @@ There is also a JSON stub you can copy if you wish to have your robot communicat
 
 ### Control
 
-The **CONTROL** tab allows you to control your robot using an interface for each component of your robot.
-This is done through {{< glossary_tooltip term_id="webrtc" >}}.
+Once you have configured components and services for your robot, you can visually test and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com).
 For example, if you have configured a base with wheels, you can control your robot's movement with an arrow pad and fields to change base’s speed.
 If you have configured a camera component, a window in the **CONTROL** tab displays the camera output.
 
+If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
+For local communication between [parts](../../parts-and-remotes#robot-parts) Viam uses gRPC or WebRTC.
+
 ### Security
 
-The **SECURITY** tab allows you to access and exchange the **Robot Part Secret Keys** of your robot.
-A robot part secret is a unique secret used by the robot to communicate with the cloud.
+Your robot and the Viam app communicate securely by using unique secrets.
+The **SECURITY** tab allows you to access and change the **Robot Part Secret Keys** of your robot.
 
-![The SECURITY tab of a robot's page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](../../img/app-usage/robot-part-secret-keys-drop-down.png)
+![The SECURITY tab of a robot`s page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](../../img/app-usage/robot-part-secret-keys-drop-down.png)
 
 Copy the secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
