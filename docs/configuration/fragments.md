@@ -34,7 +34,7 @@ The components or other resources included in the fragment will appear as read-o
 
 ![A fragment in the components subtab](../img/fragment-components.png)
 
-In the `Raw JSON` configuration, you will simply see the fragment ID in the `fragments` section:
+In the `Raw JSON` configuration, you will see the fragment ID in the `fragments` section:
 
 ```json
 {
