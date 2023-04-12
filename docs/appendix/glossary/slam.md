@@ -2,10 +2,8 @@
 title: SLAM
 id: slam
 full_link: /services/slam/
-short_description: Simultaneous localization and mapping.
+short_description: An algorithm that allows your robot to create a map of its surroundings and find its location within that map.
 aka:
 ---
 
-Simultaneous localization and mapping.
-
-An algorithm that allows a robot to navigate around a space creating or updating a map of the layout as it goes.
+Simultaneous Localization and Mapping (SLAM) is an algorithm that allows your robot to create a map of its surroundings and find its location within that map.

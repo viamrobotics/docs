@@ -21,8 +21,10 @@ The credentials look like this:
 "secret":"ab0cd0efghijkl0m12no3pqrstuvw0xyza4bcd567891abcd"}}
 ```
 
-When you turn on your robot, `viam-server` starts up and uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the Viam app.
-To begin with, that configuration is nearly empty.
+When you turn on your robot, `viam-server` starts up and uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the [Viam app](https://app.viam.com).
+Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.
+The robot checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
+All communication happens securely over HTTPS using secret tokens that are in a robot's configuration.
 
 After you have completed the setup steps and successfully connected to your robot, go to the **CONFIG** tab to start adding to the configuration.
 
@@ -236,7 +238,7 @@ Stability is not guaranteed.
 
 {{% /alert %}}
 
-Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple robots.
+Fragments are a way of sharing and managing identical {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple robots.
 For example, if you have multiple robots with the same hardware, wired the same way, you can create and share a fragment and add it to any number of robots.
 When changes are made to the fragment, those changes are automatically carried to all robots that include the fragment in their config.
 
@@ -249,16 +251,27 @@ To add a fragment to a robot:
 - Look through the list of available fragments and click **ADD** next to any fragments you want to add to your robot.
 - Click **Save Config** at the bottom of the screen.
 
-{{% alert title="Note" color="note" %}}
+![The fragments subtab](../img/fragments-tab.png)
 
-The components or other resources included in the fragment will *not* appear in the **COMPONENTS** sub-tab or in the `components` section of your config.
-You will simply see the fragment ID in the `fragments` section of your config, but all the resources *will* appear on the **CONTROL** tab when your robot comes on line, and they will be accessible from SDK code as regular resources of your robot.
+The components included in the fragment appear inside a read-only fragment section in the **COMPONENTS** sub-tab.
 
-{{% /alert %}}
+![A fragment in the components subtab](../img/fragment-components.png)
 
-To create a fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments).
+In the `Raw JSON` configuration, you will see the fragment ID in the `fragments` section:
+
+```json
+{
+  "components": [ ],
+  "fragments": [
+    "3e8e0e1c-f515-4eac-8307-b6c9de7cfb84"
+  ]
+}
+```
+
+To create your own fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments).
 
 For an example of adding a fragment to a robot, see the [Viam Rover fragment tutorial](/try-viam/rover-resources/rover-tutorial-fragments/).
+
 <!--
 ## Auth/network
 -->
@@ -276,7 +289,7 @@ If you run into issues, here are some things to try:
 
 - Check the **LOGS** tab to check for any errors or other info from `viam-server`.
 - You can also view logs locally by running the following command on the robot:
-  
+
   {{< tabs >}}
   {{% tab name="Linux" %}}
 

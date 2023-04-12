@@ -7,13 +7,15 @@ draft: true
 description: "Adding an External Intel Realsense Camera to Viam."
 tags: ["camera", "realsense camera", "components"]
 ---
-There are two ways to add your intel RealSense camera to Viam. You can either use a gRPC server or an HTTP server.
+There are two ways to add your intel RealSense camera to Viam.
+You can either use a {{< glossary_tooltip term_id="grpc" text="gRPC" >}} server or an HTTP server.
 
 You can find the source code for these servers in the [Viam Robotics repo](https://github.com/viamrobotics/camera-servers).
 
 ## Using the gRPC Server
 
-Use the gRPC server if you want 2D image streams and also want the 3D point clouds from the Intel RealSense camera. They will show up as 3 separate cameras.
+Use the gRPC server if you want 2D image streams and also want the 3D point clouds from the Intel RealSense camera.
+They will show up as 3 separate cameras.
 
 ### Download the Intel RealSense gRPC Camera Server
 
@@ -52,11 +54,13 @@ On the **CONFIG** tab, click **REMOTE**, and then add the following configuratio
 ]
 ```
 
-This adds the two cameras to your robot. They will have the names `intel:color` and `intel:depth`.
+This adds the two cameras to your robot.
+They will have the names `intel:color` and `intel:depth`.
 
 ### Create a Camera to Display Point Clouds
 
-Click **COMPONENTS** on the **CONFIG** tab. Now, add the `align_color_depth` camera model.
+Click **COMPONENTS** on the **CONFIG** tab.
+Now, add the `align_color_depth` camera model.
 The **Attributes** pane on the left allows you to enter the necessary attributes for your component.
 The **Attributes Guide** lists the available attributes for the chosen component.
 

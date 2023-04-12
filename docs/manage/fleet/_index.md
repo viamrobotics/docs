@@ -19,6 +19,16 @@ The [Viam app](https://app.viam.com) provides fleet management allowing you to:
 
 All communication happens securely over HTTPS using secret tokens that are in a robot's configuration.
 
+## Robots
+
+An organizational concept, consisting of either one _{{< glossary_tooltip term_id="part" text="part" >}}_, or multiple _parts_ working closely together to complete tasks.
+
+The robot represents the configuration and entry point for one or more computers (and the {{< glossary_tooltip term_id="component" text="components" >}} they control) coupled into one logical grouping of parts that work together to complete tasks.
+A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor.
+A robot always has a main part that receives client requests and can have one or more other parts.
+
+For information on how to manage robots, see [Robots](robots).
+
 ## Locations
 
 {{< readfile "/static/include/manage/locations.md" >}}
@@ -43,7 +53,7 @@ Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](
 
 - **Owner**: Can see and edit [every tab on the robot page](robots/#navigating-the-robot-page).
 - **Operator**: Can see and use only the [remote control tab](robots/#control).
-  Cannot see or edit the [**SETUP**](robots/#setup), [**CONFIG**](robots/#config), [**HISTORY**](robots/#history), [**LOGS**](robots/#logs), [**CODE SAMPLE**](robots/#code-sample), or [**SECURITY**](robots/#security) tabs.
+  Cannot see or edit the [**SETUP**](robots/#setup), [**CONFIG**](robots#configuration), [**HISTORY**](robots/#history), [**LOGS**](robots/#logs), [**CODE SAMPLE**](robots/#code-sample), or [**SECURITY**](robots/#security) tabs.
 
 A user can have one or more roles, granting the user the respective permissions of each role.
 

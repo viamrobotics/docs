@@ -3,6 +3,7 @@ title: "Manage Locations and Sub-locations"
 linkTitle: "Locations"
 weight: 30
 type: "docs"
+no_list: true
 description: "A location is a virtual grouping of robots that allows you to organize robots and manage your fleets."
 tags: ["fleet management", "cloud", "app"]
 ---

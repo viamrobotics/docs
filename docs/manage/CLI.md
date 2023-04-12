@@ -3,6 +3,7 @@ title: "Viam CLI"
 linkTitle: "CLI"
 weight: 99
 type: "docs"
+no_list: true
 description: "Manage and control your robots from the command line."
 ---
 
@@ -31,7 +32,8 @@ go install go.viam.com/rdk/cli/viam@latest
 
 To confirm `viam` is installed and ready to use, issue the *viam* command from your terminal.
 If you see help instructions, everything is correctly installed.
-If you do not see help instructions, add your local go *bin/* directory to your `PATH` variable. If you use `bash` as your shell, you can use the following command:
+If you do not see help instructions, add your local go *bin/* directory to your `PATH` variable.
+If you use `bash` as your shell, you can use the following command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
@@ -74,7 +76,8 @@ viam [global options] command [command options] [arguments...]
 
 ### CLI help
 
-The Viam CLI has a built-in help system that lists all available commands. You can access it at any time by issuing the command:
+The Viam CLI has a built-in help system that lists all available commands.
+You can access it at any time by issuing the command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam help
@@ -270,7 +273,7 @@ Issuing the `part` command with the `run` positional argument allows you to run 
 The `--data` parameter is required and you must specify both:
 
 * Method arguments in JSON format
-* A resource method (in the form of the protobuf package and method path)
+* A resource method (in the form of the {{< glossary_tooltip term_id="protobuf" text="protobuf" >}} package and method path)
 
 The format of what is passed to the `--data` argument is:
 

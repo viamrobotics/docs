@@ -244,7 +244,8 @@ Let's call her "Rosey", and bring her to life by running:
 Now, you can start talking to Rosey.
 <img src="../../img/ai-integration/rosey_robot.jpg" class="alignright" alt="Viam Rover Rosey." title="Viam Rover Rosey." style="max-width: 350px" />
 Any time she hears the keyword "Rosey", she will pay attention to anything you say immediately afterwards.
-For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI's chat completion API, and you'll get a response back similar to *"It is impossible to predict what will happen today. Every day is different and unpredictable!"*
+For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI's chat completion API, and you'll get a response back similar to *"It is impossible to predict what will happen today.
+Every day is different and unpredictable!"*
 
 If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-integration/blob/45ce0e3f2b7bad33f568cd4273e6721aa2ceffe5/rosey.py#L144), you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
 For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
@@ -252,7 +253,8 @@ For example, there are a number of commands that will cause the rover to move - 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/ai-integration/yoda.jpeg" class="alignleft" alt="Viam Rover Rosey." title="Viam Rover Rosey." style="max-width: 300px" />
 
-If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read a ChatGPT-generated response about what it sees. Also, a "mood" will be selected at random, and the response will be generated with that mood.
+If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read a ChatGPT-generated response about what it sees.
+Also, a "mood" will be selected at random, and the response will be generated with that mood.
 
 The GPT-3 model is quite good at responding in the style of known personas, so you can also say *"Hey Rosey, act like Yoda"*, and from that point on, responses will be generated in the style of Yoda! The tutorial code has a number of characters you can try, and to pick one randomly, you can say *"Rosey, act random"*.
 You can even guess who Rosey is acting like by saying *"Rosey, I think you are Scooby Doo!"*
