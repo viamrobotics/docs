@@ -11,7 +11,7 @@ tags: ["frame system", "services"]
 
 Any robot configured in Viam comes with the Frame System service: an internally managed and mostly static system for storing the "reference frame" of each component of a robot within a coordinate system configured by the user.
 
-The Frame System is the basis for many of Viam's other services, like [motion](/services/motion) and [vision](/services/vision).
+The Frame System is the basis for many of Viam's other services, like [Motion](/services/motion) and [Vision](/services/vision).
 It stores the required contextual information to use the position and orientation readings returned by some components.
 
 ## Configuration
@@ -24,6 +24,8 @@ To adjust the Frame System from its default configuration for a particular [comp
 Navigate to the **CONFIG** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's card, and click **Add Frame**:
 
 ![add reference frame pane](img/frame_card.png)
+
+Select a `parent` frame and fill in the coordinates for `translation` (*mm*) and `orientation` (*deg*, *rad*, or *q*), according to the position and orientation of your component in relation to the `parent` frame.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -95,9 +97,9 @@ Configure the reference frame as follows:
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
 | `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
-| `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. |
+| `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: *mm*. |
 | `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
-| `Geometry`  | **Required** | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere`, `Box`, and `Capsule`. |
+| `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere`, `Box`, and `Capsule`. |
 
 {{% alert title="Caution" color="caution" %}}
 
@@ -109,25 +111,24 @@ The `Orientation` parameter offers `Types` for ease of configuration, but the Fr
 {{% alert title="Tip" color="tip" %}}
 
 Viam's coordinate system considers `+X` to be forward, `+Y` to be left, and `+Z` to be up.
+You can use [the right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule) to determine the orientation of these axes.
 
 {{% /alert %}}
 
-For more information, see these two examples:
+For more information about determining the appropriate values for these parameters, see these two examples:
 
 - [A component attached to a static surface](/component-on-static)
 - [A component attached to another, dynamic, component](/component-on-dynamic)
 
 ## Building the Frame System
 
-Once you configure your robot and run `viam-server`, your robot builds a tree of reference frames with the `world` as the root node.
-
-A [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames is printed by the server and can be seen in the logs at `--debug` level:
+Access a [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames in the robot's logs at `--debug` level:
 
 ![an example of a logged frame system](img/frame_sys_log_example.png)
 
-`viam-server` regenerates this tree in the process of [reconfiguration](/manage/fleet-management/#configurationlogging).
+`viam-server` builds a tree of reference frames for your robot with the `world` as the root node and regenerates this tree following [reconfiguration](/manage/fleet-management/#configurationlogging).
 
-Let's consider the example of a [component attached to a dynamic component](/component-attached-to-a-dynamic-component): a robotic arm, `A`, attached to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
+Consider the example of a [component attached to a dynamic component](/component-attached-to-a-dynamic-component): a robotic arm, `A`, attached to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
 
 The resulting tree of reference frames looks like:
 
