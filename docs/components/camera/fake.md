@@ -9,7 +9,7 @@ tags: ["camera", "components"]
 ---
 
 A `fake` camera is a camera model for testing.
-The camera always returns the same image, which is an image of a chess board.
+The camera always returns the same image, which is an image of a gradient.
 This camera also returns a point cloud.
 
 You can optionally specify either a height or width, and the image will be scaled to preserve a 16:9 aspect ratio.
@@ -54,7 +54,10 @@ The following attributes are available for fake cameras:
 
 ## View the camera stream
 
-{{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
+Once your camera is connected, go to the **CONTROL** tab, and click on the camera's dropdown menu.
+Toggle "View Camera". If everything is configured correctly, you will see the live video feed from your camera.
+
+![Fake Camera View](../imgfake-view.png)
 
 ## Next Steps
 
