@@ -10,6 +10,7 @@ aliases:
     - /manage/fleet-management
     - /manage/app-usage
     - /manage/fleet
+    - /manage/
 ---
 
 Fleet Management in Viam allows you to configure, control, debug, and manage your robots from the [Viam app](https://app.viam.com).

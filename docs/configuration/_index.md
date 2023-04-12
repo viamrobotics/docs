@@ -4,6 +4,8 @@ linkTitle: "Configuration"
 weight: 22
 type: docs
 no_list: true
+aliases:
+  - /manage/configuration
 description: "Before you can program a robot, you must configure its components and services as well as any modules, remotes, processes and frames."
 ---
 

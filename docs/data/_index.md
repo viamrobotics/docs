@@ -4,6 +4,8 @@ linkTitle: "Data"
 weight: 19
 type: docs
 no_list: true
+aliases:
+    - /manage/data/
 description: "Manage Data and use Machine Learning."
 ---
 
