@@ -14,14 +14,15 @@ Configure an `ultrasonic` sensor to integrate an [HC-S204 ultrasonic distance se
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.Enter a name for your sensor, select the type `sensor`, and select the `ultrasonic` model.
+On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
+Enter a name for your sensor, select the type `sensor`, and select the `ultrasonic` model.
 
 Paste into the **Attributes** box:
 
 ``` json
 {
-  "trigger_pin": <"number">,
-  "echo_interrupt_pin": <"number">,
+  "trigger_pin": "<number>",
+  "echo_interrupt_pin": "<number>"
   "board": <your-board-name>,
   "timeout_ms": <number>
 }
