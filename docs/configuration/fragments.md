@@ -15,7 +15,7 @@ Stability is not guaranteed.
 
 {{% /alert %}}
 
-Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple robots.
+Fragments are a way of sharing and managing identical {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple robots.
 For example, if you have multiple robots with the same hardware, wired the same way, you can create and share a fragment and add it to any number of robots.
 When changes are made to the fragment, those changes are automatically carried to all robots that include the fragment in their config.
 
@@ -30,7 +30,7 @@ To add a fragment to a robot:
 
 ![The fragments subtab](../img/fragments-tab.png)
 
-The components or other resources included in the fragment will appear as read-only in the **COMPONENTS** sub-tab.
+The components included in the fragment appear inside a read-only fragment section in the **COMPONENTS** sub-tab.
 
 ![A fragment in the components subtab](../img/fragment-components.png)
 
