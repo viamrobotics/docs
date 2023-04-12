@@ -3,7 +3,7 @@ title: "Orientation Vector"
 linkTitle: "Orientation Vector"
 weight: 10
 type: "docs"
-description: "A description of Viam's orientation vector method."
+description: "A description of Viam's orientation vector object."
 ---
 
 A _pose_ specifies where an object is with respect to another reference point and which direction it is pointing.
