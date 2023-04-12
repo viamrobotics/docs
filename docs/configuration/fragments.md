@@ -28,13 +28,23 @@ To add a fragment to a robot:
 - Look through the list of available fragments and click **ADD** next to any fragments you want to add to your robot.
 - Click **Save Config** at the bottom of the screen.
 
-{{% alert title="Note" color="note" %}}
+![The fragments subtab](../img/fragments-tab.png)
 
-The components or other resources included in the fragment will *not* appear in the **COMPONENTS** sub-tab or in the `components` section of your config.
-You will simply see the fragment ID in the `fragments` section of your config, but all the resources *will* appear on the **CONTROL** tab when your robot comes on line, and they will be accessible from SDK code as regular resources of your robot.
+The components or other resources included in the fragment will appear as read-only in the **COMPONENTS** sub-tab.
 
-{{% /alert %}}
+![A fragment in the components subtab](../img/fragment-components.png)
 
-To create a fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments).
+In the `Raw JSON` configuration, you will simply see the fragment ID in the `fragments` section:
+
+```json
+{
+  "components": [ ],
+  "fragments": [
+    "3e8e0e1c-f515-4eac-8307-b6c9de7cfb84"
+  ]
+}
+```
+
+To create your own fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments).
 
 For an example of adding a fragment to a robot, see the [Viam Rover fragment tutorial](/try-viam/rover-resources/rover-tutorial-fragments/).
