@@ -26,8 +26,8 @@ To configure the camera into the frame system, you need to know where in the roo
 1. Determine the starting point.
    In this case it is (0, 0, 0).
 2. Determine the position of the camera.
-   In this case it is (5, 4, 2).
-3. Subtract the starting point from the position of the camera: (5, 4, 2) - (0, 0, 0) = (5, 4, 2).
+   In this case it is (3, 5, 2).
+3. Subtract the starting point from the position of the camera: (3, 5, 2) - (0, 0, 0) = (3, 5, 2).
 
 **Theta** describes the angle of the camera.
 If your camera is perpendicular to one of the axes of your Frame system, you can test the correct value by using 0, 90, 180, or 270 for Theta and checking if the orientation of the picture is correct.
