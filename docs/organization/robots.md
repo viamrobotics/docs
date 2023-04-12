@@ -13,24 +13,6 @@ The robot represents the configuration and entry point for one or more computers
 A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor.
 A robot always has a main part that receives client requests, and any number of other parts.
 
-## Add a new robot
-
-Add a new robot by providing a name in the **New Robot** field and clicking **ADD ROBOT**.
-
-![The 'First Location' page on the Viam app with a new robot name in the New Robot field and the ADD ROBOT button next to the field highlighted.](../img/app-usage/create-robot.png)
-
-Click the name of a robot to go to that robot's page, where you'll find a variety of tools for working with your robot.
-
-The banner at the top of the robot page displays the robot's location, name, and a drop down list of all parts of that robot.
-When you crate a robot, a _main part_ is automatically created for you but you can create additional parts in the drop down.
-
-![The robot page for an example robot with the parts drop down open.](../img/app-usage/part-drop-down.png)
-To delete a part or make it the main part, use the buttons in the top right of the **CONFIG** tab.
-
-![The CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons.](../img/app-usage/part-mgmt.png)
-
-If you've connected your robot to a machine running `viam-server`, the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
-
 ## Robot parts
 
 Robots are organized into _parts_, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) [running `viam-server`](/installation/), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
@@ -51,7 +33,25 @@ This is a one-way connection: The main robot part can access the resources of th
 
 ![Example of a remote and a two part robot where the main (and only) part of robot 1 remotes into the main part of robot 2, and thus has access to all resources of robot 2.](../img/remotes-diagram.png)
 
-### Configure a sub-part
+## Add a new robot
+
+Add a new robot by providing a name in the **New Robot** field and clicking **ADD ROBOT**.
+
+![The 'First Location' page on the Viam app with a new robot name in the New Robot field and the ADD ROBOT button next to the field highlighted.](../img/app-usage/create-robot.png)
+
+Click the name of a robot to go to that robot's page, where you'll find a variety of tools for working with your robot.
+
+The banner at the top of the robot page displays the robot's location, name, and a drop down list of all parts of that robot.
+When you crate a robot, a _main part_ is automatically created for you but you can create additional parts in the drop down.
+
+![The robot page for an example robot with the parts drop down open.](../img/app-usage/part-drop-down.png)
+To delete a part or make it the main part, use the buttons in the top right of the **CONFIG** tab.
+
+![The CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons.](../img/app-usage/part-mgmt.png)
+
+If you've connected your robot to a machine running `viam-server`, the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
+
+## Configure a sub-part
 
 You can make a multi-part robot by first configuring one part which is the "main" part, and then configuring one or more sub-parts.
 The main part will be able to access the resources of its sub-parts.
