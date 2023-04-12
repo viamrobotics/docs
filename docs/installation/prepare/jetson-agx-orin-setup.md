@@ -75,9 +75,9 @@ If this command fails, try using `wget http://packages.viam.com/apps/viam-server
 
 | Data Sheet ID | GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID | `/dev` Path ID | Notes |
 | ------------- | --------------- | ----------- | ----------------- | ----------- | ----- |
-| I2C_GP2_DAT, I2C_GP2_CLK | 3, 5 | `1` | `i2c2` | `dev/i2c2` | |
-| I2c_GP5_DAT, I2C_GP5_CLK | 27, 28 | `7` | `i2c8` | `dev/i2c8` | |
-| SPI1_DOUT, SPI1_DIN, SPI1_SCK, SPI1_CS0, SPI1_CS1 | 19, 21, 23, 24, 26 | `0` | `spi1` | `dev/spi1` | Must be enabled, must add `spidev` to `/etc/modules` |
+| I2C_GP2_DAT, I2C_GP2_CLK | 3, 5 | `7` | `i2c2` | `/dev/i2c-2` | |
+| I2c_GP5_DAT, I2C_GP5_CLK | 27, 28 | `1` | `i2c8` | `/dev/i2c-8` | |
+| SPI1_DOUT, SPI1_DIN, SPI1_SCK, SPI1_CS0, SPI1_CS1 | 19, 21, 23, 24, 26 | `0` | `spi1` | `/dev/spidev0.0`, `/dev/spidev0.1` | Must be enabled, must add `spidev` to `/etc/modules` |
 
 ## Troubleshooting
 
