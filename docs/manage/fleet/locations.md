@@ -27,7 +27,7 @@ To create a sub-location you must first create the sub-location as a location an
 2. At the bottom of the location's page, use the **New Parent Location** drop-down to choose a parent location.
 3. Click **CHANGE**.
 
-You can nest locations further if you want.
+You can nest locations up to three levels deep.
 
 To move a sub-location to the top level of locations, select **Root** from the **New Parent Location** drop-down and then click **CHANGE**.
 
