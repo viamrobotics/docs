@@ -28,8 +28,10 @@ This API describes the interface for the particular component or service type.
 Viam APIs are uniquely namespaced, with each resource type represented as a *colon-delimited-triplet*.
 For example:
 
-- The API of built-in component type [camera](/components/camera) is __rdk:component:camera__, and exposes methods such as `GetImage()`.
-- The API of built-in service type [vision](/services/vision) is __rdk:service:vision__, and exposes methods such as `GetDetectionsFromCamera()`.
+- The API of built-in component type [camera](/components/camera) is `rdk:component:camera`.
+It exposes methods such as `GetImage()`.
+- The API of built-in service type [vision](/services/vision) is `rdk:service:vision`.
+It exposes methods such as `GetDetectionsFromCamera()`.
 
 Each API is described through <a href="https://developers.google.com/protocol-buffers" target="_blank">protocol buffers</a>.
 Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
@@ -52,8 +54,8 @@ This is simplified with Viam, as any motor model that implements the *rdk:compon
 Models are also represented by *colon-delimited-triplets*.
 For example:
 
-- The __rdk:builtin:gpio__ model of the __rdk:component:motor__ API provides RDK support for [GPIO-controlled DC motors](/components/motor/gpio/).
-- The __rdk:builtin:DMC4000__ model of the same __rdk:component:motor__ API provides RDK support for the [DMC4000](/components/motor/dmc4000/) motor.
+- The `rdk:builtin:gpio` model of the `rdk:component:motor` API provides RDK support for [GPIO-controlled DC motors](/components/motor/gpio/).
+- The `rdk:builtin:DMC4000` model of the same `rdk:component:motor` API provides RDK support for the [DMC4000](/components/motor/dmc4000/) motor.
 
 A common use-case for modular resources is to create a new model using an existing Viam API.
 However, you can also create and expose new API types using modular resources.
@@ -322,8 +324,8 @@ The following properties are available for modules:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-`name` | string | __Required__ | Name of the module you are registering. |
-`executable_path` | string | __Required__ | The robot's computer's filesystem path to the module executable. |
+`name` | string | **Required**| Name of the module you are registering. |
+`executable_path` | string | **Required**| The robot's computer's filesystem path to the module executable. |
 
 Add these properties to your module's configuration:
 
@@ -357,10 +359,10 @@ The following properties are available for modular resources:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `namespace` | string | __Required__ | The namespace of the [API](#apis) (the first part of the [API](#apis) triplet). |
-| `type` | string | __Required__ | The subtype of the [API](#apis) (the third part of the [API](#apis) triplet). |
-| `name` | string | __Required__ | What you want to name this instance of your modular resource. |
-| `model` | string | __Required__ | The [full triplet](#models) of the modular resource. |
+| `namespace` | string | **Required** | The namespace of the [API](#apis) (the first part of the [API](#apis) triplet). |
+| `type` | string | **Required** | The subtype of the [API](#apis) (the third part of the [API](#apis) triplet). |
+| `name` | string | **Required** | What you want to name this instance of your modular resource. |
+| `model` | string | **Required** | The [full triplet](#models) of the modular resource. |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -387,7 +389,7 @@ The `attributes` available vary depending on your implementation.
 {{% tab name="JSON Example" %}}
 
 The following is an example configuration for a motor modular resource implementation.
-It registers a custom model __viam-contributor:motor:super-custom__ to use with the Viam [motor API](/components/motor#api):
+It registers a custom model `viam-contributor:motor:super-custom` to use with the Viam [motor API](/components/motor#api):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

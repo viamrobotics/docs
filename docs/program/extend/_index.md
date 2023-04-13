@@ -6,7 +6,7 @@ simple_list: true
 no_list: true
 type: docs
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "A guide to extending Viam by creating custom components and services."
+description: "Extend Viam by creating custom components and services."
 ---
 
 Viam's [Robot Development Kit (RDK)](/internals/rdk/) provides built-in support for a variety of resources:
