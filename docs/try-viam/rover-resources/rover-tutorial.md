@@ -255,5 +255,5 @@ The following are just a few ideas, but you can expand or modify the rover kit w
 
 ### Lidar Mounting for the Viam Rover
 
-If you have Viam Rover and need a mount for your RPLidar, you can 3D print an adapter plate.
+If you have a Viam Rover and need a mount for your RPLidar, you can 3D print an adapter plate.
 The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/VR1-22-A001/blob/master/CAD/RPIidar_adapter.STL).
