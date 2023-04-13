@@ -172,7 +172,7 @@ To run Cartographer in live mode, follow [these instructions](../../program/exte
   "modules": [
     {
       "name": "rplidar_module",
-      "executable_path": "/home/<YOUR_USERNAME>/rplidar-module-local-aarch64.AppImage"
+      "executable_path": "/usr/local/bin/rplidar-module"
     }
   ],
   "components": [
@@ -215,6 +215,12 @@ To run Cartographer in live mode, follow [these instructions](../../program/exte
 
 ``` json
 {
+  "modules": [
+    {
+      "executable_path": "/Users/<YOUR_USERNAME>/Library/Caches/Homebrew/rplidar-module--git",
+      "name": "rplidar_module"
+    }
+  ],
   "components": [
     {
       "namespace": "rdk",
@@ -248,12 +254,6 @@ To run Cartographer in live mode, follow [these instructions](../../program/exte
       "model": "cartographer",
       "name": "run-slam",
       "type": "slam"
-    }
-  ],
-  "modules": [
-    {
-      "executable_path": "/Users/<YOUR_USERNAME>/rplidar/bin/rplidar-module",
-      "name": "rplidar_module"
     }
   ]
 }
