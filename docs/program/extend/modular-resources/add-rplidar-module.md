@@ -55,6 +55,12 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
 
   ```json
   {
+    "modules": [
+      {
+        "executable_path": "/usr/local/bin/rplidar-module",
+        "name": "rplidar-module"
+      }
+    ],
     "components": [
       {
         "namespace": "rdk",
@@ -62,12 +68,6 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
         "depends_on": [],
         "model": "viam:lidar:rplidar",
         "name": "rplidar"
-      }
-    ],
-    "modules": [
-      {
-        "executable_path": "/usr/local/bin/rplidar-module",
-        "name": "rplidar-module"
       }
     ]
   }
