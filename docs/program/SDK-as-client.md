@@ -7,7 +7,10 @@ description: "Use Viam's SDKs to write code to access and control your robot."
 tags: ["client", "sdk"]
 ---
 
-Viam offers software development kits (SDKs) that wrap the `viam-server` [gRPC](https://grpc.io/) [APIs](https://github.com/viamrobotics/api) and streamline connection, authentication, and encryption.
+Viam offers software development kits (SDKs) in popular languages which
+
+- Streamline connection, authentication, and encryption using against a server with {{< glossary_tooltip term_id="webrtc" >}}
+- Enable you to interface with robots without calling the `viam-server` [gRPC APIs for robot controls](https://github.com/viamrobotics/api) directly
 
 <img src="../img/SDK-as-client/image1.png" alt="Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.">
 
@@ -21,7 +24,7 @@ Viam currently offers SDKs for the following three languages:
 
 Click on the links above to read more about installation and usage of each SDK.
 
-## Installation
+## Install an SDK
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -51,10 +54,10 @@ npm install --save @viamrobotics/sdk
 
 Before you get started, ensure that you:
 
-- Go to [app.viam.com](https://app.viam.com/).
-- Create a new robot.
-- Go to the **SETUP** tab and follow the instructions there.
-- Install either the [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), or [TypeScript](https://ts.viam.dev/) SDK on your computer.
+1. Go to [app.viam.com](https://app.viam.com/).
+2. Create a new robot.
+3. Go to the **SETUP** tab and follow the instructions there.
+4. [Configure](../../manage/configuration) your robot.
 
 {{% /alert %}}
 
@@ -64,11 +67,12 @@ You can find more examples of Viam's SDKs in the <file>examples</file> folder of
 
 {{% /alert %}}
 
-### Code Samples
+### Connect to your robot
 
 The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, select your preferred SDK, and copy the code generated for you.
 
 These boilerplate code samples import all of the necessary libraries and set up a client connection to your {{< glossary_tooltip term_id="remote" text="remote">}} or local robot.
+These code snippets import all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
 {{% alert title="Caution" color="caution" %}}
 
@@ -221,6 +225,8 @@ Find documentation on how to use these methods here:
 Board & Sensor API Docs should be added soon on Viam Documentation, + Movement Sensor, Encoder, Gripper
 -->
 
+You can find example code in the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1), the [Golang SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples), or the [TypeScript SDK example GitHub repository](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples).
+
 ## Run Your Code
 
 After saving your boilerplate code sample and adding control logic with Viam's API methods, run your program to control your Viam-connected robot.
@@ -248,6 +254,50 @@ For an example, see [this execution demo.](https://github.com/viamrobotics/viam-
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### Run Code Locally
+
+If you need to run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or other on-robot code, you can run control code on the same board that is running `viam-server`.
+
+To ensure intermittent internet connectivity does not interfere with the code's execution, there are some special steps you need to follow:
+
+{{< alert title="Note" color="note" >}}
+Currently, this only works with Python code which is running on the same board that `viam-server` is running on.
+{{< /alert >}}
+
+1. Change the Python default TLS context to disable hostname checks on the TLS certificate.
+   Add the following below your Python imports:
+
+   ```python
+   ssl.create_default_context = ssl._create_unverified_context
+   ```
+
+   This changes how Python creates the SSL context during the runtime to use an unverified context.
+   The unverified context does not ensure the hostname of the certificate matches the host we are connecting with.
+   This technique is standard when creating local secure contexts.
+
+2. Change the `connect()` method to disable Webrtc and add the auth_entity in the DialOptions and use `localhost:8080`:
+
+    ```python {class="line-numbers linkable-line-numbers" data-line="5"}
+    async def connect():
+      creds = Credentials(type='robot-location-secret', payload=PAYLOAD_SECRET)
+      opts = RobotClient.Options(
+        refresh_interval=0,
+        dial_options=DialOptions(
+            credentials=creds,
+            disable_webrtc=True,
+            auth_entity=ROBOT_NAME
+        )
+      )
+      return await RobotClient.at_address('localhost:8080', opts)
+    ```
+
+3. Replace the `ROBOT_NAME` with your robot's Viam cloud address and the `PAYLOAD_SECRET` with your robot secret.
+   Your locahost can now make a secure connection to `viam-server` locally.
+   SSL will ignore the host check and pass the `auth_entity` required by {{< glossary_tooltip term_id="grpc" >}} from the `auth_entity` dial options.
+
+   This ensures that you can send commands to the robot through localhost without internet connectivity.
+   Note that all commands will be sent using {{< glossary_tooltip term_id="grpc" >}} only without {{< glossary_tooltip term_id="webrtc" >}}.
 
 ## Next Steps
 

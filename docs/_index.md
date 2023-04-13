@@ -27,9 +27,9 @@ Learn about [the Viam platform in 3 minutes](viam).
         <h4>Configure your robots</h4>
         <div style="text-align: left">
             <ol style="padding-inline-start: 1.1rem">
-            <li><a href="organization/robots/">Set up your robot</a> or<a href="fleet/"> fleet</a></li>
+            <li><a href="/manage/fleet/robots/">Set up your robot</a> or<a href="manage/fleet/"> fleet</a></li>
             <li><a href="installation">Install Viam on your robot</a></li>
-            <li><a href="configuration">Configure your robot</a></li>
+            <li><a href="manage/configuration/">Configure your robot</a></li>
             </ol>
             {{<gif webm_src="img/blink.webm" mp4_src="img/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
         </div>

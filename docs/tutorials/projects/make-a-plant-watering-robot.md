@@ -342,7 +342,7 @@ Although the capacitive soil moisture sensor is not currently one of Viam's buil
 Create your custom sensor resource in 3 steps:
 
 1. Code a `MoistureSensor` class implementing the `GetReadings()` method that belongs to all members of the Viam sensor class, and instantiate this class on a RPC server in the `main()` function of your code.
-2. Add this "sensor server" as a [remote part](/configuration/remotes/) of your `plant-watering-robot`.
+2. Add this "sensor server" as a [remote part](/manage/parts-and-remotes/) of your `plant-watering-robot`.
 3. Add a command that runs the program you coded instantiating the "sensor server" as a *process* of your robot.
 
 #### Code the `MoistureSensor` Class
@@ -424,7 +424,7 @@ You can modify this example code as necessary.
 
 Now, go back to your robot's page on [the Viam app](https://app.viam.com) and navigate to the **CONFIG** tab, then to the **REMOTES** sub-tab.
 
-Add your sensor server as a [remote part](/configuration/remotes/) called `my-sensor-server`:
+Add your sensor server as a [remote part](/manage/parts-and-remotes/) called `my-sensor-server`:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
@@ -549,7 +549,7 @@ while True:
       # Calculate average moisture reading from the list of readings, to account for outliers
       avg_moisture = sum(soil_moisture) / len(soil_moisture)
 
-      # If the average moisture reading is greater than 60000, trigger pump watering
+      # If the average moisture reading is greater than 60000, trigger pump watering 
       if(avg_moisture > 60000):
           print('this plant is too thirsty! giving it more water')
 

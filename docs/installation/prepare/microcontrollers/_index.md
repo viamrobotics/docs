@@ -6,7 +6,7 @@ simple_list: false
 type: docs
 image: "/installation/img/thumbnails/esp32-espressif.png"
 imageAlt: "E S P 32 - espressif"
-description: "Set up the Expressif ESP32 with the micro-RDK."
+description: "Set up the Espressif ESP32 with the micro-RDK."
 aliases:
     - /installation/microcontrollers
 # SMEs: Nicolas Menard
@@ -16,7 +16,7 @@ aliases:
 
 ## Hardware Requirements
 
-You need an an Expressif ESP32 microcontroller to use the micro-RDK.
+You need an an Espressif ESP32 microcontroller to use the micro-RDK.
 Viam recommends purchasing the ESP32 with a development board: see development kit options [here](https://www.espressif.com/en/products/devkits).
 
 Minimal configuration: 384kB Ram 4MB flash
@@ -38,7 +38,7 @@ The following instructions cover installation for MacOS and Linux machines.
 ### Install ESP-IDF
 
 ESP-IDF is the development framework for Espressif SoCs (System-on-Chips), supported on Windows, Linux and macOS.
-You need to install it to be able to install the micro-RDK on your Expressif ESP32 microcontroller.
+You need to install it to be able to install the micro-RDK on your Espressif ESP32 microcontroller.
 
 Start by completing Step 1 of [these instructions](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html), following the appropriate steps for your development machine's architecture, and then return here.
 
