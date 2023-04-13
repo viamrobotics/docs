@@ -71,7 +71,7 @@ If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fra
 
 _Coming soon._
 
-Deploy control logic, [modular resources](/program/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/), to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+Deploy control logic, [modular resources](/program/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
 
 ## Remote control
 
