@@ -5,7 +5,7 @@ weight: 50
 type: "docs"
 tags: ["data management", "ml", "model training"]
 aliases:
-  - manage/data/upload-model/
+  - /manage/data/upload-model/
 description: "Upload an image classification model to Viam."
 # SME: Aaron Casas
 ---
