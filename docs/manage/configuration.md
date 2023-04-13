@@ -26,29 +26,6 @@ Once the robot has a configuration, it caches it locally and can use the configu
 The robot checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
 All communication happens securely over HTTPS using secret tokens that are in a robot's configuration.
 
-{{< alert title="Tip" color="tip" >}}
-You can also store your config file in another location.
-To start `viam-server` with a config file in a different location, run the following command:
-
-{{< tabs >}}
-{{% tab name="Linux" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{< /alert >}}
-
 After you have completed the setup steps and successfully connected to your robot, go to the **config** tab to start adding to the configuration.
 
 {{% alert title="Note" color="note" %}}
@@ -281,7 +258,7 @@ To add a fragment to a robot:
 
 ![The fragments subtab](../img/fragments-tab.png)
 
-The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** sub-tab.
+The components included in the fragment appear inside a read-only fragment section in the **Components** sub-tab.
 
 ![A fragment in the components subtab](../img/fragment-components.png)
 
@@ -343,7 +320,8 @@ If you run into issues, here are some things to try:
 
 ## Local Setup
 
-Configuring `viam-server` with the Viam app allows you to make use of the cloud features of Viam:
+If you need to configure a robot that will never connect to the internet, you can manually create a local config file on your robot.
+Rather than following the steps on the Viam app **setup** tab to put config fetching credentials in that file, you'll need to paste the full raw JSON config for your robot into your robot's <file>/etc/viam.json</file> file.
 
 - [Fleet Management](/manage/fleet/)
 - [Data Management](/manage/data/)
