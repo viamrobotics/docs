@@ -24,6 +24,8 @@ To complete the frame configuration for your robot following this example, navig
 
 ![frame card example for this configuration](../img/frame_card_static.png)
 
+Select the `parent` frame as `world` and fill in the coordinates for `translation` (*mm*) and `orientation` (*deg*) according to the position and orientation of the arm in relation to the `world` frame's origin.
+
 {{< /tab >}}
 {{% tab name="JSON Example" %}}
 

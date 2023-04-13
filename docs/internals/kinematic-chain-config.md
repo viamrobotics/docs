@@ -309,7 +309,7 @@ This is an example <file>.json</file> configuration as used by Viam's [Universal
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 
 These reference frames are ingested by the Frame System, but not exposed through gRPC calls. You cannot access them directly with SDK code.
 

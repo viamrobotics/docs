@@ -122,11 +122,11 @@ For more information about determining the appropriate values for these paramete
 
 ## Building the Frame System
 
+`viam-server` builds a tree of reference frames for your robot with the `world` as the root node and regenerates this tree following reconfiguration.
+
 Access a [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames in the robot's logs at `--debug` level:
 
 ![an example of a logged frame system](img/frame_sys_log_example.png)
-
-`viam-server` builds a tree of reference frames for your robot with the `world` as the root node and regenerates this tree following reconfiguration.
 
 Consider the example of a [component attached to a dynamic component](/services/frame-system/component-on-dynamic): a robotic arm, `A`, attached to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
 
@@ -159,7 +159,7 @@ For example:
 
     With the [Vision Service](/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 
-    If a [camera](/components/camera) is looking for an apple or an orange, the arm could be commanded to move to the detected fruit's location by providing a supplemental transform that contains the detected pose with respect to the camera that performed the detection.
+    If a [camera](/components/camera) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing a supplemental transform that contains the detected pose with respect to the camera that performed the detection.
 
     The detecting component (camera) would be fixed with respect to the `world` reference frame, and would supply the position and orientation of the detected object.
 
@@ -170,9 +170,3 @@ Usage:
 - You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's Motion Service's [`GetPose`](/services/motion/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
 - Both [`TransformPose`](#accessing-the-frame-system) and [`FrameSystemConfig`](#accessing-the-frame-system) have the option to take in these supplemental transforms.
-
-{{% alert title="TBD" color="note" %}}
-
-Additional uses for supplemental transforms are being explored by the Viam team.
-
-{{% /alert %}}

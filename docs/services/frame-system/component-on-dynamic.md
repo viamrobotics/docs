@@ -27,9 +27,13 @@ To complete the frame configuration for your robot following this example, navig
 
 ![gantry frame card example for this configuration](../img/frame_card_dyn_gantry.png)
 
+Select the `parent` frame as `world` and fill in the coordinates for `translation` (*mm*) and `orientation` (*deg*) according to the position and orientation of the gantry in relation to the `world` frame's origin.
+
 Navigate to `"myArm"`'s card and click **Add Frame**:
 
 ![arm frame card example for this configuration](../img/frame_card_dyn_arm.png)
+
+Select the `parent` frame as `myGantry` and fill in the coordinates for `translation` (*mm*) and `orientation` (*deg*) according to the position and orientation of the arm in relation to the `myGantry` frame's origin.
 
 {{< /tab >}}
 {{% tab name="JSON Example" %}}
