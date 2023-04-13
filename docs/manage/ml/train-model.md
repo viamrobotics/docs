@@ -5,7 +5,7 @@ weight: 40
 type: "docs"
 tags: ["data management", "ml", "model training"]
 aliases:
-    - manage/data/train-model/
+    - /manage/data/train-model/
 description: "Train an image classification model on labeled image data."
 # SME: Aaron Casas
 ---
