@@ -39,6 +39,7 @@ The model package config looks like this:
 ```json
 {"package":"<model_id>/allblack","version":"1234567891011","name":"<model_name>"}
 ```
+
 ## Use your ML Model
 
 To make use of your new model, use the Vision Service.
