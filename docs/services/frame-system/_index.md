@@ -41,46 +41,18 @@ Select a `parent` frame and fill in the coordinates for `translation` (*mm*) and
       "depends_on": [],
       "frame": {
         "parent": <"world">,
-        // default
         "translation": {
-          "y": 0,
-          "z": 0,
-          "x": 0
+          "y": <int>,
+          "z": <int>,
+          "x": <int>
         },
-        // default
         "orientation": {
           "type": <"ov_degrees">,
           "value": {
-            "x": 0,
-            "y": 0,
-            "z": 1,
-            "th": 0
-          }
-        }
-      }
-    },
-    {
-      "depends_on": [],
-      "name": <"your_component_name_2">,
-      "type": <"your_component_type_2">,
-      "model": <"your_component_model_2">,
-      "attributes": { ... },
-      "frame": {
-        "parent": <"your_component_name_1">,
-        // default
-        "translation": {
-          "x": 0,
-          "y": 0,
-          "z": 0
-        },
-        // default
-        "orientation": {
-          "type": <"ov_degrees">,
-          "value": {
-            "x": 0,
-            "y": 0,
-            "z": 1,
-            "th": 0
+            "x": <int>,
+            "y": <int>,
+            "z": <int>,
+            "th": <int>
           }
         }
       }
