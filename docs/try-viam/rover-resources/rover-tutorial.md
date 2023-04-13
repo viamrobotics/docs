@@ -252,3 +252,8 @@ The following are just a few ideas, but you can expand or modify the rover kit w
   See [Movement Sensor Component](/components/movement-sensor) for more information.
 - For [LiDAR laser range scanning](/services/slam/run-slam-cartographer), we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).
 - For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
+
+### Lidar Mounting for the Viam Rover
+
+If you have Viam Rover and need a mount for your RPLidar, you can 3D print an adapter plate.
+The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/VR1-22-A001/blob/master/CAD/RPIidar_adapter.STL).
