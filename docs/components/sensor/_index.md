@@ -6,7 +6,7 @@ no_list: true
 type: "docs"
 description: "A device that sends information about the outside world to the computer controlling a robot."
 tags: ["sensor", "components"]
-icon: "img/components/sensor.png"
+icon: "/components/img/components/sensor.png"
 # SME: #team-bucket
 ---
 
