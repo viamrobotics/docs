@@ -20,5 +20,5 @@ You can extend Viam in these and other ways by creating and using custom resourc
 
 {{< cards >}}
     {{% card link="/program/extend/modular-resources" size="large" %}}
-    {{% card link="/program/extend/sdk-as-server/" size="large" %}}
+    {{% card link="/program/extend/sdk-as-server" size="large" %}}
 {{< /cards >}}

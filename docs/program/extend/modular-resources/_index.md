@@ -3,7 +3,7 @@ title: "Create custom components and services as modular resources"
 linkTitle: "Modular Resources"
 description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
 image: "/tutorials/img/intermode/rover_outside.png"
-imageAlt: "Intermode rover pictured outdoors."
+imageAlt: "An intermode rover pictured outdoors."
 weight: 10
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
