@@ -1,6 +1,6 @@
 ---
-title: "Deploy a Model"
-linkTitle: "Deploy Model"
+title: "ML Models Service"
+linkTitle: "ML Models"
 weight: 60
 type: "docs"
 tags: ["data management", "ml", "model training"]
@@ -16,7 +16,7 @@ Scroll to the bottom and create a new service with the **Type** `ml_models`.
 
 ![Create a machine learning models service](../img/ml-models-service.png)
 
-The created ML Models panel lists all available models.
+The created ML Models panel lists all available models that you have [trained](../../manage/ml/train-model/) or [uploaded](../../manage/ml/upload-model/).
 
 ![Create a machine learning models service](../img/available-models.png)
 
@@ -25,6 +25,19 @@ To add a model to your robot, select it and click on the move right button.
 ![Create a machine learning models service](../img/added-model.png)
 
 Save the configuration and your model will be added to your robot at <file>$HOME/.viam/packages/\<model-name\>/\<file-name\></file>.
+
+{{< alert title="Note" color="note" >}}
+If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the robot.
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the  `packages` configuration in the [Raw JSON robot configuration](../../manage/configuration/#the-config-tab).
+{{< /alert >}}
+
+You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
+The model package config looks like this:
+
+```json
+{"package":"<model_id>/allblack","version":"1234567891011","name":"<model_name>"}
+```
+## Use your ML Model
 
 To make use of your new model, use the Vision Service.
 Still on the **SERVICES** subtab add a new service with **Type** `Vision` and give it a name.

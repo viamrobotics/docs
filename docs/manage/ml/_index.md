@@ -4,6 +4,7 @@ linkTitle: "Machine Learning"
 weight: 40
 type: "docs"
 tags: ["data management", "data", "services"]
+no_list: true
 description: "Access data captured by the robot's components and train image classification models on the data."
 # SME: Aaron Casas
 ---
@@ -15,3 +16,9 @@ To capture and synchronize data to the platform, see [Data Management Service](.
 To view or export captured data, see [Data Management](../data).
 
 ## Next Steps
+
+{{< cards >}}
+  {{% card link="/manage/ml/train-model" size="small" %}}
+  {{% card link="/manage/ml/upload-model" size="small" %}}
+  {{% card link="/services/ml" size="small" custom="Deploy Model" %}}
+{{< /cards >}}
