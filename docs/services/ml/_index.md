@@ -10,7 +10,7 @@ description: "Deploy Machine Learning models to a robot."
 # SME: Aaron Casas
 ---
 
-The ML Model service allows you to deploy machine learning models to your robots.
+The ML Models service allows you to deploy machine learning models to your robots.
 
 Navigate to your robot's [**CONFIG** tab](https://app.viam.com/robot) and click on the **SERVICES** subtab.
 
