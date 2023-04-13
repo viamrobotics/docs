@@ -80,14 +80,11 @@ Code a module in the Go or Python programming languages with [Viam's SDKs](/prog
 
 1. Implements a new resource.
 
-2. Registers the component in the Viam RDK's [global registry of robotic parts](https://github.com/viamrobotics/rdk/blob/main/registry/registry.go).
+2. Validates the module and registers the component in the Viam RDK's [global registry of robotic parts](https://github.com/viamrobotics/rdk/blob/main/registry/registry.go).
 
 For example:
 
-{{%expand "Click to view an example of a module implementing a new model of the base component type" %}}
-
-{{< tabs name="Examples of Modules" >}}
-{{% tab name="Go" %}}
+{{%expand "Click to view an example of a module implementing a new model of the built-in base component type" %}}
 
 ``` go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls.)
@@ -119,14 +116,14 @@ var (
 
 // STEP 1: Implements the methods the Viam RDK defines for the base API.
 
-// newBase
+// Instantiation
 func newBase(ctx context.Context, deps registry.Dependencies, config config.Component, logger golog.Logger) (interface{}, error) {
     b := &MyBase{logger: logger}
     err := b.Reconfigure(config, deps)
     return b, err
 }
 
-// Reconfigure
+// Reconfiguration
 func (base *MyBase) Reconfigure(cfg config.Component, deps registry.Dependencies) error {
     base.left = nil
     base.right = nil
@@ -146,7 +143,7 @@ func (base *MyBase) Reconfigure(cfg config.Component, deps registry.Dependencies
         return errors.Wrapf(err, "unable to get motor %v for mybase", baseConfig.RightMotor)
     }
 
-    // Good practice to stop motors
+    // Stopping motors at reconfiguration
     return multierr.Combine(base.left.Stop(context.Background(), nil), base.right.Stop(context.Background(), nil))
 }
 
@@ -235,7 +232,7 @@ func (base *MyBase) Close(ctx context.Context) error {
 func init() {
     registry.RegisterComponent(base.Subtype, Model, registry.Component{Constructor: newBase})
 
-    // Uses RegisterComponentAttributeMapConverter to register a custom configuration struct that has a Validate(string) ([]string, error) method. 
+    // VALIDATION: Uses RegisterComponentAttributeMapConverter to register a custom configuration struct that has a Validate(string) ([]string, error) method. 
     // The Validate method will automatically be called in RDK's module manager to validate MyBase's configuration and register implicit dependencies.
     config.RegisterComponentAttributeMapConverter(
         base.Subtype,
@@ -248,16 +245,8 @@ func init() {
 }
 ```
 
-This example is from the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
-See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) for more information about the functions and structure of this module.
-
-{{% /tab %}}
-{{% tab name="Python" %}}
-
-COMING SOON
-
-{{% /tab %}}
-{{< /tabs >}}
+This example is from the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
+See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) for more information.
 
 {{% /expand%}}
 
@@ -272,10 +261,10 @@ You must define all functions belonging to a built-in resource type if defining 
 
 ### Make your module executable
 
-Now, in order to add this module to your robot, you need to have a single [executable file](https://en.wikipedia.org/wiki/Executable) that runs your module when executed.
+To add a module to your robot, you need to have an [executable file](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and eleanly exits when sent a termination signal.
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
-One option is creating and save a new shell script (<file>.sh</file>) that runs your file.
+One option is creating and save a new shell script (<file>.sh</file>) that runs your module.
 For example:
 
 {{< tabs name="Template Shell Scripts as Module Executables" >}}
@@ -286,6 +275,8 @@ For example:
 cd <path-to-your-module-directory>
 
 go build ./
+# Be sure to use `exec` so that termination signals reach the go process,
+# or handle forwarding termination signals manually
 exec ./<your-module-directory-name> $@
 ```
 
@@ -457,4 +448,3 @@ This means that you can compose a robot of any number of parts running in differ
 ### Limitations
 
 Custom models of the [arm](/components/arm) component type are not yet supported, as kinematic information is not currently exposed through the arm API.
-Support will be added soon.
