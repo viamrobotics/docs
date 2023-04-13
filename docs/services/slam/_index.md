@@ -217,7 +217,7 @@ To run Cartographer in live mode, follow [these instructions](../../program/exte
 {
   "modules": [
     {
-      "executable_path": "/Users/<YOUR_USERNAME>/Library/Caches/Homebrew/rplidar-module--git",
+      "executable_path": "/usr/local/bin/rplidar-module",
       "name": "rplidar_module"
     }
   ],

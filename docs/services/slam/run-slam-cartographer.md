@@ -197,7 +197,7 @@ At this point, your complete configuration should look like:
   {
     "modules": [
       {
-        "executable_path": "/Users/<YOUR_USERNAME>/Library/Caches/Homebrew/rplidar-module--git",
+        "executable_path": "/usr/local/bin/rplidar-module",
         "name": "rplidar_module"
       }
     ],

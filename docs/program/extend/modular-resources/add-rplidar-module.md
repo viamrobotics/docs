@@ -80,7 +80,7 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
   {
     "modules": [
       {
-        "executable_path": "/Users/<YOUR_USERNAME>/Library/Caches/Homebrew/rplidar-module--git",
+        "executable_path": "/usr/local/bin/rplidar-module",
         "name": "rplidar_module"
       }
     ],
