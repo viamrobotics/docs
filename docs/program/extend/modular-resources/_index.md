@@ -3,6 +3,7 @@ title: "Create custom components and services as modular resources"
 linkTitle: "Modular Resources"
 description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
 image: "/tutorials/img/intermode/rover_outside.png"
+imageAlt: "Intermode rover pictured outdoors."
 weight: 10
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
@@ -15,8 +16,8 @@ With modular resources, you can:
 - Create new models of built-in component or service types
 - Create brand new resource types
 
-`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/program/rdk).
-This means that functionality that the [RDK](/program/rdk/) provides for built-in resources is also automatically provided for user-created modular resources.
+`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/internals/rdk).
+This means that functionality that the [RDK](/internals/rdk/) provides for built-in resources is also automatically provided for user-created modular resources.
 Two key concepts exist across all Viam resources, built-in and modular, to facilitate this: [*APIs*](#apis) and [*models*](#models).
 
 ## Key concepts
