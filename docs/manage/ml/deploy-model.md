@@ -4,6 +4,8 @@ linkTitle: "Deploy Model"
 weight: 60
 type: "docs"
 tags: ["data management", "ml", "model training"]
+aliases:
+  - /manage/data/deploy-model/
 description: "Deploy an image classification model to a robot."
 # SME: Aaron Casas
 ---
