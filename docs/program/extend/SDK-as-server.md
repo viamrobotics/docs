@@ -1,16 +1,16 @@
 ---
-title: "Add Custom Components as Remote Parts of Your Robot"
+title: "Add Custom Components as Remotes of Your Robot"
 linkTitle: "Custom Components as Remotes"
 weight: 99
 type: "docs"
 tags: ["server", "sdk"]
-description: "Implement custom components and register them on a server configured as a remote part of your robot."
+description: "Implement custom components and register them on a server configured as a remote of your robot."
 webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
 mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
 videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
 ---
 
-If a type or model of [component](/components) you are working with is not built into the [Viam RDK](/internals/rdk), you can use a [Viam SDK](/program/sdk-as-client) to code a custom resource implementation, host it on a server, and add it as a [remote part](/manage/parts-and-remotes) of your robot.
+If a type or model of [component](/components) you are working with is not built into the [Viam RDK](/internals/rdk), you can use a [Viam SDK](/program/sdk-as-client) to code a custom resource implementation, host it on a server, and add it as a [remote](/manage/parts-and-remotes) of your robot.
 Then, you can configure a command to launch this remote server as a [process](/appendix/glossary/#term-process) of your robot to make sure the remote server is always running alongside the rest of your robot.
 
 After configuring the remote server, you can control and monitor your component programmatically with the SDKs and from the [Viam app](https://app.viam.com/).
@@ -35,7 +35,7 @@ To add a custom resource as a remote:
     If you are using the Go SDK, leave the body of functions you do not want to implement empty.
 
 2. Register the custom component on a new `rpc.server.Server` instance and start the server.
-3. Add the server as a remote part of your robot.
+3. Add the server as a remote of your robot.
 4. Add a process to your robot that runs the server.
 
 ## See also
