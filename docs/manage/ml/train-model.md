@@ -81,7 +81,7 @@ The previous model remains unchanged when you are training a new version of a mo
 If you are training a new model, you need to again select the images to train on because the model will be built from scratch.
 {{< /alert >}}
 
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [Raw JSON robot configuration](../../manage/configuration/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [Raw JSON robot configuration](../../configuration/#the-config-tab).
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the model page.
 The model package config looks like this:
