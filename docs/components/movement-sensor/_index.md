@@ -45,7 +45,7 @@ If your movement sensor has a different name, change the `name` in the example.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Place the example code after the `robot = await connect()` function in `main()`.
+Place the example code in `main()` after `robot = await connect()`.
 
 ```python
 from viam.components.movement_sensor import MovementSensor
@@ -61,7 +61,7 @@ print(f"my-imu linear acceleration in the x direction: {lin_accel.x}")
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Place the example code after the `robot, err := client.New(...)` function in `main()`.
+Place the example code in the `main()` function after `robot, err := client.New(...)`.
 
 ```go
 import (
