@@ -116,7 +116,7 @@ Name | Inclusion | Type | Default Value | Description
 `exclude_y` | Optional | bool | false | Tap detection defaults to all three axes. Exclude the y axis by setting this to true.
 `exclude_z` | Optional | bool | false | Tap detection defaults to all three axes. Exclude the z axis by setting this to true.
 `threshold` | Optional | float32 | 3000 | The magnitude of the threshold value for tap interrupt (in milligrams, between 0 and 15,937).
-`dur_us` | Optional | float32 | 10 | Unsigned time value representing maximum time that an event must be above the `threshold` to qualify as a tap event (in microseconds, between 0 and 159,375).
+`dur_us` | Optional | float32 | 10000 | Unsigned time value representing maximum time that an event must be above the `threshold` to qualify as a tap event (in microseconds, between 0 and 159,375).
 
 ### Freefall attributes
 

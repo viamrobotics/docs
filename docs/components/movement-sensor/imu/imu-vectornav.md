@@ -8,7 +8,7 @@ description: "Configure a VectorNav IMU."
 ---
 
 An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the `AngularVelocity`, `Orientation`, `CompassHeading`, and `LinearAcceleration` methods.
-Acceleration and magnetometer data are available by using the [sensor](../../sensor/) `GetReadings` method, which IMUs wrap.
+Acceleration and magnetometer data are available by using the [sensor](../../../sensor/) `GetReadings` method, which IMUs wrap.
 
 The `imu-vectornav` movement sensor model supports IMUs manufactured by [VectorNav](https://www.vectornav.com/products).
 
