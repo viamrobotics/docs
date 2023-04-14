@@ -115,8 +115,9 @@ Name | Inclusion | Type | Default Value | Description
 `exclude_x` | Optional | bool | - | Tap detection defaults to all three axes. Exclude the x axis by setting this to true.
 `exclude_y` | Optional | bool | - | Tap detection defaults to all three axes. Exclude the y axis by setting this to true.
 `exclude_z` | Optional | bool | - | Tap detection defaults to all three axes. Exclude the z axis by setting this to true.
-`threshold` | Optional | float32 | - | The magnitude of the threshold value for tap interrupt (in milligrams, between 0 and 15,937).
-`dur_us` | Optional | float32 | - | Unsigned time value representing maximum time that an event must be above the `threshold` to qualify as a tap event (in microseconds, between 0 and 160,000).
+`threshold` | Optional | float32 | 3000 | The magnitude of the threshold value for tap interrupt (in milligrams, between 0 and 15,937).
+
+`dur_us` | Optional | float32 | 10 | Unsigned time value representing maximum time that an event must be above the `threshold` to qualify as a tap event (in microseconds, between 0 and 159,375).
 
 ### Freefall attributes
 
@@ -126,5 +127,6 @@ Name | Inclusion | Type | Default Value | Description
 ---- | --------- | ---- | ------------- | -----------
 `accelerometer_pin` | **Required** | int | - | On the accelerometer you can choose to send the interrupts to int1 or int2. Specify this by setting this config value to 1 or 2.
 `interrupt_pin` | **Required** | string | - | The string name you gave your interrupt pin on your board.
-`threshold` | Optional | float32 | - | The acceleration on each axis is compared with this value to determine if a free-fall event occurred (in milligrams, between 0 and 15,937).
-`time_ms` | Optional | float32 | - | Unsigned time value representing the minimum time that the value of all axes must be less than `threshold` to generate a free-fall interrupt (in milliseconds, between 0 and 1,275).
+`threshold` | Optional | float32 | 437.5 | The acceleration on each axis is compared with this value to determine if a free-fall event occurred (in milligrams, between 0 and 15,937).
+`time_ms` | Optional | float32 | 160 | Unsigned time value representing the minimum time that the value of all axes must be less than `threshold` to generate a free-fall interrupt (in milliseconds, between 0 and 1,275).
+

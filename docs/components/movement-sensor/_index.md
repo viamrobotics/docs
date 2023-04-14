@@ -5,16 +5,15 @@ weight: 70
 type: "docs"
 description: "A sensor that measures location, kinematic data, or both."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
-icon: "img/components/imu.png"
+icon: "/components/img/components/imu.svg"
 no_list: true
 aliases:
     - /components/movement-sensor/
 # SME: Rand
 ---
 
-The movement sensor component is an abstraction of a sensor that gives data on where a robot is and how fast it is moving.
+The movement sensor component is a sensor that gives data on where a robot is and how fast it is moving.
 
-We have chosen to abstract these types of sensors into one common API.
 There are many different types of sensors that can provide data for some or all of the following methods: `Position`, `Orientation`, `LinearVelocity`, `AngularVelocity`, `LinearAcceleration` and `CompassHeadings`.
 A global positioning system (GPS) can provide position, linear velocity and compass headings.
 An inertial measurement unit (IMU) can provide angular velocity and orientation.
@@ -668,8 +667,8 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/
 
 ## Next Steps
 
-Try adding a movement sensor to your [mobile robot](../base/) and writing some code with our [SDKs](../../program/sdk-as-client/) to implement closed-loop movement control for your robot!
+Try adding a movement sensor to your [mobile robot](../base/) and writing some code with our [SDKs](../../program/sdk-as-client/) to implement closed-loop movement control for your robot.
 
-Or, try configuring [data capture](../../services/data/) on your movement sensor!
+Or, try configuring [data capture](../../services/data/) on your movement sensor.
 
 {{< snippet "social.md" >}}
