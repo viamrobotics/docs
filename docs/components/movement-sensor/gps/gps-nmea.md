@@ -109,7 +109,7 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 Name | Inclusion | Type | Default Value | Description
 ---- | --------- | ---- | ------------- | -----
-`board` | depends | string | - | Required for NMEA over I<sup>2</sup>C; the board connected to the chip. Not required for serial communication.
+`board` | depends on connection type | string | - | Required for NMEA over I<sup>2</sup>C; the board connected to the chip. Not required for serial communication.
 `connection_type` | **Required** | string | - | `"I2C"` or `"serial"`, respectively. See [connection configuration info](../connection/).
 `disable_nmea` | Optional | bool | false | If set to true, changes the NMEA message protocol to RTCM when using a chip as a base station.
 
