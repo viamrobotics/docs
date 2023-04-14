@@ -57,17 +57,21 @@ Click **Create Component** and then fill in the attributes for your model.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "depends_on": [],
-    "model": "gps-nmea",
-    "name": "my-gps-nmea",
-    "type": "movement_sensor",
-    "attributes": {
+  "components": [
+    {
+      "name": "my-gps-nmea",
+      "type": "movement_sensor",
+      "model": "gps-nmea",
+      "attributes": {
         "connection_type": "serial",
         "serial_attributes": {
-            "serial_baud_rate": 115200,
-            "serial_path": "/dev/serial/by-path/<device_ID>"
+          "serial_baud_rate": 115200,
+          "serial_path": "/dev/serial/by-path/<device_ID>"
         }
+      },
+      "depends_on": [],
     }
+  ]
 }
 ```
 
@@ -78,19 +82,23 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "depends_on": [],
-    "model": "gps-nmea",
-    "name": "my-gps-nmea",
-    "type": "movement_sensor",
-    "attributes": {
+  "components": [
+    {
+      "name": "my-gps-nmea",
+      "type": "movement_sensor",
+      "model": "gps-nmea",
+      "attributes": {
         "board": "local",
         "connection_type": "I2C",
         "i2c_attributes": {
-            "i2c_baud_rate": 115200,
-            "i2c_addr": 111,
-            "i2c_bus": "<name_of_bus_on_board>"
+          "i2c_baud_rate": 115200,
+          "i2c_addr": 111,
+          "i2c_bus": "<name_of_bus_on_board>"
         }
+      },
+      "depends_on": []
     }
+  ]
 }
 ```
 

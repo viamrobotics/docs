@@ -44,20 +44,20 @@ Click **Create Component** and then fill in the attributes for your model.
         "board": <board name if using I2C>,
         "connection_type": <"serial" or "I2C">,
         "serial_attributes": {
-            "serial_baud_rate": <>,
-            "serial_path": <>
+          "serial_baud_rate": <>,
+          "serial_path": <>
         },
         "i2c_attributes": {
-            "i2c_baud_rate": <>,
-            "i2c_addr": <>,
-            "i2c_bus": <>
+          "i2c_baud_rate": <>,
+          "i2c_addr": <>,
+          "i2c_bus": <>
         },
         "ntrip_attributes": {
-            "ntrip_addr": <URL of NTRIP server>,
-            "ntrip_baud": <>,
-            "ntrip_password": <password for NTRIP server>,
-            "ntrip_path": <>,
-            "ntrip_username": <username for NTRIP server>
+          "ntrip_addr": <URL of NTRIP server>,
+          "ntrip_baud": <>,
+          "ntrip_password": <password for NTRIP server>,
+          "ntrip_path": <>,
+          "ntrip_username": <username for NTRIP server>
         }
       },
       "depends_on": [],
@@ -71,24 +71,28 @@ Click **Create Component** and then fill in the attributes for your model.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "depends_on": [],
-    "model": "gps-rtk",
-    "name": "my_GPS",
-    "type": "movement_sensor",
-    "attributes": {
+  "components": [
+    {
+      "name": "my_GPS",
+      "type": "movement_sensor",
+      "model": "gps-rtk",
+      "attributes": {
         "connection_type": "serial",
         "correction_source": "ntrip",
         "serial_attributes": {
-            "serial_baud_rate": 115200,
-            "serial_path": "/dev/serial/by-path/<device_ID>"
+          "serial_baud_rate": 115200,
+          "serial_path": "/dev/serial/by-path/<device_ID>"
         },
         "ntrip_attributes": {
-            "ntrip_addr": "<ntrip_address>",
-            "ntrip_baud": 38400,
-            "ntrip_password": "<password>",
-            "ntrip_username": "<username>"
+          "ntrip_addr": "<ntrip_address>",
+          "ntrip_baud": 38400,
+          "ntrip_password": "<password>",
+          "ntrip_username": "<username>"
         }
+      },
+      "depends_on": []
     }
+  ]
 }
 ```
 
@@ -99,26 +103,30 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "depends_on": [],
-    "model": "gps-rtk",
-    "name": "my_GPS",
-    "type": "movement_sensor",
-    "attributes": {
+  "components": [
+    {
+      "name": "my_GPS",
+      "type": "movement_sensor",
+      "model": "gps-rtk",
+      "attributes": {
         "board": "board",
         "connection_type": "I2C",
         "correction_source": "ntrip",
         "i2c_attributes": {
-            "i2c_baud_rate": 115200,
-            "i2c_addr": 111,
-            "I2c_bus": "<name_of_bus_on_board>",
+          "i2c_baud_rate": 115200,
+          "i2c_addr": 111,
+          "I2c_bus": "<name_of_bus_on_board>",
         },
         "ntrip_attributes": {
-            "ntrip_addr": "<ntrip_address>",
-            "ntrip_baud": 38400,
-            "ntrip_password": "<password>",
-            "ntrip_username": "<username>"
+          "ntrip_addr": "<ntrip_address>",
+          "ntrip_baud": 38400,
+          "ntrip_password": "<password>",
+          "ntrip_username": "<username>"
         }
+      },
+      "depends_on": []
     }
+  ]
 }
 ```
 
