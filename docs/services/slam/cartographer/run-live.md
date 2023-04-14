@@ -28,7 +28,7 @@ Navigate to the **CONFIG** tab on your robot's page, and click on the **SERVICES
 
 Add a service with type `slam`, model `cartographer`, and a name of your choice:
 
-![adding cartographer slam service](/services/slam/img/run_slam/add-slam-service-ui.png)
+![adding cartographer slam service](../../img/run_slam/add-slam-service-ui.png)
 
 Paste the following into the **Attributes** field of your new service:
 
@@ -44,7 +44,7 @@ Paste the following into the **Attributes** field of your new service:
 }
 ```
 
-![adding cartographer slam service attributes box](/services/slam/img/run_slam/add-cartographer-service-attributes-live.png)
+![adding cartographer slam service attributes box](../../img/run_slam/add-cartographer-service-attributes-live.png)
 
 Now, change the `data_dir` attribute on line 8 to point to a directory on your machine that you want to store your SLAM data in.
 This can be an existing directory or a new directory that you want the SLAM service to automatically create.

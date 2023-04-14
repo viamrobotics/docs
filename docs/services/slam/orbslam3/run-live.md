@@ -32,7 +32,7 @@ Navigate to the **CONFIG** tab on your robot's page, and click on the **SERVICES
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice:
 
-![adding orbslam3 slam service](/services/slam/img/run_slam/add-orbslam-service-ui.png)
+![adding orbslam3 slam service](../../img/run_slam/add-orbslam-service-ui.png)
 
 Paste the following into the **Attributes** field of your new service:
 
@@ -48,7 +48,7 @@ Paste the following into the **Attributes** field of your new service:
 }
 ```
 
-![adding orbslam3 slam service attributes box](/services/slam/img/run_slam/add-orbslam-service-attributes-live.png)
+![adding orbslam3 slam service attributes box](../../img/run_slam/add-orbslam-service-attributes-live.png)
 
 Now, adjust `"sensors"` to match the name of the webcam you configured, and change the `data_dir` attribute on line 8 to point to a directory on your machine that you want to store your SLAM data in.
 This can be an existing directory or a new directory that you want the SLAM service to automatically create.
@@ -140,7 +140,7 @@ Setting `delete_processed_data: true` and `use_live_data: false` is invalid and 
 
 This issue has a couple of potential causes.
 
-![error getting SLAM map](/services/slam/img/run_slam/01_slam_tutorial_no_map_points.png)
+![error getting SLAM map](../../img/run_slam/01_slam_tutorial_no_map_points.png)
 
 First, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up.
 In both live and offline mode, this might mean that you have to wait a little while before you can see a map on the UI.
