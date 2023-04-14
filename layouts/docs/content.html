@@ -7,6 +7,13 @@
 	</header> -->
 	<h1>{{ .Title }}</h1>
 
+	{{ if .Draft }}
+	<div class="alert alert-caution" role="alert">
+		<h4 class="alert-heading">DRAFT</h4>
+		<p>This page is a draft and not visible in the published documentation.</p>
+	</div>
+	{{ end }}
+
 	{{ .Content }}
 
 	{{ if ne .Params.no_list true}}
