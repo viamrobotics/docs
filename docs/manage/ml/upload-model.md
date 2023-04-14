@@ -27,6 +27,20 @@ Once the model has finished training, it becomes visible in the **Models** secti
 
 ![The trained model](../img/stars-model.png)
 
+### Upload a new version of a model
+
+If you [deploy a model](../../../services/ml) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.
+If you upload a new version of that model, Viam will automatically deploy the new version to the robot and replace the old version.
+
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [Raw JSON robot configuration](../../configuration/#the-config-tab).
+
+You can get the version number from a specific model version by clicking on **COPY** on the model on the model page.
+The model package config looks like this:
+
+```json
+{"package":"<model_id>/allblack","version":"1234567891011","name":"<model_name>"}
+```
+
 ## Next Steps
 
-To deploy your model to your robot, see [deploy model](../deploy-model).
+To deploy your model to your robot, see [deploy model](../../../services/ml).
