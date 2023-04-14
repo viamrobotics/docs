@@ -326,6 +326,11 @@ Make sure to do this while your terminal is at the home directory level (denoted
 
 ## Troubleshooting
 
+### Tip: Lidar Mounting for the Viam Rover
+
+If you have a Viam Rover and need a mount for your RPLidar, you can 3D print an adapter plate.
+The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/VR1-22-A001/blob/master/CAD/RPIidar_adapter.STL).
+
 ### Issue: Maps JPEG not Appearing in UI
 
 When generating a larger map, it can take a while for the Cartographer service to return the `JPEG` map.
@@ -340,9 +345,8 @@ If maps are not building the way you expect, make sure your Rplidar is secure an
 
 ### Issue: Offline mode produces an error after restart
 
-If there is a saved map in `data_dir/map` and saved data in `data_dir/data` from a previous run, then offline mode
-may error at startup, since the data has already been incorporated into the map. If that occurs, you can
-clear `data_dir/map` to rerun the dataset in offline mode.
+If there is a saved map in `data_dir/map` and saved data in `data_dir/data` from a previous run, then offline mode may error at startup, since the data has already been incorporated into the map.
+If that occurs, you can clear `data_dir/map` to rerun the dataset in offline mode.
 
 ## Next Steps
 
