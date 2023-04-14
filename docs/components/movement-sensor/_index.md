@@ -12,16 +12,14 @@ aliases:
 # SME: Rand
 ---
 
-The movement sensor component is a sensor that gives data on where a robot is and how fast it is moving.
+A movement sensor component is a sensor that gives data on where a robot is and how fast it is moving.
+Examples of movement sensors include global positioning systems (GPS), inertial measurement units (IMUs), accelerometers and gyroscopes.
 
-There are many different types of sensors that can provide data for some or all of the following methods: `Position`, `Orientation`, `LinearVelocity`, `AngularVelocity`, `LinearAcceleration` and `CompassHeadings`.
-A global positioning system (GPS) can provide position, linear velocity and compass headings.
-An inertial measurement unit (IMU) can provide angular velocity and orientation.
-We can further apply algorithms, such as a [Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter), to combine data from both a GPS and an IMU to output the full set of information of the movement sensor methods.
+{{% alert title="Note" color="note" %}}
 
-We specifically cover GPS, accelerometer and IMU units in this documentation.
-Find the more generic [sensor component here](/components/sensor/).
-Find more information about encoders, another component type, [here](/components/encoder/).
+Viam also supports generic [sensors](/components/sensor/) and [encoders](/components/encoder/).
+
+{{% /alert %}}
 
 ## Configuration
 
@@ -63,7 +61,7 @@ print(f"my-imu linear acceleration in the x direction: {lin_accel.x}")
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Example code should be placed after the `robot, err := client.New(...)` function in `main()`.
+Place the example code after the `robot, err := client.New(...)` function in `main()`.
 
 ```go
 import (
@@ -96,19 +94,20 @@ fmt.Println("my-imu LinearAcceleration in the x direction: ", linAccel.X)
 ## API
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
+You can run `GetProperties` on your sensor for a list of its supported methods.
 
-Method Name | Description
------------ | -----------
-[GetPosition](#getposition) | Gets the current latitude, longitude and altitude.
-[GetLinearVelocity](#getlinearvelocity) | Gets the current linear velocity as a 3D vector.
-[GetAngularVelocity](#getangularvelocity) | Gets the current angular velocity as a 3D vector.
-[GetLinearAcceleration](#getlinearacceleration) | Gets the current linear acceleration as a 3D vector.
-[GetCompassHeading](#getcompassheading) | Gets the current compass heading in degrees.
-[GetOrientation](#getorientation) | Get the current orientation.
-[GetProperties](#getproperties) | Get the supported properties of this sensor.
-[GetAccuracy](#getaccuracy) | Get the accuracy of the various sensors.
-[GetReadings](#getreadings) | Obtain the measurements/data specific to this sensor.
-[DoCommand](#docommand) | Sends or receives model-specific commands.
+Method Name | Description | Models That Support This Method
+----------- | ----------- | -------------------------------
+[GetPosition](#getposition) | Gets the current latitude, longitude and altitude. | GPS models
+[GetLinearVelocity](#getlinearvelocity) | Gets the current linear velocity as a 3D vector. | GPS models
+[GetAngularVelocity](#getangularvelocity) | Gets the current angular velocity as a 3D vector. | IMU models and `gyro-mpu6050`
+[GetLinearAcceleration](#getlinearacceleration) | Gets the current linear acceleration as a 3D vector. | IMU models,  `accel-adxl345`, and `gyro-mpu6050`
+[GetCompassHeading](#getcompassheading) | Gets the current compass heading in degrees. | GPS models and `imu-vectornav`
+[GetOrientation](#getorientation) | Get the current orientation. | IMU models
+[GetProperties](#getproperties) | Get the supported properties of this sensor. | all models
+[GetAccuracy](#getaccuracy) | Get the accuracy of the various sensors. | GPS models
+[GetReadings](#getreadings) | Obtain the measurements/data specific to this sensor. | all models
+[DoCommand](#docommand) | Sends or receives model-specific commands. | all models
 
 In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor)
 or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#).

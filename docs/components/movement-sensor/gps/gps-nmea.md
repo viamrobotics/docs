@@ -7,6 +7,10 @@ description: "Configure an NMEA-based GPS."
 # SMEs: Rand
 ---
 
+A global positioning system (GPS) receives signals from satellites in the earth’s orbit to determine where it is and how fast it is going.
+All supported GPS models provide date for the `Position`, `CompassHeading` and `LinearVelocity` methods.
+Fix and Correction data are available by using the sensor `GetReadings` method, which is available because GPSes wrap the [sensor component](../../sensor/).
+
 The `gps-nmea` movement sensor model supports [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS units.
 
 This GPS model uses communication standards set by the National Marine Electronics Association (NMEA).
@@ -110,8 +114,9 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 Name | Inclusion | Type | Default Value | Description
 ---- | --------- | ---- | ------------- | -----
 `board` | depends on connection type | string | - | Required for NMEA over I<sup>2</sup>C; the board connected to the chip. Not required for serial communication.
-`connection_type` | **Required** | string | - | `"I2C"` or `"serial"`, respectively. See [connection configuration info](../connection/).
+`connection_type` | **Required** | string | - | `"I2C"` or `"serial"`. See [connection configuration info](#connection-attributes).
 `disable_nmea` | Optional | bool | false | If set to true, changes the NMEA message protocol to RTCM when using a chip as a base station.
 
-You also need to configure either serial connection attributes or I<sup>2</sup>C connection attributes.
-See [the connection configuration page](../connection/).
+### Connection Attributes
+
+{{< readfile "/static/include/components/movement-sensor/connection.md" >}}

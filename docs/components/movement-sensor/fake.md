@@ -9,6 +9,9 @@ description: "Configure a fake movement sensor to test software without any hard
 
 You can use the `fake` movement sensor model to test movement sensor code without connecting to any actual hardware.
 
+The `fake` model supports all movement sensor methods: `Accuracy`, `AngularVelocity`, `CompassHeading`, `LinearAcceleration`, `LinearVelocity`, `Orientation`, `Position`, `Properties`, and `Readings`.
+Note that this model does not get any actual readings, so it supports these methods by returning placeholder data.
+
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 

@@ -15,6 +15,10 @@ Breaking changes are likely to occur, and occur often.
 
 {{% /alert %}}
 
+A global positioning system (GPS) receives signals from satellites in the earth’s orbit to determine where it is and how fast it is going.
+All supported GPS models provide date for the `Position`, `CompassHeading` and `LinearVelocity` methods.
+Fix and Correction data are available by using the sensor `GetReadings` method, which is available because GPSes wrap the [sensor component](../../sensor/).
+
 The `gps-ntrip` movement sensor model supports [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [real time kinematic positioning (RTK)](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS units ([such as these](https://www.sparkfun.com/rtk)).
 
 The chip requires a correction source to get to the required positional accuracy.
@@ -138,7 +142,7 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 Name | Inclusion | Type | Default Value | Description
 ---- | --------- | ---- | ------------- | ----------
 `board` | depends on connection type | string | - | Required for NMEA over I<sup>2</sup>C; the board connected to the chip. Not required for serial communication.
-`connection_type` | **Required** | string | - | `"I2C"` or `"serial"`, respectively. See [connection configuration info](../connection/).
+`connection_type` | **Required** | string | - | `"I2C"` or `"serial"`, respectively. See [connection configuration info](#connection-attributes).
 `ntrip_addr` | **Required** | string | - | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections
 `ntrip_username` | **Required** | string | - | Username for the NTRIP server
 `ntrip_password` | **Required** | string | - | Password for the NTRIP server
@@ -147,5 +151,6 @@ Name | Inclusion | Type | Default Value | Description
 `ntrip_mountpoint` | Optional | string | |
 `ntrip_path` | Optional | string | |
 
-You also need to configure either serial connection attributes or I<sup>2</sup>C connection attributes.
-See [the connection configuration page](../connection/).
+### Connection Attributes
+
+{{< readfile "/static/include/components/movement-sensor/connection.md" >}}

@@ -154,5 +154,4 @@ Click **Create Component** and then fill in the attributes for your model.
 {{% /tab %}}
 {{< /tabs >}}
 
-Find NTRIP attribute information in the [GPS-RTK documentation](../gps-rtk/#attributes).
-See [the connection configuration page](../connection/) for serial connection attributes or I<sup>2</sup>C connection attributes.
+Find NTRIP and configuration attribute information in the [GPS-RTK documentation](../gps-rtk/#attributes).

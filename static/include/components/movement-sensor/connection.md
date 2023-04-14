@@ -1,23 +1,13 @@
----
-title: "Configure Serial or I2C Connection"
-linkTitle: "Configure the Connection"
-weight: 20
-type: "docs"
-description: "Configure the connection between your GPS and your computer."
-# SMEs: Rand
----
-
-{{% alert title="Note" color="note" %}}
-This section applies to all GPS models.
-{{% /alert %}}
-
-When using a [`gps-nmea`](../gps-nmea/) or [`gps-rtk`](../gps-rtk/) model you need to configure attributes to specify how the GPS connects to your computer.
+You also need to configure attributes to specify how the GPS connects to your computer.
 You can use either serial communication (over USB) or I<sup>2</sup>C communication (through pins to a [board](../../../board/)).
 
-Use `connection_type`(string) to specify `"serial"` or `"I2C"` connection in the main `attributes` config.
+Use `connection_type` to specify `"serial"` or `"I2C"` connection in the main `attributes` config.
 Then create a struct within `attributes` for either `serial_attributes` or `i2c_attributes`, respectively.
 
-## Serial Config Attributes
+{{< tabs >}}
+{{% tab name="Serial" %}}
+
+### Serial Config Attributes
 
 For a movement sensor communicating over serial, you'll need to include a `serial_attributes` field containing:
 
@@ -45,7 +35,10 @@ Serial communication uses a filepath instead of relying on any specific piece of
 }
 ```
 
-## I<sup>2</sup>C Config Attributes
+{{% /tab %}}
+{{% tab name="I2C" %}}
+
+### I<sup>2</sup>C Config Attributes
 
 For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` field containing:
 
@@ -74,3 +67,6 @@ You'll also need to configure the `board` attribute with the name of the board t
     }
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
