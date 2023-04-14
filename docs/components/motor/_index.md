@@ -47,7 +47,7 @@ If your motor has a different name, change the `name` in the example.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Place the example code after the `robot = await connect()` function in `main()`.
+Place the example code in the `main()` function after `robot = await connect()`.
 
 ```python
 from viam.components.motor import Motor
