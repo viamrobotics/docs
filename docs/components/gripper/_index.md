@@ -3,14 +3,14 @@ title: "Gripper Component"
 linkTitle: "Gripper"
 weight: 60
 type: "docs"
-description: "A gripper is a robotic grasping device."
+description: "A gripper is a robotic grasping device that can open and close."
 tags: ["gripper", "components"]
 icon: "/components/img/components/gripper.svg"
 no_list: true
 # SMEs: Bucket Team
 ---
 
-A *gripper* is a robotic grasping device, often attached to the end of an [arm](../arm/) or to a [gantry](../gantry/).
+A *gripper* is a robotic grasping device that can open and close, often attached to the end of an [arm](../arm/) or to a [gantry](../gantry/).
 
 ## Configuration
 
@@ -18,7 +18,7 @@ For configuration information, click on your gripper's model:
 
 Model | Supported hardware
 ----- | -----------
-[`softrobotics`](./softrobotics/) | The [mGrip soft gripper by Soft Robotics](https://www.softroboticsinc.com/products/mgrip-modular-gripping-solution-for-food-automation/)
+[`softrobotics`](./softrobotics/) | The [*m*Grip soft gripper by Soft Robotics](https://www.softroboticsinc.com/products/mgrip-modular-gripping-solution-for-food-automation/)
 
 If you have another gripper model, you can [define a custom component](../../program/extend/).
 
@@ -32,10 +32,11 @@ If your gripper has a different name, change the `name` in the example.
 
 Place the example code in the `main()` function after `robot = await connect()`.
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
 
 robot = await connect() # Refer to CODE SAMPLE tab code
+# Get the gripper from the robot
 my_gripper = Gripper.from_robot(robot, "my_gripper")
 
 # Open the gripper
@@ -43,6 +44,8 @@ await my_gripper.open()
 
 # Grab with the gripper and get whether it grabbed anything
 grabbed = await my_gripper.grab()
+print("Grabbed something?")
+print(grabbed)
 ```
 
 {{% /tab %}}
@@ -50,25 +53,34 @@ grabbed = await my_gripper.grab()
 
 Place the example code in the `main()` function after `robot, err := client.New(...)`.
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 import (
   "context"
-  "time"
-
-  "github.com/edaniels/golog"
+  "fmt"
 
   "go.viam.com/rdk/components/gripper"
 )
 
 robot, err := client.New() // Refer to CODE SAMPLE tab code
+if err != nil {
+    return nil, err
+}
 // Get the gripper from the robot
 myGripper, err := gripper.FromRobot(robot, "my_gripper")
+if err != nil {
+    return nil, err
+}
 
 // Open the gripper
-grip.Open(context.TODO(), nil)
+myGripper.Open(context.TODO(), nil)
 
 // Grab with the gripper and get whether it grabbed anything
-grabbed, err := grip.Grab(context.TODO(), nil)
+grabbed, err := myGripper.Grab(context.TODO(), nil)
+if err != nil {
+    return nil, err
+}
+fmt.Println("Grabbed something?")
+fmt.Println(grabbed)
 ```
 
 {{% /tab %}}
@@ -86,9 +98,161 @@ Method Name | Description
 
 ### Open
 
+Opens the gripper.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/index.html#viam.components.gripper.Gripper.open).
+
+**Example usage:**
+
+```python
+my_gripper = Gripper.from_robot(robot=robot, name='my_gripper')
+
+# Open the gripper.
+await my_gripper.open()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
+
+**Example usage:**
+
+```go
+myGripper, err := gripper.FromRobot(robot, "my_gripper")
+
+// Open the gripper.
+err := myGripper.Open(context.TODO(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Grab
 
+Closes the gripper until it grabs something or closes completely, and returns whether it grabbed something or not.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/index.html#viam.components.gripper.Gripper.grab).
+
+**Example usage:**
+
+```python
+my_gripper = Gripper.from_robot(robot=robot, name='my_gripper')
+
+# Grab with the gripper.
+grabbed = await my_gripper.grab()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(bool)](https://pkg.go.dev/builtin#bool): True if the gripper grabbed something with nonzero thickness.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
+
+**Example usage:**
+
+```go
+myGripper, err := gripper.FromRobot(robot, "my_gripper")
+
+// Grab with the gripper.
+grabbed, err := myGripper.Grab(context.TODO(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Stop
+
+Stops the gripper (for example, if it is in the process of grabbing).
+It is assumed that the gripper stops immediately, so `IsMoving` will return false after calling `Stop`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/index.html#viam.components.gripper.Gripper.stop).
+
+**Example usage:**
+
+```python
+my_gripper = Gripper.from_robot(robot=robot, name='my_gripper')
+
+# Stop the gripper.
+await my_gripper.stop()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
+
+**Example usage:**
+
+```go
+myGripper, err := gripper.FromRobot(robot, "my_gripper")
+
+// Stop the gripper.
+err := myGripper.Stop(context.TODO(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### IsMoving
 
@@ -197,7 +361,3 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/api/
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Next Steps
-
-[Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/gripper/index.html)
