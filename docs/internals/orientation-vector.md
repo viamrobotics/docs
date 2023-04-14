@@ -6,9 +6,8 @@ type: "docs"
 description: "A description of Viam's orientation vector object."
 ---
 
-A _pose_ specifies where an object is with respect to another reference point and which direction it is pointing.
-Pose includes a 3D vector specifying the position of the center of the object, as well as an _orientation vector_ specifying the angle of the object in 3D space.
-To specify which direction an object is pointing, you use an orientation vector (**OX, OY, OZ, theta**).
+An _orientation vector_ specifies the angle at which an object is oriented in 3D space.
+You use orientation vectors to specify relative orientations of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/).
 The first three components of this vector form an axis pointing in the same direction as the object.
 **Theta** specifies the angle of the object's rotation about that axis.
 
