@@ -29,7 +29,7 @@ To add a custom resource as a remote:
 
 1. Subclass a component and implement desired functions.
 
-    You must define all functions belonging to a built-in resource type if defining a new model.
+    You must define all functions belonging to a built-in resource type if defining a new model of an existing type.
     Otherwise, the class won't instantiate.
     If you are using the Python SDK, put `pass` or `raise NotImplementedError()` in the body of functions you do not want to implement.
     If you are using the Go SDK, leave the body of functions you do not want to implement empty.
