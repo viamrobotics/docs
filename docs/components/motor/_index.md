@@ -5,8 +5,7 @@ weight: 70
 type: "docs"
 description: "A motor is a rotating machine that transforms electrical energy into mechanical energy."
 tags: ["motor", "components"]
-image: "/components/img/components/motor.png"
-imageAlt: "motor"
+icon: "/components/img/components/motor.svg"
 no_list: true
 # SME: Rand
 ---

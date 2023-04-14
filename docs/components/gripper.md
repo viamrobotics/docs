@@ -6,8 +6,7 @@ draft: true
 type: "docs"
 description: "Explanation of gripper configuration and usage in Viam."
 tags: ["gripper", "components"]
-image: "/components/img/components/gripper.png"
-imageAlt: "gripper"
+icon: "/components/img/components/gripper.svg"
 ---
 This will look similar to the [motor doc](../motor/), but describing how to wire up and configure a gripper.
 
