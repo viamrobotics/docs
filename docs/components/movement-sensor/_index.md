@@ -35,7 +35,7 @@ Model | Supported hardware <a name="model-table"></a>
 [`gps-rtk`](./gps/gps-rtk/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models
 [`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://witmotion-sensor.com/)
 [`imu-vectornav`](./imu/imu-wit) | IMUs manufactured by [VectorNav](https://www.vectornav.com/products)
-[`accel-adxl345`](./accel-adxl345) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
+[`accel-adxl345`](./adxl345) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
 [`mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
 [`rtk-station`](./gps/rtk-station/) | An **experimental** model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module.
 [`fake`](./fake/) | Used to test code without hardware
