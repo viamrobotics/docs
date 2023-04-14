@@ -38,26 +38,42 @@ Click **Create Component** and then fill in the attributes for your model.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": <sensor_name>,
-    "type": "movement_sensor",
-    "model": "rtk-station",
-    "children": [
-        <list of children>
-    ],
-    "attributes": {
+  "components": [
+    {
+      "name": <sensor_name>,
+      "type": "movement_sensor",
+      "model": "rtk-station",
+      "attributes": {
+        "board": <board_name>,
+        "children": [
+          <list of children>
+        ],
         "connection_type": <"serial" or "I2C">,
-        "serial_attributes": {
-            "serial_baud_rate": <>,
-            "serial_path": <>
-        },
         "i2c_attributes": {
-            "i2c_baud_rate": <>,
-            "i2c_addr": <>,
-            "i2c_bus": <>
-        }
+          "i2c_baud_rate": <>,
+          "i2c_addr": <>,
+          "i2c_bus": <>
+        },
+        "ntrip_attributes": {
+          "ntrip_addr": <>,
+          "ntrip_baud": <>,
+          "ntrip_password": <>,
+          "ntrip_path": <>,
+          "ntrip_username": <>
+        },
+        "serial_attributes": {
+          "serial_baud_rate": <>,
+          "serial_path": <>
+        },
+        "correction_source": <string>,
+        // non-NTRIP attributes:
+        "svin": <string>, //SurveyIn
+        "required_accuracy": <float64>,
+        "required_time_sec": <int>
       },
-      "correction_source": <>
+      "depends_on": []
     }
+  ]
 }
 ```
 
@@ -134,3 +150,9 @@ Click **Create Component** and then fill in the attributes for your model.
     }
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Find NTRIP attribute information in the [GPS-RTK documentation](../gps-rtk/#attributes).
+See [the connection configuration page](../connection/) for serial connection attributes or I<sup>2</sup>C connection attributes.

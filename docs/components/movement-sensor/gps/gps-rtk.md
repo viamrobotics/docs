@@ -133,6 +133,8 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 {{% /tab %}}
 {{< /tabs >}}
 
+## Attributes
+
 Name | Inclusion | Type | Default Value | Description
 ---- | --------- | ---- | ------------- | ----------
 `board` | depends on connection type | string | - | Required for NMEA over I<sup>2</sup>C; the board connected to the chip. Not required for serial communication.
