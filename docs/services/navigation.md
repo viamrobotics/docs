@@ -5,6 +5,7 @@ weight: 30
 draft: true
 type: "docs"
 description: "Coming soon."
+icon: "/services/img/icons/navigation.svg"
 tags: ["navigation", "services"]
 ---
 ## Coming soon
