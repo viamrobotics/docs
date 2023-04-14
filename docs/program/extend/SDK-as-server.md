@@ -15,7 +15,6 @@ Then, you can configure a command to launch this remote server as a [process](/a
 
 After configuring the remote server, you can control and monitor your component programmatically with the SDKs and from the [Viam app](https://app.viam.com/).
 
-This option makes reconfiguration more difficult than programming custom [modular resources](/program/extend/modular-resources), and is a less seamless integration.
 
 For example, let's say that you have a robotic arm that is not one of the models supported by [Viam's arm component](/components/arm/), and you want to integrate it with Viam.
 You will need to create a custom component and register the new arm model in order to use it with the Viam SDK.
