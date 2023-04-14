@@ -6,6 +6,7 @@ type: "docs"
 description: "Simultaneous Localization And Mapping (SLAM) allows your robot to create a map of its surroundings and find its location within that map."
 tags: ["slam", "services"]
 no_list: true
+icon: "/services/img/icons/slam.svg"
 # SMEs: Kat, Jeremy
 ---
 

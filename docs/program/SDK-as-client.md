@@ -4,6 +4,7 @@ linkTitle: "Program your Robot with Viam's SDKs"
 weight: 40
 type: "docs"
 description: "Use Viam's SDKs to write code to access and control your robot."
+icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 ---
 
