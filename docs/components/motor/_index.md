@@ -68,7 +68,7 @@ await motor2.go_for(1000, 200)
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Place the example code after the `robot, err := client.New(...)` function in `main()`.
+Place the example code in the `main()` function after `robot, err := client.New(...)`.
 
 ```go
 import (
