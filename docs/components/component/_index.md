@@ -44,7 +44,7 @@ The COMPONENT component supports the following methods:
 
 Method Name | Description
 ----------- | -----------
-[GetReadings](#methodname1) | Do the thing the method does.
+[GetReadings](#getreadings) | Do the thing the method does.
 [MethodName2](#methodname2) | Do the thing this method does.
 
 ### GetReadings
@@ -100,6 +100,55 @@ readings, err := mySensor.Readings(context.Background(), nil)
 {{< /tabs >}}
 
 ### MethodName2
+
+1-2 sentence description of what the method does.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/index.html#viam.components.sensor.Sensor.get_readings) (INSERT RELEVANT LINK).
+
+```python
+my_sensor = Sensor.from_robot(robot=robot, name='my_sensor')
+
+# Do the thing that the method does.
+await my_sensor.method_name_two()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
+
+```go
+mySensor, err := sensor.FromRobot(robot, "my_sensor")
+if err != nil {
+  logger.Fatalf("cannot get sensor: %v", err)
+}
+
+err := mySensor.MethodNameTwo(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Troubleshooting
 
