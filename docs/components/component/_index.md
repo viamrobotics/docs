@@ -27,53 +27,87 @@ Most robots with a COMPONENT need at least the following hardware:
 
 ## Configuration
 
-Configuring this component on your robot enables you to ....
-You can easily configure your component, as pictured below, on the [Viam app](https://app.viam.com/).
-{{< tabs name="TabPanelExample" >}}
-{{% tab name="UI"%}}
+For configuration information, click on your COMPONENT's model:
 
-Description of how to configure the component in the UI
+Model | Supported hardware
+----- | ------------------
+[`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)
+[`model2`](model2/) | An ABCDE unit made by Some Other Company(INSERT LINK AS APPLICABLE)
 
-{{% /tab %}}
-{{% tab name="JSON" %}}
+If you want to use another COMPONENT model with Viam, you can [define a custom component](../../program/extend/).
 
-```json
-{
-    "name": "COMPONENT_name",
-    "type": "component",
-    "model" : "model1|model2|model3",
-    "attributes": {
-        "attribute1": string, # explanation
-        "attribute2": int # (optional) explanation
-    }
-}
+## API
+
+The COMPONENT component supports the following methods:
+
+*Use the method names in the protobuf, not the Python or Go-specific method names.*
+
+Method Name | Description
+----------- | -----------
+[GetReadings](#methodname1) | Do the thing the method does.
+[MethodName2](#methodname2) | Do the thing this method does.
+
+### GetReadings
+
+Get the measurements or readings that this sensor provides.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `readings` [(Mapping[str, Any])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this sensor provides.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/index.html#viam.components.sensor.Sensor.get_readings) (INSERT RELEVANT LINK).
+
+```python
+my_sensor = Sensor.from_robot(robot=robot, name='my_sensor')
+
+# Get the readings provided by the sensor.
+readings = await my_sensor.get_readings()
 ```
 
-Configure the following attributes:
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-- `attribute1` (`string`): Description.
-- `attribute1` (`string`): *Optional.* Description.
+**Parameters:**
 
-The following is an example configuration for an Example component:
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
-```json
-{
-    "name": "COMPONENT_name",
-    "type": "component",
-    "model" : "model1|model2|model3",
-    "attributes": {
-        "attribute1": string, # explanation
-        "attribute2": int # (optional) explanation
-    }
+**Returns:**
+
+- `readings` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): The measurements or readings that this sensor provides.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
+
+```go
+mySensor, err := sensor.FromRobot(robot, "my_sensor")
+if err != nil {
+  logger.Fatalf("cannot get sensor: %v", err)
 }
+
+readings, err := mySensor.Readings(context.Background(), nil)
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
+### MethodName2
+
 ## Troubleshooting
 
 Troubleshooting information for configuration errors.
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+{{< snippet "social.md" >}}
 
 ## Next Steps
 

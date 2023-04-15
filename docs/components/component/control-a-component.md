@@ -3,11 +3,9 @@ title: "Control a Component"
 linkTitle: "Control a Component"
 weight: 12
 type: "docs"
-draft: false
 description: "You can do something or other with your component."
 tags: ["name", "components"]
 draft: true
-
 # SMEs:
 ---
 
