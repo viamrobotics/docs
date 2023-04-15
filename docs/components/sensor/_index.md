@@ -86,7 +86,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_sensor = Sensor.from_robot(robot=robot, name='my_sensor')
 
 # Get the readings provided by the sensor.
-positions = await my_sensor.get_readings()
+readings = await my_sensor.get_readings()
 ```
 
 {{% /tab %}}
