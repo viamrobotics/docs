@@ -23,7 +23,7 @@ Enter a name for your base, select the type `base`, and select the `fake` model.
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": <"your_base_name">,
     "type": "base",
