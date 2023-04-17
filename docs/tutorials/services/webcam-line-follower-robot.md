@@ -85,7 +85,7 @@ Or if you prefer the raw JSON:
 
 We’ll use the Viam [Vision Service color detector](/services/vision/detection) to identify the line to follow.
 
-In the **SERVICES** section of the **CONFIG** tab, configure a color detector for the color of your tape line.
+In the **Services** section of the **config** tab, configure a color detector for the color of your tape line.
 
 - Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding hexadecimal hash to put in your config.
 Put this hash in the `detect_color` parameter.
@@ -93,7 +93,21 @@ We used #19FFD9 to represent the color of green electrical tape.
 
 - We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
-What this will look like in the Config Builder:
+Copy
+
+{
+  "register_models": [
+    {
+      "parameters": {
+        "segment_size_px": 100,
+        "hue_tolerance_pct": 0.06,
+        "detect_color": "#19FFD9"
+      },
+      "type": "color_detector",
+      "name": "green_detector"
+    }
+  ]
+}
 
 ![A screenshot of the Vision Service configuration on the SERVICES sub-tab of the CONFIG tab. The attributes field has been populated with raw JSON identical to that in the copy-pasteable JSON field below.](/tutorials/img/webcam-line-follower/lf-vis-config.png)
 
@@ -120,7 +134,7 @@ Raw JSON:
 This step is optional, but if you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
-In the **CONFIG** tab, make a new component with name `show_detections`, type `camera` and model `transform`.
+In the **config** tab, make a new component with name `show_detections`, type `camera` and model `transform`.
 Set the `stream` to `"color"` and set the `source` to `"my_camera"` or whatever you named your webcam.
 
 You'll need to edit the `pipeline` section as well with `type` set to `"detections"`, and `detector_name` set to the name of your color detector (`"green_detector"` in our case).
@@ -142,7 +156,7 @@ You can paste the following into the **Attributes** section of the `show_detecti
 }
 ```
 
-If you save the config and go to the **CONTROL** tab, you should now be able to view the camera feed with color detector overlays superimposed on the image.
+If you save the config and go to the **control** tab, you should now be able to view the camera feed with color detector overlays superimposed on the image.
 
 ![A screenshot of the CONTROL tab showing the base card with the show_detections transform camera stream displayed. A green line crosses the left portion of the camera image, and a red box around it is labeled "cyan: 1.00".](/tutorials/img/webcam-line-follower/bounding.png)
 
@@ -308,7 +322,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
 3. Open a file in your favorite IDE and paste in [the code from the earlier referenced repo](https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py).
 4. Adjust the component names to match the component names you created in your config file.
    In this case, the component names that you may need to change are **scuttlebase**, **my_camera**, and **green_detector**.
-5. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **CODE SAMPLE** tab.
+5. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **code sample** tab.
    Find the Python SDK field and copy the robot address (which will likely have the form <file>robotName-main.1234abcd.local.viam.cloud:8080</file>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file.
    This allows your code to connect to your robot.
 
@@ -332,7 +346,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
 
 1. Go to your robot’s page on [the Viam app](https://app.viam.com/).
    Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, "Live."
-2. Go to the **CONTROL** tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around.
+2. Go to the **control** tab and try viewing the camera and also  pressing buttons in the Base section to move your robot around.
    Ensure that the base moves as expected.
    If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.
 
@@ -342,7 +356,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
    Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
    Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
 4. Set your robot on the line such that the line appears in the front of the camera’s view.
-   Verify that the camera sees the line by viewing the camera feed on the **CONTROL** tab of the robot page.
+   Verify that the camera sees the line by viewing the camera feed on the **control** tab of the robot page.
    <img src="/tutorials/img/webcam-line-follower/lf-cam-view6.png" alt="The camera view in the control tab on the robot page" width="600" />
 5. In a terminal window, SSH to your Pi by running:
 
@@ -367,7 +381,7 @@ The robot should continue moving along the line until it no longer sees the colo
 ## Summary
 
 By now you have learned how to configure a wheeled base and camera with Viam.
-You have access to the **CONTROL** tab from which you can drive your rover around with WASD keys.
+You have access to the **control** tab from which you can drive your rover around with WASD keys.
 You have learned to use the Viam Vision Service color detector, which can be useful in many other projects.
 You have a rover following a path of your choice, anywhere you want it to go!
 

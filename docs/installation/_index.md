@@ -54,9 +54,9 @@ Once you have a compatible operating system on your computer, you are ready to i
 
 1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots#add-a-new-robot).
    If this is your first time using the Viam app, you first need to create an account.
-2. Click the **SETUP** tab on your robot page.
+2. Click the **setup** tab on your robot page.
 3. Select the **Mode** and **Architecture** settings for your device.
-4. Follow the steps on the **SETUP** tab to install `viam-server`.
+4. Follow the steps on the **setup** tab to install `viam-server`.
    Also detailed in [Detailed Installation Instructions](#detailed-installation-instructions).
 
 ### Detailed Installation Instructions
@@ -69,7 +69,7 @@ The AppImage is a single, self-contained binary that runs on any Linux system (e
 
 1. **Download the Viam app config to your computer.** `viam-server` uses this config file to connect to app.viam.com.
    This connection allows the robot to pull its full configuration information and allows you to monitor and control your robot from the Viam app.
-   Download your robot's config file from the **SETUP** tab of your robot on the Viam app. </li>
+   Download your robot's config file from the **setup** tab of your robot on the Viam app. </li>
 
 <!-- The below has to be in HTML because we're using a table inside another table with indentation-->
 <ol start="2">
@@ -123,7 +123,7 @@ If you do not want to run `viam-server` as a service, you can also [run it manua
 </li>
 </ol>
 
-3. **Connect and configure.** Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
+3. **Connect and configure.** Go to the **setup** page on the Viam app and wait for confirmation that your robot has successfully connected.
 
 {{% /tab %}}
 {{% tab name="macOS"%}}
@@ -138,7 +138,7 @@ If you do not want to run `viam-server` as a service, you can also [run it manua
 
 2. **Download the Viam app config to your Mac.** `viam-server` uses this config file to connect to app.viam.com.
    This connection allows the robot to pull its full configuration information and allows you to monitor and control your robot from the Viam app.
-   Download your robot's config file from the **SETUP** tab of your robot on the Viam app.
+   Download your robot's config file from the **setup** tab of your robot on the Viam app.
 
 3. **Start `viam-server` on your Mac.** Run viam-server locally on your Mac with the config you just downloaded.
    Replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
@@ -147,7 +147,7 @@ If you do not want to run `viam-server` as a service, you can also [run it manua
    viam-server -config ~/Downloads/viam-<YOUR_ROBOT_NAME>-main.json
    ```
 
-4. **Connect and configure.** Go to the **SETUP** page on the Viam app and wait for confirmation that your robot has successfully connected.
+4. **Connect and configure.** Go to the **setup** page on the Viam app and wait for confirmation that your robot has successfully connected.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -168,7 +168,7 @@ sudo ./viam-server -config myconfig.json
 #### Start automatically on boot
 
 If you install `viam-server` as a system service, `viam-server` starts automatically every time you boot your device.
-Note that this is the default way `viam-server` is set up if you follow the **SETUP** tab instructions on the [Viam app](https://app.viam.com).
+Note that this is the default way `viam-server` is set up if you follow the **setup** tab instructions on the [Viam app](https://app.viam.com).
 
 For this setup your configuration file must be at <file>/etc/viam.json</file>.
 

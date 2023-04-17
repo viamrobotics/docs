@@ -12,7 +12,7 @@ The `fake` encoder is an encoder model for testing code without any hardware.
 {{< tabs name="Configure an fake encoder" >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+On the **Components** subtab, navigate to the **Create Component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `fake` model.
 
 <img src="../img/create-fake.png" alt="Creation of a fake encoder in the Viam app config builder." style="max-width:600px" />

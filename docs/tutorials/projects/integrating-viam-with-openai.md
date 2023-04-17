@@ -145,7 +145,7 @@ pip install -r requirements.txt
 ```
 
 Finally, you will need both Viam robot credentials and OpenAI API credentials in order to run the software.
-Viam credentials can be copied from the **CODE SAMPLE** tab on your [Viam robot page](https://app.viam.com).
+Viam credentials can be copied from the **code sample** tab on your [Viam robot page](https://app.viam.com).
 To acquire OpenAI credentials, [sign up for OpenAI](https://openai.com/api/) and [set up API keys](https://platform.openai.com/account/api-keys).
 
 Once you have both of the credentials, create a file called `run.sh`, add the following, and update the credentials within:
@@ -174,7 +174,7 @@ Now that we've set up the rover by attaching the servo and making the tutorial s
 
 ### 1. Configure the servo
 
-To configure your [servo](/components/servo), go to your rover's **CONFIG** page, scroll to the bottom and create a new instance of the `servo` component.
+To configure your [servo](/components/servo), go to your rover's **config** page, scroll to the bottom and create a new instance of the `servo` component.
 Name it `servo1` (or something else if you prefer, but then you will need to update references to it in the tutorial code).
 
 Since you've attached your servo to a Raspberry Pi, choose the model `pi`.
@@ -191,7 +191,7 @@ Now, in the panel for *servo1*, add the following configuration in attributes to
 ```
 
 `viam-server` will now make the servo available for use.
-Click on the **CONTROL** tab.
+Click on the **control** tab.
 You should see a panel for `servo1`.
 From there, you can change the angle of your servo by increments of 1 or 10 degrees.
 
@@ -204,7 +204,7 @@ We found that if set up this way, the following positions accurately show the co
 
 ### 2. Configure the Vision Service and classifier
 
-Click the **CONFIG** tab and then the **SERVICES** subtab.
+Click the **config** tab and then the **Services** subtab.
 From there, scroll to the bottom and create a new service of **type** `vision` named 'vision'.
 
 <img src="../../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the Vision Service." title="Adding the Vision Service." width="500" />

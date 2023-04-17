@@ -18,7 +18,7 @@ You cannot specify both a height and width.
 {{< tabs name="Configure a Fake Camera" >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+On the **Components** subtab, navigate to the **Create Component** menu.
 Enter a name for your camera, select the type `camera`, and select the `fake` model.
 
 <img src="../img/create-fake.png" alt="Creation of a join color depth view in the Viam app config builder." style="max-width:600px" />
@@ -54,7 +54,7 @@ The following attributes are available for fake cameras:
 
 ## View the camera stream
 
-Once your camera is configured, go to the **CONTROL** tab, and click on the camera's dropdown menu.
+Once your camera is configured, go to the **control** tab, and click on the camera's dropdown menu.
 Then toggle the camera or the Point Cloud Data view to ON.
 You will see the live video feed from your camera.
 You can change the refresh frequency as needed to change bandwidth.

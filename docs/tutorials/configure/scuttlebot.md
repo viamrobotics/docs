@@ -23,13 +23,13 @@ Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/
 ## Start configuring your robot
 
 1. Go to [the Viam app](https://app.viam.com).
-2. If you already created your robot in the app, navigate to its **CONFIG** tab and skip to [Configuring the board](#configuring-the-board).
+2. If you already created your robot in the app, navigate to its **config** tab and skip to [Configuring the board](#configuring-the-board).
 3. Create an **Organization**.
    If you already have an Organization, then this step is optional.
    If you need help with organizations and locations, see our [guide to using the Viam app](/manage/fleet/).
 4. Create a **Location**.
    If you already have a Location, then this step is optional.
-5. Create a **robot** and navigate to its **CONFIG** tab.
+5. Create a **robot** and navigate to its **config** tab.
    We will stay in **Builder** mode for this tutorial (as opposed to **Raw JSON**).
    ![A screenshot of the Viam app UI showing the CONFIG tab of a robot.](../../img/scuttlebot/createcomponent.png)
 
@@ -96,13 +96,13 @@ The next step is to add a motor and make it spin a wheel.
 {{% /expand %}}
 
 {{% alert title="Note" color="note" %}}
-If your wheel turns in reverse when it should turn forward, add the `dir_flip` attribute (found by clicking **SHOW OPTIONAL**) and set it to "true."
+If your wheel turns in reverse when it should turn forward, add the `dir_flip` attribute (found by clicking **Show more**) and set it to "true."
 {{% /alert %}}
 
 ### Testing the motor configuration
 
 Having configured a board and a motor component, you can now actuate your motor.
-Save the config by clicking **SAVE CONFIG** at the bottom of the page, then click over to the **CONTROL** tab.
+Save the config by clicking **Save config** at the bottom of the page, then click over to the **control** tab.
 
 Here you'll see a panel for the right `motor`.
 You'll use this panel to set the motor's `power` level.
@@ -157,7 +157,7 @@ This will be similar to adding the right motor.
 
 {{% /expand %}}
 
-With both motors configured, the **CONTROL** tab now display panels for both motors:
+With both motors configured, the **control** tab now display panels for both motors:
 
 <img src="../../img/scuttlebot/scuttle-bothmotors.png" alt="Motor panels">
 
@@ -169,7 +169,7 @@ Don't worry if your motor panels are not adjacent.
 It's time to configure a [base component](/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
 Configuring a base component will give you a nice UI for moving the rover around.
 
-From the **CONFIG** tab:
+From the **config** tab:
 
 1. Give your base a name.
 2. Enter "base" in **Type**.
@@ -193,7 +193,7 @@ The attributes of your base component's config should look something like this:
 }
 ```
 
-When you save the config and switch to the **CONTROL** tab, you'll see new control buttons for the base.
+When you save the config and switch to the **control** tab, you'll see new control buttons for the base.
 In the **Keyboard** tab, toggle your keyboard control to active.
 Use **W** and **S** to go forward and back, and **A** and **D** to arc and spin.
 
@@ -291,7 +291,7 @@ Now, you'll see the config panel for the camera component:
 On the camera config panel, set the `video_path`.
 This is often "video0," you can see our [camera configuration tutorial](/components/camera/webcam) for more information on choosing the correct video path.
 
-Once you save the config, you'll be able to see your camera's stream in the **CONTROL** tab.
+Once you save the config, you'll be able to see your camera's stream in the **control** tab.
 
 ## On completion
 

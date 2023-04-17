@@ -27,7 +27,7 @@ pip3 install opencv-python
    Do not hold the image in the air with your hands or tape it to a textured surface such as a textured wall, cardboard, or folder.
 2. Take images of the checkerboard with your camera from various angles and distances that show the entire image, including the edges.
    Ensure the image is well and thoroughly lit to avoid distortions affecting the vision algorithms.
-   You can use the **Export Screenshot** button on the camera panel of your robot's **CONTROL** tab in the [Viam app](https://app.viam.com).
+   You can use the **Export Screenshot** button on the camera panel of your robot's **control** tab in the [Viam app](https://app.viam.com).
    Save between 10 - 15 images (see [examples](https://github.com/viam-labs/camera-calibration#example-images)).
 
    {{< alert title="Note" color="note" >}}
@@ -60,7 +60,7 @@ pip3 install opencv-python
    }
    ```
 
-5. Copy the output which contains the `intrinsic_parameters` and `distortion_parameters` into the Raw JSON config on your robot's **CONFIG** tab.
+5. Copy the output which contains the `intrinsic_parameters` and `distortion_parameters` into the Raw JSON config on your robot's **config** tab.
 
 <img src="../img/camera_tutorial_copy_paste.png" width="800px">
 
