@@ -195,6 +195,12 @@ At this point, your complete configuration should look like:
 
   ``` json
   {
+    "modules": [
+      {
+        "executable_path": "/usr/local/bin/rplidar-module",
+        "name": "rplidar_module"
+      }
+    ],
     "components": [
       {
         "namespace": "rdk",
@@ -222,18 +228,12 @@ At this point, your complete configuration should look like:
             "max_range": "12"
           },
           "port": "localhost:8083",
-          "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR<",
+          "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
           "delete_processed_data": false
         },
         "model": "cartographer",
         "name": "run-slam",
         "type": "slam"
-      }
-    ],
-    "modules": [
-      {
-        "executable_path": "/Users/<YOUR_USERNAME>/rplidar/bin/rplidar-module",
-        "name": "rplidar_module"
       }
     ]
   }
