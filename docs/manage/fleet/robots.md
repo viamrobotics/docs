@@ -7,7 +7,7 @@ description: "A robot is an organizational concept, consisting of either one or 
 tags: ["fleet management", "cloud", "app"]
 ---
 
-A robot is an organizational concept, consisting of either one _part_, or multiple _parts_ working closely together to complete tasks.
+A robot is an organizational concept, consisting of either one <em>{{< glossary_tooltip term_id="part" text="part" >}}</em>, or multiple _parts_ working closely together to complete tasks.
 The robot represents the configuration and entry point for one or more computers (and the components they control) coupled into one logical grouping of parts that work together to complete tasks.
 A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor.
 A robot always has a main part that receives client requests, and any number of other parts.
@@ -22,15 +22,11 @@ Click the name of a robot to go to that robot's page, where you'll find a variet
 
 ## Navigating the robot page
 
-The banner at the top of the robot page displays the robot's location, name, and a drop down list of all parts of that robot.
-The first part you create is the _main part_ but you can create additional parts in the drop down.
-
-![The robot page for an example robot with the parts drop down open.](../../img/app-usage/part-drop-down.png)
-To delete a part or make it the main part, use the buttons in the top right of the **CONFIG** tab.
-
-![The CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons.](../../img/app-usage/part-mgmt.png)
+The banner at the top of the robot page displays the robot's location, name, and a drop down list of all {{< glossary_tooltip term_id="part" text="parts" >}} of that robot.
 
 If you've connected your robot to a machine running `viam-server`, the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
+
+??
 
 For each robot in your fleet, you start by setting up the robot on the **SETUP** tab:
 
@@ -46,7 +42,7 @@ More in-depth information on installing `viam-server` can be found in our [Insta
 
 ### Configuration
 
-After connecting your robot, go to the **CONFIG** tab, and start adding robot {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other robot resources.
+After connecting your robot, go to the **CONFIG** tab, and start adding robot {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other {{< glossary_tooltip term_id="resource" text="robot resources" >}}.
 
 For more information, see the [configuration documentation](../../configuration/#the-config-tab).
 
@@ -56,12 +52,23 @@ If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fra
 
 ### Logs
 
-Each robot automatically sends logs to the cloud which you can view on the **LOGS** tab.
+To make debugging issues with your robots easier, each robot automatically sends its logs to the cloud.
+You can access your logs from the **LOGS** tab in the [Viam app](https://app.viam.com) and filter your logs for specific keywords or log levels:
+
+{{<gif webm_src="../../img/log-filtering.webm" mp4_src="../../img/log-filtering.mp4" alt="Filter logs by term of log level in the UI">}}
+
+You can also change your timestamp format to ISO or Local depending on your preference.
 
 ### History
 
 The configuration of your robot and the code it runs are kept separate to make debugging easier.
-The **HISTORY** tab shows a timestamped diff view of your robot's configuration changes.
+The **HISTORY** tab shows timestamped changes to your robot's configuration.
+
+If you want to revert changes that you made, you can load a previous configuration by clicking the **LOAD CONFIG** button next to the respective configuration.
+
+{{<gif webm_src="../../img/load-prev-config.webm" mp4_src="../../img/load-prev-config.mp4" alt="Load a previous config from the UI">}}
+
+You can also change your timestamp format to ISO or Local depending on your preference.
 
 ### Code Sample
 
@@ -82,12 +89,14 @@ If you have configured a camera component, a window in the **CONTROL** tab displ
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
 For local communication between [parts](../../parts-and-remotes#robot-parts) Viam uses gRPC or WebRTC.
 
+![Example Camera view inside Viam app](/components/camera/img/example_camera_image.png)
+
 ### Security
 
 Your robot and the Viam app communicate securely by using unique secrets.
 The **SECURITY** tab allows you to access and change the **Robot Part Secret Keys** of your robot.
 
-![The SECURITY tab of a robot`s page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](../../img/app-usage/robot-part-secret-keys-drop-down.png)
+![The SECURITY tab of a robot`s page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](../../img/app-usage/robot-secrets.png)
 
 Copy the secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
