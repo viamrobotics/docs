@@ -63,7 +63,7 @@ Now, add the `cartographer` service:
 {{% tab name="Config Builder" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **CONFIG** tab on your robot's page, and click on the **SERVICES** subtab.
+Navigate to the **config** tab on your robot's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `cartographer`, and a name of your choice:
 
@@ -89,7 +89,7 @@ Paste the following into the **Attributes** field of your new service:
 {{% tab name="JSON Template" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **CONFIG** tab.
+Navigate to the **config** tab.
 Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing Rplidar configuration:
 
 ```json
@@ -170,7 +170,7 @@ If this directory structure is not present at runtime, the SLAM Service creates 
 {{% tab name="Config Builder" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **CONFIG** tab on your robot's page, and click on the **SERVICES** subtab.
+Navigate to the **config** tab on your robot's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `cartographer`, and a name of your choice:
 
@@ -195,7 +195,7 @@ Paste the following into the **Attributes** field of your new service:
 {{% tab name="JSON Template" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **CONFIG** tab.
+Navigate to the **config** tab.
 Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing configuration:
 
 ``` json
@@ -329,7 +329,7 @@ Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in as
 
 ## View the Map
 
-After saving your config, head over to the **CONTROL** tab and click on the drop-down menu matching the `name` of the service you created.
+After saving your config and connecting to your robot, navigate to the **control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
 
 Change the **Refresh frequency** to your desired frequency.
 If in Live Data mode, move your Rplidar around slowly.
@@ -341,6 +341,11 @@ Keep moving the camera slowly within your space and wait for the map to visualiz
 {{% /alert %}}
 
 ## Troubleshooting
+
+### Tip: Lidar Mounting for the Viam Rover
+
+If you have a Viam Rover and need a mount for your RPLidar, you can 3D print an adapter plate.
+The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/VR1-22-A001/blob/master/CAD/RPIidar_adapter.STL).
 
 ### Known Issues
 
