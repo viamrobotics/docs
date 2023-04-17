@@ -394,7 +394,7 @@ viam-server -config <path-to-config>.json
 {{% /tab %}}
 {{< /tabs >}}
 
-To run `viam-server` as a system service, see [Installing as a System Service](/installation/install/linux-install/#installing-as-a-system-service).
+To run `viam-server` as a system service, see [Start automatically on boot](/installation/#start-automatically-on-boot).
 
 ## Next Steps
 
