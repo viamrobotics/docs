@@ -21,10 +21,33 @@ The credentials look like this:
 "secret":"ab0cd0efghijkl0m12no3pqrstuvw0xyza4bcd567891abcd"}}
 ```
 
-When you turn on your robot, `viam-server` starts up and uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the [Viam app](https://app.viam.com).
+When you turn on your robot, `viam-server` starts up and, by default, it uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the [Viam app](https://app.viam.com).
 Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.
 The robot checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
 All communication happens securely over HTTPS using secret tokens that are in a robot's configuration.
+
+{{< alert title="Tip" color="tip" >}}
+You can also store your config file in another location.
+To use such a config file, pass in the path to the config when you start `viam-server`:
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo viam-server -config <path-to-config>.json
+```
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam-server -config <path-to-config>.json
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< /alert >}}
 
 After you have completed the setup steps and successfully connected to your robot, go to the **CONFIG** tab to start adding to the configuration.
 
@@ -335,15 +358,41 @@ Save the file at <file>/etc/viam.json</file> or another location.
 
 Then start `viam-server`:
 
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo viam-server
 ```
 
-If you have stored your config file at a location different from the default location (<file>/etc/viam.json</file>), pass in the path to the config:
+{{% /tab %}}
+{{% tab name="macOS" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo viam-server -config config.json
+viam-server
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+If you have stored your config file at a location different from the default location (<file>/etc/viam.json</file>), pass in the path to the config:
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo viam-server -config <path-to-config>.json
+```
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam-server -config <path-to-config>.json
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 To run `viam-server` as a system service, see [Installing as a System Service](/installation/install/linux-install/#installing-as-a-system-service).
 

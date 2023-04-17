@@ -640,6 +640,10 @@ td > ul, td > ol {
 
 /* START TAB CSS consistency */
 
+.nav-tabs {
+  border-bottom: unset;
+}
+
 .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
   border-color: black black white;
 }
@@ -666,6 +670,8 @@ td > ul, td > ol {
   padding-top: .7rem;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+  margin-top: 1px;
+  background-color: white;
 }
 
 /* END TAB CSS consistency */
