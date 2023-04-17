@@ -46,7 +46,7 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
 
 1. Physically connect the Rplidar to your machine.
 2. Go to your robot's page on the [Viam app](https://app.viam.com/).
-3. In the **CONFIG** tab, select **Raw JSON** mode.
+3. In the **config** tab, select **Raw JSON** mode.
 4. Copy the following configuration code for your Rplidar device.
   Paste it into the **Raw JSON** block:
 
@@ -55,6 +55,12 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
 
   ```json
   {
+    "modules": [
+      {
+        "executable_path": "/usr/local/bin/rplidar-module",
+        "name": "rplidar-module"
+      }
+    ],
     "components": [
       {
         "namespace": "rdk",
@@ -62,12 +68,6 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
         "depends_on": [],
         "model": "viam:lidar:rplidar",
         "name": "rplidar"
-      }
-    ],
-    "modules": [
-      {
-        "executable_path": "/usr/local/bin/rplidar-module",
-        "name": "rplidar-module"
       }
     ]
   }
@@ -78,6 +78,12 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
 
   ```json
   {
+    "modules": [
+      {
+        "executable_path": "/usr/local/bin/rplidar-module",
+        "name": "rplidar_module"
+      }
+    ],
     "components": [
       {
         "namespace": "rdk",
@@ -89,12 +95,6 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
         },
         "name": "rplidar"
       }
-    ],
-    "modules": [
-      {
-        "executable_path": "/usr/local/bin/rplidar-module",
-        "name": "rplidar_module"
-      }
     ]
   }
   ```
@@ -104,7 +104,7 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
 
 5. Save the config.
 
-Check the **LOGS** tab of your robot in the Viam app to make sure your Rplidar has connected and no errors are being raised.
+Check the **logs** tab of your robot in the Viam app to make sure your Rplidar has connected and no errors are being raised.
 
 ## Troubleshooting
 

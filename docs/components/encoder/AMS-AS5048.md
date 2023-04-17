@@ -39,7 +39,7 @@ Now you can configure the encoder:
 {{< tabs name="Configure an AMS-AS5048 Encoder" >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+On the **Components** subtab, navigate to the **Create Component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
 
 <img src="../img/create-am5.png" alt="Creation of an AS5048 encoder in the Viam app config builder." style="max-width:600px" />

@@ -26,7 +26,7 @@ This tutorial demonstrates option two, using [this robot dog kit and its open so
 </div>
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
-You will also be able to use the **CONTROL** tab in the Viam app to remotely drive the dog around using your keyboard while viewing the camera feed.
+You will also be able to use the **control** tab in the Viam app to remotely drive the dog around using your keyboard while viewing the camera feed.
 You’ll learn to implement a custom component type in Viam, and you’ll be equipped to implement other sorts of custom components in the future for whatever robots you dream up.
 
 ## Code used in this tutorial
@@ -241,8 +241,8 @@ The <file>python_server.py</file> file creates an RPC server that forwards {{< g
 You need to tell your robot how to access the custom component server you created.
 This is accomplished by configuring the custom component server as a *remote*.
 
-Back over on the [Viam app](https://app.viam.com), go to your robot's **CONFIG** tab.
-Click the **REMOTES** sub-tab.
+Back over on the [Viam app](https://app.viam.com), go to your robot's **config** tab.
+Click the **Remotes** sub-tab.
 Name your remote "my-custom-base" and click **Create Remote**.
 In the **Address** field put `localhost: 9090`.
 Click **Save Config** at the bottom of the page.
@@ -259,7 +259,7 @@ If you want to use a different host or port, pass it as a parameter to the serve
 ## Configure the components
 
 Now that the custom base code is set up, you need to configure all your hardware components.
-Navigate to the **COMPONENTS** sub-tab of the **CONFIG** tab.
+Navigate to the **Components** sub-tab of the **config** tab.
 
 ### Configure the base
 
@@ -293,7 +293,7 @@ You have two options for starting the servers: automatic or manual.
 
 ### Option 1: Configure processes to automatically start the servers on boot
 
-Click the **PROCESSES** sub-tab of the **CONFIG** tab.
+Click the **Processes** sub-tab of the **config** tab.
 
 Create a new process and give it a name (for example "1st").
 Once configured, this process will start the Freenove robot dog server so it is ready to receive commands from the custom component server.
@@ -369,7 +369,7 @@ python python_server.py
 
 ## Driving the robot from the Viam app
 
-Navigate to the **CONTROL** tab.
+Navigate to the **control** tab.
 
 Click the **my-custom-base:my-robot-dog** component panel to expand it and reveal the controls.
 
@@ -420,7 +420,7 @@ If you have otherwise unexplained connection errors, try powering things off and
 
 In this tutorial you learned how to implement a custom component model and control it using the Viam app.
 You learned about configuring remotes and processes.
-You drove the robot dog around using the Viam **CONTROL** tab.
+You drove the robot dog around using the Viam **control** tab.
 
 To add more functionality, try defining more of the base API methods for this model.
 You could also use the Viam [Vision Service](/services/vision/) with the robot dog's [camera component](/components/camera/).

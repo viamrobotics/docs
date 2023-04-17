@@ -23,7 +23,7 @@ Your `single_stream` camera can output:
 {{< tabs name="Configure a single Stream Camera" >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+On the **Components** subtab, navigate to the **Create Component** menu.
 Enter a name for your camera, select the type `camera`, and select the `single_stream` model.
 
 <img src="../img/create-single-stream.png" alt="Creation of a single stream camera in the Viam app config builder." style="max-width:500px" />

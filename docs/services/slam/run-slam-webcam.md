@@ -78,7 +78,7 @@ Follow these tutorials to connect and calibrate your webcam as a modular compone
 #### Step 2: Add ORB-SLAM3 as a SLAM Service in Live Mode
 
 * Go to your robot's page on the [Viam app](https://app.viam.com/).
-* On the **CONFIG** tab, click the **SERVICES** sub tab.
+* On the **config** tab, click the **Services** sub tab.
 * Create a service with type `slam`, a name (example: `run-slam`) and a model (`orbslamv3`).
 * Paste the following into the **Attributes** field of the SLAM Service:
 
@@ -105,7 +105,7 @@ Follow these tutorials to connect and calibrate your webcam as a modular compone
 ```
 
 {{%expand "Click here if you prefer to use raw JSON mode" %}}
-In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
+In the **config** tab, click on "Raw JSON", and copy/paste the following configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
   "services": [
@@ -219,7 +219,7 @@ At this point, your complete configuration should look like:
 }
 ```
 
-* Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-slam`).
+* Head over to the **control** tab and click on the drop-down menu for the service you created (example: `run-slam`).
 * Change the **Refresh frequency** to your desired frequency, move the webcam around slowly, and watch a map start to appear.
 
 {{% alert title="Note" color="note" %}}
@@ -270,7 +270,7 @@ To enable offline mode, set the `use_live_data` flag to `false`.
 This tells the service to use only data found within the `data_dir` directory specified in your config while running SLAM.
 
 * In your web browser, navigate to the robot you set up on the Viam app ([https://app.viam.com](https://app.viam.com)).
-* In the **CONFIG** tab, click on "Raw JSON", and copy/paste the following configuration:
+* In the **config** tab, click on "Raw JSON", and copy/paste the following configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -306,7 +306,7 @@ This tells the service to use only data found within the `data_dir` directory sp
   * To find the home directory path for the logged-in user, run `echo $HOME` in your terminal.
 
 * Save the config.
-* Head over to the **CONTROL** tab and click on the drop-down menu for the service you created (example: `run-offline-slam`).
+* Head over to the **control** tab and click on the drop-down menu for the service you created (example: `run-offline-slam`).
 * Change the **Refresh frequency** to your desired frequency, move the webcam around slowly, and watch a map start to appear.
 
 {{% alert title="Note" color="note" %}}

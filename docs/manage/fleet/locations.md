@@ -15,7 +15,7 @@ tags: ["fleet management", "cloud", "app"]
 ### Add a location
 
 When you create a new organization, Viam automatically creates a new location for you.
-You can create additional locations by typing a new location name in the **New Location** field in the left side navigation bar on the ]**FLEET** page](https://app.viam.com/robots) and clicking **ADD**.
+You can create additional locations by typing a new location name in the **New Location** field in the left side navigation bar on the ]**FLEET** page](https://app.viam.com/robots) and clicking **Add**.
 
 Click a location's name to display the list of robots associated with that location.
 
@@ -25,11 +25,11 @@ To create a sub-location you must first create the sub-location as a location an
 
 1. Create a location and add at least one robot to it.
 2. At the bottom of the location's page, use the **New Parent Location** drop-down to choose a parent location.
-3. Click **CHANGE**.
+3. Click **Change**.
 
 You can nest locations up to three levels deep.
 
-To move a sub-location to the top level of locations, select **Root** from the **New Parent Location** drop-down and then click **CHANGE**.
+To move a sub-location to the top level of locations, select **Root** from the **New Parent Location** drop-down and then click **Change**.
 
 ### Share a location
 
@@ -84,9 +84,9 @@ After generating a new secret key, update all references to the key in your code
 #### Share a location with Viam Support
 
 If you request support, you must share your location with the Viam Support team.
-To do so, navigate to the location you need support with and click, **ADD VIAM SUPPORT**.
+To do so, navigate to the location you need support with and click, **Add Viam support**.
 
-Once you have received support, you can remove Viam Support from your location by clicking **REMOVE VIAM SUPPORT**.
+Once you have received support, you can remove Viam Support from your location by clicking **Remove Viam support**.
 
 ### Delete a location
 
