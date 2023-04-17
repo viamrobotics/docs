@@ -32,7 +32,7 @@ A location is a virtual grouping of robots that allows you to organize robots an
 
 ![An image of two locations, New York, and Chicago, in one organization, Good Robots](../img/locations.png)
 
-For information on location and how to manage locations, see [Locations](locations).
+For information on locations and how to manage them, see [Locations](locations).
 
 ## Organization
 
