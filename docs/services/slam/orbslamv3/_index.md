@@ -148,8 +148,8 @@ Whether mapping data is present in <file>data_dir/map</file> at runtime and the 
 | Mode | Description | Runtime Dictation |
 | ---- | ----------- | ------- |
 | PURE MAPPING | Generate a new map in file>/map</file>. | No map is found in <file>/map</file>. |
-| UPDATING | Update an existing map with new data. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes).|
-| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes). |
+| UPDATING | Update an existing map with new data. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes-and-config_params).|
+| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes-and-config_params). |
 
 {{% /tab %}}
 {{% tab name="/config" %}}
@@ -270,8 +270,8 @@ Whether mapping data is present in <file>data_dir/map</file> at runtime and the 
 | Mode | Description | Runtime Dictation |
 | ---- | ----------- | ------- |
 | PURE MAPPING | Generate a new map. | No map is found in <file>/map</file>. |
-| UPDATING | Update an existing map with new data. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes).|
-| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes). |
+| UPDATING | Update an existing map with new data. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes-and-config_params).|
+| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes-and-config_params). |
 
 {{% /tab %}}
 {{% tab name="/config" %}}
