@@ -44,8 +44,7 @@ await my_gripper.open()
 
 # Grab with the gripper and get whether it grabbed anything
 grabbed = await my_gripper.grab()
-print("Grabbed something?")
-print(grabbed)
+print(f"Grabbed an object: {grabbed}")
 ```
 
 {{% /tab %}}
@@ -161,7 +160,7 @@ Closes the gripper until it grabs something or closes completely, and returns wh
 
 **Returns:**
 
-- None
+- [(bool)](https://pkg.go.dev/builtin#bool): Whether or not the gripper grabbed something.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/index.html#viam.components.gripper.Gripper.grab).
 
@@ -203,7 +202,7 @@ grabbed, err := myGripper.Grab(context.TODO(), nil)
 
 ### Stop
 
-Stops the gripper (for example, if it is in the process of grabbing).
+Stops the gripper.
 It is assumed that the gripper stops immediately, so `IsMoving` will return false after calling `Stop`.
 
 {{< tabs >}}
@@ -290,7 +289,7 @@ print('Moving:', moving)
 
 **Returns:**
 
-- [(bool)](https://pkg.go.dev/builtin#bool): True if the gripper is currently moving.
+- [(bool)](https://pkg.go.dev/builtin#bool): If the gripper is currently moving.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
