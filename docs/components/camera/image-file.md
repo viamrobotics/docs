@@ -14,7 +14,7 @@ If you provide a depth image, as well as the intrinsic parameters of the camera 
 {{< tabs name="Configure an Image File Camera" >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+On the **Components** subtab, navigate to the **Create Component** menu.
 Enter a name for your camera, select the type `camera`, and select the `image_file` model.
 
 <img src="../img/create-image-file.png" alt="Creation of an image file camera in the Viam app config builder." style="max-width:500px" />

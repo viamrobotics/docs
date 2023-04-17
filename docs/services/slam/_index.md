@@ -81,7 +81,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ## Configuration
 
 You can configure your robot to use SLAM on [the Viam app](https://app.viam.com).
-Navigate to the **CONFIG** tab on your robot's page, and from there, navigate to the **SERVICES** subtab.
+Navigate to the **config** tab on your robot's page, and from there, navigate to the **Services** subtab.
 
 Add a service with type `slam`, whatever name you want, and the model of the library you want to use.
 
