@@ -26,7 +26,7 @@ The banner at the top of the robot page displays the robot's location, name, and
 
 If you've connected your robot to a machine running `viam-server`, the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
 
-??
+![The robot page with menu tabs](../../img/app-usage/robot-page.png)
 
 For each robot in your fleet, you start by setting up the robot on the **SETUP** tab:
 
