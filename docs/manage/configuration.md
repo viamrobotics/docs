@@ -317,14 +317,35 @@ If you run into issues, here are some things to try:
 
 ## Local Setup
 
-If you need to configure a robot that will never connect to the internet, you can manually create a local config file on your robot.
-Rather than following the steps on the Viam app **SETUP** tab to put config fetching credentials in that file, you'll need to paste the full raw JSON config for your robot into your robot's <file>/etc/viam.json</file> file.
+Configuring `viam-server` with the Viam app allows you to make use of the cloud features of Viam:
 
-You can write JSON manually, or you can use the Viam app's config builder (without connecting your robot to it) to generate JSON.
-Once you finish configuring in **Builder** mode, switch to **Raw JSON** and copy the entire raw JSON into your <file>/etc/viam.json</file>.
+- [Fleet Management](/manage/fleet/)
+- [Data Management](/manage/data/)
+- [Machine Learning](/manage/ml/)
+- [Motion Service](/services/motion/)
+- [Simultaneous Localization And Mapping (SLAM)](/services/slam/)
+- [Vision Service](/services/vision/)
 
-Technically, you can put your config file anywhere you want as long as when starting `viam-server`, you pass in the path to the config file.
-<file>/etc/viam.json</file> is just the default location.
+A locally configured robot, will not be able to access Viam's cloud features.
+If you are configuring a robot that can never connect to the internet, you can manually create a local full raw JSON config file on your robot.
+
+You can write the contents of this config file manually, or you can use the Viam app's config builder (without connecting your robot to it).
+Once you finish configuring your robot in the **Builder** mode, switch to **Raw JSON** and copy the entire raw JSON into your config file.
+Save the file at <file>/etc/viam.json</file> or another location.
+
+Then start `viam-server`:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo viam-server
+```
+
+If you have stored your config file at a location different from the default location (<file>/etc/viam.json</file>), pass in the path to the config:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo viam-server -config config.json
+```
+
+To run `viam-server` as a system service, see [Installing as a System Service](/installation/install/linux-install/#installing-as-a-system-service).
 
 ## Next Steps
 
