@@ -20,7 +20,7 @@ Measure from that point to the base of the arm to get the `"translation"` coordi
 {{< tabs name="Example Frame Configuration of Component attached to Static Surface" >}}
 {{% tab name="Config Builder" %}}
 
-To complete the frame configuration for your robot following this example, navigate to the **CONFIG** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `"myArm"`'s card, and click **Add Frame**:
+To complete the frame configuration for your robot following this example, navigate to the **config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `"myArm"`'s card, and click **Add Frame**:
 
 ![frame card example for this configuration](../img/frame_card_static.png)
 

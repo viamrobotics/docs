@@ -13,7 +13,7 @@ The `arduino` encoder requires configuring two pins on the board to which the en
 {{< tabs name="Configure an arduino Encoder" >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+On the **Components** subtab, navigate to the **Create Component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `arduino` model.
 
 <img src="../img/create-arduino.png" alt="Creation of an Arduino encoder in the Viam app config builder." style="max-width:600px" />

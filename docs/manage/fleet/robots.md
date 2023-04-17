@@ -14,9 +14,9 @@ A robot always has a main part that receives client requests, and any number of 
 
 ## Add a new robot
 
-Add a new robot by providing a name in the **New Robot** field and clicking **ADD ROBOT**.
+Add a new robot by providing a name in the **New Robot** field and clicking **Add robot**.
 
-![The 'First Location' page on the Viam app with a new robot name in the New Robot field and the ADD ROBOT button next to the field highlighted.](../../img/app-usage/create-robot.png)
+![The 'First Location' page on the Viam app with a new robot name in the New Robot field and the Add robot button next to the field highlighted.](../../img/app-usage/create-robot.png)
 
 Click the name of a robot to go to that robot's page, where you'll find a variety of tools for working with your robot.
 
@@ -26,17 +26,17 @@ The banner at the top of the robot page displays the robot's location, name, and
 The first part you create is the _main part_ but you can create additional parts in the drop down.
 
 ![The robot page for an example robot with the parts drop down open.](../../img/app-usage/part-drop-down.png)
-To delete a part or make it the main part, use the buttons in the top right of the **CONFIG** tab.
+To delete a part or make it the main part, use the buttons in the top right of the **config** tab.
 
 ![The CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons.](../../img/app-usage/part-mgmt.png)
 
 If you've connected your robot to a machine running `viam-server`, the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
 
-For each robot in your fleet, you start by setting up the robot on the **SETUP** tab:
+For each robot in your fleet, you start by setting up the robot on the **setup** tab:
 
 ### Setup
 
-The **SETUP** tab contains information for starting an instance of `viam-server` on your robot's computer.
+The **setup** tab contains information for starting an instance of `viam-server` on your robot's computer.
 
 Once you select the correct **Mode** and **Architecture** for your system in the upper left of the tab, follow the instructions on the page to connect and set up your robot.
 
@@ -46,7 +46,7 @@ More in-depth information on installing `viam-server` can be found in our [Insta
 
 ### Configuration
 
-After connecting your robot, go to the **CONFIG** tab, and start adding robot {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other robot resources.
+After connecting your robot, go to the **config** tab, and start adding robot {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other robot resources.
 
 For more information, see the [configuration documentation](../../configuration/#the-config-tab).
 
@@ -56,16 +56,16 @@ If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fra
 
 ### Logs
 
-Each robot automatically sends logs to the cloud which you can view on the **LOGS** tab.
+Each robot automatically sends logs to the cloud which you can view on the **logs** tab.
 
 ### History
 
 The configuration of your robot and the code it runs are kept separate to make debugging easier.
-The **HISTORY** tab shows a timestamped diff view of your robot's configuration changes.
+The **history** tab shows a timestamped diff view of your robot's configuration changes.
 
 ### Code Sample
 
-To start programming your robot, go to the **CODE SAMPLE** tab which contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
+To start programming your robot, go to the **code sample** tab which contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
 
 For more information on the SDKs, see [Program your Robot with Viam's SDKs](../../../program/sdk-as-client/).
 
@@ -75,9 +75,9 @@ There is also a JSON stub you can copy if you wish to have your robot communicat
 
 ### Control
 
-Once you have configured components and services for your robot, you can visually test and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com).
+Once you have configured components and services for your robot, you can visually test and remotely operate them from the **control** tab in the [Viam app](https://app.viam.com).
 For example, if you have configured a base with wheels, you can control your robot's movement with an arrow pad and fields to change base’s speed.
-If you have configured a camera component, a window in the **CONTROL** tab displays the camera output.
+If you have configured a camera component, a window in the **control** tab displays the camera output.
 
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
 For local communication between [parts](../../parts-and-remotes#robot-parts) Viam uses gRPC or WebRTC.
@@ -85,7 +85,7 @@ For local communication between [parts](../../parts-and-remotes#robot-parts) Via
 ### Security
 
 Your robot and the Viam app communicate securely by using unique secrets.
-The **SECURITY** tab allows you to access and change the **Robot Part Secret Keys** of your robot.
+The **security** tab allows you to access and change the **Robot Part Secret Keys** of your robot.
 
 ![The SECURITY tab of a robot`s page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](../../img/app-usage/robot-part-secret-keys-drop-down.png)
 
@@ -103,6 +103,6 @@ After generating a new secret key, remember that it's best practice to update al
 
 ### Delete a robot
 
-You can delete a robot by checking the **Sure?** box in the lower left of the robot page and clicking **DELETE ROBOT**.
+You can delete a robot by checking the **Sure?** box in the lower left of the robot page and clicking **Delete robot**.
 
 ![The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it.](../../img/app-usage/delete.png)

@@ -38,11 +38,11 @@ If you are running out of time during your rental, you can [extend your rover re
 
 ## Connect to your Viam Rover
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **CODE SAMPLE** tab, and copy the boilerplate code from the section labeled **Python** or **Go**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, and copy the boilerplate code from the section labeled **Python** or **Go**.
 
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>square.py</file> or <file>square.go</file> and paste the boilerplate code from the **CODE SAMPLE** tab of the Viam app into your file.
+Next, create a file named <file>square.py</file> or <file>square.go</file> and paste the boilerplate code from the **code sample** tab of the Viam app into your file.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
@@ -232,7 +232,7 @@ func main() {
 {{< /tabs >}}
 
 {{< alert title="Tip" color="tip" >}}
-If you are [renting your rover](https://app.viam.com/try), go to the **CONTROL** tab, and make sure you can monitor the camera feed from your rover.
+If you are [renting your rover](https://app.viam.com/try), go to the **control** tab, and make sure you can monitor the camera feed from your rover.
 {{< /alert >}}
 
 When you run your code, your robot moves in a square.

@@ -25,11 +25,11 @@ Using a fragment makes managing a fleet of multiple robots configured in the sam
 ## Add the Fragment
 
 Navigate to your robot in [the Viam app](https://app.viam.com/robots).
-On the  **CONFIG** tab, click on the **FRAGMENTS** subtab.
+On the  **config** tab, click on the **Fragments** subtab.
 
 ![Fragments tab inside the Viam app](../img/fragments/fragments_tab.png)
 
-On the **FRAGMENTS** tab, you can see the available fragments to add.
+On the **Fragments** tab, you can see the available fragments to add.
 Find `ViamRover202210b` and click `ADD` to add the fragment to your robot configuration.
 
 ![List of available fragments](../img/fragments/fragments_list.png)
@@ -72,7 +72,7 @@ The fragment adds the following components to your robot's JSON configuration:
 ## See the components on the configuration page
 
 Adding a fragment to your robot adds the configuration to your robot but it does not automatically fill your robot configuration page in the app with these components.
-It is normal for your **COMPONENTS** subtab on the builder view to be empty:
+It is normal for your **Components** subtab on the builder view to be empty:
 
 ![Builder Tab](../img/fragments/builder_tab.png)
 
@@ -80,7 +80,7 @@ Instead, your Raw JSON will reference the fragment in it.
 
 ![Raw JSON](../img/fragments/raw_json.png)
 
-If you want each component to show up in your **COMPONENTS** subtab so you can view or edit them, copy the entire configuration from the **FRAGMENTS** subtab, paste it into your Raw JSON section, and save your configuration.
+If you want each component to show up in your **Components** subtab so you can view or edit them, copy the entire configuration from the **Fragments** subtab, paste it into your Raw JSON section, and save your configuration.
 
 ## Next Steps
 

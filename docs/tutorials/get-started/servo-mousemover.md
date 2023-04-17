@@ -77,7 +77,7 @@ pip install viam-sdk
 
 ## Test the SDK with your robot
 
-On the [Viam app](https://app.viam.com), select the **CODE SAMPLE** tab, then confirm that **Python** is set as the default language.
+On the [Viam app](https://app.viam.com), select the **code sample** tab, then confirm that **Python** is set as the default language.
 
 ![A screenshot of the word Language with four boxes below it with Python, Golang, Typescript (Web), and Remotes in each one. Python has a black background with white text and a checkmark, the other three have white backgrounds with black text.](../../img/single-component-tutorials-servo-mousemover/choose-python.png)
 
@@ -106,7 +106,7 @@ Create a file using nano with the .py which is the python file extension, (name 
 nano anyname.py
 ```
 
-Paste the code you got from the **CODE SAMPLE** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
+Paste the code you got from the **code sample** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
 ![Raspberry Pi terminal showing the connect code from the previous example.](../../img/single-component-tutorials-servo-mousemover/sample-code.png)
 
@@ -139,13 +139,13 @@ Once you have the wires connected, attach the wheel/arm to servo and turn on the
 
 The servo is now physically connected to the Raspberry Pi, but the Viam app hasn't been told the details of which components/services it's using yet, so it's not able to control the servo.
 
-Go to the [Viam app](https://app.viam.com), and navigate to the **CONFIG** tab.
+Go to the [Viam app](https://app.viam.com), and navigate to the **config** tab.
 
 ![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box for a Name to be typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam. To the far right it says Model, but it's greyed out because none of the previous two fields have been filled in. Directly to the right of Model is a Create Component button that will create the component.](../../img/single-component-tutorials-servo-mousemover/new-component.png)
 
 ### Board component
 
-In the **CONFIG** tab, create a new component with the following attributes:
+In the **config** tab, create a new component with the following attributes:
 
 - **Name**: `local` - you can name this whatever you want, you will reference it later.
 - **Type**: `board`
@@ -192,7 +192,7 @@ If everything went well, the servo started to move.
   {{<gif webm_src="../../img/single-component-tutorials-servo-mousemover/its-alive.webm" mp4_src="../../img/single-component-tutorials-servo-mousemover/its-alive.mp4" alt="Small square .gif of black and white frankenstein clip with man with brown hair in lab coat frantically looking around and yelling while text that says \"IT'S ALIVE! IT'S ALIVE!\" is on screen. There's a very tall man with something on his head on a table behind him and another man sitting on a chair behind the table." max-width="400px">}}
 </div>
 
-Navigate to the **CONTROL** tab and press the **STOP** button on the servo card (matching what you named the servo) to stop the servo.
+Navigate to the **control** tab and press the **STOP** button on the servo card (matching what you named the servo) to stop the servo.
 
 <div class="td-max-width-on-larger-screens">
   {{<gif webm_src="../../img/single-component-tutorials-servo-mousemover/stop.webm" mp4_src="../../img/single-component-tutorials-servo-mousemover/stop.mp4" alt="Red square button with the word STOP on it with an animation of a finger mouse pointer clicking it." max-width="150px">}}

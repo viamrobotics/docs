@@ -15,7 +15,7 @@ Configure a `fake` base as follows:
 {{< tabs name="Configure a Fake Base" >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
+On the **Components** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
 Enter a name for your base, select the type `base`, and select the `fake` model.
 
 ![An example configuration for a fake base in the Viam app Config Builder.](../img/fake-base-ui-config.png)
