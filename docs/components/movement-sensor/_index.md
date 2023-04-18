@@ -109,8 +109,7 @@ Method Name | Description | Models That Support This Method
 [GetReadings](#getreadings) | Obtain the measurements/data specific to this sensor. | all models
 [DoCommand](#docommand) | Sends or receives model-specific commands. | all models
 
-In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor)
-or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#).
+In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor) or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#).
 
 ### GetPosition
 
