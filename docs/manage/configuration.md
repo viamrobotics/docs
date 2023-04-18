@@ -21,10 +21,33 @@ The credentials look like this:
 "secret":"ab0cd0efghijkl0m12no3pqrstuvw0xyza4bcd567891abcd"}}
 ```
 
-When you turn on your robot, `viam-server` starts up and uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the [Viam app](https://app.viam.com).
+When you turn on your robot, `viam-server` starts up and, by default, it uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the [Viam app](https://app.viam.com).
 Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.
 The robot checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
 All communication happens securely over HTTPS using secret tokens that are in a robot's configuration.
+
+{{< alert title="Tip" color="tip" >}}
+You can also store your config file in another location.
+To use such a config file, pass in the path to the config when you start `viam-server`:
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo viam-server -config <path-to-config>.json
+```
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam-server -config <path-to-config>.json
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< /alert >}}
 
 After you have completed the setup steps and successfully connected to your robot, go to the **config** tab to start adding to the configuration.
 
@@ -242,6 +265,18 @@ Fragments are a way of sharing and managing identical {{< glossary_tooltip term_
 For example, if you have multiple robots with the same hardware, wired the same way, you can create and share a fragment and add it to any number of robots.
 When changes are made to the fragment, those changes are automatically carried to all robots that include the fragment in their config.
 
+### Create a fragment
+
+To create your own private fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments) or click on **Fragments** in the left navigation bar on the [FLEET page](https://app.viam.com/robots).
+
+1. Enter a name for your new fragment and click **Add fragment**.
+2. Add the JSON configuration in the config field.
+3. Click **SAVE FRAGMENT**.
+
+![Fragment creation view](../img/fragment-view.png)
+
+### Add a fragment to a robot
+
 You can add a fragment to a robot's config and also add other configuration outside the fragment.
 For example, if you have multiple identical rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
 
@@ -253,7 +288,7 @@ To add a fragment to a robot:
 
 ![The fragments subtab](../img/fragments-tab.png)
 
-The components included in the fragment appear inside a read-only fragment section in the **Components** sub-tab.
+The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** sub-tab.
 
 ![A fragment in the components subtab](../img/fragment-components.png)
 
@@ -267,8 +302,6 @@ In the `Raw JSON` configuration, you will see the fragment ID in the `fragments`
   ]
 }
 ```
-
-To create your own fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments).
 
 For an example of adding a fragment to a robot, see the [Viam Rover fragment tutorial](/try-viam/rover-resources/rover-tutorial-fragments/).
 
@@ -317,14 +350,61 @@ If you run into issues, here are some things to try:
 
 ## Local Setup
 
-If you need to configure a robot that will never connect to the internet, you can manually create a local config file on your robot.
-Rather than following the steps on the Viam app **setup** tab to put config fetching credentials in that file, you'll need to paste the full raw JSON config for your robot into your robot's <file>/etc/viam.json</file> file.
+Configuring `viam-server` with the Viam app allows you to make use of the cloud features of Viam:
 
-You can write JSON manually, or you can use the Viam app's config builder (without connecting your robot to it) to generate JSON.
-Once you finish configuring in **Builder** mode, switch to **Raw JSON** and copy the entire raw JSON into your <file>/etc/viam.json</file>.
+- [Fleet Management](/manage/fleet/)
+- [Data Management](/manage/data/)
+- [Machine Learning](/manage/ml/)
+- [Motion Service](/services/motion/)
+- [Simultaneous Localization And Mapping (SLAM)](/services/slam/)
+- [Vision Service](/services/vision/)
 
-Technically, you can put your config file anywhere you want as long as when starting `viam-server`, you pass in the path to the config file.
-<file>/etc/viam.json</file> is just the default location.
+A locally configured robot, will not be able to access Viam's cloud features.
+If you are configuring a robot that can never connect to the internet, you can manually create a local full raw JSON config file on your robot.
+
+You can write the contents of this config file manually, or you can use the Viam app's config builder (without connecting your robot to it).
+Once you finish configuring your robot in the **Builder** mode, switch to **Raw JSON** and copy the entire raw JSON into your config file.
+Save the file at <file>/etc/viam.json</file> or another location.
+
+Then start `viam-server`:
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo viam-server
+```
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam-server
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+If you have stored your config file at a location different from the default location (<file>/etc/viam.json</file>), pass in the path to the config:
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo viam-server -config <path-to-config>.json
+```
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam-server -config <path-to-config>.json
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+To run `viam-server` as a system service, see [Start automatically on boot](/installation/#start-automatically-on-boot).
 
 ## Next Steps
 
