@@ -110,7 +110,7 @@ Note _where_ and _when_ you share a robot part secret key.
 After generating a new secret key, remember that it's best practice to update all references to the key in your code as soon as possible, even though Viam supports flexible key rotation with up to two keys in use at one time.
 {{% /alert %}}
 
-### Delete a robot
+## Delete a robot
 
 You can delete a robot by checking the **Sure?** box in the lower left of the robot page and clicking **Delete robot**.
 
