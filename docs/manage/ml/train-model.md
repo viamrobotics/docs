@@ -52,7 +52,7 @@ When you've tagged all the images click on the **TRAIN MODEL** button in the top
 A **Training** side menu opens.
 The model that you configure to be training will train on all images part of the current filter.
 
-1. Select **NEW MODEL**.
+1. Select **New Model**.
 2. Specify a **Model Name**.
 3. Select a **Classification Type**:
     - **Single Label**: predicts one label per image
@@ -65,7 +65,7 @@ The model that you configure to be training will train on all images part of the
 
 ![Train model menu](../img/train-model-menu.png)
 
-The model now starts training and you can follow its process in the **Training** section of the **MODELS** page.
+The model now starts training and you can follow its process in the **Training** section of the **Models** page.
 
 Once the model has finished training, it becomes visible in the **Models** section of the page.
 

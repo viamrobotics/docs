@@ -12,7 +12,7 @@ description: "Deploy Machine Learning models to a robot."
 
 The ML Models service allows you to deploy machine learning models to your robots.
 
-Navigate to your robot's [**CONFIG** tab](https://app.viam.com/robot) and click on the **SERVICES** subtab.
+Navigate to your robot's [**config** tab](https://app.viam.com/robot) and click on the **Services** subtab.
 
 Scroll to the bottom and create a new service with the **Type** `ml_models`.
 
@@ -43,7 +43,7 @@ The model package config looks like this:
 ## Use your ML Model
 
 To make use of your new model, use the Vision Service.
-Still on the **SERVICES** subtab add a new service with **Type** `Vision` and give it a name.
+Still on the **Services** subtab add a new service with **Type** `Vision` and give it a name.
 
 Create a [`tflite_classifier` classifier](../../services/vision/classification#tflite-classifier) by adding the following configuration in the new Vision Service panel.
 
@@ -88,9 +88,9 @@ To be able to interact with the Vision Service you must:
     }
     ```
 
-After adding the component and its attributes, click **SAVE CONFIG**.
+After adding the component and its attributes, click **Save config**.
 
-Wait for the robot to reload, and then go to the **CONTROL** tab to test the stream of detections.
+Wait for the robot to reload, and then go to the **control** tab to test the stream of detections.
 
 ![Model recognizes a star on camera feed](../img/model-on-camera.png)
 

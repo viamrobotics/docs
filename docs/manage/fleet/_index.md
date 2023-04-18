@@ -23,23 +23,20 @@ All communication happens securely over HTTPS using secret tokens that are in a 
 
 An organizational concept, consisting of either one _{{< glossary_tooltip term_id="part" text="part" >}}_, or multiple _parts_ working closely together to complete tasks.
 
-The robot represents the configuration and entry point for one or more computers (and the {{< glossary_tooltip term_id="component" text="components" >}} they control) coupled into one logical grouping of parts that work together to complete tasks.
-A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor.
-A robot always has a main part that receives client requests and can have one or more other parts.
-
-For information on how to manage robots, see [Robots](robots).
+For more information on robots and how to manage them, see [Robots](robots).
 
 ## Locations
 
-{{< readfile "/static/include/manage/locations.md" >}}
+In Viam, every robot belongs to a location.
+A location is a virtual grouping of robots that allows you to organize robots and manage access.
 
 ![An image of two locations, New York, and Chicago, in one organization, Good Robots](../img/locations.png)
 
-For information on how to manage locations, see [Locations](locations).
+For information on locations and how to manage them, see [Locations](locations).
 
 ## Organization
 
-{{< readfile "/static/include/manage/organizations.md" >}}
+An organization is a group of one or more locations that helps you organize your fleet and manage access.
 
 {{<gif webm_src="../img/organizations.webm" mp4_src="../img/organizations.mp4" alt="An organization for personal robots and one for work robots.">}}
 
@@ -53,7 +50,7 @@ Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](
 
 - **Owner**: Can see and edit [every tab on the robot page](robots/#navigating-the-robot-page).
 - **Operator**: Can see and use only the [remote control tab](robots/#control).
-  Cannot see or edit the [**SETUP**](robots/#setup), [**CONFIG**](robots#configuration), [**HISTORY**](robots/#history), [**LOGS**](robots/#logs), [**CODE SAMPLE**](robots/#code-sample), or [**SECURITY**](robots/#security) tabs.
+  Cannot see or edit the [**setup**](robots/#setup), [**config**](robots#configuration), [**history**](robots/#history), [**logs**](robots/#logs), [**code sample**](robots/#code-sample), or [**security**](robots/#security) tabs.
 
 A user can have one or more roles, granting the user the respective permissions of each role.
 
@@ -75,7 +72,7 @@ Deploy control logic, [modular resources](/program/extend/modular-resources/), s
 
 ## Remote control
 
-The **CONTROL** tab in the [Viam app](https://app.viam.com) allows you to visually test and remotely operate robot components and services.
+The **control** tab in the [Viam app](https://app.viam.com) allows you to visually test and remotely operate robot components and services.
 All communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
 
@@ -83,4 +80,4 @@ For local communication between [parts](../parts-and-remotes) Viam uses gRPC or 
 
 ## Logs
 
-Each robot automatically sends logs to the cloud where you can view them from the **LOGS** tab.
+Each robot automatically sends logs to the cloud where you can view them from the **logs** tab.

@@ -10,7 +10,7 @@ description: "Upload an image classification model to Viam."
 # SME: Aaron Casas
 ---
 
-On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **MODELS** sub-tab.
+On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **Models** sub-tab.
 
 ![Add new model](../img/add-new-model.png)
 

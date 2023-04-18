@@ -21,7 +21,7 @@ To adjust the Frame System from its default configuration for a particular [comp
 {{< tabs name="Frame Configuration Instructions" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIG** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's card, and click **Add Frame**:
+Navigate to the **config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's card, and click **Add Frame**:
 
 ![add reference frame pane](img/frame_card.png)
 

@@ -14,7 +14,7 @@ The transformations are applied in the order they are written in the pipeline.
 {{< tabs name="Example transform view" >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+On the **Components** subtab, navigate to the **Create Component** menu.
 Enter a name for your camera, select the type `camera`, and select the `transform` model.
 
 <img src="../img/create-transform.png" alt="Creation of an transform view in the Viam app config builder." style="max-width:500px" />

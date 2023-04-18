@@ -88,7 +88,7 @@ description:
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>
-                Users can now set up a frame system on their robot using a 3D visualizer located in the **FRAME SYSTEM** tab on the config UI. Setting up the frame system hierarchy of a robot enables the RDK to transform poses between different component reference frames. Users can also give individual components a geometry so that the RDK’s builtin motion planner can avoid obstacles while path planning.
+                Users can now set up a frame system on their robot using a 3D visualizer located in the **Frame System** tab on the config UI. Setting up the frame system hierarchy of a robot enables the RDK to transform poses between different component reference frames. Users can also give individual components a geometry so that the RDK’s builtin motion planner can avoid obstacles while path planning.
                 <ul>
                 <li>
 {{<gif webm_src="../img/frame-system-visualizer.webm" mp4_src="../img/frame-system-visualizer.mp4" alt="Example of configuring a frame system for a Viam Rover that has a camera and a lidar">}}

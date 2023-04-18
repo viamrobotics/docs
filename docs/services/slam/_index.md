@@ -81,7 +81,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ## Configuration
 
 You can configure your robot to use SLAM on [the Viam app](https://app.viam.com).
-Navigate to the **CONFIG** tab on your robot's page, and from there, navigate to the **SERVICES** subtab.
+Navigate to the **config** tab on your robot's page, and from there, navigate to the **Services** subtab.
 
 Add a service with type `slam`, whatever name you want, and the model of the library you want to use.
 
@@ -173,7 +173,7 @@ To run Cartographer in live mode, follow [these instructions](../../program/exte
   "modules": [
     {
       "name": "rplidar_module",
-      "executable_path": "/home/<YOUR_USERNAME>/rplidar-module-local-aarch64.AppImage"
+      "executable_path": "/usr/local/bin/rplidar-module"
     }
   ],
   "components": [
@@ -216,6 +216,12 @@ To run Cartographer in live mode, follow [these instructions](../../program/exte
 
 ``` json
 {
+  "modules": [
+    {
+      "executable_path": "/usr/local/bin/rplidar-module",
+      "name": "rplidar_module"
+    }
+  ],
   "components": [
     {
       "namespace": "rdk",
@@ -249,12 +255,6 @@ To run Cartographer in live mode, follow [these instructions](../../program/exte
       "model": "cartographer",
       "name": "run-slam",
       "type": "slam"
-    }
-  ],
-  "modules": [
-    {
-      "executable_path": "/Users/<YOUR_USERNAME>/rplidar/bin/rplidar-module",
-      "name": "rplidar_module"
     }
   ]
 }
