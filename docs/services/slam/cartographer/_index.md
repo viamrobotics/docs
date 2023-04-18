@@ -42,22 +42,24 @@ brew tap viamrobotics/brews && brew install carto-grpc-server
 
 ## Configuration
 
-How you configure `cartographer` depends on whether you want the SLAM service to build your map with data collected live by a [Rplidar](https://www.slamtec.com/en/Lidar/A1) or with LIDAR data provided in a dataset at runtime.
+How you configure `cartographer` depends on whether you want the SLAM service to build your map with data collected live by a [RPLIDAR](https://www.slamtec.com/en/Lidar/A3) or with LIDAR data provided in a dataset at runtime.
 
 Select from the following modes to obtain the correct instructions to configure the service:
 
 {{% tabs name="Modes"%}}
 {{% tab name="Live Data Collection" %}}
 
-{{% alert title="REQUIREMENTS" color="note" %}}
+{{% alert title="REQUIREMENTS" color="tip" %}}
 
-Running `cartographer` in Live Data Collection mode requires a [Rplidar A1](https://www.slamtec.com/en/Lidar/A1) or [Rplidar A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device.
+Running `cartographer` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtecå.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device.
+
+Before adding a SLAM service, you must follow [these instructions](/program/extend/modular-resources/add-rplidar-module/) to add your RPLIDAR device as a modular component of your robot.
 
 {{% /alert %}}
 
-First, follow [these instructions](/program/extend/modular-resources/add-rplidar-module/) to add your Rplidar device as a modular component of your robot.
+<br>
 
-Now, add the `cartographer` service:
+### Add a SLAM Service
 
 {{< tabs name="Add the Cartographer Service Live">}}
 {{% tab name="Config Builder" %}}
@@ -83,14 +85,12 @@ Paste the following into the **Attributes** field of your new service:
 }
 ```
 
-![adding cartographer slam service attributes box](../img/run_slam/add-cartographer-service-attributes-live.png)
-
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **config** tab.
-Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing Rplidar configuration:
+Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing RPLIDAR configuration:
 
 ```json
 // "modules": [ ...], YOUR RPLIDAR MODULE, 
@@ -116,6 +116,8 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 {{% /tab %}}
 {{< /tabs >}}
 
+### Adjust `data_dir`
+
 Change the `data_dir` attribute to point to a directory on your machine where you want to save the sensor data your SLAM service uses and the maps and config files it produces.
 
 This directory must be structured as follows:
@@ -123,30 +125,30 @@ This directory must be structured as follows:
 <pre>
 .
 └──\(<file>CARTOGRAPHER_DIR</file>)
-    ├── <file>data</file>
     ├── <file>map</file>
+    ├── <file>data</file>
     └── <file>config</file>
 </pre>
 
 Click through the following tabs to see the usage of each folder in this directory:
 
 {{% tabs name="Folders"%}}
-{{% tab name="/data" %}}
-
-The <file>data</file> folder stores the LIDAR data gathered by your Rplidar and used for SLAM.
-
-{{% /tab %}}
 {{% tab name="/map" %}}
 
-Whether mapping data is present in <file>data_dir/map</file> at runtime and the attribute `map_rate_sec` determines the SLAM mapping mode:
+Whether mapping data is present in <file>map</file> at runtime and the attribute `map_rate_sec` determines the SLAM mapping mode:
 
 ### Mapping Modes
 
 | Mode | Description | Runtime Dictation |
 | ---- | ----------- | ------- |
 | PURE MAPPING | Generate a new map in <file>/map</file>. | No map is found in <file>/map</file>. |
-| UPDATING | Update an existing map with new data. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes-and-config_params).|
+| UPDATING | Update an existing map with new <file>/data</data>. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes-and-config_params).|
 | LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes-and-config_params). |
+
+{{% /tab %}}
+{{% tab name="/data" %}}
+
+The <file>data</file> folder stores the LIDAR data gathered by your RPLIDAR and used for SLAM.
 
 {{% /tab %}}
 {{% tab name="/config" %}}
@@ -165,6 +167,10 @@ If this directory structure is not present at runtime, the SLAM Service creates 
 
 {{% /tab %}}
 {{% tab name="Dataset" %}}
+
+<br>
+
+### Add a SLAM Service
 
 {{< tabs name="Add the Cartographer Service with Dataset">}}
 {{% tab name="Config Builder" %}}
@@ -188,8 +194,6 @@ Paste the following into the **Attributes** field of your new service:
     "use_live_data": false
 }
 ```
-
-![adding cartographer slam service attributes box](../img/run_slam/add-cartographer-service-attributes-offline.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -219,6 +223,8 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 {{% /tab %}}
 {{< /tabs >}}
 
+### Adjust `data_dir`
+
 Change the `data_dir` attribute to point to a directory on your machine where you want to save the sensor data your SLAM service uses and the maps and config files it produces.
 
 This directory must be structured as follows:
@@ -234,9 +240,35 @@ This directory must be structured as follows:
 Click through the following tabs to see the usage of each folder in this directory:
 
 {{% tabs name="Folders 2"%}}
+{{% tab name="/map" %}}
+
+Whether mapping data is present in <file>map</file> at runtime and the attribute `map_rate_sec` determines the SLAM mapping mode:
+
+### Mapping Modes
+
+| Mode | Description | Runtime Dictation |
+| ---- | ----------- | ------- |
+| PURE MAPPING | Generate a new map. | No map is found in <file>/map</file>. |
+| UPDATING | Update an existing map with new <file>/data</file>. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes-and-config_params).|
+| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes-and-config_params). |
+
+{{% /tab %}}
 {{% tab name="/data" %}}
 
-As you are configuring SLAM to run without live data collection, you need to make sure the <file>data</file> folder contains LIDAR data at runtime for the service to generate a <map>map</file> from.
+The <file>data</file> folder stores the LIDAR data used for SLAM.
+
+{{% /tab %}}
+{{% tab name="/config" %}}
+
+The <file>config</file> folder stores any Cartographer specific config files created.
+These are generated at runtime, so there is no need to add anything to this folder.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Obtain your Dataset
+
+As you are configuring SLAM to run without live data collection, you need to make sure the <file>/data</file> folder in `data_dir` contains LIDAR data for the service to generate <map>/map</file> output from when you run SLAM.
 
 If you do not already have a dataset from running SLAM live or another dataset you want to use as <file>/data</file>, follow these instructions to use a sample dataset from Viam's lab:
 
@@ -257,45 +289,28 @@ If you do not already have a dataset from running SLAM live or another dataset y
     ```
 
 {{% /tab %}}
-{{% tab name="/map" %}}
-
-Whether mapping data is present in <file>data_dir/map</file> at runtime and the attribute `map_rate_sec` determines the SLAM mapping mode:
-
-### Mapping Modes
-
-| Mode | Description | Runtime Dictation |
-| ---- | ----------- | ------- |
-| PURE MAPPING | Generate a new map. | No map is found in <file>/map</file>. |
-| UPDATING | Update an existing map with new data. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes-and-config_params).|
-| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes-and-config_params). |
-
-{{% /tab %}}
-{{% tab name="/config" %}}
-
-The <file>config</file> folder stores any Cartographer specific config files created.
-These are generated at runtime, so there is no need to add anything to this folder.
-
-{{% /tab %}}
 {{< /tabs >}}
 
-{{% /tab %}}
-{{< /tabs >}}
+### View the Map
 
-### Attributes and `config_params`
+After saving your config and connecting to your robot, navigate to the **control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
 
-{{% tabs name="Attributes"%}}
-{{% tab name="Attributes" %}}
+Change the **Refresh frequency** to your desired frequency.
+If in live data collection mode, move your RPLIDAR around slowly.
+Watch a map start to appear.
+
+### Attributes
 
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
-| `data_dir` | string | **Required** | Path to the directory used for saving input <file>/data</file> and output <file>/map</file> visualizations. |
-| `sensors` | string[] | **Required** | Names of configured Rplidar devices providing data to the SLAM service. |
-| `use_live_data` | bool | **Required** | <p>Whether to run in Live Data Collection mode.</p> <ul> `true`: Use data collected live by `sensors`to generate <file>/map</file>. </ul><ul>`false`: Use a dataset provided in <file>data_dir/data</file> to generate <file>/map</file>. </ul> |
+| `data_dir` | string | **Required** | Path to [the directory](#mapping-modes) used for saving input LIDAR data in <file>/data</file> and output mapping data in <file>/map</file>. |
+| `sensors` | string[] | **Required** | Names of configured RPLIDAR devices providing data to the SLAM service. |
+| `use_live_data` | bool | **Required** | <p>Whether to run in Live Data Collection mode.</p> <ul> `true`: Use data collected live by `sensors`to generate <file>/map</file>. </ul><ul>`false`: Use a dataset provided in <file>/data</file> to generate <file>/map</file>. </ul> |
 | `map_rate_sec` | int | Optional | Rate of <file>/map</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
 | `data_rate_msec` | int | Optional | Rate of <file>/data</file> collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `port` | string | Optional | Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
 | `delete_processed_data` | bool | Optional | <p>Setting this to `true` helps to reduce the amount of memory required to run SLAM.</p> <ul> `true`: sensor data is deleted after the SLAM algorithm has processed it. </ul><ul> `false`: sensor data is not deleted after the SLAM algorithm has processed it. </ul> |
-| `config_params` |  map[string] string | Optional | Parameters specific to the `model` of SLAM library. |
+| `config_params` |  map[string] string | Optional | Parameters available to fine tune the `cartographer` algorithm: [read more below](#config_params). |
 
 {{% alert title="Caution" color="caution" %}}
 
@@ -305,8 +320,7 @@ These are generated at runtime, so there is no need to add anything to this fold
 Setting `delete_processed_data: true` and `use_live_data: false` is invalid and will result in an error.
 {{% /alert %}}
 
-{{% /tab %}}
-{{% tab name="config_params" %}}
+### `config_params`
 
 Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in aspects like submap size, mapping update rate, and feature matching details:
 
@@ -315,32 +329,16 @@ Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in as
 | `mode` | `2d` | **Required** | None | |
 | `optimize_every_n_nodes` | How many trajectory nodes are inserted before the global optimization is run. | Optional | `3` | |
 | `num_range_data` | Number of measurements in each submap. | Optional | `100` | |
-| `missing_data_ray_length` | Replaces the length of ranges that are further than max_range with this value. | Optional | `25` | Nominally set to max length. |
+| `missing_data_ray_length` | Replaces the length of ranges that are further than `max_range` with this value. | Optional | `25` | Nominally set to max length. |
 | `max_range` | Maximum range of valid measurements. | Optional | `25` | |
 | `min_range` | Minimum range of valid measurements. | Optional | `0.2` | |
 | `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | Only for [LOCALIZING mode](#mapping-modes). |
 | `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | Only for [UPDATING mode](#mapping-modes). |
 | `min_covered_area` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Only for [UPDATING mode](#mapping-modes). |
 | `min_added_submaps_count` | The minimum number of added submaps before deletion of the old submap is considered. | Optional | `1` | Only for [UPDATING mode](#mapping-modes). |
-| `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Normalized with translational and rotational. |
-| `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Normalized with occupied and rotational. |
-| `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | Normalized with translational and occupied. |
-
-{{% /tab %}}
-{{< /tabs >}}
-
-## View the Map
-
-After saving your config and connecting to your robot, navigate to the **control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
-
-Change the **Refresh frequency** to your desired frequency.
-If in Live Data mode, move your Rplidar around slowly.
-Watch a map start to appear.
-
-{{% alert title="Note" color="note" %}}
-It might take a couple of minutes before a map is displayed.
-Keep moving the camera slowly within your space and wait for the map to visualize.
-{{% /alert %}}
+| `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | |
+| `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | |
+| `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | |
 
 ## Troubleshooting
 
