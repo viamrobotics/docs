@@ -28,7 +28,7 @@ All communication happens securely over HTTPS using secret tokens that are in a 
 
 {{< alert title="Tip" color="tip" >}}
 You can also store your config file in another location.
-To use such a config file, pass in the path to the config when you start `viam-server`:
+To change where `viam-server` looks for its config file, run the following command:
 
 {{< tabs >}}
 {{% tab name="Linux" %}}
