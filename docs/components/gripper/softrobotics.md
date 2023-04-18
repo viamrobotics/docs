@@ -6,7 +6,7 @@ type: "docs"
 description: "Configure a Soft Robotics gripper."
 ---
 
-The `softrobotics` model supports the [Soft Robotics *m*Grip](https://www.softroboticsinc.com/products/mgrip-modular-gripping-solution-for-food-automation/) gripper.
+The `softrobotics` model supports the [Soft Robotics *m*Grip](https://www.softroboticsinc.com/products/mgrip-modular-gripping-solution-for-food-automation/) gripper controlled by the [Soft Robotics *co*Drive Control Unit](https://www.softroboticsinc.com/uploads/2020/05/Tech_Sheet_coDrive_Control_Unit_-__TS-200210_Rev_B.pdf).
 
 {{< tabs name="Configure a softrobotics gripper" >}}
 {{% tab name="Config Builder" %}}
@@ -27,9 +27,11 @@ Enter a name for your gripper, select the type `gripper`, and select the `softro
             "type": "gripper",
             "model" : "softrobotics",
             "attributes": {
-                "open": <>,
-                "close": <>,
-                "power": <>
+                "board": <board_name>,
+                "open": <pin_number>,
+                "close": <pin_number>,
+                "power": <pin_number>,
+                "analog_reader": "psi"
             }
         }
     ]
@@ -50,7 +52,7 @@ Enter a name for your gripper, select the type `gripper`, and select the `softro
                 "analogs": [
                     {
                         "name": "psi",
-                        "pin": "0"
+                        "pin": "32"
                     }
                 ]
             }
@@ -60,9 +62,11 @@ Enter a name for your gripper, select the type `gripper`, and select the `softro
             "type": "gripper",
             "model" : "softrobotics",
             "attributes": {
-                "open": "40",
-                "close": "38",
-                "power": "36"
+                "board": "local",
+                "open": "11",
+                "close": "13",
+                "power": "15",
+                "analog_reader": "psi"
             }
         }
     ]
@@ -76,8 +80,8 @@ The following attributes are available for `softrobotics` grippers:
 
 Name | Inclusion | Type | Description
 ---- | --------- | ---- | -----------
-`open` | **Required** | string | The pin number of the [board](../../board/) pin wired to the open pin on the gripper controller.
-`close` | **Required** | string | The pin number of the [board](../../board/) pin wired to the close pin on the gripper controller.
-`power` | **Required** | string | The pin number of the [board](../../board/) pin wired to the enable pin on the gripper controller.
-
-You'll also need to configure a [board component](../../board/) to control the pressure and to wire the controller pins to.
+`board` | **Required** | string | The name of the [board](../../board/) to which your gripper [control unit](https://www.softroboticsinc.com/uploads/2020/05/Tech_Sheet_coDrive_Control_Unit_-__TS-200210_Rev_B.pdf) is wired.
+`open` | **Required** | string | The pin number of the board pin wired to the open pin (D1) on the gripper controller.
+`close` | **Required** | string | The pin number of the board pin wired to the close pin (D2) on the gripper controller.
+`power` | **Required** | string | The pin number of the board pin wired to the enable pin (D3) on the gripper controller.
+`psi` | **Required** | string | Needs to be called `"psi"`, and you need to configure an analog named `"psi"` on your [board](../../board/).
