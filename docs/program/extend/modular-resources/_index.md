@@ -268,6 +268,8 @@ This example module code is adapted from the full base demo module available on 
 It creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
 See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) for more information.
 
+<file>my_base.py</file>
+
 ``` python {class="line-numbers linkable-line-numbers"}
 from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional
 
@@ -347,6 +349,22 @@ class MyBase(Base, Reconfigurable):
 
 ```
 
+<file>_init_.py</file>
+
+``` python {class="line-numbers linkable-line-numbers"}
+"""
+This file registers the MyBase model with the Viam Registry.
+"""
+
+from viam.components.motor import *
+from viam.components.base import Base
+from viam.resource.registry import Registry, ResourceCreatorRegistration
+
+from .my_base import MyBase
+
+Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new, MyBase.validate_config))
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -418,7 +436,7 @@ pwd
 
 ### Configure your module
 
-To configure your new *module* on your robot, navigate to the **CONFIG** tab of your robot's page on [the Viam app](https://app.viam.com) and click on the **MODULES** sub-tab.
+To configure your new *module* on your robot, navigate to the **config** tab of your robot's page on [the Viam app](https://app.viam.com) and click on the **Modules** sub-tab.
 
 The following properties are available for modules:
 
@@ -493,12 +511,6 @@ It registers a custom model `viam-contributor:motor:super-custom` to use with th
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "modules": [
-    {
-      "name": "super-motor",
-      "executable_path": "/home/me/super-custom-motor/run.sh"
-    }
-  ],
     "components": [
         {
             "type": "board",
@@ -513,7 +525,13 @@ It registers a custom model `viam-contributor:motor:super-custom` to use with th
         "attributes": {},
         "depends_on": [ "main-board" ]
         }
-    ]
+    ],
+    "modules": [
+    {
+      "name": "super-motor",
+      "executable_path": "/home/me/super-custom-motor/run.sh"
+    }
+  ]
 }
 ```
 
