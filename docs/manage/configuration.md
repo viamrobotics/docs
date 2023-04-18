@@ -255,7 +255,6 @@ To add a fragment to a robot:
 
 The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** sub-tab.
 
-
 ![A fragment in the components subtab](../img/fragment-components.png)
 
 In the `Raw JSON` configuration, you will see the fragment ID in the `fragments` section:
