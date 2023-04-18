@@ -1,10 +1,10 @@
-from typing import ClassVar, Mapping, Sequence
+from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional
 
 from typing_extensions import Self
 
 from viam.module.types import Reconfigurable
 from viam.proto.app.robot import ComponentConfig
-from viam.proto.common import ResourceName
+from viam.proto.common import ResourceName, Vector3
 from viam.resource.base import ResourceBase
 from viam.resource.types import Model, ModelFamily
 
@@ -23,8 +23,8 @@ class MyBase(Base, Reconfigurable):
     acme = namespace, demo = resource type, mybase = model. """
     MODEL: ClassVar[Model] = Model(ModelFamily("acme"))
 
-    left: Motor # Left motor
-    right: Motor # Right motor
+    left: str # Left motor name
+    right: str # Right motor name
 
     # Constructor
     @classmethod
@@ -50,4 +50,27 @@ class MyBase(Base, Reconfigurable):
         self.left = config.attributes.fields["motorL"].string_value
         self.right = config.attributes.fields["motorR"].string_value
 
-    def move_straight(self, distance_mm: int, mm_per_sec: float, extra)
+    # Implement the methods the Viam RDK defines for the base API (rdk:component:base)
+
+    # move_straight: unimplemented
+    async def move_straight(self, distance: int, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        pass
+
+    # spin: unimplemented
+    async def spin(self, angle: float, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        pass
+
+    # set_velocity: unimplemented
+    async def set_velocity( self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        pass
+
+    # set_power: sets the linear and angular velocity of the left and right motors on the base
+    set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None,
+    ):
+
+    # stop: stops the base from moving by stopping both motors
+    async def stop(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+
+    # is_moving: checks if the base is moving
+    async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None) -> bool:
+        
