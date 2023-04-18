@@ -351,9 +351,10 @@ The STL file for an adapter plate is available on [GitHub](https://github.com/vi
 
 #### Maps not appearing in UI
 
-When generating a larger map, the Cartographer service can take a while to return and visualize the map.
+When generating a larger map, it will take longer for Cartographer to return the desired map.
+This can result in errors or failed requests for a map, however, this will not affect the `viam-server` or `cartographer` process.
+Re-requesting the map can and should be successful, although there is currently a fundamental limit for the size of map that can be transmitted to the UI and this issue will become more common as you approach it.
 
-Reducing the frequency the Cartographer service returns the map by adjusting **Refresh frequency** should help the map visualization to appear consistently.
 
 #### Dataset mode produces an error
 
