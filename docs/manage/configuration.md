@@ -265,6 +265,18 @@ Fragments are a way of sharing and managing identical {{< glossary_tooltip term_
 For example, if you have multiple robots with the same hardware, wired the same way, you can create and share a fragment and add it to any number of robots.
 When changes are made to the fragment, those changes are automatically carried to all robots that include the fragment in their config.
 
+### Create a fragment
+
+To create your own private fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments) or click on **Fragments** in the left navigation bar on the [FLEET page](https://app.viam.com/robots).
+
+1. Enter a name for your new fragment and click **Add fragment**.
+2. Add the JSON configuration in the config field.
+3. Click **SAVE FRAGMENT**.
+
+![Fragment creation view](../img/fragment-view.png)
+
+### Add a fragment to a robot
+
 You can add a fragment to a robot's config and also add other configuration outside the fragment.
 For example, if you have multiple identical rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
 
@@ -290,8 +302,6 @@ In the `Raw JSON` configuration, you will see the fragment ID in the `fragments`
   ]
 }
 ```
-
-To create your own fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments).
 
 For an example of adding a fragment to a robot, see the [Viam Rover fragment tutorial](/try-viam/rover-resources/rover-tutorial-fragments/).
 
