@@ -8,6 +8,345 @@ description:
 # SME: Naomi
 ---
 
+## 2 May 2023
+
+{{< tabs >}}
+{{% tab name="Breaking Changes" %}}
+
+## Vision Service
+
+The [Vision Service](/services/vision) is becoming more modular.
+
+The following **breaking changes** will take effect:
+
+* [Use individual vision service instances](#use-individual-vision-service-instances)
+* [Add and remove models using the robot config](#add-and-remove-models-using-the-robot-config)
+* [Add machine learning vision models to a vision service](#add-machine-learning-vision-models-to-a-vision-service)
+
+### Use individual vision service instances
+
+You will need to create an individual vision service instance for each detector,classifier, and segementer model.
+You will no longer be able to create one vision service and register all of your detectors, classifiers, and segmenters within it.
+
+#### API calls
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+my_object_detector = VisionServiceClient.from_robot(robot, "find_objects")
+img = await cam.get_image()
+detections = await my_object_detector.get_detections(img)
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+vision = VisionServiceClient.from_robot(robot)
+img = await cam.get_image()
+detections = await vision.get_detections(img, "find_objects")
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+#### Color Detector configurations
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+```json
+"services": [
+  {
+    "name": "blue_square",
+    "type": "vision",
+    "model": "color_detector",
+    "attributes": {
+      "segment_size_px": 100,
+      "detect_color": "#1C4599",
+      "hue_tolerance_pct": 0.07,
+      "value_cutoff_pct": 0.15
+    }
+  },
+  {
+    "name": "green_triangle",
+    "type": "vision",
+    "model": "color_detector",
+    "attributes": {
+      "segment_size_px": 200,
+      "detect_color": "#62963F",
+      "hue_tolerance_pct": 0.05,
+      "value_cutoff_pct": 0.20
+    }
+  }
+]
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```json
+"services": [
+{
+  "name": "vision",
+  "type": "vision",
+  "attributes": {
+    "register_models": [
+      {
+        "parameters": {
+          "segment_size_px": 100,
+          "detect_color": "#1C4599",
+          "hue_tolerance_pct": 0.07,
+          "value_cutoff_pct": 0.15
+        },
+        "name": "blue_square",
+        "type": "color_detector"
+      },
+      {
+        "parameters": {
+          "segment_size_px": 200,
+          "detect_color": "#62963F",
+          "hue_tolerance_pct": 0.05,
+          "value_cutoff_pct": 0.20
+        },
+        "name": "green_triangle",
+        "type": "color_detector"
+      }
+    ]
+  }
+}
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+#### TFLite Detector configurations
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+```json
+"services": [
+  {
+    "name": "person_detector",
+    "type": "ml_model",
+    "model": "tflite_cpu",
+    "attributes": {
+      "model_path": "/path/to/file.tflite",
+      "label_path": "/path/to/labels.tflite",
+      "num_threads": 1
+    }
+  },
+  {
+    "name": "person_detector",
+    "type": "vision",
+    "model": "ml_model",
+    "attributes": {
+      "ml_model_name": "person_detector"
+    }
+  }
+]
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```json
+"services": [
+{
+  "name": "vision",
+  "type": "vision",
+  "attributes": {
+    "register_models": [
+      {
+        "parameters": {
+          "model_path": "/path/to/file.tflite",
+          "label_path": "/path/to/labels.tflite",
+          "num_threads": 1
+        },
+        "name": "person_detector",
+        "type": "tflite_detector"
+      }
+    ]
+  }
+}
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+#### TFLite Classifier configurations
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+```json
+"services": [
+  {
+    "name": "fruit_classifier",
+    "type": "ml_model",
+    "model": "tflite_cpu",
+    "attributes": {
+      "model_path": "/path/to/classifier_file.tflite",
+      "label_path": "/path/to/classifier_labels.txt",
+      "num_threads": 1
+    }
+  },
+  {
+    "name": "fruit_classifier",
+    "type": "vision",
+    "model": "ml_model",
+    "attributes": {
+      "ml_model_name": "fruit_classifier"
+    }
+  }
+]
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```json
+"services": [
+{
+  "name": "vision",
+  "type": "vision",
+  "attributes": {
+    "register_models": [
+      {
+        "parameters": {
+          "model_path": "/path/to/classifier_file.tflite",
+          "label_path": "/path/to/classifier_labels.txt",
+          "num_threads": 1
+        },
+        "name": "fruit_classifier",
+        "type": "tflite_classifier"
+      }
+    ]
+  }
+}
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+#### Radius Clustering 3D Segmenter configurations
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+```json
+"services": [
+{
+  "name": "rc_segmenter",
+  "type": "vision",
+  "model": "radius_clustering_segmenter"
+  "attributes": {
+    "min_points_in_plane": 1000,
+    "min_points_in_segment": 50,
+    "clustering_radius_mm": 3.2,
+    "mean_k_filtering": 10
+  }
+}
+]
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```json
+"services": [
+{
+  "name": "vision",
+  "type": "vision",
+  "attributes": {
+    "register_models": [
+      {
+        "parameters": {
+          "min_points_in_plane": 1000,
+          "min_points_in_segment": 50,
+          "clustering_radius_mm": 3.2,
+          "mean_k_filtering": 10
+        },
+        "name": "rc_segmenter",
+        "type": "radius_clustering_segmenter"
+      }
+    ]
+  }
+}
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+#### Detector to 3D Segmenter configurations
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+```json
+"services": [
+{
+  "name": "my_segmenter",
+  "type": "vision",
+  "model": "detector_3dsegmenter"
+  "attributes": {
+                "detector_name": "my_detector",
+                "confidence_threshold_pct": 0.5,
+                "mean_k": 50,
+                "sigma": 2.0
+  }
+}
+]
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```json
+"services": [
+{
+  "name": "vision",
+  "type": "vision",
+  "attributes": {
+    "register_models": [
+      {
+        "parameters": {
+                "detector_name": "my_detector",
+                "confidence_threshold_pct": 0.5,
+                "mean_k": 50,
+                "sigma": 2.0
+        },
+        "name": "my_segmenter",
+        "type": "detector_segmenter"
+      }
+    ]
+  }
+}
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Add and remove models using the robot config
+
+You must add and remove models using the [robot config](../../manage/configuration).
+You will no longer be able to add or remove models using the SDKs.
+
+### Add machine learning vision models to a vision service
+
+The way to add machine learning vision models is changing.
+You will need to first register the machine learning model file with the [ML Model Service](/services/ml) and then add that registered model to a vision service.
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## 28 February 2023
 
 {{< tabs >}}
