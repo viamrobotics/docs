@@ -50,15 +50,6 @@ For more information, see the [configuration documentation](../../configuration/
 If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robot](../../configuration).
 {{< /alert >}}
 
-### Logs
-
-To make debugging issues with your robots easier, each robot automatically sends its logs to the cloud.
-You can access your logs from the **logs** tab in the [Viam app](https://app.viam.com) and filter your logs for specific keywords or log levels:
-
-{{<gif webm_src="../../img/log-filtering.webm" mp4_src="../../img/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
-
-You can also change your timestamp format to ISO or Local depending on your preference.
-
 ### History
 
 The configuration of your robot and the code it runs are kept separate to make debugging easier.
@@ -67,6 +58,15 @@ The **history** tab shows timestamped changes to your robot's configuration.
 If you want to revert changes that you made, you can load a previous configuration by clicking the **Load config** button next to the respective configuration.
 
 {{<gif webm_src="../../img/load-prev-config.webm" mp4_src="../../img/load-prev-config.mp4" alt="Load a previous config from the UI" max-width="800px">}}
+
+You can also change your timestamp format to ISO or Local depending on your preference.
+
+### Logs
+
+To make debugging issues with your robots easier, each robot automatically sends its logs to the cloud.
+You can access your logs from the **logs** tab in the [Viam app](https://app.viam.com) and filter your logs for specific keywords or log levels:
+
+{{<gif webm_src="../../img/log-filtering.webm" mp4_src="../../img/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
 
 You can also change your timestamp format to ISO or Local depending on your preference.
 
