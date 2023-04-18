@@ -42,9 +42,9 @@ Use the parts drop-down menu in the top banner of your robot's page on the [Viam
 
 ![The Viam app interface with the part drop-down open. A new part called "my-sub-part" is being created.](../img/parts-and-remotes/sub-part-config.png)
 
-To delete a sub-part or make it the main part, use the buttons in the top right of the **CONFIG** tab.
+To delete a sub-part or make it the main part, use the buttons in the top right of the **config** tab.
 
-![The CONFIG tab of a robot's page noting the location of the Make main part and Delete Part buttons.](../img/parts-and-remotes/part-mgmt.png)
+![The config tab of a robot's page noting the location of the Make main part and Delete Part buttons.](../img/parts-and-remotes/part-mgmt.png)
 
 ### Configure a remote
 
