@@ -288,7 +288,7 @@ To add a fragment to a robot:
 
 ![The fragments subtab](../img/fragments-tab.png)
 
-The components included in the fragment appear inside a read-only fragment section in the **Components** sub-tab.
+The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** sub-tab.
 
 ![A fragment in the components subtab](../img/fragment-components.png)
 
