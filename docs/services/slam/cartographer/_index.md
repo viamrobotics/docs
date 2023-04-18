@@ -51,7 +51,7 @@ Select from the following modes to obtain the correct instructions to configure 
 
 {{% alert title="REQUIREMENTS" color="tip" %}}
 
-Running `cartographer` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtecå.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device.
+Running `cartographer` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtec.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device.
 
 Before adding a SLAM service, you must follow [these instructions](/program/extend/modular-resources/add-rplidar-module/) to add your RPLIDAR device as a modular component of your robot.
 
@@ -142,8 +142,8 @@ Whether mapping data is present in <file>map</file> at runtime and the attribute
 | Mode | Description | Runtime Dictation |
 | ---- | ----------- | ------- |
 | PURE MAPPING | Generate a new map in <file>/map</file>. | No map is found in <file>/map</file>. |
-| UPDATING | Update an existing map with new <file>/data</data>. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes-and-config_params).|
-| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes-and-config_params). |
+| UPDATING | Update an existing map with new <file>/data</data>. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes).|
+| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes). |
 
 {{% /tab %}}
 {{% tab name="/data" %}}
@@ -232,8 +232,8 @@ This directory must be structured as follows:
 <pre>
 .
 └──\(<file>CARTOGRAPHER_DIR</file>)
-    ├── <file>data</file>
     ├── <file>map</file>
+    ├── <file>data</file>
     └── <file>config</file>
 </pre>
 
@@ -249,8 +249,8 @@ Whether mapping data is present in <file>map</file> at runtime and the attribute
 | Mode | Description | Runtime Dictation |
 | ---- | ----------- | ------- |
 | PURE MAPPING | Generate a new map. | No map is found in <file>/map</file>. |
-| UPDATING | Update an existing map with new <file>/data</file>. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes-and-config_params).|
-| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes-and-config_params). |
+| UPDATING | Update an existing map with new <file>/data</file>. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes).|
+| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes). |
 
 {{% /tab %}}
 {{% tab name="/data" %}}

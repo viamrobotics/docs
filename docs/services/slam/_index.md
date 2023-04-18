@@ -32,4 +32,3 @@ Integrated SLAM Libraries include:
 | Model | Description |
 | ----- | ----------- |
 | [`cartographer`](cartographer) | [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data. |
-<!-- | [`orbslamv3`](orbslamv3) | [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3) performs sparse SLAM using monocular or RGB-D images. | -->
