@@ -333,9 +333,7 @@ The STL file for an adapter plate is available on [GitHub](https://github.com/vi
 
 ### Issue: Maps JPEG not Appearing in UI
 
-When generating a larger map, it can take a while for the Cartographer service to return the `JPEG` map.
-
-Reducing the frequency the Cartographer service returns the map by adjusting **Refresh frequency** should help the JPEG visualization to appear consistently.
+When generating a larger map, it will take longer for Cartographer to return the desired map. This can result in errors or failed requests for a map; however, this will not affect the viam server or cartographer process. Re-requesting the map can/should be successful, although there is currently a fundamental limit for the size of map that can be transmitted to the UI and this issue will become more common as you approach it.
 
 ### Issue: Maps not Appearing as Expected
 
