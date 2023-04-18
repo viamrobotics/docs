@@ -14,7 +14,7 @@ This document explains how to establish secure connections between robots.
 
 Robots are organized into *parts*, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) [running `viam-server`](/installation/), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
 
-Every robot has a main part.
+Every robot has a main part which is automatically created when you create the robot.
 Multi-part robots also have one or more *sub-parts* representing additional computers running `viam-server`.
 
 There are two ways to link robot parts:
@@ -42,13 +42,17 @@ Use the parts drop-down menu in the top banner of your robot's page on the [Viam
 
 ![The Viam app interface with the part drop-down open. A new part called "my-sub-part" is being created.](../img/parts-and-remotes/sub-part-config.png)
 
+To delete a sub-part or make it the main part, use the buttons in the top right of the **config** tab.
+
+![The config tab of a robot's page noting the location of the Make main part and Delete Part buttons.](../img/parts-and-remotes/part-mgmt.png)
+
 ### Configure a remote
 
 To establish a connection between a part of one robot and a part of a second robot, configure a `remote` on the first robot's part.
 
 1. Go to the Viam app robot page of the robot part to which you wish to establish the remote connection.
    This is the robot part whose resources will be accessible to the other robot part.
-2. Click the **CODE SAMPLE** tab.
+2. Click the **code sample** tab.
 3. On the **Language** toggle, select **Remotes**.
 4. Click **COPY JSON**.
 
@@ -56,7 +60,7 @@ To establish a connection between a part of one robot and a part of a second rob
 
 5. Go to the Viam app robot page of the robot part from which you want to establish a remote connection.
    This is the robot part that will be able to access the resources of the other robot part.
-6. Click the **CONFIG** tab, click the **REMOTES** sub-tab, and select **JSON** mode.
+6. Click the **config** tab, click the **Remotes** sub-tab, and select **JSON** mode.
 
    ![The Viam app CONFIG tab with the REMOTES sub-tab open and JSON mode selected.](../img/parts-and-remotes/remote-json-create.png)
 
@@ -71,13 +75,13 @@ To establish a connection between a part of one robot and a part of a second rob
 
 5. Go to the Viam app robot page of the robot part from which you want to establish a remote connection.
    This is the robot part that will be able to access the resources of the other robot part.
-6. Click the **CONFIG** tab, and then click the **REMOTES** sub-tab.
+6. Click the **config** tab, and then click the **Remotes** sub-tab.
 
 ![The Viam app CONFIG tab with the REMOTES sub-tab open.](../img/parts-and-remotes/remote-create.png)
 
 7. Give the remote a name (you can just use the name of the other robot part, for example, "my-other-robot-main") and click **Create Remote**.
 8. Paste the `address` (for example, `my-other-robot-main.abc1de23f4.viam.cloud`) into the **Address** field.
-9. Click **Add Auth** and paste the `secret` from the other robot's **CODE SAMPLE** tab into the **Auth Key** field.
+9. Click **Add Auth** and paste the `secret` from the other robot's **code sample** tab into the **Auth Key** field.
 
 ![The Viam app CONFIG tab with a remote configured.](../img/parts-and-remotes/remote-config.png)
 

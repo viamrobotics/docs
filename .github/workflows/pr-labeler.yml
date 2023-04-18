@@ -23,7 +23,4 @@ jobs:
             let orgResp = await github.rest.orgs.checkMembershipForUser({org: "viamrobotics", username: context.payload.sender.login});
             if (orgResp.status === 204) {
               await github.rest.issues.addLabels({owner: "viamrobotics", repo: "docs", issue_number: prNumber, labels: ["safe to build"]});
-              return true;
-            } else {
-              return false;
             }

@@ -228,8 +228,8 @@ If the Pi has power, the lights on the Raspberry Pi will light up.
 ### Connect to the Viam app
 
 While the Pi boots, go to [app.viam.com](https://app.viam.com/robots) and [add a robot](/manage/fleet/robots#add-a-new-robot).
-On the robot's **SETUP** tab, select `Linux` and `Aarch64`.
-`SSH` into the Pi and follow the instructions on the robot's **SETUP** tab to download `viam-server` and configure your robot.
+On the robot's **setup** tab, select `Linux` and `Aarch64`.
+`SSH` into the Pi and follow the instructions on the robot's **setup** tab to download `viam-server` and configure your robot.
 
 To configure your rover so you can start driving it, [add the Viam Fragment to your Robot](/try-viam/rover-resources/rover-tutorial-fragments/).
 
@@ -252,3 +252,8 @@ The following are just a few ideas, but you can expand or modify the rover kit w
   See [Movement Sensor Component](/components/movement-sensor) for more information.
 - For [LiDAR laser range scanning](/services/slam/run-slam-cartographer), we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).
 - For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
+
+### Lidar Mounting for the Viam Rover
+
+If you have a Viam Rover and need a mount for your RPLidar, you can 3D print an adapter plate.
+The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/VR1-22-A001/blob/master/CAD/RPIidar_adapter.STL).

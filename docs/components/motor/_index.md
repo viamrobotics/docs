@@ -5,8 +5,7 @@ weight: 70
 type: "docs"
 description: "A motor is a rotating machine that transforms electrical energy into mechanical energy."
 tags: ["motor", "components"]
-image: "/components/img/components/motor.png"
-imageAlt: "motor"
+icon: "/components/img/components/motor.svg"
 no_list: true
 # SME: Rand
 ---
@@ -48,7 +47,7 @@ If your motor has a different name, change the `name` in the example.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Place the example code after the `robot = await connect()` function in `main()`.
+Place the example code in the `main()` function after `robot = await connect()`.
 
 ```python
 from viam.components.motor import Motor
@@ -69,7 +68,7 @@ await motor2.go_for(1000, 200)
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Example code should be placed after the `robot, err := client.New(...)` function in `main()`.
+Place the example code in the `main()` function after `robot, err := client.New(...)`.
 
 ```go
 import (

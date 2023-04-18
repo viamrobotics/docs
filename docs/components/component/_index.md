@@ -3,7 +3,7 @@ title: "Template Component"
 linkTitle: "Template"
 weight: 10
 type: "docs"
-description: "A NAME is a ..."
+description: "A NAME is a ... ."
 tags: ["camera", "components"]
 icon: "../img/components.png"
 draft: true

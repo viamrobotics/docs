@@ -259,7 +259,7 @@ sudo apt install git
 
 ### Configure the Intermode base resource
 
-If you have not already, first create a new robot in the [Viam app](https://app.viam.com/) and follow the instructions in the **SETUP** tab to connect the robot to the cloud.
+If you have not already, first create a new robot in the [Viam app](https://app.viam.com/) and follow the instructions in the **setup** tab to connect the robot to the cloud.
 
 In order to drive the Intermode base with Viam, you need to add it to the robot configuration.
 You will specify where `viam-server` can find the module, and then configure a modular component instance for the Intermode base.
@@ -292,9 +292,9 @@ More details about modules and how they work can be found in the [modular resour
 
 ### Control the rover
 
-Once you save this configuration, you see a *base* card in the robot's **CONTROL** tab and can drive the rover from there.
+Once you save this configuration, you see a *base* card in the robot's **control** tab and can drive the rover from there.
 Be careful, the Intermode is a large and powerful rover - make sure you have the shutoff key in hand for emergencies and make sure you have enough space for the rover to move.
 
-If you do not see the base card in the **CONTROL** tab, check the **LOGS** tab for possible setup or configuration errors.
+If you do not see the base card in the **control** tab, check the **logs** tab for possible setup or configuration errors.
 
 {{< snippet "social.md" >}}

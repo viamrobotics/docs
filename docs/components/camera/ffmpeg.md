@@ -13,7 +13,7 @@ A `ffmpeg` camera uses a camera, a video file, or a stream as a camera.
 {{< tabs name="Configure a ffmpeg camera" >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+On the **Components** subtab, navigate to the **Create Component** menu.
 Enter a name for your camera, select the type `camera`, and select the `ffmpeg` model.
 
 <img src="../img/create-ffmpeg.png" alt="Creation of a ffmpeg camera in the Viam app config builder." style="max-width:600px" />

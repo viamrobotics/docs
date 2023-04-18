@@ -1,4 +1,5 @@
 {{ $size := (.Get "size") }}
+{{ $customTitle := (.Get "custom") }}
 {{ $link := (path.Clean (.Get "link")) }}
 {{ $baseurl := .Site.BaseURL }}
 {{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
@@ -15,14 +16,23 @@
             There should have been a video here but your browser does not seem
             to support it.
           </video>
-          {{ end }}
+        {{ end }}
         {{ if .Params.image }}
           <div class="hover-card-img">
             <img src="{{relURL (substr .Params.image 1)}}" alt="{{ .Params.imageAlt }}" width="100%" />
           </div>
         {{ end }}
+        {{ if .Params.icon }}
+        <div class="hover-card-icon">
+          <img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" width="100%" />
+        </div>
+        {{ end }}
         <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
-          <h4> {{ .Params.linkTitle }} </h4>
+          {{ if $customTitle }}
+            <h4>{{ $customTitle }}</h4>
+          {{ else }}
+            <h4>{{ .LinkTitle }}</h4>
+          {{ end }}
           {{ if ne $size "xs" }}
           <p> {{ .Description }} </p>
           {{ end }}

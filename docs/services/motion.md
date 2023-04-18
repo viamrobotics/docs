@@ -5,6 +5,7 @@ weight: 40
 type: "docs"
 description: "The Motion Service enables your robot to plan and move its components relative to itself, other robots, and the world."
 tags: ["motion", "motion planning", "services"]
+icon: "/services/img/icons/motion.svg"
 # SME: Peter Lo Verso
 ---
 The Motion Service enables your robot to plan and move itself or its components relative to itself, other robots, and the world.
@@ -69,55 +70,55 @@ This enables things like the tweaking of individual parameters used by the algor
 The following code uses the [Viam Python SDK](https://python.viam.dev/) to move an arm to a point in front of a camera and approach that point from a particular direction:
 
 ```python {class="line-numbers linkable-line-numbers"}
-// This is a robot with an arm named "myArm" and a down-pointing camera named "cam".
-// The pose of the arm relative to `world` is {x=0,y=0,z=0}
-// The pose of the camera relative to `world` is {x=600,y=0,z=700, o_z=-1}
+# This is a robot with an arm named "myArm" and a down-pointing camera named "cam".
+# The pose of the arm relative to `world` is {x=0,y=0,z=0}
+# The pose of the camera relative to `world` is {x=600,y=0,z=700, o_z=-1}
 motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
 arm_name = "myArm"
 
-// See frame system documentation. Objects have a frame created with name
-// "<name>_offset" to represent the transformation from the object's parent to the location of
-// the object. The distal end of the "_offset" frame is the origin of the named frame.
+# See frame system documentation. Objects have a frame created with name
+# "<name>_offset" to represent the transformation from the object's parent to the location of
+# the object. The distal end of the "_offset" frame is the origin of the named frame.
 arm_base = arm_name + "_offset"
 
-// create a geometry representing the table to which the arm is attached
+# Create a geometry representing the table to which the arm is attached.
 table = Geometry(center=Pose(x=0, y=0, z=-20), box=RectangularPrism(dims_mm=Vector3(x=2000, y=2000, z=40)))
 tableFrame = GeometriesInFrame(reference_frame=arm_name, geometries=[table])
 
-// create a geometry 200mm behind the arm to block it from leaning back too much
+# Create a geometry 200mm behind the arm to block it from leaning back too much.
 backboard = Geometry(center=Pose(x=-200, y=0, z=350), box=RectangularPrism(dims_mm=Vector3(x=20, y=10000, z=800)))
 backboardFrame = GeometriesInFrame(reference_frame=arm_base, geometries=[backboard])
 
 worldstate = WorldState(obstacles=[tableFrame, backboardFrame] )
 
-// Get the viam resource name for our arm
+# Get the Viam resource name for our arm
 for resname in robot.resource_names:
     if resname.name == arm_name:
        armRes = resname
 
-// the goal will be a point 300mm directly in front of our camera
-// The orientation of the pose will be the direction from which we will grab it.
-// As the pose is given in the frame of the camera, whose orientation is o_z = -1,
-// giving the pose an orientation of o_z=1 relative to the camera will mean the arm
-// will move to that point with an orientation of o_z=-1 relative to `world`, which
-// means that it will be pointing downwards at the goal point.
+# The goal will be a point 300mm directly in front of our camera.
+# The orientation of the pose will be the direction from which we will grab it.
+# As the pose is given in the frame of the camera, whose orientation is o_z = -1,
+# giving the pose an orientation of o_z=1 relative to the camera will mean the arm
+# will move to that point with an orientation of o_z=-1 relative to `world`, which
+# means that it will be pointing downwards at the goal point.
 goal_pose = Pose(x=0, y=0, z=300, o_x=0, o_y=0, o_z=1, theta=0)
-// note that pieces whose values are 0 will be filled in with 0s automatically
-// and can be left blank. They are shown here only for demonstration purposes.
+# Note that pieces whose values are 0 will be filled in with 0s automatically
+# and can be left blank. They are shown here only for demonstration purposes.
 
-// Move the arm. As the goal pose is relative to the camera, the arm will wind up
-// with a final pose relative to `world` of {x=600,y=0,z=400, o_z=-1}
+# Move the arm. As the goal pose is relative to the camera, the arm will wind up
+# with a final pose relative to `world` of {x=600,y=0,z=400, o_z=-1}
 await motion.move(component_name=armRes,destination=PoseInFrame(reference_frame="cam",pose=goal_pose),world_state=worldstate, extra={})
 
-// create an extra param which will cause the arm to move linearly
+# Create an extra param which will cause the arm to move linearly
 extra = {"motion_profile": "linear", "line_tolerance": 0.2}
 
-// Create a new goal pose. This will move the arm 150mm in its local +Z direction.
-// Since the arm's orientation relative to World is o_z=-1, the arm will wind up
-// with a final pose relative to `world` of {x=600,y=0,z=250, o_z=-1}
+# Create a new goal pose. This will move the arm 150mm in its local +Z direction.
+# Since the arm's orientation relative to World is o_z=-1, the arm will wind up
+# with a final pose relative to `world` of {x=600,y=0,z=250, o_z=-1}
 goal_pose = Pose(x=0, y=0, z=150, o_x=0, o_y=0, o_z=1, theta=0)
 
-// Move the arm with our new command. Notice the changed destination construction
+# Move the arm with our new command. Notice the changed destination construction.
 motion.move(component_name=armRes,destination=PoseInFrame(reference_frame="myArm",pose=goal_pose),world_state=worldstate, extra=extra)
 
 ```
@@ -195,7 +196,7 @@ The following code is a minumal example using the [Viam Python SDK](https://pyth
 from viam.components.gripper import Gripper
 from viam.services.motion import MotionServiceClient
 
-// assume that the connect function is written and will return a valid robot
+# Assume that the connect function is written and will return a valid robot. 
 robot = await connect()
 
 motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
@@ -210,7 +211,7 @@ from viam.components.gripper import Gripper
 from viam.services.motion import MotionServiceClient
 from viam.proto.common import Transform, PoseInFrame, Pose
 
-// assume that the connect function is written and will return a valid robot
+# Assume that the connect function is written and will return a valid robot. 
 robot = await connect()
 
 motion = MotionServiceClient.from_robot(robot=robot, name="builtin")

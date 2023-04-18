@@ -73,7 +73,7 @@ Follow [these instructions](../../../program/extend/modular-resources/add-rplida
 Now that you've added your Rplidar device as a modular component of your robot, you can edit your robot's configuration along with the Rplidar module to add Cartographer as a `SLAM` service with the attribute `use_live_data: true` [specifying live mode](../#general-attributes).
 
 1. Go to your robot's page on the [Viam app](https://app.viam.com/).
-2. On the **CONFIG** tab, click the **SERVICES** sub tab.
+2. On the **config** tab, click the **Services** sub tab.
 3. Create a service with type `slam`, model `cartographer`, and a name of your choice.
 4. Paste the following into the **Attributes** field of your new service:
 
@@ -95,7 +95,7 @@ Now that you've added your Rplidar device as a modular component of your robot, 
 
     {{%expand "Click here if you prefer to use Raw JSON to build your service" %}}
 
-In the **CONFIG** tab, select the **Raw JSON** mode, then copy/paste the following configuration:
+In the **config** tab, select the **Raw JSON** mode, then copy/paste the following configuration:
 
 ```json
   "services": [
@@ -195,6 +195,12 @@ At this point, your complete configuration should look like:
 
   ``` json
   {
+    "modules": [
+      {
+        "executable_path": "/usr/local/bin/rplidar-module",
+        "name": "rplidar_module"
+      }
+    ],
     "components": [
       {
         "namespace": "rdk",
@@ -222,18 +228,12 @@ At this point, your complete configuration should look like:
             "max_range": "12"
           },
           "port": "localhost:8083",
-          "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR<",
+          "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
           "delete_processed_data": false
         },
         "model": "cartographer",
         "name": "run-slam",
         "type": "slam"
-      }
-    ],
-    "modules": [
-      {
-        "executable_path": "/Users/<YOUR_USERNAME>/rplidar/bin/rplidar-module",
-        "name": "rplidar_module"
       }
     ]
   }
@@ -242,7 +242,7 @@ At this point, your complete configuration should look like:
   {{% /tab %}}
   {{< /tabs >}}
 
-1. Head over to the **CONTROL** tab and click on the drop-down menu matching the `name` of the service you created.
+1. Head over to the **control** tab and click on the drop-down menu matching the `name` of the service you created.
 2. Change the **Refresh frequency** to your desired frequency, move the Rplidar device around slowly, and watch a map start to appear.
 
 ## Run Cartographer in Offline Mode with a Dataset
@@ -283,7 +283,7 @@ If you don't already have a dataset in `data_dir/data` from running SLAM in live
 Now that you have chosen a dataset that the service can use to build its map, you can edit your robot's configuration to add Cartographer as a `SLAM` service with the attribute `use_live_data: false` [specifying offline mode](../#general-attributes).
 
 1. Go to your robot's page on [the Viam app](https://app.viam.com/robots).
-2. In the **CONFIG** tab, select the **Raw JSON** mode.
+2. In the **config** tab, select the **Raw JSON** mode.
 3. Copy the following JSON code:
 
     ```json
@@ -316,7 +316,7 @@ Now that you have chosen a dataset that the service can use to build its map, yo
 4. Change `data_dir` to match the path to your dataset on your machine.
 See [SLAM: Data Directory](../#data_dir-data-directory) for more information and notes on structure.
 1. Save the config.
-2. Navigate to the **CONTROL** tab and click on the drop-down menu with the name of the service you created.
+2. Navigate to the **control** tab and click on the drop-down menu with the name of the service you created.
 3. Refresh until the map appears, or change the **Refresh frequency** to your desired frequency.
 
 {{% alert title="Tip" color="tip" %}}
@@ -325,6 +325,11 @@ Make sure to do this while your terminal is at the home directory level (denoted
 {{% /alert %}}
 
 ## Troubleshooting
+
+### Tip: Lidar Mounting for the Viam Rover
+
+If you have a Viam Rover and need a mount for your RPLidar, you can 3D print an adapter plate.
+The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/VR1-22-A001/blob/master/CAD/RPIidar_adapter.STL).
 
 ### Issue: Maps JPEG not Appearing in UI
 
@@ -340,9 +345,8 @@ If maps are not building the way you expect, make sure your Rplidar is secure an
 
 ### Issue: Offline mode produces an error after restart
 
-If there is a saved map in `data_dir/map` and saved data in `data_dir/data` from a previous run, then offline mode
-may error at startup, since the data has already been incorporated into the map. If that occurs, you can
-clear `data_dir/map` to rerun the dataset in offline mode.
+If there is a saved map in `data_dir/map` and saved data in `data_dir/data` from a previous run, then offline mode may error at startup, since the data has already been incorporated into the map.
+If that occurs, you can clear `data_dir/map` to rerun the dataset in offline mode.
 
 ## Next Steps
 

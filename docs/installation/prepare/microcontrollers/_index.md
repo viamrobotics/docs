@@ -6,7 +6,7 @@ simple_list: false
 type: docs
 image: "/installation/img/thumbnails/esp32-espressif.png"
 imageAlt: "E S P 32 - espressif"
-description: "Set up the Expressif ESP32 with the micro-RDK."
+description: "Set up the Espressif ESP32 with the micro-RDK."
 aliases:
     - /installation/microcontrollers
 # SMEs: Nicolas Menard
@@ -16,7 +16,7 @@ aliases:
 
 ## Hardware Requirements
 
-You need an an Expressif ESP32 microcontroller to use the micro-RDK.
+You need an an Espressif ESP32 microcontroller to use the micro-RDK.
 Viam recommends purchasing the ESP32 with a development board: see development kit options [here](https://www.espressif.com/en/products/devkits).
 
 Minimal configuration: 384kB Ram 4MB flash
@@ -38,7 +38,7 @@ The following instructions cover installation for MacOS and Linux machines.
 ### Install ESP-IDF
 
 ESP-IDF is the development framework for Espressif SoCs (System-on-Chips), supported on Windows, Linux and macOS.
-You need to install it to be able to install the micro-RDK on your Expressif ESP32 microcontroller.
+You need to install it to be able to install the micro-RDK on your Espressif ESP32 microcontroller.
 
 Start by completing Step 1 of [these instructions](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html), following the appropriate steps for your development machine's architecture, and then return here.
 
@@ -147,7 +147,7 @@ To install the Micro-RDK on your ESP32 board:
 ### Create a New Robot
 
 Navigate to [the Viam app](https://app.viam.com) and create a new robot in your desired location.
-Keep your `Mode` and `Architecture` selections at default, and skip the instructions in the **SETUP** tab for now as the setup instructions there are not for microcontrollers.
+Keep your `Mode` and `Architecture` selections at default, and skip the instructions in the **setup** tab for now as the setup instructions there are not for microcontrollers.
 
 ### Generate a New Project from the Micro-RDK Template
 
@@ -162,7 +162,7 @@ If you would like, you can use `mkdir` to initialize a new repository in the dir
 You will be prompted to paste your Viam robot configuration information (`viam.json`) into the terminal.
 
 To obtain this, navigate to [the Viam app](https://app.viam.com).
-Click the **COPY VIAM-SERVER CONFIG** button on the right side of the **SETUP** tab of your robot.
+Click the **Copy viam-server config** button on the right side of the **setup** tab of your robot.
 The Micro-RDK uses the config for communication with the Viam app.
 Paste this into your terminal.
 
@@ -285,11 +285,11 @@ Add the ESP32-backed worker robot as a remote of your new controller robot to es
 
 <div style="max-width:800px;"><img src="../../img/esp32-setup/esp32-remote-creation.png" alt="Adding the ESP32 as a remote in the Viam app Config builder." ></div>
 
-1. Navigate to the **CODE SAMPLE** tab of the worker robot, click on **Remotes** and copy the `JSON`.
+1. Navigate to the **code sample** tab of the worker robot, click on **Remotes** and copy the `JSON`.
 
 ![The remotes config information](../../img/microcontroller/copy-remotes-json.png)
 
-2. Navigate to the **CONFIG** tab of the control robot, select the `Remotes` sub-tab, select the `JSON` mode and click **Create Remote**.
+2. Navigate to the **config** tab of the control robot, select the `Remotes` sub-tab, select the `JSON` mode and click **Create Remote**.
 
 ![Create remote menu](../../img/microcontroller/create-remote.png)
 

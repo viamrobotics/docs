@@ -92,7 +92,7 @@ For an example see [Configuration](#configuration).
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **CONFIG** tab, and click on **SERVICES**.
+Select the **config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
@@ -123,7 +123,7 @@ For example:
 }
 ```
 
-Click **SAVE CONFIG** and head to the **COMPONENTS** tab.
+Click **Save config** and head to the **Components** tab.
 
 {{%expand "You can also configure the entire Vision Service and segmenter in raw JSON" %}}
 

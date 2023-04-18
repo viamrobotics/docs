@@ -6,8 +6,7 @@ type: "docs"
 description: "A camera captures 2D or 3D images and sends them to the computer controlling the robot."
 no_list: true
 tags: ["camera", "components"]
-image: "/components/img/components/camera.png"
-imageAlt: "camera"
+icon: "/components/img/components/camera.svg"
 # SMEs: Bijan, vision team
 ---
 

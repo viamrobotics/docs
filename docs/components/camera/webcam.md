@@ -14,7 +14,7 @@ If the camera drivers are among those in [this mediadevices repository](https://
 {{< tabs name="Configure a Webcam" >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab, navigate to the **Create Component** menu.
+On the **Components** subtab, navigate to the **Create Component** menu.
 Enter a name for your camera, select the type `camera`, and select the `webcam` model.
 
 <img src="../img/create-webcam.png" alt="Creation of webcam camera in the Viam app config builder." style="max-width:500px" />

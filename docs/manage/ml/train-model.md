@@ -4,6 +4,8 @@ linkTitle: "Train Model"
 weight: 40
 type: "docs"
 tags: ["data management", "ml", "model training"]
+aliases:
+    - /manage/data/train-model/
 description: "Train an image classification model on labeled image data."
 # SME: Aaron Casas
 ---
@@ -50,7 +52,7 @@ When you've tagged all the images click on the **TRAIN MODEL** button in the top
 A **Training** side menu opens.
 The model that you configure to be training will train on all images part of the current filter.
 
-1. Select **NEW MODEL**.
+1. Select **New Model**.
 2. Specify a **Model Name**.
 3. Select a **Classification Type**:
     - **Single Label**: predicts one label per image
@@ -63,12 +65,31 @@ The model that you configure to be training will train on all images part of the
 
 ![Train model menu](../img/train-model-menu.png)
 
-The model now starts training and you can follow its process in the **Training** section of the **MODELS** page.
+The model now starts training and you can follow its process in the **Training** section of the **Models** page.
 
 Once the model has finished training, it becomes visible in the **Models** section of the page.
 
 ![The trained model](../img/stars-model.png)
 
+### Train a new version of a model
+
+If you [deploy a model](../../../services/ml) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.
+If you train a new version of that model, Viam will automatically deploy the new version to the robot and replace the old version.
+
+{{< alert title="Note" color="note" >}}
+The previous model remains unchanged when you are training a new version of a model and is not used as input.
+If you are training a new model, you need to again select the images to train on because the model will be built from scratch.
+{{< /alert >}}
+
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [Raw JSON robot configuration](../../configuration/#the-config-tab).
+
+You can get the version number from a specific model version by clicking on **COPY** on the model on the model page.
+The model package config looks like this:
+
+```json
+{"package":"<model_id>/allblack","version":"1234567891011","name":"<model_name>"}
+```
+
 ## Next Steps
 
-To deploy your model to your robot, see [deploy model](../deploy-model).
+To deploy your model to your robot, see [deploy model](../../../services/ml).

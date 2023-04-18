@@ -48,12 +48,12 @@ Use the following configuration for an input controller of model `webgamepad`:
 Connect your controller to your computer.
 Follow the instructions included with your gamepad to make this connection.
 
-If you haven't done so already, create a robot in [the Viam app](https://app.viam.com), and follow the instructions in the **SETUP** tab to start `viam-server` on your computer and connect to the robot.
+If you haven't done so already, create a robot in [the Viam app](https://app.viam.com), and follow the instructions in the **setup** tab to start `viam-server` on your computer and connect to the robot.
 
-Then, click on the robot's **CONFIG** tab and configure an `input_controller` component of model `webgamepad` and name `WebGamepad`, as shown above.
+Then, click on the robot's **config** tab and configure an `input_controller` component of model `webgamepad` and name `WebGamepad`, as shown above.
 Save the config.
 
-Next, navigate to the **CONTROL** tab.
+Next, navigate to the **control** tab.
 You should see a `WebGamepad` drop-down menu.
 Click on the drop-down menu to expand it.
 Click **Enable**, and press a button on your controller.

@@ -7,6 +7,13 @@
 	</header> -->
 	<h1>{{ .Title }}</h1>
 
+	{{ if .Draft }}
+	<div class="alert alert-caution" role="alert">
+		<h4 class="alert-heading">DRAFT</h4>
+		<p>This page is a draft and not visible in the published documentation.</p>
+	</div>
+	{{ end }}
+
 	{{ .Content }}
 
 	{{ if ne .Params.no_list true}}
@@ -27,15 +34,20 @@
 				  </video>
 				  {{ end }}
 				{{ if .Params.image }}
-				  <div class="hover-card-img">
+				<div class="hover-card-img" {{ if .Params.style }}style="{{ .Params.style }}"{{ end }}>
 					<img src="{{relURL (substr .Params.image 1)}}" alt="{{ .Params.imageAlt }}" width="100%" />
 				  </div>
 				{{ end }}
-				<div>
-				  <h4>
+				{{ if .Params.icon }}
+				<div class="hover-card-icon">
+					<img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" width="100%" />
+				</div>
+				{{ end }}
+				<div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
+    				<h4>
 					{{ if .Params.title_overwrite }} {{ .Params.title_overwrite }} {{ else }} {{ if .LinkTitle }} {{ .LinkTitle }} {{ else }} Untitled {{ end }} {{ end }}
-				  </h4>
-				  <p>{{ if .Description }} {{ .Description }} {{ else }}  {{ end }}</p>
+					</h4>
+					<p>{{ if .Description }} {{ .Description }} {{ else }}  {{ end }}</p>
 				</div>
 			</a>
 			</div>

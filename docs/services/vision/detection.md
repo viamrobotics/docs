@@ -129,7 +129,7 @@ You can use one of these architectures or build your own.
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **CONFIG** tab, and click on **SERVICES**.
+Select the **config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
@@ -159,7 +159,7 @@ For example:
 }
 ```
 
-Click **SAVE CONFIG** and head to the **COMPONENTS** tab.
+Click **Save config** and head to the **Components** tab.
 
 {{%expand "You can also configure the entire Vision Service and detector in raw JSON" %}}
 
@@ -217,9 +217,9 @@ To be able to interact with the Vision Service you must:
 1. Configure a physical [camera component](../../../components/camera).
 2. Configure a [transform camera](../../../components/camera/transform) to view output from the detector overlaid on images from the physical camera.
 
-After adding the component and its attributes, click **SAVE CONFIG**.
+After adding the component and its attributes, click **Save config**.
 
-Wait for the robot to reload, and then go to the **CONTROL** tab to test the stream of detections.
+Wait for the robot to reload, and then go to the **control** tab to test the stream of detections.
 
 ## Code
 

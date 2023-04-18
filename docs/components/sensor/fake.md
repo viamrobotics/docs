@@ -16,15 +16,15 @@ Configure a `fake` sensor as follows:
 {{< tabs name="Configure a Fake Sensor" >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
+On the **Components** subtab of your robot's page in [the Viam app](https://app.viam.com), navigate to the **Create Component** menu.
 Enter a name for your sensor, select the type `sensor`, and select the `fake` model.
 
-![An example configuration for a fake sensor in the Viam app Config Builder. Everything is left blank.](../img/fake-sensor-ui-config.png)
+![An example configuration for a fake sensor in the Viam app Config Builder. Attributes are left blank.](../img/fake-sensor-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-```json-viam {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "name": <"your_sensor_name">,
     "type": "sensor",

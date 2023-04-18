@@ -6,7 +6,7 @@ no_list: true
 type: "docs"
 description: "A device that sends information about the outside world to the computer controlling a robot."
 tags: ["sensor", "components"]
-icon: "img/components/sensor.png"
+icon: "/components/img/components/sensor.svg"
 # SME: #team-bucket
 ---
 
@@ -48,10 +48,10 @@ For an example of creating a custom component, see a [WiFi strength sensor built
 
 ## Control your sensor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **CODE SAMPLE** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding APO method calls as shown in the follow examples.
+Then control your robot programmatically by adding API method calls as shown in the following examples.
 
 These examples assumes you have a sensor called "my_sensor" configured as a component of your robot.
 If your sensor has a different name, change the `name` in the code.
@@ -86,7 +86,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_sensor = Sensor.from_robot(robot=robot, name='my_sensor')
 
 # Get the readings provided by the sensor.
-positions = await my_sensor.get_readings()
+readings = await my_sensor.get_readings()
 ```
 
 {{% /tab %}}

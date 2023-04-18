@@ -170,7 +170,7 @@ Feel free to change these dimensions, including thickness (the Z coordinate in t
 Additional obstacles can also be *appended* as desired.
 
 {{< alert title="Tip" color="note" >}}
-Within the app, the **Frame System** tab in the **CONFIG** section of your robot gives you the ability to experiment with various geometry representations with better visual feedback.
+Within the app, the **Frame System** tab in the **config** section of your robot gives you the ability to experiment with various geometry representations with better visual feedback.
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
@@ -209,9 +209,6 @@ await motion_service.move(component_name=my_arm_resource, destination=test_start
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-Because of ongoing experimental API changes, we must pass in a `slam` service resource name when using the Motion service to `Move`.
-Add `"go.viam.com/rdk/services/slam"` to your import list to provide access to the [SLAM Service](/services/slam).
-This tutorial will not cover any other SLAM content.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Generate a sample "start" pose to demonstrate motion
@@ -221,7 +218,7 @@ testStartPose := spatialmath.NewPose(
 )
 testStartPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, testStartPose)
 
-_, err = motionService.Move(context.Background(), myArmResource, testStartPoseInFrame, worldState, nil, slam.Named(""), nil)
+_, err = motionService.Move(context.Background(), myArmResource, testStartPoseInFrame, worldState, nil, nil)
 if err != nil {
   logger.Fatal(err)
 }
@@ -246,7 +243,7 @@ This is possible because the Motion Service considers other components of the ro
 We need to do several things to prepare a new gripper component for motion.
 
 1. Go back to your robot configuration in the Viam app.
-2. Under the **COMPONENTS** section, add a new `gripper` component to your robot with the following attributes:
+2. Under the **Components** section, add a new `gripper` component to your robot with the following attributes:
     * Set `myGripper` as the **Name** of this new component
     * Set the **Type** to `gripper`
     * Set the **Model** to `fake`
@@ -297,7 +294,7 @@ gripperPoseRev := spatialmath.NewPose(
 )
 gripperPoseRevInFrame := referenceframe.NewPoseInFrame(gripperName, gripperPoseRev) // Note the change in frame name
 
-_, err = motionService.Move(context.Background(), gripperResource, gripperPoseRevInFrame, worldState, nil, slam.Named(""), nil)
+_, err = motionService.Move(context.Background(), gripperResource, gripperPoseRevInFrame, worldState, nil, nil)
 if err != nil {
   logger.Fatal(err)
 }
@@ -436,7 +433,6 @@ import (
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/robot/client"
   "go.viam.com/rdk/services/motion"
-  "go.viam.com/rdk/services/slam"
   "go.viam.com/rdk/spatialmath"
   "go.viam.com/rdk/utils"
   "go.viam.com/utils/rpc"
@@ -543,7 +539,7 @@ func main() {
   )
   testStartPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, testStartPose)
 
-  _, err = motionService.Move(context.Background(), myArmResource, testStartPoseInFrame, worldState, nil, slam.Named(""), nil)
+  _, err = motionService.Move(context.Background(), myArmResource, testStartPoseInFrame, worldState, nil, nil)
   if err != nil {
     logger.Fatal(err)
   }
@@ -558,7 +554,7 @@ func main() {
   )
   gripperPoseRevInFrame := referenceframe.NewPoseInFrame(gripperName, gripperPoseRev) // Note the change in frame name
 
-  _, err = motionService.Move(context.Background(), gripperResource, gripperPoseRevInFrame, worldState, nil, slam.Named(""), nil)
+  _, err = motionService.Move(context.Background(), gripperResource, gripperPoseRevInFrame, worldState, nil, nil)
   if err != nil {
     logger.Fatal(err)
   }
