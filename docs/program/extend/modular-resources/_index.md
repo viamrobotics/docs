@@ -81,13 +81,16 @@ A configured *module* can make one or more *modular resources* available for con
 
 Code a module in the Go or Python programming languages with [Viam's SDKs](/program/sdk-as-client) that does the following:
 
-1. Implements a new resource.
+1. Implements a new resource, including implementing any methods the Viam RDK defines for the API of a built-in type if defining a new model (ex. `rdk:component:base`)
 
 2. Validates the module and registers the component in the Viam RDK's [global registry of robotic parts](https://github.com/viamrobotics/rdk/blob/main/registry/registry.go).
 
 For example:
 
-{{%expand "Click to view an example of a module implementing a new model of the built-in base component type" %}}
+{{%expand "Click to view example code from a module that is implementing a new model of the built-in base component type" %}}
+
+{{< tabs name="Base Model Modules" >}}
+{{% tab name="Go" %}}
 
 ``` go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls.)
@@ -112,14 +115,14 @@ import (
     "go.viam.com/rdk/utils"
 )
 
+// Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase) 
+//     acme = namespace, demo = resource type, mybase = model. 
 var (
     Model            = resource.NewModel("acme", "demo", "mybase")
     errUnimplemented = errors.New("unimplemented")
 )
 
-// STEP 1: Implements the methods the Viam RDK defines for the base API.
-
-// Instantiation
+// Constructor
 func newBase(ctx context.Context, deps registry.Dependencies, config config.Component, logger golog.Logger) (interface{}, error) {
     b := &MyBase{logger: logger}
     err := b.Reconfigure(config, deps)
@@ -176,6 +179,8 @@ type MyBase struct {
     logger golog.Logger
 }
 
+// Implement the methods the Viam RDK defines for the base API (rdk:component:base)
+
 // MoveStraight: unimplemented
 func (base *MyBase) MoveStraight(ctx context.Context, distanceMm int, mmPerSec float64, extra map[string]interface{}) error {
     return errUnimplemented
@@ -225,13 +230,13 @@ func (base *MyBase) IsMoving(ctx context.Context) (bool, error) {
     return false, nil
 }
 
+// Stop the base from moving when closing a client's connection to the base
 func (base *MyBase) Close(ctx context.Context) error {
     return base.Stop(ctx, nil)
 }
 
 
-// STEP 2: Registers the component in the Viam RDK's global registry of robotic parts
-
+// Register the component in the Viam RDK's global registry of robotic parts
 func init() {
     registry.RegisterComponent(base.Subtype, Model, registry.Component{Constructor: newBase})
 
@@ -251,6 +256,17 @@ func init() {
 This example is from the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
 See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) for more information.
 
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+``` go {class="line-numbers linkable-line-numbers"}
+
+
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 {{% /expand%}}
 
 {{% alert title="Caution" color="caution" %}}
@@ -264,7 +280,7 @@ You must define all functions belonging to a built-in resource type if defining 
 
 ### Make your module executable
 
-To add a module to your robot, you need to have an [executable file](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and eleanly exits when sent a termination signal.
+To add a module to your robot, you need to have an [executable file](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
 One option is creating and save a new shell script (<file>.sh</file>) that runs your module.
