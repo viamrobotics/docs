@@ -25,10 +25,9 @@ Two key concepts exist across all Viam resources, built-in and modular, to facil
 ### APIs
 
 Every Viam [resource](/appendix/glossary/#term-resource) exposes an [Application Programming Interface (API)](https://www.ibm.com/topics/api).
-This API is the interface for a particular resource.
-This can also be understood as the protocol that a resource "speaks".
+This can also be understood as the protocol that the resource "speaks".
 
-Viam APIs are uniquely namespaced, with each resource represented as a *colon-delimited-triplet* with `namespace:type:subtype`.
+Viam APIs are uniquely namespaced, with each resource's API represented as a *colon-delimited-triplet* with `namespace:type:subtype`.
 
 For example:
 
