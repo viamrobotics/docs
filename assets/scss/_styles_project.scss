@@ -641,37 +641,34 @@ td > ul, td > ol {
 /* START TAB CSS consistency */
 
 .nav-tabs {
-  border-bottom: unset;
+    border-bottom: none; // unset from inherited styles
 }
 
 .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
-  border-color: black black white;
+  background-color: white;
+  border-bottom: 1px solid white;
 }
 
-.nav-tabs .nav-link {
-  border-width: 1px;
+.nav-tabs .nav-link, .nav-tabs .nav-link:hover {
+  border: 0px;
   border-style: solid;
-  border-color: white rgb(209, 213, 219) black  rgb(209, 213, 219);
+  border-left: 1px solid rgb(209, 213, 219);
+  border-bottom: 1px solid rgb(209, 213, 219);
   border-radius: 0;
   padding: 0.25rem 1rem;
   color: rgb(78, 79, 82);
   background-color: rgb(241, 241, 244)
 }
 
-.nav-tabs .nav-link:hover {
-  border-color: white rgb(209, 213, 219) black  rgb(209, 213, 219);
-}
-
-.nav.nav-tabs > .nav-item {
-  margin-bottom: -1px;
+.nav-tabs .nav-item:last-child {
+  border-right: 1px solid rgb(209, 213, 219);
 }
 
 .tab-content {
   padding-top: .7rem;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  margin-top: 1px;
   background-color: white;
+  border-top: 1px solid rgb(215, 215, 217);
+  border-bottom: 1px solid rgb(215, 215, 217);
 }
 
 /* END TAB CSS consistency */

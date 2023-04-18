@@ -23,23 +23,20 @@ All communication happens securely over HTTPS using secret tokens that are in a 
 
 An organizational concept, consisting of either one _{{< glossary_tooltip term_id="part" text="part" >}}_, or multiple _parts_ working closely together to complete tasks.
 
-The robot represents the configuration and entry point for one or more computers (and the {{< glossary_tooltip term_id="component" text="components" >}} they control) coupled into one logical grouping of parts that work together to complete tasks.
-A robot usually reflects a physical device, from a camera collecting images, to a wheeled rover, or an articulated arm on a factory floor.
-A robot always has a main part that receives client requests and can have one or more other parts.
-
-For information on how to manage robots, see [Robots](robots).
+For more information on robots and how to manage them, see [Robots](robots).
 
 ## Locations
 
-{{< readfile "/static/include/manage/locations.md" >}}
+In Viam, every robot belongs to a location.
+A location is a virtual grouping of robots that allows you to organize robots and manage access.
 
 ![An image of two locations, New York, and Chicago, in one organization, Good Robots](../img/locations.png)
 
-For information on how to manage locations, see [Locations](locations).
+For information on locations and how to manage them, see [Locations](locations).
 
 ## Organization
 
-{{< readfile "/static/include/manage/organizations.md" >}}
+An organization is a group of one or more locations that helps you organize your fleet and manage access.
 
 {{<gif webm_src="../img/organizations.webm" mp4_src="../img/organizations.mp4" alt="An organization for personal robots and one for work robots.">}}
 
