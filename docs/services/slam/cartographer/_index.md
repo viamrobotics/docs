@@ -349,11 +349,11 @@ The STL file for an adapter plate is available on [GitHub](https://github.com/vi
 
 ### Known Issues
 
-#### Maps JPEG not appearing in UI
+#### Maps not appearing in UI
 
-When generating a larger map, it can take a while for the Cartographer service to return the `JPEG` map.
+When generating a larger map, the Cartographer service can take a while to return and visualize the map.
 
-Reducing the frequency the Cartographer service returns the map by adjusting **Refresh frequency** should help the JPEG visualization to appear consistently.
+Reducing the frequency the Cartographer service returns the map by adjusting **Refresh frequency** should help the map visualization to appear consistently.
 
 #### Dataset mode produces an error
 

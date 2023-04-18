@@ -117,7 +117,7 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
         "depends_on": [],
         "model": "viam:lidar:rplidar",
         "attributes": {
-          "device_path": "/dev/tty.SLAB_USBtoUART"
+          "device_path": "/dev/tty.usbserial-0001"
         },
         "name": "rplidar"
       }
@@ -128,7 +128,7 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
   {{% /tab %}}
   {{< /tabs >}}
 
-1. Save the config.
+5. Save the config.
 
 Check the **logs** tab of your robot in the Viam app to make sure your Rplidar has connected and no errors are being raised.
 
