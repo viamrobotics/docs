@@ -214,7 +214,7 @@ func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, ext
     return multierr.Combine(err1, err2)
 }
 
-// Stop: stops the base from moving by stopping both motor
+// Stop: stops the base from moving by stopping both motors
 func (base *MyBase) Stop(ctx context.Context, extra map[string]interface{}) error {
     base.logger.Debug("Stop")
     err1 := base.left.Stop(ctx, extra)
@@ -267,7 +267,7 @@ This example module code is adapted from the full base demo module available on 
 It creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
 See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) for more information.
 
-<file>my_base.py</file>
+`my_base.py`
 
 ``` python {class="line-numbers linkable-line-numbers"}
 from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional
@@ -337,18 +337,17 @@ class MyBase(Base, Reconfigurable):
         pass
 
     # set_power: sets the linear and angular velocity of the left and right motors on the base
-    async def set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None,
-    ):
+    async def set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
 
     # stop: stops the base from moving by stopping both motors
     async def stop(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
 
     # is_moving: checks if the base is moving
-    async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None) -> bool:
+    async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs) -> bool:
 
 ```
 
-<file>_init_.py</file>
+`__init__py`
 
 ``` python {class="line-numbers linkable-line-numbers"}
 """
