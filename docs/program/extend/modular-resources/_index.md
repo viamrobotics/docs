@@ -17,7 +17,7 @@ With modular resources, you can:
 - Create brand new resource types
 
 `viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/internals/rdk).
-This means that functionality that the [RDK](/internals/rdk/) provides for built-in resources is also automatically provided for user-created modular resources.
+
 Two key concepts exist across all Viam resources, built-in and modular, to facilitate this: [*APIs*](#apis) and [*models*](#models).
 
 ## Key concepts
@@ -26,18 +26,15 @@ Two key concepts exist across all Viam resources, built-in and modular, to facil
 
 Every Viam [resource](/appendix/glossary/#term-resource) exposes an [Application Programming Interface (API)](https://www.ibm.com/topics/api).
 This can also be understood as the protocol that the resource "speaks".
+Each API is described through <a href="https://developers.google.com/protocol-buffers" target="_blank">protocol buffers</a>.
+Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
 
-Viam APIs are uniquely namespaced, with each resource's API represented as a *colon-delimited-triplet* with `namespace:type:subtype`.
+Each Viam resource's API is uniquely namespaced as a colon-delimited-triplet in the form of `namespace:type:subtype`.
 
 For example:
 
-- The API of built-in component [camera](/components/camera) is `rdk:component:camera`.
-It exposes methods such as `GetImage()`.
-- The API of built-in service [vision](/services/vision) is `rdk:service:vision`.
-It exposes methods such as `GetDetectionsFromCamera()`.
-
-Each API is described through <a href="https://developers.google.com/protocol-buffers" target="_blank">protocol buffers</a>.
-Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
+- The API of built-in component [camera](/components/camera) is `rdk:component:camera`, which exposes methods such as `GetImage()`.
+- The API of built-in service [vision](/services/vision) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
 
 {{% alert title="Note" color="note" %}}
 You can see built-in Viam resource APIs in the <a href="https://github.com/viamrobotics/api" target="_blank">Viam GitHub</a>.
@@ -46,15 +43,14 @@ You can see built-in Viam resource APIs in the <a href="https://github.com/viamr
 ### Models
 
 A *model* descrines a specific implementation of a resource that implements this resource's API.
+Models allow you to control different versions of resource types with a consistent interface.
 
-Models allow you to control any number of versions of a given resource with a consistent interface.
-This is powerful, because you have all the same methods for interfacing with different models of the same component type.
+For example:
 
-For example, some DC motors can be controlled with GPIO, which you can interface with in different ways depending on the attached controlling hardware.
-Other DC motors are controlled with various serial protocols.
-This is simplified with Viam, as any motor model that implements the *rdk:component:motor* API can be powered with the `SetPower()` method.
+- Some DC motors use just [GPIO](/components/board/#using-gpio), while other DC motors use serial protocols like [SPI bus](/components/board/#spi-bus).
+- Regardless, any motor model that implements the *rdk:component:motor* API can be powered with the `SetPower()` method.
 
-Models are also represented by *colon-delimited-triplets* with `namespace:family:name`.
+Models are also uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
 
 For example:
 
@@ -71,12 +67,12 @@ Add a modular resource to your robot configuration in five steps:
 1. Code a module in Go or Python that implements a new resource and registers the component in the Viam RDK's [global registry of robotic parts](https://github.com/viamrobotics/rdk/blob/main/registry/registry.go).
 2. Create an executable file that runs your module.
 3. Save the executable in a location your `viam-server` instance can access.
-4. Add a *module* referencing this executable to the configuration of your robot.
-5. Add a new component or service referencing the custom resource provided by the configured *module* to the configuration of your robot.
+4. Add a **module** referencing this executable to the configuration of your robot.
+5. Add a new component or service referencing the custom resource provided by the configured **module** to the configuration of your robot.
 
 {{% alert title="Modules vs. modular resources" color="tip" %}}
 
-A configured *module* can make one or more *modular resources* available for configuration.
+A configured **module** can make one or more *modular resources* available for configuration.
 
 {{% /alert %}}
 
@@ -90,13 +86,13 @@ Code a module in the Go or Python programming languages with [Viam's SDKs](/prog
 
 For example:
 
-{{%expand "Click to view example code from a module that is implementing a new model of the base component built-in resource" %}}
+{{%expand "Click to view example code from a module implementing a new model of the base component built-in resource" %}}
 
 {{< tabs name="Base Model Modules" >}}
 {{% tab name="Go" %}}
 
 This example module code is adapted from the full demo module available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
-See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) for more information.
+See [Base API Methods](/components/base#api) and [Motor API Methods](/components/motor#api) for more information.
 
 ``` go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls.)
@@ -204,10 +200,12 @@ func (base *MyBase) SetVelocity(ctx context.Context, linear, angular r3.Vector, 
 
 // SetPower: sets the linear and angular velocity of the left and right motors on the base
 func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
-    base.logger.Debugf("SetPower Linear: %.2f Angular: %.2f", linear.Y, angular.Z)
+    // stop the base if absolute value of linear and angular velocity is less than .01 
     if math.Abs(linear.Y) < 0.01 && math.Abs(angular.Z) < 0.01 {
         return base.Stop(ctx, extra)
     }
+
+    // use linear and angular velocity to calculate percentage of max power to pass to SetPower for left & right motors 
     sum := math.Abs(linear.Y) + math.Abs(angular.Z)
     err1 := base.left.SetPower(ctx, (linear.Y-angular.Z)/sum, extra)
     err2 := base.right.SetPower(ctx, (linear.Y+angular.Z)/sum, extra)
@@ -217,12 +215,14 @@ func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, ext
 // Stop: stops the base from moving by stopping both motors
 func (base *MyBase) Stop(ctx context.Context, extra map[string]interface{}) error {
     base.logger.Debug("Stop")
+
     err1 := base.left.Stop(ctx, extra)
     err2 := base.right.Stop(ctx, extra)
+
     return multierr.Combine(err1, err2)
 }
 
-// IsMoving: checks if the base is moving
+// IsMoving: checks if either motor on the base is moving with motors' IsPowered
 func (base *MyBase) IsMoving(ctx context.Context) (bool, error) {
     for _, m := range []motor.Motor{base.left, base.right} {
         isMoving, _, err := m.IsPowered(ctx, nil)
@@ -240,7 +240,6 @@ func (base *MyBase) IsMoving(ctx context.Context) (bool, error) {
 func (base *MyBase) Close(ctx context.Context) error {
     return base.Stop(ctx, nil)
 }
-
 
 // Register the component in the Viam RDK's global registry of robotic parts
 func init() {
@@ -262,15 +261,13 @@ func init() {
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-This example module code is adapted from the full base demo module available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and the full `myGizmo` demo module available on the [Viam Python SDK Github](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/module/src/gizmo).
+This example module code is adapted from the full base demo module available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
+See [Base API Methods](/components/base#api) and [Motor API Methods](/components/motor#api) for more information.
 
-It creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
-See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) for more information.
-
-`my_base.py`
+<file>my_base.py</file>
 
 ``` python {class="line-numbers linkable-line-numbers"}
-from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional
+from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional, cast
 
 from typing_extensions import Self
 
@@ -295,32 +292,37 @@ class MyBase(Base, Reconfigurable):
     acme = namespace, demo = family, mybase = name. """
     MODEL: ClassVar[Model] = Model(ModelFamily("acme"))
 
-    left: str # Left motor name
-    right: str # Right motor name
+    left: Motor # Left motor
+    right: Motor # Right motor
 
     # Constructor
     @classmethod
     def newBase(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
         base := cls(MyBase(config.name))
-        base.left = config.attributes.fields["motorL"].string_value
-        base.right = config.attributes.fields["motorR"].string_value
+        base.reconfigure(config, dependencies)
         return base
 
     # Validates JSON Configuration
     @classmethod
     def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
-        left_motor = config.attributes.fields["motorL"].string_value
-        if left_motor == "":
+        left_name = config.attributes.fields["motorL"].string_value
+        if left_name == "":
             raise Exception("A motorL attribute is required for a MyBase component.")
-        right_motor = [config.attributes.fields["motorR"].string_value]
-        if right_motor == [""]:
+        right_name= [config.attributes.fields["motorR"].string_value]
+        if right_name == "":
             raise Exception("A motorR attribute is required for a MyBase component.")
-        return [left_motor, right_motor]
+        return [left_name, right_name]
 
     # Handles attribute reconfiguration
     def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
-        self.left = config.attributes.fields["motorL"].string_value
-        self.right = config.attributes.fields["motorR"].string_value
+        left_name = config.attributes.fields["motorL"].string_value
+        right_name = config.attributes.fields["motorR"].string_value
+
+        left_motor = dependencies[Motor.get_resource_name(left_name)]
+        right_motor = dependencies[Motor.get_resource_name(right_name)]
+
+        self.left = cast(Motor, left_motor)
+        self.right = cast(Motor, right_motor)
 
     # Implement the methods the Viam RDK defines for the base API (rdk:component:base)
 
@@ -339,15 +341,27 @@ class MyBase(Base, Reconfigurable):
     # set_power: sets the linear and angular velocity of the left and right motors on the base
     async def set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
 
+        # stop the base if absolute value of linear and angular velocity is less than .01 
+        if abs(linear.y) < 0.01 and abs(angular.z) < 0.01:
+            return self.stop(extra=extra, timeout=timeout)
+
+        # use linear and angular velocity to calculate percentage of max power to pass to SetPower for left & right motors 
+        sum = abs(linear.y) + abs(angular.z)
+
+        self.left.set_power(power=((linear.y - angular.z) / sum), extra=extra, timeout=timeout)
+        self.right.set_power(power=((linear.y + angular.z) / sum), extra=extra, timeout=timeout)
+
     # stop: stops the base from moving by stopping both motors
     async def stop(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        self.left.stop(extra=extra, timeout=timeout)
+        self.right.stop(extra=extra, timeout=timeout)
 
-    # is_moving: checks if the base is moving
+    # is_moving: checks if either motor on the base is moving with motors' is_powered
     async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs) -> bool:
-
+        return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_moving(extra=extra, timeout=timeout)[0]
 ```
 
-`__init__py`
+<file>init.py</file>
 
 ``` python {class="line-numbers linkable-line-numbers"}
 """
