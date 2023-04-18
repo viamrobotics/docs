@@ -25,13 +25,16 @@ Two key concepts exist across all Viam resources, built-in and modular, to facil
 ### APIs
 
 Every Viam [resource](/appendix/glossary/#term-resource) exposes an [Application Programming Interface (API)](https://www.ibm.com/topics/api).
-This API describes the interface for the particular component or service type.
-Viam APIs are uniquely namespaced, with each resource type represented as a *colon-delimited-triplet*.
+This API is the interface for a particular resource.
+This can also be understood as the protocol that a resource "speaks".
+
+Viam APIs are uniquely namespaced, with each resource represented as a *colon-delimited-triplet* with `namespace:type:subtype`.
+
 For example:
 
-- The API of built-in component type [camera](/components/camera) is `rdk:component:camera`.
+- The API of built-in component [camera](/components/camera) is `rdk:component:camera`.
 It exposes methods such as `GetImage()`.
-- The API of built-in service type [vision](/services/vision) is `rdk:service:vision`.
+- The API of built-in service [vision](/services/vision) is `rdk:service:vision`.
 It exposes methods such as `GetDetectionsFromCamera()`.
 
 Each API is described through <a href="https://developers.google.com/protocol-buffers" target="_blank">protocol buffers</a>.
@@ -43,7 +46,7 @@ You can see built-in Viam resource APIs in the <a href="https://github.com/viamr
 
 ### Models
 
-A *model* is an implementation of a resource type that implements all or some of the API methods of a resource type's API.
+A *model* descrines a specific implementation of a resource that implements this resource's API.
 
 Models allow you to control any number of versions of a given resource with a consistent interface.
 This is powerful, because you have all the same methods for interfacing with different models of the same component type.
@@ -52,7 +55,8 @@ For example, some DC motors can be controlled with GPIO, which you can interface
 Other DC motors are controlled with various serial protocols.
 This is simplified with Viam, as any motor model that implements the *rdk:component:motor* API can be powered with the `SetPower()` method.
 
-Models are also represented by *colon-delimited-triplets*.
+Models are also represented by *colon-delimited-triplets* with `namespace:family:name`.
+
 For example:
 
 - The `rdk:builtin:gpio` model of the `rdk:component:motor` API provides RDK support for [GPIO-controlled DC motors](/components/motor/gpio/).
@@ -87,10 +91,13 @@ Code a module in the Go or Python programming languages with [Viam's SDKs](/prog
 
 For example:
 
-{{%expand "Click to view example code from a module that is implementing a new model of the built-in base component type" %}}
+{{%expand "Click to view example code from a module that is implementing a new model of the base component built-in resource" %}}
 
 {{< tabs name="Base Model Modules" >}}
 {{% tab name="Go" %}}
+
+This example module code is adapted from the full demo module available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
+See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) for more information.
 
 ``` go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls.)
@@ -116,7 +123,7 @@ import (
 )
 
 // Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase) 
-//     acme = namespace, demo = resource type, mybase = model. 
+// acme = namespace, demo = family, mybase = name. 
 var (
     Model            = resource.NewModel("acme", "demo", "mybase")
     errUnimplemented = errors.New("unimplemented")
@@ -147,7 +154,7 @@ func (cfg *MyBaseConfig) Validate(path string) ([]string, error) {
     return []string{cfg.LeftMotor, cfg.RightMotor}, nil
 }
 
-// Reconfiguration
+// Handles attribute reconfiguration
 func (base *MyBase) Reconfigure(cfg config.Component, deps registry.Dependencies) error {
     base.left = nil
     base.right = nil
@@ -196,7 +203,7 @@ func (base *MyBase) SetVelocity(ctx context.Context, linear, angular r3.Vector, 
     return errUnimplemented
 }
 
-// SetPower of the motors on the base
+// SetPower: sets the linear and angular velocity of the left and right motors on the base
 func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
     base.logger.Debugf("SetPower Linear: %.2f Angular: %.2f", linear.Y, angular.Z)
     if math.Abs(linear.Y) < 0.01 && math.Abs(angular.Z) < 0.01 {
@@ -208,7 +215,7 @@ func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, ext
     return multierr.Combine(err1, err2)
 }
 
-// Stop the base from moving: stop both motors.
+// Stop: stops the base from moving by stopping both motor
 func (base *MyBase) Stop(ctx context.Context, extra map[string]interface{}) error {
     base.logger.Debug("Stop")
     err1 := base.left.Stop(ctx, extra)
@@ -216,7 +223,7 @@ func (base *MyBase) Stop(ctx context.Context, extra map[string]interface{}) erro
     return multierr.Combine(err1, err2)
 }
 
-// Check if the base is moving
+// IsMoving: checks if the base is moving
 func (base *MyBase) IsMoving(ctx context.Context) (bool, error) {
     for _, m := range []motor.Motor{base.left, base.right} {
         isMoving, _, err := m.IsPowered(ctx, nil)
@@ -253,14 +260,90 @@ func init() {
 }
 ```
 
-This example is from the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
-See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) for more information.
-
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-``` python {class="line-numbers linkable-line-numbers"}
+This example module code is adapted from the full base demo module available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and the full `myGizmo` demo module available on the [Viam Python SDK Github](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/module/src/gizmo).
 
+It creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
+See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) for more information.
+
+``` python {class="line-numbers linkable-line-numbers"}
+from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional
+
+from typing_extensions import Self
+
+from viam.module.types import Reconfigurable
+from viam.proto.app.robot import ComponentConfig
+from viam.proto.common import ResourceName, Vector3
+from viam.resource.base import ResourceBase
+from viam.resource.types import Model, ModelFamily
+
+from viam.components.base import Base
+from viam.components.motor import Motor
+
+class MyBase(Base, Reconfigurable):
+    """
+    mybase implements a base that only supports SetPower (basic forward/back/turn controls.)
+
+    It inherents from Base, and conforms to the ``Reconfigurable`` protocol, which signifies that this component can be reconfigured.
+    It also specifies a function ``MyBase.new``, which confirms to the ``resource.types.ResourceCreator`` type required for all models.
+    """
+
+    """ Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase) 
+    acme = namespace, demo = family, mybase = name. """
+    MODEL: ClassVar[Model] = Model(ModelFamily("acme"))
+
+    left: str # Left motor name
+    right: str # Right motor name
+
+    # Constructor
+    @classmethod
+    def newBase(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+        base := cls(MyBase(config.name))
+        base.left = config.attributes.fields["motorL"].string_value
+        base.right = config.attributes.fields["motorR"].string_value
+        return base
+
+    # Validates JSON Configuration
+    @classmethod
+    def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
+        left_motor = config.attributes.fields["motorL"].string_value
+        if left_motor == "":
+            raise Exception("A motorL attribute is required for a MyBase component.")
+        right_motor = [config.attributes.fields["motorR"].string_value]
+        if right_motor == [""]:
+            raise Exception("A motorR attribute is required for a MyBase component.")
+        return [left_motor, right_motor]
+
+    # Handles attribute reconfiguration
+    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
+        self.left = config.attributes.fields["motorL"].string_value
+        self.right = config.attributes.fields["motorR"].string_value
+
+    # Implement the methods the Viam RDK defines for the base API (rdk:component:base)
+
+    # move_straight: unimplemented
+    async def move_straight(self, distance: int, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        pass
+
+    # spin: unimplemented
+    async def spin(self, angle: float, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        pass
+
+    # set_velocity: unimplemented
+    async def set_velocity( self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        pass
+
+    # set_power: sets the linear and angular velocity of the left and right motors on the base
+    async def set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None,
+    ):
+
+    # stop: stops the base from moving by stopping both motors
+    async def stop(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+
+    # is_moving: checks if the base is moving
+    async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None) -> bool:
 
 ```
 
@@ -359,7 +442,7 @@ Add these properties to your module's configuration:
   "modules": [
     {
       "name": <your-module-name>,
-      "executable_path": <path-on-your-filesystem-to/your-module-directory>
+      "executable_path": "<path-on-your-filesystem-to/your-module-directory>/<your_executable.sh>"
     }
   ]
 }
