@@ -209,6 +209,7 @@ await motion_service.move(component_name=my_arm_resource, destination=test_start
 
 {{% /tab %}}
 {{% tab name="Go" %}}
+
 ```go {class="line-numbers linkable-line-numbers"}
 // Generate a sample "start" pose to demonstrate motion
 testStartPose := spatialmath.NewPose(
