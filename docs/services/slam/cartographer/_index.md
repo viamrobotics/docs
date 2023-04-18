@@ -355,7 +355,6 @@ When generating a larger map, it will take longer for Cartographer to return the
 This can result in errors or failed requests for a map, however, this will not affect the `viam-server` or `cartographer` process.
 Re-requesting the map can and should be successful, although there is currently a fundamental limit for the size of map that can be transmitted to the UI and this issue will become more common as you approach it.
 
-
 #### Dataset mode produces an error
 
 If there is a saved map in <file>data_dir/map</file> and saved data in <file>data_dir/data</file> from a previous run, then running SLAM with an existing dataset may raise an error at startup since the data has already been incorporated into the map.
