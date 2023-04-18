@@ -129,6 +129,24 @@ func newBase(ctx context.Context, deps registry.Dependencies, config config.Comp
     return b, err
 }
 
+// Defines what the JSON configuration should look like
+type MyBaseConfig struct {
+    LeftMotor  string `json:"motorL"`
+    RightMotor string `json:"motorR"`
+}
+
+// Validates JSON configuration
+func (cfg *MyBaseConfig) Validate(path string) ([]string, error) {
+    if cfg.LeftMotor == "" {
+        return nil, fmt.Errorf(`expected "motorL" attribute for mybase %q`, path)
+    }
+    if cfg.RightMotor == "" {
+        return nil, fmt.Errorf(`expected "motorR" attribute for mybase %q`, path)
+    }
+
+    return []string{cfg.LeftMotor, cfg.RightMotor}, nil
+}
+
 // Reconfiguration
 func (base *MyBase) Reconfigure(cfg config.Component, deps registry.Dependencies) error {
     base.left = nil
@@ -151,24 +169,6 @@ func (base *MyBase) Reconfigure(cfg config.Component, deps registry.Dependencies
 
     // Stopping motors at reconfiguration
     return multierr.Combine(base.left.Stop(context.Background(), nil), base.right.Stop(context.Background(), nil))
-}
-
-// Defines what the JSON for configuration should look like
-type MyBaseConfig struct {
-    LeftMotor  string `json:"motorL"`
-    RightMotor string `json:"motorR"`
-}
-
-// Validates JSON for configuration
-func (cfg *MyBaseConfig) Validate(path string) ([]string, error) {
-    if cfg.LeftMotor == "" {
-        return nil, fmt.Errorf(`expected "motorL" attribute for mybase %q`, path)
-    }
-    if cfg.RightMotor == "" {
-        return nil, fmt.Errorf(`expected "motorR" attribute for mybase %q`, path)
-    }
-
-    return []string{cfg.LeftMotor, cfg.RightMotor}, nil
 }
 
 // Attributes of the base
@@ -208,7 +208,7 @@ func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, ext
     return multierr.Combine(err1, err2)
 }
 
-// Stop the base
+// Stop the base from moving: stop both motors.
 func (base *MyBase) Stop(ctx context.Context, extra map[string]interface{}) error {
     base.logger.Debug("Stop")
     err1 := base.left.Stop(ctx, extra)
@@ -259,7 +259,7 @@ See [Base API Methods](/components/base) and [GitHub](https://github.com/viamrob
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-``` go {class="line-numbers linkable-line-numbers"}
+``` python {class="line-numbers linkable-line-numbers"}
 
 
 ```
