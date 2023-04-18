@@ -70,16 +70,6 @@ You can access your logs from the **logs** tab in the [Viam app](https://app.via
 
 You can also change your timestamp format to ISO or Local depending on your preference.
 
-### Code Sample
-
-To start programming your robot, go to the **code sample** tab which contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
-
-For more information on the SDKs, see [Program your Robot with Viam's SDKs](../../../program/sdk-as-client/).
-
-There is also a JSON stub you can copy if you wish to have your robot communicate with another robot as a [remote](../../parts-and-remotes/).
-
-{{%  snippet "secret-share.md" %}}
-
 ### Control
 
 Once you have configured components and services for your robot, you can visually test and remotely operate them from the **control** tab in the [Viam app](https://app.viam.com).
@@ -90,6 +80,16 @@ If you use remote control in the [Viam app](https://app.viam.com) UI, all commun
 For local communication between [parts](../../parts-and-remotes#robot-parts) Viam uses gRPC or WebRTC.
 
 ![Example Camera view inside Viam app](/components/camera/img/example_camera_image.png)
+
+### Code Sample
+
+To start programming your robot, go to the **code sample** tab which contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
+
+For more information on the SDKs, see [Program your Robot with Viam's SDKs](../../../program/sdk-as-client/).
+
+There is also a JSON stub you can copy if you wish to have your robot communicate with another robot as a [remote](../../parts-and-remotes/).
+
+{{%  snippet "secret-share.md" %}}
 
 ### Security
 
