@@ -55,9 +55,9 @@ Place the example code in the `main()` function after `robot, err := client.New(
 ```go {class="line-numbers linkable-line-numbers"}
 import (
   "context"
-  "fmt"
 
   "go.viam.com/rdk/components/gripper"
+  "github.com/edaniels/golog"
 )
 
 robot, err := client.New() // Refer to CODE SAMPLE tab code
@@ -78,8 +78,7 @@ grabbed, err := myGripper.Grab(context.TODO(), nil)
 if err != nil {
     return nil, err
 }
-fmt.Println("Grabbed something?")
-fmt.Println(grabbed)
+logger.Info("Grabbed an object: %w", grabbed)
 ```
 
 {{% /tab %}}
