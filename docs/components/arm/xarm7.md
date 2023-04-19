@@ -1,16 +1,16 @@
 ---
-title: "Configure a xArm7 Arm"
+title: "Configure an xArm7 Arm"
 linkTitle: "xArm7"
 weight: 34
 type: "docs"
-description: "Configure a xArm7 arm."
+description: "Configure an xArm7 arm."
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configure a `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your robot.
+Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your robot.
 
-Configure a `xArm7` arm as follows:
+Configure an `xArm7` arm as follows:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
