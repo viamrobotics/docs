@@ -40,7 +40,7 @@ If you want to use another COMPONENT model with Viam, you can [define a custom c
 
 The COMPONENT component supports the following methods:
 
-*Use the method names in the protobuf, not the Python or Go-specific method names.*
+*Writing Instructions: Use the method names in the protobuf, not the Python or Go-specific method names.*
 
 Method Name | Description
 ----------- | -----------

@@ -20,6 +20,8 @@ Enter a name for your arm, select the `arm` type, and select the `model1` model.
 
 ![Creation of a `model1` arm in the Viam app config builder.](../img/model1-builder.png)
 
+Click **Create Component** and then fill in the attributes for your model.
+
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
