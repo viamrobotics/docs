@@ -58,7 +58,7 @@ If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/pro
 
 Go to the [Viam app](https://app.viam.com) and create a new robot.
 
-Go to the **setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](link to install docs).
+Go to the **setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation).
 
 ### Configure the camera component
 
