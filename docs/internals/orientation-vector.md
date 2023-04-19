@@ -6,7 +6,7 @@ type: "docs"
 description: "A description of Viam's orientation vector object."
 ---
 
-An _orientation vector_ specifies the angle at which an object is oriented in 3D space.
+An _orientation vector_ specifies the orientation of an object in 3D space.
 You use orientation vectors to specify relative orientations of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/).
 The first three components of this vector form an axis pointing in the same direction as the object.
 **Theta** specifies the angle of the object's rotation about that axis.
@@ -20,7 +20,7 @@ To configure the camera into the frame system, you need to know where in the roo
 
 ![A camera in a 3D space](../img/vector/orientation-vector-camera.png)
 
-**(RX, RY, RZ)** are defined by measurements starting from the corner of the room to the camera:
+**(OX, OY, OZ)** are defined by measurements starting from the corner of the room to the camera:
 
 1. Determine the starting point.
    In this case it is (0, 0, 0).
