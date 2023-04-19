@@ -16,6 +16,7 @@ Enter a name for your gripper, select the type `gripper`, and select the `softro
 
 ![Creation of a softrobotics gripper component in the Viam app config builder.](../../img/gripper/softrobotics-builder.png)
 
+Click **Create Component** and then fill in the attributes for your model.
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
@@ -84,4 +85,4 @@ Name | Inclusion | Type | Description
 `open` | **Required** | string | The pin number of the board pin wired to the open pin (D1) on the gripper controller.
 `close` | **Required** | string | The pin number of the board pin wired to the close pin (D2) on the gripper controller.
 `power` | **Required** | string | The pin number of the board pin wired to the enable pin (D3) on the gripper controller.
-`psi` | **Required** | string | Needs to be called `"psi"`, and you need to configure an analog named `"psi"` on your [board](../../board/).
+`analog_reader` | **Required** | string | Needs to be called `"psi"`, and you need to configure an [analog](../../board/#analogs) named `"psi"` on your board.
