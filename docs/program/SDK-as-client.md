@@ -266,18 +266,7 @@ To ensure intermittent internet connectivity does not interfere with the code's 
 Currently, this only works with Python code which is running on the same board that `viam-server` is running on.
 {{< /alert >}}
 
-1. Change the Python default TLS context to disable hostname checks on the TLS certificate.
-   Add the following below your Python imports:
-
-   ```python
-   ssl.create_default_context = ssl._create_unverified_context
-   ```
-
-   This changes how Python creates the SSL context during the runtime to use an unverified context.
-   The unverified context does not ensure the hostname of the certificate matches the host we are connecting with.
-   This technique is standard when creating local secure contexts.
-
-2. Change the `connect()` method to disable Webrtc and add the auth_entity in the DialOptions and use `localhost:8080`:
+1. Change the `connect()` method to disable Webrtc and add the auth_entity in the DialOptions and use `localhost:8080`:
 
     ```python {class="line-numbers linkable-line-numbers" data-line="5"}
     async def connect():
@@ -293,9 +282,9 @@ Currently, this only works with Python code which is running on the same board t
       return await RobotClient.at_address('localhost:8080', opts)
     ```
 
-3. Replace the `ROBOT_NAME` with your robot's Viam cloud address and the `PAYLOAD_SECRET` with your robot secret.
+2. Replace the `ROBOT_NAME` with your robot's Viam cloud address and the `PAYLOAD_SECRET` with your robot secret.
    Your locahost can now make a secure connection to `viam-server` locally.
-   SSL will ignore the host check and pass the `auth_entity` required by {{< glossary_tooltip term_id="grpc" >}} from the `auth_entity` dial options.
+   SSL will now check the server hostname against `auth_entity` required by {{< glossary_tooltip term_id="grpc" >}} from the `auth_entity` dial options.
 
    This ensures that you can send commands to the robot through localhost without internet connectivity.
    Note that all commands will be sent using {{< glossary_tooltip term_id="grpc" >}} only without {{< glossary_tooltip term_id="webrtc" >}}.
