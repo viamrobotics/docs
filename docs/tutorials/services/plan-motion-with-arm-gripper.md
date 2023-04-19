@@ -233,10 +233,10 @@ if err != nil {
 ## Command other components to move with the Motion Service
 
 This section will require you to add a new component to your robot.
-One device that is very commonly attached to the end of a robot arm is a *gripper*.
-Most robot arms pick up and manipulate objects in the world through the use of a gripper, so learning how to directly move a gripper is very useful.
+One device that is very commonly attached to the end of a robot arm is a [*gripper*](/components/gripper/).
+Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various Motion Service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
-This is possible because the Motion Service considers other components of the robot (through the [Frame System](/services/frame-system/) when calculating how to achieve the desired motion.
+This is possible because the Motion Service considers other components of the robot (through the [Frame System](/services/frame-system/)) when calculating how to achieve the desired motion.
 
 ### Add a gripper component
 
