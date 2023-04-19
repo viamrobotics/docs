@@ -74,14 +74,14 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
   ```
 
   {{% /tab %}}
-  {{% tab name="MacOS" %}}
+  {{% tab name="MacOS x86_64" %}}
 
   ```json
   {
     "modules": [
       {
         "executable_path": "/usr/local/bin/rplidar-module",
-        "name": "rplidar_module"
+        "name": "rplidar-module"
       }
     ],
     "components": [
@@ -92,6 +92,32 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
         "model": "viam:lidar:rplidar",
         "attributes": {
           "device_path": "/dev/tty.SLAB_USBtoUART"
+        },
+        "name": "rplidar"
+      }
+    ]
+  }
+  ```
+
+  {{% /tab %}}
+  {{% tab name="MacOS ARM64 (M1 & M2)" %}}
+
+  ```json
+  {
+    "modules": [
+      {
+        "executable_path": "/opt/homebrew/bin/rplidar-module",
+        "name": "rplidar-module"
+      }
+    ],
+    "components": [
+      {
+        "namespace": "rdk",
+        "type": "camera",
+        "depends_on": [],
+        "model": "viam:lidar:rplidar",
+        "attributes": {
+          "device_path": "/dev/tty.usbserial-0001"
         },
         "name": "rplidar"
       }
@@ -115,6 +141,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/services/slam/run-slam-cartographer" size="small" %}}
+  {{% card link="/services/slam/cartographer" size="small" %}}
   {{% card link="/services/slam" size="small" %}}
 {{< /cards >}}
