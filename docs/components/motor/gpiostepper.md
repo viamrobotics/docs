@@ -13,19 +13,16 @@ The `gpiostepper` model of the motor component supports bipolar [stepper motors]
 Viam also supports some more advanced stepper driver chips ([TMC5072](../tmc5072/), [DMC4000](../dmc4000/)) that have their own microcontrollers that handle things like speed and acceleration control.
 {{< /alert >}}
 
-## Configuration
-
-To configure a `gpiostepper` motor as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired.
-
-Then assign your motor a `name` (to identify the motor), `type` (`motor`) and `model` (`gpiostepper`), and fill in the [attributes](#required-attributes) that apply to your particular hardware.
-Refer to your motor and motor driver data sheets for specifics.
-
 {{< tabs name="gpiostepper-config">}}
 {{% tab name="Config Builder" %}}
 
-Here’s an example of a basic stepper driver config:
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter a name for your motor, select the type `motor`, and select the `gpiostepper` model.
 
-<img src="../../img/motor/gpiostepper-config-ui.png" alt="Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15, respectively." style="max-width:900px;width:100%" >
+Click **Create component** and then fill in the attributes for your model:
+
+![Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15.](../../img/motor/gpiostepper-config-ui.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -13,14 +13,15 @@ When you have a depth image and you need it to overlay on top of a color image e
 {{< tabs name="Configure an Align Color Depth Homography Camera" >}}
 {{% tab name="Config Builder" %}}
 
-On the **Components** subtab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `align_color_depth_homography` model.
 
-<img src="../img/create-align-color-depth-homography.png" alt="Creation of an align color depth homography view in the Viam app config builder." style="max-width:600px" />
+![Creation of an align color depth homography view in the Viam app config builder.](../img/create-align-color-depth-homography.png)
 
 Fill in the attributes for your align color depth homography view:
 
-<img src="../img/configure-align-color-depth-homography.png" alt="Configuration of an align color depth homography view in the Viam app config builder." />
+![Configuration of an align color depth homography view in the Viam app config builder.](../img/configure-align-color-depth-homography.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

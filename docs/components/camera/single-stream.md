@@ -23,14 +23,15 @@ Your `single_stream` camera can output:
 {{< tabs name="Configure a single Stream Camera" >}}
 {{% tab name="Config Builder" %}}
 
-On the **Components** subtab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `single_stream` model.
 
-<img src="../img/create-single-stream.png" alt="Creation of a single stream camera in the Viam app config builder." style="max-width:500px" />
+![Creation of a single stream camera in the Viam app config builder.](../img/create-single-stream.png)
 
 Fill in the attributes for your single stream camera:
 
-<img src="../img/configure-single-stream.png" alt="Configuration of a single stream camera in the Viam App config builder." />
+![Configuration of a single stream camera in the Viam App config builder.](../img/configure-single-stream.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

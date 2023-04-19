@@ -14,14 +14,15 @@ If you provide a depth image, as well as the intrinsic parameters of the camera 
 {{< tabs name="Configure an Image File Camera" >}}
 {{% tab name="Config Builder" %}}
 
-On the **Components** subtab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `image_file` model.
 
-<img src="../img/create-image-file.png" alt="Creation of an image file camera in the Viam app config builder." style="max-width:500px" />
+![Creation of an image file camera in the Viam app config builder.](../img/create-image-file.png)
 
 Fill in the attributes for your image file camera:
 
-<img src="../img/configure-image-file.png" alt="Configuration of an image file camera in the Viam app config builder." />
+![Configuration of an image file camera in the Viam app config builder.](../img/configure-image-file.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

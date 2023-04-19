@@ -14,14 +14,15 @@ The model doesn’t support streaming cameras with H264/MP4 tracks.
 {{< tabs name="Configure an rtsp camera" >}}
 {{% tab name="Config Builder" %}}
 
-On the **Components** subtab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `rtsp` model.
 
-<img src="../img/create-rtsp.png" alt="Creation of a rtsp camera in the Viam app config builder." style="max-width:600px" />
+![Creation of a rtsp camera in the Viam app config builder.](../img/create-rtsp.png)
 
 Fill in the attributes for your RTSP camera:
 
-<img src="../img/configure-rtsp.png" alt="Configuration of a rtsp camera in the Viam app config builder." />
+![Configuration of a rtsp camera in the Viam app config builder.](../img/configure-rtsp.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

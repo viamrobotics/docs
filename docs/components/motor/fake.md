@@ -10,22 +10,16 @@ description: "Configure a fake motor to test software without any hardware."
 Configuring a `fake` motor can be convenient for testing software without using any hardware.
 For example, you can use a `fake` component as a placeholder while waiting on a hardware shipment, so that other components that depend on this motor (for example, a [base](/components/base)) won't fail to initialize, and your SDK code won't throw errors when it fails to find a physical motor connected to your robot.
 
-## Configuration
-
-To configure a `fake` motor as a component of your robot, you don't need any hardware, and you don't need to configure any attributes (though you can configure [optional ones](#optional-attributes)).
-
-Just configure your `fake` motor with a name, type, and model:
-
-Field | Description
------ | -----------
-`name` | Choose a name to identify the motor.
-`type` | `motor` is the type for all motor components.
-`model` | `fake`
-
 {{< tabs name="fake-config">}}
 {{% tab name="Config Builder" %}}
 
-<img src="../../img/motor/fake-config-ui.png" alt="Screenshot of a G P I O motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter a name for your motor, select the type `motor`, and select the `fake` model.
+
+Click **Create component**:
+
+![A fake motor config.](../../img/motor/fake-config-ui.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
