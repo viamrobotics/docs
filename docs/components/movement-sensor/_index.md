@@ -33,11 +33,9 @@ Model | Supported hardware <a name="model-table"></a>
 [`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://witmotion-sensor.com/)
 [`imu-vectornav`](./imu/imu-wit) | IMUs manufactured by [VectorNav](https://www.vectornav.com/products)
 [`accel-adxl345`](./adxl345) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
-[`camera_mono`](./cameramono/) | A model that derives movement data from a [camera](/components/camera/) stream (**experimental**).
-[`mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
-[`rtk-station`](./gps/rtk-station/) | A model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module (**experimental**).
+[`camera_mono`](./cameramono/) | A model that derives movement data from a [camera](/components/camera/) stream (**experimental**)
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
-[`rtk-station`](./gps/rtk-station/) | An **experimental** model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module.
+[`rtk-station`](./gps/rtk-station/) | A model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module (**experimental**).
 [`fake`](./fake/) | Used to test code without hardware
 
 ## Control your movement sensor with Viam's client SDK libraries
