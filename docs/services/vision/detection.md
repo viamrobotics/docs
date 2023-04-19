@@ -8,7 +8,7 @@ tags: ["vision", "computer vision", "CV", "services", "detection"]
 # SMEs: Bijan, Khari
 ---
 
-*Changed in [RDK v0.3.0 and API v0.2.0](/appendix/release-notes/#2-may-2023)*
+_Changed in [RDK v0.3.0 and API v0.2.0](/appendix/release-notes/#2-may-2023)_
 
 _2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct "objects" of interest in the scene.
 Any camera that can return 2D images can use 2D object detection.
@@ -127,7 +127,6 @@ Add the Vision Service object to the services array in your raw JSON configurati
 {{< /tabs >}}
 
 The following parameters are available for a `"color_detector"`.
-For an example see [Configuration](#configuration).
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
