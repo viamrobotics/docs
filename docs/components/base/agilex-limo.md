@@ -1,5 +1,5 @@
 ---
-title: "Configure a Agilex LIMO Base"
+title: "Configure an Agilex LIMO Base"
 linkTitle: "agilex-limo"
 weight: 40
 type: "docs"
