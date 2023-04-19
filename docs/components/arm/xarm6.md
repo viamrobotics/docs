@@ -1,14 +1,14 @@
 ---
-title: "Configure a xArm6 Arm"
+title: "Configure an xArm6 Arm"
 linkTitle: "xArm6"
 weight: 34
 type: "docs"
-description: "Configure a xArm6 arm."
+description: "Configure an xArm6 arm."
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configure a `xArm6` arm to integrate a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) into your robot:
+Configure an `xArm6` arm to integrate a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

@@ -82,7 +82,7 @@ Click **Create component** and then fill in the attributes for your model:
 ```
 
 {{% /tab %}}
-{{% tab name="Example JSON" %}}
+{{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
