@@ -8,7 +8,7 @@ description: "Configure an NMEA-based GPS."
 ---
 
 A global positioning system (GPS) receives signals from satellites in the earth’s orbit to determine where it is and how fast it is going.
-All supported GPS models provide date for the `Position`, `CompassHeading` and `LinearVelocity` methods.
+All supported GPS models provide data for the `Position`, `CompassHeading` and `LinearVelocity` methods.
 You can obtain fix and correction data by using the sensor `GetReadings` method, which is available because GPSes wrap the [sensor component](../../../sensor/).
 
 The `gps-nmea` movement sensor model supports [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS units.
