@@ -219,11 +219,14 @@ Find documentation on how to use these methods here:
 - [Base](/components/base/#api)
 - [Camera](/components/camera/#api)
 - [Gantry](/components/gantry/#api)
+- [Gripper](/components/gripper/#api)
 - [Input Controller](/components/input-controller/#api)
 - [Motor](/components/motor/#api)
+- [Movement Sensor](/components/movement-sensor/#api)
+- [Sensor](/components/sensor/#api)
 - [Servo](/components/servo/#api)
 <!--
-Board & Sensor API Docs should be added soon on Viam Documentation, + Movement Sensor, Encoder, Gripper
+Board API Docs should be added soon on Viam Documentation, + Encoder
 -->
 
 You can find example code in the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1), the [Golang SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples), or the [TypeScript SDK example GitHub repository](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples).
