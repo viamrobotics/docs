@@ -266,7 +266,7 @@ To ensure intermittent internet connectivity does not interfere with the code's 
 Currently, this only works with Python code which is running on the same board that `viam-server` is running on.
 {{< /alert >}}
 
-1. Change the `connect()` method to disable Webrtc and add the auth_entity in the DialOptions and use `localhost:8080`:
+1. Change the `connect()` method to disable {{< glossary_tooltip term_id="webrtc" >}} and add the auth_entity in the DialOptions and use `localhost:8080`:
 
     ```python {class="line-numbers linkable-line-numbers" data-line="5"}
     async def connect():

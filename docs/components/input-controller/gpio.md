@@ -77,7 +77,7 @@ Be aware that complete configuration is not visible in the "Config Builder" tab:
 ```
 
 {{% /tab %}}
-{{% tab name="Example JSON" %}}
+{{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
