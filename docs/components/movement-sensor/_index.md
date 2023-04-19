@@ -33,8 +33,9 @@ Model | Supported hardware <a name="model-table"></a>
 [`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://witmotion-sensor.com/)
 [`imu-vectornav`](./imu/imu-wit) | IMUs manufactured by [VectorNav](https://www.vectornav.com/products)
 [`accel-adxl345`](./adxl345) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
+[`camera_mono`](./cameramono/) | A model that derives movement data from a [camera](/components/camera/) stream (**experimental**).
 [`mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
-[`rtk-station`](./gps/rtk-station/) | An **experimental** model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module.
+[`rtk-station`](./gps/rtk-station/) | A model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module (**experimental**).
 [`fake`](./fake/) | Used to test code without hardware
 
 ## Control your movement sensor with Viam's client SDK libraries
@@ -94,20 +95,23 @@ fmt.Println("my-imu LinearAcceleration in the x direction: ", linAccel.X)
 ## API
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
+
+{{< alert title="Tip" color="tip" >}}
 You can run `GetProperties` on your sensor for a list of its supported methods.
+{{< /alert >}}
 
 Method Name | Description | Models That Support This Method
 ----------- | ----------- | -------------------------------
-[GetPosition](#getposition) | Gets the current latitude, longitude and altitude. | GPS models
-[GetLinearVelocity](#getlinearvelocity) | Gets the current linear velocity as a 3D vector. | GPS models
-[GetAngularVelocity](#getangularvelocity) | Gets the current angular velocity as a 3D vector. | IMU models and `gyro-mpu6050`
-[GetLinearAcceleration](#getlinearacceleration) | Gets the current linear acceleration as a 3D vector. | IMU models,  `accel-adxl345`, and `gyro-mpu6050`
-[GetCompassHeading](#getcompassheading) | Gets the current compass heading in degrees. | GPS models and `imu-vectornav`
+[GetPosition](#getposition) | Get the current latitude, longitude and altitude. | GPS models
+[GetLinearVelocity](#getlinearvelocity) | Get the current linear velocity as a 3D vector. | GPS models
+[GetAngularVelocity](#getangularvelocity) | Get the current angular velocity as a 3D vector. | IMU models and `gyro-mpu6050`
+[GetLinearAcceleration](#getlinearacceleration) | Get the current linear acceleration as a 3D vector. | IMU models,  `accel-adxl345`, and `gyro-mpu6050`
+[GetCompassHeading](#getcompassheading) | Get the current compass heading in degrees. | GPS models and `imu-vectornav`
 [GetOrientation](#getorientation) | Get the current orientation. | IMU models
 [GetProperties](#getproperties) | Get the supported properties of this sensor. | all models
 [GetAccuracy](#getaccuracy) | Get the accuracy of the various sensors. | GPS models
 [GetReadings](#getreadings) | Obtain the measurements/data specific to this sensor. | all models
-[DoCommand](#docommand) | Sends or receives model-specific commands. | all models
+[DoCommand](#docommand) | Send or receives model-specific commands. | all models
 
 In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor) or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#).
 
