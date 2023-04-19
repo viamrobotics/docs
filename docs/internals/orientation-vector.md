@@ -28,6 +28,11 @@ To configure the camera into the frame system, you need to know where in the roo
    In this case it is (3, 5, 2).
 3. Subtract the starting point from the position of the camera: (3, 5, 2) - (0, 0, 0) = (3, 5, 2).
 
+{{< alert title="Note" color="note" >}}
+When you provide an orientation vector to Viam, Viam normalizes it to the unit sphere.
+Therefore the output you see may be different.
+{{< /alert >}}
+
 **Theta** describes the angle of rotation of the camera around the calculated vector.
 If you are familiar with the pitch-roll-yaw system, you can think of theta as _roll_.
 If your camera is perpendicular to one of the axes of your Frame system, 
