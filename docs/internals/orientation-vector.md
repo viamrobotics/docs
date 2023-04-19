@@ -28,11 +28,12 @@ To configure the camera into the frame system, you need to know where in the roo
    In this case it is (3, 5, 2).
 3. Subtract the starting point from the position of the camera: (3, 5, 2) - (0, 0, 0) = (3, 5, 2).
 
-**Theta** describes the angle of the camera.
+**Theta** describes the angle of rotation of the camera around the calculated vector.
+If you are familiar with the pitch-roll-yaw system, you can think of theta as _roll_.
 If your camera is perpendicular to one of the axes of your Frame system, 
 you can determine Theta by looking at the picture and changing the value to 0, 90, 180, or 270 until the orientation of the picture is correct.
 
- RX, RY, RZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
+ OX, OY, OZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
 
 ## Why Viam uses orientation vectors
 
