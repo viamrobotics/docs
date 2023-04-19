@@ -36,6 +36,8 @@ Model | Supported hardware <a name="model-table"></a>
 [`camera_mono`](./cameramono/) | A model that derives movement data from a [camera](/components/camera/) stream (**experimental**).
 [`mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
 [`rtk-station`](./gps/rtk-station/) | A model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module (**experimental**).
+[`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
+[`rtk-station`](./gps/rtk-station/) | An **experimental** model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module.
 [`fake`](./fake/) | Used to test code without hardware
 
 ## Control your movement sensor with Viam's client SDK libraries
@@ -77,16 +79,16 @@ import (
 robot, err := client.New() // Refer to CODE SAMPLE tab code
 // Grab the movement sensor from the robot
 myIMU, err := movementsensor.FromRobot(robot, "my-imu")
-if err!=nil { 
-  fmt.Println(err) 
+if err != nil {
+  logger.Fatalf("cannot get movement sensor: %v", err) 
 }
 
 // Get the current linear acceleration
 linAccel, err := myIMU.LinearAcceleration(context.Background(), map[string]interface{}{})
-if err!=nil { 
-  fmt.Println(err) 
+if err != nil { 
+  logger.Fatalf("cannot get linear acceleration: %v", err) 
 }
-fmt.Println("my-imu LinearAcceleration in the x direction: ", linAccel.X)
+logger.Info("my-imu LinearAcceleration in the x direction: ", linAccel.X)
 ```
 
 {{% /tab %}}
@@ -118,6 +120,8 @@ In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/g
 ### GetPosition
 
 Report the current GeoPoint (latitude, longitude) and altitude (in millimeters).
+
+Supported by GPS models.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -174,6 +178,8 @@ position, _ := mySensor.Position(context.TODO(), nil)
 
 Report the current linear velocity in the x, y and z directions (as a 3D vector) in millimeters per second.
 
+Supported by GPS models.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -226,6 +232,8 @@ linVel, _ := mySensor.LinearVelocity(context.TODO(), nil)
 ### GetAngularVelocity
 
 Report the current angular velocity about the x, y and z axes (as a 3D vector) in radians per second.
+
+Supported by IMU models and by `gyro-mpu6050`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -284,6 +292,8 @@ yAngVel := angVel.Y
 
 Report the current linear acceleration in the x, y and z directions (as a 3D vector) in millimeters per second per second.
 
+Supported by IMU models, `accel-adxl345`, and `gyro-mpu6050`.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -341,6 +351,8 @@ xAngVel := linAccel.X
 
 Report the current [compass heading](https://en.wikipedia.org/wiki/Heading_(navigation)) in degrees.
 
+Supported by GPS models and `imu-vectornav`.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -394,6 +406,8 @@ heading, _ := mySensor.CompassHeading(context.TODO(), nil)
 
 Report the current orientation of the sensor.
 
+Supported by IMU models.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -441,10 +455,10 @@ sensorOrientation, _ := mySensor.Orientation(context.TODO(), nil)
 // Get the orientation vector (a unit vector pointing in the same direction as the sensor,
 // plus an angle representing the sensor's rotation about that axis)
 vector := sensorOrientation.OrientationVectorDegrees()
-fmt.Println("The x component of the orientation vector: ", vector.OX)
-fmt.Println("The y component of the orientation vector: ", vector.OY)
-fmt.Println("The z component of the orientation vector: ", vector.OZ)
-fmt.Println("The number of degrees that the movement sensor is rotated about the vector: ", vector.OX)
+logger.Info("The x component of the orientation vector: ", vector.OX)
+logger.Info("The y component of the orientation vector: ", vector.OY)
+logger.Info("The z component of the orientation vector: ", vector.OZ)
+logger.Info("The number of degrees that the movement sensor is rotated about the vector: ", vector.OX)
 ```
 
 {{% /tab %}}
@@ -506,6 +520,8 @@ properties, _ := mySensor.Properties(context.TODO(), nil)
 ### GetAccuracy
 
 Get the accuracy of the sensor (and/or precision, depending on the sensor model).
+
+Supported by GPS models.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
