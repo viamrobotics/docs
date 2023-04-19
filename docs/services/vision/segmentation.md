@@ -8,6 +8,8 @@ tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 # SMEs: Bijan, Khari
 ---
 
+{{< readfile "/static/include/services/vision-breaking.md" >}}
+
 _3D Object Segmentation_ is the process of separating and returning a list of the identified "objects" from a 3D scene.
 The "objects" are a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinates of the object.
 

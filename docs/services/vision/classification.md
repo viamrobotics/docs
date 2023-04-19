@@ -8,6 +8,8 @@ tags: ["vision", "computer vision", "CV", "services", "classification"]
 # SMEs: Bijan, Khari
 ---
 
+{{< readfile "/static/include/services/vision-breaking.md" >}}
+
 _2D Image Classification_ is the process of taking a 2D image from a camera and deciding which class label, out of many, best describes the given image.
 Any camera that can return 2D images can use 2D image classification.
 

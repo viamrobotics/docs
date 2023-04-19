@@ -8,6 +8,8 @@ tags: ["vision", "computer vision", "CV", "services", "detection"]
 # SMEs: Bijan, Khari
 ---
 
+{{< readfile "/static/include/services/vision-breaking.md" >}}
+
 _2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct "objects" of interest in the scene.
 Any camera that can return 2D images can use 2D object detection.
 
