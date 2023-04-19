@@ -12,6 +12,11 @@ imageAlt: "Viam Rover Rosey."
 # SME: Matt Vella
 ---
 
+{{< alert title="Caution" color="caution" >}}
+There are [breaking changes in the Vision Service](/appendix/release-notes/#2-may-2023).
+This tutorial has not yet been updated.
+{{< /alert >}}
+
 When we think of robots, most of us tend to group them into categories:
 
 * useful robots

@@ -11,6 +11,11 @@ tags: ["camera", "vision", "detector", "python"]
 # Author: Hazal Mestci
 ---
 
+{{< alert title="Caution" color="caution" >}}
+There are [breaking changes in the Vision Service](/appendix/release-notes/#2-may-2023).
+This tutorial has not yet been updated.
+{{< /alert >}}
+
 This tutorial uses the Viam [Vision Service](/services/vision/) with your computer's built-in webcam to detect the presence of a person and turn on a lamp when you sit down at your desk.
 
 You can turn it into a night light for reading books, a security robot that alerts you when a person is close by, or a bathroom light that only activates when people enter; the opportunities are endless.

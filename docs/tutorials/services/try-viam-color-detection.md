@@ -26,45 +26,61 @@ If you are [renting your rover](https://app.viam.com/try), we recommend that you
 Be aware that if you are running out of time during your rental, you can [extend your rover rental](/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
-## Add the Vision Service
-
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the Vision Service to.
-Select the **config** tab, and click on **Services**.
-Scroll to the **Create Service** section.
-To create a [Vision Service](/services/vision/):
-
-1. Select `Vision` as the **Type**.
-2. Enter `vision` as the **Name**.
-3. Click **Create Service**.
-
-<img src="../../img/try-viam-color-detection/create-service.png" alt="The Create Service panel lists the type as vision and name as vision, with a Create Service button.">
-
-## Detect a color
+## Add the Vision Service to detect a color
 
 This tutorial uses the hex color #7a4f5c (a reddish color).
 
 **Hex color #7a4f5c**: <img src="../../img/try-viam-color-detection/7a4f5c.png" alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color." >
 
-Copy the following configuration into the attributes of your rover’s Vision Service:
+{{< tabs >}}
+{{% tab name="Builder" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
+Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
+Click on the robot you wish to add the Vision Service to.
+Select the **config** tab, and click on **Services**.
+
+Scroll to the **Create Service** section.
+To create a [Vision Service](/services/vision/):
+
+1. Select `vision` as the **Type**.
+2. Enter `my_color_detector` as the **Name**.
+3. Select `color_detector` as the **Model**.
+4. Click **Create Service**.
+
+In your Vision Service's panel, fill in the **Attributes** field.
+
+``` json {class="line-numbers linkable-line-numbers"}
 {
- "register_models": [
-   {
-     "type": "color_detector",
-     "parameters": {
-       "detect_color": "#7a4f5c",
-       "hue_tolerance_pct": 0.06,
-       "segment_size_px": 100
-     },
-     "name": "my_color_detector"
-   }
- ]
+      "segment_size_px": 100,
+      "detect_color": "#7a4f5c",
+      "hue_tolerance_pct": 0.06
 }
 ```
 
-<img src="../../img/try-viam-color-detection/populated-service-attributes.png" width="700px" alt="Screenshot from the Viam app showing the Vision Service panel. The panel has an Attributes panel populated with Vision Service attributes. On the upper right side there is a trash bin icon.">
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+Add the Vision Service object to the services array in your rover’s raw JSON configuration:
+
+``` json {class="line-numbers linkable-line-numbers"}
+"services": [
+  {
+    "name": "my_color_detector",
+    "type": "vision",
+    "model": "color_detector",
+    "attributes": {
+      "segment_size_px": 100,
+      "detect_color": "#7a4f5c",
+      "hue_tolerance_pct": 0.06
+    }
+  },
+  ... // Other services
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 
 The configuration adds a `model` of `type` `color_detector` with the color as a parameter.
 The `color_detector` is a heuristic-based detector that draws boxes around objects according to their hue.

@@ -12,8 +12,6 @@ aliases:
     - /tutorials/webcam-line-follower-robot
 ---
 
-
-
 <div class="td-max-width-on-larger-screens">
  <div class="alignright" style="max-width:150px;">
   {{<gif webm_src="../../img/webcam-line-follower/lf-following1.webm" mp4_src="../../img/webcam-line-follower/lf-following1.mp4" alt="Robot following a line">}}
@@ -83,53 +81,63 @@ Or if you prefer the raw JSON:
     }
 ```
 
-### Configuring the Vision Service
+### Configuring a color detector for the color of your tape line.
 
 We’ll use the Viam [Vision Service color detector](/services/vision/detection) to identify the line to follow.
 
-In the **Services** section of the **config** tab, configure a color detector for the color of your tape line.
-
 - Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding hexadecimal hash to put in your config.
-Put this hash in the `detect_color` parameter.
-We used #19FFD9 to represent the color of green electrical tape.
-
+  Put this hash in the `detect_color` parameter.
+  We used #19FFD9 to represent the color of green electrical tape.
 - We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
-Copy
+{{< tabs >}}
+{{% tab name="Builder" %}}
 
+Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
+Click on the robot you wish to add the Vision Service to.
+Select the **config** tab, and click on **Services**.
+
+Scroll to the **Create Service** section.
+To create a [Vision Service](/services/vision/):
+
+1. Select `vision` as the **Type**.
+2. Enter `green_detector` as the **Name**.
+3. Select `color_detector` as the **Model**.
+4. Click **Create Service**.
+
+In your Vision Service's panel, fill in the **Attributes** field.
+
+``` json {class="line-numbers linkable-line-numbers"}
 {
-  "register_models": [
-    {
-      "parameters": {
-        "segment_size_px": 100,
-        "hue_tolerance_pct": 0.06,
-        "detect_color": "#19FFD9"
-      },
-      "type": "color_detector",
-      "name": "green_detector"
-    }
-  ]
-}
-
-![A screenshot of the Vision Service configuration on the SERVICES sub-tab of the CONFIG tab. The attributes field has been populated with raw JSON identical to that in the copy-pasteable JSON field below.](/tutorials/img/webcam-line-follower/lf-vis-config.png)
-
-Raw JSON:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "register_models": [
-    {
-      "parameters": {
-        "segment_size_px": 100,
-        "hue_tolerance_pct": 0.06,
-        "detect_color": "#19FFD9"
-      },
-      "type": "color_detector",
-      "name": "green_detector"
-    }
-  ]
+      "segment_size_px": 100,
+      "detect_color": "#19FFD9",
+      "hue_tolerance_pct": 0.06
 }
 ```
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+Add the Vision Service object to the services array in your rover’s raw JSON configuration:
+
+``` json {class="line-numbers linkable-line-numbers"}
+"services": [
+  {
+    "name": "green_detector",
+    "type": "vision",
+    "model": "color_detector",
+    "attributes": {
+      "segment_size_px": 100,
+      "detect_color": "#19FFD9",
+      "hue_tolerance_pct": 0.06
+    }
+  },
+  ... // Other services
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### Configuring the visualizer
 
@@ -261,20 +269,13 @@ You may have different pin numbers and other attributes depending on your hardwa
   ],
   "services": [
     {
-      "name": "",
+      "name": "green_detector",
       "type": "vision",
+      "model": "color_detector",
       "attributes": {
-        "register_models": [
-          {
-            "type": "color_detector",
-            "parameters": {
-              "detect_color": "#19FFD9",
-              "segment_size_px": 100,
-              "hue_tolerance_pct": 0.06
-            },
-            "name": "green_detector"
-          }
-        ]
+        "segment_size_px": 100,
+        "detect_color": "#19FFD9",
+        "hue_tolerance_pct": 0.06
       }
     }
   ]
