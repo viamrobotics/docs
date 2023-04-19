@@ -11,6 +11,7 @@ aliases:
     - /getting-started/linux-install/
     - /installation/linux-install/
     - /installation/install/
+    - /installation/install/linux-install/
     - /getting-started/installation/
 
 ---

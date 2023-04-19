@@ -280,7 +280,7 @@ Currently, this only works with Python code which is running on the same board t
    The unverified context does not ensure the hostname of the certificate matches the host we are connecting with.
    This technique is standard when creating local secure contexts.
 
-2. Change the `connect()` method to disable Webrtc and add the auth_entity in the DialOptions and use `localhost:8080`:
+2. Change the `connect()` method to disable {{< glossary_tooltip term_id="webrtc" >}} and add the auth_entity in the DialOptions and use `localhost:8080`:
 
     ```python {class="line-numbers linkable-line-numbers" data-line="5"}
     async def connect():

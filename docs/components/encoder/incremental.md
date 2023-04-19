@@ -25,7 +25,7 @@ Fill in the attributes for your encoder:
 <img src="../img/configure-incremental.png" alt="Configuration of an incremental encoder in the Viam app config builder." />
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
