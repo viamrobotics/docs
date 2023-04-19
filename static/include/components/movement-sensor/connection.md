@@ -22,8 +22,8 @@ Serial communication uses a filepath instead of relying on any specific piece of
 ```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<my-movement-sensor-name>",
-    "type": "<TYPE>",
-    "model": "<MODEL>",
+    "type": "<type>",
+    "model": "<model>",
     "attributes": {
         "<whatever other attributes>": "<example>",
         "connection_type": "serial",

@@ -148,8 +148,8 @@ Name | Inclusion | Type | Default Value | Description
 `ntrip_password` | **Required** | string | - | Password for the NTRIP server
 `ntrip_baud` | Optional | int | defaults to `serial_baud_rate`  | Only necessary if you want NTRIP baud rate to be different from serial baud rate.
 `ntrip_connect_attempts` | Optional | int | 10 | How many times to attempt connection before timing out
-`ntrip_mountpoint` | Optional | string | |
-`ntrip_path` | Optional | string | |
+`ntrip_mountpoint` | Optional | string | - | If you know of an RTK mountpoint near you, write its identifier here. It will be appended to NTRIP address string (for example, "nysnet.gov/rtcm/**NJMTPT1**") and that mountpoint's data will be used for corrections.
+`ntrip_path` | Optional | string | - | Use this when extra hardware is piping RTCM data through a second USB port on an SBC instead of getting it directly from the internet.
 
 ### Connection Attributes
 
