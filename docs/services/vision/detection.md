@@ -41,8 +41,6 @@ To determine the color value from the actual camera component image, you can use
 If the color is not reliably detected, increase the `hue_tolerance_pct`.
 {{< /alert >}}
 
-### Create the Vision Service that uses the `color_detector`
-
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
@@ -153,7 +151,7 @@ Proceed to [Add a camera component and a "transform" model](#add-a-camera-compon
 
 A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
 
-### Create the ML Model Service for the classifier
+### Create the ML Model Service
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots), then create an ML Model Service for the classifier model:
 
@@ -173,8 +171,8 @@ In your ML Model Service's panel, fill in the **Attributes** field.
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
-      "model_path": "/path/to/file.tflite",
-      "label_path": "/path/to/labels.tflite",
+      "model_path": "${packages.<model-name>}/<model-name>.tflite",
+      "label_path": "${packages.<model-name>}/labels.txt",
       "num_threads": <number>
 }
 ```
@@ -191,8 +189,8 @@ Add the classifier ML model object to the services array in your raw JSON config
     "type": "ml_model",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "/path/to/file.tflite",
-      "label_path": "/path/to/labels.tflite",
+      "model_path": "${packages.<model-name>}/<model-name>.tflite",
+      "label_path": "/${packages.<model-name>}/labels.txt",
       "num_threads": <number>
     }
   },
@@ -210,8 +208,8 @@ Add the classifier ML model object to the services array in your raw JSON config
     "type": "ml_model",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "/path/to/file.tflite",
-      "label_path": "/path/to/labels.tflite",
+      "model_path": "${packages.<model-name>}/<model-name>.tflite",
+      "label_path": "${packages.<model-name>}/labels.txt",
       "num_threads": 1
     }
   }
@@ -245,7 +243,7 @@ In the absence of metadata, your `.tflite` model must satisfy the following requ
 These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1.
 You can use one of these architectures or build your own.
 
-### Create the Vision Service that uses the `tflite_model` detector
+### Create the Vision Service
 
 Create another service:
 

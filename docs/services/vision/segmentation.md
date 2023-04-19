@@ -8,7 +8,7 @@ tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 # SMEs: Bijan, Khari
 ---
 
-*Changed in [RDK v0.3.0 and API v0.2.0](/appendix/release-notes/#2-may-2023)*
+_Changed in [RDK v0.3.0 and API v0.2.0](/appendix/release-notes/#2-may-2023)_
 
 _3D Object Segmentation_ is the process of separating and returning a list of the identified "objects" from a 3D scene.
 The "objects" are a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinates of the object.
@@ -25,8 +25,6 @@ The types of segmenters supported are:
 Radius clustering is a segmenter that identifies well separated objects above a flat plane.
 It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.
 It is slower than other segmenters and can take up to 30 seconds to segment a scene.
-
-### Create the Vision Service that uses the `radius_clustering_segmenter`
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -114,8 +112,6 @@ Click **Save config** and head to the **Components** tab.
 Object segmenters are automatically created from [detectors](../detection) in the Vision Service.
 Any registered detector, for example `detector1`, defined in the `register_models` field or added later to the Vision Service becomes a segmenter with `_segmenter` appended to its name, for example `detector1_segmenter`.
 It begins by finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
-
-### Create the Vision Service that uses the `detector_3dsegmenter`
 
 {{< tabs >}}
 {{% tab name="Builder" %}}

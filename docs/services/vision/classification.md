@@ -25,9 +25,9 @@ The types of classifiers supported are:
 
 * **tflite_classifier**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
-### Configure a TFLite classifier
+## Configure a TFLite classifier
 
-#### Create the ML Model Service for the classifier
+### Create the ML Model Service for the classifier
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots), then create an ML Model Service for the classifier model:
 
@@ -47,9 +47,9 @@ In your ML Model Service's panel, fill in the **Attributes** field.
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
-      "model_path": "/path/to/classifier_file.tflite",
-      "label_path": "/path/to/classifier_labels.txt",
-      "num_threads": <number>
+    "model_path": "${packages.<model-name>}/<model-name>.tflite",
+    "label_path": "${packages.<model-name>}/labels.txt",
+    "num_threads": <number>
 }
 ```
 
@@ -65,8 +65,8 @@ Add the classifier ML model object to the services array in your raw JSON config
     "type": "ml_model",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "/path/to/classifier_file.tflite",
-      "label_path": "/path/to/classifier_labels.txt",
+      "model_path": "${packages.<model-name>}/<model-name>.tflite",
+      "label_path": "${packages.<model-name>}/labels.txt",
       "num_threads": <number>
     }
   },
@@ -84,8 +84,8 @@ Add the classifier ML model object to the services array in your raw JSON config
     "type": "ml_model",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "/path/to/classifier_file.tflite",
-      "label_path": "/path/to/classifier_labels.txt",
+      "model_path": "${packages.<model-name>}/<model-name>.tflite",
+      "label_path": "${packages.<model-name>}/labels.txt",
       "num_threads": 1
     }
   }
@@ -105,7 +105,7 @@ The following parameters are available for a `"tflite_cpu"` model:
 
 Click **Save config**.
 
-#### Create the Vision Service that uses the classifier
+### Create the Vision Service that uses the classifier
 
 Create another service:
 
@@ -165,17 +165,33 @@ Add the Vision Service object to the services array in your raw JSON configurati
 
 Click **Save config** and head to the **Components** tab.
 
-### Add a camera component and a "transform" model
+## Add a camera component and a "transform" model
 
 You cannot interact directly with the [Vision Service](/services/vision/).
 To be able to interact with the Vision Service you must:
 
 1. Configure a physical [camera component](../../../components/camera).
-2. Configure a [transform camera](../../../components/camera/transform) to view output from the classifier overlaid on images from the physical camera.
+2. Configure a [transform camera](../../../components/camera/transform) with the following attributes to view output from the classifier overlaid on images from the physical camera:
 
-After adding the component and its attributes, click **Save config**.
+    ```json
+    {
+    "pipeline": [
+        {
+        "type": "classifications",
+        "attributes": {
+            "confidence_threshold": 0.5,
+            "classifier_name": "my_classifier"
+        }
+        }
+    ],
+    "source": "<camera-name>"
+    }
+    ```
 
-Wait for the robot to reload, and then go to the **control** tab to test the stream of detections.
+    After adding the component and its attributes, click **Save config**.
+    Wait for the robot to reload, and then go to the **control** tab to test the stream of detections.
+
+    ![Model recognizes a star on camera feed](../../img/model-on-camera.png)
 
 ## Code
 
