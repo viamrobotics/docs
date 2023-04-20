@@ -27,7 +27,9 @@ Our `gps-rtk` model uses an over-the-internet correction source [NTRIP](https://
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** sub-tab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** sub-tab and navigate to the **Create component** menu.
+
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `gps-rtk` model.
 
 ![Creation of a `gps-rtk` movement sensor in the Viam app config builder.](../../img/gps-rtk-builder.png)
