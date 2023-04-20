@@ -190,7 +190,7 @@ This parameter is not used for anything in the built-in Motion Service.
 
 #### Example
 
-The following code is a minumal example using the [Viam Python SDK](https://python.viam.dev/) to get the pose of the tip of a gripper `myGripper` which is attached to the end of an arm, in the "world" referenceframe
+The following code is a minimal example using the [Viam Python SDK](https://python.viam.dev/) to get the pose of the tip of a [gripper](../../components/gripper/) named `myGripper` which is attached to the end of an arm, in the "world" referenceframe
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
