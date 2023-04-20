@@ -49,6 +49,7 @@ _Coming soon._
 Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](https://app.viam.com) by assigning users roles that confer permissions:
 
 - **Owner**: Can see and edit [every tab on the robot page](robots/#navigating-the-robot-page).
+  Can manage users in the app.
 - **Operator**: Can see and use only the [remote control tab](robots/#control).
   Cannot see or edit the [**setup**](robots/#setup), [**config**](robots#configuration), [**history**](robots/#history), [**logs**](robots/#logs), [**code sample**](robots/#code-sample), or [**security**](robots/#security) tabs.
 
