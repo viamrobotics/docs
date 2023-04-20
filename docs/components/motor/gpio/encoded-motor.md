@@ -23,7 +23,7 @@ To configure an encoded motor, you must configure the encoder [per the encoder d
 
 Here’s an example configuration:
 
-<img src="../../../img/motor/encoded-config-ui.png" alt="Screenshot of an encoded motor config in the Viam app UI." style="max-width:800px;width:100%" >
+![An encoded motor config in the Viam app UI.](../../../img/motor/encoded-config-ui.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -120,27 +120,23 @@ Here’s an example configuration:
 {{% tab name="Annotated JSON" %}}
 
 ![Same example JSON as on the JSON example tab, with notes alongside it. See attribute table below for all the same information.](../../../img/motor/motor-encoded-dc-json.png)
+
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Required Attributes
+In addition to the [attributes for a non-encoded motor](/components/motor/gpio/#attributes), the following attributes are available for a `gpio` motors with an `encoder`:
 
-In addition to the required [attributes for a non-encoded motor](/components/motor/gpio/#required-attributes), encoded DC motors require the following:
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `encoder` | string | **Required** | `name` of the encoder. |
+| `ticks_per_rotation` | string | **Required** | Number of ticks in a full rotation of the encoder and motor shaft. |
+| `ramp_rate` | number | Optional | How fast to ramp power to motor when using RPM control. 0.01 ramps very slowly; 1 ramps instantaneously. Range is (0.0, 1.0]. <br> Default = `0.2` |
 
-Name | Type | Description
--------------- | ---- | ---------------
-`encoder` | string | Should match name of the encoder you configure as an `encoder` component.
-`ticks_per_rotation` | string | Number of ticks in a full rotation of the encoder (and motor shaft).
+{{% alert title="Caution" color="caution" %}}
 
-`max_rpm` does *not* apply to *encoded* `gpio` motors.
+The attribute [`max_rpm`](/components/motor/gpio/#attributes) is not required or available for encoded `gpio` motors.
 
-#### Optional Attributes
-
-In addition to the optional attributes listed in the [non-encoded DC motor section](/components/motor/gpio/#optional-attributes), encoded motors have the following additional options:
-
-Name | Type | Description
--------------- | ---- | ---------------
-`ramp_rate` | float | How fast to ramp power to motor when using RPM control. 0.01 ramps very slowly; 1 ramps instantaneously. Range is (0, 1]. Default is 0.2.
+{{% /alert %}}
 
 ## Wiring Example
 
