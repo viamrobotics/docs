@@ -13,6 +13,9 @@ The `gpiostepper` model of the motor component supports bipolar [stepper motors]
 Viam also supports some more advanced stepper driver chips ([TMC5072](../tmc5072/), [DMC4000](../dmc4000/)) that have their own microcontrollers that handle things like speed and acceleration control.
 {{< /alert >}}
 
+To configure a `gpiostepper` motor as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired.
+Then, add the motor:
+
 {{< tabs name="gpiostepper-config">}}
 {{% tab name="Config Builder" %}}
 
@@ -94,19 +97,16 @@ Here’s an example of a basic stepper driver config:
 {{% /tab %}}
 {{< /tabs >}}
 
-### Required Attributes
+The following attributes are available for `gpiostepper` motors:
 
-Name | Type | Description
--------------- | ---- | ---------------
-`board` | string | Should match name of board to which the motor driver is wired.
-`pins` | object | A JSON object containing `step` and `dir` pin numbers.
-`ticks_per_rotation` | integer | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common. If your data sheet specifies this in terms of degrees per step, divide 360 by that number to get ticks per rotation.
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ---------- |
+| `board` | string | **Required** | Should match name of board to which the motor driver is wired. |
+| `pins` | object | **Required** |  A struct containing `step` and `dir` pin numbers. |
+| `ticks_per_rotation` | int | **Required** | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common. If your data sheet specifies this in terms of degrees per step, divide 360 by that number to get ticks per rotation. |
+| `stepper_delay` | int | Optional | Time in microseconds to remain high for each step. <br> Default: `20` |
 
-### Optional Attributes
-
-Name | Type | Description
--------------- | ---- | ---------------
-`stepper_delay` | uint | Time in microseconds to remain high for each step. Default is 20.
+Refer to your motor and motor driver data sheets for specifics.
 
 ### Wiring Example
 

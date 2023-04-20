@@ -124,7 +124,7 @@ Here’s an example configuration:
 {{% /tab %}}
 {{< /tabs >}}
 
-In addition to the [attributes for a non-encoded motor](/components/motor/gpio/#attributes), the following attributes are available for a `gpio` motors with an `encoder`:
+In addition to the [attributes for a non-encoded motor](/components/motor/gpio/#attributes), the following attributes are available for encoded DC motors:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
