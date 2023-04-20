@@ -26,12 +26,6 @@ To configure the camera into the frame system, you need to know where in the roo
 2. Determine the position of a point that the camera can see, for example (3,1,1)
 3. Subtract the camera point from the observed point to get the OV of the camera: (3,1,1) - (3,5,2) = (0,-4,-1)
 
-1. Determine the starting point.
-   In this case it is (0, 0, 0).
-2. Determine the position of the camera.
-   In this case it is (3, 5, 2).
-3. Subtract the starting point from the position of the camera: (3, 5, 2) - (0, 0, 0) = (3, 5, 2).
-
 {{< alert title="Note" color="note" >}}
 When you provide an orientation vector to Viam, Viam normalizes it to the unit sphere.
 Therefore if you enter (3,5,2), Viam stores it internally and displays it to you as (0.49, 0.81, 0.32).
