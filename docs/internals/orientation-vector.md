@@ -28,7 +28,7 @@ To configure the camera into the frame system, you need to know where in the roo
 
 {{< alert title="Note" color="note" >}}
 When you provide an orientation vector to Viam, Viam normalizes it to the unit sphere.
-Therefore if you enter (3,5,2), Viam stores it internally and displays it to you as (0.49, 0.81, 0.32).
+Therefore if you enter (0, -4, -1), Viam stores it internally and displays it to you as (0,-0.97, -0.24).
 {{< /alert >}}
 
 **Theta** describes the angle of rotation of the camera around the calculated vector.
