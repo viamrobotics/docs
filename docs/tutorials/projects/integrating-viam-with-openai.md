@@ -187,7 +187,8 @@ Now, in the panel for *servo1*, add the following configuration in attributes to
 
 ``` json
 {
-  "pin": "8"
+  "pin": "8",
+  "board": "local"
 }
 ```
 
