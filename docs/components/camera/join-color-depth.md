@@ -16,14 +16,15 @@ If you need to adjust the alignment between the depth and color frames, use the 
 {{< tabs name="Configure a Join Color Depth View" >}}
 {{% tab name="Config Builder" %}}
 
-On the **Components** subtab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `join_color_depth` model.
 
-<img src="../img/create-join-color-depth.png" alt="Creation of a join color depth view in the Viam app config builder." style="max-width:500px" />
+![Creation of a join color depth view in the Viam app config builder.](../img/create-join-color-depth.png)
 
 Fill in the attributes for your join color depth view:
 
-<img src="../img/configure-join-color-depth.png" alt="Configuration of a join color depth view in the Viam app config builder." />
+![Configuration of a join color depth view in the Viam app config builder.](../img/configure-join-color-depth.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

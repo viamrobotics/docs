@@ -12,19 +12,19 @@ The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (b
 [Encoders](/components/encoder/) can be configured to work with `gpio` motors.
 Find more information in the [encoded motor documentation](/components/motor/gpio/encoded-motor/).
 
-## Configuration
-
 To configure a DC motor as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired.
-
-Then assign your motor a `name` (to identify the motor), `type` (`motor`) and `model` (`gpio`), and fill in the [attributes](#required-attributes) that apply to your particular hardware.
-Refer to your motor and motor driver data sheets for specifics.
+Then add your motor:
 
 {{< tabs name="gpio-config">}}
 {{% tab name="Config Builder" %}}
 
-An example configuration for a `gpio` motor:
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter a name for your motor, select the type `motor`, and select the `gpio` model.
 
-<img src="../../img/motor/gpio-config-ui.png" alt="G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
+Click **Create component** and then fill in the attributes for your model:
+
+![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](../../img/motor/gpio-config-ui.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -102,22 +102,43 @@ An example configuration for a `gpio` motor:
 {{% /tab %}}
 {{< /tabs >}}
 
-### Required Attributes
+The following attributes are available for `gpio` motors:
 
-Name | Type | Default Value | Description
--------------- | ---- | ------------- | ---------------
-`board` | string | -- | Name of board to which the motor driver is wired.
-`max_rpm` | float | -- | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed.
-`pins` | object | -- | A structure that holds pin configuration information.
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `board` | string | **Required** | `name` of the [board](/components/board) to which the motor driver is wired. |
+| `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. |
+| `pins` | object | **Required** | A structure that holds pin configuration information. |
+| `min_power_pct` | number | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
+| `max_power_pct` | number | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
+| `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
+| `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. Default: `false` |
+| `en_high` / `en_low` | string | Optional | Some drivers have optional enable pins that enable or disable the driver chip. If your chip requires a high signal to be enabled, add `en_high` with the pin number to the pins section. If you need a low signal use `en_low`. |
+| `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). |
 
-Nested within `pins` (note that only two or three of these are required depending on your motor driver; see [Pin Information](#pin-information) below for more details):
+Refer to your motor and motor driver data sheets for specifics.
 
-Name | Type | Description |
----- | ---- | ----- |
-`a` | string | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
-`b` | string | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
-`dir` | string | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
-`pwm` | string | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
+{{% alert title="Caution" color="caution" %}}
+
+The attribute `max_rpm`is not required or available for [encoded](/components/motor/gpio/encoded-motor/) `gpio` motors.
+
+{{% /alert %}}
+
+Nested within `pins`:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `a` | string | **Required** | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `b` | string | **Required** | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `dir` | string | **Required** | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `pwm` | string | **Required** | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+
+{{% alert title="Note" color="note" %}}
+
+Only two or three of these `pins` attributes are required depending on your motor driver.
+See [Pin Information](#pin-information) below for more details.
+
+{{% /alert %}}
 
 #### Pin Information
 
@@ -133,17 +154,6 @@ The driver data sheet will specify which one to use.
 The PWM pin does not have to be configured for motor drivers that use only In1 and In2, and not a third PWM pin.
 
 {{% /alert %}}
-
-### Optional Attributes
-
-Name | Type | Default Value | Description
--------------- | ---- | ------------- | ---------------
-`min_power_pct` | float | 0.0 | Sets a limit on minimum power percentage sent to the motor.
-`max_power_pct` | float | 1.0 | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor.
-`pwm_freq` | uint | 800 | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range.
-`dir_flip` | bool | False | Flips the direction of "forward" versus "backward" rotation.
-`en_high` / `en_low` | string | -- | Some drivers have optional enable pins that enable or disable the driver chip. If your chip requires a high signal to be enabled, add `en_high` with the pin number to the pins section. If you need a low signal use `en_low`.
-`encoder` | string | -- | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/).
 
 ## Wiring examples
 

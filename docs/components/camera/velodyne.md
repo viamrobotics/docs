@@ -14,14 +14,15 @@ The velodyne must be running locally at address `127.0.0.1`.
 {{< tabs name="Configure a Velodyne Camera" >}}
 {{% tab name="Config Builder" %}}
 
-On the **Components** subtab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `velodyne` model.
 
-<img src="../img/create-velodyne.png" alt="Creation of a velodyne camera in the Viam app config builder." style="max-width:500px" />
+![Creation of a velodyne camera in the Viam app config builder.](../img/create-velodyne.png)
 
 Fill in the attributes for your velodyne camera:
 
-<img src="../img/configure-velodyne.png" alt="Configuration of a velodyne camera in the Viam app config builder." />
+![Configuration of a velodyne camera in the Viam app config builder.](../img/configure-velodyne.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

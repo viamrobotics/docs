@@ -19,11 +19,17 @@ You **must** use "WebGamepad" as the `name` of the web gamepad controller. This 
 Use the following configuration for an input controller of model `webgamepad`:
 
 {{< tabs name="Configure a `webgamepad` input controller" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<img src="../img/webgamepad-input-controller-ui-config.png" alt="What an example configuration for a web-based gamepad input controller component looks like in the Viam App config builder." style="width:100%"/>
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter the `WebGamepad` name for your input controller, select the type `input_controller`, and select the `webgamepad` model.
 
-{{< /tab >}}
+Click **Create component** and then fill in the attributes for your model:
+
+![An example configuration for a web-based gamepad input controller component in the Viam App config builder](../img/webgamepad-input-controller-ui-config.png)
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
