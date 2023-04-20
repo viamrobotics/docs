@@ -25,7 +25,7 @@ The returned detections consist of the bounding box around the identified object
 You can use the following types of detectors:
 
 - [**color_detector**](#configure-a-color_detector): A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
-- [**tflite_detector**](#configure-a-tflite_detector): A machine learning detector that draws bounding boxes according to the specified .tflite model file available on the robot’s hard drive.
+- [**tflite_detector**](#configure-a-tflite_cpu-detector): A machine learning detector that draws bounding boxes according to the specified .tflite model file available on the robot’s hard drive.
 
 ## Configure a `color_detector`
 
