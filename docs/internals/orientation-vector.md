@@ -22,6 +22,10 @@ To configure the camera into the frame system, you need to know where in the roo
 
 **(OX, OY, OZ)** are defined by measurements starting from the corner of the room to the camera:
 
+1. Determine the position of the camera (3,5,2)
+2. Determine the position of a point that the camera can see, for example (3,1,1)
+3. Subtract the camera point from the observed point to get the OV of the camera: (3,1,1) - (3,5,2) = (0,-4,-1)
+
 1. Determine the starting point.
    In this case it is (0, 0, 0).
 2. Determine the position of the camera.
@@ -30,12 +34,12 @@ To configure the camera into the frame system, you need to know where in the roo
 
 {{< alert title="Note" color="note" >}}
 When you provide an orientation vector to Viam, Viam normalizes it to the unit sphere.
-Therefore the output you see may be different.
+Therefore if you enter (3,5,2), Viam stores it internally and displays it to you as (0.49, 0.81, 0.32).
 {{< /alert >}}
 
 **Theta** describes the angle of rotation of the camera around the calculated vector.
 If you are familiar with the pitch-roll-yaw system, you can think of theta as _roll_.
-If your camera is perpendicular to one of the axes of your Frame system, 
+If your camera is perpendicular to one of the axes of your Frame system,
 you can determine Theta by looking at the picture and changing the value to 0, 90, 180, or 270 until the orientation of the picture is correct.
 
  OX, OY, OZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
