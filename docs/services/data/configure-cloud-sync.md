@@ -43,7 +43,7 @@ To change the sync interval, specify an interval in minutes in the interval fiel
 
 You can pause Cloud Sync at any time by navigating to the **Services** tab on your robot's **config** tab and disabling **Syncing** for your [Data Management Service](../).
 If you have captured data that you do not want to sync, delete the data on the robot before resuming Cloud Sync.
-To delete the data locally, `ssh` into your robot and delete the data in the directory where you capture data. 
+To delete the data locally, `ssh` into your robot and delete the data in the directory where you capture data.
 
 ## Sync files from another directory
 
