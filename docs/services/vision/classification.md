@@ -23,9 +23,9 @@ The returned classifications consist of the image's class label and confidence s
 
 The types of classifiers supported are:
 
-* **tflite_classifier**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
+* **tflite_cpu**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
-## Configure a TFLite classifier
+## Configure a `tflite_cpu` classifier
 
 ### Create the ML Model Service for the classifier
 

@@ -53,7 +53,7 @@ To create a [Vision Service](/services/vision/):
 
 1. Select `vision` as the **Type**.
 2. Enter a name as the **Name**.
-3. Select `ml_model` as the **Model**.
+3. Select `color_detector` as the **Model**.
 4. Click **Create Service**.
 
 In your Vision Service's panel, fill in the **Attributes** field.
@@ -153,11 +153,11 @@ A machine learning detector that draws bounding boxes according to the specified
 
 ### Create the ML Model Service
 
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots), then create an ML Model Service for the classifier model:
+Navigate to the [robot page on the Viam app](https://app.viam.com/robots), then create an ML Model Service for the detector model:
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
-Click on the robot you wish to add the classifier to.
+Click on the robot you wish to add the detector to.
 Select the **config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section:
@@ -185,7 +185,7 @@ Add the classifier ML model object to the services array in your raw JSON config
 ``` json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
-    "name": "<classifier_name>",
+    "name": "<detector_name>",
     "type": "ml_model",
     "model": "tflite_cpu",
     "attributes": {
@@ -259,7 +259,7 @@ In your Vision Service's panel, fill in the **Attributes** field.
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
-  "ml_model_name": "<classifier_name>"
+  "detector_name": "<classifier_name>"
 }
 ```
 
@@ -275,7 +275,7 @@ Add the Vision Service object to the services array in your raw JSON configurati
     "type": "vision",
     "model": "ml_model",
     "attributes": {
-      "ml_model_name": "<classifier_name>"
+      "ml_model_name": "<detector_name>"
     }
   }
 ]

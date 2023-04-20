@@ -205,13 +205,10 @@ The following code gets the robot’s Vision Service and then runs a segmenter v
 from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
 
 robot = await connect()
-# grab camera from the robot
-cam1 = Camera.from_robot(robot, "cam1")
 # grab Viam's vision service for the detector
 my_segmenter = VisionServiceClient.from_robot(robot, "my_segmenter")
 
-img = await cam1.get_image()
-detections = await my_segmenter.get_object_point_clouds(img)
+detections = await my_segmenter.get_object_point_clouds("cam1")
 
 await robot.close()
 ```
@@ -228,31 +225,19 @@ import (
 "go.viam.com/rdk/components/camera"
 )
 
-// grab the camera from the robot
 cameraName := "cam1" // make sure to use the same component name that you have in your robot configuration
-myCam, err := camera.FromRobot(robot, cameraName)
-if err != nil {
-  logger.Fatalf("cannot get camera: %v", err)
-}
 
 visService, err := vision.from_robot(robot=robot, name='my_segmenter')
 if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
 
-// gets the stream from a camera
-camStream, err := myCam.Stream(context.Background())
-
-// gets an image from the camera stream
-img, release, err := camStream.Next(context.Background())
-defer release()
-
 // Apply the color classifier to the image from your camera (configured as "cam1")
-segments, err := visService.GetObjectPointClouds(context.Background(), img)
+segments, err := visService.GetObjectPointClouds(cameraName)
 if err != nil {
     logger.Fatalf("Could not get segments: %v", err)
 }
-if len(detections) > 0 {
+if len(segments) > 0 {
     logger.Info(segments[0])
 }
 

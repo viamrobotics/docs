@@ -46,5 +46,5 @@ The model package config looks like this:
 
 To make use of your new model, follow the instructions to create a detector or a classifier:
 
-- A [`tflite_classifier` detector](../vision/detection/#configure-a-tflite_detector)
-- A [`tflite_classifier` classifier](../vision/classification/#configure-a-tflite_classifier)
+- A [`tflite_cpu` detector](../vision/detection/#configure-a-tflite_detector)
+- A [`tflite_cpu` classifier](../vision/classification/#configure-a-tflite_cpu)
