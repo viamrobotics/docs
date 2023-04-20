@@ -147,7 +147,7 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 Click **Save config** and head to the **Components** tab.
 Proceed to [Add a camera component and a "transform" model](#add-a-camera-component-and-a-transform-model).
 
-## Configure a `tflite_detector`
+## Configure a `tflite_cpu` detector
 
 A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
 
