@@ -10,6 +10,11 @@ mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
 videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
 ---
 
+{{% alert title="Caution" color="caution" %}}
+Support for this method of creating a custom resource implementation will be removed in favor of the module system.
+Instructions on creating and using modular resources are available [here](/program/extend/modular-resources).
+{{% /alert %}}
+
 If a type or model of [component](/components) you are working with is not built into the [Viam RDK](/internals/rdk), you can use a [Viam SDK](/program/sdk-as-client) to code a custom resource implementation, host it on a server, and add it as a [remote](/manage/parts-and-remotes) of your robot.
 Then, you can configure a command to launch this remote server as a [process](/appendix/glossary/#term-process) of your robot to make sure the remote server is always running alongside the rest of your robot.
 
