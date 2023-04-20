@@ -16,7 +16,7 @@ The ML Models service allows you to deploy machine learning models to your robot
 
 Navigate to your robot's [**config** tab](https://app.viam.com/robot) and click on the **Services** subtab.
 
-Scroll to the bottom and create a new service with the **Type** `ml_models`.
+Scroll to the bottom and create a new service with the **Type** `mlmodel`.
 
 ![Create a machine learning models service](../img/ml-models-service.png)
 

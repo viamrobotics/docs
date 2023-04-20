@@ -162,7 +162,7 @@ Select the **config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section:
 
-1. Select `ml_model` as the **Type**.
+1. Select `mlmodel` as the **Type**.
 2. Enter a name as the **Name**.
 3. Select `tflite_cpu` as the **Model**.
 4. Click **Create Service**.
@@ -186,7 +186,7 @@ Add the classifier ML model object to the services array in your raw JSON config
 "services": [
   {
     "name": "<detector_name>",
-    "type": "ml_model",
+    "type": "mlmodel",
     "model": "tflite_cpu",
     "attributes": {
       "model_path": "${packages.<model-name>}/<model-name>.tflite",
@@ -205,7 +205,7 @@ Add the classifier ML model object to the services array in your raw JSON config
 "services": [
   {
     "name": "person_detector",
-    "type": "ml_model",
+    "type": "mlmodel",
     "model": "tflite_cpu",
     "attributes": {
       "model_path": "${packages.<model-name>}/<model-name>.tflite",
@@ -252,7 +252,7 @@ Create another service:
 
 1. Select `vision` as the **Type**.
 2. Enter a name as the **Name**.
-3. Select `ml_model` as the **Model**.
+3. Select `mlmodel` as the **Model**.
 4. Click **Create Service**.
 
 In your Vision Service's panel, fill in the **Attributes** field.
@@ -273,9 +273,9 @@ Add the Vision Service object to the services array in your raw JSON configurati
   {
     "name": "<service_name>",
     "type": "vision",
-    "model": "ml_model",
+    "model": "mlmodel",
     "attributes": {
-      "ml_model_name": "<detector_name>"
+      "mlmodel_name": "<detector_name>"
     }
   }
 ]
@@ -289,9 +289,9 @@ Add the Vision Service object to the services array in your raw JSON configurati
   {
     "name": "person_detector",
     "type": "vision",
-    "model": "ml_model",
+    "model": "mlmodel",
     "attributes": {
-      "ml_model_name": "person_detector"
+      "mlmodel_name": "person_detector"
     }
   }
 ]

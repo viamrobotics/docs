@@ -67,10 +67,10 @@ You can replace existing color detectors by [configuring new ones in the UI](/se
         "type": "vision",
         "model": "color_detector",
         "attributes": {
-        "segment_size_px": 100,
-        "detect_color": "#1C4599",
-        "hue_tolerance_pct": 0.07,
-        "value_cutoff_pct": 0.15
+            "segment_size_px": 100,
+            "detect_color": "#1C4599",
+            "hue_tolerance_pct": 0.07,
+            "value_cutoff_pct": 0.15
         }
     },
     {
@@ -78,10 +78,10 @@ You can replace existing color detectors by [configuring new ones in the UI](/se
         "type": "vision",
         "model": "color_detector",
         "attributes": {
-        "segment_size_px": 200,
-        "detect_color": "#62963F",
-        "hue_tolerance_pct": 0.05,
-        "value_cutoff_pct": 0.20
+            "segment_size_px": 200,
+            "detect_color": "#62963F",
+            "hue_tolerance_pct": 0.05,
+            "value_cutoff_pct": 0.20
         }
     },
     ... // other services
@@ -100,20 +100,20 @@ You can replace existing color detectors by [configuring new ones in the UI](/se
             "register_models": [
             {
                 "parameters": {
-                "segment_size_px": 100,
-                "detect_color": "#1C4599",
-                "hue_tolerance_pct": 0.07,
-                "value_cutoff_pct": 0.15
+                    "segment_size_px": 100,
+                    "detect_color": "#1C4599",
+                    "hue_tolerance_pct": 0.07,
+                    "value_cutoff_pct": 0.15
                 },
                 "name": "blue_square",
                 "type": "color_detector"
             },
             {
                 "parameters": {
-                "segment_size_px": 200,
-                "detect_color": "#62963F",
-                "hue_tolerance_pct": 0.05,
-                "value_cutoff_pct": 0.20
+                    "segment_size_px": 200,
+                    "detect_color": "#62963F",
+                    "hue_tolerance_pct": 0.05,
+                    "value_cutoff_pct": 0.20
                 },
                 "name": "green_triangle",
                 "type": "color_detector"
@@ -139,20 +139,20 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/s
 "services": [
     {
         "name": "person_detector",
-        "type": "ml_model",
+        "type": "mlmodel",
         "model": "tflite_cpu",
         "attributes": {
-        "model_path": "/path/to/file.tflite",
-        "label_path": "/path/to/labels.tflite",
-        "num_threads": 1
+            "model_path": "/path/to/file.tflite",
+            "label_path": "/path/to/labels.tflite",
+            "num_threads": 1
         }
     },
     {
         "name": "person_detector",
         "type": "vision",
-        "model": "ml_model",
+        "model": "mlmodel",
         "attributes": {
-        "ml_model_name": "person_detector"
+            "mlmodel_name": "person_detector"
         }
     },
     ... // other services
@@ -171,9 +171,9 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/s
             "register_models": [
             {
                 "parameters": {
-                "model_path": "/path/to/file.tflite",
-                "label_path": "/path/to/labels.tflite",
-                "num_threads": 1
+                    "model_path": "/path/to/file.tflite",
+                    "label_path": "/path/to/labels.tflite",
+                    "num_threads": 1
                 },
                 "name": "person_detector",
                 "type": "tflite_detector"
@@ -199,20 +199,20 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 "services": [
     {
         "name": "fruit_classifier",
-        "type": "ml_model",
+        "type": "mlmodel",
         "model": "tflite_cpu",
         "attributes": {
-        "model_path": "/path/to/classifier_file.tflite",
-        "label_path": "/path/to/classifier_labels.txt",
-        "num_threads": 1
+            "model_path": "/path/to/classifier_file.tflite",
+            "label_path": "/path/to/classifier_labels.txt",
+            "num_threads": 1
         }
     },
     {
         "name": "fruit_classifier",
         "type": "vision",
-        "model": "ml_model",
+        "model": "mlmodel",
         "attributes": {
-        "ml_model_name": "fruit_classifier"
+            "mlmodel_name": "fruit_classifier"
         }
     },
     ... // other services
@@ -231,9 +231,9 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
             "register_models": [
             {
                 "parameters": {
-                "model_path": "/path/to/classifier_file.tflite",
-                "label_path": "/path/to/classifier_labels.txt",
-                "num_threads": 1
+                    "model_path": "/path/to/classifier_file.tflite",
+                    "label_path": "/path/to/classifier_labels.txt",
+                    "num_threads": 1
                 },
                 "name": "fruit_classifier",
                 "type": "tflite_classifier"
@@ -284,10 +284,10 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
             "register_models": [
             {
                 "parameters": {
-                "min_points_in_plane": 1000,
-                "min_points_in_segment": 50,
-                "clustering_radius_mm": 3.2,
-                "mean_k_filtering": 10
+                    "min_points_in_plane": 1000,
+                    "min_points_in_segment": 50,
+                    "clustering_radius_mm": 3.2,
+                    "mean_k_filtering": 10
                 },
                 "name": "rc_segmenter",
                 "type": "radius_clustering_segmenter"
@@ -316,10 +316,10 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
         "type": "vision",
         "model": "detector_3dsegmenter"
         "attributes": {
-                        "detector_name": "my_detector",
-                        "confidence_threshold_pct": 0.5,
-                        "mean_k": 50,
-                        "sigma": 2.0
+            "detector_name": "my_detector",
+            "confidence_threshold_pct": 0.5,
+            "mean_k": 50,
+            "sigma": 2.0
         }
     },
     ... // other services
@@ -338,10 +338,10 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
             "register_models": [
             {
                 "parameters": {
-                        "detector_name": "my_detector",
-                        "confidence_threshold_pct": 0.5,
-                        "mean_k": 50,
-                        "sigma": 2.0
+                    "detector_name": "my_detector",
+                    "confidence_threshold_pct": 0.5,
+                    "mean_k": 50,
+                    "sigma": 2.0
                 },
                 "name": "my_segmenter",
                 "type": "detector_segmenter"
