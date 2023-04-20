@@ -254,13 +254,6 @@ The corresponding raw JSON looks like this:
 
 ## Fragments
 
-{{% alert title="Note" color="note" %}}
-
-Fragments are an experimental feature.
-Stability is not guaranteed.
-
-{{% /alert %}}
-
 Fragments are a way of sharing and managing identical {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple robots.
 For example, if you have multiple robots with the same hardware, wired the same way, you can create and share a fragment and add it to any number of robots.
 When changes are made to the fragment, those changes are automatically carried to all robots that include the fragment in their config.
