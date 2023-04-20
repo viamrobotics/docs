@@ -57,6 +57,8 @@ Adjust these `attributes` from these default values as necessary.
 {{% /tab %}}
 {{% /tabs %}}
 
+The following attributes are available for `renogy` sensors:
+
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
 | `serial_path`  | **Required** | Default: `/dev/serial/0`. The serial port your controller is connected to. |

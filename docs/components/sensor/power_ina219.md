@@ -54,6 +54,8 @@ Paste into the **Attributes** box:
 {{% /tab %}}
 {{% /tabs %}}
 
+The following attributes are available for `power_ina219` sensors:
+
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
 | `board`  | **Required** | The `name` of the [board](/components/board) the sensor is connected to. |

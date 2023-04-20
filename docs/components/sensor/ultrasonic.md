@@ -79,6 +79,8 @@ Paste into the **Attributes** box:
 {{% /tab %}}
 {{% /tabs %}}
 
+The following attributes are available for `ultrasonic` sensors:
+
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
 | `trigger_pin` | **Required** | The pin number on the board that you have connected [the sensor's trigger pin](https://www.sparkfun.com/products/15569). <br> Example: `"5"`. |

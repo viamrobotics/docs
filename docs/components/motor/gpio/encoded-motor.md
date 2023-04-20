@@ -124,7 +124,7 @@ Here’s an example configuration:
 {{% /tab %}}
 {{< /tabs >}}
 
-In addition to the [attributes for a non-encoded motor](/components/motor/gpio/#attributes), the following attributes are available for encoded DC motors:
+In addition to the [attributes for a non-encoded motor](/components/motor/gpio), the following attributes are available for encoded DC motors:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
@@ -134,7 +134,7 @@ In addition to the [attributes for a non-encoded motor](/components/motor/gpio/#
 
 {{% alert title="Caution" color="caution" %}}
 
-The attribute [`max_rpm`](/components/motor/gpio/#attributes) is not required or available for encoded `gpio` motors.
+The attribute [`max_rpm`](/components/motor/gpio) is not required or available for encoded `gpio` motors.
 
 {{% /alert %}}
 
