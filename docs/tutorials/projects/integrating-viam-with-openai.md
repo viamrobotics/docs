@@ -64,7 +64,8 @@ Always disconnect devices from power before plugging, unplugging, moving wires, 
 {{% /alert %}}
 
 Power off your rover.
-Wire your servo to the Pi by attaching the black wire to ground, red wire to [an available 5V pin](https://pinout.xyz/pinout/5v_power), and yellow wire to [pin 8](https://pinout.xyz/pinout/pin8_gpio14).
+Wire your servo to the Pi by attaching the black wire to ground, red wire to [an available 5V pin](https://pinout.xyz/pinout/5v_power), and signal wire (often yellow) to [pin 8](https://pinout.xyz/pinout/pin8_gpio14).
+If your servo wires are attached to one another and the order does not match the pins on the board, you can use male-female jumper wires to connect them.
 
 ### 2. Mount the servo to your rover
 
