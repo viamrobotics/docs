@@ -84,7 +84,7 @@ For more information, see [Camera Component](/components/camera).
 
 <img src="../img/viam-rover/accelerometer.jpg" style="max-width:400px;width:100%" alt="A ADXL345 accelerometer" />
 
-The [ADXL345](/components/movement-sensor/#adxl345) sensor manufactured by Analog Devices is a digital 3-axis accelerometer that can read acceleration up to ±16g for high-resolution (13-bit) measurements.
+The [ADXL345](/components/movement-sensor/adxl345/) sensor manufactured by Analog Devices is a digital 3-axis accelerometer that can read acceleration up to ±16g for high-resolution (13-bit) measurements.
 You can access it with a SPI (3-wire or 4-wire) or I<sup>2</sup>C digital interface.
 
 In Viam, you can configure it as a [movement sensor component](/components/movement-sensor/).
