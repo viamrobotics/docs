@@ -19,7 +19,9 @@ The `gps-nmea` model can be connected using USB and send data through a serial c
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** sub-tab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** sub-tab and navigate to the **Create component** menu.
+
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `gps-nmea` model.
 
 ![Creation of a `gps-nmea` movement sensor in the Viam app config builder.](../../img/gps-nmea-builder.png)
