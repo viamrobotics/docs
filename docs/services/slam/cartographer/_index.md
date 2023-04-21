@@ -87,6 +87,7 @@ Paste the following into the **Attributes** field of your new service:
   }
 }
 ```
+
 {{% /tab %}}
 
 {{% tab name="MacOS" %}}
@@ -102,6 +103,7 @@ Paste the following into the **Attributes** field of your new service:
   }
 }
 ```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -109,6 +111,7 @@ Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to yo
 
 {{< tabs name="Add Cartographer Service Live Module">}}
 {{% tab name="Linux/MacOS x86_64" %}}
+
 ```json
 "modules": [
   // { ...}, YOUR RPLIDAR MODULE,
@@ -120,9 +123,11 @@ Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to yo
 // "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
 // "services": [ ...], YOUR SLAM SERVICE
 ```
+
 {{% /tab %}}
 
 {{% tab name="MacOS ARM64 (M1 & M2)" %}}
+
 ```json
 "modules": [
   // { ...}, YOUR RPLIDAR MODULE,
@@ -134,6 +139,7 @@ Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to yo
 // "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
 // "services": [ ...], YOUR SLAM SERVICE
 ```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -146,6 +152,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
 
 {{< tabs name="Add the Cartographer Service Live Config JSON OSs">}}
 {{% tab name="Linux" %}}
+
 ```json
 "modules": [
   // { ...}, YOUR RPLIDAR MODULE,
@@ -175,6 +182,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
 
 {{% /tab %}}
 {{% tab name="MacOS x86_64" %}}
+
 ```json
 "modules": [
   // { ...}, YOUR RPLIDAR MODULE,
@@ -204,6 +212,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
 
 {{% /tab %}}
 {{% tab name="MacOS ARM64 (M1 & M2)" %}}
+
 ```json
 "modules": [
   // { ...}, YOUR RPLIDAR MODULE,
@@ -230,6 +239,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
   }
 ]
 ```
+
 {{% /tab %}}
 {{< /tabs >}}
 {{% /tab %}}
