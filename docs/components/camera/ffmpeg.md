@@ -13,14 +13,15 @@ A `ffmpeg` camera uses a camera, a video file, or a stream as a camera.
 {{< tabs name="Configure a ffmpeg camera" >}}
 {{% tab name="Config Builder" %}}
 
-On the **Components** subtab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `ffmpeg` model.
 
-<img src="../img/create-ffmpeg.png" alt="Creation of a ffmpeg camera in the Viam app config builder." style="max-width:600px" />
+![Creation of a ffmpeg camera in the Viam app config builder.](../img/create-ffmpeg.png)
 
 Fill in the attributes for your ffmpeg camera:
 
-<img src="../img/configure-ffmpeg.png" alt="Configuration of a ffmpeg camera in the Viam app config builder." />
+![Configuration of a ffmpeg camera in the Viam app config builder.](../img/configure-ffmpeg.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

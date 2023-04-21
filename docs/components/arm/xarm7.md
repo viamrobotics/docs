@@ -1,16 +1,14 @@
 ---
-title: "Configure a xArm7 Arm"
+title: "Configure an xArm7 Arm"
 linkTitle: "xArm7"
 weight: 34
 type: "docs"
-description: "Configure a xArm7 arm."
+description: "Configure an xArm7 arm."
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configure a `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your robot.
-
-Configure a `xArm7` arm as follows:
+Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your robot:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
@@ -89,4 +87,4 @@ Configure a `xArm7` arm as follows:
 | `speed` | **Required** | Default: `20.0`. A float representing the desired maximum speed of joint movement in degrees/second. |
 | `acceleration`  | **Required** | Default: `50.0`. A float representing the desired maximum joint acceleration in degrees/second/second. |
 
-See [the Frame system](../../../services/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown above.
+See [the Frame system](/services/frame-system) for more information on utilizing and modifying the `"frame"` configuration shown above.

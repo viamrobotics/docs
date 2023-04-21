@@ -14,14 +14,15 @@ One camera server streams a color stream and the other camera server streams a d
 {{< tabs name="Configure a Dual Stream Camera" >}}
 {{% tab name="Config Builder" %}}
 
-On the **Components** subtab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `dual_stream` model.
 
-<img src="../img/create-dual-stream.png" alt="Creation of a dual stream camera in the Viam App config builder." style="max-width:600px" />
+![Creation of a dual stream camera in the Viam App config builder.](../img/create-dual-stream.png)
 
 Fill in the attributes for dual stream camera:
 
-<img src="../img/configure-dual-stream.png" alt="Configuration of a dual stream camera in the Viam app config builder." />
+![Configuration of a dual stream camera in the Viam app config builder.](../img/configure-dual-stream.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

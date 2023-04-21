@@ -14,15 +14,16 @@ If the camera drivers are among those in [this mediadevices repository](https://
 {{< tabs name="Configure a Webcam" >}}
 {{% tab name="Config Builder" %}}
 
-On the **Components** subtab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `webcam` model.
 
-<img src="../img/create-webcam.png" alt="Creation of webcam camera in the Viam app config builder." style="max-width:500px" />
+![Creation of webcam camera in the Viam app config builder.](../img/create-webcam.png)
 
 Fill in the attributes for your webcam.
 If you click on the **Video Path** field while your robot is live, a drop down autopopulates with identified camera paths.
 
-<img src="../img/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." />
+![Configuration of a webcam camera in the Viam app config builder.](../img/configure-webcam.png)
 
 Use the following configuration and fill in the attributes for your webcam:
 

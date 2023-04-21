@@ -13,17 +13,19 @@ The `arduino` encoder requires configuring two pins on the board to which the en
 {{< tabs name="Configure an arduino Encoder" >}}
 {{% tab name="Config Builder" %}}
 
-On the **Components** subtab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `arduino` model.
 
-<img src="../img/create-arduino.png" alt="Creation of an Arduino encoder in the Viam app config builder." style="max-width:600px" />
+![Creation of an Arduino encoder in the Viam app config builder.](../img/create-arduino.png)
 
+Click **Create component**.
 Fill in the attributes for your encoder:
 
-<img src="../img/configure-arduino.png" alt="Configuration of an Arduino encoder in the Viam app config builder." />
+![Configuration of an Arduino encoder in the Viam app config builder.](../img/configure-arduino.png)
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

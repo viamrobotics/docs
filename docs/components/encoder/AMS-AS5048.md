@@ -39,17 +39,19 @@ Now you can configure the encoder:
 {{< tabs name="Configure an AMS-AS5048 Encoder" >}}
 {{% tab name="Config Builder" %}}
 
-On the **Components** subtab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
 
-<img src="../img/create-am5.png" alt="Creation of an AS5048 encoder in the Viam app config builder." style="max-width:600px" />
+![Creation of an AS5048 encoder in the Viam app config builder.](../img/create-am5.png)
 
+Click **Create component**.
 Fill in the attributes for your encoder:
 
-<img src="../img/configure-am5.png" alt="Configuration of an AS5048 encoder in the Viam app config builder." />
+![Configuration of an AS5048 encoder in the Viam app config builder.](../img/configure-am5.png)
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
