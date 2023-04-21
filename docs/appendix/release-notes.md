@@ -25,13 +25,15 @@ The following **breaking changes** will take effect:
 
 ### Use individual vision service instances
 
-You will need to create an individual vision service instance for each detector,classifier, and segementer model.
+You will need to create **an individual vision service instance** for each detector, classifier, and segementer model.
 You will no longer be able to create one vision service and register all of your detectors, classifiers, and segmenters within it.
 
 #### API calls
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
+
+Change your existing API calls to get the new vision service instance for your detector, classifier, or segementer model directly from the `VisionServiceClient`:
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_object_detector = VisionServiceClient.from_robot(robot, "find_objects")
@@ -53,33 +55,36 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color Detector configurations
 
+You can replace existing color detectors by [configuring new ones in the UI](/services/vision/detection/#configure-a-color_detector) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+
 {{< tabs >}}
 {{% tab name="New Way" %}}
 
 ```json
 "services": [
-  {
-    "name": "blue_square",
-    "type": "vision",
-    "model": "color_detector",
-    "attributes": {
-      "segment_size_px": 100,
-      "detect_color": "#1C4599",
-      "hue_tolerance_pct": 0.07,
-      "value_cutoff_pct": 0.15
-    }
-  },
-  {
-    "name": "green_triangle",
-    "type": "vision",
-    "model": "color_detector",
-    "attributes": {
-      "segment_size_px": 200,
-      "detect_color": "#62963F",
-      "hue_tolerance_pct": 0.05,
-      "value_cutoff_pct": 0.20
-    }
-  }
+    {
+        "name": "blue_square",
+        "type": "vision",
+        "model": "color_detector",
+        "attributes": {
+            "segment_size_px": 100,
+            "detect_color": "#1C4599",
+            "hue_tolerance_pct": 0.07,
+            "value_cutoff_pct": 0.15
+        }
+    },
+    {
+        "name": "green_triangle",
+        "type": "vision",
+        "model": "color_detector",
+        "attributes": {
+            "segment_size_px": 200,
+            "detect_color": "#62963F",
+            "hue_tolerance_pct": 0.05,
+            "value_cutoff_pct": 0.20
+        }
+    },
+    ... // other services
 ]
 ```
 
@@ -88,34 +93,35 @@ detections = await vision.get_detections(img, "find_objects")
 
 ```json
 "services": [
-{
-  "name": "vision",
-  "type": "vision",
-  "attributes": {
-    "register_models": [
-      {
-        "parameters": {
-          "segment_size_px": 100,
-          "detect_color": "#1C4599",
-          "hue_tolerance_pct": 0.07,
-          "value_cutoff_pct": 0.15
-        },
-        "name": "blue_square",
-        "type": "color_detector"
-      },
-      {
-        "parameters": {
-          "segment_size_px": 200,
-          "detect_color": "#62963F",
-          "hue_tolerance_pct": 0.05,
-          "value_cutoff_pct": 0.20
-        },
-        "name": "green_triangle",
-        "type": "color_detector"
-      }
-    ]
-  }
-}
+    {
+        "name": "vision",
+        "type": "vision",
+        "attributes": {
+            "register_models": [
+            {
+                "parameters": {
+                    "segment_size_px": 100,
+                    "detect_color": "#1C4599",
+                    "hue_tolerance_pct": 0.07,
+                    "value_cutoff_pct": 0.15
+                },
+                "name": "blue_square",
+                "type": "color_detector"
+            },
+            {
+                "parameters": {
+                    "segment_size_px": 200,
+                    "detect_color": "#62963F",
+                    "hue_tolerance_pct": 0.05,
+                    "value_cutoff_pct": 0.20
+                },
+                "name": "green_triangle",
+                "type": "color_detector"
+            }
+            ]
+        }
+    },
+    ... // other services
 ]
 ```
 
@@ -124,29 +130,32 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### TFLite Detector configurations
 
+You can replace existing TFLite detectors by [configuring new ones in the UI](/services/vision/detection/#configure-a-tflite_cpu-detector) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+
 {{< tabs >}}
 {{% tab name="New Way" %}}
 
 ```json
 "services": [
-  {
-    "name": "person_detector",
-    "type": "ml_model",
-    "model": "tflite_cpu",
-    "attributes": {
-      "model_path": "/path/to/file.tflite",
-      "label_path": "/path/to/labels.tflite",
-      "num_threads": 1
-    }
-  },
-  {
-    "name": "person_detector",
-    "type": "vision",
-    "model": "ml_model",
-    "attributes": {
-      "ml_model_name": "person_detector"
-    }
-  }
+    {
+        "name": "person_detector",
+        "type": "mlmodel",
+        "model": "tflite_cpu",
+        "attributes": {
+            "model_path": "/path/to/file.tflite",
+            "label_path": "/path/to/labels.tflite",
+            "num_threads": 1
+        }
+    },
+    {
+        "name": "person_detector",
+        "type": "vision",
+        "model": "mlmodel",
+        "attributes": {
+            "mlmodel_name": "person_detector"
+        }
+    },
+    ... // other services
 ]
 ```
 
@@ -155,23 +164,24 @@ detections = await vision.get_detections(img, "find_objects")
 
 ```json
 "services": [
-{
-  "name": "vision",
-  "type": "vision",
-  "attributes": {
-    "register_models": [
-      {
-        "parameters": {
-          "model_path": "/path/to/file.tflite",
-          "label_path": "/path/to/labels.tflite",
-          "num_threads": 1
-        },
-        "name": "person_detector",
-        "type": "tflite_detector"
-      }
-    ]
-  }
-}
+    {
+        "name": "vision",
+        "type": "vision",
+        "attributes": {
+            "register_models": [
+            {
+                "parameters": {
+                    "model_path": "/path/to/file.tflite",
+                    "label_path": "/path/to/labels.tflite",
+                    "num_threads": 1
+                },
+                "name": "person_detector",
+                "type": "tflite_detector"
+            }
+            ]
+        }
+    },
+    ... // other services
 ]
 ```
 
@@ -180,29 +190,32 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### TFLite Classifier configurations
 
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/services/vision/classification/#configure-a-tflite_cpu-classifier) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+
 {{< tabs >}}
 {{% tab name="New Way" %}}
 
 ```json
 "services": [
-  {
-    "name": "fruit_classifier",
-    "type": "ml_model",
-    "model": "tflite_cpu",
-    "attributes": {
-      "model_path": "/path/to/classifier_file.tflite",
-      "label_path": "/path/to/classifier_labels.txt",
-      "num_threads": 1
-    }
-  },
-  {
-    "name": "fruit_classifier",
-    "type": "vision",
-    "model": "ml_model",
-    "attributes": {
-      "ml_model_name": "fruit_classifier"
-    }
-  }
+    {
+        "name": "fruit_classifier",
+        "type": "mlmodel",
+        "model": "tflite_cpu",
+        "attributes": {
+            "model_path": "/path/to/classifier_file.tflite",
+            "label_path": "/path/to/classifier_labels.txt",
+            "num_threads": 1
+        }
+    },
+    {
+        "name": "fruit_classifier",
+        "type": "vision",
+        "model": "mlmodel",
+        "attributes": {
+            "mlmodel_name": "fruit_classifier"
+        }
+    },
+    ... // other services
 ]
 ```
 
@@ -211,23 +224,24 @@ detections = await vision.get_detections(img, "find_objects")
 
 ```json
 "services": [
-{
-  "name": "vision",
-  "type": "vision",
-  "attributes": {
-    "register_models": [
-      {
-        "parameters": {
-          "model_path": "/path/to/classifier_file.tflite",
-          "label_path": "/path/to/classifier_labels.txt",
-          "num_threads": 1
-        },
-        "name": "fruit_classifier",
-        "type": "tflite_classifier"
-      }
-    ]
-  }
-}
+    {
+        "name": "vision",
+        "type": "vision",
+        "attributes": {
+            "register_models": [
+            {
+                "parameters": {
+                    "model_path": "/path/to/classifier_file.tflite",
+                    "label_path": "/path/to/classifier_labels.txt",
+                    "num_threads": 1
+                },
+                "name": "fruit_classifier",
+                "type": "tflite_classifier"
+            }
+            ]
+        }
+    },
+    ... // other services
 ]
 ```
 
@@ -236,22 +250,25 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Radius Clustering 3D Segmenter configurations
 
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-a-radius_clustering_segmenter) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+
 {{< tabs >}}
 {{% tab name="New Way" %}}
 
 ```json
 "services": [
-{
-  "name": "rc_segmenter",
-  "type": "vision",
-  "model": "radius_clustering_segmenter"
-  "attributes": {
-    "min_points_in_plane": 1000,
-    "min_points_in_segment": 50,
-    "clustering_radius_mm": 3.2,
-    "mean_k_filtering": 10
-  }
-}
+    {
+        "name": "rc_segmenter",
+        "type": "vision",
+        "model": "radius_clustering_segmenter"
+        "attributes": {
+            "min_points_in_plane": 1000,
+            "min_points_in_segment": 50,
+            "clustering_radius_mm": 3.2,
+            "mean_k_filtering": 10
+        }
+    },
+    ... // other services
 ]
 ```
 
@@ -260,24 +277,25 @@ detections = await vision.get_detections(img, "find_objects")
 
 ```json
 "services": [
-{
-  "name": "vision",
-  "type": "vision",
-  "attributes": {
-    "register_models": [
-      {
-        "parameters": {
-          "min_points_in_plane": 1000,
-          "min_points_in_segment": 50,
-          "clustering_radius_mm": 3.2,
-          "mean_k_filtering": 10
-        },
-        "name": "rc_segmenter",
-        "type": "radius_clustering_segmenter"
-      }
-    ]
-  }
-}
+    {
+        "name": "vision",
+        "type": "vision",
+        "attributes": {
+            "register_models": [
+            {
+                "parameters": {
+                    "min_points_in_plane": 1000,
+                    "min_points_in_segment": 50,
+                    "clustering_radius_mm": 3.2,
+                    "mean_k_filtering": 10
+                },
+                "name": "rc_segmenter",
+                "type": "radius_clustering_segmenter"
+            }
+            ]
+        }
+    },
+    ... // other services
 ]
 ```
 
@@ -286,22 +304,25 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Detector to 3D Segmenter configurations
 
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-a-detector_3dsegmenter) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+
 {{< tabs >}}
 {{% tab name="New Way" %}}
 
 ```json
 "services": [
-{
-  "name": "my_segmenter",
-  "type": "vision",
-  "model": "detector_3dsegmenter"
-  "attributes": {
-                "detector_name": "my_detector",
-                "confidence_threshold_pct": 0.5,
-                "mean_k": 50,
-                "sigma": 2.0
-  }
-}
+    {
+        "name": "my_segmenter",
+        "type": "vision",
+        "model": "detector_3dsegmenter"
+        "attributes": {
+            "detector_name": "my_detector",
+            "confidence_threshold_pct": 0.5,
+            "mean_k": 50,
+            "sigma": 2.0
+        }
+    },
+    ... // other services
 ]
 ```
 
@@ -310,24 +331,25 @@ detections = await vision.get_detections(img, "find_objects")
 
 ```json
 "services": [
-{
-  "name": "vision",
-  "type": "vision",
-  "attributes": {
-    "register_models": [
-      {
-        "parameters": {
-                "detector_name": "my_detector",
-                "confidence_threshold_pct": 0.5,
-                "mean_k": 50,
-                "sigma": 2.0
-        },
-        "name": "my_segmenter",
-        "type": "detector_segmenter"
-      }
-    ]
-  }
-}
+    {
+        "name": "vision",
+        "type": "vision",
+        "attributes": {
+            "register_models": [
+            {
+                "parameters": {
+                    "detector_name": "my_detector",
+                    "confidence_threshold_pct": 0.5,
+                    "mean_k": 50,
+                    "sigma": 2.0
+                },
+                "name": "my_segmenter",
+                "type": "detector_segmenter"
+            }
+            ]
+        }
+    },
+    ... // other services
 ]
 ```
 
