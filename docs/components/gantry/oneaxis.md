@@ -18,17 +18,6 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Enter a name for your sensor, select the type `gantry`, and select the `oneaxis` model.
 
 Click **Create component**.
-Paste into the **Attributes** box:
-
-``` json
-"motor": <"your-motor-name">,
-"length_mm": <int>,
-"axis": {
-    "X": <int>,
-    "Y": <int>,
-    "Z": <int>
-}
-```
 
 ![Creation of a one-axis gantry component in the Viam app config builder.](../img/oneaxis-ui-config.png)
 

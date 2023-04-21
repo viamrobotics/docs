@@ -18,17 +18,6 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Enter a name for your gantry, select the type `gantry`, and select the `multiaxis` model.
 
 Click **Create component**.
-Paste into the **Attributes** box:
-
-``` json
-"attributes": {
-    "subaxes_list": [
-        <"xaxis-name">,
-        <"yaxis-name">,
-        <"zaxis-name">
-    ]
-}
-```
 
 ![Creation of a multi-axis gantry component in the Viam app config builder.](../img/multiaxis-ui-config.png)
 
@@ -76,9 +65,9 @@ Edit and fill in the attributes as applicable.
             "attributes": {
                 "board": "local",
                 "pins": {
-                    "dir": "dirx",
-                    "pwm": "pwmx",
-                    "step": "stepx"
+                    "dir": "11",
+                    "pwm": "13",
+                    "step": "15"
                 },
                 "stepperDelay": 50,
                 "ticksPerRotation": 200
@@ -91,9 +80,9 @@ Edit and fill in the attributes as applicable.
             "attributes": {
                 "board": "local",
                 "pins": {
-                    "dir": "diry",
-                    "pwm": "pwmy",
-                    "step": "stepy"
+                    "dir": "16",
+                    "pwm": "18",
+                    "step": "22"
                 },
                 "stepperDelay": 50,
                 "ticksPerRotation": 200
@@ -106,9 +95,9 @@ Edit and fill in the attributes as applicable.
             "attributes": {
                 "board": "local",
                 "pins": {
-                    "dir": "dirz",
-                    "pwm": "pwmz",
-                    "step": "stepz"
+                    "dir": "29",
+                    "pwm": "31",
+                    "step": "33"
                 },
                 "stepperDelay": 50,
                 "ticksPerRotation": 200
@@ -123,8 +112,8 @@ Edit and fill in the attributes as applicable.
                 "board": "local",
                 "limit_pin_enabled_high": false,
                 "limit_pins": [
-                    "xlim1",
-                    "xlim2"
+                    "32",
+                    "36"
                 ],
                 "motor": "xmotor",
                 "gantry_rpm": 500,
@@ -144,8 +133,8 @@ Edit and fill in the attributes as applicable.
                 "board": "local",
                 "limit_pin_enabled_high": false,
                 "limit_pins": [
-                    "ylim1",
-                    "ylim2"
+                    "37",
+                    "38"
                 ],
                 "motor": "ymotor",
                 "gantry_rpm": 500,
@@ -165,8 +154,8 @@ Edit and fill in the attributes as applicable.
                 "board": "local",
                 "limit_pin_enabled_high": false,
                 "limit_pins": [
-                    "zlim1",
-                    "zlim2"
+                    "10",
+                    "12"
                 ],
                 "motor": "zmotor",
                 "gantry_rpm": 500,
