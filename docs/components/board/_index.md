@@ -89,11 +89,12 @@ The board component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-| [Readings](#readings) | Get the measurements or readings that this sensor provides. |
+| [AnalogReaderByName](#analogreaderbyname) | Get the measurements or readings that this sensor provides. |
+| [DigitalInterruptByName](#digitalinterruptbyname) | Get the measurements or readings that this sensor provides. |
 
-### Readings
+### AnalogReaderByName
 
-Get the measurements or readings that this sensor provides.
+Get an [AnalogReader](#analogreader) by name.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -233,7 +234,7 @@ led.Set(context.Background(), false, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Analogs
+### AnalogReader
 
 If an analog-to-digital converter (ADC) chip is being used in your
 robot, analog readers (analogs) will have to be configured.

@@ -51,5 +51,5 @@ The following attributes are available for `beaglebone` boards:
 | ---- | ---- | --------- | ----------- |
 | `analogs` | object | Optional | Attributes of any pins that can be used as Analog-to-Digital Converter (ADC) inputs. See configuration info [here](/components/board/#analogreader). |
 | `digital_interrupts` | object | Optional | Pin and name of any digital interrupts. See configuration info [here](/components/board/#digital-interrupts). |
-| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select bus pins' index and name. See configuration info [here](/components/board/#spi-buses). |
-| `i2cs` | object | Optional | Any Inter Integrated Circuit (I2C) bus pins' index and name. See configuration info [here](/components/board/#i2cs). |
+| `spis` | object | Optional | Any serial peripheral interface (SPI) chip select bus pins' index and name. See configuration info [here](/components/board/#spi-buses). |
+| `i2cs` | object | Optional | Any onter-integrated circuit (I2C) bus pins' index and name. See configuration info [here](/components/board/#i2cs). |
