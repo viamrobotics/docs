@@ -16,17 +16,32 @@ The ML Models service allows you to deploy machine learning models to your robot
 
 Navigate to your robot's [**config** tab](https://app.viam.com/robot) and click on the **Services** subtab.
 
-Scroll to the bottom and create a new service with the **Type** `mlmodel`.
+Scroll to the bottom and create a new service with the **Type** `mlmodel` and the **Model** `tflite_cpu`.
 
 ![Create a machine learning models service](../img/ml-models-service.png)
 
-The created ML Models panel lists all available models that you have [trained](../../manage/ml/train-model/) or [uploaded](../../manage/ml/upload-model/).
+You can choose to configure your service with an existing model on the robot or deploy a model onto your robot:
 
-![Create a machine learning models service](../img/available-models.png)
+{{< tabs >}}
+{{% tab name="Existing Model" %}}
 
-To add a model to your robot, select it and click on the move right button.
+To configure your service with an existing model on the robot, select **Path to Existing Model On Robot** for the **Deployment** field.
 
-![Create a machine learning models service](../img/added-model.png)
+Then specify the **Model Path** and any **Optional Settings** such as the **Label Path** and the **Number of threads**.
+
+![Create a machine learning models service with an existing model](../img/available-models.png)
+
+{{% /tab %}}
+{{% tab name="Deploy Model" %}}
+
+To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
+
+Then select the **Models** and any **Optional Settings** such as the **Number of threads**.
+
+![Create a machine learning models service with a model to be deployed](../img/deploy-model.png)
+
+{{% /tab %}}
+{{< /tabs >}}
 
 Save the configuration and your model will be added to your robot at <file>$HOME/.viam/packages/\<model-name\>/\<file-name\></file>.
 
