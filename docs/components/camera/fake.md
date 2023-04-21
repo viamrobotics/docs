@@ -1,6 +1,6 @@
 ---
 title: "Configure a Fake Camera"
-linkTitle: "Fake"
+linkTitle: "fake"
 weight: 35
 type: "docs"
 description: Configure a camera to use for testing."
@@ -46,12 +46,12 @@ Fill in the attributes for your join color depth view:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for fake cameras:
+The following attributes are available for `fake` cameras:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
-| `width` | *Optional* | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height`. |
-| `height` | *Optional* | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height` |
+| `width` | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height`. |
+| `height` | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height` |
 
 ## View the camera stream
 
