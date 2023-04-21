@@ -1,6 +1,6 @@
 ---
-title: "Configure an RSTP camera"
-linkTitle: "rstp"
+title: "Configure an RTSP camera"
+linkTitle: "rtsp"
 weight: 34
 type: "docs"
 description: "Configure a streaming camera with an MJPEG track."
