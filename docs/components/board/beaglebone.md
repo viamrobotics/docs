@@ -1,36 +1,55 @@
 ---
-title: "Configure a pca9685 board"
-linkTitle: "pc9685"
+title: "Configure a beaglebone board"
+linkTitle: "beaglebone"
 weight: 20
 type: "docs"
-description: "Configure a pca9685 board."
+description: "Configure a beaglebone board."
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
 
-Configure a `pca9685` board to integrate a [PCA9685 Arduino I2C Interface](https://www.adafruit.com/product/815) into your robot.
+{{% alert title="REQUIREMENTS" color="caution" %}}
 
-{{< tabs name="Configure an pca9685 Board" >}}
+Follow this [setup guide](/installation/prepare/beaglebone-setup/) to prepare your BeagleBone for running `viam-server` before configuring a `beaglebone` board.
+
+{{% /alert %}}
+
+Configure a `beaglebone` board to integrate [BeagleBoard's BeagleBone AI 64](https://beagleboard.org/ai-64) into your robot:
+
+{{< tabs name="Configure an beaglebone Board" >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create Component** menu.
-Enter a name for your board, select the type `board`, and select the `pca9685` model.
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter a name for your board, select the type `board`, and select the `beaglebone` model.
 
-![An example configuration for a pca9685 board in the Viam app Config Builder.](../img/pca9685-ui-config.png)
+![An example configuration for a beaglebone board in the Viam app Config Builder.](../img/beaglebone-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-
+{
+  "components": [
+    {
+      "name": <"your-beaglebone-board">,
+      "type": "board",
+      "model": "beaglebone",
+      "attributes": {},
+      "depends_on": []
+    }
+  ]
+}
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for `pca9685` boards:
+The following attributes are available for `beaglebone` boards:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-|  |  |  | |
+| `analogs` | object | Optional | Attributes of any pins that can be used as Analog-to-Digital Converter (ADC) inputs. See configuration info [here](/components/board/#analogreader). |
+| `digital_interrupts` | object | Optional | Pin and name of any digital interrupts. See configuration info [here](/components/board/#digital-interrupts). |
+| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select bus pins' index and name. See configuration info [here](/components/board/#spi-buses). |
+| `i2cs` | object | Optional | Any Inter Integrated Circuit (I2C) bus pins' index and name. See configuration info [here](/components/board/#i2cs). |

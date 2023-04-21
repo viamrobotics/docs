@@ -3,6 +3,7 @@ title: "Board Component"
 linkTitle: "Board"
 weight: 20
 type: "docs"
+no_list: true
 description: "The signal wire hub of a robot, with GPIO pins for transmitting signals between the robot's computer and its other components."
 tags: ["board", "components"]
 icon: "/components/img/components/board.svg"
@@ -15,7 +16,7 @@ If your board has a computer that is capable of running `viam-server`, or is con
 
 Configure a board component on your robot to control and read from the other hardware components of the robot, signaling through the GPIO pins on the board as overseen by a computer running `viam-server`.
 
-{{% figure src="../img/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
+{{% figure src="img/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
 #### What does "signal wire hub" mean?
 
@@ -49,8 +50,6 @@ In this case, the computer running `viam-server` signals through the GPIO periph
 
 You can use any computer capable of running `viam-server`, whether it's your personal computer or another machine, as long as it is connected to the GPIO peripheral.
 
-<!-- ESP-32 - mini RDK -->
-
 Most robots with a board need at least the following hardware:
 
 - A power supply with the correct voltage and current to avoid damaging or power cycling the board.
@@ -61,57 +60,10 @@ See the data sheet of your board model for requirements.
 
 ## Configuration
 
-Refer to the following example configuration file for a single-board computer like Raspberry Pi:
-
-{{< tabs name="Example Board Config" >}}
-{{% tab name="Config Builder" %}}
-
-![An example of configuration for a single-board computer in the Viam app config builder.](../img/board/board-config-ui.png)
-
-{{% /tab %}}
-{{% tab name="Template JSON" %}}
-
-```json
-{
-  "components": [
-    {
-      "type": "board",
-      "model": <your_model>
-      "name": <your_name>
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{% tab name="Full JSON Example" %}}
-
-```json
-{
-  "components": [
-    {
-      "type": "board",
-      "model": "pi"
-      "name": "viam-board-example"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-| Attribute | Inclusion | Description |
-| ----------- | -------------- | --------------  |
-| `type`  |  *Required* | All boards are of type `board`. |
-| `model` | *Required* | Specify the correct `model` for your board. |
-| `name`  | *Required* | Choose a name for your board. Note that the `name` you choose is the name you need to refer to this particular board in your code. |
-
 Supported board models include:
 
 | Model | Description |
 | ----- | ----------- |
-| [`fake`](fake) | A model used for testing, with no physical hardware. |
 | [`pi`](pi) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
 | [`ti`](ti) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
 | [`beaglebone`](beaglebone) | [BeagleBoard's BeagleBone AI 64](https://beagleboard.org/ai-64) |
@@ -119,10 +71,81 @@ Supported board models include:
 | [`numato`](numato) | [Numato GPIO Peripheral Modules](https://numato.com/product-category/automation/gpio-modules/) |
 | [`nanopi`](nanopi) | [FriendlyElec’s NanoPi Mini Board](https://www.friendlyelec.com/index.php?route=product/category&path=69) |
 | [`pca9685`](pca9685) | [PCA9685 Arduino I2C Interface](https://www.adafruit.com/product/815) |
+| [`fake`](fake) | A model used for testing, with no physical hardware. |
 
-## Deeper Dives: Advanced Configuration
+## Control your board with Viam's client SDK libraries
 
-### Using GPIO
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+When executed, this sample code will create a connection to your robot as a client.
+Then control your robot programmatically by adding API method calls as shown in the following examples.
+
+These examples assume you have a board called "my_board" configured as a component of your robot.
+If your board has a different name, change the `name` in the code.
+
+## API
+
+The board component supports the following methods:
+
+| Method Name | Description |
+| ----------- | ----------- |
+| [Readings](#readings) | Get the measurements or readings that this sensor provides. |
+
+### Readings
+
+Get the measurements or readings that this sensor provides.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `readings` [(Mapping[str, Any])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this sensor provides.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/index.html#viam.components.sensor.Sensor.get_readings).
+
+```python
+my_sensor = Sensor.from_robot(robot=robot, name='my_sensor')
+
+# Get the readings provided by the sensor.
+readings = await my_sensor.get_readings()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `readings` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): The measurements or readings that this sensor provides.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
+
+```go
+mySensor, err := sensor.FromRobot(robot, "my_sensor")
+if err != nil {
+  logger.Fatalf("cannot get sensor: %v", err)
+}
+
+readings, err := mySensor.Readings(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Signaling Objects
+
+### GPIO Pins
 
 Essentially all electrical signals sent from and received by your board go through GPIO pins.
 It is important to understand some of what they can do and how to use them.
@@ -212,7 +235,7 @@ led.Set(context.Background(), false, nil)
 
 ### Analogs
 
-If an analog to digital converter (ADC) chip is being used in your
+If an analog-to-digital converter (ADC) chip is being used in your
 robot, analog readers (analogs) will have to be configured.
 An ADC takes a voltage as input and converts it to an integer output (for example, a
 number between 0 and 1023 in the case of the 10 bit MCP3008 chip).
@@ -324,14 +347,14 @@ Name | Type | Default Value | Description
 |`type`| string|--| Set type to "basic" to count the number of interrupts that occur. Set type to "servo" to count the average time between the interrupts (akin to pulse width).
 |`formula`| string|--| Apply a mathematical function to the input.
 
-### Other Communication Methods
+## Communication Protocols
 
 Boards can communicate with other hardware components in a few different ways.
 Some devices only require basic GPIO pins whereas others require more specialized methods.
 For example, the TMC5072 stepper motor microcontroller requires SPI bus communication.
 The following are brief descriptions of each protocol Viam supports, as well as the corresponding configuration information.
 
-#### SPI Bus
+### SPI Buses
 
 [Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) uses several pins for serial communication: main out/secondary in (MOSI); main in/secondary out (MISO); SCLK, a clock for serial communication; and chip enable (also called chip select) pins.
 If you are using a Raspberry Pi, the "built-in" chip select pins are labeled CE0 and CE1 on the pinout sheet.
@@ -360,7 +383,7 @@ Name | Type | Default Value | Description
 |`name`| string|--| Choose a name for the SPI bus. Note that a component that uses this bus must then have this same name configured in its attributes.
 |`bus_select`| string|--| A Raspberry Pi has two SPI buses: `0` and `1`. See your board's data sheet for specifics on its SPI wiring.
 
-#### I2C
+### I2Cs
 
 I2C stands for inter-integrated circuit and is similar to SPI but requires fewer pins: serial data (SDA) and serial clock (SCL).
 Some boards that support I2C have the SDA and SCL pins configured by default, so in your config file you need only specify which I2C bus you are using.
@@ -388,10 +411,6 @@ Name | Type | Default Value | Description
 -------------- | ---- | ------------- | ---------------
 |`name`| string|--| Choose a name for the I2C bus. Note that a component that uses this bus must then have this same name configured in its attributes.
 |`bus`| string|--| Usually a number. Raspberry Pi recommends using bus `1`. See your board's data sheet for specifics on its I2C wiring.
-
-## Implementation
-
-See the [example code above](#getting-started-with-gpio-and-the-viam-sdk) to get started, and check out our [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/board/board/index.html).
 
 ## Troubleshooting
 
