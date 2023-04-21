@@ -7,7 +7,6 @@ description: "Simultaneous Localization And Mapping (SLAM) allows your robot to 
 tags: ["slam", "services"]
 icon: "/services/img/icons/slam.svg"
 no_list: true
-icon: "/services/img/icons/slam.svg"
 # SMEs: Kat, Jeremy
 ---
 

@@ -28,7 +28,7 @@ All communication happens securely over HTTPS using secret tokens that are in a 
 
 {{< alert title="Tip" color="tip" >}}
 You can also store your config file in another location.
-To use such a config file, pass in the path to the config when you start `viam-server`:
+To start `viam-server` with a config file in a different location, run the following command:
 
 {{< tabs >}}
 {{% tab name="Linux" %}}
@@ -253,13 +253,6 @@ The corresponding raw JSON looks like this:
 {{% /expand %}}
 
 ## Fragments
-
-{{% alert title="Note" color="note" %}}
-
-Fragments are an experimental feature.
-Stability is not guaranteed.
-
-{{% /alert %}}
 
 Fragments are a way of sharing and managing identical {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple robots.
 For example, if you have multiple robots with the same hardware, wired the same way, you can create and share a fragment and add it to any number of robots.

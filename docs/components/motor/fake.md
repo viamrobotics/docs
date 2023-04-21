@@ -10,22 +10,16 @@ description: "Configure a fake motor to test software without any hardware."
 Configuring a `fake` motor can be convenient for testing software without using any hardware.
 For example, you can use a `fake` component as a placeholder while waiting on a hardware shipment, so that other components that depend on this motor (for example, a [base](/components/base)) won't fail to initialize, and your SDK code won't throw errors when it fails to find a physical motor connected to your robot.
 
-## Configuration
-
-To configure a `fake` motor as a component of your robot, you don't need any hardware, and you don't need to configure any attributes (though you can configure [optional ones](#optional-attributes)).
-
-Just configure your `fake` motor with a name, type, and model:
-
-Field | Description
------ | -----------
-`name` | Choose a name to identify the motor.
-`type` | `motor` is the type for all motor components.
-`model` | `fake`
-
 {{< tabs name="fake-config">}}
 {{% tab name="Config Builder" %}}
 
-<img src="../../img/motor/fake-config-ui.png" alt="Screenshot of a G P I O motor config with the In1 and In2 pins configured and the PWM pin field left blank." style="max-width:800px;width:100%" >
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter a name for your motor, select the type `motor`, and select the `fake` model.
+
+Click **Create component**:
+
+![A fake motor config.](../../img/motor/fake-config-ui.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -73,31 +67,29 @@ Field | Description
 {{% /tab %}}
 {{< /tabs >}}
 
-### Optional Attributes
-
 Since a `fake` motor isn't a physical piece of hardware, attributes are only representational and not required.
-However, if you would like to mock up a virtual placeholder to more closely represent a real, physical motor, you can configure some or all of the following attributes:
+However, if you would like to mock up a virtual placeholder for a real, physical motor, you can configure some or all of the following attributes:
 
-Name | Type | Default Value | Description
--------------- | ---- | ------------- | ---------------
-`board` | string | -- | Name of board to which the motor driver is wired.
-`min_power_pct` | float | 0.0 | Sets a limit on minimum power percentage sent to the motor.
-`max_power_pct` | float | 1.0 | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor.
-`pwm_freq` | uint | 800 | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range.
-`encoder` | string | -- | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). *If an encoder is configured on a `fake` motor, `ticks_per_rotation` becomes required.*
-`max_rpm` | float | -- | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. *For non-encoded fake motors, this is required or a default is assigned.*
-`ticks_per_rotation` | int | -- | *Becomes required for calculations if an encoder is configured (unlike on a real motor).* For a stepper motor, the number of steps in one full rotation (200 is common). For an encoded motor, how many encoder ticks in one full rotation. See data sheet (for a real motor).
-`dir_flip` | bool | False | Flips the direction of "forward" versus "backward" rotation.
-`pins` | object | -- | A structure that holds pin configuration information.
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `board` | string | Optional | `name` of the [board](/components/board) to which the motor driver is wired. |
+| `min_power_pct` | number | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
+| `max_power_pct` | number | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
+| `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
+| `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). *If an encoder is configured on a `fake` motor, `ticks_per_rotation` becomes required.* |
+| `max_rpm` | number | Optional | An estimate of the max revolutions per minute (RPM) the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. *For non-encoded fake motors, this is required or a default is assigned.* |
+| `ticks_per_rotation` | int | Optional | *Becomes required for calculations if an encoder is configured (unlike on a real motor).* For a stepper motor, the number of steps in one full rotation (200 is common). For an encoded motor, how many encoder ticks in one full rotation. See data sheet (for a real motor). |
+| `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. <br> Default: `false` |
+| `pins` | object | Optional | A struct that holds pin configuration information. |
 
-Nested within the `pins` struct:
+Nested within `pins`:
 
-Name | Type | Description |
----- | ---- | ----- |
-`a` | string | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
-`b` | string | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
-`dir` | string | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
-`pwm` | string | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers.
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `a` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `b` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `dir` | string | Optional | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+|`pwm` | string | Optional | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
 
 #### Pin Information
 

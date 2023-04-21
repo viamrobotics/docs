@@ -219,11 +219,14 @@ Find documentation on how to use these methods here:
 - [Base](/components/base/#api)
 - [Camera](/components/camera/#api)
 - [Gantry](/components/gantry/#api)
+- [Gripper](/components/gripper/#api)
 - [Input Controller](/components/input-controller/#api)
 - [Motor](/components/motor/#api)
+- [Movement Sensor](/components/movement-sensor/#api)
+- [Sensor](/components/sensor/#api)
 - [Servo](/components/servo/#api)
 <!--
-Board & Sensor API Docs should be added soon on Viam Documentation, + Movement Sensor, Encoder, Gripper
+Board API Docs should be added soon on Viam Documentation, + Encoder
 -->
 
 You can find example code in the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1), the [Golang SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples), or the [TypeScript SDK example GitHub repository](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples).
@@ -277,7 +280,7 @@ Currently, this only works with Python code which is running on the same board t
    The unverified context does not ensure the hostname of the certificate matches the host we are connecting with.
    This technique is standard when creating local secure contexts.
 
-2. Change the `connect()` method to disable Webrtc and add the auth_entity in the DialOptions and use `localhost:8080`:
+2. Change the `connect()` method to disable {{< glossary_tooltip term_id="webrtc" >}} and add the auth_entity in the DialOptions and use `localhost:8080`:
 
     ```python {class="line-numbers linkable-line-numbers" data-line="5"}
     async def connect():

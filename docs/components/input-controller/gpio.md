@@ -17,12 +17,17 @@ Refer to the following example configuration for an input controller of model `g
 Be aware that complete configuration is not visible in the "Config Builder" tab:
 
 {{< tabs name="Configure a `gpio` input controller" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<img src="../img/gpio-input-controller-ui-config.png" alt="What configuration for a GPIO based input controller component looks like in the Viam App config builder." style="width:100%"/>
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter a name for your input controller, select the type `input_controller`, and select the `gpio` model.
 
-{{< /tab >}}
+Click **Create component** and then fill in the attributes for your model:
 
+![An example configuration for a GPIO input controller component in the Viam App config builder](../img/gpio-input-controller-ui-config.png)
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -77,7 +82,7 @@ Be aware that complete configuration is not visible in the "Config Builder" tab:
 ```
 
 {{% /tab %}}
-{{% tab name="Example JSON" %}}
+{{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

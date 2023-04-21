@@ -35,6 +35,8 @@ Change your existing API calls to get the new vision service instance for your d
 {{< tabs >}}
 {{% tab name="New Way" %}}
 
+Change your existing API calls to get the new vision service instance for your detector, classifier, or segementer model directly from the `VisionServiceClient`:
+
 ```python {class="line-numbers linkable-line-numbers"}
 my_object_detector = VisionServiceClient.from_robot(robot, "find_objects")
 img = await cam.get_image()
