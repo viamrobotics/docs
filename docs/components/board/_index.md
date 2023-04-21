@@ -68,10 +68,224 @@ Supported board models include:
 | [`ti`](ti) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
 | [`beaglebone`](beaglebone) | [BeagleBoard's BeagleBone AI 64](https://beagleboard.org/ai-64) |
 | [`jetson`](jetson) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), [NVIDIA Jetson  Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
-| [`numato`](numato) | [Numato GPIO Peripheral Modules](https://numato.com/product-category/automation/gpio-modules/) |
 | [`nanopi`](nanopi) | [FriendlyElec’s NanoPi Mini Board](https://www.friendlyelec.com/index.php?route=product/category&path=69) |
-| [`pca9685`](pca9685) | [PCA9685 Arduino I2C Interface](https://www.adafruit.com/product/815) |
+| [`numato`](numato) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding [GPIO pins](#gpio-pins) |
+| [`pca9685`](pca9685) | [PCA9685 Arduino I2C Interface](https://www.adafruit.com/product/815), a 16-channel [I2C](#i2cs) [servo](/components/servo) driver peripheral |
 | [`fake`](fake) | A model used for testing, with no physical hardware. |
+<!-- Could consider adding another column for Pi, Jetsons, TI -> PINOUT diagram section? 
+
+- https://pinout.xyz/pinout/spi 
+- https://jetsonhacks.com/nvidia-jetson-nano-j41-header-pinout/-->
+
+### `analogs`
+
+An [analog-to-digital converter](https://www.electronics-tutorials.ws/combination/analogue-to-digital-converter.html) (ADC) takes a voltage input (analog signal) and converts it to an integer output (digital signal).
+<!-- TODO: Why can this be useful? -->
+
+To integrate an ADC into your robot, configure the connection between your ADC and your board `"analogs"`  in the `"attributes"` of your board:
+
+``` json
+{
+  "components": [
+    {
+      "attributes": {
+        "analogs": [
+          {
+            "chip_select": "24",
+            "name": "current",
+            "pin": "1",
+            "spi_bus": "main"
+          },
+          {
+            "chip_select": "24",
+            "name": "pressure",
+            "pin": "0",
+            "spi_bus": "main"
+          }
+        ],
+        "spis": [
+          {
+            "bus_select": "0",
+            "name": "main"
+          }
+        ]
+      },
+      "model": "pi",
+      "name": "local",
+      "type": "board"
+    }
+  ]
+}
+```
+
+The following properties are available for `analogs`:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+|`name` | string | **Required** | Your name for the analog reader. |
+|`pin`| string | **Required** | The pin number of the ADC pin wired to the board.
+|`chip_select`| string | **Required** | The pin number of the board pin wired to the ADC. |
+|`spi_bus` | string | Optional | `name` of the [SPI bus](#spi) connecting the ADC and board. Required if your board must communicate with the ADC via SPI. |
+| `average_over_ms` | int | Optional | Duration in milliseconds over which the rolling average of the analog input should be taken. |
+|`samples_per_sec` | int | Optional | Sampling rate of the analog input in samples per second. |
+<!-- 
+
+Some boards like Numato have built-in ADCs which makes configuration more straightforward.
+
+Some boards (such as Raspberry Pi) communicate with the ADC over SPI so both analog and SPI must be configured.
+
+TODO: Need to make a note of this somewhere: NOT GPIO NUMBER
+
+ALSO TODO: Better explanation of `chip_select` attribute // how connection between board and ADC is made
+
+And what is AnalogSmoother?? re **average_over_ms** (int) and **samples_per_sec** (int): Together these
+allow for the use of AnalogSmoother.
+ -->
+
+### `digital_interrupts`
+
+Digital interrupts are useful when your code needs to be notified
+immediately anytime there is a change in GPIO value.
+Contrast this with running the `Get` method on a GPIO pin only at specific times when you want to know its value, which you can do without configuring interrupts; you only need to call `Get` on the name yielded by `GPIOPinByName`.
+
+#### Configuration
+
+An example:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "attributes": {
+        "digital_interrupts": [
+          {
+            "name": "example-interrupt-1",
+            "pin": "15"
+          },
+          {
+            "name": "example-interrupt-2",
+            "pin": "16"
+          }
+        ]
+      },
+      "model": "pi",
+      "name": "local",
+      "type": "board"
+    }
+  ]
+}
+```
+
+The following properties are available for `digital_interrupts`:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+|`name` | string | **Required** | Your name for the digital interrupt. |
+|`pin`| string | **Required** | The pin number on the board you wish to configure the digital interrupt for. |
+|`type`| string | Optional | Set `type` to `"basic"` to count the number of interrupts that occur. Set `type` to `"servo"` to count the average time between the interrupts (akin to pulse width). |
+|`formula` | string | Optional | A mathematical function you wish to apply to the input. |
+<!-- TODO: Can maybe have a terminology section to link to on this page including like pin number? pinout diagrams? 
+
+also need to find an example usage for formula.
+and what is the default for type? 
+-->
+<!-- 
+### Communication Protocols
+
+Boards can communicate with other hardware components in a few different ways.
+
+Some devices only require basic GPIO pins whereas others require more specialized methods.
+For example, the TMC5072 stepper motor microcontroller requires SPI bus communication
+The following are brief descriptions of each protocol Viam supports, as well as the corresponding configuration information. -->
+
+### `spis`
+
+[Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) is a serial communication protocol that uses [several wires](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi) to exchange information between a controller and peripheral devices:
+
+- Main Out / Secondary In (MOSI)
+- Main In / Secondary Out (MISO)
+- Clock: An oscillating signal line (SCLK)
+- Chip Select: 1 line for each peripheral connected to controller (CS*)
+
+To physically set up a connection between your board (as the controller) and a component (as the peripheral device)--for example: a [TMC5072 stepper motor](/components/motor/#TMC5072)--you can wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
+
+Then, you must enable SPI on your board if it is not enabled by default.
+Refer to your [board model's configuration instructions](#configuration) for instructions on this, if applicable.
+
+Then, as boards have CS pins internally configured to correspond with SPI bus indexes, all you need to do to enable this connection in your board's configuration `"attributes"` is specify the index of the bus and give it a name:
+
+{{< tabs name="Configure a SPI Bus" >}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+// "attributes": { ... ,
+"spis": [
+  {
+    "name": <"your-bus-name">,
+    "bus_select": <"index">
+  }
+]
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"spis": [
+  {
+    "name": "main",
+    "bus_select": "0"
+  }
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The following attributes are available for `spis`:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+|`name`| string| Required | `name` of the SPI bus. |
+|`bus_select`| string | Required | The index of the SPI bus. Refer to your board's pinout diagram for SPI bus indexes and chip select pin numbers. |
+
+{{% alert title="WIRING WITH SPI" color="tip" %}}
+
+Refer to your board's pinout diagram or data sheet for SPI bus indexes and corresponding chip select pin numbers, as well as MOSI, MISO, and SCLK pin numbers.
+
+Refer to your peripheral device's data sheet for MOSI/MISO/SLCK/CS pin layouts.
+
+{{% /alert %}}
+
+### `i2cs`
+
+The inter-integrated circuit (I2C) serial communication protocol is similar to SPI, but requires only two signal wires to exchange information between the controller and the peripheral: serial data (SDA) and serial clock (SCL).
+Some boards that support I2C have the SDA and SCL pins configured by default, so in your config file you need only specify which I2C bus you are using.
+For example, if you use I2C bus 1 on a Raspberry Pi 4, SDA and SCL will be pins 3 and 5, respectively.
+
+You will also need to enable I2C on your board if it is not enabled by default.
+Review the [instructions in our documentation](/installation/prepare/rpi-setup/#enable-communication-protocols) to learn how to enable I2C on a Raspberry Pi 4.
+[Pinout.xyz](https://pinout.xyz/pinout/i2c) has additional information about I2C on Raspberry Pi.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "i2cs": [
+    {
+      "name": "bus1",
+      "bus": "1"
+    }
+  ]
+}
+```
+
+The following properties are available for `i2cs`:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+|`name`| string| Required | `name` of the I2C bus. |
+|`bus_select`| int | Required | The index of the I2C bus. Refer to your board's pinout diagram for I2C bus indexes and corresponding pin numbers. |
+
+<!-- Usually a number. Raspberry Pi recommends using bus `1`. See your board's data sheet for specifics on its I2C wiring. -->
 
 ## Control your board with Viam's client SDK libraries
 
@@ -108,13 +322,13 @@ Get an [AnalogReader](#analogreader) by name.
 
 - `readings` [(Mapping[str, Any])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this sensor provides.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/index.html#viam.components.sensor.Sensor.get_readings).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/index.html#viam.components.sensor.Board.get_readings).
 
 ```python
-my_sensor = Sensor.from_robot(robot=robot, name='my_sensor')
+my_board = Board.from_robot(robot=robot, name='my_board')
 
-# Get the readings provided by the sensor.
-readings = await my_sensor.get_readings()
+# Get the readings provided by the board.
+readings = await my_board.get_readings()
 ```
 
 {{% /tab %}}
@@ -127,26 +341,26 @@ readings = await my_sensor.get_readings()
 
 **Returns:**
 
-- `readings` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): The measurements or readings that this sensor provides.
+- `readings` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): The measurements or readings that this board provides.
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 ```go
-mySensor, err := sensor.FromRobot(robot, "my_sensor")
+myBoard, err := board.FromRobot(robot, "my_board")
 if err != nil {
-  logger.Fatalf("cannot get sensor: %v", err)
+  logger.Fatalf("cannot get board: %v", err)
 }
 
-readings, err := mySensor.Readings(context.Background(), nil)
+readings, err := myBoard.Readings(context.Background(), nil)
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-## Signaling Objects
+<!-- TODO: Will do something with this but not in this format. API documentation may be sufficient. Could make subpage.  -->
 
-### GPIO Pins
+<!-- #### GPIO
 
 Essentially all electrical signals sent from and received by your board go through GPIO pins.
 It is important to understand some of what they can do and how to use them.
@@ -232,186 +446,7 @@ led.Set(context.Background(), false, nil)
 ```
 
 {{% /tab %}}
-{{< /tabs >}}
-
-### AnalogReader
-
-If an analog-to-digital converter (ADC) chip is being used in your
-robot, analog readers (analogs) will have to be configured.
-An ADC takes a voltage as input and converts it to an integer output (for example, a
-number between 0 and 1023 in the case of the 10 bit MCP3008 chip).
-
-#### Configuration
-
-Some boards like Numato have built-in ADCs which makes configuration more straightforward.
-
-Some boards (such as Raspberry Pi) communicate with the ADC over SPI so both analog and SPI must be configured.
-An example:
-
-``` json
-{
-  "components": [
-    {
-      "attributes": {
-        "analogs": [
-          {
-            "chip_select": "24",
-            "name": "current",
-            "pin": "1",
-            "spi_bus": "main"
-          },
-          {
-            "chip_select": "24",
-            "name": "pressure",
-            "pin": "0",
-            "spi_bus": "main"
-          }
-        ],
-        "spis": [
-          {
-            "bus_select": "0",
-            "name": "main"
-          }
-        ]
-      },
-      "model": "pi",
-      "name": "local",
-      "type": "board"
-    }
-  ]
-}
-```
-
-Note that the name of the SPI bus ("main") matches between the analog
-configuration and SPI configuration.
-
-##### Required Fields
-
-Name | Type | Default Value | Description
--------------- | ---- | ------------- | ---------------
-|`name` | string | -- | Choose a name for the analog reader
-|`spi_bus` | string | -- |This value should match the name given to the relevant SPI bus in its section of the config file.
-|`pin`| string | -- | Specify which pin of the ADC chip to use.
-|`chip_select`| string| --| Specify the pin number of the board GPIO pin connected to the ADC chip. Use the pin number, not the GPIO number.
-
-##### Optional Fields
-
-**average_over_ms** (int) and **samples_per_sec** (int): Together these
-allow for the use of AnalogSmoother.
-Specify the duration in milliseconds over which the rolling average of the input should be taken, and the sampling rate in samples per second, respectively.
-
-### Digital Interrupts
-
-Digital interrupts are useful when your code needs to be notified
-immediately anytime there is a change in GPIO value.
-Contrast this with running the `Get` method on a GPIO pin only at specific times when you want to know its value, which you can do without configuring interrupts; you only need to call `Get` on the name yielded by `GPIOPinByName`.
-
-#### Configuration
-
-An example:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "attributes": {
-        "digital_interrupts": [
-          {
-            "name": "example-interrupt-1",
-            "pin": "15"
-          },
-          {
-            "name": "example-interrupt-2",
-            "pin": "16"
-          }
-        ]
-      },
-      "model": "pi",
-      "name": "local",
-      "type": "board"
-    }
-  ]
-}
-```
-
-##### Required Fields
-
-Name | Type | Default Value | Description
--------------- | ---- | ------------- | ---------------
-|`name`| string|--| Choose a name for the digital interrupt.
-|`pin`| string|--| Specify which GPIO pin of the board to use. Use the pin number, not the GPIO number.
-
-##### Optional Fields
-
-Name | Type | Default Value | Description
--------------- | ---- | ------------- | ---------------
-|`type`| string|--| Set type to "basic" to count the number of interrupts that occur. Set type to "servo" to count the average time between the interrupts (akin to pulse width).
-|`formula`| string|--| Apply a mathematical function to the input.
-
-## Communication Protocols
-
-Boards can communicate with other hardware components in a few different ways.
-Some devices only require basic GPIO pins whereas others require more specialized methods.
-For example, the TMC5072 stepper motor microcontroller requires SPI bus communication.
-The following are brief descriptions of each protocol Viam supports, as well as the corresponding configuration information.
-
-### SPI Buses
-
-[Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) uses several pins for serial communication: main out/secondary in (MOSI); main in/secondary out (MISO); SCLK, a clock for serial communication; and chip enable (also called chip select) pins.
-If you are using a Raspberry Pi, the "built-in" chip select pins are labeled CE0 and CE1 on the pinout sheet.
-The required connections between corresponding board pins and peripheral device pins must be wired, but each of these pins does not need to be specified in the config as most boards have them configured by default.
-Only the index of the entire bus must be specified.
-
-##### Configuration
-
-The attributes section of a board using SPI will contain the following:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "spis": [
-    {
-      "name": "main",
-      "bus_select": "0"
-    }
-  ]
-}
-```
-
-##### Required Fields
-
-Name | Type | Default Value | Description
--------------- | ---- | ------------- | ---------------
-|`name`| string|--| Choose a name for the SPI bus. Note that a component that uses this bus must then have this same name configured in its attributes.
-|`bus_select`| string|--| A Raspberry Pi has two SPI buses: `0` and `1`. See your board's data sheet for specifics on its SPI wiring.
-
-### I2Cs
-
-I2C stands for inter-integrated circuit and is similar to SPI but requires fewer pins: serial data (SDA) and serial clock (SCL).
-Some boards that support I2C have the SDA and SCL pins configured by default, so in your config file you need only specify which I2C bus you are using.
-For example, if you use I2C bus 1 on a Raspberry Pi 4, SDA and SCL will be pins 3 and 5, respectively.
-You will also need to enable I2C on your board if it is not enabled by default.
-Review the [instructions in our documentation](/installation/prepare/rpi-setup/#enable-communication-protocols) to learn how to enable I2C on a Raspberry Pi 4.
-[Pinout.xyz](https://pinout.xyz/pinout/i2c) has additional information about I2C on Raspberry Pi.
-
-##### Configuration
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "i2cs": [
-    {
-      "name": "bus1",
-      "bus": "1"
-    }
-  ]
-}
-```
-
-##### Required Fields
-
-Name | Type | Default Value | Description
--------------- | ---- | ------------- | ---------------
-|`name`| string|--| Choose a name for the I2C bus. Note that a component that uses this bus must then have this same name configured in its attributes.
-|`bus`| string|--| Usually a number. Raspberry Pi recommends using bus `1`. See your board's data sheet for specifics on its I2C wiring.
+{{< /tabs >}} -->
 
 ## Troubleshooting
 
