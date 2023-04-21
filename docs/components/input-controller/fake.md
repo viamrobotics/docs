@@ -18,11 +18,16 @@ However, these Controls only ever return a single `PositionChangeAbs` event on t
 Refer to the following example configuration for an input controller of model `fake`:
 
 {{< tabs name="Configure a `fake` input controller" >}}
-{{< tab name="Config Builder" >}}
+{{% tab name="Config Builder" %}}
 
-<img src="../img/fake-input-controller-ui-config.png" alt="What an example configuration for a fake input controller component looks like in the Viam App config builder." style="width:100%"/>
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter a name for your input controller, select the type `input_controller`, and select the `fake` model.
+Click **Create component**.
 
-{{< /tab >}}
+![An example configuration for a fake input controller component in the Viam App config builder.](../img/fake-input-controller-ui-config.png)
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}

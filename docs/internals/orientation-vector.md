@@ -3,41 +3,43 @@ title: "Orientation Vector"
 linkTitle: "Orientation Vector"
 weight: 10
 type: "docs"
-description: "A description of Viam's orientation vector method."
+description: "A description of Viam's orientation vector object."
 ---
-Viam's orientation vector is a method for describing the orientation of an object in 3D space.
-It is part of a Pose which also includes the position in 3D space.
 
-## Basics
+An _orientation vector_ specifies the orientation of an object in 3D space.
+You use orientation vectors to specify relative orientations of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/).
+The first three components of this vector form an axis pointing in the same direction as the object.
+**Theta** specifies the angle of the object's rotation about that axis.
 
-Orientation vectors are composted of 4 attributes.
+## Example: A camera in a room
 
-- RX, RY, RZ - define a vector from the center of the object to another point in the reference frame.
-This defines the direction something is pointing in.
-- Theta - describes the angular position around that vector.
+Imagine you have a room with a camera.
+The corner of the room is (0, 0, 0).
 
-## Examples
+To configure the camera into the frame system, you need to know where in the room the camera is, and where it's pointing.
 
-### Configuring frame for a camera
+![A camera in a 3D space](../img/vector/orientation-vector-camera.png)
 
-- You have a room with a camera.
-- The corner of the room is (0,0,0).
-- You want to configure the camera into the frame system, so you need to know where in the room the camera is, and where it's pointing.
-- This requires a Pose.
-- X, Y, Z are simply the measurements from the corner of the room.
-- Now to figure out the orientation vector:
-  - To figure out RX, RY, RZ first take a picture with the camera.
-  - Determine the point in the very center of the image.
-  - Measure the X, Y, Z of that point from the corner (call them X2, Y2, Z2, respectively).
-  - RX, RY, RZ become the difference between X, Y, Z (the camera's position) and X2, Y2, Z2 (that point's position).
-  - Theta is determined by looking at the picture and changing Theta's value until down is correct, likely 0, 90 or 180.
-    - To do this, take a picture
-    - Determine if the orientation is correct
-    - If not, add 90 to Theta, and try again
-![camera example](../img/vector/orientation-vector-camera.png)
+**(OX, OY, OZ)** are defined by measurements starting from the corner of the room to the camera:
 
-## Why we like it
+1. Determine the position of the camera (3,5,2)
+2. Determine the position of a point that the camera can see, for example (3,1,1)
+3. Subtract the camera point from the observed point to get the OV of the camera: (3,1,1) - (3,5,2) = (0,-4,-1)
+
+{{< alert title="Note" color="note" >}}
+When you provide an orientation vector to Viam, Viam normalizes it to the unit sphere.
+Therefore if you enter (0, -4, -1), Viam stores it internally and displays it to you as (0,-0.97, -0.24).
+{{< /alert >}}
+
+**Theta** describes the angle of rotation of the camera around the calculated vector.
+If you are familiar with the pitch-roll-yaw system, you can think of theta as _roll_.
+If your camera is perpendicular to one of the axes of your Frame system,
+you can determine Theta by looking at the picture and changing the value to 0, 90, 180, or 270 until the orientation of the picture is correct.
+
+ OX, OY, OZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
+
+## Why Viam uses orientation vectors
 
 - Easy to measure in the real world
 - No protractor needed
-- Rotation is pulled out (as Theta) which is often used independently and measured independently.
+- Rotation is pulled out as Theta which is often used independently and measured independently
