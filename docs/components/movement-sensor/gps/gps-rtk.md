@@ -143,7 +143,7 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 Name | Inclusion | Type | Default Value | Description
 ---- | --------- | ---- | ------------- | ----------
-`board` | depends on connection type | string | - | Required for NMEA over I<sup>2</sup>C; the name of the board connected to the chip. Not required for serial communication.
+`board` | depends on connection type | string | - | Required for NMEA over I<sup>2</sup>C; the `name` of the board connected to the chip. Not required for serial communication.
 `connection_type` | **Required** | string | - | `"I2C"` or `"serial"`, respectively. See [connection configuration info](#connection-attributes).
 `ntrip_addr` | **Required** | string | - | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections
 `ntrip_username` | **Required** | string | - | Username for the NTRIP server
