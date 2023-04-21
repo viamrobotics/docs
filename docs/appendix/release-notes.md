@@ -55,7 +55,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color Detector configurations
 
-You can replace existing color detectors by [configuring new ones in the UI](/services/vision/detection/#configure-a-color_detector) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing color detectors by configuring new ones in the UI or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -130,7 +130,7 @@ You can replace existing color detectors by [configuring new ones in the UI](/se
 
 #### TFLite Detector configurations
 
-You can replace existing TFLite detectors by [configuring new ones in the UI](/services/vision/detection/#configure-a-tflite_cpu-detector) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing TFLite detectors by configuring new ones in the UI or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -190,7 +190,7 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/s
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by [configuring new ones in the UI](/services/vision/classification/#configure-a-tflite_cpu-classifier) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing TFLite classifiers by configuring new ones in the UI or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -304,7 +304,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Detector to 3D Segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-a-detector_3dsegmenter) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by configuring new ones in the UI or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
