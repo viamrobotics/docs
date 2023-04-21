@@ -250,7 +250,7 @@ You can replace existing TFLite classifiers by configuring new ones in the UI or
 
 #### Radius Clustering 3D Segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-a-radius_clustering_segmenter) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by configuring new ones in the UI or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
