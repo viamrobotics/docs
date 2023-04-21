@@ -32,7 +32,6 @@ Most robots with a gantry need at least the following hardware:
 
 ## Configuration
 
-Configuring this component on your robot with a gantry enables you to get and change the position of the linear rail axes.
 
 Supported gantry models include:
 
