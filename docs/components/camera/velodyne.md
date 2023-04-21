@@ -46,7 +46,7 @@ The following attributes are available for `velodyne` cameras:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
-| `port` | **Required** | Port the velodyne camera is running on. |
+| `port` | **Required** | The port the Velodyne camera is running on. |
 | `ttl_ms` | **Required** | Frequency in milliseconds to output the [TTL signal](https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic) from the camera. |
 
 ## View the camera stream
