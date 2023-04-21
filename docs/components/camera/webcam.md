@@ -1,6 +1,6 @@
 ---
 title: "Configure a Webcam"
-linkTitle: "Webcam"
+linkTitle: "webcam"
 weight: 33
 type: "docs"
 description: "Configure a standard camera that streams camera data."
@@ -77,17 +77,17 @@ Use the following configuration and fill in the attributes for your webcam:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for webcams:
+The following attributes are available for `webcam` cameras:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
-| `intrinsic_parameters` | *Optional* | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> `width_px`: The expected width of the aligned image in pixels. </li> <li> `height_px`: The expected height of the aligned image in pixels. </li> <li> `fx`: The image center x point. </li> <li> `fy`: The image center y point. </li> <li> `ppx`: The image focal x. </li> <li> `ppy`: The image focal y. </li> </ul> |
-| `distortion_parameters` | *Optional* | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
-| `debug` | *Optional* | Enables the debug outputs from the camera if `true`. Defaults to `false`. |
-| `format` | *Optional* | The camera image format, used with video_path to find camera. |
-| `video_path` | *Optional* | The id of or the path to the webcam. Often `video0`. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the id of a webcam is more consistent than the path. |
-| `width_px` | *Optional* | The camera image width in pixels, used with video_path to find camera with this resolution. Defaults to the closest possible value to closest to 480. |
-| `height_px` | *Optional* | The camera image height in pixels, used with video_path to find camera with this resolution. Defaults to the closest possible value to closest to 640. |
+| `intrinsic_parameters` | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> `width_px`: The expected width of the aligned image in pixels. </li> <li> `height_px`: The expected height of the aligned image in pixels. </li> <li> `fx`: The image center x point. </li> <li> `fy`: The image center y point. </li> <li> `ppx`: The image focal x. </li> <li> `ppy`: The image focal y. </li> </ul> |
+| `distortion_parameters` | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
+| `debug` | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
+| `format` | Optional | The camera image format, used with video_path to find camera. |
+| `video_path` | Optional | The id of or the path to the webcam. Often `video0`. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the id of a webcam is more consistent than the path. |
+| `width_px` | Optional | The camera image width in pixels, used with `video_path` to find camera with this resolution. <br> Default: Closest possible value to `480` |
+| `height_px` | Optional | The camera image height in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `640` |
 
 ## View the camera stream
 
