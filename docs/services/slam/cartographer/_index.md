@@ -327,6 +327,7 @@ Paste the following into the **Attributes** field of your new service:
     },
 }
 ```
+
 {{% /tab %}}
 
 {{% tab name="MacOS" %}}
@@ -341,6 +342,7 @@ Paste the following into the **Attributes** field of your new service:
     },
 }
 ```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -348,6 +350,7 @@ Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to yo
 
 {{< tabs name="Add Cartographer Service with Dataset Module">}}
 {{% tab name="Linux/MacOS x86_64" %}}
+
 ```json
 "modules": [
   // { ...}, YOUR RPLIDAR MODULE,
@@ -359,9 +362,11 @@ Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to yo
 // "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
 // "services": [ ...], YOUR SLAM SERVICE
 ```
+
 {{% /tab %}}
 
 {{% tab name="MacOS ARM64 (M1 & M2)" %}}
+
 ```json
 "modules": [
   // { ...}, YOUR RPLIDAR MODULE,
@@ -373,6 +378,7 @@ Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to yo
 // "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
 // "services": [ ...], YOUR SLAM SERVICE
 ```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -385,6 +391,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 
 {{< tabs name="Add the Cartographer Service with Dataset JSON OSs">}}
 {{% tab name="Linux" %}}
+
 ``` json
 "modules": [
   {
@@ -408,6 +415,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 }
 ]
 ```
+
 {{% /tab %}}
 {{% tab name="MacOS x86_64" %}}
 
@@ -434,6 +442,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 }
 ]
 ```
+
 {{% /tab %}}
 {{% tab name="MacOS ARM64 (M1 & M2)" %}}
 
@@ -460,6 +469,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 }
 ]
 ```
+
 {{% /tab %}}
 {{% /tab %}}
 {{< /tabs >}}
