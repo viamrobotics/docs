@@ -65,7 +65,7 @@ Fill in the attributes for your align color depth homography view:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for `align_color_depth_homograph` views:
+The following attributes are available for `align_color_depth_homography` views:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
