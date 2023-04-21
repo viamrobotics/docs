@@ -303,12 +303,18 @@ The board component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-| [AnalogReaderByName](#analogreaderbyname) | Get the measurements or readings that this sensor provides. |
-| [DigitalInterruptByName](#digitalinterruptbyname) | Get the measurements or readings that this sensor provides. |
+| [AnalogReaderByName](#analogreaderbyname) | Get an [`AnalogReader`](#analogs) by `name`. |
+| [DigitalInterruptByName](#digitalinterruptbyname) | Get a [`DigitalInterrupt`](#digital_interrupts) by `name`. |
+| [GPIOPinByName](#gpiopinbyname) | Get a `GPIOPin` by `name`. |
+| [AnalogReaderNames](#analogreadernames) | Get the `name` of every [`AnalogReader`](#analogs). |
+| [DigitalInterruptNames](#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](#digital_interrupts). |
+| [Status](#status) | Get the current status of this board. |
+| [ModelAttributes](#modelattributes) | Get the attributes related to the model of this board. |
+| [SetPowerMode](#setpowermode) | Set the board to the indicated power mode. |
 
 ### AnalogReaderByName
 
-Get an [AnalogReader](#analogreader) by name.
+Get an [AnalogReader](#analogs) by `name.`
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -320,9 +326,9 @@ Get an [AnalogReader](#analogreader) by name.
 
 **Returns:**
 
-- `readings` [(Mapping[str, Any])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this sensor provides.
+- `readings` [(Mapping[str, Any])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this board provides.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/index.html#viam.components.sensor.Board.get_readings).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_by_name).
 
 ```python
 my_board = Board.from_robot(robot=robot, name='my_board')
@@ -357,6 +363,26 @@ readings, err := myBoard.Readings(context.Background(), nil)
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### DigitalInterruptByName
+
+### GPIOPinByName
+
+### AnalogReaderNames
+
+### DigitalInterruptNames
+
+### Status
+
+### ModelAttributes
+
+### SetPowerMode
+
+## `GPIOPin` API
+
+## `AnalogReader` API
+
+## `DigitalInterrupt` API
 
 <!-- TODO: Will do something with this but not in this format. API documentation may be sufficient. Could make subpage.  -->
 
