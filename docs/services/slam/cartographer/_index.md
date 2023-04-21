@@ -62,6 +62,30 @@ Before adding a SLAM service, you must follow [these instructions](/program/exte
 ### Add a SLAM Service
 
 {{< tabs name="Add the Cartographer Service Live">}}
+{{% tab name="Config Builder" %}}
+
+Go to your robot's page on the [Viam app](https://app.viam.com/).
+Navigate to the **config** tab on your robot's page, and click on the **Services** subtab.
+
+Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
+
+![adding cartographer slam service](../img/run_slam/add-cartographer-service-ui.png)
+
+Paste the following into the **Attributes** field of your new service:
+
+```json
+{
+  "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+  "delete_processed_data": true,
+  "use_live_data": true,
+  "sensors": ["rplidar"],
+  "config_params": {
+    "mode": "2d"
+  }
+}
+```
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
@@ -155,6 +179,7 @@ If this directory structure is not present at runtime, the SLAM Service creates 
 ### Add a SLAM Service
 
 {{< tabs name="Add the Cartographer Service with Dataset">}}
+
 {{% tab name="Config Builder" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
