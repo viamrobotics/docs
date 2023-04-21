@@ -1,6 +1,6 @@
 ---
 title: "Configure a Velodyne Camera"
-linkTitle: "Velodyne"
+linkTitle: "velodyne"
 weight: 32
 type: "docs"
 description: "Configure a camera that uses velodyne lidar."
@@ -42,12 +42,12 @@ Fill in the attributes for your velodyne camera:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for velodyne cameras:
+The following attributes are available for `velodyne` cameras:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
-| `port` | *Required* | Specify the port the velodyne camera is running on. |
-| `ttl_ms` | *Required* | Specify the  milliseconds ???. |
+| `port` | **Required** | The port the Velodyne camera is running on. |
+| `ttl_ms` | **Required** | Frequency in milliseconds to output the [TTL signal](https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic) from the camera. |
 
 ## View the camera stream
 

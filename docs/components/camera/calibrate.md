@@ -1,7 +1,7 @@
 ---
 title: "Calibrate a Camera"
 linkTitle: "Calibrate a Camera"
-weight: 50
+weight: 80
 type: "docs"
 description: "Calibrate a camera and extract the intrinsic and distortion parameters."
 tags: ["camera", "components"]
