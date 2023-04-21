@@ -73,6 +73,9 @@ Add a service with type `slam`, model `viam:slam:cartographer`, and a name of yo
 
 Paste the following into the **Attributes** field of your new service:
 
+{{< tabs name="Add Cartographer Service Live Configs">}}
+{{% tab name="Linux" %}}
+
 ```json
 {
   "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
@@ -84,14 +87,65 @@ Paste the following into the **Attributes** field of your new service:
   }
 }
 ```
+{{% /tab %}}
+
+{{% tab name="MacOS" %}}
+
+```json
+{
+  "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+  "delete_processed_data": true,
+  "use_live_data": true,
+  "sensors": ["rplidar"],
+  "config_params": {
+    "mode": "2d"
+  }
+}
+```
+{{% /tab %}}
+{{< /tabs >}}
+
+Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to your existing SLAM and RPLIDAR configuration:
+
+{{< tabs name="Add Cartographer Service Live Module">}}
+{{% tab name="Linux/MacOS x86_64" %}}
+```json
+"modules": [
+  // { ...}, YOUR RPLIDAR MODULE,
+  {
+    "executable_path": "/usr/local/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
+// "services": [ ...], YOUR SLAM SERVICE
+```
+{{% /tab %}}
+
+{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+```json
+"modules": [
+  // { ...}, YOUR RPLIDAR MODULE,
+  {
+    "executable_path": "/opt/homebrew/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
+// "services": [ ...], YOUR SLAM SERVICE
+```
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **config** tab.
-Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing RPLIDAR configuration:
+Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"modules"` JSON to add to your existing RPLIDAR configuration:
 
+{{< tabs name="Add the Cartographer Service Live Config JSON OSs">}}
+{{% tab name="Linux" %}}
 ```json
 "modules": [
   // { ...}, YOUR RPLIDAR MODULE,
@@ -119,6 +173,65 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 ]
 ```
 
+{{% /tab %}}
+{{% tab name="MacOS x86_64" %}}
+```json
+"modules": [
+  // { ...}, YOUR RPLIDAR MODULE,
+  {
+    "executable_path": "/usr/local/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
+"services": [
+  {
+    "model": "viam:slam:cartographer",
+    "name": <"your-service-name">,
+    "type": "slam",
+    "attributes": {
+      "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+      "delete_processed_data": true,
+      "use_live_data": true,
+      "sensors": ["rplidar"],
+      "config_params": {
+        "mode": "2d"
+      }
+    }
+  }
+]
+```
+
+{{% /tab %}}
+{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+```json
+"modules": [
+  // { ...}, YOUR RPLIDAR MODULE,
+  {
+    "executable_path": "/opt/homebrew/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
+"services": [
+  {
+    "model": "viam:slam:cartographer",
+    "name": <"your-service-name">,
+    "type": "slam",
+    "attributes": {
+      "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+      "delete_processed_data": true,
+      "use_live_data": true,
+      "sensors": ["rplidar"],
+      "config_params": {
+        "mode": "2d"
+      }
+    }
+  }
+]
+```
+{{% /tab %}}
+{{< /tabs >}}
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -185,22 +298,73 @@ If this directory structure is not present at runtime, the SLAM Service creates 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **config** tab on your robot's page, and click on the **Services** subtab.
 
-Add a service with type `slam`, model `cartographer`, and a name of your choice:
+Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
 
 ![adding cartographer slam service](../img/run_slam/add-cartographer-service-ui.png)
 
 Paste the following into the **Attributes** field of your new service:
 
+{{< tabs name="Add the Cartographer Service with Dataset Configs">}}
+{{% tab name="Linux" %}}
+
 ```json
 {
-    "config_params": {
-        "mode": "2d"
-    },
     "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
     "delete_processed_data": false,
     "use_live_data": false
+    "config_params": {
+        "mode": "2d"
+    },
 }
 ```
+{{% /tab %}}
+
+{{% tab name="MacOS" %}}
+
+```json
+{
+    "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+    "delete_processed_data": false,
+    "use_live_data": false
+    "config_params": {
+        "mode": "2d"
+    },
+}
+```
+{{% /tab %}}
+{{< /tabs >}}
+
+Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to your existing SLAM configuration:
+
+{{< tabs name="Add Cartographer Service with Dataset Module">}}
+{{% tab name="Linux/MacOS x86_64" %}}
+```json
+"modules": [
+  // { ...}, YOUR RPLIDAR MODULE,
+  {
+    "executable_path": "/usr/local/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
+// "services": [ ...], YOUR SLAM SERVICE
+```
+{{% /tab %}}
+
+{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+```json
+"modules": [
+  // { ...}, YOUR RPLIDAR MODULE,
+  {
+    "executable_path": "/opt/homebrew/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
+// "services": [ ...], YOUR SLAM SERVICE
+```
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -209,7 +373,15 @@ Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **config** tab.
 Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing configuration:
 
+{{< tabs name="Add the Cartographer Service with Dataset JSON OSs">}}
+{{% tab name="Linux" %}}
 ``` json
+"modules": [
+  {
+    "executable_path": "/usr/local/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
 "services": [
 {
     "type": "slam",
@@ -226,8 +398,61 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 }
 ]
 ```
-
 {{% /tab %}}
+{{% tab name="MacOS x86_64" %}}
+
+``` json
+"modules": [
+  {
+    "executable_path": "/usr/local/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+"services": [
+{
+    "type": "slam",
+    "name": <"your-service-name">,
+    "model": "cartographer",
+    "attributes": {
+    "config_params": {
+        "mode": "2d"
+    },
+    "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+    "delete_processed_data": false,
+    "use_live_data": false,
+    }
+}
+]
+```
+{{% /tab %}}
+{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+
+``` json
+"modules": [
+  {
+    "executable_path": "/opt/homebrew/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+"services": [
+{
+    "type": "slam",
+    "name": <"your-service-name">,
+    "model": "cartographer",
+    "attributes": {
+    "config_params": {
+        "mode": "2d"
+    },
+    "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+    "delete_processed_data": false,
+    "use_live_data": false,
+    }
+}
+]
+```
+{{% /tab %}}
+{{% /tab %}}
+{{< /tabs >}}
 {{< /tabs >}}
 
 ### Adjust `data_dir`
