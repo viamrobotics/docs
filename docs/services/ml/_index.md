@@ -92,6 +92,9 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
 ]
 ```
 
+{{% /tab %}}
+{{< /tabs >}}
+
 The following parameters are available for a `"tflite_cpu"` model:
 
 | Parameter | Inclusion | Description |
