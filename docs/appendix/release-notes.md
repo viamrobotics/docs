@@ -314,7 +314,7 @@ You can replace existing Radius Clustering 3D segmenters by configuring new ones
     {
         "name": "my_segmenter",
         "type": "vision",
-        "model": "detector_3dsegmenter"
+        "model": "detector_3d_segmenter"
         "attributes": {
             "detector_name": "my_detector",
             "confidence_threshold_pct": 0.5,
