@@ -23,11 +23,11 @@ The returned classifications consist of the image's class label and confidence s
 
 The types of classifiers supported are:
 
-* **tflite_cpu**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
+* **mlmodel**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
-## Configure a `tflite_cpu` classifier
+## Configure a `mlmodel` classifier
 
-To create a `tflite_cpu` classifier, you need an [ML Model Service with a suitable model](../../ml).
+To create a `mlmodel` classifier, you need an [ML Model Service with a suitable model](../../ml).
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
@@ -42,6 +42,8 @@ Scroll to the **Create Service** section.
 2. Enter a name as the **Name**.
 3. Select `mlmodel` as the **Model**.
 4. Click **Create Service**.
+
+![Create Vision Service for mlmodel](../img/../vision/img/mlmodel.png)
 
 In your Vision Service's panel, fill in the **Attributes** field.
 

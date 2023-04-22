@@ -41,6 +41,8 @@ To create a [Vision Service](/services/vision/):
 3. Select `radius_clustering_segmenter` as the **Model**.
 4. Click **Create Service**.
 
+![Create Vision Service for radius_clustering_segmenter](../img/../vision/img/radius_clustering_segmenter.png)
+
 In your Vision Service's panel, fill in the **Attributes** field.
 
 ``` json {class="line-numbers linkable-line-numbers"}
@@ -127,6 +129,8 @@ To create a [Vision Service](/services/vision/):
 2. Enter a name as the **Name**.
 3. Select `detector_3dsegmenter` as the **Model**.
 4. Click **Create Service**.
+
+![Create Vision Service for detector_3dsegmenter](../img/../vision/img/detector_3dsegmenter.png)
 
 In your Vision Service's panel, fill in the **Attributes** field.
 

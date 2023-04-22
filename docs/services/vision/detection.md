@@ -25,7 +25,7 @@ The returned detections consist of the bounding box around the identified object
 You can use the following types of detectors:
 
 - [**color_detector**](#configure-a-color_detector): A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
-- [**tflite_cpu**](#configure-a-tflite_cpu-detector): A machine learning detector that draws bounding boxes according to the specified .tflite model file available on the robot’s hard drive.
+- [**mlmodel**](#configure-a-mlmodel-detector): A machine learning detector that draws bounding boxes according to the specified .tflite model file available on the robot’s hard drive.
 
 ## Configure a `color_detector`
 
@@ -55,6 +55,8 @@ To create a [Vision Service](/services/vision/):
 2. Enter a name as the **Name**.
 3. Select `color_detector` as the **Model**.
 4. Click **Create Service**.
+
+![Create Vision Service for color detector](../img/../vision/img/color_detector.png)
 
 In your Vision Service's panel, fill in the **Attributes** field.
 
@@ -147,10 +149,10 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 Click **Save config** and head to the **Components** tab.
 Proceed to [Add a camera component and a "transform" model](#add-a-camera-component-and-a-transform-model).
 
-## Configure a `tflite_cpu` detector
+## Configure a `mlmodel` detector
 
 A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
-To create a `tflite_cpu` classifier, you need an [ML Model Service with a suitable model](../../ml).
+To create a `mlmodel` classifier, you need an [ML Model Service with a suitable model](../../ml).
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
@@ -165,6 +167,8 @@ Scroll to the **Create Service** section.
 2. Enter a name as the **Name**.
 3. Select `mlmodel` as the **Model**.
 4. Click **Create Service**.
+
+![Create Vision Service for mlmodel](../img/../vision/img/mlmodel.png)
 
 In your Vision Service's panel, fill in the **Attributes** field.
 

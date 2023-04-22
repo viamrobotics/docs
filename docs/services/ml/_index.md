@@ -135,5 +135,5 @@ You can use one of these architectures or build your own.
 
 To make use of your new model, follow the instructions to create a detector or a classifier:
 
-- A [`tflite_cpu` detector](../vision/detection/#configure-a-tflite_cpu-detector)
+- A [`tflite_cpu` detector](../vision/detection/#configure-a-mlmodel-detector)
 - A [`tflite_cpu` classifier](../vision/classification/#configure-a-tflite_cpu-classifier)
