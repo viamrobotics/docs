@@ -43,7 +43,7 @@ Scroll to the **Create Service** section.
 3. Select `mlmodel` as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for mlmodel](../img/../vision/img/mlmodel.png)
+![Create Vision Service for mlmodel](../img/mlmodel.png)
 
 In your Vision Service's panel, fill in the **Attributes** field.
 
