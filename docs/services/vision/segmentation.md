@@ -18,7 +18,7 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 The types of segmenters supported are:
 
 - [**radius_clustering_segmenter**](#configure-a-radius_clustering_segmenter): Radius clustering is a segmenter that identifies well separated objects above a flat plane.
-- [**detector_segmenter**](#configure-a-detector_3dsegmenter): Object segmenters are automatically created from detectors in the Vision Service.
+- [** detector_3d_segmenter**](#configure-a-detector_3d_segmenter): Object segmenters are automatically created from detectors in the Vision Service.
 
 ## Configure a `radius_clustering_segmenter`
 
@@ -109,7 +109,7 @@ The following parameters are available for a `"radius_clustering_segmenter"`.
 
 Click **Save config** and head to the **Components** tab.
 
-## Configure a `detector_3dsegmenter`
+## Configure a `detector_3d_segmenter`
 
 Object segmenters are automatically created from [detectors](../detection) in the Vision Service.
 Any registered detector, for example `detector1`, defined in the `register_models` field or added later to the Vision Service becomes a segmenter with `_segmenter` appended to its name, for example `detector1_segmenter`.
@@ -127,7 +127,7 @@ To create a [Vision Service](/services/vision/):
 
 1. Select `vision` as the **Type**.
 2. Enter a name as the **Name**.
-3. Select `detector_3dsegmenter` as the **Model**.
+3. Select `detector_3d_segmenter` as the **Model**.
 4. Click **Create Service**.
 
 ![Create Vision Service for detector_3dsegmenter](../img/detector_3dsegmenter.png)
@@ -153,7 +153,7 @@ Add the Vision Service object to the services array in your raw JSON configurati
     {
         "name": "<segmenter_name>",
         "type": "vision",
-        "model": "detector_3dsegmenter"
+        "model": "detector_3d_segmenter"
         "attributes": {
             "detector_name": "my_detector",
             "confidence_threshold_pct": 0.5,
