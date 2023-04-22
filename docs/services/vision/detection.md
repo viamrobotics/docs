@@ -150,9 +150,7 @@ Proceed to [Add a camera component and a "transform" model](#add-a-camera-compon
 ## Configure a `tflite_cpu` detector
 
 A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
-To create a `tflite_cpu` classifier, you need [a ML Model Service with a suitable model](../../ml).
-
-### Create the Vision Service
+To create a `tflite_cpu` classifier, you need an [ML Model Service with a suitable model](../../ml).
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.

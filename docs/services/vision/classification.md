@@ -27,9 +27,7 @@ The types of classifiers supported are:
 
 ## Configure a `tflite_cpu` classifier
 
-To create a `tflite_cpu` classifier, you need [a ML Model Service with a suitable model](../../ml).
-
-### Create the Vision Service that uses the classifier
+To create a `tflite_cpu` classifier, you need an [ML Model Service with a suitable model](../../ml).
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
