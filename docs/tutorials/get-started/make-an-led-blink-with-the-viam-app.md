@@ -8,7 +8,7 @@ webmSrc: "/img/blink.webm"
 mp4Src: "/img/blink.mp4"
 videoAlt: "A blinking L.E.D. connected to a Raspberry Pi"
 aliases:
-    - tutorials/make-an-led-blink-with-the-viam-app/
+    - /tutorials/make-an-led-blink-with-the-viam-app/
 tags: ["board", "raspberry pi", "app"]
 ---
 
