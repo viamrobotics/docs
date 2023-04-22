@@ -33,7 +33,7 @@ This defines the spacial context of your robot.
 Method Name | Description
 ----------- | -----------
 [`Move`](#move) | Move multiple components in a coordinated way to achieve a desired motion.
-[`MoveSingleComponent`](#movesinglecomponent) | Move a single component "manually".
+[`MoveSingleComponent`](#movesinglecomponent) | Move a single component "manually."
 [`GetPose`](#getpose) | Get the current location and orientation of a component.
 
 ### Move
@@ -46,15 +46,7 @@ Given a destination pose and a component to move to that destination, `Move` wil
 3. Execute that movement to move the actual robot.
 4. Return whether or not this process succeeded.
 
-The volumes associated with all configured robot components (local and remote) will be taken into account for each request to ensure that collisions do not occur.
-
-{{% alert title="Note" color="note" %}}
-
-The motions planned by this API endpoint are by default **entirely unconstrained** with the exception of obeying obstacles as documented below.
-This may result in motions which appear unintuitive.
-To apply motion constraints (experimental), see the [`extra` parameter](#extra_anchor).
-
-{{% /alert %}}
+The volumes associated with all configured robot components (local and remote) will be taken into account for each request to ensure that the robot does not collide with itself.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -75,7 +67,7 @@ To apply motion constraints (experimental), see the [`extra` parameter](#extra_a
 - `world_state` ([WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (*optional*): Data structure specifying information about the world around the robot.
   Used to augment the motion solving process.
   `world_state` includes obstacles and transforms:
-  - **Obstacles**: Geometries located at a pose relative to some frame
+  - **Obstacles**: Geometries located at a pose relative to some frame.
     When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
@@ -86,15 +78,17 @@ To apply motion constraints (experimental), see the [`extra` parameter](#extra_a
       A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
       This is different from `destination` and `component_name`, where poses are relative to the distal end of a frame.
   - **Transforms**: These are a list of `PoseInFrame` messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
-  The `destination` may be one of these, but at present the `component_name` may not be.
 
-- `extra` (Mapping[str, Any]): A generic struct, containing extra options to pass to the underlying RPC call.
+- `constraints` ([Constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints)) (*optional*): Pass in [motion constraints](./constraints/).
+By default, motion is unconstrained with the exception of obstacle avoidance.
+
+- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- None
+- [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/index.html#viam.components.gripper.Gripper.open).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.move).
 
 **Example usage:**
 
@@ -116,13 +110,44 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+- `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): Name of the piece of the robot that should arrive at the destination.
+  Note that this is solved such that the distal end of the component arrives at the destination.
+  For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
+
+- `destination` ([PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)):
+  Describes where the `component_name` should end up.
+  Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/).
+
+  Note that the destination pose is relative to the distal end of the specified frame.
+  This means that if the `destination` is the same as the `component_name` frame, for example an arm's frame, then a pose of {X: 10, Y: 0, Z: 0} will move that arm’s end effector by 10 mm in the local X direction.
+
+- `worldState` ([WorldState](https://pkg.go.dev/go.viam.com/rdk/referenceframe#WorldState)): Data structure specifying information about the world around the robot.
+  Used to augment the motion solving process.
+  `worldState` includes obstacles and transforms:
+  - **Obstacles**: Geometries located at a pose relative to some frame.
+    When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
+    Important considerations:
+    - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
+    - The Motion Service assumes that obstacles with mobile parents move along with their parents while solving.
+      This ensures that obstacles that are temporarily attached to moving components do not cause collisions during movement.
+    - Geometries are "part of" their frame, rather than at the distal end of the frame.
+      Their poses are relative to the *origin* of the specified frame.
+      A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
+      This is different from `destination` and `componentName`, where poses are relative to the distal end of a frame.
+  - **Transforms**: These are a list of `PoseInFrame` messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
+
+- `constraints` ([Constraints](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints)): Pass in optional [motion constraints](./constraints/).
+  By default, motion is unconstrained with the exception of obstacle avoidance.
+
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
 
 **Returns:**
 
+- [(bool)](https://pkg.go.dev/builtin#bool): Whether the move was successful.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion).
 
 **Example usage:**
 
@@ -139,131 +164,136 @@ moved, err := motion.Move(context.TODO(), goalPose, worldState, nil, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Parameters
-
-**`component_name`**: This is the name of the piece of the robot which should arrive at the destination.
-Note that this is solved such that the distal end of the component arrives at the destination.
-For example, if a robotic arm is specified, the piece that will arrive at the destination is the end effector mount point, not the base of the arm where it is mounted.
-
-**`destination`**: A `PoseInFrame` describing where the `component_name` should end up.
-This can be any pose, from the perspective of any component whose location is configured as the `frame` attribute in the Viam config and is therefore known in the robot’s [Frame System](../frame-system/).
-Note that the Pose specified is relative to the distal end of the frame being specified.
-This means that if the `destination` and `component_name` are the same frame, for example an arm (or a gripper attached to one), then a pose of {X: 10, Y: 0, Z: 0} will move that arm’s end effector or gripper by 10 mm in the local X direction.
-
-**`world_state`**: This data structure specifies various information about the world around the robot which is used to augment the motion solving process.
-There are two pieces of world_state: obstacles and transforms.
-Both will be discussed in detail:
-
-- **Obstacles**: These are geometries located at a pose relative to some frame.
-When solving a motion plan with movable frames that contain inherent geometries, the solved path will be constrained such that at no point will any of those inherent geometries intersect with the specified obstacles.
-There are three important things to know about obstacles:
-  - Obstacles will only be avoided by objects with which they are not in collision at the starting position.
-    If a motion is begun and an obstacle specified such that it is in a location where it intersects with a component in the kinematic chain, collisions between that obstacle and that particular piece of the kinematic chain will not be checked.
-  - Obstacles whose parents (or grand… parent) may move as part of a solve request, will be assumed to move along with their parent while solving.
-    This will ensure that obstacles that are temporarily attached to moving components do not cause collisions during the movement.
-  - Unlike the `destination` and `component_name` fields, where poses are relative to the most distal piece of a specified frame (for example, an arm frame will be solved for the pose of its end effector), geometries are interpreted as being "part of" their frame, rather than "at the end of" the frame.
-    Thus, their poses are relative to the *origin* of the specified frame.
-    A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm underneath the base of the arm, not 10mm underneath the end effector.
-- **Transforms**: These are a list of *PoseInFrame* messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
-The `destination` may be one of these, but at present the `component_name` may not be.
-
-<a id="extra_anchor" />**`extra`**: This data structure is a generic struct, containing maps of strings to any data structure.
-This is used to pass in additional parameters not supported as first-class parameters in the API.
-This enables things like the tweaking of individual parameters used by the algorithm, if the user wishes to have something other than the default.
-
-#### Examples
-
-The following code uses the [Viam Python SDK](https://python.viam.dev/) to move an arm to a point in front of a camera and approach that point from a particular direction:
-
-```python {class="line-numbers linkable-line-numbers"}
-# This is a robot with an arm named "myArm" and a down-pointing camera named "cam".
-# The pose of the arm relative to `world` is {x=0,y=0,z=0}
-# The pose of the camera relative to `world` is {x=600,y=0,z=700, o_z=-1}
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
-arm_name = "myArm"
-
-# See frame system documentation. Objects have a frame created with name
-# "<name>_offset" to represent the transformation from the object's parent to the location of
-# the object. The distal end of the "_offset" frame is the origin of the named frame.
-arm_base = arm_name + "_offset"
-
-# Create a geometry representing the table to which the arm is attached.
-table = Geometry(center=Pose(x=0, y=0, z=-20), box=RectangularPrism(dims_mm=Vector3(x=2000, y=2000, z=40)))
-tableFrame = GeometriesInFrame(reference_frame=arm_name, geometries=[table])
-
-# Create a geometry 200mm behind the arm to block it from leaning back too much.
-backboard = Geometry(center=Pose(x=-200, y=0, z=350), box=RectangularPrism(dims_mm=Vector3(x=20, y=10000, z=800)))
-backboardFrame = GeometriesInFrame(reference_frame=arm_base, geometries=[backboard])
-
-worldstate = WorldState(obstacles=[tableFrame, backboardFrame] )
-
-# Get the Viam resource name for our arm
-for resname in robot.resource_names:
-    if resname.name == arm_name:
-       armRes = resname
-
-# The goal will be a point 300mm directly in front of our camera.
-# The orientation of the pose will be the direction from which we will grab it.
-# As the pose is given in the frame of the camera, whose orientation is o_z = -1,
-# giving the pose an orientation of o_z=1 relative to the camera will mean the arm
-# will move to that point with an orientation of o_z=-1 relative to `world`, which
-# means that it will be pointing downwards at the goal point.
-goal_pose = Pose(x=0, y=0, z=300, o_x=0, o_y=0, o_z=1, theta=0)
-# Note that pieces whose values are 0 will be filled in with 0s automatically
-# and can be left blank. They are shown here only for demonstration purposes.
-
-# Move the arm. As the goal pose is relative to the camera, the arm will wind up
-# with a final pose relative to `world` of {x=600,y=0,z=400, o_z=-1}
-await motion.move(component_name=armRes,destination=PoseInFrame(reference_frame="cam",pose=goal_pose),world_state=worldstate, extra={})
-
-# Create an extra param which will cause the arm to move linearly
-extra = {"motion_profile": "linear", "line_tolerance": 0.2}
-
-# Create a new goal pose. This will move the arm 150mm in its local +Z direction.
-# Since the arm's orientation relative to World is o_z=-1, the arm will wind up
-# with a final pose relative to `world` of {x=600,y=0,z=250, o_z=-1}
-goal_pose = Pose(x=0, y=0, z=150, o_x=0, o_y=0, o_z=1, theta=0)
-
-# Move the arm with our new command. Notice the changed destination construction.
-motion.move(component_name=armRes,destination=PoseInFrame(reference_frame="myArm",pose=goal_pose),world_state=worldstate, extra=extra)
-
-```
-
 ### MoveSingleComponent
 
-The `MoveSingleComponent` endpoint, while it looks similar to the "Move" endpoint above, may result in radically different behavior when called.
+*`MoveSingleComponent` allows you to bypass Viam’s internal motion planning entirely, if desired, for a single component.*
 
-_`MoveSingleComponent` is meant to allow the user to bypass Viam’s internal motion planning entirely, if desired, for a single component._ If the component in question supports the `MoveToPosition` method taking a Pose as a parameter, this call will use the frame system to translate the given destination into the frame of the specified component, and will then call `MoveToPosition` on that one component to move it to the desired location.
-As of April 5, 2023, arms are the only component supported by this feature.
+`MoveSingleComponent` looks similar to `Move` above but may result in radically different behavior.
 
-As the name of the method suggests, only the single component specified by `component_name` will move.
+`MoveSingleComponent` translates the given destination into the frame of the specified component, and then calls `MoveToPosition` on that component to move it to the desired location.
+As of April 21, 2023, [arms](/components/arm/) are the only component supported by `MoveSingleComponent`.
 
-An example of when this may be useful is if the user has implemented their own version of an arm, and wishes to use their own motion planning for it.
-That user will implement `MoveToPosition` on that arm using whatever method they desire to plan to the specified pose, and then can use this API endpoint to pass the destination in the frame of any other robot component.
+As the name of the method suggests, only the single component specified by `component_name` will actuate.
+
+An example of when this may be useful is if you have implemented your own custom arm model, and wish to use your own motion planning for it.
+Implement `MoveToPosition` on that arm using whatever method you desire to plan motion to the specified pose, and then use `MoveSingleComponent` to pass the destination in the frame of any other robot component.
 
 {{% alert title="Note" color="note" %}} <a id="move-vs-movetoposition">
 
-If this method is called with an arm which uses Viam’s motion planning on the backend, then this method is equivalent to using `robot.TransformPose` to transform the destination into the frame of the arm, and then calling `MoveToPosition` on the arm directly.
+If this method is called with an arm that uses Viam’s motion planning on the backend, then this method is equivalent to using `robot.TransformPose` to transform the destination into the frame of the arm, and then calling [`MoveToPosition`](/components/arm/#movetoposition) on the arm directly.
 Note that `arm.MoveToPosition` does not use `world_state`, so collision checking and obstacle avoidance *will not* be performed.
 
 If you need collision checking and obstacle avoidance, use [`Move`](#move).
 
 {{% /alert %}}
 
-#### Parameters
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-**`component_name`**: This is the name of the piece of the robot to which `MoveToPosition` should be called with the transformed destination.
+**Parameters:**
+
+- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The name of the component to move.
+  This component must support the `move_to_position` API call with a Pose.
+  As of April 21, 2023, [arm](/components/arm/) is the only component so supported.
+
+- `destination` ([PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)):
+  Describes where the `component_name` should end up.
+  Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/).
+  The `destination` will be converted into the frame of the component specified in `component_name` when passed to `move_to_position`.
+
+- `world_state` ([WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (*optional*): Data structure specifying information about the world around the robot.
+  **See [note above](#move-vs-movetoposition); a custom implementation of `MoveToPosition` may or may not make use of `world_state`.**
+
+  `world_state` includes obstacles and transforms:
+  - **Obstacles**: Geometries located at a pose relative to some frame.
+    When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
+    Important considerations:
+    - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
+    - The Motion Service assumes that obstacles with mobile parents move along with their parents while solving.
+      This ensures that obstacles that are temporarily attached to moving components do not cause collisions during movement.
+    - Geometries are "part of" their frame, rather than at the distal end of the frame.
+      Their poses are relative to the *origin* of the specified frame.
+      A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
+      This is different from `destination` and `component_name`, where poses are relative to the distal end of a frame.
+  - **Transforms**: These are a list of `PoseInFrame` messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
+
+- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.move_single_component).
+
+**Example usage:**
+
+```python {class="line-numbers linkable-line-numbers"}
+motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+
+# Assumes an arm configured with name "my_arm" on the robot
+my_frame = "my_arm_offset"
+
+goal_pose = Pose(x=0, y=400, z=0, o_x=0, o_y=0, o_z=1, theta=0)
+
+# Move the arm
+moved = await motion.move_to_position(component_name=my_arm, destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose), world_state=worldState, extra={})
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+- `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): The name of the component to move.
 This component must support the `MoveToPosition` API call with a Pose.
-As of April 5, 2023, arm is the only component so supported.
+As of April 21, 2023, [arm](/components/arm/) is the only component so supported.
 
-**`destination`**: A `PoseInFrame` describing where the `component_name` should end up.
-This can be any pose, from the perspective of any component whose location is known in the robot’s `FrameSystem`.
-It will be converted into the frame of the component named in `component_name` when passed to `MoveToPosition`.
+- `destination` ([PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)):
+  Describes where the `component_name` should end up.
+  Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/).
+  The `destination` will be converted into the frame of the component specified in `componentName` when passed to `MoveToPosition`.
 
-**`world_state`**: This data structure is structured identically to what is described above in "Move".
-However, a user’s own implementation of `MoveToPosition` may or may not make use of WorldState; see <a href="#move-vs-movetoposition">note above</a>.
+- `worldState` ([WorldState](https://pkg.go.dev/go.viam.com/rdk/referenceframe#WorldState)): Data structure specifying information about the world around the robot.
+  **See [note above](#move-vs-movetoposition); a custom implementation of `MoveToPosition` may or may not make use of `world_state`.**
 
-**`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they like to pass to their own motion planning implementation.
+  `worldState` includes obstacles and transforms:
+  - **Obstacles**: Geometries located at a pose relative to some frame.
+    When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
+    Important considerations:
+    - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
+    - The Motion Service assumes that obstacles with mobile parents move along with their parents while solving.
+      This ensures that obstacles that are temporarily attached to moving components do not cause collisions during movement.
+    - Geometries are "part of" their frame, rather than at the distal end of the frame.
+      Their poses are relative to the *origin* of the specified frame.
+      A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
+      This is different from `destination` and `componentName`, where poses are relative to the distal end of a frame.
+  - **Transforms**: These are a list of `PoseInFrame` messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
+
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(bool)](https://pkg.go.dev/builtin#bool): Whether the move was successful.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion).
+
+**Example usage:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// Assumes an arm configured with name "my_arm" on the robot
+myFrame := "my_arm_offset"
+
+goalPose := PoseInFrame(0, 400, 0, 0, 0, 1, 0)
+
+// Move the arm
+moved, err := motion.MoveSingleComponent(context.TODO(), goalPose, worldState, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### GetPose
 
