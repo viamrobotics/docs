@@ -8,7 +8,7 @@ webmSrc: "/tutorials/videos/scuttledemos_gamepad.webm"
 mp4Src: "/tutorials/videos/scuttledemos_gamepad.mp4"
 videoAlt: "Drive a SCUTTLE Robot with a bluetooth gamepad."
 aliases:
-    - tutorials/scuttle-gamepad/
+    - /tutorials/scuttle-gamepad/
 tags: ["base", "scuttle", "gamepad"]
 ---
 
