@@ -27,87 +27,15 @@ The types of classifiers supported are:
 
 ## Configure a `tflite_cpu` classifier
 
-### Create the ML Model Service for the classifier
-
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots), then create an ML Model Service for the classifier model:
-
-{{< tabs >}}
-{{% tab name="Builder" %}}
-Click on the robot you wish to add the classifier to.
-Select the **config** tab, and click on **Services**.
-
-Scroll to the **Create Service** section:
-
-1. Select `mlmodel` as the **Type**.
-2. Enter a name as the **Name**.
-3. Select `tflite_cpu` as the **Model**.
-4. Click **Create Service**.
-
-In your ML Model Service's panel, fill in the **Attributes** field.
-
-``` json {class="line-numbers linkable-line-numbers"}
-{
-    "model_path": "${packages.<model-name>}/<model-name>.tflite",
-    "label_path": "${packages.<model-name>}/labels.txt",
-    "num_threads": <number>
-}
-```
-
-{{% /tab %}}
-{{% tab name="JSON Template" %}}
-
-Add the classifier ML model object to the services array in your raw JSON configuration:
-
-``` json {class="line-numbers linkable-line-numbers"}
-"services": [
-  {
-    "name": "<classifier_name>",
-    "type": "mlmodel",
-    "model": "tflite_cpu",
-    "attributes": {
-      "model_path": "${packages.<model-name>}/<model-name>.tflite",
-      "label_path": "${packages.<model-name>}/labels.txt",
-      "num_threads": <number>
-    }
-  },
-  ... // Other services
-]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-"services": [
-  {
-    "name": "fruit_classifier",
-    "type": "mlmodel",
-    "model": "tflite_cpu",
-    "attributes": {
-      "model_path": "${packages.<model-name>}/<model-name>.tflite",
-      "label_path": "${packages.<model-name>}/labels.txt",
-      "num_threads": 1
-    }
-  }
-]
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following parameters are available for a `"tflite_cpu"` model:
-
-| Parameter | Inclusion | Description |
-| --------- | --------- | ----------- |
-| `model_path` | _Required_ | The path to the `.tflite model` file, as a `string`. |
-| `label_path` | _Optional_ | The path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
-| `num_threads` | _Optional_ | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
-
-Click **Save config**.
+To create a `tflite_cpu` classifier, you need [a ML Model Service with a suitable model](../../ml).
 
 ### Create the Vision Service that uses the classifier
 
-Create another service:
+Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
+Click on the robot you wish to add the Vision Service to.
+Select the **config** tab, and click on **Services**.
+
+Scroll to the **Create Service** section.
 
 {{< tabs >}}
 {{% tab name="Builder" %}}

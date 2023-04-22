@@ -150,102 +150,15 @@ Proceed to [Add a camera component and a "transform" model](#add-a-camera-compon
 ## Configure a `tflite_cpu` detector
 
 A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
-
-### Create the ML Model Service
-
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots), then create an ML Model Service for the detector model:
-
-{{< tabs >}}
-{{% tab name="Builder" %}}
-Click on the robot you wish to add the detector to.
-Select the **config** tab, and click on **Services**.
-
-Scroll to the **Create Service** section:
-
-1. Select `mlmodel` as the **Type**.
-2. Enter a name as the **Name**.
-3. Select `tflite_cpu` as the **Model**.
-4. Click **Create Service**.
-
-In your ML Model Service's panel, fill in the **Attributes** field.
-
-``` json {class="line-numbers linkable-line-numbers"}
-{
-      "model_path": "${packages.<model-name>}/<model-name>.tflite",
-      "label_path": "${packages.<model-name>}/labels.txt",
-      "num_threads": <number>
-}
-```
-
-{{% /tab %}}
-{{% tab name="JSON Template" %}}
-
-Add the classifier ML model object to the services array in your raw JSON configuration:
-
-``` json {class="line-numbers linkable-line-numbers"}
-"services": [
-  {
-    "name": "<detector_name>",
-    "type": "mlmodel",
-    "model": "tflite_cpu",
-    "attributes": {
-      "model_path": "${packages.<model-name>}/<model-name>.tflite",
-      "label_path": "/${packages.<model-name>}/labels.txt",
-      "num_threads": <number>
-    }
-  },
-  ... // Other services
-]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-"services": [
-  {
-    "name": "person_detector",
-    "type": "mlmodel",
-    "model": "tflite_cpu",
-    "attributes": {
-      "model_path": "${packages.<model-name>}/<model-name>.tflite",
-      "label_path": "${packages.<model-name>}/labels.txt",
-      "num_threads": 1
-    }
-  }
-]
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following parameters are available for a `"tflite_cpu"` model:
-
-| Parameter | Inclusion | Description |
-| --------- | --------- | ----------- |
-| `model_path` | _Required_ | The path to the `.tflite model` file, as a `string`. |
-| `label_path` | _Optional_ | The path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
-| `num_threads` | _Optional_ | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
-
-Click **Save config**.
-
-#### `tflite_model` Limitations
-
-We strongly recommend that you package your `.tflite` model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
-
-In the absence of metadata, your `.tflite` model must satisfy the following requirements:
-
-- A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1).
-- At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
-- Bounding box output tensor must be ordered [x x y y], where x is an x-boundary (xmin or xmax) of the bounding box and the same is true for y.
-  Each value should be between 0 and 1, designating the percentage of the image at which the boundary can be found.
-
-These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1.
-You can use one of these architectures or build your own.
+To create a `tflite_cpu` classifier, you need [a ML Model Service with a suitable model](../../ml).
 
 ### Create the Vision Service
 
-Create another service:
+Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
+Click on the robot you wish to add the Vision Service to.
+Select the **config** tab, and click on **Services**.
+
+Scroll to the **Create Service** section.
 
 {{< tabs >}}
 {{% tab name="Builder" %}}

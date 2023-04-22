@@ -14,9 +14,19 @@ The ML Models service allows you to deploy machine learning models to your robot
 
 ## Create an ML model service
 
-Navigate to your robot's [**config** tab](https://app.viam.com/robot) and click on the **Services** subtab.
+{{< tabs >}}
+{{% tab name="Builder" %}}
 
-Scroll to the bottom and create a new service with the **Type** `mlmodel` and the **Model** `tflite_cpu`.
+Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
+Click on the robot you wish to add the ML Model Service to.
+Select the **config** tab, and click on **Services**.
+
+Scroll to the **Create Service** section.
+
+1. Select `mlmodel` as the **Type**.
+2. Enter a name as the **Name**.
+3. Select `tflite_cpu` as the **Model**.
+4. Click **Create Service**.
 
 ![Create a machine learning models service](../img/ml-models-service.png)
 
@@ -43,6 +53,53 @@ Then select the **Models** and any **Optional Settings** such as the **Number of
 {{% /tab %}}
 {{< /tabs >}}
 
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+Add the `tflite_cpu` ML model object to the services array in your raw JSON configuration:
+
+``` json {class="line-numbers linkable-line-numbers"}
+"services": [
+  {
+    "name": "<mlmodel_name>",
+    "type": "mlmodel",
+    "model": "tflite_cpu",
+    "attributes": {
+      "model_path": "${packages.<model-name>}/<model-name>.tflite",
+      "label_path": "${packages.<model-name>}/labels.txt",
+      "num_threads": <number>
+    }
+  },
+  ... // Other services
+]
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"services": [
+  {
+    "name": "fruit_classifier",
+    "type": "mlmodel",
+    "model": "tflite_cpu",
+    "attributes": {
+      "model_path": "${packages.<model-name>}/<model-name>.tflite",
+      "label_path": "${packages.<model-name>}/labels.txt",
+      "num_threads": 1
+    }
+  }
+]
+```
+
+The following parameters are available for a `"tflite_cpu"` model:
+
+| Parameter | Inclusion | Description |
+| --------- | --------- | ----------- |
+| `model_path` | _Required_ | The path to the `.tflite model` file, as a `string`. |
+| `label_path` | _Optional_ | The path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
+| `num_threads` | _Optional_ | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
+
 Save the configuration and your model will be added to your robot at <file>$HOME/.viam/packages/\<model-name\>/\<file-name\></file>.
 
 {{< alert title="Note" color="note" >}}
@@ -56,6 +113,20 @@ The model package config looks like this:
 ```json
 {"package":"<model_id>/allblack","version":"1234567891011","name":"<model_name>"}
 ```
+
+### `tflite_cpu` Limitations
+
+We strongly recommend that you package your `.tflite_cpu` model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
+
+In the absence of metadata, your `.tflite_cpu` model must satisfy the following requirements:
+
+- A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1).
+- At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
+- Bounding box output tensor must be ordered [x x y y], where x is an x-boundary (xmin or xmax) of the bounding box and the same is true for y.
+  Each value should be between 0 and 1, designating the percentage of the image at which the boundary can be found.
+
+These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1.
+You can use one of these architectures or build your own.
 
 ## Next Steps
 
