@@ -7,7 +7,7 @@ description: "Drive a Yahboom 4WD Rover with a bluetooth gamepad from the Viam a
 image: "/tutorials/img/yahboom-rover/bluetoothpair-connect.png"
 imageAlt: "A Pi terminal showing the bluetoothctl commands and their outputs."
 aliases:
-    - tutorials/yahboom-rover/
+    - /tutorials/yahboom-rover/
 tags: ["base", "gamepad", "yahboom", "app", "rover"]
 ---
 
