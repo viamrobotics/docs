@@ -5,7 +5,7 @@ weight: 15
 type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab."
 aliases:
-    - /getting-started/try-viam/
+    - "/getting-started/try-viam/"
 ---
 
 Viam is a general robotics platform that can run on any hardware.
