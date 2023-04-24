@@ -14,7 +14,9 @@ Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
-First, install the Rplidar Module:
+## Requirements
+
+Install the `rplidar-module` binary on your machine and make it executable by running the following commands according to your machine's architecture:
 
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
@@ -42,15 +44,64 @@ brew tap viamrobotics/brews && brew install rplidar-module
 {{% /tab %}}
 {{< /tabs >}}
 
-Now, add the Rplidar as a modular component of your robot in the [Viam app](https://app.viam.com/):
+## Configuration
 
-1. Physically connect the Rplidar to your machine.
-2. Go to your robot's page on the [Viam app](https://app.viam.com/).
-3. In the **config** tab, select **Raw JSON** mode.
-4. Copy the following configuration code for your Rplidar device.
-  Paste it into the **Raw JSON** block:
+Physically connect the Rplidar to your machine. Go to your robot's page on the [Viam app](https://app.viam.com/).
 
-  {{< tabs >}}
+{{< tabs name="Add the Rplidar component">}}
+{{% tab name="Config Builder" %}}
+Navigate to the **config** tab on your robot's page, and click on the **Components** subtab.
+
+Add a component with type `camera`, model `viam:lidar:rplidar`, and a name of your choice:
+
+![adding rplidar component](../img/add-rplidar/add-rplidar-component-ui.png)
+
+Paste the following into the **Attributes** field of your new component according to your machine's architecture:
+
+{{< tabs name="Add Rplidar Configs">}}
+{{% tab name="MacOS x86_64" %}}
+
+```json
+{
+  "device_path": "/dev/tty.SLAB_USBtoUART"
+}
+```
+
+{{% /tab %}}
+
+{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+
+```json
+{
+  "device_path": "/dev/tty.usbserial-0001"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Click on the **Modules** subtab. Add the rplidar module with a name of your choice and an executable path that points to the location of your installed `rplidar-module` binary:
+
+{{< tabs name="Add Rplidar Component Module">}}
+{{% tab name="Linux/MacOS x86_64" %}}
+
+![adding rplidar module linux](../img/add-rplidar/add-rplidar-module-ui-linux.png)
+
+{{% /tab %}}
+
+{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+
+![adding rplidar module M1 M2](../img/add-rplidar/add-rplidar-module-ui-M1-M2.png)
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+Navigate to the **config** tab.
+Select the **Raw JSON** mode, then copy/paste the following `"components"` and `"modules"` JSON:
+
+  {{< tabs name="Add the Rplidar component - configs" >}}
   {{% tab name="Linux" %}}
 
   ```json
@@ -128,7 +179,8 @@ Now, add the Rplidar as a modular component of your robot in the [Viam app](http
   {{% /tab %}}
   {{< /tabs >}}
 
-5. Save the config.
+{{% /tab %}}
+{{< /tabs >}}
 
 Check the **logs** tab of your robot in the Viam app to make sure your Rplidar has connected and no errors are being raised.
 

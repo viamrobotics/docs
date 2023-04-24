@@ -7,6 +7,8 @@ webmSrc: "/tutorials/img/try-viam-sdk/image1.webm"
 mp4Src: "/tutorials/img/try-viam-sdk/image1.mp4"
 videoAlt: "A Viam Rover driving in a square"
 description: "Build something with a Viam Rover."
+aliases:
+    - "/tutorials/viam-rover/"
 ---
 
 <div>

@@ -6,15 +6,16 @@ no_list: true
 type: docs
 aliases:
     - /installation/prepare/
-    - /getting-started/macos-install/
     - /installation/macos-install/
-    - /getting-started/linux-install/
     - /installation/linux-install/
     - /installation/install/
     - /installation/install/linux-install/
+    - /installation/install/macos-install
     - /getting-started/installation/
-
+    - /getting-started/macos-install/
+    - /getting-started/linux-install/
 ---
+
 To use Viam software with your robot, you need to install and run a binary called `viam-server` on the computer you want to use to control the robot.
 See [What is Viam?](/viam/) for more information.
 
