@@ -306,7 +306,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Detector to 3D Segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-a-detector_3dsegmenter) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-a-detector_3d_segmenter) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
