@@ -4,6 +4,8 @@ linkTitle: "Tutorials"
 weight: 65
 type: docs
 no_list: true
+aliases:
+    - "/build/"
 ---
 
 {{< alert title="Tip" color="tip" >}}

@@ -6,7 +6,8 @@ no_list: true
 type: docs
 aliases:
     - "/getting-started/"
-    - "/getting-started/high-level-overview/"
+    - "/getting-started/high-level-overview"
+    - "/product-overviews/"
 ---
 
 Viam is a complete software platform that supports every step of your robot development lifecycle.

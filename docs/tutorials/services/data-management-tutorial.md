@@ -8,6 +8,8 @@ image: "/tutorials/img/data-management/image1.png"
 imageAlt: "The data page of the Viam app showing a gallery of the images captured from the Viam Rover."
 aliases:
     - "/tutorials/data-management-tutorial/"
+    - "/tutorials/data-management/"
+    - "/manage/data-management/data-management-tutorial/"
 tags: ["data management", "data", "services", "try viam"]
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
