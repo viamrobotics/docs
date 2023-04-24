@@ -51,7 +51,7 @@ Select from the following modes to obtain the correct instructions to configure 
 
 {{% alert title="REQUIREMENTS" color="tip" %}}
 
-Running `cartographer` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtec.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default cartographer settings, and the example config shown below (which uses the default cartographer settings), are for a RPLIDAR A3. See the notes next to the 'config_params' for recommended settings for RPLIDAR A1.
+Running `cartographer` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtec.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default cartographer settings and the example config shown below (which uses the default cartographer settings) are nominal parameters one can use for an RPLIDAR A3. See the notes next to the 'config_params' for recommended settings for an RPLIDAR A1.
 
 Before adding a SLAM service, you must follow [these instructions](/program/extend/modular-resources/add-rplidar-module/) to add your RPLIDAR device as a modular component of your robot.
 
