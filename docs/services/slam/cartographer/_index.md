@@ -5,6 +5,8 @@ weight: 70
 type: "docs"
 description: "Configure a SLAM service with the Cartographer library."
 tags: ["slam", "services"]
+aliases:
+  - "/services/slam/run-slam-cartographer"
 # SMEs: Kat, Jeremy
 ---
 

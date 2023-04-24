@@ -8,7 +8,8 @@ tags: ["rover", "viam rover"]
 image: "/try-viam/rover-resources/img/viam-rover/box-contents.jpg"
 imageAlt: "A Viam Rover in a box"
 aliases:
-    - /viam-rover-resources
+    - "/viam-rover-resources/"
+    - "/rover-resources/"
 description: Get your own Viam rover and set it up.
 ---
 
