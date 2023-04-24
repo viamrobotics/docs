@@ -81,7 +81,6 @@ Add the Vision Service object to the services array in your rover’s raw JSON c
 {{% /tab %}}
 {{< /tabs >}}
 
-
 The configuration adds a `model` of `type` `color_detector` with the color as a parameter.
 The `color_detector` is a heuristic-based detector that draws boxes around objects according to their hue.
 
