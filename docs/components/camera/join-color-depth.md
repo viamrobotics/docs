@@ -1,6 +1,6 @@
 ---
 title: "Configure a Join Color Depth View"
-linkTitle: "Join Color Depth"
+linkTitle: "join_color_depth"
 weight: 39
 type: "docs"
 description: "Combine and align the streams of a color and a depth camera."
@@ -61,16 +61,16 @@ Fill in the attributes for your join color depth view:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for join color depth views:
+The following attributes are available for `join_color_depth` views:
 
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
-| `output_image_type` | *Required* | Specify `color` or `depth` for the output stream. |
-| `color_camera_name` | *Required* | Name of the color camera to pull images from. |
-| `depth_camera_name` | *Required* | Name of the depth camera to pull images from. |
-| `intrinsic_parameters` | *Required* | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
-| `distortion_parameters` | *Optional* | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
-| `debug` | *Optional* | Enables the debug outputs from the camera if `true`. Defaults to `false`. |
+| `output_image_type` | **Required** | Specify `color` or `depth` for the output stream. |
+| `color_camera_name` | **Required** | Name of the color camera to pull images from. |
+| `depth_camera_name` | **Required** | Name of the depth camera to pull images from. |
+| `intrinsic_parameters` | **Required** | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
+| `distortion_parameters` | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
+| `debug` | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false`. |
 
 ## View the camera stream
 
