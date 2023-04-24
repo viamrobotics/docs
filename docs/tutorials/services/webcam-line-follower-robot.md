@@ -81,7 +81,7 @@ Or if you prefer the raw JSON:
     }
 ```
 
-### Configuring a color detector for the color of your tape line.
+### Configuring a color detector for the color of your tape line
 
 We’ll use the Viam [Vision Service color detector](/services/vision/detection) to identify the line to follow.
 
