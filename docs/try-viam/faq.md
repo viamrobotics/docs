@@ -4,6 +4,8 @@ linkTitle: "Try Viam FAQ"
 weight: 50
 type: "docs"
 description: "Frequently Asked Questions about Try Viam."
+aliases:
+   - "/appendix/try-viam-faq"
 ---
 
 Try Viam allows you to try the Viam platform without setting up any hardware yourself.

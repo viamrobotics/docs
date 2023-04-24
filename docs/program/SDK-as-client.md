@@ -6,6 +6,8 @@ type: "docs"
 description: "Use Viam's SDKs to write code to access and control your robot."
 icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
+aliases:
+  - "product-overviews/sdk-as-client"
 ---
 
 Viam offers software development kits (SDKs) in popular languages which
