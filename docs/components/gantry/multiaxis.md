@@ -29,7 +29,7 @@ Edit and fill in the attributes as applicable.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
-    // your separate motor & oneaxis gantry configs
+    // < Your motor & oneaxis gantry configs >
     {
         "name": <"your-fake-gantry-name">,
         "type": "gantry",
