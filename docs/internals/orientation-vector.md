@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "A description of Viam's orientation vector object."
 aliases:
-    - "appendix/orientation-vector"
+    - "/appendix/orientation-vector"
 ---
 
 An _orientation vector_ specifies the orientation of an object in 3D space.
