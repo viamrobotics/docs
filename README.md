@@ -40,6 +40,12 @@ You can serve the resulting docs with:
 python3 -m http.server 9000 --directory public
 ```
 
+## Test the docs locally
+
+To ensure your markdown is properly formatted, run `make markdowntest`.
+
+To check for broken links run `make htmltest`.
+
 ## Publishing
 
 The docs are automatically published when a PR merges.
