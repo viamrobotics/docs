@@ -30,11 +30,20 @@ This defines the spacial context of your robot.
 
 ## API
 
+The Motion Service supports the following methods:
+
 Method Name | Description
 ----------- | -----------
 [`Move`](#move) | Move multiple components in a coordinated way to achieve a desired motion.
 [`MoveSingleComponent`](#movesinglecomponent) | Move a single component "manually."
 [`GetPose`](#getpose) | Get the current location and orientation of a component.
+
+{{% alert title="Note" color="note" %}}
+
+The code examples below assume that you have a robot configured with a gripper, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+Go to your robot's **code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+
+{{% /alert %}}
 
 ### Move
 
@@ -147,18 +156,24 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
 - [(bool)](https://pkg.go.dev/builtin#bool): Whether the move was successful.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 **Example usage:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+ // Access the Motion Service
+motionService, err := motion.FromRobot(robot, "builtin")
+if err != nil {
+  logger.Fatal(err)
+}
+
 // Assumes a gripper configured with name "my_gripper" on the robot
 myFrame := "my_gripper_offset"
 
 goalPose := PoseInFrame(0, 0, 300, 0, 0, 1, 0)
 
 // Move the gripper
-moved, err := motion.Move(context.TODO(), goalPose, worldState, nil, nil)
+moved, err := motionService.Move(context.TODO(), goalPose, worldState, nil, nil)
 ```
 
 {{% /tab %}}
@@ -269,7 +284,7 @@ As of April 21, 2023, [arm](/components/arm/) is the only component so supported
       Their poses are relative to the *origin* of the specified frame.
       A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
       This is different from `destination` and `componentName`, where poses are relative to the distal end of a frame.
-  - **Transforms**: These are a list of `PoseInFrame` messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
+  - **Transforms**: A list of `PoseInFrame` messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
 
 - `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
 
@@ -278,18 +293,24 @@ As of April 21, 2023, [arm](/components/arm/) is the only component so supported
 - [(bool)](https://pkg.go.dev/builtin#bool): Whether the move was successful.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 **Example usage:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+ // Access the Motion Service
+motionService, err := motion.FromRobot(robot, "builtin")
+if err != nil {
+  logger.Fatal(err)
+}
+
 // Assumes an arm configured with name "my_arm" on the robot
 myFrame := "my_arm_offset"
 
 goalPose := PoseInFrame(0, 400, 0, 0, 0, 1, 0)
 
 // Move the arm
-moved, err := motion.MoveSingleComponent(context.TODO(), goalPose, worldState, nil)
+moved, err := motionService.MoveSingleComponent(context.TODO(), goalPose, worldState, nil)
 ```
 
 {{% /tab %}}
@@ -297,36 +318,42 @@ moved, err := motion.MoveSingleComponent(context.TODO(), goalPose, worldState, n
 
 ### GetPose
 
-The `GetPose` method is an endpoint through which a user can query the location of a robot's component within its frame system.
+`GetPose` gets the location and orientation of a component within the [Frame System](../frame-system/).
 The return type of this function is a `PoseInFrame` describing the pose of the specified component with respect to the specified destination frame.
-The `supplemental_transforms` argument can be used to augment the robot's existing frame system with supplemental frames.
+You can use the `supplemental_transforms` argument to augment the robot's existing frame system with supplemental frames.
 
-#### Parameters
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-**`component_name`**: This is the name of the piece of the robot whose pose will be returned.
-The specified component must have an associated frame within the robot's frame system, or this frame must be added through the `supplemental_transforms` argument.
+**Parameters:**
 
-**`destination_frame`**: The name of the frame with respect to which the component's pose will be reported.
-This frame must either exist in the robot's frame system, or this frame must be added through the `supplemental_transforms` argument.
+- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): Name of the piece of the robot whose pose is returned.
 
-**`supplemental_transforms`**: This argument accepts an array of `Transform` structures.
-A `Transform` represents an additional frame which is added to the robot's frame system.
-It consists of the following fields:
+- `destination_frame` ([PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)):
+  The name of the frame with respect to which the component's pose is reported.
 
-- `reference_frame`: This field specifies the name of the frame which will be added to the frame system
-- `pose_in_observer_frame`: This field provides the relationship between the frame being added and another frame
-- `physical_object`: An optional `Geometry` can be added to the frame being added
+- `supplemental_transforms` ([Optional[List[Transforms]]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (*optional*): A list of `Transform`s.
+  A `Transform` represents an additional frame which is added to the robot's frame system.
+  It consists of the following fields:
+  - `pose_in_observer_frame`: Provides the relationship between the frame being added and another frame.
+  - `physical_object`: An optional `Geometry` can be added to the frame being added.
+  - `reference_frame`: Specifies the name of the frame which will be added to the frame system.
 
-When `supplemental_transforms` are provided, a frame system will be created within the context of the `GetPose` function.
-This new frame system will build off the robot's frame system and will incorporate the `Transforms` provided.
-If the result of adding the `Transforms` will result in a disconnected frame system an error will be thrown.
+  When `supplemental_transforms` are provided, a frame system is created within the context of the `GetPose` function.
+  This new frame system builds off the robot's frame system and incorporates the `Transform`s provided.
+  If the result of adding the `Transform`s results in a disconnected frame system, an error is thrown.
 
-**`extra`**: This data structure is a generic struct, which the user can use to insert any arbitrary extra data they wish to pass to their own motion planning implementation.
-This parameter is not used for anything in the built-in Motion Service.
+- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
 
-#### Example
+**Returns:**
 
-The following code is a minimal example using the [Viam Python SDK](https://python.viam.dev/) to get the pose of the tip of a [gripper](../../components/gripper/) named `myGripper` which is attached to the end of an arm, in the "world" referenceframe
+- [(PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose of the component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.get_pose).
+
+**Example usage:**
+
+The following code example gets the pose of the tip of a [gripper](../../components/gripper/) named `myGripper` which is attached to the end of an arm, in the "world" `reference_frame`:
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
@@ -340,7 +367,7 @@ gripperName = Gripper.get_resource_name("myGripper")
 gripperPoseInWorld = await robot.get_pose(component_name=gripperName, destination_frame="world")
 ```
 
-For a more complicated example, let's take the same scenario and get the pose of the same gripper with respect to an object which is situated at a location (100, 200, 0) relative to the "world" frame:
+For a more complicated example, let's take the same scenario and get the pose of the same gripper with respect to an object situated at a location (100, 200, 0) relative to the "world" frame:
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
@@ -362,8 +389,78 @@ gripperPoseInObjectFrame = await motion.get_pose(
 )
 ```
 
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+- `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): Name of the piece of the robot whose pose is returned.
+
+- `destinationFrame` ([PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)):
+  The name of the frame with respect to which the component's pose is reported.
+
+- `supplementalTransforms` ([LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)): An optional list of `Transform`s.
+  A `Transform` represents an additional frame which is added to the robot's frame system.
+  It consists of the following fields:
+  - `pose_in_observer_frame`: Provides the relationship between the frame being added and another frame.
+  - `physical_object`: An optional `Geometry` can be added to the frame being added.
+  - `reference_frame`: Specifies the name of the frame which will be added to the frame system.
+
+  When `supplementalTransforms` are provided, a frame system is created within the context of the `GetPose` function.
+  This new frame system builds off the robot's frame system and incorporates the `Transform`s provided.
+  If the result of adding the `Transform`s results in a disconnected frame system, an error is thrown.
+
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose of the component.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
+
+**Example usage:**
+
+```go {class="line-numbers linkable-line-numbers"}
+import (
+  "context"
+
+  "github.com/edaniels/golog"
+  "go.viam.com/rdk/components/gripper"
+  "go.viam.com/rdk/referenceframe"
+  "go.viam.com/rdk/services/motion"
+)
+
+// < Insert code to connect to your robot
+// (see code sample tab of your robot's page in the Viam app) >
+
+// Assumes a gripper configured with name "my_gripper" on the robot
+myFrame := "my_gripper_offset"
+
+ // Access the Motion Service
+motionService, err := motion.FromRobot(robot, "builtin")
+if err != nil {
+  logger.Fatal(err)
+}
+
+myArmMotionPose, err := motionService.GetPose(context.Background(), my_gripper, referenceframe.World, nil, nil)
+if err != nil {
+  logger.Fatal(err)
+}
+logger.Info("Position of myArm from the Motion Service:", myArmMotionPose.Pose().Point())
+logger.Info("Orientation of myArm from the Motion Service:", myArmMotionPose.Pose().Orientation())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Next Steps
+
+The following tutorials contain complete example code for interacting with a robot arm through the arm component API, and with the Motion Service API, respectively:
 
 {{< cards >}}
   {{% card link="/tutorials/services/accessing-and-moving-robot-arm" size="small" %}}
+  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
 {{< /cards >}}
