@@ -30,12 +30,16 @@ To change the sync interval, specify an interval in minutes in the interval fiel
       "type": "data_manager",
       "attributes": {
         "sync_interval_mins": 0.1,
-        "capture_dir": "/.viam/capture"
+        "capture_dir": ""
       }
     }
   ]
 }
 ```
+
+{{< alert title="Note" color="note" >}}
+If `capture_dir` is unspecified, `viam-server` will use the default directory at <file>~/.viam/capture</file>.
+{{< /alert >}}
 
 {{% /expand%}}
 
