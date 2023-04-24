@@ -5,6 +5,8 @@ weight: 22
 type: docs
 no_list: true
 description: "A guide to getting started with app.viam.com."
+aliases:
+  - "/viam/app.viam.com/"
 ---
 
 The [Viam app](https://app.viam.com/) has several key features:

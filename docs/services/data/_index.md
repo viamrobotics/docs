@@ -7,7 +7,8 @@ type: "docs"
 tags: ["data management", "data", "services"]
 description: "Capture data from a robot's components and sync it to the cloud."
 aliases:
-    - /data-management
+    - "/data-management/"
+    - "/services/data-management/"
 icon: "/services/img/icons/data-capture.svg"
 # SME: Aaron Casas
 ---

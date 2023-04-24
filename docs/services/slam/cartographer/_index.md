@@ -5,6 +5,8 @@ weight: 70
 type: "docs"
 description: "Configure a SLAM service with the Cartographer library."
 tags: ["slam", "services"]
+aliases:
+  - "/services/slam/run-slam-cartographer"
 # SMEs: Kat, Jeremy
 ---
 
@@ -18,23 +20,23 @@ Install the binary required to utilize the `cartographer` library on your machin
 {{% tab name="Linux aarch64" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-aarch64.AppImage
-sudo chmod a+rx /usr/local/bin/carto_grpc_server
+sudo curl -o /usr/local/bin/cartographer-module http://packages.viam.com/apps/slam-servers/cartographer-module-stable-aarch64.AppImage
+sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
 
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/carto_grpc_server http://packages.viam.com/apps/slam-servers/carto_grpc_server-stable-x86_64.AppImage
-sudo chmod a+rx /usr/local/bin/carto_grpc_server
+sudo curl -o /usr/local/bin/cartographer-module http://packages.viam.com/apps/slam-servers/cartographer-module-stable-x86_64.AppImage
+sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
 
 {{% /tab %}}
 {{% tab name="MacOS" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-brew tap viamrobotics/brews && brew install carto-grpc-server
+brew tap viamrobotics/brews && brew install cartographer-module
 ```
 
 {{% /tab %}}
@@ -42,7 +44,7 @@ brew tap viamrobotics/brews && brew install carto-grpc-server
 
 ## Configuration
 
-How you configure `cartographer` depends on whether you want the SLAM service to build your map with data collected live by a [RPLIDAR](https://www.slamtec.com/en/Lidar/A3) or with LIDAR data provided in a dataset at runtime.
+How you configure `cartographer-module` depends on whether you want the SLAM service to build your map with data collected live by a [RPLIDAR](https://www.slamtec.com/en/Lidar/A3) or with LIDAR data provided in a dataset at runtime.
 
 Select from the following modes to obtain the correct instructions to configure the service:
 
@@ -51,7 +53,7 @@ Select from the following modes to obtain the correct instructions to configure 
 
 {{% alert title="REQUIREMENTS" color="tip" %}}
 
-Running `cartographer` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtec.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default cartographer settings and the example config shown below (which uses the default cartographer settings) are nominal parameters one can use for an RPLIDAR A3. See the notes next to the 'config_params' for recommended settings for an RPLIDAR A1.
+Running `cartographer-module` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtec.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default cartographer settings and the example config shown below (which uses the default cartographer settings) are nominal parameters one can use for an RPLIDAR A3. See the notes next to the 'config_params' for recommended settings for an RPLIDAR A1.
 
 Before adding a SLAM service, you must follow [these instructions](/program/extend/modular-resources/add-rplidar-module/) to add your RPLIDAR device as a modular component of your robot.
 
@@ -67,11 +69,14 @@ Before adding a SLAM service, you must follow [these instructions](/program/exte
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **config** tab on your robot's page, and click on the **Services** subtab.
 
-Add a service with type `slam`, model `cartographer`, and a name of your choice:
+Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
 
 ![adding cartographer slam service](../img/run_slam/add-cartographer-service-ui.png)
 
 Paste the following into the **Attributes** field of your new service:
+
+{{< tabs name="Add Cartographer Service Live Configs">}}
+{{% tab name="Linux" %}}
 
 ```json
 {
@@ -86,18 +91,62 @@ Paste the following into the **Attributes** field of your new service:
 ```
 
 {{% /tab %}}
+
+{{% tab name="MacOS" %}}
+
+```json
+{
+  "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+  "delete_processed_data": true,
+  "use_live_data": true,
+  "sensors": ["rplidar"],
+  "config_params": {
+    "mode": "2d"
+  }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Click on the **Modules** subtab. Add the cartographer module with a name of your choice and an executable path that points to the location of your installed `cartographer-module` binary:
+
+{{< tabs name="Add Cartographer Service Live Module">}}
+{{% tab name="Linux/MacOS x86_64" %}}
+
+![adding cartographer module linux](../img/run_slam/add-cartographer-module-ui-linux.png)
+
+{{% /tab %}}
+
+{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+
+![adding cartographer module M1 M2](../img/run_slam/add-cartographer-module-ui-M1-M2.png)
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **config** tab.
-Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing RPLIDAR configuration:
+Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"modules"` JSON to add to your existing RPLIDAR configuration:
+
+{{< tabs name="Add the Cartographer Service Live Config JSON OSs">}}
+{{% tab name="Linux" %}}
 
 ```json
-// "modules": [ ...], YOUR RPLIDAR MODULE, 
+"modules": [
+  // { ...}, YOUR RPLIDAR MODULE,
+  {
+    "executable_path": "/usr/local/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
 // "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
 "services": [
   {
-    "model": "cartographer",
+    "model": "viam:slam:cartographer",
     "name": <"your-service-name">,
     "type": "slam",
     "attributes": {
@@ -113,6 +162,68 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 ]
 ```
 
+{{% /tab %}}
+{{% tab name="MacOS x86_64" %}}
+
+```json
+"modules": [
+  // { ...}, YOUR RPLIDAR MODULE,
+  {
+    "executable_path": "/usr/local/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
+"services": [
+  {
+    "model": "viam:slam:cartographer",
+    "name": <"your-service-name">,
+    "type": "slam",
+    "attributes": {
+      "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+      "delete_processed_data": true,
+      "use_live_data": true,
+      "sensors": ["rplidar"],
+      "config_params": {
+        "mode": "2d"
+      }
+    }
+  }
+]
+```
+
+{{% /tab %}}
+{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+
+```json
+"modules": [
+  // { ...}, YOUR RPLIDAR MODULE,
+  {
+    "executable_path": "/opt/homebrew/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
+"services": [
+  {
+    "model": "viam:slam:cartographer",
+    "name": <"your-service-name">,
+    "type": "slam",
+    "attributes": {
+      "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+      "delete_processed_data": true,
+      "use_live_data": true,
+      "sensors": ["rplidar"],
+      "config_params": {
+        "mode": "2d"
+      }
+    }
+  }
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -173,27 +284,85 @@ If this directory structure is not present at runtime, the SLAM Service creates 
 ### Add a SLAM Service
 
 {{< tabs name="Add the Cartographer Service with Dataset">}}
+
 {{% tab name="Config Builder" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **config** tab on your robot's page, and click on the **Services** subtab.
 
-Add a service with type `slam`, model `cartographer`, and a name of your choice:
+Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
 
 ![adding cartographer slam service](../img/run_slam/add-cartographer-service-ui.png)
 
 Paste the following into the **Attributes** field of your new service:
 
+{{< tabs name="Add the Cartographer Service with Dataset Configs">}}
+{{% tab name="Linux" %}}
+
 ```json
 {
-    "config_params": {
-        "mode": "2d"
-    },
     "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
     "delete_processed_data": false,
     "use_live_data": false
+    "config_params": {
+        "mode": "2d"
+    },
 }
 ```
+
+{{% /tab %}}
+
+{{% tab name="MacOS" %}}
+
+```json
+{
+    "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+    "delete_processed_data": false,
+    "use_live_data": false
+    "config_params": {
+        "mode": "2d"
+    },
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to your existing SLAM configuration:
+
+{{< tabs name="Add Cartographer Service with Dataset Module">}}
+{{% tab name="Linux/MacOS x86_64" %}}
+
+```json
+"modules": [
+  // { ...}, YOUR RPLIDAR MODULE,
+  {
+    "executable_path": "/usr/local/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
+// "services": [ ...], YOUR SLAM SERVICE
+```
+
+{{% /tab %}}
+
+{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+
+```json
+"modules": [
+  // { ...}, YOUR RPLIDAR MODULE,
+  {
+    "executable_path": "/opt/homebrew/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
+// "services": [ ...], YOUR SLAM SERVICE
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -202,7 +371,16 @@ Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **config** tab.
 Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing configuration:
 
+{{< tabs name="Add the Cartographer Service with Dataset JSON OSs">}}
+{{% tab name="Linux" %}}
+
 ``` json
+"modules": [
+  {
+    "executable_path": "/usr/local/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
 "services": [
 {
     "type": "slam",
@@ -221,6 +399,62 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 ```
 
 {{% /tab %}}
+{{% tab name="MacOS x86_64" %}}
+
+``` json
+"modules": [
+  {
+    "executable_path": "/usr/local/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+"services": [
+{
+    "type": "slam",
+    "name": <"your-service-name">,
+    "model": "cartographer",
+    "attributes": {
+    "config_params": {
+        "mode": "2d"
+    },
+    "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+    "delete_processed_data": false,
+    "use_live_data": false,
+    }
+}
+]
+```
+
+{{% /tab %}}
+{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+
+``` json
+"modules": [
+  {
+    "executable_path": "/opt/homebrew/bin/cartographer-module",
+    "name": "cartographer-module"
+  }
+],
+"services": [
+{
+    "type": "slam",
+    "name": <"your-service-name">,
+    "model": "cartographer",
+    "attributes": {
+    "config_params": {
+        "mode": "2d"
+    },
+    "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
+    "delete_processed_data": false,
+    "use_live_data": false,
+    }
+}
+]
+```
+
+{{% /tab %}}
+{{% /tab %}}
+{{< /tabs >}}
 {{< /tabs >}}
 
 ### Adjust `data_dir`
@@ -310,7 +544,7 @@ Watch a map start to appear.
 | `data_rate_msec` | int | Optional | Rate of <file>/data</file> collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `port` | string | Optional | Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
 | `delete_processed_data` | bool | Optional | <p>Setting this to `true` helps to reduce the amount of memory required to run SLAM.</p> <ul> `true`: sensor data is deleted after the SLAM algorithm has processed it. </ul><ul> `false`: sensor data is not deleted after the SLAM algorithm has processed it. </ul> |
-| `config_params` |  map[string] string | Optional | Parameters available to fine tune the `cartographer` algorithm: [read more below](#config_params). |
+| `config_params` |  map[string] string | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
 {{% alert title="Caution" color="caution" %}}
 
@@ -352,7 +586,7 @@ The STL file for an adapter plate is available on [GitHub](https://github.com/vi
 #### Maps not appearing in UI
 
 When generating a larger map, it will take longer for Cartographer to return the desired map.
-This can result in errors or failed requests for a map, however, this will not affect the `viam-server` or `cartographer` process.
+This can result in errors or failed requests for a map, however, this will not affect the `viam-server` or `cartographer-module` process.
 Re-requesting the map can and should be successful, although there is currently a fundamental limit for the size of map that can be transmitted to the UI and this issue will become more common as you approach it.
 
 #### Dataset mode produces an error

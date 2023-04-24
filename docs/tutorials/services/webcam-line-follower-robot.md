@@ -8,6 +8,8 @@ tags: ["base", "vision", "detector", "camera", "services", "python"]
 webmSrc: "/tutorials/img/webcam-line-follower/lf-tape-follow3.webm"
 mp4Src: "/tutorials/img/webcam-line-follower/lf-tape-follow3.mp4"
 videoAlt: "The green line the camera sees as the rover moves along it."
+aliases:
+    - "/tutorials/webcam-line-follower-robot/"
 ---
 
 
