@@ -5,8 +5,6 @@ weight: 80
 type: "docs"
 description: "Calibrate a camera and extract the intrinsic and distortion parameters."
 tags: ["camera", "components"]
-aliases:
-  - "/components/calibrate/"
 ---
 
 To calibrate a camera, you can use the classical example of a [chessboard](https://en.wikipedia.org/wiki/Chessboard_detection).
