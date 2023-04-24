@@ -287,7 +287,7 @@ Currently, this only works with Python code which is running on the same board t
 
 2. Replace the `ROBOT_NAME` with your robot's Viam cloud address and the `PAYLOAD_SECRET` with your robot secret.
    Your locahost can now make a secure connection to `viam-server` locally.
-   SSL will now check the server hostname against `auth_entity` required by {{< glossary_tooltip term_id="grpc" >}} from the `auth_entity` dial options.
+   SSL will now check the server hostname against the `auth_entity` required by {{< glossary_tooltip term_id="grpc" >}} from the `auth_entity` dial options.
 
    This ensures that you can send commands to the robot through localhost without internet connectivity.
    Note that all commands will be sent using {{< glossary_tooltip term_id="grpc" >}} only without {{< glossary_tooltip term_id="webrtc" >}}.
