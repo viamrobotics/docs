@@ -54,7 +54,7 @@ Navigate to the **config** tab on your robot's page, and click on the **Componen
 
 Add a component with type `camera`, model `viam:lidar:rplidar`, and a name of your choice:
 
-![adding rplidar component](./img/add-rplidar/add-rplidar-component-ui.png)
+![adding rplidar component](../img/add-rplidar/add-rplidar-component-ui.png)
 
 Paste the following into the **Attributes** field of your new component according to your machine's architecture:
 
@@ -80,18 +80,18 @@ Paste the following into the **Attributes** field of your new component accordin
 {{% /tab %}}
 {{< /tabs >}}
 
-Click on the **Modules** subtab. Add the rplidar module with a name of your choice and an executable path that points to the location of your install rplidar-module binary:
+Click on the **Modules** subtab. Add the rplidar module with a name of your choice and an executable path that points to the location of your installed `rplidar-module` binary:
 
 {{< tabs name="Add Rplidar Component Module">}}
 {{% tab name="Linux/MacOS x86_64" %}}
 
-![adding rplidar module linux](./img/add-rplidar/add-rplidar-module-ui-linux.png)
+![adding rplidar module linux](../img/add-rplidar/add-rplidar-module-ui-linux.png)
 
 {{% /tab %}}
 
 {{% tab name="MacOS ARM64 (M1 & M2)" %}}
 
-![adding rplidar module M1 M2](./img/add-rplidar/add-rplidar-module-ui-M1-M2.png)
+![adding rplidar module M1 M2](../img/add-rplidar/add-rplidar-module-ui-M1-M2.png)
 
 {{% /tab %}}
 {{< /tabs >}}
