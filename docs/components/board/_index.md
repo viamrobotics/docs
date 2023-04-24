@@ -75,7 +75,10 @@ Supported board models include:
 <!-- Could consider adding another column for Pi, Jetsons, TI -> PINOUT diagram section? 
 
 - https://pinout.xyz/pinout/spi 
-- https://jetsonhacks.com/nvidia-jetson-nano-j41-header-pinout/-->
+- https://jetsonhacks.com/nvidia-jetson-nano-j41-header-pinout/
+
+ TODO: needs a better intro here 
+ -->
 
 ### `analogs`
 
@@ -84,10 +87,31 @@ An [analog-to-digital converter](https://www.electronics-tutorials.ws/combinatio
 
 To integrate an ADC into your robot, configure the connection between your ADC and your board `"analogs"`  in the `"attributes"` of your board:
 
-``` json
+{{< tabs name="Configure an Analog Reader" >}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+// "attributes": { ... ,
+"analogs": [
+  {
+    "chip_select": <"chip-select-pin-number-on-board">,
+    "name": <"your-analog-reader-name">,
+    "pin": <"pin-number-on-adc">,
+    "spi_bus": <"your-spi-bus-name">
+  }
+]
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
+      "model": "pi",
+      "name": "your-board",
+      "type": "board",
       "attributes": {
         "analogs": [
           {
@@ -109,23 +133,23 @@ To integrate an ADC into your robot, configure the connection between your ADC a
             "name": "main"
           }
         ]
-      },
-      "model": "pi",
-      "name": "local",
-      "type": "board"
+      }
     }
   ]
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 The following properties are available for `analogs`:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the analog reader. |
-|`pin`| string | **Required** | The pin number of the ADC pin wired to the board.
-|`chip_select`| string | **Required** | The pin number of the board pin wired to the ADC. |
-|`spi_bus` | string | Optional | `name` of the [SPI bus](#spi) connecting the ADC and board. Required if your board must communicate with the ADC via SPI. |
+|`pin`| string | **Required** | The pin number of the ADC's connection pin, wired to the board.
+|`chip_select`| string | **Required** | The pin number of the board's connection pin, wired to the ADC. |
+|`spi_bus` | string | Optional | `name` of the [SPI bus](#spi) connecting the ADC and board. Required if your board must communicate with the ADC with the SPI protocol. |
 | `average_over_ms` | int | Optional | Duration in milliseconds over which the rolling average of the analog input should be taken. |
 |`samples_per_sec` | int | Optional | Sampling rate of the analog input in samples per second. |
 <!-- 
@@ -146,35 +170,54 @@ allow for the use of AnalogSmoother.
 
 Digital interrupts are useful when your code needs to be notified
 immediately anytime there is a change in GPIO value.
-Contrast this with running the `Get` method on a GPIO pin only at specific times when you want to know its value, which you can do without configuring interrupts; you only need to call `Get` on the name yielded by `GPIOPinByName`.
+When an interrupt configured on your board processes 
+<!-- Contrast this with running the `Get` method on a GPIO pin only at specific times when you want to know its value, which you can do without configuring interrupts; you only need to call `Get` on the name yielded by `GPIOPinByName`. 
+TODO: this needs more info about digital interrupts-->
 
-#### Configuration
+Integrate `digital_interrupts` into your robot in the `attributes` of your board as follows:
 
-An example:
+{{< tabs name="Configure a Digital Interrupt" >}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+// "attributes": { ... ,
+"digital_interrupts": [
+  {
+    "name": <"your-digital-interrupt-name">,
+    "pin": <pin-number>
+  }
+]
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
+      "model": "pi",
+      "name": "your-board",
+      "type": "board",
       "attributes": {
         "digital_interrupts": [
           {
-            "name": "example-interrupt-1",
+            "name": "your-interrupt-1",
             "pin": "15"
           },
           {
-            "name": "example-interrupt-2",
+            "name": "your-interrupt-2",
             "pin": "16"
           }
         ]
-      },
-      "model": "pi",
-      "name": "local",
-      "type": "board"
+      }
     }
   ]
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 The following properties are available for `digital_interrupts`:
 
@@ -183,7 +226,7 @@ The following properties are available for `digital_interrupts`:
 |`name` | string | **Required** | Your name for the digital interrupt. |
 |`pin`| string | **Required** | The pin number on the board you wish to configure the digital interrupt for. |
 |`type`| string | Optional | Set `type` to `"basic"` to count the number of interrupts that occur. Set `type` to `"servo"` to count the average time between the interrupts (akin to pulse width). |
-|`formula` | string | Optional | A mathematical function you wish to apply to the input. |
+<!-- |`formula` | string | Optional | A mathematical function you wish to apply to the input. | -->
 <!-- TODO: Can maybe have a terminology section to link to on this page including like pin number? pinout diagrams? 
 
 also need to find an example usage for formula.
@@ -209,7 +252,7 @@ The following are brief descriptions of each protocol Viam supports, as well as 
 
 To physically set up a connection between your board (as the controller) and a component (as the peripheral device)--for example: a [TMC5072 stepper motor](/components/motor/#TMC5072)--you can wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
 
-Then, you must enable SPI on your board if it is not enabled by default.
+You must also enable SPI on your board if it is not enabled by default.
 Refer to your [board model's configuration instructions](#configuration) for instructions on this, if applicable.
 
 Then, as boards have CS pins internally configured to correspond with SPI bus indexes, all you need to do to enable this connection in your board's configuration `"attributes"` is specify the index of the bus and give it a name:
@@ -260,14 +303,14 @@ Refer to your peripheral device's data sheet for MOSI/MISO/SLCK/CS pin layouts.
 ### `i2cs`
 
 The inter-integrated circuit (I2C) serial communication protocol is similar to SPI, but requires only two signal wires to exchange information between the controller and the peripheral: serial data (SDA) and serial clock (SCL).
-Some boards that support I2C have the SDA and SCL pins configured by default, so in your config file you need only specify which I2C bus you are using.
-For example, if you use I2C bus 1 on a Raspberry Pi 4, SDA and SCL will be pins 3 and 5, respectively.
 
-You will also need to enable I2C on your board if it is not enabled by default.
-Review the [instructions in our documentation](/installation/prepare/rpi-setup/#enable-communication-protocols) to learn how to enable I2C on a Raspberry Pi 4.
-[Pinout.xyz](https://pinout.xyz/pinout/i2c) has additional information about I2C on Raspberry Pi.
+Some boards that support I2C have the SDA and SCL pins configured by default, so in your config file you need only specify which I2C bus you are using.
+
+You must also enable I2C on your board if it is not enabled by default.
+Refer to your [board model's configuration instructions](#configuration) for instructions on this, if applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
+// "attributes": { ... ,
 {
   "i2cs": [
     {
@@ -285,6 +328,13 @@ The following properties are available for `i2cs`:
 |`name`| string| Required | `name` of the I2C bus. |
 |`bus_select`| int | Required | The index of the I2C bus. Refer to your board's pinout diagram for I2C bus indexes and corresponding pin numbers. |
 
+{{% alert title="WIRING WITH I2C" color="tip" %}}
+
+Refer to your board's pinout diagram or data sheet for I2C bus indexes and corresponding chip select pin numbers, as well as SDA and SCL pin numbers.
+
+Refer to your peripheral device's data sheet for CS/SDA/SCL pin layouts.
+
+{{% /alert %}}
 <!-- Usually a number. Raspberry Pi recommends using bus `1`. See your board's data sheet for specifics on its I2C wiring. -->
 
 ## Control your board with Viam's client SDK libraries
@@ -292,7 +342,7 @@ The following properties are available for `i2cs`:
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+Then control your robot programmatically by getting your `board` component from the robot with `FromRobot` and adding API method calls, as shown in the following examples.
 
 These examples assume you have a board called "my_board" configured as a component of your robot.
 If your board has a different name, change the `name` in the code.
@@ -312,9 +362,251 @@ The board component supports the following methods:
 | [ModelAttributes](#modelattributes) | Get the attributes related to the model of this board. |
 | [SetPowerMode](#setpowermode) | Set the board to the indicated power mode. |
 
+Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` interfaces support the following methods:
+
+| [`GPIOPin` API](#gpiopin-api) | [`AnalogReader` API](#analogreader-api) | [`DigitalInterrupt` API](#digitalinterrupt-api) |
+|--|--|--|
+|<table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Set](#set)</td><td>...</td></tr><tr><td>[Get](#get)</td><td>....</td></tr><tr><td>[PWM](#getpwm)</td><td>...</td></tr><tr><td>[SetPWM](#setpwm)</td><td>...</td></tr><tr><td>[PWMFreq](#pwmfreq)</td><td>...</td></tr><tr><td>[SetPWMFreq](#setpwmfreq)</td><td>...</td></tr> </table>| <table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Read](#read)</td><td>...</td></tr> </table>| <table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Value](#value)</td><td>...</td></tr><tr><td>[Tick](#tick)</td><td>...</td></tr><tr><td>[AddCallback](#addcallback)</td><td>...</td></tr><tr><td>[AddPostProcessor](#addpostprocessor)</td><td>...</td></tr> </table>|
+
 ### AnalogReaderByName
 
-Get an [AnalogReader](#analogs) by `name.`
+Get an [`AnalogReader`](#analogs) by `name.`
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the analog reader you want to retrieve.
+
+**Returns:**
+
+- `reader` [(AnalogReader)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader): An interface representing an analog reader configured and residing on the board.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_by_name).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Get the AnalogReader "my_example_analog_reader".
+reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the analog reader you want to retrieve. Set as the `"name"` property [in configuration](/components/board/#digital_interrupts).
+
+**Returns:**
+
+- `reader` [(AnalogReader)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogReader): An interface representing an analog reader configured and residing on the board.
+- `ok` [(bool)](https://pkg.go.dev/builtin#bool): True if there was an analog reader of this `name` found on your board.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+reader, err := myBoard.AnalogReaderByName("my_example_analog_reader")
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DigitalInterruptByName
+
+Get an [`DigitalInterrupt`](#digital_interrupts) by `name.`
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the digital interrupt you want to retrieve. Set as the `"name"` property [in configuration](/components/board/#digital_interrupts).
+
+**Returns:**
+
+- `interrupt` [(DigitalInterrupt)](https://python.viam.dev/_modules/viam/components/board/board.html#Board.DigitalInterrupt): An interface representing a configured interrupt on the board.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_by_name).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the digital interrupt you want to retrieve. Set as the `"name"` property [in configuration](/components/board/#digital_interrupts).
+
+**Returns:**
+
+- `interrupt` [(DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): An interface representing a configured interrupt on the board.
+- `ok` [(bool)](https://pkg.go.dev/builtin#bool): True if there was a digital interrupt of this `name` found on your board.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GPIOPinByName
+
+Get a `GPIOPin` by its pin number.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number (NOT GPIO number) of the GPIOPin you want to retrieve. Refer to [the pinout diagram](#configuration) and data sheet of your board model for pin numbers and orientation.
+
+**Returns:**
+
+- `pin` [(GPIOPin)](https://python.viam.dev/_modules/viam/components/board/board.html#Board.GPIOPin): An interface representing an individual GPIO pin on the board.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.gpio_pin_by_name).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin = await my_board.GPIO_pin_by_name(name="15")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number (NOT GPIO number) of the GPIOPin you want to retrieve. Refer to [the pinout diagram](#configuration) and data sheet of your board model for pin numbers and orientation.
+
+**Returns:**
+
+- `pin` [(GPIOPin)](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin): An interface representing an individual GPIO pin on the board.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin, err := myBoard.GPIOPinByName("15")
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AnalogReaderNames
+
+Get the name of every [`AnalogReader`](#analogs) configured and residing on the board.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- `names` [(List[str])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): An list containing the `"name"` of every analog reader [configured](#configuration) on the board.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_names).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Get the name of every AnalogReader configured on the board.
+names = await my_board.analog_reader_by_name()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- `names` [([]string)](https://go.dev/tour/moretypes/7): An slice containing the `"name"` of every analog reader [configured](#configuration) on the board.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the name of every AnalogReader configured on the board.
+names := myBoard.AnalogReaderNames()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DigitalInterruptNames
+
+Get the name of every [`DigitalInterrupt`](#digital_interrupts) configured on the board.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- `names` [(List[str])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): An list containing the `"name"` of every interrupt [configured](#configuration) on the board.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_names).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Get the name of every DigitalInterrupt configured on the board.
+names = await my_board.digital_interrupt_names()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- `names` [([]string)](https://go.dev/tour/moretypes/7): An slice containing the `"name"` of every interrupt [configured](#configuration) on the board.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the name of every DigitalInterrupt configured on the board.
+names := myBoard.DigitalInterruptNames()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Status
+
+Get the current status of the board as a `BoardStatus`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -326,15 +618,15 @@ Get an [AnalogReader](#analogs) by `name.`
 
 **Returns:**
 
-- `readings` [(Mapping[str, Any])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this board provides.
+- `status` [(BoardStatus)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.BoardStatus): Mappings of the current status of the fields and values of any [AnalogReaders](#analogs) and [DigitalInterrupts](#digital_interrupts) configured on the board.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_by_name).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.status).
 
 ```python
 my_board = Board.from_robot(robot=robot, name='my_board')
 
-# Get the readings provided by the board.
-readings = await my_board.get_readings()
+# Get the current status of the board.
+status = await my_board.status()
 ```
 
 {{% /tab %}}
@@ -347,42 +639,459 @@ readings = await my_board.get_readings()
 
 **Returns:**
 
-- `readings` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): The measurements or readings that this board provides.
+- `status` [(BoardStatus)](https://pkg.go.dev/go.viam.com/api/common/v1#BoardStatus): Mappings of the current status of the fields and values of any [AnalogReaders](#analogs) and [DigitalInterrupts](#digital_interrupts) configured on the board.
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
-if err != nil {
-  logger.Fatalf("cannot get board: %v", err)
-}
 
-readings, err := myBoard.Readings(context.Background(), nil)
+// Get the current status of the board.
+status, err := myBoard.Status(context.Background(), nil)
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-### DigitalInterruptByName
-
-### GPIOPinByName
-
-### AnalogReaderNames
-
-### DigitalInterruptNames
-
-### Status
-
 ### ModelAttributes
+
+Get a struct with the board's innate `Remote` attribute indicating whether or not this model of board is accessed over a remote connection, e.g gRPC.
 
 ### SetPowerMode
 
+Set the board to the indicated `PowerMode`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `mode` [(PowerMode)](https://python.viam.dev/autoapi/viam/proto/component/board/index.html#viam.proto.component.board.PowerMode): Options to specify power usage of the board: `PowerMode.POWER_MODE_UNSPECIFIED`, `PowerMode.POWER_MODE_NORMAL`, and `PowerMode.POWER_MODE_OFFLINE_DEEP`.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `duration` [(Optional[datetime.timedelta])](https://docs.python.org/3/library/typing.html#typing.Optional): If provided, the board will exit the given power mode after the specified duration.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.set_power_mode).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Set the power mode of the board to OFFLINE_DEEP.
+status = await my_board.set_power_mode(mode=PowerMode.POWER_MODE_OFFLINE_DEEP)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `mode` [(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Set the power mode of the board to OFFLINE_DEEP.
+err := myBoard.Status(context.Background(), nil)
+myBoard.SetPowerMode(context.Background(), boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## `GPIOPin` API
+
+### Set
+
+Set the digital signal output of this pin to either low (0V) or high (active, >0V).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, set the state of the pin to high.
+If `false`, set the state of the pin to low.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin = await my_board.GPIO_pin_by_name(name="15")
+
+# Set the pin to high.
+await pin.set(high="true")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, set the state of the pin to high.
+If `false`, set the state of the pin to low.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin, err := myBoard.GPIOPinByName("15")
+
+// Set the pin to high.
+err := pin.Set(context.Background(), "true", nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Get
+
+Get if it's `true` that the digital signal output of this pin is set to high (active, >0V).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
+If `false`, the state of the pin is set to low.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin = await my_board.GPIO_pin_by_name(name="15")
+
+# Get if it is true or false that the pin is set to high.
+high = await pin.get()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
+If `false`, the state of the pin is set to low.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin, err := myBoard.GPIOPinByName("15")
+
+// Get if it is true or false that the pin is set to high.
+high := pin.Get(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### PWM
+
+{{% alert title="Note" color="note" %}}
+
+[Pulse Width Modulation (PWM)](https://www.digikey.com/en/blog/pulse-width-modulation) is a method where of transmitting a digital signal in the form of pulses to control analog circuits.
+With PWM on a *board*, the continuous digital signal output by a GPIO pin is sampled at regular intervals and transmitted to any [hardware components](/components) wired to the pin that read analog signals.
+This enables the board to communicate with these components.
+
+{{% /alert %}}
+
+Get the pin's [Pulse Width Modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `duty_cycle` [(float)](https://docs.python.org/3/library/functions.html#float): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state relative to the interval period of the PWM signal.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get_pwm).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin = await my_board.GPIO_pin_by_name(name="15")
+
+# Get if it is true or false that the pin is set to high.
+duty_cycle = await pin.get_pwm()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `duty_cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state relative to the interval period of the PWM signal.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin, err := myBoard.GPIOPinByName("15")
+
+// Get if it is true or false that the pin is set to high.
+duty_cycle := pin.PWM(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### SetPWM
+
+Set the pin's [Pulse Width Modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] indicating the percentage of time the digital signal output of this pin is in the "high" state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state relative to the interval period of the PWM signal.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
+If `false`, the state of the pin is set to low.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set_pwm).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin = await my_board.GPIO_pin_by_name(name="15")
+
+# Set the duty cycle to .6, meaning that this pin will be set to high for 60% of the duration of the PWM interval period.
+await pin.set_pwm(cycle=.6)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state relative to the interval period of the PWM signal.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin, err := myBoard.GPIOPinByName("15")
+
+// Set the duty cycle to .6, meaning that this pin will be set to high for 60% of the duration of the PWM interval period.
+err := pin.SetPWM(context.Background(), .6, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### PWMFreq
+
+Get the [Pulse Width Modulation (PWM) Frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
+The optimal value for PWM Frequency depends on the type and model of [component](/components) you control with the signal output by this pin.
+Refer to your device's data sheet for PWM Frequency specifications.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `frequency` [(int)](https://docs.python.org/3/library/functions.html#int): The PWM Frequency in Hertz (Hz) (the count of PWM interval periods per second) the digital signal output by this pin is set to.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get_pwm_frequency).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin = await my_board.GPIO_pin_by_name(name="15")
+
+# Get the PWM frequency of this pin.
+freq = await pin.get_pwm_frequency()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `freqHz` [(unit)](https://pkg.go.dev/builtin#uint): The PWM Frequency in Hertz (Hz) (the count of PWM interval periods per second) the digital signal output by this pin is set to.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin, err := myBoard.GPIOPinByName("15")
+
+// Get the PWM frequency of this pin.
+freqHz, err := pin.PWMFreq(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### SetPWMFreq
+
+Set the [Pulse Width Modulation (PWM) Frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
+The optimal value for PWM Frequency depends on the type and model of [component](/components) you control with the PWM signal output by this pin.
+Refer to your device's data sheet for PWM Frequency specifications.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `frequency` [(int)](https://docs.python.org/3/library/functions.html#int)The PWM Frequency in Hertz (Hz), the count of PWM interval periods per second, to set the digital signal output by this pin to.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set_pwm_frequency).
+
+```python
+my_board = Board.from_robot(robot=robot, name='my_board')
+
+# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin = await my_board.GPIO_pin_by_name(name="15")
+
+# Set the PWM frequency of this pin to 1600 Hz.
+high = await pin.set_pwm_frequency(frequency=1600)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `freqHz` [(unit)](https://pkg.go.dev/builtin#uint): The PWM Frequency in Hertz (Hz), the count of PWM interval periods per second, to set the digital signal output by this pin to.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin, err := myBoard.GPIOPinByName("15")
+
+// Set the PWM frequency of this pin to 1600 Hz.
+high := pin.SetPWMFreq(context.Background(), 1600, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## `AnalogReader` API
 
+### Read
+
+Read the current integer value of the digital signal output by the [AnalogReader](#analogs).
+
 ## `DigitalInterrupt` API
+
+### Value
+
+Get the current value of the [DigitalInterrupt](#digital_interrupts), which is based on the `"type"` specifed in [configuration](#configuration).
+
+### Tick
+
+Trigger the interrupt.
+Implement this method into your code either for testing or if the interrupt is a proxy to some real hardware interrupt.
+
+### AddCallback
+
+Add a callback function to be sent the boolean value `high` returned by a call to `Tick()`.
+When interrupted, this interrupt should call all callbacks that have been added with this method.
+
+### AddPostProcessor
 
 <!-- TODO: Will do something with this but not in this format. API documentation may be sufficient. Could make subpage.  -->
 
