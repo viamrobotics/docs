@@ -25,7 +25,7 @@ The following **breaking changes** will take effect:
 
 ### Use individual vision service instances
 
-You will need to create **an individual vision service instance** for each detector, classifier, and segementer model.
+You will need to create **an individual vision service instance** for each detector, classifier, and segmenter model.
 You will no longer be able to create one vision service and register all of your detectors, classifiers, and segmenters within it.
 
 #### API calls
