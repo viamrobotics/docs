@@ -1,9 +1,9 @@
 ---
-title: "Use Motion Planning Algorithms"
+title: "About the Motion Planning Algorithms"
 linkTitle: "Algorithms"
 weight: 20
 type: "docs"
-description: "Choose a planning algorithm to fit your desired Motion Service behavior."
+description: "Information about the motion planning algorithms Viam uses."
 ---
 
 Viam implements two planning algorithms, both based in principle on [RRT](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree):
