@@ -30,4 +30,4 @@ Integrated SLAM Libraries include:
 
 | Model | Description |
 | ----- | ----------- |
-| [`cartographer`](cartographer) | [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data. |
+| [`viam:slam:cartographer`](cartographer) | [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data. |

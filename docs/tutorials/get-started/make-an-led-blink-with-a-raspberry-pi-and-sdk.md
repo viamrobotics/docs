@@ -7,6 +7,8 @@ description: "Intro to Hardware Programming Part 2: Use a Viam SDK to make an LE
 webmSrc: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.webm"
 mp4Src: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.mp4"
 videoAlt: "A blinking blue LED connected to a Raspberry Pi with jumper cables."
+aliases:
+    - /tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk
 tags: ["board", "raspberry pi", "sdk"]
 # SME: Joe Karlsson
 ---

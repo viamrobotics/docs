@@ -16,7 +16,9 @@ It stores the required contextual information to use the position and orientatio
 
 ## Configuration
 
-To adjust the Frame System from its default configuration for a particular [component](/components), add the following to its configuration:
+To enable the default frame for a given [component](/components), click **Add Frame**, then click **Save Config**.
+
+To adjust the frame from its default configuration, change the parameters as needed for your robot before saving.
 
 {{< tabs name="Frame Configuration Instructions" >}}
 {{% tab name="Config Builder" %}}
