@@ -16,7 +16,7 @@ tags: ["base", "gamepad", "yahboom", "app", "rover"]
 - A Raspberry Pi 4 running an instance of `viam-server`.
 See our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) for instructions.
 - A [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot)
-- A Bluetooth gamepad controller. For this tutorial we used [this 8BitDo controller](https://shop.8bitdo.com/products/8bitdo-pro-2-bluetooth-controller-for-switch-switch-oled-pc-macos-android-steam-raspberry-pi---nintendo-switch).
+- A Bluetooth gamepad controller. For this tutorial we used an 8BitDo controller.
 
 ## Configuring the Board
 
