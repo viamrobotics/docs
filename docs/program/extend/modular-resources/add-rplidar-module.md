@@ -15,6 +15,7 @@ Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
 ## Requirements
+
 Install the binary required to utilize the `rplidar-module` library on your machine and make it executable by running the following commands according to your machine's architecture:
 
 {{< tabs >}}
@@ -94,11 +95,7 @@ Click on the **Modules** subtab. Add the rplidar module with a name of your choi
 
 {{% /tab %}}
 {{< /tabs >}}
-
-
-
 {{% /tab %}}
-
 {{% tab name="JSON Template" %}}
 
 Navigate to the **config** tab.
