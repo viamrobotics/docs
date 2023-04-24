@@ -6,7 +6,7 @@ type: "docs"
 description: "The RDK is the open-source, on-robot portion of the Viam platform, that provides `viam-server` and the Go SDK."
 tags: ["server", "rdk"]
 aliases:
-  - "product-overviews/rdk"
+  - "/product-overviews/rdk"
 ---
 
 {{< alert title="Tip" color="tip" >}}
