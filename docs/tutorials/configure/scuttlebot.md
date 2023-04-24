@@ -7,6 +7,8 @@ description: "Configure a SCUTTLE Robot on the Viam platform."
 image: "/tutorials/img/scuttlebot/createcomponent.png"
 imageAlt: "The Viam app UI showing the CONFIG tab of a robot."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
+aliases:
+  - "/tutorials/scuttlebot"
 ---
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/LAMxYci242E">}}

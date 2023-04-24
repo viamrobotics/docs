@@ -5,6 +5,8 @@ weight: 99
 type: "docs"
 no_list: true
 description: "Manage and control your robots from the command line."
+aliases:
+    - "/program/cli"
 ---
 
 The Viam CLI (command line interface) tool enables you to manage your robots across organizations and locations from the command line.

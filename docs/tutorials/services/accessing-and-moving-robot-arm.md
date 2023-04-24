@@ -7,6 +7,9 @@ description: "Access and control one of the most fundamental systems in robotics
 image: "/tutorials/img/motion/preview.jpg"
 imageAlt: "A robotic arm"
 tags: ["arm", "motion", "services"]
+aliases:
+  - "/tutorials/motion/accessing-and-moving-robot-arm"
+  - "/tutorials/motion/"
 # SMEs: William S.
 ---
 
