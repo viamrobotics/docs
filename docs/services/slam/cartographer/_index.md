@@ -111,7 +111,6 @@ Paste the following into the **Attributes** field of your new service:
 
 Click on the **Modules** subtab. Add the cartographer module with a name of your choice and an executable path that points to the location of your installed `cartographer-module` binary:
 
-
 {{< tabs name="Add Cartographer Service Live Module">}}
 {{% tab name="Linux/MacOS x86_64" %}}
 
