@@ -14,7 +14,7 @@ aliases:
 
 ## Requirements
 
-Install the binary required to utilize the `cartographer` library on your machine and make it executable by running the following commands according to your machine's architecture:
+Install the binary required to utilize the `cartographer-module` library on your machine and make it executable by running the following commands according to your machine's architecture:
 
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
@@ -109,38 +109,19 @@ Paste the following into the **Attributes** field of your new service:
 {{% /tab %}}
 {{< /tabs >}}
 
-Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to your existing SLAM and RPLIDAR configuration:
+Click on the **Modules** subtab. Add the cartographer module with a name of your choice and an executable path that points to the location of your install cartographer-module binary:
+
 
 {{< tabs name="Add Cartographer Service Live Module">}}
 {{% tab name="Linux/MacOS x86_64" %}}
 
-```json
-"modules": [
-  // { ...}, YOUR RPLIDAR MODULE,
-  {
-    "executable_path": "/usr/local/bin/cartographer-module",
-    "name": "cartographer-module"
-  }
-],
-// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
-// "services": [ ...], YOUR SLAM SERVICE
-```
+![adding cartographer module linux](../img/run_slam/add-cartographer-module-ui-linux.png)
 
 {{% /tab %}}
 
 {{% tab name="MacOS ARM64 (M1 & M2)" %}}
 
-```json
-"modules": [
-  // { ...}, YOUR RPLIDAR MODULE,
-  {
-    "executable_path": "/opt/homebrew/bin/cartographer-module",
-    "name": "cartographer-module"
-  }
-],
-// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
-// "services": [ ...], YOUR SLAM SERVICE
-```
+![adding cartographer module M1 M2](../img/run_slam/add-cartographer-module-ui-M1-M2.png)
 
 {{% /tab %}}
 {{< /tabs >}}
