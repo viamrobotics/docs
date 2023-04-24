@@ -102,7 +102,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
         ...
     ,
     {
-      "service_config": [
+      "service_configs": [
         {
           "attributes": {
             "capture_methods": [
@@ -204,7 +204,7 @@ The following example captures data from two analog readers that provide a volta
     {
       "name": "esp-home",
       "address": "esp-home-main.33vvxnbbw9.viam.cloud:80",
-      "service_config": [
+      "service_configs": [
         {
           "type": "data_manager",
           "attributes": {
@@ -213,19 +213,6 @@ The following example captures data from two analog readers that provide a volta
               {
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
-                // You have to explicitly set the component type to ensure the
-                // main board knows what the part is because it cannot automatically
-                // detect it.
-                "type": {
-                  "Type": {
-                    "type": "component",
-                    "namespace": "rdk"
-                  },
-                  "subtype": "board"
-                },
-                "model": {
-                  "name": "rdk:esp32:board"
-                },
                 "name": "rdk:component:board/esp-home:board",
                 "additional_params": {
                   "A2": "",
@@ -237,19 +224,6 @@ The following example captures data from two analog readers that provide a volta
               {
                 "method": "Gpio",
                 "capture_frequency_hz": 1,
-                // You have to explicitly set the component type to ensure
-                // the main board knows what the part is because it cannot
-                // detect it.
-                "type": {
-                  "subtype": "board",
-                  "Type": {
-                    "namespace": "rdk",
-                    "type": "component"
-                  }
-                },
-                "model": {
-                  "name": "rdk:esp32:board"
-                },
                 "name": "rdk:component:board/esp-home:board",
                 "additional_params": {
                   "27": ""
