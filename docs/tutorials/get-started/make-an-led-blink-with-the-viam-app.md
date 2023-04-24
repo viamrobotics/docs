@@ -1,14 +1,15 @@
 ---
-title: "How to Make an LED Blink with a Raspberry Pi Using the Viam App"
-linkTitle: "Blink an LED with a Pi and the Viam App"
+title: "Control an LED with a Raspberry Pi Using the Viam App"
+linkTitle: "Control an LED with the Viam App"
 weight: 30
 type: "docs"
-description: "Intro to Hardware Programming Part 1: Use the Viam app to make an LED blink with a Raspberry Pi."
+description: "Intro to Hardware Programming Part 1: Use the Viam app to make an LED turn on and off with a Raspberry Pi."
 webmSrc: "/img/blink.webm"
 mp4Src: "/img/blink.mp4"
 videoAlt: "A blinking L.E.D. connected to a Raspberry Pi"
+aliases:
+    - /tutorials/make-an-led-blink-with-the-viam-app/
 tags: ["board", "raspberry pi", "app"]
-# SME: Joe Karlsson
 ---
 
 In this post, we will show you how to use Viam to make an LED blink with a Raspberry Pi.
@@ -131,9 +132,14 @@ It will look like this:
 <img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image8.png" alt="Screenshot of the Viam app showing the board configuration on the 'Connect' tab. The 'Board Local' row is expanded, and under the 'Set' row, the pin is set to '8.' A red box is around the 'Set Pin State' field." width="100%">
 
 After setting your pin to **high** the LED should illuminate.
-You can play around with values **low** and **high** by setting them differently, and you will see your LED toggle on and off.
+You can play around with values **low** and **high** by setting them differently, and you will see your LED toggle on and off depending on whether you have the value set to **low** or **high**.
 
 {{<gif webm_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image7.webm" mp4_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image7.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
+
+{{< alert title="Note" color="note" >}}
+The above image blinks at regular intervals, while yours will turn on and off when you set the values to **high** and **low** respectively.
+To make your LED blink at regular intervals, see [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/).
+{{< /alert >}}
 
 ## Summary
 

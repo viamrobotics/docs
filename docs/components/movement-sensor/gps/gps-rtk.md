@@ -27,7 +27,9 @@ Our `gps-rtk` model uses an over-the-internet correction source [NTRIP](https://
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-On the **COMPONENTS** sub-tab, navigate to the **Create Component** menu.
+Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** sub-tab and navigate to the **Create component** menu.
+
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `gps-rtk` model.
 
 ![Creation of a `gps-rtk` movement sensor in the Viam app config builder.](../../img/gps-rtk-builder.png)
@@ -141,7 +143,7 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 Name | Inclusion | Type | Default Value | Description
 ---- | --------- | ---- | ------------- | ----------
-`board` | depends on connection type | string | - | Required for NMEA over I<sup>2</sup>C; the board connected to the chip. Not required for serial communication.
+`board` | depends on connection type | string | - | Required for NMEA over I<sup>2</sup>C; the `name` of the board connected to the chip. Not required for serial communication.
 `connection_type` | **Required** | string | - | `"I2C"` or `"serial"`, respectively. See [connection configuration info](#connection-attributes).
 `ntrip_addr` | **Required** | string | - | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections
 `ntrip_username` | **Required** | string | - | Username for the NTRIP server

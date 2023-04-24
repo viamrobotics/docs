@@ -8,6 +8,8 @@ description: "Integrate a custom base component with the Viam Python SDK."
 webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
 mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
 videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
+aliases:
+    - /tutorials/custom-base-dog/
 # SMEs: James Otting, Eric Daniels
 # Author: Jessamy Taylor
 ---

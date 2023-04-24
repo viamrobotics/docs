@@ -9,6 +9,7 @@ imageAlt: "detectionCam stream displaying a color detection"
 tags: ["vision", "detector", "camera", "viam rover", "try viam", "services"]
 aliases:
     - /tutorials/viam-rover/try-viam-color-detection
+    - /tutorials/try-viam-color-detection
 # SMEs: Hazal
 ---
 
