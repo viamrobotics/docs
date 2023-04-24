@@ -16,7 +16,7 @@ Breaking changes are likely to occur, and occur often.
 
 ## Requirements
 
-Install the binary required to utilize the `rplidar-module` library on your machine and make it executable by running the following commands according to your machine's architecture:
+Install the `rplidar-module` binary on your machine and make it executable by running the following commands according to your machine's architecture:
 
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}

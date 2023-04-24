@@ -14,7 +14,7 @@ aliases:
 
 ## Requirements
 
-Install the binary required to utilize the `cartographer-module` library on your machine and make it executable by running the following commands according to your machine's architecture:
+Install the binary required to utilize the `cartographer` library on your machine and make it executable by running the following commands according to your machine's architecture:
 
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
@@ -544,7 +544,7 @@ Watch a map start to appear.
 | `data_rate_msec` | int | Optional | Rate of <file>/data</file> collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `port` | string | Optional | Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
 | `delete_processed_data` | bool | Optional | <p>Setting this to `true` helps to reduce the amount of memory required to run SLAM.</p> <ul> `true`: sensor data is deleted after the SLAM algorithm has processed it. </ul><ul> `false`: sensor data is not deleted after the SLAM algorithm has processed it. </ul> |
-| `config_params` |  map[string] string | Optional | Parameters available to fine tune the `cartographer-module` algorithm: [read more below](#config_params). |
+| `config_params` |  map[string] string | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
 {{% alert title="Caution" color="caution" %}}
 
@@ -556,7 +556,7 @@ Setting `delete_processed_data: true` and `use_live_data: false` is invalid and 
 
 ### `config_params`
 
-Adjust these parameters to fine-tune the algorithm `cartographer-module` utilizes in aspects like submap size, mapping update rate, and feature matching details:
+Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in aspects like submap size, mapping update rate, and feature matching details:
 
 | Parameter Mode | Description | Inclusion | Default Value | Notes |
 | -------------- | ----------- | --------- | ------------- | ----- |
