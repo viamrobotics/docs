@@ -174,7 +174,7 @@ In your Vision Service's panel, fill in the **Attributes** field.
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
-  "detector_name": "<classifier_name>"
+  "mlmodel_name": "<detector_name>"
 }
 ```
 
