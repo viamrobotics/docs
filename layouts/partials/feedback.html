@@ -27,16 +27,16 @@
         event_label: window.location.pathname,
         value: value
       };
-      gtag('event', value, args);
+      gtag('event', 'click', args);
     };
     yesButton.addEventListener('click', () => {
       yesResponse.classList.add('feedback--response__visible');
       disableButtons();
-      sendFeedback("helpful");
+      sendFeedback(1);
     });
     noButton.addEventListener('click', () => {
       noResponse.classList.add('feedback--response__visible');
       disableButtons();
-      sendFeedback("not_helpful");
+      sendFeedback(0);
     });
   </script>
