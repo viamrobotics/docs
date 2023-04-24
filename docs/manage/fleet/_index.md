@@ -6,8 +6,9 @@ type: "docs"
 description: "Configure, control, debug, and manage your robots from the cloud at app.viam.com."
 tags: ["fleet management", "cloud", "app"]
 aliases:
-    - /manage/fleet-management
-    - /manage/app-usage
+    - "/manage/fleet-management"
+    - "/manage/app-usage"
+    - "/product-overviews/fleet-management/"
 ---
 
 The [Viam app](https://app.viam.com) provides fleet management allowing you to:
