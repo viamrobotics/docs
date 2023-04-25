@@ -82,7 +82,7 @@ In the example pictured here, the Data Management Service syncs the configured c
       "type": "data_manager",
       "attributes": {
         "sync_interval_mins": 5,
-        "capture_dir": "/.viam/capture",
+        "capture_dir": "",
         "sync_disabled": false,
         "additional_sync_paths": [
           "/logs"
