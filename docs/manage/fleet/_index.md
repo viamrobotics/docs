@@ -71,7 +71,7 @@ You can see configuration changes from yourself or your collaborators on the [Hi
 You can also revert to an earlier configuration from the History tab.
 
 {{< alert title="Note" color="note" >}}
-Configuration may require physical access to the robot.
+For some configuration aspects you may require physical access to the robot so you can see how components are connected.
 {{< /alert >}}
 
 ### Package Deployment
