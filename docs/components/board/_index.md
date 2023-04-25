@@ -400,6 +400,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
+// Get the AnalogReader "my_example_analog_reader".
 reader, err := myBoard.AnalogReaderByName("my_example_analog_reader")
 ```
 
@@ -424,9 +425,7 @@ Get an [`DigitalInterrupt`](#digital_interrupts) by `name.`
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_by_name).
 
 ```python
-my_board = Board.from_robot(robot=robot, name=
-
-)
+my_board = Board.from_robot(robot=robot, name=)
 
 # Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
@@ -449,6 +448,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
+// Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
 ```
 
@@ -464,7 +464,8 @@ Get a `GPIOPin` by its pin number.
 
 **Parameters:**
 
-- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number (NOT GPIO number) of the GPIOPin you want to retrieve. Refer to [the pinout diagram](#configuration) and data sheet of your board model for pin numbers and orientation.
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number (NOT GPIO number) of the GPIOPin you want to retrieve.
+Refer to the pinout diagram and data sheet of your [board model](#configuration) for pin numbers and orientation.
 
 **Returns:**
 
@@ -484,7 +485,8 @@ pin = await my_board.GPIO_pin_by_name(name="15")
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number (NOT GPIO number) of the GPIOPin you want to retrieve. Refer to [the pinout diagram](#configuration) and data sheet of your board model for pin numbers and orientation.
+- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number (NOT GPIO number) of the GPIOPin you want to retrieve.
+Refer to the pinout diagram and data sheet of your [board model](#configuration) for pin numbers and orientation.
 
 **Returns:**
 
@@ -1068,6 +1070,64 @@ high := pin.SetPWMFreq(context.Background(), 1600, nil)
 
 Read the current integer value of the digital signal output by the [AnalogReader](#analogs).
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `reading` [(int)](https://docs.python.org/3/library/functions.html#int): The value of the digital signal output by the analog reader.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader.read).
+
+```python
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin = await my_board.GPIO_pin_by_name(name="15")
+
+# Get if it is true or false that the pin is set to high.
+duty_cycle = await pin.get_pwm()
+
+# Get the AnalogReader "my_example_analog_reader".
+reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
+
+# Get the value of the digital signal "my_example_analog_reader" has most recently measured.
+reading = reader.read()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `reading` [(int)](https://pkg.go.dev/builtin#int): The value of the digital signal output by the analog reader.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the AnalogReader "my_example_analog_reader".
+reader, err := myBoard.AnalogReaderByName("my_example_analog_reader")
+
+// Get the value of the digital signal "my_example_analog_reader" has most recently measured.
+reading := reader.Read(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## `DigitalInterrupt` API
 
 ### Value
@@ -1190,20 +1250,20 @@ rolling_avg, err := interrupt.Value(context.Background(), nil)
 
 {{% alert title="Caution" color="caution" %}}
 You should only need to integrate this method into your application code for testing purposes, as the handling of `Tick()` should be automated once the interrupt is configured.
+
+Calling this method is not yet fully implemented with the Viam Python SDK.
 {{% /alert %}}
 
 Record an interrupt.
 
-The way `Tick()` is triggered differs between the `type` of interrupt [configured](#digital_interrupts):
+The parameters `Tick()` accepts differ between the `type` of interrupt [configured](#digital_interrupts):
+<!-- NOT YET IMPLEMENTED: See https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/board/client.py#L60
 
-{{< tabs >}}
-{{% tab name="Basic" %}}
-{{< tabs >}}
-{{% tab name="Python" %}}
+BASIC 
 
 **Parameters:**
 
-- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high, and the [`Value()`](#value) of the interrupt should increase.
+- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
 If `false`, the state of the pin is set to low.
 - `nanos` [(int)](https://docs.python.org/3/library/functions.html#int): The time that has elapsed in nanoseconds since the last time the interrupt was ticked.
 
@@ -1223,38 +1283,7 @@ interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_in
 await interrupt.tick(high=true, nanos=12345)
 ```
 
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high, and the [`Value()`](#value) of the interrupt should increase.
-If `false`, the state of the pin is set to low.
-- `now` [(uint64)](https://pkg.go.dev/builtin#uint64): The time that has elapsed in nanoseconds since the last time the interrupt was ticked.
-
-**Returns:**
-
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#BasicDigitalInterrupt).
-
-```go
-myBoard, err := board.FromRobot(robot, "my_board")
-
-// Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
-
-// Record an interrupt and notify any interested callbacks.
-count, err := interrupt.Tick(context.Background(), true, 12345)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-{{% /tab %}}
-{{% tab name="Servo" %}}
-{{< tabs >}}
-{{% tab name="Python" %}}
+SERVO
 
 **Parameters:**
 
@@ -1277,9 +1306,36 @@ interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_in
 # Record an interrupt and notify any interested callbacks.
 await interrupt.tick(high=true, nanos=12345)
 ```
+ -->
+
+{{< tabs >}}
+{{% tab name="Basic" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
+If `false`, the state of the pin is set to low.
+- `now` [(uint64)](https://pkg.go.dev/builtin#uint64): The time that has elapsed in nanoseconds since the last time the interrupt was ticked.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#BasicDigitalInterrupt).
+
+``` go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+
+// Record an interrupt and notify any interested callbacks.
+count, err := interrupt.Tick(context.Background(), true, 12345)
+```
 
 {{% /tab %}}
-{{% tab name="Go" %}}
+{{% tab name="Servo" %}}
 
 **Parameters:**
 
@@ -1306,15 +1362,120 @@ err := interrupt.Tick(context.Background(), true, 12345)
 
 {{% /tab %}}
 {{< /tabs >}}
-{{% /tab %}}
-{{< /tabs >}}
 
 ### AddCallback
 
-Add a callback function to be sent the boolean value `high` returned by a call to `Tick()`.
-When interrupted, this interrupt should call all callbacks that have been added with this method.
+Add channel or queue as a listener for when the state of the [configured GPIO pin](#digital_interrupts) changes.
+When [Tick()](#tick) is called, callbacks added to an interrupt will be sent the returned value `high`.
+
+{{% alert title="Caution" color="caution" %}}
+This method is not available for digital interrupts [configured](#digital_interrupts) with `"type": "servo"`.
+It is also not yet fully implemented with the Viam Python SDK.
+{{% /alert %}}
+<!-- NOT YET IMPLEMENTED: see https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/board/client.py#L63
+
+**Parameters:**
+
+- `queue` [(multiprocessing.Queue)](https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Queue): The receiving queue.
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.add_callback).
+
+```python
+"""from multiprocessing import Queue"""
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin = await my_board.GPIO_pin_by_name(name="15")
+
+callback_queue = Queue(maxsize=10)
+
+# Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+
+# Add a queue to the interrupt.
+interrupt.add_callback(callback_queue)
+``` 
+ -->
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `callback` [channel](https://go.dev/tour/concurrency/2): 
+
+**Returns:**
+
+- None
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin, err := myBoard.GPIOPinByName("15")
+
+// Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### AddPostProcessor
+
+Add a [PostProcessor](https://pkg.go.dev/go.viam.com/rdk/components/board#PostProcessor) function that takes an integer input and transforms it into a new integer value.
+Functions added to an interrupt will be applied to values before they are returned by [Value()](#value).
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `queue` [(Tick)](https://pkg.go.dev/go.viam.com/rdk/components/board#Tick): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `processor` [(PostProcessor)](https://pkg.go.dev/go.viam.com/rdk/components/board#PostProcessor): The post processor function to add.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+pin, err := myBoard.GPIOPinByName("15")
+
+// Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+```
+
+<!-- NOT IMPLEMENTED: see https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/board/client.py#L66
+
+**Parameters:**
+
+- `processor` [(Callable[[int], int])](https://docs.python.org/3/library/typing.html#callable): The post processor function to add.
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.add_post_processor).
+
+```python
+"""from collections.abc import Callable"""
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+```
+ -->
 
 <!-- TODO: Will do something with this but not in this format. API documentation may be sufficient. Could make subpage.  -->
 
@@ -1402,9 +1563,7 @@ time.Sleep(1 * time.Second)
 // When false, sets the LED pin to low/off.
 led.Set(context.Background(), false, nil)
 ```
-
-{{% /tab %}}
-{{< /tabs >}} -->
+ -->
 
 ## Troubleshooting
 
