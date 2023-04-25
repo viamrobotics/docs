@@ -65,7 +65,7 @@ To enable the data capture on your robot, do the following:
    This service syncs data from your robot to the Viam app in the cloud.
 3. Then click **Create Service**.
 4. On the panel that appears, you can manage the capturing and syncing functions individually.
-   The Data Management Service captures data every 0.1 minutes in the <file>/.viam/capture</file> directory by default.
+   The Data Management Service captures data every 0.1 minutes in the <file>~/.viam/capture</file> directory by default.
 
    You can leave the default settings as they are.
    Click **Save Config** at the bottom of the window.
@@ -102,14 +102,14 @@ To enable image data capture for a camera component, follow these steps:
 
 4. Click **Save Config** at the bottom of the window.
 
-Now your image data will be saved locally on your robot in <file>/.viam/capture</file>, or whatever directory you configured the captured data from your Data Management Service to be saved to.
+Now your image data will be saved locally on your robot in <file>~/.viam/capture</file>, or whatever directory you configured the captured data from your Data Management Service to be saved to.
 
 ![Screenshot from the Viam app showing the data capture settings used for this tutorial.](../../img/data-management/image5.png)
 
 {{% alert title="Tip" color="tip" %}}
 
 If you are following along using your own robot, you can confirm that your data is being captured locally.
-On your robot, navigate to the <file>/.viam/capture</file> directory and check for files being created in real-time.
+On your robot, navigate to the <file>~/.viam/capture</file> directory and check for files being created in real-time.
 
 {{% /alert %}}
 

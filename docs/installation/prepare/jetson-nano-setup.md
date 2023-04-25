@@ -58,7 +58,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 
 If `curl` is not installed on your Orin, run `sudo apt install curl` before downloading the `viam-server` binary.
 
-If this command fails, try using `wget http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage` to download the `viam-server` binary.
+If this command fails, try using `wget https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage` to download the `viam-server` binary.
 
 {{% /alert %}}
 
