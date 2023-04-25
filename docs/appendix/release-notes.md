@@ -15,7 +15,7 @@ description:
 
 ## Vision Service
 
-The [Vision Service](/services/vision) is becoming more modular.
+The [Vision Service](/services/vision) is becoming more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36) and API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118).
 
 The following **breaking changes** will take effect:
 
