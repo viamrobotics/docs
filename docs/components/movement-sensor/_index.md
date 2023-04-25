@@ -475,7 +475,7 @@ Get the supported properties of this sensor.
 
 **Returns:**
 
-- ([Properties](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.Properties))<!--this link isn't very useful -->: The supported properties of the movement sensor.
+- ([Properties](https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Properties)): The supported properties of the movement sensor.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_properties).
 
