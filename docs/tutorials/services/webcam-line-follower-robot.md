@@ -402,7 +402,7 @@ This will give it a wider field of view so it takes longer for the line to go ou
 
 Things to try:
 
-- Add a `saturation_cutoff_pct` and/or a `value_cutoff_percent` [(documented here)](/services/vision/detection#color_detector) to your Vision Service parameters.
+- Add a `saturation_cutoff_pct` and/or a `value_cutoff_percent` [(documented here)](/services/vision/detection#configure-a-color_detector) to your Vision Service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
 Be sure to update your `detect_color` parameter accordingly.
