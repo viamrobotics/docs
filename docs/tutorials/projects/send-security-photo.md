@@ -10,6 +10,11 @@ tags: ["camera", "vision", "detector", "python"]
 # Author: Hazal Mestci
 ---
 
+{{< alert title="Caution" color="caution" >}}
+There are [breaking changes in the Vision Service](/appendix/release-notes/#25-april-2023).
+This tutorial has not yet been updated.
+{{< /alert >}}
+
 {{% alert title="Note" color="note" %}}
 
 This tutorial is part of our built-in webcam projects series.
