@@ -53,7 +53,7 @@ Select from the following modes to obtain the correct instructions to configure 
 
 {{% alert title="REQUIREMENTS" color="tip" %}}
 
-Running `cartographer-module` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtec.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device.
+Running `cartographer-module` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtec.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default ['config_params'](#config_params) for the cartographer library, and the example robot config shown below (which uses the default 'config_params'), show nominal parameters one can use for an RPLIDAR A3. See the notes next to the 'config_params' for recommended settings for an RPLIDAR A1.
 
 Before adding a SLAM service, you must follow [these instructions](/program/extend/modular-resources/add-rplidar-module/) to add your RPLIDAR device as a modular component of your robot.
 
@@ -564,8 +564,8 @@ Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in as
 | `optimize_every_n_nodes` | How many trajectory nodes are inserted before the global optimization is run. | Optional | `3` | |
 | `num_range_data` | Number of measurements in each submap. | Optional | `100` | |
 | `missing_data_ray_length` | Replaces the length of ranges that are further than `max_range` with this value. | Optional | `25` | Nominally set to max length. |
-| `max_range` | Maximum range of valid measurements. | Optional | `25` | |
-| `min_range` | Minimum range of valid measurements. | Optional | `0.2` | |
+| `max_range` | Maximum range of valid measurements. | Optional | `25` | For an RPLIDAR A3, set this value to `25`. For an RPLIDAR A1, use `12`. |
+| `min_range` | Minimum range of valid measurements. | Optional | `0.2` | For an RPLIDAR A3, set this value to `0.2`. For RPLIDAR A1, use `0.15`. |
 | `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | Only for [LOCALIZING mode](#mapping-modes). |
 | `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | Only for [UPDATING mode](#mapping-modes). |
 | `min_covered_area` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Only for [UPDATING mode](#mapping-modes). |
