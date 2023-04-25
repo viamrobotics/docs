@@ -11,7 +11,7 @@ tags: ["camera", "vision", "detector", "python"]
 ---
 
 {{< alert title="Caution" color="caution" >}}
-There are [breaking changes in the Vision Service](/appendix/release-notes/#2-may-2023).
+There are [breaking changes in the Vision Service](/appendix/release-notes/#25-april-2023).
 This tutorial has not yet been updated.
 {{< /alert >}}
 
