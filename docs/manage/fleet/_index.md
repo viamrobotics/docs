@@ -26,7 +26,7 @@ Inside an organization, you can organize robots into one or more locations:
 
 ![An image of two locations, New York, and Chicago, in one organization, Good Robots](../img/locations.png)
 
-If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robots](../../configuration), allowing you to use the same configuration for multiple robots.
+If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robots](../configuration), allowing you to use the same configuration for multiple robots.
 
 ## Use Viam for collaboration
 

@@ -13,7 +13,6 @@ A location is a virtual grouping of robots that allows you to organize robots an
 Generally, a location defines a group of robots that are geographically close to each other.
 If you are familiar with Google Drive, you can think of a location as similar to a folder within a shared drive.
 
-
 For example, an organization called Good Robots Inc has two warehouses across New York and Oregon.
 Good Robots Inc can organize its robots into three locations based on their physical presence in a warehouse.
 
