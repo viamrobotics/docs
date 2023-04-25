@@ -16,7 +16,6 @@ IgnoreURLs:
 - "espressif.com"
 - "pinout.xyz"
 - "play.google.com"
-- "packages.viam.com" #IgnoreHTTPS does not work on staging
 - "scuttlerobot.org"
 IgnoreDirs:
 - "lib"

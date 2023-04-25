@@ -6,15 +6,16 @@ no_list: true
 type: docs
 aliases:
     - /installation/prepare/
-    - /getting-started/macos-install/
     - /installation/macos-install/
-    - /getting-started/linux-install/
     - /installation/linux-install/
     - /installation/install/
     - /installation/install/linux-install/
+    - /installation/install/macos-install
     - /getting-started/installation/
-
+    - /getting-started/macos-install/
+    - /getting-started/linux-install/
 ---
+
 To use Viam software with your robot, you need to install and run a binary called `viam-server` on the computer you want to use to control the robot.
 See [What is Viam?](/viam/) for more information.
 
@@ -89,14 +90,14 @@ The AppImage is a single, self-contained binary that runs on any Linux system (e
 Stable:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server &&
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
 Latest:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -o viam-server &&
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
@@ -106,14 +107,14 @@ curl http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppIma
 Stable:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl http://packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server &&
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
 Latest:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl http://packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage -o viam-server &&
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 

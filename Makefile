@@ -23,6 +23,9 @@ htmltest: clean setup
 	hugo $(LOCAL_OPTIONS) -d dist
 	htmltest
 
+markdowntest:
+	markdownlint --config .markdownlint.yaml
+
 build-pr: clean setup
 	hugo $(PR_OPTIONS)
 

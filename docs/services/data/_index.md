@@ -7,7 +7,8 @@ type: "docs"
 tags: ["data management", "data", "services"]
 description: "Capture data from a robot's components and sync it to the cloud."
 aliases:
-    - /data-management
+    - "/data-management/"
+    - "/services/data-management/"
 icon: "/services/img/icons/data-capture.svg"
 # SME: Aaron Casas
 ---
@@ -21,7 +22,7 @@ The service has two parts: [Data Capture](#data-capture) and [Cloud Sync](#cloud
 ## Data Capture
 
 The Data Management Service captures data from one or more components locally on the robot's storage.
-The process runs in the background and, by default, stores data in the `/.viam/capture` directory.
+The process runs in the background and, by default, stores data in the `~/.viam/capture` directory.
 
 If a robot restarts for any reason, capture automatically resumes.
 

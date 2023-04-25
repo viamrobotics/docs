@@ -7,6 +7,8 @@ tags: ["rover", "tutorial"]
 image: "/try-viam/rover-resources/img/viam-rover/box-contents.jpg"
 imageAlt: "A Viam Rover in a box"
 description: "A list of the contents of the Viam Rover kit, instructions for wiring your rover, and links for additional hardware."
+aliases:
+  - "/rover-resources/rover-tutorial"
 ---
 
 The [Viam Rover](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, and a 3D accelerometer module.

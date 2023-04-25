@@ -20,7 +20,7 @@ Install the binary required to utilize the `cartographer` library on your machin
 {{% tab name="Linux aarch64" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/cartographer-module http://packages.viam.com/apps/slam-servers/cartographer-module-stable-aarch64.AppImage
+sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
 
@@ -28,7 +28,7 @@ sudo chmod a+rx /usr/local/bin/cartographer-module
 {{% tab name="Linux x86_64" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/cartographer-module http://packages.viam.com/apps/slam-servers/cartographer-module-stable-x86_64.AppImage
+sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
 
@@ -44,7 +44,7 @@ brew tap viamrobotics/brews && brew install cartographer-module
 
 ## Configuration
 
-How you configure `cartographer` depends on whether you want the SLAM service to build your map with data collected live by a [RPLIDAR](https://www.slamtec.com/en/Lidar/A3) or with LIDAR data provided in a dataset at runtime.
+How you configure `cartographer-module` depends on whether you want the SLAM service to build your map with data collected live by a [RPLIDAR](https://www.slamtec.com/en/Lidar/A3) or with LIDAR data provided in a dataset at runtime.
 
 Select from the following modes to obtain the correct instructions to configure the service:
 
@@ -53,7 +53,7 @@ Select from the following modes to obtain the correct instructions to configure 
 
 {{% alert title="REQUIREMENTS" color="tip" %}}
 
-Running `cartographer` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtec.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device.
+Running `cartographer-module` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtec.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default ['config_params'](#config_params) for the cartographer library, and the example robot config shown below (which uses the default 'config_params'), show nominal parameters one can use for an RPLIDAR A3. See the notes next to the 'config_params' for recommended settings for an RPLIDAR A1.
 
 Before adding a SLAM service, you must follow [these instructions](/program/extend/modular-resources/add-rplidar-module/) to add your RPLIDAR device as a modular component of your robot.
 
@@ -109,38 +109,18 @@ Paste the following into the **Attributes** field of your new service:
 {{% /tab %}}
 {{< /tabs >}}
 
-Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to your existing SLAM and RPLIDAR configuration:
+Click on the **Modules** subtab. Add the cartographer module with a name of your choice and an executable path that points to the location of your installed `cartographer-module` binary:
 
 {{< tabs name="Add Cartographer Service Live Module">}}
 {{% tab name="Linux/MacOS x86_64" %}}
 
-```json
-"modules": [
-  // { ...}, YOUR RPLIDAR MODULE,
-  {
-    "executable_path": "/usr/local/bin/cartographer-module",
-    "name": "cartographer-module"
-  }
-],
-// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
-// "services": [ ...], YOUR SLAM SERVICE
-```
+![adding cartographer module linux](../img/run_slam/add-cartographer-module-ui-linux.png)
 
 {{% /tab %}}
 
 {{% tab name="MacOS ARM64 (M1 & M2)" %}}
 
-```json
-"modules": [
-  // { ...}, YOUR RPLIDAR MODULE,
-  {
-    "executable_path": "/opt/homebrew/bin/cartographer-module",
-    "name": "cartographer-module"
-  }
-],
-// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
-// "services": [ ...], YOUR SLAM SERVICE
-```
+![adding cartographer module M1 M2](../img/run_slam/add-cartographer-module-ui-M1-M2.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -564,7 +544,7 @@ Watch a map start to appear.
 | `data_rate_msec` | int | Optional | Rate of <file>/data</file> collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `port` | string | Optional | Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
 | `delete_processed_data` | bool | Optional | <p>Setting this to `true` helps to reduce the amount of memory required to run SLAM.</p> <ul> `true`: sensor data is deleted after the SLAM algorithm has processed it. </ul><ul> `false`: sensor data is not deleted after the SLAM algorithm has processed it. </ul> |
-| `config_params` |  map[string] string | Optional | Parameters available to fine tune the `cartographer` algorithm: [read more below](#config_params). |
+| `config_params` |  map[string] string | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
 {{% alert title="Caution" color="caution" %}}
 
@@ -584,8 +564,8 @@ Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in as
 | `optimize_every_n_nodes` | How many trajectory nodes are inserted before the global optimization is run. | Optional | `3` | |
 | `num_range_data` | Number of measurements in each submap. | Optional | `100` | |
 | `missing_data_ray_length` | Replaces the length of ranges that are further than `max_range` with this value. | Optional | `25` | Nominally set to max length. |
-| `max_range` | Maximum range of valid measurements. | Optional | `25` | |
-| `min_range` | Minimum range of valid measurements. | Optional | `0.2` | |
+| `max_range` | Maximum range of valid measurements. | Optional | `25` | For an RPLIDAR A3, set this value to `25`. For an RPLIDAR A1, use `12`. |
+| `min_range` | Minimum range of valid measurements. | Optional | `0.2` | For an RPLIDAR A3, set this value to `0.2`. For RPLIDAR A1, use `0.15`. |
 | `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | Only for [LOCALIZING mode](#mapping-modes). |
 | `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | Only for [UPDATING mode](#mapping-modes). |
 | `min_covered_area` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Only for [UPDATING mode](#mapping-modes). |
@@ -606,7 +586,7 @@ The STL file for an adapter plate is available on [GitHub](https://github.com/vi
 #### Maps not appearing in UI
 
 When generating a larger map, it will take longer for Cartographer to return the desired map.
-This can result in errors or failed requests for a map, however, this will not affect the `viam-server` or `cartographer` process.
+This can result in errors or failed requests for a map, however, this will not affect the `viam-server` or `cartographer-module` process.
 Re-requesting the map can and should be successful, although there is currently a fundamental limit for the size of map that can be transmitted to the UI and this issue will become more common as you approach it.
 
 #### Dataset mode produces an error

@@ -8,14 +8,14 @@ description:
 # SME: Naomi
 ---
 
-## 2 May 2023
+## 25 April 2023
 
 {{< tabs >}}
 {{% tab name="Breaking Changes" %}}
 
 ## Vision Service
 
-The [Vision Service](/services/vision) is becoming more modular.
+The [Vision Service](/services/vision) is becoming more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
 
 The following **breaking changes** will take effect:
 
@@ -29,6 +29,8 @@ You will need to create **an individual vision service instance** for each detec
 You will no longer be able to create one vision service and register all of your detectors, classifiers, and segmenters within it.
 
 #### API calls
+
+Change your existing API calls to get the new vision service instance for your detector, classifier, or segementer model directly from the `VisionServiceClient`:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -55,7 +57,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color Detector configurations
 
-You can replace existing color detectors by configuring new ones in the UI or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing color detectors by [configuring new ones in the UI](/services/vision/detection/#configure-a-color_detector) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -130,7 +132,7 @@ You can replace existing color detectors by configuring new ones in the UI or yo
 
 #### TFLite Detector configurations
 
-You can replace existing TFLite detectors by configuring new ones in the UI or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing TFLite detectors by [configuring new ones in the UI](/services/vision/detection/#configure-a-mlmodel-detector) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -190,7 +192,7 @@ You can replace existing TFLite detectors by configuring new ones in the UI or y
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by configuring new ones in the UI or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/services/vision/classification/#configure-a-mlmodel-classifier) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -250,7 +252,7 @@ You can replace existing TFLite classifiers by configuring new ones in the UI or
 
 #### Radius Clustering 3D Segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by configuring new ones in the UI or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-a-radius_clustering_segmenter) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -304,7 +306,7 @@ You can replace existing Radius Clustering 3D segmenters by configuring new ones
 
 #### Detector to 3D Segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by configuring new ones in the UI or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-a-detector_3d_segmenter) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}

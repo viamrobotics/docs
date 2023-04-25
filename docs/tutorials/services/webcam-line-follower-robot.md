@@ -9,7 +9,7 @@ webmSrc: "/tutorials/img/webcam-line-follower/lf-tape-follow3.webm"
 mp4Src: "/tutorials/img/webcam-line-follower/lf-tape-follow3.mp4"
 videoAlt: "The green line the camera sees as the rover moves along it."
 aliases:
-    - /tutorials/webcam-line-follower-robot
+    - "/tutorials/webcam-line-follower-robot/"
 ---
 
 <div class="td-max-width-on-larger-screens">
@@ -403,7 +403,7 @@ This will give it a wider field of view so it takes longer for the line to go ou
 
 Things to try:
 
-- Add a `saturation_cutoff_pct` and/or a `value_cutoff_percent` [(documented here)](/services/vision/detection#color_detector) to your Vision Service parameters.
+- Add a `saturation_cutoff_pct` and/or a `value_cutoff_percent` [(documented here)](/services/vision/detection#configure-a-color_detector) to your Vision Service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
 Be sure to update your `detect_color` parameter accordingly.

@@ -8,7 +8,8 @@ webmSrc: "/tutorials/videos/scuttledemos_colordetection.webm"
 mp4Src: "/tutorials/videos/scuttledemos_colordetection.mp4"
 videoAlt: "Detecting color with a Scuttle Robot"
 aliases:
-    - /tutorials/color-detection-scuttle
+    - "/tutorials/color-detection-scuttle"
+    - "/tutorials/scuttlebot/color-detection-scuttle/"
 tags: ["vision", "detector", "base", "scuttle", "services"]
 ---
 
