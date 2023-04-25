@@ -15,7 +15,7 @@ If you are familiar with Google Drive, you can think of an organization as a sha
 
 When you or another user registers for an account with Viam, they become a member of an organization.
 If the user was invited to an organization, they become a part of that organization.
-If the user registered without invitation, an organization and a [location](/manage/fleet#locations) is automatically created for the user.
+If the user registered without invitation, an organization and a {{< glossary_tooltip term_id="location" text="location" >}} is automatically created for the user.
 
 A user can create more organizations at any time.
 
