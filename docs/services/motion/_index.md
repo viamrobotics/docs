@@ -14,19 +14,19 @@ The Motion Service enables your robot to plan and move itself or its components 
 The Motion Service:
 
 1. Gathers the current positions of the robot’s components as defined with the [Frame System](../frame-system/).
-2. Plans the necessary motions to move a component to a given destination.
+2. Plans the necessary motions to move a component to a given destination while obeying any [constraints you configure](constraints/).
 
 The Motion Service can:
 
-- use motion planning algorithms locally on your robot to plan coordinated motion across many components.
+- use motion [planning algorithms](algorithms/) locally on your robot to plan coordinated motion across many components.
 - pass movement requests through to individual components which have implemented their own motion planning.
 
 ## Configuration
 
-The Motion Service is enabled in RDK by default, and no extra configuration needs to be done in the [Viam app](https://app.viam.com/) to enable it.
+You need to configure frames for your robot's components with the [Frame System](../frame-system/).
+This defines the spatial context within which the Motion Service operates.
 
-You do need to configure frames for your components with the [Frame System](../frame-system/).
-This defines the spacial context of your robot.
+The Motion Service itself is enabled by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.
 
 ## API
 
@@ -51,11 +51,11 @@ Go to your robot's **code sample** tab on the [Viam app](https://app.viam.com) f
 Given a destination pose and a component to move to that destination, `Move` will:
 
 1. Construct a full kinematic chain from goal to destination including all movable components in between.
-2. Solve that chain to place the goal at the destination while meeting specified constraints.
+2. Solve that chain to move the specified component frame to the destination while adhering to any constraints.
 3. Execute that movement to move the actual robot.
 4. Return whether or not this process succeeded.
 
-The volumes associated with all configured robot components (local and remote) will be taken into account for each request to ensure that the robot does not collide with itself.
+The Motion Service takes the volumes associated with all configured robot components (local and remote) into account for each request to ensure that the robot does not collide with itself or other known objects.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -63,7 +63,7 @@ The volumes associated with all configured robot components (local and remote) w
 **Parameters:**
 
 - `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): Name of the piece of the robot that should arrive at the destination.
-  Note that this is solved such that the distal end of the component arrives at the destination.
+  Note that `move` moves the distal end of the component to the destination.
   For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
 
 - `destination` ([PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)):
@@ -121,7 +121,7 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
 - `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): Name of the piece of the robot that should arrive at the destination.
-  Note that this is solved such that the distal end of the component arrives at the destination.
+  Note that `Move` moves the distal end of the component to the destination.
   For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
 
 - `destination` ([PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)):
@@ -181,12 +181,11 @@ moved, err := motionService.Move(context.TODO(), goalPose, worldState, nil, nil)
 
 ### MoveSingleComponent
 
-*`MoveSingleComponent` allows you to bypass Viam’s internal motion planning entirely, if desired, for a single component.*
-
-`MoveSingleComponent` looks similar to `Move` above but may result in radically different behavior.
+The `MoveSingleComponent` method allows you to bypass Viam’s internal motion planning entirely, if desired, for a single component.
+It looks similar to `Move` above but may result in radically different behavior.
 
 `MoveSingleComponent` translates the given destination into the frame of the specified component, and then calls `MoveToPosition` on that component to move it to the desired location.
-As of April 21, 2023, [arms](/components/arm/) are the only component supported by `MoveSingleComponent`.
+As of April 25, 2023, [arms](/components/arm/) are the only component supported by `MoveSingleComponent`.
 
 As the name of the method suggests, only the single component specified by `component_name` will actuate.
 
@@ -195,7 +194,7 @@ Implement `MoveToPosition` on that arm using whatever method you desire to plan 
 
 {{% alert title="Note" color="note" %}} <a id="move-vs-movetoposition">
 
-If this method is called with an arm that uses Viam’s motion planning on the backend, then this method is equivalent to using `robot.TransformPose` to transform the destination into the frame of the arm, and then calling [`MoveToPosition`](/components/arm/#movetoposition) on the arm directly.
+If you call this method on an arm that uses Viam’s motion planning on the backend, then this method is equivalent to using `robot.TransformPose` to transform the destination into the frame of the arm, and then calling [`MoveToPosition`](/components/arm/#movetoposition) on the arm directly.
 Note that `arm.MoveToPosition` does not use `world_state`, so collision checking and obstacle avoidance *will not* be performed.
 
 If you need collision checking and obstacle avoidance, use [`Move`](#move).

@@ -6,7 +6,8 @@ type: "docs"
 description: "Configure constraints to specify certain types of motion."
 ---
 
-You can control the motion of your robot using the Motion Service's built-in constraint options.
+You can constrain the motion of your robot using the Motion Service's built-in constraint options.
+Constraints are passed as arguments to the [`Move`](../#move) method.
 
 Available constraints all control the topological movement of the moving component along its path.
 
