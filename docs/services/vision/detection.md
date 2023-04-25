@@ -8,7 +8,7 @@ tags: ["vision", "computer vision", "CV", "services", "detection"]
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.3.0 and API v0.2.0](/appendix/release-notes/#2-may-2023)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/release-notes/#25-april-2023)_
 
 _2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct "objects" of interest in the scene.
 Any camera that can return 2D images can use 2D object detection.

@@ -8,7 +8,7 @@ tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.3.0 and API v0.2.0](/appendix/release-notes/#2-may-2023)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/release-notes/#25-april-2023)_
 
 _3D Object Segmentation_ is the process of separating and returning a list of the identified "objects" from a 3D scene.
 The "objects" are a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinates of the object.
