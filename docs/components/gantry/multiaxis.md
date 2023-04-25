@@ -183,7 +183,7 @@ Edit and fill in the attributes as applicable.
             }
         },
         {
-            "name": "test",
+            "name": "my_multiaxis_gantry",
             "type": "gantry",
             "model": "multiaxis",
             "attributes": {
