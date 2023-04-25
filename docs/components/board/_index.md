@@ -83,9 +83,12 @@ Supported board models include:
 ### `analogs`
 
 An [analog-to-digital converter](https://www.electronics-tutorials.ws/combination/analogue-to-digital-converter.html) (ADC) takes a voltage input (analog signal) and converts it to an integer output (digital signal).
-<!-- TODO: Why can this be useful? -->
+ADCs are quite useful when building a robot, as they allow your board to be able to read the analog signals output by most types of [sensor](/components/sensor/) and other hardware components.
 
-To integrate an ADC into your robot, configure the connection between your ADC and your board `"analogs"`  in the `"attributes"` of your board:
+- To integrate an ADC into your robot, you must physically connect the pins on your ADC and on your board.
+- A [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all) is useful and wiring with [SPI](#spis) is often necessary for the two devices to be able to communicate.
+
+Then, configure this connection in the `"attributes"` of your board as follows:
 
 {{< tabs name="Configure an Analog Reader" >}}
 {{% tab name="JSON Template" %}}
@@ -152,27 +155,13 @@ The following properties are available for `analogs`:
 |`spi_bus` | string | Optional | `name` of the [SPI bus](#spi) connecting the ADC and board. Required if your board must communicate with the ADC with the SPI protocol. |
 | `average_over_ms` | int | Optional | Duration in milliseconds over which the rolling average of the analog input should be taken. |
 |`samples_per_sec` | int | Optional | Sampling rate of the analog input in samples per second. |
-<!-- 
-
-Some boards like Numato have built-in ADCs which makes configuration more straightforward.
-
-Some boards (such as Raspberry Pi) communicate with the ADC over SPI so both analog and SPI must be configured.
-
-TODO: Need to make a note of this somewhere: NOT GPIO NUMBER
-
-ALSO TODO: Better explanation of `chip_select` attribute // how connection between board and ADC is made
-
-And what is AnalogSmoother?? re **average_over_ms** (int) and **samples_per_sec** (int): Together these
-allow for the use of AnalogSmoother.
- -->
 
 ### `digital_interrupts`
 
-Digital interrupts are useful when your code needs to be notified
-immediately anytime there is a change in GPIO value.
-When an interrupt configured on your board processes 
-<!-- Contrast this with running the `Get` method on a GPIO pin only at specific times when you want to know its value, which you can do without configuring interrupts; you only need to call `Get` on the name yielded by `GPIOPinByName`. 
-TODO: this needs more info about digital interrupts-->
+Digital interrupts are useful when your application needs to know precisely when there is a change in GPIO value between high and low.
+
+- When an interrupt configured on your board processes a change in the state of the GPIO pin it is configured to monitor, it "knocks on the door" with [`Tick()`](#tick).
+- Calling [`Get()`](#get) on a GPIO pin, which you can do without configuring interrupts, is great when you want to know a pin's value at specific points, but is less precise and convenient than using an interrupt.
 
 Integrate `digital_interrupts` into your robot in the `attributes` of your board as follows:
 
@@ -224,38 +213,30 @@ The following properties are available for `digital_interrupts`:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the digital interrupt. |
-|`pin`| string | **Required** | The pin number on the board you wish to configure the digital interrupt for. |
-|`type`| string | Optional | Set `type` to `"basic"` to count the number of interrupts that occur. Set `type` to `"servo"` to count the average time between the interrupts (akin to pulse width). |
-<!-- |`formula` | string | Optional | A mathematical function you wish to apply to the input. | -->
-<!-- TODO: Can maybe have a terminology section to link to on this page including like pin number? pinout diagrams? 
-
-also need to find an example usage for formula.
-and what is the default for type? 
--->
-<!-- 
-### Communication Protocols
-
-Boards can communicate with other hardware components in a few different ways.
-
-Some devices only require basic GPIO pins whereas others require more specialized methods.
-For example, the TMC5072 stepper motor microcontroller requires SPI bus communication
-The following are brief descriptions of each protocol Viam supports, as well as the corresponding configuration information. -->
+|`pin`| string | **Required** | The pin number of the board's GPIO pin that you wish to configure the digital interrupt for. |
+|`type`| string | Optional | <ul><li>`basic`: Recommended. Tracks interrupt count. </li> <li>`servo`: For interrupts configured for a pin controlling a [servo](/components/servo). Tracks pulse width value. </li></ul> |
 
 ### `spis`
 
-[Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) is a serial communication protocol that uses [several wires](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi) to exchange information between a controller and peripheral devices:
+[Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) is a serial communication protocol that uses four [signal wires](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi) to exchange information between a controller and peripheral devices:
 
-- Main Out / Secondary In (MOSI)
-- Main In / Secondary Out (MISO)
-- Clock: An oscillating signal line (SCLK)
-- Chip Select: 1 line for each peripheral connected to controller (CS*)
+- Main Out/Secondary In: MOSI
+- Main In/Secondary Out: MISO
+- Clock, an oscillating signal line: SCLK
+- Chip Select, with 1 line for each peripheral connected to controller: CS*
 
-To physically set up a connection between your board (as the controller) and a component (as the peripheral device)--for example: a [TMC5072 stepper motor](/components/motor/#TMC5072)--you can wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
+To connect your board (controller) and a [component](/components) that requires SPI communication (peripheral device), wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
+
+{{% alert title="Caution" color="caution" %}}
 
 You must also enable SPI on your board if it is not enabled by default.
-Refer to your [board model's configuration instructions](#configuration) for instructions on this, if applicable.
+See your [board model's configuration instructions](#configuration) if applicable.
 
-Then, as boards have CS pins internally configured to correspond with SPI bus indexes, all you need to do to enable this connection in your board's configuration `"attributes"` is specify the index of the bus and give it a name:
+{{% /alert %}}
+
+As supported boards have CS pins internally configured to correspond with SPI bus indices, you can enable this connection in your board's configuration by specifying the index of the bus at your CS pin's location and giving it a name.
+
+Integrate `spis` into your robot in the `attributes` of your board as follows:
 
 {{< tabs name="Configure a SPI Bus" >}}
 {{% tab name="JSON Example" %}}
@@ -294,20 +275,31 @@ The following attributes are available for `spis`:
 
 {{% alert title="WIRING WITH SPI" color="tip" %}}
 
-Refer to your board's pinout diagram or data sheet for SPI bus indexes and corresponding chip select pin numbers, as well as MOSI, MISO, and SCLK pin numbers.
+Refer to your board's pinout diagram or data sheet for SPI bus indexes and corresponding CS/MOSI/MISO/SCLK pin numbers.
 
-Refer to your peripheral device's data sheet for MOSI/MISO/SLCK/CS pin layouts.
+Refer to your peripheral device's data sheet for CS/MOSI/MISO/SLCK pin layouts.
 
 {{% /alert %}}
 
 ### `i2cs`
 
-The inter-integrated circuit (I2C) serial communication protocol is similar to SPI, but requires only two signal wires to exchange information between the controller and the peripheral: serial data (SDA) and serial clock (SCL).
+The [Inter-Integrated circuit (I2C)](https://learn.sparkfun.com/tutorials/i2c/all) serial communication protocol is similar to SPI, but requires only two signal wires to exchange information between a controller and a peripheral device:
 
-Some boards that support I2C have the SDA and SCL pins configured by default, so in your config file you need only specify which I2C bus you are using.
+- Serial Data: SDA
+- Serial Clock: SCL
+
+To connect your board (controller) and a [component](/components) that requires I2C communication (peripheral device), wire a connection between SDA and SCL pins on the board and component.
+
+{{% alert title="Caution" color="caution" %}}
 
 You must also enable I2C on your board if it is not enabled by default.
-Refer to your [board model's configuration instructions](#configuration) for instructions on this, if applicable.
+See your [board model's configuration instructions](#configuration) if applicable.
+
+{{% /alert %}}
+
+As supported boards have SDA and SCL pins internally configured to correspond with I2C bus indices, you can enable this connection in your board's configuration by specifying the index of the bus and giving it a name.
+
+Integrate `i2cs` into your robot in the `attributes` of your board as follows:
 
 ```json {class="line-numbers linkable-line-numbers"}
 // "attributes": { ... ,
@@ -326,16 +318,15 @@ The following properties are available for `i2cs`:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name`| string| Required | `name` of the I2C bus. |
-|`bus_select`| int | Required | The index of the I2C bus. Refer to your board's pinout diagram for I2C bus indexes and corresponding pin numbers. |
+|`bus_select`| int | Required | The index of the I2C bus. |
 
 {{% alert title="WIRING WITH I2C" color="tip" %}}
 
-Refer to your board's pinout diagram or data sheet for I2C bus indexes and corresponding chip select pin numbers, as well as SDA and SCL pin numbers.
+Refer to your board's pinout diagram or data sheet for I2C bus indexes and corresponding SDA/SCL pin numbers.
 
-Refer to your peripheral device's data sheet for CS/SDA/SCL pin layouts.
+Refer to your peripheral device's data sheet for SDA/SCL pin layouts.
 
 {{% /alert %}}
-<!-- Usually a number. Raspberry Pi recommends using bus `1`. See your board's data sheet for specifics on its I2C wiring. -->
 
 ## Control your board with Viam's client SDK libraries
 
@@ -386,7 +377,7 @@ Get an [`AnalogReader`](#analogs) by `name.`
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_by_name).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the AnalogReader "my_example_analog_reader".
 reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
@@ -433,7 +424,9 @@ Get an [`DigitalInterrupt`](#digital_interrupts) by `name.`
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_by_name).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name=
+
+)
 
 # Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
@@ -480,7 +473,7 @@ Get a `GPIOPin` by its pin number.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.gpio_pin_by_name).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
 pin = await my_board.GPIO_pin_by_name(name="15")
@@ -528,7 +521,7 @@ Get the name of every [`AnalogReader`](#analogs) configured and residing on the 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_names).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the name of every AnalogReader configured on the board.
 names = await my_board.analog_reader_by_name()
@@ -575,7 +568,7 @@ Get the name of every [`DigitalInterrupt`](#digital_interrupts) configured on th
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_names).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the name of every DigitalInterrupt configured on the board.
 names = await my_board.digital_interrupt_names()
@@ -623,7 +616,7 @@ Get the current status of the board as a `BoardStatus`.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.status).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the current status of the board.
 status = await my_board.status()
@@ -679,7 +672,7 @@ Set the board to the indicated `PowerMode`.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.set_power_mode).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Set the power mode of the board to OFFLINE_DEEP.
 status = await my_board.set_power_mode(mode=PowerMode.POWER_MODE_OFFLINE_DEEP)
@@ -735,7 +728,7 @@ If `false`, set the state of the pin to low.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
 pin = await my_board.GPIO_pin_by_name(name="15")
@@ -793,7 +786,7 @@ If `false`, the state of the pin is set to low.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
 pin = await my_board.GPIO_pin_by_name(name="15")
@@ -858,7 +851,7 @@ Get the pin's [Pulse Width Modulation (PWM) duty cycle](https://learn.sparkfun.c
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get_pwm).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
 pin = await my_board.GPIO_pin_by_name(name="15")
@@ -916,7 +909,7 @@ If `false`, the state of the pin is set to low.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set_pwm).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
 pin = await my_board.GPIO_pin_by_name(name="15")
@@ -974,7 +967,7 @@ Refer to your device's data sheet for PWM Frequency specifications.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get_pwm_frequency).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
 pin = await my_board.GPIO_pin_by_name(name="15")
@@ -1032,7 +1025,7 @@ Refer to your device's data sheet for PWM Frequency specifications.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set_pwm_frequency).
 
 ```python
-my_board = Board.from_robot(robot=robot, name='my_board')
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
 pin = await my_board.GPIO_pin_by_name(name="15")
@@ -1079,12 +1072,242 @@ Read the current integer value of the digital signal output by the [AnalogReader
 
 ### Value
 
-Get the current value of the [DigitalInterrupt](#digital_interrupts), which is based on the `"type"` specifed in [configuration](#configuration).
+Get the current value of this interrupt.
+If a post processor function has been added with [`AddPostProcessor()`](#addpostprocessor), it will be applied to this value before it is returned.
+
+Calculation of value differs between the `"type"` of interrupt [configured](#digital_interrupts):
+
+{{< tabs >}}
+{{% tab name="Basic" %}}
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `count` [(int)](https://docs.python.org/3/library/functions.html#int) The amount of [Ticks](#tick) that have occurred.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.value).
+
+```python
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+
+# Get the amount of times this DigitalInterrupt has been interrupted with a tick.
+count = await interrupt.value()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `count` [(int64)](https://pkg.go.dev/builtin#int64): The amount of [Ticks](#tick) that have occurred.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#BasicDigitalInterrupt).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+
+// Get the amount of times this DigitalInterrupt has been interrupted with a tick.
+count, err := interrupt.Value(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% /tab %}}
+{{% tab name="Servo" %}}
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- `rolling_avg` [(int)](https://docs.python.org/3/library/functions.html#int) The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.value).
+
+```python
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+
+# Get the rolling average of the pulse width across each time the DigitalInterrupt is interrupted with a tick.
+rolling_avg = await interrupt.value()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- `rolling_avg`[(int64)](https://pkg.go.dev/builtin#int64): The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ServoDigitalInterrupt).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+
+// Get the rolling average of the pulse width across each time the DigitalInterrupt is interrupted with a tick.
+rolling_avg, err := interrupt.Value(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 ### Tick
 
-Trigger the interrupt.
-Implement this method into your code either for testing or if the interrupt is a proxy to some real hardware interrupt.
+{{% alert title="Caution" color="caution" %}}
+You should only need to integrate this method into your application code for testing purposes, as the handling of `Tick()` should be automated once the interrupt is configured.
+{{% /alert %}}
+
+Record an interrupt.
+
+The way `Tick()` is triggered differs between the `type` of interrupt [configured](#digital_interrupts):
+
+{{< tabs >}}
+{{% tab name="Basic" %}}
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high, and the [`Value()`](#value) of the interrupt should increase.
+If `false`, the state of the pin is set to low.
+- `nanos` [(int)](https://docs.python.org/3/library/functions.html#int): The time that has elapsed in nanoseconds since the last time the interrupt was ticked.
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.tick).
+
+```python
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+
+# Record an interrupt and notify any interested callbacks.
+await interrupt.tick(high=true, nanos=12345)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high, and the [`Value()`](#value) of the interrupt should increase.
+If `false`, the state of the pin is set to low.
+- `now` [(uint64)](https://pkg.go.dev/builtin#uint64): The time that has elapsed in nanoseconds since the last time the interrupt was ticked.
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#BasicDigitalInterrupt).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+
+// Record an interrupt and notify any interested callbacks.
+count, err := interrupt.Tick(context.Background(), true, 12345)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% /tab %}}
+{{% tab name="Servo" %}}
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
+If `false`, the state of the pin is set to low.
+- `nanos` [(int)](https://docs.python.org/3/library/functions.html#int): The time in nanoseconds between two successive low signals (pulse width).
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.tick).
+
+```python
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+
+# Record an interrupt and notify any interested callbacks.
+await interrupt.tick(high=true, nanos=12345)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
+If `false`, the state of the pin is set to low.
+- `nanoseconds` [(uint64)](https://pkg.go.dev/builtin#uint64): The time in nanoseconds between two successive low signals (pulse width).
+
+**Returns:**
+
+- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ServoDigitalInterrupt).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+
+// Record an interrupt and notify any interested callbacks.
+err := interrupt.Tick(context.Background(), true, 12345)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 ### AddCallback
 
