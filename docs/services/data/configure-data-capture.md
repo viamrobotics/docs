@@ -15,10 +15,8 @@ To capture data from one or more robots, you must first add the [Data Management
 2. At the bottom of the page you can create a service.
    Choose `Data Management` as the type and specify a name for your Data Management Service, for example `data-manager`.
 3. Then click `Create Service`.
-4. On the panel that appears, you can manage the capturing and syncing functions individually.
-   The Data Management Service captures data every 0.1 minutes, that is every 6 seconds, in the `~/.viam/capture` directory by default.
-
-   You can change the interval and directory.
+4. On the panel that appears, you can manage the capturing and syncing functions individually and specify the interval and directory.
+   If the capture frequency or the directory is not specified, the Data Management Service captures data at the default frequency every 0.1 minutes that is every 6 seconds in the default `~/.viam/capture` directory.
 
    {{< alert title="Info" color="info" >}}
    If you change the directory for data capture only new data is stored in the new directory.
@@ -39,7 +37,7 @@ To capture data from one or more robots, you must first add the [Data Management
       "type": "data_manager",
       "attributes": {
         "sync_interval_mins": 1,
-        "capture_dir": "~/.viam/capture"
+        "capture_dir": ""
       }
     }
   ]
@@ -88,7 +86,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
       "type": "data_manager",
       "attributes": {
         "sync_interval_mins": 5,
-        "capture_dir": "~/.viam/capture",
+        "capture_dir": "",
         "sync_disabled": false
       }
     }
@@ -191,7 +189,7 @@ The following example captures data from two analog readers that provide a volta
   "services": [
     {
       "attributes": {
-        "capture_dir": ".viam/capture",
+        "capture_dir": "",
         "sync_disabled": true,
         "sync_interval_mins": 5
       },
