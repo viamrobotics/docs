@@ -68,6 +68,7 @@ Robot [configuration](robots/#configuration) and Robot [code](#control-with-code
 Everyone who has access to the location the robot is in, can change the robot's configuration.
 When you or your collaborators change a robot's configuration, the robot will automatically reconfigure itself within 15 seconds.
 You can see configuration changes from yourself or your collaborators on the [History tab](robots/#history).
+You can also revert to an earlier configuration from the History tab.
 
 {{< alert title="Note" color="note" >}}
 Configuration may require physical access to the robot.
