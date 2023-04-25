@@ -1414,7 +1414,7 @@ interrupt.add_callback(callback_queue)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
-```go
+```go {class="line-numbers linkable-line-numbers"}
 myBoard, err := board.FromRobot(robot, "my_board")
 
 // Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
@@ -1423,6 +1423,11 @@ pin, err := myBoard.GPIOPinByName("15")
 // Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
 ```
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+Hello.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1456,6 +1461,9 @@ pin, err := myBoard.GPIOPinByName("15")
 interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
 ```
 
+{{% /tab %}}
+{{< /tabs >}}
+
 <!-- NOT IMPLEMENTED: see https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/board/client.py#L66
 
 **Parameters:**
@@ -1475,11 +1483,10 @@ my_board = Board.from_robot(robot=robot, name="my_board")
 # Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
 ```
- -->
 
-<!-- TODO: Will do something with this but not in this format. API documentation may be sufficient. Could make subpage.  -->
+ TODO: Will do something with this but not in this format. API documentation may be sufficient. Could make subpage.  
 
-<!-- #### GPIO
+#### GPIO
 
 Essentially all electrical signals sent from and received by your board go through GPIO pins.
 It is important to understand some of what they can do and how to use them.
@@ -1516,9 +1523,6 @@ This turns the LED connected to pin 8 on.
 These code snippets expect you to have a board named "local" configured as a component of your robot, and an LED connected to pin 8.
 {{% /alert %}}
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.board import Board
 
@@ -1532,9 +1536,6 @@ await asyncio.sleep(1)
 # When False, sets the pin to low/off.
 await led.set(False)
 ```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
@@ -1562,8 +1563,7 @@ time.Sleep(1 * time.Second)
 
 // When false, sets the LED pin to low/off.
 led.Set(context.Background(), false, nil)
-```
- -->
+``` -->
 
 ## Troubleshooting
 
