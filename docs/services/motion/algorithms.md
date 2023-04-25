@@ -24,7 +24,8 @@ It creates paths which conform to specified constraints, and attempts to smooth 
 By default, it does not constrain the path of motion at all.
 This is to ensure that paths will be found when using defaults.
 CBiRRT returns the first valid path that it finds.
-The CBiRRT algorithm Viam uses is based on the algorithm described in this paper: <https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf>
+The CBiRRT algorithm Viam uses is based on the algorithm described in the paper [Manipulation Planning on Constraint Manifolds](https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf)
+
 
 ---
 

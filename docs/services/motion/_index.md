@@ -40,7 +40,7 @@ Method Name | Description
 
 {{% alert title="Note" color="note" %}}
 
-The code examples below assume that you have a robot configured with a gripper, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+The following code examples assume that you have a robot configured with a gripper, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}
@@ -67,7 +67,7 @@ The volumes associated with all configured robot components (local and remote) w
   For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
 
 - `destination` ([PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)):
-  Describes where the `component_name` should end up.
+  Describes where the `component_name` frame should be moved to.
   Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/).
 
   Note that the destination pose is relative to the distal end of the specified frame.
@@ -81,7 +81,7 @@ The volumes associated with all configured robot components (local and remote) w
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles with mobile parents move along with their parents while solving.
-      This ensures that obstacles that are temporarily attached to moving components do not cause collisions during movement.
+      This ensures that obstacles that are attached to moving components do not cause collisions during movement.
     - Geometries are "part of" their frame, rather than at the distal end of the frame.
       Their poses are relative to the *origin* of the specified frame.
       A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
@@ -367,7 +367,7 @@ gripperName = Gripper.get_resource_name("myGripper")
 gripperPoseInWorld = await robot.get_pose(component_name=gripperName, destination_frame="world")
 ```
 
-For a more complicated example, let's take the same scenario and get the pose of the same gripper with respect to an object situated at a location (100, 200, 0) relative to the "world" frame:
+For a more complicated example, take the same scenario and get the pose of the same gripper with respect to an object situated at a location (100, 200, 0) relative to the "world" frame:
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
