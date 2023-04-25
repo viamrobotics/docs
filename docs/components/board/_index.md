@@ -22,7 +22,7 @@ Configure a board component on your robot to control and read from the other har
 
 A robot's board component has general purpose input/output (GPIO) pins.
 As the name suggests, these pins can be inputs or outputs, and can be set high or low--that is, turned on or off--and thus used to signal (or read signals from) other hardware.
-Many GPIO implementations also support [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation), or can be used as more advanced signaling systems such as [I2C](#i2c), [SPI](#spi-bus), or UART/Serial.
+Many GPIO implementations also support [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation), or can be used as more advanced signaling systems such as [I2C](#i2cs), [SPI](#spis), or UART/Serial.
 
 #### What can I use as my board?
 
@@ -69,9 +69,9 @@ Supported board models include:
 | [`beaglebone`](beaglebone) | [BeagleBoard's BeagleBone AI 64](https://beagleboard.org/ai-64) |
 | [`jetson`](jetson) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), [NVIDIA Jetson  Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
 | [`nanopi`](nanopi) | [FriendlyElec’s NanoPi Mini Board](https://www.friendlyelec.com/index.php?route=product/category&path=69) |
-| [`numato`](numato) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding [GPIO pins](#gpio-pins) |
+| [`numato`](numato) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
 | [`pca9685`](pca9685) | [PCA9685 Arduino I2C Interface](https://www.adafruit.com/product/815), a 16-channel [I2C](#i2cs) [servo](/components/servo) driver peripheral |
-| [`fake`](fake) | A model used for testing, with no physical hardware. |
+| [`fake`](fake) | A model used for testing, with no physical hardware |
 <!-- Could consider adding another column for Pi, Jetsons, TI -> PINOUT diagram section? 
 
 - https://pinout.xyz/pinout/spi 
@@ -152,7 +152,7 @@ The following properties are available for `analogs`:
 |`name` | string | **Required** | Your name for the analog reader. |
 |`pin`| string | **Required** | The pin number of the ADC's connection pin, wired to the board.
 |`chip_select`| string | **Required** | The pin number of the board's connection pin, wired to the ADC. |
-|`spi_bus` | string | Optional | `name` of the [SPI bus](#spi) connecting the ADC and board. Required if your board must communicate with the ADC with the SPI protocol. |
+|`spi_bus` | string | Optional | `name` of the [SPI bus](#spis) connecting the ADC and board. Required if your board must communicate with the ADC with the SPI protocol. |
 | `average_over_ms` | int | Optional | Duration in milliseconds over which the rolling average of the analog input should be taken. |
 |`samples_per_sec` | int | Optional | Sampling rate of the analog input in samples per second. |
 
@@ -357,7 +357,7 @@ Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` inter
 
 | [`GPIOPin` API](#gpiopin-api) | [`AnalogReader` API](#analogreader-api) | [`DigitalInterrupt` API](#digitalinterrupt-api) |
 |--|--|--|
-|<table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Set](#set)</td><td>...</td></tr><tr><td>[Get](#get)</td><td>....</td></tr><tr><td>[PWM](#getpwm)</td><td>...</td></tr><tr><td>[SetPWM](#setpwm)</td><td>...</td></tr><tr><td>[PWMFreq](#pwmfreq)</td><td>...</td></tr><tr><td>[SetPWMFreq](#setpwmfreq)</td><td>...</td></tr> </table>| <table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Read](#read)</td><td>...</td></tr> </table>| <table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Value](#value)</td><td>...</td></tr><tr><td>[Tick](#tick)</td><td>...</td></tr><tr><td>[AddCallback](#addcallback)</td><td>...</td></tr><tr><td>[AddPostProcessor](#addpostprocessor)</td><td>...</td></tr> </table>|
+|<table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Set](#set)</td><td>...</td></tr><tr><td>[Get](#get)</td><td>....</td></tr><tr><td>[PWM](#pwm)</td><td>...</td></tr><tr><td>[SetPWM](#setpwm)</td><td>...</td></tr><tr><td>[PWMFreq](#pwmfreq)</td><td>...</td></tr><tr><td>[SetPWMFreq](#setpwmfreq)</td><td>...</td></tr> </table>| <table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Read](#read)</td><td>...</td></tr> </table>| <table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Value](#value)</td><td>...</td></tr><tr><td>[Tick](#tick)</td><td>...</td></tr><tr><td>[AddCallback](#addcallback)</td><td>...</td></tr><tr><td>[AddPostProcessor](#addpostprocessor)</td><td>...</td></tr> </table>|
 
 ### AnalogReaderByName
 
@@ -1406,7 +1406,7 @@ interrupt.add_callback(callback_queue)
 
 **Parameters:**
 
-- `callback` [channel](https://go.dev/tour/concurrency/2): 
+- `callback` [channel](https://go.dev/tour/concurrency/2): TODO Channel Description & Usage Code
 
 **Returns:**
 
@@ -1442,7 +1442,6 @@ Functions added to an interrupt will be applied to values before they are return
 
 **Parameters:**
 
-- `queue` [(Tick)](https://pkg.go.dev/go.viam.com/rdk/components/board#Tick): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `processor` [(PostProcessor)](https://pkg.go.dev/go.viam.com/rdk/components/board#PostProcessor): The post processor function to add.
 
 **Returns:**
