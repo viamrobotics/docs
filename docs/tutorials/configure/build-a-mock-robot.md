@@ -106,10 +106,7 @@ The easiest way to get started writing an application with Viam is to navigate t
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 Next, paste that boilerplate code from the **code sample** tab of the Viam app into a file named <file>index.py</file> or <file>index.go </file>file in your code editor, and save your file.
 
-{{% alert title="Caution" color="caution" %}}
-Do not share your robot secret or robot address publicly.
-Sharing this information compromises your system security by allowing unauthorized access to your computer.
-{{% /alert %}}
+{{< readfile "/static/include/snippet/secret-share.md" >}}
 
 You can now run the code.
 Doing so verifies that the Viam SDK is properly installed, that the `viam-server` instance on your robot is live, and that the computer running the program is able to connect to that instance.

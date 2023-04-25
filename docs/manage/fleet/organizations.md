@@ -3,7 +3,7 @@ title: "Manage Organizations"
 linkTitle: "Organizations"
 weight: 30
 type: "docs"
-description: "An organization is a group of one or more locations that helps you organize your fleet."
+description: "An organization is a group of one or more locations that helps you organize your fleet and who has access to your fleet."
 tags: ["fleet management", "cloud", "app"]
 ---
 

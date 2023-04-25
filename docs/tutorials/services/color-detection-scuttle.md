@@ -71,10 +71,7 @@ Viam pre-populates the **code sample** tab with the robot name, address, and sec
 
 ![Remote configuration JSON](../../img/color-rdk-remote-cfg.png)
 
-{{% alert title="Caution" color="caution" %}}
-Do not share your robot secret or robot address publicly.
-Sharing this information compromises your system security by allowing unauthorized access to your computer.
-{{% /alert %}}
+{{< readfile "/static/include/snippet/secret-share.md" >}}
 
 In your local copy of <file>scuttle.py</file>, paste your robot payload and address where indicated.
 Save the file.
