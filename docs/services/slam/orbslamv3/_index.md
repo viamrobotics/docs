@@ -23,7 +23,7 @@ Install the binary required to utilize `orbslamv3` on your machine and make it e
 {{% tab name="Linux aarch64" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
+sudo curl -o /usr/local/bin/orb_grpc_server https://storage.googleapis.com/packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
 
@@ -31,7 +31,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 {{% tab name="Linux x86_64" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/orb_grpc_server http://packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
+sudo curl -o /usr/local/bin/orb_grpc_server https://storage.googleapis.com/packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
 
