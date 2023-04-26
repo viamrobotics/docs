@@ -107,8 +107,8 @@ The following attributes are available for `gpio` motors:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | `name` of the [board](/components/board) to which the motor driver is wired. |
-| `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. |
-| `pins` | object | **Required** | A structure that holds pin configuration information. |
+| `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. ***Not required** or available for [encoded](/components/motor/gpio/encoded-motor/) `gpio` motors.* |
+| `pins` | object | **Required** | A structure that holds pin configuration information; [see below](#pins). |
 | `min_power_pct` | number | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
 | `max_power_pct` | number | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
@@ -118,40 +118,32 @@ The following attributes are available for `gpio` motors:
 
 Refer to your motor and motor driver data sheets for specifics.
 
-{{% alert title="Caution" color="caution" %}}
+## `pins`
 
-The attribute `max_rpm`is not required or available for [encoded](/components/motor/gpio/encoded-motor/) `gpio` motors.
+There are three common ways for your computer to communicate with a brushed DC motor driver chip.
+**Your motor driver data sheet will specify which one to use.**
 
-{{% /alert %}}
+- PWM/DIR: Two pins: One digital input (such as a GPIO pin) sends a [pulse width modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
+  - Configure `pwm` and `dir`.
+- In1/In2 (also known as A/B): Two pins: One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled with PWM through one or both pins.
+  - Configure `a` and `b`.
+- In1/In2 and PWM: Three pins: In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
+  - Configure `a`, `b`, and `pwm`.
 
-Nested within `pins`:
+Inside the `pins` struct you need to configure **two or three** of the following, depending on your motor driver:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `a` | string | **Required** | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-| `b` | string | **Required** | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-| `dir` | string | **Required** | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-| `pwm` | string | **Required** | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `a` | string | **Required** for some drivers | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `b` | string | **Required** for some drivers | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `dir` | string | **Required** for some drivers | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `pwm` | string | **Required** for some drivers | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
 
 {{% alert title="Note" color="note" %}}
 
-Only two or three of these `pins` attributes are required depending on your motor driver.
-See [Pin Information](#pin-information) below for more details.
+Only two or three of these `pins` attributes are required, depending on your motor driver.
 
-{{% /alert %}}
-
-#### Pin Information
-
-There are three common ways for the computing device to communicate with a brushed DC motor driver chip.
-The driver data sheet will specify which one to use.
-
-- PWM/DIR: One digital input (such as a GPIO pin) sends a [pulse width modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
-- In1/In2 (or A/B): One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled with PWM through one or both pins.
-- In1/In2 + PWM: Three pins: an In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
-
-{{% alert title="Note" color="note" %}}
-
-The PWM pin does not have to be configured for motor drivers that use only In1 and In2, and not a third PWM pin.
+If your motor drivers uses only In1 and In2, and not a third PWM pin, **do not configure a `pwm` pin**.
 
 {{% /alert %}}
 
