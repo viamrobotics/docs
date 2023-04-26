@@ -38,91 +38,13 @@ Supported base models include:
 
 ## Control your base with Viam's client SDK libraries
 
-- [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/base/index.html)
-- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/base)
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
 
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
+When executed, this sample code will create a connection to your robot as a client.
+Then control your robot programmatically by adding API method calls as shown in the following examples.
 
-The following example assumes you have a wheeled base called "my_base" configured as a component of your robot.
-If your base has a different name, change the `name` in the example.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.base import BaseClient
-from viam.proto.common import Vector3
-
-async def main():
-    # Connect to your robot.
-    robot = await connect()
-
-    # Log an info message with the names of the different resources that are connected to your robot.
-    print('Resources:')
-    print(robot.resource_names)
-
-    # Connect to your base.
-    my_base = BaseClient.from_robot(robot=robot, name='my_base')
-
-    # Disconnect from your robot.
-    await robot.close()
-
-if __name__ == '__main__':
-    asyncio.run(main())
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "context"
-
-  "github.com/edaniels/golog"
-
-  "go.viam.com/rdk/components/base"
-  "github.com/golang/geo/r3"
-)
-
-func main() {
-
-  // Create an instance of a logger.
-  logger := golog.NewDevelopmentLogger("client")
-
-  // Connect to your robot.
-  robot, err := client.New(
-      context.Background(),
-      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE SECURITY TAB OF THE VIAM APP]",
-      logger,
-      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-          Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE LOCATION'S PAGE IN THE VIAM APP]",
-      })),
-  )
-
-  // Log any errors that occur.
-  if err != nil {
-      logger.Fatal(err)
-  }
-
-  // Delay closing your connection to your robot until main() exits.
-  defer robot.Close(context.Background())
-
-  // Log an info message with the names of the different resources that are connected to your robot.
-  logger.Info("Resources:")
-  logger.Info(robot.ResourceNames())
-
-  // Connect to your base.
-  myBase, err := base.FromRobot(robot, "my_base")
-  if err != nil {
-    logger.Fatalf("cannot get base: %v", err)
-  }
-
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+These examples assume you have a wheeled base called `"my_base"` configured as a component of your robot.
+If your base has a different name, change the `name` in the code.
 
 ## API
 
@@ -158,13 +80,13 @@ Negative implies backwards.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight).
 
 ```python {class="line-numbers linkable-line-numbers"}
-myBase = BaseClient.from_robot(robot=robot, name='my_base')
+my_base = BaseClient.from_robot(robot=robot, name="my_base")
 
 # Move the base 10 mm at a velocity of 1 mm/s, forward.
-await myBase.move_straight(distance=10, velocity=1)
+await my_base.move_straight(distance=10, velocity=1)
 
 # Move the base 10 mm at a velocity of -1 mm/s, backward.
-await myBase.move_straight(distance=10, velocity=-1)
+await my_base.move_straight(distance=10, velocity=-1)
 ```
 
 {{% /tab %}}
@@ -222,7 +144,7 @@ Negative implies backwards.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = BaseClient.from_robot(robot=robot, name='my_base')
+my_base = BaseClient.from_robot(robot=robot, name="my_base")
 
 # Spin the base 10 degrees at an angular velocity of 1 deg/sec.
 await my_base.spin(angle=10, velocity=1)
@@ -284,7 +206,7 @@ Set the linear and angular power of the base, represented as a percentage of max
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = BaseClient.from_robot(robot=robot, name='my_base')
+my_base = BaseClient.from_robot(robot=robot, name="my_base")
 
 # Make your wheeled base move forward. Set linear power to 75%.
 print("move forward")
@@ -381,7 +303,7 @@ Only the Y component of the vector is used for a wheeled base.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = BaseClient.from_robot(robot=robot, name='my_base')
+my_base = BaseClient.from_robot(robot=robot, name="my_base")
 
 # Set the angular velocity to 1 mm/sec and the linear velocity to 1 degree/sec.
 await my_base.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z=1))
@@ -436,7 +358,7 @@ Stop the base from moving immediately.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = BaseClient.from_robot(robot=robot, name='my_base')
+my_base = BaseClient.from_robot(robot=robot, name="my_base")
 
 # Move the base forward 10 mm at a velocity of 1 mm/s.
 await my_base.move_straight(distance=10, velocity=1)

@@ -61,81 +61,13 @@ Supported arm models include:
 
 ## Control your arm with Viam's client SDK libraries
 
-The following example assumes you have an arm called "my_arm" configured as a component of your robot.
-If your arm has a different name, change the `name` in the example.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
 
-{{< tabs >}}
-{{% tab name="Python" %}}
+When executed, this sample code will create a connection to your robot as a client.
+Then control your robot programmatically by adding API method calls as shown in the following examples.
 
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.arm import Arm, JointPositions
-from viam.proto.common import Pose
-
-async def main():
-
-  # Connect to your robot.
-  robot = await connect() # Define a function to connect to your robot: see the CODE SAMPLE tab of your robot's page in app.viam.com.
-
-  # Log an info message with the names of the different resources that are connected to your robot.
-  print('Resources:')
-  print(robot.resource_names)
-
-  # Get your arm from your robot.
-  my_arm = Arm.from_robot(robot=robot, name='my_arm')
-
-  # Disconnect from your robot.
-  await robot.close()
-
-if __name__ == '__main__':
-    asyncio.run(main())
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "context"
-  "github.com/edaniels/golog"
-
-  "go.viam.com/rdk/components/arm"
-  "go.viam.com/rdk/referenceframe"
-  "go.viam.com/rdk/spatialmath"
-
-  componentpb "go.viam.com/api/component/arm/v1"
-)
-
-func main() {
-
-  // Create an instance of a logger.
-  logger := golog.NewDevelopmentLogger("client")
-
-  // Define a function to connect to your robot: see the CODE SAMPLE tab of your robot's page in app.viam.com.
-  robot, err := client.New( ... )
-
-  // Log any errors that occur.
-  if err != nil {
-      logger.Fatal(err)
-  }
-
-  // Delay closing your connection to your robot until main() exits.
-  defer robot.Close(context.Background())
-
-  // Log an info message with the names of the different resources that are connected to your robot.
-  logger.Info("Resources:")
-  logger.Info(robot.ResourceNames())
-
-  // Get your arm from your robot.
-  myArm, err := arm.FromRobot(robot, "my_arm")
-  if err != nil {
-    logger.Fatalf("cannot get arm: %v", err)
-  }
-
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+These examples assume you have an arm called `"my_arm"` configured as a component of your robot.
+If your arm has a different name, change the `name` in the code.
 
 ## API
 
@@ -173,7 +105,7 @@ Orientation is expressed as an orientation vector, which is represented by o_x, 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_end_position).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name="my_arm")
 
 # Get the end position of the arm as a Pose.
 pos = await my_arm.get_end_position()
@@ -238,7 +170,7 @@ Orientation is expressed as an orientation vector, which is represented by o_x, 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.move_to_position).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name="my_arm")
 
 # Create a Pose for the arm.
 examplePose = Pose(x=5, y=5, z=5, o_x=5, o_y=5, o_z=5, theta=20)
@@ -308,7 +240,7 @@ JointPositions can have one attribute, `values`, a list of joint positions with 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.move_to_joint_positions)
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name="my_arm")
 
 # Declare a list of values with your desired rotational value for each joint on the arm.
 degrees = [0.0, 45.0, 0.0, 0.0, 0.0]
@@ -375,7 +307,7 @@ JointPositions can have one attribute, `values`, a list of joint positions with 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_joint_positions)
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name="my_arm")
 
 # Get the current position of each joint on the arm as JointPositions.
 pos = await my_arm.get_joint_positions()
@@ -435,7 +367,7 @@ Stop all motion of the arm.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.stop).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name="my_arm")
 
 # Stop all motion of the arm. It is assumed that the arm stops immediately.
 await my_arm.stop()
@@ -486,7 +418,7 @@ Get if the arm is currently moving.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.is_moving).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name='my_arm')
+my_arm = Arm.from_robot(robot=robot, name="my_arm")
 
 # Stop all motion of the arm. It is assumed that the arm stops immediately.
 await my_arm.stop()
@@ -547,7 +479,7 @@ If you are implementing your own arm and add features that have no built-in API 
 - `result` (`Dict[str, Any]`): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot, "arm1")
+my_arm = Arm.from_robot(robot, "my_arm")
 
 command = {"cmd": "test", "data1": 500}
 result = my_arm.do(command)
@@ -569,7 +501,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-  myArm, err := arm.FromRobot(robot, "my arm")
+  myArm, err := arm.FromRobot(robot, "my_arm")
 
   command := map[string]interface{}{"cmd": "test", "data1": 500}
   result, err := myArm.DoCommand(context.Background(), command)

@@ -29,7 +29,7 @@ Most robots with a servo need at least the following hardware:
 {{% alert title="Note" color="note" %}}
 
 Instead of powering the servo with a separate power supply, you may choose to power it using the 5V and ground pins on the board.
-This can work, as long as the servo is not under any significant load.
+This can work as long as the servo is not under any significant load.
 Keep in mind that if the servo draws too much power, it can cause the board to temporarily lose power.
 
 {{% /alert %}}
@@ -108,91 +108,13 @@ The `gpio` model has the following attributes, which are optional to define in y
 
 ## Control your servo with Viam's client SDK libraries
 
-- [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/servo/index.html)
-- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/servo)
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
 
-{{% alert title="Note" color="note" %}}
+When executed, this sample code will create a connection to your robot as a client.
+Then control your robot programmatically by adding API method calls as shown in the following examples.
 
-The following example assumes you have a servo called "my_servo" configured as a component of your robot, and that your robot is connected on [the Viam app](https://app.viam.com/).
-If your servo has a different name, change the `name` in the example.
-
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
-
-{{% /alert %}}
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.servo import Servo
-
-async def main():
-    # Connect to your robot.
-    robot = await connect()
-
-    # Log an info message with the names of the different resources that are connected to your robot.
-    print('Resources:')
-    print(robot.resource_names)
-
-    # Connect to your servo.
-    my_servo = Servo.from_robot(robot=robot, name='my_servo')
-
-    # Disconnect from your robot.
-    await robot.close()
-
-if __name__ == '__main__':
-    asyncio.run(main())
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "context"
-  "github.com/edaniels/golog"
-  "go.viam.com/rdk/components/servo"
-)
-
-func main() {
-
-  // Create an instance of a logger.
-  logger := golog.NewDevelopmentLogger("client")
-
-  // Connect to your robot.
-  robot, err := client.New(
-      context.Background(),
-      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CODE SAMPLE TAB OF THE VIAM APP]",
-      logger,
-      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-          Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CODE SAMPLE TAB OF THE VIAM APP]",
-      })),
-  )
-
-  // Log any errors that occur.
-  if err != nil {
-      logger.Fatal(err)
-  }
-
-  // Delay closing your connection to your robot until main() exits.
-  defer robot.Close(context.Background())
-
-  // Log an info message with the names of the different resources that are connected to your robot.
-  logger.Info("Resources:")
-  logger.Info(robot.ResourceNames())
-
-  // Connect to your servo.
-  myServo, err := servo.FromRobot(robot, "my_servo")
-  if err != nil {
-    logger.Fatalf("cannot get servo: %v", err)
-  }
-
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+These examples assume you have a servo called `"my_servo"` configured as a component of your robot.
+If your servo has a different name, change the `name` in the code.
 
 ## API
 
@@ -238,7 +160,7 @@ It is recommended that you test your servo to determine the desired speed.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.move).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_servo = Servo.from_robot(robot=robot, name='my_servo')
+my_servo = Servo.from_robot(robot=robot, name="my_servo")
 
 # Move the servo from its origin to the desired angle of 10 degrees.
 await my_servo.move(10)
@@ -297,7 +219,7 @@ Get the current set angle of the servo in degrees.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.get_position).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_servo = Servo.from_robot(robot=robot, name='my_servo')
+my_servo = Servo.from_robot(robot=robot, name="my_servo")
 
 # Move the servo from its origin to the desired angle of 10 degrees.
 await my_servo.move(10)
@@ -329,9 +251,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 my_servo, err := servo.FromRobot(robot, "my_servo")
-if err != nil {
-  logger.Fatalf("cannot get servo: %v", err)
-}
 
 // Move the servo from its origin to the desired angle of 10 degrees.
 myServo.Move(context.Background(), 10, nil)
@@ -368,7 +287,7 @@ Stop the servo from moving.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.stop).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_servo = Servo.from_robot(robot=robot, name='my_servo')
+my_servo = Servo.from_robot(robot=robot, name="my_servo")
 
 # Move the servo from its origin to the desired angle of 10 degrees.
 await my_servo.move(10)
@@ -393,9 +312,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myServo, err := servo.FromRobot(robot, "my_servo")
-if err != nil {
-  logger.Fatalf("cannot get servo: %v", err)
-}
 
 // Move the servo from its origin to the desired angle of 10 degrees.
 myServo.Move(context.Background(), 10, nil)

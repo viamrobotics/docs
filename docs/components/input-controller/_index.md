@@ -44,499 +44,13 @@ Once you've configured your input controller according to model type, you can wr
 
 ## Control your robot with an input controller with Viam's client SDK libraries
 
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
 
-The following example assumes you have a controller called "my_controller" configured as a component of your robot.
-If your input controller has a different name, change the `name` in the example.
+When executed, this sample code will create a connection to your robot as a client.
+Then control your robot programmatically by adding API method calls as shown in the following examples.
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-``` python {class="line-numbers linkable-line-numbers"}
-from viam.components.input import Controller, Control, EventType
-from viam.robot.client import RobotClient
-
-# Define a function to connect to the robot.
-async def connect_controller():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload= "xyzabclocationexample"), # ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
-    )
-    return await RobotClient.at_address("robot123example.locationxyzexample.viam.com", # ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
-    opts)
-
-# Define a function to handle the controller.
-async def handleController(controller):
-
-    # Get the most recent events on the controller.
-    resp = await controller.get_events()
-
-    # Print the event, showing Control types.
-    print(f'Controls:\n{resp}')
-
-    # Use register_control_callback() to define how to handle Events from Controls.
-    ...
-
-async def main():
-
-    # Connect to your robot.
-    myRobotWithController = await connect_controller()
-
-    # Get your controller from the robot.
-    myController = Controller.from_robot(robot=myRobotWithController, name='my_controller')
-
-    # Log an info message with the names of the different resources that are connected to your robot.
-    print('Resources:')
-    print(myController.resource_names)
-
-    # Get the controller's Controls.
-    resp = await myController.get_controls()
-
-    # Print out the controller's Controls.
-    print(f'Controls:\n{resp}')
-
-    # Run the handleController function.
-    await handleController(myController)
-
-    # Wait to disconnect from the robot.
-    await myRobotWithController.close()
-
-if __name__ == '__main__':
-    asyncio.run(main())
-
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-    "context"
-
-    "github.com/edaniels/golog"
-    "github.com/pkg/errors"
-    "go.viam.com/rdk/components/input"
-    "go.viam.com/utils"
-    "golang.org/x/exp/slices"
-)
-
-// Define a function to handle the controller.
-func handleController(controller input.Controller) {
-    # Get the most recent events on the controller.
-    resp, err := controller.Events()
-
-    // Use RegisterControlCallback() to define how to handle Events from Controls.
-    ...
-}
-
-func main() {
-    utils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("client"))
-}
-
-
-func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
-
-    // Connect to your robot.
-    myRobotWithController, err := client.New(
-        context.Background(),
-        "xyzabclocationexample", // ADD YOUR LOCATION SECRET VALUE. This can be found in the Code Sample tab of app.viam.com.
-        logger,
-        client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-            Type:    utils.CredentialsTypeRobotLocationSecret,
-            Payload: "robot123example.locationxyzexample.viam.com" // ADD YOUR ROBOT REMOTE ADDRESS. This can be found in the Code Sample tab of app.viam.com.
-        })),
-    )
-
-    // Get the controller from the robot.
-    myController, err := input.FromRobot(myRobotWithController, "my_controller")
-
-    // Log any errors that occur and exit if an error is found.
-    if err != nil {
-        logger.Fatalf("cannot get controller: %v", err)
-    }
-
-    // Log an info message with the names of the different resources that are connected to your robot.
-    logger.Info("Resources:")
-    logger.Info(myRobotWithController.ResourceNames())
-
-    // Get the controller's Controls.
-    controls, err := myController.Controls(context.Background(), nil)
-
-    // Print out the controller's Controls.
-    logger.Info("Controls:")
-    logger.Info(resp)
-
-    // Log any errors that occur.
-    if err != nil {
-        logger.Fatal(err)
-    }
-
-    // Run the handleController function.
-    err := HandleController(myController)
-
-    // Delay closing your connection to your robot.
-    err = myRobotWithController.Start(ctx)
-    defer myRobotWithController.Close(ctx)
-
-    // Watch for errors.
-    if err != nil {
-        return err
-    }
-
-    // Wait to exit mainWithArgs() until Context is Done.
-    <-ctx.Done()
-
-    return nil
-
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% alert title="Note" color="note" %}}
-The `Controller` interface is defined in [the Viam RDK](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go).
-
-{{% /alert %}}
-
-For more examples see [Usage Examples](#usage-examples).
-
-## Types
-
-### Event Object
-
-Each `Event` object represents a singular event from the input device, and has four fields:
-
-1. `Time`: `time.Time` the event occurred.
-2. `Event`: `EventType` indicating the type of event (for example, a specific button press or axis movement).
-3. `Control`: `Control` indicating which [Axis](#axis-controls), [Button](#button-controls), or Pedal on the controller has been changed.
-4. `Value`: `float64` indicating the position of an [Axis](#axis-controls) or the state of a [Button](#button-controls) on the specified control.
-
-#### EventType Field
-
-A string-like type indicating the specific type of input event, such as a button press or axis movement.
-
-- To select for events of all type when registering callback function with [RegisterControlCallback](#registercontrolcallback), you can use `AllEvents` as your `EventType`.
-- The registered function is then called in addition to any other callback functions you've registered, every time an `Event` happens on your controller.
-This is useful for debugging without interrupting normal controls, or for capturing extra or unknown events.
-
-Registered `EventTypes` definitions:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-``` python {class="line-numbers linkable-line-numbers"}
-ALL_EVENTS = "AllEvents"
-"""
-Callbacks registered for this event will be called in ADDITION to other registered event callbacks.
-"""
-
-CONNECT = "Connect"
-"""
-Sent at controller initialization, and on reconnects.
-"""
-
-DISCONNECT = "Disconnect"
-"""
-If unplugged, or wireless/network times out.
-"""
-
-BUTTON_PRESS = "ButtonPress"
-"""
-Typical key press.
-"""
-
-BUTTON_RELEASE = "ButtonRelease"
-"""
-Key release.
-"""
-
-BUTTON_HOLD = "ButtonHold"
-"""
-Key is held down. This will likely be a repeated event.
-"""
-
-BUTTON_CHANGE = "ButtonChange"
-"""
-Both up and down for convenience during registration, not typically emitted.
-"""
-
-POSITION_CHANGE_ABSOLUTE = "PositionChangeAbs"
-"""
-Absolute position is reported via Value, a la joysticks.
-"""
-
-POSITION_CHANGE_RELATIVE = "PositionChangeRel"
-"""
-Relative position is reported via Value, a la mice, or simulating axes with up/down buttons.
-"""
-```
-
-See [the Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.EventType) for the most current version of supported `EventTypes`.
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-``` go {class="line-numbers linkable-line-numbers"}
- // Callbacks registered for this event will be called in ADDITION to other registered event callbacks.
-AllEvents EventType = "AllEvents"
-
-// Sent at controller initialization, and on reconnects.
-Connect EventType = "Connect"
-
-// If unplugged, or wireless/network times out.
-Disconnect EventType = "Disconnect"
-
-// Typical key press.
-ButtonPress EventType = "ButtonPress"
-
-// Key release.
-ButtonRelease EventType = "ButtonRelease"
-
-// Key is held down. This will likely be a repeated event.
-ButtonHold EventType = "ButtonHold"
-
-// Both up and down for convenience during registration, not typically emitted.
-ButtonChange EventType = "ButtonChange"
-
-// Absolute position is reported via Value, a la joysticks.
-PositionChangeAbs EventType = "PositionChangeAbs"
-
-// Relative position is reported via Value, a la mice, or simulating axes with up/down buttons.
-PositionChangeRel EventType = "PositionChangeRel"
-```
-
-See [the Viam RDK](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the most current version of supported `EventTypes`.
-
-{{% /tab %}}
-{{< /tabs >}}
-
-#### Control Field
-
-A string representing the physical input location, like a specific axis or button, of your `Controller` that the [Event Object](#event-object) is coming from.
-
-Registered `Control` types are defined as follows:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-``` python {class="line-numbers linkable-line-numbers"}
-    # Axes
-    ABSOLUTE_X = "AbsoluteX"
-    ABSOLUTE_Y = "AbsoluteY"
-    ABSOLUTE_Z = "AbsoluteZ"
-    ABSOLUTE_RX = "AbsoluteRX"
-    ABSOLUTE_RY = "AbsoluteRY"
-    ABSOLUTE_RZ = "AbsoluteRZ"
-    ABSOLUTE_HAT0_X = "AbsoluteHat0X"
-    ABSOLUTE_HAT0_Y = "AbsoluteHat0Y"
-
-    # Buttons
-    BUTTON_SOUTH = "ButtonSouth"
-    BUTTON_EAST = "ButtonEast"
-    BUTTON_WEST = "ButtonWest"
-    BUTTON_NORTH = "ButtonNorth"
-    BUTTON_LT = "ButtonLT"
-    BUTTON_RT = "ButtonRT"
-    BUTTON_LT2 = "ButtonLT2"
-    BUTTON_RT2 = "ButtonRT2"
-    BUTTON_L_THUMB = "ButtonLThumb"
-    BUTTON_R_THUMB = "ButtonRThumb"
-    BUTTON_SELECT = "ButtonSelect"
-    BUTTON_START = "ButtonStart"
-    BUTTON_MENU = "ButtonMenu"
-    BUTTON_RECORD = "ButtonRecord"
-    BUTTON_E_STOP = "ButtonEStop"
-
-    # Pedals
-    ABSOLUTE_PEDAL_ACCELERATOR = "AbsolutePedalAccelerator"
-    ABSOLUTE_PEDAL_BRAKE = "AbsolutePedalBrake"
-    ABSOLUTE_PEDAL_CLUTCH = "AbsolutePedalClutch"
-```
-
-See [the Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.Control) for the most current version of supported `Control` types.
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-// Axes.
-AbsoluteX     Control = "AbsoluteX"
-AbsoluteY     Control = "AbsoluteY"
-AbsoluteZ     Control = "AbsoluteZ"
-AbsoluteRX    Control = "AbsoluteRX"
-AbsoluteRY    Control = "AbsoluteRY"
-AbsoluteRZ    Control = "AbsoluteRZ"
-AbsoluteHat0X Control = "AbsoluteHat0X"
-AbsoluteHat0Y Control = "AbsoluteHat0Y"
-
-// Buttons.
-ButtonSouth  Control = "ButtonSouth"
-ButtonEast   Control = "ButtonEast"
-ButtonWest   Control = "ButtonWest"
-ButtonNorth  Control = "ButtonNorth"
-ButtonLT     Control = "ButtonLT"
-ButtonRT     Control = "ButtonRT"
-ButtonLT2    Control = "ButtonLT2"
-ButtonRT2    Control = "ButtonRT2"
-ButtonLThumb Control = "ButtonLThumb"
-ButtonRThumb Control = "ButtonRThumb"
-ButtonSelect Control = "ButtonSelect"
-ButtonStart  Control = "ButtonStart"
-ButtonMenu   Control = "ButtonMenu"
-ButtonRecord Control = "ButtonRecord"
-ButtonEStop  Control = "ButtonEStop"
-
-// Pedals.
-AbsolutePedalAccelerator Control = "AbsolutePedalAccelerator"
-AbsolutePedalBrake       Control = "AbsolutePedalBrake"
-AbsolutePedalClutch      Control = "AbsolutePedalClutch"
-```
-
-See [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the most current version of supported `Control` types.
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### Axis Controls
-
-{{% alert title="Note" color="note" %}}
-Currently, only `Absolute` axes are supported.
-
-`Relative` axes, reporting a relative change in distance, used by devices like mice and trackpads, will be supported in the future.
-{{% /alert %}}
-
-Analog devices like joysticks and thumbsticks which "return to center/neutral" on their own use `Absolute` axis control types.
-
-These controls report a `PositionChangeAbs` [EventType](#eventtype-field).
-
-**Value:** A `float64` between `-1.0` and `+1.0`.
-
-- `1.0`: Maximum position in the positive direction.
-- `0.0`: Center, neutral position.
-- `-1.0`: Maximum position in the negative direction.
-
-#### AbsoluteXY Axes
-
-If your input controller has an analog stick, this is what the stick's controls report as.
-
-Alternatively, if your input controller has *two* analog sticks, this is what the left joystick's controls report as.
-
-| Name | `-1.0` | `0.0` | `1.0` |
-| ---- | ------ | ----- | ----- |
-| `AbsoluteX` | Stick Left | Neutral | Stick Right |
-| `AbsoluteY` | Stick Forward | Neutral | Stick Backwards |
-
-#### AbsoluteR-XY Axes
-
-If your input controller has *two* analog sticks, this is what the right joystick's controls report as.
-
-| Name | `-1.0` | `0.0` | `1.0` |
-| ---- | ------ | ----- | ----- |
-| `AbsoluteRX` | Stick Left | Neutral | Stick Right |
-| `AbsoluteRY` | Stick Forward | Neutral | Stick Backwards |
-
-- For `Y` axes, the positive direction is "nose up," and indicates *pulling* back on the joystick.
-
-#### Hat/D-Pad Axes
-
-If your input controller has a directional pad with analog buttons on the pad, this is what those controls report as.
-
-| Name | `-1.0` | `0.0` | `1.0` |
-| ---- | ------ | ----- | ----- |
-| `AbsoluteHat0X` | Left DPAD Button Press | Neutral | Right DPAD Button Press |
-| `AbsoluteHat0Y` | Up DPAD Button Press | Neutral | Down DPAD Button Press |
-
-#### Z Axes (Analog Trigger Sticks)
-
-{{% alert title="Note" color="note" %}}
-Devices like analog triggers and gas or brake pedals use `Absolute` axes, but they only report position change in the positive direction.
-The neutral point of the axes is still `0.0`.
-{{% /alert %}}
-
-| Name | `-1.0` | `0.0` | `1.0` |
-| ---- | ------ | ----- | ----- |
-| `AbsoluteZ` | | Neutral | Stick Pulled |
-| `AbsoluteRZ` | | Neutral | Stick Pulled |
-
-`Z` axes are usually not present on most controller joysticks.
-
-If present, they are typically analog trigger sticks, and unidirectional, scaling only from `0` to `1.0` as they are pulled, as shown above.
-
-`AbsoluteZ` is reported if there is one trigger stick, and `AbsoluteZ` (left) and `AbsoluteRZ` (right) is reported if there are two trigger sticks.
-
-Z axes can be present on flight-style joysticks, reporting *yaw*, or left/right rotation, as shown below.
-This is not common.
-
-| Name | `-1.0` | `0.0` | `1.0` |
-| ---- | ------ | ----- | ----- |
-| `AbsoluteZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
-| `AbsoluteRZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
-
-### Button Controls
-
-Button Controls report either `ButtonPress` or `ButtonRelease` as their [EventType](#eventtype-field).
-
-**Value:**
-
-- `0`: released
-- `1`: pressed
-
-#### Action Buttons (ABXY)
-
-If your input controller is a gamepad with digital action buttons, this is what the controls for these buttons report as.
-
-{{% alert title="Tip" color="tip" %}}
-As different systems label the actual buttons differently, we use compass directions for consistency.
-
-- `ButtonSouth` corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation.
-- `ButtonNorth` corresponds to "X" on Nintendo, "Y" on XBox, and "Triangle" on Playstation.
-{{% /alert %}}
-
-|Diamond 4-Action Button Pad | Rectangle 4-Action Button Pad |
-|--|--|
-|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonWest`</td><td>Left</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top-left</td></tr><tr><td>`ButtonSouth`</td><td>Bottom-right</td></tr><tr><td>`ButtonEast`</td><td>Top-right</td></tr><tr><td>`ButtonWest`</td><td>Bottom-left</td></tr> </table>|
-
-| Horizontal 3-Action Button Pad | Vertical 3-Action Button Pad |
-|--|--|
-|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Left</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Bottom</td></tr> </table>|
-
-| Horizontal 2-Action Button Pad | Vertical 2-Action Button Pad |
-|--|--|
-|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonSouth`</td><td>Left</td></tr><tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr> </table>|
-
-#### Trigger Buttons (Bumper)
-
-If your input controller is a gamepad with digital trigger buttons, this is what the controls for those buttons report as.
-
-| 2-Trigger Button Pad | 4-Trigger Button Pad |
-|--|--|
-|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Left</td></tr><tr><td>`ButtonRT`</td><td>Right</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Top-left</td></tr><tr><td>`ButtonRT`</td><td>Top-right</td></tr><tr><td>`ButtonLT2`</td><td>Bottom-left</td></tr><tr><td>`ButtonRT2`</td><td>Bottom-right</td></tr> </table>|
-
-#### Digital Buttons for Sticks
-
-If your input controller is a gamepad with "clickable" thumbsticks, this is what thumbstick presses report as.
-
-| Name | Description |
-| ---- | ----------- |
-| `ButtonLThumb` | Left or upper button for stick |
-| `ButtonRThumb` | Right or lower button for stick |
-
-#### Miscellaneous Buttons
-
-Many devices have additional buttons.
-If your input controller is a gamepad with these common buttons, this is what the controls for those buttons report as.
-
-| Name | Description |
-| ---- | ----------- |
-| `ButtonSelect` | Select or - |
-| `ButtonStart` | Start or + |
-| `ButtonMenu` | Usually the central "Home" or Xbox/PS "Logo" button |
-| `ButtonRecord` | Recording |
-| `ButtonEStop` | Emergency Stop (on some industrial controllers) |
+These examples assume you have an input controller called `"my_controller"` configured as a component of your robot.
+If your input controller has a different name, change the `name` in the code.
 
 ## API
 
@@ -881,6 +395,342 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## API Types
+
+The `input` API defines the following types:
+
+### Event Object
+
+Each `Event` object represents a singular event from the input device, and has four fields:
+
+1. `Time`: `time.Time` the event occurred.
+2. `Event`: `EventType` indicating the type of event (for example, a specific button press or axis movement).
+3. `Control`: `Control` indicating which [Axis](#axis-controls), [Button](#button-controls), or Pedal on the controller has been changed.
+4. `Value`: `float64` indicating the position of an [Axis](#axis-controls) or the state of a [Button](#button-controls) on the specified control.
+
+#### EventType Field
+
+A string-like type indicating the specific type of input event, such as a button press or axis movement.
+
+- To select for events of all type when registering callback function with [RegisterControlCallback](#registercontrolcallback), you can use `AllEvents` as your `EventType`.
+- The registered function is then called in addition to any other callback functions you've registered, every time an `Event` happens on your controller.
+This is useful for debugging without interrupting normal controls, or for capturing extra or unknown events.
+
+Registered `EventTypes` definitions:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+``` python {class="line-numbers linkable-line-numbers"}
+ALL_EVENTS = "AllEvents"
+"""
+Callbacks registered for this event will be called in ADDITION to other registered event callbacks.
+"""
+
+CONNECT = "Connect"
+"""
+Sent at controller initialization, and on reconnects.
+"""
+
+DISCONNECT = "Disconnect"
+"""
+If unplugged, or wireless/network times out.
+"""
+
+BUTTON_PRESS = "ButtonPress"
+"""
+Typical key press.
+"""
+
+BUTTON_RELEASE = "ButtonRelease"
+"""
+Key release.
+"""
+
+BUTTON_HOLD = "ButtonHold"
+"""
+Key is held down. This will likely be a repeated event.
+"""
+
+BUTTON_CHANGE = "ButtonChange"
+"""
+Both up and down for convenience during registration, not typically emitted.
+"""
+
+POSITION_CHANGE_ABSOLUTE = "PositionChangeAbs"
+"""
+Absolute position is reported via Value, a la joysticks.
+"""
+
+POSITION_CHANGE_RELATIVE = "PositionChangeRel"
+"""
+Relative position is reported via Value, a la mice, or simulating axes with up/down buttons.
+"""
+```
+
+See [the Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.EventType) for the most current version of supported `EventTypes`.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+``` go {class="line-numbers linkable-line-numbers"}
+ // Callbacks registered for this event will be called in ADDITION to other registered event callbacks.
+AllEvents EventType = "AllEvents"
+
+// Sent at controller initialization, and on reconnects.
+Connect EventType = "Connect"
+
+// If unplugged, or wireless/network times out.
+Disconnect EventType = "Disconnect"
+
+// Typical key press.
+ButtonPress EventType = "ButtonPress"
+
+// Key release.
+ButtonRelease EventType = "ButtonRelease"
+
+// Key is held down. This will likely be a repeated event.
+ButtonHold EventType = "ButtonHold"
+
+// Both up and down for convenience during registration, not typically emitted.
+ButtonChange EventType = "ButtonChange"
+
+// Absolute position is reported via Value, a la joysticks.
+PositionChangeAbs EventType = "PositionChangeAbs"
+
+// Relative position is reported via Value, a la mice, or simulating axes with up/down buttons.
+PositionChangeRel EventType = "PositionChangeRel"
+```
+
+See [the Viam RDK](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the most current version of supported `EventTypes`.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+#### Control Field
+
+A string representing the physical input location, like a specific axis or button, of your `Controller` that the [Event Object](#event-object) is coming from.
+
+Registered `Control` types are defined as follows:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+``` python {class="line-numbers linkable-line-numbers"}
+    # Axes
+    ABSOLUTE_X = "AbsoluteX"
+    ABSOLUTE_Y = "AbsoluteY"
+    ABSOLUTE_Z = "AbsoluteZ"
+    ABSOLUTE_RX = "AbsoluteRX"
+    ABSOLUTE_RY = "AbsoluteRY"
+    ABSOLUTE_RZ = "AbsoluteRZ"
+    ABSOLUTE_HAT0_X = "AbsoluteHat0X"
+    ABSOLUTE_HAT0_Y = "AbsoluteHat0Y"
+
+    # Buttons
+    BUTTON_SOUTH = "ButtonSouth"
+    BUTTON_EAST = "ButtonEast"
+    BUTTON_WEST = "ButtonWest"
+    BUTTON_NORTH = "ButtonNorth"
+    BUTTON_LT = "ButtonLT"
+    BUTTON_RT = "ButtonRT"
+    BUTTON_LT2 = "ButtonLT2"
+    BUTTON_RT2 = "ButtonRT2"
+    BUTTON_L_THUMB = "ButtonLThumb"
+    BUTTON_R_THUMB = "ButtonRThumb"
+    BUTTON_SELECT = "ButtonSelect"
+    BUTTON_START = "ButtonStart"
+    BUTTON_MENU = "ButtonMenu"
+    BUTTON_RECORD = "ButtonRecord"
+    BUTTON_E_STOP = "ButtonEStop"
+
+    # Pedals
+    ABSOLUTE_PEDAL_ACCELERATOR = "AbsolutePedalAccelerator"
+    ABSOLUTE_PEDAL_BRAKE = "AbsolutePedalBrake"
+    ABSOLUTE_PEDAL_CLUTCH = "AbsolutePedalClutch"
+```
+
+See [the Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.Control) for the most current version of supported `Control` types.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Axes.
+AbsoluteX     Control = "AbsoluteX"
+AbsoluteY     Control = "AbsoluteY"
+AbsoluteZ     Control = "AbsoluteZ"
+AbsoluteRX    Control = "AbsoluteRX"
+AbsoluteRY    Control = "AbsoluteRY"
+AbsoluteRZ    Control = "AbsoluteRZ"
+AbsoluteHat0X Control = "AbsoluteHat0X"
+AbsoluteHat0Y Control = "AbsoluteHat0Y"
+
+// Buttons.
+ButtonSouth  Control = "ButtonSouth"
+ButtonEast   Control = "ButtonEast"
+ButtonWest   Control = "ButtonWest"
+ButtonNorth  Control = "ButtonNorth"
+ButtonLT     Control = "ButtonLT"
+ButtonRT     Control = "ButtonRT"
+ButtonLT2    Control = "ButtonLT2"
+ButtonRT2    Control = "ButtonRT2"
+ButtonLThumb Control = "ButtonLThumb"
+ButtonRThumb Control = "ButtonRThumb"
+ButtonSelect Control = "ButtonSelect"
+ButtonStart  Control = "ButtonStart"
+ButtonMenu   Control = "ButtonMenu"
+ButtonRecord Control = "ButtonRecord"
+ButtonEStop  Control = "ButtonEStop"
+
+// Pedals.
+AbsolutePedalAccelerator Control = "AbsolutePedalAccelerator"
+AbsolutePedalBrake       Control = "AbsolutePedalBrake"
+AbsolutePedalClutch      Control = "AbsolutePedalClutch"
+```
+
+See [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the most current version of supported `Control` types.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Axis Controls
+
+{{% alert title="Note" color="note" %}}
+Currently, only `Absolute` axes are supported.
+
+`Relative` axes, reporting a relative change in distance, used by devices like mice and trackpads, will be supported in the future.
+{{% /alert %}}
+
+Analog devices like joysticks and thumbsticks which "return to center/neutral" on their own use `Absolute` axis control types.
+
+These controls report a `PositionChangeAbs` [EventType](#eventtype-field).
+
+**Value:** A `float64` between `-1.0` and `+1.0`.
+
+- `1.0`: Maximum position in the positive direction.
+- `0.0`: Center, neutral position.
+- `-1.0`: Maximum position in the negative direction.
+
+#### AbsoluteXY Axes
+
+If your input controller has an analog stick, this is what the stick's controls report as.
+
+Alternatively, if your input controller has *two* analog sticks, this is what the left joystick's controls report as.
+
+| Name | `-1.0` | `0.0` | `1.0` |
+| ---- | ------ | ----- | ----- |
+| `AbsoluteX` | Stick Left | Neutral | Stick Right |
+| `AbsoluteY` | Stick Forward | Neutral | Stick Backwards |
+
+#### AbsoluteR-XY Axes
+
+If your input controller has *two* analog sticks, this is what the right joystick's controls report as.
+
+| Name | `-1.0` | `0.0` | `1.0` |
+| ---- | ------ | ----- | ----- |
+| `AbsoluteRX` | Stick Left | Neutral | Stick Right |
+| `AbsoluteRY` | Stick Forward | Neutral | Stick Backwards |
+
+- For `Y` axes, the positive direction is "nose up," and indicates *pulling* back on the joystick.
+
+#### Hat/D-Pad Axes
+
+If your input controller has a directional pad with analog buttons on the pad, this is what those controls report as.
+
+| Name | `-1.0` | `0.0` | `1.0` |
+| ---- | ------ | ----- | ----- |
+| `AbsoluteHat0X` | Left DPAD Button Press | Neutral | Right DPAD Button Press |
+| `AbsoluteHat0Y` | Up DPAD Button Press | Neutral | Down DPAD Button Press |
+
+#### Z Axes (Analog Trigger Sticks)
+
+{{% alert title="Note" color="note" %}}
+Devices like analog triggers and gas or brake pedals use `Absolute` axes, but they only report position change in the positive direction.
+The neutral point of the axes is still `0.0`.
+{{% /alert %}}
+
+| Name | `-1.0` | `0.0` | `1.0` |
+| ---- | ------ | ----- | ----- |
+| `AbsoluteZ` | | Neutral | Stick Pulled |
+| `AbsoluteRZ` | | Neutral | Stick Pulled |
+
+`Z` axes are usually not present on most controller joysticks.
+
+If present, they are typically analog trigger sticks, and unidirectional, scaling only from `0` to `1.0` as they are pulled, as shown above.
+
+`AbsoluteZ` is reported if there is one trigger stick, and `AbsoluteZ` (left) and `AbsoluteRZ` (right) is reported if there are two trigger sticks.
+
+Z axes can be present on flight-style joysticks, reporting *yaw*, or left/right rotation, as shown below.
+This is not common.
+
+| Name | `-1.0` | `0.0` | `1.0` |
+| ---- | ------ | ----- | ----- |
+| `AbsoluteZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
+| `AbsoluteRZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
+
+### Button Controls
+
+Button Controls report either `ButtonPress` or `ButtonRelease` as their [EventType](#eventtype-field).
+
+**Value:**
+
+- `0`: released
+- `1`: pressed
+
+#### Action Buttons (ABXY)
+
+If your input controller is a gamepad with digital action buttons, this is what the controls for these buttons report as.
+
+{{% alert title="Tip" color="tip" %}}
+As different systems label the actual buttons differently, we use compass directions for consistency.
+
+- `ButtonSouth` corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation.
+- `ButtonNorth` corresponds to "X" on Nintendo, "Y" on XBox, and "Triangle" on Playstation.
+{{% /alert %}}
+
+|Diamond 4-Action Button Pad | Rectangle 4-Action Button Pad |
+|--|--|
+|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonWest`</td><td>Left</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top-left</td></tr><tr><td>`ButtonSouth`</td><td>Bottom-right</td></tr><tr><td>`ButtonEast`</td><td>Top-right</td></tr><tr><td>`ButtonWest`</td><td>Bottom-left</td></tr> </table>|
+
+| Horizontal 3-Action Button Pad | Vertical 3-Action Button Pad |
+|--|--|
+|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Left</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Bottom</td></tr> </table>|
+
+| Horizontal 2-Action Button Pad | Vertical 2-Action Button Pad |
+|--|--|
+|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonSouth`</td><td>Left</td></tr><tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr> </table>|
+
+#### Trigger Buttons (Bumper)
+
+If your input controller is a gamepad with digital trigger buttons, this is what the controls for those buttons report as.
+
+| 2-Trigger Button Pad | 4-Trigger Button Pad |
+|--|--|
+|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Left</td></tr><tr><td>`ButtonRT`</td><td>Right</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Top-left</td></tr><tr><td>`ButtonRT`</td><td>Top-right</td></tr><tr><td>`ButtonLT2`</td><td>Bottom-left</td></tr><tr><td>`ButtonRT2`</td><td>Bottom-right</td></tr> </table>|
+
+#### Digital Buttons for Sticks
+
+If your input controller is a gamepad with "clickable" thumbsticks, this is what thumbstick presses report as.
+
+| Name | Description |
+| ---- | ----------- |
+| `ButtonLThumb` | Left or upper button for stick |
+| `ButtonRThumb` | Right or lower button for stick |
+
+#### Miscellaneous Buttons
+
+Many devices have additional buttons.
+If your input controller is a gamepad with these common buttons, this is what the controls for those buttons report as.
+
+| Name | Description |
+| ---- | ----------- |
+| `ButtonSelect` | Select or - |
+| `ButtonStart` | Start or + |
+| `ButtonMenu` | Usually the central "Home" or Xbox/PS "Logo" button |
+| `ButtonRecord` | Recording |
+| `ButtonEStop` | Emergency Stop (on some industrial controllers) |
 
 ## Usage Examples
 

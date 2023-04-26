@@ -24,65 +24,13 @@ If you have another gripper model, you can [define a custom component](../../pro
 
 ## Control your gripper with Viam's client SDK libraries
 
-The following example assumes you have a gripper called `my_gripper` configured as a component of your robot.
-If your gripper has a different name, change the `name` in the example.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
 
-{{< tabs >}}
-{{% tab name="Python" %}}
+When executed, this sample code will create a connection to your robot as a client.
+Then control your robot programmatically by adding API method calls as shown in the following examples.
 
-Place the example code in the `main()` function after `robot = await connect()`.
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.gripper import Gripper
-
-robot = await connect() # Refer to CODE SAMPLE tab code
-# Get the gripper from the robot
-my_gripper = Gripper.from_robot(robot, "my_gripper")
-
-# Open the gripper
-await my_gripper.open()
-
-# Grab with the gripper and get whether it grabbed anything
-grabbed = await my_gripper.grab()
-print(f"Grabbed an object: {grabbed}")
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-Place the example code in the `main()` function after `robot, err := client.New(...)`.
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "context"
-
-  "go.viam.com/rdk/components/gripper"
-  "github.com/edaniels/golog"
-)
-
-robot, err := client.New() // Refer to CODE SAMPLE tab code
-if err != nil {
-    return nil, err
-}
-// Get the gripper from the robot
-myGripper, err := gripper.FromRobot(robot, "my_gripper")
-if err != nil {
-    return nil, err
-}
-
-// Open the gripper
-myGripper.Open(context.TODO(), nil)
-
-// Grab with the gripper and get whether it grabbed anything
-grabbed, err := myGripper.Grab(context.TODO(), nil)
-if err != nil {
-    return nil, err
-}
-logger.Info("Grabbed an object: %w", grabbed)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+These examples assume you have a gripper called `"my_gripper"` configured as a component of your robot.
+If your gripper has a different name, change the `name` in the code.
 
 ## API
 
@@ -111,10 +59,8 @@ Opens the gripper.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/index.html#viam.components.gripper.Gripper.open).
 
-**Example usage:**
-
 ```python
-my_gripper = Gripper.from_robot(robot=robot, name='my_gripper')
+my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
 
 # Open the gripper.
 await my_gripper.open()
@@ -133,8 +79,6 @@ await my_gripper.open()
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
-
-**Example usage:**
 
 ```go
 myGripper, err := gripper.FromRobot(robot, "my_gripper")
@@ -163,10 +107,8 @@ Closes the gripper until it grabs something or closes completely, and returns wh
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/index.html#viam.components.gripper.Gripper.grab).
 
-**Example usage:**
-
 ```python
-my_gripper = Gripper.from_robot(robot=robot, name='my_gripper')
+my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
 
 # Grab with the gripper.
 grabbed = await my_gripper.grab()
@@ -186,8 +128,6 @@ grabbed = await my_gripper.grab()
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
-
-**Example usage:**
 
 ```go
 myGripper, err := gripper.FromRobot(robot, "my_gripper")
@@ -217,10 +157,8 @@ It is assumed that the gripper stops immediately, so `IsMoving` will return fals
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/index.html#viam.components.gripper.Gripper.stop).
 
-**Example usage:**
-
 ```python
-my_gripper = Gripper.from_robot(robot=robot, name='my_gripper')
+my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
 
 # Stop the gripper.
 await my_gripper.stop()
@@ -239,8 +177,6 @@ await my_gripper.stop()
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
-
-**Example usage:**
 
 ```go
 myGripper, err := gripper.FromRobot(robot, "my_gripper")
@@ -269,10 +205,8 @@ Returns whether the gripper is actively moving (or attempting to move) under its
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/index.html#viam.components.gripper.Gripper.is_moving).
 
-**Example usage:**
-
 ```python
-my_gripper = Gripper.from_robot(robot=robot, name='my_gripper')
+my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
 
 # Check whether the gripper is currently moving.
 moving = await my_gripper.is_moving()
@@ -292,8 +226,6 @@ print('Moving:', moving)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
-
-**Example usage:**
 
 ```go
 myGripper, err := gripper.FromRobot(robot, "my_gripper")
@@ -325,7 +257,7 @@ If you are implementing your own gripper and add features that have no built-in 
 - `result` (`Dict[str, Any]`): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_gripper = Gripper.from_robot(robot=robot, name='my_gripper')
+my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
 
 raw_dict = {
   "command": "raw",

@@ -47,7 +47,7 @@ To get started using Viam's SDKs to connect to and control your robot, go to you
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a gantry called "my_gantry" configured as a component of your robot.
+These examples assume you have a gantry called `"my_gantry"` configured as a component of your robot.
 If your gantry has a different name, change the `name` in the code.
 
 ## API
