@@ -134,10 +134,10 @@ Inside the `pins` struct you need to configure **two or three** of the following
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `a` | string | **Required** for some drivers | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-| `b` | string | **Required** for some drivers | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-| `dir` | string | **Required** for some drivers | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-| `pwm` | string | **Required** for some drivers | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `a` | string | **Required** for some drivers | Corresponds to "IN1" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `b` | string | **Required** for some drivers | Corresponds to "IN2" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `dir` | string | **Required** for some drivers | Configure this if your data sheet has a dedicated direction pin. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `pwm` | string | **Required** for some drivers | Configure this if your data sheet has a dedicated "PWM" pin. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
 
 {{% alert title="Note" color="note" %}}
 
