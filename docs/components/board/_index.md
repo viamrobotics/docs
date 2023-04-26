@@ -10,44 +10,13 @@ icon: "/components/img/components/board.svg"
 # SMEs: Gautham, Rand
 ---
 
-A *board* is the signal wire hub of a robot that provides access to [general purpose input/output (GPIO) pins](https://www.howtogeek.com/787928/what-is-gpio/).
+A *board* is the signal wire hub of a robot that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
 
-If your board has a computer that is capable of running `viam-server`, or is connected to one, it can act not only as the signal wire hub for your robot, but also as the software hub.
+- You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
-Configure a board component on your robot to control and read from the other [components](/components) of the robot, signaling through the GPIO pins on the board as overseen by a computer running `viam-server`.
+Configure a *board* component on your robot to communicate with the other [components](/components) of the robot, signaling as overseen by a computer running `viam-server`.
 
-#### What are GPIO pins?
-
-GPIO pins are pins on the motherboard of a computer that can receive electrical signals.
-You can control the flow of electricity to the pins to change their state between "high" (active, >0V) and "low" (inactive, 0V), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
-
-Many GPIO implementations also support [Pulse Width Modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation), or can be used to communicate with protocols like [I<sup>2</sup>C](#i2cs) or [SPI](#spis).
-
-#### What can I use as my board?
-
-Generally, you should use a single-board computer (SBC) with GPIO pins or a computer outfitted with a GPIO peripheral.
-
-This way, overseen by a computer running `viam-server`, the GPIO pins on your board can receive signals from and send signals to the other [components](/components/) of your robot.
-
-**Single-Board Computer with GPIO Pins:**
-
-This refers to boards like the [Raspberry Pi](/installation/prepare/rpi-setup/), [BeagleBone](/installation/prepare/beaglebone-setup/), and [Jetson](/installation/prepare/jetson-nano-setup/).
-
-These are all small computing devices outfitted with GPIO pins that are capable of advanced computation, including running `viam-server`.
-
-{{% alert title="Note" color="note" %}}
-If you want to use the GPIO pins on your SBC to control your robot, the board itself must run `viam-server`.
-The GPIO pins on SBCs are generally not accessible to external computers.
-{{% /alert %}}
-
-**GPIO Peripheral and Computer**:
-
-A device with GPIO pins, like the [numato](numato) model of board, can still act as the signal wire hub of your robot.
-However, a board like this does not contain a computer to run `viam-server` on the robot, so it can only act as the software hub if you have physically connected it to another computer.
-
-In this case, the computer running `viam-server` signals through the GPIO peripheral's GPIO pins to communicate with the other hardware components of the robot.
-
-{{% figure src="img/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
+Supported board models are single-board computers (SBCs) with GPIO pins and CPUs, GPIO peripheral devices, or PWM peripheral devices that you must connect to a SBC.
 
 ## Configuration
 
@@ -61,7 +30,7 @@ For configuration information, first click on one of the following models:
 | [`jetson`](jetson) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), [NVIDIA Jetson  Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
 | [`nanopi`](nanopi) | [FriendlyElec’s NanoPi Mini Board](https://www.friendlyelec.com/index.php?route=product/category&path=69) |
 | [`numato`](numato) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
-| [`pca9685`](pca9685) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [servo](/components/servo) driver peripheral |
+| [`pca9685`](pca9685) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](#pwm)/[servo](/components/servo) driver peripheral |
 | [`fake`](fake) | A model used for testing, with no physical hardware |
 
 The following configuration attributes are available for every *board* model besides the `numato` and `pca9685` peripherals and `fake`.
@@ -351,10 +320,10 @@ Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` inter
 | ----------- | ----------- |
 | [Set](#set) | Set the output of this pin to high/low. |
 | [Get](#get) | Get if this pin is active (high). |
-| [PWM](#pwm) | Get the pin’s Pulse Width Modulation duty cycle. |
-| [SetPWM](#pwmfreq) | Set the pin’s Pulse Width Modulation duty cycle. |
-| [PWMFreq](#pwmfreq) | Get the Pulse Width Modulation frequency of this pin. |
-| [SetPWMFreq](#setpwmfreq) | Set the Pulse Width Modulation frequency of this pin. |
+| [PWM](#pwm) | Get the pin’s Pulse-width modulation duty cycle. |
+| [SetPWM](#pwmfreq) | Set the pin’s Pulse-width modulation duty cycle. |
+| [PWMFreq](#pwmfreq) | Get the Pulse-width modulation frequency of this pin. |
+| [SetPWMFreq](#setpwmfreq) | Set the Pulse-width modulation frequency of this pin. |
 
 <br>
 
@@ -892,13 +861,13 @@ high := pin.Get(context.Background(), nil)
 
 {{% alert title="Note" color="note" %}}
 
-[Pulse Width Modulation (PWM)](https://www.digikey.com/en/blog/pulse-width-modulation) is a method where of transmitting a digital signal in the form of pulses to control analog circuits.
+[Pulse-width modulation (PWM)](https://www.digikey.com/en/blog/pulse-width-modulation) is a method where of transmitting a digital signal in the form of pulses to control analog circuits.
 With PWM on a *board*, the continuous digital signal output by a GPIO pin is sampled at regular intervals and transmitted to any [hardware components](/components) wired to the pin that read analog signals.
 This enables the board to communicate with these components.
 
 {{% /alert %}}
 
-Get the pin's [Pulse Width Modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
+Get the pin's [Pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -954,7 +923,7 @@ duty_cycle := pin.PWM(context.Background(), nil)
 
 ### SetPWM
 
-Set the pin's [Pulse Width Modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] indicating the percentage of time the digital signal output of this pin is in the "high" state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
+Set the pin's [Pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] indicating the percentage of time the digital signal output of this pin is in the "high" state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1012,7 +981,7 @@ err := pin.SetPWM(context.Background(), .6, nil)
 
 ### PWMFreq
 
-Get the [Pulse Width Modulation (PWM) frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
+Get the [Pulse-width modulation (PWM) frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
 The optimal value for PWM Frequency depends on the type and model of [component](/components) you control with the signal output by this pin.
 Refer to your device's data sheet for PWM Frequency specifications.
 
@@ -1070,7 +1039,7 @@ freqHz, err := pin.PWMFreq(context.Background(), nil)
 
 ### SetPWMFreq
 
-Set the [Pulse Width Modulation (PWM) frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
+Set the [Pulse-width modulation (PWM) frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
 The optimal value for PWM Frequency depends on the type and model of [component](/components) you control with the PWM signal output by this pin.
 Refer to your device's data sheet for PWM Frequency specifications.
 
