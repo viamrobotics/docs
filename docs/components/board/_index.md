@@ -12,7 +12,7 @@ icon: "/components/img/components/board.svg"
 
 A *board* is the signal wire hub of a robot that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
 
-- You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
+You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
 Configure a *board* component on your robot to communicate with the other [components](/components) of the robot, signaling as overseen by a computer running `viam-server`.
 
@@ -20,7 +20,7 @@ Supported board models are single-board computers (SBCs) with GPIO pins and CPUs
 
 ## Configuration
 
-For configuration information, first click on one of the following models:
+For model-specific configuration information, click on one of the following models:
 
 | Model | Description |
 | ----- | ----------- |
@@ -41,9 +41,9 @@ Configuring these attributes on your board allows you to integrate [analog-to-di
 
 An [analog-to-digital converter](https://www.electronics-tutorials.ws/combination/analogue-to-digital-converter.html) (ADC) takes a continuous voltage input (analog signal) and converts it to an discrete integer output (digital signal).
 
-ADCs are quite useful when building a robot, as they enable your board to read the analog signals output by most types of [sensor](/components/sensor/) and other hardware components.
+ADCs are useful when building a robot, as they enable your board to read the analog signal output by most types of [sensors](/components/sensor/) and other hardware components.
 
-- To integrate an ADC into your robot, you must first physically connect the pins on your ADC and on your board.
+To integrate an ADC into your robot, you must first physically connect the pins on your ADC and on your board.
 A [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all) is useful and wiring with [SPI](#spis) is often necessary for the two devices to be able to communicate.
 
 Then, integrate `analogs` into the `attributes` of your board as follows:
@@ -110,7 +110,7 @@ The following properties are available for `analogs`:
 |`name` | string | **Required** | Your name for the analog reader. |
 |`pin`| string | **Required** | The pin number of the ADC's connection pin, wired to the board.
 |`chip_select`| string | **Required** | The pin number of the board's connection pin, wired to the ADC. |
-|`spi_bus` | string | Optional | `name` of the [SPI bus](#spis) connecting the ADC and board. Required if your board must communicate with the ADC with the SPI protocol. |
+|`spi_bus` | string | Optional | The `name` of the [SPI bus](#spis) connecting the ADC and board. Required if your board must communicate with the ADC with the SPI protocol. |
 | `average_over_ms` | int | Optional | Duration in milliseconds over which the rolling average of the analog input should be taken. |
 |`samples_per_sec` | int | Optional | Sampling rate of the analog input in samples per second. |
 
@@ -229,7 +229,7 @@ The following properties are available for `spis`:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-|`name`| string| Required | `name` of the SPI bus. |
+|`name`| string | Required | The `name` of the SPI bus. |
 |`bus_select`| string | Required | The index of the SPI bus. |
 
 {{% alert title="WIRING WITH SPI" color="tip" %}}
