@@ -54,8 +54,8 @@ The following attributes are available for `numato` boards:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `pins` | int | **Required** | Number of [GPIO pins](/components/board/#gpio-pins) available on the module. |
-| `analogs` | object | **Required** | Attributes of any pins that can be used as inputs for the module's internal Analog-to-Digital Converter (ADC). See configuration info [here](/components/board/#analogs). |
+| `pins` | int | **Required** | Number of GPIO pins available on the module. |
+| `analogs` | object | **Required** | Attributes of any pins that can be used as inputs for the module's internal analog-to-digital converter (ADC). See configuration info [here](/components/board/#analogs). |
 <!-- I think these are available but I need to confirm
 | `digital_interrupts` | object | Optional | Pin and name of any digital interrupts. See configuration info [here](/components/board/#digital-interrupts). |
 | `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select bus pins' index and name. See configuration info [here](/components/board/#spi-buses). |

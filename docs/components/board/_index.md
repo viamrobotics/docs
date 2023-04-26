@@ -10,25 +10,24 @@ icon: "/components/img/components/board.svg"
 # SMEs: Gautham, Rand
 ---
 
-A *board* is the signal wire hub of a robot that provides access to GPIO pins.
+A *board* is the signal wire hub of a robot that provides access to [general purpose input/output (GPIO) pins](https://www.howtogeek.com/787928/what-is-gpio/).
 
 If your board has a computer that is capable of running `viam-server`, or is connected to one, it can act not only as the signal wire hub for your robot, but also as the software hub.
 
-Configure a board component on your robot to control and read from the other hardware components of the robot, signaling through the GPIO pins on the board as overseen by a computer running `viam-server`.
+Configure a board component on your robot to control and read from the other [components](/components) of the robot, signaling through the GPIO pins on the board as overseen by a computer running `viam-server`.
 
-{{% figure src="img/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
+#### What are GPIO pins?
 
-#### What does "signal wire hub" mean?
+GPIO pins are pins on the motherboard of a computer that can receive electrical signals.
+You can control the flow of electricity to the pins to change their state between "high" (active, >0V) and "low" (inactive, 0V), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
-A robot's board component has general purpose input/output (GPIO) pins.
-As the name suggests, these pins can be inputs or outputs, and can be set high or low--that is, turned on or off--and thus used to signal (or read signals from) other hardware.
-Many GPIO implementations also support [PWM (Pulse Width Modulation)](https://en.wikipedia.org/wiki/Pulse-width_modulation), or can be used as more advanced signaling systems such as [I2C](#i2cs), [SPI](#spis), or UART/Serial.
+Many GPIO implementations also support [Pulse Width Modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation), or can be used to communicate with protocols like [I<sup>2</sup>C](#i2cs) or [SPI](#spis).
 
 #### What can I use as my board?
 
-Generally, you should use a single-board computer with GPIO pins or a computer outfitted with a GPIO peripheral.
+Generally, you should use a single-board computer (SBC) with GPIO pins or a computer outfitted with a GPIO peripheral.
 
-This way, overseen by a computer running `viam-server`, the GPIO pins on your board can receive signals from and send signals to the hardware components of your robot.
+This way, overseen by a computer running `viam-server`, the GPIO pins on your board can receive signals from and send signals to the other [components](/components/) of your robot.
 
 **Single-Board Computer with GPIO Pins:**
 
@@ -37,30 +36,22 @@ This refers to boards like the [Raspberry Pi](/installation/prepare/rpi-setup/),
 These are all small computing devices outfitted with GPIO pins that are capable of advanced computation, including running `viam-server`.
 
 {{% alert title="Note" color="note" %}}
-If you want to use the GPIO pins on your single-board computer to control your robot, the board itself must run `viam-server`.
-The GPIO pins of various boards (including Raspberry Pi) are not accessible to external computers.
+If you want to use the GPIO pins on your SBC to control your robot, the board itself must run `viam-server`.
+The GPIO pins on SBCs are generally not accessible to external computers.
 {{% /alert %}}
 
-**Computer outfitted with a GPIO Peripheral**:
+**GPIO Peripheral and Computer**:
 
-A GPIO peripheral can act as the signal wire hub of your robot.
-However, a board like this does not contain a computer to run `viam-server` on the robot, so it can only act as the *board* if you have physically connected it to another computer.
+A device with GPIO pins, like the [numato](/numato) model of board, can still act as the signal wire hub of your robot.
+However, a board like this does not contain a computer to run `viam-server` on the robot, so it can only act as the software hub if you have physically connected it to another computer.
 
 In this case, the computer running `viam-server` signals through the GPIO peripheral's GPIO pins to communicate with the other hardware components of the robot.
 
-You can use any computer capable of running `viam-server`, whether it's your personal computer or another machine, as long as it is connected to the GPIO peripheral.
-
-Most robots with a board need at least the following hardware:
-
-- A power supply with the correct voltage and current to avoid damaging or power cycling the board.
-See the data sheet of your board model for requirements.
-
-  - For example, a Raspberry Pi 4 takes a 5V power supply and converts it to 3.3V for its logic circuitry.
-  The easiest way to power it is with a 5V USB-C power supply.
+{{% figure src="img/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
 ## Configuration
 
-Supported board models include:
+For configuration information, first click on one of the following models:
 
 | Model | Description |
 | ----- | ----------- |
@@ -70,25 +61,23 @@ Supported board models include:
 | [`jetson`](jetson) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), [NVIDIA Jetson  Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
 | [`nanopi`](nanopi) | [FriendlyElec’s NanoPi Mini Board](https://www.friendlyelec.com/index.php?route=product/category&path=69) |
 | [`numato`](numato) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
-| [`pca9685`](pca9685) | [PCA9685 Arduino I2C Interface](https://www.adafruit.com/product/815), a 16-channel [I2C](#i2cs) [servo](/components/servo) driver peripheral |
+| [`pca9685`](pca9685) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [servo](/components/servo) driver peripheral |
 | [`fake`](fake) | A model used for testing, with no physical hardware |
-<!-- Could consider adding another column for Pi, Jetsons, TI -> PINOUT diagram section? 
 
-- https://pinout.xyz/pinout/spi 
-- https://jetsonhacks.com/nvidia-jetson-nano-j41-header-pinout/
+The following configuration attributes are available for every *board* model besides the `numato` and `pca9685` peripherals and `fake`.
 
- TODO: needs a better intro here 
- -->
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs), [digital interrupts](#digital_interrupts), and components that must communicate through the [SPI](#spis) and [I<sup>2</sup>C](#i2cs) protocols into your robot.
 
 ### `analogs`
 
-An [analog-to-digital converter](https://www.electronics-tutorials.ws/combination/analogue-to-digital-converter.html) (ADC) takes a voltage input (analog signal) and converts it to an integer output (digital signal).
-ADCs are quite useful when building a robot, as they allow your board to be able to read the analog signals output by most types of [sensor](/components/sensor/) and other hardware components.
+An [analog-to-digital converter](https://www.electronics-tutorials.ws/combination/analogue-to-digital-converter.html) (ADC) takes a continuous voltage input (analog signal) and converts it to an discrete integer output (digital signal).
 
-- To integrate an ADC into your robot, you must physically connect the pins on your ADC and on your board.
-- A [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all) is useful and wiring with [SPI](#spis) is often necessary for the two devices to be able to communicate.
+ADCs are quite useful when building a robot, as they enable your board to read the analog signals output by most types of [sensor](/components/sensor/) and other hardware components.
 
-Then, configure this connection in the `"attributes"` of your board as follows:
+- To integrate an ADC into your robot, you must first physically connect the pins on your ADC and on your board.
+A [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all) is useful and wiring with [SPI](#spis) is often necessary for the two devices to be able to communicate.
+
+Then, integrate `analogs` into the `attributes` of your board as follows:
 
 {{< tabs name="Configure an Analog Reader" >}}
 {{% tab name="JSON Template" %}}
@@ -158,7 +147,8 @@ The following properties are available for `analogs`:
 
 ### `digital_interrupts`
 
-Digital interrupts are useful when your application needs to know precisely when there is a change in GPIO value between high and low.
+[Interrupts](https://en.wikipedia.org/wiki/Interrupt) are a method of signaling precise state changes.
+Configuring `digital_interrupts` to monitor GPIO pins on your board is useful when your application needs to know precisely when there is a change in GPIO value between high and low.
 
 - When an interrupt configured on your board processes a change in the state of the GPIO pin it is configured to monitor, it "knocks on the door" with [`Tick()`](#tick).
 - Calling [`Get()`](#get) on a GPIO pin, which you can do without configuring interrupts, is great when you want to know a pin's value at specific points, but is less precise and convenient than using an interrupt.
@@ -266,12 +256,12 @@ Integrate `spis` into your robot in the `attributes` of your board as follows:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for `spis`:
+The following properties are available for `spis`:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name`| string| Required | `name` of the SPI bus. |
-|`bus_select`| string | Required | The index of the SPI bus. Refer to your board's pinout diagram for SPI bus indexes and chip select pin numbers. |
+|`bus_select`| string | Required | The index of the SPI bus. |
 
 {{% alert title="WIRING WITH SPI" color="tip" %}}
 
@@ -283,21 +273,21 @@ Refer to your peripheral device's data sheet for CS/MOSI/MISO/SLCK pin layouts.
 
 ### `i2cs`
 
-The [Inter-Integrated circuit (I2C)](https://learn.sparkfun.com/tutorials/i2c/all) serial communication protocol is similar to SPI, but requires only two signal wires to exchange information between a controller and a peripheral device:
+The [Inter-Integrated circuit (I<sup>2</sup>C)](https://learn.sparkfun.com/tutorials/i2c/all) serial communication protocol is similar to SPI, but requires two signal wires to exchange information between a controller and a peripheral device:
 
 - Serial Data: SDA
 - Serial Clock: SCL
 
-To connect your board (controller) and a [component](/components) that requires I2C communication (peripheral device), wire a connection between SDA and SCL pins on the board and component.
+To connect your board (controller) and a [component](/components) that requires I<sup>2</sup>C communication (peripheral device), wire a connection between SDA and SCL pins on the board and component.
 
 {{% alert title="Caution" color="caution" %}}
 
-You must also enable I2C on your board if it is not enabled by default.
+You must also enable I<sup>2</sup>C on your board if it is not enabled by default.
 See your [board model's configuration instructions](#configuration) if applicable.
 
 {{% /alert %}}
 
-As supported boards have SDA and SCL pins internally configured to correspond with I2C bus indices, you can enable this connection in your board's configuration by specifying the index of the bus and giving it a name.
+As supported boards have SDA and SCL pins internally configured to correspond with I<sup>2</sup>C bus indices, you can enable this connection in your board's configuration by specifying the index of the bus and giving it a name.
 
 Integrate `i2cs` into your robot in the `attributes` of your board as follows:
 
@@ -317,12 +307,12 @@ The following properties are available for `i2cs`:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-|`name`| string| Required | `name` of the I2C bus. |
-|`bus_select`| int | Required | The index of the I2C bus. |
+|`name`| string| Required | `name` of the I<sup>2</sup>C bus. |
+|`bus_select`| int | Required | The index of the I<sup>2</sup>C bus. |
 
-{{% alert title="WIRING WITH I2C" color="tip" %}}
+{{% alert title="WIRING WITH I<sup>2</sup>C" color="tip" %}}
 
-Refer to your board's pinout diagram or data sheet for I2C bus indexes and corresponding SDA/SCL pin numbers.
+Refer to your board's pinout diagram or data sheet for I<sup>2</sup>C bus indexes and corresponding SDA/SCL pin numbers.
 
 Refer to your peripheral device's data sheet for SDA/SCL pin layouts.
 
@@ -355,9 +345,35 @@ The board component supports the following methods:
 
 Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` interfaces support the following methods:
 
-| [`GPIOPin` API](#gpiopin-api) | [`AnalogReader` API](#analogreader-api) | [`DigitalInterrupt` API](#digitalinterrupt-api) |
-|--|--|--|
-|<table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Set](#set)</td><td>...</td></tr><tr><td>[Get](#get)</td><td>....</td></tr><tr><td>[PWM](#pwm)</td><td>...</td></tr><tr><td>[SetPWM](#setpwm)</td><td>...</td></tr><tr><td>[PWMFreq](#pwmfreq)</td><td>...</td></tr><tr><td>[SetPWMFreq](#setpwmfreq)</td><td>...</td></tr> </table>| <table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Read](#read)</td><td>...</td></tr> </table>| <table> <tr><th>Method Name</th><th>Description</th></tr><tr><td>[Value](#value)</td><td>...</td></tr><tr><td>[Tick](#tick)</td><td>...</td></tr><tr><td>[AddCallback](#addcallback)</td><td>...</td></tr><tr><td>[AddPostProcessor](#addpostprocessor)</td><td>...</td></tr> </table>|
+[`GPIOPin`](#gpiopin-api) API:
+
+| Method Name | Description |
+| ----------- | ----------- |
+| [Set](#set) | Set the output of this pin to high/low. |
+| [Get](#get) | Get if this pin is active (high). |
+| [PWM](#pwm) | Get the pin’s Pulse Width Modulation duty cycle. |
+| [SetPWM](#pwmfreq) | Set the pin’s Pulse Width Modulation duty cycle. |
+| [PWMFreq](#pwmfreq) | Get the Pulse Width Modulation frequency of this pin. |
+| [SetPWMFreq](#setpwmfreq) | Set the Pulse Width Modulation frequency of this pin. |
+
+<br>
+
+[`AnalogReader`](#analogreader-api) API:
+
+| Method Name | Description |
+| ----------- | ----------- |
+| [Read](#read) | Read the current integer value of the digital signal output by the ADC. |
+
+<br>
+
+[`DigitalInterrupt`](#digitalinterrupt-api) API:
+
+| Method Name | Description |
+| ----------- | ----------- |
+| [Value](#value) | Get the current value of this interrupt. |
+| [Tick](#tick) | Record an interrupt. |
+| [AddCallback](#addcallback) | Add a channel as a callback for [Tick()](#tick). |
+| [AddPostProcessor](#addpostprocessor) | Add a PostProcessor function for [Value()](#value). |
 
 ### AnalogReaderByName
 
@@ -464,7 +480,7 @@ Get a `GPIOPin` by its pin number.
 
 **Parameters:**
 
-- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number (NOT GPIO number) of the GPIOPin you want to retrieve.
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number (NOT GPIO number) of the GPIO pin you want to retrieve.
 Refer to the pinout diagram and data sheet of your [board model](#configuration) for pin numbers and orientation.
 
 **Returns:**
@@ -630,11 +646,12 @@ status = await my_board.status()
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `mode` [(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
 - `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
 
 **Returns:**
 
-- `status` [(BoardStatus)](https://pkg.go.dev/go.viam.com/api/common/v1#BoardStatus): Mappings of the current status of the fields and values of any [AnalogReaders](#analogs) and [DigitalInterrupts](#digital_interrupts) configured on the board.
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
@@ -643,7 +660,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myBoard, err := board.FromRobot(robot, "my_board")
 
 // Get the current status of the board.
-status, err := myBoard.Status(context.Background(), nil)
+err := myBoard.Status(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -651,7 +668,52 @@ status, err := myBoard.Status(context.Background(), nil)
 
 ### ModelAttributes
 
-Get a struct with the board's innate `Remote` attribute indicating whether or not this model of board is accessed over a remote connection, e.g gRPC.
+Get the attributes related to the model of this board.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- `attributes` [(Attributes)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Attributes): Attributes related to the model of this board.
+Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.model_attributes).
+
+```python
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the attributes related to the model of this board.
+attributes = await my_board.model_attributes()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- `attributes` [(ModelAttributes)](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes): Attributes related to the model of this board.
+Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the attributes related to the model of this board.
+attributes := myBoard.ModelAttributes()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### SetPowerMode
 
@@ -711,7 +773,7 @@ myBoard.SetPowerMode(context.Background(), boardpb.PowerMode_POWER_MODE_OFFLINE_
 
 ### Set
 
-Set the digital signal output of this pin to either low (0V) or high (active, >0V).
+Set the digital signal output of this pin to low (0V) or high (active, >0V).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -770,7 +832,7 @@ err := pin.Set(context.Background(), "true", nil)
 
 ### Get
 
-Get if it's `true` that the digital signal output of this pin is set to high (active, >0V).
+Get if the digital signal output of this pin is high (active, >0V).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -950,7 +1012,7 @@ err := pin.SetPWM(context.Background(), .6, nil)
 
 ### PWMFreq
 
-Get the [Pulse Width Modulation (PWM) Frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
+Get the [Pulse Width Modulation (PWM) frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
 The optimal value for PWM Frequency depends on the type and model of [component](/components) you control with the signal output by this pin.
 Refer to your device's data sheet for PWM Frequency specifications.
 
@@ -1008,7 +1070,7 @@ freqHz, err := pin.PWMFreq(context.Background(), nil)
 
 ### SetPWMFreq
 
-Set the [Pulse Width Modulation (PWM) Frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
+Set the [Pulse Width Modulation (PWM) frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
 The optimal value for PWM Frequency depends on the type and model of [component](/components) you control with the PWM signal output by this pin.
 Refer to your device's data sheet for PWM Frequency specifications.
 
@@ -1068,7 +1130,7 @@ high := pin.SetPWMFreq(context.Background(), 1600, nil)
 
 ### Read
 
-Read the current integer value of the digital signal output by the [AnalogReader](#analogs).
+Read the current integer value of the digital signal output by the [ADC](#analogs).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1248,15 +1310,14 @@ rolling_avg, err := interrupt.Value(context.Background(), nil)
 
 ### Tick
 
+Record an interrupt and notify any [channels](https://go.dev/tour/concurrency/2) that have been added with [AddCallback()](#addcallback).
+
 {{% alert title="Caution" color="caution" %}}
 You should only need to integrate this method into your application code for testing purposes, as the handling of `Tick()` should be automated once the interrupt is configured.
 
 Calling this method is not yet fully implemented with the Viam Python SDK.
 {{% /alert %}}
 
-Record an interrupt.
-
-The parameters `Tick()` accepts differ between the `type` of interrupt [configured](#digital_interrupts):
 <!-- NOT YET IMPLEMENTED: See https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/board/client.py#L60
 
 BASIC 
@@ -1309,7 +1370,7 @@ await interrupt.tick(high=true, nanos=12345)
  -->
 
 {{< tabs >}}
-{{% tab name="Basic" %}}
+{{% tab name="Basic - Go" %}}
 
 **Parameters:**
 
@@ -1331,11 +1392,11 @@ myBoard, err := board.FromRobot(robot, "my_board")
 interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
 
 // Record an interrupt and notify any interested callbacks.
-count, err := interrupt.Tick(context.Background(), true, 12345)
+err := interrupt.Tick(context.Background(), true, 12345)
 ```
 
 {{% /tab %}}
-{{% tab name="Servo" %}}
+{{% tab name="Servo - Go" %}}
 
 **Parameters:**
 
@@ -1365,7 +1426,7 @@ err := interrupt.Tick(context.Background(), true, 12345)
 
 ### AddCallback
 
-Add channel or queue as a listener for when the state of the [configured GPIO pin](#digital_interrupts) changes.
+Add a [channel](https://go.dev/tour/concurrency/2) as a listener for when the state of the [configured GPIO pin](#digital_interrupts) changes.
 When [Tick()](#tick) is called, callbacks added to an interrupt will be sent the returned value `high`.
 
 {{% alert title="Caution" color="caution" %}}
@@ -1406,28 +1467,26 @@ interrupt.add_callback(callback_queue)
 
 **Parameters:**
 
-- `callback` [channel](https://go.dev/tour/concurrency/2): TODO Channel Description & Usage Code
+- `callback` [(chan Tick)](https://go.dev/tour/concurrency/2): The channel to add as a listener for when the state of the GPIO pin this interrupt is [configured for](#digital_interrupts) changes between high and low.
 
 **Returns:**
 
 - None
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt.AddCallback).
 
 ```go {class="line-numbers linkable-line-numbers"}
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
-pin, err := myBoard.GPIOPinByName("15")
-
 // Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+
+// Make the channel for Tick().
+ch := make(chan Tick)
+
+// Add the channel to "my_example_digital_interrupt" as a callback.
+interrupt.AddCallback(ch)
 ```
-
-{{% /tab %}}
-{{% tab name="Python" %}}
-
-Hello.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1435,7 +1494,11 @@ Hello.
 ### AddPostProcessor
 
 Add a [PostProcessor](https://pkg.go.dev/go.viam.com/rdk/components/board#PostProcessor) function that takes an integer input and transforms it into a new integer value.
-Functions added to an interrupt will be applied to values before they are returned by [Value()](#value).
+Functions added to an interrupt will be used to modify values before they are returned by [Value()](#value).
+
+{{% alert title="Caution" color="caution" %}}
+This method is  not yet fully implemented with the Viam Python SDK.
+{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -1458,6 +1521,11 @@ pin, err := myBoard.GPIOPinByName("15")
 
 // Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+
+MySimplePP := int64(math.Abs)
+
+// Add "MySimplePP" as a post processor to "my_example_digital_interrupt".
+interrupt.AddPostProcessor(MySimplePP)
 ```
 
 {{% /tab %}}
@@ -1482,86 +1550,6 @@ my_board = Board.from_robot(robot=robot, name="my_board")
 # Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
 ```
-
- TODO: Will do something with this but not in this format. API documentation may be sufficient. Could make subpage.  
-
-#### GPIO
-
-Essentially all electrical signals sent from and received by your board go through GPIO pins.
-It is important to understand some of what they can do and how to use them.
-
-Here are a few use cases:
-
-- Can be set high (to 3.3V for example) or low (zero volts) to do things like:
-  - Switch an enable or mode pin on a motor driver or other chip.
-  - Light up an LED or similar.
-  - Switch a relay.
-- Send a PWM signal to control the speed of a motor or servo.
-- Read the state of the pin (High/Low), which can be used to monitor the status of whatever is connected to it.
-- Receive digital signals from sensors [see I2C & SPI protocols](#i2c) and [Analogs](#analogs) sections below.
-- Receive input as a digital interrupt, [detailed below](#digital-interrupts).
-
-Some things GPIO pins *cannot* do:
-
-- Power a motor or other high power draw device directly.
-GPIO pins are built for logic levels of power, that is 3.3V and 16mA per pin.
-Power amplification (a motor driver or relay) would be necessary.
-- Receive signals over 3.3V (or whatever the logic voltage is on a given board).
-
-If you are using GPIO pin methods like `gpio_pin_by_name` ([documented in our Python SDK](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.gpio_pin_by_name)) you do not need to configure anything about the pins in your config file.
-The pins are automatically configured based on the board model you put in your config, and you can access them using the board pin number (*not* the GPIO number).
-You can find these pin numbers from an online service such as <a href="https://pinout.xyz" Target="_blank">pinout.xyz</a> or by running `pinout` in your Pi terminal.
-
-#### Getting started with GPIO and the Viam SDK
-
-The following snippet uses the `gpio_pin_by_name` method to get a GPIO pin by name.
-It then uses the `set` method to set the pin to high.
-This turns the LED connected to pin 8 on.
-
-{{% alert title="Note" color="note" %}}
-These code snippets expect you to have a board named "local" configured as a component of your robot, and an LED connected to pin 8.
-{{% /alert %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.board import Board
-
-local = Board.from_robot(robot, 'local')
-led = await local.gpio_pin_by_name('8')
-
-# When True, sets the LED pin to high/on.
-await led.set(True)
-await asyncio.sleep(1)
-
-# When False, sets the pin to low/off.
-await led.set(False)
-```
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "context"
-  "time"
-
-  "github.com/edaniels/golog"
-
-  "go.viam.com/rdk/components/board"
-)
-
-local, err := board.FromRobot(robot, "local")
-if err != nil {
-  logger.Fatalf("could not get board: %v", err)
-}
-
-led, err := local.GPIOPinByName("8")
-if err != nil {
-  logger.Fatalf("could not get led: %v", err)
-}
-
-// When true, sets the LED pin to high/on.
-led.Set(context.Background(), true, nil)
-time.Sleep(1 * time.Second)
-
-// When false, sets the LED pin to low/off.
-led.Set(context.Background(), false, nil)
 ``` -->
 
 ## Troubleshooting
