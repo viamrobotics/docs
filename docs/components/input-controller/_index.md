@@ -237,7 +237,7 @@ Get a list of the [Controls](#control-field) that your controller provides.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_position).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_input_controller = Controller.from_robot(robot=myRobotWithController, name='my_controller') ...
+my_input_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller") ...
 
 # Get the list of Controls provided by the controller.
 controls = await my_input_controller.get_controls()

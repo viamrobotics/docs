@@ -82,7 +82,7 @@ Get the current positions of the axis of the gantry (mm).
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.get_position).
 
 ```python
-my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
 # Get the current positions of the axes of the gantry in millimeters.
 positions = await my_gantry.get_position()
@@ -142,7 +142,7 @@ Move the axes of the gantry to the desired positions (mm).
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.move_to_position).
 
 ```python
-my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
 # Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multiaxis, with 3 axes.
 examplePositions = [1, 2, 3]
@@ -201,7 +201,7 @@ Get the lengths of the axes of the gantry (mm).
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.lengths).
 
 ```python
-my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
 # Get the lengths of the axes of the gantry in millimeters.
 lengths_mm = await my_gantry.get_lengths()
@@ -260,7 +260,7 @@ Stop all motion of the gantry.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.stop).
 
 ```python
-my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
 # Stop all motion of the gantry. It is assumed that the gantry stops immediately.
 await my_gantry.stop()
@@ -311,7 +311,7 @@ Get if the gantry is currently moving.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.is_moving).
 
 ```python
-my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
 # Stop all motion of the gantry. It is assumed that the gantry stops immediately.
 await my_gantry.stop()
