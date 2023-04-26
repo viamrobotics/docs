@@ -42,7 +42,7 @@ The GPIO pins on SBCs are generally not accessible to external computers.
 
 **GPIO Peripheral and Computer**:
 
-A device with GPIO pins, like the [numato](/numato) model of board, can still act as the signal wire hub of your robot.
+A device with GPIO pins, like the [numato](numato) model of board, can still act as the signal wire hub of your robot.
 However, a board like this does not contain a computer to run `viam-server` on the robot, so it can only act as the software hub if you have physically connected it to another computer.
 
 In this case, the computer running `viam-server` signals through the GPIO peripheral's GPIO pins to communicate with the other hardware components of the robot.
