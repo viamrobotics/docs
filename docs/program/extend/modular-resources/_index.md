@@ -18,13 +18,13 @@ With modular resources, you can:
 
 `viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/internals/rdk).
 
-Two key concepts exist across all Viam resources, built-in and modular, to facilitate this: [*APIs*](#apis) and [*models*](#models).
+Two key concepts exist across all Viam resources (both built-in and modular) to facilitate this: [*APIs*](#apis) and [*models*](#models).
 
 ## Key concepts
 
 ### APIs
 
-Every Viam [resource](/appendix/glossary/#term-resource) exposes an [Application Programming Interface (API)](https://www.ibm.com/topics/api).
+Every Viam [resource](/appendix/glossary/#term-resource) exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API).
 This can also be understood as the protocol that the resource "speaks".
 Each API is described through <a href="https://developers.google.com/protocol-buffers" target="_blank">protocol buffers</a>.
 Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
@@ -42,7 +42,7 @@ You can see built-in Viam resource APIs in the <a href="https://github.com/viamr
 
 ### Models
 
-A *model* descrines a specific implementation of a resource that implements this resource's API.
+A *model* descrines a specific implementation of a resource that implements (speaks) its API.
 Models allow you to control different versions of resource types with a consistent interface.
 
 For example:
@@ -64,8 +64,8 @@ However, you can also create and expose new API types using modular resources.
 
 Add a modular resource to your robot configuration in five steps:
 
-1. Code a module in Go or Python that implements a new resource and registers the component in the Viam RDK's [global registry of robotic parts](https://github.com/viamrobotics/rdk/blob/main/registry/registry.go).
-2. Create an executable file that runs your module.
+1. Code a module in Go or Python, using the module support libraries provided by the Python or Go [Viam SDK](/program/sdk-as-client).
+2. Compile or package the module code into an executable.
 3. Save the executable in a location your `viam-server` instance can access.
 4. Add a **module** referencing this executable to the configuration of your robot.
 5. Add a new component or service referencing the custom resource provided by the configured **module** to the configuration of your robot.
@@ -80,9 +80,26 @@ A configured **module** can make one or more *modular resources* available for c
 
 Code a module in the Go or Python programming languages with [Viam's SDKs](/program/sdk-as-client) that does the following:
 
-1. Implements a new resource, including implementing any methods the Viam RDK defines for the API of a built-in type if defining a new model (ex. `rdk:component:base`)
+{{< tabs >}}
+{{% tab name="Define a New Model of a Built-In Resource Type" %}}
 
-2. Validates the module and registers the component in the Viam RDK's [global registry of robotic parts](https://github.com/viamrobotics/rdk/blob/main/registry/registry.go).
+1. Code a new resource model implementing all methods the Viam RDK requires in the API definition of its built-in type (ex. `rdk:component:base`).
+2. Code a main program to serve as the module itself, using the module helpers provided by your chosen SDK.
+3. Import the API and model(s) into the main program, and register them with the module helper SDK.
+4. Compile and/or package your program.
+
+{{% /tab %}}
+{{% tab name="Define a New Type of Resource" %}}
+
+1. Define the messages and methods of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), then generate code in Python or Go and use the generated code to implement the higher level server and client functions required.
+2. Code at least one model of this new resource.
+Make sure to implement every method required in your API definition.
+3. Code a main program to serve as the module itself, using the module helpers provided by your chosen SDK.
+4. Import the API and model(s) into the main program, and register them with the module helper SDK.
+5. Compile and/or package your program.
+
+{{% /tab %}}
+{{% /tabs %}}
 
 For example:
 
@@ -241,7 +258,7 @@ func (base *MyBase) Close(ctx context.Context) error {
     return base.Stop(ctx, nil)
 }
 
-// Register the component in the Viam RDK's global registry of robotic parts
+// Register the component with the Go SDK
 func init() {
     registry.RegisterComponent(base.Subtype, Model, registry.Component{Constructor: newBase})
 
@@ -365,7 +382,7 @@ class MyBase(Base, Reconfigurable):
 
 ``` python {class="line-numbers linkable-line-numbers"}
 """
-This file registers the MyBase model with the Viam Registry.
+This file registers the MyBase model with the Python SDK.
 """
 
 from viam.components.motor import *
@@ -387,7 +404,8 @@ Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRe
 You must define all functions belonging to a built-in resource type if defining a new model. Otherwise, the class won’t instantiate.
 
 - If you are using the Python SDK, raise an `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
-- If you are using the Go SDK, return `errUnimplemented` or leave the body of functions you do not want to implement empty.
+- If you are using the Go SDK, return `errUnimplemented`.  
+- Additionally, return any values designated in the function's return signature, typed correctly.
 
 {{% /alert %}}
 
@@ -396,24 +414,10 @@ You must define all functions belonging to a built-in resource type if defining 
 To add a module to your robot, you need to have an [executable file](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
-One option is creating and save a new shell script (<file>.sh</file>) that runs your module.
+If using the Go SDK, Go will build a binary when you compile your module.
+
+If using the Python SDK, one option is creating and save a new shell script (<file>.sh</file>) that runs your module.
 For example:
-
-{{< tabs name="Template Shell Scripts as Module Executables" >}}
-{{% tab name="Go" %}}
-
-``` shell
-#!/bin/sh
-cd <path-to-your-module-directory>
-
-go build ./
-# Be sure to use `exec` so that termination signals reach the go process,
-# or handle forwarding termination signals manually
-exec ./<your-module-directory-name> $@
-```
-
-{{% /tab %}}
-{{% tab name="Python" %}}
 
 ``` shell
 #!/bin/sh
@@ -421,13 +425,10 @@ cd <path-to-your-module-directory>
 
 # Be sure to use `exec` so that termination signals reach the python process,
 # or handle forwarding termination signals manually
-exec python3 <your-module-directory-name>.main $@
+exec python3 <your-module-directory-name>.<main-program-filename> $@
 ```
 
-{{% /tab %}}
-{{< /tabs >}}
-
-To make this file executable, run the following command in your terminal:
+To make this shell script executable, run the following command in your terminal:
 
 ``` shell
 sudo chmod +x <FILEPATH>/<FILENAME>
@@ -442,7 +443,7 @@ For example, if you are running `viam-server` on an Raspberry Pi, you'll need to
 Obtain the path to the executable file on your computer's filesystem by running the following commands in your terminal:
 
 ``` shell
-cd <path-to-your-module-directory>
+cd <path-to-your-module-directory>/<main-program-filename>
 pwd
 ```
 

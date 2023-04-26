@@ -11,41 +11,61 @@ videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acryli
 ---
 
 {{% alert title="Caution" color="caution" %}}
-Support for this method of creating a custom resource implementation will be removed in favor of the module system.
+Modular resources are the preferred method of creating custom resource implementations for SDKs with module support unless you are hosting `viam-server` on a non-Linux platform or have another issue with compilation.
+
 Instructions on creating and using modular resources are available [here](/program/extend/modular-resources).
 {{% /alert %}}
 
-If a type or model of [component](/components) you are working with is not built into the [Viam RDK](/internals/rdk), you can use a [Viam SDK](/program/sdk-as-client) to code a custom resource implementation, host it on a server, and add it as a [remote](/manage/parts-and-remotes) of your robot.
-Then, you can configure a command to launch this remote server as a [process](/appendix/glossary/#term-process) of your robot to make sure the remote server is always running alongside the rest of your robot.
+If a type or model of [component](/components) you are working with is not built-in to the [Viam RDK](/internals/rdk), you can use a [Viam SDK](/program/sdk-as-client) to code a custom resource implementation, host it on a server, and add it as a [remote](/manage/parts-and-remotes) of your robot.
 
-After configuring the remote server, you can control and monitor your component programmatically with the SDKs and from the [Viam app](https://app.viam.com/).
+After configuring the remote server, control and monitor your component programmatically with the SDKs and from the [Viam app](https://app.viam.com/).
 
-For example, let's say that you have a robotic arm that is not one of the models supported by [Viam's arm component](/components/arm/), and you want to integrate it with Viam.
-You will need to create a custom component and register the new arm model in order to use it with the Viam SDK.
-Once your new arm is registered, you will be able to use it remotely with Viam.
+For example:
 
-{{% alert title="Tip" color="tip" %}}
-Here is an example of [how to create a custom arm component in the Python SDK documentation](https://python.viam.dev/examples/example.html#subclass-a-component).
+- You have a robotic arm that is not one of the models supported by [Viam's arm component](/components/arm/), and you want to integrate it with Viam.
+- You create a custom component and register the new arm model with a Viam SDK.
+- You control it remotely as part of your robot.
+
+This example is available in the [Python SDK documentation](https://python.viam.dev/examples/example.html#subclass-a-component).
+
+## Instructions
+
+To add a custom resource as a [remote](/manage/parts-and-remotes):
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+1. Code a new model of a built-in resource type. You can do this by creating a new interface that implements required methods. The new model must implement any functions of the built-in resource type marked as required in its RDK API definition.
+2. Register the custom component on a new gRPC server instance and start the server.
+You can do this with the `go.viam.com/utils/rpc` package.
+1. Add the server as a [remote](/manage/parts-and-remotes) of your robot.
+2. Configure a command to launch this remote server as a [process](/appendix/glossary/#term-process) of your robot to make sure the remote server is always running alongside the rest of your robot.
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+1. Code a new model of a built-in resource type.
+You can do this by subclassing a built in resource type like `sensor` or `arm`.
+The new model must implement any functions of the built-in resource type marked as required in its RDK API definition.
+1. Register the custom component on a new gRPC server instance and start the server.
+You can do this with the `viam.rpc.server` library.
+1. Add the server as a [remote](/manage/parts-and-remotes) of your robot.
+2. Configure a command to launch this remote server as a [process](/appendix/glossary/#term-process) of your robot to make sure the remote server is always running alongside the rest of your robot.
+
+{{% /tab %}}
+{{% /tabs %}}
+
+{{% alert title="Caution" color="caution" %}}
+
+You must define all functions belonging to a built-in resource type if defining a new model. Otherwise, the class won’t instantiate.
+
+- If you are using the Python SDK, raise an `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
+- If you are using the Go SDK, return `errUnimplemented`.  
+- Additionally, return any values designated in the function's return signature, typed correctly.
+
 {{% /alert %}}
 
-To add a custom resource as a remote:
-
-1. Subclass a component and implement desired functions.
-
-    You must define all functions belonging to a built-in resource type if defining a new model of an existing type.
-    Otherwise, the class won't instantiate.
-    If you are using the Python SDK, put `pass` or `raise NotImplementedError()` in the body of functions you do not want to implement.
-    If you are using the Go SDK, leave the body of functions you do not want to implement empty.
-
-2. Register the custom component on a new `rpc.server.Server` instance and start the server.
-3. Add the server as a remote of your robot.
-4. Add a process to your robot that runs the server.
-
-## See also
-
-A complete tutorial on how to create a custom component with the Viam Python SDK is available [here](https://python.viam.dev/examples/example.html#create-custom-components).
-
-More examples:
+The following tutorials also explain how to add custom components as remotes:
 
 {{< cards >}}
     {{% card link="/tutorials/custom/custom-base-dog" size="small" %}}
