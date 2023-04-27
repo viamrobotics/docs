@@ -40,6 +40,7 @@ moved = await motion.move(
         "line_tolerance": 0.2
      },
      extra={})
+```
 
 ## Orientation Constraint
 
@@ -63,6 +64,7 @@ moved = await motion.move(
     world_state=worldState,
     constraints={"motion_profile": "orientation"},
     extra={})
+```
 
 <!--
 ## Next steps
