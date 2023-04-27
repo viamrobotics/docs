@@ -37,9 +37,8 @@ To add a custom resource as a [remote](/manage/parts-and-remotes):
 
 1. Code a new model of a built-in resource type. You can do this by creating a new interface that implements required methods. The new model must implement any functions of the built-in resource type marked as required in its RDK API definition.
 2. Register the custom component on a new gRPC server instance and start the server.
-You can do this with the `go.viam.com/utils/rpc` package.
-1. Add the server as a [remote](/manage/parts-and-remotes) of your robot.
-2. Configure a command to launch this remote server as a [process](/appendix/glossary/#term-process) of your robot to make sure the remote server is always running alongside the rest of your robot.
+3. Add the server as a [remote](/manage/parts-and-remotes) of your robot.
+4. Configure a command to launch this remote server as a [process](/appendix/glossary/#term-process) of your robot to make sure the remote server is always running alongside the rest of your robot.
 
 {{% /tab %}}
 {{% tab name="Python" %}}
@@ -47,10 +46,10 @@ You can do this with the `go.viam.com/utils/rpc` package.
 1. Code a new model of a built-in resource type.
 You can do this by subclassing a built in resource type like `sensor` or `arm`.
 The new model must implement any functions of the built-in resource type marked as required in its RDK API definition.
-1. Register the custom component on a new gRPC server instance and start the server.
+2. Register the custom component on a new gRPC server instance and start the server.
 You can do this with the `viam.rpc.server` library.
-1. Add the server as a [remote](/manage/parts-and-remotes) of your robot.
-2. Configure a command to launch this remote server as a [process](/appendix/glossary/#term-process) of your robot to make sure the remote server is always running alongside the rest of your robot.
+3. Add the server as a [remote](/manage/parts-and-remotes) of your robot.
+4. Configure a command to launch this remote server as a [process](/appendix/glossary/#term-process) of your robot to make sure the remote server is always running alongside the rest of your robot.
 
 {{% /tab %}}
 {{% /tabs %}}
