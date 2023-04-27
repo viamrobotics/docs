@@ -14,11 +14,11 @@ A *board* is the signal wire hub of a robot that provides access to general purp
 
 You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
+## Configuration
+
 Configure a *board* component on your robot to communicate with the other [components](/components) of the robot, signaling as overseen by a computer running `viam-server`.
 
 Supported board models are single-board computers (SBCs) with GPIO pins and CPUs, GPIO peripheral devices, or PWM peripheral devices that you must connect to a SBC.
-
-## Configuration
 
 For model-specific configuration information, click on one of the following models:
 
@@ -44,9 +44,9 @@ An [analog-to-digital converter](https://www.electronics-tutorials.ws/combinatio
 ADCs are useful when building a robot, as they enable your board to read the analog signal output by most types of [sensors](/components/sensor/) and other hardware components.
 
 To integrate an ADC into your robot, you must first physically connect the pins on your ADC and on your board.
-A [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all) is useful and wiring with [SPI](#spis) is often necessary for the two devices to be able to communicate.
+A [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all) is useful for connecting the pins and wiring with [SPI](#spis) is often necessary for the two devices to be able to communicate.
 
-Then, integrate `analogs` into the `attributes` of your board as follows:
+Then, integrate `analogs` into the `attributes` of your board by adding the following to your board's JSON configuration:
 
 {{< tabs name="Configure an Analog Reader" >}}
 {{% tab name="JSON Template" %}}
@@ -108,8 +108,8 @@ The following properties are available for `analogs`:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the analog reader. |
-|`pin`| string | **Required** | The pin number of the ADC's connection pin, wired to the board.
-|`chip_select`| string | **Required** | The pin number of the board's connection pin, wired to the ADC. |
+|`pin`| string | **Required** | The pin number of the ADC's connection pin, wired to the board. This should be labeled as the physical index of the pin on the ADC.
+|`chip_select`| string | **Required** | The [pin number](/appendix/glossary/#term-pin-number) of the board's connection pin, wired to the ADC. |
 |`spi_bus` | string | Optional | The `name` of the [SPI bus](#spis) connecting the ADC and board. Required if your board must communicate with the ADC with the SPI protocol. |
 | `average_over_ms` | int | Optional | Duration in milliseconds over which the rolling average of the analog input should be taken. |
 |`samples_per_sec` | int | Optional | Sampling rate of the analog input in samples per second. |
@@ -119,10 +119,10 @@ The following properties are available for `analogs`:
 [Interrupts](https://en.wikipedia.org/wiki/Interrupt) are a method of signaling precise state changes.
 Configuring `digital_interrupts` to monitor GPIO pins on your board is useful when your application needs to know precisely when there is a change in GPIO value between high and low.
 
-- When an interrupt configured on your board processes a change in the state of the GPIO pin it is configured to monitor, it "knocks on the door" with [`Tick()`](#tick).
-- Calling [`Get()`](#get) on a GPIO pin, which you can do without configuring interrupts, is great when you want to know a pin's value at specific points, but is less precise and convenient than using an interrupt.
+- When an interrupt configured on your board processes a change in the state of the GPIO pin it is configured to monitor, it calls [`Tick()`](#tick) to record the state change and notify any interested [callbacks](#addcallback) to "interrupt" the program.
+- Calling [`Get()`](#get) on a GPIO pin, which you can do without configuring interrupts, is useful when you want to know a pin's value at specific points in your program, but is less precise and convenient than using an interrupt.
 
-Integrate `digital_interrupts` into your robot in the `attributes` of your board as follows:
+Integrate `digital_interrupts` into your robot in the `attributes` of your board by adding the following to your board's JSON configuration:
 
 {{< tabs name="Configure a Digital Interrupt" >}}
 {{% tab name="JSON Template" %}}
@@ -172,7 +172,7 @@ The following properties are available for `digital_interrupts`:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the digital interrupt. |
-|`pin`| string | **Required** | The pin number of the board's GPIO pin that you wish to configure the digital interrupt for. |
+|`pin`| string | **Required** | The [pin number](/appendix/glossary/#term-pin-number) of the board's GPIO pin that you wish to configure the digital interrupt for. |
 |`type`| string | Optional | <ul><li>`basic`: Recommended. Tracks interrupt count. </li> <li>`servo`: For interrupts configured for a pin controlling a [servo](/components/servo). Tracks pulse width value. </li></ul> |
 
 ### `spis`
@@ -195,7 +195,7 @@ See your [board model's configuration instructions](#configuration) if applicabl
 
 As supported boards have CS pins internally configured to correspond with SPI bus indices, you can enable this connection in your board's configuration by specifying the index of the bus at your CS pin's location and giving it a name.
 
-Integrate `spis` into your robot in the `attributes` of your board as follows:
+Integrate `spis` into your robot in the `attributes` of your board by adding the following to your board's JSON configuration:
 
 {{< tabs name="Configure a SPI Bus" >}}
 {{% tab name="JSON Example" %}}
@@ -234,7 +234,7 @@ The following properties are available for `spis`:
 
 {{% alert title="WIRING WITH SPI" color="tip" %}}
 
-Refer to your board's pinout diagram or data sheet for SPI bus indexes and corresponding CS/MOSI/MISO/SCLK pin numbers.
+Refer to your board's pinout diagram or data sheet for SPI bus indexes and corresponding CS/MOSI/MISO/SCLK [pin numbers](/appendix/glossary/#term-pin-number).
 
 Refer to your peripheral device's data sheet for CS/MOSI/MISO/SLCK pin layouts.
 
@@ -281,7 +281,7 @@ The following properties are available for `i2cs`:
 
 {{% alert title="WIRING WITH I<sup>2</sup>C" color="tip" %}}
 
-Refer to your board's pinout diagram or data sheet for I<sup>2</sup>C bus indexes and corresponding SDA/SCL pin numbers.
+Refer to your board's pinout diagram or data sheet for I<sup>2</sup>C bus indexes and corresponding SDA/SCL [pin numbers](/appendix/glossary/#term-pin-number).
 
 Refer to your peripheral device's data sheet for SDA/SCL pin layouts.
 
@@ -305,7 +305,7 @@ The board component supports the following methods:
 | ----------- | ----------- |
 | [AnalogReaderByName](#analogreaderbyname) | Get an [`AnalogReader`](#analogs) by `name`. |
 | [DigitalInterruptByName](#digitalinterruptbyname) | Get a [`DigitalInterrupt`](#digital_interrupts) by `name`. |
-| [GPIOPinByName](#gpiopinbyname) | Get a `GPIOPin` by `name`. |
+| [GPIOPinByName](#gpiopinbyname) | Get a `GPIOPin` by its [pin number](/appendix/glossary/#term-pin-number). |
 | [AnalogReaderNames](#analogreadernames) | Get the `name` of every [`AnalogReader`](#analogs). |
 | [DigitalInterruptNames](#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](#digital_interrupts). |
 | [Status](#status) | Get the current status of this board. |
@@ -320,10 +320,10 @@ Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` inter
 | ----------- | ----------- |
 | [Set](#set) | Set the output of this pin to high/low. |
 | [Get](#get) | Get if this pin is active (high). |
-| [PWM](#pwm) | Get the pin’s Pulse-width modulation duty cycle. |
-| [SetPWM](#pwmfreq) | Set the pin’s Pulse-width modulation duty cycle. |
-| [PWMFreq](#pwmfreq) | Get the Pulse-width modulation frequency of this pin. |
-| [SetPWMFreq](#setpwmfreq) | Set the Pulse-width modulation frequency of this pin. |
+| [PWM](#pwm) | Get the pin’s pulse-width modulation duty cycle. |
+| [SetPWM](#pwmfreq) | Set the pin’s pulse-width modulation duty cycle. |
+| [PWMFreq](#pwmfreq) | Get the pulse-width modulation frequency of this pin. |
+| [SetPWMFreq](#setpwmfreq) | Set the pulse-width modulation frequency of this pin. |
 
 <br>
 
@@ -442,15 +442,15 @@ interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
 
 ### GPIOPinByName
 
-Get a `GPIOPin` by its pin number.
+Get a `GPIOPin` by [pin number](/appendix/glossary/#term-pin-number).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number (NOT GPIO number) of the GPIO pin you want to retrieve.
-Refer to the pinout diagram and data sheet of your [board model](#configuration) for pin numbers and orientation.
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface.
+Refer to the pinout diagram and data sheet of your [board model](#configuration) for [pin numbers](/appendix/glossary/#term-pin-number) and orientation.
 
 **Returns:**
 
@@ -461,7 +461,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+# Get the GPIOPin with pin number 15.
 pin = await my_board.GPIO_pin_by_name(name="15")
 ```
 
@@ -470,8 +470,8 @@ pin = await my_board.GPIO_pin_by_name(name="15")
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number (NOT GPIO number) of the GPIOPin you want to retrieve.
-Refer to the pinout diagram and data sheet of your [board model](#configuration) for pin numbers and orientation.
+- `name` [(string)](https://pkg.go.dev/builtin#string): [Pin number](/appendix/glossary/#term-pin-number) of the GPIO pin you want to retrieve as a `GPIOPin` interface.
+Refer to the pinout diagram and data sheet of your [board model](#configuration) for [pin numbers](/appendix/glossary/#term-pin-number) and orientation.
 
 **Returns:**
 
@@ -483,7 +483,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+// Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
 ```
 
@@ -617,7 +617,7 @@ status = await my_board.status()
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `mode` [(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
 - `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
-- `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
+- `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board exits the given power mode after the specified time in nanoseconds has passed.
 
 **Returns:**
 
@@ -763,7 +763,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+# Get the GPIOPin with pin number 15.
 pin = await my_board.GPIO_pin_by_name(name="15")
 
 # Set the pin to high.
@@ -789,7 +789,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+// Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
 
 // Set the pin to high.
@@ -813,18 +813,18 @@ Get if the digital signal output of this pin is high (active, >0V).
 
 **Returns:**
 
-- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
-If `false`, the state of the pin is set to low.
+- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
+If `false`, the state of the pin is low.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get).
 
 ```python
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+# Get the GPIOPin with pin number 15.
 pin = await my_board.GPIO_pin_by_name(name="15")
 
-# Get if it is true or false that the pin is set to high.
+# Get if it is true or false that the state of the pin is high.
 high = await pin.get()
 ```
 
@@ -838,8 +838,8 @@ high = await pin.get()
 
 **Returns:**
 
-- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
-If `false`, the state of the pin is set to low.
+- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is high.
+If `false`, the state of the pin is low.
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -847,10 +847,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+// Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
 
-// Get if it is true or false that the pin is set to high.
+// Get if it is true or false that the state of the pin is high.
 high := pin.Get(context.Background(), nil)
 ```
 
@@ -867,7 +867,7 @@ This enables the board to communicate with these components.
 
 {{% /alert %}}
 
-Get the pin's [Pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
+Get the pin's [pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -879,17 +879,17 @@ Get the pin's [Pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.c
 
 **Returns:**
 
-- `duty_cycle` [(float)](https://docs.python.org/3/library/functions.html#float): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state relative to the interval period of the PWM signal.
+- `duty_cycle` [(float)](https://docs.python.org/3/library/functions.html#float): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get_pwm).
 
 ```python
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+# Get the GPIOPin with pin number 15.
 pin = await my_board.GPIO_pin_by_name(name="15")
 
-# Get if it is true or false that the pin is set to high.
+# Get if it is true or false that the state of the pin is high.
 duty_cycle = await pin.get_pwm()
 ```
 
@@ -903,7 +903,7 @@ duty_cycle = await pin.get_pwm()
 
 **Returns:**
 
-- `duty_cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state relative to the interval period of the PWM signal.
+- `duty_cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -911,10 +911,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+// Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
 
-// Get if it is true or false that the pin is set to high.
+// Get if it is true or false that the state of the pin is high.
 duty_cycle := pin.PWM(context.Background(), nil)
 ```
 
@@ -923,31 +923,31 @@ duty_cycle := pin.PWM(context.Background(), nil)
 
 ### SetPWM
 
-Set the pin's [Pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] indicating the percentage of time the digital signal output of this pin is in the "high" state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
+Set the pin's [Pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] indicating the percentage of time the digital signal output of this pin is in the high state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state relative to the interval period of the PWM signal.
+- `cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
 - `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
-If `false`, the state of the pin is set to low.
+- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
+If `false`, the state of the pin is low.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set_pwm).
 
 ```python
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+# Get the GPIOPin with pin number 15.
 pin = await my_board.GPIO_pin_by_name(name="15")
 
-# Set the duty cycle to .6, meaning that this pin will be set to high for 60% of the duration of the PWM interval period.
+# Set the duty cycle to .6, meaning that this pin will be in the high state for 60% of the duration of the PWM interval period.
 await pin.set_pwm(cycle=.6)
 ```
 
@@ -957,7 +957,7 @@ await pin.set_pwm(cycle=.6)
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the "high" state relative to the interval period of the PWM signal.
+- `cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
 - `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -969,10 +969,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+// Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
 
-// Set the duty cycle to .6, meaning that this pin will be set to high for 60% of the duration of the PWM interval period.
+// Set the duty cycle to .6, meaning that this pin will be in the high state for 60% of the duration of the PWM interval period.
 err := pin.SetPWM(context.Background(), .6, nil)
 ```
 
@@ -1002,7 +1002,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+# Get the GPIOPin with pin number 15.
 pin = await my_board.GPIO_pin_by_name(name="15")
 
 # Get the PWM frequency of this pin.
@@ -1027,7 +1027,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+// Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
 
 // Get the PWM frequency of this pin.
@@ -1060,7 +1060,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+# Get the GPIOPin with pin number 15.
 pin = await my_board.GPIO_pin_by_name(name="15")
 
 # Set the PWM frequency of this pin to 1600 Hz.
@@ -1085,7 +1085,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+// Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
 
 // Set the PWM frequency of this pin to 1600 Hz.
@@ -1118,7 +1118,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+# Get the GPIOPin with pin number 15.
 pin = await my_board.GPIO_pin_by_name(name="15")
 
 # Get if it is true or false that the pin is set to high.
@@ -1418,7 +1418,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 """from multiprocessing import Queue"""
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+# Get the GPIOPin with pin number 15.
 pin = await my_board.GPIO_pin_by_name(name="15")
 
 callback_queue = Queue(maxsize=10)
@@ -1485,12 +1485,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the GPIOPin with Pin Number 15 (GPIO 22 on Raspberry Pi 4).
+// Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
 
 // Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
 
+// Create a simple post processing function calculating absolute value of integers.
 MySimplePP := int64(math.Abs)
 
 // Add "MySimplePP" as a post processor to "my_example_digital_interrupt".
