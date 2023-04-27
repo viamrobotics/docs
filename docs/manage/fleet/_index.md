@@ -47,7 +47,7 @@ For information on how to manage organizations, see [Organizations](organization
 
 _Coming soon._
 
-Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](https://app.viam.com) by assigning users roles that confer permissions:
+Role Based Access Control (RBAC) is a way to enforce security in the [Viam app](https://app.viam.com) by assigning users roles that confer permissions:
 
 - **Owner**: Can see and edit [every tab on the robot page](robots/#navigating-the-robot-page).
   Can manage users in the app.
