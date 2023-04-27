@@ -47,7 +47,7 @@ Go to your robot's **code sample** tab on the [Viam app](https://app.viam.com) f
 
 ### Move
 
-`Move` is the primary way to move multiple components, or to move any object to any other location.
+The `Move` method is the primary way to move multiple components, or to move any object to any other location.
 Given a destination pose and a component to move to that destination, `Move` will:
 
 1. Construct a full kinematic chain from goal to destination including all movable components in between.
@@ -179,7 +179,7 @@ myFrame := "my_gripper_offset"
 goalPose := PoseInFrame(0, 0, 300, 0, 0, 1, 0)
 
 // Move the gripper
-moved, err := motionService.Move(context.TODO(), goalPose, worldState, nil, nil)
+moved, err := motionService.Move(context.Background(), goalPose, worldState, nil, nil)
 ```
 
 {{% /tab %}}
