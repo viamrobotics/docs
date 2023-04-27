@@ -30,7 +30,8 @@ If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fra
 
 ## Use Viam for collaboration
 
-To facilitate collaboration, you can add collaborators to organizations, and share locations across multiple organizations. Soon you will also be able to assign [permissions](#permissions) to collaborators.
+To facilitate collaboration, you can add collaborators to organizations, and share locations across multiple organizations.
+Soon you will also be able to assign [permissions](#permissions) to collaborators.
 
 When you create a Viam account, Viam automatically creates an organization for you.
 You can use this organization or add another organization as your collaboration hub by inviting collaborators to your organization.
@@ -42,7 +43,7 @@ This includes the permissions to delete robots and locations, as well as the abi
 [Permissions](#permissions) are coming soon.
 {{< /alert >}}
 
-You can also share locations across different organizations **that you are also part of**.
+You can also share locations across different organizations **that you are part of**.
 
 ### Permissions
 
@@ -61,13 +62,13 @@ A user can have one or more roles, granting the user the respective permissions 
 
 Viam is built in a way that allows you to change configurations, deploy packages, check logs, and control your robots both when you are close to your robot, as well as remotely.
 
-Robot [configuration](robots/#configuration) and Robot [code](#control-with-code) is intentially kept separate, allowing you to keep track of versioning and debug issues separately.
+Robot [configuration](robots/#configuration) and robot [code](#control-with-code) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
 
 ### Configuration
 
 Everyone who has access to the location the robot is in, can change the robot's configuration.
 When you or your collaborators change a robot's configuration, the robot will automatically reconfigure itself within 15 seconds.
-You can see configuration changes from yourself or your collaborators on the [History tab](robots/#history).
+You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
 You can also revert to an earlier configuration from the History tab.
 
 {{< alert title="Note" color="note" >}}
@@ -84,14 +85,14 @@ You and your collaborators can deploy control logic, [modular resources](/progra
 
 Everyone who has access to the location the robot is in, can remotely control the robot using the [**control** tab](robots/#control).
 This allows you to visually test and remotely operate robot components and services
-If you are remotely controlling the robot, it is recommended that you or your collaborators install a [camera](/components/camera), so you can monitor the robot as you control it.
+If you are remotely controlling the robot, it is recommended that you or your collaborators install a [camera](/components/camera) so you can monitor the robot as you control it.
 
 ### Control with code
 
-Everyone who has access to the location the robot is in, can obtain the robot address and secret needed to send API calls to the robot.
+Everyone who has access to the robot's location can obtain the robot address and secret needed to send API calls to the robot.
 You can also share the robot address and location secret without granting location access in the Viam app.
 
-With the robot address and the location secret, you can write code, collaborate on your code using tools like GitHub and run your code on the robot from anywhere in the world.
+With the robot address and the location secret, you can write code, collaborate on your code using tools like GitHub, and run your code on the robot from anywhere in the world.
 If you are remotely controlling the robot, it is recommended that you or your collaborators install a [camera](/components/camera), so you can monitor the robot as you control it.
 
 {{% alert title="Caution" color="caution" %}}
