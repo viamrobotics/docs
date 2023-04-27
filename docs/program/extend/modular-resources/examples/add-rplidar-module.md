@@ -3,9 +3,9 @@ title: "Add a Rplidar as a Modular Component"
 linkTitle: "Add a Rplidar as a Modular Component"
 weight: 40
 type: "docs"
-description: "How to add a Rplidar as a modular component of your robot."
+description: "How to add an RPlidar as a modular component of your robot."
 image: "/program/img/modular-resources/rplidar-on-robot.png"
-imageAlt: "A rplidar mounted to a Viam rover."
+imageAlt: "An R-P-lidar mounted to a Viam rover."
 tags: ["slam", "services"]
 # SMEs: Kat, Jeremy
 ---
