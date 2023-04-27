@@ -20,7 +20,7 @@ Install the binary required to utilize the `cartographer` library on your machin
 {{% tab name="Linux aarch64" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-aarch64.AppImage
+sudo curl -o /usr/local/bin/cartographer-module http://packages.viam.com/apps/slam-servers/cartographer-module-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
 
@@ -28,7 +28,7 @@ sudo chmod a+rx /usr/local/bin/cartographer-module
 {{% tab name="Linux x86_64" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-x86_64.AppImage
+sudo curl -o /usr/local/bin/cartographer-module http://packages.viam.com/apps/slam-servers/cartographer-module-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
 
