@@ -147,7 +147,10 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
       Their poses are relative to the *origin* of the specified frame.
       A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
       This is different from `destination` and `componentName`, where poses are relative to the distal end of a frame.
-  - **Transforms**: These are a list of `PoseInFrame` messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
+  - **Transforms**: A list of `PoseInFrame` messages that specify other transformations to temporarily add to the frame system at solve time.
+  Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
+  For example, you could use a transform to represent the volume of a marker held in your robot's gripper.
+  Transforms are not added to the config or carried into later processes.
 
 - `constraints` ([Constraints](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints)): Pass in optional [motion constraints](./constraints/).
   By default, motion is unconstrained with the exception of obstacle avoidance.

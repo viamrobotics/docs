@@ -29,8 +29,17 @@ This has the following sub-options:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Move a gripper with a linear constraint
-moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose), world_state=worldState, constraints={"motion_profile": "linear", "line_tolerance": 0.2}, extra={})
-```
+moved = await motion.move(
+    component_name=my_gripper,
+    destination=PoseInFrame(
+        reference_frame="myFrame",
+        pose=goal_pose), 
+    world_state=worldState, 
+    constraints={
+        "motion_profile": "linear", 
+        "line_tolerance": 0.2
+     },
+     extra={})
 
 ## Orientation Constraint
 
@@ -46,8 +55,14 @@ If set to zero, a movement with identical starting and ending orientations will 
 
 ``` python
 ## Move a gripper with an orientation constraint
-moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose), world_state=worldState, constraints={"motion_profile": "orientation"}, extra={})
-```
+moved = await motion.move(
+    component_name=my_gripper, 
+    destination=PoseInFrame(
+        reference_frame="myFrame",
+        pose=goal_pose),
+    world_state=worldState,
+    constraints={"motion_profile": "orientation"},
+    extra={})
 
 <!--
 ## Next steps
