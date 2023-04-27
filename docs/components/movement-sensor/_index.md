@@ -560,7 +560,7 @@ readings = await my_movement_sensor.get_readings()
 **Returns:**
 
 - (map[[string]](https://pkg.go.dev/builtin#string)interface{}): A map containing the measurements from the sensor.
-Contents depend on sensor model and can be of any type.
+    Contents depend on sensor model and can be of any type.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs for Sensor](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor) (because `Readings` is part of the general sensor API that movement sensor wraps).
