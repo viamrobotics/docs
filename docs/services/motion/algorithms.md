@@ -6,15 +6,18 @@ type: "docs"
 description: "Information about the motion planning algorithms Viam uses."
 ---
 
-Viam implements two planning algorithms, both based in principle on [RRT](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree):
+Robotic motion planning is heavily reliant on planning algorithms to determine how to achieve motion for a particular scenario.
+Many algorithms already exist for this problem, and motion planning is a domain where improvements and novel developments occur frequently.
+Viam does not implement all motion planning algorithms but has implemented two in its strategy for planning general robot motion.
+The two algorithms Viam supports are both based in principle on [RRT](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree):
 
 ## RRT*-Connect
 
 RRT*-Connect is an asymptotically optimal planner that samples the planning space randomly, connecting viable paths as it finds them.
 It continues sampling after it finds its first valid path, and if it finds future paths that are more efficient, it updates to report those instead.
 For Viam, efficiency/path quality is measured in terms of total kinematics state excursion.
-For an arm, this refers to joints; the total amount of joint change is minimized.
-For a gantry, this refers to the amount of linear movement.
+For an arm, the sum of all joint changes is minimized.
+For a gantry, the sum of all linear movement is minimized.
 This algorithm can route around obstacles, but cannot satisfy topological constraints.
 
 ## CBiRRT
