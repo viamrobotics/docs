@@ -1,5 +1,5 @@
 ---
-title: "Frame System Configuration for a Component attached to a Fixed Object"
+title: "Reference Frame Configuration"
 linkTitle: "Configure a Reference Frame"
 description: "How to configure the Frame System in an scenario where a component is fixed to a static object."
 type: docs

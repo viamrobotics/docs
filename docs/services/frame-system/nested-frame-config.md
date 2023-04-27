@@ -1,5 +1,5 @@
 ---
-title: "Frame System Configuration for a Component attached to a Dynamic Component"
+title: "Nested Reference Frame Configuration"
 linkTitle: "Configure Nested Reference Frames"
 description: "How to configure the Frame System in an scenario where a component is attached to another component."
 type: docs
