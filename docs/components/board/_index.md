@@ -33,6 +33,8 @@ For model-specific configuration information, click on one of the following mode
 | [`pca9685`](pca9685) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](#pwm)/[servo](/components/servo) driver peripheral |
 | [`fake`](fake) | A model used for testing, with no physical hardware |
 
+## Attribute Configuration
+
 The following configuration attributes are available for every board model besides the `numato` and `pca9685` peripherals and `fake`.
 
 Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs), [digital interrupts](#digital_interrupts), and components that must communicate through the [SPI](#spis) and [I<sup>2</sup>C](#i2cs) protocols into your robot.
