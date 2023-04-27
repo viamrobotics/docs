@@ -443,8 +443,7 @@ For example, if you are running `viam-server` on an Raspberry Pi, you'll need to
 Obtain the path to the executable file on your computer's filesystem by running the following commands in your terminal:
 
 ``` shell
-cd <path-to-your-module-directory>/<main-program-filename>
-pwd
+realpath <path-to-your-module-directory>/<your-module>
 ```
 
 ### Configure your module
