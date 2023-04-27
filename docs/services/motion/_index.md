@@ -82,11 +82,14 @@ The Motion Service takes the volumes associated with all configured robot compon
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles with mobile parents move along with their parents while solving.
       This ensures that obstacles that are attached to moving components do not cause collisions during movement.
-    - Geometries are "part of" their frame, rather than at the distal end of the frame.
+    - Geometry locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
       A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
       This is different from `destination` and `component_name`, where poses are relative to the distal end of a frame.
-  - **Transforms**: These are a list of `PoseInFrame` messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
+  - **Transforms**: A list of `PoseInFrame` messages that specify other transformations to temporarily add to the frame system at solve time.
+  Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
+  For example, you could use a transform to represent the volume of a marker held in your robot's gripper.
+  Transforms are not added to the config or carried into later processes.
 
 - `constraints` ([Constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints)) (*optional*): Pass in [motion constraints](./constraints/).
 By default, motion is unconstrained with the exception of obstacle avoidance.
@@ -215,21 +218,7 @@ If you need collision checking and obstacle avoidance, use [`Move`](#move).
   Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/).
   The `destination` will be converted into the frame of the component specified in `component_name` when passed to `move_to_position`.
 
-- `world_state` ([WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (*optional*): Data structure specifying information about the world around the robot.
-  **See [note above](#move-vs-movetoposition); a custom implementation of `MoveToPosition` may or may not make use of `world_state`.**
-
-  `world_state` includes obstacles and transforms:
-  - **Obstacles**: Geometries located at a pose relative to some frame.
-    When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
-    Important considerations:
-    - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
-    - The Motion Service assumes that obstacles with mobile parents move along with their parents while solving.
-      This ensures that obstacles that are temporarily attached to moving components do not cause collisions during movement.
-    - Geometries are "part of" their frame, rather than at the distal end of the frame.
-      Their poses are relative to the *origin* of the specified frame.
-      A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
-      This is different from `destination` and `component_name`, where poses are relative to the distal end of a frame.
-  - **Transforms**: These are a list of `PoseInFrame` messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
+- `world_state` ([WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (*optional*): Not used. See [note above](#move-vs-movetoposition).
 
 - `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
 
@@ -269,21 +258,7 @@ As of April 21, 2023, [arm](/components/arm/) is the only component so supported
   Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/).
   The `destination` will be converted into the frame of the component specified in `componentName` when passed to `MoveToPosition`.
 
-- `worldState` ([WorldState](https://pkg.go.dev/go.viam.com/rdk/referenceframe#WorldState)): Data structure specifying information about the world around the robot.
-  **See [note above](#move-vs-movetoposition); a custom implementation of `MoveToPosition` may or may not make use of `world_state`.**
-
-  `worldState` includes obstacles and transforms:
-  - **Obstacles**: Geometries located at a pose relative to some frame.
-    When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
-    Important considerations:
-    - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
-    - The Motion Service assumes that obstacles with mobile parents move along with their parents while solving.
-      This ensures that obstacles that are temporarily attached to moving components do not cause collisions during movement.
-    - Geometries are "part of" their frame, rather than at the distal end of the frame.
-      Their poses are relative to the *origin* of the specified frame.
-      A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
-      This is different from `destination` and `componentName`, where poses are relative to the distal end of a frame.
-  - **Transforms**: A list of `PoseInFrame` messages that specify arbitrary other transformations that will be ephemerally added to the frame system at solve time.
+- `worldState` ([WorldState](https://pkg.go.dev/go.viam.com/rdk/referenceframe#WorldState)): Not used. See [note above](#move-vs-movetoposition).
 
 - `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
 
