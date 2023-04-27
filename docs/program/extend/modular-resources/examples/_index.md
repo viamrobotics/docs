@@ -6,6 +6,7 @@ weight: 10
 type: "docs"
 no_list: true
 image: "/tutorials/img/intermode/rover_outside.png"
+imageAlt: "A large black intermode rover controlled with CANBUS protocol chilling outside in the snow."
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 ---
 
