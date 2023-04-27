@@ -83,7 +83,7 @@ You and your collaborators can deploy control logic, [modular resources](/progra
 
 ### Remote control
 
-Everyone who has access to the location the robot is in, can remotely control the robot using the [**control** tab](robots/#control).
+Everyone who has access to the robot can remotely control it using the [**control** tab](robots/#control).
 This allows you to visually test and remotely operate robot components and services
 If you are remotely controlling the robot, it is recommended that you or your collaborators install a [camera](/components/camera) so you can monitor the robot as you control it.
 
