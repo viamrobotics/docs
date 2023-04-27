@@ -286,7 +286,7 @@ Stop the servo from moving.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.stop).
 
-```python {class="line-numbers l inkable-line-numbers"}
+```python {class="line-numbers linkable-line-numbers"}
 my_servo = Servo.from_robot(robot=robot, name="my_servo")
 
 # Move the servo from its origin to the desired angle of 10 degrees.
