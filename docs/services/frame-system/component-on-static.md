@@ -1,6 +1,6 @@
 ---
 title: "Frame System Configuration for a Component attached to a Fixed Object"
-linkTitle: "Configure a Component on a Fixed Object"
+linkTitle: "Configure a Reference Frame"
 description: "How to configure the Frame System in an scenario where a component is fixed to a static object."
 type: docs
 weight: 45

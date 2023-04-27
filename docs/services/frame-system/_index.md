@@ -91,10 +91,25 @@ You can use [the right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule)
 
 For more information about determining the appropriate values for these parameters, see these two examples:
 
-- [A component attached to a static surface](/services/frame-system/component-on-static)
-- [A component attached to another, dynamic, component](/services/frame-system/component-on-dynamic)
+- [A Reference Frame:](/services/frame-system/component-on-static) A component attached to a static surface
+- [Nested Reference Frames:](/services/frame-system/component-on-dynamic) A component attached to another, dynamic, component
 
-## Building the Frame System
+### The Frame System Editor
+
+You can visualize how your robot is oriented in the Frame system in [the Viam app](https://app.viam.com).
+Navigate to the **config** tab on your robot's page, select **mode** as **Builder**, and click on **Frame System**.
+
+Then, a 3D representation will appear of the reference frames of components configured on your robot:
+
+<!-- TODO: add visualization here  -->
+
+Add `Geometry` parameters to the Frame system configuration of a component to visualize bounding geometries as follows:
+
+<!-- TODO: type tabs and visualizations here 
+
+TODO: any more features? -->
+
+## Reference Frame Trees
 
 `viam-server` builds a tree of reference frames for your robot with the `world` as the root node and regenerates this tree following reconfiguration.
 
@@ -113,7 +128,7 @@ The resulting tree of reference frames looks like:
 1. One with the name of the component, representing the actuator or final link in the component's kinematic chain: like `"A"` as the end of an arm.
 2. Another representing the origin of the component, defined with the component's name and the suffix *"_origin"*.
 
-## Accessing the Frame System
+## Reference Frame Access
 
 The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies two methods to interact with the Frame System through gRPC calls:
 
