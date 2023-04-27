@@ -117,7 +117,7 @@ In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/g
 
 ### GetPosition
 
-Report the current GeoPoint (latitude, longitude) and altitude (in millimeters).
+Report the current GeoPoint (latitude, longitude) and altitude (in meters).
 
 Supported by GPS models.
 
@@ -131,7 +131,7 @@ Supported by GPS models.
 **Returns:**
 
 - [(GeoPoint)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint): Abstract base class for protocol messages, containing latitude and longitude as floats.
-- [(float)](https://docs.python.org/3/library/functions.html#float): Altitude in millimeters.
+- [(float)](https://docs.python.org/3/library/functions.html#float): Altitude in meters.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_position).
 
@@ -155,7 +155,7 @@ position = await my_sensor.get_position()
 **Returns:**
 
 - [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): Contains the current latitude and longitude as floats.
-- [(float64)](https://pkg.go.dev/builtin#float64): The altitude in millimeters.
+- [(float64)](https://pkg.go.dev/builtin#float64): The altitude in meters.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
@@ -174,7 +174,7 @@ position, _ := mySensor.Position(context.TODO(), nil)
 
 ### GetLinearVelocity
 
-Report the current linear velocity in the x, y and z directions (as a 3D vector) in millimeters per second.
+Report the current linear velocity in the x, y and z directions (as a 3D vector) in meters per second.
 
 Supported by GPS models.
 
@@ -187,7 +187,7 @@ Supported by GPS models.
 
 **Returns:**
 
-- [(Vector3)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3): A 3D vector containing three floats representing the linear velocity in the x, y and z directions in millimeters per second.
+- [(Vector3)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3): A 3D vector containing three floats representing the linear velocity in the x, y and z directions in meters per second.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_linear_velocity).
 
@@ -210,7 +210,7 @@ lin_vel = await my_sensor.get_linear_velocity()
 
 **Returns:**
 
-- [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the linear velocity in the x, y and z directions in millimeters per second.
+- [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the linear velocity in the x, y and z directions in meters per second.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
@@ -288,7 +288,7 @@ yAngVel := angVel.Y
 
 ### GetLinearAcceleration
 
-Report the current linear acceleration in the x, y and z directions (as a 3D vector) in millimeters per second per second.
+Report the current linear acceleration in the x, y and z directions (as a 3D vector) in meters per second per second.
 
 Supported by IMU models, `accel-adxl345`, and `gyro-mpu6050`.
 
@@ -301,7 +301,7 @@ Supported by IMU models, `accel-adxl345`, and `gyro-mpu6050`.
 
 **Returns:**
 
-- [(Vector3)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3): A 3D vector containing three floats representing the linear acceleration in the x, y and z directions in millimeters per second per second (mm/s<sup>2</sup>).
+- [(Vector3)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3): A 3D vector containing three floats representing the linear acceleration in the x, y and z directions in meters per second per second (m/s<sup>2</sup>).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_linear_acceleration).
 
@@ -326,7 +326,7 @@ x_lin_accel = lin_accel.x
 
 **Returns:**
 
-- [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the linear acceleration in the x, y and z directions in millimeters per second per second (mm/s<sup>2</sup>).
+- [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the linear acceleration in the x, y and z directions in meters per second per second (m/s<sup>2</sup>).
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
@@ -475,7 +475,7 @@ Get the supported properties of this sensor.
 
 **Returns:**
 
-- ([Properties](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.Properties))<!--this link isn't very useful -->: The supported properties of the movement sensor.
+- ([Properties](https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Properties)): The supported properties of the movement sensor.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_properties).
 

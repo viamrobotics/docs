@@ -1,6 +1,6 @@
 ---
 title: "Cartographer Integrated Library"
-linkTitle: "cartographer"
+linkTitle: "Cartographer"
 weight: 70
 type: "docs"
 description: "Configure a SLAM service with the Cartographer library."
