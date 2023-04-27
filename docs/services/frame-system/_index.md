@@ -79,8 +79,8 @@ Configure the reference frame as follows:
 
 {{% alert title="Caution" color="caution" %}}
 
-The `Orientation` parameter offers `Types` for ease of configuration, but the Frame System always stores and returns [orientation vectors](/internals/orientation-vector/) in `"Orientation Vector Radians"`.
-`"Degrees"` and `"Quaternion"` will be converted to `"Radians"`.
+The `Orientation` parameter offers `Types` for ease of configuration, but the Frame System always stores and returns [orientation vectors](/internals/orientation-vector/) in `Orientation Vector Radians`.
+`Degrees` and `Quaternion` will be converted to `Radians`.
 
 {{% /alert %}}
 
@@ -122,14 +122,14 @@ You add this value to `"X"` in your base's reference frame `Translation` attribu
   ![Base translated 200mm forwards shown in the Frame System Editor](img/demo_base_edited.png)
 
 - You measure the distance from your board to the camera mounted overhead and find it to be 50 millimeters.
-You add this value to `"Z"` in your camera's reference frame `Translation"` attribute and the Frame System readjusts to show the camera's translation:
+You add this value to `"Z"` in your camera's reference frame `Translation` attribute and the Frame System readjusts to show the camera's translation:
 
-  ![Camera translated mm overhead shown in the Frame System Editor](img/demo_camera_edited_1.png)
+  ![Camera translated 50 mm overhead shown in the Frame System Editor](img/demo_camera_edited_1.png)
 
 - However, the camera doesn't yet display as oriented towards the base.
 You adjust the [orientation vector](/internals/orientation-vector) 0.5 degrees in `"OX"` in your camera's reference frame `Orientation` attribute and the Frame System readjusts to show the camera's orientation:
 
-  ![Camera translated mm overhead shown in the Frame System Editor](img/demo_camera_edited_2.png)
+  ![Camera oriented .5 degrees OX shown in the Frame System Editor](img/demo_camera_edited_2.png)
 
 Now that the Frame System is configured so that the spatial visualization for your robot matches its spatial orientation in real life, you can utilize [Motion Service](/services/motion) methods that take in reference frame information.
 
@@ -156,7 +156,8 @@ Click the video camera icon below and to the right of the **Frame System** butto
 
 ### Bounding Geometries
 
-Add `Geometry` parameters to the **Frame System** [configuration](#configuration) of a component to visualize bounding geometries by selecting a component and selecting a **Geometry** type.
+Add `Geometry` properties to the **Frame System** [configuration](#configuration) of a component to visualize bounding geometries by selecting a component and selecting a **Geometry** type.
+
 By default, a **Geometry** is shown surrounding the origin point of a component as follows:
 
 {{< tabs name="Visualize Adding Geometry Bounds" >}}
