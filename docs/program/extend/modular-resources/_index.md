@@ -440,7 +440,7 @@ Ensure that the code defining your module is saved where the instance of `viam-s
 
 For example, if you are running `viam-server` on an Raspberry Pi, you'll need to save the module on the Pi's filesystem.
 
-Obtain the path to the executable file on your computer's filesystem by running the following commands in your terminal:
+Obtain the real (absolute) path to the executable file on your computer/[board's](/components/board) filesystem by running the following command in your terminal:
 
 ``` shell
 realpath <path-to-your-module-directory>/<your-module>
