@@ -123,21 +123,22 @@ Refer to your motor and motor driver data sheets for specifics.
 There are three common ways for your computer to communicate with a brushed DC motor driver chip.
 **Your motor driver data sheet will specify which one to use.**
 
-- PWM/DIR: Two pins: One digital input (such as a GPIO pin) sends a [pulse width modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
+- PWM/DIR: Use this if one of your motor driver's pins (labeled "PWM") takes a [pulse width modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal to the driver to control speed while another pin labeled "DIR" takes a high or low signal to control the direction.
   - Configure `pwm` and `dir`.
-- In1/In2 (also known as A/B): Two pins: One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled with PWM through one or both pins.
+- In1/In2: Use this if your motor driver has pins labeled "IN1" and "IN2" or "A" and "B," or similar. One digital signal set to a high voltage and another set to a low voltage turns the motor in one direction and vice versa.
+Speed is controlled with PWM through one or both pins.
   - Configure `a` and `b`.
-- In1/In2 and PWM: Three pins: In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
+- In1/In2 and PWM: Use this if your motor driver uses three pins: In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
   - Configure `a`, `b`, and `pwm`.
 
 Inside the `pins` struct you need to configure **two or three** of the following, depending on your motor driver:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `a` | string | **Required** for some drivers | Corresponds to "IN1" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-| `b` | string | **Required** for some drivers | Corresponds to "IN2" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-| `dir` | string | **Required** for some drivers | Configure this if your data sheet has a dedicated direction pin. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-| `pwm` | string | **Required** for some drivers | Configure this if your data sheet has a dedicated "PWM" pin. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `a` | string | **Required** for some drivers | Board pin number this motor driver's "IN1" or "A" pin is wired to. Viam uses board pin numbers, not GPIO numbers. |
+| `b` | string | **Required** for some drivers | Board pin number this motor driver's "IN2" or "B" pin is wired to. Viam uses board pin numbers, not GPIO numbers. |
+| `dir` | string | **Required** for some drivers | Board pin number this motor driver's direction ("DIR") pin is wired to. Viam uses board pin numbers, not GPIO numbers. |
+| `pwm` | string | **Required** for some drivers | Board pin number this motor driver's "PWM" pin is wired to. Viam uses board pin numbers, not GPIO numbers. |
 
 {{% alert title="Note" color="note" %}}
 
