@@ -303,7 +303,7 @@ For an example of adding a fragment to a robot, see the [Viam Rover fragment tut
 The auth section allows you to configure robot-level API keys for connecting over LAN.
 
 The network section allows you to set the address `viam-server` binds to for accepting connections.
-By default, `viam-server` binds to `0.0.0.0:8080`.
+By default, `viam-server` binds to `0.0.0.0:8080` when managed by the Viam app or when authentication and TLS are enabled.
 
 ## Frame system
 
