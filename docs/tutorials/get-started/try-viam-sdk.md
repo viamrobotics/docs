@@ -102,7 +102,7 @@ Create another file named <file>package.json</file> with the following contents:
     "esbuild": "0.16.12"
   },
   "dependencies": {
-    "@viamrobotics/sdk": "^0.0.28"
+    "@viamrobotics/sdk": "*"
   }
 }
 ```
