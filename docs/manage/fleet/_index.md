@@ -86,7 +86,6 @@ You and your collaborators can deploy control logic, [modular resources](/progra
 
 Everyone who has access to the robot can remotely control it using the [**control** tab](robots/#control).
 This allows you to visually test and remotely operate robot components and services
-If you are remotely controlling the robot, it is recommended that you or your collaborators install a [camera](/components/camera) so you can monitor the robot as you control it.
 
 ### Control with code
 
@@ -94,7 +93,6 @@ Everyone who has access to the robot's location can obtain the robot address and
 You can also share the robot address and location secret without granting location access in the Viam app.
 
 With the robot address and the location secret, you can write code, collaborate on your code using tools like GitHub, and run your code to control the robot from anywhere in the world.
-If you are remotely controlling the robot, it is recommended that you or your collaborators install a [camera](/components/camera), so you can monitor the robot as you control it.
 
 {{% alert title="Caution" color="caution" %}}
 Be cautious when sharing location secret keys in your code or messages.
