@@ -51,7 +51,7 @@ To get started using Viam's SDKs to connect to and control your robot, go to you
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have an arm called `"my_encoder"` configured as a component of your robot.
+These examples assume you have an encoder called `"my_encoder"` configured as a component of your robot.
 If your encoder has a different name, change the `name` in the code.
 
 Be sure to import the encoder package for the SDK you are using:
@@ -212,7 +212,6 @@ Get a list of all the position types that are supported by a given encoder.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/index.html#viam.components.encoder.Encoder.get_properties).
 
-**Example usage:**
 
 ```python
 my_encoder = Encoder.from_robot(robot=robot, name='my_encoder')
@@ -236,7 +235,6 @@ properties = await my_encoder.get_properties()
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
 
-**Example usage:**
 
 ```go
 myEncoder, err := encoder.FromRobot(robot, "my_encoder")
