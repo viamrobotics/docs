@@ -4,14 +4,16 @@ linkTitle: "Custom Components as Remotes"
 weight: 99
 type: "docs"
 tags: ["server", "sdk"]
+aliases:
+    - "/SDK-as-server"
 description: "Implement custom components and register them on a server configured as a remote of your robot."
 webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
 mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
 videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
 ---
 
-{{% alert title="Note" color="note" %}}
-Modular resources are the preferred method of creating custom resource implementations for SDKs with module support unless you are hosting `viam-server` on a non-Linux platform or have another issue with compilation.
+{{% alert title="Caution" color="caution" %}}
+{{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations for SDKs with module support unless you are hosting `viam-server` on a non-Linux platform or have another issue with compilation.
 
 Instructions on creating and using modular resources are available [here](/program/extend/modular-resources).
 {{% /alert %}}

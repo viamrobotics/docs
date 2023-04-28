@@ -27,7 +27,7 @@ Two key concepts exist across all Viam resources (both built-in and modular) to 
 
 Every Viam [resource](/appendix/glossary/#term-resource) exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API).
 This can also be understood as the protocol that the resource "speaks".
-Each API is described through <a href="https://developers.google.com/protocol-buffers" target="_blank">protocol buffers</a>.
+Each API is described through [protocol buffers](https://developers.google.com/protocol-buffers).
 Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
 
 Each Viam resource's API is uniquely namespaced as a colon-delimited-triplet in the form of `namespace:type:subtype`.
@@ -38,7 +38,7 @@ For example:
 - The API of built-in service [vision](/services/vision) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
 
 {{% alert title="Note" color="note" %}}
-You can see built-in Viam resource APIs in the <a href="https://github.com/viamrobotics/api" target="_blank">Viam GitHub</a>.
+You can see built-in Viam resource APIs in the [Viam GitHub](https://github.com/viamrobotics/api).
 {{% /alert %}}
 
 ### Models
@@ -48,8 +48,8 @@ Models allow you to control different versions of resource types with a consiste
 
 For example:
 
-- Some DC motors use just [GPIO](/components/board), while other DC motors use serial protocols like [SPI bus](/components/board/#spis).
-- Regardless, any motor model that implements the *rdk:component:motor* API can be powered with the `SetPower()` method.
+Some DC motors use just [GPIO](/components/board), while other DC motors use serial protocols like [SPI bus](/components/board/#spis).
+Regardless, you can power any motor model that implements the *rdk:component:motor* API with the `SetPower()` method.
 
 Models are also uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
 
@@ -65,11 +65,11 @@ However, you can also create and expose new API types using modular resources.
 
 Add a modular resource to your robot configuration in five steps:
 
-1. Code a module in Go or Python, using the module support libraries provided by the Python or Go [Viam SDK](/program/sdk-as-client).
-2. Compile or package the module code into an executable.
-3. Save the executable in a location your `viam-server` instance can access.
-4. Add a **module** referencing this executable to the configuration of your robot.
-5. Add a new component or service referencing the custom resource provided by the configured **module** to the configuration of your robot.
+1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/sdk-as-client).
+2. [Compile or package the module code](#make-your-module-executable) into an executable.
+3. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
+4. [Add a **module**](#configure-your-module) referencing this executable to the configuration of your robot.
+5. [Add a new component or service](#configure-your-modular-resource) referencing the custom resource provided by the configured **module** to the configuration of your robot.
 
 {{% alert title="Modules vs. modular resources" color="tip" %}}
 
