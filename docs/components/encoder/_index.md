@@ -54,6 +54,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have an arm called `"my_encoder"` configured as a component of your robot.
 If your encoder has a different name, change the `name` in the code.
 
+Be sure to import the encoder package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.encoder import Encoder
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/arm"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The encoder component supports the following methods:
@@ -210,7 +231,7 @@ properties = await my_encoder.get_properties()
 
 **Returns:**
 
-- [map[[Feature](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Feature)][bool](https://pkg.go.dev/builtin#bool)]: The position types supported by the encoder model.
+- (map[[Feature](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Feature)] [bool](https://pkg.go.dev/builtin#bool)): The position types supported by the encoder model.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
