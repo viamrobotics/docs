@@ -83,7 +83,7 @@ Paste the following into the **Attributes** field of your new service:
   "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
   "delete_processed_data": true,
   "use_live_data": true,
-  "sensors": ["rplidar"],
+  "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
   "config_params": {
     "mode": "2d"
   }
@@ -99,7 +99,7 @@ Paste the following into the **Attributes** field of your new service:
   "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
   "delete_processed_data": true,
   "use_live_data": true,
-  "sensors": ["rplidar"],
+  "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
   "config_params": {
     "mode": "2d"
   }
@@ -153,7 +153,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
       "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
       "delete_processed_data": true,
       "use_live_data": true,
-      "sensors": ["rplidar"],
+      "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
       "config_params": {
         "mode": "2d"
       }
@@ -183,7 +183,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
       "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
       "delete_processed_data": true,
       "use_live_data": true,
-      "sensors": ["rplidar"],
+      "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
       "config_params": {
         "mode": "2d"
       }
@@ -213,7 +213,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
       "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
       "delete_processed_data": true,
       "use_live_data": true,
-      "sensors": ["rplidar"],
+      "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
       "config_params": {
         "mode": "2d"
       }
