@@ -20,7 +20,9 @@ With Viam, you can organize {{< glossary_tooltip term_id="robot" text="robots" >
 
 For example, you may have separate organizations for your robots at home and at work:
 
-{{<gif webm_src="../img/organizations.webm" mp4_src="../img/organizations.mp4" alt="An organization for personal robots and one for work robots.">}}
+<div class="td-max-width-on-larger-screens">
+{{<gif webm_src="../img/organizations.webm" mp4_src="../img/organizations.mp4" alt="An organization for personal robots and one for work robots." max-width="unset">}}
+</div>
 
 Inside an organization, you can organize robots into one or more locations:
 
