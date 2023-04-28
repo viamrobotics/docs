@@ -33,7 +33,7 @@ If you are managing a fleet, you can use {{< glossary_tooltip term_id="fragment"
 ## Use Viam for collaboration
 
 To facilitate collaboration, you can add collaborators to organizations, and share locations across multiple organizations.
-Soon you will also be able to assign [permissions](#permissions) to collaborators.
+Viam is actively working on functionality to allow you to assign [permissions](#permissions) to collaborators.
 
 When you create a Viam account, Viam automatically creates an organization for you.
 You can use this organization as your collaboration hub by inviting collaborators to your organization.
