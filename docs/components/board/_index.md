@@ -559,7 +559,7 @@ Get the name of every [`DigitalInterrupt`](#digital_interrupts) configured on th
 
 **Returns:**
 
-- `names` [(List[str])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): An list containing the `"name"` of every interrupt [configured](#configuration) on the board.
+- `names` [(List[str])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every interrupt [configured](#configuration) on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_names).
 
