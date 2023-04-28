@@ -9,8 +9,6 @@ tags: ["vision", "computer vision", "CV", "services"]
 # SMEs: Bijan, Khari
 ---
 
-{{< readfile "/static/include/services/vision-breaking.md" >}}
-
 The Vision Service enables your robot to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
 While the camera component lets you access what your robot's camera sees, the Vision Service allows you to interpret your image data.
 The Vision Service is a default service on the robot, and can be initialized without attributes.

@@ -12,6 +12,11 @@ imageAlt: "Viam Rover Rosey."
 # SME: Matt Vella
 ---
 
+{{< alert title="Caution" color="caution" >}}
+There are [breaking changes in the Vision Service](/appendix/release-notes/#25-april-2023).
+This tutorial has not yet been updated.
+{{< /alert >}}
+
 When we think of robots, most of us tend to group them into categories:
 
 * useful robots
@@ -212,7 +217,7 @@ From there, scroll to the bottom and create a new service of **type** `vision` n
 <img src="../../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the Vision Service." title="Adding the Vision Service." width="500" />
 
 Now, add the following configuration to the attributes for the Vision Service.
-You are registering a model of **type** `tflite_classifier` **named** `stuff_classifier`.
+You are registering a model of **type** `tflite_cpu` **named** `stuff_classifier`.
 Your companion robot will use this to - well, classify stuff (using an ML model trained using the [ImageNet image database](https://www.image-net.org/))!
 
 Update the `label_path` and `model_path` to match where you [copied the tutorial software](#5-set-up-tutorial-software).
@@ -228,7 +233,7 @@ Click **Save config** to finish adding the classifier.
         "num_threads": 1,
         "model_path": "/home/<username>/tutorial-openai-integration/lite-model_imagenet_mobilenet_v3_large_075_224_classification_5_metadata_1.tflite"
       },
-      "type": "tflite_classifier"
+      "type": "tflite_cpu"
     }
   ]
 }

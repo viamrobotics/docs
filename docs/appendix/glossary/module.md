@@ -8,4 +8,4 @@ aka:
 
 Modular resources are a way to add resource types or models that are not built into Viam.
 
-For more information see the [modular resource documentation](/program/extend/modular-resources/#add-a-module-to-your-robot-configuration).
+For more information see the [modular resource documentation](/program/extend/modular-resources/#use-a-modular-resource-with-your-robot).

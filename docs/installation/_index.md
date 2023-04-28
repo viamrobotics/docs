@@ -24,7 +24,7 @@ See [What is Viam?](/viam/) for more information.
 Make sure your system is compatible with Viam.
 You can run `viam-server` on any device that runs:
 
-- **any** Linux 64-bit operating systems
+- **any** Linux 64-bit operating system
 - macOS
 
 <div class="container text-left td-max-width-on-larger-screens">
@@ -90,14 +90,14 @@ The AppImage is a single, self-contained binary that runs on any Linux system (e
 Stable:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl http://packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server &&
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
 Latest:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -o viam-server &&
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
@@ -107,14 +107,14 @@ curl http://packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppIma
 Stable:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl http://packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server &&
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
 Latest:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl http://packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage -o viam-server &&
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 

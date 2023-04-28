@@ -132,7 +132,7 @@ In addition to the [attributes for a non-encoded motor](/components/motor/gpio),
 | `ticks_per_rotation` | string | **Required** | Number of ticks in a full rotation of the encoder and motor shaft. |
 | `ramp_rate` | number | Optional | How fast to ramp power to motor when using RPM control. 0.01 ramps very slowly; 1 ramps instantaneously. Range is (0.0, 1.0]. <br> Default = `0.2` |
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 
 The attribute [`max_rpm`](/components/motor/gpio) is not required or available for encoded `gpio` motors.
 

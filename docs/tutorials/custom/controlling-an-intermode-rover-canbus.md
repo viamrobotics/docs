@@ -288,7 +288,7 @@ Change this to the correct location in `executable_path` when adding the module 
 }
 ```
 
-More details about modules and how they work can be found in the [modular resources documentation](/program/extend/modular-resources/#add-a-module-to-your-robot-configuration).
+More details about modules and how they work can be found in the [modular resources documentation](/program/extend/modular-resources/#use-a-modular-resource-with-your-robot).
 
 ### Control the rover
 

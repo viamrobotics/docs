@@ -1,6 +1,6 @@
 ---
 title: "Cartographer Integrated Library"
-linkTitle: "cartographer"
+linkTitle: "Cartographer"
 weight: 70
 type: "docs"
 description: "Configure a SLAM service with the Cartographer library."
@@ -20,7 +20,7 @@ Install the binary required to utilize the `cartographer` library on your machin
 {{% tab name="Linux aarch64" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/cartographer-module http://packages.viam.com/apps/slam-servers/cartographer-module-stable-aarch64.AppImage
+sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
 
@@ -28,7 +28,7 @@ sudo chmod a+rx /usr/local/bin/cartographer-module
 {{% tab name="Linux x86_64" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/cartographer-module http://packages.viam.com/apps/slam-servers/cartographer-module-stable-x86_64.AppImage
+sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
 
@@ -44,7 +44,7 @@ brew tap viamrobotics/brews && brew install cartographer-module
 
 ## Configuration
 
-How you configure `cartographer-module` depends on whether you want the SLAM service to build your map with data collected live by a [RPLIDAR](https://www.slamtec.com/en/Lidar/A3) or with LIDAR data provided in a dataset at runtime.
+How you configure `cartographer-module` depends on whether you want the SLAM service to build your map with data collected live by a [RPlidar](https://www.slamtec.com/en/Lidar/A3) or with LIDAR data provided in a dataset at runtime.
 
 Select from the following modes to obtain the correct instructions to configure the service:
 
@@ -53,9 +53,9 @@ Select from the following modes to obtain the correct instructions to configure 
 
 {{% alert title="REQUIREMENTS" color="tip" %}}
 
-Running `cartographer-module` in Live Data Collection mode requires a [RPLIDAR A1](https://www.slamtec.com/en/Lidar/A1) or [RPLIDAR A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default ['config_params'](#config_params) for the cartographer library, and the example robot config shown below (which uses the default 'config_params'), show nominal parameters one can use for an RPLIDAR A3. See the notes next to the 'config_params' for recommended settings for an RPLIDAR A1.
+Running `cartographer-module` in Live Data Collection mode requires a [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default ['config_params'](#config_params) for the cartographer library, and the example robot config shown below (which uses the default 'config_params'), show nominal parameters one can use for an RPlidar A3. See the notes next to the 'config_params' for recommended settings for an RPlidar A1.
 
-Before adding a SLAM service, you must follow [these instructions](/program/extend/modular-resources/add-rplidar-module/) to add your RPLIDAR device as a modular component of your robot.
+Before adding a SLAM service, you must follow [these instructions](/program/extend/modular-resources/examples/add-rplidar-module) to add your RPlidar device as a modular component of your robot.
 
 {{% /alert %}}
 
@@ -83,7 +83,7 @@ Paste the following into the **Attributes** field of your new service:
   "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
   "delete_processed_data": true,
   "use_live_data": true,
-  "sensors": ["rplidar"],
+  "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
   "config_params": {
     "mode": "2d"
   }
@@ -99,7 +99,7 @@ Paste the following into the **Attributes** field of your new service:
   "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
   "delete_processed_data": true,
   "use_live_data": true,
-  "sensors": ["rplidar"],
+  "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
   "config_params": {
     "mode": "2d"
   }
@@ -130,7 +130,7 @@ Click on the **Modules** subtab. Add the cartographer module with a name of your
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **config** tab.
-Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"modules"` JSON to add to your existing RPLIDAR configuration:
+Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"modules"` JSON to add to your existing RPlidar configuration:
 
 {{< tabs name="Add the Cartographer Service Live Config JSON OSs">}}
 {{% tab name="Linux" %}}
@@ -153,7 +153,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
       "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
       "delete_processed_data": true,
       "use_live_data": true,
-      "sensors": ["rplidar"],
+      "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
       "config_params": {
         "mode": "2d"
       }
@@ -183,7 +183,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
       "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
       "delete_processed_data": true,
       "use_live_data": true,
-      "sensors": ["rplidar"],
+      "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
       "config_params": {
         "mode": "2d"
       }
@@ -213,7 +213,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
       "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
       "delete_processed_data": true,
       "use_live_data": true,
-      "sensors": ["rplidar"],
+      "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
       "config_params": {
         "mode": "2d"
       }
@@ -259,7 +259,7 @@ Whether mapping data is present in <file>map</file> at runtime and the attribute
 {{% /tab %}}
 {{% tab name="/data" %}}
 
-The <file>data</file> folder stores the LIDAR data gathered by your RPLIDAR and used for SLAM.
+The <file>data</file> folder stores the LIDAR data gathered by your RPlidar and used for SLAM.
 
 {{% /tab %}}
 {{% tab name="/config" %}}
@@ -530,7 +530,7 @@ If you do not already have a dataset from running SLAM live or another dataset y
 After saving your config and connecting to your robot, navigate to the **control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
 
 Change the **Refresh frequency** to your desired frequency.
-If in live data collection mode, move your RPLIDAR around slowly.
+If in live data collection mode, move your RPlidar around slowly.
 Watch a map start to appear.
 
 ### Attributes
@@ -538,7 +538,7 @@ Watch a map start to appear.
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
 | `data_dir` | string | **Required** | Path to [the directory](#mapping-modes) used for saving input LIDAR data in <file>/data</file> and output mapping data in <file>/map</file>. |
-| `sensors` | string[] | **Required** | Names of configured RPLIDAR devices providing data to the SLAM service. |
+| `sensors` | string[] | **Required** | Names of configured RPlidar devices providing data to the SLAM service. |
 | `use_live_data` | bool | **Required** | <p>Whether to run in Live Data Collection mode.</p> <ul> `true`: Use data collected live by `sensors`to generate <file>/map</file>. </ul><ul>`false`: Use a dataset provided in <file>/data</file> to generate <file>/map</file>. </ul> |
 | `map_rate_sec` | int | Optional | Rate of <file>/map</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
 | `data_rate_msec` | int | Optional | Rate of <file>/data</file> collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
@@ -564,8 +564,8 @@ Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in as
 | `optimize_every_n_nodes` | How many trajectory nodes are inserted before the global optimization is run. | Optional | `3` | |
 | `num_range_data` | Number of measurements in each submap. | Optional | `100` | |
 | `missing_data_ray_length` | Replaces the length of ranges that are further than `max_range` with this value. | Optional | `25` | Nominally set to max length. |
-| `max_range` | Maximum range of valid measurements. | Optional | `25` | For an RPLIDAR A3, set this value to `25`. For an RPLIDAR A1, use `12`. |
-| `min_range` | Minimum range of valid measurements. | Optional | `0.2` | For an RPLIDAR A3, set this value to `0.2`. For RPLIDAR A1, use `0.15`. |
+| `max_range` | Maximum range of valid measurements. | Optional | `25` | For an RPlidar A3, set this value to `25`. For an RPlidar A1, use `12`. |
+| `min_range` | Minimum range of valid measurements. | Optional | `0.2` | For an RPlidar A3, set this value to `0.2`. For RPlidar A1, use `0.15`. |
 | `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | Only for [LOCALIZING mode](#mapping-modes). |
 | `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | Only for [UPDATING mode](#mapping-modes). |
 | `min_covered_area` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Only for [UPDATING mode](#mapping-modes). |
