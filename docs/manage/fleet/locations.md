@@ -14,7 +14,7 @@ Generally, a location defines a group of robots that are geographically close to
 If you are familiar with Google Drive, you can think of a location as similar to a folder within a shared drive.
 
 For example, an organization called Good Robots Inc has two warehouses across New York and Oregon.
-Good Robots Inc can organize its robots into three locations based on their physical presence in a warehouse.
+Good Robots Inc can organize its robots into two locations based on their physical presence in a warehouse.
 
 You can also use locations as proxies for environments such as "Production" and "Testing" or other groupings.
 Locations do not have to correspond with physical locations.
