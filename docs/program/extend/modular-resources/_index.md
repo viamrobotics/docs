@@ -47,7 +47,7 @@ Models allow you to control different versions of resource types with a consiste
 
 For example:
 
-- Some DC motors use just [GPIO](/components/board/#using-gpio), while other DC motors use serial protocols like [SPI bus](/components/board/#spi-bus).
+- Some DC motors use just [GPIO](/components/board), while other DC motors use serial protocols like [SPI bus](/components/board/#spis).
 - Regardless, any motor model that implements the *rdk:component:motor* API can be powered with the `SetPower()` method.
 
 Models are also uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
