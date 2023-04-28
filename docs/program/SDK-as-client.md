@@ -77,12 +77,7 @@ The easiest way to get started is to navigate to your robot's page on [the Viam 
 These boilerplate code samples import all of the necessary libraries and set up a client connection to your {{< glossary_tooltip term_id="remote" text="remote">}} or local robot.
 These code snippets import all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-{{% alert title="Caution" color="caution" %}}
-
-Do not share your robot secret or robot address publicly.
-Sharing this information compromises your system security by allowing unauthorized access to your computer.
-
-{{% /alert %}}
+{{< readfile "/static/include/snippet/secret-share.md" >}}
 
 Your boilerplate code sample should look similar to this:
 
