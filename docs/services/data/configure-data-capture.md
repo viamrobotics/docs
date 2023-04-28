@@ -182,7 +182,7 @@ To add them to your JSON configuration you must explicitly add the part's `type`
 
 {{% /expand%}}
 
-{{%expand "Click to view the JSON configuration for two analog readers and a pin" %}}
+{{%expand "Click to view the JSON configuration for capturing data from two analog readers and a pin" %}}
 
 The following example captures data from two analog readers that provide a voltage reading and from pin 27 of the board's GPIO:
 
