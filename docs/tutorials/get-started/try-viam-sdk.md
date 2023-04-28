@@ -133,7 +133,7 @@ Run the following commands to install the necessary libraries, and then run the 
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 npm install
-npm run watch
+npm start
 ```
 
 {{% /tab %}}
