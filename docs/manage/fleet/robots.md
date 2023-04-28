@@ -42,6 +42,10 @@ More in-depth information on installing `viam-server` can be found in our [Insta
 
 ### Configuration
 
+When a robot or a {{< glossary_tooltip term_id="part" text="robot part" >}} that is managed with the Viam app first comes online, it requests its configuration from the [Viam app](https://app.viam.com).
+Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.
+The robot checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
+
 After connecting your robot, go to the **config** tab, and start adding robot {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other {{< glossary_tooltip term_id="resource" text="robot resources" >}}.
 
 For more information, see the [configuration documentation](../../configuration/#the-config-tab).
@@ -93,7 +97,8 @@ There is also a JSON stub you can copy if you wish to have your robot communicat
 
 ### Security
 
-Your robot and the Viam app communicate securely by using unique secrets.
+Your robot and the Viam app communicate securely using [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection) with unique secrets.
+
 The **security** tab allows you to access and change the **Robot Part Secret Keys** of your robot.
 
 ![The SECURITY tab of a robot`s page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](../../img/app-usage/robot-secrets.png)

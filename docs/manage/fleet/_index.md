@@ -3,51 +3,56 @@ title: "Fleet Management"
 linkTitle: "Fleet Management"
 weight: 30
 type: "docs"
-description: "Configure, control, debug, and manage your robots from the cloud at app.viam.com."
+description: "Configure, control, debug, and manage your robots from the cloud at app.viam.com on your own or with a team."
 tags: ["fleet management", "cloud", "app"]
+no_list: true
 aliases:
     - "/manage/fleet-management"
     - "/manage/app-usage"
     - "/product-overviews/fleet-management/"
 ---
 
-The [Viam app](https://app.viam.com) provides fleet management allowing you to:
+The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of robots alone or in collaboration with others.
 
-- manage your robots and access to them with [locations](#locations), [organizations](#organization), and [permissions](#permissions)
-- [configure](#configuration) individual or groups of robots
-- [deploy code and machine learning models](#package-deployment) to robots
-- [remotely control](#remote-control) and [debug](#logs) robots
+## Work with groups of robots
 
-All communication happens securely over HTTPS using secret tokens that are in a robot's configuration.
+With Viam, you can organize {{< glossary_tooltip term_id="robot" text="robots" >}} into {{< glossary_tooltip term_id="location" text="locations" >}} and {{< glossary_tooltip term_id="organization" text="organizations" >}}.
 
-## Robots
+For example, you may have separate organizations for your robots at home and at work:
 
-An organizational concept, consisting of either one _{{< glossary_tooltip term_id="part" text="part" >}}_, or multiple _parts_ working closely together to complete tasks.
+<div class="td-max-width-on-larger-screens">
+{{<gif webm_src="../img/organizations.webm" mp4_src="../img/organizations.mp4" alt="An organization for personal robots and one for work robots." max-width="unset">}}
+</div>
 
-For more information on robots and how to manage them, see [Robots](robots).
-
-## Locations
-
-In Viam, every robot belongs to a location.
-A location is a virtual grouping of robots that allows you to organize robots and manage access.
+Inside an organization, you can organize robots into one or more locations:
 
 ![An image of two locations, New York, and Chicago, in one organization, Good Robots](../img/locations.png)
 
-For information on locations and how to manage them, see [Locations](locations).
+If you are managing a fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robots](../configuration), allowing you to use the same configuration for multiple robots.
 
-## Organization
+## Use Viam for collaboration
 
-An organization is a group of one or more locations that helps you organize your fleet and manage access.
+To facilitate collaboration, you can add collaborators to organizations, and share locations across multiple organizations.
+Viam is actively working on functionality to allow you to assign [permissions](#permissions) to collaborators.
 
-{{<gif webm_src="../img/organizations.webm" mp4_src="../img/organizations.mp4" alt="An organization for personal robots and one for work robots.">}}
+When you create a Viam account, Viam automatically creates an organization for you.
+You can use this organization as your collaboration hub by inviting collaborators to your organization.
+You can also add additional organizations as desired at any time.
 
-For information on how to manage organizations, see [Organizations](organizations).
+{{< alert title="Caution" color="caution" >}}
+Currently, everyone you invite to your organization has complete access to everything in that organization.
+This includes the permissions to delete robots and locations, as well as the ability to remove you from the organization.
 
-## Permissions
+[Permissions](#permissions) are coming soon.
+{{< /alert >}}
+
+You can also share locations across different organizations **that you are part of**.
+
+### Permissions
 
 _Coming soon._
 
-Role Based Access Control (RBAC) is a way to enforce security in the [Viam app](https://app.viam.com) by assigning users roles that confer permissions:
+Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members roles that confer permissions:
 
 - **Owner**: Can see and edit [every tab on the robot page](robots/#navigating-the-robot-page).
   Can manage users in the app.
@@ -56,30 +61,50 @@ Role Based Access Control (RBAC) is a way to enforce security in the [Viam app](
 
 A user can have one or more roles, granting the user the respective permissions of each role.
 
-## Configuration
+## Collaborate on your robots
 
-When a robot or a {{< glossary_tooltip term_id="part" text="robot part" >}} that is managed with the Viam app first comes online, it requests its configuration from the [Viam app](https://app.viam.com).
-Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.
-The robot checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
+Viam is built in a way that allows you to change configurations, deploy packages, check logs, and control your robots both when you are close to your robot, as well as remotely.
 
-{{< alert title="Tip" color="tip" >}}
-If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robot](../configuration).
+Robot [configuration](robots/#configuration) and robot [code](#control-with-code) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+
+### Configuration
+
+Everyone who has access to the location the robot is in, can change the robot's configuration.
+When you or your collaborators change a robot's configuration, the robot will automatically reconfigure itself within 15 seconds.
+You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
+You can also revert to an earlier configuration from the History tab.
+
+{{< alert title="Note" color="note" >}}
+For some configuration aspects you may require physical access to the robot so you can see how components are connected.
 {{< /alert >}}
 
-## Package Deployment
+### Package Deployment
 
 _Coming soon._
 
-Deploy control logic, [modular resources](/program/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy control logic, [modular resources](/program/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
 
-## Remote control
+### Remote control
 
-The **control** tab in the [Viam app](https://app.viam.com) allows you to visually test and remotely operate robot components and services.
-All communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
-If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
+Everyone who has access to the robot can remotely control it using the [**control** tab](robots/#control).
+This allows you to visually test and remotely operate robot components and services
 
-For local communication between [parts](../parts-and-remotes) Viam uses gRPC or WebRTC.
+### Control with code
 
-## Logs
+Everyone who has access to the robot's location can obtain the robot address and secret needed to send API calls to the robot.
+You can also share the robot address and location secret without granting location access in the Viam app.
 
-Each robot automatically sends logs to the cloud where you can view them from the **logs** tab.
+With the robot address and the location secret, you can write code, collaborate on your code using tools like GitHub, and run your code to control the robot from anywhere in the world.
+
+{{% alert title="Caution" color="caution" %}}
+Be cautious when sharing location secret keys in your code or messages.
+
+Do not make a secret key publicly available, as anyone who has the secret key can access your location, compromising the security of your system.
+
+It is good practice to note _where_ and _when_ you share a location secret key.
+{{% /alert %}}
+
+### Logs
+
+Each robot automatically sends logs to the cloud where you can view them from the [**logs** tab](robots/#logs).
+If you are collaborating on a robot and controlling it using the [**control** tab](robots/#control) or [code](#control-with-code), everyone who has access to the location the robot is in, can see the robot's logs.

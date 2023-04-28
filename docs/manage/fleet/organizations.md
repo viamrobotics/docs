@@ -3,11 +3,25 @@ title: "Manage Organizations"
 linkTitle: "Organizations"
 weight: 30
 type: "docs"
-description: "An organization is a group of one or more locations that helps you organize your fleet."
+description: "An organization is a group of one or more locations that helps you organize and manage access to your fleet."
 tags: ["fleet management", "cloud", "app"]
 ---
 
-{{< readfile "/static/include/manage/organizations.md" >}}
+An organization is a group of one or more locations that helps you organize your fleet.
+
+An organization is the highest level grouping in the Viam platform, which generally represents a company, or other institution.
+You can also use organizations for departments or other entities that can have one or more [locations](/manage/fleet/locations).
+If you are familiar with Google Drive, you can think of an organization as a shared drive.
+
+When you or another user registers for an account with Viam, they become a member of an organization.
+If the user was invited to an organization, they become a part of that organization.
+If the user registered without invitation, an organization and a {{< glossary_tooltip term_id="location" text="location" >}} is automatically created for the user.
+
+A user can create more organizations at any time.
+
+Any member of an organization can invite new users to that organization.
+
+For example, you may have an account with one organization for your personal robots at home and another organization for the robots at work.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/eb7v6dabCGQ">}}
 
