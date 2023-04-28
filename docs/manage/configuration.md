@@ -179,7 +179,7 @@ For specific information on how to configure each supported component type, see 
 {{% alert title="Tip" color="tip" %}}
 
 When you configure a component on the **Config** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
-Meanwhile the **Code Sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdk-as-client/).
+Meanwhile the **Code Sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/get-started-sdks/).
 
 {{<gif webm_src="../img/control.webm" mp4_src="../img/control.mp4" alt="Using the control tab">}}
 
@@ -400,4 +400,4 @@ To run `viam-server` as a system service, see [Start automatically on boot](/ins
 
 ## Next Steps
 
-After configuring your robot, you can use the [Viam SDKs](../../program/sdk-as-client/) to program and control your robot.
+After configuring your robot, you can use the [Viam SDKs](../../program/get-started-sdks/) to program and control your robot.

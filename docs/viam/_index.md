@@ -79,7 +79,7 @@ After configuring your robot's hardware, you can configure [high level functiona
 
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure robot control." class="alignleft" style="max-width:270px;"></img>
 
-The Viam platform provides a consistent programming interface for all robots, allowing you to [control your robots](/program/sdk-as-client/) with code in the **language of your choice**.
+The Viam platform provides a consistent programming interface for all robots, allowing you to [control your robots](/program/get-started-sdks/) with code in the **language of your choice**.
 Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), and [TypeScript](https://ts.viam.dev/).
 Additional SDKs are coming soon, including Rust, Java, C++, and Flutter.
 

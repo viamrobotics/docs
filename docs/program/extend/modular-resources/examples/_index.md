@@ -15,7 +15,7 @@ The easiest way to familiarize yourself with creating and using modular resource
 
 1. Follow one of these example [tutorials](#tutorials) or clone one of these example [repositories](#repositories).
 2. Control the custom resource on [the Viam app's](https://app.viam.com) [__CONTROL__ tab](/manage/fleet/#remote-control).
-3. Control the custom resource programmatically with a [Viam SDK](/program/sdk-as-client/).
+3. Control the custom resource programmatically with a [Viam SDK](/program/get-started-sdks/).
 4. Experiment by changing the resource's behavior.
 
 ## Tutorials

@@ -7,8 +7,8 @@ description: "Use Viam's SDKs to write code to access and control your robot."
 icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 aliases:
-  - "product-overviews/sdk-as-client"
-  - "program/sdk-as-client"
+  - "product-overviews/get-started-sdks"
+  - "program/get-started-sdks"
 ---
 
 Viam offers software development kits (SDKs) in popular languages which
@@ -16,7 +16,7 @@ Viam offers software development kits (SDKs) in popular languages which
 - Streamline connection, authentication, and encryption against a server using {{< glossary_tooltip term_id="webrtc" >}}
 - Enable you to interface with robots without calling the `viam-server` [gRPC APIs for robot controls](https://github.com/viamrobotics/api) directly
 
-<img src="../img/SDK-as-client/image1.png" alt="Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.">
+<img src="../img/get-started-sdks/image1.png" alt="Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.">
 
 Use the SDK of your preferred language to write code to control your robots.
 
