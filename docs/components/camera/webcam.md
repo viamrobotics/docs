@@ -144,6 +144,11 @@ sudo reboot
 
 If you are using a CSI camera on a Raspberry Pi, you need to [enable legacy mode](../../../installation/prepare/rpi-setup/#enable-communication-protocols).
 
+### High CPU usage
+
+Each camera stream you add uses CPU on the device it is connected to and there is therefore a practical limit to the numbeof camera streams your device can simultaneously support.
+You can limit the CPU usage by reducing the image resolution.
+
 ### Timeout errors on a Raspberry Pi
 
 If you are getting "timeout" errors from GRPC when adding a `webcam` model on a Raspberry Pi, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box):
