@@ -161,26 +161,28 @@ To add them to your JSON configuration you must explicitly add the part's `type`
 {{%expand "Click to view the JSON configuration for an ESP32 board" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-"type": {
-    "Type": {
-        "type": "component",
-        "namespace": "rdk"
-    },
-    "subtype": "board"
-},
-"model": {
-    "name": "rdk:esp32:board"
-},
-"name": "rdk:component:board/esp-home:board",
-"additional_params": {
-    "A2": "",
-    "A1": ""
+{
+  "type": {
+      "Type": {
+          "type": "component",
+          "namespace": "rdk"
+      },
+      "subtype": "board"
+  },
+  "model": {
+      "name": "rdk:esp32:board"
+  },
+  "name": "rdk:component:board/esp-home:board",
+  "additional_params": {
+      "A2": "",
+      "A1": ""
+  }
 }
 ```
 
 {{% /expand%}}
 
-{{%expand "Click to view the JSON configuration for the ReadImage method of a camera" %}}
+{{%expand "Click to view the JSON configuration for two analog readers and a pin" %}}
 
 The following example captures data from two analog readers that provide a voltage reading and from pin 27 of the board's GPIO:
 
