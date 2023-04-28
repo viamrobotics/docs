@@ -5,7 +5,7 @@ weight: 99
 type: "docs"
 tags: ["server", "sdk"]
 aliases:
-    - "/SDK-as-server"
+    - "program/extend/sdk-as-server"
 description: "Implement custom components and register them on a server configured as a remote of your robot."
 webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
 mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
