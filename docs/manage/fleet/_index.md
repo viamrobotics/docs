@@ -38,7 +38,7 @@ You can use this organization as your collaboration hub by inviting collaborator
 You can also add additional organizations as desired at any time.
 
 {{< alert title="Caution" color="caution" >}}
-Currently, everyone you invite to your organization, has complete access to everything in that organization.
+Currently, everyone you invite to your organization has complete access to everything in that organization.
 This includes the permissions to delete robots and locations, as well as the ability to remove you from the organization.
 
 [Permissions](#permissions) are coming soon.
@@ -93,7 +93,7 @@ If you are remotely controlling the robot, it is recommended that you or your co
 Everyone who has access to the robot's location can obtain the robot address and secret needed to send API calls to the robot.
 You can also share the robot address and location secret without granting location access in the Viam app.
 
-With the robot address and the location secret, you can write code, collaborate on your code using tools like GitHub, and run your code on the robot from anywhere in the world.
+With the robot address and the location secret, you can write code, collaborate on your code using tools like GitHub, and run your code to control the robot from anywhere in the world.
 If you are remotely controlling the robot, it is recommended that you or your collaborators install a [camera](/components/camera), so you can monitor the robot as you control it.
 
 {{% alert title="Caution" color="caution" %}}
