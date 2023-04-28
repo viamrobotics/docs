@@ -42,7 +42,7 @@ You can see built-in Viam resource APIs in the <a href="https://github.com/viamr
 
 ### Models
 
-A *model* descrines a specific implementation of a resource that implements (speaks) its API.
+A *model* describes a specific implementation of a resource that implements (speaks) its API.
 Models allow you to control different versions of resource types with a consistent interface.
 
 For example:
