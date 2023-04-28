@@ -14,7 +14,7 @@ A *board* is the signal wire hub of a robot that provides access to general purp
 
 You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
-This control is simpified with [`viam-server`](/installation).
+This control is simplified with [`viam-server`](/installation).
 When Viam's software is running on a computer with GPIO pins accessible to external hardware [components](/components), it manages GPIO signaling to abstract control to [resource](/appendix/glossary/#term-resource) APIs.
 
 {{% figure src="img/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
