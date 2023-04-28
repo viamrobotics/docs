@@ -84,6 +84,7 @@ Method Name | Description
 [GetPosition](#getposition) | Get the current position of the encoder.
 [ResetPosition](#resetposition) | Reset the position to zero.
 [GetProperties](#getproperties) | Get the supported properties of this encoder.
+[DoCommand](#docommand) | Send or receive model-specific commands.
 
 ### GetPosition
 
@@ -242,6 +243,58 @@ myEncoder, err := encoder.FromRobot(robot, "my_encoder")
 // Get whether the encoder returns position in ticks or degrees.
 properties, _ := myEncoder.Properties(context.TODO(), nil)
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+If you are [implementing your own encoder](../../program/extend/) and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (`Dict[str, Any]`): The command to execute.
+
+**Returns:**
+
+- `result` (`Dict[str, Any]`): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_encoder = Encoder.from_robot(robot=robot, name='my_encoder')
+
+reset_dict = {
+  "command": "reset",
+  "example_param": 30
+}
+do_response = await my_encoder.do_command(reset_dict)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` (`cmd map[string]interface{}`): The command to execute.
+
+**Returns:**
+
+- `result` (`cmd map[string]interface{}`): Result of the executed command.
+- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myEncoder, err := encoder.FromRobot(robot, "my_encoder")
+
+resp, err := myEncoder.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
 
 {{% /tab %}}
 {{< /tabs >}}
