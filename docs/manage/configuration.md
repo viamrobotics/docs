@@ -142,8 +142,8 @@ The **config** tab has sub-tabs for each section of your robot's config:
 - [Remotes](#remotes): Remotes are a way to connect two separate robots so one can access the resources of the other.
 - [Processes](#processes): Processes automatically run specified scripts when the robot boots.
 - [Fragments](#fragments): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple robots.
+- [Auth/Network](#authnetwork): The auth and network section allows you to configure robot-level API keys and set a bind address for `viam-server`.
 - [Frames](#frame-system): Frames hold reference frame information for the relative position of components in space.
-<!--[Authorization keys](#authnetwork) -->
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -298,9 +298,12 @@ In the `Raw JSON` configuration, you will see the fragment ID in the `fragments`
 
 For an example of adding a fragment to a robot, see the [Viam Rover fragment tutorial](/try-viam/rover-resources/rover-tutorial-fragments/).
 
-<!--
 ## Auth/network
--->
+
+The auth section allows you to configure robot-level API keys for connecting over LAN.
+
+The network section allows you to set the address `viam-server` binds to for accepting connections.
+By default, `viam-server` binds to `0.0.0.0:8080` when managed by the Viam app or when authentication and TLS are enabled.
 
 ## Frame system
 
