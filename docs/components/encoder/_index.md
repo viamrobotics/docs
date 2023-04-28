@@ -68,7 +68,7 @@ from viam.components.encoder import Encoder
 
 ```go
 import (
-  "go.viam.com/rdk/components/arm"
+  "go.viam.com/rdk/components/encoder"
 )
 ```
 
