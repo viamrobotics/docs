@@ -141,7 +141,7 @@ Integrate `digital_interrupts` into your robot in the `attributes` of your board
 "digital_interrupts": [
   {
     "name": <"your-digital-interrupt-name">,
-    "pin": <pin-number>
+    "pin": <"pin-number">
   }
 ]
 ```
@@ -214,7 +214,7 @@ Integrate `spis` into your robot in the `attributes` of your board by adding the
 "spis": [
   {
     "name": <"your-bus-name">,
-    "bus_select": <"index">
+    "bus_select": <"your-bus-index">
   }
 ]
 ```
@@ -269,6 +269,24 @@ As supported boards have SDA and SCL pins internally configured to correspond wi
 
 Integrate `i2cs` into your robot in the `attributes` of your board as follows:
 
+{{< tabs name="Configure i2cs" >}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+// "attributes": { ... ,
+{
+  "i2cs": [
+    {
+      "name": <"your-bus-name">,
+      "bus": <"your-bus-index">
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
 ```json {class="line-numbers linkable-line-numbers"}
 // "attributes": { ... ,
 {
@@ -280,6 +298,9 @@ Integrate `i2cs` into your robot in the `attributes` of your board as follows:
   ]
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 The following properties are available for `i2cs`:
 
