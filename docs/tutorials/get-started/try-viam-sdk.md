@@ -93,7 +93,7 @@ Create another file named <file>package.json</file> with the following contents:
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static",
+    "start": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Viam Docs Team",
