@@ -26,7 +26,7 @@ Inside an organization, you can organize robots into one or more locations:
 
 ![An image of two locations, New York, and Chicago, in one organization, Good Robots](../img/locations.png)
 
-If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robots](../configuration), allowing you to use the same configuration for multiple robots.
+If you are managing a fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robots](../configuration), allowing you to use the same configuration for multiple robots.
 
 ## Use Viam for collaboration
 
@@ -34,7 +34,8 @@ To facilitate collaboration, you can add collaborators to organizations, and sha
 Soon you will also be able to assign [permissions](#permissions) to collaborators.
 
 When you create a Viam account, Viam automatically creates an organization for you.
-You can use this organization or add another organization as your collaboration hub by inviting collaborators to your organization.
+You can use this organization as your collaboration hub by inviting collaborators to your organization.
+You can also add additional organizations as desired at any time.
 
 {{< alert title="Caution" color="caution" >}}
 Currently, everyone you invite to your organization, has complete access to everything in that organization.
