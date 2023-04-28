@@ -14,11 +14,18 @@ A *board* is the signal wire hub of a robot that provides access to general purp
 
 You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
+This control is simpified with [`viam-server`](/installation).
+When Viam's software is running on a computer with GPIO pins accessible to external hardware [components](/components), it manages GPIO signaling to abstract control to [resource](/appendix/glossary/#term-resource) APIs.
+
+{{% figure src="img/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
+
+The [RDK](/internals/rdk) also provides the [`GPIOPin` interface](#gpiopin-api) for direct control and monitoring of the state of GPIO pins.
+
 ## Configuration
 
 Configure a *board* component on your robot to communicate with the other [components](/components) of the robot, signaling as overseen by a computer running `viam-server`.
 
-Supported board models are single-board computers (SBCs) with GPIO pins and CPUs, GPIO peripheral devices, or PWM peripheral devices that you must connect to a SBC.
+Supported board models are single-board computers (SBCs) with GPIO pins and CPUs capable of running `viam-server`, GPIO peripheral devices that must connect to external computers, or PWM peripheral devices that must connect to CPUs providing GPIO pins.
 
 For model-specific configuration information, click on one of the following models:
 
