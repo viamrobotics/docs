@@ -579,7 +579,7 @@ names = await my_board.digital_interrupt_names()
 
 **Returns:**
 
-- `names` [([]string)](https://go.dev/tour/moretypes/7): An slice containing the `"name"` of every interrupt [configured](#configuration) on the board.
+- `names` [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every interrupt [configured](#configuration) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
