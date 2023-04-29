@@ -135,7 +135,7 @@ The base component supports the following methods:
 | [SetPower](#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base. |
 | [SetVelocity](#setvelocity) | Set the linear velocity and angular velocity of the base. |
 | [Stop](#stop) | Stop the base. |
-| [DoCommand](#docommand) | Sends or receives model-specific commands. |
+| [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### MoveStraight
 

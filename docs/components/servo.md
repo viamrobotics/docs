@@ -203,7 +203,7 @@ The servo component supports the following methods:
 | [Move](#move) | Move the servo to the desired angle. |
 | [Position](#position) | Get the current angle of the servo. |
 | [Stop](#stop) | Stop the servo. |
-| [DoCommand](#docommand) | Sends or receives model-specific commands. |
+| [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### Move
 

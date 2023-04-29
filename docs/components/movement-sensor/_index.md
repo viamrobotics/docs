@@ -26,8 +26,8 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 Viam supports several different models of GPS, IMU and accelerometer.
 Click the model names below for configuration information:
 
-Model | Supported hardware <a name="model-table"></a>
----------- | ------------------
+Model | Description <a name="model-table"></a>
+----- | -----------
 [`gps-nmea`](./gps/gps-nmea/) | [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS models
 [`gps-rtk`](./gps/gps-rtk/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models (**experimental**)
 [`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://witmotion-sensor.com/)
@@ -111,7 +111,7 @@ Method Name | Description | Models That Support This Method
 [GetProperties](#getproperties) | Get the supported properties of this sensor. | all models
 [GetAccuracy](#getaccuracy) | Get the accuracy of the various sensors. | GPS models
 [GetReadings](#getreadings) | Obtain the measurements/data specific to this sensor. | all models
-[DoCommand](#docommand) | Send or receives model-specific commands. | all models
+[DoCommand](#docommand) | Send or receive model-specific commands. | all models
 
 In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor) or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#).
 

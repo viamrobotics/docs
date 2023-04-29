@@ -61,10 +61,10 @@ The camera component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-| [GetImage](#getimage) | Returns an image from the camera. |
-| [GetPointCloud](#getpointcloud) | Returns a point cloud from the camera. |
-| [GetProperties](#getproperties) | Returns the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
-| [DoCommand](#docommand) | Sends or receives model-specific commands. |
+| [GetImage](#getimage) | Return an image from the camera. |
+| [GetPointCloud](#getpointcloud) | Return a point cloud from the camera. |
+| [GetProperties](#getproperties) | Return the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
+| [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### GetImage
 

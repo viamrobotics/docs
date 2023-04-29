@@ -548,7 +548,7 @@ The input controller component supports the following methods:
 | [Events](#events) | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). |
 | [RegisterControlCallback](#registercontrolcallback) | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). |
 <!-- | [TriggerEvent](#triggerevent) | Directly send an [Event](#event-object) to your robot. | -->
-| [DoCommand](#docommand) | Sends or receives model-specific commands. |
+| [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### RegisterControlCallback
 
