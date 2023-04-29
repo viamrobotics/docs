@@ -676,7 +676,7 @@ mySensor, err := movementsensor.FromRobot(robot, "sensor1")
 resp, err := mySensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/components/movementsensor/movementsensor.go#L212).
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
 
 {{% /tab %}}
 {{< /tabs >}}

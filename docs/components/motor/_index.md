@@ -669,7 +669,7 @@ myMotor, err := motor.FromRobot(robot, "motor1")
 resp, err := myMotor.DoCommand(ctx, map[string]interface{}{"command": "jog", "raw_input": "home"})
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/motor/motor.go#L213).
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
 
 {{% /tab %}}
 {{< /tabs >}}
