@@ -12,8 +12,8 @@ A `single_stream` camera reads from a HTTP server streaming image data.
 
 The server that the model reads from should output an image:
 
-- If it's a color image server, then it should output JPEG, PNG, or our custom VIAM color format, [`image/vnd.viam.rgba`](https://github.com/viamrobotics/rdk/blob/main/rimage/image_file.go#L51).
-- If it's a depth image server, it should output either a Z16 PNG, or our custom VIAM depth format, [`image/vnd.viam.dep`](https://github.com/viamrobotics/rdk/blob/main/rimage/image_file.go#L87).
+- If it's a color image server, then it should output JPEG, PNG, or Viam's custom color format, [`image/vnd.viam.rgba`](https://github.com/viamrobotics/rdk/blob/main/rimage/image_file.go#L51).
+- If it's a depth image server, it should output either a Z16 PNG, or Viam's custom depth format, [`image/vnd.viam.dep`](https://github.com/viamrobotics/rdk/blob/main/rimage/image_file.go#L87).
 
 Your `single_stream` camera can output:
 
