@@ -25,7 +25,7 @@ Two key concepts exist across all Viam resources (both built-in and modular) to 
 
 ### APIs
 
-Every Viam [resource](/appendix/glossary/#term-resource) exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API).
+Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API).
 This can also be understood as the protocol that the resource "speaks".
 Each API is described through [protocol buffers](https://developers.google.com/protocol-buffers).
 Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
@@ -65,7 +65,7 @@ However, you can also create and expose new API types using modular resources.
 
 Add a modular resource to your robot configuration in five steps:
 
-1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/get-started-sdks).
+1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/sdks).
 2. [Compile or package the module code](#make-your-module-executable) into an executable.
 3. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
 4. [Add a **module**](#configure-your-module) referencing this executable to the configuration of your robot.
@@ -79,7 +79,7 @@ A configured **module** can make one or more *modular resources* available for c
 
 ### Code your module
 
-Code a module in the Go or Python programming languages with [Viam's SDKs](/program/get-started-sdks) that does the following:
+Code a module in the Go or Python programming languages with [Viam's SDKs](/program/sdks) that does the following:
 
 {{< tabs >}}
 {{% tab name="Define a New Model of a Built-In Resource Type" %}}
