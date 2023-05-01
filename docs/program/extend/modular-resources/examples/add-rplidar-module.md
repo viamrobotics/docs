@@ -1,6 +1,6 @@
 ---
-title: "Add a Rplidar as a Modular Component"
-linkTitle: "Add a Rplidar as a Modular Component"
+title: "Add an RPlidar as a Modular Component"
+linkTitle: "Add an RPlidar as a Modular Component"
 weight: 40
 type: "docs"
 description: "How to add an RPlidar as a modular component of your robot."
