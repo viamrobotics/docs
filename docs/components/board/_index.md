@@ -52,8 +52,8 @@ An [analog-to-digital converter](https://www.electronics-tutorials.ws/combinatio
 
 ADCs are useful when building a robot, as they enable your board to read the analog signal output by most types of [sensors](/components/sensor/) and other hardware components.
 
-To integrate an ADC into your robot, you must first physically connect the pins on your ADC and on your board.
-A [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all) is useful for connecting the pins and wiring with [SPI](#spis) is often necessary for the two devices to be able to communicate.
+To integrate an ADC into your robot, you must first physically connect the pins on your ADC to your board.
+If your ADC communicates with your board using [SPI](#spis), you need to wire and configure the SPI bus in addition to the `analogs`.
 
 Then, integrate `analogs` into the `attributes` of your board by adding the following to your board's JSON configuration:
 
@@ -195,7 +195,7 @@ The following properties are available for `digital_interrupts`:
 
 To connect your board (controller) and a [component](/components) that requires SPI communication (peripheral device), wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 
 You must also enable SPI on your board if it is not enabled by default.
 See your [board model's configuration instructions](#configuration) if applicable.
@@ -258,7 +258,7 @@ The [Inter-Integrated circuit (I<sup>2</sup>C)](https://learn.sparkfun.com/tutor
 
 To connect your board (controller) and a [component](/components) that requires I<sup>2</sup>C communication (peripheral device), wire a connection between SDA and SCL pins on the board and component.
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 
 You must also enable I<sup>2</sup>C on your board if it is not enabled by default.
 See your [board model's configuration instructions](#configuration) if applicable.
@@ -1311,7 +1311,7 @@ rolling_avg, err := interrupt.Value(context.Background(), nil)
 
 Record an interrupt and notify any [channels](https://go.dev/tour/concurrency/2) that have been added with [AddCallback()](#addcallback).
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 You should only need to integrate this method into your application code for testing purposes, as the handling of `Tick()` should be automated once the interrupt is configured.
 
 Calling this method is not yet fully implemented with the Viam Python SDK.
@@ -1428,7 +1428,7 @@ err := interrupt.Tick(context.Background(), true, 12345)
 Add a [channel](https://go.dev/tour/concurrency/2) as a listener for when the state of the [configured GPIO pin](#digital_interrupts) changes.
 When [Tick()](#tick) is called, callbacks added to an interrupt will be sent the returned value `high`.
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 This method is not available for digital interrupts [configured](#digital_interrupts) with `"type": "servo"`.
 It is also not yet fully implemented with the Viam Python SDK.
 {{% /alert %}}
@@ -1495,7 +1495,7 @@ interrupt.AddCallback(ch)
 Add a [PostProcessor](https://pkg.go.dev/go.viam.com/rdk/components/board#PostProcessor) function that takes an integer input and transforms it into a new integer value.
 Functions added to an interrupt will be used to modify values before they are returned by [Value()](#value).
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 This method is  not yet fully implemented with the Viam Python SDK.
 {{% /alert %}}
 

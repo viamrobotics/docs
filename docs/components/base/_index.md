@@ -135,7 +135,7 @@ The base component supports the following methods:
 | [SetPower](#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base. |
 | [SetVelocity](#setvelocity) | Set the linear velocity and angular velocity of the base. |
 | [Stop](#stop) | Stop the base. |
-| [DoCommand](#docommand) | Sends or receives model-specific commands. |
+| [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### MoveStraight
 
@@ -521,7 +521,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
   result, err := myBase.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/base/base.go#L168).
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
 
 {{% /tab %}}
 {{< /tabs >}}
