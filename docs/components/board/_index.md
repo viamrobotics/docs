@@ -52,8 +52,8 @@ An [analog-to-digital converter](https://www.electronics-tutorials.ws/combinatio
 
 ADCs are useful when building a robot, as they enable your board to read the analog signal output by most types of [sensors](/components/sensor/) and other hardware components.
 
-To integrate an ADC into your robot, you must first physically connect the pins on your ADC and on your board.
-A [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all) is useful for connecting the pins and wiring with [SPI](#spis) is often necessary for the two devices to be able to communicate.
+To integrate an ADC into your robot, you must first physically connect the pins on your ADC to your board.
+If your ADC communicates with your board using [SPI](#spis), you need to wire and configure the SPI bus in addition to the `analogs`.
 
 Then, integrate `analogs` into the `attributes` of your board by adding the following to your board's JSON configuration:
 
