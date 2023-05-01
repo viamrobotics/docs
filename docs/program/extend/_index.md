@@ -11,7 +11,7 @@ description: "Extend Viam by creating custom components and services."
 
 {{% alert title="Tip" color="tip" %}}
 
-{{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations with the [Python and Go SDKs](program/sdks).
+{{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations with the [Python and Go SDKs](/program/sdks).
 
 Use the remote method if you are hosting `viam-server` on a non-Linux platform or have another issue with compilation.
 
