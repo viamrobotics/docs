@@ -32,35 +32,32 @@ Here’s an example configuration:
 {
   "components": [
     {
-      "name": <your-board-name>,
+      "name": <"your-board-name">,
       "type": "board",
-      "model": <your-board-model>,
+      "model": <"your-board-model">,
       "attributes": {},
       "depends_on": []
     },
     {
-      "name": <your-encoder=name>,
+      "name": <"your-encoder=name">,
       "type": "encoder",
-      "model": <encoder-model>,
+      "model": <"your-encoder-model">,
       "attributes": {
-        "board": <board_name>,
-        "pins": {
-          "a": <first_pin_number>,
-          "b": <second_pin_number>
-        }
+        ... // insert encoder model specific attributes
       },
       "depends_on": []
     },
     {
-      "name": <your-motor-name>,
+      "name": <"your-motor-name">,
       "type": "motor",
       "model": "gpio",
       "attributes": {
-        "board": <your-board-name>,
+        "board": <"your-board-name">,
         "pins": {
           <...>
         },
-        <...other_board_attributes...>
+        "encoder": <"your-encoder-name">,
+        "ticks_per_rotation": <#>
       },
       "depends_on": []
     }
@@ -129,8 +126,8 @@ In addition to the [attributes for a non-encoded motor](/components/motor/gpio),
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `encoder` | string | **Required** | `name` of the encoder. |
-| `ticks_per_rotation` | string | **Required** | Number of ticks in a full rotation of the encoder and motor shaft. |
-| `ramp_rate` | number | Optional | Rate to increase the motor's input voltage (power supply) per second when increasing the speed the motor rotates (RPM). <br> Range = `(0.0, 1.0]` <br> Default = `0.2` |
+| `ticks_per_rotation` | int | **Required** | Number of ticks in a full rotation of the encoder and motor shaft. |
+| `ramp_rate` | float | Optional | Rate to increase the motor's input voltage (power supply) per second when increasing the speed the motor rotates (RPM). <br> Range = `(0.0, 1.0]` <br> Default = `0.2` |
 
 {{% alert title="Note" color="note" %}}
 
