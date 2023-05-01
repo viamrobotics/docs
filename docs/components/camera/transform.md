@@ -112,8 +112,8 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 
 **Attributes:**
 
-- `high_threshold_pct`: The high threshold of ??? : between 0.0 - 1.0.
-- `low_threshold_pct`: The low threshold of ??? : between 0.0 - 1.0.
+- `high_threshold_pct`: The high threshold value: between 0.0 - 1.0.
+- `low_threshold_pct`: The low threshold value: between 0.0 - 1.0.
 - `blur_radius_px`: The blur radius used to smooth the image before applying the filter.
 
 {{% /tab %}}
