@@ -203,7 +203,7 @@ The servo component supports the following methods:
 | [Move](#move) | Move the servo to the desired angle. |
 | [Position](#position) | Get the current angle of the servo. |
 | [Stop](#stop) | Stop the servo. |
-| [DoCommand](#docommand) | Sends or receives model-specific commands. |
+| [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### Move
 
@@ -453,7 +453,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
   result, err := myServo.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/servo/servo.go#L143).
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
 
 {{% /tab %}}
 {{< /tabs >}}

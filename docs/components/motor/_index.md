@@ -30,8 +30,8 @@ Most robots with a motor need at least the following hardware:
 How you configure your motor with Viam depends more on the motor driver than on the motor itself.
 Click the model names below for configuration information:
 
-Model | Supported hardware <a name="model-table"></a>
----------- | ------------------
+Model | Description <a name="model-table"></a>
+----- | -----------
 [`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor)
 [`gpiostepper`](./gpiostepper/) | Bipolar stepper motor with current regulation and 1/32 microstepping driven by a basic driver like [DRV8825](https://www.ti.com/product/DRV8825) or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)
 [`28byj48`](./28byj48/) | Small unipolar 28BYJ-48 stepper motor driven by a [ULN2003](https://www.ti.com/product/ULN2003A) driver
@@ -101,16 +101,16 @@ m2.GoFor(context.TODO(), 1000, 200, nil)
 
 Method Name | Description
 ----------- | -----------
-[SetPower](#setpower) | Sets the power to send to the motor as a portion of max power.
-[GoFor](#gofor) | Spins the motor the specified number of revolutions at specified RPM.
-[GoTo](#goto) | Sends the motor to a specified position (in terms of revolutions from home) at a specified speed.
-[ResetZeroPosition](#resetzeroposition) | Sets the current position to be the new zero (home) position.
-[GetPosition](#getposition) | Reports the position of the motor based on its encoder. Not supported on all motors.
-[GetProperties](#getproperties) | Returns whether or not the motor supports certain optional features.
-[Stop](#stop) | Cuts power to the motor off immediately, without any gradual step down.
-[IsPowered](#ispowered) | Returns whether or not the motor is currently on, and the amount of power to it.
-[IsMoving](#ismoving) | Returns whether the motor is moving or not.
-[DoCommand](#docommand) | Sends or receives model-specific commands.
+[SetPower](#setpower) | Set the power to send to the motor as a portion of max power.
+[GoFor](#gofor) | Spin the motor the specified number of revolutions at specified RPM.
+[GoTo](#goto) | Send the motor to a specified position (in terms of revolutions from home) at a specified speed.
+[ResetZeroPosition](#resetzeroposition) | Set the current position to be the new zero (home) position.
+[GetPosition](#getposition) | Report the position of the motor based on its encoder. Not supported on all motors.
+[GetProperties](#getproperties) | Return whether or not the motor supports certain optional features.
+[Stop](#stop) | Cut power to the motor off immediately, without any gradual step down.
+[IsPowered](#ispowered) | Return whether or not the motor is currently on, and the amount of power to it.
+[IsMoving](#ismoving) | Return whether the motor is moving or not.
+[DoCommand](#docommand) | Send or receive model-specific commands.
 
 In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor)
 or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#).
@@ -669,7 +669,7 @@ myMotor, err := motor.FromRobot(robot, "motor1")
 resp, err := myMotor.DoCommand(ctx, map[string]interface{}{"command": "jog", "raw_input": "home"})
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/motor/motor.go#L213).
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
 
 {{% /tab %}}
 {{< /tabs >}}

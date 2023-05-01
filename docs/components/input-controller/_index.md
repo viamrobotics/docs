@@ -548,7 +548,7 @@ The input controller component supports the following methods:
 | [Events](#events) | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). |
 | [RegisterControlCallback](#registercontrolcallback) | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). |
 <!-- | [TriggerEvent](#triggerevent) | Directly send an [Event](#event-object) to your robot. | -->
-| [DoCommand](#docommand) | Sends or receives model-specific commands. |
+| [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### RegisterControlCallback
 
@@ -877,7 +877,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
   result, err := myController.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/input/input.go#L254).
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
 
 {{% /tab %}}
 {{< /tabs >}}
