@@ -9,6 +9,14 @@ tags: ["server", "rdk", "extending viam", "modular resources", "components", "se
 description: "Extend Viam by creating custom components and services."
 ---
 
+{{% alert title="Tip" color="tip" %}}
+
+{{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations with the [Python and Go SDKs](program/sdks).
+
+Use the remote method if you are hosting `viam-server` on a non-Linux platform or have another issue with compilation.
+
+{{% /alert %}}
+
 Viam's [Robot Development Kit (RDK)](/internals/rdk/) provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 - Various types and models of hardware [components](/components).
