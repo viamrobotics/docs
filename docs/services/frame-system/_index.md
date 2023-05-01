@@ -191,7 +191,7 @@ Access a [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_s
 
 ![an example of a logged frame system](img/frame_sys_log_example.png)
 
-Consider the example of nested reference frame configuration where a [two dynamic components are attached](/services/frame-system/nested-frame-config): a robotic arm, `A`, attaches to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
+Consider the example of nested reference frame configuration where [two dynamic components are attached](/services/frame-system/nested-frame-config): a robotic arm, `A`, attaches to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
 
 The resulting tree of reference frames looks like:
 
