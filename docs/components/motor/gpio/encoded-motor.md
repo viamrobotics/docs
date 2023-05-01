@@ -133,7 +133,7 @@ In addition to the [attributes for a non-encoded motor](/components/motor/gpio),
 
 The attribute [`max_rpm`](/components/motor/gpio) is not required or available for encoded `gpio` motors.
 
-If `encoder` is model [`AM5-AS5048`](/components/encoder/ams-as5048/),`ticks_per_rotation` must be `"1"`, as `AM5-AS5048` is an absolute encoder which provides angular measurements directly.
+If `encoder` is model [`AM5-AS5048`](/components/encoder/ams-as5048/),`ticks_per_rotation` must be `1`, as `AM5-AS5048` is an absolute encoder which provides angular measurements directly.
 
 {{% /alert %}}
 
