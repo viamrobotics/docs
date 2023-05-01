@@ -16,7 +16,7 @@ A *gripper* is a robotic grasping device that can open and close, often attached
 
 For configuration information, click on your gripper's model:
 
-Model | Supported hardware
+Model | Description
 ----- | -----------
 [`softrobotics`](./softrobotics/) | The [*m*Grip soft gripper by Soft Robotics](https://www.softroboticsinc.com/products/mgrip-modular-gripping-solution-for-food-automation/)
 
