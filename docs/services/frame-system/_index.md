@@ -18,14 +18,15 @@ It stores the required contextual information to use the position and orientatio
 
 ## Configuration
 
-To enable the default frame for a given [component](/components), click **Add Frame**, then click **Save Config**.
+To enable the default frame for a given [component](/components) on a robot, navigate to the **config** tab of the robot's page in [the Viam app](https://app.viam.com) and click **Components**.
+With **mode** as **Builder**, click **Add Frame** on the component's card and **Save Config**.
 
 To adjust the frame from its default configuration, change the parameters as needed for your robot before saving.
 
 {{< tabs name="Frame Configuration Instructions" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's card, and click **Add Frame**:
+Navigate to the **config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's panel, and click **Add Frame**:
 
 ![add reference frame pane](img/frame_card.png)
 
@@ -101,7 +102,7 @@ For more information about determining the appropriate values for these paramete
 You can visualize how your robot is oriented in the Frame System in [the Viam app](https://app.viam.com).
 Navigate to the **config** tab on your robot's page, select **mode** as **Builder**, and click on **Frame System**.
 
-A 3D visualization of the spatial configuration of the reference frames of components configured on your robot is shown:
+The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your robot:
 
 ![Default frame system configuration grid visualization for a single component, shown in the Frame System Editor](img/frame_system_basic.png)
 
@@ -109,25 +110,25 @@ This tab provides a simple interface for simultaneously viewing and editing the 
 
 For example:
 
-- You have configured a robot with a [`jetson` board](/components/board), wired to a [`webcam` camera](/components/camera/webcam) and a [`wheeled` base](/components/base/wheeled) with two [motors](/components/motor) driving its wheels.
+Consider a robot configured with a [`jetson` board](/components/board), wired to a [`webcam` camera](/components/camera/webcam) and a [`wheeled` base](/components/base/wheeled) with two [motors](/components/motor) driving its wheels.
 
-- You go to the **config** tab of your robot and click on the **Frame System** sub-tab.
-You have not yet added any reference frame configuration to these components, so they are all shown to be located on the default `world` origin point as follows:
+You have not yet added any reference frame configuration to these components.
+If you go to the **config** tab of your robot and click on the **Frame System** sub-tab, they are all shown to be located on the default `world` origin point as follows:
 
   ![Example robot's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other](img/demo_base_unedited.png)
 
-- Then, you measure the distance on the floor from your base to your board and camera setup and find it to be 200 millimeters.
-You add this value to `"X"` in your base's reference frame `Translation` attribute and the Frame System readjusts to show the base's translation:
+You measure the distance on the floor from your base to your board and camera setup and find it to be 200 millimeters.
+If you add this value to `"X"` in your base's reference frame `Translation` attribute, the Frame System readjusts to show the base's translation:
 
   ![Base translated 200mm forwards shown in the Frame System Editor](img/demo_base_edited.png)
 
-- You measure the distance from your board to the camera mounted overhead and find it to be 50 millimeters.
-You add this value to `"Z"` in your camera's reference frame `Translation` attribute and the Frame System readjusts to show the camera's translation:
+Next, you measure the distance from your board to the camera mounted overhead and find it to be 50 millimeters.
+If you add this value to `"Z"` in your camera's reference frame `Translation` attribute, the Frame System readjusts to show the camera's translation:
 
   ![Camera translated 50 mm overhead shown in the Frame System Editor](img/demo_camera_edited_1.png)
 
-- However, the camera doesn't yet display as oriented towards the base.
-You adjust the [orientation vector](/internals/orientation-vector) 0.5 degrees in `"OX"` in your camera's reference frame `Orientation` attribute and the Frame System readjusts to show the camera's orientation:
+However, the camera doesn't yet display as oriented towards the base.
+If you adjust the [orientation vector](/internals/orientation-vector) to 0.5 degrees in `"OX"` in your camera's reference frame `Orientation` attribute, the Frame System readjusts to show the camera's orientation:
 
   ![Camera oriented .5 degrees OX shown in the Frame System Editor](img/demo_camera_edited_2.png)
 
@@ -156,9 +157,9 @@ Click the video camera icon below and to the right of the **Frame System** butto
 
 ### Bounding Geometries
 
-Add `Geometry` properties to the **Frame System** [configuration](#configuration) of a component to visualize bounding geometries by selecting a component and selecting a **Geometry** type.
+To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame System** sub-tab of the **config** tab of a robot's page on [the Viam app](https://app.viam.com).
 
-By default, a **Geometry** is shown surrounding the origin point of a component as follows:
+By default, a **Geometry** is shown surrounding the origin point of a component:
 
 {{< tabs name="Visualize Adding Geometry Bounds" >}}
 {{% tab name="Box" %}}
