@@ -1,6 +1,6 @@
 ---
-title: "Frame System Configuration for a Component attached to a Fixed Object"
-linkTitle: "Configure a Component on a Fixed Object"
+title: "Reference Frame Configuration"
+linkTitle: "Configure a Reference Frame"
 description: "How to configure the Frame System in an scenario where a component is fixed to a static object."
 type: docs
 weight: 45
@@ -10,17 +10,17 @@ tags: ["frame system", "services"]
 
 Imagine a robotic [arm](/components/arm) is attached to a table.
 
-Consider one corner of the table the arm is attached to to be the origin of the `"world"`, `(0, 0, 0)`.
-Measure from that point to the base of the arm to get the `"translation"` coordinates.
+Consider one corner of the table the arm is attached to to be the origin of the `world`, `(0, 0, 0)`.
+Measure from that point to the base of the arm to get the `translation` coordinates.
 
 - Suppose the arm is offset from the corner by 100mm in the positive X direction, and 250mm in the negative Y direction.
-- Supply this `"translation"` when configuring the arm component's `"frame"` information.
-- Leave `"parent"` and `"orientation"` at their default values.
+- Supply this `translation` when configuring the arm component's `frame` information.
+- Leave `parent` and `orientation` at their default values.
 
 {{< tabs name="Example Frame Configuration of Component attached to Static Surface" >}}
 {{% tab name="Config Builder" %}}
 
-To complete the frame configuration for your robot following this example, navigate to the **config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `"myArm"`'s card, and click **Add Frame**:
+To complete the frame configuration for your robot following this example, navigate to the **config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myArm`'s card, and click **Add Frame**:
 
 ![frame card example for this configuration](../img/frame_card_static.png)
 
@@ -74,7 +74,7 @@ Select the `parent` frame as `world` and fill in the coordinates for `translatio
 
 {{% alert title="Tip" color="tip" %}}
 
-Note: `"myArm"` uses the default `"orientation"` from the `"world"` origin.
+Note: `myArm` uses the default `orientation` from the `world` origin.
 
 You do not have to explicitly configure this on your robot, as it is the default.
 It is included as part of this example for illustrative purposes.

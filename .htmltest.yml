@@ -17,6 +17,7 @@ IgnoreURLs:
 - "pinout.xyz"
 - "play.google.com"
 - "scuttlerobot.org"
+- "numato.com"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"
