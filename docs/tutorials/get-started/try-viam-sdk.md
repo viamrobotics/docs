@@ -41,7 +41,7 @@ If you are running out of time during your rental, you can [extend your rover re
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, and copy the boilerplate code from the section labeled **Python**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, then select **Python** and copy the boilerplate code.
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
@@ -59,7 +59,7 @@ python3 square.py
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, and copy the boilerplate code from the section labeled **Go**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, then select **Go** and copy the boilerplate code.
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
@@ -77,7 +77,7 @@ go run square.go
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, and copy the boilerplate code from the section labeled **TypeScript**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, then select **TypeScript** and copy the boilerplate code.
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
@@ -139,7 +139,7 @@ npm start
 {{% /tab %}}
 {{< /tabs >}}
 
-If you successfully configured your robot and it is able to connect to the Viam app, the program prints the names of your rover's resources to the terminal.
+If you successfully configured your robot and it is able to connect to the Viam app, the program prints some output to the terminal, including the names of your rover's resources.
 These are the components and services that the roobot is configured with in the Viam app.
 
 <img src="../../img/try-viam-sdk/image3.png" alt="The output of the program is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%">
@@ -300,38 +300,63 @@ func main() {
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-Your main function should look like this:
+Your main function should look similar to this but only the first few lines that connect to your rover are important for us:
 
-```ts {class="line-numbers linkable-line-numbers"}
+```ts {class="line-numbers linkable-line-numbers" data-line="1-12"}
 async function main() {
-  // Connect to client
-  let client: VIAM.RobotClient;
-  try {
-    client = await connect();
-    console.log('connected!');
+  const host = 'ADDRESS_FROM_VIAM_APP';
 
-    let resources = await client.resourceNames();
-    console.log(resources)
+  const robot = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: 'robot-location-secret',
+      payload: 'SECRET_FROM_VIAM_APP',
+    },
+    authEntity: host,
+    signalingAddress: 'https://app.viam.com:443',
+  });
 
-  } catch (error) {
-    console.log(error);
-    return;
-  }
+  // Note that the pin supplied is a placeholder. Please change this to a valid pin you are using.
+  // local
+  const localClient = new VIAM.BoardClient(robot, 'local');
+  const localReturnValue = await localClient.getGPIO('16');
+  console.log('local getGPIO return value:', localReturnValue);
 
+  // right
+  const rightClient = new VIAM.MotorClient(robot, 'right');
+  const rightReturnValue = await rightClient.isMoving();
+  console.log('right isMoving return value:', rightReturnValue);
+
+  // left
+  const leftClient = new VIAM.MotorClient(robot, 'left');
+  const leftReturnValue = await leftClient.isMoving();
+  console.log('left isMoving return value:', leftReturnValue);
+
+  // viam_base
+  const viamBaseClient = new VIAM.BaseClient(robot, 'viam_base');
+  const viamBaseReturnValue = await viamBaseClient.isMoving();
+  console.log('viam_base isMoving return value:', viamBaseReturnValue);
+
+  // cam
+  const camClient = new VIAM.CameraClient(robot, 'cam');
+  const camReturnValue = await camClient.getImage();
+  console.log('cam getImage return value:', camReturnValue);
+
+  console.log('Resources:');
+  console.log(await robot.resourceNames());
 }
 ```
 
-Next, add the following function that initializes your Viam Rover base and drives it in a square.
+Underneath the `main` function, add the following function that initializes your Viam Rover base client and drives it in a square:
 
+{{< alert title="Note" color="note" >}}
 By default, the base name is `viam_base`.
 If you have changed the base name, update the name in your code.
-
-Paste this snippet above your `main()` function:
+{{< /alert >}}
 
 ```ts {class="line-numbers linkable-line-numbers"}
 // This function moves a base component in a square.
-// Feel free to replace it whatever logic you want to test out!
-async function run(client: VIAM.RobotClient) {
+async function moveInSquare(client: VIAM.RobotClient) {
   // Replace with the name of a motor on your robot.
   const name = 'viam_base';
   const baseClient = new VIAM.BaseClient(client, name);
@@ -350,28 +375,37 @@ async function run(client: VIAM.RobotClient) {
 }
 ```
 
-Invoke the `run()` function in your main function after initializing your base.
+Underneath the `moveInSquare` function, add this `button` function which gets the `main-button` button from the page loaded from `index.html`:
+
+```ts {class="line-numbers linkable-line-numbers"}
+// This function gets the button element
+function button() {
+    return <HTMLButtonElement>document.getElementById('main-button');
+}
+```
+
+Next, register a listener on the button you obtain from the `button` fuction and make it invoke the `moveInSquare` function.
+Place this code after the rover connection code:
+You can keep or remove the additional boilerplate code as you wish.
 
 Your main function should now look like this:
 
-```ts {class="line-numbers linkable-line-numbers" data-line="16-19"}
+```ts {class="line-numbers linkable-line-numbers" data-line="14-17"}
 async function main() {
-  // Connect to client
-  let client: VIAM.RobotClient;
-  try {
-    client = await connect();
-    console.log('connected!');
+  const host = 'ADDRESS_FROM_VIAM_APP';
 
-    let resources = await client.resourceNames();
-    console.log(resources)
-
-  } catch (error) {
-    console.log(error);
-    return;
-  }
+  const robot = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: 'robot-location-secret',
+      payload: 'SECRET_FROM_VIAM_APP',
+    },
+    authEntity: host,
+    signalingAddress: 'https://app.viam.com:443',
+  });
 
   button().onclick = async () => {
-    await run(client);
+    await moveInSquare(robot);
   };
   button().disabled = false;
 }
@@ -543,83 +577,55 @@ func main() {
 <file>main.ts</file>:
 
 ```ts {class="line-numbers linkable-line-numbers"}
+// This code must be run in a browser environment.
+
 import * as VIAM from '@viamrobotics/sdk';
 
-async function connect(): Promise<VIAM.RobotClient> {
-  // You can remove this block entirely if your robot is not authenticated.
-  // Otherwise, replace with an actual secret.
-  const secret = 'SECRET_FROM_VIAM_APP';
-  const credential = {
-    payload: secret,
-    type: 'robot-location-secret',
-  };
-
-  // Replace with the host of your actual robot running Viam.
+async function main() {
   const host = 'ADDRESS_FROM_VIAM_APP';
 
-  // Replace with the signaling address. If you are running your robot on Viam,
-  // it is most likely https://app.viam.com:443.
-  const signalingAddress = 'https://app.viam.com:443';
-
-  // You can replace this with a different ICE server, append additional ICE
-  // servers, or omit entirely. This option is not strictly required but can
-  // make it easier to connect via WebRTC.
-  const iceServers = [{ urls: 'stun:global.stun.twilio.com:3478' }];
-
-  return VIAM.createRobotClient({
+  const robot = await VIAM.createRobotClient({
     host,
-    credential,
+    credential: {
+      type: 'robot-location-secret',
+      payload: 'SECRET_FROM_VIAM_APP',
+    },
     authEntity: host,
-    signalingAddress,
-    iceServers,
+    signalingAddress: 'https://app.viam.com:443',
   });
-}
-
-function button() {
-  return <HTMLButtonElement>document.getElementById('main-button');
-}
-
-// This function moves a base component in a square.
-// Feel free to replace it whatever logic you want to test out!
-async function run(client: VIAM.RobotClient) {
-  // Replace with the name of a motor on your robot.
-  const name = 'viam_base';
-  const baseClient = new VIAM.BaseClient(client, name);
-
-  try {
-    button().disabled = true;
-    for(let i=0; i<4; i++) {
-      console.log("move straight");
-      await baseClient.moveStraight(500, 500);
-      console.log("spin 90 degrees");
-      await baseClient.spin(90, 100);
-    }
-  } finally {
-    button().disabled = false;
-  }
-}
-
-async function main() {
-  // Connect to client
-  let client: VIAM.RobotClient;
-  try {
-    client = await connect();
-    console.log('connected!');
-
-    let resources = await client.resourceNames();
-    console.log(resources)
-  } catch (error) {
-    console.log(error);
-    return;
-  }
 
   button().onclick = async () => {
-    await run(client);
+    await moveInSquare(robot);
   };
   button().disabled = false;
 }
 
-main();
+// This function moves a base component in a square.
+async function moveInSquare(client: VIAM.RobotClient) {
+    // Replace with the name of a motor on your robot.
+    const name = 'viam_base';
+    const baseClient = new VIAM.BaseClient(client, name);
+
+    try {
+      button().disabled = true;
+      for(let i=0; i<4; i++) {
+        console.log("move straight");
+        await baseClient.moveStraight(500, 500);
+        console.log("spin 90 degrees");
+        await baseClient.spin(90, 100);
+      }
+    } finally {
+      button().disabled = false;
+    }
+}
+
+function button() {
+    return <HTMLButtonElement>document.getElementById('main-button');
+}
+
+main().catch((error) => {
+  console.error('encountered an error:', error)
+});
 ```
 
 {{% /tab %}}
