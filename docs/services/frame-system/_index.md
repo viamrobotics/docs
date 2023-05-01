@@ -112,23 +112,26 @@ For example:
 
 Consider a robot configured with a [`jetson` board](/components/board), wired to a [`webcam` camera](/components/camera/webcam) and a [`wheeled` base](/components/base/wheeled) with two [motors](/components/motor) driving its wheels.
 
-You have not yet added any reference frame configuration to these components.
-If you go to the **config** tab of your robot and click on the **Frame System** sub-tab, they are all shown to be located on the default `world` origin point as follows:
+No reference frame configuration has been specified, so on the **Frame System** **config** sub-tab, the components are shown to all be located on the default `world` origin point as follows:
 
   ![Example robot's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other](img/demo_base_unedited.png)
 
-You measure the distance on the floor from your base to your board and camera setup and find it to be 200 millimeters.
-If you add this value to `"X"` in your base's reference frame `Translation` attribute, the Frame System readjusts to show the base's translation:
+The distance on the floor from the wheeled base to the board and camera setup is 200 millimeters.
+
+Add this value to `"X"` in the base's reference frame `Translation` attribute, and the Frame System readjusts to show the base's translation:
 
   ![Base translated 200mm forwards shown in the Frame System Editor](img/demo_base_edited.png)
 
-Next, you measure the distance from your board to the camera mounted overhead and find it to be 50 millimeters.
-If you add this value to `"Z"` in your camera's reference frame `Translation` attribute, the Frame System readjusts to show the camera's translation:
+The distance from the board to the camera mounted overhead is 50 millimeters.
+
+Add this value to `"Z"` in the camera's reference frame `Translation` attribute, and the Frame System readjusts to show the camera's translation:
 
   ![Camera translated 50 mm overhead shown in the Frame System Editor](img/demo_camera_edited_1.png)
 
+Now the distance between these components is accurately reflected in the visualization.
 However, the camera doesn't yet display as oriented towards the base.
-If you adjust the [orientation vector](/internals/orientation-vector) to 0.5 degrees in `"OX"` in your camera's reference frame `Orientation` attribute, the Frame System readjusts to show the camera's orientation:
+
+Adjust the [orientation vector](/internals/orientation-vector) to 0.5 degrees in `"OX"` in your camera's reference frame `Orientation` attribute, and the Frame System readjusts to show the camera's orientation:
 
   ![Camera oriented .5 degrees OX shown in the Frame System Editor](img/demo_camera_edited_2.png)
 
