@@ -8,6 +8,7 @@ weight: 10
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
+no_list: true
 ---
 
 The Viam module system allows you to integrate custom [resources](/appendix/glossary/#term-resource) ([components](/components) and [services](/services)) into any robot running on Viam.
@@ -582,3 +583,9 @@ This means that you can compose a robot of any number of parts running in differ
 ### Limitations
 
 Custom models of the [arm](/components/arm) component type are not yet supported, as kinematic information is not currently exposed through the arm API.
+
+{{< cards >}}
+{{% card link="/program/extend/modular-resources/examples" size="small" %}}
+    {{% card link="/program/extend/modular-resources/examples/add-rplidar-module" size="small" %}}
+    {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" %}}
+{{< /cards >}}
