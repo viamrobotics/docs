@@ -74,59 +74,66 @@ The following attributes are available for `transform` views:
 The following are the transformation objects available for the `pipeline`:
 
 {{< tabs >}}
-{{% tab name="Identity"%}}
+{{% tab name="Classifications" %}}
 
-The Identity transform does nothing to the image.
-You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-    "type": "identity"
-}
-```
-
-**Attributes:**
-
-- None
-
-{{% /tab %}}
-{{% tab name="Rotate" %}}
-
-The Rotate transformation rotates the image by 180 degrees.
-This feature is useful for when the camera is installed upside down on your robot.
+Classifications overlay text from the `GetClassifications` method of the [Vision Service](../../../services/vision) onto the image.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "rotate",
-    "attributes": { }
-}
-```
-
-**Attributes:**
-
-- None
-
-{{% /tab %}}
-{{% tab name="Resize" %}}
-
-The Resize transform resizes the image to the specified height and width.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-    "type": "resize",
+    "type": "classifications",
     "attributes": {
-        "width_px": int,
-        "height_px": int
+        "classifier_name": string,
+        "confidence_threshold": float
     }
 }
 ```
 
 **Attributes:**
 
-- `width_px`: Specify the expected width for the aligned image.
-- `height_px`: Specify the expected width for the aligned image.
+- `classifier_name`: The name of the classifier in the [Vision Service](../../../services/vision).
+- `confidence_threshold`: The threshold above which to display classifications.
 
 {{% /tab %}}
+
+{{% tab name="Depth Edges" %}}
+
+The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "type": "depth_edges",
+    "attributes": {
+        "high_threshold_pct": float,
+        "low_threshold_pct": float,
+        "blur_radius_px": float
+    }
+}
+```
+
+**Attributes:**
+
+- `high_threshold_pct`: The high threshold value: between 0.0 - 1.0.
+- `low_threshold_pct`: The low threshold value: between 0.0 - 1.0.
+- `blur_radius_px`: The blur radius used to smooth the image before applying the filter.
+
+{{% /tab %}}
+{{% tab name="Depth Preprocess" %}}
+
+Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "type": "depth_preprocess",
+    "attributes": { }
+}
+```
+
+**Attributes:**
+
+- None.
+
+{{% /tab %}}
+
 {{% tab name="Depth to Pretty" %}}
 
 The Depth-to-Pretty transform takes a depth image and turns it into a colorful image, with blue indicating distant points and red indicating nearby points.
@@ -144,6 +151,45 @@ The actual depth information is lost in the transform.
 - None.
 
 {{% /tab %}}
+
+{{% tab name="Detections" %}}
+
+The Detections transform takes the input image and overlays the detections from a given detector configured within the [Vision Service](/services/vision/).
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "type": "detections",
+    "attributes": {
+        "detector_name": string,
+        "confidence_threshold": float
+    }
+}
+```
+
+**Attributes:**
+
+- `detector_name`: The name of the detector configured in the [Vision Service](/services/vision).
+- `confidence_threshold`: Specify to only display detections above the specified threshold (decimal between 0 and 1).
+
+{{% /tab %}}
+
+{{% tab name="Identity"%}}
+
+The Identity transform does nothing to the image.
+You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "type": "identity"
+}
+```
+
+**Attributes:**
+
+- None
+
+{{% /tab %}}
+
 {{% tab name="Overlay" %}}
 
 Overlays the depth and the color 2D images.
@@ -176,6 +222,46 @@ Useful to debug the alignment of the two images.
   - `fy`: The image focal y.
 
 {{% /tab %}}
+
+{{% tab name="Resize" %}}
+
+The Resize transform resizes the image to the specified height and width.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "type": "resize",
+    "attributes": {
+        "width_px": int,
+        "height_px": int
+    }
+}
+```
+
+**Attributes:**
+
+- `width_px`: Specify the expected width for the aligned image.
+- `height_px`: Specify the expected width for the aligned image.
+
+{{% /tab %}}
+
+{{% tab name="Rotate" %}}
+
+The Rotate transformation rotates the image by 180 degrees.
+This feature is useful for when the camera is installed upside down on your robot.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "type": "rotate",
+    "attributes": { }
+}
+```
+
+**Attributes:**
+
+- None
+
+{{% /tab %}}
+
 {{% tab name="Undistort" %}}
 
 The Undistort transform undistorts the input image according to the intrinsics and distortion parameters specified within the camera parameters.
@@ -222,84 +308,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
   - `tp2`: The tangential distortion y.
 
 {{% /tab %}}
-{{% tab name="Detections" %}}
 
-The Detections transform takes the input image and overlays the detections from a given detector configured within the [Vision Service](/services/vision/).
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-    "type": "detections",
-    "attributes": {
-        "detector_name": string,
-        "confidence_threshold": float
-    }
-}
-```
-
-**Attributes:**
-
-- `detector_name`: The name of the detector configured in the [Vision Service](/services/vision).
-- `confidence_threshold`: Specify to only display detections above the specified threshold (decimal between 0 and 1).
-
-{{% /tab %}}
-{{% tab name="Depth Edges" %}}
-
-The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-    "type": "depth_edges",
-    "attributes": {
-        "high_threshold_pct": float,
-        "low_threshold_pct": float,
-        "blur_radius_px": float
-    }
-}
-```
-
-**Attributes:**
-
-- `high_threshold_pct`: The high threshold of ??? : between 0.0 - 1.0.
-- `low_threshold_pct`: The low threshold of ??? : between 0.0 - 1.0.
-- `blur_radius_px`: The blur radius used to smooth the image before applying the filter.
-
-{{% /tab %}}
-{{% tab name="Depth Preprocess" %}}
-
-Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-    "type": "depth_preprocess",
-    "attributes": { }
-}
-```
-
-**Attributes:**
-
-- None.
-
-{{% /tab %}}
-{{% tab name="Classifications" %}}
-
-Classifications overlay text from the `GetClassifications` method of the [Vision Service](../../../services/vision) onto the image.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-    "type": "classifications",
-    "attributes": {
-        "classifier_name": string,
-        "confidence_threshold": float
-    }
-}
-```
-
-**Attributes:**
-
-- `classifier_name`: The name of the classifier in the [Vision Service](../../../services/vision).
-- `confidence_threshold`: The threshold above which to display classifications.
-
-{{% /tab %}}
 {{< /tabs >}}
 
 ## Example
