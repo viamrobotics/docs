@@ -32,16 +32,16 @@ Here’s an example configuration:
 {
   "components": [
     {
-      "name": <board_name>,
+      "name": <your-board-name>,
       "type": "board",
-      "model": <board_model>,
+      "model": <your-board-model>,
       "attributes": {},
       "depends_on": []
     },
     {
-      "name": <encoder_name>,
+      "name": <your-encoder=name>,
       "type": "encoder",
-      "model": "incremental",
+      "model": <encoder-model>,
       "attributes": {
         "board": <board_name>,
         "pins": {
@@ -52,11 +52,11 @@ Here’s an example configuration:
       "depends_on": []
     },
     {
-      "name": <motor_name>,
+      "name": <your-motor-name>,
       "type": "motor",
       "model": "gpio",
       "attributes": {
-        "board": <board_name>,
+        "board": <your-board-name>,
         "pins": {
           <...>
         },
@@ -130,11 +130,13 @@ In addition to the [attributes for a non-encoded motor](/components/motor/gpio),
 | ---- | ---- | --------- | ----------- |
 | `encoder` | string | **Required** | `name` of the encoder. |
 | `ticks_per_rotation` | string | **Required** | Number of ticks in a full rotation of the encoder and motor shaft. |
-| `ramp_rate` | number | Optional | How fast to ramp power to motor when using RPM control. 0.01 ramps very slowly; 1 ramps instantaneously. Range is (0.0, 1.0]. <br> Default = `0.2` |
+| `ramp_rate` | number | Optional | Rate to increase the motor's input voltage (power supply) per second when increasing the speed the motor rotates (RPM). <br> Range = `(0.0, 1.0]` <br> Default = `0.2` |
 
 {{% alert title="Note" color="note" %}}
 
 The attribute [`max_rpm`](/components/motor/gpio) is not required or available for encoded `gpio` motors.
+
+If `encoder` is model [`AM5-AS5048`](/components/encoder/ams-as5048/),`ticks_per_rotation` must be `"1"`, as `AM5-AS5048` is an absolute encoder which provides angular measurements directly.
 
 {{% /alert %}}
 
