@@ -59,7 +59,7 @@ Add a component with type `camera`, model `viam:lidar:rplidar`, and a name of yo
 
 ![adding rplidar component](../../img/add-rplidar/add-rplidar-component-ui.png)
 
-Paste the following into the **Attributes** field of your new component according to your machine's architecture:
+Paste the following into the **Attributes** field of your new component according to your machine's architecture (none needed for Linux):
 
 {{< tabs name="Add Rplidar Configs">}}
 {{% tab name="MacOS x86_64" %}}
