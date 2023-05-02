@@ -119,9 +119,10 @@ The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v
 
 | Method Name | Description |
 | ----- | ----------- |
-| [`FrameSystemConfig`](#framesystemconfig) | Return a topologically sorted list of all the reference frames monitored by the frame system. |
+<!-- | [`FrameSystemConfig`](#framesystemconfig) | Return a topologically sorted list of all the reference frames monitored by the frame system. | -->
 | [`TransformPose`](#transformpose) | Transform a pose measured in one reference frame to the same pose as it would have been measured in another. |
 
+<!--
 ### FrameSystemConfig
 
 Returns a topologically sorted list of all the reference frames monitored by the frame system. Any [supplemental transforms](#supplemental-transforms) are also merged into the tree, sorted, and returned.
@@ -168,6 +169,7 @@ fmt.Println(frameSystem)
 
 {{% /tab %}}
 {{< /tabs >}}
+-->
 
 ### TransformPose
 
