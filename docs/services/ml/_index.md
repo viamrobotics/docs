@@ -7,6 +7,7 @@ tags: ["data management", "ml", "model training"]
 aliases:
   - /manage/data/deploy-model/
 description: "Deploy Machine Learning models to a robot."
+icon: "/services/img/icons/ml.svg"
 # SME: Aaron Casas
 ---
 

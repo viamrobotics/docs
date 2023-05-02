@@ -5,6 +5,7 @@ description: "The Frame System holds reference frame information for the relativ
 type: docs
 weight: 45
 no_list: true
+icon: "/services/img/icons/frame-system.svg"
 tags: ["frame system", "services"]
 # SMEs: Peter L, Gautham, Bijan
 ---
