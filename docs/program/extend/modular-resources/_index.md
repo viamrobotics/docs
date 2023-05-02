@@ -307,7 +307,7 @@ class MyBase(Base, Reconfigurable):
 
     """ Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase) 
     acme = namespace, demo = family, mybase = name. """
-    MODEL: ClassVar[Model] = Model(ModelFamily("acme"))
+    MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
 
     left: Motor # Left motor
     right: Motor # Right motor
