@@ -17,7 +17,7 @@ See the [encoder component documentation](/components/encoder/) for more informa
 Viam supports `gpio` model motors with encoders.
 To configure an encoded motor, you must configure the encoder [per the encoder documentation](/components/encoder) and then configure a `gpio` motor with an `encoder` attribute in addition to the [standard `gpio` model attributes](/components/motor/gpio/).
 
-<a id="encoder-config">
+<a id="encoder-config>"
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
@@ -32,31 +32,31 @@ Here’s an example configuration:
 {
   "components": [
     {
-      "name": <"your-board-name">,
+      "name": "<your-board-name>",
       "type": "board",
-      "model": <"your-board-model">,
+      "model": "<your-board-model>",
       "attributes": {},
       "depends_on": []
     },
     {
-      "name": <"your-encoder=name">,
+      "name": "<your-encoder-name>",
       "type": "encoder",
-      "model": <"your-encoder-model">,
+      "model": "<your-encoder-model>",
       "attributes": {
         ... // insert encoder model specific attributes
       },
       "depends_on": []
     },
     {
-      "name": <"your-motor-name">,
+      "name": "<your-motor-name>",
       "type": "motor",
       "model": "gpio",
       "attributes": {
-        "board": <"your-board-name">,
+        "board": "<your-board-name>",
         "pins": {
-          <...>
+          <...> // insert pins struct
         },
-        "encoder": <"your-encoder-name">,
+        "encoder": "<your-encoder-name>",
         "ticks_per_rotation": <#>
       },
       "depends_on": []
