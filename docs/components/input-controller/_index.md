@@ -61,7 +61,6 @@ The input controller component supports the following methods:
 | [Controls](#controls) | Get a list of input `Controls` that this Controller provides. |
 | [Events](#events) | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). |
 | [RegisterControlCallback](#registercontrolcallback) | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). |
-<!-- | [TriggerEvent](#triggerevent) | Directly send an [Event](#event-object) to your robot. | -->
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### RegisterControlCallback
@@ -97,7 +96,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 # Define a function to handle pressing the Start Menu Button "BUTTON_START" on your controller, printing out the start time.
 def print_start_time(event):
-    print(f'Start Menu Button was pressed at this time:\n{event.time}')
+    print(f"Start Menu Button was pressed at this time:\n{event.time}")
 
 # Define a function that handles the controller.
 async def handle_controller(controller):
@@ -114,6 +113,17 @@ async def handle_controller(controller):
 
     while True:
         await asyncio.sleep(1.0)
+
+async def main():
+    # ... < INSERT CONNECTION CODE FROM ROBOT'S CODE SAMPLE TAB >
+
+    # Get your controller from the robot.
+    my_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller")
+
+    # Run the handleController function.
+    await handleController(my_controller)
+    
+    # ... < INSERT ANY OTHER CODE FOR MAIN FUNCTION >
 ```
 
 {{% /tab %}}
@@ -134,6 +144,7 @@ async def handle_controller(controller):
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
+
 // Define a function that handles the controller.
 func handleController(controller input.Controller) {
 
@@ -146,7 +157,7 @@ func handleController(controller input.Controller) {
     triggers := [1]input.EventType{input.ButtonPress}
 
     // Get the controller's Controls.
-    controls, err := myController.Controls(context.Background(), nil)
+    controls, err := controller.Controls(context.Background(), nil)
 
     // If the "ButtonStart" Control is found, register the function printStartTime to fire when "ButtonStart" has the event "ButtonPress" occur.
     if slices.Contains(controls, Control.ButtonStart) {
@@ -155,6 +166,32 @@ func handleController(controller input.Controller) {
      else {
         logger.Fatalf("Oops! Couldn't find the start button control! Is your controller connected?")
     }
+}
+
+func main() {
+    utils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("client"))
+}
+
+
+func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
+    // ... < INSERT CONNECTION CODE FROM ROBOT'S CODE SAMPLE TAB >
+
+    // Get the controller from the robot.
+    myController, err := input.FromRobot(myRobotWithController, "my_controller")
+
+    // Run the handleController function.
+    err := HandleController(myController)
+
+    // Delay closing your connection to your robot.
+    err = myRobotWithController.Start(ctx)
+    defer myRobotWithController.Close(ctx)
+
+    // Wait to exit mainWithArgs() until Context is Done.
+    <-ctx.Done()
+
+    // ... < INSERT ANY OTHER CODE FOR MAIN FUNCTION >
+
+    return nil
 }
 ```
 
@@ -180,11 +217,14 @@ This method returns the current state of the controller as a map of [Event Objec
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_events).
 
 ```python {class="line-numbers linkable-line-numbers"}
+# Get the controller from the robot.
+my_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller")
+
 # Get the most recent Event for each Control.
-recent_events = await myController.get_events()
+recent_events = await my_controller.get_events()
 
 # Print out the most recent Event for each Control.
-print(f'Recent Events:\n{recent_events}')
+print(f"Recent Events:\n{recent_events}")
 ```
 
 {{% /tab %}}
@@ -203,13 +243,11 @@ print(f'Recent Events:\n{recent_events}')
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
+// Get the controller from the robot.
+myController, err := input.FromRobot(myRobotWithController, "my_controller")
+
 // Get the most recent Event for each Control.
 recent_events, err := myController.Events(context.Background(), nil)
-
-// Log any errors that occur and exit if an error is found.
-if err != nil {
-  logger.Fatalf("cannot get list of recent events from controller: %v", err)
-}
 
 // Log the most recent Event for each Control.
 logger.Info("Recent Events: %v", recent_events)
@@ -237,13 +275,14 @@ Get a list of the [Controls](#control-field) that your controller provides.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_position).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_input_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller") ...
+# Get the controller from the robot.
+my_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller")
 
 # Get the list of Controls provided by the controller.
-controls = await my_input_controller.get_controls()
+controls = await my_controller.get_controls()
 
 # Print the list of Controls provided by the controller.
-print(f'Controls:\n{controls}')
+print(f"Controls:\n{controls}")
 ```
 
 {{% /tab %}}
@@ -262,18 +301,11 @@ print(f'Controls:\n{controls}')
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myController, err := controller.FromRobot(myRobotWithController, "my_controller")
-if err != nil {
-  logger.Fatalf("cannot get controller: %v", err)
-} ...
+// Get the controller from the robot.
+myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
 // Get the list of Controls provided by the controller.
 controls, err := myController.Controls(context.Background(), nil)
-
-// Log any errors that occur and exit if an error is found.
-if err != nil {
-  logger.Fatalf("cannot get controls provided by controller: %v", err)
-}
 
 // Log the list of Controls provided by the controller.
 logger.Info("Controls:")
@@ -363,10 +395,11 @@ If you are implementing your own input controller and add features that have no 
 - `result` (`Dict[str, Any]`): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_input_controller = Controller.from_robot(robot, "my_controller")
+# Get the controller from the robot.
+my_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller")
 
 command = {"cmd": "test", "data1": 500}
-result = my_input_controller.do(command)
+result = my_controller.do(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
@@ -385,10 +418,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-  myController, err := input.FromRobot(robot, "my_controller")
+// Get the controller from the robot.
+myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
-  command := map[string]interface{}{"cmd": "test", "data1": 500}
-  result, err := myController.DoCommand(context.Background(), command)
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := myController.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
