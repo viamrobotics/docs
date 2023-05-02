@@ -9,7 +9,7 @@ icon: "img/components/servo.png"
 # SME: Rand
 ---
 
-Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`pi` model [board](components/board) into your robot:
+Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`pi` model [board](/components/board) into your robot:
 
 {{< tabs name="Configure a Gpio Servo" >}}
 {{% tab name="Config Builder" %}}
