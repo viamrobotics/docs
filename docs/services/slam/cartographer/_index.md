@@ -177,7 +177,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
 "services": [
   {
     "model": "viam:slam:cartographer",
-    "name": "<your-service-name">,
+    "name": "<your-service-name>",
     "type": "slam",
     "attributes": {
       "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
