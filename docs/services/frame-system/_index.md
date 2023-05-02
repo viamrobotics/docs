@@ -119,8 +119,8 @@ The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v
 
 | Method Name | Description |
 | ----- | ----------- |
-<!-- | [`FrameSystemConfig`](#framesystemconfig) | Return a topologically sorted list of all the reference frames monitored by the frame system. | -->
 | [`TransformPose`](#transformpose) | Transform a pose measured in one reference frame to the same pose as it would have been measured in another. |
+<!-- | [`FrameSystemConfig`](#framesystemconfig) | Return a topologically sorted list of all the reference frames monitored by the frame system. | -->
 
 <!--
 ### FrameSystemConfig
