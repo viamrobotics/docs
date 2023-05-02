@@ -124,7 +124,7 @@ The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v
 
 ### FrameSystemConfig
 
-Returns a topologically sorted list of all the reference frames monitored by the frame system. Any [supplemental transforms](#supplemental-transforms) are also merged into the tree, topologically sorted, and returned.
+Returns a topologically sorted list of all the reference frames monitored by the frame system. Any [supplemental transforms](#supplemental-transforms) are also merged into the tree, sorted, and returned.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -142,7 +142,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 # Print the Frame System configuration
 frame_system = await robot.get_frame_system_config()
-print(frame_system)
+print(f"Frame System Configuration: {frame_system}")
 ```
 
 {{% /tab %}}
@@ -181,9 +181,9 @@ Transform a given source Pose from the reference frame to a new specified destin
 
 **Parameters:**
 
-- `query` [(`viam.proto.common.PoseInFrame`)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose that should be transformed.
+- `query` [(`PoseInFrame`)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose that should be transformed.
 - `destination` (str): The name of the reference frame to transform the given pose to.
-- `additional_transforms` (Optional[List[[viam.proto.common.Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](#supplemental-transforms).
+- `additional_transforms` (Optional[List[[Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](#supplemental-transforms).
 
 **Returns:**
 
@@ -209,9 +209,9 @@ print("Orientation: (o_x:", transformed_pif.pose.o_x,
 **Parameters:**
 
 - `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` (Optional[[referenceframe.PoseInFrame](https://pkg.go.dev/go.viam.com/rdk@v0.2.36/referenceframe#PoseInFrame)]): The pose that should be transformed.
+- `pose` (Optional[[PoseInFrame](https://pkg.go.dev/go.viam.com/rdk@v0.2.36/referenceframe#PoseInFrame)]): The pose that should be transformed.
 - `dst` (string): The name of the reference frame to transform the given pose to.
-- `additionalTransforms` (Optional[[referenceframe.LinkInFrame](https://pkg.go.dev/go.viam.com/rdk@v0.2.36/referenceframe#LinkInFrame)]): A list of [additional transforms](#supplemental-transforms).
+- `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk@v0.2.36/referenceframe#LinkInFrame)]): A list of [additional transforms](#supplemental-transforms).
 
 **Returns:**
 
@@ -221,14 +221,11 @@ print("Orientation: (o_x:", transformed_pif.pose.o_x,
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Transform a pose into the frame of myArm
+// Define a Pose coincident with the world reference frame
 firstPose := spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 0.0})
 firstPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, firstPose)
 
 transformedPoseInFrame, err := robot.TransformPose(ctx, firstPoseInFrame, "myArm", nil)
-if err != nil {
-  fmt.Println("err:", err)
-}
 fmt.Println("Transformed Position:", transformedPoseInFrame.Pose().Point())
 fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientation())
 ```
