@@ -86,8 +86,14 @@ The following attributes are available for `pi` servos:
 | ---- | ---- | --------- | ----------- |
 | `pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin the servo's control wire is wired to on the [board](/components/board). |
 | `board` | string | **Required** | `name` of the [board](/components/board) the servo is wired to. |
-| `min` | float | Optional | The minimum angle in degrees that the servo can move from its starting position. Refer to your servo's data sheet for specifications. Does not affect [pulse-width modulation (PMW)](/components/board/#pwm) calculation. |
-| `max` | float | Optional | The maximum angle in degrees that the servo can move from its starting position. Refer to your servo's data sheet for specifications. Does not affect PWM calculation. |
-| `starting_position_degs` | float | Optional | Starting position of the servo in degrees. |
-| `hold_position` | boolean | Optional | If `false`, hold the servo's position for 500 milliseconds, and then disable the servo. <br> Default = `true` |
-| `max_rotation_deg` | int | Optional | The maximum angle the servo can rotate. Refer to your servo's data sheet for specifications. <br> Default = `180` |
+| `min` | float | Optional | The minimum angle in degrees that the servo can reach. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |
+| `max` | float | Optional | The maximum angle in degrees that the servo can reach. <br> Default = `180.0` <br> Range = [`0.0`, `180.0`] |
+| `starting_position_degs` | float | Optional | Starting position of the servo in degrees. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |
+| `hold_position` | boolean | Optional | If `false`, power down a servo if it has tried and failed to go to a position for a duration of 500 milliseconds. <br> Default = `true` |
+| `max_rotation_deg` | int | Optional | The maximum angle the servo can rotate. Must be in between `min` and `max`. <br> Default = `180` |
+
+{{% alert title="Tip" color="tip" %}}
+
+Refer to your servo's data sheet for [pulse-width modulation (PWM)](/components/board/#pwm), rotation, and wiring specifications.
+
+{{% /alert %}}

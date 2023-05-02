@@ -75,10 +75,16 @@ The following attributes are available for `gpio` servos:
 | ---- | ---- | --------- | ----------- |
 | `pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin the servo's control wire is wired to on the [board](/components/board). |
 | `board` | string | **Required** | `name` of the [board](/components/board) the servo is wired to. |
-| `min_angle_deg` | float | Optional | The minimum angle in degrees that the servo can move from its starting position. Refer to your servo's data sheet for specifications. |
-| `max_angle_deg` | float | Optional | The maximum angle in degrees that the servo can move from its starting position. Refer to your servo's data sheet for specifications. |
-| `starting_position_deg` | float | Optional | Starting position of the servo in degrees. |
-| `frequency_hz` | int | Optional | The rate of pulses sent to the servo. The servo driver will attempt to change the GPIO pin's frequency, in Hertz (*Hz*). The recommended [pulse-width modulation (PMW)](/components/board/#pwm) frequency for servos is typically in the range of 40-200 Hz, with most servos using 50 Hz. Refer to your servo's data sheet for specifications. <br> Maximum = `450` |
-| `pwm_resolution` | int | Optional | Resolution of the PWM driver (for example, the number of ticks for a full period). If not specified, the driver will attempt to estimate the resolution. Refer to your servo's data sheet for specifications. <br> Range = (`0`, `450`) |
-| `min_width_us` | int | Optional | Override the safe minimum pulse width in microseconds. Affects PWM calculation. |
-| `max_width_us` | int | Optional | Override the safe maximum pulse width in microseconds. Affects PWM calculation. |
+| `min_angle_deg` | float | Optional | The minimum angle in degrees that the servo can reach. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |
+| `max_angle_deg` | float | Optional | The maximum angle in degrees that the servo can reach. <br> Default = `180.0` <br> Range = [`0.0`, `180.0`] |
+| `starting_position_deg` | float | Optional | Starting position of the servo in degrees. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |
+| `frequency_hz` | int | Optional | The frequency of [PMW](/components/board/#pwm) pulses sent to the servo, in Hertz (*Hz*). <br> Default = [`300`] <br> Range = [`0`, `450`] |
+| `pwm_resolution` | int | Optional | The resolution of the [PMW](/components/board/#pwm) driver (for example, the number of ticks for a full period). If not specified or given as `0`, the driver will attempt to estimate the resolution. |
+| `min_width_us` | int | Optional | Override the safe minimum [PMW](/components/board/#pwm) pulse width in microseconds. <br> Range > `450` |
+| `max_width_us` | int | Optional | Override the safe maximum [PMW](/components/board/#pwm) pulse width in microseconds. <br> Range < `2500` |
+
+{{% alert title="Tip" color="tip" %}}
+
+Refer to your servo's data sheet for [pulse-width modulation (PWM)](/components/board/#pwm), rotation, and wiring specifications.
+
+{{% /alert %}}

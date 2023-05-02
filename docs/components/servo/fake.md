@@ -13,7 +13,7 @@ You can use a `fake` servo to test implementing a servo component on your robot 
 
 Configure a `fake` servo as follows:
 
-{{< tabs name="Configure a Fake Gantry" >}}
+{{< tabs name="Configure a Fake Servo" >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
