@@ -131,11 +131,11 @@ Add this value to `"Z"` in the camera's reference frame `Translation` attribute,
 Now the distance between these components is accurately reflected in the visualization.
 However, the camera doesn't yet display as oriented towards the base.
 
-Adjust the [orientation vector](/internals/orientation-vector) to 0.5 degrees in `"OX"` in your camera's reference frame `Orientation` attribute, and the Frame System readjusts to show the camera's orientation:
+Adjust the [orientation vector](/internals/orientation-vector) to 0.5 degrees in `"OX"` in the camera's reference frame `Orientation` attribute, and the Frame System readjusts to show the camera's orientation:
 
   ![Camera oriented .5 degrees OX shown in the Frame System Editor](img/demo_camera_edited_2.png)
 
-Now that the Frame System is configured so that the spatial visualization for your robot matches its spatial orientation in real life, you can utilize [Motion Service](/services/motion) methods that take in reference frame information.
+Now that the Frame System is accurately configured with the robot's spatial orientation, [Motion Service](/services/motion) methods that take in reference frame information can be utilized.
 
 ### Display Options
 
