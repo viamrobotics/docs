@@ -34,7 +34,7 @@ Enter a name for your board, select the type `board`, and select the `pi` model.
     {
       "type": "board",
       "model": "pi",
-      "name": "<your_name">
+      "name": "<your_name>"
     }
   ]
 }

@@ -39,20 +39,20 @@ Select a `parent` frame and fill in the coordinates for `translation` (*mm*) and
 {
   "components": [
     {
-      "name": "<your_component_name_1">,
-      "type": "<your_component_type_1">,
-      "model": "<your_component_model_1">,
+      "name": "<your_component_name_1>",
+      "type": "<your_component_type_1>",
+      "model": "<your_component_model_1>",
       "attributes": { ... },
       "depends_on": [],
       "frame": {
-        "parent": "<world">,
+        "parent": "<world>",
         "translation": {
           "y": <int>,
           "z": <int>,
           "x": <int>
         },
         "orientation": {
-          "type": "<ov_degrees">,
+          "type": "<ov_degrees>",
           "value": {
             "x": <int>,
             "y": <int>,

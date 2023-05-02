@@ -31,11 +31,11 @@ Edit and fill in the attributes as applicable.
   "components": [
     // < Your motor config >
     {
-      "name": "<your-oneaxis-gantry-name">,
+      "name": "<your-oneaxis-gantry-name>",
       "type": "gantry",
       "model": "oneaxis",
       "attributes": {
-        "motor": "<your-motor-name">,
+        "motor": "<your-motor-name>",
         "length_mm": <int>,
         "axis": {
           "X": <int>,
