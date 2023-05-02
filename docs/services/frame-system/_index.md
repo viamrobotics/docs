@@ -140,7 +140,7 @@ Returns a topologically sorted list of all the reference frames monitored by the
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Print the Frame System configuration
+# Get a list of each of the reference frames configured on the robot. 
 frame_system = await robot.get_frame_system_config()
 print(f"Frame System Configuration: {frame_system}")
 ```
