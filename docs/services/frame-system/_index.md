@@ -163,9 +163,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go {class="line-numbers linkable-line-numbers"}
 // Print the Frame System configuration
 frameSystem, err := robot.FrameSystemConfig(context.Background(), nil)
-if err != nil {
-  fmt.Println("err:", err)
-}
 fmt.Println(frameSystem)
 ```
 
