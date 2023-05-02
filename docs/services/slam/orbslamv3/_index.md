@@ -78,7 +78,7 @@ Paste the following into the **Attributes** field of your new service:
   "data_dir": "/home/<YOUR_USERNAME>/<ORBSLAM3_DIR>",
   "use_live_data": true,
   "delete_processed_data": true,
-  "sensors": [ <"your-webcam-name"> ],
+  "sensors": [ "<your-webcam-name>" ],
   "config_params": {
     "mode": "rgbd"
   }
@@ -99,7 +99,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 "services": [
   {
     "type": "slam",
-    "name": <"your-service-name">,
+    "name": "<your-service-name>",
     "model": "orbslamv3",
     "attributes": {
       "data_dir": "/home/<YOUR_USERNAME>/<ORBSLAM_DIR>",
@@ -206,7 +206,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to
 "services": [
   {
     "type": "slam",
-    "name": <"your-service-name">,
+    "name": "<your-service-name>",
     "model": "orbslamv3",
     "attributes": {
       "data_dir": "/home/<YOUR_USERNAME>/<ORBSLAM3_DIR>",

@@ -32,25 +32,20 @@ If you are managing a fleet, you can use {{< glossary_tooltip term_id="fragment"
 
 ## Use Viam for collaboration
 
-To facilitate collaboration, you can add collaborators to organizations, and share locations across multiple organizations.
-Viam is actively working on functionality to allow you to assign [permissions](#permissions) to collaborators.
+To facilitate collaboration, you can add collaborators to organizations, assign [permissions](#permissions) to collaborators, and share locations across multiple organizations.
 
 When you create a Viam account, Viam automatically creates an organization for you.
 You can use this organization as your collaboration hub by inviting collaborators to your organization.
 You can also add additional organizations as desired at any time.
 
 {{< alert title="Caution" color="caution" >}}
-Currently, everyone you invite to your organization has complete access to everything in that organization.
+Everyone you invite as an owner to your organization has complete access to everything in that organization.
 This includes the permissions to delete robots and locations, as well as the ability to remove you from the organization.
-
-[Permissions](#permissions) are coming soon.
 {{< /alert >}}
 
 You can also share locations across different organizations **that you are part of**.
 
 ### Permissions
-
-_Coming soon._
 
 Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members roles that confer permissions:
 
@@ -59,7 +54,11 @@ Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](
 - **Operator**: Can see and use only the [remote control tab](robots/#control).
   Cannot see or edit the [**setup**](robots/#setup), [**config**](robots#configuration), [**history**](robots/#history), [**logs**](robots/#logs), [**code sample**](robots/#code-sample), or [**security**](robots/#security) tabs.
 
-A user can have one or more roles, granting the user the respective permissions of each role.
+To view the roles each organization member has, click on the organization drop down in the top navigation bar and click on **Settings**.
+
+If you have the **Owner** role, you can change the roles assigned to organization members using the role drop down for the respective user.
+
+![Example permissions overview](../img/rbac.png)
 
 ## Collaborate on your robots
 

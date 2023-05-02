@@ -48,7 +48,7 @@ Click **Create Component** and then fill in the attributes for your model.
       "model": "gps-rtk",
       "attributes": {
         "board": <board name if using I2C>,
-        "connection_type": <"serial" or "I2C">,
+        "connection_type": "<serial" or "I2C>",
         "serial_attributes": {
           "serial_baud_rate": <>,
           "serial_path": <>

@@ -28,7 +28,7 @@ Click **Create component**:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": <"your_base_name">,
+    "name": "<your_base_name>",
     "type": "base",
     "model": "fake",
     "attributes": {}

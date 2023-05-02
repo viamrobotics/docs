@@ -448,7 +448,7 @@ Add your sensor server as a [remote part](/manage/parts-and-remotes/) called `my
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 
 If you use the Config Builder to make your remote, make sure you have still added the line: `"insecure": true,` to the Raw JSON.
 This line determines that your server does need an SSL certificate.

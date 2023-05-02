@@ -61,10 +61,10 @@ The camera component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-| [GetImage](#getimage) | Returns an image from the camera. |
-| [GetPointCloud](#getpointcloud) | Returns a point cloud from the camera. |
-| [GetProperties](#getproperties) | Returns the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
-| [DoCommand](#docommand) | Sends or receives model-specific commands. |
+| [GetImage](#getimage) | Return an image from the camera. |
+| [GetPointCloud](#getpointcloud) | Return a point cloud from the camera. |
+| [GetProperties](#getproperties) | Return the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
+| [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### GetImage
 
@@ -286,7 +286,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
   result, err := myCam.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/camera/camera.go#L268).
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
 
 {{% /tab %}}
 {{< /tabs >}}

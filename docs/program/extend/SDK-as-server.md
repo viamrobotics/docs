@@ -10,7 +10,7 @@ mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
 videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
 ---
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 Modular resources are the preferred method of creating custom resource implementations for SDKs with module support unless you are hosting `viam-server` on a non-Linux platform or have another issue with compilation.
 
 Instructions on creating and using modular resources are available [here](/program/extend/modular-resources).
@@ -54,9 +54,10 @@ You can do this with the `viam.rpc.server` library.
 {{% /tab %}}
 {{% /tabs %}}
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 
-You must define all functions belonging to a built-in resource type if defining a new model. Otherwise, the class won’t instantiate.
+You must define all functions belonging to a built-in resource type if defining a new model.
+Otherwise, the class won’t instantiate.
 
 - If you are using the Python SDK, raise an `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
 - If you are using the Go SDK, return `errUnimplemented`.  

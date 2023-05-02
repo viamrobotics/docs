@@ -26,7 +26,7 @@ Enter a name for your board, select the type `board`, and select the `nanopi` mo
 {
   "components": [
     {
-      "name": <"your-nanopi-board">,
+      "name": "<your-nanopi-board>",
       "type": "board",
       "model": "nanopi",
       "attributes": {},

@@ -11,19 +11,22 @@ tags: ["frame system", "services"]
 
 Any robot configured in Viam comes with the Frame System service: an internally managed and mostly static system for storing the "reference frame" of each component of a robot within a coordinate system configured by the user.
 
+![Visualization of a wheeled base configured with motors and a mounted camera in the Frame System tab of the Viam app UI](img/frame_system_wheeled_base.png)
+
 The Frame System is the basis for many of Viam's other services, like [Motion](/services/motion) and [Vision](/services/vision).
 It stores the required contextual information to use the position and orientation readings returned by some components.
 
 ## Configuration
 
-To enable the default frame for a given [component](/components), click **Add Frame**, then click **Save Config**.
+To enable the default frame for a given [component](/components) on a robot, navigate to the **config** tab of the robot's page in [the Viam app](https://app.viam.com) and click **Components**.
+With **mode** as **Builder**, click **Add Frame** on the component's card and **Save Config**.
 
 To adjust the frame from its default configuration, change the parameters as needed for your robot before saving.
 
 {{< tabs name="Frame Configuration Instructions" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's card, and click **Add Frame**:
+Navigate to the **config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's panel, and click **Add Frame**:
 
 ![add reference frame pane](img/frame_card.png)
 
@@ -36,20 +39,20 @@ Select a `parent` frame and fill in the coordinates for `translation` (*mm*) and
 {
   "components": [
     {
-      "name": <"your_component_name_1">,
-      "type": <"your_component_type_1">,
-      "model": <"your_component_model_1">,
+      "name": "<your_component_name_1>",
+      "type": "<your_component_type_1>",
+      "model": "<your_component_model_1>",
       "attributes": { ... },
       "depends_on": [],
       "frame": {
-        "parent": <"world">,
+        "parent": "<world>",
         "translation": {
           "y": <int>,
           "z": <int>,
           "x": <int>
         },
         "orientation": {
-          "type": <"ov_degrees">,
+          "type": "<ov_degrees>",
           "value": {
             "x": <int>,
             "y": <int>,
@@ -75,10 +78,10 @@ Configure the reference frame as follows:
 | `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
 | `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere`, `Box`, and `Capsule`. |
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 
-The `Orientation` parameter offers `Types` for ease of configuration, but the Frame System always stores and returns [orientation vectors](/internals/orientation-vector/) in `"Orientation Vector Radians"`.
-`"Degrees"` and `"Quaternion"` will be converted to `"Radians"`.
+The `Orientation` parameter offers `Types` for ease of configuration, but the Frame System always stores and returns [orientation vectors](/internals/orientation-vector/) in `Orientation Vector Radians`.
+`Degrees` and `Quaternion` will be converted to `Radians`.
 
 {{% /alert %}}
 
@@ -91,10 +94,99 @@ You can use [the right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule)
 
 For more information about determining the appropriate values for these parameters, see these two examples:
 
-- [A component attached to a static surface](/services/frame-system/component-on-static)
-- [A component attached to another, dynamic, component](/services/frame-system/component-on-dynamic)
+- [A Reference Frame:](/services/frame-system/frame-config) A component attached to a static surface
+- [Nested Reference Frames:](/services/frame-system/nested-frame-config) A component attached to another, dynamic, component
 
-## Building the Frame System
+### Visualize the Frame System
+
+You can visualize how your robot is oriented in the Frame System in [the Viam app](https://app.viam.com).
+Navigate to the **config** tab on your robot's page, select **mode** as **Builder**, and click on **Frame System**.
+
+The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your robot:
+
+![Default frame system configuration grid visualization for a single component, shown in the Frame System Editor](img/frame_system_basic.png)
+
+This tab provides a simple interface for simultaneously viewing and editing the position, orientation, and geometries of a robot's components in the Frame System.
+
+For example:
+
+Consider a robot configured with a [`jetson` board](/components/board), wired to a [`webcam` camera](/components/camera/webcam) and a [`wheeled` base](/components/base/wheeled) with two [motors](/components/motor) driving its wheels.
+
+No reference frame configuration has been specified, so on the **Frame System** **config** sub-tab, the components are shown to all be located on the default `world` origin point as follows:
+
+  ![Example robot's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other](img/demo_base_unedited.png)
+
+The distance on the floor from the wheeled base to the board and camera setup is 200 millimeters.
+
+Add this value to `"X"` in the base's reference frame `Translation` attribute, and the Frame System readjusts to show the base's translation:
+
+  ![Base translated 200mm forwards shown in the Frame System Editor](img/demo_base_edited.png)
+
+The distance from the board to the camera mounted overhead is 50 millimeters.
+
+Add this value to `"Z"` in the camera's reference frame `Translation` attribute, and the Frame System readjusts to show the camera's translation:
+
+  ![Camera translated 50 mm overhead shown in the Frame System Editor](img/demo_camera_edited_1.png)
+
+Now the distance between these components is accurately reflected in the visualization.
+However, the camera doesn't yet display as oriented towards the base.
+
+Adjust the [orientation vector](/internals/orientation-vector) to 0.5 degrees in `"OX"` in the camera's reference frame `Orientation` attribute, and the Frame System readjusts to show the camera's orientation:
+
+  ![Camera oriented .5 degrees OX shown in the Frame System Editor](img/demo_camera_edited_2.png)
+
+Now that the Frame System is accurately configured with the robot's spatial orientation, [Motion Service](/services/motion) methods that take in reference frame information can be utilized.
+
+### Display Options
+
+Click and drag on the **Frame System** visualization to view the display from different angles, and pinch to zoom in and out:
+
+{{<gif webm_src="img/frame_system_demo.webm" mp4_src="img/frame_system_demo.mp4" alt="The frame system visualization zooming in and out around the example robot with a camera, board, and wheeled base.">}}
+
+Click the video camera icon below and to the right of the **Frame System** button to switch beween the default **Perspective Camera** and the **Orthographic Camera** view:
+
+{{< tabs name="Toggle Camera Views" >}}
+{{% tab name="Perspective Camera" %}}
+
+![Default Perspective Camera view shown in the Frame System Editor](img/demo_perspective.png)
+
+{{% /tab %}}
+{{% tab name="Orthographic Camera" %}}
+
+![Non-default Orthographic Camera view shown in the Frame System Editor](img/demo_orthographic.png)
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Bounding Geometries
+
+To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame System** sub-tab of the **config** tab of a robot's page on [the Viam app](https://app.viam.com).
+
+By default, a **Geometry** is shown surrounding the origin point of a component:
+
+{{< tabs name="Visualize Adding Geometry Bounds" >}}
+{{% tab name="Box" %}}
+
+![Demo robot with default box bounds added to the wheeled base, shown in the Frame System Editor](img/demo_bound_box.png)
+
+You can adjust the **Size** and **Translation** of a **Geometry** to change these bounds.
+For example:
+
+![Demo robot with translated box bounds added to the wheeled base, shown in the Frame System Editor](img/demo_bound_box_translation.png)
+
+{{< /tab >}}
+{{% tab name="Sphere" %}}
+![Demo robot with default sphere bounds added to the wheeled base, shown in the Frame System Editor](img/demo_bound_sphere.png)
+
+{{% /tab %}}
+{{% tab name="Capsule" %}}
+
+![Demo robot with default capsule bounds added to the wheeled base, shown in the Frame System Editor](img/demo_bound_capsule.png)
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## How the Frame System Works
 
 `viam-server` builds a tree of reference frames for your robot with the `world` as the root node and regenerates this tree following reconfiguration.
 
@@ -102,7 +194,7 @@ Access a [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_s
 
 ![an example of a logged frame system](img/frame_sys_log_example.png)
 
-Consider the example of a [component attached to a dynamic component](/services/frame-system/component-on-dynamic): a robotic arm, `A`, attached to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
+Consider the example of nested reference frame configuration where [two dynamic components are attached](/services/frame-system/nested-frame-config): a robotic arm, `A`, attaches to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
 
 The resulting tree of reference frames looks like:
 
@@ -113,7 +205,7 @@ The resulting tree of reference frames looks like:
 1. One with the name of the component, representing the actuator or final link in the component's kinematic chain: like `"A"` as the end of an arm.
 2. Another representing the origin of the component, defined with the component's name and the suffix *"_origin"*.
 
-## Accessing the Frame System
+## Access the Frame System
 
 The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies two methods to interact with the Frame System:
 
@@ -241,7 +333,7 @@ fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientatio
 
 For example:
 
-- In our [example of dynamic attachment](/services/frame-system/component-on-dynamic), the arm can be managed by the Frame System without supplemental transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
+- In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config), the arm can be managed by the Frame System without supplemental transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
 
     However, an arm with an attached [camera](/components/camera) might generate additional information about the poses of other objects with respect to references frames on the robot.
 
@@ -257,4 +349,4 @@ Usage:
 
 - You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's Motion Service's [`GetPose`](/services/motion/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
-- Both [`TransformPose`](#accessing-the-frame-system) and [`FrameSystemConfig`](#accessing-the-frame-system) have the option to take in these supplemental transforms.
+- Both [`TransformPose`](#access-the-frame-system) and [`FrameSystemConfig`](#access-the-frame-system) have the option to take in these supplemental transforms.

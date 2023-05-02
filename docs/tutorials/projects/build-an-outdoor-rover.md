@@ -161,7 +161,7 @@ Next, add wires to the VCC and ground terminals below the motor phase wires - th
 You might find it easiest to use [battery clamps](https://www.amazon.com/Insulated-Alligator-Durable-Battery-Electric/dp/B08T1K4774) to attach these wires to your battery.
 
 {{% alert title="Caution" color="caution" %}}
-Note: Be sure your base is on its side or otherwise supported so the wheels are free-spinning before attaching the battery!
+Be sure your base is on its side or otherwise supported so the wheels are free-spinning before attaching the battery!
 
 Otherwise you might have a half-built rover flying and crashing off of your desk/workspace - this could be bad.
 {{% /alert %}}
@@ -259,7 +259,7 @@ If all is set up correctly, you'll see cards for your left and right motors on t
 Open one up, and if your rover is in a safe position (on the ground or propped up), try running one!
 
 {{% alert title="Caution" color="caution" %}}
-Caution: Be aware that these are powerful motors, so you don't want to start at 100% power right away.
+Be aware that these are powerful motors, so you don't want to start at 100% power right away.
 {{% /alert %}}
 
 If the motors don't appear on the control page, or are not running when expected, first check the **logs** tab to see if you see any errors - which would likely point out a bad configuration (a typo, a misplaced or missing attribute, etc).

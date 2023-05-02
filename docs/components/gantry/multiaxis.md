@@ -31,14 +31,14 @@ Edit and fill in the attributes as applicable.
   "components": [
     // < Your motor & oneaxis gantry configs >
     {
-        "name": <"your-fake-gantry-name">,
+        "name": "<your-fake-gantry-name>",
         "type": "gantry",
         "model": "multiaxis",
         "attributes": {
             "subaxes_list": [
-                <"xaxis-name">,
-                <"yaxis-name">,
-                <"zaxis-name">
+                "<xaxis-name>",
+                "<yaxis-name>",
+                "<zaxis-name>"
             ]
         },
       "depends_on": []

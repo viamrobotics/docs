@@ -393,14 +393,14 @@ You will need to first register the machine learning model file with the [ML Mod
 
 ## New Features
 
-### Reuse rovers in TRY VIAM
+### Reuse rovers in Try Viam
 
 <table style="margin-bottom:18px">
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>
-                Users of TRY VIAM now have the option to reuse a robot config if they want to continue working on a project that they started in a prior session.
+                Users of Try Viam now have the option to reuse a robot config if they want to continue working on a project that they started in a prior session.
 {{<gif webm_src="../img/reuse-rovers.webm" mp4_src="../img/reuse-rovers.mp4" alt="Select a rover to reuse in the UI">}}
 </td>
         </tr>
@@ -416,7 +416,7 @@ You will need to first register the machine learning model file with the [ML Mod
             <td>
                 The code sample included for each SDK dynamically updates as resources are added to the config. We instantiate each resource and provide an example of how to call a simple <code>Get</code> method so that users can start coding right away without needing to import and provide the name of all of the components and services in their config.
 {{<gif webm_src="../img/dynamic-code-sample.webm" mp4_src="../img/dynamic-code-sample.mp4" alt="Example of the python code sample generated for the Viam Rover fragment">}}
-{{<gif webm_src="../img/example-output-try-viam.webm" mp4_src="../img/example-output-try-viam.mp4" alt="Example output from running the example code used in the TRY VIAM experience">}}
+{{<gif webm_src="../img/example-output-try-viam.webm" mp4_src="../img/example-output-try-viam.mp4" alt="Example output from running the example code used in the Try Viam experience">}}
 </td>
         </tr>
     <tbody>

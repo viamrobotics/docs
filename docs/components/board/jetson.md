@@ -32,7 +32,7 @@ Enter a name for your board, select the type `board`, and select the `jetson` mo
 {
   "components": [
     {
-      "name": <"your-jetson-board">,
+      "name": "<your-jetson-board>",
       "type": "board",
       "model": "jetson",
       "attributes": {},

@@ -399,9 +399,10 @@ Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRe
 
 {{% /expand%}}
 
-{{% alert title="Caution" color="caution" %}}
+{{% alert title="Note" color="note" %}}
 
-You must define all functions belonging to a built-in resource type if defining a new model. Otherwise, the class won’t instantiate.
+You must define all functions belonging to a built-in resource type if defining a new model.
+Otherwise, the class won’t instantiate.
 
 - If you are using the Python SDK, raise an `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
 - If you are using the Go SDK, return `errUnimplemented`.  

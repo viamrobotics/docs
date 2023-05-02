@@ -149,7 +149,7 @@ The arm component supports the following methods:
 | [JointPositions](#jointpositions) | Get the current position of each joint on the arm. |
 | [Stop](#stop) | Stop the arm from moving. |
 | [IsMoving](#stop) | Get if the arm is currently moving. |
-| [DoCommand](#docommand) | Sends or receives model-specific commands. |
+| [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### GetEndPosition
 
@@ -575,7 +575,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
   result, err := myArm.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/9be13108c8641b66fd4251a74ea638f47b040d62/components/arm/arm.go#L198).
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
 
 {{% /tab %}}
 {{< /tabs >}}
