@@ -32,7 +32,7 @@ Enter a name for your board, select the type `board`, and select the `ti` model.
 {
   "components": [
     {
-      "name": "<your-ti-board">,
+      "name": "<your-ti-board>",
       "type": "board",
       "model": "ti",
       "attributes": {},

@@ -64,10 +64,10 @@ Then, integrate `analogs` into the `attributes` of your board by adding the foll
 // "attributes": { ... ,
 "analogs": [
   {
-    "chip_select": "<chip-select-pin-number-on-board">,
-    "name": "<your-analog-reader-name">,
-    "pin": "<pin-number-on-adc">,
-    "spi_bus": "<your-spi-bus-name">
+    "chip_select": "<chip-select-pin-number-on-board>",
+    "name": "<your-analog-reader-name>",
+    "pin": "<pin-number-on-adc>",
+    "spi_bus": "<your-spi-bus-name>"
   }
 ]
 ```
@@ -140,8 +140,8 @@ Integrate `digital_interrupts` into your robot in the `attributes` of your board
 // "attributes": { ... ,
 "digital_interrupts": [
   {
-    "name": "<your-digital-interrupt-name">,
-    "pin": "<pin-number">
+    "name": "<your-digital-interrupt-name>",
+    "pin": "<pin-number>"
   }
 ]
 ```
@@ -213,8 +213,8 @@ Integrate `spis` into your robot in the `attributes` of your board by adding the
 // "attributes": { ... ,
 "spis": [
   {
-    "name": "<your-bus-name">,
-    "bus_select": "<your-bus-index">
+    "name": "<your-bus-name>",
+    "bus_select": "<your-bus-index>"
   }
 ]
 ```
@@ -277,8 +277,8 @@ Integrate `i2cs` into your robot in the `attributes` of your board as follows:
 {
   "i2cs": [
     {
-      "name": "<your-bus-name">,
-      "bus": "<your-bus-index">
+      "name": "<your-bus-name>",
+      "bus": "<your-bus-index>"
     }
   ]
 }

@@ -28,7 +28,7 @@ Click **Create component**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your_sensor_name">,
+    "name": "<your_sensor_name>",
     "type": "sensor",
     "model": "fake",
     "attributes": {}

@@ -39,20 +39,20 @@ Select a `parent` frame and fill in the coordinates for `translation` (*mm*) and
 {
   "components": [
     {
-      "name": "<your_component_name_1">,
-      "type": "<your_component_type_1">,
-      "model": "<your_component_model_1">,
+      "name": "<your_component_name_1>",
+      "type": "<your_component_type_1>",
+      "model": "<your_component_model_1>",
       "attributes": { ... },
       "depends_on": [],
       "frame": {
-        "parent": "<world">,
+        "parent": "<world>",
         "translation": {
           "y": <int>,
           "z": <int>,
           "x": <int>
         },
         "orientation": {
-          "type": "<ov_degrees">,
+          "type": "<ov_degrees>",
           "value": {
             "x": <int>,
             "y": <int>,
@@ -141,7 +141,7 @@ Now that the Frame System is configured so that the spatial visualization for yo
 
 Click and drag on the **Frame System** visualization to view the display from different angles, and pinch to zoom in and out:
 
-{{<gif webm_src="img/frame_system_demo.webm" mp4_src="img/frame_system_demo.mp4" alt="The frame system visualization zooming in and out around the example robot with a camera, board, and wheeled base.">}}
+{{<gif webm_src="img/frame_system_demo.webm" mp4_src="img/frame_system_demo.mp4" alt="The frame system visualization zooming in and out around the example robot with a camera, board, and wheeled base.>"}}
 
 Click the video camera icon below and to the right of the **Frame System** button to switch beween the default **Perspective Camera** and the **Orthographic Camera** view:
 

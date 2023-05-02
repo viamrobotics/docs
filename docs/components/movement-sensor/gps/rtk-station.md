@@ -50,7 +50,7 @@ Click **Create Component** and then fill in the attributes for your model.
         "children": [
           <list of children>
         ],
-        "connection_type": "<serial" or "I2C">,
+        "connection_type": "<serial" or "I2C>",
         "i2c_attributes": {
           "i2c_baud_rate": <>,
           "i2c_addr": <>,
