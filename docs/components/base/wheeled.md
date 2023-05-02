@@ -32,34 +32,34 @@ Click **Create component** and then fill in the attributes for your model:
   "components": [
     {
       "attributes": {},
-      "model": <"board_model">,
-      "name": <"board_name">,
+      "model": "<board_model">,
+      "name": "<board_name">,
       "type": "board"
     },
     {
       "attributes": {
-        "board": <"board_name">,
-        "max_rpm": <"max_rpm">,
+        "board": "<board_name">,
+        "max_rpm": "<max_rpm">,
         "pins": { ... }
       },
-      "model": <"motor_model">,
-      "name": <"motor_name">,
+      "model": "<motor_model">,
+      "name": "<motor_name">,
       "type": "motor"
     },
     ... ,
     {
       "attributes": {
         "left": [
-          <"left_motor_name">
+          "<left_motor_name">
         ],
         "right": [
-          <"right_motor_name">
+          "<right_motor_name">
         ],
         "wheel_circumference_mm": <#>,
         "width_mm": <#>
       },
       "model": "wheeled",
-      "name": <"base_name">,
+      "name": "<base_name">,
       "type": "base"
     }
   ]

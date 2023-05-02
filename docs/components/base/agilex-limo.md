@@ -34,8 +34,8 @@ Click **Create component** and then fill in the attributes for your model:
       "type": "base",
       "model": "agilex-limo",
       "attributes": {
-        "drive_mode": <"a_drive_mode_option">,
-        "serial_path": <"/dev/ttyXXXX">
+        "drive_mode": "<a_drive_mode_option">,
+        "serial_path": "</dev/ttyXXXX">
       },
       "depends_on": []
     }

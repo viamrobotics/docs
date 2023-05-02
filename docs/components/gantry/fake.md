@@ -29,7 +29,7 @@ Click **Create component**:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": <"your-fake-gantry-name">,
+    "name": "<your-fake-gantry-name">,
     "type": "gantry",
     "model": "fake",
     "attributes": {}

@@ -43,8 +43,8 @@ Paste into the **Attributes** box:
       "type": "sensor",
       "model": "ultrasonic",
       "attributes": {
-        "trigger_pin": <"number">,
-        "echo_interrupt_pin": <"number">,
+        "trigger_pin": "<number">,
+        "echo_interrupt_pin": "<number">,
         "board": <your-board-name>,
         "timeout_ms": <number>
       },

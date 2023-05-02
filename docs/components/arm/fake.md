@@ -28,11 +28,11 @@ Note that this visual example sets the `fake` arm to act as a `ur5e` arm.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<arm_name">",
+    "name": "<arm_name>",
     "type": "arm",
     "model": "fake",
     "attributes": {
-        "arm-model": "<your_arm_model>"
+        "arm-model": "<your_arm_model>",
         "model-path": "<your_arm_model_config_filepath>" // REMOVE if using arm-model
     }
 }

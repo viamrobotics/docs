@@ -27,17 +27,17 @@ Enter a name for your board, select the type `board`, and select the `numato` mo
 {
   "components": [
     {
-      "name": <"your-numato-board">,
+      "name": "<your-numato-board">,
       "type": "board",
       "model": "numato",
       "attributes": {
         "pins": <number>,
         "analogs": [
           {
-            "name": <"your-analog">,
-            "pin": <"number">,
-            "spi_bus": <"your-spi-bus-name">,
-            "chip_select": <"number">
+            "name": "<your-analog">,
+            "pin": "<number">,
+            "spi_bus": "<your-spi-bus-name">,
+            "chip_select": "<number">
           }
         ]
       },
