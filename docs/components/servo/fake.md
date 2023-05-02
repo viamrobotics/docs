@@ -29,7 +29,7 @@ Click **Create component**:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": <"your-fake-servo-name">,
+    "name": "<your-fake-servo-name>",
     "type": "servo",
     "model": "fake",
     "attributes": {}

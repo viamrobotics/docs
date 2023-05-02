@@ -6,18 +6,29 @@ type: "docs"
 description: "A hobby servo is a special type of small motor whose position you can precisely control."
 tags: ["servo", "components"]
 icon: "/components/img/components/servo.svg"
+no_list: true
 # SME: #team-bucket
 ---
 
-The Viam *servo* component supports hobby servos: small motors with built-in closed-loop control.
-Servos can be useful in robotics because their position is easily and precisely controlled.
+{{% alert title="Tip" color="tip" %}}
 
-- The servo component does not support servomotors.
-To configure an industrial servomotor, use the [motor](/components/motor/) component with an [encoder](/components/encoder/).
+The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
 
-Example wiring diagram for a servo wired to a Raspberry Pi board:
+If you have another type of servomotor, it is probably coupled with an [encoder](/components/encoder), not potentiometer, for position feedback.
+Check your device's data sheet and configure these servos as [encoded motors](/components/motor/gpio/encoded-motor).
 
-![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](../img/servo/servo-wiring.png)
+{{% /alert %}}
+
+A *servo* is a [radio-control (RC) or hobby servo motor](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
+These are small motors with built-in potentiometer position sensors, enabling you to control the angular position of the servo precisely.
+
+As servos can use a lot of power, drawing voltage away from a [board](/components/board), you should power your servo with its own power supply.
+Example wiring diagram for a hobby servo wired to a [`pi` board](/components/board/pi):
+
+![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](img/servo-wiring.png)
+
+The colors of the servo wires in this diagram may not match your servo.
+Refer to your servo's data sheet for wiring specifications.
 
 Most robots with a servo need at least the following hardware:
 
@@ -33,8 +44,8 @@ Supported servo models include:
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake) | A model used for testing, with no physical hardware. |
-| [`gpio`](gpio) | A hobby servo wired to any model of [board](components/board/configuration) besides `pi`. |
-| [`pi`](pi) | A hobby servo wired to a [Raspberry Pi board](components/board/pi). |
+| [`gpio`](gpio) | A hobby servo wired to any model of [board](/components/board/#configuration) besides `pi`. |
+| [`pi`](pi) | A hobby servo wired to a [Raspberry Pi board](/components/board/pi). |
 
 Click on the model names above for configuration information.
 

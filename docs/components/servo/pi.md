@@ -15,18 +15,18 @@ Unlike other servo models, `pi` servos are implemented as part of the [`pi` boar
 
 {{% /alert %}}
 
-Configure a `pi` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a [Raspberry Pi board](components/board/pi) into your robot:
+Configure a `pi` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a [Raspberry Pi board](/components/board/pi) into your robot:
 
 {{< tabs name="Configure a pi Servo" >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your servo, select the type `servo`, and select the `gpio` model.
+Enter a name for your servo, select the type `servo`, and select the `pi` model.
 
 Click **Create component**:
 
-![An example configuration for a pi servo in the Viam app Config Builder.](img/pi-servo-ui-config.png)
+![An example configuration for a pi servo in the Viam app Config Builder.](../img/pi-servo-ui-config.png)
 
 Edit and fill in the `"attributes"` JSON to align with your `board` `name` and GPIO wiring.
 
@@ -37,12 +37,12 @@ Edit and fill in the `"attributes"` JSON to align with your `board` `name` and G
 {
     "components": [
         {
-            "name": <"your-servo-name">,
+            "name": "<your-servo-name>",
             "type": "servo",
             "model": "pi",
             "attributes": {
-                "pin": <"#">,
-                "board": <"your-board-name">
+                "pin": "<your-pin-number>",
+                "board": "<your-board-name>"
             }
         }, ... <insert your board component config>
     }
@@ -75,7 +75,7 @@ Edit and fill in the `"attributes"` JSON to align with your `board` `name` and G
 {{% /tab %}}
 {{% tab name="Annotated JSON" %}}
 
-![A servo JSON config with explanatory annotations for each attribute.](../img/servo/servo-json.png)
+![A servo JSON config with explanatory annotations for each attribute.](../img/servo-json.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -89,5 +89,5 @@ The following attributes are available for `pi` servos:
 | `min` | float | Optional | The minimum angle in degrees that the servo can move from its starting position. Refer to your servo's data sheet for specifications. Does not affect [pulse-width modulation (PMW)](/components/board/#pwm) calculation. |
 | `max` | float | Optional | The maximum angle in degrees that the servo can move from its starting position. Refer to your servo's data sheet for specifications. Does not affect PWM calculation. |
 | `starting_position_degs` | float | Optional | Starting position of the servo in degrees. |
-| `hold_position` | boolean | Optional | If `true`, disable a servo once it has reached a position or after a certain amount of time has passed. |
-| `max_rotation_deg` | int | Optional | The maximum angle the servo can rotate. Refer to your servo's data sheet for specifications. <br> Default = 180 |
+| `hold_position` | boolean | Optional | If `false`, hold the servo's position for 500 milliseconds, and then disable the servo. <br> Default = `true` |
+| `max_rotation_deg` | int | Optional | The maximum angle the servo can rotate. Refer to your servo's data sheet for specifications. <br> Default = `180` |
