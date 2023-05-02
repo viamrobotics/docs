@@ -141,7 +141,7 @@ Now that the Frame System is configured so that the spatial visualization for yo
 
 Click and drag on the **Frame System** visualization to view the display from different angles, and pinch to zoom in and out:
 
-{{<gif webm_src="img/frame_system_demo.webm" mp4_src="img/frame_system_demo.mp4" alt="The frame system visualization zooming in and out around the example robot with a camera, board, and wheeled base.>"}}
+{{<gif webm_src="img/frame_system_demo.webm" mp4_src="img/frame_system_demo.mp4" alt="The frame system visualization zooming in and out around the example robot with a camera, board, and wheeled base.">}}
 
 Click the video camera icon below and to the right of the **Frame System** button to switch beween the default **Perspective Camera** and the **Orthographic Camera** view:
 
