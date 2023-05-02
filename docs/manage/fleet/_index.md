@@ -40,17 +40,13 @@ You can use this organization as your collaboration hub by inviting collaborator
 You can also add additional organizations as desired at any time.
 
 {{< alert title="Caution" color="caution" >}}
-Currently, everyone you invite to your organization has complete access to everything in that organization.
+Everyone you invite as an owner to your organization has complete access to everything in that organization.
 This includes the permissions to delete robots and locations, as well as the ability to remove you from the organization.
-
-[Permissions](#permissions) are coming soon.
 {{< /alert >}}
 
 You can also share locations across different organizations **that you are part of**.
 
 ### Permissions
-
-_Coming soon._
 
 Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members roles that confer permissions:
 
