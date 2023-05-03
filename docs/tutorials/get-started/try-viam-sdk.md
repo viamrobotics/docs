@@ -27,7 +27,7 @@ You can also directly see the [complete code for the tutorial](#complete-code).
 
 ## Install a Viam SDK
 
-Install either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer.
+Install either the [Viam Python SDK](https://python.viam.dev/), the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme), or the [TypeScript SDK](https://ts.viam.dev/) on your local computer.
 
 {{< alert title="Tip" color="tip" >}}
 If you are [renting your rover](https://app.viam.com/try), we recommend that you get the Viam SDK set up before your reservation starts.
@@ -38,19 +38,19 @@ If you are running out of time during your rental, you can [extend your rover re
 
 ## Connect to your Viam Rover
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, and copy the boilerplate code from the section labeled **Python** or **Go**.
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, then select **Python** and copy the boilerplate code.
 
-Next, create a file named <file>square.py</file> or <file>square.go</file> and paste the boilerplate code from the **code sample** tab of the Viam app into your file.
+This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
+
+Next, create a file named <file>square.py</file> and paste the boilerplate code from the **code sample** tab of the Viam app into your file.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
 
 You can run your code by typing the following into your terminal:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 python3 square.py
@@ -59,7 +59,14 @@ python3 square.py
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-If using Go, you need to initialize your project, and install the necessary libraries before running the program.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, then select **Go** and copy the boilerplate code.
+
+This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
+
+Next, create a file named <file>square.go</file> and paste the boilerplate code from the **code sample** tab of the Viam app into your file.
+Then, save your file.
+
+Initialize your project, and install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go mod init square
@@ -68,10 +75,72 @@ go run square.go
 ```
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, then select **TypeScript** and copy the boilerplate code.
+
+This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
+
+Next, create a file named <file>main.ts</file> and paste the boilerplate code from the **code sample** tab of the Viam app into your file.
+Then, save your file.
+
+Create another file named <file>package.json</file> with the following contents:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "name": "test-rover",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Viam Docs Team",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "0.16.12"
+  },
+  "dependencies": {
+    "@viamrobotics/sdk": "*"
+  }
+}
+```
+
+Create a folder <file>static</file> and inside it another file named <file>index.html</file>.
+Add the following markup:
+
+```html {class="line-numbers linkable-line-numbers"}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drive a Viam Rover</title>
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <div id="main">
+      <button id="main-button" disabled=true>
+        Click me
+      </button>
+    </div>
+    <script type="module" src="main.js">
+    </script>
+  </body>
+</html>
+```
+
+Run the following commands to install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+npm install
+npm start
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
-If you successfully configured your robot and it is able to connect to the Viam app, the program you ran prints the names of your rover's resources to the terminal.
-These are the components and services that the roobot is configured with in the Viam app.
+Open a web browser and visit `localhost:8000`. You should see a disabled button that says `Click me`. If you successfully configured your robot and it is able to connect to the Viam app, the button will become enabled. If you open the developer console, you should see some output including the names of your rover's resources.
+These are the components and services that the robot is configured with in the Viam app.
 
 <img src="../../img/try-viam-sdk/image3.png" alt="The output of the program is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%">
 
@@ -229,6 +298,120 @@ func main() {
 ```
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+Your main function should look similar to this but only the first few lines that connect to your rover are important for us:
+
+```ts {class="line-numbers linkable-line-numbers" data-line="1-12"}
+async function main() {
+  const host = 'ADDRESS_FROM_VIAM_APP';
+
+  const robot = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: 'robot-location-secret',
+      payload: 'SECRET_FROM_VIAM_APP',
+    },
+    authEntity: host,
+    signalingAddress: 'https://app.viam.com:443',
+  });
+
+  // Note that the pin supplied is a placeholder. Please change this to a valid pin you are using.
+  // local
+  const localClient = new VIAM.BoardClient(robot, 'local');
+  const localReturnValue = await localClient.getGPIO('16');
+  console.log('local getGPIO return value:', localReturnValue);
+
+  // right
+  const rightClient = new VIAM.MotorClient(robot, 'right');
+  const rightReturnValue = await rightClient.isMoving();
+  console.log('right isMoving return value:', rightReturnValue);
+
+  // left
+  const leftClient = new VIAM.MotorClient(robot, 'left');
+  const leftReturnValue = await leftClient.isMoving();
+  console.log('left isMoving return value:', leftReturnValue);
+
+  // viam_base
+  const viamBaseClient = new VIAM.BaseClient(robot, 'viam_base');
+  const viamBaseReturnValue = await viamBaseClient.isMoving();
+  console.log('viam_base isMoving return value:', viamBaseReturnValue);
+
+  // cam
+  const camClient = new VIAM.CameraClient(robot, 'cam');
+  const camReturnValue = await camClient.getImage();
+  console.log('cam getImage return value:', camReturnValue);
+
+  console.log('Resources:');
+  console.log(await robot.resourceNames());
+}
+```
+
+Underneath the `main` function, add the following function that initializes your Viam Rover base client and drives it in a square:
+
+{{< alert title="Note" color="note" >}}
+By default, the base name is `viam_base`.
+If you have changed the base name, update the name in your code.
+{{< /alert >}}
+
+```ts {class="line-numbers linkable-line-numbers"}
+// This function moves a base component in a square.
+async function moveInSquare(client: VIAM.RobotClient) {
+  // Replace with the name of a motor on your robot.
+  const name = 'viam_base';
+  const baseClient = new VIAM.BaseClient(client, name);
+
+  try {
+    button().disabled = true;
+    for(let i=0; i<4; i++) {
+      console.log("move straight");
+      await baseClient.moveStraight(500, 500);
+      console.log("spin 90 degrees");
+      await baseClient.spin(90, 100);
+    }
+  } finally {
+    button().disabled = false;
+  }
+}
+```
+
+Underneath the `moveInSquare` function, add this `button` function which gets the `main-button` button from the page loaded from `index.html`:
+
+```ts {class="line-numbers linkable-line-numbers"}
+// This function gets the button element
+function button() {
+    return <HTMLButtonElement>document.getElementById('main-button');
+}
+```
+
+Next, register a listener on the button you obtain from the `button` fuction and make it invoke the `moveInSquare` function.
+Place this code after the rover connection code:
+You can keep or remove the additional boilerplate code as you wish.
+
+Your main function should now look like this:
+
+```ts {class="line-numbers linkable-line-numbers" data-line="14-17"}
+async function main() {
+  const host = 'ADDRESS_FROM_VIAM_APP';
+
+  const robot = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: 'robot-location-secret',
+      payload: 'SECRET_FROM_VIAM_APP',
+    },
+    authEntity: host,
+    signalingAddress: 'https://app.viam.com:443',
+  });
+
+  button().onclick = async () => {
+    await moveInSquare(robot);
+  };
+  button().disabled = false;
+}
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 {{< alert title="Tip" color="tip" >}}
@@ -342,6 +525,107 @@ func main() {
 
     moveInSquare(context.Background(), roverBase, logger)
 }
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+<file>package.json</file>:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "name": "test-rover",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Viam Docs Team",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "0.16.12"
+  },
+  "dependencies": {
+    "@viamrobotics/sdk": "^0.0.28"
+  }
+}
+```
+
+<file>static/index.html</file>:
+
+```html {class="line-numbers linkable-line-numbers"}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drive a Viam Rover</title>
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <div id="main">
+      <button id="main-button" disabled=true>
+        Click me
+      </button>
+    </div>
+    <script type="module" src="main.js">
+    </script>
+  </body>
+</html>
+```
+
+<file>main.ts</file>:
+
+```ts {class="line-numbers linkable-line-numbers"}
+// This code must be run in a browser environment.
+
+import * as VIAM from '@viamrobotics/sdk';
+
+async function main() {
+  const host = 'ADDRESS_FROM_VIAM_APP';
+
+  const robot = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: 'robot-location-secret',
+      payload: 'SECRET_FROM_VIAM_APP',
+    },
+    authEntity: host,
+    signalingAddress: 'https://app.viam.com:443',
+  });
+
+  button().onclick = async () => {
+    await moveInSquare(robot);
+  };
+  button().disabled = false;
+}
+
+// This function moves a base component in a square.
+async function moveInSquare(client: VIAM.RobotClient) {
+    // Replace with the name of a motor on your robot.
+    const name = 'viam_base';
+    const baseClient = new VIAM.BaseClient(client, name);
+
+    try {
+      button().disabled = true;
+      for(let i=0; i<4; i++) {
+        console.log("move straight");
+        await baseClient.moveStraight(500, 500);
+        console.log("spin 90 degrees");
+        await baseClient.spin(90, 100);
+      }
+    } finally {
+      button().disabled = false;
+    }
+}
+
+function button() {
+    return <HTMLButtonElement>document.getElementById('main-button');
+}
+
+main().catch((error) => {
+  console.error('encountered an error:', error)
+});
 ```
 
 {{% /tab %}}
