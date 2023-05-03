@@ -32,7 +32,7 @@ Enter a name for your board, select the type `board`, and select the `beaglebone
 {
   "components": [
     {
-      "name": "<your-beaglebone-board">,
+      "name": "<your-beaglebone-board>",
       "type": "board",
       "model": "beaglebone",
       "attributes": {},
