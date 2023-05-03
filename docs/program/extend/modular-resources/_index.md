@@ -496,7 +496,7 @@ The following properties are available for modular resources:
 | `type` | string | **Required** | The subtype of the [API](#apis) (the third part of the [API](#apis) triplet). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `model` | string | **Required** | The [full triplet](#models) of the modular resource. |
-| `depends_on` | list | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Usually a [board](/components/board). |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Usually a [board](/components/board). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
