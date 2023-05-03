@@ -57,3 +57,12 @@ Learn about [the Viam platform in 3 minutes](viam).
     </div>
     </div>
 </div>
+
+{{< cards >}}
+{{% card link="/installation/prepare/rpi-setup/" size="xs" %}}
+{{% card link="/installation/prepare/beaglebone-setup/" size="xs" %}}
+{{% card link="/installation/prepare/sk-tda4vm/" size="xs" %}}
+{{% card link="/installation/prepare/jetson-nano-setup/" size="xs" %}}
+{{% card link="/installation/prepare/jetson-agx-orin-setup/" size="xs" %}}
+{{% card link="/installation/prepare/microcontrollers" size="xs" %}}
+{{< /cards >}}
