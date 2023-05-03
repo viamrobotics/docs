@@ -131,17 +131,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
-if err != nil {
-  logger.Fatalf("cannot get arm: %v", err)
-}
 
 // Get the end position of the arm as a Pose.
 err, pos := myArm.EndPosition(context.Background(), nil)
-
-// Log any errors that occur.
-if err != nil {
-  logger.Fatalf("cannot get end position of arm: %v", err)
-}
 ```
 
 {{% /tab %}}
@@ -199,9 +191,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
-if err != nil {
-  logger.Fatalf("cannot get arm: %v", err)
-}
 
 // Create a Pose for the arm.
 examplePose = []float64{x: 5, y: 5, z: 5, o_x: 5, o_y: 5, o_z: 5, theta:20}
@@ -270,15 +259,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
-if err != nil {
-  logger.Fatalf("cannot get arm: %v", err)
-}
 
 // Declare an array of values with your desired rotational value for each joint on the arm.
 degrees := []float64{4.0, 5.0, 6.0}
 
 // Declare a new JointPositions with these values.
-jointPos := componentpb.JointPositions{Values= degrees}
+jointPos := componentpb.JointPositions{degrees}
 
 // Move each joint of the arm to the position these values specify.
 myArm.MoveToJointPositions(context.Background(), jointPos, nil)
@@ -331,18 +317,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 my_arm, err := arm.FromRobot(robot, "my_arm")
-if err != nil {
-  logger.Fatalf("cannot get arm: %v", err)
-}
 
 // Get the current position of each joint on the arm as JointPositions.
 pos, err := my_arm.JointPositions(context.Background(), nil)
-
-// Log any errors that occur.
-if err != nil {
-  logger.Fatalf("cannot get JointPositions of arm: %v", err)
-}
-
 ```
 
 {{% /tab %}}
@@ -389,9 +366,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
-if err != nil {
-  logger.Fatalf("cannot get arm: %v", err)
-}
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 myArm.Stop(context.Background(), nil)
@@ -443,18 +417,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
-if err != nil {
-  logger.Fatalf("cannot get arm: %v", err)
-}
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 myArm.Stop(context.Background(), nil)
 
 // Log if the arm is currently moving.
 is_moving, err := myArm.IsMoving(context.Background())
-if err != nil {
-  logger.Fatalf("cannot get if arm is moving: %v", err)
-}
 logger.Info(is_moving)
 ```
 
@@ -501,10 +469,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-  myArm, err := arm.FromRobot(robot, "my_arm")
+myArm, err := arm.FromRobot(robot, "my_arm")
 
-  command := map[string]interface{}{"cmd": "test", "data1": 500}
-  result, err := myArm.DoCommand(context.Background(), command)
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := myArm.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
