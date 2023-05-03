@@ -280,3 +280,60 @@ And to create the source files, run these commands:
 ffmpeg -i PATH_TO_GIF_OR_VID -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c:a eac3 -b:a 224k PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 ```
+
+If you'd like to use commands like webm2mp4 add this to your `.zshrc`:
+
+```sh
+function webm2gif() {
+vid=$1
+ext=${vid##*.}
+vdirname=`dirname $vid`
+vfname=`basename $vid $ext`
+ffmpeg -t 8 -i ${vdirname}/${vfname}webm -vf "fps=5,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 ${vdirname}/${vfname}gif
+}
+
+function mp42gif() {
+vid=$1
+ext=${vid##*.}
+vdirname=`dirname $vid`
+vfname=`basename $vid $ext`
+ffmpeg -t 8 -i ${vdirname}/${vfname}mp4 -vf "fps=10,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 ${vdirname}/${vfname}gif
+}
+
+function gif2webm() {
+vid=$1
+ext=${vid##*.}
+vdirname=`dirname $vid`
+vfname=`basename $vid $ext`
+ffmpeg -i ${vdirname}/${vfname}gif -c vp9 -b:v 0 -crf 41 ${vdirname}/${vfname}webm
+}
+
+function gif2mp4() {
+vid=$1
+ext=${vid##*.}
+vdirname=`dirname $vid`
+vfname=`basename $vid $ext`
+ffmpeg -i ${vdirname}/${vfname}gif -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c:a eac3 -b:a 224k ${vdirname}/${vfname}mp4
+}
+
+
+function mp42webm() {
+vid=$1
+ext=${vid##*.}
+vdirname=`dirname $vid`
+vfname=`basename $vid $ext`
+ffmpeg -i ${vdirname}/${vfname}mp4 -c vp9 -b:v 0 -crf 41 ${vdirname}/${vfname}webm
+}
+
+function webm2mp4() {
+vid=$1
+ext=${vid##*.}
+vdirname=`dirname $vid`
+vfname=`basename $vid $ext`
+ffmpeg -i ${vdirname}/${vfname}webm -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c:a eac3 -b:a 224k ${vdirname}/${vfname}mp4
+}
+```
+
+{{< alert title="Note" color="note" >}}
+The `2gif` commands only turn the first 5 seconds of a video into a low res gif.
+{{< /alert >}}

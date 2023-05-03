@@ -7,6 +7,7 @@ description: "Create a plant watering robot with a Raspberry Pi."
 tags: ["raspberry pi", "app", "board", "motor"]
 image: "/tutorials/img/plant-watering-pi/preview.png"
 imageAlt: "Picture of the plant watering robot"
+images: ["/tutorials/img/plant-watering-pi/preview.png"]
 
 # SMES: Olivia Miller
 ---

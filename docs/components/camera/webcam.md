@@ -4,6 +4,7 @@ linkTitle: "webcam"
 weight: 33
 type: "docs"
 description: "Configure a standard camera that streams camera data."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

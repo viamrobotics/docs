@@ -4,6 +4,7 @@ linkTitle: "camera_mono"
 weight: 10
 type: "docs"
 description: "Configure `camera_mono`, an experimental visual odometry model."
+images: ["/components/img/components/imu.svg"]
 # SMEs: Rand
 ---
 

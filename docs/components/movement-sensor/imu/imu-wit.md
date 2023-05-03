@@ -4,6 +4,7 @@ linkTitle: "imu-wit"
 weight: 10
 type: "docs"
 description: "Configure a WitMotion IMU."
+images: ["/components/img/components/imu.svg"]
 # SMEs: Rand
 ---
 

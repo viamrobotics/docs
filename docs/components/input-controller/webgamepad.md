@@ -4,6 +4,7 @@ linkTitle: "webgamepad"
 weight: 30
 type: "docs"
 description: "Configure a web-based gamepad as an input controller."
+images: ["/components/img/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---

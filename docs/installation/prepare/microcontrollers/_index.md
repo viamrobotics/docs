@@ -6,6 +6,7 @@ simple_list: false
 type: docs
 image: "/installation/img/thumbnails/esp32-espressif.png"
 imageAlt: "E S P 32 - espressif"
+images: ["/installation/img/thumbnails/esp32-espressif.png"]
 description: "Set up the Espressif ESP32 with the micro-RDK."
 aliases:
     - /installation/microcontrollers

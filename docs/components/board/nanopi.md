@@ -4,6 +4,7 @@ linkTitle: "nanopi"
 weight: 20
 type: "docs"
 description: "Configure a nanopi board."
+images: ["/components/img/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---

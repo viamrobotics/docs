@@ -7,6 +7,7 @@ description: "Use a Viam SDK to program a Viam Rover to move in a square."
 webmSrc: "/tutorials/img/try-viam-sdk/image1.webm"
 mp4Src: "/tutorials/img/try-viam-sdk/image1.mp4"
 videoAlt: "A Viam Rover driving in a square"
+images: ["/tutorials/img/try-viam-sdk/image1.gif"]
 tags: ["base", "viam rover", "try viam", "sdk", "python"]
 aliases:
     - /tutorials/get-started/try-viam-sdk

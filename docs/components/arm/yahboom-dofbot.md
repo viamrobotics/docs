@@ -5,6 +5,7 @@ weight: 34
 type: "docs"
 draft: "true"
 description: "Configure a yahboom-dofbot arm."
+images: ["/components/img/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---

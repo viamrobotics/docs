@@ -5,7 +5,8 @@ weight: 90
 type: "docs"
 description: "Configure a fake sensor to use for testing."
 tags: ["sensor", "components"]
-icon: "img/components/sensor.png"
+icon: "/components/img/components/sensor.svg"
+images: ["/components/img/components/sensor.svg"]
 # SME: #team-bucket
 ---
 

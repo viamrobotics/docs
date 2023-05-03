@@ -6,6 +6,7 @@ type: "docs"
 description: "Reserve a Viam Rover located on-site at Viam in NYC."
 image: "/try-viam/img/try-viam-reserve-preview.png"
 imageAlt: "Rover reservation page"
+images: ["/try-viam/img/try-viam-reserve-preview.png"]
 tags: ["try viam", "app"]
 ---
 

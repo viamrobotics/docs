@@ -4,6 +4,7 @@ linkTitle: "gpio"
 weight: 10
 type: "docs"
 description: "Configure brushed or brushless DC motors."
+images: ["/components/img/components/motor.svg"]
 # SMEs: Rand, James
 ---
 

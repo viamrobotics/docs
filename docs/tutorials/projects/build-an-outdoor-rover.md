@@ -6,6 +6,7 @@ type: "docs"
 tags: ["base", "outdoor", "solar", "rover"]
 description: "Build and control an affordable, functional outdoor rover."
 image: "/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"
+images: ["/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"]
 aliases:
   /tutorials/build-an-outdoor-rover/
 imageAlt: "Completed rover with mounted solar panel."

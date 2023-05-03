@@ -3,6 +3,7 @@ title: "Create custom components and services as modular resources"
 linkTitle: "Modular Resources"
 image: "/tutorials/img/intermode/rover_outside.png"
 imageAlt: "An intermode rover pictured outdoors."
+images: ["/tutorials/img/intermode/rover_outside.png"]
 weight: 10
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
@@ -134,8 +135,8 @@ import (
     "go.viam.com/rdk/utils"
 )
 
-// Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase) 
-// acme = namespace, demo = family, mybase = name. 
+// Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
+// acme = namespace, demo = family, mybase = name.
 var (
     Model            = resource.NewModel("acme", "demo", "mybase")
     errUnimplemented = errors.New("unimplemented")
@@ -217,12 +218,12 @@ func (base *MyBase) SetVelocity(ctx context.Context, linear, angular r3.Vector, 
 
 // SetPower: sets the linear and angular velocity of the left and right motors on the base
 func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
-    // stop the base if absolute value of linear and angular velocity is less than .01 
+    // stop the base if absolute value of linear and angular velocity is less than .01
     if math.Abs(linear.Y) < 0.01 && math.Abs(angular.Z) < 0.01 {
         return base.Stop(ctx, extra)
     }
 
-    // use linear and angular velocity to calculate percentage of max power to pass to SetPower for left & right motors 
+    // use linear and angular velocity to calculate percentage of max power to pass to SetPower for left & right motors
     sum := math.Abs(linear.Y) + math.Abs(angular.Z)
     err1 := base.left.SetPower(ctx, (linear.Y-angular.Z)/sum, extra)
     err2 := base.right.SetPower(ctx, (linear.Y+angular.Z)/sum, extra)
@@ -262,7 +263,7 @@ func (base *MyBase) Close(ctx context.Context) error {
 func init() {
     registry.RegisterComponent(base.Subtype, Model, registry.Component{Constructor: newBase})
 
-    // VALIDATION: Uses RegisterComponentAttributeMapConverter to register a custom configuration struct that has a Validate(string) ([]string, error) method. 
+    // VALIDATION: Uses RegisterComponentAttributeMapConverter to register a custom configuration struct that has a Validate(string) ([]string, error) method.
     // The Validate method will automatically be called in RDK's module manager to validate MyBase's configuration and register implicit dependencies.
     config.RegisterComponentAttributeMapConverter(
         base.Subtype,
@@ -305,7 +306,7 @@ class MyBase(Base, Reconfigurable):
     It also specifies a function ``MyBase.new``, which confirms to the ``resource.types.ResourceCreator`` type required for all models.
     """
 
-    """ Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase) 
+    """ Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
     acme = namespace, demo = family, mybase = name. """
     MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
 
@@ -358,11 +359,11 @@ class MyBase(Base, Reconfigurable):
     # set_power: sets the linear and angular velocity of the left and right motors on the base
     async def set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
 
-        # stop the base if absolute value of linear and angular velocity is less than .01 
+        # stop the base if absolute value of linear and angular velocity is less than .01
         if abs(linear.y) < 0.01 and abs(angular.z) < 0.01:
             return self.stop(extra=extra, timeout=timeout)
 
-        # use linear and angular velocity to calculate percentage of max power to pass to SetPower for left & right motors 
+        # use linear and angular velocity to calculate percentage of max power to pass to SetPower for left & right motors
         sum = abs(linear.y) + abs(angular.z)
 
         self.left.set_power(power=((linear.y - angular.z) / sum), extra=extra, timeout=timeout)
@@ -405,7 +406,7 @@ You must define all functions belonging to a built-in resource type if defining 
 Otherwise, the class won’t instantiate.
 
 - If you are using the Python SDK, raise an `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
-- If you are using the Go SDK, return `errUnimplemented`.  
+- If you are using the Go SDK, return `errUnimplemented`.
 - Additionally, return any values designated in the function's return signature, typed correctly.
 
 {{% /alert %}}

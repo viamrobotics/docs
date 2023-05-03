@@ -4,6 +4,7 @@ linkTitle: "velodyne"
 weight: 32
 type: "docs"
 description: "Configure a camera that uses velodyne lidar."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

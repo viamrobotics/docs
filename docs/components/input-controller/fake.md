@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 30
 type: "docs"
 description: "Configure a fake input controller for testing."
+images: ["/components/img/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---

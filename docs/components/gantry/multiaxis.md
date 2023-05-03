@@ -4,6 +4,7 @@ linkTitle: "multiaxis"
 weight: 80
 type: "docs"
 description: "Configure a multiaxis gantry."
+images: ["/components/img/components/gantry.svg"]
 tags: ["gantry", "components"]
 # SME: Rand
 ---

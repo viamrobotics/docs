@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 35
 type: "docs"
 description: Configure a camera to use for testing."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

@@ -6,6 +6,7 @@ type: "docs"
 description: "How to add an RPlidar as a modular component of your robot."
 image: "/program/img/modular-resources/rplidar-on-robot.png"
 imageAlt: "An R-P-lidar mounted to a Viam rover."
+images: ["/program/img/modular-resources/rplidar-on-robot.png"]
 tags: ["slam", "services"]
 # SMEs: Kat, Jeremy
 ---

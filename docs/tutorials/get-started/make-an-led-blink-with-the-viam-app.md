@@ -7,6 +7,7 @@ description: "Intro to Hardware Programming Part 1: Use the Viam app to make an 
 webmSrc: "/img/blink.webm"
 mp4Src: "/img/blink.mp4"
 videoAlt: "A blinking L.E.D. connected to a Raspberry Pi"
+images: ["/img/blink.gif"]
 aliases:
     - /tutorials/make-an-led-blink-with-the-viam-app/
 tags: ["board", "raspberry pi", "app"]

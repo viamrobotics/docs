@@ -6,6 +6,7 @@ type: "docs"
 tags: ["base", "AI", "OpenAI", "ChatGPT", "ElevenLabs", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
 description: "Harness AI to add life to your Viam rover."
 image: "/tutorials/img/ai-integration/rosey_robot.jpg"
+images: ["/tutorials/img/ai-integration/rosey_robot.jpg"]
 aliases:
   /tutorials/integrating-viam-with-openai/
 imageAlt: "Viam Rover Rosey."
