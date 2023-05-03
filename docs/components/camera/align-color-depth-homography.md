@@ -4,6 +4,7 @@ linkTitle: "align_color_depth_homography"
 weight: 38
 type: "docs"
 description: "Use a homography matrix to align the color and depth images."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

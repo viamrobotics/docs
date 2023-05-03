@@ -4,6 +4,7 @@ linkTitle: "gps-rtk"
 weight: 10
 type: "docs"
 description: "Configure an NTRIP-based RTK GPS."
+images: ["/components/img/components/imu.svg"]
 # SMEs: Rand
 ---
 

@@ -4,6 +4,7 @@ linkTitle: "align_color_depth_extrinsics"
 weight: 38
 type: "docs"
 description: "Use the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

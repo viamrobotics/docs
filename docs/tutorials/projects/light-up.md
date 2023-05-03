@@ -6,6 +6,7 @@ type: "docs"
 description: "How to turn a light on when your webcam sees a person."
 webmSrc: "/tutorials/img/light-up/light-up.webm"
 mp4Src: "/tutorials/img/light-up/light-up.mp4"
+images: ["/tutorials/img/light-up/light-up.gif"]
 videoAlt: "A person sitting at a desk with a computer and light bulb set up in front of her. As she leaves the light turns off, and as she enters the frame, the light turns back on."
 tags: ["camera", "vision", "detector", "python"]
 # Author: Hazal Mestci

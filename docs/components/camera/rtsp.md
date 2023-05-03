@@ -4,6 +4,7 @@ linkTitle: "rtsp"
 weight: 34
 type: "docs"
 description: "Configure a streaming camera with an MJPEG track."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

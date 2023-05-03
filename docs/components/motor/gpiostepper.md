@@ -4,6 +4,7 @@ linkTitle: "gpiostepper"
 weight: 20
 type: "docs"
 description: "Configure a bipolar stepper motor with current regulation and 1/32 microstepping driven by a basic driver."
+images: ["/components/img/components/motor.svg"]
 # SMEs: Rand, James
 ---
 

@@ -4,6 +4,7 @@ linkTitle: "xArm7"
 weight: 34
 type: "docs"
 description: "Configure an xArm7 arm."
+images: ["/components/img/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---

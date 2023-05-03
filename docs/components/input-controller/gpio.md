@@ -4,6 +4,7 @@ linkTitle: "gpio"
 weight: 30
 type: "docs"
 description: "Configure a GPIO or ADC based device as an input controller."
+images: ["/components/img/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---

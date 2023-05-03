@@ -10,6 +10,7 @@ imageAlt: "A Viam Rover in a box"
 aliases:
     - "/viam-rover-resources/"
     - "/rover-resources/"
+images: ["/try-viam/rover-resources/img/viam-rover/box-contents.jpg"]
 description: Get your own Viam rover and set it up.
 ---
 

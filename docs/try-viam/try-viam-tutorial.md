@@ -3,9 +3,10 @@ title: "Control A Rented Viam Rover"
 linkTitle: "Control A Rented Viam Rover"
 weight: 39
 type: "docs"
-description: "Remotely control a Viam Rover located on-site at Viam in NYC."
+description: "Remotely control a Viam Rover located on-site at Viam in New York."
 image: "/try-viam/rover-resources/img/viam-rover/rover-front.jpg"
 imageAlt: "The front of the assembled Viam Rover"
+images: ["/try-viam/rover-resources/img/viam-rover/rover-front.jpg"]
 tags: ["try viam", "app"]
 ---
 

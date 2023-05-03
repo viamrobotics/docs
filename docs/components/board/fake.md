@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 80
 type: "docs"
 description: "Configure a fake board."
+images: ["/components/img/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---

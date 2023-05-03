@@ -5,6 +5,7 @@ weight: 40
 type: "docs"
 description: "Configure an Agilex LIMO base."
 tags: ["base", "components"]
+images: ["/components/img/components/base.svg"]
 # SMEs: Matt Vella, Steve B
 ---
 

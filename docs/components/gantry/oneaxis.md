@@ -4,6 +4,7 @@ linkTitle: "oneaxis"
 weight: 70
 type: "docs"
 description: "Configure a oneaxis gantry."
+images: ["/components/img/components/gantry.svg"]
 tags: ["gantry", "components"]
 # SME: Rand
 ---

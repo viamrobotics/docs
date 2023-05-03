@@ -5,6 +5,7 @@ weight: 15
 type: "docs"
 description: "Configure a SCUTTLE Robot on the Viam platform."
 image: "/tutorials/img/scuttlebot/createcomponent.png"
+images: ["/tutorials/img/scuttlebot/createcomponent.png"]
 imageAlt: "The Viam app UI showing the CONFIG tab of a robot."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 aliases:

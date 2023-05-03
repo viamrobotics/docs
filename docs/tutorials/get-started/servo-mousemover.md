@@ -7,6 +7,7 @@ description: "Use the Python SDK to move a continuous servo to keep a computer s
 webmSrc: "/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.webm"
 mp4Src: "/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.mp4"
 videoAlt: "A mouse mover controlled with a servo and Raspberry Pi."
+images: ["/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.gif"]
 tags: ["servo", "single component tutorial", "raspberry pi", "sdk", "python"]
 # SME: Kacey Meier-Smith
 ---

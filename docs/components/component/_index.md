@@ -6,6 +6,7 @@ type: "docs"
 description: "A NAME is a ... description of what the component is."
 tags: ["camera", "components"]
 icon: "../img/components.png"
+images: ["../img/components.png"]
 draft: true
 no_list: true
 # SMEs:

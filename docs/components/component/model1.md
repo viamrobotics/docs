@@ -4,6 +4,7 @@ linkTitle: "Model1"
 weight: 12
 type: "docs"
 description: "Configure a model1 arm."
+images: ["../img/components.png"]
 tags: ["name", "components"]
 draft: true
 # SMEs:

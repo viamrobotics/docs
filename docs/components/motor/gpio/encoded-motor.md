@@ -4,6 +4,7 @@ linkTitle: "Encoded Motors"
 weight: 90
 type: "docs"
 description: "How to configure an encoded motor."
+images: ["/components/img/components/motor.svg"]
 # SMEs: Rand, James
 ---
 

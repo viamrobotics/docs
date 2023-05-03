@@ -4,6 +4,7 @@ linkTitle: "dual_stream"
 weight: 37
 type: "docs"
 description: "Combine the streams of two camera servers to create colorful point clouds."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
