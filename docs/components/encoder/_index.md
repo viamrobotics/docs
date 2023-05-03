@@ -97,8 +97,8 @@ Absolute encoders return degrees.
 
 **Parameters:**
 
-- `position_type` (PositionType.ValueType): Specify whether to get the current position in ticks (`encoder.PositionType.TICKS`) or in degrees (`encoder.PositionType.DEGREES`).
-  If you are not sure which position type your encoder supports but it is a built-in Viam-supported model, you can leave this parameter unspecified (`encoder.PositionType.UNSPECIFIED`) and it will default to the correct position type.
+- `position_type` (Optional[PositionType.ValueType]): Specify whether to get the current position in ticks (`encoder.PositionTypeTicks`) or in degrees (`encoder.PositionTypeDegrees`).
+  If you are not sure which position type your encoder supports but it is a built-in Viam-supported model, you can leave this parameter unspecified (`encoder.PositionTypeUnspecified`) or empty and it will default to the correct position type.
 - `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -112,7 +112,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_encoder = Encoder.from_robot(robot=robot, name='my_encoder')
 
 # Get the position of the encoder in ticks
-position = await my_encoder.get_position(encoder.PositionType.TICKS)
+position = await my_encoder.get_position(encoder.PositionTypeTicks)
 print("The encoder position is currently ", position[0], position[1])
 ```
 
@@ -212,7 +212,7 @@ Get a list of all the position types that are supported by a given encoder.
 
 **Returns:**
 
-- (Properties)<!-- The link in the Python SDK docs currently doesn't go anywhere useful -->: The position types supported by the encoder model.
+- ([Properties](https://python.viam.dev/autoapi/viam/components/encoder/encoder/index.html#viam.components.encoder.encoder.Encoder.Properties)): The position types supported by the encoder model.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/index.html#viam.components.encoder.Encoder.get_properties).
 
@@ -242,7 +242,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myEncoder, err := encoder.FromRobot(robot, "my_encoder")
 
 // Get whether the encoder returns position in ticks or degrees.
-properties, _ := myEncoder.Properties(context.TODO(), nil)
+properties, _ := myEncoder.Properties(context.Background(), nil)
 ```
 
 {{% /tab %}}
