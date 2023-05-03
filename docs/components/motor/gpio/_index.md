@@ -34,7 +34,7 @@ Click **Create component** and then fill in the attributes for your model:
 {
   "components": [
     {
-      "name": <board_name>,
+      "name": <your-board-name>,
       "type": "board",
       "model": <board_model>,
       "attributes": {},
@@ -48,7 +48,7 @@ Click **Create component** and then fill in the attributes for your model:
         "pins": {
           <...>
         },
-        "board": <board_name>,
+        "board": <your-board-name>,
         "max_rpm": <int>,
         "min_power_pct": <float>,
         "max_power_pct": <float>,

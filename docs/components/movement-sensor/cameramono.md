@@ -42,7 +42,7 @@ Click **Create Component** and then fill in the attributes for your model.
       "type": "movement_sensor",
       "model": "camera_mono",
       "attributes": {
-        "camera": <camera_name>,
+        "camera": <camera-name>,
         "motion_estimation_config": {
             <see vision documentation>
         }

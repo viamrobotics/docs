@@ -33,11 +33,11 @@ Fill in the attributes for your encoder:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<encoder_name>",
+    "name": "<your-encoder-name>",
     "type": "encoder",
     "model" : "single",
     "attributes": {
-      "board": "<board_name>",
+      "board": "<your-board-name>",
       "pins": {
         "i": <string>
       }

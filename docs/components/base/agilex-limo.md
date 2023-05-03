@@ -20,9 +20,11 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your base, select the type `base`, and select the `agilex-limo` model.
 
-Click **Create component** and then fill in the attributes for your model:
+Click **Create component**.
 
 ![An example configuration for a agilex-limo base in the Viam app Config Builder.](../img/agilex-limo-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -31,12 +33,12 @@ Click **Create component** and then fill in the attributes for your model:
 {
   "components": [
     {
-      "name": "base",
+      "name": "<your-base-name>",
       "type": "base",
       "model": "agilex-limo",
       "attributes": {
-        "drive_mode": "<a_drive_mode_option>",
-        "serial_path": "</dev/ttyXXXX>"
+        "drive_mode": "<your-drive-mode>",
+        "serial_path": "<your-serial-path>"
       },
       "depends_on": []
     }

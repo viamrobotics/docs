@@ -21,38 +21,38 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `join_color_depth` model.
 
-![Creation of a join color depth view in the Viam app config builder.](../img/create-join-color-depth.png)
-
-Fill in the attributes for your join color depth view:
+Click **Create component**.
 
 ![Configuration of a join color depth view in the Viam app config builder.](../img/configure-join-color-depth.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera_name>",
+    "name": "<camera-name>",
     "type": "camera",
     "model" : "join_color_depth",
     "attributes": {
         "output_image_type": "<color|depth>",
-        "color_camera_name": "<camera_name>",
-        "depth_camera_name": "<camera_name>",
+        "color_camera_name": "<camera-name>",
+        "depth_camera_name": "<camera-name>",
         "intrinsic_parameters": {
-          "width_px": <integer>, # the expected width of the aligned pic
-          "height_px": <integer>, # the expected height of the aligned pic
-          "fx": <float64>,
-          "fy": <float64>,
-          "ppx": <float64>,
-          "ppy": <float64>
+          "width_px": <int>, # the expected width of the aligned pic
+          "height_px": <int>, # the expected height of the aligned pic
+          "fx": <float>,
+          "fy": <float>,
+          "ppx": <float>,
+          "ppy": <float>
         },
         "distortion_parameters": {
-          "rk1": <float64>,
-          "rk2": <float64>,
-          "rk3": <float64>,
-          "tp1": <float64>,
-          "tp2": <float64>
+          "rk1": <float>,
+          "rk2": <float>,
+          "rk3": <float>,
+          "tp1": <float>,
+          "tp2": <float>
         },
         "debug": <boolean>
     }

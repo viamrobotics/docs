@@ -32,7 +32,7 @@ Click **Create component** and then fill in the attributes for your model.
             "type": "gripper",
             "model" : "softrobotics",
             "attributes": {
-                "board": <board_name>,
+                "board": <your-board-name>,
                 "open": <pin_number>,
                 "close": <pin_number>,
                 "power": <pin_number>,

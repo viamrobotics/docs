@@ -21,9 +21,11 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your base, select the type `base`, and select the `wheeled` model.
 
-Click **Create component** and then fill in the attributes for your model:
+Click **Create component**.
 
-![An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On drop-downs and the option to add a frame.](../img/base-ui-config.png)
+![An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On drop-downs and the option to add a frame.](../img/wheeled-base-ui-config.png)
+
+Select the motors attached to the base as your `Right Motors` and `Left Motors`. Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -32,36 +34,28 @@ Click **Create component** and then fill in the attributes for your model:
 {
   "components": [
     {
-      "attributes": {},
-      "model": "<board_model>",
-      "name": "<board_name>",
-      "type": "board"
+      ... <INSERT YOUR BOARD COMPONENT CONFIGURATION>
     },
     {
-      "attributes": {
-        "board": "<board_name>",
-        "max_rpm": "<max_rpm>",
-        "pins": { ... }
-      },
-      "model": "<motor_model>",
-      "name": "<motor_name>",
-      "type": "motor"
+      ... <INSERT YOUR LEFT MOTOR COMPONENT CONFIGURATION>
     },
-    ... ,
     {
+      ... <INSERT YOUR RIGHT MOTOR COMPONENT CONFIGURATION>
+    },
+    {
+      "name": "<your-base-name>",
+      "model": "wheeled",
+      "type": "base",
       "attributes": {
         "left": [
-          "<left_motor_name>"
+          "<your-left-motor-name>" // <INSERT ANY ADDITIONAL LEFT MOTOR NAMES>
         ],
         "right": [
-          "<right_motor_name>"
+          "<your-right-motor-name>" // <INSERT ANY ADDITIONAL RIGHT MOTOR NAMES>
         ],
         "wheel_circumference_mm": <#>,
         "width_mm": <#>
-      },
-      "model": "wheeled",
-      "name": "<base_name>",
-      "type": "base"
+      }
     }
   ]
 }
@@ -136,8 +130,8 @@ The following attributes are available for `wheeled` bases:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `left` | string[] | **Required** | List with the names of all drive motors on the left side of the base. There may be one or more motors. |
-| `right` | string[] | **Required** | List with the names of all drive motors on the right side of the base. There may be one or more motors. |
+| `left` | list | **Required** | List with the `name` of all drive motors on the left side of the base. There may be one or more motors. |
+| `right` | list | **Required** | List with the `name` of all drive motors on the right side of the base. There may be one or more motors. |
 | `wheel_circumference_mm` | int | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
 | `width_mm` | int | **Required** | Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
 | `spin_slip_factor` | float | Optional | Can be used in steering calculations to correct for slippage between the wheels and the floor. If utilized, calibrated by the user. |

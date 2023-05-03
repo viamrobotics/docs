@@ -71,7 +71,7 @@ Click **Create Component** and then fill in the attributes for your model.
         "correction_source": <string>,
         // non-NTRIP attributes:
         "svin": <string>, //SurveyIn
-        "required_accuracy": <float64>,
+        "required_accuracy": <float>,
         "required_time_sec": <int>
       },
       "depends_on": []

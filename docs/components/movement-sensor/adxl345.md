@@ -40,7 +40,7 @@ Click **Create Component** and then fill in the attributes for your model.
         "i2c_bus": <string>,
         "use_alternate_i2c_address": <boolean>,
         "tap": {
-           "accelerometer_pin": <integer>,
+           "accelerometer_pin": <int>,
             "interrupt_pin": <string>,
             "exclude_x": <boolean>,
             "exclude_y": <boolean>,
@@ -49,7 +49,7 @@ Click **Create Component** and then fill in the attributes for your model.
             "dur_us": <float>
         },
         "free_fall": {
-            "accelerometer_pin": <integer>,
+            "accelerometer_pin": <int>,
             "interrupt_pin": <string>,
             "threshold": <float>,
             "time_ms": <float>

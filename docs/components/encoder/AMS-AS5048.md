@@ -17,7 +17,7 @@ To can configure the encoder, you must change some other configuration details:
 
     ```json
     {
-          "name": "<board_name>",
+          "name": "<your-board-name>",
           "type": "board",
           "model": "<model_name>"
           "attributes": {
@@ -56,15 +56,15 @@ Fill in the attributes for your encoder:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<encoder_name>",
+    "name": "<your-encoder-name>",
     "type": "encoder",
     "model" : "AMS-AS5048",
     "attributes": {
-      "board": "<board_name>",
+      "board": "<your-board-name>",
       "connection_type": "i2c",
       "i2c_attributes": {
         "i2c_bus": <string>,
-        "i2c_addr": <integer>
+        "i2c_addr": <int>
       }
     }
 }

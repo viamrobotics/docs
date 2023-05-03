@@ -35,7 +35,7 @@ Click **Create component** and then fill in the attributes for your model:
 {
   "components": [
     {
-      "name": <board_name>,
+      "name": <your-board-name>,
       "type": "board",
       "model": <board_model>,
       "attributes": {},
@@ -46,7 +46,7 @@ Click **Create component** and then fill in the attributes for your model:
       "type": "motor",
       "model": "gpiostepper",
       "attributes": {
-        "board": <board_name>,
+        "board": <your-board-name>,
         "pins": {
           "step": <board pin number (string) of step pin>,
           "dir": <board pin number (string) of direction pin>

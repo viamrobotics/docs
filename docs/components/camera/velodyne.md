@@ -19,23 +19,23 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `velodyne` model.
 
-![Creation of a velodyne camera in the Viam app config builder.](../img/create-velodyne.png)
-
-Fill in the attributes for your velodyne camera:
+Click **Create component**.
 
 ![Configuration of a velodyne camera in the Viam app config builder.](../img/configure-velodyne.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera_name>",
+    "name": "<camera-name>",
     "type": "camera",
     "model" : "velodyne",
     "attributes": {
-        "port": <integer>,
-        "ttl_ms": <integer>,
+        "port": <int>,
+        "ttl_ms": <int>,
     }
 }
 ```

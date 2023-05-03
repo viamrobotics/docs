@@ -18,11 +18,12 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your arm, select the type `arm`, and select the `fake` model.
 
-Click **Create component** and then fill in the attributes for your model:
+Click **Create component**.
 
 ![An example configuration for a fake ur5e arm in the Viam app Config Builder.](../img/fake-arm-ui-config.png)
 
-Note that this visual example sets the `fake` arm to act as a `ur5e` arm.
+Edit and fill in the attributes as applicable.
+This example sets the `fake` arm to act as a `ur5e` arm.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -34,7 +35,7 @@ Note that this visual example sets the `fake` arm to act as a `ur5e` arm.
     "model": "fake",
     "attributes": {
         "arm-model": "<your_arm_model>",
-        "model-path": "<your_arm_model_config_filepath>" // REMOVE if using arm-model
+        // "model-path": "<your_arm_model_config_filepath>"
     }
 }
 ```
@@ -44,10 +45,10 @@ Note that this visual example sets the `fake` arm to act as a `ur5e` arm.
 
 The following attributes are available for fake arms:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `arm-model` | Optional | The name of the robotic arm model you want your fake arm to act as. This attribute must match the `name` of one of the arms Viam currently supports. See [here](../#configuration) for supported model names. |
-| `model-path` | Optional | The path to a compatible Arm's ModelJSON or URDF configuration file that you want your fake arm to act as. This path should point to the exact location where your configuration file is located on your computer running `viam-server`. |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `arm-model` | string | Optional | `name` of the robotic arm model you want your fake arm to act as. See [built-in arm models](../#configuration) for supported model names. |
+| `model-path` | string | Optional | The path to the [kinematic configuration file](/internals/kinematic-chain-config) of the arm driver you want your fake arm to act as. This path should point to the exact location where the file is located on your computer running `viam-server`. |
 
 {{% alert title="Note" color="note" %}}
 
@@ -82,7 +83,7 @@ Refer to the following JSON examples for differences in configuration between th
     "type": "arm",
     "model": "fake",
     "attributes": {
-        "model-path": "/Users/<YOUR-USERNAME>/downloads/universalrobots/ur5e.json"
+        "model-path": "</Users/<YOUR-USERNAME>/downloads/universalrobots/ur5e.json>"
     }
 }
 ```
@@ -90,9 +91,11 @@ Refer to the following JSON examples for differences in configuration between th
 {{% /tab %}}
 {{< /tabs >}}
 
-Once you have successfully configured your `fake` arm, you can navigate to the **Control** tab of [the Viam app](https://app.viam.com).
-A drop-down menu should appear with the name of your arm that allows you to toggle the fake arm's joint positions and Cartesian end positions to dynamically test motion planning:
+Once you have successfully configured your `fake` arm, navigate to the **Control** tab of [the Viam app](https://app.viam.com).
+A drop-down menu appears with the `name` of your arm.
 
-<img src="../img/fake-arm-ui-remote-control.png" alt="Motion planning remote-control of a fake ur5e arm in the Viam app control tab." style="max-width:800px" />
+Open this interface to adjust the `fake` arm's joint positions and Cartesian end positions:
+
+![Motion planning remote-control of a fake ur5e arm in the Viam app control tab](../img/fake-arm-ui-remote-control.png)
 
 Note that this visual example sets the `fake` arm to act as a  `ur5e` arm.

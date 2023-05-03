@@ -36,7 +36,7 @@ Click **Create Component** and then fill in the attributes for your model.
       "type": "movement_sensor",
       "model": "imu-vectornav",
       "attributes": {
-        "board": <board_name>,
+        "board": <your-board-name>,
         "spi": <string>,
         "spi_baud_rate": <int>,
         "polling_freq_hz": <int>,

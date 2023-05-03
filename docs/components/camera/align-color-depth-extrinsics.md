@@ -18,57 +18,56 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `align_color_depth_extrinsics` model.
 
-![Creation of an align color depth extrinsics view in the Viam app config builder.](../img/create-align-color-depth-extrinsics.png)
-
-Fill in the attributes for your align color depth extrinsics view:
+Click **Create component**.
 
 ![Configuration of an align color depth extrinsics view in the Viam app config builder.](../img/configure-align-color-depth-extrinsics.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera_name>",
+    "name": "<your-camera-name>",
     "type": "camera",
     "model" : "align_color_depth_extrinsics",
     "attributes": {
         "camera_system": {
             "color_intrinsic_parameters": {
-                "width_px": <integer>,
-                "height_px": <integer>,
-                "fx": <float64>,
-                "fy": <float64>,
-                "ppx": <float64>,
-                "ppy": <float64>
+                "width_px": <int>,
+                "height_px": <int>,
+                "fx": <float>,
+                "fy": <float>,
+                "ppx": <float>,
+                "ppy": <float>
             },
             "depth_intrinsic_parameters": {
-                "width_px": <integer>,
-                "height_px": <integer>,
-                "fx": <float64>,
-                "fy": <float64>,
-                "ppx": <float64>,
-                "ppy": <float64>
+                "width_px": <int>,
+                "height_px": <int>,
+                "fx": <float>,
+                "fy": <float>,
+                "ppx": <float>,
+                "ppy": <float>
             },
                 "depth_to_color_extrinsic_parameters": {
-                "translation_mm": [ <float64>, <float64>, <float64>],
-                "rotation_rads": [ <float64>, <float64>, <float64>,
-                                   <float64>, <float64>, <float64>,
-                                   <float64>, <float64>, <float64> ],
+                "translation_mm": [ <float>, <float>, <float>],
+                "rotation_rads": [ <float>, <float>, <float>,
+                                   <float>, <float>, <float>,
+                                   <float>, <float>, <float> ],
             }
         },
         "intrinsic_parameters": {
-            "width_px": <integer>,
-            "height_px": <integer>,
-            "fx": <float64>,
-            "fy": <float64>,
-            "ppx": <float64>,
-            "ppy": <float64>
+            "width_px": <int>,
+            "height_px": <int>,
+            "fx": <float>,
+            "fy": <float>,
+            "ppx": <float>,
+            "ppy": <float>
         },
         "output_image_type": "<color|depth>",
-        "color_camera_name": "<camera_name>",
-        "depth_camera_name": "<camera_name>",
-        "debug": false,
+        "color_camera_name": "<your-color-camera-name>",
+        "depth_camera_name": "<your-depth-camera-name>"
     }
 }
 ```

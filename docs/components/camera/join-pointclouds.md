@@ -18,39 +18,39 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `join_pointclouds` model.
 
-![Creation of a Join Point Clouds view in the Viam app config builder.](../img/create-join-pointclouds.png)
-
-Fill in the attributes for your join point clouds view:
+Click **Create component**.
 
 ![Configuration of a Join Point Clouds view in the Viam App config builder.](../img/configure-join-pointclouds.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera_name>",
+    "name": "<camera-name>",
     "type": "camera",
     "model" : "join_pointclouds",
     "attributes": {
         "target_frame": <string>,
         "source_cameras": ["cam1", "cam2", ... ],
-        "proximity_threshold_mm": <integer>,
+        "proximity_threshold_mm": <int>,
         "merge_method": "<naive|icp>",
         "intrinsic_parameters": {
-            "width_px": <integer>,
-            "height_px": <integer>,
-            "fx": <float64>,
-            "fy": <float64>,
-            "ppx": <float64>,
-            "ppy": <float64>
+            "width_px": <int>,
+            "height_px": <int>,
+            "fx": <float>,
+            "fy": <float>,
+            "ppx": <float>,
+            "ppy": <float>
         },
         "distortion_parameters": {
-            "rk1": <float64>,
-            "rk2": <float64>,
-            "rk3": <float64>,
-            "tp1": <float64>,
-            "tp2": <float64>
+            "rk1": <float>,
+            "rk2": <float>,
+            "rk3": <float>,
+            "tp1": <float>,
+            "tp2": <float>
         },
         "debug": <boolean>
     }
