@@ -54,6 +54,7 @@ url_latest_version = "https://docs.viam.com/"
 algolia_docsearch = true
 offlineSearch = false
 prism_syntax_highlighting = true
+social_image_path = "https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63404a4db2c39ec3fbf1ed31_viam-open-graph-images.png"
 
 version_menu = "SDK Documentation"
 [[params.versions]]
