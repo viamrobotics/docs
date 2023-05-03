@@ -74,9 +74,10 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 ### Camera Setup
 
 1. Install E-Con Systems [e-CAM20_CUOAGX](https://www.e-consystems.com/nvidia-cameras/jetson-agx-orin-cameras/full-hd-ar0234-color-global-shutter-camera.asp) AR0234 driver.
+   Consult the instructions you received when purchasing your device for more information.
 2. Ensure the driver has successfully installed by running `dmesg | grep ar0234`. The output should include `ar0234 Detected Ar0234 sensor R01_RC1`.
 3. Connect the AR0234 camera module and daughterboard to the J509 port located at the bottom of the Developer Kit.
-4. Configure a [camera component](../../../components/camera).
+4. Configure the camera as a [webcam](../../../components/camera/webcam).
 
 ## Serial Communication Protocol Tips
 
