@@ -474,7 +474,7 @@ Add these properties to your module's configuration:
 {
   "modules": [
     {
-      "name": <your-module-name>,
+      "name": "<your-module-name>",
       "executable_path": "<path-on-your-filesystem-to/your-module-directory>/<your_executable.sh>"
     }
   ]
@@ -496,6 +496,7 @@ The following properties are available for modular resources:
 | `type` | string | **Required** | The subtype of the [API](#apis) (the third part of the [API](#apis) triplet). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `model` | string | **Required** | The [full triplet](#models) of the modular resource. |
+| `depends_on` | list | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Usually a [board](/components/board). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -507,14 +508,14 @@ The `attributes` available vary depending on your implementation.
 {
   "components": [
     {
-      "namespace": <module-namespace>,
-      "type": <resource-type>,
+      "namespace": "<your-module-namespace>",
+      "type": "<your-resource-type>",
+      "model": "<model-namespace>:<model-family-name>:<model-name>",
+      "name": "<your-module-name>",
       "depends_on": [],
-      "model": <model-namespace>:<model-family-name>:<model-name>,
-      "name": <string>
     }
   ],
-  "modules": [ ... ] // Your module configuration.
+  "modules": [ ... ] // < INSERT YOUR MODULE CONFIGURATION >
 }
 ```
 
