@@ -112,10 +112,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-my_camera, err := camera.FromRobot(robot, "my_camera")
+myCamera, err := camera.FromRobot(robot, "my_camera")
 
 // gets the stream from a camera
-stream, err := my_camera.Stream(context.Background())
+stream, err := myCamera.Stream(context.Background())
 
 // gets an image from the camera stream
 img, release, err := stream.Next(context.Background())
@@ -177,9 +177,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-my_camera, err := camera.FromRobot(robot, "my_camera")
+myCamera, err := camera.FromRobot(robot, "my_camera")
 
-pointCloud, err := my_camera.NextPointCloud(context.Background())
+pointCloud, err := myCamera.NextPointCloud(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
@@ -223,10 +223,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-my_camera, err := camera.FromRobot(robot, "my_camera")
+myCamera, err := camera.FromRobot(robot, "my_camera")
 
 // gets the properties from a camera
-properties, err := my_camera.Properties(context.Background())
+properties, err := myCamera.Properties(context.Background())
 
 ```
 
@@ -275,10 +275,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-  my_camera, err := camera.FromRobot(robot, "my_camera")
+  myCamera, err := camera.FromRobot(robot, "my_camera")
 
   command := map[string]interface{}{"cmd": "test", "data1": 500}
-  result, err := my_camera.DoCommand(context.Background(), command)
+  result, err := myCamera.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).

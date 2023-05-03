@@ -109,9 +109,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
-if err != nil {
-  logger.Fatalf("cannot get base: %v", err)
-}
 
 // Move the base forward 10 mm at a velocity of 1 mm/s.
 myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: 1)
@@ -170,9 +167,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
-if err != nil {
-  logger.Fatalf("cannot get base: %v", err)
-}
 
 // Spin the base 10 degrees at an angular velocity of 1 deg/sec.
 myBase.Spin(context.Background(), angleDeg: 10, degsPerSec: 1)
@@ -247,37 +241,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
-if err != nil {
-  logger.Fatalf("cannot get base: %v", err)
-}
 
 // Make your wheeled base move forward. Set linear power to 75%.
 logger.Info("move forward")
 err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: .75}, angular: r3.Vector{})
-if err != nil {
-    logger.Fatal(err)
-}
 
 // Make your wheeled base move backward. Set linear power to -100%.
 logger.Info("move backward")
 err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: -1}, angular: r3.Vector{})
-if err != nil {
-    logger.Fatal(err)
-}
 
 // Make your wheeled base spin left. Set angular power to 100%.
 logger.Info("spin left")
 err = myBase.SetPower(context.Background(), linear: r3.Vector{}, angular: r3.Vector{Z: 1})
-if err != nil {
-  logger.Fatal(err)
-}
 
 // Make your wheeled base spin right. Set angular power to -75%.
 logger.Info("spin right")
 err = mybase.SetPower(context.Background(), r3.Vector{}, r3.Vector{Z: -.75}, nil)
-if err != nil {
-  logger.Fatal(err)
-}
 ```
 
 {{% /tab %}}
@@ -329,9 +308,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 // import "github.com/golang/geo/r3" ...
 
 myBase, err := base.FromRobot(robot, "my_base")
-if err != nil {
-  logger.Fatalf("cannot get base: %v", err)
-}
 
 // Set the angular velocity to 1 mm/sec and the linear velocity to 1 deg/sec.
 myBase.SetVelocity(context.Background(), linear: r3.Vector{Y: 1}, angular: r3.Vector{Z: 1})
@@ -383,9 +359,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
-if err != nil {
-  logger.Fatalf("cannot get base: %v", err)
-}
 
 // Move the base forward 10 mm at a velocity of 1 mm/s.
 myBase.MoveStraight(context.Background(), 10, 1)
@@ -437,10 +410,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-  myBase, err := base.FromRobot(robot, "my_base")
+myBase, err := base.FromRobot(robot, "my_base")
 
-  command := map[string]interface{}{"cmd": "test", "data1": 500}
-  result, err := myBase.DoCommand(context.Background(), command)
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := myBase.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).

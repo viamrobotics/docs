@@ -84,7 +84,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myGripper, err := gripper.FromRobot(robot, "my_gripper")
 
 // Open the gripper.
-err := myGripper.Open(context.TODO(), nil)
+err := myGripper.Open(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -133,7 +133,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myGripper, err := gripper.FromRobot(robot, "my_gripper")
 
 // Grab with the gripper.
-grabbed, err := myGripper.Grab(context.TODO(), nil)
+grabbed, err := myGripper.Grab(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -182,7 +182,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myGripper, err := gripper.FromRobot(robot, "my_gripper")
 
 // Stop the gripper.
-err := myGripper.Stop(context.TODO(), nil)
+err := myGripper.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -231,7 +231,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 myGripper, err := gripper.FromRobot(robot, "my_gripper")
 
 // Check whether the gripper is currently moving.
-moving, _ := myGripper.IsMoving(context.TODO())
+moving, _ := myGripper.IsMoving(context.Background())
 logger.Info("Is moving?")
 logger.Info(moving)
 ```

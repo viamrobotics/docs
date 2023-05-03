@@ -186,9 +186,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myServo, err := servo.FromRobot(robot, "my_servo")
-if err != nil {
-  logger.Fatalf("cannot get servo: %v", err)
-}
 
 // Move the servo from its origin to the desired angle of 10 degrees.
 myServo.Move(context.Background(), 10, nil)
@@ -250,7 +247,7 @@ pos2 = await my_servo.get_position()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
 
 ```go {class="line-numbers linkable-line-numbers"}
-my_servo, err := servo.FromRobot(robot, "my_servo")
+myServo, err := servo.FromRobot(robot, "my_servo")
 
 // Move the servo from its origin to the desired angle of 10 degrees.
 myServo.Move(context.Background(), 10, nil)
@@ -363,10 +360,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-  myServo, err := servo.FromRobot(robot, "my_servo")
+myServo, err := servo.FromRobot(robot, "my_servo")
 
-  command := map[string]interface{}{"cmd": "test", "data1": 500}
-  result, err := myServo.DoCommand(context.Background(), command)
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := myServo.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).

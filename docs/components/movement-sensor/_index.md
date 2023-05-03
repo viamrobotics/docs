@@ -122,7 +122,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current position of the movement sensor.
-position, _ := myMovementSensor.Position(context.TODO(), nil)
+position, _ := myMovementSensor.Position(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -177,7 +177,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current linear velocity of the movement sensor.
-linVel, _ := myMovementSensor.LinearVelocity(context.TODO(), nil)
+linVel, _ := myMovementSensor.LinearVelocity(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -235,7 +235,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current angular velocity of the movement sensor.
-angVel, _ := myMovementSensor.AngularVelocity(context.TODO(), nil)
+angVel, _ := myMovementSensor.AngularVelocity(context.Background(), nil)
 
 // Get the y component of angular velocity.
 yAngVel := angVel.Y
@@ -296,7 +296,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current linear acceleration of the movement sensor.
-linAccel, _ := myMovementSensor.LinearAcceleration(context.TODO(), nil)
+linAccel, _ := myMovementSensor.LinearAcceleration(context.Background(), nil)
 
 // Get the x component of linear acceleration
 xAngVel := linAccel.X
@@ -354,7 +354,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current compass heading of the movement sensor.
-heading, _ := myMovementSensor.CompassHeading(context.TODO(), nil)
+heading, _ := myMovementSensor.CompassHeading(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -405,7 +405,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current orientation of the movement sensor.
-sensorOrientation, _ := myMovementSensor.Orientation(context.TODO(), nil)
+sensorOrientation, _ := myMovementSensor.Orientation(context.Background(), nil)
 
 // Get the orientation vector (a unit vector pointing in the same direction as the sensor and theta, an angle representing the sensor's rotation about that axis).
 orientation := sensorOrientation.OrientationVectorDegrees()
@@ -463,7 +463,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the supported properties of the movement sensor.
-properties, _ := myMovementSensor.Properties(context.TODO(), nil)
+properties, _ := myMovementSensor.Properties(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -516,7 +516,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the accuracy of the movement sensor.
-accuracy, _ := myMovementSensor.Accuracy(context.TODO(), nil)
+accuracy, _ := myMovementSensor.Accuracy(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -569,7 +569,7 @@ For more information, see the [Go SDK docs for Sensor](https://pkg.go.dev/go.via
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the latest readings from the movement sensor.
-readings, _ := myMovementSensor.Readings(context.TODO(), nil)
+readings, _ := myMovementSensor.Readings(context.Background(), nil)
 ```
 
 {{% /tab %}}

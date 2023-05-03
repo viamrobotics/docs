@@ -113,7 +113,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Set the motor power to 40% forwards.
-myMotor.SetPower(context.TODO(), 0.4, nil)
+myMotor.SetPower(context.Background(), 0.4, nil)
 
 ```
 
@@ -169,7 +169,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Turn the motor 7.2 revolutions at 60 RPM.
-myMotor.GoFor(context.TODO(), 60, 7.2, nil)
+myMotor.GoFor(context.Background(), 60, 7.2, nil)
 ```
 
 {{% /tab %}}
@@ -222,7 +222,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Turn the motor to 8.3 revolutions from home at 75 RPM.
-myMotor.GoTo(context.TODO(), 75, 8.3, nil)
+myMotor.GoTo(context.Background(), 75, 8.3, nil)
 ```
 
 {{% /tab %}}
@@ -271,7 +271,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Set the current position as the new home position with no offset.
-myMotor.ResetZeroPosition(context.TODO(), 0.0, nil)
+myMotor.ResetZeroPosition(context.Background(), 0.0, nil)
 ```
 
 {{% /tab %}}
@@ -322,7 +322,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Get the current position of the motor.
-position, _ := myMotor.Position(context.TODO(), nil)
+position, _ := myMotor.Position(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -374,7 +374,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Return whether or not the motor supports certain optional features.
-properties, _ := myMotor.Properties(context.TODO(), nil)
+properties, _ := myMotor.Properties(context.Background(), nil)
 
 // Log the properties.
 logger.Info("Properties:")
@@ -426,7 +426,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Stop the motor.
-myMotor.Stop(context.TODO(), nil)
+myMotor.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -480,7 +480,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Check whether the motor is currently running.
-powered, pct, _ := myMotor.IsPowered(context.TODO(), nil)
+powered, pct, _ := myMotor.IsPowered(context.Background(), nil)
 
 logger.Info("Is powered?")
 logger.Info(powered)
@@ -534,7 +534,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Check whether the motor is currently moving.
-moving, _ := myMotor.IsMoving(context.TODO())
+moving, _ := myMotor.IsMoving(context.Background())
 
 logger.Info("Is moving?")
 logger.Info(moving)
