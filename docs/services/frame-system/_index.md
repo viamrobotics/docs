@@ -244,7 +244,7 @@ print(f"Frame System Configuration: {frame_system}")
 **Parameters:**
 
 - `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `additionalTransforms` (Optional[[referenceframe.LinkInFrame](https://pkg.go.dev/go.viam.com/rdk@v0.2.36/referenceframe#LinkInFrame)]): A list of [additional transforms](#supplemental-transforms).
+- `additionalTransforms` (Optional[[referenceframe.LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#supplemental-transforms).
 
 **Returns:**
 
