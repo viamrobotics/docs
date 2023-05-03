@@ -300,16 +300,16 @@ print("Orientation: (o_x:", transformed_pif.pose.o_x,
 **Parameters:**
 
 - `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` (Optional[[PoseInFrame](https://pkg.go.dev/go.viam.com/rdk@v0.2.36/referenceframe#PoseInFrame)]): The pose that should be transformed.
+- `pose` (Optional[[PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)]): The pose that should be transformed.
 - `dst` (string): The name of the reference frame to transform the given pose to.
-- `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk@v0.2.36/referenceframe#LinkInFrame)]): A list of [additional transforms](#supplemental-transforms).
+- `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#supplemental-transforms).
 
 **Returns:**
 
 - `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- `PoseInFrame` [(referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.2.36/referenceframe#PoseInFrame): Transformed pose in destination reference frame.
+- `PoseInFrame` [(referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in destination reference frame.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot).
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Define a Pose coincident with the world reference frame
