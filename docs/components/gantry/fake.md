@@ -5,7 +5,7 @@ weight: 90
 type: "docs"
 description: "Configure a fake gantry."
 tags: ["gantry", "components"]
-icon: "img/components/gantry.png"
+icon: "/components/img/components/gantry.svg"
 images: ["img/components/gantry.png"]
 # SME: Rand
 ---
