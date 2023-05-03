@@ -102,6 +102,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
     {
       "service_configs": [
         {
+          "type": "data_manager",
           "attributes": {
             "capture_methods": [
               {
@@ -113,8 +114,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
                 }
               }
             ]
-          },
-          "type": "data_manager"
+          }
         }
       ],
       "model": "webcam",
@@ -234,6 +234,54 @@ The following example captures data from two analog readers that provide a volta
           }
         }
       ],
+      "secret": "REDACTED"
+    }
+  ]
+}
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view the JSON configuration for capturing data from a camera" %}}
+
+The following example captures data from the `ReadImage` method of a camera:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "services": [
+    {
+      "attributes": {
+        "capture_dir": "",
+        "sync_disabled": true,
+        "sync_interval_mins": 5
+      },
+      "name": "data_manager",
+      "type": "data_manager"
+    }
+  ],
+  "components": [],
+  "remotes": [
+    {
+      "name": "pi-test-main",
+      "address": "pi-test-main.vw3iu72d8n.viam.cloud",
+        "service_configs": [
+          {
+            "type": "data_manager",
+            "attributes": {
+              "capture_methods": [
+                {
+                  "capture_frequency_hz": 1,
+                  "name": "rdk:component:camera/cam",
+                  "disabled": false,
+                  "method": "ReadImage",
+                  "additional_params": {
+                    "mime_type": "image/jpeg"
+                  }
+                }
+              ]
+            }
+          }
+        ],
       "secret": "REDACTED"
     }
   ]
