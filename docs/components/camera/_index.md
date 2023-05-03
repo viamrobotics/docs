@@ -51,9 +51,13 @@ For configuration information, click on one of the following models:
 
 ## Control your camera with Viam's client SDK libraries
 
-Check out the [Client SDK Libraries Quick Start](/program/sdk-as-client/) documentation for an overview of how to get started connecting to your robot using these libraries.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
 
-{{< readfile "/static/include/components/camera-sample.md" >}}
+When executed, this sample code will create a connection to your robot as a client.
+Then control your robot programmatically by adding API method calls as shown in the following examples.
+
+These examples assume you have a camera called `"my_camera"` configured as a component of your robot.
+If your camera has a different name, change the `name` in the code.
 
 ## API
 
@@ -85,7 +89,7 @@ If the server does not know how to return the specified MIME type, the server re
 - `frame` (`Image` or [`RawImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.RawImage)): The requested frame.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_cam = Camera.from_robot(robot=robot, name='my_camera')
+my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
 frame = await my_cam.get_image()
 ```
@@ -108,13 +112,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCam, err := camera.FromRobot(robot, cameraName)
-if err != nil {
-  logger.Fatalf("cannot get camera: %v", err)
-}
+myCamera, err := camera.FromRobot(robot, "my_camera")
 
 // gets the stream from a camera
-stream, err := myCam.Stream(context.Background())
+stream, err := myCamera.Stream(context.Background())
 
 // gets an image from the camera stream
 img, release, err := stream.Next(context.Background())
@@ -149,9 +150,9 @@ To deserialize the returned information into a numpy array, use the Open3D libra
 import numpy as np
 import open3d as o3d
 
-my_cam = Camera.from_robot(robot=robot, name='my_camera')
+my_camera= Camera.from_robot(robot=robot, name="my_camera")
 
-data, _ = await my_cam.get_point_cloud()
+data, _ = await my_camera.get_point_cloud()
 
 # write the point cloud into a temporary file
 with open("/tmp/pointcloud_data.pcd", "wb") as f:
@@ -176,12 +177,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCam, err := camera.FromRobot(robot, cameraName)
-if err != nil {
-  logger.Fatalf("cannot get camera: %v", err)
-}
+myCamera, err := camera.FromRobot(robot, "my_camera")
 
-pointCloud, err := myCam.NextPointCloud(context.Background())
+pointCloud, err := myCamera.NextPointCloud(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
@@ -205,9 +203,9 @@ Get the camera intrinsic parameters and camera distortion, as well as whether th
 - `properties` ([`Properties`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties)): The properties of the camera.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_cam = Camera.from_robot(robot=robot, name='my_camera')
+my_camera= Camera.from_robot(robot=robot, name="my_camera")
 
-properties = await my_cam.get_properties()
+properties = await my_camera.get_properties()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.get_properties).
@@ -225,13 +223,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCam, err := camera.FromRobot(robot, cameraName)
-if err != nil {
-  logger.Fatalf("cannot get camera: %v", err)
-}
+myCamera, err := camera.FromRobot(robot, "my_camera")
 
 // gets the properties from a camera
-properties, err := myCam.Properties(context.Background())
+properties, err := myCamera.Properties(context.Background())
 
 ```
 
@@ -258,10 +253,10 @@ If you are implementing your own camera and add features that have no native API
 - `result` (`Dict[str, Any]`): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_cam = Camera.from_robot(robot, "camera0")
+my_camera= Camera.from_robot(robot, "my_camera")
 
 command = {"cmd": "test", "data1": 500}
-result = my_cam.do(command)
+result = my_camera.do(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
@@ -280,10 +275,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-  myCam, err := camera.FromRobot(robot, "my_camera")
+  myCamera, err := camera.FromRobot(robot, "my_camera")
 
   command := map[string]interface{}{"cmd": "test", "data1": 500}
-  result, err := myCam.DoCommand(context.Background(), command)
+  result, err := myCamera.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).

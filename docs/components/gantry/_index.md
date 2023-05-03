@@ -47,7 +47,7 @@ To get started using Viam's SDKs to connect to and control your robot, go to you
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a gantry called "my_gantry" configured as a component of your robot.
+These examples assume you have a gantry called `"my_gantry"` configured as a component of your robot.
 If your gantry has a different name, change the `name` in the code.
 
 ## API
@@ -82,7 +82,7 @@ Get the current positions of the axis of the gantry (mm).
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.get_position).
 
 ```python
-my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
 # Get the current positions of the axes of the gantry in millimeters.
 positions = await my_gantry.get_position()
@@ -105,18 +105,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myGantry, err := gantry.FromRobot(robot, "my_gantry")
-if err != nil {
-  logger.Fatalf("cannot get gantry: %v", err)
-}
 
 // Get the current positions of the axes of the gantry in millimeters.
 position, err := myGantry.Position(context.Background(), nil)
-
-// Log any errors that occur.
-if err != nil {
-  logger.Fatalf("cannot get positions of gantry axes: %v", err)
-}
-
 ```
 
 {{% /tab %}}
@@ -142,7 +133,7 @@ Move the axes of the gantry to the desired positions (mm).
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.move_to_position).
 
 ```python
-my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
 # Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multiaxis, with 3 axes.
 examplePositions = [1, 2, 3]
@@ -168,9 +159,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myGantry, err := gantry.FromRobot(robot, "my_gantry")
-if err != nil {
-  logger.Fatalf("cannot get gantry: %v", err)
-}
 
 // Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multiaxis, with 3 axes.
 examplePositions = []float64{1, 2, 3}
@@ -201,7 +189,7 @@ Get the lengths of the axes of the gantry (mm).
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.lengths).
 
 ```python
-my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
 # Get the lengths of the axes of the gantry in millimeters.
 lengths_mm = await my_gantry.get_lengths()
@@ -224,18 +212,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myGantry, err := gantry.FromRobot(robot, "my_gantry")
-if err != nil {
-  logger.Fatalf("cannot get gantry: %v", err)
-}
 
 // Get the lengths of the axes of the gantry in millimeters.
 lengths_mm, err := myGantry.Lengths(context.Background(), nil)
-
-// Log any errors that occur.
-if err != nil {
-  logger.Fatalf("cannot get axis lengths of gantry: %v", err)
-}
-
 ```
 
 {{% /tab %}}
@@ -260,7 +239,7 @@ Stop all motion of the gantry.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.stop).
 
 ```python
-my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
 # Stop all motion of the gantry. It is assumed that the gantry stops immediately.
 await my_gantry.stop()
@@ -282,9 +261,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myGantry, err := gantry.FromRobot(robot, "my_gantry")
-if err != nil {
-  logger.Fatalf("cannot get gantry: %v", err)
-}
 
 // Stop all motion of the gantry. It is assumed that the gantry stops immediately.
 myGantry.Stop(context.Background(), nil)
@@ -311,7 +287,7 @@ Get if the gantry is currently moving.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.is_moving).
 
 ```python
-my_gantry = Gantry.from_robot(robot=robot, name='my_gantry')
+my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
 # Stop all motion of the gantry. It is assumed that the gantry stops immediately.
 await my_gantry.stop()
@@ -336,18 +312,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myGantry, err := gantry.FromRobot(robot, "my_gantry")
-if err != nil {
-  logger.Fatalf("cannot get gantry: %v", err)
-}
 
 // Stop all motion of the gantry. It is assumed that the gantry stops immediately.
 myGantry.Stop(context.Background(), nil)
 
 // Log if the gantry is currently moving.
 is_moving, err := myGantry.IsMoving(context.Background())
-if err != nil {
-  logger.Fatalf("cannot get if gantry is moving: %v", err)
-}
 ```
 
 {{% /tab %}}
@@ -393,10 +363,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-  myGantry, err := gantry.FromRobot(robot, "my_gantry")
+myGantry, err := gantry.FromRobot(robot, "my_gantry")
 
-  command := map[string]interface{}{"cmd": "test", "data1": 500}
-  result, err := myGantry.DoCommand(context.Background(), command)
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := myGantry.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).

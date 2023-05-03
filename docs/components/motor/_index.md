@@ -41,61 +41,13 @@ Model | Description <a name="model-table"></a>
 
 ## Control your motor with Viam's client SDK libraries
 
-The following example assumes you have motors called `motor1` and `motor2` configured as components of your robot.
-If your motor has a different name, change the `name` in the example.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
 
-{{< tabs >}}
-{{% tab name="Python" %}}
+When executed, this sample code will create a connection to your robot as a client.
+Then control your robot programmatically by adding API method calls as shown in the following examples.
 
-Place the example code in the `main()` function after `robot = await connect()`.
-
-```python
-from viam.components.motor import Motor
-
-robot = await connect() # Refer to CODE SAMPLE tab code
-motor1 = Motor.from_robot(robot, "motor1")
-motor2 = Motor.from_robot(robot, "motor2")
-
-# Power motor1 at 100% for 3 seconds
-await motor1.set_power(1)
-await asyncio.sleep(3)
-await motor1.stop()
-
-# Run motor2 at 1000 rpm for 200 rotations
-await motor2.go_for(1000, 200)
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-Place the example code in the `main()` function after `robot, err := client.New(...)`.
-
-```go
-import (
-  "context"
-  "time"
-
-  "github.com/edaniels/golog"
-
-  "go.viam.com/rdk/components/motor"
-)
-
-robot, err := client.New() // Refer to CODE SAMPLE tab code
-// Grab the motors from the robot
-m1, err := motor.FromRobot(robot, "motor1")
-m2, err := motor.FromRobot(robot, "motor2")
-
-// Power motor1 at 100% for 3 seconds
-m1.SetPower(context.TODO(), 1, nil)
-time.Sleep(3 * time.Second)
-m1.Stop(context.TODO(), nil)
-
-// Run motor2 at 1000 RPM for 200 rotations
-m2.GoFor(context.TODO(), 1000, 200, nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+These examples assume you have a motor called `"my_motor"` configured as a component of your robot.
+If your motor has a different name, change the `name` in the code.
 
 ## API
 
@@ -135,10 +87,8 @@ Power is expressed as a floating point between -1 and 1 that scales between -100
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.set_power).
 
-**Example usage:**
-
 ```python
-my_motor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Set the power to 40% forwards.
 await my_motor.set_power(power = 0.4)
@@ -159,13 +109,11 @@ await my_motor.set_power(power = 0.4)
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
-**Example usage:**
-
 ```go
-myMotor, err := motor.FromRobot(robot, "motor1")
+myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Set the motor power to 40% forwards.
-myMotor.SetPower(context.TODO(), 0.4, nil)
+myMotor.SetPower(context.Background(), 0.4, nil)
 
 ```
 
@@ -192,10 +140,8 @@ If both `rpm` and `revolutions` are negative, the motor spins in the forward dir
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_for).
 
-**Example usage:**
-
 ```python
-my_motor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Turn the motor 7.2 revolutions at 60 RPM.
 await my_motor.go_for(rpm=60, revolutions=7.2)
@@ -219,13 +165,11 @@ await my_motor.go_for(rpm=60, revolutions=7.2)
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
-**Example usage:**
-
 ```go
-myMotor, err := motor.FromRobot(robot, "motor1")
+myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Turn the motor 7.2 revolutions at 60 RPM.
-myMotor.GoFor(context.TODO(), 60, 7.2, nil)
+myMotor.GoFor(context.Background(), 60, 7.2, nil)
 ```
 
 {{% /tab %}}
@@ -251,10 +195,8 @@ This blocks until the position has been reached.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_to).
 
-**Example usage:**
-
 ```python
-my_motor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Turn the motor to 8.3 revolutions from home at 75 RPM.
 await my_motor.go_to(rpm=75, revolutions=8.3)
@@ -276,13 +218,11 @@ await my_motor.go_to(rpm=75, revolutions=8.3)
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
-**Example usage:**
-
 ```go
-myMotor, err := motor.FromRobot(robot, "motor1")
+myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Turn the motor to 8.3 revolutions from home at 75 RPM.
-myMotor.GoTo(context.TODO(), 75, 8.3, nil)
+myMotor.GoTo(context.Background(), 75, 8.3, nil)
 ```
 
 {{% /tab %}}
@@ -305,10 +245,8 @@ Set the current position (modified by `offset`) to be the new zero (home) positi
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.reset_zero_position).
 
-**Example usage:**
-
 ```python
-my_motor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Set the current position as the new home position with no offset.
 await my_motor.reset_zero_position(offset=0.0)
@@ -329,13 +267,11 @@ await my_motor.reset_zero_position(offset=0.0)
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
-**Example usage:**
-
 ```go
-myMotor, err := motor.FromRobot(robot, "motor1")
+myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Set the current position as the new home position with no offset.
-myMotor.ResetZeroPosition(context.TODO(), 0.0, nil)
+myMotor.ResetZeroPosition(context.Background(), 0.0, nil)
 ```
 
 {{% /tab %}}
@@ -360,10 +296,8 @@ This method raises an exception if position reporting is not supported by the mo
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.get_position).
 
-**Example usage:**
-
 ```python
-my_motor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Get the current position of the motor.
 position = await my_motor.get_position()
@@ -384,13 +318,11 @@ position = await my_motor.get_position()
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
-**Example usage:**
-
 ```go
-myMotor, err := motor.FromRobot(robot, "motor1")
+myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Get the current position of the motor.
-position, _ := myMotor.Position(context.TODO(), nil)
+position, _ := myMotor.Position(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -413,15 +345,14 @@ Report a dictionary mapping optional properties to whether it is supported by th
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.get_properties).
 
-**Example usage:**
-
 ```python
-my_motor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Report a dictionary mapping optional properties to whether it is supported by this motor.
 properties = await my_motor.get_properties()
-print('Properties:')
-print(properties)
+
+# Print out the properties.
+print(f'Properties: {properties}')
 ```
 
 {{% /tab %}}
@@ -439,13 +370,13 @@ print(properties)
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
-**Example usage:**
-
 ```go
-myMotor, err := motor.FromRobot(robot, "motor1")
+myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Return whether or not the motor supports certain optional features.
-properties, _ := myMotor.Properties(context.TODO(), nil)
+properties, _ := myMotor.Properties(context.Background(), nil)
+
+// Log the properties.
 logger.Info("Properties:")
 logger.Info(properties)
 ```
@@ -470,10 +401,8 @@ Cut the power to the motor immediately, without any gradual step down.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.stop).
 
-**Example usage:**
-
 ```python
-my_motor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Stop the motor.
 await my_motor.stop()
@@ -493,13 +422,11 @@ await my_motor.stop()
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
-**Example usage:**
-
 ```go
-myMotor, err := motor.FromRobot(robot, "motor1")
+myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Stop the motor.
-myMotor.Stop(context.TODO(), nil)
+myMotor.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -524,14 +451,13 @@ The float represents the current portion of max power to the motor (between 0 an
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_powered).
 
-**Example usage:**
-
 ```python
-my_motor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Check whether the motor is currently running.
 powered = await my_motor.is_powered()
-print('Powered:', powered)
+
+print('Powered: ', powered)
 ```
 
 {{% /tab %}}
@@ -550,13 +476,12 @@ print('Powered:', powered)
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
-**Example usage:**
-
 ```go
-myMotor, err := motor.FromRobot(robot, "motor1")
+myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Check whether the motor is currently running.
-powered, pct, _ := myMotor.IsPowered(context.TODO(), nil)
+powered, pct, _ := myMotor.IsPowered(context.Background(), nil)
+
 logger.Info("Is powered?")
 logger.Info(powered)
 logger.Info("Power percent:")
@@ -583,14 +508,12 @@ Returns whether the motor is actively moving (or attempting to move) under its o
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_moving).
 
-**Example usage:**
-
 ```python
-my_motor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Check whether the motor is currently moving.
 moving = await my_motor.is_moving()
-print('Moving:', moving)
+print('Moving: ', moving)
 ```
 
 {{% /tab %}}
@@ -607,13 +530,12 @@ print('Moving:', moving)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
 
-**Example usage:**
-
 ```go
-myMotor, err := motor.FromRobot(robot, "motor1")
+myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Check whether the motor is currently moving.
-moving, _ := myMotor.IsMoving(context.TODO())
+moving, _ := myMotor.IsMoving(context.Background())
+
 logger.Info("Is moving?")
 logger.Info(moving)
 ```
@@ -639,12 +561,13 @@ If you are implementing your own motor and add features that have no built-in AP
 - `result` (`Dict[str, Any]`): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motor = Motor.from_robot(robot=robot, name='my_motor')
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 raw_dict = {
   "command": "raw",
   "raw_input": "home"
 }
+
 await my_motor.do_command(raw_dict)
 ```
 
@@ -664,7 +587,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotor, err := motor.FromRobot(robot, "motor1")
+myMotor, err := motor.FromRobot(robot, "my_motor")
 
 resp, err := myMotor.DoCommand(ctx, map[string]interface{}{"command": "jog", "raw_input": "home"})
 ```

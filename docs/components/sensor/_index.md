@@ -53,7 +53,7 @@ To get started using Viam's SDKs to connect to and control your robot, go to you
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a sensor called "my_sensor" configured as a component of your robot.
+These examples assume you have a sensor called `"my_sensor"` configured as a component of your robot.
 If your sensor has a different name, change the `name` in the code.
 
 ## API
@@ -106,10 +106,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 mySensor, err := sensor.FromRobot(robot, "my_sensor")
-if err != nil {
-  logger.Fatalf("cannot get sensor: %v", err)
-}
 
+// Get the readings provided by the sensor.
 readings, err := mySensor.Readings(context.Background(), nil)
 ```
 

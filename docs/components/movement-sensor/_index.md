@@ -40,57 +40,13 @@ Model | Description <a name="model-table"></a>
 
 ## Control your movement sensor with Viam's client SDK libraries
 
-The following example assumes you have a movement sensor called `my-imu` configured as a component of your robot.
-If your movement sensor has a different name, change the `name` in the example.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
 
-{{< tabs >}}
-{{% tab name="Python" %}}
+When executed, this sample code will create a connection to your robot as a client.
+Then control your robot programmatically by adding API method calls as shown in the following examples.
 
-Place the example code in `main()` after `robot = await connect()`.
-
-```python
-from viam.components.movement_sensor import MovementSensor
-
-robot = await connect() # Refer to CODE SAMPLE tab code
-my_imu = MovementSensor.from_robot(robot, "my-imu")
-
-# Get the current linear acceleration
-lin_accel = await my_imu.get_linear_acceleration()
-print(f"my-imu linear acceleration in the x direction: {lin_accel.x}")
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-Place the example code in the `main()` function after `robot, err := client.New(...)`.
-
-```go
-import (
-  "context"
-  "time"
-
-  "github.com/edaniels/golog"
-
-  "go.viam.com/rdk/components/movementsensor"
-)
-
-robot, err := client.New() // Refer to CODE SAMPLE tab code
-// Grab the movement sensor from the robot
-myIMU, err := movementsensor.FromRobot(robot, "my-imu")
-if err != nil {
-  logger.Fatalf("cannot get movement sensor: %v", err) 
-}
-
-// Get the current linear acceleration
-linAccel, err := myIMU.LinearAcceleration(context.Background(), map[string]interface{}{})
-if err != nil { 
-  logger.Fatalf("cannot get linear acceleration: %v", err) 
-}
-logger.Info("my-imu LinearAcceleration in the x direction: ", linAccel.X)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+These examples assume you have a movement sensor called `"my_movement_sensor"` configured as a component of your robot.
+If your movement sensor has a different name, change the `name` in the code.
 
 ## API
 
@@ -138,10 +94,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
 # Get the current position of the movement sensor.
-position = await my_sensor.get_position()
+position = await my_movement_sensor.get_position()
 ```
 
 {{% /tab %}}
@@ -163,10 +119,10 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example usage:**
 
 ```go
-mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current position of the movement sensor.
-position, _ := mySensor.Position(context.TODO(), nil)
+position, _ := myMovementSensor.Position(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -194,10 +150,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
 # Get the current linear velocity of the movement sensor.
-lin_vel = await my_sensor.get_linear_velocity()
+lin_vel = await my_movement_sensor.get_linear_velocity()
 ```
 
 {{% /tab %}}
@@ -218,10 +174,10 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example usage:**
 
 ```go
-mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current linear velocity of the movement sensor.
-linVel, _ := mySensor.LinearVelocity(context.TODO(), nil)
+linVel, _ := myMovementSensor.LinearVelocity(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -249,11 +205,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
 # Get the current angular velocity of the movement sensor.
-ang_vel = await my_sensor.get_angular_velocity()
-# Get the y component of angular velocity
+ang_vel = await my_movement_sensor.get_angular_velocity()
+
+# Get the y component of angular velocity.
 y_ang_vel = ang_vel.y
 ```
 
@@ -275,11 +232,12 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example usage:**
 
 ```go
-mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current angular velocity of the movement sensor.
-angVel, _ := mySensor.AngularVelocity(context.TODO(), nil)
-// Get the y component of angular velocity
+angVel, _ := myMovementSensor.AngularVelocity(context.Background(), nil)
+
+// Get the y component of angular velocity.
 yAngVel := angVel.Y
 ```
 
@@ -308,11 +266,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
 # Get the current linear acceleration of the movement sensor.
-lin_accel = await my_sensor.get_linear_acceleration()
-# Get the x component of linear acceleration
+lin_accel = await my_movement_sensor.get_linear_acceleration()
+
+# Get the x component of linear acceleration.
 x_lin_accel = lin_accel.x
 ```
 
@@ -334,10 +293,11 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example usage:**
 
 ```go
-mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current linear acceleration of the movement sensor.
-linAccel, _ := mySensor.LinearAcceleration(context.TODO(), nil)
+linAccel, _ := myMovementSensor.LinearAcceleration(context.Background(), nil)
+
 // Get the x component of linear acceleration
 xAngVel := linAccel.X
 ```
@@ -367,10 +327,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example usage:**
 
 ```python
-my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
 # Get the current compass heading of the movement sensor.
-heading = await my_sensor.get_compass_heading()
+heading = await my_movement_sensor.get_compass_heading()
 ```
 
 {{% /tab %}}
@@ -391,10 +351,10 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example usage:**
 
 ```go
-mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current compass heading of the movement sensor.
-heading, _ := mySensor.CompassHeading(context.TODO(), nil)
+heading, _ := myMovementSensor.CompassHeading(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -419,13 +379,11 @@ Supported by IMU models.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_orientation).
 
-**Example usage:**
-
 ```python
-my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
 # Get the current orientation vector of the movement sensor.
-orientation = await my_sensor.get_orientation()
+orientation = await my_movement_sensor.get_orientation()
 ```
 
 {{% /tab %}}
@@ -438,25 +396,25 @@ orientation = await my_sensor.get_orientation()
 
 **Returns:**
 
-- [(spacialmath.Orientation)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Orientation): Orientation is an interface used to express the different parameterizations of the orientation of the movement sensor in 3D Euclidean space.
+- [(spatialmath.Orientation)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Orientation): Orientation is an interface used to express the different parameterizations of the orientation of the movement sensor in 3D Euclidean space.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
-**Example usage:**
-
 ```go {class="line-numbers linkable-line-numbers"}
-mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current orientation of the movement sensor.
-sensorOrientation, _ := mySensor.Orientation(context.TODO(), nil)
-// Get the orientation vector (a unit vector pointing in the same direction as the sensor,
-// plus an angle representing the sensor's rotation about that axis)
-vector := sensorOrientation.OrientationVectorDegrees()
-logger.Info("The x component of the orientation vector: ", vector.OX)
-logger.Info("The y component of the orientation vector: ", vector.OY)
-logger.Info("The z component of the orientation vector: ", vector.OZ)
-logger.Info("The number of degrees that the movement sensor is rotated about the vector: ", vector.OX)
+sensorOrientation, _ := myMovementSensor.Orientation(context.Background(), nil)
+
+// Get the orientation vector (a unit vector pointing in the same direction as the sensor and theta, an angle representing the sensor's rotation about that axis).
+orientation := sensorOrientation.OrientationVectorDegrees()
+
+// Print out the orientation vector.
+logger.Info("The x component of the orientation vector: ", orientation.OX)
+logger.Info("The y component of the orientation vector: ", orientation.OY)
+logger.Info("The z component of the orientation vector: ", orientation.OZ)
+logger.Info("The number of degrees that the movement sensor is rotated about the vector: ", orientation.OX)
 ```
 
 {{% /tab %}}
@@ -479,13 +437,11 @@ Get the supported properties of this sensor.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_properties).
 
-**Example usage:**
-
 ```python
-my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
 # Get the supported properties of the movement sensor.
-properties = await my_sensor.get_properties()
+properties = await my_movement_sensor.get_properties()
 ```
 
 {{% /tab %}}
@@ -503,13 +459,11 @@ properties = await my_sensor.get_properties()
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
-**Example usage:**
-
 ```go
-mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the supported properties of the movement sensor.
-properties, _ := mySensor.Properties(context.TODO(), nil)
+properties, _ := myMovementSensor.Properties(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -535,13 +489,11 @@ Supported by GPS models.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_accuracy).
 
-**Example usage:**
-
 ```python
-my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
 # Get the accuracy of the movement sensor.
-accuracy = await my_sensor.get_accuracy()
+accuracy = await my_movement_sensor.get_accuracy()
 ```
 
 {{% /tab %}}
@@ -560,13 +512,11 @@ accuracy = await my_sensor.get_accuracy()
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
-**Example usage:**
-
 ```go
-mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the accuracy of the movement sensor.
-accuracy, _ := mySensor.Accuracy(context.TODO(), nil)
+accuracy, _ := myMovementSensor.Accuracy(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -587,18 +537,16 @@ If a sensor is not configured to take a certain measurement or fails to read a p
 
 **Returns:**
 
-- ([Mapping](https://docs.python.org/3/glossary.html#term-mapping)[[str](https://docs.python.org/3/library/stdtypes.html#str), Any]): An object containing the measurements from the sensor.
-  Contents depend on sensor model and can be of any type.
+- ([Mapping [str, Any]](https://docs.python.org/3/glossary.html#term-mapping)): An object containing the measurements from the sensor.
+Contents depend on sensor model and can be of any type.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_readings).
 
-**Example usage:**
-
 ```python
-my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
 # Get the latest readings from the movement sensor.
-readings = await my_sensor.get_readings()
+readings = await my_movement_sensor.get_readings()
 ```
 
 {{% /tab %}}
@@ -612,18 +560,16 @@ readings = await my_sensor.get_readings()
 **Returns:**
 
 - (map[[string]](https://pkg.go.dev/builtin#string)interface{}): A map containing the measurements from the sensor.
-  Contents depend on sensor model and can be of any type.
+    Contents depend on sensor model and can be of any type.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs for Sensor](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor) (because `Readings` is part of the general sensor API that movement sensor wraps).
 
-**Example usage:**
-
 ```go
-mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the latest readings from the movement sensor.
-readings, _ := mySensor.Readings(context.TODO(), nil)
+readings, _ := myMovementSensor.Readings(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -646,13 +592,14 @@ If you are implementing your own movement sensor and add features that have no b
 - `result` (`Dict[str, Any]`): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_sensor = MovementSensor.from_robot(robot=robot, name='my_movement_sensor')
+my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
 reset_dict = {
   "command": "reset",
   "example_param": 30
 }
-do_response = await my_sensor.do_command(reset_dict)
+
+do_response = await my_movement_sensor.do_command(reset_dict)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
@@ -671,9 +618,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 - `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySensor, err := movementsensor.FromRobot(robot, "sensor1")
+myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
-resp, err := mySensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+resp, err := myMovementSensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
@@ -683,7 +630,7 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/
 
 ## Next Steps
 
-Try adding a movement sensor to your [mobile robot](../base/) and writing some code with our [SDKs](../../program/sdk-as-client/) to implement closed-loop movement control for your robot.
+Try adding a movement sensor to your [mobile robot](../base) and writing some code with our [SDKs](../../program/sdk-as-client) to implement closed-loop movement control for your robot.
 
 Or, try configuring [data capture](../../services/data/) on your movement sensor.
 
