@@ -6,7 +6,7 @@ type: "docs"
 description: "Configure a fake gantry."
 tags: ["gantry", "components"]
 icon: "/components/img/components/gantry.svg"
-images: ["img/components/gantry.png"]
+images: ["/components/img/components/gantry.svg"]
 # SME: Rand
 ---
 

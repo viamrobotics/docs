@@ -5,7 +5,7 @@ weight: 60
 type: "docs"
 description: "Configure an ultrasonic model sensor."
 tags: ["sensor", "components"]
-icon: "img/components/sensor.svg"
+icon: "/components/img/components/sensor.svg"
 images: ["/components/img/components/sensor.svg"]
 # SME: #team-bucket
 ---

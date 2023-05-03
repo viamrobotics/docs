@@ -5,7 +5,7 @@ weight: 80
 type: "docs"
 description: "Configure a renogy model sensor."
 tags: ["sensor", "components"]
-icon: "img/components/sensor.svg"
+icon: "/components/img/components/sensor.svg"
 images: ["/components/img/components/sensor.svg"]
 # SME: #team-bucket
 ---
