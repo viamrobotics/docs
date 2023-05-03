@@ -19,7 +19,7 @@ Configure a `yahboom-dofbot` arm as follows:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<arm_name">",
+    "name": "<arm_name>",
     "type": "arm",
     "model": "yahboom-dofbot",
     "attributes": {

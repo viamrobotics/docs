@@ -64,7 +64,7 @@ Refer to the following JSON examples for differences in configuration between th
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<arm-name">",
+    "name": "<arm-name>",
     "type": "arm",
     "model": "fake",
     "attributes": {
