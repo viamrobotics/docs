@@ -18,6 +18,7 @@ IgnoreURLs:
 - "play.google.com"
 - "scuttlerobot.org"
 - "numato.com"
+- "nvidia.com"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"
