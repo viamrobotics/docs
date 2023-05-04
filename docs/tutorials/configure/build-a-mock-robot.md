@@ -13,12 +13,13 @@ aliases:
 tags: ["mock", "simulation"]
 ---
 
-This tutorial will show you how to build a mock robot using just your personal laptop so you can try using [Viam](/viam) without any robotic hardware.
-This is a great way to learn how to [configure](../../../manage/configuration/) robots with Viam.
+This tutorial will show you how to build a mock robot using just your personal laptop so you can:
 
-Most Viam [components](../../../components/) have a _fake_ model that can be useful when testing.
-These fake components interact with Viam like real hardware, but of course, do not actually exist.
-You'll use these fake components to build out a mock robot and explore how to use Viam.
+  - learn how to [configure](../../../manage/configuration/) robots with Viam and
+ - try using [Viam](/viam) without any robotic hardware.
+
+Most Viam [components](../../../components/) have a _fake_ model that you can use for testing.
+These fake components interact with Viam like real hardware but do not actually exist.
 
 In this tutorial, you will set up, control, and program a mock robotic arm and a mock sub-part with a motor using fake components.
 
@@ -29,18 +30,17 @@ You'll need the following hardware and software for this tutorial:
 - A laptop or desktop running Linux or macOS
 - [Go](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/)
 - A code editor of your choice
-- If you are running macOS, ensure you have [Homebrew](https://brew.sh/) installed and up to date on your Mac
 
 ## Set up a mock robot
 
 ### Make an account on the Viam app
 
 The first thing you need to do is set up your account on the Viam app.
-Go to [app.viam.com](https://app.viam.com) and sign up.
+Go to [app.viam.com](https://app.viam.com) and sign up for a free account.
 
 ### Configure your mock robot
 
-Now you'll create a configuration file to represent your robot's hardware.
+Now you'll [configure your robot](/manage/configuration) to represent your robot's hardware.
 If you were using actual hardware, this file would tell your code what hardware is attached to it and how to communicate with it.
 
 Since this is an imaginary robot, you will use `fake` components so that the Viam software ([`viam-server`](../../../viam/#get-started)) doesn't try and fail to connect to physical hardware.
@@ -80,7 +80,7 @@ Since this is an imaginary robot, you will use `fake` components so that the Via
 
 7. Click **Save config**.
 
-You will need to reference the component names later when you connect to your mock robot with the Python SDK.
+You will need to reference the component names later when you connect to your mock robot with code.
 
 ### Install `viam-server` on your computer
 
@@ -90,16 +90,15 @@ Follow the steps outlined on the **Setup** tab of the Viam app to install `viam-
 
 ## Control your mock robot using the Viam app
 
-When you add components to your robot, the Viam app automatically generates a UI for your board, motor and arm under the **Control** tab.
+When you add components to your robot, the Viam app automatically generates a UI for them under the **Control** tab.
 
 ![Screenshot from the Viam app showing the CONTROL tab with the fake arm, and motor components.](../../img/build-a-mock-robot/control-tab.png)
 
 If you configured real components, you would be able to control them from this section of the app.
 You could do things like control the direction and speed of the motor, and change the joint positions of your robotic arm.
 However, since you are using fake components, you will only see the robot's reported positions and speeds change from the UI.
-You will not be able to see your robot move in the physical world.
 
-Next, you will install a Viam SDK (software development kit) so you can write custom logic to control the mock robot.
+Next, install a Viam SDK (software development kit) so you can write custom logic to control the mock robot.
 
 ## Control your mock robot using a Viam SDK
 
@@ -127,7 +126,7 @@ Next, paste that boilerplate code into a file named <file>index.py</file> or <fi
 You can now run the code.
 Doing so verifies that the Viam SDK is properly installed, that the `viam-server` instance on your robot is live, and that the computer running the program is able to connect to that instance.
 
-Run your code by typing the following into the terminal on your computer:
+Run your code by entering the following into the terminal on your computer:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -319,11 +318,11 @@ Now that you have your mock robotic arm working, add a mock sub-part to your rob
 
 ### What is a part?
 
-A [_robot_](../../../manage/fleet/robots/) in Viam is one or more computers combined into one logical robot.
+A _{{< glossary_tooltip term_id="robot" text="robot" >}}_ in Viam consists of one or more computers combined into one logical unit.
 The bounds of a robot are usually pretty clear, but can be subjective.
 However, it's possible with Viam to create a robot that is made up of multiple computers.
-Each of these computer-controlled units is referred to as a [_part_](../../../manage/parts-and-remotes/).
-Most simple robots will have only one part, but can have as many parts as needed.
+Each of these computer-controlled units is referred to as a _{{< glossary_tooltip term_id="part" text="part" >}}_.
+Most simple robots will have only one part, but they can have as many parts as needed.
 
 Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
 You can access any sub-part either directly, or through any part above it in the tree.
@@ -490,6 +489,6 @@ When you run this code, you will see your mock sub motor toggling between runnin
 
 In this tutorial, we showed you how to set up a mock robot with a sub-part so that you can learn more about using fake components, setting up a local development environment, and writing code using a Viam SDK.
 
-If you're ready to get started with building robots with real hardware components, you should pick up a [board](/components/board/) and try building one of Viam's [introductory robots](/tutorials/#your-first-robots).
+If you're ready to get started with building robots with real hardware components, pick up a [board](/components/board/) and try building one of Viam's [introductory robots](/tutorials/#your-first-robots).
 
 {{< snippet "social.md" >}}
