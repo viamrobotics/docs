@@ -210,35 +210,23 @@ We found that if set up this way, the following positions accurately show the co
 * angry: 75 degrees
 * sad: 157 degrees
 
-### 2. Configure the Vision Service and classifier
+### 2. Configure the ML Model and Vision Services to use the classifier
 
 Click the **config** tab and then the **Services** subtab.
-From there, scroll to the bottom and create a new service of **type** `vision` named 'vision'.
+From there, scroll to the bottom and create a new service of **type** `ML Models`, **model** `tflite_cpu` named 'stuff-classifier'.
+Your robot will register this as a machine learning model and make it available for use.
 
-<img src="../../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the Vision Service." title="Adding the Vision Service." width="500" />
+<img src="../../img/ai-integration/mlmodels_service_add.png" style="border:1px solid #000" alt="Adding the ML Models Service." title="Adding the ML Models Service." width="500" />
 
-Now, add the following configuration to the attributes for the Vision Service.
-You are registering a model of **type** `tflite_cpu` **named** `stuff_classifier`.
-Your companion robot will use this to - well, classify stuff (using an ML model trained using the [ImageNet image database](https://www.image-net.org/))!
-
-Update the `label_path` and `model_path` to match where you [copied the tutorial software](#5-set-up-tutorial-software).
+Update the **Model Path** and **Label Path** to match where you [copied the tutorial software](#5-set-up-tutorial-software).
+For example, the model path would would be similar to `/home/<username>/tutorial-openai-integration/lite-model_imagenet_mobilenet_v3_large_075_224_classification_5_metadata_1.tflite` and the label path like `/home/<username>/tutorial-openai-integration/labels.txt`.
+Make sure `Path to Existing Model on Robot` is selected.
 Click **Save config** to finish adding the classifier.
 
-``` json
-{
-  "register_models": [
-    {
-      "name": "stuff_classifier",
-      "parameters": {
-        "label_path": "/home/<username>/tutorial-openai-integration/labels.txt",
-        "num_threads": 1,
-        "model_path": "/home/<username>/tutorial-openai-integration/lite-model_imagenet_mobilenet_v3_large_075_224_classification_5_metadata_1.tflite"
-      },
-      "type": "tflite_cpu"
-    }
-  ]
-}
-```
+Now, create a new service of **type** `vision`, **model** `ML Model` named 'vis-stuff-classifier'.
+Your companion robot will use this to interface with the machine learning model (trained using the [ImageNet image database](https://www.image-net.org/)) allowing you to - well, classify stuff!
+
+<img src="../../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the Vision Service." title="Adding the Vision Service." width="500" />
 
 ## Bring "Rosey" to life
 
