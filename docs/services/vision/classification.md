@@ -112,7 +112,7 @@ To be able to interact with the Vision Service you must:
         }
         }
     ],
-    "source": "<your-camera-name>"
+    "source": "<camera-name>"
     }
     ```
 
