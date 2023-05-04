@@ -24,12 +24,13 @@ The `camera_mono` model can use any single [camera](/components/camera/) within 
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** sub-tab and navigate to the **Create component** menu.
-
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `camera_mono` model.
+
+Click **Create Component**.
 
 ![Creation of an `camera_mono` movement sensor in the Viam app config builder.](../img/camera-mono-builder.png)
 
-Click **Create Component** and then fill in the attributes for your model.
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -38,13 +39,13 @@ Click **Create Component** and then fill in the attributes for your model.
 {
   "components": [
     {
-      "name": <sensor_name>,
+      "name": "<your-sensor-name>",
       "type": "movement_sensor",
       "model": "camera_mono",
       "attributes": {
-        "camera": <your-camera-name>,
+        "camera": "<your-camera-name>",
         "motion_estimation_config": {
-            <see vision documentation>
+            <see Vision Service documentation>
         }
       },
       "depends_on": []
@@ -75,7 +76,7 @@ Click **Create Component** and then fill in the attributes for your model.
       "attributes": {
         "camera": "myCamera",
         "motion_estimation_config": {
-            <see vision documentation>
+            <see Vision Service documentation>
         }
       },
       "depends_on": [
@@ -91,7 +92,7 @@ Click **Create Component** and then fill in the attributes for your model.
 
 ## Attributes
 
-Name | Inclusion | Type | Default Value | Description
----- | --------- | ---- | ------------- | -----------
-`camera` | **Required** | string | - | The name you assigned the camera you want to use for visual odometry.
-`motion_estimation_config` | **Required** | object | - | See [motionestimation.go in RDK](https://github.com/viamrobotics/rdk/blob/99f62a1640f4c267b744bdfc2924e9fd4f7a3c60/vision/odometry/motionestimation.go).
+Name | Type | Inclusion | Description
+---- | ---- | --------- | -----------
+`camera` | string | **Required** | The `name` of the [camera](/components/camera) you want to use for visual odometry.
+`motion_estimation_config` | object | **Required** | See [motionestimation.go in RDK](https://github.com/viamrobotics/rdk/blob/99f62a1640f4c267b744bdfc2924e9fd4f7a3c60/vision/odometry/motionestimation.go).

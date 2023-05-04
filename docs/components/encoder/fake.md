@@ -17,10 +17,7 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `fake` model.
 
-![Creation of a fake encoder in the Viam app config builder.](../img/create-fake.png)
-
 Click **Create component**.
-Fill in the attributes for your encoder:
 
 ![Configuration of a fake encoder in the Viam app config builder.](../img/configure-fake.png)
 
@@ -38,3 +35,5 @@ Fill in the attributes for your encoder:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+No attributes are available for `fake` encoders.

@@ -83,7 +83,7 @@ The following attributes are available for `mux` input controllers:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `sources` | array | **Required** | An array of `name`s of each input controller component that should be combined in the `mux` model. |
+| `sources` | array | **Required** | The `name` of each controller you wish to combine. |
 
 {{% alert title="Note" color="note" %}}
 You must put each controller's `name` that you add in `sources` in `depends_on`.

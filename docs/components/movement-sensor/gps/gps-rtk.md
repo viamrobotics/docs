@@ -143,17 +143,17 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 ## Attributes
 
-Name | Inclusion | Type | Description |
----- | --------- | ---- | ----------- |
-`board` | depends on connection type | string | Required for NMEA over [I<sup>2</sup>C](/components/board/#i2cs); the `name` of the [board](/components/board) connected to the chip. Not required for serial communication.
-`connection_type` | **Required** | string |`"I2C"` or `"serial"`, respectively. See [connection configuration info](#connection-attributes).
-`ntrip_addr` | **Required** | string | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections
-`ntrip_username` | **Required** | string | Username for the NTRIP server
-`ntrip_password` | **Required** | string | Password for the NTRIP server
-`ntrip_baud` | Optional | int | defaults to `serial_baud_rate`  | Only necessary if you want NTRIP baud rate to be different from serial baud rate.
-`ntrip_connect_attempts` | Optional | int | 10 | How many times to attempt connection before timing out
-`ntrip_mountpoint` | Optional | string | If you know of an RTK mountpoint near you, write its identifier here. It will be appended to NTRIP address string (for example, "nysnet.gov/rtcm/**NJMTPT1**") and that mountpoint's data will be used for corrections.
-`ntrip_path` | Optional | string | Use this when extra hardware is piping RTCM data through a second USB port on an [board](/components/board) instead of getting it directly from the internet.
+Name | Type | Inclusion | Description |
+---- | ---- | --------- | ----------- |
+`board` | string | depends on connection type | Required for NMEA over [I<sup>2</sup>C](/components/board/#i2cs); the `name` of the [board](/components/board) connected to the chip. Not required for serial communication.
+`connection_type` | string | **Required** | `"I2C"` or `"serial"`, respectively. See [connection configuration info](#connection-attributes).
+`ntrip_addr` | string | **Required** | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections
+`ntrip_username` | string | **Required** | Username for the NTRIP server
+`ntrip_password` | string | **Required** | Password for the NTRIP server
+`ntrip_baud` | int | Optional | defaults to `serial_baud_rate`  | Only necessary if you want NTRIP baud rate to be different from serial baud rate.
+`ntrip_connect_attempts` | int | Optional | How many times to attempt connection before timing out. <br> Default: `10`
+`ntrip_mountpoint` | string | Optional | If you know of an RTK mountpoint near you, write its identifier here. It will be appended to NTRIP address string (for example, "nysnet.gov/rtcm/**NJMTPT1**") and that mountpoint's data will be used for corrections.
+`ntrip_path` | string | Optional | Use this when extra hardware is piping RTCM data through a second USB port on an [board](/components/board) instead of getting it directly from the internet.
 
 ### Connection Attributes
 

@@ -52,7 +52,7 @@ If you click on the **Video Path** field while your robot is live, a drop down a
         },
         "debug": <boolean>,
         "format": <string>,
-        "video_path": <string>,
+        "video_path": "<your-video-path>",
         "width_px": <int>,
         "height_px": <int>
     }

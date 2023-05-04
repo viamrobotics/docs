@@ -49,10 +49,10 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `fake` cameras:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `width` | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height`. |
-| `height` | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height` |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `width` | int | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height`. |
+| `height` | int | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height` |
 
 ## View the camera stream
 

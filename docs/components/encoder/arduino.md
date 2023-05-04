@@ -9,8 +9,6 @@ draft: true
 # SMEs: Rand
 ---
 
-The `arduino` encoder requires configuring two pins on the board to which the encoder is wired.
-
 {{< tabs name="Configure an arduino Encoder" >}}
 {{% tab name="Config Builder" %}}
 
@@ -18,12 +16,11 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `arduino` model.
 
-![Creation of an Arduino encoder in the Viam app config builder.](../img/create-arduino.png)
-
 Click **Create component**.
-Fill in the attributes for your encoder:
 
 ![Configuration of an Arduino encoder in the Viam app config builder.](../img/configure-arduino.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -35,10 +32,10 @@ Fill in the attributes for your encoder:
     "model" : "arduino",
     "attributes": {
       "board": "<your-board-name>",
-      "motor_name": "<motor_name>",
+      "motor_name": "your-motor-name>",
       "pins": {
-        "a": <string>,
-        "b": <string>
+        "a": "<pin-number-on-board>",
+        "b": "<pin-number-on-board"
       }
     }
 }

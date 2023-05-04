@@ -70,16 +70,16 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `single_stream` cameras:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `url` | **Required** | The color or depth stream url. |
-| `intrinsic_parameters` | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
-| `distortion_parameters` | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
-| `stream` | **Required** | `color` or `depth`. The image to be returned when you call `Next()` or `NextPointCloud()`. |
-| `debug` | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `url` | string | **Required** | The color or depth stream url. |
+| `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
+| `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
+| `stream` | string | **Required** | `color` or `depth`. The image to be returned when you call `Next()` or `NextPointCloud()`. |
+| `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 
-If you have a camera that uses its own SDK to access its images and point clouds (like an Intel RealSense camera), you can attach a camera server as a remote component to your robot.
-These remote cameras show up just like regular cameras on your robot.
+If you have a camera that uses its own SDK to access its images and point clouds (like an Intel RealSense camera), you can add a camera server as a {{< glossary_tooltip term_id="remote" text="remote" >}} component of your robot.
+These remote cameras are treated like any other camera on your robot.
 
 ## View the camera stream
 

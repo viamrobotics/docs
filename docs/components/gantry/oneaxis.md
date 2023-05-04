@@ -57,11 +57,11 @@ The following attributes are available for `oneaxis` gantries:
 
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------  |
-| `length_mm` | **Required** | int | Length of the axis of the gantry in millimeters. |
-| `motor` | **Required** | string | `name` of the [motor](/components/motor) that moves the gantry's actuator. |
-| `axis` | **Required** | object | The translational axis for the gantry. Must be exactly one of x, y, or z. |
+| `length_mm` | int | **Required** | Length of the axis of the gantry in millimeters. |
+| `motor` | string | **Required** | `name` of the [motor](/components/motor) that moves the gantry's actuator. |
+| `axis` | object | **Required** | The translational axis for the gantry. Must be exactly one of `x`, `y`, or `z`. |
 | `board`  |  Optional | string | `name` of the [board](/components/board) containing the limit switches and pins. If `limit_pins` exist, `board` is required. |
 | `limit_pins`  | Optional | object | The `boards`'s pins attached to the limit switches on either end. If the [motor](/components/motor) used does not include an [encoder](/components/motor/gpio/encoded-motor), `limit_pins` are required to be set. |
 | `limit_pin_enabled_high` | boolean | Optional | Whether the limit pins are enabled. <br> Default: `false` |
-| `mm_per_rev` | Optional | How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output shaft. This typically corresponds to Distance = PulleyDiameter*pi, or the pitch of a linear screw. |
-| `gantry_rpm` | Optional | int | The gantry `motor`'s default revolutions per minute (RPM). |
+| `mm_per_rev` | int | Optional | How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output shaft. This typically corresponds to *Distance = PulleyDiameter * pi*, or the pitch of a linear screw. |
+| `gantry_rpm` | int | Optional | The gantry `motor`'s default revolutions per minute (RPM). |

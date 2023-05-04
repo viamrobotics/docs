@@ -52,5 +52,5 @@ The following attributes are available for `agilex-limo` bases:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `drive_mode` | string | **Required** | Options: `differential`, `ackermann`, `omni` (mecanum). LIMO [steering mode](https://docs.trossenrobotics.com/agilex_limo_docs/operation/steering_modes.html#switching-steering-modes). |
-| `serial_path` | string | **Required** | Default: `/dev/ttyTHS1`. Your serial port connection to your LIMO's [board](../../board/). Determine during setup and start of your LIMO. |
+| `drive_mode` | string | **Required** | LIMO [steering mode](https://docs.trossenrobotics.com/agilex_limo_docs/operation/steering_modes.html#switching-steering-modes). Options: `differential`, `ackermann`, `omni` (mecanum). |
+| `serial_path` | string | **Required** | Your serial port connection to your LIMO's [board](../../board/). Determine during setup and start of your LIMO. <br> Default: `/dev/ttyTHS1` |

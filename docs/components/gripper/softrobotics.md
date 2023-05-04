@@ -18,7 +18,7 @@ Enter a name for your gripper, select the type `gripper`, and select the `softro
 
 Click **Create component**.
 
-![Creation of a softrobotics gripper component in the Viam app config builder.](../../img/gripper/softrobotics-builder.png)
+![Creation of a softrobotics gripper component in the Viam app config builder.](../img/softrobotics-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -34,9 +34,9 @@ Edit and fill in the attributes as applicable.
             "model" : "softrobotics",
             "attributes": {
                 "board": "<your-board-name>",
-                "open": "<pin-number>",
-                "close": "<pin-number>",
-                "power": "<pin-number>",
+                "open": "<pin-number-on-board>",
+                "close": "<pin-number-on-board>",
+                "power": "<pin-number-on-board>",
                 "analog_reader": "psi"
             }
         }

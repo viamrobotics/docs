@@ -33,7 +33,7 @@ Edit and fill in the attributes as applicable.
     "name": "<your-camera-name>",
     "type": "camera",
     "model" : "rtsp",
-    "rtsp_address": "<string>",
+    "rtsp_address": "<your-rtsp-address>",
     "attributes": {
         "intrinsic_parameters": {
             "width_px": <int>,
@@ -59,11 +59,11 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `rtsp` cameras:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `rtsp_address` | **Required** | The RTSP address where the camera streams. |
-| `intrinsic_parameters` | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
-| `distortion_parameters` | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `rtsp_address` | string | **Required** | The RTSP address where the camera streams. |
+| `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
+| `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
 
 ## View the camera stream
 

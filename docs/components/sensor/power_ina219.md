@@ -33,12 +33,12 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": <your-power_ina219-sensor-name>,
+      "name": "<your-power_ina219-sensor-name>",
       "type": "sensor",
       "model": "power_ina219",
       "attributes": {
-        "board": <your-board-name>,
-        "i2c_bus": <your-i2c-bus-name>
+        "board": "<your-board-name>",
+        "i2c_bus": "<your-i2c-bus-name-on-board>"
       },
       "depends_on": []
     }
@@ -51,8 +51,8 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `power_ina219` sensors:
 
-| Attribute | Inclusion | Description |
-| ----------- | -------------- | --------------  |
-| `board`  | **Required** | The `name` of the [board](/components/board) the sensor is connected to. |
-| `i2c_bus` | **Required** | The `name` of the [I2C bus](/components/board/#i2cs) on the board that the sensor is connected to. |
-| `i2c_address`  | Optional | Default: `0x40`. The [I2C device address](https://learn.adafruit.com/i2c-addresses/overview) of the sensor. |
+| Attribute | Type | Inclusion | Description |
+| --------- | -----| --------- | ----------- |
+| `board`  | string | **Required** | The `name` of the [board](/components/board) the sensor is wired to. |
+| `i2c_bus` | string | **Required** | The `name` of the [I<sup>2</sup>C bus](/components/board/#i2cs) on the board that the sensor is wired to. |
+| `i2c_address` | string | Optional | Default: `0x40`. The [I2C device address](https://learn.adafruit.com/i2c-addresses/overview) of the sensor. |
