@@ -265,7 +265,8 @@ fmt.Println(frameSystem)
 
 ### TransformPose
 
-Transform a given source Pose from the reference frame to a new specified destination which is a reference frame.
+Transform a given source pose from the reference frame to a new specified destination reference frame.
+For example, if a 3D camera observes a point in space you can use this method to calculate where that point is relative to another object.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
