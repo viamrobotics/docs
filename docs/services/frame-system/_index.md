@@ -302,7 +302,7 @@ print("Orientation: (o_x:", transformed_pif.pose.o_x,
 - `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `pose` ([[PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)]): The pose that should be transformed.
 - `dst` (string): The name of the reference frame to transform the given pose to.
-- `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#supplemental-transforms).
+- `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional supplemental transforms](#supplemental-transforms).
 
 **Returns:**
 
@@ -327,7 +327,7 @@ fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientatio
 {{% /tab %}}
 {{< /tabs >}}
 
-## Additional Transforms
+## Supplemental Transforms
 
 *Supplemental Transforms* exist to help the Frame System determine the location of and relationships between objects not initially known to the robot.
 
