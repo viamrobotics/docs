@@ -208,7 +208,7 @@ As supported boards have CS pins internally configured to correspond with SPI bu
 Integrate `spis` into your robot in the `attributes` of your board by adding the following to your board's JSON configuration:
 
 {{< tabs name="Configure a SPI Bus" >}}
-{{% tab name="JSON Template" %}}
+{{% tab name="JSON Template " %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 // "attributes": { ... ,
