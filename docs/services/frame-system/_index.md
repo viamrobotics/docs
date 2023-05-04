@@ -207,7 +207,7 @@ The resulting tree of reference frames looks like:
 
 ## Access the Frame System
 
-The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies two methods to interact with the Frame System:
+The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies the following method to interact with the Frame System:
 
 | Method Name | Description |
 | ----- | ----------- |
@@ -300,7 +300,7 @@ print("Orientation: (o_x:", transformed_pif.pose.o_x,
 **Parameters:**
 
 - `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` (Optional[[PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)]): The pose that should be transformed.
+- `pose` ([[PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)]): The pose that should be transformed.
 - `dst` (string): The name of the reference frame to transform the given pose to.
 - `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#supplemental-transforms).
 
@@ -327,7 +327,7 @@ fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientatio
 {{% /tab %}}
 {{< /tabs >}}
 
-## Supplemental Transforms
+## Additional Transforms
 
 *Supplemental Transforms* exist to help the Frame System determine the location of and relationships between objects not initially known to the robot.
 
