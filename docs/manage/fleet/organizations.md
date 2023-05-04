@@ -43,7 +43,7 @@ Then enter the name for your new organization in the **New Organization** field 
 
 ### Invite users to your organization
 
-To invite a user to your organization, click on the Org's **Settings** in the top right of the navigation bar*.
+To invite a user to your organization, click on the Org's **Settings** in the top right of the navigation bar.
 Then enter their email address into the field in the organizations' members list and click **Invite**.
 
 <div style="max-width: 400px">
@@ -52,7 +52,7 @@ Then enter their email address into the field in the organizations' members list
 
 ### Delete an organization
 
-To delete an organization, click on the Org's **Settings** in the top right of the navigation bar*..
+To delete an organization, click on the Org's **Settings** in the top right of the navigation bar.
 Then click **Delete organization**.
 
 If the organization to delete contains any locations, you must delete them before you can delete the organization.
