@@ -217,14 +217,14 @@ The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v
 <!--
 ### FrameSystemConfig
 
-Returns a topologically sorted list of all the reference frames monitored by the frame system. Any [supplemental transforms](#supplemental-transforms) are also merged into the tree, sorted, and returned.
+Returns a topologically sorted list of all the reference frames monitored by the frame system. Any [additional transforms](#additional-transforms) are also merged into the tree, sorted, and returned.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `additional_transforms` (Optional[List[[viam.proto.common.Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](#supplemental-transforms).
+- `additional_transforms` (Optional[List[[viam.proto.common.Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](#additional-transforms).
 
 **Returns:**
 
@@ -244,7 +244,7 @@ print(f"Frame System Configuration: {frame_system}")
 **Parameters:**
 
 - `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `additionalTransforms` (Optional[[referenceframe.LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#supplemental-transforms).
+- `additionalTransforms` (Optional[[referenceframe.LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#additional-transforms).
 
 **Returns:**
 
@@ -275,7 +275,7 @@ For example, if a 3D camera observes a point in space you can use this method to
 
 - `query` [(`PoseInFrame`)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose that should be transformed.
 - `destination` (str): The name of the reference frame to transform the given pose to.
-- `additional_transforms` (Optional[List[[Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](#supplemental-transforms).
+- `additional_transforms` (Optional[List[[Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](#additional-transforms).
 
 **Returns:**
 
@@ -303,7 +303,7 @@ print("Orientation: (o_x:", transformed_pif.pose.o_x,
 - `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `pose` ([[PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)]): The pose that should be transformed.
 - `dst` (string): The name of the reference frame to transform the given pose to.
-- `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional supplemental transforms](#supplemental-transforms).
+- `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#additional-transforms).
 
 **Returns:**
 
@@ -330,17 +330,17 @@ fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientatio
 
 ## Additional Transforms
 
-*Supplemental Transforms* exist to help the Frame System determine the location of and relationships between objects not initially known to the robot.
+*Additional Transforms* exist to help the Frame System determine the location of and relationships between objects not initially known to the robot.
 
 For example:
 
-- In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config), the arm can be managed by the Frame System without supplemental transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
+- In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config), the arm can be managed by the Frame System without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
 
     However, an arm with an attached [camera](/components/camera) might generate additional information about the poses of other objects with respect to references frames on the robot.
 
     With the [Vision Service](/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 
-    If a [camera](/components/camera) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing a supplemental transform that contains the detected pose with respect to the camera that performed the detection.
+    If a [camera](/components/camera) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing a additional transform that contains the detected pose with respect to the camera that performed the detection.
 
     The detecting component (camera) would be fixed with respect to the `world` reference frame, and would supply the position and orientation of the detected object.
 
@@ -350,4 +350,4 @@ Usage:
 
 - You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's Motion Service's [`GetPose`](/services/motion/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
-- Both [`TransformPose`](#access-the-frame-system) and [`FrameSystemConfig`](#access-the-frame-system) have the option to take in these supplemental transforms.
+- [`TransformPose`](#access-the-frame-system) has the option to take in these additional transforms.
