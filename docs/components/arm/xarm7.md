@@ -34,7 +34,7 @@ Edit and fill in the attributes as applicable.
       "name": "<your-arm-name>",
       "type": "arm",
       "attributes": {
-            "host": "<ip-address-to-connect-to-your-arm>"
+          "host": "<ip-address-to-connect-to-your-arm>"
       },
       "depends_on": []
     }]
