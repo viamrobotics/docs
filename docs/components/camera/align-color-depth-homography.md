@@ -29,7 +29,7 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera-name>",
+    "name": "<your-camera-name>",
     "type": "camera",
     "model" : "align_color_depth_homography",
     "attributes": {
@@ -48,8 +48,8 @@ Edit and fill in the attributes as applicable.
             "depth_to_color": <boolean>,
             "rotate_depth_degs": <int>
         },
-        "color_camera_name": "<camera-name>",
-        "depth_camera_name": "<camera-name>",
+        "color_camera_name": "<your-camera-name>",
+        "depth_camera_name": "<your-camera-name>",
         "output_image_type": "<color|depth>",
         "distortion_parameters": {
             "rk1": <float>,

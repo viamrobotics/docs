@@ -43,7 +43,7 @@ This example sets the `fake` arm to act as a `ur5e` arm.
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for fake arms:
+The following attributes are available for `fake` arms:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |

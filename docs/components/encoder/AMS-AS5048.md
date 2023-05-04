@@ -75,8 +75,8 @@ Fill in the attributes for your encoder:
 
 The following attributes are available for `AMS-AS5048` encoders:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `board` | *Required* | The name of the board to which the encoder is connected. |
-| `connection_type` | *Required* | Use `"i2c"`. |
-| `i2c_attributes` | *Required* | The attributes to configure i2c connection: <ul> <li> <code>i2c_bus</code>: The name of the bus that was added to the board. Example: `"main"`. </li> <li> <code>i2c_addr</code>: The address of the bus. Example: `64`. </li> </ul> |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `board` | string | **Required** | The name of the board to which the encoder is connected. |
+| `connection_type` | string | **Required** | Use `"i2c"`. |
+| `i2c_attributes` | object | **Required** | The attributes to configure [i<sup>2</sup>c](/components/board/#i2cs) connection: <ul> <li> <code>i2c_bus</code>: The `name` of the [i<sup>2</sup>c bus configured](/components/board/#i2cs) on the [board](/components/board) wired to this encoder. <br> Example: `"main"` </li> <li> <code>i2c_addr</code>: The address of the bus. <br> Example: `64` </li> </ul> |

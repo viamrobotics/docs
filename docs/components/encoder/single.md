@@ -39,7 +39,7 @@ Fill in the attributes for your encoder:
     "attributes": {
       "board": "<your-board-name>",
       "pins": {
-        "i": <string>
+        "i": "<your-pin-number>"
       }
     }
 }
@@ -50,9 +50,9 @@ Fill in the attributes for your encoder:
 
 The following attributes are available for `single` encoders:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `board` | *Required* | The name of the board to which the encoder is wired. |
-| `pins` | *Required* | A struct holding the name of the pin wired to the encoder: <ul> <li> <code>i</code>: Pin number of the pin to which the encoder is wired. Use pin number, not GPIO number. </li> </ul> |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `board` | string | **Required** | The name of the board to which the encoder is wired. |
+| `pins` | object | **Required** | A struct holding the name of the pin wired to the encoder: <ul> <li> <code>i</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the pin to which the encoder is wired. </li> </ul> |
 
 Viam also supports a model of encoder called [`"incremental"`](../incremental) which uses two pins.

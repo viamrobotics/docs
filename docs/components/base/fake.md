@@ -39,5 +39,5 @@ Click **Create component**.
 {{% /tab %}}
 {{< /tabs >}}
 
-No attributes are available for fake bases.
+No attributes are available for `fake` bases.
 See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/fake/base.go) for API call return specifications.

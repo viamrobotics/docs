@@ -22,12 +22,13 @@ The `gps-nmea` model can be connected using USB and send data through a serial c
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** sub-tab and navigate to the **Create component** menu.
-
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `gps-nmea` model.
+
+Click **Create Component**.
 
 ![Creation of a `gps-nmea` movement sensor in the Viam app config builder.](../../img/gps-nmea-builder.png)
 
-Click **Create Component** and then fill in the attributes for your model.
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -36,22 +37,22 @@ Click **Create Component** and then fill in the attributes for your model.
 {
   "components": [
     {
-      "name": <sensor_name>,
+      "name": "<your-sensor-name>",
       "type": "movement_sensor",
       "model": "gps-nmea",
       "attributes": {
-        "board": <board name if using I2C>,
-        "connection_type": "<serial" or "I2C>",
+        "connection_type": "<serial|I2C>",
+        "board": "<your-board-name-if-using-I2C>",
         "serial_attributes": {
-            "serial_baud_rate": <>,
-            "serial_path": <>
+            "serial_baud_rate": <int>,
+            "serial_path": "<your-device-path>"
         },
         "i2c_attributes": {
-            "i2c_baud_rate": <>,
-            "i2c_addr": <>,
-            "i2c_bus": "<name_of_bus_on_board>"
+            "i2c_baud_rate": <int>,
+            "i2c_addr": <int>,
+            "i2c_bus": "<name-of-bus-on-board>"
         },
-        "disable_nmea": <>
+        "disable_nmea": <boolean>
       },
       "depends_on": [],
     }
@@ -114,11 +115,11 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 ## Attributes
 
-Name | Inclusion | Type | Default Value | Description
----- | --------- | ---- | ------------- | -----
-`board` | depends on connection type | string | - | Required for NMEA over I<sup>2</sup>C; the board connected to the chip. Not required for serial communication.
-`connection_type` | **Required** | string | - | `"I2C"` or `"serial"`. See [connection configuration info](#connection-attributes).
-`disable_nmea` | Optional | bool | false | If set to true, changes the NMEA message protocol to RTCM when using a chip as a base station.
+Name | Inclusion | Type | Description |
+---- | --------- | ---- | ----------- |
+`connection_type` | **Required** | string |`"I2C"` or `"serial"`. See [connection configuration info](#connection-attributes).
+`board` | depends on connection type | string | The `name` of the [board](/components/board) connected to the chip. Required for NMEA over [I<sup>2</sup>C](/components/board/#i2cs). Not required for serial communication.
+`disable_nmea` | Optional | bool | If set to `true`, changes the NMEA message protocol to RTCM when using a chip as a base station. <br> Default: `false`
 
 ### Connection Attributes
 

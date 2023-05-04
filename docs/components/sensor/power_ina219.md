@@ -21,16 +21,10 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Enter a name for your sensor, select the type `sensor`, and select the `power_ina219` model.
 
 Click **Create component**.
-Paste into the **Attributes** box:
-
-``` json
-{
-  "board": <your-board-name>,
-  "i2c_bus": <your-i2c-bus-name>
-}
-```
 
 ![Creation of a power_ina219 sensor in the Viam app config builder.](../img/power-ina219-sensor-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

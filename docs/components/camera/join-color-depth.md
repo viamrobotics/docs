@@ -32,13 +32,13 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera-name>",
+    "name": "<your-camera-name>",
     "type": "camera",
     "model" : "join_color_depth",
     "attributes": {
         "output_image_type": "<color|depth>",
-        "color_camera_name": "<camera-name>",
-        "depth_camera_name": "<camera-name>",
+        "color_camera_name": "<your-camera-name>",
+        "depth_camera_name": "<your-camera-name>",
         "intrinsic_parameters": {
           "width_px": <int>, # the expected width of the aligned pic
           "height_px": <int>, # the expected height of the aligned pic

@@ -20,18 +20,10 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Enter a name for your sensor, select the type `sensor`, and select the `ultrasonic` model.
 
 Click **Create component**.
-Paste into the **Attributes** box:
-
-``` json
-{
-  "trigger_pin": "<number>",
-  "echo_interrupt_pin": "<number>"
-  "board": <your-board-name>,
-  "timeout_ms": <number>
-}
-```
 
 ![Creation of a ultrasonic sensor in the Viam app config builder.](../img/ultrasonic-sensor-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -84,8 +76,8 @@ The following attributes are available for `ultrasonic` sensors:
 
 | Attribute | Inclusion | Description |
 | ----------- | -------------- | --------------  |
-| `trigger_pin` | **Required** | The pin number on the board that you have connected [the sensor's trigger pin](https://www.sparkfun.com/products/15569). <br> Example: `"5"`. |
-| `echo_interrupt_pin` | **Required** | The pin number of the pin [the sensor's echo pin](https://www.sparkfun.com/products/15569) is connected to. If you have already created a [digital interrupt](/components/board/#digital_interrupts) for this pin in the [board's configuration](/components/board), use that digital interrupt's `name` instead. <br> Example: `"15"`. |
+| `trigger_pin` | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} on the board that you have connected [the sensor's trigger pin](https://www.sparkfun.com/products/15569). <br> Example: `"5"`. |
+| `echo_interrupt_pin` | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin [the sensor's echo pin](https://www.sparkfun.com/products/15569) is connected to on the board. If you have already created a [digital interrupt](/components/board/#digital_interrupts) for this pin in the [board's configuration](/components/board), use that digital interrupt's `name` instead. <br> Example: `"15"`. |
 | `board`  | **Required** | The `name` of the [board](/components/board) the sensor is connected to. |
 | `timeout_ms`  | Optional | Time to wait in milliseconds before timing out of requesting to get readings from the sensor. <br> Default: `1000`. |
 

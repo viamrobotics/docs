@@ -49,8 +49,8 @@ Fill in the attributes for your encoder:
 
 The following attributes are available for `arduino` encoders:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `board` | *Required* | The name of the board to which the encoder is wired. |
-| `motor_name` | *Required* | The name of the motor. |
-| `pins` | *Required* | A struct holding the names of the pins wired to the encoder: <ul> <li> <code>a</code>: Pin number of one of the pins to which the encoder is wired. Use pin number, not GPIO number. </li> <li> <code>b</code>: Required for two phase encoder. Pin number for the second board pin to which the encoder is wired. </li> </ul> |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `board` | string | **Required** | The `name` of the board to which the encoder is wired. |
+| `motor_name` | string | **Required** | The `name` of the motor. |
+| `pins` | **Required** | object | A struct holding the names of the pins wired to the encoder: <ul> <li> <code>a</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of one of the pins to which the encoder is wired. </li> <li> <code>b</code>: Required for two phase encoder. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} for the second board pin to which the encoder is wired. </li> </ul> |

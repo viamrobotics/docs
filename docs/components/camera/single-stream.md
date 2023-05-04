@@ -39,7 +39,7 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera-name>",
+    "name": "<your-camera-name>",
     "type": "camera",
     "model" : "single_stream",
     "attributes": {

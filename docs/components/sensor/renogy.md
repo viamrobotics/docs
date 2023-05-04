@@ -20,19 +20,10 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Enter a name for your sensor, select the type `sensor`, and select the `renogy` model.
 
 Click **Create component**.
-Paste into the **Attributes** box:
-
-``` json
-{
-  "serial_path": "/dev/serial0",
-  "serial_baud_rate": 9600,
-  "modbus_id": 1
-}
-```
-
-Adjust these `attributes` from these default values as necessary.
 
 ![Creation of a renogy sensor in the Viam app config builder.](../img/renogy-sensor-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

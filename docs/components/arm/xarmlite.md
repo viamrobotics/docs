@@ -77,6 +77,8 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{% /tabs %}}
 
+The following attributes are available for `xArmLite` arms:
+
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | ----------| ----------- |
 | `host`  | string | **Required** | IP address of the arm's system on your network. Find this when setting up your xArm. |

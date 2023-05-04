@@ -29,7 +29,7 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera-name>",
+    "name": "<your-camera-name>",
     "type": "camera",
     "model" : "join_pointclouds",
     "attributes": {
@@ -66,9 +66,9 @@ The following attributes are available for `join_pointclouds` views:
 | ---- | --------- | ----------- |
 | `target_frame` | **Required** | The frame of reference for the points in the merged point cloud. |
 | `source_cameras` | **Required** | The camera sources to combine. |
-| `proximity_threshold_mm` | *Optional* | Defines the biggest distance 2 points can have in mm to be considered the same point when merged. |
 | `intrinsic_parameters` | **Required** | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
-| `merge_method` | Optional | `naive` or `icp`. Defaults to `naive`. |
+| `proximity_threshold_mm` | Optional | Defines the biggest distance 2 points can have in mm to be considered the same point when merged. |
+| `merge_method` | Optional | `naive` or `icp`. <br> Default: `naive` |
 | `distortion_parameters` | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
 | `debug` | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 
