@@ -53,25 +53,25 @@ Everything Viam runs on your robot is [open-source](https://github.com/viamrobot
 ## Configure your robot
 
 Robots can be small and simple or very complex.
-A robot can be a single-board computer with a single [sensor](/components/sensor/) or LED wired to it, or a robot can consist of multiple computers with many physical components connected, acting as one unit.
+A robot can be a single-board computer with a single sensor or LED wired to it, or a robot can consist of multiple computers with many physical components connected, acting as one unit.
 
-The term *component* describes a piece of hardware that a computer controls, like an arm or a motor.
+The term {{% glossary_tooltip term_id="component" text="*component*" %}} describes a piece of hardware that a computer controls, like an arm or a motor.
 
 For each component that makes up your robot:
 
 <img src="img/test_components.png" alt="Multiple components being tested in the Viam app." class="alignright" style="max-width:320px"></img>
 
-1. Add it to your robot by [choosing the component type](/manage/fleet/#configuration) (example: `camera`) and model (example: `webcam`)
-2. Test it with the visual [control tab](/manage/fleet/#remote-control)
-3. See any problems with in-app [logs](/manage/fleet/#logs), review or roll back configuration [history](/manage/fleet/#configuration)
+1. Add it to your robot by [choosing the component type](/manage/configuration/#components) (example: `camera`) and model (example: `webcam`).
+2. Test it with the visual [control tab](/manage/fleet/robots/#control).
+3. See any problems with in-app [logs](/manage/fleet/robots/#logs), review or roll back configuration [history](/manage/fleet/robots/#history).
 
-After configuring your robot's hardware, you can configure high level functionality the same way:
+After configuring your robot's hardware, you can configure [high level functionality](/services/) the same way:
 
-- **Data Management** enabling you to capture and sync data from one or more robots, and use that data for machine learning and beyond.
-- **Fleet management** enabling you to configure, control, debug, and manage entire fleets of robots.
-- **Motion planning** enabling your robot to plan and move itself.
-- **Vision** enabling your robot to intelligently see and interpret the world around it.
-- **Simultaneous Localization And Mapping (SLAM)** enabling your robot to map its surroundings and find its position on a map.
+- **Data Management** enables you to capture and sync data from one or more robots, and use that data for machine learning and beyond.
+- **Fleet management** enables you to configure, control, debug, and manage entire fleets of robots.
+- **Motion planning** enables your robot to plan and move itself.
+- **Vision** enables your robot to intelligently see and interpret the world around it.
+- **Simultaneous Localization And Mapping (SLAM)** enables your robot to map its surroundings and find its position on a map.
 
 ![Robot components](img/robot-components.png)
 
@@ -84,7 +84,7 @@ Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](h
 Additional SDKs are coming soon, including Rust, Java, C++, and Flutter.
 
 TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is authenticated and encrypted.
-Viam uses {{< glossary_tooltip term_id="webrtc" >}} to create secure peer-to-peer paths between robots and clients for fast, low latency communication.
+Viam uses {{< glossary_tooltip term_id="webrtc" >}} to create secure peer-to-peer paths between robots and clients for fast, low-latency communication.
 The Viam cloud does not receive any command or control information regarding your robots, ensuring low latency, robustness, and privacy.
 With WebRTC established, Viam uses {{< glossary_tooltip term_id="grpc" text="gRPC" >}} so you can program your robot in many common programming languages.
 
@@ -104,7 +104,7 @@ You can see the Viam API specification on [GitHub](https://github.com/viamroboti
 Your robot does not need to be connected to the cloud.
 
 The `viam-server` software resides on your robot alongside your configurations, your code, and appropriate services.
-In scenarios without cloud connectivity, you can still connect your robot to a LAN, or to any relevant devices (such as a gamepad).
+In scenarios without cloud connectivity, you can still connect your robot to a local area network (LAN), or to any relevant devices (such as a gamepad).
 It all depends on your use case and configuration.
 
 - All APIs work locally or in the cloud
