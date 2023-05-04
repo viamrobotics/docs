@@ -11,7 +11,7 @@ icon: "img/components/servo.png"
 
 Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`pi` model [board](/components/board) into your robot:
 
-{{< tabs name="Configure a Gpio Servo" >}}
+{{< tabs name="Configure a gpio Servo" >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).

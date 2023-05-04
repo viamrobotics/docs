@@ -10,16 +10,7 @@ no_list: true
 # SME: #team-bucket
 ---
 
-{{% alert title="Tip" color="tip" %}}
-
-The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
-
-If you have another type of servomotor, it is probably coupled with an [encoder](/components/encoder), not potentiometer, for position feedback.
-Check your device's data sheet and configure these servos as [encoded motors](/components/motor/gpio/encoded-motor).
-
-{{% /alert %}}
-
-A *servo* is a [radio-control (RC) or hobby servo motor](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
+A *servo* is a ["RC" or "hobby" servo motor](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
 These are small motors with built-in potentiometer position sensors, enabling you to control the angular position of the servo precisely.
 
 As servos can use a lot of power, drawing voltage away from a [board](/components/board), you should power your servo with its own power supply.
@@ -38,6 +29,15 @@ Most robots with a servo need at least the following hardware:
 - A power supply for the servo
 
 ## Configuration
+
+{{% alert title="Tip" color="tip" %}}
+
+The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
+
+If you have another type of servo motor, it is probably coupled with an [encoder](/components/encoder), not potentiometer, for position feedback.
+Check your device's data sheet and configure these servos as [encoded motors](/components/motor/gpio/encoded-motor).
+
+{{% /alert %}}
 
 Supported servo models include:
 
