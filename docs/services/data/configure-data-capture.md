@@ -172,7 +172,7 @@ To add them to your JSON configuration you must explicitly add the part's `type`
   "model": {
       "name": "rdk:esp32:board"
   },
-  "name": "rdk:component:board/esp-home:board",
+  "name": "rdk:component:board/board",
   "additional_params": {
       "A2": "",
       "A1": ""
@@ -213,7 +213,7 @@ The following example captures data from two analog readers that provide a volta
               {
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
-                "name": "rdk:component:board/esp-home:board",
+                "name": "rdk:component:board/board",
                 "additional_params": {
                   "A2": "",
                   "A1": ""
@@ -224,7 +224,7 @@ The following example captures data from two analog readers that provide a volta
               {
                 "method": "Gpio",
                 "capture_frequency_hz": 1,
-                "name": "rdk:component:board/esp-home:board",
+                "name": "rdk:component:board/board",
                 "additional_params": {
                   "27": ""
                 },
