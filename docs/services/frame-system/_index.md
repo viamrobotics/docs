@@ -328,7 +328,7 @@ fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientatio
 {{% /tab %}}
 {{< /tabs >}}
 
-## Supplemental Transforms
+## Additional Transforms
 
 *Supplemental Transforms* exist to help the Frame System determine the location of and relationships between objects not initially known to the robot.
 
