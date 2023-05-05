@@ -35,7 +35,6 @@ This example sets the `fake` arm to act as a `ur5e` arm.
     "model": "fake",
     "attributes": {
         "arm-model": "<your_arm_model>",
-        // "model-path": "<your_arm_model_config_filepath>"
     }
 }
 ```
