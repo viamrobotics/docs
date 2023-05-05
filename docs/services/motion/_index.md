@@ -100,12 +100,12 @@ By default, motion is unconstrained with the exception of obstacle avoidance.
 
 - [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.move).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move).
 
 **Example usage:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Assumes a gripper configured with name "my_gripper" on the robot
 my_frame = "my_gripper_offset"
@@ -229,12 +229,12 @@ If you need collision checking and obstacle avoidance, use [`Move`](#move).
 
 - [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.move_single_component).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_single_component).
 
 **Example usage:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Assumes an arm configured with name "my_arm" on the robot
 my_frame = "my_arm_offset"
@@ -326,7 +326,7 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 
 - [(PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose of the component.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.get_pose).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.get_pose).
 
 **Example usage:**
 
@@ -334,12 +334,12 @@ The following code example gets the pose of the tip of a [gripper](../../compone
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
-from viam.services.motion import MotionServiceClient
+from viam.services.motion import MotionClient
 
-# Assume that the connect function is written and will return a valid robot. 
+# Assume that the connect function is written and will return a valid robot.
 robot = await connect()
 
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 gripperName = Gripper.get_resource_name("myGripper")
 gripperPoseInWorld = await robot.get_pose(component_name=gripperName, destination_frame="world")
 ```
@@ -348,13 +348,13 @@ For a more complicated example, take the same scenario and get the pose of the s
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
-from viam.services.motion import MotionServiceClient
+from viam.services.motion import MotionClient
 from viam.proto.common import Transform, PoseInFrame, Pose
 
-# Assume that the connect function is written and will return a valid robot. 
+# Assume that the connect function is written and will return a valid robot.
 robot = await connect()
 
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 objectPose = Pose(x=100, y=200, z=0, o_x=0, o_y=0, o_z=1, theta=0)
 objectPoseInFrame = PoseInFrame(reference_frame="world", pose=objectPose)
 objectTransform = Transform(reference_frame="object", pose_in_observer_frame=objectPoseInFrame)
