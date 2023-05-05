@@ -119,7 +119,7 @@ The following properties are available for `analogs`:
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the analog reader. |
 |`pin`| string | **Required** | The pin number of the ADC's connection pin, wired to the board. This should be labeled as the physical index of the pin on the ADC.
-|`chip_select`| string | **Required** | The [pin number](/appendix/glossary/#term-pin-number) of the board's connection pin, wired to the ADC. |
+|`chip_select`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's connection pin, wired to the ADC. |
 |`spi_bus` | string | Optional | The `name` of the [SPI bus](#spis) connecting the ADC and board. Required if your board must communicate with the ADC with the SPI protocol. |
 | `average_over_ms` | int | Optional | Duration in milliseconds over which the rolling average of the analog input should be taken. |
 |`samples_per_sec` | int | Optional | Sampling rate of the analog input in samples per second. |
@@ -182,7 +182,7 @@ The following properties are available for `digital_interrupts`:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the digital interrupt. |
-|`pin`| string | **Required** | The [pin number](/appendix/glossary/#term-pin-number) of the board's GPIO pin that you wish to configure the digital interrupt for. |
+|`pin`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's GPIO pin that you wish to configure the digital interrupt for. |
 |`type`| string | Optional | <ul><li>`basic`: Recommended. Tracks interrupt count. </li> <li>`servo`: For interrupts configured for a pin controlling a [servo](/components/servo). Tracks pulse width value. </li></ul> |
 
 ### `spis`
@@ -336,7 +336,7 @@ The board component supports the following methods:
 | ----------- | ----------- |
 | [AnalogReaderByName](#analogreaderbyname) | Get an [`AnalogReader`](#analogs) by `name`. |
 | [DigitalInterruptByName](#digitalinterruptbyname) | Get a [`DigitalInterrupt`](#digital_interrupts) by `name`. |
-| [GPIOPinByName](#gpiopinbyname) | Get a `GPIOPin` by its [pin number](/appendix/glossary/#term-pin-number). |
+| [GPIOPinByName](#gpiopinbyname) | Get a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}. |
 | [AnalogReaderNames](#analogreadernames) | Get the `name` of every [`AnalogReader`](#analogs). |
 | [DigitalInterruptNames](#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](#digital_interrupts). |
 | [Status](#status) | Get the current status of this board. |
@@ -473,7 +473,7 @@ interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
 
 ### GPIOPinByName
 
-Get a `GPIOPin` by [pin number](/appendix/glossary/#term-pin-number).
+Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -501,7 +501,7 @@ pin = await my_board.GPIO_pin_by_name(name="15")
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): [Pin number](/appendix/glossary/#term-pin-number) of the GPIO pin you want to retrieve as a `GPIOPin` interface.
+- `name` [(string)](https://pkg.go.dev/builtin#string): {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the GPIO pin you want to retrieve as a `GPIOPin` interface.
 Refer to the pinout diagram and data sheet of your [board model](#configuration) for [pin numbers](/appendix/glossary/#term-pin-number) and orientation.
 
 **Returns:**
