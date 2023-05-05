@@ -52,11 +52,11 @@ Accessing the Motion Service is very similar to accessing any other component or
 {{< tabs >}}
 {{% tab name="Python" %}}
 You must import an additional Python library to access the Motion Service.
-Add `from viam.services.motion import MotionServiceClient` to your import list and then add the sample code below to your own client script.
+Add `from viam.services.motion import MotionClient` to your import list and then add the sample code below to your own client script.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Access the Motion Service
-motion_service = MotionServiceClient.from_robot(robot, "builtin")
+motion_service = MotionClient.from_robot(robot, "builtin")
 ```
 
 {{% /tab %}}
@@ -337,7 +337,7 @@ from viam.proto.common import Geometry, GeometriesInFrame, Pose, PoseInFrame, Re
 from viam.proto.component.arm import JointPositions
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
-from viam.services.motion import MotionServiceClient
+from viam.services.motion import MotionClient
 
 
 async def connect():
@@ -378,7 +378,7 @@ async def main():
     await my_arm_component.move_to_position(pose=cmd_arm_pose)
 
     # Access the Motion Service
-    motion_service = MotionServiceClient.from_robot(robot, "builtin")
+    motion_service = MotionClient.from_robot(robot, "builtin")
 
     # Get the pose of myArm from the Motion Service
     my_arm_motion_pose = await motion_service.get_pose(my_arm_resource, "world")
