@@ -90,11 +90,4 @@ Refer to the following JSON examples for differences in configuration between th
 {{% /tab %}}
 {{< /tabs >}}
 
-Once you have successfully configured your `fake` arm, navigate to the **Control** tab of [the Viam app](https://app.viam.com).
-A drop-down menu appears with the `name` of your arm.
-
-Open this interface to adjust the `fake` arm's joint positions and Cartesian end positions:
-
-![Motion planning remote-control of a fake ur5e arm in the Viam app control tab](../img/fake-arm-ui-remote-control.png)
-
-Note that this visual example sets the `fake` arm to act as a  `ur5e` arm.
+Note that this example sets the `fake` arm to act as a  `ur5e` arm.
