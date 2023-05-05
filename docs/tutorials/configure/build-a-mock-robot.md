@@ -16,7 +16,7 @@ tags: ["mock", "simulation"]
 This tutorial will show you how to build a mock robot using just your personal laptop so you can:
 
   - learn how to [configure](../../../manage/configuration/) robots with Viam and
- - try using [Viam](/viam) without any robotic hardware.
+  - try using [Viam](/viam) without any robotic hardware.
 
 Most Viam [components](../../../components/) have a _fake_ model that you can use for testing.
 These fake components interact with Viam like real hardware but do not actually exist.
