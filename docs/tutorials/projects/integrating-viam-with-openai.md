@@ -219,7 +219,18 @@ Your robot will register this as a machine learning model and make it available 
 <img src="../../img/ai-integration/mlmodels_service_add.png" style="border:1px solid #000" alt="Adding the ML Models Service." title="Adding the ML Models Service." width="500" />
 
 Update the **Model Path** and **Label Path** to match where you [copied the tutorial software](#5-set-up-tutorial-software).
-For example, the model path would would be similar to `/home/<username>/tutorial-openai-integration/lite-model_imagenet_mobilenet_v3_large_075_224_classification_5_metadata_1.tflite` and the label path like `/home/<username>/tutorial-openai-integration/labels.txt`.
+For example, the model path would would be similar to:
+
+``` bash
+/home/<username>/tutorial-openai-integration/lite-model_imagenet_mobilenet_v3_large_075_224_classification_5_metadata_1.tflite
+```
+
+and the label path similar to:
+
+``` bash
+/home/<username>/tutorial-openai-integration/labels.txt
+```
+
 Make sure `Path to Existing Model on Robot` is selected.
 Click **Save config** to finish adding the classifier.
 
