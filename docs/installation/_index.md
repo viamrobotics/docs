@@ -78,7 +78,7 @@ The AppImage is a single, self-contained binary that runs on any Linux system (e
 <ol start="2">
 <li> <strong>Download and install <code>viam-server</code>.</strong>
 
-   Run viam-server locally on your Mac with the config you just downloaded.
+   Run `viam-server` locally on your Mac with the config you just downloaded.
    Replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
 
    To determine the CPU architecture (x86_64 or aarch64) of your device, run `uname -m` on the command line.
@@ -143,7 +143,7 @@ If you do not want to run `viam-server` as a service, you can also [run it manua
    This connection allows the robot to pull its full configuration information and allows you to monitor and control your robot from the Viam app.
    Download your robot's config file from the **setup** tab of your robot on the Viam app.
 
-3. **Start `viam-server` on your Mac.** Run viam-server locally on your Mac with the config you just downloaded.
+3. **Start `viam-server` on your Mac.** Run `viam-server` locally on your Mac with the config you just downloaded.
    Replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
