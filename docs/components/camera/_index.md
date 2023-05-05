@@ -303,7 +303,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
   result, err := myCamera.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/components/camera).
 
 {{% /tab %}}
 {{< /tabs >}}
