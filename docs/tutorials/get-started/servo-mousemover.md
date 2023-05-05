@@ -30,7 +30,7 @@ This project is a good place to begin if you're new to robotics and would like t
 
 ### Hardware
 
-- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with viam-server installed per our [installation guide](/installation/)
+- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per our [installation guide](/installation/)
 - microSD card reader
 - [Continuous rotation servo](https://a.co/d/2w0u6rK) (we used the FS90R servo)
 - Wheel or arm for the servo (this comes in some of the FS90R packages)
@@ -55,7 +55,7 @@ This project is a good place to begin if you're new to robotics and would like t
 
 ## Install Viam software
 
-First, install viam-server according to our [installation guide](/installation/)
+First, install `viam-server` according to our [installation guide](/installation/)
 
 Next, run this command in your Raspberry Pi terminal to install the pip package manager. Select "yes" when it asks if you want to continue.
 

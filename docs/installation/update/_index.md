@@ -70,7 +70,7 @@ To upgrade to the *absolute latest* version of `viam-server` run this command:
 brew upgrade viam-server --HEAD
 ```
 
-There is not a way to automatically update viam-server on Mac, so we recommend running `brew upgrade viam-server` on a regular basis.
+There is not a way to automatically update `viam-server` on Mac, so we recommend running `brew upgrade viam-server` on a regular basis.
 
 {{% /tab %}}
 {{% /tabs %}}

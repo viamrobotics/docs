@@ -189,7 +189,7 @@ Click **Create Component**.
 
 <img src="../../img/ai-integration/servo_component_add.png" style="border:1px solid #000" alt="Adding the servo component." title="Adding the servo component." width="900" />
 
-Now, in the panel for *servo1*, add the following configuration in attributes to tell viam-server that the servo is attached to GPIO pin 8, then press the **Save Config** button.
+Now, in the panel for *servo1*, add the following configuration in attributes to tell `viam-server` that the servo is attached to GPIO pin 8, then press the **Save Config** button.
 
 ``` json
 {

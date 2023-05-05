@@ -5,7 +5,7 @@ weight: 20
 type: "docs"
 description: "Explanation of how a robot and its parts interact at the communication layer."
 ---
-When building a robot application in the Viam app [https://app.viam.com](https://app.viam.com), a user typically begins by configuring their robot which can consist of one or more parts.
+When building a robot application in the [Viam app](https://app.viam.com), a user typically begins by configuring their robot which can consist of one or more parts.
 Next they will test that it is wired up properly using the Viam app's Control page.
 Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
 This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the robot.
@@ -18,7 +18,7 @@ To begin, let's define our robot's topology:
 
 ![robot-communication-diagram](../img/robot-to-robot-comms/robot-communication-diagram.png)
 
-This robot is made of two parts and separate SDK-based application, which we'll assume is on a third machine, though it could just as easily run on the main part without any changes.
+This robot is made of two parts and a separate SDK-based application, which we'll assume is on a third machine, though it could just as easily run on the main part without any changes.
 
 * The first and main part, RDK Part 1, consists of a Raspberry Pi and a single USB connected camera called Camera.
 
