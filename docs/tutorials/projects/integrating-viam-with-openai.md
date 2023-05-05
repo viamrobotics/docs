@@ -232,12 +232,14 @@ and the label path similar to:
 ```
 
 Make sure `Path to Existing Model on Robot` is selected.
-Click **Save config** to finish adding the classifier.
 
 Now, create a new service of **type** `vision`, **model** `ML Model` named 'vis-stuff-classifier'.
 Your companion robot will use this to interface with the machine learning model (trained using the [ImageNet image database](https://www.image-net.org/)) allowing you to - well, classify stuff!
 
 <img src="../../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the Vision Service." title="Adding the Vision Service." width="500" />
+
+Select the model that you added in the previous step.
+Click **Save config** to finish adding the classifier.
 
 ## Bring "Rosey" to life
 
