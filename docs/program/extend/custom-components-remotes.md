@@ -13,7 +13,7 @@ videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acryli
 ---
 
 {{% alert title="Caution" color="caution" %}}
-{{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations for SDKs with module support unless you are hosting `viam-server` on a non-Linux platform or have another issue with compilation.
+{{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations for SDKs with module support unless you are hosting `viam-server` on a non-Linux system or have another issue with compilation.
 
 Instructions on creating and using modular resources are available [here](/program/extend/modular-resources).
 {{% /alert %}}
