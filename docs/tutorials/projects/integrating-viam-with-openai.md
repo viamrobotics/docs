@@ -13,11 +13,6 @@ imageAlt: "Viam Rover Rosey."
 # SME: Matt Vella
 ---
 
-{{< alert title="Caution" color="caution" >}}
-There are [breaking changes in the Vision Service](/appendix/release-notes/#25-april-2023).
-This tutorial has not yet been updated.
-{{< /alert >}}
-
 When we think of robots, most of us tend to group them into categories:
 
 * useful robots
@@ -218,6 +213,8 @@ Your robot will register this as a machine learning model and make it available 
 
 <img src="../../img/ai-integration/mlmodels_service_add.png" style="border:1px solid #000" alt="Adding the ML Models Service." title="Adding the ML Models Service." width="500" />
 
+Make sure `Path to Existing Model on Robot` is selected.
+
 Update the **Model Path** and **Label Path** to match where you [copied the tutorial software](#5-set-up-tutorial-software).
 For example, the model path would would be similar to:
 
@@ -230,8 +227,6 @@ and the label path similar to:
 ``` bash
 /home/<username>/tutorial-openai-integration/labels.txt
 ```
-
-Make sure `Path to Existing Model on Robot` is selected.
 
 Now, create a new service of **type** `vision`, **model** `ML Model` named 'vis-stuff-classifier'.
 Your companion robot will use this to interface with the machine learning model (trained using the [ImageNet image database](https://www.image-net.org/)) allowing you to - well, classify stuff!
@@ -256,7 +251,7 @@ Any time she hears the keyword "Rosey", she will pay attention to anything you s
 For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI's chat completion API, and you'll get a response back similar to *"It is impossible to predict what will happen today.
 Every day is different and unpredictable!"*
 
-If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-integration/blob/45ce0e3f2b7bad33f568cd4273e6721aa2ceffe5/rosey.py#L144), you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
+If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-integration/blob/main/rosey.py#L192), you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
 For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
 
 <div class="td-max-width-on-larger-screens">
