@@ -170,7 +170,7 @@ from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 from viam.components.camera import Camera
 from viam.components.types import CameraMimeType
-from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType, Detection
+from viam.services.vision import VisionClient, VisModelConfig, VisModelType, Detection
 import yagmail
 
 
@@ -198,7 +198,7 @@ async def main():
     image = await camera.get_image()
 
     # Get and set up the Vision Service
-    vision = VisionServiceClient.from_robot(robot)
+    vision = VisionClient.from_robot(robot)
     params = {"model_path": "./effdet0.tflite", "label_path": "./labels.txt", "num_threads": 1}
     personDet = VisModelConfig(name="person_detector", type=VisModelType("tflite_detector"), parameters=params)
     await vision.add_detector(personDet)

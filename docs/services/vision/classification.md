@@ -129,13 +129,13 @@ The following code gets the robot’s Vision Service and then runs a classifier 
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
 # grab camera from the robot
 cam1 = Camera.from_robot(robot, "cam1")
 # grab Viam's vision service for the classifier
-my_classifier = VisionServiceClient.from_robot(robot, "my_classifier")
+my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
 img = await cam1.get_image()
 classifications = await my_classifier.get_classifications(img)
