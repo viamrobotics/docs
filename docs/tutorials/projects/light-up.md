@@ -146,7 +146,7 @@ You will configure the Vision Service to use a [TFLite](https://www.tensorflow.o
 These lines configure a Vision Service object detector to use the TFLite model and the list of labels:
 
 ```python
-    vision = VisionClient.from_robot(robot)
+    vision = VisionServiceClient.from_robot(robot)
     params = {"model_path": "./effdet0.tflite", "label_path": "./labels.txt", "num_threads": 1}
     personDet = VisModelConfig(name="person_detector", type=VisModelType("tflite_detector"), parameters=params)
     await vision.add_detector(personDet)

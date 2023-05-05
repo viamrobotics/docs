@@ -206,11 +206,11 @@ The following code gets the robot’s Vision Service and then runs a segmenter v
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
 
 robot = await connect()
 # grab Viam's vision service for the detector
-my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
+my_segmenter = VisionServiceClient.from_robot(robot, "my_segmenter")
 
 detections = await my_segmenter.get_object_point_clouds("cam1")
 

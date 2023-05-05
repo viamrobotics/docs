@@ -237,13 +237,13 @@ The following code gets the robot’s vision service and then runs a color detec
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
 
 robot = await connect()
 # grab camera from the robot
 cam1 = Camera.from_robot(robot, "cam1")
 # grab Viam's vision service for the detector
-my_detector = VisionClient.from_robot(robot, "my_detector")
+my_detector = VisionServiceClient.from_robot(robot, "my_detector")
 
 img = await cam1.get_image()
 detections = await my_detector.get_detections(img)

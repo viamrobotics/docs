@@ -141,7 +141,7 @@ Within the expander, you can still use most other shortcodes and syntax highligh
 **Prism syntax highlighting works in expanders, as do most other shortcodes.**
 
 ``` python
-motion_svc = MotionClient.from_robot(robot, "NAME")
+motion_svc = MotionServiceClient.from_robot(robot, "NAME")
 arm = Arm.from_robot(robot=robot, name='xArm6')
 pos = await arm.get_end_position()
 
