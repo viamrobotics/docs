@@ -68,7 +68,7 @@ Edit and fill in the attributes as applicable.
           }
       },
       "model": "xArmLite",
-      "name": "xArmLite",
+      "name": "myArm",
       "type": "arm"
   }]
 }
