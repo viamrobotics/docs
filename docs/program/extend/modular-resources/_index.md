@@ -26,7 +26,8 @@ Two key concepts exist across all Viam resources (both built-in and modular) to 
 
 ### APIs
 
-Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API), which allows you to interact with or "speak" to the resource.
+Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API).
+This can be understood as a description of how you can interact with that resource.
 Each API is described through [protocol buffers](https://developers.google.com/protocol-buffers).
 Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
 
