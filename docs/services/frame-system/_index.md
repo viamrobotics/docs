@@ -208,25 +208,140 @@ The resulting tree of reference frames looks like:
 
 ## Access the Frame System
 
-The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies two methods to interact with the Frame System through gRPC calls:
+The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies the following method to interact with the Frame System:
 
-1. `TransformPose`: Transforms a pose measured in one reference frame to the same pose as it would have been measured in another.
-2. `FrameSystemConfig`: Returns a topologically sorted list of all the reference frames monitored by the frame system.
-Any [supplemental transforms](#supplemental-transforms) are also merged into the tree, topologically sorted, and returned.
+| Method Name | Description |
+| ----- | ----------- |
+| [`TransformPose`](#transformpose) | Transform a pose measured in one reference frame to the same pose as it would have been measured in another. |
+<!-- | [`FrameSystemConfig`](#framesystemconfig) | Return a topologically sorted list of all the reference frames monitored by the frame system. | -->
 
-## Supplemental Transforms
+<!--
+### FrameSystemConfig
 
-*Supplemental Transforms* exist to help the Frame System determine the location of and relationships between objects not initially known to the robot.
+Returns a topologically sorted list of all the reference frames monitored by the frame system. Any [additional transforms](#additional-transforms) are also merged into the tree, sorted, and returned.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `additional_transforms` (Optional[List[[viam.proto.common.Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](#additional-transforms).
+
+**Returns:**
+
+- `frame_system` (List[[viam.proto.robot.FrameSystemConfig](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig)]): The configuration of a given robot’s frame system.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
+
+```python {class="line-numbers linkable-line-numbers"}
+# Get a list of each of the reference frames configured on the robot. 
+frame_system = await robot.get_frame_system_config()
+print(f"Frame System Configuration: {frame_system}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `additionalTransforms` (Optional[[referenceframe.LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#additional-transforms).
+
+**Returns:**
+
+- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- `framesystemparts` [(`framesystemparts.Parts`)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): The individual parts that make up a robot's frame system.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+```go {class="line-numbers linkable-line-numbers"}
+// Print the Frame System configuration
+frameSystem, err := robot.FrameSystemConfig(context.Background(), nil)
+fmt.Println(frameSystem)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+-->
+
+### TransformPose
+
+Transform a given source pose from the reference frame to a new specified destination reference frame.
+For example, if a 3D camera observes a point in space you can use this method to calculate where that point is relative to another object.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `query` [(`PoseInFrame`)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose that should be transformed.
+- `destination` (str): The name of the reference frame to transform the given pose to.
+- `additional_transforms` (Optional[List[[Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](#additional-transforms).
+
+**Returns:**
+
+- `PoseInFrame` [(PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): Transformed pose in destination reference frame.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
+
+```python {class="line-numbers linkable-line-numbers"}
+# Transform a pose into the frame of myArm
+first_pose = Pose(x=0.0, y=0.0, z=0.0, o_x=0.0, o_y=0.0, o_z=1.0, theta=0.0)
+first_pif = PoseInFrame(reference_frame="world", pose=first_pose)
+transformed_pif = await robot.transform_pose(first_pif, "myArm")
+print("Position: (x:", transformed_pif.pose.x, ", y:", transformed_pif.pose.y, ", z:", transformed_pif.pose.z, ")")
+print("Orientation: (o_x:", transformed_pif.pose.o_x,
+      ", o_y:", transformed_pif.pose.o_y,
+      ", o_z:",transformed_pif.pose.o_z,
+      ", theta:", transformed_pif.pose.theta, ")")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `pose` ([[PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)]): The pose that should be transformed.
+- `dst` (string): The name of the reference frame to transform the given pose to.
+- `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#additional-transforms).
+
+**Returns:**
+
+- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- `PoseInFrame` [(referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in destination reference frame.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot).
+
+```go {class="line-numbers linkable-line-numbers"}
+// Define a Pose coincident with the world reference frame
+firstPose := spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 0.0})
+
+// Establish the world as the reference for firstPose
+firstPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, firstPose)
+
+// Calculate firstPoseInFrame from the perspective of the origin frame of myArm
+transformedPoseInFrame, err := robot.TransformPose(ctx, firstPoseInFrame, "myArm", nil)
+fmt.Println("Transformed Position:", transformedPoseInFrame.Pose().Point())
+fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientation())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Additional Transforms
+
+*Additional Transforms* exist to help the Frame System determine the location of and relationships between objects not initially known to the robot.
 
 For example:
 
-- In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config), the arm can be managed by the Frame System without supplemental transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
+- In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config), the arm can be managed by the Frame System without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
 
     However, an arm with an attached [camera](/components/camera) might generate additional information about the poses of other objects with respect to references frames on the robot.
 
     With the [Vision Service](/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 
-    If a [camera](/components/camera) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing a supplemental transform that contains the detected pose with respect to the camera that performed the detection.
+    If a [camera](/components/camera) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
 
     The detecting component (camera) would be fixed with respect to the `world` reference frame, and would supply the position and orientation of the detected object.
 
@@ -236,4 +351,4 @@ Usage:
 
 - You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's Motion Service's [`GetPose`](/services/motion/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
-- Both [`TransformPose`](#access-the-frame-system) and [`FrameSystemConfig`](#access-the-frame-system) have the option to take in these supplemental transforms.
+- [`TransformPose`](#access-the-frame-system) has the option to take in these additional transforms.
