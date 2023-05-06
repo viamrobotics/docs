@@ -155,7 +155,7 @@ Next, paste that boilerplate code into a file named <file>index.py</file> or <fi
 You can now run the code.
 Doing so verifies that the Viam SDK is properly installed, that the `viam-server` instance on your robot is live, and that the computer running the program is able to connect to that instance.
 
-Run your code by entering the following into a new terminal on your computer:
+Run your code by entering the following in a new terminal on your computer:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -255,7 +255,7 @@ def getRandoms():
     random.randint(-45, 45),
     random.randint(-45, 45)]
 
-# Moves the arm into a new random position every second
+# Moves the arm to a new random position every second
 async def randomMovement(arm: ArmClient):
     while (True):
         randomPositions = getRandoms()
@@ -279,7 +279,7 @@ func getRandoms(min, max float64) []float64 {
     return res
 }
 
-// Moves the arm into a new random position every second
+// Moves the arm to a new random position every second
 func randomMovement (ctx context.Context, a arm.Arm ) {
   for {
     randomPositions := getRandoms(-90, 90)
@@ -333,13 +333,9 @@ func main() {
 Now when you run this code, you should see the new mock arm positions listed in the command line.
 Open the **Control** tab of your mock robot to see the robot's arm positions changing in real-time along with the code on your development machine.
 
-<!-- We could replace this GIF but putting in an image for now
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="../../img/build-a-mock-robot/image2.webm" mp4_src="../../img/build-a-mock-robot/image2.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side, is the mock arm from the CONTROL tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
+  {{<gif webm_src="../../img/build-a-mock-robot/joint-changes.webm" mp4_src="../../img/build-a-mock-robot/joint-changes.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side is the mock arm from the Control tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
 </div>
--->
-
-![Screenshot of the terminal output and the arm portion of the Control tab showing the arm joint positions. The Control tab positions match the most recent code output values.](../../img/build-a-mock-robot/joint-positions.png)
 
 ## Create a mock sub-part
 
