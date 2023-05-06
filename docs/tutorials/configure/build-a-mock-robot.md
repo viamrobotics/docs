@@ -15,8 +15,8 @@ tags: ["mock", "simulation"]
 
 This tutorial will show you how to build a mock robot using just your personal laptop so you can:
 
-  - learn how to [configure](../../../manage/configuration/) robots with Viam and
-  - try using [Viam](/viam) without any robotic hardware.
+- Learn how to [configure](../../../manage/configuration/) robots with Viam.
+- Try using [Viam](/viam) without any robotic hardware.
 
 Most Viam [components](../../../components/) have a _fake_ model that you can use for testing.
 These fake components interact with Viam like real hardware but do not actually exist.
@@ -82,21 +82,50 @@ Since this is an imaginary robot, you will use `fake` components so that the Via
 
 You will need to reference the component names later when you connect to your mock robot with code.
 
-### Install `viam-server` on your computer
+### Install and start `viam-server` on your computer
 
 Before you proceed with controlling your mock robot, you need to install `viam-server`.
 
+{{< tabs >}}
+{{% tab name=macOS %}}
+
+Follow the steps outlined on the **Setup** tab of the Viam app to install `viam-server` on your computer and start `viam-server` from a terminal window.
+
+{{% /tab %}}
+{{% tab name=Linux %}}
+
 Follow the steps outlined on the **Setup** tab of the Viam app to install `viam-server` on your computer.
+
+The **Setup** tab steps set it up as a system service which means that `viam-server` will automatically start every time you boot your computer.
+This is convenient if the computer running `viam-server` is a dedicated part of a robot, but it is less practical if you are installing `viam-server` on your everyday laptop or desktop.
+
+To disable `viam-server` from starting automatically on boot, run the following command:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo systemctl disable viam-server
+```
+
+Then start `viam-server`:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo ./viam-server -config /etc/viam.json
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Find more information on running `viam-server` in the [installation guide](../../../installation/manage/).
 
 ## Control your mock robot using the Viam app
 
 When you add components to your robot, the Viam app automatically generates a UI for them under the **Control** tab.
 
-![Screenshot from the Viam app showing the CONTROL tab with the fake arm, and motor components.](../../img/build-a-mock-robot/control-tab.png)
+![Screenshot from the Viam app showing the Control tab with the fake arm, and motor components.](../../img/build-a-mock-robot/control-tab.png)
 
-If you configured real components, you would be able to control them from this section of the app.
-You could do things like control the direction and speed of the motor, and change the joint positions of your robotic arm.
-However, since you are using fake components, you will only see the robot's reported positions and speeds change from the UI.
+You can use the **Control** tab UI to send commands to your robot.
+For example, you can control the direction and speed of your motor, or change the joint positions of your robotic arm.
+You can also see the robot's reported positions and speeds change.
+With real physical components, you would not only be able to control and see your robot's readings on this tab, but you would also see your robot move in the physical world.
 
 Next, install a Viam SDK (software development kit) so you can write custom logic to control the mock robot.
 
@@ -126,7 +155,7 @@ Next, paste that boilerplate code into a file named <file>index.py</file> or <fi
 You can now run the code.
 Doing so verifies that the Viam SDK is properly installed, that the `viam-server` instance on your robot is live, and that the computer running the program is able to connect to that instance.
 
-Run your code by entering the following into the terminal on your computer:
+Run your code by entering the following into a new terminal on your computer:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -146,15 +175,15 @@ go run index.go
 {{< /tabs >}}
 
 If you successfully configured your robot and it is able to connect to the Viam app you should see something like this printed to the terminal after running your program.
-What you see here is a list of the various resources (Like components, and services) that have been configured to your robot in the Viam app.
+What you see here is a list of the various _{{< glossary_tooltip term_id="resource" text="resources" >}}_ that have been configured on your robot in the Viam app.
 
 ![Command line output from running python3 index.py when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. The list includes the Motion Service, arm component, data manager, board component and motor component. There is also a list of arm position and orientation values.](../../img/build-a-mock-robot/resource-output.png)
 
 ### Control your mock robot
 
-Next, you will write some code to control and move your mock robotic arm.
-You will write a program that moves the mock robotic arm to a new random position every second.
-You will be able to verify that your mock robotic arm is working by checking that the joint positions of the fake arm in the **Control** tab of the Viam app are changing.
+Now it's time to write code to control and move your mock robotic arm.
+Through the following steps, you will write a program that moves the mock robotic arm to a new random position every second.
+You will be able to verify that your mock robotic arm is working by watching its joint positions change in the **Control** tab of the Viam app while your code runs.
 
 At the top of your <file>index.py</file> file, paste the following:
 
@@ -364,7 +393,7 @@ In the upper right corner of the **Setup** tab, click **Copy viam-server config*
 ![The Setup tab of the sub-part's robot page showing the 'Copy viam-server config' button highlighted by a red box.](../../img/build-a-mock-robot/copy-config.png)
 
 On your local machine, create a new file called <file>viam-sub-part.json</file>, then paste the contents of your server config into that file and save.
-From the terminal, navigate to the directory where you saved the config file, and run the following command to create a new instance of `viam-server` using this configuration.
+From a new terminal window, navigate to the directory where you saved the config file, and run the following command to create a new instance of `viam-server` using this configuration.
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam-server -config viam-sub-part.json
@@ -483,7 +512,7 @@ func main() {
 
 When you run this code, you will see your mock sub motor toggling between running and idle in real time from the Viam app!
 
-{{<video webm_src="../../img/build-a-mock-robot/go-start-demo.webm" mp4_src="../../img/build-a-mock-robot/go-start-demo.mp4" alt="Code runs and prints resource list">}}
+{{<gif webm_src="../../img/build-a-mock-robot/go-start-demo.webm" mp4_src="../../img/build-a-mock-robot/go-start-demo.mp4" alt="Code runs and prints resource list">}}
 
 ## Next steps
 
