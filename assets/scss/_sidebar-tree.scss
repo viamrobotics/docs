@@ -9,7 +9,7 @@
 
     @include media-breakpoint-up(md) {
         @supports (position: sticky) {
-            max-height: calc(100vh - 2rem);
+            max-height: calc(100vh - 4rem);
             overflow-y: auto;
         }
     }
@@ -142,7 +142,7 @@
                 position: sticky;
                 top: 4rem;
                 z-index: 10;
-                height: calc(100vh - 2rem);
+                height: calc(100vh - 4rem);
             }
         }
 
