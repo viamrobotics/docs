@@ -89,7 +89,7 @@ Edit and fill in the attributes as applicable.
         "correction_source": "ntrip",
         "serial_attributes": {
           "serial_baud_rate": 115200,
-          "serial_path": "/dev/serial/by-path/12335"
+          "serial_path": "/dev/serial/by-path/12345"
         },
         "ntrip_attributes": {
           "ntrip_addr": "ntrip_address",

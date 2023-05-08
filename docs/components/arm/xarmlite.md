@@ -46,6 +46,9 @@ Edit and fill in the attributes as applicable.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [{
+      "name": "my_arm",
+      "type": "arm"
+      "model": "xArmLite",
       "attributes": {
           "host": "10.0.0.97"
       },
@@ -66,10 +69,7 @@ Edit and fill in the attributes as applicable.
               "y": 0,
               "z": 0
           }
-      },
-      "model": "xArmLite",
-      "name": "<your-arm-name>",
-      "type": "arm"
+      }
   }]
 }
 ```
@@ -86,4 +86,4 @@ The following attributes are available for `xArmLite` arms:
 | `speed` | float | Optional | Desired maximum speed of joint movement in degrees/sec. <br> Default: `20.0` |
 | `acceleration`  | float | Optional | Desired maximum acceleration of joint movement in degrees/sec<sup>2</sup>. <br> Default: `50.0` |
 
-See [the Frame System service](/services/frame-system) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.
+See [the Frame System Service](/services/frame-system) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.

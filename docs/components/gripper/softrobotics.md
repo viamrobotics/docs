@@ -90,4 +90,4 @@ Name | Inclusion | Type | Description
 `open` | **Required** | string | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board pin wired to the open pin (D1) on the gripper controller.
 `close` | **Required** | string | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board pin wired to the close pin (D2) on the gripper controller.
 `power` | **Required** | string | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board pin wired to the enable pin (D3) on the gripper controller.
-`analog_reader` | **Required** | string | Must be called `"psi"`. You must [configure an analog](../../board/#analogs) with the `"name"` of `"psi"` on your board.
+`analog_reader` | **Required** | string | Must be called `"psi"`. You must [configure an analog](../../board/#analogs) on your board and name it `"psi"`.

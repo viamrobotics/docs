@@ -9,7 +9,7 @@ tags: ["encoder", "components"]
 ---
 
 The `AMS-AS5048` encoder model supports AMS's [AS5048](https://ams.com/en/as5048a) encoder.
-This is an absolute encoder that uses an [I2C](/components/board/#i2cs) or [SPI](/components/board/#spis) interface to connect.
+This is an absolute encoder that uses an [I<sup>2</sup>C](/components/board/#i2cs) or [SPI](/components/board/#spis) interface to connect.
 Any [motor](/components/motor) using the `AMS-AS5048` encoder must have the `ticks_per_rotation` attribute configured as `1` because this encoder provides angular measurements directly.
 
 To configure the encoder, you must first [configure an I<sup>2</sup>C bus](/components/board/#i2cs) on your [board](/components/board).
@@ -55,4 +55,4 @@ The following attributes are available for `AMS-AS5048` encoders:
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | The `name` of the [board](/components/board) to which your encoder is connected. |
 | `connection_type` | string | **Required** | Use `"i2c"`. |
-| `i2c_attributes` | object | **Required** | The attributes to configure [i<sup>2</sup>c](/components/board/#i2cs) connection: <ul> <li> <code>i2c_bus</code>: The `name` of the [i<sup>2</sup>c bus configured](/components/board/#i2cs) on the [board](/components/board) wired to this encoder. <br> Example: `"main"` </li> <li> <code>i2c_addr</code>: The address of the bus. <br> Example: `64` </li> </ul> |
+| `i2c_attributes` | object | **Required** | The attributes to configure [I<sup>2</sup>C](/components/board/#i2cs) connection: <ul> <li> <code>i2c_bus</code>: The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on the [board](/components/board) wired to this encoder. <br> Example: `"main"` </li> <li> <code>i2c_addr</code>: The address of the bus. <br> Example: `64` </li> </ul> |

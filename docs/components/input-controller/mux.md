@@ -46,7 +46,7 @@ Edit and fill in the attributes as applicable.
       "model": "mux",
       "attributes": {
         "sources": [
-          "<your-gamepad-input-controlle-name",
+          "<your-gamepad-input-controller-name",
           "WebGamepad"
         ]
       },

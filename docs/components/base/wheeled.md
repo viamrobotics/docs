@@ -25,7 +25,8 @@ Click **Create component**.
 
 ![An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On drop-downs and the option to add a frame.](../img/wheeled-base-ui-config.png)
 
-Select the motors attached to the base as your `Right Motors` and `Left Motors`. Edit and fill in the attributes as applicable.
+Select the motors attached to the base as your **Right Motors** and **Left Motors**.
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
