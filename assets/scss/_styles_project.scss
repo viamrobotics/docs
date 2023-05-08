@@ -230,12 +230,14 @@ p, li {
   }
 }
 
+/* Add margin in front of breadcrumbs on small screens */
 @media (max-width: 768px) {
   .td-main main {
     margin-top: 0.5rem;
   }
 }
 
+/*This ensures there is no padding added to the top logo bar*/ 
 .td-navbar .td-navbar-nav-scroll {
   height: unset;
 }
