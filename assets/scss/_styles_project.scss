@@ -498,6 +498,10 @@ END MARKETING CSS
   transform: translate(-3px,-3px);
 }
 
+.hover-card-small > a > .hover-card-img, .hover-card-small > a > video {
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 650px) { // at least two cards fit next to one another
   .hover-card.hover-card-small { // only one card
     min-width: 90%;
