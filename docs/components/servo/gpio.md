@@ -14,7 +14,7 @@ Configure a `gpio` servo to integrate a hobby servo controlled by general-purpos
 {{< tabs name="Configure a gpio Servo" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your servo, select the type `servo`, and select the `gpio` model.
 
@@ -22,7 +22,7 @@ Click **Create component**:
 
 ![An example configuration for a gpio servo in the Viam app Config Builder.](../img/gpio-servo-ui-config.png)
 
-Edit and fill in the `"attributes"` JSON to align with your `board` `name` and GPIO wiring.
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -36,7 +36,7 @@ Edit and fill in the `"attributes"` JSON to align with your `board` `name` and G
             "model": "gpio",
             "attributes": {
                 "pin": "<your-pin-number>",
-                "board": "<your-board-nam>"
+                "board": "<your-board-name>"
             }
         }, ... <insert your board component config>
     }

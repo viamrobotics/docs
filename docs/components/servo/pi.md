@@ -28,7 +28,7 @@ Click **Create component**:
 
 ![An example configuration for a pi servo in the Viam app Config Builder.](../img/pi-servo-ui-config.png)
 
-Edit and fill in the `"attributes"` JSON to align with your `board` `name` and GPIO wiring.
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
