@@ -65,6 +65,13 @@ To add data capture for a component, navigate to the **config** tab of your robo
 
 For each component you can capture data for, there is a `Data Capture Configuration` section in its panel.
 Click `Add Method` and then select the method type and the capture frequency.
+
+{{< alert title="Caution" color="caution" >}}
+
+Avoid configuring data capture to higher rates than your hardware can handle, as this leads to performance degradation.
+
+{{< /alert >}}
+
 Click **Save Config** at the bottom of the window.
 
 Now your data will be saved locally on your robot to the directory specified in the Data Management Service.
