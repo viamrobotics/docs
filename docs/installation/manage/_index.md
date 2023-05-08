@@ -5,7 +5,8 @@ weight: 30
 no_list: true
 type: docs
 draft: false
-icon: "img/thumbnails/viam-icon-sdk.png"
+icon: "/installation/img/thumbnails/manage.png"
+images: ["/installation/img/thumbnails/manage.png"]
 description: "Control and troubleshoot viam-server."
 ---
 
