@@ -7,6 +7,7 @@ image: "/installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png"
 imageAlt: "Jetson A G X Orin Developer Kit"
 images: ["/installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png"]
 description: "Set up the Jetson AGX Orin Developer Kit to prepare your NVIDIA Jetson AGX Orin for viam-server installation."
+no_list: true
 # SMEs: Pete Garafano
 ---
 

@@ -7,6 +7,7 @@ image: "/installation/img/thumbnails/tda4vm.png"
 imageAlt: "S K - T D A 4 V M"
 images: ["/installation/img/thumbnails/tda4vm.png"]
 description: "Image a Texas Instruments TDA4VM starter kit board to prepare it for viam-server installation."
+no_list: true
 #SMEs: Matt Dannenberg
 ---
 
