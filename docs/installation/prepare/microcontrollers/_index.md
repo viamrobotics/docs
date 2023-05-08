@@ -2,7 +2,7 @@
 title: "Microcontroller Setup: the Micro-RDK"
 linkTitle: "Microcontroller Setup"
 weight: 50
-simple_list: false
+no_list: true
 type: docs
 image: "/installation/img/thumbnails/esp32-espressif.png"
 imageAlt: "E S P 32 - espressif"
