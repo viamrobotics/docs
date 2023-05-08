@@ -30,6 +30,7 @@ pre[class*="language-"] {
   padding-bottom: 0;
   position: relative;
   overflow-y: hidden;
+  scrollbar-gutter: stable;
 }
 
 .token.cdata,
