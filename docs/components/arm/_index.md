@@ -197,7 +197,7 @@ myArm, err := arm.FromRobot(robot, "my_arm")
 examplePose = []float64{x: 5, y: 5, z: 5, o_x: 5, o_y: 5, o_z: 5, theta:20}
 
 // Move your arm to the Pose.
-myArm.MoveToPosition(context.Background(), pose: examplePose, nil)
+err := myArm.MoveToPosition(context.Background(), pose: examplePose, nil)
 ```
 
 {{% /tab %}}
@@ -268,7 +268,7 @@ degrees := []float64{4.0, 5.0, 6.0}
 jointPos := componentpb.JointPositions{degrees}
 
 // Move each joint of the arm to the position these values specify.
-myArm.MoveToJointPositions(context.Background(), jointPos, nil)
+err := myArm.MoveToJointPositions(context.Background(), jointPos, nil)
 ```
 
 {{% /tab %}}
@@ -369,7 +369,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myArm, err := arm.FromRobot(robot, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
-myArm.Stop(context.Background(), nil)
+err := myArm.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
