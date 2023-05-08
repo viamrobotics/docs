@@ -118,7 +118,7 @@ pos = await my_arm.get_end_position()
 **Parameters:**
 
 - `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(`map[string]interface{}`)](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -182,7 +182,7 @@ await my_arm.move_to_position(pose=examplePose)
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(`map[string]interface{}`)](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -250,7 +250,7 @@ await my_arm.move_to_joint_positions(positions= jointPos)
 - `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `positions` [(`JointPositions`)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
 JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(`map[string]interface{}`)](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -306,7 +306,7 @@ pos = await my_arm.get_joint_positions()
 **Parameters:**
 
 - `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(`map[string]interface{}`)](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -357,7 +357,7 @@ await my_arm.stop()
 **Parameters:**
 
 - `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(`map[string]interface{}`)](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -476,7 +476,7 @@ command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myArm.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 {{% /tab %}}
 {{< /tabs >}}
