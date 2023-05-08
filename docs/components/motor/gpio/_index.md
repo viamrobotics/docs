@@ -19,7 +19,7 @@ Then add your motor:
 {{< tabs name="gpio-config">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your motor, select the type `motor`, and select the `gpio` model.
 

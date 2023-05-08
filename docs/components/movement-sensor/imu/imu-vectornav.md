@@ -16,7 +16,7 @@ The `imu-vectornav` movement sensor model supports IMUs manufactured by [VectorN
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** sub-tab and navigate to the **Create component** menu.
 
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `imu-vectornav` model.

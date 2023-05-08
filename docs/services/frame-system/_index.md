@@ -19,7 +19,7 @@ It stores the required contextual information to use the position and orientatio
 
 ## Configuration
 
-To enable the default frame for a given [component](/components) on a robot, navigate to the **config** tab of the robot's page in [the Viam app](https://app.viam.com) and click **Components**.
+To enable the default frame for a given [component](/components) on a robot, navigate to the **Config** tab of the robot's page in [the Viam app](https://app.viam.com) and click **Components**.
 With **mode** as **Builder**, click **Add Frame** on the component's card and **Save Config**.
 
 To adjust the frame from its default configuration, change the parameters as needed for your robot before saving.
@@ -27,7 +27,7 @@ To adjust the frame from its default configuration, change the parameters as nee
 {{< tabs name="Frame Configuration Instructions" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's panel, and click **Add Frame**:
+Navigate to the **Config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's panel, and click **Add Frame**:
 
 ![add reference frame pane](img/frame_card.png)
 
@@ -101,7 +101,7 @@ For more information about determining the appropriate values for these paramete
 ### Visualize the Frame System
 
 You can visualize how your robot is oriented in the Frame System in [the Viam app](https://app.viam.com).
-Navigate to the **config** tab on your robot's page, select **mode** as **Builder**, and click on **Frame System**.
+Navigate to the **Config** tab on your robot's page, select **mode** as **Builder**, and click on **Frame System**.
 
 The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your robot:
 
@@ -113,7 +113,7 @@ For example:
 
 Consider a robot configured with a [`jetson` board](/components/board), wired to a [`webcam` camera](/components/camera/webcam) and a [`wheeled` base](/components/base/wheeled) with two [motors](/components/motor) driving its wheels.
 
-No reference frame configuration has been specified, so on the **Frame System** **config** sub-tab, the components are shown to all be located on the default `world` origin point as follows:
+No reference frame configuration has been specified, so on the **Frame System** **Config** sub-tab, the components are shown to all be located on the default `world` origin point as follows:
 
   ![Example robot's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other](img/demo_base_unedited.png)
 
@@ -161,7 +161,7 @@ Click the video camera icon below and to the right of the **Frame System** butto
 
 ### Bounding Geometries
 
-To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame System** sub-tab of the **config** tab of a robot's page on [the Viam app](https://app.viam.com).
+To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame System** sub-tab of the **Config** tab of a robot's page on [the Viam app](https://app.viam.com).
 
 By default, a **Geometry** is shown surrounding the origin point of a component:
 
@@ -234,7 +234,7 @@ Returns a topologically sorted list of all the reference frames monitored by the
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get a list of each of the reference frames configured on the robot. 
+# Get a list of each of the reference frames configured on the robot.
 frame_system = await robot.get_frame_system_config()
 print(f"Frame System Configuration: {frame_system}")
 ```

@@ -11,7 +11,7 @@ Before you can program a robot, you must configure it.
 
 A robot's configuration tells the code running the robot what *resources* (hardware *components* and software *services*) it has access to, as well as any relevant parameters for those resources.
 
-To start configuring, go to the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **setup** tab.
+To start configuring, go to the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **Setup** tab.
 
 The setup steps copy your robots credentials to your robot and store them at <file>/etc/viam.json</file>.
 The credentials look like this:
@@ -49,7 +49,7 @@ viam-server -config <path-to-config>.json
 
 {{< /alert >}}
 
-After you have completed the setup steps and successfully connected to your robot, go to the **config** tab to start adding to the configuration.
+After you have completed the setup steps and successfully connected to your robot, go to the **Config** tab to start adding to the configuration.
 
 {{% alert title="Note" color="note" %}}
 
@@ -61,7 +61,7 @@ If you cannot connect your robot to the internet at all, you can also [store the
 
 ## The CONFIG tab
 
-The **config** tab on the [Viam app](https://app.viam.com) is the place to configure everything about your robot.
+The **Config** tab on the [Viam app](https://app.viam.com) is the place to configure everything about your robot.
 
 You can use the mode selector to switch between **Builder** and **Raw JSON**:
 
@@ -134,7 +134,7 @@ If you add components in **Builder** mode and click **Save Config** at the botto
 
 {{% /expand %}}
 
-The **config** tab has sub-tabs for each section of your robot's config:
+The **Config** tab has sub-tabs for each section of your robot's config:
 
 - [Components](#components): Components are the hardware of your robot.
 - [Services](#services): Services are the software that runs on your robot.
@@ -178,8 +178,8 @@ For specific information on how to configure each supported component type, see 
 
 {{% alert title="Tip" color="tip" %}}
 
-When you configure a component on the **config** tab, it will also appear on the **control** tab which gives you an interface to test and interact with it.
-Meanwhile the **code sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdk-as-client/).
+When you configure a component on the **Config** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
+Meanwhile the **Code Sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdk-as-client/).
 
 {{<gif webm_src="../img/control.webm" mp4_src="../img/control.mp4" alt="Using the control tab">}}
 
@@ -271,7 +271,7 @@ For example, if you have multiple identical rovers but one has an arm attached, 
 
 To add a fragment to a robot:
 
-- Go to the **Fragments** sub-tab of your robot's **config** tab on the [Viam app](https://app.viam.com).
+- Go to the **Fragments** sub-tab of your robot's **Config** tab on the [Viam app](https://app.viam.com).
 - Look through the list of available fragments and click **Add** next to any fragments you want to add to your robot.
 - Click **Save Config** at the bottom of the screen.
 
@@ -312,7 +312,7 @@ Find more information in the [frame system documentation](/services/frame-system
 
 If you run into issues, here are some things to try:
 
-- Check the **logs** tab to check for any errors or other info from `viam-server`.
+- Check the **Logs** tab to check for any errors or other info from `viam-server`.
 - You can also view logs locally by running the following command on the robot:
 
   {{< tabs >}}

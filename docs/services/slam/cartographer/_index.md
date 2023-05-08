@@ -67,7 +67,7 @@ Before adding a SLAM service, you must follow [these instructions](/program/exte
 {{% tab name="Config Builder" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **config** tab on your robot's page, and click on the **Services** subtab.
+Navigate to the **Config** tab on your robot's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
 
@@ -129,7 +129,7 @@ Click on the **Modules** subtab. Add the cartographer module with a name of your
 {{% tab name="JSON Template" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **config** tab.
+Navigate to the **Config** tab.
 Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"modules"` JSON to add to your existing RPlidar configuration:
 
 {{< tabs name="Add the Cartographer Service Live Config JSON OSs">}}
@@ -288,7 +288,7 @@ If this directory structure is not present at runtime, the SLAM Service creates 
 {{% tab name="Config Builder" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **config** tab on your robot's page, and click on the **Services** subtab.
+Navigate to the **Config** tab on your robot's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
 
@@ -368,7 +368,7 @@ Select the **Raw JSON** mode and copy/paste the following `"modules"` JSON to yo
 {{% tab name="JSON Template" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **config** tab.
+Navigate to the **Config** tab.
 Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing configuration:
 
 {{< tabs name="Add the Cartographer Service with Dataset JSON OSs">}}
@@ -527,7 +527,7 @@ If you do not already have a dataset from running SLAM live or another dataset y
 
 ### View the Map
 
-After saving your config and connecting to your robot, navigate to the **control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
+After saving your config and connecting to your robot, navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
 
 Change the **Refresh frequency** to your desired frequency.
 If in live data collection mode, move your RPlidar around slowly.

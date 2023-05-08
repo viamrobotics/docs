@@ -11,7 +11,7 @@ tags: ["data management", "cloud", "sync"]
 
 To capture data from one or more robots, you must first add the [Data Management Service](../):
 
-1. On your robot's **config** page, navigate to the **Services** tab.
+1. On your robot's **Config** page, navigate to the **Services** tab.
 2. At the bottom of the page you can create a service.
    Choose `Data Management` as the type and specify a name for your Data Management Service, for example `data-manager`.
 3. Then click `Create Service`.
@@ -61,7 +61,7 @@ The following components support data capture:
 - Sensor
 - Servo
 
-To add data capture for a component, navigate to the **config** tab of your robot's page in the Viam app.
+To add data capture for a component, navigate to the **Config** tab of your robot's page in the Viam app.
 
 For each component you can capture data for, there is a `Data Capture Configuration` section in its panel.
 Click `Add Method` and then select the method type and the capture frequency.

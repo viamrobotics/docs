@@ -16,7 +16,7 @@ These two pins provide the phase outputs used to measure the speed and direction
 {{< tabs name="Configure an incremental encoder" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `incremental` model.
 

@@ -64,15 +64,15 @@ If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/pro
 
 Go to the [Viam app](https://app.viam.com) and create a new robot.
 
-Go to the **setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation).
+Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation).
 
 ### Configure the camera component
 
-On your new robot's page, go to the **config** tab.
+On your new robot's page, go to the **Config** tab.
 
 ![The CONFIG tab in Builder mode on the Viam app.](../../img/light-up/config-tab.png)
 
-On the **config** tab, create a new component:
+On the **Config** tab, create a new component:
 
 - **Name**: `my-camera`
 - **Type**: `camera`
@@ -88,7 +88,7 @@ On Mac, this is often a long string of letters and numbers.
 
 Click **Save Config** in the bottom left corner of the screen.
 
-Navigate to the **control** tab where you can see your camera working.
+Navigate to the **Control** tab where you can see your camera working.
 
 {{% /expand %}}
 
