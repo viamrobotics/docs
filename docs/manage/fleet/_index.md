@@ -52,7 +52,7 @@ Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](
 - **Owner**: Can see and edit [every tab on the robot page](robots/#navigating-the-robot-page).
   Can manage users in the app.
 - **Operator**: Can see and use only the [remote control tab](robots/#control).
-  Cannot see or edit the [**setup**](robots/#setup), [**config**](robots#configuration), [**history**](robots/#history), [**logs**](robots/#logs), [**code sample**](robots/#code-sample), or [**security**](robots/#security) tabs.
+  Cannot see or edit the [**Setup**](robots/#setup), [**Config**](robots#configuration), [**History**](robots/#history), [**Logs**](robots/#logs), [**Code Sample**](robots/#code-sample), or [**Security**](robots/#security) tabs.
 
 To view the roles each organization member has, click on the organization drop down in the top navigation bar and click on **Settings**.
 
@@ -85,7 +85,7 @@ You and your collaborators can deploy control logic, [modular resources](/progra
 
 ### Remote control
 
-Everyone who has access to the robot can remotely control it using the [**control** tab](robots/#control).
+Everyone who has access to the robot can remotely control it using the [**Control** tab](robots/#control).
 This allows you to visually test and remotely operate robot components and services
 
 ### Control with code
@@ -105,5 +105,5 @@ It is good practice to note _where_ and _when_ you share a location secret key.
 
 ### Logs
 
-Each robot automatically sends logs to the cloud where you can view them from the [**logs** tab](robots/#logs).
-If you are collaborating on a robot and controlling it using the [**control** tab](robots/#control) or [code](#control-with-code), everyone who has access to the location the robot is in, can see the robot's logs.
+Each robot automatically sends logs to the cloud where you can view them from the [**Logs** tab](robots/#logs).
+If you are collaborating on a robot and controlling it using the [**Control** tab](robots/#control) or [code](#control-with-code), everyone who has access to the location the robot is in, can see the robot's logs.

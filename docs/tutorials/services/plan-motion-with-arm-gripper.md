@@ -170,7 +170,7 @@ Feel free to change these dimensions, including thickness (the Z coordinate in t
 Additional obstacles can also be *appended* as desired.
 
 {{< alert title="Tip" color="note" >}}
-Within the app, the **Frame System** tab in the **config** section of your robot gives you the ability to experiment with various geometry representations with better visual feedback.
+Within the app, the **Frame System** tab in the **Config** section of your robot gives you the ability to experiment with various geometry representations with better visual feedback.
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">

@@ -28,7 +28,7 @@ sudo chmod a+rx /usr/local/bin/intelgrpcserver
 
 ### Configure the Server to Run on Robot Start-Up
 
-On the [Viam app](https://app.viam.com), click **config** and then access the **Processes** tab. Add the following configuration:
+On the [Viam app](https://app.viam.com), click **Config** and then access the **Processes** tab. Add the following configuration:
 
 ``` json
 [
@@ -42,7 +42,7 @@ On the [Viam app](https://app.viam.com), click **config** and then access the **
 
 This configures the gRPC server to run on port 8085 of your Pi.
 
-On the **config** tab, click **Remotes**, and then add the following configuration:
+On the **Config** tab, click **Remotes**, and then add the following configuration:
 
 ``` json
 [
@@ -59,7 +59,7 @@ They will have the names `intel:color` and `intel:depth`.
 
 ### Create a Camera to Display Point Clouds
 
-Click **Components** on the **config** tab.
+Click **Components** on the **Config** tab.
 Now, add the `align_color_depth` camera model.
 The **Attributes** pane on the left allows you to enter the necessary attributes for your component.
 The **Attributes Guide** lists the available attributes for the chosen component.
@@ -99,7 +99,7 @@ Enter the necessary JSON configuration for your camera:
 }
 ```
 
-In the **control** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with `join_color_depth`.
+In the **Control** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with `join_color_depth`.
 
 ## Using the HTTP server
 
@@ -116,7 +116,7 @@ sudo chmod a+rx /usr/local/bin/intelrealserver
 
 ### Configure the Server to Run on Robot Start-Up
 
-On the [Viam app](https://app.viam.com), click **config** and then click **Processes**.
+On the [Viam app](https://app.viam.com), click **Config** and then click **Processes**.
 Enter the following configuration:
 
 ``` json
@@ -139,7 +139,7 @@ The endpoints that it creates are:
 
 ## Create a Camera to Display Point Clouds
 
-Click **config** and then click **Components**.
+Click **Config** and then click **Components**.
 Enter the following camera model:  "dual_stream"
 
 ``` json

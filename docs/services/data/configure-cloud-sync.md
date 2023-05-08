@@ -9,7 +9,7 @@ tags: ["data management", "cloud", "sync"]
 
 Before you can configure [cloud sync](../#cloud-sync), you must [add the Data Management Service](../configure-data-capture/#add-the-data-management-service).
 
-To enable cloud sync, navigate to the **Services** tab on your robot's **config** tab and enable **Syncing** for your [Data Management Service](../).
+To enable cloud sync, navigate to the **Services** tab on your robot's **Config** tab and enable **Syncing** for your [Data Management Service](../).
 Click **Save Config** at the bottom of the window.
 
 Now the data that you capture will sync automatically with the Viam app in the cloud.
@@ -45,7 +45,7 @@ If `capture_dir` is unspecified, `viam-server` will use the default directory at
 
 ### Pause sync
 
-You can pause Cloud Sync at any time by navigating to the **Services** tab on your robot's **config** tab and disabling **Syncing** for your [Data Management Service](../).
+You can pause Cloud Sync at any time by navigating to the **Services** tab on your robot's **Config** tab and disabling **Syncing** for your [Data Management Service](../).
 If you have captured data that you do not want to sync, delete the data on the robot before resuming Cloud Sync.
 To delete the data locally, `ssh` into your robot and delete the data in the directory where you capture data.
 

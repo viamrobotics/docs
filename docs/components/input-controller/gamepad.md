@@ -19,7 +19,7 @@ Refer to the following example configuration for an input controller of model `g
 {{< tabs name="Configure a `gamepad` input controller" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your input controller, select the type `input_controller`, and select the `gamepad` model.
 
@@ -60,12 +60,12 @@ The following attributes are available for `gamepad` input controllers:
 Connect your controller to your computer.
 Follow the instructions included with your gamepad to make this connection.
 
-If you haven't done so already, create a robot in [the Viam app](https://app.viam.com), and follow the instructions in the **setup** tab to start `viam-server` on your computer and connect to the robot.
+If you haven't done so already, create a robot in [the Viam app](https://app.viam.com), and follow the instructions in the **Setup** tab to start `viam-server` on your computer and connect to the robot.
 
-Then, click on the robot's **config** tab and configure an `input_controller` component of model `gamepad`, as shown above.
+Then, click on the robot's **Config** tab and configure an `input_controller` component of model `gamepad`, as shown above.
 Save the config.
 
-Next, navigate to the **control** tab.
+Next, navigate to the **Control** tab.
 You should see a drop-down menu with the name of your gamepad.
 Click on the drop-down menu to expand it.
 

@@ -235,7 +235,7 @@ Later, we can do more interesting things by configuring:
   <img src="../../img/outdoor-rover-boxbot/board-setup.png" alt="Board setup." title="Board setup." />
 </div>
 
-In the [Viam app](http://app.viam.com/), navigate to **config** within the robot you created previously, and add a new component of type "board", model "pi".
+In the [Viam app](http://app.viam.com/), navigate to **Config** within the robot you created previously, and add a new component of type "board", model "pi".
 You can name it whatever you want, but you'll reference this name later.
 We'll call it "local" in this example.
 
@@ -255,7 +255,7 @@ It's ok if you are not sure which one, you can always switch them later after te
 </div>
 
 At this point, you can try controlling your motors with the Viam App.
-Navigate to the **control** tab.
+Navigate to the **Control** tab.
 If all is set up correctly, you'll see cards for your left and right motors on this page.
 Open one up, and if your rover is in a safe position (on the ground or propped up), try running one!
 
@@ -263,7 +263,7 @@ Open one up, and if your rover is in a safe position (on the ground or propped u
 Be aware that these are powerful motors, so you don't want to start at 100% power right away.
 {{% /alert %}}
 
-If the motors don't appear on the control page, or are not running when expected, first check the **logs** tab to see if you see any errors - which would likely point out a bad configuration (a typo, a misplaced or missing attribute, etc).
+If the motors don't appear on the control page, or are not running when expected, first check the **Logs** tab to see if you see any errors - which would likely point out a bad configuration (a typo, a misplaced or missing attribute, etc).
 If not, double check your wiring and how it maps to the GPIO pins you've configured.
 
 <div class="td-max-width-on-larger-screens">

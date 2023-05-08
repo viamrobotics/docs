@@ -21,7 +21,7 @@ See our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) for instruc
 
 ## Configuring the Board
 
-Go to the Viam app ([https://app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **config** tab of the robot associated with your Raspberry Pi.
+Go to the Viam app ([https://app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **Config** tab of the robot associated with your Raspberry Pi.
 To create a new component you'll be working within the **Create Component** section of the **Components** sub-tab.
 
 ![A screenshot of the config builder UI on app.viam.com showing the Create Component box filled out with name=local, type=board and model=pi.](../../img/yahboom-rover/config.png)
@@ -40,7 +40,7 @@ You don't need to add any attributes for this one, so your configured board will
 Since both right side motors of the Yahboom rover are wired together to a single motor driver, the right side motors are configured as a single [motor component](/components/motor/) in the Viam config file.
 Later we will configure both left side motors as another motor.
 
-As with all other components, find the **Create Component** box at the bottom of the **config** tab.
+As with all other components, find the **Create Component** box at the bottom of the **Config** tab.
 Start with the right set of wheels, and name the component `right`.
 For the `Type`, select `motor`.
 For the `Model`, select `gpio`.
@@ -64,7 +64,7 @@ If you are using a motor with encoders, you need to specify the ticks per rotati
 ![A screenshot of the right motor configuration showing pin assignment and Max RPM set to 300.](../../img/yahboom-rover/rightmotor.png)
 
 Having configured these two components, you should now be able to actuate your motor.
-Click **control** at the top of the page to navigate to the Control tab.
+Click **Control** at the top of the page to navigate to the Control tab.
 There, you should see a panel for the right motor: you can use this panel to set the motor's power level.
 
 Please be careful when activating your robot! Start with the power level set to 10% and increase it incrementally (about 10% each time), activating the motor at each step until the wheels are rotating at a reasonable rate.
@@ -77,7 +77,7 @@ At this point, the wheels on one side of your robot should be working.
 Now try to add the other set of wheels using the same steps and see if you can get this robot driving with all of the components working together.
 To do this, we’ll have to add the other `motor` component and link them together with a `base`.
 
-To do this, go back to the **config** tab and find the **Create Component** box.
+To do this, go back to the **Config** tab and find the **Create Component** box.
 The config attributes for this `motor` will be very similar to the `right` motor, which makes sense as the hardware is the same and it is connected to the same `board`.
 The only difference will be the `Name` which will be `left` and the pins it is connected to, which should be set as follows: `a` (In1) to `38`, `b` (In2) to `40`, and `pwm` to `36`.
 
@@ -171,8 +171,8 @@ This config adds the controller to the robot, but doesn’t give it any function
 To link the controller input to the four-wheel base functionality, you need to add our first `service`.
 Services are the software packages which provide our robots with cool and powerful functionality.
 
-Until this point we've been working on the **Components** sub-tab of the **config** tab, but now we'll switch to the **Services** sub-tab.
-Click **Services** at the top of the **config** tab.
+Until this point we've been working on the **Components** sub-tab of the **Config** tab, but now we'll switch to the **Services** sub-tab.
+Click **Services** at the top of the **Config** tab.
 You will be using the **Create Service** card here.
 You can `name` this service `yahboom_gamepad_control` and give it the `type` `base_remote_control`, which is a service Viam provides for driving a rover with a gamepad.
 Click **Create Service**.
@@ -202,7 +202,7 @@ If you can not see a section where you can add the attributes, you can go to **R
   ]
 ```
 
-Save the config and visit the **control** tab.
+Save the config and visit the **Control** tab.
 You should have a panel for the controller which indicates whether or not it is connected.
 At this point moving the left analogue stick should result in movement of the rover!
 
@@ -211,7 +211,7 @@ At this point moving the left analogue stick should result in movement of the ro
 But wait!
 This rover has a camera on it.
 
-Once again, find the **Create Component** section at the bottom of the **config** tab.
+Once again, find the **Create Component** section at the bottom of the **Config** tab.
 Follow [these instructions on how to connect and configure a camera](/components/camera/webcam).
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
@@ -225,7 +225,7 @@ If you click on your webUI, you will be able to see your camera streaming.
 ## Configuring the Servo Components
 
 You may have noticed that the camera is mounted on a pair of [servos](/components/servo/) which control the pan and tilt of the camera.
-Go to the **Create Component** section at the bottom of **config**.
+Go to the **Create Component** section at the bottom of **Config**.
 Set the `Name` to `pan`, the `Type` to `servo`, the `Model` to `pi`, and click **Create Component**. Set `Depends On` to `local`, and `pin` to `23`, which is the pin the servo is wired to.
 
 ![A screenshot fron the CONFIG tab of the pan servo configuration showing pin set to 23.](../../img/yahboom-rover/panservo.png)

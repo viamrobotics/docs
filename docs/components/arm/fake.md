@@ -14,7 +14,7 @@ Configure a `fake` arm to test different models of robotic arms without any phys
 {{< tabs name="Configure a Fake Arm" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your arm, select the type `arm`, and select the `fake` model.
 
@@ -90,7 +90,7 @@ Refer to the following JSON examples for differences in configuration between th
 {{% /tab %}}
 {{< /tabs >}}
 
-Once you have successfully configured your `fake` arm, you can navigate to the **control** tab of [the Viam app](https://app.viam.com).
+Once you have successfully configured your `fake` arm, you can navigate to the **Control** tab of [the Viam app](https://app.viam.com).
 A drop-down menu should appear with the name of your arm that allows you to toggle the fake arm's joint positions and Cartesian end positions to dynamically test motion planning:
 
 <img src="../img/fake-arm-ui-remote-control.png" alt="Motion planning remote-control of a fake ur5e arm in the Viam app control tab." style="max-width:800px" />
