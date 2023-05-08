@@ -20,7 +20,7 @@ The [base component type](/components/base/) is useful for controlling mobile ro
 Viam natively supports a wheeled base model, but if you have a quadruped or other form of rover that isn't compatible with the wheeled model, you have two options:
 
 1. Use Viam's Go SDK to [create a custom component as a modular resource](/program/extend/modular-resources/).
-2. Use another Viam SDK (for example, the Python SDK) to [create a custom resource server](/program/extend/sdk-as-server/).
+2. Use another Viam SDK (for example, the Python SDK) to [create a custom resource server](/program/extend/custom-components-remotes/).
 
 This tutorial demonstrates option two, using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 

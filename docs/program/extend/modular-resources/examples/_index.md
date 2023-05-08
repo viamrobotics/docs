@@ -11,12 +11,8 @@ images: ["/tutorials/img/intermode/rover_outside.png"]
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 ---
 
-The easiest way to familiarize yourself with creating and using modular resources is to:
-
-1. Follow one of these example [tutorials](#tutorials) or clone one of these example [repositories](#repositories).
-2. Control the custom resource on [the Viam app's](https://app.viam.com) [__CONTROL__ tab](/manage/fleet/#remote-control).
-3. Control the custom resource programmatically with a [Viam SDK](/program/sdk-as-client/).
-4. Experiment by changing the resource's behavior.
+To familiarize yourself with creating and using modular resources, follow one of these example [tutorials](#tutorials) or clone one of these example [repositories](#repositories).
+Once you have created a modular resource, you can test your custom resource using the [Control tab](/manage/fleet/#remote-control) and program it using the [Viam SDKs](/program/sdks/).
 
 ## Tutorials
 
