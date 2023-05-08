@@ -4,6 +4,8 @@ linkTitle: "Installation Guide"
 weight: 20
 no_list: true
 type: docs
+icon: "/installation/img/thumbnails/install.png"
+images: ["/installation/img/thumbnails/install.png"]
 aliases:
     - /installation/prepare/
     - /installation/macos-install/
@@ -195,13 +197,6 @@ You can disable this by commenting out the ExecPre line (the one with --aix-upda
 ## Next Steps
 
 {{< cards >}}
-{{% manualcard link="manage" size="small" %}}
-![Manage](img/thumbnails/manage.png)
-<h4>Control and troubleshoot <code>viam-server</code>.</h4>
-{{% /manualcard %}}
-
-{{% manualcard link="update" size="small" %}}
-![Update](img/thumbnails/update.png)
-<h4>Keep your version of <code>viam-server</code> up to date.</h4>
-{{% /manualcard %}}
+  {{% card link="/installation/manage" size="small" %}}
+  {{% card link="/installation/update" size="small" %}}
 {{< /cards >}}

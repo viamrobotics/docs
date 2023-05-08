@@ -230,6 +230,19 @@ p, li {
   }
 }
 
+@media (max-width: 768px) {
+  .td-main main {
+    margin-top: 0.5rem;
+  }
+}
+
+.td-navbar .td-navbar-nav-scroll {
+  height: unset;
+}
+
+.td-navbar .td-navbar-nav-scroll .navbar-nav {
+  padding-bottom: unset;
+}
 
 /* font weight */
 
@@ -271,10 +284,9 @@ END MARKETING CSS
 /* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/*/
 /* I added margins, changed Preload to 600px. The default was 100% */
 
-.video-shortcode {
+.td-content > .video-shortcode, .video-shortcode {
   margin: 12px 0 12px 0;
   border:solid 1px;
-  border-color: blue;
   max-width: 100%;
   width: 600px;
   height: auto;

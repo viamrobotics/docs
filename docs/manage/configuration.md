@@ -174,18 +174,14 @@ Components of the same model are supported using the same low-level code.
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
 
-{{% alert title="Tip" color="tip" %}}
-
-Find specific information on how to configure each supported component type in its respective [documentation](/components/).
-
-{{% /alert %}}
-
-<br>
+For specific information on how to configure each supported component type, see the [components documentation](/components/).
 
 {{% alert title="Tip" color="tip" %}}
 
 When you configure a component on the **config** tab, it will also appear on the **control** tab which gives you an interface to test and interact with it.
 Meanwhile the **code sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdk-as-client/).
+
+{{<gif webm_src="../img/control.webm" mp4_src="../img/control.mp4" alt="Using the control tab">}}
 
 {{% /alert %}}
 

@@ -83,7 +83,7 @@ If you have configured a camera component, a window in the **control** tab displ
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
 For local communication between [parts](../../parts-and-remotes#robot-parts) Viam uses gRPC or WebRTC.
 
-![Example Camera view inside Viam app](/components/camera/img/example_camera_image.png)
+{{<gif webm_src="../../img/control.webm" mp4_src="../../img/control.mp4" alt="Using the control tab" max-width="800px">}}
 
 ### Code Sample
 
