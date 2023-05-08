@@ -9,29 +9,32 @@ tags: ["client", "sdk"]
 ---
 
 Many component API methods have the option to pass in `extra` parameters.
-These are optional to pass into method calls with the Python SDK, but you must specify or pass them in as `nil` with the Go SDK. TODO: unsure if putting here or at the end
-
+<!-- These are optional to pass into method calls with the Python SDK, but you must specify or pass them in as `nil` with the Go SDK.  -->
 Utilize `extra` parameters as follows:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-``` python
-# Must import Optional, Any from Typing
-
-extra (Optional[Dict[str, Any]])
-
-extra = 
-```
-
 `Optional[]` (TODO: link) indicates you are required to pass in an object of either type `Dict[str, Any]` or type `None` as a parameter when calling this method.
 You do not have to specify the object of type `None`, not specifying an object for this parameter is sufficient.
 
-A `Dict[str, Any]` is a [dictionary]() with keys of type `str` and values of type `Any`, which can be any type.
+A `Dict[str, Any]` is a [dictionary](https://docs.python.org/3/tutorial/datastructures.html#dictionaries) with keys of type [`str`](https://docs.python.org/3/library/stdtypes.html#str) and values of type [`Any`](https://docs.python.org/3/library/typing.html#typing.Any), which can be any type.
 The keys can be whatever information you would like to pass.
+
 An example:
 
 You can check the values of the keys you have passed to methods in the API specifications as follows:
+
+``` python {class="line-numbers linkable-line-numbers"}
+from typing import Optional, Dict, Any
+
+extra (Optional[Dict[str, Any]])
+
+@abc.abstractmethod
+async def some_function(self, pose: Pose, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        if extra["arm_hosted_kinematics"](bool):
+            usingHostedKinematics = true
+```
 
 Use this to pass information to the {{< glossary_tooltip term_id="resource" text="resource's" >}} drivers' that is not specified as a parameter in the resource type's base API specification.
 To do this, code your own modified implementation of the resource type API for a model.
@@ -47,6 +50,7 @@ extra (map[string]interface{})
 extra := map[string]interface{}{"motion_profile": "pseudolinear", "timeout": 20, "tolerance": 1.1}
 
 func SomeFunction(ctx context.Context, pos spatialmath.Pose, extra map[string]interface{}) error {
+    // If extra["arm_hosted_kinematics"] is present, set usingHostedKinematics to the value of extra["arm_hosted_kinematics"]
     if runtimeKinematicsSetting, ok := extra["arm_hosted_kinematics"].(bool); ok {
         usingHostedKinematics = runtimeKinematicsSetting
     }
@@ -71,7 +75,11 @@ func main() {
         vals[i] = v
     }
     PrintAll(vals)
-}
+
+    mm = make(map[string]int) 
+    
+    // hits[Key{"/", "vn"}]++
+
 ```
 
 `extra (map[string]interface{})` indicates you are required to pass in an object of either type `map[string]interface{}` or type `nil` as a parameter when calling this method.
