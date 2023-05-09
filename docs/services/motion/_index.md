@@ -155,7 +155,7 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
 - `constraints` ([Constraints](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints)): Pass in optional [motion constraints](./constraints/).
   By default, motion is unconstrained with the exception of obstacle avoidance.
 
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -263,7 +263,7 @@ As of April 21, 2023, [arm](/components/arm/) is the only component so supported
 
 - `worldState` ([WorldState](https://pkg.go.dev/go.viam.com/rdk/referenceframe#WorldState)): Not used. See [note above](#move-vs-movetoposition).
 
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -389,7 +389,7 @@ gripperPoseInObjectFrame = await motion.get_pose(
   This new frame system builds off the robot's frame system and incorporates the `Transform`s provided.
   If the result of adding the `Transform`s results in a disconnected frame system, an error is thrown.
 
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
