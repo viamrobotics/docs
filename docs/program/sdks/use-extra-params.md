@@ -5,11 +5,11 @@ weight: 40
 type: "docs"
 description: "Using extra parameters with Viam's SDKs."
 icon: "/services/img/icons/sdk.svg"
-tags: ["client", "sdk"]
+tags: ["sdk", "extra", "extend"]
 ---
 
 Many component API methods have the option to pass in `extra` parameters.
-In the Python SDK these are typed as `Optional[Dict[str, Any]]` and in the Go SDK `map[string]interface{}`.
+These are typed as `Optional[Dict[str, Any]]` in the Python SDK and `map[string]interface{}` in the Go SDK.
 
 Here's how to [pass correctly typed objects to](#define) and [utilize](#utilize) these `extra` parameters.
 
@@ -46,7 +46,7 @@ If passing an object of type `None`, you do not have to specify `None` in the me
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-`extra (map[string]interface{})` indicates you are required to pass in an object of either type `map[string]interface{}` or type `nil` as a parameter when calling this method.
+`extra (map[string]interface{})` indicates you are required to pass in an object of either type `map[string]interface{}` or `nil` as a parameter when calling this method.
 
 An object of type `map[string]interface{}` is an [map](https://go.dev/blog/maps) with keys of type [`string`](https://go.dev/blog/strings) and values of [any type that you have cast to an interface](https://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go).
 
