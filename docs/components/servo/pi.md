@@ -56,18 +56,18 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-        "name": "your-servo-name",
+        "name": "local",
+        "type": "board",
+        "model": "pi"
+    }, 
+    {
+        "name": "my_servo",
         "type": "servo",
         "model": "pi",
         "attributes": {
             "pin": "16",
-            "board": "your-board-name"
+            "board": "local"
         }
-    }, 
-    {
-        "name": "your-board-name",
-        "type": "board",
-        "model": "pi"
     }
   ]
 }
