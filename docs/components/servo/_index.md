@@ -10,10 +10,10 @@ no_list: true
 # SME: #team-bucket
 ---
 
-A *servo* is a ["RC" or "hobby" servo motor](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
+The servo component supports ["RC" or "hobby" servo motors](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
 These are small motors with built-in potentiometer position sensors, enabling you to control the angular position of the servo precisely.
 
-As servos can use a lot of power, drawing voltage away from a [board](/components/board), you should power your servo with its own power supply.
+As servos can use a lot of power, drawing voltage away from a [board](/components/board), you should power your servo with its own power supply in most cases.
 The following shows an example wiring diagram for a hobby servo wired to a [`pi` board](/components/board/pi):
 
 ![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](img/servo-wiring.png)
@@ -34,8 +34,8 @@ Most robots with a servo need at least the following hardware:
 
 The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
 
-If you have another type of servo motor, it is probably coupled with an [encoder](/components/encoder), not potentiometer, for position feedback.
-Check your device's data sheet and configure these servos as [encoded motors](/components/motor/gpio/encoded-motor).
+If your motor is coupled with an [encoder](/components/encoder), not a potentiometer, for position feedback, you should not configure it as a servo.
+Check your device's data sheet and configure that type of servo as an [encoded motor](/components/motor/gpio/encoded-motor).
 
 {{% /alert %}}
 

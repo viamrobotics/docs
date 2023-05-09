@@ -44,7 +44,8 @@ Edit and fill in the attributes as applicable.
                 "pin": "<your-pin-number>",
                 "board": "<your-board-name>"
             }
-        }, ... <insert your board component config>
+        },
+        ... // insert your board component config
     }
 ```
 
