@@ -89,9 +89,3 @@ Refer to the following JSON examples for differences in configuration between th
 
 {{% /tab %}}
 {{< /tabs >}}
-
-<<<<<<< HEAD
-Note that this example sets the `fake` arm to act as a  `ur5e` arm.
-=======
-Note that this example sets the `fake` arm to act as a `ur5e` arm.
->>>>>>> ac2c5739 (Apply suggestions from code review)

@@ -13,7 +13,7 @@ Configure an `xArmLite` arm to integrate a [UFACTORY xArm 5 Lite](https://www.uf
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your arm, select the type `arm`, and select the `xArmLite` model.
 
