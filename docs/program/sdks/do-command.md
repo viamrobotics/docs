@@ -8,4 +8,4 @@ icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 ---
 
-- Use do command
+- Use do command across resources

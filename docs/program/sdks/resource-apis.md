@@ -8,9 +8,12 @@ icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 ---
 
+Similar info to modular resources re. resource definitions and namespacing. 
+
 - Resource Base API
 - Component APIs
 - Service APIs
+- GPIOPin etc apis - where to put these addt. interfaces?
 
 Component API:
 
