@@ -1,7 +1,7 @@
 ---
 title: "Using the Do Command with Viam's SDKs"
 linkTitle: "Do Command"
-weight: 40
+weight: 100
 type: "docs"
 description: "Using the do command with Viam's SDKs."
 icon: "/services/img/icons/sdk.svg"
