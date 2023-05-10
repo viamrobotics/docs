@@ -3,15 +3,79 @@ title: "Using Extra Params with Viam's SDKs"
 linkTitle: "Extra Params"
 weight: 40
 type: "docs"
-description: "Using extra parameters with Viam's SDKs."
+description: "Using the extra parameter on resource API methods with Viam's SDKs."
 icon: "/services/img/icons/sdk.svg"
 tags: ["sdk", "extra", "extend"]
 ---
 
-Many component API methods have the option to pass in `extra` parameters.
-These are typed as `Optional[Dict[str, Any]]` in the Python SDK and `map[string]interface{}` in the Go SDK.
+How to [utilize](#utilize) and [define](#define) the `extra` parameters that many {{< glossary_tooltip term_id="resource" text="resource" >}} API methods offer in the Go and Python SDKs.
 
-Here's how to [pass correctly typed objects to](#define) and [utilize](#utilize) these `extra` parameters.
+## Utilize
+
+Use these `extra` parameters to pass information to a {{< glossary_tooltip term_id="resource" text="resource's" >}} driver that is not specified as a parameter in the [built-in resource type's API specification](/program/extend/modular-resources/#apis).
+
+To do this, you must code your own modified implementation of the resource type's API for a model.
+See [Extend Viam with Modular Resources](/program/extend/modular-resources/) for more information and [instructions](/program/extend/modular-resources/#use-a-modular-resource-with-your-robot) on modifying API specifications.
+
+An example of how to check the values of keys in an `extra` parameter of a [built-in resource API method](/program/sdks/#add-control-logic), the sensor component's [Readings](/components/sensor/#readings):
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+``` python {class="line-numbers linkable-line-numbers"}
+# Readings depends on extra parameters.
+@abc.abstractmethod
+async def get_readings(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+
+    # Define an empty dictionary for readings.
+    readings = {}
+
+    # If extra["type"] is temperature or humidity, get the temperature or humidity from helper functions and return these values as the readings the sensor has provided.
+    if extra["type"] is "temperature":
+        readings["type"] = get_temp()
+    elif extra["type"] is "humidity":
+        readings["type"] = get_humidity()
+    # If the type is not one of these two cases, raise an exception.
+    else: 
+        raise Exception(f"Invalid sensor reading request: type {type}")
+
+    return readings
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Readings depends on extra parameters.
+func (s *mySensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+
+    // Define an empty map for readings.
+    readings := map[string]interface{}{}
+
+    // If extra["type"] is temperature or humidity, get the temperature or humidity from helper methods and return these values as the readings the sensor has provided.
+    if readingType, ok := extra["type"]; ok {
+        rType, ok := readingType.(string)
+        if !ok {
+            return nil, errors.New("invalid sensor reading request")
+        }
+        switch rType {
+        case "temperature":
+            readings[rType] = getTemp()
+        case "humidity":
+            readings[rType] = getHumidity()
+        // If the type is not one of these two cases, return an error.
+        default:
+            return nil, errors.Errorf("Invalid sensor reading request: type %s", rType)
+        }
+    }
+
+    // Return the readings and `nil`/no error.
+    return readings, nil
+}
+```
+
+{{% /tab %}}
+{{% /tabs %}}
 
 ## Define
 
@@ -26,16 +90,16 @@ For example:
 
 ``` python {class="line-numbers linkable-line-numbers"}
 async def main():
-    ... # Connect to the robot
+    ... # Connect to the robot.
 
-    # Get your resource from the robot
-    your_resource = YourResource.from_robot(robot, "your-resource")
+    # Get your sensor resource from the robot.
+    your_sensor = YourSensor.from_robot(robot, "your-sensor")
     
-    # Define a dictionary containing extra information
-    extra = {"one": "one", "two": 2, "three": 3.0}
+    # Define a dictionary containing extra information.
+    your_info = {"type": "temperature", "description": "more info", "id": 123}
 
-    # Send this information in an call to your resource's API
-    await your_resource.some_function("this is required", extra)
+    # Send this information in an call to the sensor resource's API.
+    await your_sensor.get_readings(extra=your_info)
 ```
 
 {{% alert title="Note" color="note" %}}
@@ -56,14 +120,14 @@ For example:
 func main() {
     ... // Connect to the robot
 
-    // Get your resource from the robot
-    yourResource, err := YourResource.FromRobot(robot, "your-resource")
+    // Get your sensor resource from the robot.
+    yourSensor, err := YourSensor.FromRobot(robot, "your-sensor")
 
-    // Define a map containing extra information
-    extra := map[string]interface{}{"one": "one", "two": 2, "three": 3.0}
+    // Define a map containing extra information.
+    your_info := map[string]interface{}{"type": "temperature", "description": "more info", "id": 123}
 
-    // Send this information in an call to your resource's API
-    err := yourResource.SomeFunction(context.Background(), "this is required", extra)
+    // Send this information in an call to the sensor resource's API.
+    err := yourSensor.Readings(context.Background(), your_info)
 }
 ```
 
@@ -72,46 +136,5 @@ func main() {
 If passing an object of type `nil`, you must specify `nil` in the method call or the method will fail.
 
 {{% /alert %}}
-{{% /tab %}}
-{{% /tabs %}}
-
-## Utilize
-
-Use these `extra` parameters to pass information to a {{< glossary_tooltip term_id="resource" text="resource's" >}} driver that is not specified as a parameter in the [built-in resource type's API specification](/program/extend/modular-resources/#apis).
-
-To do this, you must code your own modified implementation of the resource type's API for a model.
-See [Extend Viam with Modular Resources](/program/extend/modular-resources/) for more information and [instructions](/program/extend/modular-resources/#use-a-modular-resource-with-your-robot) on modifying API specifications.
-
-An example of how to check the values of keys in an `extra` parameter of a [resource API method](/program/sdks/#add-control-logic):
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-``` python {class="line-numbers linkable-line-numbers"}
-@abc.abstractmethod
-async def some_function(self, required_param: str, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-
-    # If extra["one"] is present, set someOption to the value of extra["one"]
-    if extra["one"]:
-        someOption = extra["one"]
-
-    ... # The rest of the function
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-func SomeFunction(ctx context.Context, required_param string, extra map[string]interface{}) error {
-
-    // If extra["one"] is present, set someOption to the value of extra["one"]
-    if yourValue, ok := extra["one"].(bool); ok {
-        someOption = yourValue
-    }
-
-    ... // The rest of the function
-}
-```
-
 {{% /tab %}}
 {{% /tabs %}}
