@@ -541,7 +541,7 @@ The custom model is configured as a component with the name "my-custom-base-1" a
         "type": "base",
         "name": "my-custom-base-1",
         "model": "acme:demo:mybase",
-        "namespace": "acme",
+        "namespace": "rdk",
         "attributes": {},
         "depends_on": [ "main-board" ]
         }
