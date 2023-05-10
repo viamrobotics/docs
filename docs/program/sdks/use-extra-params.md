@@ -59,7 +59,7 @@ func main() {
     // Get your resource from the robot
     yourResource, err := YourResource.FromRobot(robot, "your-resource")
 
-    // Define a mapping containing extra information
+    // Define a map containing extra information
     extra := map[string]interface{}{"one": "one", "two": 2, "three": 3.0}
 
     // Send this information in an call to your resource's API
