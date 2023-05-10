@@ -13,6 +13,15 @@ Viam is a complete software platform for robots.
 Learn about [the Viam platform in 3 minutes](viam).
 {{< /alert >}}
 
+{{< cards >}}
+{{% card link="/installation/prepare/rpi-setup/" size="xs" %}}
+{{% card link="/installation/prepare/beaglebone-setup/" size="xs" %}}
+{{% card link="/installation/prepare/sk-tda4vm/" size="xs" %}}
+{{% card link="/installation/prepare/jetson-nano-setup/" size="xs" %}}
+{{% card link="/installation/prepare/jetson-agx-orin-setup/" size="xs" %}}
+{{% card link="/installation/prepare/microcontrollers" size="xs" %}}
+{{< /cards >}}
+
 <div class="container td-max-width-on-larger-screens">
   <div class="row">
     <div class="col landing-hover-card">
@@ -57,12 +66,3 @@ Learn about [the Viam platform in 3 minutes](viam).
     </div>
     </div>
 </div>
-
-{{< cards >}}
-{{% card link="/installation/prepare/rpi-setup/" size="xs" %}}
-{{% card link="/installation/prepare/beaglebone-setup/" size="xs" %}}
-{{% card link="/installation/prepare/sk-tda4vm/" size="xs" %}}
-{{% card link="/installation/prepare/jetson-nano-setup/" size="xs" %}}
-{{% card link="/installation/prepare/jetson-agx-orin-setup/" size="xs" %}}
-{{% card link="/installation/prepare/microcontrollers" size="xs" %}}
-{{< /cards >}}
