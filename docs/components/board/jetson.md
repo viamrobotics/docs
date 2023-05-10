@@ -11,7 +11,7 @@ tags: ["board", "components"]
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow one of our Jetson [setup guides](/installation/prepare) to prepare your board for running `viam-server` before configuring a `jetson` board.
+Follow one of our Jetson [setup guides](installation/prepare/) to prepare your board for running `viam-server` before configuring a `jetson` board.
 
 {{% /alert %}}
 
