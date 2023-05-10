@@ -316,8 +316,8 @@ class MyBase(Base, Reconfigurable):
 
     # Constructor
     @classmethod
-    def newBase(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        base := cls(MyBase(config.name))
+    def new_base(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+        base = cls(MyBase(config.name))
         base.reconfigure(config, dependencies)
         return base
 
@@ -393,7 +393,7 @@ from viam.resource.registry import Registry, ResourceCreatorRegistration
 
 from .my_base import MyBase
 
-Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new, MyBase.validate_config))
+Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
 ```
 
 {{% /tab %}}
