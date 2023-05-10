@@ -525,8 +525,9 @@ The `attributes` available vary depending on your implementation.
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
-The following is an example configuration for a motor modular resource implementation.
-It registers a custom model `viam-contributor:motor:super-custom` to use with the Viam [motor API](/components/motor#api):
+The following is an example configuration for a base modular resource implementation.
+The configuration adds `acme:demo:mybase` as a modular resource from the module `my_base`.
+The custom model is configured as a component with the name "my-custom-base-1" and can be interfaced with the Viam [base API](/components/base#api):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -537,18 +538,18 @@ It registers a custom model `viam-contributor:motor:super-custom` to use with th
             "model": "pi"
         },
         {
-        "type": "motor",
-        "name": "super-motor-1",
-        "model": "viam-contributor:motor:super-custom",
-        "namespace": "rdk",
+        "type": "base",
+        "name": "my-custom-base-1",
+        "model": "acme:demo:mybase",
+        "namespace": "acme",
         "attributes": {},
         "depends_on": [ "main-board" ]
         }
     ],
     "modules": [
     {
-      "name": "super-motor",
-      "executable_path": "/home/me/super-custom-motor/run.sh"
+      "name": "my-custom-base",
+      "executable_path": "/home/my_username/my_base/run.sh"
     }
   ]
 }
