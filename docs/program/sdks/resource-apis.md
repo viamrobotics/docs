@@ -1,14 +1,14 @@
 ---
 title: "Resource APIs with Viam's SDKs"
 linkTitle: "Resource APIs"
-weight: 100
+weight: 40
 type: "docs"
 description: "Using built-in resource API methods to control the components and services on your robot with Viam's SDKs."
 icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 ---
 
-Similar info to modular resources re. resource definitions and namespacing. 
+Similar info to modular resources re. resource definitions and namespacing.
 
 - Resource Base API
 - Component APIs
