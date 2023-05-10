@@ -13,15 +13,6 @@ Viam is a complete software platform for robots.
 Learn about [the Viam platform in 3 minutes](viam).
 {{< /alert >}}
 
-{{< cards >}}
-{{% card link="/installation/prepare/rpi-setup/" size="xs" %}}
-{{% card link="/installation/prepare/beaglebone-setup/" size="xs" %}}
-{{% card link="/installation/prepare/sk-tda4vm/" size="xs" %}}
-{{% card link="/installation/prepare/jetson-nano-setup/" size="xs" %}}
-{{% card link="/installation/prepare/jetson-agx-orin-setup/" size="xs" %}}
-{{% card link="/installation/prepare/microcontrollers" size="xs" %}}
-{{< /cards >}}
-
 <div class="container td-max-width-on-larger-screens">
   <div class="row">
     <div class="col landing-hover-card">
@@ -45,6 +36,22 @@ Learn about [the Viam platform in 3 minutes](viam).
     </div>
     </div>
   </div>
+
+<div class="board-carousel">
+
+{{< cards >}}
+{{% card link="/installation/prepare/rpi-setup/" size="xxs" board_model="Raspberry Pi 4" %}}
+{{% card link="/installation/prepare/beaglebone-setup/" size="xxs" board_model="Beaglebone" %}}
+{{% card link="/installation/prepare/rpi-setup/" size="xxs" board_model="Raspberry Pi Zero 2 W" %}}
+{{% card link="/installation/prepare/sk-tda4vm/" size="xxs" board_model="Texas Instruments TDA4VM" %}}
+{{% card link="/installation/prepare/jetson-nano-setup/" size="xxs" board_model="NVIDIA Jetson Nano" %}}
+{{% card link="/installation/prepare/jetson-agx-orin-setup/" size="xxs" board_model="NVIDIA Jetson AGX Orin" %}}
+{{% card link="/installation/prepare/microcontrollers" size="xxs" board_model="Espressif ESP32" %}}
+{{% card link="/installation/prepare/microcontrollers" size="xxs" board_model="PCA9686 Arduino I2C Interface" %}}
+{{< /cards >}}
+
+</div>
+
   <div class="row">
     <div class="col landing-hover-card">
         <div class="landing-hover-card-padding teal">
@@ -65,4 +72,5 @@ Learn about [the Viam platform in 3 minutes](viam).
         </div>
     </div>
     </div>
+
 </div>

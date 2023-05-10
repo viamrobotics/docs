@@ -105,6 +105,13 @@ h5, .h5 {
   font-size: 0.833 !important;
 }
 
+h6, .h6 {
+  font-size: 0.833rem !important;
+  line-height: 1.0625rem;
+  // font-weight: 400;
+  // font-style: italic;
+}
+
 h7, .h7 {
   font-size: 0.833rem !important;
   line-height: 1.0625rem;
@@ -478,6 +485,19 @@ END MARKETING CSS
 
 /* END CSS FOR EXPANDER */
 
+.board-carousel {
+  background-color: whitesmoke;
+  // margin-left: 0%;
+  // margin: 1em auto;
+  min-width: 400px;
+  max-width: 700px;
+  border: 1px solid #000;
+  // box-shadow: 5px 5px 0 0 #000;
+  overflow-x: auto;
+  // display: flex;
+  // scroll-snap-type: x mandatory;
+}
+
 /* START card styling */
 .hover-card {
   border: 1px solid #000;
@@ -550,12 +570,29 @@ END MARKETING CSS
     max-width: 40%;
   }
 
+  .hover-card.hover-card-xxs {
+    min-width: 25%;
+    width: 25%;
+    max-width: 25%;
+    display: unset;
+    border: unset;
+    box-shadow: unset;
+  }
+
 }
 
 @media (min-width: 650px) { // at least two cards fit next to one another
   .hover-card.hover-card-small {
     min-width: 250px;
     max-width: 250px;
+  }
+
+  .hover-card.hover-card-xxs {
+    min-width: 100px;
+    max-width: 100px;
+    display: unset;
+    border: unset;
+    box-shadow: unset;
   }
 
   a {
@@ -570,7 +607,6 @@ END MARKETING CSS
     max-width: 300px;
   }
 }
-
 
 .landing-hover-card {
   margin: 1em auto;
