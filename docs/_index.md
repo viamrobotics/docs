@@ -151,7 +151,6 @@ Learn about [the Viam platform in 3 minutes](viam).
     </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col landing-hover-card">
         <div class="landing-hover-card-padding teal">
@@ -170,5 +169,4 @@ Learn about [the Viam platform in 3 minutes](viam).
         </div>
     </div>
     </div>
-
 </div>
