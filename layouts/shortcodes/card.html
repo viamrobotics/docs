@@ -1,12 +1,11 @@
 {{ $size := (.Get "size") }}
 {{ $customTitle := (.Get "custom") }}
-{{ $carouselTitle := (.Get "board_model") }}
 {{ $link := (path.Clean (.Get "link")) }}
 {{ $baseurl := .Site.BaseURL }}
 {{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
   {{ $baseurl := (substr .Site.BaseURL 0 -1) }}
 {{ end }}
-<div class="col hover-card {{ if eq $size "small" }}hover-card-small{{ end }}{{ if eq $size "xs" }}hover-card-xs{{ end }}{{ if eq $size "xxs" }}hover-card-xxs{{ end }}">
+<div class="col hover-card {{ if eq $size "small" }}hover-card-small{{ end }}{{ if eq $size "xs" }}hover-card-xs{{ end }}">
   {{ if site.GetPage ((relURL $link) | string) }}
     {{ with site.GetPage ((relURL $link) | string) }}
       <a href="{{.RelPermalink}}">
@@ -31,15 +30,11 @@
         <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
           {{ if $customTitle }}
             <h4>{{ $customTitle }}</h4>
-          {{ else if $carouselTitle }}
-            <h6>{{ $carouselTitle }}</h6>
           {{ else }}
             <h4>{{ .LinkTitle }}</h4>
           {{ end }}
           {{ if ne $size "xs" }}
-          {{ if ne $size "xxs" }}
           <p> {{ .Description }} </p>
-          {{ end }}
           {{ end }}
         </div>
       </a>

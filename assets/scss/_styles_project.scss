@@ -485,18 +485,18 @@ END MARKETING CSS
 
 /* END CSS FOR EXPANDER */
 
+/* START board carousel styling */
+
 .board-carousel {
-  background-color: whitesmoke;
-  // margin-left: 0%;
-  // margin: 1em auto;
-  min-width: 400px;
-  max-width: 700px;
-  border: 1px solid #000;
-  // box-shadow: 5px 5px 0 0 #000;
+  display: block;
+  max-width: 80%;
+  flex-wrap: nowrap;
   overflow-x: auto;
-  // display: flex;
-  // scroll-snap-type: x mandatory;
+  display: flex;
+  scroll-snap-type: x mandatory;
 }
+
+/* END CSS FOR BOARD CAROUSEL */
 
 /* START card styling */
 .hover-card {
@@ -571,10 +571,9 @@ END MARKETING CSS
   }
 
   .hover-card.hover-card-xxs {
-    min-width: 25%;
-    width: 25%;
-    max-width: 25%;
-    display: unset;
+    min-width: 15%;
+    width: 15%;
+    max-width: 15%;
     border: unset;
     box-shadow: unset;
   }
@@ -590,7 +589,6 @@ END MARKETING CSS
   .hover-card.hover-card-xxs {
     min-width: 100px;
     max-width: 100px;
-    display: unset;
     border: unset;
     box-shadow: unset;
   }
