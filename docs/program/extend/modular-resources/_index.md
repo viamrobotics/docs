@@ -380,7 +380,7 @@ class MyBase(Base, Reconfigurable):
 
     # is_moving: check if either motor on the base is moving with motors' is_powered
     async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs) -> bool:
-        return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_moving(extra=extra, timeout=timeout)[0]
+        return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
 ```
 
 <file>init.py</file>
