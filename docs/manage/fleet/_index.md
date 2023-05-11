@@ -78,6 +78,12 @@ You can also revert to an earlier configuration from the History tab.
 For some configuration aspects you may require physical access to the robot so you can see how components are connected.
 {{< /alert >}}
 
+### Package Deployment
+
+_Coming soon._
+
+You and your collaborators can deploy control logic, [modular resources](/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+
 ### Remote control
 
 Everyone who has access to the robot can remotely control it on the app's [**Control** tab](robots/#control).

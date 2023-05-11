@@ -27,7 +27,7 @@ You will not need to write a single line of code to integrate them, and swapping
 You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
 - **Architecture**:
 You can build simple robots or multi-part robots that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
-- **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/program/extend/) Viam.
+- **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/extend) Viam.
 
 Join the [**Viam community**](https://discord.gg/viam) to collaborate during planning and beyond.
 

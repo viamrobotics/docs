@@ -1,9 +1,9 @@
 ---
 title: "Get Started Programming your Robot with Viam's SDKs"
-linkTitle: "Write Code"
+linkTitle: "Get Started with Viam's SDKs"
 weight: 40
 type: "docs"
-description: "Access and control your robot with the resource and robot APIs."
+description: "Get started writing a client application with Viam's SDKs."
 icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 no_list: true
@@ -12,11 +12,22 @@ aliases:
   - "/program/sdk-as-client"
 ---
 
-## Connect to your robot
+Viam offers software development kits (SDKs) in popular languages which
 
-## Code Sample
+- Streamline connection, authentication, and encryption against a server using {{< glossary_tooltip term_id="webrtc" >}}
+- Enable you to interface with robots without calling the `viam-server` [gRPC APIs for robot controls](https://github.com/viamrobotics/api) directly
 
-{{% alert title="Note" color="note" %}}
+![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](../img/sdks/image1.png)
+
+Use the SDK of your preferred language to write code to control your robots.
+
+Viam currently offers SDKs for the following three languages:
+
+| Python | Go | TypeScript |
+| ------ | -- | ---------- |
+| https://python.viam.dev/ | https://pkg.go.dev/go.viam.com/rdk | https://ts.viam.dev/ |
+
+## Requirements
 
 Before you get started, ensure that you:
 
@@ -24,8 +35,10 @@ Before you get started, ensure that you:
 2. Create a new robot.
 3. Go to the **Setup** tab and follow the instructions there.
 4. [Configure](../../manage/configuration) your robot.
+<!-- TODO: above is really the most important requirement, how to separate out for non-app users? -->
 
-{{% /alert %}}
+- TODO: Go over why you need to install these SDKs and what computer you need to have them on!
+- can help clear up the thing matt was saying about potential candidate being confused about what computer she needed to have viam-server or an SDK installed on? 
 
 The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
 
@@ -202,7 +215,32 @@ print(await movementSensor.readings())
 {{% /tab %}}
 {{< /tabs >}}
 
-## Add Control Logic
+### `import`
+
+- talks about how code sample should generally generate all the required resources but if not or if you're not working with that, describes what they'll be?
+
+### `connect()`
+
+{{< readfile "/static/include/snippet/secret-share.md" >}}
+
+- where to find robot secret, location secret, etc
+
+### `main()`
+  
+- (THIS LANGUAGE IS PYTHON SPECIFIC, WILL NEED TO ADJUST FOR DIFFERENT TABS) In the main() function of your code, as shown in the above Code Sample, you must ...
+- directs to "interface with resources" page
+
+<!-- #### The Control Tab: built-in UI for control
+
+- this maybe shouldn't go here but I want users to be more aware of this  -->
+
+## Run Code
+
+-- directs to "run your code page" lol 
+
+## Debug
+
+- logging tab or accessing logs when running viam-server process on whatever computer is doing so 
 
 <!-- You can add control logic for each [component](/components/) of your robot by using the built-in component methods.
 

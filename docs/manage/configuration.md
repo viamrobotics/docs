@@ -208,9 +208,9 @@ See the [services documentation](/services/) for more information.
 
 ## Modules
 
-[Modular resources](/program/extend/modular-resources/) are a way to add resource types or models that are not built into Viam.
+[Modular resources](/extend/modular-resources/) are a way to add resource types or models that are not built into Viam.
 
-To add a modular resource as a component or service of your robot, configure a module per the [modular resource documentation](/program/extend/modular-resources/#use-a-modular-resource-with-your-robot).
+To add a modular resource as a component or service of your robot, configure a module per the [modular resource documentation](/extend/modular-resources//#use-a-modular-resource-with-your-robot).
 
 ## Remotes
 

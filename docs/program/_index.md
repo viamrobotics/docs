@@ -1,5 +1,5 @@
 ---
-title: "Program a Robot"
+title: "Program your Robots with Viam's SDKs"
 linkTitle: "Program Robots"
 childTitleEndOverwrite: "Program Robots"
 description: "Use the SDK of your preferred language to write code to control your robots."
@@ -7,6 +7,7 @@ weight: 50
 simple_list: false
 type: docs
 images: ["/img/code.png"]
+no_list: true
 ---
 
 Viam offers software development kits (SDKs) in popular languages which
