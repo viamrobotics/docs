@@ -6,18 +6,20 @@ type: "docs"
 description: "A hobby servo is a special type of small motor whose position you can precisely control."
 tags: ["servo", "components"]
 icon: "/components/img/components/servo.svg"
+no_list: true
 # SME: #team-bucket
 ---
 
-The Viam *servo* component supports hobby servos: small motors with built-in closed-loop control.
-Servos can be useful in robotics because their position is easily and precisely controlled.
+The servo component supports ["RC" or "hobby" servo motors](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
+These are small motors with built-in potentiometer position sensors, enabling you to control the angular position of the servo precisely.
 
-- The servo component does not support servomotors.
-To configure an industrial servomotor, use the [motor](/components/motor/) component with an [encoder](/components/encoder/).
+As servos can use a lot of power, drawing voltage away from a [board](/components/board), you should power your servo with its own power supply in most cases.
+The following shows an example wiring diagram for a hobby servo wired to a [`pi` board](/components/board/pi):
 
-Example wiring diagram for a servo wired to a Raspberry Pi board:
+![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](img/servo-wiring.png)
 
-![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](../img/servo/servo-wiring.png)
+The colors of the servo wires in this diagram may not match your servo.
+Refer to your servo's data sheet for wiring specifications.
 
 Most robots with a servo need at least the following hardware:
 
@@ -26,85 +28,26 @@ Most robots with a servo need at least the following hardware:
 - A power supply for the board
 - A power supply for the servo
 
-{{% alert title="Note" color="note" %}}
+## Configuration
 
-Instead of powering the servo with a separate power supply, you may choose to power it using the 5V and ground pins on the board.
-This can work as long as the servo is not under any significant load.
-Keep in mind that if the servo draws too much power, it can cause the board to temporarily lose power.
+{{% alert title="Tip" color="tip" %}}
+
+The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
+
+If your motor is coupled with an [encoder](/components/encoder), not a potentiometer, for position feedback, you should not configure it as a servo.
+Check your device's data sheet and configure that type of servo as an [encoded motor](/components/motor/gpio/encoded-motor).
 
 {{% /alert %}}
 
-## Configuration
+Supported servo models include:
 
-Refer to the following example configuration file, including the board and servo:
+| Model | Description |
+| ----- | ----------- |
+| [`fake`](fake) | A model used for testing, with no physical hardware. |
+| [`gpio`](gpio) | A hobby servo wired to any model of [board](/components/board/#configuration) besides `pi`. |
+| [`pi`](pi) | A hobby servo wired to a [Raspberry Pi board](/components/board/pi). |
 
-{{< tabs name="Example Servo Config" >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "name": "example-pi",
-      "type": "board",
-      "model": "pi"
-    },
-    {
-      "name": "example-name",
-      "type": "servo",
-      "model": "pi",
-      "attributes": {
-        "pin": "16",
-        "board": "example-pi"
-      }
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< tab name="Annotated JSON" >}}
-
-<img src="../img/servo/servo-json.png" alt="An example servo config file with explanatory annotations."></img>
-
-{{< /tab >}}
-{{< /tabs >}}
-
-**Required Fields**:
-
-- **Name**: a name that identifies the component
-
-- **Type**: `servo`
-
-- **Model**: Either `pi`, `gpio`, or `fake`:
-
-  - `pi` is the recommended model when configuring a hobby servo wired to a Raspberry Pi.
-  Unlike other servo models, it is implemented as part of the [`pi` board component](https://github.com/viamrobotics/rdk/blob/main/components/board/pi/impl/servo.go).
-  - `gpio` is the general-purpose model, compatible with Viam-supported boards.
-  - `fake` is for testing code without any actual hardware.
-
-**Required Attributes**:
-
-In addition to the required fields, servo models require the following `attributes` in their configuration:
-
-- `pin` (string): The board pin (with PWM capabilities) that the servo's control wire is attached to.
-Use the pin number, not the GPIO number.
-- `board` (string): The name of the board to which the servo is wired.
-
-**Optional Attributes**:
-
-The `gpio` model has the following attributes, which are optional to define in your configuration:
-
-| Attribute Name          | Type    | Description |
-| ----------------------- | ------- | ----------- |
-| `min_angle_deg`         | float64 | Specifies the minimum angle in degrees to which the servo can move. Does not affect PWM calculation. |
-| `max_angle_deg`         | float64 | Specifies the maximum angle in degrees to which the servo can move. Does not affect PWM calculation. |
-| `starting_position_deg` | float64 | Starting position of the servo in degrees. |
-| `frequency_hz`          | uint    | The rate of pulses sent to the servo. The servo driver will attempt to change the GPIO pin's frequency (in Hz). The recommended PWM frequency for servos is typically in the range of 40-200 Hz, with most servos using 50 Hz (see your servo's data sheet). Maximum supported frequency by this driver is 450Hz |
-| `pwm_resolution`        | uint    | Resolution of the PWM driver (for example, the number of ticks for a full period). Must be in range (0, 450). If not specified, the driver will attempt to estimate the resolution. |
-| `min_width_us`          | uint    | Override the safe minimum pulse width in microseconds. This affects PWM calculation.                                                                                    |
-| `max_width_us`          | uint    | Override the safe maximum pulse width in microseconds. This affects PWM calculation. |
-| `max_rotation`           | uint    | Default: 180. Specifies the maximum angle of rotation based on the hardware. Only for the `pi` model. |
+Click on the model names above for configuration information.
 
 ## Control your servo with Viam's client SDK libraries
 
