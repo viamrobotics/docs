@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 15
 type: "docs"
 description: "Configure a fake movement sensor to test software without any hardware."
+images: ["/components/img/components/imu.svg"]
 # SMEs: Rand
 ---
 
@@ -15,7 +16,7 @@ Note that this model does not get any actual readings, so it supports these meth
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** sub-tab and navigate to the **Create component** menu.
 
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `fake` model.

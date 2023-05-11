@@ -4,6 +4,7 @@ linkTitle: "single_stream"
 weight: 36
 type: "docs"
 description: "Configure a camera that streams image data from an HTTP endpoint."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -23,7 +24,7 @@ Your `single_stream` camera can output:
 {{< tabs name="Configure a single Stream Camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `single_stream` model.
 

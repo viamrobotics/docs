@@ -6,6 +6,7 @@ type: "docs"
 description: "Access and control one of the most fundamental systems in robotics: A robotic arm."
 image: "/tutorials/img/motion/preview.jpg"
 imageAlt: "A robotic arm"
+images: ["/tutorials/img/motion/preview.jpg"]
 tags: ["arm", "motion", "services"]
 aliases:
   - "/tutorials/motion/accessing-and-moving-robot-arm"
@@ -46,8 +47,8 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 1. Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 2. Create a new robot.
-3. Follow the instructions on the **setup** tab.
-4. Select the **config** tab.
+3. Follow the instructions on the **Setup** tab.
+4. Select the **Config** tab.
 5. Under the **Components** section, create a component with the following attributes:
 
     * Choose `Arm` as the **Type** selection
@@ -68,7 +69,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 7. Save this robot configuration.
 
-Go to the **code sample** tab and copy the code sample for the programming language you are working in.
+Go to the **Code Sample** tab and copy the code sample for the programming language you are working in.
 Paste this boilerplate code into a file and run the script to verify you can connect to your robot.
 Throughout this tutorial you will replace and amend this code.
 The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
@@ -187,7 +188,7 @@ You should see output that looks similar to the following:
 myArm JointPositions return value: values:0.00043945314765093886  values:0.4672485453655179  values:0.6450073134445674  values:-0.0009887695170768527  values:0.013732909913080547  values:0.0007690429693064871
 ```
 
-Each individual value corresponds to the current position of a particular joint on your robot. You can also see these values reflected on the **control** tab in the Viam app for your robot arm.
+Each individual value corresponds to the current position of a particular joint on your robot. You can also see these values reflected on the **Control** tab in the Viam app for your robot arm.
 
 {{% /tab %}}
 {{< /tabs >}}

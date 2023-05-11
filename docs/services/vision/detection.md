@@ -46,14 +46,14 @@ If the color is not reliably detected, increase the `hue_tolerance_pct`.
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **config** tab, and click on **Services**.
+Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
 
 1. Select `vision` as the **Type**.
 2. Enter a name as the **Name**.
-3. Select `color_detector` as the **Model**.
+3. Select **Color Detector** as the **Model**.
 4. Click **Create Service**.
 
 ![Create Vision Service for color detector](../img/color_detector.png)
@@ -156,7 +156,7 @@ To create a `mlmodel` classifier, you need an [ML Model Service with a suitable 
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **config** tab, and click on **Services**.
+Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 
@@ -165,7 +165,7 @@ Scroll to the **Create Service** section.
 
 1. Select `vision` as the **Type**.
 2. Enter a name as the **Name**.
-3. Select `mlmodel` as the **Model**.
+3. Select **ML Model** as the **Model**.
 4. Click **Create Service**.
 
 ![Create Vision Service for mlmodel](../img/mlmodel.png)
@@ -227,7 +227,7 @@ To be able to interact with the Vision Service you must:
 
 After adding the component and its attributes, click **Save config**.
 
-Wait for the robot to reload, and then go to the **control** tab to test the stream of detections.
+Wait for the robot to reload, and then go to the **Control** tab to test the stream of detections.
 
 ## Code
 
@@ -237,13 +237,13 @@ The following code gets the robot’s vision service and then runs a color detec
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
 # grab camera from the robot
 cam1 = Camera.from_robot(robot, "cam1")
 # grab Viam's vision service for the detector
-my_detector = VisionServiceClient.from_robot(robot, "my_detector")
+my_detector = VisionClient.from_robot(robot, "my_detector")
 
 img = await cam1.get_image()
 detections = await my_detector.get_detections(img)

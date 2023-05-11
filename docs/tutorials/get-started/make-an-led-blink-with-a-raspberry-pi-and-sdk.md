@@ -7,6 +7,7 @@ description: "Intro to Hardware Programming Part 2: Use a Viam SDK to make an LE
 webmSrc: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.webm"
 mp4Src: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.mp4"
 videoAlt: "A blinking blue LED connected to a Raspberry Pi with jumper cables."
+images: ["/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.gif"]
 aliases:
     - /tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk
 tags: ["board", "raspberry pi", "sdk"]
@@ -73,9 +74,9 @@ Refer to the appropriate SDK documentation for SDK installation instructions.
 
 ### How to connect your robot to the Viam SDK
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **code sample** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **Code Sample** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
-Next, paste that boilerplate code from the **code sample** tab of the Viam app into a file named <file>blink.py</file> or <file>blink.go</file> file in your code editor, and save your file.
+Next, paste that boilerplate code from the **Code Sample** tab of the Viam app into a file named <file>blink.py</file> or <file>blink.go</file> file in your code editor, and save your file.
 
 You can now run the code.
 Doing so will ensure that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.

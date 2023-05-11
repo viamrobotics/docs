@@ -5,6 +5,7 @@ weight: 34
 type: "docs"
 draft: "true"
 description: "Configure a yahboom-dofbot arm."
+images: ["/components/img/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---
@@ -18,7 +19,7 @@ Configure a `yahboom-dofbot` arm as follows:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<arm_name">",
+    "name": "<arm_name>",
     "type": "arm",
     "model": "yahboom-dofbot",
     "attributes": {

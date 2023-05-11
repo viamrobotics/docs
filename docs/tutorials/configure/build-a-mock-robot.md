@@ -6,6 +6,7 @@ type: "docs"
 description: "Create a mock robot using just your personal computer to try using Viam without any robotic hardware."
 webmSrc: "/tutorials/img/build-a-mock-robot/mock-robot.webm"
 mp4Src: "/tutorials/img/build-a-mock-robot/mock-robot.mp4"
+images: ["/tutorials/img/build-a-mock-robot/mock-robot.gif"]
 videoAlt: "A mock arm's joint positions from the control tab of the Viam app."
 aliases:
     - /tutorials/build-a-mock-robot/
@@ -41,7 +42,7 @@ Go to [app.viam.com](https://app.viam.com) and sign up.
 
 1. Go to [app.viam.com](https://app.viam.com/).
 2. Create a new robot.
-3. Go to the **config** tab.
+3. Go to the **Config** tab.
 4. Configure the arm:
 
    - Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
@@ -65,11 +66,11 @@ You will need to reference both component names later when you connect to your m
 
 Before you proceed with controlling your mock robot, you are going to need to install `viam-server` on your development machine.
 
-Follow the steps outlined on the **setup** tab of the Viam app in order to install `viam-server` on your local computer.
+Follow the steps outlined on the **Setup** tab of the Viam app in order to install `viam-server` on your local computer.
 
 ## Controlling your mock robot using the Viam app
 
-When you add the fake motor and arm components to your robot, the Viam app automatically generates a UI for your motor and arm under the **control** tab.
+When you add the fake motor and arm components to your robot, the Viam app automatically generates a UI for your motor and arm under the **Control** tab.
 
 <img src="../../img/build-a-mock-robot/image3.png" alt="Screenshot from the Viam app showing the CONTROL tab with the fake arm, and motor components." width="100%">
 
@@ -102,9 +103,9 @@ There, you will find a friendly developer community of people learning how to ma
 
 ### How to connect to your mock robot with the Viam SDK
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
-Next, paste that boilerplate code from the **code sample** tab of the Viam app into a file named <file>index.py</file> or <file>index.go </file>file in your code editor, and save your file.
+Next, paste that boilerplate code from the **Code Sample** tab of the Viam app into a file named <file>index.py</file> or <file>index.go </file>file in your code editor, and save your file.
 
 {{< readfile "/static/include/snippet/secret-share.md" >}}
 
@@ -139,7 +140,7 @@ What you see here is a list of the various resources (Like components, and servi
 
 Next, you will be writing some code to control and move your mock robotic arm.
 We are going to write a program that will move the mock robotic arm into a new random position every second.
-You will be able to verify that your mock robotic arm is working by checking that the joint positions of the fake arm in the **control** tab of the Viam app are changing.
+You will be able to verify that your mock robotic arm is working by checking that the joint positions of the fake arm in the **Control** tab of the Viam app are changing.
 
 At the top of your <file>index.py</file> file, paste the following:
 
@@ -284,7 +285,7 @@ func main() {
 {{% /tab %}}
 {{< /tabs >}}
 
-Now when you run this code, you should see the new mock arm positions listed in the command line, if you open the **control** tab of your mock robot, you should see the robot's arm positions changing in real-time along with the code on your development machine.
+Now when you run this code, you should see the new mock arm positions listed in the command line, if you open the **Control** tab of your mock robot, you should see the robot's arm positions changing in real-time along with the code on your development machine.
 
 <div class="td-max-width-on-larger-screens">
   {{<gif webm_src="../../img/build-a-mock-robot/image2.webm" mp4_src="../../img/build-a-mock-robot/image2.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side, is the mock arm from the CONTROL tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
@@ -315,16 +316,16 @@ On your robot's page on the Viam app, click on the dropdown next to the main par
 You will be creating a mock independent computer-controlled sub-part with a motor.
 This could be anything, but let's say for the purpose of this tutorial that this motor controls a conveyor belt in front of our mock arm on an assembly line.
 
-Navigate to your new part's **config** page and create a new motor using the **fake** model.
+Navigate to your new part's **Config** page and create a new motor using the **fake** model.
 
 ### How to add your sub-part as a remote
 
 Connecting your sub-part as a remote from your main robot will allow you to control your sub-parts all from one place inside of your main robot.
 
-From the **code sample** tab of your sub-part:
+From the **Code Sample** tab of your sub-part:
 
 - Copy the **Config as Remote Part**.
-- Navigate back to the **config** and then the **Remotes** tab of your main robot
+- Navigate back to the **Config** and then the **Remotes** tab of your main robot
 - Paste your sub-part's configuration.
 
 <img src="../../img/build-a-mock-robot/image8.png" alt="Screenshot from the Viam app showing the CONFIG > REMOTES with the sub-part's remote config file pasted in." width="80%">
@@ -334,7 +335,7 @@ From the **code sample** tab of your sub-part:
 Since every part needs to run an instance of `viam-server`, you will need to bind the sub-part to a new port so we can run two servers on your machine at the same time.
 We are using port `8081`, but you can use any open port you want.
 
-You can do this by going to **config** and then going to the **Auth/Network** tab.
+You can do this by going to **Config** and then going to the **Auth/Network** tab.
 Here, you will paste the following:
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -347,7 +348,7 @@ Be sure to save before continuing.
 
 ### How to run a second instance of `viam-server` for your sub-part
 
-In the upper right corner of the **setup** tab, click **Copy viam-server config**.
+In the upper right corner of the **Setup** tab, click **Copy viam-server config**.
 
 <img src="../../img/build-a-mock-robot/image9.png" alt="Screenshot from the Viam app showing the 'Copy Viam-Server Config' button highlighted by a red box.">
 
@@ -358,7 +359,7 @@ From the terminal, navigate to the directory where you saved the config file, an
 viam-server -config viam-sub-part.json
 ```
 
-If you have two instances of `viam-server` running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main robots **control** tab.
+If you have two instances of `viam-server` running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main robots **Control** tab.
 
 ![Screenshot of the Viam app's Control tab for the main part that lists the main arm, and the sub motor part.](../../img/build-a-mock-robot/image6.png)
 

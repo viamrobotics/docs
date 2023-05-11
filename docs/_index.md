@@ -157,18 +157,16 @@ Learn about [the Viam platform in 3 minutes](viam).
         <div class="landing-hover-card-padding teal">
         <h4>Program your robots</h4>
         <p style="text-align: left;">
-            Program and control your robots in <a href="program/sdk-as-client/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, or <a href="https://ts.viam.dev/">TypeScript</a>.
+            Program and control your robots in <a href="program/sdks/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, or <a href="https://ts.viam.dev/">TypeScript</a>.
         </p>
         <img src="img/code.png" alt="Robot code">
         </div>
     </div>
     <div class="col landing-hover-card">
         <div class="landing-hover-card-padding pink">
-        <a href="https://discord.gg/viam">
             <h4>Community</h4>
-            <p style="text-align: left;">Have questions, or want to meet other people working on robots? Join us in the Community Discord!</p>
+            <p style="text-align: left;">Have questions, or want to meet other people working on robots? <a href="https://discord.gg/viam">Join us in the Community Discord!</a></p>
             {{<gif webm_src="img/heart.webm" mp4_src="img/heart.mp4" alt="A robot drawing a heart">}}
-        </a>
         </div>
     </div>
     </div>

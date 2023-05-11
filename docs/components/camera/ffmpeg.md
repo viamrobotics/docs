@@ -4,6 +4,7 @@ linkTitle: "ffmpeg"
 weight: 30
 type: "docs"
 description: "Uses a camera, a video file, or a stream as a camera."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -13,7 +14,7 @@ A `ffmpeg` camera uses a camera, a video file, or a stream as a camera.
 {{< tabs name="Configure a ffmpeg camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `ffmpeg` model.
 

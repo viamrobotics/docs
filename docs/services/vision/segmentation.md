@@ -18,7 +18,7 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 The types of segmenters supported are:
 
 - [**radius_clustering_segmenter**](#configure-a-radius_clustering_segmenter): Radius clustering is a segmenter that identifies well separated objects above a flat plane.
-- [** detector_3d_segmenter**](#configure-a-detector_3d_segmenter): Object segmenters are automatically created from detectors in the Vision Service.
+- [**detector_3d_segmenter**](#configure-a-detector_3d_segmenter): This model takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
 
 ## Configure a `radius_clustering_segmenter`
 
@@ -31,14 +31,14 @@ It is slower than other segmenters and can take up to 30 seconds to segment a sc
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **config** tab, and click on **Services**.
+Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
 
 1. Select `vision` as the **Type**.
 2. Enter a name as the **Name**.
-3. Select `radius_clustering_segmenter` as the **Model**.
+3. Select **Radius Clustering Segmenter** as the **Model**.
 4. Click **Create Service**.
 
 ![Create Vision Service for radius_clustering_segmenter](../img/radius_clustering_segmenter.png)
@@ -111,26 +111,26 @@ Click **Save config** and head to the **Components** tab.
 
 ## Configure a `detector_3d_segmenter`
 
-Object segmenters are automatically created from [detectors](../detection) in the Vision Service.
-Any registered detector, for example `detector1`, defined in the `register_models` field or added later to the Vision Service becomes a segmenter with `_segmenter` appended to its name, for example `detector1_segmenter`.
-It begins by finding the 2D bounding boxes, and then returns the list of 3D point cloud projection of the pixels within those bounding boxes.
+This model takes 2D bounding boxes from an [object detector](../detection), and, using the intrinsic parameters of the chosen camera, projects the pixels in the bounding box to points in 3D space.
+If the chosen camera is not equipped to do projections from 2D to 3D, then this vision model will fail.
+The label and the pixels associated with the 2D detections become the label and point cloud associated with the 3D segmenter.
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **config** tab, and click on **Services**.
+Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
 
 1. Select `vision` as the **Type**.
 2. Enter a name as the **Name**.
-3. Select `detector_3d_segmenter` as the **Model**.
+3. Select **Detector to 3D Segmenter** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for detector_3dsegmenter](../img/detector_3dsegmenter.png)
+![Create Vision Service for detector_3d_segmenter](../img/detector_3d_segmenter.png)
 
 In your Vision Service's panel, fill in the **Attributes** field.
 
@@ -191,7 +191,7 @@ The following parameters are available for a `"detector_3dsegmenter"`.
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `detector_name`| _Required_  | The name of the detector already registered in the Vision Service that will be turned into a segmenter. |
+| `detector_name`| _Required_  | The name of a registered detector vision service. The segmenter vision service uses the detections from `"detector_name"` to create the 3D segments. |
 | `confidence_threshold_pct` | _Optional_ | A number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5. |
 | `mean_k` | _Required_ | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
 | `sigma` | _Required_ | A floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. |
@@ -206,11 +206,11 @@ The following code gets the robot’s Vision Service and then runs a segmenter v
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
 # grab Viam's vision service for the detector
-my_segmenter = VisionServiceClient.from_robot(robot, "my_segmenter")
+my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
 
 detections = await my_segmenter.get_object_point_clouds("cam1")
 

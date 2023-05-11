@@ -11,7 +11,7 @@ tags: ["data management", "cloud", "sync"]
 
 To capture data from one or more robots, you must first add the [Data Management Service](../):
 
-1. On your robot's **config** page, navigate to the **Services** tab.
+1. On your robot's **Config** page, navigate to the **Services** tab.
 2. At the bottom of the page you can create a service.
    Choose `Data Management` as the type and specify a name for your Data Management Service, for example `data-manager`.
 3. Then click `Create Service`.
@@ -61,10 +61,17 @@ The following components support data capture:
 - Sensor
 - Servo
 
-To add data capture for a component, navigate to the **config** tab of your robot's page in the Viam app.
+To add data capture for a component, navigate to the **Config** tab of your robot's page in the Viam app.
 
 For each component you can capture data for, there is a `Data Capture Configuration` section in its panel.
 Click `Add Method` and then select the method type and the capture frequency.
+
+{{< alert title="Caution" color="caution" >}}
+
+Avoid configuring data capture to higher rates than your hardware can handle, as this leads to performance degradation.
+
+{{< /alert >}}
+
 Click **Save Config** at the bottom of the window.
 
 Now your data will be saved locally on your robot to the directory specified in the Data Management Service.
@@ -102,6 +109,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
     {
       "service_configs": [
         {
+          "type": "data_manager",
           "attributes": {
             "capture_methods": [
               {
@@ -113,8 +121,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
                 }
               }
             ]
-          },
-          "type": "data_manager"
+          }
         }
       ],
       "model": "webcam",
@@ -172,7 +179,7 @@ To add them to your JSON configuration you must explicitly add the part's `type`
   "model": {
       "name": "rdk:esp32:board"
   },
-  "name": "rdk:component:board/esp-home:board",
+  "name": "rdk:component:board/board",
   "additional_params": {
       "A2": "",
       "A1": ""
@@ -213,7 +220,7 @@ The following example captures data from two analog readers that provide a volta
               {
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
-                "name": "rdk:component:board/esp-home:board",
+                "name": "rdk:component:board/board",
                 "additional_params": {
                   "A2": "",
                   "A1": ""
@@ -224,7 +231,7 @@ The following example captures data from two analog readers that provide a volta
               {
                 "method": "Gpio",
                 "capture_frequency_hz": 1,
-                "name": "rdk:component:board/esp-home:board",
+                "name": "rdk:component:board/board",
                 "additional_params": {
                   "27": ""
                 },
@@ -234,6 +241,54 @@ The following example captures data from two analog readers that provide a volta
           }
         }
       ],
+      "secret": "REDACTED"
+    }
+  ]
+}
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view the JSON configuration for capturing data from a camera" %}}
+
+The following example captures data from the `ReadImage` method of a camera:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "services": [
+    {
+      "attributes": {
+        "capture_dir": "",
+        "sync_disabled": true,
+        "sync_interval_mins": 5
+      },
+      "name": "data_manager",
+      "type": "data_manager"
+    }
+  ],
+  "components": [],
+  "remotes": [
+    {
+      "name": "pi-test-main",
+      "address": "pi-test-main.vw3iu72d8n.viam.cloud",
+        "service_configs": [
+          {
+            "type": "data_manager",
+            "attributes": {
+              "capture_methods": [
+                {
+                  "capture_frequency_hz": 1,
+                  "name": "rdk:component:camera/cam",
+                  "disabled": false,
+                  "method": "ReadImage",
+                  "additional_params": {
+                    "mime_type": "image/jpeg"
+                  }
+                }
+              ]
+            }
+          }
+        ],
       "secret": "REDACTED"
     }
   ]

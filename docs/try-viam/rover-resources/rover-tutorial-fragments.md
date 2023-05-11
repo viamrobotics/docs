@@ -25,7 +25,7 @@ Using a fragment makes managing a fleet of multiple robots configured in the sam
 ## Add the Fragment
 
 Navigate to your robot in [the Viam app](https://app.viam.com/robots).
-On the  **config** tab, click on the **Fragments** subtab.
+On the  **Config** tab, click on the **Fragments** subtab.
 
 ![Fragments tab inside the Viam app](../img/fragments/fragments_tab.png)
 

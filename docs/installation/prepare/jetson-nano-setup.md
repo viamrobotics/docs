@@ -5,7 +5,9 @@ weight: 20
 type: "docs"
 image: "/installation/img/jetson-nano-setup/jetson-nano-dev-kit.png"
 imageAlt: "Jetson Nano"
+images: ["/installation/img/jetson-nano-setup/jetson-nano-dev-kit.png"]
 description: "Set up the Jetson Nano Developer Kit to prepare your NVIDIA Jetson Nano for viam-server installation."
+no_list: true
 # SMEs: Pete Garafano
 ---
 
@@ -58,7 +60,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 
 If `curl` is not installed on your Orin, run `sudo apt install curl` before downloading the `viam-server` binary.
 
-If this command fails, try using `wget https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage` to download the `viam-server` binary.
+If this command fails, try using `wget https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage` to download the `viam-server` binary.
 
 {{% /alert %}}
 

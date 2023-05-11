@@ -18,5 +18,5 @@
 
 3. **Click "TRY MY ROVER" to use your Viam Rover.**
 
-   You’ll be able to control a Viam Rover in the Viam robotics lab for 15 minutes.
+   You’ll be able to control a Viam Rover in the Viam robotics lab for 10 minutes.
    There is a session timer in the top banner.

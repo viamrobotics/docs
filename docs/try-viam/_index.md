@@ -4,6 +4,7 @@ linkTitle: "Try Viam"
 weight: 15
 type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab."
+images: ["/tutorials/img/try-viam-sdk/image1.gif"]
 aliases:
     - "/getting-started/try-viam/"
 ---
@@ -24,11 +25,11 @@ During your rover rental, you can [try out some of the Viam platform functionali
 
 ## Control your rover with SDKs
 
-If you want to control and automate your rover with Python or Go, use the [Viam SDKs](/program/sdk-as-client).
+If you want to control and automate your rover with Python or Go, use the [Viam SDKs](/program/sdks).
 
 Viam also exposes a {{< glossary_tooltip term_id="grpc" text="gRPC" >}} [API for robot controls](https://github.com/viamrobotics/api).
 
 Both the API and the SDKs support {{< glossary_tooltip term_id="webrtc" >}}.
-The SDKs provide a wrapper around the viam-server [gRPC](https://grpc.io/) API and streamline connection, authentication, and encryption against a server.
+The SDKs provide a wrapper around the `viam-server` [gRPC](https://grpc.io/) API and streamline connection, authentication, and encryption against a server.
 
 ## Next steps

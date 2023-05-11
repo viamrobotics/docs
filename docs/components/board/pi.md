@@ -4,6 +4,7 @@ linkTitle: "pi"
 weight: 20
 type: "docs"
 description: "Configure a pi board."
+images: ["/components/img/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
@@ -19,7 +20,7 @@ Configure a `pi` board to integrate a [Raspberry Pi 4](https://www.raspberrypi.c
 {{< tabs name="Configure an pi Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your board, select the type `board`, and select the `pi` model.
 

@@ -5,7 +5,8 @@ weight: 30
 no_list: true
 type: docs
 draft: false
-icon: "img/thumbnails/viam-icon-sdk.png"
+icon: "/installation/img/thumbnails/manage.png"
+images: ["/installation/img/thumbnails/manage.png"]
 description: "Control and troubleshoot viam-server."
 ---
 
@@ -119,7 +120,7 @@ brew services restart viam-server
 sudo journalctl --unit=viam-server
 ```
 
-If the robot is able to connect with the Viam app, logs can also be viewed in the **logs** tab on the [Viam app](https://app.viam.com/).
+If the robot is able to connect with the Viam app, logs can also be viewed in the **Logs** tab on the [Viam app](https://app.viam.com/).
 
 ### SquashFS Errors
 
@@ -145,7 +146,7 @@ For more information on troubleshooting FUSE-related issues (including Docker wo
 
 ### View `viam-server` Logs
 
-If you have already successfully connected `viam-server` to the Viam app, you can find all the `viam-server` logs on the **logs** tab of the [Viam app](https://app.viam.com/).
+If you have already successfully connected `viam-server` to the Viam app, you can find all the `viam-server` logs on the **Logs** tab of the [Viam app](https://app.viam.com/).
 
 You can also read `viam-server`'s log files locally.
 

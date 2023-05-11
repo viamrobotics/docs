@@ -4,6 +4,7 @@ linkTitle: "align_color_depth_extrinsics"
 weight: 38
 type: "docs"
 description: "Use the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -13,7 +14,7 @@ Use the intrinsics of the color and depth camera, as well as the extrinsic pose 
 {{< tabs name="Configure an Align Color Depth Extrinsics View" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `align_color_depth_extrinsics` model.
 

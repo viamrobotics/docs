@@ -3,6 +3,7 @@ title: "Configure an AMS-AS5048 encoder"
 linkTitle: "AMS-AS5048"
 type: "docs"
 description: "Configure an AMS-AS5048 encoder."
+images: ["/components/img/components/encoder.svg"]
 tags: ["encoder", "components"]
 # SMEs: Rand
 ---
@@ -39,7 +40,7 @@ Now you can configure the encoder:
 {{< tabs name="Configure an AMS-AS5048 Encoder" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
 

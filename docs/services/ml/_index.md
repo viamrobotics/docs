@@ -20,7 +20,7 @@ The ML Models service allows you to deploy machine learning models to your robot
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the ML Model Service to.
-Select the **config** tab, and click on **Services**.
+Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 
@@ -38,7 +38,7 @@ You can choose to configure your service with an existing model on the robot or 
 
 To configure your service with an existing model on the robot, select **Path to Existing Model On Robot** for the **Deployment** field.
 
-Then specify the **Model Path** and any **Optional Settings** such as the **Label Path** and the **Number of threads**.
+Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
 
 ![Create a machine learning models service with an existing model](../img/available-models.png)
 
@@ -100,8 +100,8 @@ The following parameters are available for a `"tflite_cpu"` model:
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `model_path` | _Required_ | The path to the `.tflite model` file, as a `string`. |
-| `label_path` | _Optional_ | The path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
+| `model_path` | _Required_ | The absolute path to the `.tflite model` file, as a `string`. |
+| `label_path` | _Optional_ | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
 | `num_threads` | _Optional_ | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
 Save the configuration and your model will be added to your robot at <file>$HOME/.viam/packages/\<model-name\>/\<file-name\></file>.
@@ -134,7 +134,7 @@ You can use one of these architectures or build your own.
 
 ## Next Steps
 
-To make use of your new model, follow the instructions to create a detector or a classifier:
+To make use of your new model, follow the instructions to create:
 
-- A [`mlmodel` detector](../vision/detection/#configure-a-mlmodel-detector)
-- A [`mlmodel` classifier](../vision/classification/#configure-a-mlmodel-classifier)
+- a [`mlmodel` detector](../vision/detection/#configure-a-mlmodel-detector) or
+- a [`mlmodel` classifier](../vision/classification/#configure-a-mlmodel-classifier)

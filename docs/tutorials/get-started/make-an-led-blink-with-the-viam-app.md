@@ -7,6 +7,7 @@ description: "Intro to Hardware Programming Part 1: Use the Viam app to make an 
 webmSrc: "/img/blink.webm"
 mp4Src: "/img/blink.mp4"
 videoAlt: "A blinking L.E.D. connected to a Raspberry Pi"
+images: ["/img/blink.gif"]
 aliases:
     - /tutorials/make-an-led-blink-with-the-viam-app/
 tags: ["board", "raspberry pi", "app"]
@@ -105,7 +106,7 @@ Before proceeding, be sure that you have connected your Pi to the Viam app.
 Steps on how to do this can be found in the [Adding your Pi on the Viam App](/installation#install-viam-server) section of the Viam Documentation.
 
 Now that we have gotten that out of the way, let's get back to configuring your robot's components.
-First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's **config** tab.
+First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's **Config** tab.
 
 <img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image2.png" alt="Screenshot of the Viam app showing the Create Component field on the COMPONENTS subtab of the CONFIG tab." width="100%">
 
@@ -120,11 +121,11 @@ Your board component pane will look like this:
 
 Click **Save Config** at the bottom of the screen.
 
-As you add your board component to your robot in the Viam app, it generates a panel for your board in the **control** tab.
+As you add your board component to your robot in the Viam app, it generates a panel for your board in the **Control** tab.
 Here, you can click on **Get** to get the current status of your pin.
 The first time you click **Get Pin State**, it should return "Pin: 8 is low."
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image5.png" alt="Screenshot of the Viam app showing the board configuration on the **code sample** tab. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the '**Get Pin State**' button and the output, which reads, 'Pin: 8 is low.'" width="100%">
+<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image5.png" alt="Screenshot of the Viam app showing the board configuration on the **Code Sample** tab. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the '**Get Pin State**' button and the output, which reads, 'Pin: 8 is low.'" width="100%">
 
 You can now select **Set** to control the status of your pin to **high**.
 It will look like this:

@@ -7,6 +7,7 @@ description: "A camera captures 2D or 3D images and sends them to the computer c
 no_list: true
 tags: ["camera", "components"]
 icon: "/components/img/components/camera.svg"
+images: ["/components/img/components/camera.svg"]
 aliases:
   - "/tutorials/configure-a-camera"
 # SMEs: Bijan, vision team
@@ -51,7 +52,7 @@ For configuration information, click on one of the following models:
 
 ## Control your camera with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.

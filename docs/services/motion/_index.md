@@ -41,7 +41,7 @@ Method Name | Description
 {{% alert title="Note" color="note" %}}
 
 The following code examples assume that you have a robot configured with a gripper, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
-Go to your robot's **code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}
 
@@ -100,12 +100,12 @@ By default, motion is unconstrained with the exception of obstacle avoidance.
 
 - [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.move).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move).
 
 **Example usage:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Assumes a gripper configured with name "my_gripper" on the robot
 my_frame = "my_gripper_offset"
@@ -155,7 +155,7 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
 - `constraints` ([Constraints](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints)): Pass in optional [motion constraints](./constraints/).
   By default, motion is unconstrained with the exception of obstacle avoidance.
 
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -229,12 +229,12 @@ If you need collision checking and obstacle avoidance, use [`Move`](#move).
 
 - [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.move_single_component).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_single_component).
 
 **Example usage:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Assumes an arm configured with name "my_arm" on the robot
 my_frame = "my_arm_offset"
@@ -263,7 +263,7 @@ As of April 21, 2023, [arm](/components/arm/) is the only component so supported
 
 - `worldState` ([WorldState](https://pkg.go.dev/go.viam.com/rdk/referenceframe#WorldState)): Not used. See [note above](#move-vs-movetoposition).
 
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -326,7 +326,7 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 
 - [(PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose of the component.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.get_pose).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.get_pose).
 
 **Example usage:**
 
@@ -334,12 +334,12 @@ The following code example gets the pose of the tip of a [gripper](../../compone
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
-from viam.services.motion import MotionServiceClient
+from viam.services.motion import MotionClient
 
-# Assume that the connect function is written and will return a valid robot. 
+# Assume that the connect function is written and will return a valid robot.
 robot = await connect()
 
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 gripperName = Gripper.get_resource_name("myGripper")
 gripperPoseInWorld = await robot.get_pose(component_name=gripperName, destination_frame="world")
 ```
@@ -348,13 +348,13 @@ For a more complicated example, take the same scenario and get the pose of the s
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
-from viam.services.motion import MotionServiceClient
+from viam.services.motion import MotionClient
 from viam.proto.common import Transform, PoseInFrame, Pose
 
-# Assume that the connect function is written and will return a valid robot. 
+# Assume that the connect function is written and will return a valid robot.
 robot = await connect()
 
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 objectPose = Pose(x=100, y=200, z=0, o_x=0, o_y=0, o_z=1, theta=0)
 objectPoseInFrame = PoseInFrame(reference_frame="world", pose=objectPose)
 objectTransform = Transform(reference_frame="object", pose_in_observer_frame=objectPoseInFrame)
@@ -389,7 +389,7 @@ gripperPoseInObjectFrame = await motion.get_pose(
   This new frame system builds off the robot's frame system and incorporates the `Transform`s provided.
   If the result of adding the `Transform`s results in a disconnected frame system, an error is thrown.
 
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 

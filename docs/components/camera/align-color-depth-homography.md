@@ -4,6 +4,7 @@ linkTitle: "align_color_depth_homography"
 weight: 38
 type: "docs"
 description: "Use a homography matrix to align the color and depth images."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -13,7 +14,7 @@ When you have a depth image and you need it to overlay on top of a color image e
 {{< tabs name="Configure an Align Color Depth Homography Camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `align_color_depth_homography` model.
 

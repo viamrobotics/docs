@@ -7,6 +7,7 @@ description: "Short description of your tutorial (1 sentence)."
 # Use either image or GIF/video
 # image: "path to preview image"
 # imageAlt: "ALT text for the image"
+# images: ["path to preview image"]
 # webmSrc: "path to preview video"
 # mp4Src: "path to preview video"
 # videoAlt: "ALT text for the video"

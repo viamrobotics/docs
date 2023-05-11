@@ -8,6 +8,7 @@ description: "Integrate a custom base component with the Viam Python SDK."
 webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
 mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
 videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
+images: ["/tutorials/img/custom-base-dog/base-control-dog.gif"]
 aliases:
     - /tutorials/custom-base-dog/
 # SMEs: James Otting, Eric Daniels
@@ -19,7 +20,7 @@ The [base component type](/components/base/) is useful for controlling mobile ro
 Viam natively supports a wheeled base model, but if you have a quadruped or other form of rover that isn't compatible with the wheeled model, you have two options:
 
 1. Use Viam's Go SDK to [create a custom component as a modular resource](/program/extend/modular-resources/).
-2. Use another Viam SDK (for example, the Python SDK) to [create a custom resource server](/program/extend/sdk-as-server/).
+2. Use another Viam SDK (for example, the Python SDK) to [create a custom resource server](/program/extend/custom-components-remotes/).
 
 This tutorial demonstrates option two, using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
@@ -28,7 +29,7 @@ This tutorial demonstrates option two, using [this robot dog kit and its open so
 </div>
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
-You will also be able to use the **control** tab in the Viam app to remotely drive the dog around using your keyboard while viewing the camera feed.
+You will also be able to use the **Control** tab in the Viam app to remotely drive the dog around using your keyboard while viewing the camera feed.
 You’ll learn to implement a custom component type in Viam, and you’ll be equipped to implement other sorts of custom components in the future for whatever robots you dream up.
 
 ## Code used in this tutorial
@@ -243,7 +244,7 @@ The <file>python_server.py</file> file creates an RPC server that forwards {{< g
 You need to tell your robot how to access the custom component server you created.
 This is accomplished by configuring the custom component server as a *remote*.
 
-Back over on the [Viam app](https://app.viam.com), go to your robot's **config** tab.
+Back over on the [Viam app](https://app.viam.com), go to your robot's **Config** tab.
 Click the **Remotes** sub-tab.
 Name your remote "my-custom-base" and click **Create Remote**.
 In the **Address** field put `localhost: 9090`.
@@ -261,7 +262,7 @@ If you want to use a different host or port, pass it as a parameter to the serve
 ## Configure the components
 
 Now that the custom base code is set up, you need to configure all your hardware components.
-Navigate to the **Components** sub-tab of the **config** tab.
+Navigate to the **Components** sub-tab of the **Config** tab.
 
 ### Configure the base
 
@@ -295,7 +296,7 @@ You have two options for starting the servers: automatic or manual.
 
 ### Option 1: Configure processes to automatically start the servers on boot
 
-Click the **Processes** sub-tab of the **config** tab.
+Click the **Processes** sub-tab of the **Config** tab.
 
 Create a new process and give it a name (for example "1st").
 Once configured, this process will start the Freenove robot dog server so it is ready to receive commands from the custom component server.
@@ -371,7 +372,7 @@ python python_server.py
 
 ## Driving the robot from the Viam app
 
-Navigate to the **control** tab.
+Navigate to the **Control** tab.
 
 Click the **my-custom-base:my-robot-dog** component panel to expand it and reveal the controls.
 
@@ -422,7 +423,7 @@ If you have otherwise unexplained connection errors, try powering things off and
 
 In this tutorial you learned how to implement a custom component model and control it using the Viam app.
 You learned about configuring remotes and processes.
-You drove the robot dog around using the Viam **control** tab.
+You drove the robot dog around using the Viam **Control** tab.
 
 To add more functionality, try defining more of the base API methods for this model.
 You could also use the Viam [Vision Service](/services/vision/) with the robot dog's [camera component](/components/camera/).

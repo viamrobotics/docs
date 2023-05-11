@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 70
 type: "docs"
 description: "Configure a fake motor to test software without any hardware."
+images: ["/components/img/components/motor.svg"]
 # SMEs: Rand, James
 ---
 
@@ -13,7 +14,7 @@ For example, you can use a `fake` component as a placeholder while waiting on a 
 {{< tabs name="fake-config">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your motor, select the type `motor`, and select the `fake` model.
 

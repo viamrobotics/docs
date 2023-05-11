@@ -1,6 +1,6 @@
 {{ $size := (.Get "size") }}
 <div class="col hover-card {{ if eq $size "small" }}hover-card-small{{ end }}">
-    <a href="{{ .Get "link" }}" class="noanchor">
+  {{ if .Get "link" }}<a href="{{ .Get "link" }}" class="noanchor">{{ end }}
         {{ if .Get "img" }}
         <div class="hover-card-img">
           <img src="{{ .Get "img" }}" alt="{{ .Get "alt" }}" width="100%" />
@@ -22,5 +22,5 @@
         </div>
         {{ end }}
       </div>
-    </a>
+      {{ if .Get "link" }}</a>{{ end }}
 </div>

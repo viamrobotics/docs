@@ -6,6 +6,7 @@ type: "docs"
 description: "Use the Vision Service in the Viam app to detect a color with the Viam Rover."
 image: "/tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png"
 imageAlt: "detectionCam stream displaying a color detection"
+images: ["/tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png"]
 tags: ["vision", "detector", "camera", "viam rover", "try viam", "services"]
 aliases:
     - /tutorials/viam-rover/try-viam-color-detection
@@ -37,7 +38,7 @@ This tutorial uses the hex color #7a4f5c (a reddish color).
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **config** tab, and click on **Services**.
+Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
@@ -157,14 +158,14 @@ After adding the component and its attributes, click **Save config**.
 
 ## Test your transform camera in the CONTROL tab
 
-In the **control** tab, click on your base component and add the detection camera from the **Select Cameras** drop down.
+In the **Control** tab, click on your base component and add the detection camera from the **Select Cameras** drop down.
 
 Next, enable the keyboard and move your rover around until your camera detects the configured color.
 Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
 
 ![Base component panel displaying an example color detection.](../../img/try-viam-color-detection/detected-example.png)
 
-If you scroll down in the **control** tab, you can also click on the detectionCam's own section to view its stream there.
+If you scroll down in the **Control** tab, you can also click on the detectionCam's own section to view its stream there.
 
 ## Next Steps
 

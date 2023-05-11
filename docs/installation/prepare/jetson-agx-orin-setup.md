@@ -5,7 +5,9 @@ weight: 20
 type: "docs"
 image: "/installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png"
 imageAlt: "Jetson A G X Orin Developer Kit"
+images: ["/installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png"]
 description: "Set up the Jetson AGX Orin Developer Kit to prepare your NVIDIA Jetson AGX Orin for viam-server installation."
+no_list: true
 # SMEs: Pete Garafano
 ---
 
@@ -70,6 +72,14 @@ If `curl` is not installed on your Orin, run `sudo apt install curl` before down
 If this command fails, try using `wget https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage` to download the `viam-server` binary.
 
 {{% /alert %}}
+
+### Camera Setup
+
+1. Install E-Con Systems [e-CAM20_CUOAGX](https://www.e-consystems.com/nvidia-cameras/jetson-agx-orin-cameras/full-hd-ar0234-color-global-shutter-camera.asp) AR0234 driver.
+   Consult the instructions you received when purchasing your device for more information.
+2. Ensure the driver has successfully installed by running `sudo dmesg | grep ar0234`. The output should include `ar0234 Detected Ar0234 sensor`.
+3. Connect the AR0234 camera module and daughterboard to the J509 port located at the bottom of the Developer Kit.
+4. Configure the camera as a [webcam](../../../components/camera/webcam).
 
 ## Serial Communication Protocol Tips
 

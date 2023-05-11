@@ -5,6 +5,7 @@ weight: 40
 type: "docs"
 description: "Configure an Agilex LIMO base."
 tags: ["base", "components"]
+images: ["/components/img/components/base.svg"]
 # SMEs: Matt Vella, Steve B
 ---
 
@@ -15,7 +16,7 @@ Configure an `agilex-limo` base as follows:
 {{< tabs name="Configure an Agilex-Limo Base" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your base, select the type `base`, and select the `agilex-limo` model.
 

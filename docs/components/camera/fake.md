@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 35
 type: "docs"
 description: Configure a camera to use for testing."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -18,7 +19,7 @@ You cannot specify both a height and width.
 {{< tabs name="Configure a Fake Camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `fake` model.
 
@@ -55,7 +56,7 @@ The following attributes are available for `fake` cameras:
 
 ## View the camera stream
 
-Once your camera is configured, go to the **control** tab, and click on the camera's dropdown menu.
+Once your camera is configured, go to the **Control** tab, and click on the camera's dropdown menu.
 Then toggle the camera or the Point Cloud Data view to ON.
 You will see the live video feed from your camera.
 You can change the refresh frequency as needed to change bandwidth.

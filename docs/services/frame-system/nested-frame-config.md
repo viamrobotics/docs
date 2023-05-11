@@ -23,7 +23,7 @@ Now, as the gantry moves its actuator, the Frame System will translate both the 
 {{< tabs name="Example Frame Configuration of Component attached to Dynamic Component" >}}
 {{% tab name="Config Builder" %}}
 
-To complete the frame configuration for your robot following this example, navigate to the **config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myGantry`'s card, and click **Add Frame**:
+To complete the frame configuration for your robot following this example, navigate to the **Config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myGantry`'s card, and click **Add Frame**:
 
 ![gantry frame card example for this configuration](../img/frame_card_dyn_gantry.png)
 

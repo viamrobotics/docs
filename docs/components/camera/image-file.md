@@ -4,6 +4,7 @@ linkTitle: "image_file"
 weight: 31
 type: "docs"
 description: "Configure a camera that gets color or depth images frames from a file path."
+images: ["/components/img/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -14,7 +15,7 @@ If you provide a depth image, as well as the intrinsic parameters of the camera 
 {{< tabs name="Configure an Image File Camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `image_file` model.
 

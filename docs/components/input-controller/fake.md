@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 30
 type: "docs"
 description: "Configure a fake input controller for testing."
+images: ["/components/img/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---
@@ -20,7 +21,7 @@ Refer to the following example configuration for an input controller of model `f
 {{< tabs name="Configure a `fake` input controller" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your input controller, select the type `input_controller`, and select the `fake` model.
 Click **Create component**.

@@ -5,7 +5,8 @@ weight: 40
 simple_list: false
 type: docs
 draft: false
-icon: "img/thumbnails/viam-icon-motion.png"
+icon: "/installation/img/thumbnails/update.png"
+images: ["/installation/img/thumbnails/update.png"]
 description: "Update your version of viam-server."
 ---
 
@@ -70,7 +71,7 @@ To upgrade to the *absolute latest* version of `viam-server` run this command:
 brew upgrade viam-server --HEAD
 ```
 
-There is not a way to automatically update viam-server on Mac, so we recommend running `brew upgrade viam-server` on a regular basis.
+There is not a way to automatically update `viam-server` on Mac, so we recommend running `brew upgrade viam-server` on a regular basis.
 
 {{% /tab %}}
 {{% /tabs %}}
