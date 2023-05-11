@@ -1,53 +1,17 @@
 ---
-title: "Program a Robot"
+title: "Program your Robots with Viam's SDKs"
 linkTitle: "Program Robots"
 weight: 50
 simple_list: false
 type: docs
 images: ["/img/code.png"]
+no_list: true
 ---
 
-[More info on how "Programming a Robot" works in alignment with configuration]
+{{< cards >}}
+    {{% card link="/program/sdks" size="small" custom="Hello World" %}}
+    {{% card link="/program/interface" size="small" custom="Interface with Resources" %}}
+    {{% card link="/program/run" size="small" %}}
+{{< /cards >}}
 
-Viam offers software development kits (SDKs) in popular languages which
-
-- Streamline connection, authentication, and encryption against a server using {{< glossary_tooltip term_id="webrtc" >}}
-- Enable you to interface with robots without calling the `viam-server` [gRPC APIs for robot controls](https://github.com/viamrobotics/api) directly
-
-![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](img/sdks/image1.png)
-
-Use the SDK of your preferred language to write code to control your robots.
-
-Viam currently offers SDKs for the following three languages:
-
-- [Python SDK](https://python.viam.dev/)
-- [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
-- [TypeScript SDK](https://ts.viam.dev/)
-
-Click on the links above to read more about installation and usage of each SDK.
-
-## Install an SDK
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-pip install viam-sdk
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-go install go.viam.com/rdk/robot/client@latest
-```
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-npm install --save @viamrobotics/sdk
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+<!-- TODO: Better pictures besides just the same SDK ones -->

@@ -252,7 +252,7 @@ properties, _ := myEncoder.Properties(context.Background(), nil)
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
-If you are [implementing your own encoder](../../program/extend/) and add features that have no built-in API method, you can access them with `DoCommand`.
+If you are [implementing your own encoder](../../extend/) and add features that have no built-in API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

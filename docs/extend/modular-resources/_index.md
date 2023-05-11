@@ -590,6 +590,6 @@ This means that you can compose a robot of any number of parts running in differ
 Custom models of the [arm](/components/arm) component type are not yet supported, as kinematic information is not currently exposed through the arm API.
 
 {{< cards >}}
-    {{% card link="/program/extend/modular-resources/examples/add-rplidar-module" size="small" %}}
+    {{% card link="/extend/modular-resources/examples/add-rplidar-module" size="small" %}}
     {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" %}}
 {{< /cards >}}

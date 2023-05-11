@@ -1,9 +1,9 @@
 ---
 title: "Resource APIs with Viam's SDKs"
-linkTitle: "Resource APIs"
-weight: 40
+linkTitle: "Interface with Resources"
+weight: 50
 type: "docs"
-description: "Using built-in resource API methods to control the components and services on your robot with Viam's SDKs."
+description: "Access and control your robot or fleet with the resource and robot APIs."
 icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 ---

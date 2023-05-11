@@ -36,7 +36,7 @@ Model | Description
 [`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)
 [`model2`](model2/) | An ABCDE unit made by Some Other Company(INSERT LINK AS APPLICABLE)
 
-If you want to use another COMPONENT model with Viam, you can [define a custom component](../../program/extend/).
+If you want to use another COMPONENT model with Viam, you can [define a custom component](../../extend/).
 
 ## Control your board with Viam's client SDK libraries
 
