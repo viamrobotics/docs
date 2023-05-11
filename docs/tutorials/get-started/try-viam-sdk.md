@@ -57,6 +57,10 @@ You can run your code by typing the following into your terminal:
 python3 square.py
 ```
 
+The program prints an array of resources:
+
+<img src="../../img/try-viam-sdk/image3.png" alt="The output of the program is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%">     
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -74,6 +78,8 @@ go mod init square
 go mod tidy
 go run square.go
 ```
+
+The program prints an array of resources.
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -137,13 +143,11 @@ npm install
 npm start
 ```
 
-{{% /tab %}}
-{{< /tabs >}}
-
 Open a web browser and visit `localhost:8000`. You should see a disabled button that says `Click me`. If you successfully configured your robot and it is able to connect to the Viam app, the button will become enabled. If you open the developer console, you should see some output including the names of your rover's resources.
 These are the components and services that the robot is configured with in the Viam app.
-
-<img src="../../img/try-viam-sdk/image3.png" alt="The output of the program is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%">
+    
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% alert title="Tip" color="tip" %}}
 
