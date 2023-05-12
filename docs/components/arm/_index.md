@@ -82,7 +82,7 @@ The arm component supports the following methods:
 | [MoveToJointPositions](#movetojointpositions) | Move each joint on the arm to the desired position. |
 | [JointPositions](#jointpositions) | Get the current position of each joint on the arm. |
 | [Stop](#stop) | Stop the arm from moving. |
-| [IsMoving](#stop) | Get if the arm is currently moving. |
+| [IsMoving](#ismoving) | Get if the arm is currently moving. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### GetEndPosition

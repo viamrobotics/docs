@@ -114,7 +114,9 @@ This example module code is adapted from the full demo module available on the [
 See [Base API Methods](/components/base#api) and [Motor API Methods](/components/motor#api) for more information.
 
 ``` go {class="line-numbers linkable-line-numbers"}
-// Package mybase implements a base that only supports SetPower (basic forward/back/turn controls.)
+// Package mybase implements a base that only supports SetPower (basic forward/back/turn controls), IsMoving (check if in motion), and Stop (stop all motion).
+// It extends the built-in resource type Base and implements methods to handle resource construction, attribute configuration, and reconfiguration.
+
 package mybase
 
 import (
@@ -137,7 +139,7 @@ import (
 )
 
 // Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
-// acme = namespace, demo = family, mybase = name.
+// acme = namespace, demo = family, mybase = model name.
 var (
     Model            = resource.NewModel("acme", "demo", "mybase")
     errUnimplemented = errors.New("unimplemented")
@@ -301,14 +303,15 @@ from viam.components.motor import Motor
 
 class MyBase(Base, Reconfigurable):
     """
-    mybase implements a base that only supports SetPower (basic forward/back/turn controls.)
+    MyBase implements a base that only supports set_power (basic forward/back/turn controls) is_moving (check if in motion), and stop (stop all motion).
 
-    It inherents from Base, and conforms to the ``Reconfigurable`` protocol, which signifies that this component can be reconfigured.
-    It also specifies a function ``MyBase.new``, which confirms to the ``resource.types.ResourceCreator`` type required for all models.
+    It inherits from the built-in resource type Base and conforms to the ``Reconfigurable`` protocol, which signifies that this component can be reconfigured.
+
+    Additionally, it specifies a constructor function ``MyBase.new_base`` which confirms to the ``resource.types.ResourceCreator`` type required for all models.
     """
 
-    """ Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
-    acme = namespace, demo = family, mybase = name. """
+    # Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
+    # acme = namespace, demo = family, mybase = model name. 
     MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
 
     left: Motor # Left motor
@@ -316,8 +319,8 @@ class MyBase(Base, Reconfigurable):
 
     # Constructor
     @classmethod
-    def newBase(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        base := cls(MyBase(config.name))
+    def new_base(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+        base = cls(MyBase(config.name))
         base.reconfigure(config, dependencies)
         return base
 
@@ -343,7 +346,7 @@ class MyBase(Base, Reconfigurable):
         self.left = cast(Motor, left_motor)
         self.right = cast(Motor, right_motor)
 
-    # Implement the methods the Viam RDK defines for the base API (rdk:component:base)
+    """ Implement the methods the Viam RDK defines for the base API (rdk:component:base) """
 
     # move_straight: unimplemented
     async def move_straight(self, distance: int, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
@@ -357,7 +360,7 @@ class MyBase(Base, Reconfigurable):
     async def set_velocity( self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
         pass
 
-    # set_power: sets the linear and angular velocity of the left and right motors on the base
+    # set_power: set the linear and angular velocity of the left and right motors on the base
     async def set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
 
         # stop the base if absolute value of linear and angular velocity is less than .01
@@ -370,14 +373,14 @@ class MyBase(Base, Reconfigurable):
         self.left.set_power(power=((linear.y - angular.z) / sum), extra=extra, timeout=timeout)
         self.right.set_power(power=((linear.y + angular.z) / sum), extra=extra, timeout=timeout)
 
-    # stop: stops the base from moving by stopping both motors
+    # stop: stop the base from moving by stopping both motors
     async def stop(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
         self.left.stop(extra=extra, timeout=timeout)
         self.right.stop(extra=extra, timeout=timeout)
 
-    # is_moving: checks if either motor on the base is moving with motors' is_powered
+    # is_moving: check if either motor on the base is moving with motors' is_powered
     async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs) -> bool:
-        return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_moving(extra=extra, timeout=timeout)[0]
+        return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
 ```
 
 <file>init.py</file>
@@ -393,7 +396,7 @@ from viam.resource.registry import Registry, ResourceCreatorRegistration
 
 from .my_base import MyBase
 
-Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new, MyBase.validate_config))
+Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
 ```
 
 {{% /tab %}}

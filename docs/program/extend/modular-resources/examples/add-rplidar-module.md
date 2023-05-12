@@ -11,12 +11,6 @@ tags: ["slam", "services"]
 # SMEs: Kat, Jeremy
 ---
 
-{{% alert title="Note" color="note" %}}
-The {{< glossary_tooltip term_id="slam" >}} Service is an experimental feature.
-Stability is not guaranteed.
-Breaking changes are likely to occur, and occur often.
-{{% /alert %}}
-
 ## Requirements
 
 Install the `rplidar-module` binary on your machine and make it executable by running the following commands according to your machine's architecture:

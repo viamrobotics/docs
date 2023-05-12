@@ -19,7 +19,8 @@ For configuration information, click on your gripper's model:
 
 Model | Description
 ----- | -----------
-[`softrobotics`](./softrobotics/) | The [*m*Grip soft gripper by Soft Robotics](https://www.softroboticsinc.com/products/mgrip-modular-gripping-solution-for-food-automation/)
+[`softrobotics`](./softrobotics/) | The [*m*Grip soft gripper by Soft Robotics](https://www.softroboticsinc.com/products/mgrip-modular-gripping-solution-for-food-automation/) |
+`fake` | A model used for testing, with no physical hardware. |
 
 If you have another gripper model, you can [define a custom component](../../program/extend/).
 
