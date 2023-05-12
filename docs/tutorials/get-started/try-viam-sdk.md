@@ -59,7 +59,80 @@ python3 square.py
 
 The program prints an array of resources:
 
-<img src="../../img/try-viam-sdk/image3.png" alt="The output of the program is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%">     
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-75"}
+python3 square.py
+2023-05-12 11:33:21,045		INFO	viam.rpc.dial (dial.py:211)	Connecting to socket: /tmp/proxy-Dome34KJ.sock
+Resources:
+[namespace: "rdk"
+type: "component"
+subtype: "motor"
+name: "left"
+, namespace: "rdk"
+type: "component"
+subtype: "camera"
+name: "cam"
+, namespace: "rdk"
+type: "component"
+subtype: "encoder"
+name: "Lenc"
+, namespace: "rdk"
+type: "component"
+subtype: "camera"
+name: "fakeCam"
+, namespace: "rdk"
+type: "service"
+subtype: "data_manager"
+name: "overhead-cam:dm"
+, namespace: "rdk"
+type: "service"
+subtype: "base_remote_control"
+name: "base_rc"
+, namespace: "rdk"
+type: "service"
+subtype: "sensors"
+name: "builtin"
+, namespace: "rdk"
+type: "component"
+subtype: "motor"
+name: "right"
+, namespace: "rdk"
+type: "component"
+subtype: "encoder"
+name: "Renc"
+, namespace: "rdk"
+type: "service"
+subtype: "sensors"
+name: "overhead-cam:builtin"
+, namespace: "rdk"
+type: "service"
+subtype: "motion"
+name: "overhead-cam:builtin"
+, namespace: "rdk"
+type: "service"
+subtype: "data_manager"
+name: "builtin"
+, namespace: "rdk"
+type: "service"
+subtype: "motion"
+name: "builtin"
+, namespace: "rdk"
+type: "component"
+subtype: "board"
+name: "local"
+, namespace: "rdk"
+type: "component"
+subtype: "base"
+name: "viam_base"
+, namespace: "rdk"
+type: "component"
+subtype: "input_controller"
+name: "WebGamepad"
+, namespace: "rdk"
+type: "component"
+subtype: "camera"
+name: "overhead-cam:cam"
+]
+```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -80,6 +153,13 @@ go run square.go
 ```
 
 The program prints an array of resources.
+These are the components and services that the robot is configured with in the Viam app.
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-3"}
+go run square.go
+2023-05-12T11:28:00.383+0200	INFO	client	rover/square.go:40	Resources:
+2023-05-12T11:28:00.383+0200	INFO	client	rover/square.go:41	[rdk:component:camera/fakeCam rdk:service:data_manager/overhead-cam:dm rdk:component:motor/left rdk:component:camera/cam rdk:component:encoder/Lenc rdk:component:encoder/Renc rdk:service:base_remote_control/base_rc rdk:service:sensors/builtin rdk:component:motor/right rdk:service:sensors/overhead-cam:builtin rdk:service:motion/overhead-cam:builtin rdk:component:input_controller/WebGamepad rdk:component:camera/overhead-cam:cam rdk:service:data_manager/builtin rdk:service:motion/builtin rdk:component:board/local rdk:component:base/viam_base] 
+```
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -143,9 +223,12 @@ npm install
 npm start
 ```
 
-Open a web browser and visit `localhost:8000`. You should see a disabled button that says `Click me`. If you successfully configured your robot and it is able to connect to the Viam app, the button will become enabled. If you open the developer console, you should see some output including the names of your rover's resources.
+Open a web browser and visit `localhost:8000`.
+You should see a disabled button that says `Click me`.
+If you successfully configured your robot and it is able to connect to the Viam app, the button will become enabled.
+If you open the developer console, you should see some output including the names of your rover's resources.
 These are the components and services that the robot is configured with in the Viam app.
-    
+
 {{% /tab %}}
 {{< /tabs >}}
 
