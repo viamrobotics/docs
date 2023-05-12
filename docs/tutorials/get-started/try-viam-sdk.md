@@ -155,7 +155,7 @@ go run square.go
 The program prints an array of resources.
 These are the components and services that the robot is configured with in the Viam app.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-3"}
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-10"}
 go run square.go
 2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:40 
    Resources:
