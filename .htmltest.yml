@@ -19,6 +19,7 @@ IgnoreURLs:
 - "scuttlerobot.org"
 - "numato.com"
 - "nvidia.com"
+- "slamtec.com"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"
