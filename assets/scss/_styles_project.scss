@@ -585,27 +585,12 @@ END MARKETING CSS
     max-width: 40%;
   }
 
-  .hover-card.hover-card-xxs {
-    min-width: 15%;
-    width: 15%;
-    max-width: 15%;
-    border: unset;
-    box-shadow: unset;
-  }
-
 }
 
 @media (min-width: 650px) { // at least two cards fit next to one another
   .hover-card.hover-card-small {
     min-width: 250px;
     max-width: 250px;
-  }
-
-  .hover-card.hover-card-xxs {
-    min-width: 100px;
-    max-width: 100px;
-    border: unset;
-    box-shadow: unset;
   }
 
   a {
