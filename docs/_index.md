@@ -7,120 +7,77 @@ type: "docs"
 hide_feedback: true
 ---
 
-Viam is a complete software platform for robots that you can utilize on a wide variety of systems, including:
+Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS.
+Viam supports a wide variety of systems, including:
 
 <div class="board-carousel">
 <div class="row" style="flex-wrap: nowrap">
-<div class="col hover-card hover-card-xxs">
-      <a href="installation/prepare/jetson-nano-setup/">
-          <div class="hover-card-img">
-            <img src="installation/img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Jetson Nano" width="100%">
-          </div>
-        <div class="small-hover-card-div">
-            <h6>NVIDIA Jetson Nano</h6>
-        </div>
-      </a>
-</div>
-<div class="col hover-card hover-card-xxs">
-      <a href="installation/prepare/rpi-setup/">
-          <div class="hover-card-img">
-            <img src="installation/img/thumbnails/raspberry-pi-4-b-2gb.jpg" alt="Raspberry Pi" width="100%">
-          </div>
-        <div class="small-hover-card-div">
-            <h6>Raspberry Pi 4</h6>
-        </div>
-      </a>
-</div>
-<div class="col hover-card hover-card-xxs">
-      <a href="installation/prepare/beaglebone-setup/">
-          <div class="hover-card-img">
-            <img src="installation/img/thumbnails/beaglebone.png" alt="BeagleBone A I-64" width="100%">
-          </div>
-        <div class="small-hover-card-div">
-            <h6>Beaglebone AI64</h6>
-        </div>
-      </a>
-</div>
-<div class="col hover-card hover-card-xxs">
-      <a href="installation/prepare/sk-tda4vm/">
-        <div class="hover-card-img">
-            <img src="installation/img/thumbnails/tda4vm.png" alt="S K - T D A 4 V M" width="100%">
-          </div>
-        <div class="small-hover-card-div">
-            <h6>Texas Instruments TDA4VM</h6>
-        </div>
-      </a>
-</div>
-<div class="col hover-card hover-card-xxs">
-      <a href="installation/prepare/microcontrollers/">
-          <div class="hover-card-img">
+  <div class="col">
+    <a href="installation/prepare/jetson-nano-setup/">
+        <img src="installation/img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Jetson Nano" width="100%">
+        <h6>NVIDIA Jetson Nano</h6>
+    </a>
+  </div>
+  <div class="col">
+    <a href="installation/prepare/rpi-setup/">
+        <img src="installation/img/thumbnails/raspberry-pi-4-b-2gb.jpg" alt="Raspberry Pi" width="100%">
+        <h6>Raspberry Pi 4</h6>
+    </a>
+  </div>
+  <div class="col">
+    <a href="installation/prepare/beaglebone-setup/">
+        <img src="installation/img/thumbnails/beaglebone.png" alt="BeagleBone A I-64" width="100%">
+        <h6>Beaglebone AI64</h6>
+    </a>
+  </div>
+  <div class="col">
+    <a href="installation/prepare/sk-tda4vm/">
+        <img src="installation/img/thumbnails/tda4vm.png" alt="S K - T D A 4 V M" width="100%">
+        <h6>Texas Instruments TDA4VM</h6>
+    </a>
+  </div>
+  <div class="col">
+    <a href="installation/prepare/microcontrollers/">
             <img src="installation/img/thumbnails/esp32-espressif.png" alt="E S P 32 - espressif" width="100%">
-          </div>
-        <div class="small-hover-card-div">
             <h6>Espressif ESP32</h6>
-        </div>
-      </a>
-</div>
-<div class="col hover-card hover-card-xxs">
-      <a href="installation/prepare/jetson-agx-orin-setup/">
-          <div class="hover-card-img">
-            <img src="installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png" alt="Jetson A G X Orin Developer Kit" width="100%">
-          </div>
-        <div class="small-hover-card-div">
-            <h6>NVIDIA Jetson AGX Orin</h6>
-        </div>
-      </a>
-</div>
-<div class="col hover-card hover-card-xxs">
-      <a href="components/board/jetson/">
-          <div class="hover-card-img">
+    </a>
+  </div>
+  <div class="col">
+    <a href="installation/prepare/jetson-agx-orin-setup/">
+        <img src="installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png" alt="Jetson A G X Orin Developer Kit" width="100%">
+        <h6>NVIDIA Jetson AGX Orin</h6>
+    </a>
+  </div>
+  <div class="col">
+    <a href="components/board/jetson/">
             <img src="installation/img/thumbnails/jetson-xavier.jpeg" alt="Jetson Xavier NX Dev Kit" width="100%">
-          </div>
-        <div class="small-hover-card-div">
             <h6>NVIDIA Jetson Xavier NX</h6>
-        </div>
-      </a>
-</div>
-<div class="col hover-card hover-card-xxs">
-      <a href="installation/prepare/rpi-setup">
-          <div class="hover-card-img">
-            <img src="installation/img/thumbnails/raspberry-pi-zero-2w.png" alt="Raspberry Pi" width="100%">
-          </div>
-        <div class="small-hover-card-div">
-            <h6>Raspberry Pi Zero 2W</h6>
-        </div>
-      </a>
-</div>
-<div class="col hover-card hover-card-xxs">
+    </a>
+  </div>
+  <div class="col">
+    <a href="installation/prepare/rpi-setup">
+        <img src="installation/img/thumbnails/raspberry-pi-zero-2w.png" alt="Raspberry Pi" width="100%">
+        <h6>Raspberry Pi Zero 2W</h6>
+    </a>
+  </div>
+  <div class="col">
     <a href="components/board/nanopi/">
-        <div class="hover-card-img">
-            <img src="installation/img/thumbnails/nanopi.jpeg" alt="FriendlyElec's NanoPi Mini Board" width="100%">
-        </div>
-        <div class="small-hover-card-div">
-            <h6>FriendlyElec NanoPi</h6>
-        </div>
+        <img src="installation/img/thumbnails/nanopi.jpeg" alt="FriendlyElec's NanoPi Mini Board" width="100%">
+        <h6>FriendlyElec NanoPi</h6>
     </a>
-</div>
-<div class="col hover-card hover-card-xxs">
+  </div>
+  <div class="col">
     <a href="components/board/numato/">
-        <div class="hover-card-img">
-            <img src="installation/img/thumbnails/numato.png" alt="Numato GPIO Modules" width="100%">
-        </div>
-        <div class="small-hover-card-div">
-            <h6>Numato GPIO Modules</h6>
-        </div>
+        <img src="installation/img/thumbnails/numato.png" alt="Numato GPIO Modules" width="100%">
+        <h6>Numato GPIO Modules</h6>
     </a>
-</div>
-<div class="col hover-card hover-card-xxs">
+  </div>
+  <div class="col">
     <a href="components/board/numato/">
-        <div class="hover-card-img">
-            <img src="installation/img/thumbnails/pca9685.jpeg" alt="P C A 9685 Arduino I 2 C Interface" width="100%">
-        </div>
-        <div class="small-hover-card-div">
-            <h6>PCA9686 Arduino I<sup>2</sup>C Interface</h6>
-        </div>
+        <img src="installation/img/thumbnails/pca9685.jpeg" alt="P C A 9685 Arduino I 2 C Interface" width="100%">
+        <h6>PCA9686 Arduino I<sup>2</sup>C Interface</h6>
     </a>
-</div>
+  </div>
 </div>
 </div>
 
