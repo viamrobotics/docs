@@ -81,16 +81,14 @@ Viam supports a wide variety of systems, including:
 </div>
 </div>
 
-{{< alert title="New to Viam?" color="tip" >}}
-Learn about [the Viam platform in 3 minutes](viam).
-{{< /alert >}}
-
 <div class="container td-max-width-on-larger-screens">
   <div class="row">
     <div class="col landing-hover-card">
         <div class="landing-hover-card-padding yellow">
-            <h4>Try Viam</h4>
-            <p style="text-align: left;"><a href="try-viam">Drive a Viam rover</a> from the comfort of your home right now or follow along with some <a href="tutorials">example robot tutorials</a>.</p>
+            <h4>Learn and Try</h4>
+            <p style="text-align: left;">
+            Learn about <a href="viam">the Viam platform in 3 minutes</a> and then
+            <a href="try-viam">drive a Viam rover</a> from the comfort of your home or follow along with a <a href="tutorials"> tutorial</a>.</p>
             {{<gif webm_src="img/rover.webm" mp4_src="img/rover.mp4" alt="A Viam Rover moving about">}}
         </div>
     </div>
@@ -102,6 +100,7 @@ Learn about [the Viam platform in 3 minutes](viam).
             <li><a href="/manage/fleet/robots/">Set up your robot</a> or<a href="manage/fleet/"> fleet</a></li>
             <li><a href="installation">Install Viam on your robot</a></li>
             <li><a href="manage/configuration/">Configure your robot</a></li>
+            <li><a href="manage/fleet/robots/#control">Test your robot</a></li>
             </ol>
             {{<gif webm_src="img/blink.webm" mp4_src="img/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
         </div>
