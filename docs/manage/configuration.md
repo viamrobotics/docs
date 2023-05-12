@@ -401,3 +401,5 @@ To run `viam-server` as a system service, see [Start automatically on boot](/ins
 ## Next Steps
 
 After configuring your robot, you can use the [Viam SDKs](../../program/sdks/) to program and control your robot.
+
+If you want to try configuring a robot but don't have any hardware on hand, try the [Build a Mock Robot](../../tutorials/configure/build-a-mock-robot/) tutorial.
