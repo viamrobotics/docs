@@ -80,8 +80,8 @@ The Motion Service takes the volumes associated with all configured robot compon
     When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
-    - The Motion Service assumes that obstacles with mobile parents move along with their parents while solving.
-      This ensures that obstacles that are attached to moving components do not cause collisions during movement.
+    - The Motion Service assumes that obstacles are static.
+      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, it should be specified with *transforms*.
     - Geometry locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
       A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
@@ -141,8 +141,8 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
     When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
-    - The Motion Service assumes that obstacles with mobile parents move along with their parents while solving.
-      This ensures that obstacles that are temporarily attached to moving components do not cause collisions during movement.
+    - The Motion Service assumes that obstacles are static.
+      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, it should be specified with *transforms*.
     - Geometries are "part of" their frame, rather than at the distal end of the frame.
       Their poses are relative to the *origin* of the specified frame.
       A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
