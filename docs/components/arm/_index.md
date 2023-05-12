@@ -62,7 +62,7 @@ Supported arm models include:
 
 ## Control your arm with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -81,7 +81,7 @@ The arm component supports the following methods:
 | [MoveToJointPositions](#movetojointpositions) | Move each joint on the arm to the desired position. |
 | [JointPositions](#jointpositions) | Get the current position of each joint on the arm. |
 | [Stop](#stop) | Stop the arm from moving. |
-| [IsMoving](#stop) | Get if the arm is currently moving. |
+| [IsMoving](#ismoving) | Get if the arm is currently moving. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### GetEndPosition
@@ -118,7 +118,7 @@ pos = await my_arm.get_end_position()
 **Parameters:**
 
 - `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(`map[string]interface{}`)](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -182,7 +182,7 @@ await my_arm.move_to_position(pose=examplePose)
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(`map[string]interface{}`)](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -197,7 +197,7 @@ myArm, err := arm.FromRobot(robot, "my_arm")
 examplePose = []float64{x: 5, y: 5, z: 5, o_x: 5, o_y: 5, o_z: 5, theta:20}
 
 // Move your arm to the Pose.
-myArm.MoveToPosition(context.Background(), pose: examplePose, nil)
+err := myArm.MoveToPosition(context.Background(), pose: examplePose, nil)
 ```
 
 {{% /tab %}}
@@ -250,7 +250,7 @@ await my_arm.move_to_joint_positions(positions= jointPos)
 - `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `positions` [(`JointPositions`)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
 JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(`map[string]interface{}`)](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -268,7 +268,7 @@ degrees := []float64{4.0, 5.0, 6.0}
 jointPos := componentpb.JointPositions{degrees}
 
 // Move each joint of the arm to the position these values specify.
-myArm.MoveToJointPositions(context.Background(), jointPos, nil)
+err := myArm.MoveToJointPositions(context.Background(), jointPos, nil)
 ```
 
 {{% /tab %}}
@@ -306,7 +306,7 @@ pos = await my_arm.get_joint_positions()
 **Parameters:**
 
 - `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(`map[string]interface{}`)](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -357,7 +357,7 @@ await my_arm.stop()
 **Parameters:**
 
 - `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(`map[string]interface{}`)](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -369,7 +369,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myArm, err := arm.FromRobot(robot, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
-myArm.Stop(context.Background(), nil)
+err := myArm.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -476,7 +476,7 @@ command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myArm.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 {{% /tab %}}
 {{< /tabs >}}

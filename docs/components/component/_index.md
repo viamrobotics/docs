@@ -80,11 +80,11 @@ readings = await my_sensor.get_readings()
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `readings` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): The measurements or readings that this sensor provides.
+- `readings` [(map[string]interface{})](https://go.dev/blog/maps): The measurements or readings that this sensor provides.
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
@@ -132,7 +132,7 @@ await my_sensor.method_name_two()
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 

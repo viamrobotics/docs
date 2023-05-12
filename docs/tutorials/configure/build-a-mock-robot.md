@@ -147,7 +147,7 @@ The easiest way to get started writing an application with Viam's SDKs is to use
 
 Navigate to your [robot's page on the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, and select your SDK language (**Python** or **Golang**).
 Copy the boilerplate code.
-This code snippets imports all the necessary libraries, is pre-populated with your robot credentials, and sets up a connection with the Viam app in the cloud.
+This code snippet imports all the necessary libraries, is pre-populated with your robot credentials, and sets up a connection with the Viam app in the cloud.
 Next, paste that boilerplate code into a file named <file>index.py</file> or <file>index.go</file> in your code editor, and save your file locally.
 
 {{< readfile "/static/include/snippet/secret-share.md" >}}

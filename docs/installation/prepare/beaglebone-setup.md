@@ -7,6 +7,7 @@ description: "Flash a BeagleBone AI-64 to prepare it for viam-server installatio
 image: "/installation/img/thumbnails/beaglebone.png"
 imageAlt: "BeagleBone A I-64"
 images: ["/installation/img/thumbnails/beaglebone.png"]
+no_list: true
 aliases:
     - "/installation/beaglebone-install/"
     - "/installation/prepare/beaglebone-install/"

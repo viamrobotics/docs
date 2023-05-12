@@ -41,7 +41,7 @@ Learn about [the Viam platform in 3 minutes](viam).
         <div class="landing-hover-card-padding teal">
         <h4>Program your robots</h4>
         <p style="text-align: left;">
-            Program and control your robots in <a href="program/sdk-as-client/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, or <a href="https://ts.viam.dev/">TypeScript</a>.
+            Program and control your robots in <a href="program/sdks/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, or <a href="https://ts.viam.dev/">TypeScript</a>.
         </p>
         <img src="img/code.png" alt="Robot code">
         </div>

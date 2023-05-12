@@ -31,7 +31,7 @@ To create a `mlmodel` classifier, you need an [ML Model Service with a suitable 
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **config** tab, and click on **Services**.
+Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 
@@ -117,7 +117,7 @@ To be able to interact with the Vision Service you must:
     ```
 
     After adding the component and its attributes, click **Save config**.
-    Wait for the robot to reload, and then go to the **control** tab to test the stream of detections.
+    Wait for the robot to reload, and then go to the **Control** tab to test the stream of detections.
 
     ![Model recognizes a star on camera feed](../../img/model-on-camera.png)
 

@@ -47,7 +47,7 @@ For configuration information, click on one of the following models:
 
 ## Control your encoder with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -125,7 +125,7 @@ print("The encoder position is currently ", position[0], position[1])
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `positionType` ([PositionType](https://pkg.go.dev/go.viam.com/rdk/components/encoder#PositionType)): Specify whether to get the current position in ticks (`encoder.PositionTypeTicks`) or in degrees (`encoder.PositionTypeDegrees`).
   If you are not sure which position type your encoder supports but it is a built-in Viam-supported model, you can leave this parameter unspecified (`encoder.PositionTypeUnspecified`) and it will default to the correct position type.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -179,7 +179,7 @@ await my_encoder.reset_position()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -230,7 +230,7 @@ properties = await my_encoder.get_properties()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 

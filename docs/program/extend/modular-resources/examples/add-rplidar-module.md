@@ -11,12 +11,6 @@ tags: ["slam", "services"]
 # SMEs: Kat, Jeremy
 ---
 
-{{% alert title="Note" color="note" %}}
-The {{< glossary_tooltip term_id="slam" >}} Service is an experimental feature.
-Stability is not guaranteed.
-Breaking changes are likely to occur, and occur often.
-{{% /alert %}}
-
 ## Requirements
 
 Install the `rplidar-module` binary on your machine and make it executable by running the following commands according to your machine's architecture:
@@ -54,7 +48,7 @@ Go to your robot's page on the [Viam app](https://app.viam.com/).
 
 {{< tabs name="Add the Rplidar component">}}
 {{% tab name="Config Builder" %}}
-Navigate to the **config** tab on your robot's page, and click on the **Components** subtab.
+Navigate to the **Config** tab on your robot's page, and click on the **Components** subtab.
 
 Add a component with type `camera`, model `viam:lidar:rplidar`, and a name of your choice:
 
@@ -102,7 +96,7 @@ Click on the **Modules** subtab. Add the rplidar module with a name of your choi
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Navigate to the **config** tab.
+Navigate to the **Config** tab.
 Select the **Raw JSON** mode, then copy/paste the following `"components"` and `"modules"` JSON:
 
   {{< tabs name="Add the Rplidar component - configs" >}}
@@ -186,7 +180,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"components"` and `
 {{% /tab %}}
 {{< /tabs >}}
 
-Check the **logs** tab of your robot in the Viam app to make sure your RPlidar has connected and no errors are being raised.
+Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
 ## Troubleshooting
 

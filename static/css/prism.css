@@ -30,6 +30,7 @@ pre[class*="language-"] {
   padding-bottom: 0;
   position: relative;
   overflow-y: hidden;
+  scrollbar-gutter: stable;
 }
 
 .token.cdata,
@@ -86,7 +87,7 @@ pre[class*="language-"] {
 div.code-toolbar > .toolbar > .toolbar-item > a,
 div.code-toolbar > .toolbar > .toolbar-item > button,
 div.code-toolbar > .toolbar > .toolbar-item > span {
-    color: #cccccb;
+    color: black;
 }
 
 .line-highlight {
@@ -145,6 +146,12 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
   }
 }
 
+div.code-toolbar.code-terminal > .toolbar > .toolbar-item > a,
+div.code-toolbar.code-terminal > .toolbar > .toolbar-item > button,
+div.code-toolbar.code-terminal > .toolbar > .toolbar-item > span {
+    background: rgba(224, 224, 224, 0.8);
+    box-shadow: 0 2px 0 0 rgba(256, 256, 256, 0.8);
+}
 
 .code-terminal > pre[class*="language-sh"] > code {
   background-color: #333 !important;

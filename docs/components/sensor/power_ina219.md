@@ -16,7 +16,7 @@ Configure a `power_ina219` sensor to integrate a [INA219 current sensor](https:/
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your sensor, select the type `sensor`, and select the `power_ina219` model.
 

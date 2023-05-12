@@ -11,11 +11,11 @@ After the Data Management Service synchronizes the uploaded data in Viam, you ca
 
 ![Images, files, and sensors tabs](../img/tabs.png)
 
-The **DATA** page shows:
+The **DATA** page shows data about:
 
-- **IMAGES**: PNG or JPEG files
-- **FILES**: binary data like point cloud data
-- **SENSOR DATA**: tabular sensor counts (like gantry position)
+- **Images**: PNG or JPEG files
+- **Files**: binary data like point cloud data
+- **Sensors**: tabular sensor counts (like gantry position)
 
 If you click on an image or a file, a **Details** panel appears on the right with capture metadata.
 
@@ -23,15 +23,15 @@ If you click on an image or a file, a **Details** panel appears on the right wit
 
 ## Filter Data
 
-On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **FILTERING** panel.
+On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **Filtering** panel.
 
 For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on robots that belong to your `Rover Rental` location.
 
 ## Delete Data
 
 You can delete image or file data from the [Viam app](https://app.viam.com).
-To delete image data, click on an image in the **IMAGES** subtab and click on **DELETE SELECTED**.
-To delete a file, click on the file  in the **FILES** subtab and click the **Delete** icon.
+To delete image data, click on an image in the **Images** subtab and click on **DELETE SELECTED**.
+To delete a file, click on the file  in the **Files** subtab and click the **Delete** icon.
 
 You can also delete data using the [Viam CLI](../../cli).
 

@@ -49,7 +49,7 @@ For an example of creating a custom component, see a [WiFi strength sensor built
 
 ## Control your sensor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -96,11 +96,11 @@ readings = await my_sensor.get_readings()
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `readings` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): The measurements or readings that this sensor provides.
+- `readings` [(map[string]interface{})](https://go.dev/blog/maps): The measurements or readings that this sensor provides.
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).

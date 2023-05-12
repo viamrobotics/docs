@@ -60,7 +60,7 @@ The data management setup process will be mostly the same, but you will need to 
 First, you need to add and configure the Data Management Service to capture data and store it at a specified location.
 To enable the data capture on your robot, do the following:
 
-1. On your robot's **config** page, navigate to the **Services** tab.
+1. On your robot's **Config** page, navigate to the **Services** tab.
 2. At the bottom of the page, create a service.
    Choose `Data Management` as the type and specify `viam-data-manager` as the name for your instance of the Data Management Service.
    This service syncs data from your robot to the Viam app in the cloud.
@@ -89,7 +89,7 @@ This allows you to capture not just image data, but sensor data, robot state dat
 
 To enable image data capture for a camera component, follow these steps:
 
-1. Navigate to the **Components** tab on your robot's **config** page.
+1. Navigate to the **Components** tab on your robot's **Config** page.
 2. Scroll down to the camera component.
    If you are using a Viam Rover, the camera is named `cam`.
    The camera component has a section labeled **Data Capture Configuration**.
@@ -98,6 +98,11 @@ To enable image data capture for a camera component, follow these steps:
    - Set the **Type** to "ReadImage" and the **Frequency** to `0.333`.
      This will capture an image from the camera roughly once every 3 seconds.
      Feel free to adjust the frequency if you want the camera to capture more or less image data.
+
+     {{< alert title="Caution" color="caution" >}}
+Avoid configuring data capture to higher rates than your hardware can handle, as this leads to performance degradation.
+     {{< /alert >}}
+
    - Select the MIME type you want to capture.
      Select `image/jpeg` data for this tutorial.
 
@@ -144,7 +149,7 @@ To export data from Viam:
    ```
 
 2. Head back to the [**DATA** page in the Viam app](https://app.viam.com/data/view).
-3. Below the **SEARCH** button in the **FILTERING** panel, click **Copy Export Command** to copy the export command to the clipboard.
+3. Below the **SEARCH** button in the **Filtering** panel, click **Copy Export Command** to copy the export command to the clipboard.
 
    ![The "copy export command" button from the Viam app.](../../img/data-management/image4.png)
 

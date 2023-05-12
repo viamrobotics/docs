@@ -255,7 +255,7 @@ Test your sensor by putting it in air, water, and different soils to see how the
 
 Follow [this guide](/installation#install-viam-server) to install `viam-server` on your pi, create a new robot, and connect to it on [the Viam app](https://app.viam.com).
 
-Then, navigate to your new robot's page on the app and click on the **config** tab.
+Then, navigate to your new robot's page on the app and click on the **Config** tab.
 
 First, add your Pi as a [board component](/components/board/) by creating a new component with **type** `board` and **model** `pi`:
 
@@ -321,7 +321,7 @@ Set the motor's attributes **Max RPM** to `1000` and **PWM**  to `12 GPIO 18` (t
 
 Click **Save config**.
 
-Now, if you navigate to your robot's **control** tab, you should be able to control the motor by setting the power and direction of rotation and clicking the **RUN** button:
+Now, if you navigate to your robot's **Control** tab, you should be able to control the motor by setting the power and direction of rotation and clicking the **RUN** button:
 
 ![Creation of a pump motor in the Viam app config builder.](../../img/plant-watering-pi/pump-motor-control.png)
 
@@ -338,7 +338,7 @@ Now that you have set up your robot and are able to control your motor, you can 
 For example, the [sensor component](/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
 
 However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3).
-Although the capacitive soil moisture sensor is not currently one of Viam's built-in models, you can use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/sdk-as-server/) extending the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html), making it a model of sensor available for you to use on your robot.
+Although the capacitive soil moisture sensor is not currently one of Viam's built-in models, you can use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/custom-components-remotes/) implementing the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html), making it a model of sensor available for you to use on your robot.
 
 Create your custom sensor resource in 3 steps:
 
@@ -423,7 +423,7 @@ You can modify this example code as necessary.
 
 #### Add the `MoistureSensor` Remote
 
-Now, go back to your robot's page on [the Viam app](https://app.viam.com) and navigate to the **config** tab, then to the **Remotes** sub-tab.
+Now, go back to your robot's page on [the Viam app](https://app.viam.com) and navigate to the **Config** tab, then to the **Remotes** sub-tab.
 
 Add your sensor server as a [remote part](/manage/parts-and-remotes/) called `my-sensor-server`:
 
@@ -495,13 +495,13 @@ Then, navigate to the **Processes** subtab and create a process called `run-sens
 Modify the `"args"` and `"cwd"` to match the path to your `plant-watering-robot` directory on your Pi.
 
 Click **Save config**.
-Now, when you navigate to your robot's **control** tab, you should be able to see your sensor readings:
+Now, when you navigate to your robot's **Control** tab, you should be able to see your sensor readings:
 
 ![Readings from a soil moisture sensor in the Viam app CONTROL tab.](../../img/plant-watering-pi/sensor-reading-control.png)
 
 {{% alert title="Tip" color="tip" %}}
 
-If you are having trouble seeing your sensor readings, check the **logs** table and filter by the **error** level to get more information about the issue.
+If you are having trouble seeing your sensor readings, check the **Logs** table and filter by the **error** level to get more information about the issue.
 
 Make sure that you have modified `<my_username>` in the JSON template above to match your username on your Pi.
 You can run `pwd` in your terminal after SSH'ing into your Pi to see what your username is.
@@ -512,9 +512,9 @@ You can run `pwd` in your terminal after SSH'ing into your Pi to see what your u
 
 Follow these instructions to start working on your Python control code:
 
-1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **code sample** tab.
+1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **Code Sample** tab.
 Follow the instructions in this tab.
-2. Click **COPY CODE** to copy a code sample that establishes a connection with your robot when run.
+2. Click **Copy Code** to copy a code sample that establishes a connection with your robot when run.
 3. Paste this code sample into a new file in the `plant-watering-robot` directory you created on your Pi.
 4. Name the file <file>plant-watering-robot.py</file>, and save it.
 

@@ -14,7 +14,7 @@ The `arduino` encoder requires configuring two pins on the board to which the en
 {{< tabs name="Configure an arduino Encoder" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `arduino` model.
 
