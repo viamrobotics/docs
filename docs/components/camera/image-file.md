@@ -19,39 +19,39 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `image_file` model.
 
-![Creation of an image file camera in the Viam app config builder.](../img/create-image-file.png)
-
-Fill in the attributes for your image file camera:
+Click **Create component**.
 
 ![Configuration of an image file camera in the Viam app config builder.](../img/configure-image-file.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera_name>",
+    "name": "<your-camera-name>",
     "type": "camera",
     "model" : "image_file",
     "attributes": {
         "intrinsic_parameters": {
-            "width_px": <integer>,
-            "height_px": <integer>,
-            "fx": <float64>,
-            "fy": <float64>,
-            "ppx": <float64>,
-            "ppy": <float64>
+            "width_px": <int>,
+            "height_px": <int>,
+            "fx": <float>,
+            "fy": <float>,
+            "ppx": <float>,
+            "ppy": <float>
         },
         "distortion_parameters": {
-            "rk1": <float64>,
-            "rk2": <float64>,
-            "rk3": <float64>,
-            "tp1": <float64>,
-            "tp2": <float64>
+            "rk1": <float>,
+            "rk2": <float>,
+            "rk3": <float>,
+            "tp1": <float>,
+            "tp2": <float>
         },
         "debug": <boolean>,
-        "color_image_file_path": <string>,
-        "depth_image_file_path": <string>
+        "color_image_file_path": "<your-file-path>",
+        "depth_image_file_path": "<your-file-path>"
     }
 }
 ```
@@ -61,13 +61,13 @@ Fill in the attributes for your image file camera:
 
 The following attributes are available for `image_file` cameras:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `intrinsic_parameters` | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
-| `distortion_parameters` | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
-| `debug` | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
-| `color_image_file_path` | Optional | The file path to the color image. |
-| `depth_image_file_path` | Optional | The file path to the depth image. |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
+| `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
+| `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
+| `color_image_file_path` | string | Optional | The file path to the color image. |
+| `depth_image_file_path` | string | Optional | The file path to the depth image. |
 
 You must specify `color_image_file_path` or `depth_image_file_path`.
 

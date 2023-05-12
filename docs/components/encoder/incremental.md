@@ -10,7 +10,7 @@ tags: ["encoder", "components"]
 
 Use the `incremental` encoder model to configure [a quadrature encoder](https://en.wikipedia.org/wiki/Incremental_encoder).
 
-Configuring an `incremental` encoder requires configuring two pins on the board to which the encoder is wired.
+Configuring an `incremental` encoder requires specifying the {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}} of the two pins on the board to which the encoder is wired.
 These two pins provide the phase outputs used to measure the speed and direction of rotation in relation to a given reference point.
 
 {{< tabs name="Configure an incremental encoder" >}}
@@ -20,46 +20,32 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your encoder, select the type `encoder`, and select the `incremental` model.
 
-![Creation of an incremental encoder in the Viam app config builder.](../img/create-incremental.png)
-
 Click **Create component**.
-Fill in the attributes for your encoder:
 
 ![Configuration of an incremental encoder in the Viam app config builder.](../img/configure-incremental.png)
+
+Fill in and edit the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<encoder_name>",
+    "name": "<your-encoder-name>",
     "type": "encoder",
     "model" : "incremental",
     "attributes": {
-      "board": "<board_name>",
+      "board": "<your-board-name>",
       "pins": {
-        "a": <string>,
-        "b": <string>
+        "a": "<your-first-pin-number>",
+        "b": "<your-second-pin-number>"
       }
     }
 }
 ```
 
 {{% /tab %}}
-{{< /tabs >}}
-
-The following attributes are available for `incremental` encoders:
-
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `board` | *Required* | The name of the board to which the encoder is wired. |
-| `pins` | *Required* | A struct holding the names of the pins wired to the encoder: <ul> <li> <code>a</code>: Pin number of one of the pins to which the encoder is wired. Use pin number, not GPIO number. </li> <li> <code>b</code>: Required for two phase encoder. Pin number for the second board pin to which the encoder is wired. </li> </ul> |
-
-Viam also supports a model of encoder called [`"single"`](../single) which requires only one pin (`i`).
-
-### Example Config
-
-The following example shows the configuration of a board and an encoder:
+{{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -85,3 +71,15 @@ The following example shows the configuration of a board and an encoder:
   ]
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The following attributes are available for `incremental` encoders:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `board` | string | **Required** | The `name` of the [board](/components/board) to which the encoder is wired. |
+| `pins` | object | **Required** | A struct holding the names of the pins wired to the encoder: <ul> <li> <code>a</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of one of the pins to which the encoder is wired. </li> <li> <code>b</code>: Required for two phase encoder. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} for the second board pin to which the encoder is wired. </li> </ul> |
+
+Viam also supports a model of encoder called [`"single"`](../single) which requires only one pin (`i`).

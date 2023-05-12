@@ -20,19 +20,10 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Enter a name for your sensor, select the type `sensor`, and select the `renogy` model.
 
 Click **Create component**.
-Paste into the **Attributes** box:
-
-``` json
-{
-  "serial_path": "/dev/serial0",
-  "serial_baud_rate": 9600,
-  "modbus_id": 1
-}
-```
-
-Adjust these `attributes` from these default values as necessary.
 
 ![Creation of a renogy sensor in the Viam app config builder.](../img/renogy-sensor-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -41,7 +32,28 @@ Adjust these `attributes` from these default values as necessary.
 {
   "components": [
     {
-      "name": <your-renogy-sensor-name>,
+      "name": "<your-renogy-sensor-name>",
+      "type": "sensor",
+      "model": "renogy",
+      "attributes": {
+        "serial_path": "<your-serial-path>",
+        "serial_baud_rate": <int>,
+        "modbus_id": <int>
+      },
+      "depends_on": []
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": "your-renogy-sensor",
       "type": "sensor",
       "model": "renogy",
       "attributes": {
@@ -60,8 +72,8 @@ Adjust these `attributes` from these default values as necessary.
 
 The following attributes are available for `renogy` sensors:
 
-| Attribute | Inclusion | Description |
-| ----------- | -------------- | --------------  |
-| `serial_path`  | **Required** | Default: `/dev/serial/0`. The serial port your controller is connected to. |
-| `serial_baud_rate` | **Required** | Default: `9600`. The baud rate to use for serial communications. |
-| `modbus_id`  | **Required** | Default: `1`. Controller MODBUS address. |
+| Attribute | Type | Inclusion | Description |
+| --------- | ---- | --------- | ----------- |
+| `serial_path` | string | **Required** | The serial port your controller is connected to. <br> Default: `/dev/serial/0` |
+| `serial_baud_rate` | int | **Required** | The baud rate to use for serial communications. <br> Default: `9600` |
+| `modbus_id`  | int | **Required** | Controller MODBUS address. <br> Default: `1` |

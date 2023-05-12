@@ -18,12 +18,13 @@ Note that this model does not get any actual readings, so it supports these meth
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** sub-tab and navigate to the **Create component** menu.
-
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `fake` model.
+
+Click **Create Component**.
 
 ![Creation of an `fake` movement sensor in the Viam app config builder.](../img/fake-builder.png)
 
-Click **Create Component** and then fill in the attributes for your model.
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

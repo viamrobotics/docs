@@ -18,7 +18,11 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your board, select the type `board`, and select the `fake` model.
 
+Click **Create component**.
+
 ![An example configuration for a fake board in the Viam app Config Builder.](../img/fake-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

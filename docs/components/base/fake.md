@@ -20,7 +20,7 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your base, select the type `base`, and select the `fake` model.
 
-Click **Create component**:
+Click **Create component**.
 
 ![An example configuration for a fake base in the Viam app Config Builder.](../img/fake-base-ui-config.png)
 
@@ -29,7 +29,7 @@ Click **Create component**:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your_base_name>",
+    "name": "<your-base-name>",
     "type": "base",
     "model": "fake",
     "attributes": {}
@@ -39,5 +39,5 @@ Click **Create component**:
 {{% /tab %}}
 {{< /tabs >}}
 
-No attributes are available for fake bases.
+No attributes are available for `fake` bases.
 See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/fake/base.go) for API call return specifications.
