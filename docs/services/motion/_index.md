@@ -81,7 +81,7 @@ The Motion Service takes the volumes associated with all configured robot compon
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles are static.
-      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, it should be specified with *transforms*.
+      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
     - Geometry locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
       A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
@@ -142,7 +142,7 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles are static.
-      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, it should be specified with *transforms*.
+      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
     - Geometries are "part of" their frame, rather than at the distal end of the frame.
       Their poses are relative to the *origin* of the specified frame.
       A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
