@@ -73,7 +73,7 @@ Viam supports a wide variety of systems, including:
     </a>
   </div>
   <div class="col">
-    <a href="components/board/numato/">
+    <a href="components/board/pca9685/">
         <img src="installation/img/thumbnails/pca9685.jpeg" alt="P C A 9685 Arduino I 2 C Interface" width="100%">
         <h6>PCA9686 Arduino I<sup>2</sup>C Interface</h6>
     </a>
