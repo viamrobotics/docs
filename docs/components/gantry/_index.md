@@ -94,12 +94,12 @@ Get the current positions of the axis of the gantry (mm).
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](s://docs.python.org/library/typing.html#typing.Optional>) Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](s://docs.python.org/library/typing.html#typing.Optional>) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `positions` [(List[float])](s://docs.python.org/3/library/typing.html#typing.List>) A list of the position of the axes of the gantry in millimeters.
+- `positions` [(List[float])](https://docs.python.org/3/library/typing.html#typing.List>): A list of the position of the axes of the gantry in millimeters.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.get_position).
 
@@ -116,7 +116,7 @@ positions = await my_gantry.get_position()
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](s://go.dev/blog/maps>) Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -144,9 +144,9 @@ Move the axes of the gantry to the desired positions (mm).
 
 **Parameters:**
 
-- `positions` [(List[float])](s://docs.python.org/3/library/typing.html#typing.List>) A list of positions for the axes of the gantry to move to, in millimeters.
-- `extra` [(Optional[Dict[str, Any]])](s://docs.python.org/library/typing.html#typing.Optional>) Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](s://docs.python.org/library/typing.html#typing.Optional>) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `positions` [(List[float])](https://docs.python.org/3/library/typing.html#typing.List>): A list of positions for the axes of the gantry to move to, in millimeters.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -171,7 +171,7 @@ await my_gantry.move_to_position(positions=examplePositions)
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `positions` [([]float64)](https://pkg.go.dev/builtin#float64): A list of positions for the axes of the gantry to move to, in millimeters.
-- `extra` [(map[string]interface{})](s://go.dev/blog/maps>) Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -201,12 +201,12 @@ Get the lengths of the axes of the gantry (mm).
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](s://docs.python.org/library/typing.html#typing.Optional>) Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](s://docs.python.org/library/typing.html#typing.Optional>) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `lengths_mm` [(List[float])](s://docs.python.org/3/library/typing.html#typing.List>) A list of the lengths of the axes of the gantry in millimeters.
+- `lengths_mm` [(List[float])](https://docs.python.org/3/library/typing.html#typing.List>): A list of the lengths of the axes of the gantry in millimeters.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.lengths).
 
@@ -223,7 +223,7 @@ lengths_mm = await my_gantry.get_lengths()
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](s://go.dev/blog/maps>) Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -251,8 +251,8 @@ Stop all motion of the gantry.
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](s://docs.python.org/library/typing.html#typing.Optional>) Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](s://docs.python.org/library/typing.html#typing.Optional>) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -273,7 +273,7 @@ await my_gantry.stop()
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](s://go.dev/blog/maps>) Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
