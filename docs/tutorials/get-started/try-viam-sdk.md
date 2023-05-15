@@ -57,7 +57,8 @@ You can run your code by typing the following into your terminal:
 python3 square.py
 ```
 
-The program prints an array of resources:
+The program prints an array of resources.
+These are the components and services that the robot is configured with in the Viam app.
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-75"}
 python3 square.py
