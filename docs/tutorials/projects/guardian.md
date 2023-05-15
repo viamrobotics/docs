@@ -649,11 +649,13 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-Now, run code:
+Now, run the code:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 python3 main.py
 ```
+
+If everything works, your guardian should now start to idle and when it detects humans or dogs or cats turn red, start music, and focus on the detected being:
 
 {{<video webm_src="../../img/guardian/guardian-finished.webm" mp4_src="../../img/guardian/guardian-finished.mp4" alt="FInished guardian">}}
 
