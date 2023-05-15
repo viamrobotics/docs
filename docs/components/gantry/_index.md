@@ -51,6 +51,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a gantry called `"my_gantry"` configured as a component of your robot.
 If your gantry has a different name, change the `name` in the code.
 
+Be sure to import the gantry package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.gantry import Gantry
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/gantry"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The gantry component supports the following methods:
@@ -63,27 +84,6 @@ The gantry component supports the following methods:
 [Stop](#stop) | Stop the gantry from moving. |
 [IsMoving](#stop) | Get if the gantry is currently moving. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
-
-To access these methods, import the gantry package:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.gantry import Gantry
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "go.viam.com/rdk/components/gantry"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ### Position
 

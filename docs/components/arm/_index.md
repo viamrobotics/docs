@@ -71,6 +71,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have an arm called `"my_arm"` configured as a component of your robot.
 If your arm has a different name, change the `name` in the code.
 
+Be sure to import the arm package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.arm import Arm
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/arm"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The arm component supports the following methods:
@@ -84,27 +105,6 @@ The arm component supports the following methods:
 | [Stop](#stop) | Stop the arm from moving. |
 | [IsMoving](#ismoving) | Get if the arm is currently moving. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
-
-To access these methods, import the arm package:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.arm import Arm
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "go.viam.com/rdk/components/arm"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ### GetEndPosition
 

@@ -47,6 +47,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a wheeled base called `"my_base"` configured as a component of your robot.
 If your base has a different name, change the `name` in the code.
 
+Be sure to import the base package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.base import Base
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/base"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The base component supports the following methods:
@@ -59,27 +80,6 @@ The base component supports the following methods:
 | [SetVelocity](#setvelocity) | Set the linear velocity and angular velocity of the base. |
 | [Stop](#stop) | Stop the base. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
-
-To access these methods, import the base package:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.base import Base
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "go.viam.com/rdk/components/base"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ### MoveStraight
 

@@ -34,6 +34,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a gripper called `"my_gripper"` configured as a component of your robot.
 If your gripper has a different name, change the `name` in the code.
 
+Be sure to import the gripper package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.gripper import Gripper
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/gripper"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 Method Name | Description
@@ -43,27 +64,6 @@ Method Name | Description
 [`Stop`](#stop) | Stop the gripper's movement.
 [`IsMoving`](#ismoving) | Report whether the gripper is currently moving.
 [`DoCommand`](#docommand) | Send or receive model-specific commands.
-
-To access these methods, import the gripper package:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.gripper import Gripper
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "go.viam.com/rdk/components/gripper"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ### Open
 

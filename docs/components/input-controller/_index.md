@@ -52,6 +52,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have an input controller called `"my_controller"` configured as a component of your robot.
 If your input controller has a different name, change the `name` in the code.
 
+Be sure to import the input controller package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.input import Control, Controller, EventType
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/input"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The input controller component supports the following methods:
@@ -62,27 +83,6 @@ The input controller component supports the following methods:
 | [Events](#events) | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). |
 | [RegisterControlCallback](#registercontrolcallback) | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
-
-To access these methods, import the input controller package:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.input import Control, Controller, EventType
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "go.viam.com/rdk/components/input"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ### RegisterControlCallback
 

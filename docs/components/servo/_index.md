@@ -59,6 +59,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a servo called `"my_servo"` configured as a component of your robot.
 If your servo has a different name, change the `name` in the code.
 
+Be sure to import the servo package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.servo import Servo
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/servo"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The servo component supports the following methods:
@@ -93,8 +114,8 @@ It is recommended that you test your servo to determine the desired speed.
 **Parameters:**
 
 - `angle` [(int)](https://docs.python.org/3/library/functions.html#int): The desired angle of the servo in degrees.
-- `extra` [(Optional[Mapping[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Mapping[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -119,7 +140,7 @@ await my_servo.move(90)
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `angleDeg` [(uint32)](https://pkg.go.dev/builtin#uint32): The desired angle of the servo in degrees.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](<https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -149,8 +170,8 @@ Get the current set angle of the servo in degrees.
 
 **Parameters:**
 
-- `extra` [(Optional[Mapping[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Mapping[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -180,7 +201,7 @@ pos2 = await my_servo.get_position()
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](<https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -217,8 +238,8 @@ Stop the servo from moving.
 
 **Parameters:**
 
-- `extra` [(Optional[Mapping[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Mapping[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -242,7 +263,7 @@ await my_servo.stop()
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](<https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
