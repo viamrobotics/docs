@@ -386,7 +386,7 @@ print(f'Properties: {properties}')
 
 **Returns:**
 
-- (map[[Feature]](https://pkg.go.dev/go.viam.com/rdk/components/motor#Feature)[bool](https://pkg.go.dev/builtin#bool)>, [error](https://pkg.go.dev/builtin#error)): A map indicating whether or not the motor supports certain optional features.
+- (map[[Feature]](https://pkg.go.dev/go.viam.com/rdk/components/motor#Feature)[bool](https://pkg.go.dev/builtin#bool), [error](https://pkg.go.dev/builtin#error)): A map indicating whether or not the motor supports certain optional features.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
