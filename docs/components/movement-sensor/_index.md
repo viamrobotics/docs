@@ -559,7 +559,7 @@ If a sensor is not configured to take a certain measurement or fails to read a p
 
 **Returns:**
 
-- ([Mapping [str, Any]](https://docs.python.org/3/glossary.html#term-mapping>)): An object containing the measurements from the sensor.
+- ([Mapping [str, Any]](https://docs.python.org/3/glossary.html#term-mapping)): An object containing the measurements from the sensor.
 Contents depend on sensor model and can be of any type.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_readings).
