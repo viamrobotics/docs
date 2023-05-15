@@ -18,6 +18,7 @@ Adding a bit of [machine learning](/services/ml/), you can then make the guardia
 Luckily, I am not the first one to have the idea to build a guardian and there was already a [brilliant guardian 3D model](https://www.thingiverse.com/thing:2391826) on Thingiverse with space for LEDs and a servo.
 
 In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo), a [camera](/components/camera), some LEDs and the [ML Model service](/services/ml) and [Vision Service](/services/vision).
+Here's a video of the finished guardian detecting me:
 
 {{<video webm_src="../../img/guardian/guardian-detection.webm" mp4_src="../../img/guardian/guardian-detection.mp4" alt="Guardian robot detects person and rotates head to follow them around">}}
 
@@ -68,7 +69,7 @@ You will use the following software in this tutorial:
 
 ## Assemble the robot
 
-You can view a time lapse of the robot assembly here:
+You can view a timelapse of the robot assembly here:
 
 {{<video webm_src="../../img/guardian/timelapse.webm" mp4_src="../../img/guardian/timelapse.mp4" alt="Timelapse of guardian assembly">}}
 
@@ -711,6 +712,8 @@ Now your guardian starts behaving like a guardian automatically once booted!
 
 You now have a functioning guardian robot which you can use to monitor your pets or people.
 Or simply use to greet you when you get back to your desk.
+
+Here is a video of how I set up my guardian to follow my dog around my living room:
 
 {{<video webm_src="../../img/guardian/ernieandtheguardian.webm" mp4_src="../../img/guardian/ernieandtheguardian.mp4" alt="Guardian robot rotates head to follow dog around a room">}}
 
