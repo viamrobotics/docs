@@ -542,7 +542,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the name of every AnalogReader configured on the board.
-names = await my_board.analog_reader_by_name()
+names = await my_board.analog_reader_names()
 ```
 
 {{% /tab %}}
