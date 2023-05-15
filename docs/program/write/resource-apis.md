@@ -195,20 +195,42 @@ Table with methods?
 
 ### Motion
 
-- [Motion](/services/motion/#api)
+Method Name | Description
+----------- | -----------
+[`Move`](/services/motion/#move) | Move multiple components in a coordinated way to achieve a desired motion.
+[`MoveSingleComponent`](/services/motion/#movesinglecomponent) | Move a single component "manually."
+[`GetPose`](/services/motion/#getpose) | Get the current location and orientation of a component.
 
 ### SLAM
 
-- [SLAM](/services/slam)
+- [SLAM](/services/slam), [Python Docs](https://python.viam.dev/autoapi/viam/services/slam/index.html)
+
+Method Name | Description
+----------- | -----------
+`Position` | Get current position of the specified component in the SLAM Map.
+`PointCloudMap`| Get the point cloud map.
+`InternalState` | Get the internal state of the SLAM algorithm required to continue mapping/localization.
 
 ### MLModel
 
-- [MlModel](/services/ml)
+- [MlModel](/services/ml), [Python Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/index.html)
+
+Method Name | Description
+----------- | -----------
+`Infer` | Take an already ordered input tensor as an array, make an inference on the model, and return an output tensor map.
+`Metadata`| Get the metadata (such as name, type, expected tensor/array shape, inputs, and outputs) associated with the ML model.
 
 ### Vision
 
-- [Vision](/services/vision)
+- [Vision](/services/vision) (some method info is documented in example code), [Python Docs](https://python.viam.dev/autoapi/viam/services/vision/index.html)
 
+Method Name | Description |
+----------- | ----------- |
+`DetectionsFromCamera` |  |
+`Detections`|  |
+`ClassificationsFromCamera` |  |
+`Classifications` |  |
+`ObjectPointClouds`|  |
 <!-- 
 
 - [Frame System](/services/frame-system/#api)
