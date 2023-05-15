@@ -32,24 +32,24 @@ This guide covers what's inside the kit, describes each component, provides inst
 
     <img src="../img/viam-rover/rover-side.jpg" style="max-width:400px;width:100%" alt="The side of the assembled Viam Rover" />
 
-2. Four M2.5 screws for mounting your Raspberry Pi.
+1. Four M2.5 screws for mounting your Raspberry Pi.
 
     <img src="../img/viam-rover/screws.jpg" style="max-width:400px;width:100%" alt="Four screws" />
 
-3. Two spare stiffer suspension springs.
+1. Two spare stiffer suspension springs.
    You can swap them out with the springs that come with the rover if you need stiffer suspension for higher payload applications.
 
     <img src="../img/viam-rover/suspension-springs.jpg" style="max-width:400px;width:100%" alt="Two suspension springs" />
 
-4. Three different Allen wrenches (1.5 mm, 2 mm, and 2.5 mm) to unscrew the top and mount the Raspberry Pi.
+1. Three different Allen wrenches (1.5 mm, 2 mm, and 2.5 mm) to unscrew the top and mount the Raspberry Pi.
 
-  <img src="../img/viam-rover/allen-wrenches.png" style="max-width:180px;width:100%" alt="Three allen wrenches" />
+    <img src="../img/viam-rover/allen-wrenches.png" style="max-width:180px;width:100%" alt="Three allen wrenches" />
 
 1. Ten female-to-female jumper wires.
    All of the wires' colors correspond to the included wiring diagram.
    Six are for the motor controller and four are for the accelerometer.
 
-  <img src="../img/viam-rover/jumper-wires.jpg" style="max-width:400px;width:100%" alt="Ten colorful jumper wires" />
+    <img src="../img/viam-rover/jumper-wires.jpg" style="max-width:400px;width:100%" alt="Ten colorful jumper wires" />
 
 All together, your kit looks like this:
 
