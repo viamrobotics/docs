@@ -49,7 +49,7 @@ This guide covers what's inside the kit, describes each component, provides inst
    All of the wires' colors correspond to the included wiring diagram.
    Six are for the motor controller and four are for the accelerometer.
 
-  <img src="../img/viam-rover/jumper-wires.jpg" style="max-width:400px;width:100%" alt="Ten colorful jumper wires" />
+    <img src="../img/viam-rover/jumper-wires.jpg" style="max-width:400px;width:100%" alt="Ten colorful jumper wires" />
 
 All together, your kit looks like this:
 
