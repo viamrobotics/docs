@@ -281,7 +281,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
    Click on the **Components** subtab and navigate to the **Create component** menu.
    Create a [transform camera](/components/camera/transform) with the name `transform_cam`, the type `camera` and the model `transform`.
 
-   Replace the attributes JSON object with the following:
+   Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
    ```json
    {
