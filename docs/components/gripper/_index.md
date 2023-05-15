@@ -44,6 +44,27 @@ Method Name | Description
 [`IsMoving`](#ismoving) | Report whether the gripper is currently moving.
 [`DoCommand`](#docommand) | Send or receive model-specific commands.
 
+To access these methods, import the gripper package:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.components.gripper import Gripper
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+import (
+  "go.viam.com/rdk/components/gripper"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Open
 
 Opens the gripper.
@@ -74,7 +95,7 @@ await my_gripper.open()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](<https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -122,7 +143,7 @@ grabbed = await my_gripper.grab()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](<https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -172,7 +193,7 @@ await my_gripper.stop()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](<https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 

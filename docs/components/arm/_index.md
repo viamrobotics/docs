@@ -85,6 +85,27 @@ The arm component supports the following methods:
 | [IsMoving](#ismoving) | Get if the arm is currently moving. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
+To access these methods, import the arm package:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.components.arm import Arm
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+import (
+  "go.viam.com/rdk/components/arm"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetEndPosition
 
 Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose).
@@ -94,8 +115,8 @@ Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -154,8 +175,8 @@ Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/vi
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 

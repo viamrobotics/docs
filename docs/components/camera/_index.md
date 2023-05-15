@@ -71,6 +71,27 @@ The camera component supports the following methods:
 | [GetProperties](#getproperties) | Return the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
+To access these methods, import the camera package:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.components.camera import Camera
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+import (
+  "go.viam.com/rdk/components/camera"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetImage
 
 Returns an image from the camera.

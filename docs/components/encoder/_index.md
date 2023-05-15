@@ -100,8 +100,8 @@ Absolute encoders return degrees.
 
 - `position_type` (Optional[PositionType.ValueType]): Specify whether to get the current position in ticks (`encoder.PositionTypeTicks`) or in degrees (`encoder.PositionTypeDegrees`).
   If you are not sure which position type your encoder supports but it is a built-in Viam-supported model, you can leave this parameter unspecified (`encoder.PositionTypeUnspecified`) or empty and it will default to the correct position type.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -125,7 +125,7 @@ print("The encoder position is currently ", position[0], position[1])
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `positionType` ([PositionType](https://pkg.go.dev/go.viam.com/rdk/components/encoder#PositionType)): Specify whether to get the current position in ticks (`encoder.PositionTypeTicks`) or in degrees (`encoder.PositionTypeDegrees`).
   If you are not sure which position type your encoder supports but it is a built-in Viam-supported model, you can leave this parameter unspecified (`encoder.PositionTypeUnspecified`) and it will default to the correct position type.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](<https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -157,8 +157,8 @@ Set the current position of the encoder to be the new zero position.
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -179,7 +179,7 @@ await my_encoder.reset_position()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](<https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -208,8 +208,8 @@ Get a list of all the position types that are supported by a given encoder.
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -230,7 +230,7 @@ properties = await my_encoder.get_properties()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](<https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
