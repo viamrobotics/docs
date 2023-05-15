@@ -1,7 +1,7 @@
 ---
 title: "Configure a Fake Camera"
 linkTitle: "fake"
-weight: 35
+weight: 10
 type: "docs"
 description: Configure a camera to use for testing."
 images: ["/components/img/components/camera.svg"]

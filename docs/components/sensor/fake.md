@@ -1,7 +1,7 @@
 ---
 title: "Create a fake Sensor"
 linkTitle: "fake"
-weight: 90
+weight: 10
 type: "docs"
 description: "Configure a fake sensor to use for testing."
 tags: ["sensor", "components"]

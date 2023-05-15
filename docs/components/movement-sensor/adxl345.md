@@ -1,7 +1,7 @@
 ---
 title: "Configure an ADXL345 Accelerometer"
 linkTitle: "accel-adxl345"
-weight: 10
+weight: 20
 type: "docs"
 description: "Configure an ADXL345 digital accelerometer."
 images: ["/components/img/components/imu.svg"]
