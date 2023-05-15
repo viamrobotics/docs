@@ -3,7 +3,7 @@ title: "Security Guardian"
 linkTitle: "Security Guardian"
 weight: 50
 type: "docs"
-description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML and Vision Service to detect people and pets."
+description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML Model and Vision Service to detect people and pets."
 webmSrc: "/tutorials/img/guardian/preview.webm"
 mp4Src: "/tutorials/img/guardian/preview.mp4"
 videoAlt: "A guardian detecting a person or pet."
@@ -131,7 +131,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
     Create a [servo component](/components/servo/) with the name `servo`, the type `servo` and the model `pi`.
     Click **Create Component** to add the servo.
-    Configure the attributes, by adding the name of your board `local` and the pin you connected your servo to `12`:
+    Configure the attributes by adding the name of your board, `local`, and the {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin on `local` that you connected your servo PWM wire to, `12`:
 
     ```json
     {
@@ -145,7 +145,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following configuration which configures your board, your camera, and your servo on pin `12`:
+On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board, your camera, and your servo with its PWM wire wired to  {{< glossary_tooltip term_id="pin-number" text="pin number" >}} `12`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -386,7 +386,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 Navigate to your [robot's Control tab](/manage/fleet/robots/#control) to test the transform camera.
 Click on the transform camera panel and toggle the camera on, then point your camera at a person or pet to test if the vision service detects them.
-You should see a bounding box with label around different objects.
+You should see bounding boxes with labels around different objects.
 
 <div style="max-width: 600px" >
     <img src="../../img/guardian/test-transform.jpg" alt="the control tab transform camera panel">
@@ -437,7 +437,7 @@ python3 main.py
 The program prints a list of robot resources.
 
 On top of the packages that the code sample snippet imports, add the `random` and the `vlc` package to the imports.
-The top of your code now look like this:
+The top of your code should now look like this:
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
