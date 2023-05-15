@@ -394,7 +394,7 @@ You should see bounding boxes with labels around different objects.
 
 ## Program the Guardian
 
-With the guardian completely configured and the configuration tested, it's time to program the guardian to behave like a real guardian.
+With the guardian completely configured and the configuration tested, it's time to make the robot guardian behave like a "real" guardian by programming the person and pet detection, the lights, music, and the movement:
 The following sections walk you through each part of the code.
 
 The full code is available at [the end of the tutorials](#full-code).
