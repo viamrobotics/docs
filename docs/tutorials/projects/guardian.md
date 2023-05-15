@@ -664,7 +664,7 @@ One more thing.
 Right now, you have to run the code manually every time you want your guardian to work.
 You can also configure Viam to automatically run your code as a [process](/manage/configuration/#processes).
 
-To be able to run the python script from your Raspberry Pi, you need install the Python SDK on your Raspberry Pi and copy your code onto the Raspberry Pi.
+To be able to run the python script from your Raspberry Pi, you need to install the Python SDK on your Raspberry Pi and copy your code onto the Raspberry Pi.
 
 [`ssh` into your Pi](/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
 
