@@ -14,7 +14,7 @@ You can use a `fake` gripper to test implementing a gripper on your robot withou
 
 Configure a `fake` gripper as follows:
 
-{{< tabs name="Configure a Fake Gantry" >}}
+{{< tabs name="Configure a Fake Gripper" >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
