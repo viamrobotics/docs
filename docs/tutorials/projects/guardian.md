@@ -37,7 +37,7 @@ To build your own guardian robot, you need the following hardware:
 
 Print or order the following printed 3D parts:
 
-- [this head](https://www.thingiverse.com/thing:6027280) which fits the camera
+- this head (link will follow shortly) which fits the camera
 - the decorations for the head from [this Guardian Robot model](https://www.thingiverse.com/thing:2387723)
 - the body, base cover, claws, and leg segments from the [Guardian Robot, Hackable](https://www.thingiverse.com/thing:2391826)
 
