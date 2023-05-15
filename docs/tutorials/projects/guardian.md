@@ -4,8 +4,8 @@ linkTitle: "Security Guardian"
 weight: 50
 type: "docs"
 description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML and Vision Service to detect people and pets."
-webmSrc: "/tutorials/videos/foam-dart.webm"
-mp4Src: "/tutorials/videos/foam-dart.mp4"
+webmSrc: "/tutorials/img/guardian/preview.webm"
+mp4Src: "/tutorials/img/guardian/preview.mp4"
 videoAlt: "A guardian detecting a person or pet."
 images: ["/tutorials/img/guardian/preview.gif"]
 tags: ["camera", "vision", "detector", "python"]
@@ -19,7 +19,7 @@ Luckily, I am not the first one to have the idea to build a guardian and there w
 
 In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo), a [camera](/components/camera), some LEDs and the [ML Model service](/services/ml) and [Vision Service](/services/vision).
 
-{{<video webm_src="../../img/guardian/preview.webm" mp4_src="../../img/guardian/preview.mp4" alt="Guardian robot detects person and rotates head to follow them around">}}
+{{<video webm_src="../../img/guardian/guardian-detection.webm" mp4_src="../../img/guardian/guardian-detection.mp4" alt="Guardian robot detects person and rotates head to follow them around">}}
 
 ## Components
 
