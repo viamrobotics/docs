@@ -434,10 +434,10 @@ You can run your code by typing the following into your terminal:
 python3 main.py
 ```
 
-The program should print a list of robot resources.
+The program prints a list of robot resources.
 
 On top of the packages that the code sample snippet imports, add the `random` and the `vlc` package to the imports.
-The top of your code should now look like this:
+The top of your code now look like this:
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -506,7 +506,7 @@ You can test the code by running:
 python3 main.py
 ```
 
-Your guardian should light up blue:
+Your guardian lights up blue:
 
 {{<gif webm_src="../../img/guardian/light-up.webm" mp4_src="../../img/guardian/light-up.mp4" alt="Guardian lights up blue" max-width="300px">}}
 
@@ -705,7 +705,7 @@ Click on **Add argument**.
 
 Click **Save config** in the bottom left corner of the screen.
 
-Now your guardian should start behaving like a guardian automatically once booted!
+Now your guardian starts behaving like a guardian automatically once booted!
 
 ## Next steps
 
