@@ -23,9 +23,11 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your motor, select the type `motor`, and select the `gpio` model.
 
-Click **Create component** and then fill in the attributes for your model:
+Click **Create component**.
 
 ![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](../../img/motor/gpio-config-ui.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -34,21 +36,21 @@ Click **Create component** and then fill in the attributes for your model:
 {
   "components": [
     {
-      "name": <board_name>,
+      "name": "<your-board-name>",
       "type": "board",
-      "model": <board_model>,
+      "model": "<your-board-model>",
       "attributes": {},
       "depends_on": [],
     },
     {
-      "name": <motor_name>,
+      "name": "<your-motor-name>",
       "type": "motor",
       "model": "gpio",
       "attributes": {
         "pins": {
           <...>
         },
-        "board": <board_name>,
+        "board": "<your-board-name>",
         "max_rpm": <int>,
         "min_power_pct": <float>,
         "max_power_pct": <float>,
@@ -136,10 +138,10 @@ Inside the `pins` struct you need to configure **two or three** of the following
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `a` | string | **Required** for some drivers | Board pin number this motor driver's "IN1" or "A" pin is wired to. Viam uses board pin numbers, not GPIO numbers. |
-| `b` | string | **Required** for some drivers | Board pin number this motor driver's "IN2" or "B" pin is wired to. Viam uses board pin numbers, not GPIO numbers. |
-| `dir` | string | **Required** for some drivers | Board pin number this motor driver's direction ("DIR") pin is wired to. Viam uses board pin numbers, not GPIO numbers. |
-| `pwm` | string | **Required** for some drivers | Board pin number this motor driver's "PWM" pin is wired to. Viam uses board pin numbers, not GPIO numbers. |
+| `a` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "IN1" or "A" pin is wired to. |
+| `b` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "IN2" or "B" pin is wired to. |
+| `dir` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's direction ("DIR") pin is wired to. |
+| `pwm` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "PWM" pin is wired to. |
 
 {{% alert title="Note" color="note" %}}
 

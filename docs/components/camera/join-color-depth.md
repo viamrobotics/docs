@@ -21,38 +21,38 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `join_color_depth` model.
 
-![Creation of a join color depth view in the Viam app config builder.](../img/create-join-color-depth.png)
-
-Fill in the attributes for your join color depth view:
+Click **Create component**.
 
 ![Configuration of a join color depth view in the Viam app config builder.](../img/configure-join-color-depth.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera_name>",
+    "name": "<your-camera-name>",
     "type": "camera",
     "model" : "join_color_depth",
     "attributes": {
         "output_image_type": "<color|depth>",
-        "color_camera_name": "<camera_name>",
-        "depth_camera_name": "<camera_name>",
+        "color_camera_name": "<your-camera-name>",
+        "depth_camera_name": "<your-camera-name>",
         "intrinsic_parameters": {
-          "width_px": <integer>, # the expected width of the aligned pic
-          "height_px": <integer>, # the expected height of the aligned pic
-          "fx": <float64>,
-          "fy": <float64>,
-          "ppx": <float64>,
-          "ppy": <float64>
+          "width_px": <int>, # the expected width of the aligned pic
+          "height_px": <int>, # the expected height of the aligned pic
+          "fx": <float>,
+          "fy": <float>,
+          "ppx": <float>,
+          "ppy": <float>
         },
         "distortion_parameters": {
-          "rk1": <float64>,
-          "rk2": <float64>,
-          "rk3": <float64>,
-          "tp1": <float64>,
-          "tp2": <float64>
+          "rk1": <float>,
+          "rk2": <float>,
+          "rk3": <float>,
+          "tp1": <float>,
+          "tp2": <float>
         },
         "debug": <boolean>
     }
@@ -64,14 +64,14 @@ Fill in the attributes for your join color depth view:
 
 The following attributes are available for `join_color_depth` views:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `output_image_type` | **Required** | Specify `color` or `depth` for the output stream. |
-| `color_camera_name` | **Required** | Name of the color camera to pull images from. |
-| `depth_camera_name` | **Required** | Name of the depth camera to pull images from. |
-| `intrinsic_parameters` | **Required** | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
-| `distortion_parameters` | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
-| `debug` | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false`. |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `output_image_type` | string | **Required** | Specify `color` or `depth` for the output stream. |
+| `color_camera_name` | string | **Required** | `name` of the color camera to pull images from. |
+| `depth_camera_name` | string | **Required** | `name` of the depth camera to pull images from. |
+| `intrinsic_parameters` | object | **Required** | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
+| `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
+| `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false`. |
 
 ## View the camera stream
 

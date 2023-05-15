@@ -28,12 +28,13 @@ Other WitMotion IMUs that communicate over serial may also work with this model 
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** sub-tab and navigate to the **Create component** menu.
-
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `imu-wit` model.
+
+Click **Create Component**.
 
 ![Creation of an `imu-wit` movement sensor in the Viam app config builder.](../../img/imu-wit-builder.png)
 
-Click **Create Component** and then fill in the attributes for your model.
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -42,11 +43,11 @@ Click **Create Component** and then fill in the attributes for your model.
 {
   "components": [
     {
-      "name": <sensor_name>,
+      "name": "<your-sensor-name>",
       "type": "movement_sensor",
       "model": "imu-wit",
       "attributes": {
-        "serial_path": <string>,
+        "serial_path": "<your-port>",
         "serial_baud_rate": <int>
       },
       "depends_on": []
@@ -80,7 +81,7 @@ Click **Create Component** and then fill in the attributes for your model.
 
 ## Attributes
 
-Name | Inclusion | Type | Default Value | Description
----- | --------- | ---- | ------------- | -----
-`serial_path` | **Required** | string | - | The name of the port through which the sensor communicates with the computer.
-`serial_baud_rate` | Optional |  int | 115200 | The rate at which data is sent from the sensor, between 9600 and 115200. The default rate will work for all models. *Only the HWT901B can have a different serial baud rate.* Refer to your model's data sheet.
+Name | Type | Inclusion | Description
+---- | ---- | --------- | -----------
+`serial_path` | string | **Required** | The name of the port through which the sensor communicates with the computer.
+`serial_baud_rate` | int | Optional | The rate at which data is sent from the sensor, between `9600` and `115200`. The default rate will work for all models. *Only the HWT901B can have a different serial baud rate.* Refer to your model's data sheet. <br> Default: `115200`

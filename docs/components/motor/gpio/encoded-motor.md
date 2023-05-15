@@ -128,7 +128,7 @@ In addition to the [attributes for a non-encoded motor](/components/motor/gpio),
 | ---- | ---- | --------- | ----------- |
 | `encoder` | string | **Required** | `name` of the encoder. |
 | `ticks_per_rotation` | int | **Required** | Number of ticks in a full rotation of the encoder and motor shaft. |
-| `ramp_rate` | float | Optional | Rate to increase the motor's input voltage (power supply) per second when increasing the speed the motor rotates (RPM). <br> Range = (`0.0`, `1.0`] <br> Default = `0.2` |
+| `ramp_rate` | float | Optional | Rate to increase the motor's input voltage (power supply) per second when increasing the speed the motor rotates (RPM). <br> Range = (`0.0`, `1.0`] <br> Default: `0.2` |
 
 {{% alert title="Note" color="note" %}}
 

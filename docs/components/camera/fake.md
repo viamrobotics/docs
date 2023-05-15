@@ -23,23 +23,23 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `fake` model.
 
-![Creation of a fake camera in the Viam app config builder.](../img/create-fake.png)
-
-Fill in the attributes for your join color depth view:
+Click **Create component**.
 
 ![Configuration of a fake camera in the Viam app config builder.](../img/configure-fake.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera_name>",
+    "name": "<your-camera-name>",
     "type": "camera",
     "model" : "fake",
     "attributes": {
-        "width": <integer>,
-        "height": <integer>
+        "width": <int>,
+        "height": <int>
     }
 }
 ```
@@ -49,10 +49,10 @@ Fill in the attributes for your join color depth view:
 
 The following attributes are available for `fake` cameras:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `width` | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height`. |
-| `height` | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height` |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `width` | int | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height`. |
+| `height` | int | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height` |
 
 ## View the camera stream
 

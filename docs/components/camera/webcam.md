@@ -19,44 +19,42 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `webcam` model.
 
-![Creation of webcam camera in the Viam app config builder.](../img/create-webcam.png)
-
-Fill in the attributes for your webcam.
-If you click on the **Video Path** field while your robot is live, a drop down autopopulates with identified camera paths.
+Click **Create component**.
 
 ![Configuration of a webcam camera in the Viam app config builder.](../img/configure-webcam.png)
 
-Use the following configuration and fill in the attributes for your webcam:
+Edit and fill in the attributes as applicable.
+If you click on the **Video Path** field while your robot is live, a drop down autopopulates with identified camera paths.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera_name>",
+    "name": "<your-camera-name>",
     "type": "camera",
     "model" : "webcam",
     "attributes": {
         "intrinsic_parameters": {
-            "width_px": <integer>,
-            "height_px": <integer>,
-            "fx": <float64>,
-            "fy": <float64>,
-            "ppx": <float64>,
-            "ppy": <float64>
+            "width_px": <int>,
+            "height_px": <int>,
+            "fx": <float>,
+            "fy": <float>,
+            "ppx": <float>,
+            "ppy": <float>
         },
         "distortion_parameters": {
-            "rk1": <float64>,
-            "rk2": <float64>,
-            "rk3": <float64>,
-            "tp1": <float64>,
-            "tp2": <float64>
+            "rk1": <float>,
+            "rk2": <float>,
+            "rk3": <float>,
+            "tp1": <float>,
+            "tp2": <float>
         },
         "debug": <boolean>,
         "format": <string>,
-        "video_path": <string>,
-        "width_px": <integer>,
-        "height_px": <integer>
+        "video_path": "<your-video-path>",
+        "width_px": <int>,
+        "height_px": <int>
     }
 }
 ```
@@ -80,15 +78,15 @@ Use the following configuration and fill in the attributes for your webcam:
 
 The following attributes are available for `webcam` cameras:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `intrinsic_parameters` | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> `width_px`: The expected width of the aligned image in pixels. </li> <li> `height_px`: The expected height of the aligned image in pixels. </li> <li> `fx`: The image center x point. </li> <li> `fy`: The image center y point. </li> <li> `ppx`: The image focal x. </li> <li> `ppy`: The image focal y. </li> </ul> |
-| `distortion_parameters` | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
-| `debug` | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
-| `format` | Optional | The camera image format, used with video_path to find camera. |
-| `video_path` | Optional | The id of or the path to the webcam. Often `video0`. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the id of a webcam is more consistent than the path. |
-| `width_px` | Optional | The camera image width in pixels, used with `video_path` to find camera with this resolution. <br> Default: Closest possible value to `480` |
-| `height_px` | Optional | The camera image height in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `640` |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `video_path` | string | Optional | The ID of or the path to the webcam. Often `video0`. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the ID of a webcam is more consistent than the path. |
+| `format` | string | Optional | The camera image format, used with `video_path` to find the camera. |
+| `width_px` | int | Optional | The camera image width in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `480` |
+| `height_px` | int | Optional | The camera image height in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `640` |
+| `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> `width_px`: The expected width of the aligned image in pixels. </li> <li> `height_px`: The expected height of the aligned image in pixels. </li> <li> `fx`: The image center x point. </li> <li> `fy`: The image center y point. </li> <li> `ppx`: The image focal x. </li> <li> `ppy`: The image focal y. </li> </ul> |
+| `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
+| `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 
 ## View the camera stream
 

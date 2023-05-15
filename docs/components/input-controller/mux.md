@@ -28,9 +28,11 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your input controller, select the type `input_controller`, and select the `mux` model.
 
-Click **Create component** and then fill in the attributes for your model:
+Click **Create component**.
 
 ![An example configuration for a multiplexed input controller component in the Viam App config builder](../img/mux-input-controller-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -39,27 +41,27 @@ Click **Create component** and then fill in the attributes for your model:
 {
   "components": [
     {
-      "name": <your-mux-input-controller>,
+      "name": "<your-mux-input-controller-name>",
       "type": "input_controller",
       "model": "mux",
       "attributes": {
         "sources": [
-          <your-gamepad-input-controller,
+          "<your-gamepad-input-controller-name",
           "WebGamepad"
         ]
       },
       "depends_on": [
-        <your-gamepad-input-controller>,
+        "<your-gamepad-input-controller-name>",
         "WebGamepad"
       ]
     },
     {
-      "name": <your-gamepad-input-controller>,
+      "name": "<your-gamepad-input-controller-name>",
       "type": "input_controller",
       "model": "gamepad",
       "attributes": {
-        "dev_file": "",
-        "auto_reconnect": false
+        "dev_file": "<your-filepath>",
+        "auto_reconnect": <boolean>
       },
       "depends_on": []
     },
@@ -79,9 +81,9 @@ Click **Create component** and then fill in the attributes for your model:
 
 The following attributes are available for `mux` input controllers:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `sources` | *Required* | An array of `name`s of each input controller component that should be combined in the `mux` model. |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `sources` | array | **Required** | The `name` of every controller component you wish to combine input from. |
 
 {{% alert title="Note" color="note" %}}
 You must put each controller's `name` that you add in `sources` in `depends_on`.

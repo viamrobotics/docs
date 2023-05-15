@@ -1,26 +1,25 @@
 ---
-title: "Configure an xArm6 Arm"
-linkTitle: "xArm6"
+title: "Configure an xArmLite Arm"
+linkTitle: "xArmLite"
 weight: 34
 type: "docs"
-description: "Configure an xArm6 arm."
-images: ["/components/img/components/arm.svg"]
+description: "Configure an xArmLite arm."
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configure an `xArm6` arm to integrate a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) into your robot:
+Configure an `xArmLite` arm to integrate a [UFACTORY xArm 5 Lite](https://www.ufactory.cc/product-page/ufactory-xarm-5-lite/) into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your arm, select the type `arm`, and select the `xArm6` model.
+Enter a name for your arm, select the type `arm`, and select the `xArmLite` model.
 
 Click **Create component**.
 
-![Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](../img/xArm6-ui-config.png)
+![Web UI configuration panel for an arm of model xArmLite in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](../img/xArmLite-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -30,7 +29,7 @@ Edit and fill in the attributes as applicable.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [{
-      "model": "xArm6",
+      "model": "xArmLite",
       "name": "<your-arm-name>",
       "type": "arm",
       "attributes": {
@@ -47,6 +46,9 @@ Edit and fill in the attributes as applicable.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [{
+      "name": "my_arm",
+      "type": "arm"
+      "model": "xArmLite",
       "attributes": {
           "host": "10.0.0.97"
       },
@@ -67,10 +69,7 @@ Edit and fill in the attributes as applicable.
               "y": 0,
               "z": 0
           }
-      },
-      "model": "xArm6",
-      "name": "xArm6",
-      "type": "arm"
+      }
   }]
 }
 ```
@@ -78,7 +77,7 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{% /tabs %}}
 
-The following attributes are available for `xArm6` arms:
+The following attributes are available for `xArmLite` arms:
 
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | ----------| ----------- |

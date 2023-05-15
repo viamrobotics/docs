@@ -55,6 +55,7 @@ Supported arm models include:
 | [`fake`](fake) | A model used for testing, with no physical hardware. |
 | [`xArm6`](xarm6) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
 | [`xArm7`](xarm7) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
+| [`xArmLite`](xarmlite) | [UFACTORY xArm 5 Lite](https://www.ufactory.cc/product-page/ufactory-xarm-5-lite/) |
 | `eva` | [Automata Eva](https://automata.tech/products/hardware/about-eva/) |
 | `ur5e` | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot/) |
 | `yahboom-dofbot` | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
@@ -497,4 +498,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 {{< cards >}}
   {{% card link="/tutorials/services/accessing-and-moving-robot-arm" size="small" %}}
   {{% card link="/services/motion" size="small" %}}
+  {{% card link="/services/frame-system" size="small" %}}
 {{< /cards >}}

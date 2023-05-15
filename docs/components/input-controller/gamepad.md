@@ -23,9 +23,11 @@ Navigate to the **Config** tab of your robot's page in [the Viam app](https://ap
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your input controller, select the type `input_controller`, and select the `gamepad` model.
 
-Click **Create component** and then fill in the attributes for your model:
+Click **Create component**.
 
 ![An example configuration for a linux-based gamepad input controller component in the Viam App config builder](../img/gamepad-input-controller-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -34,11 +36,11 @@ Click **Create component** and then fill in the attributes for your model:
 {
   "components": [
     {
-      "name":  <your-gamepad-input-controller>,
+      "name":  "<your-gamepad-input-controller>",
       "type": "input_controller",
       "model": "gamepad",
       "attributes": {
-        "dev_file": <string>,
+        "dev_file": "<string>",
         "auto_reconnect": <boolean>
       }
     }
@@ -50,10 +52,10 @@ Click **Create component** and then fill in the attributes for your model:
 
 The following attributes are available for `gamepad` input controllers:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `dev_file` | *Optional* | If `dev_file` is left blank or not included, `viam-server` will search and use the first gamepad it finds that's connected to the computer controlling your robot. If you want to specify a device, give the absolute path to the input device event file. For example: `/dev/input/event42`. |
-| `auto_reconnect` | *Optional* | Applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices. If set to `true`, `viam-server` tries to (re)connect the device automatically. It waits for a device to connect during a robot's start-up. If set to false (default) then start-up fails if a device is not already connected.
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `dev_file` | string | Optional | If `dev_file` is left blank or not included, `viam-server` will search and use the first gamepad it finds that's connected to the computer controlling your robot. If you want to specify a device, give the absolute path to the input device event file. For example: `/dev/input/event42`. |
+| `auto_reconnect` | boolean | Optional | Applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices. If set to `true`, `viam-server` tries to (re)connect the device automatically. It waits for a device to connect during a robot's start-up. If set to false (default) then start-up fails if a device is not already connected.
 
 ## Usage
 
