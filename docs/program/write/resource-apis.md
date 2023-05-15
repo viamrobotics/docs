@@ -13,29 +13,48 @@ Talk about how these methods work --> providing wrapper for gRPC client request 
 
 ## Resource Base API
 
-Description, methods.
+Describe why this is different across SDKs- python inheritance
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
 Python: class methods all classes that inherit from resource base class should possess.
-Go it might work differently.
 
 ### ResourceName
 
-PYTHON: get_resource_name(name: str)→ viam.proto.common.ResourceName[source]
-GO: 
+get_resource_name(name: str)→ viam.proto.common.ResourceName[source][]
 
 ### FromRobot
 
-PYTHON: from_robot(robot: viam.robot.client.RobotClient, name: str)→ typing_extensions.Self[source]
+from_robot(robot: viam.robot.client.RobotClient, name: str)→ typing_extensions.Self[source][]
 GO: func ResourceFromRobot[T resource.Resource](robot Robot, name resource.Name) (T, error)
 
 ### GetOperation
 
-PYTHON: get_operation(kwargs: Mapping[str, Any])→ viam.operations.Operation[source]
-GO:
+get_operation(kwargs: Mapping[str, Any])→ viam.operations.Operation[source][]
 
-### DoCommand (hmmm)
+### DoCommand
 
-PYTHON: do_command(command: Mapping[str, viam.utils.ValueTypes], *, timeout: Optional[float] = None, **kwargs)→ Mapping[str, viam.utils.ValueTypes]
-GO:
+do_command(command: Mapping[str, viam.utils.ValueTypes], *, timeout: Optional[float] = None, **kwargs)→ Mapping[str, viam.utils.ValueTypes]
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+Illustrate where/how these equivalent functions are found in Go
+
+Implementation is defined on each component interface.
+
+### FromRobot
+
+`arm.FromRobot[T resource.Resource](robot Robot, name resource.Name) (T, error)`
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+Illustrate where/how these equivalent functions are found in TypeScript
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Component APIs
 
@@ -184,17 +203,20 @@ Table with methods?
 
 ### MLModel
 
-- [MlModel](/services/ml
+- [MlModel](/services/ml)
 
 ### Vision
-)
+
 - [Vision](/services/vision)
 
-Might be long WIP fully building out here as SLAM, MlModel, Vision client methods are most extensively documented in SDKs, and Sensors service is a bit murky.
-Could have tables linking to Go and Python SDK docs for now.
+<!-- 
 
 - [Frame System](/services/frame-system/#api)
-^^ Tricky, might need explanation.
+
+^^ Todo Tricky, might need explanation. 
+Might be long WIP fully building out here as SLAM, MlModel, Vision client methods are most extensively documented in SDKs, and Sensors service is a bit murky.
+Could have tables linking to Go and Python SDK docs for now.
+-->
 
 ## Additional Interfaces
 
