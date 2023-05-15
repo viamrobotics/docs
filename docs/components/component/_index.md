@@ -89,12 +89,12 @@ Get the measurements or readings that this sensor provides.
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `readings` [(Mapping[str, Any])](<https://docs.python.org/3/library/typing.html#typing.Mapping>): The measurements or readings that this sensor provides.
+- `readings` [(Mapping[str, Any])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this sensor provides.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/index.html#viam.components.sensor.Sensor.get_readings) (INSERT RELEVANT LINK).
 
@@ -111,11 +111,11 @@ readings = await my_sensor.get_readings()
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](<https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `readings` [(map[string]interface{})](<https://go.dev/blog/maps>): The measurements or readings that this sensor provides.
+- `readings` [(map[string]interface{})](https://go.dev/blog/maps): The measurements or readings that this sensor provides.
 - `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
@@ -141,8 +141,8 @@ readings, err := mySensor.Readings(context.Background(), nil)
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -163,7 +163,7 @@ await my_sensor.method_name_two()
 **Parameters:**
 
 - `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](<https://go.dev/blog/maps>): Extra options to pass to the underlying RPC call.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 

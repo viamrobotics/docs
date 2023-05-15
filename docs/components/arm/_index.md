@@ -115,8 +115,8 @@ Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](s://docs.python.org/library/typing.html#typing.Optional>) Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](s://docs.python.org/library/typing.html#typing.Optional>) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -175,8 +175,8 @@ Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/vi
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
-- `extra` [(Optional[Dict[str, Any]])](<https://docs.python.org/library/typing.html#typing.Optional>): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](<https://docs.python.org/library/typing.html#typing.Optional>): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional[Dict[str, Any]])](s://docs.python.org/library/typing.html#typing.Optional>) Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional[float])](s://docs.python.org/library/typing.html#typing.Optional>) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
