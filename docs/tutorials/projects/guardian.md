@@ -239,7 +239,7 @@ Then test the components on the [robot's Control tab](/manage/fleet/robots/#cont
 For the guardian to be able to detect living beings, you can use [this Machine Learning model](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite).
 The model can detect a variety of things which you can see in the associated <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
-You can also [train your own custom model](/manage/ml/train-model/) based on images from your robot but the provided Machine Learning model should be good to start with.
+You can also [train your own custom model](/manage/ml/train-model/) based on images from your robot but the provided Machine Learning model is a good one to start with.
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your Raspberry Pi:
 
