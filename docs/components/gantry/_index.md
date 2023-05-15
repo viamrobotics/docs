@@ -85,7 +85,7 @@ The gantry component supports the following methods:
 [MoveToPosition](#movetoposition) | Move the axes of the gantry to the desired positions. |
 [Lengths](#lengths) | Get the lengths of the axes of the gantry in mm. |
 [Stop](#stop) | Stop the gantry from moving. |
-[IsMoving](#stop) | Get if the gantry is currently moving. |
+[IsMoving](#ismoving) | Get if the gantry is currently moving. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### Position
