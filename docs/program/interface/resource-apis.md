@@ -14,14 +14,28 @@ Talk about how these methods work --> providing wrapper for gRPC client request 
 ## Resource Base API
 
 Description, methods.
+Python: class methods all classes that inherit from resource base class should possess.
+Go it might work differently.
 
 ### ResourceName
 
+PYTHON: get_resource_name(name: str)→ viam.proto.common.ResourceName[source]
+GO: 
+
 ### FromRobot
+
+PYTHON: from_robot(robot: viam.robot.client.RobotClient, name: str)→ typing_extensions.Self[source]
+GO: func ResourceFromRobot[T resource.Resource](robot Robot, name resource.Name) (T, error)
 
 ### GetOperation
 
+PYTHON: get_operation(kwargs: Mapping[str, Any])→ viam.operations.Operation[source]
+GO:
+
 ### DoCommand (hmmm)
+
+PYTHON: do_command(command: Mapping[str, viam.utils.ValueTypes], *, timeout: Optional[float] = None, **kwargs)→ Mapping[str, viam.utils.ValueTypes]
+GO:
 
 ## Component APIs
 
@@ -71,33 +85,88 @@ The board component supports the following methods:
 
 ### Camera
 
+| Method Name | Description |
+| ----------- | ----------- |
+| [GetImage](/components/camera/#getimage) | Return an image from the camera. |
+| [GetPointCloud](/components/camera/#getpointcloud) | Return a point cloud from the camera. |
+| [GetProperties](/components/camera/#getproperties) | Return the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
+
 ### Encoder
 
-### Gantry 
+Method Name | Description
+----------- | -----------
+[GetPosition](/components/encoder/#getposition) | Get the current position of the encoder.
+[ResetPosition](/components/encoder/#resetposition) | Reset the position to zero.
+[GetProperties](/components/encoder/#getproperties) | Get the supported properties of this encoder.
+
+### Gantry
+
+| Method Name | Description |
+| ----------- | ----------- |
+[Position](/components/gantry/#position) | Get the current positions of the axes of the gantry in mm. |
+[MoveToPosition](/components/encoder//#movetoposition) | Move the axes of the gantry to the desired positions. |
+[Lengths](/components/gantry/#lengths) | Get the lengths of the axes of the gantry in mm. |
+[Stop](/components/gantry/#stop) | Stop the gantry from moving. |
+[IsMoving](/components/gantry#ismoving) | Get if the gantry is currently moving. |
 
 ### Gripper
 
+Method Name | Description
+----------- | -----------
+[`Open`](/components/gripper/#open) | Open the gripper.
+[`Grab`](/components/gripper/#grab) | Close the gripper until it grabs something or closes completely.
+[`Stop`](/components/gripper/#stop) | Stop the gripper's movement.
+[`IsMoving`](/components/gripper/#ismoving) | Report whether the gripper is currently moving.
+
 ### Input Controller
+
+| Method Name | Description |
+| ----------- | ----------- |
+| [Controls](/components/input-controller/#controls) | Get a list of input `Controls` that this Controller provides. |
+| [Events](/components/input-controller/#events) | Get the current state of the Controller as a map of the most recent [Event](/components/input-controller/#event-object) for each [Control](/components/input-controller/#control-field). |
+| [RegisterControlCallback](/components/input-controller/#registercontrolcallback) | Define a callback function to execute whenever one of the [`EventTypes`](/components/input-controller/#eventtype-field) selected occurs on the given [Control](/components/input-controller/#control-field). |
 
 ### Motor
 
+Method Name | Description
+----------- | -----------
+[SetPower](/components/motor/#setpower) | Set the power to send to the motor as a portion of max power.
+[GoFor](/components/motor/#gofor) | Spin the motor the specified number of revolutions at specified RPM.
+[GoTo](/components/motor/#goto) | Send the motor to a specified position (in terms of revolutions from home) at a specified speed.
+[ResetZeroPosition](/components/motor/#resetzeroposition) | Set the current position to be the new zero (home) position.
+[GetPosition](/components/motor/#getposition) | Report the position of the motor based on its encoder. Not supported on all motors.
+[GetProperties](/components/motor/#getproperties) | Return whether or not the motor supports certain optional features.
+[Stop](/components/motor/#stop) | Cut power to the motor off immediately, without any gradual step down.
+[IsPowered](/components/motor/#ispowered) | Return whether or not the motor is currently on, and the amount of power to it.
+[IsMoving](/components/motor/#ismoving) | Return whether the motor is moving or not.
+
 ### Movement Sensor
+
+Method Name | Description |
+----------- | ----------- |
+[GetPosition](/components/movement-sensor/#getposition) | Get the current latitude, longitude and altitude. |
+[GetLinearVelocity](/components/movement-sensor/#getlinearvelocity) | Get the current linear velocity as a 3D vector. |
+[GetAngularVelocity](/components/movement-sensor/#getangularvelocity) | Get the current angular velocity as a 3D vector. |
+[GetLinearAcceleration](/components/movement-sensor/#getlinearacceleration) | Get the current linear acceleration as a 3D vector. |
+[GetCompassHeading](/components/movement-sensor/#getcompassheading) | Get the current compass heading in degrees. |
+[GetOrientation](/components/movement-sensor/#getorientation) | Get the current orientation. |
+[GetProperties](/components/movement-sensor/#getproperties) | Get the supported properties of this sensor. |
+[GetAccuracy](/components/movement-sensor/#getaccuracy) | Get the accuracy of the various sensors. |
+[GetReadings](/components/movement-sensor/#getreadings) | Obtain the measurements/data specific to this sensor. |
 
 ### Sensor
 
+| Method Name | Description |
+| ----------- | ----------- |
+| [Readings](/components/sensor/#readings) | Get the measurements or readings that this sensor provides. |
+
 ### Servo
 
-Table with methods? 
-- [Arm](/components/arm/#api)
-- [Base](/components/base/#api)
-- [Camera](/components/camera/#api)
-- [Gantry](/components/gantry/#api)
-- [Gripper](/components/gripper/#api)
-- [Input Controller](/components/input-controller/#api)
-- [Motor](/components/motor/#api)
-- [Movement Sensor](/components/movement-sensor/#api)
-- [Sensor](/components/sensor/#api)
-- [Servo](/components/servo/#api)
+| Method Name | Description |
+| ----------- | ----------- |
+| [Move](/components/servo/#move) | Move the servo to the desired angle. |
+| [Position](/components/servo/#position) | Get the current angle of the servo. |
+| [Stop](/components/servo/#stop) | Stop the servo. |
 
 ## Service APIs
 
@@ -150,13 +219,13 @@ In addition to the [Board API](#board), the [board component](/components/board)
 | ----------- | ----------- |
 | [Read](/components/board/#read) | Read the current integer value of the digital signal output by the ADC. |
 
-###  Digital Interrupts
+### Digital Interrupts
 
 In addition to the [Board API](#board), the [board component](/components/board) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts)  on a board:
 
 | Method Name | Description |
 | ----------- | ----------- |
-| [Value](#value) | Get the current value of this interrupt. |
-| [Tick](#tick) | Record an interrupt. |
-| [AddCallback](#addcallback) | Add a channel as a callback for [Tick()](#tick). |
-| [AddPostProcessor](#addpostprocessor) | Add a PostProcessor function for [Value()](#value). |
+| [Value](/components/board/#value) | Get the current value of this interrupt. |
+| [Tick](/components/board/#tick) | Record an interrupt. |
+| [AddCallback](/components/board/#addcallback) | Add a channel as a callback for [Tick()](/components/board/#tick). |
+| [AddPostProcessor](/components/board/#addpostprocessor) | Add a PostProcessor function for [Value()](/components/board/#value). |
