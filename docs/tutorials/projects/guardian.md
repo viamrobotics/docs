@@ -13,8 +13,8 @@ no_list: true
 # Author: Naomi Pentrel
 ---
 
-In the run up to the new Zelda release, I realized you could build a stationary guardian robot with a servo and a camera.
-Adding a bit of [machine learning](/services/ml/), you could then make the guardian detect objects or people or pets and follow them around by rotating its head.
+In the run up to the new Zelda release, I realized you can build a stationary guardian robot with a servo and a camera.
+Adding a bit of [machine learning](/services/ml/), you can then make the guardian detect objects or people or pets and follow them around by rotating its head.
 Luckily, I am not the first one to have the idea to build a guardian and there was already a [brilliant guardian 3D model](https://www.thingiverse.com/thing:2391826) on Thingiverse with space for LEDs and a servo.
 
 In this tutorial, I will walk you through the steps to build your own functional guardian.
@@ -38,14 +38,14 @@ To build your own guardian robot, you need the following hardware:
 Print or order the following printed 3D parts:
 
 - [this head](TODO) which fits the camera
-- the decorations for the head from [Guardian Robot model, Details Separate](https://www.thingiverse.com/thing:2387723)
+- the decorations for the head from [this Guardian Robot model](https://www.thingiverse.com/thing:2387723)
 - the body, base cover, claws, and leg segments from the [Guardian Robot, Hackable](https://www.thingiverse.com/thing:2391826)
 
   <div style="max-width: 600px">
   <img src="../../img/guardian/printed_parts.jpg" alt="3d printed parts">
   </div>
 
-To make the guardian's lights shine through just like the real one, you need to use filament that allows the light to shine through and then paint the parts that shouldn't allow light to shine through.
+To make the guardian's lights shine through its body, use filament that allows the light to shine through and paint the parts that shouldn't allow light to shine through.
 
 Optionally, if you want to decorate your guardian, I recommend the following materials:
 
