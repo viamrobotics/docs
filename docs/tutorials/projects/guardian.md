@@ -17,7 +17,7 @@ In the run up to the new Zelda release, I realized you can build a stationary gu
 Adding a bit of [machine learning](/services/ml/), you can then make the guardian detect objects or people or pets and follow them around by rotating its head.
 Luckily, I am not the first one to have the idea to build a guardian and there was already a [brilliant guardian 3D model](https://www.thingiverse.com/thing:2391826) on Thingiverse with space for LEDs and a servo.
 
-In this tutorial, I will walk you through the steps to build your own functional guardian.
+In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo), a [camera](/components/camera), some LEDs and the [ML Model service](/services/ml) and [Vision Service](/services/vision).
 
 {{<video webm_src="../../img/guardian/preview.webm" mp4_src="../../img/guardian/preview.mp4" alt="Guardian robot detects person and rotates head to follow them around">}}
 
