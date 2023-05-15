@@ -266,7 +266,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 2. **Add a vision service.**
 
-   Next, add a [detector](/services/vision/detector) as a vision service to be able to make use of the ML model.
+   Next, add a [detector](/services/vision/detection) as a vision service to be able to make use of the ML model.
    Create an vision service with the name `detector`, the type `vision` and the model `mlmodel`.
    Then click **Create Service**.
 
