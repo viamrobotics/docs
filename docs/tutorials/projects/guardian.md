@@ -75,7 +75,7 @@ You can view a time lapse of the robot assembly here:
 ### Assemble for testing
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/guardian/head.jpg" class="alignright" alt="Head with camera attachment" style="max-width: 200px" />
+  <img src="../../img/guardian/head.png" class="alignright" alt="Head with camera attachment" style="max-width: 200px" />
 </div>
 
 To assemble the guardian, start with the head and use four M2 screws to screw the camera with attached ribbon cable to the front half of the head.
@@ -234,7 +234,7 @@ At this point also connect the speaker to your Raspberry Pi.
 
 Then test the components on the [robot's Control tab](/manage/fleet/robots/#control) again to ensure everything still works.
 
-## Detect persons, dogs, cats, and teddy bears
+## Detect persons and pets
 
 For the guardian to be able to detect living beings, you can use [this Machine Learning model](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite).
 The model can detect a variety of things which you can see in the associated <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
@@ -712,7 +712,7 @@ Now your guardian should start behaving like a guardian automatically once boote
 You now have a functioning guardian robot which you can use to monitor your pets or people.
 Or simply use to greet you when you get back to your desk.
 
-TODO VIDEO WITH ERNIE
+{{<video webm_src="../../img/guardian/ernieandtheguardian.webm" mp4_src="../../img/guardian/ernieandtheguardian.mp4" alt="Guardian robot rotates head to follow dog around a room">}}
 
 Of course, you're free to adapt the code to make it do something else, add more LEDs, or even [train your own custom model](/manage/ml/train-model/) to use.
 
