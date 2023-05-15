@@ -25,3 +25,7 @@ MD041: false
 
 # Code block style expect indented
 MD046: false
+
+# No bare URLs
+# Turning off because it triggers wrongly in API argument types
+MD034: false
