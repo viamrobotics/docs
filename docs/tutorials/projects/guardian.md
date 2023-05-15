@@ -661,7 +661,7 @@ If everything works, your guardian should now start to idle and when it detects 
 ## Run the program automatically
 
 One more thing.
-Right now, you have to run the code manually every time you want your guardian to do get to work.
+Right now, you have to run the code manually every time you want your guardian to work.
 You can also configure Viam to automatically run your code as a [process](/manage/configuration/#processes).
 
 To be able to run the python script from your Raspberry Pi, you need install the Python SDK on your Raspberry Pi and copy your code onto the Raspberry Pi.
