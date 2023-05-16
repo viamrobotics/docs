@@ -8,6 +8,7 @@ aliases:
     - "/getting-started/"
     - "/getting-started/high-level-overview"
     - "/product-overviews/"
+images: ["/img/understand.png"]
 ---
 
 Viam is a complete software platform that supports every step of your robot development lifecycle.
