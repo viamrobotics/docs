@@ -1,4 +1,5 @@
 baseURL = "https://docs.viam.com"
+relativeURLs = true
 
 googleAnalytics = 'G-P0NZTY2VM2'
 
