@@ -46,7 +46,7 @@ You can also share locations across different organizations **that you are part 
 
 ### Permissions
 
-Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members roles that confer permissions:
+Role Based Access Control (RBAC) is a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members roles that confer permissions. Permissions are added at the organization level and apply to everything in an org.
 
 - **Owner**: Can see and edit [every tab on the robot page](robots/#navigating-the-robot-page).
   Can manage users in the app.
@@ -55,7 +55,7 @@ Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](
 
 To view the roles each organization member has, click on the organization drop down in the top navigation bar and click on **Settings**.
 
-If you have the **Owner** role, you can change the roles assigned to organization members using the role drop down for the respective user.
+If you have the **Owner** role, you can [invite new users](organizations/#invite-users-to-your-organization) and change the roles assigned to organization members using the role drop down for the respective user.
 
 ![Example permissions overview](../img/rbac.png)
 

@@ -44,10 +44,10 @@ Then enter the name for your new organization in the **New Organization** field 
 ### Invite users to your organization
 
 To invite a user to your organization, click on the Org's **Settings** in the top right of the navigation bar.
-Then enter their email address into the field in the organizations' members list and click **Invite**.
+In the members section of the page enter their email address, select a role, and click **Invite**.
 
 <div style="max-width: 400px">
-    <img src="../../img/app-usage/invite-user.png" alt="The user email address invitation field on the Organization settings page." >
+    <img src="../../img/app-usage/invite-user.png" alt="The user invitation menu on the Organization settings page." >
 </div>
 
 ### Delete an organization
