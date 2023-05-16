@@ -128,7 +128,7 @@ position = await my_movement_sensor.get_position()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -184,7 +184,7 @@ lin_vel = await my_movement_sensor.get_linear_velocity()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -242,7 +242,7 @@ y_ang_vel = ang_vel.y
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -303,7 +303,7 @@ x_lin_accel = lin_accel.x
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -361,7 +361,7 @@ heading = await my_movement_sensor.get_compass_heading()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -414,7 +414,7 @@ orientation = await my_movement_sensor.get_orientation()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -472,7 +472,7 @@ properties = await my_movement_sensor.get_properties()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -524,11 +524,11 @@ accuracy = await my_movement_sensor.get_accuracy()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- (map[[string]](https://pkg.go.dev/builtin#string)[float32](https://pkg.go.dev/builtin#float32)): The accuracy and/or precision of the sensor, if supported.
+- (map[\[string\]](https://pkg.go.dev/builtin#string)[float32](https://pkg.go.dev/builtin#float32)): The accuracy and/or precision of the sensor, if supported.
   Contents depend on sensor model.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
@@ -559,7 +559,7 @@ If a sensor is not configured to take a certain measurement or fails to read a p
 
 **Returns:**
 
-- ([Mapping [str, Any]](https://docs.python.org/3/glossary.html#term-mapping)): An object containing the measurements from the sensor.
+- ([Mapping [str, Any]](<https://docs.python.org/3/glossary.html#term-mapping>)): An object containing the measurements from the sensor.
 Contents depend on sensor model and can be of any type.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_readings).
@@ -577,11 +577,11 @@ readings = await my_movement_sensor.get_readings()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- (map[[string]](https://pkg.go.dev/builtin#string)interface{}): A map containing the measurements from the sensor.
+- (map[[string]](<https://pkg.go.dev/builtin#string)interface{}>): A map containing the measurements from the sensor.
     Contents depend on sensor model and can be of any type.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
