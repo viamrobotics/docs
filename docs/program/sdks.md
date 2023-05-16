@@ -269,7 +269,7 @@ Currently, this only works with Python code which is running on the same board t
 
 1. Change the `connect()` method to disable {{< glossary_tooltip term_id="webrtc" >}} and add the auth_entity in the DialOptions and use `localhost:8080`:
 
-    ```python {class="line-numbers linkable-line-numbers" data-line="5"}
+    ```python {class="line-numbers linkable-line-numbers"}
     async def connect():
       creds = Credentials(type='robot-location-secret', payload=PAYLOAD_SECRET)
       opts = RobotClient.Options(
