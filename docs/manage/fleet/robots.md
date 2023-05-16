@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "A robot is an organizational concept, consisting of either one or multiple parts working closely together to complete tasks."
 tags: ["fleet management", "cloud", "app"]
+images: ["/manage/img/control.gif"]
 ---
 
 A robot is an organizational concept, consisting of either one <em>{{< glossary_tooltip term_id="part" text="part" >}}</em>, or multiple _parts_ working closely together to complete tasks.
