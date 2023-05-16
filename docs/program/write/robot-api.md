@@ -332,7 +332,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [(Promise<commonApi.PoseInFrame>)](https://ts.viam.dev/classes/commonApi.PoseInFrame.html): Transformed pose in destination reference frame.
+- [(commonApi.PoseInFrame)](https://ts.viam.dev/classes/commonApi.PoseInFrame.html): Transformed pose in destination reference frame.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPose).
 
@@ -467,7 +467,7 @@ ResourceNames() []resource.Name
 
 **Returns:**
 
-- [(Promise<commonApi.ResourceName.AsObject[]>)]():
+- [(commonApi.ResourceName.AsObject[])]():
 
 ```typescript
 // Get a list of all resources on the robot.
