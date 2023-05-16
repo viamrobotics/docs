@@ -35,7 +35,7 @@ To delete a file, click on the file  in the **Files** subtab and click the **Del
 
 To delete all image, file, or sensor data respectively, click on **DELETE ALL** in the top right corner.
 
-![Data view with no image selected showing the Delete all button](../img/delete_selected.png)
+![Data view with no image selected showing the Delete all button](../img/delete_all.png)
 
 You can also delete data using the [Viam CLI](../../cli).
 
