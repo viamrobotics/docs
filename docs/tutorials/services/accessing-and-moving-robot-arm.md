@@ -31,11 +31,9 @@ The [full tutorial code](#full-tutorial-code) is available at the end of this pa
   <img src="../../img/motion/access_01_xarm6.png" class="alignright" alt="A picture of the UFACTORY xArm 6." style="max-width: 400px">
 </div>
 
-<!-- TODO(DOCS-419): Content below struck out for the moment, saved to refer to impending changes in Arm component docs outlining the ability to use a fully virtual arm. -->
-<!--
-In the event that you do not have a robotic arm of your own, the section on Fake models in the [Arm component page](/components/arm/#fake-arm-modeling) shows how you can set up a virtual robotic arm with the same kinematic model as a real robotic arm.
+If you do not have a robotic arm of your own, the [fake arm component page](/components/arm/fake/) shows how you can set up a virtual robotic arm with the same kinematic model as a real robotic arm.
+Configure it with `"arm-model": "xArm6"` in its `attributes`.
 You can then continue through the code examples in this tutorial without making any changes (and without needing to buy or build an expensive robot arm)!
--->
 
 ## Prerequisites
 
