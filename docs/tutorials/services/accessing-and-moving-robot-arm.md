@@ -43,7 +43,7 @@ Before starting this tutorial, make sure you have the [Viam Python SDK](https://
 
 If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the controller before continuing.
 
-## Configure A Robot
+## Configure a Robot
 
 1. Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 2. Create a new robot.
@@ -63,7 +63,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
       * For an `xArm6`, a safe value is `15` degrees per second.
 
 6. Add a **Frame** to this component.
-   * You will not need to change the default values that populate the new frame card
+   * You do not need to change the default values that populate the new frame card
 
    <img src="../../img/motion/access_02_arm_config.png" width="700px" alt="Sample robot arm configuration with several fields filled out.">
 
@@ -74,7 +74,7 @@ Paste this boilerplate code into a file and run the script to verify you can con
 Throughout this tutorial you will replace and amend this code.
 The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
 
-## Accessing the Arm
+## Access the Arm
 
 The `arm` component library has several methods to simplify accessing and working with robotic arms.
 In this step, you'll fetch data about the robotic arm's current position.
@@ -198,7 +198,7 @@ Sometimes you may wish to direct an arm in terms of joint positions, sometimes y
 There is a mathematical relationship that allows you to convert between these two representations, known as the **forward and inverse kinematics**, which is foundational to complex robotic motion.
 We will not cover forward and inverse kinematics in this tutorial, but resources for further reading on these topics are linked in the [**Next Steps**](#next-steps-and-references) section.
 
-## Moving the Arm
+## Move the Arm
 
 The two main options for specifying arm movement are through **joint position commands** and through **pose commands**.
 Let's start with joint position commands, as their formulation is a little simpler.
