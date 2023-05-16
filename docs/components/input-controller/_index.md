@@ -52,6 +52,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have an input controller called `"my_controller"` configured as a component of your robot.
 If your input controller has a different name, change the `name` in the code.
 
+Be sure to import the input controller package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.input import Control, Controller, EventType
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/input"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The input controller component supports the following methods:

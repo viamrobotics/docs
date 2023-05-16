@@ -38,6 +38,37 @@ Model | Description
 
 If you want to use another COMPONENT model with Viam, you can [define a custom component](../../program/extend/).
 
+## Control your board with Viam's client SDK libraries
+
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+When executed, this sample code will create a connection to your robot as a client.
+Then control your robot programmatically by getting your `COMPONENT` component from the robot with `FromRobot` and adding API method calls, as shown in the following examples.
+
+These examples assume you have a board called "my_board" configured as a component of your robot.
+If your board has a different name, change the `name` in the code.
+
+Be sure to import the COMPONENT package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.componentname import ComponentName
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/componentname"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The COMPONENT component supports the following methods:

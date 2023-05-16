@@ -59,6 +59,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a servo called `"my_servo"` configured as a component of your robot.
 If your servo has a different name, change the `name` in the code.
 
+Be sure to import the servo package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.servo import Servo
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/servo"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The servo component supports the following methods:

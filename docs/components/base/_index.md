@@ -47,6 +47,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a wheeled base called `"my_base"` configured as a component of your robot.
 If your base has a different name, change the `name` in the code.
 
+Be sure to import the base package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.base import Base
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/base"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The base component supports the following methods:

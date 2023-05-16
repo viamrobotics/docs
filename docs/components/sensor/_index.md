@@ -57,6 +57,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a sensor called `"my_sensor"` configured as a component of your robot.
 If your sensor has a different name, change the `name` in the code.
 
+Be sure to import the sensor package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.sensor import Sensor
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/sensor"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The sensor component supports the following methods:

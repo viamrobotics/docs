@@ -328,6 +328,27 @@ Then control your robot programmatically by getting your `board` component from 
 These examples assume you have a board called "my_board" configured as a component of your robot.
 If your board has a different name, change the `name` in the code.
 
+Be sure to import the board package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.board import Board
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/board"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The board component supports the following methods:

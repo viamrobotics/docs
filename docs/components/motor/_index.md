@@ -49,6 +49,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a motor called `"my_motor"` configured as a component of your robot.
 If your motor has a different name, change the `name` in the code.
 
+Be sure to import the motor package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.motor import Motor
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/motor"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 Method Name | Description

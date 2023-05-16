@@ -49,6 +49,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a movement sensor called `"my_movement_sensor"` configured as a component of your robot.
 If your movement sensor has a different name, change the `name` in the code.
 
+Be sure to import the movement sensor package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.movement_sensor import MovementSensor
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/movementsensor"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
