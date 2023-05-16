@@ -1,7 +1,7 @@
 ---
 title: "Configure `camera_mono` for Visual Odometry"
 linkTitle: "camera_mono"
-weight: 10
+weight: 40
 type: "docs"
 description: "Configure `camera_mono`, an experimental visual odometry model."
 images: ["/components/img/components/imu.svg"]

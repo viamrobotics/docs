@@ -1,7 +1,7 @@
 ---
 title: "Configure a Soft Robotics Gripper"
 linkTitle: "softrobotics"
-weight: 10
+weight: 30
 type: "docs"
 description: "Configure a Soft Robotics gripper."
 images: ["/components/img/components/gripper.svg"]

@@ -1,7 +1,7 @@
 ---
 title: "Configure a Fake Movement Sensor"
 linkTitle: "fake"
-weight: 15
+weight: 10
 type: "docs"
 description: "Configure a fake movement sensor to test software without any hardware."
 images: ["/components/img/components/imu.svg"]

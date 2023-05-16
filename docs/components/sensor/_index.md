@@ -57,6 +57,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a sensor called `"my_sensor"` configured as a component of your robot.
 If your sensor has a different name, change the `name` in the code.
 
+Be sure to import the sensor package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.sensor import Sensor
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/sensor"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The sensor component supports the following methods:
@@ -95,13 +116,13 @@ readings = await my_sensor.get_readings()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
 - `readings` [(map[string]interface{})](https://go.dev/blog/maps): The measurements or readings that this sensor provides.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
 

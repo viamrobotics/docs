@@ -80,7 +80,7 @@ The following attributes are available for `webcam` cameras:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `video_path` | string | Optional | The ID of or the path to the webcam. Often `video0`. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the ID of a webcam is more consistent than the path. |
+| `video_path` | string | Optional | The ID of or the path to the webcam. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the ID of a webcam is more consistent than the path. |
 | `format` | string | Optional | The camera image format, used with `video_path` to find the camera. |
 | `width_px` | int | Optional | The camera image width in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `480` |
 | `height_px` | int | Optional | The camera image height in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `640` |
