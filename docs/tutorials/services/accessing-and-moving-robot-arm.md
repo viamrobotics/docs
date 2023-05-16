@@ -249,7 +249,7 @@ When you are ready to move on, the next section will show you how to use **pose 
 
 ### Pose Commands
 
-When you [got the end position of the arm](#accessing-the-arm), this data was returned in the format of a `Pose`.
+When you [got the end position of the arm](#access-the-arm), this data was returned in the format of a `Pose`.
 The returned `Pose` is a combination of position and orientation data that indicates the end of the arm's full 6-dimensional configuration in space.
 
 The following code sample reuses the methods to get the pose of the end of the arm so that you can make small adjustments at will.
