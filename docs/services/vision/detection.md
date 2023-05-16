@@ -58,7 +58,7 @@ To create a [Vision Service](/services/vision/):
 
 ![Create Vision Service for color detector](../img/color_detector.png)
 
-In your Vision Service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment pixel size:
+In your Vision Service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels):
 
 ![Color detector panel with color and hue tolerance selection and a field for the segment size](../img/color-detector-panel.png)
 
