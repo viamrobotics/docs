@@ -118,3 +118,5 @@ The Motion Service is one of the "built-in" services, so you don't need to do an
 ```
 
 {{% /expand %}}
+
+## Full tutorial code
