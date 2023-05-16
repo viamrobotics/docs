@@ -1,7 +1,7 @@
 ---
 title: "Configure a GPS"
 linkTitle: "GPS"
-weight: 2
+weight: 15
 type: "docs"
 description: "Supported GPS models."
 images: ["/components/img/components/imu.svg"]

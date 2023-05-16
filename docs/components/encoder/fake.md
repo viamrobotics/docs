@@ -5,6 +5,7 @@ type: "docs"
 description: "Configure a fake encoder."
 images: ["/components/img/components/encoder.svg"]
 tags: ["encoder", "components"]
+weight: 10
 # SMEs: Rand
 ---
 

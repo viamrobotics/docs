@@ -1,7 +1,7 @@
 ---
 title: "Configure a fake board"
 linkTitle: "fake"
-weight: 80
+weight: 20
 type: "docs"
 description: "Configure a fake board."
 images: ["/components/img/components/board.svg"]

@@ -1,7 +1,7 @@
 ---
 title: "Configure a fake Gantry"
 linkTitle: "fake"
-weight: 90
+weight: 10
 type: "docs"
 description: "Configure a fake gantry."
 tags: ["gantry", "components"]

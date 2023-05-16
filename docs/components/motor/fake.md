@@ -1,7 +1,7 @@
 ---
 title: "Configure a fake motor"
 linkTitle: "fake"
-weight: 70
+weight: 10
 type: "docs"
 description: "Configure a fake motor to test software without any hardware."
 images: ["/components/img/components/motor.svg"]
