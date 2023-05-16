@@ -54,7 +54,7 @@ Before adding a SLAM service, you must follow [these instructions](/program/exte
 
 ### Add a SLAM Service
 
-{{< tabs name="Add the Cartographer Service Live">}}
+{{< tabs name="Add the Cartographer Service">}}
 {{% tab name="Config Builder" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
@@ -66,7 +66,7 @@ Add a service with type `slam`, model `viam:slam:cartographer`, and a name of yo
 
 Paste the following into the **Attributes** field of your new service:
 
-{{< tabs name="Add Cartographer Service Live Configs">}}
+{{< tabs name="Add Cartographer Service Configs">}}
 {{% tab name="Linux" %}}
 
 ```json
@@ -100,7 +100,7 @@ Paste the following into the **Attributes** field of your new service:
 
 Click on the **Modules** subtab. Add the cartographer module with a name of your choice and an executable path that points to the location of your installed `cartographer-module` binary:
 
-{{< tabs name="Add Cartographer Service Live Module">}}
+{{< tabs name="Add Cartographer Service Module">}}
 {{% tab name="Linux/MacOS x86_64" %}}
 
 ![adding cartographer module linux](../img/run_slam/add-cartographer-module-ui-linux.png)
@@ -121,7 +121,7 @@ Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab.
 Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"modules"` JSON to add to your existing RPlidar configuration:
 
-{{< tabs name="Add the Cartographer Service Live Config JSON OSs">}}
+{{< tabs name="Add the Cartographer Service Config JSON OSs">}}
 {{% tab name="Linux" %}}
 
 ```json
