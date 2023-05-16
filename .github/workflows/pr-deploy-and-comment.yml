@@ -33,6 +33,7 @@ jobs:
         run: |
           echo url_latest_version = \"https://docs-test.viam.dev/${{ github.event.pull_request.head.sha }}/public\" > config_pr.toml
           echo baseURL = \"https://docs-test.viam.dev/${{ github.event.pull_request.head.sha }}/public\" >> config_pr.toml
+          echo relativeURLs = true >> config_pr.toml
 
       - name: Build
         run: make build-pr
