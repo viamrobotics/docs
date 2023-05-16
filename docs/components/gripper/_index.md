@@ -20,7 +20,7 @@ For configuration information, click on your gripper's model:
 Model | Description
 ----- | -----------
 [`softrobotics`](./softrobotics/) | The [*m*Grip soft gripper by Soft Robotics](https://www.softroboticsinc.com/products/mgrip-modular-gripping-solution-for-food-automation/) |
-`fake` | A model used for testing, with no physical hardware. |
+[`fake`](fake) | A model used for testing, with no physical hardware. |
 
 If you have another gripper model, you can [define a custom component](../../program/extend/).
 
@@ -33,6 +33,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 
 These examples assume you have a gripper called `"my_gripper"` configured as a component of your robot.
 If your gripper has a different name, change the `name` in the code.
+
+Be sure to import the gripper package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.gripper import Gripper
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/gripper"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## API
 

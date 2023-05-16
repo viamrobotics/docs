@@ -19,7 +19,7 @@ The **DATA** page shows data about:
 
 If you click on an image or a file, a **Details** panel appears on the right with capture metadata.
 
-![Images, files, and sensors tabs](../img/data_view.png)
+![Data view with an image selected](../img/data_view.png)
 
 ## Filter Data
 
@@ -32,6 +32,10 @@ For example, if you specify `Rover Rental` for location and click **SEARCH**, yo
 You can delete image or file data from the [Viam app](https://app.viam.com).
 To delete image data, click on an image in the **Images** subtab and click on **DELETE SELECTED**.
 To delete a file, click on the file  in the **Files** subtab and click the **Delete** icon.
+
+To delete all image, file, or sensor data respectively, click on **DELETE ALL** in the top right corner.
+
+![Data view with no image selected showing the Delete all button](../img/delete_all.png)
 
 You can also delete data using the [Viam CLI](../../cli).
 

@@ -71,16 +71,8 @@ The fragment adds the following components to your robot's JSON configuration:
 
 ## See the components on the configuration page
 
-Adding a fragment to your robot adds the configuration to your robot but it does not automatically fill your robot configuration page in the app with these components.
-It is normal for your **Components** subtab on the builder view to be empty:
-
-![Builder Tab](../img/fragments/builder_tab.png)
-
-Instead, your Raw JSON will reference the fragment in it.
-
-![Raw JSON](../img/fragments/raw_json.png)
-
-If you want each component to show up in your **Components** subtab so you can view or edit them, copy the entire configuration from the **Fragments** subtab, paste it into your Raw JSON section, and save your configuration.
+Adding a fragment to your robot adds the configuration to your robot.
+The components and services included in the fragment will appear inside a read-only fragment section in the **Components** and **Services** sub-tabs.
 
 ## Next Steps
 
