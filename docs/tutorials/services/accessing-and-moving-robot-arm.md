@@ -192,7 +192,8 @@ Each individual value corresponds to the current position of a particular joint 
 {{< /tabs >}}
 
 Both representations of an arm's state are important.
-Sometimes you may wish to direct an arm in terms of joint positions, sometimes you may need to describe the position of another object with respect to the end of the robot arm.
+Sometimes you may wish to direct an arm in terms of joint positions.
+Other times you may need to describe the position of another object with respect to the end of the robot arm.
 There is a mathematical relationship that allows you to convert between these two representations, known as the **forward and inverse kinematics**, which is foundational to complex robotic motion.
 We will not cover forward and inverse kinematics in this tutorial, but resources for further reading on these topics are linked in the [**Next Steps**](#next-steps-and-references) section.
 
