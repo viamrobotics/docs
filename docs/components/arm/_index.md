@@ -78,6 +78,7 @@ Be sure to import the arm package for the SDK you are using:
 
 ```python
 from viam.components.arm import Arm
+from viam.proto.component.arm import JointPositions
 ```
 
 {{% /tab %}}
@@ -86,6 +87,7 @@ from viam.components.arm import Arm
 ```go
 import (
   "go.viam.com/rdk/components/arm"
+  armapi "go.viam.com/api/component/arm/v1"
 )
 ```
 
