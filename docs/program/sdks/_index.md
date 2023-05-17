@@ -38,7 +38,35 @@ Before you get started, ensure that you:
 <!-- TODO: above is really the most important requirement, how to separate out for non-app users? -->
 
 - TODO: Go over why you need to install these SDKs and what computer you need to have them on!
-- can help clear up the thing matt was saying about potential candidate being confused about what computer she needed to have viam-server or an SDK installed on? 
+- can help clear up the thing matt was saying about potential candidate being confused about what computer she needed to have viam-server or an SDK installed on?
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+pip install viam-sdk
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+go install go.viam.com/rdk/robot/client@latest
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+npm install --save @viamrobotics/sdk
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Hello World: The Code Sample Tab
+
+- instructions as to how to create a file, where to save this file, what's happening in alignment with configuration etc.
 
 The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
 
@@ -215,6 +243,9 @@ print(await movementSensor.readings())
 {{% /tab %}}
 {{< /tabs >}}
 
+Save this file on your development machine with the file type of your preferred SDK.
+Edit the boilerplate code by [adding control logic](/program/write/)) to make a client application that connects to your robot controls it in the way you want when the program [is executed](/program/run/).
+
 ### `import`
 
 - talks about how code sample should generally generate all the required resources but if not or if you're not working with that, describes what they'll be?
@@ -229,34 +260,3 @@ print(await movementSensor.readings())
   
 - (THIS LANGUAGE IS PYTHON SPECIFIC, WILL NEED TO ADJUST FOR DIFFERENT TABS) In the main() function of your code, as shown in the above Code Sample, you must ...
 - directs to "interface with resources" page
-
-<!-- #### The Control Tab: built-in UI for control
-
-- this maybe shouldn't go here but I want users to be more aware of this  -->
-
-## Run Code
-
--- directs to "run your code page" lol 
-
-## Debug
-
-- logging tab or accessing logs when running viam-server process on whatever computer is doing so 
-
-<!-- You can add control logic for each [component](/components/) of your robot by using the built-in component methods.
-
-Find documentation on how to use these methods here:
-
-- [Arm](/components/arm/#api)
-- [Base](/components/base/#api)
-- [Board](/components/board/#api)
-- [Camera](/components/camera/#api)
-- [Encoder](/components/encoder/#api)
-- [Gantry](/components/gantry/#api)
-- [Gripper](/components/gripper/#api)
-- [Input Controller](/components/input-controller/#api)
-- [Motor](/components/motor/#api)
-- [Movement Sensor](/components/movement-sensor/#api)
-- [Sensor](/components/sensor/#api)
-- [Servo](/components/servo/#api)
-
-You can find example code in the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1), the [Golang SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples), or the [TypeScript SDK example GitHub repository](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples). -->

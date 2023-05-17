@@ -1,5 +1,5 @@
 ---
-title: "Get Started Programming your Robot with Viam's SDKs"
+title: "Run SDK Code"
 linkTitle: "Run Code"
 weight: 50
 type: "docs"
@@ -7,9 +7,6 @@ description: "Execute the logic you've written to control your robot or fleet."
 icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 ---
-
-
-## Run Your Code
 
 After saving your boilerplate code sample and adding control logic with Viam's API methods, run your program to control your Viam-connected robot.
 
