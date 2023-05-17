@@ -255,7 +255,7 @@ scp labels.txt pi@guardian.local:/home/pi/labels.txt
 Next, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Services** subtab and navigate to the **Create service** menu.
 
-1. **Add the ML Service.**
+1. **Add a ML model service.**
 
    The [ML model service](/services/ml) allows you to deploy the provided machine learning model to your robot.
    Create an ML model with the name `mlmodel`, the type `mlmodel` and the model `tflite_cpu`.
@@ -265,10 +265,10 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
    Then specify the absolute **Model Path** as `/home/pi/effdet0.tflite` and the **Label Path** as `/home/pi/labels.txt`.
 
-2. **Add the Vision Service.**
+2. **Add a vision service.**
 
-   Next, add a [detector](/services/vision/detection) as Vision Service to be able to make use of the ML model.
-   Create the Vision Service with the name `detector`, the type `vision` and the model `mlmodel`.
+   Next, add a [detector](/services/vision/detection) as a vision service to be able to make use of the ML model.
+   Create an vision service with the name `detector`, the type `vision` and the model `mlmodel`.
    Then click **Create Service**.
 
    In the new detector panel, select the `mlmodel` you configured in the previous step.
@@ -277,7 +277,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 3. **Add a `transform` camera.**
 
-   To be able to test that the Vision Service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
+   To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
    Click on the **Components** subtab and navigate to the **Create component** menu.
    Create a [transform camera](/components/camera/transform) with the name `transform_cam`, the type `camera` and the model `transform`.
@@ -386,7 +386,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{< /tabs >}}
 
 Navigate to your [robot's Control tab](/manage/fleet/robots/#control) to test the transform camera.
-Click on the transform camera panel and toggle the camera on, then point your camera at a person or pet to test if the Vision Service detects them.
+Click on the transform camera panel and toggle the camera on, then point your camera at a person or pet to test if the vision service detects them.
 You should see bounding boxes with labels around different objects.
 
 <div style="max-width: 600px" >
@@ -635,7 +635,7 @@ async def main():
 
     music_player = vlc.MediaPlayer("guardian.mp3")
 
-    # grab Viam's Vision Service for the detector
+    # grab Viam's vision service for the detector
     detector = VisionClient.from_robot(robot, "detector")
     while True:
         # move head periodically left and right until movement is spotted.
@@ -840,7 +840,7 @@ async def main():
 
     music_player = vlc.MediaPlayer("guardian.mp3")
 
-    # grab Viam's Vision Service for the detector 
+    # grab Viam's vision service for the detector 
     detector = VisionClient.from_robot(robot, "detector")
     while True:
         # move head periodically left and right until movement is spotted.
