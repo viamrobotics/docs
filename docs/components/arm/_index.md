@@ -78,6 +78,9 @@ Be sure to import the arm package for the SDK you are using:
 
 ```python
 from viam.components.arm import Arm
+# To use move_to_position:
+from viam.proto.common import Pose
+# To use move_to_joint_positions:
 from viam.proto.component.arm import JointPositions
 ```
 
@@ -87,6 +90,10 @@ from viam.proto.component.arm import JointPositions
 ```go
 import (
   "go.viam.com/rdk/components/arm"
+  // To use MoveToPosition:
+  "go.viam.com/rdk/referenceframe"
+  "go.viam.com/rdk/spatialmath"
+  // To use MoveToJointPositions:
   armapi "go.viam.com/api/component/arm/v1"
 )
 ```
