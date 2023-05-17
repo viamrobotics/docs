@@ -67,8 +67,6 @@ npm install --save @viamrobotics/sdk
 
 - instructions as to how to create a file, where to save this file, what's happening in alignment with configuration etc.
 
-TODO: will probably need to put the note below somewhere else but I am not sure where yet? lol
-
 The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
 
 These boilerplate code samples import all of the necessary libraries and set up a client connection to your {{< glossary_tooltip term_id="remote" text="remote">}} or local robot.
@@ -201,6 +199,9 @@ main();
 {{% /tab %}}
 {{< /tabs >}}
 
+Save this file on your development machine with the file type of your preferred SDK.
+Edit the boilerplate code by [adding control logic](/program/write/)) to make a client application that connects to your robot controls it in the way you want when the program [is executed](/program/run/).
+
 ### `import`
 
 - talks about how code sample should generally generate all the required resources but if not or if you're not working with that, describes what they'll be?
@@ -215,32 +216,3 @@ main();
   
 - (THIS LANGUAGE IS PYTHON SPECIFIC, WILL NEED TO ADJUST FOR DIFFERENT TABS) In the main() function of your code, as shown in the above Code Sample, you must ...
 - directs to "interface with resources" page
-
-<!-- #### The Control Tab: built-in UI for control
-
-- this maybe shouldn't go here but I want users to be more aware of this  -->
-
-## Run Code
-
--- directs to "run your code page" lol 
-
-## Debug
-
-- logging tab or accessing logs when running viam-server process on whatever computer is doing so 
-
-<!-- You can add control logic for each [component](/components/) of your robot by using the built-in component methods.
-
-Find documentation on how to use these methods here:
-
-- [Arm](/components/arm/#api)
-- [Base](/components/base/#api)
-- [Camera](/components/camera/#api)
-- [Gantry](/components/gantry/#api)
-- [Gripper](/components/gripper/#api)
-- [Input Controller](/components/input-controller/#api)
-- [Motor](/components/motor/#api)
-- [Movement Sensor](/components/movement-sensor/#api)
-- [Sensor](/components/sensor/#api)
-- [Servo](/components/servo/#api)
-
-You can find example code in the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1), the [Golang SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples), or the [TypeScript SDK example GitHub repository](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples). -->

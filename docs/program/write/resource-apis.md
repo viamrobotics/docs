@@ -1,6 +1,6 @@
 ---
 title: "Resource APIs with Viam's SDKs"
-linkTitle: "Resource APIs"
+linkTitle: "For Resources"
 weight: 40
 type: "docs"
 description: "Using built-in resource API methods to control the components and services on your robot with Viam's SDKs."
@@ -15,43 +15,27 @@ Talk about how these methods work --> providing wrapper for gRPC client request 
 
 Describe why this is different across SDKs- python inheritance
 
+### FromRobot
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 Python: class methods all classes that inherit from resource base class should possess.
 
-### ResourceName
-
-get_resource_name(name: str)→ viam.proto.common.ResourceName[source][]
-
-### FromRobot
-
-from_robot(robot: viam.robot.client.RobotClient, name: str)→ typing_extensions.Self[source][]
-GO: func ResourceFromRobot[T resource.Resource](robot Robot, name resource.Name) (T, error)
-
-### GetOperation
-
-get_operation(kwargs: Mapping[str, Any])→ viam.operations.Operation[source][]
-
-### DoCommand
-
-do_command(command: Mapping[str, viam.utils.ValueTypes], *, timeout: Optional[float] = None, **kwargs)→ Mapping[str, viam.utils.ValueTypes]
+`from_robot(robot: viam.robot.client.RobotClient, name: str)→ typing_extensions.Self[source][]`
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Illustrate where/how these equivalent functions are found in Go
-
 Implementation is defined on each component interface.
 
-### FromRobot
 
 `arm.FromRobot[T resource.Resource](robot Robot, name resource.Name) (T, error)`
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-Illustrate where/how these equivalent functions are found in TypeScript
+No FromRobot -> have to `const yourFakeBaseClient = new VIAM.BaseClient(robot, 'your-fake-base');`
 
 {{% /tab %}}
 {{< /tabs >}}

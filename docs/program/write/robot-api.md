@@ -1,6 +1,6 @@
 ---
-title: "Using the Robot API Methods with Viam's SDKs"
-linkTitle: "The Robot API"
+title: "Robot API Methods with Viam's SDKs"
+linkTitle: "For the Robot"
 weight: 20
 type: "docs"
 description: "Using the built-in Robot API methods with Viam's SDKs."
@@ -8,9 +8,10 @@ icon: "/services/img/icons/sdk.svg"
 tags: ["sdk"]
 ---
 
-Introduction --> why does this exist and why would you directly call this class?
-Instantiation in Code Sample
-What Is a "RobotClient"
+The Robot API is the designated interface for a robot, the root of all robotic parts.
+
+To interact with the Robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
+This page documents how to use the methods the `RobotClient` provides for the Robot API across Viam's SDKs.
 
 ## DiscoverComponents
 
@@ -25,10 +26,10 @@ Get a list of discovered component configurations.
 
 **Returns:**
 
-- (List [viam.proto.robot.Discovery](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Discovery)): List of discovered component configurations.
+- [(List[viam.proto.robot.Discovery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Discovery): List of discovered component configurations.
 
 ``` python
-discover_components(queries: List[viam.proto.robot.DiscoveryQuery])→ List[viam.proto.robot.Discovery]
+component_configs = robot.discover_components(queries)
 ```
 
 {{% /tab %}}
@@ -47,7 +48,7 @@ discover_components(queries: List[viam.proto.robot.DiscoveryQuery])→ List[viam
 ```go
 // TODO: setting this up will be a little bit difficult: see https://github.com/search?q=repo%3Aviamrobotics%2Frdk%20DiscoveryQuery&type=code
 // DiscoverComponents returns discovered component configurations.
-robot.DiscoverComponents(ctx.Background, qs)
+component_configs, err := robot.DiscoverComponents(ctx.Background(), qs)
 ```
 
 {{% /tab %}}
@@ -63,63 +64,7 @@ robot.DiscoverComponents(ctx.Background, qs)
 
 ```typescript
 // Get the list of discovered component configurations.
-discoverComponents(queries: DiscoveryQuery[]): Promise<Discovery[]>
-```
-
-[Typescript SDK](https://ts.viam.dev/classes/RobotClient.html)
-
-{{% /tab %}}
-{{< /tabs >}}
-
-## ResourceNames
-
-Get a list of all known resource names.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [(List[viam.proto.common.ResourceName])]():
-
-``` python
-property resource_names: List[viam.proto.common.ResourceName]
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [([]resource.Name)]():
-
-```go
-// ResourceNames returns a list of all known resource names.
-ResourceNames() []resource.Name
-```
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [(Promise<commonApi.ResourceName.AsObject[]>)]():
-
-```typescript
-// Get a list of all resources on the robot.
-resourceNames(): Promise<commonApi.ResourceName.AsObject[]>
+const componentConfigs = await robot.discoverComponents(queries)
 ```
 
 [Typescript SDK](https://ts.viam.dev/classes/RobotClient.html)
@@ -129,21 +74,18 @@ resourceNames(): Promise<commonApi.ResourceName.AsObject[]>
 
 ## FrameSystemConfig
 
- returns the individual parts that make up a robot's frame system.
- TODO: this WAS documented in the Frame System API but is not at the moment, figure out the state on this!
-
-Returns a topologically sorted list of all the reference frames monitored by the frame system. Any [additional transforms](/service/frame-system/#additional-transforms) are also merged into the tree, sorted, and returned.
+Get the configuration of the Frame System of a given robot.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `additional_transforms` (Optional[List[[viam.proto.common.Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](#additional-transforms).
+- `additional_transforms` [(Optional[List[viam.proto.common.Transform]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): A list of [additional transforms](/services/frame-system/#additional-transforms).
 
 **Returns:**
 
-- `frame_system` (List[[viam.proto.robot.FrameSystemConfig](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig)]): The configuration of a given robot’s frame system.
+- `frame_system` [(List[FrameSystemConfig])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig): The configuration of a given robot’s frame system.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
 
@@ -158,15 +100,14 @@ print(f"Frame System Configuration: {frame_system}")
 
 **Parameters:**
 
-- `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `additionalTransforms` (Optional[[referenceframe.LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#additional-transforms).
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
 **Returns:**
 
-- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- `framesystemparts` [(`framesystemparts.Parts`)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): The individual parts that make up a robot's frame system.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given robot’s frame system.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Print the Frame System configuration
@@ -179,26 +120,305 @@ fmt.Println(frameSystem)
 
 **Parameters:**
 
-- `transforms` [(commonApi.Transform[])](https://ts.viam.dev/classes/commonApi.Transform.html): A list of [additional transforms](/services/frame-system/#additional-transforms).
+- `transforms` [(Transform[])](https://ts.viam.dev/classes/commonApi.Transform.html): A list of [additional transforms](/services/frame-system/#additional-transforms).
 
 **Returns:**
 
-- [(Promise<FrameSystemConfig[]>)](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html): The individual parts that make up a robot's frame system.
+- [(FrameSystemConfig[])](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html): The individual parts that make up a robot's frame system.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```typescript {class="line-numbers linkable-line-numbers"}
-// Print the Frame System configuration
-frameSystem = robot.frameSystemConfig(transforms)
-// fmt.Println(frameSystem)
+// Get the Frame System configuration
+const frameSystemConfig = await robot.frameSystemConfig(transforms)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Status
+
+Get the status of the robot’s components. You can optionally provide a list of ResourceNames for which you want statuses.
+If no names are passed in, return all statuses.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `resourceNames` [(Optional[List[viam.proto.common.ResourceName]])](https://docs.python.org/library/typing.html#typing.Optional): An optional list of ResourceNames for components you want the status of.
+If no names are passed in, all resource statuses are returned.
+
+**Returns:**
+
+- [(List[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Status of each resource.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_status).
+
+```python {class="line-numbers linkable-line-numbers"}
+# Get the status of the resources on the robot.
+statuses = await robot.get_status()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `resourceNames` [([]resource.Name)](): An optional list of ResourceNames for components you want the status of.
+If no names are passed in, all resource statuses are returned.
+
+**Returns:**
+
+- [([]Status)](): Status of each resource.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+```go {class="line-numbers linkable-line-numbers"}
+// Get the status of the resources on the robot.
+status, err = robot.Status(ctx.Background())
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `resourceNames` [(commonApi.ResourceName[])](https://ts.viam.dev/classes/commonApi.ResourceName.html): An optional list of ResourceNames for components you want the status of. If no names are passed in, all resource statuses are returned.
+
+**Returns:**
+
+- [(robotApi.Status[])](https://ts.viam.dev/classes/robotApi.Status.html): Status of each resource.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPCD).
+
+```typescript {class="line-numbers linkable-line-numbers"}
+// Get the status of the resources on the robot.
+const status = await robot.getStatus()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+<!-- ## Close
+
+PYTHON: close() // Cleanly close the underlying connections and stop any periodic tasks
+GO:
+    // Close attempts to cleanly close down all constituent parts of the robot.
+    Close(ctx context.Context) error -->
+
+## StopAll
+
+Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Dict[viam.proto.common.ResourceName, Dict[str, Any]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): Any extra parameters to pass to the resources’ stop methods, keyed on each resource’s [`ResourceName`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName).
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.stop_all).
+
+```python {class="line-numbers linkable-line-numbers"}
+# Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+await robot.stop_all()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[resource.Name]map[string]interface{})](https://pkg.go.dev/go.viam.com/rdk/resource#Name): Any extra parameters to pass to the resources’ stop methods, keyed on each resource’s [`Name`](https://pkg.go.dev/go.viam.com/rdk/resource#Name).
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+```go {class="line-numbers linkable-line-numbers"}
+// Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+err := robot.StopAll(ctx.Background())
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#stopAll).
+
+```typescript {class="line-numbers linkable-line-numbers"}
+// Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+await robot.stopAll()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## ResourceNames
+
+Get a list of all known resource names connected to this robot.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(List[viam.proto.common.ResourceName])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): List of all known resource names. A property of a [RobotClient](https://python.viam.dev/autoapi/viam/robot/client/index.html)
+
+``` python
+resource_names = robot.resource_names
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk@v0.2.47/resource#Name): List of all known resource names.
+
+```go
+resource_names = robot.ResourceNames()
+```
+
+[Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot#Robot)
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(ResourceName.AsObject[])](https://ts.viam.dev/modules/commonApi.ResourceName-1.html): List of all known resource names.s
+
+```typescript
+// Get a list of all resources on the robot.
+const resource_names = await robot.resourceNames()
+```
+
+[Typescript SDK](https://ts.viam.dev/classes/RobotClient.html)
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## ResourceByName
+
+{{% alert title="Note" color="note" %}}
+This method is not implemented with the Viam Python or TypeScript SDKs.
+{{% /alert %}}
+
+Get a resource by [`resource.Name`](https://pkg.go.dev/go.viam.com/rdk@v0.2.48/resource#Name).
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `name` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk@v0.2.48/resource#Name): Struct representing a resource's ID, with API triplet, remote address, and resource name fields.
+
+**Returns:**
+
+- [(resource.Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.2.48/resource#Resource): The desired resource.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+```go {class="line-numbers linkable-line-numbers"}
+// Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+err := robot.StopAll(ctx.Background())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## RemoteByName
+
+{{% alert title="Note" color="note" %}}
+This method is not implemented with the Viam Python or TypeScript SDKs.
+{{% /alert %}}
+
+Get a remote robot by name.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `name` [(string)](https://pkg.go.dev/builtin#string): The name of the remote robot.
+
+**Returns:**
+
+- [(Robot)](https://pkg.go.dev/go.viam.com/rdk/robot#Robot): The remote robot with this `name`.
+- [(bool)](https://pkg.go.dev/builtin#bool): If a remote robot was found with this name.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+```go {class="line-numbers linkable-line-numbers"}
+// Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+robot2, ok := robot.RemoteByName("my-robot-remote")
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## RemoteNames
+
+{{% alert title="Note" color="note" %}}
+This method is not implemented with the Viam Python or TypeScript SDKs.
+{{% /alert %}}
+
+Get a resource by [`resource.Name`](https://pkg.go.dev/go.viam.com/rdk@v0.2.48/resource#Name).
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `name` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk@v0.2.48/resource#Name): Struct representing a resource's ID, with API triplet, remote address, and resource name fields.
+
+**Returns:**
+
+- [(resource.Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.2.48/resource#Resource): The desired resource.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+```go {class="line-numbers linkable-line-numbers"}
+// Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+err := robot.StopAll(ctx.Background())
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
 ## TransformPose
-
-THIS IS IN THE FRAME SYSTEM API CURRENTLY!
 
 Transform a given source pose from the reference frame to a new specified destination reference frame.
 For example, if a 3D camera observes a point in space you can use this method to calculate where that point is relative to another object.
@@ -209,12 +429,12 @@ For example, if a 3D camera observes a point in space you can use this method to
 **Parameters:**
 
 - `query` [(`PoseInFrame`)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose that should be transformed.
-- `destination` (str): The name of the reference frame to transform the given pose to.
-- `additional_transforms` (Optional[List[[Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](/components/frame-service/#additional-transforms).
+- `destination` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the reference frame to transform the given pose to.
+- `additional_transforms` [Optional[List[Transform]]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): A list of [additional transforms](/components/frame-service/#additional-transforms).
 
 **Returns:**
 
-- `PoseInFrame` [(PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): Transformed pose in destination reference frame.
+- [(PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): Transformed pose in destination reference frame.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
 
@@ -235,15 +455,15 @@ print("Orientation: (o_x:", transformed_pif.pose.o_x,
 
 **Parameters:**
 
-- `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(`PoseInFrame`)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
-- `dst` [`string`](): The name of the reference frame to transform the given pose to.
-- `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](/components/frame-service/#additional-transforms).
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `pose` [(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
+- `dst` [(string)](https://pkg.go.dev/builtin#string): The name of the reference frame to transform the given pose to.
+- `additionalTransforms` [(Optional[LinkInFrame])]((https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)): A list of [additional transforms](/components/frame-service/#additional-transforms).
 
 **Returns:**
 
-- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- `PoseInFrame` [(referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in destination reference frame.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in destination reference frame.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot).
 
@@ -266,18 +486,17 @@ fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientatio
 **Parameters:**
 
 - `source` [(commonApi.PoseInFrame)](https://ts.viam.dev/classes/RobotClient.html#transformPose): The pose that should be transformed.
-- `destination` [(string)](): The name of the reference frame to transform the given pose to.
+- `destination` [(string)](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html): The name of the reference frame to transform the given pose to.
 - `supplementalTransforms` [(commonApi.Transform[])](https://ts.viam.dev/classes/commonApi.Transform.html): A list of [additional transforms](/components/frame-service/#additional-transforms).
 
 **Returns:**
 
-- [(Promise<commonApi.PoseInFrame>)](https://ts.viam.dev/classes/commonApi.PoseInFrame.html): Transformed pose in destination reference frame.
+- [(PoseInFrame)](https://ts.viam.dev/classes/commonApi.PoseInFrame.html): Transformed pose in destination reference frame.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPose).
 
 ```typescript {class="line-numbers linkable-line-numbers"}
-// TODO: Write this out properly
-frameSystem = robot.transformPose(transforms)
+const transformedPoseInFrame = await robot.transformPose(transforms)
 
 ```
 
@@ -288,37 +507,30 @@ frameSystem = robot.transformPose(transforms)
 
 Transform the pointcloud to the desired frame in the robot's Frame System.
 
-PYTHON: transform_point_cloud()
-GO:
-    // TransformPointCloud will transform the pointcloud to the desired frame in the robot's frame system.
-    // Do not move the robot between the generation of the initial pointcloud and the receipt
-    // of the transformed pointcloud because that will make the transformations inaccurate.
-    TransformPointCloud(ctx context.Context, srcpc pointcloud.PointCloud, srcName, dstName string) (pointcloud.PointCloud, error)
+{{% alert title="Note" color="note" %}}
+This method is not implemented with the Viam Python SDK.
+{{% /alert %}}
 
 {{< tabs >}}
-{{% tab name="Python" %}}
-
-raise NotImplementedError()
-
-{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
 
-- `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `srcpc` [(`PointCloud`)](https://pkg.go.dev/go.viam.com/rdk@v0.2.46/pointcloud#PointCloud): The pointcloud that should be transformed.
-- `srcName` (string): The name of the source pointcloud's parent reference frame.
-- `dstName` (string): The name of the reference frame to transform the source pointcloud to.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `srcpc` [(PointCloud)](https://pkg.go.dev/go.viam.com/rdk@v0.2.46/pointcloud#PointCloud): The pointcloud to transformed.
+- `srcName` [(string)](https://pkg.go.dev/builtin#string): The name of the source pointcloud's parent reference frame.
+- `dstName` [(string)](https://pkg.go.dev/builtin#string): The name of the reference frame to transform the source pointcloud to.
 
 **Returns:**
 
-- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- `PoseInFrame` [(referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in destination reference frame.
+- [(PointCloud)](https://pkg.go.dev/go.viam.com/rdk@v0.2.46/pointcloud#PointCloud): Transformed pointcloud in destination reference frame.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 ```go {class="line-numbers linkable-line-numbers"}
-
+// Transform the pointcloud to the desired frame in the robot's Frame System.
+transformed_pcd, err = robot.TransformPointCloud(ctx.Background(), source_pointcloud, "source_frame", "destination_frame")
 ```
 
 {{% /tab %}}
@@ -326,167 +538,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `source` [(commonApi.PoseInFrame)](https://ts.viam.dev/classes/RobotClient.html#transformPose): The pose that should be transformed.
-- `destination` [(string)](): The name of the reference frame to transform the given pose to.
+- `pointCloudPCD` [(Uint8Array)](https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_es5_d_.uint8array.html): The pointcloud to transform.
+Should be in the [PCD format encoded into bytes](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
+- `source` [(string)](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html): The name of the reference frame of `pointCloudPCD`.
+- `destination` [(string)](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html): The name of the reference frame to transform `pointCloudPCD` to.
 - `supplementalTransforms` [(commonApi.Transform[])](https://ts.viam.dev/classes/commonApi.Transform.html): A list of [additional transforms](/components/frame-service/#additional-transforms).
 
 **Returns:**
 
-- [(commonApi.PoseInFrame)](https://ts.viam.dev/classes/commonApi.PoseInFrame.html): Transformed pose in destination reference frame.
+- [(Uint8Array)](https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_es5_d_.uint8array.html): Transformed pose in destination reference frame.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPose).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPCD).
 
 ```typescript {class="line-numbers linkable-line-numbers"}
-
+// Transform the pointcloud to the desired frame in the robot's Frame System.
+const transformed_pcd = await robot.transformPCD(source_pointcloud, "source_frame", "destination_frame")
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Status
-
-PYTHON: get_status(components: Optional[List[viam.proto.common.ResourceName]] = None)
-
-Get the status of the robot’s components. You can optionally provide a list of ResourceName for which you want statuses.
-
-Parameters
-: components (Optional[List[viam.proto.common.ResourceName]]) – Optional list of ResourceName for components you want statuses.
-
-GO:
-    // Status takes a list of resource names and returns their corresponding statuses. If no names are passed in, return all statuses.
-    Status(ctx context.Context, resourceNames []resource.Name) ([]Status, error)
-
-## Close
-
-PYTHON: close() // Cleanly close the underlying connections and stop any periodic tasks
-GO:
-    // Close attempts to cleanly close down all constituent parts of the robot.
-    Close(ctx context.Context) error
-
-## StopAll
-
-PYTHON: stop_all(extra: Dict[viam.proto.common.ResourceName, Dict[str, Any]] = {})
-GO:
-// StopAll cancels all current and outstanding operations for the robot and stops all actuators and movement
-StopAll(ctx context.Context, extra map[resource.Name]map[string]interface{}) error
-
-## RemoteByName
-
-PYTHON: ?
-GO: // RemoteByName returns a remote robot by name.
-    RemoteByName(name string) (Robot, bool)
-
-## ResourceByName
-
-PYTHON: ?
-GO: // ResourceByName returns a resource by name
-    ResourceByName(name resource.Name) (resource.Resource, error)
-
-## RemoteNames
-
-PYTHON: ?
-GO: // RemoteNames returns the names of all known remote robots.
-    RemoteNames() []string
-
-## PackageManager
-
-PYTHON: ?
-GO: // PackageManager returns the package manager the robot is using.
-    PackageManager() packages.Manager
-
-## Logger
-
-PYTHON: ?
-GO: // Logger returns the logger the robot is using.
-    Logger() golog.Logger
-
-## ResourceRPCAPIs
-
-PYTHON: ?
-GO: // ResourceRPCAPIs returns a list of all known resource RPC APIs.
-    ResourceRPCAPIs() []resource.RPCAPI
-
-## ProcessManager
-
-PYTHON: ?
-GO: // ProcessManager returns the process manager for the robot.
-    ProcessManager() pexec.ProcessManager
-
-## OperationManager
-
-GO: // OperationManager returns the operation manager the robot is using.
-    OperationManager() *operation.Manager
-
-PYTHON: ROBOT.CLIENT
-async get_operations()→ List[viam.proto.robot.Operation]
-async cancel_operation(id: str)
-async block_for_operation(id: str)
-
-TS:
-getOperations(): Promise<Operation[]>
-cancelOperation(id: string): Promise<void>
-blockForOperation(id: string): Promise<void>
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [(List[viam.proto.common.ResourceName])]():
-
-``` python
-property resource_names: List[viam.proto.common.ResourceName]
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [([]resource.Name)]():
-
-```go
-// ResourceNames returns a list of all known resource names.
-ResourceNames() []resource.Name
-```
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [(commonApi.ResourceName.AsObject[])]():
-
-```typescript
-// Get a list of all resources on the robot.
-resourceNames(): Promise<commonApi.ResourceName.AsObject[]>
-```
-
-[Typescript SDK](https://ts.viam.dev/classes/RobotClient.html)
-
-{{% /tab %}}
-{{< /tabs >}}
-
-## SessionManager
-
-GO: // SessionManager returns the session manager the robot is using.
-    SessionManager() session.Manager
-
-PYTHON ROBOT.SERVICE:
-async GetSessions(stream: grpclib.server.Stream[viam.proto.robot.GetSessionsRequest, viam.proto.robot.GetSessionsResponse])→ None[source
-
-asyncStartSession(stream: grpclib.server.Stream[viam.proto.robot.StartSessionRequest, viam.proto.robot.StartSessionResponse])→ None[
-
-asyncSendSessionHeartbeat(stream: grpclib.server.Stream[viam.proto.robot.SendSessionHeartbeatRequest, viam.proto.robot.SendSessionHeartbeatResponse])→ None
