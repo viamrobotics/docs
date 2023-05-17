@@ -22,18 +22,17 @@ Also pay attention to your surroundings, double-check your code for correctness,
 
 The following instructions show you how to interact with an [arm component](/components/arm/), help you understand how an arm describes its state, and assist you in issuing movement commands to your robotic arm.
 
-{{< alert title="Note" color="note" >}}
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
-The [full tutorial code](#full-tutorial-code) is available at the end of this page.
-{{< /alert >}}
-
 <div class="td-max-width-on-larger-screens">
   <img src="../../img/motion/access_01_xarm6.png" class="alignright" alt="A picture of the UFACTORY xArm 6." style="max-width: 400px">
 </div>
 
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+
 If you do not have a robotic arm of your own, the [fake arm component page](/components/arm/fake/) shows how you can set up a virtual robotic arm with the same kinematic model as a real robotic arm.
 Configure it with `"arm-model": "xArm6"` in its `attributes`.
 You can then continue through the code examples in this tutorial without making any changes (and without needing to buy or build an expensive robot arm)!
+
+The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 
 ## Prerequisites
 
@@ -192,7 +191,8 @@ Each individual value corresponds to the current position of a particular joint 
 {{< /tabs >}}
 
 Both representations of an arm's state are important.
-Sometimes you may wish to direct an arm in terms of joint positions, sometimes you may need to describe the position of another object with respect to the end of the robot arm.
+Sometimes you may wish to direct an arm in terms of joint positions.
+Other times you may need to describe the position of another object with respect to the end of the robot arm.
 There is a mathematical relationship that allows you to convert between these two representations, known as the **forward and inverse kinematics**, which is foundational to complex robotic motion.
 We will not cover forward and inverse kinematics in this tutorial, but resources for further reading on these topics are linked in the [**Next Steps**](#next-steps-and-references) section.
 
@@ -213,7 +213,7 @@ Executing code presented after this point *will* induce motion in a connected ro
 {{< tabs >}}
 {{% tab name="Python" %}}
 Add `from viam.proto.component.arm import JointPositions` to your import list to be able to assign values to a `JointPositions` data structure.
-See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
+See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Command a joint position move: small adjustment to the last joint
@@ -226,7 +226,7 @@ await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 You must import an additional Go library to access the data structure that Viam uses to encode joint positions, which is shown next.
 
 Add `armapi "go.viam.com/api/component/arm/v1"` to your import list to be able to assign values to an `armapi.JointPositions` data structure.
-See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
+See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Command a joint position move: small adjustment to the last joint
@@ -297,7 +297,7 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 
 ## Next Steps and References
 
-If you would like to continue onto working with Viam's Motion service, go to the next tutorial in this series:
+If you would like to continue onto working with Viam's Motion Service, go to the next tutorial in this series:
 
 {{< cards >}}
   {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}

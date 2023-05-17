@@ -55,7 +55,7 @@ Supported arm models include:
 | [`fake`](fake) | A model used for testing, with no physical hardware. |
 | [`xArm6`](xarm6) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
 | [`xArm7`](xarm7) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
-| [`xArmLite`](xarmlite) | [UFACTORY xArm 5 Lite](https://www.ufactory.cc/product-page/ufactory-xarm-5-lite/) |
+| [`xArmLite`](xarmlite) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) |
 | `eva` | [Automata Eva](https://automata.tech/products/hardware/about-eva/) |
 | `ur5e` | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot/) |
 | `yahboom-dofbot` | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
@@ -512,7 +512,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+You can also ask questions on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next Steps
 
