@@ -418,7 +418,7 @@ orientation = await my_movement_sensor.get_orientation()
 
 **Returns:**
 
-- [(Orientation)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Orientation): Orientation is an interface used to express the different parameterizations of the orientation of the movement sensor in 3D Euclidean space.
+- [(spatialmath.Orientation)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Orientation): Orientation is an interface used to express the different parameterizations of the orientation of the movement sensor in 3D Euclidean space.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
