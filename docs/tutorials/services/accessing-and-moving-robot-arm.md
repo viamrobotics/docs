@@ -22,18 +22,17 @@ Also pay attention to your surroundings, double-check your code for correctness,
 
 The following instructions show you how to interact with an [arm component](/components/arm/), help you understand how an arm describes its state, and assist you in issuing movement commands to your robotic arm.
 
-{{< alert title="Note" color="note" >}}
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
-The [full tutorial code](#full-tutorial-code) is available at the end of this page.
-{{< /alert >}}
-
 <div class="td-max-width-on-larger-screens">
   <img src="../../img/motion/access_01_xarm6.png" class="alignright" alt="A picture of the UFACTORY xArm 6." style="max-width: 400px">
 </div>
 
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+
 If you do not have a robotic arm of your own, the [fake arm component page](/components/arm/fake/) shows how you can set up a virtual robotic arm with the same kinematic model as a real robotic arm.
 Configure it with `"arm-model": "xArm6"` in its `attributes`.
 You can then continue through the code examples in this tutorial without making any changes (and without needing to buy or build an expensive robot arm)!
+
+The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 
 ## Prerequisites
 
@@ -298,7 +297,7 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 
 ## Next Steps and References
 
-If you would like to continue onto working with Viam's Motion service, go to the next tutorial in this series:
+If you would like to continue onto working with Viam's Motion Service, go to the next tutorial in this series:
 
 {{< cards >}}
   {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
