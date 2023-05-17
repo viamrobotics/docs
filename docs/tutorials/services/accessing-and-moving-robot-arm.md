@@ -213,7 +213,7 @@ Executing code presented after this point *will* induce motion in a connected ro
 {{< tabs >}}
 {{% tab name="Python" %}}
 Add `from viam.proto.component.arm import JointPositions` to your import list to be able to assign values to a `JointPositions` data structure.
-See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
+See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Command a joint position move: small adjustment to the last joint
@@ -226,7 +226,7 @@ await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 You must import an additional Go library to access the data structure that Viam uses to encode joint positions, which is shown next.
 
 Add `armapi "go.viam.com/api/component/arm/v1"` to your import list to be able to assign values to an `armapi.JointPositions` data structure.
-See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
+See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Command a joint position move: small adjustment to the last joint
