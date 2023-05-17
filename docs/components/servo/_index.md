@@ -346,4 +346,5 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 {{< cards >}}
   {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
   {{% card link="/tutorials/projects/integrating-viam-with-openai" size="small" %}}
+  {{% card link="/tutorials/projects/guardian" size="small" %}}
 {{< /cards >}}

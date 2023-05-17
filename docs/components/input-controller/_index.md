@@ -143,7 +143,7 @@ async def main():
 
     # Run the handleController function.
     await handleController(my_controller)
-    
+
     # ... < INSERT ANY OTHER CODE FOR MAIN FUNCTION >
 ```
 
@@ -943,11 +943,6 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 {{% alert title="Note" color="note" %}}
 Access the complete repository for the Python example on [Github](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
 {{% /alert %}}
-
-## SDK Documentation
-
-- [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/input/index.html)
-- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/input)
 
 ## Troubleshooting
 

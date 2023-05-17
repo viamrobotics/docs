@@ -314,3 +314,15 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/api/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+
+## Next Steps
+
+{{< cards >}}
+  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
+{{< /cards >}}
