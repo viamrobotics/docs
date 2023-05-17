@@ -98,7 +98,7 @@ By default, motion is unconstrained with the exception of obstacle avoidance.
 
 **Returns:**
 
-- [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Whether the move was successful.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move).
 
@@ -227,7 +227,7 @@ If you need collision checking and obstacle avoidance, use [`Move`](#move).
 
 **Returns:**
 
-- [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Whether the move was successful.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_single_component).
 

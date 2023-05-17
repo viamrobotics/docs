@@ -98,14 +98,14 @@ Absolute encoders return degrees.
 
 **Parameters:**
 
-- `position_type` (Optional[PositionType.ValueType]): Specify whether to get the current position in ticks (`encoder.PositionTypeTicks`) or in degrees (`encoder.PositionTypeDegrees`).
-  If you are not sure which position type your encoder supports but it is a built-in Viam-supported model, you can leave this parameter unspecified (`encoder.PositionTypeUnspecified`) or empty and it will default to the correct position type.
+- `position_type` [(Optional[PositionType.ValueType])](https://docs.python.org/library/typing.html#typing.Optional): Specify whether to get the current position in ticks (`encoder.PositionTypeTicks`) or in degrees (`encoder.PositionTypeDegrees`).
+If you are not sure which position type your encoder supports but it is a built-in Viam-supported model, you can leave this parameter unspecified (`encoder.PositionTypeUnspecified`) or empty and it will default to the correct position type.
 - `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Tuple[[float](https://docs.python.org/3/library/functions.html#float), PositionType.ValueType]): The current position in ticks or degrees, and the type of position the encoder returns (ticks or degrees).
+- [(Tuple[float, PositionType.ValueType])]((https://docs.python.org/3/library/functions.html#float)): The current position in ticks or degrees, and the type of position the encoder returns (ticks or degrees).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.get_position).
 
@@ -213,7 +213,7 @@ Get a list of all the position types that are supported by a given encoder.
 
 **Returns:**
 
-- ([Properties](https://python.viam.dev/autoapi/viam/components/encoder/encoder/index.html#viam.components.encoder.encoder.Encoder.Properties)): The position types supported by the encoder model.
+- [(Properties)](https://python.viam.dev/autoapi/viam/components/encoder/encoder/index.html#viam.components.encoder.encoder.Encoder.Properties): The position types supported by the encoder model.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/index.html#viam.components.encoder.Encoder.get_properties).
 
@@ -234,7 +234,7 @@ properties = await my_encoder.get_properties()
 
 **Returns:**
 
-- (map[[Feature](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Feature)] [bool](https://pkg.go.dev/builtin#bool)): The position types supported by the encoder model.
+- [(map[Feature]bool)]((https://pkg.go.dev/go.viam.com/rdk/components/encoder#Feature)): The position types supported by the encoder model.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
@@ -243,7 +243,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myEncoder, err := encoder.FromRobot(robot, "my_encoder")
 
 // Get whether the encoder returns position in ticks or degrees.
-properties, _ := myEncoder.Properties(context.Background(), nil)
+properties, err := myEncoder.Properties(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -259,11 +259,11 @@ If you are [implementing your own encoder](../../program/extend/) and add featur
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_encoder = Encoder.from_robot(robot=robot, name='my_encoder')
@@ -282,13 +282,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map[string]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map[string]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myEncoder, err := encoder.FromRobot(robot, "my_encoder")

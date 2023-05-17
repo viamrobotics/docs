@@ -224,7 +224,7 @@ Returns whether the gripper is actively moving (or attempting to move) under its
 
 **Returns:**
 
-- [(bool)](https://docs.python.org/3/library/functions.html#bool): True if the gripper is currently moving; false if not.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): True if the gripper is currently moving; false if not.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/index.html#viam.components.gripper.Gripper.is_moving).
 
@@ -254,7 +254,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 myGripper, err := gripper.FromRobot(robot, "my_gripper")
 
 // Check whether the gripper is currently moving.
-moving, _ := myGripper.IsMoving(context.Background())
+moving, err := myGripper.IsMoving(context.Background())
 logger.Info("Is moving?")
 logger.Info(moving)
 ```
@@ -273,11 +273,11 @@ If you are implementing your own gripper and add features that have no built-in 
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
@@ -296,13 +296,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map[string]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map[string]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myGripper, err := gripper.FromRobot(robot, "my_gripper")

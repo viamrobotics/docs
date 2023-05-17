@@ -151,7 +151,7 @@ tableOrigin := spatialmath.NewPose(
   &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
 )
 tableDims := r3.Vector{X: 2000.0, Y: 2000.0, Z: 20.0}
-tableObj, _ := spatialmath.NewBox(tableOrigin, tableDims, "table")
+tableObj, err := spatialmath.NewBox(tableOrigin, tableDims, "table")
 obstacles = append(obstacles, tableObj)
 
 // Create a WorldState that has the GeometriesInFrame included
@@ -523,7 +523,7 @@ func main() {
     &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
   )
   tableDims := r3.Vector{X: 2000.0, Y: 2000.0, Z: 20.0}
-  tableObj, _ := spatialmath.NewBox(tableOrigin, tableDims, "table")
+  tableObj, err := spatialmath.NewBox(tableOrigin, tableDims, "table")
   obstacles = append(obstacles, tableObj)
 
   // Create a WorldState that has the GeometriesInFrame included

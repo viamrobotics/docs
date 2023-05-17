@@ -244,12 +244,12 @@ print(f"Frame System Configuration: {frame_system}")
 
 **Parameters:**
 
-- `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `additionalTransforms` (Optional[[referenceframe.LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#additional-transforms).
 
 **Returns:**
 
-- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 - `framesystemparts` [(`framesystemparts.Parts`)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): The individual parts that make up a robot's frame system.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
@@ -301,14 +301,14 @@ print("Orientation: (o_x:", transformed_pif.pose.o_x,
 
 **Parameters:**
 
-- `ctx` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `pose` ([[PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)]): The pose that should be transformed.
 - `dst` (string): The name of the reference frame to transform the given pose to.
 - `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#additional-transforms).
 
 **Returns:**
 
-- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 - `PoseInFrame` [(referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in destination reference frame.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot).
