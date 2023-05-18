@@ -20,24 +20,22 @@ Viam offers software development kits (SDKs) in popular languages which
 
 Use the SDK of your preferred language to write code to control your robots.
 
-Viam currently offers SDKs for the following three languages:
-
-| Python | Go | TypeScript |
+<!-- | Python | Go | TypeScript |
 | ------ | -- | ---------- |
-| https://python.viam.dev/ | https://pkg.go.dev/go.viam.com/rdk | https://ts.viam.dev/ |
+| https://python.viam.dev/ | https://pkg.go.dev/go.viam.com/rdk | https://ts.viam.dev/ | -->
 
 ## Requirements
 
-Before you get started, ensure that you:
+Before you get started, ensure that you have [installed and connected to `viam-server`](/installation/) on the computer you want to use to control a robot [(likely a single-board computer)](/components/board/#configuration) and [configured a robot](/configuration/#local-setup).
+
+The easiest way to do this is:
 
 1. Go to [app.viam.com](https://app.viam.com/).
 2. Create a new robot.
 3. Go to the **Setup** tab and follow the instructions there.
 4. [Configure](../../manage/configuration) your robot.
-<!-- TODO: above is really the most important requirement, how to separate out for non-app users? -->
 
-- TODO: Go over why you need to install these SDKs and what computer you need to have them on!
-- can help clear up the thing matt was saying about potential candidate being confused about what computer she needed to have viam-server or an SDK installed on? 
+Then, run one of the following commands in your terminal to install a Viam SDK on your development machine:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -65,15 +63,16 @@ npm install --save @viamrobotics/sdk
 
 ## Hello World: The Code Sample Tab
 
-- instructions as to how to create a file, where to save this file, what's happening in alignment with configuration etc.
+Save a program in the language of your choice that connects to your robot and uses methods built into the SDK's client API libraries to [interact with and control](/program/write/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the robot.
 
 The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
 
 These boilerplate code samples import all of the necessary libraries and set up a client connection to your {{< glossary_tooltip term_id="remote" text="remote">}} or local robot.
-These code snippets import all the necessary libraries and sets up a connection with the Viam app in the cloud.
+These code snippets import all the necessary libraries and sets up a connection with your robot in the cloud through the Viam app.
 
 Your boilerplate code sample should look similar to this:
 
+{{%expand "Click this to see example boilerplate code from the Code Sample tab" %}}
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -198,9 +197,18 @@ main();
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% /expand%}}
 
 Save this file on your development machine with the file type of your preferred SDK.
-Edit the boilerplate code by [adding control logic](/program/write/)) to make a client application that connects to your robot controls it in the way you want when the program [is executed](/program/run/).
+
+Edit the boilerplate code by [adding control logic](/program/write/) to make a client application that connects to your robot controls it in the way you want when the program [is executed](/program/run/).
+
+Then, execute this program on any computing machine as long as:
+
+1. You have installed the appropriate SDK and language on this machine.
+2. The program establishes a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or locally (should be the same machine as is running `viam-server`).
+
+See [Run SDK Code](/program/run) for more information on executing programs to control your Viam-connect robot.
 
 ### `import`
 

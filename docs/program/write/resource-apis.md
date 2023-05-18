@@ -8,7 +8,7 @@ icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 ---
 
-These methods provide a  wrapper for your gRPC client requests to the endpoints the resource API provides for communication between your application and the robot server (`viam-server`) instance on the computer controlling your robot, providing you a convenient interface for access information about and controlling the resources you have [configured](/manage/configuration/) on your robot programmatically.
+These methods provide a  wrapper for your gRPC client requests to the endpoints the resource API provides for communication between your application and the robot server (`viam-server`) instance on the computer controlling your robot, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/manage/configuration/) on your robot programmatically.
 
 ## Resource API
 
@@ -17,30 +17,69 @@ The Resource API is the base set of methods that all Resource APIs provide for u
 In the Python SDK this is a class that provides base requirements for all child resources: [the `ResourceBase` class](https://python.viam.dev/autoapi/viam/resource/base/index.html). 
 In the Go and TypeScript SDKs, each resource implements these methods within its own interface.
 
-Example usage:
-
 ### FromRobot
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-`from_robot(robot: viam.robot.client.RobotClient, name: str)→ typing_extensions.Self[source][]`
-
 **Parameters:**
 
-- `queries` [(List [viam.proto.robot.DiscoveryQuery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery)
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The `name` of the resource.
+
+**Returns:**
+
+- `robot` [(RobotClient)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): The robot.
+- `name` [(str)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): The "name" of the resource.
+
+``` python
+my_arm = Arm.from_robot(robot, "my_arm")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/resource/base/index.html).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Implementation is defined on each component interface.
+<!-- This function is implemented for each resource API in the same pattern.
 
-`arm.FromRobot[T resource.Resource](robot Robot, name resource.Name) (T, error)`
+For example, `FromRobot` is defined on the interface for a resource of [type `arm`](https://pkg.go.dev/go.viam.com/rdk/components/arm) as follows: -->
+
+**Parameters:**
+
+- `r` [(RobotClient)](https://pkg.go.dev/go.viam.com/rdk@v0.2.48/robot#Robot): The robot.
+- `name` [(string)](https://pkg.go.dev/builtin#string): The "name" of the resource.
+
+**Returns:**
+
+- [(Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.2.47/resource#Name): Your named resource. For example, an [Arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+```go
+my_arm = arm.FromRobot(robot, "my_arm")
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#FromRobot).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-No FromRobot -> have to `const yourFakeBaseClient = new VIAM.BaseClient(robot, 'your-fake-base');`
+In the TypeScript SDK, the equivalent of the `FromRobot` is defined in each resource API's client constructor.
+
+For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient.html) and name `my_arm` belonging to a robot `robot` is instantiated as follows:
+
+**Parameters:**
+
+- `client` [(RobotClient)](https://ts.viam.dev/classes/RobotClient.html): The robot.
+- `name` [(string)](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html): The `name` of the resource.
+
+**Returns:**
+
+- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): Your named resource. For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
+
+```typescript
+const myArmClient = new VIAM.ArmClient(robot, "my_arm");
+```
+
+For more information, see the [Typescript SDK Docs](https://ts.viam.dev/interfaces/Arm.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -137,7 +176,7 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/interfac
 {{% /tab %}}
 {{< /tabs >}}
 
-### GetOperation
+<!-- ### GetOperation
 
 Get the Operation associated with the currently running function.
 
@@ -157,11 +196,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 
 For the Go and TypeScript SDK, see the [Robot API's `GetOperations` method documentation](/program/write/robot-api/).
-{{< /tabs >}}
+{{< /tabs >}} -->
 
 ## Component APIs
 
-INTRODUCTION: What do these do?
+These APIs provide interfaces for controlling and getting information from various components of a robot.
+Built-in API methods are defined for every model of each component type.
+<!-- TODO: add glossary tooltip here or generally something to make what model means more clear?  -->
+Documentation on using these methods in your SDK code is found on each [component page](/components) as follows:
 
 ### Arm
 
