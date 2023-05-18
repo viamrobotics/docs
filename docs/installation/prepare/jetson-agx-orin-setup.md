@@ -42,7 +42,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 **Initial Setup in Headless Mode:**
 
 1. A [Jetson AGX Orin Developer Kit](https://www.arrow.com/en/products/945-13730-0000-000/nvidia)
-2. An internet-connected Windows, Linux, or Mac computer
+2. An internet-connected Windows, Linux, or macOS computer
 3. A way to connect the computer to the Orin (for example, the USB Type-A to USB Type-C Cable included with the AGX Orin Developer Kit)
 
    (Optional) If your computer doesn't have a USB Type-A port, you may need to attach a [USB-C hub](https://toomanyadapters.com/best-usb-hubs/) or similar device to your computer to connect to the Orin

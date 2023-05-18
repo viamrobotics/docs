@@ -152,7 +152,7 @@ func main() {
 {{% tab name="TypeScript" %}}
 
 {{< alert title="Note" color="note" >}}
-The TypeScript SDK currently only support building web browser apps.
+The TypeScript SDK currently only supports building web browser apps.
 {{< /alert >}}
 
 ```ts {class="line-numbers linkable-line-numbers"}

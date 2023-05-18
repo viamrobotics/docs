@@ -57,7 +57,7 @@ Lastly, if all else fails, or you ever encounter any issues, you can simply just
 There is typically no need to reinstall the system service (unless the new version includes an update to the service file), but there is no harm in doing so either.
 
 {{% /tab %}}
-{{% tab name=Mac %}}
+{{% tab name=macOS %}}
 
 You can upgrade to the latest *stable* version of `viam-server` using Homebrew.
 

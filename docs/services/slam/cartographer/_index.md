@@ -33,7 +33,7 @@ sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
 
 {{% /tab %}}
-{{% tab name="MacOS" %}}
+{{% tab name="macOS" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews && brew install cartographer-module
@@ -82,7 +82,7 @@ Paste the following into the **Attributes** field of your new service:
 
 {{% /tab %}}
 
-{{% tab name="MacOS" %}}
+{{% tab name="macOS" %}}
 
 ```json
 {
@@ -101,13 +101,13 @@ Paste the following into the **Attributes** field of your new service:
 Click on the **Modules** subtab. Add the cartographer module with a name of your choice and an executable path that points to the location of your installed `cartographer-module` binary:
 
 {{< tabs name="Add Cartographer Service Module">}}
-{{% tab name="Linux/MacOS x86_64" %}}
+{{% tab name="Linux/macOS x86_64" %}}
 
 ![adding cartographer module linux](../img/run_slam/add-cartographer-module-ui-linux.png)
 
 {{% /tab %}}
 
-{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+{{% tab name="macOS ARM64 (M1 & M2)" %}}
 
 ![adding cartographer module M1 M2](../img/run_slam/add-cartographer-module-ui-M1-M2.png)
 
@@ -151,7 +151,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
 ```
 
 {{% /tab %}}
-{{% tab name="MacOS x86_64" %}}
+{{% tab name="macOS x86_64" %}}
 
 ```json
 "modules": [
@@ -180,7 +180,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
 ```
 
 {{% /tab %}}
-{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+{{% tab name="macOS ARM64 (M1 & M2)" %}}
 
 ```json
 "modules": [
@@ -316,11 +316,5 @@ The STL file for an adapter plate is available on [GitHub](https://github.com/vi
 When generating a larger map, it will take longer for Cartographer to return the desired map.
 This can result in errors or failed requests for a map, however, this will not affect the `viam-server` or `cartographer-module` process.
 Re-requesting the map can and should be successful, although there is currently a fundamental limit for the size of map that can be transmitted to the UI and this issue will become more common as you approach it.
-
-#### Dataset mode produces an error
-
-If there is a saved map in <file>data_dir/map</file> and saved data in <file>data_dir/data</file> from a previous run, then running SLAM with an existing dataset may raise an error at startup since the data has already been incorporated into the map.
-
-If that occurs, you can clear <file>data_dir/map</file> and restart the service.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
