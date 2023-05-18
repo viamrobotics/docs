@@ -24,9 +24,13 @@ The [RDK](/internals/rdk) also provides the [`GPIOPin` interface](#gpiopin-api) 
 
 ## Configuration
 
-Configure a *board* component on your robot to communicate with the other [components](/components) of the robot, signaling as overseen by a computer running `viam-server`.
+Configure a *board* component on your robot to communicate with the other [components](/components) of the robot.
+Signaling is overseen by a computer running `viam-server`.
 
-Supported board models are single-board computers (SBCs) with GPIO pins and CPUs capable of running `viam-server`, GPIO peripheral devices that must connect to external computers, or PWM peripheral devices that must connect to CPUs providing GPIO pins.
+Supported board models use various architectures:
+- Single-board computers (SBCs) with GPIO pins and CPUs capable of running `viam-server`.
+- GPIO peripheral devices that must connect to external computers.
+- PWM peripheral devices that must connect to SBCs providing GPIO pins.
 
 For model-specific configuration information, click on one of the following models:
 
