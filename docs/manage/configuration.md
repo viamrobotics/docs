@@ -170,6 +170,13 @@ Components of the same model are supported using the same low-level code.
 - `attributes`: A struct to define things like how the component is wired to the robot, its dimensions, and other specifications; attributes vary widely between models.
   See the [component documentation](/components/) for a given component type and model for more details.
 
+{{% alert title="Tip" color="tip" %}}
+
+Some optional attributes have default values.
+If you omit these attributes from your config, or if you include them but leave their values empty, RDK will apply the default values even though the default values are not shown in the config.
+
+{{% /alert %}}
+
 - `depends_on`: Any components that a given component relies upon, and that must be initialized on boot before this component is initialized.
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
