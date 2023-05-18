@@ -22,14 +22,14 @@ Get a list of discovered component configurations.
 
 **Parameters:**
 
-- `queries` (List [viam.proto.robot.DiscoveryQuery](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery)): List of tuples of API and model used to look up discovery functions.
+- `queries` [(List [viam.proto.robot.DiscoveryQuery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery): List of tuples of API and model used to look up discovery functions.
 
 **Returns:**
 
 - [(List[viam.proto.robot.Discovery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Discovery): List of discovered component configurations.
 
 ``` python
-component_configs = robot.discover_components(queries)
+component_configs = await robot.discover_components(queries)
 ```
 
 {{% /tab %}}
@@ -208,6 +208,36 @@ PYTHON: close() // Cleanly close the underlying connections and stop any periodi
 GO:
     // Close attempts to cleanly close down all constituent parts of the robot.
     Close(ctx context.Context) error -->
+
+## GetOperations
+
+Get the Operation associated with the currently running function.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `kwargs` [(Mapping[str,Any])](https://docs.python.org/3/glossary.html#term-mapping): The kwargs object containing the operation.
+
+**Returns:**
+
+- [(operations.Operation)](https://python.viam.dev/autoapi/viam/operations/index.html#viam.operations.Operation): The operation associated with the currently running function.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/resource/base/index.html).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+ - not in there
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## StopAll
 
@@ -497,8 +527,9 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ```typescript {class="line-numbers linkable-line-numbers"}
 const transformedPoseInFrame = await robot.transformPose(transforms)
-
 ```
+
+For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
 
 {{% /tab %}}
 {{< /tabs >}}
