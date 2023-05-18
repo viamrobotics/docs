@@ -34,7 +34,7 @@ To use the micro-RDK with your ESP32 board, you need to install:
 - [`cargo-generate`](#install-cargo-generate-with-cargo)
 - [`cargo-espflash`](#install-or-update-cargo-espflash)
 
-The following instructions cover installation for MacOS and Linux machines.
+The following instructions cover installation for macOS and Linux machines.
 
 ### Install ESP-IDF
 
@@ -312,7 +312,7 @@ Espressif maintains a good QEMU emulator supporting the ESP32.
 See [here](https://github.com/espressif/qemu) for more information.
 
 {{< tabs >}}
-{{% tab name="MacOS" %}}
+{{% tab name="macOS" %}}
 
 Run the following command to install the QEMU ESP32 Emulator:
 
