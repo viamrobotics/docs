@@ -8,27 +8,32 @@ icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 ---
 
-INTRODUCTION Similar info to modular resources re. resource definitions and namespacing, "what is a resource," what is an API.
-Talk about how these methods work --> providing wrapper for gRPC client request to these endpoints, which are how you access/interface with the components you have configured on your robot/`viam-server`.
+These methods provide a  wrapper for your gRPC client requests to the endpoints the resource API provides for communication between your application and the robot server (`viam-server`) instance on the computer controlling your robot, providing you a convenient interface for access information about and controlling the resources you have [configured](/manage/configuration/) on your robot programmatically.
 
-## Resource Base API
+## Resource API
 
-Describe why this is different across SDKs- python inheritance
+The Resource API is the base set of methods that all Resource APIs provide for users across the SDKs.
+
+In the Python SDK this is a class that provides base requirements for all child resources: [the `ResourceBase` class](https://python.viam.dev/autoapi/viam/resource/base/index.html). 
+In the Go and TypeScript SDKs, each resource implements these methods within its own interface.
+
+Example usage:
 
 ### FromRobot
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Python: class methods all classes that inherit from resource base class should possess.
-
 `from_robot(robot: viam.robot.client.RobotClient, name: str)→ typing_extensions.Self[source][]`
+
+**Parameters:**
+
+- `queries` [(List [viam.proto.robot.DiscoveryQuery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery)
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 Implementation is defined on each component interface.
-
 
 `arm.FromRobot[T resource.Resource](robot Robot, name resource.Name) (T, error)`
 
@@ -38,6 +43,120 @@ Implementation is defined on each component interface.
 No FromRobot -> have to `const yourFakeBaseClient = new VIAM.BaseClient(robot, 'your-fake-base');`
 
 {{% /tab %}}
+{{< /tabs >}}
+
+### Name
+
+Get the [`ResourceName`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName) of a resource with the configured `name`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The `name` of the resource.
+
+**Returns:**
+
+- `name` [(`proto.common.ResourceName`)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): The [`ResourceName`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName) of the resource, including string fields for the `namespace`, `type`, `subtype`, and `name`.
+
+``` python
+my_arm_name = my_arm.get_resource_name("my_arm")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/resource/base/index.html).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+Get the [`Name`](https://pkg.go.dev/go.viam.com/rdk/resource#Name) of the resource.
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- `name` [(Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The [`Name`](https://pkg.go.dev/go.viam.com/rdk/resource#Name) of the resource, including fields for the `API` with `Type` and `SubtypeName`, and string `Remote` and `Name`.
+
+``` go
+MyArmName := MyArm.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DoCommand
+
+DoCommand sends commands containing arbitrary data to the resource.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` [(`Mapping[str, viam.utils.ValueTypes]`)](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes): The command to execute.
+- `timeout` [(`Optional[float]`)](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(`Mapping[str, viam.utils.ValueTypes]`)](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes): The result of the executed command.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/resource/base/index.html).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map[string]interface{})](https://go.dev/blog/maps): The result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` [(StructType)](https://ts.viam.dev/types/StructType.html): The command to execute.
+
+**Returns:**
+
+- [(StructType)](https://ts.viam.dev/types/StructType.html): The result of the executed command.
+
+For more information, see the [Typescript SDK Docs](https://ts.viam.dev/interfaces/Resource.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetOperation
+
+Get the Operation associated with the currently running function.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `kwargs` [(Mapping[str,Any])](https://docs.python.org/3/glossary.html#term-mapping): The kwargs object containing the operation.
+
+**Returns:**
+
+- [(operations.Operation)](https://python.viam.dev/autoapi/viam/operations/index.html#viam.operations.Operation): The operation associated with the currently running function.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/resource/base/index.html).
+
+{{% /tab %}}
+
+For the Go and TypeScript SDK, see the [Robot API's `GetOperations` method documentation](/program/write/robot-api/).
 {{< /tabs >}}
 
 ## Component APIs
