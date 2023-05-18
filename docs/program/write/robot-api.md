@@ -13,6 +13,8 @@ The Robot API is the designated interface for a robot, the root of all robotic p
 To interact with the Robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 This page documents how to use the methods the `RobotClient` provides for the Robot API across Viam's SDKs.
 
+<!-- TODO: MUST ADD CLOSE -->
+
 ## DiscoverComponents
 
 Get a list of discovered component configurations.
@@ -22,15 +24,24 @@ Get a list of discovered component configurations.
 
 **Parameters:**
 
-- `queries` [(List [viam.proto.robot.DiscoveryQuery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery): List of tuples of API and model used to look up discovery functions.
+- `queries` [(List [viam.proto.robot.DiscoveryQuery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery): A list of [tuples of API and model](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery) that you want to retrieve the component configurations corresponding to.
 
 **Returns:**
 
-- [(List[viam.proto.robot.Discovery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Discovery): List of discovered component configurations.
+- [(List[viam.proto.robot.Discovery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Discovery): The list of discovered component configurations corresponding to `queries`.
 
 ``` python
-component_configs = await robot.discover_components(queries)
+# Define a new discovery query.
+q = robot.DiscoveryQuery(subtype=acme.API, model="some model")
+
+# Define a list of discovery queries.
+qs = [q]
+
+# Get component configurations with these queries.
+component_configs = await robot.discover_components(qs)
 ```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.discover_components)
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -38,36 +49,50 @@ component_configs = await robot.discover_components(queries)
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `qs` [([]resource.DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk@v0.2.46/resource#DiscoveryQuery): A tuple of API and model used to look up discovery functions.
+- `qs` [([]resource.DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk@v0.2.46/resource#DiscoveryQuery): A list of [tuples of API and model](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery) that you want to retrieve the component configurations corresponding to.
 
 **Returns:**
 
-- [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk@v0.2.46/resource#Discovery): The search `Query` (`qs`) and the list of discovered component configurations as an interface called `Results`.
+- [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk@v0.2.46/resource#Discovery): The search query `qs` and the corresponding list of discovered component configurations as an interface called `Results`.
+`Results` may be comprised of primitives, a list of primitives, maps with string keys (or at least can be decomposed into one), or lists of the forementioned type of maps.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go
-// TODO: setting this up will be a little bit difficult: see https://github.com/search?q=repo%3Aviamrobotics%2Frdk%20DiscoveryQuery&type=code
-// DiscoverComponents returns discovered component configurations.
+// Define a new discovery query.
+q := resource.NewDiscoveryQuery(acme.API, resource.Model{Name: "some model"})
+
+// Define a list of discovery queries.
+qs := []resource.DiscoverQuery{q}
+
+// Get component configurations with these queries.
 component_configs, err := robot.DiscoverComponents(ctx.Background(), qs)
 ```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
 
-- `queries` [(DiscoveryQuery[])](https://ts.viam.dev/classes/robotApi.DiscoveryQuery.html): List of tuples of API and model used to look up discovery functions.
+- `queries` [(DiscoveryQuery[])](https://ts.viam.dev/classes/robotApi.DiscoveryQuery.html): An array of [tuples of API and model](https://ts.viam.dev/classes/robotApi.DiscoveryQuery.html#constructor) that you want to retrieve the component configurations corresponding to.
 
 **Returns:**
 
 - [(Discovery[])](https://ts.viam.dev/classes/robotApi.Discovery.html): List of discovered component configurations.
 
 ```typescript
-// Get the list of discovered component configurations.
-const componentConfigs = await robot.discoverComponents(queries)
+// Define a new discovery query.
+const q = new proto.DiscoveryQuery(acme.API, resource.Model{Name: "some model"})
+
+// Define an array of discovery queries.
+let qs:  proto.DiscoveryQuery[] = [q]
+
+// Get the array of discovered component configurations.
+const componentConfigs = await robot.discoverComponents(queries);
 ```
 
-[Typescript SDK](https://ts.viam.dev/classes/RobotClient.html)
+For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -81,19 +106,19 @@ Get the configuration of the Frame System of a given robot.
 
 **Parameters:**
 
-- `additional_transforms` [(Optional[List[viam.proto.common.Transform]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): A list of [additional transforms](/services/frame-system/#additional-transforms).
+- `additional_transforms` [(Optional[List[viam.proto.common.Transform]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): A optional list of [additional transforms](/services/frame-system/#additional-transforms).
 
 **Returns:**
 
 - `frame_system` [(List[FrameSystemConfig])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig): The configuration of a given robot’s frame system.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get a list of each of the reference frames configured on the robot.
 frame_system = await robot.get_frame_system_config()
 print(f"Frame System Configuration: {frame_system}")
 ```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -120,17 +145,17 @@ fmt.Println(frameSystem)
 
 **Parameters:**
 
-- `transforms` [(Transform[])](https://ts.viam.dev/classes/commonApi.Transform.html): A list of [additional transforms](/services/frame-system/#additional-transforms).
+- `transforms` [(Transform[])](https://ts.viam.dev/classes/commonApi.Transform.html): An optional array of [additional transforms](/services/frame-system/#additional-transforms).
 
 **Returns:**
 
-- [(FrameSystemConfig[])](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html): The individual parts that make up a robot's frame system.
+- [(FrameSystemConfig[])](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html): An array of individual parts that make up a robot's frame system.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#frameSystemConfig).
 
 ```typescript {class="line-numbers linkable-line-numbers"}
-// Get the Frame System configuration
-const frameSystemConfig = await robot.frameSystemConfig(transforms)
+// Get the Frame System configuration.
+console.log('FrameSytemConfig:', await robot.frameSystemConfig());
 ```
 
 {{% /tab %}}
@@ -138,8 +163,9 @@ const frameSystemConfig = await robot.frameSystemConfig(transforms)
 
 ## Status
 
-Get the status of the robot’s components. You can optionally provide a list of ResourceNames for which you want statuses.
-If no names are passed in, return all statuses.
+Get the status of the resources on the robot.
+You can provide a list of ResourceNames for which you want statuses.
+If no names are passed in, the statuses of all resources are returned.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -166,7 +192,7 @@ statuses = await robot.get_status()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `resourceNames` [([]resource.Name)](): An optional list of ResourceNames for components you want the status of.
+- `resourceNames` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): An optional list of ResourceNames for components you want the status of.
 If no names are passed in, all resource statuses are returned.
 
 **Returns:**
@@ -186,17 +212,18 @@ status, err = robot.Status(ctx.Background())
 
 **Parameters:**
 
-- `resourceNames` [(commonApi.ResourceName[])](https://ts.viam.dev/classes/commonApi.ResourceName.html): An optional list of ResourceNames for components you want the status of. If no names are passed in, all resource statuses are returned.
+- `resourceNames` [(commonApi.ResourceName[])](https://ts.viam.dev/classes/commonApi.ResourceName.html): An optional array of ResourceNames for components you want the status of.
+If no names are passed in, all resource statuses are returned.
 
 **Returns:**
 
-- [(robotApi.Status[])](https://ts.viam.dev/classes/robotApi.Status.html): Status of each resource.
+- [(robotApi.Status[])](https://ts.viam.dev/classes/robotApi.Status.html): An array containing the status of each resource.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPCD).
 
 ```typescript {class="line-numbers linkable-line-numbers"}
 // Get the status of the resources on the robot.
-const status = await robot.getStatus()
+const status = await robot.getStatus();
 ```
 
 {{% /tab %}}
@@ -209,27 +236,21 @@ GO:
     // Close attempts to cleanly close down all constituent parts of the robot.
     Close(ctx context.Context) error -->
 
-## GetOperations
+<!-- ## GetOperations
 
 Get the Operation associated with the currently running function.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-**Parameters:**
-
-- `kwargs` [(Mapping[str,Any])](https://docs.python.org/3/glossary.html#term-mapping): The kwargs object containing the operation.
-
-**Returns:**
-
-- [(operations.Operation)](https://python.viam.dev/autoapi/viam/operations/index.html#viam.operations.Operation): The operation associated with the currently running function.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/resource/base/index.html).
+For the Go and TypeScript SDK, see the [Resource API's `GetOperation` method documentation](/program/write/resource-apis/).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
- - not in there
+TODO: Would have to document instantiating and using https://pkg.go.dev/go.viam.com/rdk@v0.2.48/operation#Manager
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -237,7 +258,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
 
 {{% /tab %}}
-{{< /tabs >}}
+{{< /tabs >}} -->
 
 ## StopAll
 
@@ -295,7 +316,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ```typescript {class="line-numbers linkable-line-numbers"}
 // Cancel all current and outstanding operations for the robot and stop all actuators and movement.
-await robot.stopAll()
+await robot.stopAll();
 ```
 
 {{% /tab %}}
@@ -335,7 +356,7 @@ resource_names = robot.resource_names
 resource_names = robot.ResourceNames()
 ```
 
-[Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot#Robot)
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -346,14 +367,14 @@ resource_names = robot.ResourceNames()
 
 **Returns:**
 
-- [(ResourceName.AsObject[])](https://ts.viam.dev/modules/commonApi.ResourceName-1.html): List of all known resource names.s
+- [(ResourceName.AsObject[])](https://ts.viam.dev/modules/commonApi.ResourceName-1.html): List of all known resource names.
 
 ```typescript
 // Get a list of all resources on the robot.
-const resource_names = await robot.resourceNames()
+const resource_names = await robot.resourceNames();
 ```
 
-[Typescript SDK](https://ts.viam.dev/classes/RobotClient.html)
+For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -414,6 +435,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 // Cancel all current and outstanding operations for the robot and stop all actuators and movement.
 robot2, ok := robot.RemoteByName("my-robot-remote")
 ```
+
+For more information, see the[Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -583,7 +606,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ```typescript {class="line-numbers linkable-line-numbers"}
 // Transform the pointcloud to the desired frame in the robot's Frame System.
-const transformed_pcd = await robot.transformPCD(source_pointcloud, "source_frame", "destination_frame")
+const transformed_pcd = await robot.transformPCD(source_pointcloud, "source_frame", "destination_frame");
 ```
 
 {{% /tab %}}
