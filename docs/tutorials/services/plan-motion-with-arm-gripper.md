@@ -74,10 +74,36 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-Once the Motion Service can be accessed, some familiar features become available.
+Once the Motion Service is accessed, some familiar features become available.
 The Motion service has a method that can get the *pose* of a component relative to a *reference frame*.
-In the tutorial where we interacted with an arm component, we used the `EndPosition` method to determine the pose of the end effector of `myArm`.
-The `GetPose` method provided by the Motion Service serves a similar function to `EndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
+In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
+The `GetPose` method provided by the Motion Service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
+
+### Get the `ResourceName`
+
+When you use the [arm API](../../../components/arm/#api), you call methods on your arm component itself.
+To use the [Motion Service API](../../../services/motion/#api) on an arm, you need to pass an argument of type `ResourceName` to the Motion Service method.
+
+Add the following to the section of your code where you access the arm:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm_resource_name_name = Arm.get_resource_name("myArm")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+myArmResourceNameName := arm.Named("myArm")
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Now you are ready to run a Motion Service method on your arm.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -86,7 +112,7 @@ Any components that have frame information (and, as a result, are added to the F
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the pose of myArm from the Motion Service
-my_arm_motion_pose = await motion_service.get_pose(my_arm_resource, "world")
+my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name, "world")
 print(f"Pose of myArm from the Motion Service: {my_arm_motion_pose}")
 ```
 
@@ -98,7 +124,7 @@ Any components that have frame information (and, as a result, are added to the F
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the pose of myArm from the Motion Service
-myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResource, referenceframe.World, nil, nil)
+myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResourceName, referenceframe.World, nil, nil)
 if err != nil {
   fmt.Println(err)
 }
@@ -204,7 +230,7 @@ Keep the space around the arm clear!
 test_start_pose = Pose(x=510.0, y=0.0, z=526.0, o_x=0.7071, o_y=0.0, o_z=-0.7071, theta=0.0)
 test_start_pose_in_frame = PoseInFrame(reference_frame="world", pose=test_start_pose)
 
-await motion_service.move(component_name=my_arm_resource, destination=test_start_pose_in_frame, world_state=world_state)
+await motion_service.move(component_name=my_arm_resource_name, destination=test_start_pose_in_frame, world_state=world_state)
 ```
 
 {{% /tab %}}
@@ -218,7 +244,7 @@ testStartPose := spatialmath.NewPose(
 )
 testStartPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, testStartPose)
 
-_, err = motionService.Move(context.Background(), myArmResource, testStartPoseInFrame, worldState, nil, nil)
+_, err = motionService.Move(context.Background(), myArmResourceName, testStartPoseInFrame, worldState, nil, nil)
 if err != nil {
   logger.Fatal(err)
 }
@@ -357,7 +383,7 @@ async def main():
     print(robot.resource_names)
 
     # Access myArm
-    my_arm_resource = Arm.get_resource_name("myArm")
+    my_arm_resource_name = Arm.get_resource_name("myArm")
     my_arm_component = Arm.from_robot(robot, "myArm")
 
     # End Position of myArm
@@ -381,7 +407,7 @@ async def main():
     motion_service = MotionClient.from_robot(robot, "builtin")
 
     # Get the pose of myArm from the Motion Service
-    my_arm_motion_pose = await motion_service.get_pose(my_arm_resource, "world")
+    my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name, "world")
     print(f"Pose of myArm from the Motion Service: {my_arm_motion_pose}")
 
     # Add a table obstacle to a WorldState
@@ -398,7 +424,7 @@ async def main():
     test_start_pose = Pose(x=510.0, y=0.0, z=526.0, o_x=0.7071, o_y=0.0, o_z=-0.7071, theta=0.0)
     test_start_pose_in_frame = PoseInFrame(reference_frame="world", pose=test_start_pose)
 
-    await motion_service.move(component_name=my_arm_resource, destination=test_start_pose_in_frame, world_state=world_state)
+    await motion_service.move(component_name=my_arm_resource_name, destination=test_start_pose_in_frame, world_state=world_state)
 
     my_gripper_resource = Gripper.get_resource_name("myGripper")
 
@@ -458,8 +484,8 @@ func main() {
   logger.Info(robot.ResourceNames())
 
   // Access myArm
-  myArmResource := arm.Named("myArm")
-  fmt.Println("myArmResource:", myArmResource)
+  myArmResourceName := arm.Named("myArm")
+  fmt.Println("myArmResourceName:", myArmResourceName)
   myArmComponent, err := arm.FromRobot(robot, "myArm")
   if err != nil {
     fmt.Println(err)
@@ -508,7 +534,7 @@ func main() {
   }
 
   // Get the pose of myArm from the Motion Service
-  myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResource, referenceframe.World, nil, nil)
+  myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResourceName, referenceframe.World, nil, nil)
   if err != nil {
     fmt.Println(err)
   }
@@ -539,7 +565,7 @@ func main() {
   )
   testStartPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, testStartPose)
 
-  _, err = motionService.Move(context.Background(), myArmResource, testStartPoseInFrame, worldState, nil, nil)
+  _, err = motionService.Move(context.Background(), myArmResourceName, testStartPoseInFrame, worldState, nil, nil)
   if err != nil {
     logger.Fatal(err)
   }
