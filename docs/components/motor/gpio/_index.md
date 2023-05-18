@@ -180,3 +180,5 @@ The configuration file of a BLDC motor with Viam is the same as that of a brushe
 Only the output side of the driver board is different in that more wires connect the driver to the motor.
 
 ![An example wiring diagram showing a Raspberry Pi, 12V power supply, RioRand 400W brushless DC motor controller, and 3 phase 12V brushless DC motor. The motor has three power wires (one for each phase) and five sensor wires (two to power the sensor and one for each of the three Hall effect sensors).](../../img/motor/motor-brushless-dc-wiring.png)
+
+## Next steps

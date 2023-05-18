@@ -141,3 +141,9 @@ readings, err := mySensor.Readings(context.Background(), nil)
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+## Next Steps
+
+{{< cards >}}
+    {{% card link="/tutorials/projects/make-a-plant-watering-robot/" size="small" %}}
+{{< /cards >}}
