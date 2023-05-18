@@ -28,6 +28,7 @@ Configure a *board* component on your robot to communicate with the other [compo
 Signaling is overseen by a computer running `viam-server`.
 
 Supported board models use various architectures:
+
 - Single-board computers (SBCs) with GPIO pins and CPUs capable of running `viam-server`.
 - GPIO peripheral devices that must connect to external computers.
 - PWM peripheral devices that must connect to SBCs providing GPIO pins.
