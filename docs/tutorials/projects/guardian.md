@@ -1,5 +1,5 @@
 ---
-title: "Security Guardian"
+title: "Program a Guardian to Track Humans and Pets Using a Pi, Camera, and Servo"
 linkTitle: "Security Guardian"
 weight: 50
 type: "docs"
