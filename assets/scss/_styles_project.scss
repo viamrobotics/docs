@@ -105,6 +105,11 @@ h5, .h5 {
   font-size: 0.833 !important;
 }
 
+h6, .h6 {
+  font-size: 0.833rem !important;
+  line-height: 1.0625rem;
+}
+
 h7, .h7 {
   font-size: 0.833rem !important;
   line-height: 1.0625rem;
@@ -492,6 +497,18 @@ END MARKETING CSS
 
 /* END CSS FOR EXPANDER */
 
+/* START board carousel styling */
+
+.board-carousel {
+  display: block;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  display: flex;
+  scroll-snap-type: x mandatory;
+}
+
+/* END CSS FOR BOARD CAROUSEL */
+
 /* START card styling */
 .hover-card {
   border: 1px solid #000;
@@ -588,7 +605,6 @@ END MARKETING CSS
     max-width: 300px;
   }
 }
-
 
 .landing-hover-card {
   margin: 1em auto;
