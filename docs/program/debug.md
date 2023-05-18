@@ -10,4 +10,32 @@ tags: ["client", "sdk"]
 
 ## Debug
 
-- logging tab or accessing logs when running viam-server process on whatever computer is doing so
+{{< tabs >}}
+{{% tab name="App UI" %}}
+
+Check the Logs tab to check for any errors or other info from viam-server.
+
+{{% /tab %}}
+{{% tab name="CLI" %}}
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+``` shell
+sudo journalctl --unit=viam-server
+```
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+``` shell
+cat $(brew --prefix)/var/log/viam.log
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
+<!-- Should there be a separate section for handling errors in Go etc.?  -->
