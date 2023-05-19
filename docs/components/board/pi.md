@@ -15,7 +15,7 @@ Follow this [setup guide](/installation/prepare/rpi-setup/) to prepare your Pi f
 
 {{% /alert %}}
 
-Configure a `pi` board to integrate a [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) into your robot:
+Configure a `pi` board to integrate a [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) into your robot:
 
 {{< tabs name="Configure an pi Board" >}}
 {{% tab name="Config Builder" %}}
