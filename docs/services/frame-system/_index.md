@@ -113,7 +113,7 @@ For example:
 
 Consider a robot configured with a [`jetson` board](/components/board), wired to a [`webcam` camera](/components/camera/webcam) and a [`wheeled` base](/components/base/wheeled) with two [motors](/components/motor) driving its wheels.
 
-No reference frame configuration has been specified, so on the **Frame System** **Config** sub-tab, the components are shown to all be located on the default `world` origin point as follows:
+No reference frame configuration has been specified, so on the **Frame System** subtab of the **Config** tab, the components are shown to all be located on the default `world` origin point as follows:
 
   ![Example robot's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other](img/demo_base_unedited.png)
 
@@ -161,7 +161,7 @@ Click the video camera icon below and to the right of the **Frame System** butto
 
 ### Bounding Geometries
 
-To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame System** sub-tab of the **Config** tab of a robot's page on [the Viam app](https://app.viam.com).
+To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame System** subtab of the **Config** tab of a robot's page on [the Viam app](https://app.viam.com).
 
 By default, a **Geometry** is shown surrounding the origin point of a component:
 

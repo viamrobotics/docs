@@ -206,7 +206,7 @@ The **Services** subtab contains the "Base Remote Control" service which uses th
 
 The names for **base** and **input_controller** correspond to the naming scheme from the **Components** tab.
 
-![Screenshot of the base remote control service named "base_rc" on the Services sub-tab of the CONFIG tab.](../img/try-viam/base-rc.png)
+![Screenshot of the base remote control service named "base_rc" on the Services subtab of the CONFIG tab.](../img/try-viam/base-rc.png)
 
 ### Raw JSON
 
