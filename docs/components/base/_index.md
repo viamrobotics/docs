@@ -403,11 +403,11 @@ If you are implementing your own base and add features that have no built-in API
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_base = BaseClient.from_robot(robot, "my_base")
@@ -423,13 +423,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map[string]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map[string]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
