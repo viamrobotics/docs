@@ -254,15 +254,19 @@ Then, execute this program on any computing machine as long as:
 
 See [Run SDK Code](/program/run) for more information on executing programs to control your Viam-connect robot.
 
+<!-- TODO: transition between these sections? introduction? -->
+
 ### `import`
 
-- talks about how code sample should generally generate all the required resources but if not or if you're not working with that, describes what they'll be?
+The Code Sample tab contains the required imports for the SDK code at generation.
+
+If you are building out your program further or aren't using the Code Sample tab, you can find the right libraries to import to utilize SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/write/resource-apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 ### `connect()`
 
 {{< readfile "/static/include/snippet/secret-share.md" >}}
 
-- where to find robot secret, location secret, etc
+The `connect()` function established a connection through webRTC (TODO check this)
 
 ### `main()`
   

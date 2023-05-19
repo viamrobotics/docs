@@ -165,7 +165,7 @@ console.log('FrameSytemConfig:', await robot.frameSystemConfig());
 
 Get the status of the resources on the robot.
 You can provide a list of ResourceNames for which you want statuses.
-If no names are passed in, the statuses of all resources are returned.
+If no names are passed in, the status of every resource configured on the robot is returned.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -177,7 +177,7 @@ If no names are passed in, all resource statuses are returned.
 
 **Returns:**
 
-- [(List[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Status of each resource.
+- [(List[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): A list containing the status of each resource.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_status).
 
