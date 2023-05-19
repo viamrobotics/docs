@@ -72,7 +72,7 @@ The fragment adds the following components to your robot's JSON configuration:
 ## See the components on the configuration page
 
 Adding a fragment to your robot adds the configuration to your robot.
-The components and services included in the fragment will appear inside a read-only fragment section in the **Components** and **Services** sub-tabs.
+The components and services included in the fragment will appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
 ## Next Steps
 

@@ -376,7 +376,7 @@ Typically, a sub-part would represent a separate computer running `viam-server`.
 For this tutorial since you are using only one computer, you will need to bind the sub-part to a new port so you can run two servers on your machine at the same time.
 The following instructions use port `8081`, but you can use any open port you want.
 
-1. Go to the **Config** tab and then go to the **Auth/Network** sub-tab.
+1. Go to the **Config** tab and then go to the **Auth/Network** subtab.
 2. Under **Network** click **Add bind address**.
 3. In the **Host** field type `localhost`.
 4. In the **Port** field type `8081`.
