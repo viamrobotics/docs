@@ -234,7 +234,7 @@ properties = await my_encoder.get_properties()
 
 **Returns:**
 
-- [(map[Feature]bool)]((https://pkg.go.dev/go.viam.com/rdk/components/encoder#Feature)): The position types supported by the encoder model.
+- [(map[Feature]bool)](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Feature): The position types supported by the encoder model.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
