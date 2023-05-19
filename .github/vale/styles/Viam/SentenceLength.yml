@@ -4,5 +4,5 @@ link: 'https://docs.rackspace.com/docs/style-guide/writing/write-clear-concise-s
 scope: sentence
 level: suggestion
 max: 25
-tokens:
+token:
   - '\b(\w+)\b'
