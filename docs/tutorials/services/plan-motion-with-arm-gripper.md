@@ -182,7 +182,7 @@ Within the app, the **Frame System** tab in the **Config** section of your robot
 Commanding motion with the Motion Service has a more general feel than previous examples that were commanding motion for individual components.
 In previous examples you controlled motion of individual components.
 Now you will use the Motion Service to control the motion of the robot as a whole.
-You will use the Motion Service's `Move` method to execute more general robotic motion.
+You will use the Motion Service's [`Move`](../../../services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
 The `worldState` we constructed earlier is also passed in so that the Motion Service can consider additional information when planning.
 
@@ -307,7 +307,7 @@ For the gripper pose, you can change the reference frame information to consider
 Specifying other reference frames is an easy way to move with respect to those frames.
 For example, you can specify a pose that is 100 millimeters above the table obstacle featured earlier in this tutorial.
 You do not need to calculate that exact pose with respect to the **arm** or **world**.
-You must only provide the object name (instead of the `gripperName` you saw in the code samples above) when making the `NewPoseInFrame` to pass into the `Move` function.
+You must only provide the object name (instead of the `gripperName` you saw in the code samples above) when making the `PoseInFrame` to pass into the `Move` function.
 This has implications for how motion is calculated, and what final configuration your robot will rest in after moving.
 
 <!-- TODO: Content below struck out for the moment, saved to point at the next tutorial "Add Constraints to a Motion Plan" -->
