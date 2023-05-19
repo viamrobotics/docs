@@ -22,7 +22,7 @@ Here's a video of the finished guardian detecting me:
 
 {{<video webm_src="../../img/guardian/guardian-detection.webm" mp4_src="../../img/guardian/guardian-detection.mp4" alt="Guardian robot detects person and rotates head to follow them around">}}
 
-## Components
+## Hardware requirements
 
 To build your own guardian robot, you need the following hardware:
 
