@@ -51,6 +51,14 @@ The fragment adds the following components to your robot's JSON configuration:
   * Within the motor attributes, board: "local", encoder: "Lenc", ticks per rotation: "996".
   * Within the component pin assignment, type: In1/In2, A/In1: "11 GPIO 17", B/In2: "13 GPIO 27", PWM: "15 GPIO 22".
   * Depends on local and Lenc.
+
+{{% alert title="Note" color="note" %}}
+
+This particular motor driver has pins labeled "ENA" and "ENB."
+Typically, this would suggest that they should be configured as enable pins, but on this specific driver these function as PWM pins, so we configure them as such.
+
+{{% /alert %}}
+
 * A wheeled Viam [base](/components/base/) with attributes:
   * Right Motors: right
   * Left Motors: left
