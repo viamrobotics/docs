@@ -1423,7 +1423,7 @@ err := interrupt.Tick(context.Background(), true, 12345)
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `high` (https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
+- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
 If `false`, the state of the pin is set to low.
 - `nanoseconds` [(uint64)](https://pkg.go.dev/builtin#uint64): The time in nanoseconds between two successive low signals (pulse width).
 
