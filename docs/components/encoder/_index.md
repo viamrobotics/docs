@@ -105,7 +105,7 @@ If you are not sure which position type your encoder supports but it is a built-
 
 **Returns:**
 
-- [(Tuple[float, PositionType.ValueType])]((https://docs.python.org/3/library/functions.html#float)): The current position in ticks or degrees, and the type of position the encoder returns (ticks or degrees).
+- [(Tuple[float, PositionType.ValueType])](https://docs.python.org/3/library/functions.html#float): The current position in ticks or degrees, and the type of position the encoder returns (ticks or degrees).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.get_position).
 
@@ -123,7 +123,7 @@ print("The encoder position is currently ", position[0], position[1])
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `positionType` ([PositionType](https://pkg.go.dev/go.viam.com/rdk/components/encoder#PositionType)): Specify whether to get the current position in ticks (`encoder.PositionTypeTicks`) or in degrees (`encoder.PositionTypeDegrees`).
+- `positionType` [(PositionType)](https://pkg.go.dev/go.viam.com/rdk/components/encoder#PositionType): Specify whether to get the current position in ticks (`encoder.PositionTypeTicks`) or in degrees (`encoder.PositionTypeDegrees`).
   If you are not sure which position type your encoder supports but it is a built-in Viam-supported model, you can leave this parameter unspecified (`encoder.PositionTypeUnspecified`) and it will default to the correct position type.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 

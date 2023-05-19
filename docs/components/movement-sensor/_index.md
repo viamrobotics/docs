@@ -113,8 +113,6 @@ Supported by GPS models.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_position).
 
-**Example usage:**
-
 ```python
 my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
@@ -137,8 +135,6 @@ position = await my_movement_sensor.get_position()
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
-
-**Example usage:**
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
@@ -169,8 +165,6 @@ Supported by GPS models.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_linear_velocity).
 
-**Example usage:**
-
 ```python
 my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
@@ -192,8 +186,6 @@ lin_vel = await my_movement_sensor.get_linear_velocity()
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
-
-**Example usage:**
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
@@ -224,8 +216,6 @@ Supported by IMU models and by `gyro-mpu6050`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_angular_velocity).
 
-**Example usage:**
-
 ```python
 my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
@@ -250,8 +240,6 @@ y_ang_vel = ang_vel.y
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
-
-**Example usage:**
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
@@ -285,8 +273,6 @@ Supported by IMU models, `accel-adxl345`, and `gyro-mpu6050`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_linear_acceleration).
 
-**Example usage:**
-
 ```python
 my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
@@ -311,8 +297,6 @@ x_lin_accel = lin_accel.x
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
-
-**Example usage:**
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
@@ -346,8 +330,6 @@ Supported by GPS models and `imu-vectornav`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_compass_heading).
 
-**Example usage:**
-
 ```python
 my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
@@ -369,8 +351,6 @@ heading = await my_movement_sensor.get_compass_heading()
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
-
-**Example usage:**
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
@@ -506,7 +486,7 @@ Supported by GPS models.
 
 **Returns:**
 
-- [(Dict[str, float])]((https://docs.python.org/3/library/stdtypes.html#str)): The accuracy and/or precision of the sensor, if supported.
+- [(Dict[str, float])](https://docs.python.org/3/library/stdtypes.html#str): The accuracy and/or precision of the sensor, if supported.
   Contents depend on sensor model.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_accuracy).

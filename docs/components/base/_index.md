@@ -424,7 +424,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` ([cmd map[string]interface{}]()): The command to execute.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 

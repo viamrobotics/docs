@@ -102,8 +102,6 @@ By default, motion is unconstrained with the exception of obstacle avoidance.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move).
 
-**Example usage:**
-
 ```python {class="line-numbers linkable-line-numbers"}
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 
@@ -163,8 +161,6 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
-
-**Example usage:**
 
 ```go {class="line-numbers linkable-line-numbers"}
  // Access the Motion Service
@@ -231,8 +227,6 @@ If you need collision checking and obstacle avoidance, use [`Move`](#move).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_single_component).
 
-**Example usage:**
-
 ```python {class="line-numbers linkable-line-numbers"}
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 
@@ -271,8 +265,6 @@ As of April 21, 2023, [arm](/components/arm/) is the only component so supported
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
-
-**Example usage:**
 
 ```go {class="line-numbers linkable-line-numbers"}
  // Access the Motion Service
@@ -327,8 +319,6 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 - [(PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose of the component.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.get_pose).
-
-**Example usage:**
 
 The following code example gets the pose of the tip of a [gripper](../../components/gripper/) named `myGripper` which is attached to the end of an arm, in the "world" `reference_frame`:
 
@@ -397,8 +387,6 @@ gripperPoseInObjectFrame = await motion.get_pose(
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
-
-**Example usage:**
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
