@@ -32,7 +32,7 @@ For model-specific configuration information, click on one of the following mode
 
 | Model | Description |
 | ----- | ----------- |
-| [`pi`](pi) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
+| [`pi`](pi) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
 | [`ti`](ti) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
 | [`beaglebone`](beaglebone) | [BeagleBoard's BeagleBone AI 64](https://beagleboard.org/ai-64) |
 | [`jetson`](jetson) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), [NVIDIA Jetson  Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
@@ -409,7 +409,7 @@ Get an [`AnalogReader`](#analogs) by `name.`
 
 **Returns:**
 
-- `reader` [(AnalogReader)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader): An interface representing an analog reader configured and residing on the board.
+- [(AnalogReader)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader): An interface representing an analog reader configured and residing on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_by_name).
 
@@ -429,8 +429,8 @@ reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
 
 **Returns:**
 
-- `reader` [(AnalogReader)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogReader): An interface representing an analog reader configured and residing on the board.
-- `ok` [(bool)](https://pkg.go.dev/builtin#bool): True if there was an analog reader of this `name` found on your board.
+- [(AnalogReader)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogReader): An interface representing an analog reader configured and residing on the board.
+- [(bool)](https://pkg.go.dev/builtin#bool): True if there was an analog reader of this `name` found on your board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -457,7 +457,7 @@ Get an [`DigitalInterrupt`](#digital_interrupts) by `name.`
 
 **Returns:**
 
-- `interrupt` [(DigitalInterrupt)](https://python.viam.dev/_modules/viam/components/board/board.html#Board.DigitalInterrupt): An interface representing a configured interrupt on the board.
+- [(DigitalInterrupt)](https://python.viam.dev/_modules/viam/components/board/board.html#Board.DigitalInterrupt): An interface representing a configured interrupt on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_by_name).
 
@@ -477,8 +477,8 @@ interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_in
 
 **Returns:**
 
-- `interrupt` [(DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): An interface representing a configured interrupt on the board.
-- `ok` [(bool)](https://pkg.go.dev/builtin#bool): True if there was a digital interrupt of this `name` found on your board.
+- [(DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): An interface representing a configured interrupt on the board.
+- [(bool)](https://pkg.go.dev/builtin#bool): True if there was a digital interrupt of this `name` found on your board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -506,7 +506,7 @@ Refer to the pinout diagram and data sheet of your [board model](#configuration)
 
 **Returns:**
 
-- `pin` [(GPIOPin)](https://python.viam.dev/_modules/viam/components/board/board.html#Board.GPIOPin): An interface representing an individual GPIO pin on the board.
+- [(GPIOPin)](https://python.viam.dev/_modules/viam/components/board/board.html#Board.GPIOPin): An interface representing an individual GPIO pin on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.gpio_pin_by_name).
 
@@ -527,7 +527,7 @@ Refer to the pinout diagram and data sheet of your [board model](#configuration)
 
 **Returns:**
 
-- `pin` [(GPIOPin)](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin): An interface representing an individual GPIO pin on the board.
+- [(GPIOPin)](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin): An interface representing an individual GPIO pin on the board.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
@@ -555,7 +555,7 @@ Get the name of every [`AnalogReader`](#analogs) configured and residing on the 
 
 **Returns:**
 
-- `names` [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): An list containing the `"name"` of every analog reader [configured](#configuration) on the board.
+- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): An list containing the `"name"` of every analog reader [configured](#configuration) on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_names).
 
@@ -575,7 +575,7 @@ names = await my_board.analog_reader_names()
 
 **Returns:**
 
-- `names` [([]string)](https://go.dev/tour/moretypes/7): An slice containing the `"name"` of every analog reader [configured](#configuration) on the board.
+- [([]string)](https://go.dev/tour/moretypes/7): An slice containing the `"name"` of every analog reader [configured](#configuration) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -602,7 +602,7 @@ Get the name of every [`DigitalInterrupt`](#digital_interrupts) configured on th
 
 **Returns:**
 
-- `names` [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every interrupt [configured](#configuration) on the board.
+- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every interrupt [configured](#configuration) on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_names).
 
@@ -622,7 +622,7 @@ names = await my_board.digital_interrupt_names()
 
 **Returns:**
 
-- `names` [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every interrupt [configured](#configuration) on the board.
+- [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every interrupt [configured](#configuration) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -650,7 +650,7 @@ Get the current status of the board as a `BoardStatus`.
 
 **Returns:**
 
-- `status` [(BoardStatus)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.BoardStatus): Mappings of the current status of the fields and values of any [AnalogReaders](#analogs) and [DigitalInterrupts](#digital_interrupts) configured on the board.
+- [(BoardStatus)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.BoardStatus): Mappings of the current status of the fields and values of any [AnalogReaders](#analogs) and [DigitalInterrupts](#digital_interrupts) configured on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.status).
 
@@ -674,6 +674,7 @@ status = await my_board.status()
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(BoardStatus)](https://pkg.go.dev/go.viam.com/api/common/v1#BoardStatus): Mappings of the current status of the fields and values of any [AnalogReaders](#analogs) and [DigitalInterrupts](#digital_interrupts) configured on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -700,7 +701,7 @@ Get the attributes related to the model of this board.
 
 **Returns:**
 
-- `attributes` [(Attributes)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Attributes): Attributes related to the model of this board.
+- [(Attributes)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Attributes): Attributes related to the model of this board.
 Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.model_attributes).
@@ -721,7 +722,7 @@ attributes = await my_board.model_attributes()
 
 **Returns:**
 
-- `attributes` [(ModelAttributes)](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes): Attributes related to the model of this board.
+- [(ModelAttributes)](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes): Attributes related to the model of this board.
 Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes).
@@ -865,7 +866,7 @@ Get if the digital signal output of this pin is high (active, >0V).
 
 **Returns:**
 
-- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
 If `false`, the state of the pin is low.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get).
@@ -890,7 +891,7 @@ high = await pin.get()
 
 **Returns:**
 
-- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is high.
+- [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is high.
 If `false`, the state of the pin is low.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
@@ -931,7 +932,7 @@ Get the pin's [pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.c
 
 **Returns:**
 
-- `duty_cycle` [(float)](https://docs.python.org/3/library/functions.html#float): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
+- [(float)](https://docs.python.org/3/library/functions.html#float): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get_pwm).
 
@@ -955,7 +956,7 @@ duty_cycle = await pin.get_pwm()
 
 **Returns:**
 
-- `duty_cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
+- [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -988,7 +989,7 @@ Set the pin's [Pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.c
 
 **Returns:**
 
-- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
 If `false`, the state of the pin is low.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set_pwm).
@@ -1047,7 +1048,7 @@ Refer to your device's data sheet for PWM Frequency specifications.
 
 **Returns:**
 
-- `frequency` [(int)](https://docs.python.org/3/library/functions.html#int): The PWM Frequency in Hertz (Hz) (the count of PWM interval periods per second) the digital signal output by this pin is set to.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The PWM Frequency in Hertz (Hz) (the count of PWM interval periods per second) the digital signal output by this pin is set to.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get_pwm_frequency).
 
@@ -1071,7 +1072,7 @@ freq = await pin.get_pwm_frequency()
 
 **Returns:**
 
-- `freqHz` [(unit)](https://pkg.go.dev/builtin#uint): The PWM Frequency in Hertz (Hz) (the count of PWM interval periods per second) the digital signal output by this pin is set to.
+- [(unit)](https://pkg.go.dev/builtin#uint): The PWM Frequency in Hertz (Hz) (the count of PWM interval periods per second) the digital signal output by this pin is set to.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -1105,7 +1106,7 @@ Refer to your device's data sheet for PWM Frequency specifications.
 
 **Returns:**
 
-- `frequency` [(int)](https://docs.python.org/3/library/functions.html#int)The PWM Frequency in Hertz (Hz), the count of PWM interval periods per second, to set the digital signal output by this pin to.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The PWM Frequency in Hertz (Hz), the count of PWM interval periods per second, to set the digital signal output by this pin to.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set_pwm_frequency).
 
@@ -1163,7 +1164,7 @@ Read the current integer value of the digital signal output by the [ADC](#analog
 
 **Returns:**
 
-- `reading` [(int)](https://docs.python.org/3/library/functions.html#int): The value of the digital signal output by the analog reader.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The value of the digital signal output by the analog reader.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader.read).
 
@@ -1193,7 +1194,7 @@ reading = reader.read()
 
 **Returns:**
 
-- `reading` [(int)](https://pkg.go.dev/builtin#int): The value of the digital signal output by the analog reader.
+- [(int)](https://pkg.go.dev/builtin#int): The value of the digital signal output by the analog reader.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -1232,7 +1233,7 @@ Calculation of value differs between the `"type"` of interrupt [configured](#dig
 
 **Returns:**
 
-- `count` [(int)](https://docs.python.org/3/library/functions.html#int) The amount of [Ticks](#tick) that have occurred.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The amount of [Ticks](#tick) that have occurred.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.value).
 
@@ -1256,7 +1257,7 @@ count = await interrupt.value()
 
 **Returns:**
 
-- `count` [(int64)](https://pkg.go.dev/builtin#int64): The amount of [Ticks](#tick) that have occurred.
+- [(int64)](https://pkg.go.dev/builtin#int64): The amount of [Ticks](#tick) that have occurred.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#BasicDigitalInterrupt).
@@ -1285,7 +1286,7 @@ count, err := interrupt.Value(context.Background(), nil)
 
 **Returns:**
 
-- `rolling_avg` [(int)](https://docs.python.org/3/library/functions.html#int) The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.value).
 
@@ -1309,7 +1310,7 @@ rolling_avg = await interrupt.value()
 
 **Returns:**
 
-- `rolling_avg`[(int64)](https://pkg.go.dev/builtin#int64): The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
+- [(int64)](https://pkg.go.dev/builtin#int64): The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ServoDigitalInterrupt).
@@ -1369,7 +1370,7 @@ SERVO
 
 **Parameters:**
 
-- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
+- `high` (https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
 If `false`, the state of the pin is set to low.
 - `nanos` [(int)](https://docs.python.org/3/library/functions.html#int): The time in nanoseconds between two successive low signals (pulse width).
 
