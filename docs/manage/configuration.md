@@ -173,7 +173,7 @@ Components of the same model are supported using the same low-level code.
 {{% alert title="Tip" color="tip" %}}
 
 Some optional attributes have default values.
-If you omit these attributes from your config, or if you include them but leave their values empty, RDK will apply the default values even though the default values are not shown in the config.
+If you omit these attributes from your config, or if you include them but leave their values empty, `viam-server` will apply these default values at runtime, even though they are not reflected in the configuration file.
 
 {{% /alert %}}
 
