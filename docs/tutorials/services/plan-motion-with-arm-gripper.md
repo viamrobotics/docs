@@ -75,7 +75,7 @@ if err != nil {
 {{< /tabs >}}
 
 Once the Motion Service can be accessed, some familiar features become available.
-The Motion service has a method that can get the *pose* of a component relative to a *reference frame*.
+The Motion Service has a method that can get the *pose* of a component relative to a *reference frame*.
 In the tutorial where we interacted with an arm component, we used the `EndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the Motion Service serves a similar function to `EndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
