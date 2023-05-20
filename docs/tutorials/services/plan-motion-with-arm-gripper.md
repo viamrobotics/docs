@@ -90,14 +90,14 @@ Add the following to the section of your code where you access the arm:
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm_resource_name_name = Arm.get_resource_name("myArm")
+my_arm_resource_name = Arm.get_resource_name("myArm")
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-myArmResourceNameName := arm.Named("myArm")
+myArmResourceName := arm.Named("myArm")
 ```
 
 {{% /tab %}}
