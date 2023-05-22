@@ -51,7 +51,7 @@ The following attributes are available for `fake` cameras:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `width` | int | Optional | The width of the image in pixels. The default resolution is 1280 x 720. |
-| `height` | int | Optional | The width of the image in pixels. The default resolution is 1280 x 720. |
+| `height` | int | Optional | The height of the image in pixels. The default resolution is 1280 x 720. |
 
 ## View the camera stream
 
