@@ -307,7 +307,7 @@ For an example, see [this execution demo.](https://github.com/viamrobotics/viam-
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-For an example, see [this execution demo.](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/vanilla)
+For information on running C++ code see [here](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
 
 {{% /tab %}}
 {{< /tabs >}}
