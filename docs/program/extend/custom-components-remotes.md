@@ -5,7 +5,7 @@ weight: 99
 type: "docs"
 tags: ["server", "sdk"]
 aliases:
-    - "program/extend/sdk-as-server"
+    - "/program/extend/sdk-as-server"
 description: "Implement custom components and register them on a server configured as a remote of your robot."
 webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
 mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
@@ -64,7 +64,7 @@ You must define all functions belonging to a built-in resource type if defining 
 Otherwise, the class won’t instantiate.
 
 - If you are using the Python SDK, raise an `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
-- If you are using the Go SDK, return `errUnimplemented`.  
+- If you are using the Go SDK, return `errUnimplemented`.
 - Additionally, return any values designated in the function's return signature, typed correctly.
 
 {{% /alert %}}
