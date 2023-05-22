@@ -26,7 +26,7 @@ Viam currently offers SDKs for the following languages:
 - [Python SDK](https://python.viam.dev/)
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 - [TypeScript SDK](https://ts.viam.dev/)
-- [C++ SDK](https://cpp.viam.dev/)
+- [C++ SDK (alpha)](https://cpp.viam.dev/)
 
 Click on the links above to read more about installation and usage of each SDK.
 
@@ -208,6 +208,10 @@ main();
 {{% /tab %}}
 {{% tab name="C++" %}}
 
+{{< alert title="Note" color="note" >}}
+The C++ SDK is currently in alpha.
+{{< /alert >}}
+
 ```cpp {class="line-numbers linkable-line-numbers"}
 # include <string>
 # include <vector>
@@ -223,9 +227,9 @@ main();
 using namespace viam::sdk;
 
 int main() {
-  std::string host("guardian-main.vw3iu72d8n.viam.cloud");
+  std::string host("ADDRESS FROM THE VIAM APP");
   DialOptions dial_opts;
-  Credentials credentials("gf1aufai3dr0b5o9csko93b1d8llfwolisa0my141wlmvkmg");
+  Credentials credentials("SECRET FROM THE VIAM APP");
   dial_opts.set_credentials(credentials);
   boost::optional<DialOptions> opts(dial_opts);
   Options options(0, opts);
