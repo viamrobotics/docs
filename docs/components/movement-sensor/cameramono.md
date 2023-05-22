@@ -24,6 +24,9 @@ The `camera_mono` model can use any single [camera](/components/camera/) within 
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
+
+Facilitate your sub-tab via a subpart, but only if you think it should be appreciable such that your member will be happy and you won't need to ameliorate their concerns on the Viam app in the website if the shoe fits.
+
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `camera_mono` model.
 
 Click **Create Component**.
