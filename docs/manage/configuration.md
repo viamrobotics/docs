@@ -134,7 +134,7 @@ If you add components in **Builder** mode and click **Save Config** at the botto
 
 {{% /expand %}}
 
-The **Config** tab has sub-tabs for each section of your robot's config:
+The **Config** tab has subtabs for each section of your robot's config:
 
 - [Components](#components): Components are the hardware of your robot.
 - [Services](#services): Services are the software that runs on your robot.
@@ -169,6 +169,13 @@ Components of the same model are supported using the same low-level code.
 
 - `attributes`: A struct to define things like how the component is wired to the robot, its dimensions, and other specifications; attributes vary widely between models.
   See the [component documentation](/components/) for a given component type and model for more details.
+
+{{% alert title="Tip" color="tip" %}}
+
+Some optional attributes have default values.
+If you omit these attributes from your config, or if you include them but leave their values empty, `viam-server` will apply these default values at runtime, even though they are not reflected in the configuration file.
+
+{{% /alert %}}
 
 - `depends_on`: Any components that a given component relies upon, and that must be initialized on boot before this component is initialized.
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
@@ -228,7 +235,7 @@ In raw JSON, these options are represented by `log` (bool) and `one_shot` (bool)
 
 The following configuration executes the command `python3 my_cool_script.py` in your <file>/home/myName/project/</file> directory every time your robot boots, and keeps it executing indefinitely.
 
-![The PROCESSES sub-tab of the CONFIG tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off.](../img/configuration/process-fancy.png)
+![The PROCESSES subtab of the CONFIG tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off.](../img/configuration/process-fancy.png)
 
 The corresponding raw JSON looks like this:
 
@@ -271,13 +278,13 @@ For example, if you have multiple identical rovers but one has an arm attached, 
 
 To add a fragment to a robot:
 
-- Go to the **Fragments** sub-tab of your robot's **Config** tab on the [Viam app](https://app.viam.com).
+- Go to the **Fragments** subtab of your robot's **Config** tab on the [Viam app](https://app.viam.com).
 - Look through the list of available fragments and click **Add** next to any fragments you want to add to your robot.
 - Click **Save Config** at the bottom of the screen.
 
 ![The fragments subtab](../img/fragments-tab.png)
 
-The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** sub-tabs.
+The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
 ![A fragment in the components subtab](../img/fragment-components.png)
 

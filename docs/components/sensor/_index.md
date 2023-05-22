@@ -100,7 +100,7 @@ Get the measurements or readings that this sensor provides.
 
 **Returns:**
 
-- `readings` [(Mapping\[str, Any\])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this sensor provides.
+- [(Mapping\[str, Any\])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this sensor provides.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/index.html#viam.components.sensor.Sensor.get_readings).
 
@@ -121,8 +121,7 @@ readings = await my_sensor.get_readings()
 
 **Returns:**
 
-- `readings` [(map\[string\]interface{})](https://go.dev/blog/maps): The measurements or readings that this sensor provides.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(map\[string\]interface{})](https://go.dev/blog/maps): The measurements or readings that this sensor provides.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
 

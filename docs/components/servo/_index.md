@@ -175,7 +175,7 @@ Get the current set angle of the servo in degrees.
 
 **Returns:**
 
-- `position`[(int)](https://docs.python.org/3/library/functions.html#int): The current set angle of the servo in degrees.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The current set angle of the servo in degrees.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.get_position).
 
@@ -205,7 +205,7 @@ pos2 = await my_servo.get_position()
 
 **Returns:**
 
-- `angleDeg` ([uint32](https://pkg.go.dev/builtin#uint32)): The current set angle of the servo in degrees.
+- [(uint32)](https://pkg.go.dev/builtin#uint32): The current set angle of the servo in degrees.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
@@ -295,11 +295,11 @@ If you are implementing your own servo and add features that have no built-in AP
 
 **Parameters:**
 
-- `command` (Dict[str, Any]): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (Dict[str, Any]): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_servo = Servo.from_robot(robot, "my_servo")
@@ -315,13 +315,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (cmd map[string]interface{}): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (cmd map[string]interface{}): Result of the executed command.
-- `error` ([error](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myServo, err := servo.FromRobot(robot, "my_servo")

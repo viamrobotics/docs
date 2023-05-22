@@ -79,7 +79,7 @@ In this step, you'll fetch data about the robotic arm's current position.
 {{< tabs >}}
 {{% tab name="Python" %}}
 The following lines from the [full **Python** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
-The code then calls the `get_end_position` method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`get_end_position`](../../../components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Access myArm
@@ -107,7 +107,7 @@ The `x`, `y`, and `z` values correspond to the `position` element of the pose, w
 {{% /tab %}}
 {{% tab name="Go" %}}
 The following lines from the [full **Go** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
-The code then calls the `EndPosition` method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`EndPosition`](../../../components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access myArm
@@ -253,8 +253,9 @@ For example, the following code gets the arm's end position, makes a 100 millime
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-You must import some additional Python packages to synthesize new poses for the arm component's `move_to_position` command.
-Add `from viam.proto.common import Pose` to your import list and add the sample code below to your own client script.
+Add the sample code below to your own client script to try using the arm component's [`move_to_position`](../../../components/arm/#movetoposition) command.
+This example gets a `Pose` from `get_end_position()` so no additional imports are required.
+If you want to synthesize new poses directly, note that you must import an additional Python package by adding `from viam.proto.common import Pose` to your import list.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Generate a simple pose move +100mm in the +Z direction of the arm
@@ -265,7 +266,7 @@ await my_arm_component.move_to_position(pose=cmd_arm_pose)
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-You must import some additional Go packages to synthesize new poses through the `spatialmath` library.
+You must import some additional Go packages to synthesize new poses through the `spatialmath` library for the arms's [`MoveToPosition`](../../../components/arm/#movetoposition) command.
 Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to your import list and then add the sample code below to your own client script.
 
 ```go {class="line-numbers linkable-line-numbers"}

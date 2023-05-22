@@ -343,7 +343,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Get the current position of the motor.
-position, _ := myMotor.Position(context.Background(), nil)
+position, err := myMotor.Position(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -386,7 +386,7 @@ print(f'Properties: {properties}')
 
 **Returns:**
 
-- (map[\[Feature\]](https://pkg.go.dev/go.viam.com/rdk/components/motor#Feature)[bool](https://pkg.go.dev/builtin#bool), [error](https://pkg.go.dev/builtin#error)): A map indicating whether or not the motor supports certain optional features.
+- [(map\[Feature\][bool])](https://pkg.go.dev/go.viam.com/rdk/components/motor#Feature): A map indicating whether or not the motor supports certain optional features.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
@@ -395,7 +395,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Return whether or not the motor supports certain optional features.
-properties, _ := myMotor.Properties(context.Background(), nil)
+properties, err := myMotor.Properties(context.Background(), nil)
 
 // Log the properties.
 logger.Info("Properties:")
@@ -467,7 +467,7 @@ Stepper motors will report `true` if they are being powered while holding a posi
 
 **Returns:**
 
-- [tuple](https://docs.python.org/3/library/stdtypes.html#tuple)[[bool](https://docs.python.org/3/library/functions.html#bool), [float](https://docs.python.org/3/library/functions.html#float)]: The bool is true if the motor is currently running; false if not.
+- [(tuple[bool, float])](https://docs.python.org/3/library/functions.html#bool): The bool is `true` if the motor is currently running; `false` if not.
 The float represents the current portion of max power to the motor (between 0 and 1).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_powered).
@@ -491,7 +491,7 @@ print('Powered: ', powered)
 
 **Returns:**
 
-- [(bool)](https://pkg.go.dev/builtin#bool): True if the motor is currently running; false if not.
+- [(bool)](https://pkg.go.dev/builtin#bool): `True` if the motor is currently running; `false` if not.
 - [(float64)](https://pkg.go.dev/builtin#float64): The current portion of max power to the motor (between 0 and 1).
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
@@ -501,7 +501,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Check whether the motor is currently running.
-powered, pct, _ := myMotor.IsPowered(context.Background(), nil)
+powered, pct, err := myMotor.IsPowered(context.Background(), nil)
 
 logger.Info("Is powered?")
 logger.Info(powered)
@@ -555,7 +555,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 myMotor, err := motor.FromRobot(robot, "my_motor")
 
 // Check whether the motor is currently moving.
-moving, _ := myMotor.IsMoving(context.Background())
+moving, err := myMotor.IsMoving(context.Background())
 
 logger.Info("Is moving?")
 logger.Info(moving)
@@ -575,11 +575,11 @@ If you are implementing your own motor and add features that have no built-in AP
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_motor = Motor.from_robot(robot=robot, name="my_motor")
@@ -599,13 +599,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map\[string\]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map\[string\]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map\[string\]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map\[string\]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myMotor, err := motor.FromRobot(robot, "my_motor")

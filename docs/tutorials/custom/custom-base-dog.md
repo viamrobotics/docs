@@ -245,12 +245,12 @@ You need to tell your robot how to access the custom component server you create
 This is accomplished by configuring the custom component server as a *remote*.
 
 Back over on the [Viam app](https://app.viam.com), go to your robot's **Config** tab.
-Click the **Remotes** sub-tab.
+Click the **Remotes** subtab.
 Name your remote "my-custom-base" and click **Create Remote**.
 In the **Address** field put `localhost: 9090`.
 Click **Save Config** at the bottom of the page.
 
-![Screenshot of the Viam app CONFIG tab with the Remotes sub-tab open, showing my-custom-base configured as a remote.](../../img/custom-base-dog/remote-config.png)
+![Screenshot of the Viam app CONFIG tab with the Remotes subtab open, showing my-custom-base configured as a remote.](../../img/custom-base-dog/remote-config.png)
 
 {{% alert title="Note" color="note" %}}
 
@@ -262,7 +262,7 @@ If you want to use a different host or port, pass it as a parameter to the serve
 ## Configure the components
 
 Now that the custom base code is set up, you need to configure all your hardware components.
-Navigate to the **Components** sub-tab of the **Config** tab.
+Navigate to the **Components** subtab of the **Config** tab.
 
 ### Configure the base
 
@@ -296,7 +296,7 @@ You have two options for starting the servers: automatic or manual.
 
 ### Option 1: Configure processes to automatically start the servers on boot
 
-Click the **Processes** sub-tab of the **Config** tab.
+Click the **Processes** subtab of the **Config** tab.
 
 Create a new process and give it a name (for example "1st").
 Once configured, this process will start the Freenove robot dog server so it is ready to receive commands from the custom component server.
@@ -317,7 +317,7 @@ Configure it like this:
 
 Click **Save Config** at the bottom of the window.
 
-![Screenshot of the Processes sub-tab of the Config tab, showing two processes configured as detailed above.](../../img/custom-base-dog/process-config.png)
+![Screenshot of the Processes subtab of the Config tab, showing two processes configured as detailed above.](../../img/custom-base-dog/process-config.png)
 
 {{% expand "Click to see what the processes config will look like in Raw JSON mode." %}}
 

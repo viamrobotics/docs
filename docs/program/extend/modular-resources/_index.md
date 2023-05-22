@@ -454,7 +454,7 @@ realpath <path-to-your-module-directory>/<your-module>
 
 ### Configure your module
 
-To configure your new *module* on your robot, navigate to the **Config** tab of your robot's page on [the Viam app](https://app.viam.com) and click on the **Modules** sub-tab.
+To configure your new *module* on your robot, navigate to the **Config** tab of your robot's page on [the Viam app](https://app.viam.com) and click on the **Modules** subtab.
 
 The following properties are available for modules:
 

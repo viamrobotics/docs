@@ -43,6 +43,12 @@ Viam supports a wide variety of systems, including:
     </a>
   </div>
   <div class="col">
+    <a href="installation/prepare/rpi-setup/">
+        <img src="installation/img/thumbnails/rpi-3.png" alt="Raspberry Pi 3" width="100%">
+        <h6>Raspberry Pi 3</h6>
+    </a>
+  </div>
+  <div class="col">
     <a href="installation/prepare/jetson-agx-orin-setup/">
         <img src="installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png" alt="Jetson A G X Orin Developer Kit" width="100%">
         <h6>NVIDIA Jetson AGX Orin</h6>

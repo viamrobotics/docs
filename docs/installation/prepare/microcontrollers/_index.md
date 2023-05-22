@@ -290,7 +290,7 @@ Add the ESP32-backed worker robot as a remote of your new controller robot to es
 
 ![The remotes config information](../../img/microcontroller/copy-remotes-json.png)
 
-2. Navigate to the **Config** tab of the control robot, select the `Remotes` sub-tab, select the `JSON` mode and click **Create Remote**.
+2. Navigate to the **Config** tab of the control robot, select the `Remotes` subtab, select the `JSON` mode and click **Create Remote**.
 
 ![Create remote menu](../../img/microcontroller/create-remote.png)
 

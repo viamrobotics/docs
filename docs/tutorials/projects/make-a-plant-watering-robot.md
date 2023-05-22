@@ -423,7 +423,7 @@ You can modify this example code as necessary.
 
 #### Add the `MoistureSensor` Remote
 
-Now, go back to your robot's page on [the Viam app](https://app.viam.com) and navigate to the **Config** tab, then to the **Remotes** sub-tab.
+Now, go back to your robot's page on [the Viam app](https://app.viam.com) and navigate to the **Config** tab, then to the **Remotes** subtab.
 
 Add your sensor server as a [remote part](/manage/parts-and-remotes/) called `my-sensor-server`:
 
