@@ -400,8 +400,8 @@ import (
   "go.viam.com/rdk/services/motion"
 )
 
-// < Insert code to connect to your robot >
-// (see code sample tab of your robot's page in the Viam app) >
+// Insert code to connect to your robot.
+// (see code sample tab of your robot's page in the Viam app)
 
 // Assumes a gripper configured with name "my_gripper" on the robot
 gripperName := Gripper.Named("my_gripper")
