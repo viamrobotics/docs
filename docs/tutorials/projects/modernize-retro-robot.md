@@ -46,7 +46,7 @@ Some of the items listed here are supplies that can be used for projects beyond 
 [12V to 5V DC USB Type-C step-down power converter](https://www.amazon.com/dp/B0BNQ9XXCZ/)|$7.99|To power the Pi from a 12v battery.|
 [12v power supply](https://www.amazon.com/TMEZON-Power-Adapter-Supply-2-1mm/dp/B00Q2E5IXW)|$8.09|To charge the battery.|
 [L298N motor drive controller board 2-pack](https://www.amazon.com/DAOKI-Controller-H-Bridge-Stepper-Mega2560/dp/B085XSLKFQ/r)|$8.31|To control the base and head motors.|
-[LEDs](https://www.amazon.com/ELEGOO-Diffused-Assorted-Colors-Arduino/dp/B0739RYXVC/)|$11.98|You'll need 2 LEDs to light up the eyes, smaller quantities can be purchased.|
+[LED E10 bulbs](https://www.amazon.com/Ruiandsion-6000K-Flashlight-Headlight-Negative/dp/B08SLQBZGN)|$7.99|You'll need 2 LED bulbs to light up the eyes.|
 [Webcam](https://www.amazon.com/gp/product/B08PTNVPKX)|$36.15|A webcam that can be placed as a "nose", there are many options.|
 [12V Battery pack](https://www.amazon.com/5200mAh-Lithium-57-72Wh-Rechange-Connectors/dp/B08D1SHJDC)|$59.00|The Omnibot had a battery pack, but it likely will not work after almost 40 years; our was missing. You do not need to use lithium ion batteries, but if your battery pack does not fit in the battery compartment you will need to house it elsewhere and route wires differently than in this tutorial. If you have the know-how, you could alternately build a 12V battery pack with 18650s and a spot welder.|
 [Ultrasonic sensor](https://www.amazon.com/WWZMDiB-HC-SR04-Ultrasonic-Distance-Measuring/dp/B0B1MJJLJP)|$3.50|For obstacle avoidance|
@@ -105,6 +105,7 @@ Leave this panel open as we move to the next steps.
 
 Now is the time to give the Omnibot new life as MAIV (Modernized with AI and Viam).
 This will take some surgery - but fortunately its all low-risk.
+Just remember to set aside any screws you remove in a place where they will not get lost - you may want to label where each screw belongs as well.
 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/maiv/maiv_surgery.jpg" alt="Omnibot 2000 taken apart." title="Omnibot 2000 taken apart." style="max-width: 400px;" />
@@ -223,7 +224,7 @@ One of the terminals to the quick connector is empty, this is expected, you will
 
 Now use another 4-terminal quick connector to connect the negative power supply wire from the torso to the step down converter *negative* wire.
 Using a length of 18 gauge wire, connect another terminal in this quick connector to the GND screw terminal on the L298N motor driver to which you previously connected the base motors and pi.
-As with the positive connector, one of the terminals will be left empty.
+As with the positive connector, one of the negative terminals will be left empty.
 
 Finally, plug the USB-C output from the step down converter to the Raspberry Pi.
 
@@ -236,8 +237,9 @@ You should see LEDs on the motor driver and Pi light up!
 
 {{% alert title="Troubleshooting" color= "info" %}}
 
-If you do not see the LEDs light up, turn the power switch to off.
-Check your wiring, and use a multimeter to ensure that your battery has enough power, and that the positive and negative polarity is as expected.
+If you do not see the LEDs light up, turn the power switch off.
+
+Check your wiring, use a multimeter to ensure that your battery has enough power, and that the positive and negative polarity is as expected.
 You can also try unplugging the battery and powering instead with the wall adaptor.
 
 {{% /alert %}}
@@ -391,7 +393,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Test the components
+#### Test the base and motor components
 
 MAIV is still in pieces, but its time to ensure that the motors and base controls are working.
 Check to see if you might have something that you can use to set MAIV's base upon so the motorized wheels can spin freely.
@@ -399,15 +401,209 @@ Or, if the wires between the base and the torso are long enough to allow small m
 
 Navigate to your robot's [Control tab](/manage/fleet/robots/#control).
 Click on the base panel and use the arrows to control the base.
-Ensure the motors on both side are working, and that the wheels are spinning as expected.
-If the wheels on a side are spinning in the opposite direction of what you would expect, go back to the **Config** tab, toggle `Direction Flip` for the appropriate motor, **Save config** and repeat the test steps.
+Ensure the motors on both sides are working, and that the wheels are spinning as expected.
+If the wheels on a given side are spinning in the opposite direction of what you would expect, go back to the **Config** tab, toggle `Direction Flip` for the appropriate motor, **Save config** and repeat the test steps.
 
 {{<video webm_src="../../img/maiv/maiv_base_test.webm" mp4_src="../../img/maiv/maiv_base_test.mp4" alt="MAIV base test movements" max-width="300px">}}
 
-From the **Control tab** you can also test the individual motors directly by first selecting the direction and power percent, then starting the motor by clicking `RUN` and stopping the motor by clicking `STOP`.
+From the **Control tab** you can also test the individual motors directly.
+First select the desired direction and power percent, start the motor by clicking `RUN` and stop the motor by clicking `STOP`.
 
 ### MAIV's head
 
-In order to give MAIV a bit more personality, but also more capability, let's wire MAIV's neck motor and eyes.
-You'll also add a camera so MAIV can see the world.
+In order to give MAIV a bit more personality and capability, let's wire MAIV's neck motor and eyes.
+We'll also add a camera so MAIV can see the world.
 
+#### Convert MAIV's eyes to LEDs
+
+Because MAIV's torso is already open, the neck and head is detached.
+Turn the head over, locate and unscrew the two screws holding MAIV's face plate.
+You will be replacing the current incandescent bulbs with more energy-efficient LEDs that can be controlled directly from your Raspberry Pi.
+In order to access the eye wiring, locate the screws on the underside of the head and unscrew them.
+
+<div class="td-max-width-on-larger-screens">
+<img src="../../img/maiv/maiv_eyes.jpg" alt="Omnibot MAIV eye plate." class="alignleft" title="Omnibot MAIV eye plate." style="max-width: 250px;" />
+</div>
+
+Remove the eye shield, unscrew the incandescent bulbs and screw in the LED bulbs.
+
+The original wires to the eye bulb sockets won't be long enough to reach the Raspberry Pi.
+Cut the original wires (leave some length) and strip the ends.
+You will control both eyes at once, so use a 3-terminal quick connect to connect both eyes positive wires, and a third long breadboard wire.
+Repeat the same with another 3-terminal quick connect for the negative wires.
+
+Now, run the long breadboard wires to through the robot neck, torso, and into the base.
+
+With the robot/Raspberry Pi powered off:
+
+* Plug the positive breadboard wire into pin 1 on the Raspberry Pi (3.3V).
+* Plug the negative breadboard wire into pin 18 (GPIO 24) on the Pi.
+
+Power your robot back on to test the eyes.
+You will use GPIO directly to control the eyes through the `board` component you already configured.
+Once viam-server is running (it will take a minute or so to initialize), go to the **Control** tab and open the *local* board card.
+From here, you can test MAIV's eyes by setting GPIO pin 18 to high (to turn the eyes on) or low (to turn the eyes off).
+
+{{<video webm_src="../../img/maiv/maiv_eye_test.webm" mp4_src="../../img/maiv/maiv_eye_test.mp4" alt="MAIV eye flashing test" max-width="300px">}}
+
+#### Connect and test the neck motor
+
+The Omnibot 2000 has a motor that allows the head to turn from side-to-side.
+This motor is a simple DC motor like those found in its base; the motor is not encoded nor is it a stepper motor so precise control is not an option.
+
+You will notice that there are two wires that are running to some sort of limit switch and two wires that are running to the motor.
+Ignore those running to the limit switch.
+Extend the wires running to the neck motor through the torso and into the base.
+
+Again, power off your robot.
+
+Take a another L298N motor driver and using a screwdriver, attach the 2 wires from the neck motor to the `OUT1` and `OUT2` terminals.
+
+Using a length of 18 gauge wire, connect the final terminal of the positive quick connector to the 12V VCC screw terminal on the L298N.
+Connect the final terminal of the negative quick connector to the GND terminal on the L298N.
+
+Connect GPIO pins for the neck motor with female-to-female jumper wires.
+You can use any free GPIO pins, but we connected pin 16 to `IN1`, pin 37 to `IN2`, and pin 29 to `ENA`.
+
+[TODO: need wiring diagram here]
+
+{{< tabs >}}
+{{% tab name="Builder UI" %}}
+To add the neck motor, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+
+Enter `neck` for the name for your neck [motor component](/components/motor/), select the type `motor`, and select the `gpio` model.
+Then click **Create component**.
+
+Next, select `local` for the board attribute.
+Set `Max RPM` to 200.
+Leave `Direction Flip` off.
+Toggle `Type` to `In1/In2`.
+
+Now, select `16 GPIO 23` for `A/In1`.
+Select `37 GPIO 26` for `B/In2`.
+Select `29 GPIO 5` for `PWM`.
+
+Finally, add `local` to `Depends on`.
+
+Click **Save config** in the bottom left corner of the screen.
+
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+If you are editing the configuration of MAIV using JSON directly, add the neck motor by adding the following within the components list in your configuration.
+
+``` JSON
+    {
+      "type": "motor",
+      "model": "gpio",
+      "name": "neck",
+      "attributes": {
+        "max_rpm": 200,
+        "pins": {
+          "a": "16",
+          "b": "37",
+          "pwm": "29"
+        },
+        "board": "local"
+      },
+      "depends_on": [
+        "local"
+      ]
+    }
+```
+
+Click **Save config** in the bottom left corner of the screen.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Power your robot back on and use the **Control** tab to test that the neck motor is connected properly and can be powered on and off.
+
+#### Add a camera "nose"
+
+Before re-assembling MAIV, you will add a camera to your robot's face.
+We can use this camera to stream video and capture images, as well as leverage for computer vision and machine learning.
+
+<div class="td-max-width-on-larger-screens">
+<img src="../../img/maiv/maiv_eye_sockets.jpg" alt="Omnibot MAIV face plate with camera." class="alignright" title="Omnibot MAIV face plate with camera." style="max-width: 250px;" />
+</div>
+
+Take MAIV's gray face plate measure to find the center between and below the eye sockets.
+
+Find a drill bit that is about the same circumference as the USB camera you purchased and carefully drill a hole through the face plate.
+Ensure that the camera fits.
+
+Run the USB wire through the robot neck, torso and into the base.
+Plug it into the Raspberry Pi.
+
+Now re-assemble MAIV's head, eye plate, and face plate with the screws you removed earlier.
+Fit MAIV's neck into the torso, and re-assemble the torso.
+
+{{% alert title="Warning" color= "warning " %}}
+
+Be careful not to crack MAIV's face plate when drilling through (as we did).
+
+Use a sharp (non-spade bit) at high RPM.
+Covering both sides with masking tape before drilling (remove afterwards) can also help.
+
+{{% /alert %}}
+
+{{< tabs >}}
+{{% tab name="Builder UI" %}}
+Add the camera to your robot by navigating to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+
+Enter `face-cam` for the name for your [camera component](/components/camera/), select the type `camera`, and select the `webcam` model.
+Then click **Create component**.
+
+Being that this is the only camera currently configured for MAIV, keep 'video path' blank, and viam-server will auto-detect the path on startup or reconfiguration.
+
+Finally, add `local` to `Depends on`.
+
+Click **Save config** in the bottom left corner of the screen.
+
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+If you are editing the configuration of MAIV using JSON directly, add the camera by adding the following within the components list in your configuration.
+
+``` JSON
+    {
+      "attributes": {
+        "video_path": ""
+      },
+      "depends_on": ["local"],
+      "model": "webcam",
+      "name": "face-cam",
+      "type": "camera"
+    }
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Test your camera by navigating to the **Control** tab, opening the camera card, and turning on the video stream.
+Turning MAIV's head while streaming video will give you a sense of how MAIV is starting to see the world!
+
+{{<video webm_src="../../img/maiv/maiv_head_test.webm" mp4_src="../../img/maiv/maiv_head_test.mp4" alt="MAIV head test" max-width="300px">}}
+
+## Putting MAIV together
+
+Now that you've wired, configured, and tested all the components, put MAIV back together:
+
+* Screw the upper base to the torso.
+* Screw the lower base to the upper base.
+
+Now MAIV is ready to be driven around and controlled programmatically!
+
+{{<video webm_src="../../img/maiv/maiv_driving.webm" mp4_src="../../img/maiv/maiv_driving.mp4" alt="MAIV driving" max-width="350px">}}
+
+Start with the **Control** panel, then try writing some code.
+A simple first exercise would be to have MAIV [drive in a square](/tutorials/get-started/try-viam-sdk/).
+The same code that works with any configured base will work with MAIV, you'll just need to update the robot location, robot secret and any component names that differ in the code.
+
+Since MAIV has a camera, you could also [set up a color detector](/tutorials/services/webcam-line-follower-robot/) or detect objects using a [machine learning model](/tutorials/projects/send-security-photo/).
+
+There's a lot more we can do with MAIV, and we'll dive into other areas in upcoming parts of this series.
+In the meantime, we'd love to hear what you might do with your own retro robot - let us and the [Viam community](https://discord.gg/viam) know!
