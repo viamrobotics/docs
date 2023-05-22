@@ -6,6 +6,7 @@ type: "docs"
 description: "Use Viam's SDKs to write code to access and control your robot."
 icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
+no_list: true
 aliases:
   - "product-overviews/sdk-as-client"
   - "program/sdk-as-client"
@@ -20,11 +21,12 @@ Viam offers software development kits (SDKs) in popular languages which
 
 Use the SDK of your preferred language to write code to control your robots.
 
-Viam currently offers SDKs for the following three languages:
+Viam currently offers SDKs for the following languages:
 
 - [Python SDK](https://python.viam.dev/)
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 - [TypeScript SDK](https://ts.viam.dev/)
+- [C++ SDK](https://cpp.viam.dev/)
 
 Click on the links above to read more about installation and usage of each SDK.
 
@@ -52,6 +54,11 @@ npm install --save @viamrobotics/sdk
 ```
 
 {{% /tab %}}
+{{% tab name="C++" %}}
+
+Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 {{% alert title="Note" color="note" %}}
@@ -62,12 +69,6 @@ Before you get started, ensure that you:
 2. Create a new robot.
 3. Go to the **Setup** tab and follow the instructions there.
 4. [Configure](../../manage/configuration) your robot.
-
-{{% /alert %}}
-
-{{% alert title="Tip" color="tip" %}}
-
-You can find more examples of Viam's SDKs in the <file>examples</file> folder of the [Python SDK GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1), the [Go SDK GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples), or the [TypeScript SDK GitHub repository](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples).
 
 {{% /alert %}}
 
@@ -205,6 +206,43 @@ main();
 ```
 
 {{% /tab %}}
+{{% tab name="C++" %}}
+
+```cpp {class="line-numbers linkable-line-numbers"}
+# include <string>
+# include <vector>
+
+# include <boost/optional.hpp>
+
+# include <viam/api/common/v1/common.pb.h>
+# include <viam/api/robot/v1/robot.grpc.pb.h>
+
+# include <viam/sdk/robot/client.hpp>
+# include <viam/sdk/components/camera/client.hpp>
+
+using namespace viam::sdk;
+
+int main() {
+  std::string host("guardian-main.vw3iu72d8n.viam.cloud");
+  DialOptions dial_opts;
+  Credentials credentials("gf1aufai3dr0b5o9csko93b1d8llfwolisa0my141wlmvkmg");
+  dial_opts.set_credentials(credentials);
+  boost::optional<DialOptions> opts(dial_opts);
+  Options options(0, opts);
+
+  auto robot = RobotClient::at_address(host, options);
+
+  std::cout << "Resources:\n";
+  for (const ResourceName& resource: *robot->resource_names()) {
+    std::cout << resource.namespace_() << ":" << resource.type() << ":"
+              << resource.subtype() << ":" << resource.name() << "\n";
+  }
+
+  return 0;
+}
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ## Add Control Logic
@@ -215,7 +253,9 @@ Find documentation on how to use these methods here:
 
 - [Arm](/components/arm/#api)
 - [Base](/components/base/#api)
+- [Board](/components/board/#api)
 - [Camera](/components/camera/#api)
+- [Encoder](/components/encoder/#api)
 - [Gantry](/components/gantry/#api)
 - [Gripper](/components/gripper/#api)
 - [Input Controller](/components/input-controller/#api)
@@ -223,11 +263,17 @@ Find documentation on how to use these methods here:
 - [Movement Sensor](/components/movement-sensor/#api)
 - [Sensor](/components/sensor/#api)
 - [Servo](/components/servo/#api)
-<!--
-Board API Docs should be added soon on Viam Documentation, + Encoder
--->
 
-You can find example code in the [Python SDK example GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1), the [Golang SDK example GitHub repository](https://github.com/viamrobotics/rdk/tree/main/examples), or the [TypeScript SDK example GitHub repository](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples).
+{{% alert title="Tip" color="tip" %}}
+
+You can find example code using the SDKs in the <file>examples</file> folder of the respective repository:
+
+- [Python SDK repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1)
+- [Go SDK repository](https://github.com/viamrobotics/rdk/tree/main/examples)
+- [TypeScript SDK repository](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples)
+- [Viam C++ SDK repository](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples)
+
+{{% /alert %}}
 
 ## Run Your Code
 
@@ -251,6 +297,11 @@ go run ~/myCode/myViamFile.py
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
+
+For an example, see [this execution demo.](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/vanilla)
+
+{{% /tab %}}
+{{% tab name="C++" %}}
 
 For an example, see [this execution demo.](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/vanilla)
 
@@ -296,4 +347,5 @@ Currently, this only works with Python code which is running on the same board t
   {{% card link="/components" size="small" %}}
   {{% card link="/services" size="small" %}}
   {{% card link="/program/extend/" size="small" %}}
+  {{% card link="/program/sdks/use-extra-params" size="small" %}}
 {{< /cards >}}
