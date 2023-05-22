@@ -9,7 +9,8 @@ mp4Src: "/tutorials/img/build-a-mock-robot/mock-robot.mp4"
 images: ["/tutorials/img/build-a-mock-robot/mock-robot.gif"]
 videoAlt: "A mock arm's joint positions from the control tab of the Viam app."
 aliases:
-    - /tutorials/build-a-mock-robot/
+    - "/tutorials/build-a-mock-robot/"
+    - "/tutorials/how-to-build-a-mock-robot/"
 tags: ["mock", "simulation"]
 ---
 

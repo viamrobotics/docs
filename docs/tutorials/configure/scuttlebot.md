@@ -10,6 +10,7 @@ imageAlt: "The Viam app UI showing the CONFIG tab of a robot."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 aliases:
   - "/tutorials/scuttlebot"
+  - "/tutorials/scuttlebot/scuttlebot"
 ---
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/LAMxYci242E">}}

@@ -8,6 +8,8 @@ image: "/program/img/modular-resources/rplidar-on-robot.png"
 imageAlt: "An R-P-lidar mounted to a Viam rover."
 images: ["/program/img/modular-resources/rplidar-on-robot.png"]
 tags: ["slam", "services"]
+aliases:
+  - "/program/extend/modular-resources/add-rplidar-module/"
 # SMEs: Kat, Jeremy
 ---
 
