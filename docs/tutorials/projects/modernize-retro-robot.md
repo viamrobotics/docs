@@ -74,9 +74,9 @@ You'll also need some basic tools and supplies:
 </div>
 
 Your Omnibot 2000 arrival will likely be both exciting *and* full of dust.
-So get out your window cleaner and paper towels and get to know it while giving it a good cleaning.
+Get out your window cleaner and paper towels and get to know it while giving it a good cleaning.
 
-The Omnibot is driven by two wheels on each side, with a 3rd un-powered wheel per side.
+The Omnibot is driven by two wheels on each side, with a third un-powered wheel per side.
 The powered wheels have treads - you'll want to see if yours are intact and usable as they are important for traction.
 Ours were in decent shape - if yours are not you can find them for sale on [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=omnibot+2000+treads&_sacat=0&LH_TitleDesc=0&_odkw=omnibot+2000&_osacat=0) or 3D-printable at [Thingaverse](https://www.thingiverse.com/thing:4779479).
 
@@ -139,7 +139,7 @@ You will see two wires leading to each motor.
 Trace them to the outside of the gearbox, and mark them left, right, and front - we used masking tape and a marker.
 
 The front motor allows a switch from high to low gear.
-We won't wire this as part of this tutorial - so if you want to shift the gear, you can do so manually with the gearbox cover off.
+We won't wire this as part of this tutorial - if you want to shift the gear, you can do so manually with the gearbox cover off.
 
 Once you've marked the wires, close up the gearbox with the screws you removed earlier.
 
@@ -248,7 +248,7 @@ You can also try unplugging the battery and powering instead with the wall adapt
 ### Base configuration
 
 Merging 40-year-old tech with modern tech to light up LEDs verges on exciting, but we need to configure our robotic base before we can get to the true prize of controlling MAIV through the internet and programmatically.
-So for now, turn the power switch to the off position.
+For now, turn the power switch to the off position.
 In just a few minutes, you'll have it back on.
 
 Go to the [Viam app](https://app.viam.com) and create a new robot called `MAIV`.
