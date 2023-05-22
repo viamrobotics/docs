@@ -10,6 +10,7 @@ aliases:
     - "/manage/fleet-management"
     - "/manage/app-usage"
     - "/product-overviews/fleet-management/"
+    - "/fleet"
 ---
 
 The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of robots alone or in collaboration with others.

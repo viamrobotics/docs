@@ -9,7 +9,8 @@ mp4Src: "/tutorials/videos/scuttle-gamepad-preview.mp4"
 videoAlt: "Drive a SCUTTLE Robot with a bluetooth gamepad."
 images: ["/tutorials/videos/scuttle-gamepad-preview.gif"]
 aliases:
-    - /tutorials/scuttle-gamepad/
+    - "/tutorials/scuttle-gamepad/"
+    - "/tutorials/scuttlebot/scuttle-gamepad/"
 tags: ["base", "scuttle", "gamepad"]
 ---
 
