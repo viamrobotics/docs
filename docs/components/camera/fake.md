@@ -13,8 +13,7 @@ A `fake` camera is a camera model for testing.
 The camera always returns the same image, which is an image of a gradient.
 This camera also returns a point cloud.
 
-You can optionally specify either a height or width, and the image will be scaled to preserve a 16:9 aspect ratio.
-You cannot specify both a height and width.
+You can optionally specify a height and width.
 
 {{< tabs name="Configure a Fake Camera" >}}
 {{% tab name="Config Builder" %}}
@@ -51,8 +50,8 @@ The following attributes are available for `fake` cameras:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `width` | int | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height`. |
-| `height` | int | Optional | The width of the image in pixels. The default resolution is 1280 x 720. If you specify either width or height, the image gets scaled to preserve 16:9 aspect ratio. You cannot specify both `width` and `height` |
+| `width` | int | Optional | The width of the image in pixels. The default resolution is 1280 x 720. |
+| `height` | int | Optional | The width of the image in pixels. The default resolution is 1280 x 720. |
 
 ## View the camera stream
 
