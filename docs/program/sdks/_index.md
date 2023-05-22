@@ -270,12 +270,12 @@ Find documentation on how to use these methods here:
 
 {{% alert title="Tip" color="tip" %}}
 
-You can find example code using the SDKs in the <file>examples</file> folder of the respective repository:
+Each SDK provides example code in its repository:
 
-- [Python SDK repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1)
-- [Go SDK repository](https://github.com/viamrobotics/rdk/tree/main/examples)
-- [TypeScript SDK repository](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples)
-- [Viam C++ SDK repository](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples)
+- [Python SDK examples](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/server/v1)
+- [Go SDK examples](https://github.com/viamrobotics/rdk/tree/main/examples)
+- [TypeScript SDK examples](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples)
+- [Viam C++ SDK examples](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples)
 
 {{% /alert %}}
 
