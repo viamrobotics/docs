@@ -12,7 +12,7 @@ imageAlt: ""
 # SME: Matt Vella
 ---
 
-From Star Wars to Short Circuit, Go-bots to Voltron to Transformers - the 1980s was a time of mass propagation in pop culture of how robots might exist alongside us in the future.
+From Star Wars to Short Circuit, Go-bots to Transformers - the 1980s was a time of mass propagation in pop culture of how robots might exist alongside us in the future.
 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/maiv/omnibot_ad.png" class="alignleft" alt="1984 advertisement for the Omnibot 2000." title="1984 advertisement for the Omnibot 2000." style="max-width: 350px" />
@@ -22,8 +22,8 @@ Along with robots appearing in mass media, a good number of toy robots made thei
 While these robots certainly did allow some fun for those fortunate enough to have one, they ultimately were often a fairly crude combination of common tech of the times.
 Cross a remote control car with a cassette player, walkie-talkie, and alarm clock - you had the top of the line toy robot of the 1980s: the Tomy Omnibot 2000.
 
-Let’s bring the Omnibot 2000 closer to the robot vision that many had (and still have) by bringing in new technology.
-We'll also rename it Omnibot MAIV (Modernized with AI and Viam).
+Let’s bring the Omnibot 2000 closer to the home robot vision that many had (and still have) by bringing in new technology and renaming it Omnibot MAIV (Modernized with AI and Viam).
+
 We will keep the original housing, style and motors where possible - but bring it into the modern era with:
 
 * Programmatic control
@@ -50,11 +50,11 @@ Some of the items listed here are supplies that can be used for projects beyond 
 [Webcam](https://www.amazon.com/gp/product/B08PTNVPKX)|$36.15|A webcam that can be placed as a "nose", there are many options.|
 [12V Battery pack](https://www.amazon.com/5200mAh-Lithium-57-72Wh-Rechange-Connectors/dp/B08D1SHJDC)|$59.00|The Omnibot had a battery pack, but it likely will not work after almost 40 years; our was missing. You do not need to use lithium ion batteries, but if your battery pack does not fit in the battery compartment you will need to house it elsewhere and route wires differently than in this tutorial. If you have the know-how, you could alternately build a 12V battery pack with 18650s and a spot welder.|
 [Ultrasonic sensor](https://www.amazon.com/WWZMDiB-HC-SR04-Ultrasonic-Distance-Measuring/dp/B0B1MJJLJP)|$3.50|For obstacle avoidance|
-[Raspberry Pi 4B](https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TC2BK1X)|$145.00|You can use any Pi or supported SBC that runs 64 bit Linux.|
+[Raspberry Pi 4B](https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TC2BK1X)|$125.00|You can use any Pi or supported SBC that runs 64 bit Linux.|
 [DC barrel pigtail connectors](https://www.amazon.com/43x2pcs-Connectors-Security-Lighting-MILAPEAK/dp/B072BXB2Y8)|$9.79|For connecting the battery pack to the robot|
 [Assorted breadboard wires](https://www.amazon.com/EDGELEC-Optional-Breadboard-Assorted-Multicolored/dp/B07GD17ZF3)|$19.98|Various lengths will be helpful.|
-[18 gauge stranded wire](https://www.amazon.com/American-Gauge-Primary-Black-Available/dp/B07D74RGVM)|$11.38|Other gauges can work, for connecting various components that don't have pins|
-[Quick wire connectors](https://www.amazon.com/Quick-Connect-Wire-Connectors-Kit/dp/B0BRQD257H/)|$25.00|Not required, but will make wire connections secure and simple.|
+[18 gauge stranded wire](https://www.amazon.com/American-Gauge-Primary-Black-Available/dp/B07D74RGVM)|$11.38|For connecting various components that don't have pins|
+[Quick wire connectors](https://www.amazon.com/Quick-Connect-Wire-Connectors-Kit/dp/B0BRQD257H/)|$25.00|Not required, but these make wire connections secure and simple.|
 [Velcro tape](https://www.amazon.com/Double-Sided-Adhesive-Strong-Self-Adhesive-Fastener/dp/B07TVZB1GL)|$9.99|This will help us organize the components we add to the robot base.|
 
 You'll also need some basic tools and supplies:
@@ -77,7 +77,7 @@ Your Omnibot 2000 arrival will likely be both exciting *and* full of dust.
 So get out your window cleaner and paper towels and get to know it while giving it a good cleaning.
 
 The Omnibot is driven by two wheels on each side, with a 3rd un-powered wheel per side.
-The powered wheels have treads, you'll want to see if yours are intact and usable as they are important for traction.
+The powered wheels have treads - you'll want to see if yours are intact and usable as they are important for traction.
 Ours were in decent shape - if yours are not you can find them for sale on [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=omnibot+2000+treads&_sacat=0&LH_TitleDesc=0&_odkw=omnibot+2000&_osacat=0) or 3D-printable at [Thingaverse](https://www.thingiverse.com/thing:4779479).
 
 <div class="td-max-width-on-larger-screens">
@@ -94,18 +94,18 @@ The tape player in an interesting device to have built-into a robot - and it cer
 </div>
 
 It is powered separately from the rest of the robot.
-We won't attempt to resurrect it, but go for it if you like, and tell us how it goes!
+We won't attempt to resurrect it, but if you do tell us how it goes!
 
 There is a panel in the middle of Omnibot's back with a few switches and a number of ports.
 With a screwdriver, open this panel.
-This compartment is a nice size for our battery pack, and you will see a barrel jack that we'll later use to plug the battery pack into.
+This compartment is a good size for our battery pack, and you will see a barrel jack that we'll later use to plug the battery pack into.
 Leave this panel open as we move to the next steps.
 
 ## Transformation
 
 Now is the time to give the Omnibot new life as MAIV (Modernized with AI and Viam).
 This will take some surgery - but fortunately its all low-risk.
-Just remember to set aside any screws you remove in a place where they will not get lost - you may want to label where each screw belongs as well.
+Just remember to set aside any screws you remove in a place where they remain organized and will not get lost.
 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/maiv/maiv_surgery.jpg" alt="Omnibot 2000 taken apart." title="Omnibot 2000 taken apart." style="max-width: 400px;" />
@@ -113,8 +113,8 @@ Just remember to set aside any screws you remove in a place where they will not 
 
 ### Inside MAIV's base
 
-Start by placing MAIV face-down on a large table or floor, and finding the six screw locations.
-Unscrew each screw (if yours has all of its screws intact, ours was missing a few), and place the base wheels-down.
+Start by placing MAIV face-down on a large table or floor, and find the six screw locations on the bottom near the wheels.
+Unscrew each screw (if yours has all of its screws intact, ours was missing a few), detach the lower base and place it wheels-down.
 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/maiv/maiv_base_open.jpg" alt="Omnibot MAIV base opened." class="alignleft" title="Omnibot MAIV base opened." style="max-width: 250px;" />
@@ -123,7 +123,7 @@ Unscrew each screw (if yours has all of its screws intact, ours was missing a fe
 The first thing you may notice is that inside the base, there is a good amount of room to work.
 We'll be adding electronic components here, as this is also a fairly easy place to access.
 In the rear, there is a thick plastic box.
-Locate the screw, and open carefully open it.
+Locate the screws, and carefully open it.
 
 Inside you'll see 3 motors and some gears that drive the base's left and right wheels.
 Inside this gearbox is probably one of the cleanest places within your robot - we were amazed to see clear, clean grease on the gears.
@@ -137,10 +137,11 @@ Be sure to keep it this way!
 
 You will see two wires leading to each motor.
 Trace them to the outside of the gearbox, and mark them left, right, and front - we used masking tape and a marker.
-Once you've marked the wires, close up the gearbox with the screws you removed earlier.
 
 The front motor allows a switch from high to low gear.
 We won't wire this as part of this tutorial - so if you want to shift the gear, you can do so manually with the gearbox cover off.
+
+Once you've marked the wires, close up the gearbox with the screws you removed earlier.
 
 #### Wire MAIV's base motors to the motor driver
 
@@ -150,7 +151,7 @@ But first, remember it was in someone's attic gathering dust for years.
 Second, we will re-use the motors and gears and leave the original circuit boards in-place (albeit no longer used).
 It's a [restomod](https://www.goldeagle.com/tips-tools/what-is-a-restomod/)!
 
-You will wire the left and right motors to a motor controller and our board - this will allow your Omnibot to be controlled with Viam as a [wheeled base](/components/base/wheeled/).
+You will wire the left and right motors to a motor controller and Raspberry Pi - this will allow your Omnibot to be controlled with Viam as a [wheeled base](/components/base/wheeled/).
 
 First, detach the left and right base motor's wires from the small printed circuit board.
 Orient the L298N so that the `OUT1` and `OUT2` terminals are on the left side.
@@ -185,17 +186,17 @@ In case you want to connect to them later, leave enough length before the cut to
 Now, screw the cover back on with all wires extending out through the bottom of the cover.
 Feed the two wires you just added into the center cavity of the robot through one of the openings at the back side of the battery panel.
 
-If your battery pack has a non-barrel jack connector, you'll need to add one.
+If your battery pack does not have a barrel jack connector, you'll need to add one.
 Cut off any existing connector, and solder the red wire of a male barrel connector pigtail to the positive battery wire, the black wire from the pigtail connector to the negative battery wire.
 Don't plug the battery in just yet.
 
 #### Wire the power sources
 
-You now need to open the center/torso part of MAIV in order to access the wiring within.
-From the top portion of the already open base, locate any screws that attach lower base to the torso and remove them.
+You now need to open the center/torso compartment of MAIV in order to access the wiring within.
+From the top portion of the already open base, locate any screws that attach the lower base to the torso and remove them.
 Then, locate the screws on the sides of MAIV's torso and remove them.
 You should now be able to remove the back portion of the torso.
-Turn it over so that the wires coming out of the battery box and switches are facing upwards.
+Turn this over so that the wires coming out of the battery box and switches are facing upwards.
 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/maiv/maiv_main_board.jpg" alt="Omnibot MAIV power wiring." class="alignleft" title="Omnibot MAIV power wiring." style="max-width: 250px;" />
@@ -214,13 +215,13 @@ One 3-terminal quick connect joins the negative wire from the battery, the negat
 
 Another 3-terminal quick connect will join one end of the power switch, the positive wire from the battery, and the positive wire from the charging port.
 
-Finally, run the unconnected wire from the switch (the positive to power the robot) into the base through one of the holes in the top portion of the base (in the picture we have a two terminal quick connect in order to extend the length of our wire - yours is likely long enough to avoid this).
+Finally, run the unconnected wire from the switch (the positive to power the robot) into the base through one of the holes in the top portion of the base (in the picture we have a 2-terminal quick connect in order to extend the length of our wire - yours is likely long enough to avoid this).
 
 #### Connect the power sources to the motors and Pi
 
-Using a 4-terminal quick connector, connect the positive power supply wire (from the previous step) to the step down converter *positive* input wire.
+Working in the robot base, use a 4-terminal quick connector to connect the positive power supply wire (from the previous step) to the step down converter *positive* input wire.
 Using a length of 18 gauge wire, connect another terminal in this quick connector to the 12V VCC screw terminal on the L298N motor driver to which you previously connected the base motors and pi.
-One of the terminals to the quick connector is empty, this is expected, you will use it later.
+One of the terminals to the quick connector is empty. This is expected, you will use it later.
 
 Now use another 4-terminal quick connector to connect the negative power supply wire from the torso to the step down converter *negative* wire.
 Using a length of 18 gauge wire, connect another terminal in this quick connector to the GND screw terminal on the L298N motor driver to which you previously connected the base motors and pi.
@@ -247,7 +248,7 @@ You can also try unplugging the battery and powering instead with the wall adapt
 ### Base configuration
 
 Merging 40-year-old tech with modern tech to light up LEDs verges on exciting, but we need to configure our robotic base before we can get to the true prize of controlling MAIV through the internet and programmatically.
-So, for now, turn the power switch to the off position.
+So for now, turn the power switch to the off position.
 In just a few minutes, you'll have it back on.
 
 Go to the [Viam app](https://app.viam.com) and create a new robot called `MAIV`.
@@ -399,14 +400,14 @@ MAIV is still in pieces, but its time to ensure that the motors and base control
 Check to see if you might have something that you can use to set MAIV's base upon so the motorized wheels can spin freely.
 Or, if the wires between the base and the torso are long enough to allow small movements of the base you can leave the base on the flat surface.
 
-Navigate to your robot's [Control tab](/manage/fleet/robots/#control).
+Navigate to your robot's [Control](/manage/fleet/robots/#control) tab.
 Click on the base panel and use the arrows to control the base.
 Ensure the motors on both sides are working, and that the wheels are spinning as expected.
 If the wheels on a given side are spinning in the opposite direction of what you would expect, go back to the **Config** tab, toggle `Direction Flip` for the appropriate motor, **Save config** and repeat the test steps.
 
 {{<video webm_src="../../img/maiv/maiv_base_test.webm" mp4_src="../../img/maiv/maiv_base_test.mp4" alt="MAIV base test movements" max-width="300px">}}
 
-From the **Control tab** you can also test the individual motors directly.
+From the **Control** tab you can also test the individual motors directly.
 First select the desired direction and power percent, start the motor by clicking `RUN` and stop the motor by clicking `STOP`.
 
 ### MAIV's head
@@ -429,12 +430,12 @@ Remove the eye shield, unscrew the incandescent bulbs and screw in the LED bulbs
 
 The original wires to the eye bulb sockets won't be long enough to reach the Raspberry Pi.
 Cut the original wires (leave some length) and strip the ends.
-You will control both eyes at once, so use a 3-terminal quick connect to connect both eyes positive wires, and a third long breadboard wire.
+You will control both eyes at once, so use a 3-terminal quick connect to connect both eyes positive wires and a third long breadboard wire.
 Repeat the same with another 3-terminal quick connect for the negative wires.
 
 Now, run the long breadboard wires to through the robot neck, torso, and into the base.
 
-With the robot/Raspberry Pi powered off:
+With the robot powered off:
 
 * Plug the positive breadboard wire into pin 1 on the Raspberry Pi (3.3V).
 * Plug the negative breadboard wire into pin 18 (GPIO 24) on the Pi.
@@ -523,13 +524,13 @@ Power your robot back on and use the **Control** tab to test that the neck motor
 #### Add a camera "nose"
 
 Before re-assembling MAIV, you will add a camera to your robot's face.
-We can use this camera to stream video and capture images, as well as leverage for computer vision and machine learning.
+We can use this camera to stream video and capture images, as well as leverage it for computer vision and machine learning.
 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/maiv/maiv_eye_sockets.jpg" alt="Omnibot MAIV face plate with camera." class="alignright" title="Omnibot MAIV face plate with camera." style="max-width: 250px;" />
 </div>
 
-Take MAIV's gray face plate measure to find the center between and below the eye sockets.
+Take MAIV's gray face plate and measure to find the center between and below the eye sockets.
 
 Find a drill bit that is about the same circumference as the USB camera you purchased and carefully drill a hole through the face plate.
 Ensure that the camera fits.
@@ -542,7 +543,7 @@ Fit MAIV's neck into the torso, and re-assemble the torso.
 
 {{% alert title="Warning" color= "warning " %}}
 
-Be careful not to crack MAIV's face plate when drilling through (as we did).
+Be careful not to crack MAIV's face plate when drilling (as we did).
 
 Use a sharp (non-spade bit) at high RPM.
 Covering both sides with masking tape before drilling (remove afterwards) can also help.
@@ -588,18 +589,18 @@ Turning MAIV's head while streaming video will give you a sense of how MAIV is s
 
 {{<video webm_src="../../img/maiv/maiv_head_test.webm" mp4_src="../../img/maiv/maiv_head_test.mp4" alt="MAIV head test" max-width="300px">}}
 
-## Putting MAIV together
+## MAIV in the world
 
 Now that you've wired, configured, and tested all the components, put MAIV back together:
 
 * Screw the upper base to the torso.
 * Screw the lower base to the upper base.
 
-Now MAIV is ready to be driven around and controlled programmatically!
+Now MAIV is ready to interact with the world!
 
 {{<video webm_src="../../img/maiv/maiv_driving.webm" mp4_src="../../img/maiv/maiv_driving.mp4" alt="MAIV driving" max-width="350px">}}
 
-Start with the **Control** panel, then try writing some code.
+Start by driving MAIV through the **Control** panel, then try writing some code.
 A simple first exercise would be to have MAIV [drive in a square](/tutorials/get-started/try-viam-sdk/).
 The same code that works with any configured base will work with MAIV, you'll just need to update the robot location, robot secret and any component names that differ in the code.
 
