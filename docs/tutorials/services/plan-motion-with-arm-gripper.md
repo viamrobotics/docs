@@ -52,9 +52,15 @@ Accessing the Motion Service is very similar to accessing any other component or
 {{< tabs >}}
 {{% tab name="Python" %}}
 You must import an additional Python library to access the Motion Service.
-Add `from viam.services.motion import MotionClient` to your import list and then add the sample code below to your own client script.
+Add the following line to your import list:
 
-```python {class="line-numbers linkable-line-numbers"}
+```python
+from viam.services.motion import MotionClient
+```
+
+Then add the sample code below to your own client script:
+
+```python
 # Access the Motion Service
 motion_service = MotionClient.from_robot(robot, "builtin")
 ```
