@@ -30,10 +30,10 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Solution:** Ensure that both your computer and the board itself are connected to the internet, and verify each of the following:
 
-- If you are on a Windows computer, be sure that you do not have an outgoing firewall preventing `ssh` connections over port `22`.
+- If you are on a Windows computer, be sure that you do not have an outgoing firewall rule preventing `ssh` connections over port `22`.
 - Your `ssh` connection string should resemble the following: `ssh username@hostname.local`.
    Be sure that you match hostname, username, and password exactly to what you initially configured when imaging your board.
-- If you are still unable to connect, try restarting the board and trying your connection again.
+- If you are still unable to connect, restart your board and try your `ssh` connection again after a few minutes.
 - If that fails, try re-imaging your board following the [installation guide](/installation/) appropriate for your board.
   - If using the [Raspberry Pi installation guide](/installation/prepare/rpi-setup/), be sure to carefully enter the configuration details under the **Advanced Options** (gear icon) button on the [Raspberry Pi imager](https://www.raspberrypi.com/software/) before you re-image your board.
   - If you re-imaged your board and provided a different hostname, you may need to accept the `ssh` host key again by typing `yes` when prompted.
@@ -63,15 +63,15 @@ When a robot is disconnected, it will continue to run with its locally-cached cu
 
 - Is the {{< glossary_tooltip term_id="board" text="board" >}} component connected to the internet?
 - Is the `ssh` service configured and running locally on the board?
-   You can check with `sudo systemctl status ssh`.
+   You can check by running `sudo systemctl status ssh` from within an `ssh` session to the board.
    It should be listed as `active (running)`.
 - Is the `viam-server` service running locally on the board?
-   You can check with `sudo systemctl status viam-server`.
+   You can check by running `sudo systemctl status viam-server` from within an `ssh` session to the board.
    It should be listed as `active (running)`.
   - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
   - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](https://docs.viam.com/installation/#preparation), and then followed the instructions on the **Setup** tab on the Viam app.
-  - If none of the above succeed in getting `viam-server` up and running, check the logs for any pertinent error messages.
-  Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`:
+  - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
+  Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`. Run this command from within an `ssh` session to the board:
 
     ```sh
     grep 'viam-server' /var/log/syslog | tail -50
