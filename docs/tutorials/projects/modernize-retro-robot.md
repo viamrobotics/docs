@@ -36,7 +36,7 @@ Be sure to check back later for updates.*
 
 ## Parts list
 
-Other than the Omnibot 2000, which you'll need to find on a used marketplace like EBay, the rest are commodity parts that can be reliably purchased.
+Other than the Omnibot 2000, which you'll need to find on a used marketplace like eBay, the rest are commodity parts you can find easily:
 Some of the items listed here are supplies that can be used for projects beyond this one.
 
 |Part  | Price | Notes |
