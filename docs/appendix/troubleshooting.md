@@ -3,229 +3,115 @@ title: "Troubleshooting"
 linkTitle: "Troubleshooting"
 weight:
 type: "docs"
-description: "A guide to basic troubleshooting of a Viam-based robotic system, easy fixes to common problems, and a list of known issues."
+description: "A guide to basic troubleshooting of a Viam-based robotic system, with easy fixes to common problems."
 ---
-This document lists known issues, common troubleshooting steps (like checking that the SBC plugged in and turned on, and so on) and common errors, and how we resolved them.
-It differs from the FAQ in that the FAQ contains broad, high-level questions about Viam and its software while this section contains specific instructions for resolving software difficulties.
 
-{{% alert title="Note" color="note" %}}
+This document lists common errors encountered when working with `viam-server` and the [Viam app](https://app.viam.com), and provides simple steps to resolve them.
+While many common issues and their possible resolutions are presented here, this list is not comprehensive.
 
-While every effort has been made to include all common/known issues and their possible resolutions, this list is not comprehensive.
-{{% /alert %}}
+If you have encountered an error that is not listed here, we'd love to hear from you on our [Community Discord](https://discord.gg/viam)!
+Please post the error message you received along with how you were able to trigger it and we'll see if we can help.
 
-## Common Errors
+## Common Installation Errors
 
-### Viam App Logs
+### The authenticity of host 'hostname.local' can't be established
 
-#### Error #1: Error reading cloud config
+**Description:** When following our [installation guides](/installation/), you will likely encounter this message the first time you try to make an `ssh` connection to your newly-imaged {{< glossary_tooltip term_id="board" text="board" >}}.
+This is expected: `ssh` is advising you that it has not yet connected to this address, and prompts you for how to proceed.
 
-The following related errors may cause this issue:
+**Solution:** The message will ask `Are you sure you want to continue connecting?`.
+Type `yes` and then press the return key to continue with the connection.
+You should receive a successful confirmation message similar to: `Warning: Permanently added 'hostname.local' to the list of known hosts.`
+This is only required for the first `ssh` connection you make to a newly-imaged board.
 
-<table style="border: solid black 1px;">
-<tr><th colspan="2">Related Error: Error validating "component s.2": "name" is required.</th>
-</tr>
-<tr>
-<th>What/Why:
-</th>
-<td>Component name missing.
-</td>
-</tr>
-<tr>
-<th>Resolution
-</th>
-<td>Add the missing name in components and save the config.
-Run <code>sudo systemctl restart viam-server</code> in the terminal to restart the server.
-</td>
-</tr>
-</table>
+### ssh: connect to host hostname.local port 22: Host is down
 
-<table style="border: solid black 1px;">
-<tr><th colspan="3">Related Error: cannot parse config: JSON: cannot unmarshal string into Go struct field Component.components.frame of type float64.</th>
-</tr>
-<tr>
-<th>What/Why:
-</th>
-<td colspan="2">Check if there is a frame attribute in the components in the fancy config or in the raw JSON config.
-It may be that the robot config generated broken "frame" information and pre-populated the translation values with empty strings when they are currently programmed to be floats on the backend.
-</td>
-</tr>
-<tr>
-<th>Resolution
-</th>
-<td width="50%">
-Delete the entire "frame" object from the JSON config if you are not using it.
-The frame object looks like this:</td>
-</td>
-<td><img src="../img/ts-del-frame.png" alt="Frame JSON Object" width="150px"/></td>
-</tr>
-</table>
+**Description:** Your computer is not able to connect to the {{< glossary_tooltip term_id="board" text="board" >}} through `ssh`.
 
-<table style="border: solid black 1px;">
-<tr>
-<th colspan="2">Related Error: cannot parse config: Unexpected end of JSON.</th>
-</tr>
+**Solution:** Ensure that both your computer and the board itself are connected to the internet, and verify each of the following:
 
-<tr>
+- If you are on a Windows computer, be sure that you do not have an outgoing firewall preventing `ssh` connections over port `22`.
+- Your `ssh` connection string should resemble the following: `ssh username@hostname.local`.
+   Be sure that you match hostname, username, and password exactly to what you initially configured when imaging your board.
+- If you are still unable to connect, try restarting the board and trying your connection again.
+- If that fails, try re-imaging your board following the [installation guide](/installation/) appropriate for your board.
+  - If using the [Raspberry Pi installation guide](/installation/prepare/rpi-setup/), be sure to carefully enter the configuration details under the **Advanced Options** (gear icon) button on the [Raspberry Pi imager](https://www.raspberrypi.com/software/) before you re-image your board.
+  - If you re-imaged your board and provided a different hostname, you may need to accept the `ssh` host key again by typing `yes` when prompted.
+  - If you re-imaged your board and provided the same hostname, you may see an error message similar to `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`.
+    - If so, edit your `~/.ssh/known_hosts` file to delete any single lines that begin with the board hostname you specified (like `hostname.local` or similar).
+    - Afterwards, when you go to `ssh` to your board again, you will need to accept the `ssh` host key once more by typing `yes` when prompted.
 
-<th>What/Why:
-</th>
-<td> -
-</td>
+### ssh: connect to host hostname port 22: Connection timed out
 
-</tr>
+**Description:** Your computer is not able to connect to the {{< glossary_tooltip term_id="board" text="board" >}} through `ssh` before reaching a timeout.
 
-<tr>
-<th>Resolution
-</th>
-<td>Run <code>/root/viam -remove</code> in the terminal to clear cache config from the Pi.
-Re-try the operation.
-</td>
+**Solution:** Depending on your local network and board, it may take a minute or two for your `ssh` connection to successfully reach the board.
 
-</tr>
-</table>
+- If you have just powered on or restarted your board, wait a few minutes and then try your connection again.
+  Depending on your board, it may take a few minutes for the `ssh` service to be ready to receive connections.
+- If you encounter this error once or twice, try your `ssh` command again and wait until it completes.
+- If the error persists, try the solutions presented for the `Host is down` error message above.
 
-#### Error #2: SSH error on the terminal: "ssh:connect to host name-pi.local port 22: host is down"
+## Common Viam App Errors
 
-<table style="border: solid black 1px;">
-<th>What/Why:
-</th>
-<td>The Pi does not have an internet connection.
-</td>
-</tr>
-<tr>
-<th>Resolution
-</th>
-<td>Restart both the Pi and the server.
-</td>
-</tr>
-</table>
+### Failed to connect; retrying
 
-#### Error #3: "Rolling back draft changes due to error" or "Error reconfiguring robot", both errors end with: ‘error: error processing draft changes: resource "rdk:component:board/local" not found"
+**Description:** The [Viam app](https://app.viam.com) is unable to communicate with your robot, and will attempt to reconnect every few seconds until it is able to do so.
+When a robot is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the Viam app.
 
-<table style="border: solid black 1px;">
-<tr>
-<th>What/Why:
-</th>
-<td>This issue can be caused by an incorrect new configuration, but it could also be caused by a code issue related to reconfiguring robots.
-</td>
-</tr>
-<tr>
-<th>Resolution
-</th>
-<td>Run <code>sudo systemctl restart viam-server</code> in the terminal to restart the server.
-</td>
-</tr>
-</table>
+**Solution:** Check the following to ensure your robot is accessible to the Viam app:
 
-#### Error #4: Expected board name in config for motor
+- Is the {{< glossary_tooltip term_id="board" text="board" >}} component connected to the internet?
+- Is the `ssh` service configured and running locally on the board?
+   You can check with `sudo systemctl status ssh`.
+   It should be listed as `active (running)`.
+- Is the `viam-server` service running locally on the board?
+   You can check with `sudo systemctl status viam-server`.
+   It should be listed as `active (running)`.
+  - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
+  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](https://docs.viam.com/installation/#preparation), and then followed the instructions on the **Setup** tab on the Viam app.
+  - If none of the above succeed in getting `viam-server` up and running, check the logs for any pertinent error messages.
+  Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`:
 
-<table style="border: solid black 1px;">
-<th>What/Why:
-</th>
-<td>Check if you forgot to enter the board name and check for any other missing component specs in config.
-</td>
-</tr>
-<tr>
-<th>Resolution
-</th>
-<td>Add any missing components.
-Run <code>sudo systemctl restart viam-server</code> in the terminal to restart the server.
-</td>
-</tr>
-</table>
+    ```sh
+    grep 'viam-server' /var/log/syslog | tail -50
+    ```
 
-#### Error #5: Failed to find the best driver that fits the constraints
+### Error: cannot parse config: JSON: cannot unmarshal string into Go struct
 
-<table style="border: solid black 1px;">
+**Full Error:** `Error: cannot parse config: JSON: cannot unmarshal string into Go struct field Component.components.frame of type float64.`
 
-<th><strong>What/Why:
-</th>
-<td>There are many possible reasons why this happens. Verify that Frame rate, frame format, video path, width, and height, have values.
-Viam specifies 0 for these values by default, but verify that the setting is actually there.
-</td>
-</tr>
-<tr>
-<th>Resolution
-</th>
-<td> Restore any missing values.
-</td>
-</tr>
-</table>
+**Description:** A [frame](/services/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
 
-#### Error #6: Error configuring robot
+**Solution:** Check the **Config** tab for your robot in the [Viam app](https://app.viam.com) and look for a frame attribute, either in **Builder** mode, under the **Frame System** tab or in **Raw JSON** mode.
+If you see a `frame` attribute that you didn't create yourself, delete the whole `frame` object from the JSON config.
+It will resemble the following:
 
-Clearing this related error may resolve the issue.
-<table style="border: solid black 1px;">
-<tr><th colspan="2">Related Error: error processing draft changes: expected board name in config for motor. </th>
-</tr>
-<tr>
-<th><strong>What/Why:
-</th>
-<td>The motor config is missing the board name. Verify that the motor name is present in the config.
-</td>
-</tr>
-<tr>
-<th>Resolution
-</th>
-<td>Add your Pi name and component dependencies and save your configuration.
-</td>
-</tr>
-</table>
+``` json
+"frame": {
+   "orientation": {
+      "value": {}
+   },
+   "parent": "",
+   "translation": {
+      "x": "",
+      "y": "",
+      "z": ""
+   }
+}
+```
 
-#### Error #7: Response closed without headers
+### Error: failed to find the best driver that fits the constraints
 
-<table style="border: solid black 1px;">
-<th><strong>What/Why:
-</th>
-<td> -
-</td>
-</tr>
-<tr>
-<th>Resolution
-</th>
-<td> -
-</td>
-</tr>
-</table>
+**Description:** When working with a [camera](/components/camera) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
 
-### Github Issues
+**Solution:** Check the specifications for your camera, and manually provide configuration parameters such as width and height to the camera component configuration page on the [Viam app](https://app.viam.com).
+Under **Config > Components**, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **Go to advanced** link in the component panel's upper-right to enter these attributes manually.
+Provide at least the width and height values to start.
 
-#### Error #8: Git fetch invalid
+## Known Application and Plugin Conflicts
 
-<table border="solid black 1px">
-<th><strong>What/Why:
-</th>
-<td>This issue is caused by a problem with the sudo env and the user env.
-When in sudo, the RSA tokens used to connect to GitHub are removed in order to use admin credentials.
-</td>
-</tr>
-<tr>
-<th>Resolution
-</th>
-<td> -
-</td>
-</tr>
-</table>
-
-#### Error #9: Error serving web
-
-<table border="solid black 1px">
-<th><strong>What/Why:
-</th>
-<td> -
-</td>
-</tr>
-<tr>
-<th>Resolution
-</th>
-<td> -
-</td>
-</tr>
-</table>
-
-## Application and Plugin Conflicts
-
-### Mac Applications
+### macOS Applications
 
 None at this time.
 
@@ -239,7 +125,5 @@ None at this time.
 
 ### Browser Plugins
 
-1. **PLUGIN:** "**Allow right click - simple copy**" - This Chrome plugin prevents the user from configuring a Service in the Viam app (**app.viam.com** > **Config** > **3 Services**).
-
-   **Indication:** User unable to select a Service **Type** in the **Create Service** Pane.
-After clicking to display the drop-down list, choosing an item does not populate the drop-down's "Selection."
+**Chrome Plugin: Allow right click** - This Chrome plugin interferes with the [Viam app](https://app.viam.com)'s ability to configure a service.
+If you are experiencing issues with the **Create Service** pane in the Viam app, temporarily disable this plugin until you have saved your configuration in the Viam app.
