@@ -21,7 +21,7 @@ Along with robots appearing in mass media, a good number of toy robots made thei
 While these robots certainly were fun for those fortunate enough to have one, they were often a fairly crude combination of common tech of the times.
 Cross a remote control car with a cassette player, walkie-talkie, and alarm clock - you had the top of the line toy robot of the 1980s: the Tomy Omnibot 2000.
 
-Let’s bring the Omnibot 2000 closer to the home robot vision that many had (and still have) by bringing in new technology and renaming it Omnibot MAIV (Modernized with AI and Viam).
+Let’s bring the Omnibot 2000 closer to the home robot vision that many had (and still have) by bringing in new technology and rename it the Omnibot MAIV (Modernized with AI and Viam).
 
 We will keep the original housing, style and motors where possible - but bring it into the modern era with:
 
