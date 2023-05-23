@@ -532,8 +532,6 @@ We can use this camera to stream video and capture images, as well as leverage i
 
 Take MAIV's gray face plate and measure to find the center between and below the eye sockets.
 
-Find a drill bit that is about the same circumference as the USB camera you purchased and carefully drill a hole through the face plate.
-
 {{% alert title="Warning" color= "warning " %}}
 
 Be careful not to crack MAIV's face plate when drilling (as we did).
@@ -546,6 +544,8 @@ Covering both sides with masking tape before drilling (remove afterwards) can al
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/maiv/maiv_eye_sockets.jpg" alt="Omnibot MAIV face plate with camera." class="alignright" title="Omnibot MAIV face plate with camera." style="max-width: 250px;" />
 </div>
+
+Find a drill bit that is about the same circumference as the USB camera you purchased and carefully drill a hole through the face plate.
 
 Ensure that the camera fits.
 
@@ -614,5 +614,5 @@ The same code that works with any configured base will work with MAIV, you'll ju
 Since MAIV has a camera, you could also [set up a color detector](/tutorials/services/webcam-line-follower-robot/) or detect objects using a [machine learning model](/tutorials/projects/send-security-photo/).
 
 There's a lot more you can do with MAIV - for inspiration, check out our other [tutorials](/tutorials).
+
 If you end up building your own MAIV or another retro robot, we’d love to hear - let us and the [Viam community](https://discord.gg/viam) know!
-In the meantime, we'd love to hear what you might do with your own retro robot - let us and the [Viam community](https://discord.gg/viam) know!
