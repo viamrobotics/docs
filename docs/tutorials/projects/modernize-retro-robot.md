@@ -8,7 +8,7 @@ mp4Src: "/tutorials/img/maiv/maiv_front.mp4"
 images: ["/tutorials/img/maiv/maiv_front.gif"]
 tags: ["base", "retro", "vision", "computer vision", "camera", "motor", "python"]
 no_list: true
-description: "Modernize a 1980s robot with Viam"
+description: "Modernize a 1980s robot with Viam and AI"
 image: ""
 images: []
 imageAlt: ""
@@ -248,7 +248,7 @@ You can also try unplugging the battery and powering it instead with the wall ad
 
 {{% /alert %}}
 
-## Add AI and Viam 
+## Add AI and Viam
 
 Merging 40-year-old tech with modern tech to light up LEDs is exciting, but we need to configure our robotic base before we can get to the true prize of controlling MAIV through the internet and programmatically.
 For now, turn the power switch to the off position.
