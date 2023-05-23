@@ -35,6 +35,7 @@ We will keep the original housing, style and motors where possible - but bring i
 * Computer vision
 * Machine learning and AI
 
+By the end of this tutorial, you'll be able to securely control your Omnibot from anywhere, and leverage machine learning capabilities to have MAIV interact with the world.
 
 ## Parts list
 
@@ -64,7 +65,7 @@ You'll also need some basic tools and supplies:
 * Wire cutters/strippers
 * Soldering iron and solder
 * Paper towels
-* Window cleaner
+* Window cleaner or other cleaner to remove dust, etc.
 * Multimeter
 
 ## Introduce yourself to Omnibot 2000
@@ -85,7 +86,7 @@ Ours were in decent shape - if yours are not you can find them for sale on [Ebay
 </div>
 
 Note that Omnibot seems to be right-handed - its right arm and hand are motorized, while the left is manually posable.
-We'll take on controlling its arm and gripper in a future tutorial.
+This tutorial does not cover how to control its arm and gripper.
 
 The tape player is an interesting device to have built-into a robot - and it certainly adds to the retro look.
 
@@ -103,7 +104,7 @@ Leave this panel open as we move to the next steps.
 
 ## Transformation
 
-Now is the time to give the Omnibot new life as MAIV (Modernized with AI and Viam).
+Now is the time to start transforming Omnibot into MAIV (Modernized with AI and Viam).
 This will take some surgery - but fortunately its all low-risk.
 Just remember to set aside any screws you remove in a place where they remain organized and will not get lost.
 
@@ -529,20 +530,9 @@ Power your robot back on and use the **Control** tab to test that the neck motor
 Before re-assembling MAIV, you can add a camera to your robot's face.
 We can use this camera to stream video and capture images, as well as leverage it for computer vision and machine learning.
 
-<div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_eye_sockets.jpg" alt="Omnibot MAIV face plate with camera." class="alignright" title="Omnibot MAIV face plate with camera." style="max-width: 250px;" />
-</div>
-
 Take MAIV's gray face plate and measure to find the center between and below the eye sockets.
 
 Find a drill bit that is about the same circumference as the USB camera you purchased and carefully drill a hole through the face plate.
-Ensure that the camera fits.
-
-Run the USB wire through the robot neck, torso and into the base.
-Plug it into the Raspberry Pi.
-
-Now re-assemble MAIV's head, eye plate, and face plate with the screws you removed earlier.
-Fit MAIV's neck into the torso, and re-assemble the torso.
 
 {{% alert title="Warning" color= "warning " %}}
 
@@ -552,6 +542,18 @@ Use a sharp (non-spade bit) at high RPM.
 Covering both sides with masking tape before drilling (remove afterwards) can also help.
 
 {{% /alert %}}
+
+<div class="td-max-width-on-larger-screens">
+<img src="../../img/maiv/maiv_eye_sockets.jpg" alt="Omnibot MAIV face plate with camera." class="alignright" title="Omnibot MAIV face plate with camera." style="max-width: 250px;" />
+</div>
+
+Ensure that the camera fits.
+
+Run the USB wire through the robot neck, torso and into the base.
+Plug it into the Raspberry Pi.
+
+Now re-assemble MAIV's head, eye plate, and face plate with the screws you removed earlier.
+Fit MAIV's neck into the torso, and re-assemble the torso.
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
