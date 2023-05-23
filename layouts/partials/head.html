@@ -1,59 +1,53 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-{{ hugo.Generator }}
-{{ range .AlternativeOutputFormats -}}
-<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
-{{ end -}}
-
-{{ $outputFormat := partial "outputformat.html" . -}}
-{{ if and hugo.IsProduction (ne $outputFormat "print") -}}
-<meta name="robots" content="index, follow">
+<meta charset="utf-8" />
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+{{ hugo.Generator }} {{ range .AlternativeOutputFormats -}}
+<link
+    rel="{{ .Rel }}"
+    type="{{ .MediaType.Type }}"
+    href="{{ .Permalink | safeURL }}"
+/>
+{{ end -}} {{ $outputFormat := partial "outputformat.html" . -}} {{ if and
+hugo.IsProduction (ne $outputFormat "print") -}}
+<meta name="robots" content="index, follow" />
 {{ else -}}
-<meta name="robots" content="noindex, nofollow">
-{{ end -}}
-
-{{ partialCached "favicons.html" . }}
+<meta name="robots" content="noindex, nofollow" />
+{{ end -}} {{ partialCached "favicons.html" . }}
 <title>
-  {{- if .IsHome -}}
-    {{ .Site.Title -}}
-  {{ else -}}
-    {{ with .Title }}{{ . }} | {{ end -}}
-    {{ .Site.Title -}}
-  {{ end -}}
+    {{- if .IsHome -}} {{ .Site.Title -}} {{ else -}} {{ with .Title }}{{ . }} |
+    {{ end -}} {{ .Site.Title -}} {{ end -}}
 </title>
-<meta name="description" content="{{ template "partials/page-description.html" . }}">
-{{ template "_internal/opengraph.html" . -}}
-{{ template "_internal/schema.html" . -}}
-{{ template "_internal/twitter_cards.html" . -}}
+<meta name="description" content="{{ template "partials/page-description.html" .
+}}"> {{ template "_internal/opengraph.html" . -}} {{ template
+"_internal/schema.html" . -}} {{ template "_internal/twitter_cards.html" . -}}
 {{ partialCached "head-css.html" . "asdf" -}}
 <!-- START script for cookie dialogue -->
-<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="1337ee38-8a33-457d-9eb2-420b7716347a" data-blockingmode="auto" type="text/javascript"></script>
-<!-- END script for cookie dialogue -->
-<!-- Start of viam Zendesk Widget script -->
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=6fb554be-87df-42b2-8d8f-bed8df3f886f"></script>
-<!-- End of viam Zendesk Widget script -->
 <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
-  crossorigin="anonymous"></script>
+    id="Cookiebot"
+    src="https://consent.cookiebot.com/uc.js"
+    data-cbid="1337ee38-8a33-457d-9eb2-420b7716347a"
+    data-blockingmode="auto"
+    type="text/javascript"
+></script>
+<!-- END script for cookie dialogue -->
+<script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+    crossorigin="anonymous"
+></script>
 {{ if .Site.Params.offlineSearch -}}
-<script defer
-  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
-  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
-  crossorigin="anonymous"></script>
-{{ end -}}
-
-{{ if .Site.Params.prism_syntax_highlighting -}}
-<link rel="stylesheet" href="{{ "css/prism.css" | relURL }}"/>
-{{ end -}}
-
-{{ partial "hooks/head-end.html" . -}}
-
-{{/* To comply with GDPR, cookie consent scripts places in head-end must execute before Google Analytics is enabled */ -}}
-{{ if hugo.IsProduction -}}
-  {{ if hasPrefix .Site.GoogleAnalytics "G-" -}}
-    {{ template "_internal/google_analytics.html" . -}}
-  {{ else -}}
-    {{ template "_internal/google_analytics_async.html" . -}}
-  {{ end -}}
-{{ end -}}
+<script
+    defer
+    src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+    integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+    crossorigin="anonymous"
+></script>
+{{ end -}} {{ if .Site.Params.prism_syntax_highlighting -}} <link
+rel="stylesheet" href="{{ "css/prism.css" | relURL }}"/> {{ end -}} {{ partial
+"hooks/head-end.html" . -}} {{/* To comply with GDPR, cookie consent scripts
+places in head-end must execute before Google Analytics is enabled */ -}} {{ if
+hugo.IsProduction -}} {{ if hasPrefix .Site.GoogleAnalytics "G-" -}} {{ template
+"_internal/google_analytics.html" . -}} {{ else -}} {{ template
+"_internal/google_analytics_async.html" . -}} {{ end -}} {{ end -}}
