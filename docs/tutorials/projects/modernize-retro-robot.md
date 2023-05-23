@@ -3,8 +3,12 @@ title: "Modernize a 1980s robot"
 linkTitle: "Modernize a 1980s Robot"
 weight: 60
 type: "docs"
+webmSrc: "/tutorials/img/maiv/maiv_front.webm"
+mp4Src: "/tutorials/img/maiv/maiv_front.mp4"
+images: ["/tutorials/img/maiv/maiv_front.gif"]
 tags: ["base", "retro", "vision", "computer vision", "camera", "motor", "python"]
-description: "Modernize a 1980s robot with Viam - Part 1"
+no_list: true
+description: "Modernize a 1980s robot with Viam"
 image: ""
 images: []
 imageAlt: ""
