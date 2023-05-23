@@ -7,7 +7,6 @@ tags: ["base", "retro", "vision", "computer vision", "camera", "motor", "python"
 description: "Modernize a 1980s robot with Viam - Part 1"
 image: ""
 images: []
-draft: false
 imageAlt: ""
 # SME: Matt Vella
 ---
