@@ -11,7 +11,7 @@ imageAlt: ""
 # SME: Matt Vella
 ---
 
-From Star Wars to Short Circuit, Go-bots to Transformers - the 1980s was a time of mass propagation in pop culture of how robots might exist alongside us in the future.
+From Star Wars to Short Circuit, Go-bots to Transformers - the 1980s was a time in pop culture where people thought a lot about how robots might exist alongside us in the future.
 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/maiv/omnibot_ad.png" class="alignleft" alt="1984 advertisement for the Omnibot 2000." title="1984 advertisement for the Omnibot 2000." style="max-width: 350px" />
