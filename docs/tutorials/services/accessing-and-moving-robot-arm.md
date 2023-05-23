@@ -22,20 +22,17 @@ Also pay attention to your surroundings, double-check your code for correctness,
 
 The following instructions show you how to interact with an [arm component](/components/arm/), help you understand how an arm describes its state, and assist you in issuing movement commands to your robotic arm.
 
-{{< alert title="Note" color="note" >}}
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
-The [full tutorial code](#full-tutorial-code) is available at the end of this page.
-{{< /alert >}}
-
 <div class="td-max-width-on-larger-screens">
   <img src="../../img/motion/access_01_xarm6.png" class="alignright" alt="A picture of the UFACTORY xArm 6." style="max-width: 400px">
 </div>
 
-<!-- TODO(DOCS-419): Content below struck out for the moment, saved to refer to impending changes in Arm component docs outlining the ability to use a fully virtual arm. -->
-<!--
-In the event that you do not have a robotic arm of your own, the section on Fake models in the [Arm component page](/components/arm/#fake-arm-modeling) shows how you can set up a virtual robotic arm with the same kinematic model as a real robotic arm.
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+
+If you do not have a robotic arm of your own, the [fake arm component page](/components/arm/fake/) shows how you can set up a virtual robotic arm with the same kinematic model as a real robotic arm.
+Configure it with `"arm-model": "xArm6"` in its `attributes`.
 You can then continue through the code examples in this tutorial without making any changes (and without needing to buy or build an expensive robot arm)!
--->
+
+The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 
 ## Prerequisites
 
@@ -43,7 +40,7 @@ Before starting this tutorial, make sure you have the [Viam Python SDK](https://
 
 If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the controller before continuing.
 
-## Configure A Robot
+## Configure a Robot
 
 1. Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 2. Create a new robot.
@@ -63,7 +60,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
       * For an `xArm6`, a safe value is `15` degrees per second.
 
 6. Add a **Frame** to this component.
-   * You will not need to change the default values that populate the new frame card
+   * You do not need to change the default values that populate the new frame card
 
    <img src="../../img/motion/access_02_arm_config.png" width="700px" alt="Sample robot arm configuration with several fields filled out.">
 
@@ -74,7 +71,7 @@ Paste this boilerplate code into a file and run the script to verify you can con
 Throughout this tutorial you will replace and amend this code.
 The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
 
-## Accessing the Arm
+## Access the Arm
 
 The `arm` component library has several methods to simplify accessing and working with robotic arms.
 In this step, you'll fetch data about the robotic arm's current position.
@@ -82,7 +79,7 @@ In this step, you'll fetch data about the robotic arm's current position.
 {{< tabs >}}
 {{% tab name="Python" %}}
 The following lines from the [full **Python** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
-The code then calls the `get_end_position` method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`get_end_position`](../../../components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Access myArm
@@ -111,7 +108,7 @@ The `x`, `y`, and `z` values correspond to the `position` element of the pose, w
 {{% /tab %}}
 {{% tab name="Go" %}}
 The following lines from the [full **Go** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
-The code then calls the `EndPosition` method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`EndPosition`](../../../components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access myArm
@@ -168,7 +165,8 @@ values: 0.013732909913080547
 values: 0.00076904296930648713
 ```
 
-Each individual value corresponds to the current position of a particular joint on your robot. You can also see these values reflected on the Control tab in the Viam app for your robot arm.
+Each individual value corresponds to the current position of a particular joint on your robot.
+You can also see these values reflected on the Control tab in the Viam app for your robot arm.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -188,17 +186,19 @@ You should see output that looks similar to the following:
 myArm JointPositions return value: values:0.00043945314765093886  values:0.4672485453655179  values:0.6450073134445674  values:-0.0009887695170768527  values:0.013732909913080547  values:0.0007690429693064871
 ```
 
-Each individual value corresponds to the current position of a particular joint on your robot. You can also see these values reflected on the **Control** tab in the Viam app for your robot arm.
+Each individual value corresponds to the current position of a particular joint on your robot.
+You can also see these values reflected on the **Control** tab in the Viam app for your robot arm.
 
 {{% /tab %}}
 {{< /tabs >}}
 
 Both representations of an arm's state are important.
-Sometimes you may wish to direct an arm in terms of joint positions, sometimes you may need to describe the position of another object with respect to the end of the robot arm.
+Sometimes you may wish to direct an arm in terms of joint positions.
+Other times you may need to describe the position of another object with respect to the end of the robot arm.
 There is a mathematical relationship that allows you to convert between these two representations, known as the **forward and inverse kinematics**, which is foundational to complex robotic motion.
 We will not cover forward and inverse kinematics in this tutorial, but resources for further reading on these topics are linked in the [**Next Steps**](#next-steps-and-references) section.
 
-## Moving the Arm
+## Move the Arm
 
 The two main options for specifying arm movement are through **joint position commands** and through **pose commands**.
 Let's start with joint position commands, as their formulation is a little simpler.
@@ -214,8 +214,13 @@ Executing code presented after this point *will* induce motion in a connected ro
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-Add `from viam.proto.component.arm import JointPositions` to your import list to be able to assign values to a `JointPositions` data structure.
-See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
+Add the following line to your import list to be able to assign values to a `JointPositions` data structure:
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.component.arm import JointPositions
+```
+
+See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Command a joint position move: small adjustment to the last joint
@@ -228,7 +233,7 @@ await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 You must import an additional Go library to access the data structure that Viam uses to encode joint positions, which is shown next.
 
 Add `armapi "go.viam.com/api/component/arm/v1"` to your import list to be able to assign values to an `armapi.JointPositions` data structure.
-See the [Arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
+See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Command a joint position move: small adjustment to the last joint
@@ -249,7 +254,7 @@ When you are ready to move on, the next section will show you how to use **pose 
 
 ### Pose Commands
 
-When you [got the end position of the arm](#accessing-the-arm), this data was returned in the format of a `Pose`.
+When you [got the end position of the arm](#access-the-arm), this data was returned in the format of a `Pose`.
 The returned `Pose` is a combination of position and orientation data that indicates the end of the arm's full 6-dimensional configuration in space.
 
 The following code sample reuses the methods to get the pose of the end of the arm so that you can make small adjustments at will.
@@ -258,8 +263,9 @@ For example, the following code gets the arm's end position, makes a 100 millime
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-You must import some additional Python packages to synthesize new poses for the arm component's `move_to_position` command.
-Add `from viam.proto.common import Pose` to your import list and add the sample code below to your own client script.
+Add the sample code below to your own client script to try using the arm component's [`move_to_position`](../../../components/arm/#movetoposition) command.
+This example gets a `Pose` from `get_end_position()` so no additional imports are required.
+If you want to synthesize new poses directly, note that you must import an additional Python package by adding `from viam.proto.common import Pose` to your import list.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Generate a simple pose move +100mm in the +Z direction of the arm
@@ -270,7 +276,7 @@ await my_arm_component.move_to_position(pose=cmd_arm_pose)
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-You must import some additional Go packages to synthesize new poses through the `spatialmath` library.
+You must import some additional Go packages to synthesize new poses through the `spatialmath` library for the arms's [`MoveToPosition`](../../../components/arm/#movetoposition) command.
 Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to your import list and then add the sample code below to your own client script.
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -299,7 +305,7 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 
 ## Next Steps and References
 
-If you would like to continue onto working with Viam's Motion service, go to the next tutorial in this series:
+If you would like to continue onto working with Viam's Motion Service, go to the next tutorial in this series:
 
 {{< cards >}}
   {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}

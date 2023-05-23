@@ -1,7 +1,7 @@
 ---
 title: "Configure a Fake Base"
 linkTitle: "fake"
-weight: 50
+weight: 20
 type: "docs"
 description: "Configure a fake base to use for testing without physical hardware."
 images: ["/components/img/components/base.svg"]

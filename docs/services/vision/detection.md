@@ -58,17 +58,9 @@ To create a [Vision Service](/services/vision/):
 
 ![Create Vision Service for color detector](../img/color_detector.png)
 
-In your Vision Service's panel, fill in the **Attributes** field.
+In your Vision Service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels):
 
-``` json {class="line-numbers linkable-line-numbers"}
-{
-      "segment_size_px": <integer>,
-      "detect_color": "#ABCDEF",
-      "hue_tolerance_pct": <number>,
-      "saturation_cutoff_pct": <number>,
-      "value_cutoff_pct": <number>
-}
-```
+![Color detector panel with color and hue tolerance selection and a field for the segment size](../img/color-detector-panel.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

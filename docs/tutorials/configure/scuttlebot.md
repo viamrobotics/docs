@@ -10,6 +10,7 @@ imageAlt: "The Viam app UI showing the CONFIG tab of a robot."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 aliases:
   - "/tutorials/scuttlebot"
+  - "/tutorials/scuttlebot/scuttlebot"
 ---
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/LAMxYci242E">}}
@@ -292,7 +293,6 @@ Now, you'll see the config panel for the camera component:
 <img src="../../img/scuttlebot/pi-cam-control.png" alt="Camera component config panel" >
 
 On the camera config panel, set the `video_path`.
-This is often "video0," you can see our [camera configuration tutorial](/components/camera/webcam) for more information on choosing the correct video path.
 
 Once you save the config, you'll be able to see your camera's stream in the **Control** tab.
 

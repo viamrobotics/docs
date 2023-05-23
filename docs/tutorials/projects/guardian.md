@@ -1,5 +1,5 @@
 ---
-title: "Security Guardian"
+title: "Program a Guardian to Track Humans and Pets Using a Pi, Camera, and Servo"
 linkTitle: "Security Guardian"
 weight: 50
 type: "docs"
@@ -22,7 +22,7 @@ Here's a video of the finished guardian detecting me:
 
 {{<video webm_src="../../img/guardian/guardian-detection.webm" mp4_src="../../img/guardian/guardian-detection.mp4" alt="Guardian robot detects person and rotates head to follow them around">}}
 
-## Components
+## Hardware requirements
 
 To build your own guardian robot, you need the following hardware:
 
@@ -38,7 +38,7 @@ To build your own guardian robot, you need the following hardware:
 
 Print or order the following printed 3D parts:
 
-- this head (link will follow shortly) which fits the camera
+- [this head](https://www.thingiverse.com/thing:6027280) which fits the camera
 - the decorations for the head from [this Guardian Robot model](https://www.thingiverse.com/thing:2387723)
 - the body, base cover, claws, and leg segments from the [Guardian Robot, Hackable](https://www.thingiverse.com/thing:2391826)
 
@@ -222,7 +222,7 @@ Next, click on the camera panel and toggle the camera on to test that you get vi
   <img src="../../img/guardian/finished.jpg" class="alignright" alt="Fully assembled guardian" style="max-width: 250px" />
 </div>
 
-Now that you have tested your components, you can disconnect them again and paint and decorate your guardian and then put the rest of the guardian together.
+Now that you have tested your components, you can disconnect them again, paint and decorate your guardian, and then put the rest of the guardian together.
 Remove the servo horn, and place one LED in the back of the Guardian head, leaving the wires hanging out behind the ribbon camera.
 
 Then place the servo inside the Guardian body and attach the horn on the head to the servo's gear.
@@ -255,7 +255,7 @@ scp labels.txt pi@guardian.local:/home/pi/labels.txt
 Next, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Services** subtab and navigate to the **Create service** menu.
 
-1. **Add a ML service.**
+1. **Add a ML model service.**
 
    The [ML model service](/services/ml) allows you to deploy the provided machine learning model to your robot.
    Create an ML model with the name `mlmodel`, the type `mlmodel` and the model `tflite_cpu`.
@@ -506,20 +506,20 @@ You can test the code by running:
 python3 main.py
 ```
 
-Your guardian lights up blue:
+Your Guardian lights up blue:
 
 {{<gif webm_src="../../img/guardian/light-up.webm" mp4_src="../../img/guardian/light-up.mp4" alt="Guardian lights up blue" max-width="300px">}}
 
 ### Detections
 
-Now, you'll add the code for the guardian to detect persons and pets.
+Now, you'll add the code for the Guardian to detect persons and pets.
 If you are building it for persons or cats or dogs, you'll want to use `Person`, `Dog`, `Cat`, and, if you have a particularly teddy-bear-like dog, `Teddy bear`.
 You can also specify different ones based on the available labels in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file>.
 
 Above the `connect()` method, add the following variable which defines the labels that you want to look for in detections:
 
 ```python {class="line-numbers linkable-line-numbers"}
-LIVING_OBECTS = ["Person", "Dog", "Cat", "Teddy bear"]
+LIVING_OBJECTS = ["Person", "Dog", "Cat", "Teddy bear"]
 ```
 
 Then, above the `main()` method add the following function which checks detections for living creatures as they are defined in the `LIVING_OBJECTS` variable.
@@ -527,14 +527,14 @@ Then, above the `main()` method add the following function which checks detectio
 ```python {class="line-numbers linkable-line-numbers"}
 async def check_for_living_creatures(detections):
     for d in detections:
-        if d.confidence > 0.6 and d.class_name in LIVING_OBECTS:
+        if d.confidence > 0.6 and d.class_name in LIVING_OBJECTS:
             print("detected")
             return d
 ```
 
 ### Idling
 
-Underneath the `check_for_living_creatures()` function, add the following function which gets images from the guardian's camera and checks them for living creatures and if none are detected moves the servo randomly.
+Underneath the `check_for_living_creatures()` function, add the following function which gets images from the Guardian's camera and checks them for living creatures and if none are detected moves the servo randomly.
 If a creature is detected, the red LEDs will light up and music will play.
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -661,10 +661,10 @@ If everything works, your guardian should now start to idle and when it detects 
 ## Run the program automatically
 
 One more thing.
-Right now, you have to run the code manually every time you want your guardian to work.
+Right now, you have to run the code manually every time you want your Guardian to work.
 You can also configure Viam to automatically run your code as a [process](/manage/configuration/#processes).
 
-To be able to run the python script from your Raspberry Pi, you need to install the Python SDK on your Raspberry Pi and copy your code onto the Raspberry Pi.
+To be able to run the Python script from your Raspberry Pi, you need to install the Python SDK on your Raspberry Pi and copy your code onto the Raspberry Pi.
 
 [`ssh` into your Pi](/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
 
@@ -684,7 +684,7 @@ Then install the Viam Python SDK and the VLC module **into that folder**:
 pip3 install --target=guardian viam-sdk python-vlc
 ```
 
-Exit out of your connection to your pi and use `scp` to copy your code to your Pi into your new folder.
+Exit out of your connection to your Pi and use `scp` to copy your code to your Pi into your new folder.
 Your hostname may be different:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -738,7 +738,7 @@ from viam.components.camera import Camera
 from viam.components.servo import Servo
 from viam.services.vision import VisionClient
 
-LIVING_OBECTS = ["Person", "Dog", "Cat", "Teddy bear"]
+LIVING_OBJECTS = ["Person", "Dog", "Cat", "Teddy bear"]
 
 
 async def connect():
@@ -754,7 +754,7 @@ async def connect():
 
 async def check_for_living_creatures(detections):
     for d in detections:
-        if d.confidence > 0.6 and d.class_name in LIVING_OBECTS:
+        if d.confidence > 0.6 and d.class_name in LIVING_OBJECTS:
             print("detected")
             return d
 
@@ -840,7 +840,7 @@ async def main():
 
     music_player = vlc.MediaPlayer("guardian.mp3")
 
-    # grab Viam's vision service for the detector
+    # grab Viam's vision service for the detector 
     detector = VisionClient.from_robot(robot, "detector")
     while True:
         # move head periodically left and right until movement is spotted.

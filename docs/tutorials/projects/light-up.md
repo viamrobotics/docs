@@ -72,8 +72,6 @@ Click **Create Component** to add the camera.
 Click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
 
 Select the path to the camera you want to use.
-Often on Linux systems, this is `video0` or `video1`.
-On Mac, this is often a long string of letters and numbers.
 
 Click **Save Config** in the bottom left corner of the screen.
 

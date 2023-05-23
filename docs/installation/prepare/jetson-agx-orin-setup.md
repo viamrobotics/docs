@@ -21,8 +21,6 @@ Follow this guide to set up the [Jetson AGX Orin Developer Kit](https://develope
 
 {{< alert title="Note" color="note" >}}
 
-This board is experimental.
-Stability is not guaranteed.
 This guide assumes that you have a Jetson AGX Orin Developer Kit with a Jetson AGX Orin module and reference carrier board, but you may want to use a different carrier board to incorporate your Orin into your robot.
 If so, the type of carrier board you use will affect your hardware requirements.
 
@@ -44,7 +42,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 **Initial Setup in Headless Mode:**
 
 1. A [Jetson AGX Orin Developer Kit](https://www.arrow.com/en/products/945-13730-0000-000/nvidia)
-2. An internet-connected Windows, Linux, or Mac computer
+2. An internet-connected Windows, Linux, or macOS computer
 3. A way to connect the computer to the Orin (for example, the USB Type-A to USB Type-C Cable included with the AGX Orin Developer Kit)
 
    (Optional) If your computer doesn't have a USB Type-A port, you may need to attach a [USB-C hub](https://toomanyadapters.com/best-usb-hubs/) or similar device to your computer to connect to the Orin

@@ -1,7 +1,7 @@
 ---
 title: "Configure a fake Servo"
 linkTitle: "fake"
-weight: 90
+weight: 10
 type: "docs"
 description: "Configure a fake servo."
 tags: ["servo", "components"]

@@ -7,8 +7,8 @@ description: "Use Viam's SDKs to write code to access and control your robot."
 icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 aliases:
-  - "product-overviews/sdk-as-client"
-  - "program/sdk-as-client"
+  - "/product-overviews/sdk-as-client"
+  - "/program/sdk-as-client"
 ---
 
 Viam offers software development kits (SDKs) in popular languages which
@@ -75,8 +75,8 @@ You can find more examples of Viam's SDKs in the <file>examples</file> folder of
 
 The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
 
-These boilerplate code samples import all of the necessary libraries and set up a client connection to your {{< glossary_tooltip term_id="remote" text="remote">}} or local robot.
-These code snippets import all the necessary libraries and sets up a connection with the Viam app in the cloud.
+These boilerplate code samples import all of the necessary libraries and set up a client connection to your robot whether your code runs on your robot or on a different machine.
+This connection is established through the Viam app in the cloud.
 
 {{< readfile "/static/include/snippet/secret-share.md" >}}
 
@@ -152,7 +152,7 @@ func main() {
 {{% tab name="TypeScript" %}}
 
 {{< alert title="Note" color="note" >}}
-The TypeScript SDK currently only support building web browser apps.
+The TypeScript SDK currently only supports building web browser apps.
 {{< /alert >}}
 
 ```ts {class="line-numbers linkable-line-numbers"}
@@ -269,7 +269,7 @@ Currently, this only works with Python code which is running on the same board t
 
 1. Change the `connect()` method to disable {{< glossary_tooltip term_id="webrtc" >}} and add the auth_entity in the DialOptions and use `localhost:8080`:
 
-    ```python {class="line-numbers linkable-line-numbers" data-line="5"}
+    ```python {class="line-numbers linkable-line-numbers"}
     async def connect():
       creds = Credentials(type='robot-location-secret', payload=PAYLOAD_SECRET)
       opts = RobotClient.Options(

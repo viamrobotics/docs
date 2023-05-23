@@ -52,9 +52,15 @@ Accessing the Motion Service is very similar to accessing any other component or
 {{< tabs >}}
 {{% tab name="Python" %}}
 You must import an additional Python library to access the Motion Service.
-Add `from viam.services.motion import MotionClient` to your import list and then add the sample code below to your own client script.
+Add the following line to your import list:
 
-```python {class="line-numbers linkable-line-numbers"}
+```python
+from viam.services.motion import MotionClient
+```
+
+Then add the sample code below to your own client script:
+
+```python
 # Access the Motion Service
 motion_service = MotionClient.from_robot(robot, "builtin")
 ```
@@ -75,7 +81,7 @@ if err != nil {
 {{< /tabs >}}
 
 Once the Motion Service can be accessed, some familiar features become available.
-The Motion service has a method that can get the *pose* of a component relative to a *reference frame*.
+The Motion Service has a method that can get the *pose* of a component relative to a [*reference frame*](../../../services/frame-system/).
 In the tutorial where we interacted with an arm component, we used the `EndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the Motion Service serves a similar function to `EndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
@@ -151,7 +157,7 @@ tableOrigin := spatialmath.NewPose(
   &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
 )
 tableDims := r3.Vector{X: 2000.0, Y: 2000.0, Z: 20.0}
-tableObj, _ := spatialmath.NewBox(tableOrigin, tableDims, "table")
+tableObj, err := spatialmath.NewBox(tableOrigin, tableDims, "table")
 obstacles = append(obstacles, tableObj)
 
 // Create a WorldState that has the GeometriesInFrame included
@@ -170,7 +176,7 @@ Feel free to change these dimensions, including thickness (the Z coordinate in t
 Additional obstacles can also be *appended* as desired.
 
 {{< alert title="Tip" color="note" >}}
-Within the app, the **Frame System** tab in the **Config** section of your robot gives you the ability to experiment with various geometry representations with better visual feedback.
+Within the app, the **Frame System** subtab of your robot's **Config** tab gives you the ability to experiment with various geometry representations with better visual feedback.
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
@@ -179,12 +185,11 @@ Within the app, the **Frame System** tab in the **Config** section of your robot
 
 ## Command an arm to move with the Motion Service
 
-Commanding motion with the Motion Service has a more general feel than previous examples that were commanding motion for individual components.
 In previous examples you controlled motion of individual components.
 Now you will use the Motion Service to control the motion of the robot as a whole.
-You will use the Motion Service's `Move` method to execute more general robotic motion.
+You will use the Motion Service's [`Move`](../../../services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
-The `worldState` we constructed earlier is also passed in so that the Motion Service can consider additional information when planning.
+The `worldState` we constructed earlier is also passed in so that the Motion Service takes that information into account when planning.
 
 The sample pose given below can be adjusted to fit your specific circumstances.
 Remember that X, Y, and Z coordinates are specified in millimeters.
@@ -232,7 +237,7 @@ if err != nil {
 
 ## Command other components to move with the Motion Service
 
-This section will require you to add a new component to your robot.
+In this section you will add a new component to your robot.
 One device that is very commonly attached to the end of a robot arm is a [*gripper*](/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various Motion Service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
@@ -244,24 +249,24 @@ We need to do several things to prepare a new gripper component for motion.
 
 1. Go back to your robot configuration in the Viam app.
 2. Under the **Components** section, add a new `gripper` component to your robot with the following attributes:
-    * Set `myGripper` as the **Name** of this new component
-    * Set the **Type** to `gripper`
-    * Set the **Model** to `fake`
-3. Add a **Frame** to this component
-    * Set the parent as `myArm`
-    * Set the translation as something small in the +Z direction, such as 90 mm
-    * Leave the orientation as the default
-    * For **Geometry Type** choose **Box**
+    * Set `myGripper` as the **Name** of this new component.
+    * Set the **Type** to `gripper`.
+    * Set the **Model** to `fake`.
+3. Add a **Frame** to this component.
+    * Set the parent as `myArm`.
+    * Set the translation as something small in the +Z direction, such as `90` millimeters.
+    * Leave the orientation as the default.
+    * For **Geometry Type** choose **Box**.
     * Enter desired values for the box's **Length**, **Width**, and **Height**, and the box origin's **X**, **Y**, and **Z** values.
-4. Include the `myArm` component in the **Depends On** drop-down for `myGripper`
-5. Save this new robot configuration
+4. Include the `myArm` component in the **Depends On** drop-down for `myGripper`.
+5. Save this new robot configuration.
     * Your `viam-server` instance should update automatically.
 
 <div class="td-max-width-on-larger-screens">
   <img src="../../img/motion/plan_03_gripper_config.png" width="700px" alt="Sample gripper configuration with several fields filled out.">
 </div>
 
-Because the new gripper component is "attached" (with the parent specification in the Frame) to `myArm`, we can produce motion plans using `myGripper` instead of `myArm`
+Because the new gripper component is "attached" (with the parent specification in the Frame) to `myArm`, we can produce motion plans using `myGripper` instead of `myArm`.
 
 The last library you must import is the `gripper` library.
 
@@ -272,7 +277,7 @@ Do this by adding `from viam.components.gripper import Gripper` to your import l
 ```python {class="line-numbers linkable-line-numbers"}
 my_gripper_resource = Gripper.get_resource_name("myGripper")
 
-# This will move the gripper in the -Z direction with respect to its own reference frame
+# Move the gripper in the -Z direction with respect to its own reference frame
 gripper_pose_rev = Pose(x=0.0, y=0.0, z=-100.0, o_x=0.0, o_y=0.0, o_z=1.0, theta=0.0)
 gripper_pose_rev_in_frame = PoseInFrame(reference_frame=my_gripper_resource.name, pose=gripper_pose_rev) # Note the change in frame name
 
@@ -307,7 +312,7 @@ For the gripper pose, you can change the reference frame information to consider
 Specifying other reference frames is an easy way to move with respect to those frames.
 For example, you can specify a pose that is 100 millimeters above the table obstacle featured earlier in this tutorial.
 You do not need to calculate that exact pose with respect to the **arm** or **world**.
-You must only provide the object name (instead of the `gripperName` you saw in the code samples above) when making the `NewPoseInFrame` to pass into the `Move` function.
+You must only provide the object name (instead of the `gripperName` you saw in the code samples above) when making the `PoseInFrame` to pass into the `Move` function.
 This has implications for how motion is calculated, and what final configuration your robot will rest in after moving.
 
 <!-- TODO: Content below struck out for the moment, saved to point at the next tutorial "Add Constraints to a Motion Plan" -->
@@ -523,7 +528,7 @@ func main() {
     &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
   )
   tableDims := r3.Vector{X: 2000.0, Y: 2000.0, Z: 20.0}
-  tableObj, _ := spatialmath.NewBox(tableOrigin, tableDims, "table")
+  tableObj, err := spatialmath.NewBox(tableOrigin, tableDims, "table")
   obstacles = append(obstacles, tableObj)
 
   // Create a WorldState that has the GeometriesInFrame included

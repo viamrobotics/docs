@@ -1,7 +1,7 @@
 ---
 title: "Configure a beaglebone board"
 linkTitle: "beaglebone"
-weight: 20
+weight: 40
 type: "docs"
 description: "Configure a beaglebone board."
 images: ["/components/img/components/board.svg"]

@@ -105,6 +105,11 @@ h5, .h5 {
   font-size: 0.833 !important;
 }
 
+h6, .h6 {
+  font-size: 0.833rem !important;
+  line-height: 1.0625rem;
+}
+
 h7, .h7 {
   font-size: 0.833rem !important;
   line-height: 1.0625rem;
@@ -237,7 +242,7 @@ p, li {
   }
 }
 
-/*This ensures there is no padding added to the top logo bar*/ 
+/*This ensures there is no padding added to the top logo bar*/
 .td-navbar .td-navbar-nav-scroll {
   height: unset;
 }
@@ -588,7 +593,6 @@ END MARKETING CSS
     max-width: 300px;
   }
 }
-
 
 .landing-hover-card {
   margin: 1em auto;

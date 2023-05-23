@@ -60,6 +60,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a camera called `"my_camera"` configured as a component of your robot.
 If your camera has a different name, change the `name` in the code.
 
+Be sure to import the camera package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.camera import Camera
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/camera"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The camera component supports the following methods:
@@ -82,12 +103,12 @@ If the server does not know how to return the specified MIME type, the server re
 
 **Parameters:**
 
-- `mime_type` (`str`): The MIME type of the image.
+- `mime_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The MIME type of the image.
   The returned MIME type is not guaranteed to match the image output type.
 
 **Returns:**
 
-- `frame` (`Image` or [`RawImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.RawImage)): The requested frame.
+- ([PIL.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html) or [RawImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.RawImage)): The requested frame.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
@@ -104,13 +125,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `errHandlers` ([`ErrorHandler`](https://pkg.go.dev/github.com/edaniels/gostream#ErrorHandler)): A handler for errors allowing for logic based on consecutively retrieved errors).
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `errHandlers` [(ErrorHandler)](https://pkg.go.dev/github.com/edaniels/gostream#ErrorHandler): A handler for errors allowing for logic based on consecutively retrieved errors).
 
 **Returns:**
 
-- `stream` ([`gostream.VideoStream`](https://pkg.go.dev/github.com/edaniels/gostream)): A `VideoStream` that streams video until closed.
-- `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(gostream.VideoStream)](https://pkg.go.dev/github.com/edaniels/gostream): A `VideoStream` that streams video until closed.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromRobot(robot, "my_camera")
@@ -142,8 +163,7 @@ The consumer of this call should decode the bytes into the format suggested by t
 
 **Returns:**
 
-- `pointcloud` (`bytes`): The pointcloud data.
-- `mimetype` (`str`): The MIME type of the pointcloud (for example PCD).
+- [(Tuple[bytes,str])](https://docs.python.org/3/library/stdtypes.html#bytes): The pointcloud data as bytes paired with a string representing the mimetype of the pointcloud (for example, PCD).
 
 To deserialize the returned information into a numpy array, use the Open3D library:
 
@@ -169,13 +189,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
 **Returns:**
 
-- `pointCloud` ([`pointcloud.PointCloud`](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud)): A general purpose container of points.
+- [(pointcloud.PointCloud)](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud): A general purpose container of points.
   It does not dictate whether or not the cloud is sparse or dense.
-- `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromRobot(robot, "my_camera")
@@ -201,7 +221,7 @@ Get the camera intrinsic parameters and camera distortion, as well as whether th
 
 **Returns:**
 
-- `properties` ([`Properties`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties)): The properties of the camera.
+- [(Properties)](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties): The properties of the camera.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera= Camera.from_robot(robot=robot, name="my_camera")
@@ -216,12 +236,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
 **Returns:**
 
-- `properties` ([`Properties`](https://pkg.go.dev/go.viam.com/rdk/components/camera#Properties)): Properties of the particular implementation of a camera.
-- `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/camera#Properties): Properties of the particular implementation of a camera.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromRobot(robot, "my_camera")
@@ -247,11 +267,11 @@ If you are implementing your own camera and add features that have no native API
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera= Camera.from_robot(robot, "my_camera")
@@ -267,13 +287,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map[string]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map[string]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
   myCamera, err := camera.FromRobot(robot, "my_camera")

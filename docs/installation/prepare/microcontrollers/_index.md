@@ -34,7 +34,7 @@ To use the micro-RDK with your ESP32 board, you need to install:
 - [`cargo-generate`](#install-cargo-generate-with-cargo)
 - [`cargo-espflash`](#install-or-update-cargo-espflash)
 
-The following instructions cover installation for MacOS and Linux machines.
+The following instructions cover installation for macOS and Linux machines.
 
 ### Install ESP-IDF
 
@@ -290,7 +290,7 @@ Add the ESP32-backed worker robot as a remote of your new controller robot to es
 
 ![The remotes config information](../../img/microcontroller/copy-remotes-json.png)
 
-2. Navigate to the **Config** tab of the control robot, select the `Remotes` sub-tab, select the `JSON` mode and click **Create Remote**.
+2. Navigate to the **Config** tab of the control robot, select the `Remotes` subtab, select the `JSON` mode and click **Create Remote**.
 
 ![Create remote menu](../../img/microcontroller/create-remote.png)
 
@@ -312,7 +312,7 @@ Espressif maintains a good QEMU emulator supporting the ESP32.
 See [here](https://github.com/espressif/qemu) for more information.
 
 {{< tabs >}}
-{{% tab name="MacOS" %}}
+{{% tab name="macOS" %}}
 
 Run the following command to install the QEMU ESP32 Emulator:
 

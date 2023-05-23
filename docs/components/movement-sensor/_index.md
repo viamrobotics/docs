@@ -49,6 +49,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have a movement sensor called `"my_movement_sensor"` configured as a component of your robot.
 If your movement sensor has a different name, change the `name` in the code.
 
+Be sure to import the movement sensor package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.movement_sensor import MovementSensor
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/movementsensor"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
@@ -92,8 +113,6 @@ Supported by GPS models.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_position).
 
-**Example usage:**
-
 ```python
 my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
@@ -107,23 +126,21 @@ position = await my_movement_sensor.get_position()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): Contains the current latitude and longitude as floats.
+- [(geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): Contains the current latitude and longitude as floats.
 - [(float64)](https://pkg.go.dev/builtin#float64): The altitude in meters.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
-**Example usage:**
-
 ```go
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current position of the movement sensor.
-position, _ := myMovementSensor.Position(context.Background(), nil)
+position, err := myMovementSensor.Position(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -148,8 +165,6 @@ Supported by GPS models.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_linear_velocity).
 
-**Example usage:**
-
 ```python
 my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
@@ -163,7 +178,7 @@ lin_vel = await my_movement_sensor.get_linear_velocity()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -172,13 +187,11 @@ lin_vel = await my_movement_sensor.get_linear_velocity()
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
-**Example usage:**
-
 ```go
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current linear velocity of the movement sensor.
-linVel, _ := myMovementSensor.LinearVelocity(context.Background(), nil)
+linVel, err := myMovementSensor.LinearVelocity(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -203,8 +216,6 @@ Supported by IMU models and by `gyro-mpu6050`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_angular_velocity).
 
-**Example usage:**
-
 ```python
 my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
@@ -221,7 +232,7 @@ y_ang_vel = ang_vel.y
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -230,13 +241,11 @@ y_ang_vel = ang_vel.y
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
-**Example usage:**
-
 ```go
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current angular velocity of the movement sensor.
-angVel, _ := myMovementSensor.AngularVelocity(context.Background(), nil)
+angVel, err := myMovementSensor.AngularVelocity(context.Background(), nil)
 
 // Get the y component of angular velocity.
 yAngVel := angVel.Y
@@ -264,8 +273,6 @@ Supported by IMU models, `accel-adxl345`, and `gyro-mpu6050`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_linear_acceleration).
 
-**Example usage:**
-
 ```python
 my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
@@ -282,7 +289,7 @@ x_lin_accel = lin_accel.x
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -291,13 +298,11 @@ x_lin_accel = lin_accel.x
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
-**Example usage:**
-
 ```go
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current linear acceleration of the movement sensor.
-linAccel, _ := myMovementSensor.LinearAcceleration(context.Background(), nil)
+linAccel, err := myMovementSensor.LinearAcceleration(context.Background(), nil)
 
 // Get the x component of linear acceleration
 xAngVel := linAccel.X
@@ -325,8 +330,6 @@ Supported by GPS models and `imu-vectornav`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_compass_heading).
 
-**Example usage:**
-
 ```python
 my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
 
@@ -340,7 +343,7 @@ heading = await my_movement_sensor.get_compass_heading()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -349,13 +352,11 @@ heading = await my_movement_sensor.get_compass_heading()
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
-**Example usage:**
-
 ```go
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current compass heading of the movement sensor.
-heading, _ := myMovementSensor.CompassHeading(context.Background(), nil)
+heading, err := myMovementSensor.CompassHeading(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -393,7 +394,7 @@ orientation = await my_movement_sensor.get_orientation()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -406,7 +407,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the current orientation of the movement sensor.
-sensorOrientation, _ := myMovementSensor.Orientation(context.Background(), nil)
+sensorOrientation, err := myMovementSensor.Orientation(context.Background(), nil)
 
 // Get the orientation vector (a unit vector pointing in the same direction as the sensor and theta, an angle representing the sensor's rotation about that axis).
 orientation := sensorOrientation.OrientationVectorDegrees()
@@ -434,7 +435,7 @@ Get the supported properties of this sensor.
 
 **Returns:**
 
-- ([Properties](https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Properties)): The supported properties of the movement sensor.
+- [(Properties)](https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Properties): The supported properties of the movement sensor.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_properties).
 
@@ -451,7 +452,7 @@ properties = await my_movement_sensor.get_properties()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -464,7 +465,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the supported properties of the movement sensor.
-properties, _ := myMovementSensor.Properties(context.Background(), nil)
+properties, err := myMovementSensor.Properties(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -485,7 +486,7 @@ Supported by GPS models.
 
 **Returns:**
 
-- (Dict[[str](https://docs.python.org/3/library/stdtypes.html#str), [float](https://docs.python.org/3/library/functions.html#float)]): The accuracy and/or precision of the sensor, if supported.
+- [(Dict[str, float])](https://docs.python.org/3/library/stdtypes.html#str): The accuracy and/or precision of the sensor, if supported.
   Contents depend on sensor model.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_accuracy).
@@ -503,11 +504,11 @@ accuracy = await my_movement_sensor.get_accuracy()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- (map[[string]](https://pkg.go.dev/builtin#string)[float32](https://pkg.go.dev/builtin#float32)): The accuracy and/or precision of the sensor, if supported.
+- [(map\[string\]float32)](https://go.dev/blog/maps): The accuracy and/or precision of the sensor, if supported.
   Contents depend on sensor model.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
@@ -517,7 +518,7 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the accuracy of the movement sensor.
-accuracy, _ := myMovementSensor.Accuracy(context.Background(), nil)
+accuracy, err := myMovementSensor.Accuracy(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -538,7 +539,7 @@ If a sensor is not configured to take a certain measurement or fails to read a p
 
 **Returns:**
 
-- ([Mapping [str, Any]](https://docs.python.org/3/glossary.html#term-mapping)): An object containing the measurements from the sensor.
+- [(Mapping [str, Any])](https://docs.python.org/3/glossary.html#term-mapping): An object containing the measurements from the sensor.
 Contents depend on sensor model and can be of any type.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_readings).
@@ -556,11 +557,11 @@ readings = await my_movement_sensor.get_readings()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- (map[[string]](https://pkg.go.dev/builtin#string)interface{}): A map containing the measurements from the sensor.
+- [(map[string]interface{})](https://go.dev/blog/maps): A map containing the measurements from the sensor.
     Contents depend on sensor model and can be of any type.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
@@ -570,7 +571,7 @@ For more information, see the [Go SDK docs for Sensor](https://pkg.go.dev/go.via
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
 
 // Get the latest readings from the movement sensor.
-readings, _ := myMovementSensor.Readings(context.Background(), nil)
+readings, err := myMovementSensor.Readings(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -586,11 +587,11 @@ If you are implementing your own movement sensor and add features that have no b
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
@@ -610,13 +611,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map[string]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map[string]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
@@ -628,6 +629,12 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
 
 ## Next Steps
 

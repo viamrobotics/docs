@@ -8,6 +8,8 @@ image: "/program/img/modular-resources/rplidar-on-robot.png"
 imageAlt: "An R-P-lidar mounted to a Viam rover."
 images: ["/program/img/modular-resources/rplidar-on-robot.png"]
 tags: ["slam", "services"]
+aliases:
+  - "/program/extend/modular-resources/add-rplidar-module/"
 # SMEs: Kat, Jeremy
 ---
 
@@ -32,7 +34,7 @@ sudo chmod a+rx /usr/local/bin/rplidar-module
 ```
 
 {{% /tab %}}
-{{% tab name="MacOS" %}}
+{{% tab name="macOS" %}}
 
 ```{id="terminal-prompt" class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews && brew install rplidar-module
@@ -57,7 +59,7 @@ Add a component with type `camera`, model `viam:lidar:rplidar`, and a name of yo
 Paste the following into the **Attributes** field of your new component according to your machine's architecture (none needed for Linux):
 
 {{< tabs name="Add Rplidar Configs">}}
-{{% tab name="MacOS x86_64" %}}
+{{% tab name="macOS x86_64" %}}
 
 ```json
 {
@@ -67,7 +69,7 @@ Paste the following into the **Attributes** field of your new component accordin
 
 {{% /tab %}}
 
-{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+{{% tab name="macOS ARM64 (M1 & M2)" %}}
 
 ```json
 {
@@ -81,13 +83,13 @@ Paste the following into the **Attributes** field of your new component accordin
 Click on the **Modules** subtab. Add the rplidar module with a name of your choice and an executable path that points to the location of your installed `rplidar-module` binary:
 
 {{< tabs name="Add Rplidar Component Module">}}
-{{% tab name="Linux/MacOS x86_64" %}}
+{{% tab name="Linux/macOS x86_64" %}}
 
 ![adding rplidar module linux](../../img/add-rplidar/add-rplidar-module-ui-linux.png)
 
 {{% /tab %}}
 
-{{% tab name="MacOS ARM64 (M1 & M2)" %}}
+{{% tab name="macOS ARM64 (M1 & M2)" %}}
 
 ![adding rplidar module M1 M2](../../img/add-rplidar/add-rplidar-module-ui-M1-M2.png)
 
@@ -123,7 +125,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"components"` and `
   ```
 
   {{% /tab %}}
-  {{% tab name="MacOS x86_64" %}}
+  {{% tab name="macOS x86_64" %}}
 
   ```json
   {
@@ -149,7 +151,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"components"` and `
   ```
 
   {{% /tab %}}
-  {{% tab name="MacOS ARM64 (M1 & M2)" %}}
+  {{% tab name="macOS ARM64 (M1 & M2)" %}}
 
   ```json
   {

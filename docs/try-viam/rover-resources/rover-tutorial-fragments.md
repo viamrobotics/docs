@@ -51,6 +51,14 @@ The fragment adds the following components to your robot's JSON configuration:
   * Within the motor attributes, board: "local", encoder: "Lenc", ticks per rotation: "996".
   * Within the component pin assignment, type: In1/In2, A/In1: "11 GPIO 17", B/In2: "13 GPIO 27", PWM: "15 GPIO 22".
   * Depends on local and Lenc.
+
+{{% alert title="Note" color="note" %}}
+
+This particular motor driver has pins labeled "ENA" and "ENB."
+Typically, this would suggest that they should be configured as enable pins, but on this specific driver these function as PWM pins, so we configure them as such.
+
+{{% /alert %}}
+
 * A wheeled Viam [base](/components/base/) with attributes:
   * Right Motors: right
   * Left Motors: left
@@ -71,16 +79,8 @@ The fragment adds the following components to your robot's JSON configuration:
 
 ## See the components on the configuration page
 
-Adding a fragment to your robot adds the configuration to your robot but it does not automatically fill your robot configuration page in the app with these components.
-It is normal for your **Components** subtab on the builder view to be empty:
-
-![Builder Tab](../img/fragments/builder_tab.png)
-
-Instead, your Raw JSON will reference the fragment in it.
-
-![Raw JSON](../img/fragments/raw_json.png)
-
-If you want each component to show up in your **Components** subtab so you can view or edit them, copy the entire configuration from the **Fragments** subtab, paste it into your Raw JSON section, and save your configuration.
+Adding a fragment to your robot adds the configuration to your robot.
+The components and services included in the fragment will appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
 ## Next Steps
 

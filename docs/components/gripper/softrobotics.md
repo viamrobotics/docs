@@ -1,7 +1,7 @@
 ---
 title: "Configure a Soft Robotics Gripper"
 linkTitle: "softrobotics"
-weight: 10
+weight: 30
 type: "docs"
 description: "Configure a Soft Robotics gripper."
 images: ["/components/img/components/gripper.svg"]
@@ -13,7 +13,7 @@ The `softrobotics` model supports the [Soft Robotics *m*Grip](https://www.softro
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** sub-tab and navigate to the **Create component** menu.
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your gripper, select the type `gripper`, and select the `softrobotics` model.
 
 Click **Create component**.
