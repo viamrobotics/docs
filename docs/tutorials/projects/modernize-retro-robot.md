@@ -37,7 +37,6 @@ Be sure to check back later for updates.*
 ## Parts list
 
 Other than the Omnibot 2000, which you'll need to find on a used marketplace like eBay, the rest are commodity parts you can find easily:
-Some of the items listed here are supplies that can be used for projects beyond this one.
 
 |Part  | Price | Notes |
 | --- | --- | --- |
@@ -47,12 +46,12 @@ Some of the items listed here are supplies that can be used for projects beyond 
 [L298N motor drive controller board 2-pack](https://www.amazon.com/DAOKI-Controller-H-Bridge-Stepper-Mega2560/dp/B085XSLKFQ/r)|$8.31|To control the base and head motors.|
 [LED E10 bulbs](https://www.amazon.com/Ruiandsion-6000K-Flashlight-Headlight-Negative/dp/B08SLQBZGN)|$7.99|You'll need 2 LED bulbs to light up the eyes.|
 [Webcam](https://www.amazon.com/gp/product/B08PTNVPKX)|$36.15|A webcam that can be placed as a "nose", there are many options.|
-[12V Battery pack](https://www.amazon.com/5200mAh-Lithium-57-72Wh-Rechange-Connectors/dp/B08D1SHJDC)|$59.00|The Omnibot had a battery pack, but it likely will not work after almost 40 years; our was missing. You do not need to use lithium ion batteries, but if your battery pack does not fit in the battery compartment you will need to house it elsewhere and route wires differently than in this tutorial. If you have the know-how, you could alternately build a 12V battery pack with 18650s and a spot welder.|
-[Ultrasonic sensor](https://www.amazon.com/WWZMDiB-HC-SR04-Ultrasonic-Distance-Measuring/dp/B0B1MJJLJP)|$3.50|For obstacle avoidance|
+[12V Battery pack](https://www.amazon.com/5200mAh-Lithium-57-72Wh-Rechange-Connectors/dp/B08D1SHJDC)|$59.00|The Omnibot had a battery pack, but it likely will not work after almost 40 years; ours was missing. You do not need to use lithium ion batteries, but if your battery pack does not fit in the battery compartment you will need to house it elsewhere and route wires differently than in this tutorial. If you have the know-how, you could alternately build a 12V battery pack with 18650s and a spot welder.|
+[Ultrasonic sensor](https://www.amazon.com/WWZMDiB-HC-SR04-Ultrasonic-Distance-Measuring/dp/B0B1MJJLJP)|$3.50|For obstacle avoidance.|
 [Raspberry Pi 4B](https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TC2BK1X)|$125.00|You can use any Pi or supported SBC that runs 64 bit Linux.|
-[DC barrel pigtail connectors](https://www.amazon.com/43x2pcs-Connectors-Security-Lighting-MILAPEAK/dp/B072BXB2Y8)|$9.79|For connecting the battery pack to the robot|
+[DC barrel pigtail connectors](https://www.amazon.com/43x2pcs-Connectors-Security-Lighting-MILAPEAK/dp/B072BXB2Y8)|$9.79|For connecting the battery pack to the robot.|
 [Assorted breadboard wires](https://www.amazon.com/EDGELEC-Optional-Breadboard-Assorted-Multicolored/dp/B07GD17ZF3)|$19.98|Various lengths will be helpful.|
-[18 gauge stranded wire](https://www.amazon.com/American-Gauge-Primary-Black-Available/dp/B07D74RGVM)|$11.38|For connecting various components that don't have pins|
+[18 gauge stranded wire](https://www.amazon.com/American-Gauge-Primary-Black-Available/dp/B07D74RGVM)|$11.38|For connecting various components that don't have pins.|
 [Quick wire connectors](https://www.amazon.com/Quick-Connect-Wire-Connectors-Kit/dp/B0BRQD257H/)|$25.00|Not required, but these make wire connections secure and simple.|
 [Velcro tape](https://www.amazon.com/Double-Sided-Adhesive-Strong-Self-Adhesive-Fastener/dp/B07TVZB1GL)|$9.99|This will help us organize the components we add to the robot base.|
 
@@ -86,7 +85,7 @@ Ours were in decent shape - if yours are not you can find them for sale on [Ebay
 Note that Omnibot seems to be right-handed - its right arm and hand are motorized, while the left is manually posable.
 We'll take on controlling its arm and gripper in a future tutorial.
 
-The tape player in an interesting device to have built-into a robot - and it certainly adds to the retro look.
+The tape player is an interesting device to have built-into a robot - and it certainly adds to the retro look.
 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/maiv/maiv_unscrew_battery_cover.jpg" class="alignright" alt="Omnibot 2000 battery cover being opened." title="Omnibot 2000 battery cover being opened." style="max-width: 170px;" />
@@ -150,23 +149,23 @@ But first, remember it was in someone's attic gathering dust for years.
 Second, we will re-use the motors and gears and leave the original circuit boards in-place (albeit no longer used).
 It's a [restomod](https://www.goldeagle.com/tips-tools/what-is-a-restomod/)!
 
-You will wire the left and right motors to a motor controller and Raspberry Pi - this will allow your Omnibot to be controlled with Viam as a [wheeled base](/components/base/wheeled/).
+Let's get started with wiring the left and right motors to a motor controller and Raspberry Pi - this will allow your Omnibot to be controlled with Viam as a [wheeled base](/components/base/wheeled/).
 
 First, detach the left and right base motor's wires from the small printed circuit board.
-Orient the L298N so that the `OUT1` and `OUT2` terminals are on the left side.
+Orient your L298N so that the `OUT1` and `OUT2` terminals are on the left side.
 Using a screwdriver, attach the 2 wires from the left motor to the `OUT1` and `OUT2` terminals.
 Now, attach the 2 wires from the right motor to the `OUT3` and `OUT4` terminals.
 
 [TODO: need wiring diagram here]
 
-Ensure your Raspberry Pi powered off, and connect GPIO pins for the left motor with female-to-female jumper wires.
+Ensure your Raspberry Pi is powered off, and connect GPIO pins for the left motor with female-to-female jumper wires.
 You can use any GPIO pins, but we connected pin 32 to `IN1`, pin 38 to `IN2`, and pin 35 to `ENA`.
 Now, do the same for the right motor, connecting pin 31 to `IN3`, pin 36 to `IN4` and pin 22 to `ENB`.
 Cut off one end of a jumper wire, strip it and connect pin 34 (ground) to the common ground terminal `GND` on the L298N.
 
 ### Powering MAIV
 
-Conveniently, MAIV has a easy-to-access external switches, a barrel jack in the battery compartment, and a barrel jack on the exterior.
+Conveniently, MAIV has easy-to-access external switches, a barrel jack in the battery compartment, and a barrel jack on the exterior.
 Spending a little time now repurposing these will make it easy for you to power up, power down, and charge your robot.
 
 <div class="td-max-width-on-larger-screens">
@@ -187,8 +186,10 @@ Feed the two wires you just added into the center cavity of the robot through on
 
 If your battery pack does not have a barrel jack connector, you'll need to add one.
 Cut off any existing connector, and solder the red wire of a male barrel connector pigtail to the positive battery wire, the black wire from the pigtail connector to the negative battery wire.
-Don't plug the battery in just yet.
 
+{{< alert title="Caution" color="caution" >}}
+Don't plug the battery in just yet.
+{{< /alert >}}
 #### Wire the power sources
 
 You now need to open the center/torso compartment of MAIV in order to access the wiring within.
@@ -201,8 +202,8 @@ Turn this over so that the wires coming out of the battery box and switches are 
 <img src="../../img/maiv/maiv_main_board.jpg" alt="Omnibot MAIV power wiring." class="alignleft" title="Omnibot MAIV power wiring." style="max-width: 250px;" />
 </div>
 
-At the top of the torso, you'll notice a large printed circuit board that was the originally the main digital control center of the Omnibot 2000.
-We'll not use it at all as we modernize MAIV, but we can leave it intact.
+At the top of the torso, you'll notice a large printed circuit board that was originally the main digital control center of the Omnibot 2000.
+We'll won't use it at all as we modernize MAIV, but we can leave it intact.
 
 Now, using wire cutters and quick wire connectors, connect the battery, switch, and charger wires as shown.
 
@@ -219,18 +220,19 @@ Finally, run the unconnected wire from the switch (the positive to power the rob
 #### Connect the power sources to the motors and Pi
 
 Working in the robot base, use a 4-terminal quick connector to connect the positive power supply wire (from the previous step) to the step down converter *positive* input wire.
-Using a length of 18 gauge wire, connect another terminal in this quick connector to the 12V VCC screw terminal on the L298N motor driver to which you previously connected the base motors and pi.
-One of the terminals to the quick connector is empty. This is expected, you will use it later.
+Using a length of 18 gauge wire, connect another terminal in this quick connector to the 12V VCC screw terminal on the L298N motor driver to which you previously connected the base motors and Pi.
+One of the terminals to the quick connector is empty.
+This is expected, you will use it later.
 
 Now use another 4-terminal quick connector to connect the negative power supply wire from the torso to the step down converter *negative* wire.
-Using a length of 18 gauge wire, connect another terminal in this quick connector to the GND screw terminal on the L298N motor driver to which you previously connected the base motors and pi.
+Using a length of 18 gauge wire, connect another terminal in this quick connector to the GND screw terminal on the L298N motor driver to which you previously connected the base motors and Pi.
 As with the positive connector, one of the negative terminals will be left empty.
 
-Finally, plug the USB-C output from the step down converter to the Raspberry Pi.
+Finally, plug the USB-C output from the step down converter into the Raspberry Pi.
 
 #### Power MAIV on
 
-Now you can test that your the wiring is correct.
+Now you can test that your wiring is correct.
 Ensure the power switch you just wired is off, and your battery is charged.
 Plug the battery into the barrel connector inside the battery compartment, then turn on the power switch.
 You should see LEDs on the motor driver and Pi light up!
@@ -240,13 +242,13 @@ You should see LEDs on the motor driver and Pi light up!
 If you do not see the LEDs light up, turn the power switch off.
 
 Check your wiring, use a multimeter to ensure that your battery has enough power, and that the positive and negative polarity is as expected.
-You can also try unplugging the battery and powering instead with the wall adaptor.
+You can also try unplugging the battery and powering it instead with the wall adaptor.
 
 {{% /alert %}}
 
 ### Base configuration
 
-Merging 40-year-old tech with modern tech to light up LEDs verges on exciting, but we need to configure our robotic base before we can get to the true prize of controlling MAIV through the internet and programmatically.
+Merging 40-year-old tech with modern tech to light up LEDs is exciting, but we need to configure our robotic base before we can get to the true prize of controlling MAIV through the internet and programmatically.
 For now, turn the power switch to the off position.
 In just a few minutes, you'll have it back on.
 
@@ -407,7 +409,7 @@ If the wheels on a given side are spinning in the opposite direction of what you
 {{<video webm_src="../../img/maiv/maiv_base_test.webm" mp4_src="../../img/maiv/maiv_base_test.mp4" alt="MAIV base test movements" max-width="300px">}}
 
 From the **Control** tab you can also test the individual motors directly.
-First select the desired direction and power percent, start the motor by clicking `RUN` and stop the motor by clicking `STOP`.
+First select the desired direction and power percent, then start the motor by clicking `RUN` and stop the motor by clicking `STOP`.
 
 ### MAIV's head
 
@@ -432,7 +434,7 @@ Cut the original wires (leave some length) and strip the ends.
 You will control both eyes at once, so use a 3-terminal quick connect to connect both eyes positive wires and a third long breadboard wire.
 Repeat the same with another 3-terminal quick connect for the negative wires.
 
-Now, run the long breadboard wires to through the robot neck, torso, and into the base.
+Now, run the long breadboard wires through the robot neck, torso, and into the base.
 
 With the robot powered off:
 
@@ -441,7 +443,7 @@ With the robot powered off:
 
 Power your robot back on to test the eyes.
 You will use GPIO directly to control the eyes through the `board` component you already configured.
-Once viam-server is running (it will take a minute or so to initialize), go to the **Control** tab and open the *local* board card.
+Once `viam-server` is running (it will take a minute or so to initialize), go to the **Control** tab and open the *local* board card.
 From here, you can test MAIV's eyes by setting GPIO pin 18 to high (to turn the eyes on) or low (to turn the eyes off).
 
 {{<video webm_src="../../img/maiv/maiv_eye_test.webm" mp4_src="../../img/maiv/maiv_eye_test.mp4" alt="MAIV eye flashing test" max-width="300px">}}
@@ -457,7 +459,7 @@ Extend the wires running to the neck motor through the torso and into the base.
 
 Again, power off your robot.
 
-Take a another L298N motor driver and using a screwdriver, attach the 2 wires from the neck motor to the `OUT1` and `OUT2` terminals.
+Take another L298N motor driver and using a screwdriver, attach the 2 wires from the neck motor to the `OUT1` and `OUT2` terminals.
 
 Using a length of 18 gauge wire, connect the final terminal of the positive quick connector to the 12V VCC screw terminal on the L298N.
 Connect the final terminal of the negative quick connector to the GND terminal on the L298N.
@@ -522,7 +524,7 @@ Power your robot back on and use the **Control** tab to test that the neck motor
 
 #### Add a camera "nose"
 
-Before re-assembling MAIV, you will add a camera to your robot's face.
+Before re-assembling MAIV, you can add a camera to your robot's face.
 We can use this camera to stream video and capture images, as well as leverage it for computer vision and machine learning.
 
 <div class="td-max-width-on-larger-screens">
