@@ -20,7 +20,7 @@ Viam supports a wide variety of systems, including:
   </li>
   <li id="c1_slide2">
     <a href="installation/prepare/rpi-setup/">
-        <img src="installation/img/thumbnails/raspberry-pi-4-b-2gb.jpg" alt="Raspberry Pi" width="100%">
+        <img src="installation/img/thumbnails/raspberry-pi-4-b-2gb.png" alt="Raspberry Pi" width="100%">
         <h6>Raspberry Pi 4</h6>
     </a>
   </li>
@@ -56,7 +56,7 @@ Viam supports a wide variety of systems, including:
   </li>
   <li id="c1_slide8">
     <a href="components/board/jetson/">
-            <img src="installation/img/thumbnails/jetson-xavier.jpeg" alt="Jetson Xavier NX Dev Kit" width="100%">
+            <img src="installation/img/thumbnails/jetson-xavier.png" alt="Jetson Xavier NX Dev Kit" width="100%">
             <h6>NVIDIA Jetson Xavier NX</h6>
     </a>
   </li>
@@ -68,7 +68,7 @@ Viam supports a wide variety of systems, including:
   </li>
   <li id="c1_slide10">
     <a href="components/board/nanopi/">
-        <img src="installation/img/thumbnails/nanopi.jpeg" alt="FriendlyElec's NanoPi Mini Board" width="100%">
+        <img src="installation/img/thumbnails/nanopi.png" alt="FriendlyElec's NanoPi Mini Board" width="100%">
         <h6>FriendlyElec NanoPi</h6>
     </a>
   </li>
@@ -80,7 +80,7 @@ Viam supports a wide variety of systems, including:
   </li>
   <li id="c1_slide12">
     <a href="components/board/pca9685/">
-        <img src="installation/img/thumbnails/pca9685.jpeg" alt="P C A 9685 Arduino I 2 C Interface" width="100%">
+        <img src="installation/img/thumbnails/pca9685.png" alt="P C A 9685 Arduino I 2 C Interface" width="100%">
         <h6>PCA9686 Arduino I<sup>2</sup>C Interface</h6>
     </a>
   </li>
