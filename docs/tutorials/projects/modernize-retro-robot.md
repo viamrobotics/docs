@@ -35,8 +35,6 @@ We will keep the original housing, style and motors where possible - but bring i
 * Computer vision
 * Machine learning and AI
 
-*This part one of the Omnibot MAIV series, where we'll focus on getting MAIV integrated with the Viam platform.
-Be sure to check back later for updates.*
 
 ## Parts list
 
