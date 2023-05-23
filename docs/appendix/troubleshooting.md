@@ -63,8 +63,6 @@ When a robot is disconnected, it will continue to run with its locally-cached cu
 
 - Is the {{< glossary_tooltip term_id="board" text="board" >}} component connected to the internet?
 - Is the `ssh` service configured and running locally on the board?
-   You can check by running `sudo systemctl status ssh` from within an `ssh` session to the board.
-   It should be listed as `active (running)`.
 - Is the `viam-server` service running locally on the board?
    You can check by running `sudo systemctl status viam-server` from within an `ssh` session to the board.
    It should be listed as `active (running)`.
