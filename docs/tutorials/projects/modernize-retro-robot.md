@@ -19,7 +19,7 @@ From Star Wars to Short Circuit, Go-bots to Transformers - the 1980s was a time 
 </div>
 
 Along with robots appearing in mass media, a good number of toy robots made their way into homes.
-While these robots certainly did allow some fun for those fortunate enough to have one, they ultimately were often a fairly crude combination of common tech of the times.
+While these robots certainly were fun for those fortunate enough to have one, they were often a fairly crude combination of common tech of the times.
 Cross a remote control car with a cassette player, walkie-talkie, and alarm clock - you had the top of the line toy robot of the 1980s: the Tomy Omnibot 2000.
 
 Let’s bring the Omnibot 2000 closer to the home robot vision that many had (and still have) by bringing in new technology and renaming it Omnibot MAIV (Modernized with AI and Viam).
