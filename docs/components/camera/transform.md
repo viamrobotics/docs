@@ -15,44 +15,44 @@ The transformations are applied in the order they are written in the `pipeline`.
 {{< tabs name="Example transform view" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `transform` model.
 
-![Creation of an transform view in the Viam app config builder.](../img/create-transform.png)
-
-Fill in the attributes for your transform view:
+Click **Create component**.
 
 ![Configuration of an transform view in the Viam app config builder.](../img/configure-transform.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera_name>",
+    "name": "<your-camera-name>",
     "type": "camera",
     "model": "transform",
     "attributes" : {
         "intrinsic_parameters": {
-            "width_px": <integer>,
-            "height_px": <integer>,
-            "fx": <float64>,
-            "fy": <float64>,
-            "ppx": <float64>,
-            "ppy": <float64>
+            "width_px": <int>,
+            "height_px": <int>,
+            "fx": <float>,
+            "fy": <float>,
+            "ppx": <float>,
+            "ppy": <float>
         },
         "distortion_parameters": {
-            "rk1": <float64>,
-            "rk2": <float64>,
-            "rk3": <float64>,
-            "tp1": <float64>,
-            "tp2": <float64>
+            "rk1": <float>,
+            "rk2": <float>,
+            "rk3": <float>,
+            "tp1": <float>,
+            "tp2": <float>
         },
         "debug": <boolean>,
-        "source" : "<camera_name>",
+        "source" : "<your-camera-name>",
         "pipeline": [
-            { "type": "<transformation_type>", "attributes": { ... } },
+            { "type": "<transformation-type>", "attributes": { ... } },
             ...
         ]
     }
@@ -64,13 +64,13 @@ Fill in the attributes for your transform view:
 
 The following attributes are available for `transform` views:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `source` | **Required** | `name` of the camera to transform. |
-| `pipeline` | **Required** | Specify an array of transformation objects. |
-| `intrinsic_parameters` | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
-| `distortion_parameters` | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
-| `debug` | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `source` | string | **Required** | `name` of the camera to transform. |
+| `pipeline` | array | **Required** | Specify an array of transformation objects. |
+| `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
+| `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
+| `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 
 The following are the transformation objects available for the `pipeline`:
 

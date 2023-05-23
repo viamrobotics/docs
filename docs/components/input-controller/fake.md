@@ -21,12 +21,14 @@ Refer to the following example configuration for an input controller of model `f
 {{< tabs name="Configure a `fake` input controller" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your input controller, select the type `input_controller`, and select the `fake` model.
 Click **Create component**.
 
 ![An example configuration for a fake input controller component in the Viam App config builder.](../img/fake-input-controller-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -35,7 +37,7 @@ Click **Create component**.
 {
   "components": [
     {
-      "name": <your-fake-input-controller>,
+      "name": "<your-fake-input-controller>",
       "type": "input_controller",
       "model": "fake",
       "attributes": {

@@ -42,11 +42,11 @@ If you are running out of time during your rental, you can [extend your rover re
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, then select **Python** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, then select **Python** and copy the boilerplate code.
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>square.py</file> and paste the boilerplate code from the **code sample** tab of the Viam app into your file.
+Next, create a file named <file>square.py</file> and paste the boilerplate code from the **Code Sample** tab of the Viam app into your file.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
@@ -57,14 +57,33 @@ You can run your code by typing the following into your terminal:
 python3 square.py
 ```
 
+The program prints an array of resources.
+These are the components and services that the robot is configured with in the Viam app.
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-75"}
+python3 square.py
+2023-05-12 11:33:21,045      INFO    viam.rpc.dial (dial.py:211)    Connecting to socket: /tmp/proxy-Dome34KJ.sock
+Resources:
+[namespace: "rdk"
+type: "component"
+subtype: "motor"
+name: "left"
+, namespace: "rdk"
+type: "component"
+subtype: "camera"
+name: "cam"
+, ...
+]
+```
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, then select **Go** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, then select **Go** and copy the boilerplate code.
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>square.go</file> and paste the boilerplate code from the **code sample** tab of the Viam app into your file.
+Next, create a file named <file>square.go</file> and paste the boilerplate code from the **Code Sample** tab of the Viam app into your file.
 Then, save your file.
 
 Initialize your project, and install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
@@ -75,14 +94,25 @@ go mod tidy
 go run square.go
 ```
 
+The program prints an array of resources.
+These are the components and services that the robot is configured with in the Viam app.
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-10"}
+go run square.go
+2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:40 
+   Resources:
+2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:41 
+   [rdk:component:camera/fakeCam rdk:service:data_manager/overhead-cam:dm rdk:component:motor/left rdk:component:camera/cam rdk:component:encoder/Lenc rdk:component:encoder/Renc rdk:service:base_remote_control/base_rc rdk:service:sensors/builtin rdk:component:motor/right rdk:service:sensors/overhead-cam:builtin rdk:service:motion/overhead-cam:builtin rdk:component:input_controller/WebGamepad rdk:component:camera/overhead-cam:cam rdk:service:data_manager/builtin rdk:service:motion/builtin rdk:component:board/local rdk:component:base/viam_base] 
+```
+
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **code sample** tab, then select **TypeScript** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, then select **TypeScript** and copy the boilerplate code.
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>main.ts</file> and paste the boilerplate code from the **code sample** tab of the Viam app into your file.
+Next, create a file named <file>main.ts</file> and paste the boilerplate code from the **Code Sample** tab of the Viam app into your file.
 Then, save your file.
 
 Create another file named <file>package.json</file> with the following contents:
@@ -137,13 +167,14 @@ npm install
 npm start
 ```
 
-{{% /tab %}}
-{{< /tabs >}}
-
-Open a web browser and visit `localhost:8000`. You should see a disabled button that says `Click me`. If you successfully configured your robot and it is able to connect to the Viam app, the button will become enabled. If you open the developer console, you should see some output including the names of your rover's resources.
+Open a web browser and visit `localhost:8000`.
+You should see a disabled button that says `Click me`.
+If you successfully configured your robot and it is able to connect to the Viam app, the button will become enabled.
+If you open the developer console, you should see some output including the names of your rover's resources.
 These are the components and services that the robot is configured with in the Viam app.
 
-<img src="../../img/try-viam-sdk/image3.png" alt="The output of the program is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="100%">
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -416,7 +447,7 @@ async function main() {
 {{< /tabs >}}
 
 {{< alert title="Tip" color="tip" >}}
-If you are [renting your rover](https://app.viam.com/try), go to the **control** tab, and make sure you can monitor the camera feed from your rover.
+If you are [renting your rover](https://app.viam.com/try), go to the **Control** tab, and make sure you can monitor the camera feed from your rover.
 {{< /alert >}}
 
 When you run your code, your robot moves in a square.

@@ -18,7 +18,7 @@ To label a dataset, go to the [**DATA** tab](https://app.viam.com/data/view) in 
 
 ![Add new model menu](../img/add-new-model.png)
 
-On the **IMAGES** sub-tab, you can filter available images, using the **FILTERING** menu and select the attributes that match where, how, and when the data was collected.
+On the **Images** subtab, you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
 
 {{< alert title="Important" color="note" >}}
 Datasets are views, not materialized.

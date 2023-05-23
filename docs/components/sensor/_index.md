@@ -49,13 +49,34 @@ For an example of creating a custom component, see a [WiFi strength sensor built
 
 ## Control your sensor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
 
 These examples assume you have a sensor called `"my_sensor"` configured as a component of your robot.
 If your sensor has a different name, change the `name` in the code.
+
+Be sure to import the sensor package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.sensor import Sensor
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/sensor"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## API
 
@@ -74,12 +95,12 @@ Get the measurements or readings that this sensor provides.
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `readings` [(Mapping[str, Any])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this sensor provides.
+- [(Mapping\[str, Any\])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this sensor provides.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/index.html#viam.components.sensor.Sensor.get_readings).
 
@@ -95,13 +116,12 @@ readings = await my_sensor.get_readings()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `readings` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): The measurements or readings that this sensor provides.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(map\[string\]interface{})](https://go.dev/blog/maps): The measurements or readings that this sensor provides.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
 
@@ -120,3 +140,9 @@ readings, err := mySensor.Readings(context.Background(), nil)
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+## Next Steps
+
+{{< cards >}}
+    {{% card link="/tutorials/projects/make-a-plant-watering-robot/" size="small" %}}
+{{< /cards >}}

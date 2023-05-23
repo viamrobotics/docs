@@ -1,7 +1,7 @@
 ---
 title: "Configure a fake motor"
 linkTitle: "fake"
-weight: 70
+weight: 10
 type: "docs"
 description: "Configure a fake motor to test software without any hardware."
 images: ["/components/img/components/motor.svg"]
@@ -14,13 +14,15 @@ For example, you can use a `fake` component as a placeholder while waiting on a 
 {{< tabs name="fake-config">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your motor, select the type `motor`, and select the `fake` model.
 
-Click **Create component**:
+Click **Create component**.
 
 ![A fake motor config.](../../img/motor/fake-config-ui.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -29,7 +31,7 @@ Click **Create component**:
 {
   "components": [
     {
-      "name": <motor_name>,
+      "name": "<your-motor-name>",
       "type": "motor",
       "model": "fake",
       "attributes": {
@@ -87,10 +89,10 @@ Nested within `pins`:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `a` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-| `b` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-| `dir` | string | Optional | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
-|`pwm` | string | Optional | See [Pin Information](#pin-information). Pin number such as "36." Viam uses board pin numbers, not GPIO numbers. |
+| `a` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board). |
+| `b` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board). |
+| `dir` | string | Optional | See [Pin Information](#pin-information). {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board). |
+|`pwm` | string | Optional | See [Pin Information](#pin-information). {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board). |
 
 #### Pin Information
 

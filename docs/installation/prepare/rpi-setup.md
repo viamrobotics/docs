@@ -7,6 +7,7 @@ description: "Image a Raspberry Pi to prepare it for viam-server installation."
 image: "/installation/img/thumbnails/raspberry-pi-4-b-2gb.jpg"
 imageAlt: "Raspberry Pi"
 iamges: ["/installation/img/thumbnails/raspberry-pi-4-b-2gb.jpg"]
+no_list: true
 aliases:
     - /getting-started/rpi-setup/
     - /installation/rpi-setup/
@@ -22,7 +23,7 @@ If you already have a 64-bit Linux distribution installed on your Pi, skip ahead
 {{%expand "Click to check whether the Linux installation on your Raspberry Pi is 64-bit" %}}
 
 If you already have a 64-bit Linux distribution installed on your Pi, you can skip ahead to [installing `viam-server`](../../#install-viam-server).
-To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running viam-server), `ssh` into your Pi and then run `lscpu`.
+To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running `viam-server`), `ssh` into your Pi and then run `lscpu`.
 
 Example output:
 

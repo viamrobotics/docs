@@ -22,11 +22,11 @@ Use the following configuration for an input controller of model `webgamepad`:
 {{< tabs name="Configure a `webgamepad` input controller" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter the `WebGamepad` name for your input controller, select the type `input_controller`, and select the `webgamepad` model.
 
-Click **Create component** and then fill in the attributes for your model:
+Click **Create component**.
 
 ![An example configuration for a web-based gamepad input controller component in the Viam App config builder](../img/webgamepad-input-controller-ui-config.png)
 
@@ -55,12 +55,12 @@ Click **Create component** and then fill in the attributes for your model:
 Connect your controller to your computer.
 Follow the instructions included with your gamepad to make this connection.
 
-If you haven't done so already, create a robot in [the Viam app](https://app.viam.com), and follow the instructions in the **setup** tab to start `viam-server` on your computer and connect to the robot.
+If you haven't done so already, create a robot in [the Viam app](https://app.viam.com), and follow the instructions in the **Setup** tab to start `viam-server` on your computer and connect to the robot.
 
-Then, click on the robot's **config** tab and configure an `input_controller` component of model `webgamepad` and name `WebGamepad`, as shown above.
+Then, click on the robot's **Config** tab and configure an `input_controller` component of model `webgamepad` and name `WebGamepad`, as shown above.
 Save the config.
 
-Next, navigate to the **control** tab.
+Next, navigate to the **Control** tab.
 You should see a `WebGamepad` drop-down menu.
 Click on the drop-down menu to expand it.
 Click **Enable**, and press a button on your controller.

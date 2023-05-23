@@ -15,7 +15,7 @@ description: Get your own Viam rover and set it up.
 ---
 
 {{< alert title="Tip" color="tip" >}}
-If you want a convenient mobile {{% glossary_tooltip term_id="base" text="base"%}} for a variety of robotics projects, you can [order your own Viam rover](https://www.viam.com/resources/rover) now.
+If you want a convenient mobile {{% glossary_tooltip term_id="base" text="base"%}} for a variety of robotics projects, you can now [order your own Viam rover](https://www.viam.com/resources/rover).
 {{< /alert >}}
 
 <div class="container td-max-width-on-larger-screens">

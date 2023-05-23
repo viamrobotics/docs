@@ -10,6 +10,7 @@ aliases:
     - "/manage/fleet-management"
     - "/manage/app-usage"
     - "/product-overviews/fleet-management/"
+    - "/fleet"
 ---
 
 The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of robots alone or in collaboration with others.
@@ -20,9 +21,8 @@ With Viam, you can organize {{< glossary_tooltip term_id="robot" text="robots" >
 
 For example, you may have separate organizations for your robots at home and at work:
 
-<div class="td-max-width-on-larger-screens">
-{{<gif webm_src="../img/organizations.webm" mp4_src="../img/organizations.mp4" alt="An organization for personal robots and one for work robots." max-width="unset">}}
-</div>
+<!-- this is a very small gif - conversion to mp4 caused issues -->
+![An organization for personal robots and one for work robots.](../img/organizations.gif)
 
 Inside an organization, you can organize robots into one or more locations:
 
@@ -47,16 +47,17 @@ You can also share locations across different organizations **that you are part 
 
 ### Permissions
 
-Role Based Access Control (RBAC) ia a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members roles that confer permissions:
+Role Based Access Control (RBAC) is a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members roles that confer permissions.
+Permissions are added at the organization level and apply to everything in an org.
 
 - **Owner**: Can see and edit [every tab on the robot page](robots/#navigating-the-robot-page).
   Can manage users in the app.
 - **Operator**: Can see and use only the [remote control tab](robots/#control).
-  Cannot see or edit the [**setup**](robots/#setup), [**config**](robots#configuration), [**history**](robots/#history), [**logs**](robots/#logs), [**code sample**](robots/#code-sample), or [**security**](robots/#security) tabs.
+  Cannot see or edit the [**Setup**](robots/#setup), [**Config**](robots#configuration), [**History**](robots/#history), [**Logs**](robots/#logs), [**Code Sample**](robots/#code-sample), or [**Security**](robots/#security) tabs.
 
 To view the roles each organization member has, click on the organization drop down in the top navigation bar and click on **Settings**.
 
-If you have the **Owner** role, you can change the roles assigned to organization members using the role drop down for the respective user.
+If you have the **Owner** role, you can [invite new users](organizations/#invite-users-to-your-organization) and change the roles assigned to organization members using the role drop down for the respective user.
 
 ![Example permissions overview](../img/rbac.png)
 
@@ -85,7 +86,7 @@ You and your collaborators can deploy control logic, [modular resources](/progra
 
 ### Remote control
 
-Everyone who has access to the robot can remotely control it using the [**control** tab](robots/#control).
+Everyone who has access to the robot can remotely control it using the [**Control** tab](robots/#control).
 This allows you to visually test and remotely operate robot components and services
 
 ### Control with code
@@ -105,5 +106,5 @@ It is good practice to note _where_ and _when_ you share a location secret key.
 
 ### Logs
 
-Each robot automatically sends logs to the cloud where you can view them from the [**logs** tab](robots/#logs).
-If you are collaborating on a robot and controlling it using the [**control** tab](robots/#control) or [code](#control-with-code), everyone who has access to the location the robot is in, can see the robot's logs.
+Each robot automatically sends logs to the cloud where you can view them from the [**Logs** tab](robots/#logs).
+If you are collaborating on a robot and controlling it using the [**Control** tab](robots/#control) or [code](#control-with-code), everyone who has access to the location the robot is in, can see the robot's logs.

@@ -16,13 +16,15 @@ Configure an `agilex-limo` base as follows:
 {{< tabs name="Configure an Agilex-Limo Base" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your base, select the type `base`, and select the `agilex-limo` model.
 
-Click **Create component** and then fill in the attributes for your model:
+Click **Create component**.
 
 ![An example configuration for a agilex-limo base in the Viam app Config Builder.](../img/agilex-limo-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -31,12 +33,12 @@ Click **Create component** and then fill in the attributes for your model:
 {
   "components": [
     {
-      "name": "base",
+      "name": "<your-base-name>",
       "type": "base",
       "model": "agilex-limo",
       "attributes": {
-        "drive_mode": "<a_drive_mode_option>",
-        "serial_path": "</dev/ttyXXXX>"
+        "drive_mode": "<your-drive-mode>",
+        "serial_path": "<your-serial-path>"
       },
       "depends_on": []
     }
@@ -50,5 +52,5 @@ The following attributes are available for `agilex-limo` bases:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `drive_mode` | string | **Required** | Options: `differential`, `ackermann`, `omni` (mecanum). LIMO [steering mode](https://docs.trossenrobotics.com/agilex_limo_docs/operation/steering_modes.html#switching-steering-modes). |
-| `serial_path` | string | **Required** | Default: `/dev/ttyTHS1`. Your serial port connection to your LIMO's [board](../../board/). Determine during setup and start of your LIMO. |
+| `drive_mode` | string | **Required** | LIMO [steering mode](https://docs.trossenrobotics.com/agilex_limo_docs/operation/steering_modes.html#switching-steering-modes). Options: `differential`, `ackermann`, `omni` (mecanum). |
+| `serial_path` | string | **Required** | Your serial port connection to your LIMO's [board](../../board/). Determine during setup and start of your LIMO. <br> Default: `/dev/ttyTHS1` |

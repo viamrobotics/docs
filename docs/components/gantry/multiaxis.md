@@ -14,7 +14,7 @@ Configure a `multiaxis` gantry to integrate a multi-axis gantry into your robot:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your gantry, select the type `gantry`, and select the `multiaxis` model.
 
@@ -30,7 +30,7 @@ Edit and fill in the attributes as applicable.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
-    // < Your motor & oneaxis gantry configs >
+    ... // < INSERT YOUR MOTOR AND ONEAXIS GANTRY CONFIGURATIONS >
     {
         "name": "<your-fake-gantry-name>",
         "type": "gantry",
@@ -204,6 +204,6 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `multiaxis` gantries:
 
-| Attribute | Inclusion | Description |
-| ----------- | -------------- | --------------  |
-| `subaxes_list`  | **Required** | An array of the `name`s of the sub-axes, the [one-axis](/components/gantry/oneaxis) gantries that make up the multi-axis gantry. |
+| Attribute | Type | Inclusion | Description |
+| --------- | ---- | --------- | ----------- |
+| `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [one-axis](/components/gantry/oneaxis) gantries that make up the multi-axis gantry. |

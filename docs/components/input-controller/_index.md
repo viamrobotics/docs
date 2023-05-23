@@ -52,6 +52,27 @@ Then control your robot programmatically by adding API method calls as shown in 
 These examples assume you have an input controller called `"my_controller"` configured as a component of your robot.
 If your input controller has a different name, change the `name` in the code.
 
+Be sure to import the input controller package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.input import Control, Controller, EventType
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/input"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The input controller component supports the following methods:
@@ -83,9 +104,9 @@ Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, 
 **Parameters:**
 
 - `control` [(Control)](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): The [Control](#control-field) to register the function for.
-- `triggers` [(List[EventType])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.EventType): The [EventTypes](#eventtype-field) that trigger the function.
-- `function` [([ControlFunction])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback): The function to run when the specified triggers are invoked.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `triggers` [(List\[EventType\])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.EventType): The [EventTypes](#eventtype-field) that trigger the function.
+- `function` [(ControlFunction)](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback): The function to run when the specified triggers are invoked.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -122,7 +143,7 @@ async def main():
 
     # Run the handleController function.
     await handleController(my_controller)
-    
+
     # ... < INSERT ANY OTHER CODE FOR MAIN FUNCTION >
 ```
 
@@ -131,15 +152,15 @@ async def main():
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 - `control`[(Control)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): The [Control](#control-field) to register the function for.
 - `ctrlFunc` [(ControlFunction)](https://pkg.go.dev/go.viam.com/rdk/components/input#ControlFunction): The function to run when the specified triggers are invoked.
 - `triggers` [([]EventType)](https://pkg.go.dev/go.viam.com/rdk/components/input#EventType): The [EventTypes](#eventtype-field) that trigger the function.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
@@ -207,12 +228,12 @@ This method returns the current state of the controller as a map of [Event Objec
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `events` [(Dict[Control, Event])](https://docs.python.org/3/library/typing.html#typing.Dict): A dictionary mapping the most recent Event for each Control.
+- [(Dict\[Control, Event\])](https://docs.python.org/3/library/typing.html#typing.Dict): A dictionary mapping the most recent Event for each Control.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_events).
 
@@ -232,13 +253,13 @@ print(f"Recent Events:\n{recent_events}")
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `events` [(map[Control]Event)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): A map mapping the most recent Event for each Control.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(map\[Control\]Event)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): A map mapping the most recent Event for each Control.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
@@ -265,12 +286,12 @@ Get a list of the [Controls](#control-field) that your controller provides.
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `controls` [(List[Control])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): List of Controls provided by the controller.
+- [(List\[Control\])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): List of Controls provided by the controller.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_position).
 
@@ -290,13 +311,13 @@ print(f"Controls:\n{controls}")
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `controls` [([]float64)](https://pkg.go.dev/builtin#float64): List of controls provided by the controller.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [([]float64)](https://pkg.go.dev/builtin#float64): List of controls provided by the controller.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
@@ -328,8 +349,8 @@ This method is currently only supported for input controllers of model `webgamep
 **Parameters:**
 
 - `event` [(Event)](#event-object): The `Event` to trigger on the controller.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -350,13 +371,13 @@ await myController.trigger_event(event=my_event, timeout=7.0)
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `event` [(Event)](#event-object): The `Event` to trigger on the controller.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
@@ -388,11 +409,11 @@ If you are implementing your own input controller and add features that have no 
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the controller from the robot.
@@ -409,13 +430,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map[string]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map[string]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the controller from the robot.
@@ -922,11 +943,6 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 {{% alert title="Note" color="note" %}}
 Access the complete repository for the Python example on [Github](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
 {{% /alert %}}
-
-## SDK Documentation
-
-- [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/input/index.html)
-- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/input)
 
 ## Troubleshooting
 

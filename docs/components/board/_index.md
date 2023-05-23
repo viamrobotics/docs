@@ -32,7 +32,7 @@ For model-specific configuration information, click on one of the following mode
 
 | Model | Description |
 | ----- | ----------- |
-| [`pi`](pi) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
+| [`pi`](pi) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
 | [`ti`](ti) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
 | [`beaglebone`](beaglebone) | [BeagleBoard's BeagleBone AI 64](https://beagleboard.org/ai-64) |
 | [`jetson`](jetson) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), [NVIDIA Jetson  Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
@@ -119,7 +119,7 @@ The following properties are available for `analogs`:
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the analog reader. |
 |`pin`| string | **Required** | The pin number of the ADC's connection pin, wired to the board. This should be labeled as the physical index of the pin on the ADC.
-|`chip_select`| string | **Required** | The [pin number](/appendix/glossary/#term-pin-number) of the board's connection pin, wired to the ADC. |
+|`chip_select`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's connection pin, wired to the ADC. |
 |`spi_bus` | string | Optional | The `name` of the [SPI bus](#spis) connecting the ADC and board. Required if your board must communicate with the ADC with the SPI protocol. |
 | `average_over_ms` | int | Optional | Duration in milliseconds over which the rolling average of the analog input should be taken. |
 |`samples_per_sec` | int | Optional | Sampling rate of the analog input in samples per second. |
@@ -182,7 +182,7 @@ The following properties are available for `digital_interrupts`:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the digital interrupt. |
-|`pin`| string | **Required** | The [pin number](/appendix/glossary/#term-pin-number) of the board's GPIO pin that you wish to configure the digital interrupt for. |
+|`pin`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's GPIO pin that you wish to configure the digital interrupt for. |
 |`type`| string | Optional | <ul><li>`basic`: Recommended. Tracks interrupt count. </li> <li>`servo`: For interrupts configured for a pin controlling a [servo](/components/servo). Tracks pulse width value. </li></ul> |
 
 ### `spis`
@@ -208,7 +208,7 @@ As supported boards have CS pins internally configured to correspond with SPI bu
 Integrate `spis` into your robot in the `attributes` of your board by adding the following to your board's JSON configuration:
 
 {{< tabs name="Configure a SPI Bus" >}}
-{{% tab name="JSON Example" %}}
+{{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 // "attributes": { ... ,
@@ -328,6 +328,27 @@ Then control your robot programmatically by getting your `board` component from 
 These examples assume you have a board called "my_board" configured as a component of your robot.
 If your board has a different name, change the `name` in the code.
 
+Be sure to import the board package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.board import Board
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/board"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 The board component supports the following methods:
@@ -336,7 +357,7 @@ The board component supports the following methods:
 | ----------- | ----------- |
 | [AnalogReaderByName](#analogreaderbyname) | Get an [`AnalogReader`](#analogs) by `name`. |
 | [DigitalInterruptByName](#digitalinterruptbyname) | Get a [`DigitalInterrupt`](#digital_interrupts) by `name`. |
-| [GPIOPinByName](#gpiopinbyname) | Get a `GPIOPin` by its [pin number](/appendix/glossary/#term-pin-number). |
+| [GPIOPinByName](#gpiopinbyname) | Get a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}. |
 | [AnalogReaderNames](#analogreadernames) | Get the `name` of every [`AnalogReader`](#analogs). |
 | [DigitalInterruptNames](#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](#digital_interrupts). |
 | [Status](#status) | Get the current status of this board. |
@@ -388,7 +409,7 @@ Get an [`AnalogReader`](#analogs) by `name.`
 
 **Returns:**
 
-- `reader` [(AnalogReader)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader): An interface representing an analog reader configured and residing on the board.
+- [(AnalogReader)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader): An interface representing an analog reader configured and residing on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_by_name).
 
@@ -408,8 +429,8 @@ reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
 
 **Returns:**
 
-- `reader` [(AnalogReader)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogReader): An interface representing an analog reader configured and residing on the board.
-- `ok` [(bool)](https://pkg.go.dev/builtin#bool): True if there was an analog reader of this `name` found on your board.
+- [(AnalogReader)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogReader): An interface representing an analog reader configured and residing on the board.
+- [(bool)](https://pkg.go.dev/builtin#bool): True if there was an analog reader of this `name` found on your board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -436,7 +457,7 @@ Get an [`DigitalInterrupt`](#digital_interrupts) by `name.`
 
 **Returns:**
 
-- `interrupt` [(DigitalInterrupt)](https://python.viam.dev/_modules/viam/components/board/board.html#Board.DigitalInterrupt): An interface representing a configured interrupt on the board.
+- [(DigitalInterrupt)](https://python.viam.dev/_modules/viam/components/board/board.html#Board.DigitalInterrupt): An interface representing a configured interrupt on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_by_name).
 
@@ -456,8 +477,8 @@ interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_in
 
 **Returns:**
 
-- `interrupt` [(DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): An interface representing a configured interrupt on the board.
-- `ok` [(bool)](https://pkg.go.dev/builtin#bool): True if there was a digital interrupt of this `name` found on your board.
+- [(DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): An interface representing a configured interrupt on the board.
+- [(bool)](https://pkg.go.dev/builtin#bool): True if there was a digital interrupt of this `name` found on your board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -473,7 +494,7 @@ interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
 
 ### GPIOPinByName
 
-Get a `GPIOPin` by [pin number](/appendix/glossary/#term-pin-number).
+Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -485,7 +506,7 @@ Refer to the pinout diagram and data sheet of your [board model](#configuration)
 
 **Returns:**
 
-- `pin` [(GPIOPin)](https://python.viam.dev/_modules/viam/components/board/board.html#Board.GPIOPin): An interface representing an individual GPIO pin on the board.
+- [(GPIOPin)](https://python.viam.dev/_modules/viam/components/board/board.html#Board.GPIOPin): An interface representing an individual GPIO pin on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.gpio_pin_by_name).
 
@@ -501,13 +522,13 @@ pin = await my_board.GPIO_pin_by_name(name="15")
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): [Pin number](/appendix/glossary/#term-pin-number) of the GPIO pin you want to retrieve as a `GPIOPin` interface.
+- `name` [(string)](https://pkg.go.dev/builtin#string): {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the GPIO pin you want to retrieve as a `GPIOPin` interface.
 Refer to the pinout diagram and data sheet of your [board model](#configuration) for [pin numbers](/appendix/glossary/#term-pin-number) and orientation.
 
 **Returns:**
 
-- `pin` [(GPIOPin)](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin): An interface representing an individual GPIO pin on the board.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(GPIOPin)](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin): An interface representing an individual GPIO pin on the board.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -534,7 +555,7 @@ Get the name of every [`AnalogReader`](#analogs) configured and residing on the 
 
 **Returns:**
 
-- `names` [(List[str])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): An list containing the `"name"` of every analog reader [configured](#configuration) on the board.
+- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): An list containing the `"name"` of every analog reader [configured](#configuration) on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_names).
 
@@ -542,7 +563,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the name of every AnalogReader configured on the board.
-names = await my_board.analog_reader_by_name()
+names = await my_board.analog_reader_names()
 ```
 
 {{% /tab %}}
@@ -554,7 +575,7 @@ names = await my_board.analog_reader_by_name()
 
 **Returns:**
 
-- `names` [([]string)](https://go.dev/tour/moretypes/7): An slice containing the `"name"` of every analog reader [configured](#configuration) on the board.
+- [([]string)](https://go.dev/tour/moretypes/7): An slice containing the `"name"` of every analog reader [configured](#configuration) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -581,7 +602,7 @@ Get the name of every [`DigitalInterrupt`](#digital_interrupts) configured on th
 
 **Returns:**
 
-- `names` [(List[str])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every interrupt [configured](#configuration) on the board.
+- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every interrupt [configured](#configuration) on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_names).
 
@@ -601,7 +622,7 @@ names = await my_board.digital_interrupt_names()
 
 **Returns:**
 
-- `names` [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every interrupt [configured](#configuration) on the board.
+- [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every interrupt [configured](#configuration) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -624,12 +645,12 @@ Get the current status of the board as a `BoardStatus`.
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `status` [(BoardStatus)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.BoardStatus): Mappings of the current status of the fields and values of any [AnalogReaders](#analogs) and [DigitalInterrupts](#digital_interrupts) configured on the board.
+- [(BoardStatus)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.BoardStatus): Mappings of the current status of the fields and values of any [AnalogReaders](#analogs) and [DigitalInterrupts](#digital_interrupts) configured on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.status).
 
@@ -645,14 +666,15 @@ status = await my_board.status()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `mode` [(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 - `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board exits the given power mode after the specified time in nanoseconds has passed.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(BoardStatus)](https://pkg.go.dev/go.viam.com/api/common/v1#BoardStatus): Mappings of the current status of the fields and values of any [AnalogReaders](#analogs) and [DigitalInterrupts](#digital_interrupts) configured on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -679,7 +701,7 @@ Get the attributes related to the model of this board.
 
 **Returns:**
 
-- `attributes` [(Attributes)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Attributes): Attributes related to the model of this board.
+- [(Attributes)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Attributes): Attributes related to the model of this board.
 Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.model_attributes).
@@ -700,7 +722,7 @@ attributes = await my_board.model_attributes()
 
 **Returns:**
 
-- `attributes` [(ModelAttributes)](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes): Attributes related to the model of this board.
+- [(ModelAttributes)](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes): Attributes related to the model of this board.
 Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes).
@@ -725,9 +747,9 @@ Set the board to the indicated `PowerMode`.
 **Parameters:**
 
 - `mode` [(PowerMode)](https://python.viam.dev/autoapi/viam/proto/component/board/index.html#viam.proto.component.board.PowerMode): Options to specify power usage of the board: `PowerMode.POWER_MODE_UNSPECIFIED`, `PowerMode.POWER_MODE_NORMAL`, and `PowerMode.POWER_MODE_OFFLINE_DEEP`.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `duration` [(Optional[datetime.timedelta])](https://docs.python.org/3/library/typing.html#typing.Optional): If provided, the board will exit the given power mode after the specified duration.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `duration` [(Optional\[datetime.timedelta\])](https://docs.python.org/3/library/typing.html#typing.Optional): If provided, the board will exit the given power mode after the specified duration.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -747,14 +769,14 @@ status = await my_board.set_power_mode(mode=PowerMode.POWER_MODE_OFFLINE_DEEP)
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `mode` [(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 - `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -782,8 +804,8 @@ Set the digital signal output of this pin to low (0V) or high (active, >0V).
 
 - `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, set the state of the pin to high.
 If `false`, set the state of the pin to low.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -806,14 +828,14 @@ await pin.set(high="true")
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, set the state of the pin to high.
 If `false`, set the state of the pin to low.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -839,12 +861,12 @@ Get if the digital signal output of this pin is high (active, >0V).
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
 If `false`, the state of the pin is low.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get).
@@ -864,14 +886,14 @@ high = await pin.get()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is high.
+- [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is high.
 If `false`, the state of the pin is low.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -905,12 +927,12 @@ Get the pin's [pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.c
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `duty_cycle` [(float)](https://docs.python.org/3/library/functions.html#float): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
+- [(float)](https://docs.python.org/3/library/functions.html#float): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get_pwm).
 
@@ -929,13 +951,13 @@ duty_cycle = await pin.get_pwm()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `duty_cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -962,12 +984,12 @@ Set the pin's [Pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.c
 **Parameters:**
 
 - `cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
 If `false`, the state of the pin is low.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set_pwm).
@@ -987,13 +1009,13 @@ await pin.set_pwm(cycle=.6)
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `cycle` [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -1021,12 +1043,12 @@ Refer to your device's data sheet for PWM Frequency specifications.
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `frequency` [(int)](https://docs.python.org/3/library/functions.html#int): The PWM Frequency in Hertz (Hz) (the count of PWM interval periods per second) the digital signal output by this pin is set to.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The PWM Frequency in Hertz (Hz) (the count of PWM interval periods per second) the digital signal output by this pin is set to.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get_pwm_frequency).
 
@@ -1045,13 +1067,13 @@ freq = await pin.get_pwm_frequency()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `freqHz` [(unit)](https://pkg.go.dev/builtin#uint): The PWM Frequency in Hertz (Hz) (the count of PWM interval periods per second) the digital signal output by this pin is set to.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(unit)](https://pkg.go.dev/builtin#uint): The PWM Frequency in Hertz (Hz) (the count of PWM interval periods per second) the digital signal output by this pin is set to.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -1079,12 +1101,12 @@ Refer to your device's data sheet for PWM Frequency specifications.
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `frequency` [(int)](https://docs.python.org/3/library/functions.html#int)The PWM Frequency in Hertz (Hz), the count of PWM interval periods per second, to set the digital signal output by this pin to.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The PWM Frequency in Hertz (Hz), the count of PWM interval periods per second, to set the digital signal output by this pin to.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set_pwm_frequency).
 
@@ -1103,13 +1125,13 @@ high = await pin.set_pwm_frequency(frequency=1600)
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `freqHz` [(unit)](https://pkg.go.dev/builtin#uint): The PWM Frequency in Hertz (Hz), the count of PWM interval periods per second, to set the digital signal output by this pin to.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -1137,12 +1159,12 @@ Read the current integer value of the digital signal output by the [ADC](#analog
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `reading` [(int)](https://docs.python.org/3/library/functions.html#int): The value of the digital signal output by the analog reader.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The value of the digital signal output by the analog reader.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader.read).
 
@@ -1167,13 +1189,13 @@ reading = reader.read()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `reading` [(int)](https://pkg.go.dev/builtin#int): The value of the digital signal output by the analog reader.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(int)](https://pkg.go.dev/builtin#int): The value of the digital signal output by the analog reader.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -1206,12 +1228,12 @@ Calculation of value differs between the `"type"` of interrupt [configured](#dig
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `count` [(int)](https://docs.python.org/3/library/functions.html#int) The amount of [Ticks](#tick) that have occurred.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The amount of [Ticks](#tick) that have occurred.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.value).
 
@@ -1230,13 +1252,13 @@ count = await interrupt.value()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `count` [(int64)](https://pkg.go.dev/builtin#int64): The amount of [Ticks](#tick) that have occurred.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(int64)](https://pkg.go.dev/builtin#int64): The amount of [Ticks](#tick) that have occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#BasicDigitalInterrupt).
 
@@ -1259,12 +1281,12 @@ count, err := interrupt.Value(context.Background(), nil)
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `rolling_avg` [(int)](https://docs.python.org/3/library/functions.html#int) The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.value).
 
@@ -1283,13 +1305,13 @@ rolling_avg = await interrupt.value()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `rolling_avg`[(int64)](https://pkg.go.dev/builtin#int64): The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(int64)](https://pkg.go.dev/builtin#int64): The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ServoDigitalInterrupt).
 
@@ -1348,7 +1370,7 @@ SERVO
 
 **Parameters:**
 
-- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
+- `high` (https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
 If `false`, the state of the pin is set to low.
 - `nanos` [(int)](https://docs.python.org/3/library/functions.html#int): The time in nanoseconds between two successive low signals (pulse width).
 
@@ -1374,14 +1396,14 @@ await interrupt.tick(high=true, nanos=12345)
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
 If `false`, the state of the pin is set to low.
 - `now` [(uint64)](https://pkg.go.dev/builtin#uint64): The time that has elapsed in nanoseconds since the last time the interrupt was ticked.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#BasicDigitalInterrupt).
 
@@ -1400,14 +1422,14 @@ err := interrupt.Tick(context.Background(), true, 12345)
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
 If `false`, the state of the pin is set to low.
 - `nanoseconds` [(uint64)](https://pkg.go.dev/builtin#uint64): The time in nanoseconds between two successive low signals (pulse width).
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ServoDigitalInterrupt).
 
@@ -1509,7 +1531,7 @@ This method is  not yet fully implemented with the Viam Python SDK.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
 
@@ -1563,4 +1585,5 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< cards >}}
   {{% card link="/tutorials/get-started/make-an-led-blink-with-the-viam-app" size="small" %}}
+  {{% card link="/tutorials/projects/guardian" size="small" %}}
 {{< /cards >}}

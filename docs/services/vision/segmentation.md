@@ -31,7 +31,7 @@ It is slower than other segmenters and can take up to 30 seconds to segment a sc
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **config** tab, and click on **Services**.
+Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
@@ -120,7 +120,7 @@ The label and the pixels associated with the 2D detections become the label and 
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **config** tab, and click on **Services**.
+Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
@@ -206,11 +206,11 @@ The following code gets the robot’s Vision Service and then runs a segmenter v
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
 # grab Viam's vision service for the detector
-my_segmenter = VisionServiceClient.from_robot(robot, "my_segmenter")
+my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
 
 detections = await my_segmenter.get_object_point_clouds("cam1")
 

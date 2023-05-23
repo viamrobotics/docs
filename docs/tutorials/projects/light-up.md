@@ -53,15 +53,15 @@ You will use the following software in this tutorial:
 
 Go to the [Viam app](https://app.viam.com) and create a new robot.
 
-Go to the **setup** tab of your new robot's page and follow the steps to install `viam-server` on your computer.
+Go to the **Setup** tab of your new robot's page and follow the steps to install `viam-server` on your computer.
 
 ## Configure the camera component
 
-On your new robot's page, go to the **config** tab.
+On your new robot's page, go to the **Config** tab.
 
 ![The CONFIG tab in Builder mode on the Viam app.](../../img/light-up/config-tab.png)
 
-On the **config** tab, create a new component:
+On the **Config** tab, create a new component:
 
 - **Name**: `my-camera`
 - **Type**: `camera`
@@ -72,12 +72,10 @@ Click **Create Component** to add the camera.
 Click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
 
 Select the path to the camera you want to use.
-Often on Linux systems, this is `video0` or `video1`.
-On Mac, this is often a long string of letters and numbers.
 
 Click **Save Config** in the bottom left corner of the screen.
 
-Navigate to the **control** tab where you can see your camera working.
+Navigate to the **Control** tab where you can see your camera working.
 
 {{< gif webm_src="../../img/light-up/control-panel.webm" mp4_src="../../img/light-up/control-panel.mp4" alt= "Opening the camera panel on the control tab, toggling the video feed on, and watching as a person wearing headphones waves at the camera." >}}
 
@@ -127,7 +125,7 @@ Save <file>lightupbot.py</file>.
 
 You need to tell the code how to access your specific robot (which in this case represents your computer and its webcam).
 
-1. Navigate to the **code sample** tab on the Viam app.
+1. Navigate to the **Code Sample** tab on the Viam app.
 Make sure **Python** is selected in the **Language** selector.
 2. In the code sample, find the `payload`, a long string of numbers and letters.
 Copy it and paste it into line 13 of <file>lightupbot.py</file> in place of `ROBOT_SECRET`.
@@ -146,7 +144,7 @@ You will configure the Vision Service to use a [TFLite](https://www.tensorflow.o
 These lines configure a Vision Service object detector to use the TFLite model and the list of labels:
 
 ```python
-    vision = VisionServiceClient.from_robot(robot)
+    vision = VisionClient.from_robot(robot)
     params = {"model_path": "./effdet0.tflite", "label_path": "./labels.txt", "num_threads": 1}
     personDet = VisModelConfig(name="person_detector", type=VisModelType("tflite_detector"), parameters=params)
     await vision.add_detector(personDet)

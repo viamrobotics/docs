@@ -1,62 +1,274 @@
 {{ define "main"}}
+
 <main id="main">
+    <br />
+    <h1 id="title">404 | These are not the droids you're looking for</h1>
 
+    <br />
 
-      <style>
-                * {
-      box-sizing: border-box;
-    }
-    .row {
-      margin-left:-5px;
-      margin-right:-5px;
-    }
+    <h2>But maybe these could be helpful?</h2>
 
-    .column {
-      float: left;
-      width: 40%;
-      padding: 5px;
-    }
+    <div class="card-container">
+        <div class="row">
+            <div class="col hover-card hover-card-small">
+                <a href="/viam/"
+                    ><div class="hover-card-img">
+                        <img
+                            src="/img/understand.png"
+                            alt="A diagram of robotic parts and software"
+                            width="100%"
+                        />
+                    </div>
+                    <div class="small-hover-card-div">
+                        <h4>Viam in 3 minutes</h4>
+                        <p>
+                            Learn everything you need to know to get started
+                            with the Viam platform.
+                        </p>
+                    </div></a
+                >
+            </div>
+            <div class="col hover-card hover-card-small">
+                <a href="/try-viam/"
+                    ><video
+                        autoplay=""
+                        loop=""
+                        muted=""
+                        playsinline=""
+                        preload="auto"
+                        alt="A Viam Rover moving about"
+                        width="100%"
+                        style="max-width: "
+                    >
+                        <source src="/img/rover.webm" type="video/webm" />
+                        <source src="/img/rover.mp4" type="video/mp4" />
+                        There should have been a video here but your browser
+                        does not seem to support it.
+                    </video>
+                    <div class="small-hover-card-div">
+                        <h4>Drive a Viam Rover</h4>
+                        <p>
+                            Drive a Viam rover from the comfort of your home
+                            right now or follow along with some example robot
+                            tutorials.
+                        </p>
+                    </div></a
+                >
+            </div>
+            <div class="col hover-card hover-card-small">
+                <a href="/installation/"
+                    ><div class="hover-card-img">
+                        <img
+                            src="/installation/img/thumbnails/install.png"
+                            alt="Install viam"
+                            width="100%"
+                        />
+                    </div>
+                    <div class="small-hover-card-div">
+                        <h4>Install <code>viam-server</code></h4>
+                        <p>
+                            Learn everything you need to know to get started
+                            with the Viam platform.
+                        </p>
+                    </div></a
+                >
+            </div>
+            <div class="col hover-card hover-card-small">
+                <a href="/manage/configuration/"
+                    ><div class="hover-card-img">
+                        <img
+                            src="/installation/img/thumbnails/manage.png"
+                            alt="Terminal window"
+                            width="100%"
+                        />
+                    </div>
+                    <div class="small-hover-card-div">
+                        <h4>Configure a Robot</h4>
+                        <p>
+                            Before you can program a robot, you must configure
+                            its components and services as well as any modules,
+                            remotes, processes and frames.
+                        </p>
+                    </div></a
+                >
+            </div>
+            <div class="col hover-card hover-card-small">
+                <a href="/program/"
+                    ><div class="hover-card-img">
+                        <img
+                            src="/img/code.png"
+                            alt="Program a robot"
+                            width="100%"
+                        />
+                    </div>
+                    <div class="small-hover-card-div">
+                        <h4>Program your Robots</h4>
+                        <p>
+                            Use the SDK of your preferred language to write code
+                            to control your robots.
+                        </p>
+                    </div></a
+                >
+            </div>
+        </div>
+    </div>
+    <br />
+    <h2>Or these?</h2>
+    <div class="card-container">
+        <div class="row">
+            <div class="col hover-card hover-card-small">
+                <a href="/tutorials/get-started/servo-mousemover/"
+                    ><video
+                        autoplay=""
+                        loop=""
+                        muted=""
+                        playsinline=""
+                        preload="auto"
+                        alt="A mouse mover controlled with a servo and Raspberry Pi."
+                        width="100%"
+                    >
+                        <source
+                            src="/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.webm"
+                            type="video/webm"
+                        />
+                        <source
+                            src="/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.mp4"
+                            type="video/mp4"
+                        />
+                        There should have been a video here but your browser
+                        does not seem to support it.
+                    </video>
+                    <div class="small-hover-card-div">
+                        <h4>Create a Mouse Mover</h4>
+                        <p>
+                            Use the Python SDK to move a continuous servo to
+                            keep a computer screen from sleeping.
+                        </p>
+                    </div></a
+                >
+            </div>
 
-    /* Clearfix (clear floats) */
-    .row::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
+            <div class="col hover-card hover-card-small">
+                <a href="/tutorials/services/plan-motion-with-arm-gripper/"
+                    ><video
+                        autoplay=""
+                        loop=""
+                        muted=""
+                        playsinline=""
+                        preload="auto"
+                        alt="An arm moving with the Motion Service"
+                        width="100%"
+                    >
+                        <source
+                            src="/tutorials/videos/motion_armmoving.webm"
+                            type="video/webm"
+                        />
+                        <source
+                            src="/tutorials/videos/motion_armmoving.mp4"
+                            type="video/mp4"
+                        />
+                        There should have been a video here but your browser
+                        does not seem to support it.
+                    </video>
+                    <div class="small-hover-card-div">
+                        <h4>Plan Motion with an Arm</h4>
+                        <p>
+                            Use the Motion Service to move robot arms and other
+                            components.
+                        </p>
+                    </div></a
+                >
+            </div>
 
-        .button-48 {
-  background-color: #FFFFFF;
-  border: none;
-  box-sizing: border-box;
-  color: #3176D9 ;
-  font-weight: 600;
-  line-height: 1.25rem;
-  padding: .75rem 1rem;
-  text-align: center;
-  text-decoration: underline #3176D9 solid;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-</style>
+            <div class="col hover-card hover-card-small">
+                <a href="/tutorials/services/color-detection-scuttle/"
+                    ><video
+                        autoplay=""
+                        loop=""
+                        muted=""
+                        playsinline=""
+                        preload="auto"
+                        alt="Detecting color with a Scuttle Robot"
+                        width="100%"
+                    >
+                        <source
+                            src="/tutorials/videos/scuttledemos_colordetection.webm"
+                            type="video/webm"
+                        />
+                        <source
+                            src="/tutorials/videos/scuttledemos_colordetection.mp4"
+                            type="video/mp4"
+                        />
+                        There should have been a video here but your browser
+                        does not seem to support it.
+                    </video>
+                    <div class="small-hover-card-div">
+                        <h4>Colored Object Follower</h4>
+                        <p>
+                            Instructions for detecting and following a colored
+                            object with a SCUTTLE Robot on Viam software.
+                        </p>
+                    </div></a
+                >
+            </div>
 
-<div>
-<h1 id="title">We've moved that resource</h1>
-<p>We're making daily improvements to Viam's documentation. Unfortunately, that sometimes causes issues with links and saved bookmarks. Please update your bookmark, if necessary!</p>  
+            <div class="col hover-card hover-card-small">
+                <a href="/tutorials/custom/custom-base-dog/"
+                    ><video
+                        autoplay=""
+                        loop=""
+                        muted=""
+                        playsinline=""
+                        preload="auto"
+                        alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
+                        width="100%"
+                    >
+                        <source
+                            src="/tutorials/img/custom-base-dog/base-control-dog.webm"
+                            type="video/webm"
+                        />
+                        <source
+                            src="/tutorials/img/custom-base-dog/base-control-dog.mp4"
+                            type="video/mp4"
+                        />
+                        There should have been a video here but your browser
+                        does not seem to support it.
+                    </video>
+                    <div class="small-hover-card-div">
+                        <h4>Custom Quadruped Base</h4>
+                        <p>
+                            Integrate a custom base component with the Viam
+                            Python SDK.
+                        </p>
+                    </div></a
+                >
+            </div>
 
-<h4>High Traffic Pages</h4>
-<UL>
-<li><a href="/viam/">Viam in 3 minutes</a></li>
-<li><a href="/appendix/release-notes/">Release Notes</a></li>
-<li><a href="/appendix/glossary/">Glossary</a></li>
-<li><a href="/tutorials/">Tutorials</a></li>
-</UL>
+            <div class="col hover-card hover-card-small">
+                <a href="/tutorials/projects/make-a-plant-watering-robot/"
+                    ><div class="hover-card-img">
+                        <img
+                            src="/tutorials/img/plant-watering-pi/preview.png"
+                            alt="Picture of the plant watering robot"
+                            width="100%"
+                        />
+                    </div>
+                    <div class="small-hover-card-div">
+                        <h4>Plant Watering Robot</h4>
+                        <p>
+                            Create a plant watering robot with a Raspberry Pi.
+                        </p>
+                    </div></a
+                >
+            </div>
+        </div>
+    </div>
 
-<form>
-<input type="button" span class="button-48" value="Click to go back..." onclick="history.back()">
-</form>...or go to <a href="/">the docs overview</a>.</p>
-</div>
-
+    <br />
+    <h2>
+        If none of these links are useful, go to
+        <a href="/">the docs overview</a>.
+    </h2>
 </main>
+
 {{ end }}

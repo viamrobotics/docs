@@ -16,21 +16,15 @@ Configure a `power_ina219` sensor to integrate a [INA219 current sensor](https:/
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your sensor, select the type `sensor`, and select the `power_ina219` model.
 
 Click **Create component**.
-Paste into the **Attributes** box:
-
-``` json
-{
-  "board": <your-board-name>,
-  "i2c_bus": <your-i2c-bus-name>
-}
-```
 
 ![Creation of a power_ina219 sensor in the Viam app config builder.](../img/power-ina219-sensor-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -39,12 +33,12 @@ Paste into the **Attributes** box:
 {
   "components": [
     {
-      "name": <your-power_ina219-sensor-name>,
+      "name": "<your-power_ina219-sensor-name>",
       "type": "sensor",
       "model": "power_ina219",
       "attributes": {
-        "board": <your-board-name>,
-        "i2c_bus": <your-i2c-bus-name>
+        "board": "<your-board-name>",
+        "i2c_bus": "<your-i2c-bus-name-on-board>"
       },
       "depends_on": []
     }
@@ -57,8 +51,8 @@ Paste into the **Attributes** box:
 
 The following attributes are available for `power_ina219` sensors:
 
-| Attribute | Inclusion | Description |
-| ----------- | -------------- | --------------  |
-| `board`  | **Required** | The `name` of the [board](/components/board) the sensor is connected to. |
-| `i2c_bus` | **Required** | The `name` of the [I2C bus](/components/board/#i2cs) on the board that the sensor is connected to. |
-| `i2c_address`  | Optional | Default: `0x40`. The [I2C device address](https://learn.adafruit.com/i2c-addresses/overview) of the sensor. |
+| Attribute | Type | Inclusion | Description |
+| --------- | -----| --------- | ----------- |
+| `board`  | string | **Required** | The `name` of the [board](/components/board) the sensor is wired to. |
+| `i2c_bus` | string | **Required** | The `name` of the [I<sup>2</sup>C bus](/components/board/#i2cs) on the board that the sensor is wired to. |
+| `i2c_address` | string | Optional | Default: `0x40`. The [I2C device address](https://learn.adafruit.com/i2c-addresses/overview) of the sensor. |

@@ -46,7 +46,7 @@ If the color is not reliably detected, increase the `hue_tolerance_pct`.
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **config** tab, and click on **Services**.
+Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 To create a [Vision Service](/services/vision/):
@@ -58,17 +58,9 @@ To create a [Vision Service](/services/vision/):
 
 ![Create Vision Service for color detector](../img/color_detector.png)
 
-In your Vision Service's panel, fill in the **Attributes** field.
+In your Vision Service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels):
 
-``` json {class="line-numbers linkable-line-numbers"}
-{
-      "segment_size_px": <integer>,
-      "detect_color": "#ABCDEF",
-      "hue_tolerance_pct": <number>,
-      "saturation_cutoff_pct": <number>,
-      "value_cutoff_pct": <number>
-}
-```
+![Color detector panel with color and hue tolerance selection and a field for the segment size](../img/color-detector-panel.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -156,7 +148,7 @@ To create a `mlmodel` classifier, you need an [ML Model Service with a suitable 
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
-Select the **config** tab, and click on **Services**.
+Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
 
@@ -227,7 +219,7 @@ To be able to interact with the Vision Service you must:
 
 After adding the component and its attributes, click **Save config**.
 
-Wait for the robot to reload, and then go to the **control** tab to test the stream of detections.
+Wait for the robot to reload, and then go to the **Control** tab to test the stream of detections.
 
 ## Code
 
@@ -237,13 +229,13 @@ The following code gets the robot’s vision service and then runs a color detec
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionServiceClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
 # grab camera from the robot
 cam1 = Camera.from_robot(robot, "cam1")
 # grab Viam's vision service for the detector
-my_detector = VisionServiceClient.from_robot(robot, "my_detector")
+my_detector = VisionClient.from_robot(robot, "my_detector")
 
 img = await cam1.get_image()
 detections = await my_detector.get_detections(img)

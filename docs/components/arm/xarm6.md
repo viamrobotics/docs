@@ -14,46 +14,30 @@ Configure an `xArm6` arm to integrate a [UFACTORY xArm 6](https://www.ufactory.c
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your arm, select the type `arm`, and select the `xArm6` model.
 
-Click **Create component** and then fill in the attributes for your model:
+Click **Create component**.
 
-![Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](../../img/arm/arm-ui-config-xarm6.png)
+![Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](../img/xArm6-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
-
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [{
-      "attributes": {
-          "host": <your_arms_ip_address_on_your_network>
-      },
-      "depends_on": [],
-      "frame": {
-          "orientation": {
-              "type": "ov_degrees",
-              "value": {
-                  "th": 0,
-                  "x": 0,
-                  "y": 0,
-                  "z": 1
-              }
-          },
-          "parent": "world",
-          "translation": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-          }
-      },
       "model": "xArm6",
-      "name": <your_arm_name>,
-      "type": "arm"
-  }]
+      "name": "<your-arm-name>",
+      "type": "arm",
+      "attributes": {
+          "host": "<your-arms-ip-address-on-your-network>"
+      },
+      "depends_on": []
+    }]
 }
 ```
 
@@ -94,10 +78,13 @@ Click **Create component** and then fill in the attributes for your model:
 {{% /tab %}}
 {{% /tabs %}}
 
-| Attribute | Inclusion | Description |
-| ----------- | -------------- | --------------  |
-| `host`  | **Required** | A string representing the IP address of the arm. Find this when setting up your arm model. |
-| `speed` | **Required** | Default: `20.0`. A float representing the desired maximum speed of joint movement in degrees/second. |
-| `acceleration`  | **Required** | Default: `50.0`. A float representing the desired maximum joint acceleration in degrees/second/second. |
+The following attributes are available for `xArm6` arms:
 
-See [the Frame system](/services/frame-system) for more information on utilizing and modifying the `"frame"` configuration shown above.
+| Attribute | Type | Inclusion | Description |
+| --------- | ---- | ----------| ----------- |
+| `host`  | string | **Required** | IP address of the arm's system on your network. Find this when setting up your xArm. |
+| `port`  | int | Optional | Port number of the arm's system. Find this when setting up your xArm. <br> Default: `502` |
+| `speed` | float | Optional | Desired maximum speed of joint movement in degrees/sec. <br> Default: `20.0` |
+| `acceleration`  | float | Optional | Desired maximum acceleration of joint movement in degrees/sec<sup>2</sup>. <br> Default: `50.0` |
+
+See [the Frame System Service](/services/frame-system) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.

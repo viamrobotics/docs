@@ -28,14 +28,15 @@ Our `gps-rtk` model uses an over-the-internet correction source [NTRIP](https://
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** sub-tab and navigate to the **Create component** menu.
-
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `gps-rtk` model.
+
+Click **Create Component**.
 
 ![Creation of a `gps-rtk` movement sensor in the Viam app config builder.](../../img/gps-rtk-builder.png)
 
-Click **Create Component** and then fill in the attributes for your model.
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -44,27 +45,27 @@ Click **Create Component** and then fill in the attributes for your model.
 {
   "components": [
     {
-      "name": <sensor_name>,
+      "name": "<your-sensor-name>",
       "type": "movement_sensor",
       "model": "gps-rtk",
       "attributes": {
-        "board": <board name if using I2C>,
-        "connection_type": "<serial" or "I2C>",
+        "board": "<your-board-name-if-using-I2C>",
+        "connection_type": "<serial|I2C>",
         "serial_attributes": {
-          "serial_baud_rate": <>,
-          "serial_path": <>
+          "serial_baud_rate": <int>,
+          "serial_path": "<your-device-path>"
         },
         "i2c_attributes": {
-          "i2c_baud_rate": <>,
-          "i2c_addr": <>,
-          "i2c_bus": <>
+          "i2c_baud_rate": <int>,
+          "i2c_addr": <int>,
+          "i2c_bus": "<name-of-bus-on-board>"
         },
         "ntrip_attributes": {
-          "ntrip_addr": <URL of NTRIP server>,
-          "ntrip_baud": <>,
-          "ntrip_password": <password for NTRIP server>,
-          "ntrip_path": <>,
-          "ntrip_username": <username for NTRIP server>
+          "ntrip_addr": "<URL of NTRIP server>",
+          "ntrip_baud": <int>,
+          "ntrip_password": "<password for NTRIP server>",
+          "ntrip_path": "<your-device-path>",
+          "ntrip_username": "<username for NTRIP server>"
         }
       },
       "depends_on": [],
@@ -88,13 +89,13 @@ Click **Create Component** and then fill in the attributes for your model.
         "correction_source": "ntrip",
         "serial_attributes": {
           "serial_baud_rate": 115200,
-          "serial_path": "/dev/serial/by-path/<device_ID>"
+          "serial_path": "/dev/serial/by-path/12345"
         },
         "ntrip_attributes": {
-          "ntrip_addr": "<ntrip_address>",
+          "ntrip_addr": "ntrip_address",
           "ntrip_baud": 38400,
-          "ntrip_password": "<password>",
-          "ntrip_username": "<username>"
+          "ntrip_password": "password",
+          "ntrip_username": "username"
         }
       },
       "depends_on": []
@@ -122,13 +123,13 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
         "i2c_attributes": {
           "i2c_baud_rate": 115200,
           "i2c_addr": 111,
-          "I2c_bus": "<name_of_bus_on_board>",
+          "I2c_bus": "main",
         },
         "ntrip_attributes": {
-          "ntrip_addr": "<ntrip_address>",
+          "ntrip_addr": "ntrip_address",
           "ntrip_baud": 38400,
-          "ntrip_password": "<password>",
-          "ntrip_username": "<username>"
+          "ntrip_password": "password",
+          "ntrip_username": "username"
         }
       },
       "depends_on": []
@@ -142,17 +143,17 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 ## Attributes
 
-Name | Inclusion | Type | Default Value | Description
----- | --------- | ---- | ------------- | ----------
-`board` | depends on connection type | string | - | Required for NMEA over I<sup>2</sup>C; the `name` of the board connected to the chip. Not required for serial communication.
-`connection_type` | **Required** | string | - | `"I2C"` or `"serial"`, respectively. See [connection configuration info](#connection-attributes).
-`ntrip_addr` | **Required** | string | - | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections
-`ntrip_username` | **Required** | string | - | Username for the NTRIP server
-`ntrip_password` | **Required** | string | - | Password for the NTRIP server
-`ntrip_baud` | Optional | int | defaults to `serial_baud_rate`  | Only necessary if you want NTRIP baud rate to be different from serial baud rate.
-`ntrip_connect_attempts` | Optional | int | 10 | How many times to attempt connection before timing out
-`ntrip_mountpoint` | Optional | string | - | If you know of an RTK mountpoint near you, write its identifier here. It will be appended to NTRIP address string (for example, "nysnet.gov/rtcm/**NJMTPT1**") and that mountpoint's data will be used for corrections.
-`ntrip_path` | Optional | string | - | Use this when extra hardware is piping RTCM data through a second USB port on an SBC instead of getting it directly from the internet.
+Name | Type | Inclusion | Description |
+---- | ---- | --------- | ----------- |
+`board` | string | depends on connection type | Required for NMEA over [I<sup>2</sup>C](/components/board/#i2cs); the `name` of the [board](/components/board) connected to the chip. Not required for serial communication.
+`connection_type` | string | **Required** | `"I2C"` or `"serial"`, respectively. See [connection configuration info](#connection-attributes).
+`ntrip_addr` | string | **Required** | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections
+`ntrip_username` | string | **Required** | Username for the NTRIP server
+`ntrip_password` | string | **Required** | Password for the NTRIP server
+`ntrip_baud` | int | Optional | defaults to `serial_baud_rate`  | Only necessary if you want NTRIP baud rate to be different from serial baud rate.
+`ntrip_connect_attempts` | int | Optional | How many times to attempt connection before timing out. <br> Default: `10`
+`ntrip_mountpoint` | string | Optional | If you know of an RTK mountpoint near you, write its identifier here. It will be appended to NTRIP address string (for example, "nysnet.gov/rtcm/**NJMTPT1**") and that mountpoint's data will be used for corrections.
+`ntrip_path` | string | Optional | Use this when extra hardware is piping RTCM data through a second USB port on an [board](/components/board) instead of getting it directly from the internet.
 
 ### Connection Attributes
 

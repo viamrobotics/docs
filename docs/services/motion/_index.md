@@ -41,7 +41,7 @@ Method Name | Description
 {{% alert title="Note" color="note" %}}
 
 The following code examples assume that you have a robot configured with a gripper, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
-Go to your robot's **code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}
 
@@ -80,8 +80,8 @@ The Motion Service takes the volumes associated with all configured robot compon
     When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
-    - The Motion Service assumes that obstacles with mobile parents move along with their parents while solving.
-      This ensures that obstacles that are attached to moving components do not cause collisions during movement.
+    - The Motion Service assumes that obstacles are static.
+      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
     - Geometry locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
       A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
@@ -98,14 +98,12 @@ By default, motion is unconstrained with the exception of obstacle avoidance.
 
 **Returns:**
 
-- [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Whether the move was successful.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.move).
-
-**Example usage:**
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move).
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Assumes a gripper configured with name "my_gripper" on the robot
 my_frame = "my_gripper_offset"
@@ -141,8 +139,8 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
     When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
-    - The Motion Service assumes that obstacles with mobile parents move along with their parents while solving.
-      This ensures that obstacles that are temporarily attached to moving components do not cause collisions during movement.
+    - The Motion Service assumes that obstacles are static.
+      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
     - Geometries are "part of" their frame, rather than at the distal end of the frame.
       Their poses are relative to the *origin* of the specified frame.
       A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
@@ -155,7 +153,7 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
 - `constraints` ([Constraints](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints)): Pass in optional [motion constraints](./constraints/).
   By default, motion is unconstrained with the exception of obstacle avoidance.
 
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -163,8 +161,6 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
-
-**Example usage:**
 
 ```go {class="line-numbers linkable-line-numbers"}
  // Access the Motion Service
@@ -227,14 +223,12 @@ If you need collision checking and obstacle avoidance, use [`Move`](#move).
 
 **Returns:**
 
-- [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Whether the move was successful.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.move_single_component).
-
-**Example usage:**
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_single_component).
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Assumes an arm configured with name "my_arm" on the robot
 my_frame = "my_arm_offset"
@@ -263,7 +257,7 @@ As of April 21, 2023, [arm](/components/arm/) is the only component so supported
 
 - `worldState` ([WorldState](https://pkg.go.dev/go.viam.com/rdk/referenceframe#WorldState)): Not used. See [note above](#move-vs-movetoposition).
 
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -271,8 +265,6 @@ As of April 21, 2023, [arm](/components/arm/) is the only component so supported
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
-
-**Example usage:**
 
 ```go {class="line-numbers linkable-line-numbers"}
  // Access the Motion Service
@@ -309,7 +301,7 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 - `destination_frame` ([PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)):
   The name of the frame with respect to which the component's pose is reported.
 
-- `supplemental_transforms` ([Optional[List[Transforms]]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (*optional*): A list of `Transform`s.
+- `supplemental_transforms` ([Optional\[List\[Transforms\]\]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (*optional*): A list of `Transform`s.
   A `Transform` represents an additional frame which is added to the robot's frame system.
   It consists of the following fields:
   - `pose_in_observer_frame`: Provides the relationship between the frame being added and another frame.
@@ -326,20 +318,18 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 
 - [(PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose of the component.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionServiceClient.get_pose).
-
-**Example usage:**
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.get_pose).
 
 The following code example gets the pose of the tip of a [gripper](../../components/gripper/) named `myGripper` which is attached to the end of an arm, in the "world" `reference_frame`:
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
-from viam.services.motion import MotionServiceClient
+from viam.services.motion import MotionClient
 
-# Assume that the connect function is written and will return a valid robot. 
+# Assume that the connect function is written and will return a valid robot.
 robot = await connect()
 
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 gripperName = Gripper.get_resource_name("myGripper")
 gripperPoseInWorld = await robot.get_pose(component_name=gripperName, destination_frame="world")
 ```
@@ -348,13 +338,13 @@ For a more complicated example, take the same scenario and get the pose of the s
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
-from viam.services.motion import MotionServiceClient
+from viam.services.motion import MotionClient
 from viam.proto.common import Transform, PoseInFrame, Pose
 
-# Assume that the connect function is written and will return a valid robot. 
+# Assume that the connect function is written and will return a valid robot.
 robot = await connect()
 
-motion = MotionServiceClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 objectPose = Pose(x=100, y=200, z=0, o_x=0, o_y=0, o_z=1, theta=0)
 objectPoseInFrame = PoseInFrame(reference_frame="world", pose=objectPose)
 objectTransform = Transform(reference_frame="object", pose_in_observer_frame=objectPoseInFrame)
@@ -389,7 +379,7 @@ gripperPoseInObjectFrame = await motion.get_pose(
   This new frame system builds off the robot's frame system and incorporates the `Transform`s provided.
   If the result of adding the `Transform`s results in a disconnected frame system, an error is thrown.
 
-- `extra` [(map[string]interface{})](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -397,8 +387,6 @@ gripperPoseInObjectFrame = await motion.get_pose(
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
-
-**Example usage:**
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (

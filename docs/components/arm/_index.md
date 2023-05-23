@@ -55,6 +55,7 @@ Supported arm models include:
 | [`fake`](fake) | A model used for testing, with no physical hardware. |
 | [`xArm6`](xarm6) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
 | [`xArm7`](xarm7) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
+| [`xArmLite`](xarmlite) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) |
 | `eva` | [Automata Eva](https://automata.tech/products/hardware/about-eva/) |
 | `ur5e` | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot/) |
 | `yahboom-dofbot` | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
@@ -62,13 +63,34 @@ Supported arm models include:
 
 ## Control your arm with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
 
 These examples assume you have an arm called `"my_arm"` configured as a component of your robot.
 If your arm has a different name, change the `name` in the code.
+
+Be sure to import the arm package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.arm import Arm
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/arm"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## API
 
@@ -81,7 +103,7 @@ The arm component supports the following methods:
 | [MoveToJointPositions](#movetojointpositions) | Move each joint on the arm to the desired position. |
 | [JointPositions](#jointpositions) | Get the current position of each joint on the arm. |
 | [Stop](#stop) | Stop the arm from moving. |
-| [IsMoving](#stop) | Get if the arm is currently moving. |
+| [IsMoving](#ismoving) | Get if the arm is currently moving. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### GetEndPosition
@@ -93,12 +115,12 @@ Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `Pose` [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
+- [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
@@ -117,13 +139,12 @@ pos = await my_arm.get_end_position()
 
 **Parameters:**
 
-- `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
-
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 **Returns:**
 
-- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- `Pose` [(`spatialmath.Pose`)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
@@ -153,8 +174,8 @@ Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/vi
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
-- `extra` [(Optional[Dict[str, Any]])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -177,16 +198,16 @@ await my_arm.move_to_position(pose=examplePose)
 
 **Parameters:**
 
-- `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `Pose` [(`spatialmath.Pose`)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `Pose` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -197,7 +218,7 @@ myArm, err := arm.FromRobot(robot, "my_arm")
 examplePose = []float64{x: 5, y: 5, z: 5, o_x: 5, o_y: 5, o_z: 5, theta:20}
 
 // Move your arm to the Pose.
-myArm.MoveToPosition(context.Background(), pose: examplePose, nil)
+err := myArm.MoveToPosition(context.Background(), pose: examplePose, nil)
 ```
 
 {{% /tab %}}
@@ -218,10 +239,10 @@ Collision checks are not enabled when doing direct joint control with MoveToJoin
 
 **Parameters:**
 
-- `positions` [(`JointPositions`)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions): The desired position of each joint of the arm at the end of movement.
+- `positions` [(JointPositions)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions): The desired position of each joint of the arm at the end of movement.
 JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
-- `extra` [(`Optional[Dict[str, Any]]`)](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(`Optional[float]`)](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -247,14 +268,14 @@ await my_arm.move_to_joint_positions(positions= jointPos)
 
 **Parameters:**
 
-- `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `positions` [(`JointPositions`)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `positions` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
 JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -268,7 +289,7 @@ degrees := []float64{4.0, 5.0, 6.0}
 jointPos := componentpb.JointPositions{degrees}
 
 // Move each joint of the arm to the position these values specify.
-myArm.MoveToJointPositions(context.Background(), jointPos, nil)
+err := myArm.MoveToJointPositions(context.Background(), jointPos, nil)
 ```
 
 {{% /tab %}}
@@ -283,12 +304,12 @@ Get the current position of each joint on the arm.
 
 **Parameters:**
 
-- `extra` [(`Optional[Dict[str, Any]]`)](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(`Optional[float]`)](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- `positions` [(`JointPositions`)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions): The position of each joint of the arm.
+- [(JointPositions)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions): The position of each joint of the arm.
 JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_joint_positions)
@@ -305,13 +326,13 @@ pos = await my_arm.get_joint_positions()
 
 **Parameters:**
 
-- `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- `positions` [(`JointPositions`)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
 JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
@@ -335,8 +356,8 @@ Stop all motion of the arm.
 
 **Parameters:**
 
-- `extra` [(`Optional[Dict[str, Any]]`)](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(`Optional[float]`)](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -356,12 +377,12 @@ await my_arm.stop()
 
 **Parameters:**
 
-- `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(`map[string]interface{}`)](https://pkg.go.dev/google.golang.org/protobuf/types/known/structpb): Extra options to pass to the underlying RPC call.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -369,7 +390,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myArm, err := arm.FromRobot(robot, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
-myArm.Stop(context.Background(), nil)
+err := myArm.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -388,7 +409,7 @@ Get if the arm is currently moving.
 
 **Returns:**
 
-- `is_moving` [(`bool`)](https://docs.python.org/c-api/bool.html): If it is true or false that the arm is currently moving.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If it is true or false that the arm is currently moving.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.is_moving).
 
@@ -407,12 +428,12 @@ print(my_arm.is_moving())
 
 **Parameters:**
 
-- `Context` [(`Context`)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
 **Returns:**
 
-- `is_moving` [(`bool`)](https://pkg.go.dev/builtin#bool): If it is true or false that the arm is currently moving.
-- `error` [(`error`)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(bool)](https://pkg.go.dev/builtin#bool): If it is true or false that the arm is currently moving.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -441,11 +462,11 @@ If you are implementing your own arm and add features that have no built-in API 
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_arm = Arm.from_robot(robot, "my_arm")
@@ -461,13 +482,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map[string]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map[string]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
@@ -476,25 +497,21 @@ command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myArm.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## SDK Documentation
-
-- [Python SDK Documentation](https://python.viam.dev/autoapi/viam/components/arm/index.html)
-- [Go SDK Documentation](https://pkg.go.dev/go.viam.com/rdk/components/arm)
 
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+You can also ask questions on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next Steps
 
 {{< cards >}}
   {{% card link="/tutorials/services/accessing-and-moving-robot-arm" size="small" %}}
   {{% card link="/services/motion" size="small" %}}
+  {{% card link="/services/frame-system" size="small" %}}
 {{< /cards >}}

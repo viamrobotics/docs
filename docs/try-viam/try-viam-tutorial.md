@@ -20,15 +20,15 @@ Watch this tutorial video for a walkthrough of Try Viam, including [how to reser
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/YYpZ9CVDwMU">}}
 
-## **control** tab
+## **Control** tab
 
-Click on the rover name at the top to go to the rental rover's **control** tab where you can drive the robot and interact with each of the robot's components.
+Click on the rover name at the top to go to the rental rover's **Control** tab where you can drive the robot and interact with each of the robot's components.
 
 At the top of the page you can see the randomly assigned name of the rover, the host, and the IP address.
 
 ![Screenshot of the top banner of a Try Viam rover robot page. The randomly generated name for this rover is "silent-forest"](../img/try-viam/bannerinfo.png)
 
-The **control** tab contains panels for each of the rover's components:
+The **Control** tab contains panels for each of the rover's components:
 
 - the base,
 - the left and right motors,
@@ -133,7 +133,7 @@ The [web gamepad component](/components/input-controller/webgamepad) is disabled
 
 ## Learn about robot configuration
 
-On the Viam app, navigate to the **Components** subtab, under **config**.
+On the Viam app, navigate to the **Components** subtab, under **Config**.
 There you can view the configuration for each component in the robot: attributes, component dependencies, pin assignments, and more.
 
 ![Screenshot of the CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](../img/try-viam/config-builder.png)
@@ -197,7 +197,7 @@ The [web gamepad](/components/input-controller/webgamepad) component has the **T
 If you connect a generic gamepad controller to your computer, you can use it to control your robot.
 
 If you are configuring your own robot, be aware that using the gamepad requires a service.
-To see how the service is configured, navigate to the **Services** section under the **config** tab.
+To see how the service is configured, navigate to the **Services** section under the **Config** tab.
 The **Services** subtab contains the "Base Remote Control" service which uses three attributes:
 
 - **base**: `viam_base`
@@ -206,13 +206,13 @@ The **Services** subtab contains the "Base Remote Control" service which uses th
 
 The names for **base** and **input_controller** correspond to the naming scheme from the **Components** tab.
 
-![Screenshot of the base remote control service named "base_rc" on the Services sub-tab of the CONFIG tab.](../img/try-viam/base-rc.png)
+![Screenshot of the base remote control service named "base_rc" on the Services subtab of the CONFIG tab.](../img/try-viam/base-rc.png)
 
 ### Raw JSON
 
 The 'Builder' configuration mode provides a user-friendly, guided experience for you.
 In the background, the Viam app translates the Viam robot configuration into JSON.
-You can view the complete JSON for your rover by clicking on **Raw JSON** at the top left of the **config** tab.
+You can view the complete JSON for your rover by clicking on **Raw JSON** at the top left of the **Config** tab.
 
 ![Screenshot of the CONFIG tab with the mode toggled to Raw JSON. A section of the full raw JSON config is displayed but one would have to scroll to see all of it.](../img/try-viam/raw-json.png)
 

@@ -20,13 +20,15 @@ Then, add the motor:
 {{< tabs name="gpiostepper-config">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your motor, select the type `motor`, and select the `gpiostepper` model.
 
-Click **Create component** and then fill in the attributes for your model:
+Click **Create component**.
 
 ![Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15.](../../img/motor/gpiostepper-config-ui.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -35,24 +37,24 @@ Click **Create component** and then fill in the attributes for your model:
 {
   "components": [
     {
-      "name": <board_name>,
+      "name": "<your-board-name>",
       "type": "board",
-      "model": <board_model>,
+      "model": "<your-board-model>",
       "attributes": {},
       "depends_on": [],
     },
     {
-      "name": <motor_name>,
+      "name": "<your-motor-name>",
       "type": "motor",
       "model": "gpiostepper",
       "attributes": {
-        "board": <board_name>,
+        "board": "<your-board-name>",
         "pins": {
-          "step": <board pin number (string) of step pin>,
-          "dir": <board pin number (string) of direction pin>
+          "step": "<pin-number>",
+          "dir": "<pin-number>"
         },
         "ticks_per_rotation": <int>,
-        "stepper_delay": <uint>
+        "stepper_delay": <int>
       },
       "depends_on": []
     }
@@ -102,8 +104,8 @@ The following attributes are available for `gpiostepper` motors:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ---------- |
-| `board` | string | **Required** | Should match name of board to which the motor driver is wired. |
-| `pins` | object | **Required** |  A struct containing `step` and `dir` pin numbers. |
+| `board` | string | **Required** | `name` of the [board](/components/board) the motor driver is wired to. |
+| `pins` | object | **Required** |  A struct containing the [board](/components/board) {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}} that the `step` and `dir` pins of the motor driver are wired to. |
 | `ticks_per_rotation` | int | **Required** | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common. If your data sheet specifies this in terms of degrees per step, divide 360 by that number to get ticks per rotation. |
 | `stepper_delay` | int | Optional | Time in microseconds to remain high for each step. <br> Default: `20` |
 

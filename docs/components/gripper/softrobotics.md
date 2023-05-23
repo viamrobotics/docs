@@ -1,7 +1,7 @@
 ---
 title: "Configure a Soft Robotics Gripper"
 linkTitle: "softrobotics"
-weight: 10
+weight: 30
 type: "docs"
 description: "Configure a Soft Robotics gripper."
 images: ["/components/img/components/gripper.svg"]
@@ -12,14 +12,15 @@ The `softrobotics` model supports the [Soft Robotics *m*Grip](https://www.softro
 {{< tabs name="Configure a softrobotics gripper" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** sub-tab and navigate to the **Create component** menu.
-
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your gripper, select the type `gripper`, and select the `softrobotics` model.
 
-![Creation of a softrobotics gripper component in the Viam app config builder.](../../img/gripper/softrobotics-builder.png)
+Click **Create component**.
 
-Click **Create component** and then fill in the attributes for your model.
+![Creation of a softrobotics gripper component in the Viam app config builder.](../img/softrobotics-ui-config.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -28,14 +29,14 @@ Click **Create component** and then fill in the attributes for your model.
 {
     "components": [
         {
-            "name": <gripper_name>,
+            "name": "<your-gripper-name>",
             "type": "gripper",
             "model" : "softrobotics",
             "attributes": {
-                "board": <board_name>,
-                "open": <pin_number>,
-                "close": <pin_number>,
-                "power": <pin_number>,
+                "board": "<your-board-name>",
+                "open": "<pin-number-on-board>",
+                "close": "<pin-number-on-board>",
+                "power": "<pin-number-on-board>",
                 "analog_reader": "psi"
             }
         }
@@ -85,8 +86,8 @@ The following attributes are available for `softrobotics` grippers:
 
 Name | Inclusion | Type | Description
 ---- | --------- | ---- | -----------
-`board` | **Required** | string | The name of the [board](../../board/) to which your gripper [control unit](https://www.softroboticsinc.com/uploads/2020/05/Tech_Sheet_coDrive_Control_Unit_-__TS-200210_Rev_B.pdf) is wired.
-`open` | **Required** | string | The pin number of the board pin wired to the open pin (D1) on the gripper controller.
-`close` | **Required** | string | The pin number of the board pin wired to the close pin (D2) on the gripper controller.
-`power` | **Required** | string | The pin number of the board pin wired to the enable pin (D3) on the gripper controller.
-`analog_reader` | **Required** | string | Needs to be called `"psi"`, and you need to configure an [analog](../../board/#analogs) named `"psi"` on your board.
+`board` | **Required** | string | The `name` of the [board](../../board/) to which your gripper [control unit](https://www.softroboticsinc.com/uploads/2020/05/Tech_Sheet_coDrive_Control_Unit_-__TS-200210_Rev_B.pdf) is wired.
+`open` | **Required** | string | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board pin wired to the open pin (D1) on the gripper controller.
+`close` | **Required** | string | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board pin wired to the close pin (D2) on the gripper controller.
+`power` | **Required** | string | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board pin wired to the enable pin (D3) on the gripper controller.
+`analog_reader` | **Required** | string | Must be called `"psi"`. You must [configure an analog](../../board/#analogs) on your board and name it `"psi"`.

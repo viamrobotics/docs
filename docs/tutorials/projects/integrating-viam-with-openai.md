@@ -13,11 +13,6 @@ imageAlt: "Viam Rover Rosey."
 # SME: Matt Vella
 ---
 
-{{< alert title="Caution" color="caution" >}}
-There are [breaking changes in the Vision Service](/appendix/release-notes/#25-april-2023).
-This tutorial has not yet been updated.
-{{< /alert >}}
-
 When we think of robots, most of us tend to group them into categories:
 
 * useful robots
@@ -152,7 +147,7 @@ pip install -r requirements.txt
 ```
 
 Finally, you will need both Viam robot credentials and OpenAI API credentials in order to run the software.
-Viam credentials can be copied from the **code sample** tab on your [Viam robot page](https://app.viam.com).
+Viam credentials can be copied from the **Code Sample** tab on your [Viam robot page](https://app.viam.com).
 To acquire OpenAI credentials, [sign up for OpenAI](https://openai.com/api/) and [set up API keys](https://platform.openai.com/account/api-keys).
 
 Once you have both of the credentials, create a file called `run.sh`, add the following, and update the credentials within:
@@ -181,7 +176,7 @@ Now that we've set up the rover by attaching the servo and making the tutorial s
 
 ### 1. Configure the servo
 
-To configure your [servo](/components/servo), go to your rover's **config** page, scroll to the bottom and create a new instance of the `servo` component.
+To configure your [servo](/components/servo), go to your rover's **Config** page, scroll to the bottom and create a new instance of the `servo` component.
 Name it `servo1` (or something else if you prefer, but then you will need to update references to it in the tutorial code).
 
 Since you've attached your servo to a Raspberry Pi, choose the model `pi`.
@@ -189,7 +184,7 @@ Click **Create Component**.
 
 <img src="../../img/ai-integration/servo_component_add.png" style="border:1px solid #000" alt="Adding the servo component." title="Adding the servo component." width="900" />
 
-Now, in the panel for *servo1*, add the following configuration in attributes to tell viam-server that the servo is attached to GPIO pin 8, then press the **Save Config** button.
+Now, in the panel for *servo1*, add the following configuration in attributes to tell `viam-server` that the servo is attached to GPIO pin 8, then press the **Save Config** button.
 
 ``` json
 {
@@ -199,7 +194,7 @@ Now, in the panel for *servo1*, add the following configuration in attributes to
 ```
 
 `viam-server` will now make the servo available for use.
-Click on the **control** tab.
+Click on the **Control** tab.
 You should see a panel for `servo1`.
 From there, you can change the angle of your servo by increments of 1 or 10 degrees.
 
@@ -210,35 +205,36 @@ We found that if set up this way, the following positions accurately show the co
 * angry: 75 degrees
 * sad: 157 degrees
 
-### 2. Configure the Vision Service and classifier
+### 2. Configure the ML Model and Vision Services to use the classifier
 
-Click the **config** tab and then the **Services** subtab.
-From there, scroll to the bottom and create a new service of **type** `vision` named 'vision'.
+Click the **Config** tab and then the **Services** subtab.
+From there, scroll to the bottom and create a new service of **type** `ML Models`, **model** `tflite_cpu` named 'stuff-classifier'.
+Your robot will register this as a machine learning model and make it available for use.
+
+<img src="../../img/ai-integration/mlmodels_service_add.png" style="border:1px solid #000" alt="Adding the ML Models Service." title="Adding the ML Models Service." width="500" />
+
+Make sure `Path to Existing Model on Robot` is selected.
+
+Update the **Model Path** and **Label Path** to match where you [copied the tutorial software](#5-set-up-tutorial-software).
+For example, the model path would would be similar to:
+
+``` bash
+/home/<username>/tutorial-openai-integration/lite-model_imagenet_mobilenet_v3_large_075_224_classification_5_metadata_1.tflite
+```
+
+and the label path similar to:
+
+``` bash
+/home/<username>/tutorial-openai-integration/labels.txt
+```
+
+Now, create a new service of **type** `vision`, **model** `ML Model` named 'vis-stuff-classifier'.
+Your companion robot will use this to interface with the machine learning model (trained using the [ImageNet image database](https://www.image-net.org/)) allowing you to - well, classify stuff!
 
 <img src="../../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the Vision Service." title="Adding the Vision Service." width="500" />
 
-Now, add the following configuration to the attributes for the Vision Service.
-You are registering a model of **type** `tflite_cpu` **named** `stuff_classifier`.
-Your companion robot will use this to - well, classify stuff (using an ML model trained using the [ImageNet image database](https://www.image-net.org/))!
-
-Update the `label_path` and `model_path` to match where you [copied the tutorial software](#5-set-up-tutorial-software).
+Select the model that you added in the previous step.
 Click **Save config** to finish adding the classifier.
-
-``` json
-{
-  "register_models": [
-    {
-      "name": "stuff_classifier",
-      "parameters": {
-        "label_path": "/home/<username>/tutorial-openai-integration/labels.txt",
-        "num_threads": 1,
-        "model_path": "/home/<username>/tutorial-openai-integration/lite-model_imagenet_mobilenet_v3_large_075_224_classification_5_metadata_1.tflite"
-      },
-      "type": "tflite_cpu"
-    }
-  ]
-}
-```
 
 ## Bring "Rosey" to life
 
@@ -255,7 +251,7 @@ Any time she hears the keyword "Rosey", she will pay attention to anything you s
 For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI's chat completion API, and you'll get a response back similar to *"It is impossible to predict what will happen today.
 Every day is different and unpredictable!"*
 
-If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-integration/blob/45ce0e3f2b7bad33f568cd4273e6721aa2ceffe5/rosey.py#L144), you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
+If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-integration/blob/main/rosey.py#L192), you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
 For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
 
 <div class="td-max-width-on-larger-screens">

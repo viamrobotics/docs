@@ -105,6 +105,11 @@ h5, .h5 {
   font-size: 0.833 !important;
 }
 
+h6, .h6 {
+  font-size: 0.833rem !important;
+  line-height: 1.0625rem;
+}
+
 h7, .h7 {
   font-size: 0.833rem !important;
   line-height: 1.0625rem;
@@ -230,6 +235,21 @@ p, li {
   }
 }
 
+/* Add margin in front of breadcrumbs on small screens */
+@media (max-width: 768px) {
+  .td-main main {
+    margin-top: 0.5rem;
+  }
+}
+
+/*This ensures there is no padding added to the top logo bar*/
+.td-navbar .td-navbar-nav-scroll {
+  height: unset;
+}
+
+.td-navbar .td-navbar-nav-scroll .navbar-nav {
+  padding-bottom: unset;
+}
 
 /* font weight */
 
@@ -271,10 +291,9 @@ END MARKETING CSS
 /* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/*/
 /* I added margins, changed Preload to 600px. The default was 100% */
 
-.video-shortcode {
+.td-content > .video-shortcode, .video-shortcode {
   margin: 12px 0 12px 0;
   border:solid 1px;
-  border-color: blue;
   max-width: 100%;
   width: 600px;
   height: auto;
@@ -498,6 +517,10 @@ END MARKETING CSS
   transform: translate(-3px,-3px);
 }
 
+.hover-card-small > a > .hover-card-img, .hover-card-small > a > video {
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 650px) { // at least two cards fit next to one another
   .hover-card.hover-card-small { // only one card
     min-width: 90%;
@@ -570,7 +593,6 @@ END MARKETING CSS
     max-width: 300px;
   }
 }
-
 
 .landing-hover-card {
   margin: 1em auto;

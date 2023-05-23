@@ -15,39 +15,39 @@ One camera server streams a color stream and the other camera server streams a d
 {{< tabs name="Configure a Dual Stream Camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your camera, select the type `camera`, and select the `dual_stream` model.
 
-![Creation of a dual stream camera in the Viam App config builder.](../img/create-dual-stream.png)
-
-Fill in the attributes for dual stream camera:
+Click **Create component**.
 
 ![Configuration of a dual stream camera in the Viam app config builder.](../img/configure-dual-stream.png)
+
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<camera_name>",
+    "name": "<your-camera-name>",
     "type": "camera",
     "model" : "dual_stream",
     "attributes": {
         "intrinsic_parameters": {
-            "width_px": <integer>,
-            "height_px": <integer>,
-            "fx": <float64>,
-            "fy": <float64>,
-            "ppx": <float64>,
-            "ppy": <float64>
+            "width_px": <int>,
+            "height_px": <int>,
+            "fx": <float>,
+            "fy": <float>,
+            "ppx": <float>,
+            "ppy": <float>
         },
         "distortion_parameters": {
-            "rk1": <float64>,
-            "rk2": <float64>,
-            "rk3": <float64>,
-            "tp1": <float64>,
-            "tp2": <float64>
+            "rk1": <float>,
+            "rk2": <float>,
+            "rk3": <float>,
+            "tp1": <float>,
+            "tp2": <float>
         },
         "stream": "<color|depth>",
         "debug": <boolean>,
@@ -62,14 +62,14 @@ Fill in the attributes for dual stream camera:
 
 The following attributes are available for `dual_stream` cameras views:
 
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| `stream` | **Required** | `color` or `depth`. The image stream to return when you call `Next()` or `NextPointCloud()`. |
-| `color_url` | **Required** | The color stream url. |
-| `depth_url` | **Required** | The depth stream url. |
-| `intrinsic_parameters` | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
-| `distortion_parameters` | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
-| `debug` | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `stream` | string | **Required** | `color` or `depth`. The image stream to return when you call `Next()` or `NextPointCloud()`. |
+| `color_url` | string | **Required** | The color stream url. |
+| `depth_url` | string | **Required** | The depth stream url. |
+| `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
+| `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
+| `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 
 ## View the camera stream
 

@@ -11,7 +11,7 @@ Resources are individual, addressable elements of a robot.
 {{< glossary_tooltip term_id="part" text="Parts" >}} operate multiple types of resources:
 
 - physical {{< glossary_tooltip term_id="component" text="components" >}}
-- {{< glossary_tooltip term_id="service" text="software services" >}}
+- software {{< glossary_tooltip term_id="service" text="services" >}}
 - {{< glossary_tooltip term_id="module" text="modules" >}}
 - {{< glossary_tooltip term_id="process" text="processes" >}}
 

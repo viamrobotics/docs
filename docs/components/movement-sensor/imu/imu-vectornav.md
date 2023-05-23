@@ -16,14 +16,15 @@ The `imu-vectornav` movement sensor model supports IMUs manufactured by [VectorN
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** sub-tab and navigate to the **Create component** menu.
-
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `imu-vectornav` model.
+
+Click **Create Component**.
 
 ![Creation of an `imu-vectornav` movement sensor in the Viam app config builder.](../../img/imu-vectornav-builder.png)
 
-Click **Create Component** and then fill in the attributes for your model.
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -32,15 +33,15 @@ Click **Create Component** and then fill in the attributes for your model.
 {
   "components": [
     {
-      "name": <sensor_name>,
+      "name": "<your-sensor-name>",
       "type": "movement_sensor",
       "model": "imu-vectornav",
       "attributes": {
-        "board": <board_name>,
-        "spi": <string>,
+        "board": "<your-board-name>",
+        "spi": "<your-spi-bus-name-on-board>",
         "spi_baud_rate": <int>,
         "polling_freq_hz": <int>,
-        "chip_select_pin": <string>
+        "chip_select_pin": "<pin-number-on-board>"
       },
       "depends_on": []
     }
@@ -76,10 +77,10 @@ Click **Create Component** and then fill in the attributes for your model.
 
 ## Attributes
 
-Name | Type | Default Value | Description
------ | ----- | ----- | -----
-`board` | string | - | The name of the board to which the device is wired
-`spi` | string | - | The name of the SPI bus over which the device communicates with the board. On a Raspberry Pi, people often use the bus named "1."
-`chip_select_pin` | string | - | The board pin (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device.
-`spi_baud_rate` | int | 115200 | The rate at which data is sent from the IMU.
-`polling_frequency_hz` | int | - | How many times per second the sensor is polled.
+Name | Type | Inclusion | Description |
+-----| ---- | --------- | ----------- |
+`board` | string | **Required** | The `name` of the [board](/components/board) to which the device is wired.
+`spi` | string | | The `name` of the [SPI bus](/components/board/#spis) over which the device communicates with the board.
+`chip_select_pin` | string | **Required** | The ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}) of the pin on the board (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device.
+`spi_baud_rate` | int | **Required** | The rate at which data is sent from the IMU. <br> Default: `115200`
+`polling_frequency_hz` | int | **Required** | How many times per second the sensor is polled.

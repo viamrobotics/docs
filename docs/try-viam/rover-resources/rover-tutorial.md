@@ -32,24 +32,24 @@ This guide covers what's inside the kit, describes each component, provides inst
 
     <img src="../img/viam-rover/rover-side.jpg" style="max-width:400px;width:100%" alt="The side of the assembled Viam Rover" />
 
-2. Four M2.5 screws for mounting your Raspberry Pi.
+1. Four M2.5 screws for mounting your Raspberry Pi.
 
     <img src="../img/viam-rover/screws.jpg" style="max-width:400px;width:100%" alt="Four screws" />
 
-3. Two spare stiffer suspension springs.
+1. Two spare stiffer suspension springs.
    You can swap them out with the springs that come with the rover if you need stiffer suspension for higher payload applications.
 
     <img src="../img/viam-rover/suspension-springs.jpg" style="max-width:400px;width:100%" alt="Two suspension springs" />
 
-4. Three different Allen wrenches (1.5 mm, 2 mm, and 2.5 mm) to unscrew the top and mount the Raspberry Pi.
+1. Three different Allen wrenches (1.5 mm, 2 mm, and 2.5 mm) to unscrew the top and mount the Raspberry Pi.
 
-  <img src="../img/viam-rover/allen-wrenches.png" style="max-width:180px;width:100%" alt="Three allen wrenches" />
+    <img src="../img/viam-rover/allen-wrenches.png" style="max-width:180px;width:100%" alt="Three allen wrenches" />
 
 1. Ten female-to-female jumper wires.
    All of the wires' colors correspond to the included wiring diagram.
    Six are for the motor controller and four are for the accelerometer.
 
-  <img src="../img/viam-rover/jumper-wires.jpg" style="max-width:400px;width:100%" alt="Ten colorful jumper wires" />
+    <img src="../img/viam-rover/jumper-wires.jpg" style="max-width:400px;width:100%" alt="Ten colorful jumper wires" />
 
 All together, your kit looks like this:
 
@@ -152,7 +152,7 @@ This is the recommended order to assemble your rover:
 
 1. [Install Raspberry Pi OS on the microSD card.](#install-raspberry-pi-os)
 2. [Unscrew the top of the rover and screw the Pi to the base.](#attach-the-raspberry-pi-to-the-rover)
-3. [Conenct the components.](#connect-the-wires)
+3. [Connect the components.](#connect-the-wires)
 4. [Screw the top of the rover back on and turn the rover on.](#turn-the-rover-on)
 5. [Install `viam-server` and connect to the Viam app.](#connect-to-the-viam-app)
 
@@ -182,7 +182,7 @@ Only attach the paper when the Pi is unplugged.
 To make attaching the paper easier, use a credit card or a small screwdriver.
 {{< /alert >}}
 
-Wire your Pi to the buck converter, the acceleration tilt module, the DC motor driver:
+Wire your Pi to the buck converter, the acceleration tilt module, and the DC motor driver:
 
 ![Closeup of the wiring diagram, showcasing the Pi, motor driver, accelerometer, and buck converter, wired according to the table below.](../img/viam-rover/wiring-diagram.png)
 
@@ -231,8 +231,8 @@ If the Pi has power, the lights on the Raspberry Pi will light up.
 ### Connect to the Viam app
 
 While the Pi boots, go to [app.viam.com](https://app.viam.com/robots) and [add a robot](/manage/fleet/robots#add-a-new-robot).
-On the robot's **setup** tab, select `Linux` and `Aarch64`.
-`SSH` into the Pi and follow the instructions on the robot's **setup** tab to download `viam-server` and configure your robot.
+On the robot's **Setup** tab, select `Linux` and `Aarch64`.
+`ssh` into the Pi and follow the instructions on the robot's **Setup** tab to download `viam-server` and configure your robot.
 
 To configure your rover so you can start driving it, [add the Viam Fragment to your Robot](/try-viam/rover-resources/rover-tutorial-fragments/).
 

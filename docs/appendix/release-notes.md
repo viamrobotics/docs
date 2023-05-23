@@ -30,15 +30,15 @@ You will no longer be able to create one vision service and register all of your
 
 #### API calls
 
-Change your existing API calls to get the new vision service instance for your detector, classifier, or segementer model directly from the `VisionServiceClient`:
+Change your existing API calls to get the new vision service instance for your detector, classifier, or segmenter model directly from the `VisionClient`:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
 
-Change your existing API calls to get the new vision service instance for your detector, classifier, or segementer model directly from the `VisionServiceClient`:
+Change your existing API calls to get the new vision service instance for your detector, classifier, or segmenter model directly from the `VisionClient`:
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_object_detector = VisionServiceClient.from_robot(robot, "find_objects")
+my_object_detector = VisionClient.from_robot(robot, "find_objects")
 img = await cam.get_image()
 detections = await my_object_detector.get_detections(img)
 ```

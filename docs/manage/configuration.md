@@ -11,7 +11,7 @@ Before you can program a robot, you must configure it.
 
 A robot's configuration tells the code running the robot what *resources* (hardware *components* and software *services*) it has access to, as well as any relevant parameters for those resources.
 
-To start configuring, go to the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **setup** tab.
+To start configuring, go to the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **Setup** tab.
 
 The setup steps copy your robots credentials to your robot and store them at <file>/etc/viam.json</file>.
 The credentials look like this:
@@ -49,7 +49,7 @@ viam-server -config <path-to-config>.json
 
 {{< /alert >}}
 
-After you have completed the setup steps and successfully connected to your robot, go to the **config** tab to start adding to the configuration.
+After you have completed the setup steps and successfully connected to your robot, go to the **Config** tab to start adding to the configuration.
 
 {{% alert title="Note" color="note" %}}
 
@@ -61,7 +61,7 @@ If you cannot connect your robot to the internet at all, you can also [store the
 
 ## The CONFIG tab
 
-The **config** tab on the [Viam app](https://app.viam.com) is the place to configure everything about your robot.
+The **Config** tab on the [Viam app](https://app.viam.com) is the place to configure everything about your robot.
 
 You can use the mode selector to switch between **Builder** and **Raw JSON**:
 
@@ -134,7 +134,7 @@ If you add components in **Builder** mode and click **Save Config** at the botto
 
 {{% /expand %}}
 
-The **config** tab has sub-tabs for each section of your robot's config:
+The **Config** tab has subtabs for each section of your robot's config:
 
 - [Components](#components): Components are the hardware of your robot.
 - [Services](#services): Services are the software that runs on your robot.
@@ -170,22 +170,25 @@ Components of the same model are supported using the same low-level code.
 - `attributes`: A struct to define things like how the component is wired to the robot, its dimensions, and other specifications; attributes vary widely between models.
   See the [component documentation](/components/) for a given component type and model for more details.
 
+{{% alert title="Tip" color="tip" %}}
+
+Some optional attributes have default values.
+If you omit these attributes from your config, or if you include them but leave their values empty, `viam-server` will apply these default values at runtime, even though they are not reflected in the configuration file.
+
+{{% /alert %}}
+
 - `depends_on`: Any components that a given component relies upon, and that must be initialized on boot before this component is initialized.
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
 
-{{% alert title="Tip" color="tip" %}}
-
-Find specific information on how to configure each supported component type in its respective [documentation](/components/).
-
-{{% /alert %}}
-
-<br>
+For specific information on how to configure each supported component type, see the [components documentation](/components/).
 
 {{% alert title="Tip" color="tip" %}}
 
-When you configure a component on the **config** tab, it will also appear on the **control** tab which gives you an interface to test and interact with it.
-Meanwhile the **code sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdk-as-client/).
+When you configure a component on the **Config** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
+Meanwhile the **Code Sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdks/).
+
+{{<gif webm_src="../img/control.webm" mp4_src="../img/control.mp4" alt="Using the control tab">}}
 
 {{% /alert %}}
 
@@ -232,7 +235,7 @@ In raw JSON, these options are represented by `log` (bool) and `one_shot` (bool)
 
 The following configuration executes the command `python3 my_cool_script.py` in your <file>/home/myName/project/</file> directory every time your robot boots, and keeps it executing indefinitely.
 
-![The PROCESSES sub-tab of the CONFIG tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off.](../img/configuration/process-fancy.png)
+![The PROCESSES subtab of the CONFIG tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off.](../img/configuration/process-fancy.png)
 
 The corresponding raw JSON looks like this:
 
@@ -275,13 +278,13 @@ For example, if you have multiple identical rovers but one has an arm attached, 
 
 To add a fragment to a robot:
 
-- Go to the **Fragments** sub-tab of your robot's **config** tab on the [Viam app](https://app.viam.com).
+- Go to the **Fragments** subtab of your robot's **Config** tab on the [Viam app](https://app.viam.com).
 - Look through the list of available fragments and click **Add** next to any fragments you want to add to your robot.
 - Click **Save Config** at the bottom of the screen.
 
 ![The fragments subtab](../img/fragments-tab.png)
 
-The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** sub-tab.
+The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
 ![A fragment in the components subtab](../img/fragment-components.png)
 
@@ -316,7 +319,7 @@ Find more information in the [frame system documentation](/services/frame-system
 
 If you run into issues, here are some things to try:
 
-- Check the **logs** tab to check for any errors or other info from `viam-server`.
+- Check the **Logs** tab to check for any errors or other info from `viam-server`.
 - You can also view logs locally by running the following command on the robot:
 
   {{< tabs >}}
@@ -404,4 +407,6 @@ To run `viam-server` as a system service, see [Start automatically on boot](/ins
 
 ## Next Steps
 
-After configuring your robot, you can use the [Viam SDKs](../../program/sdk-as-client/) to program and control your robot.
+After configuring your robot, you can use the [Viam SDKs](../../program/sdks/) to program and control your robot.
+
+If you want to try configuring a robot but don't have any hardware on hand, try the [Build a Mock Robot](../../tutorials/configure/build-a-mock-robot/) tutorial.
