@@ -605,5 +605,6 @@ The same code that works with any configured base will work with MAIV, you'll ju
 
 Since MAIV has a camera, you could also [set up a color detector](/tutorials/services/webcam-line-follower-robot/) or detect objects using a [machine learning model](/tutorials/projects/send-security-photo/).
 
-There's a lot more we can do with MAIV, and we'll dive into other areas in upcoming parts of this series.
+There's a lot more you can do with MAIV - for inspiration, check out our other [tutorials](/tutorials).
+If you end up building your own MAIV or another retro robot, we’d love to hear - let us and the [Viam community](https://discord.gg/viam) know!
 In the meantime, we'd love to hear what you might do with your own retro robot - let us and the [Viam community](https://discord.gg/viam) know!
