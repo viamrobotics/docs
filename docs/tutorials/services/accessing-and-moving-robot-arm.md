@@ -162,7 +162,8 @@ values: 0.013732909913080547
 values: 0.00076904296930648713
 ```
 
-Each individual value corresponds to the current position of a particular joint on your robot. You can also see these values reflected on the Control tab in the Viam app for your robot arm.
+Each individual value corresponds to the current position of a particular joint on your robot.
+You can also see these values reflected on the Control tab in the Viam app for your robot arm.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -182,7 +183,8 @@ You should see output that looks similar to the following:
 myArm JointPositions return value: values:0.00043945314765093886  values:0.4672485453655179  values:0.6450073134445674  values:-0.0009887695170768527  values:0.013732909913080547  values:0.0007690429693064871
 ```
 
-Each individual value corresponds to the current position of a particular joint on your robot. You can also see these values reflected on the **Control** tab in the Viam app for your robot arm.
+Each individual value corresponds to the current position of a particular joint on your robot.
+You can also see these values reflected on the **Control** tab in the Viam app for your robot arm.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -209,7 +211,12 @@ Executing code presented after this point *will* induce motion in a connected ro
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-Add `from viam.proto.component.arm import JointPositions` to your import list to be able to assign values to a `JointPositions` data structure.
+Add the following line to your import list to be able to assign values to a `JointPositions` data structure:
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.component.arm import JointPositions
+```
+
 See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
