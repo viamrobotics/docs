@@ -599,6 +599,8 @@ Now MAIV is ready to interact with the world!
 
 {{<video webm_src="../../img/maiv/maiv_driving.webm" mp4_src="../../img/maiv/maiv_driving.mp4" alt="MAIV driving" max-width="350px">}}
 
+## Next steps
+
 Start by driving MAIV through the **Control** panel, then try writing some code.
 A simple first exercise would be to have MAIV [drive in a square](/tutorials/get-started/try-viam-sdk/).
 The same code that works with any configured base will work with MAIV, you'll just need to update the robot location, robot secret and any component names that differ in the code.
