@@ -9,8 +9,6 @@ images: ["/tutorials/img/maiv/maiv_front.gif"]
 tags: ["base", "retro", "vision", "computer vision", "camera", "motor", "python"]
 no_list: true
 description: "Modernize a 1980s robot with Viam and AI"
-image: ""
-images: []
 imageAlt: ""
 # SME: Matt Vella
 ---
