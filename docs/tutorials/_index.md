@@ -65,6 +65,7 @@ For this reason, we list tutorials based on features you may be looking for.
     {{% card link="/tutorials/projects/send-security-photo/" size="small" %}}
     {{% card link="/tutorials/projects/guardian/" size="small" %}}
     {{% card link="/tutorials/projects/integrating-viam-with-openai/" size="small" %}}
+    {{% card link="/tutorials/projects/modernize-retro-robot/" size="small" %}}
     {{% card link="/tutorials/projects/build-an-outdoor-rover/" size="small" %}}
 {{< /cards >}}
 
