@@ -354,9 +354,6 @@ Configuring `viam-server` with the Viam app allows you to make use of the cloud 
 - [Fleet Management](/manage/fleet/)
 - [Data Management](/manage/data/)
 - [Machine Learning](/manage/ml/)
-- [Motion Service](/services/motion/)
-- [Simultaneous Localization And Mapping (SLAM)](/services/slam/)
-- [Vision Service](/services/vision/)
 
 A locally configured robot, will not be able to access Viam's cloud features.
 If you are configuring a robot that can never connect to the internet, you can manually create a local full raw JSON config file on your robot.
