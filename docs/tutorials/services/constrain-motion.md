@@ -20,6 +20,8 @@ Also pay attention to your surroundings, double-check your code for correctness,
 If you followed along in [part 2 of the Motion Service tutorial series](../plan-motion-with-arm-gripper), you used the [Motion Service](/services/motion) to move a robot arm and end effector to desired positions.
 This tutorial builds on that and shows you how to use [constraints](/services/motion/constraints) to control the way your robot moves between its start and end position.
 
+In this tutorial, you will learn to move an object (such as a cup of water) across a table without hitting another object, and while remaining upright.
+
 {{< alert title="Note" color="note" >}}
 Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
@@ -118,5 +120,15 @@ The Motion Service is one of the "built-in" services, so you don't need to do an
 ```
 
 {{% /expand %}}
+
+## Configure your table
+
+In the [previous tutorial](../plan-motion-with-arm-gripper/) you created a representation of a table in your client code.
+This time, you will configure one in your robot's config.
+This way, you can visualize it in the **Frame System** subtab of your robot's **Config** tab.
+
+### Use a transform to represent a drinking cup
+
+
 
 ## Full tutorial code
