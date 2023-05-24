@@ -254,7 +254,7 @@ You can also try unplugging the battery and powering it instead with the wall ad
 
 {{% /alert %}}
 
-## Add AI and Viam
+## Add Viam and AI capabilities
 
 Merging 40-year-old tech with modern tech to light up LEDs is exciting, but we need to configure our robotic base before we can get to the true prize of controlling MAIV through the internet and programmatically.
 For now, turn the power switch to the off position.
@@ -264,7 +264,7 @@ Go to the [Viam app](https://app.viam.com) and create a new robot called `MAIV`.
 
 Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your Raspberry Pi](/installation).
 
-#### Configure the components
+### Configure the components
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -403,7 +403,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Test the base and motor components
+### Test the base and motor components
 
 MAIV is still in pieces, but its time to ensure that the motors and base controls are working.
 Check to see if you might have something that you can use to set MAIV's base upon so the motorized wheels can spin freely.
@@ -419,12 +419,12 @@ If the wheels on a given side are spinning in the opposite direction of what you
 From the **Control** tab you can also test the individual motors directly.
 First select the desired direction and power percent, then start the motor by clicking `RUN` and stop the motor by clicking `STOP`.
 
-### MAIV's head
+## MAIV's head
 
 In order to give MAIV a bit more personality and capability, let's wire MAIV's neck motor and eyes.
 We'll also add a camera so MAIV can see the world.
 
-#### Convert MAIV's eyes to LEDs
+### Convert MAIV's eyes to LEDs
 
 Because MAIV's torso is already open, the neck and head is detached.
 Turn the head over, locate and unscrew the two screws holding MAIV's face plate.
@@ -456,7 +456,7 @@ From here, you can test MAIV's eyes by setting GPIO pin 18 to high (to turn the 
 
 {{<video webm_src="../../img/maiv/maiv_eye_test.webm" mp4_src="../../img/maiv/maiv_eye_test.mp4" alt="MAIV eye flashing test" max-width="300px">}}
 
-#### Connect and test the neck motor
+### Connect and test the neck motor
 
 The Omnibot 2000 has a motor that allows the head to turn from side-to-side.
 This motor is a simple DC motor like those found in its base; the motor is not encoded nor is it a stepper motor so precise control is not an option.
@@ -532,7 +532,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 Power your robot back on and use the **Control** tab to test that the neck motor is connected properly and can be powered on and off.
 
-#### Add a camera "nose"
+### Add a camera "nose"
 
 Before re-assembling MAIV, you can add a camera to your robot's face.
 We can use this camera to stream video and capture images, as well as leverage it for computer vision and machine learning.
@@ -610,7 +610,7 @@ Now that you've wired, configured, and tested all the components, put MAIV back 
 
 Now MAIV is ready to interact with the world!
 
-{{<video webm_src="../../img/maiv/maiv_driving.webm" mp4_src="../../img/maiv/maiv_driving.mp4" alt="MAIV driving" max-width="350px">}}
+{{<video webm_src="../../img/maiv/maiv_driving.webm" mp4_src="../../img/maiv/maiv_driving.mp4" alt="MAIV driving, in one of our home offices - so not quite the world, yet" max-width="350px">}}
 
 ## Next steps
 
