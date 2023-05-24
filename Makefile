@@ -13,6 +13,9 @@ SERVE_OPTIONS=--baseURL http://localhost
 clean:
 	rm -rf public resources dist
 
+purge:
+	npm cache clean --force && hugo mod clean --all && rm -rf public resources dist node_modules themes .hugo_build.lock
+
 build-prod: clean setup
 	hugo $(PROD_OPTIONS)
 
