@@ -10,7 +10,7 @@ tags: ["data management", "cloud", "sync"]
 First, install the [Viam CLI](/manage/cli) and [authenticate](/manage/cli/#authenticate).
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-go install go.viam.com/rdk/cli/cmd@latest
+go install go.viam.com/rdk/cli/viam@latest
 viam auth
 ```
 
