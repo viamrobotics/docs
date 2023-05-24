@@ -193,6 +193,7 @@ Cut off any existing connector, and solder the red wire of a male barrel connect
 {{< alert title="Caution" color="caution" >}}
 Don't plug the battery in just yet.
 {{< /alert >}}
+
 #### Wire the power sources
 
 You now need to open the center/torso compartment of MAIV in order to access the wiring within.
