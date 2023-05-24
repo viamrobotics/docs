@@ -77,7 +77,7 @@ Get out your window cleaner and paper towels and get to know it while giving it 
 
 The Omnibot is driven by two wheels on each side, with a third un-powered wheel per side.
 The powered wheels have treads - you'll want to see if yours are intact and usable as they are important for traction.
-Ours were in decent shape - if yours are not you can find them for sale on [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=omnibot+2000+treads&_sacat=0&LH_TitleDesc=0&_odkw=omnibot+2000&_osacat=0) or 3D-printable at [Thingiverse](https://www.thingiverse.com/thing:4779479).
+Ours were in decent shape - if yours are not you can find them for sale on [eBay](https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=omnibot+2000+treads&_sacat=0&LH_TitleDesc=0&_odkw=omnibot+2000&_osacat=0) or 3D-printable at [Thingiverse](https://www.thingiverse.com/thing:4779479).
 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/maiv/maiv_wheels.jpg" class="alignleft" alt="Omnibot 2000 wheels." title="Omnibot 2000 wheels." style="max-width: 200px" />
