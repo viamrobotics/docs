@@ -26,7 +26,7 @@ See [What is Viam?](/viam/) for more information.
 Make sure your system is compatible with Viam.
 You can run `viam-server` on any device that runs:
 
-- **any** Linux 64-bit operating system
+- **any** Linux 64-bit operating system (except FUSE)
 - macOS
 
 <div class="container text-left td-max-width-on-larger-screens">
@@ -70,7 +70,7 @@ Once you have a compatible operating system on your computer, you are ready to i
 {{% tab name="Linux"%}}
 
 `viam-server` is distributed as an AppImage.
-The AppImage is a single, self-contained binary that runs on any Linux system (except FUSE) with the correct CPU architecture, with no need to install any dependencies.
+The AppImage is a single, self-contained binary that runs on any 64-bit Linux system (except FUSE), with no need to install any dependencies.
 
 1. **Download the Viam app config to your computer.** `viam-server` uses this config file to connect to app.viam.com.
    This connection allows the robot to pull its full configuration information and allows you to monitor and control your robot from the Viam app.
