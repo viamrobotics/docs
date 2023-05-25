@@ -14,7 +14,3 @@ no_list: true
     {{% card link="/program/run" size="small" %}}
     {{% card link="/program/debug" size="small" %}}
 {{< /cards >}}
-
-<!-- TODO: Better pictures besides just the same SDK ones
-
-Also add more fun pictures info here, possibly from tutorials, showing what you *can* do with Viam's SDKs or at least giving a better over?  -->
