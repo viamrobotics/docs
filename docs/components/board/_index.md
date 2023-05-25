@@ -667,9 +667,7 @@ status = await my_board.status()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `mode` [(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-- `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board exits the given power mode after the specified time in nanoseconds has passed.
 
 **Returns:**
 
@@ -740,6 +738,15 @@ attributes := myBoard.ModelAttributes()
 ### SetPowerMode
 
 Set the board to the indicated `PowerMode`.
+
+{{% alert title="Note" color="note" %}}
+
+This method may not receive a successful response from gRPC when you set the board to the offline power mode `PowerMode.POWER_MODE_OFFLINE_DEEP`.
+
+When this is the case for your board model, the call is returned with an error specifying that the remote procedure call timed out or that the endpoint is no longer available.
+This issue occurs because the board is offline.
+
+{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
