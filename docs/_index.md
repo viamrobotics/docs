@@ -27,7 +27,7 @@ Viam supports a wide variety of systems, including:
   <li id="c1_slide3">
     <a href="installation/prepare/beaglebone-setup/">
         <img src="installation/img/thumbnails/beaglebone.png" alt="BeagleBone A I-64" width="100%">
-        <h6>Beaglebone AI64</h6>
+        <h6>BeagleBone AI-64</h6>
     </a>
   </li>
   <li id="c1_slide4">
