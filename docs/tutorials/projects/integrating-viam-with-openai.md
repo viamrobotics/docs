@@ -208,7 +208,7 @@ We found that if set up this way, the following positions accurately show the co
 ### 2. Configure the ML Model and Vision Services to use the detector
 
 Click the **Config** tab and then the **Services** subtab.
-From there, scroll to the bottom and create a new service of **type** `ML Models`, **model** `tflite_cpu` named 'stuff-detector'.
+From there, scroll to the bottom and create a new service of **type** `ML Models`, **model** `tflite_cpu` named 'stuff_detector'.
 Your robot will register this as a machine learning model and make it available for use.
 
 <img src="../../img/ai-integration/mlmodels_service_add.png" style="border:1px solid #000" alt="Adding the ML Models Service." title="Adding the ML Models Service." width="500" />
