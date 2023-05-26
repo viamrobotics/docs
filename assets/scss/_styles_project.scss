@@ -839,10 +839,13 @@ footer small {
   div.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }
   .alignright { float: right; }
   .alignleft { float: left; }
+  .aligncenter { display: block; margin-left: auto; margin-right: auto; }
 }
 
 // center on small screens
 @media (max-width: 650px) {
   .alignright { display: block; margin-left: auto; margin-right: auto; }
   .alignleft { display: block; margin-left: auto; margin-right: auto; }
+  .aligncenter { display: block; margin-left: auto; margin-right: auto; }
+  .center-if-small { display: block; margin-left: auto; margin-right: auto; }
 }
