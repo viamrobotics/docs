@@ -152,12 +152,12 @@ This will ensure that the board initializes before the motor driver when the rob
 
 ![Motor component configured in the Viam app, the component tab is named start, with a type attribute motor and model attribute gpio. It has the attributes as of the board as party, encoder as non-encoded, max rpm as 1000, component pin assignment type as In1/In2, enable pins as neither, a/In1 as 13 GPIO 27, b/In2 as 15 GPIO 22, pwm as 11 GPIO 17.](/tutorials/img/confetti-bot/app-motor-attribute.png)
 
-Click **SAVE CONFIG** at the bottom of the screen.
+Click **Save Config** at the bottom of the screen.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board and your motor:
+On the [**Raw JSON** tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board and your motor:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -196,11 +196,11 @@ Click **Save config** in the bottom left corner of the screen.
 {{< /tabs >}}
 
 Let’s test our configuration from the [Control tab](/manage/fleet/robots/#control).
-Go to board panel, set the pin connected to your motor (in our case pin 37) to high, and your motor should turn.
+Go to the board panel, set the pin connected to your motor (in our case pin 37) to high, and your motor should turn.
 
 ## Attach components to the enclosure
 
-Now that you tested your motor in the app and confirmed everything works, you can finish assembling your confetti bot.
+Now that you have tested your motor in the app and confirmed that everything works, you can finish assembling your confetti bot.
 
 1. Attach the motor driver to the enclosure wall with four M2.5 x 16mm screws and M2.5 nuts.
 
@@ -216,14 +216,15 @@ Be careful of the wires during this so they don’t pop off.
     <img src="/tutorials/img/confetti-bot/install-pi-2.jpg" alt="Front view of the Raspberry Pi being installed inside the 3D printed enclosure within the designated slot." style="min-height:275px; max-height:350px" class="center-if-small">
 
 3. Add the confetti cannon to the enclosure by tightening the 3D printed holder around the confetti socket using one M2.5 x 16mm screw and a M2.5 nut.
-Then connect this piece with the front panel.
+Then connect the enclosure to the front panel.
 
     <img src="/tutorials/img/confetti-bot/install-cannon-front.jpg" alt="Front photo of the confetti cannon attached to the 3D printed parts." style="min-height:275px; max-height:350px" class="center-if-small">
 
     <img src="/tutorials/img/confetti-bot/install-cannon-side.jpg" alt="Side photo of the confetti cannon attached to the 3D printed parts." style="min-height:275px; max-height:350px" class="center-if-small">
 
-4. Now we have to attach the other circle holder (the one that attaches to the motor head) on the base of the confetti cannon to hold its place, then the motor and secure with a screw from the side.
-Depending on your motor size, the screw size may change.
+4. Next, attach the 3d-printed circular holder to the base of the confetti cannon to hold its place, then to the motor.
+Secure the two together with a screw from the side.
+Depending on your motor size, you may need a different screw size.
 
     <img src="/tutorials/img/confetti-bot/install-motor-holder.jpg" alt="The 3D printed black piece attached to motor with a screw securing it in place over the motor head." style="min-height:275px; max-height:350px" class="center-if-small">
 
@@ -259,7 +260,7 @@ The following section explains the code for the confetti bot.
 The completed code for this project is available on [GitHub](https://github.com/viam-labs/devrel-demos/tree/main/confetti_bot).
 If you copy the code from this link, don’t forget to change your robot address and secret so it connects to your own confetti robot.
 
-Navigate to the **CODE SAMPLE** tab on the Viam app, toggle include secrets, select Python as the language, and scroll down to click the **Copy Code** button.
+Navigate to the **Code sample** tab on the Viam app, toggle include secrets, select Python as the language, and scroll down to click the **Copy** button.
 Paste this into a new Python file in your favorite code editor to connect to your robot.
 
 At the top of the code, your board and motor components are imported:
@@ -282,7 +283,7 @@ start_return_value = await start.is_moving()
 print(f"start is_moving return value: {start_return_value}")
 ```
 
-The only other code you need to add to your main function is a while loop to check if the button is being pressed.
+The only other code you need to add to your `main` function is a while loop to check if the button is being pressed.
 Copy this code and add it to your own code within the main function block:
 
 ```python {class="line-numbers linkable-line-numbers"}
