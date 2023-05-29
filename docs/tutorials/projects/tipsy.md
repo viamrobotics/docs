@@ -64,7 +64,7 @@ These changes are reflected in the wiring diagram.
 ## Configure your components
 
 In the [Viam app](https://app.viam.com), create a new robot and give it a name like `tipsy`.
-Follow the isntructions on the **Setup** tab to install `viam-server` on your Raspberry Pi and connect to your robot.
+Follow the instructions on the **Setup** tab to install `viam-server` on your Raspberry Pi and connect to your robot.
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
