@@ -3,7 +3,7 @@ title: "Build a Confetti Bot with a Raspberry Pi"
 linkTitle: "Build a Confetti Bot"
 weight: 50
 type: "docs"
-description: "Use a red button and the Python SDK to activate a GPIO pin on the board and make a confetti popper go off."
+description: "Use a red button to activate a GPIO pin on the board and make a confetti popper go off."
 tags: ["raspberry pi", "python", "app", "board", "motor"]
 webmSrc: "/tutorials/img/confetti-bot/preview.webm"
 mp4Src: "/tutorials/img/confetti-bot/preview.mp4"
@@ -55,7 +55,7 @@ The STL files for 3D printing are adapted to the size of this motor, but you can
 
 ### 3D Print the enclosure
 
-3D print the enclosure using these [STL files](/404).
+3D print the enclosure using these STL files (available shortly).
 If you are using a different confetti cannon, you may need to adjust the size of the 3D prints to your confetti cannon size, as the wall thickness of the holder changes between brands.
 The same applies for the motor, if you are using a different model, you can adjust the size for the motor so the holder fits your motor head.
 
