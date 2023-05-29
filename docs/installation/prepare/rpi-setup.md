@@ -4,9 +4,9 @@ linkTitle: "Raspberry Pi Setup"
 weight: 15
 type: "docs"
 description: "Image a Raspberry Pi to prepare it for viam-server installation."
-image: "/installation/img/thumbnails/raspberry-pi-4-b-2gb.jpg"
+image: "/installation/img/thumbnails/raspberry-pi-4-b-2gb.png"
 imageAlt: "Raspberry Pi"
-iamges: ["/installation/img/thumbnails/raspberry-pi-4-b-2gb.jpg"]
+iamges: ["/installation/img/thumbnails/raspberry-pi-4-b-2gb.png"]
 no_list: true
 aliases:
     - /getting-started/rpi-setup/
@@ -192,6 +192,14 @@ Now that your Pi has a Viam-compatible operating system installed, and you learn
 
 ## Troubleshooting
 
+### Write error when imaging Raspberry Pi OS
+
+If you experience the error `Verifying write failed. Contents of SD card is different from what was written to it` when imaging your Raspberry Pi with the Imager in step 5, there might be an issue with your micro SD card reader.
+
+Try a different micro SD card reader, or use a different USB port on your computer.
+
+If you are connecting your SD card reader to your computer through a USB hub, try connecting directly it to your computer instead.
+
 ### Add additional WiFi credentials
 
 If you move your robot to a different WiFi network, you will have to update the WiFi credentials.
@@ -232,3 +240,7 @@ psk="Password for your other wireless LAN"
 priority=20
 }
 ```
+
+### Additional troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

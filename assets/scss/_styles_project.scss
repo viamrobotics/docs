@@ -242,7 +242,7 @@ p, li {
   }
 }
 
-/*This ensures there is no padding added to the top logo bar*/ 
+/*This ensures there is no padding added to the top logo bar*/
 .td-navbar .td-navbar-nav-scroll {
   height: unset;
 }
@@ -496,18 +496,6 @@ END MARKETING CSS
 }
 
 /* END CSS FOR EXPANDER */
-
-/* START board carousel styling */
-
-.board-carousel {
-  display: block;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  display: flex;
-  scroll-snap-type: x mandatory;
-}
-
-/* END CSS FOR BOARD CAROUSEL */
 
 /* START card styling */
 .hover-card {
@@ -851,10 +839,13 @@ footer small {
   div.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }
   .alignright { float: right; }
   .alignleft { float: left; }
+  .aligncenter { display: block; margin-left: auto; margin-right: auto; }
 }
 
 // center on small screens
 @media (max-width: 650px) {
   .alignright { display: block; margin-left: auto; margin-right: auto; }
   .alignleft { display: block; margin-left: auto; margin-right: auto; }
+  .aligncenter { display: block; margin-left: auto; margin-right: auto; }
+  .center-if-small { display: block; margin-left: auto; margin-right: auto; }
 }

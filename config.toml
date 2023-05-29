@@ -66,6 +66,9 @@ version_menu = "SDK Documentation"
 [[params.versions]]
  version = "TypeScript SDK Documentation"
  url="https://ts.viam.dev/"
+[[params.versions]]
+ version = "C++ SDK Documentation"
+ url="https://cpp.viam.dev/"
 # [[params.versions]]
 #  version = "Rust SDK Documentation"
 #  url = "https://rust.viam.dev/"

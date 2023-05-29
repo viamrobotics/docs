@@ -58,7 +58,7 @@ Add the following line to your import list:
 from viam.services.motion import MotionClient
 ```
 
-Then add the sample code below to your own client script:
+Then add the sample code below to your client script:
 
 ```python
 # Access the Motion Service
@@ -68,7 +68,13 @@ motion_service = MotionClient.from_robot(robot, "builtin")
 {{% /tab %}}
 {{% tab name="Go" %}}
 You must import an additional Go package to access the Motion Service.
-Add `"go.viam.com/rdk/services/motion"` to your import list and then add the sample code below to your own client script.
+Add the following line to your import list:
+
+```go
+"go.viam.com/rdk/services/motion"
+```
+
+Then add the sample code below to your client script:
 
 ```go {class="line-numbers linkable-line-numbers"}
 motionService, err := motion.FromRobot(robot, "builtin")
@@ -297,7 +303,14 @@ The last library you must import is the `gripper` library.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-Do this by adding `from viam.components.gripper import Gripper` to your import list.
+
+Add the following line to your import list:
+
+```python
+from viam.components.gripper import Gripper
+```
+
+Then add this code to your `main()`:
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_gripper_resource = Gripper.get_resource_name("myGripper")
@@ -311,7 +324,13 @@ await motion_service.move(component_name=my_gripper_resource, destination=grippe
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-Do this by adding `"go.viam.com/rdk/components/gripper"` to your import list.
+Add the following line to your import list:
+
+```go
+"go.viam.com/rdk/components/gripper"
+```
+
+Then add this code to your `main()`:
 
 ```go {class="line-numbers linkable-line-numbers"}
 gripperName := "myGripper"

@@ -22,6 +22,8 @@ For this reason, we list tutorials based on features you may be looking for.
     {{% card link="/tutorials/get-started/make-an-led-blink-with-the-viam-app/" size="small" %}}
     {{% card link="/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/" size="small" %}}
     {{% card link="/tutorials/get-started/servo-mousemover/" size="small" %}}
+    {{% card link="/tutorials/get-started/confetti-bot/" size="small" %}}
+    {{% card link="/tutorials/get-started/lazy-susan/" size="small" %}}
 {{< /cards >}}
 
 ## Configuration and Testing
@@ -65,6 +67,7 @@ For this reason, we list tutorials based on features you may be looking for.
     {{% card link="/tutorials/projects/send-security-photo/" size="small" %}}
     {{% card link="/tutorials/projects/guardian/" size="small" %}}
     {{% card link="/tutorials/projects/integrating-viam-with-openai/" size="small" %}}
+    {{% card link="/tutorials/projects/modernize-retro-robot/" size="small" %}}
     {{% card link="/tutorials/projects/build-an-outdoor-rover/" size="small" %}}
 {{< /cards >}}
 
