@@ -145,4 +145,5 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< cards >}}
     {{% card link="/tutorials/projects/make-a-plant-watering-robot/" size="small" %}}
+    {{% card link="/tutorials/projects/tipsy/" size="small" %}}
 {{< /cards >}}
