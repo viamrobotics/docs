@@ -30,12 +30,12 @@ You can expand on this project to turn a motor based on other types of inputs, s
 ### Hardware
 
 * A macOS or Linux computer
-* A [Raspberry Pi](https://a.co/d/bxEdcAT), with a [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13?crid=2MYQRKA7TX2KM&keywords=microsd%2Bcard%2Bwith%2Badaptor&qid=1682364645&sprefix=microsd%2Bcard%2Bwith%2Badaptor%2Caps%2C79&sr=8-13&th=1), set up using [these instructions](https://docs.viam.com/installation/prepare/rpi-setup/).
+* A [Raspberry Pi](https://a.co/d/bxEdcAT), with a [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up using [these instructions](https://docs.viam.com/installation/prepare/rpi-setup/).
 * A big button, like [this one](https://www.amazon.com/EG-STARTS-Buttons-Illuminated-Machine/dp/B01LZMANZ7/ref=sxts_b2b_sx_reorder_acb_business).
 Check the wiring diagram for the specific model you have as you wire the button.
 * A mini confetti cannon, like [this one](https://www.amazon.com/Confetti-Poppers-Party-Accessory-Pack/dp/B074SP7FZH/ref=sr_1_4)
 * Any gpio motor, like the [Bemonoc 25GA370 DC Encoder Metal Gearmotor 12V](https://www.amazon.com/25GA370-Encoder-Metal-Gearmotor-150RPM/dp/B07GNFYGYQ/ref=asc_df_B07GNFYGYQ/).
-The STL files for 3D printing is according to the sizing of this motor, but you can update the design depending on the model you have.
+The STL files for 3D printing are adapted to the size of this motor, but you can update the design depending on the model you have.
 * A [L298N Motor Driver](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/ref=sr_1_6)
 * A [12V battery](https://www.amazon.com/ExpertPower-EXP1270-Rechargeable-Lead-Battery/dp/B003S1RQ2S/ref=sr_1_4) with a [charger](https://www.amazon.com/dp/B0BC3Y5N3Q/ref=vp_d_pd_b2b_qd_vp_pd)
 * Jumper wires
@@ -55,7 +55,7 @@ The STL files for 3D printing is according to the sizing of this motor, but you 
 
 ### 3D Print the enclosure
 
-3D print the enclosure using these STL files.
+3D print the enclosure using these [STL files](/404).
 If you are using a different confetti cannon, you may need to adjust the size of the 3D prints to your confetti cannon size, as the wall thickness of the holder changes between brands.
 The same applies for the motor, if you are using a different model, you can adjust the size for the motor so the holder fits your motor head.
 
@@ -73,7 +73,7 @@ Because of the model we have, we only used two screws for the top, but some moto
 
 Now wire all of the components according to the wiring diagram:
 
-![Wiring Diagram for confetti bot](TODO)
+![Wiring Diagram for confetti bot](/tutorials/img/confetti-bot/wiring-diagram.png)
 
 1. Connect your motor to the motor driver.
 There are several wires coming out of the motor, connect the black one (ground) into `Out1` terminal and the red one (power) to `Out2` terminal and screw them in tightly (a 2.4mm screwdriver works well for this).
