@@ -87,7 +87,7 @@ The `GetPose` method provided by the Motion Service serves a similar function to
 ### Get the `ResourceName`
 
 When you use the [arm API](../../../components/arm/#api), you call methods on your arm component itself.
-To use the [Motion Service API](../../../services/motion/#api) on an arm, you need to pass an argument of type `ResourceName` to the Motion Service method.
+To use the [Motion Service API](../../../services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the Motion Service method.
 
 Add the following to the section of your code where you access the arm:
 
