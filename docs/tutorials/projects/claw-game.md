@@ -12,7 +12,9 @@ images: ["/tutorials/img/claw-game/preview.gif"]
 # Authors: Arielle Mella, Matt Vella, Hazal Mestci
 ---
 
-{{<gif webm_src="../../img/claw-game/claw-game.webm" gif_src="../../img/claw-game/claw-game.gif" alt="GIF of the claw game in action at a party." class="alignright" max-width="250px">}}
+
+
+{{<gif webm_src="../../img/claw-game/claw-game.webm" mp4_src="../../img/claw-game/claw-game.mp4" alt="claw game in action at a party" class="alignright" max-width="250px">}}
 
 Create your own version of the famous arcade claw machine game using a robotic arm, an arcade claw grabber, and some fun items to pick from.
 Fine-tune every intricate detail, from the precision of each grab, to the claw's strength, and even the aesthetics of your control interface.
@@ -569,10 +571,10 @@ async def grab(board, doGrab):
     # Note that the pin supplied is a placeholder. Please change this to a valid pin you are using.
     pin = await board.gpio_pin_by_name('8')
     if doGrab == True:
-        #opens the gripper/release
+        # opens the gripper/release
         await pin.set(True)
     else:
-       #closes the gripper/grab
+       # closes the gripper/grab
        await pin.set(False)
 ```
 
