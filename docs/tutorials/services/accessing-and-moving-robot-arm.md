@@ -83,7 +83,6 @@ The code then calls the [`get_end_position`](../../../components/arm/#getendposi
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Access myArm
-my_arm_resource = Arm.get_resource_name("myArm")
 my_arm_component = Arm.from_robot(robot, "myArm")
 
 # End Position of myArm
@@ -112,8 +111,6 @@ The code then calls the [`EndPosition`](../../../components/arm/#getendposition)
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access myArm
-myArmResource := arm.Named("myArm")
-fmt.Println("myArmResource:", myArmResource)
 myArmComponent, err := arm.FromRobot(robot, "myArm")
 if err != nil {
   fmt.Println(err)
@@ -346,7 +343,6 @@ async def main():
     print(robot.resource_names)
 
     # Access myArm
-    my_arm_resource = Arm.get_resource_name("myArm")
     my_arm_component = Arm.from_robot(robot, "myArm")
 
     # End Position of myArm
@@ -413,8 +409,6 @@ func main() {
   logger.Info(robot.ResourceNames())
 
   // Access myArm
-  myArmResource := arm.Named("myArm")
-  fmt.Println("myArmResource:", myArmResource)
   myArmComponent, err := arm.FromRobot(robot, "myArm")
   if err != nil {
     fmt.Println(err)
