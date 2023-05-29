@@ -97,7 +97,7 @@
 
 #board-carousel ul li {
     min-width: 100px;
-    padding-bottom: 40%;
+    min-height: 130px;
 }
 
 #board-carousel ul li a {
