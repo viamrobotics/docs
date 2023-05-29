@@ -359,6 +359,16 @@ You do not need to calculate that exact pose with respect to the **arm** or **wo
 You must only provide the object name (instead of the `gripperName` you saw in the code samples above) when making the `PoseInFrame` to pass into the `Move` function.
 This has implications for how motion is calculated, and what final configuration your robot will rest in after moving.
 
+## Next Steps and References
+
+If you would like to continue onto working with Viam's Motion Service, check out one of these tutorials:
+
+{{< cards >}}
+  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
+{{< /cards >}}
+
+{{< snippet "social.md" >}}
+
 <!-- TODO: Content below struck out for the moment, saved to point at the next tutorial "Add Constraints to a Motion Plan" -->
 <!--
 ## Next Steps
@@ -369,8 +379,6 @@ If you would like to continue onto working with complex motion constraints:
   {{% card link="/tutorials/services/add-constraints-to-motion-plan" size="small" %}}
 {{< /cards >}}
 -->
-
-{{< snippet "social.md" >}}
 
 ## Full Tutorial Code
 

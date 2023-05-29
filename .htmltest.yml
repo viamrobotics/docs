@@ -20,6 +20,7 @@ IgnoreURLs:
 - "numato.com"
 - "nvidia.com"
 - "slamtec.com"
+- "universal-robots.com"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"

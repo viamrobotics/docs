@@ -70,6 +70,7 @@ For this reason, we list tutorials based on features you may be looking for.
     {{% card link="/tutorials/projects/modernize-retro-robot/" size="small" %}}
     {{% card link="/tutorials/projects/build-an-outdoor-rover/" size="small" %}}
     {{% card link="/tutorials/projects/tipsy/" size="small" %}}
+    {{% card link="/tutorials/projects/claw-game/" size="small" %}}
 {{< /cards >}}
 
 <br>
