@@ -23,6 +23,7 @@ For this reason, we list tutorials based on features you may be looking for.
     {{% card link="/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/" size="small" %}}
     {{% card link="/tutorials/get-started/servo-mousemover/" size="small" %}}
     {{% card link="/tutorials/get-started/confetti-bot/" size="small" %}}
+    {{% card link="/tutorials/get-started/lazy-susan/" size="small" %}}
 {{< /cards >}}
 
 ## Configuration and Testing
