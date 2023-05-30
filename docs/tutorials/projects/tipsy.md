@@ -53,7 +53,7 @@ To build your own drink-carrying robot, you need the following software:
 
 ## Wire your robot
 
-Following the wiring diagram and wire your Raspberry Pi, buck converter, USB camera, motors, motor driver, ultrasonic sensors, and battery:
+Follow the wiring diagram below to wire together your Raspberry Pi, buck converter, USB camera, motors, motor driver, ultrasonic sensors, and battery:
 
 ![Tipsy wiring diagram](../../img/tipsy/wiring-diagram.png)
 
@@ -652,7 +652,7 @@ You can also see your physical camera stream and detection camera stream togethe
 <img src="../../img/tipsy/app-control-detection-match.png" alt="tipsy-base component panel in the Control tab, with two camera streams on the right showing the same person, the bottom with a red detection box around her saying Person: 0.72." width="550px" class="aligncenter">
 
 At this point, it is a simple detection camera: it will detect any object in the `label.txt` file.
-When we write the code for the robot, we can differentiate between, say, a person or a chair yet.
+When we write the code for the robot, we can differentiate between, say, a person or a chair.
 
 <img src="../../img/tipsy/app-control-detection-chair.png" alt="tipsy-base component panel in the Control tab, with two camera streams on the right showing the same char, the bottom with a red detection box around the chair saying 0.50. Cam and DetectionCam toggled on." width="550px" class="aligncenter">
 
@@ -684,11 +684,13 @@ Use velcro or something else to secure the USB camera to the box that holds the 
 For ultrasonic sensors to fit the framing, we recommend 3D printing enclosures.
 This step is optional but makes the project look more aesthetically pleasing and ensures that the sensors don’t fall out as your robot moves around.
 
-Scuttle has a design for a 3D printed enclosure with a twist bracket that fits the rails.
-
-<!-- TODO add links -->
+You can design your own enclosure, or you can use our design:
 
 ![3D printed enclosure of the ultrasonic sensor.](../../img/tipsy/assembly-sensor-3dmodel.jpg)
+
+The STL files we used can be found in our [project repository](https://github.com/viam-labs/devrel-demos/tree/main/tipsy-bot/stl-files).
+
+Scuttle also has a design for a 3D printed enclosure with a twist bracket that fits the rails.
 
 If you decide not to use a 3D printer, you can tape the ultrasonic sensors to the rails.
 We recommend that you do so within the enclosure, perhaps under the drink box and above the rover base, so they don’t touch people or obstacles as the robot moves around, as this could cause them to fall off or get damaged.
