@@ -4,9 +4,10 @@ linkTitle: "Build a Pet Treat Dispenser"
 weight: 60
 type: "docs"
 tags: []
-description: ""
+description: "Coming Soon"
 image: ""
 images: []
-draft: true
 imageAlt: ""
 ---
+
+Coming Soon...
