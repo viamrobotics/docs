@@ -857,5 +857,3 @@ You can also design another robot for collecting the empty beer cans, or a barte
 Till then, sit back, relax, and let Tipsy handle the beer carrying duties for you!
 
 For more robotics projects, check out our [other tutorials](/tutorials/).
-
-If you want to connect with other developers learning how to build robots, or if you have any issues whatsoever getting Viam set up, let us know on our [Discord Server](https://discord.gg/viam), and we will be happy to help you get up and running.
