@@ -55,7 +55,7 @@ To build your own drink-carrying robot, you need the following software:
 
 Following the wiring diagram and wire your Raspberry Pi, buck converter, USB camera, motors, motor driver, ultrasonic sensors, and battery:
 
-![Tipsy wiring diagram](../../img/tipsy/wiring-diagram.jpg)
+![Tipsy wiring diagram](../../img/tipsy/wiring-diagram.png)
 
 The Tipsy robot uses an assembled Scuttle rover base with some modifications: Tipsy does not use the camera that came with the Scuttle rover because the cable is not long enough to allow the camera to be attached on top of the robot.
 Additionally, Tipsy also does not use the encoders or the batteries that come with the kit.
