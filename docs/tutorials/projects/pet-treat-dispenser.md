@@ -71,8 +71,8 @@ The front of the main body of your print is the side with the dog bone.
 
 {{<gif webm_src="../../img/pet-treat-dispenser/3d-print-design.webm" mp4_src="../../img/pet-treat-dispenser/3d-print-design.gif" alt="Rotating 3d rendered model of the pet feeder design." class="alignright" max-width="300px" class="aligncenter">}}
 
-2. Mount your raspberry pi to the side of the main body of your pet feeder using the provided mounting screw holes.
-1. Connect your power source to the pi through the side hole.
+2. Mount your Raspberry Pi to the side of the main body of your pet feeder using the provided mounting screw holes.
+1. Connect your power source to the Pi through the side hole.
 1. Mount your webcam to the front of your pet feeder.
 Connect the USB cable to your Pi.
 1. Insert the 3D printed stepper motor wheel into your pet feeder.
@@ -107,7 +107,7 @@ Name the component `pi`.
 ### Configure your [webcam](/components/camera/webcam)
 
 Add another component with the type `camera` component and the model `webcam`.
-Name the component `cam`.
+Name the component `petcam`.
 
 Click on the **video path**.
 If the robot is connected, a drop down with available cameras will appear.
@@ -123,7 +123,7 @@ If you are unsure which camera to select, selecte one, save the configuration an
 
 Finally, add another component with the type `motor` component and the model `gpiostepper`.
 
-1. If you used the same pins as in the wiring diagra, set the `direction` to pin 15 GPIO 22, and the `step` logic to pin 16 GPIO 23.
+1. If you used the same pins as in the wiring diagram, set the `direction` to pin 15 GPIO 22, and the `step` logic to pin 16 GPIO 23.
 1. Enable the pin setting as low and configure it to pin 18 GPIO 24.
 1. Set the `ticks per rotation` to `400` and select your board model,`pi`.
 
@@ -374,7 +374,7 @@ When executed, this sample code connects to your robot as a client and prints th
 
 ### Add the logic
 
-If your program ran succcessfully and you saw a list of resources printed from the program, you can continue to add the robot logic.
+If your program ran successfully and you saw a list of resources printed from the program, you can continue to add the robot logic.
 
 You'll be using the `puppyclassifier`.
 The following code initializes a camera and the puppyclassifier and shows you how to get the classifications from the classifier when passing in the camera stream as an argument:
@@ -392,7 +392,6 @@ async def main():
     robot = await connect()
 
     # robot components + services below, update these based on how you named them in configuration
-    # pi
     pi = Board.from_robot(robot, "pi")
     petcam = Camera.from_robot(robot, "petcam")
     stepper = Motor.from_robot(robot, "stepper")
@@ -493,7 +492,6 @@ async def main():
     robot = await connect()
 
     # robot components + services below, update these based on how you named them in configuration
-    # pi
     pi = Board.from_robot(robot, "pi")
     petcam = Camera.from_robot(robot, "petcam")
     stepper = Motor.from_robot(robot, "stepper")
