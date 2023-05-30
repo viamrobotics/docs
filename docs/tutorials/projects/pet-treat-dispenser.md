@@ -35,12 +35,12 @@ The final component is a stepper motor and a 3D printed model which holds and di
 You will need the following hardware components:
 
 1. A computer running macOS or Linux
-1. [Raspberry Pi](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) with [microSD card](https://www.amazon.com/Amazon-Basics-microSDXC-Memory-Adapter/dp/B08TJTB8XS/ref=sr_1_4) (and [microSD card reader](https://www.amazon.com/Card-Reader-Beikell-Memory-Adapter/dp/B09Z6JCKL7/ref=sr_1_3)), with `viam-server` installed following the [Installation Guide](https://docs.viam.com/installation/).
+1. [Raspberry Pi](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) with [microSD card](https://www.amazon.com/Amazon-Basics-microSDXC-Memory-Adapter/dp/B08TJTB8XS/ref=sr_1_4) (and [microSD card reader](https://www.amazon.com/Card-Reader-Beikell-Memory-Adapter/dp/B09Z6JCKL7/ref=sr_1_3)), with `viam-server` installed following the [Installation Guide](/installation/).
 1. [Raspberry Pi power supply](https://www.amazon.com/Raspberry-Model-Official-SC0218-Accessory/dp/B07W8XHMJZ/ref=asc_df_B07W8XHMJZ/)
 1. [Stepper motor and motor driver](https://makersportal.com/shop/nema-17-stepper-motor-kit-17hs4023-drv8825-bridge)
 1. [12V power supply adaptor for motor driver](https://www.amazon.com/ABLEGRID-12-Volt-Power-Supply/dp/B009ZZKUPG/ref=asc_df_B009ZZKUPG/)
 1. [Simple USB powered webcam](https://www.amazon.com/wansview-Microphone-Streaming-Conference-Teaching/dp/B08XQ3TWFX/ref=sr_1_18_sspa)
-1. [Assorted jumper wires](https://www.amazon.com/jumper-wires/s)
+1. Assorted jumper wires
 1. [Four 16mm or 20mm M3 screws](https://www.amazon.com/Cicidorai-M3-0-5-Button-Machine-Quantity/dp/B09TKP6C6B/ref=sr_1_9)
 
 ### Tools and Other Materials
@@ -59,7 +59,7 @@ You will need the following software:
 
 * [Python 3](https://www.python.org/download/releases/3.0/)
 * [pip](https://pip.pypa.io/en/stable/#)
-* [`viam-server`](https://docs.viam.com/installation/#install-viam-server) installed to your {{< glossary_tooltip term_id="board" text="board" >}}.
+* [`viam-server`](/installation/#install-viam-server) installed to your {{< glossary_tooltip term_id="board" text="board" >}}.
 If you haven't done this, we'll walk you through it in the next section.
 
 ## Assemble your robot
@@ -69,7 +69,7 @@ The STL files for the smart feeder robot are available on [GitHub](https://githu
 1. Prepare your 3D prints.
 The front of the main body of your print is the side with the dog bone.
 
-{{<gif webm_src="../../img/pet-treat-dispenser/3d-print-design.webm" gif_src="../../img/pet-treat-dispenser/3d-print-design.gif" alt="Rotating 3d rendered model of the pet feeder design." class="alignright" max-width="300px" class="aligncenter">}}
+{{<gif webm_src="../../img/pet-treat-dispenser/3d-print-design.webm" mp4_src="../../img/pet-treat-dispenser/3d-print-design.gif" alt="Rotating 3d rendered model of the pet feeder design." class="alignright" max-width="300px" class="aligncenter">}}
 
 2. Mount your raspberry pi to the side of the main body of your pet feeder using the provided mounting screw holes.
 1. Connect your power source to the pi through the side hole.
@@ -87,7 +87,7 @@ This is what will funnel treats out of your pet feeder programmatically.
 
 Now that you've set up your robot, you can start configuring and testing it.
 
-1. If you haven’t already, set up the Raspberry Pi by following our [Raspberry Pi Setup Guide](https://docs.viam.com/installation/prepare/rpi-setup/).
+1. If you haven’t already, set up the Raspberry Pi by following our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
 1. Go to [the Viam app](https://app.viam.com) and create a new robot instance in your preferred organization.
 1. Then follow the instructions on the **Setup** tab.
 
@@ -282,20 +282,20 @@ Click the **Train Model** button, name your model and select **Single label** as
 Then select the label that you sued to label your pet images.
 We called it `puppymodel` and selected the tag `toast` to train on images of the pup.
 
-![The data page with single model selected using name puppymodel.](/tutorials/img/pet-treat-dispenser/app-training.png)
+![The data page with single model selected using name puppymodel.](../../img/pet-treat-dispenser/app-training.png)
 
 If you want your model to be able to recognize multiple pets you can instead create a **Multi Label** model based on multiple tags.
 Go ahead and select all the tags you would like to include in your model and click **Train Model**.
 
 ### Deploy your model to your robot
 
-Once the model has finished training, deploy it by adding a [ML model service]([/services/ml/](https://docs.viam.com/services/ml/#tabset-servicesml-1-1)):
+Once the model has finished training, deploy it by adding a [ML model service](/services/ml/#tabset-servicesml-1-1):
 
 1. To deploy a new model onto your robot, navigate to the robot page on the Viam app, and in the **Config** tab, select **Services**.
 1. Create a new service, select **ML Model** as the **Type**, and name it `puppymodel`.
 Select `tflite_cpu` as the **Model**.
 
-![The ML model service panel with the name puppymodel.](/tutorials/img/pet-treat-dispenser/app-service-mlmodel.png)
+![The ML model service panel with the name puppymodel.](../../img/pet-treat-dispenser/app-service-mlmodel.png)
 
 3. To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
 1. Select your trained model (`puppymodel`) as your desired **Model**.
@@ -307,7 +307,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
 1. Create a new **Service** and select **Vision**, and `mlmodel` as the Type.
 1. Select the model you previously created in the drop down menu.
 
-   ![The vision service panel with the puppymodel selected.](/tutorials/img/pet-treat-dispenser/app-service-vision.png)
+   ![The vision service panel with the puppymodel selected.](../../img/pet-treat-dispenser/app-service-vision.png)
 
 1. Navigate to the **Components** tab and scroll to the **Create Component** menu.
 1. Create a [transform camera](/components/camera/transform) with the name `classifier_cam`, the type `camera` and the model `transform`.
@@ -330,12 +330,13 @@ To detect your pet with your machine learning model, you need to add a [vision s
 
 1. Head to your robots **Control** tab, click on your transform cam, toggle it on and you should be able to view your transform cam and if pointed at your pet, it should show it detecting your pet!
 
-<img src="/tutorials/img/pet-treat-dispenser/dog-model-matched.png" alt="Image of a dog sitting being recognized as a match by the training model." width="400px" class="aligncenter">
+<img src="../../img/pet-treat-dispenser/dog-model-matched.png" alt="Image of a dog sitting being recognized as a match by the training model." width="400px" class="aligncenter">
 
 ## Control your robot programmatically
 
 With your robot configured, you can now add a program to your robot that controls the pet feeder when executed, using the [Viam SDK](/program/sdks/) in the language of your choice.
 This tutorial uses Python.
+
 ### Set up your python environment
 
 Open your terminal and `ssh` into your Pi.
@@ -375,42 +376,62 @@ When executed, this sample code connects to your robot as a client and prints th
 
 If your program ran succcessfully and you saw a list of resources printed from the program, you can continue to add the robot logic.
 
-Remove the existing code in the `main` function and replace it with the following logic which checks for your per and if it sees your pet, dispenses treats by running the stepper motor using the [`go_for()` method](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_for):
+You'll be using the `puppyclassifier`.
+The following code initializes a camera and the puppyclassifier and shows you how to get the classifications from the classifier when passing in the camera stream as an argument:
+
+```python
+petcam = Camera.from_robot(robot, "petcam")
+puppyclassifier = VisionClient.from_robot(robot, "puppyclassifier")
+classifications = await puppyclassifier.get_classifications_from_camera(camera_name)
+```
+
+Remove the existing code in the `main` function and replace it with the following logic where the the code gets classifications from the puppyclassifier based on the camera stream, and if a pet is found, activates the stepper motor using the [`go_for()` method](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_for) to move a certain amount to dispense a treat.
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def main():
     robot = await connect()
-    # Initialize robot components + services
+
+    # robot components + services below, update these based on how you named them in configuration
+    # pi
     pi = Board.from_robot(robot, "pi")
     petcam = Camera.from_robot(robot, "petcam")
     stepper = Motor.from_robot(robot, "stepper")
-    classifier_cam = Camera.from_robot(robot, "classifier_cam")
     puppyclassifier = VisionClient.from_robot(robot, "puppyclassifier")
 
     while True:
-        img = await cam.get_image()
-        classifications = await puppyclassifier.get_classifications(img)
-        pet = await check_for_pet(classifications)
-        if pet:
-            await stepper.go_for(rpm=10,revolutions=1)
-        # Wait a minute before checking for pet again
-        time.sleep(60)
+        # look if the camera is seeing the dog
+        found = False
+        classifications = await puppyclassifier.get_classifications_from_camera(camera_name)
+        for d in classifications:
+            # check if the model is confident in the classification
+            if d.confidence > 0.7:
+                print(d)
+                if d.class_name.lower() == "toastml":
+                    print("This is Toast")
+                    found = True
 
-    # Don't forget to close the robot when you're done!
-    await robot.close()
+        if (found):
+            # turn on the stepper motor
+            print("giving snack")
+            state = "on"
+            await stepper.go_for(rpm=80,revolutions=2)
+            # stops the treat from constantly being dispensed
+            time.sleep(300)
+
+        else:
+            # turn off the stepper motor
+            print("it's not the dog, no snacks")
+            state = "off"
+            await stepper.stop()
+
+        await asyncio.sleep(5)
+
+        # don't forget to close the robot when you're done!
+        await robot.close()
+
 
 if __name__ == '__main__':
     asyncio.run(main())
-```
-
-You need to add one more function above `main` that checks the classifications:
-
-```python {class="line-numbers linkable-line-numbers"}
-async def check_for_pet(classifications):
-    for c in classifications:
-        if c.confidence > 0.6:
-            print("pet seen")
-            return c
 ```
 
 Save your file and run the code, put your pet in front of the robot to check it works:
@@ -441,53 +462,74 @@ Now your robot starts looking for your pet automatically once booted!
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
-import random
-import vlc
+import os
 import time
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 from viam.components.board import Board
 from viam.components.camera import Camera
-from viam.components.servo import Servo
+from viam.components.motor import Motor
 from viam.services.vision import VisionClient
+
+# these must be set, you can get them from your robot's 'CODE SAMPLE' tab
+robot_secret = os.getenv('ROBOT_SECRET') or ''
+robot_address = os.getenv('ROBOT_ADDRESS') or ''
+
+# change this if you named your camera differently in your robot configuration
+camera_name = os.getenv('ROBOT_CAMERA') or 'petcam'
 
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='SECRET_FROM_VIAM_APP')
+        payload=robot_secret)
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('ROBOT_LOCATION_FROM_VIAM_APP', opts)
-
-async def check_for_pet(classifications):
-    for c in classifications:
-        if c.confidence > 0.6:
-            print("pet seen")
-            return c
+    return await RobotClient.at_address(robot_address, opts)
 
 async def main():
     robot = await connect()
-    # Initialize robot components + services
+
+    # robot components + services below, update these based on how you named them in configuration
+    # pi
     pi = Board.from_robot(robot, "pi")
     petcam = Camera.from_robot(robot, "petcam")
     stepper = Motor.from_robot(robot, "stepper")
-    classifier_cam = Camera.from_robot(robot, "classifier_cam")
     puppyclassifier = VisionClient.from_robot(robot, "puppyclassifier")
 
     while True:
-        img = await cam.get_image()
-        classifications = await puppyclassifier.get_classifications(img)
-        pet = await check_for_pet(classifications)
-        if pet:
-            await stepper.go_for(rpm=10,revolutions=1)
-        # Wait a minute before checking for pet again
-        time.sleep(60)
+        # look if the camera is seeing the dog
+        found = False
+        classifications = await puppyclassifier.get_classifications_from_camera(camera_name)
+        for d in classifications:
+            # check if the model is confident in the classification
+            if d.confidence > 0.7:
+                print(d)
+                if d.class_name.lower() == "toastml":
+                    print("This is Toast")
+                    found = True
 
-    # Don't forget to close the robot when you're done!
-    await robot.close()
+        if (found):
+            # turn on the stepper motor
+            print("giving snack")
+            state = "on"
+            await stepper.go_for(rpm=80,revolutions=2)
+            # stops the treat from constantly being dispensed
+            time.sleep(300)
+
+        else:
+            # turn off the stepper motor
+            print("it's not the dog, no snacks")
+            state = "off"
+            await stepper.stop()
+
+        await asyncio.sleep(5)
+
+        # don't forget to close the robot when you're done!
+        await robot.close()
+
 
 if __name__ == '__main__':
     asyncio.run(main())
@@ -500,4 +542,4 @@ You've earned the love and respect of your pet! Celebrate by treating yourself t
 And once you're done celebrating, have a think of what you can do to improve this.
 Maybe you can add speakers to give your pet commands, train a model to check if the command is obeyed, and only dispense treats if your pet performs the trick?
 
-For more robotics projects, check out our [other tutorials](/tutorials/).
+For more robotics projects, check out our [other tutorials](/tutorials).
