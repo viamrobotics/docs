@@ -34,8 +34,8 @@ You can expand on this project to turn a motor based on other types of inputs, s
 * A big button, like [this one](https://www.amazon.com/EG-STARTS-Buttons-Illuminated-Machine/dp/B01LZMANZ7/ref=sxts_b2b_sx_reorder_acb_business).
 Check the wiring diagram for the specific model you have as you wire the button.
 * A mini confetti cannon, like [this one](https://www.amazon.com/Confetti-Poppers-Party-Accessory-Pack/dp/B074SP7FZH/ref=sr_1_4)
-* Any gpio motor, like the [Bemonoc 25GA370 DC Encoder Metal Gearmotor 12V](https://www.amazon.com/25GA370-Encoder-Metal-Gearmotor-150RPM/dp/B07GNFYGYQ/ref=asc_df_B07GNFYGYQ/).
-The STL files for 3D printing are adapted to the size of this motor, but you can update the design depending on the model you have.
+* A gpio motor. We used the [Bemonoc 25GA370 DC Encoder Metal Gearmotor 12V](https://www.amazon.com/25GA370-Encoder-Metal-Gearmotor-150RPM/dp/B07GNFYGYQ/ref=asc_df_B07GNFYGYQ/).
+The STL files we use for 3D printing are adapted to the size of this motor, but you can update the design depending on the model you have.
 * A [L298N Motor Driver](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/ref=sr_1_6)
 * A [12V battery](https://www.amazon.com/ExpertPower-EXP1270-Rechargeable-Lead-Battery/dp/B003S1RQ2S/ref=sr_1_4) with a [charger](https://www.amazon.com/dp/B0BC3Y5N3Q/ref=vp_d_pd_b2b_qd_vp_pd)
 * Jumper wires
@@ -55,7 +55,7 @@ The STL files for 3D printing are adapted to the size of this motor, but you can
 
 ### 3D Print the enclosure
 
-3D print the enclosure using these STL files (available shortly).
+3D print the enclosure using [these STL files](https://github.com/viam-labs/devrel-demos/tree/main/confetti_bot/stl-files).
 If you are using a different confetti cannon, you may need to adjust the size of the 3D prints to your confetti cannon size, as the wall thickness of the holder changes between brands.
 The same applies for the motor, if you are using a different model, you can adjust the size for the motor so the holder fits your motor head.
 
