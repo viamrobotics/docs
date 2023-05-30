@@ -83,7 +83,6 @@ The code then calls the [`get_end_position`](../../../components/arm/#getendposi
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Access myArm
-my_arm_resource = Arm.get_resource_name("myArm")
 my_arm_component = Arm.from_robot(robot, "myArm")
 
 # End Position of myArm
@@ -112,8 +111,6 @@ The code then calls the [`EndPosition`](../../../components/arm/#getendposition)
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access myArm
-myArmResource := arm.Named("myArm")
-fmt.Println("myArmResource:", myArmResource)
 myArmComponent, err := arm.FromRobot(robot, "myArm")
 if err != nil {
   fmt.Println(err)
@@ -305,10 +302,11 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 
 ## Next Steps and References
 
-If you would like to continue onto working with Viam's Motion Service, go to the next tutorial in this series:
+If you would like to continue onto working with Viam's Motion Service, check out one of these tutorials:
 
 {{< cards >}}
   {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
+  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}
@@ -346,7 +344,6 @@ async def main():
     print(robot.resource_names)
 
     # Access myArm
-    my_arm_resource = Arm.get_resource_name("myArm")
     my_arm_component = Arm.from_robot(robot, "myArm")
 
     # End Position of myArm
@@ -413,8 +410,6 @@ func main() {
   logger.Info(robot.ResourceNames())
 
   // Access myArm
-  myArmResource := arm.Named("myArm")
-  fmt.Println("myArmResource:", myArmResource)
   myArmComponent, err := arm.FromRobot(robot, "myArm")
   if err != nil {
     fmt.Println(err)

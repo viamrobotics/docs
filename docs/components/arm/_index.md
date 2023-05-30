@@ -512,6 +512,6 @@ You can also ask questions on the [Community Discord](https://discord.gg/viam) a
 
 {{< cards >}}
   {{% card link="/tutorials/services/accessing-and-moving-robot-arm" size="small" %}}
+  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
   {{% card link="/services/motion" size="small" %}}
-  {{% card link="/services/frame-system" size="small" %}}
 {{< /cards >}}
