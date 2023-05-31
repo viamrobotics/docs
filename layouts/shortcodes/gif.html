@@ -1,5 +1,5 @@
 <div>
-<video autoplay loop muted playsinline preload="auto" alt="{{ .Get "alt" }}" width="100%" style="max-width: {{ .Get "max-width" }}" class="{{ .Get "class"}}">
+<video autoplay loop muted playsinline preload="auto" alt="{{ .Get "alt" }}" width="100%" style="max-width: {{ .Get "max-width" }}" class="lazy{{- if .Get "class" -}} {{ .Get "class"}}{{- end }}">
   <source src="{{ .Get "webm_src" }}" type="video/webm">
   <source src="{{ .Get "mp4_src" }}" type="video/mp4">
   There should have been a video here but your browser does not seem
