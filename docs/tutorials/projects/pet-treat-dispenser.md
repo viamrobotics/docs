@@ -22,7 +22,7 @@ The sun has barely risen on the horizon as you glance out your east facing windo
 Your dog commands you: it’s time to eat.
 
 To allow myself to get some extra zzz’s before work, I've built a robot to feed my dog in the morning.
-It has also come in useful to give him some treats for being a Good Boy™ while I'm spending my day at the office?
+It has also come in useful to give him some treats for being a Good Boy™ while I'm spending my day at the office.
 
 In this tutorial you can follow along and build your own pet feeder.
 You will use the Viam app's [Data Manager](/manage/data/) to train a custom machine learning model that recognizes your pet and use the [Machine Learning Service](/services/ml/) and the [Vision Service](/services/vision/) to use it on your robot.
@@ -442,7 +442,7 @@ python3 main.py
 ## Run the program automatically
 
 One more thing.
-Right now, you have to run the code manually every time you want your robot to work.
+Right now, you need to run the code manually every time you want your robot to work.
 However, you can configure Viam to automatically run your code as a [process](/manage/configuration/#processes).
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
@@ -535,9 +535,12 @@ if __name__ == '__main__':
 
 ## Next Steps
 
-You've earned the love and respect of your pet! Celebrate by treating yourself to one of your pet's treats -- you've earned it!
+Take your smart pet feeder to the next level!
+You could try one of the following:
 
-And once you're done celebrating, have a think of what you can do to improve this.
-Maybe you can add speakers to give your pet commands, train a model to check if the command is obeyed, and only dispense treats if your pet performs the trick?
+* Add speakers and record your voice so that the pet feeder can play a message to your pet each time it dispenses a treat.
+* Train a [ML model](/services/ml/) to recognize when your pet performs a trick, and withhold the treat until a specific trick is detected.
+* Add a button that your pet must press to access the treat. If you add several treat types, you might include a different color button for each treat type, allowing your pet to choose.
+* If you have multiple pets, you could configure different treats for each pet by training the ML model on each pet, and dispensing different treats depending on the pet recognized.
 
 For more robotics projects, check out our [other tutorials](/tutorials).
