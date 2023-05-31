@@ -1,5 +1,5 @@
 ---
-title: "Build a Person Detection Security Robot That Sends You Photo"
+title: "Build a Person Detection Security Robot That Sends You Photos"
 linkTitle: "Detect a Person and Send a Photo"
 weight: 50
 type: "docs"
