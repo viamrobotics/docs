@@ -82,12 +82,12 @@ The encoder component supports the following methods:
 
 Method Name | Description
 ----------- | -----------
-[GetPosition](#getposition) | Get the current position of the encoder.
+[Position](#position) | Get the current position of the encoder.
 [ResetPosition](#resetposition) | Reset the position to zero.
 [GetProperties](#getproperties) | Get the supported properties of this encoder.
 [DoCommand](#docommand) | Send or receive model-specific commands.
 
-### GetPosition
+### Position
 
 Get the current position of the encoder in ticks or degrees.
 Relative encoders return ticks since last zeroing.
