@@ -158,7 +158,7 @@ This is the recommended order to assemble your rover:
 
 ### Install Raspberry Pi OS
 
-Install a 64-bit Raspberry Pi OS with the [Raspberry Pi imager](https://www.raspberrypi.com/software/) and put it in your Pi’s microSD card slot.
+Install a 64-bit Raspberry Pi OS with the [Raspberry Pi imager](https://www.raspberrypi.com/software/) and put it in your Pi’s microSD card slot. Don't forget to enabling i2c via raspi-config so that you can use the accelerometer on the rover. 
 For more detailed instructions, check out our Raspberry Pi [installation guide](/installation/prepare/rpi-setup/).
 
 ### Attach the Raspberry Pi to the Rover
