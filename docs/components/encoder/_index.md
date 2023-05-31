@@ -142,7 +142,7 @@ if err != nil {
 }
 
 // Get the position of the encoder in ticks
-position, posType, err := myEncoder.GetPosition(context.Background(), encoder.PositionTypeTicks, nil)
+position, posType, err := myEncoder.Position(context.Background(), encoder.PositionTypeTicks, nil)
 ```
 
 {{% /tab %}}
