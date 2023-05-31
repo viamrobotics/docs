@@ -58,7 +58,7 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
 
 {{% /alert %}}
 
-1. [Install `viam-server` and connect your robot to the Viam app](/installation#install-viam-server).
+1. [Install `viam-server` and connect your robot to the Viam app](/installation/#install-viam-server).
 
 2. SSH into the Pi to complete the following steps.
 
@@ -278,7 +278,7 @@ Click **Save Config**.
 
 ### Configure the camera
 
-Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/components/camera/webcam).
+Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/components/camera/webcam/).
 
 ## Start the servers
 

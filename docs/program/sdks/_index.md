@@ -68,7 +68,7 @@ Before you get started, ensure that you:
 1. Go to [app.viam.com](https://app.viam.com/).
 2. Create a new robot.
 3. Go to the **Setup** tab and follow the instructions there.
-4. [Configure](../../manage/configuration) your robot.
+4. [Configure](../../manage/configuration/) your robot.
 
 {{% /alert %}}
 

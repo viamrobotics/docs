@@ -253,7 +253,7 @@ Test your sensor by putting it in air, water, and different soils to see how the
 
 ### Configure the Components of your Robot in the Viam app
 
-Follow [this guide](/installation#install-viam-server) to install `viam-server` on your pi, create a new robot, and connect to it on [the Viam app](https://app.viam.com).
+Follow [this guide](/installation/#install-viam-server) to install `viam-server` on your pi, create a new robot, and connect to it on [the Viam app](https://app.viam.com).
 
 Then, navigate to your new robot's page on the app and click on the **Config** tab.
 
@@ -529,7 +529,7 @@ nano plant-watering-robot.py
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
 To start, add your system logic code into the `main()` function of the program.
-Use the Viam [motor](/components/motor#api) and [sensor](/components/sensor#control-your-sensor-with-viams-client-sdk-libraries) API methods.
+Use the Viam [motor](/components/motor/#api) and [sensor](/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods.
 
 You can get your components from the robot like this:
 
@@ -567,7 +567,7 @@ Make sure to import `time` at the beginning of your version of <file>plant-water
 Also, make sure to import `viam.components.sensor`.
 {{% /alert %}}
 
-See the motor component's [API documentation](/components/motor#gofor) for more information about `water_pump.go_for()`.
+See the motor component's [API documentation](/components/motor/#gofor) for more information about `water_pump.go_for()`.
 
 Save your <file>plant-watering-robot.py</file> program with this logic added in, and then run it on your Pi like this:
 

@@ -15,7 +15,7 @@ description:
 
 ## Vision Service
 
-The [Vision Service](/services/vision) is becoming more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
+The [Vision Service](/services/vision/) is becoming more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
 
 The following **breaking changes** will take effect:
 
@@ -360,13 +360,13 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 ### Add and remove models using the robot config
 
-You must add and remove models using the [robot config](../../manage/configuration).
+You must add and remove models using the [robot config](../../manage/configuration/).
 You will no longer be able to add or remove models using the SDKs.
 
 ### Add machine learning vision models to a vision service
 
 The way to add machine learning vision models is changing.
-You will need to first register the machine learning model file with the [ML Model Service](/services/ml) and then add that registered model to a vision service.
+You will need to first register the machine learning model file with the [ML Model Service](/services/ml/) and then add that registered model to a vision service.
 
 {{% /tab %}}
 {{< /tabs >}}

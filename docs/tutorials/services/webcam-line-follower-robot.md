@@ -21,7 +21,7 @@ aliases:
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
-**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision/detection">Vision Service color detector</a>.
+**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision/detection/">Vision Service color detector</a>.
 
 **What you will learn**:
 
@@ -61,7 +61,7 @@ Use type `board` and model `pi` if you're using a Raspberry Pi.
 Configure the wheeled base per the [Base Component documentation](/components/base/).
 We named ours `scuttlebase`.
 
-[Configure the camera as a webcam](/components/camera/webcam).
+[Configure the camera as a webcam](/components/camera/webcam/).
 
 Your webcam configuration will look something like this:
 
@@ -83,7 +83,7 @@ Or if you prefer the raw JSON:
 
 ### Configuring a color detector for the color of your tape line
 
-We’ll use the Viam [Vision Service color detector](/services/vision/detection) to identify the line to follow.
+We’ll use the Viam [Vision Service color detector](/services/vision/detection/) to identify the line to follow.
 
 - Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding hexadecimal hash to put in your config.
   Put this hash in the `detect_color` parameter.
@@ -141,7 +141,7 @@ Add the Vision Service object to the services array in your rover’s raw JSON c
 
 ### Configuring the visualizer
 
-This step is optional, but if you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform).
+This step is optional, but if you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
 In the **Config** tab, make a new component with name `show_detections`, type `camera` and model `transform`.
@@ -403,7 +403,7 @@ This will give it a wider field of view so it takes longer for the line to go ou
 
 Things to try:
 
-- Add a `saturation_cutoff_pct` and/or a `value_cutoff_percent` [(documented here)](/services/vision/detection#configure-a-color_detector) to your Vision Service parameters.
+- Add a `saturation_cutoff_pct` and/or a `value_cutoff_percent` [(documented here)](/services/vision/detection/#configure-a-color_detector) to your Vision Service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
 Be sure to update your `detect_color` parameter accordingly.

@@ -118,7 +118,7 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 Name | Type | Inclusion | Description |
 ---- | ---- | --------- | ----------- |
 `connection_type` | string | **Required** |`"I2C"` or `"serial"`. See [connection configuration info](#connection-attributes).
-`board` | string | depends on connection type | The `name` of the [board](/components/board) connected to the chip. Required for NMEA over [I<sup>2</sup>C](/components/board/#i2cs). Not required for serial communication.
+`board` | string | depends on connection type | The `name` of the [board](/components/board/) connected to the chip. Required for NMEA over [I<sup>2</sup>C](/components/board/#i2cs). Not required for serial communication.
 `disable_nmea` | boolean | Optional | If set to `true`, changes the NMEA message protocol to RTCM when using a chip as a base station. <br> Default: `false`
 
 ### Connection Attributes

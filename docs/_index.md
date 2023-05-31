@@ -61,7 +61,7 @@ Viam supports a wide variety of systems, including:
     </a>
   </li>
   <li id="c1_slide9">
-    <a href="installation/prepare/rpi-setup">
+    <a href="installation/prepare/rpi-setup/">
         <img src="installation/img/thumbnails/raspberry-pi-zero-2w.png" alt="Raspberry Pi" width="100%">
         <h6>Raspberry Pi Zero 2W</h6>
     </a>
@@ -109,8 +109,8 @@ Viam supports a wide variety of systems, including:
         <div class="landing-hover-card-padding yellow">
             <h4>Learn and Try</h4>
             <p style="text-align: left;">
-            Learn about <a href="viam">the Viam platform in 3 minutes</a> and then
-            <a href="try-viam">drive a Viam rover</a> from the comfort of your home or follow along with a <a href="tutorials"> tutorial</a>.</p>
+            Learn about <a href="viam/">the Viam platform in 3 minutes</a> and then
+            <a href="try-viam/">drive a Viam rover</a> from the comfort of your home or follow along with a <a href="tutorials/"> tutorial</a>.</p>
             {{<gif webm_src="img/rover.webm" mp4_src="img/rover.mp4" alt="A Viam Rover moving about">}}
         </div>
     </div>
@@ -120,7 +120,7 @@ Viam supports a wide variety of systems, including:
         <div style="text-align: left">
             <ol style="padding-inline-start: 1.1rem">
             <li><a href="/manage/fleet/robots/">Set up your robot</a> or<a href="manage/fleet/"> fleet</a></li>
-            <li><a href="installation">Install Viam on your robot</a></li>
+            <li><a href="installation/">Install Viam on your robot</a></li>
             <li><a href="manage/configuration/">Configure your robot</a></li>
             <li><a href="manage/fleet/robots/#control">Test your robot</a></li>
             </ol>

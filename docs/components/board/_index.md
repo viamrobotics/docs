@@ -15,16 +15,16 @@ A *board* is the signal wire hub of a robot that provides access to general purp
 
 You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
-This control is simplified with [`viam-server`](/installation).
-When Viam's software is running on a computer with GPIO pins accessible to external hardware [components](/components), it manages GPIO signaling to abstract control to [resource](/appendix/glossary/#term-resource) APIs.
+This control is simplified with [`viam-server`](/installation/).
+When Viam's software is running on a computer with GPIO pins accessible to external hardware [components](/components/), it manages GPIO signaling to abstract control to [resource](/appendix/glossary/#term-resource) APIs.
 
 {{% figure src="img/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
-The [RDK](/internals/rdk) also provides the [`GPIOPin` interface](#gpiopin-api) for direct control and monitoring of the state of GPIO pins.
+The [RDK](/internals/rdk/) also provides the [`GPIOPin` interface](#gpiopin-api) for direct control and monitoring of the state of GPIO pins.
 
 ## Configuration
 
-Configure a *board* component on your robot to communicate with the other [components](/components) of the robot, signaling as overseen by a computer running `viam-server`.
+Configure a *board* component on your robot to communicate with the other [components](/components/) of the robot, signaling as overseen by a computer running `viam-server`.
 
 Supported board models are single-board computers (SBCs) with GPIO pins and CPUs capable of running `viam-server`, GPIO peripheral devices that must connect to external computers, or PWM peripheral devices that must connect to CPUs providing GPIO pins.
 
@@ -32,14 +32,14 @@ For model-specific configuration information, click on one of the following mode
 
 | Model | Description |
 | ----- | ----------- |
-| [`pi`](pi) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
-| [`ti`](ti) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
-| [`beaglebone`](beaglebone) | [BeagleBoard's BeagleBone AI 64](https://beagleboard.org/ai-64) |
-| [`jetson`](jetson) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), [NVIDIA Jetson  Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
-| [`nanopi`](nanopi) | [FriendlyElec’s NanoPi Mini Board](https://www.friendlyelec.com/index.php?route=product/category&path=69) |
-| [`numato`](numato) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
-| [`pca9685`](pca9685) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](#pwm)/[servo](/components/servo) driver peripheral |
-| [`fake`](fake) | A model used for testing, with no physical hardware |
+| [`pi`](pi/) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
+| [`ti`](ti/) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
+| [`beaglebone`](beaglebone/) | [BeagleBoard's BeagleBone AI 64](https://beagleboard.org/ai-64) |
+| [`jetson`](jetson/) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), [NVIDIA Jetson  Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
+| [`nanopi`](nanopi/) | [FriendlyElec’s NanoPi Mini Board](https://www.friendlyelec.com/index.php?route=product/category&path=69) |
+| [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
+| [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](#pwm)/[servo](/components/servo/) driver peripheral |
+| [`fake`](fake/) | A model used for testing, with no physical hardware |
 
 ## Attribute Configuration
 
@@ -183,7 +183,7 @@ The following properties are available for `digital_interrupts`:
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the digital interrupt. |
 |`pin`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's GPIO pin that you wish to configure the digital interrupt for. |
-|`type`| string | Optional | <ul><li>`basic`: Recommended. Tracks interrupt count. </li> <li>`servo`: For interrupts configured for a pin controlling a [servo](/components/servo). Tracks pulse width value. </li></ul> |
+|`type`| string | Optional | <ul><li>`basic`: Recommended. Tracks interrupt count. </li> <li>`servo`: For interrupts configured for a pin controlling a [servo](/components/servo/). Tracks pulse width value. </li></ul> |
 
 ### `spis`
 
@@ -194,7 +194,7 @@ The following properties are available for `digital_interrupts`:
 - Clock, an oscillating signal line: SCLK
 - Chip Select, with 1 line for each peripheral connected to controller: CS*
 
-To connect your board (controller) and a [component](/components) that requires SPI communication (peripheral device), wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
+To connect your board (controller) and a [component](/components/) that requires SPI communication (peripheral device), wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
 
 {{% alert title="Note" color="note" %}}
 
@@ -257,7 +257,7 @@ The [Inter-Integrated circuit (I<sup>2</sup>C)](https://learn.sparkfun.com/tutor
 - Serial Data: SDA
 - Serial Clock: SCL
 
-To connect your board (controller) and a [component](/components) that requires I<sup>2</sup>C communication (peripheral device), wire a connection between SDA and SCL pins on the board and component.
+To connect your board (controller) and a [component](/components/) that requires I<sup>2</sup>C communication (peripheral device), wire a connection between SDA and SCL pins on the board and component.
 
 {{% alert title="Note" color="note" %}}
 
@@ -922,7 +922,7 @@ high := pin.Get(context.Background(), nil)
 {{% alert title="Note" color="note" %}}
 
 [Pulse-width modulation (PWM)](https://www.digikey.com/en/blog/pulse-width-modulation) is a method where of transmitting a digital signal in the form of pulses to control analog circuits.
-With PWM on a *board*, the continuous digital signal output by a GPIO pin is sampled at regular intervals and transmitted to any [hardware components](/components) wired to the pin that read analog signals.
+With PWM on a *board*, the continuous digital signal output by a GPIO pin is sampled at regular intervals and transmitted to any [hardware components](/components/) wired to the pin that read analog signals.
 This enables the board to communicate with these components.
 
 {{% /alert %}}
@@ -1042,7 +1042,7 @@ err := pin.SetPWM(context.Background(), .6, nil)
 ### PWMFreq
 
 Get the [Pulse-width modulation (PWM) frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
-The optimal value for PWM Frequency depends on the type and model of [component](/components) you control with the signal output by this pin.
+The optimal value for PWM Frequency depends on the type and model of [component](/components/) you control with the signal output by this pin.
 Refer to your device's data sheet for PWM Frequency specifications.
 
 {{< tabs >}}
@@ -1100,7 +1100,7 @@ freqHz, err := pin.PWMFreq(context.Background(), nil)
 ### SetPWMFreq
 
 Set the [Pulse-width modulation (PWM) frequency](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency) in Hertz (Hz) of this pin, the count of PWM interval periods per second.
-The optimal value for PWM Frequency depends on the type and model of [component](/components) you control with the PWM signal output by this pin.
+The optimal value for PWM Frequency depends on the type and model of [component](/components/) you control with the PWM signal output by this pin.
 Refer to your device's data sheet for PWM Frequency specifications.
 
 {{< tabs >}}

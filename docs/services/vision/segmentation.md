@@ -111,7 +111,7 @@ Click **Save config** and head to the **Components** tab.
 
 ## Configure a `detector_3d_segmenter`
 
-This model takes 2D bounding boxes from an [object detector](../detection), and, using the intrinsic parameters of the chosen camera, projects the pixels in the bounding box to points in 3D space.
+This model takes 2D bounding boxes from an [object detector](../detection/), and, using the intrinsic parameters of the chosen camera, projects the pixels in the bounding box to points in 3D space.
 If the chosen camera is not equipped to do projections from 2D to 3D, then this vision model will fail.
 The label and the pixels associated with the 2D detections become the label and point cloud associated with the 3D segmenter.
 

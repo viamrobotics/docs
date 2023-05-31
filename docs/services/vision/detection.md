@@ -144,7 +144,7 @@ Proceed to [Add a camera component and a "transform" model](#add-a-camera-compon
 ## Configure a `mlmodel` detector
 
 A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
-To create a `mlmodel` classifier, you need an [ML Model Service with a suitable model](../../ml).
+To create a `mlmodel` classifier, you need an [ML Model Service with a suitable model](../../ml/).
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
@@ -214,8 +214,8 @@ Click **Save config** and head to the **Components** tab.
 You cannot interact directly with the [Vision Service](/services/vision/).
 To be able to interact with the Vision Service you must:
 
-1. Configure a physical [camera component](../../../components/camera).
-2. Configure a [transform camera](../../../components/camera/transform) to view output from the detector overlaid on images from the physical camera.
+1. Configure a physical [camera component](../../../components/camera/).
+2. Configure a [transform camera](../../../components/camera/transform/) to view output from the detector overlaid on images from the physical camera.
 
 After adding the component and its attributes, click **Save config**.
 

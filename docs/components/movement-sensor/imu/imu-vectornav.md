@@ -79,7 +79,7 @@ Edit and fill in the attributes as applicable.
 
 Name | Type | Inclusion | Description |
 -----| ---- | --------- | ----------- |
-`board` | string | **Required** | The `name` of the [board](/components/board) to which the device is wired.
+`board` | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired.
 `spi` | string | | The `name` of the [SPI bus](/components/board/#spis) over which the device communicates with the board.
 `chip_select_pin` | string | **Required** | The ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}) of the pin on the board (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device.
 `spi_baud_rate` | int | **Required** | The rate at which data is sent from the IMU. <br> Default: `115200`

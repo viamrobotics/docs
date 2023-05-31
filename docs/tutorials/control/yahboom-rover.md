@@ -212,7 +212,7 @@ But wait!
 This rover has a camera on it.
 
 Once again, find the **Create Component** section at the bottom of the **Config** tab.
-Follow [these instructions on how to connect and configure a camera](/components/camera/webcam).
+Follow [these instructions on how to connect and configure a camera](/components/camera/webcam/).
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
 

@@ -9,7 +9,7 @@ images: ["/components/img/components/motor.svg"]
 ---
 
 Configuring a `fake` motor can be convenient for testing software without using any hardware.
-For example, you can use a `fake` component as a placeholder while waiting on a hardware shipment, so that other components that depend on this motor (for example, a [base](/components/base)) won't fail to initialize, and your SDK code won't throw errors when it fails to find a physical motor connected to your robot.
+For example, you can use a `fake` component as a placeholder while waiting on a hardware shipment, so that other components that depend on this motor (for example, a [base](/components/base/)) won't fail to initialize, and your SDK code won't throw errors when it fails to find a physical motor connected to your robot.
 
 {{< tabs name="fake-config">}}
 {{% tab name="Config Builder" %}}
@@ -75,7 +75,7 @@ However, if you would like to mock up a virtual placeholder for a real, physical
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `board` | string | Optional | `name` of the [board](/components/board) to which the motor driver is wired. |
+| `board` | string | Optional | `name` of the [board](/components/board/) to which the motor driver is wired. |
 | `min_power_pct` | number | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
 | `max_power_pct` | number | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
@@ -89,10 +89,10 @@ Nested within `pins`:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `a` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board). |
-| `b` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board). |
-| `dir` | string | Optional | See [Pin Information](#pin-information). {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board). |
-|`pwm` | string | Optional | See [Pin Information](#pin-information). {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board). |
+| `a` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board/). |
+| `b` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board/). |
+| `dir` | string | Optional | See [Pin Information](#pin-information). {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board/). |
+|`pwm` | string | Optional | See [Pin Information](#pin-information). {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board/). |
 
 #### Pin Information
 

@@ -9,7 +9,7 @@ icon: "img/components/servo.png"
 # SME: Rand
 ---
 
-Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`pi` model [board](/components/board) into your robot:
+Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`pi` model [board](/components/board/) into your robot:
 
 {{< tabs name="Configure a gpio Servo" >}}
 {{% tab name="Config Builder" %}}
@@ -53,7 +53,7 @@ Edit and fill in the attributes as applicable.
         "name": "local",
         "type": "board",
         "model": "jetson"
-    }, 
+    },
     {
         "name": "my_servo",
         "type": "servo",
@@ -74,8 +74,8 @@ The following attributes are available for `gpio` servos:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin the servo's control wire is wired to on the [board](/components/board). |
-| `board` | string | **Required** | `name` of the [board](/components/board) the servo is wired to. |
+| `pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin the servo's control wire is wired to on the [board](/components/board/). |
+| `board` | string | **Required** | `name` of the [board](/components/board/) the servo is wired to. |
 | `min_angle_deg` | float | Optional | The minimum angle in degrees that the servo can reach. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |
 | `max_angle_deg` | float | Optional | The maximum angle in degrees that the servo can reach. <br> Default = `180.0` <br> Range = [`0.0`, `180.0`] |
 | `starting_position_deg` | float | Optional | Starting position of the servo in degrees. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |

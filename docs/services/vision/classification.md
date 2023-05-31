@@ -27,7 +27,7 @@ The types of classifiers supported are:
 
 ## Configure a `mlmodel` classifier
 
-To create a `mlmodel` classifier, you need an [ML Model Service with a suitable model](../../ml).
+To create a `mlmodel` classifier, you need an [ML Model Service with a suitable model](../../ml/).
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
 Click on the robot you wish to add the Vision Service to.
@@ -98,8 +98,8 @@ Click **Save config** and head to the **Components** tab.
 You cannot interact directly with the [Vision Service](/services/vision/).
 To be able to interact with the Vision Service you must:
 
-1. Configure a physical [camera component](../../../components/camera).
-2. Configure a [transform camera](../../../components/camera/transform) with the following attributes to view output from the classifier overlaid on images from the physical camera:
+1. Configure a physical [camera component](../../../components/camera/).
+2. Configure a [transform camera](../../../components/camera/transform/) with the following attributes to view output from the classifier overlaid on images from the physical camera:
 
     ```json
     {

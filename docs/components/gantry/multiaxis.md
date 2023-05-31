@@ -206,4 +206,4 @@ The following attributes are available for `multiaxis` gantries:
 
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
-| `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [one-axis](/components/gantry/oneaxis) gantries that make up the multi-axis gantry. |
+| `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [one-axis](/components/gantry/oneaxis/) gantries that make up the multi-axis gantry. |

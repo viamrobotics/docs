@@ -10,7 +10,7 @@ description: "Train an image classification model on labeled image data."
 # SME: Aaron Casas
 ---
 
-You can tag [images collected](../../../services/data/configure-data-capture) by robots and use the labeled data to train a **Single Label** or **Multi Label** image classification model within Viam.
+You can tag [images collected](../../../services/data/configure-data-capture/) by robots and use the labeled data to train a **Single Label** or **Multi Label** image classification model within Viam.
 
 ## Label a dataset
 
@@ -73,7 +73,7 @@ Once the model has finished training, it becomes visible in the **Models** secti
 
 ### Train a new version of a model
 
-If you [deploy a model](../../../services/ml) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.
+If you [deploy a model](../../../services/ml/) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.
 If you train a new version of that model, Viam will automatically deploy the new version to the robot and replace the old version.
 
 {{< alert title="Note" color="note" >}}
@@ -92,4 +92,4 @@ The model package config looks like this:
 
 ## Next Steps
 
-To deploy your model to your robot, see [deploy model](../../../services/ml).
+To deploy your model to your robot, see [deploy model](../../../services/ml/).

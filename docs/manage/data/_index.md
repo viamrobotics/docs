@@ -16,15 +16,15 @@ Data Management is built into Viam allowing you to capture, sync, view, and expo
 {{< cards >}}
 {{% manualcard size="small" %}}
 <h4>Capture and sync data</h4>
-<p>To configure data capture and cloud synchronization, see <a href="../../services/data">Data Management Service</a>.</p>
+<p>To configure data capture and cloud synchronization, see <a href="../../services/data/">Data Management Service</a>.</p>
 {{% /manualcard %}}
 
 {{% manualcard size="small" %}}
 <h4>Access and export data</h4>
-Once you have configured data capture and cloud sync, you can <a href="/manage/data/view">view</a> and <a href="/manage/data/export">export</a> your data.
+Once you have configured data capture and cloud sync, you can <a href="/manage/data/view/">view</a> and <a href="/manage/data/export/">export</a> your data.
 {{% /manualcard %}}
 
-{{% manualcard link="../ml" size="small" %}}
+{{% manualcard link="../ml/" size="small" %}}
 <h4>Machine Learning</h4>
 <p>Use collected data to train machine learning models or use existing models on your robots.</p>
 {{% /manualcard %}}
@@ -32,4 +32,4 @@ Once you have configured data capture and cloud sync, you can <a href="/manage/d
 
 ## Next steps
 
-For a comprehensive tutorial on data capture, synchronization, and accessing captures data, see [Intro to Data Management](../../tutorials/services/data-management-tutorial).
+For a comprehensive tutorial on data capture, synchronization, and accessing captures data, see [Intro to Data Management](../../tutorials/services/data-management-tutorial/).

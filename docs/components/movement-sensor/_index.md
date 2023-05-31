@@ -32,8 +32,8 @@ Model | Description <a name="model-table"></a>
 [`gps-nmea`](./gps/gps-nmea/) | [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS models
 [`gps-rtk`](./gps/gps-rtk/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models (**experimental**)
 [`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://witmotion-sensor.com/)
-[`imu-vectornav`](./imu/imu-wit) | IMUs manufactured by [VectorNav](https://www.vectornav.com/products)
-[`accel-adxl345`](./adxl345) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
+[`imu-vectornav`](./imu/imu-wit/) | IMUs manufactured by [VectorNav](https://www.vectornav.com/products)
+[`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
 [`camera_mono`](./cameramono/) | A model that derives movement data from a [camera](/components/camera/) stream (**experimental**)
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
 [`rtk-station`](./gps/rtk-station/) | A model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module (**experimental**).

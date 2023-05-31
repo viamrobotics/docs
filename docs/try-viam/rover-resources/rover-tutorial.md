@@ -81,7 +81,7 @@ L298 is a high voltage and high current motor drive chip, and H-Bridge is typica
 <img src="../img/viam-rover/webcam.jpg" style="max-width:400px;width:100%" alt="Webcam with cables" />
 
 The webcam that comes with the kit is a standard USB camera device and the rover has a custom camera mount for it.
-For more information, see [Camera Component](/components/camera).
+For more information, see [Camera Component](/components/camera/).
 
 ### 3D accelerometer
 
@@ -230,7 +230,7 @@ If the Pi has power, the lights on the Raspberry Pi will light up.
 
 ### Connect to the Viam app
 
-While the Pi boots, go to [app.viam.com](https://app.viam.com/robots) and [add a robot](/manage/fleet/robots#add-a-new-robot).
+While the Pi boots, go to [app.viam.com](https://app.viam.com/robots) and [add a robot](/manage/fleet/robots/#add-a-new-robot).
 On the robot's **Setup** tab, select `Linux` and `Aarch64`.
 `ssh` into the Pi and follow the instructions on the robot's **Setup** tab to download `viam-server` and configure your robot.
 
@@ -238,7 +238,7 @@ To configure your rover so you can start driving it, [add the Viam Fragment to y
 
 ## Next Steps
 
-Check out our other [tutorials that use the Viam Rover](../../tutorials).
+Check out our other [tutorials that use the Viam Rover](../../tutorials/).
 
 ### Rover Build
 
@@ -252,8 +252,8 @@ The following are just a few ideas, but you can expand or modify the rover kit w
 
 - For GPS navigation, we support NMEA (using serial and I<sup>2</sup>C) and RTK.
   Make and model don't make a difference as long as you use these protocols.
-  See [Movement Sensor Component](/components/movement-sensor) for more information.
-- For [LiDAR laser range scanning](/services/slam/cartographer), we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).
+  See [Movement Sensor Component](/components/movement-sensor/) for more information.
+- For [LiDAR laser range scanning](/services/slam/cartographer/), we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).
 - For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
 
 ### Lidar Mounting for the Viam Rover

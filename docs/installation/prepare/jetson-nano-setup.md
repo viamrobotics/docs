@@ -53,7 +53,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 1. Follow the instructions in [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit).
    Once you have reached *Next Steps*, return to the Viam docs.
 2. Your Jetson Nano now has a Viam-compatible operating system installed.
-   Continue to [install viam-server](/installation#install-viam-server).
+   Continue to [install viam-server](/installation/#install-viam-server).
    Note that the Jetson Nano has aarch64 CPU architecture.
 
 {{< alert title="Tip: <code>viam-server</code> installation with <code>curl</code>" color="tip" >}}

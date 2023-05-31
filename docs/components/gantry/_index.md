@@ -15,7 +15,7 @@ A robotic *gantry* is a mechanical system of linear actuators used to hold and p
 A 3D printer is an example of a three-axis gantry where each linear actuator can move the print head along one axis.
 The linear rail design makes gantries a common and reliable system for simple positioning and placement tasks.
 
-This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once [(multi-axis)](multiaxis).
+This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once [(multi-axis)](multiaxis/).
 
 <img src="./img/gantry-illustration.png" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." style="max-width:300px; display: block; margin: 0 auto"></img>
 
@@ -37,9 +37,9 @@ Supported gantry models include:
 
 | Model | Description |
 | ----- | ----------- |
-| [`fake`](fake) | A model used for testing, with no physical hardware. |
-| [`oneaxis`](oneaxis) | A gantry with a singular linear rail. |
-| [`multiaxis`](multiaxis) | A gantry with multiple linear rails. Composed of multiple `oneaxis` gantries. |
+| [`fake`](fake/) | A model used for testing, with no physical hardware. |
+| [`oneaxis`](oneaxis/) | A gantry with a singular linear rail. |
+| [`multiaxis`](multiaxis/) | A gantry with multiple linear rails. Composed of multiple `oneaxis` gantries. |
 
 ## Control your gantry with Viam's client SDK libraries
 
