@@ -41,7 +41,7 @@ If your requirements change and you want to capture data from both components at
 Data capture is frequently used with [Cloud Sync](#cloud-sync).
 However, if you want to manage your robot's captured data yourself, you can enable only data capture without cloud sync.
 
-To configure data capture, see [data capture](../data/configure-data-capture).
+To configure data capture, see [data capture](../data/configure-data-capture/).
 
 ## Cloud Sync
 
@@ -59,7 +59,7 @@ As before, consider the example of a tomato picking robot.
 When you initially set the robot up you may want to sync captured data to the cloud every five minutes.
 If you change your mind and want your robot to sync less frequently, you can change the sync frequency, for example, to once a day.
 
-To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync).
+To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync/).
 
 ### Considerations
 
@@ -97,15 +97,15 @@ Currently, Viam does not safeguard against this.
 ## Next steps
 
 To use the Data Management Service, [add the Data Management Service](configure-data-capture/#add-the-data-management-service) to your robot.
-Then [configure data capture](configure-data-capture) as needed and [configure cloud sync](configure-cloud-sync).
+Then [configure data capture](configure-data-capture/) as needed and [configure cloud sync](configure-cloud-sync/).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/services/data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/services/data-management-tutorial/).
 
 ### Accessing and exporting data
 
-Once you have configured data capture and cloud sync, you can [view](../../manage/data/view) and [export](../../manage/data/export) your data.
+Once you have configured data capture and cloud sync, you can [view](../../manage/data/view/) and [export](../../manage/data/export/) your data.
 
 ### Machine Learning
 
-You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model) and then [deploy these models to your robots](../../services/ml) from the Viam app.
-You can also [upload and use existing models](../../manage/ml/upload-model).
+You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model/) and then [deploy these models to your robots](../../services/ml/) from the Viam app.
+You can also [upload and use existing models](../../manage/ml/upload-model/).

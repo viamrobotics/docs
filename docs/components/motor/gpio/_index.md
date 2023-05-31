@@ -109,7 +109,7 @@ The following attributes are available for `gpio` motors:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `board` | string | **Required** | `name` of the [board](/components/board) to which the motor driver is wired. |
+| `board` | string | **Required** | `name` of the [board](/components/board/) to which the motor driver is wired. |
 | `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. ***Not required** or available for [encoded](/components/motor/gpio/encoded-motor/) `gpio` motors.* |
 | `pins` | object | **Required** | A structure that holds pin configuration information; [see below](#pins). |
 | `min_power_pct` | number | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |

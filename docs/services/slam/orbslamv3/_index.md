@@ -40,7 +40,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 
 ### Configuration
 
-How you configure `orbslamv3` depends on whether you want the SLAM service to build your map with data collected live by a [webcam](/components/camera) or with data provided in a dataset at runtime.
+How you configure `orbslamv3` depends on whether you want the SLAM service to build your map with data collected live by a [webcam](/components/camera/) or with data provided in a dataset at runtime.
 
 Select from the following modes to obtain the correct instructions to configure the service:
 
@@ -49,15 +49,15 @@ Select from the following modes to obtain the correct instructions to configure 
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Running `orbslamv3` in Live Data mode requires a [webcam](/components/camera).
+Running `orbslamv3` in Live Data mode requires a [webcam](/components/camera/).
 The webcam can be installed on a robot, or just held in your hand.
 
 {{% /alert %}}
 
 First, follow these instructions to connect and calibrate your webcam as a component of your robot:
 
-1. [Connect and configure a webcam](/components/camera/webcam)
-2. [Calibrate a camera](/components/camera/calibrate)
+1. [Connect and configure a webcam](/components/camera/webca/)
+2. [Calibrate a camera](/components/camera/calibrate/)
 
 Now, add the `orbslamv3` service:
 

@@ -14,12 +14,12 @@ Any robot configured in Viam comes with the Frame System service: an internally 
 
 ![Visualization of a wheeled base configured with motors and a mounted camera in the Frame System tab of the Viam app UI](img/frame_system_wheeled_base.png)
 
-The Frame System is the basis for many of Viam's other services, like [Motion](/services/motion) and [Vision](/services/vision).
+The Frame System is the basis for many of Viam's other services, like [Motion](/services/motion/) and [Vision](/services/vision/).
 It stores the required contextual information to use the position and orientation readings returned by some components.
 
 ## Configuration
 
-To enable the default frame for a given [component](/components) on a robot, navigate to the **Config** tab of the robot's page in [the Viam app](https://app.viam.com) and click **Components**.
+To enable the default frame for a given [component](/components/) on a robot, navigate to the **Config** tab of the robot's page in [the Viam app](https://app.viam.com) and click **Components**.
 With **mode** as **Builder**, click **Add Frame** on the component's card and **Save Config**.
 
 To adjust the frame from its default configuration, change the parameters as needed for your robot before saving.
@@ -95,8 +95,8 @@ You can use [the right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule)
 
 For more information about determining the appropriate values for these parameters, see these two examples:
 
-- [A Reference Frame:](/services/frame-system/frame-config) A component attached to a static surface
-- [Nested Reference Frames:](/services/frame-system/nested-frame-config) A component attached to another, dynamic, component
+- [A Reference Frame:](/services/frame-system/frame-config/) A component attached to a static surface
+- [Nested Reference Frames:](/services/frame-system/nested-frame-config/) A component attached to another, dynamic, component
 
 ### Visualize the Frame System
 
@@ -111,7 +111,7 @@ This tab provides a simple interface for simultaneously viewing and editing the 
 
 For example:
 
-Consider a robot configured with a [`jetson` board](/components/board), wired to a [`webcam` camera](/components/camera/webcam) and a [`wheeled` base](/components/base/wheeled) with two [motors](/components/motor) driving its wheels.
+Consider a robot configured with a [`jetson` board](/components/board/), wired to a [`webcam` camera](/components/camera/webcam/) and a [`wheeled` base](/components/base/wheeled/) with two [motors](/components/motor/) driving its wheels.
 
 No reference frame configuration has been specified, so on the **Frame System** subtab of the **Config** tab, the components are shown to all be located on the default `world` origin point as follows:
 
@@ -132,11 +132,11 @@ Add this value to `"Z"` in the camera's reference frame `Translation` attribute,
 Now the distance between these components is accurately reflected in the visualization.
 However, the camera doesn't yet display as oriented towards the base.
 
-Adjust the [orientation vector](/internals/orientation-vector) to 0.5 degrees in `"OX"` in the camera's reference frame `Orientation` attribute, and the Frame System readjusts to show the camera's orientation:
+Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees in `"OX"` in the camera's reference frame `Orientation` attribute, and the Frame System readjusts to show the camera's orientation:
 
   ![Camera oriented .5 degrees OX shown in the Frame System Editor](img/demo_camera_edited_2.png)
 
-Now that the Frame System is accurately configured with the robot's spatial orientation, [Motion Service](/services/motion) methods that take in reference frame information can be utilized.
+Now that the Frame System is accurately configured with the robot's spatial orientation, [Motion Service](/services/motion/) methods that take in reference frame information can be utilized.
 
 ### Display Options
 
@@ -195,7 +195,7 @@ Access a [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_s
 
 ![an example of a logged frame system](img/frame_sys_log_example.png)
 
-Consider the example of nested reference frame configuration where [two dynamic components are attached](/services/frame-system/nested-frame-config): a robotic arm, `A`, attaches to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
+Consider the example of nested reference frame configuration where [two dynamic components are attached](/services/frame-system/nested-frame-config/): a robotic arm, `A`, attaches to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
 
 The resulting tree of reference frames looks like:
 
@@ -335,13 +335,13 @@ fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientatio
 
 For example:
 
-- In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config), the arm can be managed by the Frame System without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
+- In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config/), the arm can be managed by the Frame System without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
 
-    However, an arm with an attached [camera](/components/camera) might generate additional information about the poses of other objects with respect to references frames on the robot.
+    However, an arm with an attached [camera](/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the robot.
 
     With the [Vision Service](/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 
-    If a [camera](/components/camera) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
+    If a [camera](/components/camera/) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
 
     The detecting component (camera) would be fixed with respect to the `world` reference frame, and would supply the position and orientation of the detected object.
 

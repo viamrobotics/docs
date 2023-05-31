@@ -57,7 +57,7 @@ If you are using a single board computer (SBC) or a microcontroller, prepare you
 
 Once you have a compatible operating system on your computer, you are ready to install `viam-server`.
 
-1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots#add-a-new-robot).
+1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
    If this is your first time using the Viam app, you first need to create an account.
 2. Click the **Setup** tab on your robot page.
 3. Select the **Mode** and **Architecture** settings for your device.

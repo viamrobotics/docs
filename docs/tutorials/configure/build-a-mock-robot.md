@@ -17,7 +17,7 @@ tags: ["mock", "simulation"]
 This tutorial will show you how to build a mock robot using just your personal laptop so you can:
 
 - Learn how to [configure](../../../manage/configuration/) robots with Viam.
-- Try using [Viam](/viam) without any robotic hardware.
+- Try using [Viam](/viam/) without any robotic hardware.
 
 Most Viam [components](../../../components/) have a _fake_ model that you can use for testing.
 These fake components interact with Viam like real hardware but do not actually exist.
@@ -41,7 +41,7 @@ Go to [app.viam.com](https://app.viam.com) and sign up for a free account.
 
 ### Configure your mock robot
 
-Now you'll [configure your robot](/manage/configuration) to represent your robot's hardware.
+Now you'll [configure your robot](/manage/configuration/) to represent your robot's hardware.
 If you were using actual hardware, this file would tell your code what hardware is attached to it and how to communicate with it.
 
 Since this is an imaginary robot, you will use `fake` components so that the Viam software ([`viam-server`](../../../viam/#get-started)) doesn't try and fail to connect to physical hardware.
@@ -54,7 +54,7 @@ Since this is an imaginary robot, you will use `fake` components so that the Via
     - Create a new component called `myBoard` with **Type** `board` and **Model** `fake`.
     Click **Create component**.
 
-5. Configure a [fake arm component](../../../components/arm/fake):
+5. Configure a [fake arm component](../../../components/arm/fake/):
 
     - Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
     Click **Create component**.
@@ -71,7 +71,7 @@ Since this is an imaginary robot, you will use `fake` components so that the Via
     ![A fake arm being configured in Builder mode in the Viam app config tab.](../../img/build-a-mock-robot/create-arm.png)
     - Click **Save config**.
 
-6. Configure a [fake motor component](../../../components/motor/fake):
+6. Configure a [fake motor component](../../../components/motor/fake/):
 
    - Create a new component called `myMotor` with **Type** `motor` and **Model** `fake`.
      Click **Create component**.

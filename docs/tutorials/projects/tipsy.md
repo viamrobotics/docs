@@ -121,7 +121,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
 4. **Configure the camera**
 
-    Next, add the [camera component](/components/camera). Name it `cam`, with the type `camera` and model `webcam`, and click **Create Component**.
+    Next, add the [camera component](/components/camera/). Name it `cam`, with the type `camera` and model `webcam`, and click **Create Component**.
     In the configuration panel, click the video path field.
     If your robot is connected to the Viam app, you will see a drop-down populated with available camera names.
 
@@ -134,7 +134,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
 5. **Configure the ultrasonic sensors**
 
-    Add a [sensor component](/components/sensor) with the name `ultrasonic`, type `sensor`, and model `ultrasonic`.
+    Add a [sensor component](/components/sensor/) with the name `ultrasonic`, type `sensor`, and model `ultrasonic`.
     Then fill in the attributes: enter `38` for `echo_interrupt_pin` and `40` for `trigger_pin`, according to the wiring diagram.
     Enter `local` for `board`.
 
@@ -150,7 +150,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your [board](/components/board), your [motors](/components/motor), your [base](/components/base), your [camera](/components/camera), and your [ultrasonic sensors](/components/sensor/ultrasonic):
+On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your [board](/components/board/), your [motors](/components/motor/), your [base](/components/base/), your [camera](/components/camera/), and your [ultrasonic sensors](/components/sensor/ultrasonic/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -354,7 +354,7 @@ On the control tab, you will see panels for each of your configured components.
 ## Configure your services
 
 This tutorial uses pre-trained ML packages.
-If you want to train your own, you can [train a model](/manage/ml/train-model).
+If you want to train your own, you can [train a model](/manage/ml/train-model/).
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your Raspberry Pi:
 
@@ -386,7 +386,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 1. **Configure a mlmodel detector**
 
-    Add a [vision service](/services/vision) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
+    Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
     Click **Create service**.
 
     ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](../../img/tipsy/app-service-vision-create.png)
@@ -404,7 +404,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
     To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
     Click on the **Components** subtab and navigate to the **Create component** menu.
-    Create a [transform camera](/components/camera/transform) with the name `detectionCam`, the type `camera` and the model `transform`.
+    Create a [transform camera](/components/camera/transform/) with the name `detectionCam`, the type `camera` and the model `transform`.
 
     ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](../../img/tipsy/app-detection-before.png)
 

@@ -208,12 +208,12 @@ See the [services documentation](/services/) for more information.
 
 [Modular resources](/program/extend/modular-resources/) are a way to add resource types or models that are not built into Viam.
 
-To add a modular resource as a component or service of your robot, configure a module per the [modular resource documentation](/program/extend/modular-resources//#use-a-modular-resource-with-your-robot).
+To add a modular resource as a component or service of your robot, configure a module per the [modular resource documentation](/program/extend/modular-resources/#use-a-modular-resource-with-your-robot).
 
 ## Remotes
 
 Configuring a remote is a way to connect two separate robots so one can access the resources of the other.
-Find more information in our [remotes documentation](../parts-and-remotes).
+Find more information in our [remotes documentation](../parts-and-remotes/).
 
 ## Processes
 

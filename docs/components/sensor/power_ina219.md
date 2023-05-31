@@ -53,6 +53,6 @@ The following attributes are available for `power_ina219` sensors:
 
 | Attribute | Type | Inclusion | Description |
 | --------- | -----| --------- | ----------- |
-| `board`  | string | **Required** | The `name` of the [board](/components/board) the sensor is wired to. |
+| `board`  | string | **Required** | The `name` of the [board](/components/board/) the sensor is wired to. |
 | `i2c_bus` | string | **Required** | The `name` of the [I<sup>2</sup>C bus](/components/board/#i2cs) on the board that the sensor is wired to. |
 | `i2c_address` | string | Optional | Default: `0x40`. The [I2C device address](https://learn.adafruit.com/i2c-addresses/overview) of the sensor. |

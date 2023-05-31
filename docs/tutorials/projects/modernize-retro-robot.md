@@ -262,7 +262,7 @@ In just a few minutes, you'll have it back on.
 
 Go to the [Viam app](https://app.viam.com) and create a new robot called `MAIV`.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your Raspberry Pi](/installation).
+Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your Raspberry Pi](/installation/).
 
 ### Configure the components
 
@@ -311,7 +311,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
 4. **Add the base**
 
-    Configuring a [base component](/components/base) allows you to create an interface to control the movement of MAIV withing needing to send individual motor commands.
+    Configuring a [base component](/components/base/) allows you to create an interface to control the movement of MAIV withing needing to send individual motor commands.
 
     Enter `base` for the name for your base, select the type `base`, and select the `wheeled` model.
     Then click **Create component**.
@@ -620,6 +620,6 @@ The same code that works with any configured base will work with MAIV, you'll ju
 
 Since MAIV has a camera, you could also [set up a color detector](/tutorials/services/webcam-line-follower-robot/) or detect objects using a [machine learning model](/tutorials/projects/send-security-photo/).
 
-There's a lot more you can do with MAIV - for inspiration, check out our other [tutorials](/tutorials).
+There's a lot more you can do with MAIV - for inspiration, check out our other [tutorials](/tutorials/).
 
 If you end up building your own MAIV or another retro robot, we’d love to hear - let us and the [Viam community](https://discord.gg/viam) know!

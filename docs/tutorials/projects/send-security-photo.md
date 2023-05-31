@@ -47,7 +47,7 @@ You need the following hardware for this tutorial:
 You will use the following software in this tutorial:
 
 - [Python 3.8 or newer](https://www.python.org/downloads/)
-- [`viam-server`](/installation#install-viam-server)
+- [`viam-server`](/installation/#install-viam-server)
 - [Viam Python SDK](https://python.viam.dev/)
   - The Viam Python SDK (software development kit) lets you control your Viam-powered robot by writing custom scripts in the Python programming language.
   Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
@@ -64,7 +64,7 @@ If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/pro
 
 Go to the [Viam app](https://app.viam.com) and create a new robot.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation).
+Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation/).
 
 ### Configure the camera component
 

@@ -10,7 +10,7 @@ tags: ["fleet management", "cloud", "app"]
 An organization is a group of one or more locations that helps you organize your fleet.
 
 An organization is the highest level grouping in the Viam platform, which generally represents a company, or other institution.
-You can also use organizations for departments or other entities that can have one or more [locations](/manage/fleet/locations).
+You can also use organizations for departments or other entities that can have one or more [locations](/manage/fleet/locations/).
 If you are familiar with Google Drive, you can think of an organization as a shared drive.
 
 When you or another user registers for an account with Viam, they become a member of an organization.

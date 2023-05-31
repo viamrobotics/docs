@@ -299,6 +299,6 @@ The following example captures data from the `ReadImage` method of a camera:
 
 ## Next Steps
 
-To sync your captured data with the cloud, [configure cloud sync](../configure-cloud-sync).
+To sync your captured data with the cloud, [configure cloud sync](../configure-cloud-sync/).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial/).

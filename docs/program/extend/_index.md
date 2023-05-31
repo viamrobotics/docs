@@ -11,8 +11,8 @@ description: "Extend Viam by creating custom components and services."
 
 Viam's [Robot Development Kit (RDK)](/internals/rdk/) provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
-- Various types and models of hardware [components](/components).
-- High-level functionality exposed as [services](/services).
+- Various types and models of hardware [components](/components/).
+- High-level functionality exposed as [services](/services/).
 
 However, you may want to use a hardware component to build your robot that is not built-in to the RDK.
 Alternatively, you might want to add new functionality to an existing model of component or create a custom service for your robot to use.
@@ -27,8 +27,8 @@ Click on the cards below for instructions on implementing custom resources throu
 
 {{% alert title="Tip" color="tip" %}}
 
-{{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations with the [Python and Go SDKs](/program/sdks).
+{{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations with the [Python and Go SDKs](/program/sdks/).
 
-[Adding a custom component as a remote](/program/extend/custom-components-remotes) is recommended if you are hosting `viam-server` on a non-Linux system or have another issue with compilation.
+[Adding a custom component as a remote](/program/extend/custom-components-remotes/) is recommended if you are hosting `viam-server` on a non-Linux system or have another issue with compilation.
 
 {{% /alert %}}

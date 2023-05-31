@@ -75,7 +75,7 @@ After SSH'ing into your BeagleBone, verify all packages are up to date:
 
 ### Step 5: Install `viam-server`
 
-Now that your BeagleBone has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation#install-viam-server) to install `viam-server` on the board.
+Now that your BeagleBone has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/#install-viam-server) to install `viam-server` on the board.
 
 ## Troubleshooting
 

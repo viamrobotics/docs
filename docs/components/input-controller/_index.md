@@ -24,7 +24,7 @@ Most robots with an input controller need at least the following hardware:
 
 - A computer capable of running `viam-server`.
 - A power supply cable or batteries for the input device and the robot.
-- A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor).
+- A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor/).
 
 ## Configuration
 
@@ -34,11 +34,11 @@ For configuration information, click on one of the following models:
 
 | Model | Description |
 | ----- | ----------- |
-| [`gamepad`](gamepad) | X-box, Playstation, and similar controllers with Linux support. |
-| [`gpio`](gpio) | Customizable GPIO/ADC based device using a board component. |
-| [`mux`](mux) | [Multiplexed](https://en.wikipedia.org/wiki/Multiplexer) controller, combining multiple sources of input. |
-| [`webgamepad`](webgamepad) | A remote, web based gamepad. |
-| [`fake`](fake) | A model for testing, with [no physical hardware - see GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
+| [`gamepad`](gamepad/) | X-box, Playstation, and similar controllers with Linux support. |
+| [`gpio`](gpio/) | Customizable GPIO/ADC based device using a board component. |
+| [`mux`](mux/) | [Multiplexed](https://en.wikipedia.org/wiki/Multiplexer) controller, combining multiple sources of input. |
+| [`webgamepad`](webgamepad/) | A remote, web based gamepad. |
+| [`fake`](fake/) | A model for testing, with [no physical hardware - see GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
 
 Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 

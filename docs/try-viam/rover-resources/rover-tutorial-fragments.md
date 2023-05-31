@@ -18,7 +18,7 @@ Using a fragment makes managing a fleet of multiple robots configured in the sam
 ## Prerequisites
 
 * An assembled Viam Rover with a Raspberry Pi.
-  For assembly instructions, see [Unbox and Set Up your Viam Rover](../rover-tutorial)
+  For assembly instructions, see [Unbox and Set Up your Viam Rover](../rover-tutorial/)
 * The Pi is able to connect to [the Viam app](https://app.viam.com).
   To add your Pi to the Viam app, refer to [the rover setup guide](/try-viam/rover-resources/rover-tutorial/#connect-to-the-viam-app).
 
@@ -66,7 +66,7 @@ Typically, this would suggest that they should be configured as enable pins, but
   * Width (mm): 260
   * Spin slip factor: 1.76
   * Depends on: left, right, local.
-* A webcam [camera](/components/camera) with video_path: video0 and depends on: local.
+* A webcam [camera](/components/camera/) with video_path: video0 and depends on: local.
 * Renc [encoder](/components/encoder/) with board: local, pins "i": "re" and depends on: local.
 * Lenc [encoder](/components/encoder/) with board: local, pins "i": "le" and depends on: local.
 * An [accelerometer](/components/movement-sensor/) with the following configuration:

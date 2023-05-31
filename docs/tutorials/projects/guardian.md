@@ -17,7 +17,7 @@ In the run up to the new Zelda release, I realized you can build a stationary gu
 Adding a bit of [machine learning](/services/ml/), you can then make the guardian detect objects or people or pets and follow them around by rotating its head.
 Luckily, I am not the first one to have the idea to build a guardian and there was already a [brilliant guardian 3D model](https://www.thingiverse.com/thing:2391826) on Thingiverse with space for LEDs and a servo.
 
-In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo), a [camera](/components/camera), some LEDs and the [ML Model service](/services/ml) and [Vision Service](/services/vision).
+In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo/), a [camera](/components/camera/), some LEDs and the [ML Model service](/services/ml/) and [Vision Service](/services/vision/).
 Here's a video of the finished guardian detecting me:
 
 {{<video webm_src="../../img/guardian/guardian-detection.webm" mp4_src="../../img/guardian/guardian-detection.mp4" alt="Guardian robot detects person and rotates head to follow them around">}}
@@ -65,7 +65,7 @@ Optionally, if you want to decorate your guardian, I recommend the following mat
 You will use the following software in this tutorial:
 
 - [Python 3](https://www.python.org/downloads/)
-- [`viam-server`](/installation#install-viam-server): Follow the [installation instructions](/installation#install-viam-server) to install `viam-server` on your Raspberry Pi.
+- [`viam-server`](/installation/#install-viam-server): Follow the [installation instructions](/installation/#install-viam-server) to install `viam-server` on your Raspberry Pi.
 
 ## Assemble the robot
 
@@ -106,7 +106,7 @@ To be able to test the components, you need to install `viam-server` and configu
 
 Go to the [Viam app](https://app.viam.com) and create a new robot called `guardian`.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation).
+Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation/).
 
 ### Configure the components
 
@@ -257,7 +257,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 1. **Add a ML model service.**
 
-   The [ML model service](/services/ml) allows you to deploy the provided machine learning model to your robot.
+   The [ML model service](/services/ml/) allows you to deploy the provided machine learning model to your robot.
    Create an ML model with the name `mlmodel`, the type `mlmodel` and the model `tflite_cpu`.
    Then click **Create Service**.
 
@@ -267,7 +267,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 2. **Add a vision service.**
 
-   Next, add a [detector](/services/vision/detection) as a vision service to be able to make use of the ML model.
+   Next, add a [detector](/services/vision/detection/) as a vision service to be able to make use of the ML model.
    Create an vision service with the name `detector`, the type `vision` and the model `mlmodel`.
    Then click **Create Service**.
 
@@ -280,7 +280,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
    To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
    Click on the **Components** subtab and navigate to the **Create component** menu.
-   Create a [transform camera](/components/camera/transform) with the name `transform_cam`, the type `camera` and the model `transform`.
+   Create a [transform camera](/components/camera/transform/) with the name `transform_cam`, the type `camera` and the model `transform`.
 
    Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
@@ -305,7 +305,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 {{% tab name="Raw JSON" %}}
 
-Next, on the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/services/ml), the [vision service](/services/vision), and a [transform camera](/components/camera/transform):
+Next, on the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/services/ml/), the [vision service](/services/vision/), and a [transform camera](/components/camera/transform/):
 
 ```json {class="line-numbers linkable-line-numbers" data-line="31-48,50-69"}
 {
@@ -840,7 +840,7 @@ async def main():
 
     music_player = vlc.MediaPlayer("guardian.mp3")
 
-    # grab Viam's vision service for the detector 
+    # grab Viam's vision service for the detector
     detector = VisionClient.from_robot(robot, "detector")
     while True:
         # move head periodically left and right until movement is spotted.

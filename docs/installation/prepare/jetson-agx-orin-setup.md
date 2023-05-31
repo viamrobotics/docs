@@ -60,7 +60,7 @@ You need the following hardware, tools, and software to install `viam-server` on
     Once you have reached *Next Steps*, return to the Viam docs.
 
 2. Your Jetson AGX Orin now has a Viam-compatible operating system installed.
-    Continue to our [viam-server installation guide](/installation#install-viam-server).
+    Continue to our [viam-server installation guide](/installation/#install-viam-server).
     Note that the Jetson AGX Orin has aarch64 CPU architecture.
 
 {{< alert title="Tip: <code>viam-server</code> installation with <code>curl</code>" color="tip" >}}
@@ -77,7 +77,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
    Consult the instructions you received when purchasing your device for more information.
 2. Ensure the driver has successfully installed by running `sudo dmesg | grep ar0234`. The output should include `ar0234 Detected Ar0234 sensor`.
 3. Connect the AR0234 camera module and daughterboard to the J509 port located at the bottom of the Developer Kit.
-4. Configure the camera as a [webcam](../../../components/camera/webcam).
+4. Configure the camera as a [webcam](../../../components/camera/webcam/).
 
 ## Serial Communication Protocol Tips
 

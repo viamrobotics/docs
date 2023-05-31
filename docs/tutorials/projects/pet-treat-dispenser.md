@@ -104,7 +104,7 @@ Name the component `pi`.
 
 ![The Viam app showing the configuration page for a board component with name pi.](../../img/pet-treat-dispenser/app-board-pi.png)
 
-### Configure your [webcam](/components/camera/webcam)
+### Configure your [webcam](/components/camera/webcam/)
 
 Add another component with the type `camera` component and the model `webcam`.
 Name the component `petcam`.
@@ -119,7 +119,7 @@ Select your camera.
 If you are unsure which camera to select, selecte one, save the configuration and go to the [**Control** tab](/components/camera/webcam/#view-the-camera-stream) to confirm you can see the expected video stream.
 {{< /alert >}}
 
-### Configure your [stepper motor](/components/motor/gpiostepper)
+### Configure your [stepper motor](/components/motor/gpiostepper/)
 
 Finally, add another component with the type `motor` component and the model `gpiostepper`.
 
@@ -134,7 +134,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/components/camera/webcam), and your [stepper motor](/components/motor/gpiostepper):
+On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/components/camera/webcam/), and your [stepper motor](/components/motor/gpiostepper/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -302,7 +302,7 @@ Select `tflite_cpu` as the **Model**.
 
 ### Use the Vision Service to detect your pet
 
-To detect your pet with your machine learning model, you need to add a [vision service](/services/vision) that uses the model and a [transform camera](/components/camera/transform) that applies the vision service to an existing camera stream and specifies a confidence threshold:
+To detect your pet with your machine learning model, you need to add a [vision service](/services/vision/) that uses the model and a [transform camera](/components/camera/transform/) that applies the vision service to an existing camera stream and specifies a confidence threshold:
 
 1. Create a new **Service** and select **Vision**, and `mlmodel` as the Type.
 1. Select the model you previously created in the drop down menu.
@@ -310,7 +310,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
    ![The vision service panel with the puppymodel selected.](../../img/pet-treat-dispenser/app-service-vision.png)
 
 1. Navigate to the **Components** tab and scroll to the **Create Component** menu.
-1. Create a [transform camera](/components/camera/transform) with the name `classifier_cam`, the type `camera` and the model `transform`.
+1. Create a [transform camera](/components/camera/transform/) with the name `classifier_cam`, the type `camera` and the model `transform`.
 1. Replace the JSON attributes with the following object which specifies the camera source for the transform cam and also defines a pipeline that adds the `classifier` you created.
 
    ```js
@@ -540,4 +540,4 @@ You've earned the love and respect of your pet! Celebrate by treating yourself t
 And once you're done celebrating, have a think of what you can do to improve this.
 Maybe you can add speakers to give your pet commands, train a model to check if the command is obeyed, and only dispense treats if your pet performs the trick?
 
-For more robotics projects, check out our [other tutorials](/tutorials).
+For more robotics projects, check out our [other tutorials](/tutorials/).

@@ -101,7 +101,7 @@ It will resemble the following:
 
 ### Error: failed to find the best driver that fits the constraints
 
-**Description:** When working with a [camera](/components/camera) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
+**Description:** When working with a [camera](/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
 
 **Solution:** Check the specifications for your camera, and manually provide configuration parameters such as width and height to the camera component configuration page on the [Viam app](https://app.viam.com).
 Under **Config > Components**, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **Go to advanced** link in the component panel's upper-right to enter these attributes manually.

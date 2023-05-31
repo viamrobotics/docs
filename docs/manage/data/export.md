@@ -7,7 +7,7 @@ tags: ["data management", "cloud", "sync"]
 # SME: Aaron Casas
 ---
 
-First, install the [Viam CLI](/manage/cli) and [authenticate](/manage/cli/#authenticate).
+First, install the [Viam CLI](/manage/cli/) and [authenticate](/manage/cli/#authenticate).
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/cli/viam@latest
@@ -41,4 +41,4 @@ You can see more information about exporting data in the [Viam CLI documentation
 
 ## Next Steps
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial/).

@@ -26,7 +26,7 @@ You will not need to write a single line of code to integrate them, and swapping
 You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
 - **Architecture**:
 You can build simple robots or multi-part robots that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
-- **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/program/extend) Viam.
+- **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/program/extend/) Viam.
 
 Join the [**Viam community**](https://discord.gg/viam) to collaborate during planning and beyond.
 
@@ -39,7 +39,7 @@ Viam supports devices running **any** 64-bit Linux OS or macOS.
 
 The Viam platform provides a user interface for connecting to and managing robots, the [Viam app](https://app.viam.com/).
 
-To use the Viam platform with your robot, log in to [the app](https://app.viam.com/), create a new robot, and [install](/installation) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
+To use the Viam platform with your robot, log in to [the app](https://app.viam.com/), create a new robot, and [install](/installation/) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
 
 - Creates, configures, and maintains the robot.
 - Securely handles all communications.
@@ -94,9 +94,9 @@ This provides flexibility and security whether you are building tight control lo
 There are four categories of APIs:
 
 - [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level robot commands
-- [Components](/components) like motors, arms, GPS
-- [Services](/services) like computer vision, motion planning, SLAM
-- Cloud applications like [Fleet Management](/manage/fleet), [Data Management](/manage/data)
+- [Components](/components/) like motors, arms, GPS
+- [Services](/services/) like computer vision, motion planning, SLAM
+- Cloud applications like [Fleet Management](/manage/fleet/), [Data Management](/manage/data/)
 
 You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).
 
@@ -132,4 +132,4 @@ Use [Try Viam](/try-viam/).
 
 If you already have your own robot, [set up `viam-server`](/installation/) and learn how Viam helps you prototype and scale.
 
-For more inspiration, check out our [tutorials](/tutorials) or visit our community on [Discord](https://discord.gg/viam) to get help or workshop ideas with others!
+For more inspiration, check out our [tutorials](/tutorials/) or visit our community on [Discord](https://discord.gg/viam) to get help or workshop ideas with others!

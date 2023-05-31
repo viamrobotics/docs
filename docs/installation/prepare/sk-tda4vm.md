@@ -101,7 +101,7 @@ From the SSH session on the TDA4VM board:
 
 ## Next steps
 
-Now that your board has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation#install-viam-server).
+Now that your board has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/#install-viam-server).
 
 ## Need assistance?
 

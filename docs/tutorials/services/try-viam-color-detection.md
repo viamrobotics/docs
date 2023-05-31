@@ -14,7 +14,7 @@ aliases:
 # SMEs: Hazal
 ---
 
-The [Vision Service](/services/vision) enables a robot to use its cameras to see and interpret the world around it.
+The [Vision Service](/services/vision/) enables a robot to use its cameras to see and interpret the world around it.
 The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
 
 In this tutorial you will learn how to configure a color detector with the Vision Service and how to leverage that detector with a transform camera to detect the color red.
@@ -103,13 +103,13 @@ Note that the detector does not detect black, perfect greys (greys where the red
 
 ## Configure a transform camera to use the color detector
 
-Viam [camera](/components/camera/) components can be [physical](/components/camera/webcam) like the one already configured on the rover, or virtual.
+Viam [camera](/components/camera/) components can be [physical](/components/camera/webcam/) like the one already configured on the rover, or virtual.
 A virtual camera transforms the output from a physical camera.
 
-To view output from the color detector overlaid on images from a physical camera, you need to configure a [transform camera](/components/camera/transform).
+To view output from the color detector overlaid on images from a physical camera, you need to configure a [transform camera](/components/camera/transform/).
 
 Navigate to the **Components** tab in the Viam app and scroll to the **Create Component** section.
-To create a [transform camera](/components/camera/transform):
+To create a [transform camera](/components/camera/transform/):
 
 1. Enter a name for **Name**, for example `detectionCam`.
 2. Select `camera` as the **Type**.

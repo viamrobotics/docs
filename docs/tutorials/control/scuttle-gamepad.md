@@ -20,7 +20,7 @@ On completion of this tutorial you'll be able to drive the SCUTTLE around like a
 ## Prerequisites
 
 * A pre-configured and controllable (using a keyboard and the Viam app ([https://app.viam.com](https://app.viam.com)) SCUTTLE Robot.
-Refer to the [Setting up a SCUTTLE with Viam](../../configure/scuttlebot) tutorial, if necessary.
+Refer to the [Setting up a SCUTTLE with Viam](../../configure/scuttlebot/) tutorial, if necessary.
 
 * Connection to the Viam app
 * EasySMX ESM-9101 Wireless Controller

@@ -105,7 +105,7 @@ python ~/Desktop/scuttle.py
 ## Notes on color detection operation
 
 Within `getVisService(robot)`, a detector is configured with particular properties and subsequently added to the Vision Service.
-This particular detector is a [color detector](/services/vision/detection), which means the relevant parameters are `detect_color` (hex string), `hue_tolerance_pct` (float from `0` to `1`), and `segment_size_px` (integer).
+This particular detector is a [color detector](/services/vision/detection/), which means the relevant parameters are `detect_color` (hex string), `hue_tolerance_pct` (float from `0` to `1`), and `segment_size_px` (integer).
 Feel free to configure more detectors with different parameters!
 To learn about all the different detectors and parameters, check out the [Vision Service documentation](/services/vision/).
 

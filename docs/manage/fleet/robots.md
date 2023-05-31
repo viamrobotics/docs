@@ -38,7 +38,7 @@ The **Setup** tab contains information for starting an instance of `viam-server`
 Once you select the correct **Mode** and **Architecture** for your system in the upper left of the tab, follow the instructions on the page to connect and set up your robot.
 
 {{% alert title="Tip" color="tip" %}}
-More in-depth information on installing `viam-server` can be found in our [Install Guide](/installation#install-viam-server).
+More in-depth information on installing `viam-server` can be found in our [Install Guide](/installation/#install-viam-server).
 {{% /alert %}}
 
 ### Configuration
@@ -52,7 +52,7 @@ After connecting your robot, go to the **Config** tab, and start adding robot {{
 For more information, see the [configuration documentation](../../configuration/#the-config-tab).
 
 {{< alert title="Tip" color="tip" >}}
-If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robot](../../configuration).
+If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robot](../../configuration/).
 {{< /alert >}}
 
 ### History
@@ -82,7 +82,7 @@ For example, if you have configured a base with wheels, you can control your rob
 If you have configured a camera component, a window in the **Control** tab displays the camera output.
 
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
-For local communication between [parts](../../parts-and-remotes#robot-parts) Viam uses gRPC or WebRTC.
+For local communication between [parts](../../parts-and-remotes/#robot-parts) Viam uses gRPC or WebRTC.
 
 {{<gif webm_src="../../img/control.webm" mp4_src="../../img/control.mp4" alt="Using the control tab" max-width="800px">}}
 

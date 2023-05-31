@@ -35,11 +35,11 @@ Make sure you have mastery of the concepts outlined in the first Motion tutorial
 This tutorial picks up right where **Access and Move a Robot Arm** stops, so further examples depend on having a connected robot, client and service access, and other infrastructure in place.
 This also helps simplify and shorten the code examples presented below.
 
-For a helpful recap of the code we previously added, look at [the full code sample from the prior tutorial](../accessing-and-moving-robot-arm#full-tutorial-code).
+For a helpful recap of the code we previously added, look at [the full code sample from the prior tutorial](../accessing-and-moving-robot-arm/#full-tutorial-code).
 
 ## Configure a robot
 
-The [robot configuration from the prior tutorial](../accessing-and-moving-robot-arm#configure-a-robot) should be used for this tutorial.
+The [robot configuration from the prior tutorial](../accessing-and-moving-robot-arm/#configure-a-robot) should be used for this tutorial.
 We will revisit that robot configuration and add new components during specific sections below.
 
 The Motion Service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
