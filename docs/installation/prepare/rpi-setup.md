@@ -56,6 +56,8 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
    You should be brought back to the initial launch screen.
 3. To make your Raspberry Pi easier to access in the next step, configure your Raspberry Pi's hostname, ssh credentials, and wifi.
    Click the gear-shaped settings icon in the lower right to bring up the Advanced options menu.
+    
+   ![Raspberry Pi Imager window showing gear-shaped settings icon is selected.](../../img/rpi-setup/advanced-options.png) 
 
    {{% alert title="Note" color="note" %}}
    If you are using a non-Raspberry Pi OS, altering the Advanced options will cause the initial boot to fail.
