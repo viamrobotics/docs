@@ -1,5 +1,5 @@
 ---
-title: "Title of your tutorial"
+title: "Title of your tutorial in <70 characters"
 linkTitle: "Menu title of the tutorial"
 weight: 90
 type: "docs"
