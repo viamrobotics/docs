@@ -87,6 +87,13 @@ Your servo probably came with mounting screws and a plastic horn for the gear.
 Use the screws to attach the horn to the base of the head.
 
 Next, get your Raspberry Pi and your servo and connect the servo to the Raspberry Pi by connecting the PWM wire to pin 12, the power wire to pin 2, and the ground wire to pin 8.
+
+{{< alert title="Tip" color="tip" >}}
+To make it easier for you to see which pin is which, you can print out [this piece of paper at 100% scaling level](/try-viam/rover-resources/img/rpi4_rover_leaf_A4.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+Only attach the paper when the Pi is unplugged.
+To make attaching the paper easier, use a credit card or a small screwdriver.
+{{< /alert >}}
+
 Then attach the head to the servo.
 
 ![A Raspberry Pi connected to a FS90R servo. The yellow PWM wire is attached to pin twelve on the raspberry pi. The red five-volt wire is attached to pin two. The black ground wire is attached to pin eight](/tutorials/img/single-component-tutorials-servo-mousemover/servo-wiring-diagram.png)
