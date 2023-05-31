@@ -535,7 +535,8 @@ if __name__ == '__main__':
 
 ## Next Steps
 
-Take your smart pet feeder to the next level! You could try one of the following:
+Take your smart pet feeder to the next level!
+You could try one of the following:
 
 * Add speakers and record your voice so that the pet feeder can play a message to your pet each time it dispenses a treat.
 * Train a [ML model](/services/ml/) to recognize when your pet performs a trick, and withhold the treat until a specific trick is detected.
