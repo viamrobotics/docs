@@ -537,9 +537,9 @@ if __name__ == '__main__':
 
 Take your smart pet feeder to the next level! You could try one of the following:
 
-- Add speakers and record your voice so that the pet feeder can play a message to your pet each time it dispenses a treat.
-- Train a [ML model](/services/ml/) to recognize when your pet performs a trick, and withhold the treat until a specific trick is detected.
-- Add a button that your pet must press to access the treat. If you add several treat types, you might include a different color button for each treat type, allowing your pet to choose.
-- If you have multiple pets, you could configure different treats for each pet by training the ML model on each pet, and dispensing different treats depending on the pet recognized.
+* Add speakers and record your voice so that the pet feeder can play a message to your pet each time it dispenses a treat.
+* Train a [ML model](/services/ml/) to recognize when your pet performs a trick, and withhold the treat until a specific trick is detected.
+* Add a button that your pet must press to access the treat. If you add several treat types, you might include a different color button for each treat type, allowing your pet to choose.
+* If you have multiple pets, you could configure different treats for each pet by training the ML model on each pet, and dispensing different treats depending on the pet recognized.
 
 For more robotics projects, check out our [other tutorials](/tutorials).
