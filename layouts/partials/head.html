@@ -16,8 +16,8 @@ hugo.IsProduction (ne $outputFormat "print") -}}
 <meta name="robots" content="noindex, nofollow" />
 {{ end -}} {{ partialCached "favicons.html" . }}
 <title>
-    {{- if .IsHome -}} {{ .Site.Title -}} {{ else -}} {{ with .Title }}{{ . }} |
-    {{ end -}} {{ .Site.Title -}} {{ end -}}
+    {{- if .IsHome -}} {{ .Site.Title -}} {{ else -}} {{ with .Title }}{{ . }}
+    {{ end -}} {{ end -}}
 </title>
 <meta name="description" content="{{ template "partials/page-description.html" .
 }}"> {{ template "_internal/opengraph.html" . -}} {{ template
