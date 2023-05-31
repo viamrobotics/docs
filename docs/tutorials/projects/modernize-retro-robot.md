@@ -414,7 +414,7 @@ Click on the base panel and use the arrows to control the base.
 Ensure the motors on both sides are working, and that the wheels are spinning as expected.
 If the wheels on a given side are spinning in the opposite direction of what you would expect, go back to the **Config** tab, toggle `Direction Flip` for the appropriate motor, **Save config** and repeat the test steps.
 
-{{<video webm_src="../../img/maiv/maiv_base_test.webm" mp4_src="../../img/maiv/maiv_base_test.mp4" alt="MAIV base test movements" max-width="300px">}}
+{{<video webm_src="../../img/maiv/maiv_base_test.webm" mp4_src="../../img/maiv/maiv_base_test.mp4" post="../../img/maiv/maiv_base_test.jpg" alt="MAIV base test movements" max-width="300px">}}
 
 From the **Control** tab you can also test the individual motors directly.
 First select the desired direction and power percent, then start the motor by clicking `RUN` and stop the motor by clicking `STOP`.
@@ -454,7 +454,7 @@ You will use GPIO directly to control the eyes through the `board` component you
 Once `viam-server` is running (it will take a minute or so to initialize), go to the **Control** tab and open the *local* board card.
 From here, you can test MAIV's eyes by setting GPIO pin 18 to high (to turn the eyes on) or low (to turn the eyes off).
 
-{{<video webm_src="../../img/maiv/maiv_eye_test.webm" mp4_src="../../img/maiv/maiv_eye_test.mp4" alt="MAIV eye flashing test" max-width="300px">}}
+{{<video webm_src="../../img/maiv/maiv_eye_test.webm" mp4_src="../../img/maiv/maiv_eye_test.mp4" poster="../../img/maiv/maiv_eye_test.jpg" alt="MAIV eye flashing test" max-width="300px">}}
 
 ### Connect and test the neck motor
 
@@ -599,7 +599,7 @@ If you are editing the configuration of MAIV using JSON directly, add the camera
 Test your camera by navigating to the **Control** tab, opening the camera card, and turning on the video stream.
 Turning MAIV's head while streaming video will give you a sense of how MAIV is starting to see the world!
 
-{{<video webm_src="../../img/maiv/maiv_head_test.webm" mp4_src="../../img/maiv/maiv_head_test.mp4" alt="MAIV head test" max-width="300px">}}
+{{<video webm_src="../../img/maiv/maiv_head_test.webm" mp4_src="../../img/maiv/maiv_head_test.mp4" poster="../../img/maiv/maiv_head_test.jpg" alt="MAIV head test" max-width="300px">}}
 
 ## MAIV in the world
 
@@ -610,7 +610,7 @@ Now that you've wired, configured, and tested all the components, put MAIV back 
 
 Now MAIV is ready to interact with the world!
 
-{{<video webm_src="../../img/maiv/maiv_driving.webm" mp4_src="../../img/maiv/maiv_driving.mp4" alt="MAIV driving, in one of our home offices - so not quite the world, yet" max-width="350px">}}
+{{<video webm_src="../../img/maiv/maiv_driving.webm" mp4_src="../../img/maiv/maiv_driving.mp4" poster="../../img/maiv/maiv_driving.jpg" alt="MAIV driving, in one of our home offices - so not quite the world, yet" max-width="350px">}}
 
 ## Next steps
 

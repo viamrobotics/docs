@@ -256,14 +256,14 @@ There are a few issues to consider with these:
   More than videos.
   The [best practice](https://developer.chrome.com/en/docs/lighthouse/performance/efficient-animated-content/) is to not use them.
 
-Instead use a video div with two sources:
+Instead use a video div with two sources and a poster that gets loaded as a preview:
 
 ```md
 <!-- remove space -->
-{ {<video webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">} }
+{ {<video webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart" poster="../img/heart.jpg">} }
 ```
 
-{{<video webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">}}
+{{<video webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart" poster="../img/heart.jpg">}}
 
 or if you want a video without controls - mimicking a GIF:
 
@@ -331,6 +331,14 @@ ext=${vid##*.}
 vdirname=`dirname $vid`
 vfname=`basename $vid $ext`
 ffmpeg -i ${vdirname}/${vfname}webm -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c:a eac3 -b:a 224k ${vdirname}/${vfname}mp4
+}
+
+function mp42jpg {
+vid=$1
+ext=${vid##*.}
+vdirname=`dirname $vid`
+vfname=`basename $vid $ext`
+ffmpeg -i ${vdirname}/${vfname}mp4 -vf "select=eq(n\,0)" -q:v 3 ${vdirname}/${vfname}jpg
 }
 ```
 

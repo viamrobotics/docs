@@ -356,7 +356,7 @@ Since we already assembled the robot, setting pin 37 to **high** launches your f
 
 You can see the demo video of it in action here:
 
-{{<video webm_src="../../videos/FoamDartLauncherRobotDemo.webm" mp4_src="../../videos/FoamDartLauncherRobotDemo.mp4" alt="Foam Dart Launcher Demo">}}
+{{<video webm_src="../../videos/FoamDartLauncherRobotDemo.webm" mp4_src="../../videos/FoamDartLauncherRobotDemo.mp4" poster="../../videos/FoamDartLauncherRobotDemo.jpg" alt="Foam Dart Launcher Demo">}}
 
 ## Troubleshooting
 
