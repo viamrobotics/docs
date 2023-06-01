@@ -1,6 +1,6 @@
 ---
 title: "Build a Smart Pet Feeder with Machine Learning"
-linkTitle: "Build a Smart Pet Treat Dispenser"
+linkTitle: "Smart Pet Treat Dispenser"
 weight: 50
 type: "docs"
 description: "Use a Raspberry Pi, a motor, and machine learning to build a smart pet feeder."

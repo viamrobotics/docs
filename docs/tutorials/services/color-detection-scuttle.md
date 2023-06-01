@@ -1,5 +1,5 @@
 ---
-title: "Detect and Follow a Colored Object with the SCUTTLE Robot"
+title: "Detect and Follow a Colored Object with a SCUTTLE Robot"
 linkTitle: "Colored Object Follower"
 weight: 30
 type: "docs"

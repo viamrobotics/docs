@@ -1,6 +1,6 @@
 ---
 title: "Build a Mock Robot"
-linkTitle: "Build a Mock Robot"
+linkTitle: "Mock Robot"
 weight: 41
 type: "docs"
 description: "Create a mock robot using just your personal computer to try using Viam without any robotic hardware."
