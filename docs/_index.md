@@ -3,7 +3,6 @@ title: "Welcome to the Viam Documentation"
 linkTitle: "Viam Documentation"
 weight: 1
 no_list: true
-.Sitemap.Priority
 type: "docs"
 hide_feedback: true
 sitemap:
