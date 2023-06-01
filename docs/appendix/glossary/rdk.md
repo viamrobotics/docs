@@ -6,4 +6,4 @@ short_description: The official Viam-developed codebase that provides all functi
 aka:
 ---
 
-The official Viam-developed codebase that provides all functionality of an SDK and [more](/internals/rdk/).
+The [RDK](/internals/rdk/) is the official Viam-developed codebase that provides all functionality of an SDK and more.

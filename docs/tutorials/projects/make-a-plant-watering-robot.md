@@ -348,7 +348,7 @@ Create your custom sensor resource in 3 steps:
 
 #### Code the `MoistureSensor` Class
 
-If you haven't already, install the Viam Python SDK by following the instructions [here](https://python.viam.dev/).
+If you haven't already, install the Viam Python SDK by following the instructions [on GitHub](https://python.viam.dev/).
 
 Navigate to the directory you created when [testing your soil moisture readings](#test-your-soil-moisture-readings-on-your-pi), `plant-watering-robot`, and create a new file, <file>sensor.py</file>.
 
