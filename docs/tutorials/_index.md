@@ -4,6 +4,8 @@ linkTitle: "Tutorials"
 weight: 65
 type: docs
 no_list: true
+sitemap:
+  priority: 1.0
 aliases:
     - "/build/"
 ---

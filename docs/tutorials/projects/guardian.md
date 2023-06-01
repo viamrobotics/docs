@@ -840,7 +840,7 @@ async def main():
 
     music_player = vlc.MediaPlayer("guardian.mp3")
 
-    # grab Viam's vision service for the detector 
+    # grab Viam's vision service for the detector
     detector = VisionClient.from_robot(robot, "detector")
     while True:
         # move head periodically left and right until movement is spotted.
