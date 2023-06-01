@@ -1,5 +1,5 @@
 ---
-title: "Control"
+title: "Control Tutorials"
 linkTitle: "Control"
 weight: 30
 simple_list: true

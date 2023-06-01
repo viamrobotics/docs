@@ -1,5 +1,5 @@
 ---
-title: "Services"
+title: "Tutorials for Viam Services"
 linkTitle: "Services"
 weight: 40
 simple_list: true

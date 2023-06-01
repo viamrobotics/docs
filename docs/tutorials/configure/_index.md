@@ -1,5 +1,5 @@
 ---
-title: "Configure"
+title: "Configuration Tutorials"
 linkTitle: "Configure"
 weight: 20
 simple_list: true

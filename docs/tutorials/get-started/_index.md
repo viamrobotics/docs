@@ -1,5 +1,5 @@
 ---
-title: "Get Started"
+title: "Get Started Tutorials"
 linkTitle: "Get Started"
 weight: 10
 type: docs

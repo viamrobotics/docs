@@ -1,5 +1,5 @@
 ---
-title: "Custom Resources"
+title: "Custom Resource Tutorials"
 linkTitle: "Custom Resources"
 weight: 50
 simple_list: true
