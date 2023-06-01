@@ -85,7 +85,7 @@ Here are some tutorials which you can follow:
 - [Drive with the Viam SDK](/tutorials/get-started/try-viam-sdk/)
 - [Detect a Color](/tutorials/services/try-viam-color-detection/)
 
-If you want to get your own Viam Rover you can do so [here](https://viam.com/resources/rover).
+If you want to get your own Viam Rover, [you can](https://viam.com/resources/rover).
 
 ## Why can't I use the rover's microphone?
 

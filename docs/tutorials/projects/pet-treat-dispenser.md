@@ -51,7 +51,7 @@ You will also need the following tools and materials:
 1. Small pet treats or dry kibble
 1. Tools for assembly such as screwdrivers and allen keys
 1. 3D printer (or somewhere you can order 3D printed parts from)
-1. 3D printed STL models provided [here](https://github.com/viam-labs/smart-pet-feeder), or you may design your own around our component, wiring, and configuration recommendations.
+1. [3D printed STL models](https://github.com/viam-labs/smart-pet-feeder), wiring, and configuration recommendations.
 
 ### Software
 
