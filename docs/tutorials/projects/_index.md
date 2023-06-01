@@ -1,5 +1,5 @@
 ---
-title: "Projects"
+title: "Tutorial Projects"
 linkTitle: "Projects"
 weight: 60
 simple_list: true
