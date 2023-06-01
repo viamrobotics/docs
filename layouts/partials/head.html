@@ -19,6 +19,7 @@ hugo.IsProduction (ne $outputFormat "print") -}}
     {{- if .IsHome -}} {{ .Site.Title -}} {{ else -}} {{ with .Title }}{{ . }} {{ end -}} {{if gt (len .Title) 70}} {{- errorf "Title too long for page %q" .Path -}} {{ end }} {{if lt (len .Title) 50}} |
     {{ .Site.Title -}} {{ end -}} {{ end -}}
 </title>
+<link rel="canonical" href="{{ .Permalink }}" />
 <meta name="description" content="{{ template "partials/page-description.html" .
 }}"> {{ template "_internal/opengraph.html" . -}} {{ template
 "_internal/schema.html" . -}} {{ template "_internal/twitter_cards.html" . -}}
