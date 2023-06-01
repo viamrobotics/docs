@@ -12,13 +12,13 @@
 {{ if .Site.Params.markmap.enable }}
 <style>
 .markmap > svg {
-  width: 100%;
-  height: 300px;
+    width: 100%;
+    height: 300px;
 }
 </style>
 <script>
 window.markmap = {
-  autoLoader: { manual: true },
+    autoLoader: { manual: true },
 };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
@@ -52,6 +52,7 @@ window.markmap = {
     {{ printf "onload='renderMathInElement(%s, %s);'" (( .Site.Params.katex.html_dom_element | default "document.body" ) | safeJS ) ( printf "%s" ( $.Site.Params.katex.options | jsonify )) | safeHTMLAttr }}></script>
 {{ end }}
 
+{{ $jsIndex := resources.Get "js/index.js" }}
 {{ $jsBase := resources.Get "js/base.js" }}
 {{ $jsAnchor := resources.Get "js/anchor.js" }}
 {{ $jsSearch := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" .Site.Home }}
@@ -59,10 +60,11 @@ window.markmap = {
 {{ $jsMarkmap := resources.Get "js/markmap.js" | resources.ExecuteAsTemplate "js/markmap.js" . }}
 {{ $jsPlantuml := resources.Get "js/plantuml.js" | resources.ExecuteAsTemplate "js/plantuml.js" . }}
 {{ $jsDrawio := resources.Get "js/drawio.js" | resources.ExecuteAsTemplate "js/plantuml.js" .}}
+
 {{ if .Site.Params.offlineSearch }}
 {{ $jsSearch = resources.Get "js/offline-search.js" }}
 {{ end }}
-{{ $js := (slice $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio) | resources.Concat "js/main.js" }}
+{{ $js := (slice $jsIndex $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio) | resources.Concat "js/main.js" }}
 {{ if not hugo.IsProduction }}
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}
@@ -73,28 +75,5 @@ window.markmap = {
 <!-- scripts for prism -->
 <script src='{{ "js/prism.js" | relURL }}'></script>
 {{ end }}
+
 {{ partial "hooks/body-end.html" . }}
-
-<!-- script for the scroll button -->
-<script>
-    const main = document.body;
-    const scrollBtn = document.getElementById("scrollButton");
-    function toTop() {
-        window.scroll({top: 0, left: 0, behavior: 'smooth'});
-    }
-
-    function btnVisibility(payload) {
-        if (payload[0].boundingClientRect.y <= -400) {
-            scrollBtn.style.visibility = "visible";
-        } else {
-            scrollBtn.style.visibility = "hidden";
-        }
-    }
-
-    if(main && scrollBtn) {
-        const observer = new IntersectionObserver(btnVisibility, {
-            threshold: [0, 0.2, 0.4, 0.6, 0.8, 1.0]
-        });
-        observer.observe(main);
-    }
-</script>
