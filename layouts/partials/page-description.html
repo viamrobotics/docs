@@ -2,6 +2,7 @@
   {{ . -}}
 {{ else -}}
   {{ if .IsPage -}}
+    {{- errorf "No description for page %q" .Path -}}
     {{ .Summary | plainify | chomp -}}
   {{ else -}}
     {{ with .Site.Params.description | plainify -}}

@@ -1,6 +1,7 @@
 ---
 title: "Welcome to the Viam Documentation"
 linkTitle: "Viam Documentation"
+description: "Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS."
 weight: 1
 no_list: true
 type: "docs"
@@ -151,5 +152,5 @@ Viam supports a wide variety of systems, including:
     </div>
 </div>
 
-<script type="text/javascript" src="js/carousel.js"></script>
+<script type="text/javascript" src="js/carousel-min.js"></script>
 <link rel="stylesheet" href="css/carousel-min.css">

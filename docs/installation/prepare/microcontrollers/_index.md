@@ -18,7 +18,7 @@ aliases:
 ## Hardware Requirements
 
 You need an an Espressif ESP32 microcontroller to use the micro-RDK.
-Viam recommends purchasing the ESP32 with a development board: see development kit options [here](https://www.espressif.com/en/products/devkits).
+Viam recommends purchasing the ESP32 with a development board: see [development kit options](https://www.espressif.com/en/products/devkits).
 
 Minimal configuration: 384kB Ram 4MB flash
 Recommended configuration: 384kB Ram + 8MB SPIRAM + 4MB Flash
@@ -240,7 +240,7 @@ In this example, we want to add GPIO pin 35, which is labeled `ADC1_7` in the pi
 
 {{% alert title="Note" color="note" %}}
 
-You can find a full example [here](https://github.com/viamrobotics/micro-rdk/blob/main/examples/esp32/esp32.rs).
+You can find a full example [on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/examples/esp32/esp32.rs).
 
 {{% /alert %}}
 
@@ -308,8 +308,7 @@ Follow these instructions to install and build the emulator.
 
 ### Install Espressif's QEMU ESP32 Emulator
 
-Espressif maintains a good QEMU emulator supporting the ESP32.
-See [here](https://github.com/espressif/qemu) for more information.
+Espressif maintains a good [QEMU emulator](https://github.com/espressif/qemu) supporting the ESP32.
 
 {{< tabs >}}
 {{% tab name="macOS" %}}
