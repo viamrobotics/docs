@@ -1,5 +1,5 @@
 ---
-title: "How to Make an LED Blink with a Raspberry Pi and the Viam SDK"
+title: "Make an LED Blink with a Raspberry Pi and the Viam SDK"
 linkTitle: "Blink an LED with a Pi and the SDK"
 weight: 40
 type: "docs"

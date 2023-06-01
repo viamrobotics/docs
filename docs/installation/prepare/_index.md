@@ -1,9 +1,10 @@
 ---
 linkTitle: "Prepare Devices"
+title: "Prepare Devices"
 weight: 10
 empty_node: true
 type: "docs"
-description: "Prepare your computer before installing viam-server."
+description: "Setup instructions for various devices to follow before installing viam-server."
 ---
 
 Refer to the [installation guide](../) for full instructions.
