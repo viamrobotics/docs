@@ -1,6 +1,7 @@
 ---
 title: "Export Data"
 linkTitle: "Export Data"
+description: "Export data from the Data Management Service."
 weight: 40
 type: "docs"
 tags: ["data management", "cloud", "sync"]
