@@ -1,6 +1,6 @@
 ---
 title: "Tipsy: Create an Autonomous Drink Carrying Robot"
-linkTitle: "Build a Drink Serving Robot"
+linkTitle: "Drink Serving Robot"
 weight: 60
 type: "docs"
 tags: ["raspberry pi", "app", "board", "motor", "camera"]

@@ -1,5 +1,5 @@
 ---
-title: "An Introduction to Using Viam's Data Management Service"
+title: "Introduction to the Data Management Service"
 linkTitle: "Intro to Data Management"
 weight: 60
 type: "docs"

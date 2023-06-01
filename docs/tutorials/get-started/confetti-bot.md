@@ -1,6 +1,6 @@
 ---
 title: "Build a Confetti Bot with a Raspberry Pi"
-linkTitle: "Build a Confetti Bot"
+linkTitle: "Confetti Bot"
 weight: 50
 type: "docs"
 description: "Use a red button to activate a GPIO pin on the board and make a confetti popper go off."
