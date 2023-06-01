@@ -2,8 +2,8 @@ contentDir = "docs/"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 enableMissingTranslationPlaceholders = false
-enableRobotsTXT = true
-enableGitInfo = false
+enableRobotsTXT = false
+enableGitInfo = true
 disableKinds = ["RSS"]
 
 [taxonomies]
@@ -34,6 +34,10 @@ title = "Viam Documentation"
 description = "Viam Documentation"
 languageName ="English"
 weight = 1
+
+[sitemap]
+  changefreq = 'monthly'
+  priority = 0.8
 
 [markup]
   [markup.goldmark]

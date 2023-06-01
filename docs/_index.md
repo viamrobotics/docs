@@ -5,6 +5,8 @@ weight: 1
 no_list: true
 type: "docs"
 hide_feedback: true
+sitemap:
+  priority: 1.0
 ---
 
 Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS.
