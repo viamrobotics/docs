@@ -54,7 +54,8 @@ If you click on the **Video Path** field while your robot is live, a drop down a
         "format": <string>,
         "video_path": "<your-video-path>",
         "width_px": <int>,
-        "height_px": <int>
+        "height_px": <int>,
+        "frame_rate": <float>
     }
 }
 ```
@@ -84,6 +85,7 @@ The following attributes are available for `webcam` cameras:
 | `format` | string | Optional | The camera image format, used with `video_path` to find the camera. |
 | `width_px` | int | Optional | The camera image width in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `480` |
 | `height_px` | int | Optional | The camera image height in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `640` |
+| `frame_rate` | float | Optional | The camera capture frequency as frames per second, used with `video_path` to find a camera with this throughput. <br> Default: Closest possible value to `30.0` |
 | `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> `width_px`: The expected width of the aligned image in pixels. </li> <li> `height_px`: The expected height of the aligned image in pixels. </li> <li> `fx`: The image center x point. </li> <li> `fy`: The image center y point. </li> <li> `ppx`: The image focal x. </li> <li> `ppy`: The image focal y. </li> </ul> |
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
 | `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
