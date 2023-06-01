@@ -152,4 +152,4 @@ Viam supports a wide variety of systems, including:
 </div>
 
 <script type="text/javascript" src="js/carousel.js"></script>
-<link rel="stylesheet" href="css/carousel.css">
+<link rel="stylesheet" href="css/carousel-min.css">
