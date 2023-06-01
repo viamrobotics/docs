@@ -1,6 +1,7 @@
 ---
 title: "Configure Cloud Sync"
 linkTitle: "Configure Cloud Sync"
+description: "Configure cloud sync to automatically capture data in the Viam app."
 weight: 35
 type: "docs"
 tags: ["data management", "cloud", "sync"]

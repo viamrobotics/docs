@@ -1,6 +1,7 @@
 ---
 title: "Viam in 3 minutes"
 linkTitle: "Viam in 3 minutes"
+description: "Viam is a complete software platform that supports every step of your robot development lifecycle."
 weight: 10
 no_list: true
 type: docs

@@ -1,6 +1,7 @@
 ---
 title: "Welcome to the Viam Documentation"
 linkTitle: "Viam Documentation"
+description: "Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS."
 weight: 1
 no_list: true
 type: "docs"
