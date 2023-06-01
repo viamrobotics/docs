@@ -5,7 +5,7 @@ weight: 40
 type: "docs"
 tags: ["data management", "data", "services"]
 no_list: true
-description: "Access data captured by the robot's components and train image classification models on the data."
+description: "Use Viam's built-in machine learning capabilities to train image classification models and deploy these models to your robots"
 # SME: Aaron Casas
 ---
 
