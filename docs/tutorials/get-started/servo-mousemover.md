@@ -1,5 +1,5 @@
 ---
-title: "Single Component Tutorial: How to Create a Mouse Mover Using a Servo"
+title: "How to Create a Mouse Mover Using a Servo"
 linkTitle: "Create a Mouse Mover"
 weight: 40
 type: "docs"
