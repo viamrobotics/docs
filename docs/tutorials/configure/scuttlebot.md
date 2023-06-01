@@ -165,7 +165,7 @@ With both motors configured, the **Control** tab now display panels for both mot
 
 <img src="../../img/scuttlebot/scuttle-bothmotors.png" alt="Motor panels">
 
-Viam ([https://app.viam.com](https://app.viam.com)) displays component panels in order of their creation.
+Viam ([app.viam.com](https://app.viam.com)) displays component panels in order of their creation.
 Don't worry if your motor panels are not adjacent.
 
 ## Configuring the base

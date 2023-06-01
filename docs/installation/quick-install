@@ -8,7 +8,7 @@ draft: false
 
 ## Adding your robot on the Viam app
 
-In your web browser, navigate to the Viam app ([https://app.viam.com](https://app.viam.com)) and log in.
+In your web browser, navigate to the Viam app ([app.viam.com](https://app.viam.com)) and log in.
 
 Once you are logged in, a location will be created for you by default, or you can create a new location by filling out the field on the left and then clicking **Add**.
 Location are just a way of organizing robots.
