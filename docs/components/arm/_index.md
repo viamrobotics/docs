@@ -25,7 +25,7 @@ When controlling an arm with `viam-server`, the following features are implement
 - Self-collision prevention
 - Obstacle avoidance
 
-#### Motion planning with your arm's built-in software
+## Motion planning with your arm's built-in software
 
 Each arm model is supported with a driver that is compatible with the software API that the model's manufacturer supports.
 While some arm models build inverse kinematics into their software, many do not.
