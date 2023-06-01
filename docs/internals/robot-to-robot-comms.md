@@ -1,5 +1,5 @@
 ---
-title: "Robot-to-Robot Communication: Application E2E Flow"
+title: "Robot-to-Robot Communication: Application End-to-End Flow"
 linkTitle: "Robot-to-Robot Communication"
 weight: 20
 type: "docs"
