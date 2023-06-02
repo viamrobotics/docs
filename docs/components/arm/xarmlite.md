@@ -4,7 +4,7 @@ linkTitle: "xArmLite"
 weight: 34
 type: "docs"
 description: "Configure an xArmLite arm."
-metaDescription: "Configure an xArmLite arm to integrate a UFACTORY Lite 6: Navigate to the Create component menu. Enter a name for your arm, select the type arm, and select the xArmLite model. Click Create component. Edit and fill in the attributes as applicable."
+metaDescription: "Configure a UFACTORY Lite 6 arm: Navigate to the Create component menu. Enter a name for your arm, select the type arm, and select the xArmLite model. Click Create component. Edit and fill in the attributes as applicable."
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---
