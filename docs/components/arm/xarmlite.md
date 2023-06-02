@@ -9,7 +9,7 @@ tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configure an `xArmLite` arm to integrate a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) for your robot:
+Configure an `xArmLite` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) to your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
