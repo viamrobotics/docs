@@ -1,6 +1,7 @@
 ---
 title: "Gripper Component"
 linkTitle: "Gripper"
+childTitleEndOverwrite: "Gripper Component"
 weight: 60
 type: "docs"
 description: "A gripper is a robotic grasping device that can open and close."

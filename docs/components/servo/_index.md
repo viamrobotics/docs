@@ -1,6 +1,7 @@
 ---
 title: "Servo Component"
 linkTitle: "Servo"
+childTitleEndOverwrite: "Servo Component"
 weight: 80
 type: "docs"
 description: "A hobby servo is a special type of small motor whose position you can precisely control."

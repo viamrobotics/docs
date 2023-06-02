@@ -1,6 +1,7 @@
 ---
 title: "Template Component"
 linkTitle: "Template"
+childTitleEndOverwrite: "Template Component"
 weight: 10
 type: "docs"
 description: "A NAME is a ... description of what the component is."
