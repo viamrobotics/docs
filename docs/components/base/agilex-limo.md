@@ -4,6 +4,7 @@ linkTitle: "agilex-limo"
 weight: 40
 type: "docs"
 description: "Configure an Agilex LIMO base."
+metaDescription: "An agilex-limo base supports LIMO, a mobile robot designed around the AgileX mobile platform. Configure an agilex-limo base as follows: Navigate to the Create component menu. Enter a name for your base, select the type base, and select the agilex-limo model. Click Create component."
 tags: ["base", "components"]
 images: ["/components/img/components/base.svg"]
 # SMEs: Matt Vella, Steve B

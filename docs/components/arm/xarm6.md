@@ -4,6 +4,7 @@ linkTitle: "xArm6"
 weight: 34
 type: "docs"
 description: "Configure an xArm6 arm."
+metaDescription: "Configure a UFACTORY xArm 6 for your robot: Navigate to the Create component menu. Enter a name for your arm, select the type arm, and select the xArm6 model. Click Create component. Edit and fill in the attributes as applicable."
 images: ["/components/img/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
