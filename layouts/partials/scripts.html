@@ -51,8 +51,14 @@ window.markmap = {
     integrity='sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==' crossorigin='anonymous'
     {{ printf "onload='renderMathInElement(%s, %s);'" (( .Site.Params.katex.html_dom_element | default "document.body" ) | safeJS ) ( printf "%s" ( $.Site.Params.katex.options | jsonify )) | safeHTMLAttr }}></script>
 {{ end }}
+<script src="https://cdn.jsdelivr.net/npm/typesense-docsearch.js@1/dist/cdn/docsearch.min.js"></script>
+{{ if .Site.Params.prism_syntax_highlighting }}
+<!-- scripts for prism -->
+<script src='{{ "js/prism.js" | relURL }}'></script>
+{{ end }}
 
 {{ $jsIndex := resources.Get "js/index.js" }}
+{{ $jsPrismViam := resources.Get "js/prism-viam.js" }}
 {{ $jsBase := resources.Get "js/base.js" }}
 {{ $jsAnchor := resources.Get "js/anchor.js" }}
 {{ $jsSearch := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" .Site.Home }}
@@ -64,16 +70,12 @@ window.markmap = {
 {{ if .Site.Params.offlineSearch }}
 {{ $jsSearch = resources.Get "js/offline-search.js" }}
 {{ end }}
-{{ $js := (slice $jsIndex $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio) | resources.Concat "js/main.js" }}
+{{ $js := (slice $jsIndex $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam) | resources.Concat "js/main.js" }}
 {{ if not hugo.IsProduction }}
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}
 {{ $js := $js | minify | fingerprint }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
-{{ end }}
-{{ if .Site.Params.prism_syntax_highlighting }}
-<!-- scripts for prism -->
-<script src='{{ "js/prism.js" | relURL }}'></script>
 {{ end }}
 
 {{ partial "hooks/body-end.html" . }}
