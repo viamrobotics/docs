@@ -205,6 +205,14 @@ a > code {
   color: #0000EA !important;
 }
 
+.td-toc #TableOfContents ul li li a > code {
+  color: #666666 !important;
+}
+
+.td-toc #TableOfContents ul li a > code {
+  color: #333333 !important;
+}
+
 footer a {
   color: #fff !important;
 }
