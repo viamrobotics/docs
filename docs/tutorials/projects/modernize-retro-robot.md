@@ -234,8 +234,8 @@ As with the positive connector, one of the negative terminals will be left empty
 
 Finally, plug the USB-C output from the step down converter into the Raspberry Pi.
 
-<div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/viam-omnibot-wiring-02.png" alt="Omnibot MAIV powered wiring diagram." title="Omnibot MAIV powered wiring diagram." style="max-width: 800px;" />
+<div class="td-max-width-on-larger-screens" style="max-width: 800px;">
+<img src="../../img/maiv/viam-omnibot-wiring-02.png" alt="Omnibot MAIV powered wiring diagram." title="Omnibot MAIV powered wiring diagram." />
 </div>
 
 #### Power MAIV on
