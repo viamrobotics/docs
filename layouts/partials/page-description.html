@@ -1,5 +1,24 @@
-{{ with .Description | plainify -}}
-  {{ . -}}
+{{ $recentlyChanged := (lt (sub now.Unix .Lastmod.Unix) 3600) }}
+
+{{if .Params.metaDescription }}
+  {{if gt (len .Params.metaDescription) 300}}
+    {{- warnf "Page description too long (%d) - add a metaDescription with 160-300 characters: %q." (len .Params.metaDescription) .Path -}}
+  {{ end }}
+  {{if lt (len .Params.metaDescription) 160}}
+    {{- warnf "Page description too short (%d) - add a metaDescription with 160-300 characters: %q." (len .Params.metaDescription) .Path -}}
+  {{ end }}
+{{else if .Description }}
+  {{ if $recentlyChanged }}
+    {{if gt (len .Description) 300}}
+      {{- warnf "Page description too long (%d) - add a metaDescription with 160-300 characters: %q." (len .Description) .Path -}}
+    {{ end }}
+    {{if lt (len .Description) 160}}
+      {{- warnf "Page description too short (%d) - add a metaDescription with 160-300 characters: %q.\n This may be a good start:\n%q" (len .Description) .Path (.Summary | plainify) -}}
+    {{ end }}
+  {{ end }}
+  {{ with .Description | plainify -}}
+    {{ . -}}
+  {{ end }}
 {{ else -}}
   {{ if .IsPage -}}
     {{- errorf "No description for page %q" .Path -}}
