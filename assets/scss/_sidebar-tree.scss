@@ -60,17 +60,12 @@
         }
     }
 
-    .td-sidebar-link {
+    a {
         display: inline-block;
         padding-bottom: 0.375rem;
+        color: black;
+        text-decoration: none;
 
-        &__page {
-            color: $gray-700;
-            font-weight: $font-weight-normal;
-        }
-    }
-
-    a {
         &:hover {
             color: $blue;
             text-decoration: none;
@@ -106,10 +101,9 @@
         }
     }
 
-    .td-sidebar-link.tree-root{
-        font-weight: $font-weight-bold;
-        color: $td-sidebar-tree-root-color;
-        border-bottom: 1px $td-sidebar-tree-root-color solid;
+    .tree-root{
+        color: black;
+        border-bottom: 1px black solid;
         margin-bottom: 1rem;
     }
 }
