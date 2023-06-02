@@ -139,3 +139,28 @@ if(main && scrollBtn) {
     });
     observer.observe(main);
 }
+
+docsearch({
+    inputSelector: '.navbar-nav .td-search-input',
+    typesenseCollectionName: 'docsearch',
+    typesenseServerConfig: {
+      nodes: [{
+        host: 'cgnvrk0xwyj9576lp-1.a1.typesense.net',
+        port: '443',
+        protocol: 'https'
+      }],
+      apiKey: 'GHQK6od8KfpvTEh4YpA113gUc2dU5fGR'
+    },
+  });
+  docsearch({
+    inputSelector: '.td-sidebar__search .td-search-input',
+    typesenseCollectionName: 'docsearch',
+    typesenseServerConfig: {
+      nodes: [{
+        host: 'cgnvrk0xwyj9576lp-1.a1.typesense.net',
+        port: '443',
+        protocol: 'https'
+      }],
+      apiKey: 'GHQK6od8KfpvTEh4YpA113gUc2dU5fGR'
+    },
+});
