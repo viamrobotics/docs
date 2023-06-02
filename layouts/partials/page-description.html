@@ -7,6 +7,9 @@
   {{if lt (len .Params.metaDescription) 160}}
     {{- warnf "Page description too short (%d) - add a metaDescription with 160-300 characters: %q." (len .Params.metaDescription) .Path -}}
   {{ end }}
+  {{ with .Params.metaDescription | plainify -}}
+    {{ . -}}
+  {{ end }}
 {{else if .Description }}
   {{ if $recentlyChanged }}
     {{if gt (len .Description) 300}}
