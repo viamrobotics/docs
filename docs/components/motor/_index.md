@@ -1,6 +1,7 @@
 ---
 title: "Motor Component"
 linkTitle: "Motor"
+childTitleEndOverwrite: "Motor Component"
 weight: 70
 type: "docs"
 description: "A motor is a rotating machine that transforms electrical energy into mechanical energy."

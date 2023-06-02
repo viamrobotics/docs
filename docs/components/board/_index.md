@@ -1,6 +1,7 @@
 ---
 title: "Board Component"
 linkTitle: "Board"
+childTitleEndOverwrite: "Board Component"
 weight: 20
 type: "docs"
 no_list: true

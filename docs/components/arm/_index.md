@@ -1,6 +1,7 @@
 ---
 title: "Arm Component"
 linkTitle: "Arm"
+childTitleEndOverwrite: "Arm Component"
 weight: 10
 type: "docs"
 description: "A robotic arm is made up of a series of links and joints, ending with a device you can position."

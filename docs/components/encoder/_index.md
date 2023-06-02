@@ -1,6 +1,7 @@
 ---
 title: "Encoder Component"
 linkTitle: "Encoder"
+childTitleEndOverwrite: "Encoder Component"
 weight: 50
 type: "docs"
 description: "A special type of sensor that measures rotation of a motor or joint."

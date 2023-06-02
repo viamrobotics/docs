@@ -1,6 +1,7 @@
 ---
 title: "Sensor Component"
 linkTitle: "Sensor"
+childTitleEndOverwrite: "Sensor Component"
 weight: 70
 no_list: true
 type: "docs"
