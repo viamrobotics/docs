@@ -16,8 +16,17 @@ hugo.IsProduction (ne $outputFormat "print") -}}
 <meta name="robots" content="noindex, nofollow" />
 {{ end -}} {{ partialCached "favicons.html" . }}
 <title>
-    {{- if .IsHome -}} {{ .Site.Title -}} {{ else -}} {{ with .Title }}{{ . }} {{ end -}} {{if gt (len .Title) 70}} {{- errorf "Title too long for page %q" .Path -}} {{ end }} {{if lt (len .Title) 50}} |
-    {{ .Site.Title -}} {{ end -}} {{ end -}}
+    {{- if .IsHome -}} {{ .Site.Title -}} {{ else -}} {{ with .Title }} {{ . }} {{ end -}}
+    {{ if .Parent.Params.childTitleEndOverwrite }}
+        {{if gt (add (add (len .Title)  (len .Parent.Params.childTitleEndOverwrite)) 3) 70}} {{- errorf "Title too long for page: %q | %q at %q" .Title .Parent.Params.childTitleEndOverwrite .Path -}} {{ end }} | {{ .Parent.Params.childTitleEndOverwrite }}
+    {{ else }}
+        {{ if gt (len .Ancestors) 2 }}
+            {{if gt (add (add (len .Title) (len .Parent.LinkTitle)) 3) 70}} {{- errorf "Title too long for page: %q | %q at %q" .Title .Parent.LinkTitle .Path -}} {{ end }} | {{ .Parent.LinkTitle }}
+        {{ else }}
+            {{if gt (add (add (len .Title) (len .Site.Title)) 3)  70}} {{- errorf "Title too long for page: %q | %q at %q" .Title .Site.Title .Path -}} {{ end }} | {{ .Site.Title }}
+        {{ end }}
+    {{ end }}
+    {{ end -}}
 </title>
 <link rel="canonical" href="{{ .Permalink }}" />
 <meta name="description" content="{{ template "partials/page-description.html" .

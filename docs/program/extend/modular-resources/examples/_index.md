@@ -1,7 +1,8 @@
 ---
-title: "Examples of configuring modular resources"
+title: "Modular Resource Configuration Examples"
 linkTitle: "Examples"
-description: "Tutorials and repositories with examples of configuring modular resources."
+childTitleEndOverwrite: "Modular Resource Example"
+description: "Tutorials and repositories with modular resources configuration examples."
 weight: 10
 type: "docs"
 no_list: true
