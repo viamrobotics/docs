@@ -1,6 +1,7 @@
 ---
 title: "Installation Guide"
 linkTitle: "Installation Guide"
+childTitleEndOverwrite: "Try Viam"
 weight: 20
 no_list: true
 type: docs

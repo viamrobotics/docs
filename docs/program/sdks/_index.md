@@ -1,6 +1,6 @@
 ---
 title: "Program your Robot with Viam's SDKs"
-linkTitle: "Program your Robot with Viam's SDKs"
+linkTitle: "Viam SDKs"
 weight: 40
 type: "docs"
 description: "Use Viam's SDKs to write code to access and control your robot."
