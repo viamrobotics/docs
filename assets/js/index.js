@@ -1,6 +1,6 @@
 // script for menu toggles
 var siteMenuSubmenus = document.getElementsByClassName(
-    "nav-with-child"
+    "nav-fold"
 );
 
 function submenuToggle(menu, toggle) {
