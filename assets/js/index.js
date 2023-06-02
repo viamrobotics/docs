@@ -1,6 +1,6 @@
 // script for menu toggles
 var siteMenuSubmenus = document.getElementsByClassName(
-    "td-sidebar-nav__section-title td-sidebar-nav__section with-child"
+    "nav-with-child"
 );
 
 function submenuToggle(menu, toggle) {
