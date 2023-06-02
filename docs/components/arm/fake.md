@@ -4,7 +4,7 @@ linkTitle: "fake"
 weight: 34
 type: "docs"
 description: "Configure a fake arm to use for testing."
-metaDescription: "Configure a fake arm to test different models of robotic arms without any physical hardware: Navigate to the Create component menu. Enter a name for your arm, select the type arm, and select the fake model. Click Create component. Edit and fill in the attributes as applicable."
+metaDescription: "Configure a fake arm to test different models of robotic arms without any physical hardware. Navigate to the create component menu and enter a name for your arm, select the type arm, and select the fake model. Click create component. Edit and fill in the attributes as applicable."
 images: ["/components/img/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
