@@ -72,6 +72,8 @@
         }
 
         &.active {
+            // The active navbar item
+            color: #0000EA;
             font-weight: $font-weight-bold;
         }
     }
@@ -160,7 +162,7 @@
 }
 
 
-.submenu-toggle {
+.menu-toggle {
     margin-right: -1.5em;
     float: right;
 }
