@@ -276,6 +276,10 @@ p, li {
   margin-bottom: 1rem;
 }
 
+.breadcrumb-item {
+  color: #0000EA;
+}
+
 .breadcrumb-item + .breadcrumb-item::before {
   float: left;
   padding-right: 0.5rem;
