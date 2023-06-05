@@ -157,9 +157,7 @@ Orient your L298N so that the `OUT1` and `OUT2` terminals are on the left side.
 Using a screwdriver, attach the 2 wires from the left motor to the `OUT1` and `OUT2` terminals.
 Now, attach the 2 wires from the right motor to the `OUT3` and `OUT4` terminals.
 
-<div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/viam-omnibot-wiring-01.png" alt="Omnibot MAIV base wiring diagram." title="Omnibot MAIV base wiring diagram." style="max-width: 750px;" />
-</div>
+![Omnibot MAIV base wiring diagram.](../../img/maiv/viam-omnibot-wiring-01.png)
 
 Ensure your Raspberry Pi is powered off, and connect GPIO pins for the left motor with female-to-female jumper wires.
 You can use any GPIO pins, but we connected pin 32 to `IN1`, pin 38 to `IN2`, and pin 35 to `ENA`.
@@ -234,8 +232,8 @@ As with the positive connector, one of the negative terminals will be left empty
 
 Finally, plug the USB-C output from the step down converter into the Raspberry Pi.
 
-<div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/viam-omnibot-wiring-02.png" alt="Omnibot MAIV powered wiring diagram." title="Omnibot MAIV powered wiring diagram." style="max-width: 800px;" />
+<div class="td-max-width-on-larger-screens" style="max-width: 800px;">
+<img src="../../img/maiv/viam-omnibot-wiring-02.png" alt="Omnibot MAIV powered wiring diagram." title="Omnibot MAIV powered wiring diagram." />
 </div>
 
 #### Power MAIV on

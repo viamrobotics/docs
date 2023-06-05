@@ -1,5 +1,5 @@
 ---
-title: "How to Make an LED Blink with a Raspberry Pi and the Viam SDK"
+title: "Make an LED Blink with a Raspberry Pi and the Viam SDK"
 linkTitle: "Blink an LED with a Pi and the SDK"
 weight: 40
 type: "docs"
@@ -298,7 +298,7 @@ If you have any issues whatsoever getting the Viam SDK set up or getting your co
 
 In this tutorial, you learned the basics of controlling your robot using the Viam SDK by writing a short program in either Go or Python that makes an LED on your Raspberry Pi blink on and off.
 
-If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, check out one of following [tutorials](../).
+If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, check out one of following [tutorials](/tutorials/).
 
 {{% alert title="Tip" color="tip" %}}
 If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Community Discord](https://discord.gg/viam).

@@ -1,6 +1,7 @@
 ---
 title: "Gantry Component"
 linkTitle: "Gantry"
+childTitleEndOverwrite: "Gantry Component"
 no_list: true
 weight: 50
 type: "docs"

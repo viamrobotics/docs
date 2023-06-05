@@ -1,6 +1,6 @@
 ---
 title: "Build a robotic claw game with a Raspberry Pi"
-linkTitle: "Build a Claw Game"
+linkTitle: "Claw Game"
 weight: 50
 type: "docs"
 description: "Create your own version of the famous arcade claw machine using a robotic arm and a a claw grabber."

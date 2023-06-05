@@ -60,8 +60,8 @@ The following attributes are available for `numato` boards:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `pins` | int | **Required** | Number of GPIO pins available on the module. |
-| `analogs` | object | **Required** | Attributes of any pins that can be used as inputs for the module's internal analog-to-digital converter (ADC). See configuration info [here](/components/board/#analogs). |
+| `analogs` | object | **Required** | Attributes of any pins that can be used as inputs for the module's internal analog-to-digital converter (ADC). See [configuration info](/components/board/#analogs). |
 <!-- I think these are available but I need to confirm
-| `digital_interrupts` | object | Optional | Pin and name of any digital interrupts. See configuration info [here](/components/board/#digital-interrupts). |
-| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select bus pins' index and name. See configuration info [here](/components/board/#spi-buses). |
-| `i2cs` | object | Optional | Any Inter Integrated Circuit (I2C) bus pins' index and name. See configuration info [here](/components/board/#i2cs). | -->
+| `digital_interrupts` | object | Optional | Pin and name of any digital interrupts. See [configuration info](/components/board/#digital-interrupts). |
+| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select bus pins' index and name. See [configuration info](/components/board/#spi-buses). |
+| `i2cs` | object | Optional | Any Inter Integrated Circuit (I2C) bus pins' index and name. See [configuration info](/components/board/#i2cs). | -->

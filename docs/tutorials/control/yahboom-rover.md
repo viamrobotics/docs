@@ -21,7 +21,7 @@ See our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) for instruc
 
 ## Configuring the Board
 
-Go to the Viam app ([https://app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **Config** tab of the robot associated with your Raspberry Pi.
+Go to the Viam app ([app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **Config** tab of the robot associated with your Raspberry Pi.
 To create a new component you'll be working within the **Create Component** section of the **Components** subtab.
 
 ![A screenshot of the config builder UI on app.viam.com showing the Create Component box filled out with name=local, type=board and model=pi.](../../img/yahboom-rover/config.png)

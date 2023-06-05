@@ -1,6 +1,6 @@
 ---
 title: "Program your Robot with Viam's SDKs"
-linkTitle: "Program your Robot with Viam's SDKs"
+linkTitle: "Viam SDKs"
 weight: 40
 type: "docs"
 description: "Use Viam's SDKs to write code to access and control your robot."
@@ -307,7 +307,7 @@ For an example, see [this execution demo.](https://github.com/viamrobotics/viam-
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-For information on running C++ code see [here](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+For information on running C++ code see [the instructions on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
 
 {{% /tab %}}
 {{< /tabs >}}

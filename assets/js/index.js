@@ -1,6 +1,6 @@
 // script for menu toggles
 var siteMenuSubmenus = document.getElementsByClassName(
-    "td-sidebar-nav__section-title td-sidebar-nav__section with-child"
+    "nav-fold"
 );
 
 function submenuToggle(menu, toggle) {
@@ -31,7 +31,7 @@ function submenuToggle(menu, toggle) {
 
 for (let menu of siteMenuSubmenus) {
     // add event listener on menu toggle
-    let toggle = menu.querySelector("span").querySelector(".submenu-toggle");
+    let toggle = menu.querySelector("span").querySelector(".menu-toggle");
     if (toggle) {
         if (menu.classList.contains('empty-node-submenu')) {
             menu.querySelector("span").addEventListener('click', function () {
@@ -116,4 +116,51 @@ if (toc) {
 userflow.init("ct_dybdwc2fkna4lmih2zyqb6eune");
 userflow.identifyAnonymous({
     website_lead: true,
+});
+
+// script for the scroll button
+const main = document.body;
+const scrollBtn = document.getElementById("scrollButton");
+function toTop() {
+    window.scroll({top: 0, left: 0, behavior: 'smooth'});
+}
+
+function btnVisibility(payload) {
+    if (payload[0].boundingClientRect.y <= -400) {
+        scrollBtn.style.visibility = "visible";
+    } else {
+        scrollBtn.style.visibility = "hidden";
+    }
+}
+
+if(main && scrollBtn) {
+    const observer = new IntersectionObserver(btnVisibility, {
+        threshold: [0, 0.2, 0.4, 0.6, 0.8, 1.0]
+    });
+    observer.observe(main);
+}
+
+docsearch({
+    inputSelector: '.navbar-nav .td-search-input',
+    typesenseCollectionName: 'docsearch',
+    typesenseServerConfig: {
+      nodes: [{
+        host: 'cgnvrk0xwyj9576lp-1.a1.typesense.net',
+        port: '443',
+        protocol: 'https'
+      }],
+      apiKey: 'GHQK6od8KfpvTEh4YpA113gUc2dU5fGR'
+    },
+  });
+  docsearch({
+    inputSelector: '.td-sidebar__search .td-search-input',
+    typesenseCollectionName: 'docsearch',
+    typesenseServerConfig: {
+      nodes: [{
+        host: 'cgnvrk0xwyj9576lp-1.a1.typesense.net',
+        port: '443',
+        protocol: 'https'
+      }],
+      apiKey: 'GHQK6od8KfpvTEh4YpA113gUc2dU5fGR'
+    },
 });

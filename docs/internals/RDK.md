@@ -7,6 +7,7 @@ description: "The RDK is the open-source, on-robot portion of the Viam platform,
 tags: ["server", "rdk"]
 aliases:
   - "/product-overviews/rdk"
+  - "/program/rdk"
 ---
 
 {{< alert title="Tip" color="tip" >}}

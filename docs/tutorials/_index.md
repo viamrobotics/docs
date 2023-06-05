@@ -3,7 +3,11 @@ title: "Tutorials"
 linkTitle: "Tutorials"
 weight: 65
 type: docs
+images: [ "/tutorials/img/try-viam-sdk/image1.gif" ]
+description: "Build a robot yourself by following along with a tutorial."
 no_list: true
+sitemap:
+  priority: 1.0
 aliases:
     - "/build/"
 ---

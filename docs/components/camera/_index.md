@@ -1,6 +1,7 @@
 ---
 title: "Camera Component"
 linkTitle: "Camera"
+childTitleEndOverwrite: "Camera Component"
 weight: 40
 type: "docs"
 description: "A camera captures 2D or 3D images and sends them to the computer controlling the robot."

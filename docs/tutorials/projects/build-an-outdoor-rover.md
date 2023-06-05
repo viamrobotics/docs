@@ -1,10 +1,10 @@
 ---
-title: "Build an outdoor rover: simple, useful and affordable (choose 3)"
-linkTitle: "Build an Outdoor Rover"
+title: "Build an outdoor rover: simple, useful and affordable"
+linkTitle: "Outdoor Rover"
 weight: 60
 type: "docs"
 tags: ["base", "outdoor", "solar", "rover"]
-description: "Build and control an affordable, functional outdoor rover."
+description: "Build and control an affordable, functional outdoor rover (choose 3)."
 image: "/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"
 images: ["/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"]
 aliases:

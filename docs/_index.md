@@ -1,10 +1,13 @@
 ---
 title: "Welcome to the Viam Documentation"
 linkTitle: "Viam Documentation"
+description: "Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS."
 weight: 1
 no_list: true
 type: "docs"
 hide_feedback: true
+sitemap:
+  priority: 1.0
 ---
 
 Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS.
@@ -38,8 +41,8 @@ Viam supports a wide variety of systems, including:
   </li>
   <li id="c1_slide5">
     <a href="installation/prepare/microcontrollers/">
-            <img src="installation/img/thumbnails/esp32-espressif.png" alt="E S P 32 - espressif" width="100%">
-            <h6>Espressif ESP32</h6>
+        <img src="installation/img/thumbnails/esp32-espressif.png" alt="E S P 32 - espressif" width="100%">
+        <h6>Espressif ESP32</h6>
     </a>
   </li>
   <li id="c1_slide6">
@@ -56,8 +59,8 @@ Viam supports a wide variety of systems, including:
   </li>
   <li id="c1_slide8">
     <a href="components/board/jetson/">
-            <img src="installation/img/thumbnails/jetson-xavier.png" alt="Jetson Xavier NX Dev Kit" width="100%">
-            <h6>NVIDIA Jetson Xavier NX</h6>
+        <img src="installation/img/thumbnails/jetson-xavier.png" alt="Jetson Xavier NX Dev Kit" width="100%">
+        <h6>NVIDIA Jetson Xavier NX</h6>
     </a>
   </li>
   <li id="c1_slide9">
@@ -85,19 +88,19 @@ Viam supports a wide variety of systems, including:
     </a>
   </li>
   </ul>
-  <ol style="visibility: hidden">
-    <li><a href="#c1_slide1"></a></li>
-    <li><a href="#c1_slide2"></a></li>
-    <li><a href="#c1_slide3"></a></li>
-    <li><a href="#c1_slide4"></a></li>
-    <li><a href="#c1_slide5"></a></li>
-    <li><a href="#c1_slide6"></a></li>
-    <li><a href="#c1_slide7"></a></li>
-    <li><a href="#c1_slide8"></a></li>
-    <li><a href="#c1_slide9"></a></li>
-    <li><a href="#c1_slide10"></a></li>
-    <li><a href="#c1_slide11"></a></li>
-    <li><a href="#c1_slide12"></a></li>
+  <ol style="visibility: hidden" aria-hidden="true">
+    <li><a href="#c1_slide1">NVIDIA Jetson Nano</a></li>
+    <li><a href="#c1_slide2">Raspberry Pi 4</a></li>
+    <li><a href="#c1_slide3">BeagleBone AI-64</a></li>
+    <li><a href="#c1_slide4">Texas Instruments TDA4VM</a></li>
+    <li><a href="#c1_slide5">Espressif ESP32</a></li>
+    <li><a href="#c1_slide6">Raspberry Pi 3</a></li>
+    <li><a href="#c1_slide7">NVIDIA Jetson AGX Orin</a></li>
+    <li><a href="#c1_slide8">NVIDIA Jetson Xavier NX</a></li>
+    <li><a href="#c1_slide9">Raspberry Pi Zero 2W</a></li>
+    <li><a href="#c1_slide10">FriendlyElec NanoPi</a></li>
+    <li><a href="#c1_slide11">Numato GPIO Modules</a></li>
+    <li><a href="#c1_slide12">PCA9686 Arduino I<sup>2</sup>C Interface</a></li>
   </ol>
   <div class="prev" style="display: block">‹</div>
   <div class="next" style="display: block">›</div>
@@ -149,5 +152,5 @@ Viam supports a wide variety of systems, including:
     </div>
 </div>
 
-<script type="text/javascript" src="js/carousel.js"></script>
-<link rel="stylesheet" href="css/carousel.css">
+<script type="text/javascript" src="js/carousel-min.js"></script>
+<link rel="stylesheet" href="css/carousel-min.css">

@@ -1,9 +1,10 @@
 ---
-title: "Custom Resources"
+title: "Custom Resource Tutorials"
 linkTitle: "Custom Resources"
+childTitleEndOverwrite: "Tutorial"
 weight: 50
-simple_list: true
 type: docs
-description: "Tutorials that use custom resources."
 empty_node: true
+layout: "empty"
+canonical: "/tutorials/"
 ---

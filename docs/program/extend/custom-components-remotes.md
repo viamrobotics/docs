@@ -14,8 +14,6 @@ videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acryli
 
 {{% alert title="Caution" color="caution" %}}
 {{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations for SDKs with module support unless you are hosting `viam-server` on a non-Linux system or have another issue with compilation.
-
-Instructions on creating and using modular resources are available [here](/program/extend/modular-resources/).
 {{% /alert %}}
 
 If a type or model of [component](/components/) you are working with is not built-in to the [Viam RDK](/internals/rdk/), you can use a [Viam SDK](/program/sdks/) to code a custom resource implementation, host it on a server, and add it as a [remote](/manage/parts-and-remotes/) of your robot.

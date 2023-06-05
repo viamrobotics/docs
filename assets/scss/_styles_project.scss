@@ -177,26 +177,7 @@ h7, .h7 {
   color: #666666;
 }
 
-/* font color */
-/* This font color relieves the overall heaviness of the LH menu.  */
-.td-sidebar-nav .td-sidebar-link__page {
-  color: #495057;
-}
-
-// All navbar items except the active one
-.td-sidebar-nav .td-sidebar-link {
-  color: black;
-  text-decoration: none;
-}
-
-// The active navbar item
-.td-sidebar-nav-active-item {
-  color: #0000EA;;
-  font-weight: $font-weight-bold;
-}
-
 // Expanded headers should be bold
-
 
 .breadcrumb {
   font-size: 1rem;
@@ -222,6 +203,14 @@ a:hover {
 
 a > code {
   color: #0000EA !important;
+}
+
+.td-toc #TableOfContents ul li li a > code {
+  color: #666666 !important;
+}
+
+.td-toc #TableOfContents ul li a > code {
+  color: #333333 !important;
 }
 
 footer a {
@@ -269,11 +258,8 @@ p, li {
   line-height: 1.75em !important;
 }
 
-.td-sidebar-nav .td-sidebar-link.tree-root {
-  font-weight: 400;
-  color: black;
-  border-bottom: 1px #30638E solid;
-  margin-bottom: 1rem;
+.breadcrumb-item {
+  color: #0000EA;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {

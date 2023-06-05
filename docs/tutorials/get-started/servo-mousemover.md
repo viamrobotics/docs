@@ -1,6 +1,6 @@
 ---
-title: "Single Component Tutorial: How to Create a Mouse Mover Using a Servo"
-linkTitle: "Create a Mouse Mover"
+title: "How to Create a Mouse Mover Using a Servo"
+linkTitle: "Mouse Mover"
 weight: 40
 type: "docs"
 description: "Use the Python SDK to move a continuous servo to keep a computer screen from sleeping."

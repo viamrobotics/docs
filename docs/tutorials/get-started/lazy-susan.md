@@ -1,5 +1,5 @@
 ---
-title: "Single Component Tutorial: How to Create a Lazy Susan Using a DC Motor"
+title: "Create a Lazy Susan Using a DC Motor"
 linkTitle: "Lazy Susan"
 weight: 50
 type: "docs"

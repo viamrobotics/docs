@@ -1,6 +1,7 @@
 ---
 title: "Try Viam"
 linkTitle: "Try Viam"
+childTitleEndOverwrite: "Try Viam"
 weight: 15
 type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab."

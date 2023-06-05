@@ -1,6 +1,8 @@
 ---
 title: "Viam in 3 minutes"
 linkTitle: "Viam in 3 minutes"
+description: "Viam is a complete software platform that supports every step of your robot development lifecycle."
+metaDescription: "Viam is a complete software platform for robots. It runs on 64-bit Linux and macOS, and provides services for computer vision, motion planning, SLAM, data management, and machine learning. You can make use of Viam's pre-defined robot components and community-contributed and custom resources."
 weight: 10
 no_list: true
 type: docs
@@ -32,7 +34,7 @@ Join the [**Viam community**](https://discord.gg/viam) to collaborate during pla
 
 ## Get started
 
-A *robot* in Viam consists of at least one computer, typically a [single-board computer](/installation/prepare/), running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
+A *robot* in Viam consists of at least one computer, typically a [single-board computer](/installation/), running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
 Viam supports devices running **any** 64-bit Linux OS or macOS.
 
 <img src="img/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." class="alignleft" style="max-width:270px"></img>
