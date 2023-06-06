@@ -5,9 +5,11 @@ weight: 60
 type: "docs"
 tags: ["raspberry pi", "app", "board", "motor", "camera"]
 description: "Create an autonomous drink carrying robot with motion sensing and machine learning."
-image: "/tutorials/img/tipsy/preview.jpg"
-images: ["/tutorials/img/tipsy/preview.jpg"]
-imageAlt: "Tipsy robot carrying drinks"
+images: ["/tutorials/img/tipsy/tipsy-preview.gif"]
+videoAlt: "Tipsy robot carrying drinks"
+webmSrc: "/tutorials/img/tipsy/tipsy-preview.webm"
+mp4Src: "/tutorials/img/tipsy/tipsy-preview.mp4"
+
 # Author: Hazal
 ---
 
