@@ -137,7 +137,7 @@ This allows us to route the email to our phone as a text message.
 
 If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already set up a folder with some Python code that connects to your robot and implements the Vision Service.
 
-If you are starting with this tutorial, follow the [steps here](/tutorials/projects/light-up/#write-python-code-to-control-your-object-detection-robot) to create the main script file, connect the code to the robot, and select the model and label path.
+If you are starting with this tutorial, follow [these steps](/tutorials/projects/light-up/#write-python-code-to-control-your-object-detection-robot) to create the main script file, connect the code to the robot, and select the model and label path.
 Ignore the step about the Kasa smart plug host address.
 
 Instead of using this person detector to activate a smart plug, you will send yourself a text message.

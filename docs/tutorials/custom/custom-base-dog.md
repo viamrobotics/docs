@@ -227,8 +227,7 @@ For example, the `stop` method sends a command (`CMD_MOVE_STOP#8`) to the robot 
         self.send_data(command)
 ```
 
-Feel free to tweak the specific contents of each of these method definitions, and add support for other base methods like `spin`.
-You can [read about the base API here](/components/base/#api).
+Feel free to tweak the specific contents of each of the [base method definitions](/components/base/#api), and add support for other base methods like `spin`.
 
 Save [<file>my_robot_dog.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/my_robot_dog.py) into the <file>RobotDog</file> directory you created.
 
@@ -411,7 +410,7 @@ If you have otherwise unexplained connection errors, try powering things off and
       nc <DOG IP ADDRESS> 5001
       ```
 
-  3. You can now type commands ([see the list of available commands here](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Code/Client/Command.py)) and hit enter to send them to the Freenove robot dog server.
+  3. You can now type commands ([list of available commands](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Code/Client/Command.py)) and hit enter to send them to the Freenove robot dog server.
     For example:
 
       ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
