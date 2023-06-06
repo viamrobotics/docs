@@ -72,7 +72,7 @@ Line numbering is off by default.
 ```
 
 With just line 6 highlighted.
-See <https://prismjs.com/plugins/line-highlight/> for more:
+See [the prism line highlight extension](https://prismjs.com/plugins/line-highlight/) for more info:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="6"}
 while (True):
