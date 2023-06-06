@@ -20,7 +20,7 @@ For example:
 - The API of built-in component [camera](/components/camera) is `rdk:component:camera`, which exposes methods such as `GetImage()`.
 - The API of built-in service [vision](/services/vision) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
 
-{{% alert title="Note" color="note" %}}
+<!-- {{% alert title="Note" color="note" %}}
 You can see built-in Viam resource APIs in the [Viam GitHub](https://github.com/viamrobotics/api).
 {{% /alert %}}
 
@@ -37,6 +37,8 @@ Models are also uniquely namespaced as colon-delimited-triplets in the form of `
 For example:
 
 - The `rdk:builtin:gpio` model of the `rdk:component:motor` API provides RDK support for [GPIO-controlled DC motors](/components/motor/gpio/).
-- The `rdk:builtin:DMC4000` model of the same `rdk:component:motor` API provides RDK support for the [DMC4000](/components/motor/dmc4000/) motor.
+- The `rdk:builtin:DMC4000` model of the same `rdk:component:motor` API provides RDK support for the [DMC4000](/components/motor/dmc4000/) motor. -->
 
-TODO: Talk about how these methods work --> providing wrapper for gRPC client request to these endpoints, which are how you access/interface with the components you have configured on your robot/`viam-server`.
+<!-- TODO -- transition from talking about model to resource API properly -->
+
+The API methods provided by the SDKs for each of these resource APIs serve as a wrapper for making gRPC client requests to their endpoints in your program, which is how you interface with the resources you configured on your robot.
