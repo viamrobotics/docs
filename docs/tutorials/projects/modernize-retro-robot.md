@@ -8,8 +8,8 @@ mp4Src: "/tutorials/img/maiv/maiv_front.mp4"
 images: ["/tutorials/img/maiv/maiv_front.gif"]
 tags: ["base", "retro", "vision", "computer vision", "camera", "motor", "python"]
 no_list: true
-description: "Modernize a 1980s robot with Viam and AI"
-imageAlt: ""
+description: "Modernize the Omnibot 2000 from the 1980s with Viam and AI."
+imageAlt: "The front of the Ombibot 2000 robot"
 # SME: Matt Vella
 ---
 

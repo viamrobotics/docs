@@ -4,7 +4,7 @@ linkTitle: "Test"
 weight: 1
 draft: true
 type: "docs"
-description: "Test"
+description: "Information for writing docs with hugo - this is only rendered in test and dev environments."
 ---
 
 ## Reusable Text Snippets

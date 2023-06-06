@@ -11,7 +11,7 @@ aliases:
     - "/viam-rover-resources/"
     - "/rover-resources/"
 images: ["/try-viam/rover-resources/img/viam-rover/box-contents.jpg"]
-description: Get your own Viam rover and set it up.
+description: If you want a convenient mobile base for robotics projects, order a Viam rover and set it up.
 ---
 
 {{< alert title="Tip" color="tip" >}}

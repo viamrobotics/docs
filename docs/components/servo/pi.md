@@ -3,7 +3,7 @@ title: "Configure a pi Servo"
 linkTitle: "pi"
 weight: 90
 type: "docs"
-description: "Configure a pi servo."
+description: "Configure a pi servo to integrate a hobby servo controlled by GPIO pins on a Raspberry Pi board."
 tags: ["servo", "components"]
 icon: "img/components/servo.png"
 # SME: Rand

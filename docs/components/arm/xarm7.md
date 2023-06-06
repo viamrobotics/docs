@@ -3,8 +3,7 @@ title: "Configure an xArm7 Arm"
 linkTitle: "xArm7"
 weight: 34
 type: "docs"
-description: "Configure an xArm7 arm."
-metaDescription: "Configure a UFACTORY xArm 7 for your robot: Navigate to the Create component menu. Enter a name for your arm, select the type arm, and select the xArm7 model. Click Create component. Edit and fill in the attributes as applicable."
+description: "Configure a UFACTORY xArm 7 for your robot."
 images: ["/components/img/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
