@@ -3,8 +3,7 @@ title: "Configure an xArmLite Arm"
 linkTitle: "xArmLite"
 weight: 34
 type: "docs"
-description: "Configure an xArmLite arm."
-metaDescription: "Configure a UFACTORY Lite 6 arm: Navigate to the Create component menu. Enter a name for your arm, select the type arm, and select the xArmLite model. Click Create component. Edit and fill in the attributes as applicable."
+description: "Configure a UFACTORY Lite 6 arm for your robot."
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---

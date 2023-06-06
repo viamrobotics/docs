@@ -4,7 +4,7 @@ linkTitle: "AI companion robot"
 weight: 60
 type: "docs"
 tags: ["base", "AI", "OpenAI", "ChatGPT", "ElevenLabs", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
-description: "Harness AI to add life to your Viam rover."
+description: "Harness AI and use ChatGPT to add life to your Viam rover and turn it into a companion robot."
 image: "/tutorials/img/ai-integration/rosey_robot.jpg"
 images: ["/tutorials/img/ai-integration/rosey_robot.jpg"]
 aliases:

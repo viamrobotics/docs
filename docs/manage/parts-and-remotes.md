@@ -3,7 +3,7 @@ title: "Robot Architecture: Parts, Sub-Parts and Remotes"
 linkTitle: "Robot Architecture"
 weight: 40
 type: "docs"
-description: "Connect robots to each other."
+description: "Connect multiple robot parts to each other as sub-parts or remotes."
 tags: ["server", "components", "services"]
 ---
 

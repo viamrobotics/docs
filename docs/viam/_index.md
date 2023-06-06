@@ -1,8 +1,7 @@
 ---
 title: "Viam in 3 minutes"
 linkTitle: "Viam in 3 minutes"
-description: "Viam is a complete software platform that supports every step of your robot development lifecycle."
-metaDescription: "Viam is a complete software platform for robots. It runs on 64-bit Linux and macOS, and provides services for computer vision, motion planning, SLAM, data management, and machine learning. You can make use of Viam's pre-defined robot components and community-contributed and custom resources."
+description: "Viam is a complete software platform for robots which provides modular robot components and services for vision, motion, SLAM, ML, and data management."
 weight: 10
 no_list: true
 type: docs
