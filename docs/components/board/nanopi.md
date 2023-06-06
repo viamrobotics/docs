@@ -9,6 +9,13 @@ tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
 
+{{< alert title="Note" color="note" >}}
+
+This board is experimental.
+Stability is not guaranteed.
+
+{{% /alert %}}
+
 Configure a `nanopi` board to integrate [FriendlyElec’s NanoPi Mini Board](https://www.friendlyelec.com/index.php?route=product/category&path=69) into your robot:
 
 {{< tabs name="Configure an nanopi Board" >}}
