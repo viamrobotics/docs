@@ -20,7 +20,7 @@ Luckily, I am not the first one to have the idea to build a guardian and there w
 In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo/), a [camera](/components/camera/), some LEDs and the [ML Model service](/services/ml/) and [Vision Service](/services/vision/).
 Here's a video of the finished guardian detecting me:
 
-{{<video webm_src="../../img/guardian/guardian-detection.webm" mp4_src="../../img/guardian/guardian-detection.mp4" alt="Guardian robot detects person and rotates head to follow them around">}}
+{{<video webm_src="../../img/guardian/guardian-detection.webm" mp4_src="../../img/guardian/guardian-detection.mp4" poster="../../img/guardian/guardian-detection.jpg" alt="Guardian robot detects person and rotates head to follow them around">}}
 
 ## Hardware requirements
 
@@ -71,7 +71,7 @@ You will use the following software in this tutorial:
 
 You can view a timelapse of the robot assembly here:
 
-{{<video webm_src="../../img/guardian/timelapse.webm" mp4_src="../../img/guardian/timelapse.mp4" alt="Timelapse of guardian assembly">}}
+{{<video webm_src="../../img/guardian/timelapse.webm" mp4_src="../../img/guardian/timelapse.mp4" poster="../../img/guardian/timelapse.jpg" alt="Timelapse of guardian assembly">}}
 
 ### Assemble for testing
 
@@ -663,7 +663,7 @@ python3 main.py
 
 If everything works, your guardian should now start to idle and when it detects humans or dogs or cats turn red, start music, and focus on the detected being:
 
-{{<video webm_src="../../img/guardian/guardian-finished.webm" mp4_src="../../img/guardian/guardian-finished.mp4" alt="FInished guardian">}}
+{{<video webm_src="../../img/guardian/guardian-finished.webm" mp4_src="../../img/guardian/guardian-finished.mp4" poster="../../img/guardian/guardian-finished.jpg" alt="FInished guardian">}}
 
 ## Run the program automatically
 
@@ -723,7 +723,7 @@ Or simply use to greet you when you get back to your desk.
 
 Here is a video of how I set up my guardian to follow my dog around my living room:
 
-{{<video webm_src="../../img/guardian/ernieandtheguardian.webm" mp4_src="../../img/guardian/ernieandtheguardian.mp4" alt="Guardian robot rotates head to follow dog around a room">}}
+{{<video webm_src="../../img/guardian/ernieandtheguardian.webm" mp4_src="../../img/guardian/ernieandtheguardian.mp4" poster="../../img/guardian/ernieandtheguardian.jpg" alt="Guardian robot rotates head to follow dog around a room">}}
 
 Of course, you're free to adapt the code to make it do something else, add more LEDs, or even [train your own custom model](/manage/ml/train-model/) to use.
 
