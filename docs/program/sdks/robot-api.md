@@ -497,7 +497,7 @@ err := robot.StopAll(ctx.Background())
 {{% /tab %}}
 {{< /tabs >}}
 
-## TransformPose
+<!-- ## TransformPose
 
 Transform a given source pose from the reference frame to a new specified destination reference frame.
 For example, if a 3D camera observes a point in space you can use this method to calculate where that point is relative to another object.
@@ -636,4 +636,4 @@ const transformed_pcd = await robot.transformPCD(source_pointcloud, "source_fram
 ```
 
 {{% /tab %}}
-{{< /tabs >}}
+{{< /tabs >}} -->

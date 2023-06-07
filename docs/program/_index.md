@@ -22,6 +22,13 @@ Viam offers software development kits (SDKs) in popular languages which
 
 Use the SDK of your preferred language to write code to control your robots.
 
+Viam currently offers SDKs for the following languages:
+
+- [Python SDK](https://python.viam.dev/)
+- [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
+- [TypeScript SDK](https://ts.viam.dev/)
+- [C++ SDK (alpha)](https://cpp.viam.dev/)
+
 ## Requirements
 
 Before you get started, ensure that you have [installed and connected to `viam-server`](/installation/) on the computer you want to use to control a robot [(likely a single-board computer)](/components/board/#configuration) and [configured a robot](/configuration/#local-setup).
@@ -55,6 +62,11 @@ go install go.viam.com/rdk/robot/client@latest
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 npm install --save @viamrobotics/sdk
 ```
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -192,6 +204,47 @@ main();
 ```
 
 {{% /tab %}}
+{{% tab name="C++" %}}
+
+{{< alert title="Note" color="note" >}}
+The C++ SDK is currently in alpha.
+{{< /alert >}}
+
+```cpp {class="line-numbers linkable-line-numbers"}
+# include <string>
+# include <vector>
+
+# include <boost/optional.hpp>
+
+# include <viam/api/common/v1/common.pb.h>
+# include <viam/api/robot/v1/robot.grpc.pb.h>
+
+# include <viam/sdk/robot/client.hpp>
+# include <viam/sdk/components/camera/client.hpp>
+
+using namespace viam::sdk;
+
+int main() {
+  std::string host("ADDRESS FROM THE VIAM APP");
+  DialOptions dial_opts;
+  Credentials credentials("SECRET FROM THE VIAM APP");
+  dial_opts.set_credentials(credentials);
+  boost::optional<DialOptions> opts(dial_opts);
+  Options options(0, opts);
+
+  auto robot = RobotClient::at_address(host, options);
+
+  std::cout << "Resources:\n";
+  for (const ResourceName& resource: *robot->resource_names()) {
+    std::cout << resource.namespace_() << ":" << resource.type() << ":"
+              << resource.subtype() << ":" << resource.name() << "\n";
+  }
+
+  return 0;
+}
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 {{% /expand%}}
 
@@ -204,22 +257,20 @@ Then, execute this program on any computer as long as:
 1. You have installed the appropriate SDK and language on this machine.
 2. The program establishes a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-locally) when [executed](/program/run).
 
-### `import`
+### `import`: Finding Required Imports
 
 The Code Sample tab contains the required imports for the SDK code at generation.
 
 If you are building out your program further or aren't using the Code Sample tab, you can find the right libraries to import to utilize SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/write/resource-apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
-### `connect`
-
-{{< readfile "/static/include/snippet/secret-share.md" >}}
+### `connect`: Connecting with Your Robot
 
 The `connect` logic of an SDK program establishes a connection for your client application to [communicate with](/internals/robot-to-robot-comms/) the robot's `viam-server` instance.
+This section of the boilerplate code contains your robot's address, location secret, and robot secret.
+You can think of these as key or access tokens to your robot that are important to keep private.
+This connection must be established for your program to be executed properly on your robot.
 
-<!-- ### `main()`
-  
-- (THIS LANGUAGE IS PYTHON SPECIFIC, WILL NEED TO ADJUST FOR DIFFERENT TABS) In the main() function of your code, as shown in the above Code Sample, you must ...
-- Next step add control logic in the main -->
+{{< readfile "/static/include/snippet/secret-share.md" >}}
 
 {{< cards >}}
     {{% card link="/program/sdks" size="small" custom="Add Logic to Interface with Resources" %}}
