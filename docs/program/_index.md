@@ -257,19 +257,19 @@ Then, execute this program on any computer as long as:
 
 1. You have [installed the appropriate SDK](#requirements) and language on this machine.
 2. The program establishes a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-locally) when [executed](/program/run).
-See [Run Code](/run) for more information on executing code.
+See [Run Code](/program/run) for more information on executing code.
 
 ### `import`: Finding Required Imports
 
 The Code Sample tab contains the required imports for the SDK code at generation.
 
-If you are building out your program further or aren't using the Code Sample tab, you can find the right libraries to import to utilize SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/write/resource-apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
+If you are building out your program further or aren't using the Code Sample tab, you can find the right libraries to import to utilize SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/sdks/resource-apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 ### `connect`: Connecting with Your Robot
 
 The `connect` logic of an SDK program establishes a connection for your client application to [communicate with](/internals/robot-to-robot-comms/) the robot's `viam-server` instance.
 This section of the boilerplate code contains your robot's address, location secret, and robot secret.
-You can think of these as key or access tokens to your robot that are important to keep private.
+You can think of these as keys or access tokens to your robot that are important to keep private.
 This connection must be established for your program to be executed properly on your robot.
 
 {{< readfile "/static/include/snippet/secret-share.md" >}}
