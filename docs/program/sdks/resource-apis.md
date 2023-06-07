@@ -176,7 +176,7 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/interfac
 
 These APIs provide interfaces for controlling and getting information from various components of a robot.
 Built-in API methods are defined for every model of each component type.
-Documentation on using these methods in your SDK code is found on each [component page](/components) as follows:
+Documentation on using these methods in your SDK code is found on each [component page](/components/) as follows:
 
 ### Arm
 
@@ -189,7 +189,7 @@ The arm component supports the following methods:
 | [MoveToJointPositions](/components/arm/#movetojointpositions) | Move each joint on the arm to the desired position. |
 | [JointPositions](/components/arm/#jointpositions) | Get the current position of each joint on the arm. |
 | [Stop](/components/arm/#stop) | Stop the arm from moving. |
-| [IsMoving](/components/arm/#is_moving) | Get if the arm is currently moving. |
+| [IsMoving](/components/arm/#ismoving) | Get if the arm is currently moving. |
 | [DoCommand](/components/arm/#docommand) | Send or receive model-specific commands. |
 
 ### Base
@@ -202,7 +202,7 @@ The base component supports the following methods:
 | [Spin](/components/base/#spin) | Move the base to the given angle at the given angular velocity. |
 | [SetPower](/components/base/#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base. |
 | [SetVelocity](/components/base/#setvelocity) | Set the linear velocity and angular velocity of the base. |
-| [Stop](#stop) | Stop the base. |
+| [Stop](/components/base/#stop) | Stop the base. |
 | [DoCommand](/components/base/#docommand) | Send or receive model-specific commands. |
 
 ### Board
@@ -211,7 +211,7 @@ The board component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-| [AnalogReaderByName](/components/board/#analogreaderbyname) | Get an [`AnalogReader`](#analogs) by `name`. |
+| [AnalogReaderByName](/components/board/#analogreaderbyname) | Get an [`AnalogReader`](/components/board/#analogs) by `name`. |
 | [DigitalInterruptByName](/components/board/#digitalinterruptbyname) | Get a [`DigitalInterrupt`](/components/board/#digital_interrupts) by `name`. |
 | [GPIOPinByName](/components/board/#gpiopinbyname) | Get a `GPIOPin` by its [pin number](/appendix/glossary/#term-pin-number). |
 | [AnalogReaderNames](/components/board/#analogreadernames) | Get the `name` of every [`AnalogReader`](/components/board/#analogs). |
@@ -232,7 +232,7 @@ The board component supports the following methods:
 
 Method Name | Description
 ----------- | -----------
-[GetPosition](/components/encoder/#getposition) | Get the current position of the encoder.
+[Position](/components/encoder/#position) | Get the current position of the encoder.
 [ResetPosition](/components/encoder/#resetposition) | Reset the position to zero.
 [GetProperties](/components/encoder/#getproperties) | Get the supported properties of this encoder.
 
@@ -241,10 +241,10 @@ Method Name | Description
 | Method Name | Description |
 | ----------- | ----------- |
 [Position](/components/gantry/#position) | Get the current positions of the axes of the gantry in mm. |
-[MoveToPosition](/components/encoder//#movetoposition) | Move the axes of the gantry to the desired positions. |
+[MoveToPosition](/components/gantry/#movetoposition) | Move the axes of the gantry to the desired positions. |
 [Lengths](/components/gantry/#lengths) | Get the lengths of the axes of the gantry in mm. |
 [Stop](/components/gantry/#stop) | Stop the gantry from moving. |
-[IsMoving](/components/gantry#ismoving) | Get if the gantry is currently moving. |
+[IsMoving](/components/gantry/#ismoving) | Get if the gantry is currently moving. |
 
 ### Gripper
 
@@ -309,7 +309,7 @@ Method Name | Description |
 
 These APIs provide interfaces for controlling and getting information from the services you configured on a robot.
 Built-in API methods are defined for each service implementation.
-Documentation on using these methods in your SDK code is found on [service pages](/services) as follows:
+Documentation on using these methods in your SDK code is found on [service pages](/services/) as follows:
 
 ### Motion
 
@@ -348,7 +348,7 @@ Method Name | Description |
 
 ### GPIO Pins
 
-In addition to the [Board API](#board), the [board component](/components/board) supports the following methods for interfacing with GPIO Pins on a board:
+In addition to the [Board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO Pins on a board:
 
 | Method Name | Description |
 | ----------- | ----------- |
@@ -361,7 +361,7 @@ In addition to the [Board API](#board), the [board component](/components/board)
 
 ### Analog-to-Digital Converters (ADCs)
 
-In addition to the [Board API](#board), the [board component](/components/board) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
+In addition to the [Board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
 
 | Method Name | Description |
 | ----------- | ----------- |
@@ -369,7 +369,7 @@ In addition to the [Board API](#board), the [board component](/components/board)
 
 ### Digital Interrupts
 
-In addition to the [Board API](#board), the [board component](/components/board) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts)  on a board:
+In addition to the [Board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts)  on a board:
 
 | Method Name | Description |
 | ----------- | ----------- |

@@ -27,8 +27,8 @@ Click on the cards below for instructions on implementing custom resources throu
 
 {{% alert title="Tip" color="tip" %}}
 
-{{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations with the [Python and Go SDKs](/program).
+{{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations with the [Python and Go SDKs](/program/).
 
-[Adding a custom component as a remote](/extend/custom-components-remotes) is recommended if you are hosting `viam-server` on a non-Linux system or have another issue with compilation.
+[Adding a custom component as a remote](/extend/custom-components-remotes/) is recommended if you are hosting `viam-server` on a non-Linux system or have another issue with compilation.
 
 {{% /alert %}}

@@ -73,7 +73,7 @@ Follow the [instructions on the GitHub repository](https://github.com/viamroboti
 
 ## Hello World: The Code Sample Tab
 
-Now, create a program in the language of your choice that connects to your robot and uses methods built into the SDK's client API libraries to [interact with and control](/program/write/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the robot.
+Now, create a program in the language of your choice that connects to your robot and uses methods built into the SDK's client API libraries to [interact with and control](/program/sdks/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the robot.
 
 Start with this by navigating to your robot's page on [the Viam app](https://app.viam.com/robots).
 Select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
@@ -251,13 +251,12 @@ int main() {
 
 Save this file on your development machine with the file type of your preferred SDK.
 
-Edit the boilerplate code by [adding control logic](/program/write/) to make a client application that connects to your robot controls it in the way you want when the program [is executed](/program/run/).
+Edit the boilerplate code by [adding control logic](/program/sdks/) to make a client application that connects to your robot and controls it in the way you want.
 
-Then, execute this program on any computer as long as:
+Then, [execute this program](/program/run/) on any computer as long as:
 
 1. You have [installed the appropriate SDK](#requirements) and language on this machine.
-2. The program establishes a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-locally) when [executed](/program/run).
-See [Run Code](/program/run) for more information on executing code.
+2. The program establishes a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-locally) when [executed](/program/run/).
 
 ### `import`: Finding Required Imports
 
@@ -275,7 +274,7 @@ This connection must be established for your program to be executed properly on 
 {{< readfile "/static/include/snippet/secret-share.md" >}}
 
 {{< cards >}}
-    {{% card link="/program/sdks" size="small" custom="Add Logic to Interface with Resources" %}}
-    {{% card link="/program/run" size="small" %}}
-    {{% card link="/program/debug" size="small" %}}
+    {{% card link="/program/sdks/" size="small" custom="Add Logic to Interface with Resources" %}}
+    {{% card link="/program/run/" size="small" %}}
+    {{% card link="/program/debug/" size="small" %}}
 {{< /cards >}}
