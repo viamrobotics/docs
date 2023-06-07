@@ -57,10 +57,7 @@ Supported arm models include:
 | [`xArm6`](xarm6/) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
 | [`xArm7`](xarm7/) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
 | [`xArmLite`](xarmlite/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) |
-| `eva` | [Automata Eva](https://automata.tech/products/hardware/about-eva/) |
-| `ur5e` | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot/) |
-| `yahboom-dofbot` | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
-| `wrapper_arm` | A model used to wrap a partially implemented arm. |
+| [`yahboom-dofbot`](yahboom-dofbot/) | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
 
 ## Control your arm with Viam's client SDK libraries
 
