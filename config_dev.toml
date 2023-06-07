@@ -1,2 +1,3 @@
 baseURL = "http://localhost"
 disableAliases = true
+googleAnalytics = 'G-P0NZTY2VM2'
