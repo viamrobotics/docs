@@ -3,7 +3,7 @@ title: "Interact with Resources with Viam's SDKs"
 linkTitle: "SDK API Libraries"
 weight: 20
 type: "docs"
-description: "Access and control your robot or fleet with the resource and robot APIs."
+description: "Access and control your robot or fleet with the SDKs' libraries for the resource and robot APIs."
 icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk", "viam-server", "networking"]
 ---

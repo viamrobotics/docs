@@ -11,9 +11,6 @@ tags: ["sdk"]
 The Robot API is the designated interface for a robot, the root of all robotic parts.
 
 To interact with the Robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
-This page documents how to use the methods the `RobotClient` provides for the Robot API across Viam's SDKs.
-
-<!-- TODO: MUST ADD CLOSE -->
 
 ## DiscoverComponents
 
@@ -229,36 +226,65 @@ const status = await robot.getStatus();
 {{% /tab %}}
 {{< /tabs >}}
 
-<!-- ## Close
+## Close
 
-PYTHON: close() // Cleanly close the underlying connections and stop any periodic tasks
-GO:
-    // Close attempts to cleanly close down all constituent parts of the robot.
-    Close(ctx context.Context) error -->
-
-<!-- ## GetOperations
-
-Get the Operation associated with the currently running function.
-
+Close the underlying connections and stop any periodic tasks across all constituent parts of the robot.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-For the Go and TypeScript SDK, see the [Resource API's `GetOperation` method documentation](/program/write/resource-apis/).
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs]()).
+
+```python {class="line-numbers linkable-line-numbers"}
+# Cleanly close the underlying connections and stop any periodic tasks.
+await robot.close()
+```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-TODO: Would have to document instantiating and using https://pkg.go.dev/go.viam.com/rdk@v0.2.48/operation#Manager
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+```go {class="line-numbers linkable-line-numbers"}
+// Cleanly close the underlying connections and stop any periodic tasks,
+err := robot.Close(ctx.Background())
+```
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#disconnect).
+
+```typescript {class="line-numbers linkable-line-numbers"}
+// Cleanly close the underlying connections and stop any periodic tasks
+await robot.disconnect();
+```
 
 {{% /tab %}}
-{{< /tabs >}} -->
+{{< /tabs >}}
 
 ## StopAll
 

@@ -1,13 +1,12 @@
 ---
-title: "Get Started Programming your Robot with Viam's SDKs"
+title: "Program a Robot"
 linkTitle: "Program Robots"
-weight: 40
-type: "docs"
-description: "Get started writing a client application with Viam's SDKs."
-icon: "/services/img/icons/sdk.svg"
-images: ["/img/code.png"]
+childTitleEndOverwrite: "Program Robots"
+description: "Use the SDK of your preferred language to write code to control your robots."
+weight: 45
 no_list: true
-tags: ["client", "sdk", "hello world", "robot"]
+type: docs
+images: ["/img/code.png"]
 aliases:
   - "product-overviews/sdk-as-client"
   - "program/sdk-as-client"
@@ -223,7 +222,7 @@ The `connect` logic of an SDK program establishes a connection for your client a
 - Next step add control logic in the main -->
 
 {{< cards >}}
-    {{% card link="/program/write" size="small" custom="Add Logic to Interface with Resources" %}}
+    {{% card link="/program/sdks" size="small" custom="Add Logic to Interface with Resources" %}}
     {{% card link="/program/run" size="small" %}}
     {{% card link="/program/debug" size="small" %}}
 {{< /cards >}}

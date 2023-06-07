@@ -176,7 +176,9 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/interfac
 {{% /tab %}}
 {{< /tabs >}}
 
-<!-- ### GetOperation
+<!-- OPERATION SESSION MANAGER DOCUMENTATION
+
+### GetOperation
 
 Get the Operation associated with the currently running function.
 
@@ -202,7 +204,6 @@ For the Go and TypeScript SDK, see the [Robot API's `GetOperations` method docum
 
 These APIs provide interfaces for controlling and getting information from various components of a robot.
 Built-in API methods are defined for every model of each component type.
-<!-- TODO: add glossary tooltip here or generally something to make what model means more clear?  -->
 Documentation on using these methods in your SDK code is found on each [component page](/components) as follows:
 
 ### Arm
@@ -334,9 +335,9 @@ Method Name | Description |
 
 ## Service APIs
 
-INTRODUCTION: What do these do?
-
-Table with methods?
+These APIs provide interfaces for controlling and getting information from the services you configured on a robot.
+Built-in API methods are defined for each service implementation.
+Documentation on using these methods in your SDK code is found on [service pages](/services) as follows:
 
 ### Motion
 
@@ -348,8 +349,6 @@ Method Name | Description
 
 ### SLAM
 
-- [SLAM](/services/slam), [Python Docs](https://python.viam.dev/autoapi/viam/services/slam/index.html)
-
 Method Name | Description
 ----------- | -----------
 `Position` | Get current position of the specified component in the SLAM Map.
@@ -358,16 +357,12 @@ Method Name | Description
 
 ### MLModel
 
-- [MlModel](/services/ml), [Python Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/index.html)
-
 Method Name | Description
 ----------- | -----------
 `Infer` | Take an already ordered input tensor as an array, make an inference on the model, and return an output tensor map.
 `Metadata`| Get the metadata (such as name, type, expected tensor/array shape, inputs, and outputs) associated with the ML model.
 
 ### Vision
-
-- [Vision](/services/vision) (some method info is documented in example code), [Python Docs](https://python.viam.dev/autoapi/viam/services/vision/index.html)
 
 Method Name | Description |
 ----------- | ----------- |
@@ -376,11 +371,6 @@ Method Name | Description |
 `ClassificationsFromCamera` | Get a list of classifications in the next image given a camera and a classifier. |
 `Classifications` | Get a list of detections in the given image using the specified detector. |
 `ObjectPointClouds`| Returns a list of the 3D point cloud objects and associated metadata in the latest picture obtained from the specified 3D camera (using the specified segmenter). |
-<!-- 
-
-- [Frame System](/services/frame-system/#api)
-
--->
 
 ## Signaling APIs
 

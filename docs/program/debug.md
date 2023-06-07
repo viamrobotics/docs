@@ -1,7 +1,7 @@
 ---
 title: "Debug SDK Code"
 linkTitle: "Debug"
-weight: 80
+weight: 60
 type: "docs"
 description: "Read and filter logs to fix issues while programming with Viam's SDKs."
 icon: "/services/img/icons/sdk.svg"
