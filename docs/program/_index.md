@@ -31,14 +31,14 @@ Viam currently offers SDKs for the following languages:
 
 ## Requirements
 
-Before you get started with your program, ensure that you have [installed and connected to `viam-server`](/installation/) on the computer you want to use to control a robot [(likely a single-board computer)](/components/board/#configuration) and [configured a robot](/configuration/#local-setup).
+Before you get started with your program, ensure that you have [installed and connected to `viam-server`](/installation/) on the computer you want to use to control a robot [(likely a single-board computer)](/components/board/#configuration) and [configured a robot](/manage/configuration/#local-setup).
 
 The easiest way to do this is:
 
 1. Go to [app.viam.com](https://app.viam.com/).
 2. Create a new robot.
 3. Go to the **Setup** tab and follow the instructions there.
-4. [Configure](../../manage/configuration) your robot.
+4. [Configure](/manage/configuration/) your robot.
 
 Next, to install your preferred Viam SDK on your development machine, run one of the following commands in your terminal:
 

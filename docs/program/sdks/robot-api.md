@@ -194,7 +194,7 @@ If no names are passed in, all resource statuses are returned.
 
 **Returns:**
 
-- [([]Status)](): Status of each resource.
+- [([]Status)](https://pkg.go.dev/go.viam.com/rdk/robot#Status): Status of each resource.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -240,7 +240,7 @@ Close the underlying connections and stop any periodic tasks across all constitu
 
 - None
 
-For more information, see the [Python SDK Docs]()).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.close).
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Cleanly close the underlying connections and stop any periodic tasks.
