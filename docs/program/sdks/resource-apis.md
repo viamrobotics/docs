@@ -40,10 +40,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-<!-- This function is implemented for each resource API in the same pattern.
-
-For example, `FromRobot` is defined on the interface for a resource of [type `arm`](https://pkg.go.dev/go.viam.com/rdk/components/arm) as follows: -->
-
 **Parameters:**
 
 - `r` [(RobotClient)](https://pkg.go.dev/go.viam.com/rdk@v0.2.48/robot#Robot): The robot.
@@ -175,30 +171,6 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/interfac
 
 {{% /tab %}}
 {{< /tabs >}}
-
-<!-- OPERATION SESSION MANAGER DOCUMENTATION
-
-### GetOperation
-
-Get the Operation associated with the currently running function.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `kwargs` [(Mapping[str,Any])](https://docs.python.org/3/glossary.html#term-mapping): The kwargs object containing the operation.
-
-**Returns:**
-
-- [(operations.Operation)](https://python.viam.dev/autoapi/viam/operations/index.html#viam.operations.Operation): The operation associated with the currently running function.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/resource/base/index.html).
-
-{{% /tab %}}
-
-For the Go and TypeScript SDK, see the [Robot API's `GetOperations` method documentation](/program/write/robot-api/).
-{{< /tabs >}} -->
 
 ## Component APIs
 
