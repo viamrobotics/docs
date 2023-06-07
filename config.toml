@@ -91,8 +91,8 @@ sidebar_search_disable = true
 
 [params.ui.feedback]
 enable = true
-yes = 'Glad to hear it! If there is anything we could be doing better, please <a href="https://github.com/viamrobotics/docs/issues/new">create an issue</a>.'
-no = "We're sorry about that. If you'd like to talk to us for help, please join the <a href='https://discord.gg/viam'>Community Discord</a>. To ensure we know what's wrong with this page, you can also <a href='https://github.com/viamrobotics/docs/issues/new'>open an issue</a>."
+yes = 'Glad to hear it! If you have any other feeback please let us know:'
+no = "We're sorry about that. To help us improve, please tell us what we can do better:"
 
 [params.ui.readingtime]
 enable = false
