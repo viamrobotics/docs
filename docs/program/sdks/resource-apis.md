@@ -8,13 +8,13 @@ icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk"]
 ---
 
-These methods provide a  wrapper for your gRPC client requests to the endpoints the resource API provides for communication between your application and the robot server (`viam-server`) instance on the computer controlling your robot, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/manage/configuration/) on your robot programmatically.
+These methods provide a wrapper for your gRPC client requests to the endpoints the resource API provides for communication between your application and the robot server (`viam-server`) instance on the computer controlling your robot, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/manage/configuration/) on your robot programmatically.
 
 ## Resource API
 
 The Resource API is the base set of methods that all Resource APIs provide for users across the SDKs.
 
-In the Python SDK this is a class that provides base requirements for all child resources: [the `ResourceBase` class](https://python.viam.dev/autoapi/viam/resource/base/index.html). 
+In the Python SDK this is a class that provides base requirements for all child resources: [the `ResourceBase` class](https://python.viam.dev/autoapi/viam/resource/base/index.html).
 In the Go and TypeScript SDKs, each resource implements these methods within its own interface.
 
 ### FromRobot
@@ -151,11 +151,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
+- `cmd` [(map[string]interface{})](<https://go.dev/blog/maps>): The command to execute.
 
 **Returns:**
 
-- [(map[string]interface{})](https://go.dev/blog/maps): The result of the executed command.
+- [(map[string]interface{})](<https://go.dev/blog/maps>): The result of the executed command.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -371,21 +371,18 @@ Method Name | Description
 
 Method Name | Description |
 ----------- | ----------- |
-`DetectionsFromCamera` |  |
-`Detections`|  |
-`ClassificationsFromCamera` |  |
-`Classifications` |  |
-`ObjectPointClouds`|  |
+`DetectionsFromCamera` | Get a list of detections in the next image given a camera and a detector. |
+`Detections`| Get a list of detections in the given image using the specified detector. |
+`ClassificationsFromCamera` | Get a list of classifications in the next image given a camera and a classifier. |
+`Classifications` | Get a list of detections in the given image using the specified detector. |
+`ObjectPointClouds`| Returns a list of the 3D point cloud objects and associated metadata in the latest picture obtained from the specified 3D camera (using the specified segmenter). |
 <!-- 
 
 - [Frame System](/services/frame-system/#api)
 
-^^ Todo Tricky, might need explanation. 
-Might be long WIP fully building out here as SLAM, MlModel, Vision client methods are most extensively documented in SDKs, and Sensors service is a bit murky.
-Could have tables linking to Go and Python SDK docs for now.
 -->
 
-## Additional Interfaces
+## Signaling APIs
 
 ### GPIO Pins
 

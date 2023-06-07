@@ -5,10 +5,10 @@ weight: 80
 type: "docs"
 description: "Read and filter logs to fix issues while programming with Viam's SDKs."
 icon: "/services/img/icons/sdk.svg"
-tags: ["client", "sdk", "logs", "debug"]
+tags: ["client", "sdk", "logs", "debug", "robot", "viam-server"]
 ---
 
-<!-- TODO: Introduction with more information about what these logs are actually displaying -->
+Read and filter a robot's logs to view updates from your robot's `viam-server` instance and troubleshoot issues with your program.
 
 {{< tabs >}}
 {{% tab name="App UI" %}}
