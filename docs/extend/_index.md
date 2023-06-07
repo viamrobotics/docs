@@ -1,7 +1,7 @@
 ---
 title: "Extend Viam with custom resources"
 linkTitle: "Extend Viam"
-weight: 60
+weight: 90
 simple_list: true
 no_list: true
 type: docs

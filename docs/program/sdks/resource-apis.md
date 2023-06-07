@@ -82,6 +82,12 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/interfac
 
 ### Name
 
+{{% alert title="Note" color="note" %}}
+
+An equivalent for `Name` is not currently provided by the TypeScript SDK.
+
+{{% /alert %}}
+
 Get the [`ResourceName`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName) of a resource with the configured `name`.
 
 {{< tabs >}}
