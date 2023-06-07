@@ -835,3 +835,13 @@ footer small {
   .aligncenter { display: block; margin-left: auto; margin-right: auto; }
   .center-if-small { display: block; margin-left: auto; margin-right: auto; }
 }
+
+// Fix page width on full screen to be 80%
+
+.td-content > .code-toolbar,
+.td-content > .table,
+.td-content > div {
+  @include media-breakpoint-up(lg) {
+      max-width: 80%;
+  }
+}

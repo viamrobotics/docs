@@ -12,8 +12,6 @@ images: ["/tutorials/img/claw-game/preview.gif"]
 # Authors: Arielle Mella, Matt Vella, Hazal Mestci
 ---
 
-
-
 {{<gif webm_src="../../img/claw-game/claw-game.webm" mp4_src="../../img/claw-game/claw-game.mp4" alt="claw game in action at a party" class="alignright" max-width="250px">}}
 
 Create your own version of the famous arcade claw machine game using a robotic arm, an arcade claw grabber, and some fun items to pick from.
@@ -84,7 +82,9 @@ To support the arm and create a surface to hold the prizes, create a flat surfac
 You will need to build the table to a size that allows for the arm to reach anywhere on the table surface.
 For the xArm6, a table that is 4'x4' works.
 
+<div>
 <img src="../../img/claw-game/build-base.jpg" alt="4' x 4' square made with wood pieces on the floor." width="300px" class="alignright">
+</div>
 
 1. Cut one 2"x4" in half, creating two 48 inch sides.
 1. Then take two 2x4s and cut them to four 46.5 inch lengths.
@@ -105,7 +105,7 @@ Center the exit, make it 10 inches wide, 8 inches long and cut the opening with 
 We used two 2 foot by 4 foot fiberboards, but ideally you can use one 4 foot by 4 foot fiberboard.
 1. Glue and clamp the tabletop and let it dry overnight.
 
-<img src="../../img/claw-game/build-table.jpg" alt="Wooden table top glued and secured with clamps" width="400px" class="aligncenter">
+   <img src="../../img/claw-game/build-table.jpg" alt="Wooden table top glued and secured with clamps" width="400px" class="aligncenter">
 
 ### Add legs and mount the arm
 
@@ -118,10 +118,10 @@ To finish the table construction, attach the supporting legs and mount the arm t
 1. For extra stability, cut two more 2x4s to 48 inch lengths, and mount these with deck screws on all four sides of the bottom of the cabinet, bridging the legs.
 You can also cut an additional 2x4 and mount it as a fifth leg, going from the center arm supports to the floor.
 1. Finally, mount the xArm6 to the top of the table using the lag screws.
-Be sure that the lag screws sink into the 2x4 posts below, and that you are mounting the arm so that it is straight, with the X axis facing the player.
-You’ll need at least two people to ensure a smooth installation of the arm.
+   Be sure that the lag screws sink into the 2x4 posts below, and that you are mounting the arm so that it is straight, with the X axis facing the player.
+   You’ll need at least two people to ensure a smooth installation of the arm.
 
-<img src="../../img/claw-game/mount-arm.jpg" alt="The xarm6 attached to the middle of the enclosure." width="400px" class="aligncenter">
+   <img src="../../img/claw-game/mount-arm.jpg" alt="The xarm6 attached to the middle of the enclosure." width="400px" class="aligncenter">
 
 ## Configure the robot
 
@@ -383,7 +383,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 1. Using velcro cable ties, run the claw’s cable along each segment of the arm to the arm base, making sure the cord is secure but with some slack to allow for movement.
 
-<img src="../../img/claw-game/mount-together.jpg" alt="Gripper attached to the arm and cord wired around the arm" width="400px" class="aligncenter">
+   <img src="../../img/claw-game/mount-together.jpg" alt="Gripper attached to the arm and cord wired around the arm" width="400px" class="aligncenter">
 
 ### Wire and test the claw
 
