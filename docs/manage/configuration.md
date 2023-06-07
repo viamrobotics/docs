@@ -400,8 +400,6 @@ viam-server -config <path-to-config>.json
 {{% /tab %}}
 {{< /tabs >}}
 
-To run `viam-server` as a system service, see [Start automatically on boot](/installation/#start-automatically-on-boot).
-
 ## Next Steps
 
 After configuring your robot, you can use the [Viam SDKs](../../program/sdks/) to program and control your robot.
