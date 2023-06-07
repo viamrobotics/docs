@@ -189,7 +189,7 @@ sudo reboot
 
 ## Next Steps
 
-Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional WiFi credentials, continue to our [`viam-server` installation guide](../../#install-viam-server).
+Now that your Pi has a Viam-compatible operating system installed, you're ready to [install `viam-server`](/installation/#install-viam-server).
 
 ## Troubleshooting
 
@@ -200,6 +200,11 @@ If you experience the error `Verifying write failed. Contents of SD card is diff
 Try a different micro SD card reader, or use a different USB port on your computer.
 
 If you are connecting your SD card reader to your computer through a USB hub, try connecting directly it to your computer instead.
+
+### Error: can't read from I2C address
+
+If you experience the error `error: can't read from I2C address` in your log file after installing `viam-server` (you can use `sudo journalctl --unit=viam-server` to read through this log file), you will need to enable `I2C` support on your Raspberry Pi.
+Follow the instructions to [enable communication protocols](#enable-communication-protocols) on your Pi to resolve this error.
 
 ### Add additional WiFi credentials
 
