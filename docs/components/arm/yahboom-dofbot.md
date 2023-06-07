@@ -8,7 +8,7 @@ images: ["/components/img/components/arm.svg"]
 tags: ["arm", "components"]
 ---
 
-Configure an `yahboom-dofbot` arm to add a [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) to your robot:
+Configure a `yahboom-dofbot` arm to add a [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) to your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -78,7 +78,7 @@ Edit and fill in the attributes as applicable.
 ```
 
 {{% /tab %}}
-{{% /tabs %}}
+{{< /tabs >}}
 
 The following attributes are available for `yahboom-dofbot` arms:
 
