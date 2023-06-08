@@ -1,5 +1,5 @@
 ---
-title: "Welcome to the Viam Documentation"
+title: "Viam Documentation"
 linkTitle: "Viam Documentation"
 description: "Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS."
 weight: 1
@@ -9,6 +9,8 @@ hide_feedback: true
 sitemap:
   priority: 1.0
 ---
+
+Welcome to the Viam Documentation!
 
 Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS.
 Viam supports a wide variety of systems, including:
