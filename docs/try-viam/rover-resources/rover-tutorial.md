@@ -183,7 +183,7 @@ To make attaching the paper easier, use a credit card or a small screwdriver.
 
 Wire your Pi to the buck converter, the acceleration tilt module, and the DC motor driver:
 
-![Closeup of the wiring diagram, showcasing the Pi, motor driver, accelerometer, and buck converter, wired according to the table below.](../img/viam-rover/wiring-diagram.png)
+![Closeup of the wiring diagram, showcasing the Pi, motor driver, accelerometer, and buck converter, wired according to the table below.](../img/viam-rover/rover-wiring-diagram.png)
 
 The following pinout corresponds to the diagram:
 
@@ -217,7 +217,7 @@ You must wire it with the outside row pins:
 
 Then connect the camera's USB cable to the Pi.
 
-![Wiring diagram showcasing the Pi, motors, driver, camera, and all other rover components.](../img/viam-rover/wiring-diagram-rover.png)
+![Wiring diagram showcasing the Pi, motors, driver, camera, and all other rover components.](../img/viam-rover/rover-wiring-diagram-full.png)
 
 <img src="../img/viam-rover/rover-with-pi.jpg" style="max-width:600px;width:100%" alt="the Pi, motors, driver, and all other rover components" />
 
