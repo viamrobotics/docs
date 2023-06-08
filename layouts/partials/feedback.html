@@ -65,11 +65,13 @@
     feedbackPrompt.remove();
     yesResponse.classList.add('feedback--response__visible');
     sendFeedback(1);
+    sendFeedbackText(1, "Helpful")
   });
   noButton.addEventListener('click', () => {
     feedbackPrompt.remove();
     noResponse.classList.add('feedback--response__visible');
     sendFeedback(0);
+    sendFeedbackText(0, "Not Helpful")
   });
   yesSubmitButton.addEventListener('click', () => {
     yesResponse.remove();
