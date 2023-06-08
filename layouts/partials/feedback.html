@@ -8,7 +8,7 @@
     <p>{{ .Site.Params.ui.feedback.yes | safeHTML }}</p>
     <div class="feedback-form">
       <input type="hidden" name="url" id="feedback-url" value="{{.Permalink}}">
-      <textarea name="feedback" id="yes-feedback-text" value="Feedback" style="width:50%; height:100px;"></textarea>
+      <textarea name="feedback" id="yes-feedback-text" value="Feedback"></textarea>
       <button class="docsbutton feedback--answer" type="submit" id="yesSubmitButton">Send</button>
     </div>
   </div>
@@ -16,11 +16,11 @@
     <p>{{ .Site.Params.ui.feedback.no | safeHTML }}</p>
     <div class="feedback-form">
       <input type="hidden" name="url" id="feedback-url" value="{{.Permalink}}">
-      <textarea name="feedback" id="no-feedback-text" value="Feedback" style="width:50%; height:100px;"></textarea>
+      <textarea name="feedback" id="no-feedback-text" value="Feedback"></textarea>
       <button class="docsbutton feedback--answer" type="submit" id="noSubmitButton">Send</button>
     </div>
   </div>
-  <div class="feedback--response feedback-ty"><p>Thank you!</p><div>
+  <div class="feedback--response feedback-ty"><p>Thank you!</p></div>
 </div>
 <script>
   const yesButton = document.querySelector('.feedback--answer-yes');
@@ -32,10 +32,7 @@
   const yesSubmitButton = document.querySelector('#yesSubmitButton');
   const noSubmitButton = document.querySelector('#noSubmitButton');
   const tyResponse = document.querySelector('.feedback-ty');
-  const disableButtons = () => {
-    yesButton.disabled = true;
-    noButton.disabled = true;
-  };
+  const feedbackPrompt = document.querySelector('.feedback--prompt')
   const sendFeedback = (value) => {
     if (typeof gtag !== 'function') return;
     const args = {
@@ -65,22 +62,22 @@
     let res = await logJSONData(data);
   };
   yesButton.addEventListener('click', () => {
+    feedbackPrompt.remove();
     yesResponse.classList.add('feedback--response__visible');
-    disableButtons();
     sendFeedback(1);
   });
   noButton.addEventListener('click', () => {
+    feedbackPrompt.remove();
     noResponse.classList.add('feedback--response__visible');
-    disableButtons();
     sendFeedback(0);
   });
   yesSubmitButton.addEventListener('click', () => {
-    yesResponse.classList.remove('feedback--response__visible');
+    yesResponse.remove();
     tyResponse.classList.add('feedback--response__visible');
     sendFeedbackText(1, yesFeedback.value);
   });
   noSubmitButton.addEventListener('click', () => {
-    noResponse.classList.remove('feedback--response__visible');
+    noResponse.remove();
     tyResponse.classList.add('feedback--response__visible');
     sendFeedbackText(0, noFeedback.value);
   });
