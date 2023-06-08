@@ -108,6 +108,9 @@ Viam supports a wide variety of systems, including:
   <div class="next" style="display: block">›</div>
 </div>
 
+<br>
+Explore the links below to learn more about Viam, or to jump right in:
+
 <div class="container td-max-width-on-larger-screens">
   <div class="row">
     <div class="col landing-hover-card">
