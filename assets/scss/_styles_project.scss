@@ -786,7 +786,6 @@ footer small {
 .feedback--response {
   display: none;
   margin-top: 1em;
-  text-align: center;
 }
 
 .feedback--answer {
@@ -795,6 +794,20 @@ footer small {
 
 .feedback--response__visible {
   display: block;
+}
+
+.feedback-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedback-form > button {
+  margin-left: 0.5rem;
+}
+
+.feedback-ty {
+  text-align: center;
 }
 
 /* END Feedback container */
