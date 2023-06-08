@@ -766,8 +766,11 @@ footer small {
 
 /* Feedback container */
 
-.feedback--prompt {
+.feedback {
   padding-top: 2rem;
+}
+
+.feedback--prompt {
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -786,6 +789,10 @@ footer small {
 .feedback--response {
   display: none;
   margin-top: 1em;
+  border: 1px solid black;
+  padding: 1rem;
+  max-width: 400px;
+  margin: auto;
 }
 
 .feedback--answer {
@@ -798,7 +805,7 @@ footer small {
 
 .feedback-form {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -806,8 +813,17 @@ footer small {
   margin-left: 0.5rem;
 }
 
+.feedback-form > textarea {
+  height: 133px;
+  width: 100%;
+}
+
 .feedback-ty {
   text-align: center;
+}
+
+.feedback-ty > p {
+  margin-top: 1rem;
 }
 
 /* END Feedback container */
