@@ -11,7 +11,6 @@ sitemap:
 ---
 
 Welcome to the Viam Documentation!
-
 Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS.
 Viam supports a wide variety of systems, including:
 
