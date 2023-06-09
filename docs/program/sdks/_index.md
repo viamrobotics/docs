@@ -74,7 +74,7 @@ Before you get started, ensure that you:
 
 ### Connect to your robot
 
-The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, select your preferred SDK, toggle **Include secret** to display your robot's location secret in the code, and copy the code generated for you.
+The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code sample** tab, select your preferred SDK, toggle **Include secret** to display your robot's location secret in the code, and copy the code generated for you.
 
 These boilerplate code samples import all of the necessary libraries and set up a client connection to your robot whether your code runs on your robot or on a different machine.
 This connection is established through the Viam app in the cloud.

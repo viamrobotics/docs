@@ -108,7 +108,7 @@ Steps on how to do this can be found in the [Adding your Pi on the Viam App](/in
 Now that we have gotten that out of the way, let's get back to configuring your robot's components.
 First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's **Config** tab.
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image2.png" alt="Screenshot of the Viam app showing the Create Component field on the COmponents subtab of the Config tab." width="100%">
+<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image2.png" alt="Screenshot of the Viam app showing the Create Component field on the Components subtab of the Config tab." width="100%">
 
 You will add a [*board component*](/components/board/) to represent your single board computer, which in this case is the Raspberry Pi.
 You'll create the new component in the **Create Component** panel.
@@ -125,7 +125,7 @@ As you add your board component to your robot in the Viam app, it generates a pa
 Here, you can click on **Get** to get the current status of your pin.
 The first time you click **Get Pin State**, it should return "Pin: 8 is low."
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image5.png" alt="Screenshot of the Viam app showing the board configuration on the Control tab. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the '**Get Pin State**' button and the output, which reads, 'Pin: 8 is low.'" width="100%">
+<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image5.png" alt="Screenshot of the Viam app showing the board configuration on the Control tab. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the 'Get Pin State' button and the output, which reads, 'Pin: 8 is low.'" width="100%">
 
 You can now select **Set** to control the status of your pin to **high**.
 It will look like this:

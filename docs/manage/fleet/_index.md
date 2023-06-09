@@ -53,7 +53,7 @@ Permissions are added at the organization level and apply to everything in an or
 - **Owner**: Can see and edit [every tab on the robot page](robots/#navigating-the-robot-page).
   Can manage users in the app.
 - **Operator**: Can see and use only the [remote control tab](robots/#control).
-  Cannot see or edit the [**Setup**](robots/#setup), [**Config**](robots/#configuration), [**History**](robots/#history), [**Logs**](robots/#logs), [**Code Sample**](robots/#code-sample), or [**Security**](robots/#security) tabs.
+  Cannot see or edit the [**Setup**](robots/#setup), [**Config**](robots/#configuration), [**History**](robots/#history), [**Logs**](robots/#logs), [**Code sample**](robots/#code-sample), or [**Security**](robots/#security) tabs.
 
 To view the roles each organization member has, click on the organization drop down in the top navigation bar and click on **Settings**.
 

@@ -425,11 +425,11 @@ pip3 install viam-sdk python-vlc
 
 ### Connect
 
-Next, go to the **Code Sample** tab on your robot page and select **Python**. Toggle **Include secret** to show your robot's connection secret in the boilerplate code, then click **Copy**.
+Next, go to the **Code sample** tab on your robot page and select **Python**. Toggle **Include secret** to show your robot's connection secret in the boilerplate code, then click **Copy**.
 
 This code snippet imports all the necessary packages and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>main.py</file> and paste the boilerplate code from the **Code Sample** tab of the Viam app into your file.
+Next, create a file named <file>main.py</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.

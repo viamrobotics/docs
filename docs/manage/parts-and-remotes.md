@@ -52,7 +52,7 @@ To establish a connection between a part of one robot and a part of a second rob
 
 1. Go to the Viam app robot page of the robot part to which you wish to establish the remote connection.
    This is the robot part whose resources will be accessible to the other robot part.
-2. Click the **Code Sample** tab.
+2. Click the **Code sample** tab.
 3. On the **Language** toggle, select **Remotes**.
 4. Toggle **Include secret**, then click **Copy**.
 
@@ -81,7 +81,7 @@ To establish a connection between a part of one robot and a part of a second rob
 
 7. Give the remote a name (you can just use the name of the other robot part, for example, "my-other-robot-main") and click **Create Remote**.
 8. Paste the `address` (for example, `my-other-robot-main.abc1de23f4.viam.cloud`) into the **Address** field.
-9. Click **Add Auth** and paste the `secret` from the other robot's **Code Sample** tab into the **Auth Key** field.
+9. Click **Add Auth** and paste the `secret` from the other robot's **Code sample** tab into the **Auth Key** field.
 
 ![The Viam app CONFIG tab with a remote configured.](../img/parts-and-remotes/remote-config.png)
 

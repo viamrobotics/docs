@@ -78,7 +78,7 @@ pip install viam-sdk
 
 ## Test the SDK with your robot
 
-On the [Viam app](https://app.viam.com), select the **Code Sample** tab, then confirm that **Python** is set as the default language.
+On the [Viam app](https://app.viam.com), select the **Code sample** tab, then confirm that **Python** is set as the default language.
 
 ![A screenshot of the word Language with four boxes below it with Python, Golang, Typescript (Web), and Remotes in each one. Python has a black background with white text and a checkmark, the other three have white backgrounds with black text.](../../img/single-component-tutorials-servo-mousemover/choose-python.png)
 
@@ -107,7 +107,7 @@ Create a file using nano with the .py which is the python file extension, (name 
 nano anyname.py
 ```
 
-Paste the code you got from the **Code Sample** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
+Paste the code you got from the **Code sample** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
 ![Raspberry Pi terminal showing the connect code from the previous example.](../../img/single-component-tutorials-servo-mousemover/sample-code.png)
 
