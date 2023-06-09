@@ -42,7 +42,7 @@ If you are running out of time during your rental, you can [extend your rover re
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots) and navigate to the **Code sample** tab. Then, select **Python**, toggle **Include secret** to display your robot's location secret in the code, and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to go to the [robot page on the Viam app](https://app.viam.com/robots) and navigate to the **Code sample** tab. Then, select **Python**, toggle **Include secret** to display your robot's location secret in the code, and copy the boilerplate code.
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
@@ -79,7 +79,7 @@ name: "cam"
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots) and navigate to the **Code sample** tab. Then, select **Go**, toggle **Include secret** to display your robot's location secret in the code, and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to go to the [robot page on the Viam app](https://app.viam.com/robots) and navigate to the **Code sample** tab. Then, select **Go**, toggle **Include secret** to display your robot's location secret in the code, and copy the boilerplate code.
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
@@ -108,7 +108,7 @@ go run square.go
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots) and navigate to the **Code sample** tab. Then, select **TypeScript**, toggle **Include secret** to display your robot's location secret in the code, and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to go to the [robot page on the Viam app](https://app.viam.com/robots) and navigate to the **Code sample** tab. Then, select **TypeScript**, toggle **Include secret** to display your robot's location secret in the code, and copy the boilerplate code.
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
