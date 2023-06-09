@@ -4,7 +4,7 @@ linkTitle: "Extra Params"
 weight: 70
 type: "docs"
 description: "Using the extra parameter on resource API methods with Viam's SDKs."
-icon: "/services/img/icons/sdk.svg"
+images: ["/services/img/icons/sdk.svg"]
 tags: ["sdk", "extra", "extend"]
 ---
 

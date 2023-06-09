@@ -4,7 +4,7 @@ linkTitle: "Debug"
 weight: 60
 type: "docs"
 description: "Read and filter logs to fix issues while programming with Viam's SDKs."
-icon: "/services/img/icons/sdk.svg"
+images: ["/services/img/icons/sdk.svg"]
 tags: ["client", "sdk", "logs", "debug", "robot", "viam-server"]
 ---
 
@@ -25,14 +25,14 @@ Navigate to the **Logs** tab of your robot's page in [the Viam app](https://app.
 {{< tabs >}}
 {{% tab name="Linux" %}}
 
-``` shell
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo journalctl --unit=viam-server
 ```
 
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
-``` shell
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cat $(brew --prefix)/var/log/viam.log
 ```
 

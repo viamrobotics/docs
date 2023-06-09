@@ -73,7 +73,7 @@ Follow the [instructions on the GitHub repository](https://github.com/viamroboti
 
 ## Hello World: The Code Sample Tab
 
-Now, create a program in the language of your choice that connects to your robot and uses methods built into the SDK's client API libraries to [interact with and control](/program/sdks/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the robot.
+Create a program in the language of your choice that connects to your robot and uses methods built into the SDK's client API libraries to [interact with and control](/program/sdks/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the robot.
 
 Start with this by navigating to your robot's page on [the Viam app](https://app.viam.com/robots).
 Select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
@@ -253,10 +253,10 @@ Save this file on your development machine with the file type of your preferred 
 
 Edit the boilerplate code by [adding control logic](/program/sdks/) to make a client application that connects to your robot and controls it in the way you want.
 
-Then, [execute this program](/program/run/) on any computer as long as:
+Then, [execute this program](/program/run/) on any computer which:
 
-1. You have [installed the appropriate SDK](#requirements) and language on this machine.
-2. The program establishes a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-locally) when [executed](/program/run/).
+1. has [the appropriate SDK](#requirements) installed
+2. can establish a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-locally)
 
 ### `import`: Find Required Imports
 

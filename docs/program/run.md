@@ -4,7 +4,7 @@ linkTitle: "Run Code"
 weight: 50
 type: "docs"
 description: "Execute the logic you've written to control your robot or fleet."
-icon: "/services/img/icons/sdk.svg"
+images: ["/services/img/icons/sdk.svg"]
 tags: ["client", "sdk", "application"]
 ---
 
