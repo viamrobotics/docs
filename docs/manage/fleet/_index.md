@@ -96,13 +96,7 @@ You can also share the robot address and location secret without granting locati
 
 With the robot address and the location secret, you can write code, collaborate on your code using tools like GitHub, and run your code to control the robot from anywhere in the world.
 
-{{% alert title="Caution" color="caution" %}}
-Be cautious when sharing location secret keys in your code or messages.
-
-Do not make a secret key publicly available, as anyone who has the secret key can access your location, compromising the security of your system.
-
-It is good practice to note _where_ and _when_ you share a location secret key.
-{{% /alert %}}
+{{% snippet "secret-share.md" %}}
 
 ### Logs
 

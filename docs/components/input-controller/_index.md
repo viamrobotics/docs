@@ -886,7 +886,7 @@ async def handleController(controller):
 async def main():
     # ADD YOUR ROBOT REMOTE ADDRESS and LOCATION SECRET VALUES.
     # These can be found in the Code Sample tab of app.viam.com.
-    # Toggle 'Include secret' to show the secret.
+    # Toggle 'Include secret' to show the location secret.
     g920_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
     modal_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
 
