@@ -326,8 +326,8 @@ When the rover no longer sees any of the line color anywhere in the front portio
 4. Adjust the component names to match the component names you created in your config file.
    In this case, the component names that you may need to change are **scuttlebase**, **my_camera**, and **green_detector**.
 5. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **Code sample** tab and select **Python**.
-   Toggle **Include secret** to show your robot's connection secret.
-   Copy your robot's address (which should resemble <file>robotName-main.1234abcd.local.viam.cloud:8080</file>) and payload (a string of numbers and letters representing your robot's connection secret) from the code sample into the corresponding fields towards the top of your command file.
+   Toggle **Include secret** to show your robot's location secret.
+   Copy your robot's address (which should resemble <file>robotName-main.1234abcd.local.viam.cloud:8080</file>) and payload (a string of numbers and letters representing your robot's location secret) from the code sample into the corresponding fields towards the top of your command file.
    This allows your code to connect to your robot.
 
    {{% alert title="Caution" color="caution" %}}
