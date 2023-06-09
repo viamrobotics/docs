@@ -126,7 +126,7 @@ Save <file>lightupbot.py</file>.
 You need to tell the code how to access your specific robot (which in this case represents your computer and its webcam).
 
 1. Navigate to the **Code Sample** tab on the Viam app.
-Make sure **Python** is selected in the **Language** selector.
+Make sure **Python** is selected in the **Language** selector, then toggle **Include secret**.
 2. In the code sample, find the `payload`, a long string of numbers and letters.
 Copy it and paste it into line 13 of <file>lightupbot.py</file> in place of `ROBOT_SECRET`.
 3. Find the robot address, of the form `robot-name-main.abc1ab123a1.viam.cloud`, and paste it into line 14 of <file>lightupbot.py</file> in place of `ROBOT_ADDRESS`.

@@ -325,8 +325,9 @@ When the rover no longer sees any of the line color anywhere in the front portio
 3. Open a file in your favorite IDE and paste in [the code from the earlier referenced repo](https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py).
 4. Adjust the component names to match the component names you created in your config file.
    In this case, the component names that you may need to change are **scuttlebase**, **my_camera**, and **green_detector**.
-5. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **Code Sample** tab.
-   Find the Python SDK field and copy the robot address (which will likely have the form <file>robotName-main.1234abcd.local.viam.cloud:8080</file>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file.
+5. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **Code Sample** tab and select **Python**.
+   Toggle **Include secret** to show your robot's connection secret.
+   Copy your robot's address (which should resemble <file>robotName-main.1234abcd.local.viam.cloud:8080</file>) and payload (a string of numbers and letters representing your robot's connection secret) from the code sample into the corresponding fields towards the top of your command file.
    This allows your code to connect to your robot.
 
    {{% alert title="Caution" color="caution" %}}

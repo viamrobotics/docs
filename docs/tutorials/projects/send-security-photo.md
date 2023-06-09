@@ -172,7 +172,7 @@ from viam.services.vision import VisionClient, VisModelConfig, VisModelType, Det
 import yagmail
 
 
-# These must be set. You can get them from your robot's 'CODE SAMPLE' tab
+# These must be set. You can get them from your robot's 'Code sample' tab
 robot_secret = os.getenv('ROBOT_SECRET') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 

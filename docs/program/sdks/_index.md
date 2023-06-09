@@ -74,7 +74,7 @@ Before you get started, ensure that you:
 
 ### Connect to your robot
 
-The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
+The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, select your preferred SDK, toggle **Include secret** to display your robot's secret in the code, and copy the code generated for you.
 
 These boilerplate code samples import all of the necessary libraries and set up a client connection to your robot whether your code runs on your robot or on a different machine.
 This connection is established through the Viam app in the cloud.
@@ -95,12 +95,12 @@ from viam.rpc.dial import Credentials, DialOptions
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='SECRET FROM THE VIAM APP')
+        payload='d7fxn4zc92cjwmlhd7zh545la0xmpc71nnn9gmtyb28g0nhd')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+    return await RobotClient.at_address('rover-main-main.yriemen2i2.viam.cloud', opts)
 
 async def main():
     robot = await connect()
@@ -133,11 +133,11 @@ func main() {
   logger := golog.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
-      "ADDRESS FROM THE VIAM APP",
+      "rover-main-main.yriemen2i2.viam.cloud",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "SECRET FROM THE VIAM APP",
+          Payload: "d7fxn4zc92cjwmlhd7zh545la0xmpc71nnn9gmtyb28g0nhd",
       })),
   )
   if err != nil {
@@ -157,52 +157,31 @@ The TypeScript SDK currently only supports building web browser apps.
 {{< /alert >}}
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Client, createRobotClient, RobotClient } from '@viamrobotics/sdk';
+// This code must be run in a browser environment.
 
-async function connect() {
-  // You can remove this block entirely if your robot is not authenticated.
-  // Otherwise, replace with an actual secret.
-  const secret = '<SECRET>';
-  const credential = {
-    payload: secret,
-    type: 'robot-location-secret',
-  };
-
-  // Replace with the host of your actual robot running Viam.
-  const host = "<HOST>";
-
-  // Replace with the signaling address. If you are running your robot on Viam,
-  // it is most likely https://app.viam.com:443.
-  const signalingAddress = 'https://app.viam.com:443';
-
-  const iceServers = [{ urls: 'stun:global.stun.twilio.com:3478' }];
-
-  return createRobotClient({
-    host,
-    credential,
-    authEntity: host,
-    signalingAddress,
-    iceServers
-  });
-}
+import * as VIAM from '@viamrobotics/sdk';
 
 async function main() {
-  // Connect to client
-  let client: Client;
-  try {
-    client = await connect();
-    console.log('connected!');
+  const host = 'rover-main-main.yriemen2i2.viam.cloud';
 
-    let resources = await client.resourceNames();
-    console.log('Resources:');
-    console.log(resources);
-  } catch (error) {
-    console.log(error);
-    return;
-  }
+  const robot = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: 'robot-location-secret',
+      payload: 'd7fxn4zc92cjwmlhd7zh545la0xmpc71nnn9gmtyb28g0nhd',
+    },
+    authEntity: host,
+    signalingAddress: 'https://app.viam.com:443',
+  });
+  
+
+  console.log('Resources:');
+  console.log(await robot.resourceNames());
 }
 
-main();
+main().catch((error) => {
+  console.error('encountered an error:', error)
+});
 ```
 
 {{% /tab %}}
@@ -227,9 +206,9 @@ The C++ SDK is currently in alpha.
 using namespace viam::sdk;
 
 int main() {
-  std::string host("ADDRESS FROM THE VIAM APP");
+  std::string host("rover-main-main.yriemen2i2.viam.cloud");
   DialOptions dial_opts;
-  Credentials credentials("SECRET FROM THE VIAM APP");
+  Credentials credentials("d7fxn4zc92cjwmlhd7zh545la0xmpc71nnn9gmtyb28g0nhd");
   dial_opts.set_credentials(credentials);
   boost::optional<DialOptions> opts(dial_opts);
   Options options(0, opts);

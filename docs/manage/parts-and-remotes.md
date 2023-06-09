@@ -54,7 +54,7 @@ To establish a connection between a part of one robot and a part of a second rob
    This is the robot part whose resources will be accessible to the other robot part.
 2. Click the **Code Sample** tab.
 3. On the **Language** toggle, select **Remotes**.
-4. Click **Copy JSON**.
+4. Toggle **Include secret**, then click **Copy**.
 
    ![The Viam app CODE SAMPLE tab with Remotes selected and a copyable JSON snippet with the name, address and secret of the robot part.](../img/parts-and-remotes/remote-address.png)
 

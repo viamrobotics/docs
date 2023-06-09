@@ -362,7 +362,7 @@ If you want your robot to automatically run your code upon startup, it is import
 ### Add the connection code
 
 Go to your robot’s page on [the Viam app](https://app.viam.com) and navigate to the **Code Sample** tab.
-Select Python, copy the generated sample code, and paste it into the <file>main.py</file> file.
+Select **Python** and toggle **Include secret**, then copy the generated sample code and paste it into the <file>main.py</file> file.
 
 Save the file and run this command to execute the code:
 
@@ -471,7 +471,7 @@ from viam.components.camera import Camera
 from viam.components.motor import Motor
 from viam.services.vision import VisionClient
 
-# these must be set, you can get them from your robot's 'CODE SAMPLE' tab
+# these must be set, you can get them from your robot's 'Code sample' tab
 robot_secret = os.getenv('ROBOT_SECRET') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 

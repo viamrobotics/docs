@@ -66,8 +66,9 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 7. Save this robot configuration.
 
-Go to the **Code Sample** tab and copy the code sample for the programming language you are working in.
-Paste this boilerplate code into a file and run the script to verify you can connect to your robot.
+Go to the **Code Sample** tab and select the programming language you are working in.
+Toggle **Include secret** to show your robot's connection secret in the generated code.
+Then, paste this boilerplate code into a file and run the script to verify you can connect to your robot.
 Throughout this tutorial you will replace and amend this code.
 The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
 
