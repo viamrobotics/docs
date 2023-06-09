@@ -321,7 +321,8 @@ Refer to your peripheral device's data sheet for SDA/SCL pin layouts.
 
 ## Control your board with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com) and navigate to the **Code sample** tab. Then, select your preferred programming language, toggle **Include secret** to display your robot's location secret in the code, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com) and navigate to the **Code sample** tab.
+Then, select your preferred programming language, toggle **Include secret** to display your robot's location secret in the code, and copy the sample code generated.
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by getting your `board` component from the robot with `FromRobot` and adding API method calls, as shown in the following examples.
