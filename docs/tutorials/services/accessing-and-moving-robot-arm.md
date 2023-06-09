@@ -331,7 +331,7 @@ from viam.rpc.dial import Credentials, DialOptions
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='<ROBOT SECRET PAYLOAD>')
+        payload='<ROBOT LOCATION SECRET PAYLOAD>')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
@@ -399,7 +399,7 @@ func main() {
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "<ROBOT SECRET PAYLOAD>",
+          Payload: "<ROBOT LOCATION SECRET PAYLOAD>",
       })),
   )
   if err != nil {
