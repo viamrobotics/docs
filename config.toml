@@ -91,7 +91,7 @@ sidebar_search_disable = true
 
 [params.ui.feedback]
 enable = true
-yes = 'Glad to hear it! If you have any other feeback please let us know:'
+yes = 'Glad to hear it! If you have any other feedback please let us know:'
 no = "We're sorry about that. To help us improve, please tell us what we can do better:"
 
 [params.ui.readingtime]
