@@ -727,8 +727,8 @@ from viam.components.base import Base
 from viam.services.vision import VisionClient
 ```
 
-Then it connects to our robot using a robot secret and address.
-Replace these values with your robot’s own secret and address which you can obtain from the **Code Sample** tab.
+Then it connects to our robot using a robot location secret and address.
+Replace these values with your robot’s own location secret and address which you can obtain from the **Code Sample** tab, when you enable **Include secret**.
 
 ```python {class="line-numbers linkable-line-numbers"}
 robot_secret = os.getenv('ROBOT_SECRET') or ''

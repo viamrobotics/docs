@@ -74,7 +74,7 @@ Before you get started, ensure that you:
 
 ### Connect to your robot
 
-The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, select your preferred SDK, toggle **Include secret** to display your robot's secret in the code, and copy the code generated for you.
+The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, select your preferred SDK, toggle **Include secret** to display your robot's location secret in the code, and copy the code generated for you.
 
 These boilerplate code samples import all of the necessary libraries and set up a client connection to your robot whether your code runs on your robot or on a different machine.
 This connection is established through the Viam app in the cloud.
@@ -317,7 +317,7 @@ Currently, this only works with Python code which is running on the same board t
       return await RobotClient.at_address('localhost:8080', opts)
     ```
 
-2. Replace the `ROBOT_NAME` with your robot's Viam cloud address and the `PAYLOAD_SECRET` with your robot secret.
+2. Replace the `ROBOT_NAME` with your robot's Viam cloud address and the `PAYLOAD_SECRET` with your robot location secret.
    Your localhost can now make a secure connection to `viam-server` locally.
    SSL will now check the server hostname against the `auth_entity` required by {{< glossary_tooltip term_id="grpc" >}} from the `auth_entity` dial options.
 

@@ -286,7 +286,7 @@ Add the ESP32-backed worker robot as a remote of your new controller robot to es
 
 <div style="max-width:800px;"><img src="../../img/esp32-setup/esp32-remote-creation.png" alt="Adding the ESP32 as a remote in the Viam app Config builder." ></div>
 
-1. Navigate to the **Code Sample** tab of the worker robot, click on **Remotes**, toggle **Include secret** to display your robot's secret in the code, and copy the code generated.
+1. Navigate to the **Code Sample** tab of the worker robot, click on **Remotes**, toggle **Include secret** to display your robot's location secret in the code, and copy the code generated.
 
 ![The remotes config information](../../img/microcontroller/copy-remotes-code.png)
 

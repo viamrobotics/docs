@@ -331,7 +331,7 @@ When the rover no longer sees any of the line color anywhere in the front portio
    This allows your code to connect to your robot.
 
    {{% alert title="Caution" color="caution" %}}
-   Do not share your robot secret or robot address publicly.
+   Do not share your robot location secret or robot address publicly.
    Sharing this information compromises your system security by allowing unauthorized access to your computer.
    {{% /alert %}}
 
