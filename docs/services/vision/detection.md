@@ -230,6 +230,7 @@ The following code gets the robot’s vision service and then runs a color detec
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.services.vision import VisionClient, VisModelConfig, VisModelType
+from viam.components.camera import Camera
 
 robot = await connect()
 # grab camera from the robot
