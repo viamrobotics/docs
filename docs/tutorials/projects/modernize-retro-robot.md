@@ -42,8 +42,8 @@ Other than the Omnibot 2000, which you'll need to find on a used marketplace lik
 |Part  | Price | Notes |
 | --- | --- | --- |
 [Omnibot 2000](https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2047675.m570.l1312&_nkw=omnibot+2000&_sacat=0)|$250|Prices can vary dramatically - we paid about $200 for an "as-is, non-working" copy. You do not need one with the remote control or tray included.|
-[12V to 5V DC USB Type-C step-down power converter](https://www.amazon.com/dp/B0BNQ9XXCZ/)|$7.99|To power the Pi from a 12v battery.|
-[12v power supply](https://www.amazon.com/TMEZON-Power-Adapter-Supply-2-1mm/dp/B00Q2E5IXW)|$8.09|To charge the battery.|
+[12V to 5V DC USB Type-C step-down power converter](https://www.amazon.com/dp/B0BNQ9XXCZ/)|$7.99|To power the Pi from a 12V battery.|
+[12V power supply](https://www.amazon.com/TMEZON-Power-Adapter-Supply-2-1mm/dp/B00Q2E5IXW)|$8.09|To charge the battery.|
 [L298N motor drive controller board 2-pack](https://www.amazon.com/DAOKI-Controller-H-Bridge-Stepper-Mega2560/dp/B085XSLKFQ/r)|$8.31|To control the base and head motors.|
 [LED E10 bulbs](https://www.amazon.com/Ruiandsion-6000K-Flashlight-Headlight-Negative/dp/B08SLQBZGN)|$7.99|You'll need 2 LED bulbs to light up the eyes.|
 [Webcam](https://www.amazon.com/gp/product/B08PTNVPKX)|$36.15|A webcam that can be placed as a "nose", there are many options.|
