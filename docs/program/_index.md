@@ -251,12 +251,13 @@ int main() {
 
 Save this file on your development machine with the file type of your preferred SDK.
 
-Edit the boilerplate code by [adding control logic](/program/sdks/) to make a client application that connects to your robot and controls it in the way you want.
 
 Then, [execute this program](/program/run/) on any computer which:
 
 1. has [the appropriate SDK](#requirements) installed
 2. can establish a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-locally)
+
+Edit the boilerplate code by [adding control logic](/program/sdks/) to make a client application that connects to your robot and controls it in the way you want.
 
 ### `import`: Find Required Imports
 

@@ -8,7 +8,7 @@ images: ["/services/img/icons/sdk.svg"]
 tags: ["client", "sdk", "application"]
 ---
 
-After saving your boilerplate code sample and adding control logic with Viam's API methods, run your program to control your Viam-connected robot.
+After saving your [code sample](/program/#hello-world-the-code-sample-tab) and adding control logic with [Viam's SDKs](/program/sdks/), run your program to control your Viam-connected robot.
 Do this by running a command to execute the program in the terminal of a machine with the appropriate programming language and Viam SDK installed.
 
 For example:
