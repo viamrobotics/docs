@@ -234,7 +234,8 @@ Now it’s time to start collecting images of your beloved pet.
 Set your feeder up near an area your pet likes to hang out like your couch or their bed or mount it temporarily over their food bowl, or even just hold it in front of them for a couple of minutes.
 You can check that data is being captured by heading over to the [**DATA** page](https://app.viam.com/data/view) and filtering your image data to show just images from the {{< glossary_tooltip term_id="location" text="location" >}} your pet feeder is in.
 Capture as many images as you want.
-If possible, capture your pet from different angles and with different backgrounds.
+If possible, capture your pet from different angles and with different backgrounds. 
+You also want to make sure you capture images without your pet so that you have a diverse dataset to train your model on.
 Disable Data Capture after you’re done capturing images of your pet.
 
 ### Tag images
@@ -243,9 +244,9 @@ Head over to the [**DATA** page](https://app.viam.com/data/view) and select an i
 After selecting the image, you can type a custom tag for some of the objects you see in the image.
 The first thing you want to consider is what tags you are trying to create and how you want your custom model to function.
 
-![The images tab of the data page with a number of images of the dog.](../../img/pet-treat-dispenser/app-data-images.png)
+![The images tab of the data page with a number of images of the dog.](../../img/pet-treat-dispenser/app-data-images-filters.png)
 
-For the treat dispenser, you can tag images with the name of the pet.
+For the treat dispenser, you can tag images with the name of the pet and also tag images that do not include the pet. 
 Notice that in our image collection, we captured images at different angles and with different background compositions.
 This is to ensure that our model can continue to recognize the object no matter how your robot is viewing it through its camera.
 
@@ -256,7 +257,7 @@ Type in your desired tag in the Tags section.
 
 Be mindful of your naming as you can only use alphanumeric characters and underscores: this is because the model will be exported as a `.tflite` file with a corresponding `.txt` file for labeling.
 
-Add tags for each image that shows your pet.
+Add tags for each image that shows your pet and also tags that include backgrounds without your pet.
 
 ![The recently-used tags search window.](../../img/pet-treat-dispenser/app-data-recently-used.png)
 
