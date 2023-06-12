@@ -65,7 +65,7 @@ If you have the **Owner** role, you can [invite new users](organizations/#invite
 
 Viam is built in a way that allows you to change configurations, deploy packages, check logs, and control your robots both when you are close to your robot, as well as remotely.
 
-Robot [configuration](robots/#configuration) and robot [code](#control-with-the-SDKs) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+Robot [configuration](robots/#configuration) and robot [code](#control-with-the-sdks) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
 
 ### Configuration
 
