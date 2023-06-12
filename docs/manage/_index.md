@@ -39,3 +39,8 @@ You can also manage and control your robots from the command line with our CLI:
 {{< cards >}}
   {{% card link="/manage/cli" size="small" %}}
 {{< /cards >}}
+
+## Sign Out
+
+To log out or sign out of the [Viam app](https://app.viam.com/), click on your profile icon in the upper right corner of your browser window.
+Click **Sign out** to sign out of accessing all organizations, locations, and robots your credentials manage.

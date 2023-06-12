@@ -65,7 +65,7 @@ If you have the **Owner** role, you can [invite new users](organizations/#invite
 
 Viam is built in a way that allows you to change configurations, deploy packages, check logs, and control your robots both when you are close to your robot, as well as remotely.
 
-Robot [configuration](robots/#configuration) and robot [code](#programmatic-control) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+Robot [configuration](robots/#configuration) and robot [code](#control-with-the-SDKs) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
 
 ### Configuration
 
@@ -83,7 +83,7 @@ For some configuration aspects you may require physical access to the robot so y
 Everyone who has access to the robot can remotely control it on the app's [**Control** tab](robots/#control).
 This allows you to visually test and remotely operate robot components and services.
 
-### Programmatic control
+### Control with the SDKs
 
 Everyone who has access to the robot's location can obtain the robot's remote address and location secret needed to send API calls to the robot from the app's **Code sample** tab.
 You can share the robot's remote address and location secret without granting location access in the app.
@@ -104,7 +104,7 @@ It is good practice to note _where_ and _when_ you share a location secret key.
 ### Logging
 
 Each robot automatically sends logs to the cloud where you can view them from the [**Logs** tab](robots/#logs).
-If you are collaborating on a robot and controlling it using the [**Control** tab](robots/#control) or code, everyone who has access to the location the robot is in can see the robot's logs.
+If you are collaborating on a robot and controlling it using the [**Control** tab](robots/#control) or [SDK code](#control-with-the-sdks), everyone who has access to the location the robot is in can see the robot's logs.
 
 ### Deployment
 
