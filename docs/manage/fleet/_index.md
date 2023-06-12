@@ -85,10 +85,10 @@ This allows you to visually test and remotely operate robot components and servi
 
 ### Programmatic control
 
-Everyone who has access to the robot's location can obtain the robot's remote address and location secret needed to send API calls to the robot on the app's **Code sample** tab.
+Everyone who has access to the robot's location can obtain the robot's remote address and location secret needed to send API calls to the robot from the app's **Code sample** tab.
 You can share the robot's remote address and location secret without granting location access in the app.
 
-As long as each collaborator has access to these tokens for a robot, members of your team can write code, use tools like GitHub and execute the code to control the robot from anywhere in the world.
+As long as each collaborator has access to these tokens for a robot, members of your team can write code, use tools like GitHub, and execute code to control the robot from anywhere in the world.
 
 Toggle **Include secret** above the code on the **Code Sample** tab of your robot's page to display or hide the robot's location secret.
 The robot's remote address is displayed on both the **Control** and **Code sample** tabs of your robot's page in the app, ending with `viam.cloud`.
@@ -108,4 +108,4 @@ If you are collaborating on a robot and controlling it using the [**Control** ta
 
 ### Deployment
 
-You and your collaborators can [deploy control logic](/program/sdks/), [modular resources](/program/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](/services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy [control logic](/program/sdks/), [modular resources](/program/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](/services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.

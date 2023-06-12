@@ -9,14 +9,14 @@ aliases:
   - "/viam/app.viam.com/"
 ---
 
-The [Viam app](https://app.viam.com/) is a web user interface for managing and building robots.
+The [Viam app](https://app.viam.com/) is a web UI for managing and building robots.
 
 ## Create Account and Log In
 
 To get started on the Viam app, you must log in as an authorized user.
 Navigate to [the main page](https://app.viam.com/).
-If you haven't already, toggle to **Sign Up** to create a profile.
-Select **Log In** to log in to the app with your Gmail credentials or your user address and chosen password.
+If you haven't already, click **Sign Up** to create a new user.
+Select **Log In** to log in to the app with your Google credentials, or provide your Email address and choose a password.
 
 If you forget your password to the app, click **Forgot password** and enter your email address to obtain instructions to reset your password.
 
