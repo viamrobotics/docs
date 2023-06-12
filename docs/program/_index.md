@@ -15,8 +15,8 @@ aliases:
 
 Viam offers software development kits (SDKs) in popular languages which
 
-- Streamline connection, authentication, and encryption against a server using {{< glossary_tooltip term_id="webrtc" >}}
-- Enable you to interface with robots without calling the `viam-server` [gRPC APIs for robot controls](https://github.com/viamrobotics/api) directly
+- Brokers connection, authentication, and encryption for communication with robots running `viam-server` using {{< glossary_tooltip term_id="webrtc" >}}
+- Enable you to interface with robot [gRPC APIs](https://github.com/viamrobotics/api) in a way that is idiomatic to that programming language
 
 ![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](img/sdks/robot-client.png)
 
@@ -31,7 +31,7 @@ Viam currently offers SDKs for the following languages:
 
 ## Requirements
 
-Before you get started with your program, ensure that you have [installed and connected to `viam-server`](/installation/) on the computer you want to use to control a robot [(likely a single-board computer)](/components/board/#configuration) and [configured a robot](/manage/configuration/#local-setup).
+Before you get started with your program, ensure that you have [installed `viam-server`](/installation/) on the computer you want to use to control a robot [(likely a single-board computer)](/components/board/#configuration) and [configured a robot](/manage/configuration/).
 
 The easiest way to do this is:
 
@@ -40,7 +40,7 @@ The easiest way to do this is:
 3. Go to the **Setup** tab and follow the instructions there.
 4. [Configure](/manage/configuration/) your robot.
 
-Next, to install your preferred Viam SDK on your development machine, run one of the following commands in your terminal:
+Next, to install your preferred Viam SDK on your Linux or macOS development machine or [single-board computer](/components/board/), run one of the following commands in your terminal:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -77,7 +77,7 @@ Create a program in the language of your choice that connects to your robot and 
 
 Start with this by navigating to your robot's page on [the Viam app](https://app.viam.com/robots).
 Select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
-These code snippets import all the necessary libraries and set up a connection with your robot in the cloud through the Viam app.
+This code snippet imports all the necessary libraries to set up a connection with your robot and interface with its configured components and services.
 
 Your boilerplate code sample should look similar to this:
 
