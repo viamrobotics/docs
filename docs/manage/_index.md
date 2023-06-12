@@ -34,7 +34,7 @@ You do not have to use the app to use Viam's platform to build your robot, but i
 
 <br>
 
-As an alternative to the app, you can manage and control your robots from the command line with our CLI:
+You can also manage and control your robots from the command line with our CLI:
 
 {{< cards >}}
   {{% card link="/manage/cli" size="small" %}}
