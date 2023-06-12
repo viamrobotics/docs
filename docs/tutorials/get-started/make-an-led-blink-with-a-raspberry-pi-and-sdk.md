@@ -1,5 +1,5 @@
 ---
-title: "How to Make an LED Blink with a Raspberry Pi and the Viam SDK"
+title: "Make an LED Blink with a Raspberry Pi and the Viam SDK"
 linkTitle: "Blink an LED with a Pi and the SDK"
 weight: 40
 type: "docs"
@@ -9,7 +9,7 @@ mp4Src: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.mp
 videoAlt: "A blinking blue LED connected to a Raspberry Pi with jumper cables."
 images: ["/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.gif"]
 aliases:
-    - /tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk
+    - /tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/
 tags: ["board", "raspberry pi", "sdk"]
 # SME: Joe Karlsson
 ---
@@ -25,7 +25,7 @@ This tutorial is a good introduction to [Python](https://www.python.org/) or [Go
 {{% alert title="Note" color="note" %}}
 This is part 2 of Viam's Intro to Robotics series.
 If you haven't completed [Part 1](/tutorials/get-started/make-an-led-blink-with-the-viam-app/), be sure to go back and complete that before starting on this tutorial.
-You should have already set up [your Raspberry Pi](/installation/prepare/rpi-setup), [connected to the Viam app and set up `viam-server`](/installation#install-viam-server), and built your circuit before proceeding.
+You should have already set up [your Raspberry Pi](/installation/prepare/rpi-setup/), [connected to the Viam app and set up `viam-server`](/installation/#install-viam-server), and built your circuit before proceeding.
 {{% /alert %}}
 
 For reference, the circuit you are building for this tutorial looks like this:
@@ -41,7 +41,7 @@ You will need the following hardware, tools, and software to complete this proje
 <ol>
     <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
 <ol type="a">
-    <li>Refer to the <a href="../../../installation/prepare/rpi-setup">Viam Raspberry Pi Setup Guide</a> to setup your Pi.</li>
+    <li>Refer to the <a href="../../../installation/prepare/rpi-setup/">Viam Raspberry Pi Setup Guide</a> to setup your Pi.</li>
 <li>You must also enable SSH on your Pi.</li>
 </ol>
     <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
@@ -55,7 +55,7 @@ You will need the following hardware, tools, and software to complete this proje
 ### Software
 
 - [Go](https://go.dev/dl/) or [Python 3.9+](https://www.python.org/downloads/)
-- [viam-server](/installation#install-viam-server)
+- [viam-server](/installation/#install-viam-server)
 - [Viam Python SDK](https://python.viam.dev/) or [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
 
 ### How to install a Viam SDK
@@ -298,7 +298,7 @@ If you have any issues whatsoever getting the Viam SDK set up or getting your co
 
 In this tutorial, you learned the basics of controlling your robot using the Viam SDK by writing a short program in either Go or Python that makes an LED on your Raspberry Pi blink on and off.
 
-If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, check out one of following [Tutorial List](..).
+If you are looking for some projects that would be a great next step in your journey of learning about how to build robots, check out one of following [tutorials](/tutorials/).
 
 {{% alert title="Tip" color="tip" %}}
 If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Community Discord](https://discord.gg/viam).

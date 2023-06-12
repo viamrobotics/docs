@@ -1,4 +1,4 @@
-<video class="video-shortcode" preload="auto" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}">
+<video class="video-shortcode" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}" poster="{{ .Get "poster" }}">
   <source src="{{ .Get "webm_src" }}" type="video/webm">
   <source src="{{ .Get "mp4_src" }}" type="video/mp4">
   There should have been a video here but your browser does not seem

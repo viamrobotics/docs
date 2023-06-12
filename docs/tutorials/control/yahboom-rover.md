@@ -21,8 +21,8 @@ See our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) for instruc
 
 ## Configuring the Board
 
-Go to the Viam app ([https://app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **Config** tab of the robot associated with your Raspberry Pi.
-To create a new component you'll be working within the **Create Component** section of the **Components** sub-tab.
+Go to the Viam app ([app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **Config** tab of the robot associated with your Raspberry Pi.
+To create a new component you'll be working within the **Create Component** section of the **Components** subtab.
 
 ![A screenshot of the config builder UI on app.viam.com showing the Create Component box filled out with name=local, type=board and model=pi.](../../img/yahboom-rover/config.png)
 
@@ -171,7 +171,7 @@ This config adds the controller to the robot, but doesn’t give it any function
 To link the controller input to the four-wheel base functionality, you need to add our first `service`.
 Services are the software packages which provide our robots with cool and powerful functionality.
 
-Until this point we've been working on the **Components** sub-tab of the **Config** tab, but now we'll switch to the **Services** sub-tab.
+Until this point we've been working on the **Components** subtab of the **Config** tab, but now we'll switch to the **Services** subtab.
 Click **Services** at the top of the **Config** tab.
 You will be using the **Create Service** card here.
 You can `name` this service `yahboom_gamepad_control` and give it the `type` `base_remote_control`, which is a service Viam provides for driving a rover with a gamepad.
@@ -185,7 +185,7 @@ You will need to configure the following attributes for this service: `base` sho
 }
 ```
 
-![A screenshot of the SERVICES sub-tab of the CONFIG tab on app.viam.com, showing the configured base remote control service.](../../img/yahboom-rover/serviceattributes.png)
+![A screenshot of the SERVICES subtab of the CONFIG tab on app.viam.com, showing the configured base remote control service.](../../img/yahboom-rover/serviceattributes.png)
 
 If you can not see a section where you can add the attributes, you can go to **Raw JSON** mode, and add this code:
 
@@ -212,7 +212,7 @@ But wait!
 This rover has a camera on it.
 
 Once again, find the **Create Component** section at the bottom of the **Config** tab.
-Follow [these instructions on how to connect and configure a camera](/components/camera/webcam).
+Follow [these instructions on how to connect and configure a camera](/components/camera/webcam/).
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
 

@@ -4,7 +4,7 @@ linkTitle: "Glossary"
 weight: 30
 type: "docs"
 layout: "glossary"
-description: "A glossary of robotics and Viam-specific jargon."
+description: "A glossary that explains robotics and Viam-specific jargon."
 card:
   name: reference
   weight: 10

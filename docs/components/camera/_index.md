@@ -1,6 +1,7 @@
 ---
 title: "Camera Component"
 linkTitle: "Camera"
+childTitleEndOverwrite: "Camera Component"
 weight: 40
 type: "docs"
 description: "A camera captures 2D or 3D images and sends them to the computer controlling the robot."
@@ -36,19 +37,19 @@ For configuration information, click on one of the following models:
 
 | Model | Description |
 | ----- | ----------- |
-| [`ffmpeg`](ffmpeg) | Uses a camera, a video file, or a stream as a camera. |
-| [`image_file`](image-file) | Gets color and depth images frames from a file path. |
-| [`velodyne`](velodyne) | Uses velodyne lidar. |
-| [`webcam`](webcam) | A standard camera that streams camera data. |
-| [`rtsp`](rtsp) | A streaming camera with an MJPEG track. |
-| [`fake`](fake) | A camera model for testing. |
-| [`single_stream`](single-stream) | A HTTP client camera that streams image data from an HTTP endpoint. |
-| [`dual_stream`](dual-stream) | A HTTP client camera that combines the streams of two camera servers to create colorful point clouds. |
-| [`join_color_depth`](join-color-depth) | Joins the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image. |
-| [`align_color_depth_extrinsics`](align-color-depth-extrinsics) | Uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images. |
-| [`align_color_depth_homography`](align-color-depth-homography) | Uses a homography matrix to align the color and depth images. |
-| [`join_pointclouds`](join-pointclouds) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
-| [`transform`](transform) | A pipeline for applying transformations to an input image source. |
+| [`ffmpeg`](ffmpeg/) | Uses a camera, a video file, or a stream as a camera. |
+| [`image_file`](image-file/) | Gets color and depth images frames from a file path. |
+| [`velodyne`](velodyne/) | Uses velodyne lidar. |
+| [`webcam`](webcam/) | A standard camera that streams camera data. |
+| [`rtsp`](rtsp/) | A streaming camera with an MJPEG track. |
+| [`fake`](fake/) | A camera model for testing. |
+| [`single_stream`](single-stream/) | A HTTP client camera that streams image data from an HTTP endpoint. |
+| [`dual_stream`](dual-stream/) | A HTTP client camera that combines the streams of two camera servers to create colorful point clouds. |
+| [`join_color_depth`](join-color-depth/) | Joins the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image. |
+| [`align_color_depth_extrinsics`](align-color-depth-extrinsics/) | Uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images. |
+| [`align_color_depth_homography`](align-color-depth-homography/) | Uses a homography matrix to align the color and depth images. |
+| [`join_pointclouds`](join-pointclouds/) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
+| [`transform`](transform/) | A pipeline for applying transformations to an input image source. |
 
 ## Control your camera with Viam's client SDK libraries
 
@@ -103,12 +104,12 @@ If the server does not know how to return the specified MIME type, the server re
 
 **Parameters:**
 
-- `mime_type` (`str`): The MIME type of the image.
+- `mime_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The MIME type of the image.
   The returned MIME type is not guaranteed to match the image output type.
 
 **Returns:**
 
-- `frame` (`Image` or [`RawImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.RawImage)): The requested frame.
+- ([PIL.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html) or [RawImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.RawImage)): The requested frame.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
@@ -125,13 +126,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `errHandlers` ([`ErrorHandler`](https://pkg.go.dev/github.com/edaniels/gostream#ErrorHandler)): A handler for errors allowing for logic based on consecutively retrieved errors).
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `errHandlers` [(ErrorHandler)](https://pkg.go.dev/github.com/edaniels/gostream#ErrorHandler): A handler for errors allowing for logic based on consecutively retrieved errors).
 
 **Returns:**
 
-- `stream` ([`gostream.VideoStream`](https://pkg.go.dev/github.com/edaniels/gostream)): A `VideoStream` that streams video until closed.
-- `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(gostream.VideoStream)](https://pkg.go.dev/github.com/edaniels/gostream): A `VideoStream` that streams video until closed.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromRobot(robot, "my_camera")
@@ -163,8 +164,7 @@ The consumer of this call should decode the bytes into the format suggested by t
 
 **Returns:**
 
-- `pointcloud` (`bytes`): The pointcloud data.
-- `mimetype` (`str`): The MIME type of the pointcloud (for example PCD).
+- [(Tuple[bytes,str])](https://docs.python.org/3/library/stdtypes.html#bytes): The pointcloud data as bytes paired with a string representing the mimetype of the pointcloud (for example, PCD).
 
 To deserialize the returned information into a numpy array, use the Open3D library:
 
@@ -190,13 +190,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
 **Returns:**
 
-- `pointCloud` ([`pointcloud.PointCloud`](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud)): A general purpose container of points.
+- [(pointcloud.PointCloud)](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud): A general purpose container of points.
   It does not dictate whether or not the cloud is sparse or dense.
-- `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromRobot(robot, "my_camera")
@@ -222,7 +222,7 @@ Get the camera intrinsic parameters and camera distortion, as well as whether th
 
 **Returns:**
 
-- `properties` ([`Properties`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties)): The properties of the camera.
+- [(Properties)](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties): The properties of the camera.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera= Camera.from_robot(robot=robot, name="my_camera")
@@ -237,12 +237,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
 **Returns:**
 
-- `properties` ([`Properties`](https://pkg.go.dev/go.viam.com/rdk/components/camera#Properties)): Properties of the particular implementation of a camera.
-- `err` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/camera#Properties): Properties of the particular implementation of a camera.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromRobot(robot, "my_camera")
@@ -268,11 +268,11 @@ If you are implementing your own camera and add features that have no native API
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera= Camera.from_robot(robot, "my_camera")
@@ -288,13 +288,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map[string]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map[string]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
   myCamera, err := camera.FromRobot(robot, "my_camera")

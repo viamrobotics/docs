@@ -33,7 +33,7 @@ If you use a different rover and/or motor controller, ensure that the motor driv
 For example, a brushed DC motor requires a brushed DC motor driver that is rated for the power requirements of the motor.
 Also, the configuration files shown in this tutorial *must* be modified if you use a different setup.
 
-You can find more information on configuring different motors in the [Motor Component](/components/motor) topic.
+You can find more information on configuring different motors in the [Motor Component](/components/motor/) topic.
 {{% /alert %}}
 
 ### Hardware and software requirements
@@ -45,7 +45,7 @@ You can find more information on configuring different motors in the [Motor Comp
 * [A solenoid](https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/)
 * [A relay](https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/)
 * [A dual motor controller](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/)
-If you use a different motor driver, refer to the manufacturer’s data sheet and our [motor component topic](/components/motor) to learn how to configure the pins.
+If you use a different motor driver, refer to the manufacturer’s data sheet and our [motor component topic](/components/motor/) to learn how to configure the pins.
 * Jumper wires (breadboard wires)
 
 ### Tools and Consumables
@@ -236,7 +236,7 @@ Now let’s add a camera to watch the video stream on the control panel as you m
 ### Camera Configuration
 
 Add your USB camera as a webcam.
-Please refer to [our webcam documentation](/components/camera/webcam) for complete instructions.
+Please refer to [our webcam documentation](/components/camera/webcam/) for complete instructions.
 
 <img src="../../img/foam-dart-launcher/config-webcam.png"  alt="Camera Component Attribute Pane." title="Camera Component Attribute Pane" width="800">
 
@@ -356,7 +356,7 @@ Since we already assembled the robot, setting pin 37 to **high** launches your f
 
 You can see the demo video of it in action here:
 
-{{<video webm_src="../../videos/FoamDartLauncherRobotDemo.webm" mp4_src="../../videos/FoamDartLauncherRobotDemo.mp4" alt="Foam Dart Launcher Demo">}}
+{{<video webm_src="../../videos/FoamDartLauncherRobotDemo.webm" mp4_src="../../videos/FoamDartLauncherRobotDemo.mp4" poster="../../videos/FoamDartLauncherRobotDemo.jpg" alt="Foam Dart Launcher Demo">}}
 
 ## Troubleshooting
 

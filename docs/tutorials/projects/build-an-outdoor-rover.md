@@ -1,10 +1,10 @@
 ---
-title: "Build an outdoor rover: simple, useful and affordable (choose 3)"
-linkTitle: "Build an Outdoor Rover"
+title: "Build an outdoor rover: simple, useful and affordable"
+linkTitle: "Outdoor Rover"
 weight: 60
 type: "docs"
 tags: ["base", "outdoor", "solar", "rover"]
-description: "Build and control an affordable, functional outdoor rover."
+description: "Build and control an affordable, functional outdoor rover (choose 3)."
 image: "/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"
 images: ["/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"]
 aliases:
@@ -245,7 +245,7 @@ Next, create another component of type "motor", model "gpio".
 Call it "left" to represent the motor on the left side of your rover.
 Now we'll need to add some attributes.
 We'll need to reference the board component we created in the last step by name, and the GPIO pins we connected from this motor to our Pi.
-Other attributes (Max RPM, PWM Freq) are [important for motor control](/components/motor/gpio#brushless-dc-motor) (Note that these might vary based on your specific hub motors, check the data sheet if you have one; or you can try the ones we use in this tutorial).
+Other attributes (Max RPM, PWM Freq) are [important for motor control](/components/motor/gpio/#brushless-dc-motor) (Note that these might vary based on your specific hub motors, check the data sheet if you have one; or you can try the ones we use in this tutorial).
 Once you've configured the "left" motor, repeat for the "right" - make sure you're mapping the correct GPIO pins for each.
 Finally, one of the two motors we are connecting will need the "Direction Flip" attribute set to "true".
 It's ok if you are not sure which one, you can always switch them later after testing.
@@ -290,10 +290,10 @@ You can measure your wheel's circumference and width between wheels, which will 
 
 You can now have some real fun.
 Try driving your rover by keyboard.
-Drive your [robot programmatically](../../get-started/try-viam-sdk/), use a [color detector](../../services/try-viam-color-detection/) or a [machine learning object detector](/services/vision/detection) to interact with the environment.
+Drive your [robot programmatically](../../get-started/try-viam-sdk/), use a [color detector](../../services/try-viam-color-detection/) or a [machine learning object detector](/services/vision/detection/) to interact with the environment.
 Check out our [Python SDK documentation](https://python.viam.dev/) (or another SDK in the language of your choice) and start planning how you'll use your sturdy outdoor rover to do real things!
 
-If you're adding a camera, GPS, planning on using Viam's Navigation Service, or want to attach a solar panel and charge controller - this is all fairly plug and play with Viam and is covered in the [Viam documentation](/).
+If you're adding a camera, GPS, planning on using Viam's Navigation Service, or want to attach a solar panel and charge controller - this is all fairly plug and play with Viam and is covered in the [Viam documentation](https://docs.viam.com).
 
 <div class="td-max-width-on-larger-screens">
   <img src="../../img/outdoor-rover-boxbot/matt-done.png" class="alignleft" alt="Matt working on project." title="Matt working on project." style="max-width: 250px" />

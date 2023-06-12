@@ -32,9 +32,9 @@ Supported base models include:
 
 | Model | Description |
 | ----- | ----------- |
-| [`wheeled`](wheeled) | Mobile wheeled robot |
-| [`agilex-limo`](agilex-limo) | [Agilex LIMO Mobile Robot](https://global.agilex.ai/products/limo) |
-| [`fake`](fake) | A model used for testing, with no physical hardware |
+| [`wheeled`](wheeled/) | Mobile wheeled robot |
+| [`agilex-limo`](agilex-limo/) | [Agilex LIMO Mobile Robot](https://global.agilex.ai/products/limo) |
+| [`fake`](fake/) | A model used for testing, with no physical hardware |
 | `boat` | Mobile boat robot |
 
 ## Control your base with Viam's client SDK libraries
@@ -102,7 +102,7 @@ Negative implies backwards.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = BaseClient.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=robot, name="my_base")
 
 # Move the base 10 mm at a velocity of 1 mm/s, forward.
 await my_base.move_straight(distance=10, velocity=1)
@@ -163,7 +163,7 @@ Negative implies backwards.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = BaseClient.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=robot, name="my_base")
 
 # Spin the base 10 degrees at an angular velocity of 1 deg/sec.
 await my_base.spin(angle=10, velocity=1)
@@ -222,7 +222,7 @@ Set the linear and angular power of the base, represented as a percentage of max
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = BaseClient.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=robot, name="my_base")
 
 # Make your wheeled base move forward. Set linear power to 75%.
 print("move forward")
@@ -304,7 +304,7 @@ Only the Y component of the vector is used for a wheeled base.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = BaseClient.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=robot, name="my_base")
 
 # Set the angular velocity to 1 mm/sec and the linear velocity to 1 degree/sec.
 await my_base.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z=1))
@@ -356,7 +356,7 @@ Stop the base from moving immediately.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = BaseClient.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=robot, name="my_base")
 
 # Move the base forward 10 mm at a velocity of 1 mm/s.
 await my_base.move_straight(distance=10, velocity=1)
@@ -403,14 +403,14 @@ If you are implementing your own base and add features that have no built-in API
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = BaseClient.from_robot(robot, "my_base")
+my_base = Base.from_robot(robot, "my_base")
 
 command = {"cmd": "test", "data1": 500}
 result = my_base.do(command)
@@ -423,13 +423,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map[string]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map[string]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")

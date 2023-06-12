@@ -12,7 +12,7 @@ tags: ["camera", "components"]
 Combine the streams of a color and a depth camera already registered in your config to create a view that outputs the combined and aligned image.
 
 This specific model is good if you don’t need to align the streams.
-If you need to adjust the alignment between the depth and color frames, use the [`align_color_depth_extrinsics`](../align-color-depth-extrinsics) model or the[`align_color_depth_homography`](../align-color-depth-homography) model.
+If you need to adjust the alignment between the depth and color frames, use the [`align_color_depth_extrinsics`](../align-color-depth-extrinsics/) model or the[`align_color_depth_homography`](../align-color-depth-homography/) model.
 
 {{< tabs name="Configure a Join Color Depth View" >}}
 {{% tab name="Config Builder" %}}

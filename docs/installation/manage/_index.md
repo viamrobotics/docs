@@ -18,7 +18,7 @@ Find information for each situation in the tabs below.
 
 ### As a system service
 
-After setting up the system service per the [Linux install instructions](/installation#install-viam-server), the AppImage binary will be located at <file>/usr/local/bin/viam-server</file>, and a systemd service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
+After setting up the system service per the [Linux install instructions](/installation/#install-viam-server), the AppImage binary will be located at <file>/usr/local/bin/viam-server</file>, and a systemd service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
 
 By default, the `viam-server` is configured to start when the machine boots.
 

@@ -1,5 +1,5 @@
 ---
-title: "Program a Guardian to Track Humans and Pets Using a Pi, Camera, and Servo"
+title: "A Guardian that Tracks Pets using a Pi, Camera, and Servo"
 linkTitle: "Security Guardian"
 weight: 50
 type: "docs"
@@ -17,12 +17,12 @@ In the run up to the new Zelda release, I realized you can build a stationary gu
 Adding a bit of [machine learning](/services/ml/), you can then make the guardian detect objects or people or pets and follow them around by rotating its head.
 Luckily, I am not the first one to have the idea to build a guardian and there was already a [brilliant guardian 3D model](https://www.thingiverse.com/thing:2391826) on Thingiverse with space for LEDs and a servo.
 
-In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo), a [camera](/components/camera), some LEDs and the [ML Model service](/services/ml) and [Vision Service](/services/vision).
+In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo/), a [camera](/components/camera/), some LEDs and the [ML Model service](/services/ml/) and [Vision Service](/services/vision/).
 Here's a video of the finished guardian detecting me:
 
-{{<video webm_src="../../img/guardian/guardian-detection.webm" mp4_src="../../img/guardian/guardian-detection.mp4" alt="Guardian robot detects person and rotates head to follow them around">}}
+{{<video webm_src="../../img/guardian/guardian-detection.webm" mp4_src="../../img/guardian/guardian-detection.mp4" poster="../../img/guardian/guardian-detection.jpg" alt="Guardian robot detects person and rotates head to follow them around">}}
 
-## Components
+## Hardware requirements
 
 To build your own guardian robot, you need the following hardware:
 
@@ -65,13 +65,13 @@ Optionally, if you want to decorate your guardian, I recommend the following mat
 You will use the following software in this tutorial:
 
 - [Python 3](https://www.python.org/downloads/)
-- [`viam-server`](/installation#install-viam-server): Follow the [installation instructions](/installation#install-viam-server) to install `viam-server` on your Raspberry Pi.
+- [`viam-server`](/installation/#install-viam-server): Follow the [installation instructions](/installation/#install-viam-server) to install `viam-server` on your Raspberry Pi.
 
 ## Assemble the robot
 
 You can view a timelapse of the robot assembly here:
 
-{{<video webm_src="../../img/guardian/timelapse.webm" mp4_src="../../img/guardian/timelapse.mp4" alt="Timelapse of guardian assembly">}}
+{{<video webm_src="../../img/guardian/timelapse.webm" mp4_src="../../img/guardian/timelapse.mp4" poster="../../img/guardian/timelapse.jpg" alt="Timelapse of guardian assembly">}}
 
 ### Assemble for testing
 
@@ -87,6 +87,13 @@ Your servo probably came with mounting screws and a plastic horn for the gear.
 Use the screws to attach the horn to the base of the head.
 
 Next, get your Raspberry Pi and your servo and connect the servo to the Raspberry Pi by connecting the PWM wire to pin 12, the power wire to pin 2, and the ground wire to pin 8.
+
+{{< alert title="Tip" color="tip" >}}
+To make it easier for you to see which pin is which, you can print out [this piece of paper at 100% scaling level](/try-viam/rover-resources/img/rpi4_rover_leaf_A4.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+Only attach the paper when the Pi is unplugged.
+To make attaching the paper easier, use a credit card or a small screwdriver.
+{{< /alert >}}
+
 Then attach the head to the servo.
 
 ![A Raspberry Pi connected to a FS90R servo. The yellow PWM wire is attached to pin twelve on the raspberry pi. The red five-volt wire is attached to pin two. The black ground wire is attached to pin eight](/tutorials/img/single-component-tutorials-servo-mousemover/servo-wiring-diagram.png)
@@ -106,7 +113,7 @@ To be able to test the components, you need to install `viam-server` and configu
 
 Go to the [Viam app](https://app.viam.com) and create a new robot called `guardian`.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation).
+Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation/).
 
 ### Configure the components
 
@@ -257,7 +264,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 1. **Add a ML model service.**
 
-   The [ML model service](/services/ml) allows you to deploy the provided machine learning model to your robot.
+   The [ML model service](/services/ml/) allows you to deploy the provided machine learning model to your robot.
    Create an ML model with the name `mlmodel`, the type `mlmodel` and the model `tflite_cpu`.
    Then click **Create Service**.
 
@@ -267,7 +274,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 2. **Add a vision service.**
 
-   Next, add a [detector](/services/vision/detection) as a vision service to be able to make use of the ML model.
+   Next, add a [detector](/services/vision/detection/) as a vision service to be able to make use of the ML model.
    Create an vision service with the name `detector`, the type `vision` and the model `mlmodel`.
    Then click **Create Service**.
 
@@ -280,7 +287,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
    To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
    Click on the **Components** subtab and navigate to the **Create component** menu.
-   Create a [transform camera](/components/camera/transform) with the name `transform_cam`, the type `camera` and the model `transform`.
+   Create a [transform camera](/components/camera/transform/) with the name `transform_cam`, the type `camera` and the model `transform`.
 
    Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
@@ -305,7 +312,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 {{% tab name="Raw JSON" %}}
 
-Next, on the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/services/ml), the [vision service](/services/vision), and a [transform camera](/components/camera/transform):
+Next, on the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/services/ml/), the [vision service](/services/vision/), and a [transform camera](/components/camera/transform/):
 
 ```json {class="line-numbers linkable-line-numbers" data-line="31-48,50-69"}
 {
@@ -656,7 +663,7 @@ python3 main.py
 
 If everything works, your guardian should now start to idle and when it detects humans or dogs or cats turn red, start music, and focus on the detected being:
 
-{{<video webm_src="../../img/guardian/guardian-finished.webm" mp4_src="../../img/guardian/guardian-finished.mp4" alt="FInished guardian">}}
+{{<video webm_src="../../img/guardian/guardian-finished.webm" mp4_src="../../img/guardian/guardian-finished.mp4" poster="../../img/guardian/guardian-finished.jpg" alt="FInished guardian">}}
 
 ## Run the program automatically
 
@@ -716,7 +723,7 @@ Or simply use to greet you when you get back to your desk.
 
 Here is a video of how I set up my guardian to follow my dog around my living room:
 
-{{<video webm_src="../../img/guardian/ernieandtheguardian.webm" mp4_src="../../img/guardian/ernieandtheguardian.mp4" alt="Guardian robot rotates head to follow dog around a room">}}
+{{<video webm_src="../../img/guardian/ernieandtheguardian.webm" mp4_src="../../img/guardian/ernieandtheguardian.mp4" poster="../../img/guardian/ernieandtheguardian.jpg" alt="Guardian robot rotates head to follow dog around a room">}}
 
 Of course, you're free to adapt the code to make it do something else, add more LEDs, or even [train your own custom model](/manage/ml/train-model/) to use.
 
@@ -840,7 +847,7 @@ async def main():
 
     music_player = vlc.MediaPlayer("guardian.mp3")
 
-    # grab Viam's vision service for the detector 
+    # grab Viam's vision service for the detector
     detector = VisionClient.from_robot(robot, "detector")
     while True:
         # move head periodically left and right until movement is spotted.

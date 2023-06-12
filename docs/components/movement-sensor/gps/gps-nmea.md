@@ -21,7 +21,7 @@ The `gps-nmea` model can be connected using USB and send data through a serial c
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** sub-tab and navigate to the **Create component** menu.
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `gps-nmea` model.
 
 Click **Create Component**.
@@ -118,7 +118,7 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 Name | Type | Inclusion | Description |
 ---- | ---- | --------- | ----------- |
 `connection_type` | string | **Required** |`"I2C"` or `"serial"`. See [connection configuration info](#connection-attributes).
-`board` | string | depends on connection type | The `name` of the [board](/components/board) connected to the chip. Required for NMEA over [I<sup>2</sup>C](/components/board/#i2cs). Not required for serial communication.
+`board` | string | depends on connection type | The `name` of the [board](/components/board/) connected to the chip. Required for NMEA over [I<sup>2</sup>C](/components/board/#i2cs). Not required for serial communication.
 `disable_nmea` | boolean | Optional | If set to `true`, changes the NMEA message protocol to RTCM when using a chip as a base station. <br> Default: `false`
 
 ### Connection Attributes

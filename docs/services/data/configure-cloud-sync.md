@@ -1,6 +1,7 @@
 ---
 title: "Configure Cloud Sync"
 linkTitle: "Configure Cloud Sync"
+description: "Configure cloud sync to automatically capture data in the Viam app."
 weight: 35
 type: "docs"
 tags: ["data management", "cloud", "sync"]
@@ -97,6 +98,6 @@ In the example pictured here, the Data Management Service syncs the configured c
 
 ## Next Steps
 
-To view your captured data in the cloud, see [View Data](../../../manage/data/view).
+To view your captured data in the cloud, see [View Data](../../../manage/data/view/).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial/).

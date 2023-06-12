@@ -2,7 +2,7 @@ DirectoryPath: "dist"
 EnforceHTTPS: true
 IgnoreEmptyHref: true
 IgnoreInternalEmptyHash: true
-IgnoreDirectoryMissingTrailingSlash: true
+IgnoreDirectoryMissingTrailingSlash: false
 IgnoreURLs:
 - "example.com"
 - "^/misc/js/script.js$"
@@ -20,8 +20,8 @@ IgnoreURLs:
 - "numato.com"
 - "nvidia.com"
 - "slamtec.com"
+- "universal-robots.com"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"
-IgnoreDirectoryMissingTrailingSlash: true
 # IgnoreDirs: - if we need to ever ignore files

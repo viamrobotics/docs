@@ -177,26 +177,7 @@ h7, .h7 {
   color: #666666;
 }
 
-/* font color */
-/* This font color relieves the overall heaviness of the LH menu.  */
-.td-sidebar-nav .td-sidebar-link__page {
-  color: #495057;
-}
-
-// All navbar items except the active one
-.td-sidebar-nav .td-sidebar-link {
-  color: black;
-  text-decoration: none;
-}
-
-// The active navbar item
-.td-sidebar-nav-active-item {
-  color: #0000EA;;
-  font-weight: $font-weight-bold;
-}
-
 // Expanded headers should be bold
-
 
 .breadcrumb {
   font-size: 1rem;
@@ -224,6 +205,14 @@ a > code {
   color: #0000EA !important;
 }
 
+.td-toc #TableOfContents ul li li a > code {
+  color: #666666 !important;
+}
+
+.td-toc #TableOfContents ul li a > code {
+  color: #333333 !important;
+}
+
 footer a {
   color: #fff !important;
 }
@@ -242,7 +231,7 @@ p, li {
   }
 }
 
-/*This ensures there is no padding added to the top logo bar*/ 
+/*This ensures there is no padding added to the top logo bar*/
 .td-navbar .td-navbar-nav-scroll {
   height: unset;
 }
@@ -269,11 +258,8 @@ p, li {
   line-height: 1.75em !important;
 }
 
-.td-sidebar-nav .td-sidebar-link.tree-root {
-  font-weight: 400;
-  color: black;
-  border-bottom: 1px #30638E solid;
-  margin-bottom: 1rem;
+.breadcrumb-item {
+  color: #0000EA;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -496,18 +482,6 @@ END MARKETING CSS
 }
 
 /* END CSS FOR EXPANDER */
-
-/* START board carousel styling */
-
-.board-carousel {
-  display: block;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  display: flex;
-  scroll-snap-type: x mandatory;
-}
-
-/* END CSS FOR BOARD CAROUSEL */
 
 /* START card styling */
 .hover-card {
@@ -792,8 +766,11 @@ footer small {
 
 /* Feedback container */
 
-.feedback--prompt {
+.feedback {
   padding-top: 2rem;
+}
+
+.feedback--prompt {
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -812,7 +789,10 @@ footer small {
 .feedback--response {
   display: none;
   margin-top: 1em;
-  text-align: center;
+  border: 1px solid black;
+  padding: 1rem;
+  max-width: 400px;
+  margin: auto;
 }
 
 .feedback--answer {
@@ -821,6 +801,29 @@ footer small {
 
 .feedback--response__visible {
   display: block;
+}
+
+.feedback-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feedback-form > button {
+  margin-left: 0.5rem;
+}
+
+.feedback-form > textarea {
+  height: 133px;
+  width: 100%;
+}
+
+.feedback-ty {
+  text-align: center;
+}
+
+.feedback-ty > p {
+  margin-top: 1rem;
 }
 
 /* END Feedback container */
@@ -851,10 +854,23 @@ footer small {
   div.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }
   .alignright { float: right; }
   .alignleft { float: left; }
+  .aligncenter { display: block; margin-left: auto; margin-right: auto; }
 }
 
 // center on small screens
 @media (max-width: 650px) {
   .alignright { display: block; margin-left: auto; margin-right: auto; }
   .alignleft { display: block; margin-left: auto; margin-right: auto; }
+  .aligncenter { display: block; margin-left: auto; margin-right: auto; }
+  .center-if-small { display: block; margin-left: auto; margin-right: auto; }
+}
+
+// Fix page width on full screen to be 80%
+
+.td-content > .code-toolbar,
+.td-content > .table,
+.td-content > div {
+  @include media-breakpoint-up(lg) {
+      max-width: 80%;
+  }
 }

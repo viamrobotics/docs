@@ -1,6 +1,7 @@
 ---
 title: "Configure Data Capture"
 linkTitle: "Configure Data Capture"
+description: "Configure data capture to save data from components remote parts."
 weight: 30
 type: "docs"
 tags: ["data management", "cloud", "sync"]
@@ -299,6 +300,6 @@ The following example captures data from the `ReadImage` method of a camera:
 
 ## Next Steps
 
-To sync your captured data with the cloud, [configure cloud sync](../configure-cloud-sync).
+To sync your captured data with the cloud, [configure cloud sync](../configure-cloud-sync/).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial/).

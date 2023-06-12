@@ -8,8 +8,8 @@ tags: ["encoder", "components"]
 # SMEs: Rand
 ---
 
-A `single` encoder sends a signal from the rotating encoder over a single wire to one pin on the [board](/components/board).
-The direction of spin is dictated by the [motor](/components/motor) that has this encoder's name in its `encoder` attribute field.
+A `single` encoder sends a signal from the rotating encoder over a single wire to one pin on the [board](/components/board/).
+The direction of spin is dictated by the [motor](/components/motor/) that has this encoder's name in its `encoder` attribute field.
 
 {{< tabs name="Configure an single encoder" >}}
 {{% tab name="Config Builder" %}}
@@ -48,7 +48,7 @@ The following attributes are available for `single` encoders:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `board` | string | **Required** | The `name` of the [board](/components/board) to which the encoder is wired. |
+| `board` | string | **Required** | The `name` of the [board](/components/board/) to which the encoder is wired. |
 | `pins` | object | **Required** | A struct holding the name of the pin wired to the encoder: <ul> <li> <code>i</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the pin to which the encoder is wired. </li> </ul> |
 
-Viam also supports a model of encoder called [`"incremental"`](../incremental) which uses two pins.
+Viam also supports a model of encoder called [`"incremental"`](../incremental/) which uses two pins.

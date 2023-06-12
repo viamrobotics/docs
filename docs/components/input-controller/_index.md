@@ -24,7 +24,7 @@ Most robots with an input controller need at least the following hardware:
 
 - A computer capable of running `viam-server`.
 - A power supply cable or batteries for the input device and the robot.
-- A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor).
+- A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor/).
 
 ## Configuration
 
@@ -34,11 +34,11 @@ For configuration information, click on one of the following models:
 
 | Model | Description |
 | ----- | ----------- |
-| [`gamepad`](gamepad) | X-box, Playstation, and similar controllers with Linux support. |
-| [`gpio`](gpio) | Customizable GPIO/ADC based device using a board component. |
-| [`mux`](mux) | [Multiplexed](https://en.wikipedia.org/wiki/Multiplexer) controller, combining multiple sources of input. |
-| [`webgamepad`](webgamepad) | A remote, web based gamepad. |
-| [`fake`](fake) | A model for testing, with [no physical hardware - see GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
+| [`gamepad`](gamepad/) | X-box, Playstation, and similar controllers with Linux support. |
+| [`gpio`](gpio/) | Customizable GPIO/ADC based device using a board component. |
+| [`mux`](mux/) | [Multiplexed](https://en.wikipedia.org/wiki/Multiplexer) controller, combining multiple sources of input. |
+| [`webgamepad`](webgamepad/) | A remote, web based gamepad. |
+| [`fake`](fake/) | A model for testing, with [no physical hardware - see GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
 
 Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 
@@ -233,7 +233,7 @@ This method returns the current state of the controller as a map of [Event Objec
 
 **Returns:**
 
-- `events` [(Dict\[Control, Event\])](https://docs.python.org/3/library/typing.html#typing.Dict): A dictionary mapping the most recent Event for each Control.
+- [(Dict\[Control, Event\])](https://docs.python.org/3/library/typing.html#typing.Dict): A dictionary mapping the most recent Event for each Control.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_events).
 
@@ -258,7 +258,7 @@ print(f"Recent Events:\n{recent_events}")
 
 **Returns:**
 
-- `events` [(map\[Control\]Event)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): A map mapping the most recent Event for each Control.
+- [(map\[Control\]Event)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): A map mapping the most recent Event for each Control.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
@@ -291,7 +291,7 @@ Get a list of the [Controls](#control-field) that your controller provides.
 
 **Returns:**
 
-- `controls` [(List\[Control\])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): List of Controls provided by the controller.
+- [(List\[Control\])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): List of Controls provided by the controller.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_position).
 
@@ -316,7 +316,7 @@ print(f"Controls:\n{controls}")
 
 **Returns:**
 
-- `controls` [([]float64)](https://pkg.go.dev/builtin#float64): List of controls provided by the controller.
+- [([]float64)](https://pkg.go.dev/builtin#float64): List of controls provided by the controller.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
@@ -409,11 +409,11 @@ If you are implementing your own input controller and add features that have no 
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the controller from the robot.
@@ -430,13 +430,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map[string]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map[string]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the controller from the robot.

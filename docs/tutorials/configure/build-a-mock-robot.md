@@ -1,6 +1,6 @@
 ---
 title: "Build a Mock Robot"
-linkTitle: "Build a Mock Robot"
+linkTitle: "Mock Robot"
 weight: 41
 type: "docs"
 description: "Create a mock robot using just your personal computer to try using Viam without any robotic hardware."
@@ -9,14 +9,15 @@ mp4Src: "/tutorials/img/build-a-mock-robot/mock-robot.mp4"
 images: ["/tutorials/img/build-a-mock-robot/mock-robot.gif"]
 videoAlt: "A mock arm's joint positions from the control tab of the Viam app."
 aliases:
-    - /tutorials/build-a-mock-robot/
+    - "/tutorials/build-a-mock-robot/"
+    - "/tutorials/how-to-build-a-mock-robot/"
 tags: ["mock", "simulation"]
 ---
 
 This tutorial will show you how to build a mock robot using just your personal laptop so you can:
 
 - Learn how to [configure](../../../manage/configuration/) robots with Viam.
-- Try using [Viam](/viam) without any robotic hardware.
+- Try using [Viam](/viam/) without any robotic hardware.
 
 Most Viam [components](../../../components/) have a _fake_ model that you can use for testing.
 These fake components interact with Viam like real hardware but do not actually exist.
@@ -40,7 +41,7 @@ Go to [app.viam.com](https://app.viam.com) and sign up for a free account.
 
 ### Configure your mock robot
 
-Now you'll [configure your robot](/manage/configuration) to represent your robot's hardware.
+Now you'll [configure your robot](/manage/configuration/) to represent your robot's hardware.
 If you were using actual hardware, this file would tell your code what hardware is attached to it and how to communicate with it.
 
 Since this is an imaginary robot, you will use `fake` components so that the Viam software ([`viam-server`](../../../viam/#get-started)) doesn't try and fail to connect to physical hardware.
@@ -53,7 +54,7 @@ Since this is an imaginary robot, you will use `fake` components so that the Via
     - Create a new component called `myBoard` with **Type** `board` and **Model** `fake`.
     Click **Create component**.
 
-5. Configure a [fake arm component](../../../components/arm/fake):
+5. Configure a [fake arm component](../../../components/arm/fake/):
 
     - Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
     Click **Create component**.
@@ -70,7 +71,7 @@ Since this is an imaginary robot, you will use `fake` components so that the Via
     ![A fake arm being configured in Builder mode in the Viam app config tab.](../../img/build-a-mock-robot/create-arm.png)
     - Click **Save config**.
 
-6. Configure a [fake motor component](../../../components/motor/fake):
+6. Configure a [fake motor component](../../../components/motor/fake/):
 
    - Create a new component called `myMotor` with **Type** `motor` and **Model** `fake`.
      Click **Create component**.
@@ -376,7 +377,7 @@ Typically, a sub-part would represent a separate computer running `viam-server`.
 For this tutorial since you are using only one computer, you will need to bind the sub-part to a new port so you can run two servers on your machine at the same time.
 The following instructions use port `8081`, but you can use any open port you want.
 
-1. Go to the **Config** tab and then go to the **Auth/Network** sub-tab.
+1. Go to the **Config** tab and then go to the **Auth/Network** subtab.
 2. Under **Network** click **Add bind address**.
 3. In the **Host** field type `localhost`.
 4. In the **Port** field type `8081`.

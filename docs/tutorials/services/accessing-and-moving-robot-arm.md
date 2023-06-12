@@ -79,11 +79,10 @@ In this step, you'll fetch data about the robotic arm's current position.
 {{< tabs >}}
 {{% tab name="Python" %}}
 The following lines from the [full **Python** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
-The code then calls the `get_end_position` method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`get_end_position`](../../../components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Access myArm
-my_arm_resource = Arm.get_resource_name("myArm")
 my_arm_component = Arm.from_robot(robot, "myArm")
 
 # End Position of myArm
@@ -108,12 +107,10 @@ The `x`, `y`, and `z` values correspond to the `position` element of the pose, w
 {{% /tab %}}
 {{% tab name="Go" %}}
 The following lines from the [full **Go** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
-The code then calls the `EndPosition` method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`EndPosition`](../../../components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access myArm
-myArmResource := arm.Named("myArm")
-fmt.Println("myArmResource:", myArmResource)
 myArmComponent, err := arm.FromRobot(robot, "myArm")
 if err != nil {
   fmt.Println(err)
@@ -165,7 +162,8 @@ values: 0.013732909913080547
 values: 0.00076904296930648713
 ```
 
-Each individual value corresponds to the current position of a particular joint on your robot. You can also see these values reflected on the Control tab in the Viam app for your robot arm.
+Each individual value corresponds to the current position of a particular joint on your robot.
+You can also see these values reflected on the Control tab in the Viam app for your robot arm.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -185,7 +183,8 @@ You should see output that looks similar to the following:
 myArm JointPositions return value: values:0.00043945314765093886  values:0.4672485453655179  values:0.6450073134445674  values:-0.0009887695170768527  values:0.013732909913080547  values:0.0007690429693064871
 ```
 
-Each individual value corresponds to the current position of a particular joint on your robot. You can also see these values reflected on the **Control** tab in the Viam app for your robot arm.
+Each individual value corresponds to the current position of a particular joint on your robot.
+You can also see these values reflected on the **Control** tab in the Viam app for your robot arm.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -212,7 +211,12 @@ Executing code presented after this point *will* induce motion in a connected ro
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-Add `from viam.proto.component.arm import JointPositions` to your import list to be able to assign values to a `JointPositions` data structure.
+Add the following line to your import list to be able to assign values to a `JointPositions` data structure:
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.component.arm import JointPositions
+```
+
 See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -256,8 +260,9 @@ For example, the following code gets the arm's end position, makes a 100 millime
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-You must import some additional Python packages to synthesize new poses for the arm component's `move_to_position` command.
-Add `from viam.proto.common import Pose` to your import list and add the sample code below to your own client script.
+Add the sample code below to your own client script to try using the arm component's [`move_to_position`](../../../components/arm/#movetoposition) command.
+This example gets a `Pose` from `get_end_position()` so no additional imports are required.
+If you want to synthesize new poses directly, note that you must import an additional Python package by adding `from viam.proto.common import Pose` to your import list.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Generate a simple pose move +100mm in the +Z direction of the arm
@@ -268,7 +273,7 @@ await my_arm_component.move_to_position(pose=cmd_arm_pose)
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-You must import some additional Go packages to synthesize new poses through the `spatialmath` library.
+You must import some additional Go packages to synthesize new poses through the `spatialmath` library for the arms's [`MoveToPosition`](../../../components/arm/#movetoposition) command.
 Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to your import list and then add the sample code below to your own client script.
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -297,10 +302,11 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 
 ## Next Steps and References
 
-If you would like to continue onto working with Viam's Motion Service, go to the next tutorial in this series:
+If you would like to continue onto working with Viam's Motion Service, check out one of these tutorials:
 
 {{< cards >}}
   {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
+  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}
@@ -338,7 +344,6 @@ async def main():
     print(robot.resource_names)
 
     # Access myArm
-    my_arm_resource = Arm.get_resource_name("myArm")
     my_arm_component = Arm.from_robot(robot, "myArm")
 
     # End Position of myArm
@@ -405,8 +410,6 @@ func main() {
   logger.Info(robot.ResourceNames())
 
   // Access myArm
-  myArmResource := arm.Named("myArm")
-  fmt.Println("myArmResource:", myArmResource)
   myArmComponent, err := arm.FromRobot(robot, "myArm")
   if err != nil {
     fmt.Println(err)

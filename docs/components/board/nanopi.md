@@ -9,6 +9,13 @@ tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
 
+{{< alert title="Note" color="note" >}}
+
+This board is experimental.
+Stability is not guaranteed.
+
+{{% /alert %}}
+
 Configure a `nanopi` board to integrate [FriendlyElec’s NanoPi Mini Board](https://www.friendlyelec.com/index.php?route=product/category&path=69) into your robot:
 
 {{< tabs name="Configure an nanopi Board" >}}
@@ -48,7 +55,7 @@ The following attributes are available for `nanopi` boards:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See configuration info [here](/components/board/#analogs). |
-| `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See configuration info [here](/components/board/#digital_interrupts). |
-| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select pins' bus index and name. See configuration info [here](/components/board/#spis). |
-| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See configuration info [here](/components/board/#i2cs). |
+| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |
+| `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](/components/board/#digital_interrupts). |
+| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select pins' bus index and name. See [configuration info](/components/board/#spis). |
+| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](/components/board/#i2cs). |

@@ -58,7 +58,7 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
 
 {{% /alert %}}
 
-1. [Install `viam-server` and connect your robot to the Viam app](/installation#install-viam-server).
+1. [Install `viam-server` and connect your robot to the Viam app](/installation/#install-viam-server).
 
 2. SSH into the Pi to complete the following steps.
 
@@ -227,8 +227,7 @@ For example, the `stop` method sends a command (`CMD_MOVE_STOP#8`) to the robot 
         self.send_data(command)
 ```
 
-Feel free to tweak the specific contents of each of these method definitions, and add support for other base methods like `spin`.
-You can [read about the base API here](/components/base/#api).
+Feel free to tweak the specific contents of each of the [base method definitions](/components/base/#api), and add support for other base methods like `spin`.
 
 Save [<file>my_robot_dog.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/my_robot_dog.py) into the <file>RobotDog</file> directory you created.
 
@@ -245,12 +244,12 @@ You need to tell your robot how to access the custom component server you create
 This is accomplished by configuring the custom component server as a *remote*.
 
 Back over on the [Viam app](https://app.viam.com), go to your robot's **Config** tab.
-Click the **Remotes** sub-tab.
+Click the **Remotes** subtab.
 Name your remote "my-custom-base" and click **Create Remote**.
 In the **Address** field put `localhost: 9090`.
 Click **Save Config** at the bottom of the page.
 
-![Screenshot of the Viam app CONFIG tab with the Remotes sub-tab open, showing my-custom-base configured as a remote.](../../img/custom-base-dog/remote-config.png)
+![Screenshot of the Viam app CONFIG tab with the Remotes subtab open, showing my-custom-base configured as a remote.](../../img/custom-base-dog/remote-config.png)
 
 {{% alert title="Note" color="note" %}}
 
@@ -262,7 +261,7 @@ If you want to use a different host or port, pass it as a parameter to the serve
 ## Configure the components
 
 Now that the custom base code is set up, you need to configure all your hardware components.
-Navigate to the **Components** sub-tab of the **Config** tab.
+Navigate to the **Components** subtab of the **Config** tab.
 
 ### Configure the base
 
@@ -278,7 +277,7 @@ Click **Save Config**.
 
 ### Configure the camera
 
-Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/components/camera/webcam).
+Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/components/camera/webcam/).
 
 ## Start the servers
 
@@ -296,7 +295,7 @@ You have two options for starting the servers: automatic or manual.
 
 ### Option 1: Configure processes to automatically start the servers on boot
 
-Click the **Processes** sub-tab of the **Config** tab.
+Click the **Processes** subtab of the **Config** tab.
 
 Create a new process and give it a name (for example "1st").
 Once configured, this process will start the Freenove robot dog server so it is ready to receive commands from the custom component server.
@@ -317,7 +316,7 @@ Configure it like this:
 
 Click **Save Config** at the bottom of the window.
 
-![Screenshot of the Processes sub-tab of the Config tab, showing two processes configured as detailed above.](../../img/custom-base-dog/process-config.png)
+![Screenshot of the Processes subtab of the Config tab, showing two processes configured as detailed above.](../../img/custom-base-dog/process-config.png)
 
 {{% expand "Click to see what the processes config will look like in Raw JSON mode." %}}
 
@@ -411,7 +410,7 @@ If you have otherwise unexplained connection errors, try powering things off and
       nc <DOG IP ADDRESS> 5001
       ```
 
-  3. You can now type commands ([see the list of available commands here](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Code/Client/Command.py)) and hit enter to send them to the Freenove robot dog server.
+  3. You can now type commands ([list of available commands](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Code/Client/Command.py)) and hit enter to send them to the Freenove robot dog server.
     For example:
 
       ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}

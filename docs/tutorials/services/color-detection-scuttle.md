@@ -1,5 +1,5 @@
 ---
-title: "Detect and Follow a Colored Object with the SCUTTLE Robot on Viam"
+title: "Detect and Follow a Colored Object with a SCUTTLE Robot"
 linkTitle: "Colored Object Follower"
 weight: 30
 type: "docs"
@@ -21,7 +21,7 @@ This tutorial has not yet been updated.
 
 This tutorial shows how to use the Viam [Vision Service](/services/vision/) to make a [SCUTTLE rover](https://www.scuttlerobot.org/) follow a colored object.
 
-{{<video webm_src="../../videos/scuttledemos_colordetection.webm" mp4_src="../../videos/scuttledemos_colordetection.mp4" alt="Detecting color with a Scuttle Robot">}}
+{{<video webm_src="../../videos/scuttledemos_colordetection.webm" mp4_src="../../videos/scuttledemos_colordetection.mp4" poster="../../videos/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
 
 ### Code used in this tutorial
 
@@ -105,7 +105,7 @@ python ~/Desktop/scuttle.py
 ## Notes on color detection operation
 
 Within `getVisService(robot)`, a detector is configured with particular properties and subsequently added to the Vision Service.
-This particular detector is a [color detector](/services/vision/detection), which means the relevant parameters are `detect_color` (hex string), `hue_tolerance_pct` (float from `0` to `1`), and `segment_size_px` (integer).
+This particular detector is a [color detector](/services/vision/detection/), which means the relevant parameters are `detect_color` (hex string), `hue_tolerance_pct` (float from `0` to `1`), and `segment_size_px` (integer).
 Feel free to configure more detectors with different parameters!
 To learn about all the different detectors and parameters, check out the [Vision Service documentation](/services/vision/).
 

@@ -1,5 +1,5 @@
 ---
-title: "Build a Person Detection Security Robot That Sends You a Photo of the Person Stealing Your Chocolates"
+title: "A Person Detection Security Robot That Sends You Photos"
 linkTitle: "Detect a Person and Send a Photo"
 weight: 50
 type: "docs"
@@ -47,7 +47,7 @@ You need the following hardware for this tutorial:
 You will use the following software in this tutorial:
 
 - [Python 3.8 or newer](https://www.python.org/downloads/)
-- [`viam-server`](/installation#install-viam-server)
+- [`viam-server`](/installation/#install-viam-server)
 - [Viam Python SDK](https://python.viam.dev/)
   - The Viam Python SDK (software development kit) lets you control your Viam-powered robot by writing custom scripts in the Python programming language.
   Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
@@ -64,7 +64,7 @@ If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/pro
 
 Go to the [Viam app](https://app.viam.com) and create a new robot.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation).
+Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation/).
 
 ### Configure the camera component
 
@@ -137,7 +137,7 @@ This allows us to route the email to our phone as a text message.
 
 If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already set up a folder with some Python code that connects to your robot and implements the Vision Service.
 
-If you are starting with this tutorial, follow the [steps here](/tutorials/projects/light-up/#write-python-code-to-control-your-object-detection-robot) to create the main script file, connect the code to the robot, and select the model and label path.
+If you are starting with this tutorial, follow [these steps](/tutorials/projects/light-up/#write-python-code-to-control-your-object-detection-robot) to create the main script file, connect the code to the robot, and select the model and label path.
 Ignore the step about the Kasa smart plug host address.
 
 Instead of using this person detector to activate a smart plug, you will send yourself a text message.

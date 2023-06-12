@@ -19,7 +19,7 @@ No matter where you are in the world you can take over and play around with a Vi
 
 1. Please notify Viam support on [our Community Discord](https://discord.gg/viam).
 2. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your *location*.
-   Refer to [Managing Locations and sub-locations](/manage/fleet/locations).
+   Refer to [Managing Locations and sub-locations](/manage/fleet/locations/).
 
 ## Can I extend my time?
 
@@ -63,11 +63,11 @@ If you change the location, you must refresh the page.
 
 ## Which organization does this robot belong to?
 
-Your robot belongs to the [organization](/manage/fleet/organizations) you were in when you made the request.
+Your robot belongs to the [organization](/manage/fleet/organizations/) you were in when you made the request.
 
 ## Can I share this Location with a friend to work on the robot together?
 
-Sure, you can [invite other users to your organization](/manage/fleet/locations) to collaborate on your robot.
+Sure, you can [invite other users to your organization](/manage/fleet/locations/) to collaborate on your robot.
 As members of your organization, those users have full control of your robot.
 Another collaboration option is to use screen sharing in a Zoom or Webex session.
 
@@ -82,10 +82,10 @@ If you would like to, you can [extend your reservation](/try-viam/faq/#can-i-ext
 Yes! You can rent the rover as many times as you’d like.
 Here are some tutorials which you can follow:
 
-- [Drive with the Viam SDK](/tutorials/get-started/try-viam-sdk)
-- [Detect a Color](/tutorials/services/try-viam-color-detection)
+- [Drive with the Viam SDK](/tutorials/get-started/try-viam-sdk/)
+- [Detect a Color](/tutorials/services/try-viam-color-detection/)
 
-If you want to get your own Viam Rover you can do so [here](https://viam.com/resources/rover).
+If you want to get your own Viam Rover, [you can](https://viam.com/resources/rover).
 
 ## Why can't I use the rover's microphone?
 

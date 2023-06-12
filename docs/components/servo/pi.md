@@ -3,7 +3,7 @@ title: "Configure a pi Servo"
 linkTitle: "pi"
 weight: 90
 type: "docs"
-description: "Configure a pi servo."
+description: "Configure a pi servo to integrate a hobby servo controlled by GPIO pins on a Raspberry Pi board."
 tags: ["servo", "components"]
 icon: "img/components/servo.png"
 # SME: Rand
@@ -15,7 +15,7 @@ Unlike other servo models, `pi` servos are implemented as part of the [`pi` boar
 
 {{% /alert %}}
 
-Configure a `pi` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a [Raspberry Pi board](/components/board/pi) into your robot:
+Configure a `pi` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a [Raspberry Pi board](/components/board/pi/) into your robot:
 
 {{< tabs name="Configure a pi Servo" >}}
 {{% tab name="Config Builder" %}}
@@ -59,7 +59,7 @@ Edit and fill in the attributes as applicable.
         "name": "local",
         "type": "board",
         "model": "pi"
-    }, 
+    },
     {
         "name": "my_servo",
         "type": "servo",
@@ -85,8 +85,8 @@ The following attributes are available for `pi` servos:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin the servo's control wire is wired to on the [board](/components/board). |
-| `board` | string | **Required** | `name` of the [board](/components/board) the servo is wired to. |
+| `pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin the servo's control wire is wired to on the [board](/components/board/). |
+| `board` | string | **Required** | `name` of the [board](/components/board/) the servo is wired to. |
 | `min` | float | Optional | The minimum angle in degrees that the servo can reach. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |
 | `max` | float | Optional | The maximum angle in degrees that the servo can reach. <br> Default = `180.0` <br> Range = [`0.0`, `180.0`] |
 | `starting_position_degs` | float | Optional | Starting position of the servo in degrees. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |

@@ -3,12 +3,12 @@ title: "Configure an xArmLite Arm"
 linkTitle: "xArmLite"
 weight: 34
 type: "docs"
-description: "Configure an xArmLite arm."
+description: "Configure a UFACTORY Lite 6 arm for your robot."
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---
 
-Configure an `xArmLite` arm to integrate a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) into your robot:
+Configure an `xArmLite` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) to your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -86,4 +86,4 @@ The following attributes are available for `xArmLite` arms:
 | `speed` | float | Optional | Desired maximum speed of joint movement in degrees/sec. <br> Default: `20.0` |
 | `acceleration`  | float | Optional | Desired maximum acceleration of joint movement in degrees/sec<sup>2</sup>. <br> Default: `50.0` |
 
-See [the Frame System Service](/services/frame-system) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.
+See [the Frame System Service](/services/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.

@@ -1,6 +1,7 @@
 ---
 title: "View and Filter Data"
 linkTitle: "View Data"
+description: "View and filter data on the DATA page in the Viam Cloud."
 weight: 38
 type: "docs"
 tags: ["data management", "cloud", "sync"]
@@ -37,12 +38,12 @@ To delete all image, file, or sensor data respectively, click on **DELETE ALL** 
 
 ![Data view with no image selected showing the Delete all button](../img/delete_all.png)
 
-You can also delete data using the [Viam CLI](../../cli).
+You can also delete data using the [Viam CLI](../../cli/).
 
 ## Next Steps
 
-To export your captured data from the cloud, see [Export Data](../export).
+To export your captured data from the cloud, see [Export Data](../export/).
 
-You can use cloud image data to [train machine learning models](../../ml/train-model) within Viam.
+You can use cloud image data to [train machine learning models](../../ml/train-model/) within Viam.
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial).
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial/).

@@ -8,6 +8,8 @@ image: "/program/img/modular-resources/rplidar-on-robot.png"
 imageAlt: "An R-P-lidar mounted to a Viam rover."
 images: ["/program/img/modular-resources/rplidar-on-robot.png"]
 tags: ["slam", "services"]
+aliases:
+  - "/program/extend/modular-resources/add-rplidar-module/"
 # SMEs: Kat, Jeremy
 ---
 
@@ -19,7 +21,7 @@ Install the `rplidar-module` binary on your machine and make it executable by ru
 {{% tab name="Linux aarch64" %}}
 
 ```{id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/rplidar-module https://storage.googleapis.com/packages.viam.com/apps/rplidar/rplidar-module-latest-aarch64.AppImage
+sudo curl -o /usr/local/bin/rplidar-module https://storage.googleapis.com/packages.viam.com/apps/rplidar/rplidar-module-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/rplidar-module
 ```
 
@@ -27,7 +29,7 @@ sudo chmod a+rx /usr/local/bin/rplidar-module
 {{% tab name="Linux x86_64" %}}
 
 ```{id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/rplidar-module https://storage.googleapis.com/packages.viam.com/apps/rplidar/rplidar-module-latest-x86_64.AppImage
+sudo curl -o /usr/local/bin/rplidar-module https://storage.googleapis.com/packages.viam.com/apps/rplidar/rplidar-module-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/rplidar-module
 ```
 

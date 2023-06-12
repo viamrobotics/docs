@@ -1,6 +1,7 @@
 ---
 title: "Gantry Component"
 linkTitle: "Gantry"
+childTitleEndOverwrite: "Gantry Component"
 no_list: true
 weight: 50
 type: "docs"
@@ -15,7 +16,7 @@ A robotic *gantry* is a mechanical system of linear actuators used to hold and p
 A 3D printer is an example of a three-axis gantry where each linear actuator can move the print head along one axis.
 The linear rail design makes gantries a common and reliable system for simple positioning and placement tasks.
 
-This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once [(multi-axis)](multiaxis).
+This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once [(multi-axis)](multiaxis/).
 
 <img src="./img/gantry-illustration.png" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." style="max-width:300px; display: block; margin: 0 auto"></img>
 
@@ -37,9 +38,9 @@ Supported gantry models include:
 
 | Model | Description |
 | ----- | ----------- |
-| [`fake`](fake) | A model used for testing, with no physical hardware. |
-| [`oneaxis`](oneaxis) | A gantry with a singular linear rail. |
-| [`multiaxis`](multiaxis) | A gantry with multiple linear rails. Composed of multiple `oneaxis` gantries. |
+| [`fake`](fake/) | A model used for testing, with no physical hardware. |
+| [`oneaxis`](oneaxis/) | A gantry with a singular linear rail. |
+| [`multiaxis`](multiaxis/) | A gantry with multiple linear rails. Composed of multiple `oneaxis` gantries. |
 
 ## Control your gantry with Viam's client SDK libraries
 
@@ -99,7 +100,7 @@ Get the current positions of the axis of the gantry (mm).
 
 **Returns:**
 
-- `positions` [(List\[float\])](https://docs.python.org/3/library/typing.html#typing.List): A list of the position of the axes of the gantry in millimeters.
+- [(List\[float\])](https://docs.python.org/3/library/typing.html#typing.List): A list of the position of the axes of the gantry in millimeters.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.get_position).
 
@@ -120,7 +121,7 @@ positions = await my_gantry.get_position()
 
 **Returns:**
 
-- `positions` [([]float64)](https://pkg.go.dev/builtin#float64): A list of the position of the axes of the gantry in millimeters.
+- [([]float64)](https://pkg.go.dev/builtin#float64): A list of the position of the axes of the gantry in millimeters.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
@@ -206,7 +207,7 @@ Get the lengths of the axes of the gantry (mm).
 
 **Returns:**
 
-- `lengths_mm` [(List\[float\])](https://docs.python.org/3/library/typing.html#typing.List): A list of the lengths of the axes of the gantry in millimeters.
+- [(List\[float\])](https://docs.python.org/3/library/typing.html#typing.List): A list of the lengths of the axes of the gantry in millimeters.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.lengths).
 
@@ -227,7 +228,7 @@ lengths_mm = await my_gantry.get_lengths()
 
 **Returns:**
 
-- `lengths_mm` [([]float64)](https://pkg.go.dev/builtin#float64): A list of the lengths of the axes of the gantry in millimeters.
+- [([]float64)](https://pkg.go.dev/builtin#float64): A list of the lengths of the axes of the gantry in millimeters.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
@@ -304,7 +305,7 @@ Get if the gantry is currently moving.
 
 **Returns:**
 
-- `is_moving` [(bool)](https://docs.python.org/c-api/bool.html): If it is true or false that the gantry is currently moving.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If it is true or false that the gantry is currently moving.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.is_moving).
 
@@ -327,7 +328,7 @@ print(my_gantry.is_moving())
 
 **Returns:**
 
-- `is_moving` [(bool)](https://pkg.go.dev/builtin#bool): If it is true or false that the gantry is currently moving.
+- [(bool)](https://pkg.go.dev/builtin#bool): If it is true or false that the gantry is currently moving.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
@@ -356,11 +357,11 @@ If you are implementing your own gantry and add features that have no built-in A
 
 **Parameters:**
 
-- `command` (`Dict[str, Any]`): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (`Dict[str, Any]`): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_gantry = Gantry.from_robot(robot, "my_gantry")
@@ -376,13 +377,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (`cmd map[string]interface{}`): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (`cmd map[string]interface{}`): Result of the executed command.
-- `error` ([`error`](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myGantry, err := gantry.FromRobot(robot, "my_gantry")

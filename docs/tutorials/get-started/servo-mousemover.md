@@ -1,6 +1,6 @@
 ---
-title: "Single Component Tutorial: How to Create a Mouse Mover Using a Servo"
-linkTitle: "Create a Mouse Mover"
+title: "How to Create a Mouse Mover Using a Servo"
+linkTitle: "Mouse Mover"
 weight: 40
 type: "docs"
 description: "Use the Python SDK to move a continuous servo to keep a computer screen from sleeping."
@@ -154,7 +154,7 @@ In the **Config** tab, create a new component with the following attributes:
 
 ![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box and the name local typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam with board selected. To the far right it says Model with a drop down list and pi is selected. Directly to the right of Model is a Create Component button that will create the component.](../../img/single-component-tutorials-servo-mousemover/new-board.png)
 
-Click **Create Component** to create the pi [board component](/components/board) component.
+Click **Create Component** to create the pi [board component](/components/board/) component.
 
 ### Servo component
 

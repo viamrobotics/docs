@@ -16,7 +16,7 @@ You can also add an encoder to a motor.
 See the [encoder component documentation](/components/encoder/) for more information on encoders.
 
 Viam supports `gpio` model motors with encoders.
-To configure an encoded motor, you must configure the encoder [per the encoder documentation](/components/encoder) and then configure a `gpio` motor with an `encoder` attribute in addition to the [standard `gpio` model attributes](/components/motor/gpio/).
+To configure an encoded motor, you must configure the encoder [per the encoder documentation](/components/encoder/) and then configure a `gpio` motor with an `encoder` attribute in addition to the [standard `gpio` model attributes](/components/motor/gpio/).
 
 <a id="encoder-config">
 {{< tabs >}}
@@ -122,7 +122,7 @@ Here’s an example configuration:
 {{% /tab %}}
 {{< /tabs >}}
 
-In addition to the [attributes for a non-encoded motor](/components/motor/gpio), the following attributes are available for encoded DC motors:
+In addition to the [attributes for a non-encoded motor](/components/motor/gpio/), the following attributes are available for encoded DC motors:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
@@ -132,7 +132,7 @@ In addition to the [attributes for a non-encoded motor](/components/motor/gpio),
 
 {{% alert title="Note" color="note" %}}
 
-The attribute [`max_rpm`](/components/motor/gpio) is not required or available for encoded `gpio` motors.
+The attribute [`max_rpm`](/components/motor/gpio/) is not required or available for encoded `gpio` motors.
 
 If `encoder` is model [`AM5-AS5048`](/components/encoder/ams-as5048/),`ticks_per_rotation` must be `1`, as `AM5-AS5048` is an absolute encoder which provides angular measurements directly.
 

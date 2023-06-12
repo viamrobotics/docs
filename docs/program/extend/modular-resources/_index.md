@@ -1,5 +1,5 @@
 ---
-title: "Create custom components and services as modular resources"
+title: "Create custom components and services"
 linkTitle: "Modular Resources"
 image: "/tutorials/img/intermode/rover_outside.png"
 imageAlt: "An intermode rover pictured outdoors."
@@ -11,14 +11,14 @@ description: "Use the Viam module system to implement custom resources that can 
 no_list: true
 ---
 
-The Viam module system allows you to integrate custom [resources](/appendix/glossary/#term-resource) ([components](/components) and [services](/services)) into any robot running on Viam.
+The Viam module system allows you to integrate custom [resources](/appendix/glossary/#term-resource) ([components](/components/) and [services](/services/)) into any robot running on Viam.
 
 With modular resources, you can:
 
 - Create new models of built-in component or service types
 - Create brand new resource types
 
-`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/internals/rdk).
+`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/internals/rdk/).
 
 Two key concepts exist across all Viam resources (both built-in and modular) to facilitate this: [*APIs*](#apis) and [*models*](#models).
 
@@ -35,8 +35,8 @@ Each Viam resource's API is uniquely namespaced as a colon-delimited-triplet in 
 
 For example:
 
-- The API of built-in component [camera](/components/camera) is `rdk:component:camera`, which exposes methods such as `GetImage()`.
-- The API of built-in service [vision](/services/vision) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
+- The API of built-in component [camera](/components/camera/) is `rdk:component:camera`, which exposes methods such as `GetImage()`.
+- The API of built-in service [vision](/services/vision/) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
 
 {{% alert title="Note" color="note" %}}
 You can see built-in Viam resource APIs in the [Viam GitHub](https://github.com/viamrobotics/api).
@@ -49,7 +49,7 @@ Models allow you to control different versions of resource types with a consiste
 
 For example:
 
-Some DC motors use just [GPIO](/components/board), while other DC motors use serial protocols like [SPI bus](/components/board/#spis).
+Some DC motors use just [GPIO](/components/board/), while other DC motors use serial protocols like [SPI bus](/components/board/#spis).
 Regardless, you can power any motor model that implements the *rdk:component:motor* API with the `SetPower()` method.
 
 Models are also uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
@@ -66,7 +66,7 @@ However, you can also create and expose new API types using modular resources.
 
 Add a modular resource to your robot configuration in five steps:
 
-1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/sdks).
+1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/sdks/).
 2. [Compile or package the module code](#make-your-module-executable) into an executable.
 3. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
 4. [Add a **module**](#configure-your-module) referencing this executable to the configuration of your robot.
@@ -80,14 +80,14 @@ A configured **module** can make one or more *modular resources* available for c
 
 ### Code your module
 
-Code a module in the Go or Python programming languages with [Viam's SDKs](/program/sdks) that does the following:
+Code a module in the Go or Python programming languages with [Viam's SDKs](/program/sdks/) that does the following:
 
 {{< tabs >}}
 {{% tab name="Define a New Model of a Built-In Resource Type" %}}
 
 1. Code a new resource model implementing all methods the Viam RDK requires in the API definition of its built-in type (ex. `rdk:component:base`).
 2. Code a main program to serve as the module itself, using the module helpers provided by your chosen SDK.
-3. Import the API and model(s) into the main program, and register them with the module helper SDK.
+3. Import the API and models into the main program, and register them with the module helper SDK.
 4. Compile and/or package your program.
 
 {{% /tab %}}
@@ -97,7 +97,7 @@ Code a module in the Go or Python programming languages with [Viam's SDKs](/prog
 2. Code at least one model of this new resource.
 Make sure to implement every method required in your API definition.
 3. Code a main program to serve as the module itself, using the module helpers provided by your chosen SDK.
-4. Import the API and model(s) into the main program, and register them with the module helper SDK.
+4. Import the API and models into the main program, and register them with the module helper SDK.
 5. Compile and/or package your program.
 
 {{% /tab %}}
@@ -111,7 +111,7 @@ For example:
 {{% tab name="Go" %}}
 
 This example module code is adapted from the full demo module available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
-See [Base API Methods](/components/base#api) and [Motor API Methods](/components/motor#api) for more information.
+See [Base API Methods](/components/base/#api) and [Motor API Methods](/components/motor/#api) for more information.
 
 ``` go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls), IsMoving (check if in motion), and Stop (stop all motion).
@@ -283,7 +283,7 @@ func init() {
 {{% tab name="Python" %}}
 
 This example module code is adapted from the full base demo module available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
-See [Base API Methods](/components/base#api) and [Motor API Methods](/components/motor#api) for more information.
+See [Base API Methods](/components/base/#api) and [Motor API Methods](/components/motor/#api) for more information.
 
 <file>my_base.py</file>
 
@@ -311,7 +311,7 @@ class MyBase(Base, Reconfigurable):
     """
 
     # Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
-    # acme = namespace, demo = family, mybase = model name. 
+    # acme = namespace, demo = family, mybase = model name.
     MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
 
     left: Motor # Left motor
@@ -446,7 +446,7 @@ Ensure that the code defining your module is saved where the instance of `viam-s
 
 For example, if you are running `viam-server` on an Raspberry Pi, you'll need to save the module on the Pi's filesystem.
 
-Obtain the real (absolute) path to the executable file on your computer/[board's](/components/board) filesystem by running the following command in your terminal:
+Obtain the real (absolute) path to the executable file on your computer/[board's](/components/board/) filesystem by running the following command in your terminal:
 
 ``` shell
 realpath <path-to-your-module-directory>/<your-module>
@@ -454,7 +454,7 @@ realpath <path-to-your-module-directory>/<your-module>
 
 ### Configure your module
 
-To configure your new *module* on your robot, navigate to the **Config** tab of your robot's page on [the Viam app](https://app.viam.com) and click on the **Modules** sub-tab.
+To configure your new *module* on your robot, navigate to the **Config** tab of your robot's page on [the Viam app](https://app.viam.com) and click on the **Modules** subtab.
 
 The following properties are available for modules:
 
@@ -499,7 +499,7 @@ The following properties are available for modular resources:
 | `type` | string | **Required** | The subtype of the [API](#apis) (the third part of the [API](#apis) triplet). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `model` | string | **Required** | The [full triplet](#models) of the modular resource. |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Usually a [board](/components/board). |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Usually a [board](/components/board/). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -527,7 +527,7 @@ The `attributes` available vary depending on your implementation.
 
 The following is an example configuration for a base modular resource implementation.
 The configuration adds `acme:demo:mybase` as a modular resource from the module `my_base`.
-The custom model is configured as a component with the name "my-custom-base-1" and can be interfaced with the Viam [base API](/components/base#api):
+The custom model is configured as a component with the name "my-custom-base-1" and can be interfaced with the Viam [base API](/components/base/#api):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -587,7 +587,7 @@ This means that you can compose a robot of any number of parts running in differ
 
 ### Limitations
 
-Custom models of the [arm](/components/arm) component type are not yet supported, as kinematic information is not currently exposed through the arm API.
+Custom models of the [arm](/components/arm/) component type are not yet supported, as kinematic information is not currently exposed through the arm API.
 
 {{< cards >}}
     {{% card link="/program/extend/modular-resources/examples/add-rplidar-module" size="small" %}}

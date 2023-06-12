@@ -1,5 +1,5 @@
 ---
-title: "An Introduction to Using Viam's Data Management Service"
+title: "Introduction to the Data Management Service"
 linkTitle: "Intro to Data Management"
 weight: 60
 type: "docs"
@@ -141,7 +141,7 @@ Now, let's export that image data from the Viam app onto your local computer.
 
 To export data from Viam:
 
-1. First, install the [Viam CLI](/manage/cli) and [authenticate](/manage/cli/#authenticate):
+1. First, install the [Viam CLI](/manage/cli/) and [authenticate](/manage/cli/#authenticate):
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    go install go.viam.com/rdk/cli/viam@latest

@@ -4,6 +4,7 @@ public
 .hugo_build.lock
 resources
 node_modules
+themes/*
 config_pr.toml
 .vscode
 dist

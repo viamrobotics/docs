@@ -10,4 +10,4 @@ A board is the signal wire hub of a robot that provides access to GPIO pins, SPI
 
 Examples of boards include Jetson, Raspberry Pi, Numato, or Arduino.
 
-For more information see [Board Component](../../components/board).
+For more information see [Board Component](../../components/board/).

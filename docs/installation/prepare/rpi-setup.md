@@ -4,9 +4,9 @@ linkTitle: "Raspberry Pi Setup"
 weight: 15
 type: "docs"
 description: "Image a Raspberry Pi to prepare it for viam-server installation."
-image: "/installation/img/thumbnails/raspberry-pi-4-b-2gb.jpg"
+image: "/installation/img/thumbnails/raspberry-pi-4-b-2gb.png"
 imageAlt: "Raspberry Pi"
-iamges: ["/installation/img/thumbnails/raspberry-pi-4-b-2gb.jpg"]
+iamges: ["/installation/img/thumbnails/raspberry-pi-4-b-2gb.png"]
 no_list: true
 aliases:
     - /getting-started/rpi-setup/
@@ -57,6 +57,8 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 3. To make your Raspberry Pi easier to access in the next step, configure your Raspberry Pi's hostname, ssh credentials, and wifi.
    Click the gear-shaped settings icon in the lower right to bring up the Advanced options menu.
 
+   ![Raspberry Pi Imager window showing gear-shaped settings icon is selected.](../../img/rpi-setup/advanced-options.png)
+
    {{% alert title="Note" color="note" %}}
    If you are using a non-Raspberry Pi OS, altering the Advanced options will cause the initial boot to fail.
    {{% /alert  %}}
@@ -91,10 +93,9 @@ The default username and password on Raspberry Pis are
 * username: pi
 * password: raspberry
 
-However, it's bad practice to keep the default username and password on a Raspberry Pi since doing so makes it easy for hackers to get access to your Pi.
+However, it's [bad practice](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/) to keep the default username and password on a Raspberry Pi since doing so makes it easy for hackers to get access to your Pi.
 In the past, malware infected thousands of Raspberry Pi devices that were using the default username and password.
 
-Source: [https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/)
     {{< /alert >}}
 
     Lastly, you should connect your Pi to Wi-Fi, so that you can run `viam-server` wirelessly.
@@ -188,9 +189,23 @@ sudo reboot
 
 ## Next Steps
 
-Now that your Pi has a Viam-compatible operating system installed, and you learned how to enable specific communication protocols and add additional WiFi credentials, continue to our [`viam-server` installation guide](../../#install-viam-server).
+Now that your Pi has a Viam-compatible operating system installed, you're ready to [install `viam-server`](/installation/#install-viam-server).
 
 ## Troubleshooting
+
+### Write error when imaging Raspberry Pi OS
+
+If you experience the error `Verifying write failed. Contents of SD card is different from what was written to it` when imaging your Raspberry Pi with the Imager in step 5, there might be an issue with your micro SD card reader.
+
+Try a different micro SD card reader, or use a different USB port on your computer.
+
+If you are connecting your SD card reader to your computer through a USB hub, try connecting directly it to your computer instead.
+
+### Error: can't read from I2C address
+
+If you see the error `error: can't read from I2C address` in your logs after installing `viam-server`, you need to enable `I2C` support on your Raspberry Pi.
+You can use the command `sudo journalctl --unit=viam-server` to read through the `viam-server` log file.
+Follow the instructions to [enable communication protocols](#enable-communication-protocols) on your Pi to resolve this error.
 
 ### Add additional WiFi credentials
 
@@ -232,3 +247,7 @@ psk="Password for your other wireless LAN"
 priority=20
 }
 ```
+
+### Additional troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

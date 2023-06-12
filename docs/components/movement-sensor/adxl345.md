@@ -17,7 +17,7 @@ If you are using a [Viam Rover](https://docs.viam.com/try-viam/), this is the ac
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** sub-tab and navigate to the **Create component** menu.
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `accel-adxl345` model.
 
 Click **Create Component**
@@ -102,8 +102,8 @@ Edit and fill in the attributes as applicable.
 
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | ---- | -----------
-`board` | string | **Required** | The `name` of the [board](/components/board) to which the device is wired.
-`i2c_bus` | string | **Required** | The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on the [board](/components/board) wired to this device.
+`board` | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired.
+`i2c_bus` | string | **Required** | The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on the [board](/components/board/) wired to this device.
 `use_alt_i2c_address` | bool | Optional | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false`
 `tap` | object | Optional | Holds the configuration values necessary to use the tap detection interrupt on the ADXL345. See [table below](#tap-attributes).
 `free_fall` | object | Optional | Holds the configuration values necessary to use the free-fall detection interrupt on the ADXL345. See [table below](#freefall-attributes).
@@ -115,7 +115,7 @@ Inside the `tap` object, you can include the following attributes:
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | -----------
 `accelerometer_pin` | int | **Required** | On the accelerometer you can choose to send the interrupts to int1 or int2. Specify this by setting this config value to `1` or `2`.
-`interrupt_pin` | string | **Required** | The `name` of the [digital interrupt](/components/board/#digital_interrupts) you configured for the pin on the [board](/components/board) wired to the `accelerometer_pin`.
+`interrupt_pin` | string | **Required** | The `name` of the [digital interrupt](/components/board/#digital_interrupts) you configured for the pin on the [board](/components/board/) wired to the `accelerometer_pin`.
 `exclude_x` | bool | Optional | Tap detection defaults to all three axes. Exclude the x axis by setting this to true. <br> Default: `false`
 `exclude_y` | bool | Optional | Tap detection defaults to all three axes. Exclude the y axis by setting this to true. <br> Default: `false`
 `exclude_z` | bool | Optional | Tap detection defaults to all three axes. Exclude the z axis by setting this to true. <br> Default: `false`
@@ -129,6 +129,6 @@ Inside the `freefall` object, you can include the following attributes:
 Name | Type | Inclusion | Default Value | Description
 ---- | ---- | --------- |  ------------- | -----------
 `accelerometer_pin` | int | **Required** | On the accelerometer you can choose to send the interrupts to int1 or int2. Specify this by setting this config value to `1` or `2`.
-`interrupt_pin` | string | **Required** | The `name` of the [digital interrupt](/components/board/#digital_interrupts) you configured for the pin on the [board](/components/board) wired to the `accelerometer_pin`.
+`interrupt_pin` | string | **Required** | The `name` of the [digital interrupt](/components/board/#digital_interrupts) you configured for the pin on the [board](/components/board/) wired to the `accelerometer_pin`.
 `threshold` | float | Optional | The acceleration on each axis is compared with this value to determine if a free-fall event occurred (in milligrams, between 0 and 15,937). <br> Default: `437.5`
 `time_ms` | float | Optional | Unsigned time value representing the minimum time that the value of all axes must be less than `threshold` to generate a free-fall interrupt (in milliseconds, between 0 and 1,275). <br> Default: `160`

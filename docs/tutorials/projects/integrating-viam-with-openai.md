@@ -1,10 +1,10 @@
 ---
 title: "Integrate Viam with ChatGPT to create a companion robot"
-linkTitle: "Create an AI companion robot"
+linkTitle: "AI companion robot"
 weight: 60
 type: "docs"
 tags: ["base", "AI", "OpenAI", "ChatGPT", "ElevenLabs", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
-description: "Harness AI to add life to your Viam rover."
+description: "Harness AI and use ChatGPT to add life to your Viam rover and turn it into a companion robot."
 image: "/tutorials/img/ai-integration/rosey_robot.jpg"
 images: ["/tutorials/img/ai-integration/rosey_robot.jpg"]
 aliases:
@@ -28,7 +28,7 @@ While some [examples](https://www.google.com/search?q=companion+robot) have rece
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
-By combining ChatGPT with the Viam platform’s built-in [computer Vision Service](/services/vision), ML model support, and [locomotion](/components/base/), you can within a few hours create a basic companion robot that:
+By combining ChatGPT with the Viam platform’s built-in [computer Vision Service](/services/vision/), ML model support, and [locomotion](/components/base/), you can within a few hours create a basic companion robot that:
 
 * Listens with a microphone, converts speech-to-text, gets a response from ChatGPT.
 * Converts GPT response text to speech and "speaks" the response through a speaker.
@@ -58,7 +58,7 @@ If you are using a different rover, the [Viam Rover setup instructions](https://
 
 ### 1. Connect the servo
 
-We'll use a [servo](/components/servo) in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
+We'll use a [servo](/components/servo/) in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
 
 {{% alert title="Caution" color="caution" %}}
 Always disconnect devices from power before plugging, unplugging, moving wires, or otherwise modifying electrical circuits.
@@ -108,7 +108,7 @@ The [git repository](https://github.com/viam-labs/tutorial-openai-integration) f
 * [Google text/speech tools](https://gtts.readthedocs.io/en/latest/)
 * [OpenAI](https://openai.com/api/)
 
-It also contains an open source machine learning [classifier model](https://tfhub.dev/google/lite-model/imagenet/mobilenet_v3_large_100_224/classification/5/metadata/1).
+It also contains an open source machine learning [detector model](https://github.com/viam-labs/tutorial-openai-integration/tree/main/detector).
 
 Power on  and choose a location on your Raspberry Pi, and clone the tutorial code repository.
 If you have git installed on your Pi, run the following command in the preferred directory from your terminal:
@@ -172,11 +172,11 @@ chmod +x run.sh
 Now that we've set up the rover by attaching the servo and making the tutorial software available on the Pi, we can configure the rover to:
 
 * Recognize and operate the servo
-* Make the ML classifier model available for use by the Viam Vision Service
+* Make the ML detector model available for use by the Viam Vision Service
 
 ### 1. Configure the servo
 
-To configure your [servo](/components/servo), go to your rover's **Config** page, scroll to the bottom and create a new instance of the `servo` component.
+To configure your [servo](/components/servo/), go to your rover's **Config** page, scroll to the bottom and create a new instance of the `servo` component.
 Name it `servo1` (or something else if you prefer, but then you will need to update references to it in the tutorial code).
 
 Since you've attached your servo to a Raspberry Pi, choose the model `pi`.
@@ -205,10 +205,10 @@ We found that if set up this way, the following positions accurately show the co
 * angry: 75 degrees
 * sad: 157 degrees
 
-### 2. Configure the ML Model and Vision Services to use the classifier
+### 2. Configure the ML Model and Vision Services to use the detector
 
 Click the **Config** tab and then the **Services** subtab.
-From there, scroll to the bottom and create a new service of **type** `ML Models`, **model** `tflite_cpu` named 'stuff-classifier'.
+From there, scroll to the bottom and create a new service of **type** `ML Models`, **model** `tflite_cpu` named 'stuff_detector'.
 Your robot will register this as a machine learning model and make it available for use.
 
 <img src="../../img/ai-integration/mlmodels_service_add.png" style="border:1px solid #000" alt="Adding the ML Models Service." title="Adding the ML Models Service." width="500" />
@@ -219,22 +219,22 @@ Update the **Model Path** and **Label Path** to match where you [copied the tuto
 For example, the model path would would be similar to:
 
 ``` bash
-/home/<username>/tutorial-openai-integration/lite-model_imagenet_mobilenet_v3_large_075_224_classification_5_metadata_1.tflite
+/home/<username>/tutorial-openai-integration/detector/effdet0.tflite
 ```
 
 and the label path similar to:
 
 ``` bash
-/home/<username>/tutorial-openai-integration/labels.txt
+/home/<username>/tutorial-openai-integration/detector/labels.txt
 ```
 
-Now, create a new service of **type** `vision`, **model** `ML Model` named 'vis-stuff-classifier'.
-Your companion robot will use this to interface with the machine learning model (trained using the [ImageNet image database](https://www.image-net.org/)) allowing you to - well, classify stuff!
+Now, create a new service of **type** `vision`, **model** `ML Model` named 'vis-stuff-detector'.
+Your companion robot will use this to interface with the machine learning model allowing you to - well, detect stuff!
 
 <img src="../../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the Vision Service." title="Adding the Vision Service." width="500" />
 
 Select the model that you added in the previous step.
-Click **Save config** to finish adding the classifier.
+Click **Save config** to finish adding the detector.
 
 ## Bring "Rosey" to life
 
@@ -257,14 +257,14 @@ For example, there are a number of commands that will cause the rover to move - 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/ai-integration/yoda.jpeg" class="alignleft" alt="Viam Rover Rosey." title="Viam Rover Rosey." style="max-width: 300px" />
 
-If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, classify what it sees, and then read a ChatGPT-generated response about what it sees.
+If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, detect what it sees, and then read a ChatGPT-generated response about what it sees.
 Also, a "mood" will be selected at random, and the response will be generated with that mood.
 
 The GPT-3 model is quite good at responding in the style of known personas, so you can also say *"Hey Rosey, act like Yoda"*, and from that point on, responses will be generated in the style of Yoda! The tutorial code has a number of characters you can try, and to pick one randomly, you can say *"Rosey, act random"*.
 You can even guess who Rosey is acting like by saying *"Rosey, I think you are Scooby Doo!"*
 
 Much of Rosey's behavior can be modified by changing the values of parameters in the tutorial code's [params.py](https://github.com/viam-labs/tutorial-openai-integration/blob/main/params.py) file.
-You can change Rosey's name to something else, add characters, adjust the classifier confidence threshold, and more.
+You can change Rosey's name to something else, add characters, adjust the detector confidence threshold, and more.
 </div>
 
 ## Use realistic custom AI voices
@@ -295,7 +295,7 @@ Some ideas:
 
 * Make the voice recognition software listen in the background, so the robot can move and interact with the world while listening and responding.
 * Integrate another ML model that is used to follow a human (when told to do so).
-* Add Lidar and integrate Viam's [SLAM Service](/services/slam) to map the world around it.
+* Add Lidar and integrate Viam's [SLAM Service](/services/slam/) to map the world around it.
 * Use Viam's [Data Management](/manage/data/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
 
 We'd love to see where you decide to take this. If you build your own companion robot, let us and others know on the [Community Discord](https://discord.gg/viam).

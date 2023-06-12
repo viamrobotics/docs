@@ -11,7 +11,7 @@ tags: ["board", "components"]
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow one of our Jetson [setup guides](/installation/prepare) to prepare your board for running `viam-server` before configuring a `jetson` board.
+Follow one of our Jetson [setup guides](/installation/) to prepare your board for running `viam-server` before configuring a `jetson` board.
 
 {{% /alert %}}
 
@@ -54,7 +54,7 @@ The following attributes are available for `jetson` boards:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See configuration info [here](/components/board/#analogs). |
-| `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See configuration info [here](/components/board/#digital_interrupts). |
-| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select pins' bus index and name. See configuration info [here](/components/board/#spis). |
-| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See configuration info [here](/components/board/#i2cs). |
+| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |
+| `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](/components/board/#digital_interrupts). |
+| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select pins' bus index and name. See [configuration info](/components/board/#spis). |
+| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](/components/board/#i2cs). |

@@ -3,7 +3,7 @@ title: "Configure an Agilex LIMO Base"
 linkTitle: "agilex-limo"
 weight: 40
 type: "docs"
-description: "Configure an Agilex LIMO base."
+description: "Configure an Agilex LIMO base for your robot."
 tags: ["base", "components"]
 images: ["/components/img/components/base.svg"]
 # SMEs: Matt Vella, Steve B

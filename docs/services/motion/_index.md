@@ -98,22 +98,21 @@ By default, motion is unconstrained with the exception of obstacle avoidance.
 
 **Returns:**
 
-- [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Whether the move was successful.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move).
-
-**Example usage:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Assumes a gripper configured with name "my_gripper" on the robot
+gripper_name = Gripper.get_resource_name("my_gripper")
 my_frame = "my_gripper_offset"
 
 goal_pose = Pose(x=0, y=0, z=300, o_x=0, o_y=0, o_z=1, theta=0)
 
 # Move the gripper
-moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose), world_state=worldState, constraints={}, extra={})
+moved = await motion.move(component_name=gripper_name, destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose), world_state=worldState, constraints={}, extra={})
 ```
 
 {{% /tab %}}
@@ -164,8 +163,6 @@ moved = await motion.move(component_name=my_gripper, destination=PoseInFrame(ref
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
-**Example usage:**
-
 ```go {class="line-numbers linkable-line-numbers"}
  // Access the Motion Service
 motionService, err := motion.FromRobot(robot, "builtin")
@@ -174,12 +171,13 @@ if err != nil {
 }
 
 // Assumes a gripper configured with name "my_gripper" on the robot
+gripperName := Gripper.Named("my_gripper")
 myFrame := "my_gripper_offset"
 
 goalPose := PoseInFrame(0, 0, 300, 0, 0, 1, 0)
 
 // Move the gripper
-moved, err := motionService.Move(context.Background(), goalPose, worldState, nil, nil)
+moved, err := motionService.Move(context.Background(), gripperName, goalPose, worldState, nil, nil)
 ```
 
 {{% /tab %}}
@@ -227,11 +225,9 @@ If you need collision checking and obstacle avoidance, use [`Move`](#move).
 
 **Returns:**
 
-- [(bool)](https://docs.python.org/3/library/functions.html#bool): Whether the move was successful.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Whether the move was successful.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_single_component).
-
-**Example usage:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 motion = MotionClient.from_robot(robot=robot, name="builtin")
@@ -272,8 +268,6 @@ As of April 21, 2023, [arm](/components/arm/) is the only component so supported
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
-**Example usage:**
-
 ```go {class="line-numbers linkable-line-numbers"}
  // Access the Motion Service
 motionService, err := motion.FromRobot(robot, "builtin")
@@ -306,7 +300,7 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 
 - `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): Name of the piece of the robot whose pose is returned.
 
-- `destination_frame` ([PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)):
+- `destination_frame` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)):
   The name of the frame with respect to which the component's pose is reported.
 
 - `supplemental_transforms` ([Optional\[List\[Transforms\]\]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (*optional*): A list of `Transform`s.
@@ -328,9 +322,7 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.get_pose).
 
-**Example usage:**
-
-The following code example gets the pose of the tip of a [gripper](../../components/gripper/) named `myGripper` which is attached to the end of an arm, in the "world" `reference_frame`:
+The following code example gets the pose of the tip of a [gripper](../../components/gripper/) named `my_gripper` which is attached to the end of an arm, in the "world" `reference_frame`:
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
@@ -340,7 +332,7 @@ from viam.services.motion import MotionClient
 robot = await connect()
 
 motion = MotionClient.from_robot(robot=robot, name="builtin")
-gripperName = Gripper.get_resource_name("myGripper")
+gripperName = Gripper.get_resource_name("my_gripper")
 gripperPoseInWorld = await robot.get_pose(component_name=gripperName, destination_frame="world")
 ```
 
@@ -358,7 +350,7 @@ motion = MotionClient.from_robot(robot=robot, name="builtin")
 objectPose = Pose(x=100, y=200, z=0, o_x=0, o_y=0, o_z=1, theta=0)
 objectPoseInFrame = PoseInFrame(reference_frame="world", pose=objectPose)
 objectTransform = Transform(reference_frame="object", pose_in_observer_frame=objectPoseInFrame)
-gripperName = Gripper.get_resource_name("myGripper")
+gripperName = Gripper.get_resource_name("my_gripper")
 gripperPoseInObjectFrame = await motion.get_pose(
   component_name=gripperName,
   destination_frame="world",
@@ -375,7 +367,7 @@ gripperPoseInObjectFrame = await motion.get_pose(
 
 - `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): Name of the piece of the robot whose pose is returned.
 
-- `destinationFrame` ([PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)):
+- `destinationFrame` ([string](https://pkg.go.dev/builtin#string)):
   The name of the frame with respect to which the component's pose is reported.
 
 - `supplementalTransforms` ([LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)): An optional list of `Transform`s.
@@ -398,8 +390,6 @@ gripperPoseInObjectFrame = await motion.get_pose(
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
-**Example usage:**
-
 ```go {class="line-numbers linkable-line-numbers"}
 import (
   "context"
@@ -410,10 +400,11 @@ import (
   "go.viam.com/rdk/services/motion"
 )
 
-// < Insert code to connect to your robot
-// (see code sample tab of your robot's page in the Viam app) >
+// Insert code to connect to your robot.
+// (see code sample tab of your robot's page in the Viam app)
 
 // Assumes a gripper configured with name "my_gripper" on the robot
+gripperName := Gripper.Named("my_gripper")
 myFrame := "my_gripper_offset"
 
  // Access the Motion Service

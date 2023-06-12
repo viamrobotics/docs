@@ -35,11 +35,11 @@ Make sure you have mastery of the concepts outlined in the first Motion tutorial
 This tutorial picks up right where **Access and Move a Robot Arm** stops, so further examples depend on having a connected robot, client and service access, and other infrastructure in place.
 This also helps simplify and shorten the code examples presented below.
 
-For a helpful recap of the code we previously added, look at [the full code sample from the prior tutorial](../accessing-and-moving-robot-arm#full-tutorial-code).
+For a helpful recap of the code we previously added, look at [the full code sample from the prior tutorial](../accessing-and-moving-robot-arm/#full-tutorial-code).
 
 ## Configure a robot
 
-The [robot configuration from the prior tutorial](../accessing-and-moving-robot-arm#configure-a-robot) should be used for this tutorial.
+The [robot configuration from the prior tutorial](../accessing-and-moving-robot-arm/#configure-a-robot) should be used for this tutorial.
 We will revisit that robot configuration and add new components during specific sections below.
 
 The Motion Service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
@@ -52,9 +52,15 @@ Accessing the Motion Service is very similar to accessing any other component or
 {{< tabs >}}
 {{% tab name="Python" %}}
 You must import an additional Python library to access the Motion Service.
-Add `from viam.services.motion import MotionClient` to your import list and then add the sample code below to your own client script.
+Add the following line to your import list:
 
-```python {class="line-numbers linkable-line-numbers"}
+```python
+from viam.services.motion import MotionClient
+```
+
+Then add the sample code below to your client script:
+
+```python
 # Access the Motion Service
 motion_service = MotionClient.from_robot(robot, "builtin")
 ```
@@ -62,7 +68,13 @@ motion_service = MotionClient.from_robot(robot, "builtin")
 {{% /tab %}}
 {{% tab name="Go" %}}
 You must import an additional Go package to access the Motion Service.
-Add `"go.viam.com/rdk/services/motion"` to your import list and then add the sample code below to your own client script.
+Add the following line to your import list:
+
+```go
+"go.viam.com/rdk/services/motion"
+```
+
+Then add the sample code below to your client script:
 
 ```go {class="line-numbers linkable-line-numbers"}
 motionService, err := motion.FromRobot(robot, "builtin")
@@ -74,10 +86,35 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-Once the Motion Service can be accessed, some familiar features become available.
-The Motion service has a method that can get the *pose* of a component relative to a *reference frame*.
-In the tutorial where we interacted with an arm component, we used the `EndPosition` method to determine the pose of the end effector of `myArm`.
-The `GetPose` method provided by the Motion Service serves a similar function to `EndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
+The Motion service has a method that can get the *pose* of a component relative to a [*reference frame*](../../../services/frame-system/).
+In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
+The `GetPose` method provided by the Motion Service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
+
+### Get the `ResourceName`
+
+When you use the [arm API](../../../components/arm/#api), you call methods on your arm component itself.
+To use the [Motion Service API](../../../services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the Motion Service method.
+
+Add the following to the section of your code where you access the arm:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm_resource_name = Arm.get_resource_name("myArm")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+myArmResourceName := arm.Named("myArm")
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Now you are ready to run a Motion Service method on your arm.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -86,7 +123,7 @@ Any components that have frame information (and, as a result, are added to the F
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the pose of myArm from the Motion Service
-my_arm_motion_pose = await motion_service.get_pose(my_arm_resource, "world")
+my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name, "world")
 print(f"Pose of myArm from the Motion Service: {my_arm_motion_pose}")
 ```
 
@@ -98,7 +135,7 @@ Any components that have frame information (and, as a result, are added to the F
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the pose of myArm from the Motion Service
-myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResource, referenceframe.World, nil, nil)
+myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResourceName, referenceframe.World, nil, nil)
 if err != nil {
   fmt.Println(err)
 }
@@ -151,7 +188,7 @@ tableOrigin := spatialmath.NewPose(
   &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
 )
 tableDims := r3.Vector{X: 2000.0, Y: 2000.0, Z: 20.0}
-tableObj, _ := spatialmath.NewBox(tableOrigin, tableDims, "table")
+tableObj, err := spatialmath.NewBox(tableOrigin, tableDims, "table")
 obstacles = append(obstacles, tableObj)
 
 // Create a WorldState that has the GeometriesInFrame included
@@ -170,7 +207,7 @@ Feel free to change these dimensions, including thickness (the Z coordinate in t
 Additional obstacles can also be *appended* as desired.
 
 {{< alert title="Tip" color="note" >}}
-Within the app, the **Frame System** tab in the **Config** section of your robot gives you the ability to experiment with various geometry representations with better visual feedback.
+Within the app, the **Frame System** subtab of your robot's **Config** tab gives you the ability to experiment with various geometry representations with better visual feedback.
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
@@ -179,12 +216,11 @@ Within the app, the **Frame System** tab in the **Config** section of your robot
 
 ## Command an arm to move with the Motion Service
 
-Commanding motion with the Motion Service has a more general feel than previous examples that were commanding motion for individual components.
 In previous examples you controlled motion of individual components.
 Now you will use the Motion Service to control the motion of the robot as a whole.
-You will use the Motion Service's `Move` method to execute more general robotic motion.
+You will use the Motion Service's [`Move`](../../../services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
-The `worldState` we constructed earlier is also passed in so that the Motion Service can consider additional information when planning.
+The `worldState` we constructed earlier is also passed in so that the Motion Service takes that information into account when planning.
 
 The sample pose given below can be adjusted to fit your specific circumstances.
 Remember that X, Y, and Z coordinates are specified in millimeters.
@@ -204,7 +240,7 @@ Keep the space around the arm clear!
 test_start_pose = Pose(x=510.0, y=0.0, z=526.0, o_x=0.7071, o_y=0.0, o_z=-0.7071, theta=0.0)
 test_start_pose_in_frame = PoseInFrame(reference_frame="world", pose=test_start_pose)
 
-await motion_service.move(component_name=my_arm_resource, destination=test_start_pose_in_frame, world_state=world_state)
+await motion_service.move(component_name=my_arm_resource_name, destination=test_start_pose_in_frame, world_state=world_state)
 ```
 
 {{% /tab %}}
@@ -218,7 +254,7 @@ testStartPose := spatialmath.NewPose(
 )
 testStartPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, testStartPose)
 
-_, err = motionService.Move(context.Background(), myArmResource, testStartPoseInFrame, worldState, nil, nil)
+_, err = motionService.Move(context.Background(), myArmResourceName, testStartPoseInFrame, worldState, nil, nil)
 if err != nil {
   logger.Fatal(err)
 }
@@ -232,7 +268,7 @@ if err != nil {
 
 ## Command other components to move with the Motion Service
 
-This section will require you to add a new component to your robot.
+In this section you will add a new component to your robot.
 One device that is very commonly attached to the end of a robot arm is a [*gripper*](/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various Motion Service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
@@ -244,35 +280,42 @@ We need to do several things to prepare a new gripper component for motion.
 
 1. Go back to your robot configuration in the Viam app.
 2. Under the **Components** section, add a new `gripper` component to your robot with the following attributes:
-    * Set `myGripper` as the **Name** of this new component
-    * Set the **Type** to `gripper`
-    * Set the **Model** to `fake`
-3. Add a **Frame** to this component
-    * Set the parent as `myArm`
-    * Set the translation as something small in the +Z direction, such as 90 mm
-    * Leave the orientation as the default
-    * For **Geometry Type** choose **Box**
+    * Set `myGripper` as the **Name** of this new component.
+    * Set the **Type** to `gripper`.
+    * Set the **Model** to `fake`.
+3. Add a **Frame** to this component.
+    * Set the parent as `myArm`.
+    * Set the translation as something small in the +Z direction, such as `90` millimeters.
+    * Leave the orientation as the default.
+    * For **Geometry Type** choose **Box**.
     * Enter desired values for the box's **Length**, **Width**, and **Height**, and the box origin's **X**, **Y**, and **Z** values.
-4. Include the `myArm` component in the **Depends On** drop-down for `myGripper`
-5. Save this new robot configuration
+4. Include the `myArm` component in the **Depends On** drop-down for `myGripper`.
+5. Save this new robot configuration.
     * Your `viam-server` instance should update automatically.
 
 <div class="td-max-width-on-larger-screens">
   <img src="../../img/motion/plan_03_gripper_config.png" width="700px" alt="Sample gripper configuration with several fields filled out.">
 </div>
 
-Because the new gripper component is "attached" (with the parent specification in the Frame) to `myArm`, we can produce motion plans using `myGripper` instead of `myArm`
+Because the new gripper component is "attached" (with the parent specification in the Frame) to `myArm`, we can produce motion plans using `myGripper` instead of `myArm`.
 
 The last library you must import is the `gripper` library.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-Do this by adding `from viam.components.gripper import Gripper` to your import list.
+
+Add the following line to your import list:
+
+```python
+from viam.components.gripper import Gripper
+```
+
+Then add this code to your `main()`:
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_gripper_resource = Gripper.get_resource_name("myGripper")
 
-# This will move the gripper in the -Z direction with respect to its own reference frame
+# Move the gripper in the -Z direction with respect to its own reference frame
 gripper_pose_rev = Pose(x=0.0, y=0.0, z=-100.0, o_x=0.0, o_y=0.0, o_z=1.0, theta=0.0)
 gripper_pose_rev_in_frame = PoseInFrame(reference_frame=my_gripper_resource.name, pose=gripper_pose_rev) # Note the change in frame name
 
@@ -281,7 +324,13 @@ await motion_service.move(component_name=my_gripper_resource, destination=grippe
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-Do this by adding `"go.viam.com/rdk/components/gripper"` to your import list.
+Add the following line to your import list:
+
+```go
+"go.viam.com/rdk/components/gripper"
+```
+
+Then add this code to your `main()`:
 
 ```go {class="line-numbers linkable-line-numbers"}
 gripperName := "myGripper"
@@ -307,8 +356,18 @@ For the gripper pose, you can change the reference frame information to consider
 Specifying other reference frames is an easy way to move with respect to those frames.
 For example, you can specify a pose that is 100 millimeters above the table obstacle featured earlier in this tutorial.
 You do not need to calculate that exact pose with respect to the **arm** or **world**.
-You must only provide the object name (instead of the `gripperName` you saw in the code samples above) when making the `NewPoseInFrame` to pass into the `Move` function.
+You must only provide the object name (instead of the `gripperName` you saw in the code samples above) when making the `PoseInFrame` to pass into the `Move` function.
 This has implications for how motion is calculated, and what final configuration your robot will rest in after moving.
+
+## Next Steps and References
+
+If you would like to continue onto working with Viam's Motion Service, check out one of these tutorials:
+
+{{< cards >}}
+  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
+{{< /cards >}}
+
+{{< snippet "social.md" >}}
 
 <!-- TODO: Content below struck out for the moment, saved to point at the next tutorial "Add Constraints to a Motion Plan" -->
 <!--
@@ -320,8 +379,6 @@ If you would like to continue onto working with complex motion constraints:
   {{% card link="/tutorials/services/add-constraints-to-motion-plan" size="small" %}}
 {{< /cards >}}
 -->
-
-{{< snippet "social.md" >}}
 
 ## Full Tutorial Code
 
@@ -357,7 +414,7 @@ async def main():
     print(robot.resource_names)
 
     # Access myArm
-    my_arm_resource = Arm.get_resource_name("myArm")
+    my_arm_resource_name = Arm.get_resource_name("myArm")
     my_arm_component = Arm.from_robot(robot, "myArm")
 
     # End Position of myArm
@@ -381,7 +438,7 @@ async def main():
     motion_service = MotionClient.from_robot(robot, "builtin")
 
     # Get the pose of myArm from the Motion Service
-    my_arm_motion_pose = await motion_service.get_pose(my_arm_resource, "world")
+    my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name, "world")
     print(f"Pose of myArm from the Motion Service: {my_arm_motion_pose}")
 
     # Add a table obstacle to a WorldState
@@ -398,7 +455,7 @@ async def main():
     test_start_pose = Pose(x=510.0, y=0.0, z=526.0, o_x=0.7071, o_y=0.0, o_z=-0.7071, theta=0.0)
     test_start_pose_in_frame = PoseInFrame(reference_frame="world", pose=test_start_pose)
 
-    await motion_service.move(component_name=my_arm_resource, destination=test_start_pose_in_frame, world_state=world_state)
+    await motion_service.move(component_name=my_arm_resource_name, destination=test_start_pose_in_frame, world_state=world_state)
 
     my_gripper_resource = Gripper.get_resource_name("myGripper")
 
@@ -458,8 +515,8 @@ func main() {
   logger.Info(robot.ResourceNames())
 
   // Access myArm
-  myArmResource := arm.Named("myArm")
-  fmt.Println("myArmResource:", myArmResource)
+  myArmResourceName := arm.Named("myArm")
+  fmt.Println("myArmResourceName:", myArmResourceName)
   myArmComponent, err := arm.FromRobot(robot, "myArm")
   if err != nil {
     fmt.Println(err)
@@ -508,7 +565,7 @@ func main() {
   }
 
   // Get the pose of myArm from the Motion Service
-  myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResource, referenceframe.World, nil, nil)
+  myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResourceName, referenceframe.World, nil, nil)
   if err != nil {
     fmt.Println(err)
   }
@@ -523,7 +580,7 @@ func main() {
     &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
   )
   tableDims := r3.Vector{X: 2000.0, Y: 2000.0, Z: 20.0}
-  tableObj, _ := spatialmath.NewBox(tableOrigin, tableDims, "table")
+  tableObj, err := spatialmath.NewBox(tableOrigin, tableDims, "table")
   obstacles = append(obstacles, tableObj)
 
   // Create a WorldState that has the GeometriesInFrame included
@@ -539,7 +596,7 @@ func main() {
   )
   testStartPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, testStartPose)
 
-  _, err = motionService.Move(context.Background(), myArmResource, testStartPoseInFrame, worldState, nil, nil)
+  _, err = motionService.Move(context.Background(), myArmResourceName, testStartPoseInFrame, worldState, nil, nil)
   if err != nil {
     logger.Fatal(err)
   }

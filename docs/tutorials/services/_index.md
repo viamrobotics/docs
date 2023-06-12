@@ -1,9 +1,10 @@
 ---
-title: "Services"
+title: "Tutorials for Viam Services"
 linkTitle: "Services"
+childTitleEndOverwrite: "Tutorial"
 weight: 40
-simple_list: true
 type: docs
-description: "Tutorials focusing on using built-in Viam Services."
 empty_node: true
+layout: "empty"
+canonical: "/tutorials/"
 ---

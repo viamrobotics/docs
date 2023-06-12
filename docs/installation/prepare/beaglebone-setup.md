@@ -48,7 +48,7 @@ You can do this in multiple ways:
 - Connect an ethernet cable to your BeagleBone's ethernet port.
 - If you are working on a macOS machine, use [internet sharing over USB](https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac) to share your connection.
    After enabling the option on your machine, SSH into your BeagleBone and run `sudo dhclient usb1`.
-- If you are working on a Linux machine, look [here](https://elinux.org/Beagleboard:Terminal_Shells) for tips on enabling a network connection.
+- If you are working on a Linux machine, read [these tips on enabling a network connection](https://elinux.org/Beagleboard:Terminal_Shells).
 - If your personal computer supports mDNS (Multicast DNS), you can check to see if your BeagleBone board has established a network connection by visiting [beaglebone.local](https://beaglebone.local).
 
 ### Step 3: SSH into your BeagleBone from your PC
@@ -75,7 +75,7 @@ After SSH'ing into your BeagleBone, verify all packages are up to date:
 
 ### Step 5: Install `viam-server`
 
-Now that your BeagleBone has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation#install-viam-server) to install `viam-server` on the board.
+Now that your BeagleBone has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/#install-viam-server) to install `viam-server` on the board.
 
 ## Troubleshooting
 

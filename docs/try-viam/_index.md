@@ -1,6 +1,7 @@
 ---
 title: "Try Viam"
 linkTitle: "Try Viam"
+childTitleEndOverwrite: "Try Viam"
 weight: 15
 type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab."
@@ -25,7 +26,7 @@ During your rover rental, you can [try out some of the Viam platform functionali
 
 ## Control your rover with SDKs
 
-If you want to control and automate your rover with Python or Go, use the [Viam SDKs](/program/sdks).
+If you want to control and automate your rover with Python or Go, use the [Viam SDKs](/program/sdks/).
 
 Viam also exposes a {{< glossary_tooltip term_id="grpc" text="gRPC" >}} [API for robot controls](https://github.com/viamrobotics/api).
 

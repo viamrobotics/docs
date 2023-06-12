@@ -1,6 +1,7 @@
 ---
 title: "Servo Component"
 linkTitle: "Servo"
+childTitleEndOverwrite: "Servo Component"
 weight: 80
 type: "docs"
 description: "A hobby servo is a special type of small motor whose position you can precisely control."
@@ -13,8 +14,8 @@ no_list: true
 The servo component supports ["RC" or "hobby" servo motors](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
 These are small motors with built-in potentiometer position sensors, enabling you to control the angular position of the servo precisely.
 
-As servos can use a lot of power, drawing voltage away from a [board](/components/board), you should power your servo with its own power supply in most cases.
-The following shows an example wiring diagram for a hobby servo wired to a [`pi` board](/components/board/pi):
+As servos can use a lot of power, drawing voltage away from a [board](/components/board/), you should power your servo with its own power supply in most cases.
+The following shows an example wiring diagram for a hobby servo wired to a [`pi` board](/components/board/pi/):
 
 ![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](img/servo-wiring.png)
 
@@ -34,8 +35,8 @@ Most robots with a servo need at least the following hardware:
 
 The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
 
-If your motor is coupled with an [encoder](/components/encoder), not a potentiometer, for position feedback, you should not configure it as a servo.
-Check your device's data sheet and configure that type of servo as an [encoded motor](/components/motor/gpio/encoded-motor).
+If your motor is coupled with an [encoder](/components/encoder/), not a potentiometer, for position feedback, you should not configure it as a servo.
+Check your device's data sheet and configure that type of servo as an [encoded motor](/components/motor/gpio/encoded-motor/).
 
 {{% /alert %}}
 
@@ -43,9 +44,9 @@ Supported servo models include:
 
 | Model | Description |
 | ----- | ----------- |
-| [`fake`](fake) | A model used for testing, with no physical hardware. |
-| [`gpio`](gpio) | A hobby servo wired to any model of [board](/components/board/#configuration) besides `pi`. |
-| [`pi`](pi) | A hobby servo wired to a [Raspberry Pi board](/components/board/pi). |
+| [`fake`](fake/) | A model used for testing, with no physical hardware. |
+| [`gpio`](gpio/) | A hobby servo wired to any model of [board](/components/board/#configuration) besides `pi`. |
+| [`pi`](pi/) | A hobby servo wired to a [Raspberry Pi board](/components/board/pi/). |
 
 Click on the model names above for configuration information.
 
@@ -175,7 +176,7 @@ Get the current set angle of the servo in degrees.
 
 **Returns:**
 
-- `position`[(int)](https://docs.python.org/3/library/functions.html#int): The current set angle of the servo in degrees.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The current set angle of the servo in degrees.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.get_position).
 
@@ -205,7 +206,7 @@ pos2 = await my_servo.get_position()
 
 **Returns:**
 
-- `angleDeg` ([uint32](https://pkg.go.dev/builtin#uint32)): The current set angle of the servo in degrees.
+- [(uint32)](https://pkg.go.dev/builtin#uint32): The current set angle of the servo in degrees.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
@@ -295,11 +296,11 @@ If you are implementing your own servo and add features that have no built-in AP
 
 **Parameters:**
 
-- `command` (Dict[str, Any]): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (Dict[str, Any]): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_servo = Servo.from_robot(robot, "my_servo")
@@ -315,13 +316,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([`Context`](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (cmd map[string]interface{}): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (cmd map[string]interface{}): Result of the executed command.
-- `error` ([error](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myServo, err := servo.FromRobot(robot, "my_servo")
@@ -344,7 +345,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
+  {{% card link="/tutorials/projects/guardian" size="small" %}}
   {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
   {{% card link="/tutorials/projects/integrating-viam-with-openai" size="small" %}}
-  {{% card link="/tutorials/projects/guardian" size="small" %}}
 {{< /cards >}}

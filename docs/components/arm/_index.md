@@ -1,6 +1,7 @@
 ---
 title: "Arm Component"
 linkTitle: "Arm"
+childTitleEndOverwrite: "Arm Component"
 weight: 10
 type: "docs"
 description: "A robotic arm is made up of a series of links and joints, ending with a device you can position."
@@ -25,7 +26,7 @@ When controlling an arm with `viam-server`, the following features are implement
 - Self-collision prevention
 - Obstacle avoidance
 
-#### Motion planning with your arm's built-in software
+## Motion planning with your arm's built-in software
 
 Each arm model is supported with a driver that is compatible with the software API that the model's manufacturer supports.
 While some arm models build inverse kinematics into their software, many do not.
@@ -52,14 +53,11 @@ Supported arm models include:
 
 | Model | Description |
 | ----- | ----------- |
-| [`fake`](fake) | A model used for testing, with no physical hardware. |
-| [`xArm6`](xarm6) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
-| [`xArm7`](xarm7) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
-| [`xArmLite`](xarmlite) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) |
-| `eva` | [Automata Eva](https://automata.tech/products/hardware/about-eva/) |
-| `ur5e` | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot/) |
-| `yahboom-dofbot` | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
-| `wrapper_arm` | A model used to wrap a partially implemented arm. |
+| [`fake`](fake/) | A model used for testing, with no physical hardware. |
+| [`xArm6`](xarm6/) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
+| [`xArm7`](xarm7/) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
+| [`xArmLite`](xarmlite/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) |
+| [`yahboom-dofbot`](yahboom-dofbot/) | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
 
 ## Control your arm with Viam's client SDK libraries
 
@@ -120,7 +118,7 @@ Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `Pose` [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
+- [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
@@ -139,13 +137,12 @@ pos = await my_arm.get_end_position()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- `Pose` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
 Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
@@ -199,7 +196,7 @@ await my_arm.move_to_position(pose=examplePose)
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `Pose` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
 The `Pose` is composed of values for location and orientation with respect to the origin.
 Location is expressed as distance, which is represented by x, y, and z coordinate values.
@@ -208,7 +205,7 @@ Orientation is expressed as an orientation vector, which is represented by o_x, 
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -269,14 +266,14 @@ await my_arm.move_to_joint_positions(positions= jointPos)
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `positions` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
 JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -310,7 +307,7 @@ Get the current position of each joint on the arm.
 
 **Returns:**
 
-- `positions` [(JointPositions)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions): The position of each joint of the arm.
+- [(JointPositions)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions): The position of each joint of the arm.
 JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.get_joint_positions)
@@ -327,13 +324,13 @@ pos = await my_arm.get_joint_positions()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- `positions` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
 JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
@@ -378,12 +375,12 @@ await my_arm.stop()
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -410,7 +407,7 @@ Get if the arm is currently moving.
 
 **Returns:**
 
-- `is_moving` [(bool)](https://docs.python.org/c-api/bool.html): If it is true or false that the arm is currently moving.
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If it is true or false that the arm is currently moving.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/arm/arm.html#Arm.is_moving).
 
@@ -429,12 +426,12 @@ print(my_arm.is_moving())
 
 **Parameters:**
 
-- `Context` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
 **Returns:**
 
-- `is_moving` [(bool)](https://pkg.go.dev/builtin#bool): If it is true or false that the arm is currently moving.
-- `error` [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(bool)](https://pkg.go.dev/builtin#bool): If it is true or false that the arm is currently moving.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -463,11 +460,11 @@ If you are implementing your own arm and add features that have no built-in API 
 
 **Parameters:**
 
-- `command` (Dict[str, Any]): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
 
 **Returns:**
 
-- `result` (Dict[str, Any]): Result of the executed command.
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_arm = Arm.from_robot(robot, "my_arm")
@@ -483,13 +480,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
 
 **Parameters:**
 
-- `ctx` ([Context](https://pkg.go.dev/context)): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` (cmd map[string]interface{}): The command to execute.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- `result` (cmd map[string]interface{}): Result of the executed command.
-- `error` ([error](https://pkg.go.dev/builtin#error)): An error, if one occurred.
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(robot, "my_arm")
@@ -513,6 +510,6 @@ You can also ask questions on the [Community Discord](https://discord.gg/viam) a
 
 {{< cards >}}
   {{% card link="/tutorials/services/accessing-and-moving-robot-arm" size="small" %}}
+  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
   {{% card link="/services/motion" size="small" %}}
-  {{% card link="/services/frame-system" size="small" %}}
 {{< /cards >}}

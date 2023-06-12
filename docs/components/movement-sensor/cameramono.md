@@ -1,9 +1,9 @@
 ---
-title: "Configure `camera_mono` for Visual Odometry"
+title: "Configure a camera_mono model for Visual Odometry"
 linkTitle: "camera_mono"
 weight: 40
 type: "docs"
-description: "Configure `camera_mono`, an experimental visual odometry model."
+description: "Configure camera_mono, an experimental visual odometry model."
 images: ["/components/img/components/imu.svg"]
 # SMEs: Rand
 ---
@@ -23,7 +23,7 @@ The `camera_mono` model can use any single [camera](/components/camera/) within 
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** sub-tab and navigate to the **Create component** menu.
+Click on the **Components** subtab and navigate to the **Create component** menu.
 Enter a name for your movement sensor, select the `movement-sensor` type, and select the `camera_mono` model.
 
 Click **Create Component**.
@@ -94,5 +94,5 @@ Edit and fill in the attributes as applicable.
 
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | -----------
-`camera` | string | **Required** | The `name` of the [camera](/components/camera) you want to use for visual odometry.
+`camera` | string | **Required** | The `name` of the [camera](/components/camera/) you want to use for visual odometry.
 `motion_estimation_config` | object | **Required** | See [motionestimation.go in RDK](https://github.com/viamrobotics/rdk/blob/99f62a1640f4c267b744bdfc2924e9fd4f7a3c60/vision/odometry/motionestimation.go).
