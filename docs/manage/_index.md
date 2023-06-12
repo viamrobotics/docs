@@ -4,7 +4,7 @@ linkTitle: "Manage"
 weight: 22
 type: docs
 no_list: true
-description: "A guide to getting started with app.viam.com, a web user interface for building and managing robots with Viam."
+description: "A guide to getting started with app.viam.com, a web app for building and managing robots with Viam."
 aliases:
   - "/viam/app.viam.com/"
 ---
