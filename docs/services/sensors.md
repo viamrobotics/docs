@@ -120,7 +120,7 @@ readings = sensors_svc.get_readings(sensors)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
-- `sensorNames` ([][resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): An array of sensor names for which to return readings.
+- `sensorNames` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): An array of sensor names for which to return readings.
 
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
