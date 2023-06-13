@@ -127,11 +127,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `errHandlers` [(ErrorHandler)](https://pkg.go.dev/github.com/edaniels/gostream#ErrorHandler): A handler for errors allowing for logic based on consecutively retrieved errors).
+- `errHandlers` [(ErrorHandler)](https://pkg.go.dev/github.com/viamrobotics/gostream#ErrorHandler): A handler for errors allowing for logic based on consecutively retrieved errors).
 
 **Returns:**
 
-- [(gostream.VideoStream)](https://pkg.go.dev/github.com/edaniels/gostream): A `VideoStream` that streams video until closed.
+- [(gostream.VideoStream)](https://pkg.go.dev/github.com/viamrobotics/gostream): A `VideoStream` that streams video until closed.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
