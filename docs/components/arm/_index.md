@@ -93,7 +93,7 @@ import (
   // To use MoveToPosition:
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/spatialmath"
-  // To use MoveToJointPositions:
+  // To use MoveToJointPositions ("armapi" name optional, but necessary if importing other packages called "v1"):
   armapi "go.viam.com/api/component/arm/v1"
 )
 ```
