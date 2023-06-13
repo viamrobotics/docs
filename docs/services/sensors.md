@@ -31,7 +31,7 @@ Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) f
 
 ### Sensors
 
-Returns a list of names of the available sensors.
+Returns a list containing the `name` of each available sensor.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
