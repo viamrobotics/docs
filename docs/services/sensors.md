@@ -138,7 +138,7 @@ if err != nil {
   logger.Fatal(err)
 }
 
-// Get available sensors
+// Get readings from all available sensors
 sensor_names, err := sensorsService.Sensors(context.Background(), nil)
 readings, err := sensorsService.Readings(context.Background(), sensor_names, nil)
 ```
