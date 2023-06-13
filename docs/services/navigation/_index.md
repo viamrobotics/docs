@@ -40,6 +40,17 @@ Click **Create service**:
 
 <!-- TODO INSERT CONFIG ATTRIBUTES THAT RAYMOND DEFINES HERE -->
 
+Next, add the JSON `"attributes"` you want the service to have.
+The following attributes are available for `Navigation` services:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `store` | obj | ? | ? <br> Default: `` |
+| `base` | string | ? | ? <br> Default: ``|
+| `movement_sensor` | string | ? | <br> Default: `` |
+| `degs_per_sec` | float | ? | Default degrees per second. <br> Default: `` |
+| `mm_per_sec` | float | ? | Default millimeters per second. <br> Default: `` |
+
 ## API
 
 The Navigation Service supports the following methods:
