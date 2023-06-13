@@ -65,7 +65,7 @@ sensors = sensors_svc.get_sensors()
 
 **Returns:**
 
-- [[resource.Name]](https://pkg.go.dev/go.viam.com/rdk/resource#Name): An array of sensor names.
+- ([][resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): An array of sensor names.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/sensors#Service).
