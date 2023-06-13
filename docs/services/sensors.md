@@ -3,7 +3,7 @@ title: "Sensors Service"
 linkTitle: "Sensors"
 weight: 70
 type: "docs"
-description: "The Sensors Service is a built-in service that provides a central interface to all of your robot's sensors."
+description: "The Sensors Service provides a central interface to all of your robot's sensors."
 tags: ["sensor", "services"]
 icon: "/services/img/icons/sensor.svg"
 images: ["/services/img/icons/sensor.svg"]
