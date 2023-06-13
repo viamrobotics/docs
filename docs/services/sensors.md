@@ -99,7 +99,7 @@ Returns a list of sensor readings from a given list of sensors.
 
 **Returns:**
 
-- [Mapping[[ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName), Mapping[str, Any]]: A list of readings from the requested sensors.
+- ([Mapping[[ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName), Mapping[str, Any]]): A list of readings from the requested sensors.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/sensors/index.html#viam.services.sensors.SensorsClient.get_readings).
 
