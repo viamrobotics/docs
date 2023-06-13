@@ -293,9 +293,10 @@ Set the linear velocity (mm/sec) and angular velocity (degrees/sec) of the base.
 
 **Parameters:**
 
-- `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity in mm per second.
+- `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity in millimeters per second.
 Only the Y component of the vector is used for a wheeled base.
-- `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity in degrees per second. Only the Z component of the vector is used for a wheeled base.
+- `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity in degrees per second.
+Only the Z component of the vector is used for a wheeled base.
 
 **Returns:**
 
@@ -306,7 +307,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 my_base = Base.from_robot(robot=robot, name="my_base")
 
-# Set the angular velocity to 1 mm/sec and the linear velocity to 1 degree/sec.
+# Set the linear velocity to 1 mm/sec and the angular velocity to 1 degree/sec.
 await my_base.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z=1))
 ```
 
@@ -316,8 +317,10 @@ await my_base.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `linear` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The linear velocity in mm per second. Only the Y component of the vector is used for a wheeled base.
-- `angular` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The angular velocity in degrees per second. Only the Z component of the vector is used for a wheeled base.
+- `linear` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The linear velocity in millimeters per second.
+Only the Y component of the vector is used for a wheeled base.
+- `angular` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The angular velocity in degrees per second.
+Only the Z component of the vector is used for a wheeled base.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -331,7 +334,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 myBase, err := base.FromRobot(robot, "my_base")
 
-// Set the angular velocity to 1 mm/sec and the linear velocity to 1 deg/sec.
+// Set the linear velocity to 1 mm/sec and the angular velocity to 1 deg/sec.
 myBase.SetVelocity(context.Background(), linear: r3.Vector{Y: 1}, angular: r3.Vector{Z: 1})
 ```
 
