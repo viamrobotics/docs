@@ -126,7 +126,7 @@ readings = sensors_svc.get_readings(sensors)
 
 **Returns:**
 
-- [[Readings]](https://pkg.go.dev/go.viam.com/rdk/services/sensors#Readings): A list of readings from the requested sensors.
+- [][Readings](https://pkg.go.dev/go.viam.com/rdk/services/sensors#Readings): A list of readings from the requested sensors.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/sensors#Service).
