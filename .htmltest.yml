@@ -21,6 +21,7 @@ IgnoreURLs:
 - "nvidia.com"
 - "slamtec.com"
 - "universal-robots.com"
+- "ufactory.cc"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"
