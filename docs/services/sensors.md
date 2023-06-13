@@ -42,7 +42,7 @@ Returns a list containing the `name` of each available sensor.
 
 **Returns:**
 
-- `sensors` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): Names of the available sensors of the robot.
+- (List[[ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)]): Names of the available sensors of the robot.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/sensors/index.html#viam.services.sensors.SensorsClient.get_sensors).
 
