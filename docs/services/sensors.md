@@ -10,7 +10,7 @@ images: ["/services/img/icons/sensor.svg"]
 # SME: Cheuk
 ---
 
-The Sensors Service is a built-in service that provides a central interface to all of your robot's [sensors](/components/sensor), regardless of the sensor model.
+The Sensors Service is a built-in service that provides a central interface to all of your robot's [sensors](/components/sensor/), regardless of the sensor model.
 With it you can obtain readings from multiple sensors on your robot at once.
 
 ## API
