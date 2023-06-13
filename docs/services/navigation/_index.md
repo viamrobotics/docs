@@ -5,12 +5,14 @@ description: "The Navigation Service uses GPS to autonomously navigate a rover t
 type: docs
 weight: 45
 no_list: true
-icon: "/services/img/icons/frame-system.svg"
+# icon: "/services/img/icons/frame-system.svg"
 tags: ["navigation", "services", "base", "rover"]
 # SMEs: Raymond
 ---
 
-The Navigation Service uses GPS to autonomously navigate a rover to user defined endpoints.
+The Navigation service is the stateful definition of Viam's [Motion service](/services/motion/)
+It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called `Waypoints`.
+Once the `Waypoints` are added and the `Mode` of the service is [set to `waypoints`](#setmode), Navigation services calls begin.
 
 ## Configuration
 
@@ -38,18 +40,16 @@ Click **Create service**:
 {{% /tab %}}
 {{< /tabs >}}
 
-<!-- TODO INSERT CONFIG ATTRIBUTES THAT RAYMOND DEFINES HERE -->
-
 Next, add the JSON `"attributes"` you want the service to have.
 The following attributes are available for `Navigation` services:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `store` | obj | ? | ? <br> Default: `` |
-| `base` | string | ? | ? <br> Default: ``|
-| `movement_sensor` | string | ? | <br> Default: `` |
-| `degs_per_sec` | float | ? | Default degrees per second. <br> Default: `` |
-| `mm_per_sec` | float | ? | Default millimeters per second. <br> Default: `` |
+| `store` | obj | **Required** | The MongoDB store ObjectID. Set this to access the backend MongoDB database. |
+| `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the rover you are operating as with this service. |
+| `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the rover you are operating as with this service. |
+| `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. |
+| `mm_per_sec` | float | Optional | The default linear velocity for the [base](/components/base/) in millimeters per second. |
 
 ## API
 
@@ -73,9 +73,15 @@ Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) f
 
 ### Mode
 
+{{% alert title="Note" color="note" %}}
+
+The `manual` mode is experimental and will have no effect.
+
+{{% /alert %}}
+
 Get the `Mode` the service is operating in.
 There are two options for modes: `manual` and `waypoint`.
-<!-- TODO: MORE INFO ABOUT MODES -->
+If the mode is set to `waypoint`, the service's process for looking for waypoints that were added will begin, effectively beginning navigation.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -104,9 +110,15 @@ mode, err := myNav.Mode(context.Background(), nil)
 
 ### SetMode
 
+{{% alert title="Note" color="note" %}}
+
+The `manual` mode is experimental and will have no effect.
+
+{{% /alert %}}
+
 Set the `Mode` the service is operating in.
 There are two options for modes: `manual` and `waypoint`.
-<!-- TODO: MORE INFO ABOUT MODES -->
+If the mode is set to `waypoint`, the service's process for looking for waypoints that were added will begin, effectively beginning navigation.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -235,7 +247,6 @@ Remove a waypoint from the service's data storage.
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `id` [(primitive.ObjectID)](https://pkg.go.dev/go.mongodb.org/mongo-driver/bson/primitive#ObjectID): The MongoDB ObjectID of the `Waypoint` to remove from the service's data storage.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-<!-- TODO: I'm a bit confused about the whole MongoDB object ID thing so need to check here to confirm -->
 
 **Returns:**
 
@@ -255,5 +266,3 @@ err := myNav.RemoveWaypoint(context.Background(), waypoint_id, nil)
 
 {{% /tab %}}
 {{< /tabs >}}
-
-<!-- TODO: ADD NAVIGATION STORE INTERFACE? -->
