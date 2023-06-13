@@ -20,7 +20,7 @@ The Sensors Service supports the following methods:
 Method Name | Description
 ----------- | -----------
 [`Sensors`](#sensors) | Returns a list of names of the available sensors.
-[`Readings`](#readings) | Returns a list containing each of the readings from a given list of sensors.
+[`Readings`](#readings) | Returns a list of readings from a given list of sensors.
 
 {{% alert title="Note" color="note" %}}
 
