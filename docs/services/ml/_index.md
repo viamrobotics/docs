@@ -11,7 +11,7 @@ icon: "/services/img/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
-The ML Models service allows you to deploy machine learning models to your robots.
+The ML Model service allows you to deploy machine learning models to your robots.
 
 ## Create an ML model service
 
