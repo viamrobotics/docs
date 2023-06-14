@@ -37,7 +37,7 @@ These are to create a base inside the robot to securely hold the drink box.
 * [T-slotted framing structural brackets](https://www.amazon.com/Aluminum-Connector-Extrusion-Profiles-Accessories/dp/B08NC46L9K/ref=sr_1_14): 30mm rail height.
 * Two [ultrasonic sensors](https://www.amazon.com/WWZMDiB-HC-SR04-Ultrasonic-Distance-Measuring/dp/B0B1MJJLJP/ref=sr_1_4)
 * A [12V battery](https://www.amazon.com/ExpertPower-EXP1270-Rechargeable-Lead-Battery/dp/B003S1RQ2S/ref=sr_1_4) with [charger](https://www.amazon.com/dp/B0BC3Y5N3Q/ref=vp_d_pd_b2b_qd_vp_pd)
-* DC-DC converter, 12v in, 5v out
+* DC-DC converter, 12V in, 5V out
 * USB camera
 * A box to hold drinks
 * Optional: velcro tape
