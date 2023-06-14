@@ -51,7 +51,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 sensors_svc = SensorsClient.from_robot(robot=robot, name="builtin")
 
 # Get available sensors
-sensors = sensors_svc.get_sensors()
+sensors = await sensors_svc.get_sensors()
 ```
 
 {{% /tab %}}
