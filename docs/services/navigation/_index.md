@@ -47,10 +47,12 @@ The following attributes are available for `Navigation` services:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `store` | obj | **Required** | The MongoDB store ObjectID. Set this to access the backend MongoDB database. |
-| `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the rover you are operating with this service. |
-| `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the rover you are operating with this service. |
-| `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. |
-| `mm_per_sec` | float | Optional | The default linear velocity for the [base](/components/base/) in millimeters per second. |
+| `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the base you are operating with this service. |
+| `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the base you are operating with this service. |
+| `motion_service` | string | **Required** | The `name` of the [motion service](/services/motion/) you have configured for the base you are operating with this service. |
+| `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. <br> Default: `45` |
+| `meters_per_sec` | float | Optional | The default linear velocity for the [base](/components/base/) in meters per second. <br> Default: `0.5` |
+<!-- TODO: obstacles ? another attribute -->
 
 ## API
 
