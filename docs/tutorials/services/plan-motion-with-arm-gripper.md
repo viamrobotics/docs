@@ -400,7 +400,7 @@ from viam.services.motion import MotionClient
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='<ROBOT LOCATION SECRET PAYLOAD>')
+        payload='LOCATION SECRET FROM THE VIAM APP')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
@@ -472,6 +472,8 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
+Your robot's location secret and address can be found on the **Code sample** tab on [the Viam app](https://app.viam.com). Toggle **Include secret** to display these values in the code sample shown there.
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -503,7 +505,7 @@ func main() {
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "<ROBOT LOCATION SECRET PAYLOAD>",
+          Payload: "LOCATION SECRET FROM THE VIAM APP",
       })),
   )
   if err != nil {
@@ -617,6 +619,8 @@ func main() {
   }
 }
 ```
+
+Your robot's location secret and address can be found on the **Code sample** tab on [the Viam app](https://app.viam.com). Toggle **Include secret** to display these values in the code sample shown there.
 
 {{% /tab %}}
 {{< /tabs >}}

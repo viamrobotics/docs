@@ -18,8 +18,10 @@ The credentials look like this:
 
 ```json
 {"cloud":{"app_address":"https://app.viam.com:123","id":"123456ab-a1b2-12a3-a123-1a2b345cdefg6",
-"secret":"ab0cd0efghijkl0m12no3pqrstuvw0xyza4bcd567891abcd"}}
+"secret":"LOCATION SECRET FROM THE VIAM APP"}}
 ```
+
+Your robot's location secret can be found on the **Code sample** tab on the Viam app. Toggle **Include secret** to display it in the code sample shown there.
 
 When you turn on your robot, `viam-server` starts up and, by default, it uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the [Viam app](https://app.viam.com).
 Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.

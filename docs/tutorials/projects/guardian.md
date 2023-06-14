@@ -461,13 +461,15 @@ from viam.services.vision import VisionClient
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='d7f7n4zc92cjwmlhdqzh545la0xmpc7qnnn9gmtyb28g0nhd')
+        payload='LOCATION SECRET FROM THE VIAM APP')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('rover-main-main.yriemen2i2.viam.cloud', opts)
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 ```
+
+Your robot's location secret and address can be found on the **Code sample** tab on [the Viam app](https://app.viam.com). Toggle **Include secret** to display these values in the code sample shown there.
 
 You will update the `main()` method later.
 

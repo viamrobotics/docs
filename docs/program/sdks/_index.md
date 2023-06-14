@@ -95,12 +95,12 @@ from viam.rpc.dial import Credentials, DialOptions
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='d7fxn4zc92cjwmlhd7zh545la0xmpc71nnn9gmtyb28g0nhd')
+        payload='LOCATION SECRET FROM THE VIAM APP')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('rover-main-main.yriemen2i2.viam.cloud', opts)
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
 async def main():
     robot = await connect()
@@ -133,11 +133,11 @@ func main() {
   logger := golog.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
-      "rover-main-main.yriemen2i2.viam.cloud",
+      "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "d7fxn4zc92cjwmlhd7zh545la0xmpc71nnn9gmtyb28g0nhd",
+          Payload: "LOCATION SECRET FROM THE VIAM APP",
       })),
   )
   if err != nil {
@@ -162,13 +162,13 @@ The TypeScript SDK currently only supports building web browser apps.
 import * as VIAM from '@viamrobotics/sdk';
 
 async function main() {
-  const host = 'rover-main-main.yriemen2i2.viam.cloud';
+  const host = 'ADDRESS FROM THE VIAM APP';
 
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
       type: 'robot-location-secret',
-      payload: 'd7fxn4zc92cjwmlhd7zh545la0xmpc71nnn9gmtyb28g0nhd',
+      payload: 'LOCATION SECRET FROM THE VIAM APP',
     },
     authEntity: host,
     signalingAddress: 'https://app.viam.com:443',
@@ -206,9 +206,9 @@ The C++ SDK is currently in alpha.
 using namespace viam::sdk;
 
 int main() {
-  std::string host("rover-main-main.yriemen2i2.viam.cloud");
+  std::string host("ADDRESS FROM THE VIAM APP");
   DialOptions dial_opts;
-  Credentials credentials("d7fxn4zc92cjwmlhd7zh545la0xmpc71nnn9gmtyb28g0nhd");
+  Credentials credentials("LOCATION SECRET FROM THE VIAM APP");
   dial_opts.set_credentials(credentials);
   boost::optional<DialOptions> opts(dial_opts);
   Options options(0, opts);
@@ -305,19 +305,22 @@ Currently, this only works with Python code which is running on the same board t
 
     ```python {class="line-numbers linkable-line-numbers"}
     async def connect():
-      creds = Credentials(type='robot-location-secret', payload=PAYLOAD_SECRET)
+      creds = Credentials(type='robot-location-secret', payload=LOCATION SECRET FROM THE VIAM APP)
       opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(
             credentials=creds,
             disable_webrtc=True,
-            auth_entity=ROBOT_NAME
+            auth_entity=ADDRESS FROM THE VIAM APP
         )
       )
       return await RobotClient.at_address('localhost:8080', opts)
     ```
 
-2. Replace the `ROBOT_NAME` with your robot's Viam cloud address and the `PAYLOAD_SECRET` with your robot location secret.
+2. Replace the `LOCATION SECRET` with your robot location secret and the `ADDRESS` with your robot's Viam cloud address.
+   Both can be found on the **Code sample** tab on [the Viam app](https://app.viam.com).
+   Toggle **Include secret** to display these values in the code sample shown there.
+
    Your localhost can now make a secure connection to `viam-server` locally.
    SSL will now check the server hostname against the `auth_entity` required by {{< glossary_tooltip term_id="grpc" >}} from the `auth_entity` dial options.
 
