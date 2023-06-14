@@ -24,7 +24,7 @@ You must configure a [base](/components/base/) with a [movement sensor](/compone
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Services** subtab and navigate to the **Create service** menu.
-Select the type `Navigation` and enter a name for your service.
+Select the type `navigation` and enter a name for your service.
 
 Click **Create service**:
 
@@ -34,7 +34,6 @@ Click **Create service**:
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-// 
 {
     "name": "your-navigation-service",
     "type": "navigation", 
@@ -99,7 +98,7 @@ The following attributes are available for `Navigation` services:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `store` | obj | **Required** | The configuration to use for the Navigation data storage. There are two parameters: `type` (`"memory"` or `"mongodb"`) and `config`. <br> Examples: `"store": [{"type": "memory"}]`, `"store": [{ "type": "mongodb", "config": {"uri": "mongodb://127.0.0.1:27017"}]` |
+| `store` | obj | **Required** | The configuration to use for the Navigation data storage. There are two parameters: `type` (`"memory"` or `"mongodb"`) and `config`. <br> Examples: <br> `"store": [{"type": "memory"}]` <br> `"store": [{ "type": "mongodb", "config": {"uri": "mongodb://127.0.0.1:27017"}]` |
 | `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the base you are operating with this service. |
 | `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the base you are operating with this service. |
 | `motion_service` | string | Optional | The `name` of the [Motion Service](/services/motion/) you have configured for the base you are operating with this service. If you have not added a Motion Service to your robot, a new instance is added.|
