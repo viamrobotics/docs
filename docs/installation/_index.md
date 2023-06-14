@@ -32,6 +32,15 @@ If you haven't already, you must install a supported operating system to your {{
 `viam-server` supports Linux 64-bit operating systems running on the `aarch64` or `x86_64` architectures.
 If you are using one of the following boards, you can follow our guide for that board to prepare it for installation:
 
+<!-- What do you think of the carousel here, instead of the cards? It's much smaller height-wise,
+     and I think allows for a smoother read, where you can tell there's more
+     text to consider beneath it, rather than it seeming like the end of content
+     (until you happen to scroll past it).
+
+     HOWEVER: I couldn't get it to render correctly. Even when using the identical
+              carousel code to the main landing page. Any ideas? Can be skipped.
+              Using the cards for now.
+
 <div id="board-carousel" class="carousel td-max-width-on-larger-screens">
   <ul tabindex="0">
    <li id="c1_slide1">
@@ -96,6 +105,17 @@ If you are using one of the following boards, you can follow our guide for that 
   <div class="prev" style="display: block">‹</div>
   <div class="next" style="display: block">›</div>
 </div>
+
+-->
+
+{{< cards >}}
+{{% card link="/installation/prepare/rpi-setup/" size="xs" %}}
+{{% card link="/installation/prepare/beaglebone-setup/" size="xs" %}}
+{{% card link="/installation/prepare/sk-tda4vm/" size="xs" %}}
+{{% card link="/installation/prepare/jetson-nano-setup/" size="xs" %}}
+{{% card link="/installation/prepare/jetson-agx-orin-setup/" size="xs" %}}
+{{% card link="/installation/prepare/microcontrollers" size="xs" %}}
+{{< /cards >}}
 
 ### Install `viam-server`
 
