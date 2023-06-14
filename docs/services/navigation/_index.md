@@ -11,11 +11,13 @@ tags: ["navigation", "services", "base", "rover"]
 # SMEs: Raymond
 ---
 
-The Navigation service is the stateful definition of Viam's [Motion Service](/services/motion/)
+The Navigation service is the stateful definition of Viam's [Motion Service](/services/motion/).
 It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called `Waypoints`.
 Once the `Waypoints` are added and the `Mode` of the service is [set to `waypoints`](#setmode), the service communicates with the base as it begins to navigate to the `Waypoints`.
 
 ## Configuration
+
+You must configure a [base](/components/base) with a [movement sensor](/components/movement-sensor/) as part of your robot to configure a Navigation service.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -32,9 +34,60 @@ Click **Create service**:
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
+// 
 {
     "name": "your-navigation-service",
-    "type": "navigation"
+    "type": "navigation", 
+    "attributes": {
+        "store": {
+            "type": "memory"
+        },
+        "movement_sensor": "test_movement",
+        "base": "test_base"
+    }
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "name": "test_navigation",
+    "type": "navigation",
+    "attributes": {
+        "store": {
+            "type": "memory"
+        },
+        "movement_sensor": "test_movement",
+        "base": "test_base",
+        "obstacles":[{
+            "geometries": [{
+                "label":"aLabel",
+                "orientation":{
+                    "type":"ov_degrees",
+                    "value":{
+                        "x":1,
+                        "y":0,
+                        "z":0,
+                        "th": 90
+                    }
+                },
+                "x":10,
+                "y":10,
+                "z":10,
+                "translation":{
+                    "x":1,
+                    "y":1,
+                    "z":1
+                }
+            }],
+            "location":{
+                "latitude":1,
+                "longitude":1
+            }
+        }]
+    }
 }
 ```
 
@@ -46,13 +99,13 @@ The following attributes are available for `Navigation` services:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `store` | obj | **Required** | The configuration to use for the Navigation data storage. There are two parameters: `type` (`"memory"` or `"mongodb"`) and `config`. <br> Default: `"store": [{ "type": "mongodb", "config": {"uri": "mongodb://127.0.0.1:27017"}]` |
+| `store` | obj | **Required** | The configuration to use for the Navigation data storage. There are two parameters: `type` (`"memory"` or `"mongodb"`) and `config`. <br> Examples: `"store": [{"type": "memory"}]`, `"store": [{ "type": "mongodb", "config": {"uri": "mongodb://127.0.0.1:27017"}]` |
 | `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the base you are operating with this service. |
 | `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the base you are operating with this service. |
-| `motion_service` | string | **Required** | The `name` of the [motion service](/services/motion/) you have configured for the base you are operating with this service. |
+| `motion_service` | string | Optional | The `name` of the [Motion Service](/services/motion/) you have configured for the base you are operating with this service. If you have not added a Motion Service to your robot, a new instance is added.|
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. <br> Default: `45` |
 | `meters_per_sec` | float | Optional | The default linear velocity for the [base](/components/base/) in meters per second. <br> Default: `0.5` |
-<!-- TODO: clarify if obstacles are in here? -->
+| `obstacles` | obj | Optional | Any obstacles you wish to add to the robot's path. See the [Motion Service](/services/motion) for more information. |
 
 ## API
 
