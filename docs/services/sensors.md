@@ -122,7 +122,7 @@ readings = sensors_svc.get_readings(sensors)
 
 - `sensorNames` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): An array of sensor names for which to return readings.
 
-- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
