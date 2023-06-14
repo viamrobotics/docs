@@ -38,7 +38,7 @@ Returns a list containing the `name` of each available sensor.
 
 **Parameters:**
 
-- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
