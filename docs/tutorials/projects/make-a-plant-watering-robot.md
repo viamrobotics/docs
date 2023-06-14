@@ -41,7 +41,7 @@ The tutorial uses the following hardware, but you can adjust it as needed:
 - A screwdriver
 
 Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
-Connect your Pi to its [power supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4) to power it on.
+Connect your Pi to its power supply to power it on.
 Make sure your Pi is flashed with a Viam-compatible operating system, and that you are able to SSH into it.
 
 ## Set Up your Plant Watering Robot
