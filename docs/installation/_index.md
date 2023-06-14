@@ -19,10 +19,10 @@ aliases:
     - /getting-started/linux-install/
 ---
 
-To use Viam software with your robot, you need to install and run the `viam-server` binary on the computer that you want to use to control the robot.
-In most cases, this will be a [single board computer (SBC)](#install-on-a-single-board-computer), like a Raspberry Pi, but you can also use a [macOS or Linux computer](#install-on-a-macos-or-linux-computer) to evaluate `viam-server` in development.
+To use Viam software with your robot, install and run the `viam-server` binary on the computer that you want to use to control the robot.
+In most cases, this will be a [single board computer (SBC)](#install-on-a-single-board-computer), like a Raspberry Pi, but you can also install `viam-server` on a [macOS or Linux computer](#install-on-a-macos-or-linux-computer).
 
-For an overview of Viam software, see [Viam in 3 minutes](/viam/).
+For an overview of the Viam software platform, see [Viam in 3 minutes](/viam/).
 
 ## Install on a single board computer
 
@@ -119,9 +119,9 @@ If you are using one of the following boards, you can follow our guide for that 
 
 ### Install `viam-server`
 
-Once you have a compatible operating system on your board, follow along with the video below, or walk through the steps outlined beneath it, to install `viam-server` on your board:
+Once you have a compatible operating system on your board, follow along with the video below or walk through the steps outlined beneath it to install `viam-server` on your board:
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/gmIW9JoWStA">}}
+   {{<youtube embed_url="https://www.youtube-nocookie.com/embed/gmIW9JoWStA">}}
 
 #### Installation steps
 
@@ -133,6 +133,7 @@ Once you have a compatible operating system on your board, follow along with the
 1. Select `Linux` under **Mode** and select the appropriate **Architecture** for your board.
 
 1. Follow the steps on the **Setup** tab to install `viam-server` on your board.
+   On most Linux operating systems, you can run `uname -m` to confirm your board's architecture.
 
 1. Once `viam-server` is installed and running on your board, return to the **Setup** page on the [Viam app](https://app.viam.com) and wait for confirmation that your robot has successfully connected.
 
@@ -148,7 +149,7 @@ Select the tab below for your operating system:
 ### Install on a macOS computer
 
 `viam-server` is available for macOS users through [Homebrew](https://docs.brew.sh/Installation), and supports both Intel and Apple Silicon macOS computers.
-To install `viam-server` on a macOS computer, follow these instructions:
+To install `viam-server` on a macOS computer:
 
 1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
    If this is your first time using the Viam app, you must create an account first.
@@ -168,7 +169,7 @@ To install `viam-server` on a macOS computer, follow these instructions:
 
 `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/).
 The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies.
-To install `viam-server` on a Linux computer, follow these instructions:
+To install `viam-server` on a Linux computer:
 
 1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
    If this is your first time using the Viam app, you must create an account first.
@@ -176,6 +177,7 @@ To install `viam-server` on a Linux computer, follow these instructions:
 1. Click the **Setup** tab on your robot page.
 
 1. Select `Linux` under **Mode** and select the appropriate **Architecture** for your computer.
+   On most Linux operating systems, you can run `uname -m` to confirm your computer's architecture.
 
 1. Follow the steps on the **Setup** tab to install `viam-server` on your Linux computer.
 
@@ -196,7 +198,7 @@ Select the tab below appropriate for your installation:
 
 `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/).
 The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies.
-To install `viam-server` on a board, follow these instructions:
+To install `viam-server` on a board:
 
 1. If you haven't already, you must install a supported operating system to your board.
    Follow the instructions to [prepare your board](#prepare-your-board) to install a supported OS on your board.
@@ -252,7 +254,7 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 {{% /tab %}}
 {{% tab name="macOS computer"%}}
 `viam-server` is available for macOS users through [Homebrew](https://docs.brew.sh/Installation), and supports both Intel and Apple Silicon macOS computers.
-To install `viam-server` on a macOS computer, follow these instructions:
+To install `viam-server` on a macOS computer:
 
 1. First, run the following command to download and install `viam-server` on your macOS computer using `brew`:
 
@@ -283,7 +285,7 @@ To install `viam-server` on a macOS computer, follow these instructions:
 
 `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/).
 The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies.
-To install `viam-server` on a Linux computer, follow these instructions:
+To install `viam-server` on a Linux computer:
 
 1. Run `uname -m` on your Linux computer's command line to determine your system architecture.
    `viam-server` supports the `aarch64` and `x86_64` architectures.
