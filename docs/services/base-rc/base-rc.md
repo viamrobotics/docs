@@ -13,8 +13,52 @@ tags: ["base", "services", "rover", "input controller", "remote control"]
 The Base Remote Control service implements an [input controller](/components/input-controller/) as a remote control for a [base](/components/base/).
 This makes the process of coding remote drive controls for your rover or other mobile robot with a controller like a gamepad more simple.
 
-Add the Base Remote Control service after configuring your robot with a base and input controller to monitor input from the controller in the **Control** tab of the [Viam app](https://app.viam.com).
-Depending on how you configure the service, use either the button or joystick controls to control the linear and angular velocity of the base.
+Add the Base Remote Control service after configuring your robot with a base and input controller to control the linear and angular velocity of the base with the controller's button or joystick controls.
+Monitor the input from these controls in the **Control** tab of the [Viam app](https://app.viam.com).
+
+## Configuration
+
+You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to configure a Base Remote Control service.
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
+
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Services** subtab and navigate to the **Create service** menu.
+Select the type `Navigation` and enter a name for your service.
+
+Click **Create service**:
+
+![An example configuration for a Base Remote Control service in the Viam app Config Builder.](img/base-rc-ui-config.png)
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "name": "your-base-remote-control-service",
+    "type": "base_remote_control",
+    "attributes": {
+        "base": "your-base",
+        "input_controller": "your-controller",
+        "mode": "arrowControl"
+    }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Next, add the JSON `"attributes"` you want the service to have.
+The following attributes are available for Base Remote Control services:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the base you are operating with this service. |
+| `input_controller` | string | **Required** | The `name` of the [input controller](/components/input-controller/) you have configured for the base you are operating with this service. |
+| `control_mode` | string | Optional | The mode of remote control you want to use. <br> Options: `["arrowControl", "triggerSpeedControl", "buttonControl", "joyStickControl", "droneControl"]` <br> Default: `"arrowControl"` |
+| `max_angular_degs_per_sec` | float | Optional | The max angular velocity for the [base](/components/base/) in degrees per second. |
+| `max_linear_mm_per_sec` | float | Optional | The max linear velocity for the [base](/components/base/) in meters per second. |
 
 ## API
 
@@ -72,7 +116,7 @@ Get a list of inputs from the controller that are being monitored for that contr
 
 **Returns:**
 
-- [([]Control)](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): Alist of inputs from the controller that are being monitored for that control mode..
+- [([]Control)](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): A list of inputs from the controller that are being monitored for that control mode..
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/baseremotecontrol).
 
