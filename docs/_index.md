@@ -107,7 +107,7 @@ Viam is a complete software platform for robots that runs on Linux and macOS and
 </div>
 <br>
 
-Explore the following resources to jump right in:
+Explore the following to learn more about the Viam platform or to try it out for yourself:
 
 <div class="container td-max-width-on-larger-screens">
   <div class="row">
@@ -127,7 +127,7 @@ Explore the following resources to jump right in:
             <ol style="padding-inline-start: 1.1rem">
             <li><a href="manage/configuration/">Configure your robot<a> or <a href="manage/fleet/">fleet</a></li>
             <li><a href="installation/">Install Viam on your robot</a></li>
-            <li>Configure robot <a href="components/">components</a> and add <a href="services/">services</a></li>
+            <li><a href="components/">Configure robot components</a> and <a href="services/">add services</a></li>
             <li><a href="manage/fleet/robots/#control">Control and test your robot</a></li>
             </ol>
             {{<gif webm_src="img/blink.webm" mp4_src="img/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
