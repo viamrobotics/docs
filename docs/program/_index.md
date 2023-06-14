@@ -31,7 +31,7 @@ Viam currently offers SDKs for the following languages:
 
 ## Requirements
 
-Before you get started with your program, ensure that you have [installed `viam-server`](/installation/) on the computer you want to use to control a robot [(likely a single-board computer)](/components/board/#configuration) and [configured a robot](/manage/configuration/).
+Before you get started with your program, ensure that you have [installed `viam-server`](/installation/) on the computer you want to use to control your robot [(likely a single-board computer)](/components/board/#configuration) and [configured a robot](/manage/configuration/).
 
 The easiest way to do this is:
 
@@ -261,14 +261,14 @@ Edit the boilerplate code by [adding control logic](/program/sdks/) to make a cl
 
 ### `import`: Find Required Imports
 
-The Code Sample tab contains the required imports for the SDK code at generation.
+The SDK code the Code Sample tab generates for your robot should contain all the import statements needed to execute that sample.
 
 If you are building out your program further or aren't using the Code Sample tab, you can find the right libraries to import to utilize SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/sdks/resource-apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 ### `connect`: Connect with Your Robot
 
 The `connect` logic of an SDK program establishes a connection for your client application to [communicate with](/internals/robot-to-robot-comms/) the robot's `viam-server` instance.
-This section of the boilerplate code contains your robot's address, location secret, and robot secret.
+This section of the boilerplate code contains your robot's address and location secret.
 You can think of these as keys or access tokens to your robot that are important to keep private.
 This connection must be established for your program to be executed properly on your robot.
 
