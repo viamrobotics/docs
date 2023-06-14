@@ -121,7 +121,7 @@ If you are using one of the following boards, you can follow our guide for that 
 
 Once you have a compatible operating system on your board, follow along with the video below or walk through the steps outlined beneath it to install `viam-server` on your board:
 
-   {{<youtube embed_url="https://www.youtube-nocookie.com/embed/gmIW9JoWStA">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/gmIW9JoWStA">}}
 
 #### Installation steps
 
@@ -144,7 +144,7 @@ This is useful if you don't have a board available, or if you want to run a Viam
 Select the tab below for your operating system:
 
 {{< tabs name="Install on computer" >}}
-{{% tab name="macOS computer"%}}
+{{% tab name="macOS computer" %}}
 
 ### Install on a macOS computer
 
@@ -163,7 +163,7 @@ To install `viam-server` on a macOS computer:
 1. Once `viam-server` is installed and running, return to the **Setup** page on the [Viam app](https://app.viam.com) and wait for confirmation that your computer has successfully connected.
 
 {{% /tab %}}
-{{% tab name="Linux computer"%}}
+{{% tab name="Linux computer" %}}
 
 ### Install on a Linux computer
 
@@ -194,7 +194,7 @@ You can install `viam-server` in this fashion to a board (SBC), macOS computer, 
 Select the tab below appropriate for your installation:
 
 {{< tabs name="Local Installation" >}}
-{{% tab name="Board (SBC)"%}}
+{{% tab name="Board (SBC)" %}}
 
 `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/).
 The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies.
@@ -212,7 +212,7 @@ To install `viam-server` on a board:
    We recommend the stable release for most users:
 
 {{< tabs name="different-architectures" >}}
-{{% tab name="aarch64"%}}
+{{% tab name="aarch64" %}}
 
 **Stable:**
 
@@ -229,7 +229,7 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 ```
 
 {{% /tab %}}
-{{% tab name="x86_64"%}}
+{{% tab name="x86_64" %}}
 
 **Stable:**
 
@@ -252,7 +252,8 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 </ol>
 
 {{% /tab %}}
-{{% tab name="macOS computer"%}}
+{{% tab name="macOS computer" %}}
+
 `viam-server` is available for macOS users through [Homebrew](https://docs.brew.sh/Installation), and supports both Intel and Apple Silicon macOS computers.
 To install `viam-server` on a macOS computer:
 
@@ -280,8 +281,9 @@ To install `viam-server` on a macOS computer:
 1. To make configuration changes to your robot, edit the <file>~/viam.json</file> configuration file, then stop and restart `viam-server`.
    You can also build a configuration file on the [Viam app](https://app.viam.com) without connecting your robot to it.
    Use the **Config** tab to add and configure the components and services you'll be using, then switch the **Mode** to `Raw JSON` to view and download your configuration file.
+
 {{% /tab %}}
-{{% tab name="Linux computer"%}}
+{{% tab name="Linux computer" %}}
 
 `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/).
 The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies.
@@ -296,7 +298,7 @@ To install `viam-server` on a Linux computer:
    We recommend the stable release for most users:
 
 {{< tabs name="different-architectures" >}}
-{{% tab name="aarch64"%}}
+{{% tab name="aarch64" %}}
 
 **Stable:**
 
@@ -313,7 +315,7 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 ```
 
 {{% /tab %}}
-{{% tab name="x86_64"%}}
+{{% tab name="x86_64" %}}
 
 **Stable:**
 
