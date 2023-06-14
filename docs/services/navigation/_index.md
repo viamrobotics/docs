@@ -17,7 +17,7 @@ Once the `Waypoints` are added and the `Mode` of the service is [set to `waypoin
 
 ## Configuration
 
-You must configure a [base](/components/base) with a [movement sensor](/components/movement-sensor/) as part of your robot to configure a Navigation service.
+You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to configure a Navigation service.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -105,7 +105,7 @@ The following attributes are available for `Navigation` services:
 | `motion_service` | string | Optional | The `name` of the [Motion Service](/services/motion/) you have configured for the base you are operating with this service. If you have not added a Motion Service to your robot, a new instance is added.|
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. <br> Default: `45` |
 | `meters_per_sec` | float | Optional | The default linear velocity for the [base](/components/base/) in meters per second. <br> Default: `0.5` |
-| `obstacles` | obj | Optional | Any obstacles you wish to add to the robot's path. See the [Motion Service](/services/motion) for more information. |
+| `obstacles` | obj | Optional | Any obstacles you wish to add to the robot's path. See the [Motion Service](/services/motion/) for more information. |
 
 ## API
 
