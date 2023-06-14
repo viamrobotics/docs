@@ -3,16 +3,17 @@ title: "The Navigation Service"
 linkTitle: "Navigation"
 description: "The Navigation Service uses GPS to autonomously navigate a rover to user defined endpoints."
 type: docs
-weight: 45
+weight: 60
 no_list: true
-# icon: "/services/img/icons/frame-system.svg"
+icon: "/services/img/icons/navigation.svg"
+images: ["/services/img/icons/navigation.svg"]
 tags: ["navigation", "services", "base", "rover"]
 # SMEs: Raymond
 ---
 
-The Navigation service is the stateful definition of Viam's [Motion service](/services/motion/)
+The Navigation service is the stateful definition of Viam's [Motion Service](/services/motion/)
 It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called `Waypoints`.
-Once the `Waypoints` are added and the `Mode` of the service is [set to `waypoints`](#setmode), Navigation services calls begin.
+Once the `Waypoints` are added and the `Mode` of the service is [set to `waypoints`](#setmode), the service communicates with the base as it begins to navigate to the `Waypoints`.
 
 ## Configuration
 
@@ -46,8 +47,8 @@ The following attributes are available for `Navigation` services:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `store` | obj | **Required** | The MongoDB store ObjectID. Set this to access the backend MongoDB database. |
-| `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the rover you are operating as with this service. |
-| `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the rover you are operating as with this service. |
+| `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the rover you are operating with this service. |
+| `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the rover you are operating with this service. |
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. |
 | `mm_per_sec` | float | Optional | The default linear velocity for the [base](/components/base/) in millimeters per second. |
 
@@ -81,7 +82,7 @@ The `manual` mode is experimental and will have no effect.
 
 Get the `Mode` the service is operating in.
 There are two options for modes: `manual` and `waypoint`.
-If the mode is set to `waypoint`, the service's process for looking for waypoints that were added will begin, effectively beginning navigation.
+If you set the mode to `waypoint`, the service starts looking for added waypoints, effectively beginning navigation.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -118,7 +119,7 @@ The `manual` mode is experimental and will have no effect.
 
 Set the `Mode` the service is operating in.
 There are two options for modes: `manual` and `waypoint`.
-If the mode is set to `waypoint`, the service's process for looking for waypoints that were added will begin, effectively beginning navigation.
+If you set the mode to `waypoint`, the service starts looking for added waypoints, effectively beginning navigation.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -176,7 +177,8 @@ location, err := myNav.Location(context.Background(), nil)
 
 ### Waypoints
 
-Get an array of waypoints, locations designated within a path for the robot to navigate to, currently in the service's data storage.
+Get an array of waypoints currently in the service's data storage.
+These are locations designated within a path for the robot to navigate to.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
