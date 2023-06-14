@@ -131,9 +131,9 @@ Once you have a compatible operating system on your board, follow along with the
 1. Click the **Setup** tab on your robot page.
 
 1. Select `Linux` under **Mode** and select the appropriate **Architecture** for your board.
+   On most Linux operating systems, you can run `uname -m` to confirm your board's architecture.
 
 1. Follow the steps on the **Setup** tab to install `viam-server` on your board.
-   On most Linux operating systems, you can run `uname -m` to confirm your board's architecture.
 
 1. Once `viam-server` is installed and running on your board, return to the **Setup** page on the [Viam app](https://app.viam.com) and wait for confirmation that your robot has successfully connected.
 
@@ -244,6 +244,16 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage -o viam-server &&
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
+
+4. Then, start `viam-server` with the following command:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sudo viam-server -config /etc/viam.json
+   ```
+
+5. To make configuration changes to your robot, edit the <file>/etc/viam.json</file> configuration file, then stop and restart `viam-server`.
+   You can also build a configuration file on the [Viam app](https://app.viam.com) without connecting your robot to it.
+   Use the **Config** tab to add and configure the components and services you'll be using, then switch the **Mode** to `Raw JSON` to view and download your configuration file.
 
 {{% /tab %}}
 {{< /tabs >}}
