@@ -27,7 +27,7 @@ Follow this tutorial to learn how to set up an automatic plant watering system:
 
 The tutorial uses the following hardware, but you can adjust it as needed:
 
-- A Raspberry Pi 3B or 4B with SD card
+- A Raspberry Pi 3B or 4B with SD card and [5V USB power supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)
 - A [capacitive soil moisture sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ)
 - A [peristaltic pump](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E) motor and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&)
 - An [Adafruit MCP3008 ADC](https://www.amazon.com/dp/B00NAY3RB2?psc=1)
@@ -41,6 +41,7 @@ The tutorial uses the following hardware, but you can adjust it as needed:
 - A screwdriver
 
 Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
+Connect your Pi to its [power supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4) to power it on.
 Make sure your Pi is flashed with a Viam-compatible operating system, and that you are able to SSH into it.
 
 ## Set Up your Plant Watering Robot
