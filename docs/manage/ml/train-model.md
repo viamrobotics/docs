@@ -12,6 +12,8 @@ description: "Train an image classification model on labeled image data."
 
 You can tag [images collected](../../../services/data/configure-data-capture/) by robots and use the labeled data to train a **Single Label** or **Multi Label** image classification model within Viam.
 
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/CP14LR0Pq64">}}
+
 ## Label a dataset
 
 To label a dataset, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
