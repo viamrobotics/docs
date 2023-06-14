@@ -32,7 +32,7 @@ A board can be:
 
 - A single-board computer (SBC) with GPIO pins and a CPU capable of running `viam-server`.
 - A GPIO peripheral device that must connect to an external computer.
-- A PWM peripheral device that must connect to an SBC that has GPIO pins.
+- A PWM peripheral device that must connect to an SBC that has a CPU and GPIO pins.
 
 For model-specific configuration information, click on one of the following models:
 
