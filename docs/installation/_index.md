@@ -200,7 +200,7 @@ Select the tab below appropriate for your installation:
 The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies.
 To install `viam-server` on a board:
 
-1. If you haven't already, you must install a supported operating system to your board.
+1. If you haven't already, you must install a supported operating system on your board.
    Follow the instructions to [prepare your board](#prepare-your-board) to install a supported OS on your board.
 
 1. Next, `ssh` to your board and run `uname -m` to determine the architecture of your board.
@@ -211,7 +211,7 @@ To install `viam-server` on a board:
 <li>Select the tab below matching your board's architecture, and run the command listed to download and install <code>viam-server</code>.
    We recommend the stable release for most users:
 
-{{< tabs name="different-architectures" >}}
+{{< tabs name="linux-board-architectures" >}}
 {{% tab name="aarch64" %}}
 
 **Stable:**
@@ -297,7 +297,7 @@ To install `viam-server` on a Linux computer:
 <li>Select the tab below matching your computer's architecture, and run the command listed to download and install <code>viam-server</code>.
    We recommend the stable release for most users:
 
-{{< tabs name="different-architectures" >}}
+{{< tabs name="linux-computer-architectures" >}}
 {{% tab name="aarch64" %}}
 
 **Stable:**
