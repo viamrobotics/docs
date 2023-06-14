@@ -11,9 +11,18 @@ tags: ["base", "services", "rover", "input controller", "remote control"]
 ---
 
 The Base Remote Control service implements an [input controller](/components/input-controller/) as a remote control for a [base](/components/base/).
-This makes the process of coding remote drive controls for your rover or other mobile robot with a controller like a gamepad more simple.
+This uses the [`input` api](/components/input-controller/#api) to make it easy to add remote drive controls for your rover or other mobile robot with a controller like a gamepad.
 
 Add the Base Remote Control service after configuring your robot with a base and input controller to control the linear and angular velocity of the base with the controller's button or joystick controls.
+
+Control mode is determined by the configuration attribute `"mode"`, for which there are five options:
+
+1. `"arrowControl"`: Arrow buttons control speed and angle
+2. `"triggerSpeedControl"`: Trigger button controls speed and joystick controls angle
+3. `"buttonControl"`: Four buttons (usually X, Y, A, B) control speed and angle
+4. `"joyStickControl"`: One joystick controls speed and angle
+5. `"droneControl"`: Two joysticks control speed and angle
+
 Monitor the input from these controls in the **Control** tab of the [Viam app](https://app.viam.com).
 
 ## Configuration
