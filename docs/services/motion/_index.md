@@ -81,10 +81,12 @@ The Motion Service takes the volumes associated with all configured robot compon
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles are static.
-      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
-    - Geometry locations are defined with respect to the *origin* of the specified frame.
+      If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
+    - Obstacles are defined by a pose and a geometry with dimensions.
+      The pose location is the point at the center of the geometry.
+    - Obstacle locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
-      A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
+      An obstacle associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} is interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
       This is different from `destination` and `component_name`, where poses are relative to the distal end of a frame.
   - **Transforms**: A list of `PoseInFrame` messages that specify other transformations to temporarily add to the frame system at solve time.
   Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
@@ -141,10 +143,12 @@ moved = await motion.move(component_name=gripper_name, destination=PoseInFrame(r
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles are static.
-      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
-    - Geometries are "part of" their frame, rather than at the distal end of the frame.
+      If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
+    - Obstacles are defined by a pose and a geometry with dimensions.
+      The pose location is the point at the center of the geometry.
+    - Obstacle locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
-      A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
+      An obstacle associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} is interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
       This is different from `destination` and `componentName`, where poses are relative to the distal end of a frame.
   - **Transforms**: A list of `PoseInFrame` messages that specify other transformations to temporarily add to the frame system at solve time.
   Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
