@@ -302,13 +302,13 @@ Move a component to a [`Pose`](https://python.viam.dev/autoapi/viam/proto/common
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_on_map).
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionClient.from_robot(robot=robot, name="my_motion_service")
+motion_service = MotionClient.from_robot(robot=robot, name="my_motion_service")
 
 # Define a destination pose with respect to the origin of the map from the SLAM service "my_slam_service" 
 my_pose = Pose(y=10)
 
 # Move the base component "my_base" to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
-success = await motion.move_on_map(component_name="my_base", destination=my_pose, slam_service_name="my_slam_service")
+success = await motion_service.move_on_map(component_name="my_base", destination=my_pose, slam_service_name="my_slam_service")
 ```
 
 {{% /tab %}}
@@ -333,10 +333,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v
 motionService, err := motion.FromRobot(robot, "my_motion_service")
 
 // Define a destination Pose with respect to the origin of the map from the SLAM service "my_slam_service" 
-my_pose := spatialmath.NewPoseFromPoint(r3.Vector{Y: 10})
+myPose := spatialmath.NewPoseFromPoint(r3.Vector{Y: 10})
 
 // Move the base component "my_base" to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
-success, err := motionService.MoveOnMap(context.Background(), "my_base", my_pose, "my_slam_service", nil)
+success, err := motionService.MoveOnMap(context.Background(), "my_base", myPose, "my_slam_service", nil)
 ```
 
 {{% /tab %}}
