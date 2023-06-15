@@ -169,6 +169,12 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
   chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
+{{% /tab %}}
+{{< /tabs >}}
+
+</li>
+</ol>
+
 4. Then, start `viam-server` with the following command:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -178,12 +184,6 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 5. To make configuration changes to your robot, edit the <file>/etc/viam.json</file> configuration file, then stop and restart `viam-server`.
    You can also build a configuration file on the [Viam app](https://app.viam.com) without connecting your robot to it.
    Use the **Config** tab to add and configure the components and services you'll be using, then switch the **Mode** to `Raw JSON` to view and download your configuration file.
-
-{{% /tab %}}
-{{< /tabs >}}
-
-</li>
-</ol>
 
 {{% /tab %}}
 {{% tab name="macOS computer" %}}
