@@ -8,7 +8,7 @@ webmSrc: "/tutorials/videos/motion_armmoving.webm"
 mp4Src: "/tutorials/videos/motion_armmoving.mp4"
 videoAlt: "An arm moving in a plane with the Motion Service"
 tags: ["arm", "gripper", "motion", "services"]
-# SMEs: William S.
+# SMEs: Motion Team
 ---
 
 {{< alert title="Caution" color="caution" >}}
@@ -123,9 +123,13 @@ The Motion Service is one of the "built-in" services, so you don't need to do an
 
 ## Configure your table
 
-In the [previous tutorial](../plan-motion-with-arm-gripper/) you created a representation of a table in your client code.
-This time, you will configure one in your robot's config.
-This way, you can visualize it in the **Frame System** subtab of your robot's **Config** tab.
+In the previous tutorial you [created a representation of a table](../plan-motion-with-arm-gripper/#describe-the-robots-working-environment) in your client code.
+You will use this same code later in this tutorial.
+
+Since this tutorial gets a bit more complicated than the last, let's configure a representation of the table so you can see it in the Frame System visualizer.
+
+On your robot's **Config** tab, create a new component called `table` with **Type** `generic` and **Model** `fake`.
+Click **Create component**, then click **Add frame**.
 
 ### Use a transform to represent a drinking cup
 
