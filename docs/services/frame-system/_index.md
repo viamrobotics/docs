@@ -86,13 +86,6 @@ The `Orientation` parameter offers `Types` for ease of configuration, but the Fr
 
 {{% /alert %}}
 
-{{% alert title="Tip" color="tip" %}}
-
-Viam's coordinate system considers `+X` to be forward, `+Y` to be left, and `+Z` to be up.
-You can use [the right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule) to determine the orientation of these axes.
-
-{{% /alert %}}
-
 For more information about determining the appropriate values for these parameters, see these two examples:
 
 - [A Reference Frame:](/services/frame-system/frame-config/) A component attached to a static surface

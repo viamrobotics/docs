@@ -91,9 +91,9 @@ Move the base in a straight line across the given distance (mm) at the given vel
 **Parameters:**
 
 - `distance` [(int)](https://docs.python.org/3/library/functions.html#int): The distance to move in millimeters.
-Negative implies backwards.
+Positive implies forwards.
 - `velocity` [(float)](https://docs.python.org/3/library/functions.html#float): The velocity at which to move in millimeters per second.
-Negative implies backwards.
+Positive implies forwards.
 
 **Returns:**
 
@@ -118,9 +118,9 @@ await my_base.move_straight(distance=10, velocity=-1)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `distanceMm` [(int)](https://pkg.go.dev/builtin#int): The distance to move the base in millimeters.
-Negative implies backwards.
+Positive implies forwards.
 - `mmPerSec` [(float64)](https://pkg.go.dev/builtin#float64): The velocity at which to move the base in millimeters per second.
-Negative implies backwards.
+Positive implies forwards.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -152,9 +152,9 @@ Turn the base in place, rotating it to the given angle (degrees) at the given an
 **Parameters:**
 
 - `angle` [(float)](https://docs.python.org/3/library/functions.html#float): The angle to spin in degrees.
-Negative implies backwards.
+Positive implies forwards.
 - `velocity` [(float)](https://docs.python.org/3/library/functions.html#float): The angular velocity at which to spin in degrees per second.
-Negative implies backwards.
+Positive implies forwards.
 
 **Returns:**
 
@@ -176,9 +176,9 @@ await my_base.spin(angle=10, velocity=1)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `angleDeg` [(float64)](https://pkg.go.dev/builtin#float64): The angle to spin in degrees.
-Negative implies backwards.
+Positive implies forwards.
 - `degsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): The angular velocity at which to spin in degrees per second.
-Negative implies backwards.
+Positive implies forwards.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -209,11 +209,11 @@ Set the linear and angular power of the base, represented as a percentage of max
 - `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's linear propulsion.
   In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
   Viam's coordinate system considers +Y to be the forward axis (+/- X left/right, +/- Z up/down), so use the Y component of this vector to move forward and backward when controlling a wheeled base.
-  Negative "Y:" values imply moving backwards.
+  Positive "Y" values imply moving forwards.
 - `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's angular propulsion.
   In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
   Use the Z component of this vector to spin left or right when controlling a wheeled base.
-  Negative "Z:" values imply spinning to the right.
+  Positive "Z" values imply spinning to the left.
 
 **Returns:**
 
@@ -247,12 +247,14 @@ await my_base.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=-
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `linear` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The percentage of max power of the base's linear propulsion. In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
+- `linear` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The percentage of max power of the base's linear propulsion.
+  In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
 Viam's coordinate system considers +Y to be the forward axis (+/- X left/right, +/- Z up/down), so use the Y component of this vector to move forward and backward when controlling a wheeled base.
-Negative "Y:" values imply moving backwards.
+Positive "Y" values imply moving forwards.
 - `angular` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The percentage of max power of the base's angular propulsion.
 In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
-Use the Z component of this vector to spin left or right when controlling a wheeled base. Negative "Z:" values imply spinning to the right.
+Use the Z component of this vector to spin left or right when controlling a wheeled base.
+Positive "Z" values imply spinning to the left.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
