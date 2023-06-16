@@ -156,9 +156,9 @@ Turn the base in place, rotating it to the given angle (degrees) at the given an
 **Parameters:**
 
 - `angle` [(float)](https://docs.python.org/3/library/functions.html#float): The angle to spin in degrees.
-Positive implies a given number of degrees to the left.
-- `velocity` [(float)](https://docs.python.org/3/library/functions.html#float): The angular velocity at which to spin in degrees per second.
 Positive implies turning to the left.
+- `velocity` [(float)](https://docs.python.org/3/library/functions.html#float): The angular velocity at which to spin in degrees per second.
+Given a positive angle and a positive velocity, the base turns to the left (for built-in base models).
 
 **Returns:**
 
@@ -180,9 +180,9 @@ await my_base.spin(angle=10, velocity=1)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `angleDeg` [(float64)](https://pkg.go.dev/builtin#float64): The angle to spin in degrees.
-Positive implies a given number of degrees to the left.
-- `degsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): The angular velocity at which to spin in degrees per second.
 Positive implies turning to the left.
+- `degsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): The angular velocity at which to spin in degrees per second.
+Given a positive angle and a positive velocity, the base turns to the left (for built-in base models).
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -218,7 +218,7 @@ Set the linear and angular power of the base, represented as a percentage of max
 - `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The percentage of max power of the base's angular propulsion.
   In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
   Use the Z component of this vector to spin left or right when controlling a wheeled base.
-  Positive "Z" values imply spinning to the left.
+  Positive "Z" values imply spinning to the left (for built-in base models).
 
 **Returns:**
 
@@ -260,7 +260,7 @@ Negative "Y" values imply moving backwards.
 - `angular` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The percentage of max power of the base's angular propulsion.
 In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
 Use the Z component of this vector to spin left or right when controlling a wheeled base.
-Positive "Z" values imply spinning to the left.
+Positive "Z" values imply spinning to the left (for built-in base models).
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
