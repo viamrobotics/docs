@@ -121,18 +121,27 @@ The Motion Service is one of the "built-in" services, so you don't need to do an
 
 {{% /expand %}}
 
-## Configure your table
+## Visualize your table
 
 In the previous tutorial you [created a representation of a table](../plan-motion-with-arm-gripper/#describe-the-robots-working-environment) in your client code.
 You will use this same code later in this tutorial.
 
 Since this tutorial gets a bit more complicated than the last, let's configure a representation of the table so you can see it in the Frame System visualizer.
+This configured table won't be taken into account by the Motion Service, but it's useful to be able to see it.
 
 On your robot's **Config** tab, create a new component called `table` with **Type** `generic` and **Model** `fake`.
 Click **Create component**, then click **Add frame**.
 
+Go to the **Frame System** subtab.
+Click **table** on the left menu.
+For **Geometry** click **box**.
+
+Set the dimensions (**Size**) to `1000` x `1000` x `20`.
+Notice that the top of the table is now 10mm above the origin, because the 20mm thickness is centered on the centerpoint.
+Account for this by giving the table a **Translation** of `-10` in the Z direction.
+
+![The Frame System subtab of the Components tab with a 1000 wide, 1000 deep, 200 millimeter thick box representing the top of the table.](../../img/constrain-motion/frame-table.jpg)
+
 ### Use a transform to represent a drinking cup
-
-
 
 ## Full tutorial code
