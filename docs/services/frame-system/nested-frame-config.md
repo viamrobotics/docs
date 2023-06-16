@@ -44,7 +44,7 @@ Select the `parent` frame as `myGantry` and fill in the coordinates for `transla
     {
       "name": "myGantry",
       "type": "gantry",
-      "model": "oneaxis",
+      "model": "single-axis",
       "attributes": {},
       "depends_on": [],
       "frame": {
