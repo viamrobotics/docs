@@ -12,7 +12,7 @@ aliases:
 
 [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data.
 
-To easily integrate Cartographer into the Viam ecosystem, Viam provides [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer) which wraps Cartographer as a [modular resource](/program/extend/modular-resources/) named `cartographer-module`.
+To easily integrate Cartographer into the Viam ecosystem, Viam provides [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer), a [modular resource](/program/extend/modular-resources/) which wraps Cartographer. This resource provides the `cartographer-module` binary.
 
 ## Requirements
 
