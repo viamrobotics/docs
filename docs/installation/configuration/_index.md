@@ -13,6 +13,8 @@ description: "Building your robot configuration file for use with viam-server."
 The `viam-server` binary uses a JSON-formatted configuration file to define all [components](/components/) and [services](/services/) for your robot.
 In order to start `viam-server` on a {{< glossary_tooltip term_id="board" text="board" >}} or computer, you must have a valid configuration file present on the local system.
 
+For more information on the individual configuration options available, see [Configuration](/manage/configuration/).
+
 ## Configuration file location
 
 By default, the configuration file is located at:
@@ -220,3 +222,5 @@ This file contains some basic [component](/components/) and [service](/services/
     ]
 }
 ```
+
+For more information on the individual configuration options available, see [Configuration](/manage/configuration/).

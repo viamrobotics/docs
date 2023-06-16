@@ -55,7 +55,7 @@ After you have completed the setup steps and successfully connected to your robo
 
 Your robot does not need to stay connected to the Viam app after it has obtained its configuration file.
 The configuration is cached locally.
-If you cannot connect your robot to the internet at all, you can also [store the configuration file](#local-setup) on the robot itself.
+If you cannot connect your robot to the internet at all, you can also store the [configuration file](/installation/configuration-file) on the robot itself.
 
 {{% /alert %}}
 
@@ -355,50 +355,9 @@ Configuring `viam-server` with the Viam app allows you to make use of the cloud 
 - [Data Management](/manage/data/)
 - [Machine Learning](/manage/ml/)
 
-A locally configured robot, will not be able to access Viam's cloud features.
+A locally configured robot will not be able to access Viam's cloud features.
 If you are configuring a robot that can never connect to the internet, you can manually create a local full raw JSON config file on your robot.
-
-You can write the contents of this config file manually, or you can use the Viam app's config builder (without connecting your robot to it).
-Once you finish configuring your robot in the **Builder** mode, switch to **Raw JSON** and copy the entire raw JSON into your config file.
-Save the file at <file>/etc/viam.json</file> or another location.
-
-Then start `viam-server`:
-
-{{< tabs >}}
-{{% tab name="Linux" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo viam-server
-```
-
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam-server
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-If you have stored your config file at a location different from the default location (<file>/etc/viam.json</file>), pass in the path to the config:
-
-{{< tabs >}}
-{{% tab name="Linux" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+For instructions on how to build your own configuration file, or on how to download a configuration built in the Viam app, see [Configuration file](/installation/configuration-file/).
 
 ## Next Steps
 
