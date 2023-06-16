@@ -30,7 +30,7 @@ The tutorial uses the following hardware, but you can adjust it as needed:
 - A Raspberry Pi 3B or 4B with SD card and [5V USB power supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)
 - A [capacitive soil moisture sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ)
 - A [peristaltic pump](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E) motor and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&)
-- An [Adafruit MCP3008 ADC](https://www.amazon.com/dp/B00NAY3RB2?psc=1)
+- An [Adafruit MCP3008 ADC](https://a.co/d/csRaIHE)
 - A [motor speed controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS)
 - A [breadboard](https://www.amazon.com/SunFounder-Raspberry-Breadboard-solderless-Circuit/dp/B07ZYR7R8X)
 - A [9V battery](https://www.amazon.com/dp/B08BRJQQSL/)
