@@ -34,7 +34,7 @@ go install go.viam.com/rdk/cli/viam@latest
 
 To confirm `viam` is installed and ready to use, issue the *viam* command from your terminal.
 If you see help instructions, everything is correctly installed.
-If you do not see help instructions, add your local go *bin/* directory to your `PATH` variable.
+If you do not see help instructions, add your local <file>go/bin/*</file> directory to your `PATH` variable.
 If you use `bash` as your shell, you can use the following command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -99,7 +99,7 @@ viam organizations help
 
 ### auth
 
-The *auth* command helps you authorize your device for CLI usage. See [Authenticate](#authenticate)
+The `auth` command helps you authorize your device for CLI usage. See [Authenticate](#authenticate).
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam auth
@@ -168,7 +168,7 @@ viam data export --destination=/home/robot/data --data_type=binary \
 
 ### locations
 
-The *locations* command lists all locations that the authenticated session has access to, grouped by organization.
+The `locations` command lists all locations that the authenticated session has access to, grouped by organization.
 You can filter results by organization.
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -207,7 +207,7 @@ viam organizations list
 
 ### robot
 
-The *robot* command allows you to manage your robot fleet.
+The `robot` command allows you to manage your robot fleet.
 This includes:
 
 * Retrieving robot and robot part status
@@ -300,7 +300,7 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 ### robots
 
-The *robots* command lists all robots that the authenticated session has access to, filtered by organization and location.
+The `robots` command lists all robots that the authenticated session has access to, filtered by organization and location.
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam robots list
@@ -322,7 +322,7 @@ viam robots list
 
 ### whoami
 
-The *whoami* command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
+The `whoami` command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam whoami
@@ -330,7 +330,7 @@ viam whoami
 
 ## Global options
 
-You can pass global options after the *viam* CLI keyword with any command.
+You can pass global options after the `viam` CLI keyword with any command.
 
 |        global option     |       description |
 | ----------- | ----------- |
