@@ -107,7 +107,7 @@ Viam is a complete software platform for robots that runs on Linux and macOS and
 </div>
 <br>
 
-Explore the following to learn more about the Viam platform or to try it out for yourself:
+Explore more about the Viam platform or try it out for yourself:
 
 <div class="container td-max-width-on-larger-screens">
   <div class="row">
