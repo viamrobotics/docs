@@ -65,7 +65,7 @@ The following attributes are available for Base Remote Control services:
 | ---- | ---- | --------- | ----------- |
 | `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the base you are operating with this service. |
 | `input_controller` | string | **Required** | The `name` of the [input controller](/components/input-controller/) you have configured for the base you are operating with this service. |
-| `control_mode` | string | Optional | The mode of remote control you want to use. <br> Options: `["arrowControl", "triggerSpeedControl", "buttonControl", "joyStickControl", "droneControl"]` <br> Default: `"arrowControl"` |
+| `control_mode` | string | Optional | The mode of remote control you want to use. <br> Options: <ul><li>`"arrowControl"`</li><li>`"triggerSpeedControl"`</li><li>`"buttonControl"`</li><li>`"joyStickControl"`</li> <li>`"droneControl"`</li></ul> <br> Default: `"arrowControl"` |
 | `max_angular_degs_per_sec` | float | Optional | The max angular velocity for the [base](/components/base/) in degrees per second. |
 | `max_linear_mm_per_sec` | float | Optional | The max linear velocity for the [base](/components/base/) in meters per second. |
 
