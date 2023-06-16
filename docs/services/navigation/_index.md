@@ -46,6 +46,8 @@ Click **Create service**:
         "base": "test_base"
     }
 }
+    ... // Other services
+]
 ```
 
 {{% /tab %}}
