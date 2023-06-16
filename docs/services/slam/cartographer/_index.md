@@ -5,10 +5,13 @@ weight: 70
 type: "docs"
 description: "Configure a SLAM service with the Cartographer modular resource."
 tags: ["slam", "services"]
+icon: "/services/img/icons/slam.svg"
 aliases:
   - "/services/slam/run-slam-cartographer"
 # SMEs: Kat, Jeremy
 ---
+
+services/img/icons/slam.svg
 
 [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data.
 
