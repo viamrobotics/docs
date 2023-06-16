@@ -203,7 +203,7 @@ worldState := &referenceframe.WorldState{
 
 This example adds a "table" with the assumption that you mounted your robot arm to an elevated surface.
 The 2000 millimeter by 2000 millimeter dimensions ensure that a sufficiently large box is constructed, regardless of the real physical footprint of your mounting surface.
-The origin at -19 mm along the Z axis (half the table's thickness) positions the table so that its top surface is at 0.
+Setting the Z component of the origin to -19 mm (half the table's thickness) conveniently positions the top surface of the table at 0.
 Feel free to change these dimensions, including thickness (the Z coordinate in the above code samples), to match your environment more closely.
 Additional obstacles can also be *appended* as desired.
 
