@@ -33,13 +33,6 @@ Viam currently offers SDKs for the following languages:
 
 Before you get started with your program, ensure that you have [installed `viam-server`](/installation/) on the computer you want to use to control your robot [(likely a single-board computer)](/components/board/#configuration) and [configured a robot](/manage/configuration/).
 
-The easiest way to do this is:
-
-1. Go to [app.viam.com](https://app.viam.com/).
-2. Create a new robot.
-3. Go to the **Setup** tab and follow the instructions there.
-4. [Configure](/manage/configuration/) your robot.
-
 Next, to install your preferred Viam SDK on your Linux or macOS development machine or [single-board computer](/components/board/), run one of the following commands in your terminal:
 
 {{< tabs >}}
@@ -75,7 +68,7 @@ Follow the [instructions on the GitHub repository](https://github.com/viamroboti
 
 Create a program in the language of your choice that connects to your robot and uses methods built into the SDK's client API libraries to [interact with and control](/program/sdks/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the robot.
 
-Start with this by navigating to your robot's page on [the Viam app](https://app.viam.com/robots).
+Start by navigating to your robot's page on [the Viam app](https://app.viam.com/robots).
 Select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
 This code snippet imports all the necessary libraries to set up a connection with your robot and interface with its configured components and services.
 
@@ -251,28 +244,28 @@ int main() {
 
 Save this file on your development machine with the file type of your preferred SDK.
 
-
-Then, [execute this program](/program/run/) on any computer which:
-
-1. has [the appropriate SDK](#requirements) installed
-2. can establish a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-locally)
-
-Edit the boilerplate code by [adding control logic](/program/sdks/) to make a client application that connects to your robot and controls it in the way you want.
-
-### `import`: Find Required Imports
-
-The SDK code the Code Sample tab generates for your robot should contain all the import statements needed to execute that sample.
-
-If you are building out your program further or aren't using the Code Sample tab, you can find the right libraries to import to utilize SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/sdks/resource-apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
-
-### `connect`: Connect with Your Robot
-
-The `connect` logic of an SDK program establishes a connection for your client application to [communicate with](/internals/robot-to-robot-comms/) the robot's `viam-server` instance.
+The sample code contains the required imports as well as the connect logic which establishes a connection for your client application to [communicate with](/internals/robot-to-robot-comms/) the robot's `viam-server` instance.
 This section of the boilerplate code contains your robot's address and location secret.
 You can think of these as keys or access tokens to your robot that are important to keep private.
 This connection must be established for your program to be executed properly on your robot.
 
 {{< readfile "/static/include/snippet/secret-share.md" >}}
+
+### Run the sample code
+
+Once you have saved the sample code, [execute your program](/program/run/).
+
+You can run your program on any computer which:
+
+1. has [the appropriate SDK](#requirements) installed
+2. can establish a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-locally)
+
+The program will connect to your robot and print a list of the available {{< glossary_tooltip term_id="resources" text="resources" >}}.
+
+### Edit the sample code
+
+Once you have successfully run the sample code, you can edit the boilerplate code by [adding control logic](/program/sdks/) to make a client application that connects to your robot and controls it in the way you want.
+You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/sdks/resource-apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 {{< cards >}}
     {{% card link="/program/sdks/" size="small" custom="Add Logic to Interface with Resources" %}}
