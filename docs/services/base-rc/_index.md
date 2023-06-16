@@ -1,7 +1,7 @@
 ---
 title: "Base Remote Control Service"
 linkTitle: "Remote Control"
-weight: 80
+weight: 60
 type: "docs"
 description: "The Base Remote Control Service allows you to remotely control a base with an input controller like a gamepad."
 tags: ["base", "services", "rover", "input controller", "remote control"]
@@ -45,12 +45,11 @@ Click **Create service**:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "your-base-remote-control-service",
+    "name": "<your-base-remote-control-service>",
     "type": "base_remote_control",
     "attributes": {
-        "base": "your-base",
-        "input_controller": "your-controller",
-        "mode": "arrowControl"
+        "base": "<your-base-name>",
+        "input_controller": "<your-controller-name>"
     }
 }
 ```
@@ -76,7 +75,7 @@ The Base Remote Control Service supports the following methods:
 Method Name | Description
 ----------- | -----------
 [`Close`](#close) | Close out of all remote control related systems.
-[`ControllerInputs`](#controllerinputs) | Get a list of inputs from the controller that are being monitored for that control mode.
+[`ControllerInputs`](#controllerinputs) | Get a list of inputs from the controller that is being monitored for that control mode.
 
 {{% alert title="Note" color="note" %}}
 
