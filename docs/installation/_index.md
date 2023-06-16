@@ -132,7 +132,7 @@ To install `viam-server` on a board:
 
 <!-- The below has to be in HTML because we're using a table inside another table with indentation-->
 <ol start="3">
-<li>Select the tab below matching your board's architecture, and run the command listed to download and install <code>viam-server</code>.
+<li>Select the tab below matching your board's architecture, and run the command listed to download and install <code>viam-server</code> on your board.
    We recommend the stable release for most users:
 
 {{< tabs name="linux-board-architectures" >}}
@@ -175,15 +175,20 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 </li>
 </ol>
 
-4. Then, start `viam-server` with the following command:
+4. Create your robot's [configuration file](/installation/configuration/), and save the file to <file>/etc/viam.json</file>.
+
+5. Then, start `viam-server` on your board with the following command:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   sudo viam-server -config /etc/viam.json
+   sudo systemctl start viam-server
    ```
 
-5. To make configuration changes to your robot, edit the <file>/etc/viam.json</file> configuration file, then stop and restart `viam-server`.
-   You can also build a configuration file on the [Viam app](https://app.viam.com) without connecting your robot to it.
-   Use the **Config** tab to add and configure the components and services you'll be using, then switch the **Mode** to `Raw JSON` to view and download your configuration file.
+6. To make configuration changes to your robot, edit the <file>/etc/viam.json</file> configuration file, then stop and restart `viam-server`:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sudo systemctl stop viam-server
+   sudo systemctl start viam-server
+   ```
 
 {{% /tab %}}
 {{% tab name="macOS computer" %}}
@@ -204,7 +209,7 @@ To install `viam-server` on a macOS computer:
    cp /opt/homebrew/etc/viam.json ~/viam.json
    ```
 
-   This example configuration file contains some example [component](/components/) and [service](/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}.
+   This example configuration file contains some example [component](/components/) and [service](/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}. See [Configuration file](/installation/configuration/) for more information.
 
 1. Then, start `viam-server` with the following command:
 
@@ -271,15 +276,20 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 </li>
 </ol>
 
-3. Then, start `viam-server` with the following command:
+3. Create your robot's [configuration file](/installation/configuration/), and save the file to <file>/etc/viam.json</file>.
+
+4. Then, start `viam-server` on your board with the following command:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   sudo viam-server -config /etc/viam.json
+   sudo systemctl start viam-server
    ```
 
-4. To make configuration changes to your robot, edit the <file>/etc/viam.json</file> configuration file, then stop and restart `viam-server`.
-   You can also build a configuration file on the [Viam app](https://app.viam.com) without connecting your robot to it.
-   Use the **Config** tab to add and configure the components and services you'll be using, then switch the **Mode** to `Raw JSON` to view and download your configuration file.
+5. To make configuration changes to your robot, edit the <file>/etc/viam.json</file> configuration file, then stop and restart `viam-server`:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sudo systemctl stop viam-server
+   sudo systemctl start viam-server
+   ```
 
 {{% /tab %}}
 {{< /tabs >}}
